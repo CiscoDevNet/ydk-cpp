@@ -32,34 +32,34 @@ class CISCOBGP4MIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cbgpglobal; //type: CISCOBGP4MIB::Cbgpglobal
-        class Cbgproutetable; //type: CISCOBGP4MIB::Cbgproutetable
-        class Cbgppeercapstable; //type: CISCOBGP4MIB::Cbgppeercapstable
-        class Cbgppeeraddrfamilytable; //type: CISCOBGP4MIB::Cbgppeeraddrfamilytable
-        class Cbgppeeraddrfamilyprefixtable; //type: CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable
-        class Cbgppeer2Table; //type: CISCOBGP4MIB::Cbgppeer2Table
-        class Cbgppeer2Capstable; //type: CISCOBGP4MIB::Cbgppeer2Capstable
-        class Cbgppeer2Addrfamilytable; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilytable
-        class Cbgppeer2Addrfamilyprefixtable; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable
+        class CbgpGlobal; //type: CISCOBGP4MIB::CbgpGlobal
+        class CbgpRouteTable; //type: CISCOBGP4MIB::CbgpRouteTable
+        class CbgpPeerCapsTable; //type: CISCOBGP4MIB::CbgpPeerCapsTable
+        class CbgpPeerAddrFamilyTable; //type: CISCOBGP4MIB::CbgpPeerAddrFamilyTable
+        class CbgpPeerAddrFamilyPrefixTable; //type: CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable
+        class CbgpPeer2Table; //type: CISCOBGP4MIB::CbgpPeer2Table
+        class CbgpPeer2CapsTable; //type: CISCOBGP4MIB::CbgpPeer2CapsTable
+        class CbgpPeer2AddrFamilyTable; //type: CISCOBGP4MIB::CbgpPeer2AddrFamilyTable
+        class CbgpPeer2AddrFamilyPrefixTable; //type: CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgpglobal> cbgpglobal;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgproutetable> cbgproutetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeercapstable> cbgppeercapstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilytable> cbgppeeraddrfamilytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable> cbgppeeraddrfamilyprefixtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table> cbgppeer2table;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Capstable> cbgppeer2capstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilytable> cbgppeer2addrfamilytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable> cbgppeer2addrfamilyprefixtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpGlobal> cbgpglobal;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpRouteTable> cbgproutetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeerCapsTable> cbgppeercapstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeerAddrFamilyTable> cbgppeeraddrfamilytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable> cbgppeeraddrfamilyprefixtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeer2Table> cbgppeer2table;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeer2CapsTable> cbgppeer2capstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeer2AddrFamilyTable> cbgppeer2addrfamilytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable> cbgppeer2addrfamilyprefixtable;
         
 }; // CISCOBGP4MIB
 
 
-class CISCOBGP4MIB::Cbgpglobal : public ydk::Entity
+class CISCOBGP4MIB::CbgpGlobal : public ydk::Entity
 {
     public:
-        Cbgpglobal();
-        ~Cbgpglobal();
+        CbgpGlobal();
+        ~CbgpGlobal();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -72,17 +72,17 @@ class CISCOBGP4MIB::Cbgpglobal : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cbgpnotifsenable; //type: Cbgpnotifsenable
+        ydk::YLeaf cbgpnotifsenable; //type: CbgpNotifsEnable
         ydk::YLeaf cbgplocalas; //type: uint32
 
-}; // CISCOBGP4MIB::Cbgpglobal
+}; // CISCOBGP4MIB::CbgpGlobal
 
 
-class CISCOBGP4MIB::Cbgproutetable : public ydk::Entity
+class CISCOBGP4MIB::CbgpRouteTable : public ydk::Entity
 {
     public:
-        Cbgproutetable();
-        ~Cbgproutetable();
+        CbgpRouteTable();
+        ~CbgpRouteTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -95,18 +95,18 @@ class CISCOBGP4MIB::Cbgproutetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgprouteentry; //type: CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry
+        class CbgpRouteEntry; //type: CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry> > cbgprouteentry;
+        ydk::YList cbgprouteentry;
         
-}; // CISCOBGP4MIB::Cbgproutetable
+}; // CISCOBGP4MIB::CbgpRouteTable
 
 
-class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry : public ydk::Entity
+class CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry : public ydk::Entity
 {
     public:
-        Cbgprouteentry();
-        ~Cbgprouteentry();
+        CbgpRouteEntry();
+        ~CbgpRouteEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -125,30 +125,30 @@ class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry : public ydk::Entity
         ydk::YLeaf cbgproutepeer; //type: binary
         ydk::YLeaf cbgprouteaddrprefix; //type: binary
         ydk::YLeaf cbgprouteaddrprefixlen; //type: uint32
-        ydk::YLeaf cbgprouteorigin; //type: Cbgprouteorigin
+        ydk::YLeaf cbgprouteorigin; //type: CbgpRouteOrigin
         ydk::YLeaf cbgprouteaspathsegment; //type: binary
         ydk::YLeaf cbgproutenexthop; //type: binary
         ydk::YLeaf cbgproutemedpresent; //type: boolean
         ydk::YLeaf cbgproutemultiexitdisc; //type: uint32
         ydk::YLeaf cbgproutelocalprefpresent; //type: boolean
         ydk::YLeaf cbgproutelocalpref; //type: uint32
-        ydk::YLeaf cbgprouteatomicaggregate; //type: Cbgprouteatomicaggregate
+        ydk::YLeaf cbgprouteatomicaggregate; //type: CbgpRouteAtomicAggregate
         ydk::YLeaf cbgprouteaggregatoras; //type: uint32
         ydk::YLeaf cbgprouteaggregatoraddrtype; //type: InetAddressType
         ydk::YLeaf cbgprouteaggregatoraddr; //type: binary
         ydk::YLeaf cbgproutebest; //type: boolean
         ydk::YLeaf cbgprouteunknownattr; //type: binary
-        class Cbgprouteorigin;
-        class Cbgprouteatomicaggregate;
+        class CbgpRouteOrigin;
+        class CbgpRouteAtomicAggregate;
 
-}; // CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry
+}; // CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry
 
 
-class CISCOBGP4MIB::Cbgppeercapstable : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeerCapsTable : public ydk::Entity
 {
     public:
-        Cbgppeercapstable();
-        ~Cbgppeercapstable();
+        CbgpPeerCapsTable();
+        ~CbgpPeerCapsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -161,18 +161,18 @@ class CISCOBGP4MIB::Cbgppeercapstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgppeercapsentry; //type: CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry
+        class CbgpPeerCapsEntry; //type: CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry> > cbgppeercapsentry;
+        ydk::YList cbgppeercapsentry;
         
-}; // CISCOBGP4MIB::Cbgppeercapstable
+}; // CISCOBGP4MIB::CbgpPeerCapsTable
 
 
-class CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry : public ydk::Entity
 {
     public:
-        Cbgppeercapsentry();
-        ~Cbgppeercapsentry();
+        CbgpPeerCapsEntry();
+        ~CbgpPeerCapsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -185,21 +185,21 @@ class CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
+        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::BgpPeerTable::BgpPeerEntry::bgppeerremoteaddr)
         ydk::YLeaf bgppeerremoteaddr;
-        ydk::YLeaf cbgppeercapcode; //type: Cbgppeercapcode
+        ydk::YLeaf cbgppeercapcode; //type: CbgpPeerCapCode
         ydk::YLeaf cbgppeercapindex; //type: uint32
         ydk::YLeaf cbgppeercapvalue; //type: binary
-        class Cbgppeercapcode;
+        class CbgpPeerCapCode;
 
-}; // CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry
+}; // CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry
 
 
-class CISCOBGP4MIB::Cbgppeeraddrfamilytable : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeerAddrFamilyTable : public ydk::Entity
 {
     public:
-        Cbgppeeraddrfamilytable();
-        ~Cbgppeeraddrfamilytable();
+        CbgpPeerAddrFamilyTable();
+        ~CbgpPeerAddrFamilyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -212,18 +212,18 @@ class CISCOBGP4MIB::Cbgppeeraddrfamilytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgppeeraddrfamilyentry; //type: CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry
+        class CbgpPeerAddrFamilyEntry; //type: CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry> > cbgppeeraddrfamilyentry;
+        ydk::YList cbgppeeraddrfamilyentry;
         
-}; // CISCOBGP4MIB::Cbgppeeraddrfamilytable
+}; // CISCOBGP4MIB::CbgpPeerAddrFamilyTable
 
 
-class CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry : public ydk::Entity
 {
     public:
-        Cbgppeeraddrfamilyentry();
-        ~Cbgppeeraddrfamilyentry();
+        CbgpPeerAddrFamilyEntry();
+        ~CbgpPeerAddrFamilyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -236,20 +236,20 @@ class CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
+        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::BgpPeerTable::BgpPeerEntry::bgppeerremoteaddr)
         ydk::YLeaf bgppeerremoteaddr;
         ydk::YLeaf cbgppeeraddrfamilyafi; //type: InetAddressType
         ydk::YLeaf cbgppeeraddrfamilysafi; //type: CbgpSafi
         ydk::YLeaf cbgppeeraddrfamilyname; //type: string
 
-}; // CISCOBGP4MIB::Cbgppeeraddrfamilytable::Cbgppeeraddrfamilyentry
+}; // CISCOBGP4MIB::CbgpPeerAddrFamilyTable::CbgpPeerAddrFamilyEntry
 
 
-class CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable : public ydk::Entity
 {
     public:
-        Cbgppeeraddrfamilyprefixtable();
-        ~Cbgppeeraddrfamilyprefixtable();
+        CbgpPeerAddrFamilyPrefixTable();
+        ~CbgpPeerAddrFamilyPrefixTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -262,18 +262,18 @@ class CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgppeeraddrfamilyprefixentry; //type: CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
+        class CbgpPeerAddrFamilyPrefixEntry; //type: CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry> > cbgppeeraddrfamilyprefixentry;
+        ydk::YList cbgppeeraddrfamilyprefixentry;
         
-}; // CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable
+}; // CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable
 
 
-class CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry : public ydk::Entity
 {
     public:
-        Cbgppeeraddrfamilyprefixentry();
-        ~Cbgppeeraddrfamilyprefixentry();
+        CbgpPeerAddrFamilyPrefixEntry();
+        ~CbgpPeerAddrFamilyPrefixEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -286,7 +286,7 @@ class CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable::Bgppeerentry::bgppeerremoteaddr)
+        //type: string (refers to cisco_ios_xe::BGP4_MIB::BGP4MIB::BgpPeerTable::BgpPeerEntry::bgppeerremoteaddr)
         ydk::YLeaf bgppeerremoteaddr;
         ydk::YLeaf cbgppeeraddrfamilyafi; //type: InetAddressType
         ydk::YLeaf cbgppeeraddrfamilysafi; //type: CbgpSafi
@@ -299,14 +299,14 @@ class CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
         ydk::YLeaf cbgppeersuppressedprefixes; //type: uint32
         ydk::YLeaf cbgppeerwithdrawnprefixes; //type: uint32
 
-}; // CISCOBGP4MIB::Cbgppeeraddrfamilyprefixtable::Cbgppeeraddrfamilyprefixentry
+}; // CISCOBGP4MIB::CbgpPeerAddrFamilyPrefixTable::CbgpPeerAddrFamilyPrefixEntry
 
 
-class CISCOBGP4MIB::Cbgppeer2Table : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2Table : public ydk::Entity
 {
     public:
-        Cbgppeer2Table();
-        ~Cbgppeer2Table();
+        CbgpPeer2Table();
+        ~CbgpPeer2Table();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -319,18 +319,18 @@ class CISCOBGP4MIB::Cbgppeer2Table : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgppeer2Entry; //type: CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry
+        class CbgpPeer2Entry; //type: CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry> > cbgppeer2entry;
+        ydk::YList cbgppeer2entry;
         
-}; // CISCOBGP4MIB::Cbgppeer2Table
+}; // CISCOBGP4MIB::CbgpPeer2Table
 
 
-class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry : public ydk::Entity
 {
     public:
-        Cbgppeer2Entry();
-        ~Cbgppeer2Entry();
+        CbgpPeer2Entry();
+        ~CbgpPeer2Entry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -345,8 +345,8 @@ class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry : public ydk::Entity
 
         ydk::YLeaf cbgppeer2type; //type: InetAddressType
         ydk::YLeaf cbgppeer2remoteaddr; //type: binary
-        ydk::YLeaf cbgppeer2state; //type: Cbgppeer2State
-        ydk::YLeaf cbgppeer2adminstatus; //type: Cbgppeer2Adminstatus
+        ydk::YLeaf cbgppeer2state; //type: CbgpPeer2State
+        ydk::YLeaf cbgppeer2adminstatus; //type: CbgpPeer2AdminStatus
         ydk::YLeaf cbgppeer2negotiatedversion; //type: int32
         ydk::YLeaf cbgppeer2localaddr; //type: binary
         ydk::YLeaf cbgppeer2localport; //type: uint16
@@ -371,19 +371,19 @@ class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry : public ydk::Entity
         ydk::YLeaf cbgppeer2minrouteadvertisementinterval; //type: int32
         ydk::YLeaf cbgppeer2inupdateelapsedtime; //type: uint32
         ydk::YLeaf cbgppeer2lasterrortxt; //type: string
-        ydk::YLeaf cbgppeer2prevstate; //type: Cbgppeer2Prevstate
-        class Cbgppeer2State;
-        class Cbgppeer2Adminstatus;
-        class Cbgppeer2Prevstate;
+        ydk::YLeaf cbgppeer2prevstate; //type: CbgpPeer2PrevState
+        class CbgpPeer2State;
+        class CbgpPeer2AdminStatus;
+        class CbgpPeer2PrevState;
 
-}; // CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry
+}; // CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry
 
 
-class CISCOBGP4MIB::Cbgppeer2Capstable : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2CapsTable : public ydk::Entity
 {
     public:
-        Cbgppeer2Capstable();
-        ~Cbgppeer2Capstable();
+        CbgpPeer2CapsTable();
+        ~CbgpPeer2CapsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -396,18 +396,18 @@ class CISCOBGP4MIB::Cbgppeer2Capstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgppeer2Capsentry; //type: CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry
+        class CbgpPeer2CapsEntry; //type: CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry> > cbgppeer2capsentry;
+        ydk::YList cbgppeer2capsentry;
         
-}; // CISCOBGP4MIB::Cbgppeer2Capstable
+}; // CISCOBGP4MIB::CbgpPeer2CapsTable
 
 
-class CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry : public ydk::Entity
 {
     public:
-        Cbgppeer2Capsentry();
-        ~Cbgppeer2Capsentry();
+        CbgpPeer2CapsEntry();
+        ~CbgpPeer2CapsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -421,21 +421,21 @@ class CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cbgppeer2type; //type: InetAddressType
-        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
+        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::cbgppeer2remoteaddr)
         ydk::YLeaf cbgppeer2remoteaddr;
-        ydk::YLeaf cbgppeer2capcode; //type: Cbgppeer2Capcode
+        ydk::YLeaf cbgppeer2capcode; //type: CbgpPeer2CapCode
         ydk::YLeaf cbgppeer2capindex; //type: uint32
         ydk::YLeaf cbgppeer2capvalue; //type: binary
-        class Cbgppeer2Capcode;
+        class CbgpPeer2CapCode;
 
-}; // CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry
+}; // CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry
 
 
-class CISCOBGP4MIB::Cbgppeer2Addrfamilytable : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2AddrFamilyTable : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilytable();
-        ~Cbgppeer2Addrfamilytable();
+        CbgpPeer2AddrFamilyTable();
+        ~CbgpPeer2AddrFamilyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -448,18 +448,18 @@ class CISCOBGP4MIB::Cbgppeer2Addrfamilytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgppeer2Addrfamilyentry; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry
+        class CbgpPeer2AddrFamilyEntry; //type: CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry> > cbgppeer2addrfamilyentry;
+        ydk::YList cbgppeer2addrfamilyentry;
         
-}; // CISCOBGP4MIB::Cbgppeer2Addrfamilytable
+}; // CISCOBGP4MIB::CbgpPeer2AddrFamilyTable
 
 
-class CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilyentry();
-        ~Cbgppeer2Addrfamilyentry();
+        CbgpPeer2AddrFamilyEntry();
+        ~CbgpPeer2AddrFamilyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -473,20 +473,20 @@ class CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry : public 
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cbgppeer2type; //type: InetAddressType
-        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
+        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::cbgppeer2remoteaddr)
         ydk::YLeaf cbgppeer2remoteaddr;
         ydk::YLeaf cbgppeer2addrfamilyafi; //type: InetAddressType
         ydk::YLeaf cbgppeer2addrfamilysafi; //type: CbgpSafi
         ydk::YLeaf cbgppeer2addrfamilyname; //type: string
 
-}; // CISCOBGP4MIB::Cbgppeer2Addrfamilytable::Cbgppeer2Addrfamilyentry
+}; // CISCOBGP4MIB::CbgpPeer2AddrFamilyTable::CbgpPeer2AddrFamilyEntry
 
 
-class CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilyprefixtable();
-        ~Cbgppeer2Addrfamilyprefixtable();
+        CbgpPeer2AddrFamilyPrefixTable();
+        ~CbgpPeer2AddrFamilyPrefixTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -499,18 +499,18 @@ class CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbgppeer2Addrfamilyprefixentry; //type: CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry
+        class CbgpPeer2AddrFamilyPrefixEntry; //type: CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry> > cbgppeer2addrfamilyprefixentry;
+        ydk::YList cbgppeer2addrfamilyprefixentry;
         
-}; // CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable
+}; // CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable
 
 
-class CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry : public ydk::Entity
+class CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry : public ydk::Entity
 {
     public:
-        Cbgppeer2Addrfamilyprefixentry();
-        ~Cbgppeer2Addrfamilyprefixentry();
+        CbgpPeer2AddrFamilyPrefixEntry();
+        ~CbgpPeer2AddrFamilyPrefixEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -524,7 +524,7 @@ class CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixent
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cbgppeer2type; //type: InetAddressType
-        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::cbgppeer2remoteaddr)
+        //type: binary (refers to cisco_ios_xe::CISCO_BGP4_MIB::CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::cbgppeer2remoteaddr)
         ydk::YLeaf cbgppeer2remoteaddr;
         ydk::YLeaf cbgppeer2addrfamilyafi; //type: InetAddressType
         ydk::YLeaf cbgppeer2addrfamilysafi; //type: CbgpSafi
@@ -537,7 +537,7 @@ class CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixent
         ydk::YLeaf cbgppeer2suppressedprefixes; //type: uint32
         ydk::YLeaf cbgppeer2withdrawnprefixes; //type: uint32
 
-}; // CISCOBGP4MIB::Cbgppeer2Addrfamilyprefixtable::Cbgppeer2Addrfamilyprefixentry
+}; // CISCOBGP4MIB::CbgpPeer2AddrFamilyPrefixTable::CbgpPeer2AddrFamilyPrefixEntry
 
 class CbgpSafi : public ydk::Enum
 {
@@ -549,7 +549,7 @@ class CbgpSafi : public ydk::Enum
 
 };
 
-class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteorigin : public ydk::Enum
+class CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteOrigin : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf igp;
@@ -558,7 +558,7 @@ class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteorigin : public ydk
 
 };
 
-class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteatomicaggregate : public ydk::Enum
+class CISCOBGP4MIB::CbgpRouteTable::CbgpRouteEntry::CbgpRouteAtomicAggregate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lessSpecificRouteNotSelected;
@@ -566,7 +566,7 @@ class CISCOBGP4MIB::Cbgproutetable::Cbgprouteentry::Cbgprouteatomicaggregate : p
 
 };
 
-class CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode : public ydk::Enum
+class CISCOBGP4MIB::CbgpPeerCapsTable::CbgpPeerCapsEntry::CbgpPeerCapCode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf multiProtocol;
@@ -576,7 +576,7 @@ class CISCOBGP4MIB::Cbgppeercapstable::Cbgppeercapsentry::Cbgppeercapcode : publ
 
 };
 
-class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State : public ydk::Enum
+class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2State : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf idle;
@@ -588,7 +588,7 @@ class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2State : public ydk:
 
 };
 
-class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Adminstatus : public ydk::Enum
+class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2AdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf stop;
@@ -596,7 +596,7 @@ class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Adminstatus : publi
 
 };
 
-class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate : public ydk::Enum
+class CISCOBGP4MIB::CbgpPeer2Table::CbgpPeer2Entry::CbgpPeer2PrevState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -609,7 +609,7 @@ class CISCOBGP4MIB::Cbgppeer2Table::Cbgppeer2Entry::Cbgppeer2Prevstate : public 
 
 };
 
-class CISCOBGP4MIB::Cbgppeer2Capstable::Cbgppeer2Capsentry::Cbgppeer2Capcode : public ydk::Enum
+class CISCOBGP4MIB::CbgpPeer2CapsTable::CbgpPeer2CapsEntry::CbgpPeer2CapCode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf multiProtocol;

@@ -17,16 +17,16 @@ EventManager::EventManager()
     schedule_suspend{YType::boolean, "schedule-suspend"},
     directory_user_policy{YType::str, "directory-user-policy"},
     directory_user_library{YType::str, "directory-user-library"}
-    	,
+        ,
     policies(std::make_shared<EventManager::Policies>())
-	,scheduler_script(std::make_shared<EventManager::SchedulerScript>())
-	,environments(std::make_shared<EventManager::Environments>())
+    , scheduler_script(std::make_shared<EventManager::SchedulerScript>())
+    , environments(std::make_shared<EventManager::Environments>())
 {
     policies->parent = this;
     scheduler_script->parent = this;
     environments->parent = this;
 
-    yang_name = "event-manager"; yang_parent_name = "Cisco-IOS-XR-ha-eem-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "event-manager"; yang_parent_name = "Cisco-IOS-XR-ha-eem-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EventManager::~EventManager()
@@ -35,6 +35,7 @@ EventManager::~EventManager()
 
 bool EventManager::has_data() const
 {
+    if (is_presence_container) return true;
     return refresh_time.is_set
 	|| schedule_suspend.is_set
 	|| directory_user_policy.is_set
@@ -211,9 +212,11 @@ bool EventManager::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 EventManager::Policies::Policies()
+    :
+    policy(this, {"policy_name"})
 {
 
-    yang_name = "policies"; yang_parent_name = "event-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policies"; yang_parent_name = "event-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EventManager::Policies::~Policies()
@@ -222,7 +225,8 @@ EventManager::Policies::~Policies()
 
 bool EventManager::Policies::has_data() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_data())
             return true;
@@ -232,7 +236,7 @@ bool EventManager::Policies::has_data() const
 
 bool EventManager::Policies::has_operation() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_operation())
             return true;
@@ -269,7 +273,7 @@ std::shared_ptr<Entity> EventManager::Policies::get_child_by_name(const std::str
     {
         auto c = std::make_shared<EventManager::Policies::Policy>();
         c->parent = this;
-        policy.push_back(c);
+        policy.append(c);
         return c;
     }
 
@@ -281,7 +285,7 @@ std::map<std::string, std::shared_ptr<Entity>> EventManager::Policies::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy)
+    for (auto c : policy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -319,7 +323,7 @@ EventManager::Policies::Policy::Policy()
     policy_security_level{YType::enumeration, "policy-security-level"}
 {
 
-    yang_name = "policy"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EventManager::Policies::Policy::~Policy()
@@ -328,6 +332,7 @@ EventManager::Policies::Policy::~Policy()
 
 bool EventManager::Policies::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_name.is_set
 	|| username.is_set
 	|| persist_time.is_set
@@ -361,7 +366,8 @@ std::string EventManager::Policies::Policy::get_absolute_path() const
 std::string EventManager::Policies::Policy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy" <<"[policy-name='" <<policy_name <<"']";
+    path_buffer << "policy";
+    ADD_KEY_TOKEN(policy_name, "policy-name");
     return path_buffer.str();
 }
 
@@ -495,7 +501,7 @@ EventManager::SchedulerScript::SchedulerScript()
 {
     thread_classes->parent = this;
 
-    yang_name = "scheduler-script"; yang_parent_name = "event-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scheduler-script"; yang_parent_name = "event-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EventManager::SchedulerScript::~SchedulerScript()
@@ -504,6 +510,7 @@ EventManager::SchedulerScript::~SchedulerScript()
 
 bool EventManager::SchedulerScript::has_data() const
 {
+    if (is_presence_container) return true;
     return (thread_classes !=  nullptr && thread_classes->has_data());
 }
 
@@ -578,9 +585,11 @@ bool EventManager::SchedulerScript::has_leaf_or_child_of_name(const std::string 
 }
 
 EventManager::SchedulerScript::ThreadClasses::ThreadClasses()
+    :
+    thread_class(this, {"thread_class_name"})
 {
 
-    yang_name = "thread-classes"; yang_parent_name = "scheduler-script"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "thread-classes"; yang_parent_name = "scheduler-script"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EventManager::SchedulerScript::ThreadClasses::~ThreadClasses()
@@ -589,7 +598,8 @@ EventManager::SchedulerScript::ThreadClasses::~ThreadClasses()
 
 bool EventManager::SchedulerScript::ThreadClasses::has_data() const
 {
-    for (std::size_t index=0; index<thread_class.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<thread_class.len(); index++)
     {
         if(thread_class[index]->has_data())
             return true;
@@ -599,7 +609,7 @@ bool EventManager::SchedulerScript::ThreadClasses::has_data() const
 
 bool EventManager::SchedulerScript::ThreadClasses::has_operation() const
 {
-    for (std::size_t index=0; index<thread_class.size(); index++)
+    for (std::size_t index=0; index<thread_class.len(); index++)
     {
         if(thread_class[index]->has_operation())
             return true;
@@ -636,7 +646,7 @@ std::shared_ptr<Entity> EventManager::SchedulerScript::ThreadClasses::get_child_
     {
         auto c = std::make_shared<EventManager::SchedulerScript::ThreadClasses::ThreadClass>();
         c->parent = this;
-        thread_class.push_back(c);
+        thread_class.append(c);
         return c;
     }
 
@@ -648,7 +658,7 @@ std::map<std::string, std::shared_ptr<Entity>> EventManager::SchedulerScript::Th
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : thread_class)
+    for (auto c : thread_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -680,7 +690,7 @@ EventManager::SchedulerScript::ThreadClasses::ThreadClass::ThreadClass()
     num_threads{YType::uint32, "num-threads"}
 {
 
-    yang_name = "thread-class"; yang_parent_name = "thread-classes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "thread-class"; yang_parent_name = "thread-classes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EventManager::SchedulerScript::ThreadClasses::ThreadClass::~ThreadClass()
@@ -689,6 +699,7 @@ EventManager::SchedulerScript::ThreadClasses::ThreadClass::~ThreadClass()
 
 bool EventManager::SchedulerScript::ThreadClasses::ThreadClass::has_data() const
 {
+    if (is_presence_container) return true;
     return thread_class_name.is_set
 	|| num_threads.is_set;
 }
@@ -710,7 +721,8 @@ std::string EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_absol
 std::string EventManager::SchedulerScript::ThreadClasses::ThreadClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "thread-class" <<"[thread-class-name='" <<thread_class_name <<"']";
+    path_buffer << "thread-class";
+    ADD_KEY_TOKEN(thread_class_name, "thread-class-name");
     return path_buffer.str();
 }
 
@@ -773,9 +785,11 @@ bool EventManager::SchedulerScript::ThreadClasses::ThreadClass::has_leaf_or_chil
 }
 
 EventManager::Environments::Environments()
+    :
+    environment(this, {"environment_name"})
 {
 
-    yang_name = "environments"; yang_parent_name = "event-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "environments"; yang_parent_name = "event-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EventManager::Environments::~Environments()
@@ -784,7 +798,8 @@ EventManager::Environments::~Environments()
 
 bool EventManager::Environments::has_data() const
 {
-    for (std::size_t index=0; index<environment.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<environment.len(); index++)
     {
         if(environment[index]->has_data())
             return true;
@@ -794,7 +809,7 @@ bool EventManager::Environments::has_data() const
 
 bool EventManager::Environments::has_operation() const
 {
-    for (std::size_t index=0; index<environment.size(); index++)
+    for (std::size_t index=0; index<environment.len(); index++)
     {
         if(environment[index]->has_operation())
             return true;
@@ -831,7 +846,7 @@ std::shared_ptr<Entity> EventManager::Environments::get_child_by_name(const std:
     {
         auto c = std::make_shared<EventManager::Environments::Environment>();
         c->parent = this;
-        environment.push_back(c);
+        environment.append(c);
         return c;
     }
 
@@ -843,7 +858,7 @@ std::map<std::string, std::shared_ptr<Entity>> EventManager::Environments::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : environment)
+    for (auto c : environment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -875,7 +890,7 @@ EventManager::Environments::Environment::Environment()
     environment_value{YType::str, "environment-value"}
 {
 
-    yang_name = "environment"; yang_parent_name = "environments"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "environment"; yang_parent_name = "environments"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EventManager::Environments::Environment::~Environment()
@@ -884,6 +899,7 @@ EventManager::Environments::Environment::~Environment()
 
 bool EventManager::Environments::Environment::has_data() const
 {
+    if (is_presence_container) return true;
     return environment_name.is_set
 	|| environment_value.is_set;
 }
@@ -905,7 +921,8 @@ std::string EventManager::Environments::Environment::get_absolute_path() const
 std::string EventManager::Environments::Environment::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "environment" <<"[environment-name='" <<environment_name <<"']";
+    path_buffer << "environment";
+    ADD_KEY_TOKEN(environment_name, "environment-name");
     return path_buffer.str();
 }
 
@@ -967,14 +984,14 @@ bool EventManager::Environments::Environment::has_leaf_or_child_of_name(const st
     return false;
 }
 
-const Enum::YLeaf EventManagerChecksum::sha_1 {1, "sha-1"};
-const Enum::YLeaf EventManagerChecksum::md5 {2, "md5"};
-
 const Enum::YLeaf EventManagerPolicySec::rsa_2048 {2, "rsa-2048"};
 const Enum::YLeaf EventManagerPolicySec::trust {3, "trust"};
 
 const Enum::YLeaf EventManagerPolicyMode::cisco {1, "cisco"};
 const Enum::YLeaf EventManagerPolicyMode::trust {2, "trust"};
+
+const Enum::YLeaf EventManagerChecksum::sha_1 {1, "sha-1"};
+const Enum::YLeaf EventManagerChecksum::md5 {2, "md5"};
 
 const Enum::YLeaf EventManagerPolicy::system {0, "system"};
 const Enum::YLeaf EventManagerPolicy::user {1, "user"};

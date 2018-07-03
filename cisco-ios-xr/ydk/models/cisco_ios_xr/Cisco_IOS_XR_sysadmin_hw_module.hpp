@@ -69,7 +69,7 @@ class HwModule::Config : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::Reset> reset;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::Offline> offline;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::AttentionLed> attention_led;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::Location> > location;
+        ydk::YList location;
         
 }; // HwModule::Config
 
@@ -93,7 +93,7 @@ class HwModule::Config::Shutdown : public ydk::Entity
 
         class Location; //type: HwModule::Config::Shutdown::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::Shutdown::Location> > location;
+        ydk::YList location;
         
 }; // HwModule::Config::Shutdown
 
@@ -187,7 +187,7 @@ class HwModule::Config::Reset::Auto::Disable : public ydk::Entity
 
         class Location; //type: HwModule::Config::Reset::Auto::Disable::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::Reset::Auto::Disable::Location> > location;
+        ydk::YList location;
         
 }; // HwModule::Config::Reset::Auto::Disable
 
@@ -233,7 +233,7 @@ class HwModule::Config::Offline : public ydk::Entity
 
         class Location; //type: HwModule::Config::Offline::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::Offline::Location> > location;
+        ydk::YList location;
         
 }; // HwModule::Config::Offline
 
@@ -279,7 +279,7 @@ class HwModule::Config::AttentionLed : public ydk::Entity
 
         class Location; //type: HwModule::Config::AttentionLed::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Config::AttentionLed::Location> > location;
+        ydk::YList location;
         
 }; // HwModule::Config::AttentionLed
 
@@ -394,7 +394,7 @@ class HwModule::Oper : public ydk::Entity
 
         class Location; //type: HwModule::Oper::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Oper::Location> > location;
+        ydk::YList location;
         
 }; // HwModule::Oper
 
@@ -467,7 +467,7 @@ class HwModule::Oper::Location::Actions::Cbootmedia : public ydk::Entity
 
         class Bootmedia; //type: HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Oper::Location::Actions::Cbootmedia::Bootmedia> > bootmedia;
+        ydk::YList bootmedia;
         
 }; // HwModule::Oper::Location::Actions::Cbootmedia
 
@@ -533,8 +533,8 @@ class HwModule::Shhwfpd : public ydk::Entity
         class Alocation; //type: HwModule::Shhwfpd::Alocation
         class Fpd; //type: HwModule::Shhwfpd::Fpd
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Shhwfpd::Alocation> > alocation;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Shhwfpd::Fpd> > fpd;
+        ydk::YList alocation;
+        ydk::YList fpd;
         
 }; // HwModule::Shhwfpd
 
@@ -559,7 +559,7 @@ class HwModule::Shhwfpd::Alocation : public ydk::Entity
         ydk::YLeaf locs; //type: string
         class Fpd; //type: HwModule::Shhwfpd::Alocation::Fpd
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_hw_module::HwModule::Shhwfpd::Alocation::Fpd> > fpd;
+        ydk::YList fpd;
         
 }; // HwModule::Shhwfpd::Alocation
 

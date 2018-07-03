@@ -14,12 +14,13 @@ namespace Cisco_IOS_XR_sysadmin_asic_errors_ael {
 AsicErrors::AsicErrors()
     :
     device_name{YType::str, "device-name"}
-    	,
-    show_all_instances(std::make_shared<AsicErrors::ShowAllInstances>())
+        ,
+    instance(this, {"instance_num"})
+    , show_all_instances(std::make_shared<AsicErrors::ShowAllInstances>())
 {
     show_all_instances->parent = this;
 
-    yang_name = "asic-errors"; yang_parent_name = "Cisco-IOS-XR-sysadmin-asic-errors-ael"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "asic-errors"; yang_parent_name = "Cisco-IOS-XR-sysadmin-asic-errors-ael"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AsicErrors::~AsicErrors()
@@ -28,7 +29,8 @@ AsicErrors::~AsicErrors()
 
 bool AsicErrors::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -39,7 +41,7 @@ bool AsicErrors::has_data() const
 
 bool AsicErrors::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -52,7 +54,8 @@ bool AsicErrors::has_operation() const
 std::string AsicErrors::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-asic-errors-ael:asic-errors" <<"[device-name='" <<device_name <<"']";
+    path_buffer << "Cisco-IOS-XR-sysadmin-asic-errors-ael:asic-errors";
+    ADD_KEY_TOKEN(device_name, "device-name");
     return path_buffer.str();
 }
 
@@ -72,7 +75,7 @@ std::shared_ptr<Entity> AsicErrors::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<AsicErrors::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -93,7 +96,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -162,25 +165,25 @@ bool AsicErrors::has_leaf_or_child_of_name(const std::string & name) const
 AsicErrors::Instance::Instance()
     :
     instance_num{YType::uint32, "instance-num"}
-    	,
+        ,
     sbe(std::make_shared<AsicErrors::Instance::Sbe>())
-	,mbe(std::make_shared<AsicErrors::Instance::Mbe>())
-	,parity(std::make_shared<AsicErrors::Instance::Parity>())
-	,generic(std::make_shared<AsicErrors::Instance::Generic>())
-	,crc(std::make_shared<AsicErrors::Instance::Crc>())
-	,reset(std::make_shared<AsicErrors::Instance::Reset>())
-	,barrier(std::make_shared<AsicErrors::Instance::Barrier>())
-	,unexpected(std::make_shared<AsicErrors::Instance::Unexpected>())
-	,link(std::make_shared<AsicErrors::Instance::Link>())
-	,oor_thresh(std::make_shared<AsicErrors::Instance::OorThresh>())
-	,bp(std::make_shared<AsicErrors::Instance::Bp>())
-	,io(std::make_shared<AsicErrors::Instance::Io>())
-	,ucode(std::make_shared<AsicErrors::Instance::Ucode>())
-	,config(std::make_shared<AsicErrors::Instance::Config>())
-	,indirect(std::make_shared<AsicErrors::Instance::Indirect>())
-	,nonerr(std::make_shared<AsicErrors::Instance::Nonerr>())
-	,summary(std::make_shared<AsicErrors::Instance::Summary>())
-	,all(std::make_shared<AsicErrors::Instance::All>())
+    , mbe(std::make_shared<AsicErrors::Instance::Mbe>())
+    , parity(std::make_shared<AsicErrors::Instance::Parity>())
+    , generic(std::make_shared<AsicErrors::Instance::Generic>())
+    , crc(std::make_shared<AsicErrors::Instance::Crc>())
+    , reset(std::make_shared<AsicErrors::Instance::Reset>())
+    , barrier(std::make_shared<AsicErrors::Instance::Barrier>())
+    , unexpected(std::make_shared<AsicErrors::Instance::Unexpected>())
+    , link(std::make_shared<AsicErrors::Instance::Link>())
+    , oor_thresh(std::make_shared<AsicErrors::Instance::OorThresh>())
+    , bp(std::make_shared<AsicErrors::Instance::Bp>())
+    , io(std::make_shared<AsicErrors::Instance::Io>())
+    , ucode(std::make_shared<AsicErrors::Instance::Ucode>())
+    , config(std::make_shared<AsicErrors::Instance::Config>())
+    , indirect(std::make_shared<AsicErrors::Instance::Indirect>())
+    , nonerr(std::make_shared<AsicErrors::Instance::Nonerr>())
+    , summary(std::make_shared<AsicErrors::Instance::Summary>())
+    , all(std::make_shared<AsicErrors::Instance::All>())
 {
     sbe->parent = this;
     mbe->parent = this;
@@ -201,7 +204,7 @@ AsicErrors::Instance::Instance()
     summary->parent = this;
     all->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "asic-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "asic-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::~Instance()
@@ -210,6 +213,7 @@ AsicErrors::Instance::~Instance()
 
 bool AsicErrors::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_num.is_set
 	|| (sbe !=  nullptr && sbe->has_data())
 	|| (mbe !=  nullptr && mbe->has_data())
@@ -258,7 +262,8 @@ bool AsicErrors::Instance::has_operation() const
 std::string AsicErrors::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-num='" <<instance_num <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_num, "instance-num");
     return path_buffer.str();
 }
 
@@ -562,9 +567,11 @@ bool AsicErrors::Instance::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 AsicErrors::Instance::Sbe::Sbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "sbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Sbe::~Sbe()
@@ -573,7 +580,8 @@ AsicErrors::Instance::Sbe::~Sbe()
 
 bool AsicErrors::Instance::Sbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -583,7 +591,7 @@ bool AsicErrors::Instance::Sbe::has_data() const
 
 bool AsicErrors::Instance::Sbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -613,7 +621,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Sbe::get_child_by_name(const std::
     {
         auto c = std::make_shared<AsicErrors::Instance::Sbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -625,7 +633,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Sbe::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -654,9 +662,11 @@ bool AsicErrors::Instance::Sbe::has_leaf_or_child_of_name(const std::string & na
 AsicErrors::Instance::Sbe::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Sbe::Location::~Location()
@@ -665,7 +675,8 @@ AsicErrors::Instance::Sbe::Location::~Location()
 
 bool AsicErrors::Instance::Sbe::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -675,7 +686,7 @@ bool AsicErrors::Instance::Sbe::Location::has_data() const
 
 bool AsicErrors::Instance::Sbe::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -687,7 +698,8 @@ bool AsicErrors::Instance::Sbe::Location::has_operation() const
 std::string AsicErrors::Instance::Sbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -707,7 +719,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Sbe::Location::get_child_by_name(c
     {
         auto c = std::make_shared<AsicErrors::Instance::Sbe::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -719,7 +731,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Sbe::Locati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -760,7 +772,7 @@ AsicErrors::Instance::Sbe::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Sbe::Location::LogLst::~LogLst()
@@ -769,6 +781,7 @@ AsicErrors::Instance::Sbe::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Sbe::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -833,9 +846,11 @@ bool AsicErrors::Instance::Sbe::Location::LogLst::has_leaf_or_child_of_name(cons
 }
 
 AsicErrors::Instance::Mbe::Mbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "mbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mbe"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Mbe::~Mbe()
@@ -844,7 +859,8 @@ AsicErrors::Instance::Mbe::~Mbe()
 
 bool AsicErrors::Instance::Mbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -854,7 +870,7 @@ bool AsicErrors::Instance::Mbe::has_data() const
 
 bool AsicErrors::Instance::Mbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -884,7 +900,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Mbe::get_child_by_name(const std::
     {
         auto c = std::make_shared<AsicErrors::Instance::Mbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -896,7 +912,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Mbe::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -925,9 +941,11 @@ bool AsicErrors::Instance::Mbe::has_leaf_or_child_of_name(const std::string & na
 AsicErrors::Instance::Mbe::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Mbe::Location::~Location()
@@ -936,7 +954,8 @@ AsicErrors::Instance::Mbe::Location::~Location()
 
 bool AsicErrors::Instance::Mbe::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -946,7 +965,7 @@ bool AsicErrors::Instance::Mbe::Location::has_data() const
 
 bool AsicErrors::Instance::Mbe::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -958,7 +977,8 @@ bool AsicErrors::Instance::Mbe::Location::has_operation() const
 std::string AsicErrors::Instance::Mbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -978,7 +998,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Mbe::Location::get_child_by_name(c
     {
         auto c = std::make_shared<AsicErrors::Instance::Mbe::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -990,7 +1010,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Mbe::Locati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1031,7 +1051,7 @@ AsicErrors::Instance::Mbe::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Mbe::Location::LogLst::~LogLst()
@@ -1040,6 +1060,7 @@ AsicErrors::Instance::Mbe::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Mbe::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -1104,9 +1125,11 @@ bool AsicErrors::Instance::Mbe::Location::LogLst::has_leaf_or_child_of_name(cons
 }
 
 AsicErrors::Instance::Parity::Parity()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "parity"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Parity::~Parity()
@@ -1115,7 +1138,8 @@ AsicErrors::Instance::Parity::~Parity()
 
 bool AsicErrors::Instance::Parity::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1125,7 +1149,7 @@ bool AsicErrors::Instance::Parity::has_data() const
 
 bool AsicErrors::Instance::Parity::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1155,7 +1179,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Parity::get_child_by_name(const st
     {
         auto c = std::make_shared<AsicErrors::Instance::Parity::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1167,7 +1191,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Parity::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1196,9 +1220,11 @@ bool AsicErrors::Instance::Parity::has_leaf_or_child_of_name(const std::string &
 AsicErrors::Instance::Parity::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Parity::Location::~Location()
@@ -1207,7 +1233,8 @@ AsicErrors::Instance::Parity::Location::~Location()
 
 bool AsicErrors::Instance::Parity::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -1217,7 +1244,7 @@ bool AsicErrors::Instance::Parity::Location::has_data() const
 
 bool AsicErrors::Instance::Parity::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -1229,7 +1256,8 @@ bool AsicErrors::Instance::Parity::Location::has_operation() const
 std::string AsicErrors::Instance::Parity::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -1249,7 +1277,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Parity::Location::get_child_by_nam
     {
         auto c = std::make_shared<AsicErrors::Instance::Parity::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -1261,7 +1289,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Parity::Loc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1302,7 +1330,7 @@ AsicErrors::Instance::Parity::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Parity::Location::LogLst::~LogLst()
@@ -1311,6 +1339,7 @@ AsicErrors::Instance::Parity::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Parity::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -1375,9 +1404,11 @@ bool AsicErrors::Instance::Parity::Location::LogLst::has_leaf_or_child_of_name(c
 }
 
 AsicErrors::Instance::Generic::Generic()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "generic"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Generic::~Generic()
@@ -1386,7 +1417,8 @@ AsicErrors::Instance::Generic::~Generic()
 
 bool AsicErrors::Instance::Generic::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1396,7 +1428,7 @@ bool AsicErrors::Instance::Generic::has_data() const
 
 bool AsicErrors::Instance::Generic::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1426,7 +1458,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Generic::get_child_by_name(const s
     {
         auto c = std::make_shared<AsicErrors::Instance::Generic::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1438,7 +1470,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Generic::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1467,9 +1499,11 @@ bool AsicErrors::Instance::Generic::has_leaf_or_child_of_name(const std::string 
 AsicErrors::Instance::Generic::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Generic::Location::~Location()
@@ -1478,7 +1512,8 @@ AsicErrors::Instance::Generic::Location::~Location()
 
 bool AsicErrors::Instance::Generic::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -1488,7 +1523,7 @@ bool AsicErrors::Instance::Generic::Location::has_data() const
 
 bool AsicErrors::Instance::Generic::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -1500,7 +1535,8 @@ bool AsicErrors::Instance::Generic::Location::has_operation() const
 std::string AsicErrors::Instance::Generic::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -1520,7 +1556,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Generic::Location::get_child_by_na
     {
         auto c = std::make_shared<AsicErrors::Instance::Generic::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -1532,7 +1568,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Generic::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1573,7 +1609,7 @@ AsicErrors::Instance::Generic::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Generic::Location::LogLst::~LogLst()
@@ -1582,6 +1618,7 @@ AsicErrors::Instance::Generic::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Generic::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -1646,9 +1683,11 @@ bool AsicErrors::Instance::Generic::Location::LogLst::has_leaf_or_child_of_name(
 }
 
 AsicErrors::Instance::Crc::Crc()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "crc"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crc"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Crc::~Crc()
@@ -1657,7 +1696,8 @@ AsicErrors::Instance::Crc::~Crc()
 
 bool AsicErrors::Instance::Crc::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1667,7 +1707,7 @@ bool AsicErrors::Instance::Crc::has_data() const
 
 bool AsicErrors::Instance::Crc::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1697,7 +1737,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Crc::get_child_by_name(const std::
     {
         auto c = std::make_shared<AsicErrors::Instance::Crc::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1709,7 +1749,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Crc::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1738,9 +1778,11 @@ bool AsicErrors::Instance::Crc::has_leaf_or_child_of_name(const std::string & na
 AsicErrors::Instance::Crc::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Crc::Location::~Location()
@@ -1749,7 +1791,8 @@ AsicErrors::Instance::Crc::Location::~Location()
 
 bool AsicErrors::Instance::Crc::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -1759,7 +1802,7 @@ bool AsicErrors::Instance::Crc::Location::has_data() const
 
 bool AsicErrors::Instance::Crc::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -1771,7 +1814,8 @@ bool AsicErrors::Instance::Crc::Location::has_operation() const
 std::string AsicErrors::Instance::Crc::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -1791,7 +1835,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Crc::Location::get_child_by_name(c
     {
         auto c = std::make_shared<AsicErrors::Instance::Crc::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -1803,7 +1847,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Crc::Locati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1844,7 +1888,7 @@ AsicErrors::Instance::Crc::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Crc::Location::LogLst::~LogLst()
@@ -1853,6 +1897,7 @@ AsicErrors::Instance::Crc::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Crc::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -1917,9 +1962,11 @@ bool AsicErrors::Instance::Crc::Location::LogLst::has_leaf_or_child_of_name(cons
 }
 
 AsicErrors::Instance::Reset::Reset()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "reset"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reset"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Reset::~Reset()
@@ -1928,7 +1975,8 @@ AsicErrors::Instance::Reset::~Reset()
 
 bool AsicErrors::Instance::Reset::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1938,7 +1986,7 @@ bool AsicErrors::Instance::Reset::has_data() const
 
 bool AsicErrors::Instance::Reset::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1968,7 +2016,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Reset::get_child_by_name(const std
     {
         auto c = std::make_shared<AsicErrors::Instance::Reset::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1980,7 +2028,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Reset::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2009,9 +2057,11 @@ bool AsicErrors::Instance::Reset::has_leaf_or_child_of_name(const std::string & 
 AsicErrors::Instance::Reset::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Reset::Location::~Location()
@@ -2020,7 +2070,8 @@ AsicErrors::Instance::Reset::Location::~Location()
 
 bool AsicErrors::Instance::Reset::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -2030,7 +2081,7 @@ bool AsicErrors::Instance::Reset::Location::has_data() const
 
 bool AsicErrors::Instance::Reset::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -2042,7 +2093,8 @@ bool AsicErrors::Instance::Reset::Location::has_operation() const
 std::string AsicErrors::Instance::Reset::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -2062,7 +2114,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Reset::Location::get_child_by_name
     {
         auto c = std::make_shared<AsicErrors::Instance::Reset::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -2074,7 +2126,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Reset::Loca
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2115,7 +2167,7 @@ AsicErrors::Instance::Reset::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Reset::Location::LogLst::~LogLst()
@@ -2124,6 +2176,7 @@ AsicErrors::Instance::Reset::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Reset::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -2188,9 +2241,11 @@ bool AsicErrors::Instance::Reset::Location::LogLst::has_leaf_or_child_of_name(co
 }
 
 AsicErrors::Instance::Barrier::Barrier()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "barrier"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "barrier"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Barrier::~Barrier()
@@ -2199,7 +2254,8 @@ AsicErrors::Instance::Barrier::~Barrier()
 
 bool AsicErrors::Instance::Barrier::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2209,7 +2265,7 @@ bool AsicErrors::Instance::Barrier::has_data() const
 
 bool AsicErrors::Instance::Barrier::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2239,7 +2295,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Barrier::get_child_by_name(const s
     {
         auto c = std::make_shared<AsicErrors::Instance::Barrier::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2251,7 +2307,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Barrier::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2280,9 +2336,11 @@ bool AsicErrors::Instance::Barrier::has_leaf_or_child_of_name(const std::string 
 AsicErrors::Instance::Barrier::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Barrier::Location::~Location()
@@ -2291,7 +2349,8 @@ AsicErrors::Instance::Barrier::Location::~Location()
 
 bool AsicErrors::Instance::Barrier::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -2301,7 +2360,7 @@ bool AsicErrors::Instance::Barrier::Location::has_data() const
 
 bool AsicErrors::Instance::Barrier::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -2313,7 +2372,8 @@ bool AsicErrors::Instance::Barrier::Location::has_operation() const
 std::string AsicErrors::Instance::Barrier::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -2333,7 +2393,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Barrier::Location::get_child_by_na
     {
         auto c = std::make_shared<AsicErrors::Instance::Barrier::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -2345,7 +2405,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Barrier::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2386,7 +2446,7 @@ AsicErrors::Instance::Barrier::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Barrier::Location::LogLst::~LogLst()
@@ -2395,6 +2455,7 @@ AsicErrors::Instance::Barrier::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Barrier::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -2459,9 +2520,11 @@ bool AsicErrors::Instance::Barrier::Location::LogLst::has_leaf_or_child_of_name(
 }
 
 AsicErrors::Instance::Unexpected::Unexpected()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "unexpected"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unexpected"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Unexpected::~Unexpected()
@@ -2470,7 +2533,8 @@ AsicErrors::Instance::Unexpected::~Unexpected()
 
 bool AsicErrors::Instance::Unexpected::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2480,7 +2544,7 @@ bool AsicErrors::Instance::Unexpected::has_data() const
 
 bool AsicErrors::Instance::Unexpected::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2510,7 +2574,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Unexpected::get_child_by_name(cons
     {
         auto c = std::make_shared<AsicErrors::Instance::Unexpected::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2522,7 +2586,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Unexpected:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2551,9 +2615,11 @@ bool AsicErrors::Instance::Unexpected::has_leaf_or_child_of_name(const std::stri
 AsicErrors::Instance::Unexpected::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Unexpected::Location::~Location()
@@ -2562,7 +2628,8 @@ AsicErrors::Instance::Unexpected::Location::~Location()
 
 bool AsicErrors::Instance::Unexpected::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -2572,7 +2639,7 @@ bool AsicErrors::Instance::Unexpected::Location::has_data() const
 
 bool AsicErrors::Instance::Unexpected::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -2584,7 +2651,8 @@ bool AsicErrors::Instance::Unexpected::Location::has_operation() const
 std::string AsicErrors::Instance::Unexpected::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -2604,7 +2672,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Unexpected::Location::get_child_by
     {
         auto c = std::make_shared<AsicErrors::Instance::Unexpected::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -2616,7 +2684,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Unexpected:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2657,7 +2725,7 @@ AsicErrors::Instance::Unexpected::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Unexpected::Location::LogLst::~LogLst()
@@ -2666,6 +2734,7 @@ AsicErrors::Instance::Unexpected::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Unexpected::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -2730,9 +2799,11 @@ bool AsicErrors::Instance::Unexpected::Location::LogLst::has_leaf_or_child_of_na
 }
 
 AsicErrors::Instance::Link::Link()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "link"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Link::~Link()
@@ -2741,7 +2812,8 @@ AsicErrors::Instance::Link::~Link()
 
 bool AsicErrors::Instance::Link::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2751,7 +2823,7 @@ bool AsicErrors::Instance::Link::has_data() const
 
 bool AsicErrors::Instance::Link::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2781,7 +2853,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Link::get_child_by_name(const std:
     {
         auto c = std::make_shared<AsicErrors::Instance::Link::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2793,7 +2865,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Link::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2822,9 +2894,11 @@ bool AsicErrors::Instance::Link::has_leaf_or_child_of_name(const std::string & n
 AsicErrors::Instance::Link::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Link::Location::~Location()
@@ -2833,7 +2907,8 @@ AsicErrors::Instance::Link::Location::~Location()
 
 bool AsicErrors::Instance::Link::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -2843,7 +2918,7 @@ bool AsicErrors::Instance::Link::Location::has_data() const
 
 bool AsicErrors::Instance::Link::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -2855,7 +2930,8 @@ bool AsicErrors::Instance::Link::Location::has_operation() const
 std::string AsicErrors::Instance::Link::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -2875,7 +2951,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Link::Location::get_child_by_name(
     {
         auto c = std::make_shared<AsicErrors::Instance::Link::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -2887,7 +2963,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Link::Locat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2928,7 +3004,7 @@ AsicErrors::Instance::Link::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Link::Location::LogLst::~LogLst()
@@ -2937,6 +3013,7 @@ AsicErrors::Instance::Link::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Link::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -3001,9 +3078,11 @@ bool AsicErrors::Instance::Link::Location::LogLst::has_leaf_or_child_of_name(con
 }
 
 AsicErrors::Instance::OorThresh::OorThresh()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "oor-thresh"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oor-thresh"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::OorThresh::~OorThresh()
@@ -3012,7 +3091,8 @@ AsicErrors::Instance::OorThresh::~OorThresh()
 
 bool AsicErrors::Instance::OorThresh::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3022,7 +3102,7 @@ bool AsicErrors::Instance::OorThresh::has_data() const
 
 bool AsicErrors::Instance::OorThresh::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3052,7 +3132,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::OorThresh::get_child_by_name(const
     {
         auto c = std::make_shared<AsicErrors::Instance::OorThresh::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3064,7 +3144,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::OorThresh::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3093,9 +3173,11 @@ bool AsicErrors::Instance::OorThresh::has_leaf_or_child_of_name(const std::strin
 AsicErrors::Instance::OorThresh::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::OorThresh::Location::~Location()
@@ -3104,7 +3186,8 @@ AsicErrors::Instance::OorThresh::Location::~Location()
 
 bool AsicErrors::Instance::OorThresh::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -3114,7 +3197,7 @@ bool AsicErrors::Instance::OorThresh::Location::has_data() const
 
 bool AsicErrors::Instance::OorThresh::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -3126,7 +3209,8 @@ bool AsicErrors::Instance::OorThresh::Location::has_operation() const
 std::string AsicErrors::Instance::OorThresh::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3146,7 +3230,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::OorThresh::Location::get_child_by_
     {
         auto c = std::make_shared<AsicErrors::Instance::OorThresh::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -3158,7 +3242,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::OorThresh::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3199,7 +3283,7 @@ AsicErrors::Instance::OorThresh::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::OorThresh::Location::LogLst::~LogLst()
@@ -3208,6 +3292,7 @@ AsicErrors::Instance::OorThresh::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::OorThresh::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -3272,9 +3357,11 @@ bool AsicErrors::Instance::OorThresh::Location::LogLst::has_leaf_or_child_of_nam
 }
 
 AsicErrors::Instance::Bp::Bp()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "bp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Bp::~Bp()
@@ -3283,7 +3370,8 @@ AsicErrors::Instance::Bp::~Bp()
 
 bool AsicErrors::Instance::Bp::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3293,7 +3381,7 @@ bool AsicErrors::Instance::Bp::has_data() const
 
 bool AsicErrors::Instance::Bp::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3323,7 +3411,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Bp::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AsicErrors::Instance::Bp::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3335,7 +3423,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Bp::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3364,9 +3452,11 @@ bool AsicErrors::Instance::Bp::has_leaf_or_child_of_name(const std::string & nam
 AsicErrors::Instance::Bp::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Bp::Location::~Location()
@@ -3375,7 +3465,8 @@ AsicErrors::Instance::Bp::Location::~Location()
 
 bool AsicErrors::Instance::Bp::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -3385,7 +3476,7 @@ bool AsicErrors::Instance::Bp::Location::has_data() const
 
 bool AsicErrors::Instance::Bp::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -3397,7 +3488,8 @@ bool AsicErrors::Instance::Bp::Location::has_operation() const
 std::string AsicErrors::Instance::Bp::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3417,7 +3509,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Bp::Location::get_child_by_name(co
     {
         auto c = std::make_shared<AsicErrors::Instance::Bp::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -3429,7 +3521,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Bp::Locatio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3470,7 +3562,7 @@ AsicErrors::Instance::Bp::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Bp::Location::LogLst::~LogLst()
@@ -3479,6 +3571,7 @@ AsicErrors::Instance::Bp::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Bp::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -3543,9 +3636,11 @@ bool AsicErrors::Instance::Bp::Location::LogLst::has_leaf_or_child_of_name(const
 }
 
 AsicErrors::Instance::Io::Io()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "io"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "io"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Io::~Io()
@@ -3554,7 +3649,8 @@ AsicErrors::Instance::Io::~Io()
 
 bool AsicErrors::Instance::Io::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3564,7 +3660,7 @@ bool AsicErrors::Instance::Io::has_data() const
 
 bool AsicErrors::Instance::Io::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3594,7 +3690,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Io::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AsicErrors::Instance::Io::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3606,7 +3702,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Io::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3635,9 +3731,11 @@ bool AsicErrors::Instance::Io::has_leaf_or_child_of_name(const std::string & nam
 AsicErrors::Instance::Io::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Io::Location::~Location()
@@ -3646,7 +3744,8 @@ AsicErrors::Instance::Io::Location::~Location()
 
 bool AsicErrors::Instance::Io::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -3656,7 +3755,7 @@ bool AsicErrors::Instance::Io::Location::has_data() const
 
 bool AsicErrors::Instance::Io::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -3668,7 +3767,8 @@ bool AsicErrors::Instance::Io::Location::has_operation() const
 std::string AsicErrors::Instance::Io::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3688,7 +3788,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Io::Location::get_child_by_name(co
     {
         auto c = std::make_shared<AsicErrors::Instance::Io::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -3700,7 +3800,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Io::Locatio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3741,7 +3841,7 @@ AsicErrors::Instance::Io::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Io::Location::LogLst::~LogLst()
@@ -3750,6 +3850,7 @@ AsicErrors::Instance::Io::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Io::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -3814,9 +3915,11 @@ bool AsicErrors::Instance::Io::Location::LogLst::has_leaf_or_child_of_name(const
 }
 
 AsicErrors::Instance::Ucode::Ucode()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "ucode"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ucode"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Ucode::~Ucode()
@@ -3825,7 +3928,8 @@ AsicErrors::Instance::Ucode::~Ucode()
 
 bool AsicErrors::Instance::Ucode::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3835,7 +3939,7 @@ bool AsicErrors::Instance::Ucode::has_data() const
 
 bool AsicErrors::Instance::Ucode::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3865,7 +3969,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Ucode::get_child_by_name(const std
     {
         auto c = std::make_shared<AsicErrors::Instance::Ucode::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3877,7 +3981,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Ucode::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3906,9 +4010,11 @@ bool AsicErrors::Instance::Ucode::has_leaf_or_child_of_name(const std::string & 
 AsicErrors::Instance::Ucode::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Ucode::Location::~Location()
@@ -3917,7 +4023,8 @@ AsicErrors::Instance::Ucode::Location::~Location()
 
 bool AsicErrors::Instance::Ucode::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -3927,7 +4034,7 @@ bool AsicErrors::Instance::Ucode::Location::has_data() const
 
 bool AsicErrors::Instance::Ucode::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -3939,7 +4046,8 @@ bool AsicErrors::Instance::Ucode::Location::has_operation() const
 std::string AsicErrors::Instance::Ucode::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -3959,7 +4067,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Ucode::Location::get_child_by_name
     {
         auto c = std::make_shared<AsicErrors::Instance::Ucode::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -3971,7 +4079,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Ucode::Loca
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4012,7 +4120,7 @@ AsicErrors::Instance::Ucode::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Ucode::Location::LogLst::~LogLst()
@@ -4021,6 +4129,7 @@ AsicErrors::Instance::Ucode::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Ucode::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -4085,9 +4194,11 @@ bool AsicErrors::Instance::Ucode::Location::LogLst::has_leaf_or_child_of_name(co
 }
 
 AsicErrors::Instance::Config::Config()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "config"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Config::~Config()
@@ -4096,7 +4207,8 @@ AsicErrors::Instance::Config::~Config()
 
 bool AsicErrors::Instance::Config::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4106,7 +4218,7 @@ bool AsicErrors::Instance::Config::has_data() const
 
 bool AsicErrors::Instance::Config::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4136,7 +4248,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Config::get_child_by_name(const st
     {
         auto c = std::make_shared<AsicErrors::Instance::Config::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4148,7 +4260,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Config::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4177,9 +4289,11 @@ bool AsicErrors::Instance::Config::has_leaf_or_child_of_name(const std::string &
 AsicErrors::Instance::Config::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Config::Location::~Location()
@@ -4188,7 +4302,8 @@ AsicErrors::Instance::Config::Location::~Location()
 
 bool AsicErrors::Instance::Config::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -4198,7 +4313,7 @@ bool AsicErrors::Instance::Config::Location::has_data() const
 
 bool AsicErrors::Instance::Config::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -4210,7 +4325,8 @@ bool AsicErrors::Instance::Config::Location::has_operation() const
 std::string AsicErrors::Instance::Config::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4230,7 +4346,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Config::Location::get_child_by_nam
     {
         auto c = std::make_shared<AsicErrors::Instance::Config::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -4242,7 +4358,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Config::Loc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4283,7 +4399,7 @@ AsicErrors::Instance::Config::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Config::Location::LogLst::~LogLst()
@@ -4292,6 +4408,7 @@ AsicErrors::Instance::Config::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Config::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -4356,9 +4473,11 @@ bool AsicErrors::Instance::Config::Location::LogLst::has_leaf_or_child_of_name(c
 }
 
 AsicErrors::Instance::Indirect::Indirect()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "indirect"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indirect"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Indirect::~Indirect()
@@ -4367,7 +4486,8 @@ AsicErrors::Instance::Indirect::~Indirect()
 
 bool AsicErrors::Instance::Indirect::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4377,7 +4497,7 @@ bool AsicErrors::Instance::Indirect::has_data() const
 
 bool AsicErrors::Instance::Indirect::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4407,7 +4527,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Indirect::get_child_by_name(const 
     {
         auto c = std::make_shared<AsicErrors::Instance::Indirect::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4419,7 +4539,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Indirect::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4448,9 +4568,11 @@ bool AsicErrors::Instance::Indirect::has_leaf_or_child_of_name(const std::string
 AsicErrors::Instance::Indirect::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Indirect::Location::~Location()
@@ -4459,7 +4581,8 @@ AsicErrors::Instance::Indirect::Location::~Location()
 
 bool AsicErrors::Instance::Indirect::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -4469,7 +4592,7 @@ bool AsicErrors::Instance::Indirect::Location::has_data() const
 
 bool AsicErrors::Instance::Indirect::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -4481,7 +4604,8 @@ bool AsicErrors::Instance::Indirect::Location::has_operation() const
 std::string AsicErrors::Instance::Indirect::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4501,7 +4625,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Indirect::Location::get_child_by_n
     {
         auto c = std::make_shared<AsicErrors::Instance::Indirect::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -4513,7 +4637,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Indirect::L
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4554,7 +4678,7 @@ AsicErrors::Instance::Indirect::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Indirect::Location::LogLst::~LogLst()
@@ -4563,6 +4687,7 @@ AsicErrors::Instance::Indirect::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Indirect::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -4627,9 +4752,11 @@ bool AsicErrors::Instance::Indirect::Location::LogLst::has_leaf_or_child_of_name
 }
 
 AsicErrors::Instance::Nonerr::Nonerr()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "nonerr"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nonerr"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Nonerr::~Nonerr()
@@ -4638,7 +4765,8 @@ AsicErrors::Instance::Nonerr::~Nonerr()
 
 bool AsicErrors::Instance::Nonerr::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4648,7 +4776,7 @@ bool AsicErrors::Instance::Nonerr::has_data() const
 
 bool AsicErrors::Instance::Nonerr::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4678,7 +4806,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Nonerr::get_child_by_name(const st
     {
         auto c = std::make_shared<AsicErrors::Instance::Nonerr::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4690,7 +4818,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Nonerr::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4719,9 +4847,11 @@ bool AsicErrors::Instance::Nonerr::has_leaf_or_child_of_name(const std::string &
 AsicErrors::Instance::Nonerr::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Nonerr::Location::~Location()
@@ -4730,7 +4860,8 @@ AsicErrors::Instance::Nonerr::Location::~Location()
 
 bool AsicErrors::Instance::Nonerr::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -4740,7 +4871,7 @@ bool AsicErrors::Instance::Nonerr::Location::has_data() const
 
 bool AsicErrors::Instance::Nonerr::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -4752,7 +4883,8 @@ bool AsicErrors::Instance::Nonerr::Location::has_operation() const
 std::string AsicErrors::Instance::Nonerr::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -4772,7 +4904,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Nonerr::Location::get_child_by_nam
     {
         auto c = std::make_shared<AsicErrors::Instance::Nonerr::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -4784,7 +4916,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Nonerr::Loc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4825,7 +4957,7 @@ AsicErrors::Instance::Nonerr::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Nonerr::Location::LogLst::~LogLst()
@@ -4834,6 +4966,7 @@ AsicErrors::Instance::Nonerr::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Nonerr::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -4898,9 +5031,11 @@ bool AsicErrors::Instance::Nonerr::Location::LogLst::has_leaf_or_child_of_name(c
 }
 
 AsicErrors::Instance::Summary::Summary()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "summary"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Summary::~Summary()
@@ -4909,7 +5044,8 @@ AsicErrors::Instance::Summary::~Summary()
 
 bool AsicErrors::Instance::Summary::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4919,7 +5055,7 @@ bool AsicErrors::Instance::Summary::has_data() const
 
 bool AsicErrors::Instance::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4949,7 +5085,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Summary::get_child_by_name(const s
     {
         auto c = std::make_shared<AsicErrors::Instance::Summary::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4961,7 +5097,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Summary::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4990,9 +5126,11 @@ bool AsicErrors::Instance::Summary::has_leaf_or_child_of_name(const std::string 
 AsicErrors::Instance::Summary::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Summary::Location::~Location()
@@ -5001,7 +5139,8 @@ AsicErrors::Instance::Summary::Location::~Location()
 
 bool AsicErrors::Instance::Summary::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -5011,7 +5150,7 @@ bool AsicErrors::Instance::Summary::Location::has_data() const
 
 bool AsicErrors::Instance::Summary::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -5023,7 +5162,8 @@ bool AsicErrors::Instance::Summary::Location::has_operation() const
 std::string AsicErrors::Instance::Summary::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5043,7 +5183,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::Summary::Location::get_child_by_na
     {
         auto c = std::make_shared<AsicErrors::Instance::Summary::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -5055,7 +5195,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::Summary::Lo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5096,7 +5236,7 @@ AsicErrors::Instance::Summary::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::Summary::Location::LogLst::~LogLst()
@@ -5105,6 +5245,7 @@ AsicErrors::Instance::Summary::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::Summary::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -5171,10 +5312,11 @@ bool AsicErrors::Instance::Summary::Location::LogLst::has_leaf_or_child_of_name(
 AsicErrors::Instance::All::All()
     :
     history(std::make_shared<AsicErrors::Instance::All::History>())
+    , location(this, {"location_name"})
 {
     history->parent = this;
 
-    yang_name = "all"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::All::~All()
@@ -5183,7 +5325,8 @@ AsicErrors::Instance::All::~All()
 
 bool AsicErrors::Instance::All::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5193,7 +5336,7 @@ bool AsicErrors::Instance::All::has_data() const
 
 bool AsicErrors::Instance::All::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5233,7 +5376,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::All::get_child_by_name(const std::
     {
         auto c = std::make_shared<AsicErrors::Instance::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5250,7 +5393,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::get_ch
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5277,9 +5420,11 @@ bool AsicErrors::Instance::All::has_leaf_or_child_of_name(const std::string & na
 }
 
 AsicErrors::Instance::All::History::History()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "history"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::All::History::~History()
@@ -5288,7 +5433,8 @@ AsicErrors::Instance::All::History::~History()
 
 bool AsicErrors::Instance::All::History::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5298,7 +5444,7 @@ bool AsicErrors::Instance::All::History::has_data() const
 
 bool AsicErrors::Instance::All::History::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5328,7 +5474,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::All::History::get_child_by_name(co
     {
         auto c = std::make_shared<AsicErrors::Instance::All::History::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5340,7 +5486,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::Histor
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5369,9 +5515,11 @@ bool AsicErrors::Instance::All::History::has_leaf_or_child_of_name(const std::st
 AsicErrors::Instance::All::History::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::All::History::Location::~Location()
@@ -5380,7 +5528,8 @@ AsicErrors::Instance::All::History::Location::~Location()
 
 bool AsicErrors::Instance::All::History::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -5390,7 +5539,7 @@ bool AsicErrors::Instance::All::History::Location::has_data() const
 
 bool AsicErrors::Instance::All::History::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -5402,7 +5551,8 @@ bool AsicErrors::Instance::All::History::Location::has_operation() const
 std::string AsicErrors::Instance::All::History::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5422,7 +5572,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::All::History::Location::get_child_
     {
         auto c = std::make_shared<AsicErrors::Instance::All::History::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -5434,7 +5584,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::Histor
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5475,7 +5625,7 @@ AsicErrors::Instance::All::History::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::All::History::Location::LogLst::~LogLst()
@@ -5484,6 +5634,7 @@ AsicErrors::Instance::All::History::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::All::History::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -5550,9 +5701,11 @@ bool AsicErrors::Instance::All::History::Location::LogLst::has_leaf_or_child_of_
 AsicErrors::Instance::All::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::All::Location::~Location()
@@ -5561,7 +5714,8 @@ AsicErrors::Instance::All::Location::~Location()
 
 bool AsicErrors::Instance::All::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -5571,7 +5725,7 @@ bool AsicErrors::Instance::All::Location::has_data() const
 
 bool AsicErrors::Instance::All::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -5583,7 +5737,8 @@ bool AsicErrors::Instance::All::Location::has_operation() const
 std::string AsicErrors::Instance::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -5603,7 +5758,7 @@ std::shared_ptr<Entity> AsicErrors::Instance::All::Location::get_child_by_name(c
     {
         auto c = std::make_shared<AsicErrors::Instance::All::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -5615,7 +5770,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::Instance::All::Locati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5656,7 +5811,7 @@ AsicErrors::Instance::All::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::Instance::All::Location::LogLst::~LogLst()
@@ -5665,6 +5820,7 @@ AsicErrors::Instance::All::Location::LogLst::~LogLst()
 
 bool AsicErrors::Instance::All::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -5731,23 +5887,23 @@ bool AsicErrors::Instance::All::Location::LogLst::has_leaf_or_child_of_name(cons
 AsicErrors::ShowAllInstances::ShowAllInstances()
     :
     sbe(std::make_shared<AsicErrors::ShowAllInstances::Sbe>())
-	,mbe(std::make_shared<AsicErrors::ShowAllInstances::Mbe>())
-	,parity(std::make_shared<AsicErrors::ShowAllInstances::Parity>())
-	,generic(std::make_shared<AsicErrors::ShowAllInstances::Generic>())
-	,crc(std::make_shared<AsicErrors::ShowAllInstances::Crc>())
-	,reset(std::make_shared<AsicErrors::ShowAllInstances::Reset>())
-	,barrier(std::make_shared<AsicErrors::ShowAllInstances::Barrier>())
-	,unexpected(std::make_shared<AsicErrors::ShowAllInstances::Unexpected>())
-	,link(std::make_shared<AsicErrors::ShowAllInstances::Link>())
-	,oor_thresh(std::make_shared<AsicErrors::ShowAllInstances::OorThresh>())
-	,bp(std::make_shared<AsicErrors::ShowAllInstances::Bp>())
-	,io(std::make_shared<AsicErrors::ShowAllInstances::Io>())
-	,ucode(std::make_shared<AsicErrors::ShowAllInstances::Ucode>())
-	,config(std::make_shared<AsicErrors::ShowAllInstances::Config>())
-	,indirect(std::make_shared<AsicErrors::ShowAllInstances::Indirect>())
-	,nonerr(std::make_shared<AsicErrors::ShowAllInstances::Nonerr>())
-	,summary(std::make_shared<AsicErrors::ShowAllInstances::Summary>())
-	,all(std::make_shared<AsicErrors::ShowAllInstances::All>())
+    , mbe(std::make_shared<AsicErrors::ShowAllInstances::Mbe>())
+    , parity(std::make_shared<AsicErrors::ShowAllInstances::Parity>())
+    , generic(std::make_shared<AsicErrors::ShowAllInstances::Generic>())
+    , crc(std::make_shared<AsicErrors::ShowAllInstances::Crc>())
+    , reset(std::make_shared<AsicErrors::ShowAllInstances::Reset>())
+    , barrier(std::make_shared<AsicErrors::ShowAllInstances::Barrier>())
+    , unexpected(std::make_shared<AsicErrors::ShowAllInstances::Unexpected>())
+    , link(std::make_shared<AsicErrors::ShowAllInstances::Link>())
+    , oor_thresh(std::make_shared<AsicErrors::ShowAllInstances::OorThresh>())
+    , bp(std::make_shared<AsicErrors::ShowAllInstances::Bp>())
+    , io(std::make_shared<AsicErrors::ShowAllInstances::Io>())
+    , ucode(std::make_shared<AsicErrors::ShowAllInstances::Ucode>())
+    , config(std::make_shared<AsicErrors::ShowAllInstances::Config>())
+    , indirect(std::make_shared<AsicErrors::ShowAllInstances::Indirect>())
+    , nonerr(std::make_shared<AsicErrors::ShowAllInstances::Nonerr>())
+    , summary(std::make_shared<AsicErrors::ShowAllInstances::Summary>())
+    , all(std::make_shared<AsicErrors::ShowAllInstances::All>())
 {
     sbe->parent = this;
     mbe->parent = this;
@@ -5768,7 +5924,7 @@ AsicErrors::ShowAllInstances::ShowAllInstances()
     summary->parent = this;
     all->parent = this;
 
-    yang_name = "show-all-instances"; yang_parent_name = "asic-errors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "show-all-instances"; yang_parent_name = "asic-errors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::~ShowAllInstances()
@@ -5777,6 +5933,7 @@ AsicErrors::ShowAllInstances::~ShowAllInstances()
 
 bool AsicErrors::ShowAllInstances::has_data() const
 {
+    if (is_presence_container) return true;
     return (sbe !=  nullptr && sbe->has_data())
 	|| (mbe !=  nullptr && mbe->has_data())
 	|| (parity !=  nullptr && parity->has_data())
@@ -6116,9 +6273,11 @@ bool AsicErrors::ShowAllInstances::has_leaf_or_child_of_name(const std::string &
 }
 
 AsicErrors::ShowAllInstances::Sbe::Sbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "sbe"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sbe"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Sbe::~Sbe()
@@ -6127,7 +6286,8 @@ AsicErrors::ShowAllInstances::Sbe::~Sbe()
 
 bool AsicErrors::ShowAllInstances::Sbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6137,7 +6297,7 @@ bool AsicErrors::ShowAllInstances::Sbe::has_data() const
 
 bool AsicErrors::ShowAllInstances::Sbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6167,7 +6327,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Sbe::get_child_by_name(con
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Sbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6179,7 +6339,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Sbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6208,9 +6368,11 @@ bool AsicErrors::ShowAllInstances::Sbe::has_leaf_or_child_of_name(const std::str
 AsicErrors::ShowAllInstances::Sbe::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "sbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Sbe::Location::~Location()
@@ -6219,7 +6381,8 @@ AsicErrors::ShowAllInstances::Sbe::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Sbe::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -6229,7 +6392,7 @@ bool AsicErrors::ShowAllInstances::Sbe::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Sbe::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -6241,7 +6404,8 @@ bool AsicErrors::ShowAllInstances::Sbe::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Sbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -6261,7 +6425,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Sbe::Location::get_child_b
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Sbe::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -6273,7 +6437,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Sbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6314,7 +6478,7 @@ AsicErrors::ShowAllInstances::Sbe::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Sbe::Location::LogLst::~LogLst()
@@ -6323,6 +6487,7 @@ AsicErrors::ShowAllInstances::Sbe::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Sbe::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -6387,9 +6552,11 @@ bool AsicErrors::ShowAllInstances::Sbe::Location::LogLst::has_leaf_or_child_of_n
 }
 
 AsicErrors::ShowAllInstances::Mbe::Mbe()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "mbe"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mbe"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Mbe::~Mbe()
@@ -6398,7 +6565,8 @@ AsicErrors::ShowAllInstances::Mbe::~Mbe()
 
 bool AsicErrors::ShowAllInstances::Mbe::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6408,7 +6576,7 @@ bool AsicErrors::ShowAllInstances::Mbe::has_data() const
 
 bool AsicErrors::ShowAllInstances::Mbe::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6438,7 +6606,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Mbe::get_child_by_name(con
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Mbe::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6450,7 +6618,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Mbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6479,9 +6647,11 @@ bool AsicErrors::ShowAllInstances::Mbe::has_leaf_or_child_of_name(const std::str
 AsicErrors::ShowAllInstances::Mbe::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "mbe"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Mbe::Location::~Location()
@@ -6490,7 +6660,8 @@ AsicErrors::ShowAllInstances::Mbe::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Mbe::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -6500,7 +6671,7 @@ bool AsicErrors::ShowAllInstances::Mbe::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Mbe::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -6512,7 +6683,8 @@ bool AsicErrors::ShowAllInstances::Mbe::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Mbe::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -6532,7 +6704,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Mbe::Location::get_child_b
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Mbe::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -6544,7 +6716,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Mbe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6585,7 +6757,7 @@ AsicErrors::ShowAllInstances::Mbe::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Mbe::Location::LogLst::~LogLst()
@@ -6594,6 +6766,7 @@ AsicErrors::ShowAllInstances::Mbe::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Mbe::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -6658,9 +6831,11 @@ bool AsicErrors::ShowAllInstances::Mbe::Location::LogLst::has_leaf_or_child_of_n
 }
 
 AsicErrors::ShowAllInstances::Parity::Parity()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "parity"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Parity::~Parity()
@@ -6669,7 +6844,8 @@ AsicErrors::ShowAllInstances::Parity::~Parity()
 
 bool AsicErrors::ShowAllInstances::Parity::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6679,7 +6855,7 @@ bool AsicErrors::ShowAllInstances::Parity::has_data() const
 
 bool AsicErrors::ShowAllInstances::Parity::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6709,7 +6885,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Parity::get_child_by_name(
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Parity::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6721,7 +6897,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Par
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6750,9 +6926,11 @@ bool AsicErrors::ShowAllInstances::Parity::has_leaf_or_child_of_name(const std::
 AsicErrors::ShowAllInstances::Parity::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "parity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Parity::Location::~Location()
@@ -6761,7 +6939,8 @@ AsicErrors::ShowAllInstances::Parity::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Parity::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -6771,7 +6950,7 @@ bool AsicErrors::ShowAllInstances::Parity::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Parity::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -6783,7 +6962,8 @@ bool AsicErrors::ShowAllInstances::Parity::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Parity::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -6803,7 +6983,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Parity::Location::get_chil
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Parity::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -6815,7 +6995,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Par
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6856,7 +7036,7 @@ AsicErrors::ShowAllInstances::Parity::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Parity::Location::LogLst::~LogLst()
@@ -6865,6 +7045,7 @@ AsicErrors::ShowAllInstances::Parity::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Parity::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -6929,9 +7110,11 @@ bool AsicErrors::ShowAllInstances::Parity::Location::LogLst::has_leaf_or_child_o
 }
 
 AsicErrors::ShowAllInstances::Generic::Generic()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "generic"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Generic::~Generic()
@@ -6940,7 +7123,8 @@ AsicErrors::ShowAllInstances::Generic::~Generic()
 
 bool AsicErrors::ShowAllInstances::Generic::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6950,7 +7134,7 @@ bool AsicErrors::ShowAllInstances::Generic::has_data() const
 
 bool AsicErrors::ShowAllInstances::Generic::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6980,7 +7164,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Generic::get_child_by_name
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Generic::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6992,7 +7176,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Gen
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7021,9 +7205,11 @@ bool AsicErrors::ShowAllInstances::Generic::has_leaf_or_child_of_name(const std:
 AsicErrors::ShowAllInstances::Generic::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "generic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Generic::Location::~Location()
@@ -7032,7 +7218,8 @@ AsicErrors::ShowAllInstances::Generic::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Generic::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -7042,7 +7229,7 @@ bool AsicErrors::ShowAllInstances::Generic::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Generic::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -7054,7 +7241,8 @@ bool AsicErrors::ShowAllInstances::Generic::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Generic::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7074,7 +7262,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Generic::Location::get_chi
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Generic::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -7086,7 +7274,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Gen
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7127,7 +7315,7 @@ AsicErrors::ShowAllInstances::Generic::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Generic::Location::LogLst::~LogLst()
@@ -7136,6 +7324,7 @@ AsicErrors::ShowAllInstances::Generic::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Generic::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -7200,9 +7389,11 @@ bool AsicErrors::ShowAllInstances::Generic::Location::LogLst::has_leaf_or_child_
 }
 
 AsicErrors::ShowAllInstances::Crc::Crc()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "crc"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crc"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Crc::~Crc()
@@ -7211,7 +7402,8 @@ AsicErrors::ShowAllInstances::Crc::~Crc()
 
 bool AsicErrors::ShowAllInstances::Crc::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7221,7 +7413,7 @@ bool AsicErrors::ShowAllInstances::Crc::has_data() const
 
 bool AsicErrors::ShowAllInstances::Crc::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7251,7 +7443,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Crc::get_child_by_name(con
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Crc::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7263,7 +7455,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Crc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7292,9 +7484,11 @@ bool AsicErrors::ShowAllInstances::Crc::has_leaf_or_child_of_name(const std::str
 AsicErrors::ShowAllInstances::Crc::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "crc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Crc::Location::~Location()
@@ -7303,7 +7497,8 @@ AsicErrors::ShowAllInstances::Crc::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Crc::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -7313,7 +7508,7 @@ bool AsicErrors::ShowAllInstances::Crc::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Crc::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -7325,7 +7520,8 @@ bool AsicErrors::ShowAllInstances::Crc::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Crc::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7345,7 +7541,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Crc::Location::get_child_b
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Crc::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -7357,7 +7553,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Crc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7398,7 +7594,7 @@ AsicErrors::ShowAllInstances::Crc::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Crc::Location::LogLst::~LogLst()
@@ -7407,6 +7603,7 @@ AsicErrors::ShowAllInstances::Crc::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Crc::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -7471,9 +7668,11 @@ bool AsicErrors::ShowAllInstances::Crc::Location::LogLst::has_leaf_or_child_of_n
 }
 
 AsicErrors::ShowAllInstances::Reset::Reset()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "reset"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reset"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Reset::~Reset()
@@ -7482,7 +7681,8 @@ AsicErrors::ShowAllInstances::Reset::~Reset()
 
 bool AsicErrors::ShowAllInstances::Reset::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7492,7 +7692,7 @@ bool AsicErrors::ShowAllInstances::Reset::has_data() const
 
 bool AsicErrors::ShowAllInstances::Reset::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7522,7 +7722,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Reset::get_child_by_name(c
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Reset::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7534,7 +7734,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Res
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7563,9 +7763,11 @@ bool AsicErrors::ShowAllInstances::Reset::has_leaf_or_child_of_name(const std::s
 AsicErrors::ShowAllInstances::Reset::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "reset"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Reset::Location::~Location()
@@ -7574,7 +7776,8 @@ AsicErrors::ShowAllInstances::Reset::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Reset::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -7584,7 +7787,7 @@ bool AsicErrors::ShowAllInstances::Reset::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Reset::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -7596,7 +7799,8 @@ bool AsicErrors::ShowAllInstances::Reset::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Reset::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7616,7 +7820,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Reset::Location::get_child
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Reset::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -7628,7 +7832,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Res
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7669,7 +7873,7 @@ AsicErrors::ShowAllInstances::Reset::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Reset::Location::LogLst::~LogLst()
@@ -7678,6 +7882,7 @@ AsicErrors::ShowAllInstances::Reset::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Reset::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -7742,9 +7947,11 @@ bool AsicErrors::ShowAllInstances::Reset::Location::LogLst::has_leaf_or_child_of
 }
 
 AsicErrors::ShowAllInstances::Barrier::Barrier()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "barrier"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "barrier"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Barrier::~Barrier()
@@ -7753,7 +7960,8 @@ AsicErrors::ShowAllInstances::Barrier::~Barrier()
 
 bool AsicErrors::ShowAllInstances::Barrier::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7763,7 +7971,7 @@ bool AsicErrors::ShowAllInstances::Barrier::has_data() const
 
 bool AsicErrors::ShowAllInstances::Barrier::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7793,7 +8001,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Barrier::get_child_by_name
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Barrier::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7805,7 +8013,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Bar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7834,9 +8042,11 @@ bool AsicErrors::ShowAllInstances::Barrier::has_leaf_or_child_of_name(const std:
 AsicErrors::ShowAllInstances::Barrier::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "barrier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Barrier::Location::~Location()
@@ -7845,7 +8055,8 @@ AsicErrors::ShowAllInstances::Barrier::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Barrier::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -7855,7 +8066,7 @@ bool AsicErrors::ShowAllInstances::Barrier::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Barrier::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -7867,7 +8078,8 @@ bool AsicErrors::ShowAllInstances::Barrier::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Barrier::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -7887,7 +8099,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Barrier::Location::get_chi
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Barrier::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -7899,7 +8111,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Bar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7940,7 +8152,7 @@ AsicErrors::ShowAllInstances::Barrier::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Barrier::Location::LogLst::~LogLst()
@@ -7949,6 +8161,7 @@ AsicErrors::ShowAllInstances::Barrier::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Barrier::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -8013,9 +8226,11 @@ bool AsicErrors::ShowAllInstances::Barrier::Location::LogLst::has_leaf_or_child_
 }
 
 AsicErrors::ShowAllInstances::Unexpected::Unexpected()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "unexpected"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unexpected"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Unexpected::~Unexpected()
@@ -8024,7 +8239,8 @@ AsicErrors::ShowAllInstances::Unexpected::~Unexpected()
 
 bool AsicErrors::ShowAllInstances::Unexpected::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8034,7 +8250,7 @@ bool AsicErrors::ShowAllInstances::Unexpected::has_data() const
 
 bool AsicErrors::ShowAllInstances::Unexpected::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8064,7 +8280,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Unexpected::get_child_by_n
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Unexpected::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8076,7 +8292,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Une
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8105,9 +8321,11 @@ bool AsicErrors::ShowAllInstances::Unexpected::has_leaf_or_child_of_name(const s
 AsicErrors::ShowAllInstances::Unexpected::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "unexpected"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Unexpected::Location::~Location()
@@ -8116,7 +8334,8 @@ AsicErrors::ShowAllInstances::Unexpected::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Unexpected::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -8126,7 +8345,7 @@ bool AsicErrors::ShowAllInstances::Unexpected::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Unexpected::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -8138,7 +8357,8 @@ bool AsicErrors::ShowAllInstances::Unexpected::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Unexpected::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8158,7 +8378,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Unexpected::Location::get_
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Unexpected::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -8170,7 +8390,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Une
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8211,7 +8431,7 @@ AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::~LogLst()
@@ -8220,6 +8440,7 @@ AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -8284,9 +8505,11 @@ bool AsicErrors::ShowAllInstances::Unexpected::Location::LogLst::has_leaf_or_chi
 }
 
 AsicErrors::ShowAllInstances::Link::Link()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "link"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Link::~Link()
@@ -8295,7 +8518,8 @@ AsicErrors::ShowAllInstances::Link::~Link()
 
 bool AsicErrors::ShowAllInstances::Link::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8305,7 +8529,7 @@ bool AsicErrors::ShowAllInstances::Link::has_data() const
 
 bool AsicErrors::ShowAllInstances::Link::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8335,7 +8559,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Link::get_child_by_name(co
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Link::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8347,7 +8571,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Lin
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8376,9 +8600,11 @@ bool AsicErrors::ShowAllInstances::Link::has_leaf_or_child_of_name(const std::st
 AsicErrors::ShowAllInstances::Link::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Link::Location::~Location()
@@ -8387,7 +8613,8 @@ AsicErrors::ShowAllInstances::Link::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Link::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -8397,7 +8624,7 @@ bool AsicErrors::ShowAllInstances::Link::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Link::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -8409,7 +8636,8 @@ bool AsicErrors::ShowAllInstances::Link::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Link::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8429,7 +8657,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Link::Location::get_child_
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Link::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -8441,7 +8669,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Lin
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8482,7 +8710,7 @@ AsicErrors::ShowAllInstances::Link::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Link::Location::LogLst::~LogLst()
@@ -8491,6 +8719,7 @@ AsicErrors::ShowAllInstances::Link::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Link::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -8555,9 +8784,11 @@ bool AsicErrors::ShowAllInstances::Link::Location::LogLst::has_leaf_or_child_of_
 }
 
 AsicErrors::ShowAllInstances::OorThresh::OorThresh()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "oor-thresh"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oor-thresh"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::OorThresh::~OorThresh()
@@ -8566,7 +8797,8 @@ AsicErrors::ShowAllInstances::OorThresh::~OorThresh()
 
 bool AsicErrors::ShowAllInstances::OorThresh::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8576,7 +8808,7 @@ bool AsicErrors::ShowAllInstances::OorThresh::has_data() const
 
 bool AsicErrors::ShowAllInstances::OorThresh::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8606,7 +8838,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::OorThresh::get_child_by_na
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::OorThresh::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8618,7 +8850,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Oor
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8647,9 +8879,11 @@ bool AsicErrors::ShowAllInstances::OorThresh::has_leaf_or_child_of_name(const st
 AsicErrors::ShowAllInstances::OorThresh::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "oor-thresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::OorThresh::Location::~Location()
@@ -8658,7 +8892,8 @@ AsicErrors::ShowAllInstances::OorThresh::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::OorThresh::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -8668,7 +8903,7 @@ bool AsicErrors::ShowAllInstances::OorThresh::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::OorThresh::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -8680,7 +8915,8 @@ bool AsicErrors::ShowAllInstances::OorThresh::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::OorThresh::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8700,7 +8936,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::OorThresh::Location::get_c
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::OorThresh::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -8712,7 +8948,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Oor
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8753,7 +8989,7 @@ AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::~LogLst()
@@ -8762,6 +8998,7 @@ AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -8826,9 +9063,11 @@ bool AsicErrors::ShowAllInstances::OorThresh::Location::LogLst::has_leaf_or_chil
 }
 
 AsicErrors::ShowAllInstances::Bp::Bp()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "bp"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bp"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Bp::~Bp()
@@ -8837,7 +9076,8 @@ AsicErrors::ShowAllInstances::Bp::~Bp()
 
 bool AsicErrors::ShowAllInstances::Bp::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8847,7 +9087,7 @@ bool AsicErrors::ShowAllInstances::Bp::has_data() const
 
 bool AsicErrors::ShowAllInstances::Bp::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8877,7 +9117,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Bp::get_child_by_name(cons
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Bp::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8889,7 +9129,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Bp:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8918,9 +9158,11 @@ bool AsicErrors::ShowAllInstances::Bp::has_leaf_or_child_of_name(const std::stri
 AsicErrors::ShowAllInstances::Bp::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Bp::Location::~Location()
@@ -8929,7 +9171,8 @@ AsicErrors::ShowAllInstances::Bp::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Bp::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -8939,7 +9182,7 @@ bool AsicErrors::ShowAllInstances::Bp::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Bp::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -8951,7 +9194,8 @@ bool AsicErrors::ShowAllInstances::Bp::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Bp::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -8971,7 +9215,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Bp::Location::get_child_by
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Bp::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -8983,7 +9227,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Bp:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9024,7 +9268,7 @@ AsicErrors::ShowAllInstances::Bp::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Bp::Location::LogLst::~LogLst()
@@ -9033,6 +9277,7 @@ AsicErrors::ShowAllInstances::Bp::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Bp::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -9097,9 +9342,11 @@ bool AsicErrors::ShowAllInstances::Bp::Location::LogLst::has_leaf_or_child_of_na
 }
 
 AsicErrors::ShowAllInstances::Io::Io()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "io"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "io"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Io::~Io()
@@ -9108,7 +9355,8 @@ AsicErrors::ShowAllInstances::Io::~Io()
 
 bool AsicErrors::ShowAllInstances::Io::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9118,7 +9366,7 @@ bool AsicErrors::ShowAllInstances::Io::has_data() const
 
 bool AsicErrors::ShowAllInstances::Io::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9148,7 +9396,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Io::get_child_by_name(cons
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Io::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9160,7 +9408,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Io:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9189,9 +9437,11 @@ bool AsicErrors::ShowAllInstances::Io::has_leaf_or_child_of_name(const std::stri
 AsicErrors::ShowAllInstances::Io::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "io"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Io::Location::~Location()
@@ -9200,7 +9450,8 @@ AsicErrors::ShowAllInstances::Io::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Io::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -9210,7 +9461,7 @@ bool AsicErrors::ShowAllInstances::Io::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Io::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -9222,7 +9473,8 @@ bool AsicErrors::ShowAllInstances::Io::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Io::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9242,7 +9494,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Io::Location::get_child_by
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Io::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -9254,7 +9506,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Io:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9295,7 +9547,7 @@ AsicErrors::ShowAllInstances::Io::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Io::Location::LogLst::~LogLst()
@@ -9304,6 +9556,7 @@ AsicErrors::ShowAllInstances::Io::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Io::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -9368,9 +9621,11 @@ bool AsicErrors::ShowAllInstances::Io::Location::LogLst::has_leaf_or_child_of_na
 }
 
 AsicErrors::ShowAllInstances::Ucode::Ucode()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "ucode"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ucode"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Ucode::~Ucode()
@@ -9379,7 +9634,8 @@ AsicErrors::ShowAllInstances::Ucode::~Ucode()
 
 bool AsicErrors::ShowAllInstances::Ucode::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9389,7 +9645,7 @@ bool AsicErrors::ShowAllInstances::Ucode::has_data() const
 
 bool AsicErrors::ShowAllInstances::Ucode::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9419,7 +9675,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Ucode::get_child_by_name(c
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Ucode::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9431,7 +9687,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Uco
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9460,9 +9716,11 @@ bool AsicErrors::ShowAllInstances::Ucode::has_leaf_or_child_of_name(const std::s
 AsicErrors::ShowAllInstances::Ucode::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "ucode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Ucode::Location::~Location()
@@ -9471,7 +9729,8 @@ AsicErrors::ShowAllInstances::Ucode::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Ucode::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -9481,7 +9740,7 @@ bool AsicErrors::ShowAllInstances::Ucode::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Ucode::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -9493,7 +9752,8 @@ bool AsicErrors::ShowAllInstances::Ucode::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Ucode::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9513,7 +9773,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Ucode::Location::get_child
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Ucode::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -9525,7 +9785,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Uco
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9566,7 +9826,7 @@ AsicErrors::ShowAllInstances::Ucode::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Ucode::Location::LogLst::~LogLst()
@@ -9575,6 +9835,7 @@ AsicErrors::ShowAllInstances::Ucode::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Ucode::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -9639,9 +9900,11 @@ bool AsicErrors::ShowAllInstances::Ucode::Location::LogLst::has_leaf_or_child_of
 }
 
 AsicErrors::ShowAllInstances::Config::Config()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "config"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Config::~Config()
@@ -9650,7 +9913,8 @@ AsicErrors::ShowAllInstances::Config::~Config()
 
 bool AsicErrors::ShowAllInstances::Config::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9660,7 +9924,7 @@ bool AsicErrors::ShowAllInstances::Config::has_data() const
 
 bool AsicErrors::ShowAllInstances::Config::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9690,7 +9954,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Config::get_child_by_name(
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Config::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9702,7 +9966,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9731,9 +9995,11 @@ bool AsicErrors::ShowAllInstances::Config::has_leaf_or_child_of_name(const std::
 AsicErrors::ShowAllInstances::Config::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Config::Location::~Location()
@@ -9742,7 +10008,8 @@ AsicErrors::ShowAllInstances::Config::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Config::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -9752,7 +10019,7 @@ bool AsicErrors::ShowAllInstances::Config::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Config::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -9764,7 +10031,8 @@ bool AsicErrors::ShowAllInstances::Config::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Config::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -9784,7 +10052,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Config::Location::get_chil
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Config::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -9796,7 +10064,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9837,7 +10105,7 @@ AsicErrors::ShowAllInstances::Config::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Config::Location::LogLst::~LogLst()
@@ -9846,6 +10114,7 @@ AsicErrors::ShowAllInstances::Config::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Config::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -9910,9 +10179,11 @@ bool AsicErrors::ShowAllInstances::Config::Location::LogLst::has_leaf_or_child_o
 }
 
 AsicErrors::ShowAllInstances::Indirect::Indirect()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "indirect"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indirect"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Indirect::~Indirect()
@@ -9921,7 +10192,8 @@ AsicErrors::ShowAllInstances::Indirect::~Indirect()
 
 bool AsicErrors::ShowAllInstances::Indirect::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9931,7 +10203,7 @@ bool AsicErrors::ShowAllInstances::Indirect::has_data() const
 
 bool AsicErrors::ShowAllInstances::Indirect::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9961,7 +10233,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Indirect::get_child_by_nam
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Indirect::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9973,7 +10245,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Ind
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10002,9 +10274,11 @@ bool AsicErrors::ShowAllInstances::Indirect::has_leaf_or_child_of_name(const std
 AsicErrors::ShowAllInstances::Indirect::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "indirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Indirect::Location::~Location()
@@ -10013,7 +10287,8 @@ AsicErrors::ShowAllInstances::Indirect::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Indirect::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -10023,7 +10298,7 @@ bool AsicErrors::ShowAllInstances::Indirect::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Indirect::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -10035,7 +10310,8 @@ bool AsicErrors::ShowAllInstances::Indirect::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Indirect::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -10055,7 +10331,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Indirect::Location::get_ch
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Indirect::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -10067,7 +10343,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Ind
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10108,7 +10384,7 @@ AsicErrors::ShowAllInstances::Indirect::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Indirect::Location::LogLst::~LogLst()
@@ -10117,6 +10393,7 @@ AsicErrors::ShowAllInstances::Indirect::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Indirect::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -10181,9 +10458,11 @@ bool AsicErrors::ShowAllInstances::Indirect::Location::LogLst::has_leaf_or_child
 }
 
 AsicErrors::ShowAllInstances::Nonerr::Nonerr()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "nonerr"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nonerr"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Nonerr::~Nonerr()
@@ -10192,7 +10471,8 @@ AsicErrors::ShowAllInstances::Nonerr::~Nonerr()
 
 bool AsicErrors::ShowAllInstances::Nonerr::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10202,7 +10482,7 @@ bool AsicErrors::ShowAllInstances::Nonerr::has_data() const
 
 bool AsicErrors::ShowAllInstances::Nonerr::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10232,7 +10512,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Nonerr::get_child_by_name(
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Nonerr::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10244,7 +10524,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Non
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10273,9 +10553,11 @@ bool AsicErrors::ShowAllInstances::Nonerr::has_leaf_or_child_of_name(const std::
 AsicErrors::ShowAllInstances::Nonerr::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "nonerr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Nonerr::Location::~Location()
@@ -10284,7 +10566,8 @@ AsicErrors::ShowAllInstances::Nonerr::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Nonerr::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -10294,7 +10577,7 @@ bool AsicErrors::ShowAllInstances::Nonerr::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Nonerr::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -10306,7 +10589,8 @@ bool AsicErrors::ShowAllInstances::Nonerr::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Nonerr::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -10326,7 +10610,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Nonerr::Location::get_chil
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Nonerr::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -10338,7 +10622,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Non
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10379,7 +10663,7 @@ AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::~LogLst()
@@ -10388,6 +10672,7 @@ AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -10452,9 +10737,11 @@ bool AsicErrors::ShowAllInstances::Nonerr::Location::LogLst::has_leaf_or_child_o
 }
 
 AsicErrors::ShowAllInstances::Summary::Summary()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "summary"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Summary::~Summary()
@@ -10463,7 +10750,8 @@ AsicErrors::ShowAllInstances::Summary::~Summary()
 
 bool AsicErrors::ShowAllInstances::Summary::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10473,7 +10761,7 @@ bool AsicErrors::ShowAllInstances::Summary::has_data() const
 
 bool AsicErrors::ShowAllInstances::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10503,7 +10791,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Summary::get_child_by_name
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Summary::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10515,7 +10803,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10544,9 +10832,11 @@ bool AsicErrors::ShowAllInstances::Summary::has_leaf_or_child_of_name(const std:
 AsicErrors::ShowAllInstances::Summary::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Summary::Location::~Location()
@@ -10555,7 +10845,8 @@ AsicErrors::ShowAllInstances::Summary::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::Summary::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -10565,7 +10856,7 @@ bool AsicErrors::ShowAllInstances::Summary::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::Summary::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -10577,7 +10868,8 @@ bool AsicErrors::ShowAllInstances::Summary::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::Summary::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -10597,7 +10889,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::Summary::Location::get_chi
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::Summary::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -10609,7 +10901,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10650,7 +10942,7 @@ AsicErrors::ShowAllInstances::Summary::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::Summary::Location::LogLst::~LogLst()
@@ -10659,6 +10951,7 @@ AsicErrors::ShowAllInstances::Summary::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::Summary::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 
@@ -10723,9 +11016,11 @@ bool AsicErrors::ShowAllInstances::Summary::Location::LogLst::has_leaf_or_child_
 }
 
 AsicErrors::ShowAllInstances::All::All()
+    :
+    location(this, {"location_name"})
 {
 
-    yang_name = "all"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "show-all-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::All::~All()
@@ -10734,7 +11029,8 @@ AsicErrors::ShowAllInstances::All::~All()
 
 bool AsicErrors::ShowAllInstances::All::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10744,7 +11040,7 @@ bool AsicErrors::ShowAllInstances::All::has_data() const
 
 bool AsicErrors::ShowAllInstances::All::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10774,7 +11070,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::All::get_child_by_name(con
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::All::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10786,7 +11082,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::All
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10815,9 +11111,11 @@ bool AsicErrors::ShowAllInstances::All::has_leaf_or_child_of_name(const std::str
 AsicErrors::ShowAllInstances::All::Location::Location()
     :
     location_name{YType::str, "location-name"}
+        ,
+    log_lst(this, {})
 {
 
-    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::All::Location::~Location()
@@ -10826,7 +11124,8 @@ AsicErrors::ShowAllInstances::All::Location::~Location()
 
 bool AsicErrors::ShowAllInstances::All::Location::has_data() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_data())
             return true;
@@ -10836,7 +11135,7 @@ bool AsicErrors::ShowAllInstances::All::Location::has_data() const
 
 bool AsicErrors::ShowAllInstances::All::Location::has_operation() const
 {
-    for (std::size_t index=0; index<log_lst.size(); index++)
+    for (std::size_t index=0; index<log_lst.len(); index++)
     {
         if(log_lst[index]->has_operation())
             return true;
@@ -10848,7 +11147,8 @@ bool AsicErrors::ShowAllInstances::All::Location::has_operation() const
 std::string AsicErrors::ShowAllInstances::All::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location-name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location-name");
     return path_buffer.str();
 }
 
@@ -10868,7 +11168,7 @@ std::shared_ptr<Entity> AsicErrors::ShowAllInstances::All::Location::get_child_b
     {
         auto c = std::make_shared<AsicErrors::ShowAllInstances::All::Location::LogLst>();
         c->parent = this;
-        log_lst.push_back(c);
+        log_lst.append(c);
         return c;
     }
 
@@ -10880,7 +11180,7 @@ std::map<std::string, std::shared_ptr<Entity>> AsicErrors::ShowAllInstances::All
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : log_lst)
+    for (auto c : log_lst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10921,7 +11221,7 @@ AsicErrors::ShowAllInstances::All::Location::LogLst::LogLst()
     log_line{YType::str, "log-line"}
 {
 
-    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "log-lst"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AsicErrors::ShowAllInstances::All::Location::LogLst::~LogLst()
@@ -10930,6 +11230,7 @@ AsicErrors::ShowAllInstances::All::Location::LogLst::~LogLst()
 
 bool AsicErrors::ShowAllInstances::All::Location::LogLst::has_data() const
 {
+    if (is_presence_container) return true;
     return log_line.is_set;
 }
 

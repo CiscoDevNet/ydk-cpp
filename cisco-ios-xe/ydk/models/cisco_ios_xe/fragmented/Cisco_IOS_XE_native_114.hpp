@@ -334,9 +334,9 @@ class Native::BridgeDomain::BrdId::Member : public ydk::Entity
         class ACR; //type: Native::BridgeDomain::BrdId::Member::ACR
         class MemberInterface; //type: Native::BridgeDomain::BrdId::Member::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::MemIpv4> > mem_ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::ACR> > acr;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::MemberInterface> > member_interface;
+        ydk::YList mem_ipv4;
+        ydk::YList acr;
+        ydk::YList member_interface;
         
 }; // Native::BridgeDomain::BrdId::Member
 
@@ -362,7 +362,7 @@ class Native::BridgeDomain::BrdId::Member::MemIpv4 : public ydk::Entity
         class MemVcid; //type: Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid
         class Encapsulation; //type: Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::MemIpv4::MemVcid> > mem_vcid;
+        ydk::YList mem_vcid;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::MemIpv4::Encapsulation> encapsulation;
         
 }; // Native::BridgeDomain::BrdId::Member::MemIpv4
@@ -499,7 +499,7 @@ class Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance : public ydk::En
 
         class Id; //type: Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance::Id> > id;
+        ydk::YList id;
         
 }; // Native::BridgeDomain::BrdId::Member::ACR::ServiceInstance
 
@@ -543,7 +543,7 @@ class Native::BridgeDomain::BrdId::Member::MemberInterface : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf interface; //type: string
-        ydk::YLeaf interface_id; //type: one of uint32, string
+        ydk::YLeaf interface_id; //type: one of string, uint32
         ydk::YLeaf service_instance; //type: uint32
         class SplitHorizon; //type: Native::BridgeDomain::BrdId::Member::MemberInterface::SplitHorizon
 
@@ -1027,9 +1027,9 @@ class Native::BridgeDomain::Parameterized::Vlan::Member : public ydk::Entity
         class ACR; //type: Native::BridgeDomain::Parameterized::Vlan::Member::ACR
         class MemberInterface; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4> > mem_ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::ACR> > acr;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface> > member_interface;
+        ydk::YList mem_ipv4;
+        ydk::YList acr;
+        ydk::YList member_interface;
         
 }; // Native::BridgeDomain::Parameterized::Vlan::Member
 
@@ -1056,7 +1056,7 @@ class Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4 : public ydk::E
         class MemVcid; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid
         class Encapsulation; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::MemVcid> > mem_vcid;
+        ydk::YList mem_vcid;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4::Encapsulation> encapsulation;
         
 }; // Native::BridgeDomain::Parameterized::Vlan::Member::MemIpv4
@@ -1194,7 +1194,7 @@ class Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance : 
 
         class Id; //type: Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance::Id> > id;
+        ydk::YList id;
         
 }; // Native::BridgeDomain::Parameterized::Vlan::Member::ACR::ServiceInstance
 
@@ -1239,7 +1239,7 @@ class Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface : publi
         std::string get_absolute_path() const override;
 
         ydk::YLeaf interface; //type: string
-        ydk::YLeaf interface_id; //type: one of uint32, string
+        ydk::YLeaf interface_id; //type: one of string, uint32
         ydk::YLeaf service_instance; //type: uint32
         class SplitHorizon; //type: Native::BridgeDomain::Parameterized::Vlan::Member::MemberInterface::SplitHorizon
 
@@ -1309,16 +1309,16 @@ class Native::Crypto : public ydk::Entity
         class Vpn; //type: Native::Crypto::Vpn
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Call> call;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::DynamicMap> > dynamic_map;
+        ydk::YList dynamic_map;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Engine> engine;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi> gdoi;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2> ikev2;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gkm> gkm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Identity> > identity;
+        ydk::YList identity;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ipsec> ipsec;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Isakmp> isakmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Key> key;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Keyring> > keyring;
+        ydk::YList keyring;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Logging> logging;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::CryptoMap> crypto_map;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::MapIpv6Gdoi> map_ipv6_gdoi;
@@ -1725,7 +1725,7 @@ class Native::Crypto::DynamicMap::Default::Set::PeerContainer : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf peer; //type: one of string, union
+        ydk::YLeaf peer; //type: one of union, string
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Crypto::DynamicMap::Default::Set::PeerContainer
@@ -2235,7 +2235,7 @@ class Native::Crypto::DynamicMap::Set::PeerContainer : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf peer; //type: one of string, union
+        ydk::YLeaf peer; //type: one of union, string
         ydk::YLeaf default_; //type: empty
 
 }; // Native::Crypto::DynamicMap::Set::PeerContainer
@@ -2407,7 +2407,7 @@ class Native::Crypto::Gdoi : public ydk::Entity
 
         class Group; //type: Native::Crypto::Gdoi::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group> > group;
+        ydk::YList group;
         
 }; // Native::Crypto::Gdoi
 
@@ -3559,22 +3559,22 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf receive_only; //type: empty
-        class D3P; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P
+        class D3p; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p
         class Ipsec; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec
         class PairWiseKeying; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::PairWiseKeying
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P> d3p;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec> > ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p> d3p;
+        ydk::YList ipsec;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::PairWiseKeying> pair_wise_keying;
         
 }; // Native::Crypto::Gdoi::Group::Server::Local::Sa
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p : public ydk::Entity
 {
     public:
-        D3P();
-        ~D3P();
+        D3p();
+        ~D3p();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3586,14 +3586,14 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Window; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window
+        class Window; //type: Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window> window;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window> window;
         
-}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P
+}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window : public ydk::Entity
 {
     public:
         Window();
@@ -3612,7 +3612,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window : public ydk::
         ydk::YLeaf msec; //type: uint32
         ydk::YLeaf sec; //type: uint8
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::D3P::Window
+}; // Native::Crypto::Gdoi::Group::Server::Local::Sa::D3p::Window
 
 
 class Native::Crypto::Gdoi::Group::Server::Local::Sa::Ipsec : public ydk::Entity

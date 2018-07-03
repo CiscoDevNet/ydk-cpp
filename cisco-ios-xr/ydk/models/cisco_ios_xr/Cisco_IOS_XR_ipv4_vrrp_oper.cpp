@@ -14,16 +14,16 @@ namespace Cisco_IOS_XR_ipv4_vrrp_oper {
 Vrrp::Vrrp()
     :
     summary(std::make_shared<Vrrp::Summary>())
-	,ipv6(std::make_shared<Vrrp::Ipv6>())
-	,ipv4(std::make_shared<Vrrp::Ipv4>())
-	,mgo_sessions(std::make_shared<Vrrp::MgoSessions>())
+    , ipv6(std::make_shared<Vrrp::Ipv6>())
+    , ipv4(std::make_shared<Vrrp::Ipv4>())
+    , mgo_sessions(std::make_shared<Vrrp::MgoSessions>())
 {
     summary->parent = this;
     ipv6->parent = this;
     ipv4->parent = this;
     mgo_sessions->parent = this;
 
-    yang_name = "vrrp"; yang_parent_name = "Cisco-IOS-XR-ipv4-vrrp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vrrp"; yang_parent_name = "Cisco-IOS-XR-ipv4-vrrp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vrrp::~Vrrp()
@@ -32,6 +32,7 @@ Vrrp::~Vrrp()
 
 bool Vrrp::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
@@ -221,7 +222,7 @@ Vrrp::Summary::Summary()
     ipv6bfd_session_inactive{YType::uint32, "ipv6bfd-session-inactive"}
 {
 
-    yang_name = "summary"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Summary::~Summary()
@@ -230,6 +231,7 @@ Vrrp::Summary::~Summary()
 
 bool Vrrp::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_sessions_master_owner.is_set
 	|| ipv4_sessions_master.is_set
 	|| ipv4_sessions_backup.is_set
@@ -888,14 +890,14 @@ bool Vrrp::Summary::has_leaf_or_child_of_name(const std::string & name) const
 Vrrp::Ipv6::Ipv6()
     :
     track_items(std::make_shared<Vrrp::Ipv6::TrackItems>())
-	,virtual_routers(std::make_shared<Vrrp::Ipv6::VirtualRouters>())
-	,interfaces(std::make_shared<Vrrp::Ipv6::Interfaces>())
+    , virtual_routers(std::make_shared<Vrrp::Ipv6::VirtualRouters>())
+    , interfaces(std::make_shared<Vrrp::Ipv6::Interfaces>())
 {
     track_items->parent = this;
     virtual_routers->parent = this;
     interfaces->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv6::~Ipv6()
@@ -904,6 +906,7 @@ Vrrp::Ipv6::~Ipv6()
 
 bool Vrrp::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (track_items !=  nullptr && track_items->has_data())
 	|| (virtual_routers !=  nullptr && virtual_routers->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
@@ -1010,9 +1013,11 @@ bool Vrrp::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vrrp::Ipv6::TrackItems::TrackItems()
+    :
+    track_item(this, {"interface_name", "virtual_router_id", "tracked_interface_name"})
 {
 
-    yang_name = "track-items"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-items"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv6::TrackItems::~TrackItems()
@@ -1021,7 +1026,8 @@ Vrrp::Ipv6::TrackItems::~TrackItems()
 
 bool Vrrp::Ipv6::TrackItems::has_data() const
 {
-    for (std::size_t index=0; index<track_item.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_item.len(); index++)
     {
         if(track_item[index]->has_data())
             return true;
@@ -1031,7 +1037,7 @@ bool Vrrp::Ipv6::TrackItems::has_data() const
 
 bool Vrrp::Ipv6::TrackItems::has_operation() const
 {
-    for (std::size_t index=0; index<track_item.size(); index++)
+    for (std::size_t index=0; index<track_item.len(); index++)
     {
         if(track_item[index]->has_operation())
             return true;
@@ -1068,7 +1074,7 @@ std::shared_ptr<Entity> Vrrp::Ipv6::TrackItems::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Vrrp::Ipv6::TrackItems::TrackItem>();
         c->parent = this;
-        track_item.push_back(c);
+        track_item.append(c);
         return c;
     }
 
@@ -1080,7 +1086,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::TrackItems::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_item)
+    for (auto c : track_item.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1109,7 +1115,7 @@ bool Vrrp::Ipv6::TrackItems::has_leaf_or_child_of_name(const std::string & name)
 Vrrp::Ipv6::TrackItems::TrackItem::TrackItem()
     :
     interface_name{YType::str, "interface-name"},
-    virtual_router_id{YType::int32, "virtual-router-id"},
+    virtual_router_id{YType::uint32, "virtual-router-id"},
     tracked_interface_name{YType::str, "tracked-interface-name"},
     interface{YType::str, "interface"},
     virtual_router_id_xr{YType::uint32, "virtual-router-id-xr"},
@@ -1119,7 +1125,7 @@ Vrrp::Ipv6::TrackItems::TrackItem::TrackItem()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "track-item"; yang_parent_name = "track-items"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-item"; yang_parent_name = "track-items"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv6::TrackItems::TrackItem::~TrackItem()
@@ -1128,6 +1134,7 @@ Vrrp::Ipv6::TrackItems::TrackItem::~TrackItem()
 
 bool Vrrp::Ipv6::TrackItems::TrackItem::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| virtual_router_id.is_set
 	|| tracked_interface_name.is_set
@@ -1163,7 +1170,10 @@ std::string Vrrp::Ipv6::TrackItems::TrackItem::get_absolute_path() const
 std::string Vrrp::Ipv6::TrackItems::TrackItem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track-item" <<"[interface-name='" <<interface_name <<"']" <<"[virtual-router-id='" <<virtual_router_id <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
+    path_buffer << "track-item";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
+    ADD_KEY_TOKEN(tracked_interface_name, "tracked-interface-name");
     return path_buffer.str();
 }
 
@@ -1303,9 +1313,11 @@ bool Vrrp::Ipv6::TrackItems::TrackItem::has_leaf_or_child_of_name(const std::str
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouters()
+    :
+    virtual_router(this, {"interface_name", "virtual_router_id"})
 {
 
-    yang_name = "virtual-routers"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "virtual-routers"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv6::VirtualRouters::~VirtualRouters()
@@ -1314,7 +1326,8 @@ Vrrp::Ipv6::VirtualRouters::~VirtualRouters()
 
 bool Vrrp::Ipv6::VirtualRouters::has_data() const
 {
-    for (std::size_t index=0; index<virtual_router.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<virtual_router.len(); index++)
     {
         if(virtual_router[index]->has_data())
             return true;
@@ -1324,7 +1337,7 @@ bool Vrrp::Ipv6::VirtualRouters::has_data() const
 
 bool Vrrp::Ipv6::VirtualRouters::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_router.size(); index++)
+    for (std::size_t index=0; index<virtual_router.len(); index++)
     {
         if(virtual_router[index]->has_operation())
             return true;
@@ -1361,7 +1374,7 @@ std::shared_ptr<Entity> Vrrp::Ipv6::VirtualRouters::get_child_by_name(const std:
     {
         auto c = std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter>();
         c->parent = this;
-        virtual_router.push_back(c);
+        virtual_router.append(c);
         return c;
     }
 
@@ -1373,7 +1386,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : virtual_router)
+    for (auto c : virtual_router.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1402,7 +1415,7 @@ bool Vrrp::Ipv6::VirtualRouters::has_leaf_or_child_of_name(const std::string & n
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::VirtualRouter()
     :
     interface_name{YType::str, "interface-name"},
-    virtual_router_id{YType::int32, "virtual-router-id"},
+    virtual_router_id{YType::uint32, "virtual-router-id"},
     interface_name_xr{YType::str, "interface-name-xr"},
     virtual_router_id_xr{YType::uint32, "virtual-router-id-xr"},
     version{YType::uint8, "version"},
@@ -1472,14 +1485,18 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::VirtualRouter()
     virtual_mac_address_state{YType::enumeration, "virtual-mac-address-state"},
     operational_address{YType::str, "operational-address"},
     ipv4_configured_down_address{YType::str, "ipv4-configured-down-address"}
-    	,
+        ,
     resign_sent_time(std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime>())
-	,resign_received_time(std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime>())
+    , resign_received_time(std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime>())
+    , ipv6_operational_address(this, {})
+    , ipv6_configured_down_address(this, {})
+    , track_item_info(this, {})
+    , state_change_history(this, {})
 {
     resign_sent_time->parent = this;
     resign_received_time->parent = this;
 
-    yang_name = "virtual-router"; yang_parent_name = "virtual-routers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "virtual-router"; yang_parent_name = "virtual-routers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::~VirtualRouter()
@@ -1488,22 +1505,23 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::~VirtualRouter()
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_operational_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_operational_address.len(); index++)
     {
         if(ipv6_operational_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_configured_down_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_configured_down_address.len(); index++)
     {
         if(ipv6_configured_down_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<track_item_info.size(); index++)
+    for (std::size_t index=0; index<track_item_info.len(); index++)
     {
         if(track_item_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<state_change_history.size(); index++)
+    for (std::size_t index=0; index<state_change_history.len(); index++)
     {
         if(state_change_history[index]->has_data())
             return true;
@@ -1593,22 +1611,22 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_data() const
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_operational_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_operational_address.len(); index++)
     {
         if(ipv6_operational_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_configured_down_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_configured_down_address.len(); index++)
     {
         if(ipv6_configured_down_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<track_item_info.size(); index++)
+    for (std::size_t index=0; index<track_item_info.len(); index++)
     {
         if(track_item_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<state_change_history.size(); index++)
+    for (std::size_t index=0; index<state_change_history.len(); index++)
     {
         if(state_change_history[index]->has_operation())
             return true;
@@ -1709,7 +1727,9 @@ std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_absolute_path() const
 std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "virtual-router" <<"[interface-name='" <<interface_name <<"']" <<"[virtual-router-id='" <<virtual_router_id <<"']";
+    path_buffer << "virtual-router";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
     return path_buffer.str();
 }
 
@@ -1819,7 +1839,7 @@ std::shared_ptr<Entity> Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress>();
         c->parent = this;
-        ipv6_operational_address.push_back(c);
+        ipv6_operational_address.append(c);
         return c;
     }
 
@@ -1827,7 +1847,7 @@ std::shared_ptr<Entity> Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress>();
         c->parent = this;
-        ipv6_configured_down_address.push_back(c);
+        ipv6_configured_down_address.append(c);
         return c;
     }
 
@@ -1835,7 +1855,7 @@ std::shared_ptr<Entity> Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo>();
         c->parent = this;
-        track_item_info.push_back(c);
+        track_item_info.append(c);
         return c;
     }
 
@@ -1843,7 +1863,7 @@ std::shared_ptr<Entity> Vrrp::Ipv6::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory>();
         c->parent = this;
-        state_change_history.push_back(c);
+        state_change_history.append(c);
         return c;
     }
 
@@ -1865,7 +1885,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : ipv6_operational_address)
+    for (auto c : ipv6_operational_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1874,7 +1894,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : ipv6_configured_down_address)
+    for (auto c : ipv6_configured_down_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1883,7 +1903,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : track_item_info)
+    for (auto c : track_item_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1892,7 +1912,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : state_change_history)
+    for (auto c : state_change_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2630,7 +2650,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::ResignSentTime()
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "resign-sent-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resign-sent-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::~ResignSentTime()
@@ -2639,6 +2659,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::~ResignSentTime()
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignSentTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -2721,7 +2742,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::ResignReceivedTim
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "resign-received-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resign-received-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::~ResignReceivedTime()
@@ -2730,6 +2751,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::~ResignReceivedTi
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::ResignReceivedTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -2811,7 +2833,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::Ipv6Operation
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "ipv6-operational-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-operational-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::~Ipv6OperationalAddress()
@@ -2820,6 +2842,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::~Ipv6Operatio
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set;
 }
 
@@ -2888,7 +2911,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::Ipv6Config
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "ipv6-configured-down-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-configured-down-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::~Ipv6ConfiguredDownAddress()
@@ -2897,6 +2920,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::~Ipv6Confi
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set;
 }
 
@@ -2970,7 +2994,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::TrackItemInfo()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "track-item-info"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track-item-info"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::~TrackItemInfo()
@@ -2979,6 +3003,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::~TrackItemInfo()
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| virtual_router_id_xr.is_set
 	|| tracked_item_type.is_set
@@ -3112,12 +3137,12 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::StateChangeHistor
     old_state{YType::enumeration, "old-state"},
     new_state{YType::enumeration, "new-state"},
     reason{YType::enumeration, "reason"}
-    	,
+        ,
     time(std::make_shared<Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time>())
 {
     time->parent = this;
 
-    yang_name = "state-change-history"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-change-history"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::~StateChangeHistory()
@@ -3126,6 +3151,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::~StateChangeHisto
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return old_state.is_set
 	|| new_state.is_set
 	|| reason.is_set
@@ -3237,7 +3263,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::Time()
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "time"; yang_parent_name = "state-change-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "state-change-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::~Time()
@@ -3246,6 +3272,7 @@ Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::~Time()
 
 bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -3323,9 +3350,11 @@ bool Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_le
 }
 
 Vrrp::Ipv6::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv6::Interfaces::~Interfaces()
@@ -3334,7 +3363,8 @@ Vrrp::Ipv6::Interfaces::~Interfaces()
 
 bool Vrrp::Ipv6::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3344,7 +3374,7 @@ bool Vrrp::Ipv6::Interfaces::has_data() const
 
 bool Vrrp::Ipv6::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3381,7 +3411,7 @@ std::shared_ptr<Entity> Vrrp::Ipv6::Interfaces::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Vrrp::Ipv6::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3393,7 +3423,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv6::Interfaces::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3429,7 +3459,7 @@ Vrrp::Ipv6::Interfaces::Interface::Interface()
     invalid_packet_length_count{YType::uint32, "invalid-packet-length-count"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv6::Interfaces::Interface::~Interface()
@@ -3438,6 +3468,7 @@ Vrrp::Ipv6::Interfaces::Interface::~Interface()
 
 bool Vrrp::Ipv6::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| invalid_checksum_count.is_set
@@ -3467,7 +3498,8 @@ std::string Vrrp::Ipv6::Interfaces::Interface::get_absolute_path() const
 std::string Vrrp::Ipv6::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3576,14 +3608,14 @@ bool Vrrp::Ipv6::Interfaces::Interface::has_leaf_or_child_of_name(const std::str
 Vrrp::Ipv4::Ipv4()
     :
     interfaces(std::make_shared<Vrrp::Ipv4::Interfaces>())
-	,track_items(std::make_shared<Vrrp::Ipv4::TrackItems>())
-	,virtual_routers(std::make_shared<Vrrp::Ipv4::VirtualRouters>())
+    , track_items(std::make_shared<Vrrp::Ipv4::TrackItems>())
+    , virtual_routers(std::make_shared<Vrrp::Ipv4::VirtualRouters>())
 {
     interfaces->parent = this;
     track_items->parent = this;
     virtual_routers->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv4::~Ipv4()
@@ -3592,6 +3624,7 @@ Vrrp::Ipv4::~Ipv4()
 
 bool Vrrp::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data())
 	|| (track_items !=  nullptr && track_items->has_data())
 	|| (virtual_routers !=  nullptr && virtual_routers->has_data());
@@ -3698,9 +3731,11 @@ bool Vrrp::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vrrp::Ipv4::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv4::Interfaces::~Interfaces()
@@ -3709,7 +3744,8 @@ Vrrp::Ipv4::Interfaces::~Interfaces()
 
 bool Vrrp::Ipv4::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3719,7 +3755,7 @@ bool Vrrp::Ipv4::Interfaces::has_data() const
 
 bool Vrrp::Ipv4::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3756,7 +3792,7 @@ std::shared_ptr<Entity> Vrrp::Ipv4::Interfaces::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Vrrp::Ipv4::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3768,7 +3804,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::Interfaces::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3804,7 +3840,7 @@ Vrrp::Ipv4::Interfaces::Interface::Interface()
     invalid_packet_length_count{YType::uint32, "invalid-packet-length-count"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv4::Interfaces::Interface::~Interface()
@@ -3813,6 +3849,7 @@ Vrrp::Ipv4::Interfaces::Interface::~Interface()
 
 bool Vrrp::Ipv4::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface.is_set
 	|| invalid_checksum_count.is_set
@@ -3842,7 +3879,8 @@ std::string Vrrp::Ipv4::Interfaces::Interface::get_absolute_path() const
 std::string Vrrp::Ipv4::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3949,9 +3987,11 @@ bool Vrrp::Ipv4::Interfaces::Interface::has_leaf_or_child_of_name(const std::str
 }
 
 Vrrp::Ipv4::TrackItems::TrackItems()
+    :
+    track_item(this, {"interface_name", "virtual_router_id", "tracked_interface_name"})
 {
 
-    yang_name = "track-items"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-items"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv4::TrackItems::~TrackItems()
@@ -3960,7 +4000,8 @@ Vrrp::Ipv4::TrackItems::~TrackItems()
 
 bool Vrrp::Ipv4::TrackItems::has_data() const
 {
-    for (std::size_t index=0; index<track_item.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_item.len(); index++)
     {
         if(track_item[index]->has_data())
             return true;
@@ -3970,7 +4011,7 @@ bool Vrrp::Ipv4::TrackItems::has_data() const
 
 bool Vrrp::Ipv4::TrackItems::has_operation() const
 {
-    for (std::size_t index=0; index<track_item.size(); index++)
+    for (std::size_t index=0; index<track_item.len(); index++)
     {
         if(track_item[index]->has_operation())
             return true;
@@ -4007,7 +4048,7 @@ std::shared_ptr<Entity> Vrrp::Ipv4::TrackItems::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Vrrp::Ipv4::TrackItems::TrackItem>();
         c->parent = this;
-        track_item.push_back(c);
+        track_item.append(c);
         return c;
     }
 
@@ -4019,7 +4060,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::TrackItems::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_item)
+    for (auto c : track_item.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4048,7 +4089,7 @@ bool Vrrp::Ipv4::TrackItems::has_leaf_or_child_of_name(const std::string & name)
 Vrrp::Ipv4::TrackItems::TrackItem::TrackItem()
     :
     interface_name{YType::str, "interface-name"},
-    virtual_router_id{YType::int32, "virtual-router-id"},
+    virtual_router_id{YType::uint32, "virtual-router-id"},
     tracked_interface_name{YType::str, "tracked-interface-name"},
     interface{YType::str, "interface"},
     virtual_router_id_xr{YType::uint32, "virtual-router-id-xr"},
@@ -4058,7 +4099,7 @@ Vrrp::Ipv4::TrackItems::TrackItem::TrackItem()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "track-item"; yang_parent_name = "track-items"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "track-item"; yang_parent_name = "track-items"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv4::TrackItems::TrackItem::~TrackItem()
@@ -4067,6 +4108,7 @@ Vrrp::Ipv4::TrackItems::TrackItem::~TrackItem()
 
 bool Vrrp::Ipv4::TrackItems::TrackItem::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| virtual_router_id.is_set
 	|| tracked_interface_name.is_set
@@ -4102,7 +4144,10 @@ std::string Vrrp::Ipv4::TrackItems::TrackItem::get_absolute_path() const
 std::string Vrrp::Ipv4::TrackItems::TrackItem::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track-item" <<"[interface-name='" <<interface_name <<"']" <<"[virtual-router-id='" <<virtual_router_id <<"']" <<"[tracked-interface-name='" <<tracked_interface_name <<"']";
+    path_buffer << "track-item";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
+    ADD_KEY_TOKEN(tracked_interface_name, "tracked-interface-name");
     return path_buffer.str();
 }
 
@@ -4242,9 +4287,11 @@ bool Vrrp::Ipv4::TrackItems::TrackItem::has_leaf_or_child_of_name(const std::str
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouters()
+    :
+    virtual_router(this, {"interface_name", "virtual_router_id"})
 {
 
-    yang_name = "virtual-routers"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "virtual-routers"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv4::VirtualRouters::~VirtualRouters()
@@ -4253,7 +4300,8 @@ Vrrp::Ipv4::VirtualRouters::~VirtualRouters()
 
 bool Vrrp::Ipv4::VirtualRouters::has_data() const
 {
-    for (std::size_t index=0; index<virtual_router.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<virtual_router.len(); index++)
     {
         if(virtual_router[index]->has_data())
             return true;
@@ -4263,7 +4311,7 @@ bool Vrrp::Ipv4::VirtualRouters::has_data() const
 
 bool Vrrp::Ipv4::VirtualRouters::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_router.size(); index++)
+    for (std::size_t index=0; index<virtual_router.len(); index++)
     {
         if(virtual_router[index]->has_operation())
             return true;
@@ -4300,7 +4348,7 @@ std::shared_ptr<Entity> Vrrp::Ipv4::VirtualRouters::get_child_by_name(const std:
     {
         auto c = std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter>();
         c->parent = this;
-        virtual_router.push_back(c);
+        virtual_router.append(c);
         return c;
     }
 
@@ -4312,7 +4360,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : virtual_router)
+    for (auto c : virtual_router.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4341,7 +4389,7 @@ bool Vrrp::Ipv4::VirtualRouters::has_leaf_or_child_of_name(const std::string & n
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::VirtualRouter()
     :
     interface_name{YType::str, "interface-name"},
-    virtual_router_id{YType::int32, "virtual-router-id"},
+    virtual_router_id{YType::uint32, "virtual-router-id"},
     interface_name_xr{YType::str, "interface-name-xr"},
     virtual_router_id_xr{YType::uint32, "virtual-router-id-xr"},
     version{YType::uint8, "version"},
@@ -4411,14 +4459,18 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::VirtualRouter()
     virtual_mac_address_state{YType::enumeration, "virtual-mac-address-state"},
     operational_address{YType::str, "operational-address"},
     ipv4_configured_down_address{YType::str, "ipv4-configured-down-address"}
-    	,
+        ,
     resign_sent_time(std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime>())
-	,resign_received_time(std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime>())
+    , resign_received_time(std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime>())
+    , ipv6_operational_address(this, {})
+    , ipv6_configured_down_address(this, {})
+    , track_item_info(this, {})
+    , state_change_history(this, {})
 {
     resign_sent_time->parent = this;
     resign_received_time->parent = this;
 
-    yang_name = "virtual-router"; yang_parent_name = "virtual-routers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "virtual-router"; yang_parent_name = "virtual-routers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::~VirtualRouter()
@@ -4427,22 +4479,23 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::~VirtualRouter()
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_operational_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_operational_address.len(); index++)
     {
         if(ipv6_operational_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_configured_down_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_configured_down_address.len(); index++)
     {
         if(ipv6_configured_down_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<track_item_info.size(); index++)
+    for (std::size_t index=0; index<track_item_info.len(); index++)
     {
         if(track_item_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<state_change_history.size(); index++)
+    for (std::size_t index=0; index<state_change_history.len(); index++)
     {
         if(state_change_history[index]->has_data())
             return true;
@@ -4532,22 +4585,22 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_data() const
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_operational_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_operational_address.len(); index++)
     {
         if(ipv6_operational_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6_configured_down_address.size(); index++)
+    for (std::size_t index=0; index<ipv6_configured_down_address.len(); index++)
     {
         if(ipv6_configured_down_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<track_item_info.size(); index++)
+    for (std::size_t index=0; index<track_item_info.len(); index++)
     {
         if(track_item_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<state_change_history.size(); index++)
+    for (std::size_t index=0; index<state_change_history.len(); index++)
     {
         if(state_change_history[index]->has_operation())
             return true;
@@ -4648,7 +4701,9 @@ std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_absolute_path() const
 std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "virtual-router" <<"[interface-name='" <<interface_name <<"']" <<"[virtual-router-id='" <<virtual_router_id <<"']";
+    path_buffer << "virtual-router";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
     return path_buffer.str();
 }
 
@@ -4758,7 +4813,7 @@ std::shared_ptr<Entity> Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress>();
         c->parent = this;
-        ipv6_operational_address.push_back(c);
+        ipv6_operational_address.append(c);
         return c;
     }
 
@@ -4766,7 +4821,7 @@ std::shared_ptr<Entity> Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress>();
         c->parent = this;
-        ipv6_configured_down_address.push_back(c);
+        ipv6_configured_down_address.append(c);
         return c;
     }
 
@@ -4774,7 +4829,7 @@ std::shared_ptr<Entity> Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo>();
         c->parent = this;
-        track_item_info.push_back(c);
+        track_item_info.append(c);
         return c;
     }
 
@@ -4782,7 +4837,7 @@ std::shared_ptr<Entity> Vrrp::Ipv4::VirtualRouters::VirtualRouter::get_child_by_
     {
         auto c = std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory>();
         c->parent = this;
-        state_change_history.push_back(c);
+        state_change_history.append(c);
         return c;
     }
 
@@ -4804,7 +4859,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : ipv6_operational_address)
+    for (auto c : ipv6_operational_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4813,7 +4868,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : ipv6_configured_down_address)
+    for (auto c : ipv6_configured_down_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4822,7 +4877,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : track_item_info)
+    for (auto c : track_item_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4831,7 +4886,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::Ipv4::VirtualRouters::Virtu
     }
 
     count = 0;
-    for (auto const & c : state_change_history)
+    for (auto c : state_change_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5569,7 +5624,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::ResignSentTime()
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "resign-sent-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resign-sent-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::~ResignSentTime()
@@ -5578,6 +5633,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::~ResignSentTime()
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignSentTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -5660,7 +5716,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::ResignReceivedTim
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "resign-received-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resign-received-time"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::~ResignReceivedTime()
@@ -5669,6 +5725,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::~ResignReceivedTi
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::ResignReceivedTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -5750,7 +5807,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::Ipv6Operation
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "ipv6-operational-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-operational-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::~Ipv6OperationalAddress()
@@ -5759,6 +5816,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::~Ipv6Operatio
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set;
 }
 
@@ -5827,7 +5885,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::Ipv6Config
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "ipv6-configured-down-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-configured-down-address"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::~Ipv6ConfiguredDownAddress()
@@ -5836,6 +5894,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::~Ipv6Confi
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set;
 }
 
@@ -5909,7 +5968,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::TrackItemInfo()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "track-item-info"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track-item-info"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::~TrackItemInfo()
@@ -5918,6 +5977,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::~TrackItemInfo()
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| virtual_router_id_xr.is_set
 	|| tracked_item_type.is_set
@@ -6051,12 +6111,12 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::StateChangeHistor
     old_state{YType::enumeration, "old-state"},
     new_state{YType::enumeration, "new-state"},
     reason{YType::enumeration, "reason"}
-    	,
+        ,
     time(std::make_shared<Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time>())
 {
     time->parent = this;
 
-    yang_name = "state-change-history"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-change-history"; yang_parent_name = "virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::~StateChangeHistory()
@@ -6065,6 +6125,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::~StateChangeHisto
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return old_state.is_set
 	|| new_state.is_set
 	|| reason.is_set
@@ -6176,7 +6237,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::Time()
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "time"; yang_parent_name = "state-change-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "state-change-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::~Time()
@@ -6185,6 +6246,7 @@ Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::~Time()
 
 bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -6262,9 +6324,11 @@ bool Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::Time::has_le
 }
 
 Vrrp::MgoSessions::MgoSessions()
+    :
+    mgo_session(this, {"session_name"})
 {
 
-    yang_name = "mgo-sessions"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mgo-sessions"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::MgoSessions::~MgoSessions()
@@ -6273,7 +6337,8 @@ Vrrp::MgoSessions::~MgoSessions()
 
 bool Vrrp::MgoSessions::has_data() const
 {
-    for (std::size_t index=0; index<mgo_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mgo_session.len(); index++)
     {
         if(mgo_session[index]->has_data())
             return true;
@@ -6283,7 +6348,7 @@ bool Vrrp::MgoSessions::has_data() const
 
 bool Vrrp::MgoSessions::has_operation() const
 {
-    for (std::size_t index=0; index<mgo_session.size(); index++)
+    for (std::size_t index=0; index<mgo_session.len(); index++)
     {
         if(mgo_session[index]->has_operation())
             return true;
@@ -6320,7 +6385,7 @@ std::shared_ptr<Entity> Vrrp::MgoSessions::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Vrrp::MgoSessions::MgoSession>();
         c->parent = this;
-        mgo_session.push_back(c);
+        mgo_session.append(c);
         return c;
     }
 
@@ -6332,7 +6397,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::MgoSessions::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mgo_session)
+    for (auto c : mgo_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6366,9 +6431,11 @@ Vrrp::MgoSessions::MgoSession::MgoSession()
     primary_af_name{YType::enumeration, "primary-af-name"},
     primary_session_number{YType::uint32, "primary-session-number"},
     primary_session_state{YType::enumeration, "primary-session-state"}
+        ,
+    slave(this, {})
 {
 
-    yang_name = "mgo-session"; yang_parent_name = "mgo-sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mgo-session"; yang_parent_name = "mgo-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vrrp::MgoSessions::MgoSession::~MgoSession()
@@ -6377,7 +6444,8 @@ Vrrp::MgoSessions::MgoSession::~MgoSession()
 
 bool Vrrp::MgoSessions::MgoSession::has_data() const
 {
-    for (std::size_t index=0; index<slave.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slave.len(); index++)
     {
         if(slave[index]->has_data())
             return true;
@@ -6392,7 +6460,7 @@ bool Vrrp::MgoSessions::MgoSession::has_data() const
 
 bool Vrrp::MgoSessions::MgoSession::has_operation() const
 {
-    for (std::size_t index=0; index<slave.size(); index++)
+    for (std::size_t index=0; index<slave.len(); index++)
     {
         if(slave[index]->has_operation())
             return true;
@@ -6416,7 +6484,8 @@ std::string Vrrp::MgoSessions::MgoSession::get_absolute_path() const
 std::string Vrrp::MgoSessions::MgoSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mgo-session" <<"[session-name='" <<session_name <<"']";
+    path_buffer << "mgo-session";
+    ADD_KEY_TOKEN(session_name, "session-name");
     return path_buffer.str();
 }
 
@@ -6441,7 +6510,7 @@ std::shared_ptr<Entity> Vrrp::MgoSessions::MgoSession::get_child_by_name(const s
     {
         auto c = std::make_shared<Vrrp::MgoSessions::MgoSession::Slave>();
         c->parent = this;
-        slave.push_back(c);
+        slave.append(c);
         return c;
     }
 
@@ -6453,7 +6522,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vrrp::MgoSessions::MgoSession::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slave)
+    for (auto c : slave.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6545,7 +6614,7 @@ Vrrp::MgoSessions::MgoSession::Slave::Slave()
     slave_virtual_router_id{YType::uint32, "slave-virtual-router-id"}
 {
 
-    yang_name = "slave"; yang_parent_name = "mgo-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slave"; yang_parent_name = "mgo-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vrrp::MgoSessions::MgoSession::Slave::~Slave()
@@ -6554,6 +6623,7 @@ Vrrp::MgoSessions::MgoSession::Slave::~Slave()
 
 bool Vrrp::MgoSessions::MgoSession::Slave::has_data() const
 {
+    if (is_presence_container) return true;
     return slave_interface.is_set
 	|| slave_virtual_router_id.is_set;
 }
@@ -6630,11 +6700,6 @@ bool Vrrp::MgoSessions::MgoSession::Slave::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-const Enum::YLeaf VrrpVmacState::stored {0, "stored"};
-const Enum::YLeaf VrrpVmacState::reserved {1, "reserved"};
-const Enum::YLeaf VrrpVmacState::active {2, "active"};
-const Enum::YLeaf VrrpVmacState::reserving {3, "reserving"};
-
 const Enum::YLeaf VrrpStateChangeReason::state_change_bfd_down {0, "state-change-bfd-down"};
 const Enum::YLeaf VrrpStateChangeReason::state_change_virtual_ip_configured {1, "state-change-virtual-ip-configured"};
 const Enum::YLeaf VrrpStateChangeReason::state_change_interface_ip {2, "state-change-interface-ip"};
@@ -6649,25 +6714,30 @@ const Enum::YLeaf VrrpStateChangeReason::state_change_mgo_parent {10, "state-cha
 const Enum::YLeaf VrrpStateChangeReason::state_change_chkpt_update {11, "state-change-chkpt-update"};
 const Enum::YLeaf VrrpStateChangeReason::state_change_issu_resync {12, "state-change-issu-resync"};
 
-const Enum::YLeaf VrrpBfdSessionState::bfd_state_none {0, "bfd-state-none"};
-const Enum::YLeaf VrrpBfdSessionState::bfd_state_inactive {1, "bfd-state-inactive"};
-const Enum::YLeaf VrrpBfdSessionState::bfd_state_up {2, "bfd-state-up"};
-const Enum::YLeaf VrrpBfdSessionState::bfd_state_down {3, "bfd-state-down"};
+const Enum::YLeaf VrrpVmacState::stored {0, "stored"};
+const Enum::YLeaf VrrpVmacState::reserved {1, "reserved"};
+const Enum::YLeaf VrrpVmacState::active {2, "active"};
+const Enum::YLeaf VrrpVmacState::reserving {3, "reserving"};
+
+const Enum::YLeaf VrrpBAf::address_family_ipv4 {0, "address-family-ipv4"};
+const Enum::YLeaf VrrpBAf::address_family_ipv6 {1, "address-family-ipv6"};
+const Enum::YLeaf VrrpBAf::vrrp_baf_count {2, "vrrp-baf-count"};
+
+const Enum::YLeaf VrrpVipState::virtual_ip_state_down {0, "virtual-ip-state-down"};
+const Enum::YLeaf VrrpVipState::virtual_ip_state_up {1, "virtual-ip-state-up"};
 
 const Enum::YLeaf VrrpProtAuth::authentication_none {0, "authentication-none"};
 const Enum::YLeaf VrrpProtAuth::authentication_text {1, "authentication-text"};
 const Enum::YLeaf VrrpProtAuth::authentication_ip {2, "authentication-ip"};
 
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_none {0, "bfd-state-none"};
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_inactive {1, "bfd-state-inactive"};
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_up {2, "bfd-state-up"};
+const Enum::YLeaf VrrpBfdSessionState::bfd_state_down {3, "bfd-state-down"};
+
 const Enum::YLeaf VrrpBagProtocolState::state_initial {1, "state-initial"};
 const Enum::YLeaf VrrpBagProtocolState::state_backup {2, "state-backup"};
 const Enum::YLeaf VrrpBagProtocolState::state_master {3, "state-master"};
-
-const Enum::YLeaf VrrpVipState::virtual_ip_state_down {0, "virtual-ip-state-down"};
-const Enum::YLeaf VrrpVipState::virtual_ip_state_up {1, "virtual-ip-state-up"};
-
-const Enum::YLeaf VrrpBAf::address_family_ipv4 {0, "address-family-ipv4"};
-const Enum::YLeaf VrrpBAf::address_family_ipv6 {1, "address-family-ipv6"};
-const Enum::YLeaf VrrpBAf::vrrp_baf_count {2, "vrrp-baf-count"};
 
 
 }

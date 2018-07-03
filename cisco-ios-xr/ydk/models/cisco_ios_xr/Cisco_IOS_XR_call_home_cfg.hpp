@@ -86,7 +86,7 @@ class CallHome::MailServers : public ydk::Entity
 
         class MailServer; //type: CallHome::MailServers::MailServer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::MailServers::MailServer> > mail_server;
+        ydk::YList mail_server;
         
 }; // CallHome::MailServers
 
@@ -201,7 +201,7 @@ class CallHome::Profiles : public ydk::Entity
 
         class Profile; //type: CallHome::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // CallHome::Profiles
 
@@ -327,7 +327,7 @@ class CallHome::Profiles::Profile::Methods : public ydk::Entity
 
         class Method; //type: CallHome::Profiles::Profile::Methods::Method
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::Profiles::Profile::Methods::Method> > method;
+        ydk::YList method;
         
 }; // CallHome::Profiles::Profile::Methods
 
@@ -372,7 +372,7 @@ class CallHome::Profiles::Profile::Addresses : public ydk::Entity
 
         class Address; //type: CallHome::Profiles::Profile::Addresses::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::Profiles::Profile::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // CallHome::Profiles::Profile::Addresses
 
@@ -639,7 +639,7 @@ class CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs : public ydk::En
 
         class Syslog; //type: CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs::Syslog> > syslog;
+        ydk::YList syslog;
         
 }; // CallHome::Profiles::Profile::SubscribeAlertGroup::Syslogs
 
@@ -685,7 +685,7 @@ class CallHome::AlertGroups : public ydk::Entity
 
         class AlertGroup; //type: CallHome::AlertGroups::AlertGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::AlertGroups::AlertGroup> > alert_group;
+        ydk::YList alert_group;
         
 }; // CallHome::AlertGroups
 
@@ -733,7 +733,7 @@ class CallHome::DataPrivacies : public ydk::Entity
 
         class DataPrivacy; //type: CallHome::DataPrivacies::DataPrivacy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::DataPrivacies::DataPrivacy> > data_privacy;
+        ydk::YList data_privacy;
         
 }; // CallHome::DataPrivacies
 
@@ -804,7 +804,7 @@ class CallHome::AlertGroupConfig::SnapshotCommands : public ydk::Entity
 
         class SnapshotCommand; //type: CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_call_home_cfg::CallHome::AlertGroupConfig::SnapshotCommands::SnapshotCommand> > snapshot_command;
+        ydk::YList snapshot_command;
         
 }; // CallHome::AlertGroupConfig::SnapshotCommands
 
@@ -854,15 +854,6 @@ class CallHome::Authorization : public ydk::Entity
 
 }; // CallHome::Authorization
 
-class CallHomeMailSendInterval : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf daily;
-        static const ydk::Enum::YLeaf weekly;
-        static const ydk::Enum::YLeaf monthly;
-
-};
-
 class CallHomeDayOfWeek : public ydk::Enum
 {
     public:
@@ -873,6 +864,24 @@ class CallHomeDayOfWeek : public ydk::Enum
         static const ydk::Enum::YLeaf thursday;
         static const ydk::Enum::YLeaf friday;
         static const ydk::Enum::YLeaf saturday;
+
+};
+
+class DataPrivacyLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf host_name;
+
+};
+
+class CallHomeMailSendInterval : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf daily;
+        static const ydk::Enum::YLeaf weekly;
+        static const ydk::Enum::YLeaf monthly;
 
 };
 
@@ -906,15 +915,6 @@ class CallHomeTransMethod : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf email;
         static const ydk::Enum::YLeaf http;
-
-};
-
-class DataPrivacyLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf host_name;
 
 };
 

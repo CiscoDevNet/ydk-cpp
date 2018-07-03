@@ -12,9 +12,12 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_dhcp_oper {
 
 DhcpOperData::DhcpOperData()
+    :
+    dhcpv4_server_oper(this, {"pool_name", "client_ip", "vrf_name"})
+    , dhcpv4_client_oper(this, {"if_name", "client_addr", "vrf_name"})
 {
 
-    yang_name = "dhcp-oper-data"; yang_parent_name = "Cisco-IOS-XE-dhcp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "dhcp-oper-data"; yang_parent_name = "Cisco-IOS-XE-dhcp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DhcpOperData::~DhcpOperData()
@@ -23,12 +26,13 @@ DhcpOperData::~DhcpOperData()
 
 bool DhcpOperData::has_data() const
 {
-    for (std::size_t index=0; index<dhcpv4_server_oper.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dhcpv4_server_oper.len(); index++)
     {
         if(dhcpv4_server_oper[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dhcpv4_client_oper.size(); index++)
+    for (std::size_t index=0; index<dhcpv4_client_oper.len(); index++)
     {
         if(dhcpv4_client_oper[index]->has_data())
             return true;
@@ -38,12 +42,12 @@ bool DhcpOperData::has_data() const
 
 bool DhcpOperData::has_operation() const
 {
-    for (std::size_t index=0; index<dhcpv4_server_oper.size(); index++)
+    for (std::size_t index=0; index<dhcpv4_server_oper.len(); index++)
     {
         if(dhcpv4_server_oper[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dhcpv4_client_oper.size(); index++)
+    for (std::size_t index=0; index<dhcpv4_client_oper.len(); index++)
     {
         if(dhcpv4_client_oper[index]->has_operation())
             return true;
@@ -73,7 +77,7 @@ std::shared_ptr<Entity> DhcpOperData::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<DhcpOperData::Dhcpv4ServerOper>();
         c->parent = this;
-        dhcpv4_server_oper.push_back(c);
+        dhcpv4_server_oper.append(c);
         return c;
     }
 
@@ -81,7 +85,7 @@ std::shared_ptr<Entity> DhcpOperData::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<DhcpOperData::Dhcpv4ClientOper>();
         c->parent = this;
-        dhcpv4_client_oper.push_back(c);
+        dhcpv4_client_oper.append(c);
         return c;
     }
 
@@ -93,7 +97,7 @@ std::map<std::string, std::shared_ptr<Entity>> DhcpOperData::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dhcpv4_server_oper)
+    for (auto c : dhcpv4_server_oper.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -102,7 +106,7 @@ std::map<std::string, std::shared_ptr<Entity>> DhcpOperData::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : dhcpv4_client_oper)
+    for (auto c : dhcpv4_client_oper.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -163,12 +167,12 @@ DhcpOperData::Dhcpv4ServerOper::Dhcpv4ServerOper()
     type{YType::enumeration, "type"},
     state{YType::enumeration, "state"},
     interface{YType::str, "interface"}
-    	,
+        ,
     expiration(std::make_shared<DhcpOperData::Dhcpv4ServerOper::Expiration>())
 {
     expiration->parent = this;
 
-    yang_name = "dhcpv4-server-oper"; yang_parent_name = "dhcp-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dhcpv4-server-oper"; yang_parent_name = "dhcp-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DhcpOperData::Dhcpv4ServerOper::~Dhcpv4ServerOper()
@@ -177,6 +181,7 @@ DhcpOperData::Dhcpv4ServerOper::~Dhcpv4ServerOper()
 
 bool DhcpOperData::Dhcpv4ServerOper::has_data() const
 {
+    if (is_presence_container) return true;
     return pool_name.is_set
 	|| client_ip.is_set
 	|| vrf_name.is_set
@@ -212,7 +217,10 @@ std::string DhcpOperData::Dhcpv4ServerOper::get_absolute_path() const
 std::string DhcpOperData::Dhcpv4ServerOper::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dhcpv4-server-oper" <<"[pool-name='" <<pool_name <<"']" <<"[client-ip='" <<client_ip <<"']" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "dhcpv4-server-oper";
+    ADD_KEY_TOKEN(pool_name, "pool-name");
+    ADD_KEY_TOKEN(client_ip, "client-ip");
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -360,7 +368,7 @@ DhcpOperData::Dhcpv4ServerOper::Expiration::Expiration()
     infinite{YType::empty, "infinite"}
 {
 
-    yang_name = "expiration"; yang_parent_name = "dhcpv4-server-oper"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "expiration"; yang_parent_name = "dhcpv4-server-oper"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DhcpOperData::Dhcpv4ServerOper::Expiration::~Expiration()
@@ -369,6 +377,7 @@ DhcpOperData::Dhcpv4ServerOper::Expiration::~Expiration()
 
 bool DhcpOperData::Dhcpv4ServerOper::Expiration::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set
 	|| infinite.is_set;
 }
@@ -456,12 +465,12 @@ DhcpOperData::Dhcpv4ClientOper::Dhcpv4ClientOper()
     lease_time{YType::uint32, "lease-time"},
     lease_remaining{YType::uint32, "lease-remaining"},
     dns_list{YType::str, "dns-list"}
-    	,
+        ,
     lease_expiry(std::make_shared<DhcpOperData::Dhcpv4ClientOper::LeaseExpiry>())
 {
     lease_expiry->parent = this;
 
-    yang_name = "dhcpv4-client-oper"; yang_parent_name = "dhcp-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dhcpv4-client-oper"; yang_parent_name = "dhcp-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DhcpOperData::Dhcpv4ClientOper::~Dhcpv4ClientOper()
@@ -470,6 +479,7 @@ DhcpOperData::Dhcpv4ClientOper::~Dhcpv4ClientOper()
 
 bool DhcpOperData::Dhcpv4ClientOper::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : dns_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -516,7 +526,10 @@ std::string DhcpOperData::Dhcpv4ClientOper::get_absolute_path() const
 std::string DhcpOperData::Dhcpv4ClientOper::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dhcpv4-client-oper" <<"[if-name='" <<if_name <<"']" <<"[client-addr='" <<client_addr <<"']" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "dhcpv4-client-oper";
+    ADD_KEY_TOKEN(if_name, "if-name");
+    ADD_KEY_TOKEN(client_addr, "client-addr");
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -674,7 +687,7 @@ DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::LeaseExpiry()
     infinite{YType::empty, "infinite"}
 {
 
-    yang_name = "lease-expiry"; yang_parent_name = "dhcpv4-client-oper"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lease-expiry"; yang_parent_name = "dhcpv4-client-oper"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::~LeaseExpiry()
@@ -683,6 +696,7 @@ DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::~LeaseExpiry()
 
 bool DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set
 	|| infinite.is_set;
 }
@@ -759,11 +773,6 @@ bool DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::has_leaf_or_child_of_name(cons
     return false;
 }
 
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_selecting {0, "dhcp-server-binding-state-selecting"};
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_active {1, "dhcp-server-binding-state-active"};
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_terminated {2, "dhcp-server-binding-state-terminated"};
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_unknown {3, "dhcp-server-binding-state-unknown"};
-
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_manual {0, "dhcp-server-binding-type-manual"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_static {1, "dhcp-server-binding-type-static"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_relay {2, "dhcp-server-binding-type-relay"};
@@ -771,6 +780,14 @@ const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_automatic {3, 
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_odap {4, "dhcp-server-binding-type-odap"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_from_aaa {5, "dhcp-server-binding-type-from-aaa"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_remembered {6, "dhcp-server-binding-type-remembered"};
+
+const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_time {0, "dhcp-expiration-time"};
+const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_infinite {1, "dhcp-expiration-infinite"};
+
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_ethernet {0, "dhcp-htype-ethernet"};
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_ieee802 {1, "dhcp-htype-ieee802"};
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_rfclimit {2, "dhcp-htype-rfclimit"};
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_clientid {3, "dhcp-htype-clientid"};
 
 const Enum::YLeaf DhcpClientState::dhcp_client_state_temp_from_client {0, "dhcp-client-state-temp-from-client"};
 const Enum::YLeaf DhcpClientState::dhcp_client_state_temp_from_sync {1, "dhcp-client-state-temp-from-sync"};
@@ -787,13 +804,10 @@ const Enum::YLeaf DhcpClientState::dhcp_client_state_purging {11, "dhcp-client-s
 const Enum::YLeaf DhcpClientState::dhcp_client_state_leasequery {12, "dhcp-client-state-leasequery"};
 const Enum::YLeaf DhcpClientState::dhcp_client_state_unknown {13, "dhcp-client-state-unknown"};
 
-const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_time {0, "dhcp-expiration-time"};
-const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_infinite {1, "dhcp-expiration-infinite"};
-
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_ethernet {0, "dhcp-htype-ethernet"};
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_ieee802 {1, "dhcp-htype-ieee802"};
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_rfclimit {2, "dhcp-htype-rfclimit"};
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_clientid {3, "dhcp-htype-clientid"};
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_selecting {0, "dhcp-server-binding-state-selecting"};
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_active {1, "dhcp-server-binding-state-active"};
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_terminated {2, "dhcp-server-binding-state-terminated"};
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_unknown {3, "dhcp-server-binding-state-unknown"};
 
 
 }

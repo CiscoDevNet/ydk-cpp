@@ -343,7 +343,7 @@ class PlatformQosEa::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: PlatformQosEa::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // PlatformQosEa::Nodes::Node::Interfaces
 
@@ -498,7 +498,7 @@ class PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywar
 
         class QosShowEaPclassSt; //type: PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt> > qos_show_ea_pclass_st;
+        ydk::YList qos_show_ea_pclass_st;
         
 }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass
 
@@ -970,7 +970,7 @@ class PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Skywarp
 
         class QosShowEaPclassSt; //type: PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt> > qos_show_ea_pclass_st;
+        ydk::YList qos_show_ea_pclass_st;
         
 }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass
 

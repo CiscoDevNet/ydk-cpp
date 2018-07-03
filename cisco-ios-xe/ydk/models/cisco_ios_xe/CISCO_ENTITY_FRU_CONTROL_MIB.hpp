@@ -32,52 +32,52 @@ class CISCOENTITYFRUCONTROLMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cefcfrupower; //type: CISCOENTITYFRUCONTROLMIB::Cefcfrupower
-        class Cefcmibnotificationenables; //type: CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables
-        class Cefcfrupowersupplygrouptable; //type: CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable
-        class Cefcfrupowerstatustable; //type: CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable
-        class Cefcfrupowersupplyvaluetable; //type: CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable
-        class Cefcmoduletable; //type: CISCOENTITYFRUCONTROLMIB::Cefcmoduletable
-        class Cefcintellimoduletable; //type: CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable
-        class Cefcmodulelocalswitchingtable; //type: CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable
-        class Cefcfantraystatustable; //type: CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable
-        class Cefcphysicaltable; //type: CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable
-        class Cefcpowersupplyinputtable; //type: CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable
-        class Cefcpowersupplyoutputtable; //type: CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable
-        class Cefcchassiscoolingtable; //type: CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable
-        class Cefcfancoolingtable; //type: CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable
-        class Cefcmodulecoolingtable; //type: CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable
-        class Cefcfancoolingcaptable; //type: CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable
-        class Cefcconnectorratingtable; //type: CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable
-        class Cefcmodulepowerconsumptiontable; //type: CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable
+        class CefcFRUPower; //type: CISCOENTITYFRUCONTROLMIB::CefcFRUPower
+        class CefcMIBNotificationEnables; //type: CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables
+        class CefcFRUPowerSupplyGroupTable; //type: CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable
+        class CefcFRUPowerStatusTable; //type: CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable
+        class CefcFRUPowerSupplyValueTable; //type: CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable
+        class CefcModuleTable; //type: CISCOENTITYFRUCONTROLMIB::CefcModuleTable
+        class CefcIntelliModuleTable; //type: CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable
+        class CefcModuleLocalSwitchingTable; //type: CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable
+        class CefcFanTrayStatusTable; //type: CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable
+        class CefcPhysicalTable; //type: CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable
+        class CefcPowerSupplyInputTable; //type: CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable
+        class CefcPowerSupplyOutputTable; //type: CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable
+        class CefcChassisCoolingTable; //type: CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable
+        class CefcFanCoolingTable; //type: CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable
+        class CefcModuleCoolingTable; //type: CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable
+        class CefcFanCoolingCapTable; //type: CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable
+        class CefcConnectorRatingTable; //type: CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable
+        class CefcModulePowerConsumptionTable; //type: CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfrupower> cefcfrupower;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables> cefcmibnotificationenables;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable> cefcfrupowersupplygrouptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable> cefcfrupowerstatustable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable> cefcfrupowersupplyvaluetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmoduletable> cefcmoduletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable> cefcintellimoduletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable> cefcmodulelocalswitchingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable> cefcfantraystatustable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable> cefcphysicaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable> cefcpowersupplyinputtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable> cefcpowersupplyoutputtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable> cefcchassiscoolingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable> cefcfancoolingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable> cefcmodulecoolingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable> cefcfancoolingcaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable> cefcconnectorratingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable> cefcmodulepowerconsumptiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcFRUPower> cefcfrupower;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables> cefcmibnotificationenables;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable> cefcfrupowersupplygrouptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable> cefcfrupowerstatustable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable> cefcfrupowersupplyvaluetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcModuleTable> cefcmoduletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable> cefcintellimoduletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable> cefcmodulelocalswitchingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable> cefcfantraystatustable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable> cefcphysicaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable> cefcpowersupplyinputtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable> cefcpowersupplyoutputtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable> cefcchassiscoolingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable> cefcfancoolingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable> cefcmodulecoolingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable> cefcfancoolingcaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable> cefcconnectorratingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable> cefcmodulepowerconsumptiontable;
         
 }; // CISCOENTITYFRUCONTROLMIB
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupower : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPower : public ydk::Entity
 {
     public:
-        Cefcfrupower();
-        ~Cefcfrupower();
+        CefcFRUPower();
+        ~CefcFRUPower();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -93,14 +93,14 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupower : public ydk::Entity
         ydk::YLeaf cefcmaxdefaultinlinepower; //type: int32
         ydk::YLeaf cefcmaxdefaulthighinlinepower; //type: uint32
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfrupower
+}; // CISCOENTITYFRUCONTROLMIB::CefcFRUPower
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables : public ydk::Entity
 {
     public:
-        Cefcmibnotificationenables();
-        ~Cefcmibnotificationenables();
+        CefcMIBNotificationEnables();
+        ~CefcMIBNotificationEnables();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -116,14 +116,14 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables : public ydk::Entity
         ydk::YLeaf cefcmibenablestatusnotification; //type: boolean
         ydk::YLeaf cefcenablepsoutputchangenotif; //type: boolean
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmibnotificationenables
+}; // CISCOENTITYFRUCONTROLMIB::CefcMIBNotificationEnables
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable : public ydk::Entity
 {
     public:
-        Cefcfrupowersupplygrouptable();
-        ~Cefcfrupowersupplygrouptable();
+        CefcFRUPowerSupplyGroupTable();
+        ~CefcFRUPowerSupplyGroupTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -136,18 +136,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcfrupowersupplygroupentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry
+        class CefcFRUPowerSupplyGroupEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry> > cefcfrupowersupplygroupentry;
+        ydk::YList cefcfrupowersupplygroupentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable
+}; // CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry : public ydk::Entity
 {
     public:
-        Cefcfrupowersupplygroupentry();
-        ~Cefcfrupowersupplygroupentry();
+        CefcFRUPowerSupplyGroupEntry();
+        ~CefcFRUPowerSupplyGroupEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -160,25 +160,25 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupply
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcpowerredundancymode; //type: PowerRedundancyType
         ydk::YLeaf cefcpowerunits; //type: string
         ydk::YLeaf cefctotalavailablecurrent; //type: int32
         ydk::YLeaf cefctotaldrawncurrent; //type: int32
         ydk::YLeaf cefcpowerredundancyopermode; //type: PowerRedundancyType
-        ydk::YLeaf cefcpowernonredundantreason; //type: Cefcpowernonredundantreason
+        ydk::YLeaf cefcpowernonredundantreason; //type: CefcPowerNonRedundantReason
         ydk::YLeaf cefctotaldrawninlinecurrent; //type: int32
-        class Cefcpowernonredundantreason;
+        class CefcPowerNonRedundantReason;
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable : public ydk::Entity
 {
     public:
-        Cefcfrupowerstatustable();
-        ~Cefcfrupowerstatustable();
+        CefcFRUPowerStatusTable();
+        ~CefcFRUPowerStatusTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -191,18 +191,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcfrupowerstatusentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry
+        class CefcFRUPowerStatusEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry> > cefcfrupowerstatusentry;
+        ydk::YList cefcfrupowerstatusentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable
+}; // CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry : public ydk::Entity
 {
     public:
-        Cefcfrupowerstatusentry();
-        ~Cefcfrupowerstatusentry();
+        CefcFRUPowerStatusEntry();
+        ~CefcFRUPowerStatusEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -215,22 +215,22 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcfrupoweradminstatus; //type: PowerAdminType
         ydk::YLeaf cefcfrupoweroperstatus; //type: PowerOperType
         ydk::YLeaf cefcfrucurrent; //type: int32
-        ydk::YLeaf cefcfrupowercapability; //type: Cefcfrupowercapability
+        ydk::YLeaf cefcfrupowercapability; //type: CefcFRUPowerCapability
         ydk::YLeaf cefcfrurealtimecurrent; //type: int32
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfrupowerstatustable::Cefcfrupowerstatusentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcFRUPowerStatusTable::CefcFRUPowerStatusEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable : public ydk::Entity
 {
     public:
-        Cefcfrupowersupplyvaluetable();
-        ~Cefcfrupowersupplyvaluetable();
+        CefcFRUPowerSupplyValueTable();
+        ~CefcFRUPowerSupplyValueTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -243,18 +243,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcfrupowersupplyvalueentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry
+        class CefcFRUPowerSupplyValueEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry> > cefcfrupowersupplyvalueentry;
+        ydk::YList cefcfrupowersupplyvalueentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable
+}; // CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry : public ydk::Entity
 {
     public:
-        Cefcfrupowersupplyvalueentry();
-        ~Cefcfrupowersupplyvalueentry();
+        CefcFRUPowerSupplyValueEntry();
+        ~CefcFRUPowerSupplyValueEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -267,21 +267,21 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupply
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcfrutotalsystemcurrent; //type: int32
         ydk::YLeaf cefcfrudrawnsystemcurrent; //type: int32
         ydk::YLeaf cefcfrutotalinlinecurrent; //type: int32
         ydk::YLeaf cefcfrudrawninlinecurrent; //type: int32
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplyvaluetable::Cefcfrupowersupplyvalueentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyValueTable::CefcFRUPowerSupplyValueEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmoduletable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModuleTable : public ydk::Entity
 {
     public:
-        Cefcmoduletable();
-        ~Cefcmoduletable();
+        CefcModuleTable();
+        ~CefcModuleTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -294,18 +294,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmoduletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcmoduleentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry
+        class CefcModuleEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry> > cefcmoduleentry;
+        ydk::YList cefcmoduleentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmoduletable
+}; // CISCOENTITYFRUCONTROLMIB::CefcModuleTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry : public ydk::Entity
 {
     public:
-        Cefcmoduleentry();
-        ~Cefcmoduleentry();
+        CefcModuleEntry();
+        ~CefcModuleEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -318,7 +318,7 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcmoduleadminstatus; //type: ModuleAdminType
         ydk::YLeaf cefcmoduleoperstatus; //type: ModuleOperType
@@ -329,14 +329,14 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry : public ydk::E
         ydk::YLeaf cefcmodulestatechangereasondescr; //type: string
         ydk::YLeaf cefcmoduleuptime; //type: uint32
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmoduletable::Cefcmoduleentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcModuleTable::CefcModuleEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable : public ydk::Entity
 {
     public:
-        Cefcintellimoduletable();
-        ~Cefcintellimoduletable();
+        CefcIntelliModuleTable();
+        ~CefcIntelliModuleTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -349,18 +349,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcintellimoduleentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry
+        class CefcIntelliModuleEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry> > cefcintellimoduleentry;
+        ydk::YList cefcintellimoduleentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable
+}; // CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry : public ydk::Entity
 {
     public:
-        Cefcintellimoduleentry();
-        ~Cefcintellimoduleentry();
+        CefcIntelliModuleEntry();
+        ~CefcIntelliModuleEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -373,19 +373,19 @@ class CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcintellimoduleipaddrtype; //type: InetAddressType
         ydk::YLeaf cefcintellimoduleipaddr; //type: binary
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcintellimoduletable::Cefcintellimoduleentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcIntelliModuleTable::CefcIntelliModuleEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable : public ydk::Entity
 {
     public:
-        Cefcmodulelocalswitchingtable();
-        ~Cefcmodulelocalswitchingtable();
+        CefcModuleLocalSwitchingTable();
+        ~CefcModuleLocalSwitchingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -398,18 +398,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcmodulelocalswitchingentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry
+        class CefcModuleLocalSwitchingEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry> > cefcmodulelocalswitchingentry;
+        ydk::YList cefcmodulelocalswitchingentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable
+}; // CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry : public ydk::Entity
 {
     public:
-        Cefcmodulelocalswitchingentry();
-        ~Cefcmodulelocalswitchingentry();
+        CefcModuleLocalSwitchingEntry();
+        ~CefcModuleLocalSwitchingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -422,19 +422,19 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalsw
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        ydk::YLeaf cefcmodulelocalswitchingmode; //type: Cefcmodulelocalswitchingmode
-        class Cefcmodulelocalswitchingmode;
+        ydk::YLeaf cefcmodulelocalswitchingmode; //type: CefcModuleLocalSwitchingMode
+        class CefcModuleLocalSwitchingMode;
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable : public ydk::Entity
 {
     public:
-        Cefcfantraystatustable();
-        ~Cefcfantraystatustable();
+        CefcFanTrayStatusTable();
+        ~CefcFanTrayStatusTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -447,18 +447,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcfantraystatusentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry
+        class CefcFanTrayStatusEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry> > cefcfantraystatusentry;
+        ydk::YList cefcfantraystatusentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable
+}; // CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry : public ydk::Entity
 {
     public:
-        Cefcfantraystatusentry();
-        ~Cefcfantraystatusentry();
+        CefcFanTrayStatusEntry();
+        ~CefcFanTrayStatusEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -471,19 +471,19 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        ydk::YLeaf cefcfantrayoperstatus; //type: Cefcfantrayoperstatus
-        class Cefcfantrayoperstatus;
+        ydk::YLeaf cefcfantrayoperstatus; //type: CefcFanTrayOperStatus
+        class CefcFanTrayOperStatus;
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable : public ydk::Entity
 {
     public:
-        Cefcphysicaltable();
-        ~Cefcphysicaltable();
+        CefcPhysicalTable();
+        ~CefcPhysicalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -496,18 +496,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcphysicalentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry
+        class CefcPhysicalEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry> > cefcphysicalentry;
+        ydk::YList cefcphysicalentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable
+}; // CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry : public ydk::Entity
 {
     public:
-        Cefcphysicalentry();
-        ~Cefcphysicalentry();
+        CefcPhysicalEntry();
+        ~CefcPhysicalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -520,19 +520,19 @@ class CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        ydk::YLeaf cefcphysicalstatus; //type: Cefcphysicalstatus
-        class Cefcphysicalstatus;
+        ydk::YLeaf cefcphysicalstatus; //type: CefcPhysicalStatus
+        class CefcPhysicalStatus;
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable : public ydk::Entity
 {
     public:
-        Cefcpowersupplyinputtable();
-        ~Cefcpowersupplyinputtable();
+        CefcPowerSupplyInputTable();
+        ~CefcPowerSupplyInputTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -545,18 +545,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcpowersupplyinputentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry
+        class CefcPowerSupplyInputEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry> > cefcpowersupplyinputentry;
+        ydk::YList cefcpowersupplyinputentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable
+}; // CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry : public ydk::Entity
 {
     public:
-        Cefcpowersupplyinputentry();
-        ~Cefcpowersupplyinputentry();
+        CefcPowerSupplyInputEntry();
+        ~CefcPowerSupplyInputEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -569,20 +569,20 @@ class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinpute
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcpowersupplyinputindex; //type: uint32
-        ydk::YLeaf cefcpowersupplyinputtype; //type: Cefcpowersupplyinputtype
-        class Cefcpowersupplyinputtype;
+        ydk::YLeaf cefcpowersupplyinputtype; //type: CefcPowerSupplyInputType
+        class CefcPowerSupplyInputType;
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable : public ydk::Entity
 {
     public:
-        Cefcpowersupplyoutputtable();
-        ~Cefcpowersupplyoutputtable();
+        CefcPowerSupplyOutputTable();
+        ~CefcPowerSupplyOutputTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -595,18 +595,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcpowersupplyoutputentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry
+        class CefcPowerSupplyOutputEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry> > cefcpowersupplyoutputentry;
+        ydk::YList cefcpowersupplyoutputentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable
+}; // CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry : public ydk::Entity
 {
     public:
-        Cefcpowersupplyoutputentry();
-        ~Cefcpowersupplyoutputentry();
+        CefcPowerSupplyOutputEntry();
+        ~CefcPowerSupplyOutputEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -619,20 +619,20 @@ class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutpu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcpsoutputmodeindex; //type: uint32
         ydk::YLeaf cefcpsoutputmodecurrent; //type: int32
         ydk::YLeaf cefcpsoutputmodeinoperation; //type: boolean
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyoutputtable::Cefcpowersupplyoutputentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyOutputTable::CefcPowerSupplyOutputEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable : public ydk::Entity
 {
     public:
-        Cefcchassiscoolingtable();
-        ~Cefcchassiscoolingtable();
+        CefcChassisCoolingTable();
+        ~CefcChassisCoolingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -645,18 +645,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcchassiscoolingentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry
+        class CefcChassisCoolingEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry> > cefcchassiscoolingentry;
+        ydk::YList cefcchassiscoolingentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable
+}; // CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry : public ydk::Entity
 {
     public:
-        Cefcchassiscoolingentry();
-        ~Cefcchassiscoolingentry();
+        CefcChassisCoolingEntry();
+        ~CefcChassisCoolingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -669,19 +669,19 @@ class CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcchassisperslotcoolingcap; //type: uint32
         ydk::YLeaf cefcchassisperslotcoolingunit; //type: FRUCoolingUnit
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcchassiscoolingtable::Cefcchassiscoolingentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcChassisCoolingTable::CefcChassisCoolingEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable : public ydk::Entity
 {
     public:
-        Cefcfancoolingtable();
-        ~Cefcfancoolingtable();
+        CefcFanCoolingTable();
+        ~CefcFanCoolingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -694,18 +694,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcfancoolingentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry
+        class CefcFanCoolingEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry> > cefcfancoolingentry;
+        ydk::YList cefcfancoolingentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable
+}; // CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry : public ydk::Entity
 {
     public:
-        Cefcfancoolingentry();
-        ~Cefcfancoolingentry();
+        CefcFanCoolingEntry();
+        ~CefcFanCoolingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -718,19 +718,19 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcfancoolingcapacity; //type: uint32
         ydk::YLeaf cefcfancoolingcapacityunit; //type: FRUCoolingUnit
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfancoolingtable::Cefcfancoolingentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcFanCoolingTable::CefcFanCoolingEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable : public ydk::Entity
 {
     public:
-        Cefcmodulecoolingtable();
-        ~Cefcmodulecoolingtable();
+        CefcModuleCoolingTable();
+        ~CefcModuleCoolingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -743,18 +743,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcmodulecoolingentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry
+        class CefcModuleCoolingEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry> > cefcmodulecoolingentry;
+        ydk::YList cefcmodulecoolingentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable
+}; // CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry : public ydk::Entity
 {
     public:
-        Cefcmodulecoolingentry();
-        ~Cefcmodulecoolingentry();
+        CefcModuleCoolingEntry();
+        ~CefcModuleCoolingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -767,19 +767,19 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcmodulecooling; //type: uint32
         ydk::YLeaf cefcmodulecoolingunit; //type: FRUCoolingUnit
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmodulecoolingtable::Cefcmodulecoolingentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcModuleCoolingTable::CefcModuleCoolingEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable : public ydk::Entity
 {
     public:
-        Cefcfancoolingcaptable();
-        ~Cefcfancoolingcaptable();
+        CefcFanCoolingCapTable();
+        ~CefcFanCoolingCapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -792,18 +792,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcfancoolingcapentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry
+        class CefcFanCoolingCapEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry> > cefcfancoolingcapentry;
+        ydk::YList cefcfancoolingcapentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable
+}; // CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry : public ydk::Entity
 {
     public:
-        Cefcfancoolingcapentry();
-        ~Cefcfancoolingcapentry();
+        CefcFanCoolingCapEntry();
+        ~CefcFanCoolingCapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -816,7 +816,7 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcfancoolingcapindex; //type: uint32
         ydk::YLeaf cefcfancoolingcapmodedescr; //type: string
@@ -824,14 +824,14 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry :
         ydk::YLeaf cefcfancoolingcapcurrent; //type: int32
         ydk::YLeaf cefcfancoolingcapcapacityunit; //type: FRUCoolingUnit
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcfancoolingcaptable::Cefcfancoolingcapentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcFanCoolingCapTable::CefcFanCoolingCapEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable : public ydk::Entity
 {
     public:
-        Cefcconnectorratingtable();
-        ~Cefcconnectorratingtable();
+        CefcConnectorRatingTable();
+        ~CefcConnectorRatingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -844,18 +844,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcconnectorratingentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry
+        class CefcConnectorRatingEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry> > cefcconnectorratingentry;
+        ydk::YList cefcconnectorratingentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable
+}; // CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry : public ydk::Entity
 {
     public:
-        Cefcconnectorratingentry();
-        ~Cefcconnectorratingentry();
+        CefcConnectorRatingEntry();
+        ~CefcConnectorRatingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -868,18 +868,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcconnectorrating; //type: int32
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcconnectorratingtable::Cefcconnectorratingentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcConnectorRatingTable::CefcConnectorRatingEntry
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable : public ydk::Entity
 {
     public:
-        Cefcmodulepowerconsumptiontable();
-        ~Cefcmodulepowerconsumptiontable();
+        CefcModulePowerConsumptionTable();
+        ~CefcModulePowerConsumptionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -892,18 +892,18 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cefcmodulepowerconsumptionentry; //type: CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry
+        class CefcModulePowerConsumptionEntry; //type: CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_FRU_CONTROL_MIB::CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry> > cefcmodulepowerconsumptionentry;
+        ydk::YList cefcmodulepowerconsumptionentry;
         
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable
+}; // CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable
 
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry : public ydk::Entity
+class CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry : public ydk::Entity
 {
     public:
-        Cefcmodulepowerconsumptionentry();
-        ~Cefcmodulepowerconsumptionentry();
+        CefcModulePowerConsumptionEntry();
+        ~CefcModulePowerConsumptionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -916,22 +916,27 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepower
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cefcmodulepowerconsumption; //type: int32
 
-}; // CISCOENTITYFRUCONTROLMIB::Cefcmodulepowerconsumptiontable::Cefcmodulepowerconsumptionentry
+}; // CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry
 
-class PowerRedundancyType : public ydk::Enum
+class ModuleAdminType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf notsupported;
-        static const ydk::Enum::YLeaf redundant;
-        static const ydk::Enum::YLeaf combined;
-        static const ydk::Enum::YLeaf nonRedundant;
-        static const ydk::Enum::YLeaf psRedundant;
-        static const ydk::Enum::YLeaf inPwrSrcRedundant;
-        static const ydk::Enum::YLeaf psRedundantSingleInput;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf reset;
+        static const ydk::Enum::YLeaf outOfServiceAdmin;
+
+};
+
+class FRUCoolingUnit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cfm;
+        static const ydk::Enum::YLeaf watts;
 
 };
 
@@ -943,34 +948,6 @@ class PowerAdminType : public ydk::Enum
         static const ydk::Enum::YLeaf inlineAuto;
         static const ydk::Enum::YLeaf inlineOn;
         static const ydk::Enum::YLeaf powerCycle;
-
-};
-
-class PowerOperType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf offEnvOther;
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf offAdmin;
-        static const ydk::Enum::YLeaf offDenied;
-        static const ydk::Enum::YLeaf offEnvPower;
-        static const ydk::Enum::YLeaf offEnvTemp;
-        static const ydk::Enum::YLeaf offEnvFan;
-        static const ydk::Enum::YLeaf failed;
-        static const ydk::Enum::YLeaf onButFanFail;
-        static const ydk::Enum::YLeaf offCooling;
-        static const ydk::Enum::YLeaf offConnectorRating;
-        static const ydk::Enum::YLeaf onButInlinePowerFail;
-
-};
-
-class ModuleAdminType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf reset;
-        static const ydk::Enum::YLeaf outOfServiceAdmin;
 
 };
 
@@ -1036,15 +1013,38 @@ class ModuleResetReasonType : public ydk::Enum
 
 };
 
-class FRUCoolingUnit : public ydk::Enum
+class PowerRedundancyType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cfm;
-        static const ydk::Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf notsupported;
+        static const ydk::Enum::YLeaf redundant;
+        static const ydk::Enum::YLeaf combined;
+        static const ydk::Enum::YLeaf nonRedundant;
+        static const ydk::Enum::YLeaf psRedundant;
+        static const ydk::Enum::YLeaf inPwrSrcRedundant;
+        static const ydk::Enum::YLeaf psRedundantSingleInput;
 
 };
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupplygroupentry::Cefcpowernonredundantreason : public ydk::Enum
+class PowerOperType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf offEnvOther;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf offAdmin;
+        static const ydk::Enum::YLeaf offDenied;
+        static const ydk::Enum::YLeaf offEnvPower;
+        static const ydk::Enum::YLeaf offEnvTemp;
+        static const ydk::Enum::YLeaf offEnvFan;
+        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf onButFanFail;
+        static const ydk::Enum::YLeaf offCooling;
+        static const ydk::Enum::YLeaf offConnectorRating;
+        static const ydk::Enum::YLeaf onButInlinePowerFail;
+
+};
+
+class CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -1055,7 +1055,7 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfrupowersupplygrouptable::Cefcfrupowersupply
 
 };
 
-class CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalswitchingentry::Cefcmodulelocalswitchingmode : public ydk::Enum
+class CISCOENTITYFRUCONTROLMIB::CefcModuleLocalSwitchingTable::CefcModuleLocalSwitchingEntry::CefcModuleLocalSwitchingMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -1063,7 +1063,7 @@ class CISCOENTITYFRUCONTROLMIB::Cefcmodulelocalswitchingtable::Cefcmodulelocalsw
 
 };
 
-class CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::Cefcfantrayoperstatus : public ydk::Enum
+class CISCOENTITYFRUCONTROLMIB::CefcFanTrayStatusTable::CefcFanTrayStatusEntry::CefcFanTrayOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -1073,7 +1073,7 @@ class CISCOENTITYFRUCONTROLMIB::Cefcfantraystatustable::Cefcfantraystatusentry::
 
 };
 
-class CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::Cefcphysicalstatus : public ydk::Enum
+class CISCOENTITYFRUCONTROLMIB::CefcPhysicalTable::CefcPhysicalEntry::CefcPhysicalStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1083,7 +1083,7 @@ class CISCOENTITYFRUCONTROLMIB::Cefcphysicaltable::Cefcphysicalentry::Cefcphysic
 
 };
 
-class CISCOENTITYFRUCONTROLMIB::Cefcpowersupplyinputtable::Cefcpowersupplyinputentry::Cefcpowersupplyinputtype : public ydk::Enum
+class CISCOENTITYFRUCONTROLMIB::CefcPowerSupplyInputTable::CefcPowerSupplyInputEntry::CefcPowerSupplyInputType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;

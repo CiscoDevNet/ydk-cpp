@@ -36,10 +36,10 @@ class FlowMonitors : public ydk::Entity
         class FlowCacheStatistics; //type: FlowMonitors::FlowCacheStatistics
         class FlowMonitorStatistics; //type: FlowMonitors::FlowMonitorStatistics
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor> > flow_monitor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowExportStatistics> > flow_export_statistics;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowCacheStatistics> > flow_cache_statistics;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitorStatistics> > flow_monitor_statistics;
+        ydk::YList flow_monitor;
+        ydk::YList flow_export_statistics;
+        ydk::YList flow_cache_statistics;
+        ydk::YList flow_monitor_statistics;
         
 }; // FlowMonitors
 
@@ -88,7 +88,7 @@ class FlowMonitors::FlowMonitor::Flows : public ydk::Entity
 
         class Flow; //type: FlowMonitors::FlowMonitor::Flows::Flow
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowMonitor::Flows::Flow> > flow;
+        ydk::YList flow;
         
 }; // FlowMonitors::FlowMonitor::Flows
 
@@ -147,7 +147,7 @@ class FlowMonitors::FlowExportStatistics : public ydk::Entity
         class ExportClient; //type: FlowMonitors::FlowExportStatistics::ExportClient
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowExportStatistics::TransportStats> transport_stats;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowExportStatistics::ExportClient> > export_client;
+        ydk::YList export_client;
         
 }; // FlowMonitors::FlowExportStatistics
 
@@ -171,7 +171,7 @@ class FlowMonitors::FlowExportStatistics::TransportStats : public ydk::Entity
         ydk::YLeaf last_cleared; //type: string
         class FlowExporterStats; //type: FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_flow_monitor_oper::FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats> > flow_exporter_stats;
+        ydk::YList flow_exporter_stats;
         
 }; // FlowMonitors::FlowExportStatistics::TransportStats
 
@@ -362,6 +362,15 @@ class FlowExporterIpwriteStatsType : public ydk::Enum
 
 };
 
+class FlowMonitorCacheState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_deleted;
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_allocated;
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_not_allocated;
+
+};
+
 class FlowMonitorCacheType : public ydk::Enum
 {
     public:
@@ -369,15 +378,6 @@ class FlowMonitorCacheType : public ydk::Enum
         static const ydk::Enum::YLeaf flow_monitor_cache_type_permanent;
         static const ydk::Enum::YLeaf flow_monitor_cache_type_synchronized;
         static const ydk::Enum::YLeaf flow_monitor_cache_type_immediate;
-
-};
-
-class FlowMonitorCacheState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_deleted;
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_allocated;
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_not_allocated;
 
 };
 

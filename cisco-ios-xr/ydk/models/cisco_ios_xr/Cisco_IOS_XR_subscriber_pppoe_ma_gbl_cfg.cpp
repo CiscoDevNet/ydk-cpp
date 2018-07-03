@@ -15,12 +15,12 @@ PppoeCfg::PppoeCfg()
     :
     session_id_space_flat{YType::empty, "session-id-space-flat"},
     in_flight_window{YType::uint32, "in-flight-window"}
-    	,
+        ,
     pppoe_bba_groups(std::make_shared<PppoeCfg::PppoeBbaGroups>())
 {
     pppoe_bba_groups->parent = this;
 
-    yang_name = "pppoe-cfg"; yang_parent_name = "Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pppoe-cfg"; yang_parent_name = "Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PppoeCfg::~PppoeCfg()
@@ -29,6 +29,7 @@ PppoeCfg::~PppoeCfg()
 
 bool PppoeCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id_space_flat.is_set
 	|| in_flight_window.is_set
 	|| (pppoe_bba_groups !=  nullptr && pppoe_bba_groups->has_data());
@@ -147,9 +148,11 @@ bool PppoeCfg::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroups()
+    :
+    pppoe_bba_group(this, {"bba_group"})
 {
 
-    yang_name = "pppoe-bba-groups"; yang_parent_name = "pppoe-cfg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pppoe-bba-groups"; yang_parent_name = "pppoe-cfg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PppoeCfg::PppoeBbaGroups::~PppoeBbaGroups()
@@ -158,7 +161,8 @@ PppoeCfg::PppoeBbaGroups::~PppoeBbaGroups()
 
 bool PppoeCfg::PppoeBbaGroups::has_data() const
 {
-    for (std::size_t index=0; index<pppoe_bba_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pppoe_bba_group.len(); index++)
     {
         if(pppoe_bba_group[index]->has_data())
             return true;
@@ -168,7 +172,7 @@ bool PppoeCfg::PppoeBbaGroups::has_data() const
 
 bool PppoeCfg::PppoeBbaGroups::has_operation() const
 {
-    for (std::size_t index=0; index<pppoe_bba_group.size(); index++)
+    for (std::size_t index=0; index<pppoe_bba_group.len(); index++)
     {
         if(pppoe_bba_group[index]->has_operation())
             return true;
@@ -205,7 +209,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::get_child_by_name(const std::s
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup>();
         c->parent = this;
-        pppoe_bba_group.push_back(c);
+        pppoe_bba_group.append(c);
         return c;
     }
 
@@ -217,7 +221,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pppoe_bba_group)
+    for (auto c : pppoe_bba_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -250,18 +254,17 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PppoeBbaGroup()
     invalid_session_id{YType::enumeration, "invalid-session-id"},
     enable_padt_after_shut_down{YType::empty, "enable-padt-after-shut-down"},
     mtu{YType::uint32, "mtu"}
-    	,
+        ,
     tag(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag>())
-	,sessions(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions>())
-	,control_packets(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets>())
-	,pa_do_delay(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay>())
+    , sessions(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions>())
+    , control_packets(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets>())
+    , pa_do_delay(nullptr) // presence node
 {
     tag->parent = this;
     sessions->parent = this;
     control_packets->parent = this;
-    pa_do_delay->parent = this;
 
-    yang_name = "pppoe-bba-group"; yang_parent_name = "pppoe-bba-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pppoe-bba-group"; yang_parent_name = "pppoe-bba-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::~PppoeBbaGroup()
@@ -270,6 +273,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::~PppoeBbaGroup()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return bba_group.is_set
 	|| completion_timeout.is_set
 	|| invalid_session_id.is_set
@@ -305,7 +309,8 @@ std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_absolute_path() const
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pppoe-bba-group" <<"[bba-group='" <<bba_group <<"']";
+    path_buffer << "pppoe-bba-group";
+    ADD_KEY_TOKEN(bba_group, "bba-group");
     return path_buffer.str();
 }
 
@@ -461,15 +466,15 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Tag()
     ppp_max_payload_deny{YType::empty, "ppp-max-payload-deny"},
     service_selection_disable{YType::empty, "service-selection-disable"},
     ac_name{YType::str, "ac-name"}
-    	,
+        ,
     padr(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr>())
-	,service_name_configureds(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds>())
-	,ppp_max_payload(nullptr) // presence node
+    , service_name_configureds(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds>())
+    , ppp_max_payload(nullptr) // presence node
 {
     padr->parent = this;
     service_name_configureds->parent = this;
 
-    yang_name = "tag"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tag"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::~Tag()
@@ -478,6 +483,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::~Tag()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::has_data() const
 {
+    if (is_presence_container) return true;
     return ppp_max_payload_deny.is_set
 	|| service_selection_disable.is_set
 	|| ac_name.is_set
@@ -621,7 +627,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::Padr()
     invalid_payload_allow{YType::empty, "invalid-payload-allow"}
 {
 
-    yang_name = "padr"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padr"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::~Padr()
@@ -630,6 +636,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::~Padr()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::has_data() const
 {
+    if (is_presence_container) return true;
     return session_unique_relay_session_id.is_set
 	|| invalid_payload_allow.is_set;
 }
@@ -707,9 +714,11 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::Padr::has_leaf_or_child_of_na
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigureds()
+    :
+    service_name_configured(this, {"name"})
 {
 
-    yang_name = "service-name-configureds"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name-configureds"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::~ServiceNameConfigureds()
@@ -718,7 +727,8 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::~ServiceNa
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::has_data() const
 {
-    for (std::size_t index=0; index<service_name_configured.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_name_configured.len(); index++)
     {
         if(service_name_configured[index]->has_data())
             return true;
@@ -728,7 +738,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::has_d
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::has_operation() const
 {
-    for (std::size_t index=0; index<service_name_configured.size(); index++)
+    for (std::size_t index=0; index<service_name_configured.len(); index++)
     {
         if(service_name_configured[index]->has_operation())
             return true;
@@ -758,7 +768,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNam
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured>();
         c->parent = this;
-        service_name_configured.push_back(c);
+        service_name_configured.append(c);
         return c;
     }
 
@@ -770,7 +780,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_name_configured)
+    for (auto c : service_name_configured.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -801,7 +811,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNam
     name{YType::str, "name"}
 {
 
-    yang_name = "service-name-configured"; yang_parent_name = "service-name-configureds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name-configured"; yang_parent_name = "service-name-configureds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::~ServiceNameConfigured()
@@ -810,6 +820,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNam
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -822,7 +833,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::Servi
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::ServiceNameConfigureds::ServiceNameConfigured::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-name-configured" <<"[name='" <<name <<"']";
+    path_buffer << "service-name-configured";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -879,7 +891,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::PppMaxPayload()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "ppp-max-payload"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp-max-payload"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::~PppMaxPayload()
@@ -888,6 +900,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::~PppMaxPayload()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -967,29 +980,29 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Tag::PppMaxPayload::has_leaf_or_ch
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::Sessions()
     :
     vlan_throttle(nullptr) // presence node
-	,inner_vlan_throttle(nullptr) // presence node
-	,remote_id_limit(nullptr) // presence node
-	,mac_iwf_access_interface_throttle(nullptr) // presence node
-	,access_interface_limit(nullptr) // presence node
-	,mac_access_interface_throttle(nullptr) // presence node
-	,outer_vlan_limit(nullptr) // presence node
-	,circuit_id_throttle(nullptr) // presence node
-	,mac_limit(nullptr) // presence node
-	,circuit_id_limit(nullptr) // presence node
-	,mac_iwf_limit(nullptr) // presence node
-	,mac_iwf_access_interface_limit(nullptr) // presence node
-	,inner_vlan_limit(nullptr) // presence node
-	,outer_vlan_throttle(nullptr) // presence node
-	,mac_throttle(nullptr) // presence node
-	,circuit_id_and_remote_id_limit(nullptr) // presence node
-	,vlan_limit(nullptr) // presence node
-	,mac_access_interface_limit(nullptr) // presence node
-	,remote_id_throttle(nullptr) // presence node
-	,max_limit(nullptr) // presence node
-	,circuit_id_and_remote_id_throttle(nullptr) // presence node
+    , inner_vlan_throttle(nullptr) // presence node
+    , remote_id_limit(nullptr) // presence node
+    , mac_iwf_access_interface_throttle(nullptr) // presence node
+    , access_interface_limit(nullptr) // presence node
+    , mac_access_interface_throttle(nullptr) // presence node
+    , outer_vlan_limit(nullptr) // presence node
+    , circuit_id_throttle(nullptr) // presence node
+    , mac_limit(nullptr) // presence node
+    , circuit_id_limit(nullptr) // presence node
+    , mac_iwf_limit(nullptr) // presence node
+    , mac_iwf_access_interface_limit(nullptr) // presence node
+    , inner_vlan_limit(nullptr) // presence node
+    , outer_vlan_throttle(nullptr) // presence node
+    , mac_throttle(nullptr) // presence node
+    , circuit_id_and_remote_id_limit(nullptr) // presence node
+    , vlan_limit(nullptr) // presence node
+    , mac_access_interface_limit(nullptr) // presence node
+    , remote_id_throttle(nullptr) // presence node
+    , max_limit(nullptr) // presence node
+    , circuit_id_and_remote_id_throttle(nullptr) // presence node
 {
 
-    yang_name = "sessions"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::~Sessions()
@@ -998,6 +1011,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::~Sessions()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan_throttle !=  nullptr && vlan_throttle->has_data())
 	|| (inner_vlan_throttle !=  nullptr && inner_vlan_throttle->has_data())
 	|| (remote_id_limit !=  nullptr && remote_id_limit->has_data())
@@ -1391,7 +1405,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::VlanThrottle()
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "vlan-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::~VlanThrottle()
@@ -1400,6 +1414,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::~VlanThrottle()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -1496,7 +1511,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::InnerVlanT
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "inner-vlan-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inner-vlan-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::~InnerVlanThrottle()
@@ -1505,6 +1520,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::~InnerVlan
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -1600,7 +1616,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::RemoteIdLimit(
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "remote-id-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::~RemoteIdLimit()
@@ -1609,6 +1625,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::~RemoteIdLimit
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -1692,7 +1709,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "mac-iwf-access-interface-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-iwf-access-interface-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::~MacIwfAccessInterfaceThrottle()
@@ -1701,6 +1718,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -1796,7 +1814,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::AccessI
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "access-interface-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::~AccessInterfaceLimit()
@@ -1805,6 +1823,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::~Access
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::AccessInterfaceLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -1888,7 +1907,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::M
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "mac-access-interface-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-access-interface-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::~MacAccessInterfaceThrottle()
@@ -1897,6 +1916,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::~
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -1992,7 +2012,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::OuterVlanLimi
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "outer-vlan-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outer-vlan-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::~OuterVlanLimit()
@@ -2001,6 +2021,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::~OuterVlanLim
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -2084,7 +2105,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::CircuitIdT
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "circuit-id-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::~CircuitIdThrottle()
@@ -2093,6 +2114,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::~CircuitId
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -2188,7 +2210,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::MacLimit()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "mac-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::~MacLimit()
@@ -2197,6 +2219,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::~MacLimit()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -2279,7 +2302,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::CircuitIdLimi
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "circuit-id-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::~CircuitIdLimit()
@@ -2288,6 +2311,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::~CircuitIdLim
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -2370,7 +2394,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::MacIwfLimit()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "mac-iwf-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-iwf-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::~MacIwfLimit()
@@ -2379,6 +2403,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::~MacIwfLimit()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -2461,7 +2486,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::M
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "mac-iwf-access-interface-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-iwf-access-interface-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::~MacIwfAccessInterfaceLimit()
@@ -2470,6 +2495,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::~
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacIwfAccessInterfaceLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -2552,7 +2578,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::InnerVlanLimi
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "inner-vlan-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inner-vlan-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::~InnerVlanLimit()
@@ -2561,6 +2587,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::~InnerVlanLim
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::InnerVlanLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -2644,7 +2671,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::OuterVlanT
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "outer-vlan-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outer-vlan-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::~OuterVlanThrottle()
@@ -2653,6 +2680,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::~OuterVlan
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::OuterVlanThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -2749,7 +2777,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::MacThrottle()
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "mac-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::~MacThrottle()
@@ -2758,6 +2786,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::~MacThrottle()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -2853,7 +2882,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::Ci
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "circuit-id-and-remote-id-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-and-remote-id-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::~CircuitIdAndRemoteIdLimit()
@@ -2862,6 +2891,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::~C
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -2944,7 +2974,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::VlanLimit()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "vlan-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::~VlanLimit()
@@ -2953,6 +2983,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::~VlanLimit()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::VlanLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -3035,7 +3066,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::MacA
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "mac-access-interface-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-access-interface-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::~MacAccessInterfaceLimit()
@@ -3044,6 +3075,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::~Mac
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MacAccessInterfaceLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -3127,7 +3159,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::RemoteIdThr
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "remote-id-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::~RemoteIdThrottle()
@@ -3136,6 +3168,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::~RemoteIdTh
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::RemoteIdThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -3231,7 +3264,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::MaxLimit()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "max-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-limit"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::~MaxLimit()
@@ -3240,6 +3273,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::~MaxLimit()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::MaxLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| threshold.is_set;
 }
@@ -3323,7 +3357,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle:
     blocking_period{YType::uint32, "blocking-period"}
 {
 
-    yang_name = "circuit-id-and-remote-id-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-and-remote-id-throttle"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::~CircuitIdAndRemoteIdThrottle()
@@ -3332,6 +3366,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle:
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::Sessions::CircuitIdAndRemoteIdThrottle::has_data() const
 {
+    if (is_presence_container) return true;
     return throttle.is_set
 	|| request_period.is_set
 	|| blocking_period.is_set;
@@ -3426,7 +3461,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::ControlPackets()
     priority{YType::uint32, "priority"}
 {
 
-    yang_name = "control-packets"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "control-packets"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::~ControlPackets()
@@ -3435,6 +3470,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::~ControlPackets()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::ControlPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set;
 }
 
@@ -3503,13 +3539,13 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::PaDoDelay()
     default_{YType::uint32, "default"},
     circuit_id{YType::uint32, "circuit-id"},
     remote_id{YType::uint32, "remote-id"}
-    	,
+        ,
     remote_id_substrings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings>())
-	,remote_id_strings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings>())
-	,service_name_strings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings>())
-	,circuit_id_substrings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings>())
-	,service_name_substrings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings>())
-	,circuit_id_strings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings>())
+    , remote_id_strings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings>())
+    , service_name_strings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings>())
+    , circuit_id_substrings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings>())
+    , service_name_substrings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings>())
+    , circuit_id_strings(std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings>())
 {
     remote_id_substrings->parent = this;
     remote_id_strings->parent = this;
@@ -3518,7 +3554,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::PaDoDelay()
     service_name_substrings->parent = this;
     circuit_id_strings->parent = this;
 
-    yang_name = "pa-do-delay"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pa-do-delay"; yang_parent_name = "pppoe-bba-group"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::~PaDoDelay()
@@ -3527,6 +3563,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::~PaDoDelay()
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| circuit_id.is_set
 	|| remote_id.is_set
@@ -3713,9 +3750,11 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::has_leaf_or_child_of_na
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstrings()
+    :
+    remote_id_substring(this, {"name"})
 {
 
-    yang_name = "remote-id-substrings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-substrings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::~RemoteIdSubstrings()
@@ -3724,7 +3763,8 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::~RemoteI
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::has_data() const
 {
-    for (std::size_t index=0; index<remote_id_substring.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_id_substring.len(); index++)
     {
         if(remote_id_substring[index]->has_data())
             return true;
@@ -3734,7 +3774,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::has
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::has_operation() const
 {
-    for (std::size_t index=0; index<remote_id_substring.size(); index++)
+    for (std::size_t index=0; index<remote_id_substring.len(); index++)
     {
         if(remote_id_substring[index]->has_operation())
             return true;
@@ -3764,7 +3804,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Remo
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring>();
         c->parent = this;
-        remote_id_substring.push_back(c);
+        remote_id_substring.append(c);
         return c;
     }
 
@@ -3776,7 +3816,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_id_substring)
+    for (auto c : remote_id_substring.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3808,7 +3848,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteId
     delay{YType::uint32, "delay"}
 {
 
-    yang_name = "remote-id-substring"; yang_parent_name = "remote-id-substrings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-substring"; yang_parent_name = "remote-id-substrings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::~RemoteIdSubstring()
@@ -3817,6 +3857,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteId
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| delay.is_set;
 }
@@ -3831,7 +3872,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::Rem
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::RemoteIdSubstring::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-id-substring" <<"[name='" <<name <<"']";
+    path_buffer << "remote-id-substring";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3894,9 +3936,11 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdSubstrings::Rem
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdStrings()
+    :
+    remote_id_string(this, {"name"})
 {
 
-    yang_name = "remote-id-strings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-strings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::~RemoteIdStrings()
@@ -3905,7 +3949,8 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::~RemoteIdSt
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::has_data() const
 {
-    for (std::size_t index=0; index<remote_id_string.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_id_string.len(); index++)
     {
         if(remote_id_string[index]->has_data())
             return true;
@@ -3915,7 +3960,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::has_da
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::has_operation() const
 {
-    for (std::size_t index=0; index<remote_id_string.size(); index++)
+    for (std::size_t index=0; index<remote_id_string.len(); index++)
     {
         if(remote_id_string[index]->has_operation())
             return true;
@@ -3945,7 +3990,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Remo
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString>();
         c->parent = this;
-        remote_id_string.push_back(c);
+        remote_id_string.append(c);
         return c;
     }
 
@@ -3957,7 +4002,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_id_string)
+    for (auto c : remote_id_string.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3989,7 +4034,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdStr
     delay{YType::uint32, "delay"}
 {
 
-    yang_name = "remote-id-string"; yang_parent_name = "remote-id-strings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-string"; yang_parent_name = "remote-id-strings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::~RemoteIdString()
@@ -3998,6 +4043,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdStr
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| delay.is_set;
 }
@@ -4012,7 +4058,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::Remote
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::RemoteIdString::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-id-string" <<"[name='" <<name <<"']";
+    path_buffer << "remote-id-string";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4075,9 +4122,11 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::RemoteIdStrings::Remote
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameStrings()
+    :
+    service_name_string(this, {"name"})
 {
 
-    yang_name = "service-name-strings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name-strings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::~ServiceNameStrings()
@@ -4086,7 +4135,8 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::~Service
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::has_data() const
 {
-    for (std::size_t index=0; index<service_name_string.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_name_string.len(); index++)
     {
         if(service_name_string[index]->has_data())
             return true;
@@ -4096,7 +4146,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::has
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::has_operation() const
 {
-    for (std::size_t index=0; index<service_name_string.size(); index++)
+    for (std::size_t index=0; index<service_name_string.len(); index++)
     {
         if(service_name_string[index]->has_operation())
             return true;
@@ -4126,7 +4176,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Serv
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString>();
         c->parent = this;
-        service_name_string.push_back(c);
+        service_name_string.append(c);
         return c;
     }
 
@@ -4138,7 +4188,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_name_string)
+    for (auto c : service_name_string.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4170,7 +4220,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceN
     delay{YType::uint32, "delay"}
 {
 
-    yang_name = "service-name-string"; yang_parent_name = "service-name-strings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name-string"; yang_parent_name = "service-name-strings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::~ServiceNameString()
@@ -4179,6 +4229,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceN
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| delay.is_set;
 }
@@ -4193,7 +4244,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::Ser
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::ServiceNameString::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-name-string" <<"[name='" <<name <<"']";
+    path_buffer << "service-name-string";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4256,9 +4308,11 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameStrings::Ser
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstrings()
+    :
+    circuit_id_substring(this, {"name"})
 {
 
-    yang_name = "circuit-id-substrings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-substrings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::~CircuitIdSubstrings()
@@ -4267,7 +4321,8 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::~Circui
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::has_data() const
 {
-    for (std::size_t index=0; index<circuit_id_substring.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<circuit_id_substring.len(); index++)
     {
         if(circuit_id_substring[index]->has_data())
             return true;
@@ -4277,7 +4332,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::ha
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::has_operation() const
 {
-    for (std::size_t index=0; index<circuit_id_substring.size(); index++)
+    for (std::size_t index=0; index<circuit_id_substring.len(); index++)
     {
         if(circuit_id_substring[index]->has_operation())
             return true;
@@ -4307,7 +4362,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Circ
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring>();
         c->parent = this;
-        circuit_id_substring.push_back(c);
+        circuit_id_substring.append(c);
         return c;
     }
 
@@ -4319,7 +4374,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : circuit_id_substring)
+    for (auto c : circuit_id_substring.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4351,7 +4406,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::Circuit
     delay{YType::uint32, "delay"}
 {
 
-    yang_name = "circuit-id-substring"; yang_parent_name = "circuit-id-substrings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-substring"; yang_parent_name = "circuit-id-substrings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::~CircuitIdSubstring()
@@ -4360,6 +4415,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::Circuit
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| delay.is_set;
 }
@@ -4374,7 +4430,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::Ci
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::CircuitIdSubstring::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "circuit-id-substring" <<"[name='" <<name <<"']";
+    path_buffer << "circuit-id-substring";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4437,9 +4494,11 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdSubstrings::Ci
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstrings()
+    :
+    service_name_substring(this, {"name"})
 {
 
-    yang_name = "service-name-substrings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name-substrings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::~ServiceNameSubstrings()
@@ -4448,7 +4507,8 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::~Serv
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::has_data() const
 {
-    for (std::size_t index=0; index<service_name_substring.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_name_substring.len(); index++)
     {
         if(service_name_substring[index]->has_data())
             return true;
@@ -4458,7 +4518,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::has_operation() const
 {
-    for (std::size_t index=0; index<service_name_substring.size(); index++)
+    for (std::size_t index=0; index<service_name_substring.len(); index++)
     {
         if(service_name_substring[index]->has_operation())
             return true;
@@ -4488,7 +4548,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Serv
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring>();
         c->parent = this;
-        service_name_substring.push_back(c);
+        service_name_substring.append(c);
         return c;
     }
 
@@ -4500,7 +4560,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_name_substring)
+    for (auto c : service_name_substring.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4532,7 +4592,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::Servi
     delay{YType::uint32, "delay"}
 {
 
-    yang_name = "service-name-substring"; yang_parent_name = "service-name-substrings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-name-substring"; yang_parent_name = "service-name-substrings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::~ServiceNameSubstring()
@@ -4541,6 +4601,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::Servi
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| delay.is_set;
 }
@@ -4555,7 +4616,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::ServiceNameSubstring::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-name-substring" <<"[name='" <<name <<"']";
+    path_buffer << "service-name-substring";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4618,9 +4680,11 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::ServiceNameSubstrings::
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdStrings()
+    :
+    circuit_id_string(this, {"name"})
 {
 
-    yang_name = "circuit-id-strings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-strings"; yang_parent_name = "pa-do-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::~CircuitIdStrings()
@@ -4629,7 +4693,8 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::~CircuitId
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::has_data() const
 {
-    for (std::size_t index=0; index<circuit_id_string.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<circuit_id_string.len(); index++)
     {
         if(circuit_id_string[index]->has_data())
             return true;
@@ -4639,7 +4704,7 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::has_d
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::has_operation() const
 {
-    for (std::size_t index=0; index<circuit_id_string.size(); index++)
+    for (std::size_t index=0; index<circuit_id_string.len(); index++)
     {
         if(circuit_id_string[index]->has_operation())
             return true;
@@ -4669,7 +4734,7 @@ std::shared_ptr<Entity> PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::Circ
     {
         auto c = std::make_shared<PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString>();
         c->parent = this;
-        circuit_id_string.push_back(c);
+        circuit_id_string.append(c);
         return c;
     }
 
@@ -4681,7 +4746,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppoeCfg::PppoeBbaGroups::PppoeBb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : circuit_id_string)
+    for (auto c : circuit_id_string.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4713,7 +4778,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdS
     delay{YType::uint32, "delay"}
 {
 
-    yang_name = "circuit-id-string"; yang_parent_name = "circuit-id-strings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-string"; yang_parent_name = "circuit-id-strings"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::~CircuitIdString()
@@ -4722,6 +4787,7 @@ PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdS
 
 bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| delay.is_set;
 }
@@ -4736,7 +4802,8 @@ bool PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::Circu
 std::string PppoeCfg::PppoeBbaGroups::PppoeBbaGroup::PaDoDelay::CircuitIdStrings::CircuitIdString::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "circuit-id-string" <<"[name='" <<name <<"']";
+    path_buffer << "circuit-id-string";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

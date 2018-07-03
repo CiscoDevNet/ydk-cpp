@@ -14,30 +14,31 @@ namespace Cisco_IOS_XR_infra_xtc_cfg {
 Pce::Pce()
     :
     server_address{YType::str, "server-address"},
+    ipv6_server_address{YType::str, "ipv6-server-address"},
     password{YType::str, "password"},
     enable{YType::empty, "enable"}
-    	,
-    pcc_addresses(std::make_shared<Pce::PccAddresses>())
-	,logging(std::make_shared<Pce::Logging>())
-	,backoff(std::make_shared<Pce::Backoff>())
-	,state_syncs(std::make_shared<Pce::StateSyncs>())
-	,segment_routing(std::make_shared<Pce::SegmentRouting>())
-	,timers(std::make_shared<Pce::Timers>())
-	,netconf(std::make_shared<Pce::Netconf>())
-	,disjoint_path(std::make_shared<Pce::DisjointPath>())
-	,explicit_paths(std::make_shared<Pce::ExplicitPaths>())
+        ,
+    ipv6_state_syncs(std::make_shared<Pce::Ipv6StateSyncs>())
+    , pcc_addresses(std::make_shared<Pce::PccAddresses>())
+    , logging(std::make_shared<Pce::Logging>())
+    , backoff(nullptr) // presence node
+    , state_syncs(std::make_shared<Pce::StateSyncs>())
+    , segment_routing(std::make_shared<Pce::SegmentRouting>())
+    , timers(nullptr) // presence node
+    , netconf(std::make_shared<Pce::Netconf>())
+    , disjoint_path(std::make_shared<Pce::DisjointPath>())
+    , explicit_paths(std::make_shared<Pce::ExplicitPaths>())
 {
+    ipv6_state_syncs->parent = this;
     pcc_addresses->parent = this;
     logging->parent = this;
-    backoff->parent = this;
     state_syncs->parent = this;
     segment_routing->parent = this;
-    timers->parent = this;
     netconf->parent = this;
     disjoint_path->parent = this;
     explicit_paths->parent = this;
 
-    yang_name = "pce"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pce"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Pce::~Pce()
@@ -46,9 +47,12 @@ Pce::~Pce()
 
 bool Pce::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
+	|| ipv6_server_address.is_set
 	|| password.is_set
 	|| enable.is_set
+	|| (ipv6_state_syncs !=  nullptr && ipv6_state_syncs->has_data())
 	|| (pcc_addresses !=  nullptr && pcc_addresses->has_data())
 	|| (logging !=  nullptr && logging->has_data())
 	|| (backoff !=  nullptr && backoff->has_data())
@@ -64,8 +68,10 @@ bool Pce::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(server_address.yfilter)
+	|| ydk::is_set(ipv6_server_address.yfilter)
 	|| ydk::is_set(password.yfilter)
 	|| ydk::is_set(enable.yfilter)
+	|| (ipv6_state_syncs !=  nullptr && ipv6_state_syncs->has_operation())
 	|| (pcc_addresses !=  nullptr && pcc_addresses->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
 	|| (backoff !=  nullptr && backoff->has_operation())
@@ -89,6 +95,7 @@ std::vector<std::pair<std::string, LeafData> > Pce::get_name_leaf_data() const
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (server_address.is_set || is_set(server_address.yfilter)) leaf_name_data.push_back(server_address.get_name_leafdata());
+    if (ipv6_server_address.is_set || is_set(ipv6_server_address.yfilter)) leaf_name_data.push_back(ipv6_server_address.get_name_leafdata());
     if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
@@ -98,6 +105,15 @@ std::vector<std::pair<std::string, LeafData> > Pce::get_name_leaf_data() const
 
 std::shared_ptr<Entity> Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "ipv6-state-syncs")
+    {
+        if(ipv6_state_syncs == nullptr)
+        {
+            ipv6_state_syncs = std::make_shared<Pce::Ipv6StateSyncs>();
+        }
+        return ipv6_state_syncs;
+    }
+
     if(child_yang_name == "pcc-addresses")
     {
         if(pcc_addresses == nullptr)
@@ -186,6 +202,11 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(ipv6_state_syncs != nullptr)
+    {
+        children["ipv6-state-syncs"] = ipv6_state_syncs;
+    }
+
     if(pcc_addresses != nullptr)
     {
         children["pcc-addresses"] = pcc_addresses;
@@ -242,6 +263,12 @@ void Pce::set_value(const std::string & value_path, const std::string & value, c
         server_address.value_namespace = name_space;
         server_address.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv6-server-address")
+    {
+        ipv6_server_address = value;
+        ipv6_server_address.value_namespace = name_space;
+        ipv6_server_address.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "password")
     {
         password = value;
@@ -261,6 +288,10 @@ void Pce::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "server-address")
     {
         server_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-server-address")
+    {
+        ipv6_server_address.yfilter = yfilter;
     }
     if(value_path == "password")
     {
@@ -299,15 +330,203 @@ std::map<std::pair<std::string, std::string>, std::string> Pce::get_namespace_id
 
 bool Pce::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pcc-addresses" || name == "logging" || name == "backoff" || name == "state-syncs" || name == "segment-routing" || name == "timers" || name == "netconf" || name == "disjoint-path" || name == "explicit-paths" || name == "server-address" || name == "password" || name == "enable")
+    if(name == "ipv6-state-syncs" || name == "pcc-addresses" || name == "logging" || name == "backoff" || name == "state-syncs" || name == "segment-routing" || name == "timers" || name == "netconf" || name == "disjoint-path" || name == "explicit-paths" || name == "server-address" || name == "ipv6-server-address" || name == "password" || name == "enable")
+        return true;
+    return false;
+}
+
+Pce::Ipv6StateSyncs::Ipv6StateSyncs()
+    :
+    ipv6_state_sync(this, {"address"})
+{
+
+    yang_name = "ipv6-state-syncs"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::Ipv6StateSyncs::~Ipv6StateSyncs()
+{
+}
+
+bool Pce::Ipv6StateSyncs::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_state_sync.len(); index++)
+    {
+        if(ipv6_state_sync[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Pce::Ipv6StateSyncs::has_operation() const
+{
+    for (std::size_t index=0; index<ipv6_state_sync.len(); index++)
+    {
+        if(ipv6_state_sync[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Pce::Ipv6StateSyncs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::Ipv6StateSyncs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-state-syncs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::Ipv6StateSyncs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::Ipv6StateSyncs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ipv6-state-sync")
+    {
+        auto c = std::make_shared<Pce::Ipv6StateSyncs::Ipv6StateSync>();
+        c->parent = this;
+        ipv6_state_sync.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::Ipv6StateSyncs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : ipv6_state_sync.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Pce::Ipv6StateSyncs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pce::Ipv6StateSyncs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pce::Ipv6StateSyncs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-state-sync")
+        return true;
+    return false;
+}
+
+Pce::Ipv6StateSyncs::Ipv6StateSync::Ipv6StateSync()
+    :
+    address{YType::str, "address"}
+{
+
+    yang_name = "ipv6-state-sync"; yang_parent_name = "ipv6-state-syncs"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::Ipv6StateSyncs::Ipv6StateSync::~Ipv6StateSync()
+{
+}
+
+bool Pce::Ipv6StateSyncs::Ipv6StateSync::has_data() const
+{
+    if (is_presence_container) return true;
+    return address.is_set;
+}
+
+bool Pce::Ipv6StateSyncs::Ipv6StateSync::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address.yfilter);
+}
+
+std::string Pce::Ipv6StateSyncs::Ipv6StateSync::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/ipv6-state-syncs/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::Ipv6StateSyncs::Ipv6StateSync::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-state-sync";
+    ADD_KEY_TOKEN(address, "address");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::Ipv6StateSyncs::Ipv6StateSync::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Pce::Ipv6StateSyncs::Ipv6StateSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Pce::Ipv6StateSyncs::Ipv6StateSync::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Pce::Ipv6StateSyncs::Ipv6StateSync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::Ipv6StateSyncs::Ipv6StateSync::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+}
+
+bool Pce::Ipv6StateSyncs::Ipv6StateSync::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address")
         return true;
     return false;
 }
 
 Pce::PccAddresses::PccAddresses()
+    :
+    pcc_address(this, {"address"})
 {
 
-    yang_name = "pcc-addresses"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pcc-addresses"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::PccAddresses::~PccAddresses()
@@ -316,7 +535,8 @@ Pce::PccAddresses::~PccAddresses()
 
 bool Pce::PccAddresses::has_data() const
 {
-    for (std::size_t index=0; index<pcc_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pcc_address.len(); index++)
     {
         if(pcc_address[index]->has_data())
             return true;
@@ -326,7 +546,7 @@ bool Pce::PccAddresses::has_data() const
 
 bool Pce::PccAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<pcc_address.size(); index++)
+    for (std::size_t index=0; index<pcc_address.len(); index++)
     {
         if(pcc_address[index]->has_operation())
             return true;
@@ -363,7 +583,7 @@ std::shared_ptr<Entity> Pce::PccAddresses::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Pce::PccAddresses::PccAddress>();
         c->parent = this;
-        pcc_address.push_back(c);
+        pcc_address.append(c);
         return c;
     }
 
@@ -375,7 +595,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pcc_address)
+    for (auto c : pcc_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -405,12 +625,12 @@ Pce::PccAddresses::PccAddress::PccAddress()
     :
     address{YType::str, "address"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     lsp_names(std::make_shared<Pce::PccAddresses::PccAddress::LspNames>())
 {
     lsp_names->parent = this;
 
-    yang_name = "pcc-address"; yang_parent_name = "pcc-addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pcc-address"; yang_parent_name = "pcc-addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::PccAddresses::PccAddress::~PccAddress()
@@ -419,6 +639,7 @@ Pce::PccAddresses::PccAddress::~PccAddress()
 
 bool Pce::PccAddresses::PccAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| enable.is_set
 	|| (lsp_names !=  nullptr && lsp_names->has_data());
@@ -442,7 +663,8 @@ std::string Pce::PccAddresses::PccAddress::get_absolute_path() const
 std::string Pce::PccAddresses::PccAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pcc-address" <<"[address='" <<address <<"']";
+    path_buffer << "pcc-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -519,9 +741,11 @@ bool Pce::PccAddresses::PccAddress::has_leaf_or_child_of_name(const std::string 
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspNames()
+    :
+    lsp_name(this, {"name"})
 {
 
-    yang_name = "lsp-names"; yang_parent_name = "pcc-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-names"; yang_parent_name = "pcc-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::PccAddresses::PccAddress::LspNames::~LspNames()
@@ -530,7 +754,8 @@ Pce::PccAddresses::PccAddress::LspNames::~LspNames()
 
 bool Pce::PccAddresses::PccAddress::LspNames::has_data() const
 {
-    for (std::size_t index=0; index<lsp_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_name.len(); index++)
     {
         if(lsp_name[index]->has_data())
             return true;
@@ -540,7 +765,7 @@ bool Pce::PccAddresses::PccAddress::LspNames::has_data() const
 
 bool Pce::PccAddresses::PccAddress::LspNames::has_operation() const
 {
-    for (std::size_t index=0; index<lsp_name.size(); index++)
+    for (std::size_t index=0; index<lsp_name.len(); index++)
     {
         if(lsp_name[index]->has_operation())
             return true;
@@ -570,7 +795,7 @@ std::shared_ptr<Entity> Pce::PccAddresses::PccAddress::LspNames::get_child_by_na
     {
         auto c = std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName>();
         c->parent = this;
-        lsp_name.push_back(c);
+        lsp_name.append(c);
         return c;
     }
 
@@ -582,7 +807,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::PccAddresses::PccAddress::Ls
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp_name)
+    for (auto c : lsp_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -614,12 +839,11 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::LspName()
     undelegate{YType::empty, "undelegate"},
     explicit_path_name{YType::str, "explicit-path-name"},
     enable{YType::empty, "enable"}
-    	,
-    rsvp_te(std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe>())
+        ,
+    rsvp_te(nullptr) // presence node
 {
-    rsvp_te->parent = this;
 
-    yang_name = "lsp-name"; yang_parent_name = "lsp-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp-name"; yang_parent_name = "lsp-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::~LspName()
@@ -628,6 +852,7 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::~LspName()
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| undelegate.is_set
 	|| explicit_path_name.is_set
@@ -648,7 +873,8 @@ bool Pce::PccAddresses::PccAddress::LspNames::LspName::has_operation() const
 std::string Pce::PccAddresses::PccAddress::LspNames::LspName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp-name" <<"[name='" <<name <<"']";
+    path_buffer << "lsp-name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -749,15 +975,15 @@ bool Pce::PccAddresses::PccAddress::LspNames::LspName::has_leaf_or_child_of_name
 Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::RsvpTe()
     :
     fast_protect{YType::empty, "fast-protect"},
-    bandwidth{YType::int32, "bandwidth"},
+    bandwidth{YType::uint32, "bandwidth"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     affinity(std::make_shared<Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity>())
-	,priority(nullptr) // presence node
+    , priority(nullptr) // presence node
 {
     affinity->parent = this;
 
-    yang_name = "rsvp-te"; yang_parent_name = "lsp-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te"; yang_parent_name = "lsp-name"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::~RsvpTe()
@@ -766,6 +992,7 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::~RsvpTe()
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::has_data() const
 {
+    if (is_presence_container) return true;
     return fast_protect.is_set
 	|| bandwidth.is_set
 	|| enable.is_set
@@ -894,7 +1121,7 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::Affinity()
     exclude_any{YType::str, "exclude-any"}
 {
 
-    yang_name = "affinity"; yang_parent_name = "rsvp-te"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "affinity"; yang_parent_name = "rsvp-te"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::~Affinity()
@@ -903,6 +1130,7 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::~Affinity()
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity::has_data() const
 {
+    if (is_presence_container) return true;
     return include_any.is_set
 	|| include_all.is_set
 	|| exclude_any.is_set;
@@ -998,7 +1226,7 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::Priority()
     hold_priority{YType::uint32, "hold-priority"}
 {
 
-    yang_name = "priority"; yang_parent_name = "rsvp-te"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "rsvp-te"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::~Priority()
@@ -1007,6 +1235,7 @@ Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::~Priority()
 
 bool Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_priority.is_set
 	|| hold_priority.is_set;
 }
@@ -1090,7 +1319,7 @@ Pce::Logging::Logging()
     fallback{YType::empty, "fallback"}
 {
 
-    yang_name = "logging"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::Logging::~Logging()
@@ -1099,6 +1328,7 @@ Pce::Logging::~Logging()
 
 bool Pce::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return no_path.is_set
 	|| pcerr.is_set
 	|| fallback.is_set;
@@ -1202,7 +1432,7 @@ Pce::Backoff::Backoff()
     difference{YType::uint32, "difference"}
 {
 
-    yang_name = "backoff"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "backoff"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Pce::Backoff::~Backoff()
@@ -1211,6 +1441,7 @@ Pce::Backoff::~Backoff()
 
 bool Pce::Backoff::has_data() const
 {
+    if (is_presence_container) return true;
     return ratio.is_set
 	|| threshold.is_set
 	|| difference.is_set;
@@ -1308,9 +1539,11 @@ bool Pce::Backoff::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Pce::StateSyncs::StateSyncs()
+    :
+    state_sync(this, {"address"})
 {
 
-    yang_name = "state-syncs"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state-syncs"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::StateSyncs::~StateSyncs()
@@ -1319,7 +1552,8 @@ Pce::StateSyncs::~StateSyncs()
 
 bool Pce::StateSyncs::has_data() const
 {
-    for (std::size_t index=0; index<state_sync.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<state_sync.len(); index++)
     {
         if(state_sync[index]->has_data())
             return true;
@@ -1329,7 +1563,7 @@ bool Pce::StateSyncs::has_data() const
 
 bool Pce::StateSyncs::has_operation() const
 {
-    for (std::size_t index=0; index<state_sync.size(); index++)
+    for (std::size_t index=0; index<state_sync.len(); index++)
     {
         if(state_sync[index]->has_operation())
             return true;
@@ -1366,7 +1600,7 @@ std::shared_ptr<Entity> Pce::StateSyncs::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Pce::StateSyncs::StateSync>();
         c->parent = this;
-        state_sync.push_back(c);
+        state_sync.append(c);
         return c;
     }
 
@@ -1378,7 +1612,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::StateSyncs::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : state_sync)
+    for (auto c : state_sync.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1409,7 +1643,7 @@ Pce::StateSyncs::StateSync::StateSync()
     address{YType::str, "address"}
 {
 
-    yang_name = "state-sync"; yang_parent_name = "state-syncs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state-sync"; yang_parent_name = "state-syncs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::StateSyncs::StateSync::~StateSync()
@@ -1418,6 +1652,7 @@ Pce::StateSyncs::StateSync::~StateSync()
 
 bool Pce::StateSyncs::StateSync::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1437,7 +1672,8 @@ std::string Pce::StateSyncs::StateSync::get_absolute_path() const
 std::string Pce::StateSyncs::StateSync::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "state-sync" <<"[address='" <<address <<"']";
+    path_buffer << "state-sync";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1494,7 +1730,7 @@ Pce::SegmentRouting::SegmentRouting()
     strict_sid_only{YType::empty, "strict-sid-only"}
 {
 
-    yang_name = "segment-routing"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "segment-routing"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::SegmentRouting::~SegmentRouting()
@@ -1503,6 +1739,7 @@ Pce::SegmentRouting::~SegmentRouting()
 
 bool Pce::SegmentRouting::has_data() const
 {
+    if (is_presence_container) return true;
     return te_latency.is_set
 	|| strict_sid_only.is_set;
 }
@@ -1593,7 +1830,7 @@ Pce::Timers::Timers()
     minimum_peer_keepalive{YType::uint32, "minimum-peer-keepalive"}
 {
 
-    yang_name = "timers"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timers"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Pce::Timers::~Timers()
@@ -1602,6 +1839,7 @@ Pce::Timers::~Timers()
 
 bool Pce::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return reoptimization_timer.is_set
 	|| keepalive.is_set
 	|| minimum_peer_keepalive.is_set;
@@ -1700,11 +1938,10 @@ bool Pce::Timers::has_leaf_or_child_of_name(const std::string & name) const
 
 Pce::Netconf::Netconf()
     :
-    netconf_ssh(std::make_shared<Pce::Netconf::NetconfSsh>())
+    netconf_ssh(nullptr) // presence node
 {
-    netconf_ssh->parent = this;
 
-    yang_name = "netconf"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "netconf"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::Netconf::~Netconf()
@@ -1713,6 +1950,7 @@ Pce::Netconf::~Netconf()
 
 bool Pce::Netconf::has_data() const
 {
+    if (is_presence_container) return true;
     return (netconf_ssh !=  nullptr && netconf_ssh->has_data());
 }
 
@@ -1792,7 +2030,7 @@ Pce::Netconf::NetconfSsh::NetconfSsh()
     netconf_ssh_user{YType::str, "netconf-ssh-user"}
 {
 
-    yang_name = "netconf-ssh"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "netconf-ssh"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Pce::Netconf::NetconfSsh::~NetconfSsh()
@@ -1801,6 +2039,7 @@ Pce::Netconf::NetconfSsh::~NetconfSsh()
 
 bool Pce::Netconf::NetconfSsh::has_data() const
 {
+    if (is_presence_container) return true;
     return netconf_ssh_password.is_set
 	|| netconf_ssh_user.is_set;
 }
@@ -1887,12 +2126,12 @@ bool Pce::Netconf::NetconfSsh::has_leaf_or_child_of_name(const std::string & nam
 Pce::DisjointPath::DisjointPath()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     groups(std::make_shared<Pce::DisjointPath::Groups>())
 {
     groups->parent = this;
 
-    yang_name = "disjoint-path"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "disjoint-path"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::DisjointPath::~DisjointPath()
@@ -1901,6 +2140,7 @@ Pce::DisjointPath::~DisjointPath()
 
 bool Pce::DisjointPath::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (groups !=  nullptr && groups->has_data());
 }
@@ -1988,9 +2228,11 @@ bool Pce::DisjointPath::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Pce::DisjointPath::Groups::Groups()
+    :
+    group(this, {"group_id", "dp_type", "sub_id"})
 {
 
-    yang_name = "groups"; yang_parent_name = "disjoint-path"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "disjoint-path"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::DisjointPath::Groups::~Groups()
@@ -1999,7 +2241,8 @@ Pce::DisjointPath::Groups::~Groups()
 
 bool Pce::DisjointPath::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -2009,7 +2252,7 @@ bool Pce::DisjointPath::Groups::has_data() const
 
 bool Pce::DisjointPath::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -2046,7 +2289,7 @@ std::shared_ptr<Entity> Pce::DisjointPath::Groups::get_child_by_name(const std::
     {
         auto c = std::make_shared<Pce::DisjointPath::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -2058,7 +2301,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2091,12 +2334,12 @@ Pce::DisjointPath::Groups::Group::Group()
     sub_id{YType::uint32, "sub-id"},
     strict{YType::empty, "strict"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     group_lsp_records(std::make_shared<Pce::DisjointPath::Groups::Group::GroupLspRecords>())
 {
     group_lsp_records->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::DisjointPath::Groups::Group::~Group()
@@ -2105,6 +2348,7 @@ Pce::DisjointPath::Groups::Group::~Group()
 
 bool Pce::DisjointPath::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| dp_type.is_set
 	|| sub_id.is_set
@@ -2134,7 +2378,10 @@ std::string Pce::DisjointPath::Groups::Group::get_absolute_path() const
 std::string Pce::DisjointPath::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-id='" <<group_id <<"']" <<"[dp-type='" <<dp_type <<"']" <<"[sub-id='" <<sub_id <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_id, "group-id");
+    ADD_KEY_TOKEN(dp_type, "dp-type");
+    ADD_KEY_TOKEN(sub_id, "sub-id");
     return path_buffer.str();
 }
 
@@ -2244,9 +2491,11 @@ bool Pce::DisjointPath::Groups::Group::has_leaf_or_child_of_name(const std::stri
 }
 
 Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecords()
+    :
+    group_lsp_record(this, {"lsp_id"})
 {
 
-    yang_name = "group-lsp-records"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-lsp-records"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::DisjointPath::Groups::Group::GroupLspRecords::~GroupLspRecords()
@@ -2255,7 +2504,8 @@ Pce::DisjointPath::Groups::Group::GroupLspRecords::~GroupLspRecords()
 
 bool Pce::DisjointPath::Groups::Group::GroupLspRecords::has_data() const
 {
-    for (std::size_t index=0; index<group_lsp_record.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_lsp_record.len(); index++)
     {
         if(group_lsp_record[index]->has_data())
             return true;
@@ -2265,7 +2515,7 @@ bool Pce::DisjointPath::Groups::Group::GroupLspRecords::has_data() const
 
 bool Pce::DisjointPath::Groups::Group::GroupLspRecords::has_operation() const
 {
-    for (std::size_t index=0; index<group_lsp_record.size(); index++)
+    for (std::size_t index=0; index<group_lsp_record.len(); index++)
     {
         if(group_lsp_record[index]->has_operation())
             return true;
@@ -2295,7 +2545,7 @@ std::shared_ptr<Entity> Pce::DisjointPath::Groups::Group::GroupLspRecords::get_c
     {
         auto c = std::make_shared<Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord>();
         c->parent = this;
-        group_lsp_record.push_back(c);
+        group_lsp_record.append(c);
         return c;
     }
 
@@ -2307,7 +2557,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::DisjointPath::Groups::Group:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_lsp_record)
+    for (auto c : group_lsp_record.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2338,10 +2588,10 @@ Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::GroupLspRecor
     lsp_id{YType::uint32, "lsp-id"},
     ip_addr{YType::str, "ip-addr"},
     lsp_name{YType::str, "lsp-name"},
-    disj_path{YType::int32, "disj-path"}
+    disj_path{YType::uint32, "disj-path"}
 {
 
-    yang_name = "group-lsp-record"; yang_parent_name = "group-lsp-records"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-lsp-record"; yang_parent_name = "group-lsp-records"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::~GroupLspRecord()
@@ -2350,6 +2600,7 @@ Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::~GroupLspReco
 
 bool Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_id.is_set
 	|| ip_addr.is_set
 	|| lsp_name.is_set
@@ -2368,7 +2619,8 @@ bool Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::has_oper
 std::string Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-lsp-record" <<"[lsp-id='" <<lsp_id <<"']";
+    path_buffer << "group-lsp-record";
+    ADD_KEY_TOKEN(lsp_id, "lsp-id");
     return path_buffer.str();
 }
 
@@ -2453,9 +2705,11 @@ bool Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord::has_leaf
 }
 
 Pce::ExplicitPaths::ExplicitPaths()
+    :
+    explicit_path(this, {"name"})
 {
 
-    yang_name = "explicit-paths"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-paths"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::ExplicitPaths::~ExplicitPaths()
@@ -2464,7 +2718,8 @@ Pce::ExplicitPaths::~ExplicitPaths()
 
 bool Pce::ExplicitPaths::has_data() const
 {
-    for (std::size_t index=0; index<explicit_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<explicit_path.len(); index++)
     {
         if(explicit_path[index]->has_data())
             return true;
@@ -2474,7 +2729,7 @@ bool Pce::ExplicitPaths::has_data() const
 
 bool Pce::ExplicitPaths::has_operation() const
 {
-    for (std::size_t index=0; index<explicit_path.size(); index++)
+    for (std::size_t index=0; index<explicit_path.len(); index++)
     {
         if(explicit_path[index]->has_operation())
             return true;
@@ -2511,7 +2766,7 @@ std::shared_ptr<Entity> Pce::ExplicitPaths::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Pce::ExplicitPaths::ExplicitPath>();
         c->parent = this;
-        explicit_path.push_back(c);
+        explicit_path.append(c);
         return c;
     }
 
@@ -2523,7 +2778,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : explicit_path)
+    for (auto c : explicit_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2553,12 +2808,12 @@ Pce::ExplicitPaths::ExplicitPath::ExplicitPath()
     :
     name{YType::str, "name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     path_hops(std::make_shared<Pce::ExplicitPaths::ExplicitPath::PathHops>())
 {
     path_hops->parent = this;
 
-    yang_name = "explicit-path"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "explicit-path"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pce::ExplicitPaths::ExplicitPath::~ExplicitPath()
@@ -2567,6 +2822,7 @@ Pce::ExplicitPaths::ExplicitPath::~ExplicitPath()
 
 bool Pce::ExplicitPaths::ExplicitPath::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| enable.is_set
 	|| (path_hops !=  nullptr && path_hops->has_data());
@@ -2590,7 +2846,8 @@ std::string Pce::ExplicitPaths::ExplicitPath::get_absolute_path() const
 std::string Pce::ExplicitPaths::ExplicitPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "explicit-path" <<"[name='" <<name <<"']";
+    path_buffer << "explicit-path";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2667,9 +2924,11 @@ bool Pce::ExplicitPaths::ExplicitPath::has_leaf_or_child_of_name(const std::stri
 }
 
 Pce::ExplicitPaths::ExplicitPath::PathHops::PathHops()
+    :
+    path_hop(this, {"index_"})
 {
 
-    yang_name = "path-hops"; yang_parent_name = "explicit-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-hops"; yang_parent_name = "explicit-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::ExplicitPaths::ExplicitPath::PathHops::~PathHops()
@@ -2678,7 +2937,8 @@ Pce::ExplicitPaths::ExplicitPath::PathHops::~PathHops()
 
 bool Pce::ExplicitPaths::ExplicitPath::PathHops::has_data() const
 {
-    for (std::size_t index=0; index<path_hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_hop.len(); index++)
     {
         if(path_hop[index]->has_data())
             return true;
@@ -2688,7 +2948,7 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::has_data() const
 
 bool Pce::ExplicitPaths::ExplicitPath::PathHops::has_operation() const
 {
-    for (std::size_t index=0; index<path_hop.size(); index++)
+    for (std::size_t index=0; index<path_hop.len(); index++)
     {
         if(path_hop[index]->has_operation())
             return true;
@@ -2718,7 +2978,7 @@ std::shared_ptr<Entity> Pce::ExplicitPaths::ExplicitPath::PathHops::get_child_by
     {
         auto c = std::make_shared<Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop>();
         c->parent = this;
-        path_hop.push_back(c);
+        path_hop.append(c);
         return c;
     }
 
@@ -2730,7 +2990,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pce::ExplicitPaths::ExplicitPath:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path_hop)
+    for (auto c : path_hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2765,7 +3025,7 @@ Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::PathHop()
     mpls_label{YType::uint32, "mpls-label"}
 {
 
-    yang_name = "path-hop"; yang_parent_name = "path-hops"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-hop"; yang_parent_name = "path-hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::~PathHop()
@@ -2774,6 +3034,7 @@ Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::~PathHop()
 
 bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| hop_type.is_set
 	|| address.is_set
@@ -2794,7 +3055,8 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_operation() const
 std::string Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path-hop" <<"[index='" <<index_ <<"']";
+    path_buffer << "path-hop";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -2889,15 +3151,15 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_leaf_or_child_of_n
     return false;
 }
 
-const Enum::YLeaf PceDisjointPath::link {1, "link"};
-const Enum::YLeaf PceDisjointPath::node {2, "node"};
-const Enum::YLeaf PceDisjointPath::srlg {3, "srlg"};
-const Enum::YLeaf PceDisjointPath::srlg_node {4, "srlg-node"};
-
 const Enum::YLeaf PceExplicitPathHop::address {1, "address"};
 const Enum::YLeaf PceExplicitPathHop::sid_node {2, "sid-node"};
 const Enum::YLeaf PceExplicitPathHop::sid_adjancency {3, "sid-adjancency"};
 const Enum::YLeaf PceExplicitPathHop::binding_sid {4, "binding-sid"};
+
+const Enum::YLeaf PceDisjointPath::link {1, "link"};
+const Enum::YLeaf PceDisjointPath::node {2, "node"};
+const Enum::YLeaf PceDisjointPath::srlg {3, "srlg"};
+const Enum::YLeaf PceDisjointPath::srlg_node {4, "srlg-node"};
 
 
 }

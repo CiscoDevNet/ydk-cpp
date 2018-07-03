@@ -18,7 +18,7 @@ Platform::Platform()
 {
     racks->parent = this;
 
-    yang_name = "platform"; yang_parent_name = "Cisco-IOS-XR-plat-chas-invmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform"; yang_parent_name = "Cisco-IOS-XR-plat-chas-invmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Platform::~Platform()
@@ -27,6 +27,7 @@ Platform::~Platform()
 
 bool Platform::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -119,9 +120,11 @@ bool Platform::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Platform::Racks::Racks()
+    :
+    rack(this, {"rack_name"})
 {
 
-    yang_name = "racks"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "platform"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Platform::Racks::~Racks()
@@ -130,7 +133,8 @@ Platform::Racks::~Racks()
 
 bool Platform::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -140,7 +144,7 @@ bool Platform::Racks::has_data() const
 
 bool Platform::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -177,7 +181,7 @@ std::shared_ptr<Entity> Platform::Racks::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Platform::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -189,7 +193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -218,12 +222,12 @@ bool Platform::Racks::has_leaf_or_child_of_name(const std::string & name) const
 Platform::Racks::Rack::Rack()
     :
     rack_name{YType::str, "rack-name"}
-    	,
+        ,
     slots(std::make_shared<Platform::Racks::Rack::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Platform::Racks::Rack::~Rack()
@@ -232,6 +236,7 @@ Platform::Racks::Rack::~Rack()
 
 bool Platform::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return rack_name.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
@@ -253,7 +258,8 @@ std::string Platform::Racks::Rack::get_absolute_path() const
 std::string Platform::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[rack-name='" <<rack_name <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(rack_name, "rack-name");
     return path_buffer.str();
 }
 
@@ -319,9 +325,11 @@ bool Platform::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 Platform::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"slot_name"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Platform::Racks::Rack::Slots::~Slots()
@@ -330,7 +338,8 @@ Platform::Racks::Rack::Slots::~Slots()
 
 bool Platform::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -340,7 +349,7 @@ bool Platform::Racks::Rack::Slots::has_data() const
 
 bool Platform::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -370,7 +379,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::get_child_by_name(const st
     {
         auto c = std::make_shared<Platform::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -382,7 +391,7 @@ std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -411,16 +420,16 @@ bool Platform::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string &
 Platform::Racks::Rack::Slots::Slot::Slot()
     :
     slot_name{YType::str, "slot-name"}
-    	,
+        ,
     instances(std::make_shared<Platform::Racks::Rack::Slots::Slot::Instances>())
-	,vm(std::make_shared<Platform::Racks::Rack::Slots::Slot::Vm>())
-	,state(std::make_shared<Platform::Racks::Rack::Slots::Slot::State>())
+    , vm(std::make_shared<Platform::Racks::Rack::Slots::Slot::Vm>())
+    , state(std::make_shared<Platform::Racks::Rack::Slots::Slot::State>())
 {
     instances->parent = this;
     vm->parent = this;
     state->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Platform::Racks::Rack::Slots::Slot::~Slot()
@@ -429,6 +438,7 @@ Platform::Racks::Rack::Slots::Slot::~Slot()
 
 bool Platform::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return slot_name.is_set
 	|| (instances !=  nullptr && instances->has_data())
 	|| (vm !=  nullptr && vm->has_data())
@@ -447,7 +457,8 @@ bool Platform::Racks::Rack::Slots::Slot::has_operation() const
 std::string Platform::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[slot-name='" <<slot_name <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(slot_name, "slot-name");
     return path_buffer.str();
 }
 
@@ -541,9 +552,11 @@ bool Platform::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::st
 }
 
 Platform::Racks::Rack::Slots::Slot::Instances::Instances()
+    :
+    instance(this, {"instance_name"})
 {
 
-    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Platform::Racks::Rack::Slots::Slot::Instances::~Instances()
@@ -552,7 +565,8 @@ Platform::Racks::Rack::Slots::Slot::Instances::~Instances()
 
 bool Platform::Racks::Rack::Slots::Slot::Instances::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -562,7 +576,7 @@ bool Platform::Racks::Rack::Slots::Slot::Instances::has_data() const
 
 bool Platform::Racks::Rack::Slots::Slot::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -592,7 +606,7 @@ std::shared_ptr<Entity> Platform::Racks::Rack::Slots::Slot::Instances::get_child
     {
         auto c = std::make_shared<Platform::Racks::Rack::Slots::Slot::Instances::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -604,7 +618,7 @@ std::map<std::string, std::shared_ptr<Entity>> Platform::Racks::Rack::Slots::Slo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -633,12 +647,12 @@ bool Platform::Racks::Rack::Slots::Slot::Instances::has_leaf_or_child_of_name(co
 Platform::Racks::Rack::Slots::Slot::Instances::Instance::Instance()
     :
     instance_name{YType::str, "instance-name"}
-    	,
+        ,
     state(std::make_shared<Platform::Racks::Rack::Slots::Slot::Instances::Instance::State>())
 {
     state->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Platform::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
@@ -647,6 +661,7 @@ Platform::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
 
 bool Platform::Racks::Rack::Slots::Slot::Instances::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| (state !=  nullptr && state->has_data());
 }
@@ -661,7 +676,8 @@ bool Platform::Racks::Rack::Slots::Slot::Instances::Instance::has_operation() co
 std::string Platform::Racks::Rack::Slots::Slot::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -738,7 +754,7 @@ Platform::Racks::Rack::Slots::Slot::Instances::Instance::State::State()
     admin_state{YType::str, "admin-state"}
 {
 
-    yang_name = "state"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Platform::Racks::Rack::Slots::Slot::Instances::Instance::State::~State()
@@ -747,6 +763,7 @@ Platform::Racks::Rack::Slots::Slot::Instances::Instance::State::~State()
 
 bool Platform::Racks::Rack::Slots::Slot::Instances::Instance::State::has_data() const
 {
+    if (is_presence_container) return true;
     return card_type.is_set
 	|| card_redundancy_state.is_set
 	|| plim.is_set
@@ -910,7 +927,7 @@ Platform::Racks::Rack::Slots::Slot::Vm::Vm()
     node_ip{YType::str, "node-ip"}
 {
 
-    yang_name = "vm"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vm"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Platform::Racks::Rack::Slots::Slot::Vm::~Vm()
@@ -919,6 +936,7 @@ Platform::Racks::Rack::Slots::Slot::Vm::~Vm()
 
 bool Platform::Racks::Rack::Slots::Slot::Vm::has_data() const
 {
+    if (is_presence_container) return true;
     return node_description.is_set
 	|| red_role.is_set
 	|| partner_name.is_set
@@ -1046,7 +1064,7 @@ Platform::Racks::Rack::Slots::Slot::State::State()
     admin_state{YType::str, "admin-state"}
 {
 
-    yang_name = "state"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Platform::Racks::Rack::Slots::Slot::State::~State()
@@ -1055,6 +1073,7 @@ Platform::Racks::Rack::Slots::Slot::State::~State()
 
 bool Platform::Racks::Rack::Slots::Slot::State::has_data() const
 {
+    if (is_presence_container) return true;
     return card_type.is_set
 	|| card_redundancy_state.is_set
 	|| plim.is_set
@@ -1215,7 +1234,7 @@ PlatformInventory::PlatformInventory()
 {
     racks->parent = this;
 
-    yang_name = "platform-inventory"; yang_parent_name = "Cisco-IOS-XR-plat-chas-invmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-inventory"; yang_parent_name = "Cisco-IOS-XR-plat-chas-invmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformInventory::~PlatformInventory()
@@ -1224,6 +1243,7 @@ PlatformInventory::~PlatformInventory()
 
 bool PlatformInventory::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -1316,9 +1336,11 @@ bool PlatformInventory::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 PlatformInventory::Racks::Racks()
+    :
+    rack(this, {"name"})
 {
 
-    yang_name = "racks"; yang_parent_name = "platform-inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "platform-inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformInventory::Racks::~Racks()
@@ -1327,7 +1349,8 @@ PlatformInventory::Racks::~Racks()
 
 bool PlatformInventory::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -1337,7 +1360,7 @@ bool PlatformInventory::Racks::has_data() const
 
 bool PlatformInventory::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -1374,7 +1397,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::get_child_by_name(const std::s
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -1386,7 +1409,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1415,14 +1438,14 @@ bool PlatformInventory::Racks::has_leaf_or_child_of_name(const std::string & nam
 PlatformInventory::Racks::Rack::Rack()
     :
     name{YType::str, "name"}
-    	,
+        ,
     slots(std::make_shared<PlatformInventory::Racks::Rack::Slots>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Attributes>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Attributes>())
 {
     slots->parent = this;
     attributes->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformInventory::Racks::Rack::~Rack()
@@ -1431,6 +1454,7 @@ PlatformInventory::Racks::Rack::~Rack()
 
 bool PlatformInventory::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (slots !=  nullptr && slots->has_data())
 	|| (attributes !=  nullptr && attributes->has_data());
@@ -1454,7 +1478,8 @@ std::string PlatformInventory::Racks::Rack::get_absolute_path() const
 std::string PlatformInventory::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[name='" <<name <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1534,9 +1559,11 @@ bool PlatformInventory::Racks::Rack::has_leaf_or_child_of_name(const std::string
 }
 
 PlatformInventory::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"name"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::~Slots()
@@ -1545,7 +1572,8 @@ PlatformInventory::Racks::Rack::Slots::~Slots()
 
 bool PlatformInventory::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -1555,7 +1583,7 @@ bool PlatformInventory::Racks::Rack::Slots::has_data() const
 
 bool PlatformInventory::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -1585,7 +1613,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::get_child_by_name
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -1597,7 +1625,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1626,14 +1654,14 @@ bool PlatformInventory::Racks::Rack::Slots::has_leaf_or_child_of_name(const std:
 PlatformInventory::Racks::Rack::Slots::Slot::Slot()
     :
     name{YType::str, "name"}
-    	,
+        ,
     cards(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Attributes>())
 {
     cards->parent = this;
     attributes->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::~Slot()
@@ -1642,6 +1670,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::~Slot()
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (cards !=  nullptr && cards->has_data())
 	|| (attributes !=  nullptr && attributes->has_data());
@@ -1658,7 +1687,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::has_operation() const
 std::string PlatformInventory::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[name='" <<name <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1738,9 +1768,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(cons
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Cards()
+    :
+    card(this, {"name"})
 {
 
-    yang_name = "cards"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cards"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::~Cards()
@@ -1749,7 +1781,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::~Cards()
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::has_data() const
 {
-    for (std::size_t index=0; index<card.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<card.len(); index++)
     {
         if(card[index]->has_data())
             return true;
@@ -1759,7 +1792,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::has_data() const
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::has_operation() const
 {
-    for (std::size_t index=0; index<card.size(); index++)
+    for (std::size_t index=0; index<card.len(); index++)
     {
         if(card[index]->has_operation())
             return true;
@@ -1789,7 +1822,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::get_
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card>();
         c->parent = this;
-        card.push_back(c);
+        card.append(c);
         return c;
     }
 
@@ -1801,7 +1834,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : card)
+    for (auto c : card.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1830,22 +1863,24 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::has_leaf_or_child_of_na
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Card()
     :
     name{YType::str, "name"}
-    	,
+        ,
     hardware_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation>())
-	,sub_slots(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots>())
-	,port_slots(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots>())
-	,hw_components(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents>())
-	,sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes>())
+    , sub_slots(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots>())
+    , portses(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses>())
+    , port_slots(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots>())
+    , hw_components(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents>())
+    , sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Attributes>())
 {
     hardware_information->parent = this;
     sub_slots->parent = this;
+    portses->parent = this;
     port_slots->parent = this;
     hw_components->parent = this;
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "card"; yang_parent_name = "cards"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card"; yang_parent_name = "cards"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::~Card()
@@ -1854,9 +1889,11 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::~Card()
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (hardware_information !=  nullptr && hardware_information->has_data())
 	|| (sub_slots !=  nullptr && sub_slots->has_data())
+	|| (portses !=  nullptr && portses->has_data())
 	|| (port_slots !=  nullptr && port_slots->has_data())
 	|| (hw_components !=  nullptr && hw_components->has_data())
 	|| (sensors !=  nullptr && sensors->has_data())
@@ -1869,6 +1906,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::has_operation() c
 	|| ydk::is_set(name.yfilter)
 	|| (hardware_information !=  nullptr && hardware_information->has_operation())
 	|| (sub_slots !=  nullptr && sub_slots->has_operation())
+	|| (portses !=  nullptr && portses->has_operation())
 	|| (port_slots !=  nullptr && port_slots->has_operation())
 	|| (hw_components !=  nullptr && hw_components->has_operation())
 	|| (sensors !=  nullptr && sensors->has_operation())
@@ -1878,7 +1916,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::has_operation() c
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "card" <<"[name='" <<name <<"']";
+    path_buffer << "card";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1910,6 +1949,15 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
             sub_slots = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots>();
         }
         return sub_slots;
+    }
+
+    if(child_yang_name == "portses")
+    {
+        if(portses == nullptr)
+        {
+            portses = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses>();
+        }
+        return portses;
     }
 
     if(child_yang_name == "port-slots")
@@ -1965,6 +2013,11 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
         children["sub-slots"] = sub_slots;
     }
 
+    if(portses != nullptr)
+    {
+        children["portses"] = portses;
+    }
+
     if(port_slots != nullptr)
     {
         children["port-slots"] = port_slots;
@@ -2008,7 +2061,7 @@ void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::set_filter(const 
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hardware-information" || name == "sub-slots" || name == "port-slots" || name == "hw-components" || name == "sensors" || name == "attributes" || name == "name")
+    if(name == "hardware-information" || name == "sub-slots" || name == "portses" || name == "port-slots" || name == "hw-components" || name == "sensors" || name == "attributes" || name == "name")
         return true;
     return false;
 }
@@ -2016,16 +2069,16 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::has_leaf_or_child
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::HardwareInformation()
     :
     processor_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::ProcessorInformation>())
-	,motherboard_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation>())
-	,bootflash_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::BootflashInformation>())
-	,disk_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation>())
+    , motherboard_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation>())
+    , bootflash_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::BootflashInformation>())
+    , disk_information(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation>())
 {
     processor_information->parent = this;
     motherboard_information->parent = this;
     bootflash_information->parent = this;
     disk_information->parent = this;
 
-    yang_name = "hardware-information"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-information"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::~HardwareInformation()
@@ -2034,6 +2087,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::~
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (processor_information !=  nullptr && processor_information->has_data())
 	|| (motherboard_information !=  nullptr && motherboard_information->has_data())
 	|| (bootflash_information !=  nullptr && bootflash_information->has_data())
@@ -2155,7 +2209,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::P
     revision{YType::str, "revision"}
 {
 
-    yang_name = "processor-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "processor-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::ProcessorInformation::~ProcessorInformation()
@@ -2164,6 +2218,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::ProcessorInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return processor_type.is_set
 	|| speed.is_set
 	|| revision.is_set;
@@ -2257,16 +2312,16 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
     :
     main_memory_size{YType::uint64, "main-memory-size"},
     nvram_size{YType::uint64, "nvram-size"}
-    	,
+        ,
     rom(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Rom>())
-	,bootflash(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Bootflash>())
-	,processor(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Processor>())
+    , bootflash(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Bootflash>())
+    , processor(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Processor>())
 {
     rom->parent = this;
     bootflash->parent = this;
     processor->parent = this;
 
-    yang_name = "motherboard-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "motherboard-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::~MotherboardInformation()
@@ -2275,6 +2330,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return main_memory_size.is_set
 	|| nvram_size.is_set
 	|| (rom !=  nullptr && rom->has_data())
@@ -2409,7 +2465,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
     release_type{YType::str, "release-type"}
 {
 
-    yang_name = "rom"; yang_parent_name = "motherboard-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rom"; yang_parent_name = "motherboard-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Rom::~Rom()
@@ -2418,6 +2474,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Rom::has_data() const
 {
+    if (is_presence_container) return true;
     return image_name.is_set
 	|| major_version.is_set
 	|| minor_version.is_set
@@ -2560,7 +2617,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
     sector_size{YType::uint32, "sector-size"}
 {
 
-    yang_name = "bootflash"; yang_parent_name = "motherboard-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootflash"; yang_parent_name = "motherboard-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Bootflash::~Bootflash()
@@ -2569,6 +2626,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Bootflash::has_data() const
 {
+    if (is_presence_container) return true;
     return image_name.is_set
 	|| platform_type.is_set
 	|| major_version.is_set
@@ -2756,7 +2814,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
     revision{YType::str, "revision"}
 {
 
-    yang_name = "processor"; yang_parent_name = "motherboard-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "processor"; yang_parent_name = "motherboard-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Processor::~Processor()
@@ -2765,6 +2823,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::M
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::MotherboardInformation::Processor::has_data() const
 {
+    if (is_presence_container) return true;
     return processor_type.is_set
 	|| speed.is_set
 	|| revision.is_set;
@@ -2868,7 +2927,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::B
     sector_size{YType::uint32, "sector-size"}
 {
 
-    yang_name = "bootflash-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bootflash-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::BootflashInformation::~BootflashInformation()
@@ -2877,6 +2936,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::B
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::BootflashInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return image_name.is_set
 	|| platform_type.is_set
 	|| major_version.is_set
@@ -3062,9 +3122,11 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::D
     disk_name{YType::str, "disk-name"},
     disk_size{YType::uint32, "disk-size"},
     sector_size{YType::uint32, "sector-size"}
+        ,
+    disks(this, {})
 {
 
-    yang_name = "disk-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disk-information"; yang_parent_name = "hardware-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::~DiskInformation()
@@ -3073,7 +3135,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::D
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::has_data() const
 {
-    for (std::size_t index=0; index<disks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<disks.len(); index++)
     {
         if(disks[index]->has_data())
             return true;
@@ -3085,7 +3148,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformati
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::has_operation() const
 {
-    for (std::size_t index=0; index<disks.size(); index++)
+    for (std::size_t index=0; index<disks.len(); index++)
     {
         if(disks[index]->has_operation())
             return true;
@@ -3121,7 +3184,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::Disks>();
         c->parent = this;
-        disks.push_back(c);
+        disks.append(c);
         return c;
     }
 
@@ -3133,7 +3196,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : disks)
+    for (auto c : disks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3196,7 +3259,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::D
     sector_size{YType::uint32, "sector-size"}
 {
 
-    yang_name = "disks"; yang_parent_name = "disk-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disks"; yang_parent_name = "disk-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::Disks::~Disks()
@@ -3205,6 +3268,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::D
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformation::DiskInformation::Disks::has_data() const
 {
+    if (is_presence_container) return true;
     return disk_name.is_set
 	|| disk_size.is_set
 	|| sector_size.is_set;
@@ -3295,9 +3359,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareInformati
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlots()
+    :
+    sub_slot(this, {"name"})
 {
 
-    yang_name = "sub-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::~SubSlots()
@@ -3306,7 +3372,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::~SubSlots()
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_data() const
 {
-    for (std::size_t index=0; index<sub_slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sub_slot.len(); index++)
     {
         if(sub_slot[index]->has_data())
             return true;
@@ -3316,7 +3383,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_dat
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_operation() const
 {
-    for (std::size_t index=0; index<sub_slot.size(); index++)
+    for (std::size_t index=0; index<sub_slot.len(); index++)
     {
         if(sub_slot[index]->has_operation())
             return true;
@@ -3346,7 +3413,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot>();
         c->parent = this;
-        sub_slot.push_back(c);
+        sub_slot.append(c);
         return c;
     }
 
@@ -3358,7 +3425,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sub_slot)
+    for (auto c : sub_slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3387,14 +3454,14 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::has_lea
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::SubSlot()
     :
     name{YType::str, "name"}
-    	,
+        ,
     module(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes>())
 {
     module->parent = this;
     attributes->parent = this;
 
-    yang_name = "sub-slot"; yang_parent_name = "sub-slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-slot"; yang_parent_name = "sub-slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::~SubSlot()
@@ -3403,6 +3470,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::~Su
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (module !=  nullptr && module->has_data())
 	|| (attributes !=  nullptr && attributes->has_data());
@@ -3419,7 +3487,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sub-slot" <<"[name='" <<name <<"']";
+    path_buffer << "sub-slot";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3501,14 +3570,14 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Module()
     :
     port_slots(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots>())
-	,sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes>())
+    , sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes>())
 {
     port_slots->parent = this;
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "module"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::~Module()
@@ -3517,6 +3586,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::has_data() const
 {
+    if (is_presence_container) return true;
     return (port_slots !=  nullptr && port_slots->has_data())
 	|| (sensors !=  nullptr && sensors->has_data())
 	|| (attributes !=  nullptr && attributes->has_data());
@@ -3616,9 +3686,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlots()
+    :
+    port_slot(this, {"name"})
 {
 
-    yang_name = "port-slots"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-slots"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::~PortSlots()
@@ -3627,7 +3699,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::has_data() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_data())
             return true;
@@ -3637,7 +3710,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::has_operation() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_operation())
             return true;
@@ -3667,7 +3740,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot>();
         c->parent = this;
-        port_slot.push_back(c);
+        port_slot.append(c);
         return c;
     }
 
@@ -3679,7 +3752,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_slot)
+    for (auto c : port_slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3708,16 +3781,16 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::PortSlot()
     :
     name{YType::str, "name"}
-    	,
+        ,
     portses(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses>())
-	,sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes>())
+    , sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes>())
 {
     portses->parent = this;
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::~PortSlot()
@@ -3726,6 +3799,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (portses !=  nullptr && portses->has_data())
 	|| (sensors !=  nullptr && sensors->has_data())
@@ -3744,7 +3818,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-slot" <<"[name='" <<name <<"']";
+    path_buffer << "port-slot";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3838,9 +3913,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Portses()
+    :
+    ports(this, {"name"})
 {
 
-    yang_name = "portses"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "portses"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::~Portses()
@@ -3849,7 +3926,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::has_data() const
 {
-    for (std::size_t index=0; index<ports.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ports.len(); index++)
     {
         if(ports[index]->has_data())
             return true;
@@ -3859,7 +3937,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::has_operation() const
 {
-    for (std::size_t index=0; index<ports.size(); index++)
+    for (std::size_t index=0; index<ports.len(); index++)
     {
         if(ports[index]->has_operation())
             return true;
@@ -3889,7 +3967,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports>();
         c->parent = this;
-        ports.push_back(c);
+        ports.append(c);
         return c;
     }
 
@@ -3901,7 +3979,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ports)
+    for (auto c : ports.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3930,16 +4008,16 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Ports()
     :
     name{YType::str, "name"}
-    	,
+        ,
     hw_components(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents>())
-	,sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes>())
+    , sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes>())
 {
     hw_components->parent = this;
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "ports"; yang_parent_name = "portses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ports"; yang_parent_name = "portses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::~Ports()
@@ -3948,6 +4026,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (hw_components !=  nullptr && hw_components->has_data())
 	|| (sensors !=  nullptr && sensors->has_data())
@@ -3966,7 +4045,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ports" <<"[name='" <<name <<"']";
+    path_buffer << "ports";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4060,9 +4140,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponents()
+    :
+    hw_component(this, {"name"})
 {
 
-    yang_name = "hw-components"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-components"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::~HwComponents()
@@ -4071,7 +4153,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::has_data() const
 {
-    for (std::size_t index=0; index<hw_component.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hw_component.len(); index++)
     {
         if(hw_component[index]->has_data())
             return true;
@@ -4081,7 +4164,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::has_operation() const
 {
-    for (std::size_t index=0; index<hw_component.size(); index++)
+    for (std::size_t index=0; index<hw_component.len(); index++)
     {
         if(hw_component[index]->has_operation())
             return true;
@@ -4111,7 +4194,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent>();
         c->parent = this;
-        hw_component.push_back(c);
+        hw_component.append(c);
         return c;
     }
 
@@ -4123,7 +4206,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hw_component)
+    for (auto c : hw_component.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4152,14 +4235,14 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::HwComponent()
     :
     name{YType::str, "name"}
-    	,
+        ,
     sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes>())
 {
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::~HwComponent()
@@ -4168,6 +4251,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (sensors !=  nullptr && sensors->has_data())
 	|| (attributes !=  nullptr && attributes->has_data());
@@ -4184,7 +4268,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hw-component" <<"[name='" <<name <<"']";
+    path_buffer << "hw-component";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4264,9 +4349,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::~Sensors()
@@ -4275,7 +4362,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -4285,7 +4373,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -4315,7 +4403,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -4327,7 +4415,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4356,12 +4444,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Sensor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::~Sensor()
@@ -4370,6 +4458,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -4384,7 +4473,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4452,12 +4542,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::~Attributes()
@@ -4466,6 +4556,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -4561,7 +4652,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
@@ -4570,6 +4661,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -4744,14 +4836,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
@@ -4760,6 +4852,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -4913,7 +5006,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -4922,6 +5015,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -5004,7 +5098,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -5013,6 +5107,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -5092,12 +5187,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::~Attributes()
@@ -5106,6 +5201,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -5201,7 +5297,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::~BasicInfo()
@@ -5210,6 +5306,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -5384,14 +5481,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::~FruInfo()
@@ -5400,6 +5497,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -5553,7 +5651,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -5562,6 +5660,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -5644,7 +5743,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -5653,6 +5752,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -5730,9 +5830,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::~Sensors()
@@ -5741,7 +5843,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -5751,7 +5854,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -5781,7 +5884,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -5793,7 +5896,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5822,12 +5925,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Sensor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::~Sensor()
@@ -5836,6 +5939,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -5850,7 +5954,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5918,12 +6023,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::~Attributes()
@@ -5932,6 +6037,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -6027,7 +6133,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
@@ -6036,6 +6142,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -6210,14 +6317,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
@@ -6226,6 +6333,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -6379,7 +6487,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -6388,6 +6496,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -6470,7 +6579,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -6479,6 +6588,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -6558,12 +6668,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::~Attributes()
@@ -6572,6 +6682,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -6667,7 +6778,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo::~BasicInfo()
@@ -6676,6 +6787,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -6850,14 +6962,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::~FruInfo()
@@ -6866,6 +6978,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -7019,7 +7132,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -7028,6 +7141,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -7110,7 +7224,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -7119,6 +7233,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -7196,9 +7311,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::~Sensors()
@@ -7207,7 +7324,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -7217,7 +7335,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -7247,7 +7365,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -7259,7 +7377,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7288,12 +7406,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Sensor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::~Sensor()
@@ -7302,6 +7420,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -7316,7 +7435,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -7384,12 +7504,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::~Attributes()
@@ -7398,6 +7518,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -7493,7 +7614,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
@@ -7502,6 +7623,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -7676,14 +7798,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
@@ -7692,6 +7814,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -7845,7 +7968,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -7854,6 +7977,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -7936,7 +8060,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -7945,6 +8069,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -8024,12 +8149,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::~Attributes()
@@ -8038,6 +8163,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -8133,7 +8259,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::BasicInfo::~BasicInfo()
@@ -8142,6 +8268,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -8316,14 +8443,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::~FruInfo()
@@ -8332,6 +8459,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -8485,7 +8613,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -8494,6 +8622,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -8576,7 +8705,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -8585,6 +8714,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -8662,9 +8792,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::~Sensors()
@@ -8673,7 +8805,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -8683,7 +8816,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -8713,7 +8846,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -8725,7 +8858,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8754,12 +8887,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Sensor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::~Sensor()
@@ -8768,6 +8901,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -8782,7 +8916,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -8850,12 +8985,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::~Attributes()
@@ -8864,6 +8999,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -8959,7 +9095,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
@@ -8968,6 +9104,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -9142,14 +9279,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
@@ -9158,6 +9295,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -9311,7 +9449,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -9320,6 +9458,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -9402,7 +9541,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -9411,6 +9550,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -9490,12 +9630,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::~Attributes()
@@ -9504,6 +9644,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -9599,7 +9740,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::BasicInfo::~BasicInfo()
@@ -9608,6 +9749,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -9782,14 +9924,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::~FruInfo()
@@ -9798,6 +9940,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -9951,7 +10094,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -9960,6 +10103,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -10042,7 +10186,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -10051,6 +10195,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Mod
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -10130,12 +10275,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sub-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::~Attributes()
@@ -10144,6 +10289,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -10239,7 +10385,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::BasicInfo::~BasicInfo()
@@ -10248,6 +10394,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -10422,14 +10569,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::~FruInfo()
@@ -10438,6 +10585,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -10591,7 +10739,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -10600,6 +10748,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -10682,7 +10831,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -10691,6 +10840,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Att
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -10767,10 +10917,3410 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot
     return false;
 }
 
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlots()
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Portses()
+    :
+    ports(this, {"name"})
 {
 
-    yang_name = "port-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "portses"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::~Portses()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ports.len(); index++)
+    {
+        if(ports[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::has_operation() const
+{
+    for (std::size_t index=0; index<ports.len(); index++)
+    {
+        if(ports[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "portses";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ports")
+    {
+        auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports>();
+        c->parent = this;
+        ports.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : ports.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ports")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Ports()
+    :
+    name{YType::str, "name"}
+        ,
+    hw_components(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents>())
+    , sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes>())
+{
+    hw_components->parent = this;
+    sensors->parent = this;
+    attributes->parent = this;
+
+    yang_name = "ports"; yang_parent_name = "portses"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::~Ports()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| (hw_components !=  nullptr && hw_components->has_data())
+	|| (sensors !=  nullptr && sensors->has_data())
+	|| (attributes !=  nullptr && attributes->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (hw_components !=  nullptr && hw_components->has_operation())
+	|| (sensors !=  nullptr && sensors->has_operation())
+	|| (attributes !=  nullptr && attributes->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ports";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hw-components")
+    {
+        if(hw_components == nullptr)
+        {
+            hw_components = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents>();
+        }
+        return hw_components;
+    }
+
+    if(child_yang_name == "sensors")
+    {
+        if(sensors == nullptr)
+        {
+            sensors = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors>();
+        }
+        return sensors;
+    }
+
+    if(child_yang_name == "attributes")
+    {
+        if(attributes == nullptr)
+        {
+            attributes = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes>();
+        }
+        return attributes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(hw_components != nullptr)
+    {
+        children["hw-components"] = hw_components;
+    }
+
+    if(sensors != nullptr)
+    {
+        children["sensors"] = sensors;
+    }
+
+    if(attributes != nullptr)
+    {
+        children["attributes"] = attributes;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hw-components" || name == "sensors" || name == "attributes" || name == "name")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponents()
+    :
+    hw_component(this, {"name"})
+{
+
+    yang_name = "hw-components"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::~HwComponents()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hw_component.len(); index++)
+    {
+        if(hw_component[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::has_operation() const
+{
+    for (std::size_t index=0; index<hw_component.len(); index++)
+    {
+        if(hw_component[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hw-components";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hw-component")
+    {
+        auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent>();
+        c->parent = this;
+        hw_component.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : hw_component.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hw-component")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::HwComponent()
+    :
+    name{YType::str, "name"}
+        ,
+    sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes>())
+{
+    sensors->parent = this;
+    attributes->parent = this;
+
+    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::~HwComponent()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| (sensors !=  nullptr && sensors->has_data())
+	|| (attributes !=  nullptr && attributes->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (sensors !=  nullptr && sensors->has_operation())
+	|| (attributes !=  nullptr && attributes->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hw-component";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sensors")
+    {
+        if(sensors == nullptr)
+        {
+            sensors = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors>();
+        }
+        return sensors;
+    }
+
+    if(child_yang_name == "attributes")
+    {
+        if(attributes == nullptr)
+        {
+            attributes = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes>();
+        }
+        return attributes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(sensors != nullptr)
+    {
+        children["sensors"] = sensors;
+    }
+
+    if(attributes != nullptr)
+    {
+        children["attributes"] = attributes;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensors" || name == "attributes" || name == "name")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
+{
+
+    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::~Sensors()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
+    {
+        if(sensor[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::has_operation() const
+{
+    for (std::size_t index=0; index<sensor.len(); index++)
+    {
+        if(sensor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sensors";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sensor")
+    {
+        auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor>();
+        c->parent = this;
+        sensor.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : sensor.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Sensor()
+    :
+    name{YType::str, "name"}
+        ,
+    attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes>())
+{
+    attributes->parent = this;
+
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::~Sensor()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| (attributes !=  nullptr && attributes->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (attributes !=  nullptr && attributes->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "attributes")
+    {
+        if(attributes == nullptr)
+        {
+            attributes = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes>();
+        }
+        return attributes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(attributes != nullptr)
+    {
+        children["attributes"] = attributes;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "name")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::Attributes()
+    :
+    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>())
+{
+    basic_info->parent = this;
+    fru_info->parent = this;
+
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::~Attributes()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return (basic_info !=  nullptr && basic_info->has_data())
+	|| (fru_info !=  nullptr && fru_info->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "basic-info")
+    {
+        if(basic_info == nullptr)
+        {
+            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo>();
+        }
+        return basic_info;
+    }
+
+    if(child_yang_name == "fru-info")
+    {
+        if(fru_info == nullptr)
+        {
+            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>();
+        }
+        return fru_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(basic_info != nullptr)
+    {
+        children["basic-info"] = basic_info;
+    }
+
+    if(fru_info != nullptr)
+    {
+        children["fru-info"] = fru_info;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-info" || name == "fru-info")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::BasicInfo()
+    :
+    name{YType::str, "name"},
+    description{YType::str, "description"},
+    model_name{YType::str, "model-name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    vendor_type{YType::str, "vendor-type"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
+{
+
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| description.is_set
+	|| model_name.is_set
+	|| hardware_revision.is_set
+	|| serial_number.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| vendor_type.is_set
+	|| is_field_replaceable_unit.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "basic-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::FruInfo()
+    :
+    module_administrative_state{YType::enumeration, "module-administrative-state"},
+    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
+    module_operational_state{YType::enumeration, "module-operational-state"},
+    module_monitor_state{YType::enumeration, "module-monitor-state"},
+    module_reset_reason{YType::enumeration, "module-reset-reason"}
+        ,
+    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+{
+    last_operational_state_change->parent = this;
+    module_up_time->parent = this;
+
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return module_administrative_state.is_set
+	|| module_power_administrative_state.is_set
+	|| module_operational_state.is_set
+	|| module_monitor_state.is_set
+	|| module_reset_reason.is_set
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
+	|| (module_up_time !=  nullptr && module_up_time->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(module_administrative_state.yfilter)
+	|| ydk::is_set(module_power_administrative_state.yfilter)
+	|| ydk::is_set(module_operational_state.yfilter)
+	|| ydk::is_set(module_monitor_state.yfilter)
+	|| ydk::is_set(module_reset_reason.yfilter)
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fru-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
+    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
+    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
+    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
+    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "last-operational-state-change")
+    {
+        if(last_operational_state_change == nullptr)
+        {
+            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>();
+        }
+        return last_operational_state_change;
+    }
+
+    if(child_yang_name == "module-up-time")
+    {
+        if(module_up_time == nullptr)
+        {
+            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>();
+        }
+        return module_up_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(last_operational_state_change != nullptr)
+    {
+        children["last-operational-state-change"] = last_operational_state_change;
+    }
+
+    if(module_up_time != nullptr)
+    {
+        children["module-up-time"] = module_up_time;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state = value;
+        module_administrative_state.value_namespace = name_space;
+        module_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state = value;
+        module_power_administrative_state.value_namespace = name_space;
+        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state = value;
+        module_operational_state.value_namespace = name_space;
+        module_operational_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state = value;
+        module_monitor_state.value_namespace = name_space;
+        module_monitor_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason = value;
+        module_reset_reason.value_namespace = name_space;
+        module_reset_reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state.yfilter = yfilter;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state.yfilter = yfilter;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-operational-state-change";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "module-up-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::Attributes()
+    :
+    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo>())
+{
+    basic_info->parent = this;
+    fru_info->parent = this;
+
+    yang_name = "attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::~Attributes()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return (basic_info !=  nullptr && basic_info->has_data())
+	|| (fru_info !=  nullptr && fru_info->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "basic-info")
+    {
+        if(basic_info == nullptr)
+        {
+            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo>();
+        }
+        return basic_info;
+    }
+
+    if(child_yang_name == "fru-info")
+    {
+        if(fru_info == nullptr)
+        {
+            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo>();
+        }
+        return fru_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(basic_info != nullptr)
+    {
+        children["basic-info"] = basic_info;
+    }
+
+    if(fru_info != nullptr)
+    {
+        children["fru-info"] = fru_info;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-info" || name == "fru-info")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::BasicInfo()
+    :
+    name{YType::str, "name"},
+    description{YType::str, "description"},
+    model_name{YType::str, "model-name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    vendor_type{YType::str, "vendor-type"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
+{
+
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::~BasicInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| description.is_set
+	|| model_name.is_set
+	|| hardware_revision.is_set
+	|| serial_number.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| vendor_type.is_set
+	|| is_field_replaceable_unit.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "basic-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::FruInfo()
+    :
+    module_administrative_state{YType::enumeration, "module-administrative-state"},
+    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
+    module_operational_state{YType::enumeration, "module-operational-state"},
+    module_monitor_state{YType::enumeration, "module-monitor-state"},
+    module_reset_reason{YType::enumeration, "module-reset-reason"}
+        ,
+    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>())
+{
+    last_operational_state_change->parent = this;
+    module_up_time->parent = this;
+
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::~FruInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return module_administrative_state.is_set
+	|| module_power_administrative_state.is_set
+	|| module_operational_state.is_set
+	|| module_monitor_state.is_set
+	|| module_reset_reason.is_set
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
+	|| (module_up_time !=  nullptr && module_up_time->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(module_administrative_state.yfilter)
+	|| ydk::is_set(module_power_administrative_state.yfilter)
+	|| ydk::is_set(module_operational_state.yfilter)
+	|| ydk::is_set(module_monitor_state.yfilter)
+	|| ydk::is_set(module_reset_reason.yfilter)
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fru-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
+    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
+    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
+    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
+    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "last-operational-state-change")
+    {
+        if(last_operational_state_change == nullptr)
+        {
+            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange>();
+        }
+        return last_operational_state_change;
+    }
+
+    if(child_yang_name == "module-up-time")
+    {
+        if(module_up_time == nullptr)
+        {
+            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>();
+        }
+        return module_up_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(last_operational_state_change != nullptr)
+    {
+        children["last-operational-state-change"] = last_operational_state_change;
+    }
+
+    if(module_up_time != nullptr)
+    {
+        children["module-up-time"] = module_up_time;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state = value;
+        module_administrative_state.value_namespace = name_space;
+        module_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state = value;
+        module_power_administrative_state.value_namespace = name_space;
+        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state = value;
+        module_operational_state.value_namespace = name_space;
+        module_operational_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state = value;
+        module_monitor_state.value_namespace = name_space;
+        module_monitor_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason = value;
+        module_reset_reason.value_namespace = name_space;
+        module_reset_reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state.yfilter = yfilter;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state.yfilter = yfilter;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-operational-state-change";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "module-up-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
+{
+
+    yang_name = "sensors"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::~Sensors()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
+    {
+        if(sensor[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::has_operation() const
+{
+    for (std::size_t index=0; index<sensor.len(); index++)
+    {
+        if(sensor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sensors";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sensor")
+    {
+        auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor>();
+        c->parent = this;
+        sensor.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : sensor.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sensor")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Sensor()
+    :
+    name{YType::str, "name"}
+        ,
+    attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes>())
+{
+    attributes->parent = this;
+
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::~Sensor()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| (attributes !=  nullptr && attributes->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (attributes !=  nullptr && attributes->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "attributes")
+    {
+        if(attributes == nullptr)
+        {
+            attributes = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes>();
+        }
+        return attributes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(attributes != nullptr)
+    {
+        children["attributes"] = attributes;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "name")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::Attributes()
+    :
+    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo>())
+{
+    basic_info->parent = this;
+    fru_info->parent = this;
+
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::~Attributes()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return (basic_info !=  nullptr && basic_info->has_data())
+	|| (fru_info !=  nullptr && fru_info->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "basic-info")
+    {
+        if(basic_info == nullptr)
+        {
+            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo>();
+        }
+        return basic_info;
+    }
+
+    if(child_yang_name == "fru-info")
+    {
+        if(fru_info == nullptr)
+        {
+            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo>();
+        }
+        return fru_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(basic_info != nullptr)
+    {
+        children["basic-info"] = basic_info;
+    }
+
+    if(fru_info != nullptr)
+    {
+        children["fru-info"] = fru_info;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-info" || name == "fru-info")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::BasicInfo()
+    :
+    name{YType::str, "name"},
+    description{YType::str, "description"},
+    model_name{YType::str, "model-name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    vendor_type{YType::str, "vendor-type"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
+{
+
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| description.is_set
+	|| model_name.is_set
+	|| hardware_revision.is_set
+	|| serial_number.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| vendor_type.is_set
+	|| is_field_replaceable_unit.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "basic-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::FruInfo()
+    :
+    module_administrative_state{YType::enumeration, "module-administrative-state"},
+    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
+    module_operational_state{YType::enumeration, "module-operational-state"},
+    module_monitor_state{YType::enumeration, "module-monitor-state"},
+    module_reset_reason{YType::enumeration, "module-reset-reason"}
+        ,
+    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+{
+    last_operational_state_change->parent = this;
+    module_up_time->parent = this;
+
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return module_administrative_state.is_set
+	|| module_power_administrative_state.is_set
+	|| module_operational_state.is_set
+	|| module_monitor_state.is_set
+	|| module_reset_reason.is_set
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
+	|| (module_up_time !=  nullptr && module_up_time->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(module_administrative_state.yfilter)
+	|| ydk::is_set(module_power_administrative_state.yfilter)
+	|| ydk::is_set(module_operational_state.yfilter)
+	|| ydk::is_set(module_monitor_state.yfilter)
+	|| ydk::is_set(module_reset_reason.yfilter)
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fru-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
+    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
+    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
+    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
+    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "last-operational-state-change")
+    {
+        if(last_operational_state_change == nullptr)
+        {
+            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>();
+        }
+        return last_operational_state_change;
+    }
+
+    if(child_yang_name == "module-up-time")
+    {
+        if(module_up_time == nullptr)
+        {
+            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>();
+        }
+        return module_up_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(last_operational_state_change != nullptr)
+    {
+        children["last-operational-state-change"] = last_operational_state_change;
+    }
+
+    if(module_up_time != nullptr)
+    {
+        children["module-up-time"] = module_up_time;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state = value;
+        module_administrative_state.value_namespace = name_space;
+        module_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state = value;
+        module_power_administrative_state.value_namespace = name_space;
+        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state = value;
+        module_operational_state.value_namespace = name_space;
+        module_operational_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state = value;
+        module_monitor_state.value_namespace = name_space;
+        module_monitor_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason = value;
+        module_reset_reason.value_namespace = name_space;
+        module_reset_reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state.yfilter = yfilter;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state.yfilter = yfilter;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-operational-state-change";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "module-up-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::Attributes()
+    :
+    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo>())
+{
+    basic_info->parent = this;
+    fru_info->parent = this;
+
+    yang_name = "attributes"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::~Attributes()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return (basic_info !=  nullptr && basic_info->has_data())
+	|| (fru_info !=  nullptr && fru_info->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| (basic_info !=  nullptr && basic_info->has_operation())
+	|| (fru_info !=  nullptr && fru_info->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "basic-info")
+    {
+        if(basic_info == nullptr)
+        {
+            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo>();
+        }
+        return basic_info;
+    }
+
+    if(child_yang_name == "fru-info")
+    {
+        if(fru_info == nullptr)
+        {
+            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo>();
+        }
+        return fru_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(basic_info != nullptr)
+    {
+        children["basic-info"] = basic_info;
+    }
+
+    if(fru_info != nullptr)
+    {
+        children["fru-info"] = fru_info;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "basic-info" || name == "fru-info")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::BasicInfo()
+    :
+    name{YType::str, "name"},
+    description{YType::str, "description"},
+    model_name{YType::str, "model-name"},
+    hardware_revision{YType::str, "hardware-revision"},
+    serial_number{YType::str, "serial-number"},
+    firmware_revision{YType::str, "firmware-revision"},
+    software_revision{YType::str, "software-revision"},
+    vendor_type{YType::str, "vendor-type"},
+    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
+{
+
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::~BasicInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| description.is_set
+	|| model_name.is_set
+	|| hardware_revision.is_set
+	|| serial_number.is_set
+	|| firmware_revision.is_set
+	|| software_revision.is_set
+	|| vendor_type.is_set
+	|| is_field_replaceable_unit.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| ydk::is_set(model_name.yfilter)
+	|| ydk::is_set(hardware_revision.yfilter)
+	|| ydk::is_set(serial_number.yfilter)
+	|| ydk::is_set(firmware_revision.yfilter)
+	|| ydk::is_set(software_revision.yfilter)
+	|| ydk::is_set(vendor_type.yfilter)
+	|| ydk::is_set(is_field_replaceable_unit.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "basic-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
+    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
+    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
+    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
+    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
+    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
+    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "model-name")
+    {
+        model_name = value;
+        model_name.value_namespace = name_space;
+        model_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision = value;
+        hardware_revision.value_namespace = name_space;
+        hardware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number = value;
+        serial_number.value_namespace = name_space;
+        serial_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision = value;
+        firmware_revision.value_namespace = name_space;
+        firmware_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision = value;
+        software_revision.value_namespace = name_space;
+        software_revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type = value;
+        vendor_type.value_namespace = name_space;
+        vendor_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit = value;
+        is_field_replaceable_unit.value_namespace = name_space;
+        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+    if(value_path == "model-name")
+    {
+        model_name.yfilter = yfilter;
+    }
+    if(value_path == "hardware-revision")
+    {
+        hardware_revision.yfilter = yfilter;
+    }
+    if(value_path == "serial-number")
+    {
+        serial_number.yfilter = yfilter;
+    }
+    if(value_path == "firmware-revision")
+    {
+        firmware_revision.yfilter = yfilter;
+    }
+    if(value_path == "software-revision")
+    {
+        software_revision.yfilter = yfilter;
+    }
+    if(value_path == "vendor-type")
+    {
+        vendor_type.yfilter = yfilter;
+    }
+    if(value_path == "is-field-replaceable-unit")
+    {
+        is_field_replaceable_unit.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::FruInfo()
+    :
+    module_administrative_state{YType::enumeration, "module-administrative-state"},
+    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
+    module_operational_state{YType::enumeration, "module-operational-state"},
+    module_monitor_state{YType::enumeration, "module-monitor-state"},
+    module_reset_reason{YType::enumeration, "module-reset-reason"}
+        ,
+    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime>())
+{
+    last_operational_state_change->parent = this;
+    module_up_time->parent = this;
+
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::~FruInfo()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return module_administrative_state.is_set
+	|| module_power_administrative_state.is_set
+	|| module_operational_state.is_set
+	|| module_monitor_state.is_set
+	|| module_reset_reason.is_set
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
+	|| (module_up_time !=  nullptr && module_up_time->has_data());
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(module_administrative_state.yfilter)
+	|| ydk::is_set(module_power_administrative_state.yfilter)
+	|| ydk::is_set(module_operational_state.yfilter)
+	|| ydk::is_set(module_monitor_state.yfilter)
+	|| ydk::is_set(module_reset_reason.yfilter)
+	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
+	|| (module_up_time !=  nullptr && module_up_time->has_operation());
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fru-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
+    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
+    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
+    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
+    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "last-operational-state-change")
+    {
+        if(last_operational_state_change == nullptr)
+        {
+            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange>();
+        }
+        return last_operational_state_change;
+    }
+
+    if(child_yang_name == "module-up-time")
+    {
+        if(module_up_time == nullptr)
+        {
+            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime>();
+        }
+        return module_up_time;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(last_operational_state_change != nullptr)
+    {
+        children["last-operational-state-change"] = last_operational_state_change;
+    }
+
+    if(module_up_time != nullptr)
+    {
+        children["module-up-time"] = module_up_time;
+    }
+
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state = value;
+        module_administrative_state.value_namespace = name_space;
+        module_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state = value;
+        module_power_administrative_state.value_namespace = name_space;
+        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state = value;
+        module_operational_state.value_namespace = name_space;
+        module_operational_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state = value;
+        module_monitor_state.value_namespace = name_space;
+        module_monitor_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason = value;
+        module_reset_reason.value_namespace = name_space;
+        module_reset_reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "module-administrative-state")
+    {
+        module_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-power-administrative-state")
+    {
+        module_power_administrative_state.yfilter = yfilter;
+    }
+    if(value_path == "module-operational-state")
+    {
+        module_operational_state.yfilter = yfilter;
+    }
+    if(value_path == "module-monitor-state")
+    {
+        module_monitor_state.yfilter = yfilter;
+    }
+    if(value_path == "module-reset-reason")
+    {
+        module_reset_reason.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "last-operational-state-change";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
+    :
+    time_in_seconds{YType::int32, "time-in-seconds"},
+    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
+{
+
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
+{
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::has_data() const
+{
+    if (is_presence_container) return true;
+    return time_in_seconds.is_set
+	|| time_in_nano_seconds.is_set;
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(time_in_seconds.yfilter)
+	|| ydk::is_set(time_in_nano_seconds.yfilter);
+}
+
+std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "module-up-time";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
+    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds = value;
+        time_in_seconds.value_namespace = name_space;
+        time_in_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds = value;
+        time_in_nano_seconds.value_namespace = name_space;
+        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "time-in-seconds")
+    {
+        time_in_seconds.yfilter = yfilter;
+    }
+    if(value_path == "time-in-nano-seconds")
+    {
+        time_in_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Portses::Ports::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
+        return true;
+    return false;
+}
+
+PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlots()
+    :
+    port_slot(this, {"name"})
+{
+
+    yang_name = "port-slots"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::~PortSlots()
@@ -10779,7 +14329,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::~PortSlots(
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_data() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_data())
             return true;
@@ -10789,7 +14340,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_da
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_operation() const
 {
-    for (std::size_t index=0; index<port_slot.size(); index++)
+    for (std::size_t index=0; index<port_slot.len(); index++)
     {
         if(port_slot[index]->has_operation())
             return true;
@@ -10819,7 +14370,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot>();
         c->parent = this;
-        port_slot.push_back(c);
+        port_slot.append(c);
         return c;
     }
 
@@ -10831,7 +14382,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_slot)
+    for (auto c : port_slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10860,16 +14411,16 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::has_le
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::PortSlot()
     :
     name{YType::str, "name"}
-    	,
+        ,
     portses(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses>())
-	,sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes>())
+    , sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes>())
 {
     portses->parent = this;
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-slot"; yang_parent_name = "port-slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::~PortSlot()
@@ -10878,6 +14429,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::~
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (portses !=  nullptr && portses->has_data())
 	|| (sensors !=  nullptr && sensors->has_data())
@@ -10896,7 +14448,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-slot" <<"[name='" <<name <<"']";
+    path_buffer << "port-slot";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10990,9 +14543,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Portses()
+    :
+    ports(this, {"name"})
 {
 
-    yang_name = "portses"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "portses"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::~Portses()
@@ -11001,7 +14556,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::has_data() const
 {
-    for (std::size_t index=0; index<ports.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ports.len(); index++)
     {
         if(ports[index]->has_data())
             return true;
@@ -11011,7 +14567,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::has_operation() const
 {
-    for (std::size_t index=0; index<ports.size(); index++)
+    for (std::size_t index=0; index<ports.len(); index++)
     {
         if(ports[index]->has_operation())
             return true;
@@ -11041,7 +14597,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports>();
         c->parent = this;
-        ports.push_back(c);
+        ports.append(c);
         return c;
     }
 
@@ -11053,7 +14609,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ports)
+    for (auto c : ports.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11082,16 +14638,16 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Ports()
     :
     name{YType::str, "name"}
-    	,
+        ,
     hw_components(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents>())
-	,sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes>())
+    , sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes>())
 {
     hw_components->parent = this;
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "ports"; yang_parent_name = "portses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ports"; yang_parent_name = "portses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::~Ports()
@@ -11100,6 +14656,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (hw_components !=  nullptr && hw_components->has_data())
 	|| (sensors !=  nullptr && sensors->has_data())
@@ -11118,7 +14675,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ports" <<"[name='" <<name <<"']";
+    path_buffer << "ports";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11212,9 +14770,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponents()
+    :
+    hw_component(this, {"name"})
 {
 
-    yang_name = "hw-components"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-components"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::~HwComponents()
@@ -11223,7 +14783,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::has_data() const
 {
-    for (std::size_t index=0; index<hw_component.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hw_component.len(); index++)
     {
         if(hw_component[index]->has_data())
             return true;
@@ -11233,7 +14794,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::has_operation() const
 {
-    for (std::size_t index=0; index<hw_component.size(); index++)
+    for (std::size_t index=0; index<hw_component.len(); index++)
     {
         if(hw_component[index]->has_operation())
             return true;
@@ -11263,7 +14824,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent>();
         c->parent = this;
-        hw_component.push_back(c);
+        hw_component.append(c);
         return c;
     }
 
@@ -11275,7 +14836,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hw_component)
+    for (auto c : hw_component.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11304,14 +14865,14 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::HwComponent()
     :
     name{YType::str, "name"}
-    	,
+        ,
     sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes>())
+    , attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes>())
 {
     sensors->parent = this;
     attributes->parent = this;
 
-    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::~HwComponent()
@@ -11320,6 +14881,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (sensors !=  nullptr && sensors->has_data())
 	|| (attributes !=  nullptr && attributes->has_data());
@@ -11336,7 +14898,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hw-component" <<"[name='" <<name <<"']";
+    path_buffer << "hw-component";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11416,9 +14979,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::~Sensors()
@@ -11427,7 +14992,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -11437,7 +15003,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -11467,7 +15033,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -11479,7 +15045,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11508,12 +15074,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Sensor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::~Sensor()
@@ -11522,6 +15088,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -11536,7 +15103,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11604,12 +15172,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::~Attributes()
@@ -11618,6 +15186,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -11713,7 +15282,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
@@ -11722,6 +15291,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -11896,14 +15466,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
@@ -11912,6 +15482,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -12065,7 +15636,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -12074,6 +15645,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -12156,7 +15728,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -12165,6 +15737,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -12244,12 +15817,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::~Attributes()
@@ -12258,6 +15831,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -12353,7 +15927,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::~BasicInfo()
@@ -12362,6 +15936,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -12536,14 +16111,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::~FruInfo()
@@ -12552,6 +16127,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -12705,7 +16281,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -12714,6 +16290,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -12796,7 +16373,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -12805,6 +16382,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -12882,9 +16460,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::~Sensors()
@@ -12893,7 +16473,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -12903,7 +16484,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -12933,7 +16514,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -12945,7 +16526,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12974,12 +16555,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Sensor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::~Sensor()
@@ -12988,6 +16569,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -13002,7 +16584,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13070,12 +16653,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::~Attributes()
@@ -13084,6 +16667,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -13179,7 +16763,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
@@ -13188,6 +16772,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -13362,14 +16947,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
@@ -13378,6 +16963,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -13531,7 +17117,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -13540,6 +17126,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -13622,7 +17209,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -13631,6 +17218,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -13710,12 +17298,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::~Attributes()
@@ -13724,6 +17312,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -13819,7 +17408,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo::~BasicInfo()
@@ -13828,6 +17417,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -14002,14 +17592,14 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     module_operational_state{YType::enumeration, "module-operational-state"},
     module_monitor_state{YType::enumeration, "module-monitor-state"},
     module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
+        ,
     last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime>())
+    , module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime>())
 {
     last_operational_state_change->parent = this;
     module_up_time->parent = this;
 
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::~FruInfo()
@@ -14018,6 +17608,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return module_administrative_state.is_set
 	|| module_power_administrative_state.is_set
 	|| module_operational_state.is_set
@@ -14171,7 +17762,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
@@ -14180,6 +17771,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::LastOperationalStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -14262,7 +17854,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
     time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
 {
 
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
@@ -14271,6 +17863,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::P
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Portses::Ports::Attributes::FruInfo::ModuleUpTime::has_data() const
 {
+    if (is_presence_container) return true;
     return time_in_seconds.is_set
 	|| time_in_nano_seconds.is_set;
 }
@@ -14348,9 +17941,11 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensors()
+    :
+    sensor(this, {"name"})
 {
 
-    yang_name = "sensors"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensors"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::~Sensors()
@@ -14359,7 +17954,8 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::S
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::has_data() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_data())
             return true;
@@ -14369,7 +17965,7 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::has_operation() const
 {
-    for (std::size_t index=0; index<sensor.size(); index++)
+    for (std::size_t index=0; index<sensor.len(); index++)
     {
         if(sensor[index]->has_operation())
             return true;
@@ -14399,7 +17995,7 @@ std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card
     {
         auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor>();
         c->parent = this;
-        sensor.push_back(c);
+        sensor.append(c);
         return c;
     }
 
@@ -14411,7 +18007,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor)
+    for (auto c : sensor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14440,12 +18036,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Sensor()
     :
     name{YType::str, "name"}
-    	,
+        ,
     attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes>())
 {
     attributes->parent = this;
 
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::~Sensor()
@@ -14454,6 +18050,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::S
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (attributes !=  nullptr && attributes->has_data());
 }
@@ -14468,7 +18065,8 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
+    path_buffer << "sensor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -14536,12 +18134,12 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::Attributes()
     :
     basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo>())
+    , fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo>())
 {
     basic_info->parent = this;
     fru_info->parent = this;
 
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::~Attributes()
@@ -14550,6 +18148,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::S
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (basic_info !=  nullptr && basic_info->has_data())
 	|| (fru_info !=  nullptr && fru_info->has_data());
 }
@@ -14645,7 +18244,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::S
     is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
 {
 
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
@@ -14654,6 +18253,7 @@ PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::S
 
 bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::BasicInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| model_name.is_set
@@ -14821,3402 +18421,60 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
     return false;
 }
 
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::FruInfo()
-    :
-    module_administrative_state{YType::enumeration, "module-administrative-state"},
-    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
-    module_operational_state{YType::enumeration, "module-operational-state"},
-    module_monitor_state{YType::enumeration, "module-monitor-state"},
-    module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
-    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
-{
-    last_operational_state_change->parent = this;
-    module_up_time->parent = this;
-
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::has_data() const
-{
-    return module_administrative_state.is_set
-	|| module_power_administrative_state.is_set
-	|| module_operational_state.is_set
-	|| module_monitor_state.is_set
-	|| module_reset_reason.is_set
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
-	|| (module_up_time !=  nullptr && module_up_time->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(module_administrative_state.yfilter)
-	|| ydk::is_set(module_power_administrative_state.yfilter)
-	|| ydk::is_set(module_operational_state.yfilter)
-	|| ydk::is_set(module_monitor_state.yfilter)
-	|| ydk::is_set(module_reset_reason.yfilter)
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
-	|| (module_up_time !=  nullptr && module_up_time->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fru-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "last-operational-state-change")
-    {
-        if(last_operational_state_change == nullptr)
-        {
-            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>();
-        }
-        return last_operational_state_change;
-    }
-
-    if(child_yang_name == "module-up-time")
-    {
-        if(module_up_time == nullptr)
-        {
-            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>();
-        }
-        return module_up_time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(last_operational_state_change != nullptr)
-    {
-        children["last-operational-state-change"] = last_operational_state_change;
-    }
-
-    if(module_up_time != nullptr)
-    {
-        children["module-up-time"] = module_up_time;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state = value;
-        module_administrative_state.value_namespace = name_space;
-        module_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state = value;
-        module_power_administrative_state.value_namespace = name_space;
-        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state = value;
-        module_operational_state.value_namespace = name_space;
-        module_operational_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state = value;
-        module_monitor_state.value_namespace = name_space;
-        module_monitor_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason = value;
-        module_reset_reason.value_namespace = name_space;
-        module_reset_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state.yfilter = yfilter;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state.yfilter = yfilter;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-operational-state-change";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "module-up-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::Attributes()
-    :
-    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo>())
-{
-    basic_info->parent = this;
-    fru_info->parent = this;
-
-    yang_name = "attributes"; yang_parent_name = "port-slot"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::~Attributes()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::has_data() const
-{
-    return (basic_info !=  nullptr && basic_info->has_data())
-	|| (fru_info !=  nullptr && fru_info->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| (basic_info !=  nullptr && basic_info->has_operation())
-	|| (fru_info !=  nullptr && fru_info->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "attributes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "basic-info")
-    {
-        if(basic_info == nullptr)
-        {
-            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo>();
-        }
-        return basic_info;
-    }
-
-    if(child_yang_name == "fru-info")
-    {
-        if(fru_info == nullptr)
-        {
-            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo>();
-        }
-        return fru_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(basic_info != nullptr)
-    {
-        children["basic-info"] = basic_info;
-    }
-
-    if(fru_info != nullptr)
-    {
-        children["fru-info"] = fru_info;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "basic-info" || name == "fru-info")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::BasicInfo()
-    :
-    name{YType::str, "name"},
-    description{YType::str, "description"},
-    model_name{YType::str, "model-name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    vendor_type{YType::str, "vendor-type"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
-{
-
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::~BasicInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::has_data() const
-{
-    return name.is_set
-	|| description.is_set
-	|| model_name.is_set
-	|| hardware_revision.is_set
-	|| serial_number.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| vendor_type.is_set
-	|| is_field_replaceable_unit.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "basic-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::FruInfo()
-    :
-    module_administrative_state{YType::enumeration, "module-administrative-state"},
-    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
-    module_operational_state{YType::enumeration, "module-operational-state"},
-    module_monitor_state{YType::enumeration, "module-monitor-state"},
-    module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
-    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime>())
-{
-    last_operational_state_change->parent = this;
-    module_up_time->parent = this;
-
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::~FruInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::has_data() const
-{
-    return module_administrative_state.is_set
-	|| module_power_administrative_state.is_set
-	|| module_operational_state.is_set
-	|| module_monitor_state.is_set
-	|| module_reset_reason.is_set
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
-	|| (module_up_time !=  nullptr && module_up_time->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(module_administrative_state.yfilter)
-	|| ydk::is_set(module_power_administrative_state.yfilter)
-	|| ydk::is_set(module_operational_state.yfilter)
-	|| ydk::is_set(module_monitor_state.yfilter)
-	|| ydk::is_set(module_reset_reason.yfilter)
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
-	|| (module_up_time !=  nullptr && module_up_time->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fru-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "last-operational-state-change")
-    {
-        if(last_operational_state_change == nullptr)
-        {
-            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange>();
-        }
-        return last_operational_state_change;
-    }
-
-    if(child_yang_name == "module-up-time")
-    {
-        if(module_up_time == nullptr)
-        {
-            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime>();
-        }
-        return module_up_time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(last_operational_state_change != nullptr)
-    {
-        children["last-operational-state-change"] = last_operational_state_change;
-    }
-
-    if(module_up_time != nullptr)
-    {
-        children["module-up-time"] = module_up_time;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state = value;
-        module_administrative_state.value_namespace = name_space;
-        module_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state = value;
-        module_power_administrative_state.value_namespace = name_space;
-        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state = value;
-        module_operational_state.value_namespace = name_space;
-        module_operational_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state = value;
-        module_monitor_state.value_namespace = name_space;
-        module_monitor_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason = value;
-        module_reset_reason.value_namespace = name_space;
-        module_reset_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state.yfilter = yfilter;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state.yfilter = yfilter;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-operational-state-change";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "module-up-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponents()
-{
-
-    yang_name = "hw-components"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::~HwComponents()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::has_data() const
-{
-    for (std::size_t index=0; index<hw_component.size(); index++)
-    {
-        if(hw_component[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::has_operation() const
-{
-    for (std::size_t index=0; index<hw_component.size(); index++)
-    {
-        if(hw_component[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hw-components";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hw-component")
-    {
-        auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent>();
-        c->parent = this;
-        hw_component.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : hw_component)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hw-component")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::HwComponent()
-    :
-    name{YType::str, "name"}
-    	,
-    sensors(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors>())
-	,attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes>())
-{
-    sensors->parent = this;
-    attributes->parent = this;
-
-    yang_name = "hw-component"; yang_parent_name = "hw-components"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::~HwComponent()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::has_data() const
-{
-    return name.is_set
-	|| (sensors !=  nullptr && sensors->has_data())
-	|| (attributes !=  nullptr && attributes->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (sensors !=  nullptr && sensors->has_operation())
-	|| (attributes !=  nullptr && attributes->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hw-component" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sensors")
-    {
-        if(sensors == nullptr)
-        {
-            sensors = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors>();
-        }
-        return sensors;
-    }
-
-    if(child_yang_name == "attributes")
-    {
-        if(attributes == nullptr)
-        {
-            attributes = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes>();
-        }
-        return attributes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(sensors != nullptr)
-    {
-        children["sensors"] = sensors;
-    }
-
-    if(attributes != nullptr)
-    {
-        children["attributes"] = attributes;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sensors" || name == "attributes" || name == "name")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensors()
-{
-
-    yang_name = "sensors"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::~Sensors()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::has_data() const
-{
-    for (std::size_t index=0; index<sensor.size(); index++)
-    {
-        if(sensor[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::has_operation() const
-{
-    for (std::size_t index=0; index<sensor.size(); index++)
-    {
-        if(sensor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sensors";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sensor")
-    {
-        auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor>();
-        c->parent = this;
-        sensor.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : sensor)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sensor")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Sensor()
-    :
-    name{YType::str, "name"}
-    	,
-    attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes>())
-{
-    attributes->parent = this;
-
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::~Sensor()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::has_data() const
-{
-    return name.is_set
-	|| (attributes !=  nullptr && attributes->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (attributes !=  nullptr && attributes->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "attributes")
-    {
-        if(attributes == nullptr)
-        {
-            attributes = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes>();
-        }
-        return attributes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(attributes != nullptr)
-    {
-        children["attributes"] = attributes;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "attributes" || name == "name")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::Attributes()
-    :
-    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>())
-{
-    basic_info->parent = this;
-    fru_info->parent = this;
-
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::~Attributes()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_data() const
-{
-    return (basic_info !=  nullptr && basic_info->has_data())
-	|| (fru_info !=  nullptr && fru_info->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| (basic_info !=  nullptr && basic_info->has_operation())
-	|| (fru_info !=  nullptr && fru_info->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "attributes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "basic-info")
-    {
-        if(basic_info == nullptr)
-        {
-            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo>();
-        }
-        return basic_info;
-    }
-
-    if(child_yang_name == "fru-info")
-    {
-        if(fru_info == nullptr)
-        {
-            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo>();
-        }
-        return fru_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(basic_info != nullptr)
-    {
-        children["basic-info"] = basic_info;
-    }
-
-    if(fru_info != nullptr)
-    {
-        children["fru-info"] = fru_info;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "basic-info" || name == "fru-info")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::BasicInfo()
-    :
-    name{YType::str, "name"},
-    description{YType::str, "description"},
-    model_name{YType::str, "model-name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    vendor_type{YType::str, "vendor-type"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
-{
-
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_data() const
-{
-    return name.is_set
-	|| description.is_set
-	|| model_name.is_set
-	|| hardware_revision.is_set
-	|| serial_number.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| vendor_type.is_set
-	|| is_field_replaceable_unit.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "basic-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::FruInfo()
-    :
-    module_administrative_state{YType::enumeration, "module-administrative-state"},
-    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
-    module_operational_state{YType::enumeration, "module-operational-state"},
-    module_monitor_state{YType::enumeration, "module-monitor-state"},
-    module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
-    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
-{
-    last_operational_state_change->parent = this;
-    module_up_time->parent = this;
-
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_data() const
-{
-    return module_administrative_state.is_set
-	|| module_power_administrative_state.is_set
-	|| module_operational_state.is_set
-	|| module_monitor_state.is_set
-	|| module_reset_reason.is_set
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
-	|| (module_up_time !=  nullptr && module_up_time->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(module_administrative_state.yfilter)
-	|| ydk::is_set(module_power_administrative_state.yfilter)
-	|| ydk::is_set(module_operational_state.yfilter)
-	|| ydk::is_set(module_monitor_state.yfilter)
-	|| ydk::is_set(module_reset_reason.yfilter)
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
-	|| (module_up_time !=  nullptr && module_up_time->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fru-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "last-operational-state-change")
-    {
-        if(last_operational_state_change == nullptr)
-        {
-            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>();
-        }
-        return last_operational_state_change;
-    }
-
-    if(child_yang_name == "module-up-time")
-    {
-        if(module_up_time == nullptr)
-        {
-            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>();
-        }
-        return module_up_time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(last_operational_state_change != nullptr)
-    {
-        children["last-operational-state-change"] = last_operational_state_change;
-    }
-
-    if(module_up_time != nullptr)
-    {
-        children["module-up-time"] = module_up_time;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state = value;
-        module_administrative_state.value_namespace = name_space;
-        module_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state = value;
-        module_power_administrative_state.value_namespace = name_space;
-        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state = value;
-        module_operational_state.value_namespace = name_space;
-        module_operational_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state = value;
-        module_monitor_state.value_namespace = name_space;
-        module_monitor_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason = value;
-        module_reset_reason.value_namespace = name_space;
-        module_reset_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state.yfilter = yfilter;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state.yfilter = yfilter;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-operational-state-change";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "module-up-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::Attributes()
-    :
-    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo>())
-{
-    basic_info->parent = this;
-    fru_info->parent = this;
-
-    yang_name = "attributes"; yang_parent_name = "hw-component"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::~Attributes()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::has_data() const
-{
-    return (basic_info !=  nullptr && basic_info->has_data())
-	|| (fru_info !=  nullptr && fru_info->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| (basic_info !=  nullptr && basic_info->has_operation())
-	|| (fru_info !=  nullptr && fru_info->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "attributes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "basic-info")
-    {
-        if(basic_info == nullptr)
-        {
-            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo>();
-        }
-        return basic_info;
-    }
-
-    if(child_yang_name == "fru-info")
-    {
-        if(fru_info == nullptr)
-        {
-            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo>();
-        }
-        return fru_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(basic_info != nullptr)
-    {
-        children["basic-info"] = basic_info;
-    }
-
-    if(fru_info != nullptr)
-    {
-        children["fru-info"] = fru_info;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "basic-info" || name == "fru-info")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::BasicInfo()
-    :
-    name{YType::str, "name"},
-    description{YType::str, "description"},
-    model_name{YType::str, "model-name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    vendor_type{YType::str, "vendor-type"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
-{
-
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::~BasicInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::has_data() const
-{
-    return name.is_set
-	|| description.is_set
-	|| model_name.is_set
-	|| hardware_revision.is_set
-	|| serial_number.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| vendor_type.is_set
-	|| is_field_replaceable_unit.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "basic-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::FruInfo()
-    :
-    module_administrative_state{YType::enumeration, "module-administrative-state"},
-    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
-    module_operational_state{YType::enumeration, "module-operational-state"},
-    module_monitor_state{YType::enumeration, "module-monitor-state"},
-    module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
-    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>())
-{
-    last_operational_state_change->parent = this;
-    module_up_time->parent = this;
-
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::~FruInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::has_data() const
-{
-    return module_administrative_state.is_set
-	|| module_power_administrative_state.is_set
-	|| module_operational_state.is_set
-	|| module_monitor_state.is_set
-	|| module_reset_reason.is_set
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
-	|| (module_up_time !=  nullptr && module_up_time->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(module_administrative_state.yfilter)
-	|| ydk::is_set(module_power_administrative_state.yfilter)
-	|| ydk::is_set(module_operational_state.yfilter)
-	|| ydk::is_set(module_monitor_state.yfilter)
-	|| ydk::is_set(module_reset_reason.yfilter)
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
-	|| (module_up_time !=  nullptr && module_up_time->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fru-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "last-operational-state-change")
-    {
-        if(last_operational_state_change == nullptr)
-        {
-            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange>();
-        }
-        return last_operational_state_change;
-    }
-
-    if(child_yang_name == "module-up-time")
-    {
-        if(module_up_time == nullptr)
-        {
-            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime>();
-        }
-        return module_up_time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(last_operational_state_change != nullptr)
-    {
-        children["last-operational-state-change"] = last_operational_state_change;
-    }
-
-    if(module_up_time != nullptr)
-    {
-        children["module-up-time"] = module_up_time;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state = value;
-        module_administrative_state.value_namespace = name_space;
-        module_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state = value;
-        module_power_administrative_state.value_namespace = name_space;
-        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state = value;
-        module_operational_state.value_namespace = name_space;
-        module_operational_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state = value;
-        module_monitor_state.value_namespace = name_space;
-        module_monitor_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason = value;
-        module_reset_reason.value_namespace = name_space;
-        module_reset_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state.yfilter = yfilter;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state.yfilter = yfilter;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-operational-state-change";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::ModuleUpTime()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "module-up-time"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::~ModuleUpTime()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "module-up-time";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Attributes::FruInfo::ModuleUpTime::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensors()
-{
-
-    yang_name = "sensors"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::~Sensors()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::has_data() const
-{
-    for (std::size_t index=0; index<sensor.size(); index++)
-    {
-        if(sensor[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::has_operation() const
-{
-    for (std::size_t index=0; index<sensor.size(); index++)
-    {
-        if(sensor[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sensors";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "sensor")
-    {
-        auto c = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor>();
-        c->parent = this;
-        sensor.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : sensor)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sensor")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Sensor()
-    :
-    name{YType::str, "name"}
-    	,
-    attributes(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes>())
-{
-    attributes->parent = this;
-
-    yang_name = "sensor"; yang_parent_name = "sensors"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::~Sensor()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::has_data() const
-{
-    return name.is_set
-	|| (attributes !=  nullptr && attributes->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (attributes !=  nullptr && attributes->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sensor" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "attributes")
-    {
-        if(attributes == nullptr)
-        {
-            attributes = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes>();
-        }
-        return attributes;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(attributes != nullptr)
-    {
-        children["attributes"] = attributes;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "attributes" || name == "name")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::Attributes()
-    :
-    basic_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo>())
-	,fru_info(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo>())
-{
-    basic_info->parent = this;
-    fru_info->parent = this;
-
-    yang_name = "attributes"; yang_parent_name = "sensor"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::~Attributes()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::has_data() const
-{
-    return (basic_info !=  nullptr && basic_info->has_data())
-	|| (fru_info !=  nullptr && fru_info->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| (basic_info !=  nullptr && basic_info->has_operation())
-	|| (fru_info !=  nullptr && fru_info->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "attributes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "basic-info")
-    {
-        if(basic_info == nullptr)
-        {
-            basic_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo>();
-        }
-        return basic_info;
-    }
-
-    if(child_yang_name == "fru-info")
-    {
-        if(fru_info == nullptr)
-        {
-            fru_info = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo>();
-        }
-        return fru_info;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(basic_info != nullptr)
-    {
-        children["basic-info"] = basic_info;
-    }
-
-    if(fru_info != nullptr)
-    {
-        children["fru-info"] = fru_info;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "basic-info" || name == "fru-info")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::BasicInfo()
-    :
-    name{YType::str, "name"},
-    description{YType::str, "description"},
-    model_name{YType::str, "model-name"},
-    hardware_revision{YType::str, "hardware-revision"},
-    serial_number{YType::str, "serial-number"},
-    firmware_revision{YType::str, "firmware-revision"},
-    software_revision{YType::str, "software-revision"},
-    vendor_type{YType::str, "vendor-type"},
-    is_field_replaceable_unit{YType::boolean, "is-field-replaceable-unit"}
-{
-
-    yang_name = "basic-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::~BasicInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::has_data() const
-{
-    return name.is_set
-	|| description.is_set
-	|| model_name.is_set
-	|| hardware_revision.is_set
-	|| serial_number.is_set
-	|| firmware_revision.is_set
-	|| software_revision.is_set
-	|| vendor_type.is_set
-	|| is_field_replaceable_unit.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(model_name.yfilter)
-	|| ydk::is_set(hardware_revision.yfilter)
-	|| ydk::is_set(serial_number.yfilter)
-	|| ydk::is_set(firmware_revision.yfilter)
-	|| ydk::is_set(software_revision.yfilter)
-	|| ydk::is_set(vendor_type.yfilter)
-	|| ydk::is_set(is_field_replaceable_unit.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "basic-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (model_name.is_set || is_set(model_name.yfilter)) leaf_name_data.push_back(model_name.get_name_leafdata());
-    if (hardware_revision.is_set || is_set(hardware_revision.yfilter)) leaf_name_data.push_back(hardware_revision.get_name_leafdata());
-    if (serial_number.is_set || is_set(serial_number.yfilter)) leaf_name_data.push_back(serial_number.get_name_leafdata());
-    if (firmware_revision.is_set || is_set(firmware_revision.yfilter)) leaf_name_data.push_back(firmware_revision.get_name_leafdata());
-    if (software_revision.is_set || is_set(software_revision.yfilter)) leaf_name_data.push_back(software_revision.get_name_leafdata());
-    if (vendor_type.is_set || is_set(vendor_type.yfilter)) leaf_name_data.push_back(vendor_type.get_name_leafdata());
-    if (is_field_replaceable_unit.is_set || is_set(is_field_replaceable_unit.yfilter)) leaf_name_data.push_back(is_field_replaceable_unit.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "model-name")
-    {
-        model_name = value;
-        model_name.value_namespace = name_space;
-        model_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision = value;
-        hardware_revision.value_namespace = name_space;
-        hardware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number = value;
-        serial_number.value_namespace = name_space;
-        serial_number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision = value;
-        firmware_revision.value_namespace = name_space;
-        firmware_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision = value;
-        software_revision.value_namespace = name_space;
-        software_revision.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type = value;
-        vendor_type.value_namespace = name_space;
-        vendor_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit = value;
-        is_field_replaceable_unit.value_namespace = name_space;
-        is_field_replaceable_unit.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "model-name")
-    {
-        model_name.yfilter = yfilter;
-    }
-    if(value_path == "hardware-revision")
-    {
-        hardware_revision.yfilter = yfilter;
-    }
-    if(value_path == "serial-number")
-    {
-        serial_number.yfilter = yfilter;
-    }
-    if(value_path == "firmware-revision")
-    {
-        firmware_revision.yfilter = yfilter;
-    }
-    if(value_path == "software-revision")
-    {
-        software_revision.yfilter = yfilter;
-    }
-    if(value_path == "vendor-type")
-    {
-        vendor_type.yfilter = yfilter;
-    }
-    if(value_path == "is-field-replaceable-unit")
-    {
-        is_field_replaceable_unit.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "description" || name == "model-name" || name == "hardware-revision" || name == "serial-number" || name == "firmware-revision" || name == "software-revision" || name == "vendor-type" || name == "is-field-replaceable-unit")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::FruInfo()
-    :
-    module_administrative_state{YType::enumeration, "module-administrative-state"},
-    module_power_administrative_state{YType::enumeration, "module-power-administrative-state"},
-    module_operational_state{YType::enumeration, "module-operational-state"},
-    module_monitor_state{YType::enumeration, "module-monitor-state"},
-    module_reset_reason{YType::enumeration, "module-reset-reason"}
-    	,
-    last_operational_state_change(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>())
-	,module_up_time(std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>())
-{
-    last_operational_state_change->parent = this;
-    module_up_time->parent = this;
-
-    yang_name = "fru-info"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::~FruInfo()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::has_data() const
-{
-    return module_administrative_state.is_set
-	|| module_power_administrative_state.is_set
-	|| module_operational_state.is_set
-	|| module_monitor_state.is_set
-	|| module_reset_reason.is_set
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_data())
-	|| (module_up_time !=  nullptr && module_up_time->has_data());
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(module_administrative_state.yfilter)
-	|| ydk::is_set(module_power_administrative_state.yfilter)
-	|| ydk::is_set(module_operational_state.yfilter)
-	|| ydk::is_set(module_monitor_state.yfilter)
-	|| ydk::is_set(module_reset_reason.yfilter)
-	|| (last_operational_state_change !=  nullptr && last_operational_state_change->has_operation())
-	|| (module_up_time !=  nullptr && module_up_time->has_operation());
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fru-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (module_administrative_state.is_set || is_set(module_administrative_state.yfilter)) leaf_name_data.push_back(module_administrative_state.get_name_leafdata());
-    if (module_power_administrative_state.is_set || is_set(module_power_administrative_state.yfilter)) leaf_name_data.push_back(module_power_administrative_state.get_name_leafdata());
-    if (module_operational_state.is_set || is_set(module_operational_state.yfilter)) leaf_name_data.push_back(module_operational_state.get_name_leafdata());
-    if (module_monitor_state.is_set || is_set(module_monitor_state.yfilter)) leaf_name_data.push_back(module_monitor_state.get_name_leafdata());
-    if (module_reset_reason.is_set || is_set(module_reset_reason.yfilter)) leaf_name_data.push_back(module_reset_reason.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "last-operational-state-change")
-    {
-        if(last_operational_state_change == nullptr)
-        {
-            last_operational_state_change = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange>();
-        }
-        return last_operational_state_change;
-    }
-
-    if(child_yang_name == "module-up-time")
-    {
-        if(module_up_time == nullptr)
-        {
-            module_up_time = std::make_shared<PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::ModuleUpTime>();
-        }
-        return module_up_time;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(last_operational_state_change != nullptr)
-    {
-        children["last-operational-state-change"] = last_operational_state_change;
-    }
-
-    if(module_up_time != nullptr)
-    {
-        children["module-up-time"] = module_up_time;
-    }
-
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state = value;
-        module_administrative_state.value_namespace = name_space;
-        module_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state = value;
-        module_power_administrative_state.value_namespace = name_space;
-        module_power_administrative_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state = value;
-        module_operational_state.value_namespace = name_space;
-        module_operational_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state = value;
-        module_monitor_state.value_namespace = name_space;
-        module_monitor_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason = value;
-        module_reset_reason.value_namespace = name_space;
-        module_reset_reason.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "module-administrative-state")
-    {
-        module_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-power-administrative-state")
-    {
-        module_power_administrative_state.yfilter = yfilter;
-    }
-    if(value_path == "module-operational-state")
-    {
-        module_operational_state.yfilter = yfilter;
-    }
-    if(value_path == "module-monitor-state")
-    {
-        module_monitor_state.yfilter = yfilter;
-    }
-    if(value_path == "module-reset-reason")
-    {
-        module_reset_reason.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "last-operational-state-change" || name == "module-up-time" || name == "module-administrative-state" || name == "module-power-administrative-state" || name == "module-operational-state" || name == "module-monitor-state" || name == "module-reset-reason")
-        return true;
-    return false;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::LastOperationalStateChange()
-    :
-    time_in_seconds{YType::int32, "time-in-seconds"},
-    time_in_nano_seconds{YType::int32, "time-in-nano-seconds"}
-{
-
-    yang_name = "last-operational-state-change"; yang_parent_name = "fru-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::~LastOperationalStateChange()
-{
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_data() const
-{
-    return time_in_seconds.is_set
-	|| time_in_nano_seconds.is_set;
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(time_in_seconds.yfilter)
-	|| ydk::is_set(time_in_nano_seconds.yfilter);
-}
-
-std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "last-operational-state-change";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (time_in_seconds.is_set || is_set(time_in_seconds.yfilter)) leaf_name_data.push_back(time_in_seconds.get_name_leafdata());
-    if (time_in_nano_seconds.is_set || is_set(time_in_nano_seconds.yfilter)) leaf_name_data.push_back(time_in_nano_seconds.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds = value;
-        time_in_seconds.value_namespace = name_space;
-        time_in_seconds.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds = value;
-        time_in_nano_seconds.value_namespace = name_space;
-        time_in_nano_seconds.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "time-in-seconds")
-    {
-        time_in_seconds.yfilter = yfilter;
-    }
-    if(value_path == "time-in-nano-seconds")
-    {
-        time_in_nano_seconds.yfilter = yfilter;
-    }
-}
-
-bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::Attributes::FruInfo::LastOperationalStateChange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "time-in-seconds" || name == "time-in-nano-seconds")
-        return true;
-    return false;
-}
+const Enum::YLeaf InvAdminState::admin_state_invalid {0, "admin-state-invalid"};
+const Enum::YLeaf InvAdminState::admin_up {1, "admin-up"};
+const Enum::YLeaf InvAdminState::admin_down {2, "admin-down"};
+
+const Enum::YLeaf InvResetReason::module_reset_reason_unknown {0, "module-reset-reason-unknown"};
+const Enum::YLeaf InvResetReason::module_reset_reason_powerup {1, "module-reset-reason-powerup"};
+const Enum::YLeaf InvResetReason::module_reset_reason_user_shutdown {2, "module-reset-reason-user-shutdown"};
+const Enum::YLeaf InvResetReason::module_reset_reason_user_reload {3, "module-reset-reason-user-reload"};
+const Enum::YLeaf InvResetReason::module_reset_reason_auto_reload {4, "module-reset-reason-auto-reload"};
+const Enum::YLeaf InvResetReason::module_reset_reason_environment {5, "module-reset-reason-environment"};
+const Enum::YLeaf InvResetReason::module_reset_reason_user_unpower {6, "module-reset-reason-user-unpower"};
+
+const Enum::YLeaf InvCardState::inv_card_not_present {0, "inv-card-not-present"};
+const Enum::YLeaf InvCardState::inv_card_present {1, "inv-card-present"};
+const Enum::YLeaf InvCardState::inv_card_reset {2, "inv-card-reset"};
+const Enum::YLeaf InvCardState::inv_card_booting {3, "inv-card-booting"};
+const Enum::YLeaf InvCardState::inv_card_mbi_booting {4, "inv-card-mbi-booting"};
+const Enum::YLeaf InvCardState::inv_card_running_mbi {5, "inv-card-running-mbi"};
+const Enum::YLeaf InvCardState::inv_card_running_ena {6, "inv-card-running-ena"};
+const Enum::YLeaf InvCardState::inv_card_bring_down {7, "inv-card-bring-down"};
+const Enum::YLeaf InvCardState::inv_card_ena_failure {8, "inv-card-ena-failure"};
+const Enum::YLeaf InvCardState::inv_card_f_diag_run {9, "inv-card-f-diag-run"};
+const Enum::YLeaf InvCardState::inv_card_f_diag_failure {10, "inv-card-f-diag-failure"};
+const Enum::YLeaf InvCardState::inv_card_powered {11, "inv-card-powered"};
+const Enum::YLeaf InvCardState::inv_card_unpowered {12, "inv-card-unpowered"};
+const Enum::YLeaf InvCardState::inv_card_mdr {13, "inv-card-mdr"};
+const Enum::YLeaf InvCardState::inv_card_mdr_running_mbi {14, "inv-card-mdr-running-mbi"};
+const Enum::YLeaf InvCardState::inv_card_main_t_mode {15, "inv-card-main-t-mode"};
+const Enum::YLeaf InvCardState::inv_card_admin_down {16, "inv-card-admin-down"};
+const Enum::YLeaf InvCardState::inv_card_no_mon {17, "inv-card-no-mon"};
+const Enum::YLeaf InvCardState::inv_card_unknown {18, "inv-card-unknown"};
+const Enum::YLeaf InvCardState::inv_card_failed {19, "inv-card-failed"};
+const Enum::YLeaf InvCardState::inv_card_ok {20, "inv-card-ok"};
+const Enum::YLeaf InvCardState::inv_card_missing {21, "inv-card-missing"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_downloading {22, "inv-card-field-diag-downloading"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_unmonitor {23, "inv-card-field-diag-unmonitor"};
+const Enum::YLeaf InvCardState::inv_card_fabric_field_diag_unmonitor {24, "inv-card-fabric-field-diag-unmonitor"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_rp_launching {25, "inv-card-field-diag-rp-launching"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_running {26, "inv-card-field-diag-running"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_pass {27, "inv-card-field-diag-pass"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_fail {28, "inv-card-field-diag-fail"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_timeout {29, "inv-card-field-diag-timeout"};
+const Enum::YLeaf InvCardState::inv_card_disabled {30, "inv-card-disabled"};
+const Enum::YLeaf InvCardState::inv_card_spa_booting {31, "inv-card-spa-booting"};
+const Enum::YLeaf InvCardState::inv_card_not_allowed_online {32, "inv-card-not-allowed-online"};
+const Enum::YLeaf InvCardState::inv_card_stopped {33, "inv-card-stopped"};
+const Enum::YLeaf InvCardState::inv_card_incompatible_fw_ver {34, "inv-card-incompatible-fw-ver"};
+const Enum::YLeaf InvCardState::inv_card_fpd_hold {35, "inv-card-fpd-hold"};
+const Enum::YLeaf InvCardState::inv_card_node_prep {36, "inv-card-node-prep"};
+const Enum::YLeaf InvCardState::inv_card_updating_fpd {37, "inv-card-updating-fpd"};
+const Enum::YLeaf InvCardState::inv_card_num_states {38, "inv-card-num-states"};
+
+const Enum::YLeaf InvMonitorState::unmonitored {0, "unmonitored"};
+const Enum::YLeaf InvMonitorState::monitored {1, "monitored"};
 
 const Enum::YLeaf NodeState::not_present {0, "not-present"};
 const Enum::YLeaf NodeState::present {1, "present"};
@@ -18273,64 +18531,9 @@ const Enum::YLeaf NodeState::unknown {50, "unknown"};
 const Enum::YLeaf CardRedundancyState::active {1, "active"};
 const Enum::YLeaf CardRedundancyState::standby {2, "standby"};
 
-const Enum::YLeaf InvResetReason::module_reset_reason_unknown {0, "module-reset-reason-unknown"};
-const Enum::YLeaf InvResetReason::module_reset_reason_powerup {1, "module-reset-reason-powerup"};
-const Enum::YLeaf InvResetReason::module_reset_reason_user_shutdown {2, "module-reset-reason-user-shutdown"};
-const Enum::YLeaf InvResetReason::module_reset_reason_user_reload {3, "module-reset-reason-user-reload"};
-const Enum::YLeaf InvResetReason::module_reset_reason_auto_reload {4, "module-reset-reason-auto-reload"};
-const Enum::YLeaf InvResetReason::module_reset_reason_environment {5, "module-reset-reason-environment"};
-const Enum::YLeaf InvResetReason::module_reset_reason_user_unpower {6, "module-reset-reason-user-unpower"};
-
-const Enum::YLeaf InvMonitorState::unmonitored {0, "unmonitored"};
-const Enum::YLeaf InvMonitorState::monitored {1, "monitored"};
-
-const Enum::YLeaf InvCardState::inv_card_not_present {0, "inv-card-not-present"};
-const Enum::YLeaf InvCardState::inv_card_present {1, "inv-card-present"};
-const Enum::YLeaf InvCardState::inv_card_reset {2, "inv-card-reset"};
-const Enum::YLeaf InvCardState::inv_card_booting {3, "inv-card-booting"};
-const Enum::YLeaf InvCardState::inv_card_mbi_booting {4, "inv-card-mbi-booting"};
-const Enum::YLeaf InvCardState::inv_card_running_mbi {5, "inv-card-running-mbi"};
-const Enum::YLeaf InvCardState::inv_card_running_ena {6, "inv-card-running-ena"};
-const Enum::YLeaf InvCardState::inv_card_bring_down {7, "inv-card-bring-down"};
-const Enum::YLeaf InvCardState::inv_card_ena_failure {8, "inv-card-ena-failure"};
-const Enum::YLeaf InvCardState::inv_card_f_diag_run {9, "inv-card-f-diag-run"};
-const Enum::YLeaf InvCardState::inv_card_f_diag_failure {10, "inv-card-f-diag-failure"};
-const Enum::YLeaf InvCardState::inv_card_powered {11, "inv-card-powered"};
-const Enum::YLeaf InvCardState::inv_card_unpowered {12, "inv-card-unpowered"};
-const Enum::YLeaf InvCardState::inv_card_mdr {13, "inv-card-mdr"};
-const Enum::YLeaf InvCardState::inv_card_mdr_running_mbi {14, "inv-card-mdr-running-mbi"};
-const Enum::YLeaf InvCardState::inv_card_main_t_mode {15, "inv-card-main-t-mode"};
-const Enum::YLeaf InvCardState::inv_card_admin_down {16, "inv-card-admin-down"};
-const Enum::YLeaf InvCardState::inv_card_no_mon {17, "inv-card-no-mon"};
-const Enum::YLeaf InvCardState::inv_card_unknown {18, "inv-card-unknown"};
-const Enum::YLeaf InvCardState::inv_card_failed {19, "inv-card-failed"};
-const Enum::YLeaf InvCardState::inv_card_ok {20, "inv-card-ok"};
-const Enum::YLeaf InvCardState::inv_card_missing {21, "inv-card-missing"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_downloading {22, "inv-card-field-diag-downloading"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_unmonitor {23, "inv-card-field-diag-unmonitor"};
-const Enum::YLeaf InvCardState::inv_card_fabric_field_diag_unmonitor {24, "inv-card-fabric-field-diag-unmonitor"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_rp_launching {25, "inv-card-field-diag-rp-launching"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_running {26, "inv-card-field-diag-running"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_pass {27, "inv-card-field-diag-pass"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_fail {28, "inv-card-field-diag-fail"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_timeout {29, "inv-card-field-diag-timeout"};
-const Enum::YLeaf InvCardState::inv_card_disabled {30, "inv-card-disabled"};
-const Enum::YLeaf InvCardState::inv_card_spa_booting {31, "inv-card-spa-booting"};
-const Enum::YLeaf InvCardState::inv_card_not_allowed_online {32, "inv-card-not-allowed-online"};
-const Enum::YLeaf InvCardState::inv_card_stopped {33, "inv-card-stopped"};
-const Enum::YLeaf InvCardState::inv_card_incompatible_fw_ver {34, "inv-card-incompatible-fw-ver"};
-const Enum::YLeaf InvCardState::inv_card_fpd_hold {35, "inv-card-fpd-hold"};
-const Enum::YLeaf InvCardState::inv_card_node_prep {36, "inv-card-node-prep"};
-const Enum::YLeaf InvCardState::inv_card_updating_fpd {37, "inv-card-updating-fpd"};
-const Enum::YLeaf InvCardState::inv_card_num_states {38, "inv-card-num-states"};
-
 const Enum::YLeaf InvPowerAdminState::admin_power_invalid {0, "admin-power-invalid"};
 const Enum::YLeaf InvPowerAdminState::admin_on {2, "admin-on"};
 const Enum::YLeaf InvPowerAdminState::admin_off {3, "admin-off"};
-
-const Enum::YLeaf InvAdminState::admin_state_invalid {0, "admin-state-invalid"};
-const Enum::YLeaf InvAdminState::admin_up {1, "admin-up"};
-const Enum::YLeaf InvAdminState::admin_down {2, "admin-down"};
 
 
 }

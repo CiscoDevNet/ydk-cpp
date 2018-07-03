@@ -11,38 +11,46 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::WebFilter()
+Native::Cef::Table::Download::DefaultRoute::DefaultRoute()
     :
-    url(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url>())
+    priority(std::make_shared<Native::Cef::Table::Download::DefaultRoute::Priority>())
 {
-    url->parent = this;
+    priority->parent = this;
 
-    yang_name = "web-filter"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-route"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::~WebFilter()
+Native::Cef::Table::Download::DefaultRoute::~DefaultRoute()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::has_data() const
+bool Native::Cef::Table::Download::DefaultRoute::has_data() const
 {
-    return (url !=  nullptr && url->has_data());
+    if (is_presence_container) return true;
+    return (priority !=  nullptr && priority->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::has_operation() const
+bool Native::Cef::Table::Download::DefaultRoute::has_operation() const
 {
     return is_set(yfilter)
-	|| (url !=  nullptr && url->has_operation());
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::get_segment_path() const
+std::string Native::Cef::Table::Download::DefaultRoute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "web-filter";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::get_name_leaf_data() const
+std::string Native::Cef::Table::Download::DefaultRoute::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "default-route";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::DefaultRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -51,783 +59,821 @@ std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Stand
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::DefaultRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "url")
+    if(child_yang_name == "priority")
     {
-        if(url == nullptr)
+        if(priority == nullptr)
         {
-            url = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url>();
+            priority = std::make_shared<Native::Cef::Table::Download::DefaultRoute::Priority>();
         }
-        return url;
+        return priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::DefaultRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(url != nullptr)
+    if(priority != nullptr)
     {
-        children["url"] = url;
+        children["priority"] = priority;
     }
 
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::DefaultRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::DefaultRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::DefaultRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "url")
+    if(name == "priority")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::Url()
+Native::Cef::Table::Download::DefaultRoute::Priority::Priority()
     :
-    profile{YType::str, "profile"}
+    priority1{YType::empty, "priority1"},
+    priority2{YType::empty, "priority2"},
+    priority3{YType::empty, "priority3"},
+    priority4{YType::empty, "priority4"}
 {
 
-    yang_name = "url"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "default-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::~Url()
+Native::Cef::Table::Download::DefaultRoute::Priority::~Priority()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::has_data() const
+bool Native::Cef::Table::Download::DefaultRoute::Priority::has_data() const
 {
-    return profile.is_set;
+    if (is_presence_container) return true;
+    return priority1.is_set
+	|| priority2.is_set
+	|| priority3.is_set
+	|| priority4.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::has_operation() const
+bool Native::Cef::Table::Download::DefaultRoute::Priority::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(priority3.yfilter)
+	|| ydk::is_set(priority4.yfilter);
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::get_segment_path() const
+std::string Native::Cef::Table::Download::DefaultRoute::Priority::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "url";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/default-route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::get_name_leaf_data() const
+std::string Native::Cef::Table::Download::DefaultRoute::Priority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "priority";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::DefaultRoute::Priority::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (priority3.is_set || is_set(priority3.yfilter)) leaf_name_data.push_back(priority3.get_name_leafdata());
+    if (priority4.is_set || is_set(priority4.yfilter)) leaf_name_data.push_back(priority4.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::DefaultRoute::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::DefaultRoute::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::DefaultRoute::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "profile")
+    if(value_path == "priority1")
     {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority3")
+    {
+        priority3 = value;
+        priority3.value_namespace = name_space;
+        priority3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority4")
+    {
+        priority4 = value;
+        priority4.value_namespace = name_space;
+        priority4.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::DefaultRoute::Priority::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "profile")
+    if(value_path == "priority1")
     {
-        profile.yfilter = yfilter;
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "priority3")
+    {
+        priority3.yfilter = yfilter;
+    }
+    if(value_path == "priority4")
+    {
+        priority4.yfilter = yfilter;
     }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter::Url::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::DefaultRoute::Priority::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profile")
+    if(name == "priority1" || name == "priority2" || name == "priority3" || name == "priority4")
         return true;
     return false;
 }
 
-Native::Voice::Voice()
-{
-
-    yang_name = "voice"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Voice::~Voice()
-{
-}
-
-bool Native::Voice::has_data() const
-{
-    for (std::size_t index=0; index<service.size(); index++)
-    {
-        if(service[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Voice::has_operation() const
-{
-    for (std::size_t index=0; index<service.size(); index++)
-    {
-        if(service[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Voice::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Voice::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-voice:voice";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Voice::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "service")
-    {
-        auto c = std::make_shared<Native::Voice::Service>();
-        c->parent = this;
-        service.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Voice::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : service)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::Voice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Voice::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Voice::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "service")
-        return true;
-    return false;
-}
-
-Native::Voice::Service::Service()
+Native::Cef::Table::Download::ReceiveRoute::ReceiveRoute()
     :
-    type{YType::enumeration, "type"}
-    	,
-    fax(std::make_shared<Native::Voice::Service::Fax>())
+    priority(std::make_shared<Native::Cef::Table::Download::ReceiveRoute::Priority>())
 {
-    fax->parent = this;
+    priority->parent = this;
 
-    yang_name = "service"; yang_parent_name = "voice"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "receive-route"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Voice::Service::~Service()
+Native::Cef::Table::Download::ReceiveRoute::~ReceiveRoute()
 {
 }
 
-bool Native::Voice::Service::has_data() const
+bool Native::Cef::Table::Download::ReceiveRoute::has_data() const
 {
-    return type.is_set
-	|| (fax !=  nullptr && fax->has_data());
+    if (is_presence_container) return true;
+    return (priority !=  nullptr && priority->has_data());
 }
 
-bool Native::Voice::Service::has_operation() const
+bool Native::Cef::Table::Download::ReceiveRoute::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| (fax !=  nullptr && fax->has_operation());
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
-std::string Native::Voice::Service::get_absolute_path() const
+std::string Native::Cef::Table::Download::ReceiveRoute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-voice:voice/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Voice::Service::get_segment_path() const
+std::string Native::Cef::Table::Download::ReceiveRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service" <<"[type='" <<type <<"']";
+    path_buffer << "receive-route";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Voice::Service::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::ReceiveRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Voice::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::ReceiveRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fax")
+    if(child_yang_name == "priority")
     {
-        if(fax == nullptr)
+        if(priority == nullptr)
         {
-            fax = std::make_shared<Native::Voice::Service::Fax>();
+            priority = std::make_shared<Native::Cef::Table::Download::ReceiveRoute::Priority>();
         }
-        return fax;
+        return priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Voice::Service::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ReceiveRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(fax != nullptr)
+    if(priority != nullptr)
     {
-        children["fax"] = fax;
+        children["priority"] = priority;
     }
 
     return children;
 }
 
-void Native::Voice::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::ReceiveRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::Voice::Service::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::ReceiveRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
 }
 
-bool Native::Voice::Service::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::ReceiveRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fax" || name == "type")
+    if(name == "priority")
         return true;
     return false;
 }
 
-Native::Voice::Service::Fax::Fax()
+Native::Cef::Table::Download::ReceiveRoute::Priority::Priority()
     :
-    protocol{YType::enumeration, "protocol"},
-    fallback{YType::enumeration, "fallback"},
-    codec{YType::enumeration, "codec"},
-    ls_redundancy{YType::uint8, "ls-redundancy"},
-    hs_redundancy{YType::uint8, "hs-redundancy"},
-    version{YType::enumeration, "version"}
+    priority1{YType::empty, "priority1"},
+    priority2{YType::empty, "priority2"},
+    priority3{YType::empty, "priority3"},
+    priority4{YType::empty, "priority4"}
 {
 
-    yang_name = "fax"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "receive-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Voice::Service::Fax::~Fax()
+Native::Cef::Table::Download::ReceiveRoute::Priority::~Priority()
 {
 }
 
-bool Native::Voice::Service::Fax::has_data() const
+bool Native::Cef::Table::Download::ReceiveRoute::Priority::has_data() const
 {
-    return protocol.is_set
-	|| fallback.is_set
-	|| codec.is_set
-	|| ls_redundancy.is_set
-	|| hs_redundancy.is_set
-	|| version.is_set;
+    if (is_presence_container) return true;
+    return priority1.is_set
+	|| priority2.is_set
+	|| priority3.is_set
+	|| priority4.is_set;
 }
 
-bool Native::Voice::Service::Fax::has_operation() const
+bool Native::Cef::Table::Download::ReceiveRoute::Priority::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| ydk::is_set(fallback.yfilter)
-	|| ydk::is_set(codec.yfilter)
-	|| ydk::is_set(ls_redundancy.yfilter)
-	|| ydk::is_set(hs_redundancy.yfilter)
-	|| ydk::is_set(version.yfilter);
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(priority3.yfilter)
+	|| ydk::is_set(priority4.yfilter);
 }
 
-std::string Native::Voice::Service::Fax::get_segment_path() const
+std::string Native::Cef::Table::Download::ReceiveRoute::Priority::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fax";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/receive-route/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Voice::Service::Fax::get_name_leaf_data() const
+std::string Native::Cef::Table::Download::ReceiveRoute::Priority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "priority";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::ReceiveRoute::Priority::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (fallback.is_set || is_set(fallback.yfilter)) leaf_name_data.push_back(fallback.get_name_leafdata());
-    if (codec.is_set || is_set(codec.yfilter)) leaf_name_data.push_back(codec.get_name_leafdata());
-    if (ls_redundancy.is_set || is_set(ls_redundancy.yfilter)) leaf_name_data.push_back(ls_redundancy.get_name_leafdata());
-    if (hs_redundancy.is_set || is_set(hs_redundancy.yfilter)) leaf_name_data.push_back(hs_redundancy.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (priority3.is_set || is_set(priority3.yfilter)) leaf_name_data.push_back(priority3.get_name_leafdata());
+    if (priority4.is_set || is_set(priority4.yfilter)) leaf_name_data.push_back(priority4.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Voice::Service::Fax::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::ReceiveRoute::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Voice::Service::Fax::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ReceiveRoute::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Voice::Service::Fax::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::ReceiveRoute::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "protocol")
+    if(value_path == "priority1")
     {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "fallback")
+    if(value_path == "priority2")
     {
-        fallback = value;
-        fallback.value_namespace = name_space;
-        fallback.value_namespace_prefix = name_space_prefix;
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "codec")
+    if(value_path == "priority3")
     {
-        codec = value;
-        codec.value_namespace = name_space;
-        codec.value_namespace_prefix = name_space_prefix;
+        priority3 = value;
+        priority3.value_namespace = name_space;
+        priority3.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ls-redundancy")
+    if(value_path == "priority4")
     {
-        ls_redundancy = value;
-        ls_redundancy.value_namespace = name_space;
-        ls_redundancy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hs-redundancy")
-    {
-        hs_redundancy = value;
-        hs_redundancy.value_namespace = name_space;
-        hs_redundancy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
+        priority4 = value;
+        priority4.value_namespace = name_space;
+        priority4.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Voice::Service::Fax::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::ReceiveRoute::Priority::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "protocol")
+    if(value_path == "priority1")
     {
-        protocol.yfilter = yfilter;
+        priority1.yfilter = yfilter;
     }
-    if(value_path == "fallback")
+    if(value_path == "priority2")
     {
-        fallback.yfilter = yfilter;
+        priority2.yfilter = yfilter;
     }
-    if(value_path == "codec")
+    if(value_path == "priority3")
     {
-        codec.yfilter = yfilter;
+        priority3.yfilter = yfilter;
     }
-    if(value_path == "ls-redundancy")
+    if(value_path == "priority4")
     {
-        ls_redundancy.yfilter = yfilter;
-    }
-    if(value_path == "hs-redundancy")
-    {
-        hs_redundancy.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
+        priority4.yfilter = yfilter;
     }
 }
 
-bool Native::Voice::Service::Fax::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::ReceiveRoute::Priority::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "protocol" || name == "fallback" || name == "codec" || name == "ls-redundancy" || name == "hs-redundancy" || name == "version")
+    if(name == "priority1" || name == "priority2" || name == "priority3" || name == "priority4")
         return true;
     return false;
 }
 
-Native::VoiceCard::VoiceCard()
+Native::Cef::Table::Download::RecursiveDependents::RecursiveDependents()
     :
-    slot{YType::uint8, "slot"}
+    priority(std::make_shared<Native::Cef::Table::Download::RecursiveDependents::Priority>())
 {
+    priority->parent = this;
 
-    yang_name = "voice-card"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "recursive-dependents"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::VoiceCard::~VoiceCard()
+Native::Cef::Table::Download::RecursiveDependents::~RecursiveDependents()
 {
 }
 
-bool Native::VoiceCard::has_data() const
+bool Native::Cef::Table::Download::RecursiveDependents::has_data() const
 {
-    return slot.is_set;
+    if (is_presence_container) return true;
+    return (priority !=  nullptr && priority->has_data());
 }
 
-bool Native::VoiceCard::has_operation() const
+bool Native::Cef::Table::Download::RecursiveDependents::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(slot.yfilter);
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
-std::string Native::VoiceCard::get_absolute_path() const
+std::string Native::Cef::Table::Download::RecursiveDependents::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::VoiceCard::get_segment_path() const
+std::string Native::Cef::Table::Download::RecursiveDependents::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-voice:voice-card" <<"[slot='" <<slot <<"']";
+    path_buffer << "recursive-dependents";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::VoiceCard::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::RecursiveDependents::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::VoiceCard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::RecursiveDependents::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "priority")
+    {
+        if(priority == nullptr)
+        {
+            priority = std::make_shared<Native::Cef::Table::Download::RecursiveDependents::Priority>();
+        }
+        return priority;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::VoiceCard::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RecursiveDependents::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(priority != nullptr)
+    {
+        children["priority"] = priority;
+    }
+
     return children;
 }
 
-void Native::VoiceCard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::RecursiveDependents::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "slot")
-    {
-        slot = value;
-        slot.value_namespace = name_space;
-        slot.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::VoiceCard::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::RecursiveDependents::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "slot")
-    {
-        slot.yfilter = yfilter;
-    }
 }
 
-bool Native::VoiceCard::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::RecursiveDependents::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "slot")
+    if(name == "priority")
         return true;
     return false;
 }
 
-Native::Vpdn::Vpdn()
+Native::Cef::Table::Download::RecursiveDependents::Priority::Priority()
     :
-    authen_before_forward{YType::empty, "authen-before-forward"},
-    enable{YType::empty, "enable"},
-    search_order{YType::enumeration, "search-order"}
+    priority1{YType::empty, "priority1"},
+    priority2{YType::empty, "priority2"},
+    priority3{YType::empty, "priority3"},
+    priority4{YType::empty, "priority4"}
 {
 
-    yang_name = "vpdn"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "recursive-dependents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Vpdn::~Vpdn()
+Native::Cef::Table::Download::RecursiveDependents::Priority::~Priority()
 {
 }
 
-bool Native::Vpdn::has_data() const
+bool Native::Cef::Table::Download::RecursiveDependents::Priority::has_data() const
 {
-    for (auto const & leaf : search_order.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return authen_before_forward.is_set
-	|| enable.is_set;
+    if (is_presence_container) return true;
+    return priority1.is_set
+	|| priority2.is_set
+	|| priority3.is_set
+	|| priority4.is_set;
 }
 
-bool Native::Vpdn::has_operation() const
+bool Native::Cef::Table::Download::RecursiveDependents::Priority::has_operation() const
 {
-    for (auto const & leaf : search_order.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(authen_before_forward.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(search_order.yfilter);
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(priority3.yfilter)
+	|| ydk::is_set(priority4.yfilter);
 }
 
-std::string Native::Vpdn::get_absolute_path() const
+std::string Native::Cef::Table::Download::RecursiveDependents::Priority::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/recursive-dependents/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Vpdn::get_segment_path() const
+std::string Native::Cef::Table::Download::RecursiveDependents::Priority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-vpdn:vpdn";
+    path_buffer << "priority";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Vpdn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::RecursiveDependents::Priority::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (authen_before_forward.is_set || is_set(authen_before_forward.yfilter)) leaf_name_data.push_back(authen_before_forward.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    auto search_order_name_datas = search_order.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), search_order_name_datas.begin(), search_order_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Vpdn::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "authen-before-forward")
-    {
-        authen_before_forward = value;
-        authen_before_forward.value_namespace = name_space;
-        authen_before_forward.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "search-order")
-    {
-        search_order.append(value);
-    }
-}
-
-void Native::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "authen-before-forward")
-    {
-        authen_before_forward.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "search-order")
-    {
-        search_order.yfilter = yfilter;
-    }
-}
-
-bool Native::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "authen-before-forward" || name == "enable" || name == "search-order")
-        return true;
-    return false;
-}
-
-Native::Vstack::Vstack()
-    :
-    director{YType::str, "director"}
-{
-
-    yang_name = "vstack"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Vstack::~Vstack()
-{
-}
-
-bool Native::Vstack::has_data() const
-{
-    return director.is_set;
-}
-
-bool Native::Vstack::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(director.yfilter);
-}
-
-std::string Native::Vstack::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Vstack::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-vstack:vstack";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Vstack::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (director.is_set || is_set(director.yfilter)) leaf_name_data.push_back(director.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (priority3.is_set || is_set(priority3.yfilter)) leaf_name_data.push_back(priority3.get_name_leafdata());
+    if (priority4.is_set || is_set(priority4.yfilter)) leaf_name_data.push_back(priority4.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Vstack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::RecursiveDependents::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Vstack::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RecursiveDependents::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Vstack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::RecursiveDependents::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "director")
+    if(value_path == "priority1")
     {
-        director = value;
-        director.value_namespace = name_space;
-        director.value_namespace_prefix = name_space_prefix;
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority3")
+    {
+        priority3 = value;
+        priority3.value_namespace = name_space;
+        priority3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority4")
+    {
+        priority4 = value;
+        priority4.value_namespace = name_space;
+        priority4.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Vstack::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::RecursiveDependents::Priority::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "director")
+    if(value_path == "priority1")
     {
-        director.yfilter = yfilter;
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "priority3")
+    {
+        priority3.yfilter = yfilter;
+    }
+    if(value_path == "priority4")
+    {
+        priority4.yfilter = yfilter;
     }
 }
 
-bool Native::Vstack::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::RecursiveDependents::Priority::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "director")
+    if(name == "priority1" || name == "priority2" || name == "priority3" || name == "priority4")
         return true;
     return false;
 }
 
-const Enum::YLeaf Native::Voice::Service::Type::pots {0, "pots"};
-const Enum::YLeaf Native::Voice::Service::Type::saf {1, "saf"};
-const Enum::YLeaf Native::Voice::Service::Type::voatm {2, "voatm"};
-const Enum::YLeaf Native::Voice::Service::Type::vofr {3, "vofr"};
-const Enum::YLeaf Native::Voice::Service::Type::voip {4, "voip"};
+Native::Cef::Table::Download::RouteInVrf::RouteInVrf()
+    :
+    priority(std::make_shared<Native::Cef::Table::Download::RouteInVrf::Priority>())
+{
+    priority->parent = this;
 
-const Enum::YLeaf Native::Voice::Service::Fax::Protocol::cisco {0, "cisco"};
-const Enum::YLeaf Native::Voice::Service::Fax::Protocol::none {1, "none"};
-const Enum::YLeaf Native::Voice::Service::Fax::Protocol::pass_through {2, "pass-through"};
-const Enum::YLeaf Native::Voice::Service::Fax::Protocol::t38 {3, "t38"};
+    yang_name = "route-in-vrf"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
+}
 
-const Enum::YLeaf Native::Voice::Service::Fax::Fallback::cisco {0, "cisco"};
-const Enum::YLeaf Native::Voice::Service::Fax::Fallback::none {1, "none"};
-const Enum::YLeaf Native::Voice::Service::Fax::Fallback::pass_through {2, "pass-through"};
+Native::Cef::Table::Download::RouteInVrf::~RouteInVrf()
+{
+}
 
-const Enum::YLeaf Native::Voice::Service::Fax::Codec::g711alaw {0, "g711alaw"};
-const Enum::YLeaf Native::Voice::Service::Fax::Codec::g711ulaw {1, "g711ulaw"};
+bool Native::Cef::Table::Download::RouteInVrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return (priority !=  nullptr && priority->has_data());
+}
 
-const Enum::YLeaf Native::Voice::Service::Fax::Version::Y_0 {0, "0"};
-const Enum::YLeaf Native::Voice::Service::Fax::Version::Y_3 {1, "3"};
+bool Native::Cef::Table::Download::RouteInVrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| (priority !=  nullptr && priority->has_operation());
+}
 
-const Enum::YLeaf Native::Vpdn::SearchOrder::dnis {0, "dnis"};
-const Enum::YLeaf Native::Vpdn::SearchOrder::domain {1, "domain"};
-const Enum::YLeaf Native::Vpdn::SearchOrder::multihop_hostname {2, "multihop-hostname"};
+std::string Native::Cef::Table::Download::RouteInVrf::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Cef::Table::Download::RouteInVrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-in-vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::RouteInVrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Cef::Table::Download::RouteInVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "priority")
+    {
+        if(priority == nullptr)
+        {
+            priority = std::make_shared<Native::Cef::Table::Download::RouteInVrf::Priority>();
+        }
+        return priority;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RouteInVrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(priority != nullptr)
+    {
+        children["priority"] = priority;
+    }
+
+    return children;
+}
+
+void Native::Cef::Table::Download::RouteInVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Cef::Table::Download::RouteInVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Cef::Table::Download::RouteInVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority")
+        return true;
+    return false;
+}
+
+Native::Cef::Table::Download::RouteInVrf::Priority::Priority()
+    :
+    priority1{YType::empty, "priority1"},
+    priority2{YType::empty, "priority2"},
+    priority3{YType::empty, "priority3"},
+    priority4{YType::empty, "priority4"}
+{
+
+    yang_name = "priority"; yang_parent_name = "route-in-vrf"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Cef::Table::Download::RouteInVrf::Priority::~Priority()
+{
+}
+
+bool Native::Cef::Table::Download::RouteInVrf::Priority::has_data() const
+{
+    if (is_presence_container) return true;
+    return priority1.is_set
+	|| priority2.is_set
+	|| priority3.is_set
+	|| priority4.is_set;
+}
+
+bool Native::Cef::Table::Download::RouteInVrf::Priority::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(priority3.yfilter)
+	|| ydk::is_set(priority4.yfilter);
+}
+
+std::string Native::Cef::Table::Download::RouteInVrf::Priority::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/route-in-vrf/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Cef::Table::Download::RouteInVrf::Priority::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "priority";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::RouteInVrf::Priority::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (priority3.is_set || is_set(priority3.yfilter)) leaf_name_data.push_back(priority3.get_name_leafdata());
+    if (priority4.is_set || is_set(priority4.yfilter)) leaf_name_data.push_back(priority4.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Cef::Table::Download::RouteInVrf::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::RouteInVrf::Priority::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Cef::Table::Download::RouteInVrf::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority3")
+    {
+        priority3 = value;
+        priority3.value_namespace = name_space;
+        priority3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority4")
+    {
+        priority4 = value;
+        priority4.value_namespace = name_space;
+        priority4.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Cef::Table::Download::RouteInVrf::Priority::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "priority3")
+    {
+        priority3.yfilter = yfilter;
+    }
+    if(value_path == "priority4")
+    {
+        priority4.yfilter = yfilter;
+    }
+}
+
+bool Native::Cef::Table::Download::RouteInVrf::Priority::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "priority1" || name == "priority2" || name == "priority3" || name == "priority4")
+        return true;
+    return false;
+}
 
 
 }

@@ -17,7 +17,7 @@ HardwareModuleNp::HardwareModuleNp()
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module-np"; yang_parent_name = "Cisco-IOS-XR-asr9k-np-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module-np"; yang_parent_name = "Cisco-IOS-XR-asr9k-np-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModuleNp::~HardwareModuleNp()
@@ -26,6 +26,7 @@ HardwareModuleNp::~HardwareModuleNp()
 
 bool HardwareModuleNp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool HardwareModuleNp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 HardwareModuleNp::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "hardware-module-np"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "hardware-module-np"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleNp::Nodes::~Nodes()
@@ -129,7 +132,8 @@ HardwareModuleNp::Nodes::~Nodes()
 
 bool HardwareModuleNp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool HardwareModuleNp::Nodes::has_data() const
 
 bool HardwareModuleNp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::get_child_by_name(const std::st
     {
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool HardwareModuleNp::Nodes::has_leaf_or_child_of_name(const std::string & name
 HardwareModuleNp::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     nps(std::make_shared<HardwareModuleNp::Nodes::Node::Nps>())
 {
     nps->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModuleNp::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ HardwareModuleNp::Nodes::Node::~Node()
 
 bool HardwareModuleNp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (nps !=  nullptr && nps->has_data());
 }
@@ -252,7 +257,8 @@ std::string HardwareModuleNp::Nodes::Node::get_absolute_path() const
 std::string HardwareModuleNp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool HardwareModuleNp::Nodes::Node::has_leaf_or_child_of_name(const std::string 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Nps()
+    :
+    np(this, {"np_name"})
 {
 
-    yang_name = "nps"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nps"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::~Nps()
@@ -329,7 +337,8 @@ HardwareModuleNp::Nodes::Node::Nps::~Nps()
 
 bool HardwareModuleNp::Nodes::Node::Nps::has_data() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<np.len(); index++)
     {
         if(np[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::has_data() const
 
 bool HardwareModuleNp::Nodes::Node::Nps::has_operation() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    for (std::size_t index=0; index<np.len(); index++)
     {
         if(np[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::get_child_by_name(co
     {
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np>();
         c->parent = this;
-        np.push_back(c);
+        np.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np)
+    for (auto c : np.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -410,18 +419,18 @@ bool HardwareModuleNp::Nodes::Node::Nps::has_leaf_or_child_of_name(const std::st
 HardwareModuleNp::Nodes::Node::Nps::Np::Np()
     :
     np_name{YType::str, "np-name"}
-    	,
+        ,
     chn_load(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad>())
-	,tcam_summary(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary>())
-	,counters(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::Counters>())
-	,fast_drop(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop>())
+    , tcam_summary(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary>())
+    , counters(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::Counters>())
+    , fast_drop(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop>())
 {
     chn_load->parent = this;
     tcam_summary->parent = this;
     counters->parent = this;
     fast_drop->parent = this;
 
-    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::~Np()
@@ -430,6 +439,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::~Np()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::has_data() const
 {
+    if (is_presence_container) return true;
     return np_name.is_set
 	|| (chn_load !=  nullptr && chn_load->has_data())
 	|| (tcam_summary !=  nullptr && tcam_summary->has_data())
@@ -450,7 +460,8 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::has_operation() const
 std::string HardwareModuleNp::Nodes::Node::Nps::Np::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "np" <<"[np-name='" <<np_name <<"']";
+    path_buffer << "np";
+    ADD_KEY_TOKEN(np_name, "np-name");
     return path_buffer.str();
 }
 
@@ -558,9 +569,11 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::has_leaf_or_child_of_name(const std
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::ChnLoad()
+    :
+    np_chn_load(this, {})
 {
 
-    yang_name = "chn-load"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chn-load"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::~ChnLoad()
@@ -569,7 +582,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::~ChnLoad()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::has_data() const
 {
-    for (std::size_t index=0; index<np_chn_load.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<np_chn_load.len(); index++)
     {
         if(np_chn_load[index]->has_data())
             return true;
@@ -579,7 +593,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::has_data() const
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::has_operation() const
 {
-    for (std::size_t index=0; index<np_chn_load.size(); index++)
+    for (std::size_t index=0; index<np_chn_load.len(); index++)
     {
         if(np_chn_load[index]->has_operation())
             return true;
@@ -609,7 +623,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::get_chi
     {
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad>();
         c->parent = this;
-        np_chn_load.push_back(c);
+        np_chn_load.append(c);
         return c;
     }
 
@@ -621,7 +635,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np_chn_load)
+    for (auto c : np_chn_load.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -657,7 +671,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::NpChnLoad()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "np-chn-load"; yang_parent_name = "chn-load"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-chn-load"; yang_parent_name = "chn-load"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::~NpChnLoad()
@@ -666,6 +680,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::~NpChnLoad()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_ctr_counter.is_set
 	|| avg_rfd_usage.is_set
 	|| peak_rfd_usage.is_set
@@ -797,12 +812,12 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::ChnLoad::NpChnLoad::has_leaf_or_chi
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamSummary()
     :
     internal_tcam_info(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo>())
-	,tcam_info(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo>())
+    , tcam_info(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo>())
 {
     internal_tcam_info->parent = this;
     tcam_info->parent = this;
 
-    yang_name = "tcam-summary"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-summary"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::~TcamSummary()
@@ -811,6 +826,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::~TcamSummary()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (internal_tcam_info !=  nullptr && internal_tcam_info->has_data())
 	|| (tcam_info !=  nullptr && tcam_info->has_data());
 }
@@ -896,12 +912,13 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::has_leaf_or_child_of_n
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::InternalTcamInfo()
     :
     tcam_lt_ods2(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2>())
-	,tcam_lt_ods8(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8>())
+    , tcam_lt_ods8(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8>())
+    , tcam_lt_l2(this, {})
 {
     tcam_lt_ods2->parent = this;
     tcam_lt_ods8->parent = this;
 
-    yang_name = "internal-tcam-info"; yang_parent_name = "tcam-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "internal-tcam-info"; yang_parent_name = "tcam-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::~InternalTcamInfo()
@@ -910,7 +927,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::~Internal
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::has_data() const
 {
-    for (std::size_t index=0; index<tcam_lt_l2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcam_lt_l2.len(); index++)
     {
         if(tcam_lt_l2[index]->has_data())
             return true;
@@ -921,7 +939,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::has_
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::has_operation() const
 {
-    for (std::size_t index=0; index<tcam_lt_l2.size(); index++)
+    for (std::size_t index=0; index<tcam_lt_l2.len(); index++)
     {
         if(tcam_lt_l2[index]->has_operation())
             return true;
@@ -971,7 +989,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Int
     {
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2>();
         c->parent = this;
-        tcam_lt_l2.push_back(c);
+        tcam_lt_l2.append(c);
         return c;
     }
 
@@ -993,7 +1011,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     }
 
     count = 0;
-    for (auto const & c : tcam_lt_l2)
+    for (auto c : tcam_lt_l2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1023,14 +1041,14 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     :
     max_entries{YType::uint32, "max-entries"},
     free_entries{YType::uint32, "free-entries"}
-    	,
+        ,
     app_id_ifib(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib>())
-	,app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos>())
-	,app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl>())
-	,app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon>())
-	,app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi>())
-	,app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr>())
-	,application_edpl_entry(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry>())
+    , app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos>())
+    , app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl>())
+    , app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon>())
+    , app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi>())
+    , app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr>())
+    , application_edpl_entry(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry>())
 {
     app_id_ifib->parent = this;
     app_id_qos->parent = this;
@@ -1040,7 +1058,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     app_id_pbr->parent = this;
     application_edpl_entry->parent = this;
 
-    yang_name = "tcam-lt-ods2"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-lt-ods2"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::~TcamLtOds2()
@@ -1049,6 +1067,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::has_data() const
 {
+    if (is_presence_container) return true;
     return max_entries.is_set
 	|| free_entries.is_set
 	|| (app_id_ifib !=  nullptr && app_id_ifib->has_data())
@@ -1244,7 +1263,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::~AppIdIfib()
@@ -1253,6 +1272,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdIfib::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -1349,7 +1369,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::~AppIdQos()
@@ -1358,6 +1378,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdQos::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -1454,7 +1475,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::~AppIdAcl()
@@ -1463,6 +1484,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -1559,7 +1581,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::~AppIdAfmon()
@@ -1568,6 +1590,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdAfmon::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -1664,7 +1687,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::~AppIdLi()
@@ -1673,6 +1696,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdLi::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -1769,7 +1793,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::~AppIdPbr()
@@ -1778,6 +1802,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::AppIdPbr::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -1874,7 +1899,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::~ApplicationEdplEntry()
@@ -1883,6 +1908,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds2::ApplicationEdplEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -1976,14 +2002,14 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     :
     max_entries{YType::uint32, "max-entries"},
     free_entries{YType::uint32, "free-entries"}
-    	,
+        ,
     app_id_ifib(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib>())
-	,app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos>())
-	,app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl>())
-	,app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon>())
-	,app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi>())
-	,app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr>())
-	,application_edpl_entry(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry>())
+    , app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos>())
+    , app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl>())
+    , app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon>())
+    , app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi>())
+    , app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr>())
+    , application_edpl_entry(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry>())
 {
     app_id_ifib->parent = this;
     app_id_qos->parent = this;
@@ -1993,7 +2019,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     app_id_pbr->parent = this;
     application_edpl_entry->parent = this;
 
-    yang_name = "tcam-lt-ods8"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-lt-ods8"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::~TcamLtOds8()
@@ -2002,6 +2028,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::has_data() const
 {
+    if (is_presence_container) return true;
     return max_entries.is_set
 	|| free_entries.is_set
 	|| (app_id_ifib !=  nullptr && app_id_ifib->has_data())
@@ -2197,7 +2224,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::~AppIdIfib()
@@ -2206,6 +2233,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdIfib::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -2302,7 +2330,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::~AppIdQos()
@@ -2311,6 +2339,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdQos::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -2407,7 +2436,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::~AppIdAcl()
@@ -2416,6 +2445,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -2512,7 +2542,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::~AppIdAfmon()
@@ -2521,6 +2551,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdAfmon::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -2617,7 +2648,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::~AppIdLi()
@@ -2626,6 +2657,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdLi::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -2722,7 +2754,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::~AppIdPbr()
@@ -2731,6 +2763,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::AppIdPbr::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -2827,7 +2860,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
     total_allocated_entries{YType::uint32, "total-allocated-entries"}
 {
 
-    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-edpl-entry"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::~ApplicationEdplEntry()
@@ -2836,6 +2869,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtOds8::ApplicationEdplEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| total_used_entries.is_set
 	|| total_allocated_entries.is_set;
@@ -2932,7 +2966,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2:
     free_entries{YType::uint32, "free-entries"}
 {
 
-    yang_name = "tcam-lt-l2"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-lt-l2"; yang_parent_name = "internal-tcam-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::~TcamLtL2()
@@ -2941,6 +2975,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2:
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::TcamLtL2::has_data() const
 {
+    if (is_presence_container) return true;
     return partition_id.is_set
 	|| valid_entries.is_set
 	|| free_entries.is_set;
@@ -3033,12 +3068,13 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::InternalTcamInfo::Tcam
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamInfo()
     :
     tcam_lt_ods2(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2>())
-	,tcam_lt_ods8(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8>())
+    , tcam_lt_ods8(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8>())
+    , tcam_lt_l2(this, {})
 {
     tcam_lt_ods2->parent = this;
     tcam_lt_ods8->parent = this;
 
-    yang_name = "tcam-info"; yang_parent_name = "tcam-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-info"; yang_parent_name = "tcam-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::~TcamInfo()
@@ -3047,7 +3083,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::~TcamInfo()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::has_data() const
 {
-    for (std::size_t index=0; index<tcam_lt_l2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcam_lt_l2.len(); index++)
     {
         if(tcam_lt_l2[index]->has_data())
             return true;
@@ -3058,7 +3095,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::has_data() c
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::has_operation() const
 {
-    for (std::size_t index=0; index<tcam_lt_l2.size(); index++)
+    for (std::size_t index=0; index<tcam_lt_l2.len(); index++)
     {
         if(tcam_lt_l2[index]->has_operation())
             return true;
@@ -3108,7 +3145,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::Tca
     {
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2>();
         c->parent = this;
-        tcam_lt_l2.push_back(c);
+        tcam_lt_l2.append(c);
         return c;
     }
 
@@ -3130,7 +3167,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     }
 
     count = 0;
-    for (auto const & c : tcam_lt_l2)
+    for (auto c : tcam_lt_l2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3160,15 +3197,15 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::TcamL
     :
     free_entries{YType::uint32, "free-entries"},
     reserved_entries{YType::uint32, "reserved-entries"}
-    	,
+        ,
     acl_common(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon>())
-	,app_id_ifib(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib>())
-	,app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos>())
-	,app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl>())
-	,app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon>())
-	,app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi>())
-	,app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr>())
-	,app_id_edpl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl>())
+    , app_id_ifib(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib>())
+    , app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos>())
+    , app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl>())
+    , app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon>())
+    , app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi>())
+    , app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr>())
+    , app_id_edpl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl>())
 {
     acl_common->parent = this;
     app_id_ifib->parent = this;
@@ -3179,7 +3216,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::TcamL
     app_id_pbr->parent = this;
     app_id_edpl->parent = this;
 
-    yang_name = "tcam-lt-ods2"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-lt-ods2"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::~TcamLtOds2()
@@ -3188,6 +3225,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::~Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::has_data() const
 {
+    if (is_presence_container) return true;
     return free_entries.is_set
 	|| reserved_entries.is_set
 	|| (acl_common !=  nullptr && acl_common->has_data())
@@ -3398,7 +3436,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCo
     allocated_entries{YType::uint32, "allocated-entries"}
 {
 
-    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::~AclCommon()
@@ -3407,6 +3445,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCo
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AclCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return free_entries.is_set
 	|| allocated_entries.is_set;
 }
@@ -3490,7 +3529,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::~AppIdIfib()
@@ -3499,6 +3538,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdIfib::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -3595,7 +3635,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::~AppIdQos()
@@ -3604,6 +3644,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdQos::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -3700,7 +3741,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::~AppIdAcl()
@@ -3709,6 +3750,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -3805,7 +3847,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::~AppIdAfmon()
@@ -3814,6 +3856,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdAfmon::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -3910,7 +3953,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::~AppIdLi()
@@ -3919,6 +3962,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdLi::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -4015,7 +4059,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::~AppIdPbr()
@@ -4024,6 +4068,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdPbr::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -4120,7 +4165,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::~AppIdEdpl()
@@ -4129,6 +4174,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds2::AppIdEdpl::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -4222,15 +4268,15 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::TcamL
     :
     free_entries{YType::uint32, "free-entries"},
     reserved_entries{YType::uint32, "reserved-entries"}
-    	,
+        ,
     acl_common(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon>())
-	,app_id_ifib(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib>())
-	,app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos>())
-	,app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl>())
-	,app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon>())
-	,app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi>())
-	,app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr>())
-	,app_id_edpl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl>())
+    , app_id_ifib(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib>())
+    , app_id_qos(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos>())
+    , app_id_acl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl>())
+    , app_id_afmon(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon>())
+    , app_id_li(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi>())
+    , app_id_pbr(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr>())
+    , app_id_edpl(std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl>())
 {
     acl_common->parent = this;
     app_id_ifib->parent = this;
@@ -4241,7 +4287,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::TcamL
     app_id_pbr->parent = this;
     app_id_edpl->parent = this;
 
-    yang_name = "tcam-lt-ods8"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-lt-ods8"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::~TcamLtOds8()
@@ -4250,6 +4296,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::~Tcam
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::has_data() const
 {
+    if (is_presence_container) return true;
     return free_entries.is_set
 	|| reserved_entries.is_set
 	|| (acl_common !=  nullptr && acl_common->has_data())
@@ -4460,7 +4507,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCo
     allocated_entries{YType::uint32, "allocated-entries"}
 {
 
-    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl-common"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::~AclCommon()
@@ -4469,6 +4516,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCo
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AclCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return free_entries.is_set
 	|| allocated_entries.is_set;
 }
@@ -4552,7 +4600,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-ifib"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::~AppIdIfib()
@@ -4561,6 +4609,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdIfib::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -4657,7 +4706,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-qos"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::~AppIdQos()
@@ -4666,6 +4715,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdQos::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -4762,7 +4812,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-acl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::~AppIdAcl()
@@ -4771,6 +4821,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -4867,7 +4918,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-afmon"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::~AppIdAfmon()
@@ -4876,6 +4927,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdAfmon::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -4972,7 +5024,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-li"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::~AppIdLi()
@@ -4981,6 +5033,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdLi::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -5077,7 +5130,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-pbr"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::~AppIdPbr()
@@ -5086,6 +5139,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdPbr::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -5182,7 +5236,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
     num_allocated_entries{YType::uint32, "num-allocated-entries"}
 {
 
-    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "app-id-edpl"; yang_parent_name = "tcam-lt-ods8"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::~AppIdEdpl()
@@ -5191,6 +5245,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppId
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtOds8::AppIdEdpl::has_data() const
 {
+    if (is_presence_container) return true;
     return num_vmr_ids.is_set
 	|| num_active_entries.is_set
 	|| num_allocated_entries.is_set;
@@ -5288,7 +5343,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::TcamLtL
     free_entries{YType::uint32, "free-entries"}
 {
 
-    yang_name = "tcam-lt-l2"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-lt-l2"; yang_parent_name = "tcam-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::~TcamLtL2()
@@ -5297,6 +5352,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::~TcamLt
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::has_data() const
 {
+    if (is_presence_container) return true;
     return partition_id.is_set
 	|| priority.is_set
 	|| valid_entries.is_set
@@ -5400,9 +5456,11 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::TcamSummary::TcamInfo::TcamLtL2::ha
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::Counters::Counters()
+    :
+    np_counter(this, {})
 {
 
-    yang_name = "counters"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::Counters::~Counters()
@@ -5411,7 +5469,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::Counters::~Counters()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_data() const
 {
-    for (std::size_t index=0; index<np_counter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<np_counter.len(); index++)
     {
         if(np_counter[index]->has_data())
             return true;
@@ -5421,7 +5480,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_data() const
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::has_operation() const
 {
-    for (std::size_t index=0; index<np_counter.size(); index++)
+    for (std::size_t index=0; index<np_counter.len(); index++)
     {
         if(np_counter[index]->has_operation())
             return true;
@@ -5451,7 +5510,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::Counters::get_ch
     {
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter>();
         c->parent = this;
-        np_counter.push_back(c);
+        np_counter.append(c);
         return c;
     }
 
@@ -5463,7 +5522,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np_counter)
+    for (auto c : np_counter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5498,7 +5557,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::NpCounter()
     counter_name{YType::str, "counter-name"}
 {
 
-    yang_name = "np-counter"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-counter"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::~NpCounter()
@@ -5507,6 +5566,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::~NpCounter()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_data() const
 {
+    if (is_presence_container) return true;
     return counter_index.is_set
 	|| counter_value.is_set
 	|| rate.is_set
@@ -5623,9 +5683,11 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::Counters::NpCounter::has_leaf_or_ch
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::FastDrop()
+    :
+    np_fast_drop(this, {})
 {
 
-    yang_name = "fast-drop"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-drop"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::~FastDrop()
@@ -5634,7 +5696,8 @@ HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::~FastDrop()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_data() const
 {
-    for (std::size_t index=0; index<np_fast_drop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<np_fast_drop.len(); index++)
     {
         if(np_fast_drop[index]->has_data())
             return true;
@@ -5644,7 +5707,7 @@ bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_data() const
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::has_operation() const
 {
-    for (std::size_t index=0; index<np_fast_drop.size(); index++)
+    for (std::size_t index=0; index<np_fast_drop.len(); index++)
     {
         if(np_fast_drop[index]->has_operation())
             return true;
@@ -5674,7 +5737,7 @@ std::shared_ptr<Entity> HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::get_ch
     {
         auto c = std::make_shared<HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop>();
         c->parent = this;
-        np_fast_drop.push_back(c);
+        np_fast_drop.append(c);
         return c;
     }
 
@@ -5686,7 +5749,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModuleNp::Nodes::Node::Np
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np_fast_drop)
+    for (auto c : np_fast_drop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5718,7 +5781,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::NpFastDrop()
     counter_value{YType::uint64, "counter-value"}
 {
 
-    yang_name = "np-fast-drop"; yang_parent_name = "fast-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-fast-drop"; yang_parent_name = "fast-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::~NpFastDrop()
@@ -5727,6 +5790,7 @@ HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::~NpFastDrop()
 
 bool HardwareModuleNp::Nodes::Node::Nps::Np::FastDrop::NpFastDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| counter_value.is_set;
 }

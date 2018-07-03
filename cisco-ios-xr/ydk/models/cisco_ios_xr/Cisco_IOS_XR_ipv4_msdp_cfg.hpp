@@ -37,7 +37,7 @@ class Msdp : public ydk::Entity
         class DefaultContext; //type: Msdp::DefaultContext
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::Vrfs> vrfs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::DefaultContext> default_context; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::DefaultContext> default_context;
         
 }; // Msdp
 
@@ -61,7 +61,7 @@ class Msdp::Vrfs : public ydk::Entity
 
         class Vrf; //type: Msdp::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Msdp::Vrfs
 
@@ -166,7 +166,7 @@ class Msdp::Vrfs::Vrf::Peers : public ydk::Entity
 
         class Peer; //type: Msdp::Vrfs::Vrf::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::Vrfs::Vrf::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // Msdp::Vrfs::Vrf::Peers
 
@@ -270,7 +270,7 @@ class Msdp::Vrfs::Vrf::Peers::Peer::SaFilters : public ydk::Entity
 
         class SaFilter; //type: Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter> > sa_filter;
+        ydk::YList sa_filter;
         
 }; // Msdp::Vrfs::Vrf::Peers::Peer::SaFilters
 
@@ -316,7 +316,7 @@ class Msdp::Vrfs::Vrf::SaFilters : public ydk::Entity
 
         class SaFilter; //type: Msdp::Vrfs::Vrf::SaFilters::SaFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::Vrfs::Vrf::SaFilters::SaFilter> > sa_filter;
+        ydk::YList sa_filter;
         
 }; // Msdp::Vrfs::Vrf::SaFilters
 
@@ -446,7 +446,7 @@ class Msdp::DefaultContext::Peers : public ydk::Entity
 
         class Peer; //type: Msdp::DefaultContext::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::DefaultContext::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // Msdp::DefaultContext::Peers
 
@@ -551,7 +551,7 @@ class Msdp::DefaultContext::Peers::Peer::SaFilters : public ydk::Entity
 
         class SaFilter; //type: Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter> > sa_filter;
+        ydk::YList sa_filter;
         
 }; // Msdp::DefaultContext::Peers::Peer::SaFilters
 
@@ -598,7 +598,7 @@ class Msdp::DefaultContext::SaFilters : public ydk::Entity
 
         class SaFilter; //type: Msdp::DefaultContext::SaFilters::SaFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_msdp_cfg::Msdp::DefaultContext::SaFilters::SaFilter> > sa_filter;
+        ydk::YList sa_filter;
         
 }; // Msdp::DefaultContext::SaFilters
 
@@ -626,19 +626,19 @@ class Msdp::DefaultContext::SaFilters::SaFilter : public ydk::Entity
 
 }; // Msdp::DefaultContext::SaFilters::SaFilter
 
-class MsdpFilterTypeVrf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf incoming;
-        static const ydk::Enum::YLeaf outgoing;
-
-};
-
 class MsdpListTypeVrf : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf list;
         static const ydk::Enum::YLeaf rp_list;
+
+};
+
+class MsdpFilterTypeVrf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf incoming;
+        static const ydk::Enum::YLeaf outgoing;
 
 };
 

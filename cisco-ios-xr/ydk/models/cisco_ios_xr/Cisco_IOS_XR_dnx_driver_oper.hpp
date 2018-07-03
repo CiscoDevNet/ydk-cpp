@@ -57,7 +57,7 @@ class Fia::Nodes : public ydk::Entity
 
         class Node; //type: Fia::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Fia::Nodes
 
@@ -140,7 +140,7 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions : public ydk::Entity
 
         class LinkOption; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption> > link_option;
+        ydk::YList link_option;
         
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions
 
@@ -187,7 +187,7 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         class RxAsicInstance; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance> > rx_asic_instance;
+        ydk::YList rx_asic_instance;
         
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances
 
@@ -234,7 +234,7 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
 
         class RxLink; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink> > rx_link;
+        ydk::YList rx_link;
         
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks
 
@@ -260,7 +260,7 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
         ydk::YLeaf status_option; //type: string
         class RxLink_; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_> > rx_link;
+        ydk::YList rx_link;
         
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink
 
@@ -483,7 +483,7 @@ class Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstan
         ydk::YLeaf start_index; //type: uint8
         class Hist; //type: Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History::Hist> > hist;
+        ydk::YList hist;
         
 }; // Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsicInstances::RxAsicInstance::RxLinks::RxLink::RxLink_::History
 
@@ -576,8 +576,8 @@ class Fia::Nodes::Node::DriverInformation : public ydk::Entity
         class DeviceInfo; //type: Fia::Nodes::Node::DriverInformation::DeviceInfo
         class CardInfo; //type: Fia::Nodes::Node::DriverInformation::CardInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::DeviceInfo> > device_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::CardInfo> > card_info;
+        ydk::YList device_info;
+        ydk::YList card_info;
         
 }; // Fia::Nodes::Node::DriverInformation
 
@@ -700,7 +700,7 @@ class Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer : public 
         ydk::YLeaf end; //type: int32
         class FiaOirInfo; //type: Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::FiaOirInfo> > fia_oir_info;
+        ydk::YList fia_oir_info;
         
 }; // Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer
 
@@ -773,7 +773,7 @@ class Fia::Nodes::Node::ClearStatistics::AsicInstances : public ydk::Entity
 
         class AsicInstance; //type: Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::ClearStatistics::AsicInstances::AsicInstance> > asic_instance;
+        ydk::YList asic_instance;
         
 }; // Fia::Nodes::Node::ClearStatistics::AsicInstances
 
@@ -887,7 +887,7 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         class TxAsicInstance; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance> > tx_asic_instance;
+        ydk::YList tx_asic_instance;
         
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances
 
@@ -934,7 +934,7 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
 
         class TxLink; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink> > tx_link;
+        ydk::YList tx_link;
         
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks
 
@@ -959,7 +959,7 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
         ydk::YLeaf end_number; //type: uint32
         class TxLink_; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_> > tx_link;
+        ydk::YList tx_link;
         
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink
 
@@ -1150,7 +1150,7 @@ class Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::
         ydk::YLeaf start_index; //type: uint8
         class Hist; //type: Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History::Hist> > hist;
+        ydk::YList hist;
         
 }; // Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOption::TxAsicInstances::TxAsicInstance::TxLinks::TxLink::TxLink_::History
 
@@ -1221,7 +1221,7 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits : public ydk::Entity
 
         class DiagShellUnit; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit> > diag_shell_unit;
+        ydk::YList diag_shell_unit;
         
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits
 
@@ -1268,7 +1268,7 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands : pub
 
         class Command; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command> > command;
+        ydk::YList command;
         
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands
 
@@ -1292,7 +1292,7 @@ class Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Comm
         ydk::YLeaf cmd; //type: string
         class Output; //type: Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command::Output> > output;
+        ydk::YList output;
         
 }; // Fia::Nodes::Node::DiagShell::DiagShellUnits::DiagShellUnit::Commands::Command
 
@@ -1360,7 +1360,7 @@ class Fia::Nodes::Node::OirHistory::Flags : public ydk::Entity
 
         class Flag; //type: Fia::Nodes::Node::OirHistory::Flags::Flag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag> > flag;
+        ydk::YList flag;
         
 }; // Fia::Nodes::Node::OirHistory::Flags
 
@@ -1407,7 +1407,7 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots : public ydk::Entity
 
         class Slot; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots
 
@@ -1476,8 +1476,8 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot : public ydk::Entit
         class DeviceInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo
         class CardInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo> > device_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo> > card_info;
+        ydk::YList device_info;
+        ydk::YList card_info;
         
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot
 
@@ -1600,7 +1600,7 @@ class Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircu
         ydk::YLeaf end; //type: int32
         class FiaOirInfo; //type: Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer::FiaOirInfo> > fia_oir_info;
+        ydk::YList fia_oir_info;
         
 }; // Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::OirCircularBuffer
 
@@ -1673,7 +1673,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances : public ydk::En
 
         class StatisticsAsicInstance; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance> > statistics_asic_instance;
+        ydk::YList statistics_asic_instance;
         
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances
 
@@ -1774,7 +1774,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         ydk::YLeaf num_blocks; //type: uint8
         class BlockInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo> > block_info;
+        ydk::YList block_info;
         
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo
 
@@ -1799,7 +1799,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         ydk::YLeaf num_fields; //type: uint8
         class FieldInfo; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo::FieldInfo> > field_info;
+        ydk::YList field_info;
         
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::PbcStatistics::PbcStats::StatsInfo::BlockInfo
 
@@ -1868,7 +1868,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
         class FmacLink; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink> > fmac_link;
+        ydk::YList fmac_link;
         
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks
 
@@ -1892,7 +1892,7 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
         ydk::YLeaf link; //type: int32
         class FmacAsic; //type: Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dnx_driver_oper::Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic> > fmac_asic;
+        ydk::YList fmac_asic;
         
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink
 
@@ -2174,27 +2174,13 @@ class Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicI
 
 }; // Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::StatisticsAsicInstance::FmacStatistics::FmacLinks::FmacLink::FmacAsic::IncrStats::OvfStatus
 
-class AsicInitMethod : public ydk::Enum
+class SliceState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf asic_init_method_unset;
-        static const ydk::Enum::YLeaf asic_init_method_no_reset;
-        static const ydk::Enum::YLeaf asic_init_method_pon_reset;
-        static const ydk::Enum::YLeaf asic_init_method_pon_reset_on_intr;
-        static const ydk::Enum::YLeaf asic_init_method_hard_reset;
-        static const ydk::Enum::YLeaf asic_init_method_warmboot;
-        static const ydk::Enum::YLeaf asic_init_method_issu_wb;
-        static const ydk::Enum::YLeaf asic_init_method_pci_shutdown;
-        static const ydk::Enum::YLeaf asic_init_method_quiesce;
-        static const ydk::Enum::YLeaf asic_init_method_issu_started;
-        static const ydk::Enum::YLeaf asic_init_method_issu_rollback;
-        static const ydk::Enum::YLeaf asic_init_method_issu_abort;
-        static const ydk::Enum::YLeaf asic_init_method_slice_cleanup;
-        static const ydk::Enum::YLeaf asic_init_method_lc_remove;
-        static const ydk::Enum::YLeaf asic_init_method_node_down;
-        static const ydk::Enum::YLeaf asic_init_method_intr;
-        static const ydk::Enum::YLeaf asic_init_method_board_reload;
-        static const ydk::Enum::YLeaf asic_init_method_max;
+        static const ydk::Enum::YLeaf slice_oper_unset;
+        static const ydk::Enum::YLeaf slice_oper_down;
+        static const ydk::Enum::YLeaf slice_oper_up;
+        static const ydk::Enum::YLeaf slice_oper_na;
 
 };
 
@@ -2230,24 +2216,13 @@ class AsicAccessState : public ydk::Enum
 
 };
 
-class AsicOperState : public ydk::Enum
+class LinkErrorState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf asic_oper_unset;
-        static const ydk::Enum::YLeaf asic_oper_unknown;
-        static const ydk::Enum::YLeaf asic_oper_up;
-        static const ydk::Enum::YLeaf asic_oper_down;
-        static const ydk::Enum::YLeaf asic_card_down;
-
-};
-
-class SliceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf slice_oper_unset;
-        static const ydk::Enum::YLeaf slice_oper_down;
-        static const ydk::Enum::YLeaf slice_oper_up;
-        static const ydk::Enum::YLeaf slice_oper_na;
+        static const ydk::Enum::YLeaf link_error_unset;
+        static const ydk::Enum::YLeaf link_error_none;
+        static const ydk::Enum::YLeaf link_error_shut;
+        static const ydk::Enum::YLeaf link_error_max;
 
 };
 
@@ -2261,13 +2236,38 @@ class FcMode : public ydk::Enum
 
 };
 
-class LinkErrorState : public ydk::Enum
+class Asic : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf link_error_unset;
-        static const ydk::Enum::YLeaf link_error_none;
-        static const ydk::Enum::YLeaf link_error_shut;
-        static const ydk::Enum::YLeaf link_error_max;
+        static const ydk::Enum::YLeaf asic_unset;
+        static const ydk::Enum::YLeaf asic_unavail;
+        static const ydk::Enum::YLeaf asic_fia;
+        static const ydk::Enum::YLeaf asic_s123;
+        static const ydk::Enum::YLeaf asic_s13;
+        static const ydk::Enum::YLeaf asic_s2;
+        static const ydk::Enum::YLeaf asic_b2b;
+        static const ydk::Enum::YLeaf asic_type_unknown;
+
+};
+
+class AsicOperState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf asic_oper_unset;
+        static const ydk::Enum::YLeaf asic_oper_unknown;
+        static const ydk::Enum::YLeaf asic_oper_up;
+        static const ydk::Enum::YLeaf asic_oper_down;
+        static const ydk::Enum::YLeaf asic_card_down;
+
+};
+
+class Link : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link_type_unset;
+        static const ydk::Enum::YLeaf link_type_unavail;
+        static const ydk::Enum::YLeaf link_type_tx;
+        static const ydk::Enum::YLeaf link_type_rx;
 
 };
 
@@ -2279,6 +2279,30 @@ class OperState : public ydk::Enum
         static const ydk::Enum::YLeaf oper_up;
         static const ydk::Enum::YLeaf oper_down;
         static const ydk::Enum::YLeaf card_down;
+
+};
+
+class AsicInitMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf asic_init_method_unset;
+        static const ydk::Enum::YLeaf asic_init_method_no_reset;
+        static const ydk::Enum::YLeaf asic_init_method_pon_reset;
+        static const ydk::Enum::YLeaf asic_init_method_pon_reset_on_intr;
+        static const ydk::Enum::YLeaf asic_init_method_hard_reset;
+        static const ydk::Enum::YLeaf asic_init_method_warmboot;
+        static const ydk::Enum::YLeaf asic_init_method_issu_wb;
+        static const ydk::Enum::YLeaf asic_init_method_pci_shutdown;
+        static const ydk::Enum::YLeaf asic_init_method_quiesce;
+        static const ydk::Enum::YLeaf asic_init_method_issu_started;
+        static const ydk::Enum::YLeaf asic_init_method_issu_rollback;
+        static const ydk::Enum::YLeaf asic_init_method_issu_abort;
+        static const ydk::Enum::YLeaf asic_init_method_slice_cleanup;
+        static const ydk::Enum::YLeaf asic_init_method_lc_remove;
+        static const ydk::Enum::YLeaf asic_init_method_node_down;
+        static const ydk::Enum::YLeaf asic_init_method_intr;
+        static const ydk::Enum::YLeaf asic_init_method_board_reload;
+        static const ydk::Enum::YLeaf asic_init_method_max;
 
 };
 
@@ -2301,30 +2325,6 @@ class LinkStage : public ydk::Enum
         static const ydk::Enum::YLeaf link_stage_s2;
         static const ydk::Enum::YLeaf link_stage_s3;
         static const ydk::Enum::YLeaf link_stage_unknown;
-
-};
-
-class Link : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link_type_unset;
-        static const ydk::Enum::YLeaf link_type_unavail;
-        static const ydk::Enum::YLeaf link_type_tx;
-        static const ydk::Enum::YLeaf link_type_rx;
-
-};
-
-class Asic : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf asic_unset;
-        static const ydk::Enum::YLeaf asic_unavail;
-        static const ydk::Enum::YLeaf asic_fia;
-        static const ydk::Enum::YLeaf asic_s123;
-        static const ydk::Enum::YLeaf asic_s13;
-        static const ydk::Enum::YLeaf asic_s2;
-        static const ydk::Enum::YLeaf asic_b2b;
-        static const ydk::Enum::YLeaf asic_type_unknown;
 
 };
 

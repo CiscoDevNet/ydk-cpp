@@ -14,7 +14,7 @@ namespace Cisco_IOS_XE_native {
 Native::Interface::EthernetInternal::Switchport::Switchport()
 {
 
-    yang_name = "switchport"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Switchport::~Switchport()
@@ -23,6 +23,7 @@ Native::Interface::EthernetInternal::Switchport::~Switchport()
 
 bool Native::Interface::EthernetInternal::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -78,7 +79,7 @@ Native::Interface::EthernetInternal::StackwiseVirtual::StackwiseVirtual()
     dual_active_detection{YType::empty, "dual-active-detection"}
 {
 
-    yang_name = "stackwise-virtual"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stackwise-virtual"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StackwiseVirtual::~StackwiseVirtual()
@@ -87,6 +88,7 @@ Native::Interface::EthernetInternal::StackwiseVirtual::~StackwiseVirtual()
 
 bool Native::Interface::EthernetInternal::StackwiseVirtual::has_data() const
 {
+    if (is_presence_container) return true;
     return link.is_set
 	|| dual_active_detection.is_set;
 }
@@ -168,7 +170,7 @@ Native::Interface::EthernetInternal::Arp::Arp()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "arp"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Arp::~Arp()
@@ -177,6 +179,7 @@ Native::Interface::EthernetInternal::Arp::~Arp()
 
 bool Native::Interface::EthernetInternal::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -243,14 +246,14 @@ bool Native::Interface::EthernetInternal::Arp::has_leaf_or_child_of_name(const s
 Native::Interface::EthernetInternal::Backup::Backup()
     :
     delay(std::make_shared<Native::Interface::EthernetInternal::Backup::Delay>())
-	,interface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_>())
-	,load(std::make_shared<Native::Interface::EthernetInternal::Backup::Load>())
+    , interface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_>())
+    , load(std::make_shared<Native::Interface::EthernetInternal::Backup::Load>())
 {
     delay->parent = this;
     interface->parent = this;
     load->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::~Backup()
@@ -259,6 +262,7 @@ Native::Interface::EthernetInternal::Backup::~Backup()
 
 bool Native::Interface::EthernetInternal::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data())
 	|| (interface !=  nullptr && interface->has_data())
 	|| (load !=  nullptr && load->has_data());
@@ -363,7 +367,7 @@ Native::Interface::EthernetInternal::Backup::Delay::Delay()
     secondary_disable{YType::str, "secondary-disable"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::Delay::~Delay()
@@ -372,6 +376,7 @@ Native::Interface::EthernetInternal::Backup::Delay::~Delay()
 
 bool Native::Interface::EthernetInternal::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return failure.is_set
 	|| secondary_disable.is_set;
 }
@@ -482,18 +487,18 @@ Native::Interface::EthernetInternal::Backup::Interface_::Interface_()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::EthernetInternal::Backup::Interface_::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::Interface_::~Interface_()
@@ -502,6 +507,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::~Interface_()
 
 bool Native::Interface::EthernetInternal::Backup::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -1037,7 +1043,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::ATMSubinterface::ATMSub
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::Interface_::ATMSubinterface::~ATMSubinterface()
@@ -1046,6 +1052,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::ATMSubinterface::~ATMSu
 
 bool Native::Interface::EthernetInternal::Backup::Interface_::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -1114,7 +1121,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::ATMACRsubinterface::ATM
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::Interface_::ATMACRsubinterface::~ATMACRsubinterface()
@@ -1123,6 +1130,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::ATMACRsubinterface::~AT
 
 bool Native::Interface::EthernetInternal::Backup::Interface_::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -1191,7 +1199,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::LISPSubinterface::LISPS
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::Interface_::LISPSubinterface::~LISPSubinterface()
@@ -1200,6 +1208,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::LISPSubinterface::~LISP
 
 bool Native::Interface::EthernetInternal::Backup::Interface_::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -1268,7 +1277,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::PortChannelSubinterface
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::Interface_::PortChannelSubinterface::~PortChannelSubinterface()
@@ -1277,6 +1286,7 @@ Native::Interface::EthernetInternal::Backup::Interface_::PortChannelSubinterface
 
 bool Native::Interface::EthernetInternal::Backup::Interface_::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -1346,7 +1356,7 @@ Native::Interface::EthernetInternal::Backup::Load::Load()
     kickout{YType::str, "kickout"}
 {
 
-    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Backup::Load::~Load()
@@ -1355,6 +1365,7 @@ Native::Interface::EthernetInternal::Backup::Load::~Load()
 
 bool Native::Interface::EthernetInternal::Backup::Load::has_data() const
 {
+    if (is_presence_container) return true;
     return kickin.is_set
 	|| kickout.is_set;
 }
@@ -1437,7 +1448,7 @@ Native::Interface::EthernetInternal::Cemoudp::Cemoudp()
 {
     reserve->parent = this;
 
-    yang_name = "cemoudp"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cemoudp"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Cemoudp::~Cemoudp()
@@ -1446,6 +1457,7 @@ Native::Interface::EthernetInternal::Cemoudp::~Cemoudp()
 
 bool Native::Interface::EthernetInternal::Cemoudp::has_data() const
 {
+    if (is_presence_container) return true;
     return (reserve !=  nullptr && reserve->has_data());
 }
 
@@ -1517,7 +1529,7 @@ Native::Interface::EthernetInternal::Cemoudp::Reserve::Reserve()
     acr{YType::uint8, "acr"}
 {
 
-    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Cemoudp::Reserve::~Reserve()
@@ -1526,6 +1538,7 @@ Native::Interface::EthernetInternal::Cemoudp::Reserve::~Reserve()
 
 bool Native::Interface::EthernetInternal::Cemoudp::Reserve::has_data() const
 {
+    if (is_presence_container) return true;
     return acr.is_set;
 }
 
@@ -1592,12 +1605,12 @@ bool Native::Interface::EthernetInternal::Cemoudp::Reserve::has_leaf_or_child_of
 Native::Interface::EthernetInternal::CwsTunnel::CwsTunnel()
     :
     in{YType::empty, "in"}
-    	,
+        ,
     out(std::make_shared<Native::Interface::EthernetInternal::CwsTunnel::Out>())
 {
     out->parent = this;
 
-    yang_name = "cws-tunnel"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cws-tunnel"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::CwsTunnel::~CwsTunnel()
@@ -1606,6 +1619,7 @@ Native::Interface::EthernetInternal::CwsTunnel::~CwsTunnel()
 
 bool Native::Interface::EthernetInternal::CwsTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return in.is_set
 	|| (out !=  nullptr && out->has_data());
 }
@@ -1690,7 +1704,7 @@ Native::Interface::EthernetInternal::CwsTunnel::Out::Out()
     tunnel_number{YType::uint16, "tunnel-number"}
 {
 
-    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::CwsTunnel::Out::~Out()
@@ -1699,6 +1713,7 @@ Native::Interface::EthernetInternal::CwsTunnel::Out::~Out()
 
 bool Native::Interface::EthernetInternal::CwsTunnel::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_number.is_set;
 }
 
@@ -1762,27 +1777,28 @@ bool Native::Interface::EthernetInternal::CwsTunnel::Out::has_leaf_or_child_of_n
     return false;
 }
 
-Native::Interface::EthernetInternal::L2ProtocolTunnel::L2ProtocolTunnel()
+Native::Interface::EthernetInternal::L2protocolTunnel::L2protocolTunnel()
     :
     cdp{YType::empty, "cdp"},
     stp{YType::empty, "stp"},
     vtp{YType::empty, "vtp"}
-    	,
-    drop_threshold(std::make_shared<Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold>())
-	,shutdown_threshold(std::make_shared<Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold>())
+        ,
+    drop_threshold(std::make_shared<Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold>())
+    , shutdown_threshold(std::make_shared<Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold>())
 {
     drop_threshold->parent = this;
     shutdown_threshold->parent = this;
 
-    yang_name = "l2protocol-tunnel"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol-tunnel"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::EthernetInternal::L2ProtocolTunnel::~L2ProtocolTunnel()
+Native::Interface::EthernetInternal::L2protocolTunnel::~L2protocolTunnel()
 {
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::has_data() const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set
@@ -1790,7 +1806,7 @@ bool Native::Interface::EthernetInternal::L2ProtocolTunnel::has_data() const
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_data());
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::has_operation() const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdp.yfilter)
@@ -1800,14 +1816,14 @@ bool Native::Interface::EthernetInternal::L2ProtocolTunnel::has_operation() cons
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_operation());
 }
 
-std::string Native::Interface::EthernetInternal::L2ProtocolTunnel::get_segment_path() const
+std::string Native::Interface::EthernetInternal::L2protocolTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetInternal::L2ProtocolTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetInternal::L2protocolTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1819,13 +1835,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetIntern
 
 }
 
-std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2ProtocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2protocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "drop-threshold")
     {
         if(drop_threshold == nullptr)
         {
-            drop_threshold = std::make_shared<Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold>();
+            drop_threshold = std::make_shared<Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold>();
         }
         return drop_threshold;
     }
@@ -1834,7 +1850,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2ProtocolTunnel::g
     {
         if(shutdown_threshold == nullptr)
         {
-            shutdown_threshold = std::make_shared<Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold>();
+            shutdown_threshold = std::make_shared<Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold>();
         }
         return shutdown_threshold;
     }
@@ -1842,7 +1858,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2ProtocolTunnel::g
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetInternal::L2ProtocolTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetInternal::L2protocolTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1859,7 +1875,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     return children;
 }
 
-void Native::Interface::EthernetInternal::L2ProtocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::EthernetInternal::L2protocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdp")
     {
@@ -1881,7 +1897,7 @@ void Native::Interface::EthernetInternal::L2ProtocolTunnel::set_value(const std:
     }
 }
 
-void Native::Interface::EthernetInternal::L2ProtocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::EthernetInternal::L2protocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdp")
     {
@@ -1897,14 +1913,14 @@ void Native::Interface::EthernetInternal::L2ProtocolTunnel::set_filter(const std
     }
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "drop-threshold" || name == "shutdown-threshold" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::DropThreshold()
+Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::DropThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -1912,22 +1928,23 @@ Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::DropThresh
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::~DropThreshold()
+Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::~DropThreshold()
 {
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::has_data() const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::has_operation() const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -1936,14 +1953,14 @@ bool Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::has_o
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::get_segment_path() const
+std::string Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1956,19 +1973,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetIntern
 
 }
 
-std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -1996,7 +2013,7 @@ void Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::set_v
     }
 }
 
-void Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -2016,14 +2033,14 @@ void Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::set_f
     }
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::ShutdownThreshold()
+Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::ShutdownThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -2031,22 +2048,23 @@ Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::Shutdo
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::~ShutdownThreshold()
+Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::~ShutdownThreshold()
 {
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::has_data() const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::has_operation() const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -2055,14 +2073,14 @@ bool Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::h
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::get_segment_path() const
+std::string Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2075,19 +2093,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::EthernetIntern
 
 }
 
-std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -2115,7 +2133,7 @@ void Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::s
     }
 }
 
-void Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -2135,7 +2153,7 @@ void Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::s
     }
 }
 
-bool Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::EthernetInternal::L2protocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
@@ -2145,15 +2163,15 @@ bool Native::Interface::EthernetInternal::L2ProtocolTunnel::ShutdownThreshold::h
 Native::Interface::EthernetInternal::Encapsulation::Encapsulation()
     :
     dot1q(std::make_shared<Native::Interface::EthernetInternal::Encapsulation::Dot1Q>())
-	,isl(std::make_shared<Native::Interface::EthernetInternal::Encapsulation::Isl>())
-	,ppp(nullptr) // presence node
-	,slip(nullptr) // presence node
-	,frame_relay(nullptr) // presence node
+    , isl(std::make_shared<Native::Interface::EthernetInternal::Encapsulation::Isl>())
+    , ppp(nullptr) // presence node
+    , slip(nullptr) // presence node
+    , frame_relay(nullptr) // presence node
 {
     dot1q->parent = this;
     isl->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Encapsulation::~Encapsulation()
@@ -2162,6 +2180,7 @@ Native::Interface::EthernetInternal::Encapsulation::~Encapsulation()
 
 bool Native::Interface::EthernetInternal::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1q !=  nullptr && dot1q->has_data())
 	|| (isl !=  nullptr && isl->has_data())
 	|| (ppp !=  nullptr && ppp->has_data())
@@ -2298,7 +2317,7 @@ Native::Interface::EthernetInternal::Encapsulation::Dot1Q::Dot1Q()
     native{YType::empty, "native"}
 {
 
-    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Encapsulation::Dot1Q::~Dot1Q()
@@ -2307,6 +2326,7 @@ Native::Interface::EthernetInternal::Encapsulation::Dot1Q::~Dot1Q()
 
 bool Native::Interface::EthernetInternal::Encapsulation::Dot1Q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| native.is_set;
 }
@@ -2388,7 +2408,7 @@ Native::Interface::EthernetInternal::Encapsulation::Isl::Isl()
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Encapsulation::Isl::~Isl()
@@ -2397,6 +2417,7 @@ Native::Interface::EthernetInternal::Encapsulation::Isl::~Isl()
 
 bool Native::Interface::EthernetInternal::Encapsulation::Isl::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -2463,7 +2484,7 @@ bool Native::Interface::EthernetInternal::Encapsulation::Isl::has_leaf_or_child_
 Native::Interface::EthernetInternal::Encapsulation::Ppp::Ppp()
 {
 
-    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Encapsulation::Ppp::~Ppp()
@@ -2472,6 +2493,7 @@ Native::Interface::EthernetInternal::Encapsulation::Ppp::~Ppp()
 
 bool Native::Interface::EthernetInternal::Encapsulation::Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2524,7 +2546,7 @@ bool Native::Interface::EthernetInternal::Encapsulation::Ppp::has_leaf_or_child_
 Native::Interface::EthernetInternal::Encapsulation::Slip::Slip()
 {
 
-    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Encapsulation::Slip::~Slip()
@@ -2533,6 +2555,7 @@ Native::Interface::EthernetInternal::Encapsulation::Slip::~Slip()
 
 bool Native::Interface::EthernetInternal::Encapsulation::Slip::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2587,7 +2610,7 @@ Native::Interface::EthernetInternal::Encapsulation::FrameRelay::FrameRelay()
     ietf{YType::empty, "ietf"}
 {
 
-    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Encapsulation::FrameRelay::~FrameRelay()
@@ -2596,6 +2619,7 @@ Native::Interface::EthernetInternal::Encapsulation::FrameRelay::~FrameRelay()
 
 bool Native::Interface::EthernetInternal::Encapsulation::FrameRelay::has_data() const
 {
+    if (is_presence_container) return true;
     return ietf.is_set;
 }
 
@@ -2664,7 +2688,7 @@ Native::Interface::EthernetInternal::FairQueueConf::FairQueueConf()
     fair_queue{YType::boolean, "fair-queue"}
 {
 
-    yang_name = "fair-queue-conf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue-conf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::FairQueueConf::~FairQueueConf()
@@ -2673,6 +2697,7 @@ Native::Interface::EthernetInternal::FairQueueConf::~FairQueueConf()
 
 bool Native::Interface::EthernetInternal::FairQueueConf::has_data() const
 {
+    if (is_presence_container) return true;
     return fair_queue.is_set;
 }
 
@@ -2741,7 +2766,7 @@ Native::Interface::EthernetInternal::FairQueue::FairQueue()
     incomplete{YType::empty, "incomplete"}
 {
 
-    yang_name = "fair-queue"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::FairQueue::~FairQueue()
@@ -2750,6 +2775,7 @@ Native::Interface::EthernetInternal::FairQueue::~FairQueue()
 
 bool Native::Interface::EthernetInternal::FairQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete.is_set;
 }
 
@@ -2819,7 +2845,7 @@ Native::Interface::EthernetInternal::Flowcontrol::Flowcontrol()
     send{YType::enumeration, "send"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Flowcontrol::~Flowcontrol()
@@ -2828,6 +2854,7 @@ Native::Interface::EthernetInternal::Flowcontrol::~Flowcontrol()
 
 bool Native::Interface::EthernetInternal::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| send.is_set;
 }
@@ -2907,7 +2934,7 @@ bool Native::Interface::EthernetInternal::Flowcontrol::has_leaf_or_child_of_name
 Native::Interface::EthernetInternal::Isis::Isis()
 {
 
-    yang_name = "isis"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Isis::~Isis()
@@ -2916,6 +2943,7 @@ Native::Interface::EthernetInternal::Isis::~Isis()
 
 bool Native::Interface::EthernetInternal::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2970,7 +2998,7 @@ Native::Interface::EthernetInternal::KeepaliveSettings::KeepaliveSettings()
     keepalive(nullptr) // presence node
 {
 
-    yang_name = "keepalive-settings"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive-settings"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::KeepaliveSettings::~KeepaliveSettings()
@@ -2979,6 +3007,7 @@ Native::Interface::EthernetInternal::KeepaliveSettings::~KeepaliveSettings()
 
 bool Native::Interface::EthernetInternal::KeepaliveSettings::has_data() const
 {
+    if (is_presence_container) return true;
     return (keepalive !=  nullptr && keepalive->has_data());
 }
 
@@ -3051,7 +3080,7 @@ Native::Interface::EthernetInternal::KeepaliveSettings::Keepalive::Keepalive()
     retries{YType::uint8, "retries"}
 {
 
-    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::KeepaliveSettings::Keepalive::~Keepalive()
@@ -3060,6 +3089,7 @@ Native::Interface::EthernetInternal::KeepaliveSettings::Keepalive::~Keepalive()
 
 bool Native::Interface::EthernetInternal::KeepaliveSettings::Keepalive::has_data() const
 {
+    if (is_presence_container) return true;
     return period.is_set
 	|| retries.is_set;
 }
@@ -3139,7 +3169,7 @@ bool Native::Interface::EthernetInternal::KeepaliveSettings::Keepalive::has_leaf
 Native::Interface::EthernetInternal::Bfd::Bfd()
 {
 
-    yang_name = "bfd"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Bfd::~Bfd()
@@ -3148,6 +3178,7 @@ Native::Interface::EthernetInternal::Bfd::~Bfd()
 
 bool Native::Interface::EthernetInternal::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3201,13 +3232,13 @@ Native::Interface::EthernetInternal::Bandwidth::Bandwidth()
     :
     qos_reference{YType::uint32, "qos-reference"},
     kilobits{YType::uint32, "kilobits"}
-    	,
+        ,
     receive(std::make_shared<Native::Interface::EthernetInternal::Bandwidth::Receive>())
-	,inherit(nullptr) // presence node
+    , inherit(nullptr) // presence node
 {
     receive->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Bandwidth::~Bandwidth()
@@ -3216,6 +3247,7 @@ Native::Interface::EthernetInternal::Bandwidth::~Bandwidth()
 
 bool Native::Interface::EthernetInternal::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_reference.is_set
 	|| kilobits.is_set
 	|| (receive !=  nullptr && receive->has_data())
@@ -3330,7 +3362,7 @@ Native::Interface::EthernetInternal::Bandwidth::Receive::Receive()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Bandwidth::Receive::~Receive()
@@ -3339,6 +3371,7 @@ Native::Interface::EthernetInternal::Bandwidth::Receive::~Receive()
 
 bool Native::Interface::EthernetInternal::Bandwidth::Receive::has_data() const
 {
+    if (is_presence_container) return true;
     return inherit.is_set
 	|| kilobits.is_set;
 }
@@ -3420,7 +3453,7 @@ Native::Interface::EthernetInternal::Bandwidth::Inherit::Inherit()
     kilobits{YType::uint32, "kilobits"}
 {
 
-    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Bandwidth::Inherit::~Inherit()
@@ -3429,6 +3462,7 @@ Native::Interface::EthernetInternal::Bandwidth::Inherit::~Inherit()
 
 bool Native::Interface::EthernetInternal::Bandwidth::Inherit::has_data() const
 {
+    if (is_presence_container) return true;
     return kilobits.is_set;
 }
 
@@ -3498,12 +3532,12 @@ Native::Interface::EthernetInternal::Dampening::Dampening()
     start_reusing_time{YType::uint16, "start-reusing-time"},
     start_supressing_time{YType::uint16, "start-supressing-time"},
     maximum_supressing_time{YType::uint16, "maximum-supressing-time"}
-    	,
+        ,
     restart(std::make_shared<Native::Interface::EthernetInternal::Dampening::Restart>())
 {
     restart->parent = this;
 
-    yang_name = "dampening"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Dampening::~Dampening()
@@ -3512,6 +3546,7 @@ Native::Interface::EthernetInternal::Dampening::~Dampening()
 
 bool Native::Interface::EthernetInternal::Dampening::has_data() const
 {
+    if (is_presence_container) return true;
     return dampening_time.is_set
 	|| start_reusing_time.is_set
 	|| start_supressing_time.is_set
@@ -3636,7 +3671,7 @@ Native::Interface::EthernetInternal::Dampening::Restart::Restart()
     restart_penalty{YType::uint16, "restart-penalty"}
 {
 
-    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Dampening::Restart::~Restart()
@@ -3645,6 +3680,7 @@ Native::Interface::EthernetInternal::Dampening::Restart::~Restart()
 
 bool Native::Interface::EthernetInternal::Dampening::Restart::has_data() const
 {
+    if (is_presence_container) return true;
     return restart.is_set
 	|| restart_penalty.is_set;
 }
@@ -3731,7 +3767,7 @@ Native::Interface::EthernetInternal::Domain::Domain()
     zero_sla{YType::empty, "zero-sla"}
 {
 
-    yang_name = "domain"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Domain::~Domain()
@@ -3740,6 +3776,7 @@ Native::Interface::EthernetInternal::Domain::~Domain()
 
 bool Native::Interface::EthernetInternal::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| path.is_set
 	|| internet_bound.is_set
@@ -3874,7 +3911,7 @@ Native::Interface::EthernetInternal::HoldQueue::HoldQueue()
     queue_length{YType::uint16, "queue-length"}
 {
 
-    yang_name = "hold-queue"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-queue"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::HoldQueue::~HoldQueue()
@@ -3883,6 +3920,7 @@ Native::Interface::EthernetInternal::HoldQueue::~HoldQueue()
 
 bool Native::Interface::EthernetInternal::HoldQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| queue_length.is_set;
 }
@@ -3897,7 +3935,8 @@ bool Native::Interface::EthernetInternal::HoldQueue::has_operation() const
 std::string Native::Interface::EthernetInternal::HoldQueue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hold-queue" <<"[direction='" <<direction <<"']";
+    path_buffer << "hold-queue";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -3962,7 +4001,7 @@ bool Native::Interface::EthernetInternal::HoldQueue::has_leaf_or_child_of_name(c
 Native::Interface::EthernetInternal::Mpls::Mpls()
 {
 
-    yang_name = "mpls"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Mpls::~Mpls()
@@ -3971,6 +4010,7 @@ Native::Interface::EthernetInternal::Mpls::~Mpls()
 
 bool Native::Interface::EthernetInternal::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4026,7 +4066,7 @@ Native::Interface::EthernetInternal::IpVrf::IpVrf()
 {
     ip->parent = this;
 
-    yang_name = "ip-vrf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-vrf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::IpVrf::~IpVrf()
@@ -4035,6 +4075,7 @@ Native::Interface::EthernetInternal::IpVrf::~IpVrf()
 
 bool Native::Interface::EthernetInternal::IpVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -4107,7 +4148,7 @@ Native::Interface::EthernetInternal::IpVrf::Ip::Ip()
 {
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "ip-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::IpVrf::Ip::~Ip()
@@ -4116,6 +4157,7 @@ Native::Interface::EthernetInternal::IpVrf::Ip::~Ip()
 
 bool Native::Interface::EthernetInternal::IpVrf::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrf !=  nullptr && vrf->has_data());
 }
 
@@ -4187,7 +4229,7 @@ Native::Interface::EthernetInternal::IpVrf::Ip::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::IpVrf::Ip::Vrf::~Vrf()
@@ -4196,6 +4238,7 @@ Native::Interface::EthernetInternal::IpVrf::Ip::Vrf::~Vrf()
 
 bool Native::Interface::EthernetInternal::IpVrf::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -4264,7 +4307,7 @@ Native::Interface::EthernetInternal::Vrf::Vrf()
     forwarding{YType::str, "forwarding"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Vrf::~Vrf()
@@ -4273,6 +4316,7 @@ Native::Interface::EthernetInternal::Vrf::~Vrf()
 
 bool Native::Interface::EthernetInternal::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return forwarding.is_set;
 }
 
@@ -4346,26 +4390,27 @@ Native::Interface::EthernetInternal::Ip::Ip()
     redirects{YType::boolean, "redirects"},
     mtu{YType::uint16, "mtu"},
     mroute_cache{YType::boolean, "mroute-cache"}
-    	,
+        ,
     access_group(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup>())
-	,arp(std::make_shared<Native::Interface::EthernetInternal::Ip::Arp>())
-	,vrf(std::make_shared<Native::Interface::EthernetInternal::Ip::Vrf>())
-	,no_address(std::make_shared<Native::Interface::EthernetInternal::Ip::NoAddress>())
-	,address(std::make_shared<Native::Interface::EthernetInternal::Ip::Address>())
-	,hello_interval(std::make_shared<Native::Interface::EthernetInternal::Ip::HelloInterval>())
-	,authentication(std::make_shared<Native::Interface::EthernetInternal::Ip::Authentication>())
-	,hold_time(std::make_shared<Native::Interface::EthernetInternal::Ip::HoldTime>())
-	,pim(std::make_shared<Native::Interface::EthernetInternal::Ip::Pim>())
-	,policy(std::make_shared<Native::Interface::EthernetInternal::Ip::Policy>())
-	,rip(std::make_shared<Native::Interface::EthernetInternal::Ip::Rip>())
-	,route_cache_conf(std::make_shared<Native::Interface::EthernetInternal::Ip::RouteCacheConf>())
-	,route_cache(nullptr) // presence node
-	,router(std::make_shared<Native::Interface::EthernetInternal::Ip::Router>())
-	,tcp(std::make_shared<Native::Interface::EthernetInternal::Ip::Tcp>())
-	,virtual_reassembly(std::make_shared<Native::Interface::EthernetInternal::Ip::VirtualReassembly>())
-	,dhcp(std::make_shared<Native::Interface::EthernetInternal::Ip::Dhcp>())
-	,summary_address(std::make_shared<Native::Interface::EthernetInternal::Ip::SummaryAddress>())
-	,verify(std::make_shared<Native::Interface::EthernetInternal::Ip::Verify>())
+    , arp(std::make_shared<Native::Interface::EthernetInternal::Ip::Arp>())
+    , vrf(std::make_shared<Native::Interface::EthernetInternal::Ip::Vrf>())
+    , no_address(std::make_shared<Native::Interface::EthernetInternal::Ip::NoAddress>())
+    , address(std::make_shared<Native::Interface::EthernetInternal::Ip::Address>())
+    , hello_interval(std::make_shared<Native::Interface::EthernetInternal::Ip::HelloInterval>())
+    , authentication(std::make_shared<Native::Interface::EthernetInternal::Ip::Authentication>())
+    , hold_time(std::make_shared<Native::Interface::EthernetInternal::Ip::HoldTime>())
+    , helper_address(this, {"address"})
+    , pim(std::make_shared<Native::Interface::EthernetInternal::Ip::Pim>())
+    , policy(std::make_shared<Native::Interface::EthernetInternal::Ip::Policy>())
+    , rip(std::make_shared<Native::Interface::EthernetInternal::Ip::Rip>())
+    , route_cache_conf(std::make_shared<Native::Interface::EthernetInternal::Ip::RouteCacheConf>())
+    , route_cache(nullptr) // presence node
+    , router(std::make_shared<Native::Interface::EthernetInternal::Ip::Router>())
+    , tcp(std::make_shared<Native::Interface::EthernetInternal::Ip::Tcp>())
+    , virtual_reassembly(std::make_shared<Native::Interface::EthernetInternal::Ip::VirtualReassembly>())
+    , dhcp(std::make_shared<Native::Interface::EthernetInternal::Ip::Dhcp>())
+    , summary_address(std::make_shared<Native::Interface::EthernetInternal::Ip::SummaryAddress>())
+    , verify(std::make_shared<Native::Interface::EthernetInternal::Ip::Verify>())
 {
     access_group->parent = this;
     arp->parent = this;
@@ -4386,7 +4431,7 @@ Native::Interface::EthernetInternal::Ip::Ip()
     summary_address->parent = this;
     verify->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::~Ip()
@@ -4395,7 +4440,8 @@ Native::Interface::EthernetInternal::Ip::~Ip()
 
 bool Native::Interface::EthernetInternal::Ip::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -4431,7 +4477,7 @@ bool Native::Interface::EthernetInternal::Ip::has_data() const
 
 bool Native::Interface::EthernetInternal::Ip::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -4568,7 +4614,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Ip::get_child_by_na
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Ip::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -4719,7 +4765,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4883,12 +4929,12 @@ bool Native::Interface::EthernetInternal::Ip::has_leaf_or_child_of_name(const st
 Native::Interface::EthernetInternal::Ip::AccessGroup::AccessGroup()
     :
     in(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::In>())
-	,out(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::Out>())
+    , out(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::Out>())
 {
     in->parent = this;
     out->parent = this;
 
-    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::AccessGroup::~AccessGroup()
@@ -4897,6 +4943,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::~AccessGroup()
 
 bool Native::Interface::EthernetInternal::Ip::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data())
 	|| (out !=  nullptr && out->has_data());
 }
@@ -4982,12 +5029,12 @@ bool Native::Interface::EthernetInternal::Ip::AccessGroup::has_leaf_or_child_of_
 Native::Interface::EthernetInternal::Ip::AccessGroup::In::In()
     :
     common_acl(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::In::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::In::Acl>())
+    , acl(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::In::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::AccessGroup::In::~In()
@@ -4996,6 +5043,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::In::~In()
 
 bool Native::Interface::EthernetInternal::Ip::AccessGroup::In::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -5084,7 +5132,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::In::CommonAcl::CommonAcl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::AccessGroup::In::CommonAcl::~CommonAcl()
@@ -5093,6 +5141,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::In::CommonAcl::~CommonAcl(
 
 bool Native::Interface::EthernetInternal::Ip::AccessGroup::In::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| in.is_set;
 }
@@ -5175,7 +5224,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::In::Acl::Acl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::AccessGroup::In::Acl::~Acl()
@@ -5184,6 +5233,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::In::Acl::~Acl()
 
 bool Native::Interface::EthernetInternal::Ip::AccessGroup::In::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set;
 }
@@ -5263,12 +5313,12 @@ bool Native::Interface::EthernetInternal::Ip::AccessGroup::In::Acl::has_leaf_or_
 Native::Interface::EthernetInternal::Ip::AccessGroup::Out::Out()
     :
     common_acl(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::Out::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::Out::Acl>())
+    , acl(std::make_shared<Native::Interface::EthernetInternal::Ip::AccessGroup::Out::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::AccessGroup::Out::~Out()
@@ -5277,6 +5327,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::Out::~Out()
 
 bool Native::Interface::EthernetInternal::Ip::AccessGroup::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -5365,7 +5416,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::Out::CommonAcl::CommonAcl(
     out{YType::empty, "out"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::AccessGroup::Out::CommonAcl::~CommonAcl()
@@ -5374,6 +5425,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::Out::CommonAcl::~CommonAcl
 
 bool Native::Interface::EthernetInternal::Ip::AccessGroup::Out::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| out.is_set;
 }
@@ -5456,7 +5508,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::Out::Acl::Acl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::AccessGroup::Out::Acl::~Acl()
@@ -5465,6 +5517,7 @@ Native::Interface::EthernetInternal::Ip::AccessGroup::Out::Acl::~Acl()
 
 bool Native::Interface::EthernetInternal::Ip::AccessGroup::Out::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| out.is_set;
 }
@@ -5547,7 +5600,7 @@ Native::Interface::EthernetInternal::Ip::Arp::Arp()
 {
     inspection->parent = this;
 
-    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Arp::~Arp()
@@ -5556,6 +5609,7 @@ Native::Interface::EthernetInternal::Ip::Arp::~Arp()
 
 bool Native::Interface::EthernetInternal::Ip::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return (inspection !=  nullptr && inspection->has_data());
 }
 
@@ -5625,12 +5679,12 @@ bool Native::Interface::EthernetInternal::Ip::Arp::has_leaf_or_child_of_name(con
 Native::Interface::EthernetInternal::Ip::Arp::Inspection::Inspection()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Interface::EthernetInternal::Ip::Arp::Inspection::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Arp::Inspection::~Inspection()
@@ -5639,6 +5693,7 @@ Native::Interface::EthernetInternal::Ip::Arp::Inspection::~Inspection()
 
 bool Native::Interface::EthernetInternal::Ip::Arp::Inspection::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -5724,7 +5779,7 @@ Native::Interface::EthernetInternal::Ip::Arp::Inspection::Limit::Limit()
     rate{YType::uint32, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Arp::Inspection::Limit::~Limit()
@@ -5733,6 +5788,7 @@ Native::Interface::EthernetInternal::Ip::Arp::Inspection::Limit::~Limit()
 
 bool Native::Interface::EthernetInternal::Ip::Arp::Inspection::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| rate.is_set;
 }
@@ -5813,12 +5869,12 @@ Native::Interface::EthernetInternal::Ip::Vrf::Vrf()
     :
     receive{YType::str, "receive"},
     sitemap{YType::str, "sitemap"}
-    	,
+        ,
     forwarding(std::make_shared<Native::Interface::EthernetInternal::Ip::Vrf::Forwarding>())
 {
     forwarding->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Vrf::~Vrf()
@@ -5827,6 +5883,7 @@ Native::Interface::EthernetInternal::Ip::Vrf::~Vrf()
 
 bool Native::Interface::EthernetInternal::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| sitemap.is_set
 	|| (forwarding !=  nullptr && forwarding->has_data());
@@ -5926,7 +5983,7 @@ Native::Interface::EthernetInternal::Ip::Vrf::Forwarding::Forwarding()
     word{YType::str, "word"}
 {
 
-    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Vrf::Forwarding::~Forwarding()
@@ -5935,6 +5992,7 @@ Native::Interface::EthernetInternal::Ip::Vrf::Forwarding::~Forwarding()
 
 bool Native::Interface::EthernetInternal::Ip::Vrf::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return liin_vrf.is_set
 	|| mgmtvrf.is_set
 	|| word.is_set;
@@ -6029,7 +6087,7 @@ Native::Interface::EthernetInternal::Ip::NoAddress::NoAddress()
     address{YType::boolean, "address"}
 {
 
-    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::NoAddress::~NoAddress()
@@ -6038,6 +6096,7 @@ Native::Interface::EthernetInternal::Ip::NoAddress::~NoAddress()
 
 bool Native::Interface::EthernetInternal::Ip::NoAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -6104,13 +6163,14 @@ bool Native::Interface::EthernetInternal::Ip::NoAddress::has_leaf_or_child_of_na
 Native::Interface::EthernetInternal::Ip::Address::Address()
     :
     negotiated{YType::empty, "negotiated"}
-    	,
+        ,
     primary(std::make_shared<Native::Interface::EthernetInternal::Ip::Address::Primary>())
-	,dhcp(nullptr) // presence node
+    , secondary(this, {"address"})
+    , dhcp(nullptr) // presence node
 {
     primary->parent = this;
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Address::~Address()
@@ -6119,7 +6179,8 @@ Native::Interface::EthernetInternal::Ip::Address::~Address()
 
 bool Native::Interface::EthernetInternal::Ip::Address::has_data() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_data())
             return true;
@@ -6131,7 +6192,7 @@ bool Native::Interface::EthernetInternal::Ip::Address::has_data() const
 
 bool Native::Interface::EthernetInternal::Ip::Address::has_operation() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_operation())
             return true;
@@ -6174,7 +6235,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Ip::Address::get_ch
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Ip::Address::Secondary>();
         c->parent = this;
-        secondary.push_back(c);
+        secondary.append(c);
         return c;
     }
 
@@ -6200,7 +6261,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : secondary)
+    for (auto c : secondary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6247,7 +6308,7 @@ Native::Interface::EthernetInternal::Ip::Address::Primary::Primary()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Address::Primary::~Primary()
@@ -6256,6 +6317,7 @@ Native::Interface::EthernetInternal::Ip::Address::Primary::~Primary()
 
 bool Native::Interface::EthernetInternal::Ip::Address::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
@@ -6339,7 +6401,7 @@ Native::Interface::EthernetInternal::Ip::Address::Secondary::Secondary()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Address::Secondary::~Secondary()
@@ -6348,6 +6410,7 @@ Native::Interface::EthernetInternal::Ip::Address::Secondary::~Secondary()
 
 bool Native::Interface::EthernetInternal::Ip::Address::Secondary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set
 	|| secondary.is_set;
@@ -6364,7 +6427,8 @@ bool Native::Interface::EthernetInternal::Ip::Address::Secondary::has_operation(
 std::string Native::Interface::EthernetInternal::Ip::Address::Secondary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary" <<"[address='" <<address <<"']";
+    path_buffer << "secondary";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -6440,12 +6504,12 @@ bool Native::Interface::EthernetInternal::Ip::Address::Secondary::has_leaf_or_ch
 Native::Interface::EthernetInternal::Ip::Address::Dhcp::Dhcp()
     :
     hostname{YType::str, "hostname"}
-    	,
+        ,
     client_id(std::make_shared<Native::Interface::EthernetInternal::Ip::Address::Dhcp::ClientId>())
 {
     client_id->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ip::Address::Dhcp::~Dhcp()
@@ -6454,6 +6518,7 @@ Native::Interface::EthernetInternal::Ip::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::EthernetInternal::Ip::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| (client_id !=  nullptr && client_id->has_data());
 }
@@ -6547,7 +6612,7 @@ Native::Interface::EthernetInternal::Ip::Address::Dhcp::ClientId::ClientId()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Address::Dhcp::ClientId::~ClientId()
@@ -6556,6 +6621,7 @@ Native::Interface::EthernetInternal::Ip::Address::Dhcp::ClientId::~ClientId()
 
 bool Native::Interface::EthernetInternal::Ip::Address::Dhcp::ClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return fastethernet.is_set
 	|| gigabitethernet.is_set
 	|| fivegigabitethernet.is_set
@@ -6742,7 +6808,7 @@ Native::Interface::EthernetInternal::Ip::HelloInterval::HelloInterval()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::HelloInterval::~HelloInterval()
@@ -6751,6 +6817,7 @@ Native::Interface::EthernetInternal::Ip::HelloInterval::~HelloInterval()
 
 bool Native::Interface::EthernetInternal::Ip::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -6830,12 +6897,12 @@ bool Native::Interface::EthernetInternal::Ip::HelloInterval::has_leaf_or_child_o
 Native::Interface::EthernetInternal::Ip::Authentication::Authentication()
     :
     key_chain(std::make_shared<Native::Interface::EthernetInternal::Ip::Authentication::KeyChain>())
-	,mode(std::make_shared<Native::Interface::EthernetInternal::Ip::Authentication::Mode>())
+    , mode(std::make_shared<Native::Interface::EthernetInternal::Ip::Authentication::Mode>())
 {
     key_chain->parent = this;
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Authentication::~Authentication()
@@ -6844,6 +6911,7 @@ Native::Interface::EthernetInternal::Ip::Authentication::~Authentication()
 
 bool Native::Interface::EthernetInternal::Ip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (key_chain !=  nullptr && key_chain->has_data())
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -6932,7 +7000,7 @@ Native::Interface::EthernetInternal::Ip::Authentication::KeyChain::KeyChain()
     name{YType::str, "name"}
 {
 
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Authentication::KeyChain::~KeyChain()
@@ -6941,6 +7009,7 @@ Native::Interface::EthernetInternal::Ip::Authentication::KeyChain::~KeyChain()
 
 bool Native::Interface::EthernetInternal::Ip::Authentication::KeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| name.is_set;
 }
@@ -7023,7 +7092,7 @@ Native::Interface::EthernetInternal::Ip::Authentication::Mode::Mode()
     md5{YType::empty, "md5"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Authentication::Mode::~Mode()
@@ -7032,6 +7101,7 @@ Native::Interface::EthernetInternal::Ip::Authentication::Mode::~Mode()
 
 bool Native::Interface::EthernetInternal::Ip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| md5.is_set;
 }
@@ -7114,7 +7184,7 @@ Native::Interface::EthernetInternal::Ip::HoldTime::HoldTime()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::HoldTime::~HoldTime()
@@ -7123,6 +7193,7 @@ Native::Interface::EthernetInternal::Ip::HoldTime::~HoldTime()
 
 bool Native::Interface::EthernetInternal::Ip::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -7206,7 +7277,7 @@ Native::Interface::EthernetInternal::Ip::HelperAddress::HelperAddress()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::HelperAddress::~HelperAddress()
@@ -7215,6 +7286,7 @@ Native::Interface::EthernetInternal::Ip::HelperAddress::~HelperAddress()
 
 bool Native::Interface::EthernetInternal::Ip::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| global.is_set
 	|| vrf.is_set;
@@ -7231,7 +7303,8 @@ bool Native::Interface::EthernetInternal::Ip::HelperAddress::has_operation() con
 std::string Native::Interface::EthernetInternal::Ip::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[address='" <<address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -7307,7 +7380,7 @@ bool Native::Interface::EthernetInternal::Ip::HelperAddress::has_leaf_or_child_o
 Native::Interface::EthernetInternal::Ip::Pim::Pim()
 {
 
-    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Pim::~Pim()
@@ -7316,6 +7389,7 @@ Native::Interface::EthernetInternal::Ip::Pim::~Pim()
 
 bool Native::Interface::EthernetInternal::Ip::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7370,7 +7444,7 @@ Native::Interface::EthernetInternal::Ip::Policy::Policy()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Policy::~Policy()
@@ -7379,6 +7453,7 @@ Native::Interface::EthernetInternal::Ip::Policy::~Policy()
 
 bool Native::Interface::EthernetInternal::Ip::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set;
 }
 
@@ -7448,7 +7523,7 @@ Native::Interface::EthernetInternal::Ip::Rip::Rip()
 {
     authentication->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Rip::~Rip()
@@ -7457,6 +7532,7 @@ Native::Interface::EthernetInternal::Ip::Rip::~Rip()
 
 bool Native::Interface::EthernetInternal::Ip::Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -7526,12 +7602,12 @@ bool Native::Interface::EthernetInternal::Ip::Rip::has_leaf_or_child_of_name(con
 Native::Interface::EthernetInternal::Ip::Rip::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     mode(std::make_shared<Native::Interface::EthernetInternal::Ip::Rip::Authentication::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Rip::Authentication::~Authentication()
@@ -7540,6 +7616,7 @@ Native::Interface::EthernetInternal::Ip::Rip::Authentication::~Authentication()
 
 bool Native::Interface::EthernetInternal::Ip::Rip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -7625,7 +7702,7 @@ Native::Interface::EthernetInternal::Ip::Rip::Authentication::Mode::Mode()
     text{YType::empty, "text"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Rip::Authentication::Mode::~Mode()
@@ -7634,6 +7711,7 @@ Native::Interface::EthernetInternal::Ip::Rip::Authentication::Mode::~Mode()
 
 bool Native::Interface::EthernetInternal::Ip::Rip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return md5.is_set
 	|| text.is_set;
 }
@@ -7715,7 +7793,7 @@ Native::Interface::EthernetInternal::Ip::RouteCacheConf::RouteCacheConf()
     route_cache{YType::boolean, "route-cache"}
 {
 
-    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::RouteCacheConf::~RouteCacheConf()
@@ -7724,6 +7802,7 @@ Native::Interface::EthernetInternal::Ip::RouteCacheConf::~RouteCacheConf()
 
 bool Native::Interface::EthernetInternal::Ip::RouteCacheConf::has_data() const
 {
+    if (is_presence_container) return true;
     return route_cache.is_set;
 }
 
@@ -7795,7 +7874,7 @@ Native::Interface::EthernetInternal::Ip::RouteCache::RouteCache()
     same_interface{YType::boolean, "same-interface"}
 {
 
-    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ip::RouteCache::~RouteCache()
@@ -7804,6 +7883,7 @@ Native::Interface::EthernetInternal::Ip::RouteCache::~RouteCache()
 
 bool Native::Interface::EthernetInternal::Ip::RouteCache::has_data() const
 {
+    if (is_presence_container) return true;
     return cef.is_set
 	|| flow.is_set
 	|| policy.is_set
@@ -7911,7 +7991,7 @@ Native::Interface::EthernetInternal::Ip::Router::Router()
     isis(nullptr) // presence node
 {
 
-    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Router::~Router()
@@ -7920,6 +8000,7 @@ Native::Interface::EthernetInternal::Ip::Router::~Router()
 
 bool Native::Interface::EthernetInternal::Ip::Router::has_data() const
 {
+    if (is_presence_container) return true;
     return (isis !=  nullptr && isis->has_data());
 }
 
@@ -7991,7 +8072,7 @@ Native::Interface::EthernetInternal::Ip::Router::Isis::Isis()
     tag{YType::str, "tag"}
 {
 
-    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ip::Router::Isis::~Isis()
@@ -8000,6 +8081,7 @@ Native::Interface::EthernetInternal::Ip::Router::Isis::~Isis()
 
 bool Native::Interface::EthernetInternal::Ip::Router::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -8068,7 +8150,7 @@ Native::Interface::EthernetInternal::Ip::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Tcp::~Tcp()
@@ -8077,6 +8159,7 @@ Native::Interface::EthernetInternal::Ip::Tcp::~Tcp()
 
 bool Native::Interface::EthernetInternal::Ip::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -8149,7 +8232,7 @@ Native::Interface::EthernetInternal::Ip::VirtualReassembly::VirtualReassembly()
     in{YType::empty, "in"}
 {
 
-    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::VirtualReassembly::~VirtualReassembly()
@@ -8158,6 +8241,7 @@ Native::Interface::EthernetInternal::Ip::VirtualReassembly::~VirtualReassembly()
 
 bool Native::Interface::EthernetInternal::Ip::VirtualReassembly::has_data() const
 {
+    if (is_presence_container) return true;
     return max_reassemblies.is_set
 	|| max_fragments.is_set
 	|| timeout.is_set
@@ -8276,7 +8360,7 @@ bool Native::Interface::EthernetInternal::Ip::VirtualReassembly::has_leaf_or_chi
 Native::Interface::EthernetInternal::Ip::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Dhcp::~Dhcp()
@@ -8285,6 +8369,7 @@ Native::Interface::EthernetInternal::Ip::Dhcp::~Dhcp()
 
 bool Native::Interface::EthernetInternal::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -8335,9 +8420,11 @@ bool Native::Interface::EthernetInternal::Ip::Dhcp::has_leaf_or_child_of_name(co
 }
 
 Native::Interface::EthernetInternal::Ip::SummaryAddress::SummaryAddress()
+    :
+    eigrp(this, {"id"})
 {
 
-    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::SummaryAddress::~SummaryAddress()
@@ -8346,7 +8433,8 @@ Native::Interface::EthernetInternal::Ip::SummaryAddress::~SummaryAddress()
 
 bool Native::Interface::EthernetInternal::Ip::SummaryAddress::has_data() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -8356,7 +8444,7 @@ bool Native::Interface::EthernetInternal::Ip::SummaryAddress::has_data() const
 
 bool Native::Interface::EthernetInternal::Ip::SummaryAddress::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -8386,7 +8474,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Ip::SummaryAddress:
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -8398,7 +8486,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8432,7 +8520,7 @@ Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp::Eigrp()
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp::~Eigrp()
@@ -8441,6 +8529,7 @@ Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp::~Eigrp()
 
 bool Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| ip.is_set
 	|| mask.is_set
@@ -8459,7 +8548,8 @@ bool Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp::has_operati
 std::string Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[id='" <<id <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -8546,11 +8636,11 @@ bool Native::Interface::EthernetInternal::Ip::SummaryAddress::Eigrp::has_leaf_or
 Native::Interface::EthernetInternal::Ip::Verify::Verify()
     :
     source(nullptr) // presence node
-	,unicast(std::make_shared<Native::Interface::EthernetInternal::Ip::Verify::Unicast>())
+    , unicast(std::make_shared<Native::Interface::EthernetInternal::Ip::Verify::Unicast>())
 {
     unicast->parent = this;
 
-    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Verify::~Verify()
@@ -8559,6 +8649,7 @@ Native::Interface::EthernetInternal::Ip::Verify::~Verify()
 
 bool Native::Interface::EthernetInternal::Ip::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data())
 	|| (unicast !=  nullptr && unicast->has_data());
 }
@@ -8647,7 +8738,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Source::Source()
 {
     vlan->parent = this;
 
-    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ip::Verify::Source::~Source()
@@ -8656,6 +8747,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Source::~Source()
 
 bool Native::Interface::EthernetInternal::Ip::Verify::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -8727,7 +8819,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::Vlan()
     dhcp_snooping(nullptr) // presence node
 {
 
-    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::~Vlan()
@@ -8736,6 +8828,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::~Vlan()
 
 bool Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp_snooping !=  nullptr && dhcp_snooping->has_data());
 }
 
@@ -8807,7 +8900,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::DhcpSnooping::Dhc
     port_security{YType::empty, "port-security"}
 {
 
-    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::DhcpSnooping::~DhcpSnooping()
@@ -8816,6 +8909,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::DhcpSnooping::~Dh
 
 bool Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::DhcpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return port_security.is_set;
 }
 
@@ -8882,11 +8976,11 @@ bool Native::Interface::EthernetInternal::Ip::Verify::Source::Vlan::DhcpSnooping
 Native::Interface::EthernetInternal::Ip::Verify::Unicast::Unicast()
     :
     reverse_path(nullptr) // presence node
-	,source(std::make_shared<Native::Interface::EthernetInternal::Ip::Verify::Unicast::Source>())
+    , source(std::make_shared<Native::Interface::EthernetInternal::Ip::Verify::Unicast::Source>())
 {
     source->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Verify::Unicast::~Unicast()
@@ -8895,6 +8989,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Unicast::~Unicast()
 
 bool Native::Interface::EthernetInternal::Ip::Verify::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (reverse_path !=  nullptr && reverse_path->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -8980,7 +9075,7 @@ bool Native::Interface::EthernetInternal::Ip::Verify::Unicast::has_leaf_or_child
 Native::Interface::EthernetInternal::Ip::Verify::Unicast::ReversePath::ReversePath()
 {
 
-    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ip::Verify::Unicast::ReversePath::~ReversePath()
@@ -8989,6 +9084,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Unicast::ReversePath::~ReverseP
 
 bool Native::Interface::EthernetInternal::Ip::Verify::Unicast::ReversePath::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -9045,7 +9141,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Unicast::Source::Source()
     allow_default{YType::empty, "allow-default"}
 {
 
-    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ip::Verify::Unicast::Source::~Source()
@@ -9054,6 +9150,7 @@ Native::Interface::EthernetInternal::Ip::Verify::Unicast::Source::~Source()
 
 bool Native::Interface::EthernetInternal::Ip::Verify::Unicast::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return reachable_via.is_set
 	|| allow_self_ping.is_set
 	|| allow_default.is_set;
@@ -9149,20 +9246,21 @@ Native::Interface::EthernetInternal::Ipv6::Ipv6()
     enable{YType::empty, "enable"},
     mtu{YType::uint16, "mtu"},
     redirects{YType::boolean, "redirects"}
-    	,
+        ,
     destination_guard(nullptr) // presence node
-	,source_guard(nullptr) // presence node
-	,dhcp(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Dhcp>())
-	,address(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Address>())
-	,nd(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Nd>())
-	,tcp(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Tcp>())
+    , source_guard(nullptr) // presence node
+    , dhcp(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Dhcp>())
+    , address(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Address>())
+    , nd(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Nd>())
+    , tcp(std::make_shared<Native::Interface::EthernetInternal::Ipv6::Tcp>())
+    , traffic_filter(this, {"direction"})
 {
     dhcp->parent = this;
     address->parent = this;
     nd->parent = this;
     tcp->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::~Ipv6()
@@ -9171,7 +9269,8 @@ Native::Interface::EthernetInternal::Ipv6::~Ipv6()
 
 bool Native::Interface::EthernetInternal::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_data())
             return true;
@@ -9190,7 +9289,7 @@ bool Native::Interface::EthernetInternal::Ipv6::has_data() const
 
 bool Native::Interface::EthernetInternal::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_operation())
             return true;
@@ -9288,7 +9387,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Ipv6::get_child_by_
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Ipv6::TrafficFilter>();
         c->parent = this;
-        traffic_filter.push_back(c);
+        traffic_filter.append(c);
         return c;
     }
 
@@ -9330,7 +9429,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : traffic_filter)
+    for (auto c : traffic_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9401,7 +9500,7 @@ Native::Interface::EthernetInternal::Ipv6::DestinationGuard::DestinationGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ipv6::DestinationGuard::~DestinationGuard()
@@ -9410,6 +9509,7 @@ Native::Interface::EthernetInternal::Ipv6::DestinationGuard::~DestinationGuard()
 
 bool Native::Interface::EthernetInternal::Ipv6::DestinationGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -9478,7 +9578,7 @@ Native::Interface::EthernetInternal::Ipv6::SourceGuard::SourceGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ipv6::SourceGuard::~SourceGuard()
@@ -9487,6 +9587,7 @@ Native::Interface::EthernetInternal::Ipv6::SourceGuard::~SourceGuard()
 
 bool Native::Interface::EthernetInternal::Ipv6::SourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -9553,7 +9654,7 @@ bool Native::Interface::EthernetInternal::Ipv6::SourceGuard::has_leaf_or_child_o
 Native::Interface::EthernetInternal::Ipv6::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::Dhcp::~Dhcp()
@@ -9562,6 +9663,7 @@ Native::Interface::EthernetInternal::Ipv6::Dhcp::~Dhcp()
 
 bool Native::Interface::EthernetInternal::Ipv6::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -9614,10 +9716,12 @@ bool Native::Interface::EthernetInternal::Ipv6::Dhcp::has_leaf_or_child_of_name(
 Native::Interface::EthernetInternal::Ipv6::Address::Address()
     :
     dhcp(nullptr) // presence node
-	,autoconfig(nullptr) // presence node
+    , autoconfig(nullptr) // presence node
+    , prefix_list(this, {"prefix"})
+    , link_local_address(this, {"address"})
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::Address::~Address()
@@ -9626,12 +9730,13 @@ Native::Interface::EthernetInternal::Ipv6::Address::~Address()
 
 bool Native::Interface::EthernetInternal::Ipv6::Address::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_data())
             return true;
@@ -9642,12 +9747,12 @@ bool Native::Interface::EthernetInternal::Ipv6::Address::has_data() const
 
 bool Native::Interface::EthernetInternal::Ipv6::Address::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_operation())
             return true;
@@ -9697,7 +9802,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Ipv6::Address::get_
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Ipv6::Address::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -9705,7 +9810,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Ipv6::Address::get_
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
-        link_local_address.push_back(c);
+        link_local_address.append(c);
         return c;
     }
 
@@ -9727,7 +9832,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9736,7 +9841,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : link_local_address)
+    for (auto c : link_local_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9767,7 +9872,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::Dhcp::Dhcp()
     rapid_commit{YType::empty, "rapid-commit"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ipv6::Address::Dhcp::~Dhcp()
@@ -9776,6 +9881,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::EthernetInternal::Ipv6::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return rapid_commit.is_set;
 }
 
@@ -9844,7 +9950,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::Autoconfig::Autoconfig()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Ipv6::Address::Autoconfig::~Autoconfig()
@@ -9853,6 +9959,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::Autoconfig::~Autoconfig()
 
 bool Native::Interface::EthernetInternal::Ipv6::Address::Autoconfig::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -9923,7 +10030,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::PrefixList::PrefixList()
     eui_64{YType::empty, "eui-64"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::Address::PrefixList::~PrefixList()
@@ -9932,6 +10039,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::PrefixList::~PrefixList()
 
 bool Native::Interface::EthernetInternal::Ipv6::Address::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| anycast.is_set
 	|| eui_64.is_set;
@@ -9948,7 +10056,8 @@ bool Native::Interface::EthernetInternal::Ipv6::Address::PrefixList::has_operati
 std::string Native::Interface::EthernetInternal::Ipv6::Address::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -10027,7 +10136,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress::LinkLocalA
     link_local{YType::empty, "link-local"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress::~LinkLocalAddress()
@@ -10036,6 +10145,7 @@ Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress::~LinkLocal
 
 bool Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| link_local.is_set;
 }
@@ -10050,7 +10160,8 @@ bool Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress::has_o
 std::string Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-local-address" <<"[address='" <<address <<"']";
+    path_buffer << "link-local-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -10115,7 +10226,7 @@ bool Native::Interface::EthernetInternal::Ipv6::Address::LinkLocalAddress::has_l
 Native::Interface::EthernetInternal::Ipv6::Nd::Nd()
 {
 
-    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::Nd::~Nd()
@@ -10124,6 +10235,7 @@ Native::Interface::EthernetInternal::Ipv6::Nd::~Nd()
 
 bool Native::Interface::EthernetInternal::Ipv6::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -10178,7 +10290,7 @@ Native::Interface::EthernetInternal::Ipv6::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::Tcp::~Tcp()
@@ -10187,6 +10299,7 @@ Native::Interface::EthernetInternal::Ipv6::Tcp::~Tcp()
 
 bool Native::Interface::EthernetInternal::Ipv6::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -10256,7 +10369,7 @@ Native::Interface::EthernetInternal::Ipv6::TrafficFilter::TrafficFilter()
     access_list{YType::str, "access-list"}
 {
 
-    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Ipv6::TrafficFilter::~TrafficFilter()
@@ -10265,6 +10378,7 @@ Native::Interface::EthernetInternal::Ipv6::TrafficFilter::~TrafficFilter()
 
 bool Native::Interface::EthernetInternal::Ipv6::TrafficFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| access_list.is_set;
 }
@@ -10279,7 +10393,8 @@ bool Native::Interface::EthernetInternal::Ipv6::TrafficFilter::has_operation() c
 std::string Native::Interface::EthernetInternal::Ipv6::TrafficFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-filter" <<"[direction='" <<direction <<"']";
+    path_buffer << "traffic-filter";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -10347,7 +10462,7 @@ Native::Interface::EthernetInternal::Logging::Logging()
 {
     event->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Logging::~Logging()
@@ -10356,6 +10471,7 @@ Native::Interface::EthernetInternal::Logging::~Logging()
 
 bool Native::Interface::EthernetInternal::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (event !=  nullptr && event->has_data());
 }
 
@@ -10430,12 +10546,12 @@ Native::Interface::EthernetInternal::Logging::Event::Event()
     nfas_status{YType::empty, "nfas-status"},
     power_inline_status{YType::empty, "power-inline-status"},
     status{YType::empty, "status"}
-    	,
+        ,
     spanning_tree(nullptr) // presence node
-	,subif_link_status(nullptr) // presence node
+    , subif_link_status(nullptr) // presence node
 {
 
-    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Logging::Event::~Event()
@@ -10444,6 +10560,7 @@ Native::Interface::EthernetInternal::Logging::Event::~Event()
 
 bool Native::Interface::EthernetInternal::Logging::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| link_status.is_set
 	|| trunk_status.is_set
@@ -10609,7 +10726,7 @@ Native::Interface::EthernetInternal::Logging::Event::SpanningTree::SpanningTree(
     status{YType::empty, "status"}
 {
 
-    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Logging::Event::SpanningTree::~SpanningTree()
@@ -10618,6 +10735,7 @@ Native::Interface::EthernetInternal::Logging::Event::SpanningTree::~SpanningTree
 
 bool Native::Interface::EthernetInternal::Logging::Event::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -10686,7 +10804,7 @@ Native::Interface::EthernetInternal::Logging::Event::SubifLinkStatus::SubifLinkS
     ignore_bulk{YType::empty, "ignore-bulk"}
 {
 
-    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Logging::Event::SubifLinkStatus::~SubifLinkStatus()
@@ -10695,6 +10813,7 @@ Native::Interface::EthernetInternal::Logging::Event::SubifLinkStatus::~SubifLink
 
 bool Native::Interface::EthernetInternal::Logging::Event::SubifLinkStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_bulk.is_set;
 }
 
@@ -10763,7 +10882,7 @@ Native::Interface::EthernetInternal::Mdix::Mdix()
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "mdix"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdix"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Mdix::~Mdix()
@@ -10772,6 +10891,7 @@ Native::Interface::EthernetInternal::Mdix::~Mdix()
 
 bool Native::Interface::EthernetInternal::Mdix::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -10841,7 +10961,7 @@ Native::Interface::EthernetInternal::Mop::Mop()
     sysid{YType::boolean, "sysid"}
 {
 
-    yang_name = "mop"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mop"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Mop::~Mop()
@@ -10850,6 +10970,7 @@ Native::Interface::EthernetInternal::Mop::~Mop()
 
 bool Native::Interface::EthernetInternal::Mop::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| sysid.is_set;
 }
@@ -10932,7 +11053,7 @@ Native::Interface::EthernetInternal::InterfaceQos::InterfaceQos()
 {
     trust->parent = this;
 
-    yang_name = "interface_qos"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface_qos"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::InterfaceQos::~InterfaceQos()
@@ -10941,6 +11062,7 @@ Native::Interface::EthernetInternal::InterfaceQos::~InterfaceQos()
 
 bool Native::Interface::EthernetInternal::InterfaceQos::has_data() const
 {
+    if (is_presence_container) return true;
     return (trust !=  nullptr && trust->has_data());
 }
 
@@ -11012,7 +11134,7 @@ Native::Interface::EthernetInternal::InterfaceQos::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::InterfaceQos::Trust::~Trust()
@@ -11021,6 +11143,7 @@ Native::Interface::EthernetInternal::InterfaceQos::Trust::~Trust()
 
 bool Native::Interface::EthernetInternal::InterfaceQos::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -11089,13 +11212,14 @@ Native::Interface::EthernetInternal::Standby::Standby()
     version{YType::enumeration, "version"},
     bfd{YType::empty, "bfd"},
     mac_refresh{YType::uint8, "mac-refresh"}
-    	,
+        ,
     delay(std::make_shared<Native::Interface::EthernetInternal::Standby::Delay>())
-	,use_bia(nullptr) // presence node
+    , use_bia(nullptr) // presence node
+    , standby_list(this, {"group_number"})
 {
     delay->parent = this;
 
-    yang_name = "standby"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::~Standby()
@@ -11104,7 +11228,8 @@ Native::Interface::EthernetInternal::Standby::~Standby()
 
 bool Native::Interface::EthernetInternal::Standby::has_data() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_data())
             return true;
@@ -11118,7 +11243,7 @@ bool Native::Interface::EthernetInternal::Standby::has_data() const
 
 bool Native::Interface::EthernetInternal::Standby::has_operation() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_operation())
             return true;
@@ -11174,7 +11299,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Standby::get_child_
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList>();
         c->parent = this;
-        standby_list.push_back(c);
+        standby_list.append(c);
         return c;
     }
 
@@ -11196,7 +11321,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : standby_list)
+    for (auto c : standby_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11258,7 +11383,7 @@ Native::Interface::EthernetInternal::Standby::Delay::Delay()
     reload{YType::uint16, "reload"}
 {
 
-    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::Delay::~Delay()
@@ -11267,6 +11392,7 @@ Native::Interface::EthernetInternal::Standby::Delay::~Delay()
 
 bool Native::Interface::EthernetInternal::Standby::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set;
 }
@@ -11349,7 +11475,7 @@ Native::Interface::EthernetInternal::Standby::UseBia::UseBia()
 {
     scope->parent = this;
 
-    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Standby::UseBia::~UseBia()
@@ -11358,6 +11484,7 @@ Native::Interface::EthernetInternal::Standby::UseBia::~UseBia()
 
 bool Native::Interface::EthernetInternal::Standby::UseBia::has_data() const
 {
+    if (is_presence_container) return true;
     return (scope !=  nullptr && scope->has_data());
 }
 
@@ -11429,7 +11556,7 @@ Native::Interface::EthernetInternal::Standby::UseBia::Scope::Scope()
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::UseBia::Scope::~Scope()
@@ -11438,6 +11565,7 @@ Native::Interface::EthernetInternal::Standby::UseBia::Scope::~Scope()
 
 bool Native::Interface::EthernetInternal::Standby::UseBia::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -11509,18 +11637,19 @@ Native::Interface::EthernetInternal::Standby::StandbyList::StandbyList()
     mac_address{YType::str, "mac-address"},
     name{YType::str, "name"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     authentication(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Authentication>())
-	,ip(nullptr) // presence node
-	,preempt(nullptr) // presence node
-	,redirect(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Redirect>())
-	,timers(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Timers>())
+    , ip(nullptr) // presence node
+    , preempt(nullptr) // presence node
+    , redirect(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Redirect>())
+    , timers(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Timers>())
+    , track(this, {"number"})
 {
     authentication->parent = this;
     redirect->parent = this;
     timers->parent = this;
 
-    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::~StandbyList()
@@ -11529,7 +11658,8 @@ Native::Interface::EthernetInternal::Standby::StandbyList::~StandbyList()
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::has_data() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_data())
             return true;
@@ -11549,7 +11679,7 @@ bool Native::Interface::EthernetInternal::Standby::StandbyList::has_data() const
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::has_operation() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_operation())
             return true;
@@ -11571,7 +11701,8 @@ bool Native::Interface::EthernetInternal::Standby::StandbyList::has_operation() 
 std::string Native::Interface::EthernetInternal::Standby::StandbyList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "standby-list" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "standby-list";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -11641,7 +11772,7 @@ std::shared_ptr<Entity> Native::Interface::EthernetInternal::Standby::StandbyLis
     {
         auto c = std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Track>();
         c->parent = this;
-        track.push_back(c);
+        track.append(c);
         return c;
     }
 
@@ -11678,7 +11809,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EthernetIntern
     }
 
     count = 0;
-    for (auto const & c : track)
+    for (auto c : track.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11768,12 +11899,12 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Authe
     :
     word{YType::str, "word"},
     text{YType::str, "text"}
-    	,
+        ,
     md5(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5>())
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::~Authentication()
@@ -11782,6 +11913,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::~Auth
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| text.is_set
 	|| (md5 !=  nullptr && md5->has_data());
@@ -11877,12 +12009,12 @@ bool Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::
 Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::~Md5()
@@ -11891,6 +12023,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -11977,7 +12110,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::KeyString::~KeyString()
@@ -11986,6 +12119,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -12081,7 +12215,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Ip::Ip()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Ip::~Ip()
@@ -12090,6 +12224,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Ip::~Ip()
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| secondary.is_set;
 }
@@ -12172,7 +12307,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::Preempt()
 {
     delay->parent = this;
 
-    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::~Preempt()
@@ -12181,6 +12316,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::~Preempt()
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data());
 }
 
@@ -12254,7 +12390,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::Delay::Delay
     sync{YType::uint16, "sync"}
 {
 
-    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::Delay::~Delay()
@@ -12263,6 +12399,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::Delay::~Dela
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set
 	|| sync.is_set;
@@ -12355,14 +12492,14 @@ bool Native::Interface::EthernetInternal::Standby::StandbyList::Preempt::Delay::
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Redirect()
     :
     unknown{YType::empty, "unknown"}
-    	,
+        ,
     advertisement(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement>())
-	,timers(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Timers>())
+    , timers(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Timers>())
 {
     advertisement->parent = this;
     timers->parent = this;
 
-    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::~Redirect()
@@ -12371,6 +12508,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::~Redirect()
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown.is_set
 	|| (advertisement !=  nullptr && advertisement->has_data())
 	|| (timers !=  nullptr && timers->has_data());
@@ -12472,7 +12610,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertiseme
 {
     authentication->parent = this;
 
-    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::~Advertisement()
@@ -12481,6 +12619,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -12553,7 +12692,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertiseme
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::~Authentication()
@@ -12562,6 +12701,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (md5 !=  nullptr && md5->has_data());
 }
 
@@ -12631,12 +12771,12 @@ bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advert
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::~Md5()
@@ -12645,6 +12785,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -12731,7 +12872,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertiseme
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::~KeyString()
@@ -12740,6 +12881,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertiseme
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -12835,7 +12977,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Timers::Tim
     holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Timers::~Timers()
@@ -12844,6 +12986,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Timers::~Ti
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return advertisement.is_set
 	|| holddown.is_set;
 }
@@ -12923,12 +13066,12 @@ bool Native::Interface::EthernetInternal::Standby::StandbyList::Redirect::Timers
 Native::Interface::EthernetInternal::Standby::StandbyList::Timers::Timers()
     :
     hello_interval(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HelloInterval>())
-	,hold_time(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HoldTime>())
+    , hold_time(std::make_shared<Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HoldTime>())
 {
     hello_interval->parent = this;
     hold_time->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Timers::~Timers()
@@ -12937,6 +13080,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Timers::~Timers()
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (hello_interval !=  nullptr && hello_interval->has_data())
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -13025,7 +13169,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HelloInterval
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HelloInterval::~HelloInterval()
@@ -13034,6 +13178,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HelloInterval
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -13116,7 +13261,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HoldTime::Hol
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HoldTime::~HoldTime()
@@ -13125,6 +13270,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HoldTime::~Ho
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Timers::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -13208,7 +13354,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Track::Track()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::Standby::StandbyList::Track::~Track()
@@ -13217,6 +13363,7 @@ Native::Interface::EthernetInternal::Standby::StandbyList::Track::~Track()
 
 bool Native::Interface::EthernetInternal::Standby::StandbyList::Track::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| decrement.is_set
 	|| shutdown.is_set;
@@ -13233,7 +13380,8 @@ bool Native::Interface::EthernetInternal::Standby::StandbyList::Track::has_opera
 std::string Native::Interface::EthernetInternal::Standby::StandbyList::Track::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track" <<"[number='" <<number <<"']";
+    path_buffer << "track";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -13310,12 +13458,12 @@ Native::Interface::EthernetInternal::AccessSession::AccessSession()
     :
     closed{YType::empty, "closed"},
     host_mode{YType::enumeration, "host-mode"}
-    	,
+        ,
     port_control(std::make_shared<Native::Interface::EthernetInternal::AccessSession::PortControl>())
 {
     port_control->parent = this;
 
-    yang_name = "access-session"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-session"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::AccessSession::~AccessSession()
@@ -13324,6 +13472,7 @@ Native::Interface::EthernetInternal::AccessSession::~AccessSession()
 
 bool Native::Interface::EthernetInternal::AccessSession::has_data() const
 {
+    if (is_presence_container) return true;
     return closed.is_set
 	|| host_mode.is_set
 	|| (port_control !=  nullptr && port_control->has_data());
@@ -13421,7 +13570,7 @@ Native::Interface::EthernetInternal::AccessSession::PortControl::PortControl()
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::AccessSession::PortControl::~PortControl()
@@ -13430,6 +13579,7 @@ Native::Interface::EthernetInternal::AccessSession::PortControl::~PortControl()
 
 bool Native::Interface::EthernetInternal::AccessSession::PortControl::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -13496,16 +13646,16 @@ bool Native::Interface::EthernetInternal::AccessSession::PortControl::has_leaf_o
 Native::Interface::EthernetInternal::StormControl::StormControl()
     :
     action(std::make_shared<Native::Interface::EthernetInternal::StormControl::Action>())
-	,broadcast(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Interface::EthernetInternal::StormControl::Multicast>())
-	,unicast(std::make_shared<Native::Interface::EthernetInternal::StormControl::Unicast>())
+    , broadcast(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast>())
+    , multicast(std::make_shared<Native::Interface::EthernetInternal::StormControl::Multicast>())
+    , unicast(std::make_shared<Native::Interface::EthernetInternal::StormControl::Unicast>())
 {
     action->parent = this;
     broadcast->parent = this;
     multicast->parent = this;
     unicast->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "Ethernet-Internal"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::~StormControl()
@@ -13514,6 +13664,7 @@ Native::Interface::EthernetInternal::StormControl::~StormControl()
 
 bool Native::Interface::EthernetInternal::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
@@ -13635,7 +13786,7 @@ Native::Interface::EthernetInternal::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Action::~Action()
@@ -13644,6 +13795,7 @@ Native::Interface::EthernetInternal::StormControl::Action::~Action()
 
 bool Native::Interface::EthernetInternal::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| shutdown.is_set
 	|| trap.is_set;
@@ -13736,12 +13888,12 @@ bool Native::Interface::EthernetInternal::StormControl::Action::has_leaf_or_chil
 Native::Interface::EthernetInternal::StormControl::Broadcast::Broadcast()
     :
     include(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Include>())
-	,level(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Level>())
+    , level(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Level>())
 {
     include->parent = this;
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Broadcast::~Broadcast()
@@ -13750,6 +13902,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::~Broadcast()
 
 bool Native::Interface::EthernetInternal::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (include !=  nullptr && include->has_data())
 	|| (level !=  nullptr && level->has_data());
 }
@@ -13837,7 +13990,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Include::Include()
     multicast{YType::empty, "multicast"}
 {
 
-    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Broadcast::Include::~Include()
@@ -13846,6 +13999,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Include::~Include(
 
 bool Native::Interface::EthernetInternal::StormControl::Broadcast::Include::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast.is_set;
 }
 
@@ -13912,14 +14066,14 @@ bool Native::Interface::EthernetInternal::StormControl::Broadcast::Include::has_
 Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Broadcast::Level::~Level()
@@ -13928,6 +14082,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Level::~Level()
 
 bool Native::Interface::EthernetInternal::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -14032,7 +14187,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Threshold::
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Threshold::~Threshold()
@@ -14041,6 +14196,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Threshold::
 
 bool Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -14123,7 +14279,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Bps::~Bps()
@@ -14132,6 +14288,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Bps::~Bps()
 
 bool Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -14214,7 +14371,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Pps::~Pps()
@@ -14223,6 +14380,7 @@ Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Pps::~Pps()
 
 bool Native::Interface::EthernetInternal::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -14305,7 +14463,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Multicast::~Multicast()
@@ -14314,6 +14472,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::~Multicast()
 
 bool Native::Interface::EthernetInternal::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -14383,14 +14542,14 @@ bool Native::Interface::EthernetInternal::StormControl::Multicast::has_leaf_or_c
 Native::Interface::EthernetInternal::StormControl::Multicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::EthernetInternal::StormControl::Multicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Multicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Multicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Multicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Multicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Multicast::Level::~Level()
@@ -14399,6 +14558,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Level::~Level()
 
 bool Native::Interface::EthernetInternal::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -14503,7 +14663,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Level::Threshold::
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Multicast::Level::Threshold::~Threshold()
@@ -14512,6 +14672,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Level::Threshold::
 
 bool Native::Interface::EthernetInternal::StormControl::Multicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -14594,7 +14755,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Multicast::Level::Bps::~Bps()
@@ -14603,6 +14764,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Level::Bps::~Bps()
 
 bool Native::Interface::EthernetInternal::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -14685,7 +14847,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Multicast::Level::Pps::~Pps()
@@ -14694,6 +14856,7 @@ Native::Interface::EthernetInternal::StormControl::Multicast::Level::Pps::~Pps()
 
 bool Native::Interface::EthernetInternal::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -14776,7 +14939,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Unicast()
 {
     level->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Unicast::~Unicast()
@@ -14785,6 +14948,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::~Unicast()
 
 bool Native::Interface::EthernetInternal::StormControl::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -14854,14 +15018,14 @@ bool Native::Interface::EthernetInternal::StormControl::Unicast::has_leaf_or_chi
 Native::Interface::EthernetInternal::StormControl::Unicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::EthernetInternal::StormControl::Unicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Unicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Unicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Unicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::EthernetInternal::StormControl::Unicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Unicast::Level::~Level()
@@ -14870,6 +15034,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Level::~Level()
 
 bool Native::Interface::EthernetInternal::StormControl::Unicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -14974,7 +15139,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Level::Threshold::Th
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Unicast::Level::Threshold::~Threshold()
@@ -14983,6 +15148,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Level::Threshold::~T
 
 bool Native::Interface::EthernetInternal::StormControl::Unicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -15065,7 +15231,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Unicast::Level::Bps::~Bps()
@@ -15074,6 +15240,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Level::Bps::~Bps()
 
 bool Native::Interface::EthernetInternal::StormControl::Unicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -15156,7 +15323,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EthernetInternal::StormControl::Unicast::Level::Pps::~Pps()
@@ -15165,6 +15332,7 @@ Native::Interface::EthernetInternal::StormControl::Unicast::Level::Pps::~Pps()
 
 bool Native::Interface::EthernetInternal::StormControl::Unicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }

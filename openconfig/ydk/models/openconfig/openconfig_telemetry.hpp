@@ -61,7 +61,7 @@ class TelemetrySystem::SensorGroups : public ydk::Entity
 
         class SensorGroup; //type: TelemetrySystem::SensorGroups::SensorGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup> > sensor_group;
+        ydk::YList sensor_group;
         
 }; // TelemetrySystem::SensorGroups
 
@@ -156,7 +156,7 @@ class TelemetrySystem::SensorGroups::SensorGroup::SensorPaths : public ydk::Enti
 
         class SensorPath; //type: TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath> > sensor_path;
+        ydk::YList sensor_path;
         
 }; // TelemetrySystem::SensorGroups::SensorGroup::SensorPaths
 
@@ -251,7 +251,7 @@ class TelemetrySystem::DestinationGroups : public ydk::Entity
 
         class DestinationGroup; //type: TelemetrySystem::DestinationGroups::DestinationGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup> > destination_group;
+        ydk::YList destination_group;
         
 }; // TelemetrySystem::DestinationGroups
 
@@ -346,7 +346,7 @@ class TelemetrySystem::DestinationGroups::DestinationGroup::Destinations : publi
 
         class Destination; //type: TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination> > destination;
+        ydk::YList destination;
         
 }; // TelemetrySystem::DestinationGroups::DestinationGroup::Destinations
 
@@ -471,7 +471,7 @@ class TelemetrySystem::Subscriptions::Persistent : public ydk::Entity
 
         class Subscription; //type: TelemetrySystem::Subscriptions::Persistent::Subscription
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription> > subscription;
+        ydk::YList subscription;
         
 }; // TelemetrySystem::Subscriptions::Persistent
 
@@ -572,7 +572,7 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles :
 
         class SensorProfile; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile> > sensor_profile;
+        ydk::YList sensor_profile;
         
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles
 
@@ -672,7 +672,7 @@ class TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroup
 
         class DestinationGroup; //type: TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup> > destination_group;
+        ydk::YList destination_group;
         
 }; // TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups
 
@@ -767,7 +767,7 @@ class TelemetrySystem::Subscriptions::Dynamic : public ydk::Entity
 
         class Subscription; //type: TelemetrySystem::Subscriptions::Dynamic::Subscription
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription> > subscription;
+        ydk::YList subscription;
         
 }; // TelemetrySystem::Subscriptions::Dynamic
 
@@ -846,7 +846,7 @@ class TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths : publi
 
         class SensorPath; //type: TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath
 
-        std::vector<std::shared_ptr<openconfig::openconfig_telemetry::TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath> > sensor_path;
+        ydk::YList sensor_path;
         
 }; // TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths
 

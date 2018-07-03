@@ -13,11 +13,11 @@ namespace CISCO_PING_MIB {
 
 CISCOPINGMIB::CISCOPINGMIB()
     :
-    ciscopingtable(std::make_shared<CISCOPINGMIB::Ciscopingtable>())
+    ciscopingtable(std::make_shared<CISCOPINGMIB::CiscoPingTable>())
 {
     ciscopingtable->parent = this;
 
-    yang_name = "CISCO-PING-MIB"; yang_parent_name = "CISCO-PING-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-PING-MIB"; yang_parent_name = "CISCO-PING-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOPINGMIB::~CISCOPINGMIB()
@@ -26,6 +26,7 @@ CISCOPINGMIB::~CISCOPINGMIB()
 
 bool CISCOPINGMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscopingtable !=  nullptr && ciscopingtable->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOPINGMIB::get_child_by_name(const std::string & chil
     {
         if(ciscopingtable == nullptr)
         {
-            ciscopingtable = std::make_shared<CISCOPINGMIB::Ciscopingtable>();
+            ciscopingtable = std::make_shared<CISCOPINGMIB::CiscoPingTable>();
         }
         return ciscopingtable;
     }
@@ -117,19 +118,22 @@ bool CISCOPINGMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOPINGMIB::Ciscopingtable::Ciscopingtable()
+CISCOPINGMIB::CiscoPingTable::CiscoPingTable()
+    :
+    ciscopingentry(this, {"ciscopingserialnumber"})
 {
 
-    yang_name = "ciscoPingTable"; yang_parent_name = "CISCO-PING-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoPingTable"; yang_parent_name = "CISCO-PING-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPINGMIB::Ciscopingtable::~Ciscopingtable()
+CISCOPINGMIB::CiscoPingTable::~CiscoPingTable()
 {
 }
 
-bool CISCOPINGMIB::Ciscopingtable::has_data() const
+bool CISCOPINGMIB::CiscoPingTable::has_data() const
 {
-    for (std::size_t index=0; index<ciscopingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciscopingentry.len(); index++)
     {
         if(ciscopingentry[index]->has_data())
             return true;
@@ -137,9 +141,9 @@ bool CISCOPINGMIB::Ciscopingtable::has_data() const
     return false;
 }
 
-bool CISCOPINGMIB::Ciscopingtable::has_operation() const
+bool CISCOPINGMIB::CiscoPingTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscopingentry.size(); index++)
+    for (std::size_t index=0; index<ciscopingentry.len(); index++)
     {
         if(ciscopingentry[index]->has_operation())
             return true;
@@ -147,21 +151,21 @@ bool CISCOPINGMIB::Ciscopingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOPINGMIB::Ciscopingtable::get_absolute_path() const
+std::string CISCOPINGMIB::CiscoPingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PING-MIB:CISCO-PING-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPINGMIB::Ciscopingtable::get_segment_path() const
+std::string CISCOPINGMIB::CiscoPingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoPingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPINGMIB::Ciscopingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPINGMIB::CiscoPingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -170,25 +174,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOPINGMIB::Ciscopingtable::get
 
 }
 
-std::shared_ptr<Entity> CISCOPINGMIB::Ciscopingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPINGMIB::CiscoPingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoPingEntry")
     {
-        auto c = std::make_shared<CISCOPINGMIB::Ciscopingtable::Ciscopingentry>();
+        auto c = std::make_shared<CISCOPINGMIB::CiscoPingTable::CiscoPingEntry>();
         c->parent = this;
-        ciscopingentry.push_back(c);
+        ciscopingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::Ciscopingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::CiscoPingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciscopingentry)
+    for (auto c : ciscopingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -199,22 +203,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::Ciscopingtable::get
     return children;
 }
 
-void CISCOPINGMIB::Ciscopingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPINGMIB::CiscoPingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOPINGMIB::Ciscopingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPINGMIB::CiscoPingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOPINGMIB::Ciscopingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPINGMIB::CiscoPingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoPingEntry")
         return true;
     return false;
 }
 
-CISCOPINGMIB::Ciscopingtable::Ciscopingentry::Ciscopingentry()
+CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::CiscoPingEntry()
     :
     ciscopingserialnumber{YType::int32, "ciscoPingSerialNumber"},
     ciscopingprotocol{YType::enumeration, "ciscoPingProtocol"},
@@ -235,15 +239,16 @@ CISCOPINGMIB::Ciscopingtable::Ciscopingentry::Ciscopingentry()
     ciscopingvrfname{YType::str, "ciscoPingVrfName"}
 {
 
-    yang_name = "ciscoPingEntry"; yang_parent_name = "ciscoPingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoPingEntry"; yang_parent_name = "ciscoPingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOPINGMIB::Ciscopingtable::Ciscopingentry::~Ciscopingentry()
+CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::~CiscoPingEntry()
 {
 }
 
-bool CISCOPINGMIB::Ciscopingtable::Ciscopingentry::has_data() const
+bool CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciscopingserialnumber.is_set
 	|| ciscopingprotocol.is_set
 	|| ciscopingaddress.is_set
@@ -263,7 +268,7 @@ bool CISCOPINGMIB::Ciscopingtable::Ciscopingentry::has_data() const
 	|| ciscopingvrfname.is_set;
 }
 
-bool CISCOPINGMIB::Ciscopingtable::Ciscopingentry::has_operation() const
+bool CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscopingserialnumber.yfilter)
@@ -285,21 +290,22 @@ bool CISCOPINGMIB::Ciscopingtable::Ciscopingentry::has_operation() const
 	|| ydk::is_set(ciscopingvrfname.yfilter);
 }
 
-std::string CISCOPINGMIB::Ciscopingtable::Ciscopingentry::get_absolute_path() const
+std::string CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-PING-MIB:CISCO-PING-MIB/ciscoPingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOPINGMIB::Ciscopingtable::Ciscopingentry::get_segment_path() const
+std::string CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciscoPingEntry" <<"[ciscoPingSerialNumber='" <<ciscopingserialnumber <<"']";
+    path_buffer << "ciscoPingEntry";
+    ADD_KEY_TOKEN(ciscopingserialnumber, "ciscoPingSerialNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOPINGMIB::Ciscopingtable::Ciscopingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -325,19 +331,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOPINGMIB::Ciscopingtable::Cis
 
 }
 
-std::shared_ptr<Entity> CISCOPINGMIB::Ciscopingtable::Ciscopingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::Ciscopingtable::Ciscopingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOPINGMIB::Ciscopingtable::Ciscopingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoPingSerialNumber")
     {
@@ -443,7 +449,7 @@ void CISCOPINGMIB::Ciscopingtable::Ciscopingentry::set_value(const std::string &
     }
 }
 
-void CISCOPINGMIB::Ciscopingtable::Ciscopingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoPingSerialNumber")
     {
@@ -515,7 +521,7 @@ void CISCOPINGMIB::Ciscopingtable::Ciscopingentry::set_filter(const std::string 
     }
 }
 
-bool CISCOPINGMIB::Ciscopingtable::Ciscopingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOPINGMIB::CiscoPingTable::CiscoPingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoPingSerialNumber" || name == "ciscoPingProtocol" || name == "ciscoPingAddress" || name == "ciscoPingPacketCount" || name == "ciscoPingPacketSize" || name == "ciscoPingPacketTimeout" || name == "ciscoPingDelay" || name == "ciscoPingTrapOnCompletion" || name == "ciscoPingSentPackets" || name == "ciscoPingReceivedPackets" || name == "ciscoPingMinRtt" || name == "ciscoPingAvgRtt" || name == "ciscoPingMaxRtt" || name == "ciscoPingCompleted" || name == "ciscoPingEntryOwner" || name == "ciscoPingEntryStatus" || name == "ciscoPingVrfName")
         return true;

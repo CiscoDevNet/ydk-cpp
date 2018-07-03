@@ -21,16 +21,6 @@ OPTICALAMPLIFIERTYPE::~OPTICALAMPLIFIERTYPE()
 {
 }
 
-GAINRANGE::GAINRANGE()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:GAIN_RANGE")
-{
-
-}
-
-GAINRANGE::~GAINRANGE()
-{
-}
-
 OPTICALAMPLIFIERMODE::OPTICALAMPLIFIERMODE()
      : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:OPTICAL_AMPLIFIER_MODE")
 {
@@ -41,15 +31,25 @@ OPTICALAMPLIFIERMODE::~OPTICALAMPLIFIERMODE()
 {
 }
 
+GAINRANGE::GAINRANGE()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:GAIN_RANGE")
+{
+
+}
+
+GAINRANGE::~GAINRANGE()
+{
+}
+
 OpticalAmplifier::OpticalAmplifier()
     :
     amplifiers(std::make_shared<OpticalAmplifier::Amplifiers>())
-	,supervisory_channels(std::make_shared<OpticalAmplifier::SupervisoryChannels>())
+    , supervisory_channels(std::make_shared<OpticalAmplifier::SupervisoryChannels>())
 {
     amplifiers->parent = this;
     supervisory_channels->parent = this;
 
-    yang_name = "optical-amplifier"; yang_parent_name = "openconfig-optical-amplifier"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "optical-amplifier"; yang_parent_name = "openconfig-optical-amplifier"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 OpticalAmplifier::~OpticalAmplifier()
@@ -58,6 +58,7 @@ OpticalAmplifier::~OpticalAmplifier()
 
 bool OpticalAmplifier::has_data() const
 {
+    if (is_presence_container) return true;
     return (amplifiers !=  nullptr && amplifiers->has_data())
 	|| (supervisory_channels !=  nullptr && supervisory_channels->has_data());
 }
@@ -166,9 +167,11 @@ bool OpticalAmplifier::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 OpticalAmplifier::Amplifiers::Amplifiers()
+    :
+    amplifier(this, {"name"})
 {
 
-    yang_name = "amplifiers"; yang_parent_name = "optical-amplifier"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amplifiers"; yang_parent_name = "optical-amplifier"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OpticalAmplifier::Amplifiers::~Amplifiers()
@@ -177,7 +180,8 @@ OpticalAmplifier::Amplifiers::~Amplifiers()
 
 bool OpticalAmplifier::Amplifiers::has_data() const
 {
-    for (std::size_t index=0; index<amplifier.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<amplifier.len(); index++)
     {
         if(amplifier[index]->has_data())
             return true;
@@ -187,7 +191,7 @@ bool OpticalAmplifier::Amplifiers::has_data() const
 
 bool OpticalAmplifier::Amplifiers::has_operation() const
 {
-    for (std::size_t index=0; index<amplifier.size(); index++)
+    for (std::size_t index=0; index<amplifier.len(); index++)
     {
         if(amplifier[index]->has_operation())
             return true;
@@ -224,7 +228,7 @@ std::shared_ptr<Entity> OpticalAmplifier::Amplifiers::get_child_by_name(const st
     {
         auto c = std::make_shared<OpticalAmplifier::Amplifiers::Amplifier>();
         c->parent = this;
-        amplifier.push_back(c);
+        amplifier.append(c);
         return c;
     }
 
@@ -236,7 +240,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::Amplifiers::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : amplifier)
+    for (auto c : amplifier.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -265,14 +269,14 @@ bool OpticalAmplifier::Amplifiers::has_leaf_or_child_of_name(const std::string &
 OpticalAmplifier::Amplifiers::Amplifier::Amplifier()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::Config>())
-	,state(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State>())
+    , state(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "amplifier"; yang_parent_name = "amplifiers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "amplifier"; yang_parent_name = "amplifiers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::~Amplifier()
@@ -281,6 +285,7 @@ OpticalAmplifier::Amplifiers::Amplifier::~Amplifier()
 
 bool OpticalAmplifier::Amplifiers::Amplifier::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -304,7 +309,8 @@ std::string OpticalAmplifier::Amplifiers::Amplifier::get_absolute_path() const
 std::string OpticalAmplifier::Amplifiers::Amplifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "amplifier" <<"[name='" <<name <<"']";
+    path_buffer << "amplifier";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -395,7 +401,7 @@ OpticalAmplifier::Amplifiers::Amplifier::Config::Config()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "amplifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "amplifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::Config::~Config()
@@ -404,6 +410,7 @@ OpticalAmplifier::Amplifiers::Amplifier::Config::~Config()
 
 bool OpticalAmplifier::Amplifiers::Amplifier::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| target_gain.is_set
@@ -570,17 +577,17 @@ OpticalAmplifier::Amplifiers::Amplifier::State::State()
     enabled{YType::boolean, "enabled"},
     ingress_port{YType::str, "ingress-port"},
     egress_port{YType::str, "egress-port"}
-    	,
+        ,
     actual_gain(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain>())
-	,actual_gain_tilt(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt>())
-	,input_power_total(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal>())
-	,input_power_c_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand>())
-	,input_power_l_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand>())
-	,output_power_total(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal>())
-	,output_power_c_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand>())
-	,output_power_l_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand>())
-	,laser_bias_current(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent>())
-	,optical_return_loss(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss>())
+    , actual_gain_tilt(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt>())
+    , input_power_total(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal>())
+    , input_power_c_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand>())
+    , input_power_l_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand>())
+    , output_power_total(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal>())
+    , output_power_c_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand>())
+    , output_power_l_band(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand>())
+    , laser_bias_current(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent>())
+    , optical_return_loss(std::make_shared<OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss>())
 {
     actual_gain->parent = this;
     actual_gain_tilt->parent = this;
@@ -593,7 +600,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::State()
     laser_bias_current->parent = this;
     optical_return_loss->parent = this;
 
-    yang_name = "state"; yang_parent_name = "amplifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "amplifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::~State()
@@ -602,6 +609,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::~State()
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| target_gain.is_set
@@ -950,7 +958,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::ActualGain()
     max{YType::str, "max"}
 {
 
-    yang_name = "actual-gain"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actual-gain"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::~ActualGain()
@@ -959,6 +967,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::~ActualGain()
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::ActualGain::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1069,7 +1078,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::ActualGainTilt()
     max{YType::str, "max"}
 {
 
-    yang_name = "actual-gain-tilt"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "actual-gain-tilt"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::~ActualGainTilt()
@@ -1078,6 +1087,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::~ActualGainTilt(
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::ActualGainTilt::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1188,7 +1198,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::InputPowerTotal
     max{YType::str, "max"}
 {
 
-    yang_name = "input-power-total"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-power-total"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::~InputPowerTotal()
@@ -1197,6 +1207,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::~InputPowerTota
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerTotal::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1307,7 +1318,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::InputPowerCBand
     max{YType::str, "max"}
 {
 
-    yang_name = "input-power-c-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-power-c-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::~InputPowerCBand()
@@ -1316,6 +1327,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::~InputPowerCBan
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerCBand::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1426,7 +1438,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::InputPowerLBand
     max{YType::str, "max"}
 {
 
-    yang_name = "input-power-l-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-power-l-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::~InputPowerLBand()
@@ -1435,6 +1447,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::~InputPowerLBan
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::InputPowerLBand::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1545,7 +1558,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::OutputPowerTot
     max{YType::str, "max"}
 {
 
-    yang_name = "output-power-total"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-power-total"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::~OutputPowerTotal()
@@ -1554,6 +1567,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::~OutputPowerTo
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerTotal::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1664,7 +1678,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::OutputPowerCBa
     max{YType::str, "max"}
 {
 
-    yang_name = "output-power-c-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-power-c-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::~OutputPowerCBand()
@@ -1673,6 +1687,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::~OutputPowerCB
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerCBand::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1783,7 +1798,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::OutputPowerLBa
     max{YType::str, "max"}
 {
 
-    yang_name = "output-power-l-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-power-l-band"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::~OutputPowerLBand()
@@ -1792,6 +1807,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::~OutputPowerLB
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::OutputPowerLBand::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1902,7 +1918,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::LaserBiasCurre
     max{YType::str, "max"}
 {
 
-    yang_name = "laser-bias-current"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "laser-bias-current"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::~LaserBiasCurrent()
@@ -1911,6 +1927,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::~LaserBiasCurr
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::LaserBiasCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2021,7 +2038,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::OpticalReturn
     max{YType::str, "max"}
 {
 
-    yang_name = "optical-return-loss"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-return-loss"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::~OpticalReturnLoss()
@@ -2030,6 +2047,7 @@ OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::~OpticalRetur
 
 bool OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2133,9 +2151,11 @@ bool OpticalAmplifier::Amplifiers::Amplifier::State::OpticalReturnLoss::has_leaf
 }
 
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannels()
+    :
+    supervisory_channel(this, {"interface"})
 {
 
-    yang_name = "supervisory-channels"; yang_parent_name = "optical-amplifier"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "supervisory-channels"; yang_parent_name = "optical-amplifier"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OpticalAmplifier::SupervisoryChannels::~SupervisoryChannels()
@@ -2144,7 +2164,8 @@ OpticalAmplifier::SupervisoryChannels::~SupervisoryChannels()
 
 bool OpticalAmplifier::SupervisoryChannels::has_data() const
 {
-    for (std::size_t index=0; index<supervisory_channel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<supervisory_channel.len(); index++)
     {
         if(supervisory_channel[index]->has_data())
             return true;
@@ -2154,7 +2175,7 @@ bool OpticalAmplifier::SupervisoryChannels::has_data() const
 
 bool OpticalAmplifier::SupervisoryChannels::has_operation() const
 {
-    for (std::size_t index=0; index<supervisory_channel.size(); index++)
+    for (std::size_t index=0; index<supervisory_channel.len(); index++)
     {
         if(supervisory_channel[index]->has_operation())
             return true;
@@ -2191,7 +2212,7 @@ std::shared_ptr<Entity> OpticalAmplifier::SupervisoryChannels::get_child_by_name
     {
         auto c = std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel>();
         c->parent = this;
-        supervisory_channel.push_back(c);
+        supervisory_channel.append(c);
         return c;
     }
 
@@ -2203,7 +2224,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticalAmplifier::SupervisoryChan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : supervisory_channel)
+    for (auto c : supervisory_channel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2232,14 +2253,14 @@ bool OpticalAmplifier::SupervisoryChannels::has_leaf_or_child_of_name(const std:
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::SupervisoryChannel()
     :
     interface{YType::str, "interface"}
-    	,
+        ,
     config(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config>())
-	,state(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State>())
+    , state(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "supervisory-channel"; yang_parent_name = "supervisory-channels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "supervisory-channel"; yang_parent_name = "supervisory-channels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::~SupervisoryChannel()
@@ -2248,6 +2269,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::~SupervisoryChannel()
 
 bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2271,7 +2293,8 @@ std::string OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::get_absol
 std::string OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "supervisory-channel" <<"[interface='" <<interface <<"']";
+    path_buffer << "supervisory-channel";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -2355,7 +2378,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::Config()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "config"; yang_parent_name = "supervisory-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "supervisory-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::~Config()
@@ -2364,6 +2387,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::~Config()
 
 bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : interface.getYLeafs())
     {
         if(leaf.is_set)
@@ -2439,16 +2463,16 @@ bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::Config::has_leaf
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::State()
     :
     interface{YType::str, "interface"}
-    	,
+        ,
     input_power(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower>())
-	,output_power(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower>())
-	,laser_bias_current(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent>())
+    , output_power(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower>())
+    , laser_bias_current(std::make_shared<OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent>())
 {
     input_power->parent = this;
     output_power->parent = this;
     laser_bias_current->parent = this;
 
-    yang_name = "state"; yang_parent_name = "supervisory-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "supervisory-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::~State()
@@ -2457,6 +2481,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::~State()
 
 bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : interface.getYLeafs())
     {
         if(leaf.is_set)
@@ -2584,7 +2609,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::In
     max{YType::str, "max"}
 {
 
-    yang_name = "input-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::~InputPower()
@@ -2593,6 +2618,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::~I
 
 bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::InputPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2703,7 +2729,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::O
     max{YType::str, "max"}
 {
 
-    yang_name = "output-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::~OutputPower()
@@ -2712,6 +2738,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::~
 
 bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::OutputPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2822,7 +2849,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurre
     max{YType::str, "max"}
 {
 
-    yang_name = "laser-bias-current"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "laser-bias-current"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::~LaserBiasCurrent()
@@ -2831,6 +2858,7 @@ OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurre
 
 bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBiasCurrent::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2933,23 +2961,13 @@ bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBias
     return false;
 }
 
-EDFA::EDFA()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:EDFA")
+LOWGAINRANGE::LOWGAINRANGE()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:LOW_GAIN_RANGE")
 {
 
 }
 
-EDFA::~EDFA()
-{
-}
-
-FORWARDRAMAN::FORWARDRAMAN()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FORWARD_RAMAN")
-{
-
-}
-
-FORWARDRAMAN::~FORWARDRAMAN()
+LOWGAINRANGE::~LOWGAINRANGE()
 {
 }
 
@@ -2963,23 +2981,23 @@ BACKWARDRAMAN::~BACKWARDRAMAN()
 {
 }
 
-HYBRID::HYBRID()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:HYBRID")
+CONSTANTGAIN::CONSTANTGAIN()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:CONSTANT_GAIN")
 {
 
 }
 
-HYBRID::~HYBRID()
+CONSTANTGAIN::~CONSTANTGAIN()
 {
 }
 
-LOWGAINRANGE::LOWGAINRANGE()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:LOW_GAIN_RANGE")
+FIXEDGAINRANGE::FIXEDGAINRANGE()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FIXED_GAIN_RANGE")
 {
 
 }
 
-LOWGAINRANGE::~LOWGAINRANGE()
+FIXEDGAINRANGE::~FIXEDGAINRANGE()
 {
 }
 
@@ -3003,13 +3021,33 @@ HIGHGAINRANGE::~HIGHGAINRANGE()
 {
 }
 
-FIXEDGAINRANGE::FIXEDGAINRANGE()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FIXED_GAIN_RANGE")
+HYBRID::HYBRID()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:HYBRID")
 {
 
 }
 
-FIXEDGAINRANGE::~FIXEDGAINRANGE()
+HYBRID::~HYBRID()
+{
+}
+
+FORWARDRAMAN::FORWARDRAMAN()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FORWARD_RAMAN")
+{
+
+}
+
+FORWARDRAMAN::~FORWARDRAMAN()
+{
+}
+
+EDFA::EDFA()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:EDFA")
+{
+
+}
+
+EDFA::~EDFA()
 {
 }
 
@@ -3020,16 +3058,6 @@ CONSTANTPOWER::CONSTANTPOWER()
 }
 
 CONSTANTPOWER::~CONSTANTPOWER()
-{
-}
-
-CONSTANTGAIN::CONSTANTGAIN()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:CONSTANT_GAIN")
-{
-
-}
-
-CONSTANTGAIN::~CONSTANTGAIN()
 {
 }
 

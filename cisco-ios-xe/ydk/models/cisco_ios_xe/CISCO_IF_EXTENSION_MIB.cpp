@@ -13,16 +13,16 @@ namespace CISCO_IF_EXTENSION_MIB {
 
 CISCOIFEXTENSIONMIB::CISCOIFEXTENSIONMIB()
     :
-    ciscoifextsystemconfig(std::make_shared<CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig>())
-	,cieifpacketstatstable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifpacketstatstable>())
-	,cieifinterfacetable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifinterfacetable>())
-	,cieifstatuslisttable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifstatuslisttable>())
-	,cieifvlstatstable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifvlstatstable>())
-	,cieifindexpersistencetable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifindexpersistencetable>())
-	,cieifdot1qcustomethertypetable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable>())
-	,cieifutiltable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifutiltable>())
-	,cieifdot1dbasemappingtable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable>())
-	,cieifnamemappingtable(std::make_shared<CISCOIFEXTENSIONMIB::Cieifnamemappingtable>())
+    ciscoifextsystemconfig(std::make_shared<CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig>())
+    , cieifpacketstatstable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfPacketStatsTable>())
+    , cieifinterfacetable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfInterfaceTable>())
+    , cieifstatuslisttable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfStatusListTable>())
+    , cieifvlstatstable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfVlStatsTable>())
+    , cieifindexpersistencetable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable>())
+    , cieifdot1qcustomethertypetable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable>())
+    , cieifutiltable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfUtilTable>())
+    , cieifdot1dbasemappingtable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable>())
+    , cieifnamemappingtable(std::make_shared<CISCOIFEXTENSIONMIB::CieIfNameMappingTable>())
 {
     ciscoifextsystemconfig->parent = this;
     cieifpacketstatstable->parent = this;
@@ -35,7 +35,7 @@ CISCOIFEXTENSIONMIB::CISCOIFEXTENSIONMIB()
     cieifdot1dbasemappingtable->parent = this;
     cieifnamemappingtable->parent = this;
 
-    yang_name = "CISCO-IF-EXTENSION-MIB"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IF-EXTENSION-MIB"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIFEXTENSIONMIB::~CISCOIFEXTENSIONMIB()
@@ -44,6 +44,7 @@ CISCOIFEXTENSIONMIB::~CISCOIFEXTENSIONMIB()
 
 bool CISCOIFEXTENSIONMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscoifextsystemconfig !=  nullptr && ciscoifextsystemconfig->has_data())
 	|| (cieifpacketstatstable !=  nullptr && cieifpacketstatstable->has_data())
 	|| (cieifinterfacetable !=  nullptr && cieifinterfacetable->has_data())
@@ -93,7 +94,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(ciscoifextsystemconfig == nullptr)
         {
-            ciscoifextsystemconfig = std::make_shared<CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig>();
+            ciscoifextsystemconfig = std::make_shared<CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig>();
         }
         return ciscoifextsystemconfig;
     }
@@ -102,7 +103,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifpacketstatstable == nullptr)
         {
-            cieifpacketstatstable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifpacketstatstable>();
+            cieifpacketstatstable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfPacketStatsTable>();
         }
         return cieifpacketstatstable;
     }
@@ -111,7 +112,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifinterfacetable == nullptr)
         {
-            cieifinterfacetable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifinterfacetable>();
+            cieifinterfacetable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfInterfaceTable>();
         }
         return cieifinterfacetable;
     }
@@ -120,7 +121,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifstatuslisttable == nullptr)
         {
-            cieifstatuslisttable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifstatuslisttable>();
+            cieifstatuslisttable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfStatusListTable>();
         }
         return cieifstatuslisttable;
     }
@@ -129,7 +130,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifvlstatstable == nullptr)
         {
-            cieifvlstatstable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifvlstatstable>();
+            cieifvlstatstable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfVlStatsTable>();
         }
         return cieifvlstatstable;
     }
@@ -138,7 +139,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifindexpersistencetable == nullptr)
         {
-            cieifindexpersistencetable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifindexpersistencetable>();
+            cieifindexpersistencetable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable>();
         }
         return cieifindexpersistencetable;
     }
@@ -147,7 +148,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifdot1qcustomethertypetable == nullptr)
         {
-            cieifdot1qcustomethertypetable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable>();
+            cieifdot1qcustomethertypetable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable>();
         }
         return cieifdot1qcustomethertypetable;
     }
@@ -156,7 +157,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifutiltable == nullptr)
         {
-            cieifutiltable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifutiltable>();
+            cieifutiltable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfUtilTable>();
         }
         return cieifutiltable;
     }
@@ -165,7 +166,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifdot1dbasemappingtable == nullptr)
         {
-            cieifdot1dbasemappingtable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable>();
+            cieifdot1dbasemappingtable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable>();
         }
         return cieifdot1dbasemappingtable;
     }
@@ -174,7 +175,7 @@ std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::get_child_by_name(const std::string
     {
         if(cieifnamemappingtable == nullptr)
         {
-            cieifnamemappingtable = std::make_shared<CISCOIFEXTENSIONMIB::Cieifnamemappingtable>();
+            cieifnamemappingtable = std::make_shared<CISCOIFEXTENSIONMIB::CieIfNameMappingTable>();
         }
         return cieifnamemappingtable;
     }
@@ -279,7 +280,7 @@ bool CISCOIFEXTENSIONMIB::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciscoifextsystemconfig()
+CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::CiscoIfExtSystemConfig()
     :
     ciesystemmtu{YType::int32, "cieSystemMtu"},
     cielinkupdownenable{YType::bits, "cieLinkUpDownEnable"},
@@ -291,15 +292,16 @@ CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciscoifextsystemconfig()
     cielinkupdownconfig{YType::bits, "cieLinkUpDownConfig"}
 {
 
-    yang_name = "ciscoIfExtSystemConfig"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoIfExtSystemConfig"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::~Ciscoifextsystemconfig()
+CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::~CiscoIfExtSystemConfig()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::has_data() const
+bool CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return ciesystemmtu.is_set
 	|| cielinkupdownenable.is_set
 	|| ciestandardlinkupdownvarbinds.is_set
@@ -310,7 +312,7 @@ bool CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::has_data() const
 	|| cielinkupdownconfig.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::has_operation() const
+bool CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciesystemmtu.yfilter)
@@ -323,21 +325,21 @@ bool CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::has_operation() const
 	|| ydk::is_set(cielinkupdownconfig.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoIfExtSystemConfig";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -354,19 +356,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Ciscoifextsy
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cieSystemMtu")
     {
@@ -414,7 +416,7 @@ void CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::set_value(const std::string & 
     }
 }
 
-void CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cieSystemMtu")
     {
@@ -450,26 +452,29 @@ void CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::set_filter(const std::string &
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieSystemMtu" || name == "cieLinkUpDownEnable" || name == "cieStandardLinkUpDownVarbinds" || name == "cieIfIndexPersistence" || name == "cieDelayedLinkUpDownNotifEnable" || name == "cieDelayedLinkUpDownNotifDelay" || name == "cieIfIndexGlobalPersistence" || name == "cieLinkUpDownConfig")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatstable()
+CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsTable()
+    :
+    cieifpacketstatsentry(this, {"ifindex"})
 {
 
-    yang_name = "cieIfPacketStatsTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfPacketStatsTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifpacketstatstable::~Cieifpacketstatstable()
+CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::~CieIfPacketStatsTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifpacketstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifpacketstatsentry.len(); index++)
     {
         if(cieifpacketstatsentry[index]->has_data())
             return true;
@@ -477,9 +482,9 @@ bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifpacketstatsentry.size(); index++)
+    for (std::size_t index=0; index<cieifpacketstatsentry.len(); index++)
     {
         if(cieifpacketstatsentry[index]->has_operation())
             return true;
@@ -487,21 +492,21 @@ bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfPacketStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -510,25 +515,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifpackets
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfPacketStatsEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry>();
         c->parent = this;
-        cieifpacketstatsentry.push_back(c);
+        cieifpacketstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifpacketstatsentry)
+    for (auto c : cieifpacketstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -539,22 +544,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifpackets
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifpacketstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifpacketstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfPacketStatsEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::Cieifpacketstatsentry()
+CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::CieIfPacketStatsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cieiflastintime{YType::uint32, "cieIfLastInTime"},
@@ -571,15 +576,16 @@ CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::Cieifpacketst
     cieifpacketdiscontinuitytime{YType::uint32, "cieIfPacketDiscontinuityTime"}
 {
 
-    yang_name = "cieIfPacketStatsEntry"; yang_parent_name = "cieIfPacketStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfPacketStatsEntry"; yang_parent_name = "cieIfPacketStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::~Cieifpacketstatsentry()
+CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::~CieIfPacketStatsEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cieiflastintime.is_set
 	|| cieiflastouttime.is_set
@@ -595,7 +601,7 @@ bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::has_data
 	|| cieifpacketdiscontinuitytime.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -613,21 +619,22 @@ bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::has_oper
 	|| ydk::is_set(cieifpacketdiscontinuitytime.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfPacketStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfPacketStatsEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cieIfPacketStatsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -649,19 +656,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifpackets
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -743,7 +750,7 @@ void CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::set_valu
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -799,26 +806,29 @@ void CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::set_filt
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cieIfLastInTime" || name == "cieIfLastOutTime" || name == "cieIfLastOutHangTime" || name == "cieIfInRuntsErrs" || name == "cieIfInGiantsErrs" || name == "cieIfInFramingErrs" || name == "cieIfInOverrunErrs" || name == "cieIfInIgnored" || name == "cieIfInAbortErrs" || name == "cieIfInputQueueDrops" || name == "cieIfOutputQueueDrops" || name == "cieIfPacketDiscontinuityTime")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfacetable()
+CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceTable()
+    :
+    cieifinterfaceentry(this, {"ifindex"})
 {
 
-    yang_name = "cieIfInterfaceTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfInterfaceTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifinterfacetable::~Cieifinterfacetable()
+CISCOIFEXTENSIONMIB::CieIfInterfaceTable::~CieIfInterfaceTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfInterfaceTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifinterfaceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifinterfaceentry.len(); index++)
     {
         if(cieifinterfaceentry[index]->has_data())
             return true;
@@ -826,9 +836,9 @@ bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfInterfaceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifinterfaceentry.size(); index++)
+    for (std::size_t index=0; index<cieifinterfaceentry.len(); index++)
     {
         if(cieifinterfaceentry[index]->has_operation())
             return true;
@@ -836,21 +846,21 @@ bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfInterfaceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfInterfaceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfInterfaceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfInterfaceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -859,25 +869,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifinterfa
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfInterfaceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfInterfaceEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry>();
         c->parent = this;
-        cieifinterfaceentry.push_back(c);
+        cieifinterfaceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifinterfacetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfInterfaceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifinterfaceentry)
+    for (auto c : cieifinterfaceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -888,22 +898,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifinterfa
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifinterfacetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfInterfaceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifinterfacetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfInterfaceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfInterfaceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfInterfaceEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifinterfaceentry()
+CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfInterfaceEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cieifresetcount{YType::uint32, "cieIfResetCount"},
@@ -927,15 +937,16 @@ CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifinterfaceent
     cieifignoreinterruptthresholdconfig{YType::boolean, "cieIfIgnoreInterruptThresholdConfig"}
 {
 
-    yang_name = "cieIfInterfaceEntry"; yang_parent_name = "cieIfInterfaceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfInterfaceEntry"; yang_parent_name = "cieIfInterfaceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::~Cieifinterfaceentry()
+CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::~CieIfInterfaceEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cieifresetcount.is_set
 	|| cieifkeepaliveenabled.is_set
@@ -958,7 +969,7 @@ bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::has_data() c
 	|| cieifignoreinterruptthresholdconfig.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -983,21 +994,22 @@ bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::has_operatio
 	|| ydk::is_set(cieifignoreinterruptthresholdconfig.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfInterfaceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfInterfaceEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cieIfInterfaceEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1026,19 +1038,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifinterfa
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1162,7 +1174,7 @@ void CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::set_value(co
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1246,26 +1258,29 @@ void CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::set_filter(c
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cieIfResetCount" || name == "cieIfKeepAliveEnabled" || name == "cieIfStateChangeReason" || name == "cieIfCarrierTransitionCount" || name == "cieIfInterfaceDiscontinuityTime" || name == "cieIfDhcpMode" || name == "cieIfMtu" || name == "cieIfContextName" || name == "cieIfOperStatusCause" || name == "cieIfOperStatusCauseDescr" || name == "cieIfSpeedReceive" || name == "cieIfHighSpeedReceive" || name == "cieIfOwner" || name == "cieIfSharedConfig" || name == "cieIfSpeedGroupConfig" || name == "cieIfTransceiverFrequencyConfig" || name == "cieIfFillPatternConfig" || name == "cieIfIgnoreBitErrorsConfig" || name == "cieIfIgnoreInterruptThresholdConfig")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslisttable()
+CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListTable()
+    :
+    cieifstatuslistentry(this, {"entphysicalindex", "cieifstatuslistindex"})
 {
 
-    yang_name = "cieIfStatusListTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfStatusListTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifstatuslisttable::~Cieifstatuslisttable()
+CISCOIFEXTENSIONMIB::CieIfStatusListTable::~CieIfStatusListTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfStatusListTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifstatuslistentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifstatuslistentry.len(); index++)
     {
         if(cieifstatuslistentry[index]->has_data())
             return true;
@@ -1273,9 +1288,9 @@ bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfStatusListTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifstatuslistentry.size(); index++)
+    for (std::size_t index=0; index<cieifstatuslistentry.len(); index++)
     {
         if(cieifstatuslistentry[index]->has_operation())
             return true;
@@ -1283,21 +1298,21 @@ bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfStatusListTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfStatusListTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfStatusListTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfStatusListTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1306,25 +1321,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifstatusl
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfStatusListTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfStatusListEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry>();
         c->parent = this;
-        cieifstatuslistentry.push_back(c);
+        cieifstatuslistentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfStatusListTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifstatuslistentry)
+    for (auto c : cieifstatuslistentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1335,22 +1350,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifstatusl
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifstatuslisttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfStatusListTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifstatuslisttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfStatusListTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfStatusListTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfStatusListEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::Cieifstatuslistentry()
+CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::CieIfStatusListEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cieifstatuslistindex{YType::uint32, "cieIfStatusListIndex"},
@@ -1360,15 +1375,16 @@ CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::Cieifstatuslist
     cieinterfaceownershipbitmap{YType::str, "cieInterfaceOwnershipBitmap"}
 {
 
-    yang_name = "cieIfStatusListEntry"; yang_parent_name = "cieIfStatusListTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfStatusListEntry"; yang_parent_name = "cieIfStatusListTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::~Cieifstatuslistentry()
+CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::~CieIfStatusListEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cieifstatuslistindex.is_set
 	|| cieinterfacesindex.is_set
@@ -1377,7 +1393,7 @@ bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::has_data()
 	|| cieinterfaceownershipbitmap.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1388,21 +1404,23 @@ bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::has_operat
 	|| ydk::is_set(cieinterfaceownershipbitmap.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfStatusListTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfStatusListEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cieIfStatusListIndex='" <<cieifstatuslistindex <<"']";
+    path_buffer << "cieIfStatusListEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cieifstatuslistindex, "cieIfStatusListIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1417,19 +1435,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifstatusl
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1469,7 +1487,7 @@ void CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::set_value(
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1497,26 +1515,29 @@ void CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::set_filter
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cieIfStatusListIndex" || name == "cieInterfacesIndex" || name == "cieInterfacesOperMode" || name == "cieInterfacesOperCause" || name == "cieInterfaceOwnershipBitmap")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatstable()
+CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsTable()
+    :
+    cieifvlstatsentry(this, {"ifindex"})
 {
 
-    yang_name = "cieIfVlStatsTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfVlStatsTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifvlstatstable::~Cieifvlstatstable()
+CISCOIFEXTENSIONMIB::CieIfVlStatsTable::~CieIfVlStatsTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfVlStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifvlstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifvlstatsentry.len(); index++)
     {
         if(cieifvlstatsentry[index]->has_data())
             return true;
@@ -1524,9 +1545,9 @@ bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfVlStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifvlstatsentry.size(); index++)
+    for (std::size_t index=0; index<cieifvlstatsentry.len(); index++)
     {
         if(cieifvlstatsentry[index]->has_operation())
             return true;
@@ -1534,21 +1555,21 @@ bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfVlStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfVlStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfVlStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfVlStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1557,25 +1578,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifvlstats
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfVlStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfVlStatsEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry>();
         c->parent = this;
-        cieifvlstatsentry.push_back(c);
+        cieifvlstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifvlstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfVlStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifvlstatsentry)
+    for (auto c : cieifvlstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1586,22 +1607,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifvlstats
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifvlstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfVlStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifvlstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfVlStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfVlStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfVlStatsEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::Cieifvlstatsentry()
+CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::CieIfVlStatsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cieifnodropvlinpkts{YType::uint64, "cieIfNoDropVlInPkts"},
@@ -1614,15 +1635,16 @@ CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::Cieifvlstatsentry()
     cieifdropvloutoctets{YType::uint64, "cieIfDropVlOutOctets"}
 {
 
-    yang_name = "cieIfVlStatsEntry"; yang_parent_name = "cieIfVlStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfVlStatsEntry"; yang_parent_name = "cieIfVlStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::~Cieifvlstatsentry()
+CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::~CieIfVlStatsEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cieifnodropvlinpkts.is_set
 	|| cieifnodropvlinoctets.is_set
@@ -1634,7 +1656,7 @@ bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::has_data() const
 	|| cieifdropvloutoctets.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1648,21 +1670,22 @@ bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::has_operation() 
 	|| ydk::is_set(cieifdropvloutoctets.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfVlStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfVlStatsEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cieIfVlStatsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1680,19 +1703,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifvlstats
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1750,7 +1773,7 @@ void CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::set_value(const 
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1790,26 +1813,29 @@ void CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::set_filter(const
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cieIfNoDropVlInPkts" || name == "cieIfNoDropVlInOctets" || name == "cieIfNoDropVlOutPkts" || name == "cieIfNoDropVlOutOctets" || name == "cieIfDropVlInPkts" || name == "cieIfDropVlInOctets" || name == "cieIfDropVlOutPkts" || name == "cieIfDropVlOutOctets")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistencetable()
+CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceTable()
+    :
+    cieifindexpersistenceentry(this, {"ifindex"})
 {
 
-    yang_name = "cieIfIndexPersistenceTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfIndexPersistenceTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::~Cieifindexpersistencetable()
+CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::~CieIfIndexPersistenceTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifindexpersistenceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifindexpersistenceentry.len(); index++)
     {
         if(cieifindexpersistenceentry[index]->has_data())
             return true;
@@ -1817,9 +1843,9 @@ bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifindexpersistenceentry.size(); index++)
+    for (std::size_t index=0; index<cieifindexpersistenceentry.len(); index++)
     {
         if(cieifindexpersistenceentry[index]->has_operation())
             return true;
@@ -1827,21 +1853,21 @@ bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfIndexPersistenceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1850,25 +1876,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifindexpe
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfIndexPersistenceEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry>();
         c->parent = this;
-        cieifindexpersistenceentry.push_back(c);
+        cieifindexpersistenceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifindexpersistenceentry)
+    for (auto c : cieifindexpersistenceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1879,43 +1905,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifindexpe
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfIndexPersistenceEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::Cieifindexpersistenceentry()
+CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::CieIfIndexPersistenceEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cieifindexpersistenceenabled{YType::boolean, "cieIfIndexPersistenceEnabled"},
     cieifindexpersistencecontrol{YType::enumeration, "cieIfIndexPersistenceControl"}
 {
 
-    yang_name = "cieIfIndexPersistenceEntry"; yang_parent_name = "cieIfIndexPersistenceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfIndexPersistenceEntry"; yang_parent_name = "cieIfIndexPersistenceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::~Cieifindexpersistenceentry()
+CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::~CieIfIndexPersistenceEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cieifindexpersistenceenabled.is_set
 	|| cieifindexpersistencecontrol.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1923,21 +1950,22 @@ bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
 	|| ydk::is_set(cieifindexpersistencecontrol.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfIndexPersistenceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfIndexPersistenceEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cieIfIndexPersistenceEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1949,19 +1977,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifindexpe
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1983,7 +2011,7 @@ void CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1999,26 +2027,29 @@ void CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cieIfIndexPersistenceEnabled" || name == "cieIfIndexPersistenceControl")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypetable()
+CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeTable()
+    :
+    cieifdot1qcustomethertypeentry(this, {"ifindex"})
 {
 
-    yang_name = "cieIfDot1qCustomEtherTypeTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfDot1qCustomEtherTypeTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::~Cieifdot1Qcustomethertypetable()
+CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::~CieIfDot1qCustomEtherTypeTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry.len(); index++)
     {
         if(cieifdot1qcustomethertypeentry[index]->has_data())
             return true;
@@ -2026,9 +2057,9 @@ bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry.size(); index++)
+    for (std::size_t index=0; index<cieifdot1qcustomethertypeentry.len(); index++)
     {
         if(cieifdot1qcustomethertypeentry[index]->has_operation())
             return true;
@@ -2036,21 +2067,21 @@ bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfDot1qCustomEtherTypeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2059,25 +2090,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Qcu
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfDot1qCustomEtherTypeEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry>();
         c->parent = this;
-        cieifdot1qcustomethertypeentry.push_back(c);
+        cieifdot1qcustomethertypeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifdot1qcustomethertypeentry)
+    for (auto c : cieifdot1qcustomethertypeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2088,43 +2119,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Qcu
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfDot1qCustomEtherTypeEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::Cieifdot1Qcustomethertypeentry()
+CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::CieIfDot1qCustomEtherTypeEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cieifdot1qcustomadminethertype{YType::int32, "cieIfDot1qCustomAdminEtherType"},
     cieifdot1qcustomoperethertype{YType::int32, "cieIfDot1qCustomOperEtherType"}
 {
 
-    yang_name = "cieIfDot1qCustomEtherTypeEntry"; yang_parent_name = "cieIfDot1qCustomEtherTypeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfDot1qCustomEtherTypeEntry"; yang_parent_name = "cieIfDot1qCustomEtherTypeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::~Cieifdot1Qcustomethertypeentry()
+CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::~CieIfDot1qCustomEtherTypeEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cieifdot1qcustomadminethertype.is_set
 	|| cieifdot1qcustomoperethertype.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2132,21 +2164,22 @@ bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethert
 	|| ydk::is_set(cieifdot1qcustomoperethertype.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfDot1qCustomEtherTypeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfDot1qCustomEtherTypeEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cieIfDot1qCustomEtherTypeEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2158,19 +2191,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Qcu
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2192,7 +2225,7 @@ void CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethert
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2208,26 +2241,29 @@ void CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethert
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cieIfDot1qCustomAdminEtherType" || name == "cieIfDot1qCustomOperEtherType")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutiltable()
+CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilTable()
+    :
+    cieifutilentry(this, {"ifindex"})
 {
 
-    yang_name = "cieIfUtilTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfUtilTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifutiltable::~Cieifutiltable()
+CISCOIFEXTENSIONMIB::CieIfUtilTable::~CieIfUtilTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifutiltable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfUtilTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifutilentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifutilentry.len(); index++)
     {
         if(cieifutilentry[index]->has_data())
             return true;
@@ -2235,9 +2271,9 @@ bool CISCOIFEXTENSIONMIB::Cieifutiltable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifutiltable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfUtilTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifutilentry.size(); index++)
+    for (std::size_t index=0; index<cieifutilentry.len(); index++)
     {
         if(cieifutilentry[index]->has_operation())
             return true;
@@ -2245,21 +2281,21 @@ bool CISCOIFEXTENSIONMIB::Cieifutiltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifutiltable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfUtilTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifutiltable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfUtilTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfUtilTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifutiltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfUtilTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2268,25 +2304,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifutiltab
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifutiltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfUtilTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfUtilEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry>();
         c->parent = this;
-        cieifutilentry.push_back(c);
+        cieifutilentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifutiltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfUtilTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifutilentry)
+    for (auto c : cieifutilentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2297,22 +2333,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifutiltab
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifutiltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfUtilTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifutiltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfUtilTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifutiltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfUtilTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfUtilEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::Cieifutilentry()
+CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::CieIfUtilEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cieifinpktrate{YType::uint64, "cieIfInPktRate"},
@@ -2322,15 +2358,16 @@ CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::Cieifutilentry()
     cieifinterval{YType::uint32, "cieIfInterval"}
 {
 
-    yang_name = "cieIfUtilEntry"; yang_parent_name = "cieIfUtilTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfUtilEntry"; yang_parent_name = "cieIfUtilTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::~Cieifutilentry()
+CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::~CieIfUtilEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cieifinpktrate.is_set
 	|| cieifinoctetrate.is_set
@@ -2339,7 +2376,7 @@ bool CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::has_data() const
 	|| cieifinterval.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2350,21 +2387,22 @@ bool CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::has_operation() const
 	|| ydk::is_set(cieifinterval.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfUtilTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfUtilEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cieIfUtilEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2379,19 +2417,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifutiltab
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2431,7 +2469,7 @@ void CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::set_value(const std::s
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2459,26 +2497,29 @@ void CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::set_filter(const std::
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cieIfInPktRate" || name == "cieIfInOctetRate" || name == "cieIfOutPktRate" || name == "cieIfOutOctetRate" || name == "cieIfInterval")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingtable()
+CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingTable()
+    :
+    cieifdot1dbasemappingentry(this, {"ifindex"})
 {
 
-    yang_name = "cieIfDot1dBaseMappingTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfDot1dBaseMappingTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::~Cieifdot1Dbasemappingtable()
+CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::~CieIfDot1dBaseMappingTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifdot1dbasemappingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifdot1dbasemappingentry.len(); index++)
     {
         if(cieifdot1dbasemappingentry[index]->has_data())
             return true;
@@ -2486,9 +2527,9 @@ bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifdot1dbasemappingentry.size(); index++)
+    for (std::size_t index=0; index<cieifdot1dbasemappingentry.len(); index++)
     {
         if(cieifdot1dbasemappingentry[index]->has_operation())
             return true;
@@ -2496,21 +2537,21 @@ bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfDot1dBaseMappingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2519,25 +2560,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Dba
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfDot1dBaseMappingEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry>();
         c->parent = this;
-        cieifdot1dbasemappingentry.push_back(c);
+        cieifdot1dbasemappingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifdot1dbasemappingentry)
+    for (auto c : cieifdot1dbasemappingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2548,62 +2589,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Dba
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfDot1dBaseMappingEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::Cieifdot1Dbasemappingentry()
+CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::CieIfDot1dBaseMappingEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cieifdot1dbasemappingport{YType::int32, "cieIfDot1dBaseMappingPort"}
 {
 
-    yang_name = "cieIfDot1dBaseMappingEntry"; yang_parent_name = "cieIfDot1dBaseMappingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfDot1dBaseMappingEntry"; yang_parent_name = "cieIfDot1dBaseMappingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::~Cieifdot1Dbasemappingentry()
+CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::~CieIfDot1dBaseMappingEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cieifdot1dbasemappingport.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
 	|| ydk::is_set(cieifdot1dbasemappingport.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfDot1dBaseMappingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfDot1dBaseMappingEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cieIfDot1dBaseMappingEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2614,19 +2657,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifdot1Dba
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2642,7 +2685,7 @@ void CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2654,26 +2697,29 @@ void CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cieIfDot1dBaseMappingPort")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingtable()
+CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingTable()
+    :
+    cieifnamemappingentry(this, {"cieifname"})
 {
 
-    yang_name = "cieIfNameMappingTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfNameMappingTable"; yang_parent_name = "CISCO-IF-EXTENSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifnamemappingtable::~Cieifnamemappingtable()
+CISCOIFEXTENSIONMIB::CieIfNameMappingTable::~CieIfNameMappingTable()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfNameMappingTable::has_data() const
 {
-    for (std::size_t index=0; index<cieifnamemappingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cieifnamemappingentry.len(); index++)
     {
         if(cieifnamemappingentry[index]->has_data())
             return true;
@@ -2681,9 +2727,9 @@ bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::has_data() const
     return false;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfNameMappingTable::has_operation() const
 {
-    for (std::size_t index=0; index<cieifnamemappingentry.size(); index++)
+    for (std::size_t index=0; index<cieifnamemappingentry.len(); index++)
     {
         if(cieifnamemappingentry[index]->has_operation())
             return true;
@@ -2691,21 +2737,21 @@ bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfNameMappingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfNameMappingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cieIfNameMappingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfNameMappingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2714,25 +2760,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifnamemap
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfNameMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cieIfNameMappingEntry")
     {
-        auto c = std::make_shared<CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry>();
+        auto c = std::make_shared<CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry>();
         c->parent = this;
-        cieifnamemappingentry.push_back(c);
+        cieifnamemappingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfNameMappingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cieifnamemappingentry)
+    for (auto c : cieifnamemappingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2743,62 +2789,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifnamemap
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifnamemappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfNameMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIFEXTENSIONMIB::Cieifnamemappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfNameMappingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfNameMappingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfNameMappingEntry")
         return true;
     return false;
 }
 
-CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::Cieifnamemappingentry()
+CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::CieIfNameMappingEntry()
     :
     cieifname{YType::str, "cieIfName"},
     cieifindex{YType::int32, "cieIfIndex"}
 {
 
-    yang_name = "cieIfNameMappingEntry"; yang_parent_name = "cieIfNameMappingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cieIfNameMappingEntry"; yang_parent_name = "cieIfNameMappingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::~Cieifnamemappingentry()
+CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::~CieIfNameMappingEntry()
 {
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::has_data() const
+bool CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cieifname.is_set
 	|| cieifindex.is_set;
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::has_operation() const
+bool CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cieifname.yfilter)
 	|| ydk::is_set(cieifindex.yfilter);
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::get_absolute_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IF-EXTENSION-MIB:CISCO-IF-EXTENSION-MIB/cieIfNameMappingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::get_segment_path() const
+std::string CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cieIfNameMappingEntry" <<"[cieIfName='" <<cieifname <<"']";
+    path_buffer << "cieIfNameMappingEntry";
+    ADD_KEY_TOKEN(cieifname, "cieIfName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2809,19 +2857,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIFEXTENSIONMIB::Cieifnamemap
 
 }
 
-std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cieIfName")
     {
@@ -2837,7 +2885,7 @@ void CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::set_valu
     }
 }
 
-void CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cieIfName")
     {
@@ -2849,7 +2897,7 @@ void CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::set_filt
     }
 }
 
-bool CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cieIfName" || name == "cieIfIndex")
         return true;
@@ -2860,26 +2908,26 @@ const Enum::YLeaf IfIndexPersistenceState::disable {1, "disable"};
 const Enum::YLeaf IfIndexPersistenceState::enable {2, "enable"};
 const Enum::YLeaf IfIndexPersistenceState::global {3, "global"};
 
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciestandardlinkupdownvarbinds::standard {1, "standard"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciestandardlinkupdownvarbinds::additional {2, "additional"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciestandardlinkupdownvarbinds::other {3, "other"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::CieStandardLinkUpDownVarbinds::standard {1, "standard"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::CieStandardLinkUpDownVarbinds::additional {2, "additional"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::CieStandardLinkUpDownVarbinds::other {3, "other"};
 
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifsharedconfig::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifsharedconfig::ownerDedicated {2, "ownerDedicated"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifsharedconfig::ownerShared {3, "ownerShared"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifsharedconfig::sharedOnly {4, "sharedOnly"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSharedConfig::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSharedConfig::ownerDedicated {2, "ownerDedicated"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSharedConfig::ownerShared {3, "ownerShared"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSharedConfig::sharedOnly {4, "sharedOnly"};
 
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifspeedgroupconfig::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifspeedgroupconfig::tenG {2, "tenG"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifspeedgroupconfig::oneTwoFourEightG {3, "oneTwoFourEightG"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifspeedgroupconfig::twoFourEightSixteenG {4, "twoFourEightSixteenG"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSpeedGroupConfig::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSpeedGroupConfig::tenG {2, "tenG"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSpeedGroupConfig::oneTwoFourEightG {3, "oneTwoFourEightG"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSpeedGroupConfig::twoFourEightSixteenG {4, "twoFourEightSixteenG"};
 
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiftransceiverfrequencyconfig::notApplicable {1, "notApplicable"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiftransceiverfrequencyconfig::fibreChannel {2, "fibreChannel"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiftransceiverfrequencyconfig::ethernet {3, "ethernet"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfTransceiverFrequencyConfig::notApplicable {1, "notApplicable"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfTransceiverFrequencyConfig::fibreChannel {2, "fibreChannel"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfTransceiverFrequencyConfig::ethernet {3, "ethernet"};
 
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiffillpatternconfig::arbff8G {1, "arbff8G"};
-const Enum::YLeaf CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiffillpatternconfig::idle8G {2, "idle8G"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfFillPatternConfig::arbff8G {1, "arbff8G"};
+const Enum::YLeaf CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfFillPatternConfig::idle8G {2, "idle8G"};
 
 
 }

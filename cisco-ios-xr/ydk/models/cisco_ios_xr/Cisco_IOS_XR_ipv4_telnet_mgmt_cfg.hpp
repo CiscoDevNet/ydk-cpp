@@ -57,7 +57,7 @@ class Telnet::Vrfs : public ydk::Entity
 
         class Vrf; //type: Telnet::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_telnet_mgmt_cfg::Telnet::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Telnet::Vrfs
 

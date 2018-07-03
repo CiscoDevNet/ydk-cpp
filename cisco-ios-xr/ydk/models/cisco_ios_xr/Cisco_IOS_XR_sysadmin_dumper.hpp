@@ -33,7 +33,7 @@ class Exception : public ydk::Entity
 
         class Choice; //type: Exception::Choice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_dumper::Exception::Choice> > choice;
+        ydk::YList choice;
         
 }; // Exception
 

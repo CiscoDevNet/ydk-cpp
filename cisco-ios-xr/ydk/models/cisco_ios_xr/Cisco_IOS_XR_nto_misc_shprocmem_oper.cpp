@@ -17,7 +17,7 @@ ProcessesMemory::ProcessesMemory()
 {
     nodes->parent = this;
 
-    yang_name = "processes-memory"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shprocmem-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "processes-memory"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shprocmem-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ProcessesMemory::~ProcessesMemory()
@@ -26,6 +26,7 @@ ProcessesMemory::~ProcessesMemory()
 
 bool ProcessesMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool ProcessesMemory::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ProcessesMemory::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "processes-memory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "processes-memory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessesMemory::Nodes::~Nodes()
@@ -129,7 +132,8 @@ ProcessesMemory::Nodes::~Nodes()
 
 bool ProcessesMemory::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool ProcessesMemory::Nodes::has_data() const
 
 bool ProcessesMemory::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::get_child_by_name(const std::str
     {
         auto c = std::make_shared<ProcessesMemory::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool ProcessesMemory::Nodes::has_leaf_or_child_of_name(const std::string & name)
 ProcessesMemory::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     job_ids(std::make_shared<ProcessesMemory::Nodes::Node::JobIds>())
 {
     job_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ProcessesMemory::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ ProcessesMemory::Nodes::Node::~Node()
 
 bool ProcessesMemory::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (job_ids !=  nullptr && job_ids->has_data());
 }
@@ -252,7 +257,8 @@ std::string ProcessesMemory::Nodes::Node::get_absolute_path() const
 std::string ProcessesMemory::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool ProcessesMemory::Nodes::Node::has_leaf_or_child_of_name(const std::string &
 }
 
 ProcessesMemory::Nodes::Node::JobIds::JobIds()
+    :
+    job_id(this, {"job_id"})
 {
 
-    yang_name = "job-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "job-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ProcessesMemory::Nodes::Node::JobIds::~JobIds()
@@ -329,7 +337,8 @@ ProcessesMemory::Nodes::Node::JobIds::~JobIds()
 
 bool ProcessesMemory::Nodes::Node::JobIds::has_data() const
 {
-    for (std::size_t index=0; index<job_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<job_id.len(); index++)
     {
         if(job_id[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool ProcessesMemory::Nodes::Node::JobIds::has_data() const
 
 bool ProcessesMemory::Nodes::Node::JobIds::has_operation() const
 {
-    for (std::size_t index=0; index<job_id.size(); index++)
+    for (std::size_t index=0; index<job_id.len(); index++)
     {
         if(job_id[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> ProcessesMemory::Nodes::Node::JobIds::get_child_by_name(
     {
         auto c = std::make_shared<ProcessesMemory::Nodes::Node::JobIds::JobId>();
         c->parent = this;
-        job_id.push_back(c);
+        job_id.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> ProcessesMemory::Nodes::Node::Job
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : job_id)
+    for (auto c : job_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -409,7 +418,7 @@ bool ProcessesMemory::Nodes::Node::JobIds::has_leaf_or_child_of_name(const std::
 
 ProcessesMemory::Nodes::Node::JobIds::JobId::JobId()
     :
-    job_id{YType::int32, "job-id"},
+    job_id{YType::uint32, "job-id"},
     name{YType::str, "name"},
     jid{YType::uint32, "jid"},
     text_seg_size{YType::uint32, "text-seg-size"},
@@ -418,7 +427,7 @@ ProcessesMemory::Nodes::Node::JobIds::JobId::JobId()
     malloc_size{YType::uint32, "malloc-size"}
 {
 
-    yang_name = "job-id"; yang_parent_name = "job-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "job-id"; yang_parent_name = "job-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ProcessesMemory::Nodes::Node::JobIds::JobId::~JobId()
@@ -427,6 +436,7 @@ ProcessesMemory::Nodes::Node::JobIds::JobId::~JobId()
 
 bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_data() const
 {
+    if (is_presence_container) return true;
     return job_id.is_set
 	|| name.is_set
 	|| jid.is_set
@@ -451,7 +461,8 @@ bool ProcessesMemory::Nodes::Node::JobIds::JobId::has_operation() const
 std::string ProcessesMemory::Nodes::Node::JobIds::JobId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "job-id" <<"[job-id='" <<job_id <<"']";
+    path_buffer << "job-id";
+    ADD_KEY_TOKEN(job_id, "job-id");
     return path_buffer.str();
 }
 

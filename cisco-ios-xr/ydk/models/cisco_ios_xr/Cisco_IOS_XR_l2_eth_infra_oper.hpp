@@ -58,7 +58,7 @@ class MacAccounting::Interfaces : public ydk::Entity
 
         class Interface; //type: MacAccounting::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::MacAccounting::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MacAccounting::Interfaces
 
@@ -86,8 +86,8 @@ class MacAccounting::Interfaces::Interface : public ydk::Entity
         class EgressStatistic; //type: MacAccounting::Interfaces::Interface::EgressStatistic
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::MacAccounting::Interfaces::Interface::State> state;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::MacAccounting::Interfaces::Interface::IngressStatistic> > ingress_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::MacAccounting::Interfaces::Interface::EgressStatistic> > egress_statistic;
+        ydk::YList ingress_statistic;
+        ydk::YList egress_statistic;
         
 }; // MacAccounting::Interfaces::Interface
 
@@ -209,7 +209,7 @@ class Vlan::Nodes : public ydk::Entity
 
         class Node; //type: Vlan::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Vlan::Nodes
 
@@ -261,7 +261,7 @@ class Vlan::Nodes::Node::Trunks : public ydk::Entity
 
         class Trunk; //type: Vlan::Nodes::Node::Trunks::Trunk
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Trunks::Trunk> > trunk;
+        ydk::YList trunk;
         
 }; // Vlan::Nodes::Node::Trunks
 
@@ -419,7 +419,7 @@ class Vlan::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: Vlan::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Vlan::Nodes::Node::Interfaces
 
@@ -479,11 +479,11 @@ class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails : public yd
         ydk::YLeaf dot1ad_outer_tag; //type: uint16
         class Stack; //type: Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack
         class ServiceInstanceDetails; //type: Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails
-        class Dot1AdDot1QStack; //type: Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack
+        class Dot1adDot1qStack; //type: Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Stack> stack;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails> service_instance_details;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack> dot1ad_dot1q_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack> dot1ad_dot1q_stack;
         
 }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails
 
@@ -538,8 +538,8 @@ class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceIns
         class Pushe; //type: Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack> local_traffic_stack;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch> > tags_to_match;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe> > pushe;
+        ydk::YList tags_to_match;
+        ydk::YList pushe;
         
 }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails
 
@@ -562,7 +562,7 @@ class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceIns
 
         class LocalTrafficTag; //type: Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag> > local_traffic_tag;
+        ydk::YList local_traffic_tag;
         
 }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
 
@@ -609,7 +609,7 @@ class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceIns
         ydk::YLeaf priority; //type: EfpTagPriority
         class VlanRange; //type: Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange> > vlan_range;
+        ydk::YList vlan_range;
         
 }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
 
@@ -658,11 +658,11 @@ class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceIns
 }; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::ServiceInstanceDetails::Pushe
 
 
-class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack : public ydk::Entity
+class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack : public ydk::Entity
 {
     public:
-        Dot1AdDot1QStack();
-        ~Dot1AdDot1QStack();
+        Dot1adDot1qStack();
+        ~Dot1adDot1qStack();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -677,7 +677,7 @@ class Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1
         ydk::YLeaf outer_tag; //type: uint16
         ydk::YLeaf second_tag; //type: uint16
 
-}; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1AdDot1QStack
+}; // Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Dot1adDot1qStack
 
 
 class Vlan::Nodes::Node::TagAllocations : public ydk::Entity
@@ -698,7 +698,7 @@ class Vlan::Nodes::Node::TagAllocations : public ydk::Entity
 
         class TagAllocation; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation> > tag_allocation;
+        ydk::YList tag_allocation;
         
 }; // Vlan::Nodes::Node::TagAllocations
 
@@ -760,11 +760,11 @@ class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails : p
         ydk::YLeaf dot1ad_outer_tag; //type: uint16
         class Stack; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack
         class ServiceInstanceDetails; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails
-        class Dot1AdDot1QStack; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack
+        class Dot1adDot1qStack; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Stack> stack;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails> service_instance_details;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack> dot1ad_dot1q_stack;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack> dot1ad_dot1q_stack;
         
 }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails
 
@@ -819,8 +819,8 @@ class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Se
         class Pushe; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack> local_traffic_stack;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch> > tags_to_match;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe> > pushe;
+        ydk::YList tags_to_match;
+        ydk::YList pushe;
         
 }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails
 
@@ -843,7 +843,7 @@ class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Se
 
         class LocalTrafficTag; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack::LocalTrafficTag> > local_traffic_tag;
+        ydk::YList local_traffic_tag;
         
 }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::LocalTrafficStack
 
@@ -890,7 +890,7 @@ class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Se
         ydk::YLeaf priority; //type: EfpTagPriority
         class VlanRange; //type: Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch::VlanRange> > vlan_range;
+        ydk::YList vlan_range;
         
 }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::TagsToMatch
 
@@ -939,11 +939,11 @@ class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Se
 }; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::ServiceInstanceDetails::Pushe
 
 
-class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack : public ydk::Entity
+class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack : public ydk::Entity
 {
     public:
-        Dot1AdDot1QStack();
-        ~Dot1AdDot1QStack();
+        Dot1adDot1qStack();
+        ~Dot1adDot1qStack();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -958,7 +958,7 @@ class Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Do
         ydk::YLeaf outer_tag; //type: uint16
         ydk::YLeaf second_tag; //type: uint16
 
-}; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1AdDot1QStack
+}; // Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetails::Dot1adDot1qStack
 
 class EthernetEncapsulation : public ydk::Entity
 {
@@ -1007,7 +1007,7 @@ class EthernetEncapsulation::Nodes : public ydk::Entity
 
         class Node; //type: EthernetEncapsulation::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::EthernetEncapsulation::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // EthernetEncapsulation::Nodes
 
@@ -1055,7 +1055,7 @@ class EthernetEncapsulation::Nodes::Node::UnicastMacFilters : public ydk::Entity
 
         class UnicastMacFilter; //type: EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter> > unicast_mac_filter;
+        ydk::YList unicast_mac_filter;
         
 }; // EthernetEncapsulation::Nodes::Node::UnicastMacFilters
 
@@ -1079,7 +1079,7 @@ class EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter : 
         ydk::YLeaf interface_name; //type: string
         class UnicastFilter; //type: EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2_eth_infra_oper::EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter> > unicast_filter;
+        ydk::YList unicast_filter;
         
 }; // EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter
 
@@ -1105,47 +1105,6 @@ class EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::U
 
 }; // EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter
 
-class VlanService : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlan_service_l2;
-        static const ydk::Enum::YLeaf vlan_service_l3;
-
-};
-
-class EfpPayloadEtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf payload_ethertype_any;
-        static const ydk::Enum::YLeaf payload_ethertype_ip;
-        static const ydk::Enum::YLeaf payload_ethertype_pppoe;
-
-};
-
-class EfpTagPriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf priority0;
-        static const ydk::Enum::YLeaf priority1;
-        static const ydk::Enum::YLeaf priority2;
-        static const ydk::Enum::YLeaf priority3;
-        static const ydk::Enum::YLeaf priority4;
-        static const ydk::Enum::YLeaf priority5;
-        static const ydk::Enum::YLeaf priority6;
-        static const ydk::Enum::YLeaf priority7;
-        static const ydk::Enum::YLeaf priority_any;
-
-};
-
-class EfpTagEtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf untagged;
-        static const ydk::Enum::YLeaf dot1q;
-        static const ydk::Enum::YLeaf dot1ad;
-
-};
-
 class VlanEncaps : public ydk::Enum
 {
     public:
@@ -1162,22 +1121,11 @@ class VlanEncaps : public ydk::Enum
 
 };
 
-class EthFiltering : public ydk::Enum
+class EthCapsUcastMacMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_filtering;
-        static const ydk::Enum::YLeaf dot1q_filtering;
-        static const ydk::Enum::YLeaf dot1ad_filtering;
-        static const ydk::Enum::YLeaf two_port_mac_relay_filtering;
-
-};
-
-class VlanQinqOuterEtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ether_type8100;
-        static const ydk::Enum::YLeaf ether_type9100;
-        static const ydk::Enum::YLeaf ether_type9200;
+        static const ydk::Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf permit;
 
 };
 
@@ -1206,11 +1154,63 @@ class ImStateEnum : public ydk::Enum
 
 };
 
-class EthCapsUcastMacMode : public ydk::Enum
+class EfpTagPriority : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf reserved;
-        static const ydk::Enum::YLeaf permit;
+        static const ydk::Enum::YLeaf priority0;
+        static const ydk::Enum::YLeaf priority1;
+        static const ydk::Enum::YLeaf priority2;
+        static const ydk::Enum::YLeaf priority3;
+        static const ydk::Enum::YLeaf priority4;
+        static const ydk::Enum::YLeaf priority5;
+        static const ydk::Enum::YLeaf priority6;
+        static const ydk::Enum::YLeaf priority7;
+        static const ydk::Enum::YLeaf priority_any;
+
+};
+
+class EfpTagEtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf untagged;
+        static const ydk::Enum::YLeaf dot1q;
+        static const ydk::Enum::YLeaf dot1ad;
+
+};
+
+class VlanService : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vlan_service_l2;
+        static const ydk::Enum::YLeaf vlan_service_l3;
+
+};
+
+class EfpPayloadEtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf payload_ethertype_any;
+        static const ydk::Enum::YLeaf payload_ethertype_ip;
+        static const ydk::Enum::YLeaf payload_ethertype_pppoe;
+
+};
+
+class VlanQinqOuterEtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ether_type8100;
+        static const ydk::Enum::YLeaf ether_type9100;
+        static const ydk::Enum::YLeaf ether_type9200;
+
+};
+
+class EthFiltering : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_filtering;
+        static const ydk::Enum::YLeaf dot1q_filtering;
+        static const ydk::Enum::YLeaf dot1ad_filtering;
+        static const ydk::Enum::YLeaf two_port_mac_relay_filtering;
 
 };
 

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ipv6_nd_cfg {
 Ipv6Neighbor::Ipv6Neighbor()
     :
     scavenge_timeout{YType::uint32, "scavenge-timeout"}
-    	,
+        ,
     neighbors(std::make_shared<Ipv6Neighbor::Neighbors>())
 {
     neighbors->parent = this;
 
-    yang_name = "ipv6-neighbor"; yang_parent_name = "Cisco-IOS-XR-ipv6-nd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-neighbor"; yang_parent_name = "Cisco-IOS-XR-ipv6-nd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6Neighbor::~Ipv6Neighbor()
@@ -28,6 +28,7 @@ Ipv6Neighbor::~Ipv6Neighbor()
 
 bool Ipv6Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return scavenge_timeout.is_set
 	|| (neighbors !=  nullptr && neighbors->has_data());
 }
@@ -133,9 +134,11 @@ bool Ipv6Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipv6Neighbor::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor_address", "interface_name"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "ipv6-neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "ipv6-neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Neighbor::Neighbors::~Neighbors()
@@ -144,7 +147,8 @@ Ipv6Neighbor::Neighbors::~Neighbors()
 
 bool Ipv6Neighbor::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -154,7 +158,7 @@ bool Ipv6Neighbor::Neighbors::has_data() const
 
 bool Ipv6Neighbor::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -191,7 +195,7 @@ std::shared_ptr<Entity> Ipv6Neighbor::Neighbors::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Ipv6Neighbor::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -203,7 +207,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Neighbor::Neighbors::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -238,7 +242,7 @@ Ipv6Neighbor::Neighbors::Neighbor::Neighbor()
     encapsulation{YType::enumeration, "encapsulation"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Neighbor::Neighbors::Neighbor::~Neighbor()
@@ -247,6 +251,7 @@ Ipv6Neighbor::Neighbors::Neighbor::~Neighbor()
 
 bool Ipv6Neighbor::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set
 	|| interface_name.is_set
 	|| zone.is_set
@@ -274,7 +279,9 @@ std::string Ipv6Neighbor::Neighbors::Neighbor::get_absolute_path() const
 std::string Ipv6Neighbor::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-address='" <<neighbor_address <<"']" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -369,9 +376,6 @@ bool Ipv6Neighbor::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-const Enum::YLeaf Ipv6srpEncapsulation::srpa {5, "srpa"};
-const Enum::YLeaf Ipv6srpEncapsulation::srpb {6, "srpb"};
-
 const Enum::YLeaf Ipv6ndMonth::january {0, "january"};
 const Enum::YLeaf Ipv6ndMonth::february {1, "february"};
 const Enum::YLeaf Ipv6ndMonth::march {2, "march"};
@@ -388,6 +392,9 @@ const Enum::YLeaf Ipv6ndMonth::december {11, "december"};
 const Enum::YLeaf Ipv6NdRouterPref::high {1, "high"};
 const Enum::YLeaf Ipv6NdRouterPref::medium {2, "medium"};
 const Enum::YLeaf Ipv6NdRouterPref::low {3, "low"};
+
+const Enum::YLeaf Ipv6srpEncapsulation::srpa {5, "srpa"};
+const Enum::YLeaf Ipv6srpEncapsulation::srpb {6, "srpb"};
 
 
 }

@@ -11,6 +11,26 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace cisco_pw {
 
+PwSignalingProtocolType::PwSignalingProtocolType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-type")
+{
+
+}
+
+PwSignalingProtocolType::~PwSignalingProtocolType()
+{
+}
+
+PwLoadBalanceType::PwLoadBalanceType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-load-balance-type")
+{
+
+}
+
+PwLoadBalanceType::~PwLoadBalanceType()
+{
+}
+
 PwEncapsulationType::PwEncapsulationType()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encapsulation-type")
 {
@@ -31,26 +51,6 @@ PwVcType::~PwVcType()
 {
 }
 
-PwLoadBalanceType::PwLoadBalanceType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-load-balance-type")
-{
-
-}
-
-PwLoadBalanceType::~PwLoadBalanceType()
-{
-}
-
-PwSignalingProtocolType::PwSignalingProtocolType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-type")
-{
-
-}
-
-PwSignalingProtocolType::~PwSignalingProtocolType()
-{
-}
-
 PwSequencingType::PwSequencingType()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-type")
 {
@@ -64,14 +64,14 @@ PwSequencingType::~PwSequencingType()
 PseudowireConfig::PseudowireConfig()
     :
     global(std::make_shared<PseudowireConfig::Global>())
-	,pw_templates(std::make_shared<PseudowireConfig::PwTemplates>())
-	,pw_static_oam_classes(std::make_shared<PseudowireConfig::PwStaticOamClasses>())
+    , pw_templates(std::make_shared<PseudowireConfig::PwTemplates>())
+    , pw_static_oam_classes(std::make_shared<PseudowireConfig::PwStaticOamClasses>())
 {
     global->parent = this;
     pw_templates->parent = this;
     pw_static_oam_classes->parent = this;
 
-    yang_name = "pseudowire-config"; yang_parent_name = "cisco-pw"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pseudowire-config"; yang_parent_name = "cisco-pw"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PseudowireConfig::~PseudowireConfig()
@@ -80,6 +80,7 @@ PseudowireConfig::~PseudowireConfig()
 
 bool PseudowireConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (pw_templates !=  nullptr && pw_templates->has_data())
 	|| (pw_static_oam_classes !=  nullptr && pw_static_oam_classes->has_data());
@@ -214,7 +215,7 @@ PseudowireConfig::Global::Global()
     vc_state_notification_rate{YType::uint32, "vc-state-notification-rate"}
 {
 
-    yang_name = "global"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PseudowireConfig::Global::~Global()
@@ -223,6 +224,7 @@ PseudowireConfig::Global::~Global()
 
 bool PseudowireConfig::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_grouping.is_set
 	|| pw_oam_refresh_transmit.is_set
 	|| pw_status.is_set
@@ -372,9 +374,11 @@ bool PseudowireConfig::Global::has_leaf_or_child_of_name(const std::string & nam
 }
 
 PseudowireConfig::PwTemplates::PwTemplates()
+    :
+    pw_template(this, {"name"})
 {
 
-    yang_name = "pw-templates"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pw-templates"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PseudowireConfig::PwTemplates::~PwTemplates()
@@ -383,7 +387,8 @@ PseudowireConfig::PwTemplates::~PwTemplates()
 
 bool PseudowireConfig::PwTemplates::has_data() const
 {
-    for (std::size_t index=0; index<pw_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pw_template.len(); index++)
     {
         if(pw_template[index]->has_data())
             return true;
@@ -393,7 +398,7 @@ bool PseudowireConfig::PwTemplates::has_data() const
 
 bool PseudowireConfig::PwTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<pw_template.size(); index++)
+    for (std::size_t index=0; index<pw_template.len(); index++)
     {
         if(pw_template[index]->has_operation())
             return true;
@@ -430,7 +435,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwTemplates::get_child_by_name(const s
     {
         auto c = std::make_shared<PseudowireConfig::PwTemplates::PwTemplate>();
         c->parent = this;
-        pw_template.push_back(c);
+        pw_template.append(c);
         return c;
     }
 
@@ -442,7 +447,7 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwTemplates::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pw_template)
+    for (auto c : pw_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -479,14 +484,14 @@ PseudowireConfig::PwTemplates::PwTemplate::PwTemplate()
     source_ip{YType::str, "source-ip"},
     tag_rewrite_ingress_vlan{YType::uint16, "tag-rewrite-ingress-vlan"},
     mac_withdraw{YType::boolean, "mac-withdraw"}
-    	,
+        ,
     load_balance(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance>())
-	,preferred_path(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>())
-	,sequencing(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>())
-	,vccv(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>())
-	,switchover_delay(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>())
-	,status(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>())
-	,port_profile_spec(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>())
+    , preferred_path(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PreferredPath>())
+    , sequencing(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Sequencing>())
+    , vccv(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Vccv>())
+    , switchover_delay(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay>())
+    , status(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::Status>())
+    , port_profile_spec(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec>())
 {
     load_balance->parent = this;
     preferred_path->parent = this;
@@ -496,7 +501,7 @@ PseudowireConfig::PwTemplates::PwTemplate::PwTemplate()
     status->parent = this;
     port_profile_spec->parent = this;
 
-    yang_name = "pw-template"; yang_parent_name = "pw-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pw-template"; yang_parent_name = "pw-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::~PwTemplate()
@@ -505,6 +510,7 @@ PseudowireConfig::PwTemplates::PwTemplate::~PwTemplate()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| encapsulation.is_set
 	|| control_word.is_set
@@ -554,7 +560,8 @@ std::string PseudowireConfig::PwTemplates::PwTemplate::get_absolute_path() const
 std::string PseudowireConfig::PwTemplates::PwTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pw-template" <<"[name='" <<name <<"']";
+    path_buffer << "pw-template";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -795,12 +802,12 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::LoadBalance()
     :
     ethernet{YType::identityref, "ethernet"},
     ip{YType::identityref, "ip"}
-    	,
+        ,
     flow_label(std::make_shared<PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel>())
 {
     flow_label->parent = this;
 
-    yang_name = "load-balance"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::~LoadBalance()
@@ -809,6 +816,7 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::~LoadBalance()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return ethernet.is_set
 	|| ip.is_set
 	|| (flow_label !=  nullptr && flow_label->has_data());
@@ -908,7 +916,7 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::FlowLabel()
     static_{YType::boolean, "static"}
 {
 
-    yang_name = "flow-label"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-label"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::~FlowLabel()
@@ -917,6 +925,7 @@ PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::~FlowLabel()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::LoadBalance::FlowLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| tlv_code_17.is_set
 	|| static_.is_set;
@@ -1014,7 +1023,7 @@ PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::PreferredPath()
     disable_fallback{YType::boolean, "disable-fallback"}
 {
 
-    yang_name = "preferred-path"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preferred-path"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::~PreferredPath()
@@ -1023,6 +1032,7 @@ PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::~PreferredPath()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::PreferredPath::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| address.is_set
 	|| hostname.is_set
@@ -1131,7 +1141,7 @@ PseudowireConfig::PwTemplates::PwTemplate::Sequencing::Sequencing()
     resync{YType::int32, "resync"}
 {
 
-    yang_name = "sequencing"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sequencing"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::Sequencing::~Sequencing()
@@ -1140,6 +1150,7 @@ PseudowireConfig::PwTemplates::PwTemplate::Sequencing::~Sequencing()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::Sequencing::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| resync.is_set;
 }
@@ -1221,7 +1232,7 @@ PseudowireConfig::PwTemplates::PwTemplate::Vccv::Vccv()
     control_word{YType::boolean, "control-word"}
 {
 
-    yang_name = "vccv"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vccv"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::Vccv::~Vccv()
@@ -1230,6 +1241,7 @@ PseudowireConfig::PwTemplates::PwTemplate::Vccv::~Vccv()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::Vccv::has_data() const
 {
+    if (is_presence_container) return true;
     return control_word.is_set;
 }
 
@@ -1300,7 +1312,7 @@ PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::SwitchoverDelay()
     never{YType::boolean, "never"}
 {
 
-    yang_name = "switchover-delay"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchover-delay"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::~SwitchoverDelay()
@@ -1309,6 +1321,7 @@ PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::~SwitchoverDelay()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::SwitchoverDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return switchover_timer.is_set
 	|| timer.is_set
 	|| never.is_set;
@@ -1407,7 +1420,7 @@ PseudowireConfig::PwTemplates::PwTemplate::Status::Status()
     redundancy_master{YType::boolean, "redundancy-master"}
 {
 
-    yang_name = "status"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::Status::~Status()
@@ -1416,6 +1429,7 @@ PseudowireConfig::PwTemplates::PwTemplate::Status::~Status()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return decoupled.is_set
 	|| disable.is_set
 	|| peer_topo_dual_homed.is_set
@@ -1541,7 +1555,7 @@ PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::PortProfileSpec()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "port-profile-spec"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-profile-spec"; yang_parent_name = "pw-template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::~PortProfileSpec()
@@ -1550,6 +1564,7 @@ PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::~PortProfileSpec()
 
 bool PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| shutdown.is_set
 	|| shut_force.is_set
@@ -1679,9 +1694,11 @@ bool PseudowireConfig::PwTemplates::PwTemplate::PortProfileSpec::has_leaf_or_chi
 }
 
 PseudowireConfig::PwStaticOamClasses::PwStaticOamClasses()
+    :
+    pw_static_oam_class(this, {"name"})
 {
 
-    yang_name = "pw-static-oam-classes"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pw-static-oam-classes"; yang_parent_name = "pseudowire-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PseudowireConfig::PwStaticOamClasses::~PwStaticOamClasses()
@@ -1690,7 +1707,8 @@ PseudowireConfig::PwStaticOamClasses::~PwStaticOamClasses()
 
 bool PseudowireConfig::PwStaticOamClasses::has_data() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pw_static_oam_class.len(); index++)
     {
         if(pw_static_oam_class[index]->has_data())
             return true;
@@ -1700,7 +1718,7 @@ bool PseudowireConfig::PwStaticOamClasses::has_data() const
 
 bool PseudowireConfig::PwStaticOamClasses::has_operation() const
 {
-    for (std::size_t index=0; index<pw_static_oam_class.size(); index++)
+    for (std::size_t index=0; index<pw_static_oam_class.len(); index++)
     {
         if(pw_static_oam_class[index]->has_operation())
             return true;
@@ -1737,7 +1755,7 @@ std::shared_ptr<Entity> PseudowireConfig::PwStaticOamClasses::get_child_by_name(
     {
         auto c = std::make_shared<PseudowireConfig::PwStaticOamClasses::PwStaticOamClass>();
         c->parent = this;
-        pw_static_oam_class.push_back(c);
+        pw_static_oam_class.append(c);
         return c;
     }
 
@@ -1749,7 +1767,7 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireConfig::PwStaticOamClas
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pw_static_oam_class)
+    for (auto c : pw_static_oam_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1784,7 +1802,7 @@ PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::PwStaticOamClass()
     timeout_refresh_ack{YType::uint32, "timeout-refresh-ack"}
 {
 
-    yang_name = "pw-static-oam-class"; yang_parent_name = "pw-static-oam-classes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pw-static-oam-class"; yang_parent_name = "pw-static-oam-classes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::~PwStaticOamClass()
@@ -1793,6 +1811,7 @@ PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::~PwStaticOamClass()
 
 bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| ack.is_set
 	|| keepalive.is_set
@@ -1820,7 +1839,8 @@ std::string PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_absolute
 std::string PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pw-static-oam-class" <<"[name='" <<name <<"']";
+    path_buffer << "pw-static-oam-class";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1916,9 +1936,11 @@ bool PseudowireConfig::PwStaticOamClasses::PwStaticOamClass::has_leaf_or_child_o
 }
 
 PseudowireState::PseudowireState()
+    :
+    pseudowires(this, {"vc_peer_address", "vc_id", "vc_owner_type", "vc_name", "vc_index"})
 {
 
-    yang_name = "pseudowire-state"; yang_parent_name = "cisco-pw"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pseudowire-state"; yang_parent_name = "cisco-pw"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PseudowireState::~PseudowireState()
@@ -1927,7 +1949,8 @@ PseudowireState::~PseudowireState()
 
 bool PseudowireState::has_data() const
 {
-    for (std::size_t index=0; index<pseudowires.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pseudowires.len(); index++)
     {
         if(pseudowires[index]->has_data())
             return true;
@@ -1937,7 +1960,7 @@ bool PseudowireState::has_data() const
 
 bool PseudowireState::has_operation() const
 {
-    for (std::size_t index=0; index<pseudowires.size(); index++)
+    for (std::size_t index=0; index<pseudowires.len(); index++)
     {
         if(pseudowires[index]->has_operation())
             return true;
@@ -1967,7 +1990,7 @@ std::shared_ptr<Entity> PseudowireState::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<PseudowireState::Pseudowires>();
         c->parent = this;
-        pseudowires.push_back(c);
+        pseudowires.append(c);
         return c;
     }
 
@@ -1979,7 +2002,7 @@ std::map<std::string, std::shared_ptr<Entity>> PseudowireState::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pseudowires)
+    for (auto c : pseudowires.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2051,12 +2074,12 @@ PseudowireState::Pseudowires::Pseudowires()
     vc_oper_status{YType::enumeration, "vc-oper-status"},
     vc_inbound_oper_status{YType::enumeration, "vc-inbound-oper-status"},
     vc_outbound_oper_status{YType::enumeration, "vc-outbound-oper-status"}
-    	,
+        ,
     statistics(std::make_shared<PseudowireState::Pseudowires::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "pseudowires"; yang_parent_name = "pseudowire-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowires"; yang_parent_name = "pseudowire-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PseudowireState::Pseudowires::~Pseudowires()
@@ -2065,6 +2088,7 @@ PseudowireState::Pseudowires::~Pseudowires()
 
 bool PseudowireState::Pseudowires::has_data() const
 {
+    if (is_presence_container) return true;
     return vc_peer_address.is_set
 	|| vc_id.is_set
 	|| vc_owner_type.is_set
@@ -2122,7 +2146,12 @@ std::string PseudowireState::Pseudowires::get_absolute_path() const
 std::string PseudowireState::Pseudowires::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pseudowires" <<"[vc-peer-address='" <<vc_peer_address <<"']" <<"[vc-id='" <<vc_id <<"']" <<"[vc-owner-type='" <<vc_owner_type <<"']" <<"[vc-name='" <<vc_name <<"']" <<"[vc-index='" <<vc_index <<"']";
+    path_buffer << "pseudowires";
+    ADD_KEY_TOKEN(vc_peer_address, "vc-peer-address");
+    ADD_KEY_TOKEN(vc_id, "vc-id");
+    ADD_KEY_TOKEN(vc_owner_type, "vc-owner-type");
+    ADD_KEY_TOKEN(vc_name, "vc-name");
+    ADD_KEY_TOKEN(vc_index, "vc-index");
     return path_buffer.str();
 }
 
@@ -2398,7 +2427,7 @@ PseudowireState::Pseudowires::Statistics::Statistics()
     out_errors{YType::uint64, "out-errors"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "pseudowires"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "pseudowires"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PseudowireState::Pseudowires::Statistics::~Statistics()
@@ -2407,6 +2436,7 @@ PseudowireState::Pseudowires::Statistics::~Statistics()
 
 bool PseudowireState::Pseudowires::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return vc_create_time.is_set
 	|| vc_up_time.is_set
 	|| discontinuity_time.is_set
@@ -2574,16 +2604,6 @@ bool PseudowireState::Pseudowires::Statistics::has_leaf_or_child_of_name(const s
     return false;
 }
 
-PwEncapMpls::PwEncapMpls()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encap-mpls")
-{
-
-}
-
-PwEncapMpls::~PwEncapMpls()
-{
-}
-
 PwVcTypeEther::PwVcTypeEther()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-ether")
 {
@@ -2591,146 +2611,6 @@ PwVcTypeEther::PwVcTypeEther()
 }
 
 PwVcTypeEther::~PwVcTypeEther()
-{
-}
-
-PwVcTypeVlan::PwVcTypeVlan()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan")
-{
-
-}
-
-PwVcTypeVlan::~PwVcTypeVlan()
-{
-}
-
-PwVcTypeVlanPassthrough::PwVcTypeVlanPassthrough()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan-passthrough")
-{
-
-}
-
-PwVcTypeVlanPassthrough::~PwVcTypeVlanPassthrough()
-{
-}
-
-PwLbEthernetType::PwLbEthernetType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ethernet-type")
-{
-
-}
-
-PwLbEthernetType::~PwLbEthernetType()
-{
-}
-
-PwLbEthSrcMac::PwLbEthSrcMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-mac")
-{
-
-}
-
-PwLbEthSrcMac::~PwLbEthSrcMac()
-{
-}
-
-PwLbEthDstMac::PwLbEthDstMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-dst-mac")
-{
-
-}
-
-PwLbEthDstMac::~PwLbEthDstMac()
-{
-}
-
-PwLbEthSrcDstMac::PwLbEthSrcDstMac()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-dst-mac")
-{
-
-}
-
-PwLbEthSrcDstMac::~PwLbEthSrcDstMac()
-{
-}
-
-PwLbIpType::PwLbIpType()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-type")
-{
-
-}
-
-PwLbIpType::~PwLbIpType()
-{
-}
-
-PwLbIpSrcIp::PwLbIpSrcIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-ip")
-{
-
-}
-
-PwLbIpSrcIp::~PwLbIpSrcIp()
-{
-}
-
-PwLbIpDstIp::PwLbIpDstIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-dst-ip")
-{
-
-}
-
-PwLbIpDstIp::~PwLbIpDstIp()
-{
-}
-
-PwLbIpSrcDstIp::PwLbIpSrcDstIp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-dst-ip")
-{
-
-}
-
-PwLbIpSrcDstIp::~PwLbIpSrcDstIp()
-{
-}
-
-PwSignalingProtocolNone::PwSignalingProtocolNone()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-none")
-{
-
-}
-
-PwSignalingProtocolNone::~PwSignalingProtocolNone()
-{
-}
-
-PwSignalingProtocolLdp::PwSignalingProtocolLdp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-ldp")
-{
-
-}
-
-PwSignalingProtocolLdp::~PwSignalingProtocolLdp()
-{
-}
-
-PwSignalingProtocolBgp::PwSignalingProtocolBgp()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-bgp")
-{
-
-}
-
-PwSignalingProtocolBgp::~PwSignalingProtocolBgp()
-{
-}
-
-PwSequencingReceive::PwSequencingReceive()
-     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-receive")
-{
-
-}
-
-PwSequencingReceive::~PwSequencingReceive()
 {
 }
 
@@ -2744,6 +2624,66 @@ PwSequencingTransmit::~PwSequencingTransmit()
 {
 }
 
+PwVcTypeVlanPassthrough::PwVcTypeVlanPassthrough()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan-passthrough")
+{
+
+}
+
+PwVcTypeVlanPassthrough::~PwVcTypeVlanPassthrough()
+{
+}
+
+PwEncapMpls::PwEncapMpls()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-encap-mpls")
+{
+
+}
+
+PwEncapMpls::~PwEncapMpls()
+{
+}
+
+PwLbIpDstIp::PwLbIpDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-dst-ip")
+{
+
+}
+
+PwLbIpDstIp::~PwLbIpDstIp()
+{
+}
+
+PwSequencingReceive::PwSequencingReceive()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-receive")
+{
+
+}
+
+PwSequencingReceive::~PwSequencingReceive()
+{
+}
+
+PwLbEthernetType::PwLbEthernetType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ethernet-type")
+{
+
+}
+
+PwLbEthernetType::~PwLbEthernetType()
+{
+}
+
+PwSignalingProtocolLdp::PwSignalingProtocolLdp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-ldp")
+{
+
+}
+
+PwSignalingProtocolLdp::~PwSignalingProtocolLdp()
+{
+}
+
 PwSequencingBoth::PwSequencingBoth()
      : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-sequencing-both")
 {
@@ -2751,6 +2691,96 @@ PwSequencingBoth::PwSequencingBoth()
 }
 
 PwSequencingBoth::~PwSequencingBoth()
+{
+}
+
+PwVcTypeVlan::PwVcTypeVlan()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-vc-type-vlan")
+{
+
+}
+
+PwVcTypeVlan::~PwVcTypeVlan()
+{
+}
+
+PwLbIpType::PwLbIpType()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-type")
+{
+
+}
+
+PwLbIpType::~PwLbIpType()
+{
+}
+
+PwSignalingProtocolNone::PwSignalingProtocolNone()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-none")
+{
+
+}
+
+PwSignalingProtocolNone::~PwSignalingProtocolNone()
+{
+}
+
+PwSignalingProtocolBgp::PwSignalingProtocolBgp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-signaling-protocol-bgp")
+{
+
+}
+
+PwSignalingProtocolBgp::~PwSignalingProtocolBgp()
+{
+}
+
+PwLbIpSrcIp::PwLbIpSrcIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-ip")
+{
+
+}
+
+PwLbIpSrcIp::~PwLbIpSrcIp()
+{
+}
+
+PwLbEthSrcDstMac::PwLbEthSrcDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-dst-mac")
+{
+
+}
+
+PwLbEthSrcDstMac::~PwLbEthSrcDstMac()
+{
+}
+
+PwLbEthDstMac::PwLbEthDstMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-dst-mac")
+{
+
+}
+
+PwLbEthDstMac::~PwLbEthDstMac()
+{
+}
+
+PwLbIpSrcDstIp::PwLbIpSrcDstIp()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-ip-src-dst-ip")
+{
+
+}
+
+PwLbIpSrcDstIp::~PwLbIpSrcDstIp()
+{
+}
+
+PwLbEthSrcMac::PwLbEthSrcMac()
+     : Identity("urn:cisco:params:xml:ns:yang:pw", "cisco-pw", "cisco-pw:pw-lb-eth-src-mac")
+{
+
+}
+
+PwLbEthSrcMac::~PwLbEthSrcMac()
 {
 }
 

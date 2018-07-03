@@ -17,7 +17,7 @@ TcpConnection::TcpConnection()
 {
     nodes->parent = this;
 
-    yang_name = "tcp-connection"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "tcp-connection"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TcpConnection::~TcpConnection()
@@ -26,6 +26,7 @@ TcpConnection::~TcpConnection()
 
 bool TcpConnection::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool TcpConnection::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 TcpConnection::Nodes::Nodes()
+    :
+    node(this, {"id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "tcp-connection"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "tcp-connection"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TcpConnection::Nodes::~Nodes()
@@ -129,7 +132,8 @@ TcpConnection::Nodes::~Nodes()
 
 bool TcpConnection::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool TcpConnection::Nodes::has_data() const
 
 bool TcpConnection::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,18 +221,18 @@ bool TcpConnection::Nodes::has_leaf_or_child_of_name(const std::string & name) c
 TcpConnection::Nodes::Node::Node()
     :
     id{YType::str, "id"}
-    	,
+        ,
     statistics(std::make_shared<TcpConnection::Nodes::Node::Statistics>())
-	,extended_information(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation>())
-	,detail_informations(std::make_shared<TcpConnection::Nodes::Node::DetailInformations>())
-	,brief_informations(std::make_shared<TcpConnection::Nodes::Node::BriefInformations>())
+    , extended_information(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation>())
+    , detail_informations(std::make_shared<TcpConnection::Nodes::Node::DetailInformations>())
+    , brief_informations(std::make_shared<TcpConnection::Nodes::Node::BriefInformations>())
 {
     statistics->parent = this;
     extended_information->parent = this;
     detail_informations->parent = this;
     brief_informations->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TcpConnection::Nodes::Node::~Node()
@@ -237,6 +241,7 @@ TcpConnection::Nodes::Node::~Node()
 
 bool TcpConnection::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (extended_information !=  nullptr && extended_information->has_data())
@@ -264,7 +269,8 @@ std::string TcpConnection::Nodes::Node::get_absolute_path() const
 std::string TcpConnection::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[id='" <<id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -374,14 +380,14 @@ bool TcpConnection::Nodes::Node::has_leaf_or_child_of_name(const std::string & n
 TcpConnection::Nodes::Node::Statistics::Statistics()
     :
     clients(std::make_shared<TcpConnection::Nodes::Node::Statistics::Clients>())
-	,pcbs(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs>())
-	,summary(std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary>())
+    , pcbs(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs>())
+    , summary(std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary>())
 {
     clients->parent = this;
     pcbs->parent = this;
     summary->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::~Statistics()
@@ -390,6 +396,7 @@ TcpConnection::Nodes::Node::Statistics::~Statistics()
 
 bool TcpConnection::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (clients !=  nullptr && clients->has_data())
 	|| (pcbs !=  nullptr && pcbs->has_data())
 	|| (summary !=  nullptr && summary->has_data());
@@ -489,9 +496,11 @@ bool TcpConnection::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std
 }
 
 TcpConnection::Nodes::Node::Statistics::Clients::Clients()
+    :
+    client(this, {"client_id"})
 {
 
-    yang_name = "clients"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Clients::~Clients()
@@ -500,7 +509,8 @@ TcpConnection::Nodes::Node::Statistics::Clients::~Clients()
 
 bool TcpConnection::Nodes::Node::Statistics::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -510,7 +520,7 @@ bool TcpConnection::Nodes::Node::Statistics::Clients::has_data() const
 
 bool TcpConnection::Nodes::Node::Statistics::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -540,7 +550,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Clients::get_chi
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -552,7 +562,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -589,7 +599,7 @@ TcpConnection::Nodes::Node::Statistics::Clients::Client::Client()
     ipv6_sent_packets{YType::uint32, "ipv6-sent-packets"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Clients::Client::~Client()
@@ -598,6 +608,7 @@ TcpConnection::Nodes::Node::Statistics::Clients::Client::~Client()
 
 bool TcpConnection::Nodes::Node::Statistics::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return client_id.is_set
 	|| client_jid.is_set
 	|| client_name.is_set
@@ -622,7 +633,8 @@ bool TcpConnection::Nodes::Node::Statistics::Clients::Client::has_operation() co
 std::string TcpConnection::Nodes::Node::Statistics::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-id='" <<client_id <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_id, "client-id");
     return path_buffer.str();
 }
 
@@ -740,9 +752,11 @@ bool TcpConnection::Nodes::Node::Statistics::Clients::Client::has_leaf_or_child_
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcbs()
+    :
+    pcb(this, {"id"})
 {
 
-    yang_name = "pcbs"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcbs"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::~Pcbs()
@@ -751,7 +765,8 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::~Pcbs()
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::has_data() const
 {
-    for (std::size_t index=0; index<pcb.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pcb.len(); index++)
     {
         if(pcb[index]->has_data())
             return true;
@@ -761,7 +776,7 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::has_data() const
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::has_operation() const
 {
-    for (std::size_t index=0; index<pcb.size(); index++)
+    for (std::size_t index=0; index<pcb.len(); index++)
     {
         if(pcb[index]->has_operation())
             return true;
@@ -791,7 +806,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::get_child_
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb>();
         c->parent = this;
-        pcb.push_back(c);
+        pcb.append(c);
         return c;
     }
 
@@ -803,7 +818,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pcb)
+    for (auto c : pcb.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -848,16 +863,16 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Pcb()
     is_paw_socket{YType::boolean, "is-paw-socket"},
     read_io_time{YType::uint32, "read-io-time"},
     write_io_time{YType::uint32, "write-io-time"}
-    	,
+        ,
     read_io_counts(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts>())
-	,write_io_counts(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts>())
-	,async_session_stats(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats>())
+    , write_io_counts(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts>())
+    , async_session_stats(std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats>())
 {
     read_io_counts->parent = this;
     write_io_counts->parent = this;
     async_session_stats->parent = this;
 
-    yang_name = "pcb"; yang_parent_name = "pcbs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pcb"; yang_parent_name = "pcbs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::~Pcb()
@@ -866,6 +881,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::~Pcb()
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| pcb.is_set
 	|| vrf_id.is_set
@@ -916,7 +932,8 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::has_operation() const
 std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pcb" <<"[id='" <<id <<"']";
+    path_buffer << "pcb";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -1193,7 +1210,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::ReadIoCounts()
     autoarm_count{YType::uint32, "autoarm-count"}
 {
 
-    yang_name = "read-io-counts"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "read-io-counts"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::~ReadIoCounts()
@@ -1202,6 +1219,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::~ReadIoCounts()
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::ReadIoCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return io_count.is_set
 	|| arm_count.is_set
 	|| unarm_count.is_set
@@ -1312,7 +1330,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::WriteIoCounts(
     autoarm_count{YType::uint32, "autoarm-count"}
 {
 
-    yang_name = "write-io-counts"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "write-io-counts"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::~WriteIoCounts()
@@ -1321,6 +1339,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::~WriteIoCounts
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::has_data() const
 {
+    if (is_presence_container) return true;
     return io_count.is_set
 	|| arm_count.is_set
 	|| unarm_count.is_set
@@ -1426,9 +1445,20 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::WriteIoCounts::has_leaf_
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::AsyncSessionStats()
     :
     async_session{YType::boolean, "async-session"}
+        ,
+    data_write_success_num(this, {})
+    , data_read_success_num(this, {})
+    , data_write_error_num(this, {})
+    , data_read_error_num(this, {})
+    , control_write_success_num(this, {})
+    , control_read_success_num(this, {})
+    , control_write_error_num(this, {})
+    , control_read_error_num(this, {})
+    , data_write_byte(this, {})
+    , data_read_byte(this, {})
 {
 
-    yang_name = "async-session-stats"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "async-session-stats"; yang_parent_name = "pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::~AsyncSessionStats()
@@ -1437,52 +1467,53 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::~AsyncSess
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_data() const
 {
-    for (std::size_t index=0; index<data_write_success_num.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_write_success_num.len(); index++)
     {
         if(data_write_success_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<data_read_success_num.size(); index++)
+    for (std::size_t index=0; index<data_read_success_num.len(); index++)
     {
         if(data_read_success_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<data_write_error_num.size(); index++)
+    for (std::size_t index=0; index<data_write_error_num.len(); index++)
     {
         if(data_write_error_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<data_read_error_num.size(); index++)
+    for (std::size_t index=0; index<data_read_error_num.len(); index++)
     {
         if(data_read_error_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<control_write_success_num.size(); index++)
+    for (std::size_t index=0; index<control_write_success_num.len(); index++)
     {
         if(control_write_success_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<control_read_success_num.size(); index++)
+    for (std::size_t index=0; index<control_read_success_num.len(); index++)
     {
         if(control_read_success_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<control_write_error_num.size(); index++)
+    for (std::size_t index=0; index<control_write_error_num.len(); index++)
     {
         if(control_write_error_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<control_read_error_num.size(); index++)
+    for (std::size_t index=0; index<control_read_error_num.len(); index++)
     {
         if(control_read_error_num[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<data_write_byte.size(); index++)
+    for (std::size_t index=0; index<data_write_byte.len(); index++)
     {
         if(data_write_byte[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<data_read_byte.size(); index++)
+    for (std::size_t index=0; index<data_read_byte.len(); index++)
     {
         if(data_read_byte[index]->has_data())
             return true;
@@ -1492,52 +1523,52 @@ bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_d
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::has_operation() const
 {
-    for (std::size_t index=0; index<data_write_success_num.size(); index++)
+    for (std::size_t index=0; index<data_write_success_num.len(); index++)
     {
         if(data_write_success_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<data_read_success_num.size(); index++)
+    for (std::size_t index=0; index<data_read_success_num.len(); index++)
     {
         if(data_read_success_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<data_write_error_num.size(); index++)
+    for (std::size_t index=0; index<data_write_error_num.len(); index++)
     {
         if(data_write_error_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<data_read_error_num.size(); index++)
+    for (std::size_t index=0; index<data_read_error_num.len(); index++)
     {
         if(data_read_error_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<control_write_success_num.size(); index++)
+    for (std::size_t index=0; index<control_write_success_num.len(); index++)
     {
         if(control_write_success_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<control_read_success_num.size(); index++)
+    for (std::size_t index=0; index<control_read_success_num.len(); index++)
     {
         if(control_read_success_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<control_write_error_num.size(); index++)
+    for (std::size_t index=0; index<control_write_error_num.len(); index++)
     {
         if(control_write_error_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<control_read_error_num.size(); index++)
+    for (std::size_t index=0; index<control_read_error_num.len(); index++)
     {
         if(control_read_error_num[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<data_write_byte.size(); index++)
+    for (std::size_t index=0; index<data_write_byte.len(); index++)
     {
         if(data_write_byte[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<data_read_byte.size(); index++)
+    for (std::size_t index=0; index<data_read_byte.len(); index++)
     {
         if(data_read_byte[index]->has_operation())
             return true;
@@ -1569,7 +1600,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum>();
         c->parent = this;
-        data_write_success_num.push_back(c);
+        data_write_success_num.append(c);
         return c;
     }
 
@@ -1577,7 +1608,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum>();
         c->parent = this;
-        data_read_success_num.push_back(c);
+        data_read_success_num.append(c);
         return c;
     }
 
@@ -1585,7 +1616,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum>();
         c->parent = this;
-        data_write_error_num.push_back(c);
+        data_write_error_num.append(c);
         return c;
     }
 
@@ -1593,7 +1624,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum>();
         c->parent = this;
-        data_read_error_num.push_back(c);
+        data_read_error_num.append(c);
         return c;
     }
 
@@ -1601,7 +1632,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum>();
         c->parent = this;
-        control_write_success_num.push_back(c);
+        control_write_success_num.append(c);
         return c;
     }
 
@@ -1609,7 +1640,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum>();
         c->parent = this;
-        control_read_success_num.push_back(c);
+        control_read_success_num.append(c);
         return c;
     }
 
@@ -1617,7 +1648,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum>();
         c->parent = this;
-        control_write_error_num.push_back(c);
+        control_write_error_num.append(c);
         return c;
     }
 
@@ -1625,7 +1656,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum>();
         c->parent = this;
-        control_read_error_num.push_back(c);
+        control_read_error_num.append(c);
         return c;
     }
 
@@ -1633,7 +1664,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte>();
         c->parent = this;
-        data_write_byte.push_back(c);
+        data_write_byte.append(c);
         return c;
     }
 
@@ -1641,7 +1672,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::Async
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte>();
         c->parent = this;
-        data_read_byte.push_back(c);
+        data_read_byte.append(c);
         return c;
     }
 
@@ -1653,7 +1684,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : data_write_success_num)
+    for (auto c : data_write_success_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1662,7 +1693,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : data_read_success_num)
+    for (auto c : data_read_success_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1671,7 +1702,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : data_write_error_num)
+    for (auto c : data_write_error_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1680,7 +1711,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : data_read_error_num)
+    for (auto c : data_read_error_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1689,7 +1720,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : control_write_success_num)
+    for (auto c : control_write_success_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1698,7 +1729,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : control_read_success_num)
+    for (auto c : control_read_success_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1707,7 +1738,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : control_write_error_num)
+    for (auto c : control_write_error_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1716,7 +1747,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : control_read_error_num)
+    for (auto c : control_read_error_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1725,7 +1756,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : data_write_byte)
+    for (auto c : data_write_byte.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1734,7 +1765,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : data_read_byte)
+    for (auto c : data_read_byte.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1775,7 +1806,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteS
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "data-write-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-write-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::~DataWriteSuccessNum()
@@ -1784,6 +1815,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteS
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -1852,7 +1884,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSu
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "data-read-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-read-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::~DataReadSuccessNum()
@@ -1861,6 +1893,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSu
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -1929,7 +1962,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteE
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "data-write-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-write-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::~DataWriteErrorNum()
@@ -1938,6 +1971,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteE
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2006,7 +2040,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadEr
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "data-read-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-read-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::~DataReadErrorNum()
@@ -2015,6 +2049,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadEr
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2083,7 +2118,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWri
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "control-write-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "control-write-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::~ControlWriteSuccessNum()
@@ -2092,6 +2127,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWri
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2160,7 +2196,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlRea
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "control-read-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "control-read-success-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::~ControlReadSuccessNum()
@@ -2169,6 +2205,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlRea
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2237,7 +2274,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWri
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "control-write-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "control-write-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::~ControlWriteErrorNum()
@@ -2246,6 +2283,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWri
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2314,7 +2352,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlRea
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "control-read-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "control-read-error-num"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::~ControlReadErrorNum()
@@ -2323,6 +2361,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlRea
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2391,7 +2430,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteB
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "data-write-byte"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-write-byte"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::~DataWriteByte()
@@ -2400,6 +2439,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteB
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2468,7 +2508,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadBy
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "data-read-byte"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-read-byte"; yang_parent_name = "async-session-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::~DataReadByte()
@@ -2477,6 +2517,7 @@ TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadBy
 
 bool TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2630,9 +2671,12 @@ TcpConnection::Nodes::Node::Statistics::Summary::Summary()
     iq_sock_aborts{YType::uint32, "iq-sock-aborts"},
     iq_ingress_drops{YType::uint32, "iq-ingress-drops"},
     total_i_qs{YType::uint32, "total-i-qs"}
+        ,
+    iqs_total_ingpacket(this, {})
+    , iqs_total_egpacket(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Summary::~Summary()
@@ -2641,12 +2685,13 @@ TcpConnection::Nodes::Node::Statistics::Summary::~Summary()
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_data() const
 {
-    for (std::size_t index=0; index<iqs_total_ingpacket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iqs_total_ingpacket.len(); index++)
     {
         if(iqs_total_ingpacket[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<iqs_total_egpacket.size(); index++)
+    for (std::size_t index=0; index<iqs_total_egpacket.len(); index++)
     {
         if(iqs_total_egpacket[index]->has_data())
             return true;
@@ -2743,12 +2788,12 @@ bool TcpConnection::Nodes::Node::Statistics::Summary::has_data() const
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<iqs_total_ingpacket.size(); index++)
+    for (std::size_t index=0; index<iqs_total_ingpacket.len(); index++)
     {
         if(iqs_total_ingpacket[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<iqs_total_egpacket.size(); index++)
+    for (std::size_t index=0; index<iqs_total_egpacket.len(); index++)
     {
         if(iqs_total_egpacket[index]->has_operation())
             return true;
@@ -2954,7 +2999,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::get_chi
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket>();
         c->parent = this;
-        iqs_total_ingpacket.push_back(c);
+        iqs_total_ingpacket.append(c);
         return c;
     }
 
@@ -2962,7 +3007,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::Statistics::Summary::get_chi
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket>();
         c->parent = this;
-        iqs_total_egpacket.push_back(c);
+        iqs_total_egpacket.append(c);
         return c;
     }
 
@@ -2974,7 +3019,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iqs_total_ingpacket)
+    for (auto c : iqs_total_ingpacket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2983,7 +3028,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Stati
     }
 
     count = 0;
-    for (auto const & c : iqs_total_egpacket)
+    for (auto c : iqs_total_egpacket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3894,7 +3939,7 @@ TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::IqsTotalIngp
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "iqs-total-ingpacket"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iqs-total-ingpacket"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::~IqsTotalIngpacket()
@@ -3903,6 +3948,7 @@ TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::~IqsTotalIng
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -3971,7 +4017,7 @@ TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::IqsTotalEgpac
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "iqs-total-egpacket"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iqs-total-egpacket"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::~IqsTotalEgpacket()
@@ -3980,6 +4026,7 @@ TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::~IqsTotalEgpa
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4049,7 +4096,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::ExtendedInformation()
 {
     display_types->parent = this;
 
-    yang_name = "extended-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-information"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::~ExtendedInformation()
@@ -4058,6 +4105,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::~ExtendedInformation()
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (display_types !=  nullptr && display_types->has_data());
 }
 
@@ -4125,9 +4173,11 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::has_leaf_or_child_of_name(
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayTypes()
+    :
+    display_type(this, {"disp_type"})
 {
 
-    yang_name = "display-types"; yang_parent_name = "extended-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "display-types"; yang_parent_name = "extended-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::~DisplayTypes()
@@ -4136,7 +4186,8 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::~DisplayTypes()
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::has_data() const
 {
-    for (std::size_t index=0; index<display_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<display_type.len(); index++)
     {
         if(display_type[index]->has_data())
             return true;
@@ -4146,7 +4197,7 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::has_data() c
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::has_operation() const
 {
-    for (std::size_t index=0; index<display_type.size(); index++)
+    for (std::size_t index=0; index<display_type.len(); index++)
     {
         if(display_type[index]->has_operation())
             return true;
@@ -4176,7 +4227,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType>();
         c->parent = this;
-        display_type.push_back(c);
+        display_type.append(c);
         return c;
     }
 
@@ -4188,7 +4239,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Exten
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : display_type)
+    for (auto c : display_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4217,9 +4268,11 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::has_leaf_or_
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::DisplayType()
     :
     disp_type{YType::enumeration, "disp-type"}
+        ,
+    connection_id(this, {"pcb_id"})
 {
 
-    yang_name = "display-type"; yang_parent_name = "display-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "display-type"; yang_parent_name = "display-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::~DisplayType()
@@ -4228,7 +4281,8 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::~Dis
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::has_data() const
 {
-    for (std::size_t index=0; index<connection_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<connection_id.len(); index++)
     {
         if(connection_id[index]->has_data())
             return true;
@@ -4238,7 +4292,7 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::has_operation() const
 {
-    for (std::size_t index=0; index<connection_id.size(); index++)
+    for (std::size_t index=0; index<connection_id.len(); index++)
     {
         if(connection_id[index]->has_operation())
             return true;
@@ -4250,7 +4304,8 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "display-type" <<"[disp-type='" <<disp_type <<"']";
+    path_buffer << "display-type";
+    ADD_KEY_TOKEN(disp_type, "disp-type");
     return path_buffer.str();
 }
 
@@ -4270,7 +4325,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId>();
         c->parent = this;
-        connection_id.push_back(c);
+        connection_id.append(c);
         return c;
     }
 
@@ -4282,7 +4337,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Exten
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : connection_id)
+    for (auto c : connection_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4324,16 +4379,16 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     l4_protocol{YType::uint32, "l4-protocol"},
     local_port{YType::uint16, "local-port"},
     foreign_port{YType::uint16, "foreign-port"}
-    	,
+        ,
     local_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress>())
-	,foreign_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress>())
-	,common(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common>())
+    , foreign_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress>())
+    , common(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common>())
 {
     local_address->parent = this;
     foreign_address->parent = this;
     common->parent = this;
 
-    yang_name = "connection-id"; yang_parent_name = "display-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection-id"; yang_parent_name = "display-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::~ConnectionId()
@@ -4342,6 +4397,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::has_data() const
 {
+    if (is_presence_container) return true;
     return pcb_id.is_set
 	|| l4_protocol.is_set
 	|| local_port.is_set
@@ -4366,7 +4422,8 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "connection-id" <<"[pcb-id='" <<pcb_id <<"']";
+    path_buffer << "connection-id";
+    ADD_KEY_TOKEN(pcb_id, "pcb-id");
     return path_buffer.str();
 }
 
@@ -4499,7 +4556,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "connection-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "connection-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::~LocalAddress()
@@ -4508,6 +4565,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4604,7 +4662,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "connection-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "connection-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::~ForeignAddress()
@@ -4613,6 +4671,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4705,12 +4764,12 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::Common()
     :
     af_name{YType::enumeration, "af-name"}
-    	,
+        ,
     lpts_pcb(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb>())
 {
     lpts_pcb->parent = this;
 
-    yang_name = "common"; yang_parent_name = "connection-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "connection-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::~Common()
@@ -4719,6 +4778,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| (lpts_pcb !=  nullptr && lpts_pcb->has_data());
 }
@@ -4802,16 +4862,17 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     :
     ttl{YType::uint8, "ttl"},
     flow_types_info{YType::uint32, "flow-types-info"}
-    	,
+        ,
     options(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options>())
-	,lpts_flags(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags>())
-	,accept_mask(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask>())
+    , lpts_flags(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags>())
+    , accept_mask(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask>())
+    , filter(this, {})
 {
     options->parent = this;
     lpts_flags->parent = this;
     accept_mask->parent = this;
 
-    yang_name = "lpts-pcb"; yang_parent_name = "common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpts-pcb"; yang_parent_name = "common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::~LptsPcb()
@@ -4820,7 +4881,8 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::has_data() const
 {
-    for (std::size_t index=0; index<filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_data())
             return true;
@@ -4834,7 +4896,7 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::has_operation() const
 {
-    for (std::size_t index=0; index<filter.size(); index++)
+    for (std::size_t index=0; index<filter.len(); index++)
     {
         if(filter[index]->has_operation())
             return true;
@@ -4898,7 +4960,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::ExtendedInformation::Display
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter>();
         c->parent = this;
-        filter.push_back(c);
+        filter.append(c);
         return c;
     }
 
@@ -4925,7 +4987,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Exten
     }
 
     count = 0;
-    for (auto const & c : filter)
+    for (auto c : filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4977,7 +5039,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     is_ip_sla{YType::boolean, "is-ip-sla"}
 {
 
-    yang_name = "options"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "options"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::~Options()
@@ -4986,6 +5048,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options::has_data() const
 {
+    if (is_presence_container) return true;
     return is_receive_filter.is_set
 	|| is_ip_sla.is_set;
 }
@@ -5069,7 +5132,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     is_ignore_vrf_filter{YType::boolean, "is-ignore-vrf-filter"}
 {
 
-    yang_name = "lpts-flags"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lpts-flags"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::~LptsFlags()
@@ -5078,6 +5141,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_pcb_bound.is_set
 	|| is_local_address_ignore.is_set
 	|| is_ignore_vrf_filter.is_set;
@@ -5177,7 +5241,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     is_local_port{YType::boolean, "is-local-port"}
 {
 
-    yang_name = "accept-mask"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accept-mask"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::~AcceptMask()
@@ -5186,6 +5250,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask::has_data() const
 {
+    if (is_presence_container) return true;
     return is_interface.is_set
 	|| is_packet_type.is_set
 	|| is_remote_address.is_set
@@ -5324,16 +5389,16 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     priority{YType::uint8, "priority"},
     ttl{YType::uint8, "ttl"},
     flow_types_info{YType::uint32, "flow-types-info"}
-    	,
+        ,
     packet_type(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType>())
-	,remote_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress>())
-	,local_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress>())
+    , remote_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress>())
+    , local_address(std::make_shared<TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress>())
 {
     packet_type->parent = this;
     remote_address->parent = this;
     local_address->parent = this;
 
-    yang_name = "filter"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "lpts-pcb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::~Filter()
@@ -5342,6 +5407,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| remote_length.is_set
 	|| local_length.is_set
@@ -5553,7 +5619,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     message_id{YType::uint32, "message-id"}
 {
 
-    yang_name = "packet-type"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-type"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::~PacketType()
@@ -5562,6 +5628,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::PacketType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| icmp_message_type.is_set
 	|| icm_pv6_message_type.is_set
@@ -5684,7 +5751,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "remote-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::~RemoteAddress()
@@ -5693,6 +5760,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::RemoteAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5789,7 +5857,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::~LocalAddress()
@@ -5798,6 +5866,7 @@ TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::Conn
 
 bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5888,9 +5957,11 @@ bool TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType:
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformations()
+    :
+    detail_information(this, {"pcb_id"})
 {
 
-    yang_name = "detail-informations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-informations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::~DetailInformations()
@@ -5899,7 +5970,8 @@ TcpConnection::Nodes::Node::DetailInformations::~DetailInformations()
 
 bool TcpConnection::Nodes::Node::DetailInformations::has_data() const
 {
-    for (std::size_t index=0; index<detail_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_information.len(); index++)
     {
         if(detail_information[index]->has_data())
             return true;
@@ -5909,7 +5981,7 @@ bool TcpConnection::Nodes::Node::DetailInformations::has_data() const
 
 bool TcpConnection::Nodes::Node::DetailInformations::has_operation() const
 {
-    for (std::size_t index=0; index<detail_information.size(); index++)
+    for (std::size_t index=0; index<detail_information.len(); index++)
     {
         if(detail_information[index]->has_operation())
             return true;
@@ -5939,7 +6011,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::get_chil
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation>();
         c->parent = this;
-        detail_information.push_back(c);
+        detail_information.append(c);
         return c;
     }
 
@@ -5951,7 +6023,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Detai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_information)
+    for (auto c : detail_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6055,16 +6127,21 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::DetailInforma
     fib_pd_ctx_size{YType::uint32, "fib-pd-ctx-size"},
     num_labels{YType::uint32, "num-labels"},
     local_app_instance{YType::uint32, "local-app-instance"}
-    	,
+        ,
     local_address(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress>())
-	,foreign_address(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress>())
-	,socket_option_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags>())
-	,socket_state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags>())
-	,feature_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags>())
-	,state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags>())
-	,request_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags>())
-	,receive_buf_state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags>())
-	,send_buf_state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags>())
+    , foreign_address(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress>())
+    , socket_option_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags>())
+    , socket_state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags>())
+    , feature_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags>())
+    , state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags>())
+    , request_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags>())
+    , receive_buf_state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags>())
+    , send_buf_state_flags(std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags>())
+    , fib_pd_ctx(this, {})
+    , fib_label_output(this, {})
+    , timer(this, {})
+    , sack_blk(this, {})
+    , send_sack_hole(this, {})
 {
     local_address->parent = this;
     foreign_address->parent = this;
@@ -6076,7 +6153,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::DetailInforma
     receive_buf_state_flags->parent = this;
     send_buf_state_flags->parent = this;
 
-    yang_name = "detail-information"; yang_parent_name = "detail-informations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-information"; yang_parent_name = "detail-informations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::~DetailInformation()
@@ -6085,27 +6162,28 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::~DetailInform
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_data() const
 {
-    for (std::size_t index=0; index<fib_pd_ctx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_pd_ctx.len(); index++)
     {
         if(fib_pd_ctx[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<fib_label_output.size(); index++)
+    for (std::size_t index=0; index<fib_label_output.len(); index++)
     {
         if(fib_label_output[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<timer.size(); index++)
+    for (std::size_t index=0; index<timer.len(); index++)
     {
         if(timer[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sack_blk.size(); index++)
+    for (std::size_t index=0; index<sack_blk.len(); index++)
     {
         if(sack_blk[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<send_sack_hole.size(); index++)
+    for (std::size_t index=0; index<send_sack_hole.len(); index++)
     {
         if(send_sack_hole[index]->has_data())
             return true;
@@ -6199,27 +6277,27 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_data
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_operation() const
 {
-    for (std::size_t index=0; index<fib_pd_ctx.size(); index++)
+    for (std::size_t index=0; index<fib_pd_ctx.len(); index++)
     {
         if(fib_pd_ctx[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<fib_label_output.size(); index++)
+    for (std::size_t index=0; index<fib_label_output.len(); index++)
     {
         if(fib_label_output[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<timer.size(); index++)
+    for (std::size_t index=0; index<timer.len(); index++)
     {
         if(timer[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sack_blk.size(); index++)
+    for (std::size_t index=0; index<sack_blk.len(); index++)
     {
         if(sack_blk[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<send_sack_hole.size(); index++)
+    for (std::size_t index=0; index<send_sack_hole.len(); index++)
     {
         if(send_sack_hole[index]->has_operation())
             return true;
@@ -6315,7 +6393,8 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::has_oper
 std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail-information" <<"[pcb-id='" <<pcb_id <<"']";
+    path_buffer << "detail-information";
+    ADD_KEY_TOKEN(pcb_id, "pcb-id");
     return path_buffer.str();
 }
 
@@ -6491,7 +6570,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx>();
         c->parent = this;
-        fib_pd_ctx.push_back(c);
+        fib_pd_ctx.append(c);
         return c;
     }
 
@@ -6499,7 +6578,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput>();
         c->parent = this;
-        fib_label_output.push_back(c);
+        fib_label_output.append(c);
         return c;
     }
 
@@ -6507,7 +6586,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer>();
         c->parent = this;
-        timer.push_back(c);
+        timer.append(c);
         return c;
     }
 
@@ -6515,7 +6594,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk>();
         c->parent = this;
-        sack_blk.push_back(c);
+        sack_blk.append(c);
         return c;
     }
 
@@ -6523,7 +6602,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::DetailInformations::DetailIn
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole>();
         c->parent = this;
-        send_sack_hole.push_back(c);
+        send_sack_hole.append(c);
         return c;
     }
 
@@ -6580,7 +6659,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Detai
     }
 
     count = 0;
-    for (auto const & c : fib_pd_ctx)
+    for (auto c : fib_pd_ctx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6589,7 +6668,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Detai
     }
 
     count = 0;
-    for (auto const & c : fib_label_output)
+    for (auto c : fib_label_output.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6598,7 +6677,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Detai
     }
 
     count = 0;
-    for (auto const & c : timer)
+    for (auto c : timer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6607,7 +6686,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Detai
     }
 
     count = 0;
-    for (auto const & c : sack_blk)
+    for (auto c : sack_blk.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6616,7 +6695,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Detai
     }
 
     count = 0;
-    for (auto const & c : send_sack_hole)
+    for (auto c : send_sack_hole.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7409,7 +7488,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::~LocalAddress()
@@ -7418,6 +7497,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress:
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7514,7 +7594,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::~ForeignAddress()
@@ -7523,6 +7603,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddres
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7627,7 +7708,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionF
     nonblocking_io{YType::boolean, "nonblocking-io"}
 {
 
-    yang_name = "socket-option-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "socket-option-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::~SocketOptionFlags()
@@ -7636,6 +7717,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionF
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return debug.is_set
 	|| accept_connection.is_set
 	|| reuse_address.is_set
@@ -7848,7 +7930,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFl
     block_send{YType::boolean, "block-send"}
 {
 
-    yang_name = "socket-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "socket-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::~SocketStateFlags()
@@ -7857,6 +7939,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFl
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketStateFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return no_file_descriptor_reference.is_set
 	|| is_connected.is_set
 	|| is_connecting.is_set
@@ -8115,7 +8198,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags:
     mss_cisco{YType::boolean, "mss-cisco"}
 {
 
-    yang_name = "feature-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "feature-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::~FeatureFlags()
@@ -8124,6 +8207,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags:
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FeatureFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return selective_ack.is_set
 	|| md5.is_set
 	|| timestamps.is_set
@@ -8303,7 +8387,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::S
     path_mtu_ager{YType::boolean, "path-mtu-ager"}
 {
 
-    yang_name = "state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::~StateFlags()
@@ -8312,6 +8396,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::~
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::StateFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return nagle_wait.is_set
 	|| ack_needed.is_set
 	|| fin_sent.is_set
@@ -8479,7 +8564,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags:
     mss_cisco{YType::boolean, "mss-cisco"}
 {
 
-    yang_name = "request-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "request-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::~RequestFlags()
@@ -8488,6 +8573,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags:
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return selective_ack.is_set
 	|| md5.is_set
 	|| timestamps.is_set
@@ -8671,7 +8757,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufSta
     out_of_band_select{YType::boolean, "out-of-band-select"}
 {
 
-    yang_name = "receive-buf-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-buf-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::~ReceiveBufStateFlags()
@@ -8680,6 +8766,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufSta
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return locked.is_set
 	|| waiting_for_lock.is_set
 	|| waiting_for_data.is_set
@@ -8902,7 +8989,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateF
     out_of_band_select{YType::boolean, "out-of-band-select"}
 {
 
-    yang_name = "send-buf-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-buf-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::~SendBufStateFlags()
@@ -8911,6 +8998,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateF
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return locked.is_set
 	|| waiting_for_lock.is_set
 	|| waiting_for_data.is_set
@@ -9122,7 +9210,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::Fib
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "fib-pd-ctx"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-pd-ctx"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::~FibPdCtx()
@@ -9131,6 +9219,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::~Fi
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -9199,7 +9288,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutpu
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "fib-label-output"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-label-output"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::~FibLabelOutput()
@@ -9208,6 +9297,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutpu
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -9279,7 +9369,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::Timer(
     timer_next_activation{YType::uint32, "timer-next-activation"}
 {
 
-    yang_name = "timer"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timer"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::~Timer()
@@ -9288,6 +9378,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::~Timer
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return timer_type.is_set
 	|| timer_activations.is_set
 	|| timer_expirations.is_set
@@ -9396,7 +9487,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::Sack
     end{YType::uint32, "end"}
 {
 
-    yang_name = "sack-blk"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sack-blk"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::~SackBlk()
@@ -9405,6 +9496,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::~Sac
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk::has_data() const
 {
+    if (is_presence_container) return true;
     return start.is_set
 	|| end.is_set;
 }
@@ -9489,7 +9581,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole:
     retransmitted{YType::uint32, "retransmitted"}
 {
 
-    yang_name = "send-sack-hole"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-sack-hole"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::~SendSackHole()
@@ -9498,6 +9590,7 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole:
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole::has_data() const
 {
+    if (is_presence_container) return true;
     return start.is_set
 	|| end.is_set
 	|| duplicated_ack.is_set
@@ -9601,9 +9694,11 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSack
 }
 
 TcpConnection::Nodes::Node::BriefInformations::BriefInformations()
+    :
+    brief_information(this, {"pcb_id"})
 {
 
-    yang_name = "brief-informations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-informations"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::BriefInformations::~BriefInformations()
@@ -9612,7 +9707,8 @@ TcpConnection::Nodes::Node::BriefInformations::~BriefInformations()
 
 bool TcpConnection::Nodes::Node::BriefInformations::has_data() const
 {
-    for (std::size_t index=0; index<brief_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief_information.len(); index++)
     {
         if(brief_information[index]->has_data())
             return true;
@@ -9622,7 +9718,7 @@ bool TcpConnection::Nodes::Node::BriefInformations::has_data() const
 
 bool TcpConnection::Nodes::Node::BriefInformations::has_operation() const
 {
-    for (std::size_t index=0; index<brief_information.size(); index++)
+    for (std::size_t index=0; index<brief_information.len(); index++)
     {
         if(brief_information[index]->has_operation())
             return true;
@@ -9652,7 +9748,7 @@ std::shared_ptr<Entity> TcpConnection::Nodes::Node::BriefInformations::get_child
     {
         auto c = std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation>();
         c->parent = this;
-        brief_information.push_back(c);
+        brief_information.append(c);
         return c;
     }
 
@@ -9664,7 +9760,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpConnection::Nodes::Node::Brief
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief_information)
+    for (auto c : brief_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9702,14 +9798,14 @@ TcpConnection::Nodes::Node::BriefInformations::BriefInformation::BriefInformatio
     current_receive_queue_size{YType::uint32, "current-receive-queue-size"},
     current_send_queue_size{YType::uint32, "current-send-queue-size"},
     vrf_id{YType::uint32, "vrf-id"}
-    	,
+        ,
     local_address(std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress>())
-	,foreign_address(std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress>())
+    , foreign_address(std::make_shared<TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress>())
 {
     local_address->parent = this;
     foreign_address->parent = this;
 
-    yang_name = "brief-information"; yang_parent_name = "brief-informations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-information"; yang_parent_name = "brief-informations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::BriefInformations::BriefInformation::~BriefInformation()
@@ -9718,6 +9814,7 @@ TcpConnection::Nodes::Node::BriefInformations::BriefInformation::~BriefInformati
 
 bool TcpConnection::Nodes::Node::BriefInformations::BriefInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return pcb_id.is_set
 	|| af_name.is_set
 	|| pcb.is_set
@@ -9752,7 +9849,8 @@ bool TcpConnection::Nodes::Node::BriefInformations::BriefInformation::has_operat
 std::string TcpConnection::Nodes::Node::BriefInformations::BriefInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief-information" <<"[pcb-id='" <<pcb_id <<"']";
+    path_buffer << "brief-information";
+    ADD_KEY_TOKEN(pcb_id, "pcb-id");
     return path_buffer.str();
 }
 
@@ -9937,7 +10035,7 @@ TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::L
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "brief-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "brief-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::~LocalAddress()
@@ -9946,6 +10044,7 @@ TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::~
 
 bool TcpConnection::Nodes::Node::BriefInformations::BriefInformation::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10042,7 +10141,7 @@ TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "brief-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "brief-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::~ForeignAddress()
@@ -10051,6 +10150,7 @@ TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress:
 
 bool TcpConnection::Nodes::Node::BriefInformations::BriefInformation::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10146,7 +10246,7 @@ Tcp::Tcp()
 {
     nodes->parent = this;
 
-    yang_name = "tcp"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "tcp"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Tcp::~Tcp()
@@ -10155,6 +10255,7 @@ Tcp::~Tcp()
 
 bool Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -10247,9 +10348,11 @@ bool Tcp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Tcp::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tcp::Nodes::~Nodes()
@@ -10258,7 +10361,8 @@ Tcp::Nodes::~Nodes()
 
 bool Tcp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -10268,7 +10372,7 @@ bool Tcp::Nodes::has_data() const
 
 bool Tcp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -10305,7 +10409,7 @@ std::shared_ptr<Entity> Tcp::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Tcp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -10317,7 +10421,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tcp::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10346,12 +10450,12 @@ bool Tcp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Tcp::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statistics(std::make_shared<Tcp::Nodes::Node::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tcp::Nodes::Node::~Node()
@@ -10360,6 +10464,7 @@ Tcp::Nodes::Node::~Node()
 
 bool Tcp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -10381,7 +10486,8 @@ std::string Tcp::Nodes::Node::get_absolute_path() const
 std::string Tcp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -10449,12 +10555,12 @@ bool Tcp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 Tcp::Nodes::Node::Statistics::Statistics()
     :
     ipv4_traffic(std::make_shared<Tcp::Nodes::Node::Statistics::Ipv4Traffic>())
-	,ipv6_traffic(std::make_shared<Tcp::Nodes::Node::Statistics::Ipv6Traffic>())
+    , ipv6_traffic(std::make_shared<Tcp::Nodes::Node::Statistics::Ipv6Traffic>())
 {
     ipv4_traffic->parent = this;
     ipv6_traffic->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tcp::Nodes::Node::Statistics::~Statistics()
@@ -10463,6 +10569,7 @@ Tcp::Nodes::Node::Statistics::~Statistics()
 
 bool Tcp::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_traffic !=  nullptr && ipv4_traffic->has_data())
 	|| (ipv6_traffic !=  nullptr && ipv6_traffic->has_data());
 }
@@ -10554,7 +10661,7 @@ Tcp::Nodes::Node::Statistics::Ipv4Traffic::Ipv4Traffic()
     tcp_retransmitted_packets{YType::uint32, "tcp-retransmitted-packets"}
 {
 
-    yang_name = "ipv4-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tcp::Nodes::Node::Statistics::Ipv4Traffic::~Ipv4Traffic()
@@ -10563,6 +10670,7 @@ Tcp::Nodes::Node::Statistics::Ipv4Traffic::~Ipv4Traffic()
 
 bool Tcp::Nodes::Node::Statistics::Ipv4Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp_input_packets.is_set
 	|| tcp_checksum_error_packets.is_set
 	|| tcp_dropped_packets.is_set
@@ -10687,7 +10795,7 @@ Tcp::Nodes::Node::Statistics::Ipv6Traffic::Ipv6Traffic()
     tcp_retransmitted_packets{YType::uint32, "tcp-retransmitted-packets"}
 {
 
-    yang_name = "ipv6-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tcp::Nodes::Node::Statistics::Ipv6Traffic::~Ipv6Traffic()
@@ -10696,6 +10804,7 @@ Tcp::Nodes::Node::Statistics::Ipv6Traffic::~Ipv6Traffic()
 
 bool Tcp::Nodes::Node::Statistics::Ipv6Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp_input_packets.is_set
 	|| tcp_checksum_error_packets.is_set
 	|| tcp_dropped_packets.is_set
@@ -10817,7 +10926,7 @@ TcpNsr::TcpNsr()
 {
     nodes->parent = this;
 
-    yang_name = "tcp-nsr"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "tcp-nsr"; yang_parent_name = "Cisco-IOS-XR-ip-tcp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TcpNsr::~TcpNsr()
@@ -10826,6 +10935,7 @@ TcpNsr::~TcpNsr()
 
 bool TcpNsr::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -10918,9 +11028,11 @@ bool TcpNsr::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 TcpNsr::Nodes::Nodes()
+    :
+    node(this, {"id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "tcp-nsr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "tcp-nsr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TcpNsr::Nodes::~Nodes()
@@ -10929,7 +11041,8 @@ TcpNsr::Nodes::~Nodes()
 
 bool TcpNsr::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -10939,7 +11052,7 @@ bool TcpNsr::Nodes::has_data() const
 
 bool TcpNsr::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -10976,7 +11089,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -10988,7 +11101,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11017,18 +11130,18 @@ bool TcpNsr::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 TcpNsr::Nodes::Node::Node()
     :
     id{YType::str, "id"}
-    	,
+        ,
     session(std::make_shared<TcpNsr::Nodes::Node::Session>())
-	,client(std::make_shared<TcpNsr::Nodes::Node::Client>())
-	,session_set(std::make_shared<TcpNsr::Nodes::Node::SessionSet>())
-	,statistics(std::make_shared<TcpNsr::Nodes::Node::Statistics>())
+    , client(std::make_shared<TcpNsr::Nodes::Node::Client>())
+    , session_set(std::make_shared<TcpNsr::Nodes::Node::SessionSet>())
+    , statistics(std::make_shared<TcpNsr::Nodes::Node::Statistics>())
 {
     session->parent = this;
     client->parent = this;
     session_set->parent = this;
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TcpNsr::Nodes::Node::~Node()
@@ -11037,6 +11150,7 @@ TcpNsr::Nodes::Node::~Node()
 
 bool TcpNsr::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (session !=  nullptr && session->has_data())
 	|| (client !=  nullptr && client->has_data())
@@ -11064,7 +11178,8 @@ std::string TcpNsr::Nodes::Node::get_absolute_path() const
 std::string TcpNsr::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[id='" <<id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -11174,12 +11289,12 @@ bool TcpNsr::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) co
 TcpNsr::Nodes::Node::Session::Session()
     :
     brief_sessions(std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions>())
-	,detail_sessions(std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions>())
+    , detail_sessions(std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions>())
 {
     brief_sessions->parent = this;
     detail_sessions->parent = this;
 
-    yang_name = "session"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::~Session()
@@ -11188,6 +11303,7 @@ TcpNsr::Nodes::Node::Session::~Session()
 
 bool TcpNsr::Nodes::Node::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief_sessions !=  nullptr && brief_sessions->has_data())
 	|| (detail_sessions !=  nullptr && detail_sessions->has_data());
 }
@@ -11271,9 +11387,11 @@ bool TcpNsr::Nodes::Node::Session::has_leaf_or_child_of_name(const std::string &
 }
 
 TcpNsr::Nodes::Node::Session::BriefSessions::BriefSessions()
+    :
+    brief_session(this, {"id"})
 {
 
-    yang_name = "brief-sessions"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-sessions"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::BriefSessions::~BriefSessions()
@@ -11282,7 +11400,8 @@ TcpNsr::Nodes::Node::Session::BriefSessions::~BriefSessions()
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::has_data() const
 {
-    for (std::size_t index=0; index<brief_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief_session.len(); index++)
     {
         if(brief_session[index]->has_data())
             return true;
@@ -11292,7 +11411,7 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::has_data() const
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::has_operation() const
 {
-    for (std::size_t index=0; index<brief_session.size(); index++)
+    for (std::size_t index=0; index<brief_session.len(); index++)
     {
         if(brief_session[index]->has_operation())
             return true;
@@ -11322,7 +11441,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::get_child_b
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession>();
         c->parent = this;
-        brief_session.push_back(c);
+        brief_session.append(c);
         return c;
     }
 
@@ -11334,7 +11453,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Bri
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief_session)
+    for (auto c : brief_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11373,9 +11492,12 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::BriefSession()
     is_us_operational_up{YType::enumeration, "is-us-operational-up"},
     is_ds_operational_up{YType::enumeration, "is-ds-operational-up"},
     is_only_receive_path_replication{YType::boolean, "is-only-receive-path-replication"}
+        ,
+    local_address(this, {})
+    , foreign_address(this, {})
 {
 
-    yang_name = "brief-session"; yang_parent_name = "brief-sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-session"; yang_parent_name = "brief-sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::~BriefSession()
@@ -11384,12 +11506,13 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::~BriefSession()
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_data() const
 {
-    for (std::size_t index=0; index<local_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_address.len(); index++)
     {
         if(local_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<foreign_address.size(); index++)
+    for (std::size_t index=0; index<foreign_address.len(); index++)
     {
         if(foreign_address[index]->has_data())
             return true;
@@ -11409,12 +11532,12 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_data() const
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_operation() const
 {
-    for (std::size_t index=0; index<local_address.size(); index++)
+    for (std::size_t index=0; index<local_address.len(); index++)
     {
         if(local_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<foreign_address.size(); index++)
+    for (std::size_t index=0; index<foreign_address.len(); index++)
     {
         if(foreign_address[index]->has_operation())
             return true;
@@ -11436,7 +11559,8 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::has_operation() 
 std::string TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief-session" <<"[id='" <<id <<"']";
+    path_buffer << "brief-session";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -11466,7 +11590,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSessio
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress>();
         c->parent = this;
-        local_address.push_back(c);
+        local_address.append(c);
         return c;
     }
 
@@ -11474,7 +11598,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::BriefSessions::BriefSessio
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress>();
         c->parent = this;
-        foreign_address.push_back(c);
+        foreign_address.append(c);
         return c;
     }
 
@@ -11486,7 +11610,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Bri
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_address)
+    for (auto c : local_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11495,7 +11619,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Bri
     }
 
     count = 0;
-    for (auto const & c : foreign_address)
+    for (auto c : foreign_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11636,7 +11760,7 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::LocalAd
     entry{YType::str, "entry"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "brief-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "brief-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::~LocalAddress()
@@ -11645,6 +11769,7 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::~LocalA
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -11713,7 +11838,7 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::Forei
     entry{YType::str, "entry"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "brief-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "brief-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::~ForeignAddress()
@@ -11722,6 +11847,7 @@ TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::~Fore
 
 bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -11786,9 +11912,11 @@ bool TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress::
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::DetailSessions()
+    :
+    detail_session(this, {"id"})
 {
 
-    yang_name = "detail-sessions"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-sessions"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::~DetailSessions()
@@ -11797,7 +11925,8 @@ TcpNsr::Nodes::Node::Session::DetailSessions::~DetailSessions()
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::has_data() const
 {
-    for (std::size_t index=0; index<detail_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_session.len(); index++)
     {
         if(detail_session[index]->has_data())
             return true;
@@ -11807,7 +11936,7 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::has_data() const
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::has_operation() const
 {
-    for (std::size_t index=0; index<detail_session.size(); index++)
+    for (std::size_t index=0; index<detail_session.len(); index++)
     {
         if(detail_session[index]->has_operation())
             return true;
@@ -11837,7 +11966,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::get_child_
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession>();
         c->parent = this;
-        detail_session.push_back(c);
+        detail_session.append(c);
         return c;
     }
 
@@ -11849,7 +11978,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Det
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_session)
+    for (auto c : detail_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11921,12 +12050,16 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::DetailSession()
     max_number_of_held_packet_reach_time{YType::uint32, "max-number-of-held-packet-reach-time"},
     max_number_of_held_internal_ack{YType::int32, "max-number-of-held-internal-ack"},
     max_number_of_held_internal_ack_reach_time{YType::uint32, "max-number-of-held-internal-ack-reach-time"}
-    	,
+        ,
     set_information(std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation>())
+    , local_address(this, {})
+    , foreign_address(this, {})
+    , packet_hold_queue(this, {})
+    , internal_ack_hold_queue(this, {})
 {
     set_information->parent = this;
 
-    yang_name = "detail-session"; yang_parent_name = "detail-sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-session"; yang_parent_name = "detail-sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::~DetailSession()
@@ -11935,22 +12068,23 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::~DetailSession()
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_data() const
 {
-    for (std::size_t index=0; index<local_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_address.len(); index++)
     {
         if(local_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<foreign_address.size(); index++)
+    for (std::size_t index=0; index<foreign_address.len(); index++)
     {
         if(foreign_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<packet_hold_queue.size(); index++)
+    for (std::size_t index=0; index<packet_hold_queue.len(); index++)
     {
         if(packet_hold_queue[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<internal_ack_hold_queue.size(); index++)
+    for (std::size_t index=0; index<internal_ack_hold_queue.len(); index++)
     {
         if(internal_ack_hold_queue[index]->has_data())
             return true;
@@ -12004,22 +12138,22 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_data() con
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation() const
 {
-    for (std::size_t index=0; index<local_address.size(); index++)
+    for (std::size_t index=0; index<local_address.len(); index++)
     {
         if(local_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<foreign_address.size(); index++)
+    for (std::size_t index=0; index<foreign_address.len(); index++)
     {
         if(foreign_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<packet_hold_queue.size(); index++)
+    for (std::size_t index=0; index<packet_hold_queue.len(); index++)
     {
         if(packet_hold_queue[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<internal_ack_hold_queue.size(); index++)
+    for (std::size_t index=0; index<internal_ack_hold_queue.len(); index++)
     {
         if(internal_ack_hold_queue[index]->has_operation())
             return true;
@@ -12075,7 +12209,8 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::has_operation(
 std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail-session" <<"[id='" <<id <<"']";
+    path_buffer << "detail-session";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -12147,7 +12282,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress>();
         c->parent = this;
-        local_address.push_back(c);
+        local_address.append(c);
         return c;
     }
 
@@ -12155,7 +12290,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress>();
         c->parent = this;
-        foreign_address.push_back(c);
+        foreign_address.append(c);
         return c;
     }
 
@@ -12163,7 +12298,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue>();
         c->parent = this;
-        packet_hold_queue.push_back(c);
+        packet_hold_queue.append(c);
         return c;
     }
 
@@ -12171,7 +12306,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Session::DetailSessions::DetailSess
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue>();
         c->parent = this;
-        internal_ack_hold_queue.push_back(c);
+        internal_ack_hold_queue.append(c);
         return c;
     }
 
@@ -12188,7 +12323,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Det
     }
 
     count = 0;
-    for (auto const & c : local_address)
+    for (auto c : local_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12197,7 +12332,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Det
     }
 
     count = 0;
-    for (auto const & c : foreign_address)
+    for (auto c : foreign_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12206,7 +12341,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Det
     }
 
     count = 0;
-    for (auto const & c : packet_hold_queue)
+    for (auto c : packet_hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12215,7 +12350,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Session::Det
     }
 
     count = 0;
-    for (auto const & c : internal_ack_hold_queue)
+    for (auto c : internal_ack_hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12703,7 +12838,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::Set
     is_sscb_init_sync_ready{YType::boolean, "is-sscb-init-sync-ready"}
 {
 
-    yang_name = "set-information"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "set-information"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::~SetInformation()
@@ -12712,6 +12847,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::~Se
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return sscb.is_set
 	|| pid.is_set
 	|| client_name.is_set
@@ -13001,7 +13137,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::Local
     entry{YType::str, "entry"}
 {
 
-    yang_name = "local-address"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-address"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::~LocalAddress()
@@ -13010,6 +13146,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::~Loca
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -13078,7 +13215,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::For
     entry{YType::str, "entry"}
 {
 
-    yang_name = "foreign-address"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "foreign-address"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::~ForeignAddress()
@@ -13087,6 +13224,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::~Fo
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -13157,7 +13295,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::Pa
     acknoledgement_number{YType::uint32, "acknoledgement-number"}
 {
 
-    yang_name = "packet-hold-queue"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-hold-queue"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::~PacketHoldQueue()
@@ -13166,6 +13304,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::~P
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| data_length.is_set
 	|| acknoledgement_number.is_set;
@@ -13262,7 +13401,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueu
     acknoledgement_number{YType::uint32, "acknoledgement-number"}
 {
 
-    yang_name = "internal-ack-hold-queue"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "internal-ack-hold-queue"; yang_parent_name = "detail-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::~InternalAckHoldQueue()
@@ -13271,6 +13410,7 @@ TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueu
 
 bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| data_length.is_set
 	|| acknoledgement_number.is_set;
@@ -13363,12 +13503,12 @@ bool TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHol
 TcpNsr::Nodes::Node::Client::Client()
     :
     detail_clients(std::make_shared<TcpNsr::Nodes::Node::Client::DetailClients>())
-	,brief_clients(std::make_shared<TcpNsr::Nodes::Node::Client::BriefClients>())
+    , brief_clients(std::make_shared<TcpNsr::Nodes::Node::Client::BriefClients>())
 {
     detail_clients->parent = this;
     brief_clients->parent = this;
 
-    yang_name = "client"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Client::~Client()
@@ -13377,6 +13517,7 @@ TcpNsr::Nodes::Node::Client::~Client()
 
 bool TcpNsr::Nodes::Node::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return (detail_clients !=  nullptr && detail_clients->has_data())
 	|| (brief_clients !=  nullptr && brief_clients->has_data());
 }
@@ -13460,9 +13601,11 @@ bool TcpNsr::Nodes::Node::Client::has_leaf_or_child_of_name(const std::string & 
 }
 
 TcpNsr::Nodes::Node::Client::DetailClients::DetailClients()
+    :
+    detail_client(this, {"id"})
 {
 
-    yang_name = "detail-clients"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-clients"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Client::DetailClients::~DetailClients()
@@ -13471,7 +13614,8 @@ TcpNsr::Nodes::Node::Client::DetailClients::~DetailClients()
 
 bool TcpNsr::Nodes::Node::Client::DetailClients::has_data() const
 {
-    for (std::size_t index=0; index<detail_client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_client.len(); index++)
     {
         if(detail_client[index]->has_data())
             return true;
@@ -13481,7 +13625,7 @@ bool TcpNsr::Nodes::Node::Client::DetailClients::has_data() const
 
 bool TcpNsr::Nodes::Node::Client::DetailClients::has_operation() const
 {
-    for (std::size_t index=0; index<detail_client.size(); index++)
+    for (std::size_t index=0; index<detail_client.len(); index++)
     {
         if(detail_client[index]->has_operation())
             return true;
@@ -13511,7 +13655,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::DetailClients::get_child_by
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Client::DetailClients::DetailClient>();
         c->parent = this;
-        detail_client.push_back(c);
+        detail_client.append(c);
         return c;
     }
 
@@ -13523,7 +13667,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::Deta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_client)
+    for (auto c : detail_client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13564,7 +13708,7 @@ TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::DetailClient()
     is_notification_registered{YType::boolean, "is-notification-registered"}
 {
 
-    yang_name = "detail-client"; yang_parent_name = "detail-clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-client"; yang_parent_name = "detail-clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::~DetailClient()
@@ -13573,6 +13717,7 @@ TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::~DetailClient()
 
 bool TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| ccb.is_set
 	|| pid.is_set
@@ -13605,7 +13750,8 @@ bool TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::has_operation() c
 std::string TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail-client" <<"[id='" <<id <<"']";
+    path_buffer << "detail-client";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -13767,9 +13913,11 @@ bool TcpNsr::Nodes::Node::Client::DetailClients::DetailClient::has_leaf_or_child
 }
 
 TcpNsr::Nodes::Node::Client::BriefClients::BriefClients()
+    :
+    brief_client(this, {"id"})
 {
 
-    yang_name = "brief-clients"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-clients"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Client::BriefClients::~BriefClients()
@@ -13778,7 +13926,8 @@ TcpNsr::Nodes::Node::Client::BriefClients::~BriefClients()
 
 bool TcpNsr::Nodes::Node::Client::BriefClients::has_data() const
 {
-    for (std::size_t index=0; index<brief_client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief_client.len(); index++)
     {
         if(brief_client[index]->has_data())
             return true;
@@ -13788,7 +13937,7 @@ bool TcpNsr::Nodes::Node::Client::BriefClients::has_data() const
 
 bool TcpNsr::Nodes::Node::Client::BriefClients::has_operation() const
 {
-    for (std::size_t index=0; index<brief_client.size(); index++)
+    for (std::size_t index=0; index<brief_client.len(); index++)
     {
         if(brief_client[index]->has_operation())
             return true;
@@ -13818,7 +13967,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Client::BriefClients::get_child_by_
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Client::BriefClients::BriefClient>();
         c->parent = this;
-        brief_client.push_back(c);
+        brief_client.append(c);
         return c;
     }
 
@@ -13830,7 +13979,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Client::Brie
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief_client)
+    for (auto c : brief_client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13869,7 +14018,7 @@ TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::BriefClient()
     number_of_up_sessions{YType::uint32, "number-of-up-sessions"}
 {
 
-    yang_name = "brief-client"; yang_parent_name = "brief-clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-client"; yang_parent_name = "brief-clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::~BriefClient()
@@ -13878,6 +14027,7 @@ TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::~BriefClient()
 
 bool TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| ccb.is_set
 	|| pid.is_set
@@ -13906,7 +14056,8 @@ bool TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::has_operation() con
 std::string TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief-client" <<"[id='" <<id <<"']";
+    path_buffer << "brief-client";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -14048,12 +14199,12 @@ bool TcpNsr::Nodes::Node::Client::BriefClients::BriefClient::has_leaf_or_child_o
 TcpNsr::Nodes::Node::SessionSet::SessionSet()
     :
     detail_sets(std::make_shared<TcpNsr::Nodes::Node::SessionSet::DetailSets>())
-	,brief_sets(std::make_shared<TcpNsr::Nodes::Node::SessionSet::BriefSets>())
+    , brief_sets(std::make_shared<TcpNsr::Nodes::Node::SessionSet::BriefSets>())
 {
     detail_sets->parent = this;
     brief_sets->parent = this;
 
-    yang_name = "session-set"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-set"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::SessionSet::~SessionSet()
@@ -14062,6 +14213,7 @@ TcpNsr::Nodes::Node::SessionSet::~SessionSet()
 
 bool TcpNsr::Nodes::Node::SessionSet::has_data() const
 {
+    if (is_presence_container) return true;
     return (detail_sets !=  nullptr && detail_sets->has_data())
 	|| (brief_sets !=  nullptr && brief_sets->has_data());
 }
@@ -14145,9 +14297,11 @@ bool TcpNsr::Nodes::Node::SessionSet::has_leaf_or_child_of_name(const std::strin
 }
 
 TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSets()
+    :
+    detail_set(this, {"id"})
 {
 
-    yang_name = "detail-sets"; yang_parent_name = "session-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-sets"; yang_parent_name = "session-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::SessionSet::DetailSets::~DetailSets()
@@ -14156,7 +14310,8 @@ TcpNsr::Nodes::Node::SessionSet::DetailSets::~DetailSets()
 
 bool TcpNsr::Nodes::Node::SessionSet::DetailSets::has_data() const
 {
-    for (std::size_t index=0; index<detail_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_set.len(); index++)
     {
         if(detail_set[index]->has_data())
             return true;
@@ -14166,7 +14321,7 @@ bool TcpNsr::Nodes::Node::SessionSet::DetailSets::has_data() const
 
 bool TcpNsr::Nodes::Node::SessionSet::DetailSets::has_operation() const
 {
-    for (std::size_t index=0; index<detail_set.size(); index++)
+    for (std::size_t index=0; index<detail_set.len(); index++)
     {
         if(detail_set[index]->has_operation())
             return true;
@@ -14196,7 +14351,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::DetailSets::get_child_b
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet>();
         c->parent = this;
-        detail_set.push_back(c);
+        detail_set.append(c);
         return c;
     }
 
@@ -14208,7 +14363,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_set)
+    for (auto c : detail_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14272,7 +14427,7 @@ TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::DetailSet()
     audit_end_time{YType::uint32, "audit-end-time"}
 {
 
-    yang_name = "detail-set"; yang_parent_name = "detail-sets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail-set"; yang_parent_name = "detail-sets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::~DetailSet()
@@ -14281,6 +14436,7 @@ TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::~DetailSet()
 
 bool TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| sscb.is_set
 	|| pid.is_set
@@ -14359,7 +14515,8 @@ bool TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::has_operation() con
 std::string TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail-set" <<"[id='" <<id <<"']";
+    path_buffer << "detail-set";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -14774,9 +14931,11 @@ bool TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet::has_leaf_or_child_o
 }
 
 TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSets()
+    :
+    brief_set(this, {"id"})
 {
 
-    yang_name = "brief-sets"; yang_parent_name = "session-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-sets"; yang_parent_name = "session-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::SessionSet::BriefSets::~BriefSets()
@@ -14785,7 +14944,8 @@ TcpNsr::Nodes::Node::SessionSet::BriefSets::~BriefSets()
 
 bool TcpNsr::Nodes::Node::SessionSet::BriefSets::has_data() const
 {
-    for (std::size_t index=0; index<brief_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief_set.len(); index++)
     {
         if(brief_set[index]->has_data())
             return true;
@@ -14795,7 +14955,7 @@ bool TcpNsr::Nodes::Node::SessionSet::BriefSets::has_data() const
 
 bool TcpNsr::Nodes::Node::SessionSet::BriefSets::has_operation() const
 {
-    for (std::size_t index=0; index<brief_set.size(); index++)
+    for (std::size_t index=0; index<brief_set.len(); index++)
     {
         if(brief_set[index]->has_operation())
             return true;
@@ -14825,7 +14985,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::SessionSet::BriefSets::get_child_by
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet>();
         c->parent = this;
-        brief_set.push_back(c);
+        brief_set.append(c);
         return c;
     }
 
@@ -14837,7 +14997,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::SessionSet::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief_set)
+    for (auto c : brief_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14886,7 +15046,7 @@ TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::BriefSet()
     is_sscb_init_sync_ready{YType::boolean, "is-sscb-init-sync-ready"}
 {
 
-    yang_name = "brief-set"; yang_parent_name = "brief-sets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief-set"; yang_parent_name = "brief-sets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::~BriefSet()
@@ -14895,6 +15055,7 @@ TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::~BriefSet()
 
 bool TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| sscb.is_set
 	|| pid.is_set
@@ -14943,7 +15104,8 @@ bool TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::has_operation() const
 std::string TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief-set" <<"[id='" <<id <<"']";
+    path_buffer << "brief-set";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -15195,16 +15357,16 @@ bool TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet::has_leaf_or_child_of_
 TcpNsr::Nodes::Node::Statistics::Statistics()
     :
     summary(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary>())
-	,statistic_clients(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients>())
-	,statistic_sets(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSets>())
-	,statistic_sessions(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions>())
+    , statistic_clients(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients>())
+    , statistic_sets(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSets>())
+    , statistic_sessions(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions>())
 {
     summary->parent = this;
     statistic_clients->parent = this;
     statistic_sets->parent = this;
     statistic_sessions->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::~Statistics()
@@ -15213,6 +15375,7 @@ TcpNsr::Nodes::Node::Statistics::~Statistics()
 
 bool TcpNsr::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (statistic_clients !=  nullptr && statistic_clients->has_data())
 	|| (statistic_sets !=  nullptr && statistic_sets->has_data())
@@ -15362,14 +15525,15 @@ TcpNsr::Nodes::Node::Statistics::Summary::Summary()
     internal_ack_drops_stale{YType::uint32, "internal-ack-drops-stale"},
     internal_ack_drops_immediate_match{YType::uint32, "internal-ack-drops-immediate-match"},
     held_packet_drops{YType::uint32, "held-packet-drops"}
-    	,
+        ,
     snd_counters(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters>())
-	,audit_counters(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters>())
+    , audit_counters(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters>())
+    , notification_statistic(this, {})
 {
     snd_counters->parent = this;
     audit_counters->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::~Summary()
@@ -15378,7 +15542,8 @@ TcpNsr::Nodes::Node::Statistics::Summary::~Summary()
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::has_data() const
 {
-    for (std::size_t index=0; index<notification_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<notification_statistic.len(); index++)
     {
         if(notification_statistic[index]->has_data())
             return true;
@@ -15422,7 +15587,7 @@ bool TcpNsr::Nodes::Node::Statistics::Summary::has_data() const
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<notification_statistic.size(); index++)
+    for (std::size_t index=0; index<notification_statistic.len(); index++)
     {
         if(notification_statistic[index]->has_operation())
             return true;
@@ -15538,7 +15703,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::Summary::get_child_by_n
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic>();
         c->parent = this;
-        notification_statistic.push_back(c);
+        notification_statistic.append(c);
         return c;
     }
 
@@ -15560,7 +15725,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::
     }
 
     count = 0;
-    for (auto const & c : notification_statistic)
+    for (auto c : notification_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15919,12 +16084,12 @@ bool TcpNsr::Nodes::Node::Statistics::Summary::has_leaf_or_child_of_name(const s
 TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::SndCounters()
     :
     common(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common>())
-	,aggr_only(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly>())
+    , aggr_only(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly>())
 {
     common->parent = this;
     aggr_only->parent = this;
 
-    yang_name = "snd-counters"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snd-counters"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::~SndCounters()
@@ -15933,6 +16098,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::~SndCounters()
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (common !=  nullptr && common->has_data())
 	|| (aggr_only !=  nullptr && aggr_only->has_data());
 }
@@ -16044,7 +16210,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::Common()
     cleanup_rcv_fail_buffer_trim{YType::uint32, "cleanup-rcv-fail-buffer-trim"}
 {
 
-    yang_name = "common"; yang_parent_name = "snd-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "snd-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::~Common()
@@ -16053,6 +16219,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::~Common()
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return data_xfer_send.is_set
 	|| data_xfer_send_total.is_set
 	|| data_xfer_send_drop.is_set
@@ -16440,7 +16607,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::AggrOnly()
     cleanup_rcv_drop_no_scb_dp{YType::uint32, "cleanup-rcv-drop-no-scb-dp"}
 {
 
-    yang_name = "aggr-only"; yang_parent_name = "snd-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggr-only"; yang_parent_name = "snd-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::~AggrOnly()
@@ -16449,6 +16616,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::~AggrOnly()
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return data_xfer_rcv_drop_no_pcb.is_set
 	|| data_xfer_rcv_drop_no_scb_dp.is_set
 	|| seg_instr_rcv_drop_no_pcb.is_set
@@ -16606,12 +16774,12 @@ bool TcpNsr::Nodes::Node::Statistics::Summary::SndCounters::AggrOnly::has_leaf_o
 TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AuditCounters()
     :
     common(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common>())
-	,aggr_only(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly>())
+    , aggr_only(std::make_shared<TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly>())
 {
     common->parent = this;
     aggr_only->parent = this;
 
-    yang_name = "audit-counters"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "audit-counters"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::~AuditCounters()
@@ -16620,6 +16788,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::~AuditCounters()
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (common !=  nullptr && common->has_data())
 	|| (aggr_only !=  nullptr && aggr_only->has_data());
 }
@@ -16731,7 +16900,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::Common()
     abort{YType::uint32, "abort"}
 {
 
-    yang_name = "common"; yang_parent_name = "audit-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "audit-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::~Common()
@@ -16740,6 +16909,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::~Common()
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_session_set_send.is_set
 	|| mark_session_set_send_drop.is_set
 	|| mark_session_set_rcv.is_set
@@ -17125,7 +17295,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::AggrOnly()
     mark_session_set_nack_rcv_drop_aggr{YType::uint32, "mark-session-set-nack-rcv-drop-aggr"}
 {
 
-    yang_name = "aggr-only"; yang_parent_name = "audit-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggr-only"; yang_parent_name = "audit-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::~AggrOnly()
@@ -17134,6 +17304,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::~AggrOnly()
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters::AggrOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_session_set_rcv_drop_aggr.is_set
 	|| session_rcv_drop_aggr.is_set
 	|| sweep_session_set_rcv_drop_aggr.is_set
@@ -17270,7 +17441,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::NotificationSta
     dropped_count{YType::uint32, "dropped-count"}
 {
 
-    yang_name = "notification-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "notification-statistic"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::~NotificationStatistic()
@@ -17279,6 +17450,7 @@ TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::~NotificationSt
 
 bool TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return queued_count.is_set
 	|| failed_count.is_set
 	|| delivered_count.is_set
@@ -17382,9 +17554,11 @@ bool TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::has_leaf_o
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClients()
+    :
+    statistic_client(this, {"id"})
 {
 
-    yang_name = "statistic-clients"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic-clients"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticClients::~StatisticClients()
@@ -17393,7 +17567,8 @@ TcpNsr::Nodes::Node::Statistics::StatisticClients::~StatisticClients()
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticClients::has_data() const
 {
-    for (std::size_t index=0; index<statistic_client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic_client.len(); index++)
     {
         if(statistic_client[index]->has_data())
             return true;
@@ -17403,7 +17578,7 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticClients::has_data() const
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticClients::has_operation() const
 {
-    for (std::size_t index=0; index<statistic_client.size(); index++)
+    for (std::size_t index=0; index<statistic_client.len(); index++)
     {
         if(statistic_client[index]->has_operation())
             return true;
@@ -17433,7 +17608,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::get_c
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient>();
         c->parent = this;
-        statistic_client.push_back(c);
+        statistic_client.append(c);
         return c;
     }
 
@@ -17445,7 +17620,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic_client)
+    for (auto c : statistic_client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17483,9 +17658,11 @@ TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::StatisticCli
     number_of_created_sscb{YType::uint32, "number-of-created-sscb"},
     number_of_deleted_sscb{YType::uint32, "number-of-deleted-sscb"},
     last_cleared_time{YType::uint32, "last-cleared-time"}
+        ,
+    notification_statistic(this, {})
 {
 
-    yang_name = "statistic-client"; yang_parent_name = "statistic-clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic-client"; yang_parent_name = "statistic-clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::~StatisticClient()
@@ -17494,7 +17671,8 @@ TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::~StatisticCl
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::has_data() const
 {
-    for (std::size_t index=0; index<notification_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<notification_statistic.len(); index++)
     {
         if(notification_statistic[index]->has_data())
             return true;
@@ -17513,7 +17691,7 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::has_dat
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::has_operation() const
 {
-    for (std::size_t index=0; index<notification_statistic.size(); index++)
+    for (std::size_t index=0; index<notification_statistic.len(); index++)
     {
         if(notification_statistic[index]->has_operation())
             return true;
@@ -17534,7 +17712,8 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::has_ope
 std::string TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic-client" <<"[id='" <<id <<"']";
+    path_buffer << "statistic-client";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -17563,7 +17742,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticClients::Stati
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic>();
         c->parent = this;
-        notification_statistic.push_back(c);
+        notification_statistic.append(c);
         return c;
     }
 
@@ -17575,7 +17754,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : notification_statistic)
+    for (auto c : notification_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17709,7 +17888,7 @@ TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::Notification
     dropped_count{YType::uint32, "dropped-count"}
 {
 
-    yang_name = "notification-statistic"; yang_parent_name = "statistic-client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "notification-statistic"; yang_parent_name = "statistic-client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::~NotificationStatistic()
@@ -17718,6 +17897,7 @@ TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::Notification
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return queued_count.is_set
 	|| failed_count.is_set
 	|| delivered_count.is_set
@@ -17821,9 +18001,11 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::Notific
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSets()
+    :
+    statistic_set(this, {"id"})
 {
 
-    yang_name = "statistic-sets"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic-sets"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticSets::~StatisticSets()
@@ -17832,7 +18014,8 @@ TcpNsr::Nodes::Node::Statistics::StatisticSets::~StatisticSets()
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticSets::has_data() const
 {
-    for (std::size_t index=0; index<statistic_set.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic_set.len(); index++)
     {
         if(statistic_set[index]->has_data())
             return true;
@@ -17842,7 +18025,7 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSets::has_data() const
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticSets::has_operation() const
 {
-    for (std::size_t index=0; index<statistic_set.size(); index++)
+    for (std::size_t index=0; index<statistic_set.len(); index++)
     {
         if(statistic_set[index]->has_operation())
             return true;
@@ -17872,7 +18055,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSets::get_chil
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet>();
         c->parent = this;
-        statistic_set.push_back(c);
+        statistic_set.append(c);
         return c;
     }
 
@@ -17884,7 +18067,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic_set)
+    for (auto c : statistic_set.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17923,7 +18106,7 @@ TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::StatisticSet()
     last_cleared_time{YType::uint32, "last-cleared-time"}
 {
 
-    yang_name = "statistic-set"; yang_parent_name = "statistic-sets"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic-set"; yang_parent_name = "statistic-sets"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::~StatisticSet()
@@ -17932,6 +18115,7 @@ TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::~StatisticSet()
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| sscb.is_set
 	|| set_id.is_set
@@ -17960,7 +18144,8 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::has_operation
 std::string TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic-set" <<"[id='" <<id <<"']";
+    path_buffer << "statistic-set";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -18100,9 +18285,11 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet::has_leaf_or_c
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSessions()
+    :
+    statistic_session(this, {"id"})
 {
 
-    yang_name = "statistic-sessions"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic-sessions"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticSessions::~StatisticSessions()
@@ -18111,7 +18298,8 @@ TcpNsr::Nodes::Node::Statistics::StatisticSessions::~StatisticSessions()
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::has_data() const
 {
-    for (std::size_t index=0; index<statistic_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic_session.len(); index++)
     {
         if(statistic_session[index]->has_data())
             return true;
@@ -18121,7 +18309,7 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::has_data() const
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::has_operation() const
 {
-    for (std::size_t index=0; index<statistic_session.size(); index++)
+    for (std::size_t index=0; index<statistic_session.len(); index++)
     {
         if(statistic_session[index]->has_operation())
             return true;
@@ -18151,7 +18339,7 @@ std::shared_ptr<Entity> TcpNsr::Nodes::Node::Statistics::StatisticSessions::get_
     {
         auto c = std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession>();
         c->parent = this;
-        statistic_session.push_back(c);
+        statistic_session.append(c);
         return c;
     }
 
@@ -18163,7 +18351,7 @@ std::map<std::string, std::shared_ptr<Entity>> TcpNsr::Nodes::Node::Statistics::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic_session)
+    for (auto c : statistic_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18202,12 +18390,12 @@ TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::StatisticS
     internal_ack_drops_stale{YType::uint64, "internal-ack-drops-stale"},
     internal_ack_drops_immediate_match{YType::uint64, "internal-ack-drops-immediate-match"},
     last_cleared_time{YType::uint32, "last-cleared-time"}
-    	,
+        ,
     snd_counters(std::make_shared<TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters>())
 {
     snd_counters->parent = this;
 
-    yang_name = "statistic-session"; yang_parent_name = "statistic-sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistic-session"; yang_parent_name = "statistic-sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::~StatisticSession()
@@ -18216,6 +18404,7 @@ TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::~Statistic
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| pcb.is_set
 	|| number_of_times_nsr_up.is_set
@@ -18250,7 +18439,8 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::has_o
 std::string TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic-session" <<"[id='" <<id <<"']";
+    path_buffer << "statistic-session";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -18454,7 +18644,7 @@ TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounter
     cleanup_rcv_fail_buffer_trim{YType::uint32, "cleanup-rcv-fail-buffer-trim"}
 {
 
-    yang_name = "snd-counters"; yang_parent_name = "statistic-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snd-counters"; yang_parent_name = "statistic-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::~SndCounters()
@@ -18463,6 +18653,7 @@ TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounter
 
 bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return data_xfer_send.is_set
 	|| data_xfer_send_total.is_set
 	|| data_xfer_send_drop.is_set
@@ -18838,39 +19029,6 @@ bool TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCo
     return false;
 }
 
-const Enum::YLeaf Show::all {0, "all"};
-const Enum::YLeaf Show::static_policy {1, "static-policy"};
-const Enum::YLeaf Show::interface_filter {2, "interface-filter"};
-const Enum::YLeaf Show::packet_filter {3, "packet-filter"};
-
-const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
-
-const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
-const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
-const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
-const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
-const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
-const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
-const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
-
 const Enum::YLeaf MessageTypeIcmpv6::destination_unreachable {1, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmpv6::packet_too_big {2, "packet-too-big"};
 const Enum::YLeaf MessageTypeIcmpv6::time_exceeded {3, "time-exceeded"};
@@ -18902,6 +19060,122 @@ const Enum::YLeaf MessageTypeIcmpv6::multicast_router_advertisement {151, "multi
 const Enum::YLeaf MessageTypeIcmpv6::multicast_router_solicitation {152, "multicast-router-solicitation"};
 const Enum::YLeaf MessageTypeIcmpv6::multicast_router_termination {153, "multicast-router-termination"};
 const Enum::YLeaf MessageTypeIcmpv6::fmipv6_messages {154, "fmipv6-messages"};
+
+const Enum::YLeaf Show::all {0, "all"};
+const Enum::YLeaf Show::static_policy {1, "static-policy"};
+const Enum::YLeaf Show::interface_filter {2, "interface-filter"};
+const Enum::YLeaf Show::packet_filter {3, "packet-filter"};
+
+const Enum::YLeaf MessageTypeIgmp::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf TcpConnState::closed {0, "closed"};
+const Enum::YLeaf TcpConnState::listen {1, "listen"};
+const Enum::YLeaf TcpConnState::syn_sent {2, "syn-sent"};
+const Enum::YLeaf TcpConnState::syn_received {3, "syn-received"};
+const Enum::YLeaf TcpConnState::established {4, "established"};
+const Enum::YLeaf TcpConnState::close_wait {5, "close-wait"};
+const Enum::YLeaf TcpConnState::fin_wait1 {6, "fin-wait1"};
+const Enum::YLeaf TcpConnState::closing {7, "closing"};
+const Enum::YLeaf TcpConnState::last_ack {8, "last-ack"};
+const Enum::YLeaf TcpConnState::fin_wait2 {9, "fin-wait2"};
+const Enum::YLeaf TcpConnState::time_wait {10, "time-wait"};
+
+const Enum::YLeaf PakPrio::unspecified_packet {0, "unspecified-packet"};
+const Enum::YLeaf PakPrio::normal_packet {1, "normal-packet"};
+const Enum::YLeaf PakPrio::medium_packet {2, "medium-packet"};
+const Enum::YLeaf PakPrio::high_packet {3, "high-packet"};
+const Enum::YLeaf PakPrio::crucial_packet {4, "crucial-packet"};
+
+const Enum::YLeaf MessageTypeIcmp::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmp::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmp::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmp::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmp::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmp::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmp::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmp::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmp::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmp::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmp::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmp::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmp::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmp::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmp::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmp::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmp::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmp::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmp::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmp::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmp::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmp::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmp::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmp::domain_name_request {37, "domain-name-request"};
+
+const Enum::YLeaf MessageTypeIgmp_::membership_query {17, "membership-query"};
+const Enum::YLeaf MessageTypeIgmp_::v1_membership_report {18, "v1-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::dvmrp {19, "dvmrp"};
+const Enum::YLeaf MessageTypeIgmp_::pi_mv1 {20, "pi-mv1"};
+const Enum::YLeaf MessageTypeIgmp_::cisco_trace_messages {21, "cisco-trace-messages"};
+const Enum::YLeaf MessageTypeIgmp_::v2_membership_report {22, "v2-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::v2_leave_group {23, "v2-leave-group"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute_response {30, "multicast-traceroute-response"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_traceroute {31, "multicast-traceroute"};
+const Enum::YLeaf MessageTypeIgmp_::v3_membership_report {34, "v3-membership-report"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_advertisement {48, "multicast-router-advertisement"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_solicitation {49, "multicast-router-solicitation"};
+const Enum::YLeaf MessageTypeIgmp_::multicast_router_termination {50, "multicast-router-termination"};
+
+const Enum::YLeaf Packet::icmp {0, "icmp"};
+const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
+const Enum::YLeaf Packet::igmp {2, "igmp"};
+const Enum::YLeaf Packet::unknown {3, "unknown"};
+
+const Enum::YLeaf MessageTypeIcmp_::echo_reply {0, "echo-reply"};
+const Enum::YLeaf MessageTypeIcmp_::destination_unreachable {3, "destination-unreachable"};
+const Enum::YLeaf MessageTypeIcmp_::source_quench {4, "source-quench"};
+const Enum::YLeaf MessageTypeIcmp_::redirect {5, "redirect"};
+const Enum::YLeaf MessageTypeIcmp_::alternate_host_address {6, "alternate-host-address"};
+const Enum::YLeaf MessageTypeIcmp_::echo {8, "echo"};
+const Enum::YLeaf MessageTypeIcmp_::router_advertisement {9, "router-advertisement"};
+const Enum::YLeaf MessageTypeIcmp_::router_selection {10, "router-selection"};
+const Enum::YLeaf MessageTypeIcmp_::time_exceeded {11, "time-exceeded"};
+const Enum::YLeaf MessageTypeIcmp_::parameter_problem {12, "parameter-problem"};
+const Enum::YLeaf MessageTypeIcmp_::time_stamp {13, "time-stamp"};
+const Enum::YLeaf MessageTypeIcmp_::time_stamp_reply {14, "time-stamp-reply"};
+const Enum::YLeaf MessageTypeIcmp_::information_request {15, "information-request"};
+const Enum::YLeaf MessageTypeIcmp_::information_reply {16, "information-reply"};
+const Enum::YLeaf MessageTypeIcmp_::address_mask_request {17, "address-mask-request"};
+const Enum::YLeaf MessageTypeIcmp_::address_mask_reply {18, "address-mask-reply"};
+const Enum::YLeaf MessageTypeIcmp_::trace_route {30, "trace-route"};
+const Enum::YLeaf MessageTypeIcmp_::datagram_conversion_error {31, "datagram-conversion-error"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_host_redirect {32, "mobile-host-redirect"};
+const Enum::YLeaf MessageTypeIcmp_::where_are_you {33, "where-are-you"};
+const Enum::YLeaf MessageTypeIcmp_::iam_here {34, "iam-here"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_registration_request {35, "mobile-registration-request"};
+const Enum::YLeaf MessageTypeIcmp_::mobile_registration_reply {36, "mobile-registration-reply"};
+const Enum::YLeaf MessageTypeIcmp_::domain_name_request {37, "domain-name-request"};
+
+const Enum::YLeaf AddrFamily::internetwork {2, "internetwork"};
+const Enum::YLeaf AddrFamily::ip_version6 {10, "ip-version6"};
+
+const Enum::YLeaf NsrStatus::down {0, "down"};
+const Enum::YLeaf NsrStatus::up {1, "up"};
+const Enum::YLeaf NsrStatus::na {2, "na"};
+
+const Enum::YLeaf TcpAddressFamily::ipv4 {2, "ipv4"};
+const Enum::YLeaf TcpAddressFamily::ipv6 {10, "ipv6"};
 
 const Enum::YLeaf MessageTypeIcmpv6_::destination_unreachable {1, "destination-unreachable"};
 const Enum::YLeaf MessageTypeIcmpv6_::packet_too_big {2, "packet-too-big"};
@@ -18935,61 +19209,6 @@ const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_solicitation {152, "multi
 const Enum::YLeaf MessageTypeIcmpv6_::multicast_router_termination {153, "multicast-router-termination"};
 const Enum::YLeaf MessageTypeIcmpv6_::fmipv6_messages {154, "fmipv6-messages"};
 
-const Enum::YLeaf MessageTypeIcmp::echo_reply {0, "echo-reply"};
-const Enum::YLeaf MessageTypeIcmp::destination_unreachable {3, "destination-unreachable"};
-const Enum::YLeaf MessageTypeIcmp::source_quench {4, "source-quench"};
-const Enum::YLeaf MessageTypeIcmp::redirect {5, "redirect"};
-const Enum::YLeaf MessageTypeIcmp::alternate_host_address {6, "alternate-host-address"};
-const Enum::YLeaf MessageTypeIcmp::echo {8, "echo"};
-const Enum::YLeaf MessageTypeIcmp::router_advertisement {9, "router-advertisement"};
-const Enum::YLeaf MessageTypeIcmp::router_selection {10, "router-selection"};
-const Enum::YLeaf MessageTypeIcmp::time_exceeded {11, "time-exceeded"};
-const Enum::YLeaf MessageTypeIcmp::parameter_problem {12, "parameter-problem"};
-const Enum::YLeaf MessageTypeIcmp::time_stamp {13, "time-stamp"};
-const Enum::YLeaf MessageTypeIcmp::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::YLeaf MessageTypeIcmp::information_request {15, "information-request"};
-const Enum::YLeaf MessageTypeIcmp::information_reply {16, "information-reply"};
-const Enum::YLeaf MessageTypeIcmp::address_mask_request {17, "address-mask-request"};
-const Enum::YLeaf MessageTypeIcmp::address_mask_reply {18, "address-mask-reply"};
-const Enum::YLeaf MessageTypeIcmp::trace_route {30, "trace-route"};
-const Enum::YLeaf MessageTypeIcmp::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::YLeaf MessageTypeIcmp::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::YLeaf MessageTypeIcmp::where_are_you {33, "where-are-you"};
-const Enum::YLeaf MessageTypeIcmp::iam_here {34, "iam-here"};
-const Enum::YLeaf MessageTypeIcmp::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::YLeaf MessageTypeIcmp::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::YLeaf MessageTypeIcmp::domain_name_request {37, "domain-name-request"};
-
-const Enum::YLeaf MessageTypeIcmp_::echo_reply {0, "echo-reply"};
-const Enum::YLeaf MessageTypeIcmp_::destination_unreachable {3, "destination-unreachable"};
-const Enum::YLeaf MessageTypeIcmp_::source_quench {4, "source-quench"};
-const Enum::YLeaf MessageTypeIcmp_::redirect {5, "redirect"};
-const Enum::YLeaf MessageTypeIcmp_::alternate_host_address {6, "alternate-host-address"};
-const Enum::YLeaf MessageTypeIcmp_::echo {8, "echo"};
-const Enum::YLeaf MessageTypeIcmp_::router_advertisement {9, "router-advertisement"};
-const Enum::YLeaf MessageTypeIcmp_::router_selection {10, "router-selection"};
-const Enum::YLeaf MessageTypeIcmp_::time_exceeded {11, "time-exceeded"};
-const Enum::YLeaf MessageTypeIcmp_::parameter_problem {12, "parameter-problem"};
-const Enum::YLeaf MessageTypeIcmp_::time_stamp {13, "time-stamp"};
-const Enum::YLeaf MessageTypeIcmp_::time_stamp_reply {14, "time-stamp-reply"};
-const Enum::YLeaf MessageTypeIcmp_::information_request {15, "information-request"};
-const Enum::YLeaf MessageTypeIcmp_::information_reply {16, "information-reply"};
-const Enum::YLeaf MessageTypeIcmp_::address_mask_request {17, "address-mask-request"};
-const Enum::YLeaf MessageTypeIcmp_::address_mask_reply {18, "address-mask-reply"};
-const Enum::YLeaf MessageTypeIcmp_::trace_route {30, "trace-route"};
-const Enum::YLeaf MessageTypeIcmp_::datagram_conversion_error {31, "datagram-conversion-error"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_host_redirect {32, "mobile-host-redirect"};
-const Enum::YLeaf MessageTypeIcmp_::where_are_you {33, "where-are-you"};
-const Enum::YLeaf MessageTypeIcmp_::iam_here {34, "iam-here"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_registration_request {35, "mobile-registration-request"};
-const Enum::YLeaf MessageTypeIcmp_::mobile_registration_reply {36, "mobile-registration-reply"};
-const Enum::YLeaf MessageTypeIcmp_::domain_name_request {37, "domain-name-request"};
-
-const Enum::YLeaf Packet::icmp {0, "icmp"};
-const Enum::YLeaf Packet::icm_pv6 {1, "icm-pv6"};
-const Enum::YLeaf Packet::igmp {2, "igmp"};
-const Enum::YLeaf Packet::unknown {3, "unknown"};
-
 const Enum::YLeaf NsrDownReason::none {0, "none"};
 const Enum::YLeaf NsrDownReason::init_sync_aborted {1, "init-sync-aborted"};
 const Enum::YLeaf NsrDownReason::client_disabled {2, "client-disabled"};
@@ -19007,13 +19226,6 @@ const Enum::YLeaf NsrDownReason::standby_session_close {13, "standby-session-clo
 const Enum::YLeaf NsrDownReason::standby_rxpath_frozen {14, "standby-rxpath-frozen"};
 const Enum::YLeaf NsrDownReason::partner_deleted {15, "partner-deleted"};
 
-const Enum::YLeaf NsrStatus::down {0, "down"};
-const Enum::YLeaf NsrStatus::up {1, "up"};
-const Enum::YLeaf NsrStatus::na {2, "na"};
-
-const Enum::YLeaf AddrFamily::internetwork {2, "internetwork"};
-const Enum::YLeaf AddrFamily::ip_version6 {10, "ip-version6"};
-
 const Enum::YLeaf TcpTimer::retransmission_timer {0, "retransmission-timer"};
 const Enum::YLeaf TcpTimer::window_probe_timer {1, "window-probe-timer"};
 const Enum::YLeaf TcpTimer::timewait_state_timer {2, "timewait-state-timer"};
@@ -19022,27 +19234,6 @@ const Enum::YLeaf TcpTimer::keep_alive_timer {4, "keep-alive-timer"};
 const Enum::YLeaf TcpTimer::pmtu_ager_timer {5, "pmtu-ager-timer"};
 const Enum::YLeaf TcpTimer::retransmission_giveup_timer {6, "retransmission-giveup-timer"};
 const Enum::YLeaf TcpTimer::throttle_timer {7, "throttle-timer"};
-
-const Enum::YLeaf PakPrio::unspecified_packet {0, "unspecified-packet"};
-const Enum::YLeaf PakPrio::normal_packet {1, "normal-packet"};
-const Enum::YLeaf PakPrio::medium_packet {2, "medium-packet"};
-const Enum::YLeaf PakPrio::high_packet {3, "high-packet"};
-const Enum::YLeaf PakPrio::crucial_packet {4, "crucial-packet"};
-
-const Enum::YLeaf TcpConnState::closed {0, "closed"};
-const Enum::YLeaf TcpConnState::listen {1, "listen"};
-const Enum::YLeaf TcpConnState::syn_sent {2, "syn-sent"};
-const Enum::YLeaf TcpConnState::syn_received {3, "syn-received"};
-const Enum::YLeaf TcpConnState::established {4, "established"};
-const Enum::YLeaf TcpConnState::close_wait {5, "close-wait"};
-const Enum::YLeaf TcpConnState::fin_wait1 {6, "fin-wait1"};
-const Enum::YLeaf TcpConnState::closing {7, "closing"};
-const Enum::YLeaf TcpConnState::last_ack {8, "last-ack"};
-const Enum::YLeaf TcpConnState::fin_wait2 {9, "fin-wait2"};
-const Enum::YLeaf TcpConnState::time_wait {10, "time-wait"};
-
-const Enum::YLeaf TcpAddressFamily::ipv4 {2, "ipv4"};
-const Enum::YLeaf TcpAddressFamily::ipv6 {10, "ipv6"};
 
 
 }

@@ -31,24 +31,24 @@ class CISCOEMBEDDEDEVENTMGRMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceemhistory; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory
-        class Ceemeventmaptable; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable
-        class Ceemhistoryeventtable; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable
-        class Ceemregisteredpolicytable; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable
+        class CeemHistory; //type: CISCOEMBEDDEDEVENTMGRMIB::CeemHistory
+        class CeemEventMapTable; //type: CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable
+        class CeemHistoryEventTable; //type: CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable
+        class CeemRegisteredPolicyTable; //type: CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory> ceemhistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable> ceemeventmaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable> ceemhistoryeventtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable> ceemregisteredpolicytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::CeemHistory> ceemhistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable> ceemeventmaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable> ceemhistoryeventtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable> ceemregisteredpolicytable;
         
 }; // CISCOEMBEDDEDEVENTMGRMIB
 
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory : public ydk::Entity
+class CISCOEMBEDDEDEVENTMGRMIB::CeemHistory : public ydk::Entity
 {
     public:
-        Ceemhistory();
-        ~Ceemhistory();
+        CeemHistory();
+        ~CeemHistory();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -64,14 +64,14 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory : public ydk::Entity
         ydk::YLeaf ceemhistorymaxevententries; //type: int32
         ydk::YLeaf ceemhistorylastevententry; //type: uint32
 
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemhistory
+}; // CISCOEMBEDDEDEVENTMGRMIB::CeemHistory
 
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable : public ydk::Entity
+class CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable : public ydk::Entity
 {
     public:
-        Ceemeventmaptable();
-        ~Ceemeventmaptable();
+        CeemEventMapTable();
+        ~CeemEventMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,18 +84,18 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceemeventmapentry; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry
+        class CeemEventMapEntry; //type: CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry> > ceemeventmapentry;
+        ydk::YList ceemeventmapentry;
         
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable
+}; // CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable
 
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry : public ydk::Entity
+class CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry : public ydk::Entity
 {
     public:
-        Ceemeventmapentry();
-        ~Ceemeventmapentry();
+        CeemEventMapEntry();
+        ~CeemEventMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -112,14 +112,14 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry : public yd
         ydk::YLeaf ceemeventname; //type: string
         ydk::YLeaf ceemeventdescrtext; //type: string
 
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemeventmaptable::Ceemeventmapentry
+}; // CISCOEMBEDDEDEVENTMGRMIB::CeemEventMapTable::CeemEventMapEntry
 
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable : public ydk::Entity
+class CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable : public ydk::Entity
 {
     public:
-        Ceemhistoryeventtable();
-        ~Ceemhistoryeventtable();
+        CeemHistoryEventTable();
+        ~CeemHistoryEventTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -132,18 +132,18 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceemhistoryevententry; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry
+        class CeemHistoryEventEntry; //type: CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry> > ceemhistoryevententry;
+        ydk::YList ceemhistoryevententry;
         
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable
+}; // CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable
 
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry : public ydk::Entity
+class CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry : public ydk::Entity
 {
     public:
-        Ceemhistoryevententry();
-        ~Ceemhistoryevententry();
+        CeemHistoryEventEntry();
+        ~CeemHistoryEventEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -173,14 +173,14 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry : p
         ydk::YLeaf ceemhistoryeventtype7; //type: uint32
         ydk::YLeaf ceemhistoryeventtype8; //type: uint32
 
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemhistoryeventtable::Ceemhistoryevententry
+}; // CISCOEMBEDDEDEVENTMGRMIB::CeemHistoryEventTable::CeemHistoryEventEntry
 
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable : public ydk::Entity
+class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable : public ydk::Entity
 {
     public:
-        Ceemregisteredpolicytable();
-        ~Ceemregisteredpolicytable();
+        CeemRegisteredPolicyTable();
+        ~CeemRegisteredPolicyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -193,18 +193,18 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceemregisteredpolicyentry; //type: CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry
+        class CeemRegisteredPolicyEntry; //type: CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_EMBEDDED_EVENT_MGR_MIB::CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry> > ceemregisteredpolicyentry;
+        ydk::YList ceemregisteredpolicyentry;
         
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable
+}; // CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable
 
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry : public ydk::Entity
+class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry : public ydk::Entity
 {
     public:
-        Ceemregisteredpolicyentry();
-        ~Ceemregisteredpolicyentry();
+        CeemRegisteredPolicyEntry();
+        ~CeemRegisteredPolicyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -223,8 +223,8 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicye
         ydk::YLeaf ceemregisteredpolicyeventtype2; //type: uint32
         ydk::YLeaf ceemregisteredpolicyeventtype3; //type: uint32
         ydk::YLeaf ceemregisteredpolicyeventtype4; //type: uint32
-        ydk::YLeaf ceemregisteredpolicystatus; //type: Ceemregisteredpolicystatus
-        ydk::YLeaf ceemregisteredpolicytype; //type: Ceemregisteredpolicytype
+        ydk::YLeaf ceemregisteredpolicystatus; //type: CeemRegisteredPolicyStatus
+        ydk::YLeaf ceemregisteredpolicytype; //type: CeemRegisteredPolicyType
         ydk::YLeaf ceemregisteredpolicynotifflag; //type: boolean
         ydk::YLeaf ceemregisteredpolicyregtime; //type: string
         ydk::YLeaf ceemregisteredpolicyenabledtime; //type: string
@@ -234,10 +234,10 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicye
         ydk::YLeaf ceemregisteredpolicyeventtype6; //type: uint32
         ydk::YLeaf ceemregisteredpolicyeventtype7; //type: uint32
         ydk::YLeaf ceemregisteredpolicyeventtype8; //type: uint32
-        class Ceemregisteredpolicystatus;
-        class Ceemregisteredpolicytype;
+        class CeemRegisteredPolicyStatus;
+        class CeemRegisteredPolicyType;
 
-}; // CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry
+}; // CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry
 
 class NotifySource : public ydk::Enum
 {
@@ -247,7 +247,7 @@ class NotifySource : public ydk::Enum
 
 };
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicystatus : public ydk::Enum
+class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::CeemRegisteredPolicyStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -255,7 +255,7 @@ class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicye
 
 };
 
-class CISCOEMBEDDEDEVENTMGRMIB::Ceemregisteredpolicytable::Ceemregisteredpolicyentry::Ceemregisteredpolicytype : public ydk::Enum
+class CISCOEMBEDDEDEVENTMGRMIB::CeemRegisteredPolicyTable::CeemRegisteredPolicyEntry::CeemRegisteredPolicyType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf user;

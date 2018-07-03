@@ -32,20 +32,20 @@ class CISCOIPTAPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Citapstreamencodepacket; //type: CISCOIPTAPMIB::Citapstreamencodepacket
-        class Citapstreamtable; //type: CISCOIPTAPMIB::Citapstreamtable
+        class CitapStreamEncodePacket; //type: CISCOIPTAPMIB::CitapStreamEncodePacket
+        class CitapStreamTable; //type: CISCOIPTAPMIB::CitapStreamTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_TAP_MIB::CISCOIPTAPMIB::Citapstreamencodepacket> citapstreamencodepacket;
-        std::shared_ptr<cisco_ios_xe::CISCO_IP_TAP_MIB::CISCOIPTAPMIB::Citapstreamtable> citapstreamtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_TAP_MIB::CISCOIPTAPMIB::CitapStreamEncodePacket> citapstreamencodepacket;
+        std::shared_ptr<cisco_ios_xe::CISCO_IP_TAP_MIB::CISCOIPTAPMIB::CitapStreamTable> citapstreamtable;
         
 }; // CISCOIPTAPMIB
 
 
-class CISCOIPTAPMIB::Citapstreamencodepacket : public ydk::Entity
+class CISCOIPTAPMIB::CitapStreamEncodePacket : public ydk::Entity
 {
     public:
-        Citapstreamencodepacket();
-        ~Citapstreamencodepacket();
+        CitapStreamEncodePacket();
+        ~CitapStreamEncodePacket();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -58,16 +58,16 @@ class CISCOIPTAPMIB::Citapstreamencodepacket : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf citapstreamcapabilities; //type: Citapstreamcapabilities
+        ydk::YLeaf citapstreamcapabilities; //type: CitapStreamCapabilities
 
-}; // CISCOIPTAPMIB::Citapstreamencodepacket
+}; // CISCOIPTAPMIB::CitapStreamEncodePacket
 
 
-class CISCOIPTAPMIB::Citapstreamtable : public ydk::Entity
+class CISCOIPTAPMIB::CitapStreamTable : public ydk::Entity
 {
     public:
-        Citapstreamtable();
-        ~Citapstreamtable();
+        CitapStreamTable();
+        ~CitapStreamTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -80,18 +80,18 @@ class CISCOIPTAPMIB::Citapstreamtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Citapstreamentry; //type: CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry
+        class CitapStreamEntry; //type: CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IP_TAP_MIB::CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry> > citapstreamentry;
+        ydk::YList citapstreamentry;
         
-}; // CISCOIPTAPMIB::Citapstreamtable
+}; // CISCOIPTAPMIB::CitapStreamTable
 
 
-class CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry : public ydk::Entity
+class CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry : public ydk::Entity
 {
     public:
-        Citapstreamentry();
-        ~Citapstreamentry();
+        CitapStreamEntry();
+        ~CitapStreamEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -104,9 +104,9 @@ class CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_TAP2_MIB::CISCOTAP2MIB::Ctap2Mediationtable::Ctap2Mediationentry::ctap2mediationcontentid)
+        //type: int32 (refers to cisco_ios_xe::CISCO_TAP2_MIB::CISCOTAP2MIB::CTap2MediationTable::CTap2MediationEntry::ctap2mediationcontentid)
         ydk::YLeaf ctap2mediationcontentid;
-        //type: int32 (refers to cisco_ios_xe::CISCO_TAP2_MIB::CISCOTAP2MIB::Ctap2Streamtable::Ctap2Streamentry::ctap2streamindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_TAP2_MIB::CISCOTAP2MIB::CTap2StreamTable::CTap2StreamEntry::ctap2streamindex)
         ydk::YLeaf ctap2streamindex;
         ydk::YLeaf citapstreaminterface; //type: int32
         ydk::YLeaf citapstreamaddrtype; //type: InetAddressType
@@ -125,7 +125,7 @@ class CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry : public ydk::Entity
         ydk::YLeaf citapstreamvrf; //type: string
         ydk::YLeaf citapstreamstatus; //type: RowStatus
 
-}; // CISCOIPTAPMIB::Citapstreamtable::Citapstreamentry
+}; // CISCOIPTAPMIB::CitapStreamTable::CitapStreamEntry
 
 
 }

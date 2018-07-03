@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_iedge4710_oper {
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "ipv4-address-vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "ipv4-address-vrf-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::~StateXr()
@@ -30,6 +30,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -139,7 +140,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::~Pppoe()
@@ -148,6 +149,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -300,7 +302,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -309,6 +311,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -461,7 +464,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -470,6 +473,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -614,14 +618,14 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSu
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-vrf-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -630,6 +634,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -738,7 +743,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -747,6 +752,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -885,7 +891,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -894,6 +900,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -1032,7 +1039,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -1041,6 +1048,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -1170,9 +1178,11 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4AddressVrfSu
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummaries()
+    :
+    address_family_summary(this, {"address_family"})
 {
 
-    yang_name = "address-family-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::~AddressFamilySummaries()
@@ -1181,7 +1191,8 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::~AddressFamilySummarie
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::has_data() const
 {
-    for (std::size_t index=0; index<address_family_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_family_summary.len(); index++)
     {
         if(address_family_summary[index]->has_data())
             return true;
@@ -1191,7 +1202,7 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::has_operation() const
 {
-    for (std::size_t index=0; index<address_family_summary.size(); index++)
+    for (std::size_t index=0; index<address_family_summary.len(); index++)
     {
         if(address_family_summary[index]->has_operation())
             return true;
@@ -1221,7 +1232,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AddressFamilySummaries
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary>();
         c->parent = this;
-        address_family_summary.push_back(c);
+        address_family_summary.append(c);
         return c;
     }
 
@@ -1233,7 +1244,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_family_summary)
+    for (auto c : address_family_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1262,14 +1273,14 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::has_leaf_or_child
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilySummary()
     :
     address_family{YType::enumeration, "address-family"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "address-family-summary"; yang_parent_name = "address-family-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-summary"; yang_parent_name = "address-family-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::~AddressFamilySummary()
@@ -1278,6 +1289,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -1294,7 +1306,8 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySumm
 std::string Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address-family-summary" <<"[address-family='" <<address_family <<"']";
+    path_buffer << "address-family-summary";
+    ADD_KEY_TOKEN(address_family, "address-family");
     return path_buffer.str();
 }
 
@@ -1376,14 +1389,14 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySumm
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "address-family-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "address-family-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::~StateXr()
@@ -1392,6 +1405,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -1501,7 +1515,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::~Pppoe()
@@ -1510,6 +1524,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -1662,7 +1677,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -1671,6 +1686,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -1823,7 +1839,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -1832,6 +1848,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -1976,14 +1993,14 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySumm
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "address-family-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "address-family-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::~AddressFamilyXr()
@@ -1992,6 +2009,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -2100,7 +2118,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -2109,6 +2127,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -2247,7 +2266,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -2256,6 +2275,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -2394,7 +2414,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -2403,6 +2423,7 @@ Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::
 
 bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -2532,9 +2553,11 @@ bool Subscriber::Session::Nodes::Node::AddressFamilySummaries::AddressFamilySumm
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummaries()
+    :
+    username_summary(this, {"username"})
 {
 
-    yang_name = "username-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "username-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::~UsernameSummaries()
@@ -2543,7 +2566,8 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::~UsernameSummaries()
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_data() const
 {
-    for (std::size_t index=0; index<username_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<username_summary.len(); index++)
     {
         if(username_summary[index]->has_data())
             return true;
@@ -2553,7 +2577,7 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<username_summary.size(); index++)
+    for (std::size_t index=0; index<username_summary.len(); index++)
     {
         if(username_summary[index]->has_operation())
             return true;
@@ -2583,7 +2607,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::UsernameSummaries::get
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary>();
         c->parent = this;
-        username_summary.push_back(c);
+        username_summary.append(c);
         return c;
     }
 
@@ -2595,7 +2619,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : username_summary)
+    for (auto c : username_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2624,14 +2648,14 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::has_leaf_or_child_of_n
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::UsernameSummary()
     :
     username{YType::str, "username"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "username-summary"; yang_parent_name = "username-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "username-summary"; yang_parent_name = "username-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::~UsernameSummary()
@@ -2640,6 +2664,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::~UsernameS
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -2656,7 +2681,8 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_o
 std::string Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "username-summary" <<"[username='" <<username <<"']";
+    path_buffer << "username-summary";
+    ADD_KEY_TOKEN(username, "username");
     return path_buffer.str();
 }
 
@@ -2738,14 +2764,14 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::has_l
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "username-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "username-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::~StateXr()
@@ -2754,6 +2780,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::~
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -2863,7 +2890,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::P
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::~Pppoe()
@@ -2872,6 +2899,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::P
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -3024,7 +3052,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::I
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -3033,6 +3061,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::I
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -3185,7 +3214,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::I
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -3194,6 +3223,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::I
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -3338,14 +3368,14 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::State
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "username-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "username-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -3354,6 +3384,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -3462,7 +3493,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -3471,6 +3502,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -3609,7 +3641,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -3618,6 +3650,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -3756,7 +3789,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -3765,6 +3798,7 @@ Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFam
 
 bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -3894,9 +3928,11 @@ bool Subscriber::Session::Nodes::Node::UsernameSummaries::UsernameSummary::Addre
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummaries()
+    :
+    access_interface_summary(this, {"interface_name"})
 {
 
-    yang_name = "access-interface-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::~AccessInterfaceSummaries()
@@ -3905,7 +3941,8 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::~AccessInterfaceSumm
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::has_data() const
 {
-    for (std::size_t index=0; index<access_interface_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_interface_summary.len(); index++)
     {
         if(access_interface_summary[index]->has_data())
             return true;
@@ -3915,7 +3952,7 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::has_data() cons
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<access_interface_summary.size(); index++)
+    for (std::size_t index=0; index<access_interface_summary.len(); index++)
     {
         if(access_interface_summary[index]->has_operation())
             return true;
@@ -3945,7 +3982,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::AccessInterfaceSummari
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary>();
         c->parent = this;
-        access_interface_summary.push_back(c);
+        access_interface_summary.append(c);
         return c;
     }
 
@@ -3957,7 +3994,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_interface_summary)
+    for (auto c : access_interface_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3986,14 +4023,14 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::has_leaf_or_chi
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AccessInterfaceSummary()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "access-interface-summary"; yang_parent_name = "access-interface-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface-summary"; yang_parent_name = "access-interface-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::~AccessInterfaceSummary()
@@ -4002,6 +4039,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -4018,7 +4056,8 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterface
 std::string Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-interface-summary" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "access-interface-summary";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4100,14 +4139,14 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterface
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::~StateXr()
@@ -4116,6 +4155,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -4225,7 +4265,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::~Pppoe()
@@ -4234,6 +4274,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -4386,7 +4427,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -4395,6 +4436,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -4547,7 +4589,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -4556,6 +4598,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -4700,14 +4743,14 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterface
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "access-interface-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -4716,6 +4759,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -4824,7 +4868,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -4833,6 +4877,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -4971,7 +5016,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -4980,6 +5025,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -5118,7 +5164,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -5127,6 +5173,7 @@ Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSumma
 
 bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterfaceSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -5256,9 +5303,11 @@ bool Subscriber::Session::Nodes::Node::AccessInterfaceSummaries::AccessInterface
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummaries()
+    :
+    ipv4_address_summary(this, {"address"})
 {
 
-    yang_name = "ipv4-address-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::~Ipv4AddressSummaries()
@@ -5267,7 +5316,8 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::~Ipv4AddressSummaries()
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_address_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_address_summary.len(); index++)
     {
         if(ipv4_address_summary[index]->has_data())
             return true;
@@ -5277,7 +5327,7 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_address_summary.size(); index++)
+    for (std::size_t index=0; index<ipv4_address_summary.len(); index++)
     {
         if(ipv4_address_summary[index]->has_operation())
             return true;
@@ -5307,7 +5357,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary>();
         c->parent = this;
-        ipv4_address_summary.push_back(c);
+        ipv4_address_summary.append(c);
         return c;
     }
 
@@ -5319,7 +5369,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_address_summary)
+    for (auto c : ipv4_address_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5348,14 +5398,14 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::has_leaf_or_child_o
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Ipv4AddressSummary()
     :
     address{YType::str, "address"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "ipv4-address-summary"; yang_parent_name = "ipv4-address-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-summary"; yang_parent_name = "ipv4-address-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::~Ipv4AddressSummary()
@@ -5364,6 +5414,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::~Ipv
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -5380,7 +5431,8 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
 std::string Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address-summary" <<"[address='" <<address <<"']";
+    path_buffer << "ipv4-address-summary";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -5462,14 +5514,14 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "ipv4-address-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "ipv4-address-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::~StateXr()
@@ -5478,6 +5530,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -5587,7 +5640,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::~Pppoe()
@@ -5596,6 +5649,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -5748,7 +5802,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -5757,6 +5811,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -5909,7 +5964,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -5918,6 +5973,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Stat
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -6062,14 +6118,14 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "ipv4-address-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -6078,6 +6134,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -6186,7 +6243,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -6195,6 +6252,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -6333,7 +6391,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -6342,6 +6400,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -6480,7 +6539,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -6489,6 +6548,7 @@ Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::Addr
 
 bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -6618,9 +6678,11 @@ bool Subscriber::Session::Nodes::Node::Ipv4AddressSummaries::Ipv4AddressSummary:
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummaries()
+    :
+    vrf_summary(this, {"vrf_name"})
 {
 
-    yang_name = "vrf-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::~VrfSummaries()
@@ -6629,7 +6691,8 @@ Subscriber::Session::Nodes::Node::VrfSummaries::~VrfSummaries()
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::has_data() const
 {
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_summary.len(); index++)
     {
         if(vrf_summary[index]->has_data())
             return true;
@@ -6639,7 +6702,7 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::has_data() const
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    for (std::size_t index=0; index<vrf_summary.len(); index++)
     {
         if(vrf_summary[index]->has_operation())
             return true;
@@ -6669,7 +6732,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::VrfSummaries::get_chil
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary>();
         c->parent = this;
-        vrf_summary.push_back(c);
+        vrf_summary.append(c);
         return c;
     }
 
@@ -6681,7 +6744,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf_summary)
+    for (auto c : vrf_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6710,14 +6773,14 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::has_leaf_or_child_of_name(c
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::VrfSummary()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     state_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr>())
-	,address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr>())
+    , address_family_xr(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr>())
 {
     state_xr->parent = this;
     address_family_xr->parent = this;
 
-    yang_name = "vrf-summary"; yang_parent_name = "vrf-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-summary"; yang_parent_name = "vrf-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::~VrfSummary()
@@ -6726,6 +6789,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::~VrfSummary()
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (state_xr !=  nullptr && state_xr->has_data())
 	|| (address_family_xr !=  nullptr && address_family_xr->has_data());
@@ -6742,7 +6806,8 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_operation()
 std::string Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-summary" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf-summary";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -6824,14 +6889,14 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::has_leaf_or_chi
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::StateXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "state-xr"; yang_parent_name = "vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state-xr"; yang_parent_name = "vrf-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::~StateXr()
@@ -6840,6 +6905,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::~StateXr()
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -6949,7 +7015,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::Pppo
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::~Pppoe()
@@ -6958,6 +7024,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::~Ppp
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -7110,7 +7177,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscribe
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -7119,6 +7186,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscribe
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -7271,7 +7339,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscribe
     end_sessions{YType::uint32, "end-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "state-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -7280,6 +7348,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscribe
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return initialized_sessions.is_set
 	|| connecting_sessions.is_set
 	|| connected_sessions.is_set
@@ -7424,14 +7493,14 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::StateXr::IpSubs
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::AddressFamilyXr()
     :
     pppoe(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe>())
-	,ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
-	,ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket>())
+    , ip_subscriber_dhcp(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp>())
+    , ip_subscriber_packet(std::make_shared<Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket>())
 {
     pppoe->parent = this;
     ip_subscriber_dhcp->parent = this;
     ip_subscriber_packet->parent = this;
 
-    yang_name = "address-family-xr"; yang_parent_name = "vrf-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-family-xr"; yang_parent_name = "vrf-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::~AddressFamilyXr()
@@ -7440,6 +7509,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::~Ad
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::has_data() const
 {
+    if (is_presence_container) return true;
     return (pppoe !=  nullptr && pppoe->has_data())
 	|| (ip_subscriber_dhcp !=  nullptr && ip_subscriber_dhcp->has_data())
 	|| (ip_subscriber_packet !=  nullptr && ip_subscriber_packet->has_data());
@@ -7548,7 +7618,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Ppp
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::~Pppoe()
@@ -7557,6 +7627,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Ppp
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -7695,7 +7766,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpS
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-dhcp"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::~IpSubscriberDhcp()
@@ -7704,6 +7775,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpS
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberDhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -7842,7 +7914,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpS
     lac_sessions{YType::uint32, "lac-sessions"}
 {
 
-    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-subscriber-packet"; yang_parent_name = "address-family-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::~IpSubscriberPacket()
@@ -7851,6 +7923,7 @@ Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpS
 
 bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr::IpSubscriberPacket::has_data() const
 {
+    if (is_presence_container) return true;
     return in_progress_sessions.is_set
 	|| ipv4_only_sessions.is_set
 	|| ipv6_only_sessions.is_set
@@ -7980,9 +8053,11 @@ bool Subscriber::Session::Nodes::Node::VrfSummaries::VrfSummary::AddressFamilyXr
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Sessions()
+    :
+    session(this, {"session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Sessions::~Sessions()
@@ -7991,7 +8066,8 @@ Subscriber::Session::Nodes::Node::Sessions::~Sessions()
 
 bool Subscriber::Session::Nodes::Node::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -8001,7 +8077,7 @@ bool Subscriber::Session::Nodes::Node::Sessions::has_data() const
 
 bool Subscriber::Session::Nodes::Node::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -8031,7 +8107,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::get_child_by
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -8043,7 +8119,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8104,16 +8180,17 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::Session_()
     af_up_status{YType::uint32, "af-up-status"},
     session_ipv4_state{YType::enumeration, "session-ipv4-state"},
     session_ipv6_state{YType::enumeration, "session-ipv6-state"}
-    	,
+        ,
     accounting(std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting>())
-	,user_profile_attributes(std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes>())
-	,mobility_attributes(std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes>())
+    , user_profile_attributes(std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes>())
+    , mobility_attributes(std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes>())
+    , session_change_of_authorization(this, {})
 {
     accounting->parent = this;
     user_profile_attributes->parent = this;
     mobility_attributes->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::~Session_()
@@ -8122,7 +8199,8 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::~Session_()
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::has_data() const
 {
-    for (std::size_t index=0; index<session_change_of_authorization.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_change_of_authorization.len(); index++)
     {
         if(session_change_of_authorization[index]->has_data())
             return true;
@@ -8167,7 +8245,7 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::has_data() const
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::has_operation() const
 {
-    for (std::size_t index=0; index<session_change_of_authorization.size(); index++)
+    for (std::size_t index=0; index<session_change_of_authorization.len(); index++)
     {
         if(session_change_of_authorization[index]->has_operation())
             return true;
@@ -8214,7 +8292,8 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::has_operation() const
 std::string Subscriber::Session::Nodes::Node::Sessions::Session_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
@@ -8293,7 +8372,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::ge
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization>();
         c->parent = this;
-        session_change_of_authorization.push_back(c);
+        session_change_of_authorization.append(c);
         return c;
     }
 
@@ -8320,7 +8399,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     }
 
     count = 0;
-    for (auto const & c : session_change_of_authorization)
+    for (auto c : session_change_of_authorization.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8677,9 +8756,11 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::has_leaf_or_child_of_
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Accounting()
+    :
+    accounting_session(this, {})
 {
 
-    yang_name = "accounting"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::~Accounting()
@@ -8688,7 +8769,8 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::~Accounting()
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::has_data() const
 {
-    for (std::size_t index=0; index<accounting_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<accounting_session.len(); index++)
     {
         if(accounting_session[index]->has_data())
             return true;
@@ -8698,7 +8780,7 @@ bool Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::has_data(
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::has_operation() const
 {
-    for (std::size_t index=0; index<accounting_session.size(); index++)
+    for (std::size_t index=0; index<accounting_session.len(); index++)
     {
         if(accounting_session[index]->has_operation())
             return true;
@@ -8728,7 +8810,7 @@ std::shared_ptr<Entity> Subscriber::Session::Nodes::Node::Sessions::Session_::Ac
     {
         auto c = std::make_shared<Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession>();
         c->parent = this;
-        accounting_session.push_back(c);
+        accounting_session.append(c);
         return c;
     }
 
@@ -8740,7 +8822,7 @@ std::map<std::string, std::shared_ptr<Entity>> Subscriber::Session::Nodes::Node:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : accounting_session)
+    for (auto c : accounting_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8785,7 +8867,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSess
     sent_interim_update_failures{YType::uint32, "sent-interim-update-failures"}
 {
 
-    yang_name = "accounting-session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting-session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::~AccountingSession()
@@ -8794,6 +8876,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSess
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::AccountingSession::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting_state_rc.is_set
 	|| accounting_stop_state.is_set
 	|| record_context_name.is_set
@@ -9092,7 +9175,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::Use
     session_termination_cause{YType::enumeration, "session-termination-cause"}
 {
 
-    yang_name = "user-profile-attributes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "user-profile-attributes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::~UserProfileAttributes()
@@ -9101,6 +9184,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::~Us
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::UserProfileAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4mtu.is_set
 	|| ipv4_unnumbered.is_set
 	|| authorization_service_type.is_set
@@ -9802,7 +9886,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::Mobili
     lease_time{YType::str, "lease-time"}
 {
 
-    yang_name = "mobility-attributes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobility-attributes"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::~MobilityAttributes()
@@ -9811,6 +9895,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::~Mobil
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::MobilityAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return mpc_protocol.is_set
 	|| mobility_ipv4_address.is_set
 	|| mobility_default_ipv4_gateway.is_set
@@ -10000,7 +10085,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorizati
     coa_reply_attributes{YType::str, "coa-reply-attributes"}
 {
 
-    yang_name = "session-change-of-authorization"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-change-of-authorization"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::~SessionChangeOfAuthorization()
@@ -10009,6 +10094,7 @@ Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorizati
 
 bool Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeOfAuthorization::has_data() const
 {
+    if (is_presence_container) return true;
     return request_acked.is_set
 	|| request_time.is_set
 	|| coa_request_attributes.is_set
@@ -10130,7 +10216,7 @@ IedgeLicenseManager::IedgeLicenseManager()
 {
     nodes->parent = this;
 
-    yang_name = "iedge-license-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "iedge-license-manager"; yang_parent_name = "Cisco-IOS-XR-iedge4710-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IedgeLicenseManager::~IedgeLicenseManager()
@@ -10139,6 +10225,7 @@ IedgeLicenseManager::~IedgeLicenseManager()
 
 bool IedgeLicenseManager::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -10231,9 +10318,11 @@ bool IedgeLicenseManager::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 IedgeLicenseManager::Nodes::Nodes()
+    :
+    node(this, {"nodeid"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "iedge-license-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "iedge-license-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IedgeLicenseManager::Nodes::~Nodes()
@@ -10242,7 +10331,8 @@ IedgeLicenseManager::Nodes::~Nodes()
 
 bool IedgeLicenseManager::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -10252,7 +10342,7 @@ bool IedgeLicenseManager::Nodes::has_data() const
 
 bool IedgeLicenseManager::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -10289,7 +10379,7 @@ std::shared_ptr<Entity> IedgeLicenseManager::Nodes::get_child_by_name(const std:
     {
         auto c = std::make_shared<IedgeLicenseManager::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -10301,7 +10391,7 @@ std::map<std::string, std::shared_ptr<Entity>> IedgeLicenseManager::Nodes::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10330,12 +10420,12 @@ bool IedgeLicenseManager::Nodes::has_leaf_or_child_of_name(const std::string & n
 IedgeLicenseManager::Nodes::Node::Node()
     :
     nodeid{YType::str, "nodeid"}
-    	,
+        ,
     iedge_license_manager_summary(std::make_shared<IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary>())
 {
     iedge_license_manager_summary->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IedgeLicenseManager::Nodes::Node::~Node()
@@ -10344,6 +10434,7 @@ IedgeLicenseManager::Nodes::Node::~Node()
 
 bool IedgeLicenseManager::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return nodeid.is_set
 	|| (iedge_license_manager_summary !=  nullptr && iedge_license_manager_summary->has_data());
 }
@@ -10365,7 +10456,8 @@ std::string IedgeLicenseManager::Nodes::Node::get_absolute_path() const
 std::string IedgeLicenseManager::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[nodeid='" <<nodeid <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(nodeid, "nodeid");
     return path_buffer.str();
 }
 
@@ -10438,7 +10530,7 @@ IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::IedgeLicenseManage
     session_count{YType::uint32, "session-count"}
 {
 
-    yang_name = "iedge-license-manager-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iedge-license-manager-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::~IedgeLicenseManagerSummary()
@@ -10447,6 +10539,7 @@ IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::~IedgeLicenseManag
 
 bool IedgeLicenseManager::Nodes::Node::IedgeLicenseManagerSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return session_limit.is_set
 	|| session_threshold.is_set
 	|| session_license_count.is_set

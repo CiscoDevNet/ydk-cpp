@@ -16,7 +16,7 @@ Cfgmgr::Cfgmgr()
     mode_exclusive{YType::boolean, "mode-exclusive"}
 {
 
-    yang_name = "cfgmgr"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cfgmgr"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Cfgmgr::~Cfgmgr()
@@ -25,6 +25,7 @@ Cfgmgr::~Cfgmgr()
 
 bool Cfgmgr::has_data() const
 {
+    if (is_presence_container) return true;
     return mode_exclusive.is_set;
 }
 

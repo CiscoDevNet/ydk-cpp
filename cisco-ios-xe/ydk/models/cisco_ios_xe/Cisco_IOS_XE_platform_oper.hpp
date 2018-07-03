@@ -33,7 +33,7 @@ class Components : public ydk::Entity
 
         class Component; //type: Components::Component
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component> > component;
+        ydk::YList component;
         
 }; // Components
 
@@ -139,7 +139,7 @@ class Components::Component::PlatformProperties : public ydk::Entity
 
         class PlatformProperty; //type: Components::Component::PlatformProperties::PlatformProperty
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::PlatformProperties::PlatformProperty> > platform_property;
+        ydk::YList platform_property;
         
 }; // Components::Component::PlatformProperties
 
@@ -212,7 +212,7 @@ class Components::Component::PlatformSubcomponents : public ydk::Entity
 
         class PlatformSubcomponent; //type: Components::Component::PlatformSubcomponents::PlatformSubcomponent
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_oper::Components::Component::PlatformSubcomponents::PlatformSubcomponent> > platform_subcomponent;
+        ydk::YList platform_subcomponent;
         
 }; // Components::Component::PlatformSubcomponents
 
@@ -237,6 +237,17 @@ class Components::Component::PlatformSubcomponents::PlatformSubcomponent : publi
 
 }; // Components::Component::PlatformSubcomponents::PlatformSubcomponent
 
+class PlatformPropValueType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf property_string;
+        static const ydk::Enum::YLeaf property_boolean;
+        static const ydk::Enum::YLeaf property_int64;
+        static const ydk::Enum::YLeaf property_uint64;
+        static const ydk::Enum::YLeaf property_decimal64;
+
+};
+
 class PlatformCompType : public ydk::Enum
 {
     public:
@@ -252,17 +263,6 @@ class PlatformCompType : public ydk::Enum
         static const ydk::Enum::YLeaf comp_operating_system;
         static const ydk::Enum::YLeaf comp_optical_channel;
         static const ydk::Enum::YLeaf comp_container;
-
-};
-
-class PlatformPropValueType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf property_string;
-        static const ydk::Enum::YLeaf property_boolean;
-        static const ydk::Enum::YLeaf property_int64;
-        static const ydk::Enum::YLeaf property_uint64;
-        static const ydk::Enum::YLeaf property_decimal64;
 
 };
 

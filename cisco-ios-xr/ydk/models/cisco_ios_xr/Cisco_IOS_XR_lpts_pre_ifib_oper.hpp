@@ -58,7 +58,7 @@ class LptsPifib_::Nodes : public ydk::Entity
 
         class Node; //type: LptsPifib_::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // LptsPifib_::Nodes
 
@@ -110,7 +110,7 @@ class LptsPifib_::Nodes::Node::TypeValues : public ydk::Entity
 
         class TypeValue; //type: LptsPifib_::Nodes::Node::TypeValues::TypeValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues::TypeValue> > type_value;
+        ydk::YList type_value;
         
 }; // LptsPifib_::Nodes::Node::TypeValues
 
@@ -134,7 +134,7 @@ class LptsPifib_::Nodes::Node::TypeValues::TypeValue : public ydk::Entity
         ydk::YLeaf pifib_type; //type: LptsPifib
         class Entry; //type: LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::TypeValues::TypeValue::Entry> > entry;
+        ydk::YList entry;
         
 }; // LptsPifib_::Nodes::Node::TypeValues::TypeValue
 
@@ -210,7 +210,7 @@ class LptsPifib_::Nodes::Node::DynamicFlowsStats : public ydk::Entity
         ydk::YLeaf total_sw_entries; //type: uint32
         class Flow; //type: LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow> > flow;
+        ydk::YList flow;
         
 }; // LptsPifib_::Nodes::Node::DynamicFlowsStats
 
@@ -295,7 +295,7 @@ class LptsPifib_::Nodes::Node::Hardware::UsageEntries : public ydk::Entity
 
         class UsageEntry; //type: LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry> > usage_entry;
+        ydk::YList usage_entry;
         
 }; // LptsPifib_::Nodes::Node::Hardware::UsageEntries
 
@@ -319,7 +319,7 @@ class LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry : public ydk::
         ydk::YLeaf region_id; //type: UsageAddressFamily
         class UsageInfo; //type: LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageInfo> > usage_info;
+        ydk::YList usage_info;
         
 }; // LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry
 
@@ -367,7 +367,7 @@ class LptsPifib_::Nodes::Node::Hardware::Police : public ydk::Entity
 
         class PoliceInfo; //type: LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo> > police_info;
+        ydk::YList police_info;
         
 }; // LptsPifib_::Nodes::Node::Hardware::Police
 
@@ -421,7 +421,7 @@ class LptsPifib_::Nodes::Node::Hardware::StaticPolice : public ydk::Entity
 
         class StaticInfo; //type: LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo> > static_info;
+        ydk::YList static_info;
         
 }; // LptsPifib_::Nodes::Node::Hardware::StaticPolice
 
@@ -472,7 +472,7 @@ class LptsPifib_::Nodes::Node::Hardware::Bfd : public ydk::Entity
 
         class BfdEntryInfo; //type: LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo> > bfd_entry_info;
+        ydk::YList bfd_entry_info;
         
 }; // LptsPifib_::Nodes::Node::Hardware::Bfd
 
@@ -544,7 +544,7 @@ class LptsPifib_::Nodes::Node::Hardware::IndexEntries : public ydk::Entity
 
         class IndexEntry; //type: LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry> > index_entry;
+        ydk::YList index_entry;
         
 }; // LptsPifib_::Nodes::Node::Hardware::IndexEntries
 
@@ -565,7 +565,7 @@ class LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: int32
+        ydk::YLeaf index_; //type: uint32
         ydk::YLeaf l3protocol; //type: uint32
         ydk::YLeaf l4protocol; //type: uint32
         ydk::YLeaf intf_handle; //type: uint32
@@ -614,7 +614,7 @@ class LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry : public ydk::
         ydk::YLeaf no_stats; //type: uint8
         class HwInfo; //type: LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lpts_pre_ifib_oper::LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo> > hw_info;
+        ydk::YList hw_info;
         
 }; // LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry
 

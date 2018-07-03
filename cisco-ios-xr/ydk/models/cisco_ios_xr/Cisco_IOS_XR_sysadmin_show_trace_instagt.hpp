@@ -33,7 +33,7 @@ class Instagt : public ydk::Entity
 
         class Trace; //type: Instagt::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instagt::Instagt::Trace> > trace;
+        ydk::YList trace;
         
 }; // Instagt
 
@@ -58,7 +58,7 @@ class Instagt::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Instagt::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instagt::Instagt::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Instagt::Trace
 
@@ -82,7 +82,7 @@ class Instagt::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Instagt::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instagt::Instagt::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Instagt::Trace::Location
 
@@ -106,7 +106,7 @@ class Instagt::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Instagt::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_instagt::Instagt::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Instagt::Trace::Location::AllOptions
 

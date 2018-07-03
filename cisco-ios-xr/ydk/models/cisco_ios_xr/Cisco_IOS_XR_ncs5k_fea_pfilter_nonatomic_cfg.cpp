@@ -17,7 +17,7 @@ Hardware::Hardware()
 {
     access_list->parent = this;
 
-    yang_name = "hardware"; yang_parent_name = "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware"; yang_parent_name = "Cisco-IOS-XR-ncs5k-fea-pfilter-nonatomic-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Hardware::~Hardware()
@@ -26,6 +26,7 @@ Hardware::~Hardware()
 
 bool Hardware::has_data() const
 {
+    if (is_presence_container) return true;
     return (access_list !=  nullptr && access_list->has_data());
 }
 
@@ -122,7 +123,7 @@ Hardware::AccessList::AccessList()
     atomic_disable{YType::enumeration, "atomic-disable"}
 {
 
-    yang_name = "access-list"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access-list"; yang_parent_name = "hardware"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Hardware::AccessList::~AccessList()
@@ -131,6 +132,7 @@ Hardware::AccessList::~AccessList()
 
 bool Hardware::AccessList::has_data() const
 {
+    if (is_presence_container) return true;
     return atomic_disable.is_set;
 }
 

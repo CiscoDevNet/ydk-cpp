@@ -404,7 +404,7 @@ class Native::Platform : public ydk::Entity
         class ExternalAlarm; //type: Native::Platform::ExternalAlarm
         class Hardware; //type: Native::Platform::Hardware
         class Ipsec; //type: Native::Platform::Ipsec
-        class L2Vpn; //type: Native::Platform::L2Vpn
+        class L2vpn; //type: Native::Platform::L2vpn
         class Multicast; //type: Native::Platform::Multicast
         class PuntKeepalive; //type: Native::Platform::PuntKeepalive
         class PuntPolicer; //type: Native::Platform::PuntPolicer
@@ -422,7 +422,7 @@ class Native::Platform : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::ExternalAlarm> external_alarm;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::Hardware> hardware;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::Ipsec> ipsec;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::L2Vpn> l2vpn;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::L2vpn> l2vpn;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::Multicast> multicast;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::PuntKeepalive> punt_keepalive; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::PuntPolicer> punt_policer;
@@ -571,7 +571,7 @@ class Native::Platform::Enable : public ydk::Entity
 
         class Controller; //type: Native::Platform::Enable::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::Enable::Controller> > controller;
+        ydk::YList controller;
         
 }; // Native::Platform::Enable
 
@@ -794,11 +794,11 @@ class Native::Platform::Ipsec::Reassemble : public ydk::Entity
 }; // Native::Platform::Ipsec::Reassemble
 
 
-class Native::Platform::L2Vpn : public ydk::Entity
+class Native::Platform::L2vpn : public ydk::Entity
 {
     public:
-        L2Vpn();
-        ~L2Vpn();
+        L2vpn();
+        ~L2vpn();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -812,14 +812,14 @@ class Native::Platform::L2Vpn : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf hdlc_pass_through; //type: empty
-        class Statistics; //type: Native::Platform::L2Vpn::Statistics
+        class Statistics; //type: Native::Platform::L2vpn::Statistics
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::L2Vpn::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::L2vpn::Statistics> statistics;
         
-}; // Native::Platform::L2Vpn
+}; // Native::Platform::L2vpn
 
 
-class Native::Platform::L2Vpn::Statistics : public ydk::Entity
+class Native::Platform::L2vpn::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -838,7 +838,7 @@ class Native::Platform::L2Vpn::Statistics : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Native::Platform::L2Vpn::Statistics
+}; // Native::Platform::L2vpn::Statistics
 
 
 class Native::Platform::Multicast : public ydk::Entity
@@ -1003,7 +1003,7 @@ class Native::Platform::PuntPolicer : public ydk::Entity
 
         class PuntNum; //type: Native::Platform::PuntPolicer::PuntNum
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::PuntPolicer::PuntNum> > punt_num;
+        ydk::YList punt_num;
         
 }; // Native::Platform::PuntPolicer
 
@@ -1312,7 +1312,7 @@ class Native::Platform::Trace : public ydk::Entity
 
         class Runtime; //type: Native::Platform::Trace::Runtime
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Platform::Trace::Runtime> > runtime;
+        ydk::YList runtime;
         
 }; // Native::Platform::Trace
 
@@ -1490,7 +1490,7 @@ class Native::Eap : public ydk::Entity
 
         class Profile; //type: Native::Eap::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Eap::Profile> > profile;
+        ydk::YList profile;
         
 }; // Native::Eap
 
@@ -1565,7 +1565,7 @@ class Native::Archive : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf path; //type: one of enumeration, string
+        ydk::YLeaf path; //type: one of string, enumeration
         ydk::YLeaf maximum; //type: uint8
         ydk::YLeaf write_memory; //type: empty
         ydk::YLeaf time_period; //type: uint32
@@ -1823,11 +1823,11 @@ class Native::Controller : public ydk::Entity
         class SONETACR; //type: Native::Controller::SONETACR
         class Wanphy; //type: Native::Controller::Wanphy
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList> > controller_tx_ex_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::Cellular> > cellular;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET> > sonet;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR> > sonet_acr;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::Wanphy> > wanphy;
+        ydk::YList controller_tx_ex_list;
+        ydk::YList cellular;
+        ydk::YList sonet;
+        ydk::YList sonet_acr;
+        ydk::YList wanphy;
         
 }; // Native::Controller
 
@@ -1861,7 +1861,7 @@ class Native::Controller::ControllerTxExList : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Clock> clock_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::Cablelength> cablelength;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::ControllerTxExList::ChannelGroup> > channel_group;
+        ydk::YList channel_group;
                 class Name;
         class Linecode;
 
@@ -2061,7 +2061,7 @@ class Native::Controller::Cellular::Lte::Sim : public ydk::Entity
         class Primary; //type: Native::Controller::Cellular::Lte::Sim::Primary
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::Cellular::Lte::Sim::Authenticate> authenticate;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::Cellular::Lte::Sim::DataProfileList> > data_profile_list;
+        ydk::YList data_profile_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::Cellular::Lte::Sim::Primary> primary;
         
 }; // Native::Controller::Cellular::Lte::Sim
@@ -2395,9 +2395,9 @@ class Native::Controller::SONET : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Clock> clock_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Aug> aug;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au3> > au_3;
+        ydk::YList au_3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4Atm> au_4_atm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4> > au_4;
+        ydk::YList au_4;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Aps> aps;
                 class Framing;
 
@@ -2623,7 +2623,7 @@ class Native::Controller::SONET::Au4::CemGroupTimeslots : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4::CemGroupTimeslots::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONET::Au4::CemGroupTimeslots
 
@@ -2670,7 +2670,7 @@ class Native::Controller::SONET::Au4::ChannelGroupTimeslots : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONET::Au4::ChannelGroupTimeslots
 
@@ -2717,7 +2717,7 @@ class Native::Controller::SONET::Au4::CemGroupUnframed : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONET::Au4::CemGroupUnframed::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4::CemGroupUnframed::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONET::Au4::CemGroupUnframed
 
@@ -2764,7 +2764,7 @@ class Native::Controller::SONET::Au4::FramingUnframed : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONET::Au4::FramingUnframed::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4::FramingUnframed::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONET::Au4::FramingUnframed
 
@@ -2811,7 +2811,7 @@ class Native::Controller::SONET::Au4::CemGroupAtm : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONET::Au4::CemGroupAtm::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4::CemGroupAtm::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONET::Au4::CemGroupAtm
 
@@ -2857,7 +2857,7 @@ class Native::Controller::SONET::Au4::ImaGroup : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONET::Au4::ImaGroup::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONET::Au4::ImaGroup::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONET::Au4::ImaGroup
 
@@ -3008,9 +3008,9 @@ class Native::Controller::SONETACR : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Clock> clock_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Aug> aug;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au3> > au_3;
+        ydk::YList au_3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4Atm> au_4_atm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4> > au_4;
+        ydk::YList au_4;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Aps> aps;
                 class Framing;
 
@@ -3236,7 +3236,7 @@ class Native::Controller::SONETACR::Au4::CemGroupTimeslots : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4::CemGroupTimeslots::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONETACR::Au4::CemGroupTimeslots
 
@@ -3283,7 +3283,7 @@ class Native::Controller::SONETACR::Au4::ChannelGroupTimeslots : public ydk::Ent
 
         class Tug2; //type: Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4::ChannelGroupTimeslots::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONETACR::Au4::ChannelGroupTimeslots
 
@@ -3330,7 +3330,7 @@ class Native::Controller::SONETACR::Au4::CemGroupUnframed : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4::CemGroupUnframed::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONETACR::Au4::CemGroupUnframed
 
@@ -3377,7 +3377,7 @@ class Native::Controller::SONETACR::Au4::FramingUnframed : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONETACR::Au4::FramingUnframed::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4::FramingUnframed::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONETACR::Au4::FramingUnframed
 
@@ -3424,7 +3424,7 @@ class Native::Controller::SONETACR::Au4::CemGroupAtm : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4::CemGroupAtm::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONETACR::Au4::CemGroupAtm
 
@@ -3470,7 +3470,7 @@ class Native::Controller::SONETACR::Au4::ImaGroup : public ydk::Entity
 
         class Tug2; //type: Native::Controller::SONETACR::Au4::ImaGroup::Tug2
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Controller::SONETACR::Au4::ImaGroup::Tug2> > tug_2;
+        ydk::YList tug_2;
         
 }; // Native::Controller::SONETACR::Au4::ImaGroup
 
@@ -3633,7 +3633,7 @@ class Native::Vrf : public ydk::Entity
 
         class Definition; //type: Native::Vrf::Definition
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vrf::Definition> > definition;
+        ydk::YList definition;
         
 }; // Native::Vrf
 

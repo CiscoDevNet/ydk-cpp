@@ -17,7 +17,7 @@ Sbfd::Sbfd()
 {
     target_identifier->parent = this;
 
-    yang_name = "sbfd"; yang_parent_name = "Cisco-IOS-XR-ip-sbfd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sbfd"; yang_parent_name = "Cisco-IOS-XR-ip-sbfd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Sbfd::~Sbfd()
@@ -26,6 +26,7 @@ Sbfd::~Sbfd()
 
 bool Sbfd::has_data() const
 {
+    if (is_presence_container) return true;
     return (target_identifier !=  nullptr && target_identifier->has_data());
 }
 
@@ -120,12 +121,12 @@ bool Sbfd::has_leaf_or_child_of_name(const std::string & name) const
 Sbfd::TargetIdentifier::TargetIdentifier()
     :
     remote_vrfs(std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs>())
-	,local_vrfs(std::make_shared<Sbfd::TargetIdentifier::LocalVrfs>())
+    , local_vrfs(std::make_shared<Sbfd::TargetIdentifier::LocalVrfs>())
 {
     remote_vrfs->parent = this;
     local_vrfs->parent = this;
 
-    yang_name = "target-identifier"; yang_parent_name = "sbfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "target-identifier"; yang_parent_name = "sbfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::TargetIdentifier::~TargetIdentifier()
@@ -134,6 +135,7 @@ Sbfd::TargetIdentifier::~TargetIdentifier()
 
 bool Sbfd::TargetIdentifier::has_data() const
 {
+    if (is_presence_container) return true;
     return (remote_vrfs !=  nullptr && remote_vrfs->has_data())
 	|| (local_vrfs !=  nullptr && local_vrfs->has_data());
 }
@@ -224,9 +226,11 @@ bool Sbfd::TargetIdentifier::has_leaf_or_child_of_name(const std::string & name)
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrfs()
+    :
+    remote_vrf(this, {"vrf_name"})
 {
 
-    yang_name = "remote-vrfs"; yang_parent_name = "target-identifier"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-vrfs"; yang_parent_name = "target-identifier"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::~RemoteVrfs()
@@ -235,7 +239,8 @@ Sbfd::TargetIdentifier::RemoteVrfs::~RemoteVrfs()
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::has_data() const
 {
-    for (std::size_t index=0; index<remote_vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_vrf.len(); index++)
     {
         if(remote_vrf[index]->has_data())
             return true;
@@ -245,7 +250,7 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::has_data() const
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::has_operation() const
 {
-    for (std::size_t index=0; index<remote_vrf.size(); index++)
+    for (std::size_t index=0; index<remote_vrf.len(); index++)
     {
         if(remote_vrf[index]->has_operation())
             return true;
@@ -282,7 +287,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::get_child_by_name(co
     {
         auto c = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf>();
         c->parent = this;
-        remote_vrf.push_back(c);
+        remote_vrf.append(c);
         return c;
     }
 
@@ -294,7 +299,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_vrf)
+    for (auto c : remote_vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -323,9 +328,11 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::has_leaf_or_child_of_name(const std::st
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteVrf()
     :
     vrf_name{YType::str, "vrf-name"}
+        ,
+    remote_discriminator(this, {})
 {
 
-    yang_name = "remote-vrf"; yang_parent_name = "remote-vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-vrf"; yang_parent_name = "remote-vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::~RemoteVrf()
@@ -334,7 +341,8 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::~RemoteVrf()
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::has_data() const
 {
-    for (std::size_t index=0; index<remote_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_discriminator.len(); index++)
     {
         if(remote_discriminator[index]->has_data())
             return true;
@@ -344,7 +352,7 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::has_data() const
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::has_operation() const
 {
-    for (std::size_t index=0; index<remote_discriminator.size(); index++)
+    for (std::size_t index=0; index<remote_discriminator.len(); index++)
     {
         if(remote_discriminator[index]->has_operation())
             return true;
@@ -363,7 +371,8 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_absolute_path() c
 std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "remote-vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "remote-vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -383,7 +392,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::get_child
     {
         auto c = std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator>();
         c->parent = this;
-        remote_discriminator.push_back(c);
+        remote_discriminator.append(c);
         return c;
     }
 
@@ -395,7 +404,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::RemoteVrf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_discriminator)
+    for (auto c : remote_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -434,19 +443,19 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::has_leaf_or_child_of_name(co
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::RemoteDiscriminator()
     :
     vrf_name{YType::str, "vrf-name"},
-    remote_discriminator{YType::int32, "remote-discriminator"},
+    remote_discriminator{YType::uint32, "remote-discriminator"},
     address{YType::str, "address"},
     tid_type{YType::enumeration, "tid-type"},
     discr{YType::uint32, "discr"},
     vrf_name_xr{YType::str, "vrf-name-xr"},
     status{YType::str, "status"},
     discr_src{YType::str, "discr-src"}
-    	,
+        ,
     ip_address(std::make_shared<Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress>())
 {
     ip_address->parent = this;
 
-    yang_name = "remote-discriminator"; yang_parent_name = "remote-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-discriminator"; yang_parent_name = "remote-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::~RemoteDiscriminator()
@@ -455,6 +464,7 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::~RemoteDiscr
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| remote_discriminator.is_set
 	|| address.is_set
@@ -633,7 +643,7 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::I
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "ip-address"; yang_parent_name = "remote-discriminator"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-address"; yang_parent_name = "remote-discriminator"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::~IpAddress()
@@ -642,6 +652,7 @@ Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::~
 
 bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -745,9 +756,11 @@ bool Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::IpAddre
 }
 
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrfs()
+    :
+    local_vrf(this, {"vrf_name"})
 {
 
-    yang_name = "local-vrfs"; yang_parent_name = "target-identifier"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-vrfs"; yang_parent_name = "target-identifier"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::TargetIdentifier::LocalVrfs::~LocalVrfs()
@@ -756,7 +769,8 @@ Sbfd::TargetIdentifier::LocalVrfs::~LocalVrfs()
 
 bool Sbfd::TargetIdentifier::LocalVrfs::has_data() const
 {
-    for (std::size_t index=0; index<local_vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_vrf.len(); index++)
     {
         if(local_vrf[index]->has_data())
             return true;
@@ -766,7 +780,7 @@ bool Sbfd::TargetIdentifier::LocalVrfs::has_data() const
 
 bool Sbfd::TargetIdentifier::LocalVrfs::has_operation() const
 {
-    for (std::size_t index=0; index<local_vrf.size(); index++)
+    for (std::size_t index=0; index<local_vrf.len(); index++)
     {
         if(local_vrf[index]->has_operation())
             return true;
@@ -803,7 +817,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::get_child_by_name(con
     {
         auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf>();
         c->parent = this;
-        local_vrf.push_back(c);
+        local_vrf.append(c);
         return c;
     }
 
@@ -815,7 +829,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_vrf)
+    for (auto c : local_vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -844,9 +858,11 @@ bool Sbfd::TargetIdentifier::LocalVrfs::has_leaf_or_child_of_name(const std::str
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalVrf()
     :
     vrf_name{YType::str, "vrf-name"}
+        ,
+    local_discriminator(this, {})
 {
 
-    yang_name = "local-vrf"; yang_parent_name = "local-vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-vrf"; yang_parent_name = "local-vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::~LocalVrf()
@@ -855,7 +871,8 @@ Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::~LocalVrf()
 
 bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_data() const
 {
-    for (std::size_t index=0; index<local_discriminator.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_discriminator.len(); index++)
     {
         if(local_discriminator[index]->has_data())
             return true;
@@ -865,7 +882,7 @@ bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_data() const
 
 bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_operation() const
 {
-    for (std::size_t index=0; index<local_discriminator.size(); index++)
+    for (std::size_t index=0; index<local_discriminator.len(); index++)
     {
         if(local_discriminator[index]->has_operation())
             return true;
@@ -884,7 +901,8 @@ std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_absolute_path() con
 std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "local-vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -904,7 +922,7 @@ std::shared_ptr<Entity> Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::get_child_b
     {
         auto c = std::make_shared<Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator>();
         c->parent = this;
-        local_discriminator.push_back(c);
+        local_discriminator.append(c);
         return c;
     }
 
@@ -916,7 +934,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sbfd::TargetIdentifier::LocalVrfs
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_discriminator)
+    for (auto c : local_discriminator.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -954,7 +972,7 @@ bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::has_leaf_or_child_of_name(cons
 
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::LocalDiscriminator()
     :
-    local_discriminator{YType::int32, "local-discriminator"},
+    local_discriminator{YType::uint32, "local-discriminator"},
     vrf_name{YType::str, "vrf-name"},
     discr{YType::uint32, "discr"},
     vrf_name_xr{YType::str, "vrf-name-xr"},
@@ -963,7 +981,7 @@ Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::LocalDiscrimina
     discr_src{YType::str, "discr-src"}
 {
 
-    yang_name = "local-discriminator"; yang_parent_name = "local-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-discriminator"; yang_parent_name = "local-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::~LocalDiscriminator()
@@ -972,6 +990,7 @@ Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::~LocalDiscrimin
 
 bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_data() const
 {
+    if (is_presence_container) return true;
     return local_discriminator.is_set
 	|| vrf_name.is_set
 	|| discr.is_set
@@ -1113,12 +1132,12 @@ bool Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::has_leaf_o
     return false;
 }
 
+const Enum::YLeaf SbfdAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf SbfdAddressFamily::ipv6 {2, "ipv6"};
+
 const Enum::YLeaf BfdAfId::bfd_af_id_none {0, "bfd-af-id-none"};
 const Enum::YLeaf BfdAfId::bfd_af_id_ipv4 {2, "bfd-af-id-ipv4"};
 const Enum::YLeaf BfdAfId::bfd_af_id_ipv6 {10, "bfd-af-id-ipv6"};
-
-const Enum::YLeaf SbfdAddressFamily::ipv4 {1, "ipv4"};
-const Enum::YLeaf SbfdAddressFamily::ipv6 {2, "ipv6"};
 
 
 }

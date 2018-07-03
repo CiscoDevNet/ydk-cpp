@@ -13,17 +13,17 @@ namespace CISCO_IETF_FRR_MIB {
 
 CISCOIETFFRRMIB::CISCOIETFFRRMIB()
     :
-    cmplsfrrscalars(std::make_shared<CISCOIETFFRRMIB::Cmplsfrrscalars>())
-	,cmplsfrrconsttable(std::make_shared<CISCOIETFFRRMIB::Cmplsfrrconsttable>())
-	,cmplsfrrlogtable(std::make_shared<CISCOIETFFRRMIB::Cmplsfrrlogtable>())
-	,cmplsfrrfacroutedbtable(std::make_shared<CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable>())
+    cmplsfrrscalars(std::make_shared<CISCOIETFFRRMIB::CmplsFrrScalars>())
+    , cmplsfrrconsttable(std::make_shared<CISCOIETFFRRMIB::CmplsFrrConstTable>())
+    , cmplsfrrlogtable(std::make_shared<CISCOIETFFRRMIB::CmplsFrrLogTable>())
+    , cmplsfrrfacroutedbtable(std::make_shared<CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable>())
 {
     cmplsfrrscalars->parent = this;
     cmplsfrrconsttable->parent = this;
     cmplsfrrlogtable->parent = this;
     cmplsfrrfacroutedbtable->parent = this;
 
-    yang_name = "CISCO-IETF-FRR-MIB"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IETF-FRR-MIB"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIETFFRRMIB::~CISCOIETFFRRMIB()
@@ -32,6 +32,7 @@ CISCOIETFFRRMIB::~CISCOIETFFRRMIB()
 
 bool CISCOIETFFRRMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cmplsfrrscalars !=  nullptr && cmplsfrrscalars->has_data())
 	|| (cmplsfrrconsttable !=  nullptr && cmplsfrrconsttable->has_data())
 	|| (cmplsfrrlogtable !=  nullptr && cmplsfrrlogtable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & c
     {
         if(cmplsfrrscalars == nullptr)
         {
-            cmplsfrrscalars = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrscalars>();
+            cmplsfrrscalars = std::make_shared<CISCOIETFFRRMIB::CmplsFrrScalars>();
         }
         return cmplsfrrscalars;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & c
     {
         if(cmplsfrrconsttable == nullptr)
         {
-            cmplsfrrconsttable = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrconsttable>();
+            cmplsfrrconsttable = std::make_shared<CISCOIETFFRRMIB::CmplsFrrConstTable>();
         }
         return cmplsfrrconsttable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & c
     {
         if(cmplsfrrlogtable == nullptr)
         {
-            cmplsfrrlogtable = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrlogtable>();
+            cmplsfrrlogtable = std::make_shared<CISCOIETFFRRMIB::CmplsFrrLogTable>();
         }
         return cmplsfrrlogtable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> CISCOIETFFRRMIB::get_child_by_name(const std::string & c
     {
         if(cmplsfrrfacroutedbtable == nullptr)
         {
-            cmplsfrrfacroutedbtable = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable>();
+            cmplsfrrfacroutedbtable = std::make_shared<CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable>();
         }
         return cmplsfrrfacroutedbtable;
     }
@@ -171,7 +172,7 @@ bool CISCOIETFFRRMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOIETFFRRMIB::Cmplsfrrscalars::Cmplsfrrscalars()
+CISCOIETFFRRMIB::CmplsFrrScalars::CmplsFrrScalars()
     :
     cmplsfrrdetourincoming{YType::uint32, "cmplsFrrDetourIncoming"},
     cmplsfrrdetouroutgoing{YType::uint32, "cmplsFrrDetourOutgoing"},
@@ -189,15 +190,16 @@ CISCOIETFFRRMIB::Cmplsfrrscalars::Cmplsfrrscalars()
     cmplsfrrnotifmaxrate{YType::uint32, "cmplsFrrNotifMaxRate"}
 {
 
-    yang_name = "cmplsFrrScalars"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsFrrScalars"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFFRRMIB::Cmplsfrrscalars::~Cmplsfrrscalars()
+CISCOIETFFRRMIB::CmplsFrrScalars::~CmplsFrrScalars()
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrscalars::has_data() const
+bool CISCOIETFFRRMIB::CmplsFrrScalars::has_data() const
 {
+    if (is_presence_container) return true;
     return cmplsfrrdetourincoming.is_set
 	|| cmplsfrrdetouroutgoing.is_set
 	|| cmplsfrrdetouroriginating.is_set
@@ -214,7 +216,7 @@ bool CISCOIETFFRRMIB::Cmplsfrrscalars::has_data() const
 	|| cmplsfrrnotifmaxrate.is_set;
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrscalars::has_operation() const
+bool CISCOIETFFRRMIB::CmplsFrrScalars::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmplsfrrdetourincoming.yfilter)
@@ -233,21 +235,21 @@ bool CISCOIETFFRRMIB::Cmplsfrrscalars::has_operation() const
 	|| ydk::is_set(cmplsfrrnotifmaxrate.yfilter);
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrscalars::get_absolute_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrScalars::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-FRR-MIB:CISCO-IETF-FRR-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrscalars::get_segment_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrScalars::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmplsFrrScalars";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrscalars::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrScalars::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -270,19 +272,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrscalars:
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrscalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrScalars::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrscalars::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrScalars::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrscalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFFRRMIB::CmplsFrrScalars::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmplsFrrDetourIncoming")
     {
@@ -370,7 +372,7 @@ void CISCOIETFFRRMIB::Cmplsfrrscalars::set_value(const std::string & value_path,
     }
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrscalars::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFFRRMIB::CmplsFrrScalars::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmplsFrrDetourIncoming")
     {
@@ -430,26 +432,29 @@ void CISCOIETFFRRMIB::Cmplsfrrscalars::set_filter(const std::string & value_path
     }
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrscalars::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFFRRMIB::CmplsFrrScalars::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsFrrDetourIncoming" || name == "cmplsFrrDetourOutgoing" || name == "cmplsFrrDetourOriginating" || name == "cmplsFrrSwitchover" || name == "cmplsFrrNumOfConfIfs" || name == "cmplsFrrActProtectedIfs" || name == "cmplsFrrConfProtectingTuns" || name == "cmplsFrrActProtectedTuns" || name == "cmplsFrrActProtectedLSPs" || name == "cmplsFrrConstProtectionMethod" || name == "cmplsFrrNotifsEnabled" || name == "cmplsFrrLogTableMaxEntries" || name == "cmplsFrrLogTableCurrEntries" || name == "cmplsFrrNotifMaxRate")
         return true;
     return false;
 }
 
-CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconsttable()
+CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstTable()
+    :
+    cmplsfrrconstentry(this, {"cmplsfrrconstifindex", "cmplsfrrconsttunnelindex", "cmplsfrrconsttunnelinstance"})
 {
 
-    yang_name = "cmplsFrrConstTable"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsFrrConstTable"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFFRRMIB::Cmplsfrrconsttable::~Cmplsfrrconsttable()
+CISCOIETFFRRMIB::CmplsFrrConstTable::~CmplsFrrConstTable()
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrconsttable::has_data() const
+bool CISCOIETFFRRMIB::CmplsFrrConstTable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsfrrconstentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmplsfrrconstentry.len(); index++)
     {
         if(cmplsfrrconstentry[index]->has_data())
             return true;
@@ -457,9 +462,9 @@ bool CISCOIETFFRRMIB::Cmplsfrrconsttable::has_data() const
     return false;
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrconsttable::has_operation() const
+bool CISCOIETFFRRMIB::CmplsFrrConstTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsfrrconstentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrconstentry.len(); index++)
     {
         if(cmplsfrrconstentry[index]->has_operation())
             return true;
@@ -467,21 +472,21 @@ bool CISCOIETFFRRMIB::Cmplsfrrconsttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrconsttable::get_absolute_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrConstTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-FRR-MIB:CISCO-IETF-FRR-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrconsttable::get_segment_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrConstTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmplsFrrConstTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrconsttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrConstTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -490,25 +495,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrconsttab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrconsttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrConstTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsFrrConstEntry")
     {
-        auto c = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry>();
+        auto c = std::make_shared<CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry>();
         c->parent = this;
-        cmplsfrrconstentry.push_back(c);
+        cmplsfrrconstentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrconsttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrConstTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmplsfrrconstentry)
+    for (auto c : cmplsfrrconstentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -519,22 +524,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrconsttab
     return children;
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrconsttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFFRRMIB::CmplsFrrConstTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrconsttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFFRRMIB::CmplsFrrConstTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrconsttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFFRRMIB::CmplsFrrConstTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsFrrConstEntry")
         return true;
     return false;
 }
 
-CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::Cmplsfrrconstentry()
+CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::CmplsFrrConstEntry()
     :
     cmplsfrrconstifindex{YType::int32, "cmplsFrrConstIfIndex"},
     cmplsfrrconsttunnelindex{YType::uint32, "cmplsFrrConstTunnelIndex"},
@@ -551,15 +556,16 @@ CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::Cmplsfrrconstentry()
     cmplsfrrconstnumprotectedtunonif{YType::uint32, "cmplsFrrConstNumProtectedTunOnIf"}
 {
 
-    yang_name = "cmplsFrrConstEntry"; yang_parent_name = "cmplsFrrConstTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsFrrConstEntry"; yang_parent_name = "cmplsFrrConstTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::~Cmplsfrrconstentry()
+CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::~CmplsFrrConstEntry()
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::has_data() const
+bool CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmplsfrrconstifindex.is_set
 	|| cmplsfrrconsttunnelindex.is_set
 	|| cmplsfrrconsttunnelinstance.is_set
@@ -575,7 +581,7 @@ bool CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::has_data() const
 	|| cmplsfrrconstnumprotectedtunonif.is_set;
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::has_operation() const
+bool CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmplsfrrconstifindex.yfilter)
@@ -593,21 +599,24 @@ bool CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::has_operation() co
 	|| ydk::is_set(cmplsfrrconstnumprotectedtunonif.yfilter);
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::get_absolute_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-FRR-MIB:CISCO-IETF-FRR-MIB/cmplsFrrConstTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::get_segment_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cmplsFrrConstEntry" <<"[cmplsFrrConstIfIndex='" <<cmplsfrrconstifindex <<"']" <<"[cmplsFrrConstTunnelIndex='" <<cmplsfrrconsttunnelindex <<"']" <<"[cmplsFrrConstTunnelInstance='" <<cmplsfrrconsttunnelinstance <<"']";
+    path_buffer << "cmplsFrrConstEntry";
+    ADD_KEY_TOKEN(cmplsfrrconstifindex, "cmplsFrrConstIfIndex");
+    ADD_KEY_TOKEN(cmplsfrrconsttunnelindex, "cmplsFrrConstTunnelIndex");
+    ADD_KEY_TOKEN(cmplsfrrconsttunnelinstance, "cmplsFrrConstTunnelInstance");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -629,19 +638,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrconsttab
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmplsFrrConstIfIndex")
     {
@@ -723,7 +732,7 @@ void CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::set_value(const st
     }
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmplsFrrConstIfIndex")
     {
@@ -779,26 +788,29 @@ void CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::set_filter(const s
     }
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsFrrConstIfIndex" || name == "cmplsFrrConstTunnelIndex" || name == "cmplsFrrConstTunnelInstance" || name == "cmplsFrrConstSetupPrio" || name == "cmplsFrrConstHoldingPrio" || name == "cmplsFrrConstInclAnyAffinity" || name == "cmplsFrrConstInclAllAffinity" || name == "cmplsFrrConstExclAllAffinity" || name == "cmplsFrrConstHopLimit" || name == "cmplsFrrConstBandwidth" || name == "cmplsFrrConstRowStatus" || name == "cmplsFrrConstNumProtectingTunOnIf" || name == "cmplsFrrConstNumProtectedTunOnIf")
         return true;
     return false;
 }
 
-CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogtable()
+CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogTable()
+    :
+    cmplsfrrlogentry(this, {"cmplsfrrlogindex"})
 {
 
-    yang_name = "cmplsFrrLogTable"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsFrrLogTable"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFFRRMIB::Cmplsfrrlogtable::~Cmplsfrrlogtable()
+CISCOIETFFRRMIB::CmplsFrrLogTable::~CmplsFrrLogTable()
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrlogtable::has_data() const
+bool CISCOIETFFRRMIB::CmplsFrrLogTable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsfrrlogentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmplsfrrlogentry.len(); index++)
     {
         if(cmplsfrrlogentry[index]->has_data())
             return true;
@@ -806,9 +818,9 @@ bool CISCOIETFFRRMIB::Cmplsfrrlogtable::has_data() const
     return false;
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrlogtable::has_operation() const
+bool CISCOIETFFRRMIB::CmplsFrrLogTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsfrrlogentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrlogentry.len(); index++)
     {
         if(cmplsfrrlogentry[index]->has_operation())
             return true;
@@ -816,21 +828,21 @@ bool CISCOIETFFRRMIB::Cmplsfrrlogtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrlogtable::get_absolute_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrLogTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-FRR-MIB:CISCO-IETF-FRR-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrlogtable::get_segment_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrLogTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmplsFrrLogTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrlogtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrLogTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -839,25 +851,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrlogtable
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrlogtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsFrrLogEntry")
     {
-        auto c = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry>();
+        auto c = std::make_shared<CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry>();
         c->parent = this;
-        cmplsfrrlogentry.push_back(c);
+        cmplsfrrlogentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrlogtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrLogTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmplsfrrlogentry)
+    for (auto c : cmplsfrrlogentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -868,22 +880,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrlogtable
     return children;
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrlogtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFFRRMIB::CmplsFrrLogTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrlogtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFFRRMIB::CmplsFrrLogTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrlogtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFFRRMIB::CmplsFrrLogTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsFrrLogEntry")
         return true;
     return false;
 }
 
-CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::Cmplsfrrlogentry()
+CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::CmplsFrrLogEntry()
     :
     cmplsfrrlogindex{YType::uint32, "cmplsFrrLogIndex"},
     cmplsfrrlogeventtime{YType::uint32, "cmplsFrrLogEventTime"},
@@ -893,15 +905,16 @@ CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::Cmplsfrrlogentry()
     cmplsfrrlogeventreasonstring{YType::str, "cmplsFrrLogEventReasonString"}
 {
 
-    yang_name = "cmplsFrrLogEntry"; yang_parent_name = "cmplsFrrLogTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsFrrLogEntry"; yang_parent_name = "cmplsFrrLogTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::~Cmplsfrrlogentry()
+CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::~CmplsFrrLogEntry()
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::has_data() const
+bool CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmplsfrrlogindex.is_set
 	|| cmplsfrrlogeventtime.is_set
 	|| cmplsfrrloginterface.is_set
@@ -910,7 +923,7 @@ bool CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::has_data() const
 	|| cmplsfrrlogeventreasonstring.is_set;
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::has_operation() const
+bool CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmplsfrrlogindex.yfilter)
@@ -921,21 +934,22 @@ bool CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::has_operation() const
 	|| ydk::is_set(cmplsfrrlogeventreasonstring.yfilter);
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::get_absolute_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-FRR-MIB:CISCO-IETF-FRR-MIB/cmplsFrrLogTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::get_segment_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cmplsFrrLogEntry" <<"[cmplsFrrLogIndex='" <<cmplsfrrlogindex <<"']";
+    path_buffer << "cmplsFrrLogEntry";
+    ADD_KEY_TOKEN(cmplsfrrlogindex, "cmplsFrrLogIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -950,19 +964,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrlogtable
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmplsFrrLogIndex")
     {
@@ -1002,7 +1016,7 @@ void CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::set_value(const std::s
     }
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmplsFrrLogIndex")
     {
@@ -1030,26 +1044,29 @@ void CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::set_filter(const std::
     }
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsFrrLogIndex" || name == "cmplsFrrLogEventTime" || name == "cmplsFrrLogInterface" || name == "cmplsFrrLogEventType" || name == "cmplsFrrLogEventDuration" || name == "cmplsFrrLogEventReasonString")
         return true;
     return false;
 }
 
-CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbtable()
+CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBTable()
+    :
+    cmplsfrrfacroutedbentry(this, {"cmplsfrrfacrouteprotectedifindex", "cmplsfrrfacrouteprotectingtunindex", "cmplsfrrfacrouteprotectedtunindex", "cmplsfrrfacrouteprotectedtuninstance", "cmplsfrrfacrouteprotectedtuningresslsrid", "cmplsfrrfacrouteprotectedtunegresslsrid"})
 {
 
-    yang_name = "cmplsFrrFacRouteDBTable"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsFrrFacRouteDBTable"; yang_parent_name = "CISCO-IETF-FRR-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::~Cmplsfrrfacroutedbtable()
+CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::~CmplsFrrFacRouteDBTable()
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::has_data() const
+bool CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsfrrfacroutedbentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmplsfrrfacroutedbentry.len(); index++)
     {
         if(cmplsfrrfacroutedbentry[index]->has_data())
             return true;
@@ -1057,9 +1074,9 @@ bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::has_data() const
     return false;
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::has_operation() const
+bool CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsfrrfacroutedbentry.size(); index++)
+    for (std::size_t index=0; index<cmplsfrrfacroutedbentry.len(); index++)
     {
         if(cmplsfrrfacroutedbentry[index]->has_operation())
             return true;
@@ -1067,21 +1084,21 @@ bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_absolute_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-FRR-MIB:CISCO-IETF-FRR-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_segment_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmplsFrrFacRouteDBTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1090,25 +1107,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrfacroute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsFrrFacRouteDBEntry")
     {
-        auto c = std::make_shared<CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry>();
+        auto c = std::make_shared<CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry>();
         c->parent = this;
-        cmplsfrrfacroutedbentry.push_back(c);
+        cmplsfrrfacroutedbentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmplsfrrfacroutedbentry)
+    for (auto c : cmplsfrrfacroutedbentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1119,22 +1136,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrfacroute
     return children;
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsFrrFacRouteDBEntry")
         return true;
     return false;
 }
 
-CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacroutedbentry()
+CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteDBEntry()
     :
     cmplsfrrfacrouteprotectedifindex{YType::int32, "cmplsFrrFacRouteProtectedIfIndex"},
     cmplsfrrfacrouteprotectingtunindex{YType::uint32, "cmplsFrrFacRouteProtectingTunIndex"},
@@ -1147,15 +1164,16 @@ CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacro
     cmplsfrrfacrouteprotectingtunprotectiontype{YType::enumeration, "cmplsFrrFacRouteProtectingTunProtectionType"}
 {
 
-    yang_name = "cmplsFrrFacRouteDBEntry"; yang_parent_name = "cmplsFrrFacRouteDBTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsFrrFacRouteDBEntry"; yang_parent_name = "cmplsFrrFacRouteDBTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::~Cmplsfrrfacroutedbentry()
+CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::~CmplsFrrFacRouteDBEntry()
 {
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::has_data() const
+bool CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cmplsfrrfacrouteprotectedifindex.is_set
 	|| cmplsfrrfacrouteprotectingtunindex.is_set
 	|| cmplsfrrfacrouteprotectedtunindex.is_set
@@ -1167,7 +1185,7 @@ bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::has_data
 	|| cmplsfrrfacrouteprotectingtunprotectiontype.is_set;
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::has_operation() const
+bool CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cmplsfrrfacrouteprotectedifindex.yfilter)
@@ -1181,21 +1199,27 @@ bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::has_oper
 	|| ydk::is_set(cmplsfrrfacrouteprotectingtunprotectiontype.yfilter);
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::get_absolute_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-FRR-MIB:CISCO-IETF-FRR-MIB/cmplsFrrFacRouteDBTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::get_segment_path() const
+std::string CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cmplsFrrFacRouteDBEntry" <<"[cmplsFrrFacRouteProtectedIfIndex='" <<cmplsfrrfacrouteprotectedifindex <<"']" <<"[cmplsFrrFacRouteProtectingTunIndex='" <<cmplsfrrfacrouteprotectingtunindex <<"']" <<"[cmplsFrrFacRouteProtectedTunIndex='" <<cmplsfrrfacrouteprotectedtunindex <<"']" <<"[cmplsFrrFacRouteProtectedTunInstance='" <<cmplsfrrfacrouteprotectedtuninstance <<"']" <<"[cmplsFrrFacRouteProtectedTunIngressLSRId='" <<cmplsfrrfacrouteprotectedtuningresslsrid <<"']" <<"[cmplsFrrFacRouteProtectedTunEgressLSRId='" <<cmplsfrrfacrouteprotectedtunegresslsrid <<"']";
+    path_buffer << "cmplsFrrFacRouteDBEntry";
+    ADD_KEY_TOKEN(cmplsfrrfacrouteprotectedifindex, "cmplsFrrFacRouteProtectedIfIndex");
+    ADD_KEY_TOKEN(cmplsfrrfacrouteprotectingtunindex, "cmplsFrrFacRouteProtectingTunIndex");
+    ADD_KEY_TOKEN(cmplsfrrfacrouteprotectedtunindex, "cmplsFrrFacRouteProtectedTunIndex");
+    ADD_KEY_TOKEN(cmplsfrrfacrouteprotectedtuninstance, "cmplsFrrFacRouteProtectedTunInstance");
+    ADD_KEY_TOKEN(cmplsfrrfacrouteprotectedtuningresslsrid, "cmplsFrrFacRouteProtectedTunIngressLSRId");
+    ADD_KEY_TOKEN(cmplsfrrfacrouteprotectedtunegresslsrid, "cmplsFrrFacRouteProtectedTunEgressLSRId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1213,19 +1237,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFFRRMIB::Cmplsfrrfacroute
 
 }
 
-std::shared_ptr<Entity> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cmplsFrrFacRouteProtectedIfIndex")
     {
@@ -1283,7 +1307,7 @@ void CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::set_valu
     }
 }
 
-void CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cmplsFrrFacRouteProtectedIfIndex")
     {
@@ -1323,25 +1347,25 @@ void CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::set_filt
     }
 }
 
-bool CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsFrrFacRouteProtectedIfIndex" || name == "cmplsFrrFacRouteProtectingTunIndex" || name == "cmplsFrrFacRouteProtectedTunIndex" || name == "cmplsFrrFacRouteProtectedTunInstance" || name == "cmplsFrrFacRouteProtectedTunIngressLSRId" || name == "cmplsFrrFacRouteProtectedTunEgressLSRId" || name == "cmplsFrrFacRouteProtectedTunStatus" || name == "cmplsFrrFacRouteProtectingTunResvBw" || name == "cmplsFrrFacRouteProtectingTunProtectionType")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrscalars::Cmplsfrrconstprotectionmethod::oneToOneBackup {0, "oneToOneBackup"};
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrscalars::Cmplsfrrconstprotectionmethod::facilityBackup {1, "facilityBackup"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrScalars::CmplsFrrConstProtectionMethod::oneToOneBackup {0, "oneToOneBackup"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrScalars::CmplsFrrConstProtectionMethod::facilityBackup {1, "facilityBackup"};
 
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::Cmplsfrrlogeventtype::other {1, "other"};
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::Cmplsfrrlogeventtype::protected_ {2, "protected"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::CmplsFrrLogEventType::other {1, "other"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::CmplsFrrLogEventType::protected_ {2, "protected"};
 
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacrouteprotectedtunstatus::active {1, "active"};
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacrouteprotectedtunstatus::ready {2, "ready"};
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacrouteprotectedtunstatus::partial {3, "partial"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectedTunStatus::active {1, "active"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectedTunStatus::ready {2, "ready"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectedTunStatus::partial {3, "partial"};
 
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacrouteprotectingtunprotectiontype::linkProtection {0, "linkProtection"};
-const Enum::YLeaf CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacrouteprotectingtunprotectiontype::nodeProtection {1, "nodeProtection"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectingTunProtectionType::linkProtection {0, "linkProtection"};
+const Enum::YLeaf CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectingTunProtectionType::nodeProtection {1, "nodeProtection"};
 
 
 }

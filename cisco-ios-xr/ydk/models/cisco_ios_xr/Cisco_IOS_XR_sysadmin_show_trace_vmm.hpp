@@ -57,7 +57,7 @@ class Vmm::VmManager : public ydk::Entity
 
         class Trace; //type: Vmm::VmManager::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_vmm::Vmm::VmManager::Trace> > trace;
+        ydk::YList trace;
         
 }; // Vmm::VmManager
 
@@ -82,7 +82,7 @@ class Vmm::VmManager::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Vmm::VmManager::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_vmm::Vmm::VmManager::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Vmm::VmManager::Trace
 
@@ -106,7 +106,7 @@ class Vmm::VmManager::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Vmm::VmManager::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_vmm::Vmm::VmManager::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Vmm::VmManager::Trace::Location
 
@@ -130,7 +130,7 @@ class Vmm::VmManager::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_vmm::Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Vmm::VmManager::Trace::Location::AllOptions
 

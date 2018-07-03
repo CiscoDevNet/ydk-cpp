@@ -17,7 +17,7 @@ Exception::Exception()
 {
     file->parent = this;
 
-    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-spirit-corehelper-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-spirit-corehelper-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Exception::~Exception()
@@ -26,6 +26,7 @@ Exception::~Exception()
 
 bool Exception::has_data() const
 {
+    if (is_presence_container) return true;
     return (file !=  nullptr && file->has_data());
 }
 
@@ -124,7 +125,7 @@ Exception::File::File()
     choice3{YType::str, "choice3"}
 {
 
-    yang_name = "file"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "file"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::File::~File()
@@ -133,6 +134,7 @@ Exception::File::~File()
 
 bool Exception::File::has_data() const
 {
+    if (is_presence_container) return true;
     return choice2.is_set
 	|| choice1.is_set
 	|| choice3.is_set;

@@ -117,7 +117,7 @@ class Alarms::Detail::DetailSystem::Active : public ydk::Entity
 
         class AlarmInfo; //type: Alarms::Detail::DetailSystem::Active::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Active::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Detail::DetailSystem::Active
 
@@ -233,7 +233,7 @@ class Alarms::Detail::DetailSystem::History : public ydk::Entity
 
         class AlarmInfo; //type: Alarms::Detail::DetailSystem::History::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::History::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Detail::DetailSystem::History
 
@@ -349,7 +349,7 @@ class Alarms::Detail::DetailSystem::Suppressed : public ydk::Entity
 
         class SuppressedInfo; //type: Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo> > suppressed_info;
+        ydk::YList suppressed_info;
         
 }; // Alarms::Detail::DetailSystem::Suppressed
 
@@ -474,7 +474,7 @@ class Alarms::Detail::DetailSystem::Clients : public ydk::Entity
 
         class ClientInfo; //type: Alarms::Detail::DetailSystem::Clients::ClientInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailSystem::Clients::ClientInfo> > client_info;
+        ydk::YList client_info;
         
 }; // Alarms::Detail::DetailSystem::Clients
 
@@ -559,7 +559,7 @@ class Alarms::Detail::DetailCard::DetailLocations : public ydk::Entity
 
         class DetailLocation; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation> > detail_location;
+        ydk::YList detail_location;
         
 }; // Alarms::Detail::DetailCard::DetailLocations
 
@@ -615,7 +615,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active : publ
 
         class AlarmInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active
 
@@ -727,7 +727,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History : pub
 
         class AlarmInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History
 
@@ -839,7 +839,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed : 
 
         class SuppressedInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo> > suppressed_info;
+        ydk::YList suppressed_info;
         
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed
 
@@ -960,7 +960,7 @@ class Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients : pub
 
         class ClientInfo; //type: Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo> > client_info;
+        ydk::YList client_info;
         
 }; // Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients
 
@@ -1070,7 +1070,7 @@ class Alarms::Brief::BriefCard::BriefLocations : public ydk::Entity
 
         class BriefLocation; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation> > brief_location;
+        ydk::YList brief_location;
         
 }; // Alarms::Brief::BriefCard::BriefLocations
 
@@ -1122,7 +1122,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active : public y
 
         class AlarmInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active
 
@@ -1173,7 +1173,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History : public 
 
         class AlarmInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History
 
@@ -1224,7 +1224,7 @@ class Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed : publ
 
         class SuppressedInfo; //type: Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo> > suppressed_info;
+        ydk::YList suppressed_info;
         
 }; // Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed
 
@@ -1304,7 +1304,7 @@ class Alarms::Brief::BriefSystem::Active : public ydk::Entity
 
         class AlarmInfo; //type: Alarms::Brief::BriefSystem::Active::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::Active::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Brief::BriefSystem::Active
 
@@ -1357,7 +1357,7 @@ class Alarms::Brief::BriefSystem::History : public ydk::Entity
 
         class AlarmInfo; //type: Alarms::Brief::BriefSystem::History::AlarmInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::History::AlarmInfo> > alarm_info;
+        ydk::YList alarm_info;
         
 }; // Alarms::Brief::BriefSystem::History
 
@@ -1410,7 +1410,7 @@ class Alarms::Brief::BriefSystem::Suppressed : public ydk::Entity
 
         class SuppressedInfo; //type: Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo> > suppressed_info;
+        ydk::YList suppressed_info;
         
 }; // Alarms::Brief::BriefSystem::Suppressed
 
@@ -1443,6 +1443,76 @@ class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public ydk::Entit
 
 }; // Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
 
+class TimingBucket : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf fifteen_min;
+        static const ydk::Enum::YLeaf one_day;
+
+};
+
+class AlarmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_reported;
+        static const ydk::Enum::YLeaf not_alarmed;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf severity_last;
+
+};
+
+class AlarmDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf send;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf send_receive;
+
+};
+
+class AlarmStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf suppress;
+        static const ydk::Enum::YLeaf last;
+
+};
+
+class AlarmServiceAffecting : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_service_affecting;
+        static const ydk::Enum::YLeaf service_affecting;
+
+};
+
+class AlarmNotificationSrc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf near_end;
+        static const ydk::Enum::YLeaf far_end;
+
+};
+
+class AlarmEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf notification;
+        static const ydk::Enum::YLeaf last;
+
+};
+
 class AlarmClient : public ydk::Enum
 {
     public:
@@ -1464,52 +1534,6 @@ class AlarmClientState : public ydk::Enum
         static const ydk::Enum::YLeaf registered;
         static const ydk::Enum::YLeaf disconnected;
         static const ydk::Enum::YLeaf ready;
-
-};
-
-class AlarmEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf notification;
-        static const ydk::Enum::YLeaf last;
-
-};
-
-class TimingBucket : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf fifteen_min;
-        static const ydk::Enum::YLeaf one_day;
-
-};
-
-class AlarmNotificationSrc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf near_end;
-        static const ydk::Enum::YLeaf far_end;
-
-};
-
-class AlarmDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf send;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf send_receive;
-
-};
-
-class AlarmServiceAffecting : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_service_affecting;
-        static const ydk::Enum::YLeaf service_affecting;
 
 };
 
@@ -1535,30 +1559,6 @@ class AlarmGroups : public ydk::Enum
         static const ydk::Enum::YLeaf ots;
         static const ydk::Enum::YLeaf timing;
         static const ydk::Enum::YLeaf last;
-
-};
-
-class AlarmStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf set;
-        static const ydk::Enum::YLeaf clear;
-        static const ydk::Enum::YLeaf suppress;
-        static const ydk::Enum::YLeaf last;
-
-};
-
-class AlarmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_reported;
-        static const ydk::Enum::YLeaf not_alarmed;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf severity_last;
 
 };
 

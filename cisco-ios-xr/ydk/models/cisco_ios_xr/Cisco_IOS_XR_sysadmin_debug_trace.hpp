@@ -57,7 +57,7 @@ class Config::Debug : public ydk::Entity
 
         class Trace; //type: Config::Debug::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_debug_trace::Config::Debug::Trace> > trace;
+        ydk::YList trace;
         
 }; // Config::Debug
 

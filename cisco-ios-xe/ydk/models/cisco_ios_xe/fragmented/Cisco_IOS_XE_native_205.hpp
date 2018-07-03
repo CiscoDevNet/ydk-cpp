@@ -85,11 +85,11 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Csg : public ydk::Entity
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::Csg
 
 
-class Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X : public ydk::Entity
+class Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x : public ydk::Entity
 {
     public:
-        Dot1X();
-        ~Dot1X();
+        Dot1x();
+        ~Dot1x();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -107,7 +107,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X : public ydk::Entit
         ydk::YLeaf no_auth_fail_vlan; //type: empty
         ydk::YLeaf no_guest_vlan; //type: empty
 
-}; // Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X
+}; // Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x
 
 
 class Native::SnmpServer::Enable::EnableChoice::Traps::Dsp : public ydk::Entity
@@ -666,11 +666,11 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Isdn : public ydk::Entity
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::Isdn
 
 
-class Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc : public ydk::Entity
+class Native::SnmpServer::Enable::EnableChoice::Traps::L2tc : public ydk::Entity
 {
     public:
-        L2Tc();
-        ~L2Tc();
+        L2tc();
+        ~L2tc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -686,14 +686,14 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc : public ydk::Entity
         ydk::YLeaf sys_threshold; //type: empty
         ydk::YLeaf threshold; //type: empty
 
-}; // Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc
+}; // Native::SnmpServer::Enable::EnableChoice::Traps::L2tc
 
 
-class Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun : public ydk::Entity
+class Native::SnmpServer::Enable::EnableChoice::Traps::L2tun : public ydk::Entity
 {
     public:
-        L2Tun();
-        ~L2Tun();
+        L2tun();
+        ~L2tun();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -707,14 +707,14 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun : public ydk::Entit
         std::string get_absolute_path() const override;
 
         ydk::YLeaf session; //type: empty
-        class Pseudowire; //type: Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire
+        class Pseudowire; //type: Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire> pseudowire;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire> pseudowire;
         
-}; // Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun
+}; // Native::SnmpServer::Enable::EnableChoice::Traps::L2tun
 
 
-class Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire : public ydk::Entity
+class Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire : public ydk::Entity
 {
     public:
         Pseudowire();
@@ -733,7 +733,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire : publi
 
         ydk::YLeaf status; //type: empty
 
-}; // Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire
+}; // Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire
 
 
 class Native::SnmpServer::Enable::EnableChoice::Traps::License : public ydk::Entity
@@ -1701,18 +1701,18 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Wireless : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Bsnmobilestation; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation
+        class BsnMobileStation; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation> bsnmobilestation; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation> bsnmobilestation; // presence node
         
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::Wireless
 
 
-class Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation : public ydk::Entity
+class Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation : public ydk::Entity
 {
     public:
-        Bsnmobilestation();
-        ~Bsnmobilestation();
+        BsnMobileStation();
+        ~BsnMobileStation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1725,18 +1725,18 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestatio
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Bsnaccesspoint; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint
+        class BsnAccessPoint; //type: Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint> bsnaccesspoint; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint> bsnaccesspoint; // presence node
         
-}; // Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation
+}; // Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation
 
 
-class Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint : public ydk::Entity
+class Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint : public ydk::Entity
 {
     public:
-        Bsnaccesspoint();
-        ~Bsnaccesspoint();
+        BsnAccessPoint();
+        ~BsnAccessPoint();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1751,14 +1751,14 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestatio
 
         ydk::YLeaf bsnrogue; //type: empty
 
-}; // Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint
+}; // Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint
 
 
-class Native::SnmpServer::Engineid : public ydk::Entity
+class Native::SnmpServer::EngineID : public ydk::Entity
 {
     public:
-        Engineid();
-        ~Engineid();
+        EngineID();
+        ~EngineID();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1772,14 +1772,14 @@ class Native::SnmpServer::Engineid : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf local; //type: string
-        class Remote; //type: Native::SnmpServer::Engineid::Remote
+        class Remote; //type: Native::SnmpServer::EngineID::Remote
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Engineid::Remote> remote;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::EngineID::Remote> remote;
         
-}; // Native::SnmpServer::Engineid
+}; // Native::SnmpServer::EngineID
 
 
-class Native::SnmpServer::Engineid::Remote : public ydk::Entity
+class Native::SnmpServer::EngineID::Remote : public ydk::Entity
 {
     public:
         Remote();
@@ -1797,7 +1797,7 @@ class Native::SnmpServer::Engineid::Remote : public ydk::Entity
         std::string get_absolute_path() const override;
 
 
-}; // Native::SnmpServer::Engineid::Remote
+}; // Native::SnmpServer::EngineID::Remote
 
 
 class Native::SnmpServer::Group : public ydk::Entity
@@ -1819,11 +1819,11 @@ class Native::SnmpServer::Group : public ydk::Entity
 
         ydk::YLeaf id; //type: string
         class V1; //type: Native::SnmpServer::Group::V1
-        class V2C; //type: Native::SnmpServer::Group::V2C
+        class V2c; //type: Native::SnmpServer::Group::V2c
         class V3; //type: Native::SnmpServer::Group::V3
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Group::V1> v1;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Group::V2C> v2c;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Group::V2c> v2c;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::Group::V3> v3;
         
 }; // Native::SnmpServer::Group
@@ -1849,11 +1849,11 @@ class Native::SnmpServer::Group::V1 : public ydk::Entity
 }; // Native::SnmpServer::Group::V1
 
 
-class Native::SnmpServer::Group::V2C : public ydk::Entity
+class Native::SnmpServer::Group::V2c : public ydk::Entity
 {
     public:
-        V2C();
-        ~V2C();
+        V2c();
+        ~V2c();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1866,7 +1866,7 @@ class Native::SnmpServer::Group::V2C : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::SnmpServer::Group::V2C
+}; // Native::SnmpServer::Group::V2c
 
 
 class Native::SnmpServer::Group::V3 : public ydk::Entity
@@ -1915,7 +1915,7 @@ class Native::SnmpServer::Host : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ip_address; //type: one of string, union
+        ydk::YLeaf ip_address; //type: one of union, string
         ydk::YLeaf community_or_user; //type: string
         ydk::YLeaf vrf; //type: string
         ydk::YLeaf informs; //type: empty
@@ -2637,7 +2637,7 @@ class Native::SnmpServer::User : public ydk::Entity
 
         class Names; //type: Native::SnmpServer::User::Names
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SnmpServer::User::Names> > names;
+        ydk::YList names;
         
 }; // Native::SnmpServer::User
 
@@ -3001,7 +3001,7 @@ class Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4 :
 
         class Prefixes; //type: Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes> > prefixes;
+        ydk::YList prefixes;
         
 }; // Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4
 
@@ -3146,7 +3146,7 @@ class Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4St
 
         class Prefixes; //type: Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes> > prefixes;
+        ydk::YList prefixes;
         
 }; // Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf
 
@@ -3340,7 +3340,7 @@ class Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::
 
         class Prefixes; //type: Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes> > prefixes;
+        ydk::YList prefixes;
         
 }; // Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4
 
@@ -3485,7 +3485,7 @@ class Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::
 
         class Prefixes; //type: Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes> > prefixes;
+        ydk::YList prefixes;
         
 }; // Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf
 

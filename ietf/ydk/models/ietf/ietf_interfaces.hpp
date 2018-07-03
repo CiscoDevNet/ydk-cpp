@@ -43,7 +43,7 @@ class Interfaces : public ydk::Entity
 
         class Interface; //type: Interfaces::Interface
 
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Interfaces
 
@@ -70,38 +70,16 @@ class Interfaces::Interface : public ydk::Entity
         ydk::YLeaf type; //type: InterfaceType
         ydk::YLeaf enabled; //type: boolean
         ydk::YLeaf link_up_down_trap_enable; //type: LinkUpDownTrapEnable
-        class DiffservTargetEntry; //type: Interfaces::Interface::DiffservTargetEntry
         class Ipv4; //type: Interfaces::Interface::Ipv4
         class Ipv6; //type: Interfaces::Interface::Ipv6
+        class DiffservTargetEntry; //type: Interfaces::Interface::DiffservTargetEntry
 
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::DiffservTargetEntry> > diffserv_target_entry;
         std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv4> ipv4; // presence node
         std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv6> ipv6; // presence node
+        ydk::YList diffserv_target_entry;
                 class LinkUpDownTrapEnable;
 
 }; // Interfaces::Interface
-
-
-class Interfaces::Interface::DiffservTargetEntry : public ydk::Entity
-{
-    public:
-        DiffservTargetEntry();
-        ~DiffservTargetEntry();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf policy_name; //type: string
-
-}; // Interfaces::Interface::DiffservTargetEntry
 
 
 class Interfaces::Interface::Ipv4 : public ydk::Entity
@@ -126,8 +104,8 @@ class Interfaces::Interface::Ipv4 : public ydk::Entity
         class Address; //type: Interfaces::Interface::Ipv4::Address
         class Neighbor; //type: Interfaces::Interface::Ipv4::Neighbor
 
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv4::Address> > address;
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv4::Neighbor> > neighbor;
+        ydk::YList address;
+        ydk::YList neighbor;
         
 }; // Interfaces::Interface::Ipv4
 
@@ -202,8 +180,8 @@ class Interfaces::Interface::Ipv6 : public ydk::Entity
         class Autoconf; //type: Interfaces::Interface::Ipv6::Autoconf
         class Ipv6RouterAdvertisements; //type: Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements
 
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv6::Address> > address;
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv6::Neighbor> > neighbor;
+        ydk::YList address;
+        ydk::YList neighbor;
         std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv6::Autoconf> autoconf;
         std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements> ipv6_router_advertisements;
         
@@ -329,7 +307,7 @@ class Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList : public
 
         class Prefix; //type: Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix
 
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList
 
@@ -359,6 +337,28 @@ class Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix 
 
 }; // Interfaces::Interface::Ipv6::Ipv6RouterAdvertisements::PrefixList::Prefix
 
+
+class Interfaces::Interface::DiffservTargetEntry : public ydk::Entity
+{
+    public:
+        DiffservTargetEntry();
+        ~DiffservTargetEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf direction; //type: Direction
+        ydk::YLeaf policy_name; //type: string
+
+}; // Interfaces::Interface::DiffservTargetEntry
+
 class InterfacesState : public ydk::Entity
 {
     public:
@@ -382,7 +382,7 @@ class InterfacesState : public ydk::Entity
 
         class Interface; //type: InterfacesState::Interface
 
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface> > interface;
+        ydk::YList interface;
         
 }; // InterfacesState
 
@@ -418,14 +418,14 @@ class InterfacesState::Interface : public ydk::Entity
         //type: list of  string (refers to ietf::ietf_interfaces::InterfacesState::Interface::name)
         ydk::YLeafList lower_layer_if;
         class Statistics; //type: InterfacesState::Interface::Statistics
-        class DiffservTargetEntry; //type: InterfacesState::Interface::DiffservTargetEntry
         class Ipv4; //type: InterfacesState::Interface::Ipv4
         class Ipv6; //type: InterfacesState::Interface::Ipv6
+        class DiffservTargetEntry; //type: InterfacesState::Interface::DiffservTargetEntry
 
         std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::Statistics> statistics;
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::DiffservTargetEntry> > diffserv_target_entry;
         std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::Ipv4> ipv4; // presence node
         std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::Ipv6> ipv6; // presence node
+        ydk::YList diffserv_target_entry;
                 class AdminStatus;
         class OperStatus;
 
@@ -468,6 +468,158 @@ class InterfacesState::Interface::Statistics : public ydk::Entity
 }; // InterfacesState::Interface::Statistics
 
 
+class InterfacesState::Interface::Ipv4 : public ydk::Entity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf forwarding; //type: boolean
+        ydk::YLeaf mtu; //type: uint16
+        class Address; //type: InterfacesState::Interface::Ipv4::Address
+        class Neighbor; //type: InterfacesState::Interface::Ipv4::Neighbor
+
+        ydk::YList address;
+        ydk::YList neighbor;
+        
+}; // InterfacesState::Interface::Ipv4
+
+
+class InterfacesState::Interface::Ipv4::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf netmask; //type: string
+        ydk::YLeaf origin; //type: IpAddressOrigin
+
+}; // InterfacesState::Interface::Ipv4::Address
+
+
+class InterfacesState::Interface::Ipv4::Neighbor : public ydk::Entity
+{
+    public:
+        Neighbor();
+        ~Neighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf link_layer_address; //type: string
+        ydk::YLeaf origin; //type: NeighborOrigin
+
+}; // InterfacesState::Interface::Ipv4::Neighbor
+
+
+class InterfacesState::Interface::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf forwarding; //type: boolean
+        ydk::YLeaf mtu; //type: uint32
+        class Address; //type: InterfacesState::Interface::Ipv6::Address
+        class Neighbor; //type: InterfacesState::Interface::Ipv6::Neighbor
+
+        ydk::YList address;
+        ydk::YList neighbor;
+        
+}; // InterfacesState::Interface::Ipv6
+
+
+class InterfacesState::Interface::Ipv6::Address : public ydk::Entity
+{
+    public:
+        Address();
+        ~Address();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+        ydk::YLeaf origin; //type: IpAddressOrigin
+        ydk::YLeaf status; //type: Status
+        class Status;
+
+}; // InterfacesState::Interface::Ipv6::Address
+
+
+class InterfacesState::Interface::Ipv6::Neighbor : public ydk::Entity
+{
+    public:
+        Neighbor();
+        ~Neighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf link_layer_address; //type: string
+        ydk::YLeaf origin; //type: NeighborOrigin
+        ydk::YLeaf is_router; //type: empty
+        ydk::YLeaf state; //type: State
+        class State;
+
+}; // InterfacesState::Interface::Ipv6::Neighbor
+
+
 class InterfacesState::Interface::DiffservTargetEntry : public ydk::Entity
 {
     public:
@@ -488,7 +640,7 @@ class InterfacesState::Interface::DiffservTargetEntry : public ydk::Entity
         ydk::YLeaf policy_name; //type: string
         class DiffservTargetClassifierStatistics; //type: InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics
 
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics> > diffserv_target_classifier_statistics;
+        ydk::YList diffserv_target_classifier_statistics;
         
 }; // InterfacesState::Interface::DiffservTargetEntry
 
@@ -516,7 +668,7 @@ class InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierS
         class QueuingStatistics; //type: InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics
 
         std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics> classifier_entry_statistics;
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics> > meter_statistics;
+        ydk::YList meter_statistics;
         std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics> queuing_statistics;
         
 }; // InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics
@@ -619,158 +771,6 @@ class InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierS
         ydk::YLeaf early_drop_bytes; //type: uint64
 
 }; // InterfacesState::Interface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats
-
-
-class InterfacesState::Interface::Ipv4 : public ydk::Entity
-{
-    public:
-        Ipv4();
-        ~Ipv4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf forwarding; //type: boolean
-        ydk::YLeaf mtu; //type: uint16
-        class Address; //type: InterfacesState::Interface::Ipv4::Address
-        class Neighbor; //type: InterfacesState::Interface::Ipv4::Neighbor
-
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::Ipv4::Address> > address;
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::Ipv4::Neighbor> > neighbor;
-        
-}; // InterfacesState::Interface::Ipv4
-
-
-class InterfacesState::Interface::Ipv4::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ip; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-        ydk::YLeaf netmask; //type: string
-        ydk::YLeaf origin; //type: IpAddressOrigin
-
-}; // InterfacesState::Interface::Ipv4::Address
-
-
-class InterfacesState::Interface::Ipv4::Neighbor : public ydk::Entity
-{
-    public:
-        Neighbor();
-        ~Neighbor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ip; //type: string
-        ydk::YLeaf link_layer_address; //type: string
-        ydk::YLeaf origin; //type: NeighborOrigin
-
-}; // InterfacesState::Interface::Ipv4::Neighbor
-
-
-class InterfacesState::Interface::Ipv6 : public ydk::Entity
-{
-    public:
-        Ipv6();
-        ~Ipv6();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf forwarding; //type: boolean
-        ydk::YLeaf mtu; //type: uint32
-        class Address; //type: InterfacesState::Interface::Ipv6::Address
-        class Neighbor; //type: InterfacesState::Interface::Ipv6::Neighbor
-
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::Ipv6::Address> > address;
-        std::vector<std::shared_ptr<ietf::ietf_interfaces::InterfacesState::Interface::Ipv6::Neighbor> > neighbor;
-        
-}; // InterfacesState::Interface::Ipv6
-
-
-class InterfacesState::Interface::Ipv6::Address : public ydk::Entity
-{
-    public:
-        Address();
-        ~Address();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ip; //type: string
-        ydk::YLeaf prefix_length; //type: uint8
-        ydk::YLeaf origin; //type: IpAddressOrigin
-        ydk::YLeaf status; //type: Status
-        class Status;
-
-}; // InterfacesState::Interface::Ipv6::Address
-
-
-class InterfacesState::Interface::Ipv6::Neighbor : public ydk::Entity
-{
-    public:
-        Neighbor();
-        ~Neighbor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ip; //type: string
-        ydk::YLeaf link_layer_address; //type: string
-        ydk::YLeaf origin; //type: NeighborOrigin
-        ydk::YLeaf is_router; //type: empty
-        ydk::YLeaf state; //type: State
-        class State;
-
-}; // InterfacesState::Interface::Ipv6::Neighbor
 
 class Interfaces::Interface::LinkUpDownTrapEnable : public ydk::Enum
 {

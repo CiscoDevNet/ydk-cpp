@@ -32,30 +32,30 @@ class CISCOOSPFMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cospfgeneralgroup; //type: CISCOOSPFMIB::Cospfgeneralgroup
-        class Cospflsdbtable; //type: CISCOOSPFMIB::Cospflsdbtable
-        class Cospfshamlinktable; //type: CISCOOSPFMIB::Cospfshamlinktable
-        class Cospflocallsdbtable; //type: CISCOOSPFMIB::Cospflocallsdbtable
-        class Cospfvirtlocallsdbtable; //type: CISCOOSPFMIB::Cospfvirtlocallsdbtable
-        class Cospfshamlinknbrtable; //type: CISCOOSPFMIB::Cospfshamlinknbrtable
-        class Cospfshamlinkstable; //type: CISCOOSPFMIB::Cospfshamlinkstable
+        class CospfGeneralGroup; //type: CISCOOSPFMIB::CospfGeneralGroup
+        class CospfLsdbTable; //type: CISCOOSPFMIB::CospfLsdbTable
+        class CospfShamLinkTable; //type: CISCOOSPFMIB::CospfShamLinkTable
+        class CospfLocalLsdbTable; //type: CISCOOSPFMIB::CospfLocalLsdbTable
+        class CospfVirtLocalLsdbTable; //type: CISCOOSPFMIB::CospfVirtLocalLsdbTable
+        class CospfShamLinkNbrTable; //type: CISCOOSPFMIB::CospfShamLinkNbrTable
+        class CospfShamLinksTable; //type: CISCOOSPFMIB::CospfShamLinksTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfgeneralgroup> cospfgeneralgroup;
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflsdbtable> cospflsdbtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinktable> cospfshamlinktable;
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflocallsdbtable> cospflocallsdbtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfvirtlocallsdbtable> cospfvirtlocallsdbtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinknbrtable> cospfshamlinknbrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinkstable> cospfshamlinkstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfGeneralGroup> cospfgeneralgroup;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfLsdbTable> cospflsdbtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfShamLinkTable> cospfshamlinktable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfLocalLsdbTable> cospflocallsdbtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfVirtLocalLsdbTable> cospfvirtlocallsdbtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfShamLinkNbrTable> cospfshamlinknbrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfShamLinksTable> cospfshamlinkstable;
         
 }; // CISCOOSPFMIB
 
 
-class CISCOOSPFMIB::Cospfgeneralgroup : public ydk::Entity
+class CISCOOSPFMIB::CospfGeneralGroup : public ydk::Entity
 {
     public:
-        Cospfgeneralgroup();
-        ~Cospfgeneralgroup();
+        CospfGeneralGroup();
+        ~CospfGeneralGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -74,14 +74,14 @@ class CISCOOSPFMIB::Cospfgeneralgroup : public ydk::Entity
         ydk::YLeaf cospfopaqueaslsacount; //type: uint32
         ydk::YLeaf cospfopaqueaslsacksumsum; //type: uint32
 
-}; // CISCOOSPFMIB::Cospfgeneralgroup
+}; // CISCOOSPFMIB::CospfGeneralGroup
 
 
-class CISCOOSPFMIB::Cospflsdbtable : public ydk::Entity
+class CISCOOSPFMIB::CospfLsdbTable : public ydk::Entity
 {
     public:
-        Cospflsdbtable();
-        ~Cospflsdbtable();
+        CospfLsdbTable();
+        ~CospfLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -94,18 +94,18 @@ class CISCOOSPFMIB::Cospflsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cospflsdbentry; //type: CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry
+        class CospfLsdbEntry; //type: CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry> > cospflsdbentry;
+        ydk::YList cospflsdbentry;
         
-}; // CISCOOSPFMIB::Cospflsdbtable
+}; // CISCOOSPFMIB::CospfLsdbTable
 
 
-class CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry : public ydk::Entity
+class CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry : public ydk::Entity
 {
     public:
-        Cospflsdbentry();
-        ~Cospflsdbentry();
+        CospfLsdbEntry();
+        ~CospfLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,27 +118,27 @@ class CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable::Ospflsdbentry::ospflsdbareaid)
+        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfLsdbTable::OspfLsdbEntry::ospflsdbareaid)
         ydk::YLeaf ospflsdbareaid;
-        ydk::YLeaf cospflsdbtype; //type: Cospflsdbtype
-        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable::Ospflsdbentry::ospflsdblsid)
+        ydk::YLeaf cospflsdbtype; //type: CospfLsdbType
+        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfLsdbTable::OspfLsdbEntry::ospflsdblsid)
         ydk::YLeaf ospflsdblsid;
-        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable::Ospflsdbentry::ospflsdbrouterid)
+        //type: string (refers to cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfLsdbTable::OspfLsdbEntry::ospflsdbrouterid)
         ydk::YLeaf ospflsdbrouterid;
         ydk::YLeaf cospflsdbsequence; //type: int32
         ydk::YLeaf cospflsdbage; //type: int32
         ydk::YLeaf cospflsdbchecksum; //type: int32
         ydk::YLeaf cospflsdbadvertisement; //type: binary
-        class Cospflsdbtype;
+        class CospfLsdbType;
 
-}; // CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry
+}; // CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry
 
 
-class CISCOOSPFMIB::Cospfshamlinktable : public ydk::Entity
+class CISCOOSPFMIB::CospfShamLinkTable : public ydk::Entity
 {
     public:
-        Cospfshamlinktable();
-        ~Cospfshamlinktable();
+        CospfShamLinkTable();
+        ~CospfShamLinkTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,18 +151,18 @@ class CISCOOSPFMIB::Cospfshamlinktable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cospfshamlinkentry; //type: CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry
+        class CospfShamLinkEntry; //type: CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry> > cospfshamlinkentry;
+        ydk::YList cospfshamlinkentry;
         
-}; // CISCOOSPFMIB::Cospfshamlinktable
+}; // CISCOOSPFMIB::CospfShamLinkTable
 
 
-class CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry : public ydk::Entity
+class CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry : public ydk::Entity
 {
     public:
-        Cospfshamlinkentry();
-        ~Cospfshamlinkentry();
+        CospfShamLinkEntry();
+        ~CospfShamLinkEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -181,19 +181,19 @@ class CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry : public ydk::Entity
         ydk::YLeaf cospfshamlinkretransinterval; //type: int32
         ydk::YLeaf cospfshamlinkhellointerval; //type: int32
         ydk::YLeaf cospfshamlinkrtrdeadinterval; //type: int32
-        ydk::YLeaf cospfshamlinkstate; //type: Cospfshamlinkstate
+        ydk::YLeaf cospfshamlinkstate; //type: CospfShamLinkState
         ydk::YLeaf cospfshamlinkevents; //type: uint32
         ydk::YLeaf cospfshamlinkmetric; //type: int32
-        class Cospfshamlinkstate;
+        class CospfShamLinkState;
 
-}; // CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry
+}; // CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry
 
 
-class CISCOOSPFMIB::Cospflocallsdbtable : public ydk::Entity
+class CISCOOSPFMIB::CospfLocalLsdbTable : public ydk::Entity
 {
     public:
-        Cospflocallsdbtable();
-        ~Cospflocallsdbtable();
+        CospfLocalLsdbTable();
+        ~CospfLocalLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -206,18 +206,18 @@ class CISCOOSPFMIB::Cospflocallsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cospflocallsdbentry; //type: CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry
+        class CospfLocalLsdbEntry; //type: CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry> > cospflocallsdbentry;
+        ydk::YList cospflocallsdbentry;
         
-}; // CISCOOSPFMIB::Cospflocallsdbtable
+}; // CISCOOSPFMIB::CospfLocalLsdbTable
 
 
-class CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry : public ydk::Entity
+class CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry : public ydk::Entity
 {
     public:
-        Cospflocallsdbentry();
-        ~Cospflocallsdbentry();
+        CospfLocalLsdbEntry();
+        ~CospfLocalLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -232,23 +232,23 @@ class CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry : public ydk::Entit
 
         ydk::YLeaf cospflocallsdbipaddress; //type: string
         ydk::YLeaf cospflocallsdbaddresslessif; //type: int32
-        ydk::YLeaf cospflocallsdbtype; //type: Cospflocallsdbtype
+        ydk::YLeaf cospflocallsdbtype; //type: CospfLocalLsdbType
         ydk::YLeaf cospflocallsdblsid; //type: string
         ydk::YLeaf cospflocallsdbrouterid; //type: string
         ydk::YLeaf cospflocallsdbsequence; //type: int32
         ydk::YLeaf cospflocallsdbage; //type: int32
         ydk::YLeaf cospflocallsdbchecksum; //type: uint32
         ydk::YLeaf cospflocallsdbadvertisement; //type: binary
-        class Cospflocallsdbtype;
+        class CospfLocalLsdbType;
 
-}; // CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry
+}; // CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry
 
 
-class CISCOOSPFMIB::Cospfvirtlocallsdbtable : public ydk::Entity
+class CISCOOSPFMIB::CospfVirtLocalLsdbTable : public ydk::Entity
 {
     public:
-        Cospfvirtlocallsdbtable();
-        ~Cospfvirtlocallsdbtable();
+        CospfVirtLocalLsdbTable();
+        ~CospfVirtLocalLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -261,18 +261,18 @@ class CISCOOSPFMIB::Cospfvirtlocallsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cospfvirtlocallsdbentry; //type: CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry
+        class CospfVirtLocalLsdbEntry; //type: CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry> > cospfvirtlocallsdbentry;
+        ydk::YList cospfvirtlocallsdbentry;
         
-}; // CISCOOSPFMIB::Cospfvirtlocallsdbtable
+}; // CISCOOSPFMIB::CospfVirtLocalLsdbTable
 
 
-class CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry : public ydk::Entity
+class CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry : public ydk::Entity
 {
     public:
-        Cospfvirtlocallsdbentry();
-        ~Cospfvirtlocallsdbentry();
+        CospfVirtLocalLsdbEntry();
+        ~CospfVirtLocalLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,23 +287,23 @@ class CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry : public yd
 
         ydk::YLeaf cospfvirtlocallsdbtransitarea; //type: string
         ydk::YLeaf cospfvirtlocallsdbneighbor; //type: string
-        ydk::YLeaf cospfvirtlocallsdbtype; //type: Cospfvirtlocallsdbtype
+        ydk::YLeaf cospfvirtlocallsdbtype; //type: CospfVirtLocalLsdbType
         ydk::YLeaf cospfvirtlocallsdblsid; //type: string
         ydk::YLeaf cospfvirtlocallsdbrouterid; //type: string
         ydk::YLeaf cospfvirtlocallsdbsequence; //type: int32
         ydk::YLeaf cospfvirtlocallsdbage; //type: int32
         ydk::YLeaf cospfvirtlocallsdbchecksum; //type: uint32
         ydk::YLeaf cospfvirtlocallsdbadvertisement; //type: binary
-        class Cospfvirtlocallsdbtype;
+        class CospfVirtLocalLsdbType;
 
-}; // CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry
+}; // CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry
 
 
-class CISCOOSPFMIB::Cospfshamlinknbrtable : public ydk::Entity
+class CISCOOSPFMIB::CospfShamLinkNbrTable : public ydk::Entity
 {
     public:
-        Cospfshamlinknbrtable();
-        ~Cospfshamlinknbrtable();
+        CospfShamLinkNbrTable();
+        ~CospfShamLinkNbrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -316,18 +316,18 @@ class CISCOOSPFMIB::Cospfshamlinknbrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cospfshamlinknbrentry; //type: CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry
+        class CospfShamLinkNbrEntry; //type: CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry> > cospfshamlinknbrentry;
+        ydk::YList cospfshamlinknbrentry;
         
-}; // CISCOOSPFMIB::Cospfshamlinknbrtable
+}; // CISCOOSPFMIB::CospfShamLinkNbrTable
 
 
-class CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry : public ydk::Entity
+class CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry : public ydk::Entity
 {
     public:
-        Cospfshamlinknbrentry();
-        ~Cospfshamlinknbrentry();
+        CospfShamLinkNbrEntry();
+        ~CospfShamLinkNbrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -341,27 +341,27 @@ class CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry : public ydk::E
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cospfshamlinkslocalipaddrtype; //type: InetAddressType
-        //type: binary (refers to cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::cospfshamlinkslocalipaddr)
+        //type: binary (refers to cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::cospfshamlinkslocalipaddr)
         ydk::YLeaf cospfshamlinkslocalipaddr;
         ydk::YLeaf cospfshamlinknbrarea; //type: string
         ydk::YLeaf cospfshamlinknbripaddrtype; //type: InetAddressType
         ydk::YLeaf cospfshamlinknbripaddr; //type: binary
         ydk::YLeaf cospfshamlinknbrrtrid; //type: string
         ydk::YLeaf cospfshamlinknbroptions; //type: int32
-        ydk::YLeaf cospfshamlinknbrstate; //type: Cospfshamlinknbrstate
+        ydk::YLeaf cospfshamlinknbrstate; //type: CospfShamLinkNbrState
         ydk::YLeaf cospfshamlinknbrevents; //type: uint32
         ydk::YLeaf cospfshamlinknbrlsretransqlen; //type: uint32
         ydk::YLeaf cospfshamlinknbrhellosuppressed; //type: boolean
-        class Cospfshamlinknbrstate;
+        class CospfShamLinkNbrState;
 
-}; // CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry
+}; // CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry
 
 
-class CISCOOSPFMIB::Cospfshamlinkstable : public ydk::Entity
+class CISCOOSPFMIB::CospfShamLinksTable : public ydk::Entity
 {
     public:
-        Cospfshamlinkstable();
-        ~Cospfshamlinkstable();
+        CospfShamLinksTable();
+        ~CospfShamLinksTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -374,18 +374,18 @@ class CISCOOSPFMIB::Cospfshamlinkstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cospfshamlinksentry; //type: CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry
+        class CospfShamLinksEntry; //type: CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_OSPF_MIB::CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry> > cospfshamlinksentry;
+        ydk::YList cospfshamlinksentry;
         
-}; // CISCOOSPFMIB::Cospfshamlinkstable
+}; // CISCOOSPFMIB::CospfShamLinksTable
 
 
-class CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry : public ydk::Entity
+class CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry : public ydk::Entity
 {
     public:
-        Cospfshamlinksentry();
-        ~Cospfshamlinksentry();
+        CospfShamLinksEntry();
+        ~CospfShamLinksEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -406,14 +406,14 @@ class CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry : public ydk::Entit
         ydk::YLeaf cospfshamlinksretransinterval; //type: int32
         ydk::YLeaf cospfshamlinkshellointerval; //type: int32
         ydk::YLeaf cospfshamlinksrtrdeadinterval; //type: int32
-        ydk::YLeaf cospfshamlinksstate; //type: Cospfshamlinksstate
+        ydk::YLeaf cospfshamlinksstate; //type: CospfShamLinksState
         ydk::YLeaf cospfshamlinksevents; //type: uint32
         ydk::YLeaf cospfshamlinksmetric; //type: int32
-        class Cospfshamlinksstate;
+        class CospfShamLinksState;
 
-}; // CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry
+}; // CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry
 
-class CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::Cospflsdbtype : public ydk::Enum
+class CISCOOSPFMIB::CospfLsdbTable::CospfLsdbEntry::CospfLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf areaOpaqueLink;
@@ -421,7 +421,7 @@ class CISCOOSPFMIB::Cospflsdbtable::Cospflsdbentry::Cospflsdbtype : public ydk::
 
 };
 
-class CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkstate : public ydk::Enum
+class CISCOOSPFMIB::CospfShamLinkTable::CospfShamLinkEntry::CospfShamLinkState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -429,21 +429,21 @@ class CISCOOSPFMIB::Cospfshamlinktable::Cospfshamlinkentry::Cospfshamlinkstate :
 
 };
 
-class CISCOOSPFMIB::Cospflocallsdbtable::Cospflocallsdbentry::Cospflocallsdbtype : public ydk::Enum
+class CISCOOSPFMIB::CospfLocalLsdbTable::CospfLocalLsdbEntry::CospfLocalLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
 };
 
-class CISCOOSPFMIB::Cospfvirtlocallsdbtable::Cospfvirtlocallsdbentry::Cospfvirtlocallsdbtype : public ydk::Enum
+class CISCOOSPFMIB::CospfVirtLocalLsdbTable::CospfVirtLocalLsdbEntry::CospfVirtLocalLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
 };
 
-class CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinknbrstate : public ydk::Enum
+class CISCOOSPFMIB::CospfShamLinkNbrTable::CospfShamLinkNbrEntry::CospfShamLinkNbrState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -457,7 +457,7 @@ class CISCOOSPFMIB::Cospfshamlinknbrtable::Cospfshamlinknbrentry::Cospfshamlinkn
 
 };
 
-class CISCOOSPFMIB::Cospfshamlinkstable::Cospfshamlinksentry::Cospfshamlinksstate : public ydk::Enum
+class CISCOOSPFMIB::CospfShamLinksTable::CospfShamLinksEntry::CospfShamLinksState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;

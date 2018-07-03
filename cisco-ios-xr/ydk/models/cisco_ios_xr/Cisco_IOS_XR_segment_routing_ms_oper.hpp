@@ -87,7 +87,7 @@ class Srms::Mapping::MappingIpv4 : public ydk::Entity
 
         class MappingMi; //type: Srms::Mapping::MappingIpv4::MappingMi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::Mapping::MappingIpv4::MappingMi> > mapping_mi;
+        ydk::YList mapping_mi;
         
 }; // Srms::Mapping::MappingIpv4
 
@@ -110,7 +110,7 @@ class Srms::Mapping::MappingIpv4::MappingMi : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ip; //type: string
-        ydk::YLeaf prefix; //type: int32
+        ydk::YLeaf prefix; //type: uint32
         ydk::YLeaf src; //type: SrmsMiSrcEB
         ydk::YLeaf router; //type: string
         ydk::YLeaf area; //type: string
@@ -170,7 +170,7 @@ class Srms::Mapping::MappingIpv6 : public ydk::Entity
 
         class MappingMi; //type: Srms::Mapping::MappingIpv6::MappingMi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::Mapping::MappingIpv6::MappingMi> > mapping_mi;
+        ydk::YList mapping_mi;
         
 }; // Srms::Mapping::MappingIpv6
 
@@ -193,7 +193,7 @@ class Srms::Mapping::MappingIpv6::MappingMi : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ip; //type: string
-        ydk::YLeaf prefix; //type: int32
+        ydk::YLeaf prefix; //type: uint32
         ydk::YLeaf src; //type: SrmsMiSrcEB
         ydk::YLeaf router; //type: string
         ydk::YLeaf area; //type: string
@@ -301,7 +301,7 @@ class Srms::AdjacencySid::L2Adjacency::Interfaces : public ydk::Entity
 
         class Interface; //type: Srms::AdjacencySid::L2Adjacency::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::AdjacencySid::L2Adjacency::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Srms::AdjacencySid::L2Adjacency::Interfaces
 
@@ -374,7 +374,7 @@ class Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv
 
         class SidRecord; //type: Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4::SidRecord> > sid_record;
+        ydk::YList sid_record;
         
 }; // Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv4
 
@@ -396,7 +396,7 @@ class Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf sid_type; //type: SidTypeEnum
-        ydk::YLeaf sid_value; //type: int32
+        ydk::YLeaf sid_value; //type: uint32
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf sid_value_xr; //type: uint32
         ydk::YLeaf sid_type_xr; //type: uint32
@@ -452,7 +452,7 @@ class Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv
 
         class SidRecord; //type: Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6::SidRecord> > sid_record;
+        ydk::YList sid_record;
         
 }; // Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv6
 
@@ -474,7 +474,7 @@ class Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamily::Ipv
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf sid_type; //type: SidTypeEnum
-        ydk::YLeaf sid_value; //type: int32
+        ydk::YLeaf sid_value; //type: uint32
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf sid_value_xr; //type: uint32
         ydk::YLeaf sid_type_xr; //type: uint32
@@ -583,7 +583,7 @@ class Srms::Policy::PolicyIpv4::PolicyIpv4Backup : public ydk::Entity
 
         class PolicyMi; //type: Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv4::PolicyIpv4Backup::PolicyMi> > policy_mi;
+        ydk::YList policy_mi;
         
 }; // Srms::Policy::PolicyIpv4::PolicyIpv4Backup
 
@@ -664,7 +664,7 @@ class Srms::Policy::PolicyIpv4::PolicyIpv4Active : public ydk::Entity
 
         class PolicyMi; //type: Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv4::PolicyIpv4Active::PolicyMi> > policy_mi;
+        ydk::YList policy_mi;
         
 }; // Srms::Policy::PolicyIpv4::PolicyIpv4Active
 
@@ -771,7 +771,7 @@ class Srms::Policy::PolicyIpv6::PolicyIpv6Backup : public ydk::Entity
 
         class PolicyMi; //type: Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv6::PolicyIpv6Backup::PolicyMi> > policy_mi;
+        ydk::YList policy_mi;
         
 }; // Srms::Policy::PolicyIpv6::PolicyIpv6Backup
 
@@ -852,7 +852,7 @@ class Srms::Policy::PolicyIpv6::PolicyIpv6Active : public ydk::Entity
 
         class PolicyMi; //type: Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_segment_routing_ms_oper::Srms::Policy::PolicyIpv6::PolicyIpv6Active::PolicyMi> > policy_mi;
+        ydk::YList policy_mi;
         
 }; // Srms::Policy::PolicyIpv6::PolicyIpv6Active
 
@@ -963,11 +963,12 @@ class Srlb::SrlbInconsistency : public ydk::Entity
 
 }; // Srlb::SrlbInconsistency
 
-class SidTypeEnum : public ydk::Enum
+class SrmsAf : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf index_;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
@@ -997,12 +998,11 @@ class SrmsMiSrcEB : public ydk::Enum
 
 };
 
-class SrmsAf : public ydk::Enum
+class SidTypeEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf index_;
 
 };
 

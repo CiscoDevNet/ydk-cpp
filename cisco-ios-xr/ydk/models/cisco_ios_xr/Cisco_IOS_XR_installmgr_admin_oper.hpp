@@ -72,7 +72,7 @@ class Install::ConfigurationRegisters : public ydk::Entity
 
         class ConfigurationRegister; //type: Install::ConfigurationRegisters::ConfigurationRegister
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::ConfigurationRegisters::ConfigurationRegister> > configuration_register;
+        ydk::YList configuration_register;
         
 }; // Install::ConfigurationRegisters
 
@@ -119,7 +119,7 @@ class Install::RequestStatuses : public ydk::Entity
 
         class RequestStatus; //type: Install::RequestStatuses::RequestStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus> > request_status;
+        ydk::YList request_status;
         
 }; // Install::RequestStatuses
 
@@ -156,8 +156,8 @@ class Install::RequestStatuses::RequestStatus : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::RequestInformation> request_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::AbortStatus> abort_status;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IncrementalInstallInformation> incremental_install_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IssuMessage> > issu_message;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::Message> > message;
+        ydk::YList issu_message;
+        ydk::YList message;
         
 }; // Install::RequestStatuses::RequestStatus
 
@@ -230,7 +230,7 @@ class Install::RequestStatuses::RequestStatus::IncrementalInstallInformation : p
         ydk::YLeaf ii_error; //type: string
         class Nodes; //type: Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::RequestStatuses::RequestStatus::IncrementalInstallInformation::Nodes> > nodes;
+        ydk::YList nodes;
         
 }; // Install::RequestStatuses::RequestStatus::IncrementalInstallInformation
 
@@ -370,7 +370,7 @@ class Install::BootVariables : public ydk::Entity
 
         class BootVariable; //type: Install::BootVariables::BootVariable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::BootVariables::BootVariable> > boot_variable;
+        ydk::YList boot_variable;
         
 }; // Install::BootVariables
 
@@ -445,7 +445,7 @@ class Install::Software::AliasDevices : public ydk::Entity
 
         class AliasDevice; //type: Install::Software::AliasDevices::AliasDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::AliasDevices::AliasDevice> > alias_device;
+        ydk::YList alias_device;
         
 }; // Install::Software::AliasDevices
 
@@ -493,7 +493,7 @@ class Install::Software::AliasDevices::AliasDevice::Aliases : public ydk::Entity
 
         class Alias; //type: Install::Software::AliasDevices::AliasDevice::Aliases::Alias
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::AliasDevices::AliasDevice::Aliases::Alias> > alias;
+        ydk::YList alias;
         
 }; // Install::Software::AliasDevices::AliasDevice::Aliases
 
@@ -539,7 +539,7 @@ class Install::Software::PackageDevices : public ydk::Entity
 
         class PackageDevice; //type: Install::Software::PackageDevices::PackageDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice> > package_device;
+        ydk::YList package_device;
         
 }; // Install::Software::PackageDevices
 
@@ -587,7 +587,7 @@ class Install::Software::PackageDevices::PackageDevice::Packages : public ydk::E
 
         class Package; //type: Install::Software::PackageDevices::PackageDevice::Packages::Package
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice::Packages::Package> > package;
+        ydk::YList package;
         
 }; // Install::Software::PackageDevices::PackageDevice::Packages
 
@@ -628,7 +628,7 @@ class Install::Software::PackageDevices::PackageDevice::Packages::Package : publ
         ydk::YLeafList cards; //type: list of  string
         class SubPkg; //type: Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::PackageDevices::PackageDevice::Packages::Package::SubPkg> > sub_pkg;
+        ydk::YList sub_pkg;
         
 }; // Install::Software::PackageDevices::PackageDevice::Packages::Package
 
@@ -674,7 +674,7 @@ class Install::Software::ComponentDevices : public ydk::Entity
 
         class ComponentDevice; //type: Install::Software::ComponentDevices::ComponentDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice> > component_device;
+        ydk::YList component_device;
         
 }; // Install::Software::ComponentDevices
 
@@ -722,7 +722,7 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages : 
 
         class ComponentPackage; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage> > component_package;
+        ydk::YList component_package;
         
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages
 
@@ -746,7 +746,7 @@ class Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::C
         ydk::YLeaf package_name; //type: string
         class Component; //type: Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage::Component> > component;
+        ydk::YList component;
         
 }; // Install::Software::ComponentDevices::ComponentDevice::ComponentPackages::ComponentPackage
 
@@ -857,8 +857,8 @@ class Install::SoftwareInventory::Committed::Summary : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath> default_load_path;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath> admin_load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath> > sdr_load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath> > location_load_path;
+        ydk::YList sdr_load_path;
+        ydk::YList location_load_path;
         
 }; // Install::SoftwareInventory::Committed::Summary
 
@@ -886,8 +886,8 @@ class Install::SoftwareInventory::Committed::Summary::DefaultLoadPath : public y
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::DefaultLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Committed::Summary::DefaultLoadPath
 
@@ -1011,8 +1011,8 @@ class Install::SoftwareInventory::Committed::Summary::AdminLoadPath : public ydk
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::AdminLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Committed::Summary::AdminLoadPath
 
@@ -1137,8 +1137,8 @@ class Install::SoftwareInventory::Committed::Summary::SdrLoadPath : public ydk::
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::SdrLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Committed::Summary::SdrLoadPath
 
@@ -1264,8 +1264,8 @@ class Install::SoftwareInventory::Committed::Summary::LocationLoadPath : public 
         class LoadPath; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Summary::LocationLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Committed::Summary::LocationLoadPath
 
@@ -1387,7 +1387,7 @@ class Install::SoftwareInventory::Committed::Inventories : public ydk::Entity
 
         class Inventory; //type: Install::SoftwareInventory::Committed::Inventories::Inventory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories::Inventory> > inventory;
+        ydk::YList inventory;
         
 }; // Install::SoftwareInventory::Committed::Inventories
 
@@ -1417,7 +1417,7 @@ class Install::SoftwareInventory::Committed::Inventories::Inventory : public ydk
         ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Committed::Inventories::Inventory::LoadPath> > load_path;
+        ydk::YList load_path;
         
 }; // Install::SoftwareInventory::Committed::Inventories::Inventory
 
@@ -1519,8 +1519,8 @@ class Install::SoftwareInventory::Inactive::Summary : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath> default_load_path;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath> admin_load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath> > sdr_load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath> > location_load_path;
+        ydk::YList sdr_load_path;
+        ydk::YList location_load_path;
         
 }; // Install::SoftwareInventory::Inactive::Summary
 
@@ -1548,8 +1548,8 @@ class Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath : public yd
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Inactive::Summary::DefaultLoadPath
 
@@ -1673,8 +1673,8 @@ class Install::SoftwareInventory::Inactive::Summary::AdminLoadPath : public ydk:
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::AdminLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Inactive::Summary::AdminLoadPath
 
@@ -1799,8 +1799,8 @@ class Install::SoftwareInventory::Inactive::Summary::SdrLoadPath : public ydk::E
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::SdrLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Inactive::Summary::SdrLoadPath
 
@@ -1926,8 +1926,8 @@ class Install::SoftwareInventory::Inactive::Summary::LocationLoadPath : public y
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Summary::LocationLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Inactive::Summary::LocationLoadPath
 
@@ -2049,7 +2049,7 @@ class Install::SoftwareInventory::Inactive::Inventories : public ydk::Entity
 
         class Inventory; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories::Inventory> > inventory;
+        ydk::YList inventory;
         
 }; // Install::SoftwareInventory::Inactive::Inventories
 
@@ -2079,7 +2079,7 @@ class Install::SoftwareInventory::Inactive::Inventories::Inventory : public ydk:
         ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Inactive::Inventories::Inventory::LoadPath> > load_path;
+        ydk::YList load_path;
         
 }; // Install::SoftwareInventory::Inactive::Inventories::Inventory
 
@@ -2174,7 +2174,7 @@ class Install::SoftwareInventory::Requests::Requests_ : public ydk::Entity
 
         class Request; //type: Install::SoftwareInventory::Requests::Requests_::Request
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request> > request;
+        ydk::YList request;
         
 }; // Install::SoftwareInventory::Requests::Requests_
 
@@ -2222,7 +2222,7 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories : pu
 
         class Inventory; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory> > inventory;
+        ydk::YList inventory;
         
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories
 
@@ -2251,7 +2251,7 @@ class Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inv
         ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory::LoadPath> > load_path;
+        ydk::YList load_path;
         
 }; // Install::SoftwareInventory::Requests::Requests_::Request::Inventories::Inventory
 
@@ -2353,8 +2353,8 @@ class Install::SoftwareInventory::Active::Summary : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath> default_load_path;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath> admin_load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath> > sdr_load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath> > location_load_path;
+        ydk::YList sdr_load_path;
+        ydk::YList location_load_path;
         
 }; // Install::SoftwareInventory::Active::Summary
 
@@ -2382,8 +2382,8 @@ class Install::SoftwareInventory::Active::Summary::DefaultLoadPath : public ydk:
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::DefaultLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Active::Summary::DefaultLoadPath
 
@@ -2507,8 +2507,8 @@ class Install::SoftwareInventory::Active::Summary::AdminLoadPath : public ydk::E
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::AdminLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Active::Summary::AdminLoadPath
 
@@ -2633,8 +2633,8 @@ class Install::SoftwareInventory::Active::Summary::SdrLoadPath : public ydk::Ent
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::SdrLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Active::Summary::SdrLoadPath
 
@@ -2760,8 +2760,8 @@ class Install::SoftwareInventory::Active::Summary::LocationLoadPath : public ydk
         class LoadPath; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath
         class StandbyLoadPath; //type: Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::LoadPath> > load_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Summary::LocationLoadPath::StandbyLoadPath> > standby_load_path;
+        ydk::YList load_path;
+        ydk::YList standby_load_path;
         
 }; // Install::SoftwareInventory::Active::Summary::LocationLoadPath
 
@@ -2883,7 +2883,7 @@ class Install::SoftwareInventory::Active::Inventories : public ydk::Entity
 
         class Inventory; //type: Install::SoftwareInventory::Active::Inventories::Inventory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories::Inventory> > inventory;
+        ydk::YList inventory;
         
 }; // Install::SoftwareInventory::Active::Inventories
 
@@ -2913,7 +2913,7 @@ class Install::SoftwareInventory::Active::Inventories::Inventory : public ydk::E
         ydk::YLeaf secure_domain_router_name; //type: string
         class LoadPath; //type: Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::SoftwareInventory::Active::Inventories::Inventory::LoadPath> > load_path;
+        ydk::YList load_path;
         
 }; // Install::SoftwareInventory::Active::Inventories::Inventory
 
@@ -3010,7 +3010,7 @@ class Install::Issu::CardInventories : public ydk::Entity
 
         class CardInventory; //type: Install::Issu::CardInventories::CardInventory
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::CardInventories::CardInventory> > card_inventory;
+        ydk::YList card_inventory;
         
 }; // Install::Issu::CardInventories
 
@@ -3035,7 +3035,7 @@ class Install::Issu::CardInventories::CardInventory : public ydk::Entity
         ydk::YLeaf card_type_id; //type: IsmCardTypeFamily
         class Summary; //type: Install::Issu::CardInventories::CardInventory::Summary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Issu::CardInventories::CardInventory::Summary> > summary;
+        ydk::YList summary;
         
 }; // Install::Issu::CardInventories::CardInventory
 
@@ -3242,7 +3242,7 @@ class Install::Logs : public ydk::Entity
 
         class Log; //type: Install::Logs::Log
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log> > log;
+        ydk::YList log;
         
 }; // Install::Logs
 
@@ -3272,12 +3272,12 @@ class Install::Logs::Log : public ydk::Entity
         class Detail; //type: Install::Logs::Log::Detail
         class Communication; //type: Install::Logs::Log::Communication
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Header> > header;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Summary> > summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Message> > message;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Change> > change;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Detail> > detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_installmgr_admin_oper::Install::Logs::Log::Communication> > communication;
+        ydk::YList header;
+        ydk::YList summary;
+        ydk::YList message;
+        ydk::YList change;
+        ydk::YList detail;
+        ydk::YList communication;
         
 }; // Install::Logs::Log
 
@@ -3845,6 +3845,36 @@ class Install::Logs::Log::Communication::LogContents::V3::Scope : public ydk::En
 
 }; // Install::Logs::Log::Communication::LogContents::V3::Scope
 
+class InstmgrIssuAbortMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf method_undefined;
+        static const ydk::Enum::YLeaf method_no_operation;
+        static const ydk::Enum::YLeaf method_standby_reload;
+        static const ydk::Enum::YLeaf method_system_reload;
+        static const ydk::Enum::YLeaf method_rollback;
+        static const ydk::Enum::YLeaf method_not_possible;
+        static const ydk::Enum::YLeaf method_admin_only;
+
+};
+
+class InstmgrBagRequestTrigger : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cli;
+        static const ydk::Enum::YLeaf xr_xml;
+
+};
+
+class InstmgrGroup : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inst_pkg_group_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_group_grouped;
+        static const ydk::Enum::YLeaf inst_pkg_group_individual;
+
+};
+
 class IsmCardTypeFamily : public ydk::Enum
 {
     public:
@@ -3865,41 +3895,17 @@ class IsmCardTypeFamily : public ydk::Enum
 
 };
 
-class InstmgrIsmFsmState : public ydk::Enum
+class InstmgrBagUserMsgCategory : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf init_done;
-        static const ydk::Enum::YLeaf load_shut;
-        static const ydk::Enum::YLeaf load_wait;
-        static const ydk::Enum::YLeaf load_stp_root_before;
-        static const ydk::Enum::YLeaf load_standby_root_sc_upgrade;
-        static const ydk::Enum::YLeaf load_standby_management_upgrade;
-        static const ydk::Enum::YLeaf load_stp_root_after;
-        static const ydk::Enum::YLeaf load_fabric_upgrade;
-        static const ydk::Enum::YLeaf load_management_issu_ready;
-        static const ydk::Enum::YLeaf load_done;
-        static const ydk::Enum::YLeaf run_prep;
-        static const ydk::Enum::YLeaf run_wait;
-        static const ydk::Enum::YLeaf runi_mdr_prep;
-        static const ydk::Enum::YLeaf runi_mdr_start;
-        static const ydk::Enum::YLeaf runi_mdr_complete;
-        static const ydk::Enum::YLeaf run_make_standby_ready;
-        static const ydk::Enum::YLeaf run_root_scfo;
-        static const ydk::Enum::YLeaf run_ndscfo;
-        static const ydk::Enum::YLeaf run_transient1;
-        static const ydk::Enum::YLeaf run_dscfo;
-        static const ydk::Enum::YLeaf run_fo_complete;
-        static const ydk::Enum::YLeaf run_stp_root_return;
-        static const ydk::Enum::YLeaf runi_mdr_continue;
-        static const ydk::Enum::YLeaf run_am_i_ready_afteri_mdr;
-        static const ydk::Enum::YLeaf run_nsf_ready;
-        static const ydk::Enum::YLeaf run_nsf_begin;
-        static const ydk::Enum::YLeaf runi_mdr_done;
-        static const ydk::Enum::YLeaf run_management_issu_ready;
-        static const ydk::Enum::YLeaf run_un_shut;
-        static const ydk::Enum::YLeaf run_is_done;
-        static const ydk::Enum::YLeaf state_max;
+        static const ydk::Enum::YLeaf user_error;
+        static const ydk::Enum::YLeaf non_specific;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf user_prompt;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf system_error;
+        static const ydk::Enum::YLeaf user_response;
 
 };
 
@@ -3911,6 +3917,26 @@ class InstallmgrIsmNodeConforming : public ydk::Enum
         static const ydk::Enum::YLeaf upgrade_fail;
         static const ydk::Enum::YLeaf none_conforming_spa;
         static const ydk::Enum::YLeaf spa_upgrade_fail;
+
+};
+
+class InstmgrInstallPhase : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inst_phase_unknown;
+        static const ydk::Enum::YLeaf inst_phase_download;
+        static const ydk::Enum::YLeaf inst_phase_sw_change;
+        static const ydk::Enum::YLeaf inst_phase_cleaning_up;
+
+};
+
+class InstmgrIssuAbortImpact : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf hitless;
+        static const ydk::Enum::YLeaf traffic_outage;
+        static const ydk::Enum::YLeaf not_applicable;
 
 };
 
@@ -3952,25 +3978,13 @@ class InstmgrIsmNodeState : public ydk::Enum
 
 };
 
-class InstmgrPiCard : public ydk::Enum
+class InstmgrPkg : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf type_rp;
-        static const ydk::Enum::YLeaf type_drp;
-        static const ydk::Enum::YLeaf type_lc;
-        static const ydk::Enum::YLeaf type_sc;
-        static const ydk::Enum::YLeaf type_sp;
-        static const ydk::Enum::YLeaf type_other;
-
-};
-
-class InstmgrNodeRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf redundency_unknown;
-        static const ydk::Enum::YLeaf redundency_active;
-        static const ydk::Enum::YLeaf redundency_standby;
-        static const ydk::Enum::YLeaf redundency_unusable;
+        static const ydk::Enum::YLeaf inst_pkg_type_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_type_root;
+        static const ydk::Enum::YLeaf inst_pkg_type_standard;
+        static const ydk::Enum::YLeaf inst_pkg_type_internal;
 
 };
 
@@ -4018,99 +4032,13 @@ class InstmgrCardState : public ydk::Enum
 
 };
 
-class InstmgrGroup : public ydk::Enum
+class InstmgrNodeRole : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inst_pkg_group_undefined;
-        static const ydk::Enum::YLeaf inst_pkg_group_grouped;
-        static const ydk::Enum::YLeaf inst_pkg_group_individual;
-
-};
-
-class InstmgrPkg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inst_pkg_type_undefined;
-        static const ydk::Enum::YLeaf inst_pkg_type_root;
-        static const ydk::Enum::YLeaf inst_pkg_type_standard;
-        static const ydk::Enum::YLeaf inst_pkg_type_internal;
-
-};
-
-class InstmgrInstallPhase : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inst_phase_unknown;
-        static const ydk::Enum::YLeaf inst_phase_download;
-        static const ydk::Enum::YLeaf inst_phase_sw_change;
-        static const ydk::Enum::YLeaf inst_phase_cleaning_up;
-
-};
-
-class InstmgrBagIiState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf in_progress;
-        static const ydk::Enum::YLeaf completed;
-        static const ydk::Enum::YLeaf aborted;
-        static const ydk::Enum::YLeaf rebooted;
-
-};
-
-class InstmgrBagIiDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_incremental;
-        static const ydk::Enum::YLeaf installing;
-        static const ydk::Enum::YLeaf unwinding;
-
-};
-
-class InstmgrBagUserMsgCategory : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf user_error;
-        static const ydk::Enum::YLeaf non_specific;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf user_prompt;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf system_error;
-        static const ydk::Enum::YLeaf user_response;
-
-};
-
-class InstmgrIssuAbortImpact : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf undefined;
-        static const ydk::Enum::YLeaf hitless;
-        static const ydk::Enum::YLeaf traffic_outage;
-        static const ydk::Enum::YLeaf not_applicable;
-
-};
-
-class InstmgrIssuAbortMethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf method_undefined;
-        static const ydk::Enum::YLeaf method_no_operation;
-        static const ydk::Enum::YLeaf method_standby_reload;
-        static const ydk::Enum::YLeaf method_system_reload;
-        static const ydk::Enum::YLeaf method_rollback;
-        static const ydk::Enum::YLeaf method_not_possible;
-        static const ydk::Enum::YLeaf method_admin_only;
-
-};
-
-class InstmgrBagAbortState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf abortable;
-        static const ydk::Enum::YLeaf no_longer_abortable;
-        static const ydk::Enum::YLeaf never_abortable;
-        static const ydk::Enum::YLeaf already_aborted;
+        static const ydk::Enum::YLeaf redundency_unknown;
+        static const ydk::Enum::YLeaf redundency_active;
+        static const ydk::Enum::YLeaf redundency_standby;
+        static const ydk::Enum::YLeaf redundency_unusable;
 
 };
 
@@ -4136,11 +4064,73 @@ class InstmgrRequest : public ydk::Enum
 
 };
 
-class InstmgrBagRequestTrigger : public ydk::Enum
+class InstmgrIsmFsmState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cli;
-        static const ydk::Enum::YLeaf xr_xml;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf init_done;
+        static const ydk::Enum::YLeaf load_shut;
+        static const ydk::Enum::YLeaf load_wait;
+        static const ydk::Enum::YLeaf load_stp_root_before;
+        static const ydk::Enum::YLeaf load_standby_root_sc_upgrade;
+        static const ydk::Enum::YLeaf load_standby_management_upgrade;
+        static const ydk::Enum::YLeaf load_stp_root_after;
+        static const ydk::Enum::YLeaf load_fabric_upgrade;
+        static const ydk::Enum::YLeaf load_management_issu_ready;
+        static const ydk::Enum::YLeaf load_done;
+        static const ydk::Enum::YLeaf run_prep;
+        static const ydk::Enum::YLeaf run_wait;
+        static const ydk::Enum::YLeaf runi_mdr_prep;
+        static const ydk::Enum::YLeaf runi_mdr_start;
+        static const ydk::Enum::YLeaf runi_mdr_complete;
+        static const ydk::Enum::YLeaf run_make_standby_ready;
+        static const ydk::Enum::YLeaf run_root_scfo;
+        static const ydk::Enum::YLeaf run_ndscfo;
+        static const ydk::Enum::YLeaf run_transient1;
+        static const ydk::Enum::YLeaf run_dscfo;
+        static const ydk::Enum::YLeaf run_fo_complete;
+        static const ydk::Enum::YLeaf run_stp_root_return;
+        static const ydk::Enum::YLeaf runi_mdr_continue;
+        static const ydk::Enum::YLeaf run_am_i_ready_afteri_mdr;
+        static const ydk::Enum::YLeaf run_nsf_ready;
+        static const ydk::Enum::YLeaf run_nsf_begin;
+        static const ydk::Enum::YLeaf runi_mdr_done;
+        static const ydk::Enum::YLeaf run_management_issu_ready;
+        static const ydk::Enum::YLeaf run_un_shut;
+        static const ydk::Enum::YLeaf run_is_done;
+        static const ydk::Enum::YLeaf state_max;
+
+};
+
+class InstmgrBagIiDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_incremental;
+        static const ydk::Enum::YLeaf installing;
+        static const ydk::Enum::YLeaf unwinding;
+
+};
+
+class InstmgrPiCard : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type_rp;
+        static const ydk::Enum::YLeaf type_drp;
+        static const ydk::Enum::YLeaf type_lc;
+        static const ydk::Enum::YLeaf type_sc;
+        static const ydk::Enum::YLeaf type_sp;
+        static const ydk::Enum::YLeaf type_other;
+
+};
+
+class InstmgrBagIiState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf in_progress;
+        static const ydk::Enum::YLeaf completed;
+        static const ydk::Enum::YLeaf aborted;
+        static const ydk::Enum::YLeaf rebooted;
 
 };
 
@@ -4155,6 +4145,16 @@ class InstmgrBagLogEntryUserMsgCategory : public ydk::Enum
         static const ydk::Enum::YLeaf log;
         static const ydk::Enum::YLeaf system_error;
         static const ydk::Enum::YLeaf user_response;
+
+};
+
+class InstmgrBagAbortState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf abortable;
+        static const ydk::Enum::YLeaf no_longer_abortable;
+        static const ydk::Enum::YLeaf never_abortable;
+        static const ydk::Enum::YLeaf already_aborted;
 
 };
 

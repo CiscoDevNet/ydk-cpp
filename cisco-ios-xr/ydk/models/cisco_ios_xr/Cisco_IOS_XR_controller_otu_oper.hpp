@@ -57,7 +57,7 @@ class Otu::Controllers : public ydk::Entity
 
         class Controller; //type: Otu::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // Otu::Controllers
 
@@ -134,7 +134,7 @@ class Otu::Controllers::Controller::Info : public ydk::Entity
         ydk::YLeaf sf; //type: uint8
         ydk::YLeaf sd; //type: uint8
         ydk::YLeaf loopback_mode; //type: OtuLoopBackMode
-        ydk::YLeaf fec_mode; //type: OtuG709FecMode
+        ydk::YLeaf fec_mode; //type: OtuG709fecMode
         ydk::YLeaf derivedstate_mode; //type: OtuDerState
         ydk::YLeaf inherit_sec_state; //type: OtuSecState
         ydk::YLeaf config_sec_state; //type: OtuSecState
@@ -268,11 +268,78 @@ class Otu::Controllers::Controller::Info::TtiMode::Tx : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf full_tti_ascii_string; //type: string
-        ydk::YLeafList sapi; //type: list of  uint8
-        ydk::YLeafList dapi; //type: list of  uint8
-        ydk::YLeafList operator_specific; //type: list of  uint8
+        class Sapi; //type: Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi
+        class Dapi; //type: Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi
+        class OperatorSpecific; //type: Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific
 
+        ydk::YList sapi;
+        ydk::YList dapi;
+        ydk::YList operator_specific;
+        
 }; // Otu::Controllers::Controller::Info::TtiMode::Tx
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi : public ydk::Entity
+{
+    public:
+        Sapi();
+        ~Sapi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi : public ydk::Entity
+{
+    public:
+        Dapi();
+        ~Dapi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific : public ydk::Entity
+{
+    public:
+        OperatorSpecific();
+        ~OperatorSpecific();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific
 
 
 class Otu::Controllers::Controller::Info::TtiMode::Exp : public ydk::Entity
@@ -292,11 +359,78 @@ class Otu::Controllers::Controller::Info::TtiMode::Exp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf full_tti_ascii_string; //type: string
-        ydk::YLeafList sapi; //type: list of  uint8
-        ydk::YLeafList dapi; //type: list of  uint8
-        ydk::YLeafList operator_specific; //type: list of  uint8
+        class Sapi; //type: Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi
+        class Dapi; //type: Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi
+        class OperatorSpecific; //type: Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific
 
+        ydk::YList sapi;
+        ydk::YList dapi;
+        ydk::YList operator_specific;
+        
 }; // Otu::Controllers::Controller::Info::TtiMode::Exp
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi : public ydk::Entity
+{
+    public:
+        Sapi();
+        ~Sapi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi : public ydk::Entity
+{
+    public:
+        Dapi();
+        ~Dapi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific : public ydk::Entity
+{
+    public:
+        OperatorSpecific();
+        ~OperatorSpecific();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific
 
 
 class Otu::Controllers::Controller::Info::TtiMode::Rec : public ydk::Entity
@@ -316,11 +450,78 @@ class Otu::Controllers::Controller::Info::TtiMode::Rec : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf full_tti_ascii_string; //type: string
-        ydk::YLeafList sapi; //type: list of  uint8
-        ydk::YLeafList dapi; //type: list of  uint8
-        ydk::YLeafList operator_specific; //type: list of  uint8
+        class Sapi; //type: Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi
+        class Dapi; //type: Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi
+        class OperatorSpecific; //type: Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific
 
+        ydk::YList sapi;
+        ydk::YList dapi;
+        ydk::YList operator_specific;
+        
 }; // Otu::Controllers::Controller::Info::TtiMode::Rec
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi : public ydk::Entity
+{
+    public:
+        Sapi();
+        ~Sapi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi : public ydk::Entity
+{
+    public:
+        Dapi();
+        ~Dapi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi
+
+
+class Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific : public ydk::Entity
+{
+    public:
+        OperatorSpecific();
+        ~OperatorSpecific();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific
 
 
 class Otu::Controllers::Controller::Info::NetworkSrlg : public ydk::Entity
@@ -341,7 +542,7 @@ class Otu::Controllers::Controller::Info::NetworkSrlg : public ydk::Entity
 
         class SrlgInfo; //type: Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_otu_oper::Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo> > srlg_info;
+        ydk::YList srlg_info;
         
 }; // Otu::Controllers::Controller::Info::NetworkSrlg
 
@@ -363,9 +564,32 @@ class Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf set_id; //type: uint32
-        ydk::YLeafList srlg; //type: list of  uint32
+        class Srlg; //type: Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg
 
+        ydk::YList srlg;
+        
 }; // Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo
+
+
+class Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg : public ydk::Entity
+{
+    public:
+        Srlg();
+        ~Srlg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg
 
 
 class Otu::Controllers::Controller::Info::OtuAlarmInfo : public ydk::Entity
@@ -883,101 +1107,25 @@ class Otu::Controllers::Controller::Info::OtuFecSatistics : public ydk::Entity
 
 }; // Otu::Controllers::Controller::Info::OtuFecSatistics
 
-class GmplsOtuTtiMode : public ydk::Enum
+class OtuPrbsStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_none;
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_sm;
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_pm;
-        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_tcm;
+        static const ydk::Enum::YLeaf locked;
+        static const ydk::Enum::YLeaf unlocked;
+        static const ydk::Enum::YLeaf not_applicable;
 
 };
 
-class OtuPpIntfState : public ydk::Enum
+class OtuPrbsPattern : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf otu_pp_intf_up;
-        static const ydk::Enum::YLeaf otu_pp_intf_failing;
-        static const ydk::Enum::YLeaf otu_pp_intf_down;
-
-};
-
-class OtuPpFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf otu_in_active;
-        static const ydk::Enum::YLeaf otu_disabled;
-        static const ydk::Enum::YLeaf otu_normal_state;
-        static const ydk::Enum::YLeaf otu_local_failing;
-        static const ydk::Enum::YLeaf otu_remote_failing;
-        static const ydk::Enum::YLeaf otu_main_t_failing;
-        static const ydk::Enum::YLeaf otu_regen_failing;
-        static const ydk::Enum::YLeaf otu_local_failed;
-        static const ydk::Enum::YLeaf otu_remote_failed;
-        static const ydk::Enum::YLeaf otu_main_t_failed;
-        static const ydk::Enum::YLeaf otu_regen_failed;
-
-};
-
-class OtuPerMon : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
-class OtuSecState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf maintenance;
-        static const ydk::Enum::YLeaf ais;
-
-};
-
-class OtuDerState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf out_of_service;
-        static const ydk::Enum::YLeaf in_service;
-        static const ydk::Enum::YLeaf maintenance;
-        static const ydk::Enum::YLeaf ais;
-
-};
-
-class OtuG709FecMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf otu_bag_none_fec;
-        static const ydk::Enum::YLeaf otu_bag_standard_fec;
-        static const ydk::Enum::YLeaf otu_bag_1_i_7_fec;
-        static const ydk::Enum::YLeaf otu_bag_1_i_4_fec;
-        static const ydk::Enum::YLeaf otu_bag_swizzle_fec;
-        static const ydk::Enum::YLeaf otu_bag_hg20_fec;
-        static const ydk::Enum::YLeaf otu_bag_enhanced_hg7_fec;
-        static const ydk::Enum::YLeaf otu_bag_sd20_fec;
-        static const ydk::Enum::YLeaf otu_bag_sd7_fec;
-        static const ydk::Enum::YLeaf otu_bag_all_fec;
-
-};
-
-class OtuLoopBackMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf internal;
-
-};
-
-class OtuTtiEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ascii;
-        static const ydk::Enum::YLeaf hex;
-        static const ydk::Enum::YLeaf full_ascii;
-        static const ydk::Enum::YLeaf full_hex;
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf pn31;
+        static const ydk::Enum::YLeaf pn23;
+        static const ydk::Enum::YLeaf pn11;
+        static const ydk::Enum::YLeaf inverted_pn31;
+        static const ydk::Enum::YLeaf inverted_pn11;
+        static const ydk::Enum::YLeaf pn15;
 
 };
 
@@ -1006,25 +1154,44 @@ class OtuStateEt : public ydk::Enum
 
 };
 
-class OtuPrbsStatus : public ydk::Enum
+class OtuPrbsTest : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf locked;
-        static const ydk::Enum::YLeaf unlocked;
-        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
-class OtuPrbsPattern : public ydk::Enum
+class OtuPpFsmState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf pn31;
-        static const ydk::Enum::YLeaf pn23;
-        static const ydk::Enum::YLeaf pn11;
-        static const ydk::Enum::YLeaf inverted_pn31;
-        static const ydk::Enum::YLeaf inverted_pn11;
-        static const ydk::Enum::YLeaf pn15;
+        static const ydk::Enum::YLeaf otu_in_active;
+        static const ydk::Enum::YLeaf otu_disabled;
+        static const ydk::Enum::YLeaf otu_normal_state;
+        static const ydk::Enum::YLeaf otu_local_failing;
+        static const ydk::Enum::YLeaf otu_remote_failing;
+        static const ydk::Enum::YLeaf otu_main_t_failing;
+        static const ydk::Enum::YLeaf otu_regen_failing;
+        static const ydk::Enum::YLeaf otu_local_failed;
+        static const ydk::Enum::YLeaf otu_remote_failed;
+        static const ydk::Enum::YLeaf otu_main_t_failed;
+        static const ydk::Enum::YLeaf otu_regen_failed;
+
+};
+
+class OtuG709fecMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf otu_bag_none_fec;
+        static const ydk::Enum::YLeaf otu_bag_standard_fec;
+        static const ydk::Enum::YLeaf otu_bag_1_i_7_fec;
+        static const ydk::Enum::YLeaf otu_bag_1_i_4_fec;
+        static const ydk::Enum::YLeaf otu_bag_swizzle_fec;
+        static const ydk::Enum::YLeaf otu_bag_hg20_fec;
+        static const ydk::Enum::YLeaf otu_bag_enhanced_hg7_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd20_fec;
+        static const ydk::Enum::YLeaf otu_bag_sd7_fec;
+        static const ydk::Enum::YLeaf otu_bag_all_fec;
 
 };
 
@@ -1038,11 +1205,68 @@ class OtuPrbsMode : public ydk::Enum
 
 };
 
-class OtuPrbsTest : public ydk::Enum
+class OtuPerMon : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
+
+};
+
+class OtuTtiEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ascii;
+        static const ydk::Enum::YLeaf hex;
+        static const ydk::Enum::YLeaf full_ascii;
+        static const ydk::Enum::YLeaf full_hex;
+
+};
+
+class OtuPpIntfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf otu_pp_intf_up;
+        static const ydk::Enum::YLeaf otu_pp_intf_failing;
+        static const ydk::Enum::YLeaf otu_pp_intf_down;
+
+};
+
+class OtuSecState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ais;
+
+};
+
+class OtuLoopBackMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf internal;
+
+};
+
+class GmplsOtuTtiMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_none;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_sm;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_pm;
+        static const ydk::Enum::YLeaf gmpls_otu_tti_mode_tcm;
+
+};
+
+class OtuDerState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf out_of_service;
+        static const ydk::Enum::YLeaf in_service;
+        static const ydk::Enum::YLeaf maintenance;
+        static const ydk::Enum::YLeaf ais;
 
 };
 

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_icmp_cfg {
 Icmp::Icmp()
     :
     ipv6(std::make_shared<Icmp::Ipv6>())
-	,ipv4(std::make_shared<Icmp::Ipv4>())
+    , ipv4(std::make_shared<Icmp::Ipv4>())
 {
     ipv6->parent = this;
     ipv4->parent = this;
 
-    yang_name = "icmp"; yang_parent_name = "Cisco-IOS-XR-ip-icmp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "icmp"; yang_parent_name = "Cisco-IOS-XR-ip-icmp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Icmp::~Icmp()
@@ -28,6 +28,7 @@ Icmp::~Icmp()
 
 bool Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
@@ -138,12 +139,12 @@ bool Icmp::has_leaf_or_child_of_name(const std::string & name) const
 Icmp::Ipv6::Ipv6()
     :
     rate_limit(std::make_shared<Icmp::Ipv6::RateLimit>())
-	,source(std::make_shared<Icmp::Ipv6::Source>())
+    , source(std::make_shared<Icmp::Ipv6::Source>())
 {
     rate_limit->parent = this;
     source->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv6::~Ipv6()
@@ -152,6 +153,7 @@ Icmp::Ipv6::~Ipv6()
 
 bool Icmp::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (rate_limit !=  nullptr && rate_limit->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -247,7 +249,7 @@ Icmp::Ipv6::RateLimit::RateLimit()
 {
     unreachable->parent = this;
 
-    yang_name = "rate-limit"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rate-limit"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv6::RateLimit::~RateLimit()
@@ -256,6 +258,7 @@ Icmp::Ipv6::RateLimit::~RateLimit()
 
 bool Icmp::Ipv6::RateLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return (unreachable !=  nullptr && unreachable->has_data());
 }
 
@@ -335,7 +338,7 @@ Icmp::Ipv6::RateLimit::Unreachable::Unreachable()
     fragmentation{YType::uint32, "fragmentation"}
 {
 
-    yang_name = "unreachable"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unreachable"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv6::RateLimit::Unreachable::~Unreachable()
@@ -344,6 +347,7 @@ Icmp::Ipv6::RateLimit::Unreachable::~Unreachable()
 
 bool Icmp::Ipv6::RateLimit::Unreachable::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set
 	|| fragmentation.is_set;
 }
@@ -432,7 +436,7 @@ Icmp::Ipv6::Source::Source()
     source_address_policy{YType::enumeration, "source-address-policy"}
 {
 
-    yang_name = "source"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv6::Source::~Source()
@@ -441,6 +445,7 @@ Icmp::Ipv6::Source::~Source()
 
 bool Icmp::Ipv6::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address_policy.is_set;
 }
 
@@ -514,12 +519,12 @@ bool Icmp::Ipv6::Source::has_leaf_or_child_of_name(const std::string & name) con
 Icmp::Ipv4::Ipv4()
     :
     rate_limit(std::make_shared<Icmp::Ipv4::RateLimit>())
-	,source(std::make_shared<Icmp::Ipv4::Source>())
+    , source(std::make_shared<Icmp::Ipv4::Source>())
 {
     rate_limit->parent = this;
     source->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "icmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv4::~Ipv4()
@@ -528,6 +533,7 @@ Icmp::Ipv4::~Ipv4()
 
 bool Icmp::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (rate_limit !=  nullptr && rate_limit->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -623,7 +629,7 @@ Icmp::Ipv4::RateLimit::RateLimit()
 {
     unreachable->parent = this;
 
-    yang_name = "rate-limit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rate-limit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv4::RateLimit::~RateLimit()
@@ -632,6 +638,7 @@ Icmp::Ipv4::RateLimit::~RateLimit()
 
 bool Icmp::Ipv4::RateLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return (unreachable !=  nullptr && unreachable->has_data());
 }
 
@@ -711,7 +718,7 @@ Icmp::Ipv4::RateLimit::Unreachable::Unreachable()
     fragmentation{YType::uint32, "fragmentation"}
 {
 
-    yang_name = "unreachable"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unreachable"; yang_parent_name = "rate-limit"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv4::RateLimit::Unreachable::~Unreachable()
@@ -720,6 +727,7 @@ Icmp::Ipv4::RateLimit::Unreachable::~Unreachable()
 
 bool Icmp::Ipv4::RateLimit::Unreachable::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set
 	|| fragmentation.is_set;
 }
@@ -808,7 +816,7 @@ Icmp::Ipv4::Source::Source()
     source_address_policy{YType::enumeration, "source-address-policy"}
 {
 
-    yang_name = "source"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Icmp::Ipv4::Source::~Source()
@@ -817,6 +825,7 @@ Icmp::Ipv4::Source::~Source()
 
 bool Icmp::Ipv4::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address_policy.is_set;
 }
 

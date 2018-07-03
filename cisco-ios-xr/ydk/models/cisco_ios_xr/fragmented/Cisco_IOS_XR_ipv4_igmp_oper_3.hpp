@@ -157,7 +157,7 @@ class Igmp::Standby::DefaultContext::Groups : public ydk::Entity
 
         class Group; //type: Igmp::Standby::DefaultContext::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::DefaultContext::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Igmp::Standby::DefaultContext::Groups
 
@@ -343,7 +343,7 @@ class Igmp::Standby::DefaultContext::GlobalInterfaceTable : public ydk::Entity
 
         class Interface; //type: Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::DefaultContext::GlobalInterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Standby::DefaultContext::GlobalInterfaceTable
 
@@ -513,7 +513,7 @@ class Igmp::Standby::DefaultContext::SsmMapDetails : public ydk::Entity
 
         class SsmMapDetail; //type: Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail> > ssm_map_detail;
+        ydk::YList ssm_map_detail;
         
 }; // Igmp::Standby::DefaultContext::SsmMapDetails
 
@@ -545,7 +545,7 @@ class Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail : public ydk::E
         class Sources; //type: Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::MapInfo> map_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail::Sources> > sources;
+        ydk::YList sources;
         
 }; // Igmp::Standby::DefaultContext::SsmMapDetails::SsmMapDetail
 
@@ -643,7 +643,7 @@ class Igmp::Standby::DefaultContext::InterfaceStateOffs : public ydk::Entity
 
         class InterfaceStateOff; //type: Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Standby::DefaultContext::InterfaceStateOffs::InterfaceStateOff> > interface_state_off;
+        ydk::YList interface_state_off;
         
 }; // Igmp::Standby::DefaultContext::InterfaceStateOffs
 
@@ -841,7 +841,7 @@ class Igmp::Active::Vrfs : public ydk::Entity
 
         class Vrf; //type: Igmp::Active::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Igmp::Active::Vrfs
 
@@ -931,7 +931,7 @@ class Igmp::Active::Vrfs::Vrf::Summary : public ydk::Entity
         ydk::YLeaf node_low_memory; //type: boolean
         class Interface; //type: Igmp::Active::Vrfs::Vrf::Summary::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::Summary::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Active::Vrfs::Vrf::Summary
 
@@ -982,7 +982,7 @@ class Igmp::Active::Vrfs::Vrf::InterfaceStateOns : public ydk::Entity
 
         class InterfaceStateOn; //type: Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::InterfaceStateOns::InterfaceStateOn> > interface_state_on;
+        ydk::YList interface_state_on;
         
 }; // Igmp::Active::Vrfs::Vrf::InterfaceStateOns
 
@@ -1150,7 +1150,7 @@ class Igmp::Active::Vrfs::Vrf::DetailGroups : public ydk::Entity
 
         class DetailGroup; //type: Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup> > detail_group;
+        ydk::YList detail_group;
         
 }; // Igmp::Active::Vrfs::Vrf::DetailGroups
 
@@ -1180,7 +1180,7 @@ class Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup : public ydk::Entity
         class Source; //type: Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::GroupInfo> group_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup::Source> > source;
+        ydk::YList source;
         
 }; // Igmp::Active::Vrfs::Vrf::DetailGroups::DetailGroup
 
@@ -1365,7 +1365,7 @@ class Igmp::Active::Vrfs::Vrf::NonActiveGroups : public ydk::Entity
 
         class NonActiveGroups_; //type: Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_> > non_active_groups;
+        ydk::YList non_active_groups;
         
 }; // Igmp::Active::Vrfs::Vrf::NonActiveGroups
 
@@ -1461,7 +1461,7 @@ class Igmp::Active::Vrfs::Vrf::SsmMaps : public ydk::Entity
 
         class SsmMap; //type: Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::SsmMaps::SsmMap> > ssm_map;
+        ydk::YList ssm_map;
         
 }; // Igmp::Active::Vrfs::Vrf::SsmMaps
 
@@ -1534,7 +1534,7 @@ class Igmp::Active::Vrfs::Vrf::ExplicitGroups : public ydk::Entity
 
         class ExplicitGroup; //type: Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup> > explicit_group;
+        ydk::YList explicit_group;
         
 }; // Igmp::Active::Vrfs::Vrf::ExplicitGroups
 
@@ -1564,7 +1564,7 @@ class Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup : public ydk::Entit
         class Host; //type: Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::GroupInfo> group_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host> > host;
+        ydk::YList host;
         
 }; // Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup
 
@@ -1701,7 +1701,7 @@ class Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host : public ydk:
         class SourceAddress; //type: Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Address> address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::SourceAddress> > source_address;
+        ydk::YList source_address;
         
 }; // Igmp::Active::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host
 
@@ -1770,7 +1770,7 @@ class Igmp::Active::Vrfs::Vrf::InterfaceTable : public ydk::Entity
 
         class Interface; //type: Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::InterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Active::Vrfs::Vrf::InterfaceTable
 
@@ -1938,7 +1938,7 @@ class Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts : public ydk::Entity
 
         class InterfaceUnicastQosAdjust; //type: Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust> > interface_unicast_qos_adjust;
+        ydk::YList interface_unicast_qos_adjust;
         
 }; // Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts
 
@@ -1966,7 +1966,7 @@ class Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAd
         ydk::YLeaf rate_decrements; //type: uint32
         class Update; //type: Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update> > update;
+        ydk::YList update;
         
 }; // Igmp::Active::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust
 
@@ -2063,7 +2063,7 @@ class Igmp::Active::Vrfs::Vrf::Ranges : public ydk::Entity
 
         class Range; //type: Igmp::Active::Vrfs::Vrf::Ranges::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::Ranges::Range> > range;
+        ydk::YList range;
         
 }; // Igmp::Active::Vrfs::Vrf::Ranges
 
@@ -2085,7 +2085,7 @@ class Igmp::Active::Vrfs::Vrf::Ranges::Range : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_mask; //type: int32
+        ydk::YLeaf group_mask; //type: uint32
         ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf protocol; //type: IgmpEdmProtocol
         ydk::YLeaf is_stale; //type: boolean
@@ -2137,7 +2137,7 @@ class Igmp::Active::Vrfs::Vrf::IfrsInterfaces : public ydk::Entity
 
         class IfrsInterface; //type: Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::IfrsInterfaces::IfrsInterface> > ifrs_interface;
+        ydk::YList ifrs_interface;
         
 }; // Igmp::Active::Vrfs::Vrf::IfrsInterfaces
 
@@ -2384,7 +2384,7 @@ class Igmp::Active::Vrfs::Vrf::Groups : public ydk::Entity
 
         class Group; //type: Igmp::Active::Vrfs::Vrf::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Igmp::Active::Vrfs::Vrf::Groups
 
@@ -2563,7 +2563,7 @@ class Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable : public ydk::Entity
 
         class Interface; //type: Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Active::Vrfs::Vrf::GlobalInterfaceTable
 
@@ -2731,7 +2731,7 @@ class Igmp::Active::Vrfs::Vrf::SsmMapDetails : public ydk::Entity
 
         class SsmMapDetail; //type: Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail> > ssm_map_detail;
+        ydk::YList ssm_map_detail;
         
 }; // Igmp::Active::Vrfs::Vrf::SsmMapDetails
 
@@ -2762,7 +2762,7 @@ class Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail : public ydk::Entity
         class Sources; //type: Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::MapInfo> map_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources> > sources;
+        ydk::YList sources;
         
 }; // Igmp::Active::Vrfs::Vrf::SsmMapDetails::SsmMapDetail
 
@@ -2856,7 +2856,7 @@ class Igmp::Active::Vrfs::Vrf::InterfaceStateOffs : public ydk::Entity
 
         class InterfaceStateOff; //type: Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Vrfs::Vrf::InterfaceStateOffs::InterfaceStateOff> > interface_state_off;
+        ydk::YList interface_state_off;
         
 }; // Igmp::Active::Vrfs::Vrf::InterfaceStateOffs
 
@@ -3128,7 +3128,7 @@ class Igmp::Active::Process::AmtGatewaies : public ydk::Entity
 
         class AmtGateway; //type: Igmp::Active::Process::AmtGatewaies::AmtGateway
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::Process::AmtGatewaies::AmtGateway> > amt_gateway;
+        ydk::YList amt_gateway;
         
 }; // Igmp::Active::Process::AmtGatewaies
 
@@ -3151,7 +3151,7 @@ class Igmp::Active::Process::AmtGatewaies::AmtGateway : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf gateway_address; //type: string
-        ydk::YLeaf port; //type: int32
+        ydk::YLeaf port; //type: uint32
         ydk::YLeaf amtgw; //type: string
         ydk::YLeaf amt_port; //type: uint32
         ydk::YLeaf key_len; //type: uint32
@@ -3373,7 +3373,7 @@ class Igmp::Active::DefaultContext::Summary : public ydk::Entity
         ydk::YLeaf node_low_memory; //type: boolean
         class Interface; //type: Igmp::Active::DefaultContext::Summary::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::Summary::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Active::DefaultContext::Summary
 
@@ -3426,7 +3426,7 @@ class Igmp::Active::DefaultContext::InterfaceStateOns : public ydk::Entity
 
         class InterfaceStateOn; //type: Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::InterfaceStateOns::InterfaceStateOn> > interface_state_on;
+        ydk::YList interface_state_on;
         
 }; // Igmp::Active::DefaultContext::InterfaceStateOns
 
@@ -3596,7 +3596,7 @@ class Igmp::Active::DefaultContext::DetailGroups : public ydk::Entity
 
         class DetailGroup; //type: Igmp::Active::DefaultContext::DetailGroups::DetailGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::DetailGroups::DetailGroup> > detail_group;
+        ydk::YList detail_group;
         
 }; // Igmp::Active::DefaultContext::DetailGroups
 
@@ -3627,7 +3627,7 @@ class Igmp::Active::DefaultContext::DetailGroups::DetailGroup : public ydk::Enti
         class Source; //type: Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::DetailGroups::DetailGroup::GroupInfo> group_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::DetailGroups::DetailGroup::Source> > source;
+        ydk::YList source;
         
 }; // Igmp::Active::DefaultContext::DetailGroups::DetailGroup
 
@@ -3819,7 +3819,7 @@ class Igmp::Active::DefaultContext::NonActiveGroups : public ydk::Entity
 
         class NonActiveGroups_; //type: Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::NonActiveGroups::NonActiveGroups_> > non_active_groups;
+        ydk::YList non_active_groups;
         
 }; // Igmp::Active::DefaultContext::NonActiveGroups
 
@@ -3919,7 +3919,7 @@ class Igmp::Active::DefaultContext::SsmMaps : public ydk::Entity
 
         class SsmMap; //type: Igmp::Active::DefaultContext::SsmMaps::SsmMap
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::SsmMaps::SsmMap> > ssm_map;
+        ydk::YList ssm_map;
         
 }; // Igmp::Active::DefaultContext::SsmMaps
 
@@ -3995,7 +3995,7 @@ class Igmp::Active::DefaultContext::ExplicitGroups : public ydk::Entity
 
         class ExplicitGroup; //type: Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup> > explicit_group;
+        ydk::YList explicit_group;
         
 }; // Igmp::Active::DefaultContext::ExplicitGroups
 
@@ -4026,7 +4026,7 @@ class Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup : public ydk::
         class Host; //type: Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::GroupInfo> group_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host> > host;
+        ydk::YList host;
         
 }; // Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup
 
@@ -4168,7 +4168,7 @@ class Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host : public
         class SourceAddress; //type: Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::Address> address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host::SourceAddress> > source_address;
+        ydk::YList source_address;
         
 }; // Igmp::Active::DefaultContext::ExplicitGroups::ExplicitGroup::Host
 
@@ -4240,7 +4240,7 @@ class Igmp::Active::DefaultContext::InterfaceTable : public ydk::Entity
 
         class Interface; //type: Igmp::Active::DefaultContext::InterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::InterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Active::DefaultContext::InterfaceTable
 
@@ -4410,7 +4410,7 @@ class Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts : public ydk::Ent
 
         class InterfaceUnicastQosAdjust; //type: Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust> > interface_unicast_qos_adjust;
+        ydk::YList interface_unicast_qos_adjust;
         
 }; // Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts
 
@@ -4439,7 +4439,7 @@ class Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicast
         ydk::YLeaf rate_decrements; //type: uint32
         class Update; //type: Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_oper::Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust::Update> > update;
+        ydk::YList update;
         
 }; // Igmp::Active::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceUnicastQosAdjust
 

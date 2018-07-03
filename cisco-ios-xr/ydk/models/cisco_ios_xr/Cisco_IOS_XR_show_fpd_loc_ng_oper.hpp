@@ -67,7 +67,7 @@ class ShowFpd::Locations : public ydk::Entity
 
         class Location; //type: ShowFpd::Locations::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::Locations::Location> > location;
+        ydk::YList location;
         
 }; // ShowFpd::Locations
 
@@ -92,7 +92,7 @@ class ShowFpd::Locations::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class Fpd; //type: ShowFpd::Locations::Location::Fpd
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::Locations::Location::Fpd> > fpd;
+        ydk::YList fpd;
         
 }; // ShowFpd::Locations::Location
 
@@ -116,7 +116,7 @@ class ShowFpd::Locations::Location::Fpd : public ydk::Entity
         ydk::YLeaf fpd_name; //type: string
         class FpdInfoDetaile; //type: ShowFpd::Locations::Location::Fpd::FpdInfoDetaile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::Locations::Location::Fpd::FpdInfoDetaile> > fpd_info_detaile;
+        ydk::YList fpd_info_detaile;
         
 }; // ShowFpd::Locations::Location::Fpd
 
@@ -168,7 +168,7 @@ class ShowFpd::HwModuleFpd : public ydk::Entity
 
         class FpdInfoDetaile; //type: ShowFpd::HwModuleFpd::FpdInfoDetaile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::HwModuleFpd::FpdInfoDetaile> > fpd_info_detaile;
+        ydk::YList fpd_info_detaile;
         
 }; // ShowFpd::HwModuleFpd
 
@@ -221,7 +221,7 @@ class ShowFpd::HelpLocations : public ydk::Entity
 
         class HelpLocation; //type: ShowFpd::HelpLocations::HelpLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::HelpLocations::HelpLocation> > help_location;
+        ydk::YList help_location;
         
 }; // ShowFpd::HelpLocations
 
@@ -269,7 +269,7 @@ class ShowFpd::HelpLocations::HelpLocation::HelpFpd : public ydk::Entity
 
         class FpdName; //type: ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName> > fpd_name;
+        ydk::YList fpd_name;
         
 }; // ShowFpd::HelpLocations::HelpLocation::HelpFpd
 
@@ -315,7 +315,7 @@ class ShowFpd::HwModuleFpdHelpFpd : public ydk::Entity
 
         class FpdName; //type: ShowFpd::HwModuleFpdHelpFpd::FpdName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::HwModuleFpdHelpFpd::FpdName> > fpd_name;
+        ydk::YList fpd_name;
         
 }; // ShowFpd::HwModuleFpdHelpFpd
 
@@ -362,7 +362,7 @@ class ShowFpd::Package : public ydk::Entity
 
         class FpdPkgData; //type: ShowFpd::Package::FpdPkgData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::Package::FpdPkgData> > fpd_pkg_data;
+        ydk::YList fpd_pkg_data;
         
 }; // ShowFpd::Package
 
@@ -413,7 +413,7 @@ class ShowFpd::LocationHelp : public ydk::Entity
 
         class LocationName; //type: ShowFpd::LocationHelp::LocationName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::LocationHelp::LocationName> > location_name;
+        ydk::YList location_name;
         
 }; // ShowFpd::LocationHelp
 

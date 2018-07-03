@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_mobileip_cfg {
 MobileIp::MobileIp()
     :
     domains(std::make_shared<MobileIp::Domains>())
-	,lmas(std::make_shared<MobileIp::Lmas>())
+    , lmas(std::make_shared<MobileIp::Lmas>())
 {
     domains->parent = this;
     lmas->parent = this;
 
-    yang_name = "mobile-ip"; yang_parent_name = "Cisco-IOS-XR-ip-mobileip-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mobile-ip"; yang_parent_name = "Cisco-IOS-XR-ip-mobileip-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MobileIp::~MobileIp()
@@ -28,6 +28,7 @@ MobileIp::~MobileIp()
 
 bool MobileIp::has_data() const
 {
+    if (is_presence_container) return true;
     return (domains !=  nullptr && domains->has_data())
 	|| (lmas !=  nullptr && lmas->has_data());
 }
@@ -136,9 +137,11 @@ bool MobileIp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MobileIp::Domains::Domains()
+    :
+    domain(this, {"domain_name"})
 {
 
-    yang_name = "domains"; yang_parent_name = "mobile-ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domains"; yang_parent_name = "mobile-ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MobileIp::Domains::~Domains()
@@ -147,7 +150,8 @@ MobileIp::Domains::~Domains()
 
 bool MobileIp::Domains::has_data() const
 {
-    for (std::size_t index=0; index<domain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<domain.len(); index++)
     {
         if(domain[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool MobileIp::Domains::has_data() const
 
 bool MobileIp::Domains::has_operation() const
 {
-    for (std::size_t index=0; index<domain.size(); index++)
+    for (std::size_t index=0; index<domain.len(); index++)
     {
         if(domain[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> MobileIp::Domains::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<MobileIp::Domains::Domain>();
         c->parent = this;
-        domain.push_back(c);
+        domain.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : domain)
+    for (auto c : domain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -236,18 +240,18 @@ MobileIp::Domains::Domain::Domain()
     :
     domain_name{YType::str, "domain-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     mags(std::make_shared<MobileIp::Domains::Domain::Mags>())
-	,nais(std::make_shared<MobileIp::Domains::Domain::Nais>())
-	,authenticate_option(std::make_shared<MobileIp::Domains::Domain::AuthenticateOption>())
-	,lmas(std::make_shared<MobileIp::Domains::Domain::Lmas>())
+    , nais(std::make_shared<MobileIp::Domains::Domain::Nais>())
+    , authenticate_option(std::make_shared<MobileIp::Domains::Domain::AuthenticateOption>())
+    , lmas(std::make_shared<MobileIp::Domains::Domain::Lmas>())
 {
     mags->parent = this;
     nais->parent = this;
     authenticate_option->parent = this;
     lmas->parent = this;
 
-    yang_name = "domain"; yang_parent_name = "domains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domain"; yang_parent_name = "domains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MobileIp::Domains::Domain::~Domain()
@@ -256,6 +260,7 @@ MobileIp::Domains::Domain::~Domain()
 
 bool MobileIp::Domains::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_name.is_set
 	|| enable.is_set
 	|| (mags !=  nullptr && mags->has_data())
@@ -285,7 +290,8 @@ std::string MobileIp::Domains::Domain::get_absolute_path() const
 std::string MobileIp::Domains::Domain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "domain" <<"[domain-name='" <<domain_name <<"']";
+    path_buffer << "domain";
+    ADD_KEY_TOKEN(domain_name, "domain-name");
     return path_buffer.str();
 }
 
@@ -404,9 +410,11 @@ bool MobileIp::Domains::Domain::has_leaf_or_child_of_name(const std::string & na
 }
 
 MobileIp::Domains::Domain::Mags::Mags()
+    :
+    mag(this, {"mag_name"})
 {
 
-    yang_name = "mags"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mags"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Domains::Domain::Mags::~Mags()
@@ -415,7 +423,8 @@ MobileIp::Domains::Domain::Mags::~Mags()
 
 bool MobileIp::Domains::Domain::Mags::has_data() const
 {
-    for (std::size_t index=0; index<mag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mag.len(); index++)
     {
         if(mag[index]->has_data())
             return true;
@@ -425,7 +434,7 @@ bool MobileIp::Domains::Domain::Mags::has_data() const
 
 bool MobileIp::Domains::Domain::Mags::has_operation() const
 {
-    for (std::size_t index=0; index<mag.size(); index++)
+    for (std::size_t index=0; index<mag.len(); index++)
     {
         if(mag[index]->has_operation())
             return true;
@@ -455,7 +464,7 @@ std::shared_ptr<Entity> MobileIp::Domains::Domain::Mags::get_child_by_name(const
     {
         auto c = std::make_shared<MobileIp::Domains::Domain::Mags::Mag>();
         c->parent = this;
-        mag.push_back(c);
+        mag.append(c);
         return c;
     }
 
@@ -467,7 +476,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Mags::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mag)
+    for (auto c : mag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -498,7 +507,7 @@ MobileIp::Domains::Domain::Mags::Mag::Mag()
     mag_name{YType::str, "mag-name"}
 {
 
-    yang_name = "mag"; yang_parent_name = "mags"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mag"; yang_parent_name = "mags"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Domains::Domain::Mags::Mag::~Mag()
@@ -507,6 +516,7 @@ MobileIp::Domains::Domain::Mags::Mag::~Mag()
 
 bool MobileIp::Domains::Domain::Mags::Mag::has_data() const
 {
+    if (is_presence_container) return true;
     return mag_name.is_set;
 }
 
@@ -519,7 +529,8 @@ bool MobileIp::Domains::Domain::Mags::Mag::has_operation() const
 std::string MobileIp::Domains::Domain::Mags::Mag::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mag" <<"[mag-name='" <<mag_name <<"']";
+    path_buffer << "mag";
+    ADD_KEY_TOKEN(mag_name, "mag-name");
     return path_buffer.str();
 }
 
@@ -571,9 +582,11 @@ bool MobileIp::Domains::Domain::Mags::Mag::has_leaf_or_child_of_name(const std::
 }
 
 MobileIp::Domains::Domain::Nais::Nais()
+    :
+    nai(this, {"nai_name"})
 {
 
-    yang_name = "nais"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nais"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Domains::Domain::Nais::~Nais()
@@ -582,7 +595,8 @@ MobileIp::Domains::Domain::Nais::~Nais()
 
 bool MobileIp::Domains::Domain::Nais::has_data() const
 {
-    for (std::size_t index=0; index<nai.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nai.len(); index++)
     {
         if(nai[index]->has_data())
             return true;
@@ -592,7 +606,7 @@ bool MobileIp::Domains::Domain::Nais::has_data() const
 
 bool MobileIp::Domains::Domain::Nais::has_operation() const
 {
-    for (std::size_t index=0; index<nai.size(); index++)
+    for (std::size_t index=0; index<nai.len(); index++)
     {
         if(nai[index]->has_operation())
             return true;
@@ -622,7 +636,7 @@ std::shared_ptr<Entity> MobileIp::Domains::Domain::Nais::get_child_by_name(const
     {
         auto c = std::make_shared<MobileIp::Domains::Domain::Nais::Nai>();
         c->parent = this;
-        nai.push_back(c);
+        nai.append(c);
         return c;
     }
 
@@ -634,7 +648,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Nais::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nai)
+    for (auto c : nai.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -670,7 +684,7 @@ MobileIp::Domains::Domain::Nais::Nai::Nai()
     network{YType::str, "network"}
 {
 
-    yang_name = "nai"; yang_parent_name = "nais"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nai"; yang_parent_name = "nais"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Domains::Domain::Nais::Nai::~Nai()
@@ -679,6 +693,7 @@ MobileIp::Domains::Domain::Nais::Nai::~Nai()
 
 bool MobileIp::Domains::Domain::Nais::Nai::has_data() const
 {
+    if (is_presence_container) return true;
     return nai_name.is_set
 	|| lma.is_set
 	|| apn.is_set
@@ -701,7 +716,8 @@ bool MobileIp::Domains::Domain::Nais::Nai::has_operation() const
 std::string MobileIp::Domains::Domain::Nais::Nai::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nai" <<"[nai-name='" <<nai_name <<"']";
+    path_buffer << "nai";
+    ADD_KEY_TOKEN(nai_name, "nai-name");
     return path_buffer.str();
 }
 
@@ -813,7 +829,7 @@ MobileIp::Domains::Domain::AuthenticateOption::AuthenticateOption()
     key{YType::str, "key"}
 {
 
-    yang_name = "authenticate-option"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authenticate-option"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Domains::Domain::AuthenticateOption::~AuthenticateOption()
@@ -822,6 +838,7 @@ MobileIp::Domains::Domain::AuthenticateOption::~AuthenticateOption()
 
 bool MobileIp::Domains::Domain::AuthenticateOption::has_data() const
 {
+    if (is_presence_container) return true;
     return spi.is_set
 	|| key.is_set;
 }
@@ -899,9 +916,11 @@ bool MobileIp::Domains::Domain::AuthenticateOption::has_leaf_or_child_of_name(co
 }
 
 MobileIp::Domains::Domain::Lmas::Lmas()
+    :
+    lma(this, {"lma_name"})
 {
 
-    yang_name = "lmas"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmas"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Domains::Domain::Lmas::~Lmas()
@@ -910,7 +929,8 @@ MobileIp::Domains::Domain::Lmas::~Lmas()
 
 bool MobileIp::Domains::Domain::Lmas::has_data() const
 {
-    for (std::size_t index=0; index<lma.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lma.len(); index++)
     {
         if(lma[index]->has_data())
             return true;
@@ -920,7 +940,7 @@ bool MobileIp::Domains::Domain::Lmas::has_data() const
 
 bool MobileIp::Domains::Domain::Lmas::has_operation() const
 {
-    for (std::size_t index=0; index<lma.size(); index++)
+    for (std::size_t index=0; index<lma.len(); index++)
     {
         if(lma[index]->has_operation())
             return true;
@@ -950,7 +970,7 @@ std::shared_ptr<Entity> MobileIp::Domains::Domain::Lmas::get_child_by_name(const
     {
         auto c = std::make_shared<MobileIp::Domains::Domain::Lmas::Lma>();
         c->parent = this;
-        lma.push_back(c);
+        lma.append(c);
         return c;
     }
 
@@ -962,7 +982,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Domains::Domain::Lmas::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lma)
+    for (auto c : lma.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -993,7 +1013,7 @@ MobileIp::Domains::Domain::Lmas::Lma::Lma()
     lma_name{YType::str, "lma-name"}
 {
 
-    yang_name = "lma"; yang_parent_name = "lmas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lma"; yang_parent_name = "lmas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Domains::Domain::Lmas::Lma::~Lma()
@@ -1002,6 +1022,7 @@ MobileIp::Domains::Domain::Lmas::Lma::~Lma()
 
 bool MobileIp::Domains::Domain::Lmas::Lma::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_name.is_set;
 }
 
@@ -1014,7 +1035,8 @@ bool MobileIp::Domains::Domain::Lmas::Lma::has_operation() const
 std::string MobileIp::Domains::Domain::Lmas::Lma::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lma" <<"[lma-name='" <<lma_name <<"']";
+    path_buffer << "lma";
+    ADD_KEY_TOKEN(lma_name, "lma-name");
     return path_buffer.str();
 }
 
@@ -1066,9 +1088,11 @@ bool MobileIp::Domains::Domain::Lmas::Lma::has_leaf_or_child_of_name(const std::
 }
 
 MobileIp::Lmas::Lmas()
+    :
+    lma(this, {"lma_name", "domain_name"})
 {
 
-    yang_name = "lmas"; yang_parent_name = "mobile-ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lmas"; yang_parent_name = "mobile-ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MobileIp::Lmas::~Lmas()
@@ -1077,7 +1101,8 @@ MobileIp::Lmas::~Lmas()
 
 bool MobileIp::Lmas::has_data() const
 {
-    for (std::size_t index=0; index<lma.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lma.len(); index++)
     {
         if(lma[index]->has_data())
             return true;
@@ -1087,7 +1112,7 @@ bool MobileIp::Lmas::has_data() const
 
 bool MobileIp::Lmas::has_operation() const
 {
-    for (std::size_t index=0; index<lma.size(); index++)
+    for (std::size_t index=0; index<lma.len(); index++)
     {
         if(lma[index]->has_operation())
             return true;
@@ -1124,7 +1149,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma>();
         c->parent = this;
-        lma.push_back(c);
+        lma.append(c);
         return c;
     }
 
@@ -1136,7 +1161,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lma)
+    for (auto c : lma.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1176,23 +1201,23 @@ MobileIp::Lmas::Lma::Lma()
     interface{YType::str, "interface"},
     mobile_map{YType::str, "mobile-map"},
     pgw_subs_cont{YType::empty, "pgw-subs-cont"}
-    	,
+        ,
     binding_revocation_attributes(std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes>())
-	,rat_attributes(std::make_shared<MobileIp::Lmas::Lma::RatAttributes>())
-	,heart_beat_attributes(std::make_shared<MobileIp::Lmas::Lma::HeartBeatAttributes>())
-	,lmaipv6_addresses(std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses>())
-	,hnp(std::make_shared<MobileIp::Lmas::Lma::Hnp>())
-	,redistribute(std::make_shared<MobileIp::Lmas::Lma::Redistribute>())
-	,aaa(std::make_shared<MobileIp::Lmas::Lma::Aaa>())
-	,dscp(std::make_shared<MobileIp::Lmas::Lma::Dscp>())
-	,lmaipv4_addresses(std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses>())
-	,roles(std::make_shared<MobileIp::Lmas::Lma::Roles>())
-	,binding_attributes(std::make_shared<MobileIp::Lmas::Lma::BindingAttributes>())
-	,mags(std::make_shared<MobileIp::Lmas::Lma::Mags>())
-	,tunnel_attributes(std::make_shared<MobileIp::Lmas::Lma::TunnelAttributes>())
-	,services(std::make_shared<MobileIp::Lmas::Lma::Services>())
-	,networks(std::make_shared<MobileIp::Lmas::Lma::Networks>())
-	,replay_protection(std::make_shared<MobileIp::Lmas::Lma::ReplayProtection>())
+    , rat_attributes(std::make_shared<MobileIp::Lmas::Lma::RatAttributes>())
+    , heart_beat_attributes(std::make_shared<MobileIp::Lmas::Lma::HeartBeatAttributes>())
+    , lmaipv6_addresses(std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses>())
+    , hnp(std::make_shared<MobileIp::Lmas::Lma::Hnp>())
+    , redistribute(std::make_shared<MobileIp::Lmas::Lma::Redistribute>())
+    , aaa(std::make_shared<MobileIp::Lmas::Lma::Aaa>())
+    , dscp(std::make_shared<MobileIp::Lmas::Lma::Dscp>())
+    , lmaipv4_addresses(std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses>())
+    , roles(std::make_shared<MobileIp::Lmas::Lma::Roles>())
+    , binding_attributes(std::make_shared<MobileIp::Lmas::Lma::BindingAttributes>())
+    , mags(std::make_shared<MobileIp::Lmas::Lma::Mags>())
+    , tunnel_attributes(std::make_shared<MobileIp::Lmas::Lma::TunnelAttributes>())
+    , services(std::make_shared<MobileIp::Lmas::Lma::Services>())
+    , networks(std::make_shared<MobileIp::Lmas::Lma::Networks>())
+    , replay_protection(std::make_shared<MobileIp::Lmas::Lma::ReplayProtection>())
 {
     binding_revocation_attributes->parent = this;
     rat_attributes->parent = this;
@@ -1211,7 +1236,7 @@ MobileIp::Lmas::Lma::Lma()
     networks->parent = this;
     replay_protection->parent = this;
 
-    yang_name = "lma"; yang_parent_name = "lmas"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lma"; yang_parent_name = "lmas"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MobileIp::Lmas::Lma::~Lma()
@@ -1220,6 +1245,7 @@ MobileIp::Lmas::Lma::~Lma()
 
 bool MobileIp::Lmas::Lma::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_name.is_set
 	|| domain_name.is_set
 	|| generate.is_set
@@ -1293,7 +1319,9 @@ std::string MobileIp::Lmas::Lma::get_absolute_path() const
 std::string MobileIp::Lmas::Lma::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lma" <<"[lma-name='" <<lma_name <<"']" <<"[domain-name='" <<domain_name <<"']";
+    path_buffer << "lma";
+    ADD_KEY_TOKEN(lma_name, "lma-name");
+    ADD_KEY_TOKEN(domain_name, "domain-name");
     return path_buffer.str();
 }
 
@@ -1692,12 +1720,12 @@ bool MobileIp::Lmas::Lma::has_leaf_or_child_of_name(const std::string & name) co
 MobileIp::Lmas::Lma::BindingRevocationAttributes::BindingRevocationAttributes()
     :
     retry{YType::uint32, "retry"}
-    	,
+        ,
     delay(std::make_shared<MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay>())
 {
     delay->parent = this;
 
-    yang_name = "binding-revocation-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding-revocation-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::BindingRevocationAttributes::~BindingRevocationAttributes()
@@ -1706,6 +1734,7 @@ MobileIp::Lmas::Lma::BindingRevocationAttributes::~BindingRevocationAttributes()
 
 bool MobileIp::Lmas::Lma::BindingRevocationAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return retry.is_set
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -1791,7 +1820,7 @@ MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::Delay()
     br_max{YType::uint32, "br-max"}
 {
 
-    yang_name = "delay"; yang_parent_name = "binding-revocation-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "binding-revocation-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::~Delay()
@@ -1800,6 +1829,7 @@ MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::~Delay()
 
 bool MobileIp::Lmas::Lma::BindingRevocationAttributes::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return br_min.is_set
 	|| br_max.is_set;
 }
@@ -1882,7 +1912,7 @@ MobileIp::Lmas::Lma::RatAttributes::RatAttributes()
     priority_value{YType::uint32, "priority-value"}
 {
 
-    yang_name = "rat-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rat-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::RatAttributes::~RatAttributes()
@@ -1891,6 +1921,7 @@ MobileIp::Lmas::Lma::RatAttributes::~RatAttributes()
 
 bool MobileIp::Lmas::Lma::RatAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_rat.is_set
 	|| priority_value.is_set;
 }
@@ -1974,7 +2005,7 @@ MobileIp::Lmas::Lma::HeartBeatAttributes::HeartBeatAttributes()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "heart-beat-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "heart-beat-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::HeartBeatAttributes::~HeartBeatAttributes()
@@ -1983,6 +2014,7 @@ MobileIp::Lmas::Lma::HeartBeatAttributes::~HeartBeatAttributes()
 
 bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| retries.is_set
 	|| timeout.is_set;
@@ -2073,9 +2105,11 @@ bool MobileIp::Lmas::Lma::HeartBeatAttributes::has_leaf_or_child_of_name(const s
 }
 
 MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Addresses()
+    :
+    lmaipv6_address(this, {"address"})
 {
 
-    yang_name = "lmaipv6-addresses"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmaipv6-addresses"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Lmaipv6Addresses::~Lmaipv6Addresses()
@@ -2084,7 +2118,8 @@ MobileIp::Lmas::Lma::Lmaipv6Addresses::~Lmaipv6Addresses()
 
 bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_data() const
 {
-    for (std::size_t index=0; index<lmaipv6_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lmaipv6_address.len(); index++)
     {
         if(lmaipv6_address[index]->has_data())
             return true;
@@ -2094,7 +2129,7 @@ bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_data() const
 
 bool MobileIp::Lmas::Lma::Lmaipv6Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<lmaipv6_address.size(); index++)
+    for (std::size_t index=0; index<lmaipv6_address.len(); index++)
     {
         if(lmaipv6_address[index]->has_operation())
             return true;
@@ -2124,7 +2159,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv6Addresses::get_child_by_name
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address>();
         c->parent = this;
-        lmaipv6_address.push_back(c);
+        lmaipv6_address.append(c);
         return c;
     }
 
@@ -2136,7 +2171,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv6Addre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lmaipv6_address)
+    for (auto c : lmaipv6_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2167,7 +2202,7 @@ MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::Lmaipv6Address()
     address{YType::str, "address"}
 {
 
-    yang_name = "lmaipv6-address"; yang_parent_name = "lmaipv6-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmaipv6-address"; yang_parent_name = "lmaipv6-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::~Lmaipv6Address()
@@ -2176,6 +2211,7 @@ MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::~Lmaipv6Address()
 
 bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2188,7 +2224,8 @@ bool MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::has_operation() cons
 std::string MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lmaipv6-address" <<"[address='" <<address <<"']";
+    path_buffer << "lmaipv6-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2244,7 +2281,7 @@ MobileIp::Lmas::Lma::Hnp::Hnp()
     maximum{YType::uint32, "maximum"}
 {
 
-    yang_name = "hnp"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hnp"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Hnp::~Hnp()
@@ -2253,6 +2290,7 @@ MobileIp::Lmas::Lma::Hnp::~Hnp()
 
 bool MobileIp::Lmas::Lma::Hnp::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum.is_set;
 }
 
@@ -2322,7 +2360,7 @@ MobileIp::Lmas::Lma::Redistribute::Redistribute()
     redist_sub_type{YType::enumeration, "redist-sub-type"}
 {
 
-    yang_name = "redistribute"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistribute"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Redistribute::~Redistribute()
@@ -2331,6 +2369,7 @@ MobileIp::Lmas::Lma::Redistribute::~Redistribute()
 
 bool MobileIp::Lmas::Lma::Redistribute::has_data() const
 {
+    if (is_presence_container) return true;
     return redist_type.is_set
 	|| redist_sub_type.is_set;
 }
@@ -2413,7 +2452,7 @@ MobileIp::Lmas::Lma::Aaa::Aaa()
 {
     accounting->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Aaa::~Aaa()
@@ -2422,6 +2461,7 @@ MobileIp::Lmas::Lma::Aaa::~Aaa()
 
 bool MobileIp::Lmas::Lma::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting !=  nullptr && accounting->has_data());
 }
 
@@ -2494,7 +2534,7 @@ MobileIp::Lmas::Lma::Aaa::Accounting::Accounting()
     interim_interval{YType::uint32, "interim-interval"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Aaa::Accounting::~Accounting()
@@ -2503,6 +2543,7 @@ MobileIp::Lmas::Lma::Aaa::Accounting::~Accounting()
 
 bool MobileIp::Lmas::Lma::Aaa::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| interim_interval.is_set;
 }
@@ -2585,7 +2626,7 @@ MobileIp::Lmas::Lma::Dscp::Dscp()
     force{YType::empty, "force"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Dscp::~Dscp()
@@ -2594,6 +2635,7 @@ MobileIp::Lmas::Lma::Dscp::~Dscp()
 
 bool MobileIp::Lmas::Lma::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| force.is_set;
 }
@@ -2671,9 +2713,11 @@ bool MobileIp::Lmas::Lma::Dscp::has_leaf_or_child_of_name(const std::string & na
 }
 
 MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Addresses()
+    :
+    lmaipv4_address(this, {"address"})
 {
 
-    yang_name = "lmaipv4-addresses"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmaipv4-addresses"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Lmaipv4Addresses::~Lmaipv4Addresses()
@@ -2682,7 +2726,8 @@ MobileIp::Lmas::Lma::Lmaipv4Addresses::~Lmaipv4Addresses()
 
 bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_data() const
 {
-    for (std::size_t index=0; index<lmaipv4_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lmaipv4_address.len(); index++)
     {
         if(lmaipv4_address[index]->has_data())
             return true;
@@ -2692,7 +2737,7 @@ bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_data() const
 
 bool MobileIp::Lmas::Lma::Lmaipv4Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<lmaipv4_address.size(); index++)
+    for (std::size_t index=0; index<lmaipv4_address.len(); index++)
     {
         if(lmaipv4_address[index]->has_operation())
             return true;
@@ -2722,7 +2767,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Lmaipv4Addresses::get_child_by_name
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address>();
         c->parent = this;
-        lmaipv4_address.push_back(c);
+        lmaipv4_address.append(c);
         return c;
     }
 
@@ -2734,7 +2779,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Lmaipv4Addre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lmaipv4_address)
+    for (auto c : lmaipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2765,7 +2810,7 @@ MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::Lmaipv4Address()
     address{YType::str, "address"}
 {
 
-    yang_name = "lmaipv4-address"; yang_parent_name = "lmaipv4-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmaipv4-address"; yang_parent_name = "lmaipv4-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::~Lmaipv4Address()
@@ -2774,6 +2819,7 @@ MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::~Lmaipv4Address()
 
 bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -2786,7 +2832,8 @@ bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_operation() cons
 std::string MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lmaipv4-address" <<"[address='" <<address <<"']";
+    path_buffer << "lmaipv4-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2838,9 +2885,11 @@ bool MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address::has_leaf_or_child_of
 }
 
 MobileIp::Lmas::Lma::Roles::Roles()
+    :
+    role(this, {"lma_role"})
 {
 
-    yang_name = "roles"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "roles"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Roles::~Roles()
@@ -2849,7 +2898,8 @@ MobileIp::Lmas::Lma::Roles::~Roles()
 
 bool MobileIp::Lmas::Lma::Roles::has_data() const
 {
-    for (std::size_t index=0; index<role.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<role.len(); index++)
     {
         if(role[index]->has_data())
             return true;
@@ -2859,7 +2909,7 @@ bool MobileIp::Lmas::Lma::Roles::has_data() const
 
 bool MobileIp::Lmas::Lma::Roles::has_operation() const
 {
-    for (std::size_t index=0; index<role.size(); index++)
+    for (std::size_t index=0; index<role.len(); index++)
     {
         if(role[index]->has_operation())
             return true;
@@ -2889,7 +2939,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Roles::get_child_by_name(const std:
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Roles::Role>();
         c->parent = this;
-        role.push_back(c);
+        role.append(c);
         return c;
     }
 
@@ -2901,7 +2951,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Roles::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : role)
+    for (auto c : role.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2932,7 +2982,7 @@ MobileIp::Lmas::Lma::Roles::Role::Role()
     lma_role{YType::enumeration, "lma-role"}
 {
 
-    yang_name = "role"; yang_parent_name = "roles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "role"; yang_parent_name = "roles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Roles::Role::~Role()
@@ -2941,6 +2991,7 @@ MobileIp::Lmas::Lma::Roles::Role::~Role()
 
 bool MobileIp::Lmas::Lma::Roles::Role::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_role.is_set;
 }
 
@@ -2953,7 +3004,8 @@ bool MobileIp::Lmas::Lma::Roles::Role::has_operation() const
 std::string MobileIp::Lmas::Lma::Roles::Role::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "role" <<"[lma-role='" <<lma_role <<"']";
+    path_buffer << "role";
+    ADD_KEY_TOKEN(lma_role, "lma-role");
     return path_buffer.str();
 }
 
@@ -3013,7 +3065,7 @@ MobileIp::Lmas::Lma::BindingAttributes::BindingAttributes()
     maximum{YType::uint32, "maximum"}
 {
 
-    yang_name = "binding-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::BindingAttributes::~BindingAttributes()
@@ -3022,6 +3074,7 @@ MobileIp::Lmas::Lma::BindingAttributes::~BindingAttributes()
 
 bool MobileIp::Lmas::Lma::BindingAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return refresh_time.is_set
 	|| delete_wait_interval.is_set
 	|| create_wait_interval.is_set
@@ -3138,9 +3191,11 @@ bool MobileIp::Lmas::Lma::BindingAttributes::has_leaf_or_child_of_name(const std
 }
 
 MobileIp::Lmas::Lma::Mags::Mags()
+    :
+    mag(this, {"mag_name", "domain_name"})
 {
 
-    yang_name = "mags"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mags"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Mags::~Mags()
@@ -3149,7 +3204,8 @@ MobileIp::Lmas::Lma::Mags::~Mags()
 
 bool MobileIp::Lmas::Lma::Mags::has_data() const
 {
-    for (std::size_t index=0; index<mag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mag.len(); index++)
     {
         if(mag[index]->has_data())
             return true;
@@ -3159,7 +3215,7 @@ bool MobileIp::Lmas::Lma::Mags::has_data() const
 
 bool MobileIp::Lmas::Lma::Mags::has_operation() const
 {
-    for (std::size_t index=0; index<mag.size(); index++)
+    for (std::size_t index=0; index<mag.len(); index++)
     {
         if(mag[index]->has_operation())
             return true;
@@ -3189,7 +3245,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Mags::get_child_by_name(const std::
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Mags::Mag>();
         c->parent = this;
-        mag.push_back(c);
+        mag.append(c);
         return c;
     }
 
@@ -3201,7 +3257,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Mags::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mag)
+    for (auto c : mag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3235,14 +3291,14 @@ MobileIp::Lmas::Lma::Mags::Mag::Mag()
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"},
     tunnel{YType::str, "tunnel"}
-    	,
+        ,
     authenticate_option(std::make_shared<MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption>())
-	,dscp(std::make_shared<MobileIp::Lmas::Lma::Mags::Mag::Dscp>())
+    , dscp(std::make_shared<MobileIp::Lmas::Lma::Mags::Mag::Dscp>())
 {
     authenticate_option->parent = this;
     dscp->parent = this;
 
-    yang_name = "mag"; yang_parent_name = "mags"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mag"; yang_parent_name = "mags"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Mags::Mag::~Mag()
@@ -3251,6 +3307,7 @@ MobileIp::Lmas::Lma::Mags::Mag::~Mag()
 
 bool MobileIp::Lmas::Lma::Mags::Mag::has_data() const
 {
+    if (is_presence_container) return true;
     return mag_name.is_set
 	|| domain_name.is_set
 	|| encap_option.is_set
@@ -3277,7 +3334,9 @@ bool MobileIp::Lmas::Lma::Mags::Mag::has_operation() const
 std::string MobileIp::Lmas::Lma::Mags::Mag::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mag" <<"[mag-name='" <<mag_name <<"']" <<"[domain-name='" <<domain_name <<"']";
+    path_buffer << "mag";
+    ADD_KEY_TOKEN(mag_name, "mag-name");
+    ADD_KEY_TOKEN(domain_name, "domain-name");
     return path_buffer.str();
 }
 
@@ -3417,7 +3476,7 @@ MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::AuthenticateOption()
     key{YType::str, "key"}
 {
 
-    yang_name = "authenticate-option"; yang_parent_name = "mag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authenticate-option"; yang_parent_name = "mag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::~AuthenticateOption()
@@ -3426,6 +3485,7 @@ MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::~AuthenticateOption()
 
 bool MobileIp::Lmas::Lma::Mags::Mag::AuthenticateOption::has_data() const
 {
+    if (is_presence_container) return true;
     return spi.is_set
 	|| key.is_set;
 }
@@ -3508,7 +3568,7 @@ MobileIp::Lmas::Lma::Mags::Mag::Dscp::Dscp()
     force{YType::empty, "force"}
 {
 
-    yang_name = "dscp"; yang_parent_name = "mag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp"; yang_parent_name = "mag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Mags::Mag::Dscp::~Dscp()
@@ -3517,6 +3577,7 @@ MobileIp::Lmas::Lma::Mags::Mag::Dscp::~Dscp()
 
 bool MobileIp::Lmas::Lma::Mags::Mag::Dscp::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| force.is_set;
 }
@@ -3599,7 +3660,7 @@ MobileIp::Lmas::Lma::TunnelAttributes::TunnelAttributes()
     acl{YType::str, "acl"}
 {
 
-    yang_name = "tunnel-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-attributes"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::TunnelAttributes::~TunnelAttributes()
@@ -3608,6 +3669,7 @@ MobileIp::Lmas::Lma::TunnelAttributes::~TunnelAttributes()
 
 bool MobileIp::Lmas::Lma::TunnelAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return mtu.is_set
 	|| acl.is_set;
 }
@@ -3685,9 +3747,11 @@ bool MobileIp::Lmas::Lma::TunnelAttributes::has_leaf_or_child_of_name(const std:
 }
 
 MobileIp::Lmas::Lma::Services::Services()
+    :
+    service(this, {"lma_service"})
 {
 
-    yang_name = "services"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "services"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::~Services()
@@ -3696,7 +3760,8 @@ MobileIp::Lmas::Lma::Services::~Services()
 
 bool MobileIp::Lmas::Lma::Services::has_data() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_data())
             return true;
@@ -3706,7 +3771,7 @@ bool MobileIp::Lmas::Lma::Services::has_data() const
 
 bool MobileIp::Lmas::Lma::Services::has_operation() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_operation())
             return true;
@@ -3736,7 +3801,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::get_child_by_name(const s
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service>();
         c->parent = this;
-        service.push_back(c);
+        service.append(c);
         return c;
     }
 
@@ -3748,7 +3813,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service)
+    for (auto c : service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3784,12 +3849,12 @@ MobileIp::Lmas::Lma::Services::Service::Service()
     ignore_home_address{YType::empty, "ignore-home-address"},
     mnp_ipv4_customer{YType::uint32, "mnp-ipv4-customer"},
     mnp_ipv6_customer{YType::uint32, "mnp-ipv6-customer"}
-    	,
+        ,
     customers(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers>())
 {
     customers->parent = this;
 
-    yang_name = "service"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::~Service()
@@ -3798,6 +3863,7 @@ MobileIp::Lmas::Lma::Services::Service::~Service()
 
 bool MobileIp::Lmas::Lma::Services::Service::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_service.is_set
 	|| mnp_customer.is_set
 	|| mnp_ipv4_lmn.is_set
@@ -3826,7 +3892,8 @@ bool MobileIp::Lmas::Lma::Services::Service::has_operation() const
 std::string MobileIp::Lmas::Lma::Services::Service::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service" <<"[lma-service='" <<lma_service <<"']";
+    path_buffer << "service";
+    ADD_KEY_TOKEN(lma_service, "lma-service");
     return path_buffer.str();
 }
 
@@ -3969,9 +4036,11 @@ bool MobileIp::Lmas::Lma::Services::Service::has_leaf_or_child_of_name(const std
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customers()
+    :
+    customer(this, {"customer_name", "vrf_name"})
 {
 
-    yang_name = "customers"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "customers"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::~Customers()
@@ -3980,7 +4049,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::~Customers()
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::has_data() const
 {
-    for (std::size_t index=0; index<customer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<customer.len(); index++)
     {
         if(customer[index]->has_data())
             return true;
@@ -3990,7 +4060,7 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::has_data() const
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::has_operation() const
 {
-    for (std::size_t index=0; index<customer.size(); index++)
+    for (std::size_t index=0; index<customer.len(); index++)
     {
         if(customer[index]->has_operation())
             return true;
@@ -4020,7 +4090,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::get_c
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer>();
         c->parent = this;
-        customer.push_back(c);
+        customer.append(c);
         return c;
     }
 
@@ -4032,7 +4102,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : customer)
+    for (auto c : customer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4070,13 +4140,13 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Customer()
     mnp_ipv6_customer{YType::uint32, "mnp-ipv6-customer"},
     mobile_route_ad{YType::uint32, "mobile-route-ad"},
     bandwidth_aggregate{YType::uint32, "bandwidth-aggregate"}
-    	,
+        ,
     authenticate_option(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption>())
-	,heart_beat_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes>())
-	,transports(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports>())
-	,network_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes>())
-	,gre_key(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey>())
-	,binding_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes>())
+    , heart_beat_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes>())
+    , transports(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports>())
+    , network_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes>())
+    , gre_key(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey>())
+    , binding_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes>())
 {
     authenticate_option->parent = this;
     heart_beat_attributes->parent = this;
@@ -4085,7 +4155,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Customer()
     gre_key->parent = this;
     binding_attributes->parent = this;
 
-    yang_name = "customer"; yang_parent_name = "customers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "customer"; yang_parent_name = "customers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::~Customer()
@@ -4094,6 +4164,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::~Customer()
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::has_data() const
 {
+    if (is_presence_container) return true;
     return customer_name.is_set
 	|| vrf_name.is_set
 	|| mnp_customer.is_set
@@ -4136,7 +4207,9 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::has_operation(
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "customer" <<"[customer-name='" <<customer_name <<"']" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "customer";
+    ADD_KEY_TOKEN(customer_name, "customer-name");
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -4376,7 +4449,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption:
     key{YType::str, "key"}
 {
 
-    yang_name = "authenticate-option"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authenticate-option"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::~AuthenticateOption()
@@ -4385,6 +4458,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption:
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::AuthenticateOption::has_data() const
 {
+    if (is_presence_container) return true;
     return spi.is_set
 	|| key.is_set;
 }
@@ -4468,7 +4542,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "heart-beat-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "heart-beat-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::~HeartBeatAttributes()
@@ -4477,6 +4551,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| retries.is_set
 	|| timeout.is_set;
@@ -4567,9 +4642,11 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::HeartBeatAttri
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transports()
+    :
+    transport(this, {"vrf_name"})
 {
 
-    yang_name = "transports"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transports"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::~Transports()
@@ -4578,7 +4655,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::~Transp
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_data() const
 {
-    for (std::size_t index=0; index<transport.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transport.len(); index++)
     {
         if(transport[index]->has_data())
             return true;
@@ -4588,7 +4666,7 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::ha
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::has_operation() const
 {
-    for (std::size_t index=0; index<transport.size(); index++)
+    for (std::size_t index=0; index<transport.len(); index++)
     {
         if(transport[index]->has_operation())
             return true;
@@ -4618,7 +4696,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport>();
         c->parent = this;
-        transport.push_back(c);
+        transport.append(c);
         return c;
     }
 
@@ -4630,7 +4708,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transport)
+    for (auto c : transport.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4663,7 +4741,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transpo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "transport"; yang_parent_name = "transports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "transports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::~Transport()
@@ -4672,6 +4750,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transpo
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4688,7 +4767,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Tr
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transport" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "transport";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -4764,12 +4844,12 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Tr
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::NetworkAttributes()
     :
     unauthorize{YType::empty, "unauthorize"}
-    	,
+        ,
     authorizes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes>())
 {
     authorizes->parent = this;
 
-    yang_name = "network-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::~NetworkAttributes()
@@ -4778,6 +4858,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return unauthorize.is_set
 	|| (authorizes !=  nullptr && authorizes->has_data());
 }
@@ -4858,9 +4939,11 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorizes()
+    :
+    authorize(this, {"name"})
 {
 
-    yang_name = "authorizes"; yang_parent_name = "network-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorizes"; yang_parent_name = "network-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::~Authorizes()
@@ -4869,7 +4952,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::has_data() const
 {
-    for (std::size_t index=0; index<authorize.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<authorize.len(); index++)
     {
         if(authorize[index]->has_data())
             return true;
@@ -4879,7 +4963,7 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::has_operation() const
 {
-    for (std::size_t index=0; index<authorize.size(); index++)
+    for (std::size_t index=0; index<authorize.len(); index++)
     {
         if(authorize[index]->has_operation())
             return true;
@@ -4909,7 +4993,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize>();
         c->parent = this;
-        authorize.push_back(c);
+        authorize.append(c);
         return c;
     }
 
@@ -4921,7 +5005,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : authorize)
+    for (auto c : authorize.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4950,12 +5034,12 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::Authorize()
     :
     name{YType::str, "name"}
-    	,
+        ,
     pool_attributes(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes>())
 {
     pool_attributes->parent = this;
 
-    yang_name = "authorize"; yang_parent_name = "authorizes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorize"; yang_parent_name = "authorizes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::~Authorize()
@@ -4964,6 +5048,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (pool_attributes !=  nullptr && pool_attributes->has_data());
 }
@@ -4978,7 +5063,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "authorize" <<"[name='" <<name <<"']";
+    path_buffer << "authorize";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5046,12 +5132,12 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::PoolAttributes()
     :
     mobile_node(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode>())
-	,mobile_network(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork>())
+    , mobile_network(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork>())
 {
     mobile_node->parent = this;
     mobile_network->parent = this;
 
-    yang_name = "pool-attributes"; yang_parent_name = "authorize"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool-attributes"; yang_parent_name = "authorize"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::~PoolAttributes()
@@ -5060,6 +5146,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (mobile_node !=  nullptr && mobile_node->has_data())
 	|| (mobile_network !=  nullptr && mobile_network->has_data());
 }
@@ -5145,12 +5232,12 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::MobileNode()
     :
     ipv4_pool(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool>())
-	,ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool>())
+    , ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool>())
 {
     ipv4_pool->parent = this;
     ipv6_pool->parent = this;
 
-    yang_name = "mobile-node"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobile-node"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::~MobileNode()
@@ -5159,6 +5246,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_pool !=  nullptr && ipv4_pool->has_data())
 	|| (ipv6_pool !=  nullptr && ipv6_pool->has_data());
 }
@@ -5247,7 +5335,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     pool_prefix{YType::uint32, "pool-prefix"}
 {
 
-    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::~Ipv4Pool()
@@ -5256,6 +5344,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv4Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set;
 }
@@ -5338,7 +5427,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     pool_prefix{YType::uint32, "pool-prefix"}
 {
 
-    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::~Ipv6Pool()
@@ -5347,6 +5436,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNode::Ipv6Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set;
 }
@@ -5426,12 +5516,12 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::MobileNetwork()
     :
     mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools>())
-	,mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools>())
+    , mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools>())
 {
     mripv6_pools->parent = this;
     mripv4_pools->parent = this;
 
-    yang_name = "mobile-network"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobile-network"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::~MobileNetwork()
@@ -5440,6 +5530,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (mripv6_pools !=  nullptr && mripv6_pools->has_data())
 	|| (mripv4_pools !=  nullptr && mripv4_pools->has_data());
 }
@@ -5523,9 +5614,11 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pools()
+    :
+    mripv6_pool(this, {"start_address"})
 {
 
-    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::~Mripv6Pools()
@@ -5534,7 +5627,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_data() const
 {
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mripv6_pool.len(); index++)
     {
         if(mripv6_pool[index]->has_data())
             return true;
@@ -5544,7 +5638,7 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::has_operation() const
 {
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    for (std::size_t index=0; index<mripv6_pool.len(); index++)
     {
         if(mripv6_pool[index]->has_operation())
             return true;
@@ -5574,7 +5668,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
         c->parent = this;
-        mripv6_pool.push_back(c);
+        mripv6_pool.append(c);
         return c;
     }
 
@@ -5586,7 +5680,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mripv6_pool)
+    for (auto c : mripv6_pool.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5619,7 +5713,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     network_prefix{YType::uint32, "network-prefix"}
 {
 
-    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::~Mripv6Pool()
@@ -5628,6 +5722,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set
 	|| network_prefix.is_set;
@@ -5644,7 +5739,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mripv6-pool" <<"[start-address='" <<start_address <<"']";
+    path_buffer << "mripv6-pool";
+    ADD_KEY_TOKEN(start_address, "start-address");
     return path_buffer.str();
 }
 
@@ -5718,9 +5814,11 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pools()
+    :
+    mripv4_pool(this, {"start_address"})
 {
 
-    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::~Mripv4Pools()
@@ -5729,7 +5827,8 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_data() const
 {
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mripv4_pool.len(); index++)
     {
         if(mripv4_pool[index]->has_data())
             return true;
@@ -5739,7 +5838,7 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::has_operation() const
 {
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    for (std::size_t index=0; index<mripv4_pool.len(); index++)
     {
         if(mripv4_pool[index]->has_operation())
             return true;
@@ -5769,7 +5868,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Services::Service::Customers::Custo
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
         c->parent = this;
-        mripv4_pool.push_back(c);
+        mripv4_pool.append(c);
         return c;
     }
 
@@ -5781,7 +5880,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Services::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mripv4_pool)
+    for (auto c : mripv4_pool.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5814,7 +5913,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
     network_prefix{YType::uint32, "network-prefix"}
 {
 
-    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::~Mripv4Pool()
@@ -5823,6 +5922,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set
 	|| network_prefix.is_set;
@@ -5839,7 +5939,8 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttribu
 std::string MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mripv4-pool" <<"[start-address='" <<start_address <<"']";
+    path_buffer << "mripv4-pool";
+    ADD_KEY_TOKEN(start_address, "start-address");
     return path_buffer.str();
 }
 
@@ -5918,7 +6019,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::GreKey()
     gre_key_value{YType::uint32, "gre-key-value"}
 {
 
-    yang_name = "gre-key"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gre-key"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::~GreKey()
@@ -5927,6 +6028,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::~GreKey()
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::GreKey::has_data() const
 {
+    if (is_presence_container) return true;
     return gre_key_type.is_set
 	|| gre_key_value.is_set;
 }
@@ -6008,7 +6110,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::
     max_life_time{YType::uint32, "max-life-time"}
 {
 
-    yang_name = "binding-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "binding-attributes"; yang_parent_name = "customer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::~BindingAttributes()
@@ -6017,6 +6119,7 @@ MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::
 
 bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return max_life_time.is_set;
 }
 
@@ -6081,9 +6184,11 @@ bool MobileIp::Lmas::Lma::Services::Service::Customers::Customer::BindingAttribu
 }
 
 MobileIp::Lmas::Lma::Networks::Networks()
+    :
+    network(this, {"lma_network"})
 {
 
-    yang_name = "networks"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "networks"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::~Networks()
@@ -6092,7 +6197,8 @@ MobileIp::Lmas::Lma::Networks::~Networks()
 
 bool MobileIp::Lmas::Lma::Networks::has_data() const
 {
-    for (std::size_t index=0; index<network.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_data())
             return true;
@@ -6102,7 +6208,7 @@ bool MobileIp::Lmas::Lma::Networks::has_data() const
 
 bool MobileIp::Lmas::Lma::Networks::has_operation() const
 {
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_operation())
             return true;
@@ -6132,7 +6238,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::get_child_by_name(const s
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network>();
         c->parent = this;
-        network.push_back(c);
+        network.append(c);
         return c;
     }
 
@@ -6144,7 +6250,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network)
+    for (auto c : network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6173,12 +6279,12 @@ bool MobileIp::Lmas::Lma::Networks::has_leaf_or_child_of_name(const std::string 
 MobileIp::Lmas::Lma::Networks::Network::Network()
     :
     lma_network{YType::str, "lma-network"}
-    	,
+        ,
     pool_attributes(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes>())
 {
     pool_attributes->parent = this;
 
-    yang_name = "network"; yang_parent_name = "networks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "networks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::~Network()
@@ -6187,6 +6293,7 @@ MobileIp::Lmas::Lma::Networks::Network::~Network()
 
 bool MobileIp::Lmas::Lma::Networks::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_network.is_set
 	|| (pool_attributes !=  nullptr && pool_attributes->has_data());
 }
@@ -6201,7 +6308,8 @@ bool MobileIp::Lmas::Lma::Networks::Network::has_operation() const
 std::string MobileIp::Lmas::Lma::Networks::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "network" <<"[lma-network='" <<lma_network <<"']";
+    path_buffer << "network";
+    ADD_KEY_TOKEN(lma_network, "lma-network");
     return path_buffer.str();
 }
 
@@ -6269,12 +6377,12 @@ bool MobileIp::Lmas::Lma::Networks::Network::has_leaf_or_child_of_name(const std
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::PoolAttributes()
     :
     mobile_node(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode>())
-	,mobile_network(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork>())
+    , mobile_network(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork>())
 {
     mobile_node->parent = this;
     mobile_network->parent = this;
 
-    yang_name = "pool-attributes"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool-attributes"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::~PoolAttributes()
@@ -6283,6 +6391,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::~PoolAttributes()
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (mobile_node !=  nullptr && mobile_node->has_data())
 	|| (mobile_network !=  nullptr && mobile_network->has_data());
 }
@@ -6368,12 +6477,12 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::has_leaf_or_child_o
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::MobileNode()
     :
     ipv4_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool>())
-	,ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>())
+    , ipv6_pool(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool>())
 {
     ipv4_pool->parent = this;
     ipv6_pool->parent = this;
 
-    yang_name = "mobile-node"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobile-node"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::~MobileNode()
@@ -6382,6 +6491,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::~MobileNode(
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_pool !=  nullptr && ipv4_pool->has_data())
 	|| (ipv6_pool !=  nullptr && ipv6_pool->has_data());
 }
@@ -6470,7 +6580,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::Ip
     pool_prefix{YType::uint32, "pool-prefix"}
 {
 
-    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::~Ipv4Pool()
@@ -6479,6 +6589,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::~I
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv4Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set;
 }
@@ -6561,7 +6672,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::Ip
     pool_prefix{YType::uint32, "pool-prefix"}
 {
 
-    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-pool"; yang_parent_name = "mobile-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::~Ipv6Pool()
@@ -6570,6 +6681,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::~I
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set;
 }
@@ -6649,12 +6761,12 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNode::Ipv6Poo
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::MobileNetwork()
     :
     mripv6_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools>())
-	,mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools>())
+    , mripv4_pools(std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools>())
 {
     mripv6_pools->parent = this;
     mripv4_pools->parent = this;
 
-    yang_name = "mobile-network"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobile-network"; yang_parent_name = "pool-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::~MobileNetwork()
@@ -6663,6 +6775,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::~MobileNe
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (mripv6_pools !=  nullptr && mripv6_pools->has_data())
 	|| (mripv4_pools !=  nullptr && mripv4_pools->has_data());
 }
@@ -6746,9 +6859,11 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::has_
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pools()
+    :
+    mripv6_pool(this, {"start_address"})
 {
 
-    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv6-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::~Mripv6Pools()
@@ -6757,7 +6872,8 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Poo
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_data() const
 {
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mripv6_pool.len(); index++)
     {
         if(mripv6_pool[index]->has_data())
             return true;
@@ -6767,7 +6883,7 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mrip
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::has_operation() const
 {
-    for (std::size_t index=0; index<mripv6_pool.size(); index++)
+    for (std::size_t index=0; index<mripv6_pool.len(); index++)
     {
         if(mripv6_pool[index]->has_operation())
             return true;
@@ -6797,7 +6913,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool>();
         c->parent = this;
-        mripv6_pool.push_back(c);
+        mripv6_pool.append(c);
         return c;
     }
 
@@ -6809,7 +6925,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Ne
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mripv6_pool)
+    for (auto c : mripv6_pool.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6842,7 +6958,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Poo
     network_prefix{YType::uint32, "network-prefix"}
 {
 
-    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv6-pool"; yang_parent_name = "mripv6-pools"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::~Mripv6Pool()
@@ -6851,6 +6967,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Poo
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set
 	|| network_prefix.is_set;
@@ -6867,7 +6984,8 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mrip
 std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mripv6-pool" <<"[start-address='" <<start_address <<"']";
+    path_buffer << "mripv6-pool";
+    ADD_KEY_TOKEN(start_address, "start-address");
     return path_buffer.str();
 }
 
@@ -6941,9 +7059,11 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mrip
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pools()
+    :
+    mripv4_pool(this, {"start_address"})
 {
 
-    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv4-pools"; yang_parent_name = "mobile-network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::~Mripv4Pools()
@@ -6952,7 +7072,8 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Poo
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_data() const
 {
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mripv4_pool.len(); index++)
     {
         if(mripv4_pool[index]->has_data())
             return true;
@@ -6962,7 +7083,7 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mrip
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::has_operation() const
 {
-    for (std::size_t index=0; index<mripv4_pool.size(); index++)
+    for (std::size_t index=0; index<mripv4_pool.len(); index++)
     {
         if(mripv4_pool[index]->has_operation())
             return true;
@@ -6992,7 +7113,7 @@ std::shared_ptr<Entity> MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::
     {
         auto c = std::make_shared<MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool>();
         c->parent = this;
-        mripv4_pool.push_back(c);
+        mripv4_pool.append(c);
         return c;
     }
 
@@ -7004,7 +7125,7 @@ std::map<std::string, std::shared_ptr<Entity>> MobileIp::Lmas::Lma::Networks::Ne
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mripv4_pool)
+    for (auto c : mripv4_pool.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7037,7 +7158,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Poo
     network_prefix{YType::uint32, "network-prefix"}
 {
 
-    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mripv4-pool"; yang_parent_name = "mripv4-pools"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::~Mripv4Pool()
@@ -7046,6 +7167,7 @@ MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Poo
 
 bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| pool_prefix.is_set
 	|| network_prefix.is_set;
@@ -7062,7 +7184,8 @@ bool MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mrip
 std::string MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mripv4-pool" <<"[start-address='" <<start_address <<"']";
+    path_buffer << "mripv4-pool";
+    ADD_KEY_TOKEN(start_address, "start-address");
     return path_buffer.str();
 }
 
@@ -7140,7 +7263,7 @@ MobileIp::Lmas::Lma::ReplayProtection::ReplayProtection()
     timestamp_window{YType::uint32, "timestamp-window"}
 {
 
-    yang_name = "replay-protection"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "replay-protection"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MobileIp::Lmas::Lma::ReplayProtection::~ReplayProtection()
@@ -7149,6 +7272,7 @@ MobileIp::Lmas::Lma::ReplayProtection::~ReplayProtection()
 
 bool MobileIp::Lmas::Lma::ReplayProtection::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp_window.is_set;
 }
 
@@ -7212,20 +7336,25 @@ bool MobileIp::Lmas::Lma::ReplayProtection::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-const Enum::YLeaf GreKeyType::symmetric {1, "symmetric"};
-
 const Enum::YLeaf ServiceType::ipv4 {1, "ipv4"};
 const Enum::YLeaf ServiceType::ipv6 {2, "ipv6"};
 const Enum::YLeaf ServiceType::dual {3, "dual"};
 
 const Enum::YLeaf LmaService::service_mll {1, "service-mll"};
 
-const Enum::YLeaf RedistType::home_address {1, "home-address"};
+const Enum::YLeaf EncapOpt::greipv4 {4, "greipv4"};
+const Enum::YLeaf EncapOpt::greipv6 {5, "greipv6"};
+const Enum::YLeaf EncapOpt::mgreipv4 {7, "mgreipv4"};
+const Enum::YLeaf EncapOpt::mgreipv6 {8, "mgreipv6"};
 
 const Enum::YLeaf RedistSubType::host_prefix {1, "host-prefix"};
 const Enum::YLeaf RedistSubType::disable {2, "disable"};
 
 const Enum::YLeaf LmaRole::Y_3gma {0, "3gma"};
+
+const Enum::YLeaf RedistType::home_address {1, "home-address"};
+
+const Enum::YLeaf GreKeyType::symmetric {1, "symmetric"};
 
 const Enum::YLeaf LmaRat::virtual_ {0, "virtual"};
 const Enum::YLeaf LmaRat::ppp {1, "ppp"};
@@ -7239,11 +7368,6 @@ const Enum::YLeaf LmaRat::Y_3gpp2ehrpd {8, "3gpp2ehrpd"};
 const Enum::YLeaf LmaRat::Y_3gpp2hrpd {9, "3gpp2hrpd"};
 const Enum::YLeaf LmaRat::Y_3gpp21rtt {10, "3gpp21rtt"};
 const Enum::YLeaf LmaRat::Y_3gpp2umb {11, "3gpp2umb"};
-
-const Enum::YLeaf EncapOpt::greipv4 {4, "greipv4"};
-const Enum::YLeaf EncapOpt::greipv6 {5, "greipv6"};
-const Enum::YLeaf EncapOpt::mgreipv4 {7, "mgreipv4"};
-const Enum::YLeaf EncapOpt::mgreipv6 {8, "mgreipv6"};
 
 
 }

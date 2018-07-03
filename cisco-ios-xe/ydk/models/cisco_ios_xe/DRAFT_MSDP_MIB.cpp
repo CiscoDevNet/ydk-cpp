@@ -14,16 +14,16 @@ namespace DRAFT_MSDP_MIB {
 DRAFTMSDPMIB::DRAFTMSDPMIB()
     :
     msdp(std::make_shared<DRAFTMSDPMIB::Msdp>())
-	,msdprequeststable(std::make_shared<DRAFTMSDPMIB::Msdprequeststable>())
-	,msdppeertable(std::make_shared<DRAFTMSDPMIB::Msdppeertable>())
-	,msdpsacachetable(std::make_shared<DRAFTMSDPMIB::Msdpsacachetable>())
+    , msdprequeststable(std::make_shared<DRAFTMSDPMIB::MsdpRequestsTable>())
+    , msdppeertable(std::make_shared<DRAFTMSDPMIB::MsdpPeerTable>())
+    , msdpsacachetable(std::make_shared<DRAFTMSDPMIB::MsdpSACacheTable>())
 {
     msdp->parent = this;
     msdprequeststable->parent = this;
     msdppeertable->parent = this;
     msdpsacachetable->parent = this;
 
-    yang_name = "DRAFT-MSDP-MIB"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "DRAFT-MSDP-MIB"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DRAFTMSDPMIB::~DRAFTMSDPMIB()
@@ -32,6 +32,7 @@ DRAFTMSDPMIB::~DRAFTMSDPMIB()
 
 bool DRAFTMSDPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (msdp !=  nullptr && msdp->has_data())
 	|| (msdprequeststable !=  nullptr && msdprequeststable->has_data())
 	|| (msdppeertable !=  nullptr && msdppeertable->has_data())
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & chil
     {
         if(msdprequeststable == nullptr)
         {
-            msdprequeststable = std::make_shared<DRAFTMSDPMIB::Msdprequeststable>();
+            msdprequeststable = std::make_shared<DRAFTMSDPMIB::MsdpRequestsTable>();
         }
         return msdprequeststable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & chil
     {
         if(msdppeertable == nullptr)
         {
-            msdppeertable = std::make_shared<DRAFTMSDPMIB::Msdppeertable>();
+            msdppeertable = std::make_shared<DRAFTMSDPMIB::MsdpPeerTable>();
         }
         return msdppeertable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> DRAFTMSDPMIB::get_child_by_name(const std::string & chil
     {
         if(msdpsacachetable == nullptr)
         {
-            msdpsacachetable = std::make_shared<DRAFTMSDPMIB::Msdpsacachetable>();
+            msdpsacachetable = std::make_shared<DRAFTMSDPMIB::MsdpSACacheTable>();
         }
         return msdpsacachetable;
     }
@@ -179,7 +180,7 @@ DRAFTMSDPMIB::Msdp::Msdp()
     msdpsaholddownperiod{YType::int32, "msdpSAHoldDownPeriod"}
 {
 
-    yang_name = "msdp"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msdp"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DRAFTMSDPMIB::Msdp::~Msdp()
@@ -188,6 +189,7 @@ DRAFTMSDPMIB::Msdp::~Msdp()
 
 bool DRAFTMSDPMIB::Msdp::has_data() const
 {
+    if (is_presence_container) return true;
     return msdpenabled.is_set
 	|| msdpcachelifetime.is_set
 	|| msdpnumsacacheentries.is_set
@@ -297,19 +299,22 @@ bool DRAFTMSDPMIB::Msdp::has_leaf_or_child_of_name(const std::string & name) con
     return false;
 }
 
-DRAFTMSDPMIB::Msdprequeststable::Msdprequeststable()
+DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsTable()
+    :
+    msdprequestsentry(this, {"msdprequestsgroupaddress", "msdprequestsgroupmask"})
 {
 
-    yang_name = "msdpRequestsTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msdpRequestsTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DRAFTMSDPMIB::Msdprequeststable::~Msdprequeststable()
+DRAFTMSDPMIB::MsdpRequestsTable::~MsdpRequestsTable()
 {
 }
 
-bool DRAFTMSDPMIB::Msdprequeststable::has_data() const
+bool DRAFTMSDPMIB::MsdpRequestsTable::has_data() const
 {
-    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<msdprequestsentry.len(); index++)
     {
         if(msdprequestsentry[index]->has_data())
             return true;
@@ -317,9 +322,9 @@ bool DRAFTMSDPMIB::Msdprequeststable::has_data() const
     return false;
 }
 
-bool DRAFTMSDPMIB::Msdprequeststable::has_operation() const
+bool DRAFTMSDPMIB::MsdpRequestsTable::has_operation() const
 {
-    for (std::size_t index=0; index<msdprequestsentry.size(); index++)
+    for (std::size_t index=0; index<msdprequestsentry.len(); index++)
     {
         if(msdprequestsentry[index]->has_operation())
             return true;
@@ -327,21 +332,21 @@ bool DRAFTMSDPMIB::Msdprequeststable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DRAFTMSDPMIB::Msdprequeststable::get_absolute_path() const
+std::string DRAFTMSDPMIB::MsdpRequestsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DRAFTMSDPMIB::Msdprequeststable::get_segment_path() const
+std::string DRAFTMSDPMIB::MsdpRequestsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdpRequestsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdprequeststable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpRequestsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -350,25 +355,25 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdprequeststable::
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::Msdprequeststable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpRequestsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpRequestsEntry")
     {
-        auto c = std::make_shared<DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry>();
+        auto c = std::make_shared<DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry>();
         c->parent = this;
-        msdprequestsentry.push_back(c);
+        msdprequestsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdprequeststable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpRequestsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : msdprequestsentry)
+    for (auto c : msdprequestsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -379,22 +384,22 @@ std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdprequeststable::
     return children;
 }
 
-void DRAFTMSDPMIB::Msdprequeststable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::MsdpRequestsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DRAFTMSDPMIB::Msdprequeststable::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::MsdpRequestsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DRAFTMSDPMIB::Msdprequeststable::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::MsdpRequestsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpRequestsEntry")
         return true;
     return false;
 }
 
-DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::Msdprequestsentry()
+DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::MsdpRequestsEntry()
     :
     msdprequestsgroupaddress{YType::str, "msdpRequestsGroupAddress"},
     msdprequestsgroupmask{YType::str, "msdpRequestsGroupMask"},
@@ -402,22 +407,23 @@ DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::Msdprequestsentry()
     msdprequestsstatus{YType::enumeration, "msdpRequestsStatus"}
 {
 
-    yang_name = "msdpRequestsEntry"; yang_parent_name = "msdpRequestsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msdpRequestsEntry"; yang_parent_name = "msdpRequestsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::~Msdprequestsentry()
+DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::~MsdpRequestsEntry()
 {
 }
 
-bool DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::has_data() const
+bool DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return msdprequestsgroupaddress.is_set
 	|| msdprequestsgroupmask.is_set
 	|| msdprequestspeer.is_set
 	|| msdprequestsstatus.is_set;
 }
 
-bool DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::has_operation() const
+bool DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(msdprequestsgroupaddress.yfilter)
@@ -426,21 +432,23 @@ bool DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::has_operation() const
 	|| ydk::is_set(msdprequestsstatus.yfilter);
 }
 
-std::string DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_absolute_path() const
+std::string DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpRequestsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_segment_path() const
+std::string DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "msdpRequestsEntry" <<"[msdpRequestsGroupAddress='" <<msdprequestsgroupaddress <<"']" <<"[msdpRequestsGroupMask='" <<msdprequestsgroupmask <<"']";
+    path_buffer << "msdpRequestsEntry";
+    ADD_KEY_TOKEN(msdprequestsgroupaddress, "msdpRequestsGroupAddress");
+    ADD_KEY_TOKEN(msdprequestsgroupmask, "msdpRequestsGroupMask");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -453,19 +461,19 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdprequeststable::
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpRequestsGroupAddress")
     {
@@ -493,7 +501,7 @@ void DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::set_value(const std::st
     }
 }
 
-void DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "msdpRequestsGroupAddress")
     {
@@ -513,26 +521,29 @@ void DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::set_filter(const std::s
     }
 }
 
-bool DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpRequestsGroupAddress" || name == "msdpRequestsGroupMask" || name == "msdpRequestsPeer" || name == "msdpRequestsStatus")
         return true;
     return false;
 }
 
-DRAFTMSDPMIB::Msdppeertable::Msdppeertable()
+DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerTable()
+    :
+    msdppeerentry(this, {"msdppeerremoteaddress"})
 {
 
-    yang_name = "msdpPeerTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msdpPeerTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DRAFTMSDPMIB::Msdppeertable::~Msdppeertable()
+DRAFTMSDPMIB::MsdpPeerTable::~MsdpPeerTable()
 {
 }
 
-bool DRAFTMSDPMIB::Msdppeertable::has_data() const
+bool DRAFTMSDPMIB::MsdpPeerTable::has_data() const
 {
-    for (std::size_t index=0; index<msdppeerentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<msdppeerentry.len(); index++)
     {
         if(msdppeerentry[index]->has_data())
             return true;
@@ -540,9 +551,9 @@ bool DRAFTMSDPMIB::Msdppeertable::has_data() const
     return false;
 }
 
-bool DRAFTMSDPMIB::Msdppeertable::has_operation() const
+bool DRAFTMSDPMIB::MsdpPeerTable::has_operation() const
 {
-    for (std::size_t index=0; index<msdppeerentry.size(); index++)
+    for (std::size_t index=0; index<msdppeerentry.len(); index++)
     {
         if(msdppeerentry[index]->has_operation())
             return true;
@@ -550,21 +561,21 @@ bool DRAFTMSDPMIB::Msdppeertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DRAFTMSDPMIB::Msdppeertable::get_absolute_path() const
+std::string DRAFTMSDPMIB::MsdpPeerTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DRAFTMSDPMIB::Msdppeertable::get_segment_path() const
+std::string DRAFTMSDPMIB::MsdpPeerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdpPeerTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdppeertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpPeerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -573,25 +584,25 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdppeertable::get_
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::Msdppeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpPeerEntry")
     {
-        auto c = std::make_shared<DRAFTMSDPMIB::Msdppeertable::Msdppeerentry>();
+        auto c = std::make_shared<DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry>();
         c->parent = this;
-        msdppeerentry.push_back(c);
+        msdppeerentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdppeertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpPeerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : msdppeerentry)
+    for (auto c : msdppeerentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -602,22 +613,22 @@ std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdppeertable::get_
     return children;
 }
 
-void DRAFTMSDPMIB::Msdppeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::MsdpPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DRAFTMSDPMIB::Msdppeertable::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::MsdpPeerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DRAFTMSDPMIB::Msdppeertable::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::MsdpPeerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpPeerEntry")
         return true;
     return false;
 }
 
-DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerentry()
+DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEntry()
     :
     msdppeerremoteaddress{YType::str, "msdpPeerRemoteAddress"},
     msdppeerstate{YType::enumeration, "msdpPeerState"},
@@ -653,15 +664,16 @@ DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerentry()
     msdppeerlasterror{YType::str, "msdpPeerLastError"}
 {
 
-    yang_name = "msdpPeerEntry"; yang_parent_name = "msdpPeerTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msdpPeerEntry"; yang_parent_name = "msdpPeerTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::~Msdppeerentry()
+DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::~MsdpPeerEntry()
 {
 }
 
-bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_data() const
+bool DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return msdppeerremoteaddress.is_set
 	|| msdppeerstate.is_set
 	|| msdppeerrpffailures.is_set
@@ -696,7 +708,7 @@ bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_data() const
 	|| msdppeerlasterror.is_set;
 }
 
-bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_operation() const
+bool DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(msdppeerremoteaddress.yfilter)
@@ -733,21 +745,22 @@ bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_operation() const
 	|| ydk::is_set(msdppeerlasterror.yfilter);
 }
 
-std::string DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_absolute_path() const
+std::string DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpPeerTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_segment_path() const
+std::string DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "msdpPeerEntry" <<"[msdpPeerRemoteAddress='" <<msdppeerremoteaddress <<"']";
+    path_buffer << "msdpPeerEntry";
+    ADD_KEY_TOKEN(msdppeerremoteaddress, "msdpPeerRemoteAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -788,19 +801,19 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdppeertable::Msdp
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpPeerRemoteAddress")
     {
@@ -996,7 +1009,7 @@ void DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::set_value(const std::string & v
     }
 }
 
-void DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "msdpPeerRemoteAddress")
     {
@@ -1128,26 +1141,29 @@ void DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::set_filter(const std::string & 
     }
 }
 
-bool DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpPeerRemoteAddress" || name == "msdpPeerState" || name == "msdpPeerRPFFailures" || name == "msdpPeerInSAs" || name == "msdpPeerOutSAs" || name == "msdpPeerInSARequests" || name == "msdpPeerOutSARequests" || name == "msdpPeerInSAResponses" || name == "msdpPeerOutSAResponses" || name == "msdpPeerInControlMessages" || name == "msdpPeerOutControlMessages" || name == "msdpPeerInDataPackets" || name == "msdpPeerOutDataPackets" || name == "msdpPeerFsmEstablishedTransitions" || name == "msdpPeerFsmEstablishedTime" || name == "msdpPeerInMessageElapsedTime" || name == "msdpPeerLocalAddress" || name == "msdpPeerSAAdvPeriod" || name == "msdpPeerConnectRetryInterval" || name == "msdpPeerHoldTimeConfigured" || name == "msdpPeerKeepAliveConfigured" || name == "msdpPeerDataTtl" || name == "msdpPeerProcessRequestsFrom" || name == "msdpPeerStatus" || name == "msdpPeerRemotePort" || name == "msdpPeerLocalPort" || name == "msdpPeerEncapsulationState" || name == "msdpPeerEncapsulationType" || name == "msdpPeerConnectionAttempts" || name == "msdpPeerInNotifications" || name == "msdpPeerOutNotifications" || name == "msdpPeerLastError")
         return true;
     return false;
 }
 
-DRAFTMSDPMIB::Msdpsacachetable::Msdpsacachetable()
+DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheTable()
+    :
+    msdpsacacheentry(this, {"msdpsacachegroupaddr", "msdpsacachesourceaddr", "msdpsacacheoriginrp"})
 {
 
-    yang_name = "msdpSACacheTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msdpSACacheTable"; yang_parent_name = "DRAFT-MSDP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DRAFTMSDPMIB::Msdpsacachetable::~Msdpsacachetable()
+DRAFTMSDPMIB::MsdpSACacheTable::~MsdpSACacheTable()
 {
 }
 
-bool DRAFTMSDPMIB::Msdpsacachetable::has_data() const
+bool DRAFTMSDPMIB::MsdpSACacheTable::has_data() const
 {
-    for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<msdpsacacheentry.len(); index++)
     {
         if(msdpsacacheentry[index]->has_data())
             return true;
@@ -1155,9 +1171,9 @@ bool DRAFTMSDPMIB::Msdpsacachetable::has_data() const
     return false;
 }
 
-bool DRAFTMSDPMIB::Msdpsacachetable::has_operation() const
+bool DRAFTMSDPMIB::MsdpSACacheTable::has_operation() const
 {
-    for (std::size_t index=0; index<msdpsacacheentry.size(); index++)
+    for (std::size_t index=0; index<msdpsacacheentry.len(); index++)
     {
         if(msdpsacacheentry[index]->has_operation())
             return true;
@@ -1165,21 +1181,21 @@ bool DRAFTMSDPMIB::Msdpsacachetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DRAFTMSDPMIB::Msdpsacachetable::get_absolute_path() const
+std::string DRAFTMSDPMIB::MsdpSACacheTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DRAFTMSDPMIB::Msdpsacachetable::get_segment_path() const
+std::string DRAFTMSDPMIB::MsdpSACacheTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "msdpSACacheTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdpsacachetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpSACacheTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1188,25 +1204,25 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdpsacachetable::g
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::Msdpsacachetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpSACacheTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "msdpSACacheEntry")
     {
-        auto c = std::make_shared<DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry>();
+        auto c = std::make_shared<DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry>();
         c->parent = this;
-        msdpsacacheentry.push_back(c);
+        msdpsacacheentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdpsacachetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpSACacheTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : msdpsacacheentry)
+    for (auto c : msdpsacacheentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1217,22 +1233,22 @@ std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdpsacachetable::g
     return children;
 }
 
-void DRAFTMSDPMIB::Msdpsacachetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::MsdpSACacheTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DRAFTMSDPMIB::Msdpsacachetable::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::MsdpSACacheTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DRAFTMSDPMIB::Msdpsacachetable::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::MsdpSACacheTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpSACacheEntry")
         return true;
     return false;
 }
 
-DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::Msdpsacacheentry()
+DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::MsdpSACacheEntry()
     :
     msdpsacachegroupaddr{YType::str, "msdpSACacheGroupAddr"},
     msdpsacachesourceaddr{YType::str, "msdpSACacheSourceAddr"},
@@ -1246,15 +1262,16 @@ DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::Msdpsacacheentry()
     msdpsacachestatus{YType::enumeration, "msdpSACacheStatus"}
 {
 
-    yang_name = "msdpSACacheEntry"; yang_parent_name = "msdpSACacheTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "msdpSACacheEntry"; yang_parent_name = "msdpSACacheTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::~Msdpsacacheentry()
+DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::~MsdpSACacheEntry()
 {
 }
 
-bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_data() const
+bool DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return msdpsacachegroupaddr.is_set
 	|| msdpsacachesourceaddr.is_set
 	|| msdpsacacheoriginrp.is_set
@@ -1267,7 +1284,7 @@ bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_data() const
 	|| msdpsacachestatus.is_set;
 }
 
-bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_operation() const
+bool DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(msdpsacachegroupaddr.yfilter)
@@ -1282,21 +1299,24 @@ bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_operation() const
 	|| ydk::is_set(msdpsacachestatus.yfilter);
 }
 
-std::string DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_absolute_path() const
+std::string DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DRAFT-MSDP-MIB:DRAFT-MSDP-MIB/msdpSACacheTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_segment_path() const
+std::string DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "msdpSACacheEntry" <<"[msdpSACacheGroupAddr='" <<msdpsacachegroupaddr <<"']" <<"[msdpSACacheSourceAddr='" <<msdpsacachesourceaddr <<"']" <<"[msdpSACacheOriginRP='" <<msdpsacacheoriginrp <<"']";
+    path_buffer << "msdpSACacheEntry";
+    ADD_KEY_TOKEN(msdpsacachegroupaddr, "msdpSACacheGroupAddr");
+    ADD_KEY_TOKEN(msdpsacachesourceaddr, "msdpSACacheSourceAddr");
+    ADD_KEY_TOKEN(msdpsacacheoriginrp, "msdpSACacheOriginRP");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1315,19 +1335,19 @@ std::vector<std::pair<std::string, LeafData> > DRAFTMSDPMIB::Msdpsacachetable::M
 
 }
 
-std::shared_ptr<Entity> DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "msdpSACacheGroupAddr")
     {
@@ -1391,7 +1411,7 @@ void DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::set_value(const std::stri
     }
 }
 
-void DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "msdpSACacheGroupAddr")
     {
@@ -1435,29 +1455,29 @@ void DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::set_filter(const std::str
     }
 }
 
-bool DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msdpSACacheGroupAddr" || name == "msdpSACacheSourceAddr" || name == "msdpSACacheOriginRP" || name == "msdpSACachePeerLearnedFrom" || name == "msdpSACacheRPFPeer" || name == "msdpSACacheInSAs" || name == "msdpSACacheInDataPackets" || name == "msdpSACacheUpTime" || name == "msdpSACacheExpiryTime" || name == "msdpSACacheStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::inactive {1, "inactive"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::listen {2, "listen"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::connecting {3, "connecting"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::established {4, "established"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate::disabled {5, "disabled"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerState::inactive {1, "inactive"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerState::listen {2, "listen"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerState::connecting {3, "connecting"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerState::established {4, "established"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerState::disabled {5, "disabled"};
 
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::default_ {1, "default"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::received {2, "received"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::advertising {3, "advertising"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::sent {4, "sent"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::agreed {5, "agreed"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate::failed {6, "failed"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState::default_ {1, "default"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState::received {2, "received"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState::advertising {3, "advertising"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState::sent {4, "sent"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState::agreed {5, "agreed"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState::failed {6, "failed"};
 
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::tcp {1, "tcp"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::udp {2, "udp"};
-const Enum::YLeaf DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype::gre {3, "gre"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationType::tcp {1, "tcp"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationType::udp {2, "udp"};
+const Enum::YLeaf DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationType::gre {3, "gre"};
 
 
 }

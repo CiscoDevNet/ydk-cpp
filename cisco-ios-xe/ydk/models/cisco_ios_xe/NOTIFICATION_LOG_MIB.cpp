@@ -13,11 +13,11 @@ namespace NOTIFICATION_LOG_MIB {
 
 NOTIFICATIONLOGMIB::NOTIFICATIONLOGMIB()
     :
-    nlmconfig(std::make_shared<NOTIFICATIONLOGMIB::Nlmconfig>())
-	,nlmstats(std::make_shared<NOTIFICATIONLOGMIB::Nlmstats>())
-	,nlmconfiglogtable(std::make_shared<NOTIFICATIONLOGMIB::Nlmconfiglogtable>())
-	,nlmlogtable(std::make_shared<NOTIFICATIONLOGMIB::Nlmlogtable>())
-	,nlmlogvariabletable(std::make_shared<NOTIFICATIONLOGMIB::Nlmlogvariabletable>())
+    nlmconfig(std::make_shared<NOTIFICATIONLOGMIB::NlmConfig>())
+    , nlmstats(std::make_shared<NOTIFICATIONLOGMIB::NlmStats>())
+    , nlmconfiglogtable(std::make_shared<NOTIFICATIONLOGMIB::NlmConfigLogTable>())
+    , nlmlogtable(std::make_shared<NOTIFICATIONLOGMIB::NlmLogTable>())
+    , nlmlogvariabletable(std::make_shared<NOTIFICATIONLOGMIB::NlmLogVariableTable>())
 {
     nlmconfig->parent = this;
     nlmstats->parent = this;
@@ -25,7 +25,7 @@ NOTIFICATIONLOGMIB::NOTIFICATIONLOGMIB()
     nlmlogtable->parent = this;
     nlmlogvariabletable->parent = this;
 
-    yang_name = "NOTIFICATION-LOG-MIB"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "NOTIFICATION-LOG-MIB"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NOTIFICATIONLOGMIB::~NOTIFICATIONLOGMIB()
@@ -34,6 +34,7 @@ NOTIFICATIONLOGMIB::~NOTIFICATIONLOGMIB()
 
 bool NOTIFICATIONLOGMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (nlmconfig !=  nullptr && nlmconfig->has_data())
 	|| (nlmstats !=  nullptr && nlmstats->has_data())
 	|| (nlmconfiglogtable !=  nullptr && nlmconfiglogtable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::get_child_by_name(const std::string 
     {
         if(nlmconfig == nullptr)
         {
-            nlmconfig = std::make_shared<NOTIFICATIONLOGMIB::Nlmconfig>();
+            nlmconfig = std::make_shared<NOTIFICATIONLOGMIB::NlmConfig>();
         }
         return nlmconfig;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::get_child_by_name(const std::string 
     {
         if(nlmstats == nullptr)
         {
-            nlmstats = std::make_shared<NOTIFICATIONLOGMIB::Nlmstats>();
+            nlmstats = std::make_shared<NOTIFICATIONLOGMIB::NlmStats>();
         }
         return nlmstats;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::get_child_by_name(const std::string 
     {
         if(nlmconfiglogtable == nullptr)
         {
-            nlmconfiglogtable = std::make_shared<NOTIFICATIONLOGMIB::Nlmconfiglogtable>();
+            nlmconfiglogtable = std::make_shared<NOTIFICATIONLOGMIB::NlmConfigLogTable>();
         }
         return nlmconfiglogtable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::get_child_by_name(const std::string 
     {
         if(nlmlogtable == nullptr)
         {
-            nlmlogtable = std::make_shared<NOTIFICATIONLOGMIB::Nlmlogtable>();
+            nlmlogtable = std::make_shared<NOTIFICATIONLOGMIB::NlmLogTable>();
         }
         return nlmlogtable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> NOTIFICATIONLOGMIB::get_child_by_name(const std::string 
     {
         if(nlmlogvariabletable == nullptr)
         {
-            nlmlogvariabletable = std::make_shared<NOTIFICATIONLOGMIB::Nlmlogvariabletable>();
+            nlmlogvariabletable = std::make_shared<NOTIFICATIONLOGMIB::NlmLogVariableTable>();
         }
         return nlmlogvariabletable;
     }
@@ -189,47 +190,48 @@ bool NOTIFICATIONLOGMIB::has_leaf_or_child_of_name(const std::string & name) con
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmconfig::Nlmconfig()
+NOTIFICATIONLOGMIB::NlmConfig::NlmConfig()
     :
     nlmconfigglobalentrylimit{YType::uint32, "nlmConfigGlobalEntryLimit"},
     nlmconfigglobalageout{YType::uint32, "nlmConfigGlobalAgeOut"}
 {
 
-    yang_name = "nlmConfig"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmConfig"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmconfig::~Nlmconfig()
+NOTIFICATIONLOGMIB::NlmConfig::~NlmConfig()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfig::has_data() const
+bool NOTIFICATIONLOGMIB::NlmConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return nlmconfigglobalentrylimit.is_set
 	|| nlmconfigglobalageout.is_set;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfig::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nlmconfigglobalentrylimit.yfilter)
 	|| ydk::is_set(nlmconfigglobalageout.yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmconfig::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmconfig::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlmConfig";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmconfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -240,19 +242,19 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmconfig::ge
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nlmConfigGlobalEntryLimit")
     {
@@ -268,7 +270,7 @@ void NOTIFICATIONLOGMIB::Nlmconfig::set_value(const std::string & value_path, co
     }
 }
 
-void NOTIFICATIONLOGMIB::Nlmconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nlmConfigGlobalEntryLimit")
     {
@@ -280,54 +282,55 @@ void NOTIFICATIONLOGMIB::Nlmconfig::set_filter(const std::string & value_path, Y
     }
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmConfigGlobalEntryLimit" || name == "nlmConfigGlobalAgeOut")
         return true;
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmstats::Nlmstats()
+NOTIFICATIONLOGMIB::NlmStats::NlmStats()
     :
     nlmstatsglobalnotificationslogged{YType::uint32, "nlmStatsGlobalNotificationsLogged"},
     nlmstatsglobalnotificationsbumped{YType::uint32, "nlmStatsGlobalNotificationsBumped"}
 {
 
-    yang_name = "nlmStats"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmStats"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmstats::~Nlmstats()
+NOTIFICATIONLOGMIB::NlmStats::~NlmStats()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmstats::has_data() const
+bool NOTIFICATIONLOGMIB::NlmStats::has_data() const
 {
+    if (is_presence_container) return true;
     return nlmstatsglobalnotificationslogged.is_set
 	|| nlmstatsglobalnotificationsbumped.is_set;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmstats::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmStats::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nlmstatsglobalnotificationslogged.yfilter)
 	|| ydk::is_set(nlmstatsglobalnotificationsbumped.yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmstats::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmStats::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmstats::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlmStats";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmstats::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmStats::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -338,19 +341,19 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmstats::get
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmstats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmstats::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmStats::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmstats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nlmStatsGlobalNotificationsLogged")
     {
@@ -366,7 +369,7 @@ void NOTIFICATIONLOGMIB::Nlmstats::set_value(const std::string & value_path, con
     }
 }
 
-void NOTIFICATIONLOGMIB::Nlmstats::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmStats::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nlmStatsGlobalNotificationsLogged")
     {
@@ -378,26 +381,29 @@ void NOTIFICATIONLOGMIB::Nlmstats::set_filter(const std::string & value_path, YF
     }
 }
 
-bool NOTIFICATIONLOGMIB::Nlmstats::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmStats::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmStatsGlobalNotificationsLogged" || name == "nlmStatsGlobalNotificationsBumped")
         return true;
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogtable()
+NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogTable()
+    :
+    nlmconfiglogentry(this, {"nlmlogname"})
 {
 
-    yang_name = "nlmConfigLogTable"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmConfigLogTable"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmconfiglogtable::~Nlmconfiglogtable()
+NOTIFICATIONLOGMIB::NlmConfigLogTable::~NlmConfigLogTable()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::has_data() const
+bool NOTIFICATIONLOGMIB::NlmConfigLogTable::has_data() const
 {
-    for (std::size_t index=0; index<nlmconfiglogentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlmconfiglogentry.len(); index++)
     {
         if(nlmconfiglogentry[index]->has_data())
             return true;
@@ -405,9 +411,9 @@ bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::has_data() const
     return false;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmConfigLogTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmconfiglogentry.size(); index++)
+    for (std::size_t index=0; index<nlmconfiglogentry.len(); index++)
     {
         if(nlmconfiglogentry[index]->has_operation())
             return true;
@@ -415,21 +421,21 @@ bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmConfigLogTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmConfigLogTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlmConfigLogTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmConfigLogTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -438,25 +444,25 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmconfiglogt
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmConfigLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlmConfigLogEntry")
     {
-        auto c = std::make_shared<NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry>();
+        auto c = std::make_shared<NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry>();
         c->parent = this;
-        nlmconfiglogentry.push_back(c);
+        nlmconfiglogentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmconfiglogtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmConfigLogTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlmconfiglogentry)
+    for (auto c : nlmconfiglogentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -467,22 +473,22 @@ std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmconfiglogt
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmconfiglogtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmConfigLogTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NOTIFICATIONLOGMIB::Nlmconfiglogtable::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmConfigLogTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmConfigLogTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmConfigLogEntry")
         return true;
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogentry()
+NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogEntry()
     :
     nlmlogname{YType::str, "nlmLogName"},
     nlmconfiglogfiltername{YType::str, "nlmConfigLogFilterName"},
@@ -495,15 +501,16 @@ NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogentry()
     nlmstatslognotificationsbumped{YType::uint32, "nlmStatsLogNotificationsBumped"}
 {
 
-    yang_name = "nlmConfigLogEntry"; yang_parent_name = "nlmConfigLogTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmConfigLogEntry"; yang_parent_name = "nlmConfigLogTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::~Nlmconfiglogentry()
+NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::~NlmConfigLogEntry()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::has_data() const
+bool NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nlmlogname.is_set
 	|| nlmconfiglogfiltername.is_set
 	|| nlmconfiglogentrylimit.is_set
@@ -515,7 +522,7 @@ bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::has_data() const
 	|| nlmstatslognotificationsbumped.is_set;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nlmlogname.yfilter)
@@ -529,21 +536,22 @@ bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::has_operation() c
 	|| ydk::is_set(nlmstatslognotificationsbumped.yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/nlmConfigLogTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlmConfigLogEntry" <<"[nlmLogName='" <<nlmlogname <<"']";
+    path_buffer << "nlmConfigLogEntry";
+    ADD_KEY_TOKEN(nlmlogname, "nlmLogName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -561,19 +569,19 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmconfiglogt
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nlmLogName")
     {
@@ -631,7 +639,7 @@ void NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::set_value(const s
     }
 }
 
-void NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nlmLogName")
     {
@@ -671,26 +679,29 @@ void NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::set_filter(const 
     }
 }
 
-bool NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmLogName" || name == "nlmConfigLogFilterName" || name == "nlmConfigLogEntryLimit" || name == "nlmConfigLogAdminStatus" || name == "nlmConfigLogOperStatus" || name == "nlmConfigLogStorageType" || name == "nlmConfigLogEntryStatus" || name == "nlmStatsLogNotificationsLogged" || name == "nlmStatsLogNotificationsBumped")
         return true;
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogtable()
+NOTIFICATIONLOGMIB::NlmLogTable::NlmLogTable()
+    :
+    nlmlogentry(this, {"nlmlogname", "nlmlogindex"})
 {
 
-    yang_name = "nlmLogTable"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmLogTable"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmlogtable::~Nlmlogtable()
+NOTIFICATIONLOGMIB::NlmLogTable::~NlmLogTable()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogtable::has_data() const
+bool NOTIFICATIONLOGMIB::NlmLogTable::has_data() const
 {
-    for (std::size_t index=0; index<nlmlogentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlmlogentry.len(); index++)
     {
         if(nlmlogentry[index]->has_data())
             return true;
@@ -698,9 +709,9 @@ bool NOTIFICATIONLOGMIB::Nlmlogtable::has_data() const
     return false;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogtable::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmLogTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmlogentry.size(); index++)
+    for (std::size_t index=0; index<nlmlogentry.len(); index++)
     {
         if(nlmlogentry[index]->has_operation())
             return true;
@@ -708,21 +719,21 @@ bool NOTIFICATIONLOGMIB::Nlmlogtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogtable::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogtable::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlmLogTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmLogTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -731,25 +742,25 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogtable::
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlmLogEntry")
     {
-        auto c = std::make_shared<NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry>();
+        auto c = std::make_shared<NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry>();
         c->parent = this;
-        nlmlogentry.push_back(c);
+        nlmlogentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmLogTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlmlogentry)
+    for (auto c : nlmlogentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -760,22 +771,22 @@ std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogtable::
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmLogTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogtable::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmLogTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogtable::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmLogTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmLogEntry")
         return true;
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::Nlmlogentry()
+NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::NlmLogEntry()
     :
     nlmlogname{YType::str, "nlmLogName"},
     nlmlogindex{YType::uint32, "nlmLogIndex"},
@@ -789,15 +800,16 @@ NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::Nlmlogentry()
     nlmlognotificationid{YType::str, "nlmLogNotificationID"}
 {
 
-    yang_name = "nlmLogEntry"; yang_parent_name = "nlmLogTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmLogEntry"; yang_parent_name = "nlmLogTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::~Nlmlogentry()
+NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::~NlmLogEntry()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::has_data() const
+bool NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nlmlogname.is_set
 	|| nlmlogindex.is_set
 	|| nlmlogtime.is_set
@@ -810,7 +822,7 @@ bool NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::has_data() const
 	|| nlmlognotificationid.is_set;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nlmlogname.yfilter)
@@ -825,21 +837,23 @@ bool NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::has_operation() const
 	|| ydk::is_set(nlmlognotificationid.yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/nlmLogTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlmLogEntry" <<"[nlmLogName='" <<nlmlogname <<"']" <<"[nlmLogIndex='" <<nlmlogindex <<"']";
+    path_buffer << "nlmLogEntry";
+    ADD_KEY_TOKEN(nlmlogname, "nlmLogName");
+    ADD_KEY_TOKEN(nlmlogindex, "nlmLogIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -858,19 +872,19 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogtable::
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nlmLogName")
     {
@@ -934,7 +948,7 @@ void NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::set_value(const std::string &
     }
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nlmLogName")
     {
@@ -978,26 +992,29 @@ void NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::set_filter(const std::string 
     }
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogtable::Nlmlogentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmLogTable::NlmLogEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmLogName" || name == "nlmLogIndex" || name == "nlmLogTime" || name == "nlmLogDateAndTime" || name == "nlmLogEngineID" || name == "nlmLogEngineTAddress" || name == "nlmLogEngineTDomain" || name == "nlmLogContextEngineID" || name == "nlmLogContextName" || name == "nlmLogNotificationID")
         return true;
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariabletable()
+NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableTable()
+    :
+    nlmlogvariableentry(this, {"nlmlogname", "nlmlogindex", "nlmlogvariableindex"})
 {
 
-    yang_name = "nlmLogVariableTable"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmLogVariableTable"; yang_parent_name = "NOTIFICATION-LOG-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmlogvariabletable::~Nlmlogvariabletable()
+NOTIFICATIONLOGMIB::NlmLogVariableTable::~NlmLogVariableTable()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::has_data() const
+bool NOTIFICATIONLOGMIB::NlmLogVariableTable::has_data() const
 {
-    for (std::size_t index=0; index<nlmlogvariableentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlmlogvariableentry.len(); index++)
     {
         if(nlmlogvariableentry[index]->has_data())
             return true;
@@ -1005,9 +1022,9 @@ bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::has_data() const
     return false;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmLogVariableTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmlogvariableentry.size(); index++)
+    for (std::size_t index=0; index<nlmlogvariableentry.len(); index++)
     {
         if(nlmlogvariableentry[index]->has_operation())
             return true;
@@ -1015,21 +1032,21 @@ bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogVariableTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogVariableTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlmLogVariableTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmLogVariableTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1038,25 +1055,25 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogvariabl
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmLogVariableTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlmLogVariableEntry")
     {
-        auto c = std::make_shared<NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry>();
+        auto c = std::make_shared<NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry>();
         c->parent = this;
-        nlmlogvariableentry.push_back(c);
+        nlmlogvariableentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogvariabletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmLogVariableTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlmlogvariableentry)
+    for (auto c : nlmlogvariableentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1067,22 +1084,22 @@ std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogvariabl
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogvariabletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmLogVariableTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogvariabletable::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmLogVariableTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmLogVariableTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmLogVariableEntry")
         return true;
     return false;
 }
 
-NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariableentry()
+NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableEntry()
     :
     nlmlogname{YType::str, "nlmLogName"},
     nlmlogindex{YType::str, "nlmLogIndex"},
@@ -1100,15 +1117,16 @@ NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariableentr
     nlmlogvariableopaqueval{YType::str, "nlmLogVariableOpaqueVal"}
 {
 
-    yang_name = "nlmLogVariableEntry"; yang_parent_name = "nlmLogVariableTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlmLogVariableEntry"; yang_parent_name = "nlmLogVariableTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::~Nlmlogvariableentry()
+NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::~NlmLogVariableEntry()
 {
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::has_data() const
+bool NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nlmlogname.is_set
 	|| nlmlogindex.is_set
 	|| nlmlogvariableindex.is_set
@@ -1125,7 +1143,7 @@ bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::has_data() co
 	|| nlmlogvariableopaqueval.is_set;
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::has_operation() const
+bool NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nlmlogname.yfilter)
@@ -1144,21 +1162,24 @@ bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::has_operation
 	|| ydk::is_set(nlmlogvariableopaqueval.yfilter);
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::get_absolute_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "NOTIFICATION-LOG-MIB:NOTIFICATION-LOG-MIB/nlmLogVariableTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::get_segment_path() const
+std::string NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlmLogVariableEntry" <<"[nlmLogName='" <<nlmlogname <<"']" <<"[nlmLogIndex='" <<nlmlogindex <<"']" <<"[nlmLogVariableIndex='" <<nlmlogvariableindex <<"']";
+    path_buffer << "nlmLogVariableEntry";
+    ADD_KEY_TOKEN(nlmlogname, "nlmLogName");
+    ADD_KEY_TOKEN(nlmlogindex, "nlmLogIndex");
+    ADD_KEY_TOKEN(nlmlogvariableindex, "nlmLogVariableIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1181,19 +1202,19 @@ std::vector<std::pair<std::string, LeafData> > NOTIFICATIONLOGMIB::Nlmlogvariabl
 
 }
 
-std::shared_ptr<Entity> NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nlmLogName")
     {
@@ -1281,7 +1302,7 @@ void NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::set_value(con
     }
 }
 
-void NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::set_filter(const std::string & value_path, YFilter yfilter)
+void NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nlmLogName")
     {
@@ -1341,29 +1362,29 @@ void NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::set_filter(co
     }
 }
 
-bool NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::has_leaf_or_child_of_name(const std::string & name) const
+bool NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlmLogName" || name == "nlmLogIndex" || name == "nlmLogVariableIndex" || name == "nlmLogVariableID" || name == "nlmLogVariableValueType" || name == "nlmLogVariableCounter32Val" || name == "nlmLogVariableUnsigned32Val" || name == "nlmLogVariableTimeTicksVal" || name == "nlmLogVariableInteger32Val" || name == "nlmLogVariableOctetStringVal" || name == "nlmLogVariableIpAddressVal" || name == "nlmLogVariableOidVal" || name == "nlmLogVariableCounter64Val" || name == "nlmLogVariableOpaqueVal")
         return true;
     return false;
 }
 
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogadminstatus::enabled {1, "enabled"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogadminstatus::disabled {2, "disabled"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogAdminStatus::enabled {1, "enabled"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogAdminStatus::disabled {2, "disabled"};
 
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoperstatus::disabled {1, "disabled"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoperstatus::operational {2, "operational"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmconfiglogtable::Nlmconfiglogentry::Nlmconfiglogoperstatus::noFilter {3, "noFilter"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogOperStatus::disabled {1, "disabled"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogOperStatus::operational {2, "operational"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmConfigLogTable::NlmConfigLogEntry::NlmConfigLogOperStatus::noFilter {3, "noFilter"};
 
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::counter32 {1, "counter32"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::unsigned32 {2, "unsigned32"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::timeTicks {3, "timeTicks"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::integer32 {4, "integer32"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::ipAddress {5, "ipAddress"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::octetString {6, "octetString"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::objectId {7, "objectId"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::counter64 {8, "counter64"};
-const Enum::YLeaf NOTIFICATIONLOGMIB::Nlmlogvariabletable::Nlmlogvariableentry::Nlmlogvariablevaluetype::opaque {9, "opaque"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::counter32 {1, "counter32"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::unsigned32 {2, "unsigned32"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::timeTicks {3, "timeTicks"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::integer32 {4, "integer32"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::ipAddress {5, "ipAddress"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::octetString {6, "octetString"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::objectId {7, "objectId"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::counter64 {8, "counter64"};
+const Enum::YLeaf NOTIFICATIONLOGMIB::NlmLogVariableTable::NlmLogVariableEntry::NlmLogVariableValueType::opaque {9, "opaque"};
 
 
 }

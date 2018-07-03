@@ -367,11 +367,11 @@ class Native::Interface::BDI::CwsTunnel::Out : public ydk::Entity
 }; // Native::Interface::BDI::CwsTunnel::Out
 
 
-class Native::Interface::BDI::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::BDI::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -386,16 +386,16 @@ class Native::Interface::BDI::L2ProtocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::BDI::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::BDI::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::BDI::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::BDI::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::BDI::L2ProtocolTunnel
+}; // Native::Interface::BDI::L2protocolTunnel
 
 
-class Native::Interface::BDI::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::BDI::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -416,10 +416,10 @@ class Native::Interface::BDI::L2ProtocolTunnel::DropThreshold : public ydk::Enti
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::BDI::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::BDI::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::BDI::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::BDI::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -440,7 +440,7 @@ class Native::Interface::BDI::L2ProtocolTunnel::ShutdownThreshold : public ydk::
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::BDI::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::BDI::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::BDI::Encapsulation : public ydk::Entity
@@ -859,7 +859,7 @@ class Native::Interface::BDI::Isis::Authentication::KeyChain : public ydk::Entit
         ydk::YLeaf name; //type: string
         class KeyChainList; //type: Native::Interface::BDI::Isis::Authentication::KeyChain::KeyChainList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::Authentication::KeyChain::KeyChainList> > key_chain_list;
+        ydk::YList key_chain_list;
         
 }; // Native::Interface::BDI::Isis::Authentication::KeyChain
 
@@ -948,7 +948,7 @@ class Native::Interface::BDI::Isis::CsnpInterval : public ydk::Entity
         ydk::YLeaf value_; //type: uint16
         class CsnpIntervalList; //type: Native::Interface::BDI::Isis::CsnpInterval::CsnpIntervalList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::CsnpInterval::CsnpIntervalList> > csnp_interval_list;
+        ydk::YList csnp_interval_list;
         
 }; // Native::Interface::BDI::Isis::CsnpInterval
 
@@ -1039,7 +1039,7 @@ class Native::Interface::BDI::Isis::HelloInterval : public ydk::Entity
         ydk::YLeaf value_; //type: one of uint16, enumeration
         class HelloIntervalList; //type: Native::Interface::BDI::Isis::HelloInterval::HelloIntervalList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::HelloInterval::HelloIntervalList> > hello_interval_list;
+        ydk::YList hello_interval_list;
                 class Value_;
 
 }; // Native::Interface::BDI::Isis::HelloInterval
@@ -1088,7 +1088,7 @@ class Native::Interface::BDI::Isis::HelloMultiplier : public ydk::Entity
         ydk::YLeaf value_; //type: uint16
         class HelloMultiplierList; //type: Native::Interface::BDI::Isis::HelloMultiplier::HelloMultiplierList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::HelloMultiplier::HelloMultiplierList> > hello_multiplier_list;
+        ydk::YList hello_multiplier_list;
         
 }; // Native::Interface::BDI::Isis::HelloMultiplier
 
@@ -1161,7 +1161,7 @@ class Native::Interface::BDI::Isis::Ipv6::Metric : public ydk::Entity
         ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::BDI::Isis::Ipv6::Metric::MetricList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::Ipv6::Metric::MetricList> > metric_list;
+        ydk::YList metric_list;
                 class Value_;
 
 }; // Native::Interface::BDI::Isis::Ipv6::Metric
@@ -1231,7 +1231,7 @@ class Native::Interface::BDI::Isis::Metric : public ydk::Entity
         ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::BDI::Isis::Metric::MetricList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::Metric::MetricList> > metric_list;
+        ydk::YList metric_list;
                 class Value_;
 
 }; // Native::Interface::BDI::Isis::Metric
@@ -1280,7 +1280,7 @@ class Native::Interface::BDI::Isis::Password : public ydk::Entity
         ydk::YLeaf password; //type: string
         class PasswordList; //type: Native::Interface::BDI::Isis::Password::PasswordList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::Password::PasswordList> > password_list;
+        ydk::YList password_list;
         
 }; // Native::Interface::BDI::Isis::Password
 
@@ -1327,7 +1327,7 @@ class Native::Interface::BDI::Isis::Priority : public ydk::Entity
         ydk::YLeaf value_; //type: uint8
         class PriorityList; //type: Native::Interface::BDI::Isis::Priority::PriorityList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Isis::Priority::PriorityList> > priority_list;
+        ydk::YList priority_list;
         
 }; // Native::Interface::BDI::Isis::Priority
 
@@ -1821,7 +1821,7 @@ class Native::Interface::BDI::Mpls::Ldp::Discovery : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of enumeration, string
+        ydk::YLeaf transport_address; //type: one of string, enumeration
 
 }; // Native::Interface::BDI::Mpls::Ldp::Discovery
 
@@ -2156,7 +2156,7 @@ class Native::Interface::BDI::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Rip> rip;
@@ -2497,7 +2497,7 @@ class Native::Interface::BDI::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::BDI::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::BDI::Ip::Address
@@ -3021,7 +3021,7 @@ class Native::Interface::BDI::Ip::SummaryAddress : public ydk::Entity
 
         class Eigrp; //type: Native::Interface::BDI::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::BDI::Ip::SummaryAddress
 
@@ -3275,7 +3275,7 @@ class Native::Interface::BDI::Ip::Ospf : public ydk::Entity
         class PrefixSuppression; //type: Native::Interface::BDI::Ip::Ospf::PrefixSuppression
         class TtlSecurity; //type: Native::Interface::BDI::Ip::Ospf::TtlSecurity
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::ProcessId> > process_id;
+        ydk::YList process_id;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::Authentication> authentication; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::AuthenticationKey> authentication_key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::Bfd> bfd; // presence node
@@ -3284,7 +3284,7 @@ class Native::Interface::BDI::Ip::Ospf : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::DemandCircuit> demand_circuit; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::FastReroute> fast_reroute;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::Lls> lls; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::MessageDigestKey> > message_digest_key;
+        ydk::YList message_digest_key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::MultiArea> multi_area;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::PrefixSuppression> prefix_suppression; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI::Ip::Ospf::TtlSecurity> ttl_security; // presence node

@@ -60,7 +60,7 @@ class TrafficCollector::ExternalInterfaces : public ydk::Entity
 
         class ExternalInterface; //type: TrafficCollector::ExternalInterfaces::ExternalInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_tc_cfg::TrafficCollector::ExternalInterfaces::ExternalInterface> > external_interface;
+        ydk::YList external_interface;
         
 }; // TrafficCollector::ExternalInterfaces
 
@@ -112,6 +112,13 @@ class TrafficCollector::Statistics : public ydk::Entity
 
 }; // TrafficCollector::Statistics
 
+class HistoryTimeout : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf max;
+
+};
+
 class HistorySize : public ydk::Enum
 {
     public:
@@ -134,13 +141,6 @@ class CollectIonInterval : public ydk::Enum
         static const ydk::Enum::YLeaf Y_20_minutes;
         static const ydk::Enum::YLeaf Y_30_minutes;
         static const ydk::Enum::YLeaf Y_60_minutes;
-
-};
-
-class HistoryTimeout : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf max;
 
 };
 

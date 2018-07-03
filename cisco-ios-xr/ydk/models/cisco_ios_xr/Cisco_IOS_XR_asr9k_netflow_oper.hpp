@@ -57,7 +57,7 @@ class NetFlow::Statistics : public ydk::Entity
 
         class Statistic; //type: NetFlow::Statistics::Statistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_netflow_oper::NetFlow::Statistics::Statistic> > statistic;
+        ydk::YList statistic;
         
 }; // NetFlow::Statistics
 
@@ -187,7 +187,7 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters : public ydk::Entity
 
         class FlowExporter; //type: NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_netflow_oper::NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter> > flow_exporter;
+        ydk::YList flow_exporter;
         
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters
 
@@ -234,7 +234,7 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Expor
 
         class Statistic_; //type: NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_netflow_oper::NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_> > statistic;
+        ydk::YList statistic;
         
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter
 
@@ -260,7 +260,7 @@ class NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Expor
         ydk::YLeafList used_by_flow_monitor; //type: list of  string
         class Collector; //type: NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_netflow_oper::NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_::Collector> > collector;
+        ydk::YList collector;
         
 }; // NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter::Exporter::Statistic_
 

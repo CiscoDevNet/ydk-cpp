@@ -33,7 +33,7 @@ class RVM : public ydk::Entity
 
         class AllLocations; //type: RVM::AllLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_rvm_mgr::RVM::AllLocations> > all_locations;
+        ydk::YList all_locations;
         
 }; // RVM
 
@@ -85,7 +85,7 @@ class RVM::AllLocations::Objects : public ydk::Entity
 
         class AllObjs; //type: RVM::AllLocations::Objects::AllObjs
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_rvm_mgr::RVM::AllLocations::Objects::AllObjs> > all_objs;
+        ydk::YList all_objs;
         
 }; // RVM::AllLocations::Objects
 
@@ -132,7 +132,7 @@ class RVM::AllLocations::Node : public ydk::Entity
 
         class AllNodes; //type: RVM::AllLocations::Node::AllNodes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_rvm_mgr::RVM::AllLocations::Node::AllNodes> > all_nodes;
+        ydk::YList all_nodes;
         
 }; // RVM::AllLocations::Node
 
@@ -180,7 +180,7 @@ class RVM::AllLocations::Card : public ydk::Entity
 
         class AllCards; //type: RVM::AllLocations::Card::AllCards
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_rvm_mgr::RVM::AllLocations::Card::AllCards> > all_cards;
+        ydk::YList all_cards;
         
 }; // RVM::AllLocations::Card
 

@@ -110,7 +110,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::Peers
 
@@ -156,7 +156,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV4::PeerPrefixes
 
@@ -228,7 +228,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::Peers
 
@@ -274,7 +274,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::HttpProtocol::PeerClass::PeerV6::PeerPrefixes
 
@@ -397,7 +397,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::Peers
 
@@ -443,7 +443,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV4::PeerPrefixes
 
@@ -515,7 +515,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::Peers
 
@@ -561,7 +561,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TftpProtocol::PeerClass::PeerV6::PeerPrefixes
 
@@ -684,7 +684,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::Peers
 
@@ -730,7 +730,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV4::PeerPrefixes
 
@@ -802,7 +802,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::Peers
 
@@ -848,7 +848,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::NetconfProtocol::PeerClass::PeerV6::PeerPrefixes
 
@@ -971,7 +971,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::Peers
 
@@ -1017,7 +1017,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV4::PeerPrefixes
 
@@ -1089,7 +1089,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::Peers
 
@@ -1135,7 +1135,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::XrXml::PeerClass::PeerV6::PeerPrefixes
 
@@ -1258,7 +1258,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::Peers
 
@@ -1304,7 +1304,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV4::PeerPrefixes
 
@@ -1376,7 +1376,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::Peers
 
@@ -1422,7 +1422,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SshProtocol::PeerClass::PeerV6::PeerPrefixes
 
@@ -1545,7 +1545,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::Peers
 
@@ -1591,7 +1591,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV4::PeerPrefixes
 
@@ -1663,7 +1663,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::Peers
 
@@ -1709,7 +1709,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::SnmpProtocol::PeerClass::PeerV6::PeerPrefixes
 
@@ -1832,7 +1832,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::Peers
 
@@ -1878,7 +1878,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV4::PeerPrefixes
 
@@ -1950,7 +1950,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::Peers
 
@@ -1996,7 +1996,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::TelnetProtocol::PeerClass::PeerV6::PeerPrefixes
 
@@ -2119,7 +2119,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::Peers
 
@@ -2165,7 +2165,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV4::PeerPrefixes
 
@@ -2237,7 +2237,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class Peer; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::Peers
 
@@ -2283,7 +2283,7 @@ class ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllIn
 
         class PeerPrefix; //type: ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes::PeerPrefix> > peer_prefix;
+        ydk::YList peer_prefix;
         
 }; // ControlPlane::ManagementPlaneProtection::Inband::InterfaceSelection::AllInterfaces::AllProtocols::PeerClass::PeerV6::PeerPrefixes
 
@@ -2353,7 +2353,7 @@ class ControlPlane::ManagementPlaneProtection::Tpa::Vrfs : public ydk::Entity
 
         class Vrf; //type: ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // ControlPlane::ManagementPlaneProtection::Tpa::Vrfs
 
@@ -2426,7 +2426,7 @@ class ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ip
 
         class TpaAllow; //type: ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table::TpaAllow> > tpa_allow;
+        ydk::YList tpa_allow;
         
 }; // ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv4Table
 
@@ -2476,7 +2476,7 @@ class ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ip
 
         class TpaAllow; //type: ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_mpp_cfg::ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table::TpaAllow> > tpa_allow;
+        ydk::YList tpa_allow;
         
 }; // ControlPlane::ManagementPlaneProtection::Tpa::Vrfs::Vrf::AddressFamily::Ipv6Table
 

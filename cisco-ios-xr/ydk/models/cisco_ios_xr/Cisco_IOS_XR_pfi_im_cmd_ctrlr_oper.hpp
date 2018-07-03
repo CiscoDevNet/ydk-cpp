@@ -57,7 +57,7 @@ class Controllers::Controllers_ : public ydk::Entity
 
         class Controller; //type: Controllers::Controllers_::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pfi_im_cmd_ctrlr_oper::Controllers::Controllers_::Controller> > controller;
+        ydk::YList controller;
         
 }; // Controllers::Controllers_
 

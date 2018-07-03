@@ -33,7 +33,7 @@ class VM : public ydk::Entity
 
         class AllLocations; //type: VM::AllLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_vm_mgr::VM::AllLocations> > all_locations;
+        ydk::YList all_locations;
         
 }; // VM
 
@@ -58,7 +58,7 @@ class VM::AllLocations : public ydk::Entity
         ydk::YLeaf location; //type: string
         class AllUiids; //type: VM::AllLocations::AllUiids
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_vm_mgr::VM::AllLocations::AllUiids> > all_uiids;
+        ydk::YList all_uiids;
         
 }; // VM::AllLocations
 

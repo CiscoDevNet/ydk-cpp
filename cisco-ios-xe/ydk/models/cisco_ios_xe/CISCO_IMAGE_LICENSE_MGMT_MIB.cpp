@@ -13,17 +13,17 @@ namespace CISCO_IMAGE_LICENSE_MGMT_MIB {
 
 CISCOIMAGELICENSEMGMTMIB::CISCOIMAGELICENSEMGMTMIB()
     :
-    ciscoimagelicensemgmtmibobjects(std::make_shared<CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects>())
-	,cilmnotifcntl(std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl>())
-	,cilmbootimageleveltable(std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable>())
-	,cilmimageleveltolicensemaptable(std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable>())
+    ciscoimagelicensemgmtmibobjects(std::make_shared<CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects>())
+    , cilmnotifcntl(std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl>())
+    , cilmbootimageleveltable(std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable>())
+    , cilmimageleveltolicensemaptable(std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable>())
 {
     ciscoimagelicensemgmtmibobjects->parent = this;
     cilmnotifcntl->parent = this;
     cilmbootimageleveltable->parent = this;
     cilmimageleveltolicensemaptable->parent = this;
 
-    yang_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIMAGELICENSEMGMTMIB::~CISCOIMAGELICENSEMGMTMIB()
@@ -32,6 +32,7 @@ CISCOIMAGELICENSEMGMTMIB::~CISCOIMAGELICENSEMGMTMIB()
 
 bool CISCOIMAGELICENSEMGMTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscoimagelicensemgmtmibobjects !=  nullptr && ciscoimagelicensemgmtmibobjects->has_data())
 	|| (cilmnotifcntl !=  nullptr && cilmnotifcntl->has_data())
 	|| (cilmbootimageleveltable !=  nullptr && cilmbootimageleveltable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::get_child_by_name(const std::s
     {
         if(ciscoimagelicensemgmtmibobjects == nullptr)
         {
-            ciscoimagelicensemgmtmibobjects = std::make_shared<CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects>();
+            ciscoimagelicensemgmtmibobjects = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects>();
         }
         return ciscoimagelicensemgmtmibobjects;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::get_child_by_name(const std::s
     {
         if(cilmnotifcntl == nullptr)
         {
-            cilmnotifcntl = std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl>();
+            cilmnotifcntl = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl>();
         }
         return cilmnotifcntl;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::get_child_by_name(const std::s
     {
         if(cilmbootimageleveltable == nullptr)
         {
-            cilmbootimageleveltable = std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable>();
+            cilmbootimageleveltable = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable>();
         }
         return cilmbootimageleveltable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::get_child_by_name(const std::s
     {
         if(cilmimageleveltolicensemaptable == nullptr)
         {
-            cilmimageleveltolicensemaptable = std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable>();
+            cilmimageleveltolicensemaptable = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable>();
         }
         return cilmimageleveltolicensemaptable;
     }
@@ -171,44 +172,45 @@ bool CISCOIMAGELICENSEMGMTMIB::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::Ciscoimagelicensemgmtmibobjects()
+CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::CiscoImageLicenseMgmtMIBObjects()
     :
     cilmeulaaccepted{YType::boolean, "cilmEULAAccepted"}
 {
 
-    yang_name = "ciscoImageLicenseMgmtMIBObjects"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoImageLicenseMgmtMIBObjects"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::~Ciscoimagelicensemgmtmibobjects()
+CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::~CiscoImageLicenseMgmtMIBObjects()
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::has_data() const
+bool CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return cilmeulaaccepted.is_set;
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::has_operation() const
+bool CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cilmeulaaccepted.yfilter);
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::get_absolute_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-LICENSE-MGMT-MIB:CISCO-IMAGE-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::get_segment_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoImageLicenseMgmtMIBObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -218,19 +220,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Ciscoim
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cilmEULAAccepted")
     {
@@ -240,7 +242,7 @@ void CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::set_value(const 
     }
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cilmEULAAccepted")
     {
@@ -248,51 +250,52 @@ void CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::set_filter(const
     }
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Ciscoimagelicensemgmtmibobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGELICENSEMGMTMIB::CiscoImageLicenseMgmtMIBObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cilmEULAAccepted")
         return true;
     return false;
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::Cilmnotifcntl()
+CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::CilmNotifCntl()
     :
     cilmimagelevelchangednotif{YType::boolean, "cilmImageLevelChangedNotif"}
 {
 
-    yang_name = "cilmNotifCntl"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cilmNotifCntl"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::~Cilmnotifcntl()
+CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::~CilmNotifCntl()
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::has_data() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::has_data() const
 {
+    if (is_presence_container) return true;
     return cilmimagelevelchangednotif.is_set;
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::has_operation() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cilmimagelevelchangednotif.yfilter);
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::get_absolute_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-LICENSE-MGMT-MIB:CISCO-IMAGE-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::get_segment_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cilmNotifCntl";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -302,19 +305,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmnot
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cilmImageLevelChangedNotif")
     {
@@ -324,7 +327,7 @@ void CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::set_value(const std::string & valu
     }
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cilmImageLevelChangedNotif")
     {
@@ -332,26 +335,29 @@ void CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::set_filter(const std::string & val
     }
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmnotifcntl::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGELICENSEMGMTMIB::CilmNotifCntl::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cilmImageLevelChangedNotif")
         return true;
     return false;
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimageleveltable()
+CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelTable()
+    :
+    cilmbootimagelevelentry(this, {"entphysicalindex", "cilmmodulename"})
 {
 
-    yang_name = "cilmBootImageLevelTable"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cilmBootImageLevelTable"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::~Cilmbootimageleveltable()
+CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::~CilmBootImageLevelTable()
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::has_data() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::has_data() const
 {
-    for (std::size_t index=0; index<cilmbootimagelevelentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cilmbootimagelevelentry.len(); index++)
     {
         if(cilmbootimagelevelentry[index]->has_data())
             return true;
@@ -359,9 +365,9 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::has_data() const
     return false;
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::has_operation() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::has_operation() const
 {
-    for (std::size_t index=0; index<cilmbootimagelevelentry.size(); index++)
+    for (std::size_t index=0; index<cilmbootimagelevelentry.len(); index++)
     {
         if(cilmbootimagelevelentry[index]->has_operation())
             return true;
@@ -369,21 +375,21 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::get_absolute_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-LICENSE-MGMT-MIB:CISCO-IMAGE-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::get_segment_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cilmBootImageLevelTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -392,25 +398,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmboo
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cilmBootImageLevelEntry")
     {
-        auto c = std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry>();
+        auto c = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry>();
         c->parent = this;
-        cilmbootimagelevelentry.push_back(c);
+        cilmbootimagelevelentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cilmbootimagelevelentry)
+    for (auto c : cilmbootimagelevelentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -421,22 +427,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Cilmboo
     return children;
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cilmBootImageLevelEntry")
         return true;
     return false;
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::Cilmbootimagelevelentry()
+CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::CilmBootImageLevelEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cilmmodulename{YType::str, "cilmModuleName"},
@@ -449,15 +455,16 @@ CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::Cilm
     cilmnextbootlicenseindex{YType::uint32, "cilmNextBootLicenseIndex"}
 {
 
-    yang_name = "cilmBootImageLevelEntry"; yang_parent_name = "cilmBootImageLevelTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cilmBootImageLevelEntry"; yang_parent_name = "cilmBootImageLevelTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::~Cilmbootimagelevelentry()
+CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::~CilmBootImageLevelEntry()
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::has_data() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cilmmodulename.is_set
 	|| cilmcurrentimagelevel.is_set
@@ -469,7 +476,7 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry:
 	|| cilmnextbootlicenseindex.is_set;
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::has_operation() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -483,21 +490,23 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry:
 	|| ydk::is_set(cilmnextbootlicenseindex.yfilter);
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::get_absolute_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-LICENSE-MGMT-MIB:CISCO-IMAGE-LICENSE-MGMT-MIB/cilmBootImageLevelTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::get_segment_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cilmBootImageLevelEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cilmModuleName='" <<cilmmodulename <<"']";
+    path_buffer << "cilmBootImageLevelEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cilmmodulename, "cilmModuleName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -515,19 +524,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmboo
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -585,7 +594,7 @@ void CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry:
     }
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -625,26 +634,29 @@ void CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry:
     }
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmbootimageleveltable::Cilmbootimagelevelentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGELICENSEMGMTMIB::CilmBootImageLevelTable::CilmBootImageLevelEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cilmModuleName" || name == "cilmCurrentImageLevel" || name == "cilmConfiguredBootImageLevel" || name == "cilmNextBootImageLevel" || name == "cilmCurrentLicenseStoreIndex" || name == "cilmCurrentLicenseIndex" || name == "cilmNextBootLicenseStoreIndex" || name == "cilmNextBootLicenseIndex")
         return true;
     return false;
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemaptable()
+CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapTable()
+    :
+    cilmimageleveltolicensemapentry(this, {"entphysicalindex", "cilmmodulename", "cilmimagelicensemapindex"})
 {
 
-    yang_name = "cilmImageLevelToLicenseMapTable"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cilmImageLevelToLicenseMapTable"; yang_parent_name = "CISCO-IMAGE-LICENSE-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::~Cilmimageleveltolicensemaptable()
+CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::~CilmImageLevelToLicenseMapTable()
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::has_data() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::has_data() const
 {
-    for (std::size_t index=0; index<cilmimageleveltolicensemapentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cilmimageleveltolicensemapentry.len(); index++)
     {
         if(cilmimageleveltolicensemapentry[index]->has_data())
             return true;
@@ -652,9 +664,9 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::has_data() const
     return false;
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::has_operation() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::has_operation() const
 {
-    for (std::size_t index=0; index<cilmimageleveltolicensemapentry.size(); index++)
+    for (std::size_t index=0; index<cilmimageleveltolicensemapentry.len(); index++)
     {
         if(cilmimageleveltolicensemapentry[index]->has_operation())
             return true;
@@ -662,21 +674,21 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::has_operation() 
     return is_set(yfilter);
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::get_absolute_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-LICENSE-MGMT-MIB:CISCO-IMAGE-LICENSE-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::get_segment_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cilmImageLevelToLicenseMapTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -685,25 +697,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmima
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cilmImageLevelToLicenseMapEntry")
     {
-        auto c = std::make_shared<CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry>();
+        auto c = std::make_shared<CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry>();
         c->parent = this;
-        cilmimageleveltolicensemapentry.push_back(c);
+        cilmimageleveltolicensemapentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cilmimageleveltolicensemapentry)
+    for (auto c : cilmimageleveltolicensemapentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -714,22 +726,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Cilmima
     return children;
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cilmImageLevelToLicenseMapEntry")
         return true;
     return false;
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::Cilmimageleveltolicensemapentry()
+CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::CilmImageLevelToLicenseMapEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cilmmodulename{YType::str, "cilmModuleName"},
@@ -739,15 +751,16 @@ CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicen
     cilmimagelicensepriority{YType::uint32, "cilmImageLicensePriority"}
 {
 
-    yang_name = "cilmImageLevelToLicenseMapEntry"; yang_parent_name = "cilmImageLevelToLicenseMapTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cilmImageLevelToLicenseMapEntry"; yang_parent_name = "cilmImageLevelToLicenseMapTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::~Cilmimageleveltolicensemapentry()
+CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::~CilmImageLevelToLicenseMapEntry()
 {
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::has_data() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cilmmodulename.is_set
 	|| cilmimagelicensemapindex.is_set
@@ -756,7 +769,7 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimagelevelto
 	|| cilmimagelicensepriority.is_set;
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::has_operation() const
+bool CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -767,21 +780,24 @@ bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimagelevelto
 	|| ydk::is_set(cilmimagelicensepriority.yfilter);
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::get_absolute_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-LICENSE-MGMT-MIB:CISCO-IMAGE-LICENSE-MGMT-MIB/cilmImageLevelToLicenseMapTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::get_segment_path() const
+std::string CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cilmImageLevelToLicenseMapEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cilmModuleName='" <<cilmmodulename <<"']" <<"[cilmImageLicenseMapIndex='" <<cilmimagelicensemapindex <<"']";
+    path_buffer << "cilmImageLevelToLicenseMapEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cilmmodulename, "cilmModuleName");
+    ADD_KEY_TOKEN(cilmimagelicensemapindex, "cilmImageLicenseMapIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -796,19 +812,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGELICENSEMGMTMIB::Cilmima
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -848,7 +864,7 @@ void CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimagelevelto
     }
 }
 
-void CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -876,7 +892,7 @@ void CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimagelevelto
     }
 }
 
-bool CISCOIMAGELICENSEMGMTMIB::Cilmimageleveltolicensemaptable::Cilmimageleveltolicensemapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGELICENSEMGMTMIB::CilmImageLevelToLicenseMapTable::CilmImageLevelToLicenseMapEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cilmModuleName" || name == "cilmImageLicenseMapIndex" || name == "cilmImageLicenseImageLevel" || name == "cilmImageLicenseName" || name == "cilmImageLicensePriority")
         return true;

@@ -18,7 +18,7 @@ Native::Crypto::Pki::Trustpoint::AutoEnroll::AutoEnroll()
     regenerate{YType::empty, "regenerate"}
 {
 
-    yang_name = "auto-enroll"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-enroll"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Trustpoint::AutoEnroll::~AutoEnroll()
@@ -27,6 +27,7 @@ Native::Crypto::Pki::Trustpoint::AutoEnroll::~AutoEnroll()
 
 bool Native::Crypto::Pki::Trustpoint::AutoEnroll::has_data() const
 {
+    if (is_presence_container) return true;
     return percent.is_set
 	|| regenerate.is_set;
 }
@@ -110,15 +111,15 @@ Native::Crypto::Pki::Trustpoint::Enrollment::Enrollment()
     profile{YType::str, "profile"},
     selfsigned{YType::empty, "selfsigned"},
     url{YType::str, "url"}
-    	,
+        ,
     mode(std::make_shared<Native::Crypto::Pki::Trustpoint::Enrollment::Mode>())
-	,retry(std::make_shared<Native::Crypto::Pki::Trustpoint::Enrollment::Retry>())
-	,terminal(nullptr) // presence node
+    , retry(std::make_shared<Native::Crypto::Pki::Trustpoint::Enrollment::Retry>())
+    , terminal(nullptr) // presence node
 {
     mode->parent = this;
     retry->parent = this;
 
-    yang_name = "enrollment"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enrollment"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Trustpoint::Enrollment::~Enrollment()
@@ -127,6 +128,7 @@ Native::Crypto::Pki::Trustpoint::Enrollment::~Enrollment()
 
 bool Native::Crypto::Pki::Trustpoint::Enrollment::has_data() const
 {
+    if (is_presence_container) return true;
     return http_proxy.is_set
 	|| pkcs12.is_set
 	|| profile.is_set
@@ -295,7 +297,7 @@ Native::Crypto::Pki::Trustpoint::Enrollment::Mode::Mode()
     ra{YType::empty, "ra"}
 {
 
-    yang_name = "mode"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Trustpoint::Enrollment::Mode::~Mode()
@@ -304,6 +306,7 @@ Native::Crypto::Pki::Trustpoint::Enrollment::Mode::~Mode()
 
 bool Native::Crypto::Pki::Trustpoint::Enrollment::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return ra.is_set;
 }
 
@@ -373,7 +376,7 @@ Native::Crypto::Pki::Trustpoint::Enrollment::Retry::Retry()
     period{YType::uint8, "period"}
 {
 
-    yang_name = "retry"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "retry"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Trustpoint::Enrollment::Retry::~Retry()
@@ -382,6 +385,7 @@ Native::Crypto::Pki::Trustpoint::Enrollment::Retry::~Retry()
 
 bool Native::Crypto::Pki::Trustpoint::Enrollment::Retry::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set
 	|| period.is_set;
 }
@@ -463,7 +467,7 @@ Native::Crypto::Pki::Trustpoint::Enrollment::Terminal::Terminal()
     pem{YType::empty, "pem"}
 {
 
-    yang_name = "terminal"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "terminal"; yang_parent_name = "enrollment"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Pki::Trustpoint::Enrollment::Terminal::~Terminal()
@@ -472,6 +476,7 @@ Native::Crypto::Pki::Trustpoint::Enrollment::Terminal::~Terminal()
 
 bool Native::Crypto::Pki::Trustpoint::Enrollment::Terminal::has_data() const
 {
+    if (is_presence_container) return true;
     return pem.is_set;
 }
 
@@ -541,7 +546,7 @@ Native::Crypto::Pki::Trustpoint::Password::Password()
     clear_password{YType::str, "clear-password"}
 {
 
-    yang_name = "password"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Pki::Trustpoint::Password::~Password()
@@ -550,6 +555,7 @@ Native::Crypto::Pki::Trustpoint::Password::~Password()
 
 bool Native::Crypto::Pki::Trustpoint::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return encryption_type.is_set
 	|| clear_password.is_set;
 }
@@ -633,7 +639,7 @@ Native::Crypto::Pki::Trustpoint::Rsakeypair::Rsakeypair()
     encrypt_key{YType::uint16, "encrypt-key"}
 {
 
-    yang_name = "rsakeypair"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsakeypair"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Trustpoint::Rsakeypair::~Rsakeypair()
@@ -642,6 +648,7 @@ Native::Crypto::Pki::Trustpoint::Rsakeypair::~Rsakeypair()
 
 bool Native::Crypto::Pki::Trustpoint::Rsakeypair::has_data() const
 {
+    if (is_presence_container) return true;
     return key_label.is_set
 	|| gen_key.is_set
 	|| encrypt_key.is_set;
@@ -736,7 +743,7 @@ Native::Crypto::Pki::Trustpoint::SerialNumber::SerialNumber()
     none{YType::empty, "none"}
 {
 
-    yang_name = "serial-number"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "serial-number"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Crypto::Pki::Trustpoint::SerialNumber::~SerialNumber()
@@ -745,6 +752,7 @@ Native::Crypto::Pki::Trustpoint::SerialNumber::~SerialNumber()
 
 bool Native::Crypto::Pki::Trustpoint::SerialNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set;
 }
 
@@ -814,7 +822,7 @@ Native::Crypto::Pki::Trustpoint::IpAddress::IpAddress()
     none{YType::empty, "none"}
 {
 
-    yang_name = "ip-address"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-address"; yang_parent_name = "trustpoint"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Trustpoint::IpAddress::~IpAddress()
@@ -823,6 +831,7 @@ Native::Crypto::Pki::Trustpoint::IpAddress::~IpAddress()
 
 bool Native::Crypto::Pki::Trustpoint::IpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_line.is_set
 	|| none.is_set;
 }
@@ -900,9 +909,11 @@ bool Native::Crypto::Pki::Trustpoint::IpAddress::has_leaf_or_child_of_name(const
 }
 
 Native::Crypto::Pki::Token::Token()
+    :
+    token_name(this, {"name"})
 {
 
-    yang_name = "token"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "token"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Token::~Token()
@@ -911,7 +922,8 @@ Native::Crypto::Pki::Token::~Token()
 
 bool Native::Crypto::Pki::Token::has_data() const
 {
-    for (std::size_t index=0; index<token_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<token_name.len(); index++)
     {
         if(token_name[index]->has_data())
             return true;
@@ -921,7 +933,7 @@ bool Native::Crypto::Pki::Token::has_data() const
 
 bool Native::Crypto::Pki::Token::has_operation() const
 {
-    for (std::size_t index=0; index<token_name.size(); index++)
+    for (std::size_t index=0; index<token_name.len(); index++)
     {
         if(token_name[index]->has_operation())
             return true;
@@ -958,7 +970,7 @@ std::shared_ptr<Entity> Native::Crypto::Pki::Token::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Crypto::Pki::Token::TokenName>();
         c->parent = this;
-        token_name.push_back(c);
+        token_name.append(c);
         return c;
     }
 
@@ -970,7 +982,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::Pki::Token::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : token_name)
+    for (auto c : token_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -999,12 +1011,12 @@ bool Native::Crypto::Pki::Token::has_leaf_or_child_of_name(const std::string & n
 Native::Crypto::Pki::Token::TokenName::TokenName()
     :
     name{YType::str, "name"}
-    	,
+        ,
     removal(std::make_shared<Native::Crypto::Pki::Token::TokenName::Removal>())
 {
     removal->parent = this;
 
-    yang_name = "token-name"; yang_parent_name = "token"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "token-name"; yang_parent_name = "token"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Token::TokenName::~TokenName()
@@ -1013,6 +1025,7 @@ Native::Crypto::Pki::Token::TokenName::~TokenName()
 
 bool Native::Crypto::Pki::Token::TokenName::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (removal !=  nullptr && removal->has_data());
 }
@@ -1034,7 +1047,8 @@ std::string Native::Crypto::Pki::Token::TokenName::get_absolute_path() const
 std::string Native::Crypto::Pki::Token::TokenName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "token-name" <<"[name='" <<name <<"']";
+    path_buffer << "token-name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1104,7 +1118,7 @@ Native::Crypto::Pki::Token::TokenName::Removal::Removal()
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "removal"; yang_parent_name = "token-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "removal"; yang_parent_name = "token-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::Pki::Token::TokenName::Removal::~Removal()
@@ -1113,6 +1127,7 @@ Native::Crypto::Pki::Token::TokenName::Removal::~Removal()
 
 bool Native::Crypto::Pki::Token::TokenName::Removal::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -1181,7 +1196,7 @@ Native::Crypto::Pki::Trustpool::Trustpool()
     import(nullptr) // presence node
 {
 
-    yang_name = "trustpool"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trustpool"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Trustpool::~Trustpool()
@@ -1190,6 +1205,7 @@ Native::Crypto::Pki::Trustpool::~Trustpool()
 
 bool Native::Crypto::Pki::Trustpool::has_data() const
 {
+    if (is_presence_container) return true;
     return (import !=  nullptr && import->has_data());
 }
 
@@ -1270,7 +1286,7 @@ Native::Crypto::Pki::Trustpool::Import::Import()
     url{YType::str, "url"}
 {
 
-    yang_name = "import"; yang_parent_name = "trustpool"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "import"; yang_parent_name = "trustpool"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Crypto::Pki::Trustpool::Import::~Import()
@@ -1279,6 +1295,7 @@ Native::Crypto::Pki::Trustpool::Import::~Import()
 
 bool Native::Crypto::Pki::Trustpool::Import::has_data() const
 {
+    if (is_presence_container) return true;
     return clean.is_set
 	|| terminal.is_set
 	|| url.is_set;
@@ -1381,7 +1398,7 @@ Native::Crypto::Pki::Default::Default()
 {
     removal->parent = this;
 
-    yang_name = "default"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "pki"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Default::~Default()
@@ -1390,6 +1407,7 @@ Native::Crypto::Pki::Default::~Default()
 
 bool Native::Crypto::Pki::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (removal !=  nullptr && removal->has_data());
 }
 
@@ -1468,7 +1486,7 @@ Native::Crypto::Pki::Default::Removal::Removal()
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "removal"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "removal"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Pki::Default::Removal::~Removal()
@@ -1477,6 +1495,7 @@ Native::Crypto::Pki::Default::Removal::~Removal()
 
 bool Native::Crypto::Pki::Default::Removal::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -1548,9 +1567,11 @@ bool Native::Crypto::Pki::Default::Removal::has_leaf_or_child_of_name(const std:
 }
 
 Native::Crypto::TlsTunnel::TlsTunnel()
+    :
+    tls_tunnel_list(this, {"tunnel_name"})
 {
 
-    yang_name = "tls-tunnel"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tls-tunnel"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::TlsTunnel::~TlsTunnel()
@@ -1559,7 +1580,8 @@ Native::Crypto::TlsTunnel::~TlsTunnel()
 
 bool Native::Crypto::TlsTunnel::has_data() const
 {
-    for (std::size_t index=0; index<tls_tunnel_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tls_tunnel_list.len(); index++)
     {
         if(tls_tunnel_list[index]->has_data())
             return true;
@@ -1569,7 +1591,7 @@ bool Native::Crypto::TlsTunnel::has_data() const
 
 bool Native::Crypto::TlsTunnel::has_operation() const
 {
-    for (std::size_t index=0; index<tls_tunnel_list.size(); index++)
+    for (std::size_t index=0; index<tls_tunnel_list.len(); index++)
     {
         if(tls_tunnel_list[index]->has_operation())
             return true;
@@ -1606,7 +1628,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList>();
         c->parent = this;
-        tls_tunnel_list.push_back(c);
+        tls_tunnel_list.append(c);
         return c;
     }
 
@@ -1618,7 +1640,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tls_tunnel_list)
+    for (auto c : tls_tunnel_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1647,18 +1669,19 @@ bool Native::Crypto::TlsTunnel::has_leaf_or_child_of_name(const std::string & na
 Native::Crypto::TlsTunnel::TlsTunnelList::TlsTunnelList()
     :
     tunnel_name{YType::str, "tunnel-name"}
-    	,
-    overlay_address(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress>())
-	,protection(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Protection>())
-	,psk(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Psk>())
-	,server(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Server>())
+        ,
+    local_interface(this, {"interface_name"})
+    , overlay_address(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress>())
+    , protection(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Protection>())
+    , psk(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Psk>())
+    , server(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Server>())
 {
     overlay_address->parent = this;
     protection->parent = this;
     psk->parent = this;
     server->parent = this;
 
-    yang_name = "tls-tunnel-list"; yang_parent_name = "tls-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tls-tunnel-list"; yang_parent_name = "tls-tunnel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::~TlsTunnelList()
@@ -1667,7 +1690,8 @@ Native::Crypto::TlsTunnel::TlsTunnelList::~TlsTunnelList()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::has_data() const
 {
-    for (std::size_t index=0; index<local_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_interface.len(); index++)
     {
         if(local_interface[index]->has_data())
             return true;
@@ -1681,7 +1705,7 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::has_data() const
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::has_operation() const
 {
-    for (std::size_t index=0; index<local_interface.size(); index++)
+    for (std::size_t index=0; index<local_interface.len(); index++)
     {
         if(local_interface[index]->has_operation())
             return true;
@@ -1704,7 +1728,8 @@ std::string Native::Crypto::TlsTunnel::TlsTunnelList::get_absolute_path() const
 std::string Native::Crypto::TlsTunnel::TlsTunnelList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tls-tunnel-list" <<"[tunnel-name='" <<tunnel_name <<"']";
+    path_buffer << "tls-tunnel-list";
+    ADD_KEY_TOKEN(tunnel_name, "tunnel-name");
     return path_buffer.str();
 }
 
@@ -1724,7 +1749,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::get_child_by_n
     {
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface>();
         c->parent = this;
-        local_interface.push_back(c);
+        local_interface.append(c);
         return c;
     }
 
@@ -1772,7 +1797,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTun
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_interface)
+    for (auto c : local_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1834,7 +1859,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface::LocalInterface()
     priority{YType::uint8, "priority"}
 {
 
-    yang_name = "local-interface"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-interface"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface::~LocalInterface()
@@ -1843,6 +1868,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface::~LocalInterface()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| priority.is_set;
 }
@@ -1857,7 +1883,8 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface::has_operation() c
 std::string Native::Crypto::TlsTunnel::TlsTunnelList::LocalInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "local-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1925,7 +1952,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress::OverlayAddress()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "overlay-address"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "overlay-address"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress::~OverlayAddress()
@@ -1934,6 +1961,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress::~OverlayAddress()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::OverlayAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return addresses.is_set
 	|| vrf.is_set;
 }
@@ -2015,7 +2043,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Protection::Protection()
     protection{YType::enumeration, "protection"}
 {
 
-    yang_name = "protection"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protection"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Protection::~Protection()
@@ -2024,6 +2052,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Protection::~Protection()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Protection::has_data() const
 {
+    if (is_presence_container) return true;
     return protection.is_set;
 }
 
@@ -2088,9 +2117,11 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Protection::has_leaf_or_child_of_
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Psk()
+    :
+    id(this, {"id"})
 {
 
-    yang_name = "psk"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "psk"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Psk::~Psk()
@@ -2099,7 +2130,8 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Psk::~Psk()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::has_data() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_data())
             return true;
@@ -2109,7 +2141,7 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::has_data() const
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::has_operation() const
 {
-    for (std::size_t index=0; index<id.size(); index++)
+    for (std::size_t index=0; index<id.len(); index++)
     {
         if(id[index]->has_operation())
             return true;
@@ -2139,7 +2171,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Psk::get_child
     {
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id>();
         c->parent = this;
-        id.push_back(c);
+        id.append(c);
         return c;
     }
 
@@ -2151,7 +2183,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTun
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : id)
+    for (auto c : id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2180,12 +2212,12 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::has_leaf_or_child_of_name(co
 Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Id()
     :
     id{YType::str, "id"}
-    	,
+        ,
     key(std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key>())
 {
     key->parent = this;
 
-    yang_name = "id"; yang_parent_name = "psk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "id"; yang_parent_name = "psk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::~Id()
@@ -2194,6 +2226,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::~Id()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (key !=  nullptr && key->has_data());
 }
@@ -2208,7 +2241,8 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::has_operation() const
 std::string Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "id" <<"[id='" <<id <<"']";
+    path_buffer << "id";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -2280,7 +2314,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::Key()
     unencryt_key{YType::str, "unencryt-key"}
 {
 
-    yang_name = "key"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::~Key()
@@ -2289,6 +2323,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::~Key()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| encryption.is_set
 	|| unencryt_key.is_set;
@@ -2379,9 +2414,12 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Psk::Id::Key::has_leaf_or_child_o
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Server::Server()
+    :
+    ipv4(this, {"ipv4"})
+    , ipv6(this, {"ipv6"})
 {
 
-    yang_name = "server"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "tls-tunnel-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Server::~Server()
@@ -2390,12 +2428,13 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Server::~Server()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Server::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_data())
             return true;
@@ -2405,12 +2444,12 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Server::has_data() const
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Server::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv6.size(); index++)
+    for (std::size_t index=0; index<ipv6.len(); index++)
     {
         if(ipv6[index]->has_operation())
             return true;
@@ -2440,7 +2479,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Server::get_ch
     {
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -2448,7 +2487,7 @@ std::shared_ptr<Entity> Native::Crypto::TlsTunnel::TlsTunnelList::Server::get_ch
     {
         auto c = std::make_shared<Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6>();
         c->parent = this;
-        ipv6.push_back(c);
+        ipv6.append(c);
         return c;
     }
 
@@ -2460,7 +2499,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTun
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2469,7 +2508,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Crypto::TlsTunnel::TlsTun
     }
 
     count = 0;
-    for (auto const & c : ipv6)
+    for (auto c : ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2501,7 +2540,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::Ipv4()
     port{YType::uint32, "port"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::~Ipv4()
@@ -2510,6 +2549,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::~Ipv4()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| port.is_set;
 }
@@ -2524,7 +2564,8 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::has_operation() con
 std::string Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -2592,7 +2633,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::Ipv6()
     port{YType::uint32, "port"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::~Ipv6()
@@ -2601,6 +2642,7 @@ Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::~Ipv6()
 
 bool Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6.is_set
 	|| port.is_set;
 }
@@ -2615,7 +2657,8 @@ bool Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::has_operation() con
 std::string Native::Crypto::TlsTunnel::TlsTunnelList::Server::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6" <<"[ipv6='" <<ipv6 <<"']";
+    path_buffer << "ipv6";
+    ADD_KEY_TOKEN(ipv6, "ipv6");
     return path_buffer.str();
 }
 
@@ -2681,16 +2724,16 @@ Native::Crypto::Ssl::Ssl()
     :
     policy{YType::str, "policy"},
     profile{YType::str, "profile"}
-    	,
+        ,
     authorization(std::make_shared<Native::Crypto::Ssl::Authorization>())
-	,diagnose(std::make_shared<Native::Crypto::Ssl::Diagnose>())
-	,proposal(std::make_shared<Native::Crypto::Ssl::Proposal>())
+    , diagnose(std::make_shared<Native::Crypto::Ssl::Diagnose>())
+    , proposal(std::make_shared<Native::Crypto::Ssl::Proposal>())
 {
     authorization->parent = this;
     diagnose->parent = this;
     proposal->parent = this;
 
-    yang_name = "ssl"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssl"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Ssl::~Ssl()
@@ -2699,6 +2742,7 @@ Native::Crypto::Ssl::~Ssl()
 
 bool Native::Crypto::Ssl::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set
 	|| profile.is_set
 	|| (authorization !=  nullptr && authorization->has_data())
@@ -2835,7 +2879,7 @@ Native::Crypto::Ssl::Authorization::Authorization()
     policy{YType::str, "policy"}
 {
 
-    yang_name = "authorization"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Ssl::Authorization::~Authorization()
@@ -2844,6 +2888,7 @@ Native::Crypto::Ssl::Authorization::~Authorization()
 
 bool Native::Crypto::Ssl::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set;
 }
 
@@ -2919,7 +2964,7 @@ Native::Crypto::Ssl::Diagnose::Diagnose()
     error{YType::uint16, "error"}
 {
 
-    yang_name = "diagnose"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diagnose"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Ssl::Diagnose::~Diagnose()
@@ -2928,6 +2973,7 @@ Native::Crypto::Ssl::Diagnose::~Diagnose()
 
 bool Native::Crypto::Ssl::Diagnose::has_data() const
 {
+    if (is_presence_container) return true;
     return error.is_set;
 }
 
@@ -3001,12 +3047,12 @@ bool Native::Crypto::Ssl::Diagnose::has_leaf_or_child_of_name(const std::string 
 Native::Crypto::Ssl::Proposal::Proposal()
     :
     name{YType::str, "name"}
-    	,
+        ,
     protection(std::make_shared<Native::Crypto::Ssl::Proposal::Protection>())
 {
     protection->parent = this;
 
-    yang_name = "proposal"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "proposal"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Ssl::Proposal::~Proposal()
@@ -3015,6 +3061,7 @@ Native::Crypto::Ssl::Proposal::~Proposal()
 
 bool Native::Crypto::Ssl::Proposal::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (protection !=  nullptr && protection->has_data());
 }
@@ -3109,7 +3156,7 @@ Native::Crypto::Ssl::Proposal::Protection::Protection()
     rsa_rc4128_md5{YType::empty, "rsa-rc4128-md5"}
 {
 
-    yang_name = "protection"; yang_parent_name = "proposal"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protection"; yang_parent_name = "proposal"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Ssl::Proposal::Protection::~Protection()
@@ -3118,6 +3165,7 @@ Native::Crypto::Ssl::Proposal::Protection::~Protection()
 
 bool Native::Crypto::Ssl::Proposal::Protection::has_data() const
 {
+    if (is_presence_container) return true;
     return rsa_3des_ede_sha1.is_set
 	|| rsa_aes128_sha1.is_set
 	|| rsa_aes256_sha1.is_set
@@ -3230,12 +3278,12 @@ bool Native::Crypto::Ssl::Proposal::Protection::has_leaf_or_child_of_name(const 
 Native::Crypto::Vpn::Vpn()
     :
     csd{YType::str, "csd"}
-    	,
+        ,
     anyconnect(std::make_shared<Native::Crypto::Vpn::Anyconnect>())
 {
     anyconnect->parent = this;
 
-    yang_name = "vpn"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vpn"; yang_parent_name = "crypto"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Vpn::~Vpn()
@@ -3244,6 +3292,7 @@ Native::Crypto::Vpn::~Vpn()
 
 bool Native::Crypto::Vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return csd.is_set
 	|| (anyconnect !=  nullptr && anyconnect->has_data());
 }
@@ -3333,12 +3382,12 @@ bool Native::Crypto::Vpn::has_leaf_or_child_of_name(const std::string & name) co
 Native::Crypto::Vpn::Anyconnect::Anyconnect()
     :
     file(std::make_shared<Native::Crypto::Vpn::Anyconnect::File>())
-	,profile_container(std::make_shared<Native::Crypto::Vpn::Anyconnect::ProfileContainer>())
+    , profile_container(std::make_shared<Native::Crypto::Vpn::Anyconnect::ProfileContainer>())
 {
     file->parent = this;
     profile_container->parent = this;
 
-    yang_name = "anyconnect"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "anyconnect"; yang_parent_name = "vpn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Vpn::Anyconnect::~Anyconnect()
@@ -3347,6 +3396,7 @@ Native::Crypto::Vpn::Anyconnect::~Anyconnect()
 
 bool Native::Crypto::Vpn::Anyconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return (file !=  nullptr && file->has_data())
 	|| (profile_container !=  nullptr && profile_container->has_data());
 }
@@ -3442,7 +3492,7 @@ Native::Crypto::Vpn::Anyconnect::File::File()
     sequence{YType::uint8, "sequence"}
 {
 
-    yang_name = "file"; yang_parent_name = "anyconnect"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "file"; yang_parent_name = "anyconnect"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Vpn::Anyconnect::File::~File()
@@ -3451,6 +3501,7 @@ Native::Crypto::Vpn::Anyconnect::File::~File()
 
 bool Native::Crypto::Vpn::Anyconnect::File::has_data() const
 {
+    if (is_presence_container) return true;
     return filename.is_set
 	|| sequence.is_set;
 }
@@ -3540,7 +3591,7 @@ Native::Crypto::Vpn::Anyconnect::ProfileContainer::ProfileContainer()
     filename{YType::str, "filename"}
 {
 
-    yang_name = "profile-container"; yang_parent_name = "anyconnect"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile-container"; yang_parent_name = "anyconnect"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Crypto::Vpn::Anyconnect::ProfileContainer::~ProfileContainer()
@@ -3549,6 +3600,7 @@ Native::Crypto::Vpn::Anyconnect::ProfileContainer::~ProfileContainer()
 
 bool Native::Crypto::Vpn::Anyconnect::ProfileContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set
 	|| filename.is_set;
 }
@@ -3640,13 +3692,13 @@ Native::Cts::Cts()
     logging{YType::enumeration, "Cisco-IOS-XE-cts:logging"},
     sgt{YType::uint16, "Cisco-IOS-XE-cts:sgt"},
     sg_epg{YType::enumeration, "Cisco-IOS-XE-cts:sg-epg"}
-    	,
+        ,
     cache(std::make_shared<Native::Cts::Cache>())
-	,critical_authentication(nullptr) // presence node
-	,authorization(std::make_shared<Native::Cts::Authorization>())
-	,role_based(std::make_shared<Native::Cts::RoleBased>())
-	,server(std::make_shared<Native::Cts::Server>())
-	,sxp(std::make_shared<Native::Cts::Sxp>())
+    , critical_authentication(nullptr) // presence node
+    , authorization(std::make_shared<Native::Cts::Authorization>())
+    , role_based(std::make_shared<Native::Cts::RoleBased>())
+    , server(std::make_shared<Native::Cts::Server>())
+    , sxp(std::make_shared<Native::Cts::Sxp>())
 {
     cache->parent = this;
     authorization->parent = this;
@@ -3654,7 +3706,7 @@ Native::Cts::Cts()
     server->parent = this;
     sxp->parent = this;
 
-    yang_name = "cts"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cts"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::~Cts()
@@ -3663,6 +3715,7 @@ Native::Cts::~Cts()
 
 bool Native::Cts::has_data() const
 {
+    if (is_presence_container) return true;
     return critical_authentication_conf.is_set
 	|| dot1x_server_timeout.is_set
 	|| dot1x_supp_timeout.is_set
@@ -3897,12 +3950,12 @@ bool Native::Cts::has_leaf_or_child_of_name(const std::string & name) const
 Native::Cts::Cache::Cache()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     nv_storage(std::make_shared<Native::Cts::Cache::NvStorage>())
 {
     nv_storage->parent = this;
 
-    yang_name = "cache"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cache"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Cache::~Cache()
@@ -3911,6 +3964,7 @@ Native::Cts::Cache::~Cache()
 
 bool Native::Cts::Cache::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (nv_storage !=  nullptr && nv_storage->has_data());
 }
@@ -4002,7 +4056,7 @@ Native::Cts::Cache::NvStorage::NvStorage()
     nv_storage{YType::enumeration, "nv-storage"}
 {
 
-    yang_name = "nv-storage"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nv-storage"; yang_parent_name = "cache"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Cache::NvStorage::~NvStorage()
@@ -4011,6 +4065,7 @@ Native::Cts::Cache::NvStorage::~NvStorage()
 
 bool Native::Cts::Cache::NvStorage::has_data() const
 {
+    if (is_presence_container) return true;
     return nv_storage.is_set;
 }
 
@@ -4084,12 +4139,12 @@ bool Native::Cts::Cache::NvStorage::has_leaf_or_child_of_name(const std::string 
 Native::Cts::CriticalAuthentication::CriticalAuthentication()
     :
     default_(std::make_shared<Native::Cts::CriticalAuthentication::Default>())
-	,fallback(std::make_shared<Native::Cts::CriticalAuthentication::Fallback>())
+    , fallback(std::make_shared<Native::Cts::CriticalAuthentication::Fallback>())
 {
     default_->parent = this;
     fallback->parent = this;
 
-    yang_name = "critical-authentication"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "critical-authentication"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Cts::CriticalAuthentication::~CriticalAuthentication()
@@ -4098,6 +4153,7 @@ Native::Cts::CriticalAuthentication::~CriticalAuthentication()
 
 bool Native::Cts::CriticalAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data())
 	|| (fallback !=  nullptr && fallback->has_data());
 }
@@ -4190,12 +4246,12 @@ bool Native::Cts::CriticalAuthentication::has_leaf_or_child_of_name(const std::s
 Native::Cts::CriticalAuthentication::Default::Default()
     :
     peer_sgt(std::make_shared<Native::Cts::CriticalAuthentication::Default::PeerSgt>())
-	,pmk(std::make_shared<Native::Cts::CriticalAuthentication::Default::Pmk>())
+    , pmk(std::make_shared<Native::Cts::CriticalAuthentication::Default::Pmk>())
 {
     peer_sgt->parent = this;
     pmk->parent = this;
 
-    yang_name = "default"; yang_parent_name = "critical-authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "critical-authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::CriticalAuthentication::Default::~Default()
@@ -4204,6 +4260,7 @@ Native::Cts::CriticalAuthentication::Default::~Default()
 
 bool Native::Cts::CriticalAuthentication::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer_sgt !=  nullptr && peer_sgt->has_data())
 	|| (pmk !=  nullptr && pmk->has_data());
 }
@@ -4294,9 +4351,11 @@ bool Native::Cts::CriticalAuthentication::Default::has_leaf_or_child_of_name(con
 }
 
 Native::Cts::CriticalAuthentication::Default::PeerSgt::PeerSgt()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "peer-sgt"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-sgt"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::CriticalAuthentication::Default::PeerSgt::~PeerSgt()
@@ -4305,7 +4364,8 @@ Native::Cts::CriticalAuthentication::Default::PeerSgt::~PeerSgt()
 
 bool Native::Cts::CriticalAuthentication::Default::PeerSgt::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -4315,7 +4375,7 @@ bool Native::Cts::CriticalAuthentication::Default::PeerSgt::has_data() const
 
 bool Native::Cts::CriticalAuthentication::Default::PeerSgt::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -4352,7 +4412,7 @@ std::shared_ptr<Entity> Native::Cts::CriticalAuthentication::Default::PeerSgt::g
     {
         auto c = std::make_shared<Native::Cts::CriticalAuthentication::Default::PeerSgt::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -4364,7 +4424,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::CriticalAuthenticati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4396,7 +4456,7 @@ Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::Range()
     trusted{YType::empty, "trusted"}
 {
 
-    yang_name = "range"; yang_parent_name = "peer-sgt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "peer-sgt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::~Range()
@@ -4405,6 +4465,7 @@ Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::~Range()
 
 bool Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| trusted.is_set;
 }
@@ -4426,7 +4487,8 @@ std::string Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::get_ab
 std::string Native::Cts::CriticalAuthentication::Default::PeerSgt::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -4494,7 +4556,7 @@ Native::Cts::CriticalAuthentication::Default::Pmk::Pmk()
     secret{YType::str, "secret"}
 {
 
-    yang_name = "pmk"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pmk"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::CriticalAuthentication::Default::Pmk::~Pmk()
@@ -4503,6 +4565,7 @@ Native::Cts::CriticalAuthentication::Default::Pmk::~Pmk()
 
 bool Native::Cts::CriticalAuthentication::Default::Pmk::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| secret.is_set;
 }
@@ -4592,7 +4655,7 @@ Native::Cts::CriticalAuthentication::Fallback::Fallback()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "fallback"; yang_parent_name = "critical-authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fallback"; yang_parent_name = "critical-authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::CriticalAuthentication::Fallback::~Fallback()
@@ -4601,6 +4664,7 @@ Native::Cts::CriticalAuthentication::Fallback::~Fallback()
 
 bool Native::Cts::CriticalAuthentication::Fallback::has_data() const
 {
+    if (is_presence_container) return true;
     return cached.is_set
 	|| default_.is_set;
 }
@@ -4689,7 +4753,7 @@ Native::Cts::Authorization::Authorization()
     list{YType::str, "list"}
 {
 
-    yang_name = "authorization"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Authorization::~Authorization()
@@ -4698,6 +4762,7 @@ Native::Cts::Authorization::~Authorization()
 
 bool Native::Cts::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set;
 }
 
@@ -4771,12 +4836,13 @@ bool Native::Cts::Authorization::has_leaf_or_child_of_name(const std::string & n
 Native::Cts::RoleBased::RoleBased()
     :
     sgt_caching{YType::empty, "sgt-caching"}
-    	,
+        ,
     permissions(std::make_shared<Native::Cts::RoleBased::Permissions>())
-	,enforcement_only(std::make_shared<Native::Cts::RoleBased::EnforcementOnly>())
-	,enforcement(std::make_shared<Native::Cts::RoleBased::Enforcement>())
-	,monitor(std::make_shared<Native::Cts::RoleBased::Monitor>())
-	,sgt_map_vlan_list(std::make_shared<Native::Cts::RoleBased::SgtMapVlanList>())
+    , enforcement_only(std::make_shared<Native::Cts::RoleBased::EnforcementOnly>())
+    , enforcement(std::make_shared<Native::Cts::RoleBased::Enforcement>())
+    , monitor(std::make_shared<Native::Cts::RoleBased::Monitor>())
+    , sgt_map(this, {"ip", "sgt"})
+    , sgt_map_vlan_list(std::make_shared<Native::Cts::RoleBased::SgtMapVlanList>())
 {
     permissions->parent = this;
     enforcement_only->parent = this;
@@ -4784,7 +4850,7 @@ Native::Cts::RoleBased::RoleBased()
     monitor->parent = this;
     sgt_map_vlan_list->parent = this;
 
-    yang_name = "role-based"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "role-based"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::~RoleBased()
@@ -4793,7 +4859,8 @@ Native::Cts::RoleBased::~RoleBased()
 
 bool Native::Cts::RoleBased::has_data() const
 {
-    for (std::size_t index=0; index<sgt_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sgt_map.len(); index++)
     {
         if(sgt_map[index]->has_data())
             return true;
@@ -4808,7 +4875,7 @@ bool Native::Cts::RoleBased::has_data() const
 
 bool Native::Cts::RoleBased::has_operation() const
 {
-    for (std::size_t index=0; index<sgt_map.size(); index++)
+    for (std::size_t index=0; index<sgt_map.len(); index++)
     {
         if(sgt_map[index]->has_operation())
             return true;
@@ -4888,7 +4955,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::Cts::RoleBased::SgtMap>();
         c->parent = this;
-        sgt_map.push_back(c);
+        sgt_map.append(c);
         return c;
     }
 
@@ -4929,7 +4996,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::get_child
     }
 
     count = 0;
-    for (auto const & c : sgt_map)
+    for (auto c : sgt_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4973,12 +5040,12 @@ bool Native::Cts::RoleBased::has_leaf_or_child_of_name(const std::string & name)
 Native::Cts::RoleBased::Permissions::Permissions()
     :
     default_(std::make_shared<Native::Cts::RoleBased::Permissions::Default>())
-	,from(std::make_shared<Native::Cts::RoleBased::Permissions::From>())
+    , from(std::make_shared<Native::Cts::RoleBased::Permissions::From>())
 {
     default_->parent = this;
     from->parent = this;
 
-    yang_name = "permissions"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "permissions"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::Permissions::~Permissions()
@@ -4987,6 +5054,7 @@ Native::Cts::RoleBased::Permissions::~Permissions()
 
 bool Native::Cts::RoleBased::Permissions::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data())
 	|| (from !=  nullptr && from->has_data());
 }
@@ -5081,7 +5149,7 @@ Native::Cts::RoleBased::Permissions::Default::Default()
     name{YType::str, "name"}
 {
 
-    yang_name = "default"; yang_parent_name = "permissions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "permissions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::Permissions::Default::~Default()
@@ -5090,6 +5158,7 @@ Native::Cts::RoleBased::Permissions::Default::~Default()
 
 bool Native::Cts::RoleBased::Permissions::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5161,9 +5230,11 @@ bool Native::Cts::RoleBased::Permissions::Default::has_leaf_or_child_of_name(con
 }
 
 Native::Cts::RoleBased::Permissions::From::From()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "from"; yang_parent_name = "permissions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "from"; yang_parent_name = "permissions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::Permissions::From::~From()
@@ -5172,7 +5243,8 @@ Native::Cts::RoleBased::Permissions::From::~From()
 
 bool Native::Cts::RoleBased::Permissions::From::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -5182,7 +5254,7 @@ bool Native::Cts::RoleBased::Permissions::From::has_data() const
 
 bool Native::Cts::RoleBased::Permissions::From::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -5219,7 +5291,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::get_child_by_
     {
         auto c = std::make_shared<Native::Cts::RoleBased::Permissions::From::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -5231,7 +5303,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5260,12 +5332,12 @@ bool Native::Cts::RoleBased::Permissions::From::has_leaf_or_child_of_name(const 
 Native::Cts::RoleBased::Permissions::From::Range::Range()
     :
     range{YType::uint16, "range"}
-    	,
+        ,
     to(std::make_shared<Native::Cts::RoleBased::Permissions::From::Range::To>())
 {
     to->parent = this;
 
-    yang_name = "range"; yang_parent_name = "from"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "from"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::Permissions::From::Range::~Range()
@@ -5274,6 +5346,7 @@ Native::Cts::RoleBased::Permissions::From::Range::~Range()
 
 bool Native::Cts::RoleBased::Permissions::From::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| (to !=  nullptr && to->has_data());
 }
@@ -5295,7 +5368,8 @@ std::string Native::Cts::RoleBased::Permissions::From::Range::get_absolute_path(
 std::string Native::Cts::RoleBased::Permissions::From::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -5361,9 +5435,11 @@ bool Native::Cts::RoleBased::Permissions::From::Range::has_leaf_or_child_of_name
 }
 
 Native::Cts::RoleBased::Permissions::From::Range::To::To()
+    :
+    range(this, {"range"})
 {
 
-    yang_name = "to"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "to"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::RoleBased::Permissions::From::Range::To::~To()
@@ -5372,7 +5448,8 @@ Native::Cts::RoleBased::Permissions::From::Range::To::~To()
 
 bool Native::Cts::RoleBased::Permissions::From::Range::To::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -5382,7 +5459,7 @@ bool Native::Cts::RoleBased::Permissions::From::Range::To::has_data() const
 
 bool Native::Cts::RoleBased::Permissions::From::Range::To::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -5412,7 +5489,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Permissions::From::Range::To::ge
     {
         auto c = std::make_shared<Native::Cts::RoleBased::Permissions::From::Range::To::Range_>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -5424,7 +5501,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Permissio
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5456,7 +5533,7 @@ Native::Cts::RoleBased::Permissions::From::Range::To::Range_::Range_()
     name{YType::str, "name"}
 {
 
-    yang_name = "range"; yang_parent_name = "to"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "to"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::RoleBased::Permissions::From::Range::To::Range_::~Range_()
@@ -5465,6 +5542,7 @@ Native::Cts::RoleBased::Permissions::From::Range::To::Range_::~Range_()
 
 bool Native::Cts::RoleBased::Permissions::From::Range::To::Range_::has_data() const
 {
+    if (is_presence_container) return true;
     return range.is_set
 	|| name.is_set;
 }
@@ -5479,7 +5557,8 @@ bool Native::Cts::RoleBased::Permissions::From::Range::To::Range_::has_operation
 std::string Native::Cts::RoleBased::Permissions::From::Range::To::Range_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "range" <<"[range='" <<range <<"']";
+    path_buffer << "range";
+    ADD_KEY_TOKEN(range, "range");
     return path_buffer.str();
 }
 
@@ -5546,7 +5625,7 @@ Native::Cts::RoleBased::EnforcementOnly::EnforcementOnly()
     enforcement{YType::empty, "enforcement"}
 {
 
-    yang_name = "enforcement-only"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enforcement-only"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::EnforcementOnly::~EnforcementOnly()
@@ -5555,6 +5634,7 @@ Native::Cts::RoleBased::EnforcementOnly::~EnforcementOnly()
 
 bool Native::Cts::RoleBased::EnforcementOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return enforcement.is_set;
 }
 
@@ -5628,9 +5708,11 @@ bool Native::Cts::RoleBased::EnforcementOnly::has_leaf_or_child_of_name(const st
 Native::Cts::RoleBased::Enforcement::Enforcement()
     :
     logging_interval{YType::uint32, "logging-interval"}
+        ,
+    vlan_list(this, {"id"})
 {
 
-    yang_name = "enforcement"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enforcement"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::Enforcement::~Enforcement()
@@ -5639,7 +5721,8 @@ Native::Cts::RoleBased::Enforcement::~Enforcement()
 
 bool Native::Cts::RoleBased::Enforcement::has_data() const
 {
-    for (std::size_t index=0; index<vlan_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_list.len(); index++)
     {
         if(vlan_list[index]->has_data())
             return true;
@@ -5649,7 +5732,7 @@ bool Native::Cts::RoleBased::Enforcement::has_data() const
 
 bool Native::Cts::RoleBased::Enforcement::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_list.size(); index++)
+    for (std::size_t index=0; index<vlan_list.len(); index++)
     {
         if(vlan_list[index]->has_operation())
             return true;
@@ -5688,7 +5771,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::Enforcement::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Cts::RoleBased::Enforcement::VlanList>();
         c->parent = this;
-        vlan_list.push_back(c);
+        vlan_list.append(c);
         return c;
     }
 
@@ -5700,7 +5783,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::Enforceme
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_list)
+    for (auto c : vlan_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5741,7 +5824,7 @@ Native::Cts::RoleBased::Enforcement::VlanList::VlanList()
     id{YType::str, "id"}
 {
 
-    yang_name = "vlan-list"; yang_parent_name = "enforcement"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-list"; yang_parent_name = "enforcement"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::Enforcement::VlanList::~VlanList()
@@ -5750,6 +5833,7 @@ Native::Cts::RoleBased::Enforcement::VlanList::~VlanList()
 
 bool Native::Cts::RoleBased::Enforcement::VlanList::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set;
 }
 
@@ -5769,7 +5853,8 @@ std::string Native::Cts::RoleBased::Enforcement::VlanList::get_absolute_path() c
 std::string Native::Cts::RoleBased::Enforcement::VlanList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-list" <<"[id='" <<id <<"']";
+    path_buffer << "vlan-list";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -5825,7 +5910,7 @@ Native::Cts::RoleBased::Monitor::Monitor()
     all{YType::empty, "all"}
 {
 
-    yang_name = "monitor"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::Monitor::~Monitor()
@@ -5834,6 +5919,7 @@ Native::Cts::RoleBased::Monitor::~Monitor()
 
 bool Native::Cts::RoleBased::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set;
 }
 
@@ -5912,7 +5998,7 @@ Native::Cts::RoleBased::SgtMap::SgtMap()
     host{YType::empty, "host"}
 {
 
-    yang_name = "sgt-map"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sgt-map"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::SgtMap::~SgtMap()
@@ -5921,6 +6007,7 @@ Native::Cts::RoleBased::SgtMap::~SgtMap()
 
 bool Native::Cts::RoleBased::SgtMap::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| sgt.is_set
 	|| vrf.is_set
@@ -5946,7 +6033,9 @@ std::string Native::Cts::RoleBased::SgtMap::get_absolute_path() const
 std::string Native::Cts::RoleBased::SgtMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sgt-map" <<"[ip='" <<ip <<"']" <<"[sgt='" <<sgt <<"']";
+    path_buffer << "sgt-map";
+    ADD_KEY_TOKEN(ip, "ip");
+    ADD_KEY_TOKEN(sgt, "sgt");
     return path_buffer.str();
 }
 
@@ -6031,9 +6120,11 @@ bool Native::Cts::RoleBased::SgtMap::has_leaf_or_child_of_name(const std::string
 }
 
 Native::Cts::RoleBased::SgtMapVlanList::SgtMapVlanList()
+    :
+    sgt_map(this, {"vlan_list"})
 {
 
-    yang_name = "sgt-map-vlan-list"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sgt-map-vlan-list"; yang_parent_name = "role-based"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::SgtMapVlanList::~SgtMapVlanList()
@@ -6042,7 +6133,8 @@ Native::Cts::RoleBased::SgtMapVlanList::~SgtMapVlanList()
 
 bool Native::Cts::RoleBased::SgtMapVlanList::has_data() const
 {
-    for (std::size_t index=0; index<sgt_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sgt_map.len(); index++)
     {
         if(sgt_map[index]->has_data())
             return true;
@@ -6052,7 +6144,7 @@ bool Native::Cts::RoleBased::SgtMapVlanList::has_data() const
 
 bool Native::Cts::RoleBased::SgtMapVlanList::has_operation() const
 {
-    for (std::size_t index=0; index<sgt_map.size(); index++)
+    for (std::size_t index=0; index<sgt_map.len(); index++)
     {
         if(sgt_map[index]->has_operation())
             return true;
@@ -6089,7 +6181,7 @@ std::shared_ptr<Entity> Native::Cts::RoleBased::SgtMapVlanList::get_child_by_nam
     {
         auto c = std::make_shared<Native::Cts::RoleBased::SgtMapVlanList::SgtMap>();
         c->parent = this;
-        sgt_map.push_back(c);
+        sgt_map.append(c);
         return c;
     }
 
@@ -6101,7 +6193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::RoleBased::SgtMapVla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sgt_map)
+    for (auto c : sgt_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6133,7 +6225,7 @@ Native::Cts::RoleBased::SgtMapVlanList::SgtMap::SgtMap()
     sgt{YType::int16, "sgt"}
 {
 
-    yang_name = "sgt-map"; yang_parent_name = "sgt-map-vlan-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sgt-map"; yang_parent_name = "sgt-map-vlan-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::RoleBased::SgtMapVlanList::SgtMap::~SgtMap()
@@ -6142,6 +6234,7 @@ Native::Cts::RoleBased::SgtMapVlanList::SgtMap::~SgtMap()
 
 bool Native::Cts::RoleBased::SgtMapVlanList::SgtMap::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_list.is_set
 	|| sgt.is_set;
 }
@@ -6163,7 +6256,8 @@ std::string Native::Cts::RoleBased::SgtMapVlanList::SgtMap::get_absolute_path() 
 std::string Native::Cts::RoleBased::SgtMapVlanList::SgtMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sgt-map" <<"[vlan-list='" <<vlan_list <<"']";
+    path_buffer << "sgt-map";
+    ADD_KEY_TOKEN(vlan_list, "vlan-list");
     return path_buffer.str();
 }
 
@@ -6228,16 +6322,16 @@ bool Native::Cts::RoleBased::SgtMapVlanList::SgtMap::has_leaf_or_child_of_name(c
 Native::Cts::Server::Server()
     :
     deadtime{YType::uint32, "deadtime"}
-    	,
+        ,
     key_wrap(std::make_shared<Native::Cts::Server::KeyWrap>())
-	,load_balance(std::make_shared<Native::Cts::Server::LoadBalance>())
-	,test(std::make_shared<Native::Cts::Server::Test>())
+    , load_balance(std::make_shared<Native::Cts::Server::LoadBalance>())
+    , test(std::make_shared<Native::Cts::Server::Test>())
 {
     key_wrap->parent = this;
     load_balance->parent = this;
     test->parent = this;
 
-    yang_name = "server"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Server::~Server()
@@ -6246,6 +6340,7 @@ Native::Cts::Server::~Server()
 
 bool Native::Cts::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return deadtime.is_set
 	|| (key_wrap !=  nullptr && key_wrap->has_data())
 	|| (load_balance !=  nullptr && load_balance->has_data())
@@ -6369,7 +6464,7 @@ Native::Cts::Server::KeyWrap::KeyWrap()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "key-wrap"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "key-wrap"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Server::KeyWrap::~KeyWrap()
@@ -6378,6 +6473,7 @@ Native::Cts::Server::KeyWrap::~KeyWrap()
 
 bool Native::Cts::Server::KeyWrap::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -6454,7 +6550,7 @@ Native::Cts::Server::LoadBalance::LoadBalance()
 {
     method->parent = this;
 
-    yang_name = "load-balance"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "load-balance"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Server::LoadBalance::~LoadBalance()
@@ -6463,6 +6559,7 @@ Native::Cts::Server::LoadBalance::~LoadBalance()
 
 bool Native::Cts::Server::LoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return (method !=  nullptr && method->has_data());
 }
 
@@ -6541,7 +6638,7 @@ Native::Cts::Server::LoadBalance::Method::Method()
     least_outstanding(nullptr) // presence node
 {
 
-    yang_name = "method"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "method"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Server::LoadBalance::Method::~Method()
@@ -6550,6 +6647,7 @@ Native::Cts::Server::LoadBalance::Method::~Method()
 
 bool Native::Cts::Server::LoadBalance::Method::has_data() const
 {
+    if (is_presence_container) return true;
     return (least_outstanding !=  nullptr && least_outstanding->has_data());
 }
 
@@ -6629,7 +6727,7 @@ Native::Cts::Server::LoadBalance::Method::LeastOutstanding::LeastOutstanding()
     ignore_preferred_server{YType::empty, "ignore-preferred-server"}
 {
 
-    yang_name = "least-outstanding"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "least-outstanding"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Cts::Server::LoadBalance::Method::LeastOutstanding::~LeastOutstanding()
@@ -6638,6 +6736,7 @@ Native::Cts::Server::LoadBalance::Method::LeastOutstanding::~LeastOutstanding()
 
 bool Native::Cts::Server::LoadBalance::Method::LeastOutstanding::has_data() const
 {
+    if (is_presence_container) return true;
     return batch_size.is_set
 	|| ignore_preferred_server.is_set;
 }
@@ -6723,11 +6822,12 @@ bool Native::Cts::Server::LoadBalance::Method::LeastOutstanding::has_leaf_or_chi
 
 Native::Cts::Server::Test::Test()
     :
-    all(std::make_shared<Native::Cts::Server::Test::All>())
+    server(this, {"ip"})
+    , all(std::make_shared<Native::Cts::Server::Test::All>())
 {
     all->parent = this;
 
-    yang_name = "test"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "test"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Server::Test::~Test()
@@ -6736,7 +6836,8 @@ Native::Cts::Server::Test::~Test()
 
 bool Native::Cts::Server::Test::has_data() const
 {
-    for (std::size_t index=0; index<server.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server.len(); index++)
     {
         if(server[index]->has_data())
             return true;
@@ -6746,7 +6847,7 @@ bool Native::Cts::Server::Test::has_data() const
 
 bool Native::Cts::Server::Test::has_operation() const
 {
-    for (std::size_t index=0; index<server.size(); index++)
+    for (std::size_t index=0; index<server.len(); index++)
     {
         if(server[index]->has_operation())
             return true;
@@ -6784,7 +6885,7 @@ std::shared_ptr<Entity> Native::Cts::Server::Test::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Cts::Server::Test::Server_>();
         c->parent = this;
-        server.push_back(c);
+        server.append(c);
         return c;
     }
 
@@ -6805,7 +6906,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Server::Test::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : server)
+    for (auto c : server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6844,7 +6945,7 @@ Native::Cts::Server::Test::Server_::Server_()
     idle_time{YType::uint32, "idle-time"}
 {
 
-    yang_name = "server"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Server::Test::Server_::~Server_()
@@ -6853,6 +6954,7 @@ Native::Cts::Server::Test::Server_::~Server_()
 
 bool Native::Cts::Server::Test::Server_::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| deadtime.is_set
 	|| enable.is_set
@@ -6878,7 +6980,8 @@ std::string Native::Cts::Server::Test::Server_::get_absolute_path() const
 std::string Native::Cts::Server::Test::Server_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server" <<"[ip='" <<ip <<"']";
+    path_buffer << "server";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -6969,7 +7072,7 @@ Native::Cts::Server::Test::All::All()
     idle_time{YType::uint32, "idle-time"}
 {
 
-    yang_name = "all"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Server::Test::All::~All()
@@ -6978,6 +7081,7 @@ Native::Cts::Server::Test::All::~All()
 
 bool Native::Cts::Server::Test::All::has_data() const
 {
+    if (is_presence_container) return true;
     return deadtime.is_set
 	|| enable.is_set
 	|| idle_time.is_set;
@@ -7077,14 +7181,14 @@ bool Native::Cts::Server::Test::All::has_leaf_or_child_of_name(const std::string
 Native::Cts::Sxp::Sxp()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     default_(std::make_shared<Native::Cts::Sxp::Default>())
-	,connection(std::make_shared<Native::Cts::Sxp::Connection>())
+    , connection(std::make_shared<Native::Cts::Sxp::Connection>())
 {
     default_->parent = this;
     connection->parent = this;
 
-    yang_name = "sxp"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sxp"; yang_parent_name = "cts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Sxp::~Sxp()
@@ -7093,6 +7197,7 @@ Native::Cts::Sxp::~Sxp()
 
 bool Native::Cts::Sxp::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (connection !=  nullptr && connection->has_data());
@@ -7198,12 +7303,12 @@ bool Native::Cts::Sxp::has_leaf_or_child_of_name(const std::string & name) const
 Native::Cts::Sxp::Default::Default()
     :
     source_ip{YType::str, "source-ip"}
-    	,
+        ,
     password(std::make_shared<Native::Cts::Sxp::Default::Password>())
 {
     password->parent = this;
 
-    yang_name = "default"; yang_parent_name = "sxp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "sxp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Sxp::Default::~Default()
@@ -7212,6 +7317,7 @@ Native::Cts::Sxp::Default::~Default()
 
 bool Native::Cts::Sxp::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return source_ip.is_set
 	|| (password !=  nullptr && password->has_data());
 }
@@ -7304,7 +7410,7 @@ Native::Cts::Sxp::Default::Password::Password()
     secret{YType::str, "secret"}
 {
 
-    yang_name = "password"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Sxp::Default::Password::~Password()
@@ -7313,6 +7419,7 @@ Native::Cts::Sxp::Default::Password::~Password()
 
 bool Native::Cts::Sxp::Default::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| secret.is_set;
 }
@@ -7402,7 +7509,7 @@ Native::Cts::Sxp::Connection::Connection()
 {
     peer->parent = this;
 
-    yang_name = "connection"; yang_parent_name = "sxp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "connection"; yang_parent_name = "sxp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Sxp::Connection::~Connection()
@@ -7411,6 +7518,7 @@ Native::Cts::Sxp::Connection::~Connection()
 
 bool Native::Cts::Sxp::Connection::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data());
 }
 
@@ -7485,9 +7593,11 @@ bool Native::Cts::Sxp::Connection::has_leaf_or_child_of_name(const std::string &
 }
 
 Native::Cts::Sxp::Connection::Peer::Peer()
+    :
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "peer"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Sxp::Connection::Peer::~Peer()
@@ -7496,7 +7606,8 @@ Native::Cts::Sxp::Connection::Peer::~Peer()
 
 bool Native::Cts::Sxp::Connection::Peer::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -7506,7 +7617,7 @@ bool Native::Cts::Sxp::Connection::Peer::has_data() const
 
 bool Native::Cts::Sxp::Connection::Peer::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -7543,7 +7654,7 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Connection::Peer::get_child_by_name(co
     {
         auto c = std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -7555,7 +7666,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Connection::Pee
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7584,12 +7695,13 @@ bool Native::Cts::Sxp::Connection::Peer::has_leaf_or_child_of_name(const std::st
 Native::Cts::Sxp::Connection::Peer::Ipv4::Ipv4()
     :
     ipv4{YType::str, "ipv4"}
-    	,
+        ,
     source(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source>())
+    , password(this, {"password_type"})
 {
     source->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::~Ipv4()
@@ -7598,7 +7710,8 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::~Ipv4()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<password.len(); index++)
     {
         if(password[index]->has_data())
             return true;
@@ -7609,7 +7722,7 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::has_data() const
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    for (std::size_t index=0; index<password.len(); index++)
     {
         if(password[index]->has_operation())
             return true;
@@ -7629,7 +7742,8 @@ std::string Native::Cts::Sxp::Connection::Peer::Ipv4::get_absolute_path() const
 std::string Native::Cts::Sxp::Connection::Peer::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -7658,7 +7772,7 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Connection::Peer::Ipv4::get_child_by_n
     {
         auto c = std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Password>();
         c->parent = this;
-        password.push_back(c);
+        password.append(c);
         return c;
     }
 
@@ -7675,7 +7789,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Connection::Pee
     }
 
     count = 0;
-    for (auto const & c : password)
+    for (auto c : password.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7712,9 +7826,11 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::has_leaf_or_child_of_name(const s
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Source()
+    :
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "source"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::~Source()
@@ -7723,7 +7839,8 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::~Source()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -7733,7 +7850,7 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::has_data() const
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -7763,7 +7880,7 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Connection::Peer::Ipv4::Source::get_ch
     {
         auto c = std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -7775,7 +7892,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Connection::Pee
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7804,9 +7921,11 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::has_leaf_or_child_of_name
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Ipv4_()
     :
     ipv4{YType::str, "ipv4"}
+        ,
+    password(this, {"password_type"})
 {
 
-    yang_name = "ipv4"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::~Ipv4_()
@@ -7815,7 +7934,8 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::~Ipv4_()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::has_data() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<password.len(); index++)
     {
         if(password[index]->has_data())
             return true;
@@ -7825,7 +7945,7 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::has_data() const
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::has_operation() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    for (std::size_t index=0; index<password.len(); index++)
     {
         if(password[index]->has_operation())
             return true;
@@ -7837,7 +7957,8 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::has_operation() co
 std::string Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -7857,7 +7978,7 @@ std::shared_ptr<Entity> Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_:
     {
         auto c = std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password>();
         c->parent = this;
-        password.push_back(c);
+        password.append(c);
         return c;
     }
 
@@ -7869,7 +7990,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Cts::Sxp::Connection::Pee
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : password)
+    for (auto c : password.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7908,12 +8029,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::has_leaf_or_child_
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Password()
     :
     password_type{YType::enumeration, "password-type"}
-    	,
+        ,
     mode(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "password"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::~Password()
@@ -7922,6 +8043,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::~Password()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return password_type.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -7936,7 +8058,8 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::has_oper
 std::string Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "password" <<"[password-type='" <<password_type <<"']";
+    path_buffer << "password";
+    ADD_KEY_TOKEN(password_type, "password-type");
     return path_buffer.str();
 }
 
@@ -8004,10 +8127,10 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::has_leaf
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Mode()
     :
     local(nullptr) // presence node
-	,peer(nullptr) // presence node
+    , peer(nullptr) // presence node
 {
 
-    yang_name = "mode"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::~Mode()
@@ -8016,6 +8139,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::~Mode()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data())
 	|| (peer !=  nullptr && peer->has_data());
 }
@@ -8101,11 +8225,11 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::ha
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Local()
     :
     both(nullptr) // presence node
-	,listener(nullptr) // presence node
-	,speaker(nullptr) // presence node
+    , listener(nullptr) // presence node
+    , speaker(nullptr) // presence node
 {
 
-    yang_name = "local"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::~Local()
@@ -8114,6 +8238,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (both !=  nullptr && both->has_data())
 	|| (listener !=  nullptr && listener->has_data())
 	|| (speaker !=  nullptr && speaker->has_data());
@@ -8217,7 +8342,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "both"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "both"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Both::~Both()
@@ -8226,6 +8351,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Both::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -8292,12 +8418,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Lo
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Listener::Listener()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Listener::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "listener"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "listener"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Listener::~Listener()
@@ -8306,6 +8432,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Listener::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -8392,7 +8519,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Listener::HoldTime::~HoldTime()
@@ -8401,6 +8528,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Listener::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| max_time.is_set
 	|| vrf.is_set;
@@ -8493,12 +8621,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Lo
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Speaker::Speaker()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Speaker::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "speaker"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "speaker"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Speaker::~Speaker()
@@ -8507,6 +8635,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Speaker::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -8592,7 +8721,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Speaker::HoldTime::~HoldTime()
@@ -8601,6 +8730,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Local::Speaker::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| vrf.is_set;
 }
@@ -8680,11 +8810,11 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Lo
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Peer_()
     :
     both(nullptr) // presence node
-	,listener(nullptr) // presence node
-	,speaker(nullptr) // presence node
+    , listener(nullptr) // presence node
+    , speaker(nullptr) // presence node
 {
 
-    yang_name = "peer"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::~Peer_()
@@ -8693,6 +8823,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::has_data() const
 {
+    if (is_presence_container) return true;
     return (both !=  nullptr && both->has_data())
 	|| (listener !=  nullptr && listener->has_data())
 	|| (speaker !=  nullptr && speaker->has_data());
@@ -8796,7 +8927,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "both"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "both"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Both::~Both()
@@ -8805,6 +8936,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Both::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -8871,12 +9003,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Pe
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Listener::Listener()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Listener::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "listener"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "listener"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Listener::~Listener()
@@ -8885,6 +9017,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Listener::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -8970,7 +9103,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Listener::HoldTime::~HoldTime()
@@ -8979,6 +9112,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Listener::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| vrf.is_set;
 }
@@ -9058,12 +9192,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Pe
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Speaker::Speaker()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Speaker::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "speaker"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "speaker"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Speaker::~Speaker()
@@ -9072,6 +9206,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Speaker::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -9158,7 +9293,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Speaker::HoldTime::~HoldTime()
@@ -9167,6 +9302,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Peer_::Speaker::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| max_time.is_set
 	|| vrf.is_set;
@@ -9259,12 +9395,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Source::Ipv4_::Password::Mode::Pe
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Password()
     :
     password_type{YType::enumeration, "password-type"}
-    	,
+        ,
     mode(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "password"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::~Password()
@@ -9273,6 +9409,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::~Password()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return password_type.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -9287,7 +9424,8 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::has_operation() const
 std::string Native::Cts::Sxp::Connection::Peer::Ipv4::Password::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "password" <<"[password-type='" <<password_type <<"']";
+    path_buffer << "password";
+    ADD_KEY_TOKEN(password_type, "password-type");
     return path_buffer.str();
 }
 
@@ -9355,10 +9493,10 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::has_leaf_or_child_of_na
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Mode()
     :
     local(nullptr) // presence node
-	,peer(nullptr) // presence node
+    , peer(nullptr) // presence node
 {
 
-    yang_name = "mode"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::~Mode()
@@ -9367,6 +9505,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::~Mode()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data())
 	|| (peer !=  nullptr && peer->has_data());
 }
@@ -9452,11 +9591,11 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::has_leaf_or_child
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Local()
     :
     both(nullptr) // presence node
-	,listener(nullptr) // presence node
-	,speaker(nullptr) // presence node
+    , listener(nullptr) // presence node
+    , speaker(nullptr) // presence node
 {
 
-    yang_name = "local"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::~Local()
@@ -9465,6 +9604,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::~Local()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (both !=  nullptr && both->has_data())
 	|| (listener !=  nullptr && listener->has_data())
 	|| (speaker !=  nullptr && speaker->has_data());
@@ -9568,7 +9708,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Both::Both()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "both"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "both"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Both::~Both()
@@ -9577,6 +9717,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Both::~Both()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Both::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -9643,12 +9784,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Both::has_
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::Listener()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "listener"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "listener"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::~Listener()
@@ -9657,6 +9798,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::~List
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -9743,7 +9885,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::HoldT
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::HoldTime::~HoldTime()
@@ -9752,6 +9894,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::HoldT
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| max_time.is_set
 	|| vrf.is_set;
@@ -9844,12 +9987,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Listener::
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::Speaker()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "speaker"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "speaker"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::~Speaker()
@@ -9858,6 +10001,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::~Speak
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -9943,7 +10087,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::HoldTi
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::HoldTime::~HoldTime()
@@ -9952,6 +10096,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::HoldTi
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| vrf.is_set;
 }
@@ -10031,11 +10176,11 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Local::Speaker::H
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Peer_()
     :
     both(nullptr) // presence node
-	,listener(nullptr) // presence node
-	,speaker(nullptr) // presence node
+    , listener(nullptr) // presence node
+    , speaker(nullptr) // presence node
 {
 
-    yang_name = "peer"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::~Peer_()
@@ -10044,6 +10189,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::~Peer_()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::has_data() const
 {
+    if (is_presence_container) return true;
     return (both !=  nullptr && both->has_data())
 	|| (listener !=  nullptr && listener->has_data())
 	|| (speaker !=  nullptr && speaker->has_data());
@@ -10147,7 +10293,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Both::Both()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "both"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "both"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Both::~Both()
@@ -10156,6 +10302,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Both::~Both()
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Both::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -10222,12 +10369,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Both::has_
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::Listener()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "listener"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "listener"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::~Listener()
@@ -10236,6 +10383,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::~List
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -10321,7 +10469,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::HoldT
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "listener"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::HoldTime::~HoldTime()
@@ -10330,6 +10478,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::HoldT
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| vrf.is_set;
 }
@@ -10409,12 +10558,12 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Listener::
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::Speaker()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     hold_time(std::make_shared<Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::HoldTime>())
 {
     hold_time->parent = this;
 
-    yang_name = "speaker"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "speaker"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::~Speaker()
@@ -10423,6 +10572,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::~Speak
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -10509,7 +10659,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::HoldTi
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "speaker"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::HoldTime::~HoldTime()
@@ -10518,6 +10668,7 @@ Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::HoldTi
 
 bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return min_time.is_set
 	|| max_time.is_set
 	|| vrf.is_set;
@@ -10608,9 +10759,11 @@ bool Native::Cts::Sxp::Connection::Peer::Ipv4::Password::Mode::Peer_::Speaker::H
 }
 
 Native::BfdTemplate::BfdTemplate()
+    :
+    single_hop(this, {"name"})
 {
 
-    yang_name = "bfd-template"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-template"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BfdTemplate::~BfdTemplate()
@@ -10619,7 +10772,8 @@ Native::BfdTemplate::~BfdTemplate()
 
 bool Native::BfdTemplate::has_data() const
 {
-    for (std::size_t index=0; index<single_hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<single_hop.len(); index++)
     {
         if(single_hop[index]->has_data())
             return true;
@@ -10629,7 +10783,7 @@ bool Native::BfdTemplate::has_data() const
 
 bool Native::BfdTemplate::has_operation() const
 {
-    for (std::size_t index=0; index<single_hop.size(); index++)
+    for (std::size_t index=0; index<single_hop.len(); index++)
     {
         if(single_hop[index]->has_operation())
             return true;
@@ -10666,7 +10820,7 @@ std::shared_ptr<Entity> Native::BfdTemplate::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::BfdTemplate::SingleHop>();
         c->parent = this;
-        single_hop.push_back(c);
+        single_hop.append(c);
         return c;
     }
 
@@ -10678,7 +10832,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::BfdTemplate::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : single_hop)
+    for (auto c : single_hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10707,12 +10861,12 @@ bool Native::BfdTemplate::has_leaf_or_child_of_name(const std::string & name) co
 Native::BfdTemplate::SingleHop::SingleHop()
     :
     name{YType::str, "name"}
-    	,
+        ,
     interval(std::make_shared<Native::BfdTemplate::SingleHop::Interval>())
 {
     interval->parent = this;
 
-    yang_name = "single-hop"; yang_parent_name = "bfd-template"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "single-hop"; yang_parent_name = "bfd-template"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::BfdTemplate::SingleHop::~SingleHop()
@@ -10721,6 +10875,7 @@ Native::BfdTemplate::SingleHop::~SingleHop()
 
 bool Native::BfdTemplate::SingleHop::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (interval !=  nullptr && interval->has_data());
 }
@@ -10742,7 +10897,8 @@ std::string Native::BfdTemplate::SingleHop::get_absolute_path() const
 std::string Native::BfdTemplate::SingleHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-bfd:single-hop" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-bfd:single-hop";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10816,7 +10972,7 @@ Native::BfdTemplate::SingleHop::Interval::Interval()
     multiplier{YType::uint8, "multiplier"}
 {
 
-    yang_name = "interval"; yang_parent_name = "single-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interval"; yang_parent_name = "single-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::BfdTemplate::SingleHop::Interval::~Interval()
@@ -10825,6 +10981,7 @@ Native::BfdTemplate::SingleHop::Interval::~Interval()
 
 bool Native::BfdTemplate::SingleHop::Interval::has_data() const
 {
+    if (is_presence_container) return true;
     return microseconds.is_set
 	|| both.is_set
 	|| min_tx.is_set
@@ -10943,10 +11100,10 @@ bool Native::BfdTemplate::SingleHop::Interval::has_leaf_or_child_of_name(const s
 Native::Pfr::Pfr()
     :
     border(nullptr) // presence node
-	,master(nullptr) // presence node
+    , master(nullptr) // presence node
 {
 
-    yang_name = "pfr"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pfr"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::~Pfr()
@@ -10955,6 +11112,7 @@ Native::Pfr::~Pfr()
 
 bool Native::Pfr::has_data() const
 {
+    if (is_presence_container) return true;
     return (border !=  nullptr && border->has_data())
 	|| (master !=  nullptr && master->has_data());
 }
@@ -11046,11 +11204,11 @@ bool Native::Pfr::has_leaf_or_child_of_name(const std::string & name) const
 
 Native::Pfr::Border::Border()
     :
-    pfr_mode__config_pfr_br(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr>())
+    pfr_mode__config_pfr_br(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr>())
 {
     pfr_mode__config_pfr_br->parent = this;
 
-    yang_name = "border"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "border"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Pfr::Border::~Border()
@@ -11059,6 +11217,7 @@ Native::Pfr::Border::~Border()
 
 bool Native::Pfr::Border::has_data() const
 {
+    if (is_presence_container) return true;
     return (pfr_mode__config_pfr_br !=  nullptr && pfr_mode__config_pfr_br->has_data());
 }
 
@@ -11097,7 +11256,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::get_child_by_name(const std::string
     {
         if(pfr_mode__config_pfr_br == nullptr)
         {
-            pfr_mode__config_pfr_br = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr>();
+            pfr_mode__config_pfr_br = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr>();
         }
         return pfr_mode__config_pfr_br;
     }
@@ -11132,29 +11291,30 @@ bool Native::Pfr::Border::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::PfrModeConfigpfrbr()
+Native::Pfr::Border::PfrModeConfigPfrBr::PfrModeConfigPfrBr()
     :
     logging{YType::empty, "logging"},
     port{YType::uint16, "port"},
     shutdown{YType::empty, "shutdown"}
-    	,
-    active_probe(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe>())
-	,local(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local>())
-	,master(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Master>())
+        ,
+    active_probe(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe>())
+    , local(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local>())
+    , master(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Master>())
 {
     active_probe->parent = this;
     local->parent = this;
     master->parent = this;
 
-    yang_name = "pfr-Mode__config-pfr-br"; yang_parent_name = "border"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pfr-Mode__config-pfr-br"; yang_parent_name = "border"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::~PfrModeConfigpfrbr()
+Native::Pfr::Border::PfrModeConfigPfrBr::~PfrModeConfigPfrBr()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::has_data() const
 {
+    if (is_presence_container) return true;
     return logging.is_set
 	|| port.is_set
 	|| shutdown.is_set
@@ -11163,7 +11323,7 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::has_data() const
 	|| (master !=  nullptr && master->has_data());
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
@@ -11174,21 +11334,21 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::has_operation() const
 	|| (master !=  nullptr && master->has_operation());
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pfr-Mode__config-pfr-br";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11200,13 +11360,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "active-probe")
     {
         if(active_probe == nullptr)
         {
-            active_probe = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe>();
+            active_probe = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe>();
         }
         return active_probe;
     }
@@ -11215,7 +11375,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::get_child_by_na
     {
         if(local == nullptr)
         {
-            local = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local>();
+            local = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local>();
         }
         return local;
     }
@@ -11224,7 +11384,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::get_child_by_na
     {
         if(master == nullptr)
         {
-            master = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Master>();
+            master = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Master>();
         }
         return master;
     }
@@ -11232,7 +11392,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11254,7 +11414,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "logging")
     {
@@ -11276,7 +11436,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::set_value(const std::string & valu
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "logging")
     {
@@ -11292,52 +11452,53 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::set_filter(const std::string & val
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "active-probe" || name == "local" || name == "master" || name == "logging" || name == "port" || name == "shutdown")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::ActiveProbe()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::ActiveProbe()
     :
-    address(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address>())
+    address(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address>())
 {
     address->parent = this;
 
-    yang_name = "active-probe"; yang_parent_name = "pfr-Mode__config-pfr-br"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active-probe"; yang_parent_name = "pfr-Mode__config-pfr-br"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::~ActiveProbe()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::~ActiveProbe()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::has_operation() const
 {
     return is_set(yfilter)
 	|| (address !=  nullptr && address->has_operation());
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "active-probe";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11346,13 +11507,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
         if(address == nullptr)
         {
-            address = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address>();
+            address = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address>();
         }
         return address;
     }
@@ -11360,7 +11521,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11372,60 +11533,61 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Address()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Address()
     :
-    source(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source>())
+    source(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source>())
 {
     source->parent = this;
 
-    yang_name = "address"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::~Address()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::~Address()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data());
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| (source !=  nullptr && source->has_operation());
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/active-probe/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11434,13 +11596,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "source")
     {
         if(source == nullptr)
         {
-            source = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source>();
+            source = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source>();
         }
         return source;
     }
@@ -11448,7 +11610,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Ad
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11460,60 +11622,61 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "source")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Source()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Source()
     :
-    interface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface>())
+    interface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface>())
 {
     interface->parent = this;
 
-    yang_name = "source"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::~Source()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::~Source()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::has_operation() const
 {
     return is_set(yfilter)
 	|| (interface !=  nullptr && interface->has_operation());
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/active-probe/address/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11522,13 +11685,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
         if(interface == nullptr)
         {
-            interface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface>();
+            interface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface>();
         }
         return interface;
     }
@@ -11536,7 +11699,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Ad
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11548,22 +11711,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::Interface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::Interface()
     :
     appnav_compress{YType::uint16, "AppNav-Compress"},
     appnav_uncompress{YType::uint16, "AppNav-UnCompress"},
@@ -11597,26 +11760,27 @@ Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
-    atm_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface>())
+        ,
+    atm_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::~Interface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::~Interface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -11655,7 +11819,7 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
 	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_data());
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(appnav_compress.yfilter)
@@ -11696,21 +11860,21 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
 	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_operation());
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/active-probe/address/source/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11751,13 +11915,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ATM-subinterface")
     {
         if(atm_subinterface == nullptr)
         {
-            atm_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface>();
+            atm_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface>();
         }
         return atm_subinterface;
     }
@@ -11766,7 +11930,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Ad
     {
         if(atm_acrsubinterface == nullptr)
         {
-            atm_acrsubinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface>();
+            atm_acrsubinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface>();
         }
         return atm_acrsubinterface;
     }
@@ -11775,7 +11939,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Ad
     {
         if(lisp_subinterface == nullptr)
         {
-            lisp_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface>();
+            lisp_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface>();
         }
         return lisp_subinterface;
     }
@@ -11784,7 +11948,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Ad
     {
         if(port_channel_subinterface == nullptr)
         {
-            port_channel_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface>();
+            port_channel_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface>();
         }
         return port_channel_subinterface;
     }
@@ -11792,7 +11956,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Ad
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11819,7 +11983,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "AppNav-Compress")
     {
@@ -12015,7 +12179,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "AppNav-Compress")
     {
@@ -12147,51 +12311,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM-subinterface" || name == "ATM-ACRsubinterface" || name == "LISP-subinterface" || name == "Port-channel-subinterface" || name == "AppNav-Compress" || name == "AppNav-UnCompress" || name == "ATM" || name == "ATM-ACR" || name == "BDI" || name == "CEM" || name == "CEM-ACR" || name == "Embedded-Service-Engine" || name == "FastEthernet" || name == "GigabitEthernet" || name == "FiveGigabitEthernet" || name == "TwentyFiveGigE" || name == "TwoGigabitEthernet" || name == "FortyGigabitEthernet" || name == "HundredGigE" || name == "LISP" || name == "Loopback" || name == "Multilink" || name == "nve" || name == "overlay" || name == "Port-channel" || name == "pseudowire" || name == "SM" || name == "Cellular" || name == "Serial" || name == "TenGigabitEthernet" || name == "Tunnel" || name == "Virtual-Template" || name == "Vlan" || name == "VirtualPortGroup" || name == "vasileft" || name == "vasiright")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::ATMSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::ATMSubinterface()
     :
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::~ATMSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::~ATMSubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atm.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/active-probe/address/source/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12201,19 +12366,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ATM")
     {
@@ -12223,7 +12388,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ATM")
     {
@@ -12231,51 +12396,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::ATMACRsubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::ATMACRsubinterface()
     :
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::~ATMACRsubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::~ATMACRsubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atm_acr.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/active-probe/address/source/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-ACRsubinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12285,19 +12451,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ATM-ACR")
     {
@@ -12307,7 +12473,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ATM-ACR")
     {
@@ -12315,51 +12481,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM-ACR")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::LISPSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::LISPSubinterface()
     :
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::~LISPSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::~LISPSubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lisp.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/active-probe/address/source/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LISP-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12369,19 +12536,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "LISP")
     {
@@ -12391,7 +12558,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "LISP")
     {
@@ -12399,51 +12566,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "LISP")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::PortChannelSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::PortChannelSubinterface()
     :
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::~PortChannelSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::~PortChannelSubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(port_channel.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/active-probe/address/source/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Port-channel-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12453,19 +12621,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "Port-channel")
     {
@@ -12475,7 +12643,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "Port-channel")
     {
@@ -12483,52 +12651,53 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Inte
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::ActiveProbe::Address::Source::Interface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "Port-channel")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Local()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Local()
     :
-    interface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface>())
+    interface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface>())
 {
     interface->parent = this;
 
-    yang_name = "local"; yang_parent_name = "pfr-Mode__config-pfr-br"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local"; yang_parent_name = "pfr-Mode__config-pfr-br"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::~Local()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::~Local()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| (interface !=  nullptr && interface->has_operation());
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12537,13 +12706,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
         if(interface == nullptr)
         {
-            interface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface>();
+            interface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface>();
         }
         return interface;
     }
@@ -12551,7 +12720,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12563,22 +12732,22 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::Interface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::Interface()
     :
     appnav_compress{YType::uint16, "AppNav-Compress"},
     appnav_uncompress{YType::uint16, "AppNav-UnCompress"},
@@ -12612,26 +12781,27 @@ Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::Interface()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
-    atm_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface>())
+        ,
+    atm_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::~Interface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::~Interface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -12670,7 +12840,7 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::has_data() const
 	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_data());
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(appnav_compress.yfilter)
@@ -12711,21 +12881,21 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::has_operation() 
 	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_operation());
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/local/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12766,13 +12936,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ATM-subinterface")
     {
         if(atm_subinterface == nullptr)
         {
-            atm_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface>();
+            atm_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface>();
         }
         return atm_subinterface;
     }
@@ -12781,7 +12951,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interfac
     {
         if(atm_acrsubinterface == nullptr)
         {
-            atm_acrsubinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface>();
+            atm_acrsubinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface>();
         }
         return atm_acrsubinterface;
     }
@@ -12790,7 +12960,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interfac
     {
         if(lisp_subinterface == nullptr)
         {
-            lisp_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface>();
+            lisp_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface>();
         }
         return lisp_subinterface;
     }
@@ -12799,7 +12969,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interfac
     {
         if(port_channel_subinterface == nullptr)
         {
-            port_channel_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface>();
+            port_channel_subinterface = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface>();
         }
         return port_channel_subinterface;
     }
@@ -12807,7 +12977,7 @@ std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interfac
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12834,7 +13004,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "AppNav-Compress")
     {
@@ -13030,7 +13200,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::set_value(const 
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "AppNav-Compress")
     {
@@ -13162,51 +13332,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::set_filter(const
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM-subinterface" || name == "ATM-ACRsubinterface" || name == "LISP-subinterface" || name == "Port-channel-subinterface" || name == "AppNav-Compress" || name == "AppNav-UnCompress" || name == "ATM" || name == "ATM-ACR" || name == "BDI" || name == "CEM" || name == "CEM-ACR" || name == "Embedded-Service-Engine" || name == "FastEthernet" || name == "GigabitEthernet" || name == "FiveGigabitEthernet" || name == "TwentyFiveGigE" || name == "TwoGigabitEthernet" || name == "FortyGigabitEthernet" || name == "HundredGigE" || name == "LISP" || name == "Loopback" || name == "Multilink" || name == "nve" || name == "overlay" || name == "Port-channel" || name == "pseudowire" || name == "SM" || name == "Cellular" || name == "Serial" || name == "TenGigabitEthernet" || name == "Tunnel" || name == "Virtual-Template" || name == "Vlan" || name == "VirtualPortGroup" || name == "vasileft" || name == "vasiright")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::ATMSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::ATMSubinterface()
     :
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::~ATMSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::~ATMSubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atm.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/local/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13216,19 +13387,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ATM")
     {
@@ -13238,7 +13409,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface:
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ATM")
     {
@@ -13246,51 +13417,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface:
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::ATMACRsubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::ATMACRsubinterface()
     :
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::~ATMACRsubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::~ATMACRsubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(atm_acr.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/local/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ATM-ACRsubinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13300,19 +13472,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ATM-ACR")
     {
@@ -13322,7 +13494,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterfa
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ATM-ACR")
     {
@@ -13330,51 +13502,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterfa
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ATM-ACR")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::LISPSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::LISPSubinterface()
     :
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::~LISPSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::~LISPSubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lisp.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/local/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "LISP-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13384,19 +13557,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "LISP")
     {
@@ -13406,7 +13579,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "LISP")
     {
@@ -13414,51 +13587,52 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "LISP")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::PortChannelSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::PortChannelSubinterface()
     :
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::~PortChannelSubinterface()
+Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::~PortChannelSubinterface()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(port_channel.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/local/interface/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Port-channel-subinterface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13468,19 +13642,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "Port-channel")
     {
@@ -13490,7 +13664,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubin
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "Port-channel")
     {
@@ -13498,26 +13672,29 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubin
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Local::Interface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Local::Interface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "Port-channel")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Master::Master()
+Native::Pfr::Border::PfrModeConfigPfrBr::Master::Master()
+    :
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "master"; yang_parent_name = "pfr-Mode__config-pfr-br"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "master"; yang_parent_name = "pfr-Mode__config-pfr-br"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Master::~Master()
+Native::Pfr::Border::PfrModeConfigPfrBr::Master::~Master()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Master::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -13525,9 +13702,9 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::has_data() const
     return false;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Master::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -13535,21 +13712,21 @@ bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Master::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Master::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Master::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Master::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "master";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Master::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Master::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13558,25 +13735,25 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Master::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Master::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4>();
+        auto c = std::make_shared<Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Master::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Master::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13587,62 +13764,64 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfi
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Master::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Master::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Master::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Master::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Master::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4")
         return true;
     return false;
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::Ipv4()
+Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::Ipv4()
     :
     ipv4{YType::str, "ipv4"},
     key_chain{YType::str, "key-chain"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::~Ipv4()
+Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::~Ipv4()
 {
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::has_data() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| key_chain.is_set;
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::has_operation() const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv4.yfilter)
 	|| ydk::is_set(key_chain.yfilter);
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::get_absolute_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:border/pfr-Mode__config-pfr-br/master/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::get_segment_path() const
+std::string Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13653,19 +13832,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Border::PfrModeConfi
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv4")
     {
@@ -13681,7 +13860,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::set_value(const std:
     }
 }
 
-void Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv4")
     {
@@ -13693,7 +13872,7 @@ void Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::set_filter(const std
     }
 }
 
-bool Native::Pfr::Border::PfrModeConfigpfrbr::Master::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Border::PfrModeConfigPfrBr::Master::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4" || name == "key-chain")
         return true;
@@ -13706,7 +13885,7 @@ Native::Pfr::Master::Master()
 {
     icmp_mode_config_pfr_mc->parent = this;
 
-    yang_name = "master"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "master"; yang_parent_name = "pfr"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Pfr::Master::~Master()
@@ -13715,6 +13894,7 @@ Native::Pfr::Master::~Master()
 
 bool Native::Pfr::Master::has_data() const
 {
+    if (is_presence_container) return true;
     return (icmp_mode_config_pfr_mc !=  nullptr && icmp_mode_config_pfr_mc->has_data());
 }
 
@@ -13800,26 +13980,26 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::IcmpModeConfigPfrMc()
     port{YType::uint16, "port"},
     shutdown{YType::empty, "shutdown"},
     trigger_log_percentage{YType::uint8, "trigger-log-percentage"}
-    	,
+        ,
     active_probe(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe>())
-	,application(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Application>())
-	,backoff(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff>())
-	,border(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Border>())
-	,delay(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Delay>())
-	,jitter(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Jitter>())
-	,learn(nullptr) // presence node
-	,loss(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Loss>())
-	,max(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Max>())
-	,max_range_utilization(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::MaxRangeUtilization>())
-	,mc_peer(nullptr) // presence node
-	,mode(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode>())
-	,mos(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mos>())
-	,probe(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Probe>())
-	,resolve(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve>())
-	,rsvp(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Rsvp>())
-	,target_discovery(nullptr) // presence node
-	,traceroute(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Traceroute>())
-	,unreachable(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Unreachable>())
+    , application(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Application>())
+    , backoff(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff>())
+    , border(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Border>())
+    , delay(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Delay>())
+    , jitter(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Jitter>())
+    , learn(nullptr) // presence node
+    , loss(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Loss>())
+    , max(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Max>())
+    , max_range_utilization(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::MaxRangeUtilization>())
+    , mc_peer(nullptr) // presence node
+    , mode(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mode>())
+    , mos(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Mos>())
+    , probe(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Probe>())
+    , resolve(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Resolve>())
+    , rsvp(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Rsvp>())
+    , target_discovery(nullptr) // presence node
+    , traceroute(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Traceroute>())
+    , unreachable(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Unreachable>())
 {
     active_probe->parent = this;
     application->parent = this;
@@ -13838,7 +14018,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::IcmpModeConfigPfrMc()
     traceroute->parent = this;
     unreachable->parent = this;
 
-    yang_name = "icmp-Mode-config-pfr-mc"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icmp-Mode-config-pfr-mc"; yang_parent_name = "master"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::~IcmpModeConfigPfrMc()
@@ -13847,6 +14027,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::~IcmpModeConfigPfrMc()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::has_data() const
 {
+    if (is_presence_container) return true;
     return bandwidth_resolution.is_set
 	|| exporter.is_set
 	|| holddown.is_set
@@ -14341,16 +14522,16 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::has_leaf_or_child_of_name(const s
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::ActiveProbe()
     :
     echo{YType::str, "echo"}
-    	,
+        ,
     jitter(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter>())
-	,tcp_conn(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn>())
-	,udp_echo(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho>())
+    , tcp_conn(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn>())
+    , udp_echo(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho>())
 {
     jitter->parent = this;
     tcp_conn->parent = this;
     udp_echo->parent = this;
 
-    yang_name = "active-probe"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active-probe"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::~ActiveProbe()
@@ -14359,6 +14540,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::~ActiveProbe()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::has_data() const
 {
+    if (is_presence_container) return true;
     return echo.is_set
 	|| (jitter !=  nullptr && jitter->has_data())
 	|| (tcp_conn !=  nullptr && tcp_conn->has_data())
@@ -14478,9 +14660,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::has_leaf_or_child_of
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Jitter()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "jitter"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "jitter"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::~Jitter()
@@ -14489,7 +14673,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::~Jitter()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -14499,7 +14684,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::has_data() c
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -14536,7 +14721,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::J
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -14548,7 +14733,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14580,7 +14765,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname::I
     target_port{YType::uint16, "target-port"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "jitter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname::~Ipv4OrHostname()
@@ -14589,6 +14774,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname::~
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| target_port.is_set;
 }
@@ -14610,7 +14796,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4O
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -14673,9 +14860,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::Jitter::Ipv4OrHostna
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::TcpConn()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "tcp-conn"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tcp-conn"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::~TcpConn()
@@ -14684,7 +14873,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::~TcpConn()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -14694,7 +14884,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::has_data() 
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -14731,7 +14921,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::T
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -14743,7 +14933,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14775,7 +14965,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname::
     target_port{YType::uint16, "target-port"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "tcp-conn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "tcp-conn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname::~Ipv4OrHostname()
@@ -14784,6 +14974,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname::
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| target_port.is_set;
 }
@@ -14805,7 +14996,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -14868,9 +15060,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::TcpConn::Ipv4OrHostn
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::UdpEcho()
+    :
+    ipv4_or_hostname(this, {"ipv4_or_hostname"})
 {
 
-    yang_name = "udp-echo"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udp-echo"; yang_parent_name = "active-probe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::~UdpEcho()
@@ -14879,7 +15073,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::~UdpEcho()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_data())
             return true;
@@ -14889,7 +15084,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::has_data() 
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_or_hostname.size(); index++)
+    for (std::size_t index=0; index<ipv4_or_hostname.len(); index++)
     {
         if(ipv4_or_hostname[index]->has_operation())
             return true;
@@ -14926,7 +15121,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::U
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname>();
         c->parent = this;
-        ipv4_or_hostname.push_back(c);
+        ipv4_or_hostname.append(c);
         return c;
     }
 
@@ -14938,7 +15133,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_or_hostname)
+    for (auto c : ipv4_or_hostname.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14970,7 +15165,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname::
     target_port{YType::uint16, "target-port"}
 {
 
-    yang_name = "ipv4-or-hostname"; yang_parent_name = "udp-echo"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-or-hostname"; yang_parent_name = "udp-echo"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname::~Ipv4OrHostname()
@@ -14979,6 +15174,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname::
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_or_hostname.is_set
 	|| target_port.is_set;
 }
@@ -15000,7 +15196,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::ActiveProbe::UdpEcho::Ipv4OrHostname::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-or-hostname" <<"[ipv4-or-hostname='" <<ipv4_or_hostname <<"']";
+    path_buffer << "ipv4-or-hostname";
+    ADD_KEY_TOKEN(ipv4_or_hostname, "ipv4-or-hostname");
     return path_buffer.str();
 }
 
@@ -15068,7 +15265,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Application()
 {
     define->parent = this;
 
-    yang_name = "application"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "application"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Application::~Application()
@@ -15077,6 +15274,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Application::~Application()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return (define !=  nullptr && define->has_data());
 }
 
@@ -15151,9 +15349,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Application::has_leaf_or_child_of
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::Define()
+    :
+    app_def(this, {"app_def"})
 {
 
-    yang_name = "define"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "define"; yang_parent_name = "application"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::~Define()
@@ -15162,7 +15362,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::~Define()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::has_data() const
 {
-    for (std::size_t index=0; index<app_def.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<app_def.len(); index++)
     {
         if(app_def[index]->has_data())
             return true;
@@ -15172,7 +15373,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::has_data() c
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::has_operation() const
 {
-    for (std::size_t index=0; index<app_def.size(); index++)
+    for (std::size_t index=0; index<app_def.len(); index++)
     {
         if(app_def[index]->has_operation())
             return true;
@@ -15209,7 +15410,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Application::D
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef>();
         c->parent = this;
-        app_def.push_back(c);
+        app_def.append(c);
         return c;
     }
 
@@ -15221,7 +15422,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : app_def)
+    for (auto c : app_def.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15254,7 +15455,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef::AppDef()
     nbar{YType::empty, "nbar"}
 {
 
-    yang_name = "app-def"; yang_parent_name = "define"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "app-def"; yang_parent_name = "define"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef::~AppDef()
@@ -15263,6 +15464,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef::~AppDef()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef::has_data() const
 {
+    if (is_presence_container) return true;
     return app_def.is_set
 	|| access_list.is_set
 	|| nbar.is_set;
@@ -15286,7 +15488,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDe
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "app-def" <<"[app-def='" <<app_def <<"']";
+    path_buffer << "app-def";
+    ADD_KEY_TOKEN(app_def, "app-def");
     return path_buffer.str();
 }
 
@@ -15360,9 +15563,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Application::Define::AppDef::has_
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Backoff()
+    :
+    boff(this, {"boff"})
 {
 
-    yang_name = "backoff"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "backoff"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::~Backoff()
@@ -15371,7 +15576,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::~Backoff()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::has_data() const
 {
-    for (std::size_t index=0; index<boff.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<boff.len(); index++)
     {
         if(boff[index]->has_data())
             return true;
@@ -15381,7 +15587,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::has_operation() const
 {
-    for (std::size_t index=0; index<boff.size(); index++)
+    for (std::size_t index=0; index<boff.len(); index++)
     {
         if(boff[index]->has_operation())
             return true;
@@ -15418,7 +15624,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::get_c
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff>();
         c->parent = this;
-        boff.push_back(c);
+        boff.append(c);
         return c;
     }
 
@@ -15430,7 +15636,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : boff)
+    for (auto c : boff.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15459,9 +15665,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::has_leaf_or_child_of_nam
 Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff()
     :
     boff{YType::uint16, "boff"}
+        ,
+    boff0(this, {"boff0"})
 {
 
-    yang_name = "boff"; yang_parent_name = "backoff"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boff"; yang_parent_name = "backoff"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::~Boff()
@@ -15470,7 +15678,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::~Boff()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::has_data() const
 {
-    for (std::size_t index=0; index<boff0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<boff0.len(); index++)
     {
         if(boff0[index]->has_data())
             return true;
@@ -15480,7 +15689,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::has_operation() const
 {
-    for (std::size_t index=0; index<boff0.size(); index++)
+    for (std::size_t index=0; index<boff0.len(); index++)
     {
         if(boff0[index]->has_operation())
             return true;
@@ -15499,7 +15708,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::get_absolut
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "boff" <<"[boff='" <<boff <<"']";
+    path_buffer << "boff";
+    ADD_KEY_TOKEN(boff, "boff");
     return path_buffer.str();
 }
 
@@ -15519,7 +15729,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff:
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0>();
         c->parent = this;
-        boff0.push_back(c);
+        boff0.append(c);
         return c;
     }
 
@@ -15531,7 +15741,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : boff0)
+    for (auto c : boff0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15573,7 +15783,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0::Boff0()
     bstep{YType::uint16, "bstep"}
 {
 
-    yang_name = "boff0"; yang_parent_name = "boff"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "boff0"; yang_parent_name = "boff"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0::~Boff0()
@@ -15582,6 +15792,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0::~Boff0()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0::has_data() const
 {
+    if (is_presence_container) return true;
     return boff0.is_set
 	|| bstep.is_set;
 }
@@ -15596,7 +15807,8 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0::has_operati
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "boff0" <<"[boff0='" <<boff0 <<"']";
+    path_buffer << "boff0";
+    ADD_KEY_TOKEN(boff0, "boff0");
     return path_buffer.str();
 }
 
@@ -15659,9 +15871,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Backoff::Boff::Boff0::has_leaf_or
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Border()
+    :
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "border"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "border"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Border::~Border()
@@ -15670,7 +15884,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Border::~Border()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -15680,7 +15895,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -15717,7 +15932,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Border::get_ch
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -15729,7 +15944,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15759,9 +15974,11 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::Ipv4()
     :
     ipv4{YType::str, "ipv4"},
     interface{YType::empty, "interface"}
+        ,
+    key_chain(this, {"kc_name"})
 {
 
-    yang_name = "ipv4"; yang_parent_name = "border"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "border"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::~Ipv4()
@@ -15770,7 +15987,8 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::~Ipv4()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<key_chain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<key_chain.len(); index++)
     {
         if(key_chain[index]->has_data())
             return true;
@@ -15781,7 +15999,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::has_data() const
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<key_chain.size(); index++)
+    for (std::size_t index=0; index<key_chain.len(); index++)
     {
         if(key_chain[index]->has_operation())
             return true;
@@ -15801,7 +16019,8 @@ std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::get_absolute
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -15822,7 +16041,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::
     {
         auto c = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain>();
         c->parent = this;
-        key_chain.push_back(c);
+        key_chain.append(c);
         return c;
     }
 
@@ -15834,7 +16053,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : key_chain)
+    for (auto c : key_chain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15886,7 +16105,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain::KeyChain()
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "key-chain"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain::~KeyChain()
@@ -15895,6 +16114,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain::~KeyChain()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return kc_name.is_set
 	|| interface.is_set;
 }
@@ -15909,7 +16129,8 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain::has_opera
 std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Border::Ipv4::KeyChain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "key-chain" <<"[kc-name='" <<kc_name <<"']";
+    path_buffer << "key-chain";
+    ADD_KEY_TOKEN(kc_name, "kc-name");
     return path_buffer.str();
 }
 
@@ -15977,7 +16198,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Delay::Delay()
     threshold{YType::uint16, "threshold"}
 {
 
-    yang_name = "delay"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delay"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Delay::~Delay()
@@ -15986,6 +16207,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Delay::~Delay()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return relative.is_set
 	|| threshold.is_set;
 }
@@ -16074,7 +16296,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Jitter::Jitter()
     threshold{YType::uint16, "threshold"}
 {
 
-    yang_name = "jitter"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "jitter"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Jitter::~Jitter()
@@ -16083,6 +16305,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Jitter::~Jitter()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Jitter::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -16155,11 +16378,11 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Jitter::has_leaf_or_child_of_name
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::Learn()
     :
-    lrn_mode__config_pfr_mc_learn(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn>())
+    lrn_mode__config_pfr_mc_learn(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn>())
 {
     lrn_mode__config_pfr_mc_learn->parent = this;
 
-    yang_name = "learn"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "learn"; yang_parent_name = "icmp-Mode-config-pfr-mc"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::~Learn()
@@ -16168,6 +16391,7 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::~Learn()
 
 bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::has_data() const
 {
+    if (is_presence_container) return true;
     return (lrn_mode__config_pfr_mc_learn !=  nullptr && lrn_mode__config_pfr_mc_learn->has_data());
 }
 
@@ -16206,7 +16430,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::get_chi
     {
         if(lrn_mode__config_pfr_mc_learn == nullptr)
         {
-            lrn_mode__config_pfr_mc_learn = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn>();
+            lrn_mode__config_pfr_mc_learn = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn>();
         }
         return lrn_mode__config_pfr_mc_learn;
     }
@@ -16241,19 +16465,19 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::has_leaf_or_child_of_name(
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::LrnModeConfigpfrmclearn()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::LrnModeConfigPfrMcLearn()
     :
     delay{YType::empty, "delay"},
     monitor_period{YType::uint16, "monitor-period"},
     periodic_interval{YType::uint16, "periodic-interval"},
     throughput{YType::empty, "throughput"}
-    	,
-    aggregation_type(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType>())
-	,expire(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire>())
-	,inside(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside>())
-	,list(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List>())
-	,prefixes(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes>())
-	,traffic_class(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass>())
+        ,
+    aggregation_type(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType>())
+    , expire(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire>())
+    , inside(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside>())
+    , list(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List>())
+    , prefixes(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes>())
+    , traffic_class(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass>())
 {
     aggregation_type->parent = this;
     expire->parent = this;
@@ -16262,15 +16486,16 @@ Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::LrnMod
     prefixes->parent = this;
     traffic_class->parent = this;
 
-    yang_name = "lrn-Mode__config-pfr-mc-learn"; yang_parent_name = "learn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lrn-Mode__config-pfr-mc-learn"; yang_parent_name = "learn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::~LrnModeConfigpfrmclearn()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::~LrnModeConfigPfrMcLearn()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::has_data() const
 {
+    if (is_presence_container) return true;
     return delay.is_set
 	|| monitor_period.is_set
 	|| periodic_interval.is_set
@@ -16283,7 +16508,7 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::h
 	|| (traffic_class !=  nullptr && traffic_class->has_data());
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(delay.yfilter)
@@ -16298,21 +16523,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::h
 	|| (traffic_class !=  nullptr && traffic_class->has_operation());
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lrn-Mode__config-pfr-mc-learn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16325,13 +16550,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "aggregation-type")
     {
         if(aggregation_type == nullptr)
         {
-            aggregation_type = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType>();
+            aggregation_type = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType>();
         }
         return aggregation_type;
     }
@@ -16340,7 +16565,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(expire == nullptr)
         {
-            expire = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire>();
+            expire = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire>();
         }
         return expire;
     }
@@ -16349,7 +16574,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(inside == nullptr)
         {
-            inside = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Inside>();
+            inside = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Inside>();
         }
         return inside;
     }
@@ -16358,7 +16583,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(list == nullptr)
         {
-            list = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::List>();
+            list = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::List>();
         }
         return list;
     }
@@ -16367,7 +16592,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(prefixes == nullptr)
         {
-            prefixes = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Prefixes>();
+            prefixes = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Prefixes>();
         }
         return prefixes;
     }
@@ -16376,7 +16601,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     {
         if(traffic_class == nullptr)
         {
-            traffic_class = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::TrafficClass>();
+            traffic_class = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::TrafficClass>();
         }
         return traffic_class;
     }
@@ -16384,7 +16609,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16421,7 +16646,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "delay")
     {
@@ -16449,7 +16674,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::s
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "delay")
     {
@@ -16469,35 +16694,36 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::s
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "aggregation-type" || name == "expire" || name == "inside" || name == "list" || name == "prefixes" || name == "traffic-class" || name == "delay" || name == "monitor-period" || name == "periodic-interval" || name == "throughput")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::AggregationType()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::AggregationType()
     :
     bgp{YType::empty, "bgp"},
     non_bgp{YType::empty, "non-bgp"},
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "aggregation-type"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregation-type"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::~AggregationType()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::~AggregationType()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::has_data() const
 {
+    if (is_presence_container) return true;
     return bgp.is_set
 	|| non_bgp.is_set
 	|| prefix_length.is_set;
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bgp.yfilter)
@@ -16505,21 +16731,21 @@ bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::A
 	|| ydk::is_set(prefix_length.yfilter);
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "aggregation-type";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16531,19 +16757,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bgp")
     {
@@ -16565,7 +16791,7 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::A
     }
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bgp")
     {
@@ -16581,52 +16807,53 @@ void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::A
     }
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::AggregationType::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::AggregationType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bgp" || name == "non-bgp" || name == "prefix-length")
         return true;
     return false;
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::Expire()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::Expire()
     :
-    after(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After>())
+    after(std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After>())
 {
     after->parent = this;
 
-    yang_name = "expire"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expire"; yang_parent_name = "lrn-Mode__config-pfr-mc-learn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::~Expire()
+Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::~Expire()
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::has_data() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::has_data() const
 {
+    if (is_presence_container) return true;
     return (after !=  nullptr && after->has_data());
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::has_operation() const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::has_operation() const
 {
     return is_set(yfilter)
 	|| (after !=  nullptr && after->has_operation());
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::get_absolute_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/pfr/Cisco-IOS-XE-pfr:master/icmp-Mode-config-pfr-mc/learn/lrn-Mode__config-pfr-mc-learn/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::get_segment_path() const
+std::string Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16635,13 +16862,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Pfr::Master::IcmpModeConf
 
 }
 
-std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "after")
     {
         if(after == nullptr)
         {
-            after = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::After>();
+            after = std::make_shared<Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::After>();
         }
         return after;
     }
@@ -16649,7 +16876,7 @@ std::shared_ptr<Entity> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnMode
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16661,15 +16888,15 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Pfr::Master::IcmpModeConf
     return children;
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigpfrmclearn::Expire::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Pfr::Master::IcmpModeConfigPfrMc::Learn::LrnModeConfigPfrMcLearn::Expire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "after")
         return true;

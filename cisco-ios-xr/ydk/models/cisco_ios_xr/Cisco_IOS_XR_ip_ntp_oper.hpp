@@ -57,7 +57,7 @@ class Ntp::Nodes : public ydk::Entity
 
         class Node; //type: Ntp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_oper::Ntp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ntp::Nodes
 
@@ -111,7 +111,7 @@ class Ntp::Nodes::Node::AssociationsDetail : public ydk::Entity
         ydk::YLeaf sys_leap; //type: NtpLeap
         class PeerDetailInfo; //type: Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_oper::Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo> > peer_detail_info;
+        ydk::YList peer_detail_info;
         
 }; // Ntp::Nodes::Node::AssociationsDetail
 
@@ -155,7 +155,7 @@ class Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_oper::Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::OriginateTime> originate_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_oper::Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::ReceiveTime> receive_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_oper::Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::TransmitTime> transmit_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_oper::Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo::FilterDetail> > filter_detail;
+        ydk::YList filter_detail;
         
 }; // Ntp::Nodes::Node::AssociationsDetail::PeerDetailInfo
 
@@ -513,6 +513,7 @@ class Ntp::Nodes::Node::Status : public ydk::Entity
         ydk::YLeaf poll_interval; //type: uint8
         ydk::YLeaf is_updated; //type: ClockUpdateNode
         ydk::YLeaf last_update; //type: int32
+        ydk::YLeaf is_auth_enabled; //type: boolean
         class SysRefTime; //type: Ntp::Nodes::Node::Status::SysRefTime
         class SysDrift; //type: Ntp::Nodes::Node::Status::SysDrift
 
@@ -676,7 +677,7 @@ class Ntp::Nodes::Node::Associations : public ydk::Entity
         ydk::YLeaf sys_leap; //type: NtpLeap
         class PeerSummaryInfo; //type: Ntp::Nodes::Node::Associations::PeerSummaryInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_oper::Ntp::Nodes::Node::Associations::PeerSummaryInfo> > peer_summary_info;
+        ydk::YList peer_summary_info;
         
 }; // Ntp::Nodes::Node::Associations
 
@@ -736,27 +737,6 @@ class Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon : public y
 
 }; // Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon
 
-class ClockUpdateNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf clk_never_updated;
-        static const ydk::Enum::YLeaf clk_updated;
-        static const ydk::Enum::YLeaf clk_no_update_info;
-
-};
-
-class NtpLoopFilterState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_loop_flt_n_set;
-        static const ydk::Enum::YLeaf ntp_loop_flt_f_set;
-        static const ydk::Enum::YLeaf ntp_loop_flt_spik;
-        static const ydk::Enum::YLeaf ntp_loop_flt_freq;
-        static const ydk::Enum::YLeaf ntp_loop_flt_sync;
-        static const ydk::Enum::YLeaf ntp_loop_flt_unkn;
-
-};
-
 class NtpPeerStatus : public ydk::Enum
 {
     public:
@@ -783,6 +763,27 @@ class NtpMode : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_mode_control;
         static const ydk::Enum::YLeaf ntp_mode_private;
         static const ydk::Enum::YLeaf ntp_mode_xcast_client;
+
+};
+
+class ClockUpdateNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf clk_never_updated;
+        static const ydk::Enum::YLeaf clk_updated;
+        static const ydk::Enum::YLeaf clk_no_update_info;
+
+};
+
+class NtpLoopFilterState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_loop_flt_n_set;
+        static const ydk::Enum::YLeaf ntp_loop_flt_f_set;
+        static const ydk::Enum::YLeaf ntp_loop_flt_spik;
+        static const ydk::Enum::YLeaf ntp_loop_flt_freq;
+        static const ydk::Enum::YLeaf ntp_loop_flt_sync;
+        static const ydk::Enum::YLeaf ntp_loop_flt_unkn;
 
 };
 

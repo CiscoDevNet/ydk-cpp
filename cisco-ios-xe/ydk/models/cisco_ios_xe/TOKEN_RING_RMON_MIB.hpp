@@ -31,36 +31,36 @@ class TOKENRINGRMONMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Tokenringmlstatstable; //type: TOKENRINGRMONMIB::Tokenringmlstatstable
-        class Tokenringpstatstable; //type: TOKENRINGRMONMIB::Tokenringpstatstable
-        class Tokenringmlhistorytable; //type: TOKENRINGRMONMIB::Tokenringmlhistorytable
-        class Tokenringphistorytable; //type: TOKENRINGRMONMIB::Tokenringphistorytable
-        class Ringstationcontroltable; //type: TOKENRINGRMONMIB::Ringstationcontroltable
-        class Ringstationtable; //type: TOKENRINGRMONMIB::Ringstationtable
-        class Ringstationordertable; //type: TOKENRINGRMONMIB::Ringstationordertable
-        class Ringstationconfigcontroltable; //type: TOKENRINGRMONMIB::Ringstationconfigcontroltable
-        class Ringstationconfigtable; //type: TOKENRINGRMONMIB::Ringstationconfigtable
-        class Sourceroutingstatstable; //type: TOKENRINGRMONMIB::Sourceroutingstatstable
+        class TokenRingMLStatsTable; //type: TOKENRINGRMONMIB::TokenRingMLStatsTable
+        class TokenRingPStatsTable; //type: TOKENRINGRMONMIB::TokenRingPStatsTable
+        class TokenRingMLHistoryTable; //type: TOKENRINGRMONMIB::TokenRingMLHistoryTable
+        class TokenRingPHistoryTable; //type: TOKENRINGRMONMIB::TokenRingPHistoryTable
+        class RingStationControlTable; //type: TOKENRINGRMONMIB::RingStationControlTable
+        class RingStationTable; //type: TOKENRINGRMONMIB::RingStationTable
+        class RingStationOrderTable; //type: TOKENRINGRMONMIB::RingStationOrderTable
+        class RingStationConfigControlTable; //type: TOKENRINGRMONMIB::RingStationConfigControlTable
+        class RingStationConfigTable; //type: TOKENRINGRMONMIB::RingStationConfigTable
+        class SourceRoutingStatsTable; //type: TOKENRINGRMONMIB::SourceRoutingStatsTable
 
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlstatstable> tokenringmlstatstable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringpstatstable> tokenringpstatstable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlhistorytable> tokenringmlhistorytable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringphistorytable> tokenringphistorytable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationcontroltable> ringstationcontroltable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationtable> ringstationtable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationordertable> ringstationordertable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigcontroltable> ringstationconfigcontroltable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigtable> ringstationconfigtable;
-        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Sourceroutingstatstable> sourceroutingstatstable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::TokenRingMLStatsTable> tokenringmlstatstable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::TokenRingPStatsTable> tokenringpstatstable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::TokenRingMLHistoryTable> tokenringmlhistorytable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::TokenRingPHistoryTable> tokenringphistorytable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::RingStationControlTable> ringstationcontroltable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::RingStationTable> ringstationtable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::RingStationOrderTable> ringstationordertable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::RingStationConfigControlTable> ringstationconfigcontroltable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::RingStationConfigTable> ringstationconfigtable;
+        std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::SourceRoutingStatsTable> sourceroutingstatstable;
         
 }; // TOKENRINGRMONMIB
 
 
-class TOKENRINGRMONMIB::Tokenringmlstatstable : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingMLStatsTable : public ydk::Entity
 {
     public:
-        Tokenringmlstatstable();
-        ~Tokenringmlstatstable();
+        TokenRingMLStatsTable();
+        ~TokenRingMLStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -73,18 +73,18 @@ class TOKENRINGRMONMIB::Tokenringmlstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tokenringmlstatsentry; //type: TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry
+        class TokenRingMLStatsEntry; //type: TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry> > tokenringmlstatsentry;
+        ydk::YList tokenringmlstatsentry;
         
-}; // TOKENRINGRMONMIB::Tokenringmlstatstable
+}; // TOKENRINGRMONMIB::TokenRingMLStatsTable
 
 
-class TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry : public ydk::Entity
 {
     public:
-        Tokenringmlstatsentry();
-        ~Tokenringmlstatsentry();
+        TokenRingMLStatsEntry();
+        ~TokenRingMLStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -127,14 +127,14 @@ class TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry : public yd
         ydk::YLeaf tokenringmlstatsdroppedframes; //type: uint32
         ydk::YLeaf tokenringmlstatscreatetime; //type: uint32
 
-}; // TOKENRINGRMONMIB::Tokenringmlstatstable::Tokenringmlstatsentry
+}; // TOKENRINGRMONMIB::TokenRingMLStatsTable::TokenRingMLStatsEntry
 
 
-class TOKENRINGRMONMIB::Tokenringpstatstable : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingPStatsTable : public ydk::Entity
 {
     public:
-        Tokenringpstatstable();
-        ~Tokenringpstatstable();
+        TokenRingPStatsTable();
+        ~TokenRingPStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -147,18 +147,18 @@ class TOKENRINGRMONMIB::Tokenringpstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tokenringpstatsentry; //type: TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry
+        class TokenRingPStatsEntry; //type: TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry> > tokenringpstatsentry;
+        ydk::YList tokenringpstatsentry;
         
-}; // TOKENRINGRMONMIB::Tokenringpstatstable
+}; // TOKENRINGRMONMIB::TokenRingPStatsTable
 
 
-class TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry : public ydk::Entity
 {
     public:
-        Tokenringpstatsentry();
-        ~Tokenringpstatsentry();
+        TokenRingPStatsEntry();
+        ~TokenRingPStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -193,14 +193,14 @@ class TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry : public ydk:
         ydk::YLeaf tokenringpstatsdroppedframes; //type: uint32
         ydk::YLeaf tokenringpstatscreatetime; //type: uint32
 
-}; // TOKENRINGRMONMIB::Tokenringpstatstable::Tokenringpstatsentry
+}; // TOKENRINGRMONMIB::TokenRingPStatsTable::TokenRingPStatsEntry
 
 
-class TOKENRINGRMONMIB::Tokenringmlhistorytable : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingMLHistoryTable : public ydk::Entity
 {
     public:
-        Tokenringmlhistorytable();
-        ~Tokenringmlhistorytable();
+        TokenRingMLHistoryTable();
+        ~TokenRingMLHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -213,18 +213,18 @@ class TOKENRINGRMONMIB::Tokenringmlhistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tokenringmlhistoryentry; //type: TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry
+        class TokenRingMLHistoryEntry; //type: TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry> > tokenringmlhistoryentry;
+        ydk::YList tokenringmlhistoryentry;
         
-}; // TOKENRINGRMONMIB::Tokenringmlhistorytable
+}; // TOKENRINGRMONMIB::TokenRingMLHistoryTable
 
 
-class TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry : public ydk::Entity
 {
     public:
-        Tokenringmlhistoryentry();
-        ~Tokenringmlhistoryentry();
+        TokenRingMLHistoryEntry();
+        ~TokenRingMLHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -265,14 +265,14 @@ class TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry : publi
         ydk::YLeaf tokenringmlhistoryringpollevents; //type: uint32
         ydk::YLeaf tokenringmlhistoryactivestations; //type: int32
 
-}; // TOKENRINGRMONMIB::Tokenringmlhistorytable::Tokenringmlhistoryentry
+}; // TOKENRINGRMONMIB::TokenRingMLHistoryTable::TokenRingMLHistoryEntry
 
 
-class TOKENRINGRMONMIB::Tokenringphistorytable : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingPHistoryTable : public ydk::Entity
 {
     public:
-        Tokenringphistorytable();
-        ~Tokenringphistorytable();
+        TokenRingPHistoryTable();
+        ~TokenRingPHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -285,18 +285,18 @@ class TOKENRINGRMONMIB::Tokenringphistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tokenringphistoryentry; //type: TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry
+        class TokenRingPHistoryEntry; //type: TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry> > tokenringphistoryentry;
+        ydk::YList tokenringphistoryentry;
         
-}; // TOKENRINGRMONMIB::Tokenringphistorytable
+}; // TOKENRINGRMONMIB::TokenRingPHistoryTable
 
 
-class TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry : public ydk::Entity
+class TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry : public ydk::Entity
 {
     public:
-        Tokenringphistoryentry();
-        ~Tokenringphistoryentry();
+        TokenRingPHistoryEntry();
+        ~TokenRingPHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -328,14 +328,14 @@ class TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry : public 
         ydk::YLeaf tokenringphistorydatapkts8192to18000octets; //type: uint32
         ydk::YLeaf tokenringphistorydatapktsgreaterthan18000octets; //type: uint32
 
-}; // TOKENRINGRMONMIB::Tokenringphistorytable::Tokenringphistoryentry
+}; // TOKENRINGRMONMIB::TokenRingPHistoryTable::TokenRingPHistoryEntry
 
 
-class TOKENRINGRMONMIB::Ringstationcontroltable : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationControlTable : public ydk::Entity
 {
     public:
-        Ringstationcontroltable();
-        ~Ringstationcontroltable();
+        RingStationControlTable();
+        ~RingStationControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -348,18 +348,18 @@ class TOKENRINGRMONMIB::Ringstationcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ringstationcontrolentry; //type: TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry
+        class RingStationControlEntry; //type: TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry> > ringstationcontrolentry;
+        ydk::YList ringstationcontrolentry;
         
-}; // TOKENRINGRMONMIB::Ringstationcontroltable
+}; // TOKENRINGRMONMIB::RingStationControlTable
 
 
-class TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry : public ydk::Entity
 {
     public:
-        Ringstationcontrolentry();
-        ~Ringstationcontrolentry();
+        RingStationControlEntry();
+        ~RingStationControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -375,7 +375,7 @@ class TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry : publi
         ydk::YLeaf ringstationcontrolifindex; //type: int32
         ydk::YLeaf ringstationcontroltablesize; //type: int32
         ydk::YLeaf ringstationcontrolactivestations; //type: int32
-        ydk::YLeaf ringstationcontrolringstate; //type: Ringstationcontrolringstate
+        ydk::YLeaf ringstationcontrolringstate; //type: RingStationControlRingState
         ydk::YLeaf ringstationcontrolbeaconsender; //type: binary
         ydk::YLeaf ringstationcontrolbeaconnaun; //type: binary
         ydk::YLeaf ringstationcontrolactivemonitor; //type: binary
@@ -384,16 +384,16 @@ class TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry : publi
         ydk::YLeaf ringstationcontrolstatus; //type: EntryStatus
         ydk::YLeaf ringstationcontroldroppedframes; //type: uint32
         ydk::YLeaf ringstationcontrolcreatetime; //type: uint32
-        class Ringstationcontrolringstate;
+        class RingStationControlRingState;
 
-}; // TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry
+}; // TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry
 
 
-class TOKENRINGRMONMIB::Ringstationtable : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationTable : public ydk::Entity
 {
     public:
-        Ringstationtable();
-        ~Ringstationtable();
+        RingStationTable();
+        ~RingStationTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -406,18 +406,18 @@ class TOKENRINGRMONMIB::Ringstationtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ringstationentry; //type: TOKENRINGRMONMIB::Ringstationtable::Ringstationentry
+        class RingStationEntry; //type: TOKENRINGRMONMIB::RingStationTable::RingStationEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationtable::Ringstationentry> > ringstationentry;
+        ydk::YList ringstationentry;
         
-}; // TOKENRINGRMONMIB::Ringstationtable
+}; // TOKENRINGRMONMIB::RingStationTable
 
 
-class TOKENRINGRMONMIB::Ringstationtable::Ringstationentry : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationTable::RingStationEntry : public ydk::Entity
 {
     public:
-        Ringstationentry();
-        ~Ringstationentry();
+        RingStationEntry();
+        ~RingStationEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -433,7 +433,7 @@ class TOKENRINGRMONMIB::Ringstationtable::Ringstationentry : public ydk::Entity
         ydk::YLeaf ringstationifindex; //type: int32
         ydk::YLeaf ringstationmacaddress; //type: binary
         ydk::YLeaf ringstationlastnaun; //type: binary
-        ydk::YLeaf ringstationstationstatus; //type: Ringstationstationstatus
+        ydk::YLeaf ringstationstationstatus; //type: RingStationStationStatus
         ydk::YLeaf ringstationlastentertime; //type: uint32
         ydk::YLeaf ringstationlastexittime; //type: uint32
         ydk::YLeaf ringstationduplicateaddresses; //type: uint32
@@ -452,16 +452,16 @@ class TOKENRINGRMONMIB::Ringstationtable::Ringstationentry : public ydk::Entity
         ydk::YLeaf ringstationinbeaconerrors; //type: uint32
         ydk::YLeaf ringstationoutbeaconerrors; //type: uint32
         ydk::YLeaf ringstationinsertions; //type: uint32
-        class Ringstationstationstatus;
+        class RingStationStationStatus;
 
-}; // TOKENRINGRMONMIB::Ringstationtable::Ringstationentry
+}; // TOKENRINGRMONMIB::RingStationTable::RingStationEntry
 
 
-class TOKENRINGRMONMIB::Ringstationordertable : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationOrderTable : public ydk::Entity
 {
     public:
-        Ringstationordertable();
-        ~Ringstationordertable();
+        RingStationOrderTable();
+        ~RingStationOrderTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -474,18 +474,18 @@ class TOKENRINGRMONMIB::Ringstationordertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ringstationorderentry; //type: TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry
+        class RingStationOrderEntry; //type: TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry> > ringstationorderentry;
+        ydk::YList ringstationorderentry;
         
-}; // TOKENRINGRMONMIB::Ringstationordertable
+}; // TOKENRINGRMONMIB::RingStationOrderTable
 
 
-class TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry : public ydk::Entity
 {
     public:
-        Ringstationorderentry();
-        ~Ringstationorderentry();
+        RingStationOrderEntry();
+        ~RingStationOrderEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -502,14 +502,14 @@ class TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry : public yd
         ydk::YLeaf ringstationorderorderindex; //type: int32
         ydk::YLeaf ringstationordermacaddress; //type: binary
 
-}; // TOKENRINGRMONMIB::Ringstationordertable::Ringstationorderentry
+}; // TOKENRINGRMONMIB::RingStationOrderTable::RingStationOrderEntry
 
 
-class TOKENRINGRMONMIB::Ringstationconfigcontroltable : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationConfigControlTable : public ydk::Entity
 {
     public:
-        Ringstationconfigcontroltable();
-        ~Ringstationconfigcontroltable();
+        RingStationConfigControlTable();
+        ~RingStationConfigControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -522,18 +522,18 @@ class TOKENRINGRMONMIB::Ringstationconfigcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ringstationconfigcontrolentry; //type: TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry
+        class RingStationConfigControlEntry; //type: TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry> > ringstationconfigcontrolentry;
+        ydk::YList ringstationconfigcontrolentry;
         
-}; // TOKENRINGRMONMIB::Ringstationconfigcontroltable
+}; // TOKENRINGRMONMIB::RingStationConfigControlTable
 
 
-class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry : public ydk::Entity
 {
     public:
-        Ringstationconfigcontrolentry();
-        ~Ringstationconfigcontrolentry();
+        RingStationConfigControlEntry();
+        ~RingStationConfigControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -548,19 +548,19 @@ class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrole
 
         ydk::YLeaf ringstationconfigcontrolifindex; //type: int32
         ydk::YLeaf ringstationconfigcontrolmacaddress; //type: binary
-        ydk::YLeaf ringstationconfigcontrolremove; //type: Ringstationconfigcontrolremove
-        ydk::YLeaf ringstationconfigcontrolupdatestats; //type: Ringstationconfigcontrolupdatestats
-        class Ringstationconfigcontrolremove;
-        class Ringstationconfigcontrolupdatestats;
+        ydk::YLeaf ringstationconfigcontrolremove; //type: RingStationConfigControlRemove
+        ydk::YLeaf ringstationconfigcontrolupdatestats; //type: RingStationConfigControlUpdateStats
+        class RingStationConfigControlRemove;
+        class RingStationConfigControlUpdateStats;
 
-}; // TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry
+}; // TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry
 
 
-class TOKENRINGRMONMIB::Ringstationconfigtable : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationConfigTable : public ydk::Entity
 {
     public:
-        Ringstationconfigtable();
-        ~Ringstationconfigtable();
+        RingStationConfigTable();
+        ~RingStationConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -573,18 +573,18 @@ class TOKENRINGRMONMIB::Ringstationconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ringstationconfigentry; //type: TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry
+        class RingStationConfigEntry; //type: TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry> > ringstationconfigentry;
+        ydk::YList ringstationconfigentry;
         
-}; // TOKENRINGRMONMIB::Ringstationconfigtable
+}; // TOKENRINGRMONMIB::RingStationConfigTable
 
 
-class TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry : public ydk::Entity
+class TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry : public ydk::Entity
 {
     public:
-        Ringstationconfigentry();
-        ~Ringstationconfigentry();
+        RingStationConfigEntry();
+        ~RingStationConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -605,14 +605,14 @@ class TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry : public 
         ydk::YLeaf ringstationconfiggroupaddress; //type: binary
         ydk::YLeaf ringstationconfigfunctionaladdress; //type: binary
 
-}; // TOKENRINGRMONMIB::Ringstationconfigtable::Ringstationconfigentry
+}; // TOKENRINGRMONMIB::RingStationConfigTable::RingStationConfigEntry
 
 
-class TOKENRINGRMONMIB::Sourceroutingstatstable : public ydk::Entity
+class TOKENRINGRMONMIB::SourceRoutingStatsTable : public ydk::Entity
 {
     public:
-        Sourceroutingstatstable();
-        ~Sourceroutingstatstable();
+        SourceRoutingStatsTable();
+        ~SourceRoutingStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -625,18 +625,18 @@ class TOKENRINGRMONMIB::Sourceroutingstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Sourceroutingstatsentry; //type: TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry
+        class SourceRoutingStatsEntry; //type: TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TOKEN_RING_RMON_MIB::TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry> > sourceroutingstatsentry;
+        ydk::YList sourceroutingstatsentry;
         
-}; // TOKENRINGRMONMIB::Sourceroutingstatstable
+}; // TOKENRINGRMONMIB::SourceRoutingStatsTable
 
 
-class TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry : public ydk::Entity
+class TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry : public ydk::Entity
 {
     public:
-        Sourceroutingstatsentry();
-        ~Sourceroutingstatsentry();
+        SourceRoutingStatsEntry();
+        ~SourceRoutingStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -676,7 +676,7 @@ class TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry : publi
         ydk::YLeaf sourceroutingstatsdroppedframes; //type: uint32
         ydk::YLeaf sourceroutingstatscreatetime; //type: uint32
 
-}; // TOKENRINGRMONMIB::Sourceroutingstatstable::Sourceroutingstatsentry
+}; // TOKENRINGRMONMIB::SourceRoutingStatsTable::SourceRoutingStatsEntry
 
 class EntryStatus : public ydk::Enum
 {
@@ -688,7 +688,7 @@ class EntryStatus : public ydk::Enum
 
 };
 
-class TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringstationcontrolringstate : public ydk::Enum
+class TOKENRINGRMONMIB::RingStationControlTable::RingStationControlEntry::RingStationControlRingState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normalOperation;
@@ -701,7 +701,7 @@ class TOKENRINGRMONMIB::Ringstationcontroltable::Ringstationcontrolentry::Ringst
 
 };
 
-class TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationstationstatus : public ydk::Enum
+class TOKENRINGRMONMIB::RingStationTable::RingStationEntry::RingStationStationStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
@@ -710,7 +710,7 @@ class TOKENRINGRMONMIB::Ringstationtable::Ringstationentry::Ringstationstationst
 
 };
 
-class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolremove : public ydk::Enum
+class TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlRemove : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf stable;
@@ -718,7 +718,7 @@ class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrole
 
 };
 
-class TOKENRINGRMONMIB::Ringstationconfigcontroltable::Ringstationconfigcontrolentry::Ringstationconfigcontrolupdatestats : public ydk::Enum
+class TOKENRINGRMONMIB::RingStationConfigControlTable::RingStationConfigControlEntry::RingStationConfigControlUpdateStats : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf stable;

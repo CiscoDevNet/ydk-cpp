@@ -32,28 +32,28 @@ class CISCOIETFPWTDMMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cpwctdmobjects; //type: CISCOIETFPWTDMMIB::Cpwctdmobjects
-        class Cpwctdmtable; //type: CISCOIETFPWTDMMIB::Cpwctdmtable
-        class Cpwctdmcfgtable; //type: CISCOIETFPWTDMMIB::Cpwctdmcfgtable
-        class Cpwctdmperfcurrenttable; //type: CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable
-        class Cpwctdmperfintervaltable; //type: CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable
-        class Cpwctdmperf1Dayintervaltable; //type: CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable
+        class CpwCTDMObjects; //type: CISCOIETFPWTDMMIB::CpwCTDMObjects
+        class CpwCTDMTable; //type: CISCOIETFPWTDMMIB::CpwCTDMTable
+        class CpwCTDMCfgTable; //type: CISCOIETFPWTDMMIB::CpwCTDMCfgTable
+        class CpwCTDMPerfCurrentTable; //type: CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable
+        class CpwCTDMPerfIntervalTable; //type: CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable
+        class CpwCTDMPerf1DayIntervalTable; //type: CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmobjects> cpwctdmobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmtable> cpwctdmtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmcfgtable> cpwctdmcfgtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable> cpwctdmperfcurrenttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable> cpwctdmperfintervaltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable> cpwctdmperf1dayintervaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::CpwCTDMObjects> cpwctdmobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::CpwCTDMTable> cpwctdmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::CpwCTDMCfgTable> cpwctdmcfgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable> cpwctdmperfcurrenttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable> cpwctdmperfintervaltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable> cpwctdmperf1dayintervaltable;
         
 }; // CISCOIETFPWTDMMIB
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmobjects : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMObjects : public ydk::Entity
 {
     public:
-        Cpwctdmobjects();
-        ~Cpwctdmobjects();
+        CpwCTDMObjects();
+        ~CpwCTDMObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -68,14 +68,14 @@ class CISCOIETFPWTDMMIB::Cpwctdmobjects : public ydk::Entity
 
         ydk::YLeaf cpwctdmcfgindexnext; //type: uint32
 
-}; // CISCOIETFPWTDMMIB::Cpwctdmobjects
+}; // CISCOIETFPWTDMMIB::CpwCTDMObjects
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmtable : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMTable : public ydk::Entity
 {
     public:
-        Cpwctdmtable();
-        ~Cpwctdmtable();
+        CpwCTDMTable();
+        ~CpwCTDMTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -88,18 +88,18 @@ class CISCOIETFPWTDMMIB::Cpwctdmtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwctdmentry; //type: CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry
+        class CpwCTDMEntry; //type: CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry> > cpwctdmentry;
+        ydk::YList cpwctdmentry;
         
-}; // CISCOIETFPWTDMMIB::Cpwctdmtable
+}; // CISCOIETFPWTDMMIB::CpwCTDMTable
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry : public ydk::Entity
 {
     public:
-        Cpwctdmentry();
-        ~Cpwctdmentry();
+        CpwCTDMEntry();
+        ~CpwCTDMEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -112,28 +112,28 @@ class CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwctdmrate; //type: int32
         ydk::YLeaf cpwctdmifindex; //type: int32
         ydk::YLeaf cpwcgentdmcfgindex; //type: uint32
         ydk::YLeaf cpwcreltdmcfgindex; //type: uint32
-        ydk::YLeaf cpwctdmconfigerror; //type: Cpwctdmconfigerror
+        ydk::YLeaf cpwctdmconfigerror; //type: CpwCTDMConfigError
         ydk::YLeaf cpwctdmtimeelapsed; //type: int32
         ydk::YLeaf cpwctdmvalidintervals; //type: int32
         ydk::YLeaf cpwctdmvaliddayintervals; //type: int32
-        ydk::YLeaf cpwctdmcurrentindications; //type: Cpwctdmcurrentindications
-        ydk::YLeaf cpwctdmlatchedindications; //type: Cpwctdmlatchedindications
+        ydk::YLeaf cpwctdmcurrentindications; //type: CpwCTDMCurrentIndications
+        ydk::YLeaf cpwctdmlatchedindications; //type: CpwCTDMLatchedIndications
         ydk::YLeaf cpwctdmlastestimestamp; //type: uint32
 
-}; // CISCOIETFPWTDMMIB::Cpwctdmtable::Cpwctdmentry
+}; // CISCOIETFPWTDMMIB::CpwCTDMTable::CpwCTDMEntry
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmcfgtable : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMCfgTable : public ydk::Entity
 {
     public:
-        Cpwctdmcfgtable();
-        ~Cpwctdmcfgtable();
+        CpwCTDMCfgTable();
+        ~CpwCTDMCfgTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -146,18 +146,18 @@ class CISCOIETFPWTDMMIB::Cpwctdmcfgtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwctdmcfgentry; //type: CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry
+        class CpwCTDMCfgEntry; //type: CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry> > cpwctdmcfgentry;
+        ydk::YList cpwctdmcfgentry;
         
-}; // CISCOIETFPWTDMMIB::Cpwctdmcfgtable
+}; // CISCOIETFPWTDMMIB::CpwCTDMCfgTable
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry : public ydk::Entity
 {
     public:
-        Cpwctdmcfgentry();
-        ~Cpwctdmcfgentry();
+        CpwCTDMCfgEntry();
+        ~CpwCTDMCfgEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -171,36 +171,36 @@ class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cpwctdmcfgindex; //type: uint32
-        ydk::YLeaf cpwctdmcfgconferr; //type: Cpwctdmcfgconferr
+        ydk::YLeaf cpwctdmcfgconferr; //type: CpwCTDMCfgConfErr
         ydk::YLeaf cpwctdmcfgpayloadsize; //type: uint32
         ydk::YLeaf cpwctdmcfgpktreorder; //type: boolean
         ydk::YLeaf cpwctdmcfgrtphdrused; //type: boolean
         ydk::YLeaf cpwctdmcfgjtrbfrdepth; //type: uint32
-        ydk::YLeaf cpwctdmcfgpayloadsuppression; //type: Cpwctdmcfgpayloadsuppression
+        ydk::YLeaf cpwctdmcfgpayloadsuppression; //type: CpwCTDMCfgPayloadSuppression
         ydk::YLeaf cpwctdmcfgconsecpktsinsynch; //type: uint32
         ydk::YLeaf cpwctdmcfgconsecmisspktsoutsynch; //type: uint32
         ydk::YLeaf cpwctdmcfgsetup2synchtimeout; //type: uint32
-        ydk::YLeaf cpwctdmcfgpktreplacepolicy; //type: Cpwctdmcfgpktreplacepolicy
+        ydk::YLeaf cpwctdmcfgpktreplacepolicy; //type: CpwCTDMCfgPktReplacePolicy
         ydk::YLeaf cpwctdmcfgavepktlosstimewindow; //type: int32
         ydk::YLeaf cpwctdmcfgexcessivepktlossthreshold; //type: uint32
         ydk::YLeaf cpwctdmcfgalarmthreshold; //type: uint32
         ydk::YLeaf cpwctdmcfgclearalarmthreshold; //type: uint32
         ydk::YLeaf cpwctdmcfgmissingpktstoses; //type: uint32
-        ydk::YLeaf cpwctdmcfgtimestampmode; //type: Cpwctdmcfgtimestampmode
+        ydk::YLeaf cpwctdmcfgtimestampmode; //type: CpwCTDMCfgTimestampMode
         ydk::YLeaf cpwctdmcfgstoragetype; //type: StorageType
         ydk::YLeaf cpwctdmcfgrowstatus; //type: RowStatus
-        class Cpwctdmcfgpayloadsuppression;
-        class Cpwctdmcfgpktreplacepolicy;
-        class Cpwctdmcfgtimestampmode;
+        class CpwCTDMCfgPayloadSuppression;
+        class CpwCTDMCfgPktReplacePolicy;
+        class CpwCTDMCfgTimestampMode;
 
-}; // CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry
+}; // CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable : public ydk::Entity
 {
     public:
-        Cpwctdmperfcurrenttable();
-        ~Cpwctdmperfcurrenttable();
+        CpwCTDMPerfCurrentTable();
+        ~CpwCTDMPerfCurrentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -213,18 +213,18 @@ class CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwctdmperfcurrententry; //type: CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry
+        class CpwCTDMPerfCurrentEntry; //type: CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry> > cpwctdmperfcurrententry;
+        ydk::YList cpwctdmperfcurrententry;
         
-}; // CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable
+}; // CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry : public ydk::Entity
 {
     public:
-        Cpwctdmperfcurrententry();
-        ~Cpwctdmperfcurrententry();
+        CpwCTDMPerfCurrentEntry();
+        ~CpwCTDMPerfCurrentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,7 +237,7 @@ class CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwctdmperfcurrentmissingpkts; //type: uint32
         ydk::YLeaf cpwctdmperfcurrentpktsreorder; //type: uint32
@@ -249,14 +249,14 @@ class CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry : publ
         ydk::YLeaf cpwctdmperfcurrentuass; //type: uint32
         ydk::YLeaf cpwctdmperfcurrentfc; //type: uint32
 
-}; // CISCOIETFPWTDMMIB::Cpwctdmperfcurrenttable::Cpwctdmperfcurrententry
+}; // CISCOIETFPWTDMMIB::CpwCTDMPerfCurrentTable::CpwCTDMPerfCurrentEntry
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable : public ydk::Entity
 {
     public:
-        Cpwctdmperfintervaltable();
-        ~Cpwctdmperfintervaltable();
+        CpwCTDMPerfIntervalTable();
+        ~CpwCTDMPerfIntervalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -269,18 +269,18 @@ class CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwctdmperfintervalentry; //type: CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry
+        class CpwCTDMPerfIntervalEntry; //type: CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry> > cpwctdmperfintervalentry;
+        ydk::YList cpwctdmperfintervalentry;
         
-}; // CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable
+}; // CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry : public ydk::Entity
 {
     public:
-        Cpwctdmperfintervalentry();
-        ~Cpwctdmperfintervalentry();
+        CpwCTDMPerfIntervalEntry();
+        ~CpwCTDMPerfIntervalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -293,7 +293,7 @@ class CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwctdmperfintervalnumber; //type: uint32
         ydk::YLeaf cpwctdmperfintervalvaliddata; //type: boolean
@@ -308,14 +308,14 @@ class CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry : pu
         ydk::YLeaf cpwctdmperfintervaluass; //type: uint32
         ydk::YLeaf cpwctdmperfintervalfc; //type: uint32
 
-}; // CISCOIETFPWTDMMIB::Cpwctdmperfintervaltable::Cpwctdmperfintervalentry
+}; // CISCOIETFPWTDMMIB::CpwCTDMPerfIntervalTable::CpwCTDMPerfIntervalEntry
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable : public ydk::Entity
 {
     public:
-        Cpwctdmperf1Dayintervaltable();
-        ~Cpwctdmperf1Dayintervaltable();
+        CpwCTDMPerf1DayIntervalTable();
+        ~CpwCTDMPerf1DayIntervalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -328,18 +328,18 @@ class CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cpwctdmperf1Dayintervalentry; //type: CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry
+        class CpwCTDMPerf1DayIntervalEntry; //type: CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_PW_TDM_MIB::CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry> > cpwctdmperf1dayintervalentry;
+        ydk::YList cpwctdmperf1dayintervalentry;
         
-}; // CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable
+}; // CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable
 
 
-class CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry : public ydk::Entity
+class CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry : public ydk::Entity
 {
     public:
-        Cpwctdmperf1Dayintervalentry();
-        ~Cpwctdmperf1Dayintervalentry();
+        CpwCTDMPerf1DayIntervalEntry();
+        ~CpwCTDMPerf1DayIntervalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -352,7 +352,7 @@ class CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalen
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::Cpwvctable::Cpwvcentry::cpwvcindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_IETF_PW_MIB::CISCOIETFPWMIB::CpwVcTable::CpwVcEntry::cpwvcindex)
         ydk::YLeaf cpwvcindex;
         ydk::YLeaf cpwctdmperf1dayintervalnumber; //type: uint32
         ydk::YLeaf cpwctdmperf1dayintervalvaliddata; //type: boolean
@@ -367,9 +367,9 @@ class CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalen
         ydk::YLeaf cpwctdmperf1dayintervaluass; //type: uint32
         ydk::YLeaf cpwctdmperf1dayintervalfc; //type: uint32
 
-}; // CISCOIETFPWTDMMIB::Cpwctdmperf1Dayintervaltable::Cpwctdmperf1Dayintervalentry
+}; // CISCOIETFPWTDMMIB::CpwCTDMPerf1DayIntervalTable::CpwCTDMPerf1DayIntervalEntry
 
-class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpayloadsuppression : public ydk::Enum
+class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgPayloadSuppression : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -377,7 +377,7 @@ class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpayloadsupp
 
 };
 
-class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpktreplacepolicy : public ydk::Enum
+class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgPktReplacePolicy : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ais;
@@ -385,7 +385,7 @@ class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgpktreplacep
 
 };
 
-class CISCOIETFPWTDMMIB::Cpwctdmcfgtable::Cpwctdmcfgentry::Cpwctdmcfgtimestampmode : public ydk::Enum
+class CISCOIETFPWTDMMIB::CpwCTDMCfgTable::CpwCTDMCfgEntry::CpwCTDMCfgTimestampMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;

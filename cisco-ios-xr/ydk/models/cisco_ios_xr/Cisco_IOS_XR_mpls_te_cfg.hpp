@@ -98,7 +98,7 @@ class MplsTe::DiffServTrafficEngineering::Classes : public ydk::Entity
 
         class Class; //type: MplsTe::DiffServTrafficEngineering::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::DiffServTrafficEngineering::Classes::Class> > class_;
+        ydk::YList class_;
         
 }; // MplsTe::DiffServTrafficEngineering::Classes
 
@@ -172,7 +172,7 @@ class MplsTe::NamedTunnels::Tunnels : public ydk::Entity
 
         class Tunnel; //type: MplsTe::NamedTunnels::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
 }; // MplsTe::NamedTunnels::Tunnels
 
@@ -233,6 +233,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes : public ydk::Enti
         class TunnelPathSelection; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection
         class AutoBandwidth; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth
         class Priority; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority
+        class AffinityMask; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask
         class Logging; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging
         class Bandwidth; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth
         class Autoroute; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute
@@ -243,6 +244,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes : public ydk::Enti
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection> tunnel_path_selection;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth> auto_bandwidth;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority> priority; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask> affinity_mask; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth> bandwidth; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute> autoroute;
@@ -270,7 +272,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups : publ
 
         class PathSetup; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup> > path_setup;
+        ydk::YList path_setup;
         
 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups
 
@@ -292,7 +294,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathS
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf path_setup_name; //type: string
-        ydk::YLeaf preference; //type: int32
+        ydk::YLeaf preference; //type: uint32
         ydk::YLeaf enable; //type: empty
         class PathComputation; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation
 
@@ -518,6 +520,28 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority : public
 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority
 
 
+class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask : public ydk::Entity
+{
+    public:
+        AffinityMask();
+        ~AffinityMask();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf affinity; //type: string
+        ydk::YLeaf mask; //type: string
+
+}; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask
+
+
 class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging : public ydk::Entity
 {
     public:
@@ -687,7 +711,7 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destin
 
         class Destination; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::Destination
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::Destination> > destination;
+        ydk::YList destination;
         
 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations
 
@@ -741,17 +765,17 @@ class MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityA
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType> > new_style_affinity_affinity_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1> > new_style_affinity_affinity_type_affinity1;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2> > new_style_affinity_affinity_type_affinity1_affinity2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
+        ydk::YList new_style_affinity_affinity_type;
+        ydk::YList new_style_affinity_affinity_type_affinity1;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
         
 }; // MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes
 
@@ -1202,7 +1226,7 @@ class MplsTe::GmplsUni::Controllers : public ydk::Entity
 
         class Controller; //type: MplsTe::GmplsUni::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsUni::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // MplsTe::GmplsUni::Controllers
 
@@ -1331,7 +1355,7 @@ class MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions
 
         class PathOption; //type: MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption> > path_option;
+        ydk::YList path_option;
         
 }; // MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions
 
@@ -1526,16 +1550,16 @@ class MplsTe::GlobalAttributes::AutoTunnel : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class Pcc; //type: MplsTe::GlobalAttributes::AutoTunnel::Pcc
-        class P2PAutoTunnel; //type: MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel
+        class P2pAutoTunnel; //type: MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel
         class Backup; //type: MplsTe::GlobalAttributes::AutoTunnel::Backup
         class Mesh; //type: MplsTe::GlobalAttributes::AutoTunnel::Mesh
-        class P2MpAutoTunnel; //type: MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel
+        class P2mpAutoTunnel; //type: MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Pcc> pcc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel> p2p_auto_tunnel;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel> p2p_auto_tunnel;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Backup> backup;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Mesh> mesh;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel> p2mp_auto_tunnel;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel> p2mp_auto_tunnel;
         
 }; // MplsTe::GlobalAttributes::AutoTunnel
 
@@ -1587,11 +1611,11 @@ class MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange : public ydk::Entit
 }; // MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange
 
 
-class MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel : public ydk::Entity
+class MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel : public ydk::Entity
 {
     public:
-        P2PAutoTunnel();
-        ~P2PAutoTunnel();
+        P2pAutoTunnel();
+        ~P2pAutoTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1604,14 +1628,14 @@ class MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange
+        class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange> tunnel_range; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange> tunnel_range; // presence node
         
-}; // MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel
+}; // MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel
 
 
-class MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange : public ydk::Entity
+class MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange : public ydk::Entity
 {
     public:
         TunnelRange();
@@ -1631,7 +1655,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange : public 
         ydk::YLeaf min_tunnel_id; //type: uint32
         ydk::YLeaf max_tunnel_id; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange
+}; // MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange
 
 
 class MplsTe::GlobalAttributes::AutoTunnel::Backup : public ydk::Entity
@@ -1777,7 +1801,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups : public ydk::Entit
 
         class MeshGroup; //type: MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup> > mesh_group;
+        ydk::YList mesh_group;
         
 }; // MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups
 
@@ -1878,11 +1902,11 @@ class MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange : public ydk::Enti
 }; // MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange
 
 
-class MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel : public ydk::Entity
+class MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel : public ydk::Entity
 {
     public:
-        P2MpAutoTunnel();
-        ~P2MpAutoTunnel();
+        P2mpAutoTunnel();
+        ~P2mpAutoTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1895,14 +1919,14 @@ class MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange
+        class TunnelRange; //type: MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange> tunnel_range; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange> tunnel_range; // presence node
         
-}; // MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel
+}; // MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel
 
 
-class MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange : public ydk::Entity
+class MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange : public ydk::Entity
 {
     public:
         TunnelRange();
@@ -1922,7 +1946,7 @@ class MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange : public
         ydk::YLeaf min_tunnel_id; //type: uint32
         ydk::YLeaf max_tunnel_id; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange
+}; // MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange
 
 
 class MplsTe::GlobalAttributes::HardwareOutOfResource : public ydk::Entity
@@ -1972,9 +1996,9 @@ class MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState : public ydk:
 
         ydk::YLeaf oor_node_protection_disable; //type: empty
         ydk::YLeaf oor_available_bandwidth_percentage; //type: uint32
-        ydk::YLeaf oor_accept_lsp_min_bandwidth; //type: int32
+        ydk::YLeaf oor_accept_lsp_min_bandwidth; //type: uint32
         ydk::YLeaf oor_accept_reopt_lsp; //type: empty
-        ydk::YLeaf oor_metric_te_penalty; //type: int32
+        ydk::YLeaf oor_metric_te_penalty; //type: uint32
 
 }; // MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState
 
@@ -1998,9 +2022,9 @@ class MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState : public y
 
         ydk::YLeaf oor_node_protection_disable; //type: empty
         ydk::YLeaf oor_available_bandwidth_percentage; //type: uint32
-        ydk::YLeaf oor_accept_lsp_min_bandwidth; //type: int32
+        ydk::YLeaf oor_accept_lsp_min_bandwidth; //type: uint32
         ydk::YLeaf oor_accept_reopt_lsp; //type: empty
-        ydk::YLeaf oor_metric_te_penalty; //type: int32
+        ydk::YLeaf oor_metric_te_penalty; //type: uint32
 
 }; // MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState
 
@@ -2025,9 +2049,9 @@ class MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState : public yd
         ydk::YLeaf oor_recovery_duration; //type: uint32
         ydk::YLeaf oor_node_protection_disable; //type: empty
         ydk::YLeaf oor_available_bandwidth_percentage; //type: uint32
-        ydk::YLeaf oor_accept_lsp_min_bandwidth; //type: int32
+        ydk::YLeaf oor_accept_lsp_min_bandwidth; //type: uint32
         ydk::YLeaf oor_accept_reopt_lsp; //type: empty
-        ydk::YLeaf oor_metric_te_penalty; //type: int32
+        ydk::YLeaf oor_metric_te_penalty; //type: uint32
 
 }; // MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState
 
@@ -2051,7 +2075,7 @@ class MplsTe::GlobalAttributes::SecondaryRouterIds : public ydk::Entity
 
         class SecondaryRouterId; //type: MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId> > secondary_router_id;
+        ydk::YList secondary_router_id;
         
 }; // MplsTe::GlobalAttributes::SecondaryRouterIds
 
@@ -2095,7 +2119,7 @@ class MplsTe::GlobalAttributes::Srlg : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf default_admin_weight; //type: int32
+        ydk::YLeaf default_admin_weight; //type: uint32
         ydk::YLeaf enable; //type: empty
         class Names; //type: MplsTe::GlobalAttributes::Srlg::Names
 
@@ -2123,7 +2147,7 @@ class MplsTe::GlobalAttributes::Srlg::Names : public ydk::Entity
 
         class Name; //type: MplsTe::GlobalAttributes::Srlg::Names::Name
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::Srlg::Names::Name> > name;
+        ydk::YList name;
         
 }; // MplsTe::GlobalAttributes::Srlg::Names
 
@@ -2146,7 +2170,7 @@ class MplsTe::GlobalAttributes::Srlg::Names::Name : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf srlg_name; //type: string
-        ydk::YLeaf admin_weight; //type: int32
+        ydk::YLeaf admin_weight; //type: uint32
         class StaticSrlgMembers; //type: MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers> static_srlg_members;
@@ -2172,7 +2196,7 @@ class MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers : public yd
 
         class StaticSrlgMember; //type: MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember> > static_srlg_member;
+        ydk::YList static_srlg_member;
         
 }; // MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers
 
@@ -2218,7 +2242,7 @@ class MplsTe::GlobalAttributes::Queues : public ydk::Entity
 
         class Queue; //type: MplsTe::GlobalAttributes::Queues::Queue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::Queues::Queue> > queue;
+        ydk::YList queue;
         
 }; // MplsTe::GlobalAttributes::Queues
 
@@ -2286,16 +2310,16 @@ class MplsTe::GlobalAttributes::AttributeSet : public ydk::Entity
         std::string get_absolute_path() const override;
 
         class PathOptionAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes
-        class P2MpteAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
-        class P2PTeAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes
+        class P2mpteAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes
+        class P2pTeAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes
         class AutoBackupAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes
         class OtnPpAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes
         class AutoMeshAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes
         class XroAttributes; //type: MplsTe::GlobalAttributes::AttributeSet::XroAttributes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes> path_option_attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes> p2mpte_attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes> p2p_te_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes> p2mpte_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes> p2p_te_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes> auto_backup_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes> otn_pp_attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes> auto_mesh_attributes;
@@ -2323,7 +2347,7 @@ class MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes : public ydk:
 
         class PathOptionAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute> > path_option_attribute;
+        ydk::YList path_option_attribute;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes
 
@@ -2578,17 +2602,17 @@ class MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAt
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType> > new_style_affinity_affinity_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1> > new_style_affinity_affinity_type_affinity1;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2> > new_style_affinity_affinity_type_affinity1_affinity2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
+        ydk::YList new_style_affinity_affinity_type;
+        ydk::YList new_style_affinity_affinity_type_affinity1;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes
 
@@ -2879,11 +2903,11 @@ class MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAt
 }; // MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes : public ydk::Entity
 {
     public:
-        P2MpteAttributes();
-        ~P2MpteAttributes();
+        P2mpteAttributes();
+        ~P2mpteAttributes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2896,18 +2920,18 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class P2MpteAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute
+        class P2mpteAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute> > p2mpte_attribute;
+        ydk::YList p2mpte_attribute;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute : public ydk::Entity
 {
     public:
-        P2MpteAttribute();
-        ~P2MpteAttribute();
+        P2mpteAttribute();
+        ~P2mpteAttribute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2924,26 +2948,26 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute 
         ydk::YLeaf interface_bandwidth; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf record_route; //type: empty
-        class Priority; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority
-        class AffinityMask; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask
-        class Bandwidth; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth
-        class PathSelection; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection
-        class NewStyleAffinityAffinityTypes; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes
-        class FastReroute; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute
-        class Logging; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging
+        class Priority; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority
+        class AffinityMask; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask
+        class Bandwidth; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth
+        class PathSelection; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection
+        class NewStyleAffinityAffinityTypes; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes
+        class FastReroute; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute
+        class Logging; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority> priority; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask> affinity_mask; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth> bandwidth; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection> path_selection;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes> new_style_affinity_affinity_types;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute> fast_reroute; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging> logging;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority> priority; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask> affinity_mask; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth> bandwidth; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection> path_selection;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes> new_style_affinity_affinity_types;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute> fast_reroute; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging> logging;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority : public ydk::Entity
 {
     public:
         Priority();
@@ -2962,10 +2986,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf setup_priority; //type: uint32
         ydk::YLeaf hold_priority; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask : public ydk::Entity
 {
     public:
         AffinityMask();
@@ -2984,10 +3008,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity; //type: string
         ydk::YLeaf mask; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth : public ydk::Entity
 {
     public:
         Bandwidth();
@@ -3007,10 +3031,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf class_or_pool_type; //type: uint32
         ydk::YLeaf bandwidth; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection : public ydk::Entity
 {
     public:
         PathSelection();
@@ -3028,10 +3052,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
 
         ydk::YLeaf enable; //type: empty
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypes();
@@ -3047,34 +3071,34 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class NewStyleAffinityAffinityType; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
-        class NewStyleAffinityAffinityTypeAffinity1; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
+        class NewStyleAffinityAffinityType; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
+        class NewStyleAffinityAffinityTypeAffinity1; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType> > new_style_affinity_affinity_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1> > new_style_affinity_affinity_type_affinity1;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2> > new_style_affinity_affinity_type_affinity1_affinity2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
+        ydk::YList new_style_affinity_affinity_type;
+        ydk::YList new_style_affinity_affinity_type_affinity1;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityType();
@@ -3092,10 +3116,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
 
         ydk::YLeaf affinity_type; //type: MplsTeTunnelAffinity
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1();
@@ -3114,10 +3138,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity_type; //type: MplsTeTunnelAffinity
         ydk::YLeaf affinity1; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2();
@@ -3137,10 +3161,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity1; //type: string
         ydk::YLeaf affinity2; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3();
@@ -3161,10 +3185,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity2; //type: string
         ydk::YLeaf affinity3; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4();
@@ -3186,10 +3210,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity3; //type: string
         ydk::YLeaf affinity4; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5();
@@ -3212,10 +3236,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity4; //type: string
         ydk::YLeaf affinity5; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6();
@@ -3239,10 +3263,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity5; //type: string
         ydk::YLeaf affinity6; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7();
@@ -3267,10 +3291,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity6; //type: string
         ydk::YLeaf affinity7; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8();
@@ -3296,10 +3320,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity7; //type: string
         ydk::YLeaf affinity8; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9();
@@ -3326,10 +3350,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity8; //type: string
         ydk::YLeaf affinity9; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10();
@@ -3357,10 +3381,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf affinity9; //type: string
         ydk::YLeaf affinity10; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute : public ydk::Entity
 {
     public:
         FastReroute();
@@ -3379,10 +3403,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf bandwidth_protection; //type: uint32
         ydk::YLeaf node_protection; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -3408,14 +3432,14 @@ class MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute:
         ydk::YLeaf sub_lsp_state_message; //type: empty
         ydk::YLeaf reroute_messsage; //type: empty
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging
+}; // MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes : public ydk::Entity
 {
     public:
-        P2PTeAttributes();
-        ~P2PTeAttributes();
+        P2pTeAttributes();
+        ~P2pTeAttributes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3428,18 +3452,18 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class P2PTeAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute
+        class P2pTeAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute> > p2p_te_attribute;
+        ydk::YList p2p_te_attribute;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute : public ydk::Entity
 {
     public:
-        P2PTeAttribute();
-        ~P2PTeAttribute();
+        P2pTeAttribute();
+        ~P2pTeAttribute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3454,22 +3478,22 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute : 
 
         ydk::YLeaf attribute_set_name; //type: string
         ydk::YLeaf enable; //type: empty
-        class PathSelection; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection
-        class Pce; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce
-        class AffinityMask; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask
-        class Logging; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging
-        class NewStyleAffinityAffinityTypes; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes
+        class PathSelection; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection
+        class Pce; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce
+        class AffinityMask; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask
+        class Logging; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging
+        class NewStyleAffinityAffinityTypes; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection> path_selection;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce> pce;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask> affinity_mask; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging> logging;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes> new_style_affinity_affinity_types;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection> path_selection;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce> pce;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask> affinity_mask; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging> logging;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes> new_style_affinity_affinity_types;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection : public ydk::Entity
 {
     public:
         PathSelection();
@@ -3488,16 +3512,16 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         ydk::YLeaf path_selection_metric; //type: MplsTePathSelectionMetric
         ydk::YLeaf path_selection_segment_routing_adjacency_protection; //type: MplsTePathSelectionSegmentRoutingAdjacencyProtection
         ydk::YLeaf enable; //type: empty
-        class SegmentRoutingPrepend; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend
-        class Invalidation; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation
+        class SegmentRoutingPrepend; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend
+        class Invalidation; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend> segment_routing_prepend;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation> invalidation;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend> segment_routing_prepend;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation> invalidation;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend : public ydk::Entity
 {
     public:
         SegmentRoutingPrepend();
@@ -3514,14 +3538,14 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
-        class Indexes; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes
+        class Indexes; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes> indexes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes> indexes;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes : public ydk::Entity
 {
     public:
         Indexes();
@@ -3537,14 +3561,14 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Index; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index
+        class Index; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index> > index_;
+        ydk::YList index_;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index : public ydk::Entity
 {
     public:
         Index();
@@ -3562,12 +3586,12 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
 
         ydk::YLeaf index_number; //type: uint32
         ydk::YLeaf prepend_type; //type: SrPrepend
-        ydk::YLeaf mpls_label; //type: int32
+        ydk::YLeaf mpls_label; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation : public ydk::Entity
 {
     public:
         Invalidation();
@@ -3586,10 +3610,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         ydk::YLeaf invalidation_timer; //type: uint32
         ydk::YLeaf invalidation_timer_expire_type; //type: MplsTePathSelectionInvalidationTimerExpire
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce : public ydk::Entity
 {
     public:
         Pce();
@@ -3606,16 +3630,16 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
-        class Bidirectional; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional
-        class DisjointPath; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath
+        class Bidirectional; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional
+        class DisjointPath; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional> bidirectional; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath> disjoint_path; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional> bidirectional; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath> disjoint_path; // presence node
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional : public ydk::Entity
 {
     public:
         Bidirectional();
@@ -3634,10 +3658,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         ydk::YLeaf bd_source_address; //type: string
         ydk::YLeaf bd_group_id; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath : public ydk::Entity
 {
     public:
         DisjointPath();
@@ -3657,10 +3681,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P
         ydk::YLeaf dp_type; //type: uint32
         ydk::YLeaf dp_group_id; //type: uint32
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask : public ydk::Entity
 {
     public:
         AffinityMask();
@@ -3679,10 +3703,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::A
         ydk::YLeaf affinity; //type: string
         ydk::YLeaf mask; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging : public ydk::Entity
 {
     public:
         Logging();
@@ -3710,10 +3734,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::L
         ydk::YLeaf reoptimized_message; //type: empty
         ydk::YLeaf pcalc_failure_message; //type: empty
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypes();
@@ -3729,34 +3753,34 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class NewStyleAffinityAffinityType; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
-        class NewStyleAffinityAffinityTypeAffinity1; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
-        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
+        class NewStyleAffinityAffinityType; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
+        class NewStyleAffinityAffinityTypeAffinity1; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
+        class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType> > new_style_affinity_affinity_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1> > new_style_affinity_affinity_type_affinity1;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2> > new_style_affinity_affinity_type_affinity1_affinity2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
+        ydk::YList new_style_affinity_affinity_type;
+        ydk::YList new_style_affinity_affinity_type_affinity1;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
         
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityType();
@@ -3774,10 +3798,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
 
         ydk::YLeaf affinity_type; //type: MplsTeTunnelAffinity
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1();
@@ -3796,10 +3820,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity_type; //type: MplsTeTunnelAffinity
         ydk::YLeaf affinity1; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2();
@@ -3819,10 +3843,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity1; //type: string
         ydk::YLeaf affinity2; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3();
@@ -3843,10 +3867,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity2; //type: string
         ydk::YLeaf affinity3; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4();
@@ -3868,10 +3892,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity3; //type: string
         ydk::YLeaf affinity4; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5();
@@ -3894,10 +3918,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity4; //type: string
         ydk::YLeaf affinity5; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6();
@@ -3921,10 +3945,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity5; //type: string
         ydk::YLeaf affinity6; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7();
@@ -3949,10 +3973,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity6; //type: string
         ydk::YLeaf affinity7; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8();
@@ -3978,10 +4002,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity7; //type: string
         ydk::YLeaf affinity8; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9();
@@ -4008,10 +4032,10 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity8; //type: string
         ydk::YLeaf affinity9; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
 
 
-class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10 : public ydk::Entity
+class MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10 : public ydk::Entity
 {
     public:
         NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10();
@@ -4039,7 +4063,7 @@ class MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::N
         ydk::YLeaf affinity9; //type: string
         ydk::YLeaf affinity10; //type: string
 
-}; // MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
+}; // MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
 
 class MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes : public ydk::Entity
@@ -4061,7 +4085,7 @@ class MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes : public ydk:
 
         class AutoBackupAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute> > auto_backup_attribute;
+        ydk::YList auto_backup_attribute;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes
 
@@ -4267,17 +4291,17 @@ class MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAt
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType> > new_style_affinity_affinity_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1> > new_style_affinity_affinity_type_affinity1;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2> > new_style_affinity_affinity_type_affinity1_affinity2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
+        ydk::YList new_style_affinity_affinity_type;
+        ydk::YList new_style_affinity_affinity_type_affinity1;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::NewStyleAffinityAffinityTypes
 
@@ -4587,7 +4611,7 @@ class MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes : public ydk::Enti
 
         class OtnPpAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute> > otn_pp_attribute;
+        ydk::YList otn_pp_attribute;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes
 
@@ -4645,7 +4669,7 @@ class MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::R
 
         class RevertScheduleName; //type: MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::RevertScheduleNames::RevertScheduleName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::RevertScheduleNames::RevertScheduleName> > revert_schedule_name;
+        ydk::YList revert_schedule_name;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::RevertScheduleNames
 
@@ -4810,7 +4834,7 @@ class MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes : public ydk::E
 
         class AutoMeshAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute> > auto_mesh_attribute;
+        ydk::YList auto_mesh_attribute;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes
 
@@ -5026,17 +5050,17 @@ class MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttrib
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9; //type: MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9
         class NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10; //type: MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType> > new_style_affinity_affinity_type;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1> > new_style_affinity_affinity_type_affinity1;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2> > new_style_affinity_affinity_type_affinity1_affinity2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10> > new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
+        ydk::YList new_style_affinity_affinity_type;
+        ydk::YList new_style_affinity_affinity_type_affinity1;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9;
+        ydk::YList new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::NewStyleAffinityAffinityTypes
 
@@ -5368,7 +5392,7 @@ class MplsTe::GlobalAttributes::AttributeSet::XroAttributes : public ydk::Entity
 
         class XroAttribute; //type: MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute> > xro_attribute;
+        ydk::YList xro_attribute;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::XroAttributes
 
@@ -5444,7 +5468,7 @@ class MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathD
 
         class Srlg; //type: MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Srlgs::Srlg
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Srlgs::Srlg> > srlg;
+        ydk::YList srlg;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Srlgs
 
@@ -5512,7 +5536,7 @@ class MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathD
 
         class Fec; //type: MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Lsp::Fecs::Fec
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Lsp::Fecs::Fec> > fec;
+        ydk::YList fec;
         
 }; // MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity::Lsp::Fecs
 
@@ -5847,7 +5871,7 @@ class MplsTe::GlobalAttributes::PceAttributes::Peers : public ydk::Entity
 
         class Peer; //type: MplsTe::GlobalAttributes::PceAttributes::Peers::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::PceAttributes::Peers::Peer> > peer;
+        ydk::YList peer;
         
 }; // MplsTe::GlobalAttributes::PceAttributes::Peers
 
@@ -5967,8 +5991,8 @@ class MplsTe::GlobalAttributes::LspOutOfResource::LspOorRedState : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf all_transit_lsp_threshold; //type: int32
-        ydk::YLeaf unprotected_transit_lsp_threshold; //type: int32
+        ydk::YLeaf all_transit_lsp_threshold; //type: uint32
+        ydk::YLeaf unprotected_transit_lsp_threshold; //type: uint32
 
 }; // MplsTe::GlobalAttributes::LspOutOfResource::LspOorRedState
 
@@ -5990,8 +6014,8 @@ class MplsTe::GlobalAttributes::LspOutOfResource::LspOorYellowState : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf all_transit_lsp_threshold; //type: int32
-        ydk::YLeaf unprotected_transit_lsp_threshold; //type: int32
+        ydk::YLeaf all_transit_lsp_threshold; //type: uint32
+        ydk::YLeaf unprotected_transit_lsp_threshold; //type: uint32
 
 }; // MplsTe::GlobalAttributes::LspOutOfResource::LspOorYellowState
 
@@ -6120,7 +6144,7 @@ class MplsTe::GlobalAttributes::PathSelection::LooseMetrics : public ydk::Entity
 
         class LooseMetric; //type: MplsTe::GlobalAttributes::PathSelection::LooseMetrics::LooseMetric
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::PathSelection::LooseMetrics::LooseMetric> > loose_metric;
+        ydk::YList loose_metric;
         
 }; // MplsTe::GlobalAttributes::PathSelection::LooseMetrics
 
@@ -6214,7 +6238,7 @@ class MplsTe::GlobalAttributes::PathSelection::LooseAffinities : public ydk::Ent
 
         class LooseAffinity; //type: MplsTe::GlobalAttributes::PathSelection::LooseAffinities::LooseAffinity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::PathSelection::LooseAffinities::LooseAffinity> > loose_affinity;
+        ydk::YList loose_affinity;
         
 }; // MplsTe::GlobalAttributes::PathSelection::LooseAffinities
 
@@ -6262,7 +6286,7 @@ class MplsTe::GlobalAttributes::AffinityMappings : public ydk::Entity
 
         class AffinityMapping; //type: MplsTe::GlobalAttributes::AffinityMappings::AffinityMapping
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GlobalAttributes::AffinityMappings::AffinityMapping> > affinity_mapping;
+        ydk::YList affinity_mapping;
         
 }; // MplsTe::GlobalAttributes::AffinityMappings
 
@@ -6561,7 +6585,7 @@ class MplsTe::TransportProfile::Midpoints : public ydk::Entity
 
         class Midpoint; //type: MplsTe::TransportProfile::Midpoints::Midpoint
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::TransportProfile::Midpoints::Midpoint> > midpoint;
+        ydk::YList midpoint;
         
 }; // MplsTe::TransportProfile::Midpoints
 
@@ -6759,7 +6783,7 @@ class MplsTe::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsTe::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsTe::Interfaces
 
@@ -6834,7 +6858,7 @@ class MplsTe::Interfaces::Interface::TransportProfileLink::Links : public ydk::E
 
         class Link; //type: MplsTe::Interfaces::Interface::TransportProfileLink::Links::Link
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::Interfaces::Interface::TransportProfileLink::Links::Link> > link;
+        ydk::YList link;
         
 }; // MplsTe::Interfaces::Interface::TransportProfileLink::Links
 
@@ -6882,7 +6906,7 @@ class MplsTe::Interfaces::Interface::Lcac : public ydk::Entity
         ydk::YLeaf fault_oam_lockout; //type: empty
         ydk::YLeaf attribute_flags; //type: string
         ydk::YLeaf enable; //type: empty
-        ydk::YLeaf admin_weight; //type: int32
+        ydk::YLeaf admin_weight; //type: uint32
         class Switchings; //type: MplsTe::Interfaces::Interface::Lcac::Switchings
         class FloodArea; //type: MplsTe::Interfaces::Interface::Lcac::FloodArea
         class AttributeNameXr; //type: MplsTe::Interfaces::Interface::Lcac::AttributeNameXr
@@ -6920,7 +6944,7 @@ class MplsTe::Interfaces::Interface::Lcac::Switchings : public ydk::Entity
 
         class Switching; //type: MplsTe::Interfaces::Interface::Lcac::Switchings::Switching
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::Interfaces::Interface::Lcac::Switchings::Switching> > switching;
+        ydk::YList switching;
         
 }; // MplsTe::Interfaces::Interface::Lcac::Switchings
 
@@ -6966,7 +6990,7 @@ class MplsTe::Interfaces::Interface::Lcac::FloodArea : public ydk::Entity
 
         ydk::YLeaf igp_type; //type: MplsLcacFloodingIgp
         ydk::YLeaf process_name; //type: string
-        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf area_id; //type: uint32
 
 }; // MplsTe::Interfaces::Interface::Lcac::FloodArea
 
@@ -7010,7 +7034,7 @@ class MplsTe::Interfaces::Interface::Lcac::AttributeNames : public ydk::Entity
 
         class AttributeName; //type: MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::Interfaces::Interface::Lcac::AttributeNames::AttributeName> > attribute_name;
+        ydk::YList attribute_name;
         
 }; // MplsTe::Interfaces::Interface::Lcac::AttributeNames
 
@@ -7055,7 +7079,7 @@ class MplsTe::Interfaces::Interface::Lcac::Srlgs : public ydk::Entity
 
         class Srlg; //type: MplsTe::Interfaces::Interface::Lcac::Srlgs::Srlg
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::Interfaces::Interface::Lcac::Srlgs::Srlg> > srlg;
+        ydk::YList srlg;
         
 }; // MplsTe::Interfaces::Interface::Lcac::Srlgs
 
@@ -7168,7 +7192,7 @@ class MplsTe::Interfaces::Interface::GlobalAttributes::BackupTunnels : public yd
 
         class BackupTunnel; //type: MplsTe::Interfaces::Interface::GlobalAttributes::BackupTunnels::BackupTunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::Interfaces::Interface::GlobalAttributes::BackupTunnels::BackupTunnel> > backup_tunnel;
+        ydk::YList backup_tunnel;
         
 }; // MplsTe::Interfaces::Interface::GlobalAttributes::BackupTunnels
 
@@ -7282,7 +7306,7 @@ class MplsTe::Interfaces::Interface::GlobalAttributes::BackupPaths : public ydk:
 
         class BackupPath; //type: MplsTe::Interfaces::Interface::GlobalAttributes::BackupPaths::BackupPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::Interfaces::Interface::GlobalAttributes::BackupPaths::BackupPath> > backup_path;
+        ydk::YList backup_path;
         
 }; // MplsTe::Interfaces::Interface::GlobalAttributes::BackupPaths
 
@@ -7355,7 +7379,7 @@ class MplsTe::GmplsNni::TopologyInstances : public ydk::Entity
 
         class TopologyInstance; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance> > topology_instance;
+        ydk::YList topology_instance;
         
 }; // MplsTe::GmplsNni::TopologyInstances
 
@@ -7383,8 +7407,8 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance : public ydk::Entity
         class OspfInt; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt
         class OspfipAddr; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt> > ospf_int;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr> > ospfip_addr;
+        ydk::YList ospf_int;
+        ydk::YList ospfip_addr;
         
 }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance
 
@@ -7405,7 +7429,7 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf igp_area; //type: int32
+        ydk::YLeaf igp_area; //type: uint32
         class Controllers; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers> controllers;
@@ -7431,7 +7455,7 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controller
 
         class Controller; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers
 
@@ -7457,8 +7481,10 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controller
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf delay; //type: uint32
         class TtiMode; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::TtiMode
+        class AffinityNames; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::AffinityNames
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::TtiMode> tti_mode;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::AffinityNames> affinity_names;
         
 }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller
 
@@ -7483,6 +7509,27 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controller
         ydk::YLeaf tcmid; //type: uint32
 
 }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::TtiMode
+
+
+class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::AffinityNames : public ydk::Entity
+{
+    public:
+        AffinityNames();
+        ~AffinityNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList affinity_name; //type: list of  string
+
+}; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfInt::Controllers::Controller::AffinityNames
 
 
 class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr : public ydk::Entity
@@ -7527,7 +7574,7 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Control
 
         class Controller; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers
 
@@ -7553,8 +7600,10 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Control
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf delay; //type: uint32
         class TtiMode; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::TtiMode
+        class AffinityNames; //type: MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::AffinityNames
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::TtiMode> tti_mode;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::AffinityNames> affinity_names;
         
 }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller
 
@@ -7581,6 +7630,27 @@ class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Control
 }; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::TtiMode
 
 
+class MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::AffinityNames : public ydk::Entity
+{
+    public:
+        AffinityNames();
+        ~AffinityNames();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeafList affinity_name; //type: list of  string
+
+}; // MplsTe::GmplsNni::TopologyInstances::TopologyInstance::OspfipAddr::Controllers::Controller::AffinityNames
+
+
 class MplsTe::GmplsNni::TunnelHeads : public ydk::Entity
 {
     public:
@@ -7600,7 +7670,7 @@ class MplsTe::GmplsNni::TunnelHeads : public ydk::Entity
 
         class TunnelHead; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead> > tunnel_head;
+        ydk::YList tunnel_head;
         
 }; // MplsTe::GmplsNni::TunnelHeads
 
@@ -7667,7 +7737,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf signalled_bandwidth_type; //type: OtnSignaledBandwidth
-        ydk::YLeaf bitrate; //type: int32
+        ydk::YLeaf bitrate; //type: uint32
         ydk::YLeaf od_uflex_framing_type; //type: OtnSignaledBandwidthFlexFraming
 
 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth
@@ -7691,7 +7761,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination : public ydk::Entit
 
         ydk::YLeaf destination; //type: string
         ydk::YLeaf destination_type; //type: OtnDestination
-        ydk::YLeaf interface_if_index; //type: int32
+        ydk::YLeaf interface_if_index; //type: uint32
 
 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination
 
@@ -7762,7 +7832,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions : public ydk::Entit
 
         class PathOption; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption> > path_option;
+        ydk::YList path_option;
         
 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions
 
@@ -7791,6 +7861,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption : publi
         ydk::YLeaf restore_by_preference_level; //type: uint32
         ydk::YLeaf xro_type; //type: empty
         ydk::YLeaf xro_attribute_set_name; //type: string
+        ydk::YLeaf affinity_attribute_set_name; //type: string
         ydk::YLeaf lockdown; //type: MplsTePathOptionProperty
 
 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption
@@ -7813,7 +7884,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ingress_controller_name; //type: string
-        ydk::YLeaf egress_controller_if_index; //type: int32
+        ydk::YLeaf egress_controller_if_index; //type: uint32
         ydk::YLeaf ingress_type; //type: OtnStaticUni
         ydk::YLeaf egress_type; //type: OtnStaticUni
 
@@ -7894,38 +7965,12 @@ class MplsTe::Lcac::FloodingThreshold : public ydk::Entity
 
 }; // MplsTe::Lcac::FloodingThreshold
 
-class MplsTesrlgExclude : public ydk::Enum
+class MplsTeBackupBandwidthClass : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mandatory;
-        static const ydk::Enum::YLeaf preferred;
-        static const ydk::Enum::YLeaf weighted;
-
-};
-
-class MplsTeAffinityValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf hex_value;
-        static const ydk::Enum::YLeaf bit_position;
-
-};
-
-class RoutePriorityRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf route_priority_role_head_back_up;
-        static const ydk::Enum::YLeaf route_priority_role_head_primary;
-        static const ydk::Enum::YLeaf route_priority_role_middle;
-
-};
-
-class OtnSignaledBandwidthFlexFraming : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cbr;
-        static const ydk::Enum::YLeaf framed_gfp_fixed;
-        static const ydk::Enum::YLeaf framed_gfp_resize;
+        static const ydk::Enum::YLeaf class0;
+        static const ydk::Enum::YLeaf class1;
+        static const ydk::Enum::YLeaf any_class;
 
 };
 
@@ -7935,43 +7980,6 @@ class SrPrepend : public ydk::Enum
         static const ydk::Enum::YLeaf none_type;
         static const ydk::Enum::YLeaf next_label;
         static const ydk::Enum::YLeaf bgp_n_hop;
-
-};
-
-class MplsTePathSelectionTiebreaker : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf min_fill;
-        static const ydk::Enum::YLeaf max_fill;
-        static const ydk::Enum::YLeaf random;
-
-};
-
-class MplsTeOtnApsProtection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_1plus1_unidir_no_aps;
-        static const ydk::Enum::YLeaf Y_1plus1_unidir_aps;
-        static const ydk::Enum::YLeaf Y_1plus1_bdir_aps;
-
-};
-
-class OspfAreaMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospf_int;
-        static const ydk::Enum::YLeaf ospfip_addr;
-
-};
-
-class MplsTePathOptionProperty : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf lockdown;
-        static const ydk::Enum::YLeaf verbatim;
-        static const ydk::Enum::YLeaf pce;
-        static const ydk::Enum::YLeaf segment_routing;
 
 };
 
@@ -7985,39 +7993,11 @@ class MplsTePathComputationMethod : public ydk::Enum
 
 };
 
-class MplsTeSignaledLabel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf dwdm;
-
-};
-
 class OtnDestination : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf number_ed;
         static const ydk::Enum::YLeaf un_number_ed;
-
-};
-
-class MplsTeTunnelAffinity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf include;
-        static const ydk::Enum::YLeaf include_strict;
-        static const ydk::Enum::YLeaf exclude;
-        static const ydk::Enum::YLeaf exclude_all;
-        static const ydk::Enum::YLeaf ignore;
-
-};
-
-class OtnStaticUni : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf xc;
-        static const ydk::Enum::YLeaf termination;
 
 };
 
@@ -8030,26 +8010,28 @@ class MplsTeSwitchingCap : public ydk::Enum
 
 };
 
-class MplsTeOtnApsProtectionMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf revertive;
-        static const ydk::Enum::YLeaf non_revertive;
-
-};
-
-class MplsTeConfigTunnel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf p2p;
-        static const ydk::Enum::YLeaf p2mp;
-
-};
-
 class MplsTeBfdSessionDownAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf re_setup;
+
+};
+
+class RoutePriorityRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf route_priority_role_head_back_up;
+        static const ydk::Enum::YLeaf route_priority_role_head_primary;
+        static const ydk::Enum::YLeaf route_priority_role_middle;
+
+};
+
+class MplsTebfdSession : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf regular_bfd;
+        static const ydk::Enum::YLeaf sbfd;
+        static const ydk::Enum::YLeaf redundant_sbfd;
 
 };
 
@@ -8064,82 +8046,76 @@ class MplsTeLogFrrProtection : public ydk::Enum
 
 };
 
-class LinkNextHop : public ydk::Enum
+class MplsTeTunnelAffinity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf include;
+        static const ydk::Enum::YLeaf include_strict;
+        static const ydk::Enum::YLeaf exclude;
+        static const ydk::Enum::YLeaf exclude_all;
+        static const ydk::Enum::YLeaf ignore;
+
+};
+
+class IetfMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+
+};
+
+class MplsTePathOptionProperty : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf lockdown;
+        static const ydk::Enum::YLeaf verbatim;
+        static const ydk::Enum::YLeaf pce;
+        static const ydk::Enum::YLeaf segment_routing;
 
 };
 
-class MplsTeAutorouteMetric : public ydk::Enum
+class GmplsttiMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf relative;
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf constant;
+        static const ydk::Enum::YLeaf sm;
+        static const ydk::Enum::YLeaf pm;
+        static const ydk::Enum::YLeaf tcm;
 
 };
 
-class BandwidthConstraint : public ydk::Enum
+class MplsTePathSelectionInvalidationTimerExpire : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bandwidth_constraint_maximum_allocation_model;
+        static const ydk::Enum::YLeaf tunnel_action_tear;
+        static const ydk::Enum::YLeaf tunnel_action_drop;
 
 };
 
-class OtnPayload : public ydk::Enum
+class MplsTeOtnApsProtection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf bmp;
-        static const ydk::Enum::YLeaf gfp_f;
-        static const ydk::Enum::YLeaf gmp;
-        static const ydk::Enum::YLeaf gfp_f_ext;
+        static const ydk::Enum::YLeaf Y_1plus1_unidir_no_aps;
+        static const ydk::Enum::YLeaf Y_1plus1_unidir_aps;
+        static const ydk::Enum::YLeaf Y_1plus1_bdir_aps;
 
 };
 
-class MplsTeOtnSncMode : public ydk::Enum
+class MplsTeSwitchingEncoding : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf snc_n;
-        static const ydk::Enum::YLeaf snc_i;
-        static const ydk::Enum::YLeaf snc_s;
+        static const ydk::Enum::YLeaf packet;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf sondet_sdh;
 
 };
 
-class BfdReversePath : public ydk::Enum
+class MplsTeSigNameOption : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bfd_reverse_path_binding_label;
-
-};
-
-class MplsTePathSelectionMetric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf igp;
-        static const ydk::Enum::YLeaf te;
-        static const ydk::Enum::YLeaf delay;
-
-};
-
-class MplsTePathOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf dynamic;
-        static const ydk::Enum::YLeaf explicit_name;
-        static const ydk::Enum::YLeaf explicit_number;
-        static const ydk::Enum::YLeaf no_ero;
-        static const ydk::Enum::YLeaf sr;
-
-};
-
-class MplsLcacFloodingIgp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf address;
+        static const ydk::Enum::YLeaf name;
 
 };
 
@@ -8156,6 +8132,89 @@ class MplsTeTunnelId : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf auto_;
         static const ydk::Enum::YLeaf explicit_;
+
+};
+
+class MplsTeAffinityValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hex_value;
+        static const ydk::Enum::YLeaf bit_position;
+
+};
+
+class OtnStaticUni : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf xc;
+        static const ydk::Enum::YLeaf termination;
+
+};
+
+class MplsTeOtnSncMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf snc_n;
+        static const ydk::Enum::YLeaf snc_i;
+        static const ydk::Enum::YLeaf snc_s;
+
+};
+
+class OtnPayload : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf bmp;
+        static const ydk::Enum::YLeaf gfp_f;
+        static const ydk::Enum::YLeaf gmp;
+        static const ydk::Enum::YLeaf gfp_f_ext;
+
+};
+
+class OspfAreaMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_int;
+        static const ydk::Enum::YLeaf ospfip_addr;
+
+};
+
+class MplsTeIgpProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospf;
+
+};
+
+class MplsTePathSelectionTiebreaker : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf min_fill;
+        static const ydk::Enum::YLeaf max_fill;
+        static const ydk::Enum::YLeaf random;
+
+};
+
+class MplsTePathOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf dynamic;
+        static const ydk::Enum::YLeaf explicit_name;
+        static const ydk::Enum::YLeaf explicit_number;
+        static const ydk::Enum::YLeaf no_ero;
+        static const ydk::Enum::YLeaf sr;
+
+};
+
+class PathInvalidationAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tear;
+        static const ydk::Enum::YLeaf drop;
 
 };
 
@@ -8179,111 +8238,12 @@ class OtnSignaledBandwidth : public ydk::Enum
 
 };
 
-class MplsTeBandwidthDste : public ydk::Enum
+class MplsTeAutorouteMetric : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf standard_dste;
-        static const ydk::Enum::YLeaf pre_standard_dste;
-
-};
-
-class MplsTePathSelectionInvalidationTimerExpire : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tunnel_action_tear;
-        static const ydk::Enum::YLeaf tunnel_action_drop;
-
-};
-
-class MplsTePathDiversityConformance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf strict;
-        static const ydk::Enum::YLeaf best_effort;
-
-};
-
-class IetfMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-
-};
-
-class MplsTeOtnApsRestorationStyle : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf keep_failed_lsp;
-        static const ydk::Enum::YLeaf delete_failed_lsp;
-
-};
-
-class MplsTePathSelectionSegmentRoutingAdjacencyProtection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf adj_unprotected;
-        static const ydk::Enum::YLeaf adj_protected;
-
-};
-
-class GmplsttiMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sm;
-        static const ydk::Enum::YLeaf pm;
-        static const ydk::Enum::YLeaf tcm;
-
-};
-
-class MplsTeSwitchingEncoding : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf packet;
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf sondet_sdh;
-
-};
-
-class MplsTeSigNameOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf address;
-        static const ydk::Enum::YLeaf name;
-
-};
-
-class PathInvalidationAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tear;
-        static const ydk::Enum::YLeaf drop;
-
-};
-
-class MplsTeSwitchingIndex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link;
-
-};
-
-class MplsTeIgpProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf isis;
-        static const ydk::Enum::YLeaf ospf;
-
-};
-
-class MplsTebfdSession : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf regular_bfd;
-        static const ydk::Enum::YLeaf sbfd;
-        static const ydk::Enum::YLeaf redundant_sbfd;
+        static const ydk::Enum::YLeaf relative;
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf constant;
 
 };
 
@@ -8295,12 +8255,27 @@ class BindingSegmentId : public ydk::Enum
 
 };
 
-class MplsTeBackupBandwidthPool : public ydk::Enum
+class MplsTesrlgExclude : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf any_pool;
-        static const ydk::Enum::YLeaf global_pool;
-        static const ydk::Enum::YLeaf sub_pool;
+        static const ydk::Enum::YLeaf mandatory;
+        static const ydk::Enum::YLeaf preferred;
+        static const ydk::Enum::YLeaf weighted;
+
+};
+
+class MplsTeSignaledLabel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf dwdm;
+
+};
+
+class BandwidthConstraint : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bandwidth_constraint_maximum_allocation_model;
 
 };
 
@@ -8314,12 +8289,11 @@ class MplsTeSwitchingEncode : public ydk::Enum
 
 };
 
-class MplsTeBackupBandwidthClass : public ydk::Enum
+class MplsTePathSelectionMetric : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf class0;
-        static const ydk::Enum::YLeaf class1;
-        static const ydk::Enum::YLeaf any_class;
+        static const ydk::Enum::YLeaf igp;
+        static const ydk::Enum::YLeaf te;
 
 };
 
@@ -8331,11 +8305,107 @@ class MplsTePathOptionProtection : public ydk::Enum
 
 };
 
+class OtnSignaledBandwidthFlexFraming : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf framed_gfp_fixed;
+        static const ydk::Enum::YLeaf framed_gfp_resize;
+
+};
+
 class MplsTeBandwidthLimit : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unlimited;
         static const ydk::Enum::YLeaf limited;
+
+};
+
+class MplsTePathSelectionSegmentRoutingAdjacencyProtection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf adj_unprotected;
+        static const ydk::Enum::YLeaf adj_protected;
+
+};
+
+class LinkNextHop : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipv4_address;
+
+};
+
+class MplsLcacFloodingIgp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf;
+
+};
+
+class BfdReversePath : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bfd_reverse_path_binding_label;
+
+};
+
+class MplsTeOtnApsRestorationStyle : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf keep_failed_lsp;
+        static const ydk::Enum::YLeaf delete_failed_lsp;
+
+};
+
+class MplsTeBandwidthDste : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard_dste;
+        static const ydk::Enum::YLeaf pre_standard_dste;
+
+};
+
+class MplsTePathDiversityConformance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf strict;
+        static const ydk::Enum::YLeaf best_effort;
+
+};
+
+class MplsTeBackupBandwidthPool : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any_pool;
+        static const ydk::Enum::YLeaf global_pool;
+        static const ydk::Enum::YLeaf sub_pool;
+
+};
+
+class MplsTeOtnApsProtectionMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf revertive;
+        static const ydk::Enum::YLeaf non_revertive;
+
+};
+
+class MplsTeSwitchingIndex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link;
+
+};
+
+class MplsTeConfigTunnel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf p2p;
+        static const ydk::Enum::YLeaf p2mp;
 
 };
 

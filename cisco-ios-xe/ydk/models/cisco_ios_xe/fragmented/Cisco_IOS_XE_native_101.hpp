@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum : public ydk::Entity
+class Native::Interface::VirtualTemplate::Crypto::Ipsec : public ydk::Entity
 {
     public:
-        Minimum();
-        ~Minimum();
+        Ipsec();
+        ~Ipsec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,77 +32,12 @@ class Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf minimum_value; //type: uint8
-        ydk::YLeaf mandatory; //type: empty
+        ydk::YLeaf df_bit; //type: DfBit
+        ydk::YLeaf fragmentation; //type: Fragmentation
+        class DfBit;
+        class Fragmentation;
 
-}; // Native::Interface::VirtualTemplate::Ppp::Multilink::Links::Minimum
-
-
-class Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint : public ydk::Entity
-{
-    public:
-        Endpoint();
-        ~Endpoint();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf string; //type: string
-
-}; // Native::Interface::VirtualTemplate::Ppp::Multilink::Endpoint
-
-
-class Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment : public ydk::Entity
-{
-    public:
-        Fragment();
-        ~Fragment();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf disable; //type: empty
-        class Delay; //type: Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay> delay;
-        
-}; // Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment
-
-
-class Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay : public ydk::Entity
-{
-    public:
-        Delay();
-        ~Delay();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf delay_value; //type: uint16
-        ydk::YLeaf additional_delay_value; //type: uint16
-
-}; // Native::Interface::VirtualTemplate::Ppp::Multilink::Fragment::Delay
+}; // Native::Interface::VirtualTemplate::Crypto::Ipsec
 
 
 class Native::Interface::VirtualTemplate::Mab : public ydk::Entity
@@ -126,11 +61,11 @@ class Native::Interface::VirtualTemplate::Mab : public ydk::Entity
 }; // Native::Interface::VirtualTemplate::Mab
 
 
-class Native::Interface::VirtualTemplate::Umbrella : public ydk::Entity
+class Native::Interface::VirtualTemplate::Ntp : public ydk::Entity
 {
     public:
-        Umbrella();
-        ~Umbrella();
+        Ntp();
+        ~Ntp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -142,17 +77,19 @@ class Native::Interface::VirtualTemplate::Umbrella : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf out; //type: empty
-        ydk::YLeaf in; //type: string
+        ydk::YLeaf broadcast; //type: empty
+        class BroadcastOption; //type: Native::Interface::VirtualTemplate::Ntp::BroadcastOption
 
-}; // Native::Interface::VirtualTemplate::Umbrella
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ntp::BroadcastOption> broadcast_option;
+        
+}; // Native::Interface::VirtualTemplate::Ntp
 
 
-class Native::Interface::VirtualTemplate::Utd : public ydk::Entity
+class Native::Interface::VirtualTemplate::Ntp::BroadcastOption : public ydk::Entity
 {
     public:
-        Utd();
-        ~Utd();
+        BroadcastOption();
+        ~BroadcastOption();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -164,16 +101,18 @@ class Native::Interface::VirtualTemplate::Utd : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
+        class Broadcast; //type: Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast
 
-}; // Native::Interface::VirtualTemplate::Utd
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast> broadcast;
+        
+}; // Native::Interface::VirtualTemplate::Ntp::BroadcastOption
 
 
-class Native::Interface::VirtualTemplate::ZoneMember : public ydk::Entity
+class Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast : public ydk::Entity
 {
     public:
-        ZoneMember();
-        ~ZoneMember();
+        Broadcast();
+        ~Broadcast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -185,9 +124,80 @@ class Native::Interface::VirtualTemplate::ZoneMember : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf security; //type: string
+        ydk::YLeaf client; //type: empty
 
-}; // Native::Interface::VirtualTemplate::ZoneMember
+}; // Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast
+
+
+class Native::Interface::VirtualTemplate::Cdp : public ydk::Entity
+{
+    public:
+        Cdp();
+        ~Cdp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: boolean
+        class Tlv; //type: Native::Interface::VirtualTemplate::Cdp::Tlv
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cdp::Tlv> tlv;
+        
+}; // Native::Interface::VirtualTemplate::Cdp
+
+
+class Native::Interface::VirtualTemplate::Cdp::Tlv : public ydk::Entity
+{
+    public:
+        Tlv();
+        ~Tlv();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf server_location; //type: empty
+        ydk::YLeaf location; //type: empty
+        class App; //type: Native::Interface::VirtualTemplate::Cdp::Tlv::App
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cdp::Tlv::App> app; // presence node
+        
+}; // Native::Interface::VirtualTemplate::Cdp::Tlv
+
+
+class Native::Interface::VirtualTemplate::Cdp::Tlv::App : public ydk::Entity
+{
+    public:
+        App();
+        ~App();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tlvtype; //type: uint16
+        ydk::YLeaf value_; //type: string
+
+}; // Native::Interface::VirtualTemplate::Cdp::Tlv::App
 
 
 class Native::Interface::VirtualPortGroup : public ydk::Entity
@@ -227,7 +237,7 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         class Backup; //type: Native::Interface::VirtualPortGroup::Backup
         class Cemoudp; //type: Native::Interface::VirtualPortGroup::Cemoudp
         class CwsTunnel; //type: Native::Interface::VirtualPortGroup::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::VirtualPortGroup::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::VirtualPortGroup::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::VirtualPortGroup::Encapsulation
         class FairQueueConf; //type: Native::Interface::VirtualPortGroup::FairQueueConf
         class FairQueue; //type: Native::Interface::VirtualPortGroup::FairQueue
@@ -256,6 +266,9 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         class RcvQueue; //type: Native::Interface::VirtualPortGroup::RcvQueue
         class Peer; //type: Native::Interface::VirtualPortGroup::Peer
         class PmPath; //type: Native::Interface::VirtualPortGroup::PmPath
+        class ServicePolicy; //type: Native::Interface::VirtualPortGroup::ServicePolicy
+        class Cts; //type: Native::Interface::VirtualPortGroup::Cts
+        class Snmp; //type: Native::Interface::VirtualPortGroup::Snmp
         class CarrierDelay; //type: Native::Interface::VirtualPortGroup::CarrierDelay
         class ChannelGroup; //type: Native::Interface::VirtualPortGroup::ChannelGroup
         class Ethernet; //type: Native::Interface::VirtualPortGroup::Ethernet
@@ -267,9 +280,6 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         class Pppoe; //type: Native::Interface::VirtualPortGroup::Pppoe
         class Service; //type: Native::Interface::VirtualPortGroup::Service
         class Lacp; //type: Native::Interface::VirtualPortGroup::Lacp
-        class Snmp; //type: Native::Interface::VirtualPortGroup::Snmp
-        class Cts; //type: Native::Interface::VirtualPortGroup::Cts
-        class ServicePolicy; //type: Native::Interface::VirtualPortGroup::ServicePolicy
         class Mab; //type: Native::Interface::VirtualPortGroup::Mab
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::SwitchportConf> switchport_conf;
@@ -279,7 +289,7 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::FairQueue> fair_queue;
@@ -290,7 +300,7 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Vrf> vrf;
@@ -308,6 +318,9 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Snmp> snmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ethernet> ethernet;
@@ -319,9 +332,6 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Lacp> lacp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Mab> mab; // presence node
                 class IfState;
         class ServiceInsertion;
@@ -724,11 +734,11 @@ class Native::Interface::VirtualPortGroup::CwsTunnel::Out : public ydk::Entity
 }; // Native::Interface::VirtualPortGroup::CwsTunnel::Out
 
 
-class Native::Interface::VirtualPortGroup::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::VirtualPortGroup::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -743,16 +753,16 @@ class Native::Interface::VirtualPortGroup::L2ProtocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::VirtualPortGroup::L2ProtocolTunnel
+}; // Native::Interface::VirtualPortGroup::L2protocolTunnel
 
 
-class Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -773,10 +783,10 @@ class Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold : pub
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::VirtualPortGroup::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::VirtualPortGroup::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -797,7 +807,7 @@ class Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold :
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::VirtualPortGroup::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::VirtualPortGroup::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::VirtualPortGroup::Encapsulation : public ydk::Entity
@@ -1444,7 +1454,7 @@ class Native::Interface::VirtualPortGroup::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Rip> rip;
@@ -1784,7 +1794,7 @@ class Native::Interface::VirtualPortGroup::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::VirtualPortGroup::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::VirtualPortGroup::Ip::Address
@@ -2308,7 +2318,7 @@ class Native::Interface::VirtualPortGroup::Ip::SummaryAddress : public ydk::Enti
 
         class Eigrp; //type: Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::VirtualPortGroup::Ip::SummaryAddress
 
@@ -2519,7 +2529,7 @@ class Native::Interface::VirtualPortGroup::Ip::Igmp : public ydk::Entity
         class JoinGroup; //type: Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup> static_group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Igmp::JoinGroup> > join_group;
+        ydk::YList join_group;
         
 }; // Native::Interface::VirtualPortGroup::Ip::Igmp
 
@@ -2543,8 +2553,8 @@ class Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup : public ydk::E
         class Groups; //type: Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups
         class ClassMap; //type: Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups> > groups;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::ClassMap> > class_map;
+        ydk::YList groups;
+        ydk::YList class_map;
         
 }; // Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup
 
@@ -2565,8 +2575,8 @@ class Native::Interface::VirtualPortGroup::Ip::Igmp::StaticGroup::Groups : publi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of enumeration, string
-        ydk::YLeafList source; //type: list of  one of enumeration, string
+        ydk::YLeaf name; //type: one of string, enumeration
+        ydk::YLeafList source; //type: list of  one of string, enumeration
         class Name;
         class Source;
 
@@ -2651,7 +2661,7 @@ class Native::Interface::VirtualPortGroup::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::Tcp> tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::TrafficFilter> > traffic_filter;
+        ydk::YList traffic_filter;
         
 }; // Native::Interface::VirtualPortGroup::Ipv6
 
@@ -2741,8 +2751,8 @@ class Native::Interface::VirtualPortGroup::Ipv6::Address : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::Address::Dhcp> dhcp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::Address::Autoconfig> autoconfig; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::Address::PrefixList> > prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Ipv6::Address::LinkLocalAddress> > link_local_address;
+        ydk::YList prefix_list;
+        ydk::YList link_local_address;
         
 }; // Native::Interface::VirtualPortGroup::Ipv6::Address
 
@@ -3107,7 +3117,7 @@ class Native::Interface::VirtualPortGroup::Standby : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Standby::Delay> delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Standby::UseBia> use_bia; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Standby::StandbyList> > standby_list;
+        ydk::YList standby_list;
                 class Version;
 
 }; // Native::Interface::VirtualPortGroup::Standby
@@ -3197,7 +3207,7 @@ class Native::Interface::VirtualPortGroup::Standby::StandbyList : public ydk::En
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3213,7 +3223,7 @@ class Native::Interface::VirtualPortGroup::Standby::StandbyList : public ydk::En
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Standby::StandbyList::Preempt> preempt; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Standby::StandbyList::Redirect> redirect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Standby::StandbyList::Timers> timers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Standby::StandbyList::Track> > track;
+        ydk::YList track;
                 class Ipv6;
 
 }; // Native::Interface::VirtualPortGroup::Standby::StandbyList
@@ -3691,6 +3701,23 @@ class Native::Interface::VirtualPortGroup::StormControl::Action : public ydk::En
         ydk::YLeaf trap; //type: empty
 
 }; // Native::Interface::VirtualPortGroup::StormControl::Action
+
+class Native::Interface::VirtualTemplate::Crypto::Ipsec::DfBit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf copy;
+        static const ydk::Enum::YLeaf set;
+
+};
+
+class Native::Interface::VirtualTemplate::Crypto::Ipsec::Fragmentation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf after_encryption;
+        static const ydk::Enum::YLeaf before_encryption;
+
+};
 
 class Native::Interface::VirtualPortGroup::IfState : public ydk::Enum
 {

@@ -13,11 +13,12 @@ namespace Cisco_IOS_XE_ppp_oper {
 
 PppData::PppData()
     :
-    ppp_statistics(nullptr) // presence node
-	,pppoe(nullptr) // presence node
+    ppp_interface(this, {"phy_ifname"})
+    , ppp_statistics(nullptr) // presence node
+    , pppoe(nullptr) // presence node
 {
 
-    yang_name = "ppp-data"; yang_parent_name = "Cisco-IOS-XE-ppp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ppp-data"; yang_parent_name = "Cisco-IOS-XE-ppp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PppData::~PppData()
@@ -26,7 +27,8 @@ PppData::~PppData()
 
 bool PppData::has_data() const
 {
-    for (std::size_t index=0; index<ppp_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ppp_interface.len(); index++)
     {
         if(ppp_interface[index]->has_data())
             return true;
@@ -37,7 +39,7 @@ bool PppData::has_data() const
 
 bool PppData::has_operation() const
 {
-    for (std::size_t index=0; index<ppp_interface.size(); index++)
+    for (std::size_t index=0; index<ppp_interface.len(); index++)
     {
         if(ppp_interface[index]->has_operation())
             return true;
@@ -69,7 +71,7 @@ std::shared_ptr<Entity> PppData::get_child_by_name(const std::string & child_yan
     {
         auto c = std::make_shared<PppData::PppInterface>();
         c->parent = this;
-        ppp_interface.push_back(c);
+        ppp_interface.append(c);
         return c;
     }
 
@@ -99,7 +101,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppData::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ppp_interface)
+    for (auto c : ppp_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -163,9 +165,11 @@ bool PppData::has_leaf_or_child_of_name(const std::string & name) const
 PppData::PppInterface::PppInterface()
     :
     phy_ifname{YType::str, "phy-ifname"}
+        ,
+    ppp_va(this, {})
 {
 
-    yang_name = "ppp-interface"; yang_parent_name = "ppp-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ppp-interface"; yang_parent_name = "ppp-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PppData::PppInterface::~PppInterface()
@@ -174,7 +178,8 @@ PppData::PppInterface::~PppInterface()
 
 bool PppData::PppInterface::has_data() const
 {
-    for (std::size_t index=0; index<ppp_va.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ppp_va.len(); index++)
     {
         if(ppp_va[index]->has_data())
             return true;
@@ -184,7 +189,7 @@ bool PppData::PppInterface::has_data() const
 
 bool PppData::PppInterface::has_operation() const
 {
-    for (std::size_t index=0; index<ppp_va.size(); index++)
+    for (std::size_t index=0; index<ppp_va.len(); index++)
     {
         if(ppp_va[index]->has_operation())
             return true;
@@ -203,7 +208,8 @@ std::string PppData::PppInterface::get_absolute_path() const
 std::string PppData::PppInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ppp-interface" <<"[phy-ifname='" <<phy_ifname <<"']";
+    path_buffer << "ppp-interface";
+    ADD_KEY_TOKEN(phy_ifname, "phy-ifname");
     return path_buffer.str();
 }
 
@@ -223,7 +229,7 @@ std::shared_ptr<Entity> PppData::PppInterface::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<PppData::PppInterface::PppVa>();
         c->parent = this;
-        ppp_va.push_back(c);
+        ppp_va.append(c);
         return c;
     }
 
@@ -235,7 +241,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppData::PppInterface::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ppp_va)
+    for (auto c : ppp_va.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -283,7 +289,7 @@ PppData::PppInterface::PppVa::PppVa()
     auth_type{YType::enumeration, "auth-type"}
 {
 
-    yang_name = "ppp-va"; yang_parent_name = "ppp-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp-va"; yang_parent_name = "ppp-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppData::PppInterface::PppVa::~PppVa()
@@ -292,6 +298,7 @@ PppData::PppInterface::PppVa::~PppVa()
 
 bool PppData::PppInterface::PppVa::has_data() const
 {
+    if (is_presence_container) return true;
     return va_ifname.is_set
 	|| vrf_name.is_set
 	|| interface_ip.is_set
@@ -453,7 +460,7 @@ PppData::PppStatistics::PppStatistics()
     ppp_ccp_pkts{YType::uint32, "ppp-ccp-pkts"}
 {
 
-    yang_name = "ppp-statistics"; yang_parent_name = "ppp-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ppp-statistics"; yang_parent_name = "ppp-data"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 PppData::PppStatistics::~PppStatistics()
@@ -462,6 +469,7 @@ PppData::PppStatistics::~PppStatistics()
 
 bool PppData::PppStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return ppp_lcp_pkts.is_set
 	|| ppp_ipcp_pkts.is_set
 	|| ppp_ccp_pkts.is_set;
@@ -561,11 +569,12 @@ bool PppData::PppStatistics::has_leaf_or_child_of_name(const std::string & name)
 PppData::Pppoe::Pppoe()
     :
     role{YType::enumeration, "role"}
-    	,
-    pppoe_statistics(nullptr) // presence node
+        ,
+    pppoe_session_list(this, {"ifname"})
+    , pppoe_statistics(nullptr) // presence node
 {
 
-    yang_name = "pppoe"; yang_parent_name = "ppp-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pppoe"; yang_parent_name = "ppp-data"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 PppData::Pppoe::~Pppoe()
@@ -574,7 +583,8 @@ PppData::Pppoe::~Pppoe()
 
 bool PppData::Pppoe::has_data() const
 {
-    for (std::size_t index=0; index<pppoe_session_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pppoe_session_list.len(); index++)
     {
         if(pppoe_session_list[index]->has_data())
             return true;
@@ -585,7 +595,7 @@ bool PppData::Pppoe::has_data() const
 
 bool PppData::Pppoe::has_operation() const
 {
-    for (std::size_t index=0; index<pppoe_session_list.size(); index++)
+    for (std::size_t index=0; index<pppoe_session_list.len(); index++)
     {
         if(pppoe_session_list[index]->has_operation())
             return true;
@@ -625,7 +635,7 @@ std::shared_ptr<Entity> PppData::Pppoe::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<PppData::Pppoe::PppoeSessionList>();
         c->parent = this;
-        pppoe_session_list.push_back(c);
+        pppoe_session_list.append(c);
         return c;
     }
 
@@ -646,7 +656,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppData::Pppoe::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pppoe_session_list)
+    for (auto c : pppoe_session_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -690,9 +700,11 @@ bool PppData::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
 PppData::Pppoe::PppoeSessionList::PppoeSessionList()
     :
     ifname{YType::str, "ifname"}
+        ,
+    session(this, {})
 {
 
-    yang_name = "pppoe-session-list"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pppoe-session-list"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PppData::Pppoe::PppoeSessionList::~PppoeSessionList()
@@ -701,7 +713,8 @@ PppData::Pppoe::PppoeSessionList::~PppoeSessionList()
 
 bool PppData::Pppoe::PppoeSessionList::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -711,7 +724,7 @@ bool PppData::Pppoe::PppoeSessionList::has_data() const
 
 bool PppData::Pppoe::PppoeSessionList::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -730,7 +743,8 @@ std::string PppData::Pppoe::PppoeSessionList::get_absolute_path() const
 std::string PppData::Pppoe::PppoeSessionList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pppoe-session-list" <<"[ifname='" <<ifname <<"']";
+    path_buffer << "pppoe-session-list";
+    ADD_KEY_TOKEN(ifname, "ifname");
     return path_buffer.str();
 }
 
@@ -750,7 +764,7 @@ std::shared_ptr<Entity> PppData::Pppoe::PppoeSessionList::get_child_by_name(cons
     {
         auto c = std::make_shared<PppData::Pppoe::PppoeSessionList::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -762,7 +776,7 @@ std::map<std::string, std::shared_ptr<Entity>> PppData::Pppoe::PppoeSessionList:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -814,7 +828,7 @@ PppData::Pppoe::PppoeSessionList::Session::Session()
     out_bytes{YType::uint64, "out-bytes"}
 {
 
-    yang_name = "session"; yang_parent_name = "pppoe-session-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session"; yang_parent_name = "pppoe-session-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PppData::Pppoe::PppoeSessionList::Session::~Session()
@@ -823,6 +837,7 @@ PppData::Pppoe::PppoeSessionList::Session::~Session()
 
 bool PppData::Pppoe::PppoeSessionList::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| lmac.is_set
 	|| rmac.is_set
@@ -1037,7 +1052,7 @@ PppData::Pppoe::PppoeStatistics::PppoeStatistics()
     pppoe_pads_pkts{YType::uint32, "pppoe-pads-pkts"}
 {
 
-    yang_name = "pppoe-statistics"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pppoe-statistics"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 PppData::Pppoe::PppoeStatistics::~PppoeStatistics()
@@ -1046,6 +1061,7 @@ PppData::Pppoe::PppoeStatistics::~PppoeStatistics()
 
 bool PppData::Pppoe::PppoeStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pppoe_padi_pkts.is_set
 	|| pppoe_pado_pkts.is_set
 	|| pppoe_padr_pkts.is_set

@@ -10,10 +10,32 @@
 #include "Cisco_IOS_XE_native_0.hpp"
 #include "Cisco_IOS_XE_native_18.hpp"
 #include "Cisco_IOS_XE_native_87.hpp"
-#include "Cisco_IOS_XE_native_89.hpp"
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
+
+
+class Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_ : public ydk::Entity
+{
+    public:
+        CiscoIOSXEInterfacesInterfaceQos_();
+        ~CiscoIOSXEInterfacesInterfaceQos_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Trust; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_::Trust
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_::Trust> trust;
+        
+}; // Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_
 
 
 class Native::Interface::Vlan::CiscoIOSXEInterfacesInterfaceQos_::Trust : public ydk::Entity
@@ -63,7 +85,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_ : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::Delay> delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::UseBia> use_bia; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList> > standby_list;
+        ydk::YList standby_list;
                 class Version;
 
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_
@@ -153,7 +175,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList : publi
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -169,7 +191,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList : publi
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList::Preempt> preempt; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList::Redirect> redirect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList::Timers> timers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList::Track> > track;
+        ydk::YList track;
                 class Ipv6;
 
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesStandby_::StandbyList
@@ -1106,7 +1128,7 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue_ : public ydk::Entit
 
         class CosMap; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue_::CosMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue_::CosMap> > cos_map;
+        ydk::YList cos_map;
         
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue_
 
@@ -1293,27 +1315,6 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath_ : public ydk::Entity
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath_
 
 
-class Native::Interface::Vlan::ZoneMember : public ydk::Entity
-{
-    public:
-        ZoneMember();
-        ~ZoneMember();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf security; //type: string
-
-}; // Native::Interface::Vlan::ZoneMember
-
-
 class Native::Interface::GroupAsync : public ydk::Entity
 {
     public:
@@ -1350,7 +1351,7 @@ class Native::Interface::GroupAsync : public ydk::Entity
         class Backup; //type: Native::Interface::GroupAsync::Backup
         class Cemoudp; //type: Native::Interface::GroupAsync::Cemoudp
         class CwsTunnel; //type: Native::Interface::GroupAsync::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::GroupAsync::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::GroupAsync::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::GroupAsync::Encapsulation
         class FairQueueConf; //type: Native::Interface::GroupAsync::FairQueueConf
         class FairQueue; //type: Native::Interface::GroupAsync::FairQueue
@@ -1387,7 +1388,7 @@ class Native::Interface::GroupAsync : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::FairQueue> fair_queue;
@@ -1398,7 +1399,7 @@ class Native::Interface::GroupAsync : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Vrf> vrf;
@@ -1816,11 +1817,11 @@ class Native::Interface::GroupAsync::CwsTunnel::Out : public ydk::Entity
 }; // Native::Interface::GroupAsync::CwsTunnel::Out
 
 
-class Native::Interface::GroupAsync::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::GroupAsync::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1835,16 +1836,16 @@ class Native::Interface::GroupAsync::L2ProtocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::GroupAsync::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::GroupAsync::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::GroupAsync::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::GroupAsync::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::GroupAsync::L2ProtocolTunnel
+}; // Native::Interface::GroupAsync::L2protocolTunnel
 
 
-class Native::Interface::GroupAsync::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::GroupAsync::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -1865,10 +1866,10 @@ class Native::Interface::GroupAsync::L2ProtocolTunnel::DropThreshold : public yd
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::GroupAsync::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::GroupAsync::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::GroupAsync::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::GroupAsync::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -1889,7 +1890,7 @@ class Native::Interface::GroupAsync::L2ProtocolTunnel::ShutdownThreshold : publi
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::GroupAsync::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::GroupAsync::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::GroupAsync::Encapsulation : public ydk::Entity
@@ -2507,7 +2508,7 @@ class Native::Interface::GroupAsync::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::Rip> rip;
@@ -2846,7 +2847,7 @@ class Native::Interface::GroupAsync::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::GroupAsync::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::GroupAsync::Ip::Address
@@ -3370,7 +3371,7 @@ class Native::Interface::GroupAsync::Ip::SummaryAddress : public ydk::Entity
 
         class Eigrp; //type: Native::Interface::GroupAsync::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::GroupAsync::Ip::SummaryAddress
 
@@ -3594,7 +3595,7 @@ class Native::Interface::GroupAsync::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::Tcp> tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync::Ipv6::TrafficFilter> > traffic_filter;
+        ydk::YList traffic_filter;
         
 }; // Native::Interface::GroupAsync::Ipv6
 

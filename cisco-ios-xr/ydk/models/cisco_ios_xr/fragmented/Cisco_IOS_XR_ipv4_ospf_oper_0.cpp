@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_0.hpp"
-#include "Cisco_IOS_XR_ipv4_ospf_oper_1.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_3.hpp"
+#include "Cisco_IOS_XR_ipv4_ospf_oper_1.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_2.hpp"
 
 using namespace ydk;
@@ -20,7 +20,7 @@ Ospf::Ospf()
 {
     processes->parent = this;
 
-    yang_name = "ospf"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ospf"; yang_parent_name = "Cisco-IOS-XR-ipv4-ospf-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ospf::~Ospf()
@@ -29,6 +29,7 @@ Ospf::~Ospf()
 
 bool Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return (processes !=  nullptr && processes->has_data());
 }
 
@@ -121,9 +122,11 @@ bool Ospf::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ospf::Processes::Processes()
+    :
+    process(this, {"process_name"})
 {
 
-    yang_name = "processes"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "processes"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ospf::Processes::~Processes()
@@ -132,7 +135,8 @@ Ospf::Processes::~Processes()
 
 bool Ospf::Processes::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -142,7 +146,7 @@ bool Ospf::Processes::has_data() const
 
 bool Ospf::Processes::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -179,7 +183,7 @@ std::shared_ptr<Entity> Ospf::Processes::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Ospf::Processes::Process>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -191,7 +195,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -220,16 +224,16 @@ bool Ospf::Processes::has_leaf_or_child_of_name(const std::string & name) const
 Ospf::Processes::Process::Process()
     :
     process_name{YType::str, "process-name"}
-    	,
+        ,
     vrfs(std::make_shared<Ospf::Processes::Process::Vrfs>())
-	,srms(std::make_shared<Ospf::Processes::Process::Srms>())
-	,default_vrf(std::make_shared<Ospf::Processes::Process::DefaultVrf>())
+    , srms(std::make_shared<Ospf::Processes::Process::Srms>())
+    , default_vrf(std::make_shared<Ospf::Processes::Process::DefaultVrf>())
 {
     vrfs->parent = this;
     srms->parent = this;
     default_vrf->parent = this;
 
-    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ospf::Processes::Process::~Process()
@@ -238,6 +242,7 @@ Ospf::Processes::Process::~Process()
 
 bool Ospf::Processes::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return process_name.is_set
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (srms !=  nullptr && srms->has_data())
@@ -263,7 +268,8 @@ std::string Ospf::Processes::Process::get_absolute_path() const
 std::string Ospf::Processes::Process::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process" <<"[process-name='" <<process_name <<"']";
+    path_buffer << "process";
+    ADD_KEY_TOKEN(process_name, "process-name");
     return path_buffer.str();
 }
 
@@ -357,9 +363,11 @@ bool Ospf::Processes::Process::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Ospf::Processes::Process::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::~Vrfs()
@@ -368,7 +376,8 @@ Ospf::Processes::Process::Vrfs::~Vrfs()
 
 bool Ospf::Processes::Process::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -378,7 +387,7 @@ bool Ospf::Processes::Process::Vrfs::has_data() const
 
 bool Ospf::Processes::Process::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -408,7 +417,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::get_child_by_name(const 
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -420,7 +429,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -449,25 +458,27 @@ bool Ospf::Processes::Process::Vrfs::has_leaf_or_child_of_name(const std::string
 Ospf::Processes::Process::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     interface_vrf_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation>())
-	,flood_list_table(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable>())
-	,mpls_te(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe>())
-	,statistics(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics>())
-	,adjacency_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation>())
-	,route_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation>())
-	,interface_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation>())
-	,border_routers(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::BorderRouters>())
-	,process_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation>())
-	,areas(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Areas>())
-	,database(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database>())
-	,summary_prefixes(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes>())
-	,area_statistics(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics>())
-	,ospf_summary(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::OspfSummary>())
-	,fast_reroute(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FastReroute>())
+    , flood_list_table(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable>())
+    , segment_routing(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting>())
+    , mpls_te(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe>())
+    , statistics(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics>())
+    , adjacency_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation>())
+    , route_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::RouteInformation>())
+    , interface_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceInformation>())
+    , border_routers(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::BorderRouters>())
+    , process_information(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::ProcessInformation>())
+    , areas(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Areas>())
+    , database(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Database>())
+    , summary_prefixes(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes>())
+    , area_statistics(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaStatistics>())
+    , ospf_summary(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::OspfSummary>())
+    , fast_reroute(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FastReroute>())
 {
     interface_vrf_information->parent = this;
     flood_list_table->parent = this;
+    segment_routing->parent = this;
     mpls_te->parent = this;
     statistics->parent = this;
     adjacency_information->parent = this;
@@ -482,7 +493,7 @@ Ospf::Processes::Process::Vrfs::Vrf::Vrf()
     ospf_summary->parent = this;
     fast_reroute->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::~Vrf()
@@ -491,9 +502,11 @@ Ospf::Processes::Process::Vrfs::Vrf::~Vrf()
 
 bool Ospf::Processes::Process::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (interface_vrf_information !=  nullptr && interface_vrf_information->has_data())
 	|| (flood_list_table !=  nullptr && flood_list_table->has_data())
+	|| (segment_routing !=  nullptr && segment_routing->has_data())
 	|| (mpls_te !=  nullptr && mpls_te->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (adjacency_information !=  nullptr && adjacency_information->has_data())
@@ -515,6 +528,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter)
 	|| (interface_vrf_information !=  nullptr && interface_vrf_information->has_operation())
 	|| (flood_list_table !=  nullptr && flood_list_table->has_operation())
+	|| (segment_routing !=  nullptr && segment_routing->has_operation())
 	|| (mpls_te !=  nullptr && mpls_te->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation())
 	|| (adjacency_information !=  nullptr && adjacency_information->has_operation())
@@ -533,7 +547,8 @@ bool Ospf::Processes::Process::Vrfs::Vrf::has_operation() const
 std::string Ospf::Processes::Process::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -565,6 +580,15 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::get_child_by_name(c
             flood_list_table = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable>();
         }
         return flood_list_table;
+    }
+
+    if(child_yang_name == "segment-routing")
+    {
+        if(segment_routing == nullptr)
+        {
+            segment_routing = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting>();
+        }
+        return segment_routing;
     }
 
     if(child_yang_name == "mpls-te")
@@ -701,6 +725,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
         children["flood-list-table"] = flood_list_table;
     }
 
+    if(segment_routing != nullptr)
+    {
+        children["segment-routing"] = segment_routing;
+    }
+
     if(mpls_te != nullptr)
     {
         children["mpls-te"] = mpls_te;
@@ -789,7 +818,7 @@ void Ospf::Processes::Process::Vrfs::Vrf::set_filter(const std::string & value_p
 
 bool Ospf::Processes::Process::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-vrf-information" || name == "flood-list-table" || name == "mpls-te" || name == "statistics" || name == "adjacency-information" || name == "route-information" || name == "interface-information" || name == "border-routers" || name == "process-information" || name == "areas" || name == "database" || name == "summary-prefixes" || name == "area-statistics" || name == "ospf-summary" || name == "fast-reroute" || name == "vrf-name")
+    if(name == "interface-vrf-information" || name == "flood-list-table" || name == "segment-routing" || name == "mpls-te" || name == "statistics" || name == "adjacency-information" || name == "route-information" || name == "interface-information" || name == "border-routers" || name == "process-information" || name == "areas" || name == "database" || name == "summary-prefixes" || name == "area-statistics" || name == "ospf-summary" || name == "fast-reroute" || name == "vrf-name")
         return true;
     return false;
 }
@@ -800,7 +829,7 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::InterfaceVrfInform
 {
     sham_links->parent = this;
 
-    yang_name = "interface-vrf-information"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-vrf-information"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::~InterfaceVrfInformation()
@@ -809,6 +838,7 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::~InterfaceVrfInfor
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (sham_links !=  nullptr && sham_links->has_data());
 }
 
@@ -876,9 +906,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::has_leaf_or_c
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLinks()
+    :
+    sham_link(this, {"sham_link_name"})
 {
 
-    yang_name = "sham-links"; yang_parent_name = "interface-vrf-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-links"; yang_parent_name = "interface-vrf-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::~ShamLinks()
@@ -887,7 +919,8 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::~ShamLi
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::has_data() const
 {
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_data())
             return true;
@@ -897,7 +930,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ha
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::has_operation() const
 {
-    for (std::size_t index=0; index<sham_link.size(); index++)
+    for (std::size_t index=0; index<sham_link.len(); index++)
     {
         if(sham_link[index]->has_operation())
             return true;
@@ -927,7 +960,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink>();
         c->parent = this;
-        sham_link.push_back(c);
+        sham_link.append(c);
         return c;
     }
 
@@ -939,7 +972,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sham_link)
+    for (auto c : sham_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -995,12 +1028,13 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
     sham_link_nsf_enabled{YType::boolean, "sham-link-nsf-enabled"},
     sham_link_nsf{YType::boolean, "sham-link-nsf"},
     sham_link_last_nsf{YType::uint32, "sham-link-last-nsf"}
-    	,
+        ,
     sham_link_neighbor(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor>())
+    , sham_link_md_key(this, {})
 {
     sham_link_neighbor->parent = this;
 
-    yang_name = "sham-link"; yang_parent_name = "sham-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-link"; yang_parent_name = "sham-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::~ShamLink()
@@ -1009,7 +1043,8 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::has_data() const
 {
-    for (std::size_t index=0; index<sham_link_md_key.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sham_link_md_key.len(); index++)
     {
         if(sham_link_md_key[index]->has_data())
             return true;
@@ -1047,7 +1082,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::has_operation() const
 {
-    for (std::size_t index=0; index<sham_link_md_key.size(); index++)
+    for (std::size_t index=0; index<sham_link_md_key.len(); index++)
     {
         if(sham_link_md_key[index]->has_operation())
             return true;
@@ -1087,7 +1122,8 @@ bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
 std::string Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sham-link" <<"[sham-link-name='" <<sham_link_name <<"']";
+    path_buffer << "sham-link";
+    ADD_KEY_TOKEN(sham_link_name, "sham-link-name");
     return path_buffer.str();
 }
 
@@ -1143,7 +1179,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInforma
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkMdKey>();
         c->parent = this;
-        sham_link_md_key.push_back(c);
+        sham_link_md_key.append(c);
         return c;
     }
 
@@ -1160,7 +1196,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : sham_link_md_key)
+    for (auto c : sham_link_md_key.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1470,12 +1506,12 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
     :
     sham_link_suppress_hello{YType::boolean, "sham-link-suppress-hello"},
     sham_link_state{YType::enumeration, "sham-link-state"}
-    	,
+        ,
     sham_link_retransmissoin(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::ShamLinkRetransmissoin>())
 {
     sham_link_retransmissoin->parent = this;
 
-    yang_name = "sham-link-neighbor"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-link-neighbor"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::~ShamLinkNeighbor()
@@ -1484,6 +1520,7 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return sham_link_suppress_hello.is_set
 	|| sham_link_state.is_set
 	|| (sham_link_retransmissoin !=  nullptr && sham_link_retransmissoin->has_data());
@@ -1599,7 +1636,7 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
     lsa_retransmission_timer{YType::uint32, "lsa-retransmission-timer"}
 {
 
-    yang_name = "sham-link-retransmissoin"; yang_parent_name = "sham-link-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-link-retransmissoin"; yang_parent_name = "sham-link-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::ShamLinkRetransmissoin::~ShamLinkRetransmissoin()
@@ -1608,6 +1645,7 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkNeighbor::ShamLinkRetransmissoin::has_data() const
 {
+    if (is_presence_container) return true;
     return dbd_retransmission_count.is_set
 	|| dbd_retransmission_total_count.is_set
 	|| area_flooding_index.is_set
@@ -1910,7 +1948,7 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
     entry{YType::uint16, "entry"}
 {
 
-    yang_name = "sham-link-md-key"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sham-link-md-key"; yang_parent_name = "sham-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkMdKey::~ShamLinkMdKey()
@@ -1919,6 +1957,7 @@ Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLin
 
 bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::ShamLink::ShamLinkMdKey::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -1983,9 +2022,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLinks::Sh
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::FloodListTable()
+    :
+    flood(this, {"interface_name"})
 {
 
-    yang_name = "flood-list-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flood-list-table"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::~FloodListTable()
@@ -1994,7 +2035,8 @@ Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::~FloodListTable()
 
 bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::has_data() const
 {
-    for (std::size_t index=0; index<flood.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flood.len(); index++)
     {
         if(flood[index]->has_data())
             return true;
@@ -2004,7 +2046,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::has_data() const
 
 bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::has_operation() const
 {
-    for (std::size_t index=0; index<flood.size(); index++)
+    for (std::size_t index=0; index<flood.len(); index++)
     {
         if(flood[index]->has_operation())
             return true;
@@ -2034,7 +2076,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::get
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood>();
         c->parent = this;
-        flood.push_back(c);
+        flood.append(c);
         return c;
     }
 
@@ -2046,7 +2088,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flood)
+    for (auto c : flood.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2078,9 +2120,12 @@ Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::Flood()
     flood_interface_name{YType::str, "flood-interface-name"},
     flood_pacing_timer{YType::uint32, "flood-pacing-timer"},
     flood_lsa_count{YType::uint32, "flood-lsa-count"}
+        ,
+    area_flood(this, {})
+    , as_flood(this, {})
 {
 
-    yang_name = "flood"; yang_parent_name = "flood-list-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flood"; yang_parent_name = "flood-list-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::~Flood()
@@ -2089,12 +2134,13 @@ Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::~Flood()
 
 bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::has_data() const
 {
-    for (std::size_t index=0; index<area_flood.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area_flood.len(); index++)
     {
         if(area_flood[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<as_flood.size(); index++)
+    for (std::size_t index=0; index<as_flood.len(); index++)
     {
         if(as_flood[index]->has_data())
             return true;
@@ -2107,12 +2153,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::has_data() cons
 
 bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::has_operation() const
 {
-    for (std::size_t index=0; index<area_flood.size(); index++)
+    for (std::size_t index=0; index<area_flood.len(); index++)
     {
         if(area_flood[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<as_flood.size(); index++)
+    for (std::size_t index=0; index<as_flood.len(); index++)
     {
         if(as_flood[index]->has_operation())
             return true;
@@ -2127,7 +2173,8 @@ bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::has_operation()
 std::string Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flood" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "flood";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2150,7 +2197,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flo
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood>();
         c->parent = this;
-        area_flood.push_back(c);
+        area_flood.append(c);
         return c;
     }
 
@@ -2158,7 +2205,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flo
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood>();
         c->parent = this;
-        as_flood.push_back(c);
+        as_flood.append(c);
         return c;
     }
 
@@ -2170,7 +2217,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : area_flood)
+    for (auto c : area_flood.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2179,7 +2226,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : as_flood)
+    for (auto c : as_flood.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2255,7 +2302,7 @@ Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood::AreaFlood
     header_lsa_checksum{YType::uint16, "header-lsa-checksum"}
 {
 
-    yang_name = "area-flood"; yang_parent_name = "flood"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "area-flood"; yang_parent_name = "flood"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood::~AreaFlood()
@@ -2264,6 +2311,7 @@ Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood::~AreaFloo
 
 bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFlood::has_data() const
 {
+    if (is_presence_container) return true;
     return header_lsa_type.is_set
 	|| header_lsa_age.is_set
 	|| header_ls_id.is_set
@@ -2402,7 +2450,7 @@ Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood::AsFlood()
     header_lsa_checksum{YType::uint16, "header-lsa-checksum"}
 {
 
-    yang_name = "as-flood"; yang_parent_name = "flood"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-flood"; yang_parent_name = "flood"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood::~AsFlood()
@@ -2411,6 +2459,7 @@ Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood::~AsFlood()
 
 bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood::has_data() const
 {
+    if (is_presence_container) return true;
     return header_lsa_type.is_set
 	|| header_lsa_age.is_set
 	|| header_ls_id.is_set
@@ -2539,15 +2588,642 @@ bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood::has_le
     return false;
 }
 
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SegmentRouting()
+    :
+    sr_endpoint_policies(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies>())
+{
+    sr_endpoint_policies->parent = this;
+
+    yang_name = "segment-routing"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::~SegmentRouting()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::has_data() const
+{
+    if (is_presence_container) return true;
+    return (sr_endpoint_policies !=  nullptr && sr_endpoint_policies->has_data());
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::has_operation() const
+{
+    return is_set(yfilter)
+	|| (sr_endpoint_policies !=  nullptr && sr_endpoint_policies->has_operation());
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment-routing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-endpoint-policies")
+    {
+        if(sr_endpoint_policies == nullptr)
+        {
+            sr_endpoint_policies = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies>();
+        }
+        return sr_endpoint_policies;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(sr_endpoint_policies != nullptr)
+    {
+        children["sr-endpoint-policies"] = sr_endpoint_policies;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-endpoint-policies")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicies()
+    :
+    sr_endpoint_policy(this, {"endpoint_ip"})
+{
+
+    yang_name = "sr-endpoint-policies"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::~SrEndpointPolicies()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_endpoint_policy.len(); index++)
+    {
+        if(sr_endpoint_policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::has_operation() const
+{
+    for (std::size_t index=0; index<sr_endpoint_policy.len(); index++)
+    {
+        if(sr_endpoint_policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-endpoint-policies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-endpoint-policy")
+    {
+        auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy>();
+        c->parent = this;
+        sr_endpoint_policy.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : sr_endpoint_policy.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-endpoint-policy")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrEndpointPolicy()
+    :
+    endpoint_ip{YType::str, "endpoint-ip"},
+    sr_endpoint{YType::str, "sr-endpoint"},
+    sr_router_id{YType::uint32, "sr-router-id"},
+    sr_area_id_string{YType::str, "sr-area-id-string"},
+    sr_policy_count{YType::uint32, "sr-policy-count"},
+    sr_valid_policy_count{YType::uint32, "sr-valid-policy-count"},
+    sr_endp_state_is_valid{YType::boolean, "sr-endp-state-is-valid"},
+    sr_endp_state_is_stale{YType::boolean, "sr-endp-state-is-stale"},
+    sr_endp_state_is_unres{YType::boolean, "sr-endp-state-is-unres"},
+    sr_endp_resolution_fail_reason{YType::enumeration, "sr-endp-resolution-fail-reason"}
+        ,
+    sr_policy(this, {})
+{
+
+    yang_name = "sr-endpoint-policy"; yang_parent_name = "sr-endpoint-policies"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::~SrEndpointPolicy()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_policy.len(); index++)
+    {
+        if(sr_policy[index]->has_data())
+            return true;
+    }
+    return endpoint_ip.is_set
+	|| sr_endpoint.is_set
+	|| sr_router_id.is_set
+	|| sr_area_id_string.is_set
+	|| sr_policy_count.is_set
+	|| sr_valid_policy_count.is_set
+	|| sr_endp_state_is_valid.is_set
+	|| sr_endp_state_is_stale.is_set
+	|| sr_endp_state_is_unres.is_set
+	|| sr_endp_resolution_fail_reason.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::has_operation() const
+{
+    for (std::size_t index=0; index<sr_policy.len(); index++)
+    {
+        if(sr_policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(endpoint_ip.yfilter)
+	|| ydk::is_set(sr_endpoint.yfilter)
+	|| ydk::is_set(sr_router_id.yfilter)
+	|| ydk::is_set(sr_area_id_string.yfilter)
+	|| ydk::is_set(sr_policy_count.yfilter)
+	|| ydk::is_set(sr_valid_policy_count.yfilter)
+	|| ydk::is_set(sr_endp_state_is_valid.yfilter)
+	|| ydk::is_set(sr_endp_state_is_stale.yfilter)
+	|| ydk::is_set(sr_endp_state_is_unres.yfilter)
+	|| ydk::is_set(sr_endp_resolution_fail_reason.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-endpoint-policy";
+    ADD_KEY_TOKEN(endpoint_ip, "endpoint-ip");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (endpoint_ip.is_set || is_set(endpoint_ip.yfilter)) leaf_name_data.push_back(endpoint_ip.get_name_leafdata());
+    if (sr_endpoint.is_set || is_set(sr_endpoint.yfilter)) leaf_name_data.push_back(sr_endpoint.get_name_leafdata());
+    if (sr_router_id.is_set || is_set(sr_router_id.yfilter)) leaf_name_data.push_back(sr_router_id.get_name_leafdata());
+    if (sr_area_id_string.is_set || is_set(sr_area_id_string.yfilter)) leaf_name_data.push_back(sr_area_id_string.get_name_leafdata());
+    if (sr_policy_count.is_set || is_set(sr_policy_count.yfilter)) leaf_name_data.push_back(sr_policy_count.get_name_leafdata());
+    if (sr_valid_policy_count.is_set || is_set(sr_valid_policy_count.yfilter)) leaf_name_data.push_back(sr_valid_policy_count.get_name_leafdata());
+    if (sr_endp_state_is_valid.is_set || is_set(sr_endp_state_is_valid.yfilter)) leaf_name_data.push_back(sr_endp_state_is_valid.get_name_leafdata());
+    if (sr_endp_state_is_stale.is_set || is_set(sr_endp_state_is_stale.yfilter)) leaf_name_data.push_back(sr_endp_state_is_stale.get_name_leafdata());
+    if (sr_endp_state_is_unres.is_set || is_set(sr_endp_state_is_unres.yfilter)) leaf_name_data.push_back(sr_endp_state_is_unres.get_name_leafdata());
+    if (sr_endp_resolution_fail_reason.is_set || is_set(sr_endp_resolution_fail_reason.yfilter)) leaf_name_data.push_back(sr_endp_resolution_fail_reason.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-policy")
+    {
+        auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy>();
+        c->parent = this;
+        sr_policy.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : sr_policy.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "endpoint-ip")
+    {
+        endpoint_ip = value;
+        endpoint_ip.value_namespace = name_space;
+        endpoint_ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-endpoint")
+    {
+        sr_endpoint = value;
+        sr_endpoint.value_namespace = name_space;
+        sr_endpoint.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-router-id")
+    {
+        sr_router_id = value;
+        sr_router_id.value_namespace = name_space;
+        sr_router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-area-id-string")
+    {
+        sr_area_id_string = value;
+        sr_area_id_string.value_namespace = name_space;
+        sr_area_id_string.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-policy-count")
+    {
+        sr_policy_count = value;
+        sr_policy_count.value_namespace = name_space;
+        sr_policy_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-valid-policy-count")
+    {
+        sr_valid_policy_count = value;
+        sr_valid_policy_count.value_namespace = name_space;
+        sr_valid_policy_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-endp-state-is-valid")
+    {
+        sr_endp_state_is_valid = value;
+        sr_endp_state_is_valid.value_namespace = name_space;
+        sr_endp_state_is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-endp-state-is-stale")
+    {
+        sr_endp_state_is_stale = value;
+        sr_endp_state_is_stale.value_namespace = name_space;
+        sr_endp_state_is_stale.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-endp-state-is-unres")
+    {
+        sr_endp_state_is_unres = value;
+        sr_endp_state_is_unres.value_namespace = name_space;
+        sr_endp_state_is_unres.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-endp-resolution-fail-reason")
+    {
+        sr_endp_resolution_fail_reason = value;
+        sr_endp_resolution_fail_reason.value_namespace = name_space;
+        sr_endp_resolution_fail_reason.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "endpoint-ip")
+    {
+        endpoint_ip.yfilter = yfilter;
+    }
+    if(value_path == "sr-endpoint")
+    {
+        sr_endpoint.yfilter = yfilter;
+    }
+    if(value_path == "sr-router-id")
+    {
+        sr_router_id.yfilter = yfilter;
+    }
+    if(value_path == "sr-area-id-string")
+    {
+        sr_area_id_string.yfilter = yfilter;
+    }
+    if(value_path == "sr-policy-count")
+    {
+        sr_policy_count.yfilter = yfilter;
+    }
+    if(value_path == "sr-valid-policy-count")
+    {
+        sr_valid_policy_count.yfilter = yfilter;
+    }
+    if(value_path == "sr-endp-state-is-valid")
+    {
+        sr_endp_state_is_valid.yfilter = yfilter;
+    }
+    if(value_path == "sr-endp-state-is-stale")
+    {
+        sr_endp_state_is_stale.yfilter = yfilter;
+    }
+    if(value_path == "sr-endp-state-is-unres")
+    {
+        sr_endp_state_is_unres.yfilter = yfilter;
+    }
+    if(value_path == "sr-endp-resolution-fail-reason")
+    {
+        sr_endp_resolution_fail_reason.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-policy" || name == "endpoint-ip" || name == "sr-endpoint" || name == "sr-router-id" || name == "sr-area-id-string" || name == "sr-policy-count" || name == "sr-valid-policy-count" || name == "sr-endp-state-is-valid" || name == "sr-endp-state-is-stale" || name == "sr-endp-state-is-unres" || name == "sr-endp-resolution-fail-reason")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::SrPolicy()
+    :
+    policy_name{YType::str, "policy-name"},
+    policy_if_handle{YType::str, "policy-if-handle"},
+    policy_metric{YType::int32, "policy-metric"},
+    policy_metric_mode{YType::enumeration, "policy-metric-mode"},
+    policy_is_sspf{YType::boolean, "policy-is-sspf"},
+    policy_is_autoroute_include{YType::boolean, "policy-is-autoroute-include"},
+    policy_state_is_valid{YType::boolean, "policy-state-is-valid"},
+    policy_state_is_stale{YType::boolean, "policy-state-is-stale"},
+    policy_state_is_ifh_error{YType::boolean, "policy-state-is-ifh-error"},
+    policy_state_is_idb_pending{YType::boolean, "policy-state-is-idb-pending"},
+    policy_update_timestamp{YType::uint32, "policy-update-timestamp"}
+{
+
+    yang_name = "sr-policy"; yang_parent_name = "sr-endpoint-policy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::~SrPolicy()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return policy_name.is_set
+	|| policy_if_handle.is_set
+	|| policy_metric.is_set
+	|| policy_metric_mode.is_set
+	|| policy_is_sspf.is_set
+	|| policy_is_autoroute_include.is_set
+	|| policy_state_is_valid.is_set
+	|| policy_state_is_stale.is_set
+	|| policy_state_is_ifh_error.is_set
+	|| policy_state_is_idb_pending.is_set
+	|| policy_update_timestamp.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(policy_if_handle.yfilter)
+	|| ydk::is_set(policy_metric.yfilter)
+	|| ydk::is_set(policy_metric_mode.yfilter)
+	|| ydk::is_set(policy_is_sspf.yfilter)
+	|| ydk::is_set(policy_is_autoroute_include.yfilter)
+	|| ydk::is_set(policy_state_is_valid.yfilter)
+	|| ydk::is_set(policy_state_is_stale.yfilter)
+	|| ydk::is_set(policy_state_is_ifh_error.yfilter)
+	|| ydk::is_set(policy_state_is_idb_pending.yfilter)
+	|| ydk::is_set(policy_update_timestamp.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (policy_if_handle.is_set || is_set(policy_if_handle.yfilter)) leaf_name_data.push_back(policy_if_handle.get_name_leafdata());
+    if (policy_metric.is_set || is_set(policy_metric.yfilter)) leaf_name_data.push_back(policy_metric.get_name_leafdata());
+    if (policy_metric_mode.is_set || is_set(policy_metric_mode.yfilter)) leaf_name_data.push_back(policy_metric_mode.get_name_leafdata());
+    if (policy_is_sspf.is_set || is_set(policy_is_sspf.yfilter)) leaf_name_data.push_back(policy_is_sspf.get_name_leafdata());
+    if (policy_is_autoroute_include.is_set || is_set(policy_is_autoroute_include.yfilter)) leaf_name_data.push_back(policy_is_autoroute_include.get_name_leafdata());
+    if (policy_state_is_valid.is_set || is_set(policy_state_is_valid.yfilter)) leaf_name_data.push_back(policy_state_is_valid.get_name_leafdata());
+    if (policy_state_is_stale.is_set || is_set(policy_state_is_stale.yfilter)) leaf_name_data.push_back(policy_state_is_stale.get_name_leafdata());
+    if (policy_state_is_ifh_error.is_set || is_set(policy_state_is_ifh_error.yfilter)) leaf_name_data.push_back(policy_state_is_ifh_error.get_name_leafdata());
+    if (policy_state_is_idb_pending.is_set || is_set(policy_state_is_idb_pending.yfilter)) leaf_name_data.push_back(policy_state_is_idb_pending.get_name_leafdata());
+    if (policy_update_timestamp.is_set || is_set(policy_update_timestamp.yfilter)) leaf_name_data.push_back(policy_update_timestamp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-if-handle")
+    {
+        policy_if_handle = value;
+        policy_if_handle.value_namespace = name_space;
+        policy_if_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-metric")
+    {
+        policy_metric = value;
+        policy_metric.value_namespace = name_space;
+        policy_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-metric-mode")
+    {
+        policy_metric_mode = value;
+        policy_metric_mode.value_namespace = name_space;
+        policy_metric_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-is-sspf")
+    {
+        policy_is_sspf = value;
+        policy_is_sspf.value_namespace = name_space;
+        policy_is_sspf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-is-autoroute-include")
+    {
+        policy_is_autoroute_include = value;
+        policy_is_autoroute_include.value_namespace = name_space;
+        policy_is_autoroute_include.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-state-is-valid")
+    {
+        policy_state_is_valid = value;
+        policy_state_is_valid.value_namespace = name_space;
+        policy_state_is_valid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-state-is-stale")
+    {
+        policy_state_is_stale = value;
+        policy_state_is_stale.value_namespace = name_space;
+        policy_state_is_stale.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-state-is-ifh-error")
+    {
+        policy_state_is_ifh_error = value;
+        policy_state_is_ifh_error.value_namespace = name_space;
+        policy_state_is_ifh_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-state-is-idb-pending")
+    {
+        policy_state_is_idb_pending = value;
+        policy_state_is_idb_pending.value_namespace = name_space;
+        policy_state_is_idb_pending.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-update-timestamp")
+    {
+        policy_update_timestamp = value;
+        policy_update_timestamp.value_namespace = name_space;
+        policy_update_timestamp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+    if(value_path == "policy-if-handle")
+    {
+        policy_if_handle.yfilter = yfilter;
+    }
+    if(value_path == "policy-metric")
+    {
+        policy_metric.yfilter = yfilter;
+    }
+    if(value_path == "policy-metric-mode")
+    {
+        policy_metric_mode.yfilter = yfilter;
+    }
+    if(value_path == "policy-is-sspf")
+    {
+        policy_is_sspf.yfilter = yfilter;
+    }
+    if(value_path == "policy-is-autoroute-include")
+    {
+        policy_is_autoroute_include.yfilter = yfilter;
+    }
+    if(value_path == "policy-state-is-valid")
+    {
+        policy_state_is_valid.yfilter = yfilter;
+    }
+    if(value_path == "policy-state-is-stale")
+    {
+        policy_state_is_stale.yfilter = yfilter;
+    }
+    if(value_path == "policy-state-is-ifh-error")
+    {
+        policy_state_is_ifh_error.yfilter = yfilter;
+    }
+    if(value_path == "policy-state-is-idb-pending")
+    {
+        policy_state_is_idb_pending.yfilter = yfilter;
+    }
+    if(value_path == "policy-update-timestamp")
+    {
+        policy_update_timestamp.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policy-name" || name == "policy-if-handle" || name == "policy-metric" || name == "policy-metric-mode" || name == "policy-is-sspf" || name == "policy-is-autoroute-include" || name == "policy-state-is-valid" || name == "policy-state-is-stale" || name == "policy-state-is-ifh-error" || name == "policy-state-is-idb-pending" || name == "policy-update-timestamp")
+        return true;
+    return false;
+}
+
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTe()
     :
     mpls_te_links(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks>())
-	,mpls_te_fragments(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments>())
+    , mpls_te_fragments(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments>())
 {
     mpls_te_links->parent = this;
     mpls_te_fragments->parent = this;
 
-    yang_name = "mpls-te"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::~MplsTe()
@@ -2556,6 +3232,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::~MplsTe()
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpls_te_links !=  nullptr && mpls_te_links->has_data())
 	|| (mpls_te_fragments !=  nullptr && mpls_te_fragments->has_data());
 }
@@ -2639,9 +3316,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::has_leaf_or_child_of_name(cons
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLinks()
+    :
+    mpls_te_link(this, {"area_id"})
 {
 
-    yang_name = "mpls-te-links"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-links"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::~MplsTeLinks()
@@ -2650,7 +3329,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::~MplsTeLinks()
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::has_data() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_data())
             return true;
@@ -2660,7 +3340,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::has_data() const
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_operation())
             return true;
@@ -2690,7 +3370,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink>();
         c->parent = this;
-        mpls_te_link.push_back(c);
+        mpls_te_link.append(c);
         return c;
     }
 
@@ -2702,7 +3382,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_te_link)
+    for (auto c : mpls_te_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2730,7 +3410,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::has_leaf_or_child
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink()
     :
-    area_id{YType::int32, "area-id"},
+    area_id{YType::uint32, "area-id"},
     mpls_te_router_id{YType::str, "mpls-te-router-id"},
     mpls_te_enabled{YType::boolean, "mpls-te-enabled"},
     mpls_te_initialized{YType::boolean, "mpls-te-initialized"},
@@ -2739,9 +3419,12 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     mpls_te_router_address{YType::str, "mpls-te-router-address"},
     mpls_te_next_fragment_id{YType::uint32, "mpls-te-next-fragment-id"},
     spacious_fragment{YType::boolean, "spacious-fragment"}
+        ,
+    mpls_te_link(this, {})
+    , mpls_te_fragment(this, {})
 {
 
-    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::~MplsTeLink()
@@ -2750,12 +3433,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::~MplsTeLin
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::has_data() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mpls_te_fragment.size(); index++)
+    for (std::size_t index=0; index<mpls_te_fragment.len(); index++)
     {
         if(mpls_te_fragment[index]->has_data())
             return true;
@@ -2773,12 +3457,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::has_d
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mpls_te_fragment.size(); index++)
+    for (std::size_t index=0; index<mpls_te_fragment.len(); index++)
     {
         if(mpls_te_fragment[index]->has_operation())
             return true;
@@ -2798,7 +3482,8 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::has_o
 std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mpls-te-link" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "mpls-te-link";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -2826,7 +3511,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_>();
         c->parent = this;
-        mpls_te_link.push_back(c);
+        mpls_te_link.append(c);
         return c;
     }
 
@@ -2834,7 +3519,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment>();
         c->parent = this;
-        mpls_te_fragment.push_back(c);
+        mpls_te_fragment.append(c);
         return c;
     }
 
@@ -2846,7 +3531,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_te_link)
+    for (auto c : mpls_te_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2855,7 +3540,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : mpls_te_fragment)
+    for (auto c : mpls_te_fragment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2992,12 +3677,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     dste_in_use{YType::boolean, "dste-in-use"},
     dste_allocation_model_id{YType::enumeration, "dste-allocation-model-id"},
     number_of_optional_tl_vs{YType::uint8, "number-of-optional-tl-vs"}
-    	,
+        ,
     global_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority>())
-	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority>())
-	,link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability>())
-	,link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability>())
-	,extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList>())
+    , sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority>())
+    , link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability>())
+    , link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability>())
+    , extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList>())
+    , mplste_link_opt_tlv(this, {})
 {
     global_unreserve_bw_per_priority->parent = this;
     sub_pool_unreserve_bw_per_priority->parent = this;
@@ -3005,7 +3691,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     link_sw_capability->parent = this;
     extended_admin_group_list->parent = this;
 
-    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::~MplsTeLink_()
@@ -3014,7 +3700,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_data())
             return true;
@@ -3047,7 +3734,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_operation())
             return true;
@@ -3165,7 +3852,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(c);
+        mplste_link_opt_tlv.append(c);
         return c;
     }
 
@@ -3202,7 +3889,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv)
+    for (auto c : mplste_link_opt_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3419,9 +4106,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::GlobalUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::~GlobalUnreserveBwPerPriority()
@@ -3430,7 +4119,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -3440,7 +4130,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -3470,7 +4160,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -3482,7 +4172,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3513,7 +4203,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -3522,6 +4212,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -3586,9 +4277,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::SubPoolUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::~SubPoolUnreserveBwPerPriority()
@@ -3597,7 +4290,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -3607,7 +4301,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -3637,7 +4331,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -3649,7 +4343,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3680,7 +4374,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -3689,6 +4383,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -3758,7 +4453,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     link_protocol_priority{YType::uint8, "link-protocol-priority"}
 {
 
-    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::~LinkProtocolPriorityCapability()
@@ -3767,6 +4462,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability::has_data() const
 {
+    if (is_presence_container) return true;
     return link_protocol_capability.is_set
 	|| link_protocol_priority.is_set;
 }
@@ -3849,9 +4545,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     link_encoding{YType::uint8, "link-encoding"},
     minimum_lsp_bw{YType::uint64, "minimum-lsp-bw"},
     link_mtu{YType::uint16, "link-mtu"}
+        ,
+    maximum_lsp_bw_per_priority(this, {})
 {
 
-    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::~LinkSwCapability()
@@ -3860,7 +4558,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::has_data() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_data())
             return true;
@@ -3873,7 +4572,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::has_operation() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_operation())
             return true;
@@ -3911,7 +4610,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
-        maximum_lsp_bw_per_priority.push_back(c);
+        maximum_lsp_bw_per_priority.append(c);
         return c;
     }
 
@@ -3923,7 +4622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : maximum_lsp_bw_per_priority)
+    for (auto c : maximum_lsp_bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3994,7 +4693,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::~MaximumLspBwPerPriority()
@@ -4003,6 +4702,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4069,9 +4769,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtendedAdminGroupList()
     :
     extended_admin_size{YType::uint32, "extended-admin-size"}
+        ,
+    ext_admin_data(this, {})
 {
 
-    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::~ExtendedAdminGroupList()
@@ -4080,7 +4782,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::has_data() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_data())
             return true;
@@ -4090,7 +4793,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_operation())
             return true;
@@ -4122,7 +4825,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
-        ext_admin_data.push_back(c);
+        ext_admin_data.append(c);
         return c;
     }
 
@@ -4134,7 +4837,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_admin_data)
+    for (auto c : ext_admin_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4175,7 +4878,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData::~ExtAdminData()
@@ -4184,6 +4887,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4251,9 +4955,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     :
     mplste_link_opt_tlv_type{YType::enumeration, "mplste-link-opt-tlv-type"},
     mplste_link_opt_tlv_len{YType::uint16, "mplste-link-opt-tlv-len"}
+        ,
+    mplste_link_opt_tlv_value(this, {})
 {
 
-    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::~MplsteLinkOptTlv()
@@ -4262,7 +4968,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_data())
             return true;
@@ -4273,7 +4980,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_operation())
             return true;
@@ -4307,7 +5014,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(c);
+        mplste_link_opt_tlv_value.append(c);
         return c;
     }
 
@@ -4319,7 +5026,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv_value)
+    for (auto c : mplste_link_opt_tlv_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4368,18 +5075,18 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::MplsteLinkOptTlvValue()
     :
     opaque_tlv_type{YType::enumeration, "opaque-tlv-type"}
-    	,
+        ,
     bctlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>())
-	,srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
-	,ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
-	,unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
+    , srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
+    , ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
+    , unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
     srlgtlv_value->parent = this;
     ixcdtlv_value->parent = this;
     unidtlv_value->parent = this;
 
-    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::~MplsteLinkOptTlvValue()
@@ -4388,6 +5095,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return opaque_tlv_type.is_set
 	|| (bctlv_value !=  nullptr && bctlv_value->has_data())
 	|| (srlgtlv_value !=  nullptr && srlgtlv_value->has_data())
@@ -4519,9 +5227,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     :
     model_id{YType::uint8, "model-id"},
     num_b_cs{YType::uint32, "num-b-cs"}
+        ,
+    mplste_link_bc_bandwidth(this, {})
 {
 
-    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::~BctlvValue()
@@ -4530,7 +5240,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_data())
             return true;
@@ -4541,7 +5252,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_operation())
             return true;
@@ -4575,7 +5286,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
-        mplste_link_bc_bandwidth.push_back(c);
+        mplste_link_bc_bandwidth.append(c);
         return c;
     }
 
@@ -4587,7 +5298,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_bc_bandwidth)
+    for (auto c : mplste_link_bc_bandwidth.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4638,7 +5349,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::~MplsteLinkBcBandwidth()
@@ -4647,6 +5358,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4714,9 +5426,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     :
     srlg_len{YType::uint32, "srlg-len"},
     num_srl_gs{YType::uint32, "num-srl-gs"}
+        ,
+    mplste_link_srlg_data(this, {})
 {
 
-    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::~SrlgtlvValue()
@@ -4725,7 +5439,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_data())
             return true;
@@ -4736,7 +5451,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_operation())
             return true;
@@ -4770,7 +5485,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
-        mplste_link_srlg_data.push_back(c);
+        mplste_link_srlg_data.append(c);
         return c;
     }
 
@@ -4782,7 +5497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_srlg_data)
+    for (auto c : mplste_link_srlg_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4833,7 +5548,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::~MplsteLinkSrlgData()
@@ -4842,6 +5557,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4911,12 +5627,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     rile_len_code{YType::uint8, "rile-len-code"},
     fixed_scsi_count{YType::uint32, "fixed-scsi-count"},
     flex_scsi_count{YType::uint32, "flex-scsi-count"}
-    	,
+        ,
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
+    , max_lspbw(this, {})
 {
     ixcd_switching_cap_type->parent = this;
 
-    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::~IxcdtlvValue()
@@ -4925,7 +5642,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -4939,7 +5657,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -4987,7 +5705,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -5004,7 +5722,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5073,14 +5791,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdSwitchingCapType()
     :
     switching_cap_type{YType::uint8, "switching-cap-type"}
-    	,
+        ,
     ixcdpsc_info(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
-	,ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
+    , ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
 {
     ixcdpsc_info->parent = this;
     ixcdbw_sub_tlv->parent = this;
 
-    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::~IxcdSwitchingCapType()
@@ -5089,6 +5807,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::has_data() const
 {
+    if (is_presence_container) return true;
     return switching_cap_type.is_set
 	|| (ixcdpsc_info !=  nullptr && ixcdpsc_info->has_data())
 	|| (ixcdbw_sub_tlv !=  nullptr && ixcdbw_sub_tlv->has_data());
@@ -5190,7 +5909,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     psc_interface_mtu{YType::uint16, "psc-interface-mtu"}
 {
 
-    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::~IxcdpscInfo()
@@ -5199,6 +5918,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return min_lsp_bandwidth.is_set
 	|| psc_interface_mtu.is_set;
 }
@@ -5276,9 +5996,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::IxcdbwSubTlv()
+    :
+    arr_bw_sub_tlv(this, {})
 {
 
-    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::~IxcdbwSubTlv()
@@ -5287,7 +6009,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_data() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_data())
             return true;
@@ -5297,7 +6020,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_operation() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_operation())
             return true;
@@ -5327,7 +6050,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(c);
+        arr_bw_sub_tlv.append(c);
         return c;
     }
 
@@ -5339,7 +6062,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : arr_bw_sub_tlv)
+    for (auto c : arr_bw_sub_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5369,12 +6092,12 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     :
     bw_sub_tlv_type{YType::uint16, "bw-sub-tlv-type"},
     bw_sub_tlv_length{YType::uint16, "bw-sub-tlv-length"}
-    	,
+        ,
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
 
-    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::~ArrBwSubTlv()
@@ -5383,6 +6106,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return bw_sub_tlv_type.is_set
 	|| bw_sub_tlv_length.is_set
 	|| (bw_sub_tlv_value !=  nullptr && bw_sub_tlv_value->has_data());
@@ -5478,14 +6202,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::BwSubTlvValue()
     :
     ixcdbw_sub_tlv_type{YType::uint16, "ixcdbw-sub-tlv-type"}
-    	,
+        ,
     fixed_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>())
-	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
+    , flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
     flex_bw_sub_tlv_value->parent = this;
 
-    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::~BwSubTlvValue()
@@ -5494,6 +6218,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return ixcdbw_sub_tlv_type.is_set
 	|| (fixed_bw_sub_tlv_value !=  nullptr && fixed_bw_sub_tlv_value->has_data())
 	|| (flex_bw_sub_tlv_value !=  nullptr && flex_bw_sub_tlv_value->has_data());
@@ -5592,10 +6317,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedBwSubTlvValue()
     :
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
+    , unres_oduj_prio(this, {})
 {
     fixed_sub_tlv_value->parent = this;
 
-    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::~FixedBwSubTlvValue()
@@ -5604,7 +6330,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_data())
             return true;
@@ -5614,7 +6341,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_operation())
             return true;
@@ -5654,7 +6381,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
-        unres_oduj_prio.push_back(c);
+        unres_oduj_prio.append(c);
         return c;
     }
 
@@ -5671,7 +6398,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_oduj_prio)
+    for (auto c : unres_oduj_prio.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5716,7 +6443,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     stage{YType::str, "stage"}
 {
 
-    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::~FixedSubTlvValue()
@@ -5725,6 +6452,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -5975,7 +6703,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::~UnresOdujPrio()
@@ -5984,6 +6712,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6050,10 +6779,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexBwSubTlvValue()
     :
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
+    , unres_lspbw(this, {})
+    , max_lspbw(this, {})
 {
     flex_sub_tlv_value_common->parent = this;
 
-    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::~FlexBwSubTlvValue()
@@ -6062,12 +6793,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -6077,12 +6809,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -6122,7 +6854,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
-        unres_lspbw.push_back(c);
+        unres_lspbw.append(c);
         return c;
     }
 
@@ -6130,7 +6862,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -6147,7 +6879,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_lspbw)
+    for (auto c : unres_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6156,7 +6888,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6201,7 +6933,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     stage{YType::str, "stage"}
 {
 
-    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::~FlexSubTlvValueCommon()
@@ -6210,6 +6942,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -6460,7 +7193,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::~UnresLspbw()
@@ -6469,6 +7202,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6537,7 +7271,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::~MaxLspbw()
@@ -6546,6 +7280,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6614,7 +7349,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     entry{YType::int64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::~MaxLspbw()
@@ -6623,6 +7358,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6691,7 +7427,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
     uni_dir_delay{YType::uint32, "uni-dir-delay"}
 {
 
-    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::~UnidtlvValue()
@@ -6700,6 +7436,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return uni_dir_delay.is_set;
 }
 
@@ -6769,9 +7506,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     fragment_id{YType::uint32, "fragment-id"},
     dste_model_id{YType::uint8, "dste-model-id"},
     same_fragment_count{YType::uint8, "same-fragment-count"}
+        ,
+    mpls_te_link(this, {})
 {
 
-    yang_name = "mpls-te-fragment"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-fragment"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::~MplsTeFragment()
@@ -6780,7 +7519,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::has_data() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_data())
             return true;
@@ -6793,7 +7533,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_operation())
             return true;
@@ -6831,7 +7571,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_>();
         c->parent = this;
-        mpls_te_link.push_back(c);
+        mpls_te_link.append(c);
         return c;
     }
 
@@ -6843,7 +7583,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_te_link)
+    for (auto c : mpls_te_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6930,12 +7670,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     dste_in_use{YType::boolean, "dste-in-use"},
     dste_allocation_model_id{YType::enumeration, "dste-allocation-model-id"},
     number_of_optional_tl_vs{YType::uint8, "number-of-optional-tl-vs"}
-    	,
+        ,
     global_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority>())
-	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority>())
-	,link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability>())
-	,link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability>())
-	,extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList>())
+    , sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority>())
+    , link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability>())
+    , link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability>())
+    , extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList>())
+    , mplste_link_opt_tlv(this, {})
 {
     global_unreserve_bw_per_priority->parent = this;
     sub_pool_unreserve_bw_per_priority->parent = this;
@@ -6943,7 +7684,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     link_sw_capability->parent = this;
     extended_admin_group_list->parent = this;
 
-    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::~MplsTeLink_()
@@ -6952,7 +7693,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_data())
             return true;
@@ -6985,7 +7727,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_operation())
             return true;
@@ -7103,7 +7845,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(c);
+        mplste_link_opt_tlv.append(c);
         return c;
     }
 
@@ -7140,7 +7882,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv)
+    for (auto c : mplste_link_opt_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7357,9 +8099,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::GlobalUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::~GlobalUnreserveBwPerPriority()
@@ -7368,7 +8112,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -7378,7 +8123,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -7408,7 +8153,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -7420,7 +8165,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7451,7 +8196,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -7460,6 +8205,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -7524,9 +8270,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::SubPoolUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::~SubPoolUnreserveBwPerPriority()
@@ -7535,7 +8283,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -7545,7 +8294,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -7575,7 +8324,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -7587,7 +8336,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7618,7 +8367,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -7627,6 +8376,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -7696,7 +8446,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     link_protocol_priority{YType::uint8, "link-protocol-priority"}
 {
 
-    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::~LinkProtocolPriorityCapability()
@@ -7705,6 +8455,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkProtocolPriorityCapability::has_data() const
 {
+    if (is_presence_container) return true;
     return link_protocol_capability.is_set
 	|| link_protocol_priority.is_set;
 }
@@ -7787,9 +8538,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     link_encoding{YType::uint8, "link-encoding"},
     minimum_lsp_bw{YType::uint64, "minimum-lsp-bw"},
     link_mtu{YType::uint16, "link-mtu"}
+        ,
+    maximum_lsp_bw_per_priority(this, {})
 {
 
-    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::~LinkSwCapability()
@@ -7798,7 +8551,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::has_data() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_data())
             return true;
@@ -7811,7 +8565,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::has_operation() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_operation())
             return true;
@@ -7849,7 +8603,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
-        maximum_lsp_bw_per_priority.push_back(c);
+        maximum_lsp_bw_per_priority.append(c);
         return c;
     }
 
@@ -7861,7 +8615,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : maximum_lsp_bw_per_priority)
+    for (auto c : maximum_lsp_bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7932,7 +8686,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::~MaximumLspBwPerPriority()
@@ -7941,6 +8695,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::LinkSwCapability::MaximumLspBwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -8007,9 +8762,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtendedAdminGroupList()
     :
     extended_admin_size{YType::uint32, "extended-admin-size"}
+        ,
+    ext_admin_data(this, {})
 {
 
-    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::~ExtendedAdminGroupList()
@@ -8018,7 +8775,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::has_data() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_data())
             return true;
@@ -8028,7 +8786,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_operation())
             return true;
@@ -8060,7 +8818,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
-        ext_admin_data.push_back(c);
+        ext_admin_data.append(c);
         return c;
     }
 
@@ -8072,7 +8830,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_admin_data)
+    for (auto c : ext_admin_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8113,7 +8871,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData::~ExtAdminData()
@@ -8122,6 +8880,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::ExtendedAdminGroupList::ExtAdminData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -8189,9 +8948,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     :
     mplste_link_opt_tlv_type{YType::enumeration, "mplste-link-opt-tlv-type"},
     mplste_link_opt_tlv_len{YType::uint16, "mplste-link-opt-tlv-len"}
+        ,
+    mplste_link_opt_tlv_value(this, {})
 {
 
-    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::~MplsteLinkOptTlv()
@@ -8200,7 +8961,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_data())
             return true;
@@ -8211,7 +8973,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_operation())
             return true;
@@ -8245,7 +9007,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(c);
+        mplste_link_opt_tlv_value.append(c);
         return c;
     }
 
@@ -8257,7 +9019,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv_value)
+    for (auto c : mplste_link_opt_tlv_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8306,18 +9068,18 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::MplsteLinkOptTlvValue()
     :
     opaque_tlv_type{YType::enumeration, "opaque-tlv-type"}
-    	,
+        ,
     bctlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>())
-	,srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
-	,ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
-	,unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
+    , srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
+    , ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
+    , unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
     srlgtlv_value->parent = this;
     ixcdtlv_value->parent = this;
     unidtlv_value->parent = this;
 
-    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::~MplsteLinkOptTlvValue()
@@ -8326,6 +9088,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return opaque_tlv_type.is_set
 	|| (bctlv_value !=  nullptr && bctlv_value->has_data())
 	|| (srlgtlv_value !=  nullptr && srlgtlv_value->has_data())
@@ -8457,9 +9220,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     :
     model_id{YType::uint8, "model-id"},
     num_b_cs{YType::uint32, "num-b-cs"}
+        ,
+    mplste_link_bc_bandwidth(this, {})
 {
 
-    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::~BctlvValue()
@@ -8468,7 +9233,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_data())
             return true;
@@ -8479,7 +9245,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_operation())
             return true;
@@ -8513,7 +9279,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
-        mplste_link_bc_bandwidth.push_back(c);
+        mplste_link_bc_bandwidth.append(c);
         return c;
     }
 
@@ -8525,7 +9291,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_bc_bandwidth)
+    for (auto c : mplste_link_bc_bandwidth.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8576,7 +9342,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::~MplsteLinkBcBandwidth()
@@ -8585,6 +9351,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -8652,9 +9419,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     :
     srlg_len{YType::uint32, "srlg-len"},
     num_srl_gs{YType::uint32, "num-srl-gs"}
+        ,
+    mplste_link_srlg_data(this, {})
 {
 
-    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::~SrlgtlvValue()
@@ -8663,7 +9432,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_data())
             return true;
@@ -8674,7 +9444,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_operation())
             return true;
@@ -8708,7 +9478,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
-        mplste_link_srlg_data.push_back(c);
+        mplste_link_srlg_data.append(c);
         return c;
     }
 
@@ -8720,7 +9490,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_srlg_data)
+    for (auto c : mplste_link_srlg_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8771,7 +9541,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::~MplsteLinkSrlgData()
@@ -8780,6 +9550,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -8849,12 +9620,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     rile_len_code{YType::uint8, "rile-len-code"},
     fixed_scsi_count{YType::uint32, "fixed-scsi-count"},
     flex_scsi_count{YType::uint32, "flex-scsi-count"}
-    	,
+        ,
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
+    , max_lspbw(this, {})
 {
     ixcd_switching_cap_type->parent = this;
 
-    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::~IxcdtlvValue()
@@ -8863,7 +9635,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -8877,7 +9650,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -8925,7 +9698,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -8942,7 +9715,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9011,14 +9784,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdSwitchingCapType()
     :
     switching_cap_type{YType::uint8, "switching-cap-type"}
-    	,
+        ,
     ixcdpsc_info(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
-	,ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
+    , ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
 {
     ixcdpsc_info->parent = this;
     ixcdbw_sub_tlv->parent = this;
 
-    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::~IxcdSwitchingCapType()
@@ -9027,6 +9800,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::has_data() const
 {
+    if (is_presence_container) return true;
     return switching_cap_type.is_set
 	|| (ixcdpsc_info !=  nullptr && ixcdpsc_info->has_data())
 	|| (ixcdbw_sub_tlv !=  nullptr && ixcdbw_sub_tlv->has_data());
@@ -9128,7 +9902,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     psc_interface_mtu{YType::uint16, "psc-interface-mtu"}
 {
 
-    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::~IxcdpscInfo()
@@ -9137,6 +9911,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return min_lsp_bandwidth.is_set
 	|| psc_interface_mtu.is_set;
 }
@@ -9214,9 +9989,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::IxcdbwSubTlv()
+    :
+    arr_bw_sub_tlv(this, {})
 {
 
-    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::~IxcdbwSubTlv()
@@ -9225,7 +10002,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_data() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_data())
             return true;
@@ -9235,7 +10013,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_operation() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_operation())
             return true;
@@ -9265,7 +10043,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(c);
+        arr_bw_sub_tlv.append(c);
         return c;
     }
 
@@ -9277,7 +10055,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : arr_bw_sub_tlv)
+    for (auto c : arr_bw_sub_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9307,12 +10085,12 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     :
     bw_sub_tlv_type{YType::uint16, "bw-sub-tlv-type"},
     bw_sub_tlv_length{YType::uint16, "bw-sub-tlv-length"}
-    	,
+        ,
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
 
-    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::~ArrBwSubTlv()
@@ -9321,6 +10099,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return bw_sub_tlv_type.is_set
 	|| bw_sub_tlv_length.is_set
 	|| (bw_sub_tlv_value !=  nullptr && bw_sub_tlv_value->has_data());
@@ -9416,14 +10195,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::BwSubTlvValue()
     :
     ixcdbw_sub_tlv_type{YType::uint16, "ixcdbw-sub-tlv-type"}
-    	,
+        ,
     fixed_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>())
-	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
+    , flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
     flex_bw_sub_tlv_value->parent = this;
 
-    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::~BwSubTlvValue()
@@ -9432,6 +10211,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return ixcdbw_sub_tlv_type.is_set
 	|| (fixed_bw_sub_tlv_value !=  nullptr && fixed_bw_sub_tlv_value->has_data())
 	|| (flex_bw_sub_tlv_value !=  nullptr && flex_bw_sub_tlv_value->has_data());
@@ -9530,10 +10310,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedBwSubTlvValue()
     :
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
+    , unres_oduj_prio(this, {})
 {
     fixed_sub_tlv_value->parent = this;
 
-    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::~FixedBwSubTlvValue()
@@ -9542,7 +10323,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_data())
             return true;
@@ -9552,7 +10334,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_operation())
             return true;
@@ -9592,7 +10374,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
-        unres_oduj_prio.push_back(c);
+        unres_oduj_prio.append(c);
         return c;
     }
 
@@ -9609,7 +10391,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_oduj_prio)
+    for (auto c : unres_oduj_prio.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9654,7 +10436,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     stage{YType::str, "stage"}
 {
 
-    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::~FixedSubTlvValue()
@@ -9663,6 +10445,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -9913,7 +10696,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::~UnresOdujPrio()
@@ -9922,6 +10705,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -9988,10 +10772,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexBwSubTlvValue()
     :
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
+    , unres_lspbw(this, {})
+    , max_lspbw(this, {})
 {
     flex_sub_tlv_value_common->parent = this;
 
-    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::~FlexBwSubTlvValue()
@@ -10000,12 +10786,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -10015,12 +10802,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -10060,7 +10847,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
-        unres_lspbw.push_back(c);
+        unres_lspbw.append(c);
         return c;
     }
 
@@ -10068,7 +10855,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -10085,7 +10872,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_lspbw)
+    for (auto c : unres_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10094,7 +10881,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10139,7 +10926,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     stage{YType::str, "stage"}
 {
 
-    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::~FlexSubTlvValueCommon()
@@ -10148,6 +10935,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -10398,7 +11186,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::~UnresLspbw()
@@ -10407,6 +11195,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -10475,7 +11264,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::~MaxLspbw()
@@ -10484,6 +11273,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -10552,7 +11342,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     entry{YType::int64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::~MaxLspbw()
@@ -10561,6 +11351,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -10629,7 +11420,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
     uni_dir_delay{YType::uint32, "uni-dir-delay"}
 {
 
-    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::~UnidtlvValue()
@@ -10638,6 +11429,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFrag
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment::MplsTeLink_::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return uni_dir_delay.is_set;
 }
 
@@ -10702,9 +11494,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink::MplsT
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragments()
+    :
+    mpls_te_fragment(this, {"area_id"})
 {
 
-    yang_name = "mpls-te-fragments"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-fragments"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::~MplsTeFragments()
@@ -10713,7 +11507,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::~MplsTeFragments()
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::has_data() const
 {
-    for (std::size_t index=0; index<mpls_te_fragment.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_te_fragment.len(); index++)
     {
         if(mpls_te_fragment[index]->has_data())
             return true;
@@ -10723,7 +11518,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::has_data() co
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_te_fragment.size(); index++)
+    for (std::size_t index=0; index<mpls_te_fragment.len(); index++)
     {
         if(mpls_te_fragment[index]->has_operation())
             return true;
@@ -10753,7 +11548,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment>();
         c->parent = this;
-        mpls_te_fragment.push_back(c);
+        mpls_te_fragment.append(c);
         return c;
     }
 
@@ -10765,7 +11560,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_te_fragment)
+    for (auto c : mpls_te_fragment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10793,7 +11588,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::has_leaf_or_c
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment()
     :
-    area_id{YType::int32, "area-id"},
+    area_id{YType::uint32, "area-id"},
     mpls_te_router_id{YType::str, "mpls-te-router-id"},
     mpls_te_enabled{YType::boolean, "mpls-te-enabled"},
     mpls_te_initialized{YType::boolean, "mpls-te-initialized"},
@@ -10802,9 +11597,12 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     mpls_te_router_address{YType::str, "mpls-te-router-address"},
     mpls_te_next_fragment_id{YType::uint32, "mpls-te-next-fragment-id"},
     spacious_fragment{YType::boolean, "spacious-fragment"}
+        ,
+    mpls_te_link(this, {})
+    , mpls_te_fragment(this, {})
 {
 
-    yang_name = "mpls-te-fragment"; yang_parent_name = "mpls-te-fragments"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-fragment"; yang_parent_name = "mpls-te-fragments"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::~MplsTeFragment()
@@ -10813,12 +11611,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::~M
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::has_data() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mpls_te_fragment.size(); index++)
+    for (std::size_t index=0; index<mpls_te_fragment.len(); index++)
     {
         if(mpls_te_fragment[index]->has_data())
             return true;
@@ -10836,12 +11635,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mpls_te_fragment.size(); index++)
+    for (std::size_t index=0; index<mpls_te_fragment.len(); index++)
     {
         if(mpls_te_fragment[index]->has_operation())
             return true;
@@ -10861,7 +11660,8 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mpls-te-fragment" <<"[area-id='" <<area_id <<"']";
+    path_buffer << "mpls-te-fragment";
+    ADD_KEY_TOKEN(area_id, "area-id");
     return path_buffer.str();
 }
 
@@ -10889,7 +11689,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink>();
         c->parent = this;
-        mpls_te_link.push_back(c);
+        mpls_te_link.append(c);
         return c;
     }
 
@@ -10897,7 +11697,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_>();
         c->parent = this;
-        mpls_te_fragment.push_back(c);
+        mpls_te_fragment.append(c);
         return c;
     }
 
@@ -10909,7 +11709,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_te_link)
+    for (auto c : mpls_te_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10918,7 +11718,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : mpls_te_fragment)
+    for (auto c : mpls_te_fragment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11055,12 +11855,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     dste_in_use{YType::boolean, "dste-in-use"},
     dste_allocation_model_id{YType::enumeration, "dste-allocation-model-id"},
     number_of_optional_tl_vs{YType::uint8, "number-of-optional-tl-vs"}
-    	,
+        ,
     global_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority>())
-	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority>())
-	,link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability>())
-	,link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability>())
-	,extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList>())
+    , sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority>())
+    , link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability>())
+    , link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability>())
+    , extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList>())
+    , mplste_link_opt_tlv(this, {})
 {
     global_unreserve_bw_per_priority->parent = this;
     sub_pool_unreserve_bw_per_priority->parent = this;
@@ -11068,7 +11869,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     link_sw_capability->parent = this;
     extended_admin_group_list->parent = this;
 
-    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::~MplsTeLink()
@@ -11077,7 +11878,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_data())
             return true;
@@ -11110,7 +11912,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_operation())
             return true;
@@ -11228,7 +12030,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(c);
+        mplste_link_opt_tlv.append(c);
         return c;
     }
 
@@ -11265,7 +12067,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv)
+    for (auto c : mplste_link_opt_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11482,9 +12284,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::GlobalUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::~GlobalUnreserveBwPerPriority()
@@ -11493,7 +12297,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -11503,7 +12308,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -11533,7 +12338,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -11545,7 +12350,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11576,7 +12381,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -11585,6 +12390,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -11649,9 +12455,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::SubPoolUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::~SubPoolUnreserveBwPerPriority()
@@ -11660,7 +12468,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -11670,7 +12479,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -11700,7 +12509,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -11712,7 +12521,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11743,7 +12552,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -11752,6 +12561,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -11821,7 +12631,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     link_protocol_priority{YType::uint8, "link-protocol-priority"}
 {
 
-    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::~LinkProtocolPriorityCapability()
@@ -11830,6 +12640,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkProtocolPriorityCapability::has_data() const
 {
+    if (is_presence_container) return true;
     return link_protocol_capability.is_set
 	|| link_protocol_priority.is_set;
 }
@@ -11912,9 +12723,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     link_encoding{YType::uint8, "link-encoding"},
     minimum_lsp_bw{YType::uint64, "minimum-lsp-bw"},
     link_mtu{YType::uint16, "link-mtu"}
+        ,
+    maximum_lsp_bw_per_priority(this, {})
 {
 
-    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::~LinkSwCapability()
@@ -11923,7 +12736,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::has_data() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_data())
             return true;
@@ -11936,7 +12750,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::has_operation() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_operation())
             return true;
@@ -11974,7 +12788,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
-        maximum_lsp_bw_per_priority.push_back(c);
+        maximum_lsp_bw_per_priority.append(c);
         return c;
     }
 
@@ -11986,7 +12800,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : maximum_lsp_bw_per_priority)
+    for (auto c : maximum_lsp_bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12057,7 +12871,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority::~MaximumLspBwPerPriority()
@@ -12066,6 +12880,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -12132,9 +12947,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtendedAdminGroupList()
     :
     extended_admin_size{YType::uint32, "extended-admin-size"}
+        ,
+    ext_admin_data(this, {})
 {
 
-    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::~ExtendedAdminGroupList()
@@ -12143,7 +12960,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::has_data() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_data())
             return true;
@@ -12153,7 +12971,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_operation())
             return true;
@@ -12185,7 +13003,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
-        ext_admin_data.push_back(c);
+        ext_admin_data.append(c);
         return c;
     }
 
@@ -12197,7 +13015,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_admin_data)
+    for (auto c : ext_admin_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12238,7 +13056,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtAdminData::~ExtAdminData()
@@ -12247,6 +13065,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::ExtendedAdminGroupList::ExtAdminData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -12314,9 +13133,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     mplste_link_opt_tlv_type{YType::enumeration, "mplste-link-opt-tlv-type"},
     mplste_link_opt_tlv_len{YType::uint16, "mplste-link-opt-tlv-len"}
+        ,
+    mplste_link_opt_tlv_value(this, {})
 {
 
-    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::~MplsteLinkOptTlv()
@@ -12325,7 +13146,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_data())
             return true;
@@ -12336,7 +13158,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_operation())
             return true;
@@ -12370,7 +13192,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(c);
+        mplste_link_opt_tlv_value.append(c);
         return c;
     }
 
@@ -12382,7 +13204,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv_value)
+    for (auto c : mplste_link_opt_tlv_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12431,18 +13253,18 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::MplsteLinkOptTlvValue()
     :
     opaque_tlv_type{YType::enumeration, "opaque-tlv-type"}
-    	,
+        ,
     bctlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>())
-	,srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
-	,ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
-	,unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
+    , srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
+    , ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
+    , unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
     srlgtlv_value->parent = this;
     ixcdtlv_value->parent = this;
     unidtlv_value->parent = this;
 
-    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::~MplsteLinkOptTlvValue()
@@ -12451,6 +13273,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return opaque_tlv_type.is_set
 	|| (bctlv_value !=  nullptr && bctlv_value->has_data())
 	|| (srlgtlv_value !=  nullptr && srlgtlv_value->has_data())
@@ -12582,9 +13405,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     model_id{YType::uint8, "model-id"},
     num_b_cs{YType::uint32, "num-b-cs"}
+        ,
+    mplste_link_bc_bandwidth(this, {})
 {
 
-    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::~BctlvValue()
@@ -12593,7 +13418,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_data())
             return true;
@@ -12604,7 +13430,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_operation())
             return true;
@@ -12638,7 +13464,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
-        mplste_link_bc_bandwidth.push_back(c);
+        mplste_link_bc_bandwidth.append(c);
         return c;
     }
 
@@ -12650,7 +13476,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_bc_bandwidth)
+    for (auto c : mplste_link_bc_bandwidth.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12701,7 +13527,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::~MplsteLinkBcBandwidth()
@@ -12710,6 +13536,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -12777,9 +13604,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     srlg_len{YType::uint32, "srlg-len"},
     num_srl_gs{YType::uint32, "num-srl-gs"}
+        ,
+    mplste_link_srlg_data(this, {})
 {
 
-    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::~SrlgtlvValue()
@@ -12788,7 +13617,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_data())
             return true;
@@ -12799,7 +13629,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_operation())
             return true;
@@ -12833,7 +13663,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
-        mplste_link_srlg_data.push_back(c);
+        mplste_link_srlg_data.append(c);
         return c;
     }
 
@@ -12845,7 +13675,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_srlg_data)
+    for (auto c : mplste_link_srlg_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12896,7 +13726,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::~MplsteLinkSrlgData()
@@ -12905,6 +13735,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -12974,12 +13805,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     rile_len_code{YType::uint8, "rile-len-code"},
     fixed_scsi_count{YType::uint32, "fixed-scsi-count"},
     flex_scsi_count{YType::uint32, "flex-scsi-count"}
-    	,
+        ,
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
+    , max_lspbw(this, {})
 {
     ixcd_switching_cap_type->parent = this;
 
-    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::~IxcdtlvValue()
@@ -12988,7 +13820,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -13002,7 +13835,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -13050,7 +13883,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -13067,7 +13900,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13136,14 +13969,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdSwitchingCapType()
     :
     switching_cap_type{YType::uint8, "switching-cap-type"}
-    	,
+        ,
     ixcdpsc_info(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
-	,ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
+    , ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
 {
     ixcdpsc_info->parent = this;
     ixcdbw_sub_tlv->parent = this;
 
-    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::~IxcdSwitchingCapType()
@@ -13152,6 +13985,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::has_data() const
 {
+    if (is_presence_container) return true;
     return switching_cap_type.is_set
 	|| (ixcdpsc_info !=  nullptr && ixcdpsc_info->has_data())
 	|| (ixcdbw_sub_tlv !=  nullptr && ixcdbw_sub_tlv->has_data());
@@ -13253,7 +14087,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     psc_interface_mtu{YType::uint16, "psc-interface-mtu"}
 {
 
-    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::~IxcdpscInfo()
@@ -13262,6 +14096,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return min_lsp_bandwidth.is_set
 	|| psc_interface_mtu.is_set;
 }
@@ -13339,9 +14174,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::IxcdbwSubTlv()
+    :
+    arr_bw_sub_tlv(this, {})
 {
 
-    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::~IxcdbwSubTlv()
@@ -13350,7 +14187,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_data() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_data())
             return true;
@@ -13360,7 +14198,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_operation() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_operation())
             return true;
@@ -13390,7 +14228,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(c);
+        arr_bw_sub_tlv.append(c);
         return c;
     }
 
@@ -13402,7 +14240,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : arr_bw_sub_tlv)
+    for (auto c : arr_bw_sub_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13432,12 +14270,12 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     bw_sub_tlv_type{YType::uint16, "bw-sub-tlv-type"},
     bw_sub_tlv_length{YType::uint16, "bw-sub-tlv-length"}
-    	,
+        ,
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
 
-    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::~ArrBwSubTlv()
@@ -13446,6 +14284,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return bw_sub_tlv_type.is_set
 	|| bw_sub_tlv_length.is_set
 	|| (bw_sub_tlv_value !=  nullptr && bw_sub_tlv_value->has_data());
@@ -13541,14 +14380,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::BwSubTlvValue()
     :
     ixcdbw_sub_tlv_type{YType::uint16, "ixcdbw-sub-tlv-type"}
-    	,
+        ,
     fixed_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>())
-	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
+    , flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
     flex_bw_sub_tlv_value->parent = this;
 
-    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::~BwSubTlvValue()
@@ -13557,6 +14396,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return ixcdbw_sub_tlv_type.is_set
 	|| (fixed_bw_sub_tlv_value !=  nullptr && fixed_bw_sub_tlv_value->has_data())
 	|| (flex_bw_sub_tlv_value !=  nullptr && flex_bw_sub_tlv_value->has_data());
@@ -13655,10 +14495,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedBwSubTlvValue()
     :
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
+    , unres_oduj_prio(this, {})
 {
     fixed_sub_tlv_value->parent = this;
 
-    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::~FixedBwSubTlvValue()
@@ -13667,7 +14508,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_data())
             return true;
@@ -13677,7 +14519,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_operation())
             return true;
@@ -13717,7 +14559,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
-        unres_oduj_prio.push_back(c);
+        unres_oduj_prio.append(c);
         return c;
     }
 
@@ -13734,7 +14576,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_oduj_prio)
+    for (auto c : unres_oduj_prio.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13779,7 +14621,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     stage{YType::str, "stage"}
 {
 
-    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::~FixedSubTlvValue()
@@ -13788,6 +14630,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -14038,7 +14881,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::~UnresOdujPrio()
@@ -14047,6 +14890,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -14113,10 +14957,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexBwSubTlvValue()
     :
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
+    , unres_lspbw(this, {})
+    , max_lspbw(this, {})
 {
     flex_sub_tlv_value_common->parent = this;
 
-    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::~FlexBwSubTlvValue()
@@ -14125,12 +14971,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -14140,12 +14987,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -14185,7 +15032,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
-        unres_lspbw.push_back(c);
+        unres_lspbw.append(c);
         return c;
     }
 
@@ -14193,7 +15040,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -14210,7 +15057,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_lspbw)
+    for (auto c : unres_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14219,7 +15066,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14264,7 +15111,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     stage{YType::str, "stage"}
 {
 
-    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::~FlexSubTlvValueCommon()
@@ -14273,6 +15120,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -14523,7 +15371,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::~UnresLspbw()
@@ -14532,6 +15380,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -14600,7 +15449,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::~MaxLspbw()
@@ -14609,6 +15458,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -14677,7 +15527,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::int64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::~MaxLspbw()
@@ -14686,6 +15536,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -14754,7 +15605,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     uni_dir_delay{YType::uint32, "uni-dir-delay"}
 {
 
-    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::~UnidtlvValue()
@@ -14763,6 +15614,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return uni_dir_delay.is_set;
 }
 
@@ -14832,9 +15684,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     fragment_id{YType::uint32, "fragment-id"},
     dste_model_id{YType::uint8, "dste-model-id"},
     same_fragment_count{YType::uint8, "same-fragment-count"}
+        ,
+    mpls_te_link(this, {})
 {
 
-    yang_name = "mpls-te-fragment"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-fragment"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::~MplsTeFragment_()
@@ -14843,7 +15697,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::has_data() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_data())
             return true;
@@ -14856,7 +15711,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_te_link.size(); index++)
+    for (std::size_t index=0; index<mpls_te_link.len(); index++)
     {
         if(mpls_te_link[index]->has_operation())
             return true;
@@ -14894,7 +15749,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink>();
         c->parent = this;
-        mpls_te_link.push_back(c);
+        mpls_te_link.append(c);
         return c;
     }
 
@@ -14906,7 +15761,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_te_link)
+    for (auto c : mpls_te_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14993,12 +15848,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     dste_in_use{YType::boolean, "dste-in-use"},
     dste_allocation_model_id{YType::enumeration, "dste-allocation-model-id"},
     number_of_optional_tl_vs{YType::uint8, "number-of-optional-tl-vs"}
-    	,
+        ,
     global_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority>())
-	,sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority>())
-	,link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability>())
-	,link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability>())
-	,extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList>())
+    , sub_pool_unreserve_bw_per_priority(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority>())
+    , link_protocol_priority_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability>())
+    , link_sw_capability(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability>())
+    , extended_admin_group_list(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList>())
+    , mplste_link_opt_tlv(this, {})
 {
     global_unreserve_bw_per_priority->parent = this;
     sub_pool_unreserve_bw_per_priority->parent = this;
@@ -15006,7 +15862,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     link_sw_capability->parent = this;
     extended_admin_group_list->parent = this;
 
-    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-te-link"; yang_parent_name = "mpls-te-fragment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::~MplsTeLink()
@@ -15015,7 +15871,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_data())
             return true;
@@ -15048,7 +15905,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv.len(); index++)
     {
         if(mplste_link_opt_tlv[index]->has_operation())
             return true;
@@ -15166,7 +16023,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv>();
         c->parent = this;
-        mplste_link_opt_tlv.push_back(c);
+        mplste_link_opt_tlv.append(c);
         return c;
     }
 
@@ -15203,7 +16060,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv)
+    for (auto c : mplste_link_opt_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15420,9 +16277,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::GlobalUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::~GlobalUnreserveBwPerPriority()
@@ -15431,7 +16290,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -15441,7 +16301,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -15471,7 +16331,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -15483,7 +16343,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15514,7 +16374,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "global-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -15523,6 +16383,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::GlobalUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -15587,9 +16448,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::SubPoolUnreserveBwPerPriority()
+    :
+    bw_per_priority(this, {})
 {
 
-    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sub-pool-unreserve-bw-per-priority"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::~SubPoolUnreserveBwPerPriority()
@@ -15598,7 +16461,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::has_data() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_data())
             return true;
@@ -15608,7 +16472,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::has_operation() const
 {
-    for (std::size_t index=0; index<bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<bw_per_priority.len(); index++)
     {
         if(bw_per_priority[index]->has_operation())
             return true;
@@ -15638,7 +16502,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority>();
         c->parent = this;
-        bw_per_priority.push_back(c);
+        bw_per_priority.append(c);
         return c;
     }
 
@@ -15650,7 +16514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bw_per_priority)
+    for (auto c : bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15681,7 +16545,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-per-priority"; yang_parent_name = "sub-pool-unreserve-bw-per-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority::~BwPerPriority()
@@ -15690,6 +16554,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::SubPoolUnreserveBwPerPriority::BwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -15759,7 +16624,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     link_protocol_priority{YType::uint8, "link-protocol-priority"}
 {
 
-    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-protocol-priority-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::~LinkProtocolPriorityCapability()
@@ -15768,6 +16633,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkProtocolPriorityCapability::has_data() const
 {
+    if (is_presence_container) return true;
     return link_protocol_capability.is_set
 	|| link_protocol_priority.is_set;
 }
@@ -15850,9 +16716,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     link_encoding{YType::uint8, "link-encoding"},
     minimum_lsp_bw{YType::uint64, "minimum-lsp-bw"},
     link_mtu{YType::uint16, "link-mtu"}
+        ,
+    maximum_lsp_bw_per_priority(this, {})
 {
 
-    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-sw-capability"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::~LinkSwCapability()
@@ -15861,7 +16729,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::has_data() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_data())
             return true;
@@ -15874,7 +16743,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::has_operation() const
 {
-    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.size(); index++)
+    for (std::size_t index=0; index<maximum_lsp_bw_per_priority.len(); index++)
     {
         if(maximum_lsp_bw_per_priority[index]->has_operation())
             return true;
@@ -15912,7 +16781,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority>();
         c->parent = this;
-        maximum_lsp_bw_per_priority.push_back(c);
+        maximum_lsp_bw_per_priority.append(c);
         return c;
     }
 
@@ -15924,7 +16793,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : maximum_lsp_bw_per_priority)
+    for (auto c : maximum_lsp_bw_per_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15995,7 +16864,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum-lsp-bw-per-priority"; yang_parent_name = "link-sw-capability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority::~MaximumLspBwPerPriority()
@@ -16004,6 +16873,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::LinkSwCapability::MaximumLspBwPerPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -16070,9 +16940,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtendedAdminGroupList()
     :
     extended_admin_size{YType::uint32, "extended-admin-size"}
+        ,
+    ext_admin_data(this, {})
 {
 
-    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-admin-group-list"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::~ExtendedAdminGroupList()
@@ -16081,7 +16953,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::has_data() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_data())
             return true;
@@ -16091,7 +16964,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_admin_data.size(); index++)
+    for (std::size_t index=0; index<ext_admin_data.len(); index++)
     {
         if(ext_admin_data[index]->has_operation())
             return true;
@@ -16123,7 +16996,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtAdminData>();
         c->parent = this;
-        ext_admin_data.push_back(c);
+        ext_admin_data.append(c);
         return c;
     }
 
@@ -16135,7 +17008,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_admin_data)
+    for (auto c : ext_admin_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16176,7 +17049,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-admin-data"; yang_parent_name = "extended-admin-group-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtAdminData::~ExtAdminData()
@@ -16185,6 +17058,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::ExtendedAdminGroupList::ExtAdminData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -16252,9 +17126,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     mplste_link_opt_tlv_type{YType::enumeration, "mplste-link-opt-tlv-type"},
     mplste_link_opt_tlv_len{YType::uint16, "mplste-link-opt-tlv-len"}
+        ,
+    mplste_link_opt_tlv_value(this, {})
 {
 
-    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv"; yang_parent_name = "mpls-te-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::~MplsteLinkOptTlv()
@@ -16263,7 +17139,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_data())
             return true;
@@ -16274,7 +17151,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_opt_tlv_value.size(); index++)
+    for (std::size_t index=0; index<mplste_link_opt_tlv_value.len(); index++)
     {
         if(mplste_link_opt_tlv_value[index]->has_operation())
             return true;
@@ -16308,7 +17185,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue>();
         c->parent = this;
-        mplste_link_opt_tlv_value.push_back(c);
+        mplste_link_opt_tlv_value.append(c);
         return c;
     }
 
@@ -16320,7 +17197,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_opt_tlv_value)
+    for (auto c : mplste_link_opt_tlv_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16369,18 +17246,18 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::MplsteLinkOptTlvValue()
     :
     opaque_tlv_type{YType::enumeration, "opaque-tlv-type"}
-    	,
+        ,
     bctlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue>())
-	,srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
-	,ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
-	,unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
+    , srlgtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue>())
+    , ixcdtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue>())
+    , unidtlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue>())
 {
     bctlv_value->parent = this;
     srlgtlv_value->parent = this;
     ixcdtlv_value->parent = this;
     unidtlv_value->parent = this;
 
-    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-opt-tlv-value"; yang_parent_name = "mplste-link-opt-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::~MplsteLinkOptTlvValue()
@@ -16389,6 +17266,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return opaque_tlv_type.is_set
 	|| (bctlv_value !=  nullptr && bctlv_value->has_data())
 	|| (srlgtlv_value !=  nullptr && srlgtlv_value->has_data())
@@ -16520,9 +17398,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     model_id{YType::uint8, "model-id"},
     num_b_cs{YType::uint32, "num-b-cs"}
+        ,
+    mplste_link_bc_bandwidth(this, {})
 {
 
-    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bctlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::~BctlvValue()
@@ -16531,7 +17411,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_data())
             return true;
@@ -16542,7 +17423,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_bc_bandwidth.size(); index++)
+    for (std::size_t index=0; index<mplste_link_bc_bandwidth.len(); index++)
     {
         if(mplste_link_bc_bandwidth[index]->has_operation())
             return true;
@@ -16576,7 +17457,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth>();
         c->parent = this;
-        mplste_link_bc_bandwidth.push_back(c);
+        mplste_link_bc_bandwidth.append(c);
         return c;
     }
 
@@ -16588,7 +17469,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_bc_bandwidth)
+    for (auto c : mplste_link_bc_bandwidth.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16639,7 +17520,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-bc-bandwidth"; yang_parent_name = "bctlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::~MplsteLinkBcBandwidth()
@@ -16648,6 +17529,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::BctlvValue::MplsteLinkBcBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -16715,9 +17597,11 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     srlg_len{YType::uint32, "srlg-len"},
     num_srl_gs{YType::uint32, "num-srl-gs"}
+        ,
+    mplste_link_srlg_data(this, {})
 {
 
-    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "srlgtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::~SrlgtlvValue()
@@ -16726,7 +17610,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_data())
             return true;
@@ -16737,7 +17622,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<mplste_link_srlg_data.size(); index++)
+    for (std::size_t index=0; index<mplste_link_srlg_data.len(); index++)
     {
         if(mplste_link_srlg_data[index]->has_operation())
             return true;
@@ -16771,7 +17656,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData>();
         c->parent = this;
-        mplste_link_srlg_data.push_back(c);
+        mplste_link_srlg_data.append(c);
         return c;
     }
 
@@ -16783,7 +17668,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mplste_link_srlg_data)
+    for (auto c : mplste_link_srlg_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16834,7 +17719,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mplste-link-srlg-data"; yang_parent_name = "srlgtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::~MplsteLinkSrlgData()
@@ -16843,6 +17728,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::SrlgtlvValue::MplsteLinkSrlgData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -16912,12 +17798,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     rile_len_code{YType::uint8, "rile-len-code"},
     fixed_scsi_count{YType::uint32, "fixed-scsi-count"},
     flex_scsi_count{YType::uint32, "flex-scsi-count"}
-    	,
+        ,
     ixcd_switching_cap_type(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType>())
+    , max_lspbw(this, {})
 {
     ixcd_switching_cap_type->parent = this;
 
-    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::~IxcdtlvValue()
@@ -16926,7 +17813,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_data() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -16940,7 +17828,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -16988,7 +17876,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -17005,7 +17893,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17074,14 +17962,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdSwitchingCapType()
     :
     switching_cap_type{YType::uint8, "switching-cap-type"}
-    	,
+        ,
     ixcdpsc_info(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo>())
-	,ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
+    , ixcdbw_sub_tlv(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv>())
 {
     ixcdpsc_info->parent = this;
     ixcdbw_sub_tlv->parent = this;
 
-    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcd-switching-cap-type"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::~IxcdSwitchingCapType()
@@ -17090,6 +17978,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::has_data() const
 {
+    if (is_presence_container) return true;
     return switching_cap_type.is_set
 	|| (ixcdpsc_info !=  nullptr && ixcdpsc_info->has_data())
 	|| (ixcdbw_sub_tlv !=  nullptr && ixcdbw_sub_tlv->has_data());
@@ -17191,7 +18080,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     psc_interface_mtu{YType::uint16, "psc-interface-mtu"}
 {
 
-    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdpsc-info"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::~IxcdpscInfo()
@@ -17200,6 +18089,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdpscInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return min_lsp_bandwidth.is_set
 	|| psc_interface_mtu.is_set;
 }
@@ -17277,9 +18167,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::IxcdbwSubTlv()
+    :
+    arr_bw_sub_tlv(this, {})
 {
 
-    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ixcdbw-sub-tlv"; yang_parent_name = "ixcd-switching-cap-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::~IxcdbwSubTlv()
@@ -17288,7 +18180,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_data() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_data())
             return true;
@@ -17298,7 +18191,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::has_operation() const
 {
-    for (std::size_t index=0; index<arr_bw_sub_tlv.size(); index++)
+    for (std::size_t index=0; index<arr_bw_sub_tlv.len(); index++)
     {
         if(arr_bw_sub_tlv[index]->has_operation())
             return true;
@@ -17328,7 +18221,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv>();
         c->parent = this;
-        arr_bw_sub_tlv.push_back(c);
+        arr_bw_sub_tlv.append(c);
         return c;
     }
 
@@ -17340,7 +18233,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : arr_bw_sub_tlv)
+    for (auto c : arr_bw_sub_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17370,12 +18263,12 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     :
     bw_sub_tlv_type{YType::uint16, "bw-sub-tlv-type"},
     bw_sub_tlv_length{YType::uint16, "bw-sub-tlv-length"}
-    	,
+        ,
     bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue>())
 {
     bw_sub_tlv_value->parent = this;
 
-    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arr-bw-sub-tlv"; yang_parent_name = "ixcdbw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::~ArrBwSubTlv()
@@ -17384,6 +18277,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return bw_sub_tlv_type.is_set
 	|| bw_sub_tlv_length.is_set
 	|| (bw_sub_tlv_value !=  nullptr && bw_sub_tlv_value->has_data());
@@ -17479,14 +18373,14 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::BwSubTlvValue()
     :
     ixcdbw_sub_tlv_type{YType::uint16, "ixcdbw-sub-tlv-type"}
-    	,
+        ,
     fixed_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue>())
-	,flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
+    , flex_bw_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue>())
 {
     fixed_bw_sub_tlv_value->parent = this;
     flex_bw_sub_tlv_value->parent = this;
 
-    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-sub-tlv-value"; yang_parent_name = "arr-bw-sub-tlv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::~BwSubTlvValue()
@@ -17495,6 +18389,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return ixcdbw_sub_tlv_type.is_set
 	|| (fixed_bw_sub_tlv_value !=  nullptr && fixed_bw_sub_tlv_value->has_data())
 	|| (flex_bw_sub_tlv_value !=  nullptr && flex_bw_sub_tlv_value->has_data());
@@ -17593,10 +18488,11 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedBwSubTlvValue()
     :
     fixed_sub_tlv_value(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue>())
+    , unres_oduj_prio(this, {})
 {
     fixed_sub_tlv_value->parent = this;
 
-    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::~FixedBwSubTlvValue()
@@ -17605,7 +18501,8 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_data())
             return true;
@@ -17615,7 +18512,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_oduj_prio.size(); index++)
+    for (std::size_t index=0; index<unres_oduj_prio.len(); index++)
     {
         if(unres_oduj_prio[index]->has_operation())
             return true;
@@ -17655,7 +18552,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio>();
         c->parent = this;
-        unres_oduj_prio.push_back(c);
+        unres_oduj_prio.append(c);
         return c;
     }
 
@@ -17672,7 +18569,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_oduj_prio)
+    for (auto c : unres_oduj_prio.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17717,7 +18614,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     stage{YType::str, "stage"}
 {
 
-    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fixed-sub-tlv-value"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::~FixedSubTlvValue()
@@ -17726,6 +18623,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::FixedSubTlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -17976,7 +18874,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::~UnresOdujPrio()
@@ -17985,6 +18883,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -18051,10 +18950,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexBwSubTlvValue()
     :
     flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
+    , unres_lspbw(this, {})
+    , max_lspbw(this, {})
 {
     flex_sub_tlv_value_common->parent = this;
 
-    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::~FlexBwSubTlvValue()
@@ -18063,12 +18964,13 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_data() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_data())
             return true;
@@ -18078,12 +18980,12 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_operation() const
 {
-    for (std::size_t index=0; index<unres_lspbw.size(); index++)
+    for (std::size_t index=0; index<unres_lspbw.len(); index++)
     {
         if(unres_lspbw[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<max_lspbw.size(); index++)
+    for (std::size_t index=0; index<max_lspbw.len(); index++)
     {
         if(max_lspbw[index]->has_operation())
             return true;
@@ -18123,7 +19025,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
         c->parent = this;
-        unres_lspbw.push_back(c);
+        unres_lspbw.append(c);
         return c;
     }
 
@@ -18131,7 +19033,7 @@ std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragm
     {
         auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
         c->parent = this;
-        max_lspbw.push_back(c);
+        max_lspbw.append(c);
         return c;
     }
 
@@ -18148,7 +19050,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : unres_lspbw)
+    for (auto c : unres_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18157,7 +19059,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::V
     }
 
     count = 0;
-    for (auto const & c : max_lspbw)
+    for (auto c : max_lspbw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18202,7 +19104,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     stage{YType::str, "stage"}
 {
 
-    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::~FlexSubTlvValueCommon()
@@ -18211,6 +19113,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| num_stages.is_set
 	|| tbit.is_set
@@ -18461,7 +19364,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::~UnresLspbw()
@@ -18470,6 +19373,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -18538,7 +19442,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::uint64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::~MaxLspbw()
@@ -18547,6 +19451,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -18615,7 +19520,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     entry{YType::int64, "entry"}
 {
 
-    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::~MaxLspbw()
@@ -18624,6 +19529,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -18692,7 +19598,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
     uni_dir_delay{YType::uint32, "uni-dir-delay"}
 {
 
-    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::~UnidtlvValue()
@@ -18701,6 +19607,7 @@ Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::Mp
 
 bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::has_data() const
 {
+    if (is_presence_container) return true;
     return uni_dir_delay.is_set;
 }
 
@@ -18764,788 +19671,9 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
     return false;
 }
 
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::Statistics()
-    :
-    spf_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats>())
-	,rib_batch_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats>())
-	,issu_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats>())
-	,rib_thread_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats>())
-	,nsr_pl_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats>())
-	,nsr_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats>())
-	,frr_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStats>())
-	,te_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats>())
-	,protocol_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats>())
-	,raw_io_stats(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats>())
-	,interface_stats_entries(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries>())
-{
-    spf_stats->parent = this;
-    rib_batch_stats->parent = this;
-    issu_stats->parent = this;
-    rib_thread_stats->parent = this;
-    nsr_pl_stats->parent = this;
-    nsr_stats->parent = this;
-    frr_stats->parent = this;
-    te_stats->parent = this;
-    protocol_stats->parent = this;
-    raw_io_stats->parent = this;
-    interface_stats_entries->parent = this;
-
-    yang_name = "statistics"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::~Statistics()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::has_data() const
-{
-    return (spf_stats !=  nullptr && spf_stats->has_data())
-	|| (rib_batch_stats !=  nullptr && rib_batch_stats->has_data())
-	|| (issu_stats !=  nullptr && issu_stats->has_data())
-	|| (rib_thread_stats !=  nullptr && rib_thread_stats->has_data())
-	|| (nsr_pl_stats !=  nullptr && nsr_pl_stats->has_data())
-	|| (nsr_stats !=  nullptr && nsr_stats->has_data())
-	|| (frr_stats !=  nullptr && frr_stats->has_data())
-	|| (te_stats !=  nullptr && te_stats->has_data())
-	|| (protocol_stats !=  nullptr && protocol_stats->has_data())
-	|| (raw_io_stats !=  nullptr && raw_io_stats->has_data())
-	|| (interface_stats_entries !=  nullptr && interface_stats_entries->has_data());
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::has_operation() const
-{
-    return is_set(yfilter)
-	|| (spf_stats !=  nullptr && spf_stats->has_operation())
-	|| (rib_batch_stats !=  nullptr && rib_batch_stats->has_operation())
-	|| (issu_stats !=  nullptr && issu_stats->has_operation())
-	|| (rib_thread_stats !=  nullptr && rib_thread_stats->has_operation())
-	|| (nsr_pl_stats !=  nullptr && nsr_pl_stats->has_operation())
-	|| (nsr_stats !=  nullptr && nsr_stats->has_operation())
-	|| (frr_stats !=  nullptr && frr_stats->has_operation())
-	|| (te_stats !=  nullptr && te_stats->has_operation())
-	|| (protocol_stats !=  nullptr && protocol_stats->has_operation())
-	|| (raw_io_stats !=  nullptr && raw_io_stats->has_operation())
-	|| (interface_stats_entries !=  nullptr && interface_stats_entries->has_operation());
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "statistics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::Statistics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "spf-stats")
-    {
-        if(spf_stats == nullptr)
-        {
-            spf_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats>();
-        }
-        return spf_stats;
-    }
-
-    if(child_yang_name == "rib-batch-stats")
-    {
-        if(rib_batch_stats == nullptr)
-        {
-            rib_batch_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats>();
-        }
-        return rib_batch_stats;
-    }
-
-    if(child_yang_name == "issu-stats")
-    {
-        if(issu_stats == nullptr)
-        {
-            issu_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats>();
-        }
-        return issu_stats;
-    }
-
-    if(child_yang_name == "rib-thread-stats")
-    {
-        if(rib_thread_stats == nullptr)
-        {
-            rib_thread_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats>();
-        }
-        return rib_thread_stats;
-    }
-
-    if(child_yang_name == "nsr-pl-stats")
-    {
-        if(nsr_pl_stats == nullptr)
-        {
-            nsr_pl_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats>();
-        }
-        return nsr_pl_stats;
-    }
-
-    if(child_yang_name == "nsr-stats")
-    {
-        if(nsr_stats == nullptr)
-        {
-            nsr_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats>();
-        }
-        return nsr_stats;
-    }
-
-    if(child_yang_name == "frr-stats")
-    {
-        if(frr_stats == nullptr)
-        {
-            frr_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::FrrStats>();
-        }
-        return frr_stats;
-    }
-
-    if(child_yang_name == "te-stats")
-    {
-        if(te_stats == nullptr)
-        {
-            te_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::TeStats>();
-        }
-        return te_stats;
-    }
-
-    if(child_yang_name == "protocol-stats")
-    {
-        if(protocol_stats == nullptr)
-        {
-            protocol_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::ProtocolStats>();
-        }
-        return protocol_stats;
-    }
-
-    if(child_yang_name == "raw-io-stats")
-    {
-        if(raw_io_stats == nullptr)
-        {
-            raw_io_stats = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::RawIoStats>();
-        }
-        return raw_io_stats;
-    }
-
-    if(child_yang_name == "interface-stats-entries")
-    {
-        if(interface_stats_entries == nullptr)
-        {
-            interface_stats_entries = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntries>();
-        }
-        return interface_stats_entries;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(spf_stats != nullptr)
-    {
-        children["spf-stats"] = spf_stats;
-    }
-
-    if(rib_batch_stats != nullptr)
-    {
-        children["rib-batch-stats"] = rib_batch_stats;
-    }
-
-    if(issu_stats != nullptr)
-    {
-        children["issu-stats"] = issu_stats;
-    }
-
-    if(rib_thread_stats != nullptr)
-    {
-        children["rib-thread-stats"] = rib_thread_stats;
-    }
-
-    if(nsr_pl_stats != nullptr)
-    {
-        children["nsr-pl-stats"] = nsr_pl_stats;
-    }
-
-    if(nsr_stats != nullptr)
-    {
-        children["nsr-stats"] = nsr_stats;
-    }
-
-    if(frr_stats != nullptr)
-    {
-        children["frr-stats"] = frr_stats;
-    }
-
-    if(te_stats != nullptr)
-    {
-        children["te-stats"] = te_stats;
-    }
-
-    if(protocol_stats != nullptr)
-    {
-        children["protocol-stats"] = protocol_stats;
-    }
-
-    if(raw_io_stats != nullptr)
-    {
-        children["raw-io-stats"] = raw_io_stats;
-    }
-
-    if(interface_stats_entries != nullptr)
-    {
-        children["interface-stats-entries"] = interface_stats_entries;
-    }
-
-    return children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "spf-stats" || name == "rib-batch-stats" || name == "issu-stats" || name == "rib-thread-stats" || name == "nsr-pl-stats" || name == "nsr-stats" || name == "frr-stats" || name == "te-stats" || name == "protocol-stats" || name == "raw-io-stats" || name == "interface-stats-entries")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfStats()
-    :
-    spf_header(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader>())
-{
-    spf_header->parent = this;
-
-    yang_name = "spf-stats"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::~SpfStats()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::has_data() const
-{
-    for (std::size_t index=0; index<os_runtime.size(); index++)
-    {
-        if(os_runtime[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<os_sum_runtime.size(); index++)
-    {
-        if(os_sum_runtime[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<os_ex_runtime.size(); index++)
-    {
-        if(os_ex_runtime[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<runtime.size(); index++)
-    {
-        if(runtime[index]->has_data())
-            return true;
-    }
-    return (spf_header !=  nullptr && spf_header->has_data());
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::has_operation() const
-{
-    for (std::size_t index=0; index<os_runtime.size(); index++)
-    {
-        if(os_runtime[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<os_sum_runtime.size(); index++)
-    {
-        if(os_sum_runtime[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<os_ex_runtime.size(); index++)
-    {
-        if(os_ex_runtime[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<runtime.size(); index++)
-    {
-        if(runtime[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (spf_header !=  nullptr && spf_header->has_operation());
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "spf-stats";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "spf-header")
-    {
-        if(spf_header == nullptr)
-        {
-            spf_header = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader>();
-        }
-        return spf_header;
-    }
-
-    if(child_yang_name == "os-runtime")
-    {
-        auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime>();
-        c->parent = this;
-        os_runtime.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "os-sum-runtime")
-    {
-        auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRuntime>();
-        c->parent = this;
-        os_sum_runtime.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "os-ex-runtime")
-    {
-        auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRuntime>();
-        c->parent = this;
-        os_ex_runtime.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "runtime")
-    {
-        auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime>();
-        c->parent = this;
-        runtime.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(spf_header != nullptr)
-    {
-        children["spf-header"] = spf_header;
-    }
-
-    count = 0;
-    for (auto const & c : os_runtime)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : os_sum_runtime)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : os_ex_runtime)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : runtime)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "spf-header" || name == "os-runtime" || name == "os-sum-runtime" || name == "os-ex-runtime" || name == "runtime")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::SpfHeader()
-    :
-    router_id{YType::str, "router-id"},
-    spf_count{YType::uint32, "spf-count"}
-{
-
-    yang_name = "spf-header"; yang_parent_name = "spf-stats"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::~SpfHeader()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::has_data() const
-{
-    for (std::size_t index=0; index<area_summ.size(); index++)
-    {
-        if(area_summ[index]->has_data())
-            return true;
-    }
-    return router_id.is_set
-	|| spf_count.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::has_operation() const
-{
-    for (std::size_t index=0; index<area_summ.size(); index++)
-    {
-        if(area_summ[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(router_id.yfilter)
-	|| ydk::is_set(spf_count.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "spf-header";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
-    if (spf_count.is_set || is_set(spf_count.yfilter)) leaf_name_data.push_back(spf_count.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "area-summ")
-    {
-        auto c = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm>();
-        c->parent = this;
-        area_summ.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : area_summ)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "router-id")
-    {
-        router_id = value;
-        router_id.value_namespace = name_space;
-        router_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-count")
-    {
-        spf_count = value;
-        spf_count.value_namespace = name_space;
-        spf_count.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "router-id")
-    {
-        router_id.yfilter = yfilter;
-    }
-    if(value_path == "spf-count")
-    {
-        spf_count.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "area-summ" || name == "router-id" || name == "spf-count")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::AreaSumm()
-    :
-    area_id{YType::uint32, "area-id"},
-    spf_count{YType::uint32, "spf-count"}
-{
-
-    yang_name = "area-summ"; yang_parent_name = "spf-header"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::~AreaSumm()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::has_data() const
-{
-    return area_id.is_set
-	|| spf_count.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(area_id.yfilter)
-	|| ydk::is_set(spf_count.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "area-summ";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (area_id.is_set || is_set(area_id.yfilter)) leaf_name_data.push_back(area_id.get_name_leafdata());
-    if (spf_count.is_set || is_set(spf_count.yfilter)) leaf_name_data.push_back(spf_count.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "area-id")
-    {
-        area_id = value;
-        area_id.value_namespace = name_space;
-        area_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "spf-count")
-    {
-        spf_count = value;
-        spf_count.value_namespace = name_space;
-        spf_count.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "area-id")
-    {
-        area_id.yfilter = yfilter;
-    }
-    if(value_path == "spf-count")
-    {
-        spf_count.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader::AreaSumm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "area-id" || name == "spf-count")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf OspfLs::router {1, "router"};
-const Enum::YLeaf OspfLs::network {2, "network"};
-const Enum::YLeaf OspfLs::summary {3, "summary"};
-const Enum::YLeaf OspfLs::asbr_summary {4, "asbr-summary"};
-const Enum::YLeaf OspfLs::external {5, "external"};
-const Enum::YLeaf OspfLs::nssa_external {7, "nssa-external"};
-const Enum::YLeaf OspfLs::opaque_link {9, "opaque-link"};
-const Enum::YLeaf OspfLs::opaque_area {10, "opaque-area"};
-const Enum::YLeaf OspfLs::opaque_as {11, "opaque-as"};
-
-const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_invalid {0, "mgmt-ospf-opq-pce-addr-type-invalid"};
-const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv4 {1, "mgmt-ospf-opq-pce-addr-type-ipv4"};
-const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv6 {2, "mgmt-ospf-opq-pce-addr-type-ipv6"};
-
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_unknown {0, "mgmt-ospf-opq-ri-tlv-type-unknown"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_rtrcap {1, "mgmt-ospf-opq-ri-tlv-type-rtrcap"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_pce_discovery {2, "mgmt-ospf-opq-ri-tlv-type-pce-discovery"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_algo {3, "mgmt-ospf-opq-ri-tlv-type-sr-algo"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_range {4, "mgmt-ospf-opq-ri-tlv-type-sr-range"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_node_msd {5, "mgmt-ospf-opq-ri-tlv-type-node-msd"};
-
-const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_link {9, "mgmt-lsa-opq-ri-scope-link"};
-const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_area {10, "mgmt-lsa-opq-ri-scope-area"};
-const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_as {11, "mgmt-lsa-opq-ri-scope-as"};
-
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_unknown {0, "mgmt-gr-reason-unknown"};
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_restart {1, "mgmt-gr-reason-sw-restart"};
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_upgrade {2, "mgmt-gr-reason-sw-upgrade"};
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_switchover {3, "mgmt-gr-reason-switchover"};
-
-const Enum::YLeaf Stlv::mgmt_rrr_link_type {1, "mgmt-rrr-link-type"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_id {2, "mgmt-rrr-link-id"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_local_if_addr {3, "mgmt-rrr-link-local-if-addr"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_remote_if_addr {4, "mgmt-rrr-link-remote-if-addr"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_metric {5, "mgmt-rrr-link-metric"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_max_bw {6, "mgmt-rrr-link-max-bw"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_max_reservable_bw {7, "mgmt-rrr-link-max-reservable-bw"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_unreserved_bw {8, "mgmt-rrr-link-unreserved-bw"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_re_source_class {9, "mgmt-rrr-link-re-source-class"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_in_out_if_id {11, "mgmt-rrr-link-in-out-if-id"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_if_switching_cap_desc {15, "mgmt-rrr-link-if-switching-cap-desc"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_srlg {16, "mgmt-ospf-rrr-link-srlg"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_bw_constraints_sub {17, "mgmt-rrr-link-bw-constraints-sub"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_delay {27, "mgmt-ospf-rrr-link-uni-delay"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_max_reservable_bw_sub {32768, "mgmt-ospf-rrr-link-max-reservable-bw-sub"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_unreserved_bw_sub {32769, "mgmt-ospf-rrr-link-unreserved-bw-sub"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_igp_metric {32770, "mgmt-rrr-link-igp-metric"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_ext_admin_sub {32771, "mgmt-ospf-rrr-link-ext-admin-sub"};
-
-const Enum::YLeaf ExMetric::mgmt_ex_metric_type_none {0, "mgmt-ex-metric-type-none"};
-const Enum::YLeaf ExMetric::mgmt_ex_metric_type_1 {1, "mgmt-ex-metric-type-1"};
-const Enum::YLeaf ExMetric::mgmt_ex_metric_type_2 {2, "mgmt-ex-metric-type-2"};
-
-const Enum::YLeaf OspfLinkTypes::mgmt_rtr_link {1, "mgmt-rtr-link"};
-const Enum::YLeaf OspfLinkTypes::mgmt_trans_link {2, "mgmt-trans-link"};
-const Enum::YLeaf OspfLinkTypes::mgmt_stub_net {3, "mgmt-stub-net"};
-const Enum::YLeaf OspfLinkTypes::mgmt_vitural_link {4, "mgmt-vitural-link"};
-
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_rtr_type {1, "mgmt-rtr-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_ntwk_type {2, "mgmt-ntwk-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_sum_type {3, "mgmt-sum-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_ext_type {4, "mgmt-ext-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_type {5, "mgmt-opq-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_link_type {6, "mgmt-opq-link-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_rrr_type {7, "mgmt-opq-rrr-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_gr_type {8, "mgmt-opq-gr-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ri_type {9, "mgmt-opq-ri-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_epl_type {10, "mgmt-opq-epl-type"};
-const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ell_type {11, "mgmt-opq-ell-type"};
-
-const Enum::YLeaf Timer::mgmt_db_stop {0, "mgmt-db-stop"};
-const Enum::YLeaf Timer::mgmt_db_refresh {1, "mgmt-db-refresh"};
-const Enum::YLeaf Timer::mgmt_db_checksum {2, "mgmt-db-checksum"};
-const Enum::YLeaf Timer::mgmt_db_max_age {3, "mgmt-db-max-age"};
-
-const Enum::YLeaf TimerTable::mgmt_db_no_table {0, "mgmt-db-no-table"};
-const Enum::YLeaf TimerTable::mgmt_db_sec_table {1, "mgmt-db-sec-table"};
-const Enum::YLeaf TimerTable::mgmt_db_buffer_table {2, "mgmt-db-buffer-table"};
-const Enum::YLeaf TimerTable::mgmt_db_min_table {3, "mgmt-db-min-table"};
-
-const Enum::YLeaf OspfSrgbStatus::not_allocated {0, "not-allocated"};
-const Enum::YLeaf OspfSrgbStatus::pending {1, "pending"};
-const Enum::YLeaf OspfSrgbStatus::allocated {2, "allocated"};
-
-const Enum::YLeaf UloopAvoidance::none {0, "none"};
-const Enum::YLeaf UloopAvoidance::protected_prefixes {1, "protected-prefixes"};
-const Enum::YLeaf UloopAvoidance::all_prefixes {2, "all-prefixes"};
-const Enum::YLeaf UloopAvoidance::segment_routing_uloop {3, "segment-routing-uloop"};
-
-const Enum::YLeaf GsState::mgmt_gs_init {0, "mgmt-gs-init"};
-const Enum::YLeaf GsState::mgmt_gs_normal {1, "mgmt-gs-normal"};
-const Enum::YLeaf GsState::mgmt_gs_delay {2, "mgmt-gs-delay"};
-const Enum::YLeaf GsState::mgmt_gs_flush {3, "mgmt-gs-flush"};
-const Enum::YLeaf GsState::mgmt_gs_hello {4, "mgmt-gs-hello"};
-const Enum::YLeaf GsState::mgmt_gs_quiet {5, "mgmt-gs-quiet"};
-
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_none {0, "mgmt-max-metric-unset-none"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_bgp {1, "mgmt-max-metric-unset-bgp"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_timer {2, "mgmt-max-metric-unset-timer"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_cfg {3, "mgmt-max-metric-unset-cfg"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_process_cleared {4, "mgmt-max-metric-unset-process-cleared"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_over_write {5, "mgmt-max-metric-unset-over-write"};
-
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_none {0, "ospf-max-metric-abr-off-reason-none"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_no_nbr {1, "ospf-max-metric-abr-off-reason-no-nbr"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_new_nbr {2, "ospf-max-metric-abr-off-reason-new-nbr"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_nbr_full {4, "ospf-max-metric-abr-off-reason-nbr-full"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_flush_p_end {8, "ospf-max-metric-abr-off-reason-flush-p-end"};
-
-const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_proc_migration {0, "mgmt-max-metric-on-proc-migration"};
-const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_proc_restart {1, "mgmt-max-metric-on-proc-restart"};
-const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_switchover {2, "mgmt-max-metric-on-switchover"};
-const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_startup {3, "mgmt-max-metric-on-startup"};
-const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_always {4, "mgmt-max-metric-always"};
-const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_reason_none {5, "mgmt-max-metric-reason-none"};
-
-const Enum::YLeaf SrUloopEvent::none {0, "none"};
-const Enum::YLeaf SrUloopEvent::link_down {1, "link-down"};
-const Enum::YLeaf SrUloopEvent::link_up {2, "link-up"};
-
-const Enum::YLeaf OspfBr::mgmt_d_type_abr_asbr {0, "mgmt-d-type-abr-asbr"};
-const Enum::YLeaf OspfBr::mgmt_d_type_asbr {1, "mgmt-d-type-asbr"};
-const Enum::YLeaf OspfBr::mgmt_d_type_abr {2, "mgmt-d-type-abr"};
+const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_none {0, "mgmt-nsf-rtr-none"};
+const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_requester {1, "mgmt-nsf-rtr-requester"};
+const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_receiver {2, "mgmt-nsf-rtr-receiver"};
 
 const Enum::YLeaf IpfrrTbrkr::downstream {0, "downstream"};
 const Enum::YLeaf IpfrrTbrkr::line_card_disjoint {1, "line-card-disjoint"};
@@ -19557,20 +19685,39 @@ const Enum::YLeaf IpfrrTbrkr::srlg_disjoint {6, "srlg-disjoint"};
 const Enum::YLeaf IpfrrTbrkr::tunnel {7, "tunnel"};
 const Enum::YLeaf IpfrrTbrkr::post_convergence {8, "post-convergence"};
 
-const Enum::YLeaf Ipfrr::none {0, "none"};
-const Enum::YLeaf Ipfrr::per_link {1, "per-link"};
-const Enum::YLeaf Ipfrr::per_prefix {2, "per-prefix"};
+const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
+const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
+const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
 
-const Enum::YLeaf InterfaceState::mgmt_ifs_unknown {0, "mgmt-ifs-unknown"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_admin_down {1, "mgmt-ifs-admin-down"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_down {2, "mgmt-ifs-down"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_up {3, "mgmt-ifs-up"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_shutdown {4, "mgmt-ifs-shutdown"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_none {0, "mgmt-igp-subnet-type-none"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2p {1, "mgmt-igp-subnet-type-p2p"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_broadcast {2, "mgmt-igp-subnet-type-broadcast"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_nbma {3, "mgmt-igp-subnet-type-nbma"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2mp {4, "mgmt-igp-subnet-type-p2mp"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_loop_back {5, "mgmt-igp-subnet-type-loop-back"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_max {6, "mgmt-igp-subnet-type-max"};
 
 const Enum::YLeaf Authentication::mgmt_ospf_auth_none {0, "mgmt-ospf-auth-none"};
 const Enum::YLeaf Authentication::mgmt_ospf_auth_ct {1, "mgmt-ospf-auth-ct"};
 const Enum::YLeaf Authentication::mgmt_ospf_auth_md {2, "mgmt-ospf-auth-md"};
 const Enum::YLeaf Authentication::mgmt_ospf_auth_kc {3, "mgmt-ospf-auth-kc"};
+
+const Enum::YLeaf OspfShNnhValTypes::mgmt_nnh_val_type_ip_addr {1, "mgmt-nnh-val-type-ip-addr"};
+const Enum::YLeaf OspfShNnhValTypes::mgmt_nnh_val_type_if_index {2, "mgmt-nnh-val-type-if-index"};
+
+const Enum::YLeaf UloopAvoidance::none {0, "none"};
+const Enum::YLeaf UloopAvoidance::protected_prefixes {1, "protected-prefixes"};
+const Enum::YLeaf UloopAvoidance::all_prefixes {2, "all-prefixes"};
+const Enum::YLeaf UloopAvoidance::segment_routing_uloop {3, "segment-routing-uloop"};
+
+const Enum::YLeaf OspfLinkTypes::mgmt_rtr_link {1, "mgmt-rtr-link"};
+const Enum::YLeaf OspfLinkTypes::mgmt_trans_link {2, "mgmt-trans-link"};
+const Enum::YLeaf OspfLinkTypes::mgmt_stub_net {3, "mgmt-stub-net"};
+const Enum::YLeaf OspfLinkTypes::mgmt_vitural_link {4, "mgmt-vitural-link"};
+
+const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
+const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
+const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
 
 const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_down {0, "mgmt-ospf-ifs-down"};
 const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_loop_back {1, "mgmt-ospf-ifs-loop-back"};
@@ -19581,19 +19728,67 @@ const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_dr {5, "mgmt-ospf-ifs-dr"};
 const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_backup {6, "mgmt-ospf-ifs-backup"};
 const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_other {7, "mgmt-ospf-ifs-other"};
 
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_all {0, "mgmt-rib-protocol-all"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_connected {1, "mgmt-rib-protocol-connected"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_local {2, "mgmt-rib-protocol-local"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_static {3, "mgmt-rib-protocol-static"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_bgp {4, "mgmt-rib-protocol-bgp"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_rip {5, "mgmt-rib-protocol-rip"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_isis {6, "mgmt-rib-protocol-isis"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_ospf {7, "mgmt-rib-protocol-ospf"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_eigrp {8, "mgmt-rib-protocol-eigrp"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_dagr {9, "mgmt-rib-protocol-dagr"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_subscriber {10, "mgmt-rib-protocol-subscriber"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_application {11, "mgmt-rib-protocol-application"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_mobile {12, "mgmt-rib-protocol-mobile"};
+const Enum::YLeaf Ipfrr::none {0, "none"};
+const Enum::YLeaf Ipfrr::per_link {1, "per-link"};
+const Enum::YLeaf Ipfrr::per_prefix {2, "per-prefix"};
+
+const Enum::YLeaf OspfSrgbStatus::not_allocated {0, "not-allocated"};
+const Enum::YLeaf OspfSrgbStatus::pending {1, "pending"};
+const Enum::YLeaf OspfSrgbStatus::allocated {2, "allocated"};
+
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_none {0, "ospf-se-res-fail-none"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_route {1, "ospf-se-res-fail-no-route"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_inv_route_type {2, "ospf-se-res-fail-inv-route-type"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_default_route {3, "ospf-se-res-fail-default-route"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_intra_multi_home_d {4, "ospf-se-res-fail-intra-multi-home-d"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_path {5, "ospf-se-res-fail-no-path"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_epl {6, "ospf-se-res-fail-no-epl"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_area_not_sr_enable {7, "ospf-se-res-fail-area-not-sr-enable"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_epl_multi_home_d {8, "ospf-se-res-fail-epl-multi-home-d"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_n_bit_epl {9, "ospf-se-res-fail-no-n-bit-epl"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_na_bit_epl {10, "ospf-se-res-fail-no-na-bit-epl"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_area_mismatch {11, "ospf-se-res-fail-area-mismatch"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_rid_mismatch {12, "ospf-se-res-fail-rid-mismatch"};
+
+const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_none {0, "mgmt-ospf-sr-dp-none"};
+const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_mpls {1, "mgmt-ospf-sr-dp-mpls"};
+
+const Enum::YLeaf Interface::mgmt_if_broadcast {1, "mgmt-if-broadcast"};
+const Enum::YLeaf Interface::mgmt_if_nonbroadcast {2, "mgmt-if-nonbroadcast"};
+const Enum::YLeaf Interface::mgmt_if_point_to_point {3, "mgmt-if-point-to-point"};
+const Enum::YLeaf Interface::mgmt_if_point_to_m_point {4, "mgmt-if-point-to-m-point"};
+const Enum::YLeaf Interface::mgmt_if_p2mp_non_bcast {5, "mgmt-if-p2mp-non-bcast"};
+const Enum::YLeaf Interface::mgmt_if_virtual_link {6, "mgmt-if-virtual-link"};
+const Enum::YLeaf Interface::mgmt_if_sham_link {7, "mgmt-if-sham-link"};
+const Enum::YLeaf Interface::mgmt_if_loop_back {8, "mgmt-if-loop-back"};
+
+const Enum::YLeaf InterfaceState::mgmt_ifs_unknown {0, "mgmt-ifs-unknown"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_admin_down {1, "mgmt-ifs-admin-down"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_down {2, "mgmt-ifs-down"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_up {3, "mgmt-ifs-up"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_shutdown {4, "mgmt-ifs-shutdown"};
+
+const Enum::YLeaf ExMetric::mgmt_ex_metric_type_none {0, "mgmt-ex-metric-type-none"};
+const Enum::YLeaf ExMetric::mgmt_ex_metric_type_1 {1, "mgmt-ex-metric-type-1"};
+const Enum::YLeaf ExMetric::mgmt_ex_metric_type_2 {2, "mgmt-ex-metric-type-2"};
+
+const Enum::YLeaf GsState::mgmt_gs_init {0, "mgmt-gs-init"};
+const Enum::YLeaf GsState::mgmt_gs_normal {1, "mgmt-gs-normal"};
+const Enum::YLeaf GsState::mgmt_gs_delay {2, "mgmt-gs-delay"};
+const Enum::YLeaf GsState::mgmt_gs_flush {3, "mgmt-gs-flush"};
+const Enum::YLeaf GsState::mgmt_gs_hello {4, "mgmt-gs-hello"};
+const Enum::YLeaf GsState::mgmt_gs_quiet {5, "mgmt-gs-quiet"};
+
+const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_invalid {0, "mgmt-ospf-opq-pce-addr-type-invalid"};
+const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv4 {1, "mgmt-ospf-opq-pce-addr-type-ipv4"};
+const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv6 {2, "mgmt-ospf-opq-pce-addr-type-ipv6"};
+
+const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_proc_migration {0, "mgmt-max-metric-on-proc-migration"};
+const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_proc_restart {1, "mgmt-max-metric-on-proc-restart"};
+const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_switchover {2, "mgmt-max-metric-on-switchover"};
+const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_startup {3, "mgmt-max-metric-on-startup"};
+const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_always {4, "mgmt-max-metric-always"};
+const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_reason_none {5, "mgmt-max-metric-reason-none"};
 
 const Enum::YLeaf OspfRoute::mgmt_r_type_none {0, "mgmt-r-type-none"};
 const Enum::YLeaf OspfRoute::mgmt_r_type_other {1, "mgmt-r-type-other"};
@@ -19613,23 +19808,58 @@ const Enum::YLeaf OspfRoute::mgmt_r_type_nssa2 {8192, "mgmt-r-type-nssa2"};
 const Enum::YLeaf OspfRoute::mgmt_r_type_i_grp2_int {16384, "mgmt-r-type-i-grp2-int"};
 const Enum::YLeaf OspfRoute::mgmt_r_type_i_grp2_ext {32768, "mgmt-r-type-i-grp2-ext"};
 
-const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_none {0, "mgmt-nsf-rtr-none"};
-const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_requester {1, "mgmt-nsf-rtr-requester"};
-const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_receiver {2, "mgmt-nsf-rtr-receiver"};
+const Enum::YLeaf SrUloopEvent::none {0, "none"};
+const Enum::YLeaf SrUloopEvent::link_down {1, "link-down"};
+const Enum::YLeaf SrUloopEvent::link_up {2, "link-up"};
 
-const Enum::YLeaf Interface::mgmt_if_broadcast {1, "mgmt-if-broadcast"};
-const Enum::YLeaf Interface::mgmt_if_nonbroadcast {2, "mgmt-if-nonbroadcast"};
-const Enum::YLeaf Interface::mgmt_if_point_to_point {3, "mgmt-if-point-to-point"};
-const Enum::YLeaf Interface::mgmt_if_point_to_m_point {4, "mgmt-if-point-to-m-point"};
-const Enum::YLeaf Interface::mgmt_if_p2mp_non_bcast {5, "mgmt-if-p2mp-non-bcast"};
-const Enum::YLeaf Interface::mgmt_if_virtual_link {6, "mgmt-if-virtual-link"};
-const Enum::YLeaf Interface::mgmt_if_sham_link {7, "mgmt-if-sham-link"};
-const Enum::YLeaf Interface::mgmt_if_loop_back {8, "mgmt-if-loop-back"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_unknown {0, "mgmt-ospf-opq-ri-tlv-type-unknown"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_rtrcap {1, "mgmt-ospf-opq-ri-tlv-type-rtrcap"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_pce_discovery {2, "mgmt-ospf-opq-ri-tlv-type-pce-discovery"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_algo {3, "mgmt-ospf-opq-ri-tlv-type-sr-algo"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_range {4, "mgmt-ospf-opq-ri-tlv-type-sr-range"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_node_msd {5, "mgmt-ospf-opq-ri-tlv-type-node-msd"};
 
-const Enum::YLeaf DrBdrState::mgmt_dbdr_none {0, "mgmt-dbdr-none"};
-const Enum::YLeaf DrBdrState::mgmt_dbdr_dr {1, "mgmt-dbdr-dr"};
-const Enum::YLeaf DrBdrState::mgmt_dbdr_bdr {2, "mgmt-dbdr-bdr"};
-const Enum::YLeaf DrBdrState::mgmt_dbdr_dr_other {3, "mgmt-dbdr-dr-other"};
+const Enum::YLeaf Timer::mgmt_db_stop {0, "mgmt-db-stop"};
+const Enum::YLeaf Timer::mgmt_db_refresh {1, "mgmt-db-refresh"};
+const Enum::YLeaf Timer::mgmt_db_checksum {2, "mgmt-db-checksum"};
+const Enum::YLeaf Timer::mgmt_db_max_age {3, "mgmt-db-max-age"};
+
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_none {0, "mgmt-max-metric-unset-none"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_bgp {1, "mgmt-max-metric-unset-bgp"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_timer {2, "mgmt-max-metric-unset-timer"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_cfg {3, "mgmt-max-metric-unset-cfg"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_process_cleared {4, "mgmt-max-metric-unset-process-cleared"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_over_write {5, "mgmt-max-metric-unset-over-write"};
+
+const Enum::YLeaf OspfBr::mgmt_d_type_abr_asbr {0, "mgmt-d-type-abr-asbr"};
+const Enum::YLeaf OspfBr::mgmt_d_type_asbr {1, "mgmt-d-type-asbr"};
+const Enum::YLeaf OspfBr::mgmt_d_type_abr {2, "mgmt-d-type-abr"};
+
+const Enum::YLeaf Stlv::mgmt_rrr_link_type {1, "mgmt-rrr-link-type"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_id {2, "mgmt-rrr-link-id"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_local_if_addr {3, "mgmt-rrr-link-local-if-addr"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_remote_if_addr {4, "mgmt-rrr-link-remote-if-addr"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_metric {5, "mgmt-rrr-link-metric"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_max_bw {6, "mgmt-rrr-link-max-bw"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_max_reservable_bw {7, "mgmt-rrr-link-max-reservable-bw"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_unreserved_bw {8, "mgmt-rrr-link-unreserved-bw"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_re_source_class {9, "mgmt-rrr-link-re-source-class"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_in_out_if_id {11, "mgmt-rrr-link-in-out-if-id"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_if_switching_cap_desc {15, "mgmt-rrr-link-if-switching-cap-desc"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_srlg {16, "mgmt-ospf-rrr-link-srlg"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_bw_constraints_sub {17, "mgmt-rrr-link-bw-constraints-sub"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_ext_admin_sub {26, "mgmt-ospf-rrr-link-ext-admin-sub"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_delay {27, "mgmt-ospf-rrr-link-uni-delay"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_max_reservable_bw_sub {32768, "mgmt-ospf-rrr-link-max-reservable-bw-sub"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_unreserved_bw_sub {32769, "mgmt-ospf-rrr-link-unreserved-bw-sub"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_igp_metric {32770, "mgmt-rrr-link-igp-metric"};
+
+const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
+const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
+
+const Enum::YLeaf SrmsMiAfEB::none {0, "none"};
+const Enum::YLeaf SrmsMiAfEB::ipv4 {1, "ipv4"};
+const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf NeighborState::mgmt_nbr_down {0, "mgmt-nbr-down"};
 const Enum::YLeaf NeighborState::mgmt_nbr_attempt {1, "mgmt-nbr-attempt"};
@@ -19641,23 +19871,46 @@ const Enum::YLeaf NeighborState::mgmt_nbr_load_ing {6, "mgmt-nbr-load-ing"};
 const Enum::YLeaf NeighborState::mgmt_nbr_full {7, "mgmt-nbr-full"};
 const Enum::YLeaf NeighborState::mgmt_nbr_sc_virtual {8, "mgmt-nbr-sc-virtual"};
 
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_rtr_type {1, "mgmt-rtr-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_ntwk_type {2, "mgmt-ntwk-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_sum_type {3, "mgmt-sum-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_ext_type {4, "mgmt-ext-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_type {5, "mgmt-opq-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_link_type {6, "mgmt-opq-link-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_rrr_type {7, "mgmt-opq-rrr-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_gr_type {8, "mgmt-opq-gr-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ri_type {9, "mgmt-opq-ri-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_epl_type {10, "mgmt-opq-epl-type"};
+const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ell_type {11, "mgmt-opq-ell-type"};
+
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_none {0, "mpls-te-opt-tlv-type-none"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_srlg {1, "mpls-te-opt-tlv-type-srlg"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_bc {2, "mpls-te-opt-tlv-type-bc"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_ixcd {3, "mpls-te-opt-tlv-type-ixcd"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_uni_delay {4, "mpls-te-opt-tlv-type-uni-delay"};
 
-const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
-const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
-const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_all {0, "mgmt-rib-protocol-all"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_connected {1, "mgmt-rib-protocol-connected"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_local {2, "mgmt-rib-protocol-local"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_static {3, "mgmt-rib-protocol-static"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_bgp {4, "mgmt-rib-protocol-bgp"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_rip {5, "mgmt-rib-protocol-rip"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_isis {6, "mgmt-rib-protocol-isis"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_ospf {7, "mgmt-rib-protocol-ospf"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_eigrp {8, "mgmt-rib-protocol-eigrp"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_dagr {9, "mgmt-rib-protocol-dagr"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_subscriber {10, "mgmt-rib-protocol-subscriber"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_application {11, "mgmt-rib-protocol-application"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_mobile {12, "mgmt-rib-protocol-mobile"};
 
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_none {0, "mgmt-igp-subnet-type-none"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2p {1, "mgmt-igp-subnet-type-p2p"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_broadcast {2, "mgmt-igp-subnet-type-broadcast"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_nbma {3, "mgmt-igp-subnet-type-nbma"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2mp {4, "mgmt-igp-subnet-type-p2mp"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_loop_back {5, "mgmt-igp-subnet-type-loop-back"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_max {6, "mgmt-igp-subnet-type-max"};
+const Enum::YLeaf Lfa::mgmt_ospf_unknown_lfa {0, "mgmt-ospf-unknown-lfa"};
+const Enum::YLeaf Lfa::mgmt_ospf_direct_lfa {1, "mgmt-ospf-direct-lfa"};
+const Enum::YLeaf Lfa::mgmt_ospf_ti_lfa {2, "mgmt-ospf-ti-lfa"};
+const Enum::YLeaf Lfa::mgmt_ospf_remote_lfa {3, "mgmt-ospf-remote-lfa"};
+
+const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_link {9, "mgmt-lsa-opq-ri-scope-link"};
+const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_area {10, "mgmt-lsa-opq-ri-scope-area"};
+const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_as {11, "mgmt-lsa-opq-ri-scope-as"};
 
 const Enum::YLeaf Lsa::mgmt_lsa_type_rtr {1, "mgmt-lsa-type-rtr"};
 const Enum::YLeaf Lsa::mgmt_lsa_type_net {2, "mgmt-lsa-type-net"};
@@ -19671,16 +19924,41 @@ const Enum::YLeaf Lsa::mgmt_lsa_type_opq_link {9, "mgmt-lsa-type-opq-link"};
 const Enum::YLeaf Lsa::mgmt_lsa_type_opq_area {10, "mgmt-lsa-type-opq-area"};
 const Enum::YLeaf Lsa::mgmt_lsa_type_opq_as {11, "mgmt-lsa-type-opq-as"};
 
-const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
-const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_none {0, "mgmt-ospf-metric-mode-none"};
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_relative {1, "mgmt-ospf-metric-mode-relative"};
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_constant {3, "mgmt-ospf-metric-mode-constant"};
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_absolute {4, "mgmt-ospf-metric-mode-absolute"};
 
-const Enum::YLeaf SrmsMiAfEB::none {0, "none"};
-const Enum::YLeaf SrmsMiAfEB::ipv4 {1, "ipv4"};
-const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_none {0, "mgmt-dbdr-none"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_dr {1, "mgmt-dbdr-dr"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_bdr {2, "mgmt-dbdr-bdr"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_dr_other {3, "mgmt-dbdr-dr-other"};
 
-const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
-const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
-const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
+const Enum::YLeaf TimerTable::mgmt_db_no_table {0, "mgmt-db-no-table"};
+const Enum::YLeaf TimerTable::mgmt_db_sec_table {1, "mgmt-db-sec-table"};
+const Enum::YLeaf TimerTable::mgmt_db_buffer_table {2, "mgmt-db-buffer-table"};
+const Enum::YLeaf TimerTable::mgmt_db_min_table {3, "mgmt-db-min-table"};
+
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_unknown {0, "mgmt-gr-reason-unknown"};
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_restart {1, "mgmt-gr-reason-sw-restart"};
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_upgrade {2, "mgmt-gr-reason-sw-upgrade"};
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_switchover {3, "mgmt-gr-reason-switchover"};
+
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_none {0, "ospf-max-metric-abr-off-reason-none"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_no_nbr {1, "ospf-max-metric-abr-off-reason-no-nbr"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_new_nbr {2, "ospf-max-metric-abr-off-reason-new-nbr"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_nbr_full {4, "ospf-max-metric-abr-off-reason-nbr-full"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_flush_p_end {8, "ospf-max-metric-abr-off-reason-flush-p-end"};
+
+const Enum::YLeaf OspfLs::router {1, "router"};
+const Enum::YLeaf OspfLs::network {2, "network"};
+const Enum::YLeaf OspfLs::summary {3, "summary"};
+const Enum::YLeaf OspfLs::asbr_summary {4, "asbr-summary"};
+const Enum::YLeaf OspfLs::external {5, "external"};
+const Enum::YLeaf OspfLs::nssa_external {7, "nssa-external"};
+const Enum::YLeaf OspfLs::opaque_link {9, "opaque-link"};
+const Enum::YLeaf OspfLs::opaque_area {10, "opaque-area"};
+const Enum::YLeaf OspfLs::opaque_as {11, "opaque-as"};
 
 
 }

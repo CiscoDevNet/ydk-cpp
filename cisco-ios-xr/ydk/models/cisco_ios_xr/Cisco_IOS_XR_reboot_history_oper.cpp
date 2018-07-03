@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_reboot_history_oper {
 
 RebootHistory::RebootHistory()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "reboot-history"; yang_parent_name = "Cisco-IOS-XR-reboot-history-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "reboot-history"; yang_parent_name = "Cisco-IOS-XR-reboot-history-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RebootHistory::~RebootHistory()
@@ -23,7 +25,8 @@ RebootHistory::~RebootHistory()
 
 bool RebootHistory::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool RebootHistory::has_data() const
 
 bool RebootHistory::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> RebootHistory::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<RebootHistory::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> RebootHistory::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool RebootHistory::has_leaf_or_child_of_name(const std::string & name) const
 RebootHistory::Node::Node()
     :
     node_name{YType::str, "node-name"}
+        ,
+    reboot_history(this, {})
 {
 
-    yang_name = "node"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RebootHistory::Node::~Node()
@@ -140,7 +145,8 @@ RebootHistory::Node::~Node()
 
 bool RebootHistory::Node::has_data() const
 {
-    for (std::size_t index=0; index<reboot_history.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reboot_history.len(); index++)
     {
         if(reboot_history[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool RebootHistory::Node::has_data() const
 
 bool RebootHistory::Node::has_operation() const
 {
-    for (std::size_t index=0; index<reboot_history.size(); index++)
+    for (std::size_t index=0; index<reboot_history.len(); index++)
     {
         if(reboot_history[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string RebootHistory::Node::get_absolute_path() const
 std::string RebootHistory::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> RebootHistory::Node::get_child_by_name(const std::string
     {
         auto c = std::make_shared<RebootHistory::Node::RebootHistory_>();
         c->parent = this;
-        reboot_history.push_back(c);
+        reboot_history.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> RebootHistory::Node::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reboot_history)
+    for (auto c : reboot_history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -245,7 +252,7 @@ RebootHistory::Node::RebootHistory_::RebootHistory_()
     reason{YType::str, "reason"}
 {
 
-    yang_name = "reboot-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reboot-history"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RebootHistory::Node::RebootHistory_::~RebootHistory_()
@@ -254,6 +261,7 @@ RebootHistory::Node::RebootHistory_::~RebootHistory_()
 
 bool RebootHistory::Node::RebootHistory_::has_data() const
 {
+    if (is_presence_container) return true;
     return no.is_set
 	|| time.is_set
 	|| cause_code.is_set

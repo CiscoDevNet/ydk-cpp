@@ -32,14 +32,14 @@ class RFC1315MIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class FrameRelayGlobals; //type: RFC1315MIB::FrameRelayGlobals
-        class Frdlcmitable; //type: RFC1315MIB::Frdlcmitable
-        class Frcircuittable; //type: RFC1315MIB::Frcircuittable
-        class Frerrtable; //type: RFC1315MIB::Frerrtable
+        class FrDlcmiTable; //type: RFC1315MIB::FrDlcmiTable
+        class FrCircuitTable; //type: RFC1315MIB::FrCircuitTable
+        class FrErrTable; //type: RFC1315MIB::FrErrTable
 
         std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::FrameRelayGlobals> frame_relay_globals;
-        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frdlcmitable> frdlcmitable;
-        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frcircuittable> frcircuittable;
-        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frerrtable> frerrtable;
+        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::FrDlcmiTable> frdlcmitable;
+        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::FrCircuitTable> frcircuittable;
+        std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::FrErrTable> frerrtable;
         
 }; // RFC1315MIB
 
@@ -61,17 +61,17 @@ class RFC1315MIB::FrameRelayGlobals : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf frtrapstate; //type: Frtrapstate
-        class Frtrapstate;
+        ydk::YLeaf frtrapstate; //type: FrTrapState
+        class FrTrapState;
 
 }; // RFC1315MIB::FrameRelayGlobals
 
 
-class RFC1315MIB::Frdlcmitable : public ydk::Entity
+class RFC1315MIB::FrDlcmiTable : public ydk::Entity
 {
     public:
-        Frdlcmitable();
-        ~Frdlcmitable();
+        FrDlcmiTable();
+        ~FrDlcmiTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,18 +84,18 @@ class RFC1315MIB::Frdlcmitable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Frdlcmientry; //type: RFC1315MIB::Frdlcmitable::Frdlcmientry
+        class FrDlcmiEntry; //type: RFC1315MIB::FrDlcmiTable::FrDlcmiEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frdlcmitable::Frdlcmientry> > frdlcmientry;
+        ydk::YList frdlcmientry;
         
-}; // RFC1315MIB::Frdlcmitable
+}; // RFC1315MIB::FrDlcmiTable
 
 
-class RFC1315MIB::Frdlcmitable::Frdlcmientry : public ydk::Entity
+class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry : public ydk::Entity
 {
     public:
-        Frdlcmientry();
-        ~Frdlcmientry();
+        FrDlcmiEntry();
+        ~FrDlcmiEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -109,28 +109,28 @@ class RFC1315MIB::Frdlcmitable::Frdlcmientry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf frdlcmiifindex; //type: int32
-        ydk::YLeaf frdlcmistate; //type: Frdlcmistate
-        ydk::YLeaf frdlcmiaddress; //type: Frdlcmiaddress
-        ydk::YLeaf frdlcmiaddresslen; //type: Frdlcmiaddresslen
+        ydk::YLeaf frdlcmistate; //type: FrDlcmiState
+        ydk::YLeaf frdlcmiaddress; //type: FrDlcmiAddress
+        ydk::YLeaf frdlcmiaddresslen; //type: FrDlcmiAddressLen
         ydk::YLeaf frdlcmipollinginterval; //type: int32
         ydk::YLeaf frdlcmifullenquiryinterval; //type: int32
         ydk::YLeaf frdlcmierrorthreshold; //type: int32
         ydk::YLeaf frdlcmimonitoredevents; //type: int32
         ydk::YLeaf frdlcmimaxsupportedvcs; //type: int32
-        ydk::YLeaf frdlcmimulticast; //type: Frdlcmimulticast
-        class Frdlcmistate;
-        class Frdlcmiaddress;
-        class Frdlcmiaddresslen;
-        class Frdlcmimulticast;
+        ydk::YLeaf frdlcmimulticast; //type: FrDlcmiMulticast
+        class FrDlcmiState;
+        class FrDlcmiAddress;
+        class FrDlcmiAddressLen;
+        class FrDlcmiMulticast;
 
-}; // RFC1315MIB::Frdlcmitable::Frdlcmientry
+}; // RFC1315MIB::FrDlcmiTable::FrDlcmiEntry
 
 
-class RFC1315MIB::Frcircuittable : public ydk::Entity
+class RFC1315MIB::FrCircuitTable : public ydk::Entity
 {
     public:
-        Frcircuittable();
-        ~Frcircuittable();
+        FrCircuitTable();
+        ~FrCircuitTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,18 +143,18 @@ class RFC1315MIB::Frcircuittable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Frcircuitentry; //type: RFC1315MIB::Frcircuittable::Frcircuitentry
+        class FrCircuitEntry; //type: RFC1315MIB::FrCircuitTable::FrCircuitEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frcircuittable::Frcircuitentry> > frcircuitentry;
+        ydk::YList frcircuitentry;
         
-}; // RFC1315MIB::Frcircuittable
+}; // RFC1315MIB::FrCircuitTable
 
 
-class RFC1315MIB::Frcircuittable::Frcircuitentry : public ydk::Entity
+class RFC1315MIB::FrCircuitTable::FrCircuitEntry : public ydk::Entity
 {
     public:
-        Frcircuitentry();
-        ~Frcircuitentry();
+        FrCircuitEntry();
+        ~FrCircuitEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -169,7 +169,7 @@ class RFC1315MIB::Frcircuittable::Frcircuitentry : public ydk::Entity
 
         ydk::YLeaf frcircuitifindex; //type: int32
         ydk::YLeaf frcircuitdlci; //type: int32
-        ydk::YLeaf frcircuitstate; //type: Frcircuitstate
+        ydk::YLeaf frcircuitstate; //type: FrCircuitState
         ydk::YLeaf frcircuitreceivedfecns; //type: uint32
         ydk::YLeaf frcircuitreceivedbecns; //type: uint32
         ydk::YLeaf frcircuitsentframes; //type: uint32
@@ -181,16 +181,16 @@ class RFC1315MIB::Frcircuittable::Frcircuitentry : public ydk::Entity
         ydk::YLeaf frcircuitcommittedburst; //type: int32
         ydk::YLeaf frcircuitexcessburst; //type: int32
         ydk::YLeaf frcircuitthroughput; //type: int32
-        class Frcircuitstate;
+        class FrCircuitState;
 
-}; // RFC1315MIB::Frcircuittable::Frcircuitentry
+}; // RFC1315MIB::FrCircuitTable::FrCircuitEntry
 
 
-class RFC1315MIB::Frerrtable : public ydk::Entity
+class RFC1315MIB::FrErrTable : public ydk::Entity
 {
     public:
-        Frerrtable();
-        ~Frerrtable();
+        FrErrTable();
+        ~FrErrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -203,18 +203,18 @@ class RFC1315MIB::Frerrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Frerrentry; //type: RFC1315MIB::Frerrtable::Frerrentry
+        class FrErrEntry; //type: RFC1315MIB::FrErrTable::FrErrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RFC1315_MIB::RFC1315MIB::Frerrtable::Frerrentry> > frerrentry;
+        ydk::YList frerrentry;
         
-}; // RFC1315MIB::Frerrtable
+}; // RFC1315MIB::FrErrTable
 
 
-class RFC1315MIB::Frerrtable::Frerrentry : public ydk::Entity
+class RFC1315MIB::FrErrTable::FrErrEntry : public ydk::Entity
 {
     public:
-        Frerrentry();
-        ~Frerrentry();
+        FrErrEntry();
+        ~FrErrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -228,14 +228,14 @@ class RFC1315MIB::Frerrtable::Frerrentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf frerrifindex; //type: int32
-        ydk::YLeaf frerrtype; //type: Frerrtype
+        ydk::YLeaf frerrtype; //type: FrErrType
         ydk::YLeaf frerrdata; //type: binary
         ydk::YLeaf frerrtime; //type: uint32
-        class Frerrtype;
+        class FrErrType;
 
-}; // RFC1315MIB::Frerrtable::Frerrentry
+}; // RFC1315MIB::FrErrTable::FrErrEntry
 
-class RFC1315MIB::FrameRelayGlobals::Frtrapstate : public ydk::Enum
+class RFC1315MIB::FrameRelayGlobals::FrTrapState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -243,7 +243,7 @@ class RFC1315MIB::FrameRelayGlobals::Frtrapstate : public ydk::Enum
 
 };
 
-class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::Enum
+class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noLmiConfigured;
@@ -253,7 +253,7 @@ class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmistate : public ydk::Enum
 
 };
 
-class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress : public ydk::Enum
+class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddress : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf q921;
@@ -263,7 +263,7 @@ class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddress : public ydk::Enum
 
 };
 
-class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen : public ydk::Enum
+class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiAddressLen : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf two_octets;
@@ -272,7 +272,7 @@ class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmiaddresslen : public ydk::En
 
 };
 
-class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmimulticast : public ydk::Enum
+class RFC1315MIB::FrDlcmiTable::FrDlcmiEntry::FrDlcmiMulticast : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nonBroadcast;
@@ -280,7 +280,7 @@ class RFC1315MIB::Frdlcmitable::Frdlcmientry::Frdlcmimulticast : public ydk::Enu
 
 };
 
-class RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitstate : public ydk::Enum
+class RFC1315MIB::FrCircuitTable::FrCircuitEntry::FrCircuitState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf invalid;
@@ -289,7 +289,7 @@ class RFC1315MIB::Frcircuittable::Frcircuitentry::Frcircuitstate : public ydk::E
 
 };
 
-class RFC1315MIB::Frerrtable::Frerrentry::Frerrtype : public ydk::Enum
+class RFC1315MIB::FrErrTable::FrErrEntry::FrErrType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknownError;

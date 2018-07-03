@@ -57,7 +57,7 @@ class PlatformQos::Nodes : public ydk::Entity
 
         class Node; //type: PlatformQos::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PlatformQos::Nodes
 
@@ -109,7 +109,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces : public ydk::Entity
 
         class BundleInterface; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface> > bundle_interface;
+        ydk::YList bundle_interface;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces
 
@@ -156,7 +156,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
 
         class MemberInterface; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces
 
@@ -349,7 +349,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
 
         class QosShowPclassSt; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt> > qos_show_pclass_st;
+        ydk::YList qos_show_pclass_st;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass
 
@@ -713,7 +713,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
 
@@ -759,7 +759,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
 
@@ -805,7 +805,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
 
@@ -994,7 +994,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
 
         class QosShowPclassSt; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt> > qos_show_pclass_st;
+        ydk::YList qos_show_pclass_st;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass
 
@@ -1358,7 +1358,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
 
@@ -1404,7 +1404,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
 
@@ -1450,7 +1450,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfa
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
 
@@ -1524,7 +1524,7 @@ class PlatformQos::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: PlatformQos::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // PlatformQos::Nodes::Node::Interfaces
 
@@ -1717,7 +1717,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyC
 
         class QosShowPclassSt; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt> > qos_show_pclass_st;
+        ydk::YList qos_show_pclass_st;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass
 
@@ -2081,7 +2081,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyC
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
 
@@ -2127,7 +2127,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyC
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
 
@@ -2173,7 +2173,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyC
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
 
@@ -2362,7 +2362,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCl
 
         class QosShowPclassSt; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt> > qos_show_pclass_st;
+        ydk::YList qos_show_pclass_st;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass
 
@@ -2726,7 +2726,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCl
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::MarkOnly
 
@@ -2772,7 +2772,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCl
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceConform
 
@@ -2818,7 +2818,7 @@ class PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyCl
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPolicyClass::QosShowPclassSt::Marking::PoliceExceed
 
@@ -2891,7 +2891,7 @@ class PlatformQosEa::Nodes : public ydk::Entity
 
         class Node; //type: PlatformQosEa::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PlatformQosEa::Nodes
 
@@ -2941,7 +2941,7 @@ class PlatformQosEa::Nodes::Node::BundleInterfaces : public ydk::Entity
 
         class BundleInterface; //type: PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface> > bundle_interface;
+        ydk::YList bundle_interface;
         
 }; // PlatformQosEa::Nodes::Node::BundleInterfaces
 
@@ -2988,7 +2988,7 @@ class PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInter
 
         class MemberInterface; //type: PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces
 
@@ -3143,7 +3143,7 @@ class PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInter
 
         class QosShowEaPclassSt; //type: PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt> > qos_show_ea_pclass_st;
+        ydk::YList qos_show_ea_pclass_st;
         
 }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleOutput::Details::SkywarpQosPolicyClass
 
@@ -3615,7 +3615,7 @@ class PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInter
 
         class QosShowEaPclassSt; //type: PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass::QosShowEaPclassSt> > qos_show_ea_pclass_st;
+        ydk::YList qos_show_ea_pclass_st;
         
 }; // PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::MemberInterfaces::MemberInterface::BundleInput::Details::SkywarpQosPolicyClass
 
@@ -3981,7 +3981,7 @@ class PlatformQosEa::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: PlatformQosEa::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // PlatformQosEa::Nodes::Node::Interfaces
 
@@ -4136,7 +4136,7 @@ class PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::Skywar
 
         class QosShowEaPclassSt; //type: PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass::QosShowEaPclassSt> > qos_show_ea_pclass_st;
+        ydk::YList qos_show_ea_pclass_st;
         
 }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::SkywarpQosPolicyClass
 
@@ -4608,7 +4608,7 @@ class PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::Skywarp
 
         class QosShowEaPclassSt; //type: PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_skp_qos_oper::PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass::QosShowEaPclassSt> > qos_show_ea_pclass_st;
+        ydk::YList qos_show_ea_pclass_st;
         
 }; // PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::SkywarpQosPolicyClass
 
@@ -4971,64 +4971,6 @@ class Wred : public ydk::Enum
 
 };
 
-class PolicyParamUnit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf policy_param_unit_invalid;
-        static const ydk::Enum::YLeaf policy_param_unit_bytes;
-        static const ydk::Enum::YLeaf policy_param_unit_kbytes;
-        static const ydk::Enum::YLeaf policy_param_unit_mbytes;
-        static const ydk::Enum::YLeaf policy_param_unit_gbytes;
-        static const ydk::Enum::YLeaf policy_param_unit_bitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_kbitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_mbitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_gbitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_cells_ps;
-        static const ydk::Enum::YLeaf policy_param_unit_packets_ps;
-        static const ydk::Enum::YLeaf policy_param_unit_us;
-        static const ydk::Enum::YLeaf policy_param_unit_ms;
-        static const ydk::Enum::YLeaf policy_param_unit_seconds;
-        static const ydk::Enum::YLeaf policy_param_unit_packets;
-        static const ydk::Enum::YLeaf policy_param_unit_cells;
-        static const ydk::Enum::YLeaf policy_param_unit_percent;
-        static const ydk::Enum::YLeaf policy_param_unit_per_thousand;
-        static const ydk::Enum::YLeaf policy_param_unit_per_million;
-        static const ydk::Enum::YLeaf policy_param_unit_hz;
-        static const ydk::Enum::YLeaf policy_param_unit_khz;
-        static const ydk::Enum::YLeaf policy_param_unit_mhz;
-        static const ydk::Enum::YLeaf policy_param_unit_ratio;
-        static const ydk::Enum::YLeaf policy_param_unit_max;
-
-};
-
-class CacState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf admit;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf ubrl;
-
-};
-
-class PolicyState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf suspended;
-
-};
-
-class Action : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf police_transmit;
-        static const ydk::Enum::YLeaf police_set_transmit;
-        static const ydk::Enum::YLeaf police_drop;
-        static const ydk::Enum::YLeaf police_unknown;
-
-};
-
 class ActionOpcode : public ydk::Enum
 {
     public:
@@ -5063,6 +5005,56 @@ class TbAlgorithm : public ydk::Enum
 
 };
 
+class PolicyParamUnit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf policy_param_unit_invalid;
+        static const ydk::Enum::YLeaf policy_param_unit_bytes;
+        static const ydk::Enum::YLeaf policy_param_unit_kbytes;
+        static const ydk::Enum::YLeaf policy_param_unit_mbytes;
+        static const ydk::Enum::YLeaf policy_param_unit_gbytes;
+        static const ydk::Enum::YLeaf policy_param_unit_bitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_kbitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_mbitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_gbitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_cells_ps;
+        static const ydk::Enum::YLeaf policy_param_unit_packets_ps;
+        static const ydk::Enum::YLeaf policy_param_unit_us;
+        static const ydk::Enum::YLeaf policy_param_unit_ms;
+        static const ydk::Enum::YLeaf policy_param_unit_seconds;
+        static const ydk::Enum::YLeaf policy_param_unit_packets;
+        static const ydk::Enum::YLeaf policy_param_unit_cells;
+        static const ydk::Enum::YLeaf policy_param_unit_percent;
+        static const ydk::Enum::YLeaf policy_param_unit_per_thousand;
+        static const ydk::Enum::YLeaf policy_param_unit_per_million;
+        static const ydk::Enum::YLeaf policy_param_unit_hz;
+        static const ydk::Enum::YLeaf policy_param_unit_khz;
+        static const ydk::Enum::YLeaf policy_param_unit_mhz;
+        static const ydk::Enum::YLeaf policy_param_unit_ratio;
+        static const ydk::Enum::YLeaf policy_param_unit_max;
+
+};
+
+class Action : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf police_transmit;
+        static const ydk::Enum::YLeaf police_set_transmit;
+        static const ydk::Enum::YLeaf police_drop;
+        static const ydk::Enum::YLeaf police_unknown;
+
+};
+
+class CacState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf admit;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf ubrl;
+
+};
+
 class QosUnit : public ydk::Enum
 {
     public:
@@ -5083,6 +5075,14 @@ class QosUnit : public ydk::Enum
         static const ydk::Enum::YLeaf cells;
         static const ydk::Enum::YLeaf percentage;
         static const ydk::Enum::YLeaf ratio;
+
+};
+
+class PolicyState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf suspended;
 
 };
 

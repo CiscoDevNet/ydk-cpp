@@ -62,7 +62,7 @@ class Ipv4AclAndPrefixList::Accesses : public ydk::Entity
 
         class Access; //type: Ipv4AclAndPrefixList::Accesses::Access
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access> > access;
+        ydk::YList access;
         
 }; // Ipv4AclAndPrefixList::Accesses
 
@@ -110,7 +110,7 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries : public ydk::En
 
         class AccessListEntry; //type: Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry> > access_list_entry;
+        ydk::YList access_list_entry;
         
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries
 
@@ -309,8 +309,8 @@ class Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tcp_bits_match_operator; //type: Ipv4AclTcpMatchOperatorEnum
-        ydk::YLeaf tcp_bits; //type: one of uint32, enumeration
-        ydk::YLeaf tcp_bits_mask; //type: one of uint32, enumeration
+        ydk::YLeaf tcp_bits; //type: Ipv4AclTcpBitsNumber
+        ydk::YLeaf tcp_bits_mask; //type: Ipv4AclTcpBitsNumber
 
 }; // Ipv4AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp
 
@@ -523,7 +523,7 @@ class Ipv4AclAndPrefixList::Prefixes : public ydk::Entity
 
         class Prefix; //type: Ipv4AclAndPrefixList::Prefixes::Prefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Ipv4AclAndPrefixList::Prefixes
 
@@ -548,7 +548,7 @@ class Ipv4AclAndPrefixList::Prefixes::Prefix : public ydk::Entity
         ydk::YLeaf prefix_list_name; //type: string
         class PrefixListEntries; //type: Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries> prefix_list_entries; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries> prefix_list_entries;
         
 }; // Ipv4AclAndPrefixList::Prefixes::Prefix
 
@@ -571,7 +571,7 @@ class Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries : public ydk::En
 
         class PrefixListEntry; //type: Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_acl_cfg::Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry> > prefix_list_entry;
+        ydk::YList prefix_list_entry;
         
 }; // Ipv4AclAndPrefixList::Prefixes::Prefix::PrefixListEntries
 

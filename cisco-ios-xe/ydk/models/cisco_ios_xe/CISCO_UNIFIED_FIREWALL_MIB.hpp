@@ -32,48 +32,48 @@ class CISCOUNIFIEDFIREWALLMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cufwconnectionglobals; //type: CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals
-        class Cufwconnectionresources; //type: CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources
-        class Cufwconnectionreportsettings; //type: CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings
-        class Cufwapplinspectiongrp; //type: CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp
-        class Cufwurlfilterglobals; //type: CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals
-        class Cufwurlfilterresourceusage; //type: CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage
-        class Cufwaaicglobals; //type: CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals
-        class Cufwaaichttpprotocolstats; //type: CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats
-        class Cufwl2Fwglobals; //type: CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals
-        class Cufwnotifcntlgrp; //type: CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp
-        class Cufwconnsummarytable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable
-        class Cufwappconnsummarytable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable
-        class Cufwpolicyconnsummarytable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable
-        class Cufwpolicyappconnsummarytable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable
-        class Cufwinspectiontable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable
-        class Cufwurlfservertable; //type: CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable
+        class CuFwConnectionGlobals; //type: CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals
+        class CuFwConnectionResources; //type: CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources
+        class CuFwConnectionReportSettings; //type: CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings
+        class CuFwApplInspectionGrp; //type: CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp
+        class CufwUrlFilterGlobals; //type: CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals
+        class CufwUrlFilterResourceUsage; //type: CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage
+        class CufwAaicGlobals; //type: CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals
+        class CufwAaicHttpProtocolStats; //type: CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats
+        class CufwL2FwGlobals; //type: CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals
+        class CuFwNotifCntlGrp; //type: CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp
+        class CufwConnSummaryTable; //type: CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable
+        class CufwAppConnSummaryTable; //type: CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable
+        class CufwPolicyConnSummaryTable; //type: CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable
+        class CufwPolicyAppConnSummaryTable; //type: CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable
+        class CufwInspectionTable; //type: CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable
+        class CufwUrlfServerTable; //type: CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals> cufwconnectionglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources> cufwconnectionresources;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings> cufwconnectionreportsettings;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp> cufwapplinspectiongrp;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals> cufwurlfilterglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage> cufwurlfilterresourceusage;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals> cufwaaicglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats> cufwaaichttpprotocolstats;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals> cufwl2fwglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp> cufwnotifcntlgrp;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable> cufwconnsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable> cufwappconnsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable> cufwpolicyconnsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable> cufwpolicyappconnsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable> cufwinspectiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable> cufwurlfservertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals> cufwconnectionglobals;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources> cufwconnectionresources;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings> cufwconnectionreportsettings;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp> cufwapplinspectiongrp;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals> cufwurlfilterglobals;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage> cufwurlfilterresourceusage;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals> cufwaaicglobals;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats> cufwaaichttpprotocolstats;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals> cufwl2fwglobals;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp> cufwnotifcntlgrp;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable> cufwconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable> cufwappconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable> cufwpolicyconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable> cufwpolicyappconnsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable> cufwinspectiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable> cufwurlfservertable;
         
 }; // CISCOUNIFIEDFIREWALLMIB
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals : public ydk::Entity
 {
     public:
-        Cufwconnectionglobals();
-        ~Cufwconnectionglobals();
+        CuFwConnectionGlobals();
+        ~CuFwConnectionGlobals();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -99,14 +99,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals : public ydk::Entity
         ydk::YLeaf cufwconnglobalconnsetuprate5; //type: uint32
         ydk::YLeaf cufwconnglobalnumremoteaccess; //type: uint32
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnectionglobals
+}; // CISCOUNIFIEDFIREWALLMIB::CuFwConnectionGlobals
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources : public ydk::Entity
 {
     public:
-        Cufwconnectionresources();
-        ~Cufwconnectionresources();
+        CuFwConnectionResources();
+        ~CuFwConnectionResources();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -124,14 +124,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources : public ydk::Entity
         ydk::YLeaf cufwconnreshoconnmemoryusage; //type: uint32
         ydk::YLeaf cufwconnresembrconnmemoryusage; //type: uint32
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnectionresources
+}; // CISCOUNIFIEDFIREWALLMIB::CuFwConnectionResources
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings : public ydk::Entity
 {
     public:
-        Cufwconnectionreportsettings();
-        ~Cufwconnectionreportsettings();
+        CuFwConnectionReportSettings();
+        ~CuFwConnectionReportSettings();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -147,14 +147,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings : public ydk::Entity
         ydk::YLeaf cufwconnreptappstats; //type: boolean
         ydk::YLeaf cufwconnreptappstatslastchanged; //type: uint32
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnectionreportsettings
+}; // CISCOUNIFIEDFIREWALLMIB::CuFwConnectionReportSettings
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp : public ydk::Entity
 {
     public:
-        Cufwapplinspectiongrp();
-        ~Cufwapplinspectiongrp();
+        CuFwApplInspectionGrp();
+        ~CuFwApplInspectionGrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -170,14 +170,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp : public ydk::Entity
         ydk::YLeaf cufwaiaudittrailenabled; //type: boolean
         ydk::YLeaf cufwaialertenabled; //type: boolean
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwapplinspectiongrp
+}; // CISCOUNIFIEDFIREWALLMIB::CuFwApplInspectionGrp
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals : public ydk::Entity
 {
     public:
-        Cufwurlfilterglobals();
-        ~Cufwurlfilterglobals();
+        CufwUrlFilterGlobals();
+        ~CufwUrlFilterGlobals();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -210,14 +210,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals : public ydk::Entity
         ydk::YLeaf cufwurlfresponsesnumlate; //type: uint64
         ydk::YLeaf cufwurlfurlaccrespsnumresdropped; //type: uint64
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterglobals
+}; // CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterGlobals
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage : public ydk::Entity
 {
     public:
-        Cufwurlfilterresourceusage();
-        ~Cufwurlfilterresourceusage();
+        CufwUrlFilterResourceUsage();
+        ~CufwUrlFilterResourceUsage();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -233,14 +233,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage : public ydk::Entity
         ydk::YLeaf cufwurlfrestotalrequestcachesize; //type: uint32
         ydk::YLeaf cufwurlfrestotalrespcachesize; //type: uint32
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwurlfilterresourceusage
+}; // CISCOUNIFIEDFIREWALLMIB::CufwUrlFilterResourceUsage
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals : public ydk::Entity
 {
     public:
-        Cufwaaicglobals();
-        ~Cufwaaicglobals();
+        CufwAaicGlobals();
+        ~CufwAaicGlobals();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -257,14 +257,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals : public ydk::Entity
         ydk::YLeaf cufwaaicglobalnumbadpdusize; //type: uint64
         ydk::YLeaf cufwaaicglobalnumbadportrange; //type: uint64
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwaaicglobals
+}; // CISCOUNIFIEDFIREWALLMIB::CufwAaicGlobals
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats : public ydk::Entity
 {
     public:
-        Cufwaaichttpprotocolstats();
-        ~Cufwaaichttpprotocolstats();
+        CufwAaicHttpProtocolStats();
+        ~CufwAaicHttpProtocolStats();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -285,14 +285,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats : public ydk::Entity
         ydk::YLeaf cufwaaichttpnummismatchcontent; //type: uint64
         ydk::YLeaf cufwaaichttpnumdoubleencodedpkts; //type: uint64
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwaaichttpprotocolstats
+}; // CISCOUNIFIEDFIREWALLMIB::CufwAaicHttpProtocolStats
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals : public ydk::Entity
 {
     public:
-        Cufwl2Fwglobals();
-        ~Cufwl2Fwglobals();
+        CufwL2FwGlobals();
+        ~CufwL2FwGlobals();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -316,14 +316,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals : public ydk::Entity
         ydk::YLeaf cufwl2globalnumbadarpresponses; //type: uint64
         ydk::YLeaf cufwl2globalnumspoofedarpresps; //type: uint64
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwl2Fwglobals
+}; // CISCOUNIFIEDFIREWALLMIB::CufwL2FwGlobals
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp : public ydk::Entity
 {
     public:
-        Cufwnotifcntlgrp();
-        ~Cufwnotifcntlgrp();
+        CuFwNotifCntlGrp();
+        ~CuFwNotifCntlGrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -339,14 +339,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp : public ydk::Entity
         ydk::YLeaf cufwcntlurlfserverstatuschange; //type: boolean
         ydk::YLeaf cufwcntll2staticmacaddressmoved; //type: boolean
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwnotifcntlgrp
+}; // CISCOUNIFIEDFIREWALLMIB::CuFwNotifCntlGrp
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable : public ydk::Entity
 {
     public:
-        Cufwconnsummarytable();
-        ~Cufwconnsummarytable();
+        CufwConnSummaryTable();
+        ~CufwConnSummaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -359,18 +359,18 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cufwconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry
+        class CufwConnSummaryEntry; //type: CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry> > cufwconnsummaryentry;
+        ydk::YList cufwconnsummaryentry;
         
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable
+}; // CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry : public ydk::Entity
 {
     public:
-        Cufwconnsummaryentry();
-        ~Cufwconnsummaryentry();
+        CufwConnSummaryEntry();
+        ~CufwConnSummaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -394,14 +394,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry : publ
         ydk::YLeaf cufwconnsetuprate1; //type: uint32
         ydk::YLeaf cufwconnsetuprate5; //type: uint32
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwconnsummarytable::Cufwconnsummaryentry
+}; // CISCOUNIFIEDFIREWALLMIB::CufwConnSummaryTable::CufwConnSummaryEntry
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable : public ydk::Entity
 {
     public:
-        Cufwappconnsummarytable();
-        ~Cufwappconnsummarytable();
+        CufwAppConnSummaryTable();
+        ~CufwAppConnSummaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -414,18 +414,18 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cufwappconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry
+        class CufwAppConnSummaryEntry; //type: CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry> > cufwappconnsummaryentry;
+        ydk::YList cufwappconnsummaryentry;
         
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable
+}; // CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry : public ydk::Entity
 {
     public:
-        Cufwappconnsummaryentry();
-        ~Cufwappconnsummaryentry();
+        CufwAppConnSummaryEntry();
+        ~CufwAppConnSummaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -449,14 +449,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry 
         ydk::YLeaf cufwappconnsetuprate1; //type: uint32
         ydk::YLeaf cufwappconnsetuprate5; //type: uint32
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwappconnsummarytable::Cufwappconnsummaryentry
+}; // CISCOUNIFIEDFIREWALLMIB::CufwAppConnSummaryTable::CufwAppConnSummaryEntry
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable : public ydk::Entity
 {
     public:
-        Cufwpolicyconnsummarytable();
-        ~Cufwpolicyconnsummarytable();
+        CufwPolicyConnSummaryTable();
+        ~CufwPolicyConnSummaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -469,18 +469,18 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cufwpolicyconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry
+        class CufwPolicyConnSummaryEntry; //type: CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry> > cufwpolicyconnsummaryentry;
+        ydk::YList cufwpolicyconnsummaryentry;
         
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable
+}; // CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry : public ydk::Entity
 {
     public:
-        Cufwpolicyconnsummaryentry();
-        ~Cufwpolicyconnsummaryentry();
+        CufwPolicyConnSummaryEntry();
+        ~CufwPolicyConnSummaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -505,14 +505,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummary
         ydk::YLeaf cufwpolconnnumactive; //type: uint32
         ydk::YLeaf cufwpolconnnumaborted; //type: uint64
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyconnsummarytable::Cufwpolicyconnsummaryentry
+}; // CISCOUNIFIEDFIREWALLMIB::CufwPolicyConnSummaryTable::CufwPolicyConnSummaryEntry
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable : public ydk::Entity
 {
     public:
-        Cufwpolicyappconnsummarytable();
-        ~Cufwpolicyappconnsummarytable();
+        CufwPolicyAppConnSummaryTable();
+        ~CufwPolicyAppConnSummaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -525,18 +525,18 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cufwpolicyappconnsummaryentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry
+        class CufwPolicyAppConnSummaryEntry; //type: CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry> > cufwpolicyappconnsummaryentry;
+        ydk::YList cufwpolicyappconnsummaryentry;
         
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable
+}; // CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry : public ydk::Entity
 {
     public:
-        Cufwpolicyappconnsummaryentry();
-        ~Cufwpolicyappconnsummaryentry();
+        CufwPolicyAppConnSummaryEntry();
+        ~CufwPolicyAppConnSummaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -561,14 +561,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconns
         ydk::YLeaf cufwpolappconnnumactive; //type: uint32
         ydk::YLeaf cufwpolappconnnumaborted; //type: uint64
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwpolicyappconnsummarytable::Cufwpolicyappconnsummaryentry
+}; // CISCOUNIFIEDFIREWALLMIB::CufwPolicyAppConnSummaryTable::CufwPolicyAppConnSummaryEntry
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable : public ydk::Entity
 {
     public:
-        Cufwinspectiontable();
-        ~Cufwinspectiontable();
+        CufwInspectionTable();
+        ~CufwInspectionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -581,18 +581,18 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cufwinspectionentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry
+        class CufwInspectionEntry; //type: CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry> > cufwinspectionentry;
+        ydk::YList cufwinspectionentry;
         
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable
+}; // CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry : public ydk::Entity
 {
     public:
-        Cufwinspectionentry();
-        ~Cufwinspectionentry();
+        CufwInspectionEntry();
+        ~CufwInspectionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -609,14 +609,14 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry : public
         ydk::YLeaf cufwinspectionprotocol; //type: CFWApplicationProtocol
         ydk::YLeaf cufwinspectionstatus; //type: boolean
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwinspectiontable::Cufwinspectionentry
+}; // CISCOUNIFIEDFIREWALLMIB::CufwInspectionTable::CufwInspectionEntry
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable : public ydk::Entity
 {
     public:
-        Cufwurlfservertable();
-        ~Cufwurlfservertable();
+        CufwUrlfServerTable();
+        ~CufwUrlfServerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -629,18 +629,18 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cufwurlfserverentry; //type: CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry
+        class CufwUrlfServerEntry; //type: CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_UNIFIED_FIREWALL_MIB::CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry> > cufwurlfserverentry;
+        ydk::YList cufwurlfserverentry;
         
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable
+}; // CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable
 
 
-class CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry : public ydk::Entity
+class CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry : public ydk::Entity
 {
     public:
-        Cufwurlfserverentry();
-        ~Cufwurlfserverentry();
+        CufwUrlfServerEntry();
+        ~CufwUrlfServerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -668,7 +668,7 @@ class CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry : public
         ydk::YLeaf cufwurlfserveravgresptime1; //type: uint32
         ydk::YLeaf cufwurlfserveravgresptime5; //type: uint32
 
-}; // CISCOUNIFIEDFIREWALLMIB::Cufwurlfservertable::Cufwurlfserverentry
+}; // CISCOUNIFIEDFIREWALLMIB::CufwUrlfServerTable::CufwUrlfServerEntry
 
 
 }

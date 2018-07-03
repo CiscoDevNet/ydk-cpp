@@ -17,16 +17,16 @@ MplsLsd::MplsLsd()
     app_reg_delay_disable{YType::empty, "app-reg-delay-disable"},
     mpls_entropy_label{YType::empty, "mpls-entropy-label"},
     mpls_ip_ttl_propagate_disable{YType::enumeration, "mpls-ip-ttl-propagate-disable"}
-    	,
+        ,
     ipv6(std::make_shared<MplsLsd::Ipv6>())
-	,ipv4(std::make_shared<MplsLsd::Ipv4>())
-	,label_databases(std::make_shared<MplsLsd::LabelDatabases>())
+    , ipv4(std::make_shared<MplsLsd::Ipv4>())
+    , label_databases(std::make_shared<MplsLsd::LabelDatabases>())
 {
     ipv6->parent = this;
     ipv4->parent = this;
     label_databases->parent = this;
 
-    yang_name = "mpls-lsd"; yang_parent_name = "Cisco-IOS-XR-mpls-lsd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-lsd"; yang_parent_name = "Cisco-IOS-XR-mpls-lsd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsLsd::~MplsLsd()
@@ -35,6 +35,7 @@ MplsLsd::~MplsLsd()
 
 bool MplsLsd::has_data() const
 {
+    if (is_presence_container) return true;
     return ltrace_multiplier.is_set
 	|| app_reg_delay_disable.is_set
 	|| mpls_entropy_label.is_set
@@ -215,7 +216,7 @@ MplsLsd::Ipv6::Ipv6()
     ttl_expiration_pop{YType::uint32, "ttl-expiration-pop"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLsd::Ipv6::~Ipv6()
@@ -224,6 +225,7 @@ MplsLsd::Ipv6::~Ipv6()
 
 bool MplsLsd::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return ttl_expiration_pop.is_set;
 }
 
@@ -299,7 +301,7 @@ MplsLsd::Ipv4::Ipv4()
     ttl_expiration_pop{YType::uint32, "ttl-expiration-pop"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLsd::Ipv4::~Ipv4()
@@ -308,6 +310,7 @@ MplsLsd::Ipv4::~Ipv4()
 
 bool MplsLsd::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ttl_expiration_pop.is_set;
 }
 
@@ -379,9 +382,11 @@ bool MplsLsd::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MplsLsd::LabelDatabases::LabelDatabases()
+    :
+    label_database(this, {"label_database_id"})
 {
 
-    yang_name = "label-databases"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-databases"; yang_parent_name = "mpls-lsd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLsd::LabelDatabases::~LabelDatabases()
@@ -390,7 +395,8 @@ MplsLsd::LabelDatabases::~LabelDatabases()
 
 bool MplsLsd::LabelDatabases::has_data() const
 {
-    for (std::size_t index=0; index<label_database.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_database.len(); index++)
     {
         if(label_database[index]->has_data())
             return true;
@@ -400,7 +406,7 @@ bool MplsLsd::LabelDatabases::has_data() const
 
 bool MplsLsd::LabelDatabases::has_operation() const
 {
-    for (std::size_t index=0; index<label_database.size(); index++)
+    for (std::size_t index=0; index<label_database.len(); index++)
     {
         if(label_database[index]->has_operation())
             return true;
@@ -437,7 +443,7 @@ std::shared_ptr<Entity> MplsLsd::LabelDatabases::get_child_by_name(const std::st
     {
         auto c = std::make_shared<MplsLsd::LabelDatabases::LabelDatabase>();
         c->parent = this;
-        label_database.push_back(c);
+        label_database.append(c);
         return c;
     }
 
@@ -449,7 +455,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsd::LabelDatabases::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : label_database)
+    for (auto c : label_database.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -478,12 +484,12 @@ bool MplsLsd::LabelDatabases::has_leaf_or_child_of_name(const std::string & name
 MplsLsd::LabelDatabases::LabelDatabase::LabelDatabase()
     :
     label_database_id{YType::uint32, "label-database-id"}
-    	,
+        ,
     label_range(std::make_shared<MplsLsd::LabelDatabases::LabelDatabase::LabelRange>())
 {
     label_range->parent = this;
 
-    yang_name = "label-database"; yang_parent_name = "label-databases"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-database"; yang_parent_name = "label-databases"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLsd::LabelDatabases::LabelDatabase::~LabelDatabase()
@@ -492,6 +498,7 @@ MplsLsd::LabelDatabases::LabelDatabase::~LabelDatabase()
 
 bool MplsLsd::LabelDatabases::LabelDatabase::has_data() const
 {
+    if (is_presence_container) return true;
     return label_database_id.is_set
 	|| (label_range !=  nullptr && label_range->has_data());
 }
@@ -513,7 +520,8 @@ std::string MplsLsd::LabelDatabases::LabelDatabase::get_absolute_path() const
 std::string MplsLsd::LabelDatabases::LabelDatabase::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label-database" <<"[label-database-id='" <<label_database_id <<"']";
+    path_buffer << "label-database";
+    ADD_KEY_TOKEN(label_database_id, "label-database-id");
     return path_buffer.str();
 }
 
@@ -586,7 +594,7 @@ MplsLsd::LabelDatabases::LabelDatabase::LabelRange::LabelRange()
     max_static_value{YType::uint32, "max-static-value"}
 {
 
-    yang_name = "label-range"; yang_parent_name = "label-database"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-range"; yang_parent_name = "label-database"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsd::LabelDatabases::LabelDatabase::LabelRange::~LabelRange()
@@ -595,6 +603,7 @@ MplsLsd::LabelDatabases::LabelDatabase::LabelRange::~LabelRange()
 
 bool MplsLsd::LabelDatabases::LabelDatabase::LabelRange::has_data() const
 {
+    if (is_presence_container) return true;
     return minvalue.is_set
 	|| max_value.is_set
 	|| min_static_value.is_set

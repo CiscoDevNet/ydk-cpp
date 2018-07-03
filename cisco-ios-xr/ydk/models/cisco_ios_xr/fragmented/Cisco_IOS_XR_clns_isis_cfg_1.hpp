@@ -13,6 +13,86 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_cfg {
 
 
+class Isis::Instances::Instance::Interfaces : public ydk::Entity
+{
+    public:
+        Interfaces();
+        ~Interfaces();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Interface; //type: Isis::Instances::Instance::Interfaces::Interface
+
+        ydk::YList interface;
+        
+}; // Isis::Instances::Instance::Interfaces
+
+
+class Isis::Instances::Instance::Interfaces::Interface : public ydk::Entity
+{
+    public:
+        Interface();
+        ~Interface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf running; //type: empty
+        ydk::YLeaf circuit_type; //type: IsisConfigurableLevels
+        ydk::YLeaf point_to_point; //type: empty
+        ydk::YLeaf state; //type: IsisInterfaceState
+        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
+        ydk::YLeaf link_down_fast_detect; //type: empty
+        class LspRetransmitThrottleIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
+        class LspRetransmitIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals
+        class Bfd; //type: Isis::Instances::Instance::Interfaces::Interface::Bfd
+        class Priorities; //type: Isis::Instances::Instance::Interfaces::Interface::Priorities
+        class HelloAcceptPasswords; //type: Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords
+        class HelloPasswords; //type: Isis::Instances::Instance::Interfaces::Interface::HelloPasswords
+        class HelloPaddings; //type: Isis::Instances::Instance::Interfaces::Interface::HelloPaddings
+        class HelloMultipliers; //type: Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers
+        class LspFastFloodThresholds; //type: Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds
+        class PrefixAttributeNFlagClears; //type: Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears
+        class HelloIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::HelloIntervals
+        class InterfaceAfs; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs
+        class CsnpIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals
+        class LspIntervals; //type: Isis::Instances::Instance::Interfaces::Interface::LspIntervals
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals> lsp_retransmit_throttle_intervals;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals> lsp_retransmit_intervals;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::Bfd> bfd;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::Priorities> priorities;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords> hello_accept_passwords;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloPasswords> hello_passwords;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloPaddings> hello_paddings;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers> hello_multipliers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds> lsp_fast_flood_thresholds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears> prefix_attribute_n_flag_clears;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloIntervals> hello_intervals;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs> interface_afs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals> csnp_intervals;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspIntervals> lsp_intervals;
+                class MeshGroup;
+
+}; // Isis::Instances::Instance::Interfaces::Interface
+
+
 class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals : public ydk::Entity
 {
     public:
@@ -31,7 +111,7 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleInt
 
         class LspRetransmitThrottleInterval; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals::LspRetransmitThrottleInterval> > lsp_retransmit_throttle_interval;
+        ydk::YList lsp_retransmit_throttle_interval;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitThrottleIntervals
 
@@ -76,7 +156,7 @@ class Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals :
 
         class LspRetransmitInterval; //type: Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals::LspRetransmitInterval> > lsp_retransmit_interval;
+        ydk::YList lsp_retransmit_interval;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::LspRetransmitIntervals
 
@@ -145,7 +225,7 @@ class Isis::Instances::Instance::Interfaces::Interface::Priorities : public ydk:
 
         class Priority; //type: Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::Priorities::Priority> > priority;
+        ydk::YList priority;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::Priorities
 
@@ -190,7 +270,7 @@ class Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords : p
 
         class HelloAcceptPassword; //type: Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords::HelloAcceptPassword> > hello_accept_password;
+        ydk::YList hello_accept_password;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::HelloAcceptPasswords
 
@@ -235,7 +315,7 @@ class Isis::Instances::Instance::Interfaces::Interface::HelloPasswords : public 
 
         class HelloPassword; //type: Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloPasswords::HelloPassword> > hello_password;
+        ydk::YList hello_password;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::HelloPasswords
 
@@ -282,7 +362,7 @@ class Isis::Instances::Instance::Interfaces::Interface::HelloPaddings : public y
 
         class HelloPadding; //type: Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloPaddings::HelloPadding> > hello_padding;
+        ydk::YList hello_padding;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::HelloPaddings
 
@@ -327,7 +407,7 @@ class Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers : publi
 
         class HelloMultiplier; //type: Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers::HelloMultiplier> > hello_multiplier;
+        ydk::YList hello_multiplier;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::HelloMultipliers
 
@@ -372,7 +452,7 @@ class Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds :
 
         class LspFastFloodThreshold; //type: Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds::LspFastFloodThreshold> > lsp_fast_flood_threshold;
+        ydk::YList lsp_fast_flood_threshold;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::LspFastFloodThresholds
 
@@ -417,7 +497,7 @@ class Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClea
 
         class PrefixAttributeNFlagClear; //type: Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears::PrefixAttributeNFlagClear> > prefix_attribute_n_flag_clear;
+        ydk::YList prefix_attribute_n_flag_clear;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::PrefixAttributeNFlagClears
 
@@ -461,7 +541,7 @@ class Isis::Instances::Instance::Interfaces::Interface::HelloIntervals : public 
 
         class HelloInterval; //type: Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::HelloIntervals::HelloInterval> > hello_interval;
+        ydk::YList hello_interval;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::HelloIntervals
 
@@ -506,7 +586,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs : public yd
 
         class InterfaceAf; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf> > interface_af;
+        ydk::YList interface_af;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs
 
@@ -533,7 +613,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
         class TopologyName; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData> interface_af_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName> > topology_name;
+        ydk::YList topology_name;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf
 
@@ -661,7 +741,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrlfaCandidateInterface; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface> > frrlfa_candidate_interface;
+        ydk::YList frrlfa_candidate_interface;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrlfaCandidateInterfaces
 
@@ -707,7 +787,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrRemoteLfaMaxMetric; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric> > frr_remote_lfa_max_metric;
+        ydk::YList frr_remote_lfa_max_metric;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaMaxMetrics
 
@@ -752,7 +832,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrType; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes::FrrType> > frr_type;
+        ydk::YList frr_type;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrTypes
 
@@ -797,7 +877,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrRemoteLfaType; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType> > frr_remote_lfa_type;
+        ydk::YList frr_remote_lfa_type;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrRemoteLfaTypes
 
@@ -842,7 +922,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class InterfaceFrrTiebreakerDefault; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault> > interface_frr_tiebreaker_default;
+        ydk::YList interface_frr_tiebreaker_default;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults
 
@@ -886,7 +966,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrtilfaType; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType> > frrtilfa_type;
+        ydk::YList frrtilfa_type;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrtilfaTypes
 
@@ -930,7 +1010,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrExcludeInterface; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface> > frr_exclude_interface;
+        ydk::YList frr_exclude_interface;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::FrrExcludeInterfaces
 
@@ -976,7 +1056,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class InterfaceFrrTiebreaker; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker> > interface_frr_tiebreaker;
+        ydk::YList interface_frr_tiebreaker;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::InterfaceFrrTable::InterfaceFrrTiebreakers
 
@@ -1068,7 +1148,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class AutoMetric; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics::AutoMetric> > auto_metric;
+        ydk::YList auto_metric;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AutoMetrics
 
@@ -1113,7 +1193,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class AdminTag; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags::AdminTag> > admin_tag;
+        ydk::YList admin_tag;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::AdminTags
 
@@ -1180,7 +1260,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class ManualAdjSid; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids::ManualAdjSid> > manual_adj_sid;
+        ydk::YList manual_adj_sid;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::ManualAdjSids
 
@@ -1227,7 +1307,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class Metric; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric> > metric;
+        ydk::YList metric;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics
 
@@ -1273,7 +1353,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class Weight; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights::Weight> > weight;
+        ydk::YList weight;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Weights
 
@@ -1424,7 +1504,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrlfaCandidateInterface; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces::FrrlfaCandidateInterface> > frrlfa_candidate_interface;
+        ydk::YList frrlfa_candidate_interface;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrlfaCandidateInterfaces
 
@@ -1470,7 +1550,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrRemoteLfaMaxMetric; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics::FrrRemoteLfaMaxMetric> > frr_remote_lfa_max_metric;
+        ydk::YList frr_remote_lfa_max_metric;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaMaxMetrics
 
@@ -1515,7 +1595,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrType; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes::FrrType> > frr_type;
+        ydk::YList frr_type;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrTypes
 
@@ -1560,7 +1640,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrRemoteLfaType; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes::FrrRemoteLfaType> > frr_remote_lfa_type;
+        ydk::YList frr_remote_lfa_type;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrRemoteLfaTypes
 
@@ -1605,7 +1685,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class InterfaceFrrTiebreakerDefault; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults::InterfaceFrrTiebreakerDefault> > interface_frr_tiebreaker_default;
+        ydk::YList interface_frr_tiebreaker_default;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakerDefaults
 
@@ -1649,7 +1729,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrtilfaType; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes::FrrtilfaType> > frrtilfa_type;
+        ydk::YList frrtilfa_type;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrtilfaTypes
 
@@ -1693,7 +1773,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class FrrExcludeInterface; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces::FrrExcludeInterface> > frr_exclude_interface;
+        ydk::YList frr_exclude_interface;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::FrrExcludeInterfaces
 
@@ -1739,7 +1819,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class InterfaceFrrTiebreaker; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers::InterfaceFrrTiebreaker> > interface_frr_tiebreaker;
+        ydk::YList interface_frr_tiebreaker;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::InterfaceFrrTable::InterfaceFrrTiebreakers
 
@@ -1831,7 +1911,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class AutoMetric; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics::AutoMetric> > auto_metric;
+        ydk::YList auto_metric;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AutoMetrics
 
@@ -1876,7 +1956,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class AdminTag; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags::AdminTag> > admin_tag;
+        ydk::YList admin_tag;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::AdminTags
 
@@ -1943,7 +2023,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class ManualAdjSid; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids::ManualAdjSid> > manual_adj_sid;
+        ydk::YList manual_adj_sid;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::ManualAdjSids
 
@@ -1990,7 +2070,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class Metric; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics::Metric> > metric;
+        ydk::YList metric;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Metrics
 
@@ -2036,7 +2116,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceA
 
         class Weight; //type: Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights::Weight> > weight;
+        ydk::YList weight;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::TopologyName::Weights
 
@@ -2081,7 +2161,7 @@ class Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals : public y
 
         class CsnpInterval; //type: Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals::CsnpInterval> > csnp_interval;
+        ydk::YList csnp_interval;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::CsnpIntervals
 
@@ -2126,7 +2206,7 @@ class Isis::Instances::Instance::Interfaces::Interface::LspIntervals : public yd
 
         class LspInterval; //type: Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_cfg::Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval> > lsp_interval;
+        ydk::YList lsp_interval;
         
 }; // Isis::Instances::Instance::Interfaces::Interface::LspIntervals
 
@@ -2151,6 +2231,13 @@ class Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterva
         ydk::YLeaf interval; //type: uint32
 
 }; // Isis::Instances::Instance::Interfaces::Interface::LspIntervals::LspInterval
+
+class Isis::Instances::Instance::Interfaces::Interface::MeshGroup : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf blocked;
+
+};
 
 class Isis::Instances::Instance::Interfaces::Interface::InterfaceAfs::InterfaceAf::InterfaceAfData::Metrics::Metric::Metric_ : public ydk::Enum
 {

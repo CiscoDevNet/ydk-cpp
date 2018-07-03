@@ -17,7 +17,7 @@ Pmipv6::Pmipv6()
 {
     lma->parent = this;
 
-    yang_name = "pmipv6"; yang_parent_name = "Cisco-IOS-XR-ip-mobileip-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "pmipv6"; yang_parent_name = "Cisco-IOS-XR-ip-mobileip-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Pmipv6::~Pmipv6()
@@ -26,6 +26,7 @@ Pmipv6::~Pmipv6()
 
 bool Pmipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (lma !=  nullptr && lma->has_data());
 }
 
@@ -120,16 +121,16 @@ bool Pmipv6::has_leaf_or_child_of_name(const std::string & name) const
 Pmipv6::Lma::Lma()
     :
     statistics(std::make_shared<Pmipv6::Lma::Statistics>())
-	,bindings(std::make_shared<Pmipv6::Lma::Bindings>())
-	,heartbeats(std::make_shared<Pmipv6::Lma::Heartbeats>())
-	,config_variables(std::make_shared<Pmipv6::Lma::ConfigVariables>())
+    , bindings(std::make_shared<Pmipv6::Lma::Bindings>())
+    , heartbeats(std::make_shared<Pmipv6::Lma::Heartbeats>())
+    , config_variables(std::make_shared<Pmipv6::Lma::ConfigVariables>())
 {
     statistics->parent = this;
     bindings->parent = this;
     heartbeats->parent = this;
     config_variables->parent = this;
 
-    yang_name = "lma"; yang_parent_name = "pmipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lma"; yang_parent_name = "pmipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::~Lma()
@@ -138,6 +139,7 @@ Pmipv6::Lma::~Lma()
 
 bool Pmipv6::Lma::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data())
 	|| (bindings !=  nullptr && bindings->has_data())
 	|| (heartbeats !=  nullptr && heartbeats->has_data())
@@ -262,16 +264,16 @@ bool Pmipv6::Lma::has_leaf_or_child_of_name(const std::string & name) const
 Pmipv6::Lma::Statistics::Statistics()
     :
     customer_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics>())
-	,license(std::make_shared<Pmipv6::Lma::Statistics::License>())
-	,global(std::make_shared<Pmipv6::Lma::Statistics::Global>())
-	,mag_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics>())
+    , license(std::make_shared<Pmipv6::Lma::Statistics::License>())
+    , global(std::make_shared<Pmipv6::Lma::Statistics::Global>())
+    , mag_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics>())
 {
     customer_statistics->parent = this;
     license->parent = this;
     global->parent = this;
     mag_statistics->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::~Statistics()
@@ -280,6 +282,7 @@ Pmipv6::Lma::Statistics::~Statistics()
 
 bool Pmipv6::Lma::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (customer_statistics !=  nullptr && customer_statistics->has_data())
 	|| (license !=  nullptr && license->has_data())
 	|| (global !=  nullptr && global->has_data())
@@ -402,9 +405,11 @@ bool Pmipv6::Lma::Statistics::has_leaf_or_child_of_name(const std::string & name
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistics()
+    :
+    customer_statistic(this, {"customer_name"})
 {
 
-    yang_name = "customer-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "customer-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::~CustomerStatistics()
@@ -413,7 +418,8 @@ Pmipv6::Lma::Statistics::CustomerStatistics::~CustomerStatistics()
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::has_data() const
 {
-    for (std::size_t index=0; index<customer_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<customer_statistic.len(); index++)
     {
         if(customer_statistic[index]->has_data())
             return true;
@@ -423,7 +429,7 @@ bool Pmipv6::Lma::Statistics::CustomerStatistics::has_data() const
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<customer_statistic.size(); index++)
+    for (std::size_t index=0; index<customer_statistic.len(); index++)
     {
         if(customer_statistic[index]->has_operation())
             return true;
@@ -460,7 +466,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::CustomerStatistics::get_child_b
     {
         auto c = std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic>();
         c->parent = this;
-        customer_statistic.push_back(c);
+        customer_statistic.append(c);
         return c;
     }
 
@@ -472,7 +478,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::Customer
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : customer_statistic)
+    for (auto c : customer_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -506,14 +512,14 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::CustomerStatisti
     handoff_count{YType::uint32, "handoff-count"},
     ipv4_mnp_count{YType::uint32, "ipv4-mnp-count"},
     ipv6_mnp_count{YType::uint32, "ipv6-mnp-count"}
-    	,
+        ,
     protocol_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics>())
-	,accounting_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics>())
+    , accounting_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics>())
 {
     protocol_statistics->parent = this;
     accounting_statistics->parent = this;
 
-    yang_name = "customer-statistic"; yang_parent_name = "customer-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "customer-statistic"; yang_parent_name = "customer-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::~CustomerStatistic()
@@ -522,6 +528,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::~CustomerStatist
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return customer_name.is_set
 	|| lma_identifier.is_set
 	|| bce_count.is_set
@@ -555,7 +562,8 @@ std::string Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::get_
 std::string Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "customer-statistic" <<"[customer-name='" <<customer_name <<"']";
+    path_buffer << "customer-statistic";
+    ADD_KEY_TOKEN(customer_name, "customer-name");
     return path_buffer.str();
 }
 
@@ -692,11 +700,11 @@ bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::has_leaf_or
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::ProtocolStatistics()
     :
     pbu_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics>())
-	,pba_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics>())
-	,pbri_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics>())
-	,pbri_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics>())
-	,pbra_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics>())
-	,pbra_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics>())
+    , pba_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics>())
+    , pbri_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics>())
+    , pbri_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics>())
+    , pbra_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics>())
+    , pbra_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics>())
 {
     pbu_receive_statistics->parent = this;
     pba_send_statistics->parent = this;
@@ -705,7 +713,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
     pbra_send_statistics->parent = this;
     pbra_receive_statistics->parent = this;
 
-    yang_name = "protocol-statistics"; yang_parent_name = "customer-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-statistics"; yang_parent_name = "customer-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::~ProtocolStatistics()
@@ -714,6 +722,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (pbu_receive_statistics !=  nullptr && pbu_receive_statistics->has_data())
 	|| (pba_send_statistics !=  nullptr && pba_send_statistics->has_data())
 	|| (pbri_send_statistics !=  nullptr && pbri_send_statistics->has_data())
@@ -866,7 +875,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
     pbu_drop_count{YType::uint32, "pbu-drop-count"}
 {
 
-    yang_name = "pbu-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbu-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics::~PbuReceiveStatistics()
@@ -875,6 +884,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbuReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbu_count.is_set
 	|| pbu_drop_count.is_set;
 }
@@ -983,7 +993,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
     gre_key_opt_required_count{YType::uint32, "gre-key-opt-required-count"}
 {
 
-    yang_name = "pba-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pba-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics::~PbaSendStatistics()
@@ -992,6 +1002,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbaSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pba_count.is_set
 	|| pba_drop_count.is_set
 	|| accepted_count.is_set
@@ -1422,7 +1433,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
     revoking_mn_local_policy_count{YType::uint32, "revoking-mn-local-policy-count"}
 {
 
-    yang_name = "pbri-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbri-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics::~PbriSendStatistics()
@@ -1431,6 +1442,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbri_count.is_set
 	|| pbri_drop_count.is_set
 	|| unspecified_count.is_set
@@ -1653,7 +1665,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
     revoking_mn_local_policy_count{YType::uint32, "revoking-mn-local-policy-count"}
 {
 
-    yang_name = "pbri-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbri-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics::~PbriReceiveStatistics()
@@ -1662,6 +1674,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbriReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbri_count.is_set
 	|| pbri_drop_count.is_set
 	|| unspecified_count.is_set
@@ -1884,7 +1897,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
     pbr_not_supported_count{YType::uint32, "pbr-not-supported-count"}
 {
 
-    yang_name = "pbra-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbra-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics::~PbraSendStatistics()
@@ -1893,6 +1906,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbra_count.is_set
 	|| pbra_drop_count.is_set
 	|| success_count.is_set
@@ -2115,7 +2129,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
     pbr_not_supported_count{YType::uint32, "pbr-not-supported-count"}
 {
 
-    yang_name = "pbra-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbra-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics::~PbraReceiveStatistics()
@@ -2124,6 +2138,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatisti
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::ProtocolStatistics::PbraReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbra_count.is_set
 	|| pbra_drop_count.is_set
 	|| success_count.is_set
@@ -2337,7 +2352,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatis
     accounting_stop_sent_count{YType::uint64, "accounting-stop-sent-count"}
 {
 
-    yang_name = "accounting-statistics"; yang_parent_name = "customer-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting-statistics"; yang_parent_name = "customer-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics::~AccountingStatistics()
@@ -2346,6 +2361,7 @@ Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatis
 
 bool Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic::AccountingStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting_start_sent_count.is_set
 	|| accounting_update_sent_count.is_set
 	|| accounting_stop_sent_count.is_set;
@@ -2443,7 +2459,7 @@ Pmipv6::Lma::Statistics::License::License()
     peak_bce_count_reset_timestamp{YType::uint32, "peak-bce-count-reset-timestamp"}
 {
 
-    yang_name = "license"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "license"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::License::~License()
@@ -2452,6 +2468,7 @@ Pmipv6::Lma::Statistics::License::~License()
 
 bool Pmipv6::Lma::Statistics::License::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_identifier.is_set
 	|| bce_count.is_set
 	|| peak_bce_count.is_set
@@ -2568,16 +2585,16 @@ Pmipv6::Lma::Statistics::Global::Global()
     handoff_count{YType::uint32, "handoff-count"},
     single_tenant_count{YType::uint32, "single-tenant-count"},
     multi_tenant_count{YType::uint32, "multi-tenant-count"}
-    	,
+        ,
     packet_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::PacketStatistics>())
-	,protocol_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics>())
-	,accounting_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::AccountingStatistics>())
+    , protocol_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics>())
+    , accounting_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::AccountingStatistics>())
 {
     packet_statistics->parent = this;
     protocol_statistics->parent = this;
     accounting_statistics->parent = this;
 
-    yang_name = "global"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::~Global()
@@ -2586,6 +2603,7 @@ Pmipv6::Lma::Statistics::Global::~Global()
 
 bool Pmipv6::Lma::Statistics::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return lma_identifier.is_set
 	|| bce_count.is_set
 	|| handoff_count.is_set
@@ -2769,7 +2787,7 @@ Pmipv6::Lma::Statistics::Global::PacketStatistics::PacketStatistics()
     packets_sent_ipv6{YType::uint64, "packets-sent-ipv6"}
 {
 
-    yang_name = "packet-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packet-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::PacketStatistics::~PacketStatistics()
@@ -2778,6 +2796,7 @@ Pmipv6::Lma::Statistics::Global::PacketStatistics::~PacketStatistics()
 
 bool Pmipv6::Lma::Statistics::Global::PacketStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return checksum_errors.is_set
 	|| send_drops.is_set
 	|| receive_drops.is_set
@@ -2955,11 +2974,11 @@ bool Pmipv6::Lma::Statistics::Global::PacketStatistics::has_leaf_or_child_of_nam
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::ProtocolStatistics()
     :
     pbu_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics>())
-	,pba_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics>())
-	,pbri_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics>())
-	,pbri_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics>())
-	,pbra_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics>())
-	,pbra_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics>())
+    , pba_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics>())
+    , pbri_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics>())
+    , pbri_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics>())
+    , pbra_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics>())
+    , pbra_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics>())
 {
     pbu_receive_statistics->parent = this;
     pba_send_statistics->parent = this;
@@ -2968,7 +2987,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::ProtocolStatistics()
     pbra_send_statistics->parent = this;
     pbra_receive_statistics->parent = this;
 
-    yang_name = "protocol-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::~ProtocolStatistics()
@@ -2977,6 +2996,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::~ProtocolStatistics()
 
 bool Pmipv6::Lma::Statistics::Global::ProtocolStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (pbu_receive_statistics !=  nullptr && pbu_receive_statistics->has_data())
 	|| (pba_send_statistics !=  nullptr && pba_send_statistics->has_data())
 	|| (pbri_send_statistics !=  nullptr && pbri_send_statistics->has_data())
@@ -3136,7 +3156,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::PbuRe
     pbu_drop_count{YType::uint32, "pbu-drop-count"}
 {
 
-    yang_name = "pbu-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pbu-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::~PbuReceiveStatistics()
@@ -3145,6 +3165,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::~PbuR
 
 bool Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbuReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbu_count.is_set
 	|| pbu_drop_count.is_set;
 }
@@ -3260,7 +3281,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::PbaSendS
     gre_key_opt_required_count{YType::uint32, "gre-key-opt-required-count"}
 {
 
-    yang_name = "pba-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pba-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::~PbaSendStatistics()
@@ -3269,6 +3290,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::~PbaSend
 
 bool Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbaSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pba_count.is_set
 	|| pba_drop_count.is_set
 	|| accepted_count.is_set
@@ -3706,7 +3728,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::PbriSen
     revoking_mn_local_policy_count{YType::uint32, "revoking-mn-local-policy-count"}
 {
 
-    yang_name = "pbri-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pbri-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::~PbriSendStatistics()
@@ -3715,6 +3737,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::~PbriSe
 
 bool Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbri_count.is_set
 	|| pbri_drop_count.is_set
 	|| unspecified_count.is_set
@@ -3944,7 +3967,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::Pbri
     revoking_mn_local_policy_count{YType::uint32, "revoking-mn-local-policy-count"}
 {
 
-    yang_name = "pbri-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pbri-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::~PbriReceiveStatistics()
@@ -3953,6 +3976,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::~Pbr
 
 bool Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbriReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbri_count.is_set
 	|| pbri_drop_count.is_set
 	|| unspecified_count.is_set
@@ -4182,7 +4206,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::PbraSen
     pbr_not_supported_count{YType::uint32, "pbr-not-supported-count"}
 {
 
-    yang_name = "pbra-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pbra-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::~PbraSendStatistics()
@@ -4191,6 +4215,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::~PbraSe
 
 bool Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbra_count.is_set
 	|| pbra_drop_count.is_set
 	|| success_count.is_set
@@ -4420,7 +4445,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::Pbra
     pbr_not_supported_count{YType::uint32, "pbr-not-supported-count"}
 {
 
-    yang_name = "pbra-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pbra-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::~PbraReceiveStatistics()
@@ -4429,6 +4454,7 @@ Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::~Pbr
 
 bool Pmipv6::Lma::Statistics::Global::ProtocolStatistics::PbraReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbra_count.is_set
 	|| pbra_drop_count.is_set
 	|| success_count.is_set
@@ -4649,7 +4675,7 @@ Pmipv6::Lma::Statistics::Global::AccountingStatistics::AccountingStatistics()
     accounting_stop_sent_count{YType::uint64, "accounting-stop-sent-count"}
 {
 
-    yang_name = "accounting-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::Global::AccountingStatistics::~AccountingStatistics()
@@ -4658,6 +4684,7 @@ Pmipv6::Lma::Statistics::Global::AccountingStatistics::~AccountingStatistics()
 
 bool Pmipv6::Lma::Statistics::Global::AccountingStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting_start_sent_count.is_set
 	|| accounting_update_sent_count.is_set
 	|| accounting_stop_sent_count.is_set;
@@ -4755,9 +4782,11 @@ bool Pmipv6::Lma::Statistics::Global::AccountingStatistics::has_leaf_or_child_of
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistics()
+    :
+    mag_statistic(this, {"mag_name"})
 {
 
-    yang_name = "mag-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mag-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::~MagStatistics()
@@ -4766,7 +4795,8 @@ Pmipv6::Lma::Statistics::MagStatistics::~MagStatistics()
 
 bool Pmipv6::Lma::Statistics::MagStatistics::has_data() const
 {
-    for (std::size_t index=0; index<mag_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mag_statistic.len(); index++)
     {
         if(mag_statistic[index]->has_data())
             return true;
@@ -4776,7 +4806,7 @@ bool Pmipv6::Lma::Statistics::MagStatistics::has_data() const
 
 bool Pmipv6::Lma::Statistics::MagStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<mag_statistic.size(); index++)
+    for (std::size_t index=0; index<mag_statistic.len(); index++)
     {
         if(mag_statistic[index]->has_operation())
             return true;
@@ -4813,7 +4843,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::Statistics::MagStatistics::get_child_by_nam
     {
         auto c = std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic>();
         c->parent = this;
-        mag_statistic.push_back(c);
+        mag_statistic.append(c);
         return c;
     }
 
@@ -4825,7 +4855,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Statistics::MagStati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mag_statistic)
+    for (auto c : mag_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4855,12 +4885,12 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::MagStatistic()
     :
     mag_name{YType::str, "mag-name"},
     lma_identifier{YType::str, "lma-identifier"}
-    	,
+        ,
     protocol_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics>())
 {
     protocol_statistics->parent = this;
 
-    yang_name = "mag-statistic"; yang_parent_name = "mag-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mag-statistic"; yang_parent_name = "mag-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::~MagStatistic()
@@ -4869,6 +4899,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::~MagStatistic()
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return mag_name.is_set
 	|| lma_identifier.is_set
 	|| (protocol_statistics !=  nullptr && protocol_statistics->has_data());
@@ -4892,7 +4923,8 @@ std::string Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::get_absolute_p
 std::string Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mag-statistic" <<"[mag-name='" <<mag_name <<"']";
+    path_buffer << "mag-statistic";
+    ADD_KEY_TOKEN(mag_name, "mag-name");
     return path_buffer.str();
 }
 
@@ -4971,11 +5003,11 @@ bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::has_leaf_or_child_of_
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::ProtocolStatistics()
     :
     pbu_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics>())
-	,pba_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics>())
-	,pbri_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics>())
-	,pbri_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics>())
-	,pbra_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics>())
-	,pbra_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics>())
+    , pba_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics>())
+    , pbri_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics>())
+    , pbri_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics>())
+    , pbra_send_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics>())
+    , pbra_receive_statistics(std::make_shared<Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics>())
 {
     pbu_receive_statistics->parent = this;
     pba_send_statistics->parent = this;
@@ -4984,7 +5016,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::Protoc
     pbra_send_statistics->parent = this;
     pbra_receive_statistics->parent = this;
 
-    yang_name = "protocol-statistics"; yang_parent_name = "mag-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-statistics"; yang_parent_name = "mag-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::~ProtocolStatistics()
@@ -4993,6 +5025,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::~Proto
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (pbu_receive_statistics !=  nullptr && pbu_receive_statistics->has_data())
 	|| (pba_send_statistics !=  nullptr && pba_send_statistics->has_data())
 	|| (pbri_send_statistics !=  nullptr && pbri_send_statistics->has_data())
@@ -5145,7 +5178,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuRec
     pbu_drop_count{YType::uint32, "pbu-drop-count"}
 {
 
-    yang_name = "pbu-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbu-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics::~PbuReceiveStatistics()
@@ -5154,6 +5187,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuRec
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbuReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbu_count.is_set
 	|| pbu_drop_count.is_set;
 }
@@ -5262,7 +5296,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSen
     gre_key_opt_required_count{YType::uint32, "gre-key-opt-required-count"}
 {
 
-    yang_name = "pba-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pba-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics::~PbaSendStatistics()
@@ -5271,6 +5305,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSen
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbaSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pba_count.is_set
 	|| pba_drop_count.is_set
 	|| accepted_count.is_set
@@ -5701,7 +5736,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSe
     revoking_mn_local_policy_count{YType::uint32, "revoking-mn-local-policy-count"}
 {
 
-    yang_name = "pbri-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbri-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics::~PbriSendStatistics()
@@ -5710,6 +5745,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSe
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbri_count.is_set
 	|| pbri_drop_count.is_set
 	|| unspecified_count.is_set
@@ -5932,7 +5968,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriRe
     revoking_mn_local_policy_count{YType::uint32, "revoking-mn-local-policy-count"}
 {
 
-    yang_name = "pbri-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbri-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics::~PbriReceiveStatistics()
@@ -5941,6 +5977,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriRe
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbriReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbri_count.is_set
 	|| pbri_drop_count.is_set
 	|| unspecified_count.is_set
@@ -6163,7 +6200,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSe
     pbr_not_supported_count{YType::uint32, "pbr-not-supported-count"}
 {
 
-    yang_name = "pbra-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbra-send-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics::~PbraSendStatistics()
@@ -6172,6 +6209,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSe
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraSendStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbra_count.is_set
 	|| pbra_drop_count.is_set
 	|| success_count.is_set
@@ -6394,7 +6432,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraRe
     pbr_not_supported_count{YType::uint32, "pbr-not-supported-count"}
 {
 
-    yang_name = "pbra-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbra-receive-statistics"; yang_parent_name = "protocol-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics::~PbraReceiveStatistics()
@@ -6403,6 +6441,7 @@ Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraRe
 
 bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::PbraReceiveStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return pbra_count.is_set
 	|| pbra_drop_count.is_set
 	|| success_count.is_set
@@ -6610,9 +6649,11 @@ bool Pmipv6::Lma::Statistics::MagStatistics::MagStatistic::ProtocolStatistics::P
 }
 
 Pmipv6::Lma::Bindings::Bindings()
+    :
+    binding(this, {})
 {
 
-    yang_name = "bindings"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bindings"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Bindings::~Bindings()
@@ -6621,7 +6662,8 @@ Pmipv6::Lma::Bindings::~Bindings()
 
 bool Pmipv6::Lma::Bindings::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -6631,7 +6673,7 @@ bool Pmipv6::Lma::Bindings::has_data() const
 
 bool Pmipv6::Lma::Bindings::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -6668,7 +6710,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::Bindings::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -6680,7 +6722,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6737,9 +6779,13 @@ Pmipv6::Lma::Bindings::Binding::Binding()
     up_stream_grekey{YType::uint32, "up-stream-grekey"},
     down_stream_grekey{YType::uint32, "down-stream-grekey"},
     vrfid{YType::uint32, "vrfid"}
+        ,
+    coa(this, {})
+    , dmnp_v4(this, {})
+    , dmnp_v6(this, {})
 {
 
-    yang_name = "binding"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "binding"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Bindings::Binding::~Binding()
@@ -6748,17 +6794,18 @@ Pmipv6::Lma::Bindings::Binding::~Binding()
 
 bool Pmipv6::Lma::Bindings::Binding::has_data() const
 {
-    for (std::size_t index=0; index<coa.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<coa.len(); index++)
     {
         if(coa[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dmnp_v4.size(); index++)
+    for (std::size_t index=0; index<dmnp_v4.len(); index++)
     {
         if(dmnp_v4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dmnp_v6.size(); index++)
+    for (std::size_t index=0; index<dmnp_v6.len(); index++)
     {
         if(dmnp_v6[index]->has_data())
             return true;
@@ -6796,17 +6843,17 @@ bool Pmipv6::Lma::Bindings::Binding::has_data() const
 
 bool Pmipv6::Lma::Bindings::Binding::has_operation() const
 {
-    for (std::size_t index=0; index<coa.size(); index++)
+    for (std::size_t index=0; index<coa.len(); index++)
     {
         if(coa[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dmnp_v4.size(); index++)
+    for (std::size_t index=0; index<dmnp_v4.len(); index++)
     {
         if(dmnp_v4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dmnp_v6.size(); index++)
+    for (std::size_t index=0; index<dmnp_v6.len(); index++)
     {
         if(dmnp_v6[index]->has_operation())
             return true;
@@ -6901,7 +6948,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::Bindings::Binding::get_child_by_name(const 
     {
         auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding::Coa>();
         c->parent = this;
-        coa.push_back(c);
+        coa.append(c);
         return c;
     }
 
@@ -6909,7 +6956,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::Bindings::Binding::get_child_by_name(const 
     {
         auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding::DmnpV4>();
         c->parent = this;
-        dmnp_v4.push_back(c);
+        dmnp_v4.append(c);
         return c;
     }
 
@@ -6917,7 +6964,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::Bindings::Binding::get_child_by_name(const 
     {
         auto c = std::make_shared<Pmipv6::Lma::Bindings::Binding::DmnpV6>();
         c->parent = this;
-        dmnp_v6.push_back(c);
+        dmnp_v6.append(c);
         return c;
     }
 
@@ -6929,7 +6976,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::Binding::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : coa)
+    for (auto c : coa.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6938,7 +6985,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::Binding::g
     }
 
     count = 0;
-    for (auto const & c : dmnp_v4)
+    for (auto c : dmnp_v4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6947,7 +6994,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Bindings::Binding::g
     }
 
     count = 0;
-    for (auto const & c : dmnp_v6)
+    for (auto c : dmnp_v6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7288,7 +7335,7 @@ Pmipv6::Lma::Bindings::Binding::Coa::Coa()
     coa_v6{YType::str, "coa-v6"}
 {
 
-    yang_name = "coa"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "coa"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Bindings::Binding::Coa::~Coa()
@@ -7297,6 +7344,7 @@ Pmipv6::Lma::Bindings::Binding::Coa::~Coa()
 
 bool Pmipv6::Lma::Bindings::Binding::Coa::has_data() const
 {
+    if (is_presence_container) return true;
     return llid.is_set
 	|| peer_name.is_set
 	|| tunnel.is_set
@@ -7633,7 +7681,7 @@ Pmipv6::Lma::Bindings::Binding::DmnpV4::DmnpV4()
     prefix{YType::str, "prefix"}
 {
 
-    yang_name = "dmnp-v4"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dmnp-v4"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Bindings::Binding::DmnpV4::~DmnpV4()
@@ -7642,6 +7690,7 @@ Pmipv6::Lma::Bindings::Binding::DmnpV4::~DmnpV4()
 
 bool Pmipv6::Lma::Bindings::Binding::DmnpV4::has_data() const
 {
+    if (is_presence_container) return true;
     return pfxlen.is_set
 	|| prefix.is_set;
 }
@@ -7731,7 +7780,7 @@ Pmipv6::Lma::Bindings::Binding::DmnpV6::DmnpV6()
     prefix{YType::str, "prefix"}
 {
 
-    yang_name = "dmnp-v6"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dmnp-v6"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Bindings::Binding::DmnpV6::~DmnpV6()
@@ -7740,6 +7789,7 @@ Pmipv6::Lma::Bindings::Binding::DmnpV6::~DmnpV6()
 
 bool Pmipv6::Lma::Bindings::Binding::DmnpV6::has_data() const
 {
+    if (is_presence_container) return true;
     return pfxlen.is_set
 	|| prefix.is_set;
 }
@@ -7824,9 +7874,11 @@ bool Pmipv6::Lma::Bindings::Binding::DmnpV6::has_leaf_or_child_of_name(const std
 }
 
 Pmipv6::Lma::Heartbeats::Heartbeats()
+    :
+    heartbeat(this, {"peer_addr"})
 {
 
-    yang_name = "heartbeats"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "heartbeats"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Heartbeats::~Heartbeats()
@@ -7835,7 +7887,8 @@ Pmipv6::Lma::Heartbeats::~Heartbeats()
 
 bool Pmipv6::Lma::Heartbeats::has_data() const
 {
-    for (std::size_t index=0; index<heartbeat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<heartbeat.len(); index++)
     {
         if(heartbeat[index]->has_data())
             return true;
@@ -7845,7 +7898,7 @@ bool Pmipv6::Lma::Heartbeats::has_data() const
 
 bool Pmipv6::Lma::Heartbeats::has_operation() const
 {
-    for (std::size_t index=0; index<heartbeat.size(); index++)
+    for (std::size_t index=0; index<heartbeat.len(); index++)
     {
         if(heartbeat[index]->has_operation())
             return true;
@@ -7882,7 +7935,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::Heartbeats::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Pmipv6::Lma::Heartbeats::Heartbeat>();
         c->parent = this;
-        heartbeat.push_back(c);
+        heartbeat.append(c);
         return c;
     }
 
@@ -7894,7 +7947,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::Heartbeats::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : heartbeat)
+    for (auto c : heartbeat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7935,7 +7988,7 @@ Pmipv6::Lma::Heartbeats::Heartbeat::Heartbeat()
     ipv6_path{YType::boolean, "ipv6-path"}
 {
 
-    yang_name = "heartbeat"; yang_parent_name = "heartbeats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "heartbeat"; yang_parent_name = "heartbeats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::Heartbeats::Heartbeat::~Heartbeat()
@@ -7944,6 +7997,7 @@ Pmipv6::Lma::Heartbeats::Heartbeat::~Heartbeat()
 
 bool Pmipv6::Lma::Heartbeats::Heartbeat::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_addr.is_set
 	|| vrf.is_set
 	|| customer_name.is_set
@@ -7983,7 +8037,8 @@ std::string Pmipv6::Lma::Heartbeats::Heartbeat::get_absolute_path() const
 std::string Pmipv6::Lma::Heartbeats::Heartbeat::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "heartbeat" <<"[peer-addr='" <<peer_addr <<"']";
+    path_buffer << "heartbeat";
+    ADD_KEY_TOKEN(peer_addr, "peer-addr");
     return path_buffer.str();
 }
 
@@ -8147,12 +8202,12 @@ bool Pmipv6::Lma::Heartbeats::Heartbeat::has_leaf_or_child_of_name(const std::st
 Pmipv6::Lma::ConfigVariables::ConfigVariables()
     :
     customer_variables(std::make_shared<Pmipv6::Lma::ConfigVariables::CustomerVariables>())
-	,global_variables(std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables>())
+    , global_variables(std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables>())
 {
     customer_variables->parent = this;
     global_variables->parent = this;
 
-    yang_name = "config-variables"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config-variables"; yang_parent_name = "lma"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::~ConfigVariables()
@@ -8161,6 +8216,7 @@ Pmipv6::Lma::ConfigVariables::~ConfigVariables()
 
 bool Pmipv6::Lma::ConfigVariables::has_data() const
 {
+    if (is_presence_container) return true;
     return (customer_variables !=  nullptr && customer_variables->has_data())
 	|| (global_variables !=  nullptr && global_variables->has_data());
 }
@@ -8251,9 +8307,11 @@ bool Pmipv6::Lma::ConfigVariables::has_leaf_or_child_of_name(const std::string &
 }
 
 Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariables()
+    :
+    customer_variable(this, {"customer_name"})
 {
 
-    yang_name = "customer-variables"; yang_parent_name = "config-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "customer-variables"; yang_parent_name = "config-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::CustomerVariables::~CustomerVariables()
@@ -8262,7 +8320,8 @@ Pmipv6::Lma::ConfigVariables::CustomerVariables::~CustomerVariables()
 
 bool Pmipv6::Lma::ConfigVariables::CustomerVariables::has_data() const
 {
-    for (std::size_t index=0; index<customer_variable.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<customer_variable.len(); index++)
     {
         if(customer_variable[index]->has_data())
             return true;
@@ -8272,7 +8331,7 @@ bool Pmipv6::Lma::ConfigVariables::CustomerVariables::has_data() const
 
 bool Pmipv6::Lma::ConfigVariables::CustomerVariables::has_operation() const
 {
-    for (std::size_t index=0; index<customer_variable.size(); index++)
+    for (std::size_t index=0; index<customer_variable.len(); index++)
     {
         if(customer_variable[index]->has_operation())
             return true;
@@ -8309,7 +8368,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::CustomerVariables::get_chi
     {
         auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable>();
         c->parent = this;
-        customer_variable.push_back(c);
+        customer_variable.append(c);
         return c;
     }
 
@@ -8321,7 +8380,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::Cus
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : customer_variable)
+    for (auto c : customer_variable.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8353,12 +8412,12 @@ Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::CustomerVaria
     cust_name{YType::str, "cust-name"},
     vrf_name{YType::str, "vrf-name"},
     auth_option{YType::boolean, "auth-option"}
-    	,
+        ,
     mll_service(std::make_shared<Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService>())
 {
     mll_service->parent = this;
 
-    yang_name = "customer-variable"; yang_parent_name = "customer-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "customer-variable"; yang_parent_name = "customer-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::~CustomerVariable()
@@ -8367,6 +8426,7 @@ Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::~CustomerVari
 
 bool Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::has_data() const
 {
+    if (is_presence_container) return true;
     return customer_name.is_set
 	|| cust_name.is_set
 	|| vrf_name.is_set
@@ -8394,7 +8454,8 @@ std::string Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::g
 std::string Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "customer-variable" <<"[customer-name='" <<customer_name <<"']";
+    path_buffer << "customer-variable";
+    ADD_KEY_TOKEN(customer_name, "customer-name");
     return path_buffer.str();
 }
 
@@ -8505,7 +8566,7 @@ Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::M
     mnp_ipv6_cust_cur{YType::uint32, "mnp-ipv6-cust-cur"}
 {
 
-    yang_name = "mll-service"; yang_parent_name = "customer-variable"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mll-service"; yang_parent_name = "customer-variable"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::~MllService()
@@ -8514,6 +8575,7 @@ Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::~
 
 bool Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable::MllService::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_hoa.is_set
 	|| mnp_ipv4_lmn_max.is_set
 	|| mnp_ipv6_lmn_max.is_set
@@ -8703,14 +8765,18 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::GlobalVariables()
     ddp{YType::uint32, "ddp"},
     ddt{YType::uint32, "ddt"},
     ddr{YType::uint8, "ddr"}
-    	,
+        ,
     parameters(std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters>())
-	,mll_service(std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService>())
+    , mll_service(std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService>())
+    , intf(this, {})
+    , peer(this, {})
+    , network(this, {})
+    , cust(this, {})
 {
     parameters->parent = this;
     mll_service->parent = this;
 
-    yang_name = "global-variables"; yang_parent_name = "config-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-variables"; yang_parent_name = "config-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::~GlobalVariables()
@@ -8719,22 +8785,23 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::~GlobalVariables()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::has_data() const
 {
-    for (std::size_t index=0; index<intf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<intf.len(); index++)
     {
         if(intf[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<cust.size(); index++)
+    for (std::size_t index=0; index<cust.len(); index++)
     {
         if(cust[index]->has_data())
             return true;
@@ -8765,22 +8832,22 @@ bool Pmipv6::Lma::ConfigVariables::GlobalVariables::has_data() const
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::has_operation() const
 {
-    for (std::size_t index=0; index<intf.size(); index++)
+    for (std::size_t index=0; index<intf.len(); index++)
     {
         if(intf[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<cust.size(); index++)
+    for (std::size_t index=0; index<cust.len(); index++)
     {
         if(cust[index]->has_operation())
             return true;
@@ -8877,7 +8944,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_child
     {
         auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf>();
         c->parent = this;
-        intf.push_back(c);
+        intf.append(c);
         return c;
     }
 
@@ -8885,7 +8952,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_child
     {
         auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -8893,7 +8960,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_child
     {
         auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Network>();
         c->parent = this;
-        network.push_back(c);
+        network.append(c);
         return c;
     }
 
@@ -8901,7 +8968,7 @@ std::shared_ptr<Entity> Pmipv6::Lma::ConfigVariables::GlobalVariables::get_child
     {
         auto c = std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust>();
         c->parent = this;
-        cust.push_back(c);
+        cust.append(c);
         return c;
     }
 
@@ -8923,7 +8990,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::Glo
     }
 
     count = 0;
-    for (auto const & c : intf)
+    for (auto c : intf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8932,7 +8999,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::Glo
     }
 
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8941,7 +9008,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::Glo
     }
 
     count = 0;
-    for (auto const & c : network)
+    for (auto c : network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8950,7 +9017,7 @@ std::map<std::string, std::shared_ptr<Entity>> Pmipv6::Lma::ConfigVariables::Glo
     }
 
     count = 0;
-    for (auto const & c : cust)
+    for (auto c : cust.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9195,12 +9262,12 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::Parameters()
     create_time{YType::uint16, "create-time"},
     up_grekey{YType::uint32, "up-grekey"},
     down_grekey{YType::uint32, "down-grekey"}
-    	,
+        ,
     self_id(std::make_shared<Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId>())
 {
     self_id->parent = this;
 
-    yang_name = "parameters"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "parameters"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::~Parameters()
@@ -9209,6 +9276,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::~Parameters()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| window.is_set
 	|| auth_option.is_set
@@ -9511,7 +9579,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::SelfId()
     ipv4_address{YType::str, "ipv4-address"}
 {
 
-    yang_name = "self-id"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "self-id"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::~SelfId()
@@ -9520,6 +9588,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::~SelfId()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters::SelfId::has_data() const
 {
+    if (is_presence_container) return true;
     return entity_.is_set
 	|| addr_type.is_set
 	|| address.is_set
@@ -9642,7 +9711,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::MllService()
     mnp_ipv6_cust_cur{YType::uint32, "mnp-ipv6-cust-cur"}
 {
 
-    yang_name = "mll-service"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mll-service"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::~MllService()
@@ -9651,6 +9720,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::~MllService()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_hoa.is_set
 	|| mnp_ipv4_lmn_max.is_set
 	|| mnp_ipv6_lmn_max.is_set
@@ -9832,7 +9902,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::Intf()
     apn_name{YType::str, "apn-name"}
 {
 
-    yang_name = "intf"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "intf"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::~Intf()
@@ -9841,6 +9911,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::~Intf()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::has_data() const
 {
+    if (is_presence_container) return true;
     return apn.is_set
 	|| interface.is_set
 	|| apn_name.is_set;
@@ -9948,7 +10019,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::Peer()
     statictunnel{YType::boolean, "statictunnel"}
 {
 
-    yang_name = "peer"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::~Peer()
@@ -9957,6 +10028,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::~Peer()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer.is_set
 	|| vrf_name.is_set
 	|| interface.is_set
@@ -10117,7 +10189,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::Network()
     mrnet{YType::uint8, "mrnet"}
 {
 
-    yang_name = "network"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::~Network()
@@ -10126,6 +10198,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::~Network()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return v4pool.is_set
 	|| v6pool.is_set
 	|| network.is_set
@@ -10300,7 +10373,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::Cust()
     t_vrf_name{YType::str, "t-vrf-name"}
 {
 
-    yang_name = "cust"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cust"; yang_parent_name = "global-variables"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::~Cust()
@@ -10309,6 +10382,7 @@ Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::~Cust()
 
 bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::has_data() const
 {
+    if (is_presence_container) return true;
     return cust.is_set
 	|| vrf.is_set
 	|| t_vrf.is_set
@@ -10483,6 +10557,13 @@ bool Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::has_leaf_or_child_of_n
     return false;
 }
 
+const Enum::YLeaf Pmipv6Role::wlan {0, "wlan"};
+const Enum::YLeaf Pmipv6Role::gpp {1, "gpp"};
+const Enum::YLeaf Pmipv6Role::lte {2, "lte"};
+const Enum::YLeaf Pmipv6Role::wi_max {3, "wi-max"};
+const Enum::YLeaf Pmipv6Role::gma {4, "gma"};
+const Enum::YLeaf Pmipv6Role::rmax {5, "rmax"};
+
 const Enum::YLeaf Pmipv6Encap::none {0, "none"};
 const Enum::YLeaf Pmipv6Encap::ipv6 {1, "ipv6"};
 const Enum::YLeaf Pmipv6Encap::ipv6_ipv4 {2, "ipv6-ipv4"};
@@ -10500,13 +10581,6 @@ const Enum::YLeaf Pmipv6Addr::none {0, "none"};
 const Enum::YLeaf Pmipv6Addr::ipv4 {1, "ipv4"};
 const Enum::YLeaf Pmipv6Addr::ipv6 {2, "ipv6"};
 const Enum::YLeaf Pmipv6Addr::pmipv6_addr_ipv4_ipv6 {3, "pmipv6-addr-ipv4-ipv6"};
-
-const Enum::YLeaf Pmipv6Role::wlan {0, "wlan"};
-const Enum::YLeaf Pmipv6Role::gpp {1, "gpp"};
-const Enum::YLeaf Pmipv6Role::lte {2, "lte"};
-const Enum::YLeaf Pmipv6Role::wi_max {3, "wi-max"};
-const Enum::YLeaf Pmipv6Role::gma {4, "gma"};
-const Enum::YLeaf Pmipv6Role::rmax {5, "rmax"};
 
 
 }

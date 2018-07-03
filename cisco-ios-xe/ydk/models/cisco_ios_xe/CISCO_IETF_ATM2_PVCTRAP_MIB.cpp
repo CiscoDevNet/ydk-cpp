@@ -13,11 +13,11 @@ namespace CISCO_IETF_ATM2_PVCTRAP_MIB {
 
 CISCOIETFATM2PVCTRAPMIB::CISCOIETFATM2PVCTRAPMIB()
     :
-    atmcurrentlyfailingpvcltable(std::make_shared<CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable>())
+    atmcurrentlyfailingpvcltable(std::make_shared<CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable>())
 {
     atmcurrentlyfailingpvcltable->parent = this;
 
-    yang_name = "CISCO-IETF-ATM2-PVCTRAP-MIB"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IETF-ATM2-PVCTRAP-MIB"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIETFATM2PVCTRAPMIB::~CISCOIETFATM2PVCTRAPMIB()
@@ -26,6 +26,7 @@ CISCOIETFATM2PVCTRAPMIB::~CISCOIETFATM2PVCTRAPMIB()
 
 bool CISCOIETFATM2PVCTRAPMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (atmcurrentlyfailingpvcltable !=  nullptr && atmcurrentlyfailingpvcltable->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::get_child_by_name(const std::st
     {
         if(atmcurrentlyfailingpvcltable == nullptr)
         {
-            atmcurrentlyfailingpvcltable = std::make_shared<CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable>();
+            atmcurrentlyfailingpvcltable = std::make_shared<CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable>();
         }
         return atmcurrentlyfailingpvcltable;
     }
@@ -117,19 +118,22 @@ bool CISCOIETFATM2PVCTRAPMIB::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvcltable()
+CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclTable()
+    :
+    atmcurrentlyfailingpvclentry(this, {"ifindex", "atmvclvpi", "atmvclvci"})
 {
 
-    yang_name = "atmCurrentlyFailingPVclTable"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmCurrentlyFailingPVclTable"; yang_parent_name = "CISCO-IETF-ATM2-PVCTRAP-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::~Atmcurrentlyfailingpvcltable()
+CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::~AtmCurrentlyFailingPVclTable()
 {
 }
 
-bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::has_data() const
+bool CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::has_data() const
 {
-    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry.len(); index++)
     {
         if(atmcurrentlyfailingpvclentry[index]->has_data())
             return true;
@@ -137,9 +141,9 @@ bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::has_data() const
     return false;
 }
 
-bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::has_operation() const
+bool CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::has_operation() const
 {
-    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry.size(); index++)
+    for (std::size_t index=0; index<atmcurrentlyfailingpvclentry.len(); index++)
     {
         if(atmcurrentlyfailingpvclentry[index]->has_operation())
             return true;
@@ -147,21 +151,21 @@ bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::has_operation() cons
     return is_set(yfilter);
 }
 
-std::string CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::get_absolute_path() const
+std::string CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB:CISCO-IETF-ATM2-PVCTRAP-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::get_segment_path() const
+std::string CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atmCurrentlyFailingPVclTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -170,25 +174,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIB::Atmcurre
 
 }
 
-std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atmCurrentlyFailingPVclEntry")
     {
-        auto c = std::make_shared<CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry>();
+        auto c = std::make_shared<CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry>();
         c->parent = this;
-        atmcurrentlyfailingpvclentry.push_back(c);
+        atmcurrentlyfailingpvclentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atmcurrentlyfailingpvclentry)
+    for (auto c : atmcurrentlyfailingpvclentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -199,22 +203,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::Atmcurre
     return children;
 }
 
-void CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atmCurrentlyFailingPVclEntry")
         return true;
     return false;
 }
 
-CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::Atmcurrentlyfailingpvclentry()
+CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::AtmCurrentlyFailingPVclEntry()
     :
     ifindex{YType::str, "ifIndex"},
     atmvclvpi{YType::str, "atmVclVpi"},
@@ -223,15 +227,16 @@ CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclen
     atmpreviouslyfailedpvcltimestamp{YType::uint32, "atmPreviouslyFailedPVclTimeStamp"}
 {
 
-    yang_name = "atmCurrentlyFailingPVclEntry"; yang_parent_name = "atmCurrentlyFailingPVclTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "atmCurrentlyFailingPVclEntry"; yang_parent_name = "atmCurrentlyFailingPVclTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::~Atmcurrentlyfailingpvclentry()
+CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::~AtmCurrentlyFailingPVclEntry()
 {
 }
 
-bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::has_data() const
+bool CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| atmvclvpi.is_set
 	|| atmvclvci.is_set
@@ -239,7 +244,7 @@ bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingp
 	|| atmpreviouslyfailedpvcltimestamp.is_set;
 }
 
-bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::has_operation() const
+bool CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -249,21 +254,24 @@ bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingp
 	|| ydk::is_set(atmpreviouslyfailedpvcltimestamp.yfilter);
 }
 
-std::string CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::get_absolute_path() const
+std::string CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IETF-ATM2-PVCTRAP-MIB:CISCO-IETF-ATM2-PVCTRAP-MIB/atmCurrentlyFailingPVclTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::get_segment_path() const
+std::string CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atmCurrentlyFailingPVclEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[atmVclVpi='" <<atmvclvpi <<"']" <<"[atmVclVci='" <<atmvclvci <<"']";
+    path_buffer << "atmCurrentlyFailingPVclEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(atmvclvpi, "atmVclVpi");
+    ADD_KEY_TOKEN(atmvclvci, "atmVclVci");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -277,19 +285,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIETFATM2PVCTRAPMIB::Atmcurre
 
 }
 
-std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -323,7 +331,7 @@ void CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingp
     }
 }
 
-void CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -347,7 +355,7 @@ void CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingp
     }
 }
 
-bool CISCOIETFATM2PVCTRAPMIB::Atmcurrentlyfailingpvcltable::Atmcurrentlyfailingpvclentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIETFATM2PVCTRAPMIB::AtmCurrentlyFailingPVclTable::AtmCurrentlyFailingPVclEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "atmVclVpi" || name == "atmVclVci" || name == "atmCurrentlyFailingPVclTimeStamp" || name == "atmPreviouslyFailedPVclTimeStamp")
         return true;

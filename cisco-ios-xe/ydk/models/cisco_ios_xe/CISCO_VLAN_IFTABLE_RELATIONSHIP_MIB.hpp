@@ -31,18 +31,18 @@ class CISCOVLANIFTABLERELATIONSHIPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cvivlaninterfaceindextable; //type: CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable
+        class CviVlanInterfaceIndexTable; //type: CISCOVLANIFTABLERELATIONSHIPMIB::CviVlanInterfaceIndexTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB::CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable> cvivlaninterfaceindextable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB::CISCOVLANIFTABLERELATIONSHIPMIB::CviVlanInterfaceIndexTable> cvivlaninterfaceindextable;
         
 }; // CISCOVLANIFTABLERELATIONSHIPMIB
 
 
-class CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable : public ydk::Entity
+class CISCOVLANIFTABLERELATIONSHIPMIB::CviVlanInterfaceIndexTable : public ydk::Entity
 {
     public:
-        Cvivlaninterfaceindextable();
-        ~Cvivlaninterfaceindextable();
+        CviVlanInterfaceIndexTable();
+        ~CviVlanInterfaceIndexTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,18 +55,18 @@ class CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvivlaninterfaceindexentry; //type: CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry
+        class CviVlanInterfaceIndexEntry; //type: CISCOVLANIFTABLERELATIONSHIPMIB::CviVlanInterfaceIndexTable::CviVlanInterfaceIndexEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VLAN_IFTABLE_RELATIONSHIP_MIB::CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry> > cvivlaninterfaceindexentry;
+        ydk::YList cvivlaninterfaceindexentry;
         
-}; // CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable
+}; // CISCOVLANIFTABLERELATIONSHIPMIB::CviVlanInterfaceIndexTable
 
 
-class CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry : public ydk::Entity
+class CISCOVLANIFTABLERELATIONSHIPMIB::CviVlanInterfaceIndexTable::CviVlanInterfaceIndexEntry : public ydk::Entity
 {
     public:
-        Cvivlaninterfaceindexentry();
-        ~Cvivlaninterfaceindexentry();
+        CviVlanInterfaceIndexEntry();
+        ~CviVlanInterfaceIndexEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -83,7 +83,7 @@ class CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterf
         ydk::YLeaf cviphysicalifindex; //type: int32
         ydk::YLeaf cviroutedvlanifindex; //type: int32
 
-}; // CISCOVLANIFTABLERELATIONSHIPMIB::Cvivlaninterfaceindextable::Cvivlaninterfaceindexentry
+}; // CISCOVLANIFTABLERELATIONSHIPMIB::CviVlanInterfaceIndexTable::CviVlanInterfaceIndexEntry
 
 
 }

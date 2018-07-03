@@ -13,12 +13,12 @@ namespace CISCO_NETSYNC_MIB {
 
 CISCONETSYNCMIB::CISCONETSYNCMIB()
     :
-    cisconetsyncmibnotifcontrol(std::make_shared<CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol>())
-	,cnsclkselglobaltable(std::make_shared<CISCONETSYNCMIB::Cnsclkselglobaltable>())
-	,cnsselectedinputsourcetable(std::make_shared<CISCONETSYNCMIB::Cnsselectedinputsourcetable>())
-	,cnsinputsourcetable(std::make_shared<CISCONETSYNCMIB::Cnsinputsourcetable>())
-	,cnsextoutputtable(std::make_shared<CISCONETSYNCMIB::Cnsextoutputtable>())
-	,cnst4clocksourcetable(std::make_shared<CISCONETSYNCMIB::Cnst4Clocksourcetable>())
+    cisconetsyncmibnotifcontrol(std::make_shared<CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl>())
+    , cnsclkselglobaltable(std::make_shared<CISCONETSYNCMIB::CnsClkSelGlobalTable>())
+    , cnsselectedinputsourcetable(std::make_shared<CISCONETSYNCMIB::CnsSelectedInputSourceTable>())
+    , cnsinputsourcetable(std::make_shared<CISCONETSYNCMIB::CnsInputSourceTable>())
+    , cnsextoutputtable(std::make_shared<CISCONETSYNCMIB::CnsExtOutputTable>())
+    , cnst4clocksourcetable(std::make_shared<CISCONETSYNCMIB::CnsT4ClockSourceTable>())
 {
     cisconetsyncmibnotifcontrol->parent = this;
     cnsclkselglobaltable->parent = this;
@@ -27,7 +27,7 @@ CISCONETSYNCMIB::CISCONETSYNCMIB()
     cnsextoutputtable->parent = this;
     cnst4clocksourcetable->parent = this;
 
-    yang_name = "CISCO-NETSYNC-MIB"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-NETSYNC-MIB"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCONETSYNCMIB::~CISCONETSYNCMIB()
@@ -36,6 +36,7 @@ CISCONETSYNCMIB::~CISCONETSYNCMIB()
 
 bool CISCONETSYNCMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cisconetsyncmibnotifcontrol !=  nullptr && cisconetsyncmibnotifcontrol->has_data())
 	|| (cnsclkselglobaltable !=  nullptr && cnsclkselglobaltable->has_data())
 	|| (cnsselectedinputsourcetable !=  nullptr && cnsselectedinputsourcetable->has_data())
@@ -77,7 +78,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::get_child_by_name(const std::string & c
     {
         if(cisconetsyncmibnotifcontrol == nullptr)
         {
-            cisconetsyncmibnotifcontrol = std::make_shared<CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol>();
+            cisconetsyncmibnotifcontrol = std::make_shared<CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl>();
         }
         return cisconetsyncmibnotifcontrol;
     }
@@ -86,7 +87,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::get_child_by_name(const std::string & c
     {
         if(cnsclkselglobaltable == nullptr)
         {
-            cnsclkselglobaltable = std::make_shared<CISCONETSYNCMIB::Cnsclkselglobaltable>();
+            cnsclkselglobaltable = std::make_shared<CISCONETSYNCMIB::CnsClkSelGlobalTable>();
         }
         return cnsclkselglobaltable;
     }
@@ -95,7 +96,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::get_child_by_name(const std::string & c
     {
         if(cnsselectedinputsourcetable == nullptr)
         {
-            cnsselectedinputsourcetable = std::make_shared<CISCONETSYNCMIB::Cnsselectedinputsourcetable>();
+            cnsselectedinputsourcetable = std::make_shared<CISCONETSYNCMIB::CnsSelectedInputSourceTable>();
         }
         return cnsselectedinputsourcetable;
     }
@@ -104,7 +105,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::get_child_by_name(const std::string & c
     {
         if(cnsinputsourcetable == nullptr)
         {
-            cnsinputsourcetable = std::make_shared<CISCONETSYNCMIB::Cnsinputsourcetable>();
+            cnsinputsourcetable = std::make_shared<CISCONETSYNCMIB::CnsInputSourceTable>();
         }
         return cnsinputsourcetable;
     }
@@ -113,7 +114,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::get_child_by_name(const std::string & c
     {
         if(cnsextoutputtable == nullptr)
         {
-            cnsextoutputtable = std::make_shared<CISCONETSYNCMIB::Cnsextoutputtable>();
+            cnsextoutputtable = std::make_shared<CISCONETSYNCMIB::CnsExtOutputTable>();
         }
         return cnsextoutputtable;
     }
@@ -122,7 +123,7 @@ std::shared_ptr<Entity> CISCONETSYNCMIB::get_child_by_name(const std::string & c
     {
         if(cnst4clocksourcetable == nullptr)
         {
-            cnst4clocksourcetable = std::make_shared<CISCONETSYNCMIB::Cnst4Clocksourcetable>();
+            cnst4clocksourcetable = std::make_shared<CISCONETSYNCMIB::CnsT4ClockSourceTable>();
         }
         return cnst4clocksourcetable;
     }
@@ -207,44 +208,45 @@ bool CISCONETSYNCMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::Cisconetsyncmibnotifcontrol()
+CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::CiscoNetsyncMIBNotifControl()
     :
     cnsmibenablestatusnotification{YType::boolean, "cnsMIBEnableStatusNotification"}
 {
 
-    yang_name = "ciscoNetsyncMIBNotifControl"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoNetsyncMIBNotifControl"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::~Cisconetsyncmibnotifcontrol()
+CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::~CiscoNetsyncMIBNotifControl()
 {
 }
 
-bool CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::has_data() const
+bool CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::has_data() const
 {
+    if (is_presence_container) return true;
     return cnsmibenablestatusnotification.is_set;
 }
 
-bool CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::has_operation() const
+bool CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnsmibenablestatusnotification.yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::get_absolute_path() const
+std::string CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::get_segment_path() const
+std::string CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoNetsyncMIBNotifControl";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -254,19 +256,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cisconetsyncmibn
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnsMIBEnableStatusNotification")
     {
@@ -276,7 +278,7 @@ void CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::set_value(const std::string &
     }
 }
 
-void CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnsMIBEnableStatusNotification")
     {
@@ -284,26 +286,29 @@ void CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::set_filter(const std::string 
     }
 }
 
-bool CISCONETSYNCMIB::Cisconetsyncmibnotifcontrol::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CiscoNetsyncMIBNotifControl::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsMIBEnableStatusNotification")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobaltable()
+CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalTable()
+    :
+    cnsclkselglobalentry(this, {"cnsclkselgloprocindex"})
 {
 
-    yang_name = "cnsClkSelGlobalTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsClkSelGlobalTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsclkselglobaltable::~Cnsclkselglobaltable()
+CISCONETSYNCMIB::CnsClkSelGlobalTable::~CnsClkSelGlobalTable()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsclkselglobaltable::has_data() const
+bool CISCONETSYNCMIB::CnsClkSelGlobalTable::has_data() const
 {
-    for (std::size_t index=0; index<cnsclkselglobalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnsclkselglobalentry.len(); index++)
     {
         if(cnsclkselglobalentry[index]->has_data())
             return true;
@@ -311,9 +316,9 @@ bool CISCONETSYNCMIB::Cnsclkselglobaltable::has_data() const
     return false;
 }
 
-bool CISCONETSYNCMIB::Cnsclkselglobaltable::has_operation() const
+bool CISCONETSYNCMIB::CnsClkSelGlobalTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsclkselglobalentry.size(); index++)
+    for (std::size_t index=0; index<cnsclkselglobalentry.len(); index++)
     {
         if(cnsclkselglobalentry[index]->has_operation())
             return true;
@@ -321,21 +326,21 @@ bool CISCONETSYNCMIB::Cnsclkselglobaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsclkselglobaltable::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsClkSelGlobalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsclkselglobaltable::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsClkSelGlobalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnsClkSelGlobalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsclkselglobaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsClkSelGlobalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -344,25 +349,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsclkselglobalt
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsclkselglobaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsClkSelGlobalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnsClkSelGlobalEntry")
     {
-        auto c = std::make_shared<CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry>();
+        auto c = std::make_shared<CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry>();
         c->parent = this;
-        cnsclkselglobalentry.push_back(c);
+        cnsclkselglobalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsclkselglobaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsClkSelGlobalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnsclkselglobalentry)
+    for (auto c : cnsclkselglobalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -373,22 +378,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsclkselglobalt
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsclkselglobaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsClkSelGlobalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONETSYNCMIB::Cnsclkselglobaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsClkSelGlobalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONETSYNCMIB::Cnsclkselglobaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsClkSelGlobalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsClkSelGlobalEntry")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::Cnsclkselglobalentry()
+CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::CnsClkSelGlobalEntry()
     :
     cnsclkselgloprocindex{YType::uint32, "cnsClkSelGloProcIndex"},
     cnsclkselglobprocessmode{YType::enumeration, "cnsClkSelGlobProcessMode"},
@@ -405,15 +410,16 @@ CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::Cnsclkselglobalentr
     cnsclkselglobcurrholdoverseconds{YType::uint32, "cnsClkSelGlobCurrHoldoverSeconds"}
 {
 
-    yang_name = "cnsClkSelGlobalEntry"; yang_parent_name = "cnsClkSelGlobalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsClkSelGlobalEntry"; yang_parent_name = "cnsClkSelGlobalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::~Cnsclkselglobalentry()
+CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::~CnsClkSelGlobalEntry()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::has_data() const
+bool CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnsclkselgloprocindex.is_set
 	|| cnsclkselglobprocessmode.is_set
 	|| cnsclkselglobclockmode.is_set
@@ -429,7 +435,7 @@ bool CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::has_data() con
 	|| cnsclkselglobcurrholdoverseconds.is_set;
 }
 
-bool CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::has_operation() const
+bool CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnsclkselgloprocindex.yfilter)
@@ -447,21 +453,22 @@ bool CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::has_operation(
 	|| ydk::is_set(cnsclkselglobcurrholdoverseconds.yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/cnsClkSelGlobalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnsClkSelGlobalEntry" <<"[cnsClkSelGloProcIndex='" <<cnsclkselgloprocindex <<"']";
+    path_buffer << "cnsClkSelGlobalEntry";
+    ADD_KEY_TOKEN(cnsclkselgloprocindex, "cnsClkSelGloProcIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -483,19 +490,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsclkselglobalt
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnsClkSelGloProcIndex")
     {
@@ -577,7 +584,7 @@ void CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::set_value(cons
     }
 }
 
-void CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnsClkSelGloProcIndex")
     {
@@ -633,26 +640,29 @@ void CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::set_filter(con
     }
 }
 
-bool CISCONETSYNCMIB::Cnsclkselglobaltable::Cnsclkselglobalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsClkSelGlobalTable::CnsClkSelGlobalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsClkSelGloProcIndex" || name == "cnsClkSelGlobProcessMode" || name == "cnsClkSelGlobClockMode" || name == "cnsClkSelGlobNetsyncEnable" || name == "cnsClkSelGlobRevertiveMode" || name == "cnsClkSelGlobESMCMode" || name == "cnsClkSelGlobEECOption" || name == "cnsClkSelGlobNetworkOption" || name == "cnsClkSelGlobHoldoffTime" || name == "cnsClkSelGlobWtrTime" || name == "cnsClkSelGlobNofSources" || name == "cnsClkSelGlobLastHoldoverSeconds" || name == "cnsClkSelGlobCurrHoldoverSeconds")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourcetable()
+CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceTable()
+    :
+    cnsselectedinputsourceentry(this, {"cnsselinpsrcnetsyncindex"})
 {
 
-    yang_name = "cnsSelectedInputSourceTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsSelectedInputSourceTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsselectedinputsourcetable::~Cnsselectedinputsourcetable()
+CISCONETSYNCMIB::CnsSelectedInputSourceTable::~CnsSelectedInputSourceTable()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::has_data() const
+bool CISCONETSYNCMIB::CnsSelectedInputSourceTable::has_data() const
 {
-    for (std::size_t index=0; index<cnsselectedinputsourceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnsselectedinputsourceentry.len(); index++)
     {
         if(cnsselectedinputsourceentry[index]->has_data())
             return true;
@@ -660,9 +670,9 @@ bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::has_data() const
     return false;
 }
 
-bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::has_operation() const
+bool CISCONETSYNCMIB::CnsSelectedInputSourceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsselectedinputsourceentry.size(); index++)
+    for (std::size_t index=0; index<cnsselectedinputsourceentry.len(); index++)
     {
         if(cnsselectedinputsourceentry[index]->has_operation())
             return true;
@@ -670,21 +680,21 @@ bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsSelectedInputSourceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsSelectedInputSourceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnsSelectedInputSourceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsSelectedInputSourceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -693,25 +703,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsselectedinput
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsSelectedInputSourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnsSelectedInputSourceEntry")
     {
-        auto c = std::make_shared<CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry>();
+        auto c = std::make_shared<CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry>();
         c->parent = this;
-        cnsselectedinputsourceentry.push_back(c);
+        cnsselectedinputsourceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsselectedinputsourcetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsSelectedInputSourceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnsselectedinputsourceentry)
+    for (auto c : cnsselectedinputsourceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -722,22 +732,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsselectedinput
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsselectedinputsourcetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsSelectedInputSourceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONETSYNCMIB::Cnsselectedinputsourcetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsSelectedInputSourceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsSelectedInputSourceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsSelectedInputSourceEntry")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::Cnsselectedinputsourceentry()
+CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::CnsSelectedInputSourceEntry()
     :
     cnsselinpsrcnetsyncindex{YType::uint32, "cnsSelInpSrcNetsyncIndex"},
     cnsselinpsrcname{YType::str, "cnsSelInpSrcName"},
@@ -749,15 +759,16 @@ CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::Cnsse
     cnsselinpsrcmsw{YType::boolean, "cnsSelInpSrcMSW"}
 {
 
-    yang_name = "cnsSelectedInputSourceEntry"; yang_parent_name = "cnsSelectedInputSourceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsSelectedInputSourceEntry"; yang_parent_name = "cnsSelectedInputSourceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::~Cnsselectedinputsourceentry()
+CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::~CnsSelectedInputSourceEntry()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::has_data() const
+bool CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnsselinpsrcnetsyncindex.is_set
 	|| cnsselinpsrcname.is_set
 	|| cnsselinpsrcintftype.is_set
@@ -768,7 +779,7 @@ bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::
 	|| cnsselinpsrcmsw.is_set;
 }
 
-bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::has_operation() const
+bool CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnsselinpsrcnetsyncindex.yfilter)
@@ -781,21 +792,22 @@ bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::
 	|| ydk::is_set(cnsselinpsrcmsw.yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/cnsSelectedInputSourceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnsSelectedInputSourceEntry" <<"[cnsSelInpSrcNetsyncIndex='" <<cnsselinpsrcnetsyncindex <<"']";
+    path_buffer << "cnsSelectedInputSourceEntry";
+    ADD_KEY_TOKEN(cnsselinpsrcnetsyncindex, "cnsSelInpSrcNetsyncIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -812,19 +824,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsselectedinput
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnsSelInpSrcNetsyncIndex")
     {
@@ -876,7 +888,7 @@ void CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::
     }
 }
 
-void CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnsSelInpSrcNetsyncIndex")
     {
@@ -912,26 +924,29 @@ void CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::
     }
 }
 
-bool CISCONETSYNCMIB::Cnsselectedinputsourcetable::Cnsselectedinputsourceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsSelectedInputSourceTable::CnsSelectedInputSourceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsSelInpSrcNetsyncIndex" || name == "cnsSelInpSrcName" || name == "cnsSelInpSrcIntfType" || name == "cnsSelInpSrcQualityLevel" || name == "cnsSelInpSrcPriority" || name == "cnsSelInpSrcTimestamp" || name == "cnsSelInpSrcFSW" || name == "cnsSelInpSrcMSW")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourcetable()
+CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceTable()
+    :
+    cnsinputsourceentry(this, {"cnsinpsrcnetsyncindex"})
 {
 
-    yang_name = "cnsInputSourceTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsInputSourceTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsinputsourcetable::~Cnsinputsourcetable()
+CISCONETSYNCMIB::CnsInputSourceTable::~CnsInputSourceTable()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsinputsourcetable::has_data() const
+bool CISCONETSYNCMIB::CnsInputSourceTable::has_data() const
 {
-    for (std::size_t index=0; index<cnsinputsourceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnsinputsourceentry.len(); index++)
     {
         if(cnsinputsourceentry[index]->has_data())
             return true;
@@ -939,9 +954,9 @@ bool CISCONETSYNCMIB::Cnsinputsourcetable::has_data() const
     return false;
 }
 
-bool CISCONETSYNCMIB::Cnsinputsourcetable::has_operation() const
+bool CISCONETSYNCMIB::CnsInputSourceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsinputsourceentry.size(); index++)
+    for (std::size_t index=0; index<cnsinputsourceentry.len(); index++)
     {
         if(cnsinputsourceentry[index]->has_operation())
             return true;
@@ -949,21 +964,21 @@ bool CISCONETSYNCMIB::Cnsinputsourcetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsinputsourcetable::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsInputSourceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsinputsourcetable::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsInputSourceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnsInputSourceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsinputsourcetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsInputSourceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -972,25 +987,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsinputsourceta
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsinputsourcetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsInputSourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnsInputSourceEntry")
     {
-        auto c = std::make_shared<CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry>();
+        auto c = std::make_shared<CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry>();
         c->parent = this;
-        cnsinputsourceentry.push_back(c);
+        cnsinputsourceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsinputsourcetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsInputSourceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnsinputsourceentry)
+    for (auto c : cnsinputsourceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1001,22 +1016,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsinputsourceta
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsinputsourcetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsInputSourceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONETSYNCMIB::Cnsinputsourcetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsInputSourceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONETSYNCMIB::Cnsinputsourcetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsInputSourceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsInputSourceEntry")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::Cnsinputsourceentry()
+CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::CnsInputSourceEntry()
     :
     cnsinpsrcnetsyncindex{YType::uint32, "cnsInpSrcNetsyncIndex"},
     cnsinpsrcname{YType::str, "cnsInpSrcName"},
@@ -1039,15 +1054,16 @@ CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::Cnsinputsourceentry()
     cnsinpsrcmsw{YType::boolean, "cnsInpSrcMSW"}
 {
 
-    yang_name = "cnsInputSourceEntry"; yang_parent_name = "cnsInputSourceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsInputSourceEntry"; yang_parent_name = "cnsInputSourceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::~Cnsinputsourceentry()
+CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::~CnsInputSourceEntry()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::has_data() const
+bool CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnsinpsrcnetsyncindex.is_set
 	|| cnsinpsrcname.is_set
 	|| cnsinpsrcintftype.is_set
@@ -1069,7 +1085,7 @@ bool CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::has_data() const
 	|| cnsinpsrcmsw.is_set;
 }
 
-bool CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::has_operation() const
+bool CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnsinpsrcnetsyncindex.yfilter)
@@ -1093,21 +1109,22 @@ bool CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::has_operation() 
 	|| ydk::is_set(cnsinpsrcmsw.yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/cnsInputSourceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnsInputSourceEntry" <<"[cnsInpSrcNetsyncIndex='" <<cnsinpsrcnetsyncindex <<"']";
+    path_buffer << "cnsInputSourceEntry";
+    ADD_KEY_TOKEN(cnsinpsrcnetsyncindex, "cnsInpSrcNetsyncIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1135,19 +1152,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsinputsourceta
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnsInpSrcNetsyncIndex")
     {
@@ -1263,7 +1280,7 @@ void CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::set_value(const 
     }
 }
 
-void CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnsInpSrcNetsyncIndex")
     {
@@ -1343,26 +1360,29 @@ void CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::set_filter(const
     }
 }
 
-bool CISCONETSYNCMIB::Cnsinputsourcetable::Cnsinputsourceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsInputSourceTable::CnsInputSourceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsInpSrcNetsyncIndex" || name == "cnsInpSrcName" || name == "cnsInpSrcIntfType" || name == "cnsInpSrcPriority" || name == "cnsInpSrcESMCCap" || name == "cnsInpSrcSSMCap" || name == "cnsInpSrcQualityLevelTxCfg" || name == "cnsInpSrcQualityLevelRxCfg" || name == "cnsInpSrcQualityLevelTx" || name == "cnsInpSrcQualityLevelRx" || name == "cnsInpSrcQualityLevel" || name == "cnsInpSrcHoldoffTime" || name == "cnsInpSrcWtrTime" || name == "cnsInpSrcLockout" || name == "cnsInpSrcSignalFailure" || name == "cnsInpSrcAlarm" || name == "cnsInpSrcAlarmInfo" || name == "cnsInpSrcFSW" || name == "cnsInpSrcMSW")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputtable()
+CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputTable()
+    :
+    cnsextoutputentry(this, {"cnsextoutlistindex"})
 {
 
-    yang_name = "cnsExtOutputTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsExtOutputTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsextoutputtable::~Cnsextoutputtable()
+CISCONETSYNCMIB::CnsExtOutputTable::~CnsExtOutputTable()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsextoutputtable::has_data() const
+bool CISCONETSYNCMIB::CnsExtOutputTable::has_data() const
 {
-    for (std::size_t index=0; index<cnsextoutputentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnsextoutputentry.len(); index++)
     {
         if(cnsextoutputentry[index]->has_data())
             return true;
@@ -1370,9 +1390,9 @@ bool CISCONETSYNCMIB::Cnsextoutputtable::has_data() const
     return false;
 }
 
-bool CISCONETSYNCMIB::Cnsextoutputtable::has_operation() const
+bool CISCONETSYNCMIB::CnsExtOutputTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnsextoutputentry.size(); index++)
+    for (std::size_t index=0; index<cnsextoutputentry.len(); index++)
     {
         if(cnsextoutputentry[index]->has_operation())
             return true;
@@ -1380,21 +1400,21 @@ bool CISCONETSYNCMIB::Cnsextoutputtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsextoutputtable::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsExtOutputTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsextoutputtable::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsExtOutputTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnsExtOutputTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsextoutputtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsExtOutputTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1403,25 +1423,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsextoutputtabl
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsextoutputtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsExtOutputTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnsExtOutputEntry")
     {
-        auto c = std::make_shared<CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry>();
+        auto c = std::make_shared<CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry>();
         c->parent = this;
-        cnsextoutputentry.push_back(c);
+        cnsextoutputentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsextoutputtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsExtOutputTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnsextoutputentry)
+    for (auto c : cnsextoutputentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1432,22 +1452,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsextoutputtabl
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsextoutputtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsExtOutputTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONETSYNCMIB::Cnsextoutputtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsExtOutputTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONETSYNCMIB::Cnsextoutputtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsExtOutputTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsExtOutputEntry")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::Cnsextoutputentry()
+CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::CnsExtOutputEntry()
     :
     cnsextoutlistindex{YType::uint32, "cnsExtOutListIndex"},
     cnsextoutselnetsyncindex{YType::uint32, "cnsExtOutSelNetsyncIndex"},
@@ -1460,15 +1480,16 @@ CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::Cnsextoutputentry()
     cnsextoutsquelch{YType::boolean, "cnsExtOutSquelch"}
 {
 
-    yang_name = "cnsExtOutputEntry"; yang_parent_name = "cnsExtOutputTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsExtOutputEntry"; yang_parent_name = "cnsExtOutputTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::~Cnsextoutputentry()
+CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::~CnsExtOutputEntry()
 {
 }
 
-bool CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::has_data() const
+bool CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnsextoutlistindex.is_set
 	|| cnsextoutselnetsyncindex.is_set
 	|| cnsextoutname.is_set
@@ -1480,7 +1501,7 @@ bool CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::has_data() const
 	|| cnsextoutsquelch.is_set;
 }
 
-bool CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::has_operation() const
+bool CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnsextoutlistindex.yfilter)
@@ -1494,21 +1515,22 @@ bool CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::has_operation() cons
 	|| ydk::is_set(cnsextoutsquelch.yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/cnsExtOutputTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnsExtOutputEntry" <<"[cnsExtOutListIndex='" <<cnsextoutlistindex <<"']";
+    path_buffer << "cnsExtOutputEntry";
+    ADD_KEY_TOKEN(cnsextoutlistindex, "cnsExtOutListIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1526,19 +1548,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnsextoutputtabl
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnsExtOutListIndex")
     {
@@ -1596,7 +1618,7 @@ void CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::set_value(const std:
     }
 }
 
-void CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnsExtOutListIndex")
     {
@@ -1636,26 +1658,29 @@ void CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::set_filter(const std
     }
 }
 
-bool CISCONETSYNCMIB::Cnsextoutputtable::Cnsextoutputentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsExtOutputTable::CnsExtOutputEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsExtOutListIndex" || name == "cnsExtOutSelNetsyncIndex" || name == "cnsExtOutName" || name == "cnsExtOutIntfType" || name == "cnsExtOutQualityLevel" || name == "cnsExtOutPriority" || name == "cnsExtOutFSW" || name == "cnsExtOutMSW" || name == "cnsExtOutSquelch")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourcetable()
+CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceTable()
+    :
+    cnst4clocksourceentry(this, {"cnsextoutlistindex", "cnst4clksrcnetsyncindex"})
 {
 
-    yang_name = "cnsT4ClockSourceTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsT4ClockSourceTable"; yang_parent_name = "CISCO-NETSYNC-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnst4Clocksourcetable::~Cnst4Clocksourcetable()
+CISCONETSYNCMIB::CnsT4ClockSourceTable::~CnsT4ClockSourceTable()
 {
 }
 
-bool CISCONETSYNCMIB::Cnst4Clocksourcetable::has_data() const
+bool CISCONETSYNCMIB::CnsT4ClockSourceTable::has_data() const
 {
-    for (std::size_t index=0; index<cnst4clocksourceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cnst4clocksourceentry.len(); index++)
     {
         if(cnst4clocksourceentry[index]->has_data())
             return true;
@@ -1663,9 +1688,9 @@ bool CISCONETSYNCMIB::Cnst4Clocksourcetable::has_data() const
     return false;
 }
 
-bool CISCONETSYNCMIB::Cnst4Clocksourcetable::has_operation() const
+bool CISCONETSYNCMIB::CnsT4ClockSourceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cnst4clocksourceentry.size(); index++)
+    for (std::size_t index=0; index<cnst4clocksourceentry.len(); index++)
     {
         if(cnst4clocksourceentry[index]->has_operation())
             return true;
@@ -1673,21 +1698,21 @@ bool CISCONETSYNCMIB::Cnst4Clocksourcetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnst4Clocksourcetable::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsT4ClockSourceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnst4Clocksourcetable::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsT4ClockSourceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cnsT4ClockSourceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnst4Clocksourcetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsT4ClockSourceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1696,25 +1721,25 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnst4Clocksource
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnst4Clocksourcetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsT4ClockSourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cnsT4ClockSourceEntry")
     {
-        auto c = std::make_shared<CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry>();
+        auto c = std::make_shared<CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry>();
         c->parent = this;
-        cnst4clocksourceentry.push_back(c);
+        cnst4clocksourceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnst4Clocksourcetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsT4ClockSourceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cnst4clocksourceentry)
+    for (auto c : cnst4clocksourceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1725,22 +1750,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnst4Clocksource
     return children;
 }
 
-void CISCONETSYNCMIB::Cnst4Clocksourcetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsT4ClockSourceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCONETSYNCMIB::Cnst4Clocksourcetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsT4ClockSourceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCONETSYNCMIB::Cnst4Clocksourcetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsT4ClockSourceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsT4ClockSourceEntry")
         return true;
     return false;
 }
 
-CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::Cnst4Clocksourceentry()
+CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::CnsT4ClockSourceEntry()
     :
     cnsextoutlistindex{YType::str, "cnsExtOutListIndex"},
     cnst4clksrcnetsyncindex{YType::uint32, "cnsT4ClkSrcNetsyncIndex"},
@@ -1764,15 +1789,16 @@ CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::Cnst4Clocksourcee
     cnst4clksrcmsw{YType::boolean, "cnsT4ClkSrcMSW"}
 {
 
-    yang_name = "cnsT4ClockSourceEntry"; yang_parent_name = "cnsT4ClockSourceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cnsT4ClockSourceEntry"; yang_parent_name = "cnsT4ClockSourceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::~Cnst4Clocksourceentry()
+CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::~CnsT4ClockSourceEntry()
 {
 }
 
-bool CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::has_data() const
+bool CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cnsextoutlistindex.is_set
 	|| cnst4clksrcnetsyncindex.is_set
 	|| cnst4clksrcname.is_set
@@ -1795,7 +1821,7 @@ bool CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::has_data() c
 	|| cnst4clksrcmsw.is_set;
 }
 
-bool CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::has_operation() const
+bool CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cnsextoutlistindex.yfilter)
@@ -1820,21 +1846,23 @@ bool CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::has_operatio
 	|| ydk::is_set(cnst4clksrcmsw.yfilter);
 }
 
-std::string CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::get_absolute_path() const
+std::string CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-NETSYNC-MIB:CISCO-NETSYNC-MIB/cnsT4ClockSourceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::get_segment_path() const
+std::string CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cnsT4ClockSourceEntry" <<"[cnsExtOutListIndex='" <<cnsextoutlistindex <<"']" <<"[cnsT4ClkSrcNetsyncIndex='" <<cnst4clksrcnetsyncindex <<"']";
+    path_buffer << "cnsT4ClockSourceEntry";
+    ADD_KEY_TOKEN(cnsextoutlistindex, "cnsExtOutListIndex");
+    ADD_KEY_TOKEN(cnst4clksrcnetsyncindex, "cnsT4ClkSrcNetsyncIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1863,19 +1891,19 @@ std::vector<std::pair<std::string, LeafData> > CISCONETSYNCMIB::Cnst4Clocksource
 
 }
 
-std::shared_ptr<Entity> CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cnsExtOutListIndex")
     {
@@ -1997,7 +2025,7 @@ void CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::set_value(co
     }
 }
 
-void CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cnsExtOutListIndex")
     {
@@ -2081,43 +2109,22 @@ void CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::set_filter(c
     }
 }
 
-bool CISCONETSYNCMIB::Cnst4Clocksourcetable::Cnst4Clocksourceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cnsExtOutListIndex" || name == "cnsT4ClkSrcNetsyncIndex" || name == "cnsT4ClkSrcName" || name == "cnsT4ClkSrcIntfType" || name == "cnsT4ClkSrcPriority" || name == "cnsT4ClkSrcESMCCap" || name == "cnsT4ClkSrcSSMCap" || name == "cnsT4ClkSrcQualityLevelTxCfg" || name == "cnsT4ClkSrcQualityLevelRxCfg" || name == "cnsT4ClkSrcQualityLevelTx" || name == "cnsT4ClkSrcQualityLevelRx" || name == "cnsT4ClkSrcQualityLevel" || name == "cnsT4ClkSrcHoldoffTime" || name == "cnsT4ClkSrcWtrTime" || name == "cnsT4ClkSrcLockout" || name == "cnsT4ClkSrcSignalFailure" || name == "cnsT4ClkSrcAlarm" || name == "cnsT4ClkSrcAlarmInfo" || name == "cnsT4ClkSrcFSW" || name == "cnsT4ClkSrcMSW")
         return true;
     return false;
 }
 
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeUnknown {1, "netsyncIfTypeUnknown"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeInternal {2, "netsyncIfTypeInternal"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeEthernet {3, "netsyncIfTypeEthernet"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeSonet {4, "netsyncIfTypeSonet"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeTop {5, "netsyncIfTypeTop"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeExt {6, "netsyncIfTypeExt"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeController {7, "netsyncIfTypeController"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeGps {8, "netsyncIfTypeGps"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeAtm {9, "netsyncIfTypeAtm"};
-
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionUnknown {1, "netsyncNetworkOptionUnknown"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption1 {2, "netsyncNetworkOption1"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen1 {3, "netsyncNetworkOption2Gen1"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen2 {4, "netsyncNetworkOption2Gen2"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption3 {5, "netsyncNetworkOption3"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionInvalid {6, "netsyncNetworkOptionInvalid"};
-
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionUnknown {1, "netsyncEECOptionUnknown"};
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption1 {2, "netsyncEECOption1"};
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption2 {3, "netsyncEECOption2"};
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionInvalid {4, "netsyncEECOptionInvalid"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapNone {1, "netsyncESMCCapNone"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTxRx {2, "netsyncESMCCapTxRx"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTx {3, "netsyncESMCCapTx"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapRx {4, "netsyncESMCCapRx"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapInvalid {5, "netsyncESMCCapInvalid"};
 
 const Enum::YLeaf CiscoNetsyncQLMode::netsyncQLModeUnknown {1, "netsyncQLModeUnknown"};
 const Enum::YLeaf CiscoNetsyncQLMode::netsyncQLModeQlDisabled {2, "netsyncQLModeQlDisabled"};
 const Enum::YLeaf CiscoNetsyncQLMode::netsyncQLModeQlEnabled {3, "netsyncQLModeQlEnabled"};
-
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeUnknown {1, "netsyncClockModeUnknown"};
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeFreerun {2, "netsyncClockModeFreerun"};
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeHoldover {3, "netsyncClockModeHoldover"};
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeLocked {4, "netsyncClockModeLocked"};
 
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelNULL {1, "netsyncQualityLevelNULL"};
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelDNU {2, "netsyncQualityLevelDNU"};
@@ -2156,17 +2163,38 @@ const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelTNC {34, "netsync
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelUNC {35, "netsyncQualityLevelUNC"};
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelUNK {36, "netsyncQualityLevelUNK"};
 
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeUnknown {1, "netsyncClockModeUnknown"};
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeFreerun {2, "netsyncClockModeFreerun"};
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeHoldover {3, "netsyncClockModeHoldover"};
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeLocked {4, "netsyncClockModeLocked"};
+
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapNone {1, "netsyncSSMCapNone"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapTxRx {2, "netsyncSSMCapTxRx"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapTx {3, "netsyncSSMCapTx"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapRx {4, "netsyncSSMCapRx"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapInvalid {5, "netsyncSSMCapInvalid"};
 
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapNone {1, "netsyncESMCCapNone"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTxRx {2, "netsyncESMCCapTxRx"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTx {3, "netsyncESMCCapTx"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapRx {4, "netsyncESMCCapRx"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapInvalid {5, "netsyncESMCCapInvalid"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeUnknown {1, "netsyncIfTypeUnknown"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeInternal {2, "netsyncIfTypeInternal"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeEthernet {3, "netsyncIfTypeEthernet"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeSonet {4, "netsyncIfTypeSonet"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeTop {5, "netsyncIfTypeTop"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeExt {6, "netsyncIfTypeExt"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeController {7, "netsyncIfTypeController"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeGps {8, "netsyncIfTypeGps"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeAtm {9, "netsyncIfTypeAtm"};
+
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionUnknown {1, "netsyncNetworkOptionUnknown"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption1 {2, "netsyncNetworkOption1"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen1 {3, "netsyncNetworkOption2Gen1"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen2 {4, "netsyncNetworkOption2Gen2"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption3 {5, "netsyncNetworkOption3"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionInvalid {6, "netsyncNetworkOptionInvalid"};
+
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionUnknown {1, "netsyncEECOptionUnknown"};
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption1 {2, "netsyncEECOption1"};
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption2 {3, "netsyncEECOption2"};
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionInvalid {4, "netsyncEECOptionInvalid"};
 
 
 }

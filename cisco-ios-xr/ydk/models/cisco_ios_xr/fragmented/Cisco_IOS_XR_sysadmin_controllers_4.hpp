@@ -14,505 +14,6 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_controllers {
 
 
-class Controller::Zen::ZenOper::ZenLocation : public ydk::Entity
-{
-    public:
-        ZenLocation();
-        ~ZenLocation();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf zen_location; //type: string
-        ydk::YLeaf zen_pci_base_address; //type: string
-        ydk::YLeaf zen_pci_dev_vendor_id; //type: string
-        ydk::YLeaf zen_pci_dev_device_id; //type: string
-        ydk::YLeaf zen_hp_desc; //type: string
-        ydk::YLeaf zen_handle; //type: string
-        ydk::YLeaf zen_msi; //type: uint32
-        ydk::YLeaf zen_irq; //type: string
-        ydk::YLeaf zen_regs; //type: string
-        ydk::YLeaf zen_trace; //type: string
-        ydk::YLeaf zen_levm; //type: string
-        ydk::YLeaf zen_sensor_poll_timer_tree; //type: string
-        ydk::YLeaf zen_sensor_poll_timer; //type: string
-        ydk::YLeaf zen_sensor_data; //type: string
-        ydk::YLeaf zen_sim; //type: boolean
-        ydk::YLeaf zen_debug; //type: boolean
-        ydk::YLeaf zen_card_type; //type: uint32
-        ydk::YLeaf zen_slot_num; //type: uint32
-        ydk::YLeaf zen_pm_hdl; //type: string
-        ydk::YLeaf zen_hdl; //type: string
-        ydk::YLeaf zen_ccc_hdl; //type: string
-        ydk::YLeaf zen_platform_local_hdl; //type: string
-        ydk::YLeaf zen_cdui_srvr_hdl; //type: string
-        class ZenTempSensorDefault; //type: Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault
-        class ZenVoltSensorDefault; //type: Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault
-        class ZenCurrSensorDefault; //type: Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault> zen_temp_sensor_default;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault> zen_volt_sensor_default;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault> zen_curr_sensor_default;
-        
-}; // Controller::Zen::ZenOper::ZenLocation
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault : public ydk::Entity
-{
-    public:
-        ZenTempSensorDefault();
-        ~ZenTempSensorDefault();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ZenTempSensorData; //type: Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData> zen_temp_sensor_data;
-        
-}; // Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData : public ydk::Entity
-{
-    public:
-        ZenTempSensorData();
-        ~ZenTempSensorData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ZenTempSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor> > zen_temp_sensor;
-        
-}; // Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor : public ydk::Entity
-{
-    public:
-        ZenTempSensor();
-        ~ZenTempSensor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf zen_temp_sensor; //type: string
-        ydk::YLeaf zen_temp_sensor_id; //type: string
-        ydk::YLeaf zen_temp_dev_addr; //type: uint32
-        ydk::YLeaf zen_temp_poll_intvl; //type: uint32
-        ydk::YLeaf zen_temp_delta; //type: uint32
-        ydk::YLeaf zen_temp_raw_data; //type: uint32
-        ydk::YLeaf zen_temp_sensor_value; //type: int32
-        ydk::YLeaf zen_temp_unit; //type: int32
-        ydk::YLeaf zen_temp_last_value; //type: uint32
-        ydk::YLeaf zen_temp_send_update; //type: boolean
-        ydk::YLeaf zen_temp_num_1sec_intervals; //type: int32
-
-}; // Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault : public ydk::Entity
-{
-    public:
-        ZenVoltSensorDefault();
-        ~ZenVoltSensorDefault();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ZenVoltSensorData; //type: Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData> zen_volt_sensor_data;
-        
-}; // Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData : public ydk::Entity
-{
-    public:
-        ZenVoltSensorData();
-        ~ZenVoltSensorData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ZenVoltSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor> > zen_volt_sensor;
-        
-}; // Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor : public ydk::Entity
-{
-    public:
-        ZenVoltSensor();
-        ~ZenVoltSensor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf zen_volt_sensor; //type: int32
-        ydk::YLeaf zen_volt_sensor_id; //type: string
-        ydk::YLeaf zen_volt_dev_addr; //type: uint32
-        ydk::YLeaf zen_volt_poll_intvl; //type: uint32
-        ydk::YLeaf zen_volt_delta; //type: uint32
-        ydk::YLeaf zen_volt_raw_data; //type: uint32
-        ydk::YLeaf zen_volt_sensor_value; //type: int32
-        ydk::YLeaf zen_volt_unit; //type: int32
-        ydk::YLeaf zen_volt_last_value; //type: uint32
-        ydk::YLeaf zen_volt_send_update; //type: boolean
-        ydk::YLeaf zen_volt_num_1sec_intervals; //type: int32
-
-}; // Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault : public ydk::Entity
-{
-    public:
-        ZenCurrSensorDefault();
-        ~ZenCurrSensorDefault();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ZenCurrSensorData; //type: Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData> zen_curr_sensor_data;
-        
-}; // Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData : public ydk::Entity
-{
-    public:
-        ZenCurrSensorData();
-        ~ZenCurrSensorData();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ZenCurrSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor> > zen_curr_sensor;
-        
-}; // Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData
-
-
-class Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor : public ydk::Entity
-{
-    public:
-        ZenCurrSensor();
-        ~ZenCurrSensor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf zen_curr_sensor; //type: string
-        ydk::YLeaf zen_curr_sensor_id; //type: string
-        ydk::YLeaf zen_curr_dev_addr; //type: uint32
-        ydk::YLeaf zen_curr_poll_intvl; //type: uint32
-        ydk::YLeaf zen_curr_delta; //type: uint32
-        ydk::YLeaf zen_curr_raw_data; //type: uint32
-        ydk::YLeaf zen_curr_sensor_value; //type: int32
-        ydk::YLeaf zen_curr_unit; //type: int32
-        ydk::YLeaf zen_curr_last_value; //type: uint32
-        ydk::YLeaf zen_curr_send_update; //type: boolean
-        ydk::YLeaf zen_curr_num_1sec_intervals; //type: int32
-
-}; // Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor
-
-
-class Controller::Zen::Trace : public ydk::Entity
-{
-    public:
-        Trace();
-        ~Trace();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf buffer; //type: string
-        class Location; //type: Controller::Zen::Trace::Location
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace::Location> > location;
-        
-}; // Controller::Zen::Trace
-
-
-class Controller::Zen::Trace::Location : public ydk::Entity
-{
-    public:
-        Location();
-        ~Location();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf location_name; //type: string
-        class AllOptions; //type: Controller::Zen::Trace::Location::AllOptions
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace::Location::AllOptions> > all_options;
-        
-}; // Controller::Zen::Trace::Location
-
-
-class Controller::Zen::Trace::Location::AllOptions : public ydk::Entity
-{
-    public:
-        AllOptions();
-        ~AllOptions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf option; //type: string
-        class TraceBlocks; //type: Controller::Zen::Trace::Location::AllOptions::TraceBlocks
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
-        
-}; // Controller::Zen::Trace::Location::AllOptions
-
-
-class Controller::Zen::Trace::Location::AllOptions::TraceBlocks : public ydk::Entity
-{
-    public:
-        TraceBlocks();
-        ~TraceBlocks();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf data; //type: string
-
-}; // Controller::Zen::Trace::Location::AllOptions::TraceBlocks
-
-
-class Controller::CccDriver : public ydk::Entity
-{
-    public:
-        CccDriver();
-        ~CccDriver();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Trace; //type: Controller::CccDriver::Trace
-        class Bootflash; //type: Controller::CccDriver::Bootflash
-        class Inventory; //type: Controller::CccDriver::Inventory
-        class Power; //type: Controller::CccDriver::Power
-        class ResetHistory; //type: Controller::CccDriver::ResetHistory
-        class Register; //type: Controller::CccDriver::Register
-        class Ejector; //type: Controller::CccDriver::Ejector
-        class I2CDev; //type: Controller::CccDriver::I2CDev
-        class Ethernet; //type: Controller::CccDriver::Ethernet
-        class EventHistory; //type: Controller::CccDriver::EventHistory
-        class OirHistory; //type: Controller::CccDriver::OirHistory
-        class NotifHistory; //type: Controller::CccDriver::NotifHistory
-        class Slave; //type: Controller::CccDriver::Slave
-        class Action; //type: Controller::CccDriver::Action
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace> > trace;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash> bootflash;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory> inventory;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Power> power;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory> reset_history;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register> register_;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ejector> ejector;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev> i2c_dev;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ethernet> ethernet;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::EventHistory> event_history;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::OirHistory> oir_history;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::NotifHistory> notif_history;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave> slave;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Action> action;
-        
-}; // Controller::CccDriver
-
-
-class Controller::CccDriver::Trace : public ydk::Entity
-{
-    public:
-        Trace();
-        ~Trace();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf buffer; //type: string
-        class Location; //type: Controller::CccDriver::Trace::Location
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace::Location> > location;
-        
-}; // Controller::CccDriver::Trace
-
-
-class Controller::CccDriver::Trace::Location : public ydk::Entity
-{
-    public:
-        Location();
-        ~Location();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf location_name; //type: string
-        class AllOptions; //type: Controller::CccDriver::Trace::Location::AllOptions
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace::Location::AllOptions> > all_options;
-        
-}; // Controller::CccDriver::Trace::Location
-
-
-class Controller::CccDriver::Trace::Location::AllOptions : public ydk::Entity
-{
-    public:
-        AllOptions();
-        ~AllOptions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf option; //type: string
-        class TraceBlocks; //type: Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
-        
-}; // Controller::CccDriver::Trace::Location::AllOptions
-
-
 class Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks : public ydk::Entity
 {
     public:
@@ -581,7 +82,7 @@ class Controller::CccDriver::Bootflash::Info : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Bootflash::Info::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash::Info::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Bootflash::Info
 
@@ -651,7 +152,7 @@ class Controller::CccDriver::Bootflash::Status : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Bootflash::Status::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash::Status::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Bootflash::Status
 
@@ -721,7 +222,7 @@ class Controller::CccDriver::Bootflash::CreStatus : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Bootflash::CreStatus::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash::CreStatus::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Bootflash::CreStatus
 
@@ -821,7 +322,7 @@ class Controller::CccDriver::Inventory::Summary : public ydk::Entity
 
         class CccInvSummary; //type: Controller::CccDriver::Inventory::Summary::CccInvSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Summary::CccInvSummary> > ccc_inv_summary;
+        ydk::YList ccc_inv_summary;
         
 }; // Controller::CccDriver::Inventory::Summary
 
@@ -872,7 +373,7 @@ class Controller::CccDriver::Inventory::Version : public ydk::Entity
 
         class CccInvVersion; //type: Controller::CccDriver::Inventory::Version::CccInvVersion
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Version::CccInvVersion> > ccc_inv_version;
+        ydk::YList ccc_inv_version;
         
 }; // Controller::CccDriver::Inventory::Version
 
@@ -923,7 +424,7 @@ class Controller::CccDriver::Inventory::Status : public ydk::Entity
 
         class CccInvStatus; //type: Controller::CccDriver::Inventory::Status::CccInvStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Status::CccInvStatus> > ccc_inv_status;
+        ydk::YList ccc_inv_status;
         
 }; // Controller::CccDriver::Inventory::Status
 
@@ -993,7 +494,7 @@ class Controller::CccDriver::Inventory::Detail : public ydk::Entity
 
         class CccInvDetail; //type: Controller::CccDriver::Inventory::Detail::CccInvDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Detail::CccInvDetail> > ccc_inv_detail;
+        ydk::YList ccc_inv_detail;
         
 }; // Controller::CccDriver::Inventory::Detail
 
@@ -1113,7 +614,7 @@ class Controller::CccDriver::Power::MasterAccess::Summary : public ydk::Entity
 
         class PowerSummary; //type: Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary> > power_summary;
+        ydk::YList power_summary;
         
 }; // Controller::CccDriver::Power::MasterAccess::Summary
 
@@ -1161,7 +662,7 @@ class Controller::CccDriver::Power::MasterAccess::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Power::MasterAccess::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Power::MasterAccess::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Power::MasterAccess::Detail
 
@@ -1257,7 +758,7 @@ class Controller::CccDriver::ResetHistory::Onchip : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::ResetHistory::Onchip::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onchip::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::ResetHistory::Onchip
 
@@ -1285,7 +786,7 @@ class Controller::CccDriver::ResetHistory::Onchip::Location : public ydk::Entity
         ydk::YLeaf ccc_hw_reset_count; //type: uint32
         class CccResetEntry; //type: Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry> > ccc_reset_entry;
+        ydk::YList ccc_reset_entry;
         
 }; // Controller::CccDriver::ResetHistory::Onchip::Location
 
@@ -1344,7 +845,7 @@ class Controller::CccDriver::ResetHistory::Onboard : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::ResetHistory::Onboard::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onboard::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::ResetHistory::Onboard
 
@@ -1373,7 +874,7 @@ class Controller::CccDriver::ResetHistory::Onboard::Location : public ydk::Entit
         ydk::YLeaf ccc_reset_history_count; //type: uint32
         class CccResetOnboardEntry; //type: Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry> > ccc_reset_onboard_entry;
+        ydk::YList ccc_reset_onboard_entry;
         
 }; // Controller::CccDriver::ResetHistory::Onboard::Location
 
@@ -1432,7 +933,7 @@ class Controller::CccDriver::Register : public ydk::Entity
 
         class RegisterLocation; //type: Controller::CccDriver::Register::RegisterLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation> > register_location;
+        ydk::YList register_location;
         
 }; // Controller::CccDriver::Register
 
@@ -1459,9 +960,9 @@ class Controller::CccDriver::Register::RegisterLocation : public ydk::Entity
         class CccOffset; //type: Controller::CccDriver::Register::RegisterLocation::CccOffset
         class CccAddress; //type: Controller::CccDriver::Register::RegisterLocation::CccAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccBlockNumber> > ccc_block_number;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccOffset> > ccc_offset;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccAddress> > ccc_address;
+        ydk::YList ccc_block_number;
+        ydk::YList ccc_offset;
+        ydk::YList ccc_address;
         
 }; // Controller::CccDriver::Register::RegisterLocation
 
@@ -1487,7 +988,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccBlockNumber : public
         ydk::YLeaf ccc_block_nm; //type: string
         class CccRegisterNumber; //type: Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber> > ccc_register_number;
+        ydk::YList ccc_register_number;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccBlockNumber
 
@@ -1512,7 +1013,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegi
         ydk::YLeaf ccc_register_name; //type: string
         class CccData; //type: Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::CccData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::CccData> > ccc_data;
+        ydk::YList ccc_data;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber
 
@@ -1559,7 +1060,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccOffset : public ydk:
         ydk::YLeaf hex_offset; //type: string
         class CccRegOffsetData; //type: Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData> > ccc_reg_offset_data;
+        ydk::YList ccc_reg_offset_data;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccOffset
 
@@ -1606,7 +1107,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccAddress : public ydk
         ydk::YLeaf end_hex_addr; //type: string
         class CccRegRangeAddrList; //type: Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList> > ccc_reg_range_addr_list;
+        ydk::YList ccc_reg_range_addr_list;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccAddress
 
@@ -1630,7 +1131,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRange
         ydk::YLeaf ccc_reg_range_addr; //type: uint32
         class CccRegData; //type: Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegData> > ccc_reg_data;
+        ydk::YList ccc_reg_data;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList
 
@@ -1700,7 +1201,7 @@ class Controller::CccDriver::Ejector::Status : public ydk::Entity
 
         class CccEjectorStatus; //type: Controller::CccDriver::Ejector::Status::CccEjectorStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ejector::Status::CccEjectorStatus> > ccc_ejector_status;
+        ydk::YList ccc_ejector_status;
         
 }; // Controller::CccDriver::Ejector::Status
 
@@ -1749,11 +1250,11 @@ class Controller::CccDriver::Ejector::Status::CccEjectorStatus : public ydk::Ent
 }; // Controller::CccDriver::Ejector::Status::CccEjectorStatus
 
 
-class Controller::CccDriver::I2CDev : public ydk::Entity
+class Controller::CccDriver::I2cDev : public ydk::Entity
 {
     public:
-        I2CDev();
-        ~I2CDev();
+        I2cDev();
+        ~I2cDev();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1766,16 +1267,16 @@ class Controller::CccDriver::I2CDev : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class CpuComplex; //type: Controller::CccDriver::I2CDev::CpuComplex
-        class Ioexpander; //type: Controller::CccDriver::I2CDev::Ioexpander
+        class CpuComplex; //type: Controller::CccDriver::I2cDev::CpuComplex
+        class Ioexpander; //type: Controller::CccDriver::I2cDev::Ioexpander
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::CpuComplex> cpu_complex;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::Ioexpander> ioexpander;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::CpuComplex> cpu_complex;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::Ioexpander> ioexpander;
         
-}; // Controller::CccDriver::I2CDev
+}; // Controller::CccDriver::I2cDev
 
 
-class Controller::CccDriver::I2CDev::CpuComplex : public ydk::Entity
+class Controller::CccDriver::I2cDev::CpuComplex : public ydk::Entity
 {
     public:
         CpuComplex();
@@ -1792,14 +1293,14 @@ class Controller::CccDriver::I2CDev::CpuComplex : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Location; //type: Controller::CccDriver::I2CDev::CpuComplex::Location
+        class Location; //type: Controller::CccDriver::I2cDev::CpuComplex::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::CpuComplex::Location> > location;
+        ydk::YList location;
         
-}; // Controller::CccDriver::I2CDev::CpuComplex
+}; // Controller::CccDriver::I2cDev::CpuComplex
 
 
-class Controller::CccDriver::I2CDev::CpuComplex::Location : public ydk::Entity
+class Controller::CccDriver::I2cDev::CpuComplex::Location : public ydk::Entity
 {
     public:
         Location();
@@ -1817,14 +1318,14 @@ class Controller::CccDriver::I2CDev::CpuComplex::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
-        class CpuComplexDetail; //type: Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail
+        class CpuComplexDetail; //type: Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail> cpu_complex_detail;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail> cpu_complex_detail;
         
-}; // Controller::CccDriver::I2CDev::CpuComplex::Location
+}; // Controller::CccDriver::I2cDev::CpuComplex::Location
 
 
-class Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail : public ydk::Entity
+class Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail : public ydk::Entity
 {
     public:
         CpuComplexDetail();
@@ -1842,10 +1343,10 @@ class Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail : pu
 
         ydk::YLeafList cpu_complex_values; //type: list of  string
 
-}; // Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail
+}; // Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail
 
 
-class Controller::CccDriver::I2CDev::Ioexpander : public ydk::Entity
+class Controller::CccDriver::I2cDev::Ioexpander : public ydk::Entity
 {
     public:
         Ioexpander();
@@ -1862,14 +1363,14 @@ class Controller::CccDriver::I2CDev::Ioexpander : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Location; //type: Controller::CccDriver::I2CDev::Ioexpander::Location
+        class Location; //type: Controller::CccDriver::I2cDev::Ioexpander::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::Ioexpander::Location> > location;
+        ydk::YList location;
         
-}; // Controller::CccDriver::I2CDev::Ioexpander
+}; // Controller::CccDriver::I2cDev::Ioexpander
 
 
-class Controller::CccDriver::I2CDev::Ioexpander::Location : public ydk::Entity
+class Controller::CccDriver::I2cDev::Ioexpander::Location : public ydk::Entity
 {
     public:
         Location();
@@ -1887,14 +1388,14 @@ class Controller::CccDriver::I2CDev::Ioexpander::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
-        class IoExpVal; //type: Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal
+        class IoExpVal; //type: Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal> io_exp_val;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal> io_exp_val;
         
-}; // Controller::CccDriver::I2CDev::Ioexpander::Location
+}; // Controller::CccDriver::I2cDev::Ioexpander::Location
 
 
-class Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal : public ydk::Entity
+class Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal : public ydk::Entity
 {
     public:
         IoExpVal();
@@ -1912,7 +1413,7 @@ class Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal : public ydk
 
         ydk::YLeafList io_exp_details; //type: list of  string
 
-}; // Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal
+}; // Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal
 
 
 class Controller::CccDriver::Ethernet : public ydk::Entity
@@ -1960,7 +1461,7 @@ class Controller::CccDriver::Ethernet::EthernetStatus : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Ethernet::EthernetStatus::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ethernet::EthernetStatus::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Ethernet::EthernetStatus
 
@@ -2030,7 +1531,7 @@ class Controller::CccDriver::Ethernet::EthernetCounters : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Ethernet::EthernetCounters::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ethernet::EthernetCounters::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Ethernet::EthernetCounters
 
@@ -2126,7 +1627,7 @@ class Controller::CccDriver::EventHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::EventHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::EventHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::EventHistory::Brief
 
@@ -2196,7 +1697,7 @@ class Controller::CccDriver::EventHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::EventHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::EventHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::EventHistory::Detail
 
@@ -2266,7 +1767,7 @@ class Controller::CccDriver::OirHistory : public ydk::Entity
 
         class Rack; //type: Controller::CccDriver::OirHistory::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::OirHistory::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::CccDriver::OirHistory
 
@@ -2362,7 +1863,7 @@ class Controller::CccDriver::NotifHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::NotifHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::NotifHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::NotifHistory::Brief
 
@@ -2432,7 +1933,7 @@ class Controller::CccDriver::NotifHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::NotifHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::NotifHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::NotifHistory::Detail
 
@@ -2556,7 +2057,7 @@ class Controller::CccDriver::Slave::EventHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::EventHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::EventHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::EventHistory::Brief
 
@@ -2626,7 +2127,7 @@ class Controller::CccDriver::Slave::EventHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::EventHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::EventHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::EventHistory::Detail
 
@@ -2722,7 +2223,7 @@ class Controller::CccDriver::Slave::NotifHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::NotifHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::NotifHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::NotifHistory::Brief
 
@@ -2792,7 +2293,7 @@ class Controller::CccDriver::Slave::NotifHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::NotifHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::NotifHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::NotifHistory::Detail
 
@@ -2862,7 +2363,7 @@ class Controller::CccDriver::Slave::OirHistory : public ydk::Entity
 
         class Rack; //type: Controller::CccDriver::Slave::OirHistory::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::OirHistory::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::CccDriver::Slave::OirHistory
 
@@ -2956,7 +2457,7 @@ class Controller::CccDriver::Action::Register : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Action::Register::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Action::Register::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Action::Register
 
@@ -3080,7 +2581,7 @@ class Controller::Switch::Oper::Reachable : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Reachable::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Reachable::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Reachable
 
@@ -3128,7 +2629,7 @@ class Controller::Switch::Oper::Summary : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Summary::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Summary
 
@@ -3156,7 +2657,7 @@ class Controller::Switch::Oper::Summary::Location : public ydk::Entity
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Summary::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Summary::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Summary::Location
 
@@ -3233,7 +2734,7 @@ class Controller::Switch::Oper::Statistics::SummaryStatistics : public ydk::Enti
 
         class Location; //type: Controller::Switch::Oper::Statistics::SummaryStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::SummaryStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Statistics::SummaryStatistics
 
@@ -3261,7 +2762,7 @@ class Controller::Switch::Oper::Statistics::SummaryStatistics::Location : public
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Statistics::SummaryStatistics::Location
 
@@ -3313,7 +2814,7 @@ class Controller::Switch::Oper::Statistics::Detail : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Statistics::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Statistics::Detail
 
@@ -3340,7 +2841,7 @@ class Controller::Switch::Oper::Statistics::Detail::Location : public ydk::Entit
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Statistics::Detail::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::Detail::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Statistics::Detail::Location
 
@@ -3468,7 +2969,7 @@ class Controller::Switch::Oper::Serdes::SerdesStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Serdes::SerdesStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Serdes::SerdesStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Serdes::SerdesStatistics
 
@@ -3495,7 +2996,7 @@ class Controller::Switch::Oper::Serdes::SerdesStatistics::Location : public ydk:
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Serdes::SerdesStatistics::Location
 
@@ -3519,7 +3020,7 @@ class Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter : p
         ydk::YLeaf port; //type: int32
         class SerdesEntry; //type: Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry> > serdes_entry;
+        ydk::YList serdes_entry;
         
 }; // Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter
 
@@ -3594,7 +3095,7 @@ class Controller::Switch::Oper::Mac::MacStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mac::MacStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mac::MacStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics
 
@@ -3621,7 +3122,7 @@ class Controller::Switch::Oper::Mac::MacStatistics::Location : public ydk::Entit
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics::Location
 
@@ -3645,7 +3146,7 @@ class Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter : public 
         ydk::YLeaf port; //type: int32
         class MacEntry; //type: Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry> > mac_entry;
+        ydk::YList mac_entry;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter
 
@@ -3717,7 +3218,7 @@ class Controller::Switch::Oper::Bridge::Statistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Bridge::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Bridge::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Bridge::Statistics
 
@@ -3745,8 +3246,8 @@ class Controller::Switch::Oper::Bridge::Statistics::Location : public ydk::Entit
         class IngressSetId; //type: Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId
         class EgressSetId; //type: Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId> > ingress_set_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId> > egress_set_id;
+        ydk::YList ingress_set_id;
+        ydk::YList egress_set_id;
         
 }; // Controller::Switch::Oper::Bridge::Statistics::Location
 
@@ -3836,6 +3337,465 @@ class Controller::Switch::Oper::Fdb : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::SwitchFdbCommon> switch_fdb_common;
         
 }; // Controller::Switch::Oper::Fdb
+
+
+class Controller::Switch::Oper::Fdb::Vlan : public ydk::Entity
+{
+    public:
+        Vlan();
+        ~Vlan();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class VlanIter; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter
+
+        ydk::YList vlan_iter;
+        
+}; // Controller::Switch::Oper::Fdb::Vlan
+
+
+class Controller::Switch::Oper::Fdb::Vlan::VlanIter : public ydk::Entity
+{
+    public:
+        VlanIter();
+        ~VlanIter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vlan; //type: uint16
+        class SwitchFdbCommon; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon> switch_fdb_common;
+        
+}; // Controller::Switch::Oper::Fdb::Vlan::VlanIter
+
+
+class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon : public ydk::Entity
+{
+    public:
+        SwitchFdbCommon();
+        ~SwitchFdbCommon();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Location; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location
+
+        ydk::YList location;
+        
+}; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon
+
+
+class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rack; //type: EsdmaRackNumEnum
+        ydk::YLeaf card; //type: EsdmaCpu
+        ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
+        ydk::YLeaf num_entries; //type: uint32
+        ydk::YLeaf has_trunk_entry; //type: uint8
+        ydk::YLeaf trunk_entry_message; //type: string
+        class FdbBlock; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock> fdb_block;
+        
+}; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location
+
+
+class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock : public ydk::Entity
+{
+    public:
+        FdbBlock();
+        ~FdbBlock();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FdbEntry; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
+
+        ydk::YList fdb_entry;
+        
+}; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock
+
+
+class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry : public ydk::Entity
+{
+    public:
+        FdbEntry();
+        ~FdbEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fdb_index; //type: uint32
+        ydk::YLeaf fdb_mac_addr; //type: string
+        ydk::YLeaf fdb_vlan; //type: uint16
+        //type: uint16 (refers to cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::fdb_vlan)
+        ydk::YLeaf fdb_vlan_hex;
+        ydk::YLeaf fdb_port; //type: int32
+        ydk::YLeaf fdb_trap_entry; //type: EsdmaSwitchYesNoEnum
+        ydk::YLeaf fdb_static_entry; //type: EsdmaSwitchYesNoEnum
+        ydk::YLeafList fdb_synced_cores; //type: list of  uint8
+
+}; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
+
+
+class Controller::Switch::Oper::Fdb::Mac : public ydk::Entity
+{
+    public:
+        Mac();
+        ~Mac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class MacIter; //type: Controller::Switch::Oper::Fdb::Mac::MacIter
+
+        ydk::YList mac_iter;
+        
+}; // Controller::Switch::Oper::Fdb::Mac
+
+
+class Controller::Switch::Oper::Fdb::Mac::MacIter : public ydk::Entity
+{
+    public:
+        MacIter();
+        ~MacIter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf mac; //type: string
+        class SwitchFdbCommon; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon> switch_fdb_common;
+        
+}; // Controller::Switch::Oper::Fdb::Mac::MacIter
+
+
+class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon : public ydk::Entity
+{
+    public:
+        SwitchFdbCommon();
+        ~SwitchFdbCommon();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Location; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location
+
+        ydk::YList location;
+        
+}; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon
+
+
+class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rack; //type: EsdmaRackNumEnum
+        ydk::YLeaf card; //type: EsdmaCpu
+        ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
+        ydk::YLeaf num_entries; //type: uint32
+        ydk::YLeaf has_trunk_entry; //type: uint8
+        ydk::YLeaf trunk_entry_message; //type: string
+        class FdbBlock; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock> fdb_block;
+        
+}; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location
+
+
+class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock : public ydk::Entity
+{
+    public:
+        FdbBlock();
+        ~FdbBlock();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FdbEntry; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
+
+        ydk::YList fdb_entry;
+        
+}; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock
+
+
+class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry : public ydk::Entity
+{
+    public:
+        FdbEntry();
+        ~FdbEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fdb_index; //type: uint32
+        ydk::YLeaf fdb_mac_addr; //type: string
+        ydk::YLeaf fdb_vlan; //type: uint16
+        //type: uint16 (refers to cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::fdb_vlan)
+        ydk::YLeaf fdb_vlan_hex;
+        ydk::YLeaf fdb_port; //type: int32
+        ydk::YLeaf fdb_trap_entry; //type: EsdmaSwitchYesNoEnum
+        ydk::YLeaf fdb_static_entry; //type: EsdmaSwitchYesNoEnum
+        ydk::YLeafList fdb_synced_cores; //type: list of  uint8
+
+}; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
+
+
+class Controller::Switch::Oper::Fdb::Port : public ydk::Entity
+{
+    public:
+        Port();
+        ~Port();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class PortIter; //type: Controller::Switch::Oper::Fdb::Port::PortIter
+
+        ydk::YList port_iter;
+        
+}; // Controller::Switch::Oper::Fdb::Port
+
+
+class Controller::Switch::Oper::Fdb::Port::PortIter : public ydk::Entity
+{
+    public:
+        PortIter();
+        ~PortIter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf port; //type: int32
+        class SwitchFdbCommon; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon> switch_fdb_common;
+        
+}; // Controller::Switch::Oper::Fdb::Port::PortIter
+
+
+class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon : public ydk::Entity
+{
+    public:
+        SwitchFdbCommon();
+        ~SwitchFdbCommon();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Location; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location
+
+        ydk::YList location;
+        
+}; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon
+
+
+class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rack; //type: EsdmaRackNumEnum
+        ydk::YLeaf card; //type: EsdmaCpu
+        ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
+        ydk::YLeaf num_entries; //type: uint32
+        ydk::YLeaf has_trunk_entry; //type: uint8
+        ydk::YLeaf trunk_entry_message; //type: string
+        class FdbBlock; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock> fdb_block;
+        
+}; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location
+
+
+class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock : public ydk::Entity
+{
+    public:
+        FdbBlock();
+        ~FdbBlock();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class FdbEntry; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
+
+        ydk::YList fdb_entry;
+        
+}; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock
+
+
+class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry : public ydk::Entity
+{
+    public:
+        FdbEntry();
+        ~FdbEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf fdb_index; //type: uint32
+        ydk::YLeaf fdb_mac_addr; //type: string
+        ydk::YLeaf fdb_vlan; //type: uint16
+        //type: uint16 (refers to cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::fdb_vlan)
+        ydk::YLeaf fdb_vlan_hex;
+        ydk::YLeaf fdb_port; //type: int32
+        ydk::YLeaf fdb_trap_entry; //type: EsdmaSwitchYesNoEnum
+        ydk::YLeaf fdb_static_entry; //type: EsdmaSwitchYesNoEnum
+        ydk::YLeafList fdb_synced_cores; //type: list of  uint8
+
+}; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
 
 }

@@ -17,7 +17,7 @@ LptsIfib::LptsIfib()
 {
     nodes->parent = this;
 
-    yang_name = "lpts-ifib"; yang_parent_name = "Cisco-IOS-XR-lpts-ifib-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lpts-ifib"; yang_parent_name = "Cisco-IOS-XR-lpts-ifib-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LptsIfib::~LptsIfib()
@@ -26,6 +26,7 @@ LptsIfib::~LptsIfib()
 
 bool LptsIfib::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool LptsIfib::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 LptsIfib::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "lpts-ifib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "lpts-ifib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsIfib::Nodes::~Nodes()
@@ -129,7 +132,8 @@ LptsIfib::Nodes::~Nodes()
 
 bool LptsIfib::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool LptsIfib::Nodes::has_data() const
 
 bool LptsIfib::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> LptsIfib::Nodes::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<LptsIfib::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool LptsIfib::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 LptsIfib::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     slice_ids(std::make_shared<LptsIfib::Nodes::Node::SliceIds>())
 {
     slice_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LptsIfib::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ LptsIfib::Nodes::Node::~Node()
 
 bool LptsIfib::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (slice_ids !=  nullptr && slice_ids->has_data());
 }
@@ -252,7 +257,8 @@ std::string LptsIfib::Nodes::Node::get_absolute_path() const
 std::string LptsIfib::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool LptsIfib::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceIds()
+    :
+    slice_id(this, {"slice_name"})
 {
 
-    yang_name = "slice-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slice-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsIfib::Nodes::Node::SliceIds::~SliceIds()
@@ -329,7 +337,8 @@ LptsIfib::Nodes::Node::SliceIds::~SliceIds()
 
 bool LptsIfib::Nodes::Node::SliceIds::has_data() const
 {
-    for (std::size_t index=0; index<slice_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slice_id.len(); index++)
     {
         if(slice_id[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool LptsIfib::Nodes::Node::SliceIds::has_data() const
 
 bool LptsIfib::Nodes::Node::SliceIds::has_operation() const
 {
-    for (std::size_t index=0; index<slice_id.size(); index++)
+    for (std::size_t index=0; index<slice_id.len(); index++)
     {
         if(slice_id[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> LptsIfib::Nodes::Node::SliceIds::get_child_by_name(const
     {
         auto c = std::make_shared<LptsIfib::Nodes::Node::SliceIds::SliceId>();
         c->parent = this;
-        slice_id.push_back(c);
+        slice_id.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slice_id)
+    for (auto c : slice_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -410,9 +419,11 @@ bool LptsIfib::Nodes::Node::SliceIds::has_leaf_or_child_of_name(const std::strin
 LptsIfib::Nodes::Node::SliceIds::SliceId::SliceId()
     :
     slice_name{YType::str, "slice-name"}
+        ,
+    entry(this, {"entry"})
 {
 
-    yang_name = "slice-id"; yang_parent_name = "slice-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slice-id"; yang_parent_name = "slice-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceId::~SliceId()
@@ -421,7 +432,8 @@ LptsIfib::Nodes::Node::SliceIds::SliceId::~SliceId()
 
 bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_data() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -431,7 +443,7 @@ bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_data() const
 
 bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_operation() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -443,7 +455,8 @@ bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_operation() const
 std::string LptsIfib::Nodes::Node::SliceIds::SliceId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slice-id" <<"[slice-name='" <<slice_name <<"']";
+    path_buffer << "slice-id";
+    ADD_KEY_TOKEN(slice_name, "slice-name");
     return path_buffer.str();
 }
 
@@ -463,7 +476,7 @@ std::shared_ptr<Entity> LptsIfib::Nodes::Node::SliceIds::SliceId::get_child_by_n
     {
         auto c = std::make_shared<LptsIfib::Nodes::Node::SliceIds::SliceId::Entry>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -475,7 +488,7 @@ std::map<std::string, std::shared_ptr<Entity>> LptsIfib::Nodes::Node::SliceIds::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -513,7 +526,7 @@ bool LptsIfib::Nodes::Node::SliceIds::SliceId::has_leaf_or_child_of_name(const s
 
 LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::Entry()
     :
-    entry{YType::int32, "entry"},
+    entry{YType::uint32, "entry"},
     destination_type{YType::str, "destination-type"},
     destination_value{YType::str, "destination-value"},
     source_port{YType::str, "source-port"},
@@ -541,7 +554,7 @@ LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::Entry()
     ifib_program_time{YType::str, "ifib-program-time"}
 {
 
-    yang_name = "entry"; yang_parent_name = "slice-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entry"; yang_parent_name = "slice-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::~Entry()
@@ -550,6 +563,7 @@ LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::~Entry()
 
 bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set
 	|| destination_type.is_set
 	|| destination_value.is_set
@@ -612,7 +626,8 @@ bool LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::has_operation() const
 std::string LptsIfib::Nodes::Node::SliceIds::SliceId::Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[entry='" <<entry <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(entry, "entry");
     return path_buffer.str();
 }
 

@@ -41,11 +41,10 @@ class NvSatellite : public ydk::Entity
         class SatelliteTopologies; //type: NvSatellite::SatelliteTopologies
         class InstallReferenceInfo; //type: NvSatellite::InstallReferenceInfo
         class InstallOpProgresses; //type: NvSatellite::InstallOpProgresses
-        class ReloadStatuses; //type: NvSatellite::ReloadStatuses
         class Install; //type: NvSatellite::Install
         class InstallOpStatuses; //type: NvSatellite::InstallOpStatuses
         class SatelliteProperties; //type: NvSatellite::SatelliteProperties
-        class SdacpDiscovery2S; //type: NvSatellite::SdacpDiscovery2S
+        class SdacpDiscovery2s; //type: NvSatellite::SdacpDiscovery2s
         class IcpeDpms; //type: NvSatellite::IcpeDpms
         class SdacpControls; //type: NvSatellite::SdacpControls
 
@@ -58,11 +57,10 @@ class NvSatellite : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies> satellite_topologies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallReferenceInfo> install_reference_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallOpProgresses> install_op_progresses;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::ReloadStatuses> reload_statuses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install> install;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallOpStatuses> install_op_statuses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteProperties> satellite_properties;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S> sdacp_discovery2s;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2s> sdacp_discovery2s;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::IcpeDpms> icpe_dpms;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls> sdacp_controls;
         
@@ -88,7 +86,7 @@ class NvSatellite::ReloadOpStatuses : public ydk::Entity
 
         class ReloadOpStatus; //type: NvSatellite::ReloadOpStatuses::ReloadOpStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::ReloadOpStatuses::ReloadOpStatus> > reload_op_status;
+        ydk::YList reload_op_status;
         
 }; // NvSatellite::ReloadOpStatuses
 
@@ -140,7 +138,7 @@ class NvSatellite::SdacpRedundancies : public ydk::Entity
 
         class SdacpRedundancy; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy> > sdacp_redundancy;
+        ydk::YList sdacp_redundancy;
         
 }; // NvSatellite::SdacpRedundancies
 
@@ -176,7 +174,7 @@ class NvSatellite::SdacpRedundancies::SdacpRedundancy : public ydk::Entity
         class Channel; //type: NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp> protocol_state_timestamp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel> > channel;
+        ydk::YList channel;
         
 }; // NvSatellite::SdacpRedundancies::SdacpRedundancy
 
@@ -298,7 +296,7 @@ class NvSatellite::InstallShows : public ydk::Entity
 
         class InstallShow; //type: NvSatellite::InstallShows::InstallShow
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallShows::InstallShow> > install_show;
+        ydk::YList install_show;
         
 }; // NvSatellite::InstallShows
 
@@ -332,16 +330,19 @@ class NvSatellite::InstallShows::InstallShow : public ydk::Entity
         ydk::YLeafList sats_transferring; //type: list of  uint16
         ydk::YLeafList sats_activating; //type: list of  uint16
         ydk::YLeafList sats_updating; //type: list of  uint16
+        ydk::YLeafList sats_replacing; //type: list of  uint16
         ydk::YLeafList sats_deactivating; //type: list of  uint16
         ydk::YLeafList sats_removing; //type: list of  uint16
         ydk::YLeafList sats_transfer_failed; //type: list of  uint16
         ydk::YLeafList sats_activate_failed; //type: list of  uint16
         ydk::YLeafList sats_update_failed; //type: list of  uint16
+        ydk::YLeafList sats_replace_failed; //type: list of  uint16
         ydk::YLeafList sats_deactivate_failed; //type: list of  uint16
         ydk::YLeafList sats_remove_failed; //type: list of  uint16
         ydk::YLeafList sats_transfer_aborted; //type: list of  uint16
         ydk::YLeafList sats_activate_aborted; //type: list of  uint16
         ydk::YLeafList sats_update_aborted; //type: list of  uint16
+        ydk::YLeafList sats_replace_aborted; //type: list of  uint16
         ydk::YLeafList sats_deactivate_aborted; //type: list of  uint16
         ydk::YLeafList sats_remove_aborted; //type: list of  uint16
         ydk::YLeafList sats_no_operation; //type: list of  uint16
@@ -349,7 +350,7 @@ class NvSatellite::InstallShows::InstallShow : public ydk::Entity
         ydk::YLeafList name_string; //type: list of  string
         class Satellite; //type: NvSatellite::InstallShows::InstallShow::Satellite
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallShows::InstallShow::Satellite> > satellite;
+        ydk::YList satellite;
         
 }; // NvSatellite::InstallShows::InstallShow
 
@@ -400,7 +401,7 @@ class NvSatellite::SatelliteStatuses : public ydk::Entity
 
         class SatelliteStatus; //type: NvSatellite::SatelliteStatuses::SatelliteStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus> > satellite_status;
+        ydk::YList satellite_status;
         
 }; // NvSatellite::SatelliteStatuses
 
@@ -462,12 +463,14 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus : public ydk::Entity
         class CandidateFabricPorts; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
         class OpticalStatus; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus
         class RedundancyOutOfSyncTimestamp; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp
+        class ReloadData; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData
         class ConfiguredLink; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts> candidate_fabric_ports;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus> optical_status;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp> redundancy_out_of_sync_timestamp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink> > configured_link;
+        ydk::YList reload_data;
+        ydk::YList configured_link;
         
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus
 
@@ -494,8 +497,8 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts : pu
         class ConfiguredPort; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort
         class CurrentPort; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort> > configured_port;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort> > current_port;
+        ydk::YList configured_port;
+        ydk::YList current_port;
         
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts
 
@@ -570,7 +573,7 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus : public yd
         ydk::YLeaf chassis_sync_state; //type: IcpeOpticalSyncState
         class Application; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application> > application;
+        ydk::YList application;
         
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus
 
@@ -619,6 +622,29 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimest
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp
 
 
+class NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData : public ydk::Entity
+{
+    public:
+        ReloadData();
+        ~ReloadData();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level; //type: IcpeOperReloadLevel
+        ydk::YLeaf time; //type: uint64
+        ydk::YLeaf info; //type: string
+
+}; // NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData
+
+
 class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public ydk::Entity
 {
     public:
@@ -650,8 +676,8 @@ class NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink : public y
         class PortRange; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange
         class DiscoveredLink; //type: NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange> > port_range;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink> > discovered_link;
+        ydk::YList port_range;
+        ydk::YList discovered_link;
         
 }; // NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink
 
@@ -726,7 +752,7 @@ class NvSatellite::SatellitePriorities : public ydk::Entity
 
         class SatellitePriority; //type: NvSatellite::SatellitePriorities::SatellitePriority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatellitePriorities::SatellitePriority> > satellite_priority;
+        ydk::YList satellite_priority;
         
 }; // NvSatellite::SatellitePriorities
 
@@ -779,7 +805,7 @@ class NvSatellite::SatelliteVersions : public ydk::Entity
 
         class SatelliteVersion; //type: NvSatellite::SatelliteVersions::SatelliteVersion
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteVersions::SatelliteVersion> > satellite_version;
+        ydk::YList satellite_version;
         
 }; // NvSatellite::SatelliteVersions
 
@@ -905,7 +931,7 @@ class NvSatellite::SatelliteTopologies : public ydk::Entity
 
         class SatelliteTopology; //type: NvSatellite::SatelliteTopologies::SatelliteTopology
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology> > satellite_topology;
+        ydk::YList satellite_topology;
         
 }; // NvSatellite::SatelliteTopologies
 
@@ -936,8 +962,8 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology : public ydk::Entity
         class DiscoveredLink; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink
         class Satellite; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink> > discovered_link;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite> > satellite;
+        ydk::YList discovered_link;
+        ydk::YList satellite;
         
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology
 
@@ -994,7 +1020,7 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite : public yd
         ydk::YLeaf conflict_context; //type: string
         class FabricLink; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink> > fabric_link;
+        ydk::YList fabric_link;
         
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite
 
@@ -1023,7 +1049,7 @@ class NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
         ydk::YLeaf obsolete; //type: boolean
         class RemoteDevice; //type: NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice> > remote_device;
+        ydk::YList remote_device;
         
 }; // NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink
 
@@ -1098,7 +1124,7 @@ class NvSatellite::InstallReferenceInfo::References : public ydk::Entity
 
         class Reference; //type: NvSatellite::InstallReferenceInfo::References::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallReferenceInfo::References::Reference> > reference;
+        ydk::YList reference;
         
 }; // NvSatellite::InstallReferenceInfo::References
 
@@ -1146,7 +1172,7 @@ class NvSatellite::InstallOpProgresses : public ydk::Entity
 
         class InstallOpProgress; //type: NvSatellite::InstallOpProgresses::InstallOpProgress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallOpProgresses::InstallOpProgress> > install_op_progress;
+        ydk::YList install_op_progress;
         
 }; // NvSatellite::InstallOpProgresses
 
@@ -1174,57 +1200,6 @@ class NvSatellite::InstallOpProgresses::InstallOpProgress : public ydk::Entity
         ydk::YLeaf satellite_count; //type: uint32
 
 }; // NvSatellite::InstallOpProgresses::InstallOpProgress
-
-
-class NvSatellite::ReloadStatuses : public ydk::Entity
-{
-    public:
-        ReloadStatuses();
-        ~ReloadStatuses();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ReloadStatus; //type: NvSatellite::ReloadStatuses::ReloadStatus
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::ReloadStatuses::ReloadStatus> > reload_status;
-        
-}; // NvSatellite::ReloadStatuses
-
-
-class NvSatellite::ReloadStatuses::ReloadStatus : public ydk::Entity
-{
-    public:
-        ReloadStatus();
-        ~ReloadStatus();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf satellite_range; //type: string
-        ydk::YLeaf satellite_range_xr; //type: string
-        ydk::YLeafList sats_not_initiated; //type: list of  uint16
-        ydk::YLeafList sats_reloading; //type: list of  uint16
-        ydk::YLeafList sats_reloaded; //type: list of  uint16
-        ydk::YLeafList sats_reload_failed; //type: list of  uint16
-
-}; // NvSatellite::ReloadStatuses::ReloadStatus
 
 
 class NvSatellite::Install : public ydk::Entity
@@ -1270,7 +1245,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions : public ydk::Entity
 
         class SatelliteSoftwareVersion; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion> > satellite_software_version;
+        ydk::YList satellite_software_version;
         
 }; // NvSatellite::Install::SatelliteSoftwareVersions
 
@@ -1347,7 +1322,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package> > package;
+        ydk::YList package;
         
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages
 
@@ -1393,7 +1368,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package> > package;
+        ydk::YList package;
         
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages
 
@@ -1439,7 +1414,7 @@ class NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion:
 
         class Package; //type: NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package> > package;
+        ydk::YList package;
         
 }; // NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages
 
@@ -1486,7 +1461,7 @@ class NvSatellite::InstallOpStatuses : public ydk::Entity
 
         class InstallOpStatus; //type: NvSatellite::InstallOpStatuses::InstallOpStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::InstallOpStatuses::InstallOpStatus> > install_op_status;
+        ydk::YList install_op_status;
         
 }; // NvSatellite::InstallOpStatuses
 
@@ -1515,16 +1490,19 @@ class NvSatellite::InstallOpStatuses::InstallOpStatus : public ydk::Entity
         ydk::YLeafList sats_transferring; //type: list of  uint16
         ydk::YLeafList sats_activating; //type: list of  uint16
         ydk::YLeafList sats_updating; //type: list of  uint16
+        ydk::YLeafList sats_replacing; //type: list of  uint16
         ydk::YLeafList sats_deactivating; //type: list of  uint16
         ydk::YLeafList sats_removing; //type: list of  uint16
         ydk::YLeafList sats_transfer_failed; //type: list of  uint16
         ydk::YLeafList sats_activate_failed; //type: list of  uint16
         ydk::YLeafList sats_update_failed; //type: list of  uint16
+        ydk::YLeafList sats_replace_failed; //type: list of  uint16
         ydk::YLeafList sats_deactivate_failed; //type: list of  uint16
         ydk::YLeafList sats_remove_failed; //type: list of  uint16
         ydk::YLeafList sats_transfer_aborted; //type: list of  uint16
         ydk::YLeafList sats_activate_aborted; //type: list of  uint16
         ydk::YLeafList sats_update_aborted; //type: list of  uint16
+        ydk::YLeafList sats_replace_aborted; //type: list of  uint16
         ydk::YLeafList sats_deactivate_aborted; //type: list of  uint16
         ydk::YLeafList sats_remove_aborted; //type: list of  uint16
         ydk::YLeafList sats_no_operation; //type: list of  uint16
@@ -1576,7 +1554,7 @@ class NvSatellite::SatelliteProperties::IdRanges : public ydk::Entity
 
         class IdRange; //type: NvSatellite::SatelliteProperties::IdRanges::IdRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SatelliteProperties::IdRanges::IdRange> > id_range;
+        ydk::YList id_range;
         
 }; // NvSatellite::SatelliteProperties::IdRanges
 
@@ -1605,11 +1583,11 @@ class NvSatellite::SatelliteProperties::IdRanges::IdRange : public ydk::Entity
 }; // NvSatellite::SatelliteProperties::IdRanges::IdRange
 
 
-class NvSatellite::SdacpDiscovery2S : public ydk::Entity
+class NvSatellite::SdacpDiscovery2s : public ydk::Entity
 {
     public:
-        SdacpDiscovery2S();
-        ~SdacpDiscovery2S();
+        SdacpDiscovery2s();
+        ~SdacpDiscovery2s();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1622,14 +1600,14 @@ class NvSatellite::SdacpDiscovery2S : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class SdacpDiscovery2; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2
+        class SdacpDiscovery2; //type: NvSatellite::SdacpDiscovery2s::SdacpDiscovery2
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2> > sdacp_discovery2;
+        ydk::YList sdacp_discovery2;
         
-}; // NvSatellite::SdacpDiscovery2S
+}; // NvSatellite::SdacpDiscovery2s
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2 : public ydk::Entity
+class NvSatellite::SdacpDiscovery2s::SdacpDiscovery2 : public ydk::Entity
 {
     public:
         SdacpDiscovery2();
@@ -1648,16 +1626,16 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2 : public ydk::Entity
 
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf interface_name_xr; //type: string
-        class Interface; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface
-        class Satellite; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite
+        class Interface; //type: NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface
+        class Satellite; //type: NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface> > interface;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite> > satellite;
+        ydk::YList interface;
+        ydk::YList satellite;
         
-}; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2
+}; // NvSatellite::SdacpDiscovery2s::SdacpDiscovery2
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface : public ydk::Entity
+class NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1676,10 +1654,10 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface : public ydk::En
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf interface_status; //type: DpmProtoState
 
-}; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface
+}; // NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite : public ydk::Entity
+class NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite : public ydk::Entity
 {
     public:
         Satellite();
@@ -1700,14 +1678,14 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite : public ydk::En
         ydk::YLeaf conflict_reason; //type: uint32
         ydk::YLeaf satellite_ip_address; //type: string
         ydk::YLeaf host_ip_address; //type: string
-        class Interface; //type: NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface
+        class Interface; //type: NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface> > interface;
+        ydk::YList interface;
         
-}; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite
+}; // NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite
 
 
-class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface : public ydk::Entity
+class NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -1733,7 +1711,7 @@ class NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface : pub
         ydk::YLeaf satellite_serial_id; //type: string
         ydk::YLeaf satellite_module_vendor; //type: string
 
-}; // NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface
+}; // NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface
 
 
 class NvSatellite::IcpeDpms : public ydk::Entity
@@ -1755,7 +1733,7 @@ class NvSatellite::IcpeDpms : public ydk::Entity
 
         class IcpeDpm; //type: NvSatellite::IcpeDpms::IcpeDpm
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::IcpeDpms::IcpeDpm> > icpe_dpm;
+        ydk::YList icpe_dpm;
         
 }; // NvSatellite::IcpeDpms
 
@@ -1795,8 +1773,8 @@ class NvSatellite::IcpeDpms::IcpeDpm : public ydk::Entity
         class Satellite; //type: NvSatellite::IcpeDpms::IcpeDpm::Satellite
         class RemoteHost; //type: NvSatellite::IcpeDpms::IcpeDpm::RemoteHost
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::IcpeDpms::IcpeDpm::Satellite> > satellite;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::IcpeDpms::IcpeDpm::RemoteHost> > remote_host;
+        ydk::YList satellite;
+        ydk::YList remote_host;
         
 }; // NvSatellite::IcpeDpms::IcpeDpm
 
@@ -1901,7 +1879,7 @@ class NvSatellite::SdacpControls : public ydk::Entity
 
         class SdacpControl; //type: NvSatellite::SdacpControls::SdacpControl
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl> > sdacp_control;
+        ydk::YList sdacp_control;
         
 }; // NvSatellite::SdacpControls
 
@@ -1936,7 +1914,7 @@ class NvSatellite::SdacpControls::SdacpControl : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp> protocol_state_timestamp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp> transport_error_timestamp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::Channel> > channel;
+        ydk::YList channel;
         
 }; // NvSatellite::SdacpControls::SdacpControl
 
@@ -2041,7 +2019,7 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities : public y
 
         class TlVs; //type: NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_icpe_infra_oper::NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs> > tl_vs;
+        ydk::YList tl_vs;
         
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities
 
@@ -2112,31 +2090,93 @@ class NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp :
 
 }; // NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp
 
-class IcpeOperMultichassisRedundancy : public ydk::Enum
+class IcpeOpmSyncFsmState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_not_redundant;
-        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_active;
-        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_standby;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_split_brain;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_whole_brain;
 
 };
 
-class IcpeOperDiscdLinkState : public ydk::Enum
+class IcpeOperSdacpSessState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_stopped;
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_probing;
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_configuring;
-        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_ready;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_not_created;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_created;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_not_ok;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_ok;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_version_not_ok;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_up;
+        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_issu;
 
 };
 
-class IcpeOperPort : public ydk::Enum
+class IcpeOpmTransportState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_port_unknown;
-        static const ydk::Enum::YLeaf icpe_oper_port_gigabit_ethernet;
-        static const ydk::Enum::YLeaf icpe_oper_port_ten_gig_e;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_iccp_unavailable;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_no_member_present;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_down;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_not_reachable;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect_response;
+        static const ydk::Enum::YLeaf icpe_opm_transport_state_connected;
+
+};
+
+class IcpeOpmAuthFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_unauth;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_auth;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_reply;
+        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_authed;
+
+};
+
+class IcpeOpmController : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_controller_unknown;
+        static const ydk::Enum::YLeaf icpe_opm_controller_primary;
+        static const ydk::Enum::YLeaf icpe_opm_controller_secondary;
+
+};
+
+class IcpeOpmResyncFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_not_open;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_stable;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_in_resync;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_queued;
+        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_resync_req;
+
+};
+
+class IcpeOpmChanFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_down;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_closed;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opening;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opened;
+        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_open;
+
+};
+
+class IcpeOpmSessState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_disconnected;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_connecting;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_authenticating;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_arbitrating;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_waiting_for_resyncs;
+        static const ydk::Enum::YLeaf icpe_opm_sess_state_connected;
 
 };
 
@@ -2151,6 +2191,35 @@ class IcpeOperInstallState : public ydk::Enum
 
 };
 
+class IcpeOperPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_oper_port_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_port_gigabit_ethernet;
+        static const ydk::Enum::YLeaf icpe_oper_port_ten_gig_e;
+
+};
+
+class IcpeOperFabricPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_ten_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_forty_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_hundred_gig_e;
+
+};
+
+class IcpeInstallPkgSupp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_unknown;
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_not_supported;
+        static const ydk::Enum::YLeaf icpe_install_pkg_supp_supported;
+
+};
+
 class IcpeGcoOperControlReason : public ydk::Enum
 {
     public:
@@ -2162,16 +2231,37 @@ class IcpeGcoOperControlReason : public ydk::Enum
 
 };
 
-class IcpeOperSdacpSessState : public ydk::Enum
+class IcpeInstallSatState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_not_created;
-        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_created;
-        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_not_ok;
-        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_authentication_ok;
-        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_version_not_ok;
-        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_up;
-        static const ydk::Enum::YLeaf icpe_oper_sdacp_sess_state_issu;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_unknown;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_not_initiat_ed;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_transferring;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_activating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_updating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_replacing;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_deactivating;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_removing;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_success;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_failure;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_multiple_ops;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_aborted;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_protocol_version;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_pkg_not_present;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_no_image;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_no_such_file;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_sat_uncfgd;
+        static const ydk::Enum::YLeaf icpe_install_sat_state_processing;
+
+};
+
+class IcpeOpmArbitrationFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_unarbitrated;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_waiting;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrating;
+        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrated;
 
 };
 
@@ -2219,16 +2309,6 @@ class IcpeOperConflict : public ydk::Enum
 
 };
 
-class IcpeOpticalSyncState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_unknown;
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_syncing;
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_synced;
-        static const ydk::Enum::YLeaf icpe_optical_sync_state_not_connected;
-
-};
-
 class IcpeOperVerCheckState : public ydk::Enum
 {
     public:
@@ -2240,123 +2320,31 @@ class IcpeOperVerCheckState : public ydk::Enum
 
 };
 
-class IcpeOperFabricPort : public ydk::Enum
+class IcpeOperReloadLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_unknown;
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_gig_e;
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_ten_gig_e;
-        static const ydk::Enum::YLeaf icpe_oper_fabric_port_n_v_fabric_hundred_gig_e;
+        static const ydk::Enum::YLeaf icpe_oper_reload_level_unknown;
+        static const ydk::Enum::YLeaf icpe_oper_reload_level_system;
+        static const ydk::Enum::YLeaf icpe_oper_reload_level_container;
 
 };
 
-class IcpeOpmResyncFsmState : public ydk::Enum
+class IcpeOperMultichassisRedundancy : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_not_open;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_stable;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_in_resync;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_queued;
-        static const ydk::Enum::YLeaf icpe_opm_resync_fsm_state_resync_req;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_not_redundant;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_active;
+        static const ydk::Enum::YLeaf icpe_oper_multi_chassis_redundancy_standby;
 
 };
 
-class IcpeOpmChanFsmState : public ydk::Enum
+class IcpeOperDiscdLinkState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_down;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_closed;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opening;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_opened;
-        static const ydk::Enum::YLeaf icpe_opm_chan_fsm_state_open;
-
-};
-
-class IcpeOpmController : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_controller_unknown;
-        static const ydk::Enum::YLeaf icpe_opm_controller_primary;
-        static const ydk::Enum::YLeaf icpe_opm_controller_secondary;
-
-};
-
-class IcpeOpmSyncFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_split_brain;
-        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_waiting;
-        static const ydk::Enum::YLeaf icpe_opm_sync_fsm_state_whole_brain;
-
-};
-
-class IcpeOpmArbitrationFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_unarbitrated;
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_waiting;
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrating;
-        static const ydk::Enum::YLeaf icpe_opm_arbitration_fsm_state_arbitrated;
-
-};
-
-class IcpeOpmAuthFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_unauth;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_auth;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_waiting_for_reply;
-        static const ydk::Enum::YLeaf icpe_opm_auth_fsm_state_authed;
-
-};
-
-class IcpeOpmTransportState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_disconnected;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_iccp_unavailable;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_no_member_present;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_down;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_member_not_reachable;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_waiting_for_app_connect_response;
-        static const ydk::Enum::YLeaf icpe_opm_transport_state_connected;
-
-};
-
-class IcpeOpmSessState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_disconnected;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_connecting;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_authenticating;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_arbitrating;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_waiting_for_resyncs;
-        static const ydk::Enum::YLeaf icpe_opm_sess_state_connected;
-
-};
-
-class IcpeInstallSatState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icpe_install_sat_state_unknown;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_not_initiat_ed;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_transferring;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_activating;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_updating;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_deactivating;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_removing;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_success;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_failure;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_multiple_ops;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_aborted;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_protocol_version;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_pkg_not_present;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_no_image;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_no_such_file;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_sat_uncfgd;
-        static const ydk::Enum::YLeaf icpe_install_sat_state_processing;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_stopped;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_probing;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_configuring;
+        static const ydk::Enum::YLeaf icpe_oper_discd_link_state_ready;
 
 };
 
@@ -2372,12 +2360,13 @@ class IcpeOperTopoRemoteSource : public ydk::Enum
 
 };
 
-class IcpeInstallPkgSupp : public ydk::Enum
+class IcpeOpticalSyncState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icpe_install_pkg_supp_unknown;
-        static const ydk::Enum::YLeaf icpe_install_pkg_supp_not_supported;
-        static const ydk::Enum::YLeaf icpe_install_pkg_supp_supported;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_unknown;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_syncing;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_synced;
+        static const ydk::Enum::YLeaf icpe_optical_sync_state_not_connected;
 
 };
 

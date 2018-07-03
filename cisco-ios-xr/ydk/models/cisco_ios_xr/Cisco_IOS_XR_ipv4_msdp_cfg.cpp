@@ -15,13 +15,14 @@ Msdp::Msdp()
     :
     global_max_sa{YType::uint32, "global-max-sa"},
     nsr_delay{YType::uint32, "nsr-delay"}
-    	,
+        ,
     vrfs(std::make_shared<Msdp::Vrfs>())
-	,default_context(nullptr) // presence node
+    , default_context(std::make_shared<Msdp::DefaultContext>())
 {
     vrfs->parent = this;
+    default_context->parent = this;
 
-    yang_name = "msdp"; yang_parent_name = "Cisco-IOS-XR-ipv4-msdp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "msdp"; yang_parent_name = "Cisco-IOS-XR-ipv4-msdp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Msdp::~Msdp()
@@ -30,6 +31,7 @@ Msdp::~Msdp()
 
 bool Msdp::has_data() const
 {
+    if (is_presence_container) return true;
     return global_max_sa.is_set
 	|| nsr_delay.is_set
 	|| (vrfs !=  nullptr && vrfs->has_data())
@@ -164,9 +166,11 @@ bool Msdp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Msdp::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "msdp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "msdp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::Vrfs::~Vrfs()
@@ -175,7 +179,8 @@ Msdp::Vrfs::~Vrfs()
 
 bool Msdp::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -185,7 +190,7 @@ bool Msdp::Vrfs::has_data() const
 
 bool Msdp::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -222,7 +227,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Msdp::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -234,7 +239,7 @@ std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -269,17 +274,17 @@ Msdp::Vrfs::Vrf::Vrf()
     originator_id{YType::str, "originator-id"},
     max_sa{YType::uint32, "max-sa"},
     connect_source{YType::str, "connect-source"}
-    	,
+        ,
     cache_state(std::make_shared<Msdp::Vrfs::Vrf::CacheState>())
-	,keep_alive(nullptr) // presence node
-	,peers(std::make_shared<Msdp::Vrfs::Vrf::Peers>())
-	,sa_filters(std::make_shared<Msdp::Vrfs::Vrf::SaFilters>())
+    , keep_alive(nullptr) // presence node
+    , peers(std::make_shared<Msdp::Vrfs::Vrf::Peers>())
+    , sa_filters(std::make_shared<Msdp::Vrfs::Vrf::SaFilters>())
 {
     cache_state->parent = this;
     peers->parent = this;
     sa_filters->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::Vrfs::Vrf::~Vrf()
@@ -288,6 +293,7 @@ Msdp::Vrfs::Vrf::~Vrf()
 
 bool Msdp::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| ttl_threshold.is_set
 	|| max_peer_sa.is_set
@@ -327,7 +333,8 @@ std::string Msdp::Vrfs::Vrf::get_absolute_path() const
 std::string Msdp::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -507,7 +514,7 @@ Msdp::Vrfs::Vrf::CacheState::CacheState()
     rp_list{YType::str, "rp-list"}
 {
 
-    yang_name = "cache-state"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cache-state"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::Vrfs::Vrf::CacheState::~CacheState()
@@ -516,6 +523,7 @@ Msdp::Vrfs::Vrf::CacheState::~CacheState()
 
 bool Msdp::Vrfs::Vrf::CacheState::has_data() const
 {
+    if (is_presence_container) return true;
     return sa_holdtime.is_set
 	|| list.is_set
 	|| rp_list.is_set;
@@ -611,7 +619,7 @@ Msdp::Vrfs::Vrf::KeepAlive::KeepAlive()
     peer_timeout_period{YType::uint32, "peer-timeout-period"}
 {
 
-    yang_name = "keep-alive"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keep-alive"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Msdp::Vrfs::Vrf::KeepAlive::~KeepAlive()
@@ -620,6 +628,7 @@ Msdp::Vrfs::Vrf::KeepAlive::~KeepAlive()
 
 bool Msdp::Vrfs::Vrf::KeepAlive::has_data() const
 {
+    if (is_presence_container) return true;
     return keep_alive_period.is_set
 	|| peer_timeout_period.is_set;
 }
@@ -697,9 +706,11 @@ bool Msdp::Vrfs::Vrf::KeepAlive::has_leaf_or_child_of_name(const std::string & n
 }
 
 Msdp::Vrfs::Vrf::Peers::Peers()
+    :
+    peer(this, {"peer_address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::Vrfs::Vrf::Peers::~Peers()
@@ -708,7 +719,8 @@ Msdp::Vrfs::Vrf::Peers::~Peers()
 
 bool Msdp::Vrfs::Vrf::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -718,7 +730,7 @@ bool Msdp::Vrfs::Vrf::Peers::has_data() const
 
 bool Msdp::Vrfs::Vrf::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -748,7 +760,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -760,7 +772,7 @@ std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -798,14 +810,14 @@ Msdp::Vrfs::Vrf::Peers::Peer::Peer()
     mesh_group{YType::str, "mesh-group"},
     ttl_threshold{YType::uint32, "ttl-threshold"},
     connect_source{YType::str, "connect-source"}
-    	,
+        ,
     remote_as(nullptr) // presence node
-	,keep_alive(nullptr) // presence node
-	,sa_filters(std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer::SaFilters>())
+    , keep_alive(nullptr) // presence node
+    , sa_filters(std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer::SaFilters>())
 {
     sa_filters->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::Vrfs::Vrf::Peers::Peer::~Peer()
@@ -814,6 +826,7 @@ Msdp::Vrfs::Vrf::Peers::Peer::~Peer()
 
 bool Msdp::Vrfs::Vrf::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| shutdown.is_set
 	|| description.is_set
@@ -850,7 +863,8 @@ bool Msdp::Vrfs::Vrf::Peers::Peer::has_operation() const
 std::string Msdp::Vrfs::Vrf::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[peer-address='" <<peer_address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(peer_address, "peer-address");
     return path_buffer.str();
 }
 
@@ -1048,7 +1062,7 @@ Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::RemoteAs()
     as_yy{YType::uint32, "as-yy"}
 {
 
-    yang_name = "remote-as"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-as"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::~RemoteAs()
@@ -1057,6 +1071,7 @@ Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::~RemoteAs()
 
 bool Msdp::Vrfs::Vrf::Peers::Peer::RemoteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set;
 }
@@ -1139,7 +1154,7 @@ Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::KeepAlive()
     peer_timeout_period{YType::uint32, "peer-timeout-period"}
 {
 
-    yang_name = "keep-alive"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keep-alive"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::~KeepAlive()
@@ -1148,6 +1163,7 @@ Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::~KeepAlive()
 
 bool Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::has_data() const
 {
+    if (is_presence_container) return true;
     return keep_alive_period.is_set
 	|| peer_timeout_period.is_set;
 }
@@ -1225,9 +1241,11 @@ bool Msdp::Vrfs::Vrf::Peers::Peer::KeepAlive::has_leaf_or_child_of_name(const st
 }
 
 Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilters()
+    :
+    sa_filter(this, {"list", "filter_type"})
 {
 
-    yang_name = "sa-filters"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sa-filters"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::~SaFilters()
@@ -1236,7 +1254,8 @@ Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::~SaFilters()
 
 bool Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::has_data() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_data())
             return true;
@@ -1246,7 +1265,7 @@ bool Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::has_data() const
 
 bool Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::has_operation() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_operation())
             return true;
@@ -1276,7 +1295,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::get_child_by_na
     {
         auto c = std::make_shared<Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter>();
         c->parent = this;
-        sa_filter.push_back(c);
+        sa_filter.append(c);
         return c;
     }
 
@@ -1288,7 +1307,7 @@ std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::Peers::Peer::SaF
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sa_filter)
+    for (auto c : sa_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1321,7 +1340,7 @@ Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::SaFilter()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::~SaFilter()
@@ -1330,6 +1349,7 @@ Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::~SaFilter()
 
 bool Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set
 	|| filter_type.is_set
 	|| access_list_name.is_set;
@@ -1346,7 +1366,9 @@ bool Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::has_operation() const
 std::string Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sa-filter" <<"[list='" <<list <<"']" <<"[filter-type='" <<filter_type <<"']";
+    path_buffer << "sa-filter";
+    ADD_KEY_TOKEN(list, "list");
+    ADD_KEY_TOKEN(filter_type, "filter-type");
     return path_buffer.str();
 }
 
@@ -1420,9 +1442,11 @@ bool Msdp::Vrfs::Vrf::Peers::Peer::SaFilters::SaFilter::has_leaf_or_child_of_nam
 }
 
 Msdp::Vrfs::Vrf::SaFilters::SaFilters()
+    :
+    sa_filter(this, {"list", "filter_type"})
 {
 
-    yang_name = "sa-filters"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sa-filters"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::Vrfs::Vrf::SaFilters::~SaFilters()
@@ -1431,7 +1455,8 @@ Msdp::Vrfs::Vrf::SaFilters::~SaFilters()
 
 bool Msdp::Vrfs::Vrf::SaFilters::has_data() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_data())
             return true;
@@ -1441,7 +1466,7 @@ bool Msdp::Vrfs::Vrf::SaFilters::has_data() const
 
 bool Msdp::Vrfs::Vrf::SaFilters::has_operation() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_operation())
             return true;
@@ -1471,7 +1496,7 @@ std::shared_ptr<Entity> Msdp::Vrfs::Vrf::SaFilters::get_child_by_name(const std:
     {
         auto c = std::make_shared<Msdp::Vrfs::Vrf::SaFilters::SaFilter>();
         c->parent = this;
-        sa_filter.push_back(c);
+        sa_filter.append(c);
         return c;
     }
 
@@ -1483,7 +1508,7 @@ std::map<std::string, std::shared_ptr<Entity>> Msdp::Vrfs::Vrf::SaFilters::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sa_filter)
+    for (auto c : sa_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1516,7 +1541,7 @@ Msdp::Vrfs::Vrf::SaFilters::SaFilter::SaFilter()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::Vrfs::Vrf::SaFilters::SaFilter::~SaFilter()
@@ -1525,6 +1550,7 @@ Msdp::Vrfs::Vrf::SaFilters::SaFilter::~SaFilter()
 
 bool Msdp::Vrfs::Vrf::SaFilters::SaFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set
 	|| filter_type.is_set
 	|| access_list_name.is_set;
@@ -1541,7 +1567,9 @@ bool Msdp::Vrfs::Vrf::SaFilters::SaFilter::has_operation() const
 std::string Msdp::Vrfs::Vrf::SaFilters::SaFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sa-filter" <<"[list='" <<list <<"']" <<"[filter-type='" <<filter_type <<"']";
+    path_buffer << "sa-filter";
+    ADD_KEY_TOKEN(list, "list");
+    ADD_KEY_TOKEN(filter_type, "filter-type");
     return path_buffer.str();
 }
 
@@ -1622,17 +1650,17 @@ Msdp::DefaultContext::DefaultContext()
     originator_id{YType::str, "originator-id"},
     max_sa{YType::uint32, "max-sa"},
     connect_source{YType::str, "connect-source"}
-    	,
+        ,
     cache_state(std::make_shared<Msdp::DefaultContext::CacheState>())
-	,keep_alive(nullptr) // presence node
-	,peers(std::make_shared<Msdp::DefaultContext::Peers>())
-	,sa_filters(std::make_shared<Msdp::DefaultContext::SaFilters>())
+    , keep_alive(nullptr) // presence node
+    , peers(std::make_shared<Msdp::DefaultContext::Peers>())
+    , sa_filters(std::make_shared<Msdp::DefaultContext::SaFilters>())
 {
     cache_state->parent = this;
     peers->parent = this;
     sa_filters->parent = this;
 
-    yang_name = "default-context"; yang_parent_name = "msdp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-context"; yang_parent_name = "msdp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::DefaultContext::~DefaultContext()
@@ -1641,6 +1669,7 @@ Msdp::DefaultContext::~DefaultContext()
 
 bool Msdp::DefaultContext::has_data() const
 {
+    if (is_presence_container) return true;
     return ttl_threshold.is_set
 	|| max_peer_sa.is_set
 	|| default_peer.is_set
@@ -1847,7 +1876,7 @@ Msdp::DefaultContext::CacheState::CacheState()
     rp_list{YType::str, "rp-list"}
 {
 
-    yang_name = "cache-state"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cache-state"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::DefaultContext::CacheState::~CacheState()
@@ -1856,6 +1885,7 @@ Msdp::DefaultContext::CacheState::~CacheState()
 
 bool Msdp::DefaultContext::CacheState::has_data() const
 {
+    if (is_presence_container) return true;
     return sa_holdtime.is_set
 	|| list.is_set
 	|| rp_list.is_set;
@@ -1958,7 +1988,7 @@ Msdp::DefaultContext::KeepAlive::KeepAlive()
     peer_timeout_period{YType::uint32, "peer-timeout-period"}
 {
 
-    yang_name = "keep-alive"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "keep-alive"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Msdp::DefaultContext::KeepAlive::~KeepAlive()
@@ -1967,6 +1997,7 @@ Msdp::DefaultContext::KeepAlive::~KeepAlive()
 
 bool Msdp::DefaultContext::KeepAlive::has_data() const
 {
+    if (is_presence_container) return true;
     return keep_alive_period.is_set
 	|| peer_timeout_period.is_set;
 }
@@ -2051,9 +2082,11 @@ bool Msdp::DefaultContext::KeepAlive::has_leaf_or_child_of_name(const std::strin
 }
 
 Msdp::DefaultContext::Peers::Peers()
+    :
+    peer(this, {"peer_address"})
 {
 
-    yang_name = "peers"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peers"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::DefaultContext::Peers::~Peers()
@@ -2062,7 +2095,8 @@ Msdp::DefaultContext::Peers::~Peers()
 
 bool Msdp::DefaultContext::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -2072,7 +2106,7 @@ bool Msdp::DefaultContext::Peers::has_data() const
 
 bool Msdp::DefaultContext::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -2109,7 +2143,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::get_child_by_name(const std
     {
         auto c = std::make_shared<Msdp::DefaultContext::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -2121,7 +2155,7 @@ std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2159,14 +2193,14 @@ Msdp::DefaultContext::Peers::Peer::Peer()
     mesh_group{YType::str, "mesh-group"},
     ttl_threshold{YType::uint32, "ttl-threshold"},
     connect_source{YType::str, "connect-source"}
-    	,
+        ,
     remote_as(nullptr) // presence node
-	,keep_alive(nullptr) // presence node
-	,sa_filters(std::make_shared<Msdp::DefaultContext::Peers::Peer::SaFilters>())
+    , keep_alive(nullptr) // presence node
+    , sa_filters(std::make_shared<Msdp::DefaultContext::Peers::Peer::SaFilters>())
 {
     sa_filters->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::DefaultContext::Peers::Peer::~Peer()
@@ -2175,6 +2209,7 @@ Msdp::DefaultContext::Peers::Peer::~Peer()
 
 bool Msdp::DefaultContext::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| shutdown.is_set
 	|| description.is_set
@@ -2218,7 +2253,8 @@ std::string Msdp::DefaultContext::Peers::Peer::get_absolute_path() const
 std::string Msdp::DefaultContext::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[peer-address='" <<peer_address <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(peer_address, "peer-address");
     return path_buffer.str();
 }
 
@@ -2416,7 +2452,7 @@ Msdp::DefaultContext::Peers::Peer::RemoteAs::RemoteAs()
     as_yy{YType::uint32, "as-yy"}
 {
 
-    yang_name = "remote-as"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-as"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Msdp::DefaultContext::Peers::Peer::RemoteAs::~RemoteAs()
@@ -2425,6 +2461,7 @@ Msdp::DefaultContext::Peers::Peer::RemoteAs::~RemoteAs()
 
 bool Msdp::DefaultContext::Peers::Peer::RemoteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set;
 }
@@ -2507,7 +2544,7 @@ Msdp::DefaultContext::Peers::Peer::KeepAlive::KeepAlive()
     peer_timeout_period{YType::uint32, "peer-timeout-period"}
 {
 
-    yang_name = "keep-alive"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keep-alive"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Msdp::DefaultContext::Peers::Peer::KeepAlive::~KeepAlive()
@@ -2516,6 +2553,7 @@ Msdp::DefaultContext::Peers::Peer::KeepAlive::~KeepAlive()
 
 bool Msdp::DefaultContext::Peers::Peer::KeepAlive::has_data() const
 {
+    if (is_presence_container) return true;
     return keep_alive_period.is_set
 	|| peer_timeout_period.is_set;
 }
@@ -2593,9 +2631,11 @@ bool Msdp::DefaultContext::Peers::Peer::KeepAlive::has_leaf_or_child_of_name(con
 }
 
 Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilters()
+    :
+    sa_filter(this, {"list", "filter_type"})
 {
 
-    yang_name = "sa-filters"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sa-filters"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::DefaultContext::Peers::Peer::SaFilters::~SaFilters()
@@ -2604,7 +2644,8 @@ Msdp::DefaultContext::Peers::Peer::SaFilters::~SaFilters()
 
 bool Msdp::DefaultContext::Peers::Peer::SaFilters::has_data() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_data())
             return true;
@@ -2614,7 +2655,7 @@ bool Msdp::DefaultContext::Peers::Peer::SaFilters::has_data() const
 
 bool Msdp::DefaultContext::Peers::Peer::SaFilters::has_operation() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_operation())
             return true;
@@ -2644,7 +2685,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::Peers::Peer::SaFilters::get_child_
     {
         auto c = std::make_shared<Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter>();
         c->parent = this;
-        sa_filter.push_back(c);
+        sa_filter.append(c);
         return c;
     }
 
@@ -2656,7 +2697,7 @@ std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::Peers::Peer
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sa_filter)
+    for (auto c : sa_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2689,7 +2730,7 @@ Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::SaFilter()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::~SaFilter()
@@ -2698,6 +2739,7 @@ Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::~SaFilter()
 
 bool Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set
 	|| filter_type.is_set
 	|| access_list_name.is_set;
@@ -2714,7 +2756,9 @@ bool Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::has_operation() con
 std::string Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sa-filter" <<"[list='" <<list <<"']" <<"[filter-type='" <<filter_type <<"']";
+    path_buffer << "sa-filter";
+    ADD_KEY_TOKEN(list, "list");
+    ADD_KEY_TOKEN(filter_type, "filter-type");
     return path_buffer.str();
 }
 
@@ -2788,9 +2832,11 @@ bool Msdp::DefaultContext::Peers::Peer::SaFilters::SaFilter::has_leaf_or_child_o
 }
 
 Msdp::DefaultContext::SaFilters::SaFilters()
+    :
+    sa_filter(this, {"list", "filter_type"})
 {
 
-    yang_name = "sa-filters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sa-filters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::DefaultContext::SaFilters::~SaFilters()
@@ -2799,7 +2845,8 @@ Msdp::DefaultContext::SaFilters::~SaFilters()
 
 bool Msdp::DefaultContext::SaFilters::has_data() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_data())
             return true;
@@ -2809,7 +2856,7 @@ bool Msdp::DefaultContext::SaFilters::has_data() const
 
 bool Msdp::DefaultContext::SaFilters::has_operation() const
 {
-    for (std::size_t index=0; index<sa_filter.size(); index++)
+    for (std::size_t index=0; index<sa_filter.len(); index++)
     {
         if(sa_filter[index]->has_operation())
             return true;
@@ -2846,7 +2893,7 @@ std::shared_ptr<Entity> Msdp::DefaultContext::SaFilters::get_child_by_name(const
     {
         auto c = std::make_shared<Msdp::DefaultContext::SaFilters::SaFilter>();
         c->parent = this;
-        sa_filter.push_back(c);
+        sa_filter.append(c);
         return c;
     }
 
@@ -2858,7 +2905,7 @@ std::map<std::string, std::shared_ptr<Entity>> Msdp::DefaultContext::SaFilters::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sa_filter)
+    for (auto c : sa_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2891,7 +2938,7 @@ Msdp::DefaultContext::SaFilters::SaFilter::SaFilter()
     access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sa-filter"; yang_parent_name = "sa-filters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Msdp::DefaultContext::SaFilters::SaFilter::~SaFilter()
@@ -2900,6 +2947,7 @@ Msdp::DefaultContext::SaFilters::SaFilter::~SaFilter()
 
 bool Msdp::DefaultContext::SaFilters::SaFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return list.is_set
 	|| filter_type.is_set
 	|| access_list_name.is_set;
@@ -2923,7 +2971,9 @@ std::string Msdp::DefaultContext::SaFilters::SaFilter::get_absolute_path() const
 std::string Msdp::DefaultContext::SaFilters::SaFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sa-filter" <<"[list='" <<list <<"']" <<"[filter-type='" <<filter_type <<"']";
+    path_buffer << "sa-filter";
+    ADD_KEY_TOKEN(list, "list");
+    ADD_KEY_TOKEN(filter_type, "filter-type");
     return path_buffer.str();
 }
 
@@ -2996,11 +3046,11 @@ bool Msdp::DefaultContext::SaFilters::SaFilter::has_leaf_or_child_of_name(const 
     return false;
 }
 
-const Enum::YLeaf MsdpFilterTypeVrf::incoming {1, "incoming"};
-const Enum::YLeaf MsdpFilterTypeVrf::outgoing {2, "outgoing"};
-
 const Enum::YLeaf MsdpListTypeVrf::list {3, "list"};
 const Enum::YLeaf MsdpListTypeVrf::rp_list {4, "rp-list"};
+
+const Enum::YLeaf MsdpFilterTypeVrf::incoming {1, "incoming"};
+const Enum::YLeaf MsdpFilterTypeVrf::outgoing {2, "outgoing"};
 
 
 }

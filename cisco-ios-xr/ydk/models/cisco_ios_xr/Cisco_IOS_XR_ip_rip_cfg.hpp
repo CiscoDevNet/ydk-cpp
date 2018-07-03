@@ -184,7 +184,7 @@ class Rip::DefaultVrf::Redistribution::Bgps : public ydk::Entity
 
         class Bgp; //type: Rip::DefaultVrf::Redistribution::Bgps::Bgp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Bgps::Bgp> > bgp;
+        ydk::YList bgp;
         
 }; // Rip::DefaultVrf::Redistribution::Bgps
 
@@ -233,7 +233,7 @@ class Rip::DefaultVrf::Redistribution::Isises : public ydk::Entity
 
         class Isis; //type: Rip::DefaultVrf::Redistribution::Isises::Isis
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Isises::Isis> > isis;
+        ydk::YList isis;
         
 }; // Rip::DefaultVrf::Redistribution::Isises
 
@@ -281,7 +281,7 @@ class Rip::DefaultVrf::Redistribution::EigrpS : public ydk::Entity
 
         class Eigrp; //type: Rip::DefaultVrf::Redistribution::EigrpS::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::EigrpS::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Rip::DefaultVrf::Redistribution::EigrpS
 
@@ -352,7 +352,7 @@ class Rip::DefaultVrf::Redistribution::Ospfs : public ydk::Entity
 
         class Ospf; //type: Rip::DefaultVrf::Redistribution::Ospfs::Ospf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Redistribution::Ospfs::Ospf> > ospf;
+        ydk::YList ospf;
         
 }; // Rip::DefaultVrf::Redistribution::Ospfs
 
@@ -404,7 +404,7 @@ class Rip::DefaultVrf::IpDistances : public ydk::Entity
 
         class IpDistance; //type: Rip::DefaultVrf::IpDistances::IpDistance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::IpDistances::IpDistance> > ip_distance;
+        ydk::YList ip_distance;
         
 }; // Rip::DefaultVrf::IpDistances
 
@@ -452,7 +452,7 @@ class Rip::DefaultVrf::Interfaces : public ydk::Entity
 
         class Interface; //type: Rip::DefaultVrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Rip::DefaultVrf::Interfaces
 
@@ -607,7 +607,7 @@ class Rip::DefaultVrf::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Rip::DefaultVrf::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::DefaultVrf::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Rip::DefaultVrf::Neighbors
 
@@ -678,7 +678,7 @@ class Rip::Vrfs : public ydk::Entity
 
         class Vrf; //type: Rip::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Rip::Vrfs
 
@@ -824,7 +824,7 @@ class Rip::Vrfs::Vrf::Redistribution::Bgps : public ydk::Entity
 
         class Bgp; //type: Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp> > bgp;
+        ydk::YList bgp;
         
 }; // Rip::Vrfs::Vrf::Redistribution::Bgps
 
@@ -871,7 +871,7 @@ class Rip::Vrfs::Vrf::Redistribution::Isises : public ydk::Entity
 
         class Isis; //type: Rip::Vrfs::Vrf::Redistribution::Isises::Isis
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Isises::Isis> > isis;
+        ydk::YList isis;
         
 }; // Rip::Vrfs::Vrf::Redistribution::Isises
 
@@ -917,7 +917,7 @@ class Rip::Vrfs::Vrf::Redistribution::EigrpS : public ydk::Entity
 
         class Eigrp; //type: Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Rip::Vrfs::Vrf::Redistribution::EigrpS
 
@@ -985,7 +985,7 @@ class Rip::Vrfs::Vrf::Redistribution::Ospfs : public ydk::Entity
 
         class Ospf; //type: Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf> > ospf;
+        ydk::YList ospf;
         
 }; // Rip::Vrfs::Vrf::Redistribution::Ospfs
 
@@ -1035,7 +1035,7 @@ class Rip::Vrfs::Vrf::IpDistances : public ydk::Entity
 
         class IpDistance; //type: Rip::Vrfs::Vrf::IpDistances::IpDistance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::IpDistances::IpDistance> > ip_distance;
+        ydk::YList ip_distance;
         
 }; // Rip::Vrfs::Vrf::IpDistances
 
@@ -1081,7 +1081,7 @@ class Rip::Vrfs::Vrf::Interfaces : public ydk::Entity
 
         class Interface; //type: Rip::Vrfs::Vrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Rip::Vrfs::Vrf::Interfaces
 
@@ -1234,7 +1234,7 @@ class Rip::Vrfs::Vrf::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Rip::Vrfs::Vrf::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_cfg::Rip::Vrfs::Vrf::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Rip::Vrfs::Vrf::Neighbors
 
@@ -1283,27 +1283,11 @@ class Rip::Vrfs::Vrf::Timers : public ydk::Entity
 
 }; // Rip::Vrfs::Vrf::Timers
 
-class RipExtCommunity : public ydk::Enum
+class RipAuthMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf as;
-        static const ydk::Enum::YLeaf ipv4_address;
-        static const ydk::Enum::YLeaf four_byte_as;
-
-};
-
-class DefaultRedistRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class DefaultInformationOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf always;
-        static const ydk::Enum::YLeaf policy;
+        static const ydk::Enum::YLeaf text;
+        static const ydk::Enum::YLeaf md5;
 
 };
 
@@ -1313,6 +1297,14 @@ class IsisRedistRoute : public ydk::Enum
         static const ydk::Enum::YLeaf level1;
         static const ydk::Enum::YLeaf level2;
         static const ydk::Enum::YLeaf level1_and2;
+
+};
+
+class DefaultInformationOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf policy;
 
 };
 
@@ -1326,11 +1318,19 @@ class BgpRedistRoute : public ydk::Enum
 
 };
 
-class RipAuthMode : public ydk::Enum
+class RipExtCommunity : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf text;
-        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf as;
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf four_byte_as;
+
+};
+
+class DefaultRedistRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
 
 };
 

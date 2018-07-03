@@ -34,7 +34,7 @@ class Vlans : public ydk::Entity
 
         class Vlan; //type: Vlans::Vlan
 
-        std::vector<std::shared_ptr<openconfig::openconfig_vlan::Vlans::Vlan> > vlan;
+        ydk::YList vlan;
         
 }; // Vlans
 
@@ -137,7 +137,7 @@ class Vlans::Vlan::Members : public ydk::Entity
 
         class Member; //type: Vlans::Vlan::Members::Member
 
-        std::vector<std::shared_ptr<openconfig::openconfig_vlan::Vlans::Vlan::Members::Member> > member;
+        ydk::YList member;
         
 }; // Vlans::Vlan::Members
 

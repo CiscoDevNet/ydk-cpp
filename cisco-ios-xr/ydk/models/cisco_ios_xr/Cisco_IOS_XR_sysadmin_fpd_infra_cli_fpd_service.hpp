@@ -34,7 +34,7 @@ class Location : public ydk::Entity
         ydk::YLeaf loc; //type: string
         class Fpd2; //type: Location::Fpd2
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_fpd_infra_cli_fpd_service::Location::Fpd2> > fpd2;
+        ydk::YList fpd2;
         
 }; // Location
 

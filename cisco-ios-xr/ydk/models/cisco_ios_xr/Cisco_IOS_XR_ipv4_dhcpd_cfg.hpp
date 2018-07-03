@@ -71,7 +71,7 @@ class Ipv4Dhcpd::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv4Dhcpd::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Vrfs
 
@@ -142,7 +142,7 @@ class Ipv4Dhcpd::Profiles : public ydk::Entity
 
         class Profile; //type: Ipv4Dhcpd::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ipv4Dhcpd::Profiles
 
@@ -190,7 +190,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes : public ydk::Entity
 
         class Mode; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode> > mode;
+        ydk::YList mode;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes
 
@@ -220,10 +220,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode : public ydk::Entity
         class Proxy; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Snoop> snoop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base> base;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server> server;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base> base; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server> server; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay> relay;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy> proxy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy> proxy; // presence node
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode
 
@@ -347,7 +347,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf profile_name; //type: string
-        ydk::YLeaf profile_mode; //type: int32
+        ydk::YLeaf profile_mode; //type: uint32
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile
 
@@ -395,7 +395,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters : pu
 
         class OptionFilter; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter> > option_filter;
+        ydk::YList option_filter;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters
 
@@ -416,9 +416,9 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::Opt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf matchoption; //type: int32
+        ydk::YLeaf matchoption; //type: uint32
         ydk::YLeaf pattern; //type: string
-        ydk::YLeaf format; //type: int32
+        ydk::YLeaf format; //type: uint32
         ydk::YLeaf option_action; //type: BaseAction
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::OptionFilters::OptionFilter
@@ -442,7 +442,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions : publi
 
         class DefOption; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption> > def_option;
+        ydk::YList def_option;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions
 
@@ -463,7 +463,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOpt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf def_matchoption; //type: int32
+        ydk::YLeaf def_matchoption; //type: uint32
         ydk::YLeaf def_matchaction; //type: BaseAction
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match::DefOptions::DefOption
@@ -486,7 +486,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf remote_id; //type: string
-        ydk::YLeaf authenticate; //type: int32
+        ydk::YLeaf authenticate; //type: uint32
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt
 
@@ -532,7 +532,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options : publ
 
         class Option; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option> > option;
+        ydk::YList option;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options
 
@@ -553,9 +553,9 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Optio
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf opt60; //type: int32
+        ydk::YLeaf opt60; //type: uint32
         ydk::YLeaf opt60_hex_str; //type: string
-        ydk::YLeaf format; //type: int32
+        ydk::YLeaf format; //type: uint32
         class OptionProfile; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile> option_profile;
@@ -580,7 +580,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Optio
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf profile_name; //type: string
-        ydk::YLeaf profile_mode; //type: int32
+        ydk::YLeaf profile_mode; //type: uint32
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile
 
@@ -623,6 +623,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server : public ydk::Entity
         class Lease; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease
         class NetbiosNodeType; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType
         class DnsServers; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers
+        class DhcpToAaa; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa
         class OptionCodes; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::ServerIdCheck> server_id_check;
@@ -639,6 +640,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Lease> lease;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetbiosNodeType> netbios_node_type;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers> dns_servers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa> dhcp_to_aaa;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes> option_codes;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server
@@ -837,7 +839,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults :
 
         class OptionDefault; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults::OptionDefault> > option_default;
+        ydk::YList option_default;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::OptionDefaults
 
@@ -882,7 +884,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options : public
 
         class Option; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option> > option;
+        ydk::YList option;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options
 
@@ -905,7 +907,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option 
 
         ydk::YLeaf matchoption; //type: Matchoption
         ydk::YLeaf pattern; //type: string
-        ydk::YLeaf format; //type: int32
+        ydk::YLeaf format; //type: uint32
         ydk::YLeaf matchaction; //type: Matchaction
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match::Options::Option
@@ -1019,7 +1021,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes : public ydk::E
 
         class Class; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class> > class_;
+        ydk::YList class_;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes
 
@@ -1151,7 +1153,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMa
 
         class ClassOption; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions::ClassOption> > class_option;
+        ydk::YList class_option;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::ClassMatch::ClassOptions
 
@@ -1267,7 +1269,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionC
 
         class OptionCode; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode> > option_code;
+        ydk::YList option_code;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes
 
@@ -1291,7 +1293,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionC
         ydk::YLeaf option_code; //type: uint32
         ydk::YLeaf ascii_string; //type: string
         ydk::YLeaf hex_string; //type: string
-        ydk::YLeaf force_insert; //type: int32
+        ydk::YLeaf force_insert; //type: uint32
         ydk::YLeafList ip_address; //type: list of  string
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Classes::Class::OptionCodes::OptionCode
@@ -1313,7 +1315,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf authenticate; //type: int32
+        ydk::YLeaf authenticate; //type: uint32
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Relay
 
@@ -1388,6 +1390,74 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers : public ydk
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DnsServers
 
 
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa : public ydk::Entity
+{
+    public:
+        DhcpToAaa();
+        ~DhcpToAaa();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Option; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option> option;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option : public ydk::Entity
+{
+    public:
+        Option();
+        ~Option();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class List; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List> list;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List : public ydk::Entity
+{
+    public:
+        List();
+        ~List();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf option_all; //type: uint32
+        ydk::YLeaf option_number; //type: uint32
+
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DhcpToAaa::Option::List
+
+
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes : public ydk::Entity
 {
     public:
@@ -1406,7 +1476,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes : public yd
 
         class OptionCode; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode> > option_code;
+        ydk::YList option_code;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes
 
@@ -1430,7 +1500,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode
         ydk::YLeaf option_code; //type: uint32
         ydk::YLeaf ascii_string; //type: string
         ydk::YLeaf hex_string; //type: string
-        ydk::YLeaf force_insert; //type: int32
+        ydk::YLeaf force_insert; //type: uint32
         ydk::YLeafList ip_address; //type: list of  string
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::OptionCodes::OptionCode
@@ -1458,10 +1528,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay : public ydk::Entity
         class RelayInformationOption; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption
         class BroadcastPolicy; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy> gi_addr_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::GiAddrPolicy> gi_addr_policy; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs> vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption> relay_information_option;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy> broadcast_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy> broadcast_policy; // presence node
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay
 
@@ -1505,7 +1575,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs : public ydk::Entit
 
         class Vrf; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs
 
@@ -1552,7 +1622,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddress
 
         class HelperAddress; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::Vrfs::Vrf::HelperAddresses
 
@@ -1660,7 +1730,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy : public ydk::Entity
         class BroadcastFlag; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag
         class Match; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr> giaddr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Giaddr> giaddr; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes> classes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::AuthUsername> auth_username; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::RelayInformation> relay_information;
@@ -1669,7 +1739,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Sessions> sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LimitLease> limit_lease; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::LeaseProxy> lease_proxy;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag> broadcast_flag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::BroadcastFlag> broadcast_flag; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match> match;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy
@@ -1714,7 +1784,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes : public ydk::En
 
         class Class; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class> > class_;
+        ydk::YList class_;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes
 
@@ -1811,7 +1881,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs : p
 
         class Vrf; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs
 
@@ -1858,7 +1928,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vr
 
         class HelperAddress; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Classes::Class::Vrfs::Vrf::HelperAddresses
 
@@ -2000,7 +2070,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf option_all; //type: int32
+        ydk::YLeaf option_all; //type: uint32
         ydk::YLeafList option; //type: list of  uint32
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::DhcpToAaa::Option::List
@@ -2024,7 +2094,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs : public ydk::Entit
 
         class Vrf; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs
 
@@ -2071,7 +2141,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddress
 
         class HelperAddress; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Vrfs::Vrf::HelperAddresses
 
@@ -2275,7 +2345,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions : publ
 
         class DefOption; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption> > def_option;
+        ydk::YList def_option;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions
 
@@ -2296,7 +2366,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOp
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf def_matchoption; //type: int32
+        ydk::YLeaf def_matchoption; //type: uint32
         ydk::YLeaf def_matchaction; //type: ProxyAction
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::DefOptions::DefOption
@@ -2320,7 +2390,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters : p
 
         class OptionFilter; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter> > option_filter;
+        ydk::YList option_filter;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters
 
@@ -2341,9 +2411,9 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::Op
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf matchoption; //type: int32
+        ydk::YLeaf matchoption; //type: uint32
         ydk::YLeaf pattern; //type: string
-        ydk::YLeaf format; //type: int32
+        ydk::YLeaf format; //type: uint32
         ydk::YLeaf matchaction; //type: ProxyAction
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Proxy::Match::OptionFilters::OptionFilter
@@ -2394,7 +2464,7 @@ class Ipv4Dhcpd::Interfaces : public ydk::Entity
 
         class Interface; //type: Ipv4Dhcpd::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ipv4Dhcpd::Interfaces
 
@@ -2662,7 +2732,7 @@ class Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics : public ydk::Entity
 
         class Static; //type: Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics::Static> > static_;
+        ydk::YList static_;
         
 }; // Ipv4Dhcpd::Interfaces::Interface::StaticMode::Statics
 
@@ -2866,13 +2936,22 @@ class Ipv4Dhcpd::RateLimit : public ydk::Entity
 
 }; // Ipv4Dhcpd::RateLimit
 
-class Dhcpv4MatchOption : public ydk::Enum
+class Dhcpv4LimitLease1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Y_60__FWD_SLASH__60;
-        static const ydk::Enum::YLeaf Y_77__FWD_SLASH__77;
-        static const ydk::Enum::YLeaf Y_124__FWD_SLASH__124;
-        static const ydk::Enum::YLeaf Y_125__FWD_SLASH__125;
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf remote_id;
+        static const ydk::Enum::YLeaf circuit_id_remote_id;
+
+};
+
+class ProxyAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf relay;
 
 };
 
@@ -2884,13 +2963,111 @@ class Ipv4dhcpdLayer : public ydk::Enum
 
 };
 
-class Dhcpv4LimitLease1 : public ydk::Enum
+class Ipv4dhcpdFmtSpecifier : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf circuit_id;
-        static const ydk::Enum::YLeaf remote_id;
-        static const ydk::Enum::YLeaf circuit_id_remote_id;
+        static const ydk::Enum::YLeaf physical_chassis;
+        static const ydk::Enum::YLeaf physical_slot;
+        static const ydk::Enum::YLeaf physical_sub_slot;
+        static const ydk::Enum::YLeaf physical_port;
+        static const ydk::Enum::YLeaf physical_sub_port;
+        static const ydk::Enum::YLeaf inner_vlan_id;
+        static const ydk::Enum::YLeaf outer_vlan_id;
+        static const ydk::Enum::YLeaf l2_interface;
+
+};
+
+class Matchaction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf drop;
+
+};
+
+class Dhcpv4AuthUsername : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auth_username_mac;
+        static const ydk::Enum::YLeaf auth_username_giaddr;
+
+};
+
+class LeaseLimitValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf per_interface;
+        static const ydk::Enum::YLeaf per_circuit_id;
+        static const ydk::Enum::YLeaf per_remote_id;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf replace;
+        static const ydk::Enum::YLeaf keep;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf encapsulate;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionAuthenticate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf received;
+        static const ydk::Enum::YLeaf inserted;
+
+};
+
+class Policy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ignore;
+        static const ydk::Enum::YLeaf check;
+        static const ydk::Enum::YLeaf unicastalways;
+
+};
+
+class Ipv4dhcpdBroadcastFlagPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ignore;
+        static const ydk::Enum::YLeaf check;
+        static const ydk::Enum::YLeaf unicast_always;
+
+};
+
+class Dhcpv4MatchOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_60__FWD_SLASH__60;
+        static const ydk::Enum::YLeaf Y_77__FWD_SLASH__77;
+        static const ydk::Enum::YLeaf Y_124__FWD_SLASH__124;
+        static const ydk::Enum::YLeaf Y_125__FWD_SLASH__125;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionvpnMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rfc;
+        static const ydk::Enum::YLeaf cisco;
+
+};
+
+class Ipv4dhcpdGiaddrPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf giaddr_policy_keep;
+
+};
+
+class Ipv4dhcpdFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_format;
+        static const ydk::Enum::YLeaf format;
 
 };
 
@@ -2906,45 +3083,11 @@ class Matchoption : public ydk::Enum
 
 };
 
-class Ipv4dhcpdGiaddrPolicy : public ydk::Enum
+class MacMismatchAction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf giaddr_policy_keep;
-
-};
-
-class LeaseLimitValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf per_interface;
-        static const ydk::Enum::YLeaf per_circuit_id;
-        static const ydk::Enum::YLeaf per_remote_id;
-
-};
-
-class Dhcpv4AuthUsername : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf auth_username_mac;
-        static const ydk::Enum::YLeaf auth_username_giaddr;
-
-};
-
-class ProxyAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf forward;
         static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf relay;
-
-};
-
-class Ipv4dhcpdBroadcastFlagPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ignore;
-        static const ydk::Enum::YLeaf check;
-        static const ydk::Enum::YLeaf unicast_always;
 
 };
 
@@ -2965,79 +3108,6 @@ class Ipv4dhcpdMode : public ydk::Enum
         static const ydk::Enum::YLeaf server;
         static const ydk::Enum::YLeaf proxy;
         static const ydk::Enum::YLeaf base2;
-
-};
-
-class Matchaction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf allow;
-        static const ydk::Enum::YLeaf drop;
-
-};
-
-class Policy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ignore;
-        static const ydk::Enum::YLeaf check;
-        static const ydk::Enum::YLeaf unicastalways;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionvpnMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rfc;
-        static const ydk::Enum::YLeaf cisco;
-
-};
-
-class Ipv4dhcpdFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_format;
-        static const ydk::Enum::YLeaf format;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionAuthenticate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf received;
-        static const ydk::Enum::YLeaf inserted;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf replace;
-        static const ydk::Enum::YLeaf keep;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf encapsulate;
-
-};
-
-class Ipv4dhcpdFmtSpecifier : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf physical_chassis;
-        static const ydk::Enum::YLeaf physical_slot;
-        static const ydk::Enum::YLeaf physical_sub_slot;
-        static const ydk::Enum::YLeaf physical_port;
-        static const ydk::Enum::YLeaf physical_sub_port;
-        static const ydk::Enum::YLeaf inner_vlan_id;
-        static const ydk::Enum::YLeaf outer_vlan_id;
-        static const ydk::Enum::YLeaf l2_interface;
-
-};
-
-class MacMismatchAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf forward;
-        static const ydk::Enum::YLeaf drop;
 
 };
 

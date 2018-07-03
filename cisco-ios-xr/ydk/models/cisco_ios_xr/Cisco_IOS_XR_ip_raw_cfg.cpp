@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_raw_cfg {
 IpRaw::IpRaw()
     :
     receive_q{YType::uint32, "receive-q"}
-    	,
+        ,
     num_thread(nullptr) // presence node
-	,directory(nullptr) // presence node
+    , directory(nullptr) // presence node
 {
 
-    yang_name = "ip-raw"; yang_parent_name = "Cisco-IOS-XR-ip-raw-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip-raw"; yang_parent_name = "Cisco-IOS-XR-ip-raw-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IpRaw::~IpRaw()
@@ -28,6 +28,7 @@ IpRaw::~IpRaw()
 
 bool IpRaw::has_data() const
 {
+    if (is_presence_container) return true;
     return receive_q.is_set
 	|| (num_thread !=  nullptr && num_thread->has_data())
 	|| (directory !=  nullptr && directory->has_data());
@@ -154,7 +155,7 @@ IpRaw::NumThread::NumThread()
     raw_out_q_threads{YType::uint32, "raw-out-q-threads"}
 {
 
-    yang_name = "num-thread"; yang_parent_name = "ip-raw"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "num-thread"; yang_parent_name = "ip-raw"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 IpRaw::NumThread::~NumThread()
@@ -163,6 +164,7 @@ IpRaw::NumThread::~NumThread()
 
 bool IpRaw::NumThread::has_data() const
 {
+    if (is_presence_container) return true;
     return raw_in_q_threads.is_set
 	|| raw_out_q_threads.is_set;
 }
@@ -253,7 +255,7 @@ IpRaw::Directory::Directory()
     max_file_size_files{YType::uint32, "max-file-size-files"}
 {
 
-    yang_name = "directory"; yang_parent_name = "ip-raw"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "directory"; yang_parent_name = "ip-raw"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 IpRaw::Directory::~Directory()
@@ -262,6 +264,7 @@ IpRaw::Directory::~Directory()
 
 bool IpRaw::Directory::has_data() const
 {
+    if (is_presence_container) return true;
     return directoryname.is_set
 	|| max_raw_debug_files.is_set
 	|| max_file_size_files.is_set;

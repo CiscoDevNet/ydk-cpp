@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_wdmon {
 
 Wdmon::Wdmon()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "wdmon"; yang_parent_name = "Cisco-IOS-XR-sysadmin-wdmon"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "wdmon"; yang_parent_name = "Cisco-IOS-XR-sysadmin-wdmon"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Wdmon::~Wdmon()
@@ -23,7 +25,8 @@ Wdmon::~Wdmon()
 
 bool Wdmon::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Wdmon::has_data() const
 
 bool Wdmon::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Wdmon::get_child_by_name(const std::string & child_yang_
     {
         auto c = std::make_shared<Wdmon::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Wdmon::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool Wdmon::has_leaf_or_child_of_name(const std::string & name) const
 Wdmon::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "wdmon"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "wdmon"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Wdmon::Trace::~Trace()
@@ -140,7 +145,8 @@ Wdmon::Trace::~Trace()
 
 bool Wdmon::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool Wdmon::Trace::has_data() const
 
 bool Wdmon::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string Wdmon::Trace::get_absolute_path() const
 std::string Wdmon::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> Wdmon::Trace::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Wdmon::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Wdmon::Trace::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -240,9 +247,11 @@ bool Wdmon::Trace::has_leaf_or_child_of_name(const std::string & name) const
 Wdmon::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Wdmon::Trace::Location::~Location()
@@ -251,7 +260,8 @@ Wdmon::Trace::Location::~Location()
 
 bool Wdmon::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -261,7 +271,7 @@ bool Wdmon::Trace::Location::has_data() const
 
 bool Wdmon::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -273,7 +283,8 @@ bool Wdmon::Trace::Location::has_operation() const
 std::string Wdmon::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -293,7 +304,7 @@ std::shared_ptr<Entity> Wdmon::Trace::Location::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Wdmon::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -305,7 +316,7 @@ std::map<std::string, std::shared_ptr<Entity>> Wdmon::Trace::Location::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -344,9 +355,11 @@ bool Wdmon::Trace::Location::has_leaf_or_child_of_name(const std::string & name)
 Wdmon::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Wdmon::Trace::Location::AllOptions::~AllOptions()
@@ -355,7 +368,8 @@ Wdmon::Trace::Location::AllOptions::~AllOptions()
 
 bool Wdmon::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -365,7 +379,7 @@ bool Wdmon::Trace::Location::AllOptions::has_data() const
 
 bool Wdmon::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -377,7 +391,8 @@ bool Wdmon::Trace::Location::AllOptions::has_operation() const
 std::string Wdmon::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -397,7 +412,7 @@ std::shared_ptr<Entity> Wdmon::Trace::Location::AllOptions::get_child_by_name(co
     {
         auto c = std::make_shared<Wdmon::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -409,7 +424,7 @@ std::map<std::string, std::shared_ptr<Entity>> Wdmon::Trace::Location::AllOption
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -450,7 +465,7 @@ Wdmon::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Wdmon::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -459,6 +474,7 @@ Wdmon::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Wdmon::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -523,9 +539,11 @@ bool Wdmon::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_child_of_name(
 }
 
 WdmonInfo::WdmonInfo()
+    :
+    all_locations(this, {"location"})
 {
 
-    yang_name = "wdmon-info"; yang_parent_name = "Cisco-IOS-XR-sysadmin-wdmon"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "wdmon-info"; yang_parent_name = "Cisco-IOS-XR-sysadmin-wdmon"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 WdmonInfo::~WdmonInfo()
@@ -534,7 +552,8 @@ WdmonInfo::~WdmonInfo()
 
 bool WdmonInfo::has_data() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_data())
             return true;
@@ -544,7 +563,7 @@ bool WdmonInfo::has_data() const
 
 bool WdmonInfo::has_operation() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_operation())
             return true;
@@ -574,7 +593,7 @@ std::shared_ptr<Entity> WdmonInfo::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<WdmonInfo::AllLocations>();
         c->parent = this;
-        all_locations.push_back(c);
+        all_locations.append(c);
         return c;
     }
 
@@ -586,7 +605,7 @@ std::map<std::string, std::shared_ptr<Entity>> WdmonInfo::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_locations)
+    for (auto c : all_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -665,7 +684,7 @@ WdmonInfo::AllLocations::AllLocations()
     wds_client_reported_status{YType::str, "wds-client-reported-status"}
 {
 
-    yang_name = "all-locations"; yang_parent_name = "wdmon-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-locations"; yang_parent_name = "wdmon-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 WdmonInfo::AllLocations::~AllLocations()
@@ -674,6 +693,7 @@ WdmonInfo::AllLocations::~AllLocations()
 
 bool WdmonInfo::AllLocations::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| start_timestamp.is_set
 	|| hushd_timeout.is_set
@@ -739,7 +759,8 @@ std::string WdmonInfo::AllLocations::get_absolute_path() const
 std::string WdmonInfo::AllLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-locations" <<"[location='" <<location <<"']";
+    path_buffer << "all-locations";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 

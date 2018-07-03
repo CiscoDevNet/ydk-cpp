@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysadmin_obfl {
 Obfl::Obfl()
     :
     obfl_mgr(std::make_shared<Obfl::ObflMgr>())
-	,obfl_show(std::make_shared<Obfl::ObflShow>())
+    , obfl_show(std::make_shared<Obfl::ObflShow>())
 {
     obfl_mgr->parent = this;
     obfl_show->parent = this;
 
-    yang_name = "obfl"; yang_parent_name = "Cisco-IOS-XR-sysadmin-obfl"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "obfl"; yang_parent_name = "Cisco-IOS-XR-sysadmin-obfl"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Obfl::~Obfl()
@@ -28,6 +28,7 @@ Obfl::~Obfl()
 
 bool Obfl::has_data() const
 {
+    if (is_presence_container) return true;
     return (obfl_mgr !=  nullptr && obfl_mgr->has_data())
 	|| (obfl_show !=  nullptr && obfl_show->has_data());
 }
@@ -136,9 +137,11 @@ bool Obfl::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Obfl::ObflMgr::ObflMgr()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "obfl_mgr"; yang_parent_name = "obfl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "obfl_mgr"; yang_parent_name = "obfl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Obfl::ObflMgr::~ObflMgr()
@@ -147,7 +150,8 @@ Obfl::ObflMgr::~ObflMgr()
 
 bool Obfl::ObflMgr::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Obfl::ObflMgr::has_data() const
 
 bool Obfl::ObflMgr::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Obfl::ObflMgr::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Obfl::ObflMgr::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,9 +239,11 @@ bool Obfl::ObflMgr::has_leaf_or_child_of_name(const std::string & name) const
 Obfl::ObflMgr::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "obfl_mgr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "obfl_mgr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Obfl::ObflMgr::Trace::~Trace()
@@ -246,7 +252,8 @@ Obfl::ObflMgr::Trace::~Trace()
 
 bool Obfl::ObflMgr::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -256,7 +263,7 @@ bool Obfl::ObflMgr::Trace::has_data() const
 
 bool Obfl::ObflMgr::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -275,7 +282,8 @@ std::string Obfl::ObflMgr::Trace::get_absolute_path() const
 std::string Obfl::ObflMgr::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -295,7 +303,7 @@ std::shared_ptr<Entity> Obfl::ObflMgr::Trace::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Obfl::ObflMgr::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -307,7 +315,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::Trace::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -346,9 +354,11 @@ bool Obfl::ObflMgr::Trace::has_leaf_or_child_of_name(const std::string & name) c
 Obfl::ObflMgr::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Obfl::ObflMgr::Trace::Location::~Location()
@@ -357,7 +367,8 @@ Obfl::ObflMgr::Trace::Location::~Location()
 
 bool Obfl::ObflMgr::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -367,7 +378,7 @@ bool Obfl::ObflMgr::Trace::Location::has_data() const
 
 bool Obfl::ObflMgr::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -379,7 +390,8 @@ bool Obfl::ObflMgr::Trace::Location::has_operation() const
 std::string Obfl::ObflMgr::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -399,7 +411,7 @@ std::shared_ptr<Entity> Obfl::ObflMgr::Trace::Location::get_child_by_name(const 
     {
         auto c = std::make_shared<Obfl::ObflMgr::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -411,7 +423,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::Trace::Location::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -450,9 +462,11 @@ bool Obfl::ObflMgr::Trace::Location::has_leaf_or_child_of_name(const std::string
 Obfl::ObflMgr::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Obfl::ObflMgr::Trace::Location::AllOptions::~AllOptions()
@@ -461,7 +475,8 @@ Obfl::ObflMgr::Trace::Location::AllOptions::~AllOptions()
 
 bool Obfl::ObflMgr::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -471,7 +486,7 @@ bool Obfl::ObflMgr::Trace::Location::AllOptions::has_data() const
 
 bool Obfl::ObflMgr::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -483,7 +498,8 @@ bool Obfl::ObflMgr::Trace::Location::AllOptions::has_operation() const
 std::string Obfl::ObflMgr::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -503,7 +519,7 @@ std::shared_ptr<Entity> Obfl::ObflMgr::Trace::Location::AllOptions::get_child_by
     {
         auto c = std::make_shared<Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -515,7 +531,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflMgr::Trace::Location::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -556,7 +572,7 @@ Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -565,6 +581,7 @@ Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -629,9 +646,11 @@ bool Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_child_
 }
 
 Obfl::ObflShow::ObflShow()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "obfl_show"; yang_parent_name = "obfl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "obfl_show"; yang_parent_name = "obfl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Obfl::ObflShow::~ObflShow()
@@ -640,7 +659,8 @@ Obfl::ObflShow::~ObflShow()
 
 bool Obfl::ObflShow::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -650,7 +670,7 @@ bool Obfl::ObflShow::has_data() const
 
 bool Obfl::ObflShow::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -687,7 +707,7 @@ std::shared_ptr<Entity> Obfl::ObflShow::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Obfl::ObflShow::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -699,7 +719,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -728,9 +748,11 @@ bool Obfl::ObflShow::has_leaf_or_child_of_name(const std::string & name) const
 Obfl::ObflShow::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "obfl_show"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "obfl_show"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Obfl::ObflShow::Trace::~Trace()
@@ -739,7 +761,8 @@ Obfl::ObflShow::Trace::~Trace()
 
 bool Obfl::ObflShow::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -749,7 +772,7 @@ bool Obfl::ObflShow::Trace::has_data() const
 
 bool Obfl::ObflShow::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -768,7 +791,8 @@ std::string Obfl::ObflShow::Trace::get_absolute_path() const
 std::string Obfl::ObflShow::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -788,7 +812,7 @@ std::shared_ptr<Entity> Obfl::ObflShow::Trace::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Obfl::ObflShow::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -800,7 +824,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::Trace::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -839,9 +863,11 @@ bool Obfl::ObflShow::Trace::has_leaf_or_child_of_name(const std::string & name) 
 Obfl::ObflShow::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Obfl::ObflShow::Trace::Location::~Location()
@@ -850,7 +876,8 @@ Obfl::ObflShow::Trace::Location::~Location()
 
 bool Obfl::ObflShow::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -860,7 +887,7 @@ bool Obfl::ObflShow::Trace::Location::has_data() const
 
 bool Obfl::ObflShow::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -872,7 +899,8 @@ bool Obfl::ObflShow::Trace::Location::has_operation() const
 std::string Obfl::ObflShow::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -892,7 +920,7 @@ std::shared_ptr<Entity> Obfl::ObflShow::Trace::Location::get_child_by_name(const
     {
         auto c = std::make_shared<Obfl::ObflShow::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -904,7 +932,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::Trace::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -943,9 +971,11 @@ bool Obfl::ObflShow::Trace::Location::has_leaf_or_child_of_name(const std::strin
 Obfl::ObflShow::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Obfl::ObflShow::Trace::Location::AllOptions::~AllOptions()
@@ -954,7 +984,8 @@ Obfl::ObflShow::Trace::Location::AllOptions::~AllOptions()
 
 bool Obfl::ObflShow::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -964,7 +995,7 @@ bool Obfl::ObflShow::Trace::Location::AllOptions::has_data() const
 
 bool Obfl::ObflShow::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -976,7 +1007,8 @@ bool Obfl::ObflShow::Trace::Location::AllOptions::has_operation() const
 std::string Obfl::ObflShow::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -996,7 +1028,7 @@ std::shared_ptr<Entity> Obfl::ObflShow::Trace::Location::AllOptions::get_child_b
     {
         auto c = std::make_shared<Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -1008,7 +1040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Obfl::ObflShow::Trace::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1049,7 +1081,7 @@ Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -1058,6 +1090,7 @@ Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 

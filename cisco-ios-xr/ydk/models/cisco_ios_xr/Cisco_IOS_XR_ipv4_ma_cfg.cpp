@@ -16,14 +16,14 @@ Ipv4NetworkGlobal::Ipv4NetworkGlobal()
     source_route{YType::boolean, "source-route"},
     reassemble_max_packets{YType::uint32, "reassemble-max-packets"},
     reassemble_time_out{YType::uint32, "reassemble-time-out"}
-    	,
+        ,
     unnumbered(std::make_shared<Ipv4NetworkGlobal::Unnumbered>())
-	,qppb(std::make_shared<Ipv4NetworkGlobal::Qppb>())
+    , qppb(std::make_shared<Ipv4NetworkGlobal::Qppb>())
 {
     unnumbered->parent = this;
     qppb->parent = this;
 
-    yang_name = "ipv4-network-global"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv4-network-global"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv4NetworkGlobal::~Ipv4NetworkGlobal()
@@ -32,6 +32,7 @@ Ipv4NetworkGlobal::~Ipv4NetworkGlobal()
 
 bool Ipv4NetworkGlobal::has_data() const
 {
+    if (is_presence_container) return true;
     return source_route.is_set
 	|| reassemble_max_packets.is_set
 	|| reassemble_time_out.is_set
@@ -184,7 +185,7 @@ Ipv4NetworkGlobal::Unnumbered::Unnumbered()
 {
     mpls->parent = this;
 
-    yang_name = "unnumbered"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unnumbered"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4NetworkGlobal::Unnumbered::~Unnumbered()
@@ -193,6 +194,7 @@ Ipv4NetworkGlobal::Unnumbered::~Unnumbered()
 
 bool Ipv4NetworkGlobal::Unnumbered::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpls !=  nullptr && mpls->has_data());
 }
 
@@ -272,7 +274,7 @@ Ipv4NetworkGlobal::Unnumbered::Mpls::Mpls()
 {
     te->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4NetworkGlobal::Unnumbered::Mpls::~Mpls()
@@ -281,6 +283,7 @@ Ipv4NetworkGlobal::Unnumbered::Mpls::~Mpls()
 
 bool Ipv4NetworkGlobal::Unnumbered::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (te !=  nullptr && te->has_data());
 }
 
@@ -359,7 +362,7 @@ Ipv4NetworkGlobal::Unnumbered::Mpls::Te::Te()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "te"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "te"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4NetworkGlobal::Unnumbered::Mpls::Te::~Te()
@@ -368,6 +371,7 @@ Ipv4NetworkGlobal::Unnumbered::Mpls::Te::~Te()
 
 bool Ipv4NetworkGlobal::Unnumbered::Mpls::Te::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -444,7 +448,7 @@ Ipv4NetworkGlobal::Qppb::Qppb()
     destination{YType::enumeration, "destination"}
 {
 
-    yang_name = "qppb"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qppb"; yang_parent_name = "ipv4-network-global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4NetworkGlobal::Qppb::~Qppb()
@@ -453,6 +457,7 @@ Ipv4NetworkGlobal::Qppb::~Qppb()
 
 bool Ipv4NetworkGlobal::Qppb::has_data() const
 {
+    if (is_presence_container) return true;
     return source.is_set
 	|| destination.is_set;
 }
@@ -541,7 +546,7 @@ SubscriberPta::SubscriberPta()
     tcp_mss_adjust{YType::uint32, "tcp-mss-adjust"}
 {
 
-    yang_name = "subscriber-pta"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-pta"; yang_parent_name = "Cisco-IOS-XR-ipv4-ma-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberPta::~SubscriberPta()
@@ -550,6 +555,7 @@ SubscriberPta::~SubscriberPta()
 
 bool SubscriberPta::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp_mss_adjust.is_set;
 }
 

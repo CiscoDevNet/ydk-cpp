@@ -17,7 +17,7 @@ Tty::Tty()
 {
     tty_lines->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "Cisco-IOS-XR-tty-server-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "tty"; yang_parent_name = "Cisco-IOS-XR-tty-server-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Tty::~Tty()
@@ -26,6 +26,7 @@ Tty::~Tty()
 
 bool Tty::has_data() const
 {
+    if (is_presence_container) return true;
     return (tty_lines !=  nullptr && tty_lines->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Tty::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Tty::TtyLines::TtyLines()
+    :
+    tty_line(this, {"name"})
 {
 
-    yang_name = "tty-lines"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tty-lines"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::TtyLines::~TtyLines()
@@ -129,7 +132,8 @@ Tty::TtyLines::~TtyLines()
 
 bool Tty::TtyLines::has_data() const
 {
-    for (std::size_t index=0; index<tty_line.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tty_line.len(); index++)
     {
         if(tty_line[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Tty::TtyLines::has_data() const
 
 bool Tty::TtyLines::has_operation() const
 {
-    for (std::size_t index=0; index<tty_line.size(); index++)
+    for (std::size_t index=0; index<tty_line.len(); index++)
     {
         if(tty_line[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Tty::TtyLines::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Tty::TtyLines::TtyLine>();
         c->parent = this;
-        tty_line.push_back(c);
+        tty_line.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tty_line)
+    for (auto c : tty_line.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,13 +221,13 @@ bool Tty::TtyLines::has_leaf_or_child_of_name(const std::string & name) const
 Tty::TtyLines::TtyLine::TtyLine()
     :
     name{YType::str, "name"}
-    	,
+        ,
     general(std::make_shared<Tty::TtyLines::TtyLine::General>())
-	,telnet(std::make_shared<Tty::TtyLines::TtyLine::Telnet>())
-	,aaa(std::make_shared<Tty::TtyLines::TtyLine::Aaa>())
-	,exec(std::make_shared<Tty::TtyLines::TtyLine::Exec>())
-	,connection(std::make_shared<Tty::TtyLines::TtyLine::Connection>())
-	,exec_mode(std::make_shared<Tty::TtyLines::TtyLine::ExecMode>())
+    , telnet(std::make_shared<Tty::TtyLines::TtyLine::Telnet>())
+    , aaa(std::make_shared<Tty::TtyLines::TtyLine::Aaa>())
+    , exec(std::make_shared<Tty::TtyLines::TtyLine::Exec>())
+    , connection(std::make_shared<Tty::TtyLines::TtyLine::Connection>())
+    , exec_mode(std::make_shared<Tty::TtyLines::TtyLine::ExecMode>())
 {
     general->parent = this;
     telnet->parent = this;
@@ -232,7 +236,7 @@ Tty::TtyLines::TtyLine::TtyLine()
     connection->parent = this;
     exec_mode->parent = this;
 
-    yang_name = "tty-line"; yang_parent_name = "tty-lines"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tty-line"; yang_parent_name = "tty-lines"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tty::TtyLines::TtyLine::~TtyLine()
@@ -241,6 +245,7 @@ Tty::TtyLines::TtyLine::~TtyLine()
 
 bool Tty::TtyLines::TtyLine::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (general !=  nullptr && general->has_data())
 	|| (telnet !=  nullptr && telnet->has_data())
@@ -272,7 +277,8 @@ std::string Tty::TtyLines::TtyLine::get_absolute_path() const
 std::string Tty::TtyLines::TtyLine::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tty-line" <<"[name='" <<name <<"']";
+    path_buffer << "tty-line";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -414,7 +420,7 @@ Tty::TtyLines::TtyLine::General::General()
     width{YType::uint32, "width"}
 {
 
-    yang_name = "general"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "general"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::General::~General()
@@ -423,6 +429,7 @@ Tty::TtyLines::TtyLine::General::~General()
 
 bool Tty::TtyLines::TtyLine::General::has_data() const
 {
+    if (is_presence_container) return true;
     return length.is_set
 	|| absolute_timeout.is_set
 	|| width.is_set;
@@ -517,7 +524,7 @@ Tty::TtyLines::TtyLine::Telnet::Telnet()
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "telnet"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "telnet"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Telnet::~Telnet()
@@ -526,6 +533,7 @@ Tty::TtyLines::TtyLine::Telnet::~Telnet()
 
 bool Tty::TtyLines::TtyLine::Telnet::has_data() const
 {
+    if (is_presence_container) return true;
     return transparent.is_set;
 }
 
@@ -594,18 +602,18 @@ Tty::TtyLines::TtyLine::Aaa::Aaa()
     login_timeout{YType::uint32, "login-timeout"},
     secret{YType::str, "secret"},
     password{YType::str, "password"}
-    	,
+        ,
     user_groups(std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups>())
-	,authorization(std::make_shared<Tty::TtyLines::TtyLine::Aaa::Authorization>())
-	,authentication(std::make_shared<Tty::TtyLines::TtyLine::Aaa::Authentication>())
-	,accounting(std::make_shared<Tty::TtyLines::TtyLine::Aaa::Accounting>())
+    , authorization(std::make_shared<Tty::TtyLines::TtyLine::Aaa::Authorization>())
+    , authentication(std::make_shared<Tty::TtyLines::TtyLine::Aaa::Authentication>())
+    , accounting(std::make_shared<Tty::TtyLines::TtyLine::Aaa::Accounting>())
 {
     user_groups->parent = this;
     authorization->parent = this;
     authentication->parent = this;
     accounting->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Aaa::~Aaa()
@@ -614,6 +622,7 @@ Tty::TtyLines::TtyLine::Aaa::~Aaa()
 
 bool Tty::TtyLines::TtyLine::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return login_timeout.is_set
 	|| secret.is_set
 	|| password.is_set
@@ -768,9 +777,11 @@ bool Tty::TtyLines::TtyLine::Aaa::has_leaf_or_child_of_name(const std::string & 
 }
 
 Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroups()
+    :
+    user_group(this, {"name"})
 {
 
-    yang_name = "user-groups"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "user-groups"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Aaa::UserGroups::~UserGroups()
@@ -779,7 +790,8 @@ Tty::TtyLines::TtyLine::Aaa::UserGroups::~UserGroups()
 
 bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_data() const
 {
-    for (std::size_t index=0; index<user_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<user_group.len(); index++)
     {
         if(user_group[index]->has_data())
             return true;
@@ -789,7 +801,7 @@ bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_data() const
 
 bool Tty::TtyLines::TtyLine::Aaa::UserGroups::has_operation() const
 {
-    for (std::size_t index=0; index<user_group.size(); index++)
+    for (std::size_t index=0; index<user_group.len(); index++)
     {
         if(user_group[index]->has_operation())
             return true;
@@ -819,7 +831,7 @@ std::shared_ptr<Entity> Tty::TtyLines::TtyLine::Aaa::UserGroups::get_child_by_na
     {
         auto c = std::make_shared<Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup>();
         c->parent = this;
-        user_group.push_back(c);
+        user_group.append(c);
         return c;
     }
 
@@ -831,7 +843,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tty::TtyLines::TtyLine::Aaa::User
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : user_group)
+    for (auto c : user_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -863,7 +875,7 @@ Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::UserGroup()
     category{YType::str, "category"}
 {
 
-    yang_name = "user-group"; yang_parent_name = "user-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "user-group"; yang_parent_name = "user-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::~UserGroup()
@@ -872,6 +884,7 @@ Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::~UserGroup()
 
 bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| category.is_set;
 }
@@ -886,7 +899,8 @@ bool Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::has_operation() const
 std::string Tty::TtyLines::TtyLine::Aaa::UserGroups::UserGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "user-group" <<"[name='" <<name <<"']";
+    path_buffer << "user-group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -955,7 +969,7 @@ Tty::TtyLines::TtyLine::Aaa::Authorization::Authorization()
     commands{YType::str, "commands"}
 {
 
-    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Aaa::Authorization::~Authorization()
@@ -964,6 +978,7 @@ Tty::TtyLines::TtyLine::Aaa::Authorization::~Authorization()
 
 bool Tty::TtyLines::TtyLine::Aaa::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return exec.is_set
 	|| event_manager.is_set
 	|| commands.is_set;
@@ -1058,7 +1073,7 @@ Tty::TtyLines::TtyLine::Aaa::Authentication::Authentication()
     login{YType::str, "login"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Aaa::Authentication::~Authentication()
@@ -1067,6 +1082,7 @@ Tty::TtyLines::TtyLine::Aaa::Authentication::~Authentication()
 
 bool Tty::TtyLines::TtyLine::Aaa::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return login.is_set;
 }
 
@@ -1136,7 +1152,7 @@ Tty::TtyLines::TtyLine::Aaa::Accounting::Accounting()
     commands{YType::str, "commands"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Aaa::Accounting::~Accounting()
@@ -1145,6 +1161,7 @@ Tty::TtyLines::TtyLine::Aaa::Accounting::~Accounting()
 
 bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return exec.is_set
 	|| commands.is_set;
 }
@@ -1224,11 +1241,11 @@ bool Tty::TtyLines::TtyLine::Aaa::Accounting::has_leaf_or_child_of_name(const st
 Tty::TtyLines::TtyLine::Exec::Exec()
     :
     time_stamp{YType::boolean, "time-stamp"}
-    	,
+        ,
     timeout(nullptr) // presence node
 {
 
-    yang_name = "exec"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Exec::~Exec()
@@ -1237,6 +1254,7 @@ Tty::TtyLines::TtyLine::Exec::~Exec()
 
 bool Tty::TtyLines::TtyLine::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return time_stamp.is_set
 	|| (timeout !=  nullptr && timeout->has_data());
 }
@@ -1322,7 +1340,7 @@ Tty::TtyLines::TtyLine::Exec::Timeout::Timeout()
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "timeout"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timeout"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Tty::TtyLines::TtyLine::Exec::Timeout::~Timeout()
@@ -1331,6 +1349,7 @@ Tty::TtyLines::TtyLine::Exec::Timeout::~Timeout()
 
 bool Tty::TtyLines::TtyLine::Exec::Timeout::has_data() const
 {
+    if (is_presence_container) return true;
     return minutes.is_set
 	|| seconds.is_set;
 }
@@ -1416,14 +1435,14 @@ Tty::TtyLines::TtyLine::Connection::Connection()
     session_limit{YType::uint32, "session-limit"},
     escape_character{YType::str, "escape-character"},
     transport_preferred{YType::enumeration, "transport-preferred"}
-    	,
+        ,
     transport_input(std::make_shared<Tty::TtyLines::TtyLine::Connection::TransportInput>())
-	,transport_output(nullptr) // presence node
-	,session_timeout(nullptr) // presence node
+    , transport_output(nullptr) // presence node
+    , session_timeout(nullptr) // presence node
 {
     transport_input->parent = this;
 
-    yang_name = "connection"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Connection::~Connection()
@@ -1432,6 +1451,7 @@ Tty::TtyLines::TtyLine::Connection::~Connection()
 
 bool Tty::TtyLines::TtyLine::Connection::has_data() const
 {
+    if (is_presence_container) return true;
     return disconnect_character.is_set
 	|| acl_in.is_set
 	|| acl_out.is_set
@@ -1629,7 +1649,7 @@ Tty::TtyLines::TtyLine::Connection::TransportInput::TransportInput()
     none{YType::int32, "none"}
 {
 
-    yang_name = "transport-input"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-input"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::Connection::TransportInput::~TransportInput()
@@ -1638,6 +1658,7 @@ Tty::TtyLines::TtyLine::Connection::TransportInput::~TransportInput()
 
 bool Tty::TtyLines::TtyLine::Connection::TransportInput::has_data() const
 {
+    if (is_presence_container) return true;
     return select.is_set
 	|| protocol1.is_set
 	|| protocol2.is_set
@@ -1748,7 +1769,7 @@ Tty::TtyLines::TtyLine::Connection::TransportOutput::TransportOutput()
     none{YType::int32, "none"}
 {
 
-    yang_name = "transport-output"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-output"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Tty::TtyLines::TtyLine::Connection::TransportOutput::~TransportOutput()
@@ -1757,6 +1778,7 @@ Tty::TtyLines::TtyLine::Connection::TransportOutput::~TransportOutput()
 
 bool Tty::TtyLines::TtyLine::Connection::TransportOutput::has_data() const
 {
+    if (is_presence_container) return true;
     return select.is_set
 	|| protocol1.is_set
 	|| protocol2.is_set
@@ -1865,7 +1887,7 @@ Tty::TtyLines::TtyLine::Connection::SessionTimeout::SessionTimeout()
     direction{YType::enumeration, "direction"}
 {
 
-    yang_name = "session-timeout"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-timeout"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Tty::TtyLines::TtyLine::Connection::SessionTimeout::~SessionTimeout()
@@ -1874,6 +1896,7 @@ Tty::TtyLines::TtyLine::Connection::SessionTimeout::~SessionTimeout()
 
 bool Tty::TtyLines::TtyLine::Connection::SessionTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set
 	|| direction.is_set;
 }
@@ -1955,7 +1978,7 @@ Tty::TtyLines::TtyLine::ExecMode::ExecMode()
     pager{YType::enumeration, "pager"}
 {
 
-    yang_name = "exec-mode"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec-mode"; yang_parent_name = "tty-line"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Tty::TtyLines::TtyLine::ExecMode::~ExecMode()
@@ -1964,6 +1987,7 @@ Tty::TtyLines::TtyLine::ExecMode::~ExecMode()
 
 bool Tty::TtyLines::TtyLine::ExecMode::has_data() const
 {
+    if (is_presence_container) return true;
     return pager.is_set;
 }
 

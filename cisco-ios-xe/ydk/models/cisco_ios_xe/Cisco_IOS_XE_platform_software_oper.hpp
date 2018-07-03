@@ -35,7 +35,7 @@ class CiscoPlatformSoftware : public ydk::Entity
         class QFilesystem; //type: CiscoPlatformSoftware::QFilesystem
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses> control_processes;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::QFilesystem> > q_filesystem;
+        ydk::YList q_filesystem;
         
 }; // CiscoPlatformSoftware
 
@@ -59,7 +59,7 @@ class CiscoPlatformSoftware::ControlProcesses : public ydk::Entity
 
         class ControlProcess; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess> > control_process;
+        ydk::YList control_process;
         
 }; // CiscoPlatformSoftware::ControlProcesses
 
@@ -139,7 +139,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes : 
 
         class LoadAvgMinute; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes::LoadAvgMinute> > load_avg_minute;
+        ydk::YList load_avg_minute;
         
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess::LoadAvgMinutes
 
@@ -265,7 +265,7 @@ class CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats : pu
 
         class PerCoreStat; //type: CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats::PerCoreStat> > per_core_stat;
+        ydk::YList per_core_stat;
         
 }; // CiscoPlatformSoftware::ControlProcesses::ControlProcess::PerCoreStats
 
@@ -322,8 +322,8 @@ class CiscoPlatformSoftware::QFilesystem : public ydk::Entity
         class Partitions; //type: CiscoPlatformSoftware::QFilesystem::Partitions
         class CoreFiles; //type: CiscoPlatformSoftware::QFilesystem::CoreFiles
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::QFilesystem::Partitions> > partitions;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_platform_software_oper::CiscoPlatformSoftware::QFilesystem::CoreFiles> > core_files;
+        ydk::YList partitions;
+        ydk::YList core_files;
         
 }; // CiscoPlatformSoftware::QFilesystem
 

@@ -33,7 +33,7 @@ class Processes : public ydk::Entity
 
         class AllLocations; //type: Processes::AllLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::Processes::AllLocations> > all_locations;
+        ydk::YList all_locations;
         
 }; // Processes
 
@@ -60,7 +60,7 @@ class Processes::AllLocations : public ydk::Entity
         ydk::YLeaf pcbs; //type: uint32
         class Name; //type: Processes::AllLocations::Name
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::Processes::AllLocations::Name> > name;
+        ydk::YList name;
         
 }; // Processes::AllLocations
 
@@ -85,7 +85,7 @@ class Processes::AllLocations::Name : public ydk::Entity
         ydk::YLeaf instance_id; //type: uint32
         ydk::YLeaf path; //type: string
         ydk::YLeaf startup_file; //type: string
-        ydk::YLeaf startup_mode; //type: Startupmode
+        ydk::YLeaf startup_mode; //type: StartupMode
         ydk::YLeaf heart_beat_timeout; //type: uint32
         ydk::YLeaf last_heart_beat_time; //type: string
         ydk::YLeaf max_restarts; //type: uint32
@@ -93,7 +93,7 @@ class Processes::AllLocations::Name : public ydk::Entity
         ydk::YLeaf mandatory; //type: boolean
         ydk::YLeaf maint_mode; //type: boolean
         ydk::YLeaf args; //type: string
-        ydk::YLeaf proc_state; //type: Processstate
+        ydk::YLeaf proc_state; //type: ProcessState
         ydk::YLeaf pid; //type: int32
         ydk::YLeaf proc_aborted; //type: boolean
         ydk::YLeaf exit_status; //type: string
@@ -103,7 +103,7 @@ class Processes::AllLocations::Name : public ydk::Entity
         ydk::YLeaf last_exit_time; //type: string
         class Services; //type: Processes::AllLocations::Name::Services
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::Processes::AllLocations::Name::Services> > services;
+        ydk::YList services;
         
 }; // Processes::AllLocations::Name
 
@@ -125,12 +125,12 @@ class Processes::AllLocations::Name::Services : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf service_name; //type: string
-        ydk::YLeaf scope; //type: Servicescope
+        ydk::YLeaf scope; //type: ServiceScope
         ydk::YLeaf redundancy; //type: boolean
         ydk::YLeaf ha_ready; //type: boolean
-        ydk::YLeaf service_state; //type: Servicestate
-        ydk::YLeaf ha_role; //type: Servicerole
-        ydk::YLeaf new_ha_role; //type: Servicerole
+        ydk::YLeaf service_state; //type: ServiceState
+        ydk::YLeaf ha_role; //type: ServiceRole
+        ydk::YLeaf new_ha_role; //type: ServiceRole
         ydk::YLeaf selected; //type: boolean
         ydk::YLeaf ip1; //type: string
         ydk::YLeaf ip2; //type: string
@@ -163,7 +163,7 @@ class ProcessManager : public ydk::Entity
 
         class AllLocationsInfo; //type: ProcessManager::AllLocationsInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::ProcessManager::AllLocationsInfo> > all_locations_info;
+        ydk::YList all_locations_info;
         
 }; // ProcessManager
 
@@ -243,7 +243,7 @@ class Pm::Pm_ : public ydk::Entity
 
         class Trace; //type: Pm::Pm_::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::Pm::Pm_::Trace> > trace;
+        ydk::YList trace;
         
 }; // Pm::Pm_
 
@@ -268,7 +268,7 @@ class Pm::Pm_::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Pm::Pm_::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::Pm::Pm_::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Pm::Pm_::Trace
 
@@ -292,7 +292,7 @@ class Pm::Pm_::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Pm::Pm_::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::Pm::Pm_::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Pm::Pm_::Trace::Location
 
@@ -316,7 +316,7 @@ class Pm::Pm_::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Pm::Pm_::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_pm::Pm::Pm_::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Pm::Pm_::Trace::Location::AllOptions
 
@@ -341,7 +341,7 @@ class Pm::Pm_::Trace::Location::AllOptions::TraceBlocks : public ydk::Entity
 
 }; // Pm::Pm_::Trace::Location::AllOptions::TraceBlocks
 
-class Startupmode : public ydk::Enum
+class StartupMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ON_BOOTUP;
@@ -350,7 +350,25 @@ class Startupmode : public ydk::Enum
 
 };
 
-class Processstate : public ydk::Enum
+class ServiceRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf NONE;
+        static const ydk::Enum::YLeaf ACTIVE;
+        static const ydk::Enum::YLeaf STANDBY;
+
+};
+
+class ServiceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf SS_IDLE;
+        static const ydk::Enum::YLeaf SS_RUNNING;
+        static const ydk::Enum::YLeaf SS_ACK_PENDING;
+
+};
+
+class ProcessState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf IDLE;
@@ -362,29 +380,11 @@ class Processstate : public ydk::Enum
 
 };
 
-class Servicescope : public ydk::Enum
+class ServiceScope : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf SYSTEM;
         static const ydk::Enum::YLeaf RACK;
-
-};
-
-class Servicestate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf SS_IDLE;
-        static const ydk::Enum::YLeaf SS_RUNNING;
-        static const ydk::Enum::YLeaf SS_ACK_PENDING;
-
-};
-
-class Servicerole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf NONE;
-        static const ydk::Enum::YLeaf ACTIVE;
-        static const ydk::Enum::YLeaf STANDBY;
 
 };
 

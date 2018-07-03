@@ -57,7 +57,7 @@ class RedundancyGroupManager::Controllers : public ydk::Entity
 
         class Controller; //type: RedundancyGroupManager::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_rgmgr_oper::RedundancyGroupManager::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // RedundancyGroupManager::Controllers
 

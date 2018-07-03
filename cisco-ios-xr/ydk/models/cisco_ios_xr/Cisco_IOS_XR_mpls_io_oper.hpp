@@ -57,7 +57,7 @@ class MplsEa::Nodes : public ydk::Entity
 
         class Node; //type: MplsEa::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_io_oper::MplsEa::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // MplsEa::Nodes
 
@@ -105,7 +105,7 @@ class MplsEa::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsEa::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_io_oper::MplsEa::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsEa::Nodes::Node::Interfaces
 
@@ -181,7 +181,7 @@ class MplsMa::Nodes : public ydk::Entity
 
         class Node; //type: MplsMa::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_io_oper::MplsMa::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // MplsMa::Nodes
 
@@ -229,7 +229,7 @@ class MplsMa::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsMa::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_io_oper::MplsMa::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsMa::Nodes::Node::Interfaces
 

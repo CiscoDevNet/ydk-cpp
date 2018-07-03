@@ -32,48 +32,48 @@ class QBRIDGEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Dot1Qbase; //type: QBRIDGEMIB::Dot1Qbase
-        class Dot1Qvlan; //type: QBRIDGEMIB::Dot1Qvlan
-        class Dot1Qfdbtable; //type: QBRIDGEMIB::Dot1Qfdbtable
-        class Dot1Qtpfdbtable; //type: QBRIDGEMIB::Dot1Qtpfdbtable
-        class Dot1Qtpgrouptable; //type: QBRIDGEMIB::Dot1Qtpgrouptable
-        class Dot1Qforwardalltable; //type: QBRIDGEMIB::Dot1Qforwardalltable
-        class Dot1Qforwardunregisteredtable; //type: QBRIDGEMIB::Dot1Qforwardunregisteredtable
-        class Dot1Qstaticunicasttable; //type: QBRIDGEMIB::Dot1Qstaticunicasttable
-        class Dot1Qstaticmulticasttable; //type: QBRIDGEMIB::Dot1Qstaticmulticasttable
-        class Dot1Qvlancurrenttable; //type: QBRIDGEMIB::Dot1Qvlancurrenttable
-        class Dot1Qvlanstatictable; //type: QBRIDGEMIB::Dot1Qvlanstatictable
-        class Dot1Qportvlanstatisticstable; //type: QBRIDGEMIB::Dot1Qportvlanstatisticstable
-        class Dot1Qportvlanhcstatisticstable; //type: QBRIDGEMIB::Dot1Qportvlanhcstatisticstable
-        class Dot1Qlearningconstraintstable; //type: QBRIDGEMIB::Dot1Qlearningconstraintstable
-        class Dot1Vprotocolgrouptable; //type: QBRIDGEMIB::Dot1Vprotocolgrouptable
-        class Dot1Vprotocolporttable; //type: QBRIDGEMIB::Dot1Vprotocolporttable
+        class Dot1qBase; //type: QBRIDGEMIB::Dot1qBase
+        class Dot1qVlan; //type: QBRIDGEMIB::Dot1qVlan
+        class Dot1qFdbTable; //type: QBRIDGEMIB::Dot1qFdbTable
+        class Dot1qTpFdbTable; //type: QBRIDGEMIB::Dot1qTpFdbTable
+        class Dot1qTpGroupTable; //type: QBRIDGEMIB::Dot1qTpGroupTable
+        class Dot1qForwardAllTable; //type: QBRIDGEMIB::Dot1qForwardAllTable
+        class Dot1qForwardUnregisteredTable; //type: QBRIDGEMIB::Dot1qForwardUnregisteredTable
+        class Dot1qStaticUnicastTable; //type: QBRIDGEMIB::Dot1qStaticUnicastTable
+        class Dot1qStaticMulticastTable; //type: QBRIDGEMIB::Dot1qStaticMulticastTable
+        class Dot1qVlanCurrentTable; //type: QBRIDGEMIB::Dot1qVlanCurrentTable
+        class Dot1qVlanStaticTable; //type: QBRIDGEMIB::Dot1qVlanStaticTable
+        class Dot1qPortVlanStatisticsTable; //type: QBRIDGEMIB::Dot1qPortVlanStatisticsTable
+        class Dot1qPortVlanHCStatisticsTable; //type: QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable
+        class Dot1qLearningConstraintsTable; //type: QBRIDGEMIB::Dot1qLearningConstraintsTable
+        class Dot1vProtocolGroupTable; //type: QBRIDGEMIB::Dot1vProtocolGroupTable
+        class Dot1vProtocolPortTable; //type: QBRIDGEMIB::Dot1vProtocolPortTable
 
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qbase> dot1qbase;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlan> dot1qvlan;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qfdbtable> dot1qfdbtable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qtpfdbtable> dot1qtpfdbtable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qtpgrouptable> dot1qtpgrouptable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qforwardalltable> dot1qforwardalltable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qforwardunregisteredtable> dot1qforwardunregisteredtable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qstaticunicasttable> dot1qstaticunicasttable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qstaticmulticasttable> dot1qstaticmulticasttable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable> dot1qvlancurrenttable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlanstatictable> dot1qvlanstatictable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qportvlanstatisticstable> dot1qportvlanstatisticstable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qportvlanhcstatisticstable> dot1qportvlanhcstatisticstable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qlearningconstraintstable> dot1qlearningconstraintstable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Vprotocolgrouptable> dot1vprotocolgrouptable;
-        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Vprotocolporttable> dot1vprotocolporttable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qBase> dot1qbase;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlan> dot1qvlan;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qFdbTable> dot1qfdbtable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qTpFdbTable> dot1qtpfdbtable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qTpGroupTable> dot1qtpgrouptable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qForwardAllTable> dot1qforwardalltable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qForwardUnregisteredTable> dot1qforwardunregisteredtable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qStaticUnicastTable> dot1qstaticunicasttable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qStaticMulticastTable> dot1qstaticmulticasttable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable> dot1qvlancurrenttable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanStaticTable> dot1qvlanstatictable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qPortVlanStatisticsTable> dot1qportvlanstatisticstable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable> dot1qportvlanhcstatisticstable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qLearningConstraintsTable> dot1qlearningconstraintstable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1vProtocolGroupTable> dot1vprotocolgrouptable;
+        std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1vProtocolPortTable> dot1vprotocolporttable;
         
 }; // QBRIDGEMIB
 
 
-class QBRIDGEMIB::Dot1Qbase : public ydk::Entity
+class QBRIDGEMIB::Dot1qBase : public ydk::Entity
 {
     public:
-        Dot1Qbase();
-        ~Dot1Qbase();
+        Dot1qBase();
+        ~Dot1qBase();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -86,21 +86,21 @@ class QBRIDGEMIB::Dot1Qbase : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dot1qvlanversionnumber; //type: Dot1Qvlanversionnumber
+        ydk::YLeaf dot1qvlanversionnumber; //type: Dot1qVlanVersionNumber
         ydk::YLeaf dot1qmaxvlanid; //type: int32
         ydk::YLeaf dot1qmaxsupportedvlans; //type: uint32
         ydk::YLeaf dot1qnumvlans; //type: uint32
         ydk::YLeaf dot1qgvrpstatus; //type: EnabledStatus
-        class Dot1Qvlanversionnumber;
+        class Dot1qVlanVersionNumber;
 
-}; // QBRIDGEMIB::Dot1Qbase
+}; // QBRIDGEMIB::Dot1qBase
 
 
-class QBRIDGEMIB::Dot1Qvlan : public ydk::Entity
+class QBRIDGEMIB::Dot1qVlan : public ydk::Entity
 {
     public:
-        Dot1Qvlan();
-        ~Dot1Qvlan();
+        Dot1qVlan();
+        ~Dot1qVlan();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -116,17 +116,17 @@ class QBRIDGEMIB::Dot1Qvlan : public ydk::Entity
         ydk::YLeaf dot1qvlannumdeletes; //type: uint32
         ydk::YLeaf dot1qnextfreelocalvlanindex; //type: int32
         ydk::YLeaf dot1qconstraintsetdefault; //type: int32
-        ydk::YLeaf dot1qconstrainttypedefault; //type: Dot1Qconstrainttypedefault
-        class Dot1Qconstrainttypedefault;
+        ydk::YLeaf dot1qconstrainttypedefault; //type: Dot1qConstraintTypeDefault
+        class Dot1qConstraintTypeDefault;
 
-}; // QBRIDGEMIB::Dot1Qvlan
+}; // QBRIDGEMIB::Dot1qVlan
 
 
-class QBRIDGEMIB::Dot1Qfdbtable : public ydk::Entity
+class QBRIDGEMIB::Dot1qFdbTable : public ydk::Entity
 {
     public:
-        Dot1Qfdbtable();
-        ~Dot1Qfdbtable();
+        Dot1qFdbTable();
+        ~Dot1qFdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -139,18 +139,18 @@ class QBRIDGEMIB::Dot1Qfdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qfdbentry; //type: QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry
+        class Dot1qFdbEntry; //type: QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry> > dot1qfdbentry;
+        ydk::YList dot1qfdbentry;
         
-}; // QBRIDGEMIB::Dot1Qfdbtable
+}; // QBRIDGEMIB::Dot1qFdbTable
 
 
-class QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry : public ydk::Entity
 {
     public:
-        Dot1Qfdbentry();
-        ~Dot1Qfdbentry();
+        Dot1qFdbEntry();
+        ~Dot1qFdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,14 +166,14 @@ class QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry : public ydk::Entity
         ydk::YLeaf dot1qfdbid; //type: uint32
         ydk::YLeaf dot1qfdbdynamiccount; //type: uint32
 
-}; // QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry
+}; // QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry
 
 
-class QBRIDGEMIB::Dot1Qtpfdbtable : public ydk::Entity
+class QBRIDGEMIB::Dot1qTpFdbTable : public ydk::Entity
 {
     public:
-        Dot1Qtpfdbtable();
-        ~Dot1Qtpfdbtable();
+        Dot1qTpFdbTable();
+        ~Dot1qTpFdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -186,18 +186,18 @@ class QBRIDGEMIB::Dot1Qtpfdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qtpfdbentry; //type: QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry
+        class Dot1qTpFdbEntry; //type: QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry> > dot1qtpfdbentry;
+        ydk::YList dot1qtpfdbentry;
         
-}; // QBRIDGEMIB::Dot1Qtpfdbtable
+}; // QBRIDGEMIB::Dot1qTpFdbTable
 
 
-class QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry : public ydk::Entity
 {
     public:
-        Dot1Qtpfdbentry();
-        ~Dot1Qtpfdbentry();
+        Dot1qTpFdbEntry();
+        ~Dot1qTpFdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -210,21 +210,21 @@ class QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::dot1qfdbid)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::dot1qfdbid)
         ydk::YLeaf dot1qfdbid;
         ydk::YLeaf dot1qtpfdbaddress; //type: string
         ydk::YLeaf dot1qtpfdbport; //type: int32
-        ydk::YLeaf dot1qtpfdbstatus; //type: Dot1Qtpfdbstatus
-        class Dot1Qtpfdbstatus;
+        ydk::YLeaf dot1qtpfdbstatus; //type: Dot1qTpFdbStatus
+        class Dot1qTpFdbStatus;
 
-}; // QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry
+}; // QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry
 
 
-class QBRIDGEMIB::Dot1Qtpgrouptable : public ydk::Entity
+class QBRIDGEMIB::Dot1qTpGroupTable : public ydk::Entity
 {
     public:
-        Dot1Qtpgrouptable();
-        ~Dot1Qtpgrouptable();
+        Dot1qTpGroupTable();
+        ~Dot1qTpGroupTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,18 +237,18 @@ class QBRIDGEMIB::Dot1Qtpgrouptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qtpgroupentry; //type: QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry
+        class Dot1qTpGroupEntry; //type: QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry> > dot1qtpgroupentry;
+        ydk::YList dot1qtpgroupentry;
         
-}; // QBRIDGEMIB::Dot1Qtpgrouptable
+}; // QBRIDGEMIB::Dot1qTpGroupTable
 
 
-class QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry : public ydk::Entity
 {
     public:
-        Dot1Qtpgroupentry();
-        ~Dot1Qtpgroupentry();
+        Dot1qTpGroupEntry();
+        ~Dot1qTpGroupEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -261,20 +261,20 @@ class QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::dot1qvlanindex)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::dot1qvlanindex)
         ydk::YLeaf dot1qvlanindex;
         ydk::YLeaf dot1qtpgroupaddress; //type: string
         ydk::YLeaf dot1qtpgroupegressports; //type: binary
         ydk::YLeaf dot1qtpgrouplearnt; //type: binary
 
-}; // QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry
+}; // QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry
 
 
-class QBRIDGEMIB::Dot1Qforwardalltable : public ydk::Entity
+class QBRIDGEMIB::Dot1qForwardAllTable : public ydk::Entity
 {
     public:
-        Dot1Qforwardalltable();
-        ~Dot1Qforwardalltable();
+        Dot1qForwardAllTable();
+        ~Dot1qForwardAllTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,18 +287,18 @@ class QBRIDGEMIB::Dot1Qforwardalltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qforwardallentry; //type: QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry
+        class Dot1qForwardAllEntry; //type: QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry> > dot1qforwardallentry;
+        ydk::YList dot1qforwardallentry;
         
-}; // QBRIDGEMIB::Dot1Qforwardalltable
+}; // QBRIDGEMIB::Dot1qForwardAllTable
 
 
-class QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry : public ydk::Entity
 {
     public:
-        Dot1Qforwardallentry();
-        ~Dot1Qforwardallentry();
+        Dot1qForwardAllEntry();
+        ~Dot1qForwardAllEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -311,20 +311,20 @@ class QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::dot1qvlanindex)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::dot1qvlanindex)
         ydk::YLeaf dot1qvlanindex;
         ydk::YLeaf dot1qforwardallports; //type: binary
         ydk::YLeaf dot1qforwardallstaticports; //type: binary
         ydk::YLeaf dot1qforwardallforbiddenports; //type: binary
 
-}; // QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry
+}; // QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry
 
 
-class QBRIDGEMIB::Dot1Qforwardunregisteredtable : public ydk::Entity
+class QBRIDGEMIB::Dot1qForwardUnregisteredTable : public ydk::Entity
 {
     public:
-        Dot1Qforwardunregisteredtable();
-        ~Dot1Qforwardunregisteredtable();
+        Dot1qForwardUnregisteredTable();
+        ~Dot1qForwardUnregisteredTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -337,18 +337,18 @@ class QBRIDGEMIB::Dot1Qforwardunregisteredtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qforwardunregisteredentry; //type: QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry
+        class Dot1qForwardUnregisteredEntry; //type: QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry> > dot1qforwardunregisteredentry;
+        ydk::YList dot1qforwardunregisteredentry;
         
-}; // QBRIDGEMIB::Dot1Qforwardunregisteredtable
+}; // QBRIDGEMIB::Dot1qForwardUnregisteredTable
 
 
-class QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry : public ydk::Entity
 {
     public:
-        Dot1Qforwardunregisteredentry();
-        ~Dot1Qforwardunregisteredentry();
+        Dot1qForwardUnregisteredEntry();
+        ~Dot1qForwardUnregisteredEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -361,20 +361,20 @@ class QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::dot1qvlanindex)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::dot1qvlanindex)
         ydk::YLeaf dot1qvlanindex;
         ydk::YLeaf dot1qforwardunregisteredports; //type: binary
         ydk::YLeaf dot1qforwardunregisteredstaticports; //type: binary
         ydk::YLeaf dot1qforwardunregisteredforbiddenports; //type: binary
 
-}; // QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry
+}; // QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry
 
 
-class QBRIDGEMIB::Dot1Qstaticunicasttable : public ydk::Entity
+class QBRIDGEMIB::Dot1qStaticUnicastTable : public ydk::Entity
 {
     public:
-        Dot1Qstaticunicasttable();
-        ~Dot1Qstaticunicasttable();
+        Dot1qStaticUnicastTable();
+        ~Dot1qStaticUnicastTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -387,18 +387,18 @@ class QBRIDGEMIB::Dot1Qstaticunicasttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qstaticunicastentry; //type: QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry
+        class Dot1qStaticUnicastEntry; //type: QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry> > dot1qstaticunicastentry;
+        ydk::YList dot1qstaticunicastentry;
         
-}; // QBRIDGEMIB::Dot1Qstaticunicasttable
+}; // QBRIDGEMIB::Dot1qStaticUnicastTable
 
 
-class QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry : public ydk::Entity
 {
     public:
-        Dot1Qstaticunicastentry();
-        ~Dot1Qstaticunicastentry();
+        Dot1qStaticUnicastEntry();
+        ~Dot1qStaticUnicastEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -411,22 +411,22 @@ class QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::dot1qfdbid)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::dot1qfdbid)
         ydk::YLeaf dot1qfdbid;
         ydk::YLeaf dot1qstaticunicastaddress; //type: string
         ydk::YLeaf dot1qstaticunicastreceiveport; //type: int32
         ydk::YLeaf dot1qstaticunicastallowedtogoto; //type: binary
-        ydk::YLeaf dot1qstaticunicaststatus; //type: Dot1Qstaticunicaststatus
-        class Dot1Qstaticunicaststatus;
+        ydk::YLeaf dot1qstaticunicaststatus; //type: Dot1qStaticUnicastStatus
+        class Dot1qStaticUnicastStatus;
 
-}; // QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry
+}; // QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry
 
 
-class QBRIDGEMIB::Dot1Qstaticmulticasttable : public ydk::Entity
+class QBRIDGEMIB::Dot1qStaticMulticastTable : public ydk::Entity
 {
     public:
-        Dot1Qstaticmulticasttable();
-        ~Dot1Qstaticmulticasttable();
+        Dot1qStaticMulticastTable();
+        ~Dot1qStaticMulticastTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -439,18 +439,18 @@ class QBRIDGEMIB::Dot1Qstaticmulticasttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qstaticmulticastentry; //type: QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry
+        class Dot1qStaticMulticastEntry; //type: QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry> > dot1qstaticmulticastentry;
+        ydk::YList dot1qstaticmulticastentry;
         
-}; // QBRIDGEMIB::Dot1Qstaticmulticasttable
+}; // QBRIDGEMIB::Dot1qStaticMulticastTable
 
 
-class QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry : public ydk::Entity
 {
     public:
-        Dot1Qstaticmulticastentry();
-        ~Dot1Qstaticmulticastentry();
+        Dot1qStaticMulticastEntry();
+        ~Dot1qStaticMulticastEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -463,23 +463,23 @@ class QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::dot1qvlanindex)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::dot1qvlanindex)
         ydk::YLeaf dot1qvlanindex;
         ydk::YLeaf dot1qstaticmulticastaddress; //type: string
         ydk::YLeaf dot1qstaticmulticastreceiveport; //type: int32
         ydk::YLeaf dot1qstaticmulticaststaticegressports; //type: binary
         ydk::YLeaf dot1qstaticmulticastforbiddenegressports; //type: binary
-        ydk::YLeaf dot1qstaticmulticaststatus; //type: Dot1Qstaticmulticaststatus
-        class Dot1Qstaticmulticaststatus;
+        ydk::YLeaf dot1qstaticmulticaststatus; //type: Dot1qStaticMulticastStatus
+        class Dot1qStaticMulticastStatus;
 
-}; // QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry
+}; // QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry
 
 
-class QBRIDGEMIB::Dot1Qvlancurrenttable : public ydk::Entity
+class QBRIDGEMIB::Dot1qVlanCurrentTable : public ydk::Entity
 {
     public:
-        Dot1Qvlancurrenttable();
-        ~Dot1Qvlancurrenttable();
+        Dot1qVlanCurrentTable();
+        ~Dot1qVlanCurrentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -492,18 +492,18 @@ class QBRIDGEMIB::Dot1Qvlancurrenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qvlancurrententry; //type: QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry
+        class Dot1qVlanCurrentEntry; //type: QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry> > dot1qvlancurrententry;
+        ydk::YList dot1qvlancurrententry;
         
-}; // QBRIDGEMIB::Dot1Qvlancurrenttable
+}; // QBRIDGEMIB::Dot1qVlanCurrentTable
 
 
-class QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry : public ydk::Entity
+class QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry : public ydk::Entity
 {
     public:
-        Dot1Qvlancurrententry();
-        ~Dot1Qvlancurrententry();
+        Dot1qVlanCurrentEntry();
+        ~Dot1qVlanCurrentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -521,18 +521,18 @@ class QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry : public ydk::Ent
         ydk::YLeaf dot1qvlanfdbid; //type: uint32
         ydk::YLeaf dot1qvlancurrentegressports; //type: binary
         ydk::YLeaf dot1qvlancurrentuntaggedports; //type: binary
-        ydk::YLeaf dot1qvlanstatus; //type: Dot1Qvlanstatus
+        ydk::YLeaf dot1qvlanstatus; //type: Dot1qVlanStatus
         ydk::YLeaf dot1qvlancreationtime; //type: uint32
-        class Dot1Qvlanstatus;
+        class Dot1qVlanStatus;
 
-}; // QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry
+}; // QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry
 
 
-class QBRIDGEMIB::Dot1Qvlanstatictable : public ydk::Entity
+class QBRIDGEMIB::Dot1qVlanStaticTable : public ydk::Entity
 {
     public:
-        Dot1Qvlanstatictable();
-        ~Dot1Qvlanstatictable();
+        Dot1qVlanStaticTable();
+        ~Dot1qVlanStaticTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -545,18 +545,18 @@ class QBRIDGEMIB::Dot1Qvlanstatictable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qvlanstaticentry; //type: QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry
+        class Dot1qVlanStaticEntry; //type: QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry> > dot1qvlanstaticentry;
+        ydk::YList dot1qvlanstaticentry;
         
-}; // QBRIDGEMIB::Dot1Qvlanstatictable
+}; // QBRIDGEMIB::Dot1qVlanStaticTable
 
 
-class QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry : public ydk::Entity
 {
     public:
-        Dot1Qvlanstaticentry();
-        ~Dot1Qvlanstaticentry();
+        Dot1qVlanStaticEntry();
+        ~Dot1qVlanStaticEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -569,7 +569,7 @@ class QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::dot1qvlanindex)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::dot1qvlanindex)
         ydk::YLeaf dot1qvlanindex;
         ydk::YLeaf dot1qvlanstaticname; //type: string
         ydk::YLeaf dot1qvlanstaticegressports; //type: binary
@@ -577,14 +577,14 @@ class QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry : public ydk::Entit
         ydk::YLeaf dot1qvlanstaticuntaggedports; //type: binary
         ydk::YLeaf dot1qvlanstaticrowstatus; //type: RowStatus
 
-}; // QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry
+}; // QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry
 
 
-class QBRIDGEMIB::Dot1Qportvlanstatisticstable : public ydk::Entity
+class QBRIDGEMIB::Dot1qPortVlanStatisticsTable : public ydk::Entity
 {
     public:
-        Dot1Qportvlanstatisticstable();
-        ~Dot1Qportvlanstatisticstable();
+        Dot1qPortVlanStatisticsTable();
+        ~Dot1qPortVlanStatisticsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -597,18 +597,18 @@ class QBRIDGEMIB::Dot1Qportvlanstatisticstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qportvlanstatisticsentry; //type: QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry
+        class Dot1qPortVlanStatisticsEntry; //type: QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry> > dot1qportvlanstatisticsentry;
+        ydk::YList dot1qportvlanstatisticsentry;
         
-}; // QBRIDGEMIB::Dot1Qportvlanstatisticstable
+}; // QBRIDGEMIB::Dot1qPortVlanStatisticsTable
 
 
-class QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry : public ydk::Entity
 {
     public:
-        Dot1Qportvlanstatisticsentry();
-        ~Dot1Qportvlanstatisticsentry();
+        Dot1qPortVlanStatisticsEntry();
+        ~Dot1qPortVlanStatisticsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -621,9 +621,9 @@ class QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::dot1dbaseport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::dot1dbaseport)
         ydk::YLeaf dot1dbaseport;
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::dot1qvlanindex)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::dot1qvlanindex)
         ydk::YLeaf dot1qvlanindex;
         ydk::YLeaf dot1qtpvlanportinframes; //type: uint32
         ydk::YLeaf dot1qtpvlanportoutframes; //type: uint32
@@ -632,14 +632,14 @@ class QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry : p
         ydk::YLeaf dot1qtpvlanportoutoverflowframes; //type: uint32
         ydk::YLeaf dot1qtpvlanportinoverflowdiscards; //type: uint32
 
-}; // QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry
+}; // QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry
 
 
-class QBRIDGEMIB::Dot1Qportvlanhcstatisticstable : public ydk::Entity
+class QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable : public ydk::Entity
 {
     public:
-        Dot1Qportvlanhcstatisticstable();
-        ~Dot1Qportvlanhcstatisticstable();
+        Dot1qPortVlanHCStatisticsTable();
+        ~Dot1qPortVlanHCStatisticsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -652,18 +652,18 @@ class QBRIDGEMIB::Dot1Qportvlanhcstatisticstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qportvlanhcstatisticsentry; //type: QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry
+        class Dot1qPortVlanHCStatisticsEntry; //type: QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry> > dot1qportvlanhcstatisticsentry;
+        ydk::YList dot1qportvlanhcstatisticsentry;
         
-}; // QBRIDGEMIB::Dot1Qportvlanhcstatisticstable
+}; // QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable
 
 
-class QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry : public ydk::Entity
 {
     public:
-        Dot1Qportvlanhcstatisticsentry();
-        ~Dot1Qportvlanhcstatisticsentry();
+        Dot1qPortVlanHCStatisticsEntry();
+        ~Dot1qPortVlanHCStatisticsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -676,22 +676,22 @@ class QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::dot1dbaseport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::dot1dbaseport)
         ydk::YLeaf dot1dbaseport;
-        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::dot1qvlanindex)
+        //type: uint32 (refers to cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::dot1qvlanindex)
         ydk::YLeaf dot1qvlanindex;
         ydk::YLeaf dot1qtpvlanporthcinframes; //type: uint64
         ydk::YLeaf dot1qtpvlanporthcoutframes; //type: uint64
         ydk::YLeaf dot1qtpvlanporthcindiscards; //type: uint64
 
-}; // QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry
+}; // QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry
 
 
-class QBRIDGEMIB::Dot1Qlearningconstraintstable : public ydk::Entity
+class QBRIDGEMIB::Dot1qLearningConstraintsTable : public ydk::Entity
 {
     public:
-        Dot1Qlearningconstraintstable();
-        ~Dot1Qlearningconstraintstable();
+        Dot1qLearningConstraintsTable();
+        ~Dot1qLearningConstraintsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -704,18 +704,18 @@ class QBRIDGEMIB::Dot1Qlearningconstraintstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Qlearningconstraintsentry; //type: QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry
+        class Dot1qLearningConstraintsEntry; //type: QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry> > dot1qlearningconstraintsentry;
+        ydk::YList dot1qlearningconstraintsentry;
         
-}; // QBRIDGEMIB::Dot1Qlearningconstraintstable
+}; // QBRIDGEMIB::Dot1qLearningConstraintsTable
 
 
-class QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry : public ydk::Entity
+class QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry : public ydk::Entity
 {
     public:
-        Dot1Qlearningconstraintsentry();
-        ~Dot1Qlearningconstraintsentry();
+        Dot1qLearningConstraintsEntry();
+        ~Dot1qLearningConstraintsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -730,18 +730,18 @@ class QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry :
 
         ydk::YLeaf dot1qconstraintvlan; //type: uint32
         ydk::YLeaf dot1qconstraintset; //type: int32
-        ydk::YLeaf dot1qconstrainttype; //type: Dot1Qconstrainttype
+        ydk::YLeaf dot1qconstrainttype; //type: Dot1qConstraintType
         ydk::YLeaf dot1qconstraintstatus; //type: RowStatus
-        class Dot1Qconstrainttype;
+        class Dot1qConstraintType;
 
-}; // QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry
+}; // QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry
 
 
-class QBRIDGEMIB::Dot1Vprotocolgrouptable : public ydk::Entity
+class QBRIDGEMIB::Dot1vProtocolGroupTable : public ydk::Entity
 {
     public:
-        Dot1Vprotocolgrouptable();
-        ~Dot1Vprotocolgrouptable();
+        Dot1vProtocolGroupTable();
+        ~Dot1vProtocolGroupTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -754,18 +754,18 @@ class QBRIDGEMIB::Dot1Vprotocolgrouptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Vprotocolgroupentry; //type: QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry
+        class Dot1vProtocolGroupEntry; //type: QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry> > dot1vprotocolgroupentry;
+        ydk::YList dot1vprotocolgroupentry;
         
-}; // QBRIDGEMIB::Dot1Vprotocolgrouptable
+}; // QBRIDGEMIB::Dot1vProtocolGroupTable
 
 
-class QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry : public ydk::Entity
+class QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry : public ydk::Entity
 {
     public:
-        Dot1Vprotocolgroupentry();
-        ~Dot1Vprotocolgroupentry();
+        Dot1vProtocolGroupEntry();
+        ~Dot1vProtocolGroupEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -778,20 +778,20 @@ class QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dot1vprotocoltemplateframetype; //type: Dot1Vprotocoltemplateframetype
+        ydk::YLeaf dot1vprotocoltemplateframetype; //type: Dot1vProtocolTemplateFrameType
         ydk::YLeaf dot1vprotocoltemplateprotocolvalue; //type: binary
         ydk::YLeaf dot1vprotocolgroupid; //type: int32
         ydk::YLeaf dot1vprotocolgrouprowstatus; //type: RowStatus
-        class Dot1Vprotocoltemplateframetype;
+        class Dot1vProtocolTemplateFrameType;
 
-}; // QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry
+}; // QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry
 
 
-class QBRIDGEMIB::Dot1Vprotocolporttable : public ydk::Entity
+class QBRIDGEMIB::Dot1vProtocolPortTable : public ydk::Entity
 {
     public:
-        Dot1Vprotocolporttable();
-        ~Dot1Vprotocolporttable();
+        Dot1vProtocolPortTable();
+        ~Dot1vProtocolPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -804,18 +804,18 @@ class QBRIDGEMIB::Dot1Vprotocolporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Vprotocolportentry; //type: QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry
+        class Dot1vProtocolPortEntry; //type: QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Q_BRIDGE_MIB::QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry> > dot1vprotocolportentry;
+        ydk::YList dot1vprotocolportentry;
         
-}; // QBRIDGEMIB::Dot1Vprotocolporttable
+}; // QBRIDGEMIB::Dot1vProtocolPortTable
 
 
-class QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry : public ydk::Entity
+class QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry : public ydk::Entity
 {
     public:
-        Dot1Vprotocolportentry();
-        ~Dot1Vprotocolportentry();
+        Dot1vProtocolPortEntry();
+        ~Dot1vProtocolPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -828,22 +828,22 @@ class QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::dot1dbaseport)
+        //type: int32 (refers to cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::dot1dbaseport)
         ydk::YLeaf dot1dbaseport;
         ydk::YLeaf dot1vprotocolportgroupid; //type: int32
         ydk::YLeaf dot1vprotocolportgroupvid; //type: int32
         ydk::YLeaf dot1vprotocolportrowstatus; //type: RowStatus
 
-}; // QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry
+}; // QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry
 
-class QBRIDGEMIB::Dot1Qbase::Dot1Qvlanversionnumber : public ydk::Enum
+class QBRIDGEMIB::Dot1qBase::Dot1qVlanVersionNumber : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf version1;
 
 };
 
-class QBRIDGEMIB::Dot1Qvlan::Dot1Qconstrainttypedefault : public ydk::Enum
+class QBRIDGEMIB::Dot1qVlan::Dot1qConstraintTypeDefault : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf independent;
@@ -851,7 +851,7 @@ class QBRIDGEMIB::Dot1Qvlan::Dot1Qconstrainttypedefault : public ydk::Enum
 
 };
 
-class QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbstatus : public ydk::Enum
+class QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -862,7 +862,7 @@ class QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbstatus : public yd
 
 };
 
-class QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicaststatus : public ydk::Enum
+class QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -873,7 +873,7 @@ class QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticu
 
 };
 
-class QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmulticaststatus : public ydk::Enum
+class QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -884,7 +884,7 @@ class QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qsta
 
 };
 
-class QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::Dot1Qvlanstatus : public ydk::Enum
+class QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::Dot1qVlanStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -893,7 +893,7 @@ class QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::Dot1Qvlanstatus 
 
 };
 
-class QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::Dot1Qconstrainttype : public ydk::Enum
+class QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::Dot1qConstraintType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf independent;
@@ -901,7 +901,7 @@ class QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::
 
 };
 
-class QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocoltemplateframetype : public ydk::Enum
+class QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolTemplateFrameType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ethernet;

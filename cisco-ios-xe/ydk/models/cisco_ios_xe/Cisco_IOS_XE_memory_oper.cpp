@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_memory_oper {
 
 MemoryStatistics::MemoryStatistics()
+    :
+    memory_statistic(this, {"name"})
 {
 
-    yang_name = "memory-statistics"; yang_parent_name = "Cisco-IOS-XE-memory-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "memory-statistics"; yang_parent_name = "Cisco-IOS-XE-memory-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MemoryStatistics::~MemoryStatistics()
@@ -23,7 +25,8 @@ MemoryStatistics::~MemoryStatistics()
 
 bool MemoryStatistics::has_data() const
 {
-    for (std::size_t index=0; index<memory_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<memory_statistic.len(); index++)
     {
         if(memory_statistic[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool MemoryStatistics::has_data() const
 
 bool MemoryStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<memory_statistic.size(); index++)
+    for (std::size_t index=0; index<memory_statistic.len(); index++)
     {
         if(memory_statistic[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> MemoryStatistics::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<MemoryStatistics::MemoryStatistic>();
         c->parent = this;
-        memory_statistic.push_back(c);
+        memory_statistic.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> MemoryStatistics::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : memory_statistic)
+    for (auto c : memory_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -136,7 +139,7 @@ MemoryStatistics::MemoryStatistic::MemoryStatistic()
     highest_usage{YType::uint64, "highest-usage"}
 {
 
-    yang_name = "memory-statistic"; yang_parent_name = "memory-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-statistic"; yang_parent_name = "memory-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MemoryStatistics::MemoryStatistic::~MemoryStatistic()
@@ -145,6 +148,7 @@ MemoryStatistics::MemoryStatistic::~MemoryStatistic()
 
 bool MemoryStatistics::MemoryStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| total_memory.is_set
 	|| used_memory.is_set
@@ -174,7 +178,8 @@ std::string MemoryStatistics::MemoryStatistic::get_absolute_path() const
 std::string MemoryStatistics::MemoryStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "memory-statistic" <<"[name='" <<name <<"']";
+    path_buffer << "memory-statistic";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

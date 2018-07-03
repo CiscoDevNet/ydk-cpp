@@ -32,20 +32,20 @@ class CISCOIPMROUTEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoipmroute; //type: CISCOIPMROUTEMIB::Ciscoipmroute
-        class Ciscoipmrouteheartbeattable; //type: CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable
+        class CiscoIpMRoute; //type: CISCOIPMROUTEMIB::CiscoIpMRoute
+        class CiscoIpMRouteHeartBeatTable; //type: CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::Ciscoipmroute> ciscoipmroute;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable> ciscoipmrouteheartbeattable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::CiscoIpMRoute> ciscoipmroute;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable> ciscoipmrouteheartbeattable;
         
 }; // CISCOIPMROUTEMIB
 
 
-class CISCOIPMROUTEMIB::Ciscoipmroute : public ydk::Entity
+class CISCOIPMROUTEMIB::CiscoIpMRoute : public ydk::Entity
 {
     public:
-        Ciscoipmroute();
-        ~Ciscoipmroute();
+        CiscoIpMRoute();
+        ~CiscoIpMRoute();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -60,14 +60,14 @@ class CISCOIPMROUTEMIB::Ciscoipmroute : public ydk::Entity
 
         ydk::YLeaf ciscoipmroutenumberofentries; //type: uint32
 
-}; // CISCOIPMROUTEMIB::Ciscoipmroute
+}; // CISCOIPMROUTEMIB::CiscoIpMRoute
 
 
-class CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable : public ydk::Entity
+class CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable : public ydk::Entity
 {
     public:
-        Ciscoipmrouteheartbeattable();
-        ~Ciscoipmrouteheartbeattable();
+        CiscoIpMRouteHeartBeatTable();
+        ~CiscoIpMRouteHeartBeatTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -80,18 +80,18 @@ class CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoipmrouteheartbeatentry; //type: CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
+        class CiscoIpMRouteHeartBeatEntry; //type: CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPMROUTE_MIB::CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry> > ciscoipmrouteheartbeatentry;
+        ydk::YList ciscoipmrouteheartbeatentry;
         
-}; // CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable
+}; // CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable
 
 
-class CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry : public ydk::Entity
+class CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry : public ydk::Entity
 {
     public:
-        Ciscoipmrouteheartbeatentry();
-        ~Ciscoipmrouteheartbeatentry();
+        CiscoIpMRouteHeartBeatEntry();
+        ~CiscoIpMRouteHeartBeatEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -113,7 +113,7 @@ class CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
         ydk::YLeaf ciscoipmrouteheartbeatalerttime; //type: uint32
         ydk::YLeaf ciscoipmrouteheartbeatstatus; //type: RowStatus
 
-}; // CISCOIPMROUTEMIB::Ciscoipmrouteheartbeattable::Ciscoipmrouteheartbeatentry
+}; // CISCOIPMROUTEMIB::CiscoIpMRouteHeartBeatTable::CiscoIpMRouteHeartBeatEntry
 
 
 }

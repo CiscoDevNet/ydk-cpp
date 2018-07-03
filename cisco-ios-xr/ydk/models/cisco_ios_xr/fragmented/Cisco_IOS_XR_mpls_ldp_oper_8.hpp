@@ -324,7 +324,7 @@ class MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics : public ydk::Entity
 
         class Statistic; //type: MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_oper::MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics::Statistic> > statistic;
+        ydk::YList statistic;
         
 }; // MplsLdp::Nodes::Node::Vrfs::Vrf::Statistics
 

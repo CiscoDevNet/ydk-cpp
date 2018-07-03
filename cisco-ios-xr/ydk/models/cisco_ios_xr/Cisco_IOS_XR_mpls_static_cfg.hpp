@@ -62,7 +62,7 @@ class MplsStatic::Vrfs : public ydk::Entity
 
         class Vrf; //type: MplsStatic::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // MplsStatic::Vrfs
 
@@ -113,7 +113,7 @@ class MplsStatic::Vrfs::Vrf::LabelSwitchedPaths : public ydk::Entity
 
         class LabelSwitchedPath; //type: MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath> > label_switched_path;
+        ydk::YList label_switched_path;
         
 }; // MplsStatic::Vrfs::Vrf::LabelSwitchedPaths
 
@@ -165,7 +165,7 @@ class MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths 
 
         class Path; //type: MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths
 
@@ -220,7 +220,7 @@ class MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel : pu
         ydk::YLeaf in_label_value; //type: uint32
         ydk::YLeaf label_mode; //type: MplsStaticLabelMode
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf tlh_mode; //type: boolean
 
 }; // MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel
@@ -244,7 +244,7 @@ class MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths : publ
 
         class Path; //type: MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::Vrfs::Vrf::LabelSwitchedPaths::LabelSwitchedPath::Paths
 
@@ -298,7 +298,7 @@ class MplsStatic::Vrfs::Vrf::Afs : public ydk::Entity
 
         class Af; //type: MplsStatic::Vrfs::Vrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsStatic::Vrfs::Vrf::Afs
 
@@ -371,7 +371,7 @@ class MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels : public ydk::En
 
         class LocalLabel; //type: MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel> > local_label;
+        ydk::YList local_label;
         
 }; // MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels
 
@@ -420,7 +420,7 @@ class MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Lab
 
         ydk::YLeaf label_mode; //type: MplsStaticLabelMode
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
 
 }; // MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType
 
@@ -443,7 +443,7 @@ class MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Pat
 
         class Path; //type: MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::Vrfs::Vrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths
 
@@ -497,7 +497,7 @@ class MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels : public ydk::Entity
 
         class LocalLabel; //type: MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel> > local_label;
+        ydk::YList local_label;
         
 }; // MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels
 
@@ -546,7 +546,7 @@ class MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType : publi
 
         ydk::YLeaf label_mode; //type: MplsStaticLabelMode
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
 
 }; // MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::LabelType
 
@@ -569,7 +569,7 @@ class MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths : public yd
 
         class Path; //type: MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::Vrfs::Vrf::Afs::Af::LocalLabels::LocalLabel::Paths
 
@@ -624,7 +624,7 @@ class MplsStatic::Interfaces : public ydk::Entity
 
         class Interface; //type: MplsStatic::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // MplsStatic::Interfaces
 
@@ -697,7 +697,7 @@ class MplsStatic::DefaultVrf::LabelSwitchedPaths : public ydk::Entity
 
         class LabelSwitchedPath; //type: MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath> > label_switched_path;
+        ydk::YList label_switched_path;
         
 }; // MplsStatic::DefaultVrf::LabelSwitchedPaths
 
@@ -750,7 +750,7 @@ class MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths
 
         class Path; //type: MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::BackupPaths
 
@@ -805,7 +805,7 @@ class MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel : p
         ydk::YLeaf in_label_value; //type: uint32
         ydk::YLeaf label_mode; //type: MplsStaticLabelMode
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf tlh_mode; //type: boolean
 
 }; // MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::InLabel
@@ -829,7 +829,7 @@ class MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths : pub
 
         class Path; //type: MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::DefaultVrf::LabelSwitchedPaths::LabelSwitchedPath::Paths
 
@@ -884,7 +884,7 @@ class MplsStatic::DefaultVrf::Afs : public ydk::Entity
 
         class Af; //type: MplsStatic::DefaultVrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // MplsStatic::DefaultVrf::Afs
 
@@ -958,7 +958,7 @@ class MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels : public ydk::E
 
         class LocalLabel; //type: MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel> > local_label;
+        ydk::YList local_label;
         
 }; // MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels
 
@@ -1007,7 +1007,7 @@ class MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::La
 
         ydk::YLeaf label_mode; //type: MplsStaticLabelMode
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
 
 }; // MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::LabelType
 
@@ -1030,7 +1030,7 @@ class MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Pa
 
         class Path; //type: MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::DefaultVrf::Afs::Af::TopLabelHash::LocalLabels::LocalLabel::Paths
 
@@ -1084,7 +1084,7 @@ class MplsStatic::DefaultVrf::Afs::Af::LocalLabels : public ydk::Entity
 
         class LocalLabel; //type: MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel> > local_label;
+        ydk::YList local_label;
         
 }; // MplsStatic::DefaultVrf::Afs::Af::LocalLabels
 
@@ -1133,7 +1133,7 @@ class MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType : publ
 
         ydk::YLeaf label_mode; //type: MplsStaticLabelMode
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
 
 }; // MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::LabelType
 
@@ -1156,7 +1156,7 @@ class MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths : public y
 
         class Path; //type: MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_cfg::MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path> > path;
+        ydk::YList path;
         
 }; // MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths
 
@@ -1191,6 +1191,22 @@ class MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path : pu
 
 }; // MplsStatic::DefaultVrf::Afs::Af::LocalLabels::LocalLabel::Paths::Path
 
+class MplsStaticNhMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf configured;
+        static const ydk::Enum::YLeaf resolve;
+
+};
+
+class MplsStaticNhAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
 class MplsStaticPath : public ydk::Enum
 {
     public:
@@ -1203,6 +1219,17 @@ class MplsStaticAddressFamily : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipv4_unicast;
+
+};
+
+class MplsStaticOutLabelTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf out_label;
+        static const ydk::Enum::YLeaf pop;
+        static const ydk::Enum::YLeaf exp_null;
+        static const ydk::Enum::YLeaf ipv6_explicit_null;
 
 };
 
@@ -1221,33 +1248,6 @@ class MplsStaticPathRole : public ydk::Enum
         static const ydk::Enum::YLeaf primary;
         static const ydk::Enum::YLeaf backup;
         static const ydk::Enum::YLeaf primary_backup;
-
-};
-
-class MplsStaticNhAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class MplsStaticNhMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf configured;
-        static const ydk::Enum::YLeaf resolve;
-
-};
-
-class MplsStaticOutLabelTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf out_label;
-        static const ydk::Enum::YLeaf pop;
-        static const ydk::Enum::YLeaf exp_null;
-        static const ydk::Enum::YLeaf ipv6_explicit_null;
 
 };
 

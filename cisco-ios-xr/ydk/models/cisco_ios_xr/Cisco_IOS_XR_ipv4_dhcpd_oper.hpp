@@ -57,7 +57,7 @@ class DhcpClient::Nodes : public ydk::Entity
 
         class Node; //type: DhcpClient::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::DhcpClient::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // DhcpClient::Nodes
 
@@ -107,7 +107,7 @@ class DhcpClient::Nodes::Node::ClientStats : public ydk::Entity
 
         class ClientStat; //type: DhcpClient::Nodes::Node::ClientStats::ClientStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::DhcpClient::Nodes::Node::ClientStats::ClientStat> > client_stat;
+        ydk::YList client_stat;
         
 }; // DhcpClient::Nodes::Node::ClientStats
 
@@ -178,6 +178,7 @@ class DhcpClient::Nodes::Node::ClientStats::ClientStat : public ydk::Entity
         ydk::YLeaf num_unicast_failed; //type: uint32
         ydk::YLeaf num_broadcast_failed; //type: uint32
         ydk::YLeaf num_xid_mismatch; //type: uint32
+        ydk::YLeaf num_vbind_failed; //type: uint32
 
 }; // DhcpClient::Nodes::Node::ClientStats::ClientStat
 
@@ -200,7 +201,7 @@ class DhcpClient::Nodes::Node::Clients : public ydk::Entity
 
         class Client; //type: DhcpClient::Nodes::Node::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::DhcpClient::Nodes::Node::Clients::Client> > client;
+        ydk::YList client;
         
 }; // DhcpClient::Nodes::Node::Clients
 
@@ -318,7 +319,7 @@ class Ipv4Dhcpd::Snoop::Bindings : public ydk::Entity
 
         class Binding; //type: Ipv4Dhcpd::Snoop::Bindings::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Snoop::Bindings::Binding> > binding;
+        ydk::YList binding;
         
 }; // Ipv4Dhcpd::Snoop::Bindings
 
@@ -420,7 +421,7 @@ class Ipv4Dhcpd::Snoop::Profiles : public ydk::Entity
 
         class Profile; //type: Ipv4Dhcpd::Snoop::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Snoop::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ipv4Dhcpd::Snoop::Profiles
 
@@ -472,7 +473,7 @@ class Ipv4Dhcpd::Snoop::Statistics : public ydk::Entity
 
         class Statistic; //type: Ipv4Dhcpd::Snoop::Statistics::Statistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Snoop::Statistics::Statistic> > statistic;
+        ydk::YList statistic;
         
 }; // Ipv4Dhcpd::Snoop::Statistics
 
@@ -520,7 +521,7 @@ class Ipv4Dhcpd::Nodes : public ydk::Entity
 
         class Node; //type: Ipv4Dhcpd::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Ipv4Dhcpd::Nodes
 
@@ -628,7 +629,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs
 
@@ -1046,7 +1047,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Profiles : public ydk::Entity
 
         class Profile; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Profiles
 
@@ -1110,7 +1111,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences : public y
 
         class Ipv4DhcpdProxyVrfReference; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference> > ipv4_dhcpd_proxy_vrf_reference;
+        ydk::YList ipv4_dhcpd_proxy_vrf_reference;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences
 
@@ -1154,7 +1155,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences : pu
 
         class Ipv4DhcpdProxyInterfaceReference; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference> > ipv4_dhcpd_proxy_interface_reference;
+        ydk::YList ipv4_dhcpd_proxy_interface_reference;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences
 
@@ -1198,7 +1199,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Statistics : public ydk::Entity
 
         class Ipv4DhcpdProxyStat; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat> > ipv4_dhcpd_proxy_stat;
+        ydk::YList ipv4_dhcpd_proxy_stat;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Statistics
 
@@ -1293,7 +1294,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients : public ydk::Entity
 
         class Client; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client> > client;
+        ydk::YList client;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients
 
@@ -1410,7 +1411,7 @@ class Ipv4Dhcpd::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: Ipv4Dhcpd::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ipv4Dhcpd::Nodes::Node::Interfaces
 
@@ -1494,7 +1495,7 @@ class Ipv4Dhcpd::Nodes::Node::Base::Statistics : public ydk::Entity
 
         class Ipv4DhcpdProxyStat; //type: Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat> > ipv4_dhcpd_proxy_stat;
+        ydk::YList ipv4_dhcpd_proxy_stat;
         
 }; // Ipv4Dhcpd::Nodes::Node::Base::Statistics
 
@@ -1594,7 +1595,7 @@ class Ipv4Dhcpd::Nodes::Node::Base::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Base::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Nodes::Node::Base::Vrfs
 
@@ -2012,7 +2013,7 @@ class Ipv4Dhcpd::Nodes::Node::Base::Profiles : public ydk::Entity
 
         class Profile; //type: Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ipv4Dhcpd::Nodes::Node::Base::Profiles
 
@@ -2067,7 +2068,7 @@ class Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences : pub
 
         class Ipv4DhcpdBaseInterfaceReference; //type: Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference> > ipv4_dhcpd_base_interface_reference;
+        ydk::YList ipv4_dhcpd_base_interface_reference;
         
 }; // Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences
 
@@ -2111,7 +2112,7 @@ class Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo : public
 
         class Ipv4DhcpdBaseChildProfileInfo; //type: Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo> > ipv4_dhcpd_base_child_profile_info;
+        ydk::YList ipv4_dhcpd_base_child_profile_info;
         
 }; // Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo
 
@@ -2226,7 +2227,7 @@ class Ipv4Dhcpd::Nodes::Node::Server::Profiles : public ydk::Entity
 
         class Profile; //type: Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ipv4Dhcpd::Nodes::Node::Server::Profiles
 
@@ -2296,7 +2297,7 @@ class Ipv4Dhcpd::Nodes::Node::Server::Statistics : public ydk::Entity
 
         class Ipv4DhcpdProxyStat; //type: Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat> > ipv4_dhcpd_proxy_stat;
+        ydk::YList ipv4_dhcpd_proxy_stat;
         
 }; // Ipv4Dhcpd::Nodes::Node::Server::Statistics
 
@@ -2430,7 +2431,7 @@ class Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients : public ydk::Entity
 
         class Client; //type: Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client> > client;
+        ydk::YList client;
         
 }; // Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients
 
@@ -2529,7 +2530,7 @@ class Ipv4Dhcpd::Nodes::Node::Server::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Nodes::Node::Server::Vrfs
 
@@ -2976,7 +2977,7 @@ class Ipv4Dhcpd::Nodes::Node::Relay::Profiles : public ydk::Entity
 
         class Profile; //type: Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Relay::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Ipv4Dhcpd::Nodes::Node::Relay::Profiles
 
@@ -3056,7 +3057,7 @@ class Ipv4Dhcpd::Nodes::Node::Relay::Statistics : public ydk::Entity
 
         class Ipv4DhcpdRelayStat; //type: Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat> > ipv4_dhcpd_relay_stat;
+        ydk::YList ipv4_dhcpd_relay_stat;
         
 }; // Ipv4Dhcpd::Nodes::Node::Relay::Statistics
 
@@ -3126,7 +3127,7 @@ class Ipv4Dhcpd::Nodes::Node::Relay::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv4Dhcpd::Nodes::Node::Relay::Vrfs
 
@@ -3525,26 +3526,30 @@ class Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply : publ
 
 }; // Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply
 
-class DhcpcIpv4State : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf init_reboot;
-        static const ydk::Enum::YLeaf rebooting;
-        static const ydk::Enum::YLeaf selecting;
-        static const ydk::Enum::YLeaf requesting;
-        static const ydk::Enum::YLeaf bound;
-        static const ydk::Enum::YLeaf renewing;
-        static const ydk::Enum::YLeaf rebinding;
-        static const ydk::Enum::YLeaf invalid;
-
-};
-
 class DhcpIssuVersion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf version1;
         static const ydk::Enum::YLeaf version2;
+
+};
+
+class DhcpIssuRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf role_primary;
+        static const ydk::Enum::YLeaf role_secondary;
+
+};
+
+class ProxyLeaseLimit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf remote_id;
+        static const ydk::Enum::YLeaf remote_id_circuit_id;
 
 };
 
@@ -3559,11 +3564,13 @@ class DhcpIssuPhase : public ydk::Enum
 
 };
 
-class DhcpIssuRole : public ydk::Enum
+class RelayInfoPolicy : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf role_primary;
-        static const ydk::Enum::YLeaf role_secondary;
+        static const ydk::Enum::YLeaf replace;
+        static const ydk::Enum::YLeaf keep;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf encapsulate;
 
 };
 
@@ -3573,6 +3580,21 @@ class BagDhcpdIntfSrgRole : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
+
+};
+
+class DhcpcIpv4State : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf init_reboot;
+        static const ydk::Enum::YLeaf rebooting;
+        static const ydk::Enum::YLeaf selecting;
+        static const ydk::Enum::YLeaf requesting;
+        static const ydk::Enum::YLeaf bound;
+        static const ydk::Enum::YLeaf renewing;
+        static const ydk::Enum::YLeaf rebinding;
+        static const ydk::Enum::YLeaf invalid;
 
 };
 
@@ -3599,26 +3621,6 @@ class BagDhcpdProxyState : public ydk::Enum
 
 };
 
-class ProxyLeaseLimit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf circuit_id;
-        static const ydk::Enum::YLeaf remote_id;
-        static const ydk::Enum::YLeaf remote_id_circuit_id;
-
-};
-
-class BroadcastFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ignore;
-        static const ydk::Enum::YLeaf check;
-        static const ydk::Enum::YLeaf unicast_always;
-
-};
-
 class RelayInfoVpnMode : public ydk::Enum
 {
     public:
@@ -3635,13 +3637,12 @@ class RelayInfoAuthenticate : public ydk::Enum
 
 };
 
-class RelayInfoPolicy : public ydk::Enum
+class BroadcastFlag : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf replace;
-        static const ydk::Enum::YLeaf keep;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf encapsulate;
+        static const ydk::Enum::YLeaf ignore;
+        static const ydk::Enum::YLeaf check;
+        static const ydk::Enum::YLeaf unicast_always;
 
 };
 

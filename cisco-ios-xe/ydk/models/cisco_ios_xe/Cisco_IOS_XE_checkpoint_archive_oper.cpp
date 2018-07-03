@@ -16,12 +16,12 @@ CheckpointArchives::CheckpointArchives()
     max{YType::uint8, "max"},
     current{YType::uint8, "current"},
     recent{YType::str, "recent"}
-    	,
+        ,
     archives(std::make_shared<CheckpointArchives::Archives>())
 {
     archives->parent = this;
 
-    yang_name = "checkpoint-archives"; yang_parent_name = "Cisco-IOS-XE-checkpoint-archive-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "checkpoint-archives"; yang_parent_name = "Cisco-IOS-XE-checkpoint-archive-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CheckpointArchives::~CheckpointArchives()
@@ -30,6 +30,7 @@ CheckpointArchives::~CheckpointArchives()
 
 bool CheckpointArchives::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set
 	|| current.is_set
 	|| recent.is_set
@@ -161,9 +162,11 @@ bool CheckpointArchives::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 CheckpointArchives::Archives::Archives()
+    :
+    archive(this, {"number"})
 {
 
-    yang_name = "archives"; yang_parent_name = "checkpoint-archives"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "archives"; yang_parent_name = "checkpoint-archives"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CheckpointArchives::Archives::~Archives()
@@ -172,7 +175,8 @@ CheckpointArchives::Archives::~Archives()
 
 bool CheckpointArchives::Archives::has_data() const
 {
-    for (std::size_t index=0; index<archive.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<archive.len(); index++)
     {
         if(archive[index]->has_data())
             return true;
@@ -182,7 +186,7 @@ bool CheckpointArchives::Archives::has_data() const
 
 bool CheckpointArchives::Archives::has_operation() const
 {
-    for (std::size_t index=0; index<archive.size(); index++)
+    for (std::size_t index=0; index<archive.len(); index++)
     {
         if(archive[index]->has_operation())
             return true;
@@ -219,7 +223,7 @@ std::shared_ptr<Entity> CheckpointArchives::Archives::get_child_by_name(const st
     {
         auto c = std::make_shared<CheckpointArchives::Archives::Archive>();
         c->parent = this;
-        archive.push_back(c);
+        archive.append(c);
         return c;
     }
 
@@ -231,7 +235,7 @@ std::map<std::string, std::shared_ptr<Entity>> CheckpointArchives::Archives::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : archive)
+    for (auto c : archive.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -263,7 +267,7 @@ CheckpointArchives::Archives::Archive::Archive()
     name{YType::str, "name"}
 {
 
-    yang_name = "archive"; yang_parent_name = "archives"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "archive"; yang_parent_name = "archives"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CheckpointArchives::Archives::Archive::~Archive()
@@ -272,6 +276,7 @@ CheckpointArchives::Archives::Archive::~Archive()
 
 bool CheckpointArchives::Archives::Archive::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| name.is_set;
 }
@@ -293,7 +298,8 @@ std::string CheckpointArchives::Archives::Archive::get_absolute_path() const
 std::string CheckpointArchives::Archives::Archive::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "archive" <<"[number='" <<number <<"']";
+    path_buffer << "archive";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 

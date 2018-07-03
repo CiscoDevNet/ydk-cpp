@@ -32,36 +32,36 @@ class ATMMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Atmmibobjects; //type: ATMMIB::Atmmibobjects
-        class Atminterfaceconftable; //type: ATMMIB::Atminterfaceconftable
-        class Atminterfaceds3Plcptable; //type: ATMMIB::Atminterfaceds3Plcptable
-        class Atminterfacetctable; //type: ATMMIB::Atminterfacetctable
-        class Atmtrafficdescrparamtable; //type: ATMMIB::Atmtrafficdescrparamtable
-        class Atmvpltable; //type: ATMMIB::Atmvpltable
-        class Atmvcltable; //type: ATMMIB::Atmvcltable
-        class Atmvpcrossconnecttable; //type: ATMMIB::Atmvpcrossconnecttable
-        class Atmvccrossconnecttable; //type: ATMMIB::Atmvccrossconnecttable
-        class Aal5Vcctable; //type: ATMMIB::Aal5Vcctable
+        class AtmMIBObjects; //type: ATMMIB::AtmMIBObjects
+        class AtmInterfaceConfTable; //type: ATMMIB::AtmInterfaceConfTable
+        class AtmInterfaceDs3PlcpTable; //type: ATMMIB::AtmInterfaceDs3PlcpTable
+        class AtmInterfaceTCTable; //type: ATMMIB::AtmInterfaceTCTable
+        class AtmTrafficDescrParamTable; //type: ATMMIB::AtmTrafficDescrParamTable
+        class AtmVplTable; //type: ATMMIB::AtmVplTable
+        class AtmVclTable; //type: ATMMIB::AtmVclTable
+        class AtmVpCrossConnectTable; //type: ATMMIB::AtmVpCrossConnectTable
+        class AtmVcCrossConnectTable; //type: ATMMIB::AtmVcCrossConnectTable
+        class Aal5VccTable; //type: ATMMIB::Aal5VccTable
 
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmmibobjects> atmmibobjects;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atminterfaceconftable> atminterfaceconftable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atminterfaceds3Plcptable> atminterfaceds3plcptable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atminterfacetctable> atminterfacetctable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmtrafficdescrparamtable> atmtrafficdescrparamtable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvpltable> atmvpltable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable> atmvcltable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvpcrossconnecttable> atmvpcrossconnecttable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvccrossconnecttable> atmvccrossconnecttable;
-        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Aal5Vcctable> aal5vcctable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmMIBObjects> atmmibobjects;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmInterfaceConfTable> atminterfaceconftable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmInterfaceDs3PlcpTable> atminterfaceds3plcptable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmInterfaceTCTable> atminterfacetctable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmTrafficDescrParamTable> atmtrafficdescrparamtable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmVplTable> atmvpltable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable> atmvcltable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmVpCrossConnectTable> atmvpcrossconnecttable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::AtmVcCrossConnectTable> atmvccrossconnecttable;
+        std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Aal5VccTable> aal5vcctable;
         
 }; // ATMMIB
 
 
-class ATMMIB::Atmmibobjects : public ydk::Entity
+class ATMMIB::AtmMIBObjects : public ydk::Entity
 {
     public:
-        Atmmibobjects();
-        ~Atmmibobjects();
+        AtmMIBObjects();
+        ~AtmMIBObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -78,14 +78,14 @@ class ATMMIB::Atmmibobjects : public ydk::Entity
         ydk::YLeaf atmvccrossconnectindexnext; //type: int32
         ydk::YLeaf atmtrafficdescrparamindexnext; //type: int32
 
-}; // ATMMIB::Atmmibobjects
+}; // ATMMIB::AtmMIBObjects
 
 
-class ATMMIB::Atminterfaceconftable : public ydk::Entity
+class ATMMIB::AtmInterfaceConfTable : public ydk::Entity
 {
     public:
-        Atminterfaceconftable();
-        ~Atminterfaceconftable();
+        AtmInterfaceConfTable();
+        ~AtmInterfaceConfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,18 +98,18 @@ class ATMMIB::Atminterfaceconftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atminterfaceconfentry; //type: ATMMIB::Atminterfaceconftable::Atminterfaceconfentry
+        class AtmInterfaceConfEntry; //type: ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atminterfaceconftable::Atminterfaceconfentry> > atminterfaceconfentry;
+        ydk::YList atminterfaceconfentry;
         
-}; // ATMMIB::Atminterfaceconftable
+}; // ATMMIB::AtmInterfaceConfTable
 
 
-class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry : public ydk::Entity
+class ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry : public ydk::Entity
 {
     public:
-        Atminterfaceconfentry();
-        ~Atminterfaceconfentry();
+        AtmInterfaceConfEntry();
+        ~AtmInterfaceConfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -122,7 +122,7 @@ class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf atminterfacemaxvpcs; //type: int32
         ydk::YLeaf atminterfacemaxvccs; //type: int32
@@ -132,7 +132,7 @@ class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry : public ydk::Entity
         ydk::YLeaf atminterfacemaxactivevcibits; //type: int32
         ydk::YLeaf atminterfaceilmivpi; //type: int32
         ydk::YLeaf atminterfaceilmivci; //type: int32
-        ydk::YLeaf atminterfaceaddresstype; //type: Atminterfaceaddresstype
+        ydk::YLeaf atminterfaceaddresstype; //type: AtmInterfaceAddressType
         ydk::YLeaf atminterfaceadminaddress; //type: string
         ydk::YLeaf atminterfacemyneighboripaddress; //type: string
         ydk::YLeaf atminterfacemyneighborifname; //type: string
@@ -170,16 +170,16 @@ class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry : public ydk::Entity
         ydk::YLeaf atmintfcurrentlydowntouppvcls; //type: uint32
         ydk::YLeaf atmintfoamfailedpvcls; //type: uint32
         ydk::YLeaf atmintfcurrentlyoamfailingpvcls; //type: uint32
-        class Atminterfaceaddresstype;
+        class AtmInterfaceAddressType;
 
-}; // ATMMIB::Atminterfaceconftable::Atminterfaceconfentry
+}; // ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry
 
 
-class ATMMIB::Atminterfaceds3Plcptable : public ydk::Entity
+class ATMMIB::AtmInterfaceDs3PlcpTable : public ydk::Entity
 {
     public:
-        Atminterfaceds3Plcptable();
-        ~Atminterfaceds3Plcptable();
+        AtmInterfaceDs3PlcpTable();
+        ~AtmInterfaceDs3PlcpTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -192,18 +192,18 @@ class ATMMIB::Atminterfaceds3Plcptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atminterfaceds3Plcpentry; //type: ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry
+        class AtmInterfaceDs3PlcpEntry; //type: ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry> > atminterfaceds3plcpentry;
+        ydk::YList atminterfaceds3plcpentry;
         
-}; // ATMMIB::Atminterfaceds3Plcptable
+}; // ATMMIB::AtmInterfaceDs3PlcpTable
 
 
-class ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry : public ydk::Entity
+class ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry : public ydk::Entity
 {
     public:
-        Atminterfaceds3Plcpentry();
-        ~Atminterfaceds3Plcpentry();
+        AtmInterfaceDs3PlcpEntry();
+        ~AtmInterfaceDs3PlcpEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -216,21 +216,21 @@ class ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf atminterfaceds3plcpsefss; //type: uint32
-        ydk::YLeaf atminterfaceds3plcpalarmstate; //type: Atminterfaceds3Plcpalarmstate
+        ydk::YLeaf atminterfaceds3plcpalarmstate; //type: AtmInterfaceDs3PlcpAlarmState
         ydk::YLeaf atminterfaceds3plcpuass; //type: uint32
-        class Atminterfaceds3Plcpalarmstate;
+        class AtmInterfaceDs3PlcpAlarmState;
 
-}; // ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry
+}; // ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry
 
 
-class ATMMIB::Atminterfacetctable : public ydk::Entity
+class ATMMIB::AtmInterfaceTCTable : public ydk::Entity
 {
     public:
-        Atminterfacetctable();
-        ~Atminterfacetctable();
+        AtmInterfaceTCTable();
+        ~AtmInterfaceTCTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -243,18 +243,18 @@ class ATMMIB::Atminterfacetctable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atminterfacetcentry; //type: ATMMIB::Atminterfacetctable::Atminterfacetcentry
+        class AtmInterfaceTCEntry; //type: ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atminterfacetctable::Atminterfacetcentry> > atminterfacetcentry;
+        ydk::YList atminterfacetcentry;
         
-}; // ATMMIB::Atminterfacetctable
+}; // ATMMIB::AtmInterfaceTCTable
 
 
-class ATMMIB::Atminterfacetctable::Atminterfacetcentry : public ydk::Entity
+class ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry : public ydk::Entity
 {
     public:
-        Atminterfacetcentry();
-        ~Atminterfacetcentry();
+        AtmInterfaceTCEntry();
+        ~AtmInterfaceTCEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -267,20 +267,20 @@ class ATMMIB::Atminterfacetctable::Atminterfacetcentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf atminterfaceocdevents; //type: uint32
-        ydk::YLeaf atminterfacetcalarmstate; //type: Atminterfacetcalarmstate
-        class Atminterfacetcalarmstate;
+        ydk::YLeaf atminterfacetcalarmstate; //type: AtmInterfaceTCAlarmState
+        class AtmInterfaceTCAlarmState;
 
-}; // ATMMIB::Atminterfacetctable::Atminterfacetcentry
+}; // ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry
 
 
-class ATMMIB::Atmtrafficdescrparamtable : public ydk::Entity
+class ATMMIB::AtmTrafficDescrParamTable : public ydk::Entity
 {
     public:
-        Atmtrafficdescrparamtable();
-        ~Atmtrafficdescrparamtable();
+        AtmTrafficDescrParamTable();
+        ~AtmTrafficDescrParamTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -293,18 +293,18 @@ class ATMMIB::Atmtrafficdescrparamtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmtrafficdescrparamentry; //type: ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry
+        class AtmTrafficDescrParamEntry; //type: ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry> > atmtrafficdescrparamentry;
+        ydk::YList atmtrafficdescrparamentry;
         
-}; // ATMMIB::Atmtrafficdescrparamtable
+}; // ATMMIB::AtmTrafficDescrParamTable
 
 
-class ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry : public ydk::Entity
+class ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry : public ydk::Entity
 {
     public:
-        Atmtrafficdescrparamentry();
-        ~Atmtrafficdescrparamentry();
+        AtmTrafficDescrParamEntry();
+        ~AtmTrafficDescrParamEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -329,14 +329,14 @@ class ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry : public ydk:
         ydk::YLeaf atmservicecategory; //type: AtmServiceCategory
         ydk::YLeaf atmtrafficframediscard; //type: boolean
 
-}; // ATMMIB::Atmtrafficdescrparamtable::Atmtrafficdescrparamentry
+}; // ATMMIB::AtmTrafficDescrParamTable::AtmTrafficDescrParamEntry
 
 
-class ATMMIB::Atmvpltable : public ydk::Entity
+class ATMMIB::AtmVplTable : public ydk::Entity
 {
     public:
-        Atmvpltable();
-        ~Atmvpltable();
+        AtmVplTable();
+        ~AtmVplTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -349,18 +349,18 @@ class ATMMIB::Atmvpltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmvplentry; //type: ATMMIB::Atmvpltable::Atmvplentry
+        class AtmVplEntry; //type: ATMMIB::AtmVplTable::AtmVplEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvpltable::Atmvplentry> > atmvplentry;
+        ydk::YList atmvplentry;
         
-}; // ATMMIB::Atmvpltable
+}; // ATMMIB::AtmVplTable
 
 
-class ATMMIB::Atmvpltable::Atmvplentry : public ydk::Entity
+class ATMMIB::AtmVplTable::AtmVplEntry : public ydk::Entity
 {
     public:
-        Atmvplentry();
-        ~Atmvplentry();
+        AtmVplEntry();
+        ~AtmVplEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -373,7 +373,7 @@ class ATMMIB::Atmvpltable::Atmvplentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf atmvplvpi; //type: int32
         ydk::YLeaf atmvpladminstatus; //type: AtmVorXAdminStatus
@@ -386,14 +386,14 @@ class ATMMIB::Atmvpltable::Atmvplentry : public ydk::Entity
         ydk::YLeaf atmvplcasttype; //type: AtmConnCastType
         ydk::YLeaf atmvplconnkind; //type: AtmConnKind
 
-}; // ATMMIB::Atmvpltable::Atmvplentry
+}; // ATMMIB::AtmVplTable::AtmVplEntry
 
 
-class ATMMIB::Atmvcltable : public ydk::Entity
+class ATMMIB::AtmVclTable : public ydk::Entity
 {
     public:
-        Atmvcltable();
-        ~Atmvcltable();
+        AtmVclTable();
+        ~AtmVclTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -406,18 +406,18 @@ class ATMMIB::Atmvcltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmvclentry; //type: ATMMIB::Atmvcltable::Atmvclentry
+        class AtmVclEntry; //type: ATMMIB::AtmVclTable::AtmVclEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry> > atmvclentry;
+        ydk::YList atmvclentry;
         
-}; // ATMMIB::Atmvcltable
+}; // ATMMIB::AtmVclTable
 
 
-class ATMMIB::Atmvcltable::Atmvclentry : public ydk::Entity
+class ATMMIB::AtmVclTable::AtmVclEntry : public ydk::Entity
 {
     public:
-        Atmvclentry();
-        ~Atmvclentry();
+        AtmVclEntry();
+        ~AtmVclEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -430,7 +430,7 @@ class ATMMIB::Atmvcltable::Atmvclentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf atmvclvpi; //type: int32
         ydk::YLeaf atmvclvci; //type: int32
@@ -439,10 +439,10 @@ class ATMMIB::Atmvcltable::Atmvclentry : public ydk::Entity
         ydk::YLeaf atmvcllastchange; //type: uint32
         ydk::YLeaf atmvclreceivetrafficdescrindex; //type: int32
         ydk::YLeaf atmvcltransmittrafficdescrindex; //type: int32
-        ydk::YLeaf atmvccaaltype; //type: Atmvccaaltype
+        ydk::YLeaf atmvccaaltype; //type: AtmVccAalType
         ydk::YLeaf atmvccaal5cpcstransmitsdusize; //type: int32
         ydk::YLeaf atmvccaal5cpcsreceivesdusize; //type: int32
-        ydk::YLeaf atmvccaal5encapstype; //type: Atmvccaal5Encapstype
+        ydk::YLeaf atmvccaal5encapstype; //type: AtmVccAal5EncapsType
         ydk::YLeaf atmvclcrossconnectidentifier; //type: int32
         ydk::YLeaf atmvclrowstatus; //type: RowStatus
         ydk::YLeaf atmvclcasttype; //type: AtmConnCastType
@@ -458,8 +458,8 @@ class ATMMIB::Atmvcltable::Atmvclentry : public ydk::Entity
         ydk::YLeaf catmxvcloamsegccdeactcount; //type: uint32
         ydk::YLeaf catmxvcloamsegccretryfreq; //type: uint32
         ydk::YLeaf catmxvcloammanage; //type: boolean
-        ydk::YLeaf catmxvcloamloopbkstatus; //type: Catmxvcloamloopbkstatus
-        ydk::YLeaf catmxvcloamvcstate; //type: Catmxvcloamvcstate
+        ydk::YLeaf catmxvcloamloopbkstatus; //type: CatmxVclOamLoopBkStatus
+        ydk::YLeaf catmxvcloamvcstate; //type: CatmxVclOamVcState
         ydk::YLeaf catmxvcloamendccstatus; //type: OamCCStatus
         ydk::YLeaf catmxvcloamsegccstatus; //type: OamCCStatus
         ydk::YLeaf catmxvcloamendccvcstate; //type: OamCCVcState
@@ -471,19 +471,19 @@ class ATMMIB::Atmvcltable::Atmvclentry : public ydk::Entity
         ydk::YLeaf catmxvcloamoutf5ais; //type: uint32
         ydk::YLeaf catmxvcloaminf5rdi; //type: uint32
         ydk::YLeaf catmxvcloamoutf5rdi; //type: uint32
-        class Atmvccaaltype;
-        class Atmvccaal5Encapstype;
-        class Catmxvcloamloopbkstatus;
-        class Catmxvcloamvcstate;
+        class AtmVccAalType;
+        class AtmVccAal5EncapsType;
+        class CatmxVclOamLoopBkStatus;
+        class CatmxVclOamVcState;
 
-}; // ATMMIB::Atmvcltable::Atmvclentry
+}; // ATMMIB::AtmVclTable::AtmVclEntry
 
 
-class ATMMIB::Atmvpcrossconnecttable : public ydk::Entity
+class ATMMIB::AtmVpCrossConnectTable : public ydk::Entity
 {
     public:
-        Atmvpcrossconnecttable();
-        ~Atmvpcrossconnecttable();
+        AtmVpCrossConnectTable();
+        ~AtmVpCrossConnectTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -496,18 +496,18 @@ class ATMMIB::Atmvpcrossconnecttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmvpcrossconnectentry; //type: ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry
+        class AtmVpCrossConnectEntry; //type: ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry> > atmvpcrossconnectentry;
+        ydk::YList atmvpcrossconnectentry;
         
-}; // ATMMIB::Atmvpcrossconnecttable
+}; // ATMMIB::AtmVpCrossConnectTable
 
 
-class ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry : public ydk::Entity
+class ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry : public ydk::Entity
 {
     public:
-        Atmvpcrossconnectentry();
-        ~Atmvpcrossconnectentry();
+        AtmVpCrossConnectEntry();
+        ~AtmVpCrossConnectEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -532,14 +532,14 @@ class ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry : public ydk::Entit
         ydk::YLeaf atmvpcrossconnecth2llastchange; //type: uint32
         ydk::YLeaf atmvpcrossconnectrowstatus; //type: RowStatus
 
-}; // ATMMIB::Atmvpcrossconnecttable::Atmvpcrossconnectentry
+}; // ATMMIB::AtmVpCrossConnectTable::AtmVpCrossConnectEntry
 
 
-class ATMMIB::Atmvccrossconnecttable : public ydk::Entity
+class ATMMIB::AtmVcCrossConnectTable : public ydk::Entity
 {
     public:
-        Atmvccrossconnecttable();
-        ~Atmvccrossconnecttable();
+        AtmVcCrossConnectTable();
+        ~AtmVcCrossConnectTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -552,18 +552,18 @@ class ATMMIB::Atmvccrossconnecttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Atmvccrossconnectentry; //type: ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry
+        class AtmVcCrossConnectEntry; //type: ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry> > atmvccrossconnectentry;
+        ydk::YList atmvccrossconnectentry;
         
-}; // ATMMIB::Atmvccrossconnecttable
+}; // ATMMIB::AtmVcCrossConnectTable
 
 
-class ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry : public ydk::Entity
+class ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry : public ydk::Entity
 {
     public:
-        Atmvccrossconnectentry();
-        ~Atmvccrossconnectentry();
+        AtmVcCrossConnectEntry();
+        ~AtmVcCrossConnectEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -590,14 +590,14 @@ class ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry : public ydk::Entit
         ydk::YLeaf atmvccrossconnecth2llastchange; //type: uint32
         ydk::YLeaf atmvccrossconnectrowstatus; //type: RowStatus
 
-}; // ATMMIB::Atmvccrossconnecttable::Atmvccrossconnectentry
+}; // ATMMIB::AtmVcCrossConnectTable::AtmVcCrossConnectEntry
 
 
-class ATMMIB::Aal5Vcctable : public ydk::Entity
+class ATMMIB::Aal5VccTable : public ydk::Entity
 {
     public:
-        Aal5Vcctable();
-        ~Aal5Vcctable();
+        Aal5VccTable();
+        ~Aal5VccTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -610,18 +610,18 @@ class ATMMIB::Aal5Vcctable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Aal5Vccentry; //type: ATMMIB::Aal5Vcctable::Aal5Vccentry
+        class Aal5VccEntry; //type: ATMMIB::Aal5VccTable::Aal5VccEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::ATM_MIB::ATMMIB::Aal5Vcctable::Aal5Vccentry> > aal5vccentry;
+        ydk::YList aal5vccentry;
         
-}; // ATMMIB::Aal5Vcctable
+}; // ATMMIB::Aal5VccTable
 
 
-class ATMMIB::Aal5Vcctable::Aal5Vccentry : public ydk::Entity
+class ATMMIB::Aal5VccTable::Aal5VccEntry : public ydk::Entity
 {
     public:
-        Aal5Vccentry();
-        ~Aal5Vccentry();
+        Aal5VccEntry();
+        ~Aal5VccEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -634,13 +634,17 @@ class ATMMIB::Aal5Vcctable::Aal5Vccentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf aal5vccvpi; //type: int32
         ydk::YLeaf aal5vccvci; //type: int32
         ydk::YLeaf aal5vcccrcerrors; //type: uint32
         ydk::YLeaf aal5vccsartimeouts; //type: uint32
         ydk::YLeaf aal5vccoversizedsdus; //type: uint32
+        ydk::YLeaf caal5vccextcompenabled; //type: boolean
+        ydk::YLeaf caal5vccextvoice; //type: boolean
+        ydk::YLeaf caal5vccextinf5oamcells; //type: uint32
+        ydk::YLeaf caal5vccextoutf5oamcells; //type: uint32
         ydk::YLeaf caal5vccinpkts; //type: uint32
         ydk::YLeaf caal5vccoutpkts; //type: uint32
         ydk::YLeaf caal5vccinoctets; //type: uint32
@@ -653,14 +657,10 @@ class ATMMIB::Aal5Vcctable::Aal5Vccentry : public ydk::Entity
         ydk::YLeaf caal5vcchcoutpkts; //type: uint64
         ydk::YLeaf caal5vcchcinoctets; //type: uint64
         ydk::YLeaf caal5vcchcoutoctets; //type: uint64
-        ydk::YLeaf caal5vccextcompenabled; //type: boolean
-        ydk::YLeaf caal5vccextvoice; //type: boolean
-        ydk::YLeaf caal5vccextinf5oamcells; //type: uint32
-        ydk::YLeaf caal5vccextoutf5oamcells; //type: uint32
 
-}; // ATMMIB::Aal5Vcctable::Aal5Vccentry
+}; // ATMMIB::Aal5VccTable::Aal5VccEntry
 
-class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceaddresstype : public ydk::Enum
+class ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceAddressType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf private_;
@@ -670,7 +670,7 @@ class ATMMIB::Atminterfaceconftable::Atminterfaceconfentry::Atminterfaceaddresst
 
 };
 
-class ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::Atminterfaceds3Plcpalarmstate : public ydk::Enum
+class ATMMIB::AtmInterfaceDs3PlcpTable::AtmInterfaceDs3PlcpEntry::AtmInterfaceDs3PlcpAlarmState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noAlarm;
@@ -679,7 +679,7 @@ class ATMMIB::Atminterfaceds3Plcptable::Atminterfaceds3Plcpentry::Atminterfaceds
 
 };
 
-class ATMMIB::Atminterfacetctable::Atminterfacetcentry::Atminterfacetcalarmstate : public ydk::Enum
+class ATMMIB::AtmInterfaceTCTable::AtmInterfaceTCEntry::AtmInterfaceTCAlarmState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noAlarm;
@@ -687,7 +687,7 @@ class ATMMIB::Atminterfacetctable::Atminterfacetcentry::Atminterfacetcalarmstate
 
 };
 
-class ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype : public ydk::Enum
+class ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAalType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf aal1;
@@ -699,7 +699,7 @@ class ATMMIB::Atmvcltable::Atmvclentry::Atmvccaaltype : public ydk::Enum
 
 };
 
-class ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype : public ydk::Enum
+class ATMMIB::AtmVclTable::AtmVclEntry::AtmVccAal5EncapsType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf vcMultiplexRoutedProtocol;
@@ -715,7 +715,7 @@ class ATMMIB::Atmvcltable::Atmvclentry::Atmvccaal5Encapstype : public ydk::Enum
 
 };
 
-class ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamloopbkstatus : public ydk::Enum
+class ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamLoopBkStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -725,7 +725,7 @@ class ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamloopbkstatus : public ydk::En
 
 };
 
-class ATMMIB::Atmvcltable::Atmvclentry::Catmxvcloamvcstate : public ydk::Enum
+class ATMMIB::AtmVclTable::AtmVclEntry::CatmxVclOamVcState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf downRetry;

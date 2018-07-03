@@ -260,7 +260,7 @@ class Traceroute::Output::TracerouteResponse::Ipv4::Hops : public ydk::Entity
 
         class Hop; //type: Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop> > hop;
+        ydk::YList hop;
         
 }; // Traceroute::Output::TracerouteResponse::Ipv4::Hops
 
@@ -310,7 +310,7 @@ class Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes : public y
 
         class Probe; //type: Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe> > probe;
+        ydk::YList probe;
         
 }; // Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes
 
@@ -385,7 +385,7 @@ class Traceroute::Output::TracerouteResponse::Ipv6::Hops : public ydk::Entity
 
         class Hop; //type: Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop> > hop;
+        ydk::YList hop;
         
 }; // Traceroute::Output::TracerouteResponse::Ipv6::Hops
 
@@ -435,7 +435,7 @@ class Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes : public y
 
         class Probe; //type: Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe> > probe;
+        ydk::YList probe;
         
 }; // Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes
 

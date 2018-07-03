@@ -14,7 +14,7 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper : public ydk::Entity
 {
     public:
         Oper();
@@ -36,14 +36,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf broadcast_storm_control_kb_ps; //type: uint64
         ydk::YLeaf multicast_storm_control_pps; //type: uint64
         ydk::YLeaf multicast_storm_control_kb_ps; //type: uint64
-        class OperationalInformation; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation
+        class OperationalInformation; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation> operational_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation> operational_information;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation : public ydk::Entity
 {
     public:
         OperationalInformation();
@@ -66,14 +66,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf admin_disabled; //type: boolean
         ydk::YLeaf flooding_disabled; //type: boolean
         ydk::YLeaf flood_unknown_unicast_enabled; //type: boolean
-        ydk::YLeaf mac_limit_action; //type: MgmtL2FibMacLimitAction
+        ydk::YLeaf mac_limit_action; //type: MgmtL2fibMacLimitAction
         ydk::YLeaf mac_limit_threshold; //type: uint32
         ydk::YLeaf mac_learning_disabled; //type: boolean
         ydk::YLeaf mac_port_down_flush_disabled; //type: boolean
-        ydk::YLeaf mac_limit_notification_type; //type: MgmtL2FibMacLimitNotify
+        ydk::YLeaf mac_limit_notification_type; //type: MgmtL2fibMacLimitNotify
         ydk::YLeaf is_mac_secure_enabled; //type: boolean
         ydk::YLeaf is_mac_secure_logging_enabled; //type: boolean
-        ydk::YLeaf mac_secure_action; //type: MgmtL2FibMacSecAction
+        ydk::YLeaf mac_secure_action; //type: MgmtL2fibMacSecAction
         ydk::YLeaf is_mac_secure_accept_shutdown; //type: boolean
         ydk::YLeaf is_mac_secure_threshold_enabled; //type: boolean
         ydk::YLeaf mac_aging_type; //type: boolean
@@ -117,14 +117,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf is_p2mp_pw_enabled; //type: boolean
         ydk::YLeaf is_igmp_snoop_enabled; //type: boolean
         ydk::YLeaf nv_satellite_offload_ipv4_multicast_disabled; //type: boolean
-        class Feature; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature
+        class Feature; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature> > feature;
+        ydk::YList feature;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature : public ydk::Entity
 {
     public:
         Feature();
@@ -141,18 +141,18 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf feature_type; //type: L2fibFeature
-        class Dhcp; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp
-        class Igmp; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp
-        class Mld; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld
+        class Dhcp; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp
+        class Igmp; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp
+        class Mld; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp> dhcp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp> igmp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld> mld;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp> igmp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld> mld;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -170,10 +170,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf profile_name; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Dhcp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp : public ydk::Entity
 {
     public:
         Igmp();
@@ -191,10 +191,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf profile_name; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Igmp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld : public ydk::Entity
 {
     public:
         Mld();
@@ -212,14 +212,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf profile_name; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper::OperationalInformation::Feature::Mld
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInstanceInfo();
-        ~L2FibMainInterfaceInstanceInfo();
+        L2fibMainInterfaceInstanceInfo();
+        ~L2fibMainInterfaceInstanceInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -239,14 +239,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf bridge_port_count; //type: uint32
         ydk::YLeaf instance_provisioned; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressDetailInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInstanceHardwareIngressDetailInfo();
-        ~L2FibMainInterfaceInstanceHardwareIngressDetailInfo();
+        L2fibMainInterfaceInstanceHardwareIngressDetailInfo();
+        ~L2fibMainInterfaceInstanceHardwareIngressDetailInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -266,14 +266,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf bridge_port_count; //type: uint32
         ydk::YLeaf instance_provisioned; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressDetailInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInstanceHardwareEgressInfo();
-        ~L2FibMainInterfaceInstanceHardwareEgressInfo();
+        L2fibMainInterfaceInstanceHardwareEgressInfo();
+        ~L2fibMainInterfaceInstanceHardwareEgressInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -293,14 +293,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf bridge_port_count; //type: uint32
         ydk::YLeaf instance_provisioned; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInstanceHardwareIngressInfo();
-        ~L2FibMainInterfaceInstanceHardwareIngressInfo();
+        L2fibMainInterfaceInstanceHardwareIngressInfo();
+        ~L2fibMainInterfaceInstanceHardwareIngressInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -320,14 +320,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf bridge_port_count; //type: uint32
         ydk::YLeaf instance_provisioned; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePorts : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInstanceBridgePorts();
-        ~L2FibMainInterfaceInstanceBridgePorts();
+        L2fibMainInterfaceInstanceBridgePorts();
+        ~L2fibMainInterfaceInstanceBridgePorts();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -339,18 +339,18 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibMainInterfaceInstanceBridgePort; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort
+        class L2fibMainInterfaceInstanceBridgePort; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePorts::L2fibMainInterfaceInstanceBridgePort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort> > l2fib_main_interface_instance_bridge_port;
+        ydk::YList l2fib_main_interface_instance_bridge_port;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePorts
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePorts::L2fibMainInterfaceInstanceBridgePort : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInstanceBridgePort();
-        ~L2FibMainInterfaceInstanceBridgePort();
+        L2fibMainInterfaceInstanceBridgePort();
+        ~L2fibMainInterfaceInstanceBridgePort();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -370,14 +370,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf virtual_if_name; //type: string
         ydk::YLeaf bp_type; //type: uint8
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts::L2FibMainInterfaceInstanceBridgePort
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePorts::L2fibMainInterfaceInstanceBridgePort
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressDetailInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInstanceHardwareEgressDetailInfo();
-        ~L2FibMainInterfaceInstanceHardwareEgressDetailInfo();
+        L2fibMainInterfaceInstanceHardwareEgressDetailInfo();
+        ~L2fibMainInterfaceInstanceHardwareEgressDetailInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -397,14 +397,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf bridge_port_count; //type: uint32
         ydk::YLeaf instance_provisioned; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressDetailInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceInfo();
-        ~L2FibMainInterfaceInfo();
+        L2fibMainInterfaceInfo();
+        ~L2fibMainInterfaceInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -419,18 +419,18 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf main_interface; //type: string
         ydk::YLeaf main_if_type; //type: uint8
         ydk::YLeaf virtual_if_name; //type: string
-        class InstanceId; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstanceId
-        class InstancesState; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesState
-        class InstancesProvisioned; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesProvisioned
+        class InstanceId; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstanceId
+        class InstancesState; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstancesState
+        class InstancesProvisioned; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstancesProvisioned
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstanceId> > instance_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesState> > instances_state;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesProvisioned> > instances_provisioned;
+        ydk::YList instance_id;
+        ydk::YList instances_state;
+        ydk::YList instances_provisioned;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstanceId : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstanceId : public ydk::Entity
 {
     public:
         InstanceId();
@@ -448,10 +448,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstanceId
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstanceId
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesState : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstancesState : public ydk::Entity
 {
     public:
         InstancesState();
@@ -469,10 +469,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: L2fibMainIfInstanceState
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesState
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstancesState
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesProvisioned : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstancesProvisioned : public ydk::Entity
 {
     public:
         InstancesProvisioned();
@@ -490,14 +490,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo::InstancesProvisioned
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo::InstancesProvisioned
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceDetailInfo();
-        ~L2FibMainInterfaceDetailInfo();
+        L2fibMainInterfaceDetailInfo();
+        ~L2fibMainInterfaceDetailInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -515,24 +515,24 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf mac; //type: string
         ydk::YLeaf esi_id; //type: uint16
         ydk::YLeaf evpn_shg_local_label; //type: uint32
-        class InstanceId; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstanceId
-        class InstancesState; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesState
-        class InstancesProvisioned; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesProvisioned
-        class BridgePortCountInstance; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::BridgePortCountInstance
-        class EthernetSegmentIdentifier; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EthernetSegmentIdentifier
-        class EvpnShgRemoteInfo; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo
+        class InstanceId; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstanceId
+        class InstancesState; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstancesState
+        class InstancesProvisioned; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstancesProvisioned
+        class BridgePortCountInstance; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::BridgePortCountInstance
+        class EthernetSegmentIdentifier; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EthernetSegmentIdentifier
+        class EvpnShgRemoteInfo; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EvpnShgRemoteInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstanceId> > instance_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesState> > instances_state;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesProvisioned> > instances_provisioned;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::BridgePortCountInstance> > bridge_port_count_instance;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EthernetSegmentIdentifier> > ethernet_segment_identifier;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo> > evpn_shg_remote_info;
+        ydk::YList instance_id;
+        ydk::YList instances_state;
+        ydk::YList instances_provisioned;
+        ydk::YList bridge_port_count_instance;
+        ydk::YList ethernet_segment_identifier;
+        ydk::YList evpn_shg_remote_info;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstanceId : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstanceId : public ydk::Entity
 {
     public:
         InstanceId();
@@ -550,10 +550,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstanceId
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstanceId
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesState : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstancesState : public ydk::Entity
 {
     public:
         InstancesState();
@@ -571,10 +571,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: L2fibMainIfInstanceState
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesState
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstancesState
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesProvisioned : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstancesProvisioned : public ydk::Entity
 {
     public:
         InstancesProvisioned();
@@ -592,10 +592,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::InstancesProvisioned
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::InstancesProvisioned
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::BridgePortCountInstance : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::BridgePortCountInstance : public ydk::Entity
 {
     public:
         BridgePortCountInstance();
@@ -613,10 +613,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::BridgePortCountInstance
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::BridgePortCountInstance
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EthernetSegmentIdentifier : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EthernetSegmentIdentifier : public ydk::Entity
 {
     public:
         EthernetSegmentIdentifier();
@@ -634,10 +634,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint8
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EthernetSegmentIdentifier
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EthernetSegmentIdentifier
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EvpnShgRemoteInfo : public ydk::Entity
 {
     public:
         EvpnShgRemoteInfo();
@@ -653,14 +653,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RemoteSplitHorizonGroupLabel; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
+        class RemoteSplitHorizonGroupLabel; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel> remote_split_horizon_group_label;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel> remote_split_horizon_group_label;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EvpnShgRemoteInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel : public ydk::Entity
 {
     public:
         RemoteSplitHorizonGroupLabel();
@@ -679,14 +679,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf next_hop; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceHardwareIngressDetailInfo();
-        ~L2FibMainInterfaceHardwareIngressDetailInfo();
+        L2fibMainInterfaceHardwareIngressDetailInfo();
+        ~L2fibMainInterfaceHardwareIngressDetailInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -704,24 +704,24 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf mac; //type: string
         ydk::YLeaf esi_id; //type: uint16
         ydk::YLeaf evpn_shg_local_label; //type: uint32
-        class InstanceId; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstanceId
-        class InstancesState; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesState
-        class InstancesProvisioned; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesProvisioned
-        class BridgePortCountInstance; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::BridgePortCountInstance
-        class EthernetSegmentIdentifier; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EthernetSegmentIdentifier
-        class EvpnShgRemoteInfo; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo
+        class InstanceId; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstanceId
+        class InstancesState; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstancesState
+        class InstancesProvisioned; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstancesProvisioned
+        class BridgePortCountInstance; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::BridgePortCountInstance
+        class EthernetSegmentIdentifier; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EthernetSegmentIdentifier
+        class EvpnShgRemoteInfo; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstanceId> > instance_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesState> > instances_state;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesProvisioned> > instances_provisioned;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::BridgePortCountInstance> > bridge_port_count_instance;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EthernetSegmentIdentifier> > ethernet_segment_identifier;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo> > evpn_shg_remote_info;
+        ydk::YList instance_id;
+        ydk::YList instances_state;
+        ydk::YList instances_provisioned;
+        ydk::YList bridge_port_count_instance;
+        ydk::YList ethernet_segment_identifier;
+        ydk::YList evpn_shg_remote_info;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstanceId : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstanceId : public ydk::Entity
 {
     public:
         InstanceId();
@@ -739,10 +739,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstanceId
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstanceId
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesState : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstancesState : public ydk::Entity
 {
     public:
         InstancesState();
@@ -760,10 +760,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: L2fibMainIfInstanceState
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesState
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstancesState
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesProvisioned : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstancesProvisioned : public ydk::Entity
 {
     public:
         InstancesProvisioned();
@@ -781,10 +781,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::InstancesProvisioned
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::InstancesProvisioned
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::BridgePortCountInstance : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::BridgePortCountInstance : public ydk::Entity
 {
     public:
         BridgePortCountInstance();
@@ -802,10 +802,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::BridgePortCountInstance
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::BridgePortCountInstance
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EthernetSegmentIdentifier : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EthernetSegmentIdentifier : public ydk::Entity
 {
     public:
         EthernetSegmentIdentifier();
@@ -823,10 +823,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint8
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EthernetSegmentIdentifier
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EthernetSegmentIdentifier
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo : public ydk::Entity
 {
     public:
         EvpnShgRemoteInfo();
@@ -842,14 +842,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class RemoteSplitHorizonGroupLabel; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
+        class RemoteSplitHorizonGroupLabel; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel> remote_split_horizon_group_label;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel> remote_split_horizon_group_label;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel : public ydk::Entity
 {
     public:
         RemoteSplitHorizonGroupLabel();
@@ -868,14 +868,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf next_hop; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo : public ydk::Entity
 {
     public:
-        L2FibMainInterfaceHardwareIngressInfo();
-        ~L2FibMainInterfaceHardwareIngressInfo();
+        L2fibMainInterfaceHardwareIngressInfo();
+        ~L2fibMainInterfaceHardwareIngressInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -890,18 +890,18 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
         ydk::YLeaf main_interface; //type: string
         ydk::YLeaf main_if_type; //type: uint8
         ydk::YLeaf virtual_if_name; //type: string
-        class InstanceId; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstanceId
-        class InstancesState; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesState
-        class InstancesProvisioned; //type: L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesProvisioned
+        class InstanceId; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstanceId
+        class InstancesState; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstancesState
+        class InstancesProvisioned; //type: L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstancesProvisioned
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstanceId> > instance_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesState> > instances_state;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesProvisioned> > instances_provisioned;
+        ydk::YList instance_id;
+        ydk::YList instances_state;
+        ydk::YList instances_provisioned;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstanceId : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstanceId : public ydk::Entity
 {
     public:
         InstanceId();
@@ -919,10 +919,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstanceId
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstanceId
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesState : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstancesState : public ydk::Entity
 {
     public:
         InstancesState();
@@ -940,10 +940,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: L2fibMainIfInstanceState
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesState
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstancesState
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesProvisioned : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstancesProvisioned : public ydk::Entity
 {
     public:
         InstancesProvisioned();
@@ -961,14 +961,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2F
 
         ydk::YLeaf entry; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo::InstancesProvisioned
+}; // L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo::InstancesProvisioned
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMstpDetails : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMstpDetails : public ydk::Entity
 {
     public:
-        L2FibMstpDetails();
-        ~L2FibMstpDetails();
+        L2fibMstpDetails();
+        ~L2fibMstpDetails();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -980,18 +980,18 @@ class L2VpnForwarding::Nodes::Node::L2FibMstpDetails : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibMstpDetail; //type: L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail
+        class L2fibMstpDetail; //type: L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail> > l2fib_mstp_detail;
+        ydk::YList l2fib_mstp_detail;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMstpDetails
+}; // L2vpnForwarding::Nodes::Node::L2fibMstpDetails
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail : public ydk::Entity
 {
     public:
-        L2FibMstpDetail();
-        ~L2FibMstpDetail();
+        L2fibMstpDetail();
+        ~L2fibMstpDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1004,22 +1004,22 @@ class L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf parent_interface; //type: string
-        ydk::YLeaf msti; //type: int32
+        ydk::YLeaf msti; //type: uint32
         ydk::YLeaf parent_interface_xr; //type: string
         ydk::YLeaf msti_xr; //type: uint32
         ydk::YLeaf internal_msti; //type: uint32
         ydk::YLeaf state; //type: uint32
         ydk::YLeaf learn_key; //type: uint8
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base
-        class BridgePortArray; //type: L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::BridgePortArray
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail::Base
+        class BridgePortArray; //type: L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail::BridgePortArray
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base> base;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::BridgePortArray> > bridge_port_array;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail::Base> base;
+        ydk::YList bridge_port_array;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail
+}; // L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1036,10 +1036,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::BridgePortArray : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail::BridgePortArray : public ydk::Entity
 {
     public:
         BridgePortArray();
@@ -1057,14 +1057,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::BridgePor
 
         ydk::YLeaf entry; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMstpDetails::L2FibMstpDetail::BridgePortArray
+}; // L2vpnForwarding::Nodes::Node::L2fibMstpDetails::L2fibMstpDetail::BridgePortArray
 
 
-class L2VpnForwarding::Nodes::Node::L2FibL2Tp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibL2tp : public ydk::Entity
 {
     public:
-        L2FibL2Tp();
-        ~L2FibL2Tp();
+        L2fibL2tp();
+        ~L2fibL2tp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1076,20 +1076,20 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2Tpv3Sessions; //type: L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions
-        class L2Tpv2Sessions; //type: L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions
+        class L2tpv3Sessions; //type: L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions
+        class L2tpv2Sessions; //type: L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions> l2tpv3_sessions;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions> l2tpv2_sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions> l2tpv3_sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions> l2tpv2_sessions;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibL2Tp
+}; // L2vpnForwarding::Nodes::Node::L2fibL2tp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions : public ydk::Entity
 {
     public:
-        L2Tpv3Sessions();
-        ~L2Tpv3Sessions();
+        L2tpv3Sessions();
+        ~L2tpv3Sessions();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1101,18 +1101,18 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2Tpv3Session; //type: L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session
+        class L2tpv3Session; //type: L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions::L2tpv3Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session> > l2tpv3_session;
+        ydk::YList l2tpv3_session;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions
+}; // L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions
 
 
-class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions::L2tpv3Session : public ydk::Entity
 {
     public:
-        L2Tpv3Session();
-        ~L2Tpv3Session();
+        L2tpv3Session();
+        ~L2tpv3Session();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1124,7 +1124,7 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf session_id_xr; //type: uint32
         ydk::YLeaf interface_handle; //type: string
         ydk::YLeaf sub_interface_name; //type: string
@@ -1134,15 +1134,15 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session : p
         ydk::YLeaf ipv4_table_id; //type: uint32
         ydk::YLeaf ipv6_table_id; //type: uint32
         ydk::YLeaf nhop_ip_addr; //type: string
-        ydk::YLeaf session_type; //type: L2fibL2TpSession
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base
+        ydk::YLeaf session_type; //type: L2fibL2tpSession
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions::L2tpv3Session::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions::L2tpv3Session::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session
+}; // L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions::L2tpv3Session
 
 
-class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions::L2tpv3Session::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1159,14 +1159,14 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Ba
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv3Sessions::L2Tpv3Session::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv3Sessions::L2tpv3Session::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions : public ydk::Entity
 {
     public:
-        L2Tpv2Sessions();
-        ~L2Tpv2Sessions();
+        L2tpv2Sessions();
+        ~L2tpv2Sessions();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1178,18 +1178,18 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2Tpv2Session; //type: L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session
+        class L2tpv2Session; //type: L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions::L2tpv2Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session> > l2tpv2_session;
+        ydk::YList l2tpv2_session;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions
+}; // L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions
 
 
-class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions::L2tpv2Session : public ydk::Entity
 {
     public:
-        L2Tpv2Session();
-        ~L2Tpv2Session();
+        L2tpv2Session();
+        ~L2tpv2Session();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1201,8 +1201,8 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf session_id; //type: int32
-        ydk::YLeaf tunnel_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf tunnel_id; //type: uint32
         ydk::YLeaf session_id_xr; //type: uint32
         ydk::YLeaf interface_handle; //type: string
         ydk::YLeaf sub_interface_name; //type: string
@@ -1212,15 +1212,15 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session : p
         ydk::YLeaf ipv4_table_id; //type: uint32
         ydk::YLeaf ipv6_table_id; //type: uint32
         ydk::YLeaf nhop_ip_addr; //type: string
-        ydk::YLeaf session_type; //type: L2fibL2TpSession
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base
+        ydk::YLeaf session_type; //type: L2fibL2tpSession
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions::L2tpv2Session::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions::L2tpv2Session::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session
+}; // L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions::L2tpv2Session
 
 
-class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions::L2tpv2Session::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1237,14 +1237,14 @@ class L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Ba
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibL2Tp::L2Tpv2Sessions::L2Tpv2Session::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibL2tp::L2tpv2Sessions::L2tpv2Session::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032 : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032 : public ydk::Entity
 {
     public:
-        L2FibG8032();
-        ~L2FibG8032();
+        L2fibG8032();
+        ~L2fibG8032();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1256,18 +1256,18 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032 : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibG8032Rings; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings
+        class L2fibG8032Rings; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings> l2fib_g8032_rings;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings> l2fib_g8032_rings;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings : public ydk::Entity
 {
     public:
-        L2FibG8032Rings();
-        ~L2FibG8032Rings();
+        L2fibG8032Rings();
+        ~L2fibG8032Rings();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1279,18 +1279,18 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibG8032Ring; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring
+        class L2fibG8032Ring; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring> > l2fib_g8032_ring;
+        ydk::YList l2fib_g8032_ring;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring : public ydk::Entity
 {
     public:
-        L2FibG8032Ring();
-        ~L2FibG8032Ring();
+        L2fibG8032Ring();
+        ~L2fibG8032Ring();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1303,24 +1303,24 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ring_name; //type: string
-        class L2FibG8032RingDetail; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail
-        class L2FibG8032RingSummary; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary
-        class L2FibG8032RingInstanceSummaries; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries
-        class L2FibG8032RingInstanceDetails; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails
+        class L2fibG8032RingDetail; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingDetail
+        class L2fibG8032RingSummary; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingSummary
+        class L2fibG8032RingInstanceSummaries; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceSummaries
+        class L2fibG8032RingInstanceDetails; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceDetails
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail> l2fib_g8032_ring_detail;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary> l2fib_g8032_ring_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries> l2fib_g8032_ring_instance_summaries;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails> l2fib_g8032_ring_instance_details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingDetail> l2fib_g8032_ring_detail;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingSummary> l2fib_g8032_ring_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceSummaries> l2fib_g8032_ring_instance_summaries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceDetails> l2fib_g8032_ring_instance_details;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingDetail : public ydk::Entity
 {
     public:
-        L2FibG8032RingDetail();
-        ~L2FibG8032RingDetail();
+        L2fibG8032RingDetail();
+        ~L2fibG8032RingDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1339,14 +1339,14 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring:
         ydk::YLeaf monitor1; //type: string
         ydk::YLeaf is_open_ring; //type: boolean
 
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingDetail
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingDetail
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingSummary : public ydk::Entity
 {
     public:
-        L2FibG8032RingSummary();
-        ~L2FibG8032RingSummary();
+        L2fibG8032RingSummary();
+        ~L2fibG8032RingSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1362,14 +1362,14 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring:
         ydk::YLeaf port0; //type: string
         ydk::YLeaf port1; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceSummaries : public ydk::Entity
 {
     public:
-        L2FibG8032RingInstanceSummaries();
-        ~L2FibG8032RingInstanceSummaries();
+        L2fibG8032RingInstanceSummaries();
+        ~L2fibG8032RingInstanceSummaries();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1381,18 +1381,18 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibG8032RingInstanceSummary; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary
+        class L2fibG8032RingInstanceSummary; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceSummaries::L2fibG8032RingInstanceSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary> > l2fib_g8032_ring_instance_summary;
+        ydk::YList l2fib_g8032_ring_instance_summary;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceSummaries
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceSummaries::L2fibG8032RingInstanceSummary : public ydk::Entity
 {
     public:
-        L2FibG8032RingInstanceSummary();
-        ~L2FibG8032RingInstanceSummary();
+        L2fibG8032RingInstanceSummary();
+        ~L2fibG8032RingInstanceSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1404,19 +1404,19 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf instance; //type: int32
+        ydk::YLeaf instance; //type: uint32
         ydk::YLeaf ring_instance; //type: uint32
         ydk::YLeaf aps_port0; //type: string
         ydk::YLeaf aps_port1; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceSummaries::L2FibG8032RingInstanceSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceSummaries::L2fibG8032RingInstanceSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceDetails : public ydk::Entity
 {
     public:
-        L2FibG8032RingInstanceDetails();
-        ~L2FibG8032RingInstanceDetails();
+        L2fibG8032RingInstanceDetails();
+        ~L2fibG8032RingInstanceDetails();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1428,18 +1428,18 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibG8032RingInstanceDetail; //type: L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail
+        class L2fibG8032RingInstanceDetail; //type: L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceDetails::L2fibG8032RingInstanceDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail> > l2fib_g8032_ring_instance_detail;
+        ydk::YList l2fib_g8032_ring_instance_detail;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceDetails
 
 
-class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceDetails::L2fibG8032RingInstanceDetail : public ydk::Entity
 {
     public:
-        L2FibG8032RingInstanceDetail();
-        ~L2FibG8032RingInstanceDetail();
+        L2fibG8032RingInstanceDetail();
+        ~L2fibG8032RingInstanceDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1451,7 +1451,7 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf instance; //type: int32
+        ydk::YLeaf instance; //type: uint32
         ydk::YLeaf ring_instance; //type: uint32
         ydk::YLeaf vlan_ids; //type: string
         ydk::YLeaf ring_profile; //type: string
@@ -1462,14 +1462,14 @@ class L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring:
         ydk::YLeaf aps_port_status1; //type: L2fibG8032ApsPortStatus
         ydk::YLeaf aps_channel_level; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibG8032::L2FibG8032Rings::L2FibG8032Ring::L2FibG8032RingInstanceDetails::L2FibG8032RingInstanceDetail
+}; // L2vpnForwarding::Nodes::Node::L2fibG8032::L2fibG8032Rings::L2fibG8032Ring::L2fibG8032RingInstanceDetails::L2fibG8032RingInstanceDetail
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts : public ydk::Entity
 {
     public:
-        L2FibBridgePorts();
-        ~L2FibBridgePorts();
+        L2fibBridgePorts();
+        ~L2fibBridgePorts();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1481,18 +1481,18 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibBridgePort; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
+        class L2fibBridgePort; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort> > l2fib_bridge_port;
+        ydk::YList l2fib_bridge_port;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort : public ydk::Entity
 {
     public:
-        L2FibBridgePort();
-        ~L2FibBridgePort();
+        L2fibBridgePort();
+        ~L2fibBridgePort();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1513,22 +1513,22 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort : public y
         ydk::YLeaf number_of_hw_mac; //type: uint32
         ydk::YLeaf number_of_sw_mac; //type: uint32
         ydk::YLeaf mac_limit; //type: uint32
-        ydk::YLeaf mac_limit_action; //type: MgmtL2FibMacLimitAction
+        ydk::YLeaf mac_limit_action; //type: MgmtL2fibMacLimitAction
         ydk::YLeaf flooding_disabled; //type: boolean
         ydk::YLeaf mac_learning_disabled; //type: boolean
         ydk::YLeaf mac_port_down_flush_disabled; //type: boolean
         ydk::YLeaf mtu; //type: uint32
         ydk::YLeaf aging_time_out; //type: uint32
-        class Segment; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment
-        class BridgePortOperationalInfo; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo
+        class Segment; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment
+        class BridgePortOperationalInfo; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment> segment;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo> bridge_port_operational_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment> segment;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo> bridge_port_operational_info;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -1544,23 +1544,23 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment :
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf data_type; //type: MgmtL2FibData
-        class Ac; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac
-        class Pbb; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb
-        class Vni; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni
-        class Evpn; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn
-        class Pw; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw
+        ydk::YLeaf data_type; //type: MgmtL2fibData
+        class Ac; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac
+        class Pbb; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb
+        class Vni; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni
+        class Evpn; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn
+        class Pw; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac> ac;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb> pbb;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni> vni;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn> evpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw> pw;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac> ac;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb> pbb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni> vni;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn> evpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw> pw;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac : public ydk::Entity
 {
     public:
         Ac();
@@ -1590,16 +1590,16 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf redundancy_object_id; //type: uint64
         ydk::YLeaf evpn_internal_label; //type: uint32
         ydk::YLeaf fxc_next_hop_valid; //type: boolean
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base
-        class FxcNextHop; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::Base
+        class FxcNextHop; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base> base;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop> fxc_next_hop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop> fxc_next_hop;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1616,10 +1616,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop : public ydk::Entity
 {
     public:
         FxcNextHop();
@@ -1641,14 +1641,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf ecd_plaformt_data_valid; //type: boolean
         ydk::YLeaf ecd_platform_data_length; //type: uint32
         ydk::YLeaf children_count; //type: uint32
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1665,10 +1665,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Ac::FxcNextHop::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Ac::FxcNextHop::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb : public ydk::Entity
 {
     public:
         Pbb();
@@ -1687,16 +1687,16 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf bound; //type: boolean
         ydk::YLeaf forward_class; //type: uint8
         ydk::YLeaf core_pbb_evpn_enabled; //type: boolean
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base
-        class PbbUnion; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::Base
+        class PbbUnion; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base> base;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion> pbb_union;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion> pbb_union;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1713,10 +1713,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion : public ydk::Entity
 {
     public:
         PbbUnion();
@@ -1732,17 +1732,17 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pbb_type; //type: MgmtL2FibBridge
-        class Edge; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge
-        class Core; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core
+        ydk::YLeaf pbb_type; //type: MgmtL2fibBridge
+        class Edge; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Edge
+        class Core; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Core
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge> edge;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core> core;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Edge> edge;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Core> core;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Edge : public ydk::Entity
 {
     public:
         Edge();
@@ -1761,10 +1761,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf mac_configured; //type: boolean
         ydk::YLeaf mac; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Edge
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Edge
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Core : public ydk::Entity
 {
     public:
         Core();
@@ -1782,10 +1782,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
 
         ydk::YLeaf vlan_id; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pbb::PbbUnion::Core
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pbb::PbbUnion::Core
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni : public ydk::Entity
 {
     public:
         Vni();
@@ -1812,14 +1812,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf anycast_mcast_ip; //type: string
         ydk::YLeaf ingress_replication; //type: boolean
         ydk::YLeaf vx_lan_mode; //type: uint32
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1836,10 +1836,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Vni::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Vni::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn : public ydk::Entity
 {
     public:
         Evpn();
@@ -1858,14 +1858,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf bound; //type: boolean
         ydk::YLeaf evi; //type: uint32
         ydk::YLeaf forward_class; //type: uint8
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1882,10 +1882,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Evpn::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Evpn::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw : public ydk::Entity
 {
     public:
         Pw();
@@ -1920,20 +1920,20 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf ac_id; //type: uint32
         ydk::YLeaf forward_class; //type: uint8
         ydk::YLeaf next_hop_address; //type: string
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base
-        class NextHop; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop
-        class PseudoWireUnion; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion
-        class BackupPseudoWire; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::Base
+        class NextHop; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop
+        class PseudoWireUnion; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion
+        class BackupPseudoWire; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base> base;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop> next_hop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion> pseudo_wire_union;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire> backup_pseudo_wire;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop> next_hop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion> pseudo_wire_union;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire> backup_pseudo_wire;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1950,10 +1950,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -1975,14 +1975,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf ecd_plaformt_data_valid; //type: boolean
         ydk::YLeaf ecd_platform_data_length; //type: uint32
         ydk::YLeaf children_count; //type: uint32
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop::Base : public ydk::Entity
 {
     public:
         Base();
@@ -1999,10 +1999,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::NextHop::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::NextHop::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion : public ydk::Entity
 {
     public:
         PseudoWireUnion();
@@ -2018,21 +2018,21 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf data_type; //type: MgmtL2FibData
-        class Mpls; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls
-        class L2Tp; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp
-        class L2Tpv2; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2
-        class L2TpIpv6Ts; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts
+        ydk::YLeaf data_type; //type: MgmtL2fibData
+        class Mpls; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::Mpls
+        class L2tp; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp
+        class L2tpv2; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2
+        class L2tpIpv6Ts; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls> mpls;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp> l2tp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2> l2tpv2;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts> l2tp_ipv6_ts;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::Mpls> mpls;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp> l2tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2> l2tpv2;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts> l2tp_ipv6_ts;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -2053,14 +2053,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf pw_tunnel_interface; //type: uint32
         ydk::YLeaf pw_xcid; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::Mpls
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::Mpls
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp : public ydk::Entity
 {
     public:
-        L2Tp();
-        ~L2Tp();
+        L2tp();
+        ~L2tp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2077,16 +2077,16 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf path_mtu; //type: uint16
         ydk::YLeaf sequence_number_sent; //type: uint32
         ydk::YLeaf sequence_number_expected; //type: uint32
-        class Local; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local
-        class Remote; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote
+        class Local; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Local
+        class Remote; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Remote
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local> local;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote> remote;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Local> local;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Remote> remote;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Local : public ydk::Entity
 {
     public:
         Local();
@@ -2107,10 +2107,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf cookie_low_value; //type: uint32
         ydk::YLeaf cookie_high_value; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Local
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Local
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Remote : public ydk::Entity
 {
     public:
         Remote();
@@ -2131,14 +2131,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf cookie_low_value; //type: uint32
         ydk::YLeaf cookie_high_value; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tp::Remote
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tp::Remote
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2 : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2 : public ydk::Entity
 {
     public:
-        L2Tpv2();
-        ~L2Tpv2();
+        L2tpv2();
+        ~L2tpv2();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2159,16 +2159,16 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf xconnect_id; //type: uint32
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf source_address; //type: string
-        class Local; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local
-        class Remote; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote
+        class Local; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Local
+        class Remote; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Remote
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local> local;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote> remote;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Local> local;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Remote> remote;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Local : public ydk::Entity
 {
     public:
         Local();
@@ -2187,10 +2187,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf tunnel_id; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Local
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Local
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Remote : public ydk::Entity
 {
     public:
         Remote();
@@ -2209,14 +2209,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf tunnel_id; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2Tpv2::Remote
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpv2::Remote
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts : public ydk::Entity
 {
     public:
-        L2TpIpv6Ts();
-        ~L2TpIpv6Ts();
+        L2tpIpv6Ts();
+        ~L2tpIpv6Ts();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2235,16 +2235,16 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf sequence_number_expected; //type: uint32
         ydk::YLeaf local_address; //type: string
         ydk::YLeaf remote_address; //type: string
-        class Local; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local
-        class Remote; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote
+        class Local; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Local
+        class Remote; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local> local;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote> remote;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Local> local;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote> remote;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Local : public ydk::Entity
 {
     public:
         Local();
@@ -2268,10 +2268,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf secondary_cookie_high_value; //type: uint32
         ydk::YLeaf session_id; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Local
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Local
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote : public ydk::Entity
 {
     public:
         Remote();
@@ -2292,10 +2292,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf cookie_low_value; //type: uint32
         ydk::YLeaf cookie_high_value; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire : public ydk::Entity
 {
     public:
         BackupPseudoWire();
@@ -2321,14 +2321,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf grouping_supported; //type: boolean
         ydk::YLeaf group_id; //type: uint32
         ydk::YLeaf group_state; //type: L2fibGroupState
-        class Atom; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom
+        class Atom; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire::Atom
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom> atom;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire::Atom> atom;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire::Atom : public ydk::Entity
 {
     public:
         Atom();
@@ -2349,10 +2349,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::
         ydk::YLeaf pw_tunnel_interface; //type: uint32
         ydk::YLeaf pw_xcid; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::Segment::Pw::BackupPseudoWire::Atom
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::Segment::Pw::BackupPseudoWire::Atom
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo : public ydk::Entity
 {
     public:
         BridgePortOperationalInfo();
@@ -2374,14 +2374,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePor
         ydk::YLeaf broadcast_storm_control_kb_ps; //type: uint64
         ydk::YLeaf multicast_storm_control_pps; //type: uint64
         ydk::YLeaf multicast_storm_control_kb_ps; //type: uint64
-        class OperationalInformation; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation
+        class OperationalInformation; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation> operational_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation> operational_information;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation : public ydk::Entity
 {
     public:
         OperationalInformation();
@@ -2404,14 +2404,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePor
         ydk::YLeaf admin_disabled; //type: boolean
         ydk::YLeaf flooding_disabled; //type: boolean
         ydk::YLeaf flood_unknown_unicast_enabled; //type: boolean
-        ydk::YLeaf mac_limit_action; //type: MgmtL2FibMacLimitAction
+        ydk::YLeaf mac_limit_action; //type: MgmtL2fibMacLimitAction
         ydk::YLeaf mac_limit_threshold; //type: uint32
         ydk::YLeaf mac_learning_disabled; //type: boolean
         ydk::YLeaf mac_port_down_flush_disabled; //type: boolean
-        ydk::YLeaf mac_limit_notification_type; //type: MgmtL2FibMacLimitNotify
+        ydk::YLeaf mac_limit_notification_type; //type: MgmtL2fibMacLimitNotify
         ydk::YLeaf is_mac_secure_enabled; //type: boolean
         ydk::YLeaf is_mac_secure_logging_enabled; //type: boolean
-        ydk::YLeaf mac_secure_action; //type: MgmtL2FibMacSecAction
+        ydk::YLeaf mac_secure_action; //type: MgmtL2fibMacSecAction
         ydk::YLeaf is_mac_secure_accept_shutdown; //type: boolean
         ydk::YLeaf is_mac_secure_threshold_enabled; //type: boolean
         ydk::YLeaf mac_aging_type; //type: boolean
@@ -2455,14 +2455,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePor
         ydk::YLeaf is_p2mp_pw_enabled; //type: boolean
         ydk::YLeaf is_igmp_snoop_enabled; //type: boolean
         ydk::YLeaf nv_satellite_offload_ipv4_multicast_disabled; //type: boolean
-        class Feature; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature
+        class Feature; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature> > feature;
+        ydk::YList feature;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature : public ydk::Entity
 {
     public:
         Feature();
@@ -2479,18 +2479,18 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePor
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf feature_type; //type: L2fibFeature
-        class Dhcp; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp
-        class Igmp; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp
-        class Mld; //type: L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld
+        class Dhcp; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp
+        class Igmp; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp
+        class Mld; //type: L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp> dhcp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp> igmp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld> mld;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp> igmp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld> mld;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -2508,10 +2508,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePor
 
         ydk::YLeaf profile_name; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Dhcp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp : public ydk::Entity
 {
     public:
         Igmp();
@@ -2529,10 +2529,10 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePor
 
         ydk::YLeaf profile_name; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Igmp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld : public ydk::Entity
 {
     public:
         Mld();
@@ -2550,14 +2550,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePor
 
         ydk::YLeaf profile_name; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgePorts::L2FibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgePorts::L2fibBridgePort::BridgePortOperationalInfo::OperationalInformation::Feature::Mld
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails : public ydk::Entity
 {
     public:
-        L2FibmacDetails();
-        ~L2FibmacDetails();
+        L2fibmacDetails();
+        ~L2fibmacDetails();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2569,18 +2569,18 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibmacDetail; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail
+        class L2fibmacDetail; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail> > l2fibmac_detail;
+        ydk::YList l2fibmac_detail;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail : public ydk::Entity
 {
     public:
-        L2FibmacDetail();
-        ~L2FibmacDetail();
+        L2fibmacDetail();
+        ~L2fibmacDetail();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2607,20 +2607,20 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail : public ydk
         ydk::YLeaf peer_vtep_ip; //type: string
         ydk::YLeaf flag_extension; //type: uint16
         ydk::YLeaf vni; //type: uint32
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base
-        class Segment; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment
-        class EvpnCtx; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx
-        class NextHop; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Base
+        class Segment; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment
+        class EvpnCtx; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx
+        class NextHop; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base> base;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment> segment;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx> evpn_ctx;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop> next_hop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment> segment;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx> evpn_ctx;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop> next_hop;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Base : public ydk::Entity
 {
     public:
         Base();
@@ -2637,10 +2637,10 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -2656,23 +2656,23 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf data_type; //type: MgmtL2FibData
-        class Ac; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac
-        class Pbb; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb
-        class Vni; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni
-        class Evpn; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn
-        class Pw; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw
+        ydk::YLeaf data_type; //type: MgmtL2fibData
+        class Ac; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Ac
+        class Pbb; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pbb
+        class Vni; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Vni
+        class Evpn; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Evpn
+        class Pw; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pw
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac> ac;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb> pbb;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni> vni;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn> evpn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw> pw;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Ac> ac;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pbb> pbb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Vni> vni;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Evpn> evpn;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pw> pw;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Ac : public ydk::Entity
 {
     public:
         Ac();
@@ -2690,10 +2690,10 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac
 
         ydk::YLeaf interface_handle; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ac
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Ac
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pbb : public ydk::Entity
 {
     public:
         Pbb();
@@ -2711,10 +2711,10 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pb
 
         ydk::YLeaf xcid; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pbb
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pbb
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Vni : public ydk::Entity
 {
     public:
         Vni();
@@ -2733,10 +2733,10 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vn
         ydk::YLeaf xcid; //type: uint32
         ydk::YLeaf parent_if; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Vni
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Vni
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Evpn : public ydk::Entity
 {
     public:
         Evpn();
@@ -2754,10 +2754,10 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Ev
 
         ydk::YLeaf xcid; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Evpn
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Evpn
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pw : public ydk::Entity
 {
     public:
         Pw();
@@ -2777,10 +2777,10 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw
         ydk::YLeaf next_hop_address; //type: string
         ydk::YLeaf pseudo_wire_id_type; //type: L2fibPwId
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::Segment::Pw
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::Segment::Pw
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx : public ydk::Entity
 {
     public:
         EvpnCtx();
@@ -2796,18 +2796,18 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf data_type; //type: MgmtL2FibBridgeMacEvpnCtx
+        ydk::YLeaf data_type; //type: MgmtL2fibBridgeMacEvpnCtx
         ydk::YLeaf esi_id; //type: uint16
         ydk::YLeaf local_label; //type: uint32
         ydk::YLeaf bp_ifh; //type: string
-        class McastOle; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle
+        class McastOle; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx::McastOle
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle> mcast_ole;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx::McastOle> mcast_ole;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx::McastOle : public ydk::Entity
 {
     public:
         McastOle();
@@ -2826,10 +2826,10 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::Mc
         ydk::YLeaf next_hop_ipv6_addr; //type: string
         ydk::YLeaf mcast_label; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::EvpnCtx::McastOle
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::EvpnCtx::McastOle
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -2851,14 +2851,14 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop : p
         ydk::YLeaf ecd_plaformt_data_valid; //type: boolean
         ydk::YLeaf ecd_platform_data_length; //type: uint32
         ydk::YLeaf children_count; //type: uint32
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop
 
 
-class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop::Base : public ydk::Entity
 {
     public:
         Base();
@@ -2875,14 +2875,14 @@ class L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Ba
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibmacDetails::L2FibmacDetail::NextHop::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibmacDetails::L2fibmacDetail::NextHop::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgeDomainNames : public ydk::Entity
 {
     public:
-        L2FibBridgeDomainNames();
-        ~L2FibBridgeDomainNames();
+        L2fibBridgeDomainNames();
+        ~L2fibBridgeDomainNames();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2894,18 +2894,18 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibBridgeDomainName; //type: L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName
+        class L2fibBridgeDomainName; //type: L2vpnForwarding::Nodes::Node::L2fibBridgeDomainNames::L2fibBridgeDomainName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName> > l2fib_bridge_domain_name;
+        ydk::YList l2fib_bridge_domain_name;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgeDomainNames
 
 
-class L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibBridgeDomainNames::L2fibBridgeDomainName : public ydk::Entity
 {
     public:
-        L2FibBridgeDomainName();
-        ~L2FibBridgeDomainName();
+        L2fibBridgeDomainName();
+        ~L2fibBridgeDomainName();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2922,7 +2922,7 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainNam
         ydk::YLeaf bridge_id; //type: uint32
         ydk::YLeaf bridge_name; //type: string
         ydk::YLeaf mac_limit; //type: uint32
-        ydk::YLeaf mac_limit_action; //type: MgmtL2FibMacLimitAction
+        ydk::YLeaf mac_limit_action; //type: MgmtL2fibMacLimitAction
         ydk::YLeaf flood_disabled; //type: boolean
         ydk::YLeaf mac_learning_disabled; //type: boolean
         ydk::YLeaf mac_port_down_flush_disabled; //type: boolean
@@ -2935,14 +2935,14 @@ class L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainNam
         ydk::YLeaf aging_time_out; //type: uint32
         ydk::YLeaf msti; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibBridgeDomainNames::L2FibBridgeDomainName
+}; // L2vpnForwarding::Nodes::Node::L2fibBridgeDomainNames::L2fibBridgeDomainName
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts : public ydk::Entity
 {
     public:
-        L2FibMroutePorts();
-        ~L2FibMroutePorts();
+        L2fibMroutePorts();
+        ~L2fibMroutePorts();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2954,18 +2954,18 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibMroutePort; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
+        class L2fibMroutePort; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort> > l2fib_mroute_port;
+        ydk::YList l2fib_mroute_port;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort : public ydk::Entity
 {
     public:
-        L2FibMroutePort();
-        ~L2FibMroutePort();
+        L2fibMroutePort();
+        ~L2fibMroutePort();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2992,20 +2992,20 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort : public y
         ydk::YLeaf is_ole_offloaded; //type: boolean
         ydk::YLeaf is_ole_master; //type: boolean
         ydk::YLeaf is_topo_hub_and_spoke; //type: boolean
-        class BaseInformation; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation
-        class ForwardStats; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats
-        class SourcePrefix; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix
-        class DestinationPrefix; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix
+        class BaseInformation; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::BaseInformation
+        class ForwardStats; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats
+        class SourcePrefix; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::SourcePrefix
+        class DestinationPrefix; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::DestinationPrefix
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation> base_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats> forward_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix> source_prefix;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix> destination_prefix;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::BaseInformation> base_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats> forward_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::SourcePrefix> source_prefix;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::DestinationPrefix> destination_prefix;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::BaseInformation : public ydk::Entity
 {
     public:
         BaseInformation();
@@ -3022,10 +3022,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInfor
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::BaseInformation
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::BaseInformation
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats : public ydk::Entity
 {
     public:
         ForwardStats();
@@ -3041,14 +3041,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ForwardStat; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat
+        class ForwardStat; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat> forward_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat> forward_stat;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat : public ydk::Entity
 {
     public:
         ForwardStat();
@@ -3064,15 +3064,15 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf data_type; //type: MgmtL2FibStatsData
-        class Mulicast; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast
+        ydk::YLeaf data_type; //type: MgmtL2fibStatsData
+        class Mulicast; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast> mulicast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast> mulicast;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast : public ydk::Entity
 {
     public:
         Mulicast();
@@ -3088,24 +3088,24 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MulticastForwardStat; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat
-        class ReceivedStat; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat
-        class Punt; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt
-        class Drop; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop
-        class MulticastCoreForwardStat; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat
-        class CoreReceivedStat; //type: L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat
+        class MulticastForwardStat; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat
+        class ReceivedStat; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat
+        class Punt; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt
+        class Drop; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop
+        class MulticastCoreForwardStat; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat
+        class CoreReceivedStat; //type: L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat> multicast_forward_stat;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat> received_stat;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt> punt;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop> drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat> multicast_core_forward_stat;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat> core_received_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat> multicast_forward_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat> received_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt> punt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop> drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat> multicast_core_forward_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat> core_received_stat;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat : public ydk::Entity
 {
     public:
         MulticastForwardStat();
@@ -3124,10 +3124,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastForwardStat
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat : public ydk::Entity
 {
     public:
         ReceivedStat();
@@ -3146,10 +3146,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::ReceivedStat
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt : public ydk::Entity
 {
     public:
         Punt();
@@ -3168,10 +3168,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Punt
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop : public ydk::Entity
 {
     public:
         Drop();
@@ -3190,10 +3190,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::Drop
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat : public ydk::Entity
 {
     public:
         MulticastCoreForwardStat();
@@ -3212,10 +3212,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::MulticastCoreForwardStat
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat : public ydk::Entity
 {
     public:
         CoreReceivedStat();
@@ -3234,10 +3234,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardSt
         ydk::YLeaf packets; //type: uint64
         ydk::YLeaf bytes; //type: uint64
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::ForwardStats::ForwardStat::Mulicast::CoreReceivedStat
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::SourcePrefix : public ydk::Entity
 {
     public:
         SourcePrefix();
@@ -3257,10 +3257,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePre
         ydk::YLeaf prefix_length; //type: uint16
         ydk::YLeaf prefix; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::SourcePrefix
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::SourcePrefix
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::DestinationPrefix : public ydk::Entity
 {
     public:
         DestinationPrefix();
@@ -3280,14 +3280,14 @@ class L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::Destinati
         ydk::YLeaf prefix_length; //type: uint16
         ydk::YLeaf prefix; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMroutePorts::L2FibMroutePort::DestinationPrefix
+}; // L2vpnForwarding::Nodes::Node::L2fibMroutePorts::L2fibMroutePort::DestinationPrefix
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary : public ydk::Entity
 {
     public:
-        L2FibSummary();
-        ~L2FibSummary();
+        L2fibSummary();
+        ~L2fibSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3299,34 +3299,34 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class XconnectSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary
-        class NextHopSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary
-        class L2TpDispositionSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary
-        class BridgeDomainSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary
-        class MacSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary
-        class QueueSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary
-        class EvpnSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary
-        class GlobalCfg; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg
-        class PtreeSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary
-        class PwGroupSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary
-        class PwheMpSummary; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary
+        class XconnectSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::XconnectSummary
+        class NextHopSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary
+        class L2tpDispositionSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::L2tpDispositionSummary
+        class BridgeDomainSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::BridgeDomainSummary
+        class MacSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::MacSummary
+        class QueueSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::QueueSummary
+        class EvpnSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::EvpnSummary
+        class GlobalCfg; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg
+        class PtreeSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::PtreeSummary
+        class PwGroupSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::PwGroupSummary
+        class PwheMpSummary; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::PwheMpSummary
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary> xconnect_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary> next_hop_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary> l2tp_disposition_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary> bridge_domain_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary> mac_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary> queue_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary> evpn_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg> global_cfg;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary> ptree_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary> pw_group_summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary> pwhe_mp_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::XconnectSummary> xconnect_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary> next_hop_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::L2tpDispositionSummary> l2tp_disposition_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::BridgeDomainSummary> bridge_domain_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::MacSummary> mac_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::QueueSummary> queue_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::EvpnSummary> evpn_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg> global_cfg;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::PtreeSummary> ptree_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::PwGroupSummary> pw_group_summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::PwheMpSummary> pwhe_mp_summary;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::XconnectSummary : public ydk::Entity
 {
     public:
         XconnectSummary();
@@ -3378,10 +3378,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary : public ydk::
         ydk::YLeaf bp_count; //type: uint32
         ydk::YLeaf pwhe_l2_if_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::XconnectSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::XconnectSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary : public ydk::Entity
 {
     public:
         NextHopSummary();
@@ -3397,22 +3397,22 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MplsIl; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl
-        class Mpls; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls
-        class L2Tp; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp
-        class Lsm; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm
-        class P2MpTunnels; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels
+        class MplsIl; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::MplsIl
+        class Mpls; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Mpls
+        class L2tp; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::L2tp
+        class Lsm; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Lsm
+        class P2mpTunnels; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::P2mpTunnels
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl> mpls_il;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls> mpls;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp> l2tp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm> lsm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels> p2mp_tunnels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::MplsIl> mpls_il;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Mpls> mpls;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::L2tp> l2tp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Lsm> lsm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::P2mpTunnels> p2mp_tunnels;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::MplsIl : public ydk::Entity
 {
     public:
         MplsIl();
@@ -3433,10 +3433,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl : publi
         ydk::YLeaf unbound_next_hop_count; //type: uint32
         ydk::YLeaf next_hop_pending_registration_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::MplsIl
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::MplsIl
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -3457,14 +3457,14 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls : public 
         ydk::YLeaf unbound_next_hop_count; //type: uint32
         ydk::YLeaf next_hop_pending_registration_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Mpls
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Mpls
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::L2tp : public ydk::Entity
 {
     public:
-        L2Tp();
-        ~L2Tp();
+        L2tp();
+        ~L2tp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3481,10 +3481,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp : public 
         ydk::YLeaf unbound_next_hop_count; //type: uint32
         ydk::YLeaf next_hop_pending_registration_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::L2Tp
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::L2tp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Lsm : public ydk::Entity
 {
     public:
         Lsm();
@@ -3505,14 +3505,14 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm : public y
         ydk::YLeaf unbound_next_hop_count; //type: uint32
         ydk::YLeaf next_hop_pending_registration_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::Lsm
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::Lsm
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::P2mpTunnels : public ydk::Entity
 {
     public:
-        P2MpTunnels();
-        ~P2MpTunnels();
+        P2mpTunnels();
+        ~P2mpTunnels();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3529,14 +3529,14 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels : 
         ydk::YLeaf unbound_next_hop_count; //type: uint32
         ydk::YLeaf next_hop_pending_registration_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::NextHopSummary::P2MpTunnels
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::NextHopSummary::P2mpTunnels
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::L2tpDispositionSummary : public ydk::Entity
 {
     public:
-        L2TpDispositionSummary();
-        ~L2TpDispositionSummary();
+        L2tpDispositionSummary();
+        ~L2tpDispositionSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3552,10 +3552,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary : publi
         ydk::YLeaf bound_l2tp_disposition_session_count; //type: uint32
         ydk::YLeaf unbound_l2tp_disposition_session_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::L2TpDispositionSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::L2tpDispositionSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::BridgeDomainSummary : public ydk::Entity
 {
     public:
         BridgeDomainSummary();
@@ -3578,10 +3578,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary : public y
         ydk::YLeaf bridge_domain_with_pbbevpn_enabled; //type: uint32
         ydk::YLeaf bridge_domain_with_evpn_enabled; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::BridgeDomainSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::BridgeDomainSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::MacSummary : public ydk::Entity
 {
     public:
         MacSummary();
@@ -3606,10 +3606,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary : public ydk::Entit
         ydk::YLeaf sbmac_count; //type: uint32
         ydk::YLeaf bmac_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::MacSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::MacSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::QueueSummary : public ydk::Entity
 {
     public:
         QueueSummary();
@@ -3630,10 +3630,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary : public ydk::Ent
         ydk::YLeaf update_cnt; //type: uint32
         ydk::YLeaf del_cnt; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::QueueSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::QueueSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::EvpnSummary : public ydk::Entity
 {
     public:
         EvpnSummary();
@@ -3654,10 +3654,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary : public ydk::Enti
         ydk::YLeaf default_count; //type: uint32
         ydk::YLeaf stitching_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::EvpnSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::EvpnSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg : public ydk::Entity
 {
     public:
         GlobalCfg();
@@ -3676,14 +3676,14 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg : public ydk::Entity
         ydk::YLeaf load_balance_type; //type: L2fibLoadBal
         ydk::YLeaf evpn_imc_label_block_base; //type: uint32
         ydk::YLeaf evpn_imc_label_block_size; //type: uint16
-        class Base; //type: L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base
+        class Base; //type: L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg::Base
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base> base;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg::Base> base;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg::Base : public ydk::Entity
 {
     public:
         Base();
@@ -3700,10 +3700,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::GlobalCfg::Base
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::GlobalCfg::Base
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::PtreeSummary : public ydk::Entity
 {
     public:
         PtreeSummary();
@@ -3725,10 +3725,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary : public ydk::Ent
         ydk::YLeaf rsvp_te_enabled_ptree_count; //type: uint32
         ydk::YLeaf lmrib_rsvp_te_ptree_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::PtreeSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::PtreeSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::PwGroupSummary : public ydk::Entity
 {
     public:
         PwGroupSummary();
@@ -3748,10 +3748,10 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary : public ydk::E
         ydk::YLeaf total_pw_groups; //type: uint32
         ydk::YLeaf pw_groups_down; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::PwGroupSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::PwGroupSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibSummary::PwheMpSummary : public ydk::Entity
 {
     public:
         PwheMpSummary();
@@ -3769,14 +3769,14 @@ class L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary : public ydk::En
 
         ydk::YLeaf total_count; //type: uint32
 
-}; // L2VpnForwarding::Nodes::Node::L2FibSummary::PwheMpSummary
+}; // L2vpnForwarding::Nodes::Node::L2fibSummary::PwheMpSummary
 
 
-class L2VpnForwarding::Nodes::Node::L2FibNvePeers : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibNvePeers : public ydk::Entity
 {
     public:
-        L2FibNvePeers();
-        ~L2FibNvePeers();
+        L2fibNvePeers();
+        ~L2fibNvePeers();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3788,18 +3788,18 @@ class L2VpnForwarding::Nodes::Node::L2FibNvePeers : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibNvePeer; //type: L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer
+        class L2fibNvePeer; //type: L2vpnForwarding::Nodes::Node::L2fibNvePeers::L2fibNvePeer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer> > l2fib_nve_peer;
+        ydk::YList l2fib_nve_peer;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibNvePeers
+}; // L2vpnForwarding::Nodes::Node::L2fibNvePeers
 
 
-class L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibNvePeers::L2fibNvePeer : public ydk::Entity
 {
     public:
-        L2FibNvePeer();
-        ~L2FibNvePeer();
+        L2fibNvePeer();
+        ~L2fibNvePeer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3818,14 +3818,14 @@ class L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer : public ydk::En
         ydk::YLeaf vn_iid; //type: uint32
         ydk::YLeaf vte_pip; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibNvePeers::L2FibNvePeer
+}; // L2vpnForwarding::Nodes::Node::L2fibNvePeers::L2fibNvePeer
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMmrps : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMmrps : public ydk::Entity
 {
     public:
-        L2FibMmrps();
-        ~L2FibMmrps();
+        L2fibMmrps();
+        ~L2fibMmrps();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3837,18 +3837,18 @@ class L2VpnForwarding::Nodes::Node::L2FibMmrps : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class L2FibMmrp; //type: L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp
+        class L2fibMmrp; //type: L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp> > l2fib_mmrp;
+        ydk::YList l2fib_mmrp;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMmrps
+}; // L2vpnForwarding::Nodes::Node::L2fibMmrps
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp : public ydk::Entity
 {
     public:
-        L2FibMmrp();
-        ~L2FibMmrp();
+        L2fibMmrp();
+        ~L2fibMmrp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3870,22 +3870,22 @@ class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp : public ydk::Entity
         ydk::YLeaf platform_data; //type: string
         ydk::YLeaf hardware_information; //type: string
         ydk::YLeaf bridge_domain_name; //type: string
-        class MulticastBaseInformation; //type: L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation
-        class SourcePrefix; //type: L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix
-        class DestinationPrefix; //type: L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix
-        class ForwardStats; //type: L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats
-        class IrbInfo; //type: L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo
+        class MulticastBaseInformation; //type: L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::MulticastBaseInformation
+        class SourcePrefix; //type: L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::SourcePrefix
+        class DestinationPrefix; //type: L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::DestinationPrefix
+        class ForwardStats; //type: L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats
+        class IrbInfo; //type: L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation> multicast_base_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix> source_prefix;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix> destination_prefix;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::ForwardStats> forward_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::IrbInfo> irb_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::MulticastBaseInformation> multicast_base_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::SourcePrefix> source_prefix;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::DestinationPrefix> destination_prefix;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::ForwardStats> forward_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::IrbInfo> irb_info;
         
-}; // L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp
+}; // L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::MulticastBaseInformation : public ydk::Entity
 {
     public:
         MulticastBaseInformation();
@@ -3902,10 +3902,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformat
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::MulticastBaseInformation
+}; // L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::MulticastBaseInformation
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::SourcePrefix : public ydk::Entity
 {
     public:
         SourcePrefix();
@@ -3925,10 +3925,10 @@ class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix : public
         ydk::YLeaf prefix_length; //type: uint16
         ydk::YLeaf prefix; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::SourcePrefix
+}; // L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::SourcePrefix
 
 
-class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix : public ydk::Entity
+class L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::DestinationPrefix : public ydk::Entity
 {
     public:
         DestinationPrefix();
@@ -3948,7 +3948,7 @@ class L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix : p
         ydk::YLeaf prefix_length; //type: uint16
         ydk::YLeaf prefix; //type: string
 
-}; // L2VpnForwarding::Nodes::Node::L2FibMmrps::L2FibMmrp::DestinationPrefix
+}; // L2vpnForwarding::Nodes::Node::L2fibMmrps::L2fibMmrp::DestinationPrefix
 
 
 }

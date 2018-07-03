@@ -14,6 +14,73 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_cfg {
 
 
+class MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth : public ydk::Entity
+{
+    public:
+        SignalledBandwidth();
+        ~SignalledBandwidth();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf signalled_bandwidth_type; //type: OtnSignaledBandwidth
+        ydk::YLeaf bitrate; //type: uint32
+        ydk::YLeaf od_uflex_framing_type; //type: OtnSignaledBandwidthFlexFraming
+
+}; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::SignalledBandwidth
+
+
+class MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination : public ydk::Entity
+{
+    public:
+        Destination();
+        ~Destination();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf destination; //type: string
+        ydk::YLeaf destination_type; //type: OtnDestination
+        ydk::YLeaf interface_if_index; //type: uint32
+
+}; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::Destination
+
+
+class MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching : public ydk::Entity
+{
+    public:
+        ProtectionSwitching();
+        ~ProtectionSwitching();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf lockout; //type: OtnProtectionSwitchLockout
+
+}; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::ProtectionSwitching
+
+
 class MplsTe::GmplsNni::TunnelHeads::TunnelHead::Logging : public ydk::Entity
 {
     public:
@@ -59,7 +126,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions : public ydk::Entit
 
         class PathOption; //type: MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_cfg::MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption> > path_option;
+        ydk::YList path_option;
         
 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions
 
@@ -88,6 +155,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption : publi
         ydk::YLeaf restore_by_preference_level; //type: uint32
         ydk::YLeaf xro_type; //type: empty
         ydk::YLeaf xro_attribute_set_name; //type: string
+        ydk::YLeaf affinity_attribute_set_name; //type: string
         ydk::YLeaf lockdown; //type: MplsTePathOptionProperty
 
 }; // MplsTe::GmplsNni::TunnelHeads::TunnelHead::PathOptions::PathOption
@@ -110,7 +178,7 @@ class MplsTe::GmplsNni::TunnelHeads::TunnelHead::StaticUni : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ingress_controller_name; //type: string
-        ydk::YLeaf egress_controller_if_index; //type: int32
+        ydk::YLeaf egress_controller_if_index; //type: uint32
         ydk::YLeaf ingress_type; //type: OtnStaticUni
         ydk::YLeaf egress_type; //type: OtnStaticUni
 

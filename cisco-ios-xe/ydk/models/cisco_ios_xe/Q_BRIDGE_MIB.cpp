@@ -13,22 +13,22 @@ namespace Q_BRIDGE_MIB {
 
 QBRIDGEMIB::QBRIDGEMIB()
     :
-    dot1qbase(std::make_shared<QBRIDGEMIB::Dot1Qbase>())
-	,dot1qvlan(std::make_shared<QBRIDGEMIB::Dot1Qvlan>())
-	,dot1qfdbtable(std::make_shared<QBRIDGEMIB::Dot1Qfdbtable>())
-	,dot1qtpfdbtable(std::make_shared<QBRIDGEMIB::Dot1Qtpfdbtable>())
-	,dot1qtpgrouptable(std::make_shared<QBRIDGEMIB::Dot1Qtpgrouptable>())
-	,dot1qforwardalltable(std::make_shared<QBRIDGEMIB::Dot1Qforwardalltable>())
-	,dot1qforwardunregisteredtable(std::make_shared<QBRIDGEMIB::Dot1Qforwardunregisteredtable>())
-	,dot1qstaticunicasttable(std::make_shared<QBRIDGEMIB::Dot1Qstaticunicasttable>())
-	,dot1qstaticmulticasttable(std::make_shared<QBRIDGEMIB::Dot1Qstaticmulticasttable>())
-	,dot1qvlancurrenttable(std::make_shared<QBRIDGEMIB::Dot1Qvlancurrenttable>())
-	,dot1qvlanstatictable(std::make_shared<QBRIDGEMIB::Dot1Qvlanstatictable>())
-	,dot1qportvlanstatisticstable(std::make_shared<QBRIDGEMIB::Dot1Qportvlanstatisticstable>())
-	,dot1qportvlanhcstatisticstable(std::make_shared<QBRIDGEMIB::Dot1Qportvlanhcstatisticstable>())
-	,dot1qlearningconstraintstable(std::make_shared<QBRIDGEMIB::Dot1Qlearningconstraintstable>())
-	,dot1vprotocolgrouptable(std::make_shared<QBRIDGEMIB::Dot1Vprotocolgrouptable>())
-	,dot1vprotocolporttable(std::make_shared<QBRIDGEMIB::Dot1Vprotocolporttable>())
+    dot1qbase(std::make_shared<QBRIDGEMIB::Dot1qBase>())
+    , dot1qvlan(std::make_shared<QBRIDGEMIB::Dot1qVlan>())
+    , dot1qfdbtable(std::make_shared<QBRIDGEMIB::Dot1qFdbTable>())
+    , dot1qtpfdbtable(std::make_shared<QBRIDGEMIB::Dot1qTpFdbTable>())
+    , dot1qtpgrouptable(std::make_shared<QBRIDGEMIB::Dot1qTpGroupTable>())
+    , dot1qforwardalltable(std::make_shared<QBRIDGEMIB::Dot1qForwardAllTable>())
+    , dot1qforwardunregisteredtable(std::make_shared<QBRIDGEMIB::Dot1qForwardUnregisteredTable>())
+    , dot1qstaticunicasttable(std::make_shared<QBRIDGEMIB::Dot1qStaticUnicastTable>())
+    , dot1qstaticmulticasttable(std::make_shared<QBRIDGEMIB::Dot1qStaticMulticastTable>())
+    , dot1qvlancurrenttable(std::make_shared<QBRIDGEMIB::Dot1qVlanCurrentTable>())
+    , dot1qvlanstatictable(std::make_shared<QBRIDGEMIB::Dot1qVlanStaticTable>())
+    , dot1qportvlanstatisticstable(std::make_shared<QBRIDGEMIB::Dot1qPortVlanStatisticsTable>())
+    , dot1qportvlanhcstatisticstable(std::make_shared<QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable>())
+    , dot1qlearningconstraintstable(std::make_shared<QBRIDGEMIB::Dot1qLearningConstraintsTable>())
+    , dot1vprotocolgrouptable(std::make_shared<QBRIDGEMIB::Dot1vProtocolGroupTable>())
+    , dot1vprotocolporttable(std::make_shared<QBRIDGEMIB::Dot1vProtocolPortTable>())
 {
     dot1qbase->parent = this;
     dot1qvlan->parent = this;
@@ -47,7 +47,7 @@ QBRIDGEMIB::QBRIDGEMIB()
     dot1vprotocolgrouptable->parent = this;
     dot1vprotocolporttable->parent = this;
 
-    yang_name = "Q-BRIDGE-MIB"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "Q-BRIDGE-MIB"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 QBRIDGEMIB::~QBRIDGEMIB()
@@ -56,6 +56,7 @@ QBRIDGEMIB::~QBRIDGEMIB()
 
 bool QBRIDGEMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1qbase !=  nullptr && dot1qbase->has_data())
 	|| (dot1qvlan !=  nullptr && dot1qvlan->has_data())
 	|| (dot1qfdbtable !=  nullptr && dot1qfdbtable->has_data())
@@ -117,7 +118,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qbase == nullptr)
         {
-            dot1qbase = std::make_shared<QBRIDGEMIB::Dot1Qbase>();
+            dot1qbase = std::make_shared<QBRIDGEMIB::Dot1qBase>();
         }
         return dot1qbase;
     }
@@ -126,7 +127,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qvlan == nullptr)
         {
-            dot1qvlan = std::make_shared<QBRIDGEMIB::Dot1Qvlan>();
+            dot1qvlan = std::make_shared<QBRIDGEMIB::Dot1qVlan>();
         }
         return dot1qvlan;
     }
@@ -135,7 +136,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qfdbtable == nullptr)
         {
-            dot1qfdbtable = std::make_shared<QBRIDGEMIB::Dot1Qfdbtable>();
+            dot1qfdbtable = std::make_shared<QBRIDGEMIB::Dot1qFdbTable>();
         }
         return dot1qfdbtable;
     }
@@ -144,7 +145,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qtpfdbtable == nullptr)
         {
-            dot1qtpfdbtable = std::make_shared<QBRIDGEMIB::Dot1Qtpfdbtable>();
+            dot1qtpfdbtable = std::make_shared<QBRIDGEMIB::Dot1qTpFdbTable>();
         }
         return dot1qtpfdbtable;
     }
@@ -153,7 +154,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qtpgrouptable == nullptr)
         {
-            dot1qtpgrouptable = std::make_shared<QBRIDGEMIB::Dot1Qtpgrouptable>();
+            dot1qtpgrouptable = std::make_shared<QBRIDGEMIB::Dot1qTpGroupTable>();
         }
         return dot1qtpgrouptable;
     }
@@ -162,7 +163,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qforwardalltable == nullptr)
         {
-            dot1qforwardalltable = std::make_shared<QBRIDGEMIB::Dot1Qforwardalltable>();
+            dot1qforwardalltable = std::make_shared<QBRIDGEMIB::Dot1qForwardAllTable>();
         }
         return dot1qforwardalltable;
     }
@@ -171,7 +172,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qforwardunregisteredtable == nullptr)
         {
-            dot1qforwardunregisteredtable = std::make_shared<QBRIDGEMIB::Dot1Qforwardunregisteredtable>();
+            dot1qforwardunregisteredtable = std::make_shared<QBRIDGEMIB::Dot1qForwardUnregisteredTable>();
         }
         return dot1qforwardunregisteredtable;
     }
@@ -180,7 +181,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qstaticunicasttable == nullptr)
         {
-            dot1qstaticunicasttable = std::make_shared<QBRIDGEMIB::Dot1Qstaticunicasttable>();
+            dot1qstaticunicasttable = std::make_shared<QBRIDGEMIB::Dot1qStaticUnicastTable>();
         }
         return dot1qstaticunicasttable;
     }
@@ -189,7 +190,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qstaticmulticasttable == nullptr)
         {
-            dot1qstaticmulticasttable = std::make_shared<QBRIDGEMIB::Dot1Qstaticmulticasttable>();
+            dot1qstaticmulticasttable = std::make_shared<QBRIDGEMIB::Dot1qStaticMulticastTable>();
         }
         return dot1qstaticmulticasttable;
     }
@@ -198,7 +199,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qvlancurrenttable == nullptr)
         {
-            dot1qvlancurrenttable = std::make_shared<QBRIDGEMIB::Dot1Qvlancurrenttable>();
+            dot1qvlancurrenttable = std::make_shared<QBRIDGEMIB::Dot1qVlanCurrentTable>();
         }
         return dot1qvlancurrenttable;
     }
@@ -207,7 +208,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qvlanstatictable == nullptr)
         {
-            dot1qvlanstatictable = std::make_shared<QBRIDGEMIB::Dot1Qvlanstatictable>();
+            dot1qvlanstatictable = std::make_shared<QBRIDGEMIB::Dot1qVlanStaticTable>();
         }
         return dot1qvlanstatictable;
     }
@@ -216,7 +217,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qportvlanstatisticstable == nullptr)
         {
-            dot1qportvlanstatisticstable = std::make_shared<QBRIDGEMIB::Dot1Qportvlanstatisticstable>();
+            dot1qportvlanstatisticstable = std::make_shared<QBRIDGEMIB::Dot1qPortVlanStatisticsTable>();
         }
         return dot1qportvlanstatisticstable;
     }
@@ -225,7 +226,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qportvlanhcstatisticstable == nullptr)
         {
-            dot1qportvlanhcstatisticstable = std::make_shared<QBRIDGEMIB::Dot1Qportvlanhcstatisticstable>();
+            dot1qportvlanhcstatisticstable = std::make_shared<QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable>();
         }
         return dot1qportvlanhcstatisticstable;
     }
@@ -234,7 +235,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1qlearningconstraintstable == nullptr)
         {
-            dot1qlearningconstraintstable = std::make_shared<QBRIDGEMIB::Dot1Qlearningconstraintstable>();
+            dot1qlearningconstraintstable = std::make_shared<QBRIDGEMIB::Dot1qLearningConstraintsTable>();
         }
         return dot1qlearningconstraintstable;
     }
@@ -243,7 +244,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1vprotocolgrouptable == nullptr)
         {
-            dot1vprotocolgrouptable = std::make_shared<QBRIDGEMIB::Dot1Vprotocolgrouptable>();
+            dot1vprotocolgrouptable = std::make_shared<QBRIDGEMIB::Dot1vProtocolGroupTable>();
         }
         return dot1vprotocolgrouptable;
     }
@@ -252,7 +253,7 @@ std::shared_ptr<Entity> QBRIDGEMIB::get_child_by_name(const std::string & child_
     {
         if(dot1vprotocolporttable == nullptr)
         {
-            dot1vprotocolporttable = std::make_shared<QBRIDGEMIB::Dot1Vprotocolporttable>();
+            dot1vprotocolporttable = std::make_shared<QBRIDGEMIB::Dot1vProtocolPortTable>();
         }
         return dot1vprotocolporttable;
     }
@@ -387,7 +388,7 @@ bool QBRIDGEMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-QBRIDGEMIB::Dot1Qbase::Dot1Qbase()
+QBRIDGEMIB::Dot1qBase::Dot1qBase()
     :
     dot1qvlanversionnumber{YType::enumeration, "dot1qVlanVersionNumber"},
     dot1qmaxvlanid{YType::int32, "dot1qMaxVlanId"},
@@ -396,15 +397,16 @@ QBRIDGEMIB::Dot1Qbase::Dot1Qbase()
     dot1qgvrpstatus{YType::enumeration, "dot1qGvrpStatus"}
 {
 
-    yang_name = "dot1qBase"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qBase"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qbase::~Dot1Qbase()
+QBRIDGEMIB::Dot1qBase::~Dot1qBase()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qbase::has_data() const
+bool QBRIDGEMIB::Dot1qBase::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlanversionnumber.is_set
 	|| dot1qmaxvlanid.is_set
 	|| dot1qmaxsupportedvlans.is_set
@@ -412,7 +414,7 @@ bool QBRIDGEMIB::Dot1Qbase::has_data() const
 	|| dot1qgvrpstatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qbase::has_operation() const
+bool QBRIDGEMIB::Dot1qBase::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlanversionnumber.yfilter)
@@ -422,21 +424,21 @@ bool QBRIDGEMIB::Dot1Qbase::has_operation() const
 	|| ydk::is_set(dot1qgvrpstatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qbase::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qBase::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qbase::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qBase::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qBase";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qbase::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qBase::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -450,19 +452,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qbase::get_name_l
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qbase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qBase::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qbase::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qBase::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qbase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qBase::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanVersionNumber")
     {
@@ -496,7 +498,7 @@ void QBRIDGEMIB::Dot1Qbase::set_value(const std::string & value_path, const std:
     }
 }
 
-void QBRIDGEMIB::Dot1Qbase::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qBase::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanVersionNumber")
     {
@@ -520,14 +522,14 @@ void QBRIDGEMIB::Dot1Qbase::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool QBRIDGEMIB::Dot1Qbase::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qBase::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanVersionNumber" || name == "dot1qMaxVlanId" || name == "dot1qMaxSupportedVlans" || name == "dot1qNumVlans" || name == "dot1qGvrpStatus")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qvlan::Dot1Qvlan()
+QBRIDGEMIB::Dot1qVlan::Dot1qVlan()
     :
     dot1qvlannumdeletes{YType::uint32, "dot1qVlanNumDeletes"},
     dot1qnextfreelocalvlanindex{YType::int32, "dot1qNextFreeLocalVlanIndex"},
@@ -535,22 +537,23 @@ QBRIDGEMIB::Dot1Qvlan::Dot1Qvlan()
     dot1qconstrainttypedefault{YType::enumeration, "dot1qConstraintTypeDefault"}
 {
 
-    yang_name = "dot1qVlan"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qVlan"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qvlan::~Dot1Qvlan()
+QBRIDGEMIB::Dot1qVlan::~Dot1qVlan()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qvlan::has_data() const
+bool QBRIDGEMIB::Dot1qVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlannumdeletes.is_set
 	|| dot1qnextfreelocalvlanindex.is_set
 	|| dot1qconstraintsetdefault.is_set
 	|| dot1qconstrainttypedefault.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qvlan::has_operation() const
+bool QBRIDGEMIB::Dot1qVlan::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlannumdeletes.yfilter)
@@ -559,21 +562,21 @@ bool QBRIDGEMIB::Dot1Qvlan::has_operation() const
 	|| ydk::is_set(dot1qconstrainttypedefault.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qvlan::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qVlan::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qvlan::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qVlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qVlan";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlan::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qVlan::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -586,19 +589,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlan::get_name_l
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qVlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlan::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qVlan::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qvlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qVlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanNumDeletes")
     {
@@ -626,7 +629,7 @@ void QBRIDGEMIB::Dot1Qvlan::set_value(const std::string & value_path, const std:
     }
 }
 
-void QBRIDGEMIB::Dot1Qvlan::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qVlan::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanNumDeletes")
     {
@@ -646,26 +649,29 @@ void QBRIDGEMIB::Dot1Qvlan::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool QBRIDGEMIB::Dot1Qvlan::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qVlan::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanNumDeletes" || name == "dot1qNextFreeLocalVlanIndex" || name == "dot1qConstraintSetDefault" || name == "dot1qConstraintTypeDefault")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbtable()
+QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbTable()
+    :
+    dot1qfdbentry(this, {"dot1qfdbid"})
 {
 
-    yang_name = "dot1qFdbTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qFdbTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qfdbtable::~Dot1Qfdbtable()
+QBRIDGEMIB::Dot1qFdbTable::~Dot1qFdbTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qfdbtable::has_data() const
+bool QBRIDGEMIB::Dot1qFdbTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qfdbentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qfdbentry.len(); index++)
     {
         if(dot1qfdbentry[index]->has_data())
             return true;
@@ -673,9 +679,9 @@ bool QBRIDGEMIB::Dot1Qfdbtable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qfdbtable::has_operation() const
+bool QBRIDGEMIB::Dot1qFdbTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qfdbentry.size(); index++)
+    for (std::size_t index=0; index<dot1qfdbentry.len(); index++)
     {
         if(dot1qfdbentry[index]->has_operation())
             return true;
@@ -683,21 +689,21 @@ bool QBRIDGEMIB::Dot1Qfdbtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qfdbtable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qFdbTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qfdbtable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qFdbTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qFdbTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qfdbtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qFdbTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -706,25 +712,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qfdbtable::get_na
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qfdbtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qFdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qFdbEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry>();
         c->parent = this;
-        dot1qfdbentry.push_back(c);
+        dot1qfdbentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qfdbtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qFdbTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qfdbentry)
+    for (auto c : dot1qfdbentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -735,62 +741,64 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qfdbtable::get_ch
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qfdbtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qFdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qfdbtable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qFdbTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qfdbtable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qFdbTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qFdbEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::Dot1Qfdbentry()
+QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::Dot1qFdbEntry()
     :
     dot1qfdbid{YType::uint32, "dot1qFdbId"},
     dot1qfdbdynamiccount{YType::uint32, "dot1qFdbDynamicCount"}
 {
 
-    yang_name = "dot1qFdbEntry"; yang_parent_name = "dot1qFdbTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qFdbEntry"; yang_parent_name = "dot1qFdbTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::~Dot1Qfdbentry()
+QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::~Dot1qFdbEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::has_data() const
+bool QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qfdbid.is_set
 	|| dot1qfdbdynamiccount.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::has_operation() const
+bool QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qfdbid.yfilter)
 	|| ydk::is_set(dot1qfdbdynamiccount.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qFdbTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qFdbEntry" <<"[dot1qFdbId='" <<dot1qfdbid <<"']";
+    path_buffer << "dot1qFdbEntry";
+    ADD_KEY_TOKEN(dot1qfdbid, "dot1qFdbId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -801,19 +809,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qfdbtable::Dot1Qf
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qFdbId")
     {
@@ -829,7 +837,7 @@ void QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::set_value(const std::string & val
     }
 }
 
-void QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qFdbId")
     {
@@ -841,26 +849,29 @@ void QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::set_filter(const std::string & va
     }
 }
 
-bool QBRIDGEMIB::Dot1Qfdbtable::Dot1Qfdbentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qFdbTable::Dot1qFdbEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qFdbId" || name == "dot1qFdbDynamicCount")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbtable()
+QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbTable()
+    :
+    dot1qtpfdbentry(this, {"dot1qfdbid", "dot1qtpfdbaddress"})
 {
 
-    yang_name = "dot1qTpFdbTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qTpFdbTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qtpfdbtable::~Dot1Qtpfdbtable()
+QBRIDGEMIB::Dot1qTpFdbTable::~Dot1qTpFdbTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qtpfdbtable::has_data() const
+bool QBRIDGEMIB::Dot1qTpFdbTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qtpfdbentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qtpfdbentry.len(); index++)
     {
         if(dot1qtpfdbentry[index]->has_data())
             return true;
@@ -868,9 +879,9 @@ bool QBRIDGEMIB::Dot1Qtpfdbtable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qtpfdbtable::has_operation() const
+bool QBRIDGEMIB::Dot1qTpFdbTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qtpfdbentry.size(); index++)
+    for (std::size_t index=0; index<dot1qtpfdbentry.len(); index++)
     {
         if(dot1qtpfdbentry[index]->has_operation())
             return true;
@@ -878,21 +889,21 @@ bool QBRIDGEMIB::Dot1Qtpfdbtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qtpfdbtable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qTpFdbTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qtpfdbtable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qTpFdbTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qTpFdbTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpfdbtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qTpFdbTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -901,25 +912,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpfdbtable::get_
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpfdbtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qTpFdbTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qTpFdbEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry>();
         c->parent = this;
-        dot1qtpfdbentry.push_back(c);
+        dot1qtpfdbentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpfdbtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qTpFdbTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qtpfdbentry)
+    for (auto c : dot1qtpfdbentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -930,22 +941,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpfdbtable::get_
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qtpfdbtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qTpFdbTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qtpfdbtable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qTpFdbTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qtpfdbtable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qTpFdbTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qTpFdbEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbentry()
+QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbEntry()
     :
     dot1qfdbid{YType::str, "dot1qFdbId"},
     dot1qtpfdbaddress{YType::str, "dot1qTpFdbAddress"},
@@ -953,22 +964,23 @@ QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbentry()
     dot1qtpfdbstatus{YType::enumeration, "dot1qTpFdbStatus"}
 {
 
-    yang_name = "dot1qTpFdbEntry"; yang_parent_name = "dot1qTpFdbTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qTpFdbEntry"; yang_parent_name = "dot1qTpFdbTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::~Dot1Qtpfdbentry()
+QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::~Dot1qTpFdbEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::has_data() const
+bool QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qfdbid.is_set
 	|| dot1qtpfdbaddress.is_set
 	|| dot1qtpfdbport.is_set
 	|| dot1qtpfdbstatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::has_operation() const
+bool QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qfdbid.yfilter)
@@ -977,21 +989,23 @@ bool QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::has_operation() const
 	|| ydk::is_set(dot1qtpfdbstatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qTpFdbTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qTpFdbEntry" <<"[dot1qFdbId='" <<dot1qfdbid <<"']" <<"[dot1qTpFdbAddress='" <<dot1qtpfdbaddress <<"']";
+    path_buffer << "dot1qTpFdbEntry";
+    ADD_KEY_TOKEN(dot1qfdbid, "dot1qFdbId");
+    ADD_KEY_TOKEN(dot1qtpfdbaddress, "dot1qTpFdbAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1004,19 +1018,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpfdbtable::Dot1
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qFdbId")
     {
@@ -1044,7 +1058,7 @@ void QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::set_value(const std::string &
     }
 }
 
-void QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qFdbId")
     {
@@ -1064,26 +1078,29 @@ void QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::set_filter(const std::string 
     }
 }
 
-bool QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qFdbId" || name == "dot1qTpFdbAddress" || name == "dot1qTpFdbPort" || name == "dot1qTpFdbStatus")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgrouptable()
+QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupTable()
+    :
+    dot1qtpgroupentry(this, {"dot1qvlanindex", "dot1qtpgroupaddress"})
 {
 
-    yang_name = "dot1qTpGroupTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qTpGroupTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qtpgrouptable::~Dot1Qtpgrouptable()
+QBRIDGEMIB::Dot1qTpGroupTable::~Dot1qTpGroupTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qtpgrouptable::has_data() const
+bool QBRIDGEMIB::Dot1qTpGroupTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qtpgroupentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qtpgroupentry.len(); index++)
     {
         if(dot1qtpgroupentry[index]->has_data())
             return true;
@@ -1091,9 +1108,9 @@ bool QBRIDGEMIB::Dot1Qtpgrouptable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qtpgrouptable::has_operation() const
+bool QBRIDGEMIB::Dot1qTpGroupTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qtpgroupentry.size(); index++)
+    for (std::size_t index=0; index<dot1qtpgroupentry.len(); index++)
     {
         if(dot1qtpgroupentry[index]->has_operation())
             return true;
@@ -1101,21 +1118,21 @@ bool QBRIDGEMIB::Dot1Qtpgrouptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qtpgrouptable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qTpGroupTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qtpgrouptable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qTpGroupTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qTpGroupTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpgrouptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qTpGroupTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1124,25 +1141,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpgrouptable::ge
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpgrouptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qTpGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qTpGroupEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry>();
         c->parent = this;
-        dot1qtpgroupentry.push_back(c);
+        dot1qtpgroupentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpgrouptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qTpGroupTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qtpgroupentry)
+    for (auto c : dot1qtpgroupentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1153,22 +1170,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpgrouptable::ge
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qtpgrouptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qTpGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qtpgrouptable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qTpGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qtpgrouptable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qTpGroupTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qTpGroupEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::Dot1Qtpgroupentry()
+QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::Dot1qTpGroupEntry()
     :
     dot1qvlanindex{YType::str, "dot1qVlanIndex"},
     dot1qtpgroupaddress{YType::str, "dot1qTpGroupAddress"},
@@ -1176,22 +1193,23 @@ QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::Dot1Qtpgroupentry()
     dot1qtpgrouplearnt{YType::str, "dot1qTpGroupLearnt"}
 {
 
-    yang_name = "dot1qTpGroupEntry"; yang_parent_name = "dot1qTpGroupTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qTpGroupEntry"; yang_parent_name = "dot1qTpGroupTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::~Dot1Qtpgroupentry()
+QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::~Dot1qTpGroupEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::has_data() const
+bool QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlanindex.is_set
 	|| dot1qtpgroupaddress.is_set
 	|| dot1qtpgroupegressports.is_set
 	|| dot1qtpgrouplearnt.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::has_operation() const
+bool QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlanindex.yfilter)
@@ -1200,21 +1218,23 @@ bool QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::has_operation() const
 	|| ydk::is_set(dot1qtpgrouplearnt.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qTpGroupTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qTpGroupEntry" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']" <<"[dot1qTpGroupAddress='" <<dot1qtpgroupaddress <<"']";
+    path_buffer << "dot1qTpGroupEntry";
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
+    ADD_KEY_TOKEN(dot1qtpgroupaddress, "dot1qTpGroupAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1227,19 +1247,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qtpgrouptable::Do
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -1267,7 +1287,7 @@ void QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::set_value(const std::stri
     }
 }
 
-void QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -1287,26 +1307,29 @@ void QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::set_filter(const std::str
     }
 }
 
-bool QBRIDGEMIB::Dot1Qtpgrouptable::Dot1Qtpgroupentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qTpGroupTable::Dot1qTpGroupEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanIndex" || name == "dot1qTpGroupAddress" || name == "dot1qTpGroupEgressPorts" || name == "dot1qTpGroupLearnt")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardalltable()
+QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllTable()
+    :
+    dot1qforwardallentry(this, {"dot1qvlanindex"})
 {
 
-    yang_name = "dot1qForwardAllTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qForwardAllTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qforwardalltable::~Dot1Qforwardalltable()
+QBRIDGEMIB::Dot1qForwardAllTable::~Dot1qForwardAllTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qforwardalltable::has_data() const
+bool QBRIDGEMIB::Dot1qForwardAllTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qforwardallentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qforwardallentry.len(); index++)
     {
         if(dot1qforwardallentry[index]->has_data())
             return true;
@@ -1314,9 +1337,9 @@ bool QBRIDGEMIB::Dot1Qforwardalltable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qforwardalltable::has_operation() const
+bool QBRIDGEMIB::Dot1qForwardAllTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qforwardallentry.size(); index++)
+    for (std::size_t index=0; index<dot1qforwardallentry.len(); index++)
     {
         if(dot1qforwardallentry[index]->has_operation())
             return true;
@@ -1324,21 +1347,21 @@ bool QBRIDGEMIB::Dot1Qforwardalltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardalltable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qForwardAllTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardalltable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qForwardAllTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qForwardAllTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardalltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qForwardAllTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1347,25 +1370,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardalltable:
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardalltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qForwardAllTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qForwardAllEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry>();
         c->parent = this;
-        dot1qforwardallentry.push_back(c);
+        dot1qforwardallentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardalltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qForwardAllTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qforwardallentry)
+    for (auto c : dot1qforwardallentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1376,22 +1399,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardalltable:
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qforwardalltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qForwardAllTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qforwardalltable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qForwardAllTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qforwardalltable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qForwardAllTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qForwardAllEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::Dot1Qforwardallentry()
+QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::Dot1qForwardAllEntry()
     :
     dot1qvlanindex{YType::str, "dot1qVlanIndex"},
     dot1qforwardallports{YType::str, "dot1qForwardAllPorts"},
@@ -1399,22 +1422,23 @@ QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::Dot1Qforwardallentry()
     dot1qforwardallforbiddenports{YType::str, "dot1qForwardAllForbiddenPorts"}
 {
 
-    yang_name = "dot1qForwardAllEntry"; yang_parent_name = "dot1qForwardAllTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qForwardAllEntry"; yang_parent_name = "dot1qForwardAllTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::~Dot1Qforwardallentry()
+QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::~Dot1qForwardAllEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::has_data() const
+bool QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlanindex.is_set
 	|| dot1qforwardallports.is_set
 	|| dot1qforwardallstaticports.is_set
 	|| dot1qforwardallforbiddenports.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::has_operation() const
+bool QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlanindex.yfilter)
@@ -1423,21 +1447,22 @@ bool QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::has_operation() con
 	|| ydk::is_set(dot1qforwardallforbiddenports.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qForwardAllTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qForwardAllEntry" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']";
+    path_buffer << "dot1qForwardAllEntry";
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1450,19 +1475,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardalltable:
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -1490,7 +1515,7 @@ void QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::set_value(const std
     }
 }
 
-void QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -1510,26 +1535,29 @@ void QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::set_filter(const st
     }
 }
 
-bool QBRIDGEMIB::Dot1Qforwardalltable::Dot1Qforwardallentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qForwardAllTable::Dot1qForwardAllEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanIndex" || name == "dot1qForwardAllPorts" || name == "dot1qForwardAllStaticPorts" || name == "dot1qForwardAllForbiddenPorts")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredtable()
+QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredTable()
+    :
+    dot1qforwardunregisteredentry(this, {"dot1qvlanindex"})
 {
 
-    yang_name = "dot1qForwardUnregisteredTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qForwardUnregisteredTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qforwardunregisteredtable::~Dot1Qforwardunregisteredtable()
+QBRIDGEMIB::Dot1qForwardUnregisteredTable::~Dot1qForwardUnregisteredTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::has_data() const
+bool QBRIDGEMIB::Dot1qForwardUnregisteredTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qforwardunregisteredentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qforwardunregisteredentry.len(); index++)
     {
         if(dot1qforwardunregisteredentry[index]->has_data())
             return true;
@@ -1537,9 +1565,9 @@ bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::has_operation() const
+bool QBRIDGEMIB::Dot1qForwardUnregisteredTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qforwardunregisteredentry.size(); index++)
+    for (std::size_t index=0; index<dot1qforwardunregisteredentry.len(); index++)
     {
         if(dot1qforwardunregisteredentry[index]->has_operation())
             return true;
@@ -1547,21 +1575,21 @@ bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qForwardUnregisteredTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qForwardUnregisteredTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qForwardUnregisteredTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qForwardUnregisteredTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1570,25 +1598,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardunregiste
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qForwardUnregisteredTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qForwardUnregisteredEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry>();
         c->parent = this;
-        dot1qforwardunregisteredentry.push_back(c);
+        dot1qforwardunregisteredentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardunregisteredtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qForwardUnregisteredTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qforwardunregisteredentry)
+    for (auto c : dot1qforwardunregisteredentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1599,22 +1627,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardunregiste
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qforwardunregisteredtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qForwardUnregisteredTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qforwardunregisteredtable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qForwardUnregisteredTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qForwardUnregisteredTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qForwardUnregisteredEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::Dot1Qforwardunregisteredentry()
+QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::Dot1qForwardUnregisteredEntry()
     :
     dot1qvlanindex{YType::str, "dot1qVlanIndex"},
     dot1qforwardunregisteredports{YType::str, "dot1qForwardUnregisteredPorts"},
@@ -1622,22 +1650,23 @@ QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::Dot1Qf
     dot1qforwardunregisteredforbiddenports{YType::str, "dot1qForwardUnregisteredForbiddenPorts"}
 {
 
-    yang_name = "dot1qForwardUnregisteredEntry"; yang_parent_name = "dot1qForwardUnregisteredTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qForwardUnregisteredEntry"; yang_parent_name = "dot1qForwardUnregisteredTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::~Dot1Qforwardunregisteredentry()
+QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::~Dot1qForwardUnregisteredEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::has_data() const
+bool QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlanindex.is_set
 	|| dot1qforwardunregisteredports.is_set
 	|| dot1qforwardunregisteredstaticports.is_set
 	|| dot1qforwardunregisteredforbiddenports.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::has_operation() const
+bool QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlanindex.yfilter)
@@ -1646,21 +1675,22 @@ bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::h
 	|| ydk::is_set(dot1qforwardunregisteredforbiddenports.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qForwardUnregisteredTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qForwardUnregisteredEntry" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']";
+    path_buffer << "dot1qForwardUnregisteredEntry";
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1673,19 +1703,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qforwardunregiste
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -1713,7 +1743,7 @@ void QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::s
     }
 }
 
-void QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -1733,26 +1763,29 @@ void QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::s
     }
 }
 
-bool QBRIDGEMIB::Dot1Qforwardunregisteredtable::Dot1Qforwardunregisteredentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qForwardUnregisteredTable::Dot1qForwardUnregisteredEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanIndex" || name == "dot1qForwardUnregisteredPorts" || name == "dot1qForwardUnregisteredStaticPorts" || name == "dot1qForwardUnregisteredForbiddenPorts")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicasttable()
+QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastTable()
+    :
+    dot1qstaticunicastentry(this, {"dot1qfdbid", "dot1qstaticunicastaddress", "dot1qstaticunicastreceiveport"})
 {
 
-    yang_name = "dot1qStaticUnicastTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qStaticUnicastTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qstaticunicasttable::~Dot1Qstaticunicasttable()
+QBRIDGEMIB::Dot1qStaticUnicastTable::~Dot1qStaticUnicastTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qstaticunicasttable::has_data() const
+bool QBRIDGEMIB::Dot1qStaticUnicastTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qstaticunicastentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qstaticunicastentry.len(); index++)
     {
         if(dot1qstaticunicastentry[index]->has_data())
             return true;
@@ -1760,9 +1793,9 @@ bool QBRIDGEMIB::Dot1Qstaticunicasttable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qstaticunicasttable::has_operation() const
+bool QBRIDGEMIB::Dot1qStaticUnicastTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qstaticunicastentry.size(); index++)
+    for (std::size_t index=0; index<dot1qstaticunicastentry.len(); index++)
     {
         if(dot1qstaticunicastentry[index]->has_operation())
             return true;
@@ -1770,21 +1803,21 @@ bool QBRIDGEMIB::Dot1Qstaticunicasttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticunicasttable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qStaticUnicastTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticunicasttable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qStaticUnicastTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qStaticUnicastTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticunicasttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qStaticUnicastTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1793,25 +1826,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticunicasttab
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticunicasttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qStaticUnicastTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qStaticUnicastEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry>();
         c->parent = this;
-        dot1qstaticunicastentry.push_back(c);
+        dot1qstaticunicastentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticunicasttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qStaticUnicastTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qstaticunicastentry)
+    for (auto c : dot1qstaticunicastentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1822,22 +1855,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticunicasttab
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qstaticunicasttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qStaticUnicastTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qstaticunicasttable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qStaticUnicastTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qstaticunicasttable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qStaticUnicastTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qStaticUnicastEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicastentry()
+QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastEntry()
     :
     dot1qfdbid{YType::str, "dot1qFdbId"},
     dot1qstaticunicastaddress{YType::str, "dot1qStaticUnicastAddress"},
@@ -1846,15 +1879,16 @@ QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicast
     dot1qstaticunicaststatus{YType::enumeration, "dot1qStaticUnicastStatus"}
 {
 
-    yang_name = "dot1qStaticUnicastEntry"; yang_parent_name = "dot1qStaticUnicastTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qStaticUnicastEntry"; yang_parent_name = "dot1qStaticUnicastTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::~Dot1Qstaticunicastentry()
+QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::~Dot1qStaticUnicastEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::has_data() const
+bool QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qfdbid.is_set
 	|| dot1qstaticunicastaddress.is_set
 	|| dot1qstaticunicastreceiveport.is_set
@@ -1862,7 +1896,7 @@ bool QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::has_data() co
 	|| dot1qstaticunicaststatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::has_operation() const
+bool QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qfdbid.yfilter)
@@ -1872,21 +1906,24 @@ bool QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::has_operation
 	|| ydk::is_set(dot1qstaticunicaststatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qStaticUnicastTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qStaticUnicastEntry" <<"[dot1qFdbId='" <<dot1qfdbid <<"']" <<"[dot1qStaticUnicastAddress='" <<dot1qstaticunicastaddress <<"']" <<"[dot1qStaticUnicastReceivePort='" <<dot1qstaticunicastreceiveport <<"']";
+    path_buffer << "dot1qStaticUnicastEntry";
+    ADD_KEY_TOKEN(dot1qfdbid, "dot1qFdbId");
+    ADD_KEY_TOKEN(dot1qstaticunicastaddress, "dot1qStaticUnicastAddress");
+    ADD_KEY_TOKEN(dot1qstaticunicastreceiveport, "dot1qStaticUnicastReceivePort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1900,19 +1937,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticunicasttab
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qFdbId")
     {
@@ -1946,7 +1983,7 @@ void QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::set_value(con
     }
 }
 
-void QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qFdbId")
     {
@@ -1970,26 +2007,29 @@ void QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::set_filter(co
     }
 }
 
-bool QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qFdbId" || name == "dot1qStaticUnicastAddress" || name == "dot1qStaticUnicastReceivePort" || name == "dot1qStaticUnicastAllowedToGoTo" || name == "dot1qStaticUnicastStatus")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticasttable()
+QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastTable()
+    :
+    dot1qstaticmulticastentry(this, {"dot1qvlanindex", "dot1qstaticmulticastaddress", "dot1qstaticmulticastreceiveport"})
 {
 
-    yang_name = "dot1qStaticMulticastTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qStaticMulticastTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qstaticmulticasttable::~Dot1Qstaticmulticasttable()
+QBRIDGEMIB::Dot1qStaticMulticastTable::~Dot1qStaticMulticastTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qstaticmulticasttable::has_data() const
+bool QBRIDGEMIB::Dot1qStaticMulticastTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qstaticmulticastentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qstaticmulticastentry.len(); index++)
     {
         if(dot1qstaticmulticastentry[index]->has_data())
             return true;
@@ -1997,9 +2037,9 @@ bool QBRIDGEMIB::Dot1Qstaticmulticasttable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qstaticmulticasttable::has_operation() const
+bool QBRIDGEMIB::Dot1qStaticMulticastTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qstaticmulticastentry.size(); index++)
+    for (std::size_t index=0; index<dot1qstaticmulticastentry.len(); index++)
     {
         if(dot1qstaticmulticastentry[index]->has_operation())
             return true;
@@ -2007,21 +2047,21 @@ bool QBRIDGEMIB::Dot1Qstaticmulticasttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticmulticasttable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qStaticMulticastTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticmulticasttable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qStaticMulticastTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qStaticMulticastTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticmulticasttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qStaticMulticastTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2030,25 +2070,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticmulticastt
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticmulticasttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qStaticMulticastTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qStaticMulticastEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry>();
         c->parent = this;
-        dot1qstaticmulticastentry.push_back(c);
+        dot1qstaticmulticastentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticmulticasttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qStaticMulticastTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qstaticmulticastentry)
+    for (auto c : dot1qstaticmulticastentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2059,22 +2099,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticmulticastt
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qstaticmulticasttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qStaticMulticastTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qstaticmulticasttable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qStaticMulticastTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qstaticmulticasttable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qStaticMulticastTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qStaticMulticastEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmulticastentry()
+QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastEntry()
     :
     dot1qvlanindex{YType::str, "dot1qVlanIndex"},
     dot1qstaticmulticastaddress{YType::str, "dot1qStaticMulticastAddress"},
@@ -2084,15 +2124,16 @@ QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmul
     dot1qstaticmulticaststatus{YType::enumeration, "dot1qStaticMulticastStatus"}
 {
 
-    yang_name = "dot1qStaticMulticastEntry"; yang_parent_name = "dot1qStaticMulticastTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qStaticMulticastEntry"; yang_parent_name = "dot1qStaticMulticastTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::~Dot1Qstaticmulticastentry()
+QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::~Dot1qStaticMulticastEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::has_data() const
+bool QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlanindex.is_set
 	|| dot1qstaticmulticastaddress.is_set
 	|| dot1qstaticmulticastreceiveport.is_set
@@ -2101,7 +2142,7 @@ bool QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::has_data(
 	|| dot1qstaticmulticaststatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::has_operation() const
+bool QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlanindex.yfilter)
@@ -2112,21 +2153,24 @@ bool QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::has_opera
 	|| ydk::is_set(dot1qstaticmulticaststatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qStaticMulticastTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qStaticMulticastEntry" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']" <<"[dot1qStaticMulticastAddress='" <<dot1qstaticmulticastaddress <<"']" <<"[dot1qStaticMulticastReceivePort='" <<dot1qstaticmulticastreceiveport <<"']";
+    path_buffer << "dot1qStaticMulticastEntry";
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
+    ADD_KEY_TOKEN(dot1qstaticmulticastaddress, "dot1qStaticMulticastAddress");
+    ADD_KEY_TOKEN(dot1qstaticmulticastreceiveport, "dot1qStaticMulticastReceivePort");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2141,19 +2185,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qstaticmulticastt
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -2193,7 +2237,7 @@ void QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::set_value
     }
 }
 
-void QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -2221,26 +2265,29 @@ void QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::set_filte
     }
 }
 
-bool QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanIndex" || name == "dot1qStaticMulticastAddress" || name == "dot1qStaticMulticastReceivePort" || name == "dot1qStaticMulticastStaticEgressPorts" || name == "dot1qStaticMulticastForbiddenEgressPorts" || name == "dot1qStaticMulticastStatus")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrenttable()
+QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentTable()
+    :
+    dot1qvlancurrententry(this, {"dot1qvlantimemark", "dot1qvlanindex"})
 {
 
-    yang_name = "dot1qVlanCurrentTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qVlanCurrentTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qvlancurrenttable::~Dot1Qvlancurrenttable()
+QBRIDGEMIB::Dot1qVlanCurrentTable::~Dot1qVlanCurrentTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qvlancurrenttable::has_data() const
+bool QBRIDGEMIB::Dot1qVlanCurrentTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qvlancurrententry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qvlancurrententry.len(); index++)
     {
         if(dot1qvlancurrententry[index]->has_data())
             return true;
@@ -2248,9 +2295,9 @@ bool QBRIDGEMIB::Dot1Qvlancurrenttable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qvlancurrenttable::has_operation() const
+bool QBRIDGEMIB::Dot1qVlanCurrentTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qvlancurrententry.size(); index++)
+    for (std::size_t index=0; index<dot1qvlancurrententry.len(); index++)
     {
         if(dot1qvlancurrententry[index]->has_operation())
             return true;
@@ -2258,21 +2305,21 @@ bool QBRIDGEMIB::Dot1Qvlancurrenttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qvlancurrenttable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qVlanCurrentTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qvlancurrenttable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qVlanCurrentTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qVlanCurrentTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlancurrenttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qVlanCurrentTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2281,25 +2328,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlancurrenttable
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlancurrenttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qVlanCurrentTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qVlanCurrentEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry>();
         c->parent = this;
-        dot1qvlancurrententry.push_back(c);
+        dot1qvlancurrententry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlancurrenttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qVlanCurrentTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qvlancurrententry)
+    for (auto c : dot1qvlancurrententry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2310,22 +2357,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlancurrenttable
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qvlancurrenttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qVlanCurrentTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qvlancurrenttable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qVlanCurrentTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qvlancurrenttable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qVlanCurrentTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanCurrentEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::Dot1Qvlancurrententry()
+QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::Dot1qVlanCurrentEntry()
     :
     dot1qvlantimemark{YType::uint32, "dot1qVlanTimeMark"},
     dot1qvlanindex{YType::uint32, "dot1qVlanIndex"},
@@ -2336,15 +2383,16 @@ QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::Dot1Qvlancurrententry(
     dot1qvlancreationtime{YType::uint32, "dot1qVlanCreationTime"}
 {
 
-    yang_name = "dot1qVlanCurrentEntry"; yang_parent_name = "dot1qVlanCurrentTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qVlanCurrentEntry"; yang_parent_name = "dot1qVlanCurrentTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::~Dot1Qvlancurrententry()
+QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::~Dot1qVlanCurrentEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::has_data() const
+bool QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlantimemark.is_set
 	|| dot1qvlanindex.is_set
 	|| dot1qvlanfdbid.is_set
@@ -2354,7 +2402,7 @@ bool QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::has_data() const
 	|| dot1qvlancreationtime.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::has_operation() const
+bool QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlantimemark.yfilter)
@@ -2366,21 +2414,23 @@ bool QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::has_operation() c
 	|| ydk::is_set(dot1qvlancreationtime.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qVlanCurrentTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qVlanCurrentEntry" <<"[dot1qVlanTimeMark='" <<dot1qvlantimemark <<"']" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']";
+    path_buffer << "dot1qVlanCurrentEntry";
+    ADD_KEY_TOKEN(dot1qvlantimemark, "dot1qVlanTimeMark");
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2396,19 +2446,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlancurrenttable
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanTimeMark")
     {
@@ -2454,7 +2504,7 @@ void QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::set_value(const s
     }
 }
 
-void QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanTimeMark")
     {
@@ -2486,26 +2536,29 @@ void QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::set_filter(const 
     }
 }
 
-bool QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanTimeMark" || name == "dot1qVlanIndex" || name == "dot1qVlanFdbId" || name == "dot1qVlanCurrentEgressPorts" || name == "dot1qVlanCurrentUntaggedPorts" || name == "dot1qVlanStatus" || name == "dot1qVlanCreationTime")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstatictable()
+QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticTable()
+    :
+    dot1qvlanstaticentry(this, {"dot1qvlanindex"})
 {
 
-    yang_name = "dot1qVlanStaticTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qVlanStaticTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qvlanstatictable::~Dot1Qvlanstatictable()
+QBRIDGEMIB::Dot1qVlanStaticTable::~Dot1qVlanStaticTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qvlanstatictable::has_data() const
+bool QBRIDGEMIB::Dot1qVlanStaticTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qvlanstaticentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qvlanstaticentry.len(); index++)
     {
         if(dot1qvlanstaticentry[index]->has_data())
             return true;
@@ -2513,9 +2566,9 @@ bool QBRIDGEMIB::Dot1Qvlanstatictable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qvlanstatictable::has_operation() const
+bool QBRIDGEMIB::Dot1qVlanStaticTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qvlanstaticentry.size(); index++)
+    for (std::size_t index=0; index<dot1qvlanstaticentry.len(); index++)
     {
         if(dot1qvlanstaticentry[index]->has_operation())
             return true;
@@ -2523,21 +2576,21 @@ bool QBRIDGEMIB::Dot1Qvlanstatictable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qvlanstatictable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qVlanStaticTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qvlanstatictable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qVlanStaticTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qVlanStaticTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlanstatictable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qVlanStaticTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2546,25 +2599,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlanstatictable:
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlanstatictable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qVlanStaticTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qVlanStaticEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry>();
         c->parent = this;
-        dot1qvlanstaticentry.push_back(c);
+        dot1qvlanstaticentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlanstatictable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qVlanStaticTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qvlanstaticentry)
+    for (auto c : dot1qvlanstaticentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2575,22 +2628,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlanstatictable:
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qvlanstatictable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qVlanStaticTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qvlanstatictable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qVlanStaticTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qvlanstatictable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qVlanStaticTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanStaticEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::Dot1Qvlanstaticentry()
+QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::Dot1qVlanStaticEntry()
     :
     dot1qvlanindex{YType::str, "dot1qVlanIndex"},
     dot1qvlanstaticname{YType::str, "dot1qVlanStaticName"},
@@ -2600,15 +2653,16 @@ QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::Dot1Qvlanstaticentry()
     dot1qvlanstaticrowstatus{YType::enumeration, "dot1qVlanStaticRowStatus"}
 {
 
-    yang_name = "dot1qVlanStaticEntry"; yang_parent_name = "dot1qVlanStaticTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qVlanStaticEntry"; yang_parent_name = "dot1qVlanStaticTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::~Dot1Qvlanstaticentry()
+QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::~Dot1qVlanStaticEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::has_data() const
+bool QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qvlanindex.is_set
 	|| dot1qvlanstaticname.is_set
 	|| dot1qvlanstaticegressports.is_set
@@ -2617,7 +2671,7 @@ bool QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::has_data() const
 	|| dot1qvlanstaticrowstatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::has_operation() const
+bool QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qvlanindex.yfilter)
@@ -2628,21 +2682,22 @@ bool QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::has_operation() con
 	|| ydk::is_set(dot1qvlanstaticrowstatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qVlanStaticTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qVlanStaticEntry" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']";
+    path_buffer << "dot1qVlanStaticEntry";
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2657,19 +2712,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qvlanstatictable:
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -2709,7 +2764,7 @@ void QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::set_value(const std
     }
 }
 
-void QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qVlanIndex")
     {
@@ -2737,26 +2792,29 @@ void QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::set_filter(const st
     }
 }
 
-bool QBRIDGEMIB::Dot1Qvlanstatictable::Dot1Qvlanstaticentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qVlanStaticTable::Dot1qVlanStaticEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qVlanIndex" || name == "dot1qVlanStaticName" || name == "dot1qVlanStaticEgressPorts" || name == "dot1qVlanForbiddenEgressPorts" || name == "dot1qVlanStaticUntaggedPorts" || name == "dot1qVlanStaticRowStatus")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticstable()
+QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsTable()
+    :
+    dot1qportvlanstatisticsentry(this, {"dot1dbaseport", "dot1qvlanindex"})
 {
 
-    yang_name = "dot1qPortVlanStatisticsTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qPortVlanStatisticsTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qportvlanstatisticstable::~Dot1Qportvlanstatisticstable()
+QBRIDGEMIB::Dot1qPortVlanStatisticsTable::~Dot1qPortVlanStatisticsTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::has_data() const
+bool QBRIDGEMIB::Dot1qPortVlanStatisticsTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qportvlanstatisticsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qportvlanstatisticsentry.len(); index++)
     {
         if(dot1qportvlanstatisticsentry[index]->has_data())
             return true;
@@ -2764,9 +2822,9 @@ bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::has_operation() const
+bool QBRIDGEMIB::Dot1qPortVlanStatisticsTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qportvlanstatisticsentry.size(); index++)
+    for (std::size_t index=0; index<dot1qportvlanstatisticsentry.len(); index++)
     {
         if(dot1qportvlanstatisticsentry[index]->has_operation())
             return true;
@@ -2774,21 +2832,21 @@ bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanStatisticsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanStatisticsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qPortVlanStatisticsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qPortVlanStatisticsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2797,25 +2855,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanstatisti
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qPortVlanStatisticsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qPortVlanStatisticsEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry>();
         c->parent = this;
-        dot1qportvlanstatisticsentry.push_back(c);
+        dot1qportvlanstatisticsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanstatisticstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qPortVlanStatisticsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qportvlanstatisticsentry)
+    for (auto c : dot1qportvlanstatisticsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2826,22 +2884,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanstatisti
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qportvlanstatisticstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qPortVlanStatisticsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qportvlanstatisticstable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qPortVlanStatisticsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qPortVlanStatisticsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qPortVlanStatisticsEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::Dot1Qportvlanstatisticsentry()
+QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::Dot1qPortVlanStatisticsEntry()
     :
     dot1dbaseport{YType::str, "dot1dBasePort"},
     dot1qvlanindex{YType::str, "dot1qVlanIndex"},
@@ -2853,15 +2911,16 @@ QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::Dot1Qpor
     dot1qtpvlanportinoverflowdiscards{YType::uint32, "dot1qTpVlanPortInOverflowDiscards"}
 {
 
-    yang_name = "dot1qPortVlanStatisticsEntry"; yang_parent_name = "dot1qPortVlanStatisticsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qPortVlanStatisticsEntry"; yang_parent_name = "dot1qPortVlanStatisticsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::~Dot1Qportvlanstatisticsentry()
+QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::~Dot1qPortVlanStatisticsEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::has_data() const
+bool QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dbaseport.is_set
 	|| dot1qvlanindex.is_set
 	|| dot1qtpvlanportinframes.is_set
@@ -2872,7 +2931,7 @@ bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::has
 	|| dot1qtpvlanportinoverflowdiscards.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::has_operation() const
+bool QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dbaseport.yfilter)
@@ -2885,21 +2944,23 @@ bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::has
 	|| ydk::is_set(dot1qtpvlanportinoverflowdiscards.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qPortVlanStatisticsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qPortVlanStatisticsEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']";
+    path_buffer << "dot1qPortVlanStatisticsEntry";
+    ADD_KEY_TOKEN(dot1dbaseport, "dot1dBasePort");
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2916,19 +2977,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanstatisti
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -2980,7 +3041,7 @@ void QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::set
     }
 }
 
-void QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -3016,26 +3077,29 @@ void QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::set
     }
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanstatisticstable::Dot1Qportvlanstatisticsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qPortVlanStatisticsTable::Dot1qPortVlanStatisticsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dBasePort" || name == "dot1qVlanIndex" || name == "dot1qTpVlanPortInFrames" || name == "dot1qTpVlanPortOutFrames" || name == "dot1qTpVlanPortInDiscards" || name == "dot1qTpVlanPortInOverflowFrames" || name == "dot1qTpVlanPortOutOverflowFrames" || name == "dot1qTpVlanPortInOverflowDiscards")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticstable()
+QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsTable()
+    :
+    dot1qportvlanhcstatisticsentry(this, {"dot1dbaseport", "dot1qvlanindex"})
 {
 
-    yang_name = "dot1qPortVlanHCStatisticsTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qPortVlanHCStatisticsTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::~Dot1Qportvlanhcstatisticstable()
+QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::~Dot1qPortVlanHCStatisticsTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::has_data() const
+bool QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qportvlanhcstatisticsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qportvlanhcstatisticsentry.len(); index++)
     {
         if(dot1qportvlanhcstatisticsentry[index]->has_data())
             return true;
@@ -3043,9 +3107,9 @@ bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::has_operation() const
+bool QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qportvlanhcstatisticsentry.size(); index++)
+    for (std::size_t index=0; index<dot1qportvlanhcstatisticsentry.len(); index++)
     {
         if(dot1qportvlanhcstatisticsentry[index]->has_operation())
             return true;
@@ -3053,21 +3117,21 @@ bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qPortVlanHCStatisticsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3076,25 +3140,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanhcstatis
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qPortVlanHCStatisticsEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry>();
         c->parent = this;
-        dot1qportvlanhcstatisticsentry.push_back(c);
+        dot1qportvlanhcstatisticsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qportvlanhcstatisticsentry)
+    for (auto c : dot1qportvlanhcstatisticsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3105,22 +3169,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanhcstatis
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qPortVlanHCStatisticsEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::Dot1Qportvlanhcstatisticsentry()
+QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::Dot1qPortVlanHCStatisticsEntry()
     :
     dot1dbaseport{YType::str, "dot1dBasePort"},
     dot1qvlanindex{YType::str, "dot1qVlanIndex"},
@@ -3129,15 +3193,16 @@ QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::Dot1
     dot1qtpvlanporthcindiscards{YType::uint64, "dot1qTpVlanPortHCInDiscards"}
 {
 
-    yang_name = "dot1qPortVlanHCStatisticsEntry"; yang_parent_name = "dot1qPortVlanHCStatisticsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qPortVlanHCStatisticsEntry"; yang_parent_name = "dot1qPortVlanHCStatisticsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::~Dot1Qportvlanhcstatisticsentry()
+QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::~Dot1qPortVlanHCStatisticsEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::has_data() const
+bool QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dbaseport.is_set
 	|| dot1qvlanindex.is_set
 	|| dot1qtpvlanporthcinframes.is_set
@@ -3145,7 +3210,7 @@ bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry:
 	|| dot1qtpvlanporthcindiscards.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::has_operation() const
+bool QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dbaseport.yfilter)
@@ -3155,21 +3220,23 @@ bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry:
 	|| ydk::is_set(dot1qtpvlanporthcindiscards.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qPortVlanHCStatisticsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qPortVlanHCStatisticsEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1qVlanIndex='" <<dot1qvlanindex <<"']";
+    path_buffer << "dot1qPortVlanHCStatisticsEntry";
+    ADD_KEY_TOKEN(dot1dbaseport, "dot1dBasePort");
+    ADD_KEY_TOKEN(dot1qvlanindex, "dot1qVlanIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3183,19 +3250,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qportvlanhcstatis
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -3229,7 +3296,7 @@ void QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry:
     }
 }
 
-void QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -3253,26 +3320,29 @@ void QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry:
     }
 }
 
-bool QBRIDGEMIB::Dot1Qportvlanhcstatisticstable::Dot1Qportvlanhcstatisticsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qPortVlanHCStatisticsTable::Dot1qPortVlanHCStatisticsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dBasePort" || name == "dot1qVlanIndex" || name == "dot1qTpVlanPortHCInFrames" || name == "dot1qTpVlanPortHCOutFrames" || name == "dot1qTpVlanPortHCInDiscards")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintstable()
+QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsTable()
+    :
+    dot1qlearningconstraintsentry(this, {"dot1qconstraintvlan", "dot1qconstraintset"})
 {
 
-    yang_name = "dot1qLearningConstraintsTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qLearningConstraintsTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qlearningconstraintstable::~Dot1Qlearningconstraintstable()
+QBRIDGEMIB::Dot1qLearningConstraintsTable::~Dot1qLearningConstraintsTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qlearningconstraintstable::has_data() const
+bool QBRIDGEMIB::Dot1qLearningConstraintsTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1qlearningconstraintsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1qlearningconstraintsentry.len(); index++)
     {
         if(dot1qlearningconstraintsentry[index]->has_data())
             return true;
@@ -3280,9 +3350,9 @@ bool QBRIDGEMIB::Dot1Qlearningconstraintstable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Qlearningconstraintstable::has_operation() const
+bool QBRIDGEMIB::Dot1qLearningConstraintsTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1qlearningconstraintsentry.size(); index++)
+    for (std::size_t index=0; index<dot1qlearningconstraintsentry.len(); index++)
     {
         if(dot1qlearningconstraintsentry[index]->has_operation())
             return true;
@@ -3290,21 +3360,21 @@ bool QBRIDGEMIB::Dot1Qlearningconstraintstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qlearningconstraintstable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qLearningConstraintsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qlearningconstraintstable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qLearningConstraintsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1qLearningConstraintsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qlearningconstraintstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qLearningConstraintsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3313,25 +3383,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qlearningconstrai
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qlearningconstraintstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qLearningConstraintsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1qLearningConstraintsEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry>();
         c->parent = this;
-        dot1qlearningconstraintsentry.push_back(c);
+        dot1qlearningconstraintsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qlearningconstraintstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qLearningConstraintsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1qlearningconstraintsentry)
+    for (auto c : dot1qlearningconstraintsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3342,22 +3412,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qlearningconstrai
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qlearningconstraintstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qLearningConstraintsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Qlearningconstraintstable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qLearningConstraintsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Qlearningconstraintstable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qLearningConstraintsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qLearningConstraintsEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::Dot1Qlearningconstraintsentry()
+QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::Dot1qLearningConstraintsEntry()
     :
     dot1qconstraintvlan{YType::uint32, "dot1qConstraintVlan"},
     dot1qconstraintset{YType::int32, "dot1qConstraintSet"},
@@ -3365,22 +3435,23 @@ QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::Dot1Ql
     dot1qconstraintstatus{YType::enumeration, "dot1qConstraintStatus"}
 {
 
-    yang_name = "dot1qLearningConstraintsEntry"; yang_parent_name = "dot1qLearningConstraintsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1qLearningConstraintsEntry"; yang_parent_name = "dot1qLearningConstraintsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::~Dot1Qlearningconstraintsentry()
+QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::~Dot1qLearningConstraintsEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::has_data() const
+bool QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1qconstraintvlan.is_set
 	|| dot1qconstraintset.is_set
 	|| dot1qconstrainttype.is_set
 	|| dot1qconstraintstatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::has_operation() const
+bool QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1qconstraintvlan.yfilter)
@@ -3389,21 +3460,23 @@ bool QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::h
 	|| ydk::is_set(dot1qconstraintstatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1qLearningConstraintsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1qLearningConstraintsEntry" <<"[dot1qConstraintVlan='" <<dot1qconstraintvlan <<"']" <<"[dot1qConstraintSet='" <<dot1qconstraintset <<"']";
+    path_buffer << "dot1qLearningConstraintsEntry";
+    ADD_KEY_TOKEN(dot1qconstraintvlan, "dot1qConstraintVlan");
+    ADD_KEY_TOKEN(dot1qconstraintset, "dot1qConstraintSet");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3416,19 +3489,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Qlearningconstrai
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1qConstraintVlan")
     {
@@ -3456,7 +3529,7 @@ void QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::s
     }
 }
 
-void QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1qConstraintVlan")
     {
@@ -3476,26 +3549,29 @@ void QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::s
     }
 }
 
-bool QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1qConstraintVlan" || name == "dot1qConstraintSet" || name == "dot1qConstraintType" || name == "dot1qConstraintStatus")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgrouptable()
+QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupTable()
+    :
+    dot1vprotocolgroupentry(this, {"dot1vprotocoltemplateframetype", "dot1vprotocoltemplateprotocolvalue"})
 {
 
-    yang_name = "dot1vProtocolGroupTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1vProtocolGroupTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Vprotocolgrouptable::~Dot1Vprotocolgrouptable()
+QBRIDGEMIB::Dot1vProtocolGroupTable::~Dot1vProtocolGroupTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolgrouptable::has_data() const
+bool QBRIDGEMIB::Dot1vProtocolGroupTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1vprotocolgroupentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1vprotocolgroupentry.len(); index++)
     {
         if(dot1vprotocolgroupentry[index]->has_data())
             return true;
@@ -3503,9 +3579,9 @@ bool QBRIDGEMIB::Dot1Vprotocolgrouptable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolgrouptable::has_operation() const
+bool QBRIDGEMIB::Dot1vProtocolGroupTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1vprotocolgroupentry.size(); index++)
+    for (std::size_t index=0; index<dot1vprotocolgroupentry.len(); index++)
     {
         if(dot1vprotocolgroupentry[index]->has_operation())
             return true;
@@ -3513,21 +3589,21 @@ bool QBRIDGEMIB::Dot1Vprotocolgrouptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolgrouptable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1vProtocolGroupTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolgrouptable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1vProtocolGroupTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1vProtocolGroupTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolgrouptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1vProtocolGroupTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3536,25 +3612,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolgrouptab
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolgrouptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1vProtocolGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1vProtocolGroupEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry>();
         c->parent = this;
-        dot1vprotocolgroupentry.push_back(c);
+        dot1vprotocolgroupentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolgrouptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1vProtocolGroupTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1vprotocolgroupentry)
+    for (auto c : dot1vprotocolgroupentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3565,22 +3641,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolgrouptab
     return children;
 }
 
-void QBRIDGEMIB::Dot1Vprotocolgrouptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1vProtocolGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Vprotocolgrouptable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1vProtocolGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolgrouptable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1vProtocolGroupTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1vProtocolGroupEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocolgroupentry()
+QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolGroupEntry()
     :
     dot1vprotocoltemplateframetype{YType::enumeration, "dot1vProtocolTemplateFrameType"},
     dot1vprotocoltemplateprotocolvalue{YType::str, "dot1vProtocolTemplateProtocolValue"},
@@ -3588,22 +3664,23 @@ QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocolgroup
     dot1vprotocolgrouprowstatus{YType::enumeration, "dot1vProtocolGroupRowStatus"}
 {
 
-    yang_name = "dot1vProtocolGroupEntry"; yang_parent_name = "dot1vProtocolGroupTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1vProtocolGroupEntry"; yang_parent_name = "dot1vProtocolGroupTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::~Dot1Vprotocolgroupentry()
+QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::~Dot1vProtocolGroupEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::has_data() const
+bool QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1vprotocoltemplateframetype.is_set
 	|| dot1vprotocoltemplateprotocolvalue.is_set
 	|| dot1vprotocolgroupid.is_set
 	|| dot1vprotocolgrouprowstatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::has_operation() const
+bool QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1vprotocoltemplateframetype.yfilter)
@@ -3612,21 +3689,23 @@ bool QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::has_operation
 	|| ydk::is_set(dot1vprotocolgrouprowstatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1vProtocolGroupTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1vProtocolGroupEntry" <<"[dot1vProtocolTemplateFrameType='" <<dot1vprotocoltemplateframetype <<"']" <<"[dot1vProtocolTemplateProtocolValue='" <<dot1vprotocoltemplateprotocolvalue <<"']";
+    path_buffer << "dot1vProtocolGroupEntry";
+    ADD_KEY_TOKEN(dot1vprotocoltemplateframetype, "dot1vProtocolTemplateFrameType");
+    ADD_KEY_TOKEN(dot1vprotocoltemplateprotocolvalue, "dot1vProtocolTemplateProtocolValue");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3639,19 +3718,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolgrouptab
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1vProtocolTemplateFrameType")
     {
@@ -3679,7 +3758,7 @@ void QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::set_value(con
     }
 }
 
-void QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1vProtocolTemplateFrameType")
     {
@@ -3699,26 +3778,29 @@ void QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::set_filter(co
     }
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1vProtocolTemplateFrameType" || name == "dot1vProtocolTemplateProtocolValue" || name == "dot1vProtocolGroupId" || name == "dot1vProtocolGroupRowStatus")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolporttable()
+QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortTable()
+    :
+    dot1vprotocolportentry(this, {"dot1dbaseport", "dot1vprotocolportgroupid"})
 {
 
-    yang_name = "dot1vProtocolPortTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1vProtocolPortTable"; yang_parent_name = "Q-BRIDGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Vprotocolporttable::~Dot1Vprotocolporttable()
+QBRIDGEMIB::Dot1vProtocolPortTable::~Dot1vProtocolPortTable()
 {
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolporttable::has_data() const
+bool QBRIDGEMIB::Dot1vProtocolPortTable::has_data() const
 {
-    for (std::size_t index=0; index<dot1vprotocolportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1vprotocolportentry.len(); index++)
     {
         if(dot1vprotocolportentry[index]->has_data())
             return true;
@@ -3726,9 +3808,9 @@ bool QBRIDGEMIB::Dot1Vprotocolporttable::has_data() const
     return false;
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolporttable::has_operation() const
+bool QBRIDGEMIB::Dot1vProtocolPortTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot1vprotocolportentry.size(); index++)
+    for (std::size_t index=0; index<dot1vprotocolportentry.len(); index++)
     {
         if(dot1vprotocolportentry[index]->has_operation())
             return true;
@@ -3736,21 +3818,21 @@ bool QBRIDGEMIB::Dot1Vprotocolporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolporttable::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1vProtocolPortTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolporttable::get_segment_path() const
+std::string QBRIDGEMIB::Dot1vProtocolPortTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1vProtocolPortTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1vProtocolPortTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3759,25 +3841,25 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolporttabl
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1vProtocolPortTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1vProtocolPortEntry")
     {
-        auto c = std::make_shared<QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry>();
+        auto c = std::make_shared<QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry>();
         c->parent = this;
-        dot1vprotocolportentry.push_back(c);
+        dot1vprotocolportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1vProtocolPortTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1vprotocolportentry)
+    for (auto c : dot1vprotocolportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3788,22 +3870,22 @@ std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolporttabl
     return children;
 }
 
-void QBRIDGEMIB::Dot1Vprotocolporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1vProtocolPortTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void QBRIDGEMIB::Dot1Vprotocolporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1vProtocolPortTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1vProtocolPortTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1vProtocolPortEntry")
         return true;
     return false;
 }
 
-QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::Dot1Vprotocolportentry()
+QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::Dot1vProtocolPortEntry()
     :
     dot1dbaseport{YType::str, "dot1dBasePort"},
     dot1vprotocolportgroupid{YType::int32, "dot1vProtocolPortGroupId"},
@@ -3811,22 +3893,23 @@ QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::Dot1Vprotocolportent
     dot1vprotocolportrowstatus{YType::enumeration, "dot1vProtocolPortRowStatus"}
 {
 
-    yang_name = "dot1vProtocolPortEntry"; yang_parent_name = "dot1vProtocolPortTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1vProtocolPortEntry"; yang_parent_name = "dot1vProtocolPortTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::~Dot1Vprotocolportentry()
+QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::~Dot1vProtocolPortEntry()
 {
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::has_data() const
+bool QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1dbaseport.is_set
 	|| dot1vprotocolportgroupid.is_set
 	|| dot1vprotocolportgroupvid.is_set
 	|| dot1vprotocolportrowstatus.is_set;
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::has_operation() const
+bool QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot1dbaseport.yfilter)
@@ -3835,21 +3918,23 @@ bool QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::has_operation()
 	|| ydk::is_set(dot1vprotocolportrowstatus.yfilter);
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::get_absolute_path() const
+std::string QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Q-BRIDGE-MIB:Q-BRIDGE-MIB/dot1vProtocolPortTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::get_segment_path() const
+std::string QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1vProtocolPortEntry" <<"[dot1dBasePort='" <<dot1dbaseport <<"']" <<"[dot1vProtocolPortGroupId='" <<dot1vprotocolportgroupid <<"']";
+    path_buffer << "dot1vProtocolPortEntry";
+    ADD_KEY_TOKEN(dot1dbaseport, "dot1dBasePort");
+    ADD_KEY_TOKEN(dot1vprotocolportgroupid, "dot1vProtocolPortGroupId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3862,19 +3947,19 @@ std::vector<std::pair<std::string, LeafData> > QBRIDGEMIB::Dot1Vprotocolporttabl
 
 }
 
-std::shared_ptr<Entity> QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -3902,7 +3987,7 @@ void QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::set_value(const
     }
 }
 
-void QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot1dBasePort")
     {
@@ -3922,48 +4007,48 @@ void QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::set_filter(cons
     }
 }
 
-bool QBRIDGEMIB::Dot1Vprotocolporttable::Dot1Vprotocolportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool QBRIDGEMIB::Dot1vProtocolPortTable::Dot1vProtocolPortEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1dBasePort" || name == "dot1vProtocolPortGroupId" || name == "dot1vProtocolPortGroupVid" || name == "dot1vProtocolPortRowStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Qbase::Dot1Qvlanversionnumber::version1 {1, "version1"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qBase::Dot1qVlanVersionNumber::version1 {1, "version1"};
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Qvlan::Dot1Qconstrainttypedefault::independent {1, "independent"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qvlan::Dot1Qconstrainttypedefault::shared {2, "shared"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qVlan::Dot1qConstraintTypeDefault::independent {1, "independent"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qVlan::Dot1qConstraintTypeDefault::shared {2, "shared"};
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbstatus::other {1, "other"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbstatus::invalid {2, "invalid"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbstatus::learned {3, "learned"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbstatus::self {4, "self"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qtpfdbtable::Dot1Qtpfdbentry::Dot1Qtpfdbstatus::mgmt {5, "mgmt"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus::other {1, "other"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus::invalid {2, "invalid"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus::learned {3, "learned"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus::self {4, "self"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qTpFdbTable::Dot1qTpFdbEntry::Dot1qTpFdbStatus::mgmt {5, "mgmt"};
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicaststatus::other {1, "other"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicaststatus::invalid {2, "invalid"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicaststatus::permanent {3, "permanent"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicaststatus::deleteOnReset {4, "deleteOnReset"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticunicasttable::Dot1Qstaticunicastentry::Dot1Qstaticunicaststatus::deleteOnTimeout {5, "deleteOnTimeout"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastStatus::other {1, "other"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastStatus::invalid {2, "invalid"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastStatus::permanent {3, "permanent"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastStatus::deleteOnReset {4, "deleteOnReset"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticUnicastTable::Dot1qStaticUnicastEntry::Dot1qStaticUnicastStatus::deleteOnTimeout {5, "deleteOnTimeout"};
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmulticaststatus::other {1, "other"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmulticaststatus::invalid {2, "invalid"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmulticaststatus::permanent {3, "permanent"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmulticaststatus::deleteOnReset {4, "deleteOnReset"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qstaticmulticasttable::Dot1Qstaticmulticastentry::Dot1Qstaticmulticaststatus::deleteOnTimeout {5, "deleteOnTimeout"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastStatus::other {1, "other"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastStatus::invalid {2, "invalid"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastStatus::permanent {3, "permanent"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastStatus::deleteOnReset {4, "deleteOnReset"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qStaticMulticastTable::Dot1qStaticMulticastEntry::Dot1qStaticMulticastStatus::deleteOnTimeout {5, "deleteOnTimeout"};
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::Dot1Qvlanstatus::other {1, "other"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::Dot1Qvlanstatus::permanent {2, "permanent"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qvlancurrenttable::Dot1Qvlancurrententry::Dot1Qvlanstatus::dynamicGvrp {3, "dynamicGvrp"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::Dot1qVlanStatus::other {1, "other"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::Dot1qVlanStatus::permanent {2, "permanent"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qVlanCurrentTable::Dot1qVlanCurrentEntry::Dot1qVlanStatus::dynamicGvrp {3, "dynamicGvrp"};
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::Dot1Qconstrainttype::independent {1, "independent"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Qlearningconstraintstable::Dot1Qlearningconstraintsentry::Dot1Qconstrainttype::shared {2, "shared"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::Dot1qConstraintType::independent {1, "independent"};
+const Enum::YLeaf QBRIDGEMIB::Dot1qLearningConstraintsTable::Dot1qLearningConstraintsEntry::Dot1qConstraintType::shared {2, "shared"};
 
-const Enum::YLeaf QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocoltemplateframetype::ethernet {1, "ethernet"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocoltemplateframetype::rfc1042 {2, "rfc1042"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocoltemplateframetype::snap8021H {3, "snap8021H"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocoltemplateframetype::snapOther {4, "snapOther"};
-const Enum::YLeaf QBRIDGEMIB::Dot1Vprotocolgrouptable::Dot1Vprotocolgroupentry::Dot1Vprotocoltemplateframetype::llcOther {5, "llcOther"};
+const Enum::YLeaf QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolTemplateFrameType::ethernet {1, "ethernet"};
+const Enum::YLeaf QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolTemplateFrameType::rfc1042 {2, "rfc1042"};
+const Enum::YLeaf QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolTemplateFrameType::snap8021H {3, "snap8021H"};
+const Enum::YLeaf QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolTemplateFrameType::snapOther {4, "snapOther"};
+const Enum::YLeaf QBRIDGEMIB::Dot1vProtocolGroupTable::Dot1vProtocolGroupEntry::Dot1vProtocolTemplateFrameType::llcOther {5, "llcOther"};
 
 
 }

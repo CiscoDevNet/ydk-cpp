@@ -11,47 +11,48 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_bfd_oper {
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::LspPingTxLastTime()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::LspPingTxLastTime()
     :
     seconds{YType::uint64, "seconds"},
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "lsp-ping-tx-last-time"; yang_parent_name = "lsp-ping-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsp-ping-tx-last-time"; yang_parent_name = "lsp-ping-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::~LspPingTxLastTime()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::~LspPingTxLastTime()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(seconds.yfilter)
 	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-session-details/ipv4bf-do-mplste-head-session-detail/lsp-ping-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-ping-tx-last-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -62,19 +63,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "seconds")
     {
@@ -90,7 +91,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Lsp
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "seconds")
     {
@@ -102,54 +103,55 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Lsp
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::LspPingTxLastErrorTime()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::LspPingTxLastErrorTime()
     :
     seconds{YType::uint64, "seconds"},
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "lsp-ping-tx-last-error-time"; yang_parent_name = "lsp-ping-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsp-ping-tx-last-error-time"; yang_parent_name = "lsp-ping-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::~LspPingTxLastErrorTime()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::~LspPingTxLastErrorTime()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(seconds.yfilter)
 	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-session-details/ipv4bf-do-mplste-head-session-detail/lsp-ping-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-ping-tx-last-error-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -160,19 +162,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "seconds")
     {
@@ -188,7 +190,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Lsp
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "seconds")
     {
@@ -200,54 +202,55 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Lsp
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingTxLastErrorTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::LspPingRxLastTime()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::LspPingRxLastTime()
     :
     seconds{YType::uint64, "seconds"},
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "lsp-ping-rx-last-time"; yang_parent_name = "lsp-ping-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsp-ping-rx-last-time"; yang_parent_name = "lsp-ping-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::~LspPingRxLastTime()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::~LspPingRxLastTime()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(seconds.yfilter)
 	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-session-details/ipv4bf-do-mplste-head-session-detail/lsp-ping-info/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-ping-rx-last-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -258,19 +261,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "seconds")
     {
@@ -286,7 +289,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Lsp
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "seconds")
     {
@@ -298,14 +301,14 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Lsp
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::LspPingInfo::LspPingRxLastTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::OwnerInformation()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::OwnerInformation()
     :
     interval{YType::uint32, "interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
@@ -314,15 +317,16 @@ Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInf
     name{YType::str, "name"}
 {
 
-    yang_name = "owner-information"; yang_parent_name = "ipv4bf-do-mplste-head-session-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "owner-information"; yang_parent_name = "ipv4bf-do-mplste-head-session-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::~OwnerInformation()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::~OwnerInformation()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| detection_multiplier.is_set
 	|| adjusted_interval.is_set
@@ -330,7 +334,7 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Own
 	|| name.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interval.yfilter)
@@ -340,21 +344,21 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Own
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-session-details/ipv4bf-do-mplste-head-session-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -368,19 +372,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
@@ -414,7 +418,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Own
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interval")
     {
@@ -438,33 +442,35 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Own
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interval" || name == "detection-multiplier" || name == "adjusted-interval" || name == "adjusted-detection-multiplier" || name == "name")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::AssociationInformation()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::AssociationInformation()
     :
     interface_name{YType::str, "interface-name"},
     sessiontype{YType::enumeration, "sessiontype"},
     local_discriminator{YType::uint32, "local-discriminator"}
-    	,
-    ip_destination_address(std::make_shared<Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress>())
+        ,
+    ip_destination_address(std::make_shared<Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress>())
+    , owner_information(this, {})
 {
     ip_destination_address->parent = this;
 
-    yang_name = "association-information"; yang_parent_name = "ipv4bf-do-mplste-head-session-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "association-information"; yang_parent_name = "ipv4bf-do-mplste-head-session-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::~AssociationInformation()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::~AssociationInformation()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::has_data() const
 {
-    for (std::size_t index=0; index<owner_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<owner_information.len(); index++)
     {
         if(owner_information[index]->has_data())
             return true;
@@ -475,9 +481,9 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 	|| (ip_destination_address !=  nullptr && ip_destination_address->has_data());
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::has_operation() const
 {
-    for (std::size_t index=0; index<owner_information.size(); index++)
+    for (std::size_t index=0; index<owner_information.len(); index++)
     {
         if(owner_information[index]->has_operation())
             return true;
@@ -489,21 +495,21 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 	|| (ip_destination_address !=  nullptr && ip_destination_address->has_operation());
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-session-details/ipv4bf-do-mplste-head-session-detail/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "association-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -515,29 +521,29 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ip-destination-address")
     {
         if(ip_destination_address == nullptr)
         {
-            ip_destination_address = std::make_shared<Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress>();
+            ip_destination_address = std::make_shared<Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress>();
         }
         return ip_destination_address;
     }
 
     if(child_yang_name == "owner-information")
     {
-        auto c = std::make_shared<Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation>();
+        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation>();
         c->parent = this;
-        owner_information.push_back(c);
+        owner_information.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -547,7 +553,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDet
     }
 
     count = 0;
-    for (auto const & c : owner_information)
+    for (auto c : owner_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -558,7 +564,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDet
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -580,7 +586,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -596,14 +602,14 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-destination-address" || name == "owner-information" || name == "interface-name" || name == "sessiontype" || name == "local-discriminator")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::IpDestinationAddress()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::IpDestinationAddress()
     :
     afi{YType::enumeration, "afi"},
     dummy{YType::uint8, "dummy"},
@@ -611,22 +617,23 @@ Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Associat
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "ip-destination-address"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-destination-address"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::~IpDestinationAddress()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::~IpDestinationAddress()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
 	|| ipv6.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(afi.yfilter)
@@ -635,21 +642,21 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-session-details/ipv4bf-do-mplste-head-session-detail/association-information/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-destination-address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -662,19 +669,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
@@ -702,7 +709,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "afi")
     {
@@ -722,14 +729,14 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::IpDestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "afi" || name == "dummy" || name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::OwnerInformation()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::OwnerInformation()
     :
     interval{YType::uint32, "interval"},
     detection_multiplier{YType::uint32, "detection-multiplier"},
@@ -738,15 +745,16 @@ Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Associat
     name{YType::str, "name"}
 {
 
-    yang_name = "owner-information"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "owner-information"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::~OwnerInformation()
+Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::~OwnerInformation()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| detection_multiplier.is_set
 	|| adjusted_interval.is_set
@@ -754,7 +762,7 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 	|| name.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interval.yfilter)
@@ -764,21 +772,21 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-session-details/ipv4bf-do-mplste-head-session-detail/association-information/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -792,19 +800,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSessionDet
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interval")
     {
@@ -838,7 +846,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interval")
     {
@@ -862,7 +870,7 @@ void Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDetail::AssociationInformation::OwnerInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interval" || name == "detection-multiplier" || name == "adjusted-interval" || name == "adjusted-detection-multiplier" || name == "name")
         return true;
@@ -870,9 +878,11 @@ bool Bfd::Ipv4BfDoMplsteHeadSessionDetails::Ipv4BfDoMplsteHeadSessionDetail::Ass
 }
 
 Bfd::RelationBriefs::RelationBriefs()
+    :
+    relation_brief(this, {})
 {
 
-    yang_name = "relation-briefs"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "relation-briefs"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationBriefs::~RelationBriefs()
@@ -881,7 +891,8 @@ Bfd::RelationBriefs::~RelationBriefs()
 
 bool Bfd::RelationBriefs::has_data() const
 {
-    for (std::size_t index=0; index<relation_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<relation_brief.len(); index++)
     {
         if(relation_brief[index]->has_data())
             return true;
@@ -891,7 +902,7 @@ bool Bfd::RelationBriefs::has_data() const
 
 bool Bfd::RelationBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<relation_brief.size(); index++)
+    for (std::size_t index=0; index<relation_brief.len(); index++)
     {
         if(relation_brief[index]->has_operation())
             return true;
@@ -928,7 +939,7 @@ std::shared_ptr<Entity> Bfd::RelationBriefs::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Bfd::RelationBriefs::RelationBrief>();
         c->parent = this;
-        relation_brief.push_back(c);
+        relation_brief.append(c);
         return c;
     }
 
@@ -940,7 +951,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationBriefs::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : relation_brief)
+    for (auto c : relation_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -971,9 +982,11 @@ Bfd::RelationBriefs::RelationBrief::RelationBrief()
     interface_name{YType::str, "interface-name"},
     destination_address{YType::str, "destination-address"},
     state{YType::enumeration, "state"}
+        ,
+    link_information(this, {})
 {
 
-    yang_name = "relation-brief"; yang_parent_name = "relation-briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "relation-brief"; yang_parent_name = "relation-briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationBriefs::RelationBrief::~RelationBrief()
@@ -982,7 +995,8 @@ Bfd::RelationBriefs::RelationBrief::~RelationBrief()
 
 bool Bfd::RelationBriefs::RelationBrief::has_data() const
 {
-    for (std::size_t index=0; index<link_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_information.len(); index++)
     {
         if(link_information[index]->has_data())
             return true;
@@ -994,7 +1008,7 @@ bool Bfd::RelationBriefs::RelationBrief::has_data() const
 
 bool Bfd::RelationBriefs::RelationBrief::has_operation() const
 {
-    for (std::size_t index=0; index<link_information.size(); index++)
+    for (std::size_t index=0; index<link_information.len(); index++)
     {
         if(link_information[index]->has_operation())
             return true;
@@ -1037,7 +1051,7 @@ std::shared_ptr<Entity> Bfd::RelationBriefs::RelationBrief::get_child_by_name(co
     {
         auto c = std::make_shared<Bfd::RelationBriefs::RelationBrief::LinkInformation>();
         c->parent = this;
-        link_information.push_back(c);
+        link_information.append(c);
         return c;
     }
 
@@ -1049,7 +1063,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationBriefs::RelationBrie
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_information)
+    for (auto c : link_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1111,7 +1125,7 @@ Bfd::RelationBriefs::RelationBrief::LinkInformation::LinkInformation()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "link-information"; yang_parent_name = "relation-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-information"; yang_parent_name = "relation-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationBriefs::RelationBrief::LinkInformation::~LinkInformation()
@@ -1120,6 +1134,7 @@ Bfd::RelationBriefs::RelationBrief::LinkInformation::~LinkInformation()
 
 bool Bfd::RelationBriefs::RelationBrief::LinkInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| interface_name.is_set;
 }
@@ -1204,9 +1219,11 @@ bool Bfd::RelationBriefs::RelationBrief::LinkInformation::has_leaf_or_child_of_n
 }
 
 Bfd::ClientBriefs::ClientBriefs()
+    :
+    client_brief(this, {"name"})
 {
 
-    yang_name = "client-briefs"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-briefs"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::ClientBriefs::~ClientBriefs()
@@ -1215,7 +1232,8 @@ Bfd::ClientBriefs::~ClientBriefs()
 
 bool Bfd::ClientBriefs::has_data() const
 {
-    for (std::size_t index=0; index<client_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client_brief.len(); index++)
     {
         if(client_brief[index]->has_data())
             return true;
@@ -1225,7 +1243,7 @@ bool Bfd::ClientBriefs::has_data() const
 
 bool Bfd::ClientBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<client_brief.size(); index++)
+    for (std::size_t index=0; index<client_brief.len(); index++)
     {
         if(client_brief[index]->has_operation())
             return true;
@@ -1262,7 +1280,7 @@ std::shared_ptr<Entity> Bfd::ClientBriefs::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Bfd::ClientBriefs::ClientBrief>();
         c->parent = this;
-        client_brief.push_back(c);
+        client_brief.append(c);
         return c;
     }
 
@@ -1274,7 +1292,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::ClientBriefs::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client_brief)
+    for (auto c : client_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1308,7 +1326,7 @@ Bfd::ClientBriefs::ClientBrief::ClientBrief()
     session_count{YType::uint32, "session-count"}
 {
 
-    yang_name = "client-brief"; yang_parent_name = "client-briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-brief"; yang_parent_name = "client-briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::ClientBriefs::ClientBrief::~ClientBrief()
@@ -1317,6 +1335,7 @@ Bfd::ClientBriefs::ClientBrief::~ClientBrief()
 
 bool Bfd::ClientBriefs::ClientBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| name_xr.is_set
 	|| node_id.is_set
@@ -1342,7 +1361,8 @@ std::string Bfd::ClientBriefs::ClientBrief::get_absolute_path() const
 std::string Bfd::ClientBriefs::ClientBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client-brief" <<"[name='" <<name <<"']";
+    path_buffer << "client-brief";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1426,19 +1446,22 @@ bool Bfd::ClientBriefs::ClientBrief::has_leaf_or_child_of_name(const std::string
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPaths()
+Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPaths()
+    :
+    ipv4bf_do_mplste_head_multi_path(this, {})
 {
 
-    yang_name = "ipv4bf-do-mplste-head-multi-paths"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-head-multi-paths"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadMultiPaths::~Ipv4BfDoMplsteHeadMultiPaths()
+Bfd::Ipv4bfDoMplsteHeadMultiPaths::~Ipv4bfDoMplsteHeadMultiPaths()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadMultiPaths::has_data() const
 {
-    for (std::size_t index=0; index<ipv4bf_do_mplste_head_multi_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4bf_do_mplste_head_multi_path.len(); index++)
     {
         if(ipv4bf_do_mplste_head_multi_path[index]->has_data())
             return true;
@@ -1446,9 +1469,9 @@ bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::has_data() const
     return false;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadMultiPaths::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4bf_do_mplste_head_multi_path.size(); index++)
+    for (std::size_t index=0; index<ipv4bf_do_mplste_head_multi_path.len(); index++)
     {
         if(ipv4bf_do_mplste_head_multi_path[index]->has_operation())
             return true;
@@ -1456,21 +1479,21 @@ bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadMultiPaths::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadMultiPaths::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-head-multi-paths";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadMultiPaths::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1479,25 +1502,25 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-head-multi-path")
     {
-        auto c = std::make_shared<Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath>();
+        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath>();
         c->parent = this;
-        ipv4bf_do_mplste_head_multi_path.push_back(c);
+        ipv4bf_do_mplste_head_multi_path.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadMultiPaths::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadMultiPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4bf_do_mplste_head_multi_path)
+    for (auto c : ipv4bf_do_mplste_head_multi_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1508,36 +1531,36 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadMultiPaths
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Bfd::Ipv4BfDoMplsteHeadMultiPaths::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadMultiPaths::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadMultiPaths::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4bf-do-mplste-head-multi-path")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::Ipv4BfDoMplsteHeadMultiPath()
+Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::Ipv4bfDoMplsteHeadMultiPath()
     :
     interface_name{YType::str, "interface-name"},
     vrf_name{YType::str, "vrf-name"},
-    incoming_label{YType::int32, "incoming-label"},
-    fe_ctype{YType::int32, "fe-ctype"},
-    fec_subgroup_id{YType::int32, "fec-subgroup-id"},
-    feclspid{YType::int32, "feclspid"},
-    fec_tunnel_id{YType::int32, "fec-tunnel-id"},
+    incoming_label{YType::uint32, "incoming-label"},
+    fe_ctype{YType::uint32, "fe-ctype"},
+    fec_subgroup_id{YType::uint32, "fec-subgroup-id"},
+    feclspid{YType::uint32, "feclspid"},
+    fec_tunnel_id{YType::uint32, "fec-tunnel-id"},
     fec_extended_tunnel_id{YType::str, "fec-extended-tunnel-id"},
     fec_source{YType::str, "fec-source"},
     fec_destination{YType::str, "fec-destination"},
-    fecp2mpid{YType::int32, "fecp2mpid"},
+    fecp2mpid{YType::uint32, "fecp2mpid"},
     fec_subgroup_originator{YType::str, "fec-subgroup-originator"},
-    fec_ctype{YType::int32, "fec-ctype"},
+    fec_ctype{YType::uint32, "fec-ctype"},
     location{YType::str, "location"},
     session_subtype{YType::str, "session-subtype"},
     state{YType::enumeration, "state"},
@@ -1547,15 +1570,16 @@ Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::Ipv4BfDoMplsteHe
     session_interface_name{YType::str, "session-interface-name"}
 {
 
-    yang_name = "ipv4bf-do-mplste-head-multi-path"; yang_parent_name = "ipv4bf-do-mplste-head-multi-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-head-multi-path"; yang_parent_name = "ipv4bf-do-mplste-head-multi-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::~Ipv4BfDoMplsteHeadMultiPath()
+Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::~Ipv4bfDoMplsteHeadMultiPath()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| vrf_name.is_set
 	|| incoming_label.is_set
@@ -1578,7 +1602,7 @@ bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::has_data() 
 	|| session_interface_name.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
@@ -1603,21 +1627,21 @@ bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::has_operati
 	|| ydk::is_set(session_interface_name.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-multi-paths/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-head-multi-path";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1646,19 +1670,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -1782,7 +1806,7 @@ void Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::set_value(c
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -1866,7 +1890,7 @@ void Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::set_filter(
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "vrf-name" || name == "incoming-label" || name == "fe-ctype" || name == "fec-subgroup-id" || name == "feclspid" || name == "fec-tunnel-id" || name == "fec-extended-tunnel-id" || name == "fec-source" || name == "fec-destination" || name == "fecp2mpid" || name == "fec-subgroup-originator" || name == "fec-ctype" || name == "location" || name == "session-subtype" || name == "state" || name == "local-discriminator" || name == "node-id" || name == "incoming-label-xr" || name == "session-interface-name")
         return true;
@@ -1874,9 +1898,11 @@ bool Bfd::Ipv4BfDoMplsteHeadMultiPaths::Ipv4BfDoMplsteHeadMultiPath::has_leaf_or
 }
 
 Bfd::RelationDetails::RelationDetails()
+    :
+    relation_detail(this, {})
 {
 
-    yang_name = "relation-details"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "relation-details"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationDetails::~RelationDetails()
@@ -1885,7 +1911,8 @@ Bfd::RelationDetails::~RelationDetails()
 
 bool Bfd::RelationDetails::has_data() const
 {
-    for (std::size_t index=0; index<relation_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<relation_detail.len(); index++)
     {
         if(relation_detail[index]->has_data())
             return true;
@@ -1895,7 +1922,7 @@ bool Bfd::RelationDetails::has_data() const
 
 bool Bfd::RelationDetails::has_operation() const
 {
-    for (std::size_t index=0; index<relation_detail.size(); index++)
+    for (std::size_t index=0; index<relation_detail.len(); index++)
     {
         if(relation_detail[index]->has_operation())
             return true;
@@ -1932,7 +1959,7 @@ std::shared_ptr<Entity> Bfd::RelationDetails::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Bfd::RelationDetails::RelationDetail>();
         c->parent = this;
-        relation_detail.push_back(c);
+        relation_detail.append(c);
         return c;
     }
 
@@ -1944,7 +1971,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : relation_detail)
+    for (auto c : relation_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1976,9 +2003,12 @@ Bfd::RelationDetails::RelationDetail::RelationDetail()
     destination_address{YType::str, "destination-address"},
     state{YType::enumeration, "state"},
     local_discriminator{YType::uint32, "local-discriminator"}
+        ,
+    link_information(this, {})
+    , association_information(this, {})
 {
 
-    yang_name = "relation-detail"; yang_parent_name = "relation-details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "relation-detail"; yang_parent_name = "relation-details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationDetails::RelationDetail::~RelationDetail()
@@ -1987,12 +2017,13 @@ Bfd::RelationDetails::RelationDetail::~RelationDetail()
 
 bool Bfd::RelationDetails::RelationDetail::has_data() const
 {
-    for (std::size_t index=0; index<link_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_information.len(); index++)
     {
         if(link_information[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<association_information.size(); index++)
+    for (std::size_t index=0; index<association_information.len(); index++)
     {
         if(association_information[index]->has_data())
             return true;
@@ -2005,12 +2036,12 @@ bool Bfd::RelationDetails::RelationDetail::has_data() const
 
 bool Bfd::RelationDetails::RelationDetail::has_operation() const
 {
-    for (std::size_t index=0; index<link_information.size(); index++)
+    for (std::size_t index=0; index<link_information.len(); index++)
     {
         if(link_information[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<association_information.size(); index++)
+    for (std::size_t index=0; index<association_information.len(); index++)
     {
         if(association_information[index]->has_operation())
             return true;
@@ -2055,7 +2086,7 @@ std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::get_child_by_name(
     {
         auto c = std::make_shared<Bfd::RelationDetails::RelationDetail::LinkInformation>();
         c->parent = this;
-        link_information.push_back(c);
+        link_information.append(c);
         return c;
     }
 
@@ -2063,7 +2094,7 @@ std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::get_child_by_name(
     {
         auto c = std::make_shared<Bfd::RelationDetails::RelationDetail::AssociationInformation>();
         c->parent = this;
-        association_information.push_back(c);
+        association_information.append(c);
         return c;
     }
 
@@ -2075,7 +2106,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDet
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_information)
+    for (auto c : link_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2084,7 +2115,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDet
     }
 
     count = 0;
-    for (auto const & c : association_information)
+    for (auto c : association_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2157,7 +2188,7 @@ Bfd::RelationDetails::RelationDetail::LinkInformation::LinkInformation()
     local_discriminator{YType::uint32, "local-discriminator"}
 {
 
-    yang_name = "link-information"; yang_parent_name = "relation-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-information"; yang_parent_name = "relation-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationDetails::RelationDetail::LinkInformation::~LinkInformation()
@@ -2166,6 +2197,7 @@ Bfd::RelationDetails::RelationDetail::LinkInformation::~LinkInformation()
 
 bool Bfd::RelationDetails::RelationDetail::LinkInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| interface_name.is_set
 	|| local_discriminator.is_set;
@@ -2267,12 +2299,13 @@ Bfd::RelationDetails::RelationDetail::AssociationInformation::AssociationInforma
     interface_name{YType::str, "interface-name"},
     sessiontype{YType::enumeration, "sessiontype"},
     local_discriminator{YType::uint32, "local-discriminator"}
-    	,
+        ,
     ip_destination_address(std::make_shared<Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress>())
+    , owner_information(this, {})
 {
     ip_destination_address->parent = this;
 
-    yang_name = "association-information"; yang_parent_name = "relation-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "association-information"; yang_parent_name = "relation-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationDetails::RelationDetail::AssociationInformation::~AssociationInformation()
@@ -2281,7 +2314,8 @@ Bfd::RelationDetails::RelationDetail::AssociationInformation::~AssociationInform
 
 bool Bfd::RelationDetails::RelationDetail::AssociationInformation::has_data() const
 {
-    for (std::size_t index=0; index<owner_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<owner_information.len(); index++)
     {
         if(owner_information[index]->has_data())
             return true;
@@ -2294,7 +2328,7 @@ bool Bfd::RelationDetails::RelationDetail::AssociationInformation::has_data() co
 
 bool Bfd::RelationDetails::RelationDetail::AssociationInformation::has_operation() const
 {
-    for (std::size_t index=0; index<owner_information.size(); index++)
+    for (std::size_t index=0; index<owner_information.len(); index++)
     {
         if(owner_information[index]->has_operation())
             return true;
@@ -2347,7 +2381,7 @@ std::shared_ptr<Entity> Bfd::RelationDetails::RelationDetail::AssociationInforma
     {
         auto c = std::make_shared<Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation>();
         c->parent = this;
-        owner_information.push_back(c);
+        owner_information.append(c);
         return c;
     }
 
@@ -2364,7 +2398,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::RelationDetails::RelationDet
     }
 
     count = 0;
-    for (auto const & c : owner_information)
+    for (auto c : owner_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2428,7 +2462,7 @@ Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddre
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "ip-destination-address"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-destination-address"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress::~IpDestinationAddress()
@@ -2437,6 +2471,7 @@ Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddre
 
 bool Bfd::RelationDetails::RelationDetail::AssociationInformation::IpDestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| dummy.is_set
 	|| ipv4.is_set
@@ -2555,7 +2590,7 @@ Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::
     name{YType::str, "name"}
 {
 
-    yang_name = "owner-information"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "owner-information"; yang_parent_name = "association-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::~OwnerInformation()
@@ -2564,6 +2599,7 @@ Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::
 
 bool Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set
 	|| detection_multiplier.is_set
 	|| adjusted_interval.is_set
@@ -2686,45 +2722,46 @@ bool Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerInformat
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailCounters()
+Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailCounters()
     :
-    ipv4bf_do_mplste_tail_packet_counters(std::make_shared<Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters>())
+    ipv4bf_do_mplste_tail_packet_counters(std::make_shared<Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters>())
 {
     ipv4bf_do_mplste_tail_packet_counters->parent = this;
 
-    yang_name = "ipv4bf-do-mplste-tail-counters"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-tail-counters"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteTailCounters::~Ipv4BfDoMplsteTailCounters()
+Bfd::Ipv4bfDoMplsteTailCounters::~Ipv4bfDoMplsteTailCounters()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::has_data() const
+bool Bfd::Ipv4bfDoMplsteTailCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4bf_do_mplste_tail_packet_counters !=  nullptr && ipv4bf_do_mplste_tail_packet_counters->has_data());
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::has_operation() const
+bool Bfd::Ipv4bfDoMplsteTailCounters::has_operation() const
 {
     return is_set(yfilter)
 	|| (ipv4bf_do_mplste_tail_packet_counters !=  nullptr && ipv4bf_do_mplste_tail_packet_counters->has_operation());
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailCounters::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteTailCounters::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailCounters::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteTailCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-tail-counters";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailCounters::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailCounters::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2733,13 +2770,13 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailCounters::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteTailCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-tail-packet-counters")
     {
         if(ipv4bf_do_mplste_tail_packet_counters == nullptr)
         {
-            ipv4bf_do_mplste_tail_packet_counters = std::make_shared<Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters>();
+            ipv4bf_do_mplste_tail_packet_counters = std::make_shared<Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters>();
         }
         return ipv4bf_do_mplste_tail_packet_counters;
     }
@@ -2747,7 +2784,7 @@ std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteTailCounters::get_child_by_name(const
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailCounters::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2759,34 +2796,37 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailCounters::
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteTailCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteTailCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Bfd::Ipv4BfDoMplsteTailCounters::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteTailCounters::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteTailCounters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4bf-do-mplste-tail-packet-counters")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounters()
+Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounters()
+    :
+    ipv4bf_do_mplste_tail_packet_counter(this, {})
 {
 
-    yang_name = "ipv4bf-do-mplste-tail-packet-counters"; yang_parent_name = "ipv4bf-do-mplste-tail-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-tail-packet-counters"; yang_parent_name = "ipv4bf-do-mplste-tail-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::~Ipv4BfDoMplsteTailPacketCounters()
+Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::~Ipv4bfDoMplsteTailPacketCounters()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::has_data() const
+bool Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::has_data() const
 {
-    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_packet_counter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_packet_counter.len(); index++)
     {
         if(ipv4bf_do_mplste_tail_packet_counter[index]->has_data())
             return true;
@@ -2794,9 +2834,9 @@ bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::has_data
     return false;
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::has_operation() const
+bool Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_packet_counter.size(); index++)
+    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_packet_counter.len(); index++)
     {
         if(ipv4bf_do_mplste_tail_packet_counter[index]->has_operation())
             return true;
@@ -2804,21 +2844,21 @@ bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::has_oper
     return is_set(yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-tail-counters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-tail-packet-counters";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2827,25 +2867,25 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailCounters::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-tail-packet-counter")
     {
-        auto c = std::make_shared<Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter>();
+        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter>();
         c->parent = this;
-        ipv4bf_do_mplste_tail_packet_counter.push_back(c);
+        ipv4bf_do_mplste_tail_packet_counter.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4bf_do_mplste_tail_packet_counter)
+    for (auto c : ipv4bf_do_mplste_tail_packet_counter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2856,35 +2896,35 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailCounters::
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4bf-do-mplste-tail-packet-counter")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::Ipv4BfDoMplsteTailPacketCounter()
+Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::Ipv4bfDoMplsteTailPacketCounter()
     :
     vrf_name{YType::str, "vrf-name"},
-    incoming_label{YType::int32, "incoming-label"},
-    fe_ctype{YType::int32, "fe-ctype"},
-    fec_subgroup_id{YType::int32, "fec-subgroup-id"},
-    feclspid{YType::int32, "feclspid"},
-    fec_tunnel_id{YType::int32, "fec-tunnel-id"},
+    incoming_label{YType::uint32, "incoming-label"},
+    fe_ctype{YType::uint32, "fe-ctype"},
+    fec_subgroup_id{YType::uint32, "fec-subgroup-id"},
+    feclspid{YType::uint32, "feclspid"},
+    fec_tunnel_id{YType::uint32, "fec-tunnel-id"},
     fec_extended_tunnel_id{YType::str, "fec-extended-tunnel-id"},
     fec_source{YType::str, "fec-source"},
     fec_destination{YType::str, "fec-destination"},
-    fecp2mpid{YType::int32, "fecp2mpid"},
+    fecp2mpid{YType::uint32, "fecp2mpid"},
     fec_subgroup_originator{YType::str, "fec-subgroup-originator"},
-    fec_ctype{YType::int32, "fec-ctype"},
+    fec_ctype{YType::uint32, "fec-ctype"},
     location{YType::str, "location"},
     hello_transmit_count{YType::uint32, "hello-transmit-count"},
     hello_receive_count{YType::uint32, "hello-receive-count"},
@@ -2893,15 +2933,16 @@ Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplst
     display_type{YType::enumeration, "display-type"}
 {
 
-    yang_name = "ipv4bf-do-mplste-tail-packet-counter"; yang_parent_name = "ipv4bf-do-mplste-tail-packet-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-tail-packet-counter"; yang_parent_name = "ipv4bf-do-mplste-tail-packet-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::~Ipv4BfDoMplsteTailPacketCounter()
+Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::~Ipv4bfDoMplsteTailPacketCounter()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::has_data() const
+bool Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| incoming_label.is_set
 	|| fe_ctype.is_set
@@ -2922,7 +2963,7 @@ bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDo
 	|| display_type.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::has_operation() const
+bool Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
@@ -2945,21 +2986,21 @@ bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDo
 	|| ydk::is_set(display_type.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-tail-counters/ipv4bf-do-mplste-tail-packet-counters/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-tail-packet-counter";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2986,19 +3027,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailCounters::
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -3110,7 +3151,7 @@ void Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDo
     }
 }
 
-void Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -3186,7 +3227,7 @@ void Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDo
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDoMplsteTailPacketCounter::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::Ipv4bfDoMplsteTailPacketCounter::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "incoming-label" || name == "fe-ctype" || name == "fec-subgroup-id" || name == "feclspid" || name == "fec-tunnel-id" || name == "fec-extended-tunnel-id" || name == "fec-source" || name == "fec-destination" || name == "fecp2mpid" || name == "fec-subgroup-originator" || name == "fec-ctype" || name == "location" || name == "hello-transmit-count" || name == "hello-receive-count" || name == "echo-transmit-count" || name == "echo-receive-count" || name == "display-type")
         return true;
@@ -3194,9 +3235,11 @@ bool Bfd::Ipv4BfDoMplsteTailCounters::Ipv4BfDoMplsteTailPacketCounters::Ipv4BfDo
 }
 
 Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBriefs()
+    :
+    ipv6_single_hop_session_brief(this, {})
 {
 
-    yang_name = "ipv6-single-hop-session-briefs"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-single-hop-session-briefs"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Ipv6SingleHopSessionBriefs::~Ipv6SingleHopSessionBriefs()
@@ -3205,7 +3248,8 @@ Bfd::Ipv6SingleHopSessionBriefs::~Ipv6SingleHopSessionBriefs()
 
 bool Bfd::Ipv6SingleHopSessionBriefs::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_single_hop_session_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_single_hop_session_brief.len(); index++)
     {
         if(ipv6_single_hop_session_brief[index]->has_data())
             return true;
@@ -3215,7 +3259,7 @@ bool Bfd::Ipv6SingleHopSessionBriefs::has_data() const
 
 bool Bfd::Ipv6SingleHopSessionBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_single_hop_session_brief.size(); index++)
+    for (std::size_t index=0; index<ipv6_single_hop_session_brief.len(); index++)
     {
         if(ipv6_single_hop_session_brief[index]->has_operation())
             return true;
@@ -3252,7 +3296,7 @@ std::shared_ptr<Entity> Bfd::Ipv6SingleHopSessionBriefs::get_child_by_name(const
     {
         auto c = std::make_shared<Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief>();
         c->parent = this;
-        ipv6_single_hop_session_brief.push_back(c);
+        ipv6_single_hop_session_brief.append(c);
         return c;
     }
 
@@ -3264,7 +3308,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv6SingleHopSessionBriefs::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6_single_hop_session_brief)
+    for (auto c : ipv6_single_hop_session_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3300,12 +3344,12 @@ Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::Ipv6SingleHopSession
     session_type{YType::enumeration, "session-type"},
     session_subtype{YType::str, "session-subtype"},
     session_flags{YType::uint32, "session-flags"}
-    	,
+        ,
     status_brief_information(std::make_shared<Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation>())
 {
     status_brief_information->parent = this;
 
-    yang_name = "ipv6-single-hop-session-brief"; yang_parent_name = "ipv6-single-hop-session-briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-single-hop-session-brief"; yang_parent_name = "ipv6-single-hop-session-briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::~Ipv6SingleHopSessionBrief()
@@ -3314,6 +3358,7 @@ Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::~Ipv6SingleHopSessio
 
 bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| destination_address.is_set
 	|| location.is_set
@@ -3494,12 +3539,12 @@ bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::has_leaf_or_chi
 Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::StatusBriefInformation()
     :
     async_interval_multiplier(std::make_shared<Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier>())
-	,echo_interval_multiplier(std::make_shared<Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier>())
+    , echo_interval_multiplier(std::make_shared<Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier>())
 {
     async_interval_multiplier->parent = this;
     echo_interval_multiplier->parent = this;
 
-    yang_name = "status-brief-information"; yang_parent_name = "ipv6-single-hop-session-brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "status-brief-information"; yang_parent_name = "ipv6-single-hop-session-brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::~StatusBriefInformation()
@@ -3508,6 +3553,7 @@ Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformati
 
 bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (async_interval_multiplier !=  nullptr && async_interval_multiplier->has_data())
 	|| (echo_interval_multiplier !=  nullptr && echo_interval_multiplier->has_data());
 }
@@ -3605,7 +3651,7 @@ Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformati
     detection_multiplier{YType::uint32, "detection-multiplier"}
 {
 
-    yang_name = "async-interval-multiplier"; yang_parent_name = "status-brief-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "async-interval-multiplier"; yang_parent_name = "status-brief-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::~AsyncIntervalMultiplier()
@@ -3614,6 +3660,7 @@ Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformati
 
 bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::AsyncIntervalMultiplier::has_data() const
 {
+    if (is_presence_container) return true;
     return negotiated_remote_transmit_interval.is_set
 	|| negotiated_local_transmit_interval.is_set
 	|| detection_time.is_set
@@ -3730,7 +3777,7 @@ Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformati
     detection_multiplier{YType::uint32, "detection-multiplier"}
 {
 
-    yang_name = "echo-interval-multiplier"; yang_parent_name = "status-brief-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "echo-interval-multiplier"; yang_parent_name = "status-brief-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::~EchoIntervalMultiplier()
@@ -3739,6 +3786,7 @@ Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformati
 
 bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInformation::EchoIntervalMultiplier::has_data() const
 {
+    if (is_presence_container) return true;
     return negotiated_transmit_interval.is_set
 	|| detection_time.is_set
 	|| detection_multiplier.is_set;
@@ -3835,19 +3883,22 @@ bool Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::StatusBriefInfo
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPaths()
+Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPaths()
+    :
+    ipv4bf_do_mplste_tail_multi_path(this, {})
 {
 
-    yang_name = "ipv4bf-do-mplste-tail-multi-paths"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-tail-multi-paths"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteTailMultiPaths::~Ipv4BfDoMplsteTailMultiPaths()
+Bfd::Ipv4bfDoMplsteTailMultiPaths::~Ipv4bfDoMplsteTailMultiPaths()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailMultiPaths::has_data() const
+bool Bfd::Ipv4bfDoMplsteTailMultiPaths::has_data() const
 {
-    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_multi_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_multi_path.len(); index++)
     {
         if(ipv4bf_do_mplste_tail_multi_path[index]->has_data())
             return true;
@@ -3855,9 +3906,9 @@ bool Bfd::Ipv4BfDoMplsteTailMultiPaths::has_data() const
     return false;
 }
 
-bool Bfd::Ipv4BfDoMplsteTailMultiPaths::has_operation() const
+bool Bfd::Ipv4bfDoMplsteTailMultiPaths::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_multi_path.size(); index++)
+    for (std::size_t index=0; index<ipv4bf_do_mplste_tail_multi_path.len(); index++)
     {
         if(ipv4bf_do_mplste_tail_multi_path[index]->has_operation())
             return true;
@@ -3865,21 +3916,21 @@ bool Bfd::Ipv4BfDoMplsteTailMultiPaths::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailMultiPaths::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteTailMultiPaths::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailMultiPaths::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteTailMultiPaths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-tail-multi-paths";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailMultiPaths::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailMultiPaths::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3888,25 +3939,25 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteTailMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailMultiPaths::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4bf-do-mplste-tail-multi-path")
     {
-        auto c = std::make_shared<Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath>();
+        auto c = std::make_shared<Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath>();
         c->parent = this;
-        ipv4bf_do_mplste_tail_multi_path.push_back(c);
+        ipv4bf_do_mplste_tail_multi_path.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailMultiPaths::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailMultiPaths::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4bf_do_mplste_tail_multi_path)
+    for (auto c : ipv4bf_do_mplste_tail_multi_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3917,35 +3968,35 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailMultiPaths
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteTailMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteTailMultiPaths::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Bfd::Ipv4BfDoMplsteTailMultiPaths::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteTailMultiPaths::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailMultiPaths::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteTailMultiPaths::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4bf-do-mplste-tail-multi-path")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::Ipv4BfDoMplsteTailMultiPath()
+Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::Ipv4bfDoMplsteTailMultiPath()
     :
     vrf_name{YType::str, "vrf-name"},
-    incoming_label{YType::int32, "incoming-label"},
-    fe_ctype{YType::int32, "fe-ctype"},
-    fec_subgroup_id{YType::int32, "fec-subgroup-id"},
-    feclspid{YType::int32, "feclspid"},
-    fec_tunnel_id{YType::int32, "fec-tunnel-id"},
+    incoming_label{YType::uint32, "incoming-label"},
+    fe_ctype{YType::uint32, "fe-ctype"},
+    fec_subgroup_id{YType::uint32, "fec-subgroup-id"},
+    feclspid{YType::uint32, "feclspid"},
+    fec_tunnel_id{YType::uint32, "fec-tunnel-id"},
     fec_extended_tunnel_id{YType::str, "fec-extended-tunnel-id"},
     fec_source{YType::str, "fec-source"},
     fec_destination{YType::str, "fec-destination"},
-    fecp2mpid{YType::int32, "fecp2mpid"},
+    fecp2mpid{YType::uint32, "fecp2mpid"},
     fec_subgroup_originator{YType::str, "fec-subgroup-originator"},
-    fec_ctype{YType::int32, "fec-ctype"},
+    fec_ctype{YType::uint32, "fec-ctype"},
     location{YType::str, "location"},
     session_subtype{YType::str, "session-subtype"},
     state{YType::enumeration, "state"},
@@ -3955,15 +4006,16 @@ Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::Ipv4BfDoMplsteTa
     session_interface_name{YType::str, "session-interface-name"}
 {
 
-    yang_name = "ipv4bf-do-mplste-tail-multi-path"; yang_parent_name = "ipv4bf-do-mplste-tail-multi-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-tail-multi-path"; yang_parent_name = "ipv4bf-do-mplste-tail-multi-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::~Ipv4BfDoMplsteTailMultiPath()
+Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::~Ipv4bfDoMplsteTailMultiPath()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::has_data() const
+bool Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| incoming_label.is_set
 	|| fe_ctype.is_set
@@ -3985,7 +4037,7 @@ bool Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::has_data() 
 	|| session_interface_name.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::has_operation() const
+bool Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
@@ -4009,21 +4061,21 @@ bool Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::has_operati
 	|| ydk::is_set(session_interface_name.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-tail-multi-paths/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-tail-multi-path";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4051,19 +4103,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteTailMultiPaths
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -4181,7 +4233,7 @@ void Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::set_value(c
     }
 }
 
-void Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -4261,7 +4313,7 @@ void Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::set_filter(
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "incoming-label" || name == "fe-ctype" || name == "fec-subgroup-id" || name == "feclspid" || name == "fec-tunnel-id" || name == "fec-extended-tunnel-id" || name == "fec-source" || name == "fec-destination" || name == "fecp2mpid" || name == "fec-subgroup-originator" || name == "fec-ctype" || name == "location" || name == "session-subtype" || name == "state" || name == "local-discriminator" || name == "node-id" || name == "incoming-label-xr" || name == "session-interface-name")
         return true;
@@ -4269,9 +4321,11 @@ bool Bfd::Ipv4BfDoMplsteTailMultiPaths::Ipv4BfDoMplsteTailMultiPath::has_leaf_or
 }
 
 Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPaths()
+    :
+    ipv4_multi_hop_multi_path(this, {})
 {
 
-    yang_name = "ipv4-multi-hop-multi-paths"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-multi-hop-multi-paths"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Ipv4MultiHopMultiPaths::~Ipv4MultiHopMultiPaths()
@@ -4280,7 +4334,8 @@ Bfd::Ipv4MultiHopMultiPaths::~Ipv4MultiHopMultiPaths()
 
 bool Bfd::Ipv4MultiHopMultiPaths::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_multi_hop_multi_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_multi_hop_multi_path.len(); index++)
     {
         if(ipv4_multi_hop_multi_path[index]->has_data())
             return true;
@@ -4290,7 +4345,7 @@ bool Bfd::Ipv4MultiHopMultiPaths::has_data() const
 
 bool Bfd::Ipv4MultiHopMultiPaths::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_multi_hop_multi_path.size(); index++)
+    for (std::size_t index=0; index<ipv4_multi_hop_multi_path.len(); index++)
     {
         if(ipv4_multi_hop_multi_path[index]->has_operation())
             return true;
@@ -4327,7 +4382,7 @@ std::shared_ptr<Entity> Bfd::Ipv4MultiHopMultiPaths::get_child_by_name(const std
     {
         auto c = std::make_shared<Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath>();
         c->parent = this;
-        ipv4_multi_hop_multi_path.push_back(c);
+        ipv4_multi_hop_multi_path.append(c);
         return c;
     }
 
@@ -4339,7 +4394,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4MultiHopMultiPaths::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_multi_hop_multi_path)
+    for (auto c : ipv4_multi_hop_multi_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4379,7 +4434,7 @@ Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::Ipv4MultiHopMultiPath()
     session_interface_name{YType::str, "session-interface-name"}
 {
 
-    yang_name = "ipv4-multi-hop-multi-path"; yang_parent_name = "ipv4-multi-hop-multi-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-multi-hop-multi-path"; yang_parent_name = "ipv4-multi-hop-multi-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::~Ipv4MultiHopMultiPath()
@@ -4388,6 +4443,7 @@ Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::~Ipv4MultiHopMultiPath()
 
 bool Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| destination_address.is_set
 	|| location.is_set
@@ -4575,45 +4631,46 @@ bool Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::has_leaf_or_child_of_na
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSummary::Ipv4BfDoMplsteHeadSummary()
+Bfd::Ipv4bfDoMplsteHeadSummary::Ipv4bfDoMplsteHeadSummary()
     :
-    session_state(std::make_shared<Bfd::Ipv4BfDoMplsteHeadSummary::SessionState>())
+    session_state(std::make_shared<Bfd::Ipv4bfDoMplsteHeadSummary::SessionState>())
 {
     session_state->parent = this;
 
-    yang_name = "ipv4bf-do-mplste-head-summary"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4bf-do-mplste-head-summary"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSummary::~Ipv4BfDoMplsteHeadSummary()
+Bfd::Ipv4bfDoMplsteHeadSummary::~Ipv4bfDoMplsteHeadSummary()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSummary::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (session_state !=  nullptr && session_state->has_data());
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSummary::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSummary::has_operation() const
 {
     return is_set(yfilter)
 	|| (session_state !=  nullptr && session_state->has_operation());
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSummary::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSummary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSummary::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-head-summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSummary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSummary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4622,13 +4679,13 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSummary::g
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "session-state")
     {
         if(session_state == nullptr)
         {
-            session_state = std::make_shared<Bfd::Ipv4BfDoMplsteHeadSummary::SessionState>();
+            session_state = std::make_shared<Bfd::Ipv4bfDoMplsteHeadSummary::SessionState>();
         }
         return session_state;
     }
@@ -4636,7 +4693,7 @@ std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSummary::get_child_by_name(const 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4648,22 +4705,22 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSummary::g
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-state")
         return true;
     return false;
 }
 
-Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::SessionState()
+Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::SessionState()
     :
     total_count{YType::uint32, "total-count"},
     down_count{YType::uint32, "down-count"},
@@ -4671,22 +4728,23 @@ Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::SessionState()
     unknown_count{YType::uint32, "unknown-count"}
 {
 
-    yang_name = "session-state"; yang_parent_name = "ipv4bf-do-mplste-head-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-state"; yang_parent_name = "ipv4bf-do-mplste-head-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::~SessionState()
+Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::~SessionState()
 {
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::has_data() const
+bool Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| down_count.is_set
 	|| up_count.is_set
 	|| unknown_count.is_set;
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::has_operation() const
+bool Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(total_count.yfilter)
@@ -4695,21 +4753,21 @@ bool Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::has_operation() const
 	|| ydk::is_set(unknown_count.yfilter);
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::get_absolute_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-bfd-oper:bfd/ipv4bf-do-mplste-head-summary/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::get_segment_path() const
+std::string Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4722,19 +4780,19 @@ std::vector<std::pair<std::string, LeafData> > Bfd::Ipv4BfDoMplsteHeadSummary::S
 
 }
 
-std::shared_ptr<Entity> Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "total-count")
     {
@@ -4762,7 +4820,7 @@ void Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::set_value(const std::string &
     }
 }
 
-void Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
+void Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "total-count")
     {
@@ -4782,7 +4840,7 @@ void Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::set_filter(const std::string 
     }
 }
 
-bool Bfd::Ipv4BfDoMplsteHeadSummary::SessionState::has_leaf_or_child_of_name(const std::string & name) const
+bool Bfd::Ipv4bfDoMplsteHeadSummary::SessionState::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "total-count" || name == "down-count" || name == "up-count" || name == "unknown-count")
         return true;

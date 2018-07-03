@@ -33,7 +33,7 @@ class Interfaces : public ydk::Entity
 
         class Interface; //type: Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Interfaces
 
@@ -84,7 +84,7 @@ class Interfaces::Interface : public ydk::Entity
         class SerialStats; //type: Interfaces::Interface::SerialStats
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::Statistics> statistics;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo> > diffserv_info;
+        ydk::YList diffserv_info;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::V4ProtocolStats> v4_protocol_stats;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::V6ProtocolStats> v6_protocol_stats;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::EtherState> ether_state;
@@ -156,8 +156,8 @@ class Interfaces::Interface::DiffservInfo : public ydk::Entity
         class DiffservTargetClassifierStats; //type: Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats
         class PriorityOperList; //type: Interfaces::Interface::DiffservInfo::PriorityOperList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats> > diffserv_target_classifier_stats;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList> > priority_oper_list;
+        ydk::YList diffserv_target_classifier_stats;
+        ydk::YList priority_oper_list;
         
 }; // Interfaces::Interface::DiffservInfo
 
@@ -187,9 +187,9 @@ class Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats : publi
         class MarkingStats; //type: Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats> classifier_entry_stats;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats> > meter_stats;
+        ydk::YList meter_stats;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats> queuing_stats;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList> > subclass_list;
+        ydk::YList subclass_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats> marking_stats;
         
 }; // Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats
@@ -360,19 +360,19 @@ class Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subcla
         class ClpCounters; //type: Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters
         class ClpDefault; //type: Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters> > cos_counters;
+        ydk::YList cos_counters;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault> cos_default;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters> > dscp_counters;
+        ydk::YList dscp_counters;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault> dscp_default;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters> > discard_class_counters;
+        ydk::YList discard_class_counters;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault> disc_class_default;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters> > precedence_counters;
+        ydk::YList precedence_counters;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault> prec_default;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters> > mpls_exp_counters;
+        ydk::YList mpls_exp_counters;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault> mpls_exp_default;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters> > dei_counters;
+        ydk::YList dei_counters;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault> dei_counts_default;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters> > clp_counters;
+        ydk::YList clp_counters;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault> clp_default;
         
 }; // Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
@@ -1235,11 +1235,11 @@ class Interfaces::Interface::DiffservInfo::PriorityOperList : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats> agg_priority_stats;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh> qlimit_default_thresh;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList> > qlimit_cos_thresh_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList> > qlimit_disc_class_thresh_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList> > qlimit_qos_grp_thresh_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList> > qlimit_mpls_exp_thresh_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_interfaces_oper::Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList> > qlimit_dscp_thresh_list;
+        ydk::YList qlimit_cos_thresh_list;
+        ydk::YList qlimit_disc_class_thresh_list;
+        ydk::YList qlimit_qos_grp_thresh_list;
+        ydk::YList qlimit_mpls_exp_thresh_list;
+        ydk::YList qlimit_dscp_thresh_list;
         
 }; // Interfaces::Interface::DiffservInfo::PriorityOperList
 
@@ -1572,7 +1572,7 @@ class Interfaces::Interface::SerialState : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf crc_type; //type: SerialCrc
-        ydk::YLeaf loopback; //type: T1E1LoopbackMode
+        ydk::YLeaf loopback; //type: T1e1LoopbackMode
         ydk::YLeaf keeplive; //type: uint32
         ydk::YLeaf timeslot; //type: uint32
         ydk::YLeaf subrate; //type: SubrateSpeed
@@ -1612,6 +1612,38 @@ class QosMatchType : public ydk::Enum
 
 };
 
+class EtherDuplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf full_duplex;
+        static const ydk::Enum::YLeaf half_duplex;
+        static const ydk::Enum::YLeaf auto_duplex;
+        static const ydk::Enum::YLeaf unknown_duplex;
+
+};
+
+class T1e1LoopbackMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf t1e1_no_loopback;
+        static const ydk::Enum::YLeaf t1e1_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_line_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_payload_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_ansi_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_att_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_iboc_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_ansi_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_att_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_iboc_local_loopback;
+
+};
+
 class ThreshUnit : public ydk::Enum
 {
     public:
@@ -1621,34 +1653,6 @@ class ThreshUnit : public ydk::Enum
         static const ydk::Enum::YLeaf thresh_units_packets;
         static const ydk::Enum::YLeaf thresh_units_cells;
         static const ydk::Enum::YLeaf thresh_units_percent;
-
-};
-
-class QosDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf qos_inbound;
-        static const ydk::Enum::YLeaf qos_outbound;
-
-};
-
-class IntfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf if_state_unknown;
-        static const ydk::Enum::YLeaf if_state_up;
-        static const ydk::Enum::YLeaf if_state_down;
-        static const ydk::Enum::YLeaf if_state_test;
-
-};
-
-class EtherDuplex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf full_duplex;
-        static const ydk::Enum::YLeaf half_duplex;
-        static const ydk::Enum::YLeaf auto_duplex;
-        static const ydk::Enum::YLeaf unknown_duplex;
 
 };
 
@@ -1678,6 +1682,22 @@ class OperState : public ydk::Enum
         static const ydk::Enum::YLeaf if_oper_state_dormant;
         static const ydk::Enum::YLeaf if_oper_state_not_present;
         static const ydk::Enum::YLeaf if_oper_state_lower_layer_down;
+
+};
+
+class SerialCrc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf serial_crc32;
+        static const ydk::Enum::YLeaf serial_crc16;
+
+};
+
+class SubrateSpeed : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dsx1_subrate_56kbps;
+        static const ydk::Enum::YLeaf dsx1_subrate_64kbps;
 
 };
 
@@ -1965,41 +1985,21 @@ class IetfIntfType : public ydk::Enum
 
 };
 
-class SerialCrc : public ydk::Enum
+class QosDirection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf serial_crc32;
-        static const ydk::Enum::YLeaf serial_crc16;
+        static const ydk::Enum::YLeaf qos_inbound;
+        static const ydk::Enum::YLeaf qos_outbound;
 
 };
 
-class SubrateSpeed : public ydk::Enum
+class IntfState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf dsx1_subrate_56kbps;
-        static const ydk::Enum::YLeaf dsx1_subrate_64kbps;
-
-};
-
-class T1E1LoopbackMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf t1e1_no_loopback;
-        static const ydk::Enum::YLeaf t1e1_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_line_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_payload_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_ansi_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_att_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_iboc_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_ansi_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_att_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_iboc_local_loopback;
+        static const ydk::Enum::YLeaf if_state_unknown;
+        static const ydk::Enum::YLeaf if_state_up;
+        static const ydk::Enum::YLeaf if_state_down;
+        static const ydk::Enum::YLeaf if_state_test;
 
 };
 

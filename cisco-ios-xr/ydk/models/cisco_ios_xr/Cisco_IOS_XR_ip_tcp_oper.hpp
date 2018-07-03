@@ -57,7 +57,7 @@ class TcpConnection::Nodes : public ydk::Entity
 
         class Node; //type: TcpConnection::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // TcpConnection::Nodes
 
@@ -138,7 +138,7 @@ class TcpConnection::Nodes::Node::Statistics::Clients : public ydk::Entity
 
         class Client; //type: TcpConnection::Nodes::Node::Statistics::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Clients::Client> > client;
+        ydk::YList client;
         
 }; // TcpConnection::Nodes::Node::Statistics::Clients
 
@@ -188,7 +188,7 @@ class TcpConnection::Nodes::Node::Statistics::Pcbs : public ydk::Entity
 
         class Pcb; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb> > pcb;
+        ydk::YList pcb;
         
 }; // TcpConnection::Nodes::Node::Statistics::Pcbs
 
@@ -313,16 +313,16 @@ class TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats : pub
         class DataWriteByte; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte
         class DataReadByte; //type: TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteSuccessNum> > data_write_success_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadSuccessNum> > data_read_success_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteErrorNum> > data_write_error_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadErrorNum> > data_read_error_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteSuccessNum> > control_write_success_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadSuccessNum> > control_read_success_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlWriteErrorNum> > control_write_error_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::ControlReadErrorNum> > control_read_error_num;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataWriteByte> > data_write_byte;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats::DataReadByte> > data_read_byte;
+        ydk::YList data_write_success_num;
+        ydk::YList data_read_success_num;
+        ydk::YList data_write_error_num;
+        ydk::YList data_read_error_num;
+        ydk::YList control_write_success_num;
+        ydk::YList control_read_success_num;
+        ydk::YList control_write_error_num;
+        ydk::YList control_read_error_num;
+        ydk::YList data_write_byte;
+        ydk::YList data_read_byte;
         
 }; // TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 
@@ -644,8 +644,8 @@ class TcpConnection::Nodes::Node::Statistics::Summary : public ydk::Entity
         class IqsTotalIngpacket; //type: TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket
         class IqsTotalEgpacket; //type: TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket> > iqs_total_ingpacket;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket> > iqs_total_egpacket;
+        ydk::YList iqs_total_ingpacket;
+        ydk::YList iqs_total_egpacket;
         
 }; // TcpConnection::Nodes::Node::Statistics::Summary
 
@@ -733,7 +733,7 @@ class TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes : public ydk
 
         class DisplayType; //type: TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType> > display_type;
+        ydk::YList display_type;
         
 }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes
 
@@ -757,7 +757,7 @@ class TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType
         ydk::YLeaf disp_type; //type: Show
         class ConnectionId; //type: TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId> > connection_id;
+        ydk::YList connection_id;
         
 }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType
 
@@ -889,7 +889,7 @@ class TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Options> options;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::LptsFlags> lpts_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::AcceptMask> accept_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb::Filter> > filter;
+        ydk::YList filter;
         
 }; // TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::DisplayType::ConnectionId::Common::LptsPcb
 
@@ -1089,7 +1089,7 @@ class TcpConnection::Nodes::Node::DetailInformations : public ydk::Entity
 
         class DetailInformation; //type: TcpConnection::Nodes::Node::DetailInformations::DetailInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation> > detail_information;
+        ydk::YList detail_information;
         
 }; // TcpConnection::Nodes::Node::DetailInformations
 
@@ -1210,11 +1210,11 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation : public
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::RequestFlags> request_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags> receive_buf_state_flags;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags> send_buf_state_flags;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibPdCtx> > fib_pd_ctx;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::FibLabelOutput> > fib_label_output;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Timer> > timer;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SackBlk> > sack_blk;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendSackHole> > send_sack_hole;
+        ydk::YList fib_pd_ctx;
+        ydk::YList fib_label_output;
+        ydk::YList timer;
+        ydk::YList sack_blk;
+        ydk::YList send_sack_hole;
         
 }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation
 
@@ -1611,7 +1611,7 @@ class TcpConnection::Nodes::Node::BriefInformations : public ydk::Entity
 
         class BriefInformation; //type: TcpConnection::Nodes::Node::BriefInformations::BriefInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpConnection::Nodes::Node::BriefInformations::BriefInformation> > brief_information;
+        ydk::YList brief_information;
         
 }; // TcpConnection::Nodes::Node::BriefInformations
 
@@ -1743,7 +1743,7 @@ class Tcp::Nodes : public ydk::Entity
 
         class Node; //type: Tcp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::Tcp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Tcp::Nodes
 
@@ -1894,7 +1894,7 @@ class TcpNsr::Nodes : public ydk::Entity
 
         class Node; //type: TcpNsr::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // TcpNsr::Nodes
 
@@ -1973,7 +1973,7 @@ class TcpNsr::Nodes::Node::Session::BriefSessions : public ydk::Entity
 
         class BriefSession; //type: TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession> > brief_session;
+        ydk::YList brief_session;
         
 }; // TcpNsr::Nodes::Node::Session::BriefSessions
 
@@ -2008,8 +2008,8 @@ class TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession : public ydk::En
         class LocalAddress; //type: TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress
         class ForeignAddress; //type: TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddress> > local_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAddress> > foreign_address;
+        ydk::YList local_address;
+        ydk::YList foreign_address;
         
 }; // TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession
 
@@ -2074,7 +2074,7 @@ class TcpNsr::Nodes::Node::Session::DetailSessions : public ydk::Entity
 
         class DetailSession; //type: TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession> > detail_session;
+        ydk::YList detail_session;
         
 }; // TcpNsr::Nodes::Node::Session::DetailSessions
 
@@ -2146,10 +2146,10 @@ class TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession : public ydk::
         class InternalAckHoldQueue; //type: TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::SetInformation> set_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAddress> > local_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::ForeignAddress> > foreign_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketHoldQueue> > packet_hold_queue;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::InternalAckHoldQueue> > internal_ack_hold_queue;
+        ydk::YList local_address;
+        ydk::YList foreign_address;
+        ydk::YList packet_hold_queue;
+        ydk::YList internal_ack_hold_queue;
         
 }; // TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession
 
@@ -2323,7 +2323,7 @@ class TcpNsr::Nodes::Node::Client::DetailClients : public ydk::Entity
 
         class DetailClient; //type: TcpNsr::Nodes::Node::Client::DetailClients::DetailClient
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Client::DetailClients::DetailClient> > detail_client;
+        ydk::YList detail_client;
         
 }; // TcpNsr::Nodes::Node::Client::DetailClients
 
@@ -2377,7 +2377,7 @@ class TcpNsr::Nodes::Node::Client::BriefClients : public ydk::Entity
 
         class BriefClient; //type: TcpNsr::Nodes::Node::Client::BriefClients::BriefClient
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Client::BriefClients::BriefClient> > brief_client;
+        ydk::YList brief_client;
         
 }; // TcpNsr::Nodes::Node::Client::BriefClients
 
@@ -2454,7 +2454,7 @@ class TcpNsr::Nodes::Node::SessionSet::DetailSets : public ydk::Entity
 
         class DetailSet; //type: TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::SessionSet::DetailSets::DetailSet> > detail_set;
+        ydk::YList detail_set;
         
 }; // TcpNsr::Nodes::Node::SessionSet::DetailSets
 
@@ -2531,7 +2531,7 @@ class TcpNsr::Nodes::Node::SessionSet::BriefSets : public ydk::Entity
 
         class BriefSet; //type: TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::SessionSet::BriefSets::BriefSet> > brief_set;
+        ydk::YList brief_set;
         
 }; // TcpNsr::Nodes::Node::SessionSet::BriefSets
 
@@ -2659,7 +2659,7 @@ class TcpNsr::Nodes::Node::Statistics::Summary : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Statistics::Summary::SndCounters> snd_counters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Statistics::Summary::AuditCounters> audit_counters;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic> > notification_statistic;
+        ydk::YList notification_statistic;
         
 }; // TcpNsr::Nodes::Node::Statistics::Summary
 
@@ -2900,7 +2900,7 @@ class TcpNsr::Nodes::Node::Statistics::StatisticClients : public ydk::Entity
 
         class StatisticClient; //type: TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient> > statistic_client;
+        ydk::YList statistic_client;
         
 }; // TcpNsr::Nodes::Node::Statistics::StatisticClients
 
@@ -2933,7 +2933,7 @@ class TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient : publi
         ydk::YLeaf last_cleared_time; //type: uint32
         class NotificationStatistic; //type: TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::NotificationStatistic> > notification_statistic;
+        ydk::YList notification_statistic;
         
 }; // TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient
 
@@ -2980,7 +2980,7 @@ class TcpNsr::Nodes::Node::Statistics::StatisticSets : public ydk::Entity
 
         class StatisticSet; //type: TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Statistics::StatisticSets::StatisticSet> > statistic_set;
+        ydk::YList statistic_set;
         
 }; // TcpNsr::Nodes::Node::Statistics::StatisticSets
 
@@ -3032,7 +3032,7 @@ class TcpNsr::Nodes::Node::Statistics::StatisticSessions : public ydk::Entity
 
         class StatisticSession; //type: TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_oper::TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession> > statistic_session;
+        ydk::YList statistic_session;
         
 }; // TcpNsr::Nodes::Node::Statistics::StatisticSessions
 
@@ -3115,54 +3115,6 @@ class TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndC
 
 }; // TcpNsr::Nodes::Node::Statistics::StatisticSessions::StatisticSession::SndCounters
 
-class Show : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf static_policy;
-        static const ydk::Enum::YLeaf interface_filter;
-        static const ydk::Enum::YLeaf packet_filter;
-
-};
-
-class MessageTypeIgmp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf membership_query;
-        static const ydk::Enum::YLeaf v1_membership_report;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf pi_mv1;
-        static const ydk::Enum::YLeaf cisco_trace_messages;
-        static const ydk::Enum::YLeaf v2_membership_report;
-        static const ydk::Enum::YLeaf v2_leave_group;
-        static const ydk::Enum::YLeaf multicast_traceroute_response;
-        static const ydk::Enum::YLeaf multicast_traceroute;
-        static const ydk::Enum::YLeaf v3_membership_report;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-
-};
-
-class MessageTypeIgmp_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf membership_query;
-        static const ydk::Enum::YLeaf v1_membership_report;
-        static const ydk::Enum::YLeaf dvmrp;
-        static const ydk::Enum::YLeaf pi_mv1;
-        static const ydk::Enum::YLeaf cisco_trace_messages;
-        static const ydk::Enum::YLeaf v2_membership_report;
-        static const ydk::Enum::YLeaf v2_leave_group;
-        static const ydk::Enum::YLeaf multicast_traceroute_response;
-        static const ydk::Enum::YLeaf multicast_traceroute;
-        static const ydk::Enum::YLeaf v3_membership_report;
-        static const ydk::Enum::YLeaf multicast_router_advertisement;
-        static const ydk::Enum::YLeaf multicast_router_solicitation;
-        static const ydk::Enum::YLeaf multicast_router_termination;
-
-};
-
 class MessageTypeIcmpv6 : public ydk::Enum
 {
     public:
@@ -3197,6 +3149,177 @@ class MessageTypeIcmpv6 : public ydk::Enum
         static const ydk::Enum::YLeaf multicast_router_solicitation;
         static const ydk::Enum::YLeaf multicast_router_termination;
         static const ydk::Enum::YLeaf fmipv6_messages;
+
+};
+
+class Show : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf static_policy;
+        static const ydk::Enum::YLeaf interface_filter;
+        static const ydk::Enum::YLeaf packet_filter;
+
+};
+
+class MessageTypeIgmp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf membership_query;
+        static const ydk::Enum::YLeaf v1_membership_report;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf pi_mv1;
+        static const ydk::Enum::YLeaf cisco_trace_messages;
+        static const ydk::Enum::YLeaf v2_membership_report;
+        static const ydk::Enum::YLeaf v2_leave_group;
+        static const ydk::Enum::YLeaf multicast_traceroute_response;
+        static const ydk::Enum::YLeaf multicast_traceroute;
+        static const ydk::Enum::YLeaf v3_membership_report;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+
+};
+
+class TcpConnState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf closed;
+        static const ydk::Enum::YLeaf listen;
+        static const ydk::Enum::YLeaf syn_sent;
+        static const ydk::Enum::YLeaf syn_received;
+        static const ydk::Enum::YLeaf established;
+        static const ydk::Enum::YLeaf close_wait;
+        static const ydk::Enum::YLeaf fin_wait1;
+        static const ydk::Enum::YLeaf closing;
+        static const ydk::Enum::YLeaf last_ack;
+        static const ydk::Enum::YLeaf fin_wait2;
+        static const ydk::Enum::YLeaf time_wait;
+
+};
+
+class PakPrio : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unspecified_packet;
+        static const ydk::Enum::YLeaf normal_packet;
+        static const ydk::Enum::YLeaf medium_packet;
+        static const ydk::Enum::YLeaf high_packet;
+        static const ydk::Enum::YLeaf crucial_packet;
+
+};
+
+class MessageTypeIcmp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf echo_reply;
+        static const ydk::Enum::YLeaf destination_unreachable;
+        static const ydk::Enum::YLeaf source_quench;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf alternate_host_address;
+        static const ydk::Enum::YLeaf echo;
+        static const ydk::Enum::YLeaf router_advertisement;
+        static const ydk::Enum::YLeaf router_selection;
+        static const ydk::Enum::YLeaf time_exceeded;
+        static const ydk::Enum::YLeaf parameter_problem;
+        static const ydk::Enum::YLeaf time_stamp;
+        static const ydk::Enum::YLeaf time_stamp_reply;
+        static const ydk::Enum::YLeaf information_request;
+        static const ydk::Enum::YLeaf information_reply;
+        static const ydk::Enum::YLeaf address_mask_request;
+        static const ydk::Enum::YLeaf address_mask_reply;
+        static const ydk::Enum::YLeaf trace_route;
+        static const ydk::Enum::YLeaf datagram_conversion_error;
+        static const ydk::Enum::YLeaf mobile_host_redirect;
+        static const ydk::Enum::YLeaf where_are_you;
+        static const ydk::Enum::YLeaf iam_here;
+        static const ydk::Enum::YLeaf mobile_registration_request;
+        static const ydk::Enum::YLeaf mobile_registration_reply;
+        static const ydk::Enum::YLeaf domain_name_request;
+
+};
+
+class MessageTypeIgmp_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf membership_query;
+        static const ydk::Enum::YLeaf v1_membership_report;
+        static const ydk::Enum::YLeaf dvmrp;
+        static const ydk::Enum::YLeaf pi_mv1;
+        static const ydk::Enum::YLeaf cisco_trace_messages;
+        static const ydk::Enum::YLeaf v2_membership_report;
+        static const ydk::Enum::YLeaf v2_leave_group;
+        static const ydk::Enum::YLeaf multicast_traceroute_response;
+        static const ydk::Enum::YLeaf multicast_traceroute;
+        static const ydk::Enum::YLeaf v3_membership_report;
+        static const ydk::Enum::YLeaf multicast_router_advertisement;
+        static const ydk::Enum::YLeaf multicast_router_solicitation;
+        static const ydk::Enum::YLeaf multicast_router_termination;
+
+};
+
+class Packet : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icmp;
+        static const ydk::Enum::YLeaf icm_pv6;
+        static const ydk::Enum::YLeaf igmp;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
+class MessageTypeIcmp_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf echo_reply;
+        static const ydk::Enum::YLeaf destination_unreachable;
+        static const ydk::Enum::YLeaf source_quench;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf alternate_host_address;
+        static const ydk::Enum::YLeaf echo;
+        static const ydk::Enum::YLeaf router_advertisement;
+        static const ydk::Enum::YLeaf router_selection;
+        static const ydk::Enum::YLeaf time_exceeded;
+        static const ydk::Enum::YLeaf parameter_problem;
+        static const ydk::Enum::YLeaf time_stamp;
+        static const ydk::Enum::YLeaf time_stamp_reply;
+        static const ydk::Enum::YLeaf information_request;
+        static const ydk::Enum::YLeaf information_reply;
+        static const ydk::Enum::YLeaf address_mask_request;
+        static const ydk::Enum::YLeaf address_mask_reply;
+        static const ydk::Enum::YLeaf trace_route;
+        static const ydk::Enum::YLeaf datagram_conversion_error;
+        static const ydk::Enum::YLeaf mobile_host_redirect;
+        static const ydk::Enum::YLeaf where_are_you;
+        static const ydk::Enum::YLeaf iam_here;
+        static const ydk::Enum::YLeaf mobile_registration_request;
+        static const ydk::Enum::YLeaf mobile_registration_reply;
+        static const ydk::Enum::YLeaf domain_name_request;
+
+};
+
+class AddrFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internetwork;
+        static const ydk::Enum::YLeaf ip_version6;
+
+};
+
+class NsrStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf na;
+
+};
+
+class TcpAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
@@ -3237,76 +3360,6 @@ class MessageTypeIcmpv6_ : public ydk::Enum
 
 };
 
-class MessageTypeIcmp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf echo_reply;
-        static const ydk::Enum::YLeaf destination_unreachable;
-        static const ydk::Enum::YLeaf source_quench;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf alternate_host_address;
-        static const ydk::Enum::YLeaf echo;
-        static const ydk::Enum::YLeaf router_advertisement;
-        static const ydk::Enum::YLeaf router_selection;
-        static const ydk::Enum::YLeaf time_exceeded;
-        static const ydk::Enum::YLeaf parameter_problem;
-        static const ydk::Enum::YLeaf time_stamp;
-        static const ydk::Enum::YLeaf time_stamp_reply;
-        static const ydk::Enum::YLeaf information_request;
-        static const ydk::Enum::YLeaf information_reply;
-        static const ydk::Enum::YLeaf address_mask_request;
-        static const ydk::Enum::YLeaf address_mask_reply;
-        static const ydk::Enum::YLeaf trace_route;
-        static const ydk::Enum::YLeaf datagram_conversion_error;
-        static const ydk::Enum::YLeaf mobile_host_redirect;
-        static const ydk::Enum::YLeaf where_are_you;
-        static const ydk::Enum::YLeaf iam_here;
-        static const ydk::Enum::YLeaf mobile_registration_request;
-        static const ydk::Enum::YLeaf mobile_registration_reply;
-        static const ydk::Enum::YLeaf domain_name_request;
-
-};
-
-class MessageTypeIcmp_ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf echo_reply;
-        static const ydk::Enum::YLeaf destination_unreachable;
-        static const ydk::Enum::YLeaf source_quench;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf alternate_host_address;
-        static const ydk::Enum::YLeaf echo;
-        static const ydk::Enum::YLeaf router_advertisement;
-        static const ydk::Enum::YLeaf router_selection;
-        static const ydk::Enum::YLeaf time_exceeded;
-        static const ydk::Enum::YLeaf parameter_problem;
-        static const ydk::Enum::YLeaf time_stamp;
-        static const ydk::Enum::YLeaf time_stamp_reply;
-        static const ydk::Enum::YLeaf information_request;
-        static const ydk::Enum::YLeaf information_reply;
-        static const ydk::Enum::YLeaf address_mask_request;
-        static const ydk::Enum::YLeaf address_mask_reply;
-        static const ydk::Enum::YLeaf trace_route;
-        static const ydk::Enum::YLeaf datagram_conversion_error;
-        static const ydk::Enum::YLeaf mobile_host_redirect;
-        static const ydk::Enum::YLeaf where_are_you;
-        static const ydk::Enum::YLeaf iam_here;
-        static const ydk::Enum::YLeaf mobile_registration_request;
-        static const ydk::Enum::YLeaf mobile_registration_reply;
-        static const ydk::Enum::YLeaf domain_name_request;
-
-};
-
-class Packet : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icmp;
-        static const ydk::Enum::YLeaf icm_pv6;
-        static const ydk::Enum::YLeaf igmp;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
 class NsrDownReason : public ydk::Enum
 {
     public:
@@ -3329,23 +3382,6 @@ class NsrDownReason : public ydk::Enum
 
 };
 
-class NsrStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf na;
-
-};
-
-class AddrFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internetwork;
-        static const ydk::Enum::YLeaf ip_version6;
-
-};
-
 class TcpTimer : public ydk::Enum
 {
     public:
@@ -3357,42 +3393,6 @@ class TcpTimer : public ydk::Enum
         static const ydk::Enum::YLeaf pmtu_ager_timer;
         static const ydk::Enum::YLeaf retransmission_giveup_timer;
         static const ydk::Enum::YLeaf throttle_timer;
-
-};
-
-class PakPrio : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unspecified_packet;
-        static const ydk::Enum::YLeaf normal_packet;
-        static const ydk::Enum::YLeaf medium_packet;
-        static const ydk::Enum::YLeaf high_packet;
-        static const ydk::Enum::YLeaf crucial_packet;
-
-};
-
-class TcpConnState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf closed;
-        static const ydk::Enum::YLeaf listen;
-        static const ydk::Enum::YLeaf syn_sent;
-        static const ydk::Enum::YLeaf syn_received;
-        static const ydk::Enum::YLeaf established;
-        static const ydk::Enum::YLeaf close_wait;
-        static const ydk::Enum::YLeaf fin_wait1;
-        static const ydk::Enum::YLeaf closing;
-        static const ydk::Enum::YLeaf last_ack;
-        static const ydk::Enum::YLeaf fin_wait2;
-        static const ydk::Enum::YLeaf time_wait;
-
-};
-
-class TcpAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
 
 };
 

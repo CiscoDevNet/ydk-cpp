@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_sysadmin_issu {
 Issu::Issu()
     :
     status(std::make_shared<Issu::Status>())
-	,clients(std::make_shared<Issu::Clients>())
-	,internals(std::make_shared<Issu::Internals>())
+    , clients(std::make_shared<Issu::Clients>())
+    , internals(std::make_shared<Issu::Internals>())
 {
     status->parent = this;
     clients->parent = this;
     internals->parent = this;
 
-    yang_name = "issu"; yang_parent_name = "Cisco-IOS-XR-sysadmin-issu"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "issu"; yang_parent_name = "Cisco-IOS-XR-sysadmin-issu"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Issu::~Issu()
@@ -30,6 +30,7 @@ Issu::~Issu()
 
 bool Issu::has_data() const
 {
+    if (is_presence_container) return true;
     return (status !=  nullptr && status->has_data())
 	|| (clients !=  nullptr && clients->has_data())
 	|| (internals !=  nullptr && internals->has_data());
@@ -164,16 +165,16 @@ Issu::Status::Status()
     complete{YType::boolean, "complete"},
     result{YType::enumeration, "result"},
     recover_result{YType::enumeration, "recover-result"}
-    	,
+        ,
     prepare(std::make_shared<Issu::Status::Prepare>())
-	,activate(std::make_shared<Issu::Status::Activate>())
-	,error(std::make_shared<Issu::Status::Error>())
+    , activate(std::make_shared<Issu::Status::Activate>())
+    , error(std::make_shared<Issu::Status::Error>())
 {
     prepare->parent = this;
     activate->parent = this;
     error->parent = this;
 
-    yang_name = "status"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "status"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Status::~Status()
@@ -182,6 +183,7 @@ Issu::Status::~Status()
 
 bool Issu::Status::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : sysadmin_packages.getYLeafs())
     {
         if(leaf.is_set)
@@ -428,7 +430,7 @@ Issu::Status::Prepare::Prepare()
     activity_start_time{YType::str, "activity-start-time"}
 {
 
-    yang_name = "prepare"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prepare"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Status::Prepare::~Prepare()
@@ -437,6 +439,7 @@ Issu::Status::Prepare::~Prepare()
 
 bool Issu::Status::Prepare::has_data() const
 {
+    if (is_presence_container) return true;
     return stage.is_set
 	|| start_time.is_set
 	|| activity.is_set
@@ -556,7 +559,7 @@ Issu::Status::Activate::Activate()
     activity_start_time{YType::str, "activity-start-time"}
 {
 
-    yang_name = "activate"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "activate"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Status::Activate::~Activate()
@@ -565,6 +568,7 @@ Issu::Status::Activate::~Activate()
 
 bool Issu::Status::Activate::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : activity_nodes.getYLeafs())
     {
         if(leaf.is_set)
@@ -713,12 +717,12 @@ Issu::Status::Error::Error()
     result{YType::enumeration, "result"},
     stage{YType::enumeration, "stage"},
     error_message{YType::str, "error-message"}
-    	,
+        ,
     details(std::make_shared<Issu::Status::Error::Details>())
 {
     details->parent = this;
 
-    yang_name = "error"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "error"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Status::Error::~Error()
@@ -727,6 +731,7 @@ Issu::Status::Error::~Error()
 
 bool Issu::Status::Error::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set
 	|| stage.is_set
 	|| error_message.is_set
@@ -847,7 +852,7 @@ Issu::Status::Error::Details::Details()
     operation_ids{YType::uint32, "operation-ids"}
 {
 
-    yang_name = "details"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "details"; yang_parent_name = "error"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Status::Error::Details::~Details()
@@ -856,6 +861,7 @@ Issu::Status::Error::Details::~Details()
 
 bool Issu::Status::Error::Details::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : nodes.getYLeafs())
     {
         if(leaf.is_set)
@@ -1002,9 +1008,11 @@ Issu::Clients::Clients()
     :
     announcement{YType::enumeration, "announcement"},
     announcement_status{YType::enumeration, "announcement-status"}
+        ,
+    client(this, {"name", "location"})
 {
 
-    yang_name = "clients"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clients"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Clients::~Clients()
@@ -1013,7 +1021,8 @@ Issu::Clients::~Clients()
 
 bool Issu::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -1024,7 +1033,7 @@ bool Issu::Clients::has_data() const
 
 bool Issu::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -1065,7 +1074,7 @@ std::shared_ptr<Entity> Issu::Clients::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Issu::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -1077,7 +1086,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Clients::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1134,7 +1143,7 @@ Issu::Clients::Client::Client()
     abort_reason{YType::str, "abort-reason"}
 {
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Clients::Client::~Client()
@@ -1143,6 +1152,7 @@ Issu::Clients::Client::~Client()
 
 bool Issu::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : registered_for.getYLeafs())
     {
         if(leaf.is_set)
@@ -1183,7 +1193,9 @@ std::string Issu::Clients::Client::get_absolute_path() const
 std::string Issu::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[name='" <<name <<"']" <<"[location='" <<location <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1302,14 +1314,14 @@ bool Issu::Clients::Client::has_leaf_or_child_of_name(const std::string & name) 
 Issu::Internals::Internals()
     :
     orchestrator(std::make_shared<Issu::Internals::Orchestrator>())
-	,agents(std::make_shared<Issu::Internals::Agents>())
-	,inventory_monitor(std::make_shared<Issu::Internals::InventoryMonitor>())
+    , agents(std::make_shared<Issu::Internals::Agents>())
+    , inventory_monitor(std::make_shared<Issu::Internals::InventoryMonitor>())
 {
     orchestrator->parent = this;
     agents->parent = this;
     inventory_monitor->parent = this;
 
-    yang_name = "internals"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "internals"; yang_parent_name = "issu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::~Internals()
@@ -1318,6 +1330,7 @@ Issu::Internals::~Internals()
 
 bool Issu::Internals::has_data() const
 {
+    if (is_presence_container) return true;
     return (orchestrator !=  nullptr && orchestrator->has_data())
 	|| (agents !=  nullptr && agents->has_data())
 	|| (inventory_monitor !=  nullptr && inventory_monitor->has_data());
@@ -1431,18 +1444,18 @@ Issu::Internals::Orchestrator::Orchestrator()
     issu_completed{YType::boolean, "issu-completed"},
     operation_id{YType::uint32, "operation-id"},
     in_progress{YType::boolean, "in-progress"}
-    	,
+        ,
     operation_start_details(std::make_shared<Issu::Internals::Orchestrator::OperationStartDetails>())
-	,internal_prepare(std::make_shared<Issu::Internals::Orchestrator::InternalPrepare>())
-	,internal_activate(std::make_shared<Issu::Internals::Orchestrator::InternalActivate>())
-	,error(std::make_shared<Issu::Internals::Orchestrator::Error>())
+    , internal_prepare(std::make_shared<Issu::Internals::Orchestrator::InternalPrepare>())
+    , internal_activate(std::make_shared<Issu::Internals::Orchestrator::InternalActivate>())
+    , error(std::make_shared<Issu::Internals::Orchestrator::Error>())
 {
     operation_start_details->parent = this;
     internal_prepare->parent = this;
     internal_activate->parent = this;
     error->parent = this;
 
-    yang_name = "orchestrator"; yang_parent_name = "internals"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "orchestrator"; yang_parent_name = "internals"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::~Orchestrator()
@@ -1451,6 +1464,7 @@ Issu::Internals::Orchestrator::~Orchestrator()
 
 bool Issu::Internals::Orchestrator::has_data() const
 {
+    if (is_presence_container) return true;
     return command.is_set
 	|| operation_type.is_set
 	|| current_operation.is_set
@@ -1656,7 +1670,7 @@ Issu::Internals::Orchestrator::OperationStartDetails::OperationStartDetails()
     input_operation_id{YType::uint32, "input-operation-id"}
 {
 
-    yang_name = "operation-start-details"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-start-details"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::OperationStartDetails::~OperationStartDetails()
@@ -1665,6 +1679,7 @@ Issu::Internals::Orchestrator::OperationStartDetails::~OperationStartDetails()
 
 bool Issu::Internals::Orchestrator::OperationStartDetails::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : input_package.getYLeafs())
     {
         if(leaf.is_set)
@@ -1772,12 +1787,12 @@ Issu::Internals::Orchestrator::InternalPrepare::InternalPrepare()
     current_stage{YType::enumeration, "current-stage"},
     host_package{YType::str, "host-package"},
     calvados_package{YType::str, "calvados-package"}
-    	,
+        ,
     prepare_stage_history(std::make_shared<Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory>())
 {
     prepare_stage_history->parent = this;
 
-    yang_name = "internal-prepare"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "internal-prepare"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::InternalPrepare::~InternalPrepare()
@@ -1786,6 +1801,7 @@ Issu::Internals::Orchestrator::InternalPrepare::~InternalPrepare()
 
 bool Issu::Internals::Orchestrator::InternalPrepare::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : host_package.getYLeafs())
     {
         if(leaf.is_set)
@@ -1941,9 +1957,11 @@ bool Issu::Internals::Orchestrator::InternalPrepare::has_leaf_or_child_of_name(c
 }
 
 Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::PrepareStageHistory()
+    :
+    historical_stage(this, {"stage_index"})
 {
 
-    yang_name = "prepare-stage-history"; yang_parent_name = "internal-prepare"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prepare-stage-history"; yang_parent_name = "internal-prepare"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::~PrepareStageHistory()
@@ -1952,7 +1970,8 @@ Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::~PrepareSta
 
 bool Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::has_data() const
 {
-    for (std::size_t index=0; index<historical_stage.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<historical_stage.len(); index++)
     {
         if(historical_stage[index]->has_data())
             return true;
@@ -1962,7 +1981,7 @@ bool Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::has_da
 
 bool Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::has_operation() const
 {
-    for (std::size_t index=0; index<historical_stage.size(); index++)
+    for (std::size_t index=0; index<historical_stage.len(); index++)
     {
         if(historical_stage[index]->has_operation())
             return true;
@@ -1999,7 +2018,7 @@ std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalPrepare::PrepareS
     {
         auto c = std::make_shared<Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage>();
         c->parent = this;
-        historical_stage.push_back(c);
+        historical_stage.append(c);
         return c;
     }
 
@@ -2011,7 +2030,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : historical_stage)
+    for (auto c : historical_stage.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2049,7 +2068,7 @@ Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalS
     complete{YType::boolean, "complete"}
 {
 
-    yang_name = "historical-stage"; yang_parent_name = "prepare-stage-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "historical-stage"; yang_parent_name = "prepare-stage-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::~HistoricalStage()
@@ -2058,6 +2077,7 @@ Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalS
 
 bool Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::has_data() const
 {
+    if (is_presence_container) return true;
     return stage_index.is_set
 	|| external_stage.is_set
 	|| internal_stage_details.is_set
@@ -2091,7 +2111,8 @@ std::string Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory:
 std::string Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "historical-stage" <<"[stage-index='" <<stage_index <<"']";
+    path_buffer << "historical-stage";
+    ADD_KEY_TOKEN(stage_index, "stage-index");
     return path_buffer.str();
 }
 
@@ -2230,12 +2251,12 @@ Issu::Internals::Orchestrator::InternalActivate::InternalActivate()
     host_node{YType::str, "host-node"},
     calvados_phase_one_node{YType::str, "calvados-phase-one-node"},
     calvados_phase_two_node{YType::str, "calvados-phase-two-node"}
-    	,
+        ,
     activate_stage_history(std::make_shared<Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory>())
 {
     activate_stage_history->parent = this;
 
-    yang_name = "internal-activate"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "internal-activate"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::InternalActivate::~InternalActivate()
@@ -2244,6 +2265,7 @@ Issu::Internals::Orchestrator::InternalActivate::~InternalActivate()
 
 bool Issu::Internals::Orchestrator::InternalActivate::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : host_node.getYLeafs())
     {
         if(leaf.is_set)
@@ -2459,9 +2481,11 @@ bool Issu::Internals::Orchestrator::InternalActivate::has_leaf_or_child_of_name(
 }
 
 Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::ActivateStageHistory()
+    :
+    historical_stage(this, {"stage_index"})
 {
 
-    yang_name = "activate-stage-history"; yang_parent_name = "internal-activate"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "activate-stage-history"; yang_parent_name = "internal-activate"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::~ActivateStageHistory()
@@ -2470,7 +2494,8 @@ Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::~Activate
 
 bool Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::has_data() const
 {
-    for (std::size_t index=0; index<historical_stage.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<historical_stage.len(); index++)
     {
         if(historical_stage[index]->has_data())
             return true;
@@ -2480,7 +2505,7 @@ bool Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::has_
 
 bool Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::has_operation() const
 {
-    for (std::size_t index=0; index<historical_stage.size(); index++)
+    for (std::size_t index=0; index<historical_stage.len(); index++)
     {
         if(historical_stage[index]->has_operation())
             return true;
@@ -2517,7 +2542,7 @@ std::shared_ptr<Entity> Issu::Internals::Orchestrator::InternalActivate::Activat
     {
         auto c = std::make_shared<Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage>();
         c->parent = this;
-        historical_stage.push_back(c);
+        historical_stage.append(c);
         return c;
     }
 
@@ -2529,7 +2554,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Orchestrator::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : historical_stage)
+    for (auto c : historical_stage.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2567,7 +2592,7 @@ Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::Historica
     complete{YType::boolean, "complete"}
 {
 
-    yang_name = "historical-stage"; yang_parent_name = "activate-stage-history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "historical-stage"; yang_parent_name = "activate-stage-history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::~HistoricalStage()
@@ -2576,6 +2601,7 @@ Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::Historica
 
 bool Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::has_data() const
 {
+    if (is_presence_container) return true;
     return stage_index.is_set
 	|| external_stage.is_set
 	|| internal_stage_details.is_set
@@ -2609,7 +2635,8 @@ std::string Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistor
 std::string Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "historical-stage" <<"[stage-index='" <<stage_index <<"']";
+    path_buffer << "historical-stage";
+    ADD_KEY_TOKEN(stage_index, "stage-index");
     return path_buffer.str();
 }
 
@@ -2752,7 +2779,7 @@ Issu::Internals::Orchestrator::Error::Error()
     recovery_status{YType::str, "recovery-status"}
 {
 
-    yang_name = "error"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "error"; yang_parent_name = "orchestrator"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Orchestrator::Error::~Error()
@@ -2761,6 +2788,7 @@ Issu::Internals::Orchestrator::Error::~Error()
 
 bool Issu::Internals::Orchestrator::Error::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : failed_node.getYLeafs())
     {
         if(leaf.is_set)
@@ -2996,14 +3024,14 @@ bool Issu::Internals::Orchestrator::Error::has_leaf_or_child_of_name(const std::
 Issu::Internals::Agents::Agents()
     :
     requests(std::make_shared<Issu::Internals::Agents::Requests>())
-	,inventory(std::make_shared<Issu::Internals::Agents::Inventory>())
-	,reload_tracking(std::make_shared<Issu::Internals::Agents::ReloadTracking>())
+    , inventory(std::make_shared<Issu::Internals::Agents::Inventory>())
+    , reload_tracking(std::make_shared<Issu::Internals::Agents::ReloadTracking>())
 {
     requests->parent = this;
     inventory->parent = this;
     reload_tracking->parent = this;
 
-    yang_name = "agents"; yang_parent_name = "internals"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agents"; yang_parent_name = "internals"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Agents::~Agents()
@@ -3012,6 +3040,7 @@ Issu::Internals::Agents::~Agents()
 
 bool Issu::Internals::Agents::has_data() const
 {
+    if (is_presence_container) return true;
     return (requests !=  nullptr && requests->has_data())
 	|| (inventory !=  nullptr && inventory->has_data())
 	|| (reload_tracking !=  nullptr && reload_tracking->has_data());
@@ -3118,9 +3147,11 @@ bool Issu::Internals::Agents::has_leaf_or_child_of_name(const std::string & name
 }
 
 Issu::Internals::Agents::Requests::Requests()
+    :
+    request(this, {"request_index"})
 {
 
-    yang_name = "requests"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "requests"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Agents::Requests::~Requests()
@@ -3129,7 +3160,8 @@ Issu::Internals::Agents::Requests::~Requests()
 
 bool Issu::Internals::Agents::Requests::has_data() const
 {
-    for (std::size_t index=0; index<request.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<request.len(); index++)
     {
         if(request[index]->has_data())
             return true;
@@ -3139,7 +3171,7 @@ bool Issu::Internals::Agents::Requests::has_data() const
 
 bool Issu::Internals::Agents::Requests::has_operation() const
 {
-    for (std::size_t index=0; index<request.size(); index++)
+    for (std::size_t index=0; index<request.len(); index++)
     {
         if(request[index]->has_operation())
             return true;
@@ -3176,7 +3208,7 @@ std::shared_ptr<Entity> Issu::Internals::Agents::Requests::get_child_by_name(con
     {
         auto c = std::make_shared<Issu::Internals::Agents::Requests::Request>();
         c->parent = this;
-        request.push_back(c);
+        request.append(c);
         return c;
     }
 
@@ -3188,7 +3220,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : request)
+    for (auto c : request.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3220,14 +3252,14 @@ Issu::Internals::Agents::Requests::Request::Request()
     request_type{YType::enumeration, "request-type"},
     requests_sent{YType::uint32, "requests-sent"},
     responses_received{YType::uint32, "responses-received"}
-    	,
+        ,
     checkpoint(std::make_shared<Issu::Internals::Agents::Requests::Request::Checkpoint>())
-	,agents(std::make_shared<Issu::Internals::Agents::Requests::Request::Agents_>())
+    , agents(std::make_shared<Issu::Internals::Agents::Requests::Request::Agents_>())
 {
     checkpoint->parent = this;
     agents->parent = this;
 
-    yang_name = "request"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "request"; yang_parent_name = "requests"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Agents::Requests::Request::~Request()
@@ -3236,6 +3268,7 @@ Issu::Internals::Agents::Requests::Request::~Request()
 
 bool Issu::Internals::Agents::Requests::Request::has_data() const
 {
+    if (is_presence_container) return true;
     return request_index.is_set
 	|| request_type.is_set
 	|| requests_sent.is_set
@@ -3265,7 +3298,8 @@ std::string Issu::Internals::Agents::Requests::Request::get_absolute_path() cons
 std::string Issu::Internals::Agents::Requests::Request::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "request" <<"[request-index='" <<request_index <<"']";
+    path_buffer << "request";
+    ADD_KEY_TOKEN(request_index, "request-index");
     return path_buffer.str();
 }
 
@@ -3384,7 +3418,7 @@ Issu::Internals::Agents::Requests::Request::Checkpoint::Checkpoint()
     filename{YType::str, "filename"}
 {
 
-    yang_name = "checkpoint"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "checkpoint"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Issu::Internals::Agents::Requests::Request::Checkpoint::~Checkpoint()
@@ -3393,6 +3427,7 @@ Issu::Internals::Agents::Requests::Request::Checkpoint::~Checkpoint()
 
 bool Issu::Internals::Agents::Requests::Request::Checkpoint::has_data() const
 {
+    if (is_presence_container) return true;
     return message_type.is_set
 	|| data_length.is_set
 	|| filename.is_set;
@@ -3483,9 +3518,11 @@ bool Issu::Internals::Agents::Requests::Request::Checkpoint::has_leaf_or_child_o
 }
 
 Issu::Internals::Agents::Requests::Request::Agents_::Agents_()
+    :
+    agent(this, {"agent_index"})
 {
 
-    yang_name = "agents"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "agents"; yang_parent_name = "request"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Issu::Internals::Agents::Requests::Request::Agents_::~Agents_()
@@ -3494,7 +3531,8 @@ Issu::Internals::Agents::Requests::Request::Agents_::~Agents_()
 
 bool Issu::Internals::Agents::Requests::Request::Agents_::has_data() const
 {
-    for (std::size_t index=0; index<agent.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<agent.len(); index++)
     {
         if(agent[index]->has_data())
             return true;
@@ -3504,7 +3542,7 @@ bool Issu::Internals::Agents::Requests::Request::Agents_::has_data() const
 
 bool Issu::Internals::Agents::Requests::Request::Agents_::has_operation() const
 {
-    for (std::size_t index=0; index<agent.size(); index++)
+    for (std::size_t index=0; index<agent.len(); index++)
     {
         if(agent[index]->has_operation())
             return true;
@@ -3534,7 +3572,7 @@ std::shared_ptr<Entity> Issu::Internals::Agents::Requests::Request::Agents_::get
     {
         auto c = std::make_shared<Issu::Internals::Agents::Requests::Request::Agents_::Agent>();
         c->parent = this;
-        agent.push_back(c);
+        agent.append(c);
         return c;
     }
 
@@ -3546,7 +3584,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Requests
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : agent)
+    for (auto c : agent.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3577,12 +3615,12 @@ Issu::Internals::Agents::Requests::Request::Agents_::Agent::Agent()
     agent_index{YType::uint32, "agent-index"},
     node{YType::str, "node"},
     waiting_for_response{YType::boolean, "waiting-for-response"}
-    	,
+        ,
     response_contents(std::make_shared<Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents>())
 {
     response_contents->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "agent"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Issu::Internals::Agents::Requests::Request::Agents_::Agent::~Agent()
@@ -3591,6 +3629,7 @@ Issu::Internals::Agents::Requests::Request::Agents_::Agent::~Agent()
 
 bool Issu::Internals::Agents::Requests::Request::Agents_::Agent::has_data() const
 {
+    if (is_presence_container) return true;
     return agent_index.is_set
 	|| node.is_set
 	|| waiting_for_response.is_set
@@ -3609,7 +3648,8 @@ bool Issu::Internals::Agents::Requests::Request::Agents_::Agent::has_operation()
 std::string Issu::Internals::Agents::Requests::Request::Agents_::Agent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "agent" <<"[agent-index='" <<agent_index <<"']";
+    path_buffer << "agent";
+    ADD_KEY_TOKEN(agent_index, "agent-index");
     return path_buffer.str();
 }
 
@@ -3702,7 +3742,7 @@ Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::Re
     error_details{YType::str, "error-details"}
 {
 
-    yang_name = "response-contents"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "response-contents"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::~ResponseContents()
@@ -3711,6 +3751,7 @@ Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::~R
 
 bool Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContents::has_data() const
 {
+    if (is_presence_container) return true;
     return agent_status.is_set
 	|| error_details.is_set;
 }
@@ -3788,9 +3829,11 @@ bool Issu::Internals::Agents::Requests::Request::Agents_::Agent::ResponseContent
 }
 
 Issu::Internals::Agents::Inventory::Inventory()
+    :
+    agent(this, {"agent_index"})
 {
 
-    yang_name = "inventory"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Agents::Inventory::~Inventory()
@@ -3799,7 +3842,8 @@ Issu::Internals::Agents::Inventory::~Inventory()
 
 bool Issu::Internals::Agents::Inventory::has_data() const
 {
-    for (std::size_t index=0; index<agent.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<agent.len(); index++)
     {
         if(agent[index]->has_data())
             return true;
@@ -3809,7 +3853,7 @@ bool Issu::Internals::Agents::Inventory::has_data() const
 
 bool Issu::Internals::Agents::Inventory::has_operation() const
 {
-    for (std::size_t index=0; index<agent.size(); index++)
+    for (std::size_t index=0; index<agent.len(); index++)
     {
         if(agent[index]->has_operation())
             return true;
@@ -3846,7 +3890,7 @@ std::shared_ptr<Entity> Issu::Internals::Agents::Inventory::get_child_by_name(co
     {
         auto c = std::make_shared<Issu::Internals::Agents::Inventory::Agent>();
         c->parent = this;
-        agent.push_back(c);
+        agent.append(c);
         return c;
     }
 
@@ -3858,7 +3902,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::Inventor
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : agent)
+    for (auto c : agent.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3891,7 +3935,7 @@ Issu::Internals::Agents::Inventory::Agent::Agent()
     reloaded{YType::boolean, "reloaded"}
 {
 
-    yang_name = "agent"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agent"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Agents::Inventory::Agent::~Agent()
@@ -3900,6 +3944,7 @@ Issu::Internals::Agents::Inventory::Agent::~Agent()
 
 bool Issu::Internals::Agents::Inventory::Agent::has_data() const
 {
+    if (is_presence_container) return true;
     return agent_index.is_set
 	|| agent_node.is_set
 	|| reloaded.is_set;
@@ -3923,7 +3968,8 @@ std::string Issu::Internals::Agents::Inventory::Agent::get_absolute_path() const
 std::string Issu::Internals::Agents::Inventory::Agent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "agent" <<"[agent-index='" <<agent_index <<"']";
+    path_buffer << "agent";
+    ADD_KEY_TOKEN(agent_index, "agent-index");
     return path_buffer.str();
 }
 
@@ -4000,9 +4046,11 @@ Issu::Internals::Agents::ReloadTracking::ReloadTracking()
     :
     in_progress{YType::boolean, "in-progress"},
     remaining_nodes_count{YType::uint32, "remaining-nodes-count"}
+        ,
+    node(this, {"node_index"})
 {
 
-    yang_name = "reload-tracking"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reload-tracking"; yang_parent_name = "agents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Agents::ReloadTracking::~ReloadTracking()
@@ -4011,7 +4059,8 @@ Issu::Internals::Agents::ReloadTracking::~ReloadTracking()
 
 bool Issu::Internals::Agents::ReloadTracking::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -4022,7 +4071,7 @@ bool Issu::Internals::Agents::ReloadTracking::has_data() const
 
 bool Issu::Internals::Agents::ReloadTracking::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -4063,7 +4112,7 @@ std::shared_ptr<Entity> Issu::Internals::Agents::ReloadTracking::get_child_by_na
     {
         auto c = std::make_shared<Issu::Internals::Agents::ReloadTracking::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -4075,7 +4124,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::Agents::ReloadTr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4128,7 +4177,7 @@ Issu::Internals::Agents::ReloadTracking::Node::Node()
     reloaded{YType::boolean, "reloaded"}
 {
 
-    yang_name = "node"; yang_parent_name = "reload-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "reload-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::Agents::ReloadTracking::Node::~Node()
@@ -4137,6 +4186,7 @@ Issu::Internals::Agents::ReloadTracking::Node::~Node()
 
 bool Issu::Internals::Agents::ReloadTracking::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_index.is_set
 	|| id.is_set
 	|| reloaded.is_set;
@@ -4160,7 +4210,8 @@ std::string Issu::Internals::Agents::ReloadTracking::Node::get_absolute_path() c
 std::string Issu::Internals::Agents::ReloadTracking::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-index='" <<node_index <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_index, "node-index");
     return path_buffer.str();
 }
 
@@ -4239,7 +4290,7 @@ Issu::Internals::InventoryMonitor::InventoryMonitor()
 {
     inventory->parent = this;
 
-    yang_name = "inventory-monitor"; yang_parent_name = "internals"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory-monitor"; yang_parent_name = "internals"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::InventoryMonitor::~InventoryMonitor()
@@ -4248,6 +4299,7 @@ Issu::Internals::InventoryMonitor::~InventoryMonitor()
 
 bool Issu::Internals::InventoryMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return (inventory !=  nullptr && inventory->has_data());
 }
 
@@ -4322,9 +4374,11 @@ bool Issu::Internals::InventoryMonitor::has_leaf_or_child_of_name(const std::str
 }
 
 Issu::Internals::InventoryMonitor::Inventory::Inventory()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "inventory"; yang_parent_name = "inventory-monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inventory"; yang_parent_name = "inventory-monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::InventoryMonitor::Inventory::~Inventory()
@@ -4333,7 +4387,8 @@ Issu::Internals::InventoryMonitor::Inventory::~Inventory()
 
 bool Issu::Internals::InventoryMonitor::Inventory::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -4343,7 +4398,7 @@ bool Issu::Internals::InventoryMonitor::Inventory::has_data() const
 
 bool Issu::Internals::InventoryMonitor::Inventory::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -4380,7 +4435,7 @@ std::shared_ptr<Entity> Issu::Internals::InventoryMonitor::Inventory::get_child_
     {
         auto c = std::make_shared<Issu::Internals::InventoryMonitor::Inventory::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -4392,7 +4447,7 @@ std::map<std::string, std::shared_ptr<Entity>> Issu::Internals::InventoryMonitor
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4424,7 +4479,7 @@ Issu::Internals::InventoryMonitor::Inventory::Node::Node()
     ip{YType::str, "ip"}
 {
 
-    yang_name = "node"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "inventory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Issu::Internals::InventoryMonitor::Inventory::Node::~Node()
@@ -4433,6 +4488,7 @@ Issu::Internals::InventoryMonitor::Inventory::Node::~Node()
 
 bool Issu::Internals::InventoryMonitor::Inventory::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| ip.is_set;
 }
@@ -4454,7 +4510,8 @@ std::string Issu::Internals::InventoryMonitor::Inventory::Node::get_absolute_pat
 std::string Issu::Internals::InventoryMonitor::Inventory::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -4516,23 +4573,6 @@ bool Issu::Internals::InventoryMonitor::Inventory::Node::has_leaf_or_child_of_na
     return false;
 }
 
-const Enum::YLeaf OpStartResult::start_success {0, "start-success"};
-const Enum::YLeaf OpStartResult::error_operation_in_progress {1, "error-operation-in-progress"};
-const Enum::YLeaf OpStartResult::activate_error_no_prepare {2, "activate-error-no-prepare"};
-const Enum::YLeaf OpStartResult::prepare_error_previous_prepare {3, "prepare-error-previous-prepare"};
-const Enum::YLeaf OpStartResult::recover_error_unrecoverable {4, "recover-error-unrecoverable"};
-const Enum::YLeaf OpStartResult::start_error_internal {5, "start-error-internal"};
-
-const Enum::YLeaf OpResult::success {0, "success"};
-const Enum::YLeaf OpResult::error_input {1, "error-input"};
-const Enum::YLeaf OpResult::error_orchestration {2, "error-orchestration"};
-const Enum::YLeaf OpResult::error_install {3, "error-install"};
-const Enum::YLeaf OpResult::error_node_redundancy {4, "error-node-redundancy"};
-
-const Enum::YLeaf IssuNotif::notif_sysadmin_op_start {0, "notif-sysadmin-op-start"};
-const Enum::YLeaf IssuNotif::notif_sysadmin_phase_start {1, "notif-sysadmin-phase-start"};
-const Enum::YLeaf IssuNotif::notif_sysadmin_op_end {2, "notif-sysadmin-op-end"};
-
 const Enum::YLeaf OpStage::prepare_preamble {0, "prepare-preamble"};
 const Enum::YLeaf OpStage::prepare_host {1, "prepare-host"};
 const Enum::YLeaf OpStage::prepare_sysadmin {2, "prepare-sysadmin"};
@@ -4547,6 +4587,23 @@ const Enum::YLeaf OpStage::activate_aborting {10, "activate-aborting"};
 const Enum::YLeaf OpStage::activate_paused {11, "activate-paused"};
 const Enum::YLeaf OpStage::activate_postamble {12, "activate-postamble"};
 const Enum::YLeaf OpStage::activate_complete {13, "activate-complete"};
+
+const Enum::YLeaf IssuNotif::notif_sysadmin_op_start {0, "notif-sysadmin-op-start"};
+const Enum::YLeaf IssuNotif::notif_sysadmin_phase_start {1, "notif-sysadmin-phase-start"};
+const Enum::YLeaf IssuNotif::notif_sysadmin_op_end {2, "notif-sysadmin-op-end"};
+
+const Enum::YLeaf OpResult::success {0, "success"};
+const Enum::YLeaf OpResult::error_input {1, "error-input"};
+const Enum::YLeaf OpResult::error_orchestration {2, "error-orchestration"};
+const Enum::YLeaf OpResult::error_install {3, "error-install"};
+const Enum::YLeaf OpResult::error_node_redundancy {4, "error-node-redundancy"};
+
+const Enum::YLeaf OpStartResult::start_success {0, "start-success"};
+const Enum::YLeaf OpStartResult::error_operation_in_progress {1, "error-operation-in-progress"};
+const Enum::YLeaf OpStartResult::activate_error_no_prepare {2, "activate-error-no-prepare"};
+const Enum::YLeaf OpStartResult::prepare_error_previous_prepare {3, "prepare-error-previous-prepare"};
+const Enum::YLeaf OpStartResult::recover_error_unrecoverable {4, "recover-error-unrecoverable"};
+const Enum::YLeaf OpStartResult::start_error_internal {5, "start-error-internal"};
 
 const Enum::YLeaf Issu::Status::OperationType::no_operation {0, "no-operation"};
 const Enum::YLeaf Issu::Status::OperationType::activate_operation {1, "activate-operation"};
@@ -4570,6 +4627,9 @@ const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_timeout {5, "notif
 const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_send_error {6, "notif-resp-send-error"};
 const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_client_error {7, "notif-resp-client-error"};
 const Enum::YLeaf Issu::Clients::Client::Response::notif_resp_client_abort {8, "notif-resp-client-abort"};
+
+const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_one {0, "calvados-activate-phase-one"};
+const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_two {1, "calvados-activate-phase-two"};
 
 const Enum::YLeaf Issu::Internals::OpRequestType::operation_request_prepare {0, "operation-request-prepare"};
 const Enum::YLeaf Issu::Internals::OpRequestType::operation_request_activate {1, "operation-request-activate"};
@@ -4604,9 +4664,6 @@ const Enum::YLeaf Issu::Internals::StageType::activate_abort_unrecoverable {24, 
 const Enum::YLeaf Issu::Internals::StageType::activate_error_pause {25, "activate-error-pause"};
 const Enum::YLeaf Issu::Internals::StageType::activate_calvados_recovery {26, "activate-calvados-recovery"};
 const Enum::YLeaf Issu::Internals::StageType::activate_recovery_postamble {27, "activate-recovery-postamble"};
-
-const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_one {0, "calvados-activate-phase-one"};
-const Enum::YLeaf Issu::Internals::PhaseType::calvados_activate_phase_two {1, "calvados-activate-phase-two"};
 
 const Enum::YLeaf Issu::Internals::Agents::Requests::Request::RequestType::requests_node_ready {0, "requests-node-ready"};
 const Enum::YLeaf Issu::Internals::Agents::Requests::Request::RequestType::requests_checkpoint {1, "requests-checkpoint"};

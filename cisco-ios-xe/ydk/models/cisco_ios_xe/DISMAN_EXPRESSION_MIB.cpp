@@ -13,11 +13,11 @@ namespace DISMAN_EXPRESSION_MIB {
 
 DISMANEXPRESSIONMIB::DISMANEXPRESSIONMIB()
     :
-    expresource(std::make_shared<DISMANEXPRESSIONMIB::Expresource>())
-	,expexpressiontable(std::make_shared<DISMANEXPRESSIONMIB::Expexpressiontable>())
-	,experrortable(std::make_shared<DISMANEXPRESSIONMIB::Experrortable>())
-	,expobjecttable(std::make_shared<DISMANEXPRESSIONMIB::Expobjecttable>())
-	,expvaluetable(std::make_shared<DISMANEXPRESSIONMIB::Expvaluetable>())
+    expresource(std::make_shared<DISMANEXPRESSIONMIB::ExpResource>())
+    , expexpressiontable(std::make_shared<DISMANEXPRESSIONMIB::ExpExpressionTable>())
+    , experrortable(std::make_shared<DISMANEXPRESSIONMIB::ExpErrorTable>())
+    , expobjecttable(std::make_shared<DISMANEXPRESSIONMIB::ExpObjectTable>())
+    , expvaluetable(std::make_shared<DISMANEXPRESSIONMIB::ExpValueTable>())
 {
     expresource->parent = this;
     expexpressiontable->parent = this;
@@ -25,7 +25,7 @@ DISMANEXPRESSIONMIB::DISMANEXPRESSIONMIB()
     expobjecttable->parent = this;
     expvaluetable->parent = this;
 
-    yang_name = "DISMAN-EXPRESSION-MIB"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "DISMAN-EXPRESSION-MIB"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DISMANEXPRESSIONMIB::~DISMANEXPRESSIONMIB()
@@ -34,6 +34,7 @@ DISMANEXPRESSIONMIB::~DISMANEXPRESSIONMIB()
 
 bool DISMANEXPRESSIONMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (expresource !=  nullptr && expresource->has_data())
 	|| (expexpressiontable !=  nullptr && expexpressiontable->has_data())
 	|| (experrortable !=  nullptr && experrortable->has_data())
@@ -73,7 +74,7 @@ std::shared_ptr<Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string
     {
         if(expresource == nullptr)
         {
-            expresource = std::make_shared<DISMANEXPRESSIONMIB::Expresource>();
+            expresource = std::make_shared<DISMANEXPRESSIONMIB::ExpResource>();
         }
         return expresource;
     }
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string
     {
         if(expexpressiontable == nullptr)
         {
-            expexpressiontable = std::make_shared<DISMANEXPRESSIONMIB::Expexpressiontable>();
+            expexpressiontable = std::make_shared<DISMANEXPRESSIONMIB::ExpExpressionTable>();
         }
         return expexpressiontable;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string
     {
         if(experrortable == nullptr)
         {
-            experrortable = std::make_shared<DISMANEXPRESSIONMIB::Experrortable>();
+            experrortable = std::make_shared<DISMANEXPRESSIONMIB::ExpErrorTable>();
         }
         return experrortable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string
     {
         if(expobjecttable == nullptr)
         {
-            expobjecttable = std::make_shared<DISMANEXPRESSIONMIB::Expobjecttable>();
+            expobjecttable = std::make_shared<DISMANEXPRESSIONMIB::ExpObjectTable>();
         }
         return expobjecttable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> DISMANEXPRESSIONMIB::get_child_by_name(const std::string
     {
         if(expvaluetable == nullptr)
         {
-            expvaluetable = std::make_shared<DISMANEXPRESSIONMIB::Expvaluetable>();
+            expvaluetable = std::make_shared<DISMANEXPRESSIONMIB::ExpValueTable>();
         }
         return expvaluetable;
     }
@@ -189,7 +190,7 @@ bool DISMANEXPRESSIONMIB::has_leaf_or_child_of_name(const std::string & name) co
     return false;
 }
 
-DISMANEXPRESSIONMIB::Expresource::Expresource()
+DISMANEXPRESSIONMIB::ExpResource::ExpResource()
     :
     expresourcedeltaminimum{YType::int32, "expResourceDeltaMinimum"},
     expresourcedeltawildcardinstancemaximum{YType::uint32, "expResourceDeltaWildcardInstanceMaximum"},
@@ -198,15 +199,16 @@ DISMANEXPRESSIONMIB::Expresource::Expresource()
     expresourcedeltawildcardinstanceresourcelacks{YType::uint32, "expResourceDeltaWildcardInstanceResourceLacks"}
 {
 
-    yang_name = "expResource"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expResource"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Expresource::~Expresource()
+DISMANEXPRESSIONMIB::ExpResource::~ExpResource()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expresource::has_data() const
+bool DISMANEXPRESSIONMIB::ExpResource::has_data() const
 {
+    if (is_presence_container) return true;
     return expresourcedeltaminimum.is_set
 	|| expresourcedeltawildcardinstancemaximum.is_set
 	|| expresourcedeltawildcardinstances.is_set
@@ -214,7 +216,7 @@ bool DISMANEXPRESSIONMIB::Expresource::has_data() const
 	|| expresourcedeltawildcardinstanceresourcelacks.is_set;
 }
 
-bool DISMANEXPRESSIONMIB::Expresource::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpResource::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expresourcedeltaminimum.yfilter)
@@ -224,21 +226,21 @@ bool DISMANEXPRESSIONMIB::Expresource::has_operation() const
 	|| ydk::is_set(expresourcedeltawildcardinstanceresourcelacks.yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Expresource::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpResource::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Expresource::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpResource::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expResource";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expresource::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpResource::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -252,19 +254,19 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expresource:
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Expresource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpResource::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expresource::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpResource::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Expresource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpResource::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expResourceDeltaMinimum")
     {
@@ -298,7 +300,7 @@ void DISMANEXPRESSIONMIB::Expresource::set_value(const std::string & value_path,
     }
 }
 
-void DISMANEXPRESSIONMIB::Expresource::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpResource::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expResourceDeltaMinimum")
     {
@@ -322,26 +324,29 @@ void DISMANEXPRESSIONMIB::Expresource::set_filter(const std::string & value_path
     }
 }
 
-bool DISMANEXPRESSIONMIB::Expresource::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpResource::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expResourceDeltaMinimum" || name == "expResourceDeltaWildcardInstanceMaximum" || name == "expResourceDeltaWildcardInstances" || name == "expResourceDeltaWildcardInstancesHigh" || name == "expResourceDeltaWildcardInstanceResourceLacks")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressiontable()
+DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionTable()
+    :
+    expexpressionentry(this, {"expexpressionowner", "expexpressionname"})
 {
 
-    yang_name = "expExpressionTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expExpressionTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Expexpressiontable::~Expexpressiontable()
+DISMANEXPRESSIONMIB::ExpExpressionTable::~ExpExpressionTable()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expexpressiontable::has_data() const
+bool DISMANEXPRESSIONMIB::ExpExpressionTable::has_data() const
 {
-    for (std::size_t index=0; index<expexpressionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<expexpressionentry.len(); index++)
     {
         if(expexpressionentry[index]->has_data())
             return true;
@@ -349,9 +354,9 @@ bool DISMANEXPRESSIONMIB::Expexpressiontable::has_data() const
     return false;
 }
 
-bool DISMANEXPRESSIONMIB::Expexpressiontable::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpExpressionTable::has_operation() const
 {
-    for (std::size_t index=0; index<expexpressionentry.size(); index++)
+    for (std::size_t index=0; index<expexpressionentry.len(); index++)
     {
         if(expexpressionentry[index]->has_operation())
             return true;
@@ -359,21 +364,21 @@ bool DISMANEXPRESSIONMIB::Expexpressiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Expexpressiontable::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpExpressionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Expexpressiontable::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpExpressionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expExpressionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expexpressiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpExpressionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -382,25 +387,25 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expexpressio
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Expexpressiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpExpressionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expExpressionEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry>();
+        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry>();
         c->parent = this;
-        expexpressionentry.push_back(c);
+        expexpressionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expexpressiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpExpressionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : expexpressionentry)
+    for (auto c : expexpressionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -411,22 +416,22 @@ std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expexpressio
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Expexpressiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpExpressionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DISMANEXPRESSIONMIB::Expexpressiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpExpressionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expexpressiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpExpressionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionEntry")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionentry()
+DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionEntry()
     :
     expexpressionowner{YType::str, "expExpressionOwner"},
     expexpressionname{YType::str, "expExpressionName"},
@@ -439,15 +444,16 @@ DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionentry(
     expexpressionentrystatus{YType::enumeration, "expExpressionEntryStatus"}
 {
 
-    yang_name = "expExpressionEntry"; yang_parent_name = "expExpressionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expExpressionEntry"; yang_parent_name = "expExpressionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::~Expexpressionentry()
+DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::~ExpExpressionEntry()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_data() const
+bool DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return expexpressionowner.is_set
 	|| expexpressionname.is_set
 	|| expexpression.is_set
@@ -459,7 +465,7 @@ bool DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_data() con
 	|| expexpressionentrystatus.is_set;
 }
 
-bool DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expexpressionowner.yfilter)
@@ -473,21 +479,23 @@ bool DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_operation(
 	|| ydk::is_set(expexpressionentrystatus.yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/expExpressionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "expExpressionEntry" <<"[expExpressionOwner='" <<expexpressionowner <<"']" <<"[expExpressionName='" <<expexpressionname <<"']";
+    path_buffer << "expExpressionEntry";
+    ADD_KEY_TOKEN(expexpressionowner, "expExpressionOwner");
+    ADD_KEY_TOKEN(expexpressionname, "expExpressionName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -505,19 +513,19 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expexpressio
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -575,7 +583,7 @@ void DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::set_value(cons
     }
 }
 
-void DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -615,26 +623,29 @@ void DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::set_filter(con
     }
 }
 
-bool DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionOwner" || name == "expExpressionName" || name == "expExpression" || name == "expExpressionValueType" || name == "expExpressionComment" || name == "expExpressionDeltaInterval" || name == "expExpressionPrefix" || name == "expExpressionErrors" || name == "expExpressionEntryStatus")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Experrortable::Experrortable()
+DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorTable()
+    :
+    experrorentry(this, {"expexpressionowner", "expexpressionname"})
 {
 
-    yang_name = "expErrorTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expErrorTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Experrortable::~Experrortable()
+DISMANEXPRESSIONMIB::ExpErrorTable::~ExpErrorTable()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Experrortable::has_data() const
+bool DISMANEXPRESSIONMIB::ExpErrorTable::has_data() const
 {
-    for (std::size_t index=0; index<experrorentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<experrorentry.len(); index++)
     {
         if(experrorentry[index]->has_data())
             return true;
@@ -642,9 +653,9 @@ bool DISMANEXPRESSIONMIB::Experrortable::has_data() const
     return false;
 }
 
-bool DISMANEXPRESSIONMIB::Experrortable::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpErrorTable::has_operation() const
 {
-    for (std::size_t index=0; index<experrorentry.size(); index++)
+    for (std::size_t index=0; index<experrorentry.len(); index++)
     {
         if(experrorentry[index]->has_operation())
             return true;
@@ -652,21 +663,21 @@ bool DISMANEXPRESSIONMIB::Experrortable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Experrortable::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpErrorTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Experrortable::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpErrorTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expErrorTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Experrortable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpErrorTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -675,25 +686,25 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Experrortabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Experrortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpErrorTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expErrorEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::Experrortable::Experrorentry>();
+        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry>();
         c->parent = this;
-        experrorentry.push_back(c);
+        experrorentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Experrortable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpErrorTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : experrorentry)
+    for (auto c : experrorentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -704,22 +715,22 @@ std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Experrortabl
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Experrortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpErrorTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DISMANEXPRESSIONMIB::Experrortable::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpErrorTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DISMANEXPRESSIONMIB::Experrortable::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpErrorTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expErrorEntry")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorentry()
+DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorEntry()
     :
     expexpressionowner{YType::str, "expExpressionOwner"},
     expexpressionname{YType::str, "expExpressionName"},
@@ -729,15 +740,16 @@ DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorentry()
     experrorinstance{YType::str, "expErrorInstance"}
 {
 
-    yang_name = "expErrorEntry"; yang_parent_name = "expErrorTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expErrorEntry"; yang_parent_name = "expErrorTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Experrortable::Experrorentry::~Experrorentry()
+DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::~ExpErrorEntry()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Experrortable::Experrorentry::has_data() const
+bool DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return expexpressionowner.is_set
 	|| expexpressionname.is_set
 	|| experrortime.is_set
@@ -746,7 +758,7 @@ bool DISMANEXPRESSIONMIB::Experrortable::Experrorentry::has_data() const
 	|| experrorinstance.is_set;
 }
 
-bool DISMANEXPRESSIONMIB::Experrortable::Experrorentry::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expexpressionowner.yfilter)
@@ -757,21 +769,23 @@ bool DISMANEXPRESSIONMIB::Experrortable::Experrorentry::has_operation() const
 	|| ydk::is_set(experrorinstance.yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Experrortable::Experrorentry::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/expErrorTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Experrortable::Experrorentry::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "expErrorEntry" <<"[expExpressionOwner='" <<expexpressionowner <<"']" <<"[expExpressionName='" <<expexpressionname <<"']";
+    path_buffer << "expErrorEntry";
+    ADD_KEY_TOKEN(expexpressionowner, "expExpressionOwner");
+    ADD_KEY_TOKEN(expexpressionname, "expExpressionName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Experrortable::Experrorentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -786,19 +800,19 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Experrortabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Experrortable::Experrorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Experrortable::Experrorentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Experrortable::Experrorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -838,7 +852,7 @@ void DISMANEXPRESSIONMIB::Experrortable::Experrorentry::set_value(const std::str
     }
 }
 
-void DISMANEXPRESSIONMIB::Experrortable::Experrorentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -866,26 +880,29 @@ void DISMANEXPRESSIONMIB::Experrortable::Experrorentry::set_filter(const std::st
     }
 }
 
-bool DISMANEXPRESSIONMIB::Experrortable::Experrorentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionOwner" || name == "expExpressionName" || name == "expErrorTime" || name == "expErrorIndex" || name == "expErrorCode" || name == "expErrorInstance")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Expobjecttable::Expobjecttable()
+DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectTable()
+    :
+    expobjectentry(this, {"expexpressionowner", "expexpressionname", "expobjectindex"})
 {
 
-    yang_name = "expObjectTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expObjectTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Expobjecttable::~Expobjecttable()
+DISMANEXPRESSIONMIB::ExpObjectTable::~ExpObjectTable()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expobjecttable::has_data() const
+bool DISMANEXPRESSIONMIB::ExpObjectTable::has_data() const
 {
-    for (std::size_t index=0; index<expobjectentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<expobjectentry.len(); index++)
     {
         if(expobjectentry[index]->has_data())
             return true;
@@ -893,9 +910,9 @@ bool DISMANEXPRESSIONMIB::Expobjecttable::has_data() const
     return false;
 }
 
-bool DISMANEXPRESSIONMIB::Expobjecttable::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpObjectTable::has_operation() const
 {
-    for (std::size_t index=0; index<expobjectentry.size(); index++)
+    for (std::size_t index=0; index<expobjectentry.len(); index++)
     {
         if(expobjectentry[index]->has_operation())
             return true;
@@ -903,21 +920,21 @@ bool DISMANEXPRESSIONMIB::Expobjecttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Expobjecttable::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpObjectTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Expobjecttable::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpObjectTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expObjectTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expobjecttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpObjectTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -926,25 +943,25 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expobjecttab
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Expobjecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expObjectEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry>();
+        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry>();
         c->parent = this;
-        expobjectentry.push_back(c);
+        expobjectentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expobjecttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpObjectTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : expobjectentry)
+    for (auto c : expobjectentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -955,22 +972,22 @@ std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expobjecttab
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Expobjecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpObjectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DISMANEXPRESSIONMIB::Expobjecttable::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpObjectTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expobjecttable::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpObjectTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expObjectEntry")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectentry()
+DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectEntry()
     :
     expexpressionowner{YType::str, "expExpressionOwner"},
     expexpressionname{YType::str, "expExpressionName"},
@@ -986,15 +1003,16 @@ DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectentry()
     expobjectentrystatus{YType::enumeration, "expObjectEntryStatus"}
 {
 
-    yang_name = "expObjectEntry"; yang_parent_name = "expObjectTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expObjectEntry"; yang_parent_name = "expObjectTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::~Expobjectentry()
+DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::~ExpObjectEntry()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::has_data() const
+bool DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return expexpressionowner.is_set
 	|| expexpressionname.is_set
 	|| expobjectindex.is_set
@@ -1009,7 +1027,7 @@ bool DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::has_data() const
 	|| expobjectentrystatus.is_set;
 }
 
-bool DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expexpressionowner.yfilter)
@@ -1026,21 +1044,24 @@ bool DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::has_operation() const
 	|| ydk::is_set(expobjectentrystatus.yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/expObjectTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "expObjectEntry" <<"[expExpressionOwner='" <<expexpressionowner <<"']" <<"[expExpressionName='" <<expexpressionname <<"']" <<"[expObjectIndex='" <<expobjectindex <<"']";
+    path_buffer << "expObjectEntry";
+    ADD_KEY_TOKEN(expexpressionowner, "expExpressionOwner");
+    ADD_KEY_TOKEN(expexpressionname, "expExpressionName");
+    ADD_KEY_TOKEN(expobjectindex, "expObjectIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1061,19 +1082,19 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expobjecttab
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -1149,7 +1170,7 @@ void DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::set_value(const std::s
     }
 }
 
-void DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -1201,26 +1222,29 @@ void DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::set_filter(const std::
     }
 }
 
-bool DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionOwner" || name == "expExpressionName" || name == "expObjectIndex" || name == "expObjectID" || name == "expObjectIDWildcard" || name == "expObjectSampleType" || name == "expObjectDeltaDiscontinuityID" || name == "expObjectDiscontinuityIDWildcard" || name == "expObjectDiscontinuityIDType" || name == "expObjectConditional" || name == "expObjectConditionalWildcard" || name == "expObjectEntryStatus")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Expvaluetable::Expvaluetable()
+DISMANEXPRESSIONMIB::ExpValueTable::ExpValueTable()
+    :
+    expvalueentry(this, {"expexpressionowner", "expexpressionname", "expvalueinstance"})
 {
 
-    yang_name = "expValueTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expValueTable"; yang_parent_name = "DISMAN-EXPRESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Expvaluetable::~Expvaluetable()
+DISMANEXPRESSIONMIB::ExpValueTable::~ExpValueTable()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expvaluetable::has_data() const
+bool DISMANEXPRESSIONMIB::ExpValueTable::has_data() const
 {
-    for (std::size_t index=0; index<expvalueentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<expvalueentry.len(); index++)
     {
         if(expvalueentry[index]->has_data())
             return true;
@@ -1228,9 +1252,9 @@ bool DISMANEXPRESSIONMIB::Expvaluetable::has_data() const
     return false;
 }
 
-bool DISMANEXPRESSIONMIB::Expvaluetable::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpValueTable::has_operation() const
 {
-    for (std::size_t index=0; index<expvalueentry.size(); index++)
+    for (std::size_t index=0; index<expvalueentry.len(); index++)
     {
         if(expvalueentry[index]->has_operation())
             return true;
@@ -1238,21 +1262,21 @@ bool DISMANEXPRESSIONMIB::Expvaluetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Expvaluetable::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpValueTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Expvaluetable::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpValueTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "expValueTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expvaluetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpValueTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1261,25 +1285,25 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expvaluetabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Expvaluetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpValueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "expValueEntry")
     {
-        auto c = std::make_shared<DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry>();
+        auto c = std::make_shared<DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry>();
         c->parent = this;
-        expvalueentry.push_back(c);
+        expvalueentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expvaluetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpValueTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : expvalueentry)
+    for (auto c : expvalueentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1290,22 +1314,22 @@ std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expvaluetabl
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Expvaluetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpValueTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void DISMANEXPRESSIONMIB::Expvaluetable::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpValueTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expvaluetable::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpValueTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expValueEntry")
         return true;
     return false;
 }
 
-DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::Expvalueentry()
+DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::ExpValueEntry()
     :
     expexpressionowner{YType::str, "expExpressionOwner"},
     expexpressionname{YType::str, "expExpressionName"},
@@ -1320,15 +1344,16 @@ DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::Expvalueentry()
     expvaluecounter64val{YType::uint64, "expValueCounter64Val"}
 {
 
-    yang_name = "expValueEntry"; yang_parent_name = "expValueTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "expValueEntry"; yang_parent_name = "expValueTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::~Expvalueentry()
+DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::~ExpValueEntry()
 {
 }
 
-bool DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::has_data() const
+bool DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return expexpressionowner.is_set
 	|| expexpressionname.is_set
 	|| expvalueinstance.is_set
@@ -1342,7 +1367,7 @@ bool DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::has_data() const
 	|| expvaluecounter64val.is_set;
 }
 
-bool DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::has_operation() const
+bool DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(expexpressionowner.yfilter)
@@ -1358,21 +1383,24 @@ bool DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::has_operation() const
 	|| ydk::is_set(expvaluecounter64val.yfilter);
 }
 
-std::string DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::get_absolute_path() const
+std::string DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "DISMAN-EXPRESSION-MIB:DISMAN-EXPRESSION-MIB/expValueTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::get_segment_path() const
+std::string DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "expValueEntry" <<"[expExpressionOwner='" <<expexpressionowner <<"']" <<"[expExpressionName='" <<expexpressionname <<"']" <<"[expValueInstance='" <<expvalueinstance <<"']";
+    path_buffer << "expValueEntry";
+    ADD_KEY_TOKEN(expexpressionowner, "expExpressionOwner");
+    ADD_KEY_TOKEN(expexpressionname, "expExpressionName");
+    ADD_KEY_TOKEN(expvalueinstance, "expValueInstance");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1392,19 +1420,19 @@ std::vector<std::pair<std::string, LeafData> > DISMANEXPRESSIONMIB::Expvaluetabl
 
 }
 
-std::shared_ptr<Entity> DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -1474,7 +1502,7 @@ void DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::set_value(const std::str
     }
 }
 
-void DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::set_filter(const std::string & value_path, YFilter yfilter)
+void DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "expExpressionOwner")
     {
@@ -1522,41 +1550,41 @@ void DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::set_filter(const std::st
     }
 }
 
-bool DISMANEXPRESSIONMIB::Expvaluetable::Expvalueentry::has_leaf_or_child_of_name(const std::string & name) const
+bool DISMANEXPRESSIONMIB::ExpValueTable::ExpValueEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "expExpressionOwner" || name == "expExpressionName" || name == "expValueInstance" || name == "expValueCounter32Val" || name == "expValueUnsigned32Val" || name == "expValueTimeTicksVal" || name == "expValueInteger32Val" || name == "expValueIpAddressVal" || name == "expValueOctetStringVal" || name == "expValueOidVal" || name == "expValueCounter64Val")
         return true;
     return false;
 }
 
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::counter32 {1, "counter32"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::unsigned32 {2, "unsigned32"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::timeTicks {3, "timeTicks"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::integer32 {4, "integer32"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::ipAddress {5, "ipAddress"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::octetString {6, "octetString"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::objectId {7, "objectId"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype::counter64 {8, "counter64"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::counter32 {1, "counter32"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::unsigned32 {2, "unsigned32"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::timeTicks {3, "timeTicks"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::integer32 {4, "integer32"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::ipAddress {5, "ipAddress"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::octetString {6, "octetString"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::objectId {7, "objectId"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType::counter64 {8, "counter64"};
 
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::invalidSyntax {1, "invalidSyntax"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::undefinedObjectIndex {2, "undefinedObjectIndex"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::unrecognizedOperator {3, "unrecognizedOperator"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::unrecognizedFunction {4, "unrecognizedFunction"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::invalidOperandType {5, "invalidOperandType"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::unmatchedParenthesis {6, "unmatchedParenthesis"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::tooManyWildcardValues {7, "tooManyWildcardValues"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::recursion {8, "recursion"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::deltaTooShort {9, "deltaTooShort"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::resourceUnavailable {10, "resourceUnavailable"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Experrortable::Experrorentry::Experrorcode::divideByZero {11, "divideByZero"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::invalidSyntax {1, "invalidSyntax"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::undefinedObjectIndex {2, "undefinedObjectIndex"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::unrecognizedOperator {3, "unrecognizedOperator"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::unrecognizedFunction {4, "unrecognizedFunction"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::invalidOperandType {5, "invalidOperandType"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::unmatchedParenthesis {6, "unmatchedParenthesis"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::tooManyWildcardValues {7, "tooManyWildcardValues"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::recursion {8, "recursion"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::deltaTooShort {9, "deltaTooShort"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::resourceUnavailable {10, "resourceUnavailable"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpErrorTable::ExpErrorEntry::ExpErrorCode::divideByZero {11, "divideByZero"};
 
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectsampletype::absoluteValue {1, "absoluteValue"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectsampletype::deltaValue {2, "deltaValue"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectsampletype::changedValue {3, "changedValue"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectSampleType::absoluteValue {1, "absoluteValue"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectSampleType::deltaValue {2, "deltaValue"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectSampleType::changedValue {3, "changedValue"};
 
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype::timeTicks {1, "timeTicks"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype::timeStamp {2, "timeStamp"};
-const Enum::YLeaf DISMANEXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype::dateAndTime {3, "dateAndTime"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectDiscontinuityIDType::timeTicks {1, "timeTicks"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectDiscontinuityIDType::timeStamp {2, "timeStamp"};
+const Enum::YLeaf DISMANEXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectDiscontinuityIDType::dateAndTime {3, "dateAndTime"};
 
 
 }

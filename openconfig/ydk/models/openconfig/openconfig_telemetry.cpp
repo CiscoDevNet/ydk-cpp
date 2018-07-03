@@ -14,14 +14,14 @@ namespace openconfig_telemetry {
 TelemetrySystem::TelemetrySystem()
     :
     sensor_groups(std::make_shared<TelemetrySystem::SensorGroups>())
-	,destination_groups(std::make_shared<TelemetrySystem::DestinationGroups>())
-	,subscriptions(std::make_shared<TelemetrySystem::Subscriptions>())
+    , destination_groups(std::make_shared<TelemetrySystem::DestinationGroups>())
+    , subscriptions(std::make_shared<TelemetrySystem::Subscriptions>())
 {
     sensor_groups->parent = this;
     destination_groups->parent = this;
     subscriptions->parent = this;
 
-    yang_name = "telemetry-system"; yang_parent_name = "openconfig-telemetry"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "telemetry-system"; yang_parent_name = "openconfig-telemetry"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 TelemetrySystem::~TelemetrySystem()
@@ -30,6 +30,7 @@ TelemetrySystem::~TelemetrySystem()
 
 bool TelemetrySystem::has_data() const
 {
+    if (is_presence_container) return true;
     return (sensor_groups !=  nullptr && sensor_groups->has_data())
 	|| (destination_groups !=  nullptr && destination_groups->has_data())
 	|| (subscriptions !=  nullptr && subscriptions->has_data());
@@ -154,9 +155,11 @@ bool TelemetrySystem::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 TelemetrySystem::SensorGroups::SensorGroups()
+    :
+    sensor_group(this, {"sensor_group_id"})
 {
 
-    yang_name = "sensor-groups"; yang_parent_name = "telemetry-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sensor-groups"; yang_parent_name = "telemetry-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::SensorGroups::~SensorGroups()
@@ -165,7 +168,8 @@ TelemetrySystem::SensorGroups::~SensorGroups()
 
 bool TelemetrySystem::SensorGroups::has_data() const
 {
-    for (std::size_t index=0; index<sensor_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_group.len(); index++)
     {
         if(sensor_group[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool TelemetrySystem::SensorGroups::has_data() const
 
 bool TelemetrySystem::SensorGroups::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_group.size(); index++)
+    for (std::size_t index=0; index<sensor_group.len(); index++)
     {
         if(sensor_group[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> TelemetrySystem::SensorGroups::get_child_by_name(const s
     {
         auto c = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup>();
         c->parent = this;
-        sensor_group.push_back(c);
+        sensor_group.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_group)
+    for (auto c : sensor_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,16 +257,16 @@ bool TelemetrySystem::SensorGroups::has_leaf_or_child_of_name(const std::string 
 TelemetrySystem::SensorGroups::SensorGroup::SensorGroup()
     :
     sensor_group_id{YType::str, "sensor-group-id"}
-    	,
+        ,
     config(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::Config>())
-	,state(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::State>())
-	,sensor_paths(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths>())
+    , state(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::State>())
+    , sensor_paths(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths>())
 {
     config->parent = this;
     state->parent = this;
     sensor_paths->parent = this;
 
-    yang_name = "sensor-group"; yang_parent_name = "sensor-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sensor-group"; yang_parent_name = "sensor-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::~SensorGroup()
@@ -271,6 +275,7 @@ TelemetrySystem::SensorGroups::SensorGroup::~SensorGroup()
 
 bool TelemetrySystem::SensorGroups::SensorGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return sensor_group_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -296,7 +301,8 @@ std::string TelemetrySystem::SensorGroups::SensorGroup::get_absolute_path() cons
 std::string TelemetrySystem::SensorGroups::SensorGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-group" <<"[sensor-group-id='" <<sensor_group_id <<"']";
+    path_buffer << "sensor-group";
+    ADD_KEY_TOKEN(sensor_group_id, "sensor-group-id");
     return path_buffer.str();
 }
 
@@ -394,7 +400,7 @@ TelemetrySystem::SensorGroups::SensorGroup::Config::Config()
     sensor_group_id{YType::str, "sensor-group-id"}
 {
 
-    yang_name = "config"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::Config::~Config()
@@ -403,6 +409,7 @@ TelemetrySystem::SensorGroups::SensorGroup::Config::~Config()
 
 bool TelemetrySystem::SensorGroups::SensorGroup::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return sensor_group_id.is_set;
 }
 
@@ -471,7 +478,7 @@ TelemetrySystem::SensorGroups::SensorGroup::State::State()
     sensor_group_id{YType::str, "sensor-group-id"}
 {
 
-    yang_name = "state"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::State::~State()
@@ -480,6 +487,7 @@ TelemetrySystem::SensorGroups::SensorGroup::State::~State()
 
 bool TelemetrySystem::SensorGroups::SensorGroup::State::has_data() const
 {
+    if (is_presence_container) return true;
     return sensor_group_id.is_set;
 }
 
@@ -544,9 +552,11 @@ bool TelemetrySystem::SensorGroups::SensorGroup::State::has_leaf_or_child_of_nam
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPaths()
+    :
+    sensor_path(this, {"path"})
 {
 
-    yang_name = "sensor-paths"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-paths"; yang_parent_name = "sensor-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::~SensorPaths()
@@ -555,7 +565,8 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::~SensorPaths()
 
 bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::has_data() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_data())
             return true;
@@ -565,7 +576,7 @@ bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::has_data() const
 
 bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_operation())
             return true;
@@ -595,7 +606,7 @@ std::shared_ptr<Entity> TelemetrySystem::SensorGroups::SensorGroup::SensorPaths:
     {
         auto c = std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath>();
         c->parent = this;
-        sensor_path.push_back(c);
+        sensor_path.append(c);
         return c;
     }
 
@@ -607,7 +618,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::SensorGroups::Se
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_path)
+    for (auto c : sensor_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -636,14 +647,14 @@ bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::has_leaf_or_child_
 TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::SensorPath()
     :
     path{YType::str, "path"}
-    	,
+        ,
     config(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config>())
-	,state(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State>())
+    , state(std::make_shared<TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "sensor-path"; yang_parent_name = "sensor-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-path"; yang_parent_name = "sensor-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::~SensorPath()
@@ -652,6 +663,7 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::~SensorPath
 
 bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -668,7 +680,8 @@ bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::has_op
 std::string TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-path" <<"[path='" <<path <<"']";
+    path_buffer << "sensor-path";
+    ADD_KEY_TOKEN(path, "path");
     return path_buffer.str();
 }
 
@@ -753,7 +766,7 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::Con
     exclude_filter{YType::str, "exclude-filter"}
 {
 
-    yang_name = "config"; yang_parent_name = "sensor-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "sensor-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::~Config()
@@ -762,6 +775,7 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::~Co
 
 bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| exclude_filter.is_set;
 }
@@ -844,7 +858,7 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::Stat
     exclude_filter{YType::str, "exclude-filter"}
 {
 
-    yang_name = "state"; yang_parent_name = "sensor-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "sensor-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::~State()
@@ -853,6 +867,7 @@ TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::~Sta
 
 bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| exclude_filter.is_set;
 }
@@ -930,9 +945,11 @@ bool TelemetrySystem::SensorGroups::SensorGroup::SensorPaths::SensorPath::State:
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroups()
+    :
+    destination_group(this, {"group_id"})
 {
 
-    yang_name = "destination-groups"; yang_parent_name = "telemetry-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination-groups"; yang_parent_name = "telemetry-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::DestinationGroups::~DestinationGroups()
@@ -941,7 +958,8 @@ TelemetrySystem::DestinationGroups::~DestinationGroups()
 
 bool TelemetrySystem::DestinationGroups::has_data() const
 {
-    for (std::size_t index=0; index<destination_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<destination_group.len(); index++)
     {
         if(destination_group[index]->has_data())
             return true;
@@ -951,7 +969,7 @@ bool TelemetrySystem::DestinationGroups::has_data() const
 
 bool TelemetrySystem::DestinationGroups::has_operation() const
 {
-    for (std::size_t index=0; index<destination_group.size(); index++)
+    for (std::size_t index=0; index<destination_group.len(); index++)
     {
         if(destination_group[index]->has_operation())
             return true;
@@ -988,7 +1006,7 @@ std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::get_child_by_name(co
     {
         auto c = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup>();
         c->parent = this;
-        destination_group.push_back(c);
+        destination_group.append(c);
         return c;
     }
 
@@ -1000,7 +1018,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroup
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : destination_group)
+    for (auto c : destination_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1029,16 +1047,16 @@ bool TelemetrySystem::DestinationGroups::has_leaf_or_child_of_name(const std::st
 TelemetrySystem::DestinationGroups::DestinationGroup::DestinationGroup()
     :
     group_id{YType::str, "group-id"}
-    	,
+        ,
     config(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Config>())
-	,state(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::State>())
-	,destinations(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations>())
+    , state(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::State>())
+    , destinations(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations>())
 {
     config->parent = this;
     state->parent = this;
     destinations->parent = this;
 
-    yang_name = "destination-group"; yang_parent_name = "destination-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination-group"; yang_parent_name = "destination-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::~DestinationGroup()
@@ -1047,6 +1065,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::~DestinationGroup()
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -1072,7 +1091,8 @@ std::string TelemetrySystem::DestinationGroups::DestinationGroup::get_absolute_p
 std::string TelemetrySystem::DestinationGroups::DestinationGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination-group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "destination-group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -1170,7 +1190,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Config::Config()
     group_id{YType::str, "group-id"}
 {
 
-    yang_name = "config"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::Config::~Config()
@@ -1179,6 +1199,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Config::~Config()
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set;
 }
 
@@ -1247,7 +1268,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::State::State()
     group_id{YType::str, "group-id"}
 {
 
-    yang_name = "state"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::State::~State()
@@ -1256,6 +1277,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::State::~State()
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::State::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set;
 }
 
@@ -1320,9 +1342,11 @@ bool TelemetrySystem::DestinationGroups::DestinationGroup::State::has_leaf_or_ch
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destinations()
+    :
+    destination(this, {"destination_address", "destination_port"})
 {
 
-    yang_name = "destinations"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destinations"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::~Destinations()
@@ -1331,7 +1355,8 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::~Destination
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::has_data() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_data())
             return true;
@@ -1341,7 +1366,7 @@ bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::has_dat
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::has_operation() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_operation())
             return true;
@@ -1371,7 +1396,7 @@ std::shared_ptr<Entity> TelemetrySystem::DestinationGroups::DestinationGroup::De
     {
         auto c = std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination>();
         c->parent = this;
-        destination.push_back(c);
+        destination.append(c);
         return c;
     }
 
@@ -1383,7 +1408,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::DestinationGroup
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : destination)
+    for (auto c : destination.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1413,14 +1438,14 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination:
     :
     destination_address{YType::str, "destination-address"},
     destination_port{YType::str, "destination-port"}
-    	,
+        ,
     config(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config>())
-	,state(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State>())
+    , state(std::make_shared<TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "destination"; yang_parent_name = "destinations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "destinations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::~Destination()
@@ -1429,6 +1454,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination:
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_address.is_set
 	|| destination_port.is_set
 	|| (config !=  nullptr && config->has_data())
@@ -1447,7 +1473,9 @@ bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destina
 std::string TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination" <<"[destination-address='" <<destination_address <<"']" <<"[destination-port='" <<destination_port <<"']";
+    path_buffer << "destination";
+    ADD_KEY_TOKEN(destination_address, "destination-address");
+    ADD_KEY_TOKEN(destination_port, "destination-port");
     return path_buffer.str();
 }
 
@@ -1544,7 +1572,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination:
     destination_protocol{YType::enumeration, "destination-protocol"}
 {
 
-    yang_name = "config"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::~Config()
@@ -1553,6 +1581,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination:
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_address.is_set
 	|| destination_port.is_set
 	|| destination_protocol.is_set;
@@ -1649,7 +1678,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination:
     destination_protocol{YType::enumeration, "destination-protocol"}
 {
 
-    yang_name = "state"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "destination"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::~State()
@@ -1658,6 +1687,7 @@ TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination:
 
 bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destination::State::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_address.is_set
 	|| destination_port.is_set
 	|| destination_protocol.is_set;
@@ -1750,12 +1780,12 @@ bool TelemetrySystem::DestinationGroups::DestinationGroup::Destinations::Destina
 TelemetrySystem::Subscriptions::Subscriptions()
     :
     persistent(std::make_shared<TelemetrySystem::Subscriptions::Persistent>())
-	,dynamic(std::make_shared<TelemetrySystem::Subscriptions::Dynamic>())
+    , dynamic(std::make_shared<TelemetrySystem::Subscriptions::Dynamic>())
 {
     persistent->parent = this;
     dynamic->parent = this;
 
-    yang_name = "subscriptions"; yang_parent_name = "telemetry-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscriptions"; yang_parent_name = "telemetry-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::Subscriptions::~Subscriptions()
@@ -1764,6 +1794,7 @@ TelemetrySystem::Subscriptions::~Subscriptions()
 
 bool TelemetrySystem::Subscriptions::has_data() const
 {
+    if (is_presence_container) return true;
     return (persistent !=  nullptr && persistent->has_data())
 	|| (dynamic !=  nullptr && dynamic->has_data());
 }
@@ -1854,9 +1885,11 @@ bool TelemetrySystem::Subscriptions::has_leaf_or_child_of_name(const std::string
 }
 
 TelemetrySystem::Subscriptions::Persistent::Persistent()
+    :
+    subscription(this, {"subscription_id"})
 {
 
-    yang_name = "persistent"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "persistent"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::~Persistent()
@@ -1865,7 +1898,8 @@ TelemetrySystem::Subscriptions::Persistent::~Persistent()
 
 bool TelemetrySystem::Subscriptions::Persistent::has_data() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_data())
             return true;
@@ -1875,7 +1909,7 @@ bool TelemetrySystem::Subscriptions::Persistent::has_data() const
 
 bool TelemetrySystem::Subscriptions::Persistent::has_operation() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_operation())
             return true;
@@ -1912,7 +1946,7 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::get_child_by
     {
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription>();
         c->parent = this;
-        subscription.push_back(c);
+        subscription.append(c);
         return c;
     }
 
@@ -1924,7 +1958,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subscription)
+    for (auto c : subscription.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1953,18 +1987,18 @@ bool TelemetrySystem::Subscriptions::Persistent::has_leaf_or_child_of_name(const
 TelemetrySystem::Subscriptions::Persistent::Subscription::Subscription()
     :
     subscription_id{YType::str, "subscription-id"}
-    	,
+        ,
     config(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::Config>())
-	,state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::State>())
-	,sensor_profiles(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles>())
-	,destination_groups(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups>())
+    , state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::State>())
+    , sensor_profiles(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles>())
+    , destination_groups(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups>())
 {
     config->parent = this;
     state->parent = this;
     sensor_profiles->parent = this;
     destination_groups->parent = this;
 
-    yang_name = "subscription"; yang_parent_name = "persistent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscription"; yang_parent_name = "persistent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::~Subscription()
@@ -1973,6 +2007,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::~Subscription()
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::has_data() const
 {
+    if (is_presence_container) return true;
     return subscription_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -2000,7 +2035,8 @@ std::string TelemetrySystem::Subscriptions::Persistent::Subscription::get_absolu
 std::string TelemetrySystem::Subscriptions::Persistent::Subscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscription" <<"[subscription-id='" <<subscription_id <<"']";
+    path_buffer << "subscription";
+    ADD_KEY_TOKEN(subscription_id, "subscription-id");
     return path_buffer.str();
 }
 
@@ -2114,7 +2150,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::Config::Config()
     originated_qos_marking{YType::uint8, "originated-qos-marking"}
 {
 
-    yang_name = "config"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::Config::~Config()
@@ -2123,6 +2159,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::Config::~Config()
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return subscription_id.is_set
 	|| local_source_address.is_set
 	|| originated_qos_marking.is_set;
@@ -2219,7 +2256,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::State::State()
     originated_qos_marking{YType::uint8, "originated-qos-marking"}
 {
 
-    yang_name = "state"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::State::~State()
@@ -2228,6 +2265,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::State::~State()
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::State::has_data() const
 {
+    if (is_presence_container) return true;
     return subscription_id.is_set
 	|| local_source_address.is_set
 	|| originated_qos_marking.is_set;
@@ -2318,9 +2356,11 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::State::has_leaf_o
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfiles()
+    :
+    sensor_profile(this, {"sensor_group"})
 {
 
-    yang_name = "sensor-profiles"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-profiles"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::~SensorProfiles()
@@ -2329,7 +2369,8 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::~Senso
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::has_data() const
 {
-    for (std::size_t index=0; index<sensor_profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_profile.len(); index++)
     {
         if(sensor_profile[index]->has_data())
             return true;
@@ -2339,7 +2380,7 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::h
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_profile.size(); index++)
+    for (std::size_t index=0; index<sensor_profile.len(); index++)
     {
         if(sensor_profile[index]->has_operation())
             return true;
@@ -2369,7 +2410,7 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription
     {
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile>();
         c->parent = this;
-        sensor_profile.push_back(c);
+        sensor_profile.append(c);
         return c;
     }
 
@@ -2381,7 +2422,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_profile)
+    for (auto c : sensor_profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2410,14 +2451,14 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::h
 TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::SensorProfile()
     :
     sensor_group{YType::str, "sensor-group"}
-    	,
+        ,
     config(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config>())
-	,state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State>())
+    , state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "sensor-profile"; yang_parent_name = "sensor-profiles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-profile"; yang_parent_name = "sensor-profiles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::~SensorProfile()
@@ -2426,6 +2467,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::Sensor
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::has_data() const
 {
+    if (is_presence_container) return true;
     return sensor_group.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2442,7 +2484,8 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::S
 std::string TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-profile" <<"[sensor-group='" <<sensor_group <<"']";
+    path_buffer << "sensor-profile";
+    ADD_KEY_TOKEN(sensor_group, "sensor-group");
     return path_buffer.str();
 }
 
@@ -2529,7 +2572,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::Sensor
     suppress_redundant{YType::boolean, "suppress-redundant"}
 {
 
-    yang_name = "config"; yang_parent_name = "sensor-profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "sensor-profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::~Config()
@@ -2538,6 +2581,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::Sensor
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return sensor_group.is_set
 	|| sample_interval.is_set
 	|| heartbeat_interval.is_set
@@ -2648,7 +2692,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::Sensor
     suppress_redundant{YType::boolean, "suppress-redundant"}
 {
 
-    yang_name = "state"; yang_parent_name = "sensor-profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "sensor-profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::~State()
@@ -2657,6 +2701,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::Sensor
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::SensorProfile::State::has_data() const
 {
+    if (is_presence_container) return true;
     return sensor_group.is_set
 	|| sample_interval.is_set
 	|| heartbeat_interval.is_set
@@ -2760,9 +2805,11 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::SensorProfiles::S
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroups()
+    :
+    destination_group(this, {"group_id"})
 {
 
-    yang_name = "destination-groups"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-groups"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::~DestinationGroups()
@@ -2771,7 +2818,8 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::~De
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::has_data() const
 {
-    for (std::size_t index=0; index<destination_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<destination_group.len(); index++)
     {
         if(destination_group[index]->has_data())
             return true;
@@ -2781,7 +2829,7 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::has_operation() const
 {
-    for (std::size_t index=0; index<destination_group.size(); index++)
+    for (std::size_t index=0; index<destination_group.len(); index++)
     {
         if(destination_group[index]->has_operation())
             return true;
@@ -2811,7 +2859,7 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Persistent::Subscription
     {
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup>();
         c->parent = this;
-        destination_group.push_back(c);
+        destination_group.append(c);
         return c;
     }
 
@@ -2823,7 +2871,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : destination_group)
+    for (auto c : destination_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2852,14 +2900,14 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups
 TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::DestinationGroup()
     :
     group_id{YType::str, "group-id"}
-    	,
+        ,
     config(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config>())
-	,state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State>())
+    , state(std::make_shared<TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "destination-group"; yang_parent_name = "destination-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-group"; yang_parent_name = "destination-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::~DestinationGroup()
@@ -2868,6 +2916,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::Des
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -2884,7 +2933,8 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups
 std::string TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination-group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "destination-group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -2968,7 +3018,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::Des
     group_id{YType::str, "group-id"}
 {
 
-    yang_name = "config"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::~Config()
@@ -2977,6 +3027,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::Des
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set;
 }
 
@@ -3045,7 +3096,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::Des
     group_id{YType::str, "group-id"}
 {
 
-    yang_name = "state"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "destination-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::~State()
@@ -3054,6 +3105,7 @@ TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::Des
 
 bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups::DestinationGroup::State::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set;
 }
 
@@ -3118,9 +3170,11 @@ bool TelemetrySystem::Subscriptions::Persistent::Subscription::DestinationGroups
 }
 
 TelemetrySystem::Subscriptions::Dynamic::Dynamic()
+    :
+    subscription(this, {"subscription_id"})
 {
 
-    yang_name = "dynamic"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dynamic"; yang_parent_name = "subscriptions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::Subscriptions::Dynamic::~Dynamic()
@@ -3129,7 +3183,8 @@ TelemetrySystem::Subscriptions::Dynamic::~Dynamic()
 
 bool TelemetrySystem::Subscriptions::Dynamic::has_data() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_data())
             return true;
@@ -3139,7 +3194,7 @@ bool TelemetrySystem::Subscriptions::Dynamic::has_data() const
 
 bool TelemetrySystem::Subscriptions::Dynamic::has_operation() const
 {
-    for (std::size_t index=0; index<subscription.size(); index++)
+    for (std::size_t index=0; index<subscription.len(); index++)
     {
         if(subscription[index]->has_operation())
             return true;
@@ -3176,7 +3231,7 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::get_child_by_na
     {
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription>();
         c->parent = this;
-        subscription.push_back(c);
+        subscription.append(c);
         return c;
     }
 
@@ -3188,7 +3243,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subscription)
+    for (auto c : subscription.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3217,14 +3272,14 @@ bool TelemetrySystem::Subscriptions::Dynamic::has_leaf_or_child_of_name(const st
 TelemetrySystem::Subscriptions::Dynamic::Subscription::Subscription()
     :
     subscription_id{YType::str, "subscription-id"}
-    	,
+        ,
     state(std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::State>())
-	,sensor_paths(std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths>())
+    , sensor_paths(std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths>())
 {
     state->parent = this;
     sensor_paths->parent = this;
 
-    yang_name = "subscription"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subscription"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 TelemetrySystem::Subscriptions::Dynamic::Subscription::~Subscription()
@@ -3233,6 +3288,7 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::~Subscription()
 
 bool TelemetrySystem::Subscriptions::Dynamic::Subscription::has_data() const
 {
+    if (is_presence_container) return true;
     return subscription_id.is_set
 	|| (state !=  nullptr && state->has_data())
 	|| (sensor_paths !=  nullptr && sensor_paths->has_data());
@@ -3256,7 +3312,8 @@ std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::get_absolute_
 std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscription" <<"[subscription-id='" <<subscription_id <<"']";
+    path_buffer << "subscription";
+    ADD_KEY_TOKEN(subscription_id, "subscription-id");
     return path_buffer.str();
 }
 
@@ -3347,7 +3404,7 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::State::State()
     originated_qos_marking{YType::uint8, "originated-qos-marking"}
 {
 
-    yang_name = "state"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Dynamic::Subscription::State::~State()
@@ -3356,6 +3413,7 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::State::~State()
 
 bool TelemetrySystem::Subscriptions::Dynamic::Subscription::State::has_data() const
 {
+    if (is_presence_container) return true;
     return subscription_id.is_set
 	|| destination_address.is_set
 	|| destination_port.is_set
@@ -3511,9 +3569,11 @@ bool TelemetrySystem::Subscriptions::Dynamic::Subscription::State::has_leaf_or_c
 }
 
 TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPaths()
+    :
+    sensor_path(this, {"path"})
 {
 
-    yang_name = "sensor-paths"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-paths"; yang_parent_name = "subscription"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::~SensorPaths()
@@ -3522,7 +3582,8 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::~SensorPaths
 
 bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::has_data() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_data())
             return true;
@@ -3532,7 +3593,7 @@ bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::has_dat
 
 bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::has_operation() const
 {
-    for (std::size_t index=0; index<sensor_path.size(); index++)
+    for (std::size_t index=0; index<sensor_path.len(); index++)
     {
         if(sensor_path[index]->has_operation())
             return true;
@@ -3562,7 +3623,7 @@ std::shared_ptr<Entity> TelemetrySystem::Subscriptions::Dynamic::Subscription::S
     {
         auto c = std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath>();
         c->parent = this;
-        sensor_path.push_back(c);
+        sensor_path.append(c);
         return c;
     }
 
@@ -3574,7 +3635,7 @@ std::map<std::string, std::shared_ptr<Entity>> TelemetrySystem::Subscriptions::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sensor_path)
+    for (auto c : sensor_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3603,12 +3664,12 @@ bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::has_lea
 TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::SensorPath()
     :
     path{YType::str, "path"}
-    	,
+        ,
     state(std::make_shared<TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State>())
 {
     state->parent = this;
 
-    yang_name = "sensor-path"; yang_parent_name = "sensor-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sensor-path"; yang_parent_name = "sensor-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::~SensorPath()
@@ -3617,6 +3678,7 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::
 
 bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| (state !=  nullptr && state->has_data());
 }
@@ -3631,7 +3693,8 @@ bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorP
 std::string TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sensor-path" <<"[path='" <<path <<"']";
+    path_buffer << "sensor-path";
+    ADD_KEY_TOKEN(path, "path");
     return path_buffer.str();
 }
 
@@ -3702,7 +3765,7 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::
     exclude_filter{YType::str, "exclude-filter"}
 {
 
-    yang_name = "state"; yang_parent_name = "sensor-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "sensor-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::~State()
@@ -3711,6 +3774,7 @@ TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::
 
 bool TelemetrySystem::Subscriptions::Dynamic::Subscription::SensorPaths::SensorPath::State::has_data() const
 {
+    if (is_presence_container) return true;
     return path.is_set
 	|| exclude_filter.is_set;
 }

@@ -17,7 +17,7 @@ HardwareModule::HardwareModule()
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-drivers-vpa-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-drivers-vpa-infra-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModule::~HardwareModule()
@@ -26,6 +26,7 @@ HardwareModule::~HardwareModule()
 
 bool HardwareModule::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool HardwareModule::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 HardwareModule::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::Nodes::~Nodes()
@@ -129,7 +132,8 @@ HardwareModule::Nodes::~Nodes()
 
 bool HardwareModule::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool HardwareModule::Nodes::has_data() const
 
 bool HardwareModule::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<HardwareModule::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -220,7 +224,7 @@ HardwareModule::Nodes::Node::Node()
     shutdown{YType::enumeration, "shutdown"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::Nodes::Node::~Node()
@@ -229,6 +233,7 @@ HardwareModule::Nodes::Node::~Node()
 
 bool HardwareModule::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| shutdown.is_set;
 }
@@ -250,7 +255,8 @@ std::string HardwareModule::Nodes::Node::get_absolute_path() const
 std::string HardwareModule::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 

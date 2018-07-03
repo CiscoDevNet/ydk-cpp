@@ -18,7 +18,7 @@ Arp::Arp()
     outer_cos{YType::uint32, "outer-cos"}
 {
 
-    yang_name = "arp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "arp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Arp::~Arp()
@@ -27,6 +27,7 @@ Arp::~Arp()
 
 bool Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return max_entries.is_set
 	|| inner_cos.is_set
 	|| outer_cos.is_set;
@@ -147,7 +148,7 @@ IedgeCfg::IedgeCfg()
     subscriber_scale_mode{YType::empty, "subscriber-scale-mode"}
 {
 
-    yang_name = "iedge-cfg"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "iedge-cfg"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IedgeCfg::~IedgeCfg()
@@ -156,6 +157,7 @@ IedgeCfg::~IedgeCfg()
 
 bool IedgeCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return subscriber_uncond_proxy.is_set
 	|| subscriber_scale_mode.is_set;
 }
@@ -258,9 +260,11 @@ bool IedgeCfg::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Arpgmp::Arpgmp()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "arpgmp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "arpgmp"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Arpgmp::~Arpgmp()
@@ -269,7 +273,8 @@ Arpgmp::~Arpgmp()
 
 bool Arpgmp::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -279,7 +284,7 @@ bool Arpgmp::has_data() const
 
 bool Arpgmp::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -309,7 +314,7 @@ std::shared_ptr<Entity> Arpgmp::get_child_by_name(const std::string & child_yang
     {
         auto c = std::make_shared<Arpgmp::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -321,7 +326,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arpgmp::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -375,12 +380,12 @@ bool Arpgmp::has_leaf_or_child_of_name(const std::string & name) const
 Arpgmp::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     entries(std::make_shared<Arpgmp::Vrf::Entries>())
 {
     entries->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "arpgmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "arpgmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Arpgmp::Vrf::~Vrf()
@@ -389,6 +394,7 @@ Arpgmp::Vrf::~Vrf()
 
 bool Arpgmp::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (entries !=  nullptr && entries->has_data());
 }
@@ -410,7 +416,8 @@ std::string Arpgmp::Vrf::get_absolute_path() const
 std::string Arpgmp::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -476,9 +483,11 @@ bool Arpgmp::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Arpgmp::Vrf::Entries::Entries()
+    :
+    entry(this, {"address"})
 {
 
-    yang_name = "entries"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entries"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arpgmp::Vrf::Entries::~Entries()
@@ -487,7 +496,8 @@ Arpgmp::Vrf::Entries::~Entries()
 
 bool Arpgmp::Vrf::Entries::has_data() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_data())
             return true;
@@ -497,7 +507,7 @@ bool Arpgmp::Vrf::Entries::has_data() const
 
 bool Arpgmp::Vrf::Entries::has_operation() const
 {
-    for (std::size_t index=0; index<entry.size(); index++)
+    for (std::size_t index=0; index<entry.len(); index++)
     {
         if(entry[index]->has_operation())
             return true;
@@ -527,7 +537,7 @@ std::shared_ptr<Entity> Arpgmp::Vrf::Entries::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Arpgmp::Vrf::Entries::Entry>();
         c->parent = this;
-        entry.push_back(c);
+        entry.append(c);
         return c;
     }
 
@@ -539,7 +549,7 @@ std::map<std::string, std::shared_ptr<Entity>> Arpgmp::Vrf::Entries::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : entry)
+    for (auto c : entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -574,7 +584,7 @@ Arpgmp::Vrf::Entries::Entry::Entry()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "entry"; yang_parent_name = "entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "entry"; yang_parent_name = "entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Arpgmp::Vrf::Entries::Entry::~Entry()
@@ -583,6 +593,7 @@ Arpgmp::Vrf::Entries::Entry::~Entry()
 
 bool Arpgmp::Vrf::Entries::Entry::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mac_address.is_set
 	|| encapsulation.is_set
@@ -603,7 +614,8 @@ bool Arpgmp::Vrf::Entries::Entry::has_operation() const
 std::string Arpgmp::Vrf::Entries::Entry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "entry" <<"[address='" <<address <<"']";
+    path_buffer << "entry";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -703,7 +715,7 @@ ArpRedundancy::ArpRedundancy()
     redundancy(nullptr) // presence node
 {
 
-    yang_name = "arp-redundancy"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "arp-redundancy"; yang_parent_name = "Cisco-IOS-XR-ipv4-arp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ArpRedundancy::~ArpRedundancy()
@@ -712,6 +724,7 @@ ArpRedundancy::~ArpRedundancy()
 
 bool ArpRedundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return (redundancy !=  nullptr && redundancy->has_data());
 }
 
@@ -806,12 +819,12 @@ bool ArpRedundancy::has_leaf_or_child_of_name(const std::string & name) const
 ArpRedundancy::Redundancy::Redundancy()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     groups(std::make_shared<ArpRedundancy::Redundancy::Groups>())
 {
     groups->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "arp-redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redundancy"; yang_parent_name = "arp-redundancy"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 ArpRedundancy::Redundancy::~Redundancy()
@@ -820,6 +833,7 @@ ArpRedundancy::Redundancy::~Redundancy()
 
 bool ArpRedundancy::Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (groups !=  nullptr && groups->has_data());
 }
@@ -907,9 +921,11 @@ bool ArpRedundancy::Redundancy::has_leaf_or_child_of_name(const std::string & na
 }
 
 ArpRedundancy::Redundancy::Groups::Groups()
+    :
+    group(this, {"group_id"})
 {
 
-    yang_name = "groups"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ArpRedundancy::Redundancy::Groups::~Groups()
@@ -918,7 +934,8 @@ ArpRedundancy::Redundancy::Groups::~Groups()
 
 bool ArpRedundancy::Redundancy::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -928,7 +945,7 @@ bool ArpRedundancy::Redundancy::Groups::has_data() const
 
 bool ArpRedundancy::Redundancy::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -965,7 +982,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::get_child_by_name(con
     {
         auto c = std::make_shared<ArpRedundancy::Redundancy::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -977,7 +994,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1007,13 +1024,13 @@ ArpRedundancy::Redundancy::Groups::Group::Group()
     :
     group_id{YType::uint32, "group-id"},
     source_interface{YType::str, "source-interface"}
-    	,
+        ,
     peers(std::make_shared<ArpRedundancy::Redundancy::Groups::Group::Peers>())
-	,interface_list(nullptr) // presence node
+    , interface_list(nullptr) // presence node
 {
     peers->parent = this;
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ArpRedundancy::Redundancy::Groups::Group::~Group()
@@ -1022,6 +1039,7 @@ ArpRedundancy::Redundancy::Groups::Group::~Group()
 
 bool ArpRedundancy::Redundancy::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| source_interface.is_set
 	|| (peers !=  nullptr && peers->has_data())
@@ -1047,7 +1065,8 @@ std::string ArpRedundancy::Redundancy::Groups::Group::get_absolute_path() const
 std::string ArpRedundancy::Redundancy::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -1138,9 +1157,11 @@ bool ArpRedundancy::Redundancy::Groups::Group::has_leaf_or_child_of_name(const s
 }
 
 ArpRedundancy::Redundancy::Groups::Group::Peers::Peers()
+    :
+    peer(this, {"prefix_string"})
 {
 
-    yang_name = "peers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpRedundancy::Redundancy::Groups::Group::Peers::~Peers()
@@ -1149,7 +1170,8 @@ ArpRedundancy::Redundancy::Groups::Group::Peers::~Peers()
 
 bool ArpRedundancy::Redundancy::Groups::Group::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -1159,7 +1181,7 @@ bool ArpRedundancy::Redundancy::Groups::Group::Peers::has_data() const
 
 bool ArpRedundancy::Redundancy::Groups::Group::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -1189,7 +1211,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::Peers::get_chi
     {
         auto c = std::make_shared<ArpRedundancy::Redundancy::Groups::Group::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -1201,7 +1223,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1232,7 +1254,7 @@ ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::Peer()
     prefix_string{YType::str, "prefix-string"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::~Peer()
@@ -1241,6 +1263,7 @@ ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::~Peer()
 
 bool ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_string.is_set;
 }
 
@@ -1253,7 +1276,8 @@ bool ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::has_operation() cons
 std::string ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[prefix-string='" <<prefix_string <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(prefix_string, "prefix-string");
     return path_buffer.str();
 }
 
@@ -1307,12 +1331,12 @@ bool ArpRedundancy::Redundancy::Groups::Group::Peers::Peer::has_leaf_or_child_of
 ArpRedundancy::Redundancy::Groups::Group::InterfaceList::InterfaceList()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     interfaces(std::make_shared<ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces>())
 {
     interfaces->parent = this;
 
-    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-list"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 ArpRedundancy::Redundancy::Groups::Group::InterfaceList::~InterfaceList()
@@ -1321,6 +1345,7 @@ ArpRedundancy::Redundancy::Groups::Group::InterfaceList::~InterfaceList()
 
 bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -1401,9 +1426,11 @@ bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::has_leaf_or_child_
 }
 
 ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "interface-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces()
@@ -1412,7 +1439,8 @@ ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::~Interfaces
 
 bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1422,7 +1450,7 @@ bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::has_da
 
 bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1452,7 +1480,7 @@ std::shared_ptr<Entity> ArpRedundancy::Redundancy::Groups::Group::InterfaceList:
     {
         auto c = std::make_shared<ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1464,7 +1492,7 @@ std::map<std::string, std::shared_ptr<Entity>> ArpRedundancy::Redundancy::Groups
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1496,7 +1524,7 @@ ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface::
     interface_id{YType::uint32, "interface-id"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface::~Interface()
@@ -1505,6 +1533,7 @@ ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface::
 
 bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_id.is_set;
 }
@@ -1519,7 +1548,8 @@ bool ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interf
 std::string ArpRedundancy::Redundancy::Groups::Group::InterfaceList::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 

@@ -62,7 +62,7 @@ class Ping::Input : public ydk::Entity
         class Ipv6; //type: Ping::Input::Ipv6
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Destination> destination;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Ipv4> > ipv4;
+        ydk::YList ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Ipv6> ipv6;
         
 }; // Ping::Input
@@ -215,7 +215,7 @@ class Ping::Output::PingResponse : public ydk::Entity
         class Ipv4; //type: Ping::Output::PingResponse::Ipv4
         class Ipv6; //type: Ping::Output::PingResponse::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4> > ipv4;
+        ydk::YList ipv4;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6> ipv6;
         
 }; // Ping::Output::PingResponse
@@ -280,7 +280,7 @@ class Ping::Output::PingResponse::Ipv4::Replies : public ydk::Entity
 
         class Reply; //type: Ping::Output::PingResponse::Ipv4::Replies::Reply
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply> > reply;
+        ydk::YList reply;
         
 }; // Ping::Output::PingResponse::Ipv4::Replies
 
@@ -328,7 +328,7 @@ class Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses 
 
         class BroadcastReplyAddress; //type: Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress> > broadcast_reply_address;
+        ydk::YList broadcast_reply_address;
         
 }; // Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses
 
@@ -414,7 +414,7 @@ class Ping::Output::PingResponse::Ipv6::Replies : public ydk::Entity
 
         class Reply; //type: Ping::Output::PingResponse::Ipv6::Replies::Reply
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6::Replies::Reply> > reply;
+        ydk::YList reply;
         
 }; // Ping::Output::PingResponse::Ipv6::Replies
 

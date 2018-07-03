@@ -57,7 +57,7 @@ class Radius::Nodes : public ydk::Entity
 
         class Node; //type: Radius::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Radius::Nodes
 
@@ -161,7 +161,7 @@ class Radius::Nodes::Node::DeadCriteria::Hosts : public ydk::Entity
 
         class Host; //type: Radius::Nodes::Node::DeadCriteria::Hosts::Host
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::DeadCriteria::Hosts::Host> > host;
+        ydk::YList host;
         
 }; // Radius::Nodes::Node::DeadCriteria::Hosts
 
@@ -256,7 +256,7 @@ class Radius::Nodes::Node::Authentication : public ydk::Entity
 
         class AuthenticationGroup; //type: Radius::Nodes::Node::Authentication::AuthenticationGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::Authentication::AuthenticationGroup> > authentication_group;
+        ydk::YList authentication_group;
         
 }; // Radius::Nodes::Node::Authentication
 
@@ -344,7 +344,7 @@ class Radius::Nodes::Node::Accounting : public ydk::Entity
 
         class AccountingGroup; //type: Radius::Nodes::Node::Accounting::AccountingGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::Accounting::AccountingGroup> > accounting_group;
+        ydk::YList accounting_group;
         
 }; // Radius::Nodes::Node::Accounting
 
@@ -430,7 +430,7 @@ class Radius::Nodes::Node::ServerGroups : public ydk::Entity
 
         class ServerGroup; //type: Radius::Nodes::Node::ServerGroups::ServerGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::ServerGroups::ServerGroup> > server_group;
+        ydk::YList server_group;
         
 }; // Radius::Nodes::Node::ServerGroups
 
@@ -458,7 +458,7 @@ class Radius::Nodes::Node::ServerGroups::ServerGroup : public ydk::Entity
         ydk::YLeaf servers; //type: uint32
         class ServerGroup_; //type: Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_protocol_radius_oper::Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_> > server_group;
+        ydk::YList server_group;
         
 }; // Radius::Nodes::Node::ServerGroups::ServerGroup
 

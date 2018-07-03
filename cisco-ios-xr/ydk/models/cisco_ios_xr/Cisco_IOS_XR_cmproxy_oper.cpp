@@ -17,7 +17,7 @@ SdrInventoryVm::SdrInventoryVm()
 {
     nodes->parent = this;
 
-    yang_name = "sdr-inventory-vm"; yang_parent_name = "Cisco-IOS-XR-cmproxy-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sdr-inventory-vm"; yang_parent_name = "Cisco-IOS-XR-cmproxy-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SdrInventoryVm::~SdrInventoryVm()
@@ -26,6 +26,7 @@ SdrInventoryVm::~SdrInventoryVm()
 
 bool SdrInventoryVm::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool SdrInventoryVm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 SdrInventoryVm::Nodes::Nodes()
+    :
+    node(this, {"name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "sdr-inventory-vm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "sdr-inventory-vm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrInventoryVm::Nodes::~Nodes()
@@ -129,7 +132,8 @@ SdrInventoryVm::Nodes::~Nodes()
 
 bool SdrInventoryVm::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool SdrInventoryVm::Nodes::has_data() const
 
 bool SdrInventoryVm::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<SdrInventoryVm::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool SdrInventoryVm::Nodes::has_leaf_or_child_of_name(const std::string & name) 
 SdrInventoryVm::Nodes::Node::Node()
     :
     name{YType::str, "name"}
-    	,
+        ,
     node_entries(std::make_shared<SdrInventoryVm::Nodes::Node::NodeEntries>())
 {
     node_entries->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrInventoryVm::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ SdrInventoryVm::Nodes::Node::~Node()
 
 bool SdrInventoryVm::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (node_entries !=  nullptr && node_entries->has_data());
 }
@@ -252,7 +257,8 @@ std::string SdrInventoryVm::Nodes::Node::get_absolute_path() const
 std::string SdrInventoryVm::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[name='" <<name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool SdrInventoryVm::Nodes::Node::has_leaf_or_child_of_name(const std::string & 
 }
 
 SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntries()
+    :
+    node_entry(this, {"name"})
 {
 
-    yang_name = "node-entries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-entries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrInventoryVm::Nodes::Node::NodeEntries::~NodeEntries()
@@ -329,7 +337,8 @@ SdrInventoryVm::Nodes::Node::NodeEntries::~NodeEntries()
 
 bool SdrInventoryVm::Nodes::Node::NodeEntries::has_data() const
 {
-    for (std::size_t index=0; index<node_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_entry.len(); index++)
     {
         if(node_entry[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool SdrInventoryVm::Nodes::Node::NodeEntries::has_data() const
 
 bool SdrInventoryVm::Nodes::Node::NodeEntries::has_operation() const
 {
-    for (std::size_t index=0; index<node_entry.size(); index++)
+    for (std::size_t index=0; index<node_entry.len(); index++)
     {
         if(node_entry[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> SdrInventoryVm::Nodes::Node::NodeEntries::get_child_by_n
     {
         auto c = std::make_shared<SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry>();
         c->parent = this;
-        node_entry.push_back(c);
+        node_entry.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrInventoryVm::Nodes::Node::Node
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_entry)
+    for (auto c : node_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -427,7 +436,7 @@ SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::NodeEntry()
     node_ipv4_string{YType::str, "node-ipv4-string"}
 {
 
-    yang_name = "node-entry"; yang_parent_name = "node-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "node-entry"; yang_parent_name = "node-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::~NodeEntry()
@@ -436,6 +445,7 @@ SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::~NodeEntry()
 
 bool SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| valid.is_set
 	|| card_type.is_set
@@ -478,7 +488,8 @@ bool SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::has_operation() const
 std::string SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node-entry" <<"[name='" <<name <<"']";
+    path_buffer << "node-entry";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

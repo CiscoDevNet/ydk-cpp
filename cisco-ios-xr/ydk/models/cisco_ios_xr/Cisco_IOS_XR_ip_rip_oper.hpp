@@ -61,7 +61,7 @@ class Rip::Vrfs : public ydk::Entity
 
         class Vrf; //type: Rip::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Rip::Vrfs
 
@@ -117,7 +117,7 @@ class Rip::Vrfs::Vrf::Routes : public ydk::Entity
 
         class Route; //type: Rip::Vrfs::Vrf::Routes::Route
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Routes::Route> > route;
+        ydk::YList route;
         
 }; // Rip::Vrfs::Vrf::Routes
 
@@ -154,7 +154,7 @@ class Rip::Vrfs::Vrf::Routes::Route : public ydk::Entity
         ydk::YLeaf hold_down; //type: boolean
         class Paths; //type: Rip::Vrfs::Vrf::Routes::Route::Paths
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Routes::Route::Paths> > paths;
+        ydk::YList paths;
         
 }; // Rip::Vrfs::Vrf::Routes::Route
 
@@ -276,7 +276,7 @@ class Rip::Vrfs::Vrf::Interfaces : public ydk::Entity
 
         class Interface; //type: Rip::Vrfs::Vrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Rip::Vrfs::Vrf::Interfaces
 
@@ -330,8 +330,8 @@ class Rip::Vrfs::Vrf::Interfaces::Interface : public ydk::Entity
         class RipSummary; //type: Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary
         class RipPeer; //type: Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary> > rip_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer> > rip_peer;
+        ydk::YList rip_summary;
+        ydk::YList rip_peer;
         
 }; // Rip::Vrfs::Vrf::Interfaces::Interface
 
@@ -405,7 +405,7 @@ class Rip::Vrfs::Vrf::Global : public ydk::Entity
         class InterfaceSummary; //type: Rip::Vrfs::Vrf::Global::InterfaceSummary
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Global::VrfSummary> vrf_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Vrfs::Vrf::Global::InterfaceSummary> > interface_summary;
+        ydk::YList interface_summary;
         
 }; // Rip::Vrfs::Vrf::Global
 
@@ -522,7 +522,7 @@ class Rip::Protocol::Process : public ydk::Entity
         ydk::YLeaf path_count; //type: uint32
         class VrfSummary; //type: Rip::Protocol::Process::VrfSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::Process::VrfSummary> > vrf_summary;
+        ydk::YList vrf_summary;
         
 }; // Rip::Protocol::Process
 
@@ -611,7 +611,7 @@ class Rip::Protocol::DefaultVrf::Routes : public ydk::Entity
 
         class Route; //type: Rip::Protocol::DefaultVrf::Routes::Route
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Routes::Route> > route;
+        ydk::YList route;
         
 }; // Rip::Protocol::DefaultVrf::Routes
 
@@ -649,7 +649,7 @@ class Rip::Protocol::DefaultVrf::Routes::Route : public ydk::Entity
         ydk::YLeaf hold_down; //type: boolean
         class Paths; //type: Rip::Protocol::DefaultVrf::Routes::Route::Paths
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Routes::Route::Paths> > paths;
+        ydk::YList paths;
         
 }; // Rip::Protocol::DefaultVrf::Routes::Route
 
@@ -775,7 +775,7 @@ class Rip::Protocol::DefaultVrf::Interfaces : public ydk::Entity
 
         class Interface; //type: Rip::Protocol::DefaultVrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Rip::Protocol::DefaultVrf::Interfaces
 
@@ -830,8 +830,8 @@ class Rip::Protocol::DefaultVrf::Interfaces::Interface : public ydk::Entity
         class RipSummary; //type: Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary
         class RipPeer; //type: Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary> > rip_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer> > rip_peer;
+        ydk::YList rip_summary;
+        ydk::YList rip_peer;
         
 }; // Rip::Protocol::DefaultVrf::Interfaces::Interface
 
@@ -906,7 +906,7 @@ class Rip::Protocol::DefaultVrf::Global : public ydk::Entity
         class InterfaceSummary; //type: Rip::Protocol::DefaultVrf::Global::InterfaceSummary
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Global::VrfSummary> vrf_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::Protocol::DefaultVrf::Global::InterfaceSummary> > interface_summary;
+        ydk::YList interface_summary;
         
 }; // Rip::Protocol::DefaultVrf::Global
 
@@ -1025,7 +1025,7 @@ class Rip::DefaultVrf::Routes : public ydk::Entity
 
         class Route; //type: Rip::DefaultVrf::Routes::Route
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Routes::Route> > route;
+        ydk::YList route;
         
 }; // Rip::DefaultVrf::Routes
 
@@ -1063,7 +1063,7 @@ class Rip::DefaultVrf::Routes::Route : public ydk::Entity
         ydk::YLeaf hold_down; //type: boolean
         class Paths; //type: Rip::DefaultVrf::Routes::Route::Paths
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Routes::Route::Paths> > paths;
+        ydk::YList paths;
         
 }; // Rip::DefaultVrf::Routes::Route
 
@@ -1189,7 +1189,7 @@ class Rip::DefaultVrf::Interfaces : public ydk::Entity
 
         class Interface; //type: Rip::DefaultVrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Rip::DefaultVrf::Interfaces
 
@@ -1244,8 +1244,8 @@ class Rip::DefaultVrf::Interfaces::Interface : public ydk::Entity
         class RipSummary; //type: Rip::DefaultVrf::Interfaces::Interface::RipSummary
         class RipPeer; //type: Rip::DefaultVrf::Interfaces::Interface::RipPeer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Interfaces::Interface::RipSummary> > rip_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Interfaces::Interface::RipPeer> > rip_peer;
+        ydk::YList rip_summary;
+        ydk::YList rip_peer;
         
 }; // Rip::DefaultVrf::Interfaces::Interface
 
@@ -1320,7 +1320,7 @@ class Rip::DefaultVrf::Global : public ydk::Entity
         class InterfaceSummary; //type: Rip::DefaultVrf::Global::InterfaceSummary
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Global::VrfSummary> vrf_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rip_oper::Rip::DefaultVrf::Global::InterfaceSummary> > interface_summary;
+        ydk::YList interface_summary;
         
 }; // Rip::DefaultVrf::Global
 
@@ -1387,16 +1387,6 @@ class Rip::DefaultVrf::Global::InterfaceSummary : public ydk::Entity
 
 }; // Rip::DefaultVrf::Global::InterfaceSummary
 
-class InterfaceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface_none;
-        static const ydk::Enum::YLeaf interface_down;
-        static const ydk::Enum::YLeaf interface_up;
-        static const ydk::Enum::YLeaf interface_unknown;
-
-};
-
 class RipRouteOrigin : public ydk::Enum
 {
     public:
@@ -1406,6 +1396,16 @@ class RipRouteOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf rip_rt_org_rip;
         static const ydk::Enum::YLeaf rip_rt_org_intsummary;
         static const ydk::Enum::YLeaf rip_rt_org_unused;
+
+};
+
+class InterfaceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface_none;
+        static const ydk::Enum::YLeaf interface_down;
+        static const ydk::Enum::YLeaf interface_up;
+        static const ydk::Enum::YLeaf interface_unknown;
 
 };
 

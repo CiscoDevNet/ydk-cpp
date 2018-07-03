@@ -13,13 +13,14 @@ namespace Cisco_IOS_XR_sysadmin_alarm_mgr {
 
 AlarmMgr::AlarmMgr()
     :
-    brief(std::make_shared<AlarmMgr::Brief>())
-	,detail(std::make_shared<AlarmMgr::Detail>())
+    trace(this, {"buffer"})
+    , brief(std::make_shared<AlarmMgr::Brief>())
+    , detail(std::make_shared<AlarmMgr::Detail>())
 {
     brief->parent = this;
     detail->parent = this;
 
-    yang_name = "alarm_mgr"; yang_parent_name = "Cisco-IOS-XR-sysadmin-alarm-mgr"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "alarm_mgr"; yang_parent_name = "Cisco-IOS-XR-sysadmin-alarm-mgr"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AlarmMgr::~AlarmMgr()
@@ -28,7 +29,8 @@ AlarmMgr::~AlarmMgr()
 
 bool AlarmMgr::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -39,7 +41,7 @@ bool AlarmMgr::has_data() const
 
 bool AlarmMgr::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -71,7 +73,7 @@ std::shared_ptr<Entity> AlarmMgr::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<AlarmMgr::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -101,7 +103,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -165,9 +167,11 @@ bool AlarmMgr::has_leaf_or_child_of_name(const std::string & name) const
 AlarmMgr::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "alarm_mgr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "alarm_mgr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Trace::~Trace()
@@ -176,7 +180,8 @@ AlarmMgr::Trace::~Trace()
 
 bool AlarmMgr::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -186,7 +191,7 @@ bool AlarmMgr::Trace::has_data() const
 
 bool AlarmMgr::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -205,7 +210,8 @@ std::string AlarmMgr::Trace::get_absolute_path() const
 std::string AlarmMgr::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -225,7 +231,7 @@ std::shared_ptr<Entity> AlarmMgr::Trace::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<AlarmMgr::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -237,7 +243,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Trace::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -276,9 +282,11 @@ bool AlarmMgr::Trace::has_leaf_or_child_of_name(const std::string & name) const
 AlarmMgr::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Trace::Location::~Location()
@@ -287,7 +295,8 @@ AlarmMgr::Trace::Location::~Location()
 
 bool AlarmMgr::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -297,7 +306,7 @@ bool AlarmMgr::Trace::Location::has_data() const
 
 bool AlarmMgr::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -309,7 +318,8 @@ bool AlarmMgr::Trace::Location::has_operation() const
 std::string AlarmMgr::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -329,7 +339,7 @@ std::shared_ptr<Entity> AlarmMgr::Trace::Location::get_child_by_name(const std::
     {
         auto c = std::make_shared<AlarmMgr::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -341,7 +351,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Trace::Location::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -380,9 +390,11 @@ bool AlarmMgr::Trace::Location::has_leaf_or_child_of_name(const std::string & na
 AlarmMgr::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Trace::Location::AllOptions::~AllOptions()
@@ -391,7 +403,8 @@ AlarmMgr::Trace::Location::AllOptions::~AllOptions()
 
 bool AlarmMgr::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -401,7 +414,7 @@ bool AlarmMgr::Trace::Location::AllOptions::has_data() const
 
 bool AlarmMgr::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -413,7 +426,8 @@ bool AlarmMgr::Trace::Location::AllOptions::has_operation() const
 std::string AlarmMgr::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -433,7 +447,7 @@ std::shared_ptr<Entity> AlarmMgr::Trace::Location::AllOptions::get_child_by_name
     {
         auto c = std::make_shared<AlarmMgr::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -445,7 +459,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Trace::Location::AllOpt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -486,7 +500,7 @@ AlarmMgr::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -495,6 +509,7 @@ AlarmMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool AlarmMgr::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -561,14 +576,14 @@ bool AlarmMgr::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_child_of_na
 AlarmMgr::Brief::Brief()
     :
     card(std::make_shared<AlarmMgr::Brief::Card>())
-	,rack(std::make_shared<AlarmMgr::Brief::Rack>())
-	,system(std::make_shared<AlarmMgr::Brief::System>())
+    , rack(std::make_shared<AlarmMgr::Brief::Rack>())
+    , system(std::make_shared<AlarmMgr::Brief::System>())
 {
     card->parent = this;
     rack->parent = this;
     system->parent = this;
 
-    yang_name = "brief"; yang_parent_name = "alarm_mgr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "alarm_mgr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::~Brief()
@@ -577,6 +592,7 @@ AlarmMgr::Brief::~Brief()
 
 bool AlarmMgr::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return (card !=  nullptr && card->has_data())
 	|| (rack !=  nullptr && rack->has_data())
 	|| (system !=  nullptr && system->has_data());
@@ -683,9 +699,11 @@ bool AlarmMgr::Brief::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 AlarmMgr::Brief::Card::Card()
+    :
+    location(this, {"locations"})
 {
 
-    yang_name = "card"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "card"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::Card::~Card()
@@ -694,7 +712,8 @@ AlarmMgr::Brief::Card::~Card()
 
 bool AlarmMgr::Brief::Card::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -704,7 +723,7 @@ bool AlarmMgr::Brief::Card::has_data() const
 
 bool AlarmMgr::Brief::Card::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -741,7 +760,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Card::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<AlarmMgr::Brief::Card::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -753,7 +772,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -782,9 +801,13 @@ bool AlarmMgr::Brief::Card::has_leaf_or_child_of_name(const std::string & name) 
 AlarmMgr::Brief::Card::Location::Location()
     :
     locations{YType::str, "locations"}
+        ,
+    active(this, {"aid", "eid"})
+    , history(this, {"aid", "eid"})
+    , suppressed(this, {"aid", "eid"})
 {
 
-    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::Card::Location::~Location()
@@ -793,17 +816,18 @@ AlarmMgr::Brief::Card::Location::~Location()
 
 bool AlarmMgr::Brief::Card::Location::has_data() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_data())
             return true;
@@ -813,17 +837,17 @@ bool AlarmMgr::Brief::Card::Location::has_data() const
 
 bool AlarmMgr::Brief::Card::Location::has_operation() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_operation())
             return true;
@@ -842,7 +866,8 @@ std::string AlarmMgr::Brief::Card::Location::get_absolute_path() const
 std::string AlarmMgr::Brief::Card::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[locations='" <<locations <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(locations, "locations");
     return path_buffer.str();
 }
 
@@ -862,7 +887,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Card::Location::get_child_by_name(const
     {
         auto c = std::make_shared<AlarmMgr::Brief::Card::Location::Active>();
         c->parent = this;
-        active.push_back(c);
+        active.append(c);
         return c;
     }
 
@@ -870,7 +895,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Card::Location::get_child_by_name(const
     {
         auto c = std::make_shared<AlarmMgr::Brief::Card::Location::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -878,7 +903,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Card::Location::get_child_by_name(const
     {
         auto c = std::make_shared<AlarmMgr::Brief::Card::Location::Suppressed>();
         c->parent = this;
-        suppressed.push_back(c);
+        suppressed.append(c);
         return c;
     }
 
@@ -890,7 +915,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : active)
+    for (auto c : active.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -899,7 +924,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::Location::
     }
 
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -908,7 +933,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Card::Location::
     }
 
     count = 0;
-    for (auto const & c : suppressed)
+    for (auto c : suppressed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -957,7 +982,7 @@ AlarmMgr::Brief::Card::Location::Active::Active()
     set_time{YType::str, "set_time"}
 {
 
-    yang_name = "active"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Brief::Card::Location::Active::~Active()
@@ -966,6 +991,7 @@ AlarmMgr::Brief::Card::Location::Active::~Active()
 
 bool AlarmMgr::Brief::Card::Location::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -994,7 +1020,9 @@ bool AlarmMgr::Brief::Card::Location::Active::has_operation() const
 std::string AlarmMgr::Brief::Card::Location::Active::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "active" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "active";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -1147,7 +1175,7 @@ AlarmMgr::Brief::Card::Location::History::History()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "history"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Brief::Card::Location::History::~History()
@@ -1156,6 +1184,7 @@ AlarmMgr::Brief::Card::Location::History::~History()
 
 bool AlarmMgr::Brief::Card::Location::History::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -1186,7 +1215,9 @@ bool AlarmMgr::Brief::Card::Location::History::has_operation() const
 std::string AlarmMgr::Brief::Card::Location::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -1350,7 +1381,7 @@ AlarmMgr::Brief::Card::Location::Suppressed::Suppressed()
     suppressed_time{YType::str, "suppressed_time"}
 {
 
-    yang_name = "suppressed"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Brief::Card::Location::Suppressed::~Suppressed()
@@ -1359,6 +1390,7 @@ AlarmMgr::Brief::Card::Location::Suppressed::~Suppressed()
 
 bool AlarmMgr::Brief::Card::Location::Suppressed::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -1389,7 +1421,9 @@ bool AlarmMgr::Brief::Card::Location::Suppressed::has_operation() const
 std::string AlarmMgr::Brief::Card::Location::Suppressed::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "suppressed" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "suppressed";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -1540,9 +1574,11 @@ bool AlarmMgr::Brief::Card::Location::Suppressed::has_leaf_or_child_of_name(cons
 }
 
 AlarmMgr::Brief::Rack::Rack()
+    :
+    rack_locations(this, {"rackid"})
 {
 
-    yang_name = "rack"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::Rack::~Rack()
@@ -1551,7 +1587,8 @@ AlarmMgr::Brief::Rack::~Rack()
 
 bool AlarmMgr::Brief::Rack::has_data() const
 {
-    for (std::size_t index=0; index<rack_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack_locations.len(); index++)
     {
         if(rack_locations[index]->has_data())
             return true;
@@ -1561,7 +1598,7 @@ bool AlarmMgr::Brief::Rack::has_data() const
 
 bool AlarmMgr::Brief::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<rack_locations.size(); index++)
+    for (std::size_t index=0; index<rack_locations.len(); index++)
     {
         if(rack_locations[index]->has_operation())
             return true;
@@ -1598,7 +1635,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Rack::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations>();
         c->parent = this;
-        rack_locations.push_back(c);
+        rack_locations.append(c);
         return c;
     }
 
@@ -1610,7 +1647,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack_locations)
+    for (auto c : rack_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1639,9 +1676,13 @@ bool AlarmMgr::Brief::Rack::has_leaf_or_child_of_name(const std::string & name) 
 AlarmMgr::Brief::Rack::RackLocations::RackLocations()
     :
     rackid{YType::uint32, "rackid"}
+        ,
+    active(this, {"aid", "eid"})
+    , history(this, {"aid", "eid"})
+    , suppressed(this, {"aid", "eid"})
 {
 
-    yang_name = "rack_locations"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack_locations"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::Rack::RackLocations::~RackLocations()
@@ -1650,17 +1691,18 @@ AlarmMgr::Brief::Rack::RackLocations::~RackLocations()
 
 bool AlarmMgr::Brief::Rack::RackLocations::has_data() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_data())
             return true;
@@ -1670,17 +1712,17 @@ bool AlarmMgr::Brief::Rack::RackLocations::has_data() const
 
 bool AlarmMgr::Brief::Rack::RackLocations::has_operation() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_operation())
             return true;
@@ -1699,7 +1741,8 @@ std::string AlarmMgr::Brief::Rack::RackLocations::get_absolute_path() const
 std::string AlarmMgr::Brief::Rack::RackLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack_locations" <<"[rackid='" <<rackid <<"']";
+    path_buffer << "rack_locations";
+    ADD_KEY_TOKEN(rackid, "rackid");
     return path_buffer.str();
 }
 
@@ -1719,7 +1762,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Rack::RackLocations::get_child_by_name(
     {
         auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::Active>();
         c->parent = this;
-        active.push_back(c);
+        active.append(c);
         return c;
     }
 
@@ -1727,7 +1770,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Rack::RackLocations::get_child_by_name(
     {
         auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -1735,7 +1778,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::Rack::RackLocations::get_child_by_name(
     {
         auto c = std::make_shared<AlarmMgr::Brief::Rack::RackLocations::Suppressed>();
         c->parent = this;
-        suppressed.push_back(c);
+        suppressed.append(c);
         return c;
     }
 
@@ -1747,7 +1790,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::RackLocati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : active)
+    for (auto c : active.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1756,7 +1799,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::RackLocati
     }
 
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1765,7 +1808,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::Rack::RackLocati
     }
 
     count = 0;
-    for (auto const & c : suppressed)
+    for (auto c : suppressed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1814,7 +1857,7 @@ AlarmMgr::Brief::Rack::RackLocations::Active::Active()
     set_time{YType::str, "set_time"}
 {
 
-    yang_name = "active"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Brief::Rack::RackLocations::Active::~Active()
@@ -1823,6 +1866,7 @@ AlarmMgr::Brief::Rack::RackLocations::Active::~Active()
 
 bool AlarmMgr::Brief::Rack::RackLocations::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -1851,7 +1895,9 @@ bool AlarmMgr::Brief::Rack::RackLocations::Active::has_operation() const
 std::string AlarmMgr::Brief::Rack::RackLocations::Active::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "active" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "active";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -2004,7 +2050,7 @@ AlarmMgr::Brief::Rack::RackLocations::History::History()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "history"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Brief::Rack::RackLocations::History::~History()
@@ -2013,6 +2059,7 @@ AlarmMgr::Brief::Rack::RackLocations::History::~History()
 
 bool AlarmMgr::Brief::Rack::RackLocations::History::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -2043,7 +2090,9 @@ bool AlarmMgr::Brief::Rack::RackLocations::History::has_operation() const
 std::string AlarmMgr::Brief::Rack::RackLocations::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -2207,7 +2256,7 @@ AlarmMgr::Brief::Rack::RackLocations::Suppressed::Suppressed()
     suppressed_time{YType::str, "suppressed_time"}
 {
 
-    yang_name = "suppressed"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Brief::Rack::RackLocations::Suppressed::~Suppressed()
@@ -2216,6 +2265,7 @@ AlarmMgr::Brief::Rack::RackLocations::Suppressed::~Suppressed()
 
 bool AlarmMgr::Brief::Rack::RackLocations::Suppressed::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -2246,7 +2296,9 @@ bool AlarmMgr::Brief::Rack::RackLocations::Suppressed::has_operation() const
 std::string AlarmMgr::Brief::Rack::RackLocations::Suppressed::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "suppressed" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "suppressed";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -2397,9 +2449,13 @@ bool AlarmMgr::Brief::Rack::RackLocations::Suppressed::has_leaf_or_child_of_name
 }
 
 AlarmMgr::Brief::System::System()
+    :
+    active(this, {"aid", "eid"})
+    , history(this, {"aid", "eid"})
+    , suppressed(this, {"aid", "eid"})
 {
 
-    yang_name = "system"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::System::~System()
@@ -2408,17 +2464,18 @@ AlarmMgr::Brief::System::~System()
 
 bool AlarmMgr::Brief::System::has_data() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_data())
             return true;
@@ -2428,17 +2485,17 @@ bool AlarmMgr::Brief::System::has_data() const
 
 bool AlarmMgr::Brief::System::has_operation() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_operation())
             return true;
@@ -2475,7 +2532,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::System::get_child_by_name(const std::st
     {
         auto c = std::make_shared<AlarmMgr::Brief::System::Active>();
         c->parent = this;
-        active.push_back(c);
+        active.append(c);
         return c;
     }
 
@@ -2483,7 +2540,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::System::get_child_by_name(const std::st
     {
         auto c = std::make_shared<AlarmMgr::Brief::System::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -2491,7 +2548,7 @@ std::shared_ptr<Entity> AlarmMgr::Brief::System::get_child_by_name(const std::st
     {
         auto c = std::make_shared<AlarmMgr::Brief::System::Suppressed>();
         c->parent = this;
-        suppressed.push_back(c);
+        suppressed.append(c);
         return c;
     }
 
@@ -2503,7 +2560,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::System::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : active)
+    for (auto c : active.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2512,7 +2569,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::System::get_chil
     }
 
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2521,7 +2578,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Brief::System::get_chil
     }
 
     count = 0;
-    for (auto const & c : suppressed)
+    for (auto c : suppressed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2560,7 +2617,7 @@ AlarmMgr::Brief::System::Active::Active()
     set_time{YType::str, "set_time"}
 {
 
-    yang_name = "active"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::System::Active::~Active()
@@ -2569,6 +2626,7 @@ AlarmMgr::Brief::System::Active::~Active()
 
 bool AlarmMgr::Brief::System::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -2604,7 +2662,9 @@ std::string AlarmMgr::Brief::System::Active::get_absolute_path() const
 std::string AlarmMgr::Brief::System::Active::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "active" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "active";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -2757,7 +2817,7 @@ AlarmMgr::Brief::System::History::History()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "history"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::System::History::~History()
@@ -2766,6 +2826,7 @@ AlarmMgr::Brief::System::History::~History()
 
 bool AlarmMgr::Brief::System::History::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -2803,7 +2864,9 @@ std::string AlarmMgr::Brief::System::History::get_absolute_path() const
 std::string AlarmMgr::Brief::System::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -2967,7 +3030,7 @@ AlarmMgr::Brief::System::Suppressed::Suppressed()
     suppressed_time{YType::str, "suppressed_time"}
 {
 
-    yang_name = "suppressed"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "suppressed"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Brief::System::Suppressed::~Suppressed()
@@ -2976,6 +3039,7 @@ AlarmMgr::Brief::System::Suppressed::~Suppressed()
 
 bool AlarmMgr::Brief::System::Suppressed::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -3013,7 +3077,9 @@ std::string AlarmMgr::Brief::System::Suppressed::get_absolute_path() const
 std::string AlarmMgr::Brief::System::Suppressed::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "suppressed" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "suppressed";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -3166,14 +3232,14 @@ bool AlarmMgr::Brief::System::Suppressed::has_leaf_or_child_of_name(const std::s
 AlarmMgr::Detail::Detail()
     :
     card(std::make_shared<AlarmMgr::Detail::Card>())
-	,rack(std::make_shared<AlarmMgr::Detail::Rack>())
-	,system(std::make_shared<AlarmMgr::Detail::System>())
+    , rack(std::make_shared<AlarmMgr::Detail::Rack>())
+    , system(std::make_shared<AlarmMgr::Detail::System>())
 {
     card->parent = this;
     rack->parent = this;
     system->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "alarm_mgr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "alarm_mgr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::~Detail()
@@ -3182,6 +3248,7 @@ AlarmMgr::Detail::~Detail()
 
 bool AlarmMgr::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return (card !=  nullptr && card->has_data())
 	|| (rack !=  nullptr && rack->has_data())
 	|| (system !=  nullptr && system->has_data());
@@ -3288,9 +3355,11 @@ bool AlarmMgr::Detail::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 AlarmMgr::Detail::Card::Card()
+    :
+    location(this, {"locations"})
 {
 
-    yang_name = "card"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "card"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::Card::~Card()
@@ -3299,7 +3368,8 @@ AlarmMgr::Detail::Card::~Card()
 
 bool AlarmMgr::Detail::Card::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3309,7 +3379,7 @@ bool AlarmMgr::Detail::Card::has_data() const
 
 bool AlarmMgr::Detail::Card::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3346,7 +3416,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Card::get_child_by_name(const std::str
     {
         auto c = std::make_shared<AlarmMgr::Detail::Card::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3358,7 +3428,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3387,9 +3457,15 @@ bool AlarmMgr::Detail::Card::has_leaf_or_child_of_name(const std::string & name)
 AlarmMgr::Detail::Card::Location::Location()
     :
     locations{YType::str, "locations"}
+        ,
+    active(this, {"aid", "eid"})
+    , history(this, {"aid", "eid"})
+    , stats(this, {"attime"})
+    , clients(this, {"agent_handle"})
+    , suppressed(this, {"aid", "eid"})
 {
 
-    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "card"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::Card::Location::~Location()
@@ -3398,27 +3474,28 @@ AlarmMgr::Detail::Card::Location::~Location()
 
 bool AlarmMgr::Detail::Card::Location::has_data() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<clients.size(); index++)
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_data())
             return true;
@@ -3428,27 +3505,27 @@ bool AlarmMgr::Detail::Card::Location::has_data() const
 
 bool AlarmMgr::Detail::Card::Location::has_operation() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<clients.size(); index++)
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_operation())
             return true;
@@ -3467,7 +3544,8 @@ std::string AlarmMgr::Detail::Card::Location::get_absolute_path() const
 std::string AlarmMgr::Detail::Card::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[locations='" <<locations <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(locations, "locations");
     return path_buffer.str();
 }
 
@@ -3487,7 +3565,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::get_child_by_name(cons
     {
         auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Active>();
         c->parent = this;
-        active.push_back(c);
+        active.append(c);
         return c;
     }
 
@@ -3495,7 +3573,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::get_child_by_name(cons
     {
         auto c = std::make_shared<AlarmMgr::Detail::Card::Location::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -3503,7 +3581,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::get_child_by_name(cons
     {
         auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Stats>();
         c->parent = this;
-        stats.push_back(c);
+        stats.append(c);
         return c;
     }
 
@@ -3511,7 +3589,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::get_child_by_name(cons
     {
         auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Clients>();
         c->parent = this;
-        clients.push_back(c);
+        clients.append(c);
         return c;
     }
 
@@ -3519,7 +3597,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Card::Location::get_child_by_name(cons
     {
         auto c = std::make_shared<AlarmMgr::Detail::Card::Location::Suppressed>();
         c->parent = this;
-        suppressed.push_back(c);
+        suppressed.append(c);
         return c;
     }
 
@@ -3531,7 +3609,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : active)
+    for (auto c : active.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3540,7 +3618,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location:
     }
 
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3549,7 +3627,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location:
     }
 
     count = 0;
-    for (auto const & c : stats)
+    for (auto c : stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3558,7 +3636,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location:
     }
 
     count = 0;
-    for (auto const & c : clients)
+    for (auto c : clients.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3567,7 +3645,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Card::Location:
     }
 
     count = 0;
-    for (auto const & c : suppressed)
+    for (auto c : suppressed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3621,7 +3699,7 @@ AlarmMgr::Detail::Card::Location::Active::Active()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "active"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Card::Location::Active::~Active()
@@ -3630,6 +3708,7 @@ AlarmMgr::Detail::Card::Location::Active::~Active()
 
 bool AlarmMgr::Detail::Card::Location::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -3668,7 +3747,9 @@ bool AlarmMgr::Detail::Card::Location::Active::has_operation() const
 std::string AlarmMgr::Detail::Card::Location::Active::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "active" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "active";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -3880,7 +3961,7 @@ AlarmMgr::Detail::Card::Location::History::History()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "history"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Card::Location::History::~History()
@@ -3889,6 +3970,7 @@ AlarmMgr::Detail::Card::Location::History::~History()
 
 bool AlarmMgr::Detail::Card::Location::History::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -3927,7 +4009,9 @@ bool AlarmMgr::Detail::Card::Location::History::has_operation() const
 std::string AlarmMgr::Detail::Card::Location::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -4138,7 +4222,7 @@ AlarmMgr::Detail::Card::Location::Stats::Stats()
     cache_miss{YType::uint64, "cache_miss"}
 {
 
-    yang_name = "stats"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Card::Location::Stats::~Stats()
@@ -4147,6 +4231,7 @@ AlarmMgr::Detail::Card::Location::Stats::~Stats()
 
 bool AlarmMgr::Detail::Card::Location::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return attime.is_set
 	|| reported.is_set
 	|| dropped.is_set
@@ -4183,7 +4268,8 @@ bool AlarmMgr::Detail::Card::Location::Stats::has_operation() const
 std::string AlarmMgr::Detail::Card::Location::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats" <<"[attime='" <<attime <<"']";
+    path_buffer << "stats";
+    ADD_KEY_TOKEN(attime, "attime");
     return path_buffer.str();
 }
 
@@ -4387,7 +4473,7 @@ AlarmMgr::Detail::Card::Location::Clients::Clients()
     agent_report_count{YType::uint64, "agent_report_count"}
 {
 
-    yang_name = "clients"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Card::Location::Clients::~Clients()
@@ -4396,6 +4482,7 @@ AlarmMgr::Detail::Card::Location::Clients::~Clients()
 
 bool AlarmMgr::Detail::Card::Location::Clients::has_data() const
 {
+    if (is_presence_container) return true;
     return agent_handle.is_set
 	|| agent_name.is_set
 	|| agent_id.is_set
@@ -4440,7 +4527,8 @@ bool AlarmMgr::Detail::Card::Location::Clients::has_operation() const
 std::string AlarmMgr::Detail::Card::Location::Clients::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clients" <<"[agent_handle='" <<agent_handle <<"']";
+    path_buffer << "clients";
+    ADD_KEY_TOKEN(agent_handle, "agent_handle");
     return path_buffer.str();
 }
 
@@ -4685,7 +4773,7 @@ AlarmMgr::Detail::Card::Location::Suppressed::Suppressed()
     suppressed_time{YType::str, "suppressed_time"}
 {
 
-    yang_name = "suppressed"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Card::Location::Suppressed::~Suppressed()
@@ -4694,6 +4782,7 @@ AlarmMgr::Detail::Card::Location::Suppressed::~Suppressed()
 
 bool AlarmMgr::Detail::Card::Location::Suppressed::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -4732,7 +4821,9 @@ bool AlarmMgr::Detail::Card::Location::Suppressed::has_operation() const
 std::string AlarmMgr::Detail::Card::Location::Suppressed::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "suppressed" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "suppressed";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -4927,9 +5018,11 @@ bool AlarmMgr::Detail::Card::Location::Suppressed::has_leaf_or_child_of_name(con
 }
 
 AlarmMgr::Detail::Rack::Rack()
+    :
+    rack_locations(this, {"rackid"})
 {
 
-    yang_name = "rack"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::Rack::~Rack()
@@ -4938,7 +5031,8 @@ AlarmMgr::Detail::Rack::~Rack()
 
 bool AlarmMgr::Detail::Rack::has_data() const
 {
-    for (std::size_t index=0; index<rack_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack_locations.len(); index++)
     {
         if(rack_locations[index]->has_data())
             return true;
@@ -4948,7 +5042,7 @@ bool AlarmMgr::Detail::Rack::has_data() const
 
 bool AlarmMgr::Detail::Rack::has_operation() const
 {
-    for (std::size_t index=0; index<rack_locations.size(); index++)
+    for (std::size_t index=0; index<rack_locations.len(); index++)
     {
         if(rack_locations[index]->has_operation())
             return true;
@@ -4985,7 +5079,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Rack::get_child_by_name(const std::str
     {
         auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations>();
         c->parent = this;
-        rack_locations.push_back(c);
+        rack_locations.append(c);
         return c;
     }
 
@@ -4997,7 +5091,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack_locations)
+    for (auto c : rack_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5026,9 +5120,15 @@ bool AlarmMgr::Detail::Rack::has_leaf_or_child_of_name(const std::string & name)
 AlarmMgr::Detail::Rack::RackLocations::RackLocations()
     :
     rackid{YType::uint32, "rackid"}
+        ,
+    active(this, {"aid", "eid"})
+    , history(this, {"aid", "eid"})
+    , stats(this, {"attime"})
+    , clients(this, {"agent_handle"})
+    , suppressed(this, {"aid", "eid"})
 {
 
-    yang_name = "rack_locations"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack_locations"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::Rack::RackLocations::~RackLocations()
@@ -5037,27 +5137,28 @@ AlarmMgr::Detail::Rack::RackLocations::~RackLocations()
 
 bool AlarmMgr::Detail::Rack::RackLocations::has_data() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<clients.size(); index++)
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_data())
             return true;
@@ -5067,27 +5168,27 @@ bool AlarmMgr::Detail::Rack::RackLocations::has_data() const
 
 bool AlarmMgr::Detail::Rack::RackLocations::has_operation() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<clients.size(); index++)
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_operation())
             return true;
@@ -5106,7 +5207,8 @@ std::string AlarmMgr::Detail::Rack::RackLocations::get_absolute_path() const
 std::string AlarmMgr::Detail::Rack::RackLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack_locations" <<"[rackid='" <<rackid <<"']";
+    path_buffer << "rack_locations";
+    ADD_KEY_TOKEN(rackid, "rackid");
     return path_buffer.str();
 }
 
@@ -5126,7 +5228,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::get_child_by_name
     {
         auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Active>();
         c->parent = this;
-        active.push_back(c);
+        active.append(c);
         return c;
     }
 
@@ -5134,7 +5236,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::get_child_by_name
     {
         auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -5142,7 +5244,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::get_child_by_name
     {
         auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Stats>();
         c->parent = this;
-        stats.push_back(c);
+        stats.append(c);
         return c;
     }
 
@@ -5150,7 +5252,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::get_child_by_name
     {
         auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Clients>();
         c->parent = this;
-        clients.push_back(c);
+        clients.append(c);
         return c;
     }
 
@@ -5158,7 +5260,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::Rack::RackLocations::get_child_by_name
     {
         auto c = std::make_shared<AlarmMgr::Detail::Rack::RackLocations::Suppressed>();
         c->parent = this;
-        suppressed.push_back(c);
+        suppressed.append(c);
         return c;
     }
 
@@ -5170,7 +5272,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : active)
+    for (auto c : active.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5179,7 +5281,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocat
     }
 
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5188,7 +5290,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocat
     }
 
     count = 0;
-    for (auto const & c : stats)
+    for (auto c : stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5197,7 +5299,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocat
     }
 
     count = 0;
-    for (auto const & c : clients)
+    for (auto c : clients.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5206,7 +5308,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::Rack::RackLocat
     }
 
     count = 0;
-    for (auto const & c : suppressed)
+    for (auto c : suppressed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5260,7 +5362,7 @@ AlarmMgr::Detail::Rack::RackLocations::Active::Active()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "active"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Rack::RackLocations::Active::~Active()
@@ -5269,6 +5371,7 @@ AlarmMgr::Detail::Rack::RackLocations::Active::~Active()
 
 bool AlarmMgr::Detail::Rack::RackLocations::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -5307,7 +5410,9 @@ bool AlarmMgr::Detail::Rack::RackLocations::Active::has_operation() const
 std::string AlarmMgr::Detail::Rack::RackLocations::Active::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "active" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "active";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -5519,7 +5624,7 @@ AlarmMgr::Detail::Rack::RackLocations::History::History()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "history"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Rack::RackLocations::History::~History()
@@ -5528,6 +5633,7 @@ AlarmMgr::Detail::Rack::RackLocations::History::~History()
 
 bool AlarmMgr::Detail::Rack::RackLocations::History::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -5566,7 +5672,9 @@ bool AlarmMgr::Detail::Rack::RackLocations::History::has_operation() const
 std::string AlarmMgr::Detail::Rack::RackLocations::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -5777,7 +5885,7 @@ AlarmMgr::Detail::Rack::RackLocations::Stats::Stats()
     cache_miss{YType::uint64, "cache_miss"}
 {
 
-    yang_name = "stats"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Rack::RackLocations::Stats::~Stats()
@@ -5786,6 +5894,7 @@ AlarmMgr::Detail::Rack::RackLocations::Stats::~Stats()
 
 bool AlarmMgr::Detail::Rack::RackLocations::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return attime.is_set
 	|| reported.is_set
 	|| dropped.is_set
@@ -5822,7 +5931,8 @@ bool AlarmMgr::Detail::Rack::RackLocations::Stats::has_operation() const
 std::string AlarmMgr::Detail::Rack::RackLocations::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats" <<"[attime='" <<attime <<"']";
+    path_buffer << "stats";
+    ADD_KEY_TOKEN(attime, "attime");
     return path_buffer.str();
 }
 
@@ -6026,7 +6136,7 @@ AlarmMgr::Detail::Rack::RackLocations::Clients::Clients()
     agent_report_count{YType::uint64, "agent_report_count"}
 {
 
-    yang_name = "clients"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Rack::RackLocations::Clients::~Clients()
@@ -6035,6 +6145,7 @@ AlarmMgr::Detail::Rack::RackLocations::Clients::~Clients()
 
 bool AlarmMgr::Detail::Rack::RackLocations::Clients::has_data() const
 {
+    if (is_presence_container) return true;
     return agent_handle.is_set
 	|| agent_name.is_set
 	|| agent_id.is_set
@@ -6079,7 +6190,8 @@ bool AlarmMgr::Detail::Rack::RackLocations::Clients::has_operation() const
 std::string AlarmMgr::Detail::Rack::RackLocations::Clients::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clients" <<"[agent_handle='" <<agent_handle <<"']";
+    path_buffer << "clients";
+    ADD_KEY_TOKEN(agent_handle, "agent_handle");
     return path_buffer.str();
 }
 
@@ -6324,7 +6436,7 @@ AlarmMgr::Detail::Rack::RackLocations::Suppressed::Suppressed()
     suppressed_time{YType::str, "suppressed_time"}
 {
 
-    yang_name = "suppressed"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed"; yang_parent_name = "rack_locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AlarmMgr::Detail::Rack::RackLocations::Suppressed::~Suppressed()
@@ -6333,6 +6445,7 @@ AlarmMgr::Detail::Rack::RackLocations::Suppressed::~Suppressed()
 
 bool AlarmMgr::Detail::Rack::RackLocations::Suppressed::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -6371,7 +6484,9 @@ bool AlarmMgr::Detail::Rack::RackLocations::Suppressed::has_operation() const
 std::string AlarmMgr::Detail::Rack::RackLocations::Suppressed::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "suppressed" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "suppressed";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -6566,9 +6681,15 @@ bool AlarmMgr::Detail::Rack::RackLocations::Suppressed::has_leaf_or_child_of_nam
 }
 
 AlarmMgr::Detail::System::System()
+    :
+    active(this, {"aid", "eid"})
+    , history(this, {"aid", "eid"})
+    , stats(this, {"attime"})
+    , clients(this, {"agent_handle"})
+    , suppressed(this, {"aid", "eid"})
 {
 
-    yang_name = "system"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::System::~System()
@@ -6577,27 +6698,28 @@ AlarmMgr::Detail::System::~System()
 
 bool AlarmMgr::Detail::System::has_data() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<clients.size(); index++)
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_data())
             return true;
@@ -6607,27 +6729,27 @@ bool AlarmMgr::Detail::System::has_data() const
 
 bool AlarmMgr::Detail::System::has_operation() const
 {
-    for (std::size_t index=0; index<active.size(); index++)
+    for (std::size_t index=0; index<active.len(); index++)
     {
         if(active[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<history.size(); index++)
+    for (std::size_t index=0; index<history.len(); index++)
     {
         if(history[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<stats.size(); index++)
+    for (std::size_t index=0; index<stats.len(); index++)
     {
         if(stats[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<clients.size(); index++)
+    for (std::size_t index=0; index<clients.len(); index++)
     {
         if(clients[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<suppressed.size(); index++)
+    for (std::size_t index=0; index<suppressed.len(); index++)
     {
         if(suppressed[index]->has_operation())
             return true;
@@ -6664,7 +6786,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::System::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AlarmMgr::Detail::System::Active>();
         c->parent = this;
-        active.push_back(c);
+        active.append(c);
         return c;
     }
 
@@ -6672,7 +6794,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::System::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AlarmMgr::Detail::System::History>();
         c->parent = this;
-        history.push_back(c);
+        history.append(c);
         return c;
     }
 
@@ -6680,7 +6802,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::System::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AlarmMgr::Detail::System::Stats>();
         c->parent = this;
-        stats.push_back(c);
+        stats.append(c);
         return c;
     }
 
@@ -6688,7 +6810,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::System::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AlarmMgr::Detail::System::Clients>();
         c->parent = this;
-        clients.push_back(c);
+        clients.append(c);
         return c;
     }
 
@@ -6696,7 +6818,7 @@ std::shared_ptr<Entity> AlarmMgr::Detail::System::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AlarmMgr::Detail::System::Suppressed>();
         c->parent = this;
-        suppressed.push_back(c);
+        suppressed.append(c);
         return c;
     }
 
@@ -6708,7 +6830,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : active)
+    for (auto c : active.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6717,7 +6839,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::get_chi
     }
 
     count = 0;
-    for (auto const & c : history)
+    for (auto c : history.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6726,7 +6848,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::get_chi
     }
 
     count = 0;
-    for (auto const & c : stats)
+    for (auto c : stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6735,7 +6857,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::get_chi
     }
 
     count = 0;
-    for (auto const & c : clients)
+    for (auto c : clients.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6744,7 +6866,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmMgr::Detail::System::get_chi
     }
 
     count = 0;
-    for (auto const & c : suppressed)
+    for (auto c : suppressed.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6788,7 +6910,7 @@ AlarmMgr::Detail::System::Active::Active()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "active"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::System::Active::~Active()
@@ -6797,6 +6919,7 @@ AlarmMgr::Detail::System::Active::~Active()
 
 bool AlarmMgr::Detail::System::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -6842,7 +6965,9 @@ std::string AlarmMgr::Detail::System::Active::get_absolute_path() const
 std::string AlarmMgr::Detail::System::Active::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "active" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "active";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -7054,7 +7179,7 @@ AlarmMgr::Detail::System::History::History()
     clear_time{YType::str, "clear_time"}
 {
 
-    yang_name = "history"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::System::History::~History()
@@ -7063,6 +7188,7 @@ AlarmMgr::Detail::System::History::~History()
 
 bool AlarmMgr::Detail::System::History::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -7108,7 +7234,9 @@ std::string AlarmMgr::Detail::System::History::get_absolute_path() const
 std::string AlarmMgr::Detail::System::History::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "history" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "history";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -7319,7 +7447,7 @@ AlarmMgr::Detail::System::Stats::Stats()
     cache_miss{YType::uint64, "cache_miss"}
 {
 
-    yang_name = "stats"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::System::Stats::~Stats()
@@ -7328,6 +7456,7 @@ AlarmMgr::Detail::System::Stats::~Stats()
 
 bool AlarmMgr::Detail::System::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return attime.is_set
 	|| reported.is_set
 	|| dropped.is_set
@@ -7371,7 +7500,8 @@ std::string AlarmMgr::Detail::System::Stats::get_absolute_path() const
 std::string AlarmMgr::Detail::System::Stats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "stats" <<"[attime='" <<attime <<"']";
+    path_buffer << "stats";
+    ADD_KEY_TOKEN(attime, "attime");
     return path_buffer.str();
 }
 
@@ -7575,7 +7705,7 @@ AlarmMgr::Detail::System::Clients::Clients()
     agent_report_count{YType::uint64, "agent_report_count"}
 {
 
-    yang_name = "clients"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clients"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::System::Clients::~Clients()
@@ -7584,6 +7714,7 @@ AlarmMgr::Detail::System::Clients::~Clients()
 
 bool AlarmMgr::Detail::System::Clients::has_data() const
 {
+    if (is_presence_container) return true;
     return agent_handle.is_set
 	|| agent_name.is_set
 	|| agent_id.is_set
@@ -7635,7 +7766,8 @@ std::string AlarmMgr::Detail::System::Clients::get_absolute_path() const
 std::string AlarmMgr::Detail::System::Clients::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clients" <<"[agent_handle='" <<agent_handle <<"']";
+    path_buffer << "clients";
+    ADD_KEY_TOKEN(agent_handle, "agent_handle");
     return path_buffer.str();
 }
 
@@ -7880,7 +8012,7 @@ AlarmMgr::Detail::System::Suppressed::Suppressed()
     suppressed_time{YType::str, "suppressed_time"}
 {
 
-    yang_name = "suppressed"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "suppressed"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmMgr::Detail::System::Suppressed::~Suppressed()
@@ -7889,6 +8021,7 @@ AlarmMgr::Detail::System::Suppressed::~Suppressed()
 
 bool AlarmMgr::Detail::System::Suppressed::has_data() const
 {
+    if (is_presence_container) return true;
     return aid.is_set
 	|| eid.is_set
 	|| tag.is_set
@@ -7934,7 +8067,9 @@ std::string AlarmMgr::Detail::System::Suppressed::get_absolute_path() const
 std::string AlarmMgr::Detail::System::Suppressed::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "suppressed" <<"[aid='" <<aid <<"']" <<"[eid='" <<eid <<"']";
+    path_buffer << "suppressed";
+    ADD_KEY_TOKEN(aid, "aid");
+    ADD_KEY_TOKEN(eid, "eid");
     return path_buffer.str();
 }
 
@@ -8128,18 +8263,6 @@ bool AlarmMgr::Detail::System::Suppressed::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-const Enum::YLeaf SeverityTd::unknown {0, "unknown"};
-const Enum::YLeaf SeverityTd::not_reported {1, "not_reported"};
-const Enum::YLeaf SeverityTd::not_alarmed {2, "not_alarmed"};
-const Enum::YLeaf SeverityTd::minor {3, "minor"};
-const Enum::YLeaf SeverityTd::major_ {4, "major"};
-const Enum::YLeaf SeverityTd::critical {5, "critical"};
-
-const Enum::YLeaf StatusTd::unknown {0, "unknown"};
-const Enum::YLeaf StatusTd::set {1, "set"};
-const Enum::YLeaf StatusTd::clear {2, "clear"};
-const Enum::YLeaf StatusTd::suppress {3, "suppress"};
-
 const Enum::YLeaf GroupTd::unknown {0, "unknown"};
 const Enum::YLeaf GroupTd::environ {1, "environ"};
 const Enum::YLeaf GroupTd::ethernet {2, "ethernet"};
@@ -8160,6 +8283,11 @@ const Enum::YLeaf GroupTd::ots {17, "ots"};
 const Enum::YLeaf GroupTd::timing {18, "timing"};
 const Enum::YLeaf GroupTd::last {19, "last"};
 
+const Enum::YLeaf StatusTd::unknown {0, "unknown"};
+const Enum::YLeaf StatusTd::set {1, "set"};
+const Enum::YLeaf StatusTd::clear {2, "clear"};
+const Enum::YLeaf StatusTd::suppress {3, "suppress"};
+
 const Enum::YLeaf AgentStateTd::start {0, "start"};
 const Enum::YLeaf AgentStateTd::init {1, "init"};
 const Enum::YLeaf AgentStateTd::connecting {2, "connecting"};
@@ -8171,6 +8299,13 @@ const Enum::YLeaf AgentTypeTd::unknown {0, "unknown"};
 const Enum::YLeaf AgentTypeTd::producer {1, "producer"};
 const Enum::YLeaf AgentTypeTd::consumer {2, "consumer"};
 const Enum::YLeaf AgentTypeTd::subscriber {3, "subscriber"};
+
+const Enum::YLeaf SeverityTd::unknown {0, "unknown"};
+const Enum::YLeaf SeverityTd::not_reported {1, "not_reported"};
+const Enum::YLeaf SeverityTd::not_alarmed {2, "not_alarmed"};
+const Enum::YLeaf SeverityTd::minor {3, "minor"};
+const Enum::YLeaf SeverityTd::major_ {4, "major"};
+const Enum::YLeaf SeverityTd::critical {5, "critical"};
 
 
 }

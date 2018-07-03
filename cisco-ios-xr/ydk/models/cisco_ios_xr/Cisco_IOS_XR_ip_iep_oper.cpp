@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_iep_oper {
 ExplicitPaths::ExplicitPaths()
     :
     identifiers(std::make_shared<ExplicitPaths::Identifiers>())
-	,names(std::make_shared<ExplicitPaths::Names>())
+    , names(std::make_shared<ExplicitPaths::Names>())
 {
     identifiers->parent = this;
     names->parent = this;
 
-    yang_name = "explicit-paths"; yang_parent_name = "Cisco-IOS-XR-ip-iep-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "explicit-paths"; yang_parent_name = "Cisco-IOS-XR-ip-iep-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ExplicitPaths::~ExplicitPaths()
@@ -28,6 +28,7 @@ ExplicitPaths::~ExplicitPaths()
 
 bool ExplicitPaths::has_data() const
 {
+    if (is_presence_container) return true;
     return (identifiers !=  nullptr && identifiers->has_data())
 	|| (names !=  nullptr && names->has_data());
 }
@@ -136,9 +137,11 @@ bool ExplicitPaths::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 ExplicitPaths::Identifiers::Identifiers()
+    :
+    identifier(this, {"identifier_id"})
 {
 
-    yang_name = "identifiers"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "identifiers"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ExplicitPaths::Identifiers::~Identifiers()
@@ -147,7 +150,8 @@ ExplicitPaths::Identifiers::~Identifiers()
 
 bool ExplicitPaths::Identifiers::has_data() const
 {
-    for (std::size_t index=0; index<identifier.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<identifier.len(); index++)
     {
         if(identifier[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool ExplicitPaths::Identifiers::has_data() const
 
 bool ExplicitPaths::Identifiers::has_operation() const
 {
-    for (std::size_t index=0; index<identifier.size(); index++)
+    for (std::size_t index=0; index<identifier.len(); index++)
     {
         if(identifier[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> ExplicitPaths::Identifiers::get_child_by_name(const std:
     {
         auto c = std::make_shared<ExplicitPaths::Identifiers::Identifier>();
         c->parent = this;
-        identifier.push_back(c);
+        identifier.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : identifier)
+    for (auto c : identifier.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -234,11 +238,13 @@ bool ExplicitPaths::Identifiers::has_leaf_or_child_of_name(const std::string & n
 
 ExplicitPaths::Identifiers::Identifier::Identifier()
     :
-    identifier_id{YType::int32, "identifier-id"},
+    identifier_id{YType::uint32, "identifier-id"},
     status{YType::enumeration, "status"}
+        ,
+    address(this, {})
 {
 
-    yang_name = "identifier"; yang_parent_name = "identifiers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "identifier"; yang_parent_name = "identifiers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ExplicitPaths::Identifiers::Identifier::~Identifier()
@@ -247,7 +253,8 @@ ExplicitPaths::Identifiers::Identifier::~Identifier()
 
 bool ExplicitPaths::Identifiers::Identifier::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -258,7 +265,7 @@ bool ExplicitPaths::Identifiers::Identifier::has_data() const
 
 bool ExplicitPaths::Identifiers::Identifier::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -278,7 +285,8 @@ std::string ExplicitPaths::Identifiers::Identifier::get_absolute_path() const
 std::string ExplicitPaths::Identifiers::Identifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "identifier" <<"[identifier-id='" <<identifier_id <<"']";
+    path_buffer << "identifier";
+    ADD_KEY_TOKEN(identifier_id, "identifier-id");
     return path_buffer.str();
 }
 
@@ -299,7 +307,7 @@ std::shared_ptr<Entity> ExplicitPaths::Identifiers::Identifier::get_child_by_nam
     {
         auto c = std::make_shared<ExplicitPaths::Identifiers::Identifier::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -311,7 +319,7 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Identifiers::Ident
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -367,7 +375,7 @@ ExplicitPaths::Identifiers::Identifier::Address::Address()
     mpls_label{YType::uint32, "mpls-label"}
 {
 
-    yang_name = "address"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ExplicitPaths::Identifiers::Identifier::Address::~Address()
@@ -376,6 +384,7 @@ ExplicitPaths::Identifiers::Identifier::Address::~Address()
 
 bool ExplicitPaths::Identifiers::Identifier::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| if_index.is_set
 	|| address_type.is_set
@@ -505,9 +514,11 @@ bool ExplicitPaths::Identifiers::Identifier::Address::has_leaf_or_child_of_name(
 }
 
 ExplicitPaths::Names::Names()
+    :
+    name(this, {"path_name"})
 {
 
-    yang_name = "names"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "names"; yang_parent_name = "explicit-paths"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ExplicitPaths::Names::~Names()
@@ -516,7 +527,8 @@ ExplicitPaths::Names::~Names()
 
 bool ExplicitPaths::Names::has_data() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_data())
             return true;
@@ -526,7 +538,7 @@ bool ExplicitPaths::Names::has_data() const
 
 bool ExplicitPaths::Names::has_operation() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_operation())
             return true;
@@ -563,7 +575,7 @@ std::shared_ptr<Entity> ExplicitPaths::Names::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<ExplicitPaths::Names::Name>();
         c->parent = this;
-        name.push_back(c);
+        name.append(c);
         return c;
     }
 
@@ -575,7 +587,7 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : name)
+    for (auto c : name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -605,9 +617,11 @@ ExplicitPaths::Names::Name::Name()
     :
     path_name{YType::str, "path-name"},
     status{YType::enumeration, "status"}
+        ,
+    address(this, {})
 {
 
-    yang_name = "name"; yang_parent_name = "names"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "name"; yang_parent_name = "names"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ExplicitPaths::Names::Name::~Name()
@@ -616,7 +630,8 @@ ExplicitPaths::Names::Name::~Name()
 
 bool ExplicitPaths::Names::Name::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -627,7 +642,7 @@ bool ExplicitPaths::Names::Name::has_data() const
 
 bool ExplicitPaths::Names::Name::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -647,7 +662,8 @@ std::string ExplicitPaths::Names::Name::get_absolute_path() const
 std::string ExplicitPaths::Names::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name" <<"[path-name='" <<path_name <<"']";
+    path_buffer << "name";
+    ADD_KEY_TOKEN(path_name, "path-name");
     return path_buffer.str();
 }
 
@@ -668,7 +684,7 @@ std::shared_ptr<Entity> ExplicitPaths::Names::Name::get_child_by_name(const std:
     {
         auto c = std::make_shared<ExplicitPaths::Names::Name::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -680,7 +696,7 @@ std::map<std::string, std::shared_ptr<Entity>> ExplicitPaths::Names::Name::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -736,7 +752,7 @@ ExplicitPaths::Names::Name::Address::Address()
     mpls_label{YType::uint32, "mpls-label"}
 {
 
-    yang_name = "address"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ExplicitPaths::Names::Name::Address::~Address()
@@ -745,6 +761,7 @@ ExplicitPaths::Names::Name::Address::~Address()
 
 bool ExplicitPaths::Names::Name::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| if_index.is_set
 	|| address_type.is_set
@@ -873,15 +890,15 @@ bool ExplicitPaths::Names::Name::Address::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-const Enum::YLeaf IepHop::strict {0, "strict"};
-const Enum::YLeaf IepHop::loose {1, "loose"};
+const Enum::YLeaf IepStatus::enabled {0, "enabled"};
+const Enum::YLeaf IepStatus::disabled {1, "disabled"};
 
 const Enum::YLeaf IepAddress::next {0, "next"};
 const Enum::YLeaf IepAddress::exclude {1, "exclude"};
 const Enum::YLeaf IepAddress::exclude_srlg {2, "exclude-srlg"};
 
-const Enum::YLeaf IepStatus::enabled {0, "enabled"};
-const Enum::YLeaf IepStatus::disabled {1, "disabled"};
+const Enum::YLeaf IepHop::strict {0, "strict"};
+const Enum::YLeaf IepHop::loose {1, "loose"};
 
 
 }

@@ -656,6 +656,21 @@ module ydktest-sanity {
     }
   }
 
+  grouping two-key-list {
+    list two-key-list {
+        key "first second";
+        leaf first {
+            type string;
+        }
+        leaf second {
+            type uint32;
+        }
+        leaf property {
+            type string;
+        }
+    }
+  }
+
   grouping identity-list {
     list identity-list {
         key "name";
@@ -672,6 +687,14 @@ module ydktest-sanity {
         key "name";
         leaf name {
             type Ydk-Enum-test;
+        }
+    }
+  }
+
+  grouping inner-pres {
+    container outer {
+        container inner {
+            presence true;
         }
     }
   }
@@ -696,6 +719,40 @@ module ydktest-sanity {
     }
   }
 
+  grouping mtus {
+      container mtus {
+        list mtu {
+            key "owner";
+
+            leaf owner {
+                type string;
+            }
+
+            leaf mtu {
+                type int32;
+                mandatory true;
+            }
+        }
+    }
+  }
+
+  grouping passive {
+    list passive {
+        key "name";
+        leaf name {
+            type string;
+        }
+        list interfac {
+            key "test";
+
+            leaf test {
+                type string;
+            }
+        }
+    }
+  }
+
+
   container runner {
 
     // uses nested-naming;
@@ -715,6 +772,8 @@ module ydktest-sanity {
 
     uses three-level-w-list-at-two;
 
+    uses two-key-list;
+
     uses identity-list;
 
     uses enum-list;
@@ -724,6 +783,12 @@ module ydktest-sanity {
     uses not-supported;
 
     uses one-read-only;
+
+    uses mtus;
+
+    uses passive;
+
+    uses inner-pres;
 
     container runner-2 {
 

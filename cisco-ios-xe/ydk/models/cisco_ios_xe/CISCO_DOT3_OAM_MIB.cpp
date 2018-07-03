@@ -13,12 +13,12 @@ namespace CISCO_DOT3_OAM_MIB {
 
 CISCODOT3OAMMIB::CISCODOT3OAMMIB()
     :
-    cdot3oamtable(std::make_shared<CISCODOT3OAMMIB::Cdot3Oamtable>())
-	,cdot3oampeertable(std::make_shared<CISCODOT3OAMMIB::Cdot3Oampeertable>())
-	,cdot3oamloopbacktable(std::make_shared<CISCODOT3OAMMIB::Cdot3Oamloopbacktable>())
-	,cdot3oamstatstable(std::make_shared<CISCODOT3OAMMIB::Cdot3Oamstatstable>())
-	,cdot3oameventconfigtable(std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventconfigtable>())
-	,cdot3oameventlogtable(std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventlogtable>())
+    cdot3oamtable(std::make_shared<CISCODOT3OAMMIB::Cdot3OamTable>())
+    , cdot3oampeertable(std::make_shared<CISCODOT3OAMMIB::Cdot3OamPeerTable>())
+    , cdot3oamloopbacktable(std::make_shared<CISCODOT3OAMMIB::Cdot3OamLoopbackTable>())
+    , cdot3oamstatstable(std::make_shared<CISCODOT3OAMMIB::Cdot3OamStatsTable>())
+    , cdot3oameventconfigtable(std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventConfigTable>())
+    , cdot3oameventlogtable(std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventLogTable>())
 {
     cdot3oamtable->parent = this;
     cdot3oampeertable->parent = this;
@@ -27,7 +27,7 @@ CISCODOT3OAMMIB::CISCODOT3OAMMIB()
     cdot3oameventconfigtable->parent = this;
     cdot3oameventlogtable->parent = this;
 
-    yang_name = "CISCO-DOT3-OAM-MIB"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-DOT3-OAM-MIB"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCODOT3OAMMIB::~CISCODOT3OAMMIB()
@@ -36,6 +36,7 @@ CISCODOT3OAMMIB::~CISCODOT3OAMMIB()
 
 bool CISCODOT3OAMMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cdot3oamtable !=  nullptr && cdot3oamtable->has_data())
 	|| (cdot3oampeertable !=  nullptr && cdot3oampeertable->has_data())
 	|| (cdot3oamloopbacktable !=  nullptr && cdot3oamloopbacktable->has_data())
@@ -77,7 +78,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
     {
         if(cdot3oamtable == nullptr)
         {
-            cdot3oamtable = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamtable>();
+            cdot3oamtable = std::make_shared<CISCODOT3OAMMIB::Cdot3OamTable>();
         }
         return cdot3oamtable;
     }
@@ -86,7 +87,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
     {
         if(cdot3oampeertable == nullptr)
         {
-            cdot3oampeertable = std::make_shared<CISCODOT3OAMMIB::Cdot3Oampeertable>();
+            cdot3oampeertable = std::make_shared<CISCODOT3OAMMIB::Cdot3OamPeerTable>();
         }
         return cdot3oampeertable;
     }
@@ -95,7 +96,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
     {
         if(cdot3oamloopbacktable == nullptr)
         {
-            cdot3oamloopbacktable = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamloopbacktable>();
+            cdot3oamloopbacktable = std::make_shared<CISCODOT3OAMMIB::Cdot3OamLoopbackTable>();
         }
         return cdot3oamloopbacktable;
     }
@@ -104,7 +105,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
     {
         if(cdot3oamstatstable == nullptr)
         {
-            cdot3oamstatstable = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamstatstable>();
+            cdot3oamstatstable = std::make_shared<CISCODOT3OAMMIB::Cdot3OamStatsTable>();
         }
         return cdot3oamstatstable;
     }
@@ -113,7 +114,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
     {
         if(cdot3oameventconfigtable == nullptr)
         {
-            cdot3oameventconfigtable = std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventconfigtable>();
+            cdot3oameventconfigtable = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventConfigTable>();
         }
         return cdot3oameventconfigtable;
     }
@@ -122,7 +123,7 @@ std::shared_ptr<Entity> CISCODOT3OAMMIB::get_child_by_name(const std::string & c
     {
         if(cdot3oameventlogtable == nullptr)
         {
-            cdot3oameventlogtable = std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventlogtable>();
+            cdot3oameventlogtable = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventLogTable>();
         }
         return cdot3oameventlogtable;
     }
@@ -207,19 +208,22 @@ bool CISCODOT3OAMMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamtable()
+CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamTable()
+    :
+    cdot3oamentry(this, {"ifindex"})
 {
 
-    yang_name = "cdot3OamTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oamtable::~Cdot3Oamtable()
+CISCODOT3OAMMIB::Cdot3OamTable::~Cdot3OamTable()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamtable::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamTable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdot3oamentry.len(); index++)
     {
         if(cdot3oamentry[index]->has_data())
             return true;
@@ -227,9 +231,9 @@ bool CISCODOT3OAMMIB::Cdot3Oamtable::has_data() const
     return false;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamtable::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamentry.len(); index++)
     {
         if(cdot3oamentry[index]->has_operation())
             return true;
@@ -237,21 +241,21 @@ bool CISCODOT3OAMMIB::Cdot3Oamtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamtable::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamtable::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdot3OamTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -260,25 +264,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamtable::g
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry>();
+        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry>();
         c->parent = this;
-        cdot3oamentry.push_back(c);
+        cdot3oamentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdot3oamentry)
+    for (auto c : cdot3oamentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -289,22 +293,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamtable::g
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdot3OamEntry")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamentry()
+CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cdot3oamadminstate{YType::enumeration, "cdot3OamAdminState"},
@@ -315,15 +319,16 @@ CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamentry()
     cdot3oamfunctionssupported{YType::bits, "cdot3OamFunctionsSupported"}
 {
 
-    yang_name = "cdot3OamEntry"; yang_parent_name = "cdot3OamTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamEntry"; yang_parent_name = "cdot3OamTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::~Cdot3Oamentry()
+CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::~Cdot3OamEntry()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cdot3oamadminstate.is_set
 	|| cdot3oamoperstatus.is_set
@@ -333,7 +338,7 @@ bool CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::has_data() const
 	|| cdot3oamfunctionssupported.is_set;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -345,21 +350,22 @@ bool CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::has_operation() const
 	|| ydk::is_set(cdot3oamfunctionssupported.yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/cdot3OamTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdot3OamEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cdot3OamEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -375,19 +381,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamtable::C
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -431,7 +437,7 @@ void CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::set_value(const std::string 
     }
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -463,26 +469,29 @@ void CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::set_filter(const std::string
     }
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cdot3OamAdminState" || name == "cdot3OamOperStatus" || name == "cdot3OamMode" || name == "cdot3OamMaxOamPduSize" || name == "cdot3OamConfigRevision" || name == "cdot3OamFunctionsSupported")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeertable()
+CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerTable()
+    :
+    cdot3oampeerentry(this, {"ifindex"})
 {
 
-    yang_name = "cdot3OamPeerTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamPeerTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oampeertable::~Cdot3Oampeertable()
+CISCODOT3OAMMIB::Cdot3OamPeerTable::~Cdot3OamPeerTable()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oampeertable::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamPeerTable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oampeerentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdot3oampeerentry.len(); index++)
     {
         if(cdot3oampeerentry[index]->has_data())
             return true;
@@ -490,9 +499,9 @@ bool CISCODOT3OAMMIB::Cdot3Oampeertable::has_data() const
     return false;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oampeertable::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamPeerTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oampeerentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oampeerentry.len(); index++)
     {
         if(cdot3oampeerentry[index]->has_operation())
             return true;
@@ -500,21 +509,21 @@ bool CISCODOT3OAMMIB::Cdot3Oampeertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oampeertable::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamPeerTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oampeertable::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamPeerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdot3OamPeerTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oampeertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamPeerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -523,25 +532,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oampeertabl
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oampeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamPeerEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry>();
+        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry>();
         c->parent = this;
-        cdot3oampeerentry.push_back(c);
+        cdot3oampeerentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oampeertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamPeerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdot3oampeerentry)
+    for (auto c : cdot3oampeerentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -552,22 +561,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oampeertabl
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oampeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODOT3OAMMIB::Cdot3Oampeertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamPeerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oampeertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamPeerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdot3OamPeerEntry")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeerentry()
+CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::Cdot3OamPeerEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cdot3oampeermacaddress{YType::str, "cdot3OamPeerMacAddress"},
@@ -579,15 +588,16 @@ CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeerentry()
     cdot3oampeerfunctionssupported{YType::bits, "cdot3OamPeerFunctionsSupported"}
 {
 
-    yang_name = "cdot3OamPeerEntry"; yang_parent_name = "cdot3OamPeerTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamPeerEntry"; yang_parent_name = "cdot3OamPeerTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::~Cdot3Oampeerentry()
+CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::~Cdot3OamPeerEntry()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cdot3oampeermacaddress.is_set
 	|| cdot3oampeervendoroui.is_set
@@ -598,7 +608,7 @@ bool CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::has_data() const
 	|| cdot3oampeerfunctionssupported.is_set;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -611,21 +621,22 @@ bool CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::has_operation() cons
 	|| ydk::is_set(cdot3oampeerfunctionssupported.yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/cdot3OamPeerTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdot3OamPeerEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cdot3OamPeerEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -642,19 +653,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oampeertabl
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -704,7 +715,7 @@ void CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::set_value(const std:
     }
 }
 
-void CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -740,26 +751,29 @@ void CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::set_filter(const std
     }
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cdot3OamPeerMacAddress" || name == "cdot3OamPeerVendorOui" || name == "cdot3OamPeerVendorInfo" || name == "cdot3OamPeerMode" || name == "cdot3OamPeerMaxOamPduSize" || name == "cdot3OamPeerConfigRevision" || name == "cdot3OamPeerFunctionsSupported")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbacktable()
+CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackTable()
+    :
+    cdot3oamloopbackentry(this, {"ifindex"})
 {
 
-    yang_name = "cdot3OamLoopbackTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamLoopbackTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oamloopbacktable::~Cdot3Oamloopbacktable()
+CISCODOT3OAMMIB::Cdot3OamLoopbackTable::~Cdot3OamLoopbackTable()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamLoopbackTable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamloopbackentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdot3oamloopbackentry.len(); index++)
     {
         if(cdot3oamloopbackentry[index]->has_data())
             return true;
@@ -767,9 +781,9 @@ bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::has_data() const
     return false;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamLoopbackTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamloopbackentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamloopbackentry.len(); index++)
     {
         if(cdot3oamloopbackentry[index]->has_operation())
             return true;
@@ -777,21 +791,21 @@ bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdot3OamLoopbackTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -800,25 +814,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamloopback
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamLoopbackEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry>();
+        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry>();
         c->parent = this;
-        cdot3oamloopbackentry.push_back(c);
+        cdot3oamloopbackentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdot3oamloopbackentry)
+    for (auto c : cdot3oamloopbackentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -829,43 +843,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamloopback
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamloopbacktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamLoopbackTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamloopbacktable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamLoopbackTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamLoopbackTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdot3OamLoopbackEntry")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackentry()
+CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cdot3oamloopbackstatus{YType::enumeration, "cdot3OamLoopbackStatus"},
     cdot3oamloopbackignorerx{YType::enumeration, "cdot3OamLoopbackIgnoreRx"}
 {
 
-    yang_name = "cdot3OamLoopbackEntry"; yang_parent_name = "cdot3OamLoopbackTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamLoopbackEntry"; yang_parent_name = "cdot3OamLoopbackTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::~Cdot3Oamloopbackentry()
+CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::~Cdot3OamLoopbackEntry()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cdot3oamloopbackstatus.is_set
 	|| cdot3oamloopbackignorerx.is_set;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -873,21 +888,22 @@ bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::has_operatio
 	|| ydk::is_set(cdot3oamloopbackignorerx.yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/cdot3OamLoopbackTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdot3OamLoopbackEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cdot3OamLoopbackEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -899,19 +915,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamloopback
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -933,7 +949,7 @@ void CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::set_value(co
     }
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -949,26 +965,29 @@ void CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::set_filter(c
     }
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cdot3OamLoopbackStatus" || name == "cdot3OamLoopbackIgnoreRx")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatstable()
+CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsTable()
+    :
+    cdot3oamstatsentry(this, {"ifindex"})
 {
 
-    yang_name = "cdot3OamStatsTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamStatsTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oamstatstable::~Cdot3Oamstatstable()
+CISCODOT3OAMMIB::Cdot3OamStatsTable::~Cdot3OamStatsTable()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamstatstable::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oamstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdot3oamstatsentry.len(); index++)
     {
         if(cdot3oamstatsentry[index]->has_data())
             return true;
@@ -976,9 +995,9 @@ bool CISCODOT3OAMMIB::Cdot3Oamstatstable::has_data() const
     return false;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamstatstable::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oamstatsentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oamstatsentry.len(); index++)
     {
         if(cdot3oamstatsentry[index]->has_operation())
             return true;
@@ -986,21 +1005,21 @@ bool CISCODOT3OAMMIB::Cdot3Oamstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamstatstable::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamstatstable::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdot3OamStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1009,25 +1028,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamstatstab
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamStatsEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry>();
+        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry>();
         c->parent = this;
-        cdot3oamstatsentry.push_back(c);
+        cdot3oamstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdot3oamstatsentry)
+    for (auto c : cdot3oamstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1038,22 +1057,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamstatstab
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdot3OamStatsEntry")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::Cdot3Oamstatsentry()
+CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::Cdot3OamStatsEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cdot3oaminformationtx{YType::uint32, "cdot3OamInformationTx"},
@@ -1075,15 +1094,16 @@ CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::Cdot3Oamstatsentry()
     cdot3oamframeslostduetooam{YType::uint32, "cdot3OamFramesLostDueToOam"}
 {
 
-    yang_name = "cdot3OamStatsEntry"; yang_parent_name = "cdot3OamStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamStatsEntry"; yang_parent_name = "cdot3OamStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::~Cdot3Oamstatsentry()
+CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::~Cdot3OamStatsEntry()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cdot3oaminformationtx.is_set
 	|| cdot3oaminformationrx.is_set
@@ -1104,7 +1124,7 @@ bool CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_data() const
 	|| cdot3oamframeslostduetooam.is_set;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1127,21 +1147,22 @@ bool CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_operation() co
 	|| ydk::is_set(cdot3oamframeslostduetooam.yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/cdot3OamStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdot3OamStatsEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cdot3OamStatsEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1168,19 +1189,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oamstatstab
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1292,7 +1313,7 @@ void CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::set_value(const st
     }
 }
 
-void CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1368,26 +1389,29 @@ void CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::set_filter(const s
     }
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oamstatstable::Cdot3Oamstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamStatsTable::Cdot3OamStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cdot3OamInformationTx" || name == "cdot3OamInformationRx" || name == "cdot3OamUniqueEventNotificationTx" || name == "cdot3OamUniqueEventNotificationRx" || name == "cdot3OamDuplicateEventNotificationTx" || name == "cdot3OamDuplicateEventNotificationRx" || name == "cdot3OamLoopbackControlTx" || name == "cdot3OamLoopbackControlRx" || name == "cdot3OamVariableRequestTx" || name == "cdot3OamVariableRequestRx" || name == "cdot3OamVariableResponseTx" || name == "cdot3OamVariableResponseRx" || name == "cdot3OamOrgSpecificTx" || name == "cdot3OamOrgSpecificRx" || name == "cdot3OamUnsupportedCodesTx" || name == "cdot3OamUnsupportedCodesRx" || name == "cdot3OamFramesLostDueToOam")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigtable()
+CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigTable()
+    :
+    cdot3oameventconfigentry(this, {"ifindex"})
 {
 
-    yang_name = "cdot3OamEventConfigTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamEventConfigTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventconfigtable::~Cdot3Oameventconfigtable()
+CISCODOT3OAMMIB::Cdot3OamEventConfigTable::~Cdot3OamEventConfigTable()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamEventConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oameventconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdot3oameventconfigentry.len(); index++)
     {
         if(cdot3oameventconfigentry[index]->has_data())
             return true;
@@ -1395,9 +1419,9 @@ bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::has_data() const
     return false;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamEventConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oameventconfigentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventconfigentry.len(); index++)
     {
         if(cdot3oameventconfigentry[index]->has_operation())
             return true;
@@ -1405,21 +1429,21 @@ bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdot3OamEventConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1428,25 +1452,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventcon
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamEventConfigEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry>();
+        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry>();
         c->parent = this;
-        cdot3oameventconfigentry.push_back(c);
+        cdot3oameventconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdot3oameventconfigentry)
+    for (auto c : cdot3oameventconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1457,22 +1481,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventcon
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamEventConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamEventConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamEventConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdot3OamEventConfigEntry")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::Cdot3Oameventconfigentry()
+CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::Cdot3OamEventConfigEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cdot3oamerrsymperiodwindowhi{YType::uint32, "cdot3OamErrSymPeriodWindowHi"},
@@ -1493,15 +1517,16 @@ CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::Cdot3Oameve
     cdot3oamcriticaleventenable{YType::boolean, "cdot3OamCriticalEventEnable"}
 {
 
-    yang_name = "cdot3OamEventConfigEntry"; yang_parent_name = "cdot3OamEventConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamEventConfigEntry"; yang_parent_name = "cdot3OamEventConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::~Cdot3Oameventconfigentry()
+CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::~Cdot3OamEventConfigEntry()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cdot3oamerrsymperiodwindowhi.is_set
 	|| cdot3oamerrsymperiodwindowlo.is_set
@@ -1521,7 +1546,7 @@ bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_da
 	|| cdot3oamcriticaleventenable.is_set;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1543,21 +1568,22 @@ bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_op
 	|| ydk::is_set(cdot3oamcriticaleventenable.yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/cdot3OamEventConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdot3OamEventConfigEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cdot3OamEventConfigEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1583,19 +1609,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventcon
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1701,7 +1727,7 @@ void CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::set_va
     }
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1773,26 +1799,29 @@ void CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::set_fi
     }
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventconfigtable::Cdot3Oameventconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamEventConfigTable::Cdot3OamEventConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cdot3OamErrSymPeriodWindowHi" || name == "cdot3OamErrSymPeriodWindowLo" || name == "cdot3OamErrSymPeriodThresholdHi" || name == "cdot3OamErrSymPeriodThresholdLo" || name == "cdot3OamErrSymPeriodEvNotifEnable" || name == "cdot3OamErrFramePeriodWindow" || name == "cdot3OamErrFramePeriodThreshold" || name == "cdot3OamErrFramePeriodEvNotifEnable" || name == "cdot3OamErrFrameWindow" || name == "cdot3OamErrFrameThreshold" || name == "cdot3OamErrFrameEvNotifEnable" || name == "cdot3OamErrFrameSecsSummaryWindow" || name == "cdot3OamErrFrameSecsSummaryThreshold" || name == "cdot3OamErrFrameSecsEvNotifEnable" || name == "cdot3OamDyingGaspEnable" || name == "cdot3OamCriticalEventEnable")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogtable()
+CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogTable()
+    :
+    cdot3oameventlogentry(this, {"ifindex", "cdot3oameventlogindex"})
 {
 
-    yang_name = "cdot3OamEventLogTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamEventLogTable"; yang_parent_name = "CISCO-DOT3-OAM-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventlogtable::~Cdot3Oameventlogtable()
+CISCODOT3OAMMIB::Cdot3OamEventLogTable::~Cdot3OamEventLogTable()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamEventLogTable::has_data() const
 {
-    for (std::size_t index=0; index<cdot3oameventlogentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cdot3oameventlogentry.len(); index++)
     {
         if(cdot3oameventlogentry[index]->has_data())
             return true;
@@ -1800,9 +1829,9 @@ bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::has_data() const
     return false;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamEventLogTable::has_operation() const
 {
-    for (std::size_t index=0; index<cdot3oameventlogentry.size(); index++)
+    for (std::size_t index=0; index<cdot3oameventlogentry.len(); index++)
     {
         if(cdot3oameventlogentry[index]->has_operation())
             return true;
@@ -1810,21 +1839,21 @@ bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cdot3OamEventLogTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1833,25 +1862,25 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventlog
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cdot3OamEventLogEntry")
     {
-        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry>();
+        auto c = std::make_shared<CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry>();
         c->parent = this;
-        cdot3oameventlogentry.push_back(c);
+        cdot3oameventlogentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventlogtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventLogTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cdot3oameventlogentry)
+    for (auto c : cdot3oameventlogentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1862,22 +1891,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventlog
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventlogtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamEventLogTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventlogtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamEventLogTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamEventLogTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cdot3OamEventLogEntry")
         return true;
     return false;
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventlogentry()
+CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::Cdot3OamEventLogEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cdot3oameventlogindex{YType::uint32, "cdot3OamEventLogIndex"},
@@ -1894,15 +1923,16 @@ CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventloge
     cdot3oameventlogeventtotal{YType::uint32, "cdot3OamEventLogEventTotal"}
 {
 
-    yang_name = "cdot3OamEventLogEntry"; yang_parent_name = "cdot3OamEventLogTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cdot3OamEventLogEntry"; yang_parent_name = "cdot3OamEventLogTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::~Cdot3Oameventlogentry()
+CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::~Cdot3OamEventLogEntry()
 {
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_data() const
+bool CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cdot3oameventlogindex.is_set
 	|| cdot3oameventlogtimestamp.is_set
@@ -1918,7 +1948,7 @@ bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_data() c
 	|| cdot3oameventlogeventtotal.is_set;
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_operation() const
+bool CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1936,21 +1966,23 @@ bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_operatio
 	|| ydk::is_set(cdot3oameventlogeventtotal.yfilter);
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::get_absolute_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-DOT3-OAM-MIB:CISCO-DOT3-OAM-MIB/cdot3OamEventLogTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::get_segment_path() const
+std::string CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cdot3OamEventLogEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[cdot3OamEventLogIndex='" <<cdot3oameventlogindex <<"']";
+    path_buffer << "cdot3OamEventLogEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(cdot3oameventlogindex, "cdot3OamEventLogIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1972,19 +2004,19 @@ std::vector<std::pair<std::string, LeafData> > CISCODOT3OAMMIB::Cdot3Oameventlog
 
 }
 
-std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2066,7 +2098,7 @@ void CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::set_value(co
     }
 }
 
-void CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2122,46 +2154,46 @@ void CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::set_filter(c
     }
 }
 
-bool CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cdot3OamEventLogIndex" || name == "cdot3OamEventLogTimestamp" || name == "cdot3OamEventLogOui" || name == "cdot3OamEventLogType" || name == "cdot3OamEventLogLocation" || name == "cdot3OamEventLogWindowHi" || name == "cdot3OamEventLogWindowLo" || name == "cdot3OamEventLogThresholdHi" || name == "cdot3OamEventLogThresholdLo" || name == "cdot3OamEventLogValue" || name == "cdot3OamEventLogRunningTotal" || name == "cdot3OamEventLogEventTotal")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamadminstate::disabled {1, "disabled"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamadminstate::enabled {2, "enabled"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamAdminState::disabled {1, "disabled"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamAdminState::enabled {2, "enabled"};
 
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::disabled {1, "disabled"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::linkFault {2, "linkFault"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::passiveWait {3, "passiveWait"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::activeSendLocal {4, "activeSendLocal"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::sendLocalAndRemote {5, "sendLocalAndRemote"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::sendLocalAndRemoteOk {6, "sendLocalAndRemoteOk"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::oamPeeringLocallyRejected {7, "oamPeeringLocallyRejected"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::oamPeeringRemotelyRejected {8, "oamPeeringRemotelyRejected"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::operational {9, "operational"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oamoperstatus::nonOperHalfDuplex {10, "nonOperHalfDuplex"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::disabled {1, "disabled"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::linkFault {2, "linkFault"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::passiveWait {3, "passiveWait"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::activeSendLocal {4, "activeSendLocal"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::sendLocalAndRemote {5, "sendLocalAndRemote"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::sendLocalAndRemoteOk {6, "sendLocalAndRemoteOk"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::oamPeeringLocallyRejected {7, "oamPeeringLocallyRejected"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::oamPeeringRemotelyRejected {8, "oamPeeringRemotelyRejected"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::operational {9, "operational"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamOperStatus::nonOperHalfDuplex {10, "nonOperHalfDuplex"};
 
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oammode::active {1, "active"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamtable::Cdot3Oamentry::Cdot3Oammode::passive {2, "passive"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamMode::active {1, "active"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamTable::Cdot3OamEntry::Cdot3OamMode::passive {2, "passive"};
 
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode::active {1, "active"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode::passive {2, "passive"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oampeertable::Cdot3Oampeerentry::Cdot3Oampeermode::unknown {3, "unknown"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::Cdot3OamPeerMode::active {1, "active"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::Cdot3OamPeerMode::passive {2, "passive"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamPeerTable::Cdot3OamPeerEntry::Cdot3OamPeerMode::unknown {3, "unknown"};
 
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::noLoopback {1, "noLoopback"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::initiatingLoopback {2, "initiatingLoopback"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::remoteLoopback {3, "remoteLoopback"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::terminatingLoopback {4, "terminatingLoopback"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::localLoopback {5, "localLoopback"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackstatus::unknown {6, "unknown"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus::noLoopback {1, "noLoopback"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus::initiatingLoopback {2, "initiatingLoopback"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus::remoteLoopback {3, "remoteLoopback"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus::terminatingLoopback {4, "terminatingLoopback"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus::localLoopback {5, "localLoopback"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackStatus::unknown {6, "unknown"};
 
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackignorerx::ignore {1, "ignore"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oamloopbacktable::Cdot3Oamloopbackentry::Cdot3Oamloopbackignorerx::process {2, "process"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackIgnoreRx::ignore {1, "ignore"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamLoopbackTable::Cdot3OamLoopbackEntry::Cdot3OamLoopbackIgnoreRx::process {2, "process"};
 
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventloglocation::local {1, "local"};
-const Enum::YLeaf CISCODOT3OAMMIB::Cdot3Oameventlogtable::Cdot3Oameventlogentry::Cdot3Oameventloglocation::remote {2, "remote"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::Cdot3OamEventLogLocation::local {1, "local"};
+const Enum::YLeaf CISCODOT3OAMMIB::Cdot3OamEventLogTable::Cdot3OamEventLogEntry::Cdot3OamEventLogLocation::remote {2, "remote"};
 
 
 }

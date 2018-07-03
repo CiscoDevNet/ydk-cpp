@@ -31,18 +31,18 @@ class CISCOIMAGEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoimagetable; //type: CISCOIMAGEMIB::Ciscoimagetable
+        class CiscoImageTable; //type: CISCOIMAGEMIB::CiscoImageTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_MIB::CISCOIMAGEMIB::Ciscoimagetable> ciscoimagetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_MIB::CISCOIMAGEMIB::CiscoImageTable> ciscoimagetable;
         
 }; // CISCOIMAGEMIB
 
 
-class CISCOIMAGEMIB::Ciscoimagetable : public ydk::Entity
+class CISCOIMAGEMIB::CiscoImageTable : public ydk::Entity
 {
     public:
-        Ciscoimagetable();
-        ~Ciscoimagetable();
+        CiscoImageTable();
+        ~CiscoImageTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,18 +55,18 @@ class CISCOIMAGEMIB::Ciscoimagetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciscoimageentry; //type: CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry
+        class CiscoImageEntry; //type: CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IMAGE_MIB::CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry> > ciscoimageentry;
+        ydk::YList ciscoimageentry;
         
-}; // CISCOIMAGEMIB::Ciscoimagetable
+}; // CISCOIMAGEMIB::CiscoImageTable
 
 
-class CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry : public ydk::Entity
+class CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry : public ydk::Entity
 {
     public:
-        Ciscoimageentry();
-        ~Ciscoimageentry();
+        CiscoImageEntry();
+        ~CiscoImageEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -82,7 +82,7 @@ class CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry : public ydk::Entity
         ydk::YLeaf ciscoimageindex; //type: int32
         ydk::YLeaf ciscoimagestring; //type: string
 
-}; // CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry
+}; // CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry
 
 
 }

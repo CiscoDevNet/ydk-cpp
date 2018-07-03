@@ -17,7 +17,7 @@ ClearBgpInstanceAsGraceful::ClearBgpInstanceAsGraceful()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-as-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-as-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAsGraceful::~ClearBgpInstanceAsGraceful()
@@ -26,6 +26,7 @@ ClearBgpInstanceAsGraceful::~ClearBgpInstanceAsGraceful()
 
 bool ClearBgpInstanceAsGraceful::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -123,7 +124,7 @@ ClearBgpInstanceAsGraceful::Input::Input()
     as_number{YType::str, "as-number"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-as-graceful"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-as-graceful"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAsGraceful::Input::~Input()
@@ -132,6 +133,7 @@ ClearBgpInstanceAsGraceful::Input::~Input()
 
 bool ClearBgpInstanceAsGraceful::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| as_number.is_set;
 }
@@ -221,7 +223,7 @@ ClearBgpInstanceAs::ClearBgpInstanceAs()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-as"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-as"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAs::~ClearBgpInstanceAs()
@@ -230,6 +232,7 @@ ClearBgpInstanceAs::~ClearBgpInstanceAs()
 
 bool ClearBgpInstanceAs::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -327,7 +330,7 @@ ClearBgpInstanceAs::Input::Input()
     as_number{YType::str, "as-number"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-as"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-as"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAs::Input::~Input()
@@ -336,6 +339,7 @@ ClearBgpInstanceAs::Input::~Input()
 
 bool ClearBgpInstanceAs::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| as_number.is_set;
 }
@@ -425,7 +429,7 @@ ClearBgpInstanceBestpathIpAddrIpNetmask::ClearBgpInstanceBestpathIpAddrIpNetmask
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathIpAddrIpNetmask::~ClearBgpInstanceBestpathIpAddrIpNetmask()
@@ -434,6 +438,7 @@ ClearBgpInstanceBestpathIpAddrIpNetmask::~ClearBgpInstanceBestpathIpAddrIpNetmas
 
 bool ClearBgpInstanceBestpathIpAddrIpNetmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -532,7 +537,7 @@ ClearBgpInstanceBestpathIpAddrIpNetmask::Input::Input()
     ip_netmask{YType::str, "ip-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathIpAddrIpNetmask::Input::~Input()
@@ -541,6 +546,7 @@ ClearBgpInstanceBestpathIpAddrIpNetmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathIpAddrIpNetmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| ip_addr.is_set
 	|| ip_netmask.is_set;
@@ -643,7 +649,7 @@ ClearBgpInstanceBestpathIpAddr::ClearBgpInstanceBestpathIpAddr()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathIpAddr::~ClearBgpInstanceBestpathIpAddr()
@@ -652,6 +658,7 @@ ClearBgpInstanceBestpathIpAddr::~ClearBgpInstanceBestpathIpAddr()
 
 bool ClearBgpInstanceBestpathIpAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -749,7 +756,7 @@ ClearBgpInstanceBestpathIpAddr::Input::Input()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-ip-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-ip-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathIpAddr::Input::~Input()
@@ -758,6 +765,7 @@ ClearBgpInstanceBestpathIpAddr::Input::~Input()
 
 bool ClearBgpInstanceBestpathIpAddr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| ip_addr.is_set;
 }
@@ -847,7 +855,7 @@ ClearBgpInstanceBestpathIpPrefix::ClearBgpInstanceBestpathIpPrefix()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathIpPrefix::~ClearBgpInstanceBestpathIpPrefix()
@@ -856,6 +864,7 @@ ClearBgpInstanceBestpathIpPrefix::~ClearBgpInstanceBestpathIpPrefix()
 
 bool ClearBgpInstanceBestpathIpPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -953,7 +962,7 @@ ClearBgpInstanceBestpathIpPrefix::Input::Input()
     ip_prefix{YType::str, "ip-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-ip-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-ip-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathIpPrefix::Input::~Input()
@@ -962,6 +971,7 @@ ClearBgpInstanceBestpathIpPrefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathIpPrefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| ip_prefix.is_set;
 }
@@ -1051,7 +1061,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::ClearBgpInstanceBestpathAfiSafiI
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::~ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask()
@@ -1060,6 +1070,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::~ClearBgpInstanceBestpathAfiSafi
 
 bool ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1159,7 +1170,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::Input::Input()
     ip_netmask{YType::str, "ip-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::Input::~Input()
@@ -1168,6 +1179,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpAddrIpNetmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ip_addr.is_set
@@ -1283,7 +1295,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddr::ClearBgpInstanceBestpathAfiSafiIpAddr()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpAddr::~ClearBgpInstanceBestpathAfiSafiIpAddr()
@@ -1292,6 +1304,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddr::~ClearBgpInstanceBestpathAfiSafiIpAddr()
 
 bool ClearBgpInstanceBestpathAfiSafiIpAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1390,7 +1403,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddr::Input::Input()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ip-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpAddr::Input::~Input()
@@ -1399,6 +1412,7 @@ ClearBgpInstanceBestpathAfiSafiIpAddr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpAddr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ip_addr.is_set;
@@ -1501,7 +1515,7 @@ ClearBgpInstanceBestpathAfiSafiIpPrefix::ClearBgpInstanceBestpathAfiSafiIpPrefix
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpPrefix::~ClearBgpInstanceBestpathAfiSafiIpPrefix()
@@ -1510,6 +1524,7 @@ ClearBgpInstanceBestpathAfiSafiIpPrefix::~ClearBgpInstanceBestpathAfiSafiIpPrefi
 
 bool ClearBgpInstanceBestpathAfiSafiIpPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1608,7 +1623,7 @@ ClearBgpInstanceBestpathAfiSafiIpPrefix::Input::Input()
     ip_prefix{YType::str, "ip-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ip-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ip-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpPrefix::Input::~Input()
@@ -1617,6 +1632,7 @@ ClearBgpInstanceBestpathAfiSafiIpPrefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpPrefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ip_prefix.is_set;
@@ -1719,7 +1735,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::ClearBgpInstanceBest
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::~ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask()
@@ -1728,6 +1744,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::~ClearBgpInstanceBes
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1828,7 +1845,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input::Input()
     ip_netmask{YType::str, "ip-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input::~Input()
@@ -1837,6 +1854,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddrIpNetmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| bridge_domain_name.is_set
@@ -1965,7 +1983,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::ClearBgpInstanceBestpathAfiSa
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::~ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr()
@@ -1974,6 +1992,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::~ClearBgpInstanceBestpathAfiS
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2073,7 +2092,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::Input::Input()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::Input::~Input()
@@ -2082,6 +2101,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpAddr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| bridge_domain_name.is_set
@@ -2197,7 +2217,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::ClearBgpInstanceBestpathAfi
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::~ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix()
@@ -2206,6 +2226,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::~ClearBgpInstanceBestpathAf
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2305,7 +2326,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::Input::Input()
     ip_prefix{YType::str, "ip-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ip-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::Input::~Input()
@@ -2314,6 +2335,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpPrefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| bridge_domain_name.is_set
@@ -2429,7 +2451,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::ClearBgpInstanceBestpathAfiSaf
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::~ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask()
@@ -2438,6 +2460,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::~ClearBgpInstanceBestpathAfiSa
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2538,7 +2561,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::Input::Input()
     ip_netmask{YType::str, "ip-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::Input::~Input()
@@ -2547,6 +2570,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpAddrIpNetmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -2675,7 +2699,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddr::ClearBgpInstanceBestpathAfiSafiRdIpAddr
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpAddr::~ClearBgpInstanceBestpathAfiSafiRdIpAddr()
@@ -2684,6 +2708,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddr::~ClearBgpInstanceBestpathAfiSafiRdIpAdd
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2783,7 +2808,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddr::Input::Input()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpAddr::Input::~Input()
@@ -2792,6 +2817,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpAddr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpAddr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -2907,7 +2933,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpPrefix::ClearBgpInstanceBestpathAfiSafiRdIpPr
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpPrefix::~ClearBgpInstanceBestpathAfiSafiRdIpPrefix()
@@ -2916,6 +2942,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpPrefix::~ClearBgpInstanceBestpathAfiSafiRdIpP
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3015,7 +3042,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpPrefix::Input::Input()
     ip_prefix{YType::str, "ip-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ip-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpPrefix::Input::~Input()
@@ -3024,6 +3051,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpPrefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpPrefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -3139,7 +3167,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::ClearBgpInstanceBestpathAfiSafi
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask()
@@ -3148,6 +3176,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathAfiSaf
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3247,7 +3276,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::Input::Input()
     ipv4_mask{YType::str, "ipv4-mask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::Input::~Input()
@@ -3256,6 +3285,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4AddrIpv4Mask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv4_addr.is_set
@@ -3371,7 +3401,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Addr::ClearBgpInstanceBestpathAfiSafiIpv4Addr
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4Addr::~ClearBgpInstanceBestpathAfiSafiIpv4Addr()
@@ -3380,6 +3410,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Addr::~ClearBgpInstanceBestpathAfiSafiIpv4Add
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3478,7 +3509,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Addr::Input::Input()
     ipv4_addr{YType::str, "ipv4-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4Addr::Input::~Input()
@@ -3487,6 +3518,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv4_addr.is_set;
@@ -3589,7 +3621,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Prefix::ClearBgpInstanceBestpathAfiSafiIpv4Pr
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiIpv4Prefix()
@@ -3598,6 +3630,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiIpv4P
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3696,7 +3729,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4Prefix::Input::~Input()
@@ -3705,6 +3738,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv4_prefix.is_set;
@@ -3807,7 +3841,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::ClearBgpInstanceBestpathAfiSafiRdIpv4
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::~ClearBgpInstanceBestpathAfiSafiRdIpv4Addr()
@@ -3816,6 +3850,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::~ClearBgpInstanceBestpathAfiSafiRdIpv
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3915,7 +3950,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::Input::Input()
     ipv4_addr{YType::str, "ipv4-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::Input::~Input()
@@ -3924,6 +3959,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv4Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -4039,7 +4075,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::ClearBgpInstanceBestpathAfiSafiVrfIp
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::~ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr()
@@ -4048,6 +4084,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::~ClearBgpInstanceBestpathAfiSafiVrfI
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -4147,7 +4184,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::Input::Input()
     ipv4_addr{YType::str, "ipv4-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::Input::~Input()
@@ -4156,6 +4193,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv4Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set
@@ -4271,7 +4309,7 @@ ClearBgpInstanceBestpathAfiSafiNetwork::ClearBgpInstanceBestpathAfiSafiNetwork()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiNetwork::~ClearBgpInstanceBestpathAfiSafiNetwork()
@@ -4280,6 +4318,7 @@ ClearBgpInstanceBestpathAfiSafiNetwork::~ClearBgpInstanceBestpathAfiSafiNetwork(
 
 bool ClearBgpInstanceBestpathAfiSafiNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -4378,7 +4417,7 @@ ClearBgpInstanceBestpathAfiSafiNetwork::Input::Input()
     network{YType::str, "network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiNetwork::Input::~Input()
@@ -4387,6 +4426,7 @@ ClearBgpInstanceBestpathAfiSafiNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| network.is_set;
@@ -4489,7 +4529,7 @@ ClearBgpInstanceBestpathAfiSafiRdNetwork::ClearBgpInstanceBestpathAfiSafiRdNetwo
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdNetwork::~ClearBgpInstanceBestpathAfiSafiRdNetwork()
@@ -4498,6 +4538,7 @@ ClearBgpInstanceBestpathAfiSafiRdNetwork::~ClearBgpInstanceBestpathAfiSafiRdNetw
 
 bool ClearBgpInstanceBestpathAfiSafiRdNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -4597,7 +4638,7 @@ ClearBgpInstanceBestpathAfiSafiRdNetwork::Input::Input()
     network{YType::str, "network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdNetwork::Input::~Input()
@@ -4606,6 +4647,7 @@ ClearBgpInstanceBestpathAfiSafiRdNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -4721,7 +4763,7 @@ ClearBgpInstanceBestpathAfiSafiVrfNetwork::ClearBgpInstanceBestpathAfiSafiVrfNet
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfNetwork::~ClearBgpInstanceBestpathAfiSafiVrfNetwork()
@@ -4730,6 +4772,7 @@ ClearBgpInstanceBestpathAfiSafiVrfNetwork::~ClearBgpInstanceBestpathAfiSafiVrfNe
 
 bool ClearBgpInstanceBestpathAfiSafiVrfNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -4829,7 +4872,7 @@ ClearBgpInstanceBestpathAfiSafiVrfNetwork::Input::Input()
     network{YType::str, "network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfNetwork::Input::~Input()
@@ -4838,6 +4881,7 @@ ClearBgpInstanceBestpathAfiSafiVrfNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrfNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set
@@ -4953,7 +4997,7 @@ ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::ClearBgpInstanceBestpathAfiS
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rt-constraint-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rt-constraint-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::~ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork()
@@ -4962,6 +5006,7 @@ ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::~ClearBgpInstanceBestpathAfi
 
 bool ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5060,7 +5105,7 @@ ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::Input::Input()
     rt_constraint_network{YType::str, "rt-constraint-network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rt-constraint-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rt-constraint-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::Input::~Input()
@@ -5069,6 +5114,7 @@ ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRtConstraintNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rt_constraint_network.is_set;
@@ -5171,7 +5217,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::ClearBgpInstanceBestpathAfiSaf
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-tunnel-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-tunnel-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::~ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork()
@@ -5180,6 +5226,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::~ClearBgpInstanceBestpathAfiSa
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5278,7 +5325,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::Input::Input()
     ipv4_tunnel_network{YType::str, "ipv4-tunnel-network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-tunnel-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv4-tunnel-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::Input::~Input()
@@ -5287,6 +5334,7 @@ ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpv4TunnelNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv4_tunnel_network.is_set;
@@ -5389,7 +5437,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::ClearBgpInstanceBestpathAfiS
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask()
@@ -5398,6 +5446,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpathAfi
 
 bool ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5497,7 +5546,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::Input::Input()
     ipv6_netmask{YType::str, "ipv6-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::Input::~Input()
@@ -5506,6 +5555,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpv6AddrIpv6Netmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv6_addr.is_set
@@ -5621,7 +5671,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Addr::ClearBgpInstanceBestpathAfiSafiIpv6Addr
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv6Addr::~ClearBgpInstanceBestpathAfiSafiIpv6Addr()
@@ -5630,6 +5680,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Addr::~ClearBgpInstanceBestpathAfiSafiIpv6Add
 
 bool ClearBgpInstanceBestpathAfiSafiIpv6Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5728,7 +5779,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Addr::Input::Input()
     ipv6_addr{YType::str, "ipv6-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv6Addr::Input::~Input()
@@ -5737,6 +5788,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpv6Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv6_addr.is_set;
@@ -5839,7 +5891,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Prefix::ClearBgpInstanceBestpathAfiSafiIpv6Pr
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv6Prefix::~ClearBgpInstanceBestpathAfiSafiIpv6Prefix()
@@ -5848,6 +5900,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Prefix::~ClearBgpInstanceBestpathAfiSafiIpv6P
 
 bool ClearBgpInstanceBestpathAfiSafiIpv6Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5946,7 +5999,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Prefix::Input::Input()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiIpv6Prefix::Input::~Input()
@@ -5955,6 +6008,7 @@ ClearBgpInstanceBestpathAfiSafiIpv6Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiIpv6Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv6_prefix.is_set;
@@ -6057,7 +6111,7 @@ ClearBgpInstanceBestpathAfiSafiRd::ClearBgpInstanceBestpathAfiSafiRd()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRd::~ClearBgpInstanceBestpathAfiSafiRd()
@@ -6066,6 +6120,7 @@ ClearBgpInstanceBestpathAfiSafiRd::~ClearBgpInstanceBestpathAfiSafiRd()
 
 bool ClearBgpInstanceBestpathAfiSafiRd::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -6164,7 +6219,7 @@ ClearBgpInstanceBestpathAfiSafiRd::Input::Input()
     rd{YType::str, "rd"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRd::Input::~Input()
@@ -6173,6 +6228,7 @@ ClearBgpInstanceBestpathAfiSafiRd::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRd::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set;
@@ -6275,7 +6331,7 @@ ClearBgpInstanceBestpathAfiSafiVrf::ClearBgpInstanceBestpathAfiSafiVrf()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrf::~ClearBgpInstanceBestpathAfiSafiVrf()
@@ -6284,6 +6340,7 @@ ClearBgpInstanceBestpathAfiSafiVrf::~ClearBgpInstanceBestpathAfiSafiVrf()
 
 bool ClearBgpInstanceBestpathAfiSafiVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -6382,7 +6439,7 @@ ClearBgpInstanceBestpathAfiSafiVrf::Input::Input()
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrf::Input::~Input()
@@ -6391,6 +6448,7 @@ ClearBgpInstanceBestpathAfiSafiVrf::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrf::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set;
@@ -6493,7 +6551,7 @@ ClearBgpInstanceBestpathAfiSafi::ClearBgpInstanceBestpathAfiSafi()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafi::~ClearBgpInstanceBestpathAfiSafi()
@@ -6502,6 +6560,7 @@ ClearBgpInstanceBestpathAfiSafi::~ClearBgpInstanceBestpathAfiSafi()
 
 bool ClearBgpInstanceBestpathAfiSafi::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -6599,7 +6658,7 @@ ClearBgpInstanceBestpathAfiSafi::Input::Input()
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafi::Input::~Input()
@@ -6608,6 +6667,7 @@ ClearBgpInstanceBestpathAfiSafi::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafi::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set;
 }
@@ -6697,7 +6757,7 @@ ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::ClearBgpInstanceBestpathAfiSafiSr
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-sr-policy-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-sr-policy-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::~ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix()
@@ -6706,6 +6766,7 @@ ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::~ClearBgpInstanceBestpathAfiSafiS
 
 bool ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -6804,7 +6865,7 @@ ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::Input::Input()
     sr_policy_prefix{YType::str, "sr-policy-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-sr-policy-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-sr-policy-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::Input::~Input()
@@ -6813,6 +6874,7 @@ ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiSrPolicyPrefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| sr_policy_prefix.is_set;
@@ -6915,7 +6977,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::ClearBgpInstanceBestpathA
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix()
@@ -6924,6 +6986,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::~ClearBgpInstanceBestpath
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -7023,7 +7086,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-bridge-domain-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::Input::~Input()
@@ -7032,6 +7095,7 @@ ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiBridgeDomainIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| bridge_domain_name.is_set
@@ -7147,7 +7211,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::ClearBgpInstanceBestpathAfiSafiRdIp
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix()
@@ -7156,6 +7220,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiRdI
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -7255,7 +7320,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::Input::~Input()
@@ -7264,6 +7329,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -7373,38 +7439,39 @@ bool ClearBgpInstanceBestpathAfiSafiRdIpv4Prefix::Input::has_leaf_or_child_of_na
     return false;
 }
 
-ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix()
+ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix()
     :
-    input(std::make_shared<ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input>())
+    input(std::make_shared<ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input>())
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-mp2mp-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-mp2mp-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix()
+ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix()
 {
 }
 
-bool ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::has_data() const
+bool ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
-bool ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::has_operation() const
+bool ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::has_operation() const
 {
     return is_set(yfilter)
 	|| (input !=  nullptr && input->has_operation());
 }
 
-std::string ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_segment_path() const
+std::string ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-bestpath-afi-safi-mp2mp-ipv4-prefix";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7413,13 +7480,13 @@ std::vector<std::pair<std::string, LeafData> > ClearBgpInstanceBestpathAfiSafiMp
 
 }
 
-std::shared_ptr<Entity> ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "input")
     {
         if(input == nullptr)
         {
-            input = std::make_shared<ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input>();
+            input = std::make_shared<ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input>();
         }
         return input;
     }
@@ -7427,7 +7494,7 @@ std::shared_ptr<Entity> ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7439,47 +7506,47 @@ std::map<std::string, std::shared_ptr<Entity>> ClearBgpInstanceBestpathAfiSafiMp
     return children;
 }
 
-void ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+void ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::clone_ptr() const
+std::shared_ptr<Entity> ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::clone_ptr() const
 {
-    return std::make_shared<ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix>();
+    return std::make_shared<ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix>();
 }
 
-std::string ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_bundle_yang_models_location() const
+std::string ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_bundle_name() const
+std::string ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_augment_capabilities_function() const
+augment_capabilities_function ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::has_leaf_or_child_of_name(const std::string & name) const
+bool ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "input")
         return true;
     return false;
 }
 
-ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::Input()
+ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::Input()
     :
     instance_name{YType::str, "instance-name"},
     afi_safi_name{YType::enumeration, "afi-safi-name"},
@@ -7487,22 +7554,23 @@ ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-mp2mp-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-mp2mp-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::~Input()
+ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::~Input()
 {
 }
 
-bool ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::has_data() const
+bool ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| mp2mp.is_set
 	|| ipv4_prefix.is_set;
 }
 
-bool ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::has_operation() const
+bool ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(instance_name.yfilter)
@@ -7511,21 +7579,21 @@ bool ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::has_operation() cons
 	|| ydk::is_set(ipv4_prefix.yfilter);
 }
 
-std::string ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::get_absolute_path() const
+std::string ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ipv4-bgp-act:clear-bgp-instance-bestpath-afi-safi-mp2mp-ipv4-prefix/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::get_segment_path() const
+std::string ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "input";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7538,19 +7606,19 @@ std::vector<std::pair<std::string, LeafData> > ClearBgpInstanceBestpathAfiSafiMp
 
 }
 
-std::shared_ptr<Entity> ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance-name")
     {
@@ -7578,7 +7646,7 @@ void ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::set_value(const std:
     }
 }
 
-void ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::set_filter(const std::string & value_path, YFilter yfilter)
+void ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "instance-name")
     {
@@ -7598,7 +7666,7 @@ void ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::set_filter(const std
     }
 }
 
-bool ClearBgpInstanceBestpathAfiSafiMp2MpIpv4Prefix::Input::has_leaf_or_child_of_name(const std::string & name) const
+bool ClearBgpInstanceBestpathAfiSafiMp2mpIpv4Prefix::Input::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "instance-name" || name == "afi-safi-name" || name == "mp2mp" || name == "ipv4-prefix")
         return true;
@@ -7611,7 +7679,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::ClearBgpInstanceBestpathAfiSafiVrf
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix()
@@ -7620,6 +7688,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::~ClearBgpInstanceBestpathAfiSafiVr
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -7719,7 +7788,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::Input::~Input()
@@ -7728,6 +7797,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set
@@ -7843,7 +7913,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::ClearBgpInstanceBestpathAfiSa
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask()
@@ -7852,6 +7922,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathAfiS
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -7952,7 +8023,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::Input::Input()
     ipv4_mask{YType::str, "ipv4-mask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::Input::~Input()
@@ -7961,6 +8032,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv4AddrIpv4Mask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -8089,7 +8161,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::ClearBgpInstanceBestpathAfiS
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask()
@@ -8098,6 +8170,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathAfi
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -8198,7 +8271,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::Input::Input()
     ipv4_mask{YType::str, "ipv4-mask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::Input::~Input()
@@ -8207,6 +8280,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv4AddrIpv4Mask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set
@@ -8335,7 +8409,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::ClearBgpInstanceBestpathAf
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask()
@@ -8344,6 +8418,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpathA
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -8444,7 +8519,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::Input::Input()
     ipv6_netmask{YType::str, "ipv6-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::Input::~Input()
@@ -8453,6 +8528,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv6AddrIpv6Netmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -8581,7 +8657,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::ClearBgpInstanceBestpathAfiSafiRdIpv6
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::~ClearBgpInstanceBestpathAfiSafiRdIpv6Addr()
@@ -8590,6 +8666,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::~ClearBgpInstanceBestpathAfiSafiRdIpv
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -8689,7 +8766,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::Input::Input()
     ipv6_addr{YType::str, "ipv6-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::Input::~Input()
@@ -8698,6 +8775,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv6Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -8813,7 +8891,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::ClearBgpInstanceBestpathAfiSafiRdIp
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::~ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix()
@@ -8822,6 +8900,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::~ClearBgpInstanceBestpathAfiSafiRdI
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -8921,7 +9000,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::Input::Input()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-rd-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::Input::~Input()
@@ -8930,6 +9009,7 @@ ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiRdIpv6Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| rd.is_set
@@ -9045,7 +9125,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::ClearBgpInstanceBestpathA
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask()
@@ -9054,6 +9134,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpath
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -9154,7 +9235,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::Input::Input()
     ipv6_netmask{YType::str, "ipv6-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::Input::~Input()
@@ -9163,6 +9244,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv6AddrIpv6Netmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set
@@ -9291,7 +9373,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::ClearBgpInstanceBestpathAfiSafiVrfIp
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::~ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr()
@@ -9300,6 +9382,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::~ClearBgpInstanceBestpathAfiSafiVrfI
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -9399,7 +9482,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::Input::Input()
     ipv6_addr{YType::str, "ipv6-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::Input::~Input()
@@ -9408,6 +9491,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv6Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set
@@ -9523,7 +9607,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::ClearBgpInstanceBestpathAfiSafiVrf
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::~ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix()
@@ -9532,6 +9616,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::~ClearBgpInstanceBestpathAfiSafiVr
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -9631,7 +9716,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::Input::Input()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-afi-safi-vrf-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::Input::~Input()
@@ -9640,6 +9725,7 @@ ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathAfiSafiVrfIpv6Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| vrf_name.is_set
@@ -9755,7 +9841,7 @@ ClearBgpInstanceBestpathVrfIpAddrIpNetmask::ClearBgpInstanceBestpathVrfIpAddrIpN
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-ip-addr-ip-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfIpAddrIpNetmask::~ClearBgpInstanceBestpathVrfIpAddrIpNetmask()
@@ -9764,6 +9850,7 @@ ClearBgpInstanceBestpathVrfIpAddrIpNetmask::~ClearBgpInstanceBestpathVrfIpAddrIp
 
 bool ClearBgpInstanceBestpathVrfIpAddrIpNetmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -9863,7 +9950,7 @@ ClearBgpInstanceBestpathVrfIpAddrIpNetmask::Input::Input()
     ip_netmask{YType::str, "ip-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-ip-addr-ip-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfIpAddrIpNetmask::Input::~Input()
@@ -9872,6 +9959,7 @@ ClearBgpInstanceBestpathVrfIpAddrIpNetmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfIpAddrIpNetmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| ip_addr.is_set
@@ -9987,7 +10075,7 @@ ClearBgpInstanceBestpathVrfIpAddr::ClearBgpInstanceBestpathVrfIpAddr()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfIpAddr::~ClearBgpInstanceBestpathVrfIpAddr()
@@ -9996,6 +10084,7 @@ ClearBgpInstanceBestpathVrfIpAddr::~ClearBgpInstanceBestpathVrfIpAddr()
 
 bool ClearBgpInstanceBestpathVrfIpAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -10094,7 +10183,7 @@ ClearBgpInstanceBestpathVrfIpAddr::Input::Input()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-ip-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-ip-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfIpAddr::Input::~Input()
@@ -10103,6 +10192,7 @@ ClearBgpInstanceBestpathVrfIpAddr::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfIpAddr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| ip_addr.is_set;
@@ -10205,7 +10295,7 @@ ClearBgpInstanceBestpathVrfIpPrefix::ClearBgpInstanceBestpathVrfIpPrefix()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-ip-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfIpPrefix::~ClearBgpInstanceBestpathVrfIpPrefix()
@@ -10214,6 +10304,7 @@ ClearBgpInstanceBestpathVrfIpPrefix::~ClearBgpInstanceBestpathVrfIpPrefix()
 
 bool ClearBgpInstanceBestpathVrfIpPrefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -10312,7 +10403,7 @@ ClearBgpInstanceBestpathVrfIpPrefix::Input::Input()
     ip_prefix{YType::str, "ip-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-ip-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-ip-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfIpPrefix::Input::~Input()
@@ -10321,6 +10412,7 @@ ClearBgpInstanceBestpathVrfIpPrefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfIpPrefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| ip_prefix.is_set;
@@ -10423,7 +10515,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::ClearBgpInstanceBestpathVrfAfiSafi
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::~ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix()
@@ -10432,6 +10524,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::~ClearBgpInstanceBestpathVrfAfiSaf
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -10531,7 +10624,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::Input::~Input()
@@ -10540,6 +10633,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -10655,7 +10749,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::ClearBgpInstanceBestpathVrfA
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr-ipv4-mask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask()
@@ -10664,6 +10758,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::~ClearBgpInstanceBestpathVrf
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -10764,7 +10859,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::Input::Input()
     ipv4_mask{YType::str, "ipv4-mask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr-ipv4-mask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::Input::~Input()
@@ -10773,6 +10868,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv4AddrIpv4Mask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -10901,7 +10997,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::ClearBgpInstanceBestpathVrfAfiSafiIp
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::~ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr()
@@ -10910,6 +11006,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::~ClearBgpInstanceBestpathVrfAfiSafiI
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -11009,7 +11106,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::Input::Input()
     ipv4_addr{YType::str, "ipv4-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv4-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::Input::~Input()
@@ -11018,6 +11115,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv4Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -11133,7 +11231,7 @@ ClearBgpInstanceBestpathVrfAfiSafiNetwork::ClearBgpInstanceBestpathVrfAfiSafiNet
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiNetwork::~ClearBgpInstanceBestpathVrfAfiSafiNetwork()
@@ -11142,6 +11240,7 @@ ClearBgpInstanceBestpathVrfAfiSafiNetwork::~ClearBgpInstanceBestpathVrfAfiSafiNe
 
 bool ClearBgpInstanceBestpathVrfAfiSafiNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -11241,7 +11340,7 @@ ClearBgpInstanceBestpathVrfAfiSafiNetwork::Input::Input()
     network{YType::str, "network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiNetwork::Input::~Input()
@@ -11250,6 +11349,7 @@ ClearBgpInstanceBestpathVrfAfiSafiNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -11365,7 +11465,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::ClearBgpInstanceBestpathVrfAfiSafiR
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::~ClearBgpInstanceBestpathVrfAfiSafiRdNetwork()
@@ -11374,6 +11474,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::~ClearBgpInstanceBestpathVrfAfiSafi
 
 bool ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -11474,7 +11575,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::Input::Input()
     network{YType::str, "network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::Input::~Input()
@@ -11483,6 +11584,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiRdNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -11611,7 +11713,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::ClearBgpInstanceBestpathVrfAfiSafi
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::~ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork()
@@ -11620,6 +11722,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::~ClearBgpInstanceBestpathVrfAfiSaf
 
 bool ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -11720,7 +11823,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::Input::Input()
     network{YType::str, "network"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::Input::~Input()
@@ -11729,6 +11832,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiVrfNetwork::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -11857,7 +11961,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::ClearBgpInstanceBestpathV
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr-ipv6-netmask"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask()
@@ -11866,6 +11970,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::~ClearBgpInstanceBestpath
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -11966,7 +12071,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::Input::Input()
     ipv6_netmask{YType::str, "ipv6-netmask"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr-ipv6-netmask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::Input::~Input()
@@ -11975,6 +12080,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv6AddrIpv6Netmask::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -12103,7 +12209,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::ClearBgpInstanceBestpathVrfAfiSafiIp
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::~ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr()
@@ -12112,6 +12218,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::~ClearBgpInstanceBestpathVrfAfiSafiI
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -12211,7 +12318,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::Input::Input()
     ipv6_addr{YType::str, "ipv6-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::Input::~Input()
@@ -12220,6 +12327,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv6Addr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -12335,7 +12443,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::ClearBgpInstanceBestpathVrfAfiSafi
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::~ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix()
@@ -12344,6 +12452,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::~ClearBgpInstanceBestpathVrfAfiSaf
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -12443,7 +12552,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::Input::Input()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::Input::~Input()
@@ -12452,6 +12561,7 @@ ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiIpv6Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -12567,7 +12677,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRd::ClearBgpInstanceBestpathVrfAfiSafiRd()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiRd::~ClearBgpInstanceBestpathVrfAfiSafiRd()
@@ -12576,6 +12686,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRd::~ClearBgpInstanceBestpathVrfAfiSafiRd()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiRd::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -12675,7 +12786,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRd::Input::Input()
     rd{YType::str, "rd"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-rd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiRd::Input::~Input()
@@ -12684,6 +12795,7 @@ ClearBgpInstanceBestpathVrfAfiSafiRd::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiRd::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -12799,7 +12911,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrf::ClearBgpInstanceBestpathVrfAfiSafiVrf()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiVrf::~ClearBgpInstanceBestpathVrfAfiSafiVrf()
@@ -12808,6 +12920,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrf::~ClearBgpInstanceBestpathVrfAfiSafiVrf()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -12907,7 +13020,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrf::Input::Input()
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafiVrf::Input::~Input()
@@ -12916,6 +13029,7 @@ ClearBgpInstanceBestpathVrfAfiSafiVrf::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafiVrf::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set
@@ -13031,7 +13145,7 @@ ClearBgpInstanceBestpathVrfAfiSafi::ClearBgpInstanceBestpathVrfAfiSafi()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-bestpath-vrf-afi-safi"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafi::~ClearBgpInstanceBestpathVrfAfiSafi()
@@ -13040,6 +13154,7 @@ ClearBgpInstanceBestpathVrfAfiSafi::~ClearBgpInstanceBestpathVrfAfiSafi()
 
 bool ClearBgpInstanceBestpathVrfAfiSafi::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -13138,7 +13253,7 @@ ClearBgpInstanceBestpathVrfAfiSafi::Input::Input()
     afi_safi_name{YType::enumeration, "afi-safi-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-bestpath-vrf-afi-safi"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceBestpathVrfAfiSafi::Input::~Input()
@@ -13147,6 +13262,7 @@ ClearBgpInstanceBestpathVrfAfiSafi::Input::~Input()
 
 bool ClearBgpInstanceBestpathVrfAfiSafi::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| vrf_all.is_set
 	|| afi_safi_name.is_set;
@@ -13249,7 +13365,7 @@ ClearBgpInstanceExternalGraceful::ClearBgpInstanceExternalGraceful()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-external-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-external-graceful"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceExternalGraceful::~ClearBgpInstanceExternalGraceful()
@@ -13258,6 +13374,7 @@ ClearBgpInstanceExternalGraceful::~ClearBgpInstanceExternalGraceful()
 
 bool ClearBgpInstanceExternalGraceful::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -13354,7 +13471,7 @@ ClearBgpInstanceExternalGraceful::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-external-graceful"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-external-graceful"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceExternalGraceful::Input::~Input()
@@ -13363,6 +13480,7 @@ ClearBgpInstanceExternalGraceful::Input::~Input()
 
 bool ClearBgpInstanceExternalGraceful::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -13439,7 +13557,7 @@ ClearBgpInstanceExternal::ClearBgpInstanceExternal()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-external"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-external"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceExternal::~ClearBgpInstanceExternal()
@@ -13448,6 +13566,7 @@ ClearBgpInstanceExternal::~ClearBgpInstanceExternal()
 
 bool ClearBgpInstanceExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -13544,7 +13663,7 @@ ClearBgpInstanceExternal::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-external"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-external"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceExternal::Input::~Input()
@@ -13553,6 +13672,7 @@ ClearBgpInstanceExternal::Input::~Input()
 
 bool ClearBgpInstanceExternal::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -13629,7 +13749,7 @@ ClearBgpInstanceAfiSafiDampeningIpv4Prefix::ClearBgpInstanceAfiSafiDampeningIpv4
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-afi-safi-dampening-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-afi-safi-dampening-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiDampeningIpv4Prefix::~ClearBgpInstanceAfiSafiDampeningIpv4Prefix()
@@ -13638,6 +13758,7 @@ ClearBgpInstanceAfiSafiDampeningIpv4Prefix::~ClearBgpInstanceAfiSafiDampeningIpv
 
 bool ClearBgpInstanceAfiSafiDampeningIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -13736,7 +13857,7 @@ ClearBgpInstanceAfiSafiDampeningIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-dampening-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-dampening-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiDampeningIpv4Prefix::Input::~Input()
@@ -13745,6 +13866,7 @@ ClearBgpInstanceAfiSafiDampeningIpv4Prefix::Input::~Input()
 
 bool ClearBgpInstanceAfiSafiDampeningIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv4_prefix.is_set;
@@ -13847,7 +13969,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::ClearBgpInstanceAfiSafiFlapStat
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv4-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::~ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix()
@@ -13856,6 +13978,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::~ClearBgpInstanceAfiSafiFlapSta
 
 bool ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -13954,7 +14077,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::Input::Input()
     ipv4_prefix{YType::str, "ipv4-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv4-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::Input::~Input()
@@ -13963,6 +14086,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::Input::~Input()
 
 bool ClearBgpInstanceAfiSafiFlapStatisticsIpv4Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv4_prefix.is_set;
@@ -14065,7 +14189,7 @@ ClearBgpInstanceAfiSafiDampeningIpv6Prefix::ClearBgpInstanceAfiSafiDampeningIpv6
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-afi-safi-dampening-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-afi-safi-dampening-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiDampeningIpv6Prefix::~ClearBgpInstanceAfiSafiDampeningIpv6Prefix()
@@ -14074,6 +14198,7 @@ ClearBgpInstanceAfiSafiDampeningIpv6Prefix::~ClearBgpInstanceAfiSafiDampeningIpv
 
 bool ClearBgpInstanceAfiSafiDampeningIpv6Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -14172,7 +14297,7 @@ ClearBgpInstanceAfiSafiDampeningIpv6Prefix::Input::Input()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-dampening-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-dampening-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiDampeningIpv6Prefix::Input::~Input()
@@ -14181,6 +14306,7 @@ ClearBgpInstanceAfiSafiDampeningIpv6Prefix::Input::~Input()
 
 bool ClearBgpInstanceAfiSafiDampeningIpv6Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv6_prefix.is_set;
@@ -14283,7 +14409,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::ClearBgpInstanceAfiSafiFlapStat
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv6-prefix"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::~ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix()
@@ -14292,6 +14418,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::~ClearBgpInstanceAfiSafiFlapSta
 
 bool ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -14390,7 +14517,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::Input::Input()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-afi-safi-flap-statistics-ipv6-prefix"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::Input::~Input()
@@ -14399,6 +14526,7 @@ ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::Input::~Input()
 
 bool ClearBgpInstanceAfiSafiFlapStatisticsIpv6Prefix::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| afi_safi_name.is_set
 	|| ipv6_prefix.is_set;
@@ -14501,7 +14629,7 @@ ClearBgpInstanceNexthopPerformanceStatistics::ClearBgpInstanceNexthopPerformance
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-nexthop-performance-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-nexthop-performance-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceNexthopPerformanceStatistics::~ClearBgpInstanceNexthopPerformanceStatistics()
@@ -14510,6 +14638,7 @@ ClearBgpInstanceNexthopPerformanceStatistics::~ClearBgpInstanceNexthopPerformanc
 
 bool ClearBgpInstanceNexthopPerformanceStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -14606,7 +14735,7 @@ ClearBgpInstanceNexthopPerformanceStatistics::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-nexthop-performance-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-nexthop-performance-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceNexthopPerformanceStatistics::Input::~Input()
@@ -14615,6 +14744,7 @@ ClearBgpInstanceNexthopPerformanceStatistics::Input::~Input()
 
 bool ClearBgpInstanceNexthopPerformanceStatistics::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -14691,7 +14821,7 @@ ClearBgpInstanceNexthopRegistrationIpAddr::ClearBgpInstanceNexthopRegistrationIp
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-nexthop-registration-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-nexthop-registration-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceNexthopRegistrationIpAddr::~ClearBgpInstanceNexthopRegistrationIpAddr()
@@ -14700,6 +14830,7 @@ ClearBgpInstanceNexthopRegistrationIpAddr::~ClearBgpInstanceNexthopRegistrationI
 
 bool ClearBgpInstanceNexthopRegistrationIpAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -14797,7 +14928,7 @@ ClearBgpInstanceNexthopRegistrationIpAddr::Input::Input()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-nexthop-registration-ip-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-nexthop-registration-ip-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceNexthopRegistrationIpAddr::Input::~Input()
@@ -14806,6 +14937,7 @@ ClearBgpInstanceNexthopRegistrationIpAddr::Input::~Input()
 
 bool ClearBgpInstanceNexthopRegistrationIpAddr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| ip_addr.is_set;
 }
@@ -14895,7 +15027,7 @@ ClearBgpInstancePeerDropsAll::ClearBgpInstancePeerDropsAll()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-peer-drops-all"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-peer-drops-all"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstancePeerDropsAll::~ClearBgpInstancePeerDropsAll()
@@ -14904,6 +15036,7 @@ ClearBgpInstancePeerDropsAll::~ClearBgpInstancePeerDropsAll()
 
 bool ClearBgpInstancePeerDropsAll::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -15000,7 +15133,7 @@ ClearBgpInstancePeerDropsAll::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-peer-drops-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-peer-drops-all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstancePeerDropsAll::Input::~Input()
@@ -15009,6 +15142,7 @@ ClearBgpInstancePeerDropsAll::Input::~Input()
 
 bool ClearBgpInstancePeerDropsAll::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -15085,7 +15219,7 @@ ClearBgpInstancePeerDropsIpAddr::ClearBgpInstancePeerDropsIpAddr()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-peer-drops-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-peer-drops-ip-addr"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstancePeerDropsIpAddr::~ClearBgpInstancePeerDropsIpAddr()
@@ -15094,6 +15228,7 @@ ClearBgpInstancePeerDropsIpAddr::~ClearBgpInstancePeerDropsIpAddr()
 
 bool ClearBgpInstancePeerDropsIpAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -15191,7 +15326,7 @@ ClearBgpInstancePeerDropsIpAddr::Input::Input()
     ip_addr{YType::str, "ip-addr"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-peer-drops-ip-addr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-peer-drops-ip-addr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstancePeerDropsIpAddr::Input::~Input()
@@ -15200,6 +15335,7 @@ ClearBgpInstancePeerDropsIpAddr::Input::~Input()
 
 bool ClearBgpInstancePeerDropsIpAddr::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| ip_addr.is_set;
 }
@@ -15289,7 +15425,7 @@ ClearBgpInstancePerformanceStatistics::ClearBgpInstancePerformanceStatistics()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-performance-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-performance-statistics"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstancePerformanceStatistics::~ClearBgpInstancePerformanceStatistics()
@@ -15298,6 +15434,7 @@ ClearBgpInstancePerformanceStatistics::~ClearBgpInstancePerformanceStatistics()
 
 bool ClearBgpInstancePerformanceStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -15394,7 +15531,7 @@ ClearBgpInstancePerformanceStatistics::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-performance-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-performance-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstancePerformanceStatistics::Input::~Input()
@@ -15403,6 +15540,7 @@ ClearBgpInstancePerformanceStatistics::Input::~Input()
 
 bool ClearBgpInstancePerformanceStatistics::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -15479,7 +15617,7 @@ ClearBgpInstanceRpkiServerAllSerialQuery::ClearBgpInstanceRpkiServerAllSerialQue
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-rpki-server-all-serial-query"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-rpki-server-all-serial-query"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiServerAllSerialQuery::~ClearBgpInstanceRpkiServerAllSerialQuery()
@@ -15488,6 +15626,7 @@ ClearBgpInstanceRpkiServerAllSerialQuery::~ClearBgpInstanceRpkiServerAllSerialQu
 
 bool ClearBgpInstanceRpkiServerAllSerialQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -15584,7 +15723,7 @@ ClearBgpInstanceRpkiServerAllSerialQuery::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-server-all-serial-query"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-server-all-serial-query"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiServerAllSerialQuery::Input::~Input()
@@ -15593,6 +15732,7 @@ ClearBgpInstanceRpkiServerAllSerialQuery::Input::~Input()
 
 bool ClearBgpInstanceRpkiServerAllSerialQuery::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -15669,7 +15809,7 @@ ClearBgpInstanceRpkiServerAll::ClearBgpInstanceRpkiServerAll()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-rpki-server-all"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-rpki-server-all"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiServerAll::~ClearBgpInstanceRpkiServerAll()
@@ -15678,6 +15818,7 @@ ClearBgpInstanceRpkiServerAll::~ClearBgpInstanceRpkiServerAll()
 
 bool ClearBgpInstanceRpkiServerAll::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -15774,7 +15915,7 @@ ClearBgpInstanceRpkiServerAll::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-server-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-server-all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiServerAll::Input::~Input()
@@ -15783,6 +15924,7 @@ ClearBgpInstanceRpkiServerAll::Input::~Input()
 
 bool ClearBgpInstanceRpkiServerAll::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -15859,7 +16001,7 @@ ClearBgpInstanceRpkiServerRpkiServer::ClearBgpInstanceRpkiServerRpkiServer()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-rpki-server-rpki-server"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-rpki-server-rpki-server"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiServerRpkiServer::~ClearBgpInstanceRpkiServerRpkiServer()
@@ -15868,6 +16010,7 @@ ClearBgpInstanceRpkiServerRpkiServer::~ClearBgpInstanceRpkiServerRpkiServer()
 
 bool ClearBgpInstanceRpkiServerRpkiServer::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -15965,7 +16108,7 @@ ClearBgpInstanceRpkiServerRpkiServer::Input::Input()
     rpki_server{YType::str, "rpki-server"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-server-rpki-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-server-rpki-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiServerRpkiServer::Input::~Input()
@@ -15974,6 +16117,7 @@ ClearBgpInstanceRpkiServerRpkiServer::Input::~Input()
 
 bool ClearBgpInstanceRpkiServerRpkiServer::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| rpki_server.is_set;
 }
@@ -16063,7 +16207,7 @@ ClearBgpInstanceRpkiValidationIpv4::ClearBgpInstanceRpkiValidationIpv4()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-rpki-validation-ipv4"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-rpki-validation-ipv4"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiValidationIpv4::~ClearBgpInstanceRpkiValidationIpv4()
@@ -16072,6 +16216,7 @@ ClearBgpInstanceRpkiValidationIpv4::~ClearBgpInstanceRpkiValidationIpv4()
 
 bool ClearBgpInstanceRpkiValidationIpv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -16168,7 +16313,7 @@ ClearBgpInstanceRpkiValidationIpv4::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-validation-ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-validation-ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiValidationIpv4::Input::~Input()
@@ -16177,6 +16322,7 @@ ClearBgpInstanceRpkiValidationIpv4::Input::~Input()
 
 bool ClearBgpInstanceRpkiValidationIpv4::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -16253,7 +16399,7 @@ ClearBgpInstanceRpkiValidationIpv6::ClearBgpInstanceRpkiValidationIpv6()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-rpki-validation-ipv6"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-rpki-validation-ipv6"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiValidationIpv6::~ClearBgpInstanceRpkiValidationIpv6()
@@ -16262,6 +16408,7 @@ ClearBgpInstanceRpkiValidationIpv6::~ClearBgpInstanceRpkiValidationIpv6()
 
 bool ClearBgpInstanceRpkiValidationIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -16358,7 +16505,7 @@ ClearBgpInstanceRpkiValidationIpv6::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-validation-ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-validation-ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiValidationIpv6::Input::~Input()
@@ -16367,6 +16514,7 @@ ClearBgpInstanceRpkiValidationIpv6::Input::~Input()
 
 bool ClearBgpInstanceRpkiValidationIpv6::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 
@@ -16443,7 +16591,7 @@ ClearBgpInstanceRpkiValidation::ClearBgpInstanceRpkiValidation()
 {
     input->parent = this;
 
-    yang_name = "clear-bgp-instance-rpki-validation"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-bgp-instance-rpki-validation"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiValidation::~ClearBgpInstanceRpkiValidation()
@@ -16452,6 +16600,7 @@ ClearBgpInstanceRpkiValidation::~ClearBgpInstanceRpkiValidation()
 
 bool ClearBgpInstanceRpkiValidation::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -16548,7 +16697,7 @@ ClearBgpInstanceRpkiValidation::Input::Input()
     instance_name{YType::str, "instance-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-validation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-bgp-instance-rpki-validation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearBgpInstanceRpkiValidation::Input::~Input()
@@ -16557,6 +16706,7 @@ ClearBgpInstanceRpkiValidation::Input::~Input()
 
 bool ClearBgpInstanceRpkiValidation::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set;
 }
 

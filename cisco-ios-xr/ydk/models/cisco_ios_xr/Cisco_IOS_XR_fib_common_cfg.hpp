@@ -32,7 +32,6 @@ class Fib : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf prefer_aib_routes; //type: boolean
-        ydk::YLeaf frr_follow_bgp_pic; //type: boolean
         class PbtsForwardClassFallbacks; //type: Fib::PbtsForwardClassFallbacks
         class Platform; //type: Fib::Platform
 
@@ -61,7 +60,7 @@ class Fib::PbtsForwardClassFallbacks : public ydk::Entity
 
         class PbtsForwardClassFallback; //type: Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_cfg::Fib::PbtsForwardClassFallbacks::PbtsForwardClassFallback> > pbts_forward_class_fallback;
+        ydk::YList pbts_forward_class_fallback;
         
 }; // Fib::PbtsForwardClassFallbacks
 
@@ -135,19 +134,19 @@ class Fib::Platform::LabelSwitchedMulticast : public ydk::Entity
 
 }; // Fib::Platform::LabelSwitchedMulticast
 
-class FibPbtsForwardClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf any;
-
-};
-
 class FibPbtsFallback : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf list;
         static const ydk::Enum::YLeaf any;
         static const ydk::Enum::YLeaf drop;
+
+};
+
+class FibPbtsForwardClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
 
 };
 

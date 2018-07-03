@@ -95,7 +95,7 @@ class Rcmd::Ospf::Instances : public ydk::Entity
 
         class Instance; //type: Rcmd::Ospf::Instances::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Ospf::Instances
 
@@ -161,7 +161,7 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries : public ydk::Entity
 
         class IpfrrEventSummary; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary> > ipfrr_event_summary;
+        ydk::YList ipfrr_event_summary;
         
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries
 
@@ -197,8 +197,8 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary : 
         class IpfrrStatistic; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic> > ipfrr_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode> > remote_node;
+        ydk::YList ipfrr_statistic;
+        ydk::YList remote_node;
         
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
@@ -254,7 +254,7 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::R
         ydk::YLeaf in_use_time; //type: string
         class PrimaryPath; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath> > primary_path;
+        ydk::YList primary_path;
         
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
@@ -299,7 +299,7 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventStatistics : public ydk::Entit
 
         class PrefixEventStatistic; //type: Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic> > prefix_event_statistic;
+        ydk::YList prefix_event_statistic;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventStatistics
 
@@ -358,7 +358,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries : public ydk::Entity
 
         class SpfRunSummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary> > spf_run_summary;
+        ydk::YList spf_run_summary;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries
 
@@ -385,8 +385,8 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary : public y
         class InterAreaAndExternal; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary> spf_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun> > dijkstra_run;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal> > inter_area_and_external;
+        ydk::YList dijkstra_run;
+        ydk::YList inter_area_and_external;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
@@ -419,7 +419,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         ydk::YLeaf total_type357lsa_changes; //type: uint16
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary> > priority_summary;
+        ydk::YList priority_summary;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
 
@@ -450,7 +450,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
@@ -580,9 +580,9 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority
         class LsaProcessed; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority> > priority;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::LsaProcessed> > lsa_processed;
+        ydk::YList trigger_lsa;
+        ydk::YList priority;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun
 
@@ -635,9 +635,9 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         class LeafNetworksDeleted; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary> priority_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline> > convergence_timeline;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksAdded> > leaf_networks_added;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
+        ydk::YList convergence_timeline;
+        ydk::YList leaf_networks_added;
+        ydk::YList leaf_networks_deleted;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority
 
@@ -668,7 +668,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::PrioritySummary
 
@@ -806,8 +806,8 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraR
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LdpExit> ldp_exit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter> lsd_enter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LsdExit> lsd_exit;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::DijkstraRun::Priority::ConvergenceTimeline
 
@@ -1180,7 +1180,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
 
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority> > priority;
+        ydk::YList priority;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal
 
@@ -1207,9 +1207,9 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
         class LeafNetworksDeleted; //type: Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::PrioritySummary> priority_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline> > convergence_timeline;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksAdded> > leaf_networks_added;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
+        ydk::YList convergence_timeline;
+        ydk::YList leaf_networks_added;
+        ydk::YList leaf_networks_deleted;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority
 
@@ -1355,8 +1355,8 @@ class Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterArea
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit> ldp_exit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter> lsd_enter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit> lsd_exit;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::InterAreaAndExternal::Priority::ConvergenceTimeline
 
@@ -1703,7 +1703,7 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines : public ydk::Entity
 
         class IpfrrEventOffline; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline> > ipfrr_event_offline;
+        ydk::YList ipfrr_event_offline;
         
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines
 
@@ -1739,8 +1739,8 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline : p
         class IpfrrStatistic; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic> > ipfrr_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode> > remote_node;
+        ydk::YList ipfrr_statistic;
+        ydk::YList remote_node;
         
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
@@ -1796,7 +1796,7 @@ class Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Re
         ydk::YLeaf in_use_time; //type: string
         class PrimaryPath; //type: Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath> > primary_path;
+        ydk::YList primary_path;
         
 }; // Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
@@ -1841,7 +1841,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines : public ydk::Entity
 
         class SpfRunOffline; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline> > spf_run_offline;
+        ydk::YList spf_run_offline;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines
 
@@ -1868,8 +1868,8 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline : public yd
         class InterAreaAndExternal; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary> spf_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun> > dijkstra_run;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal> > inter_area_and_external;
+        ydk::YList dijkstra_run;
+        ydk::YList inter_area_and_external;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
@@ -1902,7 +1902,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         ydk::YLeaf total_type357lsa_changes; //type: uint16
         class PrioritySummary; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary> > priority_summary;
+        ydk::YList priority_summary;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
@@ -1933,7 +1933,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
@@ -2063,9 +2063,9 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority
         class LsaProcessed; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority> > priority;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::LsaProcessed> > lsa_processed;
+        ydk::YList trigger_lsa;
+        ydk::YList priority;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun
 
@@ -2118,9 +2118,9 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         class LeafNetworksDeleted; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary> priority_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline> > convergence_timeline;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksAdded> > leaf_networks_added;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
+        ydk::YList convergence_timeline;
+        ydk::YList leaf_networks_added;
+        ydk::YList leaf_networks_deleted;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority
 
@@ -2151,7 +2151,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::PrioritySummary
 
@@ -2289,8 +2289,8 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRu
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LdpExit> ldp_exit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdEnter> lsd_enter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LsdExit> lsd_exit;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::DijkstraRun::Priority::ConvergenceTimeline
 
@@ -2663,7 +2663,7 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
 
         class Priority; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority> > priority;
+        ydk::YList priority;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal
 
@@ -2690,9 +2690,9 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
         class LeafNetworksDeleted; //type: Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::PrioritySummary> priority_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline> > convergence_timeline;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksAdded> > leaf_networks_added;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
+        ydk::YList convergence_timeline;
+        ydk::YList leaf_networks_added;
+        ydk::YList leaf_networks_deleted;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority
 
@@ -2838,8 +2838,8 @@ class Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaA
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LdpExit> ldp_exit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdEnter> lsd_enter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LsdExit> lsd_exit;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::InterAreaAndExternal::Priority::ConvergenceTimeline
 
@@ -3186,7 +3186,7 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries : public yd
 
         class SummaryExternalEventSummary; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary> > summary_external_event_summary;
+        ydk::YList summary_external_event_summary;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries
 
@@ -3228,10 +3228,10 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path> > path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine> > time_line;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::LsaProcessed> > lsa_processed;
+        ydk::YList path;
+        ydk::YList trigger_lsa;
+        ydk::YList time_line;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary
 
@@ -3306,7 +3306,7 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         ydk::YLeaf path_metric; //type: uint32
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path::LfaPath> > lfa_path;
+        ydk::YList lfa_path;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::Path
 
@@ -3390,8 +3390,8 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExt
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::SummaryExternalEventSummary::TimeLine
 
@@ -3486,7 +3486,7 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries : public ydk::Entity
 
         class PrefixEventSummary; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary> > prefix_event_summary;
+        ydk::YList prefix_event_summary;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries
 
@@ -3528,10 +3528,10 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path> > path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine> > time_line;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed> > lsa_processed;
+        ydk::YList path;
+        ydk::YList trigger_lsa;
+        ydk::YList time_line;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
@@ -3606,7 +3606,7 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         ydk::YLeaf path_metric; //type: uint32
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath> > lfa_path;
+        ydk::YList lfa_path;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
 
@@ -3690,8 +3690,8 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine
 
@@ -3786,7 +3786,7 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines : public ydk
 
         class SummaryExternalEventOffline; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline> > summary_external_event_offline;
+        ydk::YList summary_external_event_offline;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines
 
@@ -3828,10 +3828,10 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path> > path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine> > time_line;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::LsaProcessed> > lsa_processed;
+        ydk::YList path;
+        ydk::YList trigger_lsa;
+        ydk::YList time_line;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline
 
@@ -3906,7 +3906,7 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         ydk::YLeaf path_metric; //type: uint32
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath> > lfa_path;
+        ydk::YList lfa_path;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path
 
@@ -3990,8 +3990,8 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::TimeLine
 
@@ -4086,7 +4086,7 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines : public ydk::Entity
 
         class PrefixEventOffline; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline> > prefix_event_offline;
+        ydk::YList prefix_event_offline;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines
 
@@ -4128,10 +4128,10 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path> > path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine> > time_line;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed> > lsa_processed;
+        ydk::YList path;
+        ydk::YList trigger_lsa;
+        ydk::YList time_line;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
@@ -4206,7 +4206,7 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         ydk::YLeaf path_metric; //type: uint32
         class LfaPath; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath> > lfa_path;
+        ydk::YList lfa_path;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
 
@@ -4290,8 +4290,8 @@ class Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         class LcIp; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine
 
@@ -4476,8 +4476,8 @@ class Rcmd::Server::Normal : public ydk::Entity
         class ProtocolConfig; //type: Rcmd::Server::Normal::ProtocolConfig
         class ServerDetail; //type: Rcmd::Server::Normal::ServerDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ProtocolConfig> > protocol_config;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ServerDetail> > server_detail;
+        ydk::YList protocol_config;
+        ydk::YList server_detail;
         
 }; // Rcmd::Server::Normal
 
@@ -4502,7 +4502,7 @@ class Rcmd::Server::Normal::ProtocolConfig : public ydk::Entity
         ydk::YLeaf protocol_name; //type: string
         class Priority; //type: Rcmd::Server::Normal::ProtocolConfig::Priority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ProtocolConfig::Priority> > priority;
+        ydk::YList priority;
         
 }; // Rcmd::Server::Normal::ProtocolConfig
 
@@ -4552,7 +4552,7 @@ class Rcmd::Server::Normal::ServerDetail : public ydk::Entity
         ydk::YLeaf memory_suspend; //type: uint32
         class TraceInformation; //type: Rcmd::Server::Normal::ServerDetail::TraceInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Normal::ServerDetail::TraceInformation> > trace_information;
+        ydk::YList trace_information;
         
 }; // Rcmd::Server::Normal::ServerDetail
 
@@ -4628,8 +4628,8 @@ class Rcmd::Server::Detail : public ydk::Entity
         class ProtocolConfig; //type: Rcmd::Server::Detail::ProtocolConfig
         class ServerDetail; //type: Rcmd::Server::Detail::ServerDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ProtocolConfig> > protocol_config;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ServerDetail> > server_detail;
+        ydk::YList protocol_config;
+        ydk::YList server_detail;
         
 }; // Rcmd::Server::Detail
 
@@ -4654,7 +4654,7 @@ class Rcmd::Server::Detail::ProtocolConfig : public ydk::Entity
         ydk::YLeaf protocol_name; //type: string
         class Priority; //type: Rcmd::Server::Detail::ProtocolConfig::Priority
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ProtocolConfig::Priority> > priority;
+        ydk::YList priority;
         
 }; // Rcmd::Server::Detail::ProtocolConfig
 
@@ -4704,7 +4704,7 @@ class Rcmd::Server::Detail::ServerDetail : public ydk::Entity
         ydk::YLeaf memory_suspend; //type: uint32
         class TraceInformation; //type: Rcmd::Server::Detail::ServerDetail::TraceInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Server::Detail::ServerDetail::TraceInformation> > trace_information;
+        ydk::YList trace_information;
         
 }; // Rcmd::Server::Detail::ServerDetail
 
@@ -4753,7 +4753,7 @@ class Rcmd::Node : public ydk::Entity
 
         class NodeInformation; //type: Rcmd::Node::NodeInformation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Node::NodeInformation> > node_information;
+        ydk::YList node_information;
         
 }; // Rcmd::Node
 
@@ -4834,7 +4834,7 @@ class Rcmd::Isis::Instances : public ydk::Entity
 
         class Instance; //type: Rcmd::Isis::Instances::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Isis::Instances
 
@@ -4896,7 +4896,7 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries : public ydk::Entity
 
         class IpfrrEventSummary; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary> > ipfrr_event_summary;
+        ydk::YList ipfrr_event_summary;
         
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries
 
@@ -4932,8 +4932,8 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary : 
         class IpfrrStatistic; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::IpfrrStatistic> > ipfrr_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode> > remote_node;
+        ydk::YList ipfrr_statistic;
+        ydk::YList remote_node;
         
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary
 
@@ -4989,7 +4989,7 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::R
         ydk::YLeaf in_use_time; //type: string
         class PrimaryPath; //type: Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode::PrimaryPath> > primary_path;
+        ydk::YList primary_path;
         
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSummary::RemoteNode
 
@@ -5034,7 +5034,7 @@ class Rcmd::Isis::Instances::Instance::PrefixEventStatistics : public ydk::Entit
 
         class PrefixEventStatistic; //type: Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventStatistics::PrefixEventStatistic> > prefix_event_statistic;
+        ydk::YList prefix_event_statistic;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventStatistics
 
@@ -5093,7 +5093,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries : public ydk::Entity
 
         class SpfRunSummary; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary> > spf_run_summary;
+        ydk::YList spf_run_summary;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries
 
@@ -5127,10 +5127,10 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary : public y
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary> spf_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::NodeStatistics> node_statistics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::TriggerLsp> > trigger_lsp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority> > priority;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspProcessed> > lsp_processed;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::LspRegenerated> > lsp_regenerated;
+        ydk::YList trigger_lsp;
+        ydk::YList priority;
+        ydk::YList lsp_processed;
+        ydk::YList lsp_regenerated;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary
 
@@ -5162,7 +5162,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         ydk::YLeaf total_lsp_changes; //type: uint16
         class PrioritySummary; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary> > priority_summary;
+        ydk::YList priority_summary;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary
 
@@ -5193,7 +5193,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummar
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::SpfSummary::PrioritySummary
 
@@ -5368,9 +5368,9 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority 
         class LeafNetworksDeleted; //type: Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksDeleted
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary> priority_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline> > convergence_timeline;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksAdded> > leaf_networks_added;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
+        ydk::YList convergence_timeline;
+        ydk::YList leaf_networks_added;
+        ydk::YList leaf_networks_deleted;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority
 
@@ -5401,7 +5401,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::PrioritySummary
 
@@ -5539,8 +5539,8 @@ class Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LdpExit> ldp_exit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdEnter> lsd_enter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LsdExit> lsd_exit;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Priority::ConvergenceTimeline
 
@@ -5938,7 +5938,7 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines : public ydk::Entity
 
         class IpfrrEventOffline; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline> > ipfrr_event_offline;
+        ydk::YList ipfrr_event_offline;
         
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines
 
@@ -5974,8 +5974,8 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline : p
         class IpfrrStatistic; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic
         class RemoteNode; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::IpfrrStatistic> > ipfrr_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode> > remote_node;
+        ydk::YList ipfrr_statistic;
+        ydk::YList remote_node;
         
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline
 
@@ -6031,7 +6031,7 @@ class Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::Re
         ydk::YLeaf in_use_time; //type: string
         class PrimaryPath; //type: Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode::PrimaryPath> > primary_path;
+        ydk::YList primary_path;
         
 }; // Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffline::RemoteNode
 
@@ -6076,7 +6076,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines : public ydk::Entity
 
         class SpfRunOffline; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline> > spf_run_offline;
+        ydk::YList spf_run_offline;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines
 
@@ -6110,10 +6110,10 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline : public yd
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary> spf_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::NodeStatistics> node_statistics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::TriggerLsp> > trigger_lsp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority> > priority;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspProcessed> > lsp_processed;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspRegenerated> > lsp_regenerated;
+        ydk::YList trigger_lsp;
+        ydk::YList priority;
+        ydk::YList lsp_processed;
+        ydk::YList lsp_regenerated;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline
 
@@ -6145,7 +6145,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         ydk::YLeaf total_lsp_changes; //type: uint16
         class PrioritySummary; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary> > priority_summary;
+        ydk::YList priority_summary;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
 
@@ -6176,7 +6176,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfSummary::PrioritySummary
 
@@ -6351,9 +6351,9 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority :
         class LeafNetworksDeleted; //type: Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksDeleted
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary> priority_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline> > convergence_timeline;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksAdded> > leaf_networks_added;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::LeafNetworksDeleted> > leaf_networks_deleted;
+        ydk::YList convergence_timeline;
+        ydk::YList leaf_networks_added;
+        ydk::YList leaf_networks_deleted;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority
 
@@ -6384,7 +6384,7 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::RouteStatistics> route_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary::FrrStatistic> > frr_statistic;
+        ydk::YList frr_statistic;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::PrioritySummary
 
@@ -6522,8 +6522,8 @@ class Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LdpExit> ldp_exit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdEnter> lsd_enter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LsdExit> lsd_exit;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Priority::ConvergenceTimeline
 
@@ -6921,7 +6921,7 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries : public ydk::Entity
 
         class PrefixEventSummary; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary> > prefix_event_summary;
+        ydk::YList prefix_event_summary;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries
 
@@ -6963,10 +6963,10 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary 
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path> > path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine> > time_line;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::LsaProcessed> > lsa_processed;
+        ydk::YList path;
+        ydk::YList trigger_lsa;
+        ydk::YList time_line;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary
 
@@ -7041,7 +7041,7 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         ydk::YLeaf path_metric; //type: uint32
         class LfaPath; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path::LfaPath> > lfa_path;
+        ydk::YList lfa_path;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::Path
 
@@ -7125,8 +7125,8 @@ class Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary:
         class LcIp; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSummary::TimeLine
 
@@ -7221,7 +7221,7 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines : public ydk::Entity
 
         class PrefixEventOffline; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline> > prefix_event_offline;
+        ydk::YList prefix_event_offline;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines
 
@@ -7263,10 +7263,10 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline :
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::IpConvergenceTime> ip_convergence_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::MplsConvergenceTime> mpls_convergence_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path> > path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TriggerLsa> > trigger_lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine> > time_line;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::LsaProcessed> > lsa_processed;
+        ydk::YList path;
+        ydk::YList trigger_lsa;
+        ydk::YList time_line;
+        ydk::YList lsa_processed;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline
 
@@ -7341,7 +7341,7 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         ydk::YLeaf path_metric; //type: uint32
         class LfaPath; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path::LfaPath> > lfa_path;
+        ydk::YList lfa_path;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::Path
 
@@ -7425,8 +7425,8 @@ class Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::
         class LcIp; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp
         class LcMpls; //type: Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcIp> > lc_ip;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine::LcMpls> > lc_mpls;
+        ydk::YList lc_ip;
+        ydk::YList lc_mpls;
         
 }; // Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOffline::TimeLine
 
@@ -7521,7 +7521,7 @@ class Rcmd::Isis::Instances::Instance::LspRegenerateds : public ydk::Entity
 
         class LspRegenerated; //type: Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Isis::Instances::Instance::LspRegenerateds::LspRegenerated> > lsp_regenerated;
+        ydk::YList lsp_regenerated;
         
 }; // Rcmd::Isis::Instances::Instance::LspRegenerateds
 
@@ -7575,9 +7575,9 @@ class Rcmd::Memory : public ydk::Entity
         class EdmMemoryInfo; //type: Rcmd::Memory::EdmMemoryInfo
         class StringMemoryInfo; //type: Rcmd::Memory::StringMemoryInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Memory::MemoryInfo> > memory_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Memory::EdmMemoryInfo> > edm_memory_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Memory::StringMemoryInfo> > string_memory_info;
+        ydk::YList memory_info;
+        ydk::YList edm_memory_info;
+        ydk::YList string_memory_info;
         
 }; // Rcmd::Memory
 
@@ -7707,7 +7707,7 @@ class Rcmd::Ldp::Sessions : public ydk::Entity
 
         class Session; //type: Rcmd::Ldp::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // Rcmd::Ldp::Sessions
 
@@ -7760,7 +7760,7 @@ class Rcmd::Ldp::RemoteLfaS : public ydk::Entity
 
         class RemoteLfa; //type: Rcmd::Ldp::RemoteLfaS::RemoteLfa
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa> > remote_lfa;
+        ydk::YList remote_lfa;
         
 }; // Rcmd::Ldp::RemoteLfaS
 
@@ -7793,9 +7793,9 @@ class Rcmd::Ldp::RemoteLfaS::RemoteLfa : public ydk::Entity
         class RemoteNode; //type: Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode
         class Logs; //type: Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic> > session_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode> > remote_node;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs> > logs;
+        ydk::YList session_statistic;
+        ydk::YList remote_node;
+        ydk::YList logs;
         
 }; // Rcmd::Ldp::RemoteLfaS::RemoteLfa
 
@@ -7900,7 +7900,7 @@ class Rcmd::Ldp::RemoteLfaSummaries : public ydk::Entity
 
         class RemoteLfaSummary; //type: Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary> > remote_lfa_summary;
+        ydk::YList remote_lfa_summary;
         
 }; // Rcmd::Ldp::RemoteLfaSummaries
 
@@ -7933,9 +7933,9 @@ class Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary : public ydk::Entity
         class RemoteNode; //type: Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode
         class Logs; //type: Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic> > session_statistic;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode> > remote_node;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs> > logs;
+        ydk::YList session_statistic;
+        ydk::YList remote_node;
+        ydk::YList logs;
         
 }; // Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary
 
@@ -8064,7 +8064,7 @@ class Rcmd::Intf::Events : public ydk::Entity
 
         class Event; //type: Rcmd::Intf::Events::Event
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Intf::Events::Event> > event;
+        ydk::YList event;
         
 }; // Rcmd::Intf::Events
 
@@ -8144,7 +8144,7 @@ class Rcmd::Process::Isis : public ydk::Entity
 
         class Process_; //type: Rcmd::Process::Isis::Process_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_> > process;
+        ydk::YList process;
         
 }; // Rcmd::Process::Isis
 
@@ -8170,7 +8170,7 @@ class Rcmd::Process::Isis::Process_ : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class InstanceName; //type: Rcmd::Process::Isis::Process_::InstanceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_::InstanceName> > instance_name;
+        ydk::YList instance_name;
         
 }; // Rcmd::Process::Isis::Process_
 
@@ -8204,7 +8204,7 @@ class Rcmd::Process::Isis::Process_::InstanceName : public ydk::Entity
         ydk::YLeaf arch_lsp_regeneration; //type: uint32
         class Instance; //type: Rcmd::Process::Isis::Process_::InstanceName::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_::InstanceName::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Process::Isis::Process_::InstanceName
 
@@ -8262,7 +8262,7 @@ class Rcmd::Process::Ospf : public ydk::Entity
 
         class Process_; //type: Rcmd::Process::Ospf::Process_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_> > process;
+        ydk::YList process;
         
 }; // Rcmd::Process::Ospf
 
@@ -8288,7 +8288,7 @@ class Rcmd::Process::Ospf::Process_ : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class InstanceName; //type: Rcmd::Process::Ospf::Process_::InstanceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_::InstanceName> > instance_name;
+        ydk::YList instance_name;
         
 }; // Rcmd::Process::Ospf::Process_
 
@@ -8322,7 +8322,7 @@ class Rcmd::Process::Ospf::Process_::InstanceName : public ydk::Entity
         ydk::YLeaf arch_lsp_regeneration; //type: uint32
         class Instance; //type: Rcmd::Process::Ospf::Process_::InstanceName::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_::InstanceName::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Process::Ospf::Process_::InstanceName
 
@@ -8380,7 +8380,7 @@ class Rcmd::Process::Ldp : public ydk::Entity
 
         class Process_; //type: Rcmd::Process::Ldp::Process_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_> > process;
+        ydk::YList process;
         
 }; // Rcmd::Process::Ldp
 
@@ -8406,7 +8406,7 @@ class Rcmd::Process::Ldp::Process_ : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class InstanceName; //type: Rcmd::Process::Ldp::Process_::InstanceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_::InstanceName> > instance_name;
+        ydk::YList instance_name;
         
 }; // Rcmd::Process::Ldp::Process_
 
@@ -8440,7 +8440,7 @@ class Rcmd::Process::Ldp::Process_::InstanceName : public ydk::Entity
         ydk::YLeaf arch_lsp_regeneration; //type: uint32
         class Instance; //type: Rcmd::Process::Ldp::Process_::InstanceName::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_::InstanceName::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Process::Ldp::Process_::InstanceName
 
@@ -8478,32 +8478,57 @@ class Rcmd::Process::Ldp::Process_::InstanceName::Instance : public ydk::Entity
 
 }; // Rcmd::Process::Ldp::Process_::InstanceName::Instance
 
-class RcmdShowInstState : public ydk::Enum
+class RcmdBagEnblDsbl : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf in_active;
-        static const ydk::Enum::YLeaf na;
+        static const ydk::Enum::YLeaf dsbl;
+        static const ydk::Enum::YLeaf enbl;
 
 };
 
-class RcmdShowIntfEvent : public ydk::Enum
+class RcmdBoolYesNo : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf create;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf link_up;
-        static const ydk::Enum::YLeaf link_down;
-        static const ydk::Enum::YLeaf primary_address;
-        static const ydk::Enum::YLeaf secondary_address;
-        static const ydk::Enum::YLeaf ipv6_link_local_address;
-        static const ydk::Enum::YLeaf ipv6_global_address;
-        static const ydk::Enum::YLeaf mtu;
-        static const ydk::Enum::YLeaf band_width;
-        static const ydk::Enum::YLeaf ldp_sync;
-        static const ydk::Enum::YLeaf forward_reference;
-        static const ydk::Enum::YLeaf ldp_no_sync;
+        static const ydk::Enum::YLeaf no;
+        static const ydk::Enum::YLeaf yes;
+
+};
+
+class RcmdPriorityLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
+
+};
+
+class RcmdSpfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf complete;
+        static const ydk::Enum::YLeaf in_complete;
+        static const ydk::Enum::YLeaf collecting;
+        static const ydk::Enum::YLeaf no_route_change;
+
+};
+
+class RcmdShowIpfrrLfa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf remote;
+
+};
+
+class RcmdShowPrcsState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf success;
+        static const ydk::Enum::YLeaf cpu;
+        static const ydk::Enum::YLeaf memory;
 
 };
 
@@ -8513,17 +8538,6 @@ class RcmdShowCompId : public ydk::Enum
         static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf isis;
         static const ydk::Enum::YLeaf un_known;
-
-};
-
-class RcmdShowLdpConvState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_full;
-        static const ydk::Enum::YLeaf fully_covered;
-        static const ydk::Enum::YLeaf coverage_above_threshold;
-        static const ydk::Enum::YLeaf coverage_below_threshold;
-        static const ydk::Enum::YLeaf coverage_flapping;
 
 };
 
@@ -8549,31 +8563,40 @@ class RcmdProtocolId : public ydk::Enum
 
 };
 
+class RcmdShowLdpConvState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_full;
+        static const ydk::Enum::YLeaf fully_covered;
+        static const ydk::Enum::YLeaf coverage_above_threshold;
+        static const ydk::Enum::YLeaf coverage_below_threshold;
+        static const ydk::Enum::YLeaf coverage_flapping;
+
+};
+
+class RcmdLinecardSpeed : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf fastest;
+        static const ydk::Enum::YLeaf slowest;
+
+};
+
+class RcmdShowNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf lc;
+        static const ydk::Enum::YLeaf rp;
+
+};
+
 class RcmdShowLdpNeighbourStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
-
-};
-
-class RcmdLdpEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf neighbor;
-        static const ydk::Enum::YLeaf adjacency;
-
-};
-
-class RcmdShowMem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf chunk;
-        static const ydk::Enum::YLeaf edm;
-        static const ydk::Enum::YLeaf string;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -8587,65 +8610,6 @@ class RcmdIsisSpf : public ydk::Enum
 
 };
 
-class RcmdIsisLvl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf l1;
-        static const ydk::Enum::YLeaf l2;
-
-};
-
-class RcmdBagEnblDsbl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dsbl;
-        static const ydk::Enum::YLeaf enbl;
-
-};
-
-class RcmdShowNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf lc;
-        static const ydk::Enum::YLeaf rp;
-
-};
-
-class RcmdBoolYesNo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no;
-        static const ydk::Enum::YLeaf yes;
-
-};
-
-class RcmdShowPrcsState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf success;
-        static const ydk::Enum::YLeaf cpu;
-        static const ydk::Enum::YLeaf memory;
-
-};
-
-class RcmdBagEnableDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
-class RcmdShowIpfrrLfa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf remote;
-
-};
-
 class RcmdShowRoutePathChange : public ydk::Enum
 {
     public:
@@ -8654,46 +8618,11 @@ class RcmdShowRoutePathChange : public ydk::Enum
 
 };
 
-class RcmdLinecardSpeed : public ydk::Enum
+class RcmdIsisLvl : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf fastest;
-        static const ydk::Enum::YLeaf slowest;
-
-};
-
-class RcmdLsChange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf new_;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf modify;
-        static const ydk::Enum::YLeaf noop;
-
-};
-
-class RcmdLsa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf router;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf summary;
-        static const ydk::Enum::YLeaf asbr;
-        static const ydk::Enum::YLeaf external;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf nssa;
-
-};
-
-class RcmdSpfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf complete;
-        static const ydk::Enum::YLeaf in_complete;
-        static const ydk::Enum::YLeaf collecting;
-        static const ydk::Enum::YLeaf no_route_change;
+        static const ydk::Enum::YLeaf l1;
+        static const ydk::Enum::YLeaf l2;
 
 };
 
@@ -8729,13 +8658,84 @@ class RcmdShowRoute : public ydk::Enum
 
 };
 
-class RcmdPriorityLevel : public ydk::Enum
+class RcmdLdpEvent : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf neighbor;
+        static const ydk::Enum::YLeaf adjacency;
+
+};
+
+class RcmdLsa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf summary;
+        static const ydk::Enum::YLeaf asbr;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf nssa;
+
+};
+
+class RcmdShowMem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf chunk;
+        static const ydk::Enum::YLeaf edm;
+        static const ydk::Enum::YLeaf string;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
+class RcmdBagEnableDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
+
+};
+
+class RcmdShowInstState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf in_active;
+        static const ydk::Enum::YLeaf na;
+
+};
+
+class RcmdLsChange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf new_;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf modify;
+        static const ydk::Enum::YLeaf noop;
+
+};
+
+class RcmdShowIntfEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf create;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf link_up;
+        static const ydk::Enum::YLeaf link_down;
+        static const ydk::Enum::YLeaf primary_address;
+        static const ydk::Enum::YLeaf secondary_address;
+        static const ydk::Enum::YLeaf ipv6_link_local_address;
+        static const ydk::Enum::YLeaf ipv6_global_address;
+        static const ydk::Enum::YLeaf mtu;
+        static const ydk::Enum::YLeaf band_width;
+        static const ydk::Enum::YLeaf ldp_sync;
+        static const ydk::Enum::YLeaf forward_reference;
+        static const ydk::Enum::YLeaf ldp_no_sync;
 
 };
 

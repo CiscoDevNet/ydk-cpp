@@ -33,7 +33,7 @@ class Ipv6Data : public ydk::Entity
 
         class Nd6Info; //type: Ipv6Data::Nd6Info
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_ipv6_oper::Ipv6Data::Nd6Info> > nd6_info;
+        ydk::YList nd6_info;
         
 }; // Ipv6Data
 

@@ -21,26 +21,6 @@ EthIfSpeed::~EthIfSpeed()
 {
 }
 
-EthIfSpeed10mb::EthIfSpeed10mb()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10mb")
-{
-
-}
-
-EthIfSpeed10mb::~EthIfSpeed10mb()
-{
-}
-
-EthIfSpeed100mb::EthIfSpeed100mb()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-100mb")
-{
-
-}
-
-EthIfSpeed100mb::~EthIfSpeed100mb()
-{
-}
-
 EthIfSpeed1gb::EthIfSpeed1gb()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-1gb")
 {
@@ -48,16 +28,6 @@ EthIfSpeed1gb::EthIfSpeed1gb()
 }
 
 EthIfSpeed1gb::~EthIfSpeed1gb()
-{
-}
-
-EthIfSpeed10gb::EthIfSpeed10gb()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10gb")
-{
-
-}
-
-EthIfSpeed10gb::~EthIfSpeed10gb()
 {
 }
 
@@ -71,6 +41,26 @@ EthIfSpeed40gb::~EthIfSpeed40gb()
 {
 }
 
+EthIfSpeed10mb::EthIfSpeed10mb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10mb")
+{
+
+}
+
+EthIfSpeed10mb::~EthIfSpeed10mb()
+{
+}
+
+EthIfSpeed10gb::EthIfSpeed10gb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-10gb")
+{
+
+}
+
+EthIfSpeed10gb::~EthIfSpeed10gb()
+{
+}
+
 EthIfSpeed100gb::EthIfSpeed100gb()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-100gb")
 {
@@ -78,6 +68,16 @@ EthIfSpeed100gb::EthIfSpeed100gb()
 }
 
 EthIfSpeed100gb::~EthIfSpeed100gb()
+{
+}
+
+EthIfSpeed100mb::EthIfSpeed100mb()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-ethernet", "cisco-ethernet", "cisco-ethernet:eth-if-speed-100mb")
+{
+
+}
+
+EthIfSpeed100mb::~EthIfSpeed100mb()
 {
 }
 

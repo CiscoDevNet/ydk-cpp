@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_lsd_oper_0.hpp"
-#include "Cisco_IOS_XR_mpls_lsd_oper_2.hpp"
 #include "Cisco_IOS_XR_mpls_lsd_oper_1.hpp"
+#include "Cisco_IOS_XR_mpls_lsd_oper_2.hpp"
 
 using namespace ydk;
 
@@ -14,9 +14,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_lsd_oper {
 
 MplsLsdNodes::MplsLsdNodes()
+    :
+    mpls_lsd_node(this, {"node_name"})
 {
 
-    yang_name = "mpls-lsd-nodes"; yang_parent_name = "Cisco-IOS-XR-mpls-lsd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-lsd-nodes"; yang_parent_name = "Cisco-IOS-XR-mpls-lsd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsLsdNodes::~MplsLsdNodes()
@@ -25,7 +27,8 @@ MplsLsdNodes::~MplsLsdNodes()
 
 bool MplsLsdNodes::has_data() const
 {
-    for (std::size_t index=0; index<mpls_lsd_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_lsd_node.len(); index++)
     {
         if(mpls_lsd_node[index]->has_data())
             return true;
@@ -35,7 +38,7 @@ bool MplsLsdNodes::has_data() const
 
 bool MplsLsdNodes::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_lsd_node.size(); index++)
+    for (std::size_t index=0; index<mpls_lsd_node.len(); index++)
     {
         if(mpls_lsd_node[index]->has_operation())
             return true;
@@ -65,7 +68,7 @@ std::shared_ptr<Entity> MplsLsdNodes::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode>();
         c->parent = this;
-        mpls_lsd_node.push_back(c);
+        mpls_lsd_node.append(c);
         return c;
     }
 
@@ -77,7 +80,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_lsd_node)
+    for (auto c : mpls_lsd_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -131,18 +134,18 @@ bool MplsLsdNodes::has_leaf_or_child_of_name(const std::string & name) const
 MplsLsdNodes::MplsLsdNode::MplsLsdNode()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     clients(std::make_shared<MplsLsdNodes::MplsLsdNode::Clients>())
-	,label_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::LabelSummary>())
-	,labels(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels>())
-	,frr_database(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase>())
-	,rewrite(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite>())
-	,rewrite_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::RewriteSummary>())
-	,applications(std::make_shared<MplsLsdNodes::MplsLsdNode::Applications>())
-	,label_summary_vrfs(std::make_shared<MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs>())
-	,label_range(std::make_shared<MplsLsdNodes::MplsLsdNode::LabelRange>())
-	,rewrite_summary_vrfs(std::make_shared<MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs>())
-	,interfaces(std::make_shared<MplsLsdNodes::MplsLsdNode::Interfaces>())
+    , label_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::LabelSummary>())
+    , labels(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels>())
+    , frr_database(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase>())
+    , rewrite(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite>())
+    , rewrite_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::RewriteSummary>())
+    , applications(std::make_shared<MplsLsdNodes::MplsLsdNode::Applications>())
+    , label_summary_vrfs(std::make_shared<MplsLsdNodes::MplsLsdNode::LabelSummaryVrfs>())
+    , label_range(std::make_shared<MplsLsdNodes::MplsLsdNode::LabelRange>())
+    , rewrite_summary_vrfs(std::make_shared<MplsLsdNodes::MplsLsdNode::RewriteSummaryVrfs>())
+    , interfaces(std::make_shared<MplsLsdNodes::MplsLsdNode::Interfaces>())
 {
     clients->parent = this;
     label_summary->parent = this;
@@ -156,7 +159,7 @@ MplsLsdNodes::MplsLsdNode::MplsLsdNode()
     rewrite_summary_vrfs->parent = this;
     interfaces->parent = this;
 
-    yang_name = "mpls-lsd-node"; yang_parent_name = "mpls-lsd-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls-lsd-node"; yang_parent_name = "mpls-lsd-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLsdNodes::MplsLsdNode::~MplsLsdNode()
@@ -165,6 +168,7 @@ MplsLsdNodes::MplsLsdNode::~MplsLsdNode()
 
 bool MplsLsdNodes::MplsLsdNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (clients !=  nullptr && clients->has_data())
 	|| (label_summary !=  nullptr && label_summary->has_data())
@@ -206,7 +210,8 @@ std::string MplsLsdNodes::MplsLsdNode::get_absolute_path() const
 std::string MplsLsdNodes::MplsLsdNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mpls-lsd-node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "mpls-lsd-node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -412,9 +417,11 @@ bool MplsLsdNodes::MplsLsdNode::has_leaf_or_child_of_name(const std::string & na
 }
 
 MplsLsdNodes::MplsLsdNode::Clients::Clients()
+    :
+    client(this, {"client_name"})
 {
 
-    yang_name = "clients"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Clients::~Clients()
@@ -423,7 +430,8 @@ MplsLsdNodes::MplsLsdNode::Clients::~Clients()
 
 bool MplsLsdNodes::MplsLsdNode::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -433,7 +441,7 @@ bool MplsLsdNodes::MplsLsdNode::Clients::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -463,7 +471,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Clients::get_child_by_name(co
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Clients::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -475,7 +483,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Client
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -506,12 +514,12 @@ MplsLsdNodes::MplsLsdNode::Clients::Client::Client()
     client_name{YType::str, "client-name"},
     client_index{YType::uint32, "client-index"},
     node_id{YType::str, "node-id"}
-    	,
+        ,
     client_union(std::make_shared<MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion>())
 {
     client_union->parent = this;
 
-    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Clients::Client::~Client()
@@ -520,6 +528,7 @@ MplsLsdNodes::MplsLsdNode::Clients::Client::~Client()
 
 bool MplsLsdNodes::MplsLsdNode::Clients::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return client_name.is_set
 	|| client_index.is_set
 	|| node_id.is_set
@@ -538,7 +547,8 @@ bool MplsLsdNodes::MplsLsdNode::Clients::Client::has_operation() const
 std::string MplsLsdNodes::MplsLsdNode::Clients::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[client-name='" <<client_name <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(client_name, "client-name");
     return path_buffer.str();
 }
 
@@ -628,14 +638,14 @@ bool MplsLsdNodes::MplsLsdNode::Clients::Client::has_leaf_or_child_of_name(const
 MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::ClientUnion()
     :
     lsd_client_type{YType::enumeration, "lsd-client-type"}
-    	,
+        ,
     application(std::make_shared<MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application>())
-	,bcdl_agent(std::make_shared<MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent>())
+    , bcdl_agent(std::make_shared<MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent>())
 {
     application->parent = this;
     bcdl_agent->parent = this;
 
-    yang_name = "client-union"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-union"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::~ClientUnion()
@@ -644,6 +654,7 @@ MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::~ClientUnion()
 
 bool MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::has_data() const
 {
+    if (is_presence_container) return true;
     return lsd_client_type.is_set
 	|| (application !=  nullptr && application->has_data())
 	|| (bcdl_agent !=  nullptr && bcdl_agent->has_data());
@@ -747,7 +758,7 @@ MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application::Applicatio
     application_role_primary{YType::int32, "application-role-primary"}
 {
 
-    yang_name = "application"; yang_parent_name = "client-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "client-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application::~Application()
@@ -756,6 +767,7 @@ MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application::~Applicati
 
 bool MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return application_name.is_set
 	|| application_type.is_set
 	|| application_instance.is_set
@@ -864,7 +876,7 @@ MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent::BcdlAgent()
     parent_client_conn_index{YType::int32, "parent-client-conn-index"}
 {
 
-    yang_name = "bcdl-agent"; yang_parent_name = "client-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bcdl-agent"; yang_parent_name = "client-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent::~BcdlAgent()
@@ -873,6 +885,7 @@ MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent::~BcdlAgent()
 
 bool MplsLsdNodes::MplsLsdNode::Clients::Client::ClientUnion::BcdlAgent::has_data() const
 {
+    if (is_presence_container) return true;
     return client_conn_index.is_set
 	|| parent_client_conn_index.is_set;
 }
@@ -954,9 +967,11 @@ MplsLsdNodes::MplsLsdNode::LabelSummary::LabelSummary()
     vrf_name_xr{YType::str, "vrf-name-xr"},
     total_labels{YType::uint32, "total-labels"},
     rsi_connected{YType::int32, "rsi-connected"}
+        ,
+    owner_count(this, {})
 {
 
-    yang_name = "label-summary"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-summary"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::LabelSummary::~LabelSummary()
@@ -965,7 +980,8 @@ MplsLsdNodes::MplsLsdNode::LabelSummary::~LabelSummary()
 
 bool MplsLsdNodes::MplsLsdNode::LabelSummary::has_data() const
 {
-    for (std::size_t index=0; index<owner_count.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<owner_count.len(); index++)
     {
         if(owner_count[index]->has_data())
             return true;
@@ -977,7 +993,7 @@ bool MplsLsdNodes::MplsLsdNode::LabelSummary::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::LabelSummary::has_operation() const
 {
-    for (std::size_t index=0; index<owner_count.size(); index++)
+    for (std::size_t index=0; index<owner_count.len(); index++)
     {
         if(owner_count[index]->has_operation())
             return true;
@@ -1013,7 +1029,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::LabelSummary::get_child_by_na
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount>();
         c->parent = this;
-        owner_count.push_back(c);
+        owner_count.append(c);
         return c;
     }
 
@@ -1025,7 +1041,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::LabelS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : owner_count)
+    for (auto c : owner_count.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1090,7 +1106,7 @@ MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount::OwnerCount()
     number_of_labels{YType::uint32, "number-of-labels"}
 {
 
-    yang_name = "owner-count"; yang_parent_name = "label-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "owner-count"; yang_parent_name = "label-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount::~OwnerCount()
@@ -1099,6 +1115,7 @@ MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount::~OwnerCount()
 
 bool MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount::has_data() const
 {
+    if (is_presence_container) return true;
     return application_type.is_set
 	|| application_name.is_set
 	|| application_role_primary.is_set
@@ -1215,9 +1232,11 @@ bool MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount::has_leaf_or_child_of_n
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Labels()
+    :
+    label(this, {"label_id"})
 {
 
-    yang_name = "labels"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labels"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::~Labels()
@@ -1226,7 +1245,8 @@ MplsLsdNodes::MplsLsdNode::Labels::~Labels()
 
 bool MplsLsdNodes::MplsLsdNode::Labels::has_data() const
 {
-    for (std::size_t index=0; index<label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label.len(); index++)
     {
         if(label[index]->has_data())
             return true;
@@ -1236,7 +1256,7 @@ bool MplsLsdNodes::MplsLsdNode::Labels::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::Labels::has_operation() const
 {
-    for (std::size_t index=0; index<label.size(); index++)
+    for (std::size_t index=0; index<label.len(); index++)
     {
         if(label[index]->has_operation())
             return true;
@@ -1266,7 +1286,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::get_child_by_name(con
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label>();
         c->parent = this;
-        label.push_back(c);
+        label.append(c);
         return c;
     }
 
@@ -1278,7 +1298,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : label)
+    for (auto c : label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1306,18 +1326,19 @@ bool MplsLsdNodes::MplsLsdNode::Labels::has_leaf_or_child_of_name(const std::str
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::Label()
     :
-    label_id{YType::int32, "label-id"},
+    label_id{YType::uint32, "label-id"},
     label{YType::uint32, "label"},
     rewrite_is_bound{YType::int32, "rewrite-is-bound"},
     rewrite_owners{YType::uint32, "rewrite-owners"},
     rs_iconnected{YType::int32, "rs-iconnected"},
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     label_context(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext>())
+    , application_owner(this, {})
 {
     label_context->parent = this;
 
-    yang_name = "label"; yang_parent_name = "labels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label"; yang_parent_name = "labels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::~Label()
@@ -1326,7 +1347,8 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::~Label()
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::has_data() const
 {
-    for (std::size_t index=0; index<application_owner.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application_owner.len(); index++)
     {
         if(application_owner[index]->has_data())
             return true;
@@ -1342,7 +1364,7 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::has_operation() const
 {
-    for (std::size_t index=0; index<application_owner.size(); index++)
+    for (std::size_t index=0; index<application_owner.len(); index++)
     {
         if(application_owner[index]->has_operation())
             return true;
@@ -1360,7 +1382,8 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::has_operation() const
 std::string MplsLsdNodes::MplsLsdNode::Labels::Label::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label" <<"[label-id='" <<label_id <<"']";
+    path_buffer << "label";
+    ADD_KEY_TOKEN(label_id, "label-id");
     return path_buffer.str();
 }
 
@@ -1394,7 +1417,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::get_child_by_n
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner>();
         c->parent = this;
-        application_owner.push_back(c);
+        application_owner.append(c);
         return c;
     }
 
@@ -1411,7 +1434,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels
     }
 
     count = 0;
-    for (auto const & c : application_owner)
+    for (auto c : application_owner.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1500,12 +1523,12 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::has_leaf_or_child_of_name(const s
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::LabelContext()
     :
     application_data{YType::str, "application-data"}
-    	,
+        ,
     key(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key>())
 {
     key->parent = this;
 
-    yang_name = "label-context"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-context"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::~LabelContext()
@@ -1514,6 +1537,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::~LabelContext()
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::has_data() const
 {
+    if (is_presence_container) return true;
     return application_data.is_set
 	|| (key !=  nullptr && key->has_data());
 }
@@ -1596,36 +1620,36 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::has_leaf_or_child_o
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Key()
     :
     label_context_type{YType::enumeration, "label-context-type"}
-    	,
+        ,
     ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data>())
-	,ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data>())
-	,tev4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data>())
-	,ipv4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData>())
-	,ipv6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData>())
-	,vrf_l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData>())
-	,cev4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData>())
-	,cev6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData>())
-	,pseudowire_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData>())
-	,label_block_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData>())
-	,ip_sub_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData>())
-	,tev4p2mp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData>())
-	,mld_pv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data>())
-	,pseudowire_head_end_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData>())
-	,tp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData>())
-	,generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation>())
-	,ipv6_generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation>())
-	,evpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData>())
-	,ipv4blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData>())
-	,ipv6blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData>())
-	,pi_mi_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData>())
-	,pi_ms_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData>())
-	,next_hop_set_l3vpn(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn>())
-	,sr_prefix_segment(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment>())
-	,sr_adj_segment_ipv4(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4>())
-	,sr_adj_segment_ipv6(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6>())
-	,label_block_srgb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData>())
-	,te_binding(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding>())
-	,label_block_srlb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrlbData>())
+    , ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data>())
+    , tev4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data>())
+    , ipv4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData>())
+    , ipv6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData>())
+    , vrf_l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData>())
+    , cev4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData>())
+    , cev6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData>())
+    , pseudowire_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData>())
+    , label_block_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData>())
+    , ip_sub_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData>())
+    , tev4p2mp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData>())
+    , mld_pv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data>())
+    , pseudowire_head_end_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData>())
+    , tp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData>())
+    , generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation>())
+    , ipv6_generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation>())
+    , evpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData>())
+    , ipv4blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData>())
+    , ipv6blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData>())
+    , pi_mi_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData>())
+    , pi_ms_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData>())
+    , next_hop_set_l3vpn(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn>())
+    , sr_prefix_segment(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment>())
+    , sr_adj_segment_ipv4(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4>())
+    , sr_adj_segment_ipv6(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6>())
+    , label_block_srgb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData>())
+    , te_binding(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding>())
+    , label_block_srlb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrlbData>())
 {
     ipv4_data->parent = this;
     ipv6_data->parent = this;
@@ -1657,7 +1681,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Key()
     te_binding->parent = this;
     label_block_srlb_data->parent = this;
 
-    yang_name = "key"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::~Key()
@@ -1666,6 +1690,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::~Key()
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return label_context_type.is_set
 	|| (ipv4_data !=  nullptr && ipv4_data->has_data())
 	|| (ipv6_data !=  nullptr && ipv6_data->has_data())
@@ -1783,7 +1808,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(ipv4l3vpn_data == nullptr)
         {
-            ipv4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData>();
+            ipv4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData>();
         }
         return ipv4l3vpn_data;
     }
@@ -1792,7 +1817,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(ipv6l3vpn_data == nullptr)
         {
-            ipv6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData>();
+            ipv6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData>();
         }
         return ipv6l3vpn_data;
     }
@@ -1801,7 +1826,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(vrf_l3vpn_data == nullptr)
         {
-            vrf_l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData>();
+            vrf_l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData>();
         }
         return vrf_l3vpn_data;
     }
@@ -1810,7 +1835,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(cev4l3vpn_data == nullptr)
         {
-            cev4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData>();
+            cev4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData>();
         }
         return cev4l3vpn_data;
     }
@@ -1819,7 +1844,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(cev6l3vpn_data == nullptr)
         {
-            cev6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData>();
+            cev6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData>();
         }
         return cev6l3vpn_data;
     }
@@ -1855,7 +1880,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(tev4p2mp_data == nullptr)
         {
-            tev4p2mp_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData>();
+            tev4p2mp_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData>();
         }
         return tev4p2mp_data;
     }
@@ -1918,7 +1943,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(ipv4blb_data == nullptr)
         {
-            ipv4blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData>();
+            ipv4blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData>();
         }
         return ipv4blb_data;
     }
@@ -1927,7 +1952,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(ipv6blb_data == nullptr)
         {
-            ipv6blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData>();
+            ipv6blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData>();
         }
         return ipv6blb_data;
     }
@@ -1954,7 +1979,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::
     {
         if(next_hop_set_l3vpn == nullptr)
         {
-            next_hop_set_l3vpn = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn>();
+            next_hop_set_l3vpn = std::make_shared<MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn>();
         }
         return next_hop_set_l3vpn;
     }
@@ -2202,7 +2227,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data::Ipv4Data(
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv4-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data::~Ipv4Data()
@@ -2211,6 +2236,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data::~Ipv4Data
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set
@@ -2335,7 +2361,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data::Ipv6Data(
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv6-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data::~Ipv6Data()
@@ -2344,6 +2370,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data::~Ipv6Data
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set
@@ -2470,7 +2497,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data::Tev4Data(
     is_srte{YType::int32, "is-srte"}
 {
 
-    yang_name = "tev4-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tev4-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data::~Tev4Data()
@@ -2479,6 +2506,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data::~Tev4Data
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| tunnel_source.is_set
 	|| tunnel_dest.is_set
@@ -2620,28 +2648,29 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4Data::has_
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::Ipv4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::Ipv4l3vpnData()
     :
     prefix{YType::str, "prefix"},
     prefix_length{YType::uint8, "prefix-length"},
     route_distinguisher{YType::uint64, "route-distinguisher"}
 {
 
-    yang_name = "ipv4l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::~Ipv4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::~Ipv4l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| route_distinguisher.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix.yfilter)
@@ -2649,14 +2678,14 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData:
 	|| ydk::is_set(route_distinguisher.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2668,19 +2697,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
@@ -2702,7 +2731,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData:
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix")
     {
@@ -2718,35 +2747,36 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData:
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "prefix-length" || name == "route-distinguisher")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::Ipv6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::Ipv6l3vpnData()
     :
     prefix{YType::str, "prefix"},
     prefix_length{YType::uint8, "prefix-length"},
     route_distinguisher{YType::uint64, "route-distinguisher"}
 {
 
-    yang_name = "ipv6l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::~Ipv6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::~Ipv6l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| route_distinguisher.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix.yfilter)
@@ -2754,14 +2784,14 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData:
 	|| ydk::is_set(route_distinguisher.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2773,19 +2803,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
@@ -2807,7 +2837,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData:
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix")
     {
@@ -2823,47 +2853,48 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData:
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "prefix-length" || name == "route-distinguisher")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::VrfL3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::VrfL3vpnData()
     :
     table_id{YType::uint32, "table-id"},
     security_id{YType::uint32, "security-id"}
 {
 
-    yang_name = "vrf-l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::~VrfL3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::~VrfL3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| security_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
 	|| ydk::is_set(security_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf-l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2874,19 +2905,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -2902,7 +2933,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -2914,35 +2945,36 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::VrfL3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "security-id")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::Cev4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::Cev4l3vpnData()
     :
     table_id{YType::uint32, "table-id"},
     ipv4_next_hop{YType::str, "ipv4-next-hop"},
     security_id{YType::uint32, "security-id"}
 {
 
-    yang_name = "cev4l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cev4l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::~Cev4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::~Cev4l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| ipv4_next_hop.is_set
 	|| security_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
@@ -2950,14 +2982,14 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData:
 	|| ydk::is_set(security_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cev4l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2969,19 +3001,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -3003,7 +3035,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData:
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -3019,35 +3051,36 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData:
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev4l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "ipv4-next-hop" || name == "security-id")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::Cev6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::Cev6l3vpnData()
     :
     table_id{YType::uint32, "table-id"},
     ipv6_next_hop{YType::str, "ipv6-next-hop"},
     security_id{YType::uint32, "security-id"}
 {
 
-    yang_name = "cev6l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cev6l3vpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::~Cev6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::~Cev6l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| ipv6_next_hop.is_set
 	|| security_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
@@ -3055,14 +3088,14 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData:
 	|| ydk::is_set(security_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cev6l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3074,19 +3107,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -3108,7 +3141,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData:
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -3124,7 +3157,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData:
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Cev6l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "ipv6-next-hop" || name == "security-id")
         return true;
@@ -3139,7 +3172,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData::Pse
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "pseudowire-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData::~PseudowireData()
@@ -3148,6 +3181,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData::~Ps
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireData::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| pseudowire_id.is_set
 	|| remote_l2_router_id.is_set
@@ -3259,7 +3293,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData::Lab
     size{YType::uint32, "size"}
 {
 
-    yang_name = "label-block-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-block-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData::~LabelBlockData()
@@ -3268,6 +3302,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData::~La
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockData::has_data() const
 {
+    if (is_presence_container) return true;
     return service.is_set
 	|| vpn_id.is_set
 	|| edge_id.is_set
@@ -3389,7 +3424,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData::IpSubDat
     parent_interface{YType::str, "parent-interface"}
 {
 
-    yang_name = "ip-sub-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-sub-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData::~IpSubData()
@@ -3398,6 +3433,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData::~IpSubDa
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| parent_interface.is_set;
 }
@@ -3474,7 +3510,7 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::IpSubData::has
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::Tev4P2MpData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::Tev4p2mpData()
     :
     table_id{YType::uint32, "table-id"},
     tunnel_source{YType::str, "tunnel-source"},
@@ -3485,15 +3521,16 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::Tev4P
     previous_hop{YType::str, "previous-hop"}
 {
 
-    yang_name = "tev4p2mp-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tev4p2mp-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::~Tev4P2MpData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::~Tev4p2mpData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| tunnel_source.is_set
 	|| p2mp_id.is_set
@@ -3503,7 +3540,7 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::
 	|| previous_hop.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
@@ -3515,14 +3552,14 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::
 	|| ydk::is_set(previous_hop.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tev4p2mp-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3538,19 +3575,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -3596,7 +3633,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -3628,7 +3665,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4P2MpData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Tev4p2mpData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "tunnel-source" || name == "p2mp-id" || name == "tunnel-id" || name == "tunnel-id-extension" || name == "tunnel-lsp-id" || name == "previous-hop")
         return true;
@@ -3644,7 +3681,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data::MldPv4D
     peer_label_space_id{YType::uint16, "peer-label-space-id"}
 {
 
-    yang_name = "mld-pv4-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mld-pv4-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data::~MldPv4Data()
@@ -3653,6 +3690,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data::~MldPv4
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::MldPv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| type.is_set
 	|| lsm_id.is_set
@@ -3773,7 +3811,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndDa
     pwhe_intf{YType::str, "pwhe-intf"}
 {
 
-    yang_name = "pseudowire-head-end-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-head-end-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData::~PseudowireHeadEndData()
@@ -3782,6 +3820,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndDa
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PseudowireHeadEndData::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_intf.is_set;
 }
 
@@ -3856,7 +3895,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData::TpData()
     lsp_id{YType::uint16, "lsp-id"}
 {
 
-    yang_name = "tp-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tp-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData::~TpData()
@@ -3865,6 +3904,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData::~TpData()
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TpData::has_data() const
 {
+    if (is_presence_container) return true;
     return source_global_id.is_set
 	|| source_node_id.is_set
 	|| dest_global_id.is_set
@@ -4011,7 +4051,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncap
     gre_interface{YType::str, "gre-interface"}
 {
 
-    yang_name = "generic-routing-encapsulation"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-routing-encapsulation"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation::~GenericRoutingEncapsulation()
@@ -4020,6 +4060,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncap
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::GenericRoutingEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return gre_interface.is_set;
 }
 
@@ -4088,7 +4129,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingE
     greipv6_interface{YType::str, "greipv6-interface"}
 {
 
-    yang_name = "ipv6-generic-routing-encapsulation"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-generic-routing-encapsulation"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation::~Ipv6GenericRoutingEncapsulation()
@@ -4097,6 +4138,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingE
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6GenericRoutingEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return greipv6_interface.is_set;
 }
 
@@ -4167,7 +4209,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData::EvpnData(
     ethernet_segment{YType::str, "ethernet-segment"}
 {
 
-    yang_name = "evpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData::~EvpnData()
@@ -4176,6 +4218,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData::~EvpnData
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return evpn_id.is_set
 	|| evpn_tag.is_set
 	|| ethernet_segment.is_set;
@@ -4265,40 +4308,41 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::EvpnData::has_
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::Ipv4BlbData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::Ipv4blbData()
     :
     blb_intf{YType::str, "blb-intf"},
     prefix{YType::str, "prefix"}
 {
 
-    yang_name = "ipv4blb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4blb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::~Ipv4BlbData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::~Ipv4blbData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::has_data() const
 {
+    if (is_presence_container) return true;
     return blb_intf.is_set
 	|| prefix.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(blb_intf.yfilter)
 	|| ydk::is_set(prefix.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4blb-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4309,19 +4353,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blb-intf")
     {
@@ -4337,7 +4381,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::s
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "blb-intf")
     {
@@ -4349,47 +4393,48 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::s
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4BlbData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv4blbData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "blb-intf" || name == "prefix")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::Ipv6BlbData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::Ipv6blbData()
     :
     blb_intf{YType::str, "blb-intf"},
     prefix{YType::str, "prefix"}
 {
 
-    yang_name = "ipv6blb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6blb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::~Ipv6BlbData()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::~Ipv6blbData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::has_data() const
 {
+    if (is_presence_container) return true;
     return blb_intf.is_set
 	|| prefix.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(blb_intf.yfilter)
 	|| ydk::is_set(prefix.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6blb-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4400,19 +4445,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blb-intf")
     {
@@ -4428,7 +4473,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::s
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "blb-intf")
     {
@@ -4440,7 +4485,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::s
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6BlbData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::Ipv6blbData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "blb-intf" || name == "prefix")
         return true;
@@ -4454,7 +4499,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData::PiMiP
     v6{YType::int32, "v6"}
 {
 
-    yang_name = "pi-mi-pmsi-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-mi-pmsi-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData::~PiMiPmsiData()
@@ -4463,6 +4508,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData::~PiMi
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMiPmsiData::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_id.is_set
 	|| head.is_set
 	|| v6.is_set;
@@ -4562,7 +4608,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData::PiMsP
     seg{YType::int32, "seg"}
 {
 
-    yang_name = "pi-ms-pmsi-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-ms-pmsi-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData::~PiMsPmsiData()
@@ -4571,6 +4617,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData::~PiMs
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_id.is_set
 	|| source.is_set
 	|| head.is_set
@@ -4699,40 +4746,41 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::PiMsPmsiData::
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::NextHopSetL3Vpn()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::NextHopSetL3vpn()
     :
     table_id{YType::uint32, "table-id"},
     next_hop_set_id{YType::uint32, "next-hop-set-id"}
 {
 
-    yang_name = "next-hop-set-l3vpn"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-set-l3vpn"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::~NextHopSetL3Vpn()
+MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::~NextHopSetL3vpn()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| next_hop_set_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
 	|| ydk::is_set(next_hop_set_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-set-l3vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4743,19 +4791,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Labels
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -4771,7 +4819,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vp
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -4783,7 +4831,7 @@ void MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vp
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::NextHopSetL3vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "next-hop-set-id")
         return true;
@@ -4796,7 +4844,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment::Sr
     segment_id{YType::uint32, "segment-id"}
 {
 
-    yang_name = "sr-prefix-segment"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-prefix-segment"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment::~SrPrefixSegment()
@@ -4805,6 +4853,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment::~S
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrPrefixSegment::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| segment_id.is_set;
 }
@@ -4889,7 +4938,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4::S
     addr{YType::str, "addr"}
 {
 
-    yang_name = "sr-adj-segment-ipv4"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-adj-segment-ipv4"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4::~SrAdjSegmentIpv4()
@@ -4898,6 +4947,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4::~
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv4::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| type.is_set
 	|| intf.is_set
@@ -5008,7 +5058,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6::S
     addr{YType::str, "addr"}
 {
 
-    yang_name = "sr-adj-segment-ipv6"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-adj-segment-ipv6"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6::~SrAdjSegmentIpv6()
@@ -5017,6 +5067,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6::~
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::SrAdjSegmentIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| type.is_set
 	|| intf.is_set
@@ -5126,7 +5177,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData:
     size{YType::uint32, "size"}
 {
 
-    yang_name = "label-block-srgb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-block-srgb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData::~LabelBlockSrgbData()
@@ -5135,6 +5186,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData:
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrgbData::has_data() const
 {
+    if (is_presence_container) return true;
     return start_label.is_set
 	|| offset.is_set
 	|| size.is_set;
@@ -5230,7 +5282,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding::TeBindin
     te_type{YType::enumeration, "te-type"}
 {
 
-    yang_name = "te-binding"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "te-binding"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding::~TeBinding()
@@ -5239,6 +5291,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding::~TeBindi
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::TeBinding::has_data() const
 {
+    if (is_presence_container) return true;
     return te_identifier.is_set
 	|| te_type.is_set;
 }
@@ -5322,7 +5375,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrlbData:
     size{YType::uint32, "size"}
 {
 
-    yang_name = "label-block-srlb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-block-srlb-data"; yang_parent_name = "key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrlbData::~LabelBlockSrlbData()
@@ -5331,6 +5384,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrlbData:
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::LabelContext::Key::LabelBlockSrlbData::has_data() const
 {
+    if (is_presence_container) return true;
     return start_label.is_set
 	|| offset.is_set
 	|| size.is_set;
@@ -5429,7 +5483,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner::ApplicationOwner()
     resource_state{YType::enumeration, "resource-state"}
 {
 
-    yang_name = "application-owner"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-owner"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner::~ApplicationOwner()
@@ -5438,6 +5492,7 @@ MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner::~ApplicationOwner()
 
 bool MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner::has_data() const
 {
+    if (is_presence_container) return true;
     return application_name.is_set
 	|| application_type.is_set
 	|| application_role_primary.is_set
@@ -5556,11 +5611,11 @@ bool MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner::has_leaf_or_chi
 MplsLsdNodes::MplsLsdNode::FrrDatabase::FrrDatabase()
     :
     tunnel_midpoints(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints>())
-	,tunnel_heads(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads>())
-	,tunnel_head_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary>())
-	,summary_protected_interfaces(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces>())
-	,tunnel_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary>())
-	,tunnel_midpoint_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary>())
+    , tunnel_heads(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads>())
+    , tunnel_head_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary>())
+    , summary_protected_interfaces(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces>())
+    , tunnel_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary>())
+    , tunnel_midpoint_summary(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary>())
 {
     tunnel_midpoints->parent = this;
     tunnel_heads->parent = this;
@@ -5569,7 +5624,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::FrrDatabase()
     tunnel_summary->parent = this;
     tunnel_midpoint_summary->parent = this;
 
-    yang_name = "frr-database"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-database"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::~FrrDatabase()
@@ -5578,6 +5633,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::~FrrDatabase()
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::has_data() const
 {
+    if (is_presence_container) return true;
     return (tunnel_midpoints !=  nullptr && tunnel_midpoints->has_data())
 	|| (tunnel_heads !=  nullptr && tunnel_heads->has_data())
 	|| (tunnel_head_summary !=  nullptr && tunnel_head_summary->has_data())
@@ -5725,9 +5781,11 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::has_leaf_or_child_of_name(const std
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoints()
+    :
+    tunnel_midpoint(this, {"label"})
 {
 
-    yang_name = "tunnel-midpoints"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-midpoints"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::~TunnelMidpoints()
@@ -5736,7 +5794,8 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::~TunnelMidpoints()
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::has_data() const
 {
-    for (std::size_t index=0; index<tunnel_midpoint.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel_midpoint.len(); index++)
     {
         if(tunnel_midpoint[index]->has_data())
             return true;
@@ -5746,7 +5805,7 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel_midpoint.size(); index++)
+    for (std::size_t index=0; index<tunnel_midpoint.len(); index++)
     {
         if(tunnel_midpoint[index]->has_operation())
             return true;
@@ -5776,7 +5835,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints:
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint>();
         c->parent = this;
-        tunnel_midpoint.push_back(c);
+        tunnel_midpoint.append(c);
         return c;
     }
 
@@ -5788,7 +5847,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::FrrDat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel_midpoint)
+    for (auto c : tunnel_midpoint.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5816,16 +5875,17 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::has_leaf_or_child_
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::TunnelMidpoint()
     :
-    label{YType::int32, "label"},
+    label{YType::uint32, "label"},
     tunnel_interface{YType::str, "tunnel-interface"},
     input_label{YType::uint32, "input-label"},
     entry_frr_state{YType::enumeration, "entry-frr-state"}
-    	,
+        ,
     frr_entry_id(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId>())
+    , out_path(this, {})
 {
     frr_entry_id->parent = this;
 
-    yang_name = "tunnel-midpoint"; yang_parent_name = "tunnel-midpoints"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-midpoint"; yang_parent_name = "tunnel-midpoints"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::~TunnelMidpoint()
@@ -5834,7 +5894,8 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::~Tunnel
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::has_data() const
 {
-    for (std::size_t index=0; index<out_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<out_path.len(); index++)
     {
         if(out_path[index]->has_data())
             return true;
@@ -5848,7 +5909,7 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::ha
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::has_operation() const
 {
-    for (std::size_t index=0; index<out_path.size(); index++)
+    for (std::size_t index=0; index<out_path.len(); index++)
     {
         if(out_path[index]->has_operation())
             return true;
@@ -5864,7 +5925,8 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::ha
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel-midpoint" <<"[label='" <<label <<"']";
+    path_buffer << "tunnel-midpoint";
+    ADD_KEY_TOKEN(label, "label");
     return path_buffer.str();
 }
 
@@ -5896,7 +5958,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints:
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath>();
         c->parent = this;
-        out_path.push_back(c);
+        out_path.append(c);
         return c;
     }
 
@@ -5913,7 +5975,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::FrrDat
     }
 
     count = 0;
-    for (auto const & c : out_path)
+    for (auto c : out_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5982,14 +6044,14 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::ha
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::FrrEntryId()
     :
     role{YType::enumeration, "role"}
-    	,
+        ,
     head(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head>())
-	,midpoint(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint>())
+    , midpoint(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint>())
 {
     head->parent = this;
     midpoint->parent = this;
 
-    yang_name = "frr-entry-id"; yang_parent_name = "tunnel-midpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-entry-id"; yang_parent_name = "tunnel-midpoint"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::~FrrEntryId()
@@ -5998,6 +6060,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntr
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::has_data() const
 {
+    if (is_presence_container) return true;
     return role.is_set
 	|| (head !=  nullptr && head->has_data())
 	|| (midpoint !=  nullptr && midpoint->has_data());
@@ -6099,7 +6162,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntr
     destination_prefix_length{YType::uint8, "destination-prefix-length"}
 {
 
-    yang_name = "head"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "head"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head::~Head()
@@ -6108,6 +6171,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntr
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Head::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_prefix.is_set
 	|| destination_prefix_length.is_set;
 }
@@ -6191,7 +6255,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntr
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "midpoint"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "midpoint"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint::~Midpoint()
@@ -6200,6 +6264,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntr
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::FrrEntryId::Midpoint::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| lspid.is_set
 	|| tunnel_id.is_set;
@@ -6298,7 +6363,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath
     frr_label{YType::uint32, "frr-label"}
 {
 
-    yang_name = "out-path"; yang_parent_name = "tunnel-midpoint"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-path"; yang_parent_name = "tunnel-midpoint"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath::~OutPath()
@@ -6307,6 +6372,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath::has_data() const
 {
+    if (is_presence_container) return true;
     return out_interface.is_set
 	|| out_label.is_set
 	|| ipv4_next_hop.is_set
@@ -6423,9 +6489,11 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpoint::Ou
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHeads()
+    :
+    tunnel_head(this, {"interface_name"})
 {
 
-    yang_name = "tunnel-heads"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-heads"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::~TunnelHeads()
@@ -6434,7 +6502,8 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::~TunnelHeads()
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::has_data() const
 {
-    for (std::size_t index=0; index<tunnel_head.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel_head.len(); index++)
     {
         if(tunnel_head[index]->has_data())
             return true;
@@ -6444,7 +6513,7 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel_head.size(); index++)
+    for (std::size_t index=0; index<tunnel_head.len(); index++)
     {
         if(tunnel_head[index]->has_operation())
             return true;
@@ -6474,7 +6543,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::get
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead>();
         c->parent = this;
-        tunnel_head.push_back(c);
+        tunnel_head.append(c);
         return c;
     }
 
@@ -6486,7 +6555,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::FrrDat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel_head)
+    for (auto c : tunnel_head.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6518,12 +6587,13 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::TunnelHead()
     tunnel_interface{YType::str, "tunnel-interface"},
     input_label{YType::uint32, "input-label"},
     entry_frr_state{YType::enumeration, "entry-frr-state"}
-    	,
+        ,
     frr_entry_id(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId>())
+    , out_path(this, {})
 {
     frr_entry_id->parent = this;
 
-    yang_name = "tunnel-head"; yang_parent_name = "tunnel-heads"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-head"; yang_parent_name = "tunnel-heads"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::~TunnelHead()
@@ -6532,7 +6602,8 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::~TunnelHead()
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::has_data() const
 {
-    for (std::size_t index=0; index<out_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<out_path.len(); index++)
     {
         if(out_path[index]->has_data())
             return true;
@@ -6546,7 +6617,7 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::has_data()
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::has_operation() const
 {
-    for (std::size_t index=0; index<out_path.size(); index++)
+    for (std::size_t index=0; index<out_path.len(); index++)
     {
         if(out_path[index]->has_operation())
             return true;
@@ -6562,7 +6633,8 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::has_operat
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel-head" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "tunnel-head";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -6594,7 +6666,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::Tun
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath>();
         c->parent = this;
-        out_path.push_back(c);
+        out_path.append(c);
         return c;
     }
 
@@ -6611,7 +6683,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::FrrDat
     }
 
     count = 0;
-    for (auto const & c : out_path)
+    for (auto c : out_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6680,14 +6752,14 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::has_leaf_o
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::FrrEntryId()
     :
     role{YType::enumeration, "role"}
-    	,
+        ,
     head(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head>())
-	,midpoint(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint>())
+    , midpoint(std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint>())
 {
     head->parent = this;
     midpoint->parent = this;
 
-    yang_name = "frr-entry-id"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frr-entry-id"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::~FrrEntryId()
@@ -6696,6 +6768,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::~Fr
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::has_data() const
 {
+    if (is_presence_container) return true;
     return role.is_set
 	|| (head !=  nullptr && head->has_data())
 	|| (midpoint !=  nullptr && midpoint->has_data());
@@ -6797,7 +6870,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Hea
     destination_prefix_length{YType::uint8, "destination-prefix-length"}
 {
 
-    yang_name = "head"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "head"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head::~Head()
@@ -6806,6 +6879,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Hea
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Head::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_prefix.is_set
 	|| destination_prefix_length.is_set;
 }
@@ -6889,7 +6963,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Mid
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "midpoint"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "midpoint"; yang_parent_name = "frr-entry-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint::~Midpoint()
@@ -6898,6 +6972,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Mid
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::FrrEntryId::Midpoint::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| lspid.is_set
 	|| tunnel_id.is_set;
@@ -6996,7 +7071,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath::OutPat
     frr_label{YType::uint32, "frr-label"}
 {
 
-    yang_name = "out-path"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-path"; yang_parent_name = "tunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath::~OutPath()
@@ -7005,6 +7080,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath::~OutPa
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::OutPath::has_data() const
 {
+    if (is_presence_container) return true;
     return out_interface.is_set
 	|| out_label.is_set
 	|| ipv4_next_hop.is_set
@@ -7128,7 +7204,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary::TunnelHeadSummary()
     igp{YType::uint32, "igp"}
 {
 
-    yang_name = "tunnel-head-summary"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-head-summary"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary::~TunnelHeadSummary()
@@ -7137,6 +7213,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary::~TunnelHeadSummary()
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| ready.is_set
 	|| partial.is_set
@@ -7240,9 +7317,11 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeadSummary::has_leaf_or_chil
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterfaces()
+    :
+    summary_protected_interface(this, {"interface_name"})
 {
 
-    yang_name = "summary-protected-interfaces"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-protected-interfaces"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::~SummaryProtectedInterfaces()
@@ -7251,7 +7330,8 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::~SummaryProt
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<summary_protected_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary_protected_interface.len(); index++)
     {
         if(summary_protected_interface[index]->has_data())
             return true;
@@ -7261,7 +7341,7 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::has_dat
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<summary_protected_interface.size(); index++)
+    for (std::size_t index=0; index<summary_protected_interface.len(); index++)
     {
         if(summary_protected_interface[index]->has_operation())
             return true;
@@ -7291,7 +7371,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtected
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface>();
         c->parent = this;
-        summary_protected_interface.push_back(c);
+        summary_protected_interface.append(c);
         return c;
     }
 
@@ -7303,7 +7383,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::FrrDat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary_protected_interface)
+    for (auto c : summary_protected_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7338,7 +7418,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProte
     igp{YType::uint32, "igp"}
 {
 
-    yang_name = "summary-protected-interface"; yang_parent_name = "summary-protected-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-protected-interface"; yang_parent_name = "summary-protected-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface::~SummaryProtectedInterface()
@@ -7347,6 +7427,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProte
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| active.is_set
 	|| ready.is_set
@@ -7367,7 +7448,8 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::Summary
 std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::SummaryProtectedInterfaces::SummaryProtectedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "summary-protected-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "summary-protected-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7470,7 +7552,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary::TunnelSummary()
     igp{YType::uint32, "igp"}
 {
 
-    yang_name = "tunnel-summary"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-summary"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary::~TunnelSummary()
@@ -7479,6 +7561,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary::~TunnelSummary()
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| ready.is_set
 	|| partial.is_set
@@ -7589,7 +7672,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary::TunnelMidpointSum
     igp{YType::uint32, "igp"}
 {
 
-    yang_name = "tunnel-midpoint-summary"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-midpoint-summary"; yang_parent_name = "frr-database"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary::~TunnelMidpointSummary()
@@ -7598,6 +7681,7 @@ MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary::~TunnelMidpointSu
 
 bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| ready.is_set
 	|| partial.is_set
@@ -7703,16 +7787,16 @@ bool MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpointSummary::has_leaf_or_
 MplsLsdNodes::MplsLsdNode::Rewrite::Rewrite()
     :
     rewrite_pws(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws>())
-	,rewrite_ipv4s(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S>())
-	,rewrite_tes(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes>())
-	,rewrite_labels(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels>())
+    , rewrite_ipv4s(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s>())
+    , rewrite_tes(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteTes>())
+    , rewrite_labels(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabels>())
 {
     rewrite_pws->parent = this;
     rewrite_ipv4s->parent = this;
     rewrite_tes->parent = this;
     rewrite_labels->parent = this;
 
-    yang_name = "rewrite"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rewrite"; yang_parent_name = "mpls-lsd-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::~Rewrite()
@@ -7721,6 +7805,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::~Rewrite()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::has_data() const
 {
+    if (is_presence_container) return true;
     return (rewrite_pws !=  nullptr && rewrite_pws->has_data())
 	|| (rewrite_ipv4s !=  nullptr && rewrite_ipv4s->has_data())
 	|| (rewrite_tes !=  nullptr && rewrite_tes->has_data())
@@ -7767,7 +7852,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::get_child_by_name(co
     {
         if(rewrite_ipv4s == nullptr)
         {
-            rewrite_ipv4s = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S>();
+            rewrite_ipv4s = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4s>();
         }
         return rewrite_ipv4s;
     }
@@ -7836,9 +7921,11 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::has_leaf_or_child_of_name(const std::st
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePws()
+    :
+    rewrite_pw(this, {"pw_list_id"})
 {
 
-    yang_name = "rewrite-pws"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rewrite-pws"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::~RewritePws()
@@ -7847,7 +7934,8 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::~RewritePws()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::has_data() const
 {
-    for (std::size_t index=0; index<rewrite_pw.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rewrite_pw.len(); index++)
     {
         if(rewrite_pw[index]->has_data())
             return true;
@@ -7857,7 +7945,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::has_operation() const
 {
-    for (std::size_t index=0; index<rewrite_pw.size(); index++)
+    for (std::size_t index=0; index<rewrite_pw.len(); index++)
     {
         if(rewrite_pw[index]->has_operation())
             return true;
@@ -7887,7 +7975,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::get_chil
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw>();
         c->parent = this;
-        rewrite_pw.push_back(c);
+        rewrite_pw.append(c);
         return c;
     }
 
@@ -7899,7 +7987,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rewrite_pw)
+    for (auto c : rewrite_pw.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7927,7 +8015,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::has_leaf_or_child_of_name(c
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewritePw()
     :
-    pw_list_id{YType::int32, "pw-list-id"},
+    pw_list_id{YType::uint32, "pw-list-id"},
     rewrite_version{YType::uint64, "rewrite-version"},
     bcdl_priority{YType::uint8, "bcdl-priority"},
     lsd_queue{YType::uint8, "lsd-queue"},
@@ -7935,14 +8023,18 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewritePw()
     rw_install_age{YType::uint64, "rw-install-age"},
     rw_updated{YType::int32, "rw-updated"},
     priority_updated{YType::int32, "priority-updated"}
-    	,
+        ,
     fpi_key(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey>())
-	,rewrite_id(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId>())
+    , rewrite_id(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId>())
+    , associated_fpi(this, {})
+    , v4_rpf(this, {})
+    , v6_rpf(this, {})
+    , mois(this, {})
 {
     fpi_key->parent = this;
     rewrite_id->parent = this;
 
-    yang_name = "rewrite-pw"; yang_parent_name = "rewrite-pws"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rewrite-pw"; yang_parent_name = "rewrite-pws"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::~RewritePw()
@@ -7951,22 +8043,23 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::~RewritePw()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::has_data() const
 {
-    for (std::size_t index=0; index<associated_fpi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<associated_fpi.len(); index++)
     {
         if(associated_fpi[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<v4_rpf.size(); index++)
+    for (std::size_t index=0; index<v4_rpf.len(); index++)
     {
         if(v4_rpf[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<v6_rpf.size(); index++)
+    for (std::size_t index=0; index<v6_rpf.len(); index++)
     {
         if(v6_rpf[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mois.size(); index++)
+    for (std::size_t index=0; index<mois.len(); index++)
     {
         if(mois[index]->has_data())
             return true;
@@ -7985,22 +8078,22 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::has_data() const
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::has_operation() const
 {
-    for (std::size_t index=0; index<associated_fpi.size(); index++)
+    for (std::size_t index=0; index<associated_fpi.len(); index++)
     {
         if(associated_fpi[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<v4_rpf.size(); index++)
+    for (std::size_t index=0; index<v4_rpf.len(); index++)
     {
         if(v4_rpf[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<v6_rpf.size(); index++)
+    for (std::size_t index=0; index<v6_rpf.len(); index++)
     {
         if(v6_rpf[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mois.size(); index++)
+    for (std::size_t index=0; index<mois.len(); index++)
     {
         if(mois[index]->has_operation())
             return true;
@@ -8021,7 +8114,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::has_operation() 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rewrite-pw" <<"[pw-list-id='" <<pw_list_id <<"']";
+    path_buffer << "rewrite-pw";
+    ADD_KEY_TOKEN(pw_list_id, "pw-list-id");
     return path_buffer.str();
 }
 
@@ -8066,7 +8160,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi>();
         c->parent = this;
-        associated_fpi.push_back(c);
+        associated_fpi.append(c);
         return c;
     }
 
@@ -8074,7 +8168,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf>();
         c->parent = this;
-        v4_rpf.push_back(c);
+        v4_rpf.append(c);
         return c;
     }
 
@@ -8082,7 +8176,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf>();
         c->parent = this;
-        v6_rpf.push_back(c);
+        v6_rpf.append(c);
         return c;
     }
 
@@ -8090,7 +8184,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois>();
         c->parent = this;
-        mois.push_back(c);
+        mois.append(c);
         return c;
     }
 
@@ -8112,7 +8206,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : associated_fpi)
+    for (auto c : associated_fpi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8121,7 +8215,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : v4_rpf)
+    for (auto c : v4_rpf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8130,7 +8224,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : v6_rpf)
+    for (auto c : v6_rpf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8139,7 +8233,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : mois)
+    for (auto c : mois.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8248,10 +8342,11 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::has_leaf_or_chil
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::FpiKey()
     :
     fpi(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi>())
+    , application_owner(this, {})
 {
     fpi->parent = this;
 
-    yang_name = "fpi-key"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpi-key"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::~FpiKey()
@@ -8260,7 +8355,8 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::~FpiKey()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::has_data() const
 {
-    for (std::size_t index=0; index<application_owner.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application_owner.len(); index++)
     {
         if(application_owner[index]->has_data())
             return true;
@@ -8270,7 +8366,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::has_data
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::has_operation() const
 {
-    for (std::size_t index=0; index<application_owner.size(); index++)
+    for (std::size_t index=0; index<application_owner.len(); index++)
     {
         if(application_owner[index]->has_operation())
             return true;
@@ -8310,7 +8406,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner>();
         c->parent = this;
-        application_owner.push_back(c);
+        application_owner.append(c);
         return c;
     }
 
@@ -8327,7 +8423,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : application_owner)
+    for (auto c : application_owner.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8356,13 +8452,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::has_leaf
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Fpi()
     :
     fpi_type{YType::enumeration, "fpi-type"}
-    	,
+        ,
     label_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData>())
-	,te_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData>())
-	,ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data>())
-	,ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data>())
-	,pw_list_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData>())
-	,dmtc_ext_intf_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData>())
+    , te_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData>())
+    , ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data>())
+    , ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data>())
+    , pw_list_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData>())
+    , dmtc_ext_intf_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData>())
 {
     label_data->parent = this;
     te_data->parent = this;
@@ -8371,7 +8467,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Fpi()
     pw_list_data->parent = this;
     dmtc_ext_intf_data->parent = this;
 
-    yang_name = "fpi"; yang_parent_name = "fpi-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpi"; yang_parent_name = "fpi-key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::~Fpi()
@@ -8380,6 +8476,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::~Fpi()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::has_data() const
 {
+    if (is_presence_container) return true;
     return fpi_type.is_set
 	|| (label_data !=  nullptr && label_data->has_data())
 	|| (te_data !=  nullptr && te_data->has_data())
@@ -8546,7 +8643,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelDat
     elc{YType::int32, "elc"}
 {
 
-    yang_name = "label-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData::~LabelData()
@@ -8555,6 +8652,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelDat
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::LabelData::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| security_id.is_set
 	|| elc.is_set;
@@ -8650,7 +8748,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData::
     local_label{YType::uint32, "local-label"}
 {
 
-    yang_name = "te-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "te-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData::~TeData()
@@ -8659,6 +8757,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::TeData::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_interface.is_set
 	|| local_label.is_set;
 }
@@ -8744,7 +8843,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data
     sr_local_label{YType::uint32, "sr-local-label"}
 {
 
-    yang_name = "ipv4-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data::~Ipv4Data()
@@ -8753,6 +8852,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set
@@ -8877,7 +8977,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data
     version{YType::uint32, "version"}
 {
 
-    yang_name = "ipv6-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data::~Ipv6Data()
@@ -8886,6 +8986,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::Ipv6Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| router_flags.is_set
@@ -9006,7 +9107,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListDa
     pwhe_list_id{YType::uint16, "pwhe-list-id"}
 {
 
-    yang_name = "pw-list-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw-list-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData::~PwListData()
@@ -9015,6 +9116,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListDa
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::PwListData::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_list_id.is_set;
 }
 
@@ -9083,7 +9185,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtI
     dmtc_ext_ifh{YType::str, "dmtc-ext-ifh"}
 {
 
-    yang_name = "dmtc-ext-intf-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dmtc-ext-intf-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData::~DmtcExtIntfData()
@@ -9092,6 +9194,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtI
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::Fpi::DmtcExtIntfData::has_data() const
 {
+    if (is_presence_container) return true;
     return dmtc_ext_ifh.is_set;
 }
 
@@ -9164,7 +9267,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOw
     resource_state{YType::enumeration, "resource-state"}
 {
 
-    yang_name = "application-owner"; yang_parent_name = "fpi-key"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-owner"; yang_parent_name = "fpi-key"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner::~ApplicationOwner()
@@ -9173,6 +9276,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOw
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner::has_data() const
 {
+    if (is_presence_container) return true;
     return application_name.is_set
 	|| application_type.is_set
 	|| application_role_primary.is_set
@@ -9294,7 +9398,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId(
 {
     rewrite_id->parent = this;
 
-    yang_name = "rewrite-id"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rewrite-id"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::~RewriteId()
@@ -9303,6 +9407,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::~RewriteId
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::has_data() const
 {
+    if (is_presence_container) return true;
     return (rewrite_id !=  nullptr && rewrite_id->has_data());
 }
 
@@ -9372,14 +9477,14 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::has_l
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::RewriteId_()
     :
     rewrite_id_type{YType::enumeration, "rewrite-id-type"}
-    	,
+        ,
     label_context(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext>())
-	,local_label_rewrite(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite>())
+    , local_label_rewrite(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite>())
 {
     label_context->parent = this;
     local_label_rewrite->parent = this;
 
-    yang_name = "rewrite-id"; yang_parent_name = "rewrite-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rewrite-id"; yang_parent_name = "rewrite-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::~RewriteId_()
@@ -9388,6 +9493,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::has_data() const
 {
+    if (is_presence_container) return true;
     return rewrite_id_type.is_set
 	|| (label_context !=  nullptr && label_context->has_data())
 	|| (local_label_rewrite !=  nullptr && local_label_rewrite->has_data());
@@ -9486,36 +9592,36 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelContext()
     :
     label_context_type{YType::enumeration, "label-context-type"}
-    	,
+        ,
     ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data>())
-	,ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data>())
-	,tev4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data>())
-	,ipv4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData>())
-	,ipv6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData>())
-	,vrf_l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData>())
-	,cev4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData>())
-	,cev6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData>())
-	,pseudowire_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData>())
-	,label_block_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData>())
-	,ip_sub_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData>())
-	,tev4p2mp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData>())
-	,mld_pv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data>())
-	,pseudowire_head_end_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData>())
-	,tp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData>())
-	,generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation>())
-	,ipv6_generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation>())
-	,evpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData>())
-	,ipv4blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData>())
-	,ipv6blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData>())
-	,pi_mi_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData>())
-	,pi_ms_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData>())
-	,next_hop_set_l3vpn(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn>())
-	,sr_prefix_segment(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment>())
-	,sr_adj_segment_ipv4(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4>())
-	,sr_adj_segment_ipv6(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6>())
-	,label_block_srgb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData>())
-	,te_binding(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding>())
-	,label_block_srlb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData>())
+    , ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data>())
+    , tev4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data>())
+    , ipv4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData>())
+    , ipv6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData>())
+    , vrf_l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData>())
+    , cev4l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData>())
+    , cev6l3vpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData>())
+    , pseudowire_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData>())
+    , label_block_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData>())
+    , ip_sub_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData>())
+    , tev4p2mp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData>())
+    , mld_pv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data>())
+    , pseudowire_head_end_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData>())
+    , tp_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData>())
+    , generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation>())
+    , ipv6_generic_routing_encapsulation(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation>())
+    , evpn_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData>())
+    , ipv4blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData>())
+    , ipv6blb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData>())
+    , pi_mi_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData>())
+    , pi_ms_pmsi_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData>())
+    , next_hop_set_l3vpn(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn>())
+    , sr_prefix_segment(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment>())
+    , sr_adj_segment_ipv4(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4>())
+    , sr_adj_segment_ipv6(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6>())
+    , label_block_srgb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData>())
+    , te_binding(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding>())
+    , label_block_srlb_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData>())
 {
     ipv4_data->parent = this;
     ipv6_data->parent = this;
@@ -9547,7 +9653,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     te_binding->parent = this;
     label_block_srlb_data->parent = this;
 
-    yang_name = "label-context"; yang_parent_name = "rewrite-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-context"; yang_parent_name = "rewrite-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::~LabelContext()
@@ -9556,6 +9662,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::has_data() const
 {
+    if (is_presence_container) return true;
     return label_context_type.is_set
 	|| (ipv4_data !=  nullptr && ipv4_data->has_data())
 	|| (ipv6_data !=  nullptr && ipv6_data->has_data())
@@ -9673,7 +9780,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(ipv4l3vpn_data == nullptr)
         {
-            ipv4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData>();
+            ipv4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData>();
         }
         return ipv4l3vpn_data;
     }
@@ -9682,7 +9789,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(ipv6l3vpn_data == nullptr)
         {
-            ipv6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData>();
+            ipv6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData>();
         }
         return ipv6l3vpn_data;
     }
@@ -9691,7 +9798,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(vrf_l3vpn_data == nullptr)
         {
-            vrf_l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData>();
+            vrf_l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData>();
         }
         return vrf_l3vpn_data;
     }
@@ -9700,7 +9807,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(cev4l3vpn_data == nullptr)
         {
-            cev4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData>();
+            cev4l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData>();
         }
         return cev4l3vpn_data;
     }
@@ -9709,7 +9816,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(cev6l3vpn_data == nullptr)
         {
-            cev6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData>();
+            cev6l3vpn_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData>();
         }
         return cev6l3vpn_data;
     }
@@ -9745,7 +9852,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(tev4p2mp_data == nullptr)
         {
-            tev4p2mp_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData>();
+            tev4p2mp_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData>();
         }
         return tev4p2mp_data;
     }
@@ -9808,7 +9915,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(ipv4blb_data == nullptr)
         {
-            ipv4blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData>();
+            ipv4blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData>();
         }
         return ipv4blb_data;
     }
@@ -9817,7 +9924,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(ipv6blb_data == nullptr)
         {
-            ipv6blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData>();
+            ipv6blb_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData>();
         }
         return ipv6blb_data;
     }
@@ -9844,7 +9951,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         if(next_hop_set_l3vpn == nullptr)
         {
-            next_hop_set_l3vpn = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn>();
+            next_hop_set_l3vpn = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn>();
         }
         return next_hop_set_l3vpn;
     }
@@ -10092,7 +10199,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv4-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data::~Ipv4Data()
@@ -10101,6 +10208,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set
@@ -10225,7 +10333,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv6-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data::~Ipv6Data()
@@ -10234,6 +10342,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set
@@ -10360,7 +10469,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     is_srte{YType::int32, "is-srte"}
 {
 
-    yang_name = "tev4-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tev4-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data::~Tev4Data()
@@ -10369,6 +10478,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| tunnel_source.is_set
 	|| tunnel_dest.is_set
@@ -10510,28 +10620,29 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::Ipv4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::Ipv4l3vpnData()
     :
     prefix{YType::str, "prefix"},
     prefix_length{YType::uint8, "prefix-length"},
     route_distinguisher{YType::uint64, "route-distinguisher"}
 {
 
-    yang_name = "ipv4l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::~Ipv4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::~Ipv4l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| route_distinguisher.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix.yfilter)
@@ -10539,14 +10650,14 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 	|| ydk::is_set(route_distinguisher.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10558,19 +10669,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
@@ -10592,7 +10703,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix")
     {
@@ -10608,35 +10719,36 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "prefix-length" || name == "route-distinguisher")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::Ipv6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::Ipv6l3vpnData()
     :
     prefix{YType::str, "prefix"},
     prefix_length{YType::uint8, "prefix-length"},
     route_distinguisher{YType::uint64, "route-distinguisher"}
 {
 
-    yang_name = "ipv6l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::~Ipv6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::~Ipv6l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| route_distinguisher.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix.yfilter)
@@ -10644,14 +10756,14 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 	|| ydk::is_set(route_distinguisher.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10663,19 +10775,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix")
     {
@@ -10697,7 +10809,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix")
     {
@@ -10713,47 +10825,48 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "prefix-length" || name == "route-distinguisher")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::VrfL3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::VrfL3vpnData()
     :
     table_id{YType::uint32, "table-id"},
     security_id{YType::uint32, "security-id"}
 {
 
-    yang_name = "vrf-l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::~VrfL3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::~VrfL3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| security_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
 	|| ydk::is_set(security_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf-l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10764,19 +10877,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -10792,7 +10905,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -10804,35 +10917,36 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::VrfL3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "security-id")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::Cev4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::Cev4l3vpnData()
     :
     table_id{YType::uint32, "table-id"},
     ipv4_next_hop{YType::str, "ipv4-next-hop"},
     security_id{YType::uint32, "security-id"}
 {
 
-    yang_name = "cev4l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cev4l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::~Cev4L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::~Cev4l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| ipv4_next_hop.is_set
 	|| security_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
@@ -10840,14 +10954,14 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 	|| ydk::is_set(security_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cev4l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10859,19 +10973,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -10893,7 +11007,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -10909,35 +11023,36 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev4l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "ipv4-next-hop" || name == "security-id")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::Cev6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::Cev6l3vpnData()
     :
     table_id{YType::uint32, "table-id"},
     ipv6_next_hop{YType::str, "ipv6-next-hop"},
     security_id{YType::uint32, "security-id"}
 {
 
-    yang_name = "cev6l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cev6l3vpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::~Cev6L3VpnData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::~Cev6l3vpnData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| ipv6_next_hop.is_set
 	|| security_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
@@ -10945,14 +11060,14 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 	|| ydk::is_set(security_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cev6l3vpn-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10964,19 +11079,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -10998,7 +11113,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -11014,7 +11129,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6L3VpnData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Cev6l3vpnData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "ipv6-next-hop" || name == "security-id")
         return true;
@@ -11029,7 +11144,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "pseudowire-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData::~PseudowireData()
@@ -11038,6 +11153,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireData::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| pseudowire_id.is_set
 	|| remote_l2_router_id.is_set
@@ -11149,7 +11265,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     size{YType::uint32, "size"}
 {
 
-    yang_name = "label-block-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-block-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData::~LabelBlockData()
@@ -11158,6 +11274,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockData::has_data() const
 {
+    if (is_presence_container) return true;
     return service.is_set
 	|| vpn_id.is_set
 	|| edge_id.is_set
@@ -11279,7 +11396,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     parent_interface{YType::str, "parent-interface"}
 {
 
-    yang_name = "ip-sub-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-sub-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData::~IpSubData()
@@ -11288,6 +11405,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::IpSubData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| parent_interface.is_set;
 }
@@ -11364,7 +11482,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::Tev4P2MpData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::Tev4p2mpData()
     :
     table_id{YType::uint32, "table-id"},
     tunnel_source{YType::str, "tunnel-source"},
@@ -11375,15 +11493,16 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     previous_hop{YType::str, "previous-hop"}
 {
 
-    yang_name = "tev4p2mp-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tev4p2mp-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::~Tev4P2MpData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::~Tev4p2mpData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| tunnel_source.is_set
 	|| p2mp_id.is_set
@@ -11393,7 +11512,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 	|| previous_hop.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
@@ -11405,14 +11524,14 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 	|| ydk::is_set(previous_hop.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tev4p2mp-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11428,19 +11547,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -11486,7 +11605,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -11518,7 +11637,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4P2MpData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Tev4p2mpData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "tunnel-source" || name == "p2mp-id" || name == "tunnel-id" || name == "tunnel-id-extension" || name == "tunnel-lsp-id" || name == "previous-hop")
         return true;
@@ -11534,7 +11653,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     peer_label_space_id{YType::uint16, "peer-label-space-id"}
 {
 
-    yang_name = "mld-pv4-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mld-pv4-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data::~MldPv4Data()
@@ -11543,6 +11662,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::MldPv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| type.is_set
 	|| lsm_id.is_set
@@ -11663,7 +11783,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     pwhe_intf{YType::str, "pwhe-intf"}
 {
 
-    yang_name = "pseudowire-head-end-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-head-end-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData::~PseudowireHeadEndData()
@@ -11672,6 +11792,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PseudowireHeadEndData::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_intf.is_set;
 }
 
@@ -11746,7 +11867,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     lsp_id{YType::uint16, "lsp-id"}
 {
 
-    yang_name = "tp-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tp-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData::~TpData()
@@ -11755,6 +11876,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TpData::has_data() const
 {
+    if (is_presence_container) return true;
     return source_global_id.is_set
 	|| source_node_id.is_set
 	|| dest_global_id.is_set
@@ -11901,7 +12023,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     gre_interface{YType::str, "gre-interface"}
 {
 
-    yang_name = "generic-routing-encapsulation"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "generic-routing-encapsulation"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation::~GenericRoutingEncapsulation()
@@ -11910,6 +12032,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::GenericRoutingEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return gre_interface.is_set;
 }
 
@@ -11978,7 +12101,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     greipv6_interface{YType::str, "greipv6-interface"}
 {
 
-    yang_name = "ipv6-generic-routing-encapsulation"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-generic-routing-encapsulation"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation::~Ipv6GenericRoutingEncapsulation()
@@ -11987,6 +12110,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6GenericRoutingEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return greipv6_interface.is_set;
 }
 
@@ -12057,7 +12181,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     ethernet_segment{YType::str, "ethernet-segment"}
 {
 
-    yang_name = "evpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData::~EvpnData()
@@ -12066,6 +12190,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::EvpnData::has_data() const
 {
+    if (is_presence_container) return true;
     return evpn_id.is_set
 	|| evpn_tag.is_set
 	|| ethernet_segment.is_set;
@@ -12155,40 +12280,41 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::Ipv4BlbData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::Ipv4blbData()
     :
     blb_intf{YType::str, "blb-intf"},
     prefix{YType::str, "prefix"}
 {
 
-    yang_name = "ipv4blb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4blb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::~Ipv4BlbData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::~Ipv4blbData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::has_data() const
 {
+    if (is_presence_container) return true;
     return blb_intf.is_set
 	|| prefix.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(blb_intf.yfilter)
 	|| ydk::is_set(prefix.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4blb-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12199,19 +12325,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blb-intf")
     {
@@ -12227,7 +12353,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "blb-intf")
     {
@@ -12239,47 +12365,48 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4BlbData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv4blbData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "blb-intf" || name == "prefix")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::Ipv6BlbData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::Ipv6blbData()
     :
     blb_intf{YType::str, "blb-intf"},
     prefix{YType::str, "prefix"}
 {
 
-    yang_name = "ipv6blb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6blb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::~Ipv6BlbData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::~Ipv6blbData()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::has_data() const
 {
+    if (is_presence_container) return true;
     return blb_intf.is_set
 	|| prefix.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(blb_intf.yfilter)
 	|| ydk::is_set(prefix.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6blb-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12290,19 +12417,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "blb-intf")
     {
@@ -12318,7 +12445,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "blb-intf")
     {
@@ -12330,7 +12457,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6BlbData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::Ipv6blbData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "blb-intf" || name == "prefix")
         return true;
@@ -12344,7 +12471,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     v6{YType::int32, "v6"}
 {
 
-    yang_name = "pi-mi-pmsi-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-mi-pmsi-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData::~PiMiPmsiData()
@@ -12353,6 +12480,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMiPmsiData::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_id.is_set
 	|| head.is_set
 	|| v6.is_set;
@@ -12452,7 +12580,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     seg{YType::int32, "seg"}
 {
 
-    yang_name = "pi-ms-pmsi-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pi-ms-pmsi-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData::~PiMsPmsiData()
@@ -12461,6 +12589,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::PiMsPmsiData::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_id.is_set
 	|| source.is_set
 	|| head.is_set
@@ -12589,40 +12718,41 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::NextHopSetL3Vpn()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::NextHopSetL3vpn()
     :
     table_id{YType::uint32, "table-id"},
     next_hop_set_id{YType::uint32, "next-hop-set-id"}
 {
 
-    yang_name = "next-hop-set-l3vpn"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-set-l3vpn"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::~NextHopSetL3Vpn()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::~NextHopSetL3vpn()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| next_hop_set_id.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(table_id.yfilter)
 	|| ydk::is_set(next_hop_set_id.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-set-l3vpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12633,19 +12763,19 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "table-id")
     {
@@ -12661,7 +12791,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "table-id")
     {
@@ -12673,7 +12803,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3Vpn::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::NextHopSetL3vpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "table-id" || name == "next-hop-set-id")
         return true;
@@ -12686,7 +12816,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     segment_id{YType::uint32, "segment-id"}
 {
 
-    yang_name = "sr-prefix-segment"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-prefix-segment"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment::~SrPrefixSegment()
@@ -12695,6 +12825,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrPrefixSegment::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| segment_id.is_set;
 }
@@ -12779,7 +12910,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     addr{YType::str, "addr"}
 {
 
-    yang_name = "sr-adj-segment-ipv4"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-adj-segment-ipv4"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4::~SrAdjSegmentIpv4()
@@ -12788,6 +12919,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv4::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| type.is_set
 	|| intf.is_set
@@ -12898,7 +13030,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     addr{YType::str, "addr"}
 {
 
-    yang_name = "sr-adj-segment-ipv6"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-adj-segment-ipv6"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6::~SrAdjSegmentIpv6()
@@ -12907,6 +13039,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::SrAdjSegmentIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| type.is_set
 	|| intf.is_set
@@ -13016,7 +13149,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     size{YType::uint32, "size"}
 {
 
-    yang_name = "label-block-srgb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-block-srgb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData::~LabelBlockSrgbData()
@@ -13025,6 +13158,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrgbData::has_data() const
 {
+    if (is_presence_container) return true;
     return start_label.is_set
 	|| offset.is_set
 	|| size.is_set;
@@ -13120,7 +13254,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     te_type{YType::enumeration, "te-type"}
 {
 
-    yang_name = "te-binding"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "te-binding"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding::~TeBinding()
@@ -13129,6 +13263,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::TeBinding::has_data() const
 {
+    if (is_presence_container) return true;
     return te_identifier.is_set
 	|| te_type.is_set;
 }
@@ -13212,7 +13347,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     size{YType::uint32, "size"}
 {
 
-    yang_name = "label-block-srlb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-block-srlb-data"; yang_parent_name = "label-context"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData::~LabelBlockSrlbData()
@@ -13221,6 +13356,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LabelContext::LabelBlockSrlbData::has_data() const
 {
+    if (is_presence_container) return true;
     return start_label.is_set
 	|| offset.is_set
 	|| size.is_set;
@@ -13311,9 +13447,11 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LocalLabelRewrite()
+    :
+    label_data(this, {})
 {
 
-    yang_name = "local-label-rewrite"; yang_parent_name = "rewrite-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-label-rewrite"; yang_parent_name = "rewrite-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::~LocalLabelRewrite()
@@ -13322,7 +13460,8 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::has_data() const
 {
-    for (std::size_t index=0; index<label_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_data.len(); index++)
     {
         if(label_data[index]->has_data())
             return true;
@@ -13332,7 +13471,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::has_operation() const
 {
-    for (std::size_t index=0; index<label_data.size(); index++)
+    for (std::size_t index=0; index<label_data.len(); index++)
     {
         if(label_data[index]->has_operation())
             return true;
@@ -13362,7 +13501,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData>();
         c->parent = this;
-        label_data.push_back(c);
+        label_data.append(c);
         return c;
     }
 
@@ -13374,7 +13513,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : label_data)
+    for (auto c : label_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13405,7 +13544,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "label-data"; yang_parent_name = "local-label-rewrite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-data"; yang_parent_name = "local-label-rewrite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData::~LabelData()
@@ -13414,6 +13553,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::LocalLabelRewrite::LabelData::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -13480,10 +13620,11 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::RewriteId::Rewri
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::AssociatedFpi()
     :
     fpi(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi>())
+    , application_owner(this, {})
 {
     fpi->parent = this;
 
-    yang_name = "associated-fpi"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "associated-fpi"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::~AssociatedFpi()
@@ -13492,7 +13633,8 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::~Assoc
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::has_data() const
 {
-    for (std::size_t index=0; index<application_owner.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application_owner.len(); index++)
     {
         if(application_owner[index]->has_data())
             return true;
@@ -13502,7 +13644,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::h
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::has_operation() const
 {
-    for (std::size_t index=0; index<application_owner.size(); index++)
+    for (std::size_t index=0; index<application_owner.len(); index++)
     {
         if(application_owner[index]->has_operation())
             return true;
@@ -13542,7 +13684,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner>();
         c->parent = this;
-        application_owner.push_back(c);
+        application_owner.append(c);
         return c;
     }
 
@@ -13559,7 +13701,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : application_owner)
+    for (auto c : application_owner.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13588,13 +13730,13 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::h
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Fpi()
     :
     fpi_type{YType::enumeration, "fpi-type"}
-    	,
+        ,
     label_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData>())
-	,te_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData>())
-	,ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data>())
-	,ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data>())
-	,pw_list_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData>())
-	,dmtc_ext_intf_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData>())
+    , te_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData>())
+    , ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data>())
+    , ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data>())
+    , pw_list_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData>())
+    , dmtc_ext_intf_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData>())
 {
     label_data->parent = this;
     te_data->parent = this;
@@ -13603,7 +13745,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::F
     pw_list_data->parent = this;
     dmtc_ext_intf_data->parent = this;
 
-    yang_name = "fpi"; yang_parent_name = "associated-fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpi"; yang_parent_name = "associated-fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::~Fpi()
@@ -13612,6 +13754,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::~
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::has_data() const
 {
+    if (is_presence_container) return true;
     return fpi_type.is_set
 	|| (label_data !=  nullptr && label_data->has_data())
 	|| (te_data !=  nullptr && te_data->has_data())
@@ -13778,7 +13921,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::L
     elc{YType::int32, "elc"}
 {
 
-    yang_name = "label-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData::~LabelData()
@@ -13787,6 +13930,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::L
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::LabelData::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| security_id.is_set
 	|| elc.is_set;
@@ -13882,7 +14026,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::T
     local_label{YType::uint32, "local-label"}
 {
 
-    yang_name = "te-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "te-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData::~TeData()
@@ -13891,6 +14035,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::T
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::TeData::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_interface.is_set
 	|| local_label.is_set;
 }
@@ -13976,7 +14121,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::I
     sr_local_label{YType::uint32, "sr-local-label"}
 {
 
-    yang_name = "ipv4-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data::~Ipv4Data()
@@ -13985,6 +14130,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::I
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| prefix_length.is_set
@@ -14109,7 +14255,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::I
     version{YType::uint32, "version"}
 {
 
-    yang_name = "ipv6-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data::~Ipv6Data()
@@ -14118,6 +14264,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::I
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::Ipv6Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| prefix.is_set
 	|| router_flags.is_set
@@ -14238,7 +14385,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::P
     pwhe_list_id{YType::uint16, "pwhe-list-id"}
 {
 
-    yang_name = "pw-list-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw-list-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData::~PwListData()
@@ -14247,6 +14394,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::P
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::PwListData::has_data() const
 {
+    if (is_presence_container) return true;
     return pwhe_list_id.is_set;
 }
 
@@ -14315,7 +14463,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::D
     dmtc_ext_ifh{YType::str, "dmtc-ext-ifh"}
 {
 
-    yang_name = "dmtc-ext-intf-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dmtc-ext-intf-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData::~DmtcExtIntfData()
@@ -14324,6 +14472,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::D
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Fpi::DmtcExtIntfData::has_data() const
 {
+    if (is_presence_container) return true;
     return dmtc_ext_ifh.is_set;
 }
 
@@ -14396,7 +14545,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Applic
     resource_state{YType::enumeration, "resource-state"}
 {
 
-    yang_name = "application-owner"; yang_parent_name = "associated-fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-owner"; yang_parent_name = "associated-fpi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner::~ApplicationOwner()
@@ -14405,6 +14554,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::Applic
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationOwner::has_data() const
 {
+    if (is_presence_container) return true;
     return application_name.is_set
 	|| application_type.is_set
 	|| application_role_primary.is_set
@@ -14526,7 +14676,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf::V4Rpf()
     v4_rpf_neighbor{YType::str, "v4-rpf-neighbor"}
 {
 
-    yang_name = "v4-rpf"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v4-rpf"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf::~V4Rpf()
@@ -14535,6 +14685,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf::~V4Rpf()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V4Rpf::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| v4_rpf_neighbor.is_set;
 }
@@ -14617,7 +14768,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf::V6Rpf()
     v6_rpf_neighbor{YType::str, "v6-rpf-neighbor"}
 {
 
-    yang_name = "v6-rpf"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v6-rpf"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf::~V6Rpf()
@@ -14626,6 +14777,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf::~V6Rpf()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| v6_rpf_neighbor.is_set;
 }
@@ -14705,10 +14857,11 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::V6Rpf::has_leaf_
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::Mois()
     :
     application_resource(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource>())
+    , moi_array(this, {})
 {
     application_resource->parent = this;
 
-    yang_name = "mois"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mois"; yang_parent_name = "rewrite-pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::~Mois()
@@ -14717,7 +14870,8 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::~Mois()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::has_data() const
 {
-    for (std::size_t index=0; index<moi_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<moi_array.len(); index++)
     {
         if(moi_array[index]->has_data())
             return true;
@@ -14727,7 +14881,7 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::has_data()
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::has_operation() const
 {
-    for (std::size_t index=0; index<moi_array.size(); index++)
+    for (std::size_t index=0; index<moi_array.len(); index++)
     {
         if(moi_array[index]->has_operation())
             return true;
@@ -14767,7 +14921,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray>();
         c->parent = this;
-        moi_array.push_back(c);
+        moi_array.append(c);
         return c;
     }
 
@@ -14784,7 +14938,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : moi_array)
+    for (auto c : moi_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14819,7 +14973,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationReso
     resource_state{YType::enumeration, "resource-state"}
 {
 
-    yang_name = "application-resource"; yang_parent_name = "mois"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-resource"; yang_parent_name = "mois"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource::~ApplicationResource()
@@ -14828,6 +14982,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationReso
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::ApplicationResource::has_data() const
 {
+    if (is_presence_container) return true;
     return application_name.is_set
 	|| application_type.is_set
 	|| application_role_primary.is_set
@@ -14949,7 +15104,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::MoiAr
 {
     moi->parent = this;
 
-    yang_name = "moi-array"; yang_parent_name = "mois"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "moi-array"; yang_parent_name = "mois"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::~MoiArray()
@@ -14958,6 +15113,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::~MoiA
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::has_data() const
 {
+    if (is_presence_container) return true;
     return (moi !=  nullptr && moi->has_data());
 }
 
@@ -15027,21 +15183,22 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Moi()
     :
     moi_type{YType::enumeration, "moi-type"}
-    	,
+        ,
     pop_and_lookup_ipv4(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4>())
-	,pop_and_lookup_tp(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp>())
-	,pop_and_lookup_ipv6(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6>())
-	,ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data>())
-	,ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data>())
-	,tev4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data>())
-	,pseudowire_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData>())
-	,ip_sub_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData>())
-	,pseudowire_head_end_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData>())
-	,pw_list_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData>())
-	,stackv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data>())
-	,stackv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data>())
-	,te_head_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData>())
-	,dmtc_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData>())
+    , pop_and_lookup_tp(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp>())
+    , pop_and_lookup_ipv6(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6>())
+    , ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data>())
+    , ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data>())
+    , tev4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data>())
+    , pseudowire_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData>())
+    , ip_sub_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData>())
+    , pseudowire_head_end_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData>())
+    , pw_list_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData>())
+    , stackv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data>())
+    , stackv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data>())
+    , te_head_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData>())
+    , dmtc_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData>())
+    , nnh_stackv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data>())
 {
     pop_and_lookup_ipv4->parent = this;
     pop_and_lookup_tp->parent = this;
@@ -15057,8 +15214,9 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     stackv6_data->parent = this;
     te_head_data->parent = this;
     dmtc_data->parent = this;
+    nnh_stackv4_data->parent = this;
 
-    yang_name = "moi"; yang_parent_name = "moi-array"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "moi"; yang_parent_name = "moi-array"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::~Moi()
@@ -15067,6 +15225,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::has_data() const
 {
+    if (is_presence_container) return true;
     return moi_type.is_set
 	|| (pop_and_lookup_ipv4 !=  nullptr && pop_and_lookup_ipv4->has_data())
 	|| (pop_and_lookup_tp !=  nullptr && pop_and_lookup_tp->has_data())
@@ -15081,7 +15240,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 	|| (stackv4_data !=  nullptr && stackv4_data->has_data())
 	|| (stackv6_data !=  nullptr && stackv6_data->has_data())
 	|| (te_head_data !=  nullptr && te_head_data->has_data())
-	|| (dmtc_data !=  nullptr && dmtc_data->has_data());
+	|| (dmtc_data !=  nullptr && dmtc_data->has_data())
+	|| (nnh_stackv4_data !=  nullptr && nnh_stackv4_data->has_data());
 }
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::has_operation() const
@@ -15101,7 +15261,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 	|| (stackv4_data !=  nullptr && stackv4_data->has_operation())
 	|| (stackv6_data !=  nullptr && stackv6_data->has_operation())
 	|| (te_head_data !=  nullptr && te_head_data->has_operation())
-	|| (dmtc_data !=  nullptr && dmtc_data->has_operation());
+	|| (dmtc_data !=  nullptr && dmtc_data->has_operation())
+	|| (nnh_stackv4_data !=  nullptr && nnh_stackv4_data->has_operation());
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::get_segment_path() const
@@ -15249,6 +15410,15 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
         return dmtc_data;
     }
 
+    if(child_yang_name == "nnh-stackv4-data")
+    {
+        if(nnh_stackv4_data == nullptr)
+        {
+            nnh_stackv4_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data>();
+        }
+        return nnh_stackv4_data;
+    }
+
     return nullptr;
 }
 
@@ -15326,6 +15496,11 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
         children["dmtc-data"] = dmtc_data;
     }
 
+    if(nnh_stackv4_data != nullptr)
+    {
+        children["nnh-stackv4-data"] = nnh_stackv4_data;
+    }
+
     return children;
 }
 
@@ -15349,7 +15524,7 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pop-and-lookup-ipv4" || name == "pop-and-lookup-tp" || name == "pop-and-lookup-ipv6" || name == "ipv4-data" || name == "ipv6-data" || name == "tev4-data" || name == "pseudowire-data" || name == "ip-sub-data" || name == "pseudowire-head-end-data" || name == "pw-list-data" || name == "stackv4-data" || name == "stackv6-data" || name == "te-head-data" || name == "dmtc-data" || name == "moi-type")
+    if(name == "pop-and-lookup-ipv4" || name == "pop-and-lookup-tp" || name == "pop-and-lookup-ipv6" || name == "ipv4-data" || name == "ipv6-data" || name == "tev4-data" || name == "pseudowire-data" || name == "ip-sub-data" || name == "pseudowire-head-end-data" || name == "pw-list-data" || name == "stackv4-data" || name == "stackv6-data" || name == "te-head-data" || name == "dmtc-data" || name == "nnh-stackv4-data" || name == "moi-type")
         return true;
     return false;
 }
@@ -15361,7 +15536,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     path_flags_decode{YType::str, "path-flags-decode"}
 {
 
-    yang_name = "pop-and-lookup-ipv4"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pop-and-lookup-ipv4"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4::~PopAndLookupIpv4()
@@ -15370,6 +15545,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv4::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set;
@@ -15467,7 +15643,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     out_label{YType::uint32, "out-label"}
 {
 
-    yang_name = "pop-and-lookup-tp"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pop-and-lookup-tp"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp::~PopAndLookupTp()
@@ -15476,6 +15652,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupTp::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -15585,7 +15762,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     path_flags_decode{YType::str, "path-flags-decode"}
 {
 
-    yang_name = "pop-and-lookup-ipv6"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pop-and-lookup-ipv6"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6::~PopAndLookupIpv6()
@@ -15594,6 +15771,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PopAndLookupIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set;
@@ -15701,7 +15879,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     local_label{YType::uint32, "local-label"}
 {
 
-    yang_name = "ipv4-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data::~Ipv4Data()
@@ -15710,6 +15888,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -15957,7 +16136,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     out_interface_parent{YType::str, "out-interface-parent"}
 {
 
-    yang_name = "ipv6-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data::~Ipv6Data()
@@ -15966,6 +16145,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Ipv6Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -16175,10 +16355,11 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     tunnel_interface{YType::str, "tunnel-interface"},
     tunnel_weight{YType::uint32, "tunnel-weight"},
     data_out_parent_interface{YType::str, "data-out-parent-interface"},
-    tunnel_class{YType::uint32, "tunnel-class"}
+    tunnel_class{YType::uint32, "tunnel-class"},
+    ipv4_next_next_hop{YType::str, "ipv4-next-next-hop"}
 {
 
-    yang_name = "tev4-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tev4-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data::~Tev4Data()
@@ -16187,6 +16368,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -16201,7 +16383,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 	|| tunnel_interface.is_set
 	|| tunnel_weight.is_set
 	|| data_out_parent_interface.is_set
-	|| tunnel_class.is_set;
+	|| tunnel_class.is_set
+	|| ipv4_next_next_hop.is_set;
 }
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data::has_operation() const
@@ -16221,7 +16404,8 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 	|| ydk::is_set(tunnel_interface.yfilter)
 	|| ydk::is_set(tunnel_weight.yfilter)
 	|| ydk::is_set(data_out_parent_interface.yfilter)
-	|| ydk::is_set(tunnel_class.yfilter);
+	|| ydk::is_set(tunnel_class.yfilter)
+	|| ydk::is_set(ipv4_next_next_hop.yfilter);
 }
 
 std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data::get_segment_path() const
@@ -16250,6 +16434,7 @@ std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrit
     if (tunnel_weight.is_set || is_set(tunnel_weight.yfilter)) leaf_name_data.push_back(tunnel_weight.get_name_leafdata());
     if (data_out_parent_interface.is_set || is_set(data_out_parent_interface.yfilter)) leaf_name_data.push_back(data_out_parent_interface.get_name_leafdata());
     if (tunnel_class.is_set || is_set(tunnel_class.yfilter)) leaf_name_data.push_back(tunnel_class.get_name_leafdata());
+    if (ipv4_next_next_hop.is_set || is_set(ipv4_next_next_hop.yfilter)) leaf_name_data.push_back(ipv4_next_next_hop.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -16359,6 +16544,12 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
         tunnel_class.value_namespace = name_space;
         tunnel_class.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "ipv4-next-next-hop")
+    {
+        ipv4_next_next_hop = value;
+        ipv4_next_next_hop.value_namespace = name_space;
+        ipv4_next_next_hop.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data::set_filter(const std::string & value_path, YFilter yfilter)
@@ -16423,11 +16614,15 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
     {
         tunnel_class.yfilter = yfilter;
     }
+    if(value_path == "ipv4-next-next-hop")
+    {
+        ipv4_next_next_hop.yfilter = yfilter;
+    }
 }
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Tev4Data::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "table-id" || name == "table-name" || name == "path-flags-decode" || name == "out-interface" || name == "out-label" || name == "out-label-name" || name == "ipv4-next-hop" || name == "backup-interface" || name == "backup-ipv4-next-hop" || name == "merge-point-label" || name == "backup-local-label" || name == "tunnel-interface" || name == "tunnel-weight" || name == "data-out-parent-interface" || name == "tunnel-class")
+    if(name == "table-id" || name == "table-name" || name == "path-flags-decode" || name == "out-interface" || name == "out-label" || name == "out-label-name" || name == "ipv4-next-hop" || name == "backup-interface" || name == "backup-ipv4-next-hop" || name == "merge-point-label" || name == "backup-local-label" || name == "tunnel-interface" || name == "tunnel-weight" || name == "data-out-parent-interface" || name == "tunnel-class" || name == "ipv4-next-next-hop")
         return true;
     return false;
 }
@@ -16446,7 +16641,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     split_horizon_id{YType::uint32, "split-horizon-id"}
 {
 
-    yang_name = "pseudowire-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData::~PseudowireData()
@@ -16455,6 +16650,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -16643,7 +16839,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     path_flags_decode{YType::str, "path-flags-decode"}
 {
 
-    yang_name = "ip-sub-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-sub-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData::~IpSubData()
@@ -16652,6 +16848,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::IpSubData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| out_interface.is_set
@@ -16769,7 +16966,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     pwhe_interface{YType::str, "pwhe-interface"}
 {
 
-    yang_name = "pseudowire-head-end-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-head-end-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData::~PseudowireHeadEndData()
@@ -16778,6 +16975,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PseudowireHeadEndData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -16980,7 +17178,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     path_flags_decode{YType::str, "path-flags-decode"}
 {
 
-    yang_name = "pw-list-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw-list-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData::~PwListData()
@@ -16989,6 +17187,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::PwListData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| l3_interface.is_set
@@ -17107,14 +17306,14 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Stackv4Data()
     :
     owner_application_type{YType::enumeration, "owner-application-type"}
-    	,
+        ,
     nexthop(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop>())
-	,inner_stack(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack>())
+    , inner_stack(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack>())
 {
     nexthop->parent = this;
     inner_stack->parent = this;
 
-    yang_name = "stackv4-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stackv4-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::~Stackv4Data()
@@ -17123,6 +17322,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return owner_application_type.is_set
 	|| (nexthop !=  nullptr && nexthop->has_data())
 	|| (inner_stack !=  nullptr && inner_stack->has_data());
@@ -17236,7 +17436,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     local_label{YType::uint32, "local-label"}
 {
 
-    yang_name = "nexthop"; yang_parent_name = "stackv4-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "stackv4-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop::~Nexthop()
@@ -17245,6 +17445,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -17481,9 +17682,12 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     :
     num_nexthops{YType::uint8, "num-nexthops"},
     num_lbls{YType::uint8, "num-lbls"}
+        ,
+    nexthop(this, {})
+    , label(this, {})
 {
 
-    yang_name = "inner-stack"; yang_parent_name = "stackv4-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inner-stack"; yang_parent_name = "stackv4-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::~InnerStack()
@@ -17492,12 +17696,13 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::has_data() const
 {
-    for (std::size_t index=0; index<nexthop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nexthop.len(); index++)
     {
         if(nexthop[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<label.size(); index++)
+    for (std::size_t index=0; index<label.len(); index++)
     {
         if(label[index]->has_data())
             return true;
@@ -17508,12 +17713,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::has_operation() const
 {
-    for (std::size_t index=0; index<nexthop.size(); index++)
+    for (std::size_t index=0; index<nexthop.len(); index++)
     {
         if(nexthop[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<label.size(); index++)
+    for (std::size_t index=0; index<label.len(); index++)
     {
         if(label[index]->has_operation())
             return true;
@@ -17547,7 +17752,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop>();
         c->parent = this;
-        nexthop.push_back(c);
+        nexthop.append(c);
         return c;
     }
 
@@ -17555,7 +17760,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label>();
         c->parent = this;
-        label.push_back(c);
+        label.append(c);
         return c;
     }
 
@@ -17567,7 +17772,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nexthop)
+    for (auto c : nexthop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17576,7 +17781,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : label)
+    for (auto c : label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17627,7 +17832,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     entry{YType::str, "entry"}
 {
 
-    yang_name = "nexthop"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop::~Nexthop()
@@ -17636,6 +17841,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -17705,7 +17911,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     outgoing_label_str{YType::str, "outgoing-label-str"}
 {
 
-    yang_name = "label"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::~Label()
@@ -17714,6 +17920,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv4Data::InnerStack::Label::has_data() const
 {
+    if (is_presence_container) return true;
     return outgoing_label.is_set
 	|| outgoing_label_str.is_set;
 }
@@ -17793,12 +18000,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Stackv6Data()
     :
     nexthop(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop>())
-	,inner_stack(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack>())
+    , inner_stack(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack>())
 {
     nexthop->parent = this;
     inner_stack->parent = this;
 
-    yang_name = "stackv6-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stackv6-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::~Stackv6Data()
@@ -17807,6 +18014,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::has_data() const
 {
+    if (is_presence_container) return true;
     return (nexthop !=  nullptr && nexthop->has_data())
 	|| (inner_stack !=  nullptr && inner_stack->has_data());
 }
@@ -17904,7 +18112,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     out_interface_parent{YType::str, "out-interface-parent"}
 {
 
-    yang_name = "nexthop"; yang_parent_name = "stackv6-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "stackv6-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop::~Nexthop()
@@ -17913,6 +18121,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| path_flags_decode.is_set
@@ -18110,9 +18319,12 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     :
     num_nexthops{YType::uint8, "num-nexthops"},
     num_lbls{YType::uint8, "num-lbls"}
+        ,
+    nexthop(this, {})
+    , label(this, {})
 {
 
-    yang_name = "inner-stack"; yang_parent_name = "stackv6-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inner-stack"; yang_parent_name = "stackv6-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::~InnerStack()
@@ -18121,12 +18333,13 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::has_data() const
 {
-    for (std::size_t index=0; index<nexthop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nexthop.len(); index++)
     {
         if(nexthop[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<label.size(); index++)
+    for (std::size_t index=0; index<label.len(); index++)
     {
         if(label[index]->has_data())
             return true;
@@ -18137,12 +18350,12 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::has_operation() const
 {
-    for (std::size_t index=0; index<nexthop.size(); index++)
+    for (std::size_t index=0; index<nexthop.len(); index++)
     {
         if(nexthop[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<label.size(); index++)
+    for (std::size_t index=0; index<label.len(); index++)
     {
         if(label[index]->has_operation())
             return true;
@@ -18176,7 +18389,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop>();
         c->parent = this;
-        nexthop.push_back(c);
+        nexthop.append(c);
         return c;
     }
 
@@ -18184,7 +18397,7 @@ std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewriteP
     {
         auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label>();
         c->parent = this;
-        label.push_back(c);
+        label.append(c);
         return c;
     }
 
@@ -18196,7 +18409,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nexthop)
+    for (auto c : nexthop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18205,7 +18418,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     }
 
     count = 0;
-    for (auto const & c : label)
+    for (auto c : label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18256,7 +18469,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     entry{YType::str, "entry"}
 {
 
-    yang_name = "nexthop"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop::~Nexthop()
@@ -18265,6 +18478,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -18334,7 +18548,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     outgoing_label_str{YType::str, "outgoing-label-str"}
 {
 
-    yang_name = "label"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::~Label()
@@ -18343,6 +18557,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv6Data::InnerStack::Label::has_data() const
 {
+    if (is_presence_container) return true;
     return outgoing_label.is_set
 	|| outgoing_label_str.is_set;
 }
@@ -18430,7 +18645,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     flags_decode{YType::str, "flags-decode"}
 {
 
-    yang_name = "te-head-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "te-head-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData::~TeHeadData()
@@ -18439,6 +18654,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::TeHeadData::has_data() const
 {
+    if (is_presence_container) return true;
     return table_id.is_set
 	|| table_name.is_set
 	|| tunnel_local_label.is_set
@@ -18585,7 +18801,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
     dmtc_ext_ifh{YType::str, "dmtc-ext-ifh"}
 {
 
-    yang_name = "dmtc-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dmtc-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData::~DmtcData()
@@ -18594,6 +18810,7 @@ MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::
 
 bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::DmtcData::has_data() const
 {
+    if (is_presence_container) return true;
     return dmtc_ext_ifh.is_set;
 }
 
@@ -18657,323 +18874,91 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4S()
-{
-
-    yang_name = "rewrite-ipv4s"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::~RewriteIpv4S()
-{
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::has_data() const
-{
-    for (std::size_t index=0; index<rewrite_ipv4.size(); index++)
-    {
-        if(rewrite_ipv4[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::has_operation() const
-{
-    for (std::size_t index=0; index<rewrite_ipv4.size(); index++)
-    {
-        if(rewrite_ipv4[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rewrite-ipv4s";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rewrite-ipv4")
-    {
-        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4>();
-        c->parent = this;
-        rewrite_ipv4.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : rewrite_ipv4)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rewrite-ipv4")
-        return true;
-    return false;
-}
-
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteIpv4()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NnhStackv4Data()
     :
-    rsi_table_name{YType::str, "rsi-table-name"},
-    rsi_table_id{YType::str, "rsi-table-id"},
-    prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"},
-    rewrite_version{YType::uint64, "rewrite-version"},
-    bcdl_priority{YType::uint8, "bcdl-priority"},
-    lsd_queue{YType::uint8, "lsd-queue"},
-    rw_install_time{YType::uint64, "rw-install-time"},
-    rw_install_age{YType::uint64, "rw-install-age"},
-    rw_updated{YType::int32, "rw-updated"},
-    priority_updated{YType::int32, "priority-updated"}
-    	,
-    fpi_key(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey>())
-	,rewrite_id(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId>())
+    ipv4_stack(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack>())
+    , next_next_hop(this, {})
 {
-    fpi_key->parent = this;
-    rewrite_id->parent = this;
+    ipv4_stack->parent = this;
 
-    yang_name = "rewrite-ipv4"; yang_parent_name = "rewrite-ipv4s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nnh-stackv4-data"; yang_parent_name = "moi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::~RewriteIpv4()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::~NnhStackv4Data()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::has_data() const
 {
-    for (std::size_t index=0; index<associated_fpi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<next_next_hop.len(); index++)
     {
-        if(associated_fpi[index]->has_data())
+        if(next_next_hop[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<v4_rpf.size(); index++)
-    {
-        if(v4_rpf[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<v6_rpf.size(); index++)
-    {
-        if(v6_rpf[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<mois.size(); index++)
-    {
-        if(mois[index]->has_data())
-            return true;
-    }
-    return rsi_table_name.is_set
-	|| rsi_table_id.is_set
-	|| prefix.is_set
-	|| prefix_length.is_set
-	|| rewrite_version.is_set
-	|| bcdl_priority.is_set
-	|| lsd_queue.is_set
-	|| rw_install_time.is_set
-	|| rw_install_age.is_set
-	|| rw_updated.is_set
-	|| priority_updated.is_set
-	|| (fpi_key !=  nullptr && fpi_key->has_data())
-	|| (rewrite_id !=  nullptr && rewrite_id->has_data());
+    return (ipv4_stack !=  nullptr && ipv4_stack->has_data());
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::has_operation() const
 {
-    for (std::size_t index=0; index<associated_fpi.size(); index++)
+    for (std::size_t index=0; index<next_next_hop.len(); index++)
     {
-        if(associated_fpi[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<v4_rpf.size(); index++)
-    {
-        if(v4_rpf[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<v6_rpf.size(); index++)
-    {
-        if(v6_rpf[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<mois.size(); index++)
-    {
-        if(mois[index]->has_operation())
+        if(next_next_hop[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(rsi_table_name.yfilter)
-	|| ydk::is_set(rsi_table_id.yfilter)
-	|| ydk::is_set(prefix.yfilter)
-	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(rewrite_version.yfilter)
-	|| ydk::is_set(bcdl_priority.yfilter)
-	|| ydk::is_set(lsd_queue.yfilter)
-	|| ydk::is_set(rw_install_time.yfilter)
-	|| ydk::is_set(rw_install_age.yfilter)
-	|| ydk::is_set(rw_updated.yfilter)
-	|| ydk::is_set(priority_updated.yfilter)
-	|| (fpi_key !=  nullptr && fpi_key->has_operation())
-	|| (rewrite_id !=  nullptr && rewrite_id->has_operation());
+	|| (ipv4_stack !=  nullptr && ipv4_stack->has_operation());
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rewrite-ipv4";
+    path_buffer << "nnh-stackv4-data";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (rsi_table_name.is_set || is_set(rsi_table_name.yfilter)) leaf_name_data.push_back(rsi_table_name.get_name_leafdata());
-    if (rsi_table_id.is_set || is_set(rsi_table_id.yfilter)) leaf_name_data.push_back(rsi_table_id.get_name_leafdata());
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (rewrite_version.is_set || is_set(rewrite_version.yfilter)) leaf_name_data.push_back(rewrite_version.get_name_leafdata());
-    if (bcdl_priority.is_set || is_set(bcdl_priority.yfilter)) leaf_name_data.push_back(bcdl_priority.get_name_leafdata());
-    if (lsd_queue.is_set || is_set(lsd_queue.yfilter)) leaf_name_data.push_back(lsd_queue.get_name_leafdata());
-    if (rw_install_time.is_set || is_set(rw_install_time.yfilter)) leaf_name_data.push_back(rw_install_time.get_name_leafdata());
-    if (rw_install_age.is_set || is_set(rw_install_age.yfilter)) leaf_name_data.push_back(rw_install_age.get_name_leafdata());
-    if (rw_updated.is_set || is_set(rw_updated.yfilter)) leaf_name_data.push_back(rw_updated.get_name_leafdata());
-    if (priority_updated.is_set || is_set(priority_updated.yfilter)) leaf_name_data.push_back(priority_updated.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "fpi-key")
+    if(child_yang_name == "ipv4-stack")
     {
-        if(fpi_key == nullptr)
+        if(ipv4_stack == nullptr)
         {
-            fpi_key = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey>();
+            ipv4_stack = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack>();
         }
-        return fpi_key;
+        return ipv4_stack;
     }
 
-    if(child_yang_name == "rewrite-id")
+    if(child_yang_name == "next-next-hop")
     {
-        if(rewrite_id == nullptr)
-        {
-            rewrite_id = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::RewriteId>();
-        }
-        return rewrite_id;
-    }
-
-    if(child_yang_name == "associated-fpi")
-    {
-        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::AssociatedFpi>();
+        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::NextNextHop>();
         c->parent = this;
-        associated_fpi.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "v4-rpf")
-    {
-        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V4Rpf>();
-        c->parent = this;
-        v4_rpf.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "v6-rpf")
-    {
-        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::V6Rpf>();
-        c->parent = this;
-        v6_rpf.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "mois")
-    {
-        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::Mois>();
-        c->parent = this;
-        mois.push_back(c);
+        next_next_hop.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(fpi_key != nullptr)
+    if(ipv4_stack != nullptr)
     {
-        children["fpi-key"] = fpi_key;
-    }
-
-    if(rewrite_id != nullptr)
-    {
-        children["rewrite-id"] = rewrite_id;
+        children["ipv4-stack"] = ipv4_stack;
     }
 
     count = 0;
-    for (auto const & c : associated_fpi)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : v4_rpf)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : v6_rpf)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    count = 0;
-    for (auto const & c : mois)
+    for (auto c : next_next_hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18984,593 +18969,320 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrit
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "rsi-table-name")
-    {
-        rsi_table_name = value;
-        rsi_table_name.value_namespace = name_space;
-        rsi_table_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsi-table-id")
-    {
-        rsi_table_id = value;
-        rsi_table_id.value_namespace = name_space;
-        rsi_table_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length = value;
-        prefix_length.value_namespace = name_space;
-        prefix_length.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rewrite-version")
-    {
-        rewrite_version = value;
-        rewrite_version.value_namespace = name_space;
-        rewrite_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bcdl-priority")
-    {
-        bcdl_priority = value;
-        bcdl_priority.value_namespace = name_space;
-        bcdl_priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lsd-queue")
-    {
-        lsd_queue = value;
-        lsd_queue.value_namespace = name_space;
-        lsd_queue.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rw-install-time")
-    {
-        rw_install_time = value;
-        rw_install_time.value_namespace = name_space;
-        rw_install_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rw-install-age")
-    {
-        rw_install_age = value;
-        rw_install_age.value_namespace = name_space;
-        rw_install_age.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rw-updated")
-    {
-        rw_updated = value;
-        rw_updated.value_namespace = name_space;
-        rw_updated.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-updated")
-    {
-        priority_updated = value;
-        priority_updated.value_namespace = name_space;
-        priority_updated.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "rsi-table-name")
-    {
-        rsi_table_name.yfilter = yfilter;
-    }
-    if(value_path == "rsi-table-id")
-    {
-        rsi_table_id.yfilter = yfilter;
-    }
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-    if(value_path == "prefix-length")
-    {
-        prefix_length.yfilter = yfilter;
-    }
-    if(value_path == "rewrite-version")
-    {
-        rewrite_version.yfilter = yfilter;
-    }
-    if(value_path == "bcdl-priority")
-    {
-        bcdl_priority.yfilter = yfilter;
-    }
-    if(value_path == "lsd-queue")
-    {
-        lsd_queue.yfilter = yfilter;
-    }
-    if(value_path == "rw-install-time")
-    {
-        rw_install_time.yfilter = yfilter;
-    }
-    if(value_path == "rw-install-age")
-    {
-        rw_install_age.yfilter = yfilter;
-    }
-    if(value_path == "rw-updated")
-    {
-        rw_updated.yfilter = yfilter;
-    }
-    if(value_path == "priority-updated")
-    {
-        priority_updated.yfilter = yfilter;
-    }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "fpi-key" || name == "rewrite-id" || name == "associated-fpi" || name == "v4-rpf" || name == "v6-rpf" || name == "mois" || name == "rsi-table-name" || name == "rsi-table-id" || name == "prefix" || name == "prefix-length" || name == "rewrite-version" || name == "bcdl-priority" || name == "lsd-queue" || name == "rw-install-time" || name == "rw-install-age" || name == "rw-updated" || name == "priority-updated")
+    if(name == "ipv4-stack" || name == "next-next-hop")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::FpiKey()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Ipv4Stack()
     :
-    fpi(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi>())
+    owner_application_type{YType::enumeration, "owner-application-type"}
+        ,
+    nexthop(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop>())
+    , inner_stack(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack>())
 {
-    fpi->parent = this;
+    nexthop->parent = this;
+    inner_stack->parent = this;
 
-    yang_name = "fpi-key"; yang_parent_name = "rewrite-ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-stack"; yang_parent_name = "nnh-stackv4-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::~FpiKey()
-{
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::has_data() const
-{
-    for (std::size_t index=0; index<application_owner.size(); index++)
-    {
-        if(application_owner[index]->has_data())
-            return true;
-    }
-    return (fpi !=  nullptr && fpi->has_data());
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::has_operation() const
-{
-    for (std::size_t index=0; index<application_owner.size(); index++)
-    {
-        if(application_owner[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (fpi !=  nullptr && fpi->has_operation());
-}
-
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fpi-key";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fpi")
-    {
-        if(fpi == nullptr)
-        {
-            fpi = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi>();
-        }
-        return fpi;
-    }
-
-    if(child_yang_name == "application-owner")
-    {
-        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::ApplicationOwner>();
-        c->parent = this;
-        application_owner.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(fpi != nullptr)
-    {
-        children["fpi"] = fpi;
-    }
-
-    count = 0;
-    for (auto const & c : application_owner)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::~Ipv4Stack()
 {
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::set_filter(const std::string & value_path, YFilter yfilter)
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::has_data() const
 {
+    if (is_presence_container) return true;
+    return owner_application_type.is_set
+	|| (nexthop !=  nullptr && nexthop->has_data())
+	|| (inner_stack !=  nullptr && inner_stack->has_data());
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fpi" || name == "application-owner")
-        return true;
-    return false;
-}
-
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Fpi()
-    :
-    fpi_type{YType::enumeration, "fpi-type"}
-    	,
-    label_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData>())
-	,te_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData>())
-	,ipv4_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data>())
-	,ipv6_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data>())
-	,pw_list_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData>())
-	,dmtc_ext_intf_data(std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData>())
-{
-    label_data->parent = this;
-    te_data->parent = this;
-    ipv4_data->parent = this;
-    ipv6_data->parent = this;
-    pw_list_data->parent = this;
-    dmtc_ext_intf_data->parent = this;
-
-    yang_name = "fpi"; yang_parent_name = "fpi-key"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::~Fpi()
-{
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::has_data() const
-{
-    return fpi_type.is_set
-	|| (label_data !=  nullptr && label_data->has_data())
-	|| (te_data !=  nullptr && te_data->has_data())
-	|| (ipv4_data !=  nullptr && ipv4_data->has_data())
-	|| (ipv6_data !=  nullptr && ipv6_data->has_data())
-	|| (pw_list_data !=  nullptr && pw_list_data->has_data())
-	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_data());
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(fpi_type.yfilter)
-	|| (label_data !=  nullptr && label_data->has_operation())
-	|| (te_data !=  nullptr && te_data->has_operation())
-	|| (ipv4_data !=  nullptr && ipv4_data->has_operation())
-	|| (ipv6_data !=  nullptr && ipv6_data->has_operation())
-	|| (pw_list_data !=  nullptr && pw_list_data->has_operation())
-	|| (dmtc_ext_intf_data !=  nullptr && dmtc_ext_intf_data->has_operation());
+	|| ydk::is_set(owner_application_type.yfilter)
+	|| (nexthop !=  nullptr && nexthop->has_operation())
+	|| (inner_stack !=  nullptr && inner_stack->has_operation());
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpi";
+    path_buffer << "ipv4-stack";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (fpi_type.is_set || is_set(fpi_type.yfilter)) leaf_name_data.push_back(fpi_type.get_name_leafdata());
+    if (owner_application_type.is_set || is_set(owner_application_type.yfilter)) leaf_name_data.push_back(owner_application_type.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "label-data")
+    if(child_yang_name == "nexthop")
     {
-        if(label_data == nullptr)
+        if(nexthop == nullptr)
         {
-            label_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData>();
+            nexthop = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop>();
         }
-        return label_data;
+        return nexthop;
     }
 
-    if(child_yang_name == "te-data")
+    if(child_yang_name == "inner-stack")
     {
-        if(te_data == nullptr)
+        if(inner_stack == nullptr)
         {
-            te_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData>();
+            inner_stack = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack>();
         }
-        return te_data;
-    }
-
-    if(child_yang_name == "ipv4-data")
-    {
-        if(ipv4_data == nullptr)
-        {
-            ipv4_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv4Data>();
-        }
-        return ipv4_data;
-    }
-
-    if(child_yang_name == "ipv6-data")
-    {
-        if(ipv6_data == nullptr)
-        {
-            ipv6_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::Ipv6Data>();
-        }
-        return ipv6_data;
-    }
-
-    if(child_yang_name == "pw-list-data")
-    {
-        if(pw_list_data == nullptr)
-        {
-            pw_list_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::PwListData>();
-        }
-        return pw_list_data;
-    }
-
-    if(child_yang_name == "dmtc-ext-intf-data")
-    {
-        if(dmtc_ext_intf_data == nullptr)
-        {
-            dmtc_ext_intf_data = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::DmtcExtIntfData>();
-        }
-        return dmtc_ext_intf_data;
+        return inner_stack;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(label_data != nullptr)
+    if(nexthop != nullptr)
     {
-        children["label-data"] = label_data;
+        children["nexthop"] = nexthop;
     }
 
-    if(te_data != nullptr)
+    if(inner_stack != nullptr)
     {
-        children["te-data"] = te_data;
-    }
-
-    if(ipv4_data != nullptr)
-    {
-        children["ipv4-data"] = ipv4_data;
-    }
-
-    if(ipv6_data != nullptr)
-    {
-        children["ipv6-data"] = ipv6_data;
-    }
-
-    if(pw_list_data != nullptr)
-    {
-        children["pw-list-data"] = pw_list_data;
-    }
-
-    if(dmtc_ext_intf_data != nullptr)
-    {
-        children["dmtc-ext-intf-data"] = dmtc_ext_intf_data;
+        children["inner-stack"] = inner_stack;
     }
 
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "fpi-type")
+    if(value_path == "owner-application-type")
     {
-        fpi_type = value;
-        fpi_type.value_namespace = name_space;
-        fpi_type.value_namespace_prefix = name_space_prefix;
+        owner_application_type = value;
+        owner_application_type.value_namespace = name_space;
+        owner_application_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "fpi-type")
+    if(value_path == "owner-application-type")
     {
-        fpi_type.yfilter = yfilter;
+        owner_application_type.yfilter = yfilter;
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "label-data" || name == "te-data" || name == "ipv4-data" || name == "ipv6-data" || name == "pw-list-data" || name == "dmtc-ext-intf-data" || name == "fpi-type")
+    if(name == "nexthop" || name == "inner-stack" || name == "owner-application-type")
         return true;
     return false;
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::LabelData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::Nexthop()
     :
-    label{YType::uint32, "label"},
-    security_id{YType::uint32, "security-id"},
-    elc{YType::int32, "elc"}
-{
-
-    yang_name = "label-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::~LabelData()
-{
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::has_data() const
-{
-    return label.is_set
-	|| security_id.is_set
-	|| elc.is_set;
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(label.yfilter)
-	|| ydk::is_set(security_id.yfilter)
-	|| ydk::is_set(elc.yfilter);
-}
-
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "label-data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (security_id.is_set || is_set(security_id.yfilter)) leaf_name_data.push_back(security_id.get_name_leafdata());
-    if (elc.is_set || is_set(elc.yfilter)) leaf_name_data.push_back(elc.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "label")
-    {
-        label = value;
-        label.value_namespace = name_space;
-        label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "security-id")
-    {
-        security_id = value;
-        security_id.value_namespace = name_space;
-        security_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "elc")
-    {
-        elc = value;
-        elc.value_namespace = name_space;
-        elc.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "label")
-    {
-        label.yfilter = yfilter;
-    }
-    if(value_path == "security-id")
-    {
-        security_id.yfilter = yfilter;
-    }
-    if(value_path == "elc")
-    {
-        elc.yfilter = yfilter;
-    }
-}
-
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::LabelData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "label" || name == "security-id" || name == "elc")
-        return true;
-    return false;
-}
-
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::TeData()
-    :
-    tunnel_interface{YType::str, "tunnel-interface"},
+    table_id{YType::uint32, "table-id"},
+    table_name{YType::str, "table-name"},
+    path_flags_decode{YType::str, "path-flags-decode"},
+    out_interface{YType::str, "out-interface"},
+    out_interface_parent{YType::str, "out-interface-parent"},
+    ipv4_next_hop{YType::str, "ipv4-next-hop"},
+    path_id{YType::uint8, "path-id"},
+    backup_path_id{YType::uint8, "backup-path-id"},
+    load_metric{YType::uint32, "load-metric"},
+    out_label{YType::uint32, "out-label"},
+    out_label_name{YType::str, "out-label-name"},
+    tunnel_id{YType::uint16, "tunnel-id"},
+    next_hop_id{YType::uint32, "next-hop-id"},
     local_label{YType::uint32, "local-label"}
 {
 
-    yang_name = "te-data"; yang_parent_name = "fpi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "ipv4-stack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::~TeData()
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::~Nexthop()
 {
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::has_data() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::has_data() const
 {
-    return tunnel_interface.is_set
+    if (is_presence_container) return true;
+    return table_id.is_set
+	|| table_name.is_set
+	|| path_flags_decode.is_set
+	|| out_interface.is_set
+	|| out_interface_parent.is_set
+	|| ipv4_next_hop.is_set
+	|| path_id.is_set
+	|| backup_path_id.is_set
+	|| load_metric.is_set
+	|| out_label.is_set
+	|| out_label_name.is_set
+	|| tunnel_id.is_set
+	|| next_hop_id.is_set
 	|| local_label.is_set;
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::has_operation() const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(tunnel_interface.yfilter)
+	|| ydk::is_set(table_id.yfilter)
+	|| ydk::is_set(table_name.yfilter)
+	|| ydk::is_set(path_flags_decode.yfilter)
+	|| ydk::is_set(out_interface.yfilter)
+	|| ydk::is_set(out_interface_parent.yfilter)
+	|| ydk::is_set(ipv4_next_hop.yfilter)
+	|| ydk::is_set(path_id.yfilter)
+	|| ydk::is_set(backup_path_id.yfilter)
+	|| ydk::is_set(load_metric.yfilter)
+	|| ydk::is_set(out_label.yfilter)
+	|| ydk::is_set(out_label_name.yfilter)
+	|| ydk::is_set(tunnel_id.yfilter)
+	|| ydk::is_set(next_hop_id.yfilter)
 	|| ydk::is_set(local_label.yfilter);
 }
 
-std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::get_segment_path() const
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "te-data";
+    path_buffer << "nexthop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (tunnel_interface.is_set || is_set(tunnel_interface.yfilter)) leaf_name_data.push_back(tunnel_interface.get_name_leafdata());
+    if (table_id.is_set || is_set(table_id.yfilter)) leaf_name_data.push_back(table_id.get_name_leafdata());
+    if (table_name.is_set || is_set(table_name.yfilter)) leaf_name_data.push_back(table_name.get_name_leafdata());
+    if (path_flags_decode.is_set || is_set(path_flags_decode.yfilter)) leaf_name_data.push_back(path_flags_decode.get_name_leafdata());
+    if (out_interface.is_set || is_set(out_interface.yfilter)) leaf_name_data.push_back(out_interface.get_name_leafdata());
+    if (out_interface_parent.is_set || is_set(out_interface_parent.yfilter)) leaf_name_data.push_back(out_interface_parent.get_name_leafdata());
+    if (ipv4_next_hop.is_set || is_set(ipv4_next_hop.yfilter)) leaf_name_data.push_back(ipv4_next_hop.get_name_leafdata());
+    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
+    if (backup_path_id.is_set || is_set(backup_path_id.yfilter)) leaf_name_data.push_back(backup_path_id.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+    if (out_label.is_set || is_set(out_label.yfilter)) leaf_name_data.push_back(out_label.get_name_leafdata());
+    if (out_label_name.is_set || is_set(out_label_name.yfilter)) leaf_name_data.push_back(out_label_name.get_name_leafdata());
+    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
+    if (next_hop_id.is_set || is_set(next_hop_id.yfilter)) leaf_name_data.push_back(next_hop_id.get_name_leafdata());
     if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "tunnel-interface")
+    if(value_path == "table-id")
     {
-        tunnel_interface = value;
-        tunnel_interface.value_namespace = name_space;
-        tunnel_interface.value_namespace_prefix = name_space_prefix;
+        table_id = value;
+        table_id.value_namespace = name_space;
+        table_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "table-name")
+    {
+        table_name = value;
+        table_name.value_namespace = name_space;
+        table_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-flags-decode")
+    {
+        path_flags_decode = value;
+        path_flags_decode.value_namespace = name_space;
+        path_flags_decode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-interface")
+    {
+        out_interface = value;
+        out_interface.value_namespace = name_space;
+        out_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-interface-parent")
+    {
+        out_interface_parent = value;
+        out_interface_parent.value_namespace = name_space;
+        out_interface_parent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-next-hop")
+    {
+        ipv4_next_hop = value;
+        ipv4_next_hop.value_namespace = name_space;
+        ipv4_next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "path-id")
+    {
+        path_id = value;
+        path_id.value_namespace = name_space;
+        path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "backup-path-id")
+    {
+        backup_path_id = value;
+        backup_path_id.value_namespace = name_space;
+        backup_path_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-label")
+    {
+        out_label = value;
+        out_label.value_namespace = name_space;
+        out_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-label-name")
+    {
+        out_label_name = value;
+        out_label_name.value_namespace = name_space;
+        out_label_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id = value;
+        tunnel_id.value_namespace = name_space;
+        tunnel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-id")
+    {
+        next_hop_id = value;
+        next_hop_id.value_namespace = name_space;
+        next_hop_id.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "local-label")
     {
@@ -19580,11 +19292,59 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi:
     }
 }
 
-void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "tunnel-interface")
+    if(value_path == "table-id")
     {
-        tunnel_interface.yfilter = yfilter;
+        table_id.yfilter = yfilter;
+    }
+    if(value_path == "table-name")
+    {
+        table_name.yfilter = yfilter;
+    }
+    if(value_path == "path-flags-decode")
+    {
+        path_flags_decode.yfilter = yfilter;
+    }
+    if(value_path == "out-interface")
+    {
+        out_interface.yfilter = yfilter;
+    }
+    if(value_path == "out-interface-parent")
+    {
+        out_interface_parent.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-next-hop")
+    {
+        ipv4_next_hop.yfilter = yfilter;
+    }
+    if(value_path == "path-id")
+    {
+        path_id.yfilter = yfilter;
+    }
+    if(value_path == "backup-path-id")
+    {
+        backup_path_id.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+    if(value_path == "out-label")
+    {
+        out_label.yfilter = yfilter;
+    }
+    if(value_path == "out-label-name")
+    {
+        out_label_name.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-id")
+    {
+        tunnel_id.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-id")
+    {
+        next_hop_id.yfilter = yfilter;
     }
     if(value_path == "local-label")
     {
@@ -19592,24 +19352,341 @@ void MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi:
     }
 }
 
-bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteIpv4S::RewriteIpv4::FpiKey::Fpi::TeData::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::Nexthop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tunnel-interface" || name == "local-label")
+    if(name == "table-id" || name == "table-name" || name == "path-flags-decode" || name == "out-interface" || name == "out-interface-parent" || name == "ipv4-next-hop" || name == "path-id" || name == "backup-path-id" || name == "load-metric" || name == "out-label" || name == "out-label-name" || name == "tunnel-id" || name == "next-hop-id" || name == "local-label")
         return true;
     return false;
 }
 
-const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_unknown {0, "mgmt-lsd-intf-state-unknown"};
-const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_up {1, "mgmt-lsd-intf-state-up"};
-const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_down {2, "mgmt-lsd-intf-state-down"};
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::InnerStack()
+    :
+    num_nexthops{YType::uint8, "num-nexthops"},
+    num_lbls{YType::uint8, "num-lbls"}
+        ,
+    nexthop(this, {})
+    , label(this, {})
+{
 
-const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_active {0, "mgmt-lsd-app-state-active"};
-const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_zombie {1, "mgmt-lsd-app-state-zombie"};
-const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_recover {2, "mgmt-lsd-app-state-recover"};
+    yang_name = "inner-stack"; yang_parent_name = "ipv4-stack"; is_top_level_class = false; has_list_ancestor = true; 
+}
 
-const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_none {0, "mgmt-lsd-rw-id-type-none"};
-const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_lbl_ctx {1, "mgmt-lsd-rw-id-type-lbl-ctx"};
-const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_loc_lbl {2, "mgmt-lsd-rw-id-type-loc-lbl"};
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::~InnerStack()
+{
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nexthop.len(); index++)
+    {
+        if(nexthop[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<label.len(); index++)
+    {
+        if(label[index]->has_data())
+            return true;
+    }
+    return num_nexthops.is_set
+	|| num_lbls.is_set;
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::has_operation() const
+{
+    for (std::size_t index=0; index<nexthop.len(); index++)
+    {
+        if(nexthop[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<label.len(); index++)
+    {
+        if(label[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(num_nexthops.yfilter)
+	|| ydk::is_set(num_lbls.yfilter);
+}
+
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inner-stack";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (num_nexthops.is_set || is_set(num_nexthops.yfilter)) leaf_name_data.push_back(num_nexthops.get_name_leafdata());
+    if (num_lbls.is_set || is_set(num_lbls.yfilter)) leaf_name_data.push_back(num_lbls.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nexthop")
+    {
+        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop>();
+        c->parent = this;
+        nexthop.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "label")
+    {
+        auto c = std::make_shared<MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label>();
+        c->parent = this;
+        label.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : nexthop.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : label.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "num-nexthops")
+    {
+        num_nexthops = value;
+        num_nexthops.value_namespace = name_space;
+        num_nexthops.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "num-lbls")
+    {
+        num_lbls = value;
+        num_lbls.value_namespace = name_space;
+        num_lbls.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "num-nexthops")
+    {
+        num_nexthops.yfilter = yfilter;
+    }
+    if(value_path == "num-lbls")
+    {
+        num_lbls.yfilter = yfilter;
+    }
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nexthop" || name == "label" || name == "num-nexthops" || name == "num-lbls")
+        return true;
+    return false;
+}
+
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::Nexthop()
+    :
+    entry{YType::str, "entry"}
+{
+
+    yang_name = "nexthop"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::~Nexthop()
+{
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nexthop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Nexthop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::Label()
+    :
+    outgoing_label{YType::uint32, "outgoing-label"},
+    outgoing_label_str{YType::str, "outgoing-label-str"}
+{
+
+    yang_name = "label"; yang_parent_name = "inner-stack"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::~Label()
+{
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::has_data() const
+{
+    if (is_presence_container) return true;
+    return outgoing_label.is_set
+	|| outgoing_label_str.is_set;
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(outgoing_label.yfilter)
+	|| ydk::is_set(outgoing_label_str.yfilter);
+}
+
+std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "label";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (outgoing_label.is_set || is_set(outgoing_label.yfilter)) leaf_name_data.push_back(outgoing_label.get_name_leafdata());
+    if (outgoing_label_str.is_set || is_set(outgoing_label_str.yfilter)) leaf_name_data.push_back(outgoing_label_str.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label = value;
+        outgoing_label.value_namespace = name_space;
+        outgoing_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outgoing-label-str")
+    {
+        outgoing_label_str = value;
+        outgoing_label_str.value_namespace = name_space;
+        outgoing_label_str.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outgoing-label")
+    {
+        outgoing_label.yfilter = yfilter;
+    }
+    if(value_path == "outgoing-label-str")
+    {
+        outgoing_label_str.yfilter = yfilter;
+    }
+}
+
+bool MplsLsdNodes::MplsLsdNode::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack::Label::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outgoing-label" || name == "outgoing-label-str")
+        return true;
+    return false;
+}
+
+const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_app {0, "mgmt-lsd-client-type-app"};
+const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_ba {1, "mgmt-lsd-client-type-ba"};
+
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_partial {0, "mgmt-lsd-frr-state-partial"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_active {1, "mgmt-lsd-frr-state-active"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_ready {2, "mgmt-lsd-frr-state-ready"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_complete {3, "mgmt-lsd-frr-state-complete"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_any {4, "mgmt-lsd-frr-state-any"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_igp {5, "mgmt-lsd-frr-state-igp"};
 
 const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_pop_and_lkup_ipv4 {0, "mgmt-lsd-moi-type-pop-and-lkup-ipv4"};
 const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_ipv4 {1, "mgmt-lsd-moi-type-ipv4"};
@@ -19625,6 +19702,7 @@ const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_pop_and_lkup_tp {10, "mgmt-lsd-m
 const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_ipv6_stack {11, "mgmt-lsd-moi-type-ipv6-stack"};
 const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_te_head {12, "mgmt-lsd-moi-type-te-head"};
 const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_dmtc_ext_intf {13, "mgmt-lsd-moi-type-dmtc-ext-intf"};
+const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_ipv4_nnh_stack {14, "mgmt-lsd-moi-type-ipv4-nnh-stack"};
 
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_label {0, "mgmt-lsd-fpi-type-label"};
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_te {1, "mgmt-lsd-fpi-type-te"};
@@ -19633,21 +19711,6 @@ const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_ipv6 {3, "mgmt-lsd-fpi-type-ipv6
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_pw_list {4, "mgmt-lsd-fpi-type-pw-list"};
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_te_v2 {5, "mgmt-lsd-fpi-type-te-v2"};
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_dmtc_ext_intf {6, "mgmt-lsd-fpi-type-dmtc-ext-intf"};
-
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_partial {0, "mgmt-lsd-frr-state-partial"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_active {1, "mgmt-lsd-frr-state-active"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_ready {2, "mgmt-lsd-frr-state-ready"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_complete {3, "mgmt-lsd-frr-state-complete"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_any {4, "mgmt-lsd-frr-state-any"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_igp {5, "mgmt-lsd-frr-state-igp"};
-
-const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_head {0, "mgmt-lsd-lsp-role-head"};
-const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_mid {1, "mgmt-lsd-lsp-role-mid"};
-
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_tun_id {0, "mgmt-lsd-ident-p2p-tun-id"};
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_grp_id {1, "mgmt-lsd-ident-p2p-grp-id"};
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_tun_id {2, "mgmt-lsd-ident-p2mp-tun-id"};
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_grp_id {3, "mgmt-lsd-ident-p2mp-grp-id"};
 
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_none {0, "mgmt-lsd-lbl-ctx-type-none"};
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_ipv4 {1, "mgmt-lsd-lbl-ctx-type-ipv4"};
@@ -19681,9 +19744,16 @@ const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_gre_ipv6 {28, "mgmt-lsd-l
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_any {29, "mgmt-lsd-lbl-ctx-type-any"};
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_lbl_blk_srlb {30, "mgmt-lsd-lbl-ctx-type-lbl-blk-srlb"};
 
+const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_head {0, "mgmt-lsd-lsp-role-head"};
+const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_mid {1, "mgmt-lsd-lsp-role-mid"};
+
 const Enum::YLeaf MgmtLsdAppRsrcState::mgmt_lsd_app_rsrc_state_active {0, "mgmt-lsd-app-rsrc-state-active"};
 const Enum::YLeaf MgmtLsdAppRsrcState::mgmt_lsd_app_rsrc_state_pnd {1, "mgmt-lsd-app-rsrc-state-pnd"};
 const Enum::YLeaf MgmtLsdAppRsrcState::mgmt_lsd_app_rsrc_state_pnd_svr {2, "mgmt-lsd-app-rsrc-state-pnd-svr"};
+
+const Enum::YLeaf MplsLsdNnh::none {0, "none"};
+const Enum::YLeaf MplsLsdNnh::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf MplsLsdNnh::interface_name {2, "interface-name"};
 
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_none {0, "mgmt-lsd-app-type-none"};
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_int {1, "mgmt-lsd-app-type-int"};
@@ -19706,8 +19776,22 @@ const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_cgn {17, "mgmt-lsd-app-type-cgn"
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_dmtc {18, "mgmt-lsd-app-type-dmtc"};
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_any {19, "mgmt-lsd-app-type-any"};
 
-const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_app {0, "mgmt-lsd-client-type-app"};
-const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_ba {1, "mgmt-lsd-client-type-ba"};
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_tun_id {0, "mgmt-lsd-ident-p2p-tun-id"};
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_grp_id {1, "mgmt-lsd-ident-p2p-grp-id"};
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_tun_id {2, "mgmt-lsd-ident-p2mp-tun-id"};
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_grp_id {3, "mgmt-lsd-ident-p2mp-grp-id"};
+
+const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_active {0, "mgmt-lsd-app-state-active"};
+const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_zombie {1, "mgmt-lsd-app-state-zombie"};
+const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_recover {2, "mgmt-lsd-app-state-recover"};
+
+const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_unknown {0, "mgmt-lsd-intf-state-unknown"};
+const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_up {1, "mgmt-lsd-intf-state-up"};
+const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_down {2, "mgmt-lsd-intf-state-down"};
+
+const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_none {0, "mgmt-lsd-rw-id-type-none"};
+const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_lbl_ctx {1, "mgmt-lsd-rw-id-type-lbl-ctx"};
+const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_loc_lbl {2, "mgmt-lsd-rw-id-type-loc-lbl"};
 
 
 }

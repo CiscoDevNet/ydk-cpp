@@ -1044,7 +1044,7 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMask : public ydk::Entity
 
         class Client; //type: Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client> > client;
+        ydk::YList client;
         
 }; // Native::Aaa::Server::Radius::Proxy::ClientIpMask
 
@@ -2196,7 +2196,7 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpVrf : public ydk::Entity
 
         class Client; //type: Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client> > client;
+        ydk::YList client;
         
 }; // Native::Aaa::Server::Radius::Proxy::ClientIpVrf
 
@@ -3348,7 +3348,7 @@ class Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf : public ydk::Entity
 
         class Client; //type: Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client> > client;
+        ydk::YList client;
         
 }; // Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf
 

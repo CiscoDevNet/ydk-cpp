@@ -31,8 +31,10 @@ class Dhcpv6 : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf inner_cos; //type: uint32
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf allow_duid_change; //type: empty
+        ydk::YLeaf outer_cos; //type: uint32
         class Database; //type: Dhcpv6::Database
         class Profiles; //type: Dhcpv6::Profiles
         class Interfaces; //type: Dhcpv6::Interfaces
@@ -89,7 +91,7 @@ class Dhcpv6::Profiles : public ydk::Entity
 
         class Profile; //type: Dhcpv6::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Dhcpv6::Profiles
 
@@ -141,11 +143,14 @@ class Dhcpv6::Profiles::Profile::Relay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf src_intf_name; //type: string
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf iana_route_add; //type: empty
         class HelperAddresses; //type: Dhcpv6::Profiles::Profile::Relay::HelperAddresses
+        class Option; //type: Dhcpv6::Profiles::Profile::Relay::Option
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay::HelperAddresses> helper_addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay::Option> option;
         
 }; // Dhcpv6::Profiles::Profile::Relay
 
@@ -168,7 +173,7 @@ class Dhcpv6::Profiles::Profile::Relay::HelperAddresses : public ydk::Entity
 
         class HelperAddress; //type: Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         
 }; // Dhcpv6::Profiles::Profile::Relay::HelperAddresses
 
@@ -191,8 +196,31 @@ class Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress : public 
 
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf helper_address; //type: string
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf src_intf_name; //type: string
 
 }; // Dhcpv6::Profiles::Profile::Relay::HelperAddresses::HelperAddress
+
+
+class Dhcpv6::Profiles::Profile::Relay::Option : public ydk::Entity
+{
+    public:
+        Option();
+        ~Option();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_id; //type: string
+
+}; // Dhcpv6::Profiles::Profile::Relay::Option
 
 
 class Dhcpv6::Profiles::Profile::Base : public ydk::Entity
@@ -239,7 +267,7 @@ class Dhcpv6::Profiles::Profile::Base::Default : public ydk::Entity
 
         class Profile_; //type: Dhcpv6::Profiles::Profile::Base::Default::Profile_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Default::Profile_> > profile;
+        ydk::YList profile;
         
 }; // Dhcpv6::Profiles::Profile::Base::Default
 
@@ -308,7 +336,7 @@ class Dhcpv6::Profiles::Profile::Base::Match::ModeClasses : public ydk::Entity
 
         class ModeClass; //type: Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass> > mode_class;
+        ydk::YList mode_class;
         
 }; // Dhcpv6::Profiles::Profile::Base::Match::ModeClasses
 
@@ -332,7 +360,7 @@ class Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass : public yd
         ydk::YLeaf class_name; //type: string
         class Profile_; //type: Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass::Profile_> > profile;
+        ydk::YList profile;
         
 }; // Dhcpv6::Profiles::Profile::Base::Match::ModeClasses::ModeClass
 
@@ -416,7 +444,7 @@ class Dhcpv6::Profiles::Profile::Proxy::Interfaces : public ydk::Entity
 
         class Interface; //type: Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Dhcpv6::Profiles::Profile::Proxy::Interfaces
 
@@ -484,7 +512,7 @@ class Dhcpv6::Profiles::Profile::Proxy::Relay::Option : public ydk::Entity
 
         ydk::YLeaf subscriber_id; //type: SubscriberId
         ydk::YLeaf link_layer_addr; //type: LinkLayerAddr
-        ydk::YLeaf remote_i_dreceived; //type: int32
+        ydk::YLeaf remote_i_dreceived; //type: uint32
         ydk::YLeaf remote_id; //type: string
         class InterfaceId; //type: Dhcpv6::Profiles::Profile::Proxy::Relay::Option::InterfaceId
 
@@ -532,7 +560,7 @@ class Dhcpv6::Profiles::Profile::Proxy::Vrfs : public ydk::Entity
 
         class Vrf; //type: Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Dhcpv6::Profiles::Profile::Proxy::Vrfs
 
@@ -579,7 +607,7 @@ class Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses : public ydk:
 
         class HelperAddress; //type: Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         
 }; // Dhcpv6::Profiles::Profile::Proxy::Vrfs::Vrf::HelperAddresses
 
@@ -646,7 +674,7 @@ class Dhcpv6::Profiles::Profile::Proxy::Classes : public ydk::Entity
 
         class Class; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class> > class_;
+        ydk::YList class_;
         
 }; // Dhcpv6::Profiles::Profile::Proxy::Classes
 
@@ -694,7 +722,7 @@ class Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses : public
 
         class HelperAddress; //type: Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         
 }; // Dhcpv6::Profiles::Profile::Proxy::Classes::Class::HelperAddresses
 
@@ -817,12 +845,18 @@ class Dhcpv6::Profiles::Profile::Server : public ydk::Entity
         class DnsServers; //type: Dhcpv6::Profiles::Profile::Server::DnsServers
         class Classes; //type: Dhcpv6::Profiles::Profile::Server::Classes
         class Lease; //type: Dhcpv6::Profiles::Profile::Server::Lease
+        class Dhcpv6duid; //type: Dhcpv6::Profiles::Profile::Server::Dhcpv6duid
+        class AaaServer; //type: Dhcpv6::Profiles::Profile::Server::AaaServer
+        class Options; //type: Dhcpv6::Profiles::Profile::Server::Options
         class Dhcpv6Options; //type: Dhcpv6::Profiles::Profile::Server::Dhcpv6Options
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Sessions> sessions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::DnsServers> dns_servers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes> classes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Lease> lease;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Dhcpv6duid> dhcpv6duid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::AaaServer> aaa_server;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Options> options;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Dhcpv6Options> dhcpv6_options;
         
 }; // Dhcpv6::Profiles::Profile::Server
@@ -936,7 +970,7 @@ class Dhcpv6::Profiles::Profile::Server::Classes : public ydk::Entity
 
         class Class; //type: Dhcpv6::Profiles::Profile::Server::Classes::Class
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes::Class> > class_;
+        ydk::YList class_;
         
 }; // Dhcpv6::Profiles::Profile::Server::Classes
 
@@ -963,8 +997,10 @@ class Dhcpv6::Profiles::Profile::Server::Classes::Class : public ydk::Entity
         ydk::YLeaf preference; //type: uint32
         ydk::YLeaf prefix_pool; //type: string
         class DnsServers; //type: Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers
+        class Lease; //type: Dhcpv6::Profiles::Profile::Server::Classes::Class::Lease
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers> dns_servers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Classes::Class::Lease> lease;
         
 }; // Dhcpv6::Profiles::Profile::Server::Classes::Class
 
@@ -990,6 +1026,30 @@ class Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers : public ydk
 }; // Dhcpv6::Profiles::Profile::Server::Classes::Class::DnsServers
 
 
+class Dhcpv6::Profiles::Profile::Server::Classes::Class::Lease : public ydk::Entity
+{
+    public:
+        Lease();
+        ~Lease();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf infinite; //type: string
+        ydk::YLeaf days; //type: uint32
+        ydk::YLeaf hours; //type: uint32
+        ydk::YLeaf minutes; //type: uint32
+
+}; // Dhcpv6::Profiles::Profile::Server::Classes::Class::Lease
+
+
 class Dhcpv6::Profiles::Profile::Server::Lease : public ydk::Entity
 {
     public:
@@ -1012,6 +1072,256 @@ class Dhcpv6::Profiles::Profile::Server::Lease : public ydk::Entity
         ydk::YLeaf infinite; //type: string
 
 }; // Dhcpv6::Profiles::Profile::Server::Lease
+
+
+class Dhcpv6::Profiles::Profile::Server::Dhcpv6duid : public ydk::Entity
+{
+    public:
+        Dhcpv6duid();
+        ~Dhcpv6duid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf allowed_type; //type: uint32
+
+}; // Dhcpv6::Profiles::Profile::Server::Dhcpv6duid
+
+
+class Dhcpv6::Profiles::Profile::Server::AaaServer : public ydk::Entity
+{
+    public:
+        AaaServer();
+        ~AaaServer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Dhcpv6Option; //type: Dhcpv6::Profiles::Profile::Server::AaaServer::Dhcpv6Option
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::AaaServer::Dhcpv6Option> dhcpv6_option;
+        
+}; // Dhcpv6::Profiles::Profile::Server::AaaServer
+
+
+class Dhcpv6::Profiles::Profile::Server::AaaServer::Dhcpv6Option : public ydk::Entity
+{
+    public:
+        Dhcpv6Option();
+        ~Dhcpv6Option();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf force_insert; //type: empty
+
+}; // Dhcpv6::Profiles::Profile::Server::AaaServer::Dhcpv6Option
+
+
+class Dhcpv6::Profiles::Profile::Server::Options : public ydk::Entity
+{
+    public:
+        Options();
+        ~Options();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Option; //type: Dhcpv6::Profiles::Profile::Server::Options::Option
+
+        ydk::YList option;
+        
+}; // Dhcpv6::Profiles::Profile::Server::Options
+
+
+class Dhcpv6::Profiles::Profile::Server::Options::Option : public ydk::Entity
+{
+    public:
+        Option();
+        ~Option();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: string
+        ydk::YLeaf format; //type: uint32
+        ydk::YLeaf value_; //type: string
+        class EnterpriseId; //type: Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId
+        class VendorClass; //type: Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId> enterprise_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass> vendor_class;
+        
+}; // Dhcpv6::Profiles::Profile::Server::Options::Option
+
+
+class Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId : public ydk::Entity
+{
+    public:
+        EnterpriseId();
+        ~EnterpriseId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class HexEnterpriseId; //type: Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::HexEnterpriseId
+        class DefaultEnterpriseId; //type: Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::DefaultEnterpriseId
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::HexEnterpriseId> hex_enterprise_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::DefaultEnterpriseId> default_enterprise_id;
+        
+}; // Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId
+
+
+class Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::HexEnterpriseId : public ydk::Entity
+{
+    public:
+        HexEnterpriseId();
+        ~HexEnterpriseId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: Action
+
+}; // Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::HexEnterpriseId
+
+
+class Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::DefaultEnterpriseId : public ydk::Entity
+{
+    public:
+        DefaultEnterpriseId();
+        ~DefaultEnterpriseId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: Action
+
+}; // Dhcpv6::Profiles::Profile::Server::Options::Option::EnterpriseId::DefaultEnterpriseId
+
+
+class Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass : public ydk::Entity
+{
+    public:
+        VendorClass();
+        ~VendorClass();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class StrVendorClass; //type: Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::StrVendorClass
+        class DefaultVendorClass; //type: Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::DefaultVendorClass
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::StrVendorClass> str_vendor_class;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::DefaultVendorClass> default_vendor_class;
+        
+}; // Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass
+
+
+class Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::StrVendorClass : public ydk::Entity
+{
+    public:
+        StrVendorClass();
+        ~StrVendorClass();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: Action
+
+}; // Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::StrVendorClass
+
+
+class Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::DefaultVendorClass : public ydk::Entity
+{
+    public:
+        DefaultVendorClass();
+        ~DefaultVendorClass();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf action; //type: Action
+
+}; // Dhcpv6::Profiles::Profile::Server::Options::Option::VendorClass::DefaultVendorClass
 
 
 class Dhcpv6::Profiles::Profile::Server::Dhcpv6Options : public ydk::Entity
@@ -1078,7 +1388,7 @@ class Dhcpv6::Interfaces : public ydk::Entity
 
         class Interface; //type: Dhcpv6::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_cfg::Dhcpv6::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Dhcpv6::Interfaces
 
@@ -1220,6 +1530,14 @@ class Dhcpv6::Interfaces::Interface::Relay : public ydk::Entity
 
 }; // Dhcpv6::Interfaces::Interface::Relay
 
+class Action : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf drop;
+
+};
+
 class Insert : public ydk::Enum
 {
     public:
@@ -1229,17 +1547,17 @@ class Insert : public ydk::Enum
 
 };
 
-class SubscriberId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pppoe;
-
-};
-
 class LinkLayerAddr : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf set;
+
+};
+
+class SubscriberId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pppoe;
 
 };
 

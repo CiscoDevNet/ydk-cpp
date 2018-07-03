@@ -57,7 +57,7 @@ class Wanphy::Controllers : public ydk::Entity
 
         class Controller; //type: Wanphy::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_wanphy_ui_oper::Wanphy::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // Wanphy::Controllers
 

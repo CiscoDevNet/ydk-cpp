@@ -140,7 +140,7 @@ class Ipsla::MplsLspMonitor::Reactions : public ydk::Entity
 
         class Reaction; //type: Ipsla::MplsLspMonitor::Reactions::Reaction
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Reactions::Reaction> > reaction;
+        ydk::YList reaction;
         
 }; // Ipsla::MplsLspMonitor::Reactions
 
@@ -448,7 +448,7 @@ class Ipsla::MplsLspMonitor::Schedules : public ydk::Entity
 
         class Schedule; //type: Ipsla::MplsLspMonitor::Schedules::Schedule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Schedules::Schedule> > schedule;
+        ydk::YList schedule;
         
 }; // Ipsla::MplsLspMonitor::Schedules
 
@@ -526,7 +526,7 @@ class Ipsla::MplsLspMonitor::Definitions : public ydk::Entity
 
         class Definition; //type: Ipsla::MplsLspMonitor::Definitions::Definition
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::MplsLspMonitor::Definitions::Definition> > definition;
+        ydk::YList definition;
         
 }; // Ipsla::MplsLspMonitor::Definitions
 
@@ -1006,7 +1006,7 @@ class Ipsla::Operation::Schedules : public ydk::Entity
 
         class Schedule; //type: Ipsla::Operation::Schedules::Schedule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Schedules::Schedule> > schedule;
+        ydk::YList schedule;
         
 }; // Ipsla::Operation::Schedules
 
@@ -1085,7 +1085,7 @@ class Ipsla::Operation::Reactions : public ydk::Entity
 
         class Reaction; //type: Ipsla::Operation::Reactions::Reaction
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Reactions::Reaction> > reaction;
+        ydk::YList reaction;
         
 }; // Ipsla::Operation::Reactions
 
@@ -1956,7 +1956,7 @@ class Ipsla::Operation::ReactionTriggers : public ydk::Entity
 
         class ReactionTrigger; //type: Ipsla::Operation::ReactionTriggers::ReactionTrigger
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::ReactionTriggers::ReactionTrigger> > reaction_trigger;
+        ydk::YList reaction_trigger;
         
 }; // Ipsla::Operation::ReactionTriggers
 
@@ -2003,7 +2003,7 @@ class Ipsla::Operation::Definitions : public ydk::Entity
 
         class Definition; //type: Ipsla::Operation::Definitions::Definition
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition> > definition;
+        ydk::YList definition;
         
 }; // Ipsla::Operation::Definitions
 
@@ -2192,7 +2192,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::IcmpEcho::Enhanc
 
         class EnhancedStat; //type: Ipsla::Operation::Definitions::Definition::OperationType::IcmpEcho::EnhancedStats::EnhancedStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::IcmpEcho::EnhancedStats::EnhancedStat> > enhanced_stat;
+        ydk::YList enhanced_stat;
         
 }; // Ipsla::Operation::Definitions::Definition::OperationType::IcmpEcho::EnhancedStats
 
@@ -2508,7 +2508,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::MplsLspPing::Enh
 
         class EnhancedStat; //type: Ipsla::Operation::Definitions::Definition::OperationType::MplsLspPing::EnhancedStats::EnhancedStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::MplsLspPing::EnhancedStats::EnhancedStat> > enhanced_stat;
+        ydk::YList enhanced_stat;
         
 }; // Ipsla::Operation::Definitions::Definition::OperationType::MplsLspPing::EnhancedStats
 
@@ -2661,7 +2661,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::UdpEcho::Enhance
 
         class EnhancedStat; //type: Ipsla::Operation::Definitions::Definition::OperationType::UdpEcho::EnhancedStats::EnhancedStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::UdpEcho::EnhancedStats::EnhancedStat> > enhanced_stat;
+        ydk::YList enhanced_stat;
         
 }; // Ipsla::Operation::Definitions::Definition::OperationType::UdpEcho::EnhancedStats
 
@@ -3012,7 +3012,7 @@ class Ipsla::Operation::Definitions::Definition::OperationType::UdpJitter::Enhan
 
         class EnhancedStat; //type: Ipsla::Operation::Definitions::Definition::OperationType::UdpJitter::EnhancedStats::EnhancedStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Operation::Definitions::Definition::OperationType::UdpJitter::EnhancedStats::EnhancedStat> > enhanced_stat;
+        ydk::YList enhanced_stat;
         
 }; // Ipsla::Operation::Definitions::Definition::OperationType::UdpJitter::EnhancedStats
 
@@ -3372,7 +3372,7 @@ class Ipsla::Responder::Type::Udp::Addresses : public ydk::Entity
 
         class Address; //type: Ipsla::Responder::Type::Udp::Addresses::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Type::Udp::Addresses::Address> > address;
+        ydk::YList address;
         
 }; // Ipsla::Responder::Type::Udp::Addresses
 
@@ -3420,7 +3420,7 @@ class Ipsla::Responder::Type::Udp::Addresses::Address::Ports : public ydk::Entit
 
         class Port; //type: Ipsla::Responder::Type::Udp::Addresses::Address::Ports::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_cfg::Ipsla::Responder::Type::Udp::Addresses::Address::Ports::Port> > port;
+        ydk::YList port;
         
 }; // Ipsla::Responder::Type::Udp::Addresses::Address::Ports
 
@@ -3491,15 +3491,6 @@ class Ipsla::MplsDiscovery::Vpn : public ydk::Entity
 
 }; // Ipsla::MplsDiscovery::Vpn
 
-class IpslaSecondaryFrequency : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf connection_loss;
-        static const ydk::Enum::YLeaf timeout;
-        static const ydk::Enum::YLeaf both;
-
-};
-
 class IpslaMonth : public ydk::Enum
 {
     public:
@@ -3526,6 +3517,14 @@ class IpslaLspPingReplyMode : public ydk::Enum
 
 };
 
+class IpslaHistoryFilter : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf all;
+
+};
+
 class IpslaLspTraceReplyMode : public ydk::Enum
 {
     public:
@@ -3533,20 +3532,19 @@ class IpslaLspTraceReplyMode : public ydk::Enum
 
 };
 
-class IpslaLspMonitorReplyMode : public ydk::Enum
+class IpslaSecondaryFrequency : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4_udp_router_alert;
+        static const ydk::Enum::YLeaf connection_loss;
+        static const ydk::Enum::YLeaf timeout;
+        static const ydk::Enum::YLeaf both;
 
 };
 
-class IpslaSched : public ydk::Enum
+class IpslaLife : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pending;
-        static const ydk::Enum::YLeaf now;
-        static const ydk::Enum::YLeaf after;
-        static const ydk::Enum::YLeaf at;
+        static const ydk::Enum::YLeaf forever;
 
 };
 
@@ -3577,10 +3575,10 @@ class IpslaLspReplyDscp : public ydk::Enum
 
 };
 
-class IpslaLife : public ydk::Enum
+class IpslaLspMonitorReplyMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf forever;
+        static const ydk::Enum::YLeaf ipv4_udp_router_alert;
 
 };
 
@@ -3594,19 +3592,21 @@ class IpslaThresholdTypes : public ydk::Enum
 
 };
 
+class IpslaSched : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pending;
+        static const ydk::Enum::YLeaf now;
+        static const ydk::Enum::YLeaf after;
+        static const ydk::Enum::YLeaf at;
+
+};
+
 class IpslaLspMonitorThresholdTypes : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf immediate;
         static const ydk::Enum::YLeaf consecutive;
-
-};
-
-class IpslaHistoryFilter : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf failed;
-        static const ydk::Enum::YLeaf all;
 
 };
 

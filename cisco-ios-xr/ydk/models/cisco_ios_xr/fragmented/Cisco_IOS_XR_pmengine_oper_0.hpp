@@ -101,7 +101,7 @@ class PerformanceManagement::Macsec::MacsecPorts : public ydk::Entity
 
         class MacsecPort; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort> > macsec_port;
+        ydk::YList macsec_port;
         
 }; // PerformanceManagement::Macsec::MacsecPorts
 
@@ -174,24 +174,24 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecMinute15Secyifs; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs
-        class MacsecMinute15Secyrxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes
-        class MacsecMinute15Secytxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes
+        class MacsecMinute15secyifs; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs
+        class MacsecMinute15secyrxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes
+        class MacsecMinute15secytxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes
         class MacsecMinute15EtherS; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs> macsec_minute15secyifs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes> macsec_minute15secyrxes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes> macsec_minute15secytxes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs> macsec_minute15secyifs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes> macsec_minute15secyrxes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes> macsec_minute15secytxes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS> macsec_minute15_ether_s;
         
 }; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs : public ydk::Entity
 {
     public:
-        MacsecMinute15Secyifs();
-        ~MacsecMinute15Secyifs();
+        MacsecMinute15secyifs();
+        ~MacsecMinute15secyifs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -203,18 +203,18 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecMinute15Secyif; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif
+        class MacsecMinute15secyif; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif> > macsec_minute15secyif;
+        ydk::YList macsec_minute15secyif;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif : public ydk::Entity
 {
     public:
-        MacsecMinute15Secyif();
-        ~MacsecMinute15Secyif();
+        MacsecMinute15secyif();
+        ~MacsecMinute15secyif();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -236,36 +236,36 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf last_clear24_hr_time; //type: string
         ydk::YLeaf sec30_support; //type: boolean
         ydk::YLeaf sample_count; //type: uint64
-        class InPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged
-        class InPktsNoTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag
-        class InPktsBadTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag
-        class InPktsUnknownSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci
-        class InPktsNoSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci
-        class InPktsOverrun; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun
-        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated
-        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted
-        class OutPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged
-        class OutPktsTooLong; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong
-        class OutOctetsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected
-        class OutOctetsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted
+        class InPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged
+        class InPktsNoTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag
+        class InPktsBadTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag
+        class InPktsUnknownSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci
+        class InPktsNoSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci
+        class InPktsOverrun; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun
+        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated
+        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted
+        class OutPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged
+        class OutPktsTooLong; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong
+        class OutOctetsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected
+        class OutOctetsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged> in_pkts_untagged;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag> in_pkts_no_tag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag> in_pkts_bad_tag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci> in_pkts_unknown_sci;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci> in_pkts_no_sci;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun> in_pkts_overrun;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated> in_octets_validated;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted> in_octets_decrypted;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged> out_pkts_untagged;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong> out_pkts_too_long;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected> out_octets_protected;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted> out_octets_encrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged> in_pkts_untagged;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag> in_pkts_no_tag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag> in_pkts_bad_tag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci> in_pkts_unknown_sci;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci> in_pkts_no_sci;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun> in_pkts_overrun;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated> in_octets_validated;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted> in_octets_decrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged> out_pkts_untagged;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong> out_pkts_too_long;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected> out_octets_protected;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted> out_octets_encrypted;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged : public ydk::Entity
 {
     public:
         InPktsUntagged();
@@ -286,10 +286,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUntagged
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUntagged
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag : public ydk::Entity
 {
     public:
         InPktsNoTag();
@@ -310,10 +310,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoTag
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoTag
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag : public ydk::Entity
 {
     public:
         InPktsBadTag();
@@ -334,10 +334,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsBadTag
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsBadTag
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci : public ydk::Entity
 {
     public:
         InPktsUnknownSci();
@@ -358,10 +358,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsUnknownSci
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsUnknownSci
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci : public ydk::Entity
 {
     public:
         InPktsNoSci();
@@ -382,10 +382,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsNoSci
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsNoSci
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun : public ydk::Entity
 {
     public:
         InPktsOverrun();
@@ -406,10 +406,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InPktsOverrun
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InPktsOverrun
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated : public ydk::Entity
 {
     public:
         InOctetsValidated();
@@ -430,10 +430,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsValidated
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsValidated
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted : public ydk::Entity
 {
     public:
         InOctetsDecrypted();
@@ -454,10 +454,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::InOctetsDecrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::InOctetsDecrypted
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged : public ydk::Entity
 {
     public:
         OutPktsUntagged();
@@ -478,10 +478,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsUntagged
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsUntagged
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong : public ydk::Entity
 {
     public:
         OutPktsTooLong();
@@ -502,10 +502,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutPktsTooLong
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutPktsTooLong
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected : public ydk::Entity
 {
     public:
         OutOctetsProtected();
@@ -526,10 +526,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsProtected
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsProtected
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted : public ydk::Entity
 {
     public:
         OutOctetsEncrypted();
@@ -550,14 +550,14 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyifs::MacsecMinute15Secyif::OutOctetsEncrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyifs::MacsecMinute15secyif::OutOctetsEncrypted
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes : public ydk::Entity
 {
     public:
-        MacsecMinute15Secyrxes();
-        ~MacsecMinute15Secyrxes();
+        MacsecMinute15secyrxes();
+        ~MacsecMinute15secyrxes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -569,18 +569,18 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecMinute15Secyrx; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx
+        class MacsecMinute15secyrx; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx> > macsec_minute15secyrx;
+        ydk::YList macsec_minute15secyrx;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx : public ydk::Entity
 {
     public:
-        MacsecMinute15Secyrx();
-        ~MacsecMinute15Secyrx();
+        MacsecMinute15secyrx();
+        ~MacsecMinute15secyrx();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -602,34 +602,34 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf last_clear24_hr_time; //type: string
         ydk::YLeaf sec30_support; //type: boolean
         ydk::YLeaf sample_count; //type: uint64
-        class InPktsUnchecked; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked
-        class InPktsDelayed; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed
-        class InPktsLate; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate
-        class InPktsOk; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk
-        class InPktsInvalid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid
-        class InPktsNotValid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid
-        class InPktsNotUsingSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa
-        class InPktsUnusedSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa
-        class InPktsUntaggedHit; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit
-        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated
-        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted
+        class InPktsUnchecked; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked
+        class InPktsDelayed; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed
+        class InPktsLate; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate
+        class InPktsOk; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk
+        class InPktsInvalid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid
+        class InPktsNotValid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid
+        class InPktsNotUsingSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa
+        class InPktsUnusedSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa
+        class InPktsUntaggedHit; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit
+        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated
+        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked> in_pkts_unchecked;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed> in_pkts_delayed;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate> in_pkts_late;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk> in_pkts_ok;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid> in_pkts_invalid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid> in_pkts_not_valid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa> in_pkts_not_using_sa;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa> in_pkts_unused_sa;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit> in_pkts_untagged_hit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated> in_octets_validated;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted> in_octets_decrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked> in_pkts_unchecked;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed> in_pkts_delayed;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate> in_pkts_late;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk> in_pkts_ok;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid> in_pkts_invalid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid> in_pkts_not_valid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa> in_pkts_not_using_sa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa> in_pkts_unused_sa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit> in_pkts_untagged_hit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated> in_octets_validated;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted> in_octets_decrypted;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked : public ydk::Entity
 {
     public:
         InPktsUnchecked();
@@ -650,10 +650,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnchecked
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnchecked
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed : public ydk::Entity
 {
     public:
         InPktsDelayed();
@@ -674,10 +674,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsDelayed
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsDelayed
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate : public ydk::Entity
 {
     public:
         InPktsLate();
@@ -698,10 +698,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsLate
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsLate
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk : public ydk::Entity
 {
     public:
         InPktsOk();
@@ -722,10 +722,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsOk
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsOk
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid : public ydk::Entity
 {
     public:
         InPktsInvalid();
@@ -746,10 +746,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsInvalid
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsInvalid
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid : public ydk::Entity
 {
     public:
         InPktsNotValid();
@@ -770,10 +770,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotValid
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotValid
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa : public ydk::Entity
 {
     public:
         InPktsNotUsingSa();
@@ -794,10 +794,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsNotUsingSa
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsNotUsingSa
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa : public ydk::Entity
 {
     public:
         InPktsUnusedSa();
@@ -818,10 +818,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUnusedSa
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUnusedSa
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit : public ydk::Entity
 {
     public:
         InPktsUntaggedHit();
@@ -842,10 +842,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InPktsUntaggedHit
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InPktsUntaggedHit
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated : public ydk::Entity
 {
     public:
         InOctetsValidated();
@@ -866,10 +866,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsValidated
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsValidated
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted : public ydk::Entity
 {
     public:
         InOctetsDecrypted();
@@ -890,14 +890,14 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secyrxes::MacsecMinute15Secyrx::InOctetsDecrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secyrxes::MacsecMinute15secyrx::InOctetsDecrypted
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes : public ydk::Entity
 {
     public:
-        MacsecMinute15Secytxes();
-        ~MacsecMinute15Secytxes();
+        MacsecMinute15secytxes();
+        ~MacsecMinute15secytxes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -909,18 +909,18 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecMinute15Secytx; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx
+        class MacsecMinute15secytx; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx> > macsec_minute15secytx;
+        ydk::YList macsec_minute15secytx;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx : public ydk::Entity
 {
     public:
-        MacsecMinute15Secytx();
-        ~MacsecMinute15Secytx();
+        MacsecMinute15secytx();
+        ~MacsecMinute15secytx();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -942,22 +942,22 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf last_clear24_hr_time; //type: string
         ydk::YLeaf sec30_support; //type: boolean
         ydk::YLeaf sample_count; //type: uint64
-        class OutPktsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected
-        class OutPktsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted
-        class OutOctetsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected
-        class OutOctetsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted
-        class OutPktsTooLong; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong
+        class OutPktsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected
+        class OutPktsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted
+        class OutOctetsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected
+        class OutOctetsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted
+        class OutPktsTooLong; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected> out_pkts_protected;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted> out_pkts_encrypted;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected> out_octets_protected;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted> out_octets_encrypted;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong> out_pkts_too_long;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected> out_pkts_protected;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted> out_pkts_encrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected> out_octets_protected;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted> out_octets_encrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong> out_pkts_too_long;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected : public ydk::Entity
 {
     public:
         OutPktsProtected();
@@ -978,10 +978,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsProtected
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsProtected
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted : public ydk::Entity
 {
     public:
         OutPktsEncrypted();
@@ -1002,10 +1002,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsEncrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsEncrypted
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected : public ydk::Entity
 {
     public:
         OutOctetsProtected();
@@ -1026,10 +1026,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsProtected
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsProtected
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted : public ydk::Entity
 {
     public:
         OutOctetsEncrypted();
@@ -1050,10 +1050,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutOctetsEncrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutOctetsEncrypted
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong : public ydk::Entity
 {
     public:
         OutPktsTooLong();
@@ -1074,7 +1074,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15Secytxes::MacsecMinute15Secytx::OutPktsTooLong
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15secytxes::MacsecMinute15secytx::OutPktsTooLong
 
 
 class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS : public ydk::Entity
@@ -1095,7 +1095,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
 
         class MacsecMinute15Ether; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether> > macsec_minute15_ether;
+        ydk::YList macsec_minute15_ether;
         
 }; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS
 
@@ -1153,7 +1153,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         class OutOctets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets
         class InPauseFrame; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame
         class InGoodBytes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes
-        class In8021QFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames
+        class In8021qFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames
         class InPkts1519MaxOctets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets
         class InGoodPkts; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts
         class InDropOverrun; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun
@@ -1168,7 +1168,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         class InErrorCollisions; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions
         class InErrorSymbol; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol
         class OutGoodBytes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes
-        class Out8021QFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames
+        class Out8021qFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames
         class OutPauseFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames
         class OutPkts1519MaxOctets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets
         class OutGoodPkts; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts
@@ -1187,7 +1187,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         class InPkts256To511Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets
         class InPkts512To1023Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets
         class InPkts1024To1518Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets
-        class Outpkt64Octet; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet
+        class Outpkt64octet; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet
         class OutPkts65127Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets
         class OutPkts128255Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets
         class OutPkts256511Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets
@@ -1229,7 +1229,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutOctets> out_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPauseFrame> in_pause_frame;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes> in_good_bytes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames> in8021q_frames;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames> in8021q_frames;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets> in_pkts1519_max_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodPkts> in_good_pkts;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InDropOverrun> in_drop_overrun;
@@ -1244,7 +1244,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorCollisions> in_error_collisions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InErrorSymbol> in_error_symbol;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes> out_good_bytes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames> out8021q_frames;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames> out8021q_frames;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames> out_pause_frames;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts1519MaxOctets> out_pkts1519_max_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodPkts> out_good_pkts;
@@ -1263,7 +1263,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts256To511Octets> in_pkts256_to511_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts512To1023Octets> in_pkts512_to1023_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets> in_pkts1024_to1518_octets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet> outpkt64octet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet> outpkt64octet;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets> out_pkts65127_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts128255Octets> out_pkts128255_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts256511Octets> out_pkts256511_octets;
@@ -1952,11 +1952,11 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
 }; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InGoodBytes
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames : public ydk::Entity
 {
     public:
-        In8021QFrames();
-        ~In8021QFrames();
+        In8021qFrames();
+        ~In8021qFrames();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1973,7 +1973,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021QFrames
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::In8021qFrames
 
 
 class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1519MaxOctets : public ydk::Entity
@@ -2312,11 +2312,11 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
 }; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutGoodBytes
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames : public ydk::Entity
 {
     public:
-        Out8021QFrames();
-        ~Out8021QFrames();
+        Out8021qFrames();
+        ~Out8021qFrames();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2333,7 +2333,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021QFrames
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Out8021qFrames
 
 
 class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPauseFrames : public ydk::Entity
@@ -2768,11 +2768,11 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
 }; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::InPkts1024To1518Octets
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet : public ydk::Entity
 {
     public:
-        Outpkt64Octet();
-        ~Outpkt64Octet();
+        Outpkt64octet();
+        ~Outpkt64octet();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2789,7 +2789,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64Octet
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::Outpkt64octet
 
 
 class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecMinute15::MacsecMinute15EtherS::MacsecMinute15Ether::OutPkts65127Octets : public ydk::Entity
@@ -3096,24 +3096,24 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecSecond30Secyifs; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs
-        class MacsecSecond30Secyrxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes
+        class MacsecSecond30secyifs; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs
+        class MacsecSecond30secyrxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes
         class MacsecSecond30EtherS; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS
-        class MacsecSecond30Secytxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secytxes
+        class MacsecSecond30secytxes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secytxes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs> macsec_second30secyifs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes> macsec_second30secyrxes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs> macsec_second30secyifs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes> macsec_second30secyrxes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS> macsec_second30_ether_s;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secytxes> macsec_second30secytxes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secytxes> macsec_second30secytxes;
         
 }; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs : public ydk::Entity
 {
     public:
-        MacsecSecond30Secyifs();
-        ~MacsecSecond30Secyifs();
+        MacsecSecond30secyifs();
+        ~MacsecSecond30secyifs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3125,18 +3125,18 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecSecond30Secyif; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif
+        class MacsecSecond30secyif; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif> > macsec_second30secyif;
+        ydk::YList macsec_second30secyif;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif : public ydk::Entity
 {
     public:
-        MacsecSecond30Secyif();
-        ~MacsecSecond30Secyif();
+        MacsecSecond30secyif();
+        ~MacsecSecond30secyif();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3158,36 +3158,36 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf last_clear24_hr_time; //type: string
         ydk::YLeaf sec30_support; //type: boolean
         ydk::YLeaf sample_count; //type: uint64
-        class InPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged
-        class InPktsNoTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag
-        class InPktsBadTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag
-        class InPktsUnknownSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci
-        class InPktsNoSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci
-        class InPktsOverrun; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun
-        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated
-        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted
-        class OutPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged
-        class OutPktsTooLong; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong
-        class OutOctetsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected
-        class OutOctetsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted
+        class InPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged
+        class InPktsNoTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag
+        class InPktsBadTag; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag
+        class InPktsUnknownSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci
+        class InPktsNoSci; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci
+        class InPktsOverrun; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun
+        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated
+        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted
+        class OutPktsUntagged; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged
+        class OutPktsTooLong; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong
+        class OutOctetsProtected; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected
+        class OutOctetsEncrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged> in_pkts_untagged;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag> in_pkts_no_tag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag> in_pkts_bad_tag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci> in_pkts_unknown_sci;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci> in_pkts_no_sci;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun> in_pkts_overrun;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated> in_octets_validated;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted> in_octets_decrypted;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged> out_pkts_untagged;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong> out_pkts_too_long;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected> out_octets_protected;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted> out_octets_encrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged> in_pkts_untagged;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag> in_pkts_no_tag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag> in_pkts_bad_tag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci> in_pkts_unknown_sci;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci> in_pkts_no_sci;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun> in_pkts_overrun;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated> in_octets_validated;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted> in_octets_decrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged> out_pkts_untagged;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong> out_pkts_too_long;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected> out_octets_protected;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted> out_octets_encrypted;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged : public ydk::Entity
 {
     public:
         InPktsUntagged();
@@ -3208,10 +3208,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUntagged
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUntagged
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag : public ydk::Entity
 {
     public:
         InPktsNoTag();
@@ -3232,10 +3232,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoTag
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoTag
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag : public ydk::Entity
 {
     public:
         InPktsBadTag();
@@ -3256,10 +3256,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsBadTag
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsBadTag
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci : public ydk::Entity
 {
     public:
         InPktsUnknownSci();
@@ -3280,10 +3280,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsUnknownSci
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsUnknownSci
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci : public ydk::Entity
 {
     public:
         InPktsNoSci();
@@ -3304,10 +3304,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsNoSci
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsNoSci
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun : public ydk::Entity
 {
     public:
         InPktsOverrun();
@@ -3328,10 +3328,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InPktsOverrun
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InPktsOverrun
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated : public ydk::Entity
 {
     public:
         InOctetsValidated();
@@ -3352,10 +3352,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsValidated
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsValidated
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted : public ydk::Entity
 {
     public:
         InOctetsDecrypted();
@@ -3376,10 +3376,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::InOctetsDecrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::InOctetsDecrypted
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged : public ydk::Entity
 {
     public:
         OutPktsUntagged();
@@ -3400,10 +3400,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsUntagged
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsUntagged
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong : public ydk::Entity
 {
     public:
         OutPktsTooLong();
@@ -3424,10 +3424,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutPktsTooLong
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutPktsTooLong
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected : public ydk::Entity
 {
     public:
         OutOctetsProtected();
@@ -3448,10 +3448,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsProtected
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsProtected
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted : public ydk::Entity
 {
     public:
         OutOctetsEncrypted();
@@ -3472,14 +3472,14 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyifs::MacsecSecond30Secyif::OutOctetsEncrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyifs::MacsecSecond30secyif::OutOctetsEncrypted
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes : public ydk::Entity
 {
     public:
-        MacsecSecond30Secyrxes();
-        ~MacsecSecond30Secyrxes();
+        MacsecSecond30secyrxes();
+        ~MacsecSecond30secyrxes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3491,18 +3491,18 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class MacsecSecond30Secyrx; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx
+        class MacsecSecond30secyrx; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx> > macsec_second30secyrx;
+        ydk::YList macsec_second30secyrx;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx : public ydk::Entity
 {
     public:
-        MacsecSecond30Secyrx();
-        ~MacsecSecond30Secyrx();
+        MacsecSecond30secyrx();
+        ~MacsecSecond30secyrx();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3524,34 +3524,34 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf last_clear24_hr_time; //type: string
         ydk::YLeaf sec30_support; //type: boolean
         ydk::YLeaf sample_count; //type: uint64
-        class InPktsUnchecked; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked
-        class InPktsDelayed; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed
-        class InPktsLate; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate
-        class InPktsOk; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk
-        class InPktsInvalid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid
-        class InPktsNotValid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid
-        class InPktsNotUsingSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa
-        class InPktsUnusedSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa
-        class InPktsUntaggedHit; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit
-        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated
-        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted
+        class InPktsUnchecked; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked
+        class InPktsDelayed; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed
+        class InPktsLate; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate
+        class InPktsOk; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk
+        class InPktsInvalid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid
+        class InPktsNotValid; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid
+        class InPktsNotUsingSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa
+        class InPktsUnusedSa; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa
+        class InPktsUntaggedHit; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit
+        class InOctetsValidated; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated
+        class InOctetsDecrypted; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked> in_pkts_unchecked;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed> in_pkts_delayed;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate> in_pkts_late;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk> in_pkts_ok;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid> in_pkts_invalid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid> in_pkts_not_valid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa> in_pkts_not_using_sa;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa> in_pkts_unused_sa;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit> in_pkts_untagged_hit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated> in_octets_validated;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted> in_octets_decrypted;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked> in_pkts_unchecked;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed> in_pkts_delayed;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate> in_pkts_late;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk> in_pkts_ok;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid> in_pkts_invalid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid> in_pkts_not_valid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa> in_pkts_not_using_sa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa> in_pkts_unused_sa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit> in_pkts_untagged_hit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated> in_octets_validated;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted> in_octets_decrypted;
         
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked : public ydk::Entity
 {
     public:
         InPktsUnchecked();
@@ -3572,10 +3572,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnchecked
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnchecked
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed : public ydk::Entity
 {
     public:
         InPktsDelayed();
@@ -3596,10 +3596,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsDelayed
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsDelayed
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate : public ydk::Entity
 {
     public:
         InPktsLate();
@@ -3620,10 +3620,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsLate
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsLate
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk : public ydk::Entity
 {
     public:
         InPktsOk();
@@ -3644,10 +3644,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsOk
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsOk
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid : public ydk::Entity
 {
     public:
         InPktsInvalid();
@@ -3668,10 +3668,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsInvalid
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsInvalid
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid : public ydk::Entity
 {
     public:
         InPktsNotValid();
@@ -3692,10 +3692,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotValid
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotValid
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa : public ydk::Entity
 {
     public:
         InPktsNotUsingSa();
@@ -3716,10 +3716,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsNotUsingSa
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsNotUsingSa
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa : public ydk::Entity
 {
     public:
         InPktsUnusedSa();
@@ -3740,10 +3740,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUnusedSa
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUnusedSa
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit : public ydk::Entity
 {
     public:
         InPktsUntaggedHit();
@@ -3764,10 +3764,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InPktsUntaggedHit
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InPktsUntaggedHit
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated : public ydk::Entity
 {
     public:
         InOctetsValidated();
@@ -3788,10 +3788,10 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsValidated
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsValidated
 
 
-class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted : public ydk::Entity
+class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted : public ydk::Entity
 {
     public:
         InOctetsDecrypted();
@@ -3812,7 +3812,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         ydk::YLeaf tca_report; //type: boolean
         ydk::YLeaf valid; //type: boolean
 
-}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30Secyrxes::MacsecSecond30Secyrx::InOctetsDecrypted
+}; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30secyrxes::MacsecSecond30secyrx::InOctetsDecrypted
 
 
 class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS : public ydk::Entity
@@ -3833,7 +3833,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
 
         class MacsecSecond30Ether; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether> > macsec_second30_ether;
+        ydk::YList macsec_second30_ether;
         
 }; // PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS
 
@@ -3891,7 +3891,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         class OutOctets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutOctets
         class InPauseFrame; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPauseFrame
         class InGoodBytes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodBytes
-        class In8021QFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021QFrames
+        class In8021qFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021qFrames
         class InPkts1519MaxOctets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1519MaxOctets
         class InGoodPkts; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodPkts
         class InDropOverrun; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropOverrun
@@ -3906,7 +3906,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         class InErrorCollisions; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorCollisions
         class InErrorSymbol; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorSymbol
         class OutGoodBytes; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodBytes
-        class Out8021QFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021QFrames
+        class Out8021qFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021qFrames
         class OutPauseFrames; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPauseFrames
         class OutPkts1519MaxOctets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts1519MaxOctets
         class OutGoodPkts; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodPkts
@@ -3925,7 +3925,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         class InPkts256To511Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts256To511Octets
         class InPkts512To1023Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts512To1023Octets
         class InPkts1024To1518Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1024To1518Octets
-        class Outpkt64Octet; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64Octet
+        class Outpkt64octet; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64octet
         class OutPkts65127Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts65127Octets
         class OutPkts128255Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts128255Octets
         class OutPkts256511Octets; //type: PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts256511Octets
@@ -3967,7 +3967,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutOctets> out_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPauseFrame> in_pause_frame;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodBytes> in_good_bytes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021QFrames> in8021q_frames;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::In8021qFrames> in8021q_frames;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1519MaxOctets> in_pkts1519_max_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InGoodPkts> in_good_pkts;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InDropOverrun> in_drop_overrun;
@@ -3982,7 +3982,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorCollisions> in_error_collisions;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InErrorSymbol> in_error_symbol;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodBytes> out_good_bytes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021QFrames> out8021q_frames;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Out8021qFrames> out8021q_frames;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPauseFrames> out_pause_frames;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts1519MaxOctets> out_pkts1519_max_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutGoodPkts> out_good_pkts;
@@ -4001,7 +4001,7 @@ class PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::Mac
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts256To511Octets> in_pkts256_to511_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts512To1023Octets> in_pkts512_to1023_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::InPkts1024To1518Octets> in_pkts1024_to1518_octets;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64Octet> outpkt64octet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::Outpkt64octet> outpkt64octet;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts65127Octets> out_pkts65127_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts128255Octets> out_pkts128255_octets;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pmengine_oper::PerformanceManagement::Macsec::MacsecPorts::MacsecPort::MacsecCurrent::MacsecSecond30::MacsecSecond30EtherS::MacsecSecond30Ether::OutPkts256511Octets> out_pkts256511_octets;

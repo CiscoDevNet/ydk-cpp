@@ -32,18 +32,18 @@ class SNMPPROXYMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Snmpproxytable; //type: SNMPPROXYMIB::Snmpproxytable
+        class SnmpProxyTable; //type: SNMPPROXYMIB::SnmpProxyTable
 
-        std::shared_ptr<cisco_ios_xe::SNMP_PROXY_MIB::SNMPPROXYMIB::Snmpproxytable> snmpproxytable;
+        std::shared_ptr<cisco_ios_xe::SNMP_PROXY_MIB::SNMPPROXYMIB::SnmpProxyTable> snmpproxytable;
         
 }; // SNMPPROXYMIB
 
 
-class SNMPPROXYMIB::Snmpproxytable : public ydk::Entity
+class SNMPPROXYMIB::SnmpProxyTable : public ydk::Entity
 {
     public:
-        Snmpproxytable();
-        ~Snmpproxytable();
+        SnmpProxyTable();
+        ~SnmpProxyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -56,18 +56,18 @@ class SNMPPROXYMIB::Snmpproxytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Snmpproxyentry; //type: SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry
+        class SnmpProxyEntry; //type: SNMPPROXYMIB::SnmpProxyTable::SnmpProxyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::SNMP_PROXY_MIB::SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry> > snmpproxyentry;
+        ydk::YList snmpproxyentry;
         
-}; // SNMPPROXYMIB::Snmpproxytable
+}; // SNMPPROXYMIB::SnmpProxyTable
 
 
-class SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry : public ydk::Entity
+class SNMPPROXYMIB::SnmpProxyTable::SnmpProxyEntry : public ydk::Entity
 {
     public:
-        Snmpproxyentry();
-        ~Snmpproxyentry();
+        SnmpProxyEntry();
+        ~SnmpProxyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -81,7 +81,7 @@ class SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf snmpproxyname; //type: string
-        ydk::YLeaf snmpproxytype; //type: Snmpproxytype
+        ydk::YLeaf snmpproxytype; //type: SnmpProxyType
         ydk::YLeaf snmpproxycontextengineid; //type: binary
         ydk::YLeaf snmpproxycontextname; //type: string
         ydk::YLeaf snmpproxytargetparamsin; //type: string
@@ -89,11 +89,11 @@ class SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry : public ydk::Entity
         ydk::YLeaf snmpproxymultipletargetout; //type: string
         ydk::YLeaf snmpproxystoragetype; //type: StorageType
         ydk::YLeaf snmpproxyrowstatus; //type: RowStatus
-        class Snmpproxytype;
+        class SnmpProxyType;
 
-}; // SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry
+}; // SNMPPROXYMIB::SnmpProxyTable::SnmpProxyEntry
 
-class SNMPPROXYMIB::Snmpproxytable::Snmpproxyentry::Snmpproxytype : public ydk::Enum
+class SNMPPROXYMIB::SnmpProxyTable::SnmpProxyEntry::SnmpProxyType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf read;

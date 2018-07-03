@@ -13,33 +13,33 @@ namespace RMON2_MIB {
 
 RMON2MIB::RMON2MIB()
     :
-    protocoldir(std::make_shared<RMON2MIB::Protocoldir>())
-	,addressmap(std::make_shared<RMON2MIB::Addressmap>())
-	,probeconfig(std::make_shared<RMON2MIB::Probeconfig>())
-	,protocoldirtable(std::make_shared<RMON2MIB::Protocoldirtable>())
-	,protocoldistcontroltable(std::make_shared<RMON2MIB::Protocoldistcontroltable>())
-	,protocoldiststatstable(std::make_shared<RMON2MIB::Protocoldiststatstable>())
-	,addressmapcontroltable(std::make_shared<RMON2MIB::Addressmapcontroltable>())
-	,addressmaptable(std::make_shared<RMON2MIB::Addressmaptable>())
-	,hlhostcontroltable(std::make_shared<RMON2MIB::Hlhostcontroltable>())
-	,nlhosttable(std::make_shared<RMON2MIB::Nlhosttable>())
-	,hlmatrixcontroltable(std::make_shared<RMON2MIB::Hlmatrixcontroltable>())
-	,nlmatrixsdtable(std::make_shared<RMON2MIB::Nlmatrixsdtable>())
-	,nlmatrixdstable(std::make_shared<RMON2MIB::Nlmatrixdstable>())
-	,nlmatrixtopncontroltable(std::make_shared<RMON2MIB::Nlmatrixtopncontroltable>())
-	,nlmatrixtopntable(std::make_shared<RMON2MIB::Nlmatrixtopntable>())
-	,alhosttable(std::make_shared<RMON2MIB::Alhosttable>())
-	,almatrixsdtable(std::make_shared<RMON2MIB::Almatrixsdtable>())
-	,almatrixdstable(std::make_shared<RMON2MIB::Almatrixdstable>())
-	,almatrixtopncontroltable(std::make_shared<RMON2MIB::Almatrixtopncontroltable>())
-	,almatrixtopntable(std::make_shared<RMON2MIB::Almatrixtopntable>())
-	,usrhistorycontroltable(std::make_shared<RMON2MIB::Usrhistorycontroltable>())
-	,usrhistoryobjecttable(std::make_shared<RMON2MIB::Usrhistoryobjecttable>())
-	,usrhistorytable(std::make_shared<RMON2MIB::Usrhistorytable>())
-	,serialconfigtable(std::make_shared<RMON2MIB::Serialconfigtable>())
-	,netconfigtable(std::make_shared<RMON2MIB::Netconfigtable>())
-	,trapdesttable(std::make_shared<RMON2MIB::Trapdesttable>())
-	,serialconnectiontable(std::make_shared<RMON2MIB::Serialconnectiontable>())
+    protocoldir(std::make_shared<RMON2MIB::ProtocolDir>())
+    , addressmap(std::make_shared<RMON2MIB::AddressMap>())
+    , probeconfig(std::make_shared<RMON2MIB::ProbeConfig>())
+    , protocoldirtable(std::make_shared<RMON2MIB::ProtocolDirTable>())
+    , protocoldistcontroltable(std::make_shared<RMON2MIB::ProtocolDistControlTable>())
+    , protocoldiststatstable(std::make_shared<RMON2MIB::ProtocolDistStatsTable>())
+    , addressmapcontroltable(std::make_shared<RMON2MIB::AddressMapControlTable>())
+    , addressmaptable(std::make_shared<RMON2MIB::AddressMapTable>())
+    , hlhostcontroltable(std::make_shared<RMON2MIB::HlHostControlTable>())
+    , nlhosttable(std::make_shared<RMON2MIB::NlHostTable>())
+    , hlmatrixcontroltable(std::make_shared<RMON2MIB::HlMatrixControlTable>())
+    , nlmatrixsdtable(std::make_shared<RMON2MIB::NlMatrixSDTable>())
+    , nlmatrixdstable(std::make_shared<RMON2MIB::NlMatrixDSTable>())
+    , nlmatrixtopncontroltable(std::make_shared<RMON2MIB::NlMatrixTopNControlTable>())
+    , nlmatrixtopntable(std::make_shared<RMON2MIB::NlMatrixTopNTable>())
+    , alhosttable(std::make_shared<RMON2MIB::AlHostTable>())
+    , almatrixsdtable(std::make_shared<RMON2MIB::AlMatrixSDTable>())
+    , almatrixdstable(std::make_shared<RMON2MIB::AlMatrixDSTable>())
+    , almatrixtopncontroltable(std::make_shared<RMON2MIB::AlMatrixTopNControlTable>())
+    , almatrixtopntable(std::make_shared<RMON2MIB::AlMatrixTopNTable>())
+    , usrhistorycontroltable(std::make_shared<RMON2MIB::UsrHistoryControlTable>())
+    , usrhistoryobjecttable(std::make_shared<RMON2MIB::UsrHistoryObjectTable>())
+    , usrhistorytable(std::make_shared<RMON2MIB::UsrHistoryTable>())
+    , serialconfigtable(std::make_shared<RMON2MIB::SerialConfigTable>())
+    , netconfigtable(std::make_shared<RMON2MIB::NetConfigTable>())
+    , trapdesttable(std::make_shared<RMON2MIB::TrapDestTable>())
+    , serialconnectiontable(std::make_shared<RMON2MIB::SerialConnectionTable>())
 {
     protocoldir->parent = this;
     addressmap->parent = this;
@@ -69,7 +69,7 @@ RMON2MIB::RMON2MIB()
     trapdesttable->parent = this;
     serialconnectiontable->parent = this;
 
-    yang_name = "RMON2-MIB"; yang_parent_name = "RMON2-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "RMON2-MIB"; yang_parent_name = "RMON2-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RMON2MIB::~RMON2MIB()
@@ -78,6 +78,7 @@ RMON2MIB::~RMON2MIB()
 
 bool RMON2MIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (protocoldir !=  nullptr && protocoldir->has_data())
 	|| (addressmap !=  nullptr && addressmap->has_data())
 	|| (probeconfig !=  nullptr && probeconfig->has_data())
@@ -161,7 +162,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(protocoldir == nullptr)
         {
-            protocoldir = std::make_shared<RMON2MIB::Protocoldir>();
+            protocoldir = std::make_shared<RMON2MIB::ProtocolDir>();
         }
         return protocoldir;
     }
@@ -170,7 +171,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(addressmap == nullptr)
         {
-            addressmap = std::make_shared<RMON2MIB::Addressmap>();
+            addressmap = std::make_shared<RMON2MIB::AddressMap>();
         }
         return addressmap;
     }
@@ -179,7 +180,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(probeconfig == nullptr)
         {
-            probeconfig = std::make_shared<RMON2MIB::Probeconfig>();
+            probeconfig = std::make_shared<RMON2MIB::ProbeConfig>();
         }
         return probeconfig;
     }
@@ -188,7 +189,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(protocoldirtable == nullptr)
         {
-            protocoldirtable = std::make_shared<RMON2MIB::Protocoldirtable>();
+            protocoldirtable = std::make_shared<RMON2MIB::ProtocolDirTable>();
         }
         return protocoldirtable;
     }
@@ -197,7 +198,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(protocoldistcontroltable == nullptr)
         {
-            protocoldistcontroltable = std::make_shared<RMON2MIB::Protocoldistcontroltable>();
+            protocoldistcontroltable = std::make_shared<RMON2MIB::ProtocolDistControlTable>();
         }
         return protocoldistcontroltable;
     }
@@ -206,7 +207,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(protocoldiststatstable == nullptr)
         {
-            protocoldiststatstable = std::make_shared<RMON2MIB::Protocoldiststatstable>();
+            protocoldiststatstable = std::make_shared<RMON2MIB::ProtocolDistStatsTable>();
         }
         return protocoldiststatstable;
     }
@@ -215,7 +216,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(addressmapcontroltable == nullptr)
         {
-            addressmapcontroltable = std::make_shared<RMON2MIB::Addressmapcontroltable>();
+            addressmapcontroltable = std::make_shared<RMON2MIB::AddressMapControlTable>();
         }
         return addressmapcontroltable;
     }
@@ -224,7 +225,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(addressmaptable == nullptr)
         {
-            addressmaptable = std::make_shared<RMON2MIB::Addressmaptable>();
+            addressmaptable = std::make_shared<RMON2MIB::AddressMapTable>();
         }
         return addressmaptable;
     }
@@ -233,7 +234,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(hlhostcontroltable == nullptr)
         {
-            hlhostcontroltable = std::make_shared<RMON2MIB::Hlhostcontroltable>();
+            hlhostcontroltable = std::make_shared<RMON2MIB::HlHostControlTable>();
         }
         return hlhostcontroltable;
     }
@@ -242,7 +243,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(nlhosttable == nullptr)
         {
-            nlhosttable = std::make_shared<RMON2MIB::Nlhosttable>();
+            nlhosttable = std::make_shared<RMON2MIB::NlHostTable>();
         }
         return nlhosttable;
     }
@@ -251,7 +252,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(hlmatrixcontroltable == nullptr)
         {
-            hlmatrixcontroltable = std::make_shared<RMON2MIB::Hlmatrixcontroltable>();
+            hlmatrixcontroltable = std::make_shared<RMON2MIB::HlMatrixControlTable>();
         }
         return hlmatrixcontroltable;
     }
@@ -260,7 +261,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(nlmatrixsdtable == nullptr)
         {
-            nlmatrixsdtable = std::make_shared<RMON2MIB::Nlmatrixsdtable>();
+            nlmatrixsdtable = std::make_shared<RMON2MIB::NlMatrixSDTable>();
         }
         return nlmatrixsdtable;
     }
@@ -269,7 +270,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(nlmatrixdstable == nullptr)
         {
-            nlmatrixdstable = std::make_shared<RMON2MIB::Nlmatrixdstable>();
+            nlmatrixdstable = std::make_shared<RMON2MIB::NlMatrixDSTable>();
         }
         return nlmatrixdstable;
     }
@@ -278,7 +279,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(nlmatrixtopncontroltable == nullptr)
         {
-            nlmatrixtopncontroltable = std::make_shared<RMON2MIB::Nlmatrixtopncontroltable>();
+            nlmatrixtopncontroltable = std::make_shared<RMON2MIB::NlMatrixTopNControlTable>();
         }
         return nlmatrixtopncontroltable;
     }
@@ -287,7 +288,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(nlmatrixtopntable == nullptr)
         {
-            nlmatrixtopntable = std::make_shared<RMON2MIB::Nlmatrixtopntable>();
+            nlmatrixtopntable = std::make_shared<RMON2MIB::NlMatrixTopNTable>();
         }
         return nlmatrixtopntable;
     }
@@ -296,7 +297,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(alhosttable == nullptr)
         {
-            alhosttable = std::make_shared<RMON2MIB::Alhosttable>();
+            alhosttable = std::make_shared<RMON2MIB::AlHostTable>();
         }
         return alhosttable;
     }
@@ -305,7 +306,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(almatrixsdtable == nullptr)
         {
-            almatrixsdtable = std::make_shared<RMON2MIB::Almatrixsdtable>();
+            almatrixsdtable = std::make_shared<RMON2MIB::AlMatrixSDTable>();
         }
         return almatrixsdtable;
     }
@@ -314,7 +315,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(almatrixdstable == nullptr)
         {
-            almatrixdstable = std::make_shared<RMON2MIB::Almatrixdstable>();
+            almatrixdstable = std::make_shared<RMON2MIB::AlMatrixDSTable>();
         }
         return almatrixdstable;
     }
@@ -323,7 +324,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(almatrixtopncontroltable == nullptr)
         {
-            almatrixtopncontroltable = std::make_shared<RMON2MIB::Almatrixtopncontroltable>();
+            almatrixtopncontroltable = std::make_shared<RMON2MIB::AlMatrixTopNControlTable>();
         }
         return almatrixtopncontroltable;
     }
@@ -332,7 +333,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(almatrixtopntable == nullptr)
         {
-            almatrixtopntable = std::make_shared<RMON2MIB::Almatrixtopntable>();
+            almatrixtopntable = std::make_shared<RMON2MIB::AlMatrixTopNTable>();
         }
         return almatrixtopntable;
     }
@@ -341,7 +342,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(usrhistorycontroltable == nullptr)
         {
-            usrhistorycontroltable = std::make_shared<RMON2MIB::Usrhistorycontroltable>();
+            usrhistorycontroltable = std::make_shared<RMON2MIB::UsrHistoryControlTable>();
         }
         return usrhistorycontroltable;
     }
@@ -350,7 +351,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(usrhistoryobjecttable == nullptr)
         {
-            usrhistoryobjecttable = std::make_shared<RMON2MIB::Usrhistoryobjecttable>();
+            usrhistoryobjecttable = std::make_shared<RMON2MIB::UsrHistoryObjectTable>();
         }
         return usrhistoryobjecttable;
     }
@@ -359,7 +360,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(usrhistorytable == nullptr)
         {
-            usrhistorytable = std::make_shared<RMON2MIB::Usrhistorytable>();
+            usrhistorytable = std::make_shared<RMON2MIB::UsrHistoryTable>();
         }
         return usrhistorytable;
     }
@@ -368,7 +369,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(serialconfigtable == nullptr)
         {
-            serialconfigtable = std::make_shared<RMON2MIB::Serialconfigtable>();
+            serialconfigtable = std::make_shared<RMON2MIB::SerialConfigTable>();
         }
         return serialconfigtable;
     }
@@ -377,7 +378,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(netconfigtable == nullptr)
         {
-            netconfigtable = std::make_shared<RMON2MIB::Netconfigtable>();
+            netconfigtable = std::make_shared<RMON2MIB::NetConfigTable>();
         }
         return netconfigtable;
     }
@@ -386,7 +387,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(trapdesttable == nullptr)
         {
-            trapdesttable = std::make_shared<RMON2MIB::Trapdesttable>();
+            trapdesttable = std::make_shared<RMON2MIB::TrapDestTable>();
         }
         return trapdesttable;
     }
@@ -395,7 +396,7 @@ std::shared_ptr<Entity> RMON2MIB::get_child_by_name(const std::string & child_ya
     {
         if(serialconnectiontable == nullptr)
         {
-            serialconnectiontable = std::make_shared<RMON2MIB::Serialconnectiontable>();
+            serialconnectiontable = std::make_shared<RMON2MIB::SerialConnectionTable>();
         }
         return serialconnectiontable;
     }
@@ -585,44 +586,45 @@ bool RMON2MIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-RMON2MIB::Protocoldir::Protocoldir()
+RMON2MIB::ProtocolDir::ProtocolDir()
     :
     protocoldirlastchange{YType::uint32, "protocolDirLastChange"}
 {
 
-    yang_name = "protocolDir"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocolDir"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Protocoldir::~Protocoldir()
+RMON2MIB::ProtocolDir::~ProtocolDir()
 {
 }
 
-bool RMON2MIB::Protocoldir::has_data() const
+bool RMON2MIB::ProtocolDir::has_data() const
 {
+    if (is_presence_container) return true;
     return protocoldirlastchange.is_set;
 }
 
-bool RMON2MIB::Protocoldir::has_operation() const
+bool RMON2MIB::ProtocolDir::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocoldirlastchange.yfilter);
 }
 
-std::string RMON2MIB::Protocoldir::get_absolute_path() const
+std::string RMON2MIB::ProtocolDir::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Protocoldir::get_segment_path() const
+std::string RMON2MIB::ProtocolDir::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocolDir";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldir::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDir::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -632,19 +634,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldir::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Protocoldir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProtocolDir::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldir::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDir::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Protocoldir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProtocolDir::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocolDirLastChange")
     {
@@ -654,7 +656,7 @@ void RMON2MIB::Protocoldir::set_value(const std::string & value_path, const std:
     }
 }
 
-void RMON2MIB::Protocoldir::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProtocolDir::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocolDirLastChange")
     {
@@ -662,35 +664,36 @@ void RMON2MIB::Protocoldir::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool RMON2MIB::Protocoldir::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProtocolDir::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocolDirLastChange")
         return true;
     return false;
 }
 
-RMON2MIB::Addressmap::Addressmap()
+RMON2MIB::AddressMap::AddressMap()
     :
     addressmapinserts{YType::uint32, "addressMapInserts"},
     addressmapdeletes{YType::uint32, "addressMapDeletes"},
     addressmapmaxdesiredentries{YType::int32, "addressMapMaxDesiredEntries"}
 {
 
-    yang_name = "addressMap"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addressMap"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Addressmap::~Addressmap()
+RMON2MIB::AddressMap::~AddressMap()
 {
 }
 
-bool RMON2MIB::Addressmap::has_data() const
+bool RMON2MIB::AddressMap::has_data() const
 {
+    if (is_presence_container) return true;
     return addressmapinserts.is_set
 	|| addressmapdeletes.is_set
 	|| addressmapmaxdesiredentries.is_set;
 }
 
-bool RMON2MIB::Addressmap::has_operation() const
+bool RMON2MIB::AddressMap::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(addressmapinserts.yfilter)
@@ -698,21 +701,21 @@ bool RMON2MIB::Addressmap::has_operation() const
 	|| ydk::is_set(addressmapmaxdesiredentries.yfilter);
 }
 
-std::string RMON2MIB::Addressmap::get_absolute_path() const
+std::string RMON2MIB::AddressMap::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Addressmap::get_segment_path() const
+std::string RMON2MIB::AddressMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "addressMap";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -724,19 +727,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmap::get_name_le
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Addressmap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AddressMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Addressmap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Addressmap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AddressMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "addressMapInserts")
     {
@@ -758,7 +761,7 @@ void RMON2MIB::Addressmap::set_value(const std::string & value_path, const std::
     }
 }
 
-void RMON2MIB::Addressmap::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AddressMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "addressMapInserts")
     {
@@ -774,14 +777,14 @@ void RMON2MIB::Addressmap::set_filter(const std::string & value_path, YFilter yf
     }
 }
 
-bool RMON2MIB::Addressmap::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AddressMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "addressMapInserts" || name == "addressMapDeletes" || name == "addressMapMaxDesiredEntries")
         return true;
     return false;
 }
 
-RMON2MIB::Probeconfig::Probeconfig()
+RMON2MIB::ProbeConfig::ProbeConfig()
     :
     probecapabilities{YType::str, "probeCapabilities"},
     probesoftwarerev{YType::str, "probeSoftwareRev"},
@@ -795,15 +798,16 @@ RMON2MIB::Probeconfig::Probeconfig()
     netdefaultgateway{YType::str, "netDefaultGateway"}
 {
 
-    yang_name = "probeConfig"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "probeConfig"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Probeconfig::~Probeconfig()
+RMON2MIB::ProbeConfig::~ProbeConfig()
 {
 }
 
-bool RMON2MIB::Probeconfig::has_data() const
+bool RMON2MIB::ProbeConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return probecapabilities.is_set
 	|| probesoftwarerev.is_set
 	|| probehardwarerev.is_set
@@ -816,7 +820,7 @@ bool RMON2MIB::Probeconfig::has_data() const
 	|| netdefaultgateway.is_set;
 }
 
-bool RMON2MIB::Probeconfig::has_operation() const
+bool RMON2MIB::ProbeConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(probecapabilities.yfilter)
@@ -831,21 +835,21 @@ bool RMON2MIB::Probeconfig::has_operation() const
 	|| ydk::is_set(netdefaultgateway.yfilter);
 }
 
-std::string RMON2MIB::Probeconfig::get_absolute_path() const
+std::string RMON2MIB::ProbeConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Probeconfig::get_segment_path() const
+std::string RMON2MIB::ProbeConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "probeConfig";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Probeconfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProbeConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -864,19 +868,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Probeconfig::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Probeconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProbeConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Probeconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProbeConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Probeconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProbeConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "probeCapabilities")
     {
@@ -940,7 +944,7 @@ void RMON2MIB::Probeconfig::set_value(const std::string & value_path, const std:
     }
 }
 
-void RMON2MIB::Probeconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProbeConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "probeCapabilities")
     {
@@ -984,26 +988,29 @@ void RMON2MIB::Probeconfig::set_filter(const std::string & value_path, YFilter y
     }
 }
 
-bool RMON2MIB::Probeconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProbeConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "probeCapabilities" || name == "probeSoftwareRev" || name == "probeHardwareRev" || name == "probeDateTime" || name == "probeResetControl" || name == "probeDownloadFile" || name == "probeDownloadTFTPServer" || name == "probeDownloadAction" || name == "probeDownloadStatus" || name == "netDefaultGateway")
         return true;
     return false;
 }
 
-RMON2MIB::Protocoldirtable::Protocoldirtable()
+RMON2MIB::ProtocolDirTable::ProtocolDirTable()
+    :
+    protocoldirentry(this, {"protocoldirid", "protocoldirparameters"})
 {
 
-    yang_name = "protocolDirTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocolDirTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Protocoldirtable::~Protocoldirtable()
+RMON2MIB::ProtocolDirTable::~ProtocolDirTable()
 {
 }
 
-bool RMON2MIB::Protocoldirtable::has_data() const
+bool RMON2MIB::ProtocolDirTable::has_data() const
 {
-    for (std::size_t index=0; index<protocoldirentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocoldirentry.len(); index++)
     {
         if(protocoldirentry[index]->has_data())
             return true;
@@ -1011,9 +1018,9 @@ bool RMON2MIB::Protocoldirtable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Protocoldirtable::has_operation() const
+bool RMON2MIB::ProtocolDirTable::has_operation() const
 {
-    for (std::size_t index=0; index<protocoldirentry.size(); index++)
+    for (std::size_t index=0; index<protocoldirentry.len(); index++)
     {
         if(protocoldirentry[index]->has_operation())
             return true;
@@ -1021,21 +1028,21 @@ bool RMON2MIB::Protocoldirtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Protocoldirtable::get_absolute_path() const
+std::string RMON2MIB::ProtocolDirTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Protocoldirtable::get_segment_path() const
+std::string RMON2MIB::ProtocolDirTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocolDirTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldirtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDirTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1044,25 +1051,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldirtable::get_n
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Protocoldirtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProtocolDirTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocolDirEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Protocoldirtable::Protocoldirentry>();
+        auto c = std::make_shared<RMON2MIB::ProtocolDirTable::ProtocolDirEntry>();
         c->parent = this;
-        protocoldirentry.push_back(c);
+        protocoldirentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldirtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDirTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocoldirentry)
+    for (auto c : protocoldirentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1073,22 +1080,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldirtable::get_c
     return children;
 }
 
-void RMON2MIB::Protocoldirtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProtocolDirTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Protocoldirtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProtocolDirTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Protocoldirtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProtocolDirTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocolDirEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirentry()
+RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirEntry()
     :
     protocoldirid{YType::str, "protocolDirID"},
     protocoldirparameters{YType::str, "protocolDirParameters"},
@@ -1102,15 +1109,16 @@ RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirentry()
     protocoldirstatus{YType::enumeration, "protocolDirStatus"}
 {
 
-    yang_name = "protocolDirEntry"; yang_parent_name = "protocolDirTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocolDirEntry"; yang_parent_name = "protocolDirTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Protocoldirtable::Protocoldirentry::~Protocoldirentry()
+RMON2MIB::ProtocolDirTable::ProtocolDirEntry::~ProtocolDirEntry()
 {
 }
 
-bool RMON2MIB::Protocoldirtable::Protocoldirentry::has_data() const
+bool RMON2MIB::ProtocolDirTable::ProtocolDirEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return protocoldirid.is_set
 	|| protocoldirparameters.is_set
 	|| protocoldirlocalindex.is_set
@@ -1123,7 +1131,7 @@ bool RMON2MIB::Protocoldirtable::Protocoldirentry::has_data() const
 	|| protocoldirstatus.is_set;
 }
 
-bool RMON2MIB::Protocoldirtable::Protocoldirentry::has_operation() const
+bool RMON2MIB::ProtocolDirTable::ProtocolDirEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocoldirid.yfilter)
@@ -1138,21 +1146,23 @@ bool RMON2MIB::Protocoldirtable::Protocoldirentry::has_operation() const
 	|| ydk::is_set(protocoldirstatus.yfilter);
 }
 
-std::string RMON2MIB::Protocoldirtable::Protocoldirentry::get_absolute_path() const
+std::string RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/protocolDirTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Protocoldirtable::Protocoldirentry::get_segment_path() const
+std::string RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocolDirEntry" <<"[protocolDirID='" <<protocoldirid <<"']" <<"[protocolDirParameters='" <<protocoldirparameters <<"']";
+    path_buffer << "protocolDirEntry";
+    ADD_KEY_TOKEN(protocoldirid, "protocolDirID");
+    ADD_KEY_TOKEN(protocoldirparameters, "protocolDirParameters");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldirtable::Protocoldirentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1171,19 +1181,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldirtable::Proto
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Protocoldirtable::Protocoldirentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldirtable::Protocoldirentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDirTable::ProtocolDirEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Protocoldirtable::Protocoldirentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProtocolDirTable::ProtocolDirEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocolDirID")
     {
@@ -1247,7 +1257,7 @@ void RMON2MIB::Protocoldirtable::Protocoldirentry::set_value(const std::string &
     }
 }
 
-void RMON2MIB::Protocoldirtable::Protocoldirentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProtocolDirTable::ProtocolDirEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocolDirID")
     {
@@ -1291,26 +1301,29 @@ void RMON2MIB::Protocoldirtable::Protocoldirentry::set_filter(const std::string 
     }
 }
 
-bool RMON2MIB::Protocoldirtable::Protocoldirentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProtocolDirTable::ProtocolDirEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocolDirID" || name == "protocolDirParameters" || name == "protocolDirLocalIndex" || name == "protocolDirDescr" || name == "protocolDirType" || name == "protocolDirAddressMapConfig" || name == "protocolDirHostConfig" || name == "protocolDirMatrixConfig" || name == "protocolDirOwner" || name == "protocolDirStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Protocoldistcontroltable::Protocoldistcontroltable()
+RMON2MIB::ProtocolDistControlTable::ProtocolDistControlTable()
+    :
+    protocoldistcontrolentry(this, {"protocoldistcontrolindex"})
 {
 
-    yang_name = "protocolDistControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocolDistControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Protocoldistcontroltable::~Protocoldistcontroltable()
+RMON2MIB::ProtocolDistControlTable::~ProtocolDistControlTable()
 {
 }
 
-bool RMON2MIB::Protocoldistcontroltable::has_data() const
+bool RMON2MIB::ProtocolDistControlTable::has_data() const
 {
-    for (std::size_t index=0; index<protocoldistcontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocoldistcontrolentry.len(); index++)
     {
         if(protocoldistcontrolentry[index]->has_data())
             return true;
@@ -1318,9 +1331,9 @@ bool RMON2MIB::Protocoldistcontroltable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Protocoldistcontroltable::has_operation() const
+bool RMON2MIB::ProtocolDistControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<protocoldistcontrolentry.size(); index++)
+    for (std::size_t index=0; index<protocoldistcontrolentry.len(); index++)
     {
         if(protocoldistcontrolentry[index]->has_operation())
             return true;
@@ -1328,21 +1341,21 @@ bool RMON2MIB::Protocoldistcontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Protocoldistcontroltable::get_absolute_path() const
+std::string RMON2MIB::ProtocolDistControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Protocoldistcontroltable::get_segment_path() const
+std::string RMON2MIB::ProtocolDistControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocolDistControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldistcontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1351,25 +1364,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldistcontroltabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Protocoldistcontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProtocolDistControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocolDistControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry>();
+        auto c = std::make_shared<RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry>();
         c->parent = this;
-        protocoldistcontrolentry.push_back(c);
+        protocoldistcontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldistcontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocoldistcontrolentry)
+    for (auto c : protocoldistcontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1380,22 +1393,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldistcontroltabl
     return children;
 }
 
-void RMON2MIB::Protocoldistcontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProtocolDistControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Protocoldistcontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProtocolDistControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Protocoldistcontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProtocolDistControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocolDistControlEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::Protocoldistcontrolentry()
+RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::ProtocolDistControlEntry()
     :
     protocoldistcontrolindex{YType::int32, "protocolDistControlIndex"},
     protocoldistcontroldatasource{YType::str, "protocolDistControlDataSource"},
@@ -1405,15 +1418,16 @@ RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::Protocoldistcontro
     protocoldistcontrolstatus{YType::enumeration, "protocolDistControlStatus"}
 {
 
-    yang_name = "protocolDistControlEntry"; yang_parent_name = "protocolDistControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocolDistControlEntry"; yang_parent_name = "protocolDistControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::~Protocoldistcontrolentry()
+RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::~ProtocolDistControlEntry()
 {
 }
 
-bool RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::has_data() const
+bool RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return protocoldistcontrolindex.is_set
 	|| protocoldistcontroldatasource.is_set
 	|| protocoldistcontroldroppedframes.is_set
@@ -1422,7 +1436,7 @@ bool RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::has_data() co
 	|| protocoldistcontrolstatus.is_set;
 }
 
-bool RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::has_operation() const
+bool RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocoldistcontrolindex.yfilter)
@@ -1433,21 +1447,22 @@ bool RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::has_operation
 	|| ydk::is_set(protocoldistcontrolstatus.yfilter);
 }
 
-std::string RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::get_absolute_path() const
+std::string RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/protocolDistControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::get_segment_path() const
+std::string RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocolDistControlEntry" <<"[protocolDistControlIndex='" <<protocoldistcontrolindex <<"']";
+    path_buffer << "protocolDistControlEntry";
+    ADD_KEY_TOKEN(protocoldistcontrolindex, "protocolDistControlIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1462,19 +1477,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldistcontroltabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocolDistControlIndex")
     {
@@ -1514,7 +1529,7 @@ void RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::set_value(con
     }
 }
 
-void RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocolDistControlIndex")
     {
@@ -1542,26 +1557,29 @@ void RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::set_filter(co
     }
 }
 
-bool RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocolDistControlIndex" || name == "protocolDistControlDataSource" || name == "protocolDistControlDroppedFrames" || name == "protocolDistControlCreateTime" || name == "protocolDistControlOwner" || name == "protocolDistControlStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Protocoldiststatstable::Protocoldiststatstable()
+RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsTable()
+    :
+    protocoldiststatsentry(this, {"protocoldistcontrolindex", "protocoldirlocalindex"})
 {
 
-    yang_name = "protocolDistStatsTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocolDistStatsTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Protocoldiststatstable::~Protocoldiststatstable()
+RMON2MIB::ProtocolDistStatsTable::~ProtocolDistStatsTable()
 {
 }
 
-bool RMON2MIB::Protocoldiststatstable::has_data() const
+bool RMON2MIB::ProtocolDistStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<protocoldiststatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocoldiststatsentry.len(); index++)
     {
         if(protocoldiststatsentry[index]->has_data())
             return true;
@@ -1569,9 +1587,9 @@ bool RMON2MIB::Protocoldiststatstable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Protocoldiststatstable::has_operation() const
+bool RMON2MIB::ProtocolDistStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<protocoldiststatsentry.size(); index++)
+    for (std::size_t index=0; index<protocoldiststatsentry.len(); index++)
     {
         if(protocoldiststatsentry[index]->has_operation())
             return true;
@@ -1579,21 +1597,21 @@ bool RMON2MIB::Protocoldiststatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Protocoldiststatstable::get_absolute_path() const
+std::string RMON2MIB::ProtocolDistStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Protocoldiststatstable::get_segment_path() const
+std::string RMON2MIB::ProtocolDistStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocolDistStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldiststatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1602,25 +1620,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldiststatstable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Protocoldiststatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProtocolDistStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "protocolDistStatsEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry>();
+        auto c = std::make_shared<RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry>();
         c->parent = this;
-        protocoldiststatsentry.push_back(c);
+        protocoldiststatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldiststatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocoldiststatsentry)
+    for (auto c : protocoldiststatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1631,22 +1649,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldiststatstable:
     return children;
 }
 
-void RMON2MIB::Protocoldiststatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProtocolDistStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Protocoldiststatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProtocolDistStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Protocoldiststatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProtocolDistStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocolDistStatsEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::Protocoldiststatsentry()
+RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::ProtocolDistStatsEntry()
     :
     protocoldistcontrolindex{YType::str, "protocolDistControlIndex"},
     protocoldirlocalindex{YType::str, "protocolDirLocalIndex"},
@@ -1654,22 +1672,23 @@ RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::Protocoldiststatsentry
     protocoldiststatsoctets{YType::uint32, "protocolDistStatsOctets"}
 {
 
-    yang_name = "protocolDistStatsEntry"; yang_parent_name = "protocolDistStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocolDistStatsEntry"; yang_parent_name = "protocolDistStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::~Protocoldiststatsentry()
+RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::~ProtocolDistStatsEntry()
 {
 }
 
-bool RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::has_data() const
+bool RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return protocoldistcontrolindex.is_set
 	|| protocoldirlocalindex.is_set
 	|| protocoldiststatspkts.is_set
 	|| protocoldiststatsoctets.is_set;
 }
 
-bool RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::has_operation() const
+bool RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(protocoldistcontrolindex.yfilter)
@@ -1678,21 +1697,23 @@ bool RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::has_operation() c
 	|| ydk::is_set(protocoldiststatsoctets.yfilter);
 }
 
-std::string RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::get_absolute_path() const
+std::string RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/protocolDistStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::get_segment_path() const
+std::string RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocolDistStatsEntry" <<"[protocolDistControlIndex='" <<protocoldistcontrolindex <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']";
+    path_buffer << "protocolDistStatsEntry";
+    ADD_KEY_TOKEN(protocoldistcontrolindex, "protocolDistControlIndex");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1705,19 +1726,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Protocoldiststatstable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocolDistControlIndex")
     {
@@ -1745,7 +1766,7 @@ void RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::set_value(const s
     }
 }
 
-void RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocolDistControlIndex")
     {
@@ -1765,26 +1786,29 @@ void RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::set_filter(const 
     }
 }
 
-bool RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocolDistControlIndex" || name == "protocolDirLocalIndex" || name == "protocolDistStatsPkts" || name == "protocolDistStatsOctets")
         return true;
     return false;
 }
 
-RMON2MIB::Addressmapcontroltable::Addressmapcontroltable()
+RMON2MIB::AddressMapControlTable::AddressMapControlTable()
+    :
+    addressmapcontrolentry(this, {"addressmapcontrolindex"})
 {
 
-    yang_name = "addressMapControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addressMapControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Addressmapcontroltable::~Addressmapcontroltable()
+RMON2MIB::AddressMapControlTable::~AddressMapControlTable()
 {
 }
 
-bool RMON2MIB::Addressmapcontroltable::has_data() const
+bool RMON2MIB::AddressMapControlTable::has_data() const
 {
-    for (std::size_t index=0; index<addressmapcontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<addressmapcontrolentry.len(); index++)
     {
         if(addressmapcontrolentry[index]->has_data())
             return true;
@@ -1792,9 +1816,9 @@ bool RMON2MIB::Addressmapcontroltable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Addressmapcontroltable::has_operation() const
+bool RMON2MIB::AddressMapControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<addressmapcontrolentry.size(); index++)
+    for (std::size_t index=0; index<addressmapcontrolentry.len(); index++)
     {
         if(addressmapcontrolentry[index]->has_operation())
             return true;
@@ -1802,21 +1826,21 @@ bool RMON2MIB::Addressmapcontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Addressmapcontroltable::get_absolute_path() const
+std::string RMON2MIB::AddressMapControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Addressmapcontroltable::get_segment_path() const
+std::string RMON2MIB::AddressMapControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "addressMapControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmapcontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1825,25 +1849,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmapcontroltable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Addressmapcontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AddressMapControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addressMapControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry>();
+        auto c = std::make_shared<RMON2MIB::AddressMapControlTable::AddressMapControlEntry>();
         c->parent = this;
-        addressmapcontrolentry.push_back(c);
+        addressmapcontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Addressmapcontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : addressmapcontrolentry)
+    for (auto c : addressmapcontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1854,22 +1878,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Addressmapcontroltable:
     return children;
 }
 
-void RMON2MIB::Addressmapcontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AddressMapControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Addressmapcontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AddressMapControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Addressmapcontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AddressMapControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "addressMapControlEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::Addressmapcontrolentry()
+RMON2MIB::AddressMapControlTable::AddressMapControlEntry::AddressMapControlEntry()
     :
     addressmapcontrolindex{YType::int32, "addressMapControlIndex"},
     addressmapcontroldatasource{YType::str, "addressMapControlDataSource"},
@@ -1878,15 +1902,16 @@ RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::Addressmapcontrolentry
     addressmapcontrolstatus{YType::enumeration, "addressMapControlStatus"}
 {
 
-    yang_name = "addressMapControlEntry"; yang_parent_name = "addressMapControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addressMapControlEntry"; yang_parent_name = "addressMapControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::~Addressmapcontrolentry()
+RMON2MIB::AddressMapControlTable::AddressMapControlEntry::~AddressMapControlEntry()
 {
 }
 
-bool RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::has_data() const
+bool RMON2MIB::AddressMapControlTable::AddressMapControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return addressmapcontrolindex.is_set
 	|| addressmapcontroldatasource.is_set
 	|| addressmapcontroldroppedframes.is_set
@@ -1894,7 +1919,7 @@ bool RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::has_data() const
 	|| addressmapcontrolstatus.is_set;
 }
 
-bool RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::has_operation() const
+bool RMON2MIB::AddressMapControlTable::AddressMapControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(addressmapcontrolindex.yfilter)
@@ -1904,21 +1929,22 @@ bool RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::has_operation() c
 	|| ydk::is_set(addressmapcontrolstatus.yfilter);
 }
 
-std::string RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::get_absolute_path() const
+std::string RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/addressMapControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::get_segment_path() const
+std::string RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "addressMapControlEntry" <<"[addressMapControlIndex='" <<addressmapcontrolindex <<"']";
+    path_buffer << "addressMapControlEntry";
+    ADD_KEY_TOKEN(addressmapcontrolindex, "addressMapControlIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1932,19 +1958,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmapcontroltable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapControlTable::AddressMapControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AddressMapControlTable::AddressMapControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "addressMapControlIndex")
     {
@@ -1978,7 +2004,7 @@ void RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::set_value(const s
     }
 }
 
-void RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AddressMapControlTable::AddressMapControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "addressMapControlIndex")
     {
@@ -2002,26 +2028,29 @@ void RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::set_filter(const 
     }
 }
 
-bool RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AddressMapControlTable::AddressMapControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "addressMapControlIndex" || name == "addressMapControlDataSource" || name == "addressMapControlDroppedFrames" || name == "addressMapControlOwner" || name == "addressMapControlStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Addressmaptable::Addressmaptable()
+RMON2MIB::AddressMapTable::AddressMapTable()
+    :
+    addressmapentry(this, {"addressmaptimemark", "protocoldirlocalindex", "addressmapnetworkaddress", "addressmapsource"})
 {
 
-    yang_name = "addressMapTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addressMapTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Addressmaptable::~Addressmaptable()
+RMON2MIB::AddressMapTable::~AddressMapTable()
 {
 }
 
-bool RMON2MIB::Addressmaptable::has_data() const
+bool RMON2MIB::AddressMapTable::has_data() const
 {
-    for (std::size_t index=0; index<addressmapentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<addressmapentry.len(); index++)
     {
         if(addressmapentry[index]->has_data())
             return true;
@@ -2029,9 +2058,9 @@ bool RMON2MIB::Addressmaptable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Addressmaptable::has_operation() const
+bool RMON2MIB::AddressMapTable::has_operation() const
 {
-    for (std::size_t index=0; index<addressmapentry.size(); index++)
+    for (std::size_t index=0; index<addressmapentry.len(); index++)
     {
         if(addressmapentry[index]->has_operation())
             return true;
@@ -2039,21 +2068,21 @@ bool RMON2MIB::Addressmaptable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Addressmaptable::get_absolute_path() const
+std::string RMON2MIB::AddressMapTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Addressmaptable::get_segment_path() const
+std::string RMON2MIB::AddressMapTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "addressMapTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmaptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2062,25 +2091,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmaptable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Addressmaptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AddressMapTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addressMapEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Addressmaptable::Addressmapentry>();
+        auto c = std::make_shared<RMON2MIB::AddressMapTable::AddressMapEntry>();
         c->parent = this;
-        addressmapentry.push_back(c);
+        addressmapentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Addressmaptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : addressmapentry)
+    for (auto c : addressmapentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2091,22 +2120,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Addressmaptable::get_ch
     return children;
 }
 
-void RMON2MIB::Addressmaptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AddressMapTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Addressmaptable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AddressMapTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Addressmaptable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AddressMapTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "addressMapEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Addressmaptable::Addressmapentry::Addressmapentry()
+RMON2MIB::AddressMapTable::AddressMapEntry::AddressMapEntry()
     :
     addressmaptimemark{YType::uint32, "addressMapTimeMark"},
     protocoldirlocalindex{YType::str, "protocolDirLocalIndex"},
@@ -2116,15 +2145,16 @@ RMON2MIB::Addressmaptable::Addressmapentry::Addressmapentry()
     addressmaplastchange{YType::uint32, "addressMapLastChange"}
 {
 
-    yang_name = "addressMapEntry"; yang_parent_name = "addressMapTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addressMapEntry"; yang_parent_name = "addressMapTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Addressmaptable::Addressmapentry::~Addressmapentry()
+RMON2MIB::AddressMapTable::AddressMapEntry::~AddressMapEntry()
 {
 }
 
-bool RMON2MIB::Addressmaptable::Addressmapentry::has_data() const
+bool RMON2MIB::AddressMapTable::AddressMapEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return addressmaptimemark.is_set
 	|| protocoldirlocalindex.is_set
 	|| addressmapnetworkaddress.is_set
@@ -2133,7 +2163,7 @@ bool RMON2MIB::Addressmaptable::Addressmapentry::has_data() const
 	|| addressmaplastchange.is_set;
 }
 
-bool RMON2MIB::Addressmaptable::Addressmapentry::has_operation() const
+bool RMON2MIB::AddressMapTable::AddressMapEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(addressmaptimemark.yfilter)
@@ -2144,21 +2174,25 @@ bool RMON2MIB::Addressmaptable::Addressmapentry::has_operation() const
 	|| ydk::is_set(addressmaplastchange.yfilter);
 }
 
-std::string RMON2MIB::Addressmaptable::Addressmapentry::get_absolute_path() const
+std::string RMON2MIB::AddressMapTable::AddressMapEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/addressMapTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Addressmaptable::Addressmapentry::get_segment_path() const
+std::string RMON2MIB::AddressMapTable::AddressMapEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "addressMapEntry" <<"[addressMapTimeMark='" <<addressmaptimemark <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']" <<"[addressMapNetworkAddress='" <<addressmapnetworkaddress <<"']" <<"[addressMapSource='" <<addressmapsource <<"']";
+    path_buffer << "addressMapEntry";
+    ADD_KEY_TOKEN(addressmaptimemark, "addressMapTimeMark");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
+    ADD_KEY_TOKEN(addressmapnetworkaddress, "addressMapNetworkAddress");
+    ADD_KEY_TOKEN(addressmapsource, "addressMapSource");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmaptable::Addressmapentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AddressMapTable::AddressMapEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2173,19 +2207,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Addressmaptable::Addres
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Addressmaptable::Addressmapentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AddressMapTable::AddressMapEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Addressmaptable::Addressmapentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AddressMapTable::AddressMapEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Addressmaptable::Addressmapentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AddressMapTable::AddressMapEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "addressMapTimeMark")
     {
@@ -2225,7 +2259,7 @@ void RMON2MIB::Addressmaptable::Addressmapentry::set_value(const std::string & v
     }
 }
 
-void RMON2MIB::Addressmaptable::Addressmapentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AddressMapTable::AddressMapEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "addressMapTimeMark")
     {
@@ -2253,26 +2287,29 @@ void RMON2MIB::Addressmaptable::Addressmapentry::set_filter(const std::string & 
     }
 }
 
-bool RMON2MIB::Addressmaptable::Addressmapentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AddressMapTable::AddressMapEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "addressMapTimeMark" || name == "protocolDirLocalIndex" || name == "addressMapNetworkAddress" || name == "addressMapSource" || name == "addressMapPhysicalAddress" || name == "addressMapLastChange")
         return true;
     return false;
 }
 
-RMON2MIB::Hlhostcontroltable::Hlhostcontroltable()
+RMON2MIB::HlHostControlTable::HlHostControlTable()
+    :
+    hlhostcontrolentry(this, {"hlhostcontrolindex"})
 {
 
-    yang_name = "hlHostControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hlHostControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Hlhostcontroltable::~Hlhostcontroltable()
+RMON2MIB::HlHostControlTable::~HlHostControlTable()
 {
 }
 
-bool RMON2MIB::Hlhostcontroltable::has_data() const
+bool RMON2MIB::HlHostControlTable::has_data() const
 {
-    for (std::size_t index=0; index<hlhostcontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hlhostcontrolentry.len(); index++)
     {
         if(hlhostcontrolentry[index]->has_data())
             return true;
@@ -2280,9 +2317,9 @@ bool RMON2MIB::Hlhostcontroltable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Hlhostcontroltable::has_operation() const
+bool RMON2MIB::HlHostControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<hlhostcontrolentry.size(); index++)
+    for (std::size_t index=0; index<hlhostcontrolentry.len(); index++)
     {
         if(hlhostcontrolentry[index]->has_operation())
             return true;
@@ -2290,21 +2327,21 @@ bool RMON2MIB::Hlhostcontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Hlhostcontroltable::get_absolute_path() const
+std::string RMON2MIB::HlHostControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Hlhostcontroltable::get_segment_path() const
+std::string RMON2MIB::HlHostControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hlHostControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlhostcontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlHostControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2313,25 +2350,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlhostcontroltable::get
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Hlhostcontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::HlHostControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hlHostControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry>();
+        auto c = std::make_shared<RMON2MIB::HlHostControlTable::HlHostControlEntry>();
         c->parent = this;
-        hlhostcontrolentry.push_back(c);
+        hlhostcontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Hlhostcontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlHostControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hlhostcontrolentry)
+    for (auto c : hlhostcontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2342,22 +2379,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Hlhostcontroltable::get
     return children;
 }
 
-void RMON2MIB::Hlhostcontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::HlHostControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Hlhostcontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::HlHostControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Hlhostcontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::HlHostControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlHostControlEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::Hlhostcontrolentry()
+RMON2MIB::HlHostControlTable::HlHostControlEntry::HlHostControlEntry()
     :
     hlhostcontrolindex{YType::int32, "hlHostControlIndex"},
     hlhostcontroldatasource{YType::str, "hlHostControlDataSource"},
@@ -2373,15 +2410,16 @@ RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::Hlhostcontrolentry()
     hlhostcontrolstatus{YType::enumeration, "hlHostControlStatus"}
 {
 
-    yang_name = "hlHostControlEntry"; yang_parent_name = "hlHostControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hlHostControlEntry"; yang_parent_name = "hlHostControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::~Hlhostcontrolentry()
+RMON2MIB::HlHostControlTable::HlHostControlEntry::~HlHostControlEntry()
 {
 }
 
-bool RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::has_data() const
+bool RMON2MIB::HlHostControlTable::HlHostControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlhostcontrolindex.is_set
 	|| hlhostcontroldatasource.is_set
 	|| hlhostcontrolnldroppedframes.is_set
@@ -2396,7 +2434,7 @@ bool RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::has_data() const
 	|| hlhostcontrolstatus.is_set;
 }
 
-bool RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::has_operation() const
+bool RMON2MIB::HlHostControlTable::HlHostControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlhostcontrolindex.yfilter)
@@ -2413,21 +2451,22 @@ bool RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::has_operation() const
 	|| ydk::is_set(hlhostcontrolstatus.yfilter);
 }
 
-std::string RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::get_absolute_path() const
+std::string RMON2MIB::HlHostControlTable::HlHostControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/hlHostControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::get_segment_path() const
+std::string RMON2MIB::HlHostControlTable::HlHostControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hlHostControlEntry" <<"[hlHostControlIndex='" <<hlhostcontrolindex <<"']";
+    path_buffer << "hlHostControlEntry";
+    ADD_KEY_TOKEN(hlhostcontrolindex, "hlHostControlIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlHostControlTable::HlHostControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2448,19 +2487,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlhostcontroltable::Hlh
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::HlHostControlTable::HlHostControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlHostControlTable::HlHostControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::HlHostControlTable::HlHostControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlHostControlIndex")
     {
@@ -2536,7 +2575,7 @@ void RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::set_value(const std::stri
     }
 }
 
-void RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::HlHostControlTable::HlHostControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlHostControlIndex")
     {
@@ -2588,26 +2627,29 @@ void RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::set_filter(const std::str
     }
 }
 
-bool RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::HlHostControlTable::HlHostControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlHostControlIndex" || name == "hlHostControlDataSource" || name == "hlHostControlNlDroppedFrames" || name == "hlHostControlNlInserts" || name == "hlHostControlNlDeletes" || name == "hlHostControlNlMaxDesiredEntries" || name == "hlHostControlAlDroppedFrames" || name == "hlHostControlAlInserts" || name == "hlHostControlAlDeletes" || name == "hlHostControlAlMaxDesiredEntries" || name == "hlHostControlOwner" || name == "hlHostControlStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Nlhosttable::Nlhosttable()
+RMON2MIB::NlHostTable::NlHostTable()
+    :
+    nlhostentry(this, {"hlhostcontrolindex", "nlhosttimemark", "protocoldirlocalindex", "nlhostaddress"})
 {
 
-    yang_name = "nlHostTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlHostTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlhosttable::~Nlhosttable()
+RMON2MIB::NlHostTable::~NlHostTable()
 {
 }
 
-bool RMON2MIB::Nlhosttable::has_data() const
+bool RMON2MIB::NlHostTable::has_data() const
 {
-    for (std::size_t index=0; index<nlhostentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlhostentry.len(); index++)
     {
         if(nlhostentry[index]->has_data())
             return true;
@@ -2615,9 +2657,9 @@ bool RMON2MIB::Nlhosttable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Nlhosttable::has_operation() const
+bool RMON2MIB::NlHostTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlhostentry.size(); index++)
+    for (std::size_t index=0; index<nlhostentry.len(); index++)
     {
         if(nlhostentry[index]->has_operation())
             return true;
@@ -2625,21 +2667,21 @@ bool RMON2MIB::Nlhosttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Nlhosttable::get_absolute_path() const
+std::string RMON2MIB::NlHostTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlhosttable::get_segment_path() const
+std::string RMON2MIB::NlHostTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlHostTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlhosttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlHostTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2648,25 +2690,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlhosttable::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlhosttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlHostEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Nlhosttable::Nlhostentry>();
+        auto c = std::make_shared<RMON2MIB::NlHostTable::NlHostEntry>();
         c->parent = this;
-        nlhostentry.push_back(c);
+        nlhostentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlhosttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlHostTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlhostentry)
+    for (auto c : nlhostentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2677,22 +2719,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlhosttable::get_childr
     return children;
 }
 
-void RMON2MIB::Nlhosttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlHostTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Nlhosttable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlHostTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Nlhosttable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlHostTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlHostEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Nlhosttable::Nlhostentry::Nlhostentry()
+RMON2MIB::NlHostTable::NlHostEntry::NlHostEntry()
     :
     hlhostcontrolindex{YType::str, "hlHostControlIndex"},
     nlhosttimemark{YType::uint32, "nlHostTimeMark"},
@@ -2706,15 +2748,16 @@ RMON2MIB::Nlhosttable::Nlhostentry::Nlhostentry()
     nlhostcreatetime{YType::uint32, "nlHostCreateTime"}
 {
 
-    yang_name = "nlHostEntry"; yang_parent_name = "nlHostTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlHostEntry"; yang_parent_name = "nlHostTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlhosttable::Nlhostentry::~Nlhostentry()
+RMON2MIB::NlHostTable::NlHostEntry::~NlHostEntry()
 {
 }
 
-bool RMON2MIB::Nlhosttable::Nlhostentry::has_data() const
+bool RMON2MIB::NlHostTable::NlHostEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlhostcontrolindex.is_set
 	|| nlhosttimemark.is_set
 	|| protocoldirlocalindex.is_set
@@ -2727,7 +2770,7 @@ bool RMON2MIB::Nlhosttable::Nlhostentry::has_data() const
 	|| nlhostcreatetime.is_set;
 }
 
-bool RMON2MIB::Nlhosttable::Nlhostentry::has_operation() const
+bool RMON2MIB::NlHostTable::NlHostEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlhostcontrolindex.yfilter)
@@ -2742,21 +2785,25 @@ bool RMON2MIB::Nlhosttable::Nlhostentry::has_operation() const
 	|| ydk::is_set(nlhostcreatetime.yfilter);
 }
 
-std::string RMON2MIB::Nlhosttable::Nlhostentry::get_absolute_path() const
+std::string RMON2MIB::NlHostTable::NlHostEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/nlHostTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlhosttable::Nlhostentry::get_segment_path() const
+std::string RMON2MIB::NlHostTable::NlHostEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlHostEntry" <<"[hlHostControlIndex='" <<hlhostcontrolindex <<"']" <<"[nlHostTimeMark='" <<nlhosttimemark <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']" <<"[nlHostAddress='" <<nlhostaddress <<"']";
+    path_buffer << "nlHostEntry";
+    ADD_KEY_TOKEN(hlhostcontrolindex, "hlHostControlIndex");
+    ADD_KEY_TOKEN(nlhosttimemark, "nlHostTimeMark");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
+    ADD_KEY_TOKEN(nlhostaddress, "nlHostAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlhosttable::Nlhostentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlHostTable::NlHostEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2775,19 +2822,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlhosttable::Nlhostentr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlhosttable::Nlhostentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlHostTable::NlHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlhosttable::Nlhostentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlHostTable::NlHostEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Nlhosttable::Nlhostentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlHostTable::NlHostEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlHostControlIndex")
     {
@@ -2851,7 +2898,7 @@ void RMON2MIB::Nlhosttable::Nlhostentry::set_value(const std::string & value_pat
     }
 }
 
-void RMON2MIB::Nlhosttable::Nlhostentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlHostTable::NlHostEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlHostControlIndex")
     {
@@ -2895,26 +2942,29 @@ void RMON2MIB::Nlhosttable::Nlhostentry::set_filter(const std::string & value_pa
     }
 }
 
-bool RMON2MIB::Nlhosttable::Nlhostentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlHostTable::NlHostEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlHostControlIndex" || name == "nlHostTimeMark" || name == "protocolDirLocalIndex" || name == "nlHostAddress" || name == "nlHostInPkts" || name == "nlHostOutPkts" || name == "nlHostInOctets" || name == "nlHostOutOctets" || name == "nlHostOutMacNonUnicastPkts" || name == "nlHostCreateTime")
         return true;
     return false;
 }
 
-RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontroltable()
+RMON2MIB::HlMatrixControlTable::HlMatrixControlTable()
+    :
+    hlmatrixcontrolentry(this, {"hlmatrixcontrolindex"})
 {
 
-    yang_name = "hlMatrixControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hlMatrixControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Hlmatrixcontroltable::~Hlmatrixcontroltable()
+RMON2MIB::HlMatrixControlTable::~HlMatrixControlTable()
 {
 }
 
-bool RMON2MIB::Hlmatrixcontroltable::has_data() const
+bool RMON2MIB::HlMatrixControlTable::has_data() const
 {
-    for (std::size_t index=0; index<hlmatrixcontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hlmatrixcontrolentry.len(); index++)
     {
         if(hlmatrixcontrolentry[index]->has_data())
             return true;
@@ -2922,9 +2972,9 @@ bool RMON2MIB::Hlmatrixcontroltable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Hlmatrixcontroltable::has_operation() const
+bool RMON2MIB::HlMatrixControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<hlmatrixcontrolentry.size(); index++)
+    for (std::size_t index=0; index<hlmatrixcontrolentry.len(); index++)
     {
         if(hlmatrixcontrolentry[index]->has_operation())
             return true;
@@ -2932,21 +2982,21 @@ bool RMON2MIB::Hlmatrixcontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Hlmatrixcontroltable::get_absolute_path() const
+std::string RMON2MIB::HlMatrixControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Hlmatrixcontroltable::get_segment_path() const
+std::string RMON2MIB::HlMatrixControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hlMatrixControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlmatrixcontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlMatrixControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2955,25 +3005,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlmatrixcontroltable::g
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Hlmatrixcontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::HlMatrixControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "hlMatrixControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry>();
+        auto c = std::make_shared<RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry>();
         c->parent = this;
-        hlmatrixcontrolentry.push_back(c);
+        hlmatrixcontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Hlmatrixcontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlMatrixControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hlmatrixcontrolentry)
+    for (auto c : hlmatrixcontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2984,22 +3034,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Hlmatrixcontroltable::g
     return children;
 }
 
-void RMON2MIB::Hlmatrixcontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::HlMatrixControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Hlmatrixcontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::HlMatrixControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Hlmatrixcontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::HlMatrixControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlMatrixControlEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::Hlmatrixcontrolentry()
+RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::HlMatrixControlEntry()
     :
     hlmatrixcontrolindex{YType::int32, "hlMatrixControlIndex"},
     hlmatrixcontroldatasource{YType::str, "hlMatrixControlDataSource"},
@@ -3015,15 +3065,16 @@ RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::Hlmatrixcontrolentry()
     hlmatrixcontrolstatus{YType::enumeration, "hlMatrixControlStatus"}
 {
 
-    yang_name = "hlMatrixControlEntry"; yang_parent_name = "hlMatrixControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hlMatrixControlEntry"; yang_parent_name = "hlMatrixControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::~Hlmatrixcontrolentry()
+RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::~HlMatrixControlEntry()
 {
 }
 
-bool RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::has_data() const
+bool RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlmatrixcontrolindex.is_set
 	|| hlmatrixcontroldatasource.is_set
 	|| hlmatrixcontrolnldroppedframes.is_set
@@ -3038,7 +3089,7 @@ bool RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::has_data() const
 	|| hlmatrixcontrolstatus.is_set;
 }
 
-bool RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::has_operation() const
+bool RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlmatrixcontrolindex.yfilter)
@@ -3055,21 +3106,22 @@ bool RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::has_operation() const
 	|| ydk::is_set(hlmatrixcontrolstatus.yfilter);
 }
 
-std::string RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::get_absolute_path() const
+std::string RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/hlMatrixControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::get_segment_path() const
+std::string RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hlMatrixControlEntry" <<"[hlMatrixControlIndex='" <<hlmatrixcontrolindex <<"']";
+    path_buffer << "hlMatrixControlEntry";
+    ADD_KEY_TOKEN(hlmatrixcontrolindex, "hlMatrixControlIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3090,19 +3142,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Hlmatrixcontroltable::H
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -3178,7 +3230,7 @@ void RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::set_value(const std::
     }
 }
 
-void RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -3230,26 +3282,29 @@ void RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::set_filter(const std:
     }
 }
 
-bool RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlMatrixControlIndex" || name == "hlMatrixControlDataSource" || name == "hlMatrixControlNlDroppedFrames" || name == "hlMatrixControlNlInserts" || name == "hlMatrixControlNlDeletes" || name == "hlMatrixControlNlMaxDesiredEntries" || name == "hlMatrixControlAlDroppedFrames" || name == "hlMatrixControlAlInserts" || name == "hlMatrixControlAlDeletes" || name == "hlMatrixControlAlMaxDesiredEntries" || name == "hlMatrixControlOwner" || name == "hlMatrixControlStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixsdtable::Nlmatrixsdtable()
+RMON2MIB::NlMatrixSDTable::NlMatrixSDTable()
+    :
+    nlmatrixsdentry(this, {"hlmatrixcontrolindex", "nlmatrixsdtimemark", "protocoldirlocalindex", "nlmatrixsdsourceaddress", "nlmatrixsddestaddress"})
 {
 
-    yang_name = "nlMatrixSDTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixSDTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixsdtable::~Nlmatrixsdtable()
+RMON2MIB::NlMatrixSDTable::~NlMatrixSDTable()
 {
 }
 
-bool RMON2MIB::Nlmatrixsdtable::has_data() const
+bool RMON2MIB::NlMatrixSDTable::has_data() const
 {
-    for (std::size_t index=0; index<nlmatrixsdentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlmatrixsdentry.len(); index++)
     {
         if(nlmatrixsdentry[index]->has_data())
             return true;
@@ -3257,9 +3312,9 @@ bool RMON2MIB::Nlmatrixsdtable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Nlmatrixsdtable::has_operation() const
+bool RMON2MIB::NlMatrixSDTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmatrixsdentry.size(); index++)
+    for (std::size_t index=0; index<nlmatrixsdentry.len(); index++)
     {
         if(nlmatrixsdentry[index]->has_operation())
             return true;
@@ -3267,21 +3322,21 @@ bool RMON2MIB::Nlmatrixsdtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixsdtable::get_absolute_path() const
+std::string RMON2MIB::NlMatrixSDTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixsdtable::get_segment_path() const
+std::string RMON2MIB::NlMatrixSDTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlMatrixSDTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixsdtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixSDTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3290,25 +3345,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixsdtable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixsdtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixSDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixSDEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry>();
+        auto c = std::make_shared<RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry>();
         c->parent = this;
-        nlmatrixsdentry.push_back(c);
+        nlmatrixsdentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixsdtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixSDTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlmatrixsdentry)
+    for (auto c : nlmatrixsdentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3319,22 +3374,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixsdtable::get_ch
     return children;
 }
 
-void RMON2MIB::Nlmatrixsdtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixSDTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Nlmatrixsdtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixSDTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Nlmatrixsdtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixSDTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlMatrixSDEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::Nlmatrixsdentry()
+RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::NlMatrixSDEntry()
     :
     hlmatrixcontrolindex{YType::str, "hlMatrixControlIndex"},
     nlmatrixsdtimemark{YType::uint32, "nlMatrixSDTimeMark"},
@@ -3346,15 +3401,16 @@ RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::Nlmatrixsdentry()
     nlmatrixsdcreatetime{YType::uint32, "nlMatrixSDCreateTime"}
 {
 
-    yang_name = "nlMatrixSDEntry"; yang_parent_name = "nlMatrixSDTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixSDEntry"; yang_parent_name = "nlMatrixSDTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::~Nlmatrixsdentry()
+RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::~NlMatrixSDEntry()
 {
 }
 
-bool RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::has_data() const
+bool RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlmatrixcontrolindex.is_set
 	|| nlmatrixsdtimemark.is_set
 	|| protocoldirlocalindex.is_set
@@ -3365,7 +3421,7 @@ bool RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::has_data() const
 	|| nlmatrixsdcreatetime.is_set;
 }
 
-bool RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::has_operation() const
+bool RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlmatrixcontrolindex.yfilter)
@@ -3378,21 +3434,26 @@ bool RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::has_operation() const
 	|| ydk::is_set(nlmatrixsdcreatetime.yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::get_absolute_path() const
+std::string RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/nlMatrixSDTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::get_segment_path() const
+std::string RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlMatrixSDEntry" <<"[hlMatrixControlIndex='" <<hlmatrixcontrolindex <<"']" <<"[nlMatrixSDTimeMark='" <<nlmatrixsdtimemark <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']" <<"[nlMatrixSDSourceAddress='" <<nlmatrixsdsourceaddress <<"']" <<"[nlMatrixSDDestAddress='" <<nlmatrixsddestaddress <<"']";
+    path_buffer << "nlMatrixSDEntry";
+    ADD_KEY_TOKEN(hlmatrixcontrolindex, "hlMatrixControlIndex");
+    ADD_KEY_TOKEN(nlmatrixsdtimemark, "nlMatrixSDTimeMark");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
+    ADD_KEY_TOKEN(nlmatrixsdsourceaddress, "nlMatrixSDSourceAddress");
+    ADD_KEY_TOKEN(nlmatrixsddestaddress, "nlMatrixSDDestAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3409,19 +3470,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixsdtable::Nlmatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -3473,7 +3534,7 @@ void RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::set_value(const std::string & v
     }
 }
 
-void RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -3509,26 +3570,29 @@ void RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::set_filter(const std::string & 
     }
 }
 
-bool RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlMatrixControlIndex" || name == "nlMatrixSDTimeMark" || name == "protocolDirLocalIndex" || name == "nlMatrixSDSourceAddress" || name == "nlMatrixSDDestAddress" || name == "nlMatrixSDPkts" || name == "nlMatrixSDOctets" || name == "nlMatrixSDCreateTime")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixdstable::Nlmatrixdstable()
+RMON2MIB::NlMatrixDSTable::NlMatrixDSTable()
+    :
+    nlmatrixdsentry(this, {"hlmatrixcontrolindex", "nlmatrixdstimemark", "protocoldirlocalindex", "nlmatrixdsdestaddress", "nlmatrixdssourceaddress"})
 {
 
-    yang_name = "nlMatrixDSTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixDSTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixdstable::~Nlmatrixdstable()
+RMON2MIB::NlMatrixDSTable::~NlMatrixDSTable()
 {
 }
 
-bool RMON2MIB::Nlmatrixdstable::has_data() const
+bool RMON2MIB::NlMatrixDSTable::has_data() const
 {
-    for (std::size_t index=0; index<nlmatrixdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlmatrixdsentry.len(); index++)
     {
         if(nlmatrixdsentry[index]->has_data())
             return true;
@@ -3536,9 +3600,9 @@ bool RMON2MIB::Nlmatrixdstable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Nlmatrixdstable::has_operation() const
+bool RMON2MIB::NlMatrixDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmatrixdsentry.size(); index++)
+    for (std::size_t index=0; index<nlmatrixdsentry.len(); index++)
     {
         if(nlmatrixdsentry[index]->has_operation())
             return true;
@@ -3546,21 +3610,21 @@ bool RMON2MIB::Nlmatrixdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixdstable::get_absolute_path() const
+std::string RMON2MIB::NlMatrixDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixdstable::get_segment_path() const
+std::string RMON2MIB::NlMatrixDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlMatrixDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3569,25 +3633,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixdstable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixDSEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry>();
+        auto c = std::make_shared<RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry>();
         c->parent = this;
-        nlmatrixdsentry.push_back(c);
+        nlmatrixdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlmatrixdsentry)
+    for (auto c : nlmatrixdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3598,22 +3662,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixdstable::get_ch
     return children;
 }
 
-void RMON2MIB::Nlmatrixdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Nlmatrixdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Nlmatrixdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlMatrixDSEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::Nlmatrixdsentry()
+RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::NlMatrixDSEntry()
     :
     hlmatrixcontrolindex{YType::str, "hlMatrixControlIndex"},
     nlmatrixdstimemark{YType::uint32, "nlMatrixDSTimeMark"},
@@ -3625,15 +3689,16 @@ RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::Nlmatrixdsentry()
     nlmatrixdscreatetime{YType::uint32, "nlMatrixDSCreateTime"}
 {
 
-    yang_name = "nlMatrixDSEntry"; yang_parent_name = "nlMatrixDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixDSEntry"; yang_parent_name = "nlMatrixDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::~Nlmatrixdsentry()
+RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::~NlMatrixDSEntry()
 {
 }
 
-bool RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::has_data() const
+bool RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlmatrixcontrolindex.is_set
 	|| nlmatrixdstimemark.is_set
 	|| protocoldirlocalindex.is_set
@@ -3644,7 +3709,7 @@ bool RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::has_data() const
 	|| nlmatrixdscreatetime.is_set;
 }
 
-bool RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::has_operation() const
+bool RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlmatrixcontrolindex.yfilter)
@@ -3657,21 +3722,26 @@ bool RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::has_operation() const
 	|| ydk::is_set(nlmatrixdscreatetime.yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::get_absolute_path() const
+std::string RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/nlMatrixDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::get_segment_path() const
+std::string RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlMatrixDSEntry" <<"[hlMatrixControlIndex='" <<hlmatrixcontrolindex <<"']" <<"[nlMatrixDSTimeMark='" <<nlmatrixdstimemark <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']" <<"[nlMatrixDSDestAddress='" <<nlmatrixdsdestaddress <<"']" <<"[nlMatrixDSSourceAddress='" <<nlmatrixdssourceaddress <<"']";
+    path_buffer << "nlMatrixDSEntry";
+    ADD_KEY_TOKEN(hlmatrixcontrolindex, "hlMatrixControlIndex");
+    ADD_KEY_TOKEN(nlmatrixdstimemark, "nlMatrixDSTimeMark");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
+    ADD_KEY_TOKEN(nlmatrixdsdestaddress, "nlMatrixDSDestAddress");
+    ADD_KEY_TOKEN(nlmatrixdssourceaddress, "nlMatrixDSSourceAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3688,19 +3758,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixdstable::Nlmatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -3752,7 +3822,7 @@ void RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::set_value(const std::string & v
     }
 }
 
-void RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -3788,26 +3858,29 @@ void RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::set_filter(const std::string & 
     }
 }
 
-bool RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlMatrixControlIndex" || name == "nlMatrixDSTimeMark" || name == "protocolDirLocalIndex" || name == "nlMatrixDSDestAddress" || name == "nlMatrixDSSourceAddress" || name == "nlMatrixDSPkts" || name == "nlMatrixDSOctets" || name == "nlMatrixDSCreateTime")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontroltable()
+RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlTable()
+    :
+    nlmatrixtopncontrolentry(this, {"nlmatrixtopncontrolindex"})
 {
 
-    yang_name = "nlMatrixTopNControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixTopNControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixtopncontroltable::~Nlmatrixtopncontroltable()
+RMON2MIB::NlMatrixTopNControlTable::~NlMatrixTopNControlTable()
 {
 }
 
-bool RMON2MIB::Nlmatrixtopncontroltable::has_data() const
+bool RMON2MIB::NlMatrixTopNControlTable::has_data() const
 {
-    for (std::size_t index=0; index<nlmatrixtopncontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlmatrixtopncontrolentry.len(); index++)
     {
         if(nlmatrixtopncontrolentry[index]->has_data())
             return true;
@@ -3815,9 +3888,9 @@ bool RMON2MIB::Nlmatrixtopncontroltable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Nlmatrixtopncontroltable::has_operation() const
+bool RMON2MIB::NlMatrixTopNControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmatrixtopncontrolentry.size(); index++)
+    for (std::size_t index=0; index<nlmatrixtopncontrolentry.len(); index++)
     {
         if(nlmatrixtopncontrolentry[index]->has_operation())
             return true;
@@ -3825,21 +3898,21 @@ bool RMON2MIB::Nlmatrixtopncontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixtopncontroltable::get_absolute_path() const
+std::string RMON2MIB::NlMatrixTopNControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixtopncontroltable::get_segment_path() const
+std::string RMON2MIB::NlMatrixTopNControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlMatrixTopNControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopncontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3848,25 +3921,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopncontroltabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixtopncontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixTopNControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry>();
+        auto c = std::make_shared<RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry>();
         c->parent = this;
-        nlmatrixtopncontrolentry.push_back(c);
+        nlmatrixtopncontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixtopncontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlmatrixtopncontrolentry)
+    for (auto c : nlmatrixtopncontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3877,22 +3950,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixtopncontroltabl
     return children;
 }
 
-void RMON2MIB::Nlmatrixtopncontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixTopNControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Nlmatrixtopncontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixTopNControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Nlmatrixtopncontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixTopNControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlMatrixTopNControlEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::Nlmatrixtopncontrolentry()
+RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::NlMatrixTopNControlEntry()
     :
     nlmatrixtopncontrolindex{YType::int32, "nlMatrixTopNControlIndex"},
     nlmatrixtopncontrolmatrixindex{YType::int32, "nlMatrixTopNControlMatrixIndex"},
@@ -3907,15 +3980,16 @@ RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::Nlmatrixtopncontro
     nlmatrixtopncontrolstatus{YType::enumeration, "nlMatrixTopNControlStatus"}
 {
 
-    yang_name = "nlMatrixTopNControlEntry"; yang_parent_name = "nlMatrixTopNControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixTopNControlEntry"; yang_parent_name = "nlMatrixTopNControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::~Nlmatrixtopncontrolentry()
+RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::~NlMatrixTopNControlEntry()
 {
 }
 
-bool RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::has_data() const
+bool RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nlmatrixtopncontrolindex.is_set
 	|| nlmatrixtopncontrolmatrixindex.is_set
 	|| nlmatrixtopncontrolratebase.is_set
@@ -3929,7 +4003,7 @@ bool RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::has_data() co
 	|| nlmatrixtopncontrolstatus.is_set;
 }
 
-bool RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::has_operation() const
+bool RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nlmatrixtopncontrolindex.yfilter)
@@ -3945,21 +4019,22 @@ bool RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::has_operation
 	|| ydk::is_set(nlmatrixtopncontrolstatus.yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::get_absolute_path() const
+std::string RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/nlMatrixTopNControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::get_segment_path() const
+std::string RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlMatrixTopNControlEntry" <<"[nlMatrixTopNControlIndex='" <<nlmatrixtopncontrolindex <<"']";
+    path_buffer << "nlMatrixTopNControlEntry";
+    ADD_KEY_TOKEN(nlmatrixtopncontrolindex, "nlMatrixTopNControlIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3979,19 +4054,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopncontroltabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nlMatrixTopNControlIndex")
     {
@@ -4061,7 +4136,7 @@ void RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::set_value(con
     }
 }
 
-void RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nlMatrixTopNControlIndex")
     {
@@ -4109,26 +4184,29 @@ void RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::set_filter(co
     }
 }
 
-bool RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlMatrixTopNControlIndex" || name == "nlMatrixTopNControlMatrixIndex" || name == "nlMatrixTopNControlRateBase" || name == "nlMatrixTopNControlTimeRemaining" || name == "nlMatrixTopNControlGeneratedReports" || name == "nlMatrixTopNControlDuration" || name == "nlMatrixTopNControlRequestedSize" || name == "nlMatrixTopNControlGrantedSize" || name == "nlMatrixTopNControlStartTime" || name == "nlMatrixTopNControlOwner" || name == "nlMatrixTopNControlStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixtopntable::Nlmatrixtopntable()
+RMON2MIB::NlMatrixTopNTable::NlMatrixTopNTable()
+    :
+    nlmatrixtopnentry(this, {"nlmatrixtopncontrolindex", "nlmatrixtopnindex"})
 {
 
-    yang_name = "nlMatrixTopNTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixTopNTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixtopntable::~Nlmatrixtopntable()
+RMON2MIB::NlMatrixTopNTable::~NlMatrixTopNTable()
 {
 }
 
-bool RMON2MIB::Nlmatrixtopntable::has_data() const
+bool RMON2MIB::NlMatrixTopNTable::has_data() const
 {
-    for (std::size_t index=0; index<nlmatrixtopnentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nlmatrixtopnentry.len(); index++)
     {
         if(nlmatrixtopnentry[index]->has_data())
             return true;
@@ -4136,9 +4214,9 @@ bool RMON2MIB::Nlmatrixtopntable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Nlmatrixtopntable::has_operation() const
+bool RMON2MIB::NlMatrixTopNTable::has_operation() const
 {
-    for (std::size_t index=0; index<nlmatrixtopnentry.size(); index++)
+    for (std::size_t index=0; index<nlmatrixtopnentry.len(); index++)
     {
         if(nlmatrixtopnentry[index]->has_operation())
             return true;
@@ -4146,21 +4224,21 @@ bool RMON2MIB::Nlmatrixtopntable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixtopntable::get_absolute_path() const
+std::string RMON2MIB::NlMatrixTopNTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixtopntable::get_segment_path() const
+std::string RMON2MIB::NlMatrixTopNTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nlMatrixTopNTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopntable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4169,25 +4247,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopntable::get_
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixtopntable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "nlMatrixTopNEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry>();
+        auto c = std::make_shared<RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry>();
         c->parent = this;
-        nlmatrixtopnentry.push_back(c);
+        nlmatrixtopnentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixtopntable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nlmatrixtopnentry)
+    for (auto c : nlmatrixtopnentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4198,22 +4276,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixtopntable::get_
     return children;
 }
 
-void RMON2MIB::Nlmatrixtopntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixTopNTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Nlmatrixtopntable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixTopNTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Nlmatrixtopntable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixTopNTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlMatrixTopNEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::Nlmatrixtopnentry()
+RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::NlMatrixTopNEntry()
     :
     nlmatrixtopncontrolindex{YType::str, "nlMatrixTopNControlIndex"},
     nlmatrixtopnindex{YType::int32, "nlMatrixTopNIndex"},
@@ -4226,15 +4304,16 @@ RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::Nlmatrixtopnentry()
     nlmatrixtopnreverseoctetrate{YType::uint32, "nlMatrixTopNReverseOctetRate"}
 {
 
-    yang_name = "nlMatrixTopNEntry"; yang_parent_name = "nlMatrixTopNTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nlMatrixTopNEntry"; yang_parent_name = "nlMatrixTopNTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::~Nlmatrixtopnentry()
+RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::~NlMatrixTopNEntry()
 {
 }
 
-bool RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::has_data() const
+bool RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nlmatrixtopncontrolindex.is_set
 	|| nlmatrixtopnindex.is_set
 	|| nlmatrixtopnprotocoldirlocalindex.is_set
@@ -4246,7 +4325,7 @@ bool RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::has_data() const
 	|| nlmatrixtopnreverseoctetrate.is_set;
 }
 
-bool RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::has_operation() const
+bool RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(nlmatrixtopncontrolindex.yfilter)
@@ -4260,21 +4339,23 @@ bool RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::has_operation() const
 	|| ydk::is_set(nlmatrixtopnreverseoctetrate.yfilter);
 }
 
-std::string RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::get_absolute_path() const
+std::string RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/nlMatrixTopNTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::get_segment_path() const
+std::string RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nlMatrixTopNEntry" <<"[nlMatrixTopNControlIndex='" <<nlmatrixtopncontrolindex <<"']" <<"[nlMatrixTopNIndex='" <<nlmatrixtopnindex <<"']";
+    path_buffer << "nlMatrixTopNEntry";
+    ADD_KEY_TOKEN(nlmatrixtopncontrolindex, "nlMatrixTopNControlIndex");
+    ADD_KEY_TOKEN(nlmatrixtopnindex, "nlMatrixTopNIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4292,19 +4373,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Nlmatrixtopntable::Nlma
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "nlMatrixTopNControlIndex")
     {
@@ -4362,7 +4443,7 @@ void RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::set_value(const std::string
     }
 }
 
-void RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "nlMatrixTopNControlIndex")
     {
@@ -4402,26 +4483,29 @@ void RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::set_filter(const std::strin
     }
 }
 
-bool RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "nlMatrixTopNControlIndex" || name == "nlMatrixTopNIndex" || name == "nlMatrixTopNProtocolDirLocalIndex" || name == "nlMatrixTopNSourceAddress" || name == "nlMatrixTopNDestAddress" || name == "nlMatrixTopNPktRate" || name == "nlMatrixTopNReversePktRate" || name == "nlMatrixTopNOctetRate" || name == "nlMatrixTopNReverseOctetRate")
         return true;
     return false;
 }
 
-RMON2MIB::Alhosttable::Alhosttable()
+RMON2MIB::AlHostTable::AlHostTable()
+    :
+    alhostentry(this, {"hlhostcontrolindex", "alhosttimemark", "protocoldirlocalindex", "nlhostaddress", "protocoldirlocalindex_2"})
 {
 
-    yang_name = "alHostTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alHostTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Alhosttable::~Alhosttable()
+RMON2MIB::AlHostTable::~AlHostTable()
 {
 }
 
-bool RMON2MIB::Alhosttable::has_data() const
+bool RMON2MIB::AlHostTable::has_data() const
 {
-    for (std::size_t index=0; index<alhostentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alhostentry.len(); index++)
     {
         if(alhostentry[index]->has_data())
             return true;
@@ -4429,9 +4513,9 @@ bool RMON2MIB::Alhosttable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Alhosttable::has_operation() const
+bool RMON2MIB::AlHostTable::has_operation() const
 {
-    for (std::size_t index=0; index<alhostentry.size(); index++)
+    for (std::size_t index=0; index<alhostentry.len(); index++)
     {
         if(alhostentry[index]->has_operation())
             return true;
@@ -4439,21 +4523,21 @@ bool RMON2MIB::Alhosttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Alhosttable::get_absolute_path() const
+std::string RMON2MIB::AlHostTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Alhosttable::get_segment_path() const
+std::string RMON2MIB::AlHostTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alHostTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Alhosttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlHostTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4462,25 +4546,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Alhosttable::get_name_l
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Alhosttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlHostTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alHostEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Alhosttable::Alhostentry>();
+        auto c = std::make_shared<RMON2MIB::AlHostTable::AlHostEntry>();
         c->parent = this;
-        alhostentry.push_back(c);
+        alhostentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Alhosttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlHostTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alhostentry)
+    for (auto c : alhostentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4491,22 +4575,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Alhosttable::get_childr
     return children;
 }
 
-void RMON2MIB::Alhosttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlHostTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Alhosttable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlHostTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Alhosttable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlHostTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alHostEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Alhosttable::Alhostentry::Alhostentry()
+RMON2MIB::AlHostTable::AlHostEntry::AlHostEntry()
     :
     hlhostcontrolindex{YType::str, "hlHostControlIndex"},
     alhosttimemark{YType::uint32, "alHostTimeMark"},
@@ -4520,15 +4604,16 @@ RMON2MIB::Alhosttable::Alhostentry::Alhostentry()
     alhostcreatetime{YType::uint32, "alHostCreateTime"}
 {
 
-    yang_name = "alHostEntry"; yang_parent_name = "alHostTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alHostEntry"; yang_parent_name = "alHostTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Alhosttable::Alhostentry::~Alhostentry()
+RMON2MIB::AlHostTable::AlHostEntry::~AlHostEntry()
 {
 }
 
-bool RMON2MIB::Alhosttable::Alhostentry::has_data() const
+bool RMON2MIB::AlHostTable::AlHostEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlhostcontrolindex.is_set
 	|| alhosttimemark.is_set
 	|| protocoldirlocalindex.is_set
@@ -4541,7 +4626,7 @@ bool RMON2MIB::Alhosttable::Alhostentry::has_data() const
 	|| alhostcreatetime.is_set;
 }
 
-bool RMON2MIB::Alhosttable::Alhostentry::has_operation() const
+bool RMON2MIB::AlHostTable::AlHostEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlhostcontrolindex.yfilter)
@@ -4556,21 +4641,26 @@ bool RMON2MIB::Alhosttable::Alhostentry::has_operation() const
 	|| ydk::is_set(alhostcreatetime.yfilter);
 }
 
-std::string RMON2MIB::Alhosttable::Alhostentry::get_absolute_path() const
+std::string RMON2MIB::AlHostTable::AlHostEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/alHostTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Alhosttable::Alhostentry::get_segment_path() const
+std::string RMON2MIB::AlHostTable::AlHostEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alHostEntry" <<"[hlHostControlIndex='" <<hlhostcontrolindex <<"']" <<"[alHostTimeMark='" <<alhosttimemark <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']" <<"[nlHostAddress='" <<nlhostaddress <<"']" <<"[protocolDirLocalIndex_2='" <<protocoldirlocalindex_2 <<"']";
+    path_buffer << "alHostEntry";
+    ADD_KEY_TOKEN(hlhostcontrolindex, "hlHostControlIndex");
+    ADD_KEY_TOKEN(alhosttimemark, "alHostTimeMark");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
+    ADD_KEY_TOKEN(nlhostaddress, "nlHostAddress");
+    ADD_KEY_TOKEN(protocoldirlocalindex_2, "protocolDirLocalIndex_2");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Alhosttable::Alhostentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlHostTable::AlHostEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4589,19 +4679,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Alhosttable::Alhostentr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Alhosttable::Alhostentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlHostTable::AlHostEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Alhosttable::Alhostentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlHostTable::AlHostEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Alhosttable::Alhostentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlHostTable::AlHostEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlHostControlIndex")
     {
@@ -4665,7 +4755,7 @@ void RMON2MIB::Alhosttable::Alhostentry::set_value(const std::string & value_pat
     }
 }
 
-void RMON2MIB::Alhosttable::Alhostentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlHostTable::AlHostEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlHostControlIndex")
     {
@@ -4709,26 +4799,29 @@ void RMON2MIB::Alhosttable::Alhostentry::set_filter(const std::string & value_pa
     }
 }
 
-bool RMON2MIB::Alhosttable::Alhostentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlHostTable::AlHostEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlHostControlIndex" || name == "alHostTimeMark" || name == "protocolDirLocalIndex" || name == "nlHostAddress" || name == "protocolDirLocalIndex_2" || name == "alHostInPkts" || name == "alHostOutPkts" || name == "alHostInOctets" || name == "alHostOutOctets" || name == "alHostCreateTime")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixsdtable::Almatrixsdtable()
+RMON2MIB::AlMatrixSDTable::AlMatrixSDTable()
+    :
+    almatrixsdentry(this, {"hlmatrixcontrolindex", "almatrixsdtimemark", "protocoldirlocalindex", "nlmatrixsdsourceaddress", "nlmatrixsddestaddress", "protocoldirlocalindex_2"})
 {
 
-    yang_name = "alMatrixSDTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixSDTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixsdtable::~Almatrixsdtable()
+RMON2MIB::AlMatrixSDTable::~AlMatrixSDTable()
 {
 }
 
-bool RMON2MIB::Almatrixsdtable::has_data() const
+bool RMON2MIB::AlMatrixSDTable::has_data() const
 {
-    for (std::size_t index=0; index<almatrixsdentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<almatrixsdentry.len(); index++)
     {
         if(almatrixsdentry[index]->has_data())
             return true;
@@ -4736,9 +4829,9 @@ bool RMON2MIB::Almatrixsdtable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Almatrixsdtable::has_operation() const
+bool RMON2MIB::AlMatrixSDTable::has_operation() const
 {
-    for (std::size_t index=0; index<almatrixsdentry.size(); index++)
+    for (std::size_t index=0; index<almatrixsdentry.len(); index++)
     {
         if(almatrixsdentry[index]->has_operation())
             return true;
@@ -4746,21 +4839,21 @@ bool RMON2MIB::Almatrixsdtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Almatrixsdtable::get_absolute_path() const
+std::string RMON2MIB::AlMatrixSDTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixsdtable::get_segment_path() const
+std::string RMON2MIB::AlMatrixSDTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alMatrixSDTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixsdtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixSDTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4769,25 +4862,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixsdtable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixsdtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixSDTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixSDEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Almatrixsdtable::Almatrixsdentry>();
+        auto c = std::make_shared<RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry>();
         c->parent = this;
-        almatrixsdentry.push_back(c);
+        almatrixsdentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixsdtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixSDTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : almatrixsdentry)
+    for (auto c : almatrixsdentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4798,22 +4891,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixsdtable::get_ch
     return children;
 }
 
-void RMON2MIB::Almatrixsdtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixSDTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Almatrixsdtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixSDTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Almatrixsdtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixSDTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alMatrixSDEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixsdtable::Almatrixsdentry::Almatrixsdentry()
+RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::AlMatrixSDEntry()
     :
     hlmatrixcontrolindex{YType::str, "hlMatrixControlIndex"},
     almatrixsdtimemark{YType::uint32, "alMatrixSDTimeMark"},
@@ -4826,15 +4919,16 @@ RMON2MIB::Almatrixsdtable::Almatrixsdentry::Almatrixsdentry()
     almatrixsdcreatetime{YType::uint32, "alMatrixSDCreateTime"}
 {
 
-    yang_name = "alMatrixSDEntry"; yang_parent_name = "alMatrixSDTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixSDEntry"; yang_parent_name = "alMatrixSDTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixsdtable::Almatrixsdentry::~Almatrixsdentry()
+RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::~AlMatrixSDEntry()
 {
 }
 
-bool RMON2MIB::Almatrixsdtable::Almatrixsdentry::has_data() const
+bool RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlmatrixcontrolindex.is_set
 	|| almatrixsdtimemark.is_set
 	|| protocoldirlocalindex.is_set
@@ -4846,7 +4940,7 @@ bool RMON2MIB::Almatrixsdtable::Almatrixsdentry::has_data() const
 	|| almatrixsdcreatetime.is_set;
 }
 
-bool RMON2MIB::Almatrixsdtable::Almatrixsdentry::has_operation() const
+bool RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlmatrixcontrolindex.yfilter)
@@ -4860,21 +4954,27 @@ bool RMON2MIB::Almatrixsdtable::Almatrixsdentry::has_operation() const
 	|| ydk::is_set(almatrixsdcreatetime.yfilter);
 }
 
-std::string RMON2MIB::Almatrixsdtable::Almatrixsdentry::get_absolute_path() const
+std::string RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/alMatrixSDTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixsdtable::Almatrixsdentry::get_segment_path() const
+std::string RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alMatrixSDEntry" <<"[hlMatrixControlIndex='" <<hlmatrixcontrolindex <<"']" <<"[alMatrixSDTimeMark='" <<almatrixsdtimemark <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']" <<"[nlMatrixSDSourceAddress='" <<nlmatrixsdsourceaddress <<"']" <<"[nlMatrixSDDestAddress='" <<nlmatrixsddestaddress <<"']" <<"[protocolDirLocalIndex_2='" <<protocoldirlocalindex_2 <<"']";
+    path_buffer << "alMatrixSDEntry";
+    ADD_KEY_TOKEN(hlmatrixcontrolindex, "hlMatrixControlIndex");
+    ADD_KEY_TOKEN(almatrixsdtimemark, "alMatrixSDTimeMark");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
+    ADD_KEY_TOKEN(nlmatrixsdsourceaddress, "nlMatrixSDSourceAddress");
+    ADD_KEY_TOKEN(nlmatrixsddestaddress, "nlMatrixSDDestAddress");
+    ADD_KEY_TOKEN(protocoldirlocalindex_2, "protocolDirLocalIndex_2");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixsdtable::Almatrixsdentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4892,19 +4992,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixsdtable::Almatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixsdtable::Almatrixsdentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixsdtable::Almatrixsdentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Almatrixsdtable::Almatrixsdentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -4962,7 +5062,7 @@ void RMON2MIB::Almatrixsdtable::Almatrixsdentry::set_value(const std::string & v
     }
 }
 
-void RMON2MIB::Almatrixsdtable::Almatrixsdentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -5002,26 +5102,29 @@ void RMON2MIB::Almatrixsdtable::Almatrixsdentry::set_filter(const std::string & 
     }
 }
 
-bool RMON2MIB::Almatrixsdtable::Almatrixsdentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlMatrixControlIndex" || name == "alMatrixSDTimeMark" || name == "protocolDirLocalIndex" || name == "nlMatrixSDSourceAddress" || name == "nlMatrixSDDestAddress" || name == "protocolDirLocalIndex_2" || name == "alMatrixSDPkts" || name == "alMatrixSDOctets" || name == "alMatrixSDCreateTime")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixdstable::Almatrixdstable()
+RMON2MIB::AlMatrixDSTable::AlMatrixDSTable()
+    :
+    almatrixdsentry(this, {"hlmatrixcontrolindex", "almatrixdstimemark", "protocoldirlocalindex", "nlmatrixdsdestaddress", "nlmatrixdssourceaddress", "protocoldirlocalindex_2"})
 {
 
-    yang_name = "alMatrixDSTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixDSTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixdstable::~Almatrixdstable()
+RMON2MIB::AlMatrixDSTable::~AlMatrixDSTable()
 {
 }
 
-bool RMON2MIB::Almatrixdstable::has_data() const
+bool RMON2MIB::AlMatrixDSTable::has_data() const
 {
-    for (std::size_t index=0; index<almatrixdsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<almatrixdsentry.len(); index++)
     {
         if(almatrixdsentry[index]->has_data())
             return true;
@@ -5029,9 +5132,9 @@ bool RMON2MIB::Almatrixdstable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Almatrixdstable::has_operation() const
+bool RMON2MIB::AlMatrixDSTable::has_operation() const
 {
-    for (std::size_t index=0; index<almatrixdsentry.size(); index++)
+    for (std::size_t index=0; index<almatrixdsentry.len(); index++)
     {
         if(almatrixdsentry[index]->has_operation())
             return true;
@@ -5039,21 +5142,21 @@ bool RMON2MIB::Almatrixdstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Almatrixdstable::get_absolute_path() const
+std::string RMON2MIB::AlMatrixDSTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixdstable::get_segment_path() const
+std::string RMON2MIB::AlMatrixDSTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alMatrixDSTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixdstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixDSTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5062,25 +5165,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixdstable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixdstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixDSTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixDSEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Almatrixdstable::Almatrixdsentry>();
+        auto c = std::make_shared<RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry>();
         c->parent = this;
-        almatrixdsentry.push_back(c);
+        almatrixdsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixdstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixDSTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : almatrixdsentry)
+    for (auto c : almatrixdsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5091,22 +5194,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixdstable::get_ch
     return children;
 }
 
-void RMON2MIB::Almatrixdstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixDSTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Almatrixdstable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixDSTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Almatrixdstable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixDSTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alMatrixDSEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixdstable::Almatrixdsentry::Almatrixdsentry()
+RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::AlMatrixDSEntry()
     :
     hlmatrixcontrolindex{YType::str, "hlMatrixControlIndex"},
     almatrixdstimemark{YType::uint32, "alMatrixDSTimeMark"},
@@ -5119,15 +5222,16 @@ RMON2MIB::Almatrixdstable::Almatrixdsentry::Almatrixdsentry()
     almatrixdscreatetime{YType::uint32, "alMatrixDSCreateTime"}
 {
 
-    yang_name = "alMatrixDSEntry"; yang_parent_name = "alMatrixDSTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixDSEntry"; yang_parent_name = "alMatrixDSTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixdstable::Almatrixdsentry::~Almatrixdsentry()
+RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::~AlMatrixDSEntry()
 {
 }
 
-bool RMON2MIB::Almatrixdstable::Almatrixdsentry::has_data() const
+bool RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return hlmatrixcontrolindex.is_set
 	|| almatrixdstimemark.is_set
 	|| protocoldirlocalindex.is_set
@@ -5139,7 +5243,7 @@ bool RMON2MIB::Almatrixdstable::Almatrixdsentry::has_data() const
 	|| almatrixdscreatetime.is_set;
 }
 
-bool RMON2MIB::Almatrixdstable::Almatrixdsentry::has_operation() const
+bool RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(hlmatrixcontrolindex.yfilter)
@@ -5153,21 +5257,27 @@ bool RMON2MIB::Almatrixdstable::Almatrixdsentry::has_operation() const
 	|| ydk::is_set(almatrixdscreatetime.yfilter);
 }
 
-std::string RMON2MIB::Almatrixdstable::Almatrixdsentry::get_absolute_path() const
+std::string RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/alMatrixDSTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixdstable::Almatrixdsentry::get_segment_path() const
+std::string RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alMatrixDSEntry" <<"[hlMatrixControlIndex='" <<hlmatrixcontrolindex <<"']" <<"[alMatrixDSTimeMark='" <<almatrixdstimemark <<"']" <<"[protocolDirLocalIndex='" <<protocoldirlocalindex <<"']" <<"[nlMatrixDSDestAddress='" <<nlmatrixdsdestaddress <<"']" <<"[nlMatrixDSSourceAddress='" <<nlmatrixdssourceaddress <<"']" <<"[protocolDirLocalIndex_2='" <<protocoldirlocalindex_2 <<"']";
+    path_buffer << "alMatrixDSEntry";
+    ADD_KEY_TOKEN(hlmatrixcontrolindex, "hlMatrixControlIndex");
+    ADD_KEY_TOKEN(almatrixdstimemark, "alMatrixDSTimeMark");
+    ADD_KEY_TOKEN(protocoldirlocalindex, "protocolDirLocalIndex");
+    ADD_KEY_TOKEN(nlmatrixdsdestaddress, "nlMatrixDSDestAddress");
+    ADD_KEY_TOKEN(nlmatrixdssourceaddress, "nlMatrixDSSourceAddress");
+    ADD_KEY_TOKEN(protocoldirlocalindex_2, "protocolDirLocalIndex_2");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixdstable::Almatrixdsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5185,19 +5295,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixdstable::Almatr
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixdstable::Almatrixdsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixdstable::Almatrixdsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Almatrixdstable::Almatrixdsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -5255,7 +5365,7 @@ void RMON2MIB::Almatrixdstable::Almatrixdsentry::set_value(const std::string & v
     }
 }
 
-void RMON2MIB::Almatrixdstable::Almatrixdsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "hlMatrixControlIndex")
     {
@@ -5295,26 +5405,29 @@ void RMON2MIB::Almatrixdstable::Almatrixdsentry::set_filter(const std::string & 
     }
 }
 
-bool RMON2MIB::Almatrixdstable::Almatrixdsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "hlMatrixControlIndex" || name == "alMatrixDSTimeMark" || name == "protocolDirLocalIndex" || name == "nlMatrixDSDestAddress" || name == "nlMatrixDSSourceAddress" || name == "protocolDirLocalIndex_2" || name == "alMatrixDSPkts" || name == "alMatrixDSOctets" || name == "alMatrixDSCreateTime")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontroltable()
+RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlTable()
+    :
+    almatrixtopncontrolentry(this, {"almatrixtopncontrolindex"})
 {
 
-    yang_name = "alMatrixTopNControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixTopNControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixtopncontroltable::~Almatrixtopncontroltable()
+RMON2MIB::AlMatrixTopNControlTable::~AlMatrixTopNControlTable()
 {
 }
 
-bool RMON2MIB::Almatrixtopncontroltable::has_data() const
+bool RMON2MIB::AlMatrixTopNControlTable::has_data() const
 {
-    for (std::size_t index=0; index<almatrixtopncontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<almatrixtopncontrolentry.len(); index++)
     {
         if(almatrixtopncontrolentry[index]->has_data())
             return true;
@@ -5322,9 +5435,9 @@ bool RMON2MIB::Almatrixtopncontroltable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Almatrixtopncontroltable::has_operation() const
+bool RMON2MIB::AlMatrixTopNControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<almatrixtopncontrolentry.size(); index++)
+    for (std::size_t index=0; index<almatrixtopncontrolentry.len(); index++)
     {
         if(almatrixtopncontrolentry[index]->has_operation())
             return true;
@@ -5332,21 +5445,21 @@ bool RMON2MIB::Almatrixtopncontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Almatrixtopncontroltable::get_absolute_path() const
+std::string RMON2MIB::AlMatrixTopNControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixtopncontroltable::get_segment_path() const
+std::string RMON2MIB::AlMatrixTopNControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alMatrixTopNControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopncontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5355,25 +5468,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopncontroltabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixtopncontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixTopNControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry>();
+        auto c = std::make_shared<RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry>();
         c->parent = this;
-        almatrixtopncontrolentry.push_back(c);
+        almatrixtopncontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixtopncontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : almatrixtopncontrolentry)
+    for (auto c : almatrixtopncontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5384,22 +5497,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixtopncontroltabl
     return children;
 }
 
-void RMON2MIB::Almatrixtopncontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixTopNControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Almatrixtopncontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixTopNControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Almatrixtopncontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixTopNControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alMatrixTopNControlEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopncontrolentry()
+RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopNControlEntry()
     :
     almatrixtopncontrolindex{YType::int32, "alMatrixTopNControlIndex"},
     almatrixtopncontrolmatrixindex{YType::int32, "alMatrixTopNControlMatrixIndex"},
@@ -5414,15 +5527,16 @@ RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopncontro
     almatrixtopncontrolstatus{YType::enumeration, "alMatrixTopNControlStatus"}
 {
 
-    yang_name = "alMatrixTopNControlEntry"; yang_parent_name = "alMatrixTopNControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixTopNControlEntry"; yang_parent_name = "alMatrixTopNControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::~Almatrixtopncontrolentry()
+RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::~AlMatrixTopNControlEntry()
 {
 }
 
-bool RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::has_data() const
+bool RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return almatrixtopncontrolindex.is_set
 	|| almatrixtopncontrolmatrixindex.is_set
 	|| almatrixtopncontrolratebase.is_set
@@ -5436,7 +5550,7 @@ bool RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::has_data() co
 	|| almatrixtopncontrolstatus.is_set;
 }
 
-bool RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::has_operation() const
+bool RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(almatrixtopncontrolindex.yfilter)
@@ -5452,21 +5566,22 @@ bool RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::has_operation
 	|| ydk::is_set(almatrixtopncontrolstatus.yfilter);
 }
 
-std::string RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::get_absolute_path() const
+std::string RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/alMatrixTopNControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::get_segment_path() const
+std::string RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alMatrixTopNControlEntry" <<"[alMatrixTopNControlIndex='" <<almatrixtopncontrolindex <<"']";
+    path_buffer << "alMatrixTopNControlEntry";
+    ADD_KEY_TOKEN(almatrixtopncontrolindex, "alMatrixTopNControlIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5486,19 +5601,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopncontroltabl
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "alMatrixTopNControlIndex")
     {
@@ -5568,7 +5683,7 @@ void RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::set_value(con
     }
 }
 
-void RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "alMatrixTopNControlIndex")
     {
@@ -5616,26 +5731,29 @@ void RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::set_filter(co
     }
 }
 
-bool RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alMatrixTopNControlIndex" || name == "alMatrixTopNControlMatrixIndex" || name == "alMatrixTopNControlRateBase" || name == "alMatrixTopNControlTimeRemaining" || name == "alMatrixTopNControlGeneratedReports" || name == "alMatrixTopNControlDuration" || name == "alMatrixTopNControlRequestedSize" || name == "alMatrixTopNControlGrantedSize" || name == "alMatrixTopNControlStartTime" || name == "alMatrixTopNControlOwner" || name == "alMatrixTopNControlStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixtopntable::Almatrixtopntable()
+RMON2MIB::AlMatrixTopNTable::AlMatrixTopNTable()
+    :
+    almatrixtopnentry(this, {"almatrixtopncontrolindex", "almatrixtopnindex"})
 {
 
-    yang_name = "alMatrixTopNTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixTopNTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixtopntable::~Almatrixtopntable()
+RMON2MIB::AlMatrixTopNTable::~AlMatrixTopNTable()
 {
 }
 
-bool RMON2MIB::Almatrixtopntable::has_data() const
+bool RMON2MIB::AlMatrixTopNTable::has_data() const
 {
-    for (std::size_t index=0; index<almatrixtopnentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<almatrixtopnentry.len(); index++)
     {
         if(almatrixtopnentry[index]->has_data())
             return true;
@@ -5643,9 +5761,9 @@ bool RMON2MIB::Almatrixtopntable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Almatrixtopntable::has_operation() const
+bool RMON2MIB::AlMatrixTopNTable::has_operation() const
 {
-    for (std::size_t index=0; index<almatrixtopnentry.size(); index++)
+    for (std::size_t index=0; index<almatrixtopnentry.len(); index++)
     {
         if(almatrixtopnentry[index]->has_operation())
             return true;
@@ -5653,21 +5771,21 @@ bool RMON2MIB::Almatrixtopntable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Almatrixtopntable::get_absolute_path() const
+std::string RMON2MIB::AlMatrixTopNTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixtopntable::get_segment_path() const
+std::string RMON2MIB::AlMatrixTopNTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "alMatrixTopNTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopntable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5676,25 +5794,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopntable::get_
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixtopntable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "alMatrixTopNEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Almatrixtopntable::Almatrixtopnentry>();
+        auto c = std::make_shared<RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry>();
         c->parent = this;
-        almatrixtopnentry.push_back(c);
+        almatrixtopnentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixtopntable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : almatrixtopnentry)
+    for (auto c : almatrixtopnentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5705,22 +5823,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixtopntable::get_
     return children;
 }
 
-void RMON2MIB::Almatrixtopntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixTopNTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Almatrixtopntable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixTopNTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Almatrixtopntable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixTopNTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alMatrixTopNEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Almatrixtopntable::Almatrixtopnentry::Almatrixtopnentry()
+RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::AlMatrixTopNEntry()
     :
     almatrixtopncontrolindex{YType::str, "alMatrixTopNControlIndex"},
     almatrixtopnindex{YType::int32, "alMatrixTopNIndex"},
@@ -5734,15 +5852,16 @@ RMON2MIB::Almatrixtopntable::Almatrixtopnentry::Almatrixtopnentry()
     almatrixtopnreverseoctetrate{YType::uint32, "alMatrixTopNReverseOctetRate"}
 {
 
-    yang_name = "alMatrixTopNEntry"; yang_parent_name = "alMatrixTopNTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alMatrixTopNEntry"; yang_parent_name = "alMatrixTopNTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Almatrixtopntable::Almatrixtopnentry::~Almatrixtopnentry()
+RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::~AlMatrixTopNEntry()
 {
 }
 
-bool RMON2MIB::Almatrixtopntable::Almatrixtopnentry::has_data() const
+bool RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return almatrixtopncontrolindex.is_set
 	|| almatrixtopnindex.is_set
 	|| almatrixtopnprotocoldirlocalindex.is_set
@@ -5755,7 +5874,7 @@ bool RMON2MIB::Almatrixtopntable::Almatrixtopnentry::has_data() const
 	|| almatrixtopnreverseoctetrate.is_set;
 }
 
-bool RMON2MIB::Almatrixtopntable::Almatrixtopnentry::has_operation() const
+bool RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(almatrixtopncontrolindex.yfilter)
@@ -5770,21 +5889,23 @@ bool RMON2MIB::Almatrixtopntable::Almatrixtopnentry::has_operation() const
 	|| ydk::is_set(almatrixtopnreverseoctetrate.yfilter);
 }
 
-std::string RMON2MIB::Almatrixtopntable::Almatrixtopnentry::get_absolute_path() const
+std::string RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/alMatrixTopNTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Almatrixtopntable::Almatrixtopnentry::get_segment_path() const
+std::string RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alMatrixTopNEntry" <<"[alMatrixTopNControlIndex='" <<almatrixtopncontrolindex <<"']" <<"[alMatrixTopNIndex='" <<almatrixtopnindex <<"']";
+    path_buffer << "alMatrixTopNEntry";
+    ADD_KEY_TOKEN(almatrixtopncontrolindex, "alMatrixTopNControlIndex");
+    ADD_KEY_TOKEN(almatrixtopnindex, "alMatrixTopNIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopntable::Almatrixtopnentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5803,19 +5924,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Almatrixtopntable::Alma
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Almatrixtopntable::Almatrixtopnentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Almatrixtopntable::Almatrixtopnentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Almatrixtopntable::Almatrixtopnentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "alMatrixTopNControlIndex")
     {
@@ -5879,7 +6000,7 @@ void RMON2MIB::Almatrixtopntable::Almatrixtopnentry::set_value(const std::string
     }
 }
 
-void RMON2MIB::Almatrixtopntable::Almatrixtopnentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "alMatrixTopNControlIndex")
     {
@@ -5923,26 +6044,29 @@ void RMON2MIB::Almatrixtopntable::Almatrixtopnentry::set_filter(const std::strin
     }
 }
 
-bool RMON2MIB::Almatrixtopntable::Almatrixtopnentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "alMatrixTopNControlIndex" || name == "alMatrixTopNIndex" || name == "alMatrixTopNProtocolDirLocalIndex" || name == "alMatrixTopNSourceAddress" || name == "alMatrixTopNDestAddress" || name == "alMatrixTopNAppProtocolDirLocalIndex" || name == "alMatrixTopNPktRate" || name == "alMatrixTopNReversePktRate" || name == "alMatrixTopNOctetRate" || name == "alMatrixTopNReverseOctetRate")
         return true;
     return false;
 }
 
-RMON2MIB::Usrhistorycontroltable::Usrhistorycontroltable()
+RMON2MIB::UsrHistoryControlTable::UsrHistoryControlTable()
+    :
+    usrhistorycontrolentry(this, {"usrhistorycontrolindex"})
 {
 
-    yang_name = "usrHistoryControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usrHistoryControlTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Usrhistorycontroltable::~Usrhistorycontroltable()
+RMON2MIB::UsrHistoryControlTable::~UsrHistoryControlTable()
 {
 }
 
-bool RMON2MIB::Usrhistorycontroltable::has_data() const
+bool RMON2MIB::UsrHistoryControlTable::has_data() const
 {
-    for (std::size_t index=0; index<usrhistorycontrolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<usrhistorycontrolentry.len(); index++)
     {
         if(usrhistorycontrolentry[index]->has_data())
             return true;
@@ -5950,9 +6074,9 @@ bool RMON2MIB::Usrhistorycontroltable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Usrhistorycontroltable::has_operation() const
+bool RMON2MIB::UsrHistoryControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<usrhistorycontrolentry.size(); index++)
+    for (std::size_t index=0; index<usrhistorycontrolentry.len(); index++)
     {
         if(usrhistorycontrolentry[index]->has_operation())
             return true;
@@ -5960,21 +6084,21 @@ bool RMON2MIB::Usrhistorycontroltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Usrhistorycontroltable::get_absolute_path() const
+std::string RMON2MIB::UsrHistoryControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Usrhistorycontroltable::get_segment_path() const
+std::string RMON2MIB::UsrHistoryControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "usrHistoryControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorycontroltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5983,25 +6107,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorycontroltable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Usrhistorycontroltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::UsrHistoryControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usrHistoryControlEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry>();
+        auto c = std::make_shared<RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry>();
         c->parent = this;
-        usrhistorycontrolentry.push_back(c);
+        usrhistorycontrolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistorycontroltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : usrhistorycontrolentry)
+    for (auto c : usrhistorycontrolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6012,22 +6136,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistorycontroltable:
     return children;
 }
 
-void RMON2MIB::Usrhistorycontroltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::UsrHistoryControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Usrhistorycontroltable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::UsrHistoryControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Usrhistorycontroltable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::UsrHistoryControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "usrHistoryControlEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::Usrhistorycontrolentry()
+RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::UsrHistoryControlEntry()
     :
     usrhistorycontrolindex{YType::int32, "usrHistoryControlIndex"},
     usrhistorycontrolobjects{YType::int32, "usrHistoryControlObjects"},
@@ -6038,15 +6162,16 @@ RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::Usrhistorycontrolentry
     usrhistorycontrolstatus{YType::enumeration, "usrHistoryControlStatus"}
 {
 
-    yang_name = "usrHistoryControlEntry"; yang_parent_name = "usrHistoryControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usrHistoryControlEntry"; yang_parent_name = "usrHistoryControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::~Usrhistorycontrolentry()
+RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::~UsrHistoryControlEntry()
 {
 }
 
-bool RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::has_data() const
+bool RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return usrhistorycontrolindex.is_set
 	|| usrhistorycontrolobjects.is_set
 	|| usrhistorycontrolbucketsrequested.is_set
@@ -6056,7 +6181,7 @@ bool RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::has_data() const
 	|| usrhistorycontrolstatus.is_set;
 }
 
-bool RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::has_operation() const
+bool RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(usrhistorycontrolindex.yfilter)
@@ -6068,21 +6193,22 @@ bool RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::has_operation() c
 	|| ydk::is_set(usrhistorycontrolstatus.yfilter);
 }
 
-std::string RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::get_absolute_path() const
+std::string RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/usrHistoryControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::get_segment_path() const
+std::string RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "usrHistoryControlEntry" <<"[usrHistoryControlIndex='" <<usrhistorycontrolindex <<"']";
+    path_buffer << "usrHistoryControlEntry";
+    ADD_KEY_TOKEN(usrhistorycontrolindex, "usrHistoryControlIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6098,19 +6224,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorycontroltable:
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "usrHistoryControlIndex")
     {
@@ -6156,7 +6282,7 @@ void RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::set_value(const s
     }
 }
 
-void RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "usrHistoryControlIndex")
     {
@@ -6188,26 +6314,29 @@ void RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::set_filter(const 
     }
 }
 
-bool RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "usrHistoryControlIndex" || name == "usrHistoryControlObjects" || name == "usrHistoryControlBucketsRequested" || name == "usrHistoryControlBucketsGranted" || name == "usrHistoryControlInterval" || name == "usrHistoryControlOwner" || name == "usrHistoryControlStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjecttable()
+RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectTable()
+    :
+    usrhistoryobjectentry(this, {"usrhistorycontrolindex", "usrhistoryobjectindex"})
 {
 
-    yang_name = "usrHistoryObjectTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usrHistoryObjectTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Usrhistoryobjecttable::~Usrhistoryobjecttable()
+RMON2MIB::UsrHistoryObjectTable::~UsrHistoryObjectTable()
 {
 }
 
-bool RMON2MIB::Usrhistoryobjecttable::has_data() const
+bool RMON2MIB::UsrHistoryObjectTable::has_data() const
 {
-    for (std::size_t index=0; index<usrhistoryobjectentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<usrhistoryobjectentry.len(); index++)
     {
         if(usrhistoryobjectentry[index]->has_data())
             return true;
@@ -6215,9 +6344,9 @@ bool RMON2MIB::Usrhistoryobjecttable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Usrhistoryobjecttable::has_operation() const
+bool RMON2MIB::UsrHistoryObjectTable::has_operation() const
 {
-    for (std::size_t index=0; index<usrhistoryobjectentry.size(); index++)
+    for (std::size_t index=0; index<usrhistoryobjectentry.len(); index++)
     {
         if(usrhistoryobjectentry[index]->has_operation())
             return true;
@@ -6225,21 +6354,21 @@ bool RMON2MIB::Usrhistoryobjecttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Usrhistoryobjecttable::get_absolute_path() const
+std::string RMON2MIB::UsrHistoryObjectTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Usrhistoryobjecttable::get_segment_path() const
+std::string RMON2MIB::UsrHistoryObjectTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "usrHistoryObjectTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistoryobjecttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryObjectTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6248,25 +6377,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistoryobjecttable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Usrhistoryobjecttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::UsrHistoryObjectTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usrHistoryObjectEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry>();
+        auto c = std::make_shared<RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry>();
         c->parent = this;
-        usrhistoryobjectentry.push_back(c);
+        usrhistoryobjectentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistoryobjecttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryObjectTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : usrhistoryobjectentry)
+    for (auto c : usrhistoryobjectentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6277,22 +6406,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistoryobjecttable::
     return children;
 }
 
-void RMON2MIB::Usrhistoryobjecttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::UsrHistoryObjectTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Usrhistoryobjecttable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::UsrHistoryObjectTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Usrhistoryobjecttable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::UsrHistoryObjectTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "usrHistoryObjectEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::Usrhistoryobjectentry()
+RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::UsrHistoryObjectEntry()
     :
     usrhistorycontrolindex{YType::str, "usrHistoryControlIndex"},
     usrhistoryobjectindex{YType::int32, "usrHistoryObjectIndex"},
@@ -6300,22 +6429,23 @@ RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::Usrhistoryobjectentry()
     usrhistoryobjectsampletype{YType::enumeration, "usrHistoryObjectSampleType"}
 {
 
-    yang_name = "usrHistoryObjectEntry"; yang_parent_name = "usrHistoryObjectTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usrHistoryObjectEntry"; yang_parent_name = "usrHistoryObjectTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::~Usrhistoryobjectentry()
+RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::~UsrHistoryObjectEntry()
 {
 }
 
-bool RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::has_data() const
+bool RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return usrhistorycontrolindex.is_set
 	|| usrhistoryobjectindex.is_set
 	|| usrhistoryobjectvariable.is_set
 	|| usrhistoryobjectsampletype.is_set;
 }
 
-bool RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::has_operation() const
+bool RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(usrhistorycontrolindex.yfilter)
@@ -6324,21 +6454,23 @@ bool RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::has_operation() con
 	|| ydk::is_set(usrhistoryobjectsampletype.yfilter);
 }
 
-std::string RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::get_absolute_path() const
+std::string RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/usrHistoryObjectTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::get_segment_path() const
+std::string RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "usrHistoryObjectEntry" <<"[usrHistoryControlIndex='" <<usrhistorycontrolindex <<"']" <<"[usrHistoryObjectIndex='" <<usrhistoryobjectindex <<"']";
+    path_buffer << "usrHistoryObjectEntry";
+    ADD_KEY_TOKEN(usrhistorycontrolindex, "usrHistoryControlIndex");
+    ADD_KEY_TOKEN(usrhistoryobjectindex, "usrHistoryObjectIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6351,19 +6483,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistoryobjecttable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "usrHistoryControlIndex")
     {
@@ -6391,7 +6523,7 @@ void RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::set_value(const std
     }
 }
 
-void RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "usrHistoryControlIndex")
     {
@@ -6411,26 +6543,29 @@ void RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::set_filter(const st
     }
 }
 
-bool RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "usrHistoryControlIndex" || name == "usrHistoryObjectIndex" || name == "usrHistoryObjectVariable" || name == "usrHistoryObjectSampleType")
         return true;
     return false;
 }
 
-RMON2MIB::Usrhistorytable::Usrhistorytable()
+RMON2MIB::UsrHistoryTable::UsrHistoryTable()
+    :
+    usrhistoryentry(this, {"usrhistorycontrolindex", "usrhistorysampleindex", "usrhistoryobjectindex"})
 {
 
-    yang_name = "usrHistoryTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usrHistoryTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Usrhistorytable::~Usrhistorytable()
+RMON2MIB::UsrHistoryTable::~UsrHistoryTable()
 {
 }
 
-bool RMON2MIB::Usrhistorytable::has_data() const
+bool RMON2MIB::UsrHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<usrhistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<usrhistoryentry.len(); index++)
     {
         if(usrhistoryentry[index]->has_data())
             return true;
@@ -6438,9 +6573,9 @@ bool RMON2MIB::Usrhistorytable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Usrhistorytable::has_operation() const
+bool RMON2MIB::UsrHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<usrhistoryentry.size(); index++)
+    for (std::size_t index=0; index<usrhistoryentry.len(); index++)
     {
         if(usrhistoryentry[index]->has_operation())
             return true;
@@ -6448,21 +6583,21 @@ bool RMON2MIB::Usrhistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Usrhistorytable::get_absolute_path() const
+std::string RMON2MIB::UsrHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Usrhistorytable::get_segment_path() const
+std::string RMON2MIB::UsrHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "usrHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6471,25 +6606,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorytable::get_na
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Usrhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::UsrHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "usrHistoryEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Usrhistorytable::Usrhistoryentry>();
+        auto c = std::make_shared<RMON2MIB::UsrHistoryTable::UsrHistoryEntry>();
         c->parent = this;
-        usrhistoryentry.push_back(c);
+        usrhistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : usrhistoryentry)
+    for (auto c : usrhistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6500,22 +6635,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistorytable::get_ch
     return children;
 }
 
-void RMON2MIB::Usrhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::UsrHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Usrhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::UsrHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Usrhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::UsrHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "usrHistoryEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Usrhistorytable::Usrhistoryentry::Usrhistoryentry()
+RMON2MIB::UsrHistoryTable::UsrHistoryEntry::UsrHistoryEntry()
     :
     usrhistorycontrolindex{YType::str, "usrHistoryControlIndex"},
     usrhistorysampleindex{YType::int32, "usrHistorySampleIndex"},
@@ -6526,15 +6661,16 @@ RMON2MIB::Usrhistorytable::Usrhistoryentry::Usrhistoryentry()
     usrhistoryvalstatus{YType::enumeration, "usrHistoryValStatus"}
 {
 
-    yang_name = "usrHistoryEntry"; yang_parent_name = "usrHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usrHistoryEntry"; yang_parent_name = "usrHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Usrhistorytable::Usrhistoryentry::~Usrhistoryentry()
+RMON2MIB::UsrHistoryTable::UsrHistoryEntry::~UsrHistoryEntry()
 {
 }
 
-bool RMON2MIB::Usrhistorytable::Usrhistoryentry::has_data() const
+bool RMON2MIB::UsrHistoryTable::UsrHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return usrhistorycontrolindex.is_set
 	|| usrhistorysampleindex.is_set
 	|| usrhistoryobjectindex.is_set
@@ -6544,7 +6680,7 @@ bool RMON2MIB::Usrhistorytable::Usrhistoryentry::has_data() const
 	|| usrhistoryvalstatus.is_set;
 }
 
-bool RMON2MIB::Usrhistorytable::Usrhistoryentry::has_operation() const
+bool RMON2MIB::UsrHistoryTable::UsrHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(usrhistorycontrolindex.yfilter)
@@ -6556,21 +6692,24 @@ bool RMON2MIB::Usrhistorytable::Usrhistoryentry::has_operation() const
 	|| ydk::is_set(usrhistoryvalstatus.yfilter);
 }
 
-std::string RMON2MIB::Usrhistorytable::Usrhistoryentry::get_absolute_path() const
+std::string RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/usrHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Usrhistorytable::Usrhistoryentry::get_segment_path() const
+std::string RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "usrHistoryEntry" <<"[usrHistoryControlIndex='" <<usrhistorycontrolindex <<"']" <<"[usrHistorySampleIndex='" <<usrhistorysampleindex <<"']" <<"[usrHistoryObjectIndex='" <<usrhistoryobjectindex <<"']";
+    path_buffer << "usrHistoryEntry";
+    ADD_KEY_TOKEN(usrhistorycontrolindex, "usrHistoryControlIndex");
+    ADD_KEY_TOKEN(usrhistorysampleindex, "usrHistorySampleIndex");
+    ADD_KEY_TOKEN(usrhistoryobjectindex, "usrHistoryObjectIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorytable::Usrhistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6586,19 +6725,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Usrhistorytable::Usrhis
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Usrhistorytable::Usrhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Usrhistorytable::Usrhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::UsrHistoryTable::UsrHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Usrhistorytable::Usrhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::UsrHistoryTable::UsrHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "usrHistoryControlIndex")
     {
@@ -6644,7 +6783,7 @@ void RMON2MIB::Usrhistorytable::Usrhistoryentry::set_value(const std::string & v
     }
 }
 
-void RMON2MIB::Usrhistorytable::Usrhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::UsrHistoryTable::UsrHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "usrHistoryControlIndex")
     {
@@ -6676,26 +6815,29 @@ void RMON2MIB::Usrhistorytable::Usrhistoryentry::set_filter(const std::string & 
     }
 }
 
-bool RMON2MIB::Usrhistorytable::Usrhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::UsrHistoryTable::UsrHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "usrHistoryControlIndex" || name == "usrHistorySampleIndex" || name == "usrHistoryObjectIndex" || name == "usrHistoryIntervalStart" || name == "usrHistoryIntervalEnd" || name == "usrHistoryAbsValue" || name == "usrHistoryValStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Serialconfigtable::Serialconfigtable()
+RMON2MIB::SerialConfigTable::SerialConfigTable()
+    :
+    serialconfigentry(this, {"ifindex"})
 {
 
-    yang_name = "serialConfigTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serialConfigTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Serialconfigtable::~Serialconfigtable()
+RMON2MIB::SerialConfigTable::~SerialConfigTable()
 {
 }
 
-bool RMON2MIB::Serialconfigtable::has_data() const
+bool RMON2MIB::SerialConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<serialconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<serialconfigentry.len(); index++)
     {
         if(serialconfigentry[index]->has_data())
             return true;
@@ -6703,9 +6845,9 @@ bool RMON2MIB::Serialconfigtable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Serialconfigtable::has_operation() const
+bool RMON2MIB::SerialConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<serialconfigentry.size(); index++)
+    for (std::size_t index=0; index<serialconfigentry.len(); index++)
     {
         if(serialconfigentry[index]->has_operation())
             return true;
@@ -6713,21 +6855,21 @@ bool RMON2MIB::Serialconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Serialconfigtable::get_absolute_path() const
+std::string RMON2MIB::SerialConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Serialconfigtable::get_segment_path() const
+std::string RMON2MIB::SerialConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "serialConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6736,25 +6878,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconfigtable::get_
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Serialconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::SerialConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "serialConfigEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Serialconfigtable::Serialconfigentry>();
+        auto c = std::make_shared<RMON2MIB::SerialConfigTable::SerialConfigEntry>();
         c->parent = this;
-        serialconfigentry.push_back(c);
+        serialconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Serialconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : serialconfigentry)
+    for (auto c : serialconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6765,22 +6907,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Serialconfigtable::get_
     return children;
 }
 
-void RMON2MIB::Serialconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::SerialConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Serialconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::SerialConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Serialconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::SerialConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "serialConfigEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Serialconfigtable::Serialconfigentry::Serialconfigentry()
+RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialConfigEntry()
     :
     ifindex{YType::str, "ifIndex"},
     serialmode{YType::enumeration, "serialMode"},
@@ -6794,15 +6936,16 @@ RMON2MIB::Serialconfigtable::Serialconfigentry::Serialconfigentry()
     serialstatus{YType::enumeration, "serialStatus"}
 {
 
-    yang_name = "serialConfigEntry"; yang_parent_name = "serialConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serialConfigEntry"; yang_parent_name = "serialConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Serialconfigtable::Serialconfigentry::~Serialconfigentry()
+RMON2MIB::SerialConfigTable::SerialConfigEntry::~SerialConfigEntry()
 {
 }
 
-bool RMON2MIB::Serialconfigtable::Serialconfigentry::has_data() const
+bool RMON2MIB::SerialConfigTable::SerialConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| serialmode.is_set
 	|| serialprotocol.is_set
@@ -6815,7 +6958,7 @@ bool RMON2MIB::Serialconfigtable::Serialconfigentry::has_data() const
 	|| serialstatus.is_set;
 }
 
-bool RMON2MIB::Serialconfigtable::Serialconfigentry::has_operation() const
+bool RMON2MIB::SerialConfigTable::SerialConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -6830,21 +6973,22 @@ bool RMON2MIB::Serialconfigtable::Serialconfigentry::has_operation() const
 	|| ydk::is_set(serialstatus.yfilter);
 }
 
-std::string RMON2MIB::Serialconfigtable::Serialconfigentry::get_absolute_path() const
+std::string RMON2MIB::SerialConfigTable::SerialConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/serialConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Serialconfigtable::Serialconfigentry::get_segment_path() const
+std::string RMON2MIB::SerialConfigTable::SerialConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "serialConfigEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "serialConfigEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconfigtable::Serialconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConfigTable::SerialConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6863,19 +7007,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconfigtable::Seri
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Serialconfigtable::Serialconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::SerialConfigTable::SerialConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Serialconfigtable::Serialconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConfigTable::SerialConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Serialconfigtable::Serialconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::SerialConfigTable::SerialConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -6939,7 +7083,7 @@ void RMON2MIB::Serialconfigtable::Serialconfigentry::set_value(const std::string
     }
 }
 
-void RMON2MIB::Serialconfigtable::Serialconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::SerialConfigTable::SerialConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -6983,26 +7127,29 @@ void RMON2MIB::Serialconfigtable::Serialconfigentry::set_filter(const std::strin
     }
 }
 
-bool RMON2MIB::Serialconfigtable::Serialconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::SerialConfigTable::SerialConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "serialMode" || name == "serialProtocol" || name == "serialTimeout" || name == "serialModemInitString" || name == "serialModemHangUpString" || name == "serialModemConnectResp" || name == "serialModemNoConnectResp" || name == "serialDialoutTimeout" || name == "serialStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Netconfigtable::Netconfigtable()
+RMON2MIB::NetConfigTable::NetConfigTable()
+    :
+    netconfigentry(this, {"ifindex"})
 {
 
-    yang_name = "netConfigTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "netConfigTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Netconfigtable::~Netconfigtable()
+RMON2MIB::NetConfigTable::~NetConfigTable()
 {
 }
 
-bool RMON2MIB::Netconfigtable::has_data() const
+bool RMON2MIB::NetConfigTable::has_data() const
 {
-    for (std::size_t index=0; index<netconfigentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<netconfigentry.len(); index++)
     {
         if(netconfigentry[index]->has_data())
             return true;
@@ -7010,9 +7157,9 @@ bool RMON2MIB::Netconfigtable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Netconfigtable::has_operation() const
+bool RMON2MIB::NetConfigTable::has_operation() const
 {
-    for (std::size_t index=0; index<netconfigentry.size(); index++)
+    for (std::size_t index=0; index<netconfigentry.len(); index++)
     {
         if(netconfigentry[index]->has_operation())
             return true;
@@ -7020,21 +7167,21 @@ bool RMON2MIB::Netconfigtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Netconfigtable::get_absolute_path() const
+std::string RMON2MIB::NetConfigTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Netconfigtable::get_segment_path() const
+std::string RMON2MIB::NetConfigTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "netConfigTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Netconfigtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NetConfigTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7043,25 +7190,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Netconfigtable::get_nam
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Netconfigtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NetConfigTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "netConfigEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Netconfigtable::Netconfigentry>();
+        auto c = std::make_shared<RMON2MIB::NetConfigTable::NetConfigEntry>();
         c->parent = this;
-        netconfigentry.push_back(c);
+        netconfigentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Netconfigtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NetConfigTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : netconfigentry)
+    for (auto c : netconfigentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7072,22 +7219,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Netconfigtable::get_chi
     return children;
 }
 
-void RMON2MIB::Netconfigtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NetConfigTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Netconfigtable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NetConfigTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Netconfigtable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NetConfigTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "netConfigEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Netconfigtable::Netconfigentry::Netconfigentry()
+RMON2MIB::NetConfigTable::NetConfigEntry::NetConfigEntry()
     :
     ifindex{YType::str, "ifIndex"},
     netconfigipaddress{YType::str, "netConfigIPAddress"},
@@ -7095,22 +7242,23 @@ RMON2MIB::Netconfigtable::Netconfigentry::Netconfigentry()
     netconfigstatus{YType::enumeration, "netConfigStatus"}
 {
 
-    yang_name = "netConfigEntry"; yang_parent_name = "netConfigTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "netConfigEntry"; yang_parent_name = "netConfigTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Netconfigtable::Netconfigentry::~Netconfigentry()
+RMON2MIB::NetConfigTable::NetConfigEntry::~NetConfigEntry()
 {
 }
 
-bool RMON2MIB::Netconfigtable::Netconfigentry::has_data() const
+bool RMON2MIB::NetConfigTable::NetConfigEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| netconfigipaddress.is_set
 	|| netconfigsubnetmask.is_set
 	|| netconfigstatus.is_set;
 }
 
-bool RMON2MIB::Netconfigtable::Netconfigentry::has_operation() const
+bool RMON2MIB::NetConfigTable::NetConfigEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -7119,21 +7267,22 @@ bool RMON2MIB::Netconfigtable::Netconfigentry::has_operation() const
 	|| ydk::is_set(netconfigstatus.yfilter);
 }
 
-std::string RMON2MIB::Netconfigtable::Netconfigentry::get_absolute_path() const
+std::string RMON2MIB::NetConfigTable::NetConfigEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/netConfigTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Netconfigtable::Netconfigentry::get_segment_path() const
+std::string RMON2MIB::NetConfigTable::NetConfigEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "netConfigEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "netConfigEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Netconfigtable::Netconfigentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::NetConfigTable::NetConfigEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7146,19 +7295,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Netconfigtable::Netconf
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Netconfigtable::Netconfigentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::NetConfigTable::NetConfigEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Netconfigtable::Netconfigentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::NetConfigTable::NetConfigEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Netconfigtable::Netconfigentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::NetConfigTable::NetConfigEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -7186,7 +7335,7 @@ void RMON2MIB::Netconfigtable::Netconfigentry::set_value(const std::string & val
     }
 }
 
-void RMON2MIB::Netconfigtable::Netconfigentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::NetConfigTable::NetConfigEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -7206,26 +7355,29 @@ void RMON2MIB::Netconfigtable::Netconfigentry::set_filter(const std::string & va
     }
 }
 
-bool RMON2MIB::Netconfigtable::Netconfigentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::NetConfigTable::NetConfigEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "netConfigIPAddress" || name == "netConfigSubnetMask" || name == "netConfigStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Trapdesttable::Trapdesttable()
+RMON2MIB::TrapDestTable::TrapDestTable()
+    :
+    trapdestentry(this, {"trapdestindex"})
 {
 
-    yang_name = "trapDestTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trapDestTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Trapdesttable::~Trapdesttable()
+RMON2MIB::TrapDestTable::~TrapDestTable()
 {
 }
 
-bool RMON2MIB::Trapdesttable::has_data() const
+bool RMON2MIB::TrapDestTable::has_data() const
 {
-    for (std::size_t index=0; index<trapdestentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trapdestentry.len(); index++)
     {
         if(trapdestentry[index]->has_data())
             return true;
@@ -7233,9 +7385,9 @@ bool RMON2MIB::Trapdesttable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Trapdesttable::has_operation() const
+bool RMON2MIB::TrapDestTable::has_operation() const
 {
-    for (std::size_t index=0; index<trapdestentry.size(); index++)
+    for (std::size_t index=0; index<trapdestentry.len(); index++)
     {
         if(trapdestentry[index]->has_operation())
             return true;
@@ -7243,21 +7395,21 @@ bool RMON2MIB::Trapdesttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Trapdesttable::get_absolute_path() const
+std::string RMON2MIB::TrapDestTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Trapdesttable::get_segment_path() const
+std::string RMON2MIB::TrapDestTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "trapDestTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Trapdesttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::TrapDestTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7266,25 +7418,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Trapdesttable::get_name
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Trapdesttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::TrapDestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "trapDestEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Trapdesttable::Trapdestentry>();
+        auto c = std::make_shared<RMON2MIB::TrapDestTable::TrapDestEntry>();
         c->parent = this;
-        trapdestentry.push_back(c);
+        trapdestentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Trapdesttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::TrapDestTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trapdestentry)
+    for (auto c : trapdestentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7295,22 +7447,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Trapdesttable::get_chil
     return children;
 }
 
-void RMON2MIB::Trapdesttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::TrapDestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Trapdesttable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::TrapDestTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Trapdesttable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::TrapDestTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "trapDestEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Trapdesttable::Trapdestentry::Trapdestentry()
+RMON2MIB::TrapDestTable::TrapDestEntry::TrapDestEntry()
     :
     trapdestindex{YType::int32, "trapDestIndex"},
     trapdestcommunity{YType::str, "trapDestCommunity"},
@@ -7320,15 +7472,16 @@ RMON2MIB::Trapdesttable::Trapdestentry::Trapdestentry()
     trapdeststatus{YType::enumeration, "trapDestStatus"}
 {
 
-    yang_name = "trapDestEntry"; yang_parent_name = "trapDestTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trapDestEntry"; yang_parent_name = "trapDestTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Trapdesttable::Trapdestentry::~Trapdestentry()
+RMON2MIB::TrapDestTable::TrapDestEntry::~TrapDestEntry()
 {
 }
 
-bool RMON2MIB::Trapdesttable::Trapdestentry::has_data() const
+bool RMON2MIB::TrapDestTable::TrapDestEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return trapdestindex.is_set
 	|| trapdestcommunity.is_set
 	|| trapdestprotocol.is_set
@@ -7337,7 +7490,7 @@ bool RMON2MIB::Trapdesttable::Trapdestentry::has_data() const
 	|| trapdeststatus.is_set;
 }
 
-bool RMON2MIB::Trapdesttable::Trapdestentry::has_operation() const
+bool RMON2MIB::TrapDestTable::TrapDestEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(trapdestindex.yfilter)
@@ -7348,21 +7501,22 @@ bool RMON2MIB::Trapdesttable::Trapdestentry::has_operation() const
 	|| ydk::is_set(trapdeststatus.yfilter);
 }
 
-std::string RMON2MIB::Trapdesttable::Trapdestentry::get_absolute_path() const
+std::string RMON2MIB::TrapDestTable::TrapDestEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/trapDestTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Trapdesttable::Trapdestentry::get_segment_path() const
+std::string RMON2MIB::TrapDestTable::TrapDestEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trapDestEntry" <<"[trapDestIndex='" <<trapdestindex <<"']";
+    path_buffer << "trapDestEntry";
+    ADD_KEY_TOKEN(trapdestindex, "trapDestIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Trapdesttable::Trapdestentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::TrapDestTable::TrapDestEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7377,19 +7531,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Trapdesttable::Trapdest
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Trapdesttable::Trapdestentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::TrapDestTable::TrapDestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Trapdesttable::Trapdestentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::TrapDestTable::TrapDestEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Trapdesttable::Trapdestentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::TrapDestTable::TrapDestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "trapDestIndex")
     {
@@ -7429,7 +7583,7 @@ void RMON2MIB::Trapdesttable::Trapdestentry::set_value(const std::string & value
     }
 }
 
-void RMON2MIB::Trapdesttable::Trapdestentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::TrapDestTable::TrapDestEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "trapDestIndex")
     {
@@ -7457,26 +7611,29 @@ void RMON2MIB::Trapdesttable::Trapdestentry::set_filter(const std::string & valu
     }
 }
 
-bool RMON2MIB::Trapdesttable::Trapdestentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::TrapDestTable::TrapDestEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "trapDestIndex" || name == "trapDestCommunity" || name == "trapDestProtocol" || name == "trapDestAddress" || name == "trapDestOwner" || name == "trapDestStatus")
         return true;
     return false;
 }
 
-RMON2MIB::Serialconnectiontable::Serialconnectiontable()
+RMON2MIB::SerialConnectionTable::SerialConnectionTable()
+    :
+    serialconnectionentry(this, {"serialconnectindex"})
 {
 
-    yang_name = "serialConnectionTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serialConnectionTable"; yang_parent_name = "RMON2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Serialconnectiontable::~Serialconnectiontable()
+RMON2MIB::SerialConnectionTable::~SerialConnectionTable()
 {
 }
 
-bool RMON2MIB::Serialconnectiontable::has_data() const
+bool RMON2MIB::SerialConnectionTable::has_data() const
 {
-    for (std::size_t index=0; index<serialconnectionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<serialconnectionentry.len(); index++)
     {
         if(serialconnectionentry[index]->has_data())
             return true;
@@ -7484,9 +7641,9 @@ bool RMON2MIB::Serialconnectiontable::has_data() const
     return false;
 }
 
-bool RMON2MIB::Serialconnectiontable::has_operation() const
+bool RMON2MIB::SerialConnectionTable::has_operation() const
 {
-    for (std::size_t index=0; index<serialconnectionentry.size(); index++)
+    for (std::size_t index=0; index<serialconnectionentry.len(); index++)
     {
         if(serialconnectionentry[index]->has_operation())
             return true;
@@ -7494,21 +7651,21 @@ bool RMON2MIB::Serialconnectiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string RMON2MIB::Serialconnectiontable::get_absolute_path() const
+std::string RMON2MIB::SerialConnectionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Serialconnectiontable::get_segment_path() const
+std::string RMON2MIB::SerialConnectionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "serialConnectionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconnectiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConnectionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7517,25 +7674,25 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconnectiontable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Serialconnectiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::SerialConnectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "serialConnectionEntry")
     {
-        auto c = std::make_shared<RMON2MIB::Serialconnectiontable::Serialconnectionentry>();
+        auto c = std::make_shared<RMON2MIB::SerialConnectionTable::SerialConnectionEntry>();
         c->parent = this;
-        serialconnectionentry.push_back(c);
+        serialconnectionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Serialconnectiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConnectionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : serialconnectionentry)
+    for (auto c : serialconnectionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7546,22 +7703,22 @@ std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Serialconnectiontable::
     return children;
 }
 
-void RMON2MIB::Serialconnectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::SerialConnectionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void RMON2MIB::Serialconnectiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::SerialConnectionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool RMON2MIB::Serialconnectiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::SerialConnectionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "serialConnectionEntry")
         return true;
     return false;
 }
 
-RMON2MIB::Serialconnectiontable::Serialconnectionentry::Serialconnectionentry()
+RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectionEntry()
     :
     serialconnectindex{YType::int32, "serialConnectIndex"},
     serialconnectdestipaddress{YType::str, "serialConnectDestIpAddress"},
@@ -7574,15 +7731,16 @@ RMON2MIB::Serialconnectiontable::Serialconnectionentry::Serialconnectionentry()
     serialconnectstatus{YType::enumeration, "serialConnectStatus"}
 {
 
-    yang_name = "serialConnectionEntry"; yang_parent_name = "serialConnectionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "serialConnectionEntry"; yang_parent_name = "serialConnectionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-RMON2MIB::Serialconnectiontable::Serialconnectionentry::~Serialconnectionentry()
+RMON2MIB::SerialConnectionTable::SerialConnectionEntry::~SerialConnectionEntry()
 {
 }
 
-bool RMON2MIB::Serialconnectiontable::Serialconnectionentry::has_data() const
+bool RMON2MIB::SerialConnectionTable::SerialConnectionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return serialconnectindex.is_set
 	|| serialconnectdestipaddress.is_set
 	|| serialconnecttype.is_set
@@ -7594,7 +7752,7 @@ bool RMON2MIB::Serialconnectiontable::Serialconnectionentry::has_data() const
 	|| serialconnectstatus.is_set;
 }
 
-bool RMON2MIB::Serialconnectiontable::Serialconnectionentry::has_operation() const
+bool RMON2MIB::SerialConnectionTable::SerialConnectionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(serialconnectindex.yfilter)
@@ -7608,21 +7766,22 @@ bool RMON2MIB::Serialconnectiontable::Serialconnectionentry::has_operation() con
 	|| ydk::is_set(serialconnectstatus.yfilter);
 }
 
-std::string RMON2MIB::Serialconnectiontable::Serialconnectionentry::get_absolute_path() const
+std::string RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "RMON2-MIB:RMON2-MIB/serialConnectionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string RMON2MIB::Serialconnectiontable::Serialconnectionentry::get_segment_path() const
+std::string RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "serialConnectionEntry" <<"[serialConnectIndex='" <<serialconnectindex <<"']";
+    path_buffer << "serialConnectionEntry";
+    ADD_KEY_TOKEN(serialconnectindex, "serialConnectIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconnectiontable::Serialconnectionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7640,19 +7799,19 @@ std::vector<std::pair<std::string, LeafData> > RMON2MIB::Serialconnectiontable::
 
 }
 
-std::shared_ptr<Entity> RMON2MIB::Serialconnectiontable::Serialconnectionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::Serialconnectiontable::Serialconnectionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> RMON2MIB::SerialConnectionTable::SerialConnectionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void RMON2MIB::Serialconnectiontable::Serialconnectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void RMON2MIB::SerialConnectionTable::SerialConnectionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "serialConnectIndex")
     {
@@ -7710,7 +7869,7 @@ void RMON2MIB::Serialconnectiontable::Serialconnectionentry::set_value(const std
     }
 }
 
-void RMON2MIB::Serialconnectiontable::Serialconnectionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void RMON2MIB::SerialConnectionTable::SerialConnectionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "serialConnectIndex")
     {
@@ -7750,71 +7909,71 @@ void RMON2MIB::Serialconnectiontable::Serialconnectionentry::set_filter(const st
     }
 }
 
-bool RMON2MIB::Serialconnectiontable::Serialconnectionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool RMON2MIB::SerialConnectionTable::SerialConnectionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "serialConnectIndex" || name == "serialConnectDestIpAddress" || name == "serialConnectType" || name == "serialConnectDialString" || name == "serialConnectSwitchConnectSeq" || name == "serialConnectSwitchDisconnectSeq" || name == "serialConnectSwitchResetSeq" || name == "serialConnectOwner" || name == "serialConnectStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf RMON2MIB::Probeconfig::Proberesetcontrol::running {1, "running"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Proberesetcontrol::warmBoot {2, "warmBoot"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Proberesetcontrol::coldBoot {3, "coldBoot"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeResetControl::running {1, "running"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeResetControl::warmBoot {2, "warmBoot"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeResetControl::coldBoot {3, "coldBoot"};
 
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadaction::notDownloading {1, "notDownloading"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadaction::downloadToPROM {2, "downloadToPROM"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadaction::downloadToRAM {3, "downloadToRAM"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadAction::notDownloading {1, "notDownloading"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadAction::downloadToPROM {2, "downloadToPROM"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadAction::downloadToRAM {3, "downloadToRAM"};
 
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadSuccess {1, "downloadSuccess"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadStatusUnknown {2, "downloadStatusUnknown"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadGeneralError {3, "downloadGeneralError"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadNoResponseFromServer {4, "downloadNoResponseFromServer"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadChecksumError {5, "downloadChecksumError"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadIncompatibleImage {6, "downloadIncompatibleImage"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadTftpFileNotFound {7, "downloadTftpFileNotFound"};
-const Enum::YLeaf RMON2MIB::Probeconfig::Probedownloadstatus::downloadTftpAccessViolation {8, "downloadTftpAccessViolation"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadSuccess {1, "downloadSuccess"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadStatusUnknown {2, "downloadStatusUnknown"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadGeneralError {3, "downloadGeneralError"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadNoResponseFromServer {4, "downloadNoResponseFromServer"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadChecksumError {5, "downloadChecksumError"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadIncompatibleImage {6, "downloadIncompatibleImage"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadTftpFileNotFound {7, "downloadTftpFileNotFound"};
+const Enum::YLeaf RMON2MIB::ProbeConfig::ProbeDownloadStatus::downloadTftpAccessViolation {8, "downloadTftpAccessViolation"};
 
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldiraddressmapconfig::notSupported {1, "notSupported"};
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldiraddressmapconfig::supportedOff {2, "supportedOff"};
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldiraddressmapconfig::supportedOn {3, "supportedOn"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirAddressMapConfig::notSupported {1, "notSupported"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirAddressMapConfig::supportedOff {2, "supportedOff"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirAddressMapConfig::supportedOn {3, "supportedOn"};
 
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirhostconfig::notSupported {1, "notSupported"};
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirhostconfig::supportedOff {2, "supportedOff"};
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirhostconfig::supportedOn {3, "supportedOn"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirHostConfig::notSupported {1, "notSupported"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirHostConfig::supportedOff {2, "supportedOff"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirHostConfig::supportedOn {3, "supportedOn"};
 
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirmatrixconfig::notSupported {1, "notSupported"};
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirmatrixconfig::supportedOff {2, "supportedOff"};
-const Enum::YLeaf RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirmatrixconfig::supportedOn {3, "supportedOn"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirMatrixConfig::notSupported {1, "notSupported"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirMatrixConfig::supportedOff {2, "supportedOff"};
+const Enum::YLeaf RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirMatrixConfig::supportedOn {3, "supportedOn"};
 
-const Enum::YLeaf RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::Nlmatrixtopncontrolratebase::nlMatrixTopNPkts {1, "nlMatrixTopNPkts"};
-const Enum::YLeaf RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::Nlmatrixtopncontrolratebase::nlMatrixTopNOctets {2, "nlMatrixTopNOctets"};
+const Enum::YLeaf RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::NlMatrixTopNControlRateBase::nlMatrixTopNPkts {1, "nlMatrixTopNPkts"};
+const Enum::YLeaf RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::NlMatrixTopNControlRateBase::nlMatrixTopNOctets {2, "nlMatrixTopNOctets"};
 
-const Enum::YLeaf RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopncontrolratebase::alMatrixTopNTerminalsPkts {1, "alMatrixTopNTerminalsPkts"};
-const Enum::YLeaf RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopncontrolratebase::alMatrixTopNTerminalsOctets {2, "alMatrixTopNTerminalsOctets"};
-const Enum::YLeaf RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopncontrolratebase::alMatrixTopNAllPkts {3, "alMatrixTopNAllPkts"};
-const Enum::YLeaf RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopncontrolratebase::alMatrixTopNAllOctets {4, "alMatrixTopNAllOctets"};
+const Enum::YLeaf RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopNControlRateBase::alMatrixTopNTerminalsPkts {1, "alMatrixTopNTerminalsPkts"};
+const Enum::YLeaf RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopNControlRateBase::alMatrixTopNTerminalsOctets {2, "alMatrixTopNTerminalsOctets"};
+const Enum::YLeaf RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopNControlRateBase::alMatrixTopNAllPkts {3, "alMatrixTopNAllPkts"};
+const Enum::YLeaf RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopNControlRateBase::alMatrixTopNAllOctets {4, "alMatrixTopNAllOctets"};
 
-const Enum::YLeaf RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::Usrhistoryobjectsampletype::absoluteValue {1, "absoluteValue"};
-const Enum::YLeaf RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::Usrhistoryobjectsampletype::deltaValue {2, "deltaValue"};
+const Enum::YLeaf RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::UsrHistoryObjectSampleType::absoluteValue {1, "absoluteValue"};
+const Enum::YLeaf RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::UsrHistoryObjectSampleType::deltaValue {2, "deltaValue"};
 
-const Enum::YLeaf RMON2MIB::Usrhistorytable::Usrhistoryentry::Usrhistoryvalstatus::valueNotAvailable {1, "valueNotAvailable"};
-const Enum::YLeaf RMON2MIB::Usrhistorytable::Usrhistoryentry::Usrhistoryvalstatus::valuePositive {2, "valuePositive"};
-const Enum::YLeaf RMON2MIB::Usrhistorytable::Usrhistoryentry::Usrhistoryvalstatus::valueNegative {3, "valueNegative"};
+const Enum::YLeaf RMON2MIB::UsrHistoryTable::UsrHistoryEntry::UsrHistoryValStatus::valueNotAvailable {1, "valueNotAvailable"};
+const Enum::YLeaf RMON2MIB::UsrHistoryTable::UsrHistoryEntry::UsrHistoryValStatus::valuePositive {2, "valuePositive"};
+const Enum::YLeaf RMON2MIB::UsrHistoryTable::UsrHistoryEntry::UsrHistoryValStatus::valueNegative {3, "valueNegative"};
 
-const Enum::YLeaf RMON2MIB::Serialconfigtable::Serialconfigentry::Serialmode::direct {1, "direct"};
-const Enum::YLeaf RMON2MIB::Serialconfigtable::Serialconfigentry::Serialmode::modem {2, "modem"};
+const Enum::YLeaf RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialMode::direct {1, "direct"};
+const Enum::YLeaf RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialMode::modem {2, "modem"};
 
-const Enum::YLeaf RMON2MIB::Serialconfigtable::Serialconfigentry::Serialprotocol::other {1, "other"};
-const Enum::YLeaf RMON2MIB::Serialconfigtable::Serialconfigentry::Serialprotocol::slip {2, "slip"};
-const Enum::YLeaf RMON2MIB::Serialconfigtable::Serialconfigentry::Serialprotocol::ppp {3, "ppp"};
+const Enum::YLeaf RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialProtocol::other {1, "other"};
+const Enum::YLeaf RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialProtocol::slip {2, "slip"};
+const Enum::YLeaf RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialProtocol::ppp {3, "ppp"};
 
-const Enum::YLeaf RMON2MIB::Trapdesttable::Trapdestentry::Trapdestprotocol::ip {1, "ip"};
-const Enum::YLeaf RMON2MIB::Trapdesttable::Trapdestentry::Trapdestprotocol::ipx {2, "ipx"};
+const Enum::YLeaf RMON2MIB::TrapDestTable::TrapDestEntry::TrapDestProtocol::ip {1, "ip"};
+const Enum::YLeaf RMON2MIB::TrapDestTable::TrapDestEntry::TrapDestProtocol::ipx {2, "ipx"};
 
-const Enum::YLeaf RMON2MIB::Serialconnectiontable::Serialconnectionentry::Serialconnecttype::direct {1, "direct"};
-const Enum::YLeaf RMON2MIB::Serialconnectiontable::Serialconnectionentry::Serialconnecttype::modem {2, "modem"};
-const Enum::YLeaf RMON2MIB::Serialconnectiontable::Serialconnectionentry::Serialconnecttype::switch_ {3, "switch"};
-const Enum::YLeaf RMON2MIB::Serialconnectiontable::Serialconnectionentry::Serialconnecttype::modemSwitch {4, "modemSwitch"};
+const Enum::YLeaf RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectType::direct {1, "direct"};
+const Enum::YLeaf RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectType::modem {2, "modem"};
+const Enum::YLeaf RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectType::switch_ {3, "switch"};
+const Enum::YLeaf RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectType::modemSwitch {4, "modemSwitch"};
 
 
 }

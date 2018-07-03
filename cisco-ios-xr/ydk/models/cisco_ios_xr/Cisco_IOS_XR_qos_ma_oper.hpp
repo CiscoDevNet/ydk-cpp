@@ -65,7 +65,7 @@ class Qos::NvInterfaceTable : public ydk::Entity
 
         class Interface; //type: Qos::NvInterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Qos::NvInterfaceTable
 
@@ -121,7 +121,7 @@ class Qos::NvInterfaceTable::Interface::Nodes : public ydk::Entity
 
         class Node; //type: Qos::NvInterfaceTable::Interface::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes
 
@@ -193,7 +193,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames :
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames
 
@@ -244,7 +244,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -282,9 +282,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -372,7 +372,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -408,9 +408,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -541,9 +541,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -715,7 +715,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -807,9 +807,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -981,7 +981,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -1049,7 +1049,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames 
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames
 
@@ -1100,7 +1100,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -1138,9 +1138,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -1228,7 +1228,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -1264,9 +1264,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -1397,9 +1397,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -1571,7 +1571,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -1663,9 +1663,9 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -1837,7 +1837,7 @@ class Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames:
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -1882,7 +1882,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces : public ydk::Entity
 
         class MemberInterface; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces
 
@@ -1933,7 +1933,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
 
         class SatelliteId; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds
 
@@ -2005,7 +2005,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -2056,7 +2056,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -2094,9 +2094,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -2184,7 +2184,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -2220,9 +2220,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -2353,9 +2353,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -2527,7 +2527,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -2619,9 +2619,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -2793,7 +2793,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -2861,7 +2861,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -2912,7 +2912,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -2950,9 +2950,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -3040,7 +3040,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -3076,9 +3076,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -3209,9 +3209,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -3383,7 +3383,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -3475,9 +3475,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -3649,7 +3649,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Satel
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -3717,7 +3717,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
 
@@ -3768,7 +3768,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -3806,9 +3806,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -3896,7 +3896,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -3932,9 +3932,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -4065,9 +4065,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -4239,7 +4239,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -4331,9 +4331,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -4505,7 +4505,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -4573,7 +4573,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
 
@@ -4624,7 +4624,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -4662,9 +4662,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -4752,7 +4752,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -4788,9 +4788,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -4921,9 +4921,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -5095,7 +5095,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -5187,9 +5187,9 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -5361,7 +5361,7 @@ class Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Outpu
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -5406,7 +5406,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds : public ydk::Entity
 
         class SatelliteId; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds
 
@@ -5478,7 +5478,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -5529,7 +5529,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -5567,9 +5567,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -5657,7 +5657,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -5693,9 +5693,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -5826,9 +5826,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -6000,7 +6000,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -6092,9 +6092,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -6266,7 +6266,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Servic
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -6334,7 +6334,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -6385,7 +6385,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -6423,9 +6423,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -6513,7 +6513,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -6549,9 +6549,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -6682,9 +6682,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -6856,7 +6856,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -6948,9 +6948,9 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -7122,7 +7122,7 @@ class Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Servi
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -7190,7 +7190,7 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames : public ydk::
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames
 
@@ -7241,7 +7241,7 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -7279,9 +7279,9 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -7369,7 +7369,7 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -7405,9 +7405,9 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -7538,9 +7538,9 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -7712,7 +7712,7 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -7804,9 +7804,9 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -7978,7 +7978,7 @@ class Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicy
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -8046,7 +8046,7 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames : public ydk:
 
         class ServicePolicyInstance; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames
 
@@ -8097,7 +8097,7 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -8135,9 +8135,9 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -8225,7 +8225,7 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -8261,9 +8261,9 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -8394,9 +8394,9 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -8568,7 +8568,7 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -8660,9 +8660,9 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         class QueueAverageLength; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -8834,7 +8834,7 @@ class Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolic
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -8930,7 +8930,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds : public ydk::Enti
 
         class NvSatelliteId; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId> > nv_satellite_id;
+        ydk::YList nv_satellite_id;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds
 
@@ -8978,7 +8978,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class NvSatelliteInterface; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface> > nv_satellite_interface;
+        ydk::YList nv_satellite_interface;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces
 
@@ -9029,7 +9029,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class MemberInterface; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces
 
@@ -9080,7 +9080,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class SatelliteId; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds
 
@@ -9152,7 +9152,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -9203,7 +9203,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -9241,9 +9241,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -9331,7 +9331,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -9367,9 +9367,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -9500,9 +9500,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -9674,7 +9674,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -9766,9 +9766,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -9940,7 +9940,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -10008,7 +10008,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -10059,7 +10059,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -10097,9 +10097,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -10187,7 +10187,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -10223,9 +10223,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -10356,9 +10356,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -10530,7 +10530,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -10622,9 +10622,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -10796,7 +10796,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -10864,7 +10864,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
 
@@ -10915,7 +10915,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -10953,9 +10953,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -11043,7 +11043,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -11079,9 +11079,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -11212,9 +11212,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -11386,7 +11386,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -11478,9 +11478,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -11652,7 +11652,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -11720,7 +11720,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
 
@@ -11771,7 +11771,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -11809,9 +11809,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -11899,7 +11899,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -11935,9 +11935,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -12068,9 +12068,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -12242,7 +12242,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -12334,9 +12334,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -12508,7 +12508,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -12576,7 +12576,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames
 
@@ -12627,7 +12627,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -12665,9 +12665,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -12755,7 +12755,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -12791,9 +12791,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -12924,9 +12924,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -13098,7 +13098,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -13190,9 +13190,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -13364,7 +13364,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -13432,7 +13432,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
 
         class ServicePolicyInstance; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames
 
@@ -13483,7 +13483,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -13521,9 +13521,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -13611,7 +13611,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -13647,9 +13647,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -13780,9 +13780,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -13954,7 +13954,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -14046,9 +14046,9 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         class QueueAverageLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -14220,7 +14220,7 @@ class Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::Nv
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -14290,7 +14290,7 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds : public ydk::Entity
 
         class NvSatelliteId; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId> > nv_satellite_id;
+        ydk::YList nv_satellite_id;
         
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds
 
@@ -14338,7 +14338,7 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSate
 
         class NvSatelliteInterface; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface> > nv_satellite_interface;
+        ydk::YList nv_satellite_interface;
         
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces
 
@@ -14391,7 +14391,7 @@ class Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSate
 
         class MemberInterface; //type: Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // Qos::NvSatellite::NvSatelliteStatus::NvSatelliteIds::NvSatelliteId::NvSatelliteInterfaces::NvSatelliteInterface::MemberInterfaces
 
@@ -14658,7 +14658,7 @@ class Qos::Nodes : public ydk::Entity
 
         class Node; //type: Qos::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Qos::Nodes
 
@@ -14731,7 +14731,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances : public ydk::Entity
 
         class SharedPolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance> > shared_policy_instance;
+        ydk::YList shared_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances
 
@@ -14782,7 +14782,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class MemberInterface; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces
 
@@ -14833,7 +14833,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class SatelliteId; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds
 
@@ -14905,7 +14905,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -14956,7 +14956,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -14994,9 +14994,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -15084,7 +15084,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -15120,9 +15120,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -15253,9 +15253,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -15427,7 +15427,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -15519,9 +15519,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -15693,7 +15693,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -15761,7 +15761,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -15812,7 +15812,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -15850,9 +15850,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -15940,7 +15940,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -15976,9 +15976,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -16109,9 +16109,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -16283,7 +16283,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -16375,9 +16375,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -16549,7 +16549,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -16617,7 +16617,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
 
@@ -16668,7 +16668,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -16706,9 +16706,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -16796,7 +16796,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -16832,9 +16832,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -16965,9 +16965,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -17139,7 +17139,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -17231,9 +17231,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -17405,7 +17405,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -17473,7 +17473,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
 
@@ -17524,7 +17524,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -17562,9 +17562,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -17652,7 +17652,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -17688,9 +17688,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -17821,9 +17821,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -17995,7 +17995,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -18087,9 +18087,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -18261,7 +18261,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -18329,7 +18329,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames
 
@@ -18380,7 +18380,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -18418,9 +18418,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -18508,7 +18508,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -18544,9 +18544,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -18677,9 +18677,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -18851,7 +18851,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -18943,9 +18943,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -19117,7 +19117,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -19185,7 +19185,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames
 
@@ -19236,7 +19236,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -19274,9 +19274,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -19364,7 +19364,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -19400,9 +19400,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -19533,9 +19533,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -19707,7 +19707,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -19799,9 +19799,9 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -19973,7 +19973,7 @@ class Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::SharedPolicyInstances::SharedPolicyInstance::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -20018,7 +20018,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable : public ydk::Entity
 
         class Interface; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable
 
@@ -20073,7 +20073,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_ : public yd
 
         class Node_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_> > node;
+        ydk::YList node;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_
 
@@ -20145,7 +20145,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames
 
@@ -20196,7 +20196,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -20234,9 +20234,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -20324,7 +20324,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -20360,9 +20360,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -20493,9 +20493,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -20667,7 +20667,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -20759,9 +20759,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -20933,7 +20933,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Inp
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -21001,7 +21001,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames
 
@@ -21052,7 +21052,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -21090,9 +21090,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -21180,7 +21180,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -21216,9 +21216,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -21349,9 +21349,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -21523,7 +21523,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -21615,9 +21615,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -21789,7 +21789,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Out
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Nodes_::Node_::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -21834,7 +21834,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces :
 
         class MemberInterface; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces
 
@@ -21885,7 +21885,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
 
         class SatelliteId; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds
 
@@ -21957,7 +21957,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -22008,7 +22008,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -22046,9 +22046,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -22136,7 +22136,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -22172,9 +22172,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -22305,9 +22305,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -22479,7 +22479,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -22571,9 +22571,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -22745,7 +22745,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -22813,7 +22813,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -22864,7 +22864,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -22902,9 +22902,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -22992,7 +22992,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -23028,9 +23028,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -23161,9 +23161,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -23335,7 +23335,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -23427,9 +23427,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -23601,7 +23601,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -23669,7 +23669,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
 
@@ -23720,7 +23720,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -23758,9 +23758,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -23848,7 +23848,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -23884,9 +23884,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -24017,9 +24017,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -24191,7 +24191,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -24283,9 +24283,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -24457,7 +24457,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -24525,7 +24525,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
 
@@ -24576,7 +24576,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -24614,9 +24614,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -24704,7 +24704,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -24740,9 +24740,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -24873,9 +24873,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -25047,7 +25047,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -25139,9 +25139,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -25313,7 +25313,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -25358,7 +25358,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds : pub
 
         class SatelliteId; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds
 
@@ -25430,7 +25430,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -25481,7 +25481,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -25519,9 +25519,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -25609,7 +25609,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -25645,9 +25645,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -25778,9 +25778,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -25952,7 +25952,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -26044,9 +26044,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -26218,7 +26218,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -26286,7 +26286,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -26337,7 +26337,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -26375,9 +26375,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -26465,7 +26465,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -26501,9 +26501,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -26634,9 +26634,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -26808,7 +26808,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -26900,9 +26900,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -27074,7 +27074,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::Sate
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -27142,7 +27142,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames
 
@@ -27193,7 +27193,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -27231,9 +27231,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -27321,7 +27321,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -27357,9 +27357,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -27490,9 +27490,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -27664,7 +27664,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -27756,9 +27756,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -27930,7 +27930,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePoli
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -27998,7 +27998,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
 
         class ServicePolicyInstance; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames
 
@@ -28049,7 +28049,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -28087,9 +28087,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -28177,7 +28177,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -28213,9 +28213,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -28346,9 +28346,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -28520,7 +28520,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -28612,9 +28612,9 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         class QueueAverageLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -28786,7 +28786,7 @@ class Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePol
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::Nodes::Node::PolicyMap::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -28904,7 +28904,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces : public ydk::Entity
 
         class VoQinterface; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface> > vo_qinterface;
+        ydk::YList vo_qinterface;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces
 
@@ -28979,7 +28979,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
 
         class LocationvoQ; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ> > locationvo_q;
+        ydk::YList locationvo_q;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs
 
@@ -29030,7 +29030,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats
 
@@ -29068,9 +29068,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats
 
@@ -29158,7 +29158,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy
 
@@ -29194,9 +29194,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_
 
@@ -29327,9 +29327,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -29501,7 +29501,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -29593,9 +29593,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::QueueStatsArray
 
@@ -29767,7 +29767,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::LocationvoQs::LocationvoQ::VoQStats::ClassStats::WredStatsArray
 
@@ -29816,7 +29816,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats
 
@@ -29854,9 +29854,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats
 
@@ -29944,7 +29944,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy
 
@@ -29980,9 +29980,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_
 
@@ -30113,9 +30113,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -30287,7 +30287,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -30379,9 +30379,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::QueueStatsArray
 
@@ -30553,7 +30553,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::OutputVoQ::VoQStats::ClassStats::WredStatsArray
 
@@ -30598,7 +30598,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
 
         class VoQMemberInterface; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface> > vo_q_member_interface;
+        ydk::YList vo_q_member_interface;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces
 
@@ -30672,7 +30672,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats
 
@@ -30710,9 +30710,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats
 
@@ -30800,7 +30800,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy
 
@@ -30836,9 +30836,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_
 
@@ -30969,9 +30969,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -31143,7 +31143,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -31235,9 +31235,9 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         class QueueAverageLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::QueueStatsArray
 
@@ -31409,7 +31409,7 @@ class Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMember
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::QosGlobal::VoQ::VoQStatistics::VoQinterfaces::VoQinterface::VoQMemberInterfaces::VoQMemberInterface::VoQoutput::VoQStats::ClassStats::WredStatsArray
 
@@ -31455,7 +31455,7 @@ class Qos::InterfaceTable : public ydk::Entity
 
         class Interface; //type: Qos::InterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Qos::InterfaceTable
 
@@ -31511,7 +31511,7 @@ class Qos::InterfaceTable::Interface::Nodes : public ydk::Entity
 
         class Node; //type: Qos::InterfaceTable::Interface::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Qos::InterfaceTable::Interface::Nodes
 
@@ -31583,7 +31583,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames : p
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames
 
@@ -31634,7 +31634,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -31672,9 +31672,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -31762,7 +31762,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -31798,9 +31798,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -31931,9 +31931,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -32105,7 +32105,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -32197,9 +32197,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -32371,7 +32371,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::Se
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -32439,7 +32439,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames : 
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames
 
@@ -32490,7 +32490,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -32528,9 +32528,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -32618,7 +32618,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -32654,9 +32654,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -32787,9 +32787,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -32961,7 +32961,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -33053,9 +33053,9 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -33227,7 +33227,7 @@ class Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::S
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Nodes::Node::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -33272,7 +33272,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces : public ydk::Entity
 
         class MemberInterface; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces
 
@@ -33323,7 +33323,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
 
         class SatelliteId; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds
 
@@ -33395,7 +33395,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -33446,7 +33446,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -33484,9 +33484,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -33574,7 +33574,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -33610,9 +33610,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -33743,9 +33743,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -33917,7 +33917,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -34009,9 +34009,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -34183,7 +34183,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -34251,7 +34251,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -34302,7 +34302,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -34340,9 +34340,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -34430,7 +34430,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -34466,9 +34466,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -34599,9 +34599,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -34773,7 +34773,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -34865,9 +34865,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -35039,7 +35039,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Satelli
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -35107,7 +35107,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames
 
@@ -35158,7 +35158,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -35196,9 +35196,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -35286,7 +35286,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -35322,9 +35322,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -35455,9 +35455,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -35629,7 +35629,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -35721,9 +35721,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -35895,7 +35895,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -35963,7 +35963,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames
 
@@ -36014,7 +36014,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -36052,9 +36052,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -36142,7 +36142,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -36178,9 +36178,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -36311,9 +36311,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -36485,7 +36485,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -36577,9 +36577,9 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -36751,7 +36751,7 @@ class Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output:
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -36796,7 +36796,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds : public ydk::Entity
 
         class SatelliteId; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId> > satellite_id;
+        ydk::YList satellite_id;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds
 
@@ -36868,7 +36868,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames
 
@@ -36919,7 +36919,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -36957,9 +36957,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -37047,7 +37047,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -37083,9 +37083,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -37216,9 +37216,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -37390,7 +37390,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -37482,9 +37482,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -37656,7 +37656,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServiceP
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -37724,7 +37724,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames
 
@@ -37775,7 +37775,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -37813,9 +37813,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -37903,7 +37903,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -37939,9 +37939,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -38072,9 +38072,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -38246,7 +38246,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -38338,9 +38338,9 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -38512,7 +38512,7 @@ class Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::Service
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -38580,7 +38580,7 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames : public ydk::En
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames
 
@@ -38631,7 +38631,7 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -38669,9 +38669,9 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -38759,7 +38759,7 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -38795,9 +38795,9 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -38928,9 +38928,9 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -39102,7 +39102,7 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -39194,9 +39194,9 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -39368,7 +39368,7 @@ class Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyIn
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -39436,7 +39436,7 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames : public ydk::E
 
         class ServicePolicyInstance; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance> > service_policy_instance;
+        ydk::YList service_policy_instance;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames
 
@@ -39487,7 +39487,7 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         ydk::YLeaf satid; //type: uint32
         class ClassStats; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics
 
@@ -39525,9 +39525,9 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy> child_policy;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats
 
@@ -39615,7 +39615,7 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         ydk::YLeaf satid; //type: uint32
         class ClassStats_; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_> > class_stats;
+        ydk::YList class_stats;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy
 
@@ -39651,9 +39651,9 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::GeneralStats> general_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::IphcStats> iphc_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::CacStats> cac_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray> > queue_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::PoliceStatsArray> > police_stats_array;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray> > wred_stats_array;
+        ydk::YList queue_stats_array;
+        ydk::YList police_stats_array;
+        ydk::YList wred_stats_array;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_
 
@@ -39784,9 +39784,9 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::QueueStatsArray
 
@@ -39958,7 +39958,7 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::ChildPolicy::ClassStats_::WredStatsArray
 
@@ -40050,9 +40050,9 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         class QueueAverageLength; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength
         class QueueMaxLength; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueInstanceLength> > queue_instance_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueAverageLength> > queue_average_length;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray::QueueMaxLength> > queue_max_length;
+        ydk::YList queue_instance_length;
+        ydk::YList queue_average_length;
+        ydk::YList queue_max_length;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::QueueStatsArray
 
@@ -40224,7 +40224,7 @@ class Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyI
         ydk::YLeaf red_ecn_marked_bytes; //type: uint64
         class RedLabel; //type: Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_qos_ma_oper::Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray::RedLabel> > red_label;
+        ydk::YList red_label;
         
 }; // Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServicePolicyInstance::Statistics::ClassStats::WredStatsArray
 
@@ -40296,24 +40296,6 @@ class PolicyParamUnit : public ydk::Enum
 
 };
 
-class CacState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf admit;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf ubrl;
-
-};
-
-class PolicyState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf suspended;
-
-};
-
 class QosCapsOperationEnum : public ydk::Enum
 {
     public:
@@ -40325,12 +40307,30 @@ class QosCapsOperationEnum : public ydk::Enum
 
 };
 
+class CacState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf admit;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf ubrl;
+
+};
+
 class QosMaSatCapsTypeEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
         static const ydk::Enum::YLeaf unknown;
+
+};
+
+class PolicyState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf suspended;
 
 };
 

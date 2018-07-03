@@ -10,6 +10,14 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_lmp_datatypes {
 
+class OlmSwitchingCap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lsc;
+        static const ydk::Enum::YLeaf fsc;
+
+};
+
 class OlmAddr : public ydk::Enum
 {
     public:
@@ -17,14 +25,6 @@ class OlmAddr : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf unnumbered;
         static const ydk::Enum::YLeaf nsap;
-
-};
-
-class OlmSwitchingCap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lsc;
-        static const ydk::Enum::YLeaf fsc;
 
 };
 

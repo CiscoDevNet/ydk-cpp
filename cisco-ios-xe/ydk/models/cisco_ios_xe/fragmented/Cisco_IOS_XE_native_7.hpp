@@ -285,21 +285,21 @@ class Native::Ip : public ydk::Entity
         class Tftp; //type: Native::Ip::Tftp
         class AccessList; //type: Native::Ip::AccessList
         class Device; //type: Native::Ip::Device
-        class Radius; //type: Native::Ip::Radius
-        class Tacacs; //type: Native::Ip::Tacacs
-        class CommunityList; //type: Native::Ip::CommunityList
-        class ExtcommunityList; //type: Native::Ip::ExtcommunityList
-        class Http; //type: Native::Ip::Http
         class Icmp; //type: Native::Ip::Icmp
         class Igmp; //type: Native::Ip::Igmp
+        class Rsvp; //type: Native::Ip::Rsvp
+        class CommunityList; //type: Native::Ip::CommunityList
+        class ExtcommunityList; //type: Native::Ip::ExtcommunityList
+        class Radius; //type: Native::Ip::Radius
+        class Tacacs; //type: Native::Ip::Tacacs
+        class Http; //type: Native::Ip::Http
+        class Nbar; //type: Native::Ip::Nbar
         class Msdp; //type: Native::Ip::Msdp
         class McrConf; //type: Native::Ip::McrConf
         class MulticastRouting; //type: Native::Ip::MulticastRouting
         class Mroute; //type: Native::Ip::Mroute
-        class Nat; //type: Native::Ip::Nat
-        class Nbar; //type: Native::Ip::Nbar
-        class Rsvp; //type: Native::Ip::Rsvp
         class Sla; //type: Native::Ip::Sla
+        class Nat; //type: Native::Ip::Nat
         class Wccp; //type: Native::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Admission> admission;
@@ -308,7 +308,7 @@ class Native::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Finger> finger; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Rcmd> rcmd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::BgpCommunity> bgp_community;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf> > vrf;
+        ydk::YList vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AsPath> as_path;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Local> local;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Cef> cef; // presence node
@@ -337,21 +337,21 @@ class Native::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Tftp> tftp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList> access_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Device> device;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Radius> radius;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Tacacs> tacacs;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::CommunityList> community_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExtcommunityList> extcommunity_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Http> http;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Icmp> icmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp> igmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Rsvp> rsvp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::CommunityList> community_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExtcommunityList> extcommunity_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Radius> radius;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Tacacs> tacacs;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Http> http;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nbar> nbar;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Msdp> msdp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::McrConf> mcr_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::MulticastRouting> multicast_routing; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Mroute> mroute;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat> nat;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nbar> nbar;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Sla> sla;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat> nat;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Wccp> wccp;
         
 }; // Native::Ip
@@ -547,7 +547,7 @@ class Native::Ip::Arp::Inspection : public ydk::Entity
         class Validate; //type: Native::Ip::Arp::Inspection::Validate
         class LogBuffer; //type: Native::Ip::Arp::Inspection::LogBuffer
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Arp::Inspection::Filter> > filter;
+        ydk::YList filter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Arp::Inspection::Validate> validate;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Arp::Inspection::LogBuffer> log_buffer;
         
@@ -574,7 +574,7 @@ class Native::Ip::Arp::Inspection::Filter : public ydk::Entity
         ydk::YLeaf arpacl; //type: string
         class Vlan; //type: Native::Ip::Arp::Inspection::Filter::Vlan
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Arp::Inspection::Filter::Vlan> > vlan;
+        ydk::YList vlan;
         
 }; // Native::Ip::Arp::Inspection::Filter
 
@@ -868,7 +868,7 @@ class Native::Ip::Vrf : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Import> import;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Maximum> maximum; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Mdt> mdt; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::RouteTarget> > route_target;
+        ydk::YList route_target;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Vrf::Vpn> vpn;
         
 }; // Native::Ip::Vrf
@@ -1152,7 +1152,7 @@ class Native::Ip::AsPath : public ydk::Entity
 
         class AccessList; //type: Native::Ip::AsPath::AccessList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AsPath::AccessList> > access_list;
+        ydk::YList access_list;
         
 }; // Native::Ip::AsPath
 
@@ -1245,7 +1245,7 @@ class Native::Ip::Local : public ydk::Entity
 
         class Pool; //type: Native::Ip::Local::Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Local::Pool> > pool;
+        ydk::YList pool;
         
 }; // Native::Ip::Local
 
@@ -1267,7 +1267,7 @@ class Native::Ip::Local::Pool : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of enumeration, string
+        ydk::YLeaf id; //type: one of string, enumeration
         ydk::YLeaf start; //type: string
         ydk::YLeaf last; //type: string
         ydk::YLeaf group; //type: string
@@ -2212,11 +2212,11 @@ class Native::Ip::Dhcp : public ydk::Entity
         class Snooping; //type: Native::Ip::Dhcp::Snooping
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Bootp> bootp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Class> > class_;
+        ydk::YList class_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Conflict> conflict;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::ExcludedAddress> > excluded_address;
+        ydk::YList excluded_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Relay> relay;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool> > pool;
+        ydk::YList pool;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::SnoopingConf> snooping_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Snooping> snooping;
         
@@ -2490,8 +2490,8 @@ class Native::Ip::Dhcp::Pool : public ydk::Entity
         class HardwareAddress; //type: Native::Ip::Dhcp::Pool::HardwareAddress
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Option> option;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Class> > class_;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Lease> > lease;
+        ydk::YList class_;
+        ydk::YList lease;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Network> network;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Host> host;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::HardwareAddress> hardware_address;
@@ -2517,7 +2517,7 @@ class Native::Ip::Dhcp::Pool::Option : public ydk::Entity
 
         class OptionRange; //type: Native::Ip::Dhcp::Pool::Option::OptionRange
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Option::OptionRange> > option_range;
+        ydk::YList option_range;
         
 }; // Native::Ip::Dhcp::Pool::Option
 
@@ -2540,7 +2540,7 @@ class Native::Ip::Dhcp::Pool::Option::OptionRange : public ydk::Entity
 
         ydk::YLeaf option_range; //type: uint8
         ydk::YLeaf ascii; //type: string
-        ydk::YLeafList ip; //type: list of  one of string, union
+        ydk::YLeafList ip; //type: list of  one of union, string
         class Hex; //type: Native::Ip::Dhcp::Pool::Option::OptionRange::Hex
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Dhcp::Pool::Option::OptionRange::Hex> hex;
@@ -3334,8 +3334,8 @@ class Native::Ip::Host : public ydk::Entity
         class HostList; //type: Native::Ip::Host::HostList
         class Vrf; //type: Native::Ip::Host::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Host::HostList> > host_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Host::Vrf> > vrf;
+        ydk::YList host_list;
+        ydk::YList vrf;
         
 }; // Native::Ip::Host
 
@@ -3383,7 +3383,7 @@ class Native::Ip::Host::Vrf : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class HostName; //type: Native::Ip::Host::Vrf::HostName
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Host::Vrf::HostName> > host_name;
+        ydk::YList host_name;
         
 }; // Native::Ip::Host::Vrf
 
@@ -3432,7 +3432,7 @@ class Native::Ip::Multicast : public ydk::Entity
         class Vrf; //type: Native::Ip::Multicast::Vrf
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Multicast::Multipath> multipath; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Multicast::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Ip::Multicast
 
@@ -3574,7 +3574,7 @@ class Native::Ip::Multicast::Vrf::Rpf::Select : public ydk::Entity
 
         class Vrf_; //type: Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Ip::Multicast::Vrf::Rpf::Select
 
@@ -3598,7 +3598,7 @@ class Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_ : public ydk::Entity
         ydk::YLeaf name; //type: string
         class GroupList; //type: Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_::GroupList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_::GroupList> > group_list;
+        ydk::YList group_list;
         
 }; // Native::Ip::Multicast::Vrf::Rpf::Select::Vrf_
 
@@ -3644,7 +3644,7 @@ class Native::Ip::NameServer : public ydk::Entity
         ydk::YLeafList no_vrf; //type: list of  string
         class Vrf; //type: Native::Ip::NameServer::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::NameServer::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Ip::NameServer
 
@@ -3702,13 +3702,13 @@ class Native::Ip::Pim : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::AcceptRegister> accept_register;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::Autorp> autorp; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::RpAddress> > rp_address;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::SptThreshold> > spt_threshold;
+        ydk::YList rp_address;
+        ydk::YList spt_threshold;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::SptThresholdContainer> spt_threshold_container;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::SendRpAnnounce> send_rp_announce;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::SendRpDiscovery> send_rp_discovery;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::Ssm> ssm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Ip::Pim
 
@@ -3872,8 +3872,8 @@ class Native::Ip::Pim::SendRpAnnounce : public ydk::Entity
         class InterfaceList; //type: Native::Ip::Pim::SendRpAnnounce::InterfaceList
         class PortChannel; //type: Native::Ip::Pim::SendRpAnnounce::PortChannel
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::SendRpAnnounce::InterfaceList> > interface_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Pim::SendRpAnnounce::PortChannel> > port_channel;
+        ydk::YList interface_list;
+        ydk::YList port_channel;
         
 }; // Native::Ip::Pim::SendRpAnnounce
 

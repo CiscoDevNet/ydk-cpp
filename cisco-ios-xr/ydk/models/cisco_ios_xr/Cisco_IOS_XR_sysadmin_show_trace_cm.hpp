@@ -35,7 +35,7 @@ class Cm : public ydk::Entity
         class Trace; //type: Cm::Trace
         class Lsp; //type: Cm::Lsp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_cm::Cm::Trace> > trace;
+        ydk::YList trace;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_cm::Cm::Lsp> lsp;
         
 }; // Cm
@@ -61,7 +61,7 @@ class Cm::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Cm::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_cm::Cm::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Cm::Trace
 
@@ -85,7 +85,7 @@ class Cm::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Cm::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_cm::Cm::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Cm::Trace::Location
 
@@ -109,7 +109,7 @@ class Cm::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Cm::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_cm::Cm::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Cm::Trace::Location::AllOptions
 
@@ -154,7 +154,7 @@ class Cm::Lsp : public ydk::Entity
 
         class LspdbLocations; //type: Cm::Lsp::LspdbLocations
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_cm::Cm::Lsp::LspdbLocations> > lspdb_locations;
+        ydk::YList lspdb_locations;
         
 }; // Cm::Lsp
 
@@ -179,7 +179,7 @@ class Cm::Lsp::LspdbLocations : public ydk::Entity
         ydk::YLeaf lspdb_location; //type: string
         class Lspdbi; //type: Cm::Lsp::LspdbLocations::Lspdbi
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_cm::Cm::Lsp::LspdbLocations::Lspdbi> > lspdbi;
+        ydk::YList lspdbi;
         
 }; // Cm::Lsp::LspdbLocations
 

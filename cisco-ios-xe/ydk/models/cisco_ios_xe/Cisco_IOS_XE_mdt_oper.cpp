@@ -14,10 +14,12 @@ namespace Cisco_IOS_XE_mdt_oper {
 MdtOperData::MdtOperData()
     :
     mdt_streams(std::make_shared<MdtOperData::MdtStreams>())
+    , mdt_subscriptions(this, {"subscription_id"})
+    , mdt_connections(this, {"address", "port", "source_vrf", "source_address"})
 {
     mdt_streams->parent = this;
 
-    yang_name = "mdt-oper-data"; yang_parent_name = "Cisco-IOS-XE-mdt-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mdt-oper-data"; yang_parent_name = "Cisco-IOS-XE-mdt-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MdtOperData::~MdtOperData()
@@ -26,12 +28,13 @@ MdtOperData::~MdtOperData()
 
 bool MdtOperData::has_data() const
 {
-    for (std::size_t index=0; index<mdt_subscriptions.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_subscriptions.len(); index++)
     {
         if(mdt_subscriptions[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mdt_connections.size(); index++)
+    for (std::size_t index=0; index<mdt_connections.len(); index++)
     {
         if(mdt_connections[index]->has_data())
             return true;
@@ -41,12 +44,12 @@ bool MdtOperData::has_data() const
 
 bool MdtOperData::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_subscriptions.size(); index++)
+    for (std::size_t index=0; index<mdt_subscriptions.len(); index++)
     {
         if(mdt_subscriptions[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mdt_connections.size(); index++)
+    for (std::size_t index=0; index<mdt_connections.len(); index++)
     {
         if(mdt_connections[index]->has_operation())
             return true;
@@ -86,7 +89,7 @@ std::shared_ptr<Entity> MdtOperData::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<MdtOperData::MdtSubscriptions>();
         c->parent = this;
-        mdt_subscriptions.push_back(c);
+        mdt_subscriptions.append(c);
         return c;
     }
 
@@ -94,7 +97,7 @@ std::shared_ptr<Entity> MdtOperData::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<MdtOperData::MdtConnections>();
         c->parent = this;
-        mdt_connections.push_back(c);
+        mdt_connections.append(c);
         return c;
     }
 
@@ -111,7 +114,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtOperData::get_children() const
     }
 
     count = 0;
-    for (auto const & c : mdt_subscriptions)
+    for (auto c : mdt_subscriptions.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -120,7 +123,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtOperData::get_children() const
     }
 
     count = 0;
-    for (auto const & c : mdt_connections)
+    for (auto c : mdt_connections.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -176,7 +179,7 @@ MdtOperData::MdtStreams::MdtStreams()
     stream{YType::str, "stream"}
 {
 
-    yang_name = "mdt-streams"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mdt-streams"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MdtOperData::MdtStreams::~MdtStreams()
@@ -185,6 +188,7 @@ MdtOperData::MdtStreams::~MdtStreams()
 
 bool MdtOperData::MdtStreams::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : stream.getYLeafs())
     {
         if(leaf.is_set)
@@ -273,12 +277,13 @@ MdtOperData::MdtSubscriptions::MdtSubscriptions()
     updates_in{YType::uint64, "updates-in"},
     updates_dampened{YType::uint64, "updates-dampened"},
     updates_dropped{YType::uint64, "updates-dropped"}
-    	,
+        ,
     base(std::make_shared<MdtOperData::MdtSubscriptions::Base>())
+    , mdt_receivers(this, {"address", "port"})
 {
     base->parent = this;
 
-    yang_name = "mdt-subscriptions"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mdt-subscriptions"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MdtOperData::MdtSubscriptions::~MdtSubscriptions()
@@ -287,7 +292,8 @@ MdtOperData::MdtSubscriptions::~MdtSubscriptions()
 
 bool MdtOperData::MdtSubscriptions::has_data() const
 {
-    for (std::size_t index=0; index<mdt_receivers.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_receivers.len(); index++)
     {
         if(mdt_receivers[index]->has_data())
             return true;
@@ -304,7 +310,7 @@ bool MdtOperData::MdtSubscriptions::has_data() const
 
 bool MdtOperData::MdtSubscriptions::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_receivers.size(); index++)
+    for (std::size_t index=0; index<mdt_receivers.len(); index++)
     {
         if(mdt_receivers[index]->has_operation())
             return true;
@@ -330,7 +336,8 @@ std::string MdtOperData::MdtSubscriptions::get_absolute_path() const
 std::string MdtOperData::MdtSubscriptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-subscriptions" <<"[subscription-id='" <<subscription_id <<"']";
+    path_buffer << "mdt-subscriptions";
+    ADD_KEY_TOKEN(subscription_id, "subscription-id");
     return path_buffer.str();
 }
 
@@ -365,7 +372,7 @@ std::shared_ptr<Entity> MdtOperData::MdtSubscriptions::get_child_by_name(const s
     {
         auto c = std::make_shared<MdtOperData::MdtSubscriptions::MdtReceivers>();
         c->parent = this;
-        mdt_receivers.push_back(c);
+        mdt_receivers.append(c);
         return c;
     }
 
@@ -382,7 +389,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtSubscriptions::ge
     }
 
     count = 0;
-    for (auto const & c : mdt_receivers)
+    for (auto c : mdt_receivers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -493,7 +500,7 @@ MdtOperData::MdtSubscriptions::Base::Base()
     transform_name{YType::str, "transform-name"}
 {
 
-    yang_name = "base"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtOperData::MdtSubscriptions::Base::~Base()
@@ -502,6 +509,7 @@ MdtOperData::MdtSubscriptions::Base::~Base()
 
 bool MdtOperData::MdtSubscriptions::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return stream.is_set
 	|| encoding.is_set
 	|| source_vrf.is_set
@@ -705,7 +713,7 @@ MdtOperData::MdtSubscriptions::MdtReceivers::MdtReceivers()
     security_profile{YType::str, "security-profile"}
 {
 
-    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-receivers"; yang_parent_name = "mdt-subscriptions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtOperData::MdtSubscriptions::MdtReceivers::~MdtReceivers()
@@ -714,6 +722,7 @@ MdtOperData::MdtSubscriptions::MdtReceivers::~MdtReceivers()
 
 bool MdtOperData::MdtSubscriptions::MdtReceivers::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| port.is_set
 	|| protocol.is_set
@@ -736,7 +745,9 @@ bool MdtOperData::MdtSubscriptions::MdtReceivers::has_operation() const
 std::string MdtOperData::MdtSubscriptions::MdtReceivers::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-receivers" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "mdt-receivers";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -852,9 +863,11 @@ MdtOperData::MdtConnections::MdtConnections()
     peer_id{YType::str, "peer-id"},
     state{YType::enumeration, "state"},
     security_profile{YType::str, "security-profile"}
+        ,
+    mdt_sub_con_stats(this, {"sub_id"})
 {
 
-    yang_name = "mdt-connections"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mdt-connections"; yang_parent_name = "mdt-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MdtOperData::MdtConnections::~MdtConnections()
@@ -863,7 +876,8 @@ MdtOperData::MdtConnections::~MdtConnections()
 
 bool MdtOperData::MdtConnections::has_data() const
 {
-    for (std::size_t index=0; index<mdt_sub_con_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mdt_sub_con_stats.len(); index++)
     {
         if(mdt_sub_con_stats[index]->has_data())
             return true;
@@ -880,7 +894,7 @@ bool MdtOperData::MdtConnections::has_data() const
 
 bool MdtOperData::MdtConnections::has_operation() const
 {
-    for (std::size_t index=0; index<mdt_sub_con_stats.size(); index++)
+    for (std::size_t index=0; index<mdt_sub_con_stats.len(); index++)
     {
         if(mdt_sub_con_stats[index]->has_operation())
             return true;
@@ -906,7 +920,11 @@ std::string MdtOperData::MdtConnections::get_absolute_path() const
 std::string MdtOperData::MdtConnections::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-connections" <<"[address='" <<address <<"']" <<"[port='" <<port <<"']" <<"[source-vrf='" <<source_vrf <<"']" <<"[source-address='" <<source_address <<"']";
+    path_buffer << "mdt-connections";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(port, "port");
+    ADD_KEY_TOKEN(source_vrf, "source-vrf");
+    ADD_KEY_TOKEN(source_address, "source-address");
     return path_buffer.str();
 }
 
@@ -933,7 +951,7 @@ std::shared_ptr<Entity> MdtOperData::MdtConnections::get_child_by_name(const std
     {
         auto c = std::make_shared<MdtOperData::MdtConnections::MdtSubConStats>();
         c->parent = this;
-        mdt_sub_con_stats.push_back(c);
+        mdt_sub_con_stats.append(c);
         return c;
     }
 
@@ -945,7 +963,7 @@ std::map<std::string, std::shared_ptr<Entity>> MdtOperData::MdtConnections::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mdt_sub_con_stats)
+    for (auto c : mdt_sub_con_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1058,7 +1076,7 @@ MdtOperData::MdtConnections::MdtSubConStats::MdtSubConStats()
     updates_dropped{YType::uint64, "updates-dropped"}
 {
 
-    yang_name = "mdt-sub-con-stats"; yang_parent_name = "mdt-connections"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-sub-con-stats"; yang_parent_name = "mdt-connections"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MdtOperData::MdtConnections::MdtSubConStats::~MdtSubConStats()
@@ -1067,6 +1085,7 @@ MdtOperData::MdtConnections::MdtSubConStats::~MdtSubConStats()
 
 bool MdtOperData::MdtConnections::MdtSubConStats::has_data() const
 {
+    if (is_presence_container) return true;
     return sub_id.is_set
 	|| updates_sent.is_set
 	|| updates_dropped.is_set;
@@ -1083,7 +1102,8 @@ bool MdtOperData::MdtConnections::MdtSubConStats::has_operation() const
 std::string MdtOperData::MdtConnections::MdtSubConStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mdt-sub-con-stats" <<"[sub-id='" <<sub_id <<"']";
+    path_buffer << "mdt-sub-con-stats";
+    ADD_KEY_TOKEN(sub_id, "sub-id");
     return path_buffer.str();
 }
 
@@ -1156,23 +1176,23 @@ bool MdtOperData::MdtConnections::MdtSubConStats::has_leaf_or_child_of_name(cons
     return false;
 }
 
-const Enum::YLeaf MdtSubType::sub_type_dynamic {1, "sub-type-dynamic"};
-const Enum::YLeaf MdtSubType::sub_type_static {2, "sub-type-static"};
-
 const Enum::YLeaf MdtSubState::sub_state_valid {0, "sub-state-valid"};
 const Enum::YLeaf MdtSubState::sub_state_suspended {1, "sub-state-suspended"};
 const Enum::YLeaf MdtSubState::sub_state_terminated {2, "sub-state-terminated"};
 const Enum::YLeaf MdtSubState::sub_state_invalid {3, "sub-state-invalid"};
 
-const Enum::YLeaf MdtReceiverState::rcvr_state_invalid {1, "rcvr-state-invalid"};
-const Enum::YLeaf MdtReceiverState::rcvr_state_disconnected {2, "rcvr-state-disconnected"};
-const Enum::YLeaf MdtReceiverState::rcvr_state_connecting {3, "rcvr-state-connecting"};
-const Enum::YLeaf MdtReceiverState::rcvr_state_connected {4, "rcvr-state-connected"};
-
 const Enum::YLeaf MdtConState::con_state_active {0, "con-state-active"};
 const Enum::YLeaf MdtConState::con_state_connecting {1, "con-state-connecting"};
 const Enum::YLeaf MdtConState::con_state_pending {2, "con-state-pending"};
 const Enum::YLeaf MdtConState::con_state_disconnecting {3, "con-state-disconnecting"};
+
+const Enum::YLeaf MdtSubType::sub_type_dynamic {1, "sub-type-dynamic"};
+const Enum::YLeaf MdtSubType::sub_type_static {2, "sub-type-static"};
+
+const Enum::YLeaf MdtReceiverState::rcvr_state_invalid {1, "rcvr-state-invalid"};
+const Enum::YLeaf MdtReceiverState::rcvr_state_disconnected {2, "rcvr-state-disconnected"};
+const Enum::YLeaf MdtReceiverState::rcvr_state_connecting {3, "rcvr-state-connecting"};
+const Enum::YLeaf MdtReceiverState::rcvr_state_connected {4, "rcvr-state-connected"};
 
 
 }

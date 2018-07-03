@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_infra_rmf_oper {
 Redundancy::Redundancy()
     :
     nodes(std::make_shared<Redundancy::Nodes>())
-	,summary(std::make_shared<Redundancy::Summary>())
+    , summary(std::make_shared<Redundancy::Summary>())
 {
     nodes->parent = this;
     summary->parent = this;
 
-    yang_name = "redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-rmf-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "redundancy"; yang_parent_name = "Cisco-IOS-XR-infra-rmf-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Redundancy::~Redundancy()
@@ -28,6 +28,7 @@ Redundancy::~Redundancy()
 
 bool Redundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (summary !=  nullptr && summary->has_data());
 }
@@ -136,9 +137,11 @@ bool Redundancy::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Redundancy::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Redundancy::Nodes::~Nodes()
@@ -147,7 +150,8 @@ Redundancy::Nodes::~Nodes()
 
 bool Redundancy::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Redundancy::Nodes::has_data() const
 
 bool Redundancy::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Redundancy::Nodes::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Redundancy::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -239,12 +243,12 @@ Redundancy::Nodes::Node::Node()
     active_reboot_reason{YType::str, "active-reboot-reason"},
     standby_reboot_reason{YType::str, "standby-reboot-reason"},
     err_log{YType::str, "err-log"}
-    	,
+        ,
     redundancy(std::make_shared<Redundancy::Nodes::Node::Redundancy_>())
 {
     redundancy->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Redundancy::Nodes::Node::~Node()
@@ -253,6 +257,7 @@ Redundancy::Nodes::Node::~Node()
 
 bool Redundancy::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| log.is_set
 	|| active_reboot_reason.is_set
@@ -282,7 +287,8 @@ std::string Redundancy::Nodes::Node::get_absolute_path() const
 std::string Redundancy::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -397,9 +403,11 @@ Redundancy::Nodes::Node::Redundancy_::Redundancy_()
     standby{YType::str, "standby"},
     ha_state{YType::str, "ha-state"},
     nsr_state{YType::str, "nsr-state"}
+        ,
+    groupinfo(this, {})
 {
 
-    yang_name = "redundancy"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redundancy"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Redundancy::Nodes::Node::Redundancy_::~Redundancy_()
@@ -408,7 +416,8 @@ Redundancy::Nodes::Node::Redundancy_::~Redundancy_()
 
 bool Redundancy::Nodes::Node::Redundancy_::has_data() const
 {
-    for (std::size_t index=0; index<groupinfo.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<groupinfo.len(); index++)
     {
         if(groupinfo[index]->has_data())
             return true;
@@ -421,7 +430,7 @@ bool Redundancy::Nodes::Node::Redundancy_::has_data() const
 
 bool Redundancy::Nodes::Node::Redundancy_::has_operation() const
 {
-    for (std::size_t index=0; index<groupinfo.size(); index++)
+    for (std::size_t index=0; index<groupinfo.len(); index++)
     {
         if(groupinfo[index]->has_operation())
             return true;
@@ -459,7 +468,7 @@ std::shared_ptr<Entity> Redundancy::Nodes::Node::Redundancy_::get_child_by_name(
     {
         auto c = std::make_shared<Redundancy::Nodes::Node::Redundancy_::Groupinfo>();
         c->parent = this;
-        groupinfo.push_back(c);
+        groupinfo.append(c);
         return c;
     }
 
@@ -471,7 +480,7 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Nodes::Node::Redundan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : groupinfo)
+    for (auto c : groupinfo.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -545,7 +554,7 @@ Redundancy::Nodes::Node::Redundancy_::Groupinfo::Groupinfo()
     nsr_state{YType::str, "nsr-state"}
 {
 
-    yang_name = "groupinfo"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "groupinfo"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Redundancy::Nodes::Node::Redundancy_::Groupinfo::~Groupinfo()
@@ -554,6 +563,7 @@ Redundancy::Nodes::Node::Redundancy_::Groupinfo::~Groupinfo()
 
 bool Redundancy::Nodes::Node::Redundancy_::Groupinfo::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| standby.is_set
 	|| ha_state.is_set
@@ -659,9 +669,11 @@ bool Redundancy::Nodes::Node::Redundancy_::Groupinfo::has_leaf_or_child_of_name(
 Redundancy::Summary::Summary()
     :
     err_log{YType::str, "err-log"}
+        ,
+    red_pair(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "redundancy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Redundancy::Summary::~Summary()
@@ -670,7 +682,8 @@ Redundancy::Summary::~Summary()
 
 bool Redundancy::Summary::has_data() const
 {
-    for (std::size_t index=0; index<red_pair.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_pair.len(); index++)
     {
         if(red_pair[index]->has_data())
             return true;
@@ -680,7 +693,7 @@ bool Redundancy::Summary::has_data() const
 
 bool Redundancy::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<red_pair.size(); index++)
+    for (std::size_t index=0; index<red_pair.len(); index++)
     {
         if(red_pair[index]->has_operation())
             return true;
@@ -719,7 +732,7 @@ std::shared_ptr<Entity> Redundancy::Summary::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Redundancy::Summary::RedPair>();
         c->parent = this;
-        red_pair.push_back(c);
+        red_pair.append(c);
         return c;
     }
 
@@ -731,7 +744,7 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_pair)
+    for (auto c : red_pair.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -773,9 +786,11 @@ Redundancy::Summary::RedPair::RedPair()
     standby{YType::str, "standby"},
     ha_state{YType::str, "ha-state"},
     nsr_state{YType::str, "nsr-state"}
+        ,
+    groupinfo(this, {})
 {
 
-    yang_name = "red-pair"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "red-pair"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Redundancy::Summary::RedPair::~RedPair()
@@ -784,7 +799,8 @@ Redundancy::Summary::RedPair::~RedPair()
 
 bool Redundancy::Summary::RedPair::has_data() const
 {
-    for (std::size_t index=0; index<groupinfo.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<groupinfo.len(); index++)
     {
         if(groupinfo[index]->has_data())
             return true;
@@ -797,7 +813,7 @@ bool Redundancy::Summary::RedPair::has_data() const
 
 bool Redundancy::Summary::RedPair::has_operation() const
 {
-    for (std::size_t index=0; index<groupinfo.size(); index++)
+    for (std::size_t index=0; index<groupinfo.len(); index++)
     {
         if(groupinfo[index]->has_operation())
             return true;
@@ -842,7 +858,7 @@ std::shared_ptr<Entity> Redundancy::Summary::RedPair::get_child_by_name(const st
     {
         auto c = std::make_shared<Redundancy::Summary::RedPair::Groupinfo>();
         c->parent = this;
-        groupinfo.push_back(c);
+        groupinfo.append(c);
         return c;
     }
 
@@ -854,7 +870,7 @@ std::map<std::string, std::shared_ptr<Entity>> Redundancy::Summary::RedPair::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : groupinfo)
+    for (auto c : groupinfo.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -928,7 +944,7 @@ Redundancy::Summary::RedPair::Groupinfo::Groupinfo()
     nsr_state{YType::str, "nsr-state"}
 {
 
-    yang_name = "groupinfo"; yang_parent_name = "red-pair"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groupinfo"; yang_parent_name = "red-pair"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Redundancy::Summary::RedPair::Groupinfo::~Groupinfo()
@@ -937,6 +953,7 @@ Redundancy::Summary::RedPair::Groupinfo::~Groupinfo()
 
 bool Redundancy::Summary::RedPair::Groupinfo::has_data() const
 {
+    if (is_presence_container) return true;
     return active.is_set
 	|| standby.is_set
 	|| ha_state.is_set

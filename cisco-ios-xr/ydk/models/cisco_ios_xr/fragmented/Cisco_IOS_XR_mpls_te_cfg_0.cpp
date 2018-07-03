@@ -16,15 +16,15 @@ namespace Cisco_IOS_XR_mpls_te_cfg {
 MplsTe::MplsTe()
     :
     enable_traffic_engineering{YType::empty, "enable-traffic-engineering"}
-    	,
+        ,
     diff_serv_traffic_engineering(std::make_shared<MplsTe::DiffServTrafficEngineering>())
-	,named_tunnels(std::make_shared<MplsTe::NamedTunnels>())
-	,gmpls_uni(std::make_shared<MplsTe::GmplsUni>())
-	,global_attributes(std::make_shared<MplsTe::GlobalAttributes>())
-	,transport_profile(std::make_shared<MplsTe::TransportProfile>())
-	,interfaces(std::make_shared<MplsTe::Interfaces>())
-	,gmpls_nni(std::make_shared<MplsTe::GmplsNni>())
-	,lcac(std::make_shared<MplsTe::Lcac>())
+    , named_tunnels(std::make_shared<MplsTe::NamedTunnels>())
+    , gmpls_uni(std::make_shared<MplsTe::GmplsUni>())
+    , global_attributes(std::make_shared<MplsTe::GlobalAttributes>())
+    , transport_profile(std::make_shared<MplsTe::TransportProfile>())
+    , interfaces(std::make_shared<MplsTe::Interfaces>())
+    , gmpls_nni(std::make_shared<MplsTe::GmplsNni>())
+    , lcac(std::make_shared<MplsTe::Lcac>())
 {
     diff_serv_traffic_engineering->parent = this;
     named_tunnels->parent = this;
@@ -35,7 +35,7 @@ MplsTe::MplsTe()
     gmpls_nni->parent = this;
     lcac->parent = this;
 
-    yang_name = "mpls-te"; yang_parent_name = "Cisco-IOS-XR-mpls-te-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-te"; yang_parent_name = "Cisco-IOS-XR-mpls-te-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsTe::~MplsTe()
@@ -44,6 +44,7 @@ MplsTe::~MplsTe()
 
 bool MplsTe::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_traffic_engineering.is_set
 	|| (diff_serv_traffic_engineering !=  nullptr && diff_serv_traffic_engineering->has_data())
 	|| (named_tunnels !=  nullptr && named_tunnels->has_data())
@@ -264,12 +265,12 @@ MplsTe::DiffServTrafficEngineering::DiffServTrafficEngineering()
     :
     bandwidth_constraint_model{YType::enumeration, "bandwidth-constraint-model"},
     mode_ietf{YType::enumeration, "mode-ietf"}
-    	,
+        ,
     classes(std::make_shared<MplsTe::DiffServTrafficEngineering::Classes>())
 {
     classes->parent = this;
 
-    yang_name = "diff-serv-traffic-engineering"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diff-serv-traffic-engineering"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::DiffServTrafficEngineering::~DiffServTrafficEngineering()
@@ -278,6 +279,7 @@ MplsTe::DiffServTrafficEngineering::~DiffServTrafficEngineering()
 
 bool MplsTe::DiffServTrafficEngineering::has_data() const
 {
+    if (is_presence_container) return true;
     return bandwidth_constraint_model.is_set
 	|| mode_ietf.is_set
 	|| (classes !=  nullptr && classes->has_data());
@@ -378,9 +380,11 @@ bool MplsTe::DiffServTrafficEngineering::has_leaf_or_child_of_name(const std::st
 }
 
 MplsTe::DiffServTrafficEngineering::Classes::Classes()
+    :
+    class_(this, {"class_number"})
 {
 
-    yang_name = "classes"; yang_parent_name = "diff-serv-traffic-engineering"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "classes"; yang_parent_name = "diff-serv-traffic-engineering"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::DiffServTrafficEngineering::Classes::~Classes()
@@ -389,7 +393,8 @@ MplsTe::DiffServTrafficEngineering::Classes::~Classes()
 
 bool MplsTe::DiffServTrafficEngineering::Classes::has_data() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_data())
             return true;
@@ -399,7 +404,7 @@ bool MplsTe::DiffServTrafficEngineering::Classes::has_data() const
 
 bool MplsTe::DiffServTrafficEngineering::Classes::has_operation() const
 {
-    for (std::size_t index=0; index<class_.size(); index++)
+    for (std::size_t index=0; index<class_.len(); index++)
     {
         if(class_[index]->has_operation())
             return true;
@@ -436,7 +441,7 @@ std::shared_ptr<Entity> MplsTe::DiffServTrafficEngineering::Classes::get_child_b
     {
         auto c = std::make_shared<MplsTe::DiffServTrafficEngineering::Classes::Class>();
         c->parent = this;
-        class_.push_back(c);
+        class_.append(c);
         return c;
     }
 
@@ -448,7 +453,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::DiffServTrafficEngineerin
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_)
+    for (auto c : class_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -482,7 +487,7 @@ MplsTe::DiffServTrafficEngineering::Classes::Class::Class()
     unused{YType::boolean, "unused"}
 {
 
-    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "class"; yang_parent_name = "classes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::DiffServTrafficEngineering::Classes::Class::~Class()
@@ -491,6 +496,7 @@ MplsTe::DiffServTrafficEngineering::Classes::Class::~Class()
 
 bool MplsTe::DiffServTrafficEngineering::Classes::Class::has_data() const
 {
+    if (is_presence_container) return true;
     return class_number.is_set
 	|| class_type.is_set
 	|| class_priority.is_set
@@ -516,7 +522,8 @@ std::string MplsTe::DiffServTrafficEngineering::Classes::Class::get_absolute_pat
 std::string MplsTe::DiffServTrafficEngineering::Classes::Class::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class" <<"[class-number='" <<class_number <<"']";
+    path_buffer << "class";
+    ADD_KEY_TOKEN(class_number, "class-number");
     return path_buffer.str();
 }
 
@@ -603,12 +610,12 @@ bool MplsTe::DiffServTrafficEngineering::Classes::Class::has_leaf_or_child_of_na
 MplsTe::NamedTunnels::NamedTunnels()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     tunnels(std::make_shared<MplsTe::NamedTunnels::Tunnels>())
 {
     tunnels->parent = this;
 
-    yang_name = "named-tunnels"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "named-tunnels"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::NamedTunnels::~NamedTunnels()
@@ -617,6 +624,7 @@ MplsTe::NamedTunnels::~NamedTunnels()
 
 bool MplsTe::NamedTunnels::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (tunnels !=  nullptr && tunnels->has_data());
 }
@@ -704,9 +712,11 @@ bool MplsTe::NamedTunnels::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnels()
+    :
+    tunnel(this, {"tunnel_name", "tunnel_type"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "named-tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnels"; yang_parent_name = "named-tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::NamedTunnels::Tunnels::~Tunnels()
@@ -715,7 +725,8 @@ MplsTe::NamedTunnels::Tunnels::~Tunnels()
 
 bool MplsTe::NamedTunnels::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -725,7 +736,7 @@ bool MplsTe::NamedTunnels::Tunnels::has_data() const
 
 bool MplsTe::NamedTunnels::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -762,7 +773,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::get_child_by_name(const s
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
@@ -774,7 +785,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -805,13 +816,13 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::Tunnel()
     tunnel_name{YType::str, "tunnel-name"},
     tunnel_type{YType::enumeration, "tunnel-type"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     tunnel_attributes(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes>())
-	,tunnel_id(nullptr) // presence node
+    , tunnel_id(nullptr) // presence node
 {
     tunnel_attributes->parent = this;
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::~Tunnel()
@@ -820,6 +831,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::~Tunnel()
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_name.is_set
 	|| tunnel_type.is_set
 	|| enable.is_set
@@ -847,7 +859,9 @@ std::string MplsTe::NamedTunnels::Tunnels::Tunnel::get_absolute_path() const
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[tunnel-name='" <<tunnel_name <<"']" <<"[tunnel-type='" <<tunnel_type <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(tunnel_name, "tunnel-name");
+    ADD_KEY_TOKEN(tunnel_type, "tunnel-type");
     return path_buffer.str();
 }
 
@@ -957,16 +971,17 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelAttributes()
     path_selection_metric{YType::enumeration, "path-selection-metric"},
     soft_preemption{YType::empty, "soft-preemption"},
     load_share{YType::uint32, "load-share"}
-    	,
+        ,
     path_setups(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups>())
-	,tunnel_path_selection(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection>())
-	,auto_bandwidth(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth>())
-	,priority(nullptr) // presence node
-	,logging(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging>())
-	,bandwidth(nullptr) // presence node
-	,autoroute(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute>())
-	,new_style_affinity_affinity_types(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes>())
-	,fast_reroute(nullptr) // presence node
+    , tunnel_path_selection(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection>())
+    , auto_bandwidth(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth>())
+    , priority(nullptr) // presence node
+    , affinity_mask(nullptr) // presence node
+    , logging(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging>())
+    , bandwidth(nullptr) // presence node
+    , autoroute(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute>())
+    , new_style_affinity_affinity_types(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes>())
+    , fast_reroute(nullptr) // presence node
 {
     path_setups->parent = this;
     tunnel_path_selection->parent = this;
@@ -975,7 +990,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelAttributes()
     autoroute->parent = this;
     new_style_affinity_affinity_types->parent = this;
 
-    yang_name = "tunnel-attributes"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-attributes"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::~TunnelAttributes()
@@ -984,6 +999,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::~TunnelAttributes()
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return shutdown.is_set
 	|| forward_class.is_set
 	|| destination.is_set
@@ -995,6 +1011,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_data() const
 	|| (tunnel_path_selection !=  nullptr && tunnel_path_selection->has_data())
 	|| (auto_bandwidth !=  nullptr && auto_bandwidth->has_data())
 	|| (priority !=  nullptr && priority->has_data())
+	|| (affinity_mask !=  nullptr && affinity_mask->has_data())
 	|| (logging !=  nullptr && logging->has_data())
 	|| (bandwidth !=  nullptr && bandwidth->has_data())
 	|| (autoroute !=  nullptr && autoroute->has_data())
@@ -1016,6 +1033,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_operation() co
 	|| (tunnel_path_selection !=  nullptr && tunnel_path_selection->has_operation())
 	|| (auto_bandwidth !=  nullptr && auto_bandwidth->has_operation())
 	|| (priority !=  nullptr && priority->has_operation())
+	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
 	|| (bandwidth !=  nullptr && bandwidth->has_operation())
 	|| (autoroute !=  nullptr && autoroute->has_operation())
@@ -1082,6 +1100,15 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
             priority = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority>();
         }
         return priority;
+    }
+
+    if(child_yang_name == "affinity-mask")
+    {
+        if(affinity_mask == nullptr)
+        {
+            affinity_mask = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask>();
+        }
+        return affinity_mask;
     }
 
     if(child_yang_name == "logging")
@@ -1154,6 +1181,11 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     if(priority != nullptr)
     {
         children["priority"] = priority;
+    }
+
+    if(affinity_mask != nullptr)
+    {
+        children["affinity-mask"] = affinity_mask;
     }
 
     if(logging != nullptr)
@@ -1264,15 +1296,17 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::set_filter(const s
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "path-setups" || name == "tunnel-path-selection" || name == "auto-bandwidth" || name == "priority" || name == "logging" || name == "bandwidth" || name == "autoroute" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "shutdown" || name == "forward-class" || name == "destination" || name == "record-route" || name == "path-selection-metric" || name == "soft-preemption" || name == "load-share")
+    if(name == "path-setups" || name == "tunnel-path-selection" || name == "auto-bandwidth" || name == "priority" || name == "affinity-mask" || name == "logging" || name == "bandwidth" || name == "autoroute" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "shutdown" || name == "forward-class" || name == "destination" || name == "record-route" || name == "path-selection-metric" || name == "soft-preemption" || name == "load-share")
         return true;
     return false;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetups()
+    :
+    path_setup(this, {"path_setup_name"})
 {
 
-    yang_name = "path-setups"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-setups"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::~PathSetups()
@@ -1281,7 +1315,8 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::~PathSetups
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::has_data() const
 {
-    for (std::size_t index=0; index<path_setup.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_setup.len(); index++)
     {
         if(path_setup[index]->has_data())
             return true;
@@ -1291,7 +1326,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::has_da
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::has_operation() const
 {
-    for (std::size_t index=0; index<path_setup.size(); index++)
+    for (std::size_t index=0; index<path_setup.len(); index++)
     {
         if(path_setup[index]->has_operation())
             return true;
@@ -1321,7 +1356,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup>();
         c->parent = this;
-        path_setup.push_back(c);
+        path_setup.append(c);
         return c;
     }
 
@@ -1333,7 +1368,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path_setup)
+    for (auto c : path_setup.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1362,13 +1397,13 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::has_le
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathSetup()
     :
     path_setup_name{YType::str, "path-setup-name"},
-    preference{YType::int32, "preference"},
+    preference{YType::uint32, "preference"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     path_computation(nullptr) // presence node
 {
 
-    yang_name = "path-setup"; yang_parent_name = "path-setups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-setup"; yang_parent_name = "path-setups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::~PathSetup()
@@ -1377,6 +1412,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::has_data() const
 {
+    if (is_presence_container) return true;
     return path_setup_name.is_set
 	|| preference.is_set
 	|| enable.is_set
@@ -1395,7 +1431,8 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSe
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path-setup" <<"[path-setup-name='" <<path_setup_name <<"']";
+    path_buffer << "path-setup";
+    ADD_KEY_TOKEN(path_setup_name, "path-setup-name");
     return path_buffer.str();
 }
 
@@ -1489,7 +1526,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::
     path_computation_server{YType::str, "path-computation-server"}
 {
 
-    yang_name = "path-computation"; yang_parent_name = "path-setup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-computation"; yang_parent_name = "path-setup"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation::~PathComputation()
@@ -1498,6 +1535,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathComputation::has_data() const
 {
+    if (is_presence_container) return true;
     return path_computation_method.is_set
 	|| explicit_path_name.is_set
 	|| path_computation_server.is_set;
@@ -1592,11 +1630,11 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Tu
     tiebreaker{YType::enumeration, "tiebreaker"},
     path_selection_hop_limit{YType::uint32, "path-selection-hop-limit"},
     path_selection_cost_limit{YType::uint32, "path-selection-cost-limit"}
-    	,
+        ,
     invalidation(nullptr) // presence node
 {
 
-    yang_name = "tunnel-path-selection"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-path-selection"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::~TunnelPathSelection()
@@ -1605,6 +1643,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::~T
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::has_data() const
 {
+    if (is_presence_container) return true;
     return tiebreaker.is_set
 	|| path_selection_hop_limit.is_set
 	|| path_selection_cost_limit.is_set
@@ -1716,7 +1755,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::In
     path_invalidation_action{YType::enumeration, "path-invalidation-action"}
 {
 
-    yang_name = "invalidation"; yang_parent_name = "tunnel-path-selection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "invalidation"; yang_parent_name = "tunnel-path-selection"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation::~Invalidation()
@@ -1725,6 +1764,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::In
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::TunnelPathSelection::Invalidation::has_data() const
 {
+    if (is_presence_container) return true;
     return path_invalidation_timeout.is_set
 	|| path_invalidation_action.is_set;
 }
@@ -1808,14 +1848,14 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AutoBand
     application_frequency{YType::uint32, "application-frequency"},
     overflow_enable{YType::boolean, "overflow-enable"},
     collection_only{YType::empty, "collection-only"}
-    	,
+        ,
     underflow(nullptr) // presence node
-	,overflow(nullptr) // presence node
-	,bandwidth_limits(nullptr) // presence node
-	,adjustment_threshold(nullptr) // presence node
+    , overflow(nullptr) // presence node
+    , bandwidth_limits(nullptr) // presence node
+    , adjustment_threshold(nullptr) // presence node
 {
 
-    yang_name = "auto-bandwidth"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-bandwidth"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::~AutoBandwidth()
@@ -1824,6 +1864,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::~AutoBan
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return underflow_enable.is_set
 	|| enabled.is_set
 	|| application_frequency.is_set
@@ -2010,7 +2051,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflo
     underflow_threshold_limit{YType::uint32, "underflow-threshold-limit"}
 {
 
-    yang_name = "underflow"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "underflow"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow::~Underflow()
@@ -2019,6 +2060,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflo
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Underflow::has_data() const
 {
+    if (is_presence_container) return true;
     return underflow_threshold_percent.is_set
 	|| underflow_threshold_value.is_set
 	|| underflow_threshold_limit.is_set;
@@ -2115,7 +2157,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow
     overflow_threshold_limit{YType::uint32, "overflow-threshold-limit"}
 {
 
-    yang_name = "overflow"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "overflow"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow::~Overflow()
@@ -2124,6 +2166,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Overflow::has_data() const
 {
+    if (is_presence_container) return true;
     return overflow_threshold_percent.is_set
 	|| overflow_threshold_value.is_set
 	|| overflow_threshold_limit.is_set;
@@ -2219,7 +2262,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Bandwidt
     bandwidth_max_limit{YType::uint32, "bandwidth-max-limit"}
 {
 
-    yang_name = "bandwidth-limits"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-limits"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits::~BandwidthLimits()
@@ -2228,6 +2271,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Bandwidt
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::BandwidthLimits::has_data() const
 {
+    if (is_presence_container) return true;
     return bandwidth_min_limit.is_set
 	|| bandwidth_max_limit.is_set;
 }
@@ -2310,7 +2354,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Adjustme
     adjustment_threshold_value{YType::uint32, "adjustment-threshold-value"}
 {
 
-    yang_name = "adjustment-threshold"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjustment-threshold"; yang_parent_name = "auto-bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold::~AdjustmentThreshold()
@@ -2319,6 +2363,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::Adjustme
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AutoBandwidth::AdjustmentThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return adjustment_threshold_percent.is_set
 	|| adjustment_threshold_value.is_set;
 }
@@ -2401,7 +2446,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::Priority()
     hold_priority{YType::uint32, "hold-priority"}
 {
 
-    yang_name = "priority"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::~Priority()
@@ -2410,6 +2455,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::~Priority()
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_priority.is_set
 	|| hold_priority.is_set;
 }
@@ -2486,6 +2532,98 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Priority::has_leaf
     return false;
 }
 
+MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::AffinityMask()
+    :
+    affinity{YType::str, "affinity"},
+    mask{YType::str, "mask"}
+{
+
+    yang_name = "affinity-mask"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::~AffinityMask()
+{
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::has_data() const
+{
+    if (is_presence_container) return true;
+    return affinity.is_set
+	|| mask.is_set;
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(affinity.yfilter)
+	|| ydk::is_set(mask.yfilter);
+}
+
+std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-mask";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity.is_set || is_set(affinity.yfilter)) leaf_name_data.push_back(affinity.get_name_leafdata());
+    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "affinity")
+    {
+        affinity = value;
+        affinity.value_namespace = name_space;
+        affinity.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mask")
+    {
+        mask = value;
+        mask.value_namespace = name_space;
+        mask.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "affinity")
+    {
+        affinity.yfilter = yfilter;
+    }
+    if(value_path == "mask")
+    {
+        mask.yfilter = yfilter;
+    }
+}
+
+bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::AffinityMask::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity" || name == "mask")
+        return true;
+    return false;
+}
+
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::Logging()
     :
     lsp_switch_over_change_message{YType::empty, "lsp-switch-over-change-message"},
@@ -2501,7 +2639,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::Logging()
     pcalc_failure_message{YType::empty, "pcalc-failure-message"}
 {
 
-    yang_name = "logging"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::~Logging()
@@ -2510,6 +2648,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::~Logging()
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_switch_over_change_message.is_set
 	|| all.is_set
 	|| record_route_messsage.is_set
@@ -2710,7 +2849,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::Bandwidth()
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::~Bandwidth()
@@ -2719,6 +2858,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::~Bandwidth()
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return dste_type.is_set
 	|| class_or_pool_type.is_set
 	|| bandwidth.is_set;
@@ -2811,12 +2951,12 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Bandwidth::has_lea
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Autoroute()
     :
     autoroute_announce(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce>())
-	,destinations(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations>())
+    , destinations(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations>())
 {
     autoroute_announce->parent = this;
     destinations->parent = this;
 
-    yang_name = "autoroute"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoroute"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::~Autoroute()
@@ -2825,6 +2965,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::~Autoroute()
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::has_data() const
 {
+    if (is_presence_container) return true;
     return (autoroute_announce !=  nullptr && autoroute_announce->has_data())
 	|| (destinations !=  nullptr && destinations->has_data());
 }
@@ -2911,14 +3052,14 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnn
     :
     enable{YType::empty, "enable"},
     include_ipv6{YType::empty, "include-ipv6"}
-    	,
+        ,
     exclude_traffic(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic>())
-	,metric(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric>())
+    , metric(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric>())
 {
     exclude_traffic->parent = this;
     metric->parent = this;
 
-    yang_name = "autoroute-announce"; yang_parent_name = "autoroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoroute-announce"; yang_parent_name = "autoroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::~AutorouteAnnounce()
@@ -2927,6 +3068,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnn
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| include_ipv6.is_set
 	|| (exclude_traffic !=  nullptr && exclude_traffic->has_data())
@@ -3040,7 +3182,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnn
     segment_routing{YType::empty, "segment-routing"}
 {
 
-    yang_name = "exclude-traffic"; yang_parent_name = "autoroute-announce"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exclude-traffic"; yang_parent_name = "autoroute-announce"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::~ExcludeTraffic()
@@ -3049,6 +3191,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnn
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::has_data() const
 {
+    if (is_presence_container) return true;
     return segment_routing.is_set;
 }
 
@@ -3120,7 +3263,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnn
     constant_metric{YType::uint32, "constant-metric"}
 {
 
-    yang_name = "metric"; yang_parent_name = "autoroute-announce"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "autoroute-announce"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric::~Metric()
@@ -3129,6 +3272,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnn
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::AutorouteAnnounce::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_type.is_set
 	|| absolute_metric.is_set
 	|| relative_metric.is_set
@@ -3232,9 +3376,11 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Autorou
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::Destinations()
+    :
+    destination(this, {"destination_address"})
 {
 
-    yang_name = "destinations"; yang_parent_name = "autoroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destinations"; yang_parent_name = "autoroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::~Destinations()
@@ -3243,7 +3389,8 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::has_data() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_data())
             return true;
@@ -3253,7 +3400,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destina
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::has_operation() const
 {
-    for (std::size_t index=0; index<destination.size(); index++)
+    for (std::size_t index=0; index<destination.len(); index++)
     {
         if(destination[index]->has_operation())
             return true;
@@ -3283,7 +3430,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::Destination>();
         c->parent = this;
-        destination.push_back(c);
+        destination.append(c);
         return c;
     }
 
@@ -3295,7 +3442,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : destination)
+    for (auto c : destination.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3326,7 +3473,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations
     destination_address{YType::str, "destination-address"}
 {
 
-    yang_name = "destination"; yang_parent_name = "destinations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "destinations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::Destination::~Destination()
@@ -3335,6 +3482,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_address.is_set;
 }
 
@@ -3347,7 +3495,8 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destina
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destinations::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination" <<"[destination-address='" <<destination_address <<"']";
+    path_buffer << "destination";
+    ADD_KEY_TOKEN(destination_address, "destination-address");
     return path_buffer.str();
 }
 
@@ -3399,9 +3548,21 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::Autoroute::Destina
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
+    :
+    new_style_affinity_affinity_type(this, {"affinity_type"})
+    , new_style_affinity_affinity_type_affinity1(this, {"affinity_type", "affinity1"})
+    , new_style_affinity_affinity_type_affinity1_affinity2(this, {"affinity_type", "affinity1", "affinity2"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3(this, {"affinity_type", "affinity1", "affinity2", "affinity3"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9", "affinity10"})
 {
 
-    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
@@ -3410,57 +3571,58 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::has_data() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_data())
             return true;
@@ -3470,57 +3632,57 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::has_operation() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_operation())
             return true;
@@ -3550,7 +3712,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(c);
+        new_style_affinity_affinity_type.append(c);
         return c;
     }
 
@@ -3558,7 +3720,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(c);
+        new_style_affinity_affinity_type_affinity1.append(c);
         return c;
     }
 
@@ -3566,7 +3728,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2.append(c);
         return c;
     }
 
@@ -3574,7 +3736,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.append(c);
         return c;
     }
 
@@ -3582,7 +3744,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.append(c);
         return c;
     }
 
@@ -3590,7 +3752,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.append(c);
         return c;
     }
 
@@ -3598,7 +3760,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.append(c);
         return c;
     }
 
@@ -3606,7 +3768,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.append(c);
         return c;
     }
 
@@ -3614,7 +3776,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.append(c);
         return c;
     }
 
@@ -3622,7 +3784,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.append(c);
         return c;
     }
 
@@ -3630,7 +3792,7 @@ std::shared_ptr<Entity> MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes:
     {
         auto c = std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.append(c);
         return c;
     }
 
@@ -3642,7 +3804,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type)
+    for (auto c : new_style_affinity_affinity_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3651,7 +3813,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1)
+    for (auto c : new_style_affinity_affinity_type_affinity1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3660,7 +3822,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3669,7 +3831,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3678,7 +3840,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3687,7 +3849,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3696,7 +3858,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3705,7 +3867,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3714,7 +3876,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3723,7 +3885,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3732,7 +3894,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::NamedTunnels::Tunnels::Tu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3763,7 +3925,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity_type{YType::enumeration, "affinity-type"}
 {
 
-    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
@@ -3772,6 +3934,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set;
 }
 
@@ -3784,7 +3947,8 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
     return path_buffer.str();
 }
 
@@ -3841,7 +4005,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity1{YType::str, "affinity1"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
@@ -3850,6 +4014,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set;
 }
@@ -3864,7 +4029,9 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
     return path_buffer.str();
 }
 
@@ -3933,7 +4100,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity2{YType::str, "affinity2"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
@@ -3942,6 +4109,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set;
@@ -3958,7 +4126,10 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
     return path_buffer.str();
 }
 
@@ -4039,7 +4210,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity3{YType::str, "affinity3"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
@@ -4048,6 +4219,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -4066,7 +4238,11 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
     return path_buffer.str();
 }
 
@@ -4159,7 +4335,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity4{YType::str, "affinity4"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
@@ -4168,6 +4344,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -4188,7 +4365,12 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
     return path_buffer.str();
 }
 
@@ -4293,7 +4475,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity5{YType::str, "affinity5"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
@@ -4302,6 +4484,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -4324,7 +4507,13 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
     return path_buffer.str();
 }
 
@@ -4441,7 +4630,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity6{YType::str, "affinity6"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
@@ -4450,6 +4639,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -4474,7 +4664,14 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
     return path_buffer.str();
 }
 
@@ -4603,7 +4800,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity7{YType::str, "affinity7"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
@@ -4612,6 +4809,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -4638,7 +4836,15 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
     return path_buffer.str();
 }
 
@@ -4779,7 +4985,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity8{YType::str, "affinity8"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
@@ -4788,6 +4994,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -4816,7 +5023,16 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
     return path_buffer.str();
 }
 
@@ -4969,7 +5185,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity9{YType::str, "affinity9"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
@@ -4978,6 +5194,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -5008,7 +5225,17 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
+    ADD_KEY_TOKEN(affinity9, "affinity9");
     return path_buffer.str();
 }
 
@@ -5173,7 +5400,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
     affinity10{YType::str, "affinity10"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
@@ -5182,6 +5409,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinit
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -5214,7 +5442,18 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAf
 std::string MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
+    ADD_KEY_TOKEN(affinity9, "affinity9");
+    ADD_KEY_TOKEN(affinity10, "affinity10");
     return path_buffer.str();
 }
 
@@ -5381,7 +5620,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::FastRerout
     node_protection{YType::uint32, "node-protection"}
 {
 
-    yang_name = "fast-reroute"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::~FastReroute()
@@ -5390,6 +5629,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::~FastRerou
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return bandwidth_protection.is_set
 	|| node_protection.is_set;
 }
@@ -5472,7 +5712,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::TunnelId()
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "tunnel-id"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-id"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::~TunnelId()
@@ -5481,6 +5721,7 @@ MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::~TunnelId()
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id_type.is_set
 	|| tunnel_id.is_set;
 }
@@ -5560,12 +5801,12 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelId::has_leaf_or_child_of_name(
 MplsTe::GmplsUni::GmplsUni()
     :
     timers(std::make_shared<MplsTe::GmplsUni::Timers>())
-	,controllers(std::make_shared<MplsTe::GmplsUni::Controllers>())
+    , controllers(std::make_shared<MplsTe::GmplsUni::Controllers>())
 {
     timers->parent = this;
     controllers->parent = this;
 
-    yang_name = "gmpls-uni"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gmpls-uni"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GmplsUni::~GmplsUni()
@@ -5574,6 +5815,7 @@ MplsTe::GmplsUni::~GmplsUni()
 
 bool MplsTe::GmplsUni::has_data() const
 {
+    if (is_presence_container) return true;
     return (timers !=  nullptr && timers->has_data())
 	|| (controllers !=  nullptr && controllers->has_data());
 }
@@ -5669,7 +5911,7 @@ MplsTe::GmplsUni::Timers::Timers()
 {
     path_option_timers->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timers"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GmplsUni::Timers::~Timers()
@@ -5678,6 +5920,7 @@ MplsTe::GmplsUni::Timers::~Timers()
 
 bool MplsTe::GmplsUni::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (path_option_timers !=  nullptr && path_option_timers->has_data());
 }
 
@@ -5757,7 +6000,7 @@ MplsTe::GmplsUni::Timers::PathOptionTimers::PathOptionTimers()
 {
     holddown->parent = this;
 
-    yang_name = "path-option-timers"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-option-timers"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GmplsUni::Timers::PathOptionTimers::~PathOptionTimers()
@@ -5766,6 +6009,7 @@ MplsTe::GmplsUni::Timers::PathOptionTimers::~PathOptionTimers()
 
 bool MplsTe::GmplsUni::Timers::PathOptionTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return (holddown !=  nullptr && holddown->has_data());
 }
 
@@ -5845,7 +6089,7 @@ MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::Holddown()
     maximum{YType::uint32, "maximum"}
 {
 
-    yang_name = "holddown"; yang_parent_name = "path-option-timers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "holddown"; yang_parent_name = "path-option-timers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::~Holddown()
@@ -5854,6 +6098,7 @@ MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::~Holddown()
 
 bool MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| maximum.is_set;
 }
@@ -5938,9 +6183,11 @@ bool MplsTe::GmplsUni::Timers::PathOptionTimers::Holddown::has_leaf_or_child_of_
 }
 
 MplsTe::GmplsUni::Controllers::Controllers()
+    :
+    controller(this, {"controller_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "gmpls-uni"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GmplsUni::Controllers::~Controllers()
@@ -5949,7 +6196,8 @@ MplsTe::GmplsUni::Controllers::~Controllers()
 
 bool MplsTe::GmplsUni::Controllers::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -5959,7 +6207,7 @@ bool MplsTe::GmplsUni::Controllers::has_data() const
 
 bool MplsTe::GmplsUni::Controllers::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -5996,7 +6244,7 @@ std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::get_child_by_name(const s
     {
         auto c = std::make_shared<MplsTe::GmplsUni::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -6008,7 +6256,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6038,16 +6286,16 @@ MplsTe::GmplsUni::Controllers::Controller::Controller()
     :
     controller_name{YType::str, "controller-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     announce(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::Announce>())
-	,controller_logging(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::ControllerLogging>())
-	,gmpls_unitunnel_head(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead>())
+    , controller_logging(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::ControllerLogging>())
+    , gmpls_unitunnel_head(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead>())
 {
     announce->parent = this;
     controller_logging->parent = this;
     gmpls_unitunnel_head->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::~Controller()
@@ -6056,6 +6304,7 @@ MplsTe::GmplsUni::Controllers::Controller::~Controller()
 
 bool MplsTe::GmplsUni::Controllers::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| enable.is_set
 	|| (announce !=  nullptr && announce->has_data())
@@ -6083,7 +6332,8 @@ std::string MplsTe::GmplsUni::Controllers::Controller::get_absolute_path() const
 std::string MplsTe::GmplsUni::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -6192,7 +6442,7 @@ MplsTe::GmplsUni::Controllers::Controller::Announce::Announce()
     srl_gs{YType::empty, "srl-gs"}
 {
 
-    yang_name = "announce"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "announce"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::Announce::~Announce()
@@ -6201,6 +6451,7 @@ MplsTe::GmplsUni::Controllers::Controller::Announce::~Announce()
 
 bool MplsTe::GmplsUni::Controllers::Controller::Announce::has_data() const
 {
+    if (is_presence_container) return true;
     return srl_gs.is_set;
 }
 
@@ -6269,7 +6520,7 @@ MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::ControllerLogging(
     discovered_srlg_change_logging{YType::empty, "discovered-srlg-change-logging"}
 {
 
-    yang_name = "controller-logging"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "controller-logging"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::~ControllerLogging()
@@ -6278,6 +6529,7 @@ MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::~ControllerLogging
 
 bool MplsTe::GmplsUni::Controllers::Controller::ControllerLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return discovered_srlg_change_logging.is_set;
 }
 
@@ -6348,17 +6600,17 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::GmplsUnitunnelHea
     destination{YType::str, "destination"},
     record_route{YType::empty, "record-route"},
     signalled_name{YType::str, "signalled-name"}
-    	,
+        ,
     path_options(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions>())
-	,recording(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording>())
-	,logging(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging>())
-	,priority(nullptr) // presence node
+    , recording(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording>())
+    , logging(std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging>())
+    , priority(nullptr) // presence node
 {
     path_options->parent = this;
     recording->parent = this;
     logging->parent = this;
 
-    yang_name = "gmpls-unitunnel-head"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gmpls-unitunnel-head"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::~GmplsUnitunnelHead()
@@ -6367,6 +6619,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::~GmplsUnitunnelHe
 
 bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set
 	|| enable.is_set
 	|| destination.is_set
@@ -6547,9 +6800,11 @@ bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::has_leaf_or_
 }
 
 MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOptions()
+    :
+    path_option(this, {"preference_level"})
 {
 
-    yang_name = "path-options"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-options"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::~PathOptions()
@@ -6558,7 +6813,8 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::~Pat
 
 bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::has_data() const
 {
-    for (std::size_t index=0; index<path_option.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_option.len(); index++)
     {
         if(path_option[index]->has_data())
             return true;
@@ -6568,7 +6824,7 @@ bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions:
 
 bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::has_operation() const
 {
-    for (std::size_t index=0; index<path_option.size(); index++)
+    for (std::size_t index=0; index<path_option.len(); index++)
     {
         if(path_option[index]->has_operation())
             return true;
@@ -6598,7 +6854,7 @@ std::shared_ptr<Entity> MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunne
     {
         auto c = std::make_shared<MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption>();
         c->parent = this;
-        path_option.push_back(c);
+        path_option.append(c);
         return c;
     }
 
@@ -6610,7 +6866,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GmplsUni::Controllers::Co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path_option)
+    for (auto c : path_option.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6650,7 +6906,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::Path
     dwdm_channel{YType::uint32, "dwdm-channel"}
 {
 
-    yang_name = "path-option"; yang_parent_name = "path-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-option"; yang_parent_name = "path-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::~PathOption()
@@ -6659,6 +6915,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::Path
 
 bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::has_data() const
 {
+    if (is_presence_container) return true;
     return preference_level.is_set
 	|| path_type.is_set
 	|| path_id.is_set
@@ -6689,7 +6946,8 @@ bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions:
 std::string MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::PathOptions::PathOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path-option" <<"[preference-level='" <<preference_level <<"']";
+    path_buffer << "path-option";
+    ADD_KEY_TOKEN(preference_level, "preference-level");
     return path_buffer.str();
 }
 
@@ -6844,7 +7102,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::Record
     srlg{YType::empty, "srlg"}
 {
 
-    yang_name = "recording"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recording"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::~Recording()
@@ -6853,6 +7111,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::~Recor
 
 bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Recording::has_data() const
 {
+    if (is_presence_container) return true;
     return srlg.is_set;
 }
 
@@ -6921,7 +7180,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::Logging(
     state_message{YType::empty, "state-message"}
 {
 
-    yang_name = "logging"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::~Logging()
@@ -6930,6 +7189,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::~Logging
 
 bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return state_message.is_set;
 }
 
@@ -6999,7 +7259,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::Priorit
     hold_priority{YType::uint32, "hold-priority"}
 {
 
-    yang_name = "priority"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "gmpls-unitunnel-head"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::~Priority()
@@ -7008,6 +7268,7 @@ MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::~Priori
 
 bool MplsTe::GmplsUni::Controllers::Controller::GmplsUnitunnelHead::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_priority.is_set
 	|| hold_priority.is_set;
 }
@@ -7112,22 +7373,22 @@ MplsTe::GlobalAttributes::GlobalAttributes()
     reoptimize_timer_frequency{YType::uint32, "reoptimize-timer-frequency"},
     log_mid{YType::empty, "log-mid"},
     log_preemption{YType::empty, "log-preemption"}
-    	,
+        ,
     auto_tunnel(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel>())
-	,hardware_out_of_resource(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource>())
-	,secondary_router_ids(std::make_shared<MplsTe::GlobalAttributes::SecondaryRouterIds>())
-	,srlg(std::make_shared<MplsTe::GlobalAttributes::Srlg>())
-	,queues(std::make_shared<MplsTe::GlobalAttributes::Queues>())
-	,mib(std::make_shared<MplsTe::GlobalAttributes::Mib>())
-	,attribute_set(std::make_shared<MplsTe::GlobalAttributes::AttributeSet>())
-	,bfd_over_lsp(std::make_shared<MplsTe::GlobalAttributes::BfdOverLsp>())
-	,bandwidth_accounting(std::make_shared<MplsTe::GlobalAttributes::BandwidthAccounting>())
-	,pce_attributes(std::make_shared<MplsTe::GlobalAttributes::PceAttributes>())
-	,lsp_out_of_resource(std::make_shared<MplsTe::GlobalAttributes::LspOutOfResource>())
-	,soft_preemption(std::make_shared<MplsTe::GlobalAttributes::SoftPreemption>())
-	,fast_reroute(std::make_shared<MplsTe::GlobalAttributes::FastReroute>())
-	,path_selection(std::make_shared<MplsTe::GlobalAttributes::PathSelection>())
-	,affinity_mappings(std::make_shared<MplsTe::GlobalAttributes::AffinityMappings>())
+    , hardware_out_of_resource(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource>())
+    , secondary_router_ids(std::make_shared<MplsTe::GlobalAttributes::SecondaryRouterIds>())
+    , srlg(std::make_shared<MplsTe::GlobalAttributes::Srlg>())
+    , queues(std::make_shared<MplsTe::GlobalAttributes::Queues>())
+    , mib(std::make_shared<MplsTe::GlobalAttributes::Mib>())
+    , attribute_set(std::make_shared<MplsTe::GlobalAttributes::AttributeSet>())
+    , bfd_over_lsp(std::make_shared<MplsTe::GlobalAttributes::BfdOverLsp>())
+    , bandwidth_accounting(std::make_shared<MplsTe::GlobalAttributes::BandwidthAccounting>())
+    , pce_attributes(std::make_shared<MplsTe::GlobalAttributes::PceAttributes>())
+    , lsp_out_of_resource(std::make_shared<MplsTe::GlobalAttributes::LspOutOfResource>())
+    , soft_preemption(std::make_shared<MplsTe::GlobalAttributes::SoftPreemption>())
+    , fast_reroute(std::make_shared<MplsTe::GlobalAttributes::FastReroute>())
+    , path_selection(std::make_shared<MplsTe::GlobalAttributes::PathSelection>())
+    , affinity_mappings(std::make_shared<MplsTe::GlobalAttributes::AffinityMappings>())
 {
     auto_tunnel->parent = this;
     hardware_out_of_resource->parent = this;
@@ -7145,7 +7406,7 @@ MplsTe::GlobalAttributes::GlobalAttributes()
     path_selection->parent = this;
     affinity_mappings->parent = this;
 
-    yang_name = "global-attributes"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-attributes"; yang_parent_name = "mpls-te"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::~GlobalAttributes()
@@ -7154,6 +7415,7 @@ MplsTe::GlobalAttributes::~GlobalAttributes()
 
 bool MplsTe::GlobalAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return log_nsr_status.is_set
 	|| log_issu_status.is_set
 	|| reoptimize_link_up.is_set
@@ -7792,10 +8054,10 @@ bool MplsTe::GlobalAttributes::has_leaf_or_child_of_name(const std::string & nam
 MplsTe::GlobalAttributes::AutoTunnel::AutoTunnel()
     :
     pcc(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Pcc>())
-	,p2p_auto_tunnel(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel>())
-	,backup(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup>())
-	,mesh(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh>())
-	,p2mp_auto_tunnel(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel>())
+    , p2p_auto_tunnel(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel>())
+    , backup(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup>())
+    , mesh(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh>())
+    , p2mp_auto_tunnel(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel>())
 {
     pcc->parent = this;
     p2p_auto_tunnel->parent = this;
@@ -7803,7 +8065,7 @@ MplsTe::GlobalAttributes::AutoTunnel::AutoTunnel()
     mesh->parent = this;
     p2mp_auto_tunnel->parent = this;
 
-    yang_name = "auto-tunnel"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auto-tunnel"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::~AutoTunnel()
@@ -7812,6 +8074,7 @@ MplsTe::GlobalAttributes::AutoTunnel::~AutoTunnel()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return (pcc !=  nullptr && pcc->has_data())
 	|| (p2p_auto_tunnel !=  nullptr && p2p_auto_tunnel->has_data())
 	|| (backup !=  nullptr && backup->has_data())
@@ -7867,7 +8130,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::get_child_by_name(
     {
         if(p2p_auto_tunnel == nullptr)
         {
-            p2p_auto_tunnel = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel>();
+            p2p_auto_tunnel = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel>();
         }
         return p2p_auto_tunnel;
     }
@@ -7894,7 +8157,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::get_child_by_name(
     {
         if(p2mp_auto_tunnel == nullptr)
         {
-            p2mp_auto_tunnel = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel>();
+            p2mp_auto_tunnel = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel>();
         }
         return p2mp_auto_tunnel;
     }
@@ -7954,7 +8217,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Pcc::Pcc()
     tunnel_range(nullptr) // presence node
 {
 
-    yang_name = "pcc"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pcc"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Pcc::~Pcc()
@@ -7963,6 +8226,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Pcc::~Pcc()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Pcc::has_data() const
 {
+    if (is_presence_container) return true;
     return (tunnel_range !=  nullptr && tunnel_range->has_data());
 }
 
@@ -8042,7 +8306,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::TunnelRange()
     max_tunnel_id{YType::uint32, "max-tunnel-id"}
 {
 
-    yang_name = "tunnel-range"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-range"; yang_parent_name = "pcc"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::~TunnelRange()
@@ -8051,6 +8315,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::~TunnelRange()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::has_data() const
 {
+    if (is_presence_container) return true;
     return min_tunnel_id.is_set
 	|| max_tunnel_id.is_set;
 }
@@ -8134,44 +8399,45 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Pcc::TunnelRange::has_leaf_or_child_o
     return false;
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::P2PAutoTunnel()
+MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::P2pAutoTunnel()
     :
     tunnel_range(nullptr) // presence node
 {
 
-    yang_name = "p2p-auto-tunnel"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "p2p-auto-tunnel"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::~P2PAutoTunnel()
+MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::~P2pAutoTunnel()
 {
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::has_data() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return (tunnel_range !=  nullptr && tunnel_range->has_data());
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::has_operation() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| (tunnel_range !=  nullptr && tunnel_range->has_operation());
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/auto-tunnel/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "p2p-auto-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8180,13 +8446,13 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTun
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel-range")
     {
         if(tunnel_range == nullptr)
         {
-            tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange>();
+            tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange>();
         }
         return tunnel_range;
     }
@@ -8194,7 +8460,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8206,62 +8472,63 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTun
     return children;
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel-range")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::TunnelRange()
+MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::TunnelRange()
     :
     min_tunnel_id{YType::uint32, "min-tunnel-id"},
     max_tunnel_id{YType::uint32, "max-tunnel-id"}
 {
 
-    yang_name = "tunnel-range"; yang_parent_name = "p2p-auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-range"; yang_parent_name = "p2p-auto-tunnel"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::~TunnelRange()
+MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::~TunnelRange()
 {
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::has_data() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::has_data() const
 {
+    if (is_presence_container) return true;
     return min_tunnel_id.is_set
 	|| max_tunnel_id.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::has_operation() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(min_tunnel_id.yfilter)
 	|| ydk::is_set(max_tunnel_id.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/auto-tunnel/p2p-auto-tunnel/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-range";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8272,19 +8539,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTun
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "min-tunnel-id")
     {
@@ -8300,7 +8567,7 @@ void MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::set_value
     }
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "min-tunnel-id")
     {
@@ -8312,7 +8579,7 @@ void MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::set_filte
     }
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2pAutoTunnel::TunnelRange::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "min-tunnel-id" || name == "max-tunnel-id")
         return true;
@@ -8322,13 +8589,13 @@ bool MplsTe::GlobalAttributes::AutoTunnel::P2PAutoTunnel::TunnelRange::has_leaf_
 MplsTe::GlobalAttributes::AutoTunnel::Backup::Backup()
     :
     affinity_ignore{YType::empty, "affinity-ignore"}
-    	,
+        ,
     timers(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers>())
-	,tunnel_range(nullptr) // presence node
+    , tunnel_range(nullptr) // presence node
 {
     timers->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "backup"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Backup::~Backup()
@@ -8337,6 +8604,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::~Backup()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_ignore.is_set
 	|| (timers !=  nullptr && timers->has_data())
 	|| (tunnel_range !=  nullptr && tunnel_range->has_data());
@@ -8445,7 +8713,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Timers()
 {
     removal->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timers"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::~Timers()
@@ -8454,6 +8722,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::~Timers()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (removal !=  nullptr && removal->has_data());
 }
 
@@ -8532,7 +8801,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::Removal()
     unused{YType::uint32, "unused"}
 {
 
-    yang_name = "removal"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "removal"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::~Removal()
@@ -8541,6 +8810,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::~Removal()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Backup::Timers::Removal::has_data() const
 {
+    if (is_presence_container) return true;
     return unused.is_set;
 }
 
@@ -8617,7 +8887,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::TunnelRange()
     max_tunnel_id{YType::uint32, "max-tunnel-id"}
 {
 
-    yang_name = "tunnel-range"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-range"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::~TunnelRange()
@@ -8626,6 +8896,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::~TunnelRange()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::has_data() const
 {
+    if (is_presence_container) return true;
     return min_tunnel_id.is_set
 	|| max_tunnel_id.is_set;
 }
@@ -8712,13 +8983,13 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Backup::TunnelRange::has_leaf_or_chil
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::Mesh()
     :
     mesh_groups(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups>())
-	,timers(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers>())
-	,tunnel_range(nullptr) // presence node
+    , timers(std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers>())
+    , tunnel_range(nullptr) // presence node
 {
     mesh_groups->parent = this;
     timers->parent = this;
 
-    yang_name = "mesh"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mesh"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::~Mesh()
@@ -8727,6 +8998,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::~Mesh()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::has_data() const
 {
+    if (is_presence_container) return true;
     return (mesh_groups !=  nullptr && mesh_groups->has_data())
 	|| (timers !=  nullptr && timers->has_data())
 	|| (tunnel_range !=  nullptr && tunnel_range->has_data());
@@ -8833,9 +9105,11 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::has_leaf_or_child_of_name(const
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroups()
+    :
+    mesh_group(this, {"mesh_group_id"})
 {
 
-    yang_name = "mesh-groups"; yang_parent_name = "mesh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mesh-groups"; yang_parent_name = "mesh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::~MeshGroups()
@@ -8844,7 +9118,8 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::~MeshGroups()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::has_data() const
 {
-    for (std::size_t index=0; index<mesh_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mesh_group.len(); index++)
     {
         if(mesh_group[index]->has_data())
             return true;
@@ -8854,7 +9129,7 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::has_data() const
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::has_operation() const
 {
-    for (std::size_t index=0; index<mesh_group.size(); index++)
+    for (std::size_t index=0; index<mesh_group.len(); index++)
     {
         if(mesh_group[index]->has_operation())
             return true;
@@ -8891,7 +9166,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup>();
         c->parent = this;
-        mesh_group.push_back(c);
+        mesh_group.append(c);
         return c;
     }
 
@@ -8903,7 +9178,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTun
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mesh_group)
+    for (auto c : mesh_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8939,7 +9214,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::MeshGroup()
     one_hop{YType::empty, "one-hop"}
 {
 
-    yang_name = "mesh-group"; yang_parent_name = "mesh-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mesh-group"; yang_parent_name = "mesh-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::~MeshGroup()
@@ -8948,6 +9223,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::~MeshGroup()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return mesh_group_id.is_set
 	|| destination_list.is_set
 	|| disable.is_set
@@ -8977,7 +9253,8 @@ std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::g
 std::string MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mesh-group" <<"[mesh-group-id='" <<mesh_group_id <<"']";
+    path_buffer << "mesh-group";
+    ADD_KEY_TOKEN(mesh_group_id, "mesh-group-id");
     return path_buffer.str();
 }
 
@@ -9089,7 +9366,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Timers()
 {
     removal->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "mesh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timers"; yang_parent_name = "mesh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::~Timers()
@@ -9098,6 +9375,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::~Timers()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (removal !=  nullptr && removal->has_data());
 }
 
@@ -9176,7 +9454,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::Removal()
     unused{YType::uint32, "unused"}
 {
 
-    yang_name = "removal"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "removal"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::~Removal()
@@ -9185,6 +9463,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::~Removal()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::Timers::Removal::has_data() const
 {
+    if (is_presence_container) return true;
     return unused.is_set;
 }
 
@@ -9261,7 +9540,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::TunnelRange()
     max_tunnel_id{YType::uint32, "max-tunnel-id"}
 {
 
-    yang_name = "tunnel-range"; yang_parent_name = "mesh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-range"; yang_parent_name = "mesh"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::~TunnelRange()
@@ -9270,6 +9549,7 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::~TunnelRange()
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::has_data() const
 {
+    if (is_presence_container) return true;
     return min_tunnel_id.is_set
 	|| max_tunnel_id.is_set;
 }
@@ -9353,44 +9633,45 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::TunnelRange::has_leaf_or_child_
     return false;
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::P2MpAutoTunnel()
+MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::P2mpAutoTunnel()
     :
     tunnel_range(nullptr) // presence node
 {
 
-    yang_name = "p2mp-auto-tunnel"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "p2mp-auto-tunnel"; yang_parent_name = "auto-tunnel"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::~P2MpAutoTunnel()
+MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::~P2mpAutoTunnel()
 {
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::has_data() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return (tunnel_range !=  nullptr && tunnel_range->has_data());
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::has_operation() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| (tunnel_range !=  nullptr && tunnel_range->has_operation());
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/auto-tunnel/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "p2mp-auto-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9399,13 +9680,13 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTun
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tunnel-range")
     {
         if(tunnel_range == nullptr)
         {
-            tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange>();
+            tunnel_range = std::make_shared<MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange>();
         }
         return tunnel_range;
     }
@@ -9413,7 +9694,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::ge
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9425,62 +9706,63 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTun
     return children;
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tunnel-range")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::TunnelRange()
+MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::TunnelRange()
     :
     min_tunnel_id{YType::uint32, "min-tunnel-id"},
     max_tunnel_id{YType::uint32, "max-tunnel-id"}
 {
 
-    yang_name = "tunnel-range"; yang_parent_name = "p2mp-auto-tunnel"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-range"; yang_parent_name = "p2mp-auto-tunnel"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::~TunnelRange()
+MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::~TunnelRange()
 {
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::has_data() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::has_data() const
 {
+    if (is_presence_container) return true;
     return min_tunnel_id.is_set
 	|| max_tunnel_id.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::has_operation() const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(min_tunnel_id.yfilter)
 	|| ydk::is_set(max_tunnel_id.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/auto-tunnel/p2mp-auto-tunnel/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-range";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9491,19 +9773,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTun
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "min-tunnel-id")
     {
@@ -9519,7 +9801,7 @@ void MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::set_valu
     }
 }
 
-void MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "min-tunnel-id")
     {
@@ -9531,7 +9813,7 @@ void MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::set_filt
     }
 }
 
-bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AutoTunnel::P2mpAutoTunnel::TunnelRange::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "min-tunnel-id" || name == "max-tunnel-id")
         return true;
@@ -9541,14 +9823,14 @@ bool MplsTe::GlobalAttributes::AutoTunnel::P2MpAutoTunnel::TunnelRange::has_leaf
 MplsTe::GlobalAttributes::HardwareOutOfResource::HardwareOutOfResource()
     :
     oor_red_state(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState>())
-	,oor_yellow_state(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState>())
-	,oor_green_state(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState>())
+    , oor_yellow_state(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState>())
+    , oor_green_state(std::make_shared<MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState>())
 {
     oor_red_state->parent = this;
     oor_yellow_state->parent = this;
     oor_green_state->parent = this;
 
-    yang_name = "hardware-out-of-resource"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hardware-out-of-resource"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::HardwareOutOfResource::~HardwareOutOfResource()
@@ -9557,6 +9839,7 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::~HardwareOutOfResource()
 
 bool MplsTe::GlobalAttributes::HardwareOutOfResource::has_data() const
 {
+    if (is_presence_container) return true;
     return (oor_red_state !=  nullptr && oor_red_state->has_data())
 	|| (oor_yellow_state !=  nullptr && oor_yellow_state->has_data())
 	|| (oor_green_state !=  nullptr && oor_green_state->has_data());
@@ -9666,12 +9949,12 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::OorRedState()
     :
     oor_node_protection_disable{YType::empty, "oor-node-protection-disable"},
     oor_available_bandwidth_percentage{YType::uint32, "oor-available-bandwidth-percentage"},
-    oor_accept_lsp_min_bandwidth{YType::int32, "oor-accept-lsp-min-bandwidth"},
+    oor_accept_lsp_min_bandwidth{YType::uint32, "oor-accept-lsp-min-bandwidth"},
     oor_accept_reopt_lsp{YType::empty, "oor-accept-reopt-lsp"},
-    oor_metric_te_penalty{YType::int32, "oor-metric-te-penalty"}
+    oor_metric_te_penalty{YType::uint32, "oor-metric-te-penalty"}
 {
 
-    yang_name = "oor-red-state"; yang_parent_name = "hardware-out-of-resource"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oor-red-state"; yang_parent_name = "hardware-out-of-resource"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::~OorRedState()
@@ -9680,6 +9963,7 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::~OorRedState()
 
 bool MplsTe::GlobalAttributes::HardwareOutOfResource::OorRedState::has_data() const
 {
+    if (is_presence_container) return true;
     return oor_node_protection_disable.is_set
 	|| oor_available_bandwidth_percentage.is_set
 	|| oor_accept_lsp_min_bandwidth.is_set
@@ -9806,12 +10090,12 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::OorYellowState(
     :
     oor_node_protection_disable{YType::empty, "oor-node-protection-disable"},
     oor_available_bandwidth_percentage{YType::uint32, "oor-available-bandwidth-percentage"},
-    oor_accept_lsp_min_bandwidth{YType::int32, "oor-accept-lsp-min-bandwidth"},
+    oor_accept_lsp_min_bandwidth{YType::uint32, "oor-accept-lsp-min-bandwidth"},
     oor_accept_reopt_lsp{YType::empty, "oor-accept-reopt-lsp"},
-    oor_metric_te_penalty{YType::int32, "oor-metric-te-penalty"}
+    oor_metric_te_penalty{YType::uint32, "oor-metric-te-penalty"}
 {
 
-    yang_name = "oor-yellow-state"; yang_parent_name = "hardware-out-of-resource"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oor-yellow-state"; yang_parent_name = "hardware-out-of-resource"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::~OorYellowState()
@@ -9820,6 +10104,7 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::~OorYellowState
 
 bool MplsTe::GlobalAttributes::HardwareOutOfResource::OorYellowState::has_data() const
 {
+    if (is_presence_container) return true;
     return oor_node_protection_disable.is_set
 	|| oor_available_bandwidth_percentage.is_set
 	|| oor_accept_lsp_min_bandwidth.is_set
@@ -9947,12 +10232,12 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::OorGreenState()
     oor_recovery_duration{YType::uint32, "oor-recovery-duration"},
     oor_node_protection_disable{YType::empty, "oor-node-protection-disable"},
     oor_available_bandwidth_percentage{YType::uint32, "oor-available-bandwidth-percentage"},
-    oor_accept_lsp_min_bandwidth{YType::int32, "oor-accept-lsp-min-bandwidth"},
+    oor_accept_lsp_min_bandwidth{YType::uint32, "oor-accept-lsp-min-bandwidth"},
     oor_accept_reopt_lsp{YType::empty, "oor-accept-reopt-lsp"},
-    oor_metric_te_penalty{YType::int32, "oor-metric-te-penalty"}
+    oor_metric_te_penalty{YType::uint32, "oor-metric-te-penalty"}
 {
 
-    yang_name = "oor-green-state"; yang_parent_name = "hardware-out-of-resource"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oor-green-state"; yang_parent_name = "hardware-out-of-resource"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::~OorGreenState()
@@ -9961,6 +10246,7 @@ MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::~OorGreenState()
 
 bool MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::has_data() const
 {
+    if (is_presence_container) return true;
     return oor_recovery_duration.is_set
 	|| oor_node_protection_disable.is_set
 	|| oor_available_bandwidth_percentage.is_set
@@ -10097,9 +10383,11 @@ bool MplsTe::GlobalAttributes::HardwareOutOfResource::OorGreenState::has_leaf_or
 }
 
 MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterIds()
+    :
+    secondary_router_id(this, {"secondary_router_id_value"})
 {
 
-    yang_name = "secondary-router-ids"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "secondary-router-ids"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::SecondaryRouterIds::~SecondaryRouterIds()
@@ -10108,7 +10396,8 @@ MplsTe::GlobalAttributes::SecondaryRouterIds::~SecondaryRouterIds()
 
 bool MplsTe::GlobalAttributes::SecondaryRouterIds::has_data() const
 {
-    for (std::size_t index=0; index<secondary_router_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary_router_id.len(); index++)
     {
         if(secondary_router_id[index]->has_data())
             return true;
@@ -10118,7 +10407,7 @@ bool MplsTe::GlobalAttributes::SecondaryRouterIds::has_data() const
 
 bool MplsTe::GlobalAttributes::SecondaryRouterIds::has_operation() const
 {
-    for (std::size_t index=0; index<secondary_router_id.size(); index++)
+    for (std::size_t index=0; index<secondary_router_id.len(); index++)
     {
         if(secondary_router_id[index]->has_operation())
             return true;
@@ -10155,7 +10444,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::SecondaryRouterIds::get_child_
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId>();
         c->parent = this;
-        secondary_router_id.push_back(c);
+        secondary_router_id.append(c);
         return c;
     }
 
@@ -10167,7 +10456,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Seconda
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : secondary_router_id)
+    for (auto c : secondary_router_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10198,7 +10487,7 @@ MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::SecondaryRouter
     secondary_router_id_value{YType::str, "secondary-router-id-value"}
 {
 
-    yang_name = "secondary-router-id"; yang_parent_name = "secondary-router-ids"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "secondary-router-id"; yang_parent_name = "secondary-router-ids"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::~SecondaryRouterId()
@@ -10207,6 +10496,7 @@ MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::~SecondaryRoute
 
 bool MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return secondary_router_id_value.is_set;
 }
 
@@ -10226,7 +10516,8 @@ std::string MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get
 std::string MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary-router-id" <<"[secondary-router-id-value='" <<secondary_router_id_value <<"']";
+    path_buffer << "secondary-router-id";
+    ADD_KEY_TOKEN(secondary_router_id_value, "secondary-router-id-value");
     return path_buffer.str();
 }
 
@@ -10279,14 +10570,14 @@ bool MplsTe::GlobalAttributes::SecondaryRouterIds::SecondaryRouterId::has_leaf_o
 
 MplsTe::GlobalAttributes::Srlg::Srlg()
     :
-    default_admin_weight{YType::int32, "default-admin-weight"},
+    default_admin_weight{YType::uint32, "default-admin-weight"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     names(std::make_shared<MplsTe::GlobalAttributes::Srlg::Names>())
 {
     names->parent = this;
 
-    yang_name = "srlg"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "srlg"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::Srlg::~Srlg()
@@ -10295,6 +10586,7 @@ MplsTe::GlobalAttributes::Srlg::~Srlg()
 
 bool MplsTe::GlobalAttributes::Srlg::has_data() const
 {
+    if (is_presence_container) return true;
     return default_admin_weight.is_set
 	|| enable.is_set
 	|| (names !=  nullptr && names->has_data());
@@ -10395,9 +10687,11 @@ bool MplsTe::GlobalAttributes::Srlg::has_leaf_or_child_of_name(const std::string
 }
 
 MplsTe::GlobalAttributes::Srlg::Names::Names()
+    :
+    name(this, {"srlg_name"})
 {
 
-    yang_name = "names"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "names"; yang_parent_name = "srlg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::Srlg::Names::~Names()
@@ -10406,7 +10700,8 @@ MplsTe::GlobalAttributes::Srlg::Names::~Names()
 
 bool MplsTe::GlobalAttributes::Srlg::Names::has_data() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_data())
             return true;
@@ -10416,7 +10711,7 @@ bool MplsTe::GlobalAttributes::Srlg::Names::has_data() const
 
 bool MplsTe::GlobalAttributes::Srlg::Names::has_operation() const
 {
-    for (std::size_t index=0; index<name.size(); index++)
+    for (std::size_t index=0; index<name.len(); index++)
     {
         if(name[index]->has_operation())
             return true;
@@ -10453,7 +10748,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::get_child_by_name
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::Srlg::Names::Name>();
         c->parent = this;
-        name.push_back(c);
+        name.append(c);
         return c;
     }
 
@@ -10465,7 +10760,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : name)
+    for (auto c : name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10494,13 +10789,13 @@ bool MplsTe::GlobalAttributes::Srlg::Names::has_leaf_or_child_of_name(const std:
 MplsTe::GlobalAttributes::Srlg::Names::Name::Name()
     :
     srlg_name{YType::str, "srlg-name"},
-    admin_weight{YType::int32, "admin-weight"}
-    	,
+    admin_weight{YType::uint32, "admin-weight"}
+        ,
     static_srlg_members(std::make_shared<MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers>())
 {
     static_srlg_members->parent = this;
 
-    yang_name = "name"; yang_parent_name = "names"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "name"; yang_parent_name = "names"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::Srlg::Names::Name::~Name()
@@ -10509,6 +10804,7 @@ MplsTe::GlobalAttributes::Srlg::Names::Name::~Name()
 
 bool MplsTe::GlobalAttributes::Srlg::Names::Name::has_data() const
 {
+    if (is_presence_container) return true;
     return srlg_name.is_set
 	|| admin_weight.is_set
 	|| (static_srlg_members !=  nullptr && static_srlg_members->has_data());
@@ -10532,7 +10828,8 @@ std::string MplsTe::GlobalAttributes::Srlg::Names::Name::get_absolute_path() con
 std::string MplsTe::GlobalAttributes::Srlg::Names::Name::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "name" <<"[srlg-name='" <<srlg_name <<"']";
+    path_buffer << "name";
+    ADD_KEY_TOKEN(srlg_name, "srlg-name");
     return path_buffer.str();
 }
 
@@ -10609,9 +10906,11 @@ bool MplsTe::GlobalAttributes::Srlg::Names::Name::has_leaf_or_child_of_name(cons
 }
 
 MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMembers()
+    :
+    static_srlg_member(this, {"from_address"})
 {
 
-    yang_name = "static-srlg-members"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-srlg-members"; yang_parent_name = "name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::~StaticSrlgMembers()
@@ -10620,7 +10919,8 @@ MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::~StaticSrlgMembe
 
 bool MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::has_data() const
 {
-    for (std::size_t index=0; index<static_srlg_member.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_srlg_member.len(); index++)
     {
         if(static_srlg_member[index]->has_data())
             return true;
@@ -10630,7 +10930,7 @@ bool MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::has_data() 
 
 bool MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::has_operation() const
 {
-    for (std::size_t index=0; index<static_srlg_member.size(); index++)
+    for (std::size_t index=0; index<static_srlg_member.len(); index++)
     {
         if(static_srlg_member[index]->has_operation())
             return true;
@@ -10660,7 +10960,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgM
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember>();
         c->parent = this;
-        static_srlg_member.push_back(c);
+        static_srlg_member.append(c);
         return c;
     }
 
@@ -10672,7 +10972,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Srlg::N
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_srlg_member)
+    for (auto c : static_srlg_member.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10704,7 +11004,7 @@ MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember
     to_address{YType::str, "to-address"}
 {
 
-    yang_name = "static-srlg-member"; yang_parent_name = "static-srlg-members"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-srlg-member"; yang_parent_name = "static-srlg-members"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::~StaticSrlgMember()
@@ -10713,6 +11013,7 @@ MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember
 
 bool MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::has_data() const
 {
+    if (is_presence_container) return true;
     return from_address.is_set
 	|| to_address.is_set;
 }
@@ -10727,7 +11028,8 @@ bool MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgM
 std::string MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgMember::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-srlg-member" <<"[from-address='" <<from_address <<"']";
+    path_buffer << "static-srlg-member";
+    ADD_KEY_TOKEN(from_address, "from-address");
     return path_buffer.str();
 }
 
@@ -10790,9 +11092,11 @@ bool MplsTe::GlobalAttributes::Srlg::Names::Name::StaticSrlgMembers::StaticSrlgM
 }
 
 MplsTe::GlobalAttributes::Queues::Queues()
+    :
+    queue(this, {"role"})
 {
 
-    yang_name = "queues"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "queues"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::Queues::~Queues()
@@ -10801,7 +11105,8 @@ MplsTe::GlobalAttributes::Queues::~Queues()
 
 bool MplsTe::GlobalAttributes::Queues::has_data() const
 {
-    for (std::size_t index=0; index<queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<queue.len(); index++)
     {
         if(queue[index]->has_data())
             return true;
@@ -10811,7 +11116,7 @@ bool MplsTe::GlobalAttributes::Queues::has_data() const
 
 bool MplsTe::GlobalAttributes::Queues::has_operation() const
 {
-    for (std::size_t index=0; index<queue.size(); index++)
+    for (std::size_t index=0; index<queue.len(); index++)
     {
         if(queue[index]->has_operation())
             return true;
@@ -10848,7 +11153,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::Queues::get_child_by_name(cons
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::Queues::Queue>();
         c->parent = this;
-        queue.push_back(c);
+        queue.append(c);
         return c;
     }
 
@@ -10860,7 +11165,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Queues:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : queue)
+    for (auto c : queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10892,7 +11197,7 @@ MplsTe::GlobalAttributes::Queues::Queue::Queue()
     value_{YType::uint32, "value"}
 {
 
-    yang_name = "queue"; yang_parent_name = "queues"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "queue"; yang_parent_name = "queues"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::Queues::Queue::~Queue()
@@ -10901,6 +11206,7 @@ MplsTe::GlobalAttributes::Queues::Queue::~Queue()
 
 bool MplsTe::GlobalAttributes::Queues::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return role.is_set
 	|| value_.is_set;
 }
@@ -10922,7 +11228,8 @@ std::string MplsTe::GlobalAttributes::Queues::Queue::get_absolute_path() const
 std::string MplsTe::GlobalAttributes::Queues::Queue::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "queue" <<"[role='" <<role <<"']";
+    path_buffer << "queue";
+    ADD_KEY_TOKEN(role, "role");
     return path_buffer.str();
 }
 
@@ -10989,7 +11296,7 @@ MplsTe::GlobalAttributes::Mib::Mib()
     midpoint_lsp_stats_collection_disable{YType::empty, "midpoint-lsp-stats-collection-disable"}
 {
 
-    yang_name = "mib"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mib"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::Mib::~Mib()
@@ -10998,6 +11305,7 @@ MplsTe::GlobalAttributes::Mib::~Mib()
 
 bool MplsTe::GlobalAttributes::Mib::has_data() const
 {
+    if (is_presence_container) return true;
     return midpoint_lsp_stats_collection_disable.is_set;
 }
 
@@ -11071,12 +11379,12 @@ bool MplsTe::GlobalAttributes::Mib::has_leaf_or_child_of_name(const std::string 
 MplsTe::GlobalAttributes::AttributeSet::AttributeSet()
     :
     path_option_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes>())
-	,p2mpte_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes>())
-	,p2p_te_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes>())
-	,auto_backup_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes>())
-	,otn_pp_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes>())
-	,auto_mesh_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes>())
-	,xro_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::XroAttributes>())
+    , p2mpte_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes>())
+    , p2p_te_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes>())
+    , auto_backup_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes>())
+    , otn_pp_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes>())
+    , auto_mesh_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes>())
+    , xro_attributes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::XroAttributes>())
 {
     path_option_attributes->parent = this;
     p2mpte_attributes->parent = this;
@@ -11086,7 +11394,7 @@ MplsTe::GlobalAttributes::AttributeSet::AttributeSet()
     auto_mesh_attributes->parent = this;
     xro_attributes->parent = this;
 
-    yang_name = "attribute-set"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "attribute-set"; yang_parent_name = "global-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::~AttributeSet()
@@ -11095,6 +11403,7 @@ MplsTe::GlobalAttributes::AttributeSet::~AttributeSet()
 
 bool MplsTe::GlobalAttributes::AttributeSet::has_data() const
 {
+    if (is_presence_container) return true;
     return (path_option_attributes !=  nullptr && path_option_attributes->has_data())
 	|| (p2mpte_attributes !=  nullptr && p2mpte_attributes->has_data())
 	|| (p2p_te_attributes !=  nullptr && p2p_te_attributes->has_data())
@@ -11154,7 +11463,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::get_child_by_nam
     {
         if(p2mpte_attributes == nullptr)
         {
-            p2mpte_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes>();
+            p2mpte_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes>();
         }
         return p2mpte_attributes;
     }
@@ -11163,7 +11472,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::get_child_by_nam
     {
         if(p2p_te_attributes == nullptr)
         {
-            p2p_te_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes>();
+            p2p_te_attributes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes>();
         }
         return p2p_te_attributes;
     }
@@ -11265,9 +11574,11 @@ bool MplsTe::GlobalAttributes::AttributeSet::has_leaf_or_child_of_name(const std
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttributes()
+    :
+    path_option_attribute(this, {"attribute_set_name"})
 {
 
-    yang_name = "path-option-attributes"; yang_parent_name = "attribute-set"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-option-attributes"; yang_parent_name = "attribute-set"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::~PathOptionAttributes()
@@ -11276,7 +11587,8 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::~PathOptionAttribu
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::has_data() const
 {
-    for (std::size_t index=0; index<path_option_attribute.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_option_attribute.len(); index++)
     {
         if(path_option_attribute[index]->has_data())
             return true;
@@ -11286,7 +11598,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::has_data() co
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::has_operation() const
 {
-    for (std::size_t index=0; index<path_option_attribute.size(); index++)
+    for (std::size_t index=0; index<path_option_attribute.len(); index++)
     {
         if(path_option_attribute[index]->has_operation())
             return true;
@@ -11323,7 +11635,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute>();
         c->parent = this;
-        path_option_attribute.push_back(c);
+        path_option_attribute.append(c);
         return c;
     }
 
@@ -11335,7 +11647,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : path_option_attribute)
+    for (auto c : path_option_attribute.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11365,19 +11677,19 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     :
     attribute_set_name{YType::str, "attribute-set-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     bfd_reverse_path(nullptr) // presence node
-	,att_path_option_path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection>())
-	,pce(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce>())
-	,affinity_mask(nullptr) // presence node
-	,bandwidth(nullptr) // presence node
-	,new_style_affinity_affinity_types(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes>())
+    , att_path_option_path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection>())
+    , pce(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce>())
+    , affinity_mask(nullptr) // presence node
+    , bandwidth(nullptr) // presence node
+    , new_style_affinity_affinity_types(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes>())
 {
     att_path_option_path_selection->parent = this;
     pce->parent = this;
     new_style_affinity_affinity_types->parent = this;
 
-    yang_name = "path-option-attribute"; yang_parent_name = "path-option-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-option-attribute"; yang_parent_name = "path-option-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::~PathOptionAttribute()
@@ -11386,6 +11698,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_set_name.is_set
 	|| enable.is_set
 	|| (bfd_reverse_path !=  nullptr && bfd_reverse_path->has_data())
@@ -11419,7 +11732,8 @@ std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOp
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "path-option-attribute" <<"[attribute-set-name='" <<attribute_set_name <<"']";
+    path_buffer << "path-option-attribute";
+    ADD_KEY_TOKEN(attribute_set_name, "attribute-set-name");
     return path_buffer.str();
 }
 
@@ -11571,7 +11885,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     binding_label{YType::uint32, "binding-label"}
 {
 
-    yang_name = "bfd-reverse-path"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-reverse-path"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath::~BfdReversePath()
@@ -11580,6 +11894,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::BfdReversePath::has_data() const
 {
+    if (is_presence_container) return true;
     return bfd_reverse_path_type.is_set
 	|| binding_label.is_set;
 }
@@ -11661,11 +11976,11 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     path_selection_exclude_list{YType::str, "path-selection-exclude-list"},
     enable{YType::empty, "enable"},
     path_selection_cost_limit{YType::uint32, "path-selection-cost-limit"}
-    	,
+        ,
     invalidation(nullptr) // presence node
 {
 
-    yang_name = "att-path-option-path-selection"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "att-path-option-path-selection"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::~AttPathOptionPathSelection()
@@ -11674,6 +11989,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::has_data() const
 {
+    if (is_presence_container) return true;
     return path_selection_exclude_list.is_set
 	|| enable.is_set
 	|| path_selection_cost_limit.is_set
@@ -11785,7 +12101,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     path_invalidation_action{YType::enumeration, "path-invalidation-action"}
 {
 
-    yang_name = "invalidation"; yang_parent_name = "att-path-option-path-selection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "invalidation"; yang_parent_name = "att-path-option-path-selection"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation::~Invalidation()
@@ -11794,6 +12110,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection::Invalidation::has_data() const
 {
+    if (is_presence_container) return true;
     return path_invalidation_timeout.is_set
 	|| path_invalidation_action.is_set;
 }
@@ -11873,12 +12190,12 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Pce()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     bidirectional(nullptr) // presence node
-	,disjoint_path(nullptr) // presence node
+    , disjoint_path(nullptr) // presence node
 {
 
-    yang_name = "pce"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pce"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::~Pce()
@@ -11887,6 +12204,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (bidirectional !=  nullptr && bidirectional->has_data())
 	|| (disjoint_path !=  nullptr && disjoint_path->has_data());
@@ -11988,7 +12306,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     bd_group_id{YType::uint32, "bd-group-id"}
 {
 
-    yang_name = "bidirectional"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bidirectional"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional::~Bidirectional()
@@ -11997,6 +12315,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::Bidirectional::has_data() const
 {
+    if (is_presence_container) return true;
     return bd_source_address.is_set
 	|| bd_group_id.is_set;
 }
@@ -12080,7 +12399,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     dp_group_id{YType::uint32, "dp-group-id"}
 {
 
-    yang_name = "disjoint-path"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disjoint-path"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath::~DisjointPath()
@@ -12089,6 +12408,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Pce::DisjointPath::has_data() const
 {
+    if (is_presence_container) return true;
     return dp_source_address.is_set
 	|| dp_type.is_set
 	|| dp_group_id.is_set;
@@ -12184,7 +12504,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     mask{YType::str, "mask"}
 {
 
-    yang_name = "affinity-mask"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "affinity-mask"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask::~AffinityMask()
@@ -12193,6 +12513,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AffinityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity.is_set
 	|| mask.is_set;
 }
@@ -12276,7 +12597,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth::~Bandwidth()
@@ -12285,6 +12606,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return dste_type.is_set
 	|| class_or_pool_type.is_set
 	|| bandwidth.is_set;
@@ -12375,9 +12697,21 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
+    :
+    new_style_affinity_affinity_type(this, {"affinity_type"})
+    , new_style_affinity_affinity_type_affinity1(this, {"affinity_type", "affinity1"})
+    , new_style_affinity_affinity_type_affinity1_affinity2(this, {"affinity_type", "affinity1", "affinity2"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3(this, {"affinity_type", "affinity1", "affinity2", "affinity3"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9", "affinity10"})
 {
 
-    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "path-option-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
@@ -12386,57 +12720,58 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::has_data() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_data())
             return true;
@@ -12446,57 +12781,57 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::has_operation() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_operation())
             return true;
@@ -12526,7 +12861,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(c);
+        new_style_affinity_affinity_type.append(c);
         return c;
     }
 
@@ -12534,7 +12869,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(c);
+        new_style_affinity_affinity_type_affinity1.append(c);
         return c;
     }
 
@@ -12542,7 +12877,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2.append(c);
         return c;
     }
 
@@ -12550,7 +12885,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.append(c);
         return c;
     }
 
@@ -12558,7 +12893,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.append(c);
         return c;
     }
 
@@ -12566,7 +12901,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.append(c);
         return c;
     }
 
@@ -12574,7 +12909,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.append(c);
         return c;
     }
 
@@ -12582,7 +12917,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.append(c);
         return c;
     }
 
@@ -12590,7 +12925,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.append(c);
         return c;
     }
 
@@ -12598,7 +12933,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.append(c);
         return c;
     }
 
@@ -12606,7 +12941,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::PathOptionAttrib
     {
         auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.append(c);
         return c;
     }
 
@@ -12618,7 +12953,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type)
+    for (auto c : new_style_affinity_affinity_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12627,7 +12962,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1)
+    for (auto c : new_style_affinity_affinity_type_affinity1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12636,7 +12971,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12645,7 +12980,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12654,7 +12989,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12663,7 +12998,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12672,7 +13007,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12681,7 +13016,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12690,7 +13025,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12699,7 +13034,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12708,7 +13043,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12739,7 +13074,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity_type{YType::enumeration, "affinity-type"}
 {
 
-    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
@@ -12748,6 +13083,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set;
 }
 
@@ -12760,7 +13096,8 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
     return path_buffer.str();
 }
 
@@ -12817,7 +13154,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity1{YType::str, "affinity1"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
@@ -12826,6 +13163,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set;
 }
@@ -12840,7 +13178,9 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
     return path_buffer.str();
 }
 
@@ -12909,7 +13249,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity2{YType::str, "affinity2"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
@@ -12918,6 +13258,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set;
@@ -12934,7 +13275,10 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
     return path_buffer.str();
 }
 
@@ -13015,7 +13359,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity3{YType::str, "affinity3"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
@@ -13024,6 +13368,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -13042,7 +13387,11 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
     return path_buffer.str();
 }
 
@@ -13135,7 +13484,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity4{YType::str, "affinity4"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
@@ -13144,6 +13493,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -13164,7 +13514,12 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
     return path_buffer.str();
 }
 
@@ -13269,7 +13624,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity5{YType::str, "affinity5"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
@@ -13278,6 +13633,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -13300,7 +13656,13 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
     return path_buffer.str();
 }
 
@@ -13417,7 +13779,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity6{YType::str, "affinity6"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
@@ -13426,6 +13788,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -13450,7 +13813,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
     return path_buffer.str();
 }
 
@@ -13579,7 +13949,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity7{YType::str, "affinity7"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
@@ -13588,6 +13958,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -13614,7 +13985,15 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
     return path_buffer.str();
 }
 
@@ -13755,7 +14134,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity8{YType::str, "affinity8"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
@@ -13764,6 +14143,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -13792,7 +14172,16 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
     return path_buffer.str();
 }
 
@@ -13945,7 +14334,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity9{YType::str, "affinity9"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
@@ -13954,6 +14343,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -13984,7 +14374,17 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
+    ADD_KEY_TOKEN(affinity9, "affinity9");
     return path_buffer.str();
 }
 
@@ -14149,7 +14549,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
     affinity10{YType::str, "affinity10"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
@@ -14158,6 +14558,7 @@ MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribut
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -14190,7 +14591,18 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 std::string MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
+    ADD_KEY_TOKEN(affinity9, "affinity9");
+    ADD_KEY_TOKEN(affinity10, "affinity10");
     return path_buffer.str();
 }
 
@@ -14351,19 +14763,22 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttributes()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttributes()
+    :
+    p2mpte_attribute(this, {"attribute_set_name"})
 {
 
-    yang_name = "p2mpte-attributes"; yang_parent_name = "attribute-set"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "p2mpte-attributes"; yang_parent_name = "attribute-set"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::~P2MpteAttributes()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::~P2mpteAttributes()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::has_data() const
 {
-    for (std::size_t index=0; index<p2mpte_attribute.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<p2mpte_attribute.len(); index++)
     {
         if(p2mpte_attribute[index]->has_data())
             return true;
@@ -14371,9 +14786,9 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::has_data() const
     return false;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::has_operation() const
 {
-    for (std::size_t index=0; index<p2mpte_attribute.size(); index++)
+    for (std::size_t index=0; index<p2mpte_attribute.len(); index++)
     {
         if(p2mpte_attribute[index]->has_operation())
             return true;
@@ -14381,21 +14796,21 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::has_operation() c
     return is_set(yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/attribute-set/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "p2mpte-attributes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14404,25 +14819,25 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "p2mpte-attribute")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute>();
         c->parent = this;
-        p2mpte_attribute.push_back(c);
+        p2mpte_attribute.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : p2mpte_attribute)
+    for (auto c : p2mpte_attribute.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14433,49 +14848,50 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "p2mpte-attribute")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::P2MpteAttribute()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::P2mpteAttribute()
     :
     attribute_set_name{YType::str, "attribute-set-name"},
     interface_bandwidth{YType::uint32, "interface-bandwidth"},
     enable{YType::empty, "enable"},
     record_route{YType::empty, "record-route"}
-    	,
+        ,
     priority(nullptr) // presence node
-	,affinity_mask(nullptr) // presence node
-	,bandwidth(nullptr) // presence node
-	,path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection>())
-	,new_style_affinity_affinity_types(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes>())
-	,fast_reroute(nullptr) // presence node
-	,logging(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging>())
+    , affinity_mask(nullptr) // presence node
+    , bandwidth(nullptr) // presence node
+    , path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection>())
+    , new_style_affinity_affinity_types(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes>())
+    , fast_reroute(nullptr) // presence node
+    , logging(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging>())
 {
     path_selection->parent = this;
     new_style_affinity_affinity_types->parent = this;
     logging->parent = this;
 
-    yang_name = "p2mpte-attribute"; yang_parent_name = "p2mpte-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "p2mpte-attribute"; yang_parent_name = "p2mpte-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::~P2MpteAttribute()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::~P2mpteAttribute()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_set_name.is_set
 	|| interface_bandwidth.is_set
 	|| enable.is_set
@@ -14489,7 +14905,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| (logging !=  nullptr && logging->has_data());
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(attribute_set_name.yfilter)
@@ -14505,21 +14921,22 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| (logging !=  nullptr && logging->has_operation());
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/attribute-set/p2mpte-attributes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "p2mpte-attribute" <<"[attribute-set-name='" <<attribute_set_name <<"']";
+    path_buffer << "p2mpte-attribute";
+    ADD_KEY_TOKEN(attribute_set_name, "attribute-set-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14532,13 +14949,13 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "priority")
     {
         if(priority == nullptr)
         {
-            priority = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority>();
+            priority = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority>();
         }
         return priority;
     }
@@ -14547,7 +14964,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
     {
         if(affinity_mask == nullptr)
         {
-            affinity_mask = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask>();
+            affinity_mask = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask>();
         }
         return affinity_mask;
     }
@@ -14556,7 +14973,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
     {
         if(bandwidth == nullptr)
         {
-            bandwidth = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth>();
+            bandwidth = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth>();
         }
         return bandwidth;
     }
@@ -14565,7 +14982,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
     {
         if(path_selection == nullptr)
         {
-            path_selection = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection>();
+            path_selection = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection>();
         }
         return path_selection;
     }
@@ -14574,7 +14991,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
     {
         if(new_style_affinity_affinity_types == nullptr)
         {
-            new_style_affinity_affinity_types = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes>();
+            new_style_affinity_affinity_types = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes>();
         }
         return new_style_affinity_affinity_types;
     }
@@ -14583,7 +15000,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
     {
         if(fast_reroute == nullptr)
         {
-            fast_reroute = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute>();
+            fast_reroute = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute>();
         }
         return fast_reroute;
     }
@@ -14592,7 +15009,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
     {
         if(logging == nullptr)
         {
-            logging = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging>();
+            logging = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging>();
         }
         return logging;
     }
@@ -14600,7 +15017,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14642,7 +15059,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attribute-set-name")
     {
@@ -14670,7 +15087,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "attribute-set-name")
     {
@@ -14690,47 +15107,48 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "priority" || name == "affinity-mask" || name == "bandwidth" || name == "path-selection" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "logging" || name == "attribute-set-name" || name == "interface-bandwidth" || name == "enable" || name == "record-route")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::Priority()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::Priority()
     :
     setup_priority{YType::uint32, "setup-priority"},
     hold_priority{YType::uint32, "hold-priority"}
 {
 
-    yang_name = "priority"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::~Priority()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::~Priority()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_priority.is_set
 	|| hold_priority.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(setup_priority.yfilter)
 	|| ydk::is_set(hold_priority.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14741,19 +15159,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "setup-priority")
     {
@@ -14769,7 +15187,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "setup-priority")
     {
@@ -14781,47 +15199,48 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Priority::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Priority::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "setup-priority" || name == "hold-priority")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::AffinityMask()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::AffinityMask()
     :
     affinity{YType::str, "affinity"},
     mask{YType::str, "mask"}
 {
 
-    yang_name = "affinity-mask"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "affinity-mask"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::~AffinityMask()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::~AffinityMask()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity.is_set
 	|| mask.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity.yfilter)
 	|| ydk::is_set(mask.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14832,19 +15251,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity")
     {
@@ -14860,7 +15279,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity")
     {
@@ -14872,35 +15291,36 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::AffinityMask::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::AffinityMask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity" || name == "mask")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::Bandwidth()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::Bandwidth()
     :
     dste_type{YType::enumeration, "dste-type"},
     class_or_pool_type{YType::uint32, "class-or-pool-type"},
     bandwidth{YType::uint32, "bandwidth"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::~Bandwidth()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::~Bandwidth()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return dste_type.is_set
 	|| class_or_pool_type.is_set
 	|| bandwidth.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dste_type.yfilter)
@@ -14908,14 +15328,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(bandwidth.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14927,19 +15347,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dste-type")
     {
@@ -14961,7 +15381,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dste-type")
     {
@@ -14977,44 +15397,45 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dste-type" || name == "class-or-pool-type" || name == "bandwidth")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::PathSelection()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::PathSelection()
     :
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "path-selection"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-selection"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::~PathSelection()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::~PathSelection()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-selection";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15024,19 +15445,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -15046,7 +15467,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -15054,76 +15475,89 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::PathSelection::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::PathSelection::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
+    :
+    new_style_affinity_affinity_type(this, {"affinity_type"})
+    , new_style_affinity_affinity_type_affinity1(this, {"affinity_type", "affinity1"})
+    , new_style_affinity_affinity_type_affinity1_affinity2(this, {"affinity_type", "affinity1", "affinity2"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3(this, {"affinity_type", "affinity1", "affinity2", "affinity3"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9", "affinity10"})
 {
 
-    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::has_data() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_data())
             return true;
@@ -15131,59 +15565,59 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     return false;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::has_operation() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_operation())
             return true;
@@ -15191,14 +15625,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     return is_set(yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "new-style-affinity-affinity-types";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15207,105 +15641,105 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "new-style-affinity-affinity-type")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(c);
+        new_style_affinity_affinity_type.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(c);
+        new_style_affinity_affinity_type_affinity1.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type)
+    for (auto c : new_style_affinity_affinity_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15314,7 +15748,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1)
+    for (auto c : new_style_affinity_affinity_type_affinity1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15323,7 +15757,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15332,7 +15766,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15341,7 +15775,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15350,7 +15784,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15359,7 +15793,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15368,7 +15802,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15377,7 +15811,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15386,7 +15820,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15395,7 +15829,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15406,52 +15840,54 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "new-style-affinity-affinity-type" || name == "new-style-affinity-affinity-type-affinity1" || name == "new-style-affinity-affinity-type-affinity1-affinity2" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::NewStyleAffinityAffinityType()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::NewStyleAffinityAffinityType()
     :
     affinity_type{YType::enumeration, "affinity-type"}
 {
 
-    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15461,19 +15897,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -15483,7 +15919,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -15491,47 +15927,50 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
 	|| ydk::is_set(affinity1.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15542,19 +15981,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -15570,7 +16009,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -15582,35 +16021,36 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -15618,14 +16058,17 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity2.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15637,19 +16080,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -15671,7 +16114,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -15687,14 +16130,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -15702,22 +16145,23 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity3{YType::str, "affinity3"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -15726,14 +16170,18 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity3.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15746,19 +16194,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -15786,7 +16234,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -15806,14 +16254,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -15822,15 +16270,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity4{YType::str, "affinity4"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -15838,7 +16287,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity4.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -15848,14 +16297,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity4.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15869,19 +16323,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -15915,7 +16369,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -15939,14 +16393,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -15956,15 +16410,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity5{YType::str, "affinity5"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -15973,7 +16428,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity5.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -15984,14 +16439,20 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity5.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16006,19 +16467,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -16058,7 +16519,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -16086,14 +16547,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -16104,15 +16565,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity6{YType::str, "affinity6"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -16122,7 +16584,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity6.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -16134,14 +16596,21 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity6.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16157,19 +16626,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -16215,7 +16684,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -16247,14 +16716,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -16266,15 +16735,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity7{YType::str, "affinity7"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -16285,7 +16755,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity7.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -16298,14 +16768,22 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity7.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16322,19 +16800,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -16386,7 +16864,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -16422,14 +16900,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -16442,15 +16920,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity8{YType::str, "affinity8"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -16462,7 +16941,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity8.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -16476,14 +16955,23 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity8.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16501,19 +16989,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -16571,7 +17059,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -16611,14 +17099,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7" || name == "affinity8")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -16632,15 +17120,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity9{YType::str, "affinity9"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -16653,7 +17142,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity9.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -16668,14 +17157,24 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity9.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
+    ADD_KEY_TOKEN(affinity9, "affinity9");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16694,19 +17193,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -16770,7 +17269,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -16814,14 +17313,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7" || name == "affinity8" || name == "affinity9")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -16836,15 +17335,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewSt
     affinity10{YType::str, "affinity10"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -16858,7 +17358,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| affinity10.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -16874,14 +17374,25 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(affinity10.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']" <<"[affinity7='" <<affinity7 <<"']" <<"[affinity8='" <<affinity8 <<"']" <<"[affinity9='" <<affinity9 <<"']" <<"[affinity10='" <<affinity10 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
+    ADD_KEY_TOKEN(affinity6, "affinity6");
+    ADD_KEY_TOKEN(affinity7, "affinity7");
+    ADD_KEY_TOKEN(affinity8, "affinity8");
+    ADD_KEY_TOKEN(affinity9, "affinity9");
+    ADD_KEY_TOKEN(affinity10, "affinity10");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16901,19 +17412,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -16983,7 +17494,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -17031,47 +17542,48 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7" || name == "affinity8" || name == "affinity9" || name == "affinity10")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::FastReroute()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::FastReroute()
     :
     bandwidth_protection{YType::uint32, "bandwidth-protection"},
     node_protection{YType::uint32, "node-protection"}
 {
 
-    yang_name = "fast-reroute"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fast-reroute"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::~FastReroute()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::~FastReroute()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return bandwidth_protection.is_set
 	|| node_protection.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bandwidth_protection.yfilter)
 	|| ydk::is_set(node_protection.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fast-reroute";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17082,19 +17594,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bandwidth-protection")
     {
@@ -17110,7 +17622,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bandwidth-protection")
     {
@@ -17122,14 +17634,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::FastReroute::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::FastReroute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bandwidth-protection" || name == "node-protection")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::Logging()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::Logging()
     :
     insufficient_bw_message{YType::empty, "insufficient-bw-message"},
     reoptimized_message{YType::empty, "reoptimized-message"},
@@ -17142,15 +17654,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Loggi
     reroute_messsage{YType::empty, "reroute-messsage"}
 {
 
-    yang_name = "logging"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "p2mpte-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::~Logging()
+MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::~Logging()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return insufficient_bw_message.is_set
 	|| reoptimized_message.is_set
 	|| bandwidth_change_message.is_set
@@ -17162,7 +17675,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| reroute_messsage.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(insufficient_bw_message.yfilter)
@@ -17176,14 +17689,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
 	|| ydk::is_set(reroute_messsage.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logging";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17201,19 +17714,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "insufficient-bw-message")
     {
@@ -17271,7 +17784,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "insufficient-bw-message")
     {
@@ -17311,26 +17824,29 @@ void MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2MpteAttributes::P2MpteAttribute::Logging::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "insufficient-bw-message" || name == "reoptimized-message" || name == "bandwidth-change-message" || name == "all" || name == "pcalc-failure-message" || name == "state-message" || name == "reoptimize-attempts-message" || name == "sub-lsp-state-message" || name == "reroute-messsage")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttributes()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttributes()
+    :
+    p2p_te_attribute(this, {"attribute_set_name"})
 {
 
-    yang_name = "p2p-te-attributes"; yang_parent_name = "attribute-set"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "p2p-te-attributes"; yang_parent_name = "attribute-set"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::~P2PTeAttributes()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::~P2pTeAttributes()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::has_data() const
 {
-    for (std::size_t index=0; index<p2p_te_attribute.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<p2p_te_attribute.len(); index++)
     {
         if(p2p_te_attribute[index]->has_data())
             return true;
@@ -17338,9 +17854,9 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::has_data() const
     return false;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::has_operation() const
 {
-    for (std::size_t index=0; index<p2p_te_attribute.size(); index++)
+    for (std::size_t index=0; index<p2p_te_attribute.len(); index++)
     {
         if(p2p_te_attribute[index]->has_operation())
             return true;
@@ -17348,21 +17864,21 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::has_operation() co
     return is_set(yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/attribute-set/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "p2p-te-attributes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17371,25 +17887,25 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "p2p-te-attribute")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute>();
         c->parent = this;
-        p2p_te_attribute.push_back(c);
+        p2p_te_attribute.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : p2p_te_attribute)
+    for (auto c : p2p_te_attribute.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17400,46 +17916,47 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "p2p-te-attribute")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::P2PTeAttribute()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::P2pTeAttribute()
     :
     attribute_set_name{YType::str, "attribute-set-name"},
     enable{YType::empty, "enable"}
-    	,
-    path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection>())
-	,pce(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce>())
-	,affinity_mask(nullptr) // presence node
-	,logging(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging>())
-	,new_style_affinity_affinity_types(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes>())
+        ,
+    path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection>())
+    , pce(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce>())
+    , affinity_mask(nullptr) // presence node
+    , logging(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging>())
+    , new_style_affinity_affinity_types(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes>())
 {
     path_selection->parent = this;
     pce->parent = this;
     logging->parent = this;
     new_style_affinity_affinity_types->parent = this;
 
-    yang_name = "p2p-te-attribute"; yang_parent_name = "p2p-te-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "p2p-te-attribute"; yang_parent_name = "p2p-te-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::~P2PTeAttribute()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::~P2pTeAttribute()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_set_name.is_set
 	|| enable.is_set
 	|| (path_selection !=  nullptr && path_selection->has_data())
@@ -17449,7 +17966,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::ha
 	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_data());
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(attribute_set_name.yfilter)
@@ -17461,21 +17978,22 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::ha
 	|| (new_style_affinity_affinity_types !=  nullptr && new_style_affinity_affinity_types->has_operation());
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_absolute_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te/global-attributes/attribute-set/p2p-te-attributes/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "p2p-te-attribute" <<"[attribute-set-name='" <<attribute_set_name <<"']";
+    path_buffer << "p2p-te-attribute";
+    ADD_KEY_TOKEN(attribute_set_name, "attribute-set-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17486,13 +18004,13 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "path-selection")
     {
         if(path_selection == nullptr)
         {
-            path_selection = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection>();
+            path_selection = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection>();
         }
         return path_selection;
     }
@@ -17501,7 +18019,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     {
         if(pce == nullptr)
         {
-            pce = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce>();
+            pce = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce>();
         }
         return pce;
     }
@@ -17510,7 +18028,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     {
         if(affinity_mask == nullptr)
         {
-            affinity_mask = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask>();
+            affinity_mask = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask>();
         }
         return affinity_mask;
     }
@@ -17519,7 +18037,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     {
         if(logging == nullptr)
         {
-            logging = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging>();
+            logging = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging>();
         }
         return logging;
     }
@@ -17528,7 +18046,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     {
         if(new_style_affinity_affinity_types == nullptr)
         {
-            new_style_affinity_affinity_types = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes>();
+            new_style_affinity_affinity_types = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes>();
         }
         return new_style_affinity_affinity_types;
     }
@@ -17536,7 +18054,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17568,7 +18086,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "attribute-set-name")
     {
@@ -17584,7 +18102,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::se
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "attribute-set-name")
     {
@@ -17596,34 +18114,35 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::se
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "path-selection" || name == "pce" || name == "affinity-mask" || name == "logging" || name == "new-style-affinity-affinity-types" || name == "attribute-set-name" || name == "enable")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::PathSelection()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::PathSelection()
     :
     path_selection_metric{YType::enumeration, "path-selection-metric"},
     path_selection_segment_routing_adjacency_protection{YType::enumeration, "path-selection-segment-routing-adjacency-protection"},
     enable{YType::empty, "enable"}
-    	,
-    segment_routing_prepend(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend>())
-	,invalidation(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation>())
+        ,
+    segment_routing_prepend(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend>())
+    , invalidation(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation>())
 {
     segment_routing_prepend->parent = this;
     invalidation->parent = this;
 
-    yang_name = "path-selection"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-selection"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::~PathSelection()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::~PathSelection()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::has_data() const
 {
+    if (is_presence_container) return true;
     return path_selection_metric.is_set
 	|| path_selection_segment_routing_adjacency_protection.is_set
 	|| enable.is_set
@@ -17631,7 +18150,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
 	|| (invalidation !=  nullptr && invalidation->has_data());
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(path_selection_metric.yfilter)
@@ -17641,14 +18160,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
 	|| (invalidation !=  nullptr && invalidation->has_operation());
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path-selection";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17660,13 +18179,13 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "segment-routing-prepend")
     {
         if(segment_routing_prepend == nullptr)
         {
-            segment_routing_prepend = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend>();
+            segment_routing_prepend = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend>();
         }
         return segment_routing_prepend;
     }
@@ -17675,7 +18194,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     {
         if(invalidation == nullptr)
         {
-            invalidation = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation>();
+            invalidation = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation>();
         }
         return invalidation;
     }
@@ -17683,7 +18202,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17700,7 +18219,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "path-selection-metric")
     {
@@ -17722,7 +18241,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "path-selection-metric")
     {
@@ -17738,49 +18257,50 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "segment-routing-prepend" || name == "invalidation" || name == "path-selection-metric" || name == "path-selection-segment-routing-adjacency-protection" || name == "enable")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::SegmentRoutingPrepend()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::SegmentRoutingPrepend()
     :
     enable{YType::empty, "enable"}
-    	,
-    indexes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes>())
+        ,
+    indexes(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes>())
 {
     indexes->parent = this;
 
-    yang_name = "segment-routing-prepend"; yang_parent_name = "path-selection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "segment-routing-prepend"; yang_parent_name = "path-selection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::~SegmentRoutingPrepend()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::~SegmentRoutingPrepend()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (indexes !=  nullptr && indexes->has_data());
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| (indexes !=  nullptr && indexes->has_operation());
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-prepend";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17790,13 +18310,13 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "indexes")
     {
         if(indexes == nullptr)
         {
-            indexes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes>();
+            indexes = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes>();
         }
         return indexes;
     }
@@ -17804,7 +18324,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17816,7 +18336,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -17826,7 +18346,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -17834,26 +18354,29 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "indexes" || name == "enable")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Indexes()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Indexes()
+    :
+    index_(this, {"index_number"})
 {
 
-    yang_name = "indexes"; yang_parent_name = "segment-routing-prepend"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indexes"; yang_parent_name = "segment-routing-prepend"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::~Indexes()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::~Indexes()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::has_data() const
 {
-    for (std::size_t index=0; index<index_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<index_.len(); index++)
     {
         if(index_[index]->has_data())
             return true;
@@ -17861,9 +18384,9 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     return false;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::has_operation() const
 {
-    for (std::size_t index=0; index<index_.size(); index++)
+    for (std::size_t index=0; index<index_.len(); index++)
     {
         if(index_[index]->has_operation())
             return true;
@@ -17871,14 +18394,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     return is_set(yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "indexes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17887,25 +18410,25 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "index")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index>();
         c->parent = this;
-        index_.push_back(c);
+        index_.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : index_)
+    for (auto c : index_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17916,43 +18439,44 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::Index()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::Index()
     :
     index_number{YType::uint32, "index-number"},
     prepend_type{YType::enumeration, "prepend-type"},
-    mpls_label{YType::int32, "mpls-label"}
+    mpls_label{YType::uint32, "mpls-label"}
 {
 
-    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::~Index()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::~Index()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::has_data() const
 {
+    if (is_presence_container) return true;
     return index_number.is_set
 	|| prepend_type.is_set
 	|| mpls_label.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(index_number.yfilter)
@@ -17960,14 +18484,15 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
 	|| ydk::is_set(mpls_label.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "index" <<"[index-number='" <<index_number <<"']";
+    path_buffer << "index";
+    ADD_KEY_TOKEN(index_number, "index-number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17979,19 +18504,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index-number")
     {
@@ -18013,7 +18538,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index-number")
     {
@@ -18029,47 +18554,48 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::SegmentRoutingPrepend::Indexes::Index::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index-number" || name == "prepend-type" || name == "mpls-label")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::Invalidation()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::Invalidation()
     :
     invalidation_timer{YType::uint32, "invalidation-timer"},
     invalidation_timer_expire_type{YType::enumeration, "invalidation-timer-expire-type"}
 {
 
-    yang_name = "invalidation"; yang_parent_name = "path-selection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "invalidation"; yang_parent_name = "path-selection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::~Invalidation()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::~Invalidation()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::has_data() const
 {
+    if (is_presence_container) return true;
     return invalidation_timer.is_set
 	|| invalidation_timer_expire_type.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(invalidation_timer.yfilter)
 	|| ydk::is_set(invalidation_timer_expire_type.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "invalidation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18080,19 +18606,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "invalidation-timer")
     {
@@ -18108,7 +18634,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "invalidation-timer")
     {
@@ -18120,36 +18646,37 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pa
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::PathSelection::Invalidation::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection::Invalidation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "invalidation-timer" || name == "invalidation-timer-expire-type")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Pce()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Pce()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     bidirectional(nullptr) // presence node
-	,disjoint_path(nullptr) // presence node
+    , disjoint_path(nullptr) // presence node
 {
 
-    yang_name = "pce"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pce"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::~Pce()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::~Pce()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (bidirectional !=  nullptr && bidirectional->has_data())
 	|| (disjoint_path !=  nullptr && disjoint_path->has_data());
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
@@ -18157,14 +18684,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
 	|| (disjoint_path !=  nullptr && disjoint_path->has_operation());
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pce";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18174,13 +18701,13 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bidirectional")
     {
         if(bidirectional == nullptr)
         {
-            bidirectional = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional>();
+            bidirectional = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional>();
         }
         return bidirectional;
     }
@@ -18189,7 +18716,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     {
         if(disjoint_path == nullptr)
         {
-            disjoint_path = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath>();
+            disjoint_path = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath>();
         }
         return disjoint_path;
     }
@@ -18197,7 +18724,7 @@ std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18214,7 +18741,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "enable")
     {
@@ -18224,7 +18751,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "enable")
     {
@@ -18232,47 +18759,48 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bidirectional" || name == "disjoint-path" || name == "enable")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::Bidirectional()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::Bidirectional()
     :
     bd_source_address{YType::str, "bd-source-address"},
     bd_group_id{YType::uint32, "bd-group-id"}
 {
 
-    yang_name = "bidirectional"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bidirectional"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::~Bidirectional()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::~Bidirectional()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::has_data() const
 {
+    if (is_presence_container) return true;
     return bd_source_address.is_set
 	|| bd_group_id.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bd_source_address.yfilter)
 	|| ydk::is_set(bd_group_id.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bidirectional";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18283,19 +18811,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bd-source-address")
     {
@@ -18311,7 +18839,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bd-source-address")
     {
@@ -18323,35 +18851,36 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::Bidirectional::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::Bidirectional::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bd-source-address" || name == "bd-group-id")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::DisjointPath()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::DisjointPath()
     :
     dp_source_address{YType::str, "dp-source-address"},
     dp_type{YType::uint32, "dp-type"},
     dp_group_id{YType::uint32, "dp-group-id"}
 {
 
-    yang_name = "disjoint-path"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disjoint-path"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::~DisjointPath()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::~DisjointPath()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::has_data() const
 {
+    if (is_presence_container) return true;
     return dp_source_address.is_set
 	|| dp_type.is_set
 	|| dp_group_id.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dp_source_address.yfilter)
@@ -18359,14 +18888,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
 	|| ydk::is_set(dp_group_id.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "disjoint-path";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18378,19 +18907,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dp-source-address")
     {
@@ -18412,7 +18941,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dp-source-address")
     {
@@ -18428,47 +18957,48 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pc
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Pce::DisjointPath::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce::DisjointPath::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dp-source-address" || name == "dp-type" || name == "dp-group-id")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::AffinityMask()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::AffinityMask()
     :
     affinity{YType::str, "affinity"},
     mask{YType::str, "mask"}
 {
 
-    yang_name = "affinity-mask"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "affinity-mask"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::~AffinityMask()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::~AffinityMask()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity.is_set
 	|| mask.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity.yfilter)
 	|| ydk::is_set(mask.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18479,19 +19009,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity")
     {
@@ -18507,7 +19037,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Af
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity")
     {
@@ -18519,14 +19049,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Af
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::AffinityMask::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::AffinityMask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity" || name == "mask")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::Logging()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::Logging()
     :
     lsp_switch_over_change_message{YType::empty, "lsp-switch-over-change-message"},
     all{YType::empty, "all"},
@@ -18541,15 +19071,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging
     pcalc_failure_message{YType::empty, "pcalc-failure-message"}
 {
 
-    yang_name = "logging"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::~Logging()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::~Logging()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_switch_over_change_message.is_set
 	|| all.is_set
 	|| record_route_messsage.is_set
@@ -18563,7 +19094,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Lo
 	|| pcalc_failure_message.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(lsp_switch_over_change_message.yfilter)
@@ -18579,14 +19110,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Lo
 	|| ydk::is_set(pcalc_failure_message.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logging";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18606,19 +19137,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "lsp-switch-over-change-message")
     {
@@ -18688,7 +19219,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Lo
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "lsp-switch-over-change-message")
     {
@@ -18736,76 +19267,89 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Lo
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Logging::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "lsp-switch-over-change-message" || name == "all" || name == "record-route-messsage" || name == "bfd-state-message" || name == "bandwidth-change-message" || name == "reoptimize-attempts-message" || name == "reroute-messsage" || name == "state-message" || name == "insufficient-bw-message" || name == "reoptimized-message" || name == "pcalc-failure-message")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
+    :
+    new_style_affinity_affinity_type(this, {"affinity_type"})
+    , new_style_affinity_affinity_type_affinity1(this, {"affinity_type", "affinity1"})
+    , new_style_affinity_affinity_type_affinity1_affinity2(this, {"affinity_type", "affinity1", "affinity2"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3(this, {"affinity_type", "affinity1", "affinity2", "affinity3"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9"})
+    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9", "affinity10"})
 {
 
-    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "p2p-te-attribute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::has_data() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_data())
             return true;
@@ -18813,59 +19357,59 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     return false;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::has_operation() const
 {
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
     {
         if(new_style_affinity_affinity_type[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.size(); index++)
+    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
     {
         if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_operation())
             return true;
@@ -18873,14 +19417,14 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     return is_set(yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "new-style-affinity-affinity-types";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18889,105 +19433,105 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "new-style-affinity-affinity-type")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
         c->parent = this;
-        new_style_affinity_affinity_type.push_back(c);
+        new_style_affinity_affinity_type.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1.push_back(c);
+        new_style_affinity_affinity_type_affinity1.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.append(c);
         return c;
     }
 
     if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
     {
-        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
+        auto c = std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
         c->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.push_back(c);
+        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type)
+    for (auto c : new_style_affinity_affinity_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18996,7 +19540,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1)
+    for (auto c : new_style_affinity_affinity_type_affinity1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19005,7 +19549,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19014,7 +19558,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19023,7 +19567,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19032,7 +19576,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19041,7 +19585,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19050,7 +19594,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19059,7 +19603,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19068,7 +19612,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19077,7 +19621,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     }
 
     count = 0;
-    for (auto const & c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10)
+    for (auto c : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19088,52 +19632,54 @@ std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::Attribu
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "new-style-affinity-affinity-type" || name == "new-style-affinity-affinity-type-affinity1" || name == "new-style-affinity-affinity-type-affinity1-affinity2" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::NewStyleAffinityAffinityType()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::NewStyleAffinityAffinityType()
     :
     affinity_type{YType::enumeration, "affinity-type"}
 {
 
-    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type" <<"[affinity-type='" <<affinity_type <<"']";
+    path_buffer << "new-style-affinity-affinity-type";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19143,19 +19689,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -19165,7 +19711,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -19173,47 +19719,50 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
 	|| ydk::is_set(affinity1.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19224,19 +19773,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -19252,7 +19801,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -19264,35 +19813,36 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
     affinity2{YType::str, "affinity2"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -19300,14 +19850,17 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
 	|| ydk::is_set(affinity2.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19319,19 +19872,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -19353,7 +19906,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -19369,14 +19922,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -19384,22 +19937,23 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyl
     affinity3{YType::str, "affinity3"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
 	|| affinity3.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -19408,14 +19962,18 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
 	|| ydk::is_set(affinity3.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19428,19 +19986,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -19468,7 +20026,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -19488,14 +20046,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -19504,15 +20062,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyl
     affinity4{YType::str, "affinity4"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -19520,7 +20079,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
 	|| affinity4.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -19530,14 +20089,19 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
 	|| ydk::is_set(affinity4.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19551,19 +20115,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -19597,7 +20161,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -19621,14 +20185,14 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
     :
     affinity_type{YType::enumeration, "affinity-type"},
     affinity1{YType::str, "affinity1"},
@@ -19638,15 +20202,16 @@ MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyl
     affinity5{YType::str, "affinity5"}
 {
 
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
+MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
 {
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
 {
+    if (is_presence_container) return true;
     return affinity_type.is_set
 	|| affinity1.is_set
 	|| affinity2.is_set
@@ -19655,7 +20220,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
 	|| affinity5.is_set;
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(affinity_type.yfilter)
@@ -19666,14 +20231,20 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
 	|| ydk::is_set(affinity5.yfilter);
 }
 
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
+std::string MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']";
+    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5";
+    ADD_KEY_TOKEN(affinity_type, "affinity-type");
+    ADD_KEY_TOKEN(affinity1, "affinity1");
+    ADD_KEY_TOKEN(affinity2, "affinity2");
+    ADD_KEY_TOKEN(affinity3, "affinity3");
+    ADD_KEY_TOKEN(affinity4, "affinity4");
+    ADD_KEY_TOKEN(affinity5, "affinity5");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19688,19 +20259,19 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
 }
 
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "affinity-type")
     {
@@ -19740,7 +20311,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_filter(const std::string & value_path, YFilter yfilter)
+void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "affinity-type")
     {
@@ -19768,242 +20339,42 @@ void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::Ne
     }
 }
 
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_leaf_or_child_of_name(const std::string & name) const
+bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5")
         return true;
     return false;
 }
 
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
-{
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
-{
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity6.is_set;
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter)
-	|| ydk::is_set(affinity6.yfilter);
-}
-
-std::string MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" <<"[affinity-type='" <<affinity_type <<"']" <<"[affinity1='" <<affinity1 <<"']" <<"[affinity2='" <<affinity2 <<"']" <<"[affinity3='" <<affinity3 <<"']" <<"[affinity4='" <<affinity4 <<"']" <<"[affinity5='" <<affinity5 <<"']" <<"[affinity6='" <<affinity6 <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity6.is_set || is_set(affinity6.yfilter)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6 = value;
-        affinity6.value_namespace = name_space;
-        affinity6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6.yfilter = yfilter;
-    }
-}
-
-bool MplsTe::GlobalAttributes::AttributeSet::P2PTeAttributes::P2PTeAttribute::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf MplsTesrlgExclude::mandatory {1, "mandatory"};
-const Enum::YLeaf MplsTesrlgExclude::preferred {2, "preferred"};
-const Enum::YLeaf MplsTesrlgExclude::weighted {3, "weighted"};
-
-const Enum::YLeaf MplsTeAffinityValue::hex_value {1, "hex-value"};
-const Enum::YLeaf MplsTeAffinityValue::bit_position {2, "bit-position"};
-
-const Enum::YLeaf RoutePriorityRole::route_priority_role_head_back_up {0, "route-priority-role-head-back-up"};
-const Enum::YLeaf RoutePriorityRole::route_priority_role_head_primary {1, "route-priority-role-head-primary"};
-const Enum::YLeaf RoutePriorityRole::route_priority_role_middle {2, "route-priority-role-middle"};
-
-const Enum::YLeaf OtnSignaledBandwidthFlexFraming::cbr {20, "cbr"};
-const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_fixed {21, "framed-gfp-fixed"};
-const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_resize {22, "framed-gfp-resize"};
+const Enum::YLeaf MplsTeBackupBandwidthClass::class0 {0, "class0"};
+const Enum::YLeaf MplsTeBackupBandwidthClass::class1 {1, "class1"};
+const Enum::YLeaf MplsTeBackupBandwidthClass::any_class {9, "any-class"};
 
 const Enum::YLeaf SrPrepend::none_type {0, "none-type"};
 const Enum::YLeaf SrPrepend::next_label {1, "next-label"};
 const Enum::YLeaf SrPrepend::bgp_n_hop {2, "bgp-n-hop"};
-
-const Enum::YLeaf MplsTePathSelectionTiebreaker::min_fill {1, "min-fill"};
-const Enum::YLeaf MplsTePathSelectionTiebreaker::max_fill {2, "max-fill"};
-const Enum::YLeaf MplsTePathSelectionTiebreaker::random {3, "random"};
-
-const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_no_aps {4, "1plus1-unidir-no-aps"};
-const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_aps {8, "1plus1-unidir-aps"};
-const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_bdir_aps {16, "1plus1-bdir-aps"};
-
-const Enum::YLeaf OspfAreaMode::ospf_int {0, "ospf-int"};
-const Enum::YLeaf OspfAreaMode::ospfip_addr {1, "ospfip-addr"};
-
-const Enum::YLeaf MplsTePathOptionProperty::none {0, "none"};
-const Enum::YLeaf MplsTePathOptionProperty::lockdown {1, "lockdown"};
-const Enum::YLeaf MplsTePathOptionProperty::verbatim {4, "verbatim"};
-const Enum::YLeaf MplsTePathOptionProperty::pce {8, "pce"};
-const Enum::YLeaf MplsTePathOptionProperty::segment_routing {16, "segment-routing"};
 
 const Enum::YLeaf MplsTePathComputationMethod::not_set {0, "not-set"};
 const Enum::YLeaf MplsTePathComputationMethod::dynamic {1, "dynamic"};
 const Enum::YLeaf MplsTePathComputationMethod::pce {2, "pce"};
 const Enum::YLeaf MplsTePathComputationMethod::explicit_ {3, "explicit"};
 
-const Enum::YLeaf MplsTeSignaledLabel::not_set {0, "not-set"};
-const Enum::YLeaf MplsTeSignaledLabel::dwdm {1, "dwdm"};
-
 const Enum::YLeaf OtnDestination::number_ed {0, "number-ed"};
 const Enum::YLeaf OtnDestination::un_number_ed {1, "un-number-ed"};
-
-const Enum::YLeaf MplsTeTunnelAffinity::include {1, "include"};
-const Enum::YLeaf MplsTeTunnelAffinity::include_strict {2, "include-strict"};
-const Enum::YLeaf MplsTeTunnelAffinity::exclude {3, "exclude"};
-const Enum::YLeaf MplsTeTunnelAffinity::exclude_all {4, "exclude-all"};
-const Enum::YLeaf MplsTeTunnelAffinity::ignore {5, "ignore"};
-
-const Enum::YLeaf OtnStaticUni::unknown {0, "unknown"};
-const Enum::YLeaf OtnStaticUni::xc {1, "xc"};
-const Enum::YLeaf OtnStaticUni::termination {2, "termination"};
 
 const Enum::YLeaf MplsTeSwitchingCap::psc1 {1, "psc1"};
 const Enum::YLeaf MplsTeSwitchingCap::lsc {150, "lsc"};
 const Enum::YLeaf MplsTeSwitchingCap::fsc {200, "fsc"};
 
-const Enum::YLeaf MplsTeOtnApsProtectionMode::revertive {1, "revertive"};
-const Enum::YLeaf MplsTeOtnApsProtectionMode::non_revertive {2, "non-revertive"};
-
-const Enum::YLeaf MplsTeConfigTunnel::p2p {0, "p2p"};
-const Enum::YLeaf MplsTeConfigTunnel::p2mp {1, "p2mp"};
-
 const Enum::YLeaf MplsTeBfdSessionDownAction::re_setup {1, "re-setup"};
+
+const Enum::YLeaf RoutePriorityRole::route_priority_role_head_back_up {0, "route-priority-role-head-back-up"};
+const Enum::YLeaf RoutePriorityRole::route_priority_role_head_primary {1, "route-priority-role-head-primary"};
+const Enum::YLeaf RoutePriorityRole::route_priority_role_middle {2, "route-priority-role-middle"};
+
+const Enum::YLeaf MplsTebfdSession::regular_bfd {1, "regular-bfd"};
+const Enum::YLeaf MplsTebfdSession::sbfd {2, "sbfd"};
+const Enum::YLeaf MplsTebfdSession::redundant_sbfd {3, "redundant-sbfd"};
 
 const Enum::YLeaf MplsTeLogFrrProtection::frr_active_primary {1, "frr-active-primary"};
 const Enum::YLeaf MplsTeLogFrrProtection::backup {256, "backup"};
@@ -20011,14 +20382,55 @@ const Enum::YLeaf MplsTeLogFrrProtection::frr_ready_primary {512, "frr-ready-pri
 const Enum::YLeaf MplsTeLogFrrProtection::primary {513, "primary"};
 const Enum::YLeaf MplsTeLogFrrProtection::all {769, "all"};
 
-const Enum::YLeaf LinkNextHop::none {1, "none"};
-const Enum::YLeaf LinkNextHop::ipv4_address {2, "ipv4-address"};
+const Enum::YLeaf MplsTeTunnelAffinity::include {1, "include"};
+const Enum::YLeaf MplsTeTunnelAffinity::include_strict {2, "include-strict"};
+const Enum::YLeaf MplsTeTunnelAffinity::exclude {3, "exclude"};
+const Enum::YLeaf MplsTeTunnelAffinity::exclude_all {4, "exclude-all"};
+const Enum::YLeaf MplsTeTunnelAffinity::ignore {5, "ignore"};
 
-const Enum::YLeaf MplsTeAutorouteMetric::relative {1, "relative"};
-const Enum::YLeaf MplsTeAutorouteMetric::absolute {2, "absolute"};
-const Enum::YLeaf MplsTeAutorouteMetric::constant {3, "constant"};
+const Enum::YLeaf IetfMode::standard {3, "standard"};
 
-const Enum::YLeaf BandwidthConstraint::bandwidth_constraint_maximum_allocation_model {1, "bandwidth-constraint-maximum-allocation-model"};
+const Enum::YLeaf MplsTePathOptionProperty::none {0, "none"};
+const Enum::YLeaf MplsTePathOptionProperty::lockdown {1, "lockdown"};
+const Enum::YLeaf MplsTePathOptionProperty::verbatim {4, "verbatim"};
+const Enum::YLeaf MplsTePathOptionProperty::pce {8, "pce"};
+const Enum::YLeaf MplsTePathOptionProperty::segment_routing {16, "segment-routing"};
+
+const Enum::YLeaf GmplsttiMode::sm {1, "sm"};
+const Enum::YLeaf GmplsttiMode::pm {2, "pm"};
+const Enum::YLeaf GmplsttiMode::tcm {3, "tcm"};
+
+const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_tear {1, "tunnel-action-tear"};
+const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_drop {2, "tunnel-action-drop"};
+
+const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_no_aps {4, "1plus1-unidir-no-aps"};
+const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_aps {8, "1plus1-unidir-aps"};
+const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_bdir_aps {16, "1plus1-bdir-aps"};
+
+const Enum::YLeaf MplsTeSwitchingEncoding::packet {1, "packet"};
+const Enum::YLeaf MplsTeSwitchingEncoding::ethernet {2, "ethernet"};
+const Enum::YLeaf MplsTeSwitchingEncoding::sondet_sdh {5, "sondet-sdh"};
+
+const Enum::YLeaf MplsTeSigNameOption::none {0, "none"};
+const Enum::YLeaf MplsTeSigNameOption::address {1, "address"};
+const Enum::YLeaf MplsTeSigNameOption::name {2, "name"};
+
+const Enum::YLeaf OtnProtectionSwitchLockout::none {0, "none"};
+const Enum::YLeaf OtnProtectionSwitchLockout::working {1, "working"};
+
+const Enum::YLeaf MplsTeTunnelId::auto_ {0, "auto"};
+const Enum::YLeaf MplsTeTunnelId::explicit_ {1, "explicit"};
+
+const Enum::YLeaf MplsTeAffinityValue::hex_value {1, "hex-value"};
+const Enum::YLeaf MplsTeAffinityValue::bit_position {2, "bit-position"};
+
+const Enum::YLeaf OtnStaticUni::unknown {0, "unknown"};
+const Enum::YLeaf OtnStaticUni::xc {1, "xc"};
+const Enum::YLeaf OtnStaticUni::termination {2, "termination"};
+
+const Enum::YLeaf MplsTeOtnSncMode::snc_n {1, "snc-n"};
+const Enum::YLeaf MplsTeOtnSncMode::snc_i {2, "snc-i"};
+const Enum::YLeaf MplsTeOtnSncMode::snc_s {3, "snc-s"};
 
 const Enum::YLeaf OtnPayload::unknown {0, "unknown"};
 const Enum::YLeaf OtnPayload::bmp {50, "bmp"};
@@ -20026,15 +20438,16 @@ const Enum::YLeaf OtnPayload::gfp_f {54, "gfp-f"};
 const Enum::YLeaf OtnPayload::gmp {55, "gmp"};
 const Enum::YLeaf OtnPayload::gfp_f_ext {70, "gfp-f-ext"};
 
-const Enum::YLeaf MplsTeOtnSncMode::snc_n {1, "snc-n"};
-const Enum::YLeaf MplsTeOtnSncMode::snc_i {2, "snc-i"};
-const Enum::YLeaf MplsTeOtnSncMode::snc_s {3, "snc-s"};
+const Enum::YLeaf OspfAreaMode::ospf_int {0, "ospf-int"};
+const Enum::YLeaf OspfAreaMode::ospfip_addr {1, "ospfip-addr"};
 
-const Enum::YLeaf BfdReversePath::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
+const Enum::YLeaf MplsTeIgpProtocol::none {0, "none"};
+const Enum::YLeaf MplsTeIgpProtocol::isis {1, "isis"};
+const Enum::YLeaf MplsTeIgpProtocol::ospf {2, "ospf"};
 
-const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
-const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
-const Enum::YLeaf MplsTePathSelectionMetric::delay {4, "delay"};
+const Enum::YLeaf MplsTePathSelectionTiebreaker::min_fill {1, "min-fill"};
+const Enum::YLeaf MplsTePathSelectionTiebreaker::max_fill {2, "max-fill"};
+const Enum::YLeaf MplsTePathSelectionTiebreaker::random {3, "random"};
 
 const Enum::YLeaf MplsTePathOption::not_set {0, "not-set"};
 const Enum::YLeaf MplsTePathOption::dynamic {1, "dynamic"};
@@ -20043,13 +20456,8 @@ const Enum::YLeaf MplsTePathOption::explicit_number {4, "explicit-number"};
 const Enum::YLeaf MplsTePathOption::no_ero {5, "no-ero"};
 const Enum::YLeaf MplsTePathOption::sr {6, "sr"};
 
-const Enum::YLeaf MplsLcacFloodingIgp::ospf {0, "ospf"};
-
-const Enum::YLeaf OtnProtectionSwitchLockout::none {0, "none"};
-const Enum::YLeaf OtnProtectionSwitchLockout::working {1, "working"};
-
-const Enum::YLeaf MplsTeTunnelId::auto_ {0, "auto"};
-const Enum::YLeaf MplsTeTunnelId::explicit_ {1, "explicit"};
+const Enum::YLeaf PathInvalidationAction::tear {1, "tear"};
+const Enum::YLeaf PathInvalidationAction::drop {2, "drop"};
 
 const Enum::YLeaf OtnSignaledBandwidth::odu1 {1, "odu1"};
 const Enum::YLeaf OtnSignaledBandwidth::odu2 {2, "odu2"};
@@ -20066,70 +20474,71 @@ const Enum::YLeaf OtnSignaledBandwidth::odu2f {25, "odu2f"};
 const Enum::YLeaf OtnSignaledBandwidth::odu3e1 {26, "odu3e1"};
 const Enum::YLeaf OtnSignaledBandwidth::odu3e2 {27, "odu3e2"};
 
-const Enum::YLeaf MplsTeBandwidthDste::standard_dste {0, "standard-dste"};
-const Enum::YLeaf MplsTeBandwidthDste::pre_standard_dste {1, "pre-standard-dste"};
-
-const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_tear {1, "tunnel-action-tear"};
-const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_drop {2, "tunnel-action-drop"};
-
-const Enum::YLeaf MplsTePathDiversityConformance::strict {0, "strict"};
-const Enum::YLeaf MplsTePathDiversityConformance::best_effort {1, "best-effort"};
-
-const Enum::YLeaf IetfMode::standard {3, "standard"};
-
-const Enum::YLeaf MplsTeOtnApsRestorationStyle::keep_failed_lsp {1, "keep-failed-lsp"};
-const Enum::YLeaf MplsTeOtnApsRestorationStyle::delete_failed_lsp {2, "delete-failed-lsp"};
-
-const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::not_set {0, "not-set"};
-const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_unprotected {1, "adj-unprotected"};
-const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_protected {2, "adj-protected"};
-
-const Enum::YLeaf GmplsttiMode::sm {1, "sm"};
-const Enum::YLeaf GmplsttiMode::pm {2, "pm"};
-const Enum::YLeaf GmplsttiMode::tcm {3, "tcm"};
-
-const Enum::YLeaf MplsTeSwitchingEncoding::packet {1, "packet"};
-const Enum::YLeaf MplsTeSwitchingEncoding::ethernet {2, "ethernet"};
-const Enum::YLeaf MplsTeSwitchingEncoding::sondet_sdh {5, "sondet-sdh"};
-
-const Enum::YLeaf MplsTeSigNameOption::none {0, "none"};
-const Enum::YLeaf MplsTeSigNameOption::address {1, "address"};
-const Enum::YLeaf MplsTeSigNameOption::name {2, "name"};
-
-const Enum::YLeaf PathInvalidationAction::tear {1, "tear"};
-const Enum::YLeaf PathInvalidationAction::drop {2, "drop"};
-
-const Enum::YLeaf MplsTeSwitchingIndex::link {255, "link"};
-
-const Enum::YLeaf MplsTeIgpProtocol::none {0, "none"};
-const Enum::YLeaf MplsTeIgpProtocol::isis {1, "isis"};
-const Enum::YLeaf MplsTeIgpProtocol::ospf {2, "ospf"};
-
-const Enum::YLeaf MplsTebfdSession::regular_bfd {1, "regular-bfd"};
-const Enum::YLeaf MplsTebfdSession::sbfd {2, "sbfd"};
-const Enum::YLeaf MplsTebfdSession::redundant_sbfd {3, "redundant-sbfd"};
+const Enum::YLeaf MplsTeAutorouteMetric::relative {1, "relative"};
+const Enum::YLeaf MplsTeAutorouteMetric::absolute {2, "absolute"};
+const Enum::YLeaf MplsTeAutorouteMetric::constant {3, "constant"};
 
 const Enum::YLeaf BindingSegmentId::any_label {1, "any-label"};
 const Enum::YLeaf BindingSegmentId::specified_label {2, "specified-label"};
 
-const Enum::YLeaf MplsTeBackupBandwidthPool::any_pool {1, "any-pool"};
-const Enum::YLeaf MplsTeBackupBandwidthPool::global_pool {2, "global-pool"};
-const Enum::YLeaf MplsTeBackupBandwidthPool::sub_pool {4, "sub-pool"};
+const Enum::YLeaf MplsTesrlgExclude::mandatory {1, "mandatory"};
+const Enum::YLeaf MplsTesrlgExclude::preferred {2, "preferred"};
+const Enum::YLeaf MplsTesrlgExclude::weighted {3, "weighted"};
+
+const Enum::YLeaf MplsTeSignaledLabel::not_set {0, "not-set"};
+const Enum::YLeaf MplsTeSignaledLabel::dwdm {1, "dwdm"};
+
+const Enum::YLeaf BandwidthConstraint::bandwidth_constraint_maximum_allocation_model {1, "bandwidth-constraint-maximum-allocation-model"};
 
 const Enum::YLeaf MplsTeSwitchingEncode::none {0, "none"};
 const Enum::YLeaf MplsTeSwitchingEncode::packet {1, "packet"};
 const Enum::YLeaf MplsTeSwitchingEncode::ethernet {2, "ethernet"};
 const Enum::YLeaf MplsTeSwitchingEncode::sondet_sdh {5, "sondet-sdh"};
 
-const Enum::YLeaf MplsTeBackupBandwidthClass::class0 {0, "class0"};
-const Enum::YLeaf MplsTeBackupBandwidthClass::class1 {1, "class1"};
-const Enum::YLeaf MplsTeBackupBandwidthClass::any_class {9, "any-class"};
+const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
+const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
 
 const Enum::YLeaf MplsTePathOptionProtection::active {0, "active"};
 const Enum::YLeaf MplsTePathOptionProtection::protecting {1, "protecting"};
 
+const Enum::YLeaf OtnSignaledBandwidthFlexFraming::cbr {20, "cbr"};
+const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_fixed {21, "framed-gfp-fixed"};
+const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_resize {22, "framed-gfp-resize"};
+
 const Enum::YLeaf MplsTeBandwidthLimit::unlimited {64, "unlimited"};
 const Enum::YLeaf MplsTeBandwidthLimit::limited {128, "limited"};
+
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::not_set {0, "not-set"};
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_unprotected {1, "adj-unprotected"};
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_protected {2, "adj-protected"};
+
+const Enum::YLeaf LinkNextHop::none {1, "none"};
+const Enum::YLeaf LinkNextHop::ipv4_address {2, "ipv4-address"};
+
+const Enum::YLeaf MplsLcacFloodingIgp::ospf {0, "ospf"};
+
+const Enum::YLeaf BfdReversePath::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
+
+const Enum::YLeaf MplsTeOtnApsRestorationStyle::keep_failed_lsp {1, "keep-failed-lsp"};
+const Enum::YLeaf MplsTeOtnApsRestorationStyle::delete_failed_lsp {2, "delete-failed-lsp"};
+
+const Enum::YLeaf MplsTeBandwidthDste::standard_dste {0, "standard-dste"};
+const Enum::YLeaf MplsTeBandwidthDste::pre_standard_dste {1, "pre-standard-dste"};
+
+const Enum::YLeaf MplsTePathDiversityConformance::strict {0, "strict"};
+const Enum::YLeaf MplsTePathDiversityConformance::best_effort {1, "best-effort"};
+
+const Enum::YLeaf MplsTeBackupBandwidthPool::any_pool {1, "any-pool"};
+const Enum::YLeaf MplsTeBackupBandwidthPool::global_pool {2, "global-pool"};
+const Enum::YLeaf MplsTeBackupBandwidthPool::sub_pool {4, "sub-pool"};
+
+const Enum::YLeaf MplsTeOtnApsProtectionMode::revertive {1, "revertive"};
+const Enum::YLeaf MplsTeOtnApsProtectionMode::non_revertive {2, "non-revertive"};
+
+const Enum::YLeaf MplsTeSwitchingIndex::link {255, "link"};
+
+const Enum::YLeaf MplsTeConfigTunnel::p2p {0, "p2p"};
+const Enum::YLeaf MplsTeConfigTunnel::p2mp {1, "p2mp"};
 
 
 }

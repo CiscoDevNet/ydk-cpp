@@ -117,7 +117,7 @@ class PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances : public ydk::Entity
 
         class Ospfv2ProtocolInstance; //type: PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance> > ospfv2_protocol_instance;
+        ydk::YList ospfv2_protocol_instance;
         
 }; // PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances
 
@@ -165,7 +165,7 @@ class PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance:
 
         class Sample; //type: PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples
 
@@ -232,7 +232,7 @@ class PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances : public ydk::Entity
 
         class Ospfv3ProtocolInstance; //type: PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance> > ospfv3_protocol_instance;
+        ydk::YList ospfv3_protocol_instance;
         
 }; // PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances
 
@@ -280,7 +280,7 @@ class PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance:
 
         class Sample; //type: PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples
 
@@ -370,7 +370,7 @@ class PerfMgmt::Periodic::Mpls::LdpNeighbors : public ydk::Entity
 
         class LdpNeighbor; //type: PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor> > ldp_neighbor;
+        ydk::YList ldp_neighbor;
         
 }; // PerfMgmt::Periodic::Mpls::LdpNeighbors
 
@@ -418,7 +418,7 @@ class PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples : public ydk:
 
         class Sample; //type: PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Mpls::LdpNeighbors::LdpNeighbor::Samples
 
@@ -482,7 +482,7 @@ class PerfMgmt::Periodic::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Periodic::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Periodic::Nodes
 
@@ -534,7 +534,7 @@ class PerfMgmt::Periodic::Nodes::Node::SampleXr : public ydk::Entity
 
         class Sample; //type: PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Nodes::Node::SampleXr::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Nodes::Node::SampleXr
 
@@ -581,7 +581,7 @@ class PerfMgmt::Periodic::Nodes::Node::Processes : public ydk::Entity
 
         class Process; //type: PerfMgmt::Periodic::Nodes::Node::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Nodes::Node::Processes::Process> > process;
+        ydk::YList process;
         
 }; // PerfMgmt::Periodic::Nodes::Node::Processes
 
@@ -628,7 +628,7 @@ class PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples : public ydk:
 
         class Sample; //type: PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Nodes::Node::Processes::Process::Samples
 
@@ -676,7 +676,7 @@ class PerfMgmt::Periodic::Nodes::Node::Samples : public ydk::Entity
 
         class Sample; //type: PerfMgmt::Periodic::Nodes::Node::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Nodes::Node::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Nodes::Node::Samples
 
@@ -748,7 +748,7 @@ class PerfMgmt::Periodic::Bgp::BgpNeighbors : public ydk::Entity
 
         class BgpNeighbor; //type: PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor> > bgp_neighbor;
+        ydk::YList bgp_neighbor;
         
 }; // PerfMgmt::Periodic::Bgp::BgpNeighbors
 
@@ -796,7 +796,7 @@ class PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples : public ydk::
 
         class Sample; //type: PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Bgp::BgpNeighbors::BgpNeighbor::Samples
 
@@ -878,7 +878,7 @@ class PerfMgmt::Periodic::Interface::GenericCounterInterfaces : public ydk::Enti
 
         class GenericCounterInterface; //type: PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface> > generic_counter_interface;
+        ydk::YList generic_counter_interface;
         
 }; // PerfMgmt::Periodic::Interface::GenericCounterInterfaces
 
@@ -926,7 +926,7 @@ class PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInt
 
         class Sample; //type: PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples
 
@@ -992,7 +992,7 @@ class PerfMgmt::Periodic::Interface::BasicCounterInterfaces : public ydk::Entity
 
         class BasicCounterInterface; //type: PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface> > basic_counter_interface;
+        ydk::YList basic_counter_interface;
         
 }; // PerfMgmt::Periodic::Interface::BasicCounterInterfaces
 
@@ -1040,7 +1040,7 @@ class PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterfa
 
         class Sample; //type: PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples
 
@@ -1096,7 +1096,7 @@ class PerfMgmt::Periodic::Interface::DataRateInterfaces : public ydk::Entity
 
         class DataRateInterface; //type: PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface> > data_rate_interface;
+        ydk::YList data_rate_interface;
         
 }; // PerfMgmt::Periodic::Interface::DataRateInterfaces
 
@@ -1144,7 +1144,7 @@ class PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samp
 
         class Sample; //type: PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Periodic::Interface::DataRateInterfaces::DataRateInterface::Samples
 
@@ -1257,7 +1257,7 @@ class PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances : public ydk::Entity
 
         class Ospfv2ProtocolInstance; //type: PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance> > ospfv2_protocol_instance;
+        ydk::YList ospfv2_protocol_instance;
         
 }; // PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances
 
@@ -1305,7 +1305,7 @@ class PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::
 
         class Sample; //type: PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Ospf::Ospfv2ProtocolInstances::Ospfv2ProtocolInstance::Samples
 
@@ -1372,7 +1372,7 @@ class PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances : public ydk::Entity
 
         class Ospfv3ProtocolInstance; //type: PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance> > ospfv3_protocol_instance;
+        ydk::YList ospfv3_protocol_instance;
         
 }; // PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances
 
@@ -1420,7 +1420,7 @@ class PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::
 
         class Sample; //type: PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Ospf::Ospfv3ProtocolInstances::Ospfv3ProtocolInstance::Samples
 
@@ -1510,7 +1510,7 @@ class PerfMgmt::Monitor::Mpls::LdpNeighbors : public ydk::Entity
 
         class LdpNeighbor; //type: PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor> > ldp_neighbor;
+        ydk::YList ldp_neighbor;
         
 }; // PerfMgmt::Monitor::Mpls::LdpNeighbors
 
@@ -1558,7 +1558,7 @@ class PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples : public ydk::
 
         class Sample; //type: PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Mpls::LdpNeighbors::LdpNeighbor::Samples
 
@@ -1622,7 +1622,7 @@ class PerfMgmt::Monitor::Nodes : public ydk::Entity
 
         class Node; //type: PerfMgmt::Monitor::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PerfMgmt::Monitor::Nodes
 
@@ -1674,7 +1674,7 @@ class PerfMgmt::Monitor::Nodes::Node::SampleXr : public ydk::Entity
 
         class Sample; //type: PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Nodes::Node::SampleXr::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Nodes::Node::SampleXr
 
@@ -1721,7 +1721,7 @@ class PerfMgmt::Monitor::Nodes::Node::Processes : public ydk::Entity
 
         class Process; //type: PerfMgmt::Monitor::Nodes::Node::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Nodes::Node::Processes::Process> > process;
+        ydk::YList process;
         
 }; // PerfMgmt::Monitor::Nodes::Node::Processes
 
@@ -1768,7 +1768,7 @@ class PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples : public ydk::
 
         class Sample; //type: PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Nodes::Node::Processes::Process::Samples
 
@@ -1816,7 +1816,7 @@ class PerfMgmt::Monitor::Nodes::Node::Samples : public ydk::Entity
 
         class Sample; //type: PerfMgmt::Monitor::Nodes::Node::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Nodes::Node::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Nodes::Node::Samples
 
@@ -1888,7 +1888,7 @@ class PerfMgmt::Monitor::Bgp::BgpNeighbors : public ydk::Entity
 
         class BgpNeighbor; //type: PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor> > bgp_neighbor;
+        ydk::YList bgp_neighbor;
         
 }; // PerfMgmt::Monitor::Bgp::BgpNeighbors
 
@@ -1936,7 +1936,7 @@ class PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples : public ydk::E
 
         class Sample; //type: PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Bgp::BgpNeighbors::BgpNeighbor::Samples
 
@@ -2018,7 +2018,7 @@ class PerfMgmt::Monitor::Interface::GenericCounterInterfaces : public ydk::Entit
 
         class GenericCounterInterface; //type: PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface> > generic_counter_interface;
+        ydk::YList generic_counter_interface;
         
 }; // PerfMgmt::Monitor::Interface::GenericCounterInterfaces
 
@@ -2066,7 +2066,7 @@ class PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInte
 
         class Sample; //type: PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Interface::GenericCounterInterfaces::GenericCounterInterface::Samples
 
@@ -2132,7 +2132,7 @@ class PerfMgmt::Monitor::Interface::BasicCounterInterfaces : public ydk::Entity
 
         class BasicCounterInterface; //type: PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface> > basic_counter_interface;
+        ydk::YList basic_counter_interface;
         
 }; // PerfMgmt::Monitor::Interface::BasicCounterInterfaces
 
@@ -2180,7 +2180,7 @@ class PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterfac
 
         class Sample; //type: PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Interface::BasicCounterInterfaces::BasicCounterInterface::Samples
 
@@ -2236,7 +2236,7 @@ class PerfMgmt::Monitor::Interface::DataRateInterfaces : public ydk::Entity
 
         class DataRateInterface; //type: PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface> > data_rate_interface;
+        ydk::YList data_rate_interface;
         
 }; // PerfMgmt::Monitor::Interface::DataRateInterfaces
 
@@ -2284,7 +2284,7 @@ class PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Sampl
 
         class Sample; //type: PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_oper::PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // PerfMgmt::Monitor::Interface::DataRateInterfaces::DataRateInterface::Samples
 

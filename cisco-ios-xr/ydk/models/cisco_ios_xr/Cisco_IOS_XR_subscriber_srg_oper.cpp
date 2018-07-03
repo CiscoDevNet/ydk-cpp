@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_subscriber_srg_oper {
 SubscriberRedundancyManager::SubscriberRedundancyManager()
     :
     groups(std::make_shared<SubscriberRedundancyManager::Groups>())
-	,summary(std::make_shared<SubscriberRedundancyManager::Summary>())
-	,interfaces(std::make_shared<SubscriberRedundancyManager::Interfaces>())
+    , summary(std::make_shared<SubscriberRedundancyManager::Summary>())
+    , interfaces(std::make_shared<SubscriberRedundancyManager::Interfaces>())
 {
     groups->parent = this;
     summary->parent = this;
     interfaces->parent = this;
 
-    yang_name = "subscriber-redundancy-manager"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-redundancy-manager"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyManager::~SubscriberRedundancyManager()
@@ -30,6 +30,7 @@ SubscriberRedundancyManager::~SubscriberRedundancyManager()
 
 bool SubscriberRedundancyManager::has_data() const
 {
+    if (is_presence_container) return true;
     return (groups !=  nullptr && groups->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
@@ -154,9 +155,11 @@ bool SubscriberRedundancyManager::has_leaf_or_child_of_name(const std::string & 
 }
 
 SubscriberRedundancyManager::Groups::Groups()
+    :
+    group(this, {"group"})
 {
 
-    yang_name = "groups"; yang_parent_name = "subscriber-redundancy-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "groups"; yang_parent_name = "subscriber-redundancy-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyManager::Groups::~Groups()
@@ -165,7 +168,8 @@ SubscriberRedundancyManager::Groups::~Groups()
 
 bool SubscriberRedundancyManager::Groups::has_data() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool SubscriberRedundancyManager::Groups::has_data() const
 
 bool SubscriberRedundancyManager::Groups::has_operation() const
 {
-    for (std::size_t index=0; index<group.size(); index++)
+    for (std::size_t index=0; index<group.len(); index++)
     {
         if(group[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Groups::get_child_by_name(c
     {
         auto c = std::make_shared<SubscriberRedundancyManager::Groups::Group>();
         c->parent = this;
-        group.push_back(c);
+        group.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Grou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group)
+    for (auto c : group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -268,7 +272,7 @@ SubscriberRedundancyManager::Groups::Group::Group()
     node_name{YType::str, "node-name"}
 {
 
-    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyManager::Groups::Group::~Group()
@@ -277,6 +281,7 @@ SubscriberRedundancyManager::Groups::Group::~Group()
 
 bool SubscriberRedundancyManager::Groups::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| group_id.is_set
 	|| description.is_set
@@ -322,7 +327,8 @@ std::string SubscriberRedundancyManager::Groups::Group::get_absolute_path() cons
 std::string SubscriberRedundancyManager::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group" <<"[group='" <<group <<"']";
+    path_buffer << "group";
+    ADD_KEY_TOKEN(group, "group");
     return path_buffer.str();
 }
 
@@ -536,7 +542,7 @@ SubscriberRedundancyManager::Summary::Summary()
     slave_interface_count{YType::uint32, "slave-interface-count"}
 {
 
-    yang_name = "summary"; yang_parent_name = "subscriber-redundancy-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "subscriber-redundancy-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyManager::Summary::~Summary()
@@ -545,6 +551,7 @@ SubscriberRedundancyManager::Summary::~Summary()
 
 bool SubscriberRedundancyManager::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return disabled.is_set
 	|| active_state.is_set
 	|| preferred_role.is_set
@@ -811,9 +818,11 @@ bool SubscriberRedundancyManager::Summary::has_leaf_or_child_of_name(const std::
 }
 
 SubscriberRedundancyManager::Interfaces::Interfaces()
+    :
+    interface(this, {"interface"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "subscriber-redundancy-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "subscriber-redundancy-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyManager::Interfaces::~Interfaces()
@@ -822,7 +831,8 @@ SubscriberRedundancyManager::Interfaces::~Interfaces()
 
 bool SubscriberRedundancyManager::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -832,7 +842,7 @@ bool SubscriberRedundancyManager::Interfaces::has_data() const
 
 bool SubscriberRedundancyManager::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -869,7 +879,7 @@ std::shared_ptr<Entity> SubscriberRedundancyManager::Interfaces::get_child_by_na
     {
         auto c = std::make_shared<SubscriberRedundancyManager::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -881,7 +891,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyManager::Inte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -917,7 +927,7 @@ SubscriberRedundancyManager::Interfaces::Interface::Interface()
     role{YType::enumeration, "role"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyManager::Interfaces::Interface::~Interface()
@@ -926,6 +936,7 @@ SubscriberRedundancyManager::Interfaces::Interface::~Interface()
 
 bool SubscriberRedundancyManager::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_name.is_set
 	|| interface_mapping_id.is_set
@@ -955,7 +966,8 @@ std::string SubscriberRedundancyManager::Interfaces::Interface::get_absolute_pat
 std::string SubscriberRedundancyManager::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -1067,7 +1079,7 @@ SubscriberRedundancyAgent::SubscriberRedundancyAgent()
 {
     nodes->parent = this;
 
-    yang_name = "subscriber-redundancy-agent"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-redundancy-agent"; yang_parent_name = "Cisco-IOS-XR-subscriber-srg-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyAgent::~SubscriberRedundancyAgent()
@@ -1076,6 +1088,7 @@ SubscriberRedundancyAgent::~SubscriberRedundancyAgent()
 
 bool SubscriberRedundancyAgent::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -1168,9 +1181,11 @@ bool SubscriberRedundancyAgent::has_leaf_or_child_of_name(const std::string & na
 }
 
 SubscriberRedundancyAgent::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "subscriber-redundancy-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "subscriber-redundancy-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyAgent::Nodes::~Nodes()
@@ -1179,7 +1194,8 @@ SubscriberRedundancyAgent::Nodes::~Nodes()
 
 bool SubscriberRedundancyAgent::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -1189,7 +1205,7 @@ bool SubscriberRedundancyAgent::Nodes::has_data() const
 
 bool SubscriberRedundancyAgent::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -1226,7 +1242,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::get_child_by_name(cons
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -1238,7 +1254,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1267,18 +1283,18 @@ bool SubscriberRedundancyAgent::Nodes::has_leaf_or_child_of_name(const std::stri
 SubscriberRedundancyAgent::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     group_id_xr(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr>())
-	,interfaces(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces>())
-	,group_summaries(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupSummaries>())
-	,group_ids(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds>())
+    , interfaces(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces>())
+    , group_summaries(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupSummaries>())
+    , group_ids(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds>())
 {
     group_id_xr->parent = this;
     interfaces->parent = this;
     group_summaries->parent = this;
     group_ids->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::~Node()
@@ -1287,6 +1303,7 @@ SubscriberRedundancyAgent::Nodes::Node::~Node()
 
 bool SubscriberRedundancyAgent::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (group_id_xr !=  nullptr && group_id_xr->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -1314,7 +1331,8 @@ std::string SubscriberRedundancyAgent::Nodes::Node::get_absolute_path() const
 std::string SubscriberRedundancyAgent::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1422,9 +1440,11 @@ bool SubscriberRedundancyAgent::Nodes::Node::has_leaf_or_child_of_name(const std
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupIdXr()
+    :
+    group_id(this, {"group_id"})
 {
 
-    yang_name = "group-id-xr"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-id-xr"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::~GroupIdXr()
@@ -1433,7 +1453,8 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::~GroupIdXr()
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::has_data() const
 {
-    for (std::size_t index=0; index<group_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_id.len(); index++)
     {
         if(group_id[index]->has_data())
             return true;
@@ -1443,7 +1464,7 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::has_data() const
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::has_operation() const
 {
-    for (std::size_t index=0; index<group_id.size(); index++)
+    for (std::size_t index=0; index<group_id.len(); index++)
     {
         if(group_id[index]->has_operation())
             return true;
@@ -1473,7 +1494,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::get_c
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId>();
         c->parent = this;
-        group_id.push_back(c);
+        group_id.append(c);
         return c;
     }
 
@@ -1485,7 +1506,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_id)
+    for (auto c : group_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1524,9 +1545,12 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::GroupId()
     role_master{YType::boolean, "role-master"},
     valid_mac_address{YType::boolean, "valid-mac-address"},
     negative_acknowledgement_update_all{YType::boolean, "negative-acknowledgement-update-all"}
+        ,
+    session_detailed_information(this, {})
+    , session_sync_error_information(this, {})
 {
 
-    yang_name = "group-id"; yang_parent_name = "group-id-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-id"; yang_parent_name = "group-id-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::~GroupId()
@@ -1535,12 +1559,13 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::~GroupId()
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_data() const
 {
-    for (std::size_t index=0; index<session_detailed_information.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_detailed_information.len(); index++)
     {
         if(session_detailed_information[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<session_sync_error_information.size(); index++)
+    for (std::size_t index=0; index<session_sync_error_information.len(); index++)
     {
         if(session_sync_error_information[index]->has_data())
             return true;
@@ -1560,12 +1585,12 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_data() cons
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_operation() const
 {
-    for (std::size_t index=0; index<session_detailed_information.size(); index++)
+    for (std::size_t index=0; index<session_detailed_information.len(); index++)
     {
         if(session_detailed_information[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<session_sync_error_information.size(); index++)
+    for (std::size_t index=0; index<session_sync_error_information.len(); index++)
     {
         if(session_sync_error_information[index]->has_operation())
             return true;
@@ -1587,7 +1612,8 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_operation()
 std::string SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-id" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "group-id";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -1617,7 +1643,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::Group
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation>();
         c->parent = this;
-        session_detailed_information.push_back(c);
+        session_detailed_information.append(c);
         return c;
     }
 
@@ -1625,7 +1651,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::Group
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation>();
         c->parent = this;
-        session_sync_error_information.push_back(c);
+        session_sync_error_information.append(c);
         return c;
     }
 
@@ -1637,7 +1663,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_detailed_information)
+    for (auto c : session_detailed_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1646,7 +1672,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     }
 
     count = 0;
-    for (auto const & c : session_sync_error_information)
+    for (auto c : session_sync_error_information.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1791,7 +1817,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInfor
     marked_for_cleanup{YType::boolean, "marked-for-cleanup"}
 {
 
-    yang_name = "session-detailed-information"; yang_parent_name = "group-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-detailed-information"; yang_parent_name = "group-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::~SessionDetailedInformation()
@@ -1800,6 +1826,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInfor
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return component.is_set
 	|| operation_.is_set
 	|| tx_list_queue_fail.is_set
@@ -1922,7 +1949,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInfo
     last_error_type{YType::enumeration, "last-error-type"}
 {
 
-    yang_name = "session-sync-error-information"; yang_parent_name = "group-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-sync-error-information"; yang_parent_name = "group-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::~SessionSyncErrorInformation()
@@ -1931,6 +1958,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInfo
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return sync_error_count.is_set
 	|| last_error_code.is_set
 	|| last_error_type.is_set;
@@ -2021,9 +2049,11 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErro
 }
 
 SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::Interfaces::~Interfaces()
@@ -2032,7 +2062,8 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::~Interfaces()
 
 bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2042,7 +2073,7 @@ bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::has_data() const
 
 bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2072,7 +2103,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::get_
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2084,7 +2115,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2124,14 +2155,15 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::Interface()
     interface_caps_add_error_count{YType::uint32, "interface-caps-add-error-count"},
     interface_caps_remove_error_count{YType::uint32, "interface-caps-remove-error-count"},
     interface_attribute_update_error_count{YType::uint32, "interface-attribute-update-error-count"}
-    	,
+        ,
     interface_oper(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper>())
-	,interface_status(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus>())
+    , interface_status(std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus>())
+    , client_status(this, {})
 {
     interface_oper->parent = this;
     interface_status->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::~Interface()
@@ -2140,7 +2172,8 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<client_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client_status.len(); index++)
     {
         if(client_status[index]->has_data())
             return true;
@@ -2163,7 +2196,7 @@ bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::has_data() c
 
 bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<client_status.size(); index++)
+    for (std::size_t index=0; index<client_status.len(); index++)
     {
         if(client_status[index]->has_operation())
             return true;
@@ -2188,7 +2221,8 @@ bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::has_operatio
 std::string SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -2237,7 +2271,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::Interfaces::Inte
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus>();
         c->parent = this;
-        client_status.push_back(c);
+        client_status.append(c);
         return c;
     }
 
@@ -2259,7 +2293,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     }
 
     count = 0;
-    for (auto const & c : client_status)
+    for (auto c : client_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2414,7 +2448,7 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::In
     idb_oper_attr_update{YType::boolean, "idb-oper-attr-update"}
 {
 
-    yang_name = "interface-oper"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-oper"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::~InterfaceOper()
@@ -2423,6 +2457,7 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::~I
 
 bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceOper::has_data() const
 {
+    if (is_presence_container) return true;
     return idb_oper_reg_enable.is_set
 	|| idb_oper_reg_disable.is_set
 	|| idb_oper_caps_add.is_set
@@ -2550,7 +2585,7 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::
     idb_state_p_end_reg_disable{YType::boolean, "idb-state-p-end-reg-disable"}
 {
 
-    yang_name = "interface-status"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-status"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::~InterfaceStatus()
@@ -2559,6 +2594,7 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::
 
 bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::InterfaceStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return idb_state_fwd_ref.is_set
 	|| idb_state_stale.is_set
 	|| idb_state_registered.is_set
@@ -2721,7 +2757,7 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::Cli
     session_count{YType::uint32, "session-count"}
 {
 
-    yang_name = "client-status"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-status"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::~ClientStatus()
@@ -2730,6 +2766,7 @@ SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::~Cl
 
 bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return component.is_set
 	|| srg_show_idb_client_eoms_pending.is_set
 	|| srg_show_idb_client_sync_eod_pending.is_set
@@ -2833,9 +2870,11 @@ bool SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientStatus
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummaries()
+    :
+    group_summary(this, {"group_id"})
 {
 
-    yang_name = "group-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::~GroupSummaries()
@@ -2844,7 +2883,8 @@ SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::~GroupSummaries()
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::has_data() const
 {
-    for (std::size_t index=0; index<group_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_summary.len(); index++)
     {
         if(group_summary[index]->has_data())
             return true;
@@ -2854,7 +2894,7 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::has_data() const
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<group_summary.size(); index++)
+    for (std::size_t index=0; index<group_summary.len(); index++)
     {
         if(group_summary[index]->has_operation())
             return true;
@@ -2884,7 +2924,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary>();
         c->parent = this;
-        group_summary.push_back(c);
+        group_summary.append(c);
         return c;
     }
 
@@ -2896,7 +2936,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_summary)
+    for (auto c : group_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2939,7 +2979,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::GroupSumma
     pending_add_session_count{YType::uint32, "pending-add-session-count"}
 {
 
-    yang_name = "group-summary"; yang_parent_name = "group-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-summary"; yang_parent_name = "group-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::~GroupSummary()
@@ -2948,6 +2988,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::~GroupSumm
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return group_id.is_set
 	|| group_id_xr.is_set
 	|| role.is_set
@@ -2984,7 +3025,8 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::has_o
 std::string SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-summary" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "group-summary";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -3168,9 +3210,11 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::has_l
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupIds()
+    :
+    group_id(this, {"group_id"})
 {
 
-    yang_name = "group-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-ids"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIds::~GroupIds()
@@ -3179,7 +3223,8 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIds::~GroupIds()
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::has_data() const
 {
-    for (std::size_t index=0; index<group_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_id.len(); index++)
     {
         if(group_id[index]->has_data())
             return true;
@@ -3189,7 +3234,7 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::has_data() const
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::has_operation() const
 {
-    for (std::size_t index=0; index<group_id.size(); index++)
+    for (std::size_t index=0; index<group_id.len(); index++)
     {
         if(group_id[index]->has_operation())
             return true;
@@ -3219,7 +3264,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::get_ch
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId>();
         c->parent = this;
-        group_id.push_back(c);
+        group_id.append(c);
         return c;
     }
 
@@ -3231,7 +3276,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_id)
+    for (auto c : group_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3298,9 +3343,11 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::GroupId()
     interface_count{YType::uint32, "interface-count"},
     revertive_timer{YType::uint32, "revertive-timer"},
     switchover_revert_time{YType::uint32, "switchover-revert-time"}
+        ,
+    interface(this, {})
 {
 
-    yang_name = "group-id"; yang_parent_name = "group-ids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-id"; yang_parent_name = "group-ids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::~GroupId()
@@ -3309,7 +3356,8 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::~GroupId()
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3357,7 +3405,7 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_data() const
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3407,7 +3455,8 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::has_operation() 
 std::string SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-id" <<"[group-id='" <<group_id <<"']";
+    path_buffer << "group-id";
+    ADD_KEY_TOKEN(group_id, "group-id");
     return path_buffer.str();
 }
 
@@ -3465,7 +3514,7 @@ std::shared_ptr<Entity> SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupI
     {
         auto c = std::make_shared<SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3477,7 +3526,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberRedundancyAgent::Nodes:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3901,7 +3950,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::Interface(
     session_count{YType::uint32, "session-count"}
 {
 
-    yang_name = "interface"; yang_parent_name = "group-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "group-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::~Interface()
@@ -3910,6 +3959,7 @@ SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::~Interface
 
 bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_synchronization_id.is_set
 	|| forward_referenced.is_set
@@ -4012,12 +4062,25 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::has_l
     return false;
 }
 
+const Enum::YLeaf SrgShowImRole::none {0, "none"};
+const Enum::YLeaf SrgShowImRole::master {1, "master"};
+const Enum::YLeaf SrgShowImRole::slave {2, "slave"};
+
+const Enum::YLeaf SrgShowSessionError::none {0, "none"};
+const Enum::YLeaf SrgShowSessionError::hard {1, "hard"};
+const Enum::YLeaf SrgShowSessionError::soft {2, "soft"};
+
 const Enum::YLeaf SrgShowSoReason::internal {0, "internal"};
 const Enum::YLeaf SrgShowSoReason::admin {1, "admin"};
 const Enum::YLeaf SrgShowSoReason::peer_up {2, "peer-up"};
 const Enum::YLeaf SrgShowSoReason::peer_down {3, "peer-down"};
 const Enum::YLeaf SrgShowSoReason::object_tracking_status_change {4, "object-tracking-status-change"};
 const Enum::YLeaf SrgShowSoReason::srg_show_so_reason_max {5, "srg-show-so-reason-max"};
+
+const Enum::YLeaf SrgShowSessionOperation::none {0, "none"};
+const Enum::YLeaf SrgShowSessionOperation::update {1, "update"};
+const Enum::YLeaf SrgShowSessionOperation::delete_ {2, "delete"};
+const Enum::YLeaf SrgShowSessionOperation::in_sync {3, "in-sync"};
 
 const Enum::YLeaf SrgPeerStatus::not_configured {0, "not-configured"};
 const Enum::YLeaf SrgPeerStatus::initialize {1, "initialize"};
@@ -4029,14 +4092,13 @@ const Enum::YLeaf SrgPeerStatus::cleanup {6, "cleanup"};
 const Enum::YLeaf SrgPeerStatus::connected {7, "connected"};
 const Enum::YLeaf SrgPeerStatus::established {8, "established"};
 
-const Enum::YLeaf SrgShowSessionError::none {0, "none"};
-const Enum::YLeaf SrgShowSessionError::hard {1, "hard"};
-const Enum::YLeaf SrgShowSessionError::soft {2, "soft"};
+const Enum::YLeaf SrgShowRole::none {0, "none"};
+const Enum::YLeaf SrgShowRole::master {1, "master"};
+const Enum::YLeaf SrgShowRole::slave {2, "slave"};
 
-const Enum::YLeaf SrgShowSessionOperation::none {0, "none"};
-const Enum::YLeaf SrgShowSessionOperation::update {1, "update"};
-const Enum::YLeaf SrgShowSessionOperation::delete_ {2, "delete"};
-const Enum::YLeaf SrgShowSessionOperation::in_sync {3, "in-sync"};
+const Enum::YLeaf SrgShowSlaveMode::none {0, "none"};
+const Enum::YLeaf SrgShowSlaveMode::warm {1, "warm"};
+const Enum::YLeaf SrgShowSlaveMode::hot {2, "hot"};
 
 const Enum::YLeaf SrgShowComp::srga {0, "srga"};
 const Enum::YLeaf SrgShowComp::dhcpv4 {1, "dhcpv4"};
@@ -4045,18 +4107,6 @@ const Enum::YLeaf SrgShowComp::pppoe {3, "pppoe"};
 const Enum::YLeaf SrgShowComp::ppp {4, "ppp"};
 const Enum::YLeaf SrgShowComp::l2tp {5, "l2tp"};
 const Enum::YLeaf SrgShowComp::iedge {6, "iedge"};
-
-const Enum::YLeaf SrgShowSlaveMode::none {0, "none"};
-const Enum::YLeaf SrgShowSlaveMode::warm {1, "warm"};
-const Enum::YLeaf SrgShowSlaveMode::hot {2, "hot"};
-
-const Enum::YLeaf SrgShowRole::none {0, "none"};
-const Enum::YLeaf SrgShowRole::master {1, "master"};
-const Enum::YLeaf SrgShowRole::slave {2, "slave"};
-
-const Enum::YLeaf SrgShowImRole::none {0, "none"};
-const Enum::YLeaf SrgShowImRole::master {1, "master"};
-const Enum::YLeaf SrgShowImRole::slave {2, "slave"};
 
 
 }

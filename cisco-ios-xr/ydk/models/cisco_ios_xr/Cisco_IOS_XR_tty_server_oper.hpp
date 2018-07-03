@@ -62,7 +62,7 @@ class Tty::ConsoleNodes : public ydk::Entity
 
         class ConsoleNode; //type: Tty::ConsoleNodes::ConsoleNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::ConsoleNodes::ConsoleNode> > console_node;
+        ydk::YList console_node;
         
 }; // Tty::ConsoleNodes
 
@@ -409,7 +409,7 @@ class Tty::VtyLines : public ydk::Entity
 
         class VtyLine; //type: Tty::VtyLines::VtyLine
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::VtyLines::VtyLine> > vty_line;
+        ydk::YList vty_line;
         
 }; // Tty::VtyLines
 
@@ -728,7 +728,7 @@ class Tty::VtyLines::VtyLine::Sessions : public ydk::Entity
 
         class OutgoingConnection; //type: Tty::VtyLines::VtyLine::Sessions::OutgoingConnection
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::VtyLines::VtyLine::Sessions::OutgoingConnection> > outgoing_connection;
+        ydk::YList outgoing_connection;
         
 }; // Tty::VtyLines::VtyLine::Sessions
 
@@ -803,7 +803,7 @@ class Tty::AuxiliaryNodes : public ydk::Entity
 
         class AuxiliaryNode; //type: Tty::AuxiliaryNodes::AuxiliaryNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_server_oper::Tty::AuxiliaryNodes::AuxiliaryNode> > auxiliary_node;
+        ydk::YList auxiliary_node;
         
 }; // Tty::AuxiliaryNodes
 

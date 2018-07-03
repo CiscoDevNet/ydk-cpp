@@ -58,7 +58,7 @@ class Ipv6Virtual::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv6Virtual::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_smiap_cfg::Ipv6Virtual::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv6Virtual::Vrfs
 

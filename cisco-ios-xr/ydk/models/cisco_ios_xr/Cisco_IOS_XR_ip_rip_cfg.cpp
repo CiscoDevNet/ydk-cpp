@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_rip_cfg {
 Rip::Rip()
     :
     default_vrf(std::make_shared<Rip::DefaultVrf>())
-	,vrfs(std::make_shared<Rip::Vrfs>())
+    , vrfs(std::make_shared<Rip::Vrfs>())
 {
     default_vrf->parent = this;
     vrfs->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "Cisco-IOS-XR-ip-rip-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rip"; yang_parent_name = "Cisco-IOS-XR-ip-rip-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Rip::~Rip()
@@ -28,6 +28,7 @@ Rip::~Rip()
 
 bool Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_vrf !=  nullptr && default_vrf->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
@@ -148,20 +149,20 @@ Rip::DefaultVrf::DefaultVrf()
     maximum_paths{YType::uint32, "maximum-paths"},
     nsf{YType::empty, "nsf"},
     policy_in{YType::str, "policy-in"}
-    	,
+        ,
     default_information(nullptr) // presence node
-	,redistribution(std::make_shared<Rip::DefaultVrf::Redistribution>())
-	,ip_distances(std::make_shared<Rip::DefaultVrf::IpDistances>())
-	,interfaces(std::make_shared<Rip::DefaultVrf::Interfaces>())
-	,neighbors(std::make_shared<Rip::DefaultVrf::Neighbors>())
-	,timers(nullptr) // presence node
+    , redistribution(std::make_shared<Rip::DefaultVrf::Redistribution>())
+    , ip_distances(std::make_shared<Rip::DefaultVrf::IpDistances>())
+    , interfaces(std::make_shared<Rip::DefaultVrf::Interfaces>())
+    , neighbors(std::make_shared<Rip::DefaultVrf::Neighbors>())
+    , timers(nullptr) // presence node
 {
     redistribution->parent = this;
     ip_distances->parent = this;
     interfaces->parent = this;
     neighbors->parent = this;
 
-    yang_name = "default-vrf"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-vrf"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::~DefaultVrf()
@@ -170,6 +171,7 @@ Rip::DefaultVrf::~DefaultVrf()
 
 bool Rip::DefaultVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| broadcast_for_v2.is_set
 	|| distance.is_set
@@ -472,7 +474,7 @@ Rip::DefaultVrf::DefaultInformation::DefaultInformation()
     option{YType::enumeration, "option"}
 {
 
-    yang_name = "default-information"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-information"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Rip::DefaultVrf::DefaultInformation::~DefaultInformation()
@@ -481,6 +483,7 @@ Rip::DefaultVrf::DefaultInformation::~DefaultInformation()
 
 bool Rip::DefaultVrf::DefaultInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| option.is_set;
 }
@@ -567,18 +570,18 @@ bool Rip::DefaultVrf::DefaultInformation::has_leaf_or_child_of_name(const std::s
 Rip::DefaultVrf::Redistribution::Redistribution()
     :
     connected(nullptr) // presence node
-	,bgps(std::make_shared<Rip::DefaultVrf::Redistribution::Bgps>())
-	,isises(std::make_shared<Rip::DefaultVrf::Redistribution::Isises>())
-	,eigrp_s(std::make_shared<Rip::DefaultVrf::Redistribution::EigrpS>())
-	,static_(nullptr) // presence node
-	,ospfs(std::make_shared<Rip::DefaultVrf::Redistribution::Ospfs>())
+    , bgps(std::make_shared<Rip::DefaultVrf::Redistribution::Bgps>())
+    , isises(std::make_shared<Rip::DefaultVrf::Redistribution::Isises>())
+    , eigrp_s(std::make_shared<Rip::DefaultVrf::Redistribution::EigrpS>())
+    , static_(nullptr) // presence node
+    , ospfs(std::make_shared<Rip::DefaultVrf::Redistribution::Ospfs>())
 {
     bgps->parent = this;
     isises->parent = this;
     eigrp_s->parent = this;
     ospfs->parent = this;
 
-    yang_name = "redistribution"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redistribution"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::~Redistribution()
@@ -587,6 +590,7 @@ Rip::DefaultVrf::Redistribution::~Redistribution()
 
 bool Rip::DefaultVrf::Redistribution::has_data() const
 {
+    if (is_presence_container) return true;
     return (connected !=  nullptr && connected->has_data())
 	|| (bgps !=  nullptr && bgps->has_data())
 	|| (isises !=  nullptr && isises->has_data())
@@ -746,7 +750,7 @@ Rip::DefaultVrf::Redistribution::Connected::Connected()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "connected"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "connected"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Rip::DefaultVrf::Redistribution::Connected::~Connected()
@@ -755,6 +759,7 @@ Rip::DefaultVrf::Redistribution::Connected::~Connected()
 
 bool Rip::DefaultVrf::Redistribution::Connected::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| route_type.is_set;
 }
@@ -839,9 +844,11 @@ bool Rip::DefaultVrf::Redistribution::Connected::has_leaf_or_child_of_name(const
 }
 
 Rip::DefaultVrf::Redistribution::Bgps::Bgps()
+    :
+    bgp(this, {"asnxx", "asnyy"})
 {
 
-    yang_name = "bgps"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgps"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::Bgps::~Bgps()
@@ -850,7 +857,8 @@ Rip::DefaultVrf::Redistribution::Bgps::~Bgps()
 
 bool Rip::DefaultVrf::Redistribution::Bgps::has_data() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_data())
             return true;
@@ -860,7 +868,7 @@ bool Rip::DefaultVrf::Redistribution::Bgps::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Bgps::has_operation() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_operation())
             return true;
@@ -897,7 +905,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Bgps::get_child_by_name
     {
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::Bgps::Bgp>();
         c->parent = this;
-        bgp.push_back(c);
+        bgp.append(c);
         return c;
     }
 
@@ -909,7 +917,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp)
+    for (auto c : bgp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -943,7 +951,7 @@ Rip::DefaultVrf::Redistribution::Bgps::Bgp::Bgp()
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "bgps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "bgps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::Bgps::Bgp::~Bgp()
@@ -952,6 +960,7 @@ Rip::DefaultVrf::Redistribution::Bgps::Bgp::~Bgp()
 
 bool Rip::DefaultVrf::Redistribution::Bgps::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return asnxx.is_set
 	|| asnyy.is_set
 	|| policy.is_set
@@ -977,7 +986,9 @@ std::string Rip::DefaultVrf::Redistribution::Bgps::Bgp::get_absolute_path() cons
 std::string Rip::DefaultVrf::Redistribution::Bgps::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp" <<"[asnxx='" <<asnxx <<"']" <<"[asnyy='" <<asnyy <<"']";
+    path_buffer << "bgp";
+    ADD_KEY_TOKEN(asnxx, "asnxx");
+    ADD_KEY_TOKEN(asnyy, "asnyy");
     return path_buffer.str();
 }
 
@@ -1062,9 +1073,11 @@ bool Rip::DefaultVrf::Redistribution::Bgps::Bgp::has_leaf_or_child_of_name(const
 }
 
 Rip::DefaultVrf::Redistribution::Isises::Isises()
+    :
+    isis(this, {"isis_name"})
 {
 
-    yang_name = "isises"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "isises"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::Isises::~Isises()
@@ -1073,7 +1086,8 @@ Rip::DefaultVrf::Redistribution::Isises::~Isises()
 
 bool Rip::DefaultVrf::Redistribution::Isises::has_data() const
 {
-    for (std::size_t index=0; index<isis.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<isis.len(); index++)
     {
         if(isis[index]->has_data())
             return true;
@@ -1083,7 +1097,7 @@ bool Rip::DefaultVrf::Redistribution::Isises::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Isises::has_operation() const
 {
-    for (std::size_t index=0; index<isis.size(); index++)
+    for (std::size_t index=0; index<isis.len(); index++)
     {
         if(isis[index]->has_operation())
             return true;
@@ -1120,7 +1134,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Isises::get_child_by_na
     {
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::Isises::Isis>();
         c->parent = this;
-        isis.push_back(c);
+        isis.append(c);
         return c;
     }
 
@@ -1132,7 +1146,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : isis)
+    for (auto c : isis.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1165,7 +1179,7 @@ Rip::DefaultVrf::Redistribution::Isises::Isis::Isis()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "isis"; yang_parent_name = "isises"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "isis"; yang_parent_name = "isises"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::Isises::Isis::~Isis()
@@ -1174,6 +1188,7 @@ Rip::DefaultVrf::Redistribution::Isises::Isis::~Isis()
 
 bool Rip::DefaultVrf::Redistribution::Isises::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return isis_name.is_set
 	|| route_policy_name.is_set
 	|| route_type.is_set;
@@ -1197,7 +1212,8 @@ std::string Rip::DefaultVrf::Redistribution::Isises::Isis::get_absolute_path() c
 std::string Rip::DefaultVrf::Redistribution::Isises::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "isis" <<"[isis-name='" <<isis_name <<"']";
+    path_buffer << "isis";
+    ADD_KEY_TOKEN(isis_name, "isis-name");
     return path_buffer.str();
 }
 
@@ -1271,9 +1287,11 @@ bool Rip::DefaultVrf::Redistribution::Isises::Isis::has_leaf_or_child_of_name(co
 }
 
 Rip::DefaultVrf::Redistribution::EigrpS::EigrpS()
+    :
+    eigrp(this, {"as"})
 {
 
-    yang_name = "eigrp-s"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eigrp-s"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::EigrpS::~EigrpS()
@@ -1282,7 +1300,8 @@ Rip::DefaultVrf::Redistribution::EigrpS::~EigrpS()
 
 bool Rip::DefaultVrf::Redistribution::EigrpS::has_data() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -1292,7 +1311,7 @@ bool Rip::DefaultVrf::Redistribution::EigrpS::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::EigrpS::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -1329,7 +1348,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::EigrpS::get_child_by_na
     {
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::EigrpS::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -1341,7 +1360,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1374,7 +1393,7 @@ Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::Eigrp()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "eigrp-s"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eigrp"; yang_parent_name = "eigrp-s"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::~Eigrp()
@@ -1383,6 +1402,7 @@ Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::~Eigrp()
 
 bool Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| route_policy_name.is_set
 	|| route_type.is_set;
@@ -1406,7 +1426,8 @@ std::string Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::get_absolute_path() 
 std::string Rip::DefaultVrf::Redistribution::EigrpS::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[as='" <<as <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(as, "as");
     return path_buffer.str();
 }
 
@@ -1485,7 +1506,7 @@ Rip::DefaultVrf::Redistribution::Static::Static()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "static"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Rip::DefaultVrf::Redistribution::Static::~Static()
@@ -1494,6 +1515,7 @@ Rip::DefaultVrf::Redistribution::Static::~Static()
 
 bool Rip::DefaultVrf::Redistribution::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| route_type.is_set;
 }
@@ -1578,9 +1600,11 @@ bool Rip::DefaultVrf::Redistribution::Static::has_leaf_or_child_of_name(const st
 }
 
 Rip::DefaultVrf::Redistribution::Ospfs::Ospfs()
+    :
+    ospf(this, {"ospf_name"})
 {
 
-    yang_name = "ospfs"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfs"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::Ospfs::~Ospfs()
@@ -1589,7 +1613,8 @@ Rip::DefaultVrf::Redistribution::Ospfs::~Ospfs()
 
 bool Rip::DefaultVrf::Redistribution::Ospfs::has_data() const
 {
-    for (std::size_t index=0; index<ospf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_data())
             return true;
@@ -1599,7 +1624,7 @@ bool Rip::DefaultVrf::Redistribution::Ospfs::has_data() const
 
 bool Rip::DefaultVrf::Redistribution::Ospfs::has_operation() const
 {
-    for (std::size_t index=0; index<ospf.size(); index++)
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_operation())
             return true;
@@ -1636,7 +1661,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Redistribution::Ospfs::get_child_by_nam
     {
         auto c = std::make_shared<Rip::DefaultVrf::Redistribution::Ospfs::Ospf>();
         c->parent = this;
-        ospf.push_back(c);
+        ospf.append(c);
         return c;
     }
 
@@ -1648,7 +1673,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Redistribution::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf)
+    for (auto c : ospf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1685,7 +1710,7 @@ Rip::DefaultVrf::Redistribution::Ospfs::Ospf::Ospf()
     nssa_external_type{YType::uint32, "nssa-external-type"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "ospfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf"; yang_parent_name = "ospfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Redistribution::Ospfs::Ospf::~Ospf()
@@ -1694,6 +1719,7 @@ Rip::DefaultVrf::Redistribution::Ospfs::Ospf::~Ospf()
 
 bool Rip::DefaultVrf::Redistribution::Ospfs::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return ospf_name.is_set
 	|| route_policy_name.is_set
 	|| internal.is_set
@@ -1725,7 +1751,8 @@ std::string Rip::DefaultVrf::Redistribution::Ospfs::Ospf::get_absolute_path() co
 std::string Rip::DefaultVrf::Redistribution::Ospfs::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf" <<"[ospf-name='" <<ospf_name <<"']";
+    path_buffer << "ospf";
+    ADD_KEY_TOKEN(ospf_name, "ospf-name");
     return path_buffer.str();
 }
 
@@ -1843,9 +1870,11 @@ bool Rip::DefaultVrf::Redistribution::Ospfs::Ospf::has_leaf_or_child_of_name(con
 }
 
 Rip::DefaultVrf::IpDistances::IpDistances()
+    :
+    ip_distance(this, {"address", "netmask"})
 {
 
-    yang_name = "ip-distances"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-distances"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::IpDistances::~IpDistances()
@@ -1854,7 +1883,8 @@ Rip::DefaultVrf::IpDistances::~IpDistances()
 
 bool Rip::DefaultVrf::IpDistances::has_data() const
 {
-    for (std::size_t index=0; index<ip_distance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ip_distance.len(); index++)
     {
         if(ip_distance[index]->has_data())
             return true;
@@ -1864,7 +1894,7 @@ bool Rip::DefaultVrf::IpDistances::has_data() const
 
 bool Rip::DefaultVrf::IpDistances::has_operation() const
 {
-    for (std::size_t index=0; index<ip_distance.size(); index++)
+    for (std::size_t index=0; index<ip_distance.len(); index++)
     {
         if(ip_distance[index]->has_operation())
             return true;
@@ -1901,7 +1931,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::IpDistances::get_child_by_name(const st
     {
         auto c = std::make_shared<Rip::DefaultVrf::IpDistances::IpDistance>();
         c->parent = this;
-        ip_distance.push_back(c);
+        ip_distance.append(c);
         return c;
     }
 
@@ -1913,7 +1943,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::IpDistances::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ip_distance)
+    for (auto c : ip_distance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1946,7 +1976,7 @@ Rip::DefaultVrf::IpDistances::IpDistance::IpDistance()
     distance{YType::uint32, "distance"}
 {
 
-    yang_name = "ip-distance"; yang_parent_name = "ip-distances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip-distance"; yang_parent_name = "ip-distances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::IpDistances::IpDistance::~IpDistance()
@@ -1955,6 +1985,7 @@ Rip::DefaultVrf::IpDistances::IpDistance::~IpDistance()
 
 bool Rip::DefaultVrf::IpDistances::IpDistance::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| netmask.is_set
 	|| distance.is_set;
@@ -1978,7 +2009,9 @@ std::string Rip::DefaultVrf::IpDistances::IpDistance::get_absolute_path() const
 std::string Rip::DefaultVrf::IpDistances::IpDistance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ip-distance" <<"[address='" <<address <<"']" <<"[netmask='" <<netmask <<"']";
+    path_buffer << "ip-distance";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(netmask, "netmask");
     return path_buffer.str();
 }
 
@@ -2052,9 +2085,11 @@ bool Rip::DefaultVrf::IpDistances::IpDistance::has_leaf_or_child_of_name(const s
 }
 
 Rip::DefaultVrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Interfaces::~Interfaces()
@@ -2063,7 +2098,8 @@ Rip::DefaultVrf::Interfaces::~Interfaces()
 
 bool Rip::DefaultVrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2073,7 +2109,7 @@ bool Rip::DefaultVrf::Interfaces::has_data() const
 
 bool Rip::DefaultVrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2110,7 +2146,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Interfaces::get_child_by_name(const std
     {
         auto c = std::make_shared<Rip::DefaultVrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2122,7 +2158,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Interfaces::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2159,17 +2195,17 @@ Rip::DefaultVrf::Interfaces::Interface::Interface()
     accept_metric_zero{YType::empty, "accept-metric-zero"},
     policy_in{YType::str, "policy-in"},
     split_horizon_disable{YType::empty, "split-horizon-disable"}
-    	,
+        ,
     authentication(nullptr) // presence node
-	,site_of_origin(std::make_shared<Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin>())
-	,receive_version(std::make_shared<Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion>())
-	,send_version(std::make_shared<Rip::DefaultVrf::Interfaces::Interface::SendVersion>())
+    , site_of_origin(std::make_shared<Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin>())
+    , receive_version(std::make_shared<Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion>())
+    , send_version(std::make_shared<Rip::DefaultVrf::Interfaces::Interface::SendVersion>())
 {
     site_of_origin->parent = this;
     receive_version->parent = this;
     send_version->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Interfaces::Interface::~Interface()
@@ -2178,6 +2214,7 @@ Rip::DefaultVrf::Interfaces::Interface::~Interface()
 
 bool Rip::DefaultVrf::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| broadcast_for_v2.is_set
 	|| poison_reverse.is_set
@@ -2221,7 +2258,8 @@ std::string Rip::DefaultVrf::Interfaces::Interface::get_absolute_path() const
 std::string Rip::DefaultVrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2422,7 +2460,7 @@ Rip::DefaultVrf::Interfaces::Interface::Authentication::Authentication()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Rip::DefaultVrf::Interfaces::Interface::Authentication::~Authentication()
@@ -2431,6 +2469,7 @@ Rip::DefaultVrf::Interfaces::Interface::Authentication::~Authentication()
 
 bool Rip::DefaultVrf::Interfaces::Interface::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return keychain.is_set
 	|| mode.is_set;
 }
@@ -2517,7 +2556,7 @@ Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::SiteOfOrigin()
     address_index{YType::uint32, "address-index"}
 {
 
-    yang_name = "site-of-origin"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "site-of-origin"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::~SiteOfOrigin()
@@ -2526,6 +2565,7 @@ Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::~SiteOfOrigin()
 
 bool Rip::DefaultVrf::Interfaces::Interface::SiteOfOrigin::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| as_xx.is_set
 	|| as_yy.is_set
@@ -2660,7 +2700,7 @@ Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::ReceiveVersion()
     version2{YType::boolean, "version2"}
 {
 
-    yang_name = "receive-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::~ReceiveVersion()
@@ -2669,6 +2709,7 @@ Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::~ReceiveVersion()
 
 bool Rip::DefaultVrf::Interfaces::Interface::ReceiveVersion::has_data() const
 {
+    if (is_presence_container) return true;
     return version1.is_set
 	|| version2.is_set;
 }
@@ -2751,7 +2792,7 @@ Rip::DefaultVrf::Interfaces::Interface::SendVersion::SendVersion()
     version2{YType::boolean, "version2"}
 {
 
-    yang_name = "send-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::DefaultVrf::Interfaces::Interface::SendVersion::~SendVersion()
@@ -2760,6 +2801,7 @@ Rip::DefaultVrf::Interfaces::Interface::SendVersion::~SendVersion()
 
 bool Rip::DefaultVrf::Interfaces::Interface::SendVersion::has_data() const
 {
+    if (is_presence_container) return true;
     return version1.is_set
 	|| version2.is_set;
 }
@@ -2837,9 +2879,11 @@ bool Rip::DefaultVrf::Interfaces::Interface::SendVersion::has_leaf_or_child_of_n
 }
 
 Rip::DefaultVrf::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor_address"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Neighbors::~Neighbors()
@@ -2848,7 +2892,8 @@ Rip::DefaultVrf::Neighbors::~Neighbors()
 
 bool Rip::DefaultVrf::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -2858,7 +2903,7 @@ bool Rip::DefaultVrf::Neighbors::has_data() const
 
 bool Rip::DefaultVrf::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -2895,7 +2940,7 @@ std::shared_ptr<Entity> Rip::DefaultVrf::Neighbors::get_child_by_name(const std:
     {
         auto c = std::make_shared<Rip::DefaultVrf::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -2907,7 +2952,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::DefaultVrf::Neighbors::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2938,7 +2983,7 @@ Rip::DefaultVrf::Neighbors::Neighbor::Neighbor()
     neighbor_address{YType::str, "neighbor-address"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::DefaultVrf::Neighbors::Neighbor::~Neighbor()
@@ -2947,6 +2992,7 @@ Rip::DefaultVrf::Neighbors::Neighbor::~Neighbor()
 
 bool Rip::DefaultVrf::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set;
 }
 
@@ -2966,7 +3012,8 @@ std::string Rip::DefaultVrf::Neighbors::Neighbor::get_absolute_path() const
 std::string Rip::DefaultVrf::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-address='" <<neighbor_address <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
     return path_buffer.str();
 }
 
@@ -3025,7 +3072,7 @@ Rip::DefaultVrf::Timers::Timers()
     flush_timer{YType::uint32, "flush-timer"}
 {
 
-    yang_name = "timers"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timers"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Rip::DefaultVrf::Timers::~Timers()
@@ -3034,6 +3081,7 @@ Rip::DefaultVrf::Timers::~Timers()
 
 bool Rip::DefaultVrf::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return update_timer.is_set
 	|| invalid_timer.is_set
 	|| holddown_timer.is_set
@@ -3144,9 +3192,11 @@ bool Rip::DefaultVrf::Timers::has_leaf_or_child_of_name(const std::string & name
 }
 
 Rip::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Vrfs::~Vrfs()
@@ -3155,7 +3205,8 @@ Rip::Vrfs::~Vrfs()
 
 bool Rip::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -3165,7 +3216,7 @@ bool Rip::Vrfs::has_data() const
 
 bool Rip::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -3202,7 +3253,7 @@ std::shared_ptr<Entity> Rip::Vrfs::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -3214,7 +3265,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3254,20 +3305,20 @@ Rip::Vrfs::Vrf::Vrf()
     maximum_paths{YType::uint32, "maximum-paths"},
     nsf{YType::empty, "nsf"},
     policy_in{YType::str, "policy-in"}
-    	,
+        ,
     default_information(nullptr) // presence node
-	,redistribution(std::make_shared<Rip::Vrfs::Vrf::Redistribution>())
-	,ip_distances(std::make_shared<Rip::Vrfs::Vrf::IpDistances>())
-	,interfaces(std::make_shared<Rip::Vrfs::Vrf::Interfaces>())
-	,neighbors(std::make_shared<Rip::Vrfs::Vrf::Neighbors>())
-	,timers(nullptr) // presence node
+    , redistribution(std::make_shared<Rip::Vrfs::Vrf::Redistribution>())
+    , ip_distances(std::make_shared<Rip::Vrfs::Vrf::IpDistances>())
+    , interfaces(std::make_shared<Rip::Vrfs::Vrf::Interfaces>())
+    , neighbors(std::make_shared<Rip::Vrfs::Vrf::Neighbors>())
+    , timers(nullptr) // presence node
 {
     redistribution->parent = this;
     ip_distances->parent = this;
     interfaces->parent = this;
     neighbors->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rip::Vrfs::Vrf::~Vrf()
@@ -3276,6 +3327,7 @@ Rip::Vrfs::Vrf::~Vrf()
 
 bool Rip::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| enable.is_set
 	|| broadcast_for_v2.is_set
@@ -3329,7 +3381,8 @@ std::string Rip::Vrfs::Vrf::get_absolute_path() const
 std::string Rip::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -3591,7 +3644,7 @@ Rip::Vrfs::Vrf::DefaultInformation::DefaultInformation()
     option{YType::enumeration, "option"}
 {
 
-    yang_name = "default-information"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-information"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Rip::Vrfs::Vrf::DefaultInformation::~DefaultInformation()
@@ -3600,6 +3653,7 @@ Rip::Vrfs::Vrf::DefaultInformation::~DefaultInformation()
 
 bool Rip::Vrfs::Vrf::DefaultInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| option.is_set;
 }
@@ -3679,18 +3733,18 @@ bool Rip::Vrfs::Vrf::DefaultInformation::has_leaf_or_child_of_name(const std::st
 Rip::Vrfs::Vrf::Redistribution::Redistribution()
     :
     connected(nullptr) // presence node
-	,bgps(std::make_shared<Rip::Vrfs::Vrf::Redistribution::Bgps>())
-	,isises(std::make_shared<Rip::Vrfs::Vrf::Redistribution::Isises>())
-	,eigrp_s(std::make_shared<Rip::Vrfs::Vrf::Redistribution::EigrpS>())
-	,static_(nullptr) // presence node
-	,ospfs(std::make_shared<Rip::Vrfs::Vrf::Redistribution::Ospfs>())
+    , bgps(std::make_shared<Rip::Vrfs::Vrf::Redistribution::Bgps>())
+    , isises(std::make_shared<Rip::Vrfs::Vrf::Redistribution::Isises>())
+    , eigrp_s(std::make_shared<Rip::Vrfs::Vrf::Redistribution::EigrpS>())
+    , static_(nullptr) // presence node
+    , ospfs(std::make_shared<Rip::Vrfs::Vrf::Redistribution::Ospfs>())
 {
     bgps->parent = this;
     isises->parent = this;
     eigrp_s->parent = this;
     ospfs->parent = this;
 
-    yang_name = "redistribution"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistribution"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::~Redistribution()
@@ -3699,6 +3753,7 @@ Rip::Vrfs::Vrf::Redistribution::~Redistribution()
 
 bool Rip::Vrfs::Vrf::Redistribution::has_data() const
 {
+    if (is_presence_container) return true;
     return (connected !=  nullptr && connected->has_data())
 	|| (bgps !=  nullptr && bgps->has_data())
 	|| (isises !=  nullptr && isises->has_data())
@@ -3851,7 +3906,7 @@ Rip::Vrfs::Vrf::Redistribution::Connected::Connected()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "connected"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connected"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Connected::~Connected()
@@ -3860,6 +3915,7 @@ Rip::Vrfs::Vrf::Redistribution::Connected::~Connected()
 
 bool Rip::Vrfs::Vrf::Redistribution::Connected::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| route_type.is_set;
 }
@@ -3937,9 +3993,11 @@ bool Rip::Vrfs::Vrf::Redistribution::Connected::has_leaf_or_child_of_name(const 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Bgps::Bgps()
+    :
+    bgp(this, {"asnxx", "asnyy"})
 {
 
-    yang_name = "bgps"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgps"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Bgps::~Bgps()
@@ -3948,7 +4006,8 @@ Rip::Vrfs::Vrf::Redistribution::Bgps::~Bgps()
 
 bool Rip::Vrfs::Vrf::Redistribution::Bgps::has_data() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_data())
             return true;
@@ -3958,7 +4017,7 @@ bool Rip::Vrfs::Vrf::Redistribution::Bgps::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Bgps::has_operation() const
 {
-    for (std::size_t index=0; index<bgp.size(); index++)
+    for (std::size_t index=0; index<bgp.len(); index++)
     {
         if(bgp[index]->has_operation())
             return true;
@@ -3988,7 +4047,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Bgps::get_child_by_name(
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp>();
         c->parent = this;
-        bgp.push_back(c);
+        bgp.append(c);
         return c;
     }
 
@@ -4000,7 +4059,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::B
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp)
+    for (auto c : bgp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4034,7 +4093,7 @@ Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::Bgp()
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "bgps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp"; yang_parent_name = "bgps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::~Bgp()
@@ -4043,6 +4102,7 @@ Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::~Bgp()
 
 bool Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return asnxx.is_set
 	|| asnyy.is_set
 	|| policy.is_set
@@ -4061,7 +4121,9 @@ bool Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::has_operation() const
 std::string Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp" <<"[asnxx='" <<asnxx <<"']" <<"[asnyy='" <<asnyy <<"']";
+    path_buffer << "bgp";
+    ADD_KEY_TOKEN(asnxx, "asnxx");
+    ADD_KEY_TOKEN(asnyy, "asnyy");
     return path_buffer.str();
 }
 
@@ -4146,9 +4208,11 @@ bool Rip::Vrfs::Vrf::Redistribution::Bgps::Bgp::has_leaf_or_child_of_name(const 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Isises::Isises()
+    :
+    isis(this, {"isis_name"})
 {
 
-    yang_name = "isises"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isises"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Isises::~Isises()
@@ -4157,7 +4221,8 @@ Rip::Vrfs::Vrf::Redistribution::Isises::~Isises()
 
 bool Rip::Vrfs::Vrf::Redistribution::Isises::has_data() const
 {
-    for (std::size_t index=0; index<isis.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<isis.len(); index++)
     {
         if(isis[index]->has_data())
             return true;
@@ -4167,7 +4232,7 @@ bool Rip::Vrfs::Vrf::Redistribution::Isises::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Isises::has_operation() const
 {
-    for (std::size_t index=0; index<isis.size(); index++)
+    for (std::size_t index=0; index<isis.len(); index++)
     {
         if(isis[index]->has_operation())
             return true;
@@ -4197,7 +4262,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Isises::get_child_by_nam
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Isises::Isis>();
         c->parent = this;
-        isis.push_back(c);
+        isis.append(c);
         return c;
     }
 
@@ -4209,7 +4274,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : isis)
+    for (auto c : isis.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4242,7 +4307,7 @@ Rip::Vrfs::Vrf::Redistribution::Isises::Isis::Isis()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "isis"; yang_parent_name = "isises"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "isises"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Isises::Isis::~Isis()
@@ -4251,6 +4316,7 @@ Rip::Vrfs::Vrf::Redistribution::Isises::Isis::~Isis()
 
 bool Rip::Vrfs::Vrf::Redistribution::Isises::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return isis_name.is_set
 	|| route_policy_name.is_set
 	|| route_type.is_set;
@@ -4267,7 +4333,8 @@ bool Rip::Vrfs::Vrf::Redistribution::Isises::Isis::has_operation() const
 std::string Rip::Vrfs::Vrf::Redistribution::Isises::Isis::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "isis" <<"[isis-name='" <<isis_name <<"']";
+    path_buffer << "isis";
+    ADD_KEY_TOKEN(isis_name, "isis-name");
     return path_buffer.str();
 }
 
@@ -4341,9 +4408,11 @@ bool Rip::Vrfs::Vrf::Redistribution::Isises::Isis::has_leaf_or_child_of_name(con
 }
 
 Rip::Vrfs::Vrf::Redistribution::EigrpS::EigrpS()
+    :
+    eigrp(this, {"as"})
 {
 
-    yang_name = "eigrp-s"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp-s"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::EigrpS::~EigrpS()
@@ -4352,7 +4421,8 @@ Rip::Vrfs::Vrf::Redistribution::EigrpS::~EigrpS()
 
 bool Rip::Vrfs::Vrf::Redistribution::EigrpS::has_data() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -4362,7 +4432,7 @@ bool Rip::Vrfs::Vrf::Redistribution::EigrpS::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::EigrpS::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -4392,7 +4462,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::EigrpS::get_child_by_nam
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -4404,7 +4474,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::E
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4437,7 +4507,7 @@ Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::Eigrp()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "eigrp-s"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "eigrp-s"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::~Eigrp()
@@ -4446,6 +4516,7 @@ Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::~Eigrp()
 
 bool Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| route_policy_name.is_set
 	|| route_type.is_set;
@@ -4462,7 +4533,8 @@ bool Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::has_operation() const
 std::string Rip::Vrfs::Vrf::Redistribution::EigrpS::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[as='" <<as <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(as, "as");
     return path_buffer.str();
 }
 
@@ -4541,7 +4613,7 @@ Rip::Vrfs::Vrf::Redistribution::Static::Static()
     route_type{YType::enumeration, "route-type"}
 {
 
-    yang_name = "static"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Rip::Vrfs::Vrf::Redistribution::Static::~Static()
@@ -4550,6 +4622,7 @@ Rip::Vrfs::Vrf::Redistribution::Static::~Static()
 
 bool Rip::Vrfs::Vrf::Redistribution::Static::has_data() const
 {
+    if (is_presence_container) return true;
     return route_policy_name.is_set
 	|| route_type.is_set;
 }
@@ -4627,9 +4700,11 @@ bool Rip::Vrfs::Vrf::Redistribution::Static::has_leaf_or_child_of_name(const std
 }
 
 Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospfs()
+    :
+    ospf(this, {"ospf_name"})
 {
 
-    yang_name = "ospfs"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospfs"; yang_parent_name = "redistribution"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Ospfs::~Ospfs()
@@ -4638,7 +4713,8 @@ Rip::Vrfs::Vrf::Redistribution::Ospfs::~Ospfs()
 
 bool Rip::Vrfs::Vrf::Redistribution::Ospfs::has_data() const
 {
-    for (std::size_t index=0; index<ospf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_data())
             return true;
@@ -4648,7 +4724,7 @@ bool Rip::Vrfs::Vrf::Redistribution::Ospfs::has_data() const
 
 bool Rip::Vrfs::Vrf::Redistribution::Ospfs::has_operation() const
 {
-    for (std::size_t index=0; index<ospf.size(); index++)
+    for (std::size_t index=0; index<ospf.len(); index++)
     {
         if(ospf[index]->has_operation())
             return true;
@@ -4678,7 +4754,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Redistribution::Ospfs::get_child_by_name
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf>();
         c->parent = this;
-        ospf.push_back(c);
+        ospf.append(c);
         return c;
     }
 
@@ -4690,7 +4766,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Redistribution::O
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf)
+    for (auto c : ospf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4727,7 +4803,7 @@ Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::Ospf()
     nssa_external_type{YType::uint32, "nssa-external-type"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "ospfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf"; yang_parent_name = "ospfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::~Ospf()
@@ -4736,6 +4812,7 @@ Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::~Ospf()
 
 bool Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return ospf_name.is_set
 	|| route_policy_name.is_set
 	|| internal.is_set
@@ -4760,7 +4837,8 @@ bool Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::has_operation() const
 std::string Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf" <<"[ospf-name='" <<ospf_name <<"']";
+    path_buffer << "ospf";
+    ADD_KEY_TOKEN(ospf_name, "ospf-name");
     return path_buffer.str();
 }
 
@@ -4878,9 +4956,11 @@ bool Rip::Vrfs::Vrf::Redistribution::Ospfs::Ospf::has_leaf_or_child_of_name(cons
 }
 
 Rip::Vrfs::Vrf::IpDistances::IpDistances()
+    :
+    ip_distance(this, {"address", "netmask"})
 {
 
-    yang_name = "ip-distances"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-distances"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::IpDistances::~IpDistances()
@@ -4889,7 +4969,8 @@ Rip::Vrfs::Vrf::IpDistances::~IpDistances()
 
 bool Rip::Vrfs::Vrf::IpDistances::has_data() const
 {
-    for (std::size_t index=0; index<ip_distance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ip_distance.len(); index++)
     {
         if(ip_distance[index]->has_data())
             return true;
@@ -4899,7 +4980,7 @@ bool Rip::Vrfs::Vrf::IpDistances::has_data() const
 
 bool Rip::Vrfs::Vrf::IpDistances::has_operation() const
 {
-    for (std::size_t index=0; index<ip_distance.size(); index++)
+    for (std::size_t index=0; index<ip_distance.len(); index++)
     {
         if(ip_distance[index]->has_operation())
             return true;
@@ -4929,7 +5010,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::IpDistances::get_child_by_name(const std
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::IpDistances::IpDistance>();
         c->parent = this;
-        ip_distance.push_back(c);
+        ip_distance.append(c);
         return c;
     }
 
@@ -4941,7 +5022,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::IpDistances::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ip_distance)
+    for (auto c : ip_distance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4974,7 +5055,7 @@ Rip::Vrfs::Vrf::IpDistances::IpDistance::IpDistance()
     distance{YType::uint32, "distance"}
 {
 
-    yang_name = "ip-distance"; yang_parent_name = "ip-distances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-distance"; yang_parent_name = "ip-distances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::IpDistances::IpDistance::~IpDistance()
@@ -4983,6 +5064,7 @@ Rip::Vrfs::Vrf::IpDistances::IpDistance::~IpDistance()
 
 bool Rip::Vrfs::Vrf::IpDistances::IpDistance::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| netmask.is_set
 	|| distance.is_set;
@@ -4999,7 +5081,9 @@ bool Rip::Vrfs::Vrf::IpDistances::IpDistance::has_operation() const
 std::string Rip::Vrfs::Vrf::IpDistances::IpDistance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ip-distance" <<"[address='" <<address <<"']" <<"[netmask='" <<netmask <<"']";
+    path_buffer << "ip-distance";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(netmask, "netmask");
     return path_buffer.str();
 }
 
@@ -5073,9 +5157,11 @@ bool Rip::Vrfs::Vrf::IpDistances::IpDistance::has_leaf_or_child_of_name(const st
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::~Interfaces()
@@ -5084,7 +5170,8 @@ Rip::Vrfs::Vrf::Interfaces::~Interfaces()
 
 bool Rip::Vrfs::Vrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -5094,7 +5181,7 @@ bool Rip::Vrfs::Vrf::Interfaces::has_data() const
 
 bool Rip::Vrfs::Vrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -5124,7 +5211,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Interfaces::get_child_by_name(const std:
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -5136,7 +5223,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Interfaces::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5173,17 +5260,17 @@ Rip::Vrfs::Vrf::Interfaces::Interface::Interface()
     accept_metric_zero{YType::empty, "accept-metric-zero"},
     policy_in{YType::str, "policy-in"},
     split_horizon_disable{YType::empty, "split-horizon-disable"}
-    	,
+        ,
     authentication(nullptr) // presence node
-	,site_of_origin(std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin>())
-	,receive_version(std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion>())
-	,send_version(std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion>())
+    , site_of_origin(std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin>())
+    , receive_version(std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion>())
+    , send_version(std::make_shared<Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion>())
 {
     site_of_origin->parent = this;
     receive_version->parent = this;
     send_version->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::~Interface()
@@ -5192,6 +5279,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::~Interface()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| broadcast_for_v2.is_set
 	|| poison_reverse.is_set
@@ -5228,7 +5316,8 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 std::string Rip::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5429,7 +5518,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::Authentication()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::~Authentication()
@@ -5438,6 +5527,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::~Authentication()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return keychain.is_set
 	|| mode.is_set;
 }
@@ -5524,7 +5614,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::SiteOfOrigin()
     address_index{YType::uint32, "address-index"}
 {
 
-    yang_name = "site-of-origin"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "site-of-origin"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::~SiteOfOrigin()
@@ -5533,6 +5623,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::~SiteOfOrigin()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::SiteOfOrigin::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| as_xx.is_set
 	|| as_yy.is_set
@@ -5667,7 +5758,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::ReceiveVersion()
     version2{YType::boolean, "version2"}
 {
 
-    yang_name = "receive-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::~ReceiveVersion()
@@ -5676,6 +5767,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::~ReceiveVersion()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::ReceiveVersion::has_data() const
 {
+    if (is_presence_container) return true;
     return version1.is_set
 	|| version2.is_set;
 }
@@ -5758,7 +5850,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::SendVersion()
     version2{YType::boolean, "version2"}
 {
 
-    yang_name = "send-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-version"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::~SendVersion()
@@ -5767,6 +5859,7 @@ Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::~SendVersion()
 
 bool Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::has_data() const
 {
+    if (is_presence_container) return true;
     return version1.is_set
 	|| version2.is_set;
 }
@@ -5844,9 +5937,11 @@ bool Rip::Vrfs::Vrf::Interfaces::Interface::SendVersion::has_leaf_or_child_of_na
 }
 
 Rip::Vrfs::Vrf::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor_address"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Neighbors::~Neighbors()
@@ -5855,7 +5950,8 @@ Rip::Vrfs::Vrf::Neighbors::~Neighbors()
 
 bool Rip::Vrfs::Vrf::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -5865,7 +5961,7 @@ bool Rip::Vrfs::Vrf::Neighbors::has_data() const
 
 bool Rip::Vrfs::Vrf::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -5895,7 +5991,7 @@ std::shared_ptr<Entity> Rip::Vrfs::Vrf::Neighbors::get_child_by_name(const std::
     {
         auto c = std::make_shared<Rip::Vrfs::Vrf::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -5907,7 +6003,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rip::Vrfs::Vrf::Neighbors::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5938,7 +6034,7 @@ Rip::Vrfs::Vrf::Neighbors::Neighbor::Neighbor()
     neighbor_address{YType::str, "neighbor-address"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rip::Vrfs::Vrf::Neighbors::Neighbor::~Neighbor()
@@ -5947,6 +6043,7 @@ Rip::Vrfs::Vrf::Neighbors::Neighbor::~Neighbor()
 
 bool Rip::Vrfs::Vrf::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set;
 }
 
@@ -5959,7 +6056,8 @@ bool Rip::Vrfs::Vrf::Neighbors::Neighbor::has_operation() const
 std::string Rip::Vrfs::Vrf::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor-address='" <<neighbor_address <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
     return path_buffer.str();
 }
 
@@ -6018,7 +6116,7 @@ Rip::Vrfs::Vrf::Timers::Timers()
     flush_timer{YType::uint32, "flush-timer"}
 {
 
-    yang_name = "timers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Rip::Vrfs::Vrf::Timers::~Timers()
@@ -6027,6 +6125,7 @@ Rip::Vrfs::Vrf::Timers::~Timers()
 
 bool Rip::Vrfs::Vrf::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return update_timer.is_set
 	|| invalid_timer.is_set
 	|| holddown_timer.is_set
@@ -6129,26 +6228,26 @@ bool Rip::Vrfs::Vrf::Timers::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-const Enum::YLeaf RipExtCommunity::as {0, "as"};
-const Enum::YLeaf RipExtCommunity::ipv4_address {1, "ipv4-address"};
-const Enum::YLeaf RipExtCommunity::four_byte_as {2, "four-byte-as"};
-
-const Enum::YLeaf DefaultRedistRoute::all {0, "all"};
-
-const Enum::YLeaf DefaultInformationOption::always {0, "always"};
-const Enum::YLeaf DefaultInformationOption::policy {1, "policy"};
+const Enum::YLeaf RipAuthMode::text {2, "text"};
+const Enum::YLeaf RipAuthMode::md5 {3, "md5"};
 
 const Enum::YLeaf IsisRedistRoute::level1 {1, "level1"};
 const Enum::YLeaf IsisRedistRoute::level2 {2, "level2"};
 const Enum::YLeaf IsisRedistRoute::level1_and2 {3, "level1-and2"};
+
+const Enum::YLeaf DefaultInformationOption::always {0, "always"};
+const Enum::YLeaf DefaultInformationOption::policy {1, "policy"};
 
 const Enum::YLeaf BgpRedistRoute::all {0, "all"};
 const Enum::YLeaf BgpRedistRoute::internal {512, "internal"};
 const Enum::YLeaf BgpRedistRoute::external {1024, "external"};
 const Enum::YLeaf BgpRedistRoute::local {2048, "local"};
 
-const Enum::YLeaf RipAuthMode::text {2, "text"};
-const Enum::YLeaf RipAuthMode::md5 {3, "md5"};
+const Enum::YLeaf RipExtCommunity::as {0, "as"};
+const Enum::YLeaf RipExtCommunity::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf RipExtCommunity::four_byte_as {2, "four-byte-as"};
+
+const Enum::YLeaf DefaultRedistRoute::all {0, "all"};
 
 
 }

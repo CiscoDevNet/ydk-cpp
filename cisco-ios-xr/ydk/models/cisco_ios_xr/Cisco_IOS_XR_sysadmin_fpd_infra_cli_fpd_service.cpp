@@ -14,9 +14,11 @@ namespace Cisco_IOS_XR_sysadmin_fpd_infra_cli_fpd_service {
 Location::Location()
     :
     loc{YType::str, "loc"}
+        ,
+    fpd2(this, {"name"})
 {
 
-    yang_name = "location"; yang_parent_name = "Cisco-IOS-XR-sysadmin-fpd-infra-cli-fpd-service"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "Cisco-IOS-XR-sysadmin-fpd-infra-cli-fpd-service"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Location::~Location()
@@ -25,7 +27,8 @@ Location::~Location()
 
 bool Location::has_data() const
 {
-    for (std::size_t index=0; index<fpd2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fpd2.len(); index++)
     {
         if(fpd2[index]->has_data())
             return true;
@@ -35,7 +38,7 @@ bool Location::has_data() const
 
 bool Location::has_operation() const
 {
-    for (std::size_t index=0; index<fpd2.size(); index++)
+    for (std::size_t index=0; index<fpd2.len(); index++)
     {
         if(fpd2[index]->has_operation())
             return true;
@@ -47,7 +50,8 @@ bool Location::has_operation() const
 std::string Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-sysadmin-fpd-infra-cli-fpd-service:location" <<"[loc='" <<loc <<"']";
+    path_buffer << "Cisco-IOS-XR-sysadmin-fpd-infra-cli-fpd-service:location";
+    ADD_KEY_TOKEN(loc, "loc");
     return path_buffer.str();
 }
 
@@ -67,7 +71,7 @@ std::shared_ptr<Entity> Location::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<Location::Fpd2>();
         c->parent = this;
-        fpd2.push_back(c);
+        fpd2.append(c);
         return c;
     }
 
@@ -79,7 +83,7 @@ std::map<std::string, std::shared_ptr<Entity>> Location::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fpd2)
+    for (auto c : fpd2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -145,7 +149,7 @@ Location::Fpd2::Fpd2()
     name{YType::str, "name"}
 {
 
-    yang_name = "fpd2"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fpd2"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Location::Fpd2::~Fpd2()
@@ -154,6 +158,7 @@ Location::Fpd2::~Fpd2()
 
 bool Location::Fpd2::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -166,7 +171,8 @@ bool Location::Fpd2::has_operation() const
 std::string Location::Fpd2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fpd2" <<"[name='" <<name <<"']";
+    path_buffer << "fpd2";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

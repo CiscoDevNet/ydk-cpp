@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_pim_oper_5.hpp"
-#include "Cisco_IOS_XR_ipv4_pim_oper_6.hpp"
 #include "Cisco_IOS_XR_ipv4_pim_oper_7.hpp"
+#include "Cisco_IOS_XR_ipv4_pim_oper_6.hpp"
 
 using namespace ydk;
 
@@ -20,7 +20,7 @@ Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor::RpfNei
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rpf-neighbor"; yang_parent_name = "mib-database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-neighbor"; yang_parent_name = "mib-database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor::~RpfNeighbor()
@@ -29,6 +29,7 @@ Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor::~RpfNe
 
 bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -132,7 +133,7 @@ Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfRoot::RpfRoot()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rpf-root"; yang_parent_name = "mib-database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-root"; yang_parent_name = "mib-database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfRoot::~RpfRoot()
@@ -141,6 +142,7 @@ Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfRoot::~RpfRoot()
 
 bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfRoot::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -238,9 +240,11 @@ bool Ipv6Pim::Standby::DefaultContext::MibDatabases::MibDatabase::RpfRoot::has_l
 }
 
 Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormats()
+    :
+    neighbor_old_format(this, {})
 {
 
-    yang_name = "neighbor-old-formats"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-old-formats"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::~NeighborOldFormats()
@@ -249,7 +253,8 @@ Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::~NeighborOldFormats()
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_old_format.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_old_format.len(); index++)
     {
         if(neighbor_old_format[index]->has_data())
             return true;
@@ -259,7 +264,7 @@ bool Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_old_format.size(); index++)
+    for (std::size_t index=0; index<neighbor_old_format.len(); index++)
     {
         if(neighbor_old_format[index]->has_operation())
             return true;
@@ -296,7 +301,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::ge
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat>();
         c->parent = this;
-        neighbor_old_format.push_back(c);
+        neighbor_old_format.append(c);
         return c;
     }
 
@@ -308,7 +313,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_old_format)
+    for (auto c : neighbor_old_format.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -353,9 +358,11 @@ Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::Neighbo
     is_bfd_state{YType::boolean, "is-bfd-state"},
     propagation_delay{YType::uint16, "propagation-delay"},
     override_interval{YType::uint16, "override-interval"}
+        ,
+    neighbor_address_xr(this, {})
 {
 
-    yang_name = "neighbor-old-format"; yang_parent_name = "neighbor-old-formats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-old-format"; yang_parent_name = "neighbor-old-formats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::~NeighborOldFormat()
@@ -364,7 +371,8 @@ Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::~Neighb
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_address_xr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_address_xr.len(); index++)
     {
         if(neighbor_address_xr[index]->has_data())
             return true;
@@ -390,7 +398,7 @@ bool Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::ha
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_address_xr.size(); index++)
+    for (std::size_t index=0; index<neighbor_address_xr.len(); index++)
     {
         if(neighbor_address_xr[index]->has_operation())
             return true;
@@ -461,7 +469,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::Ne
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr>();
         c->parent = this;
-        neighbor_address_xr.push_back(c);
+        neighbor_address_xr.append(c);
         return c;
     }
 
@@ -473,7 +481,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_address_xr)
+    for (auto c : neighbor_address_xr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -676,7 +684,7 @@ Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::Neighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "neighbor-address-xr"; yang_parent_name = "neighbor-old-format"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-address-xr"; yang_parent_name = "neighbor-old-format"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::~NeighborAddressXr()
@@ -685,6 +693,7 @@ Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::Neighbo
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -787,7 +796,7 @@ Ipv6Pim::Standby::DefaultContext::IfrsSummary::IfrsSummary()
     configuration_count{YType::uint32, "configuration-count"}
 {
 
-    yang_name = "ifrs-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifrs-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::IfrsSummary::~IfrsSummary()
@@ -796,6 +805,7 @@ Ipv6Pim::Standby::DefaultContext::IfrsSummary::~IfrsSummary()
 
 bool Ipv6Pim::Standby::DefaultContext::IfrsSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_count.is_set
 	|| configuration_count.is_set;
 }
@@ -880,9 +890,11 @@ bool Ipv6Pim::Standby::DefaultContext::IfrsSummary::has_leaf_or_child_of_name(co
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::Ranges()
+    :
+    range(this, {})
 {
 
-    yang_name = "ranges"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ranges"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::~Ranges()
@@ -891,7 +903,8 @@ Ipv6Pim::Standby::DefaultContext::Ranges::~Ranges()
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::has_data() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_data())
             return true;
@@ -901,7 +914,7 @@ bool Ipv6Pim::Standby::DefaultContext::Ranges::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::has_operation() const
 {
-    for (std::size_t index=0; index<range.size(); index++)
+    for (std::size_t index=0; index<range.len(); index++)
     {
         if(range[index]->has_operation())
             return true;
@@ -938,7 +951,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Ranges::get_child_by_n
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range>();
         c->parent = this;
-        range.push_back(c);
+        range.append(c);
         return c;
     }
 
@@ -950,7 +963,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : range)
+    for (auto c : range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -983,14 +996,15 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::Range()
     protocol{YType::enumeration, "protocol"},
     client_xr{YType::enumeration, "client-xr"},
     expires{YType::uint64, "expires"}
-    	,
+        ,
     rp_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range::RpAddressXr>())
-	,source_of_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation>())
+    , source_of_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation>())
+    , group_range(this, {})
 {
     rp_address_xr->parent = this;
     source_of_information->parent = this;
 
-    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "range"; yang_parent_name = "ranges"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::Range::~Range()
@@ -999,7 +1013,8 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::~Range()
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::has_data() const
 {
-    for (std::size_t index=0; index<group_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_range.len(); index++)
     {
         if(group_range[index]->has_data())
             return true;
@@ -1015,7 +1030,7 @@ bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::has_operation() const
 {
-    for (std::size_t index=0; index<group_range.size(); index++)
+    for (std::size_t index=0; index<group_range.len(); index++)
     {
         if(group_range[index]->has_operation())
             return true;
@@ -1082,7 +1097,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Ranges::Range::get_chi
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange>();
         c->parent = this;
-        group_range.push_back(c);
+        group_range.append(c);
         return c;
     }
 
@@ -1104,7 +1119,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : group_range)
+    for (auto c : group_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1187,7 +1202,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::RpAddressXr::RpAddressXr()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address-xr"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::Range::RpAddressXr::~RpAddressXr()
@@ -1196,6 +1211,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::RpAddressXr::~RpAddressXr()
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::RpAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1299,7 +1315,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation::SourceOfIn
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-of-information"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-of-information"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation::~SourceOfInformation()
@@ -1308,6 +1324,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation::~SourceOfI
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1409,14 +1426,14 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::GroupRange()
     prefix_length{YType::int32, "prefix-length"},
     uptime{YType::uint64, "uptime"},
     expires{YType::uint64, "expires"}
-    	,
+        ,
     prefix(std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::Prefix>())
-	,source_of_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::SourceOfInformation>())
+    , source_of_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::SourceOfInformation>())
 {
     prefix->parent = this;
     source_of_information->parent = this;
 
-    yang_name = "group-range"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-range"; yang_parent_name = "range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::~GroupRange()
@@ -1425,6 +1442,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::~GroupRange()
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| uptime.is_set
 	|| expires.is_set
@@ -1560,7 +1578,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::Prefix::Prefix()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "group-range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "group-range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::Prefix::~Prefix()
@@ -1569,6 +1587,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::Prefix::~Prefix()
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1672,7 +1691,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::SourceOfInformation
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-of-information"; yang_parent_name = "group-range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-of-information"; yang_parent_name = "group-range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::SourceOfInformation::~SourceOfInformation()
@@ -1681,6 +1700,7 @@ Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::SourceOfInformation
 
 bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::SourceOfInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1778,9 +1798,11 @@ bool Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange::SourceOfInform
 }
 
 Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormats()
+    :
+    interface_old_format(this, {"interface_name"})
 {
 
-    yang_name = "interface-old-formats"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-old-formats"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::~InterfaceOldFormats()
@@ -1789,7 +1811,8 @@ Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::~InterfaceOldFormats()
 
 bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::has_data() const
 {
-    for (std::size_t index=0; index<interface_old_format.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_old_format.len(); index++)
     {
         if(interface_old_format[index]->has_data())
             return true;
@@ -1799,7 +1822,7 @@ bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::has_operation() const
 {
-    for (std::size_t index=0; index<interface_old_format.size(); index++)
+    for (std::size_t index=0; index<interface_old_format.len(); index++)
     {
         if(interface_old_format[index]->has_operation())
             return true;
@@ -1836,7 +1859,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::g
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat>();
         c->parent = this;
-        interface_old_format.push_back(c);
+        interface_old_format.append(c);
         return c;
     }
 
@@ -1848,7 +1871,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_old_format)
+    for (auto c : interface_old_format.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1908,12 +1931,13 @@ Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Inter
     idb_threshold_count{YType::uint32, "idb-threshold-count"},
     idb_current_count{YType::uint32, "idb-current-count"},
     idb_acl_name{YType::str, "idb-acl-name"}
-    	,
+        ,
     dr_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::DrAddress>())
+    , interface_address(this, {})
 {
     dr_address->parent = this;
 
-    yang_name = "interface-old-format"; yang_parent_name = "interface-old-formats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-old-format"; yang_parent_name = "interface-old-formats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::~InterfaceOldFormat()
@@ -1922,7 +1946,8 @@ Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::~Inte
 
 bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::has_data() const
 {
-    for (std::size_t index=0; index<interface_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_address.len(); index++)
     {
         if(interface_address[index]->has_data())
             return true;
@@ -1964,7 +1989,7 @@ bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::
 
 bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::has_operation() const
 {
-    for (std::size_t index=0; index<interface_address.size(); index++)
+    for (std::size_t index=0; index<interface_address.len(); index++)
     {
         if(interface_address[index]->has_operation())
             return true;
@@ -2015,7 +2040,8 @@ std::string Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldF
 std::string Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-old-format" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-old-format";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2075,7 +2101,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::I
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress>();
         c->parent = this;
-        interface_address.push_back(c);
+        interface_address.append(c);
         return c;
     }
 
@@ -2092,7 +2118,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : interface_address)
+    for (auto c : interface_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2445,7 +2471,7 @@ Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::DrAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "dr-address"; yang_parent_name = "interface-old-format"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dr-address"; yang_parent_name = "interface-old-format"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::DrAddress::~DrAddress()
@@ -2454,6 +2480,7 @@ Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::DrAdd
 
 bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::DrAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2550,7 +2577,7 @@ Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Inter
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "interface-address"; yang_parent_name = "interface-old-format"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-address"; yang_parent_name = "interface-old-format"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::~InterfaceAddress()
@@ -2559,6 +2586,7 @@ Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::Inter
 
 bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -2651,14 +2679,14 @@ bool Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::
 Ipv6Pim::Standby::DefaultContext::Bsr::Bsr()
     :
     rp_caches(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches>())
-	,candidate_rps(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps>())
-	,bsr_elections(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections>())
+    , candidate_rps(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps>())
+    , bsr_elections(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections>())
 {
     rp_caches->parent = this;
     candidate_rps->parent = this;
     bsr_elections->parent = this;
 
-    yang_name = "bsr"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bsr"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::~Bsr()
@@ -2667,6 +2695,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::~Bsr()
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::has_data() const
 {
+    if (is_presence_container) return true;
     return (rp_caches !=  nullptr && rp_caches->has_data())
 	|| (candidate_rps !=  nullptr && candidate_rps->has_data())
 	|| (bsr_elections !=  nullptr && bsr_elections->has_data());
@@ -2773,9 +2802,11 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::has_leaf_or_child_of_name(const std:
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCaches()
+    :
+    rp_cache(this, {"group_prefix"})
 {
 
-    yang_name = "rp-caches"; yang_parent_name = "bsr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-caches"; yang_parent_name = "bsr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::~RpCaches()
@@ -2784,7 +2815,8 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::~RpCaches()
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::has_data() const
 {
-    for (std::size_t index=0; index<rp_cache.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rp_cache.len(); index++)
     {
         if(rp_cache[index]->has_data())
             return true;
@@ -2794,7 +2826,7 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::has_operation() const
 {
-    for (std::size_t index=0; index<rp_cache.size(); index++)
+    for (std::size_t index=0; index<rp_cache.len(); index++)
     {
         if(rp_cache[index]->has_operation())
             return true;
@@ -2831,7 +2863,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::get_chi
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache>();
         c->parent = this;
-        rp_cache.push_back(c);
+        rp_cache.append(c);
         return c;
     }
 
@@ -2843,7 +2875,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rp_cache)
+    for (auto c : rp_cache.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2874,14 +2906,14 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::RpCache()
     group_prefix{YType::str, "group-prefix"},
     group_prefix_length{YType::uint32, "group-prefix-length"},
     candidate_rp_group_count{YType::uint32, "candidate-rp-group-count"}
-    	,
+        ,
     group_prefix_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::GroupPrefixXr>())
-	,candidate_rp_list(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList>())
+    , candidate_rp_list(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList>())
 {
     group_prefix_xr->parent = this;
     candidate_rp_list->parent = this;
 
-    yang_name = "rp-cache"; yang_parent_name = "rp-caches"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-cache"; yang_parent_name = "rp-caches"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::~RpCache()
@@ -2890,6 +2922,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::~RpCache()
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::has_data() const
 {
+    if (is_presence_container) return true;
     return group_prefix.is_set
 	|| group_prefix_length.is_set
 	|| candidate_rp_group_count.is_set
@@ -2917,7 +2950,8 @@ std::string Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::get_absolu
 std::string Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rp-cache" <<"[group-prefix='" <<group_prefix <<"']";
+    path_buffer << "rp-cache";
+    ADD_KEY_TOKEN(group_prefix, "group-prefix");
     return path_buffer.str();
 }
 
@@ -3025,7 +3059,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::GroupPrefixXr::GroupPr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-prefix-xr"; yang_parent_name = "rp-cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-prefix-xr"; yang_parent_name = "rp-cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::GroupPrefixXr::~GroupPrefixXr()
@@ -3034,6 +3068,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::GroupPrefixXr::~GroupP
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::GroupPrefixXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3124,9 +3159,11 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::GroupPrefixXr::ha
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::CandidateRpList()
+    :
+    pim_bsr_crp_bag(this, {})
 {
 
-    yang_name = "candidate-rp-list"; yang_parent_name = "rp-cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-rp-list"; yang_parent_name = "rp-cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::~CandidateRpList()
@@ -3135,7 +3172,8 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::~Cand
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::has_data() const
 {
-    for (std::size_t index=0; index<pim_bsr_crp_bag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pim_bsr_crp_bag.len(); index++)
     {
         if(pim_bsr_crp_bag[index]->has_data())
             return true;
@@ -3145,7 +3183,7 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::has_operation() const
 {
-    for (std::size_t index=0; index<pim_bsr_crp_bag.size(); index++)
+    for (std::size_t index=0; index<pim_bsr_crp_bag.len(); index++)
     {
         if(pim_bsr_crp_bag[index]->has_operation())
             return true;
@@ -3175,7 +3213,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag>();
         c->parent = this;
-        pim_bsr_crp_bag.push_back(c);
+        pim_bsr_crp_bag.append(c);
         return c;
     }
 
@@ -3187,7 +3225,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pim_bsr_crp_bag)
+    for (auto c : pim_bsr_crp_bag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3220,12 +3258,12 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
     candidate_rp_up_time{YType::uint16, "candidate-rp-up-time"},
     candidate_rp_expires{YType::uint16, "candidate-rp-expires"},
     protocol{YType::enumeration, "protocol"}
-    	,
+        ,
     candidate_rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
 {
     candidate_rp_address->parent = this;
 
-    yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::~PimBsrCrpBag()
@@ -3234,6 +3272,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate_rp_holdtime.is_set
 	|| candidate_rp_priority.is_set
 	|| candidate_rp_up_time.is_set
@@ -3372,7 +3411,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "candidate-rp-address"; yang_parent_name = "pim-bsr-crp-bag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-rp-address"; yang_parent_name = "pim-bsr-crp-bag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::~CandidateRpAddress()
@@ -3381,6 +3420,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3471,9 +3511,11 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRps()
+    :
+    candidate_rp(this, {"rp_address"})
 {
 
-    yang_name = "candidate-rps"; yang_parent_name = "bsr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "candidate-rps"; yang_parent_name = "bsr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::~CandidateRps()
@@ -3482,7 +3524,8 @@ Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::~CandidateRps()
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::has_data() const
 {
-    for (std::size_t index=0; index<candidate_rp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<candidate_rp.len(); index++)
     {
         if(candidate_rp[index]->has_data())
             return true;
@@ -3492,7 +3535,7 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::has_operation() const
 {
-    for (std::size_t index=0; index<candidate_rp.size(); index++)
+    for (std::size_t index=0; index<candidate_rp.len(); index++)
     {
         if(candidate_rp[index]->has_operation())
             return true;
@@ -3529,7 +3572,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::get
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp>();
         c->parent = this;
-        candidate_rp.push_back(c);
+        candidate_rp.append(c);
         return c;
     }
 
@@ -3541,7 +3584,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : candidate_rp)
+    for (auto c : candidate_rp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3577,12 +3620,13 @@ Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp()
     candidate_rp_advance_interval{YType::uint16, "candidate-rp-advance-interval"},
     candidate_rp_uptime{YType::uint16, "candidate-rp-uptime"},
     acl_name{YType::str, "acl-name"}
-    	,
+        ,
     candidate_rp(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp_>())
+    , crp_access(this, {})
 {
     candidate_rp->parent = this;
 
-    yang_name = "candidate-rp"; yang_parent_name = "candidate-rps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "candidate-rp"; yang_parent_name = "candidate-rps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::~CandidateRp()
@@ -3591,7 +3635,8 @@ Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::~CandidateRp()
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::has_data() const
 {
-    for (std::size_t index=0; index<crp_access.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<crp_access.len(); index++)
     {
         if(crp_access[index]->has_data())
             return true;
@@ -3609,7 +3654,7 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::has_data(
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::has_operation() const
 {
-    for (std::size_t index=0; index<crp_access.size(); index++)
+    for (std::size_t index=0; index<crp_access.len(); index++)
     {
         if(crp_access[index]->has_operation())
             return true;
@@ -3636,7 +3681,8 @@ std::string Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::ge
 std::string Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "candidate-rp" <<"[rp-address='" <<rp_address <<"']";
+    path_buffer << "candidate-rp";
+    ADD_KEY_TOKEN(rp_address, "rp-address");
     return path_buffer.str();
 }
 
@@ -3672,7 +3718,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::Can
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess>();
         c->parent = this;
-        crp_access.push_back(c);
+        crp_access.append(c);
         return c;
     }
 
@@ -3689,7 +3735,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : crp_access)
+    for (auto c : crp_access.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3802,7 +3848,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp_::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "candidate-rp"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-rp"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp_::~CandidateRp_()
@@ -3811,6 +3857,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp_::
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp_::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3906,7 +3953,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess::Crp
     acl_name{YType::str, "acl-name"}
 {
 
-    yang_name = "crp-access"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "crp-access"; yang_parent_name = "candidate-rp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess::~CrpAccess()
@@ -3915,6 +3962,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess::~Cr
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess::has_data() const
 {
+    if (is_presence_container) return true;
     return candidate_rp_mode.is_set
 	|| acl_name.is_set;
 }
@@ -3992,9 +4040,11 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElections()
+    :
+    bsr_election(this, {"pim_scope"})
 {
 
-    yang_name = "bsr-elections"; yang_parent_name = "bsr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bsr-elections"; yang_parent_name = "bsr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::~BsrElections()
@@ -4003,7 +4053,8 @@ Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::~BsrElections()
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::has_data() const
 {
-    for (std::size_t index=0; index<bsr_election.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bsr_election.len(); index++)
     {
         if(bsr_election[index]->has_data())
             return true;
@@ -4013,7 +4064,7 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::has_operation() const
 {
-    for (std::size_t index=0; index<bsr_election.size(); index++)
+    for (std::size_t index=0; index<bsr_election.len(); index++)
     {
         if(bsr_election[index]->has_operation())
             return true;
@@ -4050,7 +4101,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::get
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection>();
         c->parent = this;
-        bsr_election.push_back(c);
+        bsr_election.append(c);
         return c;
     }
 
@@ -4062,7 +4113,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bsr_election)
+    for (auto c : bsr_election.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4090,7 +4141,7 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::has_leaf_or_child_of_n
 
 Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::BsrElection()
     :
-    pim_scope{YType::int32, "pim-scope"},
+    pim_scope{YType::uint32, "pim-scope"},
     bsr_priority{YType::uint8, "bsr-priority"},
     bsr_mask_length{YType::uint8, "bsr-mask-length"},
     bsr_up_time{YType::uint16, "bsr-up-time"},
@@ -4101,14 +4152,14 @@ Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::BsrElection()
     candidate_bsr_flag{YType::boolean, "candidate-bsr-flag"},
     candidate_bsr_priority{YType::uint8, "candidate-bsr-priority"},
     candidate_bsr_mask_length{YType::uint8, "candidate-bsr-mask-length"}
-    	,
+        ,
     bsr_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::BsrAddress>())
-	,candidate_bsr_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::CandidateBsrAddress>())
+    , candidate_bsr_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::CandidateBsrAddress>())
 {
     bsr_address->parent = this;
     candidate_bsr_address->parent = this;
 
-    yang_name = "bsr-election"; yang_parent_name = "bsr-elections"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bsr-election"; yang_parent_name = "bsr-elections"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::~BsrElection()
@@ -4117,6 +4168,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::~BsrElection()
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::has_data() const
 {
+    if (is_presence_container) return true;
     return pim_scope.is_set
 	|| bsr_priority.is_set
 	|| bsr_mask_length.is_set
@@ -4160,7 +4212,8 @@ std::string Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::ge
 std::string Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bsr-election" <<"[pim-scope='" <<pim_scope <<"']";
+    path_buffer << "bsr-election";
+    ADD_KEY_TOKEN(pim_scope, "pim-scope");
     return path_buffer.str();
 }
 
@@ -4356,7 +4409,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::BsrAddress::Bs
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "bsr-address"; yang_parent_name = "bsr-election"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bsr-address"; yang_parent_name = "bsr-election"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::BsrAddress::~BsrAddress()
@@ -4365,6 +4418,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::BsrAddress::~B
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::BsrAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4461,7 +4515,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::CandidateBsrAd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "candidate-bsr-address"; yang_parent_name = "bsr-election"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-bsr-address"; yang_parent_name = "bsr-election"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::CandidateBsrAddress::~CandidateBsrAddress()
@@ -4470,6 +4524,7 @@ Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::CandidateBsrAd
 
 bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::CandidateBsrAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4562,12 +4617,12 @@ bool Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection::Candidate
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicy()
     :
     route_policy_statistics(std::make_shared<Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyStatistics>())
-	,route_policy_tests(std::make_shared<Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests>())
+    , route_policy_tests(std::make_shared<Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests>())
 {
     route_policy_statistics->parent = this;
     route_policy_tests->parent = this;
 
-    yang_name = "route-policy"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-policy"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::~RoutePolicy()
@@ -4576,6 +4631,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::~RoutePolicy()
 
 bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return (route_policy_statistics !=  nullptr && route_policy_statistics->has_data())
 	|| (route_policy_tests !=  nullptr && route_policy_tests->has_data());
 }
@@ -4675,7 +4731,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyStatistics::RoutePolic
     any_table{YType::uint32, "any-table"}
 {
 
-    yang_name = "route-policy-statistics"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-policy-statistics"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyStatistics::~RoutePolicyStatistics()
@@ -4684,6 +4740,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyStatistics::~RoutePoli
 
 bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return policy_name.is_set
 	|| requests.is_set
 	|| pass.is_set
@@ -4820,9 +4877,11 @@ bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyStatistics::has_l
 }
 
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTests()
+    :
+    route_policy_test(this, {})
 {
 
-    yang_name = "route-policy-tests"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-policy-tests"; yang_parent_name = "route-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::~RoutePolicyTests()
@@ -4831,7 +4890,8 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::~RoutePolicyTes
 
 bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::has_data() const
 {
-    for (std::size_t index=0; index<route_policy_test.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route_policy_test.len(); index++)
     {
         if(route_policy_test[index]->has_data())
             return true;
@@ -4841,7 +4901,7 @@ bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::has_data()
 
 bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::has_operation() const
 {
-    for (std::size_t index=0; index<route_policy_test.size(); index++)
+    for (std::size_t index=0; index<route_policy_test.len(); index++)
     {
         if(route_policy_test[index]->has_operation())
             return true;
@@ -4878,7 +4938,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePoli
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest>();
         c->parent = this;
-        route_policy_test.push_back(c);
+        route_policy_test.append(c);
         return c;
     }
 
@@ -4890,7 +4950,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route_policy_test)
+    for (auto c : route_policy_test.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4931,14 +4991,14 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
     table_name{YType::str, "table-name"},
     table_exists{YType::boolean, "table-exists"},
     table_active{YType::boolean, "table-active"}
-    	,
+        ,
     source_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr>())
-	,group_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr>())
+    , group_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr>())
 {
     source_address_xr->parent = this;
     group_address_xr->parent = this;
 
-    yang_name = "route-policy-test"; yang_parent_name = "route-policy-tests"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-policy-test"; yang_parent_name = "route-policy-tests"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::~RoutePolicyTest()
@@ -4947,6 +5007,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
 
 bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| group_address.is_set
 	|| ext_comm.is_set
@@ -5212,7 +5273,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address-xr"; yang_parent_name = "route-policy-test"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address-xr"; yang_parent_name = "route-policy-test"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr::~SourceAddressXr()
@@ -5221,6 +5282,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
 
 bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::SourceAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5324,7 +5386,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "route-policy-test"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "route-policy-test"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr::~GroupAddressXr()
@@ -5333,6 +5395,7 @@ Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
 
 bool Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5450,7 +5513,7 @@ Ipv6Pim::Standby::DefaultContext::RpfSummary::RpfSummary()
     is_rib_convergence{YType::boolean, "is-rib-convergence"}
 {
 
-    yang_name = "rpf-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfSummary::~RpfSummary()
@@ -5459,6 +5522,7 @@ Ipv6Pim::Standby::DefaultContext::RpfSummary::~RpfSummary()
 
 bool Ipv6Pim::Standby::DefaultContext::RpfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return default_safi.is_set
 	|| default_table_name.is_set
 	|| is_mbgp_configured.is_set
@@ -5738,9 +5802,11 @@ bool Ipv6Pim::Standby::DefaultContext::RpfSummary::has_leaf_or_child_of_name(con
 }
 
 Ipv6Pim::Standby::DefaultContext::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Interfaces::~Interfaces()
@@ -5749,7 +5815,8 @@ Ipv6Pim::Standby::DefaultContext::Interfaces::~Interfaces()
 
 bool Ipv6Pim::Standby::DefaultContext::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -5759,7 +5826,7 @@ bool Ipv6Pim::Standby::DefaultContext::Interfaces::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -5796,7 +5863,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Interfaces::get_child_
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -5808,7 +5875,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5868,12 +5935,13 @@ Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::Interface()
     idb_threshold_count{YType::uint32, "idb-threshold-count"},
     idb_current_count{YType::uint32, "idb-current-count"},
     idb_acl_name{YType::str, "idb-acl-name"}
-    	,
+        ,
     dr_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::DrAddress>())
+    , interface_address(this, {})
 {
     dr_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::~Interface()
@@ -5882,7 +5950,8 @@ Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::~Interface()
 
 bool Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<interface_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_address.len(); index++)
     {
         if(interface_address[index]->has_data())
             return true;
@@ -5924,7 +5993,7 @@ bool Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<interface_address.size(); index++)
+    for (std::size_t index=0; index<interface_address.len(); index++)
     {
         if(interface_address[index]->has_operation())
             return true;
@@ -5975,7 +6044,8 @@ std::string Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::get_absolut
 std::string Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -6035,7 +6105,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Interfaces::Interface:
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress>();
         c->parent = this;
-        interface_address.push_back(c);
+        interface_address.append(c);
         return c;
     }
 
@@ -6052,7 +6122,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : interface_address)
+    for (auto c : interface_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6405,7 +6475,7 @@ Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::DrAddress::DrAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "dr-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dr-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::DrAddress::~DrAddress()
@@ -6414,6 +6484,7 @@ Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::DrAddress::~DrAddress()
 
 bool Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::DrAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6510,7 +6581,7 @@ Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress::Inter
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "interface-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress::~InterfaceAddress()
@@ -6519,6 +6590,7 @@ Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress::~Inte
 
 bool Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6609,9 +6681,11 @@ bool Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress::
 }
 
 Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnels()
+    :
+    net_io_tunnel(this, {"tunnel_name"})
 {
 
-    yang_name = "net-io-tunnels"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "net-io-tunnels"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NetIoTunnels::~NetIoTunnels()
@@ -6620,7 +6694,8 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::~NetIoTunnels()
 
 bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::has_data() const
 {
-    for (std::size_t index=0; index<net_io_tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<net_io_tunnel.len(); index++)
     {
         if(net_io_tunnel[index]->has_data())
             return true;
@@ -6630,7 +6705,7 @@ bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::has_operation() const
 {
-    for (std::size_t index=0; index<net_io_tunnel.size(); index++)
+    for (std::size_t index=0; index<net_io_tunnel.len(); index++)
     {
         if(net_io_tunnel[index]->has_operation())
             return true;
@@ -6667,7 +6742,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::NetIoTunnels::get_chil
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel>();
         c->parent = this;
-        net_io_tunnel.push_back(c);
+        net_io_tunnel.append(c);
         return c;
     }
 
@@ -6679,7 +6754,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : net_io_tunnel)
+    for (auto c : net_io_tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6709,18 +6784,18 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::NetIoTunnel()
     :
     tunnel_name{YType::str, "tunnel-name"},
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     source_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress>())
-	,rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress>())
-	,source_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio>())
-	,group_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio>())
+    , rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress>())
+    , source_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio>())
+    , group_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio>())
 {
     source_address->parent = this;
     rp_address->parent = this;
     source_address_netio->parent = this;
     group_address_netio->parent = this;
 
-    yang_name = "net-io-tunnel"; yang_parent_name = "net-io-tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "net-io-tunnel"; yang_parent_name = "net-io-tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::~NetIoTunnel()
@@ -6729,6 +6804,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::~NetIoTunnel()
 
 bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_name.is_set
 	|| vrf_name.is_set
 	|| (source_address !=  nullptr && source_address->has_data())
@@ -6758,7 +6834,8 @@ std::string Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::get_abs
 std::string Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "net-io-tunnel" <<"[tunnel-name='" <<tunnel_name <<"']";
+    path_buffer << "net-io-tunnel";
+    ADD_KEY_TOKEN(tunnel_name, "tunnel-name");
     return path_buffer.str();
 }
 
@@ -6883,7 +6960,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::Sour
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::~SourceAddress()
@@ -6892,6 +6969,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::~Sou
 
 bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6988,7 +7066,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::RpAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rp-address"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::~RpAddress()
@@ -6997,6 +7075,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::~RpAddre
 
 bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7093,7 +7172,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio:
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address-netio"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address-netio"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio::~SourceAddressNetio()
@@ -7102,6 +7181,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio:
 
 bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7198,7 +7278,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-netio"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-netio"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::~GroupAddressNetio()
@@ -7207,6 +7287,7 @@ Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::
 
 bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7297,9 +7378,11 @@ bool Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNe
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfStates()
+    :
+    bidir_df_state(this, {})
 {
 
-    yang_name = "bidir-df-states"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bidir-df-states"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfStates::~BidirDfStates()
@@ -7308,7 +7391,8 @@ Ipv6Pim::Standby::DefaultContext::BidirDfStates::~BidirDfStates()
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfStates::has_data() const
 {
-    for (std::size_t index=0; index<bidir_df_state.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bidir_df_state.len(); index++)
     {
         if(bidir_df_state[index]->has_data())
             return true;
@@ -7318,7 +7402,7 @@ bool Ipv6Pim::Standby::DefaultContext::BidirDfStates::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfStates::has_operation() const
 {
-    for (std::size_t index=0; index<bidir_df_state.size(); index++)
+    for (std::size_t index=0; index<bidir_df_state.len(); index++)
     {
         if(bidir_df_state[index]->has_operation())
             return true;
@@ -7355,7 +7439,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::BidirDfStates::get_chi
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState>();
         c->parent = this;
-        bidir_df_state.push_back(c);
+        bidir_df_state.append(c);
         return c;
     }
 
@@ -7367,7 +7451,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bidir_df_state)
+    for (auto c : bidir_df_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7403,12 +7487,12 @@ Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::BidirDfState()
     time_nano_seconds{YType::uint64, "time-nano-seconds"},
     our_metric{YType::uint32, "our-metric"},
     our_metric_preference{YType::uint32, "our-metric-preference"}
-    	,
+        ,
     rp_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr>())
 {
     rp_address_xr->parent = this;
 
-    yang_name = "bidir-df-state"; yang_parent_name = "bidir-df-states"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bidir-df-state"; yang_parent_name = "bidir-df-states"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::~BidirDfState()
@@ -7417,6 +7501,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::~BidirDfState()
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::has_data() const
 {
+    if (is_presence_container) return true;
     return rp_address.is_set
 	|| interface_name.is_set
 	|| pim_interface_name.is_set
@@ -7601,7 +7686,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::RpAd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address-xr"; yang_parent_name = "bidir-df-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address-xr"; yang_parent_name = "bidir-df-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::~RpAddressXr()
@@ -7610,6 +7695,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::~RpA
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -7707,9 +7793,11 @@ bool Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::RpAddressXr:
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topologies()
+    :
+    topology(this, {})
 {
 
-    yang_name = "topologies"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topologies"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::~Topologies()
@@ -7718,7 +7806,8 @@ Ipv6Pim::Standby::DefaultContext::Topologies::~Topologies()
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::has_data() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_data())
             return true;
@@ -7728,7 +7817,7 @@ bool Ipv6Pim::Standby::DefaultContext::Topologies::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::has_operation() const
 {
-    for (std::size_t index=0; index<topology.size(); index++)
+    for (std::size_t index=0; index<topology.len(); index++)
     {
         if(topology[index]->has_operation())
             return true;
@@ -7765,7 +7854,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Topologies::get_child_
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology>();
         c->parent = this;
-        topology.push_back(c);
+        topology.append(c);
         return c;
     }
 
@@ -7777,7 +7866,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology)
+    for (auto c : topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7807,7 +7896,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::Topology()
     :
     source_address{YType::str, "source-address"},
     group_address{YType::str, "group-address"},
-    rpt{YType::int32, "rpt"},
+    rpt{YType::uint32, "rpt"},
     limit_reached{YType::boolean, "limit-reached"},
     low_memory{YType::boolean, "low-memory"},
     protocol{YType::enumeration, "protocol"},
@@ -7862,15 +7951,16 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::Topology()
     mofrr_backup{YType::boolean, "mofrr-backup"},
     vxlan{YType::boolean, "vxlan"},
     kat_state{YType::boolean, "kat-state"}
-    	,
+        ,
     group_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::GroupAddressXr>())
-	,source_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SourceAddressXr>())
-	,rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpAddress>())
-	,rpf_neighbor(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfNeighbor>())
-	,secondary_rpf_neighbor(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor>())
-	,rpf_root(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot>())
-	,proxy_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress>())
-	,orig_src_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress>())
+    , source_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SourceAddressXr>())
+    , rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpAddress>())
+    , rpf_neighbor(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfNeighbor>())
+    , secondary_rpf_neighbor(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor>())
+    , rpf_root(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot>())
+    , proxy_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress>())
+    , orig_src_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress>())
+    , outgoing_interface(this, {})
 {
     group_address_xr->parent = this;
     source_address_xr->parent = this;
@@ -7881,7 +7971,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::Topology()
     proxy_address->parent = this;
     orig_src_address->parent = this;
 
-    yang_name = "topology"; yang_parent_name = "topologies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology"; yang_parent_name = "topologies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::~Topology()
@@ -7890,7 +7980,8 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::~Topology()
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::has_data() const
 {
-    for (std::size_t index=0; index<outgoing_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<outgoing_interface.len(); index++)
     {
         if(outgoing_interface[index]->has_data())
             return true;
@@ -7964,7 +8055,7 @@ bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::has_operation() const
 {
-    for (std::size_t index=0; index<outgoing_interface.size(); index++)
+    for (std::size_t index=0; index<outgoing_interface.len(); index++)
     {
         if(outgoing_interface[index]->has_operation())
             return true;
@@ -8195,7 +8286,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Topologies::Topology::
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface>();
         c->parent = this;
-        outgoing_interface.push_back(c);
+        outgoing_interface.append(c);
         return c;
     }
 
@@ -8247,7 +8338,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : outgoing_interface)
+    for (auto c : outgoing_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8850,7 +8941,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::GroupAddressXr::GroupAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::GroupAddressXr::~GroupAddressXr()
@@ -8859,6 +8950,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::GroupAddressXr::~GroupAd
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8962,7 +9054,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SourceAddressXr::SourceA
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address-xr"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address-xr"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SourceAddressXr::~SourceAddressXr()
@@ -8971,6 +9063,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SourceAddressXr::~Source
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SourceAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9074,7 +9167,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpAddress::RpAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpAddress::~RpAddress()
@@ -9083,6 +9176,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpAddress::~RpAddress()
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9186,7 +9280,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfNeighbor::RpfNeighbor
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rpf-neighbor"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-neighbor"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfNeighbor::~RpfNeighbor()
@@ -9195,6 +9289,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfNeighbor::~RpfNeighbo
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9298,7 +9393,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::Se
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "secondary-rpf-neighbor"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "secondary-rpf-neighbor"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::~SecondaryRpfNeighbor()
@@ -9307,6 +9402,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::~S
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::SecondaryRpfNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9410,7 +9506,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot::RpfRoot()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rpf-root"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-root"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot::~RpfRoot()
@@ -9419,6 +9515,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot::~RpfRoot()
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9522,7 +9619,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress::ProxyAddre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "proxy-address"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "proxy-address"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress::~ProxyAddress()
@@ -9531,6 +9628,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress::~ProxyAddr
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9634,7 +9732,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress::OrigSrcA
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "orig-src-address"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "orig-src-address"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress::~OrigSrcAddress()
@@ -9643,6 +9741,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress::~OrigSrc
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -9769,12 +9868,12 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::Outgo
     internal_interest_information{YType::enumeration, "internal-interest-information"},
     local_members_information{YType::enumeration, "local-members-information"},
     assert_state{YType::boolean, "assert-state"}
-    	,
+        ,
     assert_winner(std::make_shared<Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner>())
 {
     assert_winner->parent = this;
 
-    yang_name = "outgoing-interface"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "outgoing-interface"; yang_parent_name = "topology"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::~OutgoingInterface()
@@ -9783,6 +9882,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::~Outg
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| uptime.is_set
 	|| expiry.is_set
@@ -10227,7 +10327,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::Asser
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "assert-winner"; yang_parent_name = "outgoing-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "assert-winner"; yang_parent_name = "outgoing-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner::~AssertWinner()
@@ -10236,6 +10336,7 @@ Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::Asser
 
 bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::AssertWinner::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10333,9 +10434,11 @@ bool Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface::
 }
 
 Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAfs()
+    :
+    bgp_af(this, {})
 {
 
-    yang_name = "bgp-afs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-afs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BgpAfs::~BgpAfs()
@@ -10344,7 +10447,8 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::~BgpAfs()
 
 bool Ipv6Pim::Standby::DefaultContext::BgpAfs::has_data() const
 {
-    for (std::size_t index=0; index<bgp_af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_af.len(); index++)
     {
         if(bgp_af[index]->has_data())
             return true;
@@ -10354,7 +10458,7 @@ bool Ipv6Pim::Standby::DefaultContext::BgpAfs::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::BgpAfs::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_af.size(); index++)
+    for (std::size_t index=0; index<bgp_af.len(); index++)
     {
         if(bgp_af[index]->has_operation())
             return true;
@@ -10391,7 +10495,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::BgpAfs::get_child_by_n
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf>();
         c->parent = this;
-        bgp_af.push_back(c);
+        bgp_af.append(c);
         return c;
     }
 
@@ -10403,7 +10507,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_af)
+    for (auto c : bgp_af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10436,16 +10540,16 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::BgpAf()
     route_distinguisher{YType::str, "route-distinguisher"},
     extranet_path_count{YType::uint32, "extranet-path-count"},
     is_bgp_added{YType::boolean, "is-bgp-added"}
-    	,
+        ,
     source(std::make_shared<Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Source>())
-	,group(std::make_shared<Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Group>())
-	,next_hop(std::make_shared<Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::NextHop>())
+    , group(std::make_shared<Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Group>())
+    , next_hop(std::make_shared<Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::NextHop>())
 {
     source->parent = this;
     group->parent = this;
     next_hop->parent = this;
 
-    yang_name = "bgp-af"; yang_parent_name = "bgp-afs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-af"; yang_parent_name = "bgp-afs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::~BgpAf()
@@ -10454,6 +10558,7 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::~BgpAf()
 
 bool Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| group_address.is_set
 	|| route_distinguisher.is_set
@@ -10631,7 +10736,7 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Source::Source()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Source::~Source()
@@ -10640,6 +10745,7 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Source::~Source()
 
 bool Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10743,7 +10849,7 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Group::Group()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Group::~Group()
@@ -10752,6 +10858,7 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Group::~Group()
 
 bool Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10855,7 +10962,7 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::NextHop::NextHop()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::NextHop::~NextHop()
@@ -10864,6 +10971,7 @@ Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::NextHop::~NextHop()
 
 bool Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10963,7 +11071,7 @@ bool Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf::NextHop::has_leaf_or_child
 Ipv6Pim::Standby::DefaultContext::AutoRp::AutoRp()
 {
 
-    yang_name = "auto-rp"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auto-rp"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::AutoRp::~AutoRp()
@@ -10972,6 +11080,7 @@ Ipv6Pim::Standby::DefaultContext::AutoRp::~AutoRp()
 
 bool Ipv6Pim::Standby::DefaultContext::AutoRp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -11029,9 +11138,11 @@ bool Ipv6Pim::Standby::DefaultContext::AutoRp::has_leaf_or_child_of_name(const s
 }
 
 Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCounts()
+    :
+    topology_interface_flag_route_count(this, {"interface_flag"})
 {
 
-    yang_name = "topology-interface-flag-route-counts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology-interface-flag-route-counts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::~TopologyInterfaceFlagRouteCounts()
@@ -11040,7 +11151,8 @@ Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::~TopologyInt
 
 bool Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::has_data() const
 {
-    for (std::size_t index=0; index<topology_interface_flag_route_count.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology_interface_flag_route_count.len(); index++)
     {
         if(topology_interface_flag_route_count[index]->has_data())
             return true;
@@ -11050,7 +11162,7 @@ bool Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::has_dat
 
 bool Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::has_operation() const
 {
-    for (std::size_t index=0; index<topology_interface_flag_route_count.size(); index++)
+    for (std::size_t index=0; index<topology_interface_flag_route_count.len(); index++)
     {
         if(topology_interface_flag_route_count[index]->has_operation())
             return true;
@@ -11087,7 +11199,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagR
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount>();
         c->parent = this;
-        topology_interface_flag_route_count.push_back(c);
+        topology_interface_flag_route_count.append(c);
         return c;
     }
 
@@ -11099,7 +11211,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology_interface_flag_route_count)
+    for (auto c : topology_interface_flag_route_count.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11136,7 +11248,7 @@ Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInte
     is_node_low_memory{YType::boolean, "is-node-low-memory"}
 {
 
-    yang_name = "topology-interface-flag-route-count"; yang_parent_name = "topology-interface-flag-route-counts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology-interface-flag-route-count"; yang_parent_name = "topology-interface-flag-route-counts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::~TopologyInterfaceFlagRouteCount()
@@ -11145,6 +11257,7 @@ Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInte
 
 bool Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_flag.is_set
 	|| group_ranges.is_set
 	|| active_group_ranges.is_set
@@ -11176,7 +11289,8 @@ std::string Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::
 std::string Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology-interface-flag-route-count" <<"[interface-flag='" <<interface_flag <<"']";
+    path_buffer << "topology-interface-flag-route-count";
+    ADD_KEY_TOKEN(interface_flag, "interface-flag");
     return path_buffer.str();
 }
 
@@ -11294,9 +11408,11 @@ bool Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::Topolog
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSources()
+    :
+    group_map_source(this, {})
 {
 
-    yang_name = "group-map-sources"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-map-sources"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::~GroupMapSources()
@@ -11305,7 +11421,8 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::~GroupMapSources()
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::has_data() const
 {
-    for (std::size_t index=0; index<group_map_source.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_map_source.len(); index++)
     {
         if(group_map_source[index]->has_data())
             return true;
@@ -11315,7 +11432,7 @@ bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::has_operation() const
 {
-    for (std::size_t index=0; index<group_map_source.size(); index++)
+    for (std::size_t index=0; index<group_map_source.len(); index++)
     {
         if(group_map_source[index]->has_operation())
             return true;
@@ -11352,7 +11469,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::GroupMapSources::get_c
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource>();
         c->parent = this;
-        group_map_source.push_back(c);
+        group_map_source.append(c);
         return c;
     }
 
@@ -11364,7 +11481,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_map_source)
+    for (auto c : group_map_source.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11393,22 +11510,22 @@ bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::has_leaf_or_child_of_nam
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapSource()
     :
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"},
+    prefix_length{YType::uint32, "prefix-length"},
     client{YType::enumeration, "client"},
     protocol{YType::enumeration, "protocol"},
     rp_address{YType::str, "rp-address"},
-    priority{YType::int32, "priority"},
+    priority{YType::uint32, "priority"},
     holdtime{YType::int32, "holdtime"},
     expires{YType::uint64, "expires"},
     uptime{YType::uint64, "uptime"}
-    	,
+        ,
     source_of_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation>())
-	,group_map_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation>())
+    , group_map_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation>())
 {
     source_of_information->parent = this;
     group_map_information->parent = this;
 
-    yang_name = "group-map-source"; yang_parent_name = "group-map-sources"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-map-source"; yang_parent_name = "group-map-sources"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::~GroupMapSource()
@@ -11417,6 +11534,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::~GroupMapSour
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| client.is_set
@@ -11630,7 +11748,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInfor
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-of-information"; yang_parent_name = "group-map-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-of-information"; yang_parent_name = "group-map-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation::~SourceOfInformation()
@@ -11639,6 +11757,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInfor
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::SourceOfInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -11745,14 +11864,14 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInfor
     mrib_active{YType::boolean, "mrib-active"},
     is_override{YType::boolean, "is-override"},
     priority{YType::uint32, "priority"}
-    	,
+        ,
     prefix(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix>())
-	,rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress>())
+    , rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress>())
 {
     prefix->parent = this;
     rp_address->parent = this;
 
-    yang_name = "group-map-information"; yang_parent_name = "group-map-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-map-information"; yang_parent_name = "group-map-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::~GroupMapInformation()
@@ -11761,6 +11880,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInfor
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| client.is_set
 	|| protocol.is_set
@@ -11961,7 +12081,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInfor
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::~Prefix()
@@ -11970,6 +12090,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInfor
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -12073,7 +12194,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInfor
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::~RpAddress()
@@ -12082,6 +12203,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInfor
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -12244,9 +12366,11 @@ Ipv6Pim::Standby::DefaultContext::TrafficCounters::TrafficCounters()
     invalid_destination_packets{YType::uint32, "invalid-destination-packets"},
     mdt_joins_drop_multiple_encapsulation{YType::uint32, "mdt-joins-drop-multiple-encapsulation"},
     truncated_pim_packets{YType::uint32, "truncated-pim-packets"}
+        ,
+    packet_queue(this, {})
 {
 
-    yang_name = "traffic-counters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic-counters"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TrafficCounters::~TrafficCounters()
@@ -12255,7 +12379,8 @@ Ipv6Pim::Standby::DefaultContext::TrafficCounters::~TrafficCounters()
 
 bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::has_data() const
 {
-    for (std::size_t index=0; index<packet_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<packet_queue.len(); index++)
     {
         if(packet_queue[index]->has_data())
             return true;
@@ -12328,7 +12453,7 @@ bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::has_operation() const
 {
-    for (std::size_t index=0; index<packet_queue.size(); index++)
+    for (std::size_t index=0; index<packet_queue.len(); index++)
     {
         if(packet_queue[index]->has_operation())
             return true;
@@ -12493,7 +12618,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::TrafficCounters::get_c
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue>();
         c->parent = this;
-        packet_queue.push_back(c);
+        packet_queue.append(c);
         return c;
     }
 
@@ -12505,7 +12630,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : packet_queue)
+    for (auto c : packet_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13174,14 +13299,14 @@ bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::has_leaf_or_child_of_nam
 Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueue()
     :
     packet_queue_priority{YType::uint32, "packet-queue-priority"}
-    	,
+        ,
     packet_queue_state(std::make_shared<Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState>())
-	,packet_queue_stats(std::make_shared<Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats>())
+    , packet_queue_stats(std::make_shared<Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats>())
 {
     packet_queue_state->parent = this;
     packet_queue_stats->parent = this;
 
-    yang_name = "packet-queue"; yang_parent_name = "traffic-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packet-queue"; yang_parent_name = "traffic-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::~PacketQueue()
@@ -13190,6 +13315,7 @@ Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::~PacketQueue()
 
 bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_queue_priority.is_set
 	|| (packet_queue_state !=  nullptr && packet_queue_state->has_data())
 	|| (packet_queue_stats !=  nullptr && packet_queue_stats->has_data());
@@ -13299,7 +13425,7 @@ Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState
     queue_size_packets{YType::uint32, "queue-size-packets"}
 {
 
-    yang_name = "packet-queue-state"; yang_parent_name = "packet-queue"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packet-queue-state"; yang_parent_name = "packet-queue"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState::~PacketQueueState()
@@ -13308,6 +13434,7 @@ Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState
 
 bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueState::has_data() const
 {
+    if (is_presence_container) return true;
     return max_queue_size.is_set
 	|| queue_size_bytes.is_set
 	|| queue_size_packets.is_set;
@@ -13413,7 +13540,7 @@ Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats
     tail_drops{YType::uint32, "tail-drops"}
 {
 
-    yang_name = "packet-queue-stats"; yang_parent_name = "packet-queue"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packet-queue-stats"; yang_parent_name = "packet-queue"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats::~PacketQueueStats()
@@ -13422,6 +13549,7 @@ Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats
 
 bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueueStats::has_data() const
 {
+    if (is_presence_container) return true;
     return enqueued_packets.is_set
 	|| dequeued_packets.is_set
 	|| high_water_mark_packets.is_set
@@ -13545,9 +13673,11 @@ bool Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::PacketQueue
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpfs()
+    :
+    group_map_rpf(this, {})
 {
 
-    yang_name = "group-map-rpfs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-map-rpfs"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::~GroupMapRpfs()
@@ -13556,7 +13686,8 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::~GroupMapRpfs()
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::has_data() const
 {
-    for (std::size_t index=0; index<group_map_rpf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_map_rpf.len(); index++)
     {
         if(group_map_rpf[index]->has_data())
             return true;
@@ -13566,7 +13697,7 @@ bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::has_operation() const
 {
-    for (std::size_t index=0; index<group_map_rpf.size(); index++)
+    for (std::size_t index=0; index<group_map_rpf.len(); index++)
     {
         if(group_map_rpf[index]->has_operation())
             return true;
@@ -13603,7 +13734,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::get_chil
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf>();
         c->parent = this;
-        group_map_rpf.push_back(c);
+        group_map_rpf.append(c);
         return c;
     }
 
@@ -13615,7 +13746,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_map_rpf)
+    for (auto c : group_map_rpf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13644,22 +13775,22 @@ bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::has_leaf_or_child_of_name(c
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapRpf()
     :
     prefix{YType::str, "prefix"},
-    prefix_length{YType::int32, "prefix-length"},
+    prefix_length{YType::uint32, "prefix-length"},
     client{YType::enumeration, "client"},
     protocol{YType::enumeration, "protocol"},
     rp_address{YType::str, "rp-address"},
-    rp_priority{YType::int32, "rp-priority"},
+    rp_priority{YType::uint32, "rp-priority"},
     are_we_rp{YType::boolean, "are-we-rp"},
     rpf_interface_name{YType::str, "rpf-interface-name"},
     rpf_vrf_name{YType::str, "rpf-vrf-name"}
-    	,
+        ,
     rpf_neighbor(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor>())
-	,group_map_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation>())
+    , group_map_information(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation>())
 {
     rpf_neighbor->parent = this;
     group_map_information->parent = this;
 
-    yang_name = "group-map-rpf"; yang_parent_name = "group-map-rpfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-map-rpf"; yang_parent_name = "group-map-rpfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::~GroupMapRpf()
@@ -13668,6 +13799,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::~GroupMapRpf()
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set
 	|| client.is_set
@@ -13881,7 +14013,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::RpfNei
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rpf-neighbor"; yang_parent_name = "group-map-rpf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-neighbor"; yang_parent_name = "group-map-rpf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::~RpfNeighbor()
@@ -13890,6 +14022,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::~RpfNe
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::RpfNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13996,14 +14129,14 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation
     mrib_active{YType::boolean, "mrib-active"},
     is_override{YType::boolean, "is-override"},
     priority{YType::uint32, "priority"}
-    	,
+        ,
     prefix(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix>())
-	,rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress>())
+    , rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress>())
 {
     prefix->parent = this;
     rp_address->parent = this;
 
-    yang_name = "group-map-information"; yang_parent_name = "group-map-rpf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-map-information"; yang_parent_name = "group-map-rpf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::~GroupMapInformation()
@@ -14012,6 +14145,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| client.is_set
 	|| protocol.is_set
@@ -14212,7 +14346,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::~Prefix()
@@ -14221,6 +14355,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -14324,7 +14459,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::~RpAddress()
@@ -14333,6 +14468,7 @@ Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation
 
 bool Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::GroupMapInformation::RpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -14473,7 +14609,7 @@ Ipv6Pim::Standby::DefaultContext::Summary::Summary()
     is_global_register_limit_reached{YType::boolean, "is-global-register-limit-reached"}
 {
 
-    yang_name = "summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Summary::~Summary()
@@ -14482,6 +14618,7 @@ Ipv6Pim::Standby::DefaultContext::Summary::~Summary()
 
 bool Ipv6Pim::Standby::DefaultContext::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return route_limit.is_set
 	|| route_count.is_set
 	|| route_low_water_mark.is_set
@@ -15062,12 +15199,12 @@ bool Ipv6Pim::Standby::DefaultContext::Summary::has_leaf_or_child_of_name(const 
 Ipv6Pim::Standby::DefaultContext::Gre::Gre()
     :
     gre_hashes(std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreHashes>())
-	,gre_next_hops(std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops>())
+    , gre_next_hops(std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops>())
 {
     gre_hashes->parent = this;
     gre_next_hops->parent = this;
 
-    yang_name = "gre"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gre"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::~Gre()
@@ -15076,6 +15213,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::~Gre()
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::has_data() const
 {
+    if (is_presence_container) return true;
     return (gre_hashes !=  nullptr && gre_hashes->has_data())
 	|| (gre_next_hops !=  nullptr && gre_next_hops->has_data());
 }
@@ -15166,9 +15304,11 @@ bool Ipv6Pim::Standby::DefaultContext::Gre::has_leaf_or_child_of_name(const std:
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHashes()
+    :
+    gre_hash(this, {"source_address", "destination_address", "ifname"})
 {
 
-    yang_name = "gre-hashes"; yang_parent_name = "gre"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gre-hashes"; yang_parent_name = "gre"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::~GreHashes()
@@ -15177,7 +15317,8 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::~GreHashes()
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::has_data() const
 {
-    for (std::size_t index=0; index<gre_hash.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<gre_hash.len(); index++)
     {
         if(gre_hash[index]->has_data())
             return true;
@@ -15187,7 +15328,7 @@ bool Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::has_operation() const
 {
-    for (std::size_t index=0; index<gre_hash.size(); index++)
+    for (std::size_t index=0; index<gre_hash.len(); index++)
     {
         if(gre_hash[index]->has_operation())
             return true;
@@ -15224,7 +15365,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::get_ch
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash>();
         c->parent = this;
-        gre_hash.push_back(c);
+        gre_hash.append(c);
         return c;
     }
 
@@ -15236,7 +15377,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : gre_hash)
+    for (auto c : gre_hash.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15270,7 +15411,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::GreHash()
     next_hop_interface{YType::str, "next-hop-interface"}
 {
 
-    yang_name = "gre-hash"; yang_parent_name = "gre-hashes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gre-hash"; yang_parent_name = "gre-hashes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::~GreHash()
@@ -15279,6 +15420,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::~GreHash()
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| destination_address.is_set
 	|| ifname.is_set
@@ -15304,7 +15446,10 @@ std::string Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_absol
 std::string Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "gre-hash" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']" <<"[ifname='" <<ifname <<"']";
+    path_buffer << "gre-hash";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(destination_address, "destination-address");
+    ADD_KEY_TOKEN(ifname, "ifname");
     return path_buffer.str();
 }
 
@@ -15389,9 +15534,11 @@ bool Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash::has_leaf_or_chil
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHops()
+    :
+    gre_next_hop(this, {"destination_address"})
 {
 
-    yang_name = "gre-next-hops"; yang_parent_name = "gre"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gre-next-hops"; yang_parent_name = "gre"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::~GreNextHops()
@@ -15400,7 +15547,8 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::~GreNextHops()
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::has_data() const
 {
-    for (std::size_t index=0; index<gre_next_hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<gre_next_hop.len(); index++)
     {
         if(gre_next_hop[index]->has_data())
             return true;
@@ -15410,7 +15558,7 @@ bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::has_operation() const
 {
-    for (std::size_t index=0; index<gre_next_hop.size(); index++)
+    for (std::size_t index=0; index<gre_next_hop.len(); index++)
     {
         if(gre_next_hop[index]->has_operation())
             return true;
@@ -15447,7 +15595,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::get_
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop>();
         c->parent = this;
-        gre_next_hop.push_back(c);
+        gre_next_hop.append(c);
         return c;
     }
 
@@ -15459,7 +15607,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : gre_next_hop)
+    for (auto c : gre_next_hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15491,12 +15639,13 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GreNextHop()
     metric{YType::uint32, "metric"},
     metric_preference{YType::uint32, "metric-preference"},
     is_connected{YType::uint8, "is-connected"}
-    	,
+        ,
     registered_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress>())
+    , gre_path(this, {})
 {
     registered_address->parent = this;
 
-    yang_name = "gre-next-hop"; yang_parent_name = "gre-next-hops"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gre-next-hop"; yang_parent_name = "gre-next-hops"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::~GreNextHop()
@@ -15505,7 +15654,8 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::~GreNextHop()
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::has_data() const
 {
-    for (std::size_t index=0; index<gre_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<gre_path.len(); index++)
     {
         if(gre_path[index]->has_data())
             return true;
@@ -15519,7 +15669,7 @@ bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::has_data() 
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::has_operation() const
 {
-    for (std::size_t index=0; index<gre_path.size(); index++)
+    for (std::size_t index=0; index<gre_path.len(); index++)
     {
         if(gre_path[index]->has_operation())
             return true;
@@ -15542,7 +15692,8 @@ std::string Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_
 std::string Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "gre-next-hop" <<"[destination-address='" <<destination_address <<"']";
+    path_buffer << "gre-next-hop";
+    ADD_KEY_TOKEN(destination_address, "destination-address");
     return path_buffer.str();
 }
 
@@ -15574,7 +15725,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreN
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath>();
         c->parent = this;
-        gre_path.push_back(c);
+        gre_path.append(c);
         return c;
     }
 
@@ -15591,7 +15742,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : gre_path)
+    for (auto c : gre_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15664,7 +15815,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddres
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "registered-address"; yang_parent_name = "gre-next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "registered-address"; yang_parent_name = "gre-next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::~RegisteredAddress()
@@ -15673,6 +15824,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddres
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -15769,14 +15921,14 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GrePath
     is_via_lsm{YType::boolean, "is-via-lsm"},
     is_connector_attribute_present{YType::boolean, "is-connector-attribute-present"},
     extranet_vrf_name{YType::str, "extranet-vrf-name"}
-    	,
+        ,
     gre_neighbor(std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor>())
-	,gre_next_hop(std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_>())
+    , gre_next_hop(std::make_shared<Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_>())
 {
     gre_neighbor->parent = this;
     gre_next_hop->parent = this;
 
-    yang_name = "gre-path"; yang_parent_name = "gre-next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gre-path"; yang_parent_name = "gre-next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::~GrePath()
@@ -15785,6 +15937,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::~GrePat
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::has_data() const
 {
+    if (is_presence_container) return true;
     return gre_interface_name.is_set
 	|| is_gre_interface_disabled.is_set
 	|| is_via_lsm.is_set
@@ -15939,7 +16092,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeig
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "gre-neighbor"; yang_parent_name = "gre-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gre-neighbor"; yang_parent_name = "gre-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::~GreNeighbor()
@@ -15948,6 +16101,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeig
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -16044,7 +16198,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNext
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "gre-next-hop"; yang_parent_name = "gre-path"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "gre-next-hop"; yang_parent_name = "gre-path"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::~GreNextHop_()
@@ -16053,6 +16207,7 @@ Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNext
 
 bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::GreNextHop_::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -16143,9 +16298,11 @@ bool Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath::Gr
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinners()
+    :
+    bidir_df_winner(this, {})
 {
 
-    yang_name = "bidir-df-winners"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bidir-df-winners"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfWinners::~BidirDfWinners()
@@ -16154,7 +16311,8 @@ Ipv6Pim::Standby::DefaultContext::BidirDfWinners::~BidirDfWinners()
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfWinners::has_data() const
 {
-    for (std::size_t index=0; index<bidir_df_winner.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bidir_df_winner.len(); index++)
     {
         if(bidir_df_winner[index]->has_data())
             return true;
@@ -16164,7 +16322,7 @@ bool Ipv6Pim::Standby::DefaultContext::BidirDfWinners::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfWinners::has_operation() const
 {
-    for (std::size_t index=0; index<bidir_df_winner.size(); index++)
+    for (std::size_t index=0; index<bidir_df_winner.len(); index++)
     {
         if(bidir_df_winner[index]->has_operation())
             return true;
@@ -16201,7 +16359,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::BidirDfWinners::get_ch
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner>();
         c->parent = this;
-        bidir_df_winner.push_back(c);
+        bidir_df_winner.append(c);
         return c;
     }
 
@@ -16213,7 +16371,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bidir_df_winner)
+    for (auto c : bidir_df_winner.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16249,14 +16407,14 @@ Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::BidirDfWinner()
     metric{YType::uint32, "metric"},
     metric_preference{YType::uint32, "metric-preference"},
     uptime{YType::uint64, "uptime"}
-    	,
+        ,
     rp_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr>())
-	,df_winner(std::make_shared<Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner>())
+    , df_winner(std::make_shared<Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner>())
 {
     rp_address_xr->parent = this;
     df_winner->parent = this;
 
-    yang_name = "bidir-df-winner"; yang_parent_name = "bidir-df-winners"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bidir-df-winner"; yang_parent_name = "bidir-df-winners"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::~BidirDfWinner()
@@ -16265,6 +16423,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::~BidirDfWinner(
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::has_data() const
 {
+    if (is_presence_container) return true;
     return rp_address.is_set
 	|| interface_name.is_set
 	|| pim_interface_name.is_set
@@ -16465,7 +16624,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::Rp
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address-xr"; yang_parent_name = "bidir-df-winner"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rp-address-xr"; yang_parent_name = "bidir-df-winner"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::~RpAddressXr()
@@ -16474,6 +16633,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::~R
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::RpAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -16577,7 +16737,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::DfWin
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "df-winner"; yang_parent_name = "bidir-df-winner"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "df-winner"; yang_parent_name = "bidir-df-winner"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::~DfWinner()
@@ -16586,6 +16746,7 @@ Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::~DfWi
 
 bool Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -16683,9 +16844,11 @@ bool Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::DfWinner::
 }
 
 Ipv6Pim::Standby::DefaultContext::TableContexts::TableContexts()
+    :
+    table_context(this, {})
 {
 
-    yang_name = "table-contexts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "table-contexts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TableContexts::~TableContexts()
@@ -16694,7 +16857,8 @@ Ipv6Pim::Standby::DefaultContext::TableContexts::~TableContexts()
 
 bool Ipv6Pim::Standby::DefaultContext::TableContexts::has_data() const
 {
-    for (std::size_t index=0; index<table_context.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<table_context.len(); index++)
     {
         if(table_context[index]->has_data())
             return true;
@@ -16704,7 +16868,7 @@ bool Ipv6Pim::Standby::DefaultContext::TableContexts::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::TableContexts::has_operation() const
 {
-    for (std::size_t index=0; index<table_context.size(); index++)
+    for (std::size_t index=0; index<table_context.len(); index++)
     {
         if(table_context[index]->has_operation())
             return true;
@@ -16741,7 +16905,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::TableContexts::get_chi
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext>();
         c->parent = this;
-        table_context.push_back(c);
+        table_context.append(c);
         return c;
     }
 
@@ -16753,7 +16917,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : table_context)
+    for (auto c : table_context.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16796,7 +16960,7 @@ Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext::TableContext()
     rpf_registrations{YType::uint32, "rpf-registrations"}
 {
 
-    yang_name = "table-context"; yang_parent_name = "table-contexts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "table-context"; yang_parent_name = "table-contexts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext::~TableContext()
@@ -16805,6 +16969,7 @@ Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext::~TableContext()
 
 bool Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext::has_data() const
 {
+    if (is_presence_container) return true;
     return saf_name.is_set
 	|| topology_name.is_set
 	|| afi.is_set
@@ -17032,9 +17197,11 @@ bool Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext::has_leaf_or_
 }
 
 Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummaries()
+    :
+    neighbor_summary(this, {"interface_name"})
 {
 
-    yang_name = "neighbor-summaries"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-summaries"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NeighborSummaries::~NeighborSummaries()
@@ -17043,7 +17210,8 @@ Ipv6Pim::Standby::DefaultContext::NeighborSummaries::~NeighborSummaries()
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborSummaries::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_summary.len(); index++)
     {
         if(neighbor_summary[index]->has_data())
             return true;
@@ -17053,7 +17221,7 @@ bool Ipv6Pim::Standby::DefaultContext::NeighborSummaries::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_summary.size(); index++)
+    for (std::size_t index=0; index<neighbor_summary.len(); index++)
     {
         if(neighbor_summary[index]->has_operation())
             return true;
@@ -17090,7 +17258,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::NeighborSummaries::get
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary>();
         c->parent = this;
-        neighbor_summary.push_back(c);
+        neighbor_summary.append(c);
         return c;
     }
 
@@ -17102,7 +17270,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_summary)
+    for (auto c : neighbor_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17135,7 +17303,7 @@ Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::NeighborSu
     number_of_external_neighbors{YType::int32, "number-of-external-neighbors"}
 {
 
-    yang_name = "neighbor-summary"; yang_parent_name = "neighbor-summaries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-summary"; yang_parent_name = "neighbor-summaries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::~NeighborSummary()
@@ -17144,6 +17312,7 @@ Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::~NeighborS
 
 bool Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| number_of_neighbors.is_set
 	|| number_of_external_neighbors.is_set;
@@ -17167,7 +17336,8 @@ std::string Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary
 std::string Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor-summary" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "neighbor-summary";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -17396,14 +17566,17 @@ Ipv6Pim::Standby::DefaultContext::Context::Context()
     virtual_mlc_interface_name{YType::str, "virtual-mlc-interface-name"},
     mdt_immediate_switch{YType::boolean, "mdt-immediate-switch"},
     mldp_root_address{YType::uint32, "mldp-root-address"}
-    	,
+        ,
     remote_default_group(std::make_shared<Ipv6Pim::Standby::DefaultContext::Context::RemoteDefaultGroup>())
-	,rpf_default_table(std::make_shared<Ipv6Pim::Standby::DefaultContext::Context::RpfDefaultTable>())
+    , rpf_default_table(std::make_shared<Ipv6Pim::Standby::DefaultContext::Context::RpfDefaultTable>())
+    , export_route_target(this, {})
+    , import_route_target(this, {})
+    , anycast_rp_range(this, {})
 {
     remote_default_group->parent = this;
     rpf_default_table->parent = this;
 
-    yang_name = "context"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "context"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Context::~Context()
@@ -17412,17 +17585,18 @@ Ipv6Pim::Standby::DefaultContext::Context::~Context()
 
 bool Ipv6Pim::Standby::DefaultContext::Context::has_data() const
 {
-    for (std::size_t index=0; index<export_route_target.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<export_route_target.len(); index++)
     {
         if(export_route_target[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<import_route_target.size(); index++)
+    for (std::size_t index=0; index<import_route_target.len(); index++)
     {
         if(import_route_target[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<anycast_rp_range.size(); index++)
+    for (std::size_t index=0; index<anycast_rp_range.len(); index++)
     {
         if(anycast_rp_range[index]->has_data())
             return true;
@@ -17591,17 +17765,17 @@ bool Ipv6Pim::Standby::DefaultContext::Context::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Context::has_operation() const
 {
-    for (std::size_t index=0; index<export_route_target.size(); index++)
+    for (std::size_t index=0; index<export_route_target.len(); index++)
     {
         if(export_route_target[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<import_route_target.size(); index++)
+    for (std::size_t index=0; index<import_route_target.len(); index++)
     {
         if(import_route_target[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<anycast_rp_range.size(); index++)
+    for (std::size_t index=0; index<anycast_rp_range.len(); index++)
     {
         if(anycast_rp_range[index]->has_operation())
             return true;
@@ -17972,7 +18146,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Context::get_child_by_
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Context::ExportRouteTarget>();
         c->parent = this;
-        export_route_target.push_back(c);
+        export_route_target.append(c);
         return c;
     }
 
@@ -17980,7 +18154,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Context::get_child_by_
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Context::ImportRouteTarget>();
         c->parent = this;
-        import_route_target.push_back(c);
+        import_route_target.append(c);
         return c;
     }
 
@@ -17988,7 +18162,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Context::get_child_by_
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange>();
         c->parent = this;
-        anycast_rp_range.push_back(c);
+        anycast_rp_range.append(c);
         return c;
     }
 
@@ -18010,7 +18184,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : export_route_target)
+    for (auto c : export_route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18019,7 +18193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : import_route_target)
+    for (auto c : import_route_target.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18028,7 +18202,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : anycast_rp_range)
+    for (auto c : anycast_rp_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19599,7 +19773,7 @@ Ipv6Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::RemoteDefaultGrou
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "remote-default-group"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-default-group"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::~RemoteDefaultGroup()
@@ -19608,6 +19782,7 @@ Ipv6Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::~RemoteDefaultGro
 
 bool Ipv6Pim::Standby::DefaultContext::Context::RemoteDefaultGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -19719,7 +19894,7 @@ Ipv6Pim::Standby::DefaultContext::Context::RpfDefaultTable::RpfDefaultTable()
     rpf_registrations{YType::uint32, "rpf-registrations"}
 {
 
-    yang_name = "rpf-default-table"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-default-table"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Context::RpfDefaultTable::~RpfDefaultTable()
@@ -19728,6 +19903,7 @@ Ipv6Pim::Standby::DefaultContext::Context::RpfDefaultTable::~RpfDefaultTable()
 
 bool Ipv6Pim::Standby::DefaultContext::Context::RpfDefaultTable::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| safi.is_set
 	|| table_name.is_set
@@ -19939,7 +20115,7 @@ Ipv6Pim::Standby::DefaultContext::Context::ExportRouteTarget::ExportRouteTarget(
     segment_border{YType::boolean, "segment-border"}
 {
 
-    yang_name = "export-route-target"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "export-route-target"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Context::ExportRouteTarget::~ExportRouteTarget()
@@ -19948,6 +20124,7 @@ Ipv6Pim::Standby::DefaultContext::Context::ExportRouteTarget::~ExportRouteTarget
 
 bool Ipv6Pim::Standby::DefaultContext::Context::ExportRouteTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return route_target.is_set
 	|| configured.is_set
 	|| anycast_rp.is_set
@@ -20107,7 +20284,7 @@ Ipv6Pim::Standby::DefaultContext::Context::ImportRouteTarget::ImportRouteTarget(
     segment_border{YType::boolean, "segment-border"}
 {
 
-    yang_name = "import-route-target"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "import-route-target"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Context::ImportRouteTarget::~ImportRouteTarget()
@@ -20116,6 +20293,7 @@ Ipv6Pim::Standby::DefaultContext::Context::ImportRouteTarget::~ImportRouteTarget
 
 bool Ipv6Pim::Standby::DefaultContext::Context::ImportRouteTarget::has_data() const
 {
+    if (is_presence_container) return true;
     return route_target.is_set
 	|| configured.is_set
 	|| anycast_rp.is_set
@@ -20268,12 +20446,12 @@ Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::AnycastRpRange()
     :
     prefix_length{YType::uint8, "prefix-length"},
     ancast_rp_marked{YType::boolean, "ancast-rp-marked"}
-    	,
+        ,
     prefix(std::make_shared<Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "anycast-rp-range"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "anycast-rp-range"; yang_parent_name = "context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::~AnycastRpRange()
@@ -20282,6 +20460,7 @@ Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::~AnycastRpRange()
 
 bool Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| ancast_rp_marked.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
@@ -20388,7 +20567,7 @@ Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::Prefix()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "anycast-rp-range"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "anycast-rp-range"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::~Prefix()
@@ -20397,6 +20576,7 @@ Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::~Prefix()
 
 bool Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -20494,9 +20674,11 @@ bool Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange::Prefix::has_leaf
 }
 
 Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCounts()
+    :
+    topology_entry_flag_route_count(this, {"entry_flag"})
 {
 
-    yang_name = "topology-entry-flag-route-counts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology-entry-flag-route-counts"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::~TopologyEntryFlagRouteCounts()
@@ -20505,7 +20687,8 @@ Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::~TopologyEntryFl
 
 bool Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::has_data() const
 {
-    for (std::size_t index=0; index<topology_entry_flag_route_count.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology_entry_flag_route_count.len(); index++)
     {
         if(topology_entry_flag_route_count[index]->has_data())
             return true;
@@ -20515,7 +20698,7 @@ bool Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::has_data() 
 
 bool Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::has_operation() const
 {
-    for (std::size_t index=0; index<topology_entry_flag_route_count.size(); index++)
+    for (std::size_t index=0; index<topology_entry_flag_route_count.len(); index++)
     {
         if(topology_entry_flag_route_count[index]->has_operation())
             return true;
@@ -20552,7 +20735,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRoute
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount>();
         c->parent = this;
-        topology_entry_flag_route_count.push_back(c);
+        topology_entry_flag_route_count.append(c);
         return c;
     }
 
@@ -20564,7 +20747,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : topology_entry_flag_route_count)
+    for (auto c : topology_entry_flag_route_count.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20601,7 +20784,7 @@ Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFla
     is_node_low_memory{YType::boolean, "is-node-low-memory"}
 {
 
-    yang_name = "topology-entry-flag-route-count"; yang_parent_name = "topology-entry-flag-route-counts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "topology-entry-flag-route-count"; yang_parent_name = "topology-entry-flag-route-counts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::~TopologyEntryFlagRouteCount()
@@ -20610,6 +20793,7 @@ Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFla
 
 bool Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_flag.is_set
 	|| group_ranges.is_set
 	|| active_group_ranges.is_set
@@ -20641,7 +20825,8 @@ std::string Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::Topo
 std::string Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "topology-entry-flag-route-count" <<"[entry-flag='" <<entry_flag <<"']";
+    path_buffer << "topology-entry-flag-route-count";
+    ADD_KEY_TOKEN(entry_flag, "entry-flag");
     return path_buffer.str();
 }
 
@@ -20761,12 +20946,12 @@ bool Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEnt
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RpfRedirect()
     :
     redirect_route_databases(std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases>())
-	,bundle_interfaces(std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces>())
+    , bundle_interfaces(std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces>())
 {
     redirect_route_databases->parent = this;
     bundle_interfaces->parent = this;
 
-    yang_name = "rpf-redirect"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-redirect"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::~RpfRedirect()
@@ -20775,6 +20960,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::~RpfRedirect()
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::has_data() const
 {
+    if (is_presence_container) return true;
     return (redirect_route_databases !=  nullptr && redirect_route_databases->has_data())
 	|| (bundle_interfaces !=  nullptr && bundle_interfaces->has_data());
 }
@@ -20865,9 +21051,11 @@ bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::has_leaf_or_child_of_name(co
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabases()
+    :
+    redirect_route_database(this, {})
 {
 
-    yang_name = "redirect-route-databases"; yang_parent_name = "rpf-redirect"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redirect-route-databases"; yang_parent_name = "rpf-redirect"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::~RedirectRouteDatabases()
@@ -20876,7 +21064,8 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::~Redirect
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::has_data() const
 {
-    for (std::size_t index=0; index<redirect_route_database.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<redirect_route_database.len(); index++)
     {
         if(redirect_route_database[index]->has_data())
             return true;
@@ -20886,7 +21075,7 @@ bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::has_
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::has_operation() const
 {
-    for (std::size_t index=0; index<redirect_route_database.size(); index++)
+    for (std::size_t index=0; index<redirect_route_database.len(); index++)
     {
         if(redirect_route_database[index]->has_operation())
             return true;
@@ -20923,7 +21112,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectR
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase>();
         c->parent = this;
-        redirect_route_database.push_back(c);
+        redirect_route_database.append(c);
         return c;
     }
 
@@ -20935,7 +21124,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : redirect_route_database)
+    for (auto c : redirect_route_database.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20967,14 +21156,15 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
     group_address{YType::str, "group-address"},
     bandwidth{YType::uint32, "bandwidth"},
     uptime{YType::uint64, "uptime"}
-    	,
+        ,
     group_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr>())
-	,source_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr>())
+    , source_address_xr(std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr>())
+    , interface(this, {})
 {
     group_address_xr->parent = this;
     source_address_xr->parent = this;
 
-    yang_name = "redirect-route-database"; yang_parent_name = "redirect-route-databases"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "redirect-route-database"; yang_parent_name = "redirect-route-databases"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::~RedirectRouteDatabase()
@@ -20983,7 +21173,8 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -20998,7 +21189,7 @@ bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Redi
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -21063,7 +21254,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectR
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -21085,7 +21276,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     }
 
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21158,7 +21349,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-xr"; yang_parent_name = "redirect-route-database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-address-xr"; yang_parent_name = "redirect-route-database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::~GroupAddressXr()
@@ -21167,6 +21358,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -21270,7 +21462,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address-xr"; yang_parent_name = "redirect-route-database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-address-xr"; yang_parent_name = "redirect-route-database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::~SourceAddressXr()
@@ -21279,6 +21471,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -21383,12 +21576,12 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
     is_rpf_interface{YType::boolean, "is-rpf-interface"},
     is_outgoing_interface{YType::boolean, "is-outgoing-interface"},
     is_snoop_interface{YType::boolean, "is-snoop-interface"}
-    	,
+        ,
     rpf_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress>())
 {
     rpf_address->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "redirect-route-database"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "redirect-route-database"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::~Interface()
@@ -21397,6 +21590,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| uptime.is_set
 	|| expiry.is_set
@@ -21555,7 +21749,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rpf-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rpf-address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::~RpfAddress()
@@ -21564,6 +21758,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectR
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface::RpfAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -21661,9 +21856,11 @@ bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Redi
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterfaces()
+    :
+    bundle_interface(this, {})
 {
 
-    yang_name = "bundle-interfaces"; yang_parent_name = "rpf-redirect"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-interfaces"; yang_parent_name = "rpf-redirect"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::~BundleInterfaces()
@@ -21672,7 +21869,8 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::~BundleInterfac
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<bundle_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
     {
         if(bundle_interface[index]->has_data())
             return true;
@@ -21682,7 +21880,7 @@ bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::has_data()
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_interface.size(); index++)
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
     {
         if(bundle_interface[index]->has_operation())
             return true;
@@ -21719,7 +21917,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInt
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface>();
         c->parent = this;
-        bundle_interface.push_back(c);
+        bundle_interface.append(c);
         return c;
     }
 
@@ -21731,7 +21929,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_interface)
+    for (auto c : bundle_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21772,7 +21970,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface
     available_threshold_bandwidth{YType::int32, "available-threshold-bandwidth"}
 {
 
-    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::~BundleInterface()
@@ -21781,6 +21979,7 @@ Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface
 
 bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set
 	|| interface_name.is_set
 	|| rpf_redirect_bundle_name.is_set
@@ -21982,9 +22181,11 @@ bool Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInte
 }
 
 Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnels()
+    :
+    tunnel(this, {"tunnel_name"})
 {
 
-    yang_name = "tunnels"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnels"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Tunnels::~Tunnels()
@@ -21993,7 +22194,8 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::~Tunnels()
 
 bool Ipv6Pim::Standby::DefaultContext::Tunnels::has_data() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_data())
             return true;
@@ -22003,7 +22205,7 @@ bool Ipv6Pim::Standby::DefaultContext::Tunnels::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Tunnels::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel.size(); index++)
+    for (std::size_t index=0; index<tunnel.len(); index++)
     {
         if(tunnel[index]->has_operation())
             return true;
@@ -22040,7 +22242,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Tunnels::get_child_by_
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel>();
         c->parent = this;
-        tunnel.push_back(c);
+        tunnel.append(c);
         return c;
     }
 
@@ -22052,7 +22254,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel)
+    for (auto c : tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22082,18 +22284,18 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::Tunnel()
     :
     tunnel_name{YType::str, "tunnel-name"},
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     source_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress>())
-	,rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress>())
-	,source_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio>())
-	,group_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio>())
+    , rp_address(std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress>())
+    , source_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio>())
+    , group_address_netio(std::make_shared<Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio>())
 {
     source_address->parent = this;
     rp_address->parent = this;
     source_address_netio->parent = this;
     group_address_netio->parent = this;
 
-    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::~Tunnel()
@@ -22102,6 +22304,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::~Tunnel()
 
 bool Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_name.is_set
 	|| vrf_name.is_set
 	|| (source_address !=  nullptr && source_address->has_data())
@@ -22131,7 +22334,8 @@ std::string Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::get_absolute_path
 std::string Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tunnel" <<"[tunnel-name='" <<tunnel_name <<"']";
+    path_buffer << "tunnel";
+    ADD_KEY_TOKEN(tunnel_name, "tunnel-name");
     return path_buffer.str();
 }
 
@@ -22256,7 +22460,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::SourceAddress(
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::~SourceAddress()
@@ -22265,6 +22469,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::~SourceAddress
 
 bool Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22361,7 +22566,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::RpAddress()
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "rp-address"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rp-address"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::~RpAddress()
@@ -22370,6 +22575,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::~RpAddress()
 
 bool Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::RpAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22466,7 +22672,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::SourceAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "source-address-netio"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-address-netio"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::~SourceAddressNetio()
@@ -22475,6 +22681,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::~SourceAd
 
 bool Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::SourceAddressNetio::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22571,7 +22778,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::GroupAddre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "group-address-netio"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-address-netio"; yang_parent_name = "tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::~GroupAddressNetio()
@@ -22580,6 +22787,7 @@ Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::~GroupAddr
 
 bool Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -22670,9 +22878,11 @@ bool Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel::GroupAddressNetio::has_l
 }
 
 Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoutes()
+    :
+    multicast_static_route(this, {})
 {
 
-    yang_name = "multicast-static-routes"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast-static-routes"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::~MulticastStaticRoutes()
@@ -22681,7 +22891,8 @@ Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::~MulticastStaticRoutes(
 
 bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::has_data() const
 {
-    for (std::size_t index=0; index<multicast_static_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<multicast_static_route.len(); index++)
     {
         if(multicast_static_route[index]->has_data())
             return true;
@@ -22691,7 +22902,7 @@ bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<multicast_static_route.size(); index++)
+    for (std::size_t index=0; index<multicast_static_route.len(); index++)
     {
         if(multicast_static_route[index]->has_operation())
             return true;
@@ -22728,7 +22939,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes:
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute>();
         c->parent = this;
-        multicast_static_route.push_back(c);
+        multicast_static_route.append(c);
         return c;
     }
 
@@ -22740,7 +22951,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : multicast_static_route)
+    for (auto c : multicast_static_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -22769,19 +22980,19 @@ bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::has_leaf_or_child_
 Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::MulticastStaticRoute()
     :
     address{YType::str, "address"},
-    prefix_length{YType::int32, "prefix-length"},
+    prefix_length{YType::uint32, "prefix-length"},
     interface_name{YType::str, "interface-name"},
     distance{YType::uint32, "distance"},
     prefix_length_xr{YType::uint8, "prefix-length-xr"},
     is_via_lsm{YType::boolean, "is-via-lsm"}
-    	,
+        ,
     prefix(std::make_shared<Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix>())
-	,nexthop(std::make_shared<Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop>())
+    , nexthop(std::make_shared<Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop>())
 {
     prefix->parent = this;
     nexthop->parent = this;
 
-    yang_name = "multicast-static-route"; yang_parent_name = "multicast-static-routes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast-static-route"; yang_parent_name = "multicast-static-routes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::~MulticastStaticRoute()
@@ -22790,6 +23001,7 @@ Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::~
 
 bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| interface_name.is_set
@@ -22964,7 +23176,7 @@ Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::P
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "multicast-static-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "multicast-static-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::~Prefix()
@@ -22973,6 +23185,7 @@ Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::P
 
 bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23076,7 +23289,7 @@ Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::N
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "nexthop"; yang_parent_name = "multicast-static-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nexthop"; yang_parent_name = "multicast-static-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::~Nexthop()
@@ -23085,6 +23298,7 @@ Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::N
 
 bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23182,9 +23396,11 @@ bool Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRou
 }
 
 Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbors()
+    :
+    neighbor(this, {})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Neighbors::~Neighbors()
@@ -23193,7 +23409,8 @@ Ipv6Pim::Standby::DefaultContext::Neighbors::~Neighbors()
 
 bool Ipv6Pim::Standby::DefaultContext::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -23203,7 +23420,7 @@ bool Ipv6Pim::Standby::DefaultContext::Neighbors::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -23240,7 +23457,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Neighbors::get_child_b
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -23252,7 +23469,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23297,9 +23514,11 @@ Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::Neighbor()
     is_bfd_state{YType::boolean, "is-bfd-state"},
     propagation_delay{YType::uint16, "propagation-delay"},
     override_interval{YType::uint16, "override-interval"}
+        ,
+    neighbor_address_xr(this, {})
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::~Neighbor()
@@ -23308,7 +23527,8 @@ Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::~Neighbor()
 
 bool Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::has_data() const
 {
-    for (std::size_t index=0; index<neighbor_address_xr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor_address_xr.len(); index++)
     {
         if(neighbor_address_xr[index]->has_data())
             return true;
@@ -23334,7 +23554,7 @@ bool Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::has_data() const
 
 bool Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor_address_xr.size(); index++)
+    for (std::size_t index=0; index<neighbor_address_xr.len(); index++)
     {
         if(neighbor_address_xr[index]->has_operation())
             return true;
@@ -23405,7 +23625,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::g
     {
         auto c = std::make_shared<Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr>();
         c->parent = this;
-        neighbor_address_xr.push_back(c);
+        neighbor_address_xr.append(c);
         return c;
     }
 
@@ -23417,7 +23637,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::DefaultContext:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor_address_xr)
+    for (auto c : neighbor_address_xr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -23620,7 +23840,7 @@ Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::Neighb
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "neighbor-address-xr"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor-address-xr"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::~NeighborAddressXr()
@@ -23629,6 +23849,7 @@ Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::~Neigh
 
 bool Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -23728,16 +23949,16 @@ bool Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr::h
 Ipv6Pim::Standby::Process::Process()
     :
     nsr(std::make_shared<Ipv6Pim::Standby::Process::Nsr>())
-	,summary(std::make_shared<Ipv6Pim::Standby::Process::Summary>())
-	,nsf(std::make_shared<Ipv6Pim::Standby::Process::Nsf>())
-	,issu(std::make_shared<Ipv6Pim::Standby::Process::Issu>())
+    , summary(std::make_shared<Ipv6Pim::Standby::Process::Summary>())
+    , nsf(std::make_shared<Ipv6Pim::Standby::Process::Nsf>())
+    , issu(std::make_shared<Ipv6Pim::Standby::Process::Issu>())
 {
     nsr->parent = this;
     summary->parent = this;
     nsf->parent = this;
     issu->parent = this;
 
-    yang_name = "process"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::Process::~Process()
@@ -23746,6 +23967,7 @@ Ipv6Pim::Standby::Process::~Process()
 
 bool Ipv6Pim::Standby::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return (nsr !=  nullptr && nsr->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (nsf !=  nullptr && nsf->has_data())
@@ -23884,7 +24106,7 @@ Ipv6Pim::Standby::Process::Nsr::Nsr()
     count_rmf_not_ready{YType::uint32, "count-rmf-not-ready"}
 {
 
-    yang_name = "nsr"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsr"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::Process::Nsr::~Nsr()
@@ -23893,6 +24115,7 @@ Ipv6Pim::Standby::Process::Nsr::~Nsr()
 
 bool Ipv6Pim::Standby::Process::Nsr::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| partner_connected.is_set
 	|| rmf_notification_done.is_set
@@ -24163,7 +24386,7 @@ Ipv6Pim::Standby::Process::Summary::Summary()
     is_global_register_limit_reached{YType::boolean, "is-global-register-limit-reached"}
 {
 
-    yang_name = "summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::Process::Summary::~Summary()
@@ -24172,6 +24395,7 @@ Ipv6Pim::Standby::Process::Summary::~Summary()
 
 bool Ipv6Pim::Standby::Process::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return route_limit.is_set
 	|| route_count.is_set
 	|| route_low_water_mark.is_set
@@ -24766,7 +24990,7 @@ Ipv6Pim::Standby::Process::Nsf::Nsf()
     last_icd_notif_recv_sec{YType::int32, "last-icd-notif-recv-sec"}
 {
 
-    yang_name = "nsf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsf"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::Process::Nsf::~Nsf()
@@ -24775,6 +24999,7 @@ Ipv6Pim::Standby::Process::Nsf::~Nsf()
 
 bool Ipv6Pim::Standby::Process::Nsf::has_data() const
 {
+    if (is_presence_container) return true;
     return configured_state.is_set
 	|| nsf_state.is_set
 	|| nsf_timeout.is_set
@@ -25022,7 +25247,7 @@ Ipv6Pim::Standby::Process::Issu::Issu()
     checkpoint_idt_timestamp{YType::uint64, "checkpoint-idt-timestamp"}
 {
 
-    yang_name = "issu"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "issu"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::Process::Issu::~Issu()
@@ -25031,6 +25256,7 @@ Ipv6Pim::Standby::Process::Issu::~Issu()
 
 bool Ipv6Pim::Standby::Process::Issu::has_data() const
 {
+    if (is_presence_container) return true;
     return informationvalid.is_set
 	|| role_ha.is_set
 	|| role_issu.is_set
@@ -25310,9 +25536,11 @@ bool Ipv6Pim::Standby::Process::Issu::has_leaf_or_child_of_name(const std::strin
 }
 
 Ipv6Pim::Standby::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::Vrfs::~Vrfs()
@@ -25321,7 +25549,8 @@ Ipv6Pim::Standby::Vrfs::~Vrfs()
 
 bool Ipv6Pim::Standby::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -25331,7 +25560,7 @@ bool Ipv6Pim::Standby::Vrfs::has_data() const
 
 bool Ipv6Pim::Standby::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -25368,7 +25597,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::Vrfs::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -25380,7 +25609,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::Vrfs::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -25409,41 +25638,41 @@ bool Ipv6Pim::Standby::Vrfs::has_leaf_or_child_of_name(const std::string & name)
 Ipv6Pim::Standby::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     ifrs_interfaces(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces>())
-	,safs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs>())
-	,interface_statistics(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::InterfaceStatistics>())
-	,topology_route_count(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TopologyRouteCount>())
-	,jp_statistics(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::JpStatistics>())
-	,mib_databases(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::MibDatabases>())
-	,neighbor_old_formats(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::NeighborOldFormats>())
-	,ifrs_summary(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsSummary>())
-	,ranges(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Ranges>())
-	,interface_old_formats(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::InterfaceOldFormats>())
-	,bsr(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Bsr>())
-	,route_policy(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::RoutePolicy>())
-	,rpf_summary(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::RpfSummary>())
-	,interfaces(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Interfaces>())
-	,net_io_tunnels(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::NetIoTunnels>())
-	,bidir_df_states(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::BidirDfStates>())
-	,topologies(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Topologies>())
-	,bgp_afs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::BgpAfs>())
-	,auto_rp(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::AutoRp>())
-	,topology_interface_flag_route_counts(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts>())
-	,group_map_sources(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::GroupMapSources>())
-	,traffic_counters(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TrafficCounters>())
-	,group_map_rpfs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::GroupMapRpfs>())
-	,summary(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Summary>())
-	,gre(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Gre>())
-	,bidir_df_winners(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::BidirDfWinners>())
-	,table_contexts(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TableContexts>())
-	,neighbor_summaries(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::NeighborSummaries>())
-	,context(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Context>())
-	,topology_entry_flag_route_counts(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts>())
-	,rpf_redirect(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect>())
-	,tunnels(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels>())
-	,multicast_static_routes(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes>())
-	,neighbors(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Neighbors>())
+    , safs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs>())
+    , interface_statistics(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::InterfaceStatistics>())
+    , topology_route_count(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TopologyRouteCount>())
+    , jp_statistics(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::JpStatistics>())
+    , mib_databases(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::MibDatabases>())
+    , neighbor_old_formats(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::NeighborOldFormats>())
+    , ifrs_summary(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsSummary>())
+    , ranges(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Ranges>())
+    , interface_old_formats(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::InterfaceOldFormats>())
+    , bsr(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Bsr>())
+    , route_policy(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::RoutePolicy>())
+    , rpf_summary(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::RpfSummary>())
+    , interfaces(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Interfaces>())
+    , net_io_tunnels(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::NetIoTunnels>())
+    , bidir_df_states(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::BidirDfStates>())
+    , topologies(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Topologies>())
+    , bgp_afs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::BgpAfs>())
+    , auto_rp(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::AutoRp>())
+    , topology_interface_flag_route_counts(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TopologyInterfaceFlagRouteCounts>())
+    , group_map_sources(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::GroupMapSources>())
+    , traffic_counters(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TrafficCounters>())
+    , group_map_rpfs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::GroupMapRpfs>())
+    , summary(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Summary>())
+    , gre(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Gre>())
+    , bidir_df_winners(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::BidirDfWinners>())
+    , table_contexts(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TableContexts>())
+    , neighbor_summaries(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::NeighborSummaries>())
+    , context(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Context>())
+    , topology_entry_flag_route_counts(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::TopologyEntryFlagRouteCounts>())
+    , rpf_redirect(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::RpfRedirect>())
+    , tunnels(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Tunnels>())
+    , multicast_static_routes(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes>())
+    , neighbors(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Neighbors>())
 {
     ifrs_interfaces->parent = this;
     safs->parent = this;
@@ -25480,7 +25709,7 @@ Ipv6Pim::Standby::Vrfs::Vrf::Vrf()
     multicast_static_routes->parent = this;
     neighbors->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::~Vrf()
@@ -25489,6 +25718,7 @@ Ipv6Pim::Standby::Vrfs::Vrf::~Vrf()
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (ifrs_interfaces !=  nullptr && ifrs_interfaces->has_data())
 	|| (safs !=  nullptr && safs->has_data())
@@ -25576,7 +25806,8 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::get_absolute_path() const
 std::string Ipv6Pim::Standby::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -26104,9 +26335,11 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterfaces()
+    :
+    ifrs_interface(this, {"interface_name"})
 {
 
-    yang_name = "ifrs-interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::~IfrsInterfaces()
@@ -26115,7 +26348,8 @@ Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::~IfrsInterfaces()
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_data())
             return true;
@@ -26125,7 +26359,7 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::has_data() const
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<ifrs_interface.size(); index++)
+    for (std::size_t index=0; index<ifrs_interface.len(); index++)
     {
         if(ifrs_interface[index]->has_operation())
             return true;
@@ -26155,7 +26389,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::get_child_b
     {
         auto c = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface>();
         c->parent = this;
-        ifrs_interface.push_back(c);
+        ifrs_interface.append(c);
         return c;
     }
 
@@ -26167,7 +26401,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Ifrs
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifrs_interface)
+    for (auto c : ifrs_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -26227,12 +26461,13 @@ Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::IfrsInterface()
     idb_threshold_count{YType::uint32, "idb-threshold-count"},
     idb_current_count{YType::uint32, "idb-current-count"},
     idb_acl_name{YType::str, "idb-acl-name"}
-    	,
+        ,
     dr_address(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress>())
+    , interface_address(this, {})
 {
     dr_address->parent = this;
 
-    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifrs-interface"; yang_parent_name = "ifrs-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::~IfrsInterface()
@@ -26241,7 +26476,8 @@ Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::~IfrsInterface()
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_data() const
 {
-    for (std::size_t index=0; index<interface_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_address.len(); index++)
     {
         if(interface_address[index]->has_data())
             return true;
@@ -26283,7 +26519,7 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_data() cons
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_operation() const
 {
-    for (std::size_t index=0; index<interface_address.size(); index++)
+    for (std::size_t index=0; index<interface_address.len(); index++)
     {
         if(interface_address[index]->has_operation())
             return true;
@@ -26327,7 +26563,8 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::has_operation()
 std::string Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifrs-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "ifrs-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -26387,7 +26624,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterfa
     {
         auto c = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress>();
         c->parent = this;
-        interface_address.push_back(c);
+        interface_address.append(c);
         return c;
     }
 
@@ -26404,7 +26641,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Ifrs
     }
 
     count = 0;
-    for (auto const & c : interface_address)
+    for (auto c : interface_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -26757,7 +26994,7 @@ Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::DrAddress
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "dr-address"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dr-address"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::~DrAddress()
@@ -26766,6 +27003,7 @@ Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::~DrAddres
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -26862,7 +27100,7 @@ Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::In
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "interface-address"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-address"; yang_parent_name = "ifrs-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::~InterfaceAddress()
@@ -26871,6 +27109,7 @@ Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::~I
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -26961,9 +27200,11 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddres
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::Safs::Safs()
+    :
+    saf(this, {})
 {
 
-    yang_name = "safs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "safs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::Safs::~Safs()
@@ -26972,7 +27213,8 @@ Ipv6Pim::Standby::Vrfs::Vrf::Safs::~Safs()
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::has_data() const
 {
-    for (std::size_t index=0; index<saf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<saf.len(); index++)
     {
         if(saf[index]->has_data())
             return true;
@@ -26982,7 +27224,7 @@ bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::has_data() const
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::has_operation() const
 {
-    for (std::size_t index=0; index<saf.size(); index++)
+    for (std::size_t index=0; index<saf.len(); index++)
     {
         if(saf[index]->has_operation())
             return true;
@@ -27012,7 +27254,7 @@ std::shared_ptr<Entity> Ipv6Pim::Standby::Vrfs::Vrf::Safs::get_child_by_name(con
     {
         auto c = std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf>();
         c->parent = this;
-        saf.push_back(c);
+        saf.append(c);
         return c;
     }
 
@@ -27024,7 +27266,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Pim::Standby::Vrfs::Vrf::Safs
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : saf)
+    for (auto c : saf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -27054,16 +27296,16 @@ Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::Saf()
     :
     saf_name{YType::enumeration, "saf-name"},
     topology_name{YType::str, "topology-name"}
-    	,
+        ,
     rpf_hash_source_groups(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups>())
-	,rpf_hash_sources(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources>())
-	,rpfs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs>())
+    , rpf_hash_sources(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources>())
+    , rpfs(std::make_shared<Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs>())
 {
     rpf_hash_source_groups->parent = this;
     rpf_hash_sources->parent = this;
     rpfs->parent = this;
 
-    yang_name = "saf"; yang_parent_name = "safs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "saf"; yang_parent_name = "safs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::~Saf()
@@ -27072,6 +27314,7 @@ Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::~Saf()
 
 bool Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf::has_data() const
 {
+    if (is_presence_container) return true;
     return saf_name.is_set
 	|| topology_name.is_set
 	|| (rpf_hash_source_groups !=  nullptr && rpf_hash_source_groups->has_data())

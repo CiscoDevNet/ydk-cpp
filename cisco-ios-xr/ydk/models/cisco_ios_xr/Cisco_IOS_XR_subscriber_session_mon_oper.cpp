@@ -17,7 +17,7 @@ SessionMon::SessionMon()
 {
     nodes->parent = this;
 
-    yang_name = "session-mon"; yang_parent_name = "Cisco-IOS-XR-subscriber-session-mon-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "session-mon"; yang_parent_name = "Cisco-IOS-XR-subscriber-session-mon-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SessionMon::~SessionMon()
@@ -26,6 +26,7 @@ SessionMon::~SessionMon()
 
 bool SessionMon::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool SessionMon::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 SessionMon::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "session-mon"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "session-mon"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SessionMon::Nodes::~Nodes()
@@ -129,7 +132,8 @@ SessionMon::Nodes::~Nodes()
 
 bool SessionMon::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool SessionMon::Nodes::has_data() const
 
 bool SessionMon::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> SessionMon::Nodes::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<SessionMon::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool SessionMon::Nodes::has_leaf_or_child_of_name(const std::string & name) cons
 SessionMon::Nodes::Node::Node()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     session_mon_statistics(std::make_shared<SessionMon::Nodes::Node::SessionMonStatistics>())
-	,interface_all_statistics(std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics>())
-	,license_statistics(std::make_shared<SessionMon::Nodes::Node::LicenseStatistics>())
+    , interface_all_statistics(std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics>())
+    , license_statistics(std::make_shared<SessionMon::Nodes::Node::LicenseStatistics>())
 {
     session_mon_statistics->parent = this;
     interface_all_statistics->parent = this;
     license_statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SessionMon::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ SessionMon::Nodes::Node::~Node()
 
 bool SessionMon::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (session_mon_statistics !=  nullptr && session_mon_statistics->has_data())
 	|| (interface_all_statistics !=  nullptr && interface_all_statistics->has_data())
@@ -260,7 +265,8 @@ std::string SessionMon::Nodes::Node::get_absolute_path() const
 std::string SessionMon::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -370,7 +376,7 @@ SessionMon::Nodes::Node::SessionMonStatistics::SessionMonStatistics()
     timeout_value{YType::uint32, "timeout-value"}
 {
 
-    yang_name = "session-mon-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-mon-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionMon::Nodes::Node::SessionMonStatistics::~SessionMonStatistics()
@@ -379,6 +385,7 @@ SessionMon::Nodes::Node::SessionMonStatistics::~SessionMonStatistics()
 
 bool SessionMon::Nodes::Node::SessionMonStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return total.is_set
 	|| pppoe.is_set
 	|| pppoe_ds.is_set
@@ -599,9 +606,11 @@ bool SessionMon::Nodes::Node::SessionMonStatistics::has_leaf_or_child_of_name(co
 }
 
 SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistics()
+    :
+    interface_all_statistic(this, {"interface_name"})
 {
 
-    yang_name = "interface-all-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-all-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionMon::Nodes::Node::InterfaceAllStatistics::~InterfaceAllStatistics()
@@ -610,7 +619,8 @@ SessionMon::Nodes::Node::InterfaceAllStatistics::~InterfaceAllStatistics()
 
 bool SessionMon::Nodes::Node::InterfaceAllStatistics::has_data() const
 {
-    for (std::size_t index=0; index<interface_all_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_all_statistic.len(); index++)
     {
         if(interface_all_statistic[index]->has_data())
             return true;
@@ -620,7 +630,7 @@ bool SessionMon::Nodes::Node::InterfaceAllStatistics::has_data() const
 
 bool SessionMon::Nodes::Node::InterfaceAllStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<interface_all_statistic.size(); index++)
+    for (std::size_t index=0; index<interface_all_statistic.len(); index++)
     {
         if(interface_all_statistic[index]->has_operation())
             return true;
@@ -650,7 +660,7 @@ std::shared_ptr<Entity> SessionMon::Nodes::Node::InterfaceAllStatistics::get_chi
     {
         auto c = std::make_shared<SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic>();
         c->parent = this;
-        interface_all_statistic.push_back(c);
+        interface_all_statistic.append(c);
         return c;
     }
 
@@ -662,7 +672,7 @@ std::map<std::string, std::shared_ptr<Entity>> SessionMon::Nodes::Node::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_all_statistic)
+    for (auto c : interface_all_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -706,7 +716,7 @@ SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::Interfac
     timeout_value{YType::uint32, "timeout-value"}
 {
 
-    yang_name = "interface-all-statistic"; yang_parent_name = "interface-all-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-all-statistic"; yang_parent_name = "interface-all-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::~InterfaceAllStatistic()
@@ -715,6 +725,7 @@ SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::~Interfa
 
 bool SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| total.is_set
 	|| pppoe.is_set
@@ -753,7 +764,8 @@ bool SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::has
 std::string SessionMon::Nodes::Node::InterfaceAllStatistics::InterfaceAllStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-all-statistic" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface-all-statistic";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -964,7 +976,7 @@ SessionMon::Nodes::Node::LicenseStatistics::LicenseStatistics()
     timeout_value{YType::uint32, "timeout-value"}
 {
 
-    yang_name = "license-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "license-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SessionMon::Nodes::Node::LicenseStatistics::~LicenseStatistics()
@@ -973,6 +985,7 @@ SessionMon::Nodes::Node::LicenseStatistics::~LicenseStatistics()
 
 bool SessionMon::Nodes::Node::LicenseStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return total.is_set
 	|| pppoe.is_set
 	|| pppoe_ds.is_set

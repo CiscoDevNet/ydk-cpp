@@ -16,7 +16,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "vendor-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vendor-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::VendorId::~VendorId()
@@ -25,6 +25,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::VendorId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -102,7 +103,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "vendor-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vendor-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::VendorIdRegex::~VendorIdRegex()
@@ -111,6 +112,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::VendorIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -188,7 +190,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "access-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::AccessInterface::~AccessInterface()
@@ -197,6 +199,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::AccessInterface::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -274,7 +277,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "input-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-interface"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::InputInterface::~InputInterface()
@@ -283,6 +286,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::InputInterface::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -360,7 +364,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     uint64_array{YType::uint64, "uint64_array"}
 {
 
-    yang_name = "input-intfhdl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-intfhdl"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::InputIntfhdl::~InputIntfhdl()
@@ -369,6 +373,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::InputIntfhdl::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uint64_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -442,9 +447,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Ethertype()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "ethertype"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethertype"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::~Ethertype()
@@ -453,7 +460,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -463,7 +471,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -493,7 +501,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -505,7 +513,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -537,7 +545,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "ethertype"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "ethertype"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Uint16RngArray::~Uint16RngArray()
@@ -546,6 +554,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::Ethertype::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -626,12 +635,12 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     :
     max_count{YType::uint16, "max-count"},
     idle_timeout{YType::uint16, "idle-timeout"}
-    	,
+        ,
     flow_keys(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::FlowKeys>())
 {
     flow_keys->parent = this;
 
-    yang_name = "flow-key-data"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-key-data"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::~FlowKeyData()
@@ -640,6 +649,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::has_data() const
 {
+    if (is_presence_container) return true;
     return max_count.is_set
 	|| idle_timeout.is_set
 	|| (flow_keys !=  nullptr && flow_keys->has_data());
@@ -738,7 +748,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     num{YType::uint8, "num"}
 {
 
-    yang_name = "flow-keys"; yang_parent_name = "flow-key-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-keys"; yang_parent_name = "flow-key-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::FlowKeys::~FlowKeys()
@@ -747,6 +757,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::FlowKeyData::FlowKeys::has_data() const
 {
+    if (is_presence_container) return true;
     return keys.is_set
 	|| num.is_set;
 }
@@ -828,7 +839,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "dhcp-client-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-client-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientId::~DhcpClientId()
@@ -837,6 +848,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -914,7 +926,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "dhcp-client-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-client-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientIdRegex::~DhcpClientIdRegex()
@@ -923,6 +935,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DhcpClientIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -1000,7 +1013,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "circuit-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::CircuitId::~CircuitId()
@@ -1009,6 +1022,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::CircuitId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -1086,7 +1100,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "circuit-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "circuit-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::CircuitIdRegex::~CircuitIdRegex()
@@ -1095,6 +1109,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::CircuitIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -1172,7 +1187,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "remote-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::RemoteId::~RemoteId()
@@ -1181,6 +1196,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::RemoteId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -1258,7 +1274,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     string_array{YType::str, "string-array"}
 {
 
-    yang_name = "remote-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-id-regex"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::RemoteIdRegex::~RemoteIdRegex()
@@ -1267,6 +1283,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::RemoteIdRegex::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : string_array.getYLeafs())
     {
         if(leaf.is_set)
@@ -1340,9 +1357,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::SrcPort()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "src-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::~SrcPort()
@@ -1351,7 +1370,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -1361,7 +1381,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -1391,7 +1411,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -1403,7 +1423,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1435,7 +1455,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "src-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "src-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::Uint16RngArray::~Uint16RngArray()
@@ -1444,6 +1464,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::SrcPort::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -1521,9 +1542,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::DstPort()
+    :
+    uint16_rng_array(this, {})
 {
 
-    yang_name = "dst-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dst-port"; yang_parent_name = "match-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::~DstPort()
@@ -1532,7 +1555,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::has_data() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_data())
             return true;
@@ -1542,7 +1566,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::has_operation() const
 {
-    for (std::size_t index=0; index<uint16_rng_array.size(); index++)
+    for (std::size_t index=0; index<uint16_rng_array.len(); index++)
     {
         if(uint16_rng_array[index]->has_operation())
             return true;
@@ -1572,7 +1596,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::Uint16RngArray>();
         c->parent = this;
-        uint16_rng_array.push_back(c);
+        uint16_rng_array.append(c);
         return c;
     }
 
@@ -1584,7 +1608,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : uint16_rng_array)
+    for (auto c : uint16_rng_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1616,7 +1640,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     max{YType::uint16, "max"}
 {
 
-    yang_name = "uint16_rng_array"; yang_parent_name = "dst-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "uint16_rng_array"; yang_parent_name = "dst-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::Uint16RngArray::~Uint16RngArray()
@@ -1625,6 +1649,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Police::ExcdclassP::ClassMapBg::MatchInfop::ClassMatchInfoSt::MatchData::DstPort::Uint16RngArray::has_data() const
 {
+    if (is_presence_container) return true;
     return min.is_set
 	|| max.is_set;
 }
@@ -1704,12 +1729,12 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Shape()
     :
     bw(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Bw>())
-	,be(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Be>())
+    , be(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Be>())
 {
     bw->parent = this;
     be->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::~Shape()
@@ -1718,6 +1743,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return (bw !=  nullptr && bw->has_data())
 	|| (be !=  nullptr && be->has_data());
 }
@@ -1806,7 +1832,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "bw"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Bw::~Bw()
@@ -1815,6 +1841,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Bw::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -1897,7 +1924,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "be"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "be"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Be::~Be()
@@ -1906,6 +1933,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Shape::Be::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -1985,14 +2013,14 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::ChildPolicy()
     :
     enc{YType::enumeration, "enc"}
-    	,
+        ,
     info(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::Info>())
-	,hd_info(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo>())
+    , hd_info(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo>())
 {
     info->parent = this;
     hd_info->parent = this;
 
-    yang_name = "child-policy"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-policy"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::~ChildPolicy()
@@ -2001,6 +2029,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::has_data() const
 {
+    if (is_presence_container) return true;
     return enc.is_set
 	|| (info !=  nullptr && info->has_data())
 	|| (hd_info !=  nullptr && hd_info->has_data());
@@ -2102,7 +2131,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "info"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "info"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::Info::~Info()
@@ -2111,6 +2140,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::Info::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set;
 }
@@ -2190,12 +2220,12 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo::HdInfo()
     :
     hd{YType::uint64, "hd"}
-    	,
+        ,
     data_hd(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo::DataHd>())
 {
     data_hd->parent = this;
 
-    yang_name = "hd-info"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hd-info"; yang_parent_name = "child-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo::~HdInfo()
@@ -2204,6 +2234,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return hd.is_set
 	|| (data_hd !=  nullptr && data_hd->has_data());
 }
@@ -2286,7 +2317,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo::DataHd::DataHd()
 {
 
-    yang_name = "data-hd"; yang_parent_name = "hd-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "data-hd"; yang_parent_name = "hd-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo::DataHd::~DataHd()
@@ -2295,6 +2326,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::ChildPolicy::HdInfo::DataHd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2348,14 +2380,14 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     :
     cac_type{YType::uint8, "cac-type"},
     idle_timeout{YType::uint16, "idle-timeout"}
-    	,
+        ,
     flow_rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::FlowRate>())
-	,rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::Rate>())
+    , rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::Rate>())
 {
     flow_rate->parent = this;
     rate->parent = this;
 
-    yang_name = "cac"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::~Cac()
@@ -2364,6 +2396,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::has_data() const
 {
+    if (is_presence_container) return true;
     return cac_type.is_set
 	|| idle_timeout.is_set
 	|| (flow_rate !=  nullptr && flow_rate->has_data())
@@ -2478,7 +2511,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "flow-rate"; yang_parent_name = "cac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-rate"; yang_parent_name = "cac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::FlowRate::~FlowRate()
@@ -2487,6 +2520,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::FlowRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2569,7 +2603,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "rate"; yang_parent_name = "cac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate"; yang_parent_name = "cac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::Rate::~Rate()
@@ -2578,6 +2612,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Cac::Rate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2658,16 +2693,16 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     :
     pfc_pause_set{YType::uint32, "pfc-pause-set"},
     buffer_size_flag{YType::uint32, "buffer-size-flag"}
-    	,
+        ,
     buffer_size(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::BufferSize>())
-	,pause_threshold(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::PauseThreshold>())
-	,resume_threshold(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::ResumeThreshold>())
+    , pause_threshold(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::PauseThreshold>())
+    , resume_threshold(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::ResumeThreshold>())
 {
     buffer_size->parent = this;
     pause_threshold->parent = this;
     resume_threshold->parent = this;
 
-    yang_name = "pfc"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfc"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::~Pfc()
@@ -2676,6 +2711,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::has_data() const
 {
+    if (is_presence_container) return true;
     return pfc_pause_set.is_set
 	|| buffer_size_flag.is_set
 	|| (buffer_size !=  nullptr && buffer_size->has_data())
@@ -2806,7 +2842,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "buffer-size"; yang_parent_name = "pfc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "buffer-size"; yang_parent_name = "pfc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::BufferSize::~BufferSize()
@@ -2815,6 +2851,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::BufferSize::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2897,7 +2934,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pause-threshold"; yang_parent_name = "pfc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pause-threshold"; yang_parent_name = "pfc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::PauseThreshold::~PauseThreshold()
@@ -2906,6 +2943,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::PauseThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -2988,7 +3026,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "resume-threshold"; yang_parent_name = "pfc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resume-threshold"; yang_parent_name = "pfc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::ResumeThreshold::~ResumeThreshold()
@@ -2997,6 +3035,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pfc::ResumeThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3081,7 +3120,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     flow_timeout{YType::uint32, "flow-timeout"}
 {
 
-    yang_name = "flow-parm"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-parm"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::FlowParm::~FlowParm()
@@ -3090,6 +3129,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::FlowParm::has_data() const
 {
+    if (is_presence_container) return true;
     return max_mon_flows.is_set
 	|| mon_interval.is_set
 	|| intvl_hist.is_set
@@ -3198,14 +3238,14 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     ip_pkt_rate{YType::uint32, "ip-pkt-rate"},
     media_pkt_size{YType::uint32, "media-pkt-size"},
     media_pkts_per_ip{YType::uint32, "media-pkts-per-ip"}
-    	,
+        ,
     ip_bit_rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::IpBitRate>())
-	,media_bit_rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::MediaBitRate>())
+    , media_bit_rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::MediaBitRate>())
 {
     ip_bit_rate->parent = this;
     media_bit_rate->parent = this;
 
-    yang_name = "ipcbr"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcbr"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::~Ipcbr()
@@ -3214,6 +3254,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::has_data() const
 {
+    if (is_presence_container) return true;
     return action_metric_type.is_set
 	|| ip_pkt_rate.is_set
 	|| media_pkt_size.is_set
@@ -3354,7 +3395,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "ip-bit-rate"; yang_parent_name = "ipcbr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-bit-rate"; yang_parent_name = "ipcbr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::IpBitRate::~IpBitRate()
@@ -3363,6 +3404,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::IpBitRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3445,7 +3487,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "media-bit-rate"; yang_parent_name = "ipcbr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "media-bit-rate"; yang_parent_name = "ipcbr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::MediaBitRate::~MediaBitRate()
@@ -3454,6 +3496,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipcbr::MediaBitRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3537,9 +3580,11 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     max_dropout{YType::uint32, "max-dropout"},
     max_misorder{YType::uint32, "max-misorder"},
     seq_ext_cop4{YType::uint32, "seq-ext-cop4"}
+        ,
+    clock_rate(this, {})
 {
 
-    yang_name = "rtp"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::~Rtp()
@@ -3548,7 +3593,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::has_data() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_data())
             return true;
@@ -3562,7 +3608,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::has_operation() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_operation())
             return true;
@@ -3602,7 +3648,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::ClockRate>();
         c->parent = this;
-        clock_rate.push_back(c);
+        clock_rate.append(c);
         return c;
     }
 
@@ -3614,7 +3660,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_rate)
+    for (auto c : clock_rate.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3696,7 +3742,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     frequency{YType::uint32, "frequency"}
 {
 
-    yang_name = "clock-rate"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-rate"; yang_parent_name = "rtp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::ClockRate::~ClockRate()
@@ -3705,6 +3751,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Rtp::ClockRate::has_data() const
 {
+    if (is_presence_container) return true;
     return pt.is_set
 	|| frequency.is_set;
 }
@@ -3788,9 +3835,11 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     max_dropout{YType::uint32, "max-dropout"},
     max_misorder{YType::uint32, "max-misorder"},
     seq_ext_cop4{YType::uint32, "seq-ext-cop4"}
+        ,
+    clock_rate(this, {})
 {
 
-    yang_name = "rtp-mmr"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp-mmr"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::~RtpMmr()
@@ -3799,7 +3848,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::has_data() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_data())
             return true;
@@ -3813,7 +3863,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::has_operation() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_operation())
             return true;
@@ -3853,7 +3903,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::ClockRate>();
         c->parent = this;
-        clock_rate.push_back(c);
+        clock_rate.append(c);
         return c;
     }
 
@@ -3865,7 +3915,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_rate)
+    for (auto c : clock_rate.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3947,7 +3997,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     frequency{YType::uint32, "frequency"}
 {
 
-    yang_name = "clock-rate"; yang_parent_name = "rtp-mmr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-rate"; yang_parent_name = "rtp-mmr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::ClockRate::~ClockRate()
@@ -3956,6 +4006,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpMmr::ClockRate::has_data() const
 {
+    if (is_presence_container) return true;
     return pt.is_set
 	|| frequency.is_set;
 }
@@ -4032,25 +4083,28 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
     return false;
 }
 
-PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::RtpJ2K()
+PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::RtpJ2k()
     :
     action_metric_type{YType::enumeration, "action-metric-type"},
     min_sequential{YType::uint32, "min-sequential"},
     max_dropout{YType::uint32, "max-dropout"},
     max_misorder{YType::uint32, "max-misorder"},
     seq_ext_cop4{YType::uint32, "seq-ext-cop4"}
+        ,
+    clock_rate(this, {})
 {
 
-    yang_name = "rtp-j2k"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp-j2k"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::~RtpJ2K()
+PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::~RtpJ2k()
 {
 }
 
-bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::has_data() const
+bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::has_data() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_data())
             return true;
@@ -4062,9 +4116,9 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 	|| seq_ext_cop4.is_set;
 }
 
-bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::has_operation() const
+bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::has_operation() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_operation())
             return true;
@@ -4077,14 +4131,14 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 	|| ydk::is_set(seq_ext_cop4.yfilter);
 }
 
-std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::get_segment_path() const
+std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rtp-j2k";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4098,25 +4152,25 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::Polic
 
 }
 
-std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "clock-rate")
     {
-        auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate>();
+        auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate>();
         c->parent = this;
-        clock_rate.push_back(c);
+        clock_rate.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_rate)
+    for (auto c : clock_rate.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4127,7 +4181,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     return children;
 }
 
-void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "action-metric-type")
     {
@@ -4161,7 +4215,7 @@ void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
     }
 }
 
-void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "action-metric-type")
     {
@@ -4185,47 +4239,48 @@ void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
     }
 }
 
-bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "clock-rate" || name == "action-metric-type" || name == "min-sequential" || name == "max-dropout" || name == "max-misorder" || name == "seq-ext-cop4")
         return true;
     return false;
 }
 
-PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::ClockRate()
+PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::ClockRate()
     :
     pt{YType::uint32, "pt"},
     frequency{YType::uint32, "frequency"}
 {
 
-    yang_name = "clock-rate"; yang_parent_name = "rtp-j2k"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-rate"; yang_parent_name = "rtp-j2k"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::~ClockRate()
+PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::~ClockRate()
 {
 }
 
-bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::has_data() const
+bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::has_data() const
 {
+    if (is_presence_container) return true;
     return pt.is_set
 	|| frequency.is_set;
 }
 
-bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::has_operation() const
+bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pt.yfilter)
 	|| ydk::is_set(frequency.yfilter);
 }
 
-std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::get_segment_path() const
+std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "clock-rate";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4236,19 +4291,19 @@ std::vector<std::pair<std::string, LeafData> > PolicyManager::Nodes::Node::Polic
 
 }
 
-std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pt")
     {
@@ -4264,7 +4319,7 @@ void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
     }
 }
 
-void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::set_filter(const std::string & value_path, YFilter yfilter)
+void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pt")
     {
@@ -4276,7 +4331,7 @@ void PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
     }
 }
 
-bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2K::ClockRate::has_leaf_or_child_of_name(const std::string & name) const
+bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpJ2k::ClockRate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pt" || name == "frequency")
         return true;
@@ -4290,9 +4345,11 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     max_dropout{YType::uint32, "max-dropout"},
     max_misorder{YType::uint32, "max-misorder"},
     seq_ext_cop4{YType::uint32, "seq-ext-cop4"}
+        ,
+    clock_rate(this, {})
 {
 
-    yang_name = "rtp-voice"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rtp-voice"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::~RtpVoice()
@@ -4301,7 +4358,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::has_data() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_data())
             return true;
@@ -4315,7 +4373,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::has_operation() const
 {
-    for (std::size_t index=0; index<clock_rate.size(); index++)
+    for (std::size_t index=0; index<clock_rate.len(); index++)
     {
         if(clock_rate[index]->has_operation())
             return true;
@@ -4355,7 +4413,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::ClockRate>();
         c->parent = this;
-        clock_rate.push_back(c);
+        clock_rate.append(c);
         return c;
     }
 
@@ -4367,7 +4425,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : clock_rate)
+    for (auto c : clock_rate.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4449,7 +4507,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     frequency{YType::uint32, "frequency"}
 {
 
-    yang_name = "clock-rate"; yang_parent_name = "rtp-voice"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clock-rate"; yang_parent_name = "rtp-voice"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::ClockRate::~ClockRate()
@@ -4458,6 +4516,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::RtpVoice::ClockRate::has_data() const
 {
+    if (is_presence_container) return true;
     return pt.is_set
 	|| frequency.is_set;
 }
@@ -4540,12 +4599,12 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     filtered_pkt_rate{YType::uint32, "filtered-pkt-rate"},
     ip_pkt_rate{YType::uint32, "ip-pkt-rate"},
     pids{YType::uint32, "pids"}
-    	,
+        ,
     ip_bit_rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Mdi::IpBitRate>())
 {
     ip_bit_rate->parent = this;
 
-    yang_name = "mdi"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdi"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Mdi::~Mdi()
@@ -4554,6 +4613,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Mdi::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : pids.getYLeafs())
     {
         if(leaf.is_set)
@@ -4686,7 +4746,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "ip-bit-rate"; yang_parent_name = "mdi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-bit-rate"; yang_parent_name = "mdi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Mdi::IpBitRate::~IpBitRate()
@@ -4695,6 +4755,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Mdi::IpBitRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4777,12 +4838,12 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     filtered_pkt_rate{YType::uint32, "filtered-pkt-rate"},
     ip_pkt_rate{YType::uint32, "ip-pkt-rate"},
     pids{YType::uint32, "pids"}
-    	,
+        ,
     ip_bit_rate(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::IpBitRate>())
 {
     ip_bit_rate->parent = this;
 
-    yang_name = "mdi-rtp"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdi-rtp"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::~MdiRtp()
@@ -4791,6 +4852,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : pids.getYLeafs())
     {
         if(leaf.is_set)
@@ -4923,7 +4985,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "ip-bit-rate"; yang_parent_name = "mdi-rtp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip-bit-rate"; yang_parent_name = "mdi-rtp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::IpBitRate::~IpBitRate()
@@ -4932,6 +4994,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::MdiRtp::IpBitRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5013,7 +5076,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     fmm_name{YType::str, "fmm-name"}
 {
 
-    yang_name = "fmm"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fmm"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Fmm::~Fmm()
@@ -5022,6 +5085,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Fmm::has_data() const
 {
+    if (is_presence_container) return true;
     return fmm_name.is_set;
 }
 
@@ -5086,9 +5150,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::Pbf()
+    :
+    action_pbf_info_array(this, {})
 {
 
-    yang_name = "pbf"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbf"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::~Pbf()
@@ -5097,7 +5163,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::has_data() const
 {
-    for (std::size_t index=0; index<action_pbf_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_pbf_info_array.len(); index++)
     {
         if(action_pbf_info_array[index]->has_data())
             return true;
@@ -5107,7 +5174,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::has_operation() const
 {
-    for (std::size_t index=0; index<action_pbf_info_array.size(); index++)
+    for (std::size_t index=0; index<action_pbf_info_array.len(); index++)
     {
         if(action_pbf_info_array[index]->has_operation())
             return true;
@@ -5137,7 +5204,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray>();
         c->parent = this;
-        action_pbf_info_array.push_back(c);
+        action_pbf_info_array.append(c);
         return c;
     }
 
@@ -5149,7 +5216,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : action_pbf_info_array)
+    for (auto c : action_pbf_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5183,7 +5250,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     rt{YType::str, "rt"}
 {
 
-    yang_name = "action-pbf-info-array"; yang_parent_name = "pbf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-pbf-info-array"; yang_parent_name = "pbf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray::~ActionPbfInfoArray()
@@ -5192,6 +5259,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Pbf::ActionPbfInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return addr.is_set
 	|| vrf.is_set
 	|| rt_type.is_set
@@ -5295,9 +5363,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::Ipv4Nh()
+    :
+    action_ipv4_nh_info_array(this, {})
 {
 
-    yang_name = "ipv4-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::~Ipv4Nh()
@@ -5306,7 +5376,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::has_data() const
 {
-    for (std::size_t index=0; index<action_ipv4_nh_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_ipv4_nh_info_array.len(); index++)
     {
         if(action_ipv4_nh_info_array[index]->has_data())
             return true;
@@ -5316,7 +5387,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::has_operation() const
 {
-    for (std::size_t index=0; index<action_ipv4_nh_info_array.size(); index++)
+    for (std::size_t index=0; index<action_ipv4_nh_info_array.len(); index++)
     {
         if(action_ipv4_nh_info_array[index]->has_operation())
             return true;
@@ -5346,7 +5417,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray>();
         c->parent = this;
-        action_ipv4_nh_info_array.push_back(c);
+        action_ipv4_nh_info_array.append(c);
         return c;
     }
 
@@ -5358,7 +5429,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : action_ipv4_nh_info_array)
+    for (auto c : action_ipv4_nh_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5390,7 +5461,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "action-ipv4-nh-info-array"; yang_parent_name = "ipv4-nh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-ipv4-nh-info-array"; yang_parent_name = "ipv4-nh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray::~ActionIpv4NhInfoArray()
@@ -5399,6 +5470,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv4Nh::ActionIpv4NhInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_addr.is_set
 	|| vrf_name.is_set;
 }
@@ -5476,9 +5548,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::Ipv6Nh()
+    :
+    action_ipv6_nh_info_array(this, {})
 {
 
-    yang_name = "ipv6-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-nh"; yang_parent_name = "actp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::~Ipv6Nh()
@@ -5487,7 +5561,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::has_data() const
 {
-    for (std::size_t index=0; index<action_ipv6_nh_info_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<action_ipv6_nh_info_array.len(); index++)
     {
         if(action_ipv6_nh_info_array[index]->has_data())
             return true;
@@ -5497,7 +5572,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::has_operation() const
 {
-    for (std::size_t index=0; index<action_ipv6_nh_info_array.size(); index++)
+    for (std::size_t index=0; index<action_ipv6_nh_info_array.len(); index++)
     {
         if(action_ipv6_nh_info_array[index]->has_operation())
             return true;
@@ -5527,7 +5602,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray>();
         c->parent = this;
-        action_ipv6_nh_info_array.push_back(c);
+        action_ipv6_nh_info_array.append(c);
         return c;
     }
 
@@ -5539,7 +5614,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : action_ipv6_nh_info_array)
+    for (auto c : action_ipv6_nh_info_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5571,7 +5646,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "action-ipv6-nh-info-array"; yang_parent_name = "ipv6-nh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-ipv6-nh-info-array"; yang_parent_name = "ipv6-nh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray::~ActionIpv6NhInfoArray()
@@ -5580,6 +5655,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMaps::PolicyMap_::PolicyMapBg::EventInfop::PolicyEventInfoBg::ClassInfop::PolicyClassInfoBg::ActInfop::PolicyActionInfoSt::Actp::Ipv6Nh::ActionIpv6NhInfoArray::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_addr.is_set
 	|| vrf_name.is_set;
 }
@@ -5657,9 +5733,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetails()
+    :
+    policy_map_detail(this, {"policy_map_name"})
 {
 
-    yang_name = "policy-map-details"; yang_parent_name = "policy-map-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map-details"; yang_parent_name = "policy-map-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::~PolicyMapDetails()
@@ -5668,7 +5746,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::has_data() const
 {
-    for (std::size_t index=0; index<policy_map_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_map_detail.len(); index++)
     {
         if(policy_map_detail[index]->has_data())
             return true;
@@ -5678,7 +5757,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::has_operation() const
 {
-    for (std::size_t index=0; index<policy_map_detail.size(); index++)
+    for (std::size_t index=0; index<policy_map_detail.len(); index++)
     {
         if(policy_map_detail[index]->has_operation())
             return true;
@@ -5708,7 +5787,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail>();
         c->parent = this;
-        policy_map_detail.push_back(c);
+        policy_map_detail.append(c);
         return c;
     }
 
@@ -5720,7 +5799,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_map_detail)
+    for (auto c : policy_map_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5752,9 +5831,13 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
     object_type{YType::enumeration, "object-type"},
     total_objects{YType::uint32, "total-objects"},
     transient{YType::boolean, "transient"}
+        ,
+    reference(this, {})
+    , objects(this, {})
+    , class_map_reference(this, {})
 {
 
-    yang_name = "policy-map-detail"; yang_parent_name = "policy-map-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map-detail"; yang_parent_name = "policy-map-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::~PolicyMapDetail()
@@ -5763,17 +5846,18 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_data())
             return true;
@@ -5786,17 +5870,17 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_operation())
             return true;
@@ -5811,7 +5895,8 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-map-detail" <<"[policy-map-name='" <<policy_map_name <<"']";
+    path_buffer << "policy-map-detail";
+    ADD_KEY_TOKEN(policy_map_name, "policy-map-name");
     return path_buffer.str();
 }
 
@@ -5834,7 +5919,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -5842,7 +5927,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Objects>();
         c->parent = this;
-        objects.push_back(c);
+        objects.append(c);
         return c;
     }
 
@@ -5850,7 +5935,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference>();
         c->parent = this;
-        class_map_reference.push_back(c);
+        class_map_reference.append(c);
         return c;
     }
 
@@ -5862,7 +5947,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5871,7 +5956,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     }
 
     count = 0;
-    for (auto const & c : objects)
+    for (auto c : objects.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5880,7 +5965,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     }
 
     count = 0;
-    for (auto const & c : class_map_reference)
+    for (auto c : class_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5953,7 +6038,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
     total_flows{YType::uint32, "total-flows"}
 {
 
-    yang_name = "reference"; yang_parent_name = "policy-map-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "policy-map-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Reference::~Reference()
@@ -5962,6 +6047,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return total_internal_reference_objects.is_set
 	|| total_class_maps.is_set
 	|| total_flows.is_set;
@@ -6056,7 +6142,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
     object_name{YType::str, "object-name"}
 {
 
-    yang_name = "objects"; yang_parent_name = "policy-map-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "objects"; yang_parent_name = "policy-map-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Objects::~Objects()
@@ -6065,6 +6151,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::Objects::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set;
 }
 
@@ -6131,9 +6218,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::ClassMapReference()
     :
     total_reference_objects{YType::uint32, "total-reference-objects"}
+        ,
+    policy_map_reference(this, {})
 {
 
-    yang_name = "class-map-reference"; yang_parent_name = "policy-map-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-map-reference"; yang_parent_name = "policy-map-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::~ClassMapReference()
@@ -6142,7 +6231,8 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::has_data() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_data())
             return true;
@@ -6152,7 +6242,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::has_operation() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_operation())
             return true;
@@ -6184,7 +6274,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::P
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::PolicyMapReference>();
         c->parent = this;
-        policy_map_reference.push_back(c);
+        policy_map_reference.append(c);
         return c;
     }
 
@@ -6196,7 +6286,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_map_reference)
+    for (auto c : policy_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6238,7 +6328,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::PolicyMapReference::~PolicyMapReference()
@@ -6247,6 +6337,7 @@ PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapD
 
 bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::PolicyMapDetails::PolicyMapDetail::ClassMapReference::PolicyMapReference::has_data() const
 {
+    if (is_presence_container) return true;
     return object_type.is_set
 	|| policy_map_name.is_set;
 }
@@ -6324,9 +6415,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType::Polic
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapTypes()
+    :
+    transient_policy_map_type(this, {"type"})
 {
 
-    yang_name = "transient-policy-map-types"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-policy-map-types"; yang_parent_name = "policy-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::~TransientPolicyMapTypes()
@@ -6335,7 +6428,8 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::~TransientPolicy
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::has_data() const
 {
-    for (std::size_t index=0; index<transient_policy_map_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transient_policy_map_type.len(); index++)
     {
         if(transient_policy_map_type[index]->has_data())
             return true;
@@ -6345,7 +6439,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::has_data() 
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::has_operation() const
 {
-    for (std::size_t index=0; index<transient_policy_map_type.size(); index++)
+    for (std::size_t index=0; index<transient_policy_map_type.len(); index++)
     {
         if(transient_policy_map_type[index]->has_operation())
             return true;
@@ -6375,7 +6469,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMa
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType>();
         c->parent = this;
-        transient_policy_map_type.push_back(c);
+        transient_policy_map_type.append(c);
         return c;
     }
 
@@ -6387,7 +6481,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transient_policy_map_type)
+    for (auto c : transient_policy_map_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6416,12 +6510,12 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::has_leaf_or
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientPolicyMapType()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     transient_list_unuseds(std::make_shared<PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds>())
 {
     transient_list_unuseds->parent = this;
 
-    yang_name = "transient-policy-map-type"; yang_parent_name = "transient-policy-map-types"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-policy-map-type"; yang_parent_name = "transient-policy-map-types"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::~TransientPolicyMapType()
@@ -6430,6 +6524,7 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (transient_list_unuseds !=  nullptr && transient_list_unuseds->has_data());
 }
@@ -6444,7 +6539,8 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPo
 std::string PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transient-policy-map-type" <<"[type='" <<type <<"']";
+    path_buffer << "transient-policy-map-type";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -6510,9 +6606,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPo
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnuseds()
+    :
+    transient_list_unused(this, {"policy_map_name"})
 {
 
-    yang_name = "transient-list-unuseds"; yang_parent_name = "transient-policy-map-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-list-unuseds"; yang_parent_name = "transient-policy-map-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::~TransientListUnuseds()
@@ -6521,7 +6619,8 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::has_data() const
 {
-    for (std::size_t index=0; index<transient_list_unused.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<transient_list_unused.len(); index++)
     {
         if(transient_list_unused[index]->has_data())
             return true;
@@ -6531,7 +6630,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPo
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::has_operation() const
 {
-    for (std::size_t index=0; index<transient_list_unused.size(); index++)
+    for (std::size_t index=0; index<transient_list_unused.len(); index++)
     {
         if(transient_list_unused[index]->has_operation())
             return true;
@@ -6561,7 +6660,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMa
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused>();
         c->parent = this;
-        transient_list_unused.push_back(c);
+        transient_list_unused.append(c);
         return c;
     }
 
@@ -6573,7 +6672,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : transient_list_unused)
+    for (auto c : transient_list_unused.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6605,9 +6704,13 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
     object_type{YType::enumeration, "object-type"},
     total_objects{YType::uint32, "total-objects"},
     transient{YType::boolean, "transient"}
+        ,
+    reference(this, {})
+    , objects(this, {})
+    , class_map_reference(this, {})
 {
 
-    yang_name = "transient-list-unused"; yang_parent_name = "transient-list-unuseds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transient-list-unused"; yang_parent_name = "transient-list-unuseds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::~TransientListUnused()
@@ -6616,17 +6719,18 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_data())
             return true;
@@ -6639,17 +6743,17 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPo
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_operation())
             return true;
@@ -6664,7 +6768,8 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPo
 std::string PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "transient-list-unused" <<"[policy-map-name='" <<policy_map_name <<"']";
+    path_buffer << "transient-list-unused";
+    ADD_KEY_TOKEN(policy_map_name, "policy-map-name");
     return path_buffer.str();
 }
 
@@ -6687,7 +6792,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMa
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -6695,7 +6800,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMa
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Objects>();
         c->parent = this;
-        objects.push_back(c);
+        objects.append(c);
         return c;
     }
 
@@ -6703,7 +6808,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMa
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference>();
         c->parent = this;
-        class_map_reference.push_back(c);
+        class_map_reference.append(c);
         return c;
     }
 
@@ -6715,7 +6820,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6724,7 +6829,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     }
 
     count = 0;
-    for (auto const & c : objects)
+    for (auto c : objects.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6733,7 +6838,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     }
 
     count = 0;
-    for (auto const & c : class_map_reference)
+    for (auto c : class_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6806,7 +6911,7 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
     total_flows{YType::uint32, "total-flows"}
 {
 
-    yang_name = "reference"; yang_parent_name = "transient-list-unused"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "transient-list-unused"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Reference::~Reference()
@@ -6815,6 +6920,7 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return total_internal_reference_objects.is_set
 	|| total_class_maps.is_set
 	|| total_flows.is_set;
@@ -6909,7 +7015,7 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
     object_name{YType::str, "object-name"}
 {
 
-    yang_name = "objects"; yang_parent_name = "transient-list-unused"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "objects"; yang_parent_name = "transient-list-unused"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Objects::~Objects()
@@ -6918,6 +7024,7 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::Objects::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set;
 }
 
@@ -6984,9 +7091,11 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPo
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::ClassMapReference()
     :
     total_reference_objects{YType::uint32, "total-reference-objects"}
+        ,
+    policy_map_reference(this, {})
 {
 
-    yang_name = "class-map-reference"; yang_parent_name = "transient-list-unused"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-map-reference"; yang_parent_name = "transient-list-unused"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::~ClassMapReference()
@@ -6995,7 +7104,8 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::has_data() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_data())
             return true;
@@ -7005,7 +7115,7 @@ bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPo
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::has_operation() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_operation())
             return true;
@@ -7037,7 +7147,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMa
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::PolicyMapReference>();
         c->parent = this;
-        policy_map_reference.push_back(c);
+        policy_map_reference.append(c);
         return c;
     }
 
@@ -7049,7 +7159,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Polic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_map_reference)
+    for (auto c : policy_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7091,7 +7201,7 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::PolicyMapReference::~PolicyMapReference()
@@ -7100,6 +7210,7 @@ PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyM
 
 bool PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::TransientPolicyMapType::TransientListUnuseds::TransientListUnused::ClassMapReference::PolicyMapReference::has_data() const
 {
+    if (is_presence_container) return true;
     return object_type.is_set
 	|| policy_map_name.is_set;
 }
@@ -7182,9 +7293,12 @@ PolicyManager::Nodes::Node::Summary::Summary()
     total_class_map_types{YType::uint32, "total-class-map-types"},
     total_policy_maps{YType::uint32, "total-policy-maps"},
     total_policy_map_types{YType::uint32, "total-policy-map-types"}
+        ,
+    class_maps(this, {})
+    , policy_maps(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::~Summary()
@@ -7193,12 +7307,13 @@ PolicyManager::Nodes::Node::Summary::~Summary()
 
 bool PolicyManager::Nodes::Node::Summary::has_data() const
 {
-    for (std::size_t index=0; index<class_maps.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_maps.len(); index++)
     {
         if(class_maps[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<policy_maps.size(); index++)
+    for (std::size_t index=0; index<policy_maps.len(); index++)
     {
         if(policy_maps[index]->has_data())
             return true;
@@ -7211,12 +7326,12 @@ bool PolicyManager::Nodes::Node::Summary::has_data() const
 
 bool PolicyManager::Nodes::Node::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<class_maps.size(); index++)
+    for (std::size_t index=0; index<class_maps.len(); index++)
     {
         if(class_maps[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<policy_maps.size(); index++)
+    for (std::size_t index=0; index<policy_maps.len(); index++)
     {
         if(policy_maps[index]->has_operation())
             return true;
@@ -7254,7 +7369,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::get_child_by_name(c
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::ClassMaps>();
         c->parent = this;
-        class_maps.push_back(c);
+        class_maps.append(c);
         return c;
     }
 
@@ -7262,7 +7377,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::get_child_by_name(c
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::PolicyMaps>();
         c->parent = this;
-        policy_maps.push_back(c);
+        policy_maps.append(c);
         return c;
     }
 
@@ -7274,7 +7389,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_maps)
+    for (auto c : class_maps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7283,7 +7398,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     }
 
     count = 0;
-    for (auto const & c : policy_maps)
+    for (auto c : policy_maps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7354,9 +7469,13 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMaps()
     object_type{YType::enumeration, "object-type"},
     total_objects{YType::uint32, "total-objects"},
     transient{YType::boolean, "transient"}
+        ,
+    reference(this, {})
+    , objects(this, {})
+    , class_map_reference(this, {})
 {
 
-    yang_name = "class-maps"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-maps"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::ClassMaps::~ClassMaps()
@@ -7365,17 +7484,18 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::~ClassMaps()
 
 bool PolicyManager::Nodes::Node::Summary::ClassMaps::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_data())
             return true;
@@ -7387,17 +7507,17 @@ bool PolicyManager::Nodes::Node::Summary::ClassMaps::has_data() const
 
 bool PolicyManager::Nodes::Node::Summary::ClassMaps::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_operation())
             return true;
@@ -7433,7 +7553,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::ClassMaps::get_chil
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::ClassMaps::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -7441,7 +7561,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::ClassMaps::get_chil
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::ClassMaps::Objects>();
         c->parent = this;
-        objects.push_back(c);
+        objects.append(c);
         return c;
     }
 
@@ -7449,7 +7569,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::ClassMaps::get_chil
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference>();
         c->parent = this;
-        class_map_reference.push_back(c);
+        class_map_reference.append(c);
         return c;
     }
 
@@ -7461,7 +7581,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7470,7 +7590,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     }
 
     count = 0;
-    for (auto const & c : objects)
+    for (auto c : objects.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7479,7 +7599,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     }
 
     count = 0;
-    for (auto const & c : class_map_reference)
+    for (auto c : class_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7542,7 +7662,7 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::Reference::Reference()
     total_flows{YType::uint32, "total-flows"}
 {
 
-    yang_name = "reference"; yang_parent_name = "class-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "class-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::ClassMaps::Reference::~Reference()
@@ -7551,6 +7671,7 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::Reference::~Reference()
 
 bool PolicyManager::Nodes::Node::Summary::ClassMaps::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return total_internal_reference_objects.is_set
 	|| total_class_maps.is_set
 	|| total_flows.is_set;
@@ -7645,7 +7766,7 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::Objects::Objects()
     object_name{YType::str, "object-name"}
 {
 
-    yang_name = "objects"; yang_parent_name = "class-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "objects"; yang_parent_name = "class-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::ClassMaps::Objects::~Objects()
@@ -7654,6 +7775,7 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::Objects::~Objects()
 
 bool PolicyManager::Nodes::Node::Summary::ClassMaps::Objects::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set;
 }
 
@@ -7720,9 +7842,11 @@ bool PolicyManager::Nodes::Node::Summary::ClassMaps::Objects::has_leaf_or_child_
 PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::ClassMapReference()
     :
     total_reference_objects{YType::uint32, "total-reference-objects"}
+        ,
+    policy_map_reference(this, {})
 {
 
-    yang_name = "class-map-reference"; yang_parent_name = "class-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-map-reference"; yang_parent_name = "class-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::~ClassMapReference()
@@ -7731,7 +7855,8 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::~ClassMapRefe
 
 bool PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::has_data() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_data())
             return true;
@@ -7741,7 +7866,7 @@ bool PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::has_data
 
 bool PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::has_operation() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_operation())
             return true;
@@ -7773,7 +7898,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMap
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::PolicyMapReference>();
         c->parent = this;
-        policy_map_reference.push_back(c);
+        policy_map_reference.append(c);
         return c;
     }
 
@@ -7785,7 +7910,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_map_reference)
+    for (auto c : policy_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7827,7 +7952,7 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::PolicyMapRefe
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::PolicyMapReference::~PolicyMapReference()
@@ -7836,6 +7961,7 @@ PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::PolicyMapRefe
 
 bool PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::PolicyMapReference::has_data() const
 {
+    if (is_presence_container) return true;
     return object_type.is_set
 	|| policy_map_name.is_set;
 }
@@ -7917,9 +8043,13 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::PolicyMaps()
     object_type{YType::enumeration, "object-type"},
     total_objects{YType::uint32, "total-objects"},
     transient{YType::boolean, "transient"}
+        ,
+    reference(this, {})
+    , objects(this, {})
+    , class_map_reference(this, {})
 {
 
-    yang_name = "policy-maps"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-maps"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::PolicyMaps::~PolicyMaps()
@@ -7928,17 +8058,18 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::~PolicyMaps()
 
 bool PolicyManager::Nodes::Node::Summary::PolicyMaps::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_data())
             return true;
@@ -7950,17 +8081,17 @@ bool PolicyManager::Nodes::Node::Summary::PolicyMaps::has_data() const
 
 bool PolicyManager::Nodes::Node::Summary::PolicyMaps::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<objects.size(); index++)
+    for (std::size_t index=0; index<objects.len(); index++)
     {
         if(objects[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<class_map_reference.size(); index++)
+    for (std::size_t index=0; index<class_map_reference.len(); index++)
     {
         if(class_map_reference[index]->has_operation())
             return true;
@@ -7996,7 +8127,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::PolicyMaps::get_chi
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::PolicyMaps::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -8004,7 +8135,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::PolicyMaps::get_chi
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::PolicyMaps::Objects>();
         c->parent = this;
-        objects.push_back(c);
+        objects.append(c);
         return c;
     }
 
@@ -8012,7 +8143,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::PolicyMaps::get_chi
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference>();
         c->parent = this;
-        class_map_reference.push_back(c);
+        class_map_reference.append(c);
         return c;
     }
 
@@ -8024,7 +8155,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8033,7 +8164,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     }
 
     count = 0;
-    for (auto const & c : objects)
+    for (auto c : objects.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8042,7 +8173,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     }
 
     count = 0;
-    for (auto const & c : class_map_reference)
+    for (auto c : class_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8105,7 +8236,7 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::Reference::Reference()
     total_flows{YType::uint32, "total-flows"}
 {
 
-    yang_name = "reference"; yang_parent_name = "policy-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reference"; yang_parent_name = "policy-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::PolicyMaps::Reference::~Reference()
@@ -8114,6 +8245,7 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::Reference::~Reference()
 
 bool PolicyManager::Nodes::Node::Summary::PolicyMaps::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     return total_internal_reference_objects.is_set
 	|| total_class_maps.is_set
 	|| total_flows.is_set;
@@ -8208,7 +8340,7 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::Objects::Objects()
     object_name{YType::str, "object-name"}
 {
 
-    yang_name = "objects"; yang_parent_name = "policy-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "objects"; yang_parent_name = "policy-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::PolicyMaps::Objects::~Objects()
@@ -8217,6 +8349,7 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::Objects::~Objects()
 
 bool PolicyManager::Nodes::Node::Summary::PolicyMaps::Objects::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set;
 }
 
@@ -8283,9 +8416,11 @@ bool PolicyManager::Nodes::Node::Summary::PolicyMaps::Objects::has_leaf_or_child
 PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::ClassMapReference()
     :
     total_reference_objects{YType::uint32, "total-reference-objects"}
+        ,
+    policy_map_reference(this, {})
 {
 
-    yang_name = "class-map-reference"; yang_parent_name = "policy-maps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-map-reference"; yang_parent_name = "policy-maps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::~ClassMapReference()
@@ -8294,7 +8429,8 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::~ClassMapRef
 
 bool PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::has_data() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_data())
             return true;
@@ -8304,7 +8440,7 @@ bool PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::has_dat
 
 bool PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::has_operation() const
 {
-    for (std::size_t index=0; index<policy_map_reference.size(); index++)
+    for (std::size_t index=0; index<policy_map_reference.len(); index++)
     {
         if(policy_map_reference[index]->has_operation())
             return true;
@@ -8336,7 +8472,7 @@ std::shared_ptr<Entity> PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMa
     {
         auto c = std::make_shared<PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::PolicyMapReference>();
         c->parent = this;
-        policy_map_reference.push_back(c);
+        policy_map_reference.append(c);
         return c;
     }
 
@@ -8348,7 +8484,7 @@ std::map<std::string, std::shared_ptr<Entity>> PolicyManager::Nodes::Node::Summa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_map_reference)
+    for (auto c : policy_map_reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8390,7 +8526,7 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::PolicyMapRef
     policy_map_name{YType::str, "policy-map-name"}
 {
 
-    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-map-reference"; yang_parent_name = "class-map-reference"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::PolicyMapReference::~PolicyMapReference()
@@ -8399,6 +8535,7 @@ PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::PolicyMapRef
 
 bool PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::PolicyMapReference::has_data() const
 {
+    if (is_presence_container) return true;
     return object_type.is_set
 	|| policy_map_name.is_set;
 }

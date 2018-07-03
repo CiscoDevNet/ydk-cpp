@@ -69,7 +69,7 @@ class Diag::Default : public ydk::Entity
 
         class DefaultList; //type: Diag::Default::DefaultList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::Default::DefaultList> > default_list;
+        ydk::YList default_list;
         
 }; // Diag::Default
 
@@ -139,7 +139,7 @@ class Diag::Fans : public ydk::Entity
 
         class FansList; //type: Diag::Fans::FansList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::Fans::FansList> > fans_list;
+        ydk::YList fans_list;
         
 }; // Diag::Fans
 
@@ -209,7 +209,7 @@ class Diag::PowerSupply : public ydk::Entity
 
         class PwrList; //type: Diag::PowerSupply::PwrList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::PowerSupply::PwrList> > pwr_list;
+        ydk::YList pwr_list;
         
 }; // Diag::PowerSupply
 
@@ -305,7 +305,7 @@ class Diag::Chassis::ChassisCnt : public ydk::Entity
 
         class ChassisList; //type: Diag::Chassis::ChassisCnt::ChassisList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::Chassis::ChassisCnt::ChassisList> > chassis_list;
+        ydk::YList chassis_list;
         
 }; // Diag::Chassis::ChassisCnt
 
@@ -375,7 +375,7 @@ class Diag::Chassis::ChassisEepromCnt : public ydk::Entity
 
         class ChassisEepromList; //type: Diag::Chassis::ChassisEepromCnt::ChassisEepromList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::Chassis::ChassisEepromCnt::ChassisEepromList> > chassis_eeprom_list;
+        ydk::YList chassis_eeprom_list;
         
 }; // Diag::Chassis::ChassisEepromCnt
 
@@ -445,7 +445,7 @@ class Diag::Summary : public ydk::Entity
 
         class SummaryList; //type: Diag::Summary::SummaryList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::Summary::SummaryList> > summary_list;
+        ydk::YList summary_list;
         
 }; // Diag::Summary
 
@@ -515,7 +515,7 @@ class Diag::Eeprom : public ydk::Entity
 
         class EepromList; //type: Diag::Eeprom::EepromList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::Eeprom::EepromList> > eeprom_list;
+        ydk::YList eeprom_list;
         
 }; // Diag::Eeprom
 
@@ -585,7 +585,7 @@ class Diag::Detail : public ydk::Entity
 
         class DetailList; //type: Diag::Detail::DetailList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_diag::Diag::Detail::DetailList> > detail_list;
+        ydk::YList detail_list;
         
 }; // Diag::Detail
 

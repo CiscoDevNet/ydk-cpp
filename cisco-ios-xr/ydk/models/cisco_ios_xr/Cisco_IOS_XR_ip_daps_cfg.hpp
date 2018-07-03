@@ -57,7 +57,7 @@ class AddressPoolService::Vrfs : public ydk::Entity
 
         class Vrf; //type: AddressPoolService::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // AddressPoolService::Vrfs
 
@@ -130,7 +130,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools : public ydk::Entity
 
         class Pool; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool> > pool;
+        ydk::YList pool;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools
 
@@ -186,7 +186,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges : public y
 
         class AddressRange; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange> > address_range;
+        ydk::YList address_range;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges
 
@@ -208,7 +208,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf start_address; //type: string
-        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf blocked; //type: uint32
         ydk::YLeaf end_address; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::AddressRanges::AddressRange
@@ -232,7 +232,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes : public ydk::E
 
         class Exclude; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes::Exclude> > exclude;
+        ydk::YList exclude;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Excludes
 
@@ -299,7 +299,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges : public yd
 
         class PrefixRange; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange> > prefix_range;
+        ydk::YList prefix_range;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges
 
@@ -321,7 +321,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRang
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf start_prefix; //type: string
-        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf blocked; //type: uint32
         ydk::YLeaf end_prefix; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::PrefixRanges::PrefixRange
@@ -345,7 +345,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks : public ydk::E
 
         class Network; //type: AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network> > network;
+        ydk::YList network;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks
 
@@ -367,7 +367,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf blocked; //type: uint32
         ydk::YLeaf prefix_length; //type: uint32
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv6::Pools::Pool::Networks::Network
@@ -414,7 +414,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools : public ydk::Entity
 
         class Pool; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool> > pool;
+        ydk::YList pool;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools
 
@@ -467,7 +467,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges : public y
 
         class AddressRange; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange> > address_range;
+        ydk::YList address_range;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges
 
@@ -490,7 +490,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRa
 
         ydk::YLeaf start_address; //type: string
         ydk::YLeaf end_address; //type: string
-        ydk::YLeaf blocked; //type: int32
+        ydk::YLeaf blocked; //type: uint32
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::AddressRanges::AddressRange
 
@@ -513,7 +513,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes : public ydk::E
 
         class Exclude; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes::Exclude> > exclude;
+        ydk::YList exclude;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Excludes
 
@@ -580,7 +580,7 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks : public ydk::E
 
         class Network; //type: AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_daps_cfg::AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network> > network;
+        ydk::YList network;
         
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks
 
@@ -602,8 +602,8 @@ class AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ipv4_prefix; //type: string
-        ydk::YLeaf blocked; //type: int32
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf blocked; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf default_router; //type: string
 
 }; // AddressPoolService::Vrfs::Vrf::Ipv4::Pools::Pool::Networks::Network

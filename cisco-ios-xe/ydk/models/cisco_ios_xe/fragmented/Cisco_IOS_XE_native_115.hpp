@@ -704,22 +704,22 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf receive_only; //type: empty
-        class D3P; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P
+        class D3p; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3p
         class Ipsec; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::Ipsec
         class PairWiseKeying; //type: Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::PairWiseKeying
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P> d3p; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::Ipsec> > ipsec;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3p> d3p; // presence node
+        ydk::YList ipsec;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::PairWiseKeying> pair_wise_keying; // presence node
         
 }; // Native::Crypto::Gdoi::Group::Server::Local::Default::Sa
 
 
-class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P : public ydk::Entity
+class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3p : public ydk::Entity
 {
     public:
-        D3P();
-        ~D3P();
+        D3p();
+        ~D3p();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -732,7 +732,7 @@ class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3P
+}; // Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::D3p
 
 
 class Native::Crypto::Gdoi::Group::Server::Local::Default::Sa::Ipsec : public ydk::Entity
@@ -1142,12 +1142,12 @@ class Native::Crypto::Ikev2 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::DpdContainer> dpd_container;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Fragmentation> fragmentation; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::HttpUrl> http_url;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Keyring> > keyring;
+        ydk::YList keyring;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Limit> limit;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Nat> nat;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Policy> > policy;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile> > profile;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Proposal> > proposal;
+        ydk::YList policy;
+        ydk::YList profile;
+        ydk::YList proposal;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Reconnect> reconnect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Redirect> redirect;
         
@@ -1173,7 +1173,7 @@ class Native::Crypto::Ikev2::Authorization : public ydk::Entity
 
         class Policy; //type: Native::Crypto::Ikev2::Authorization::Policy
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Authorization::Policy> > policy;
+        ydk::YList policy;
         
 }; // Native::Crypto::Ikev2::Authorization
 
@@ -1268,7 +1268,7 @@ class Native::Crypto::Ikev2::Authorization::Policy::Route::Set::Interface : publ
         ydk::YLeaf interface_default; //type: empty
         class InterfaceList; //type: Native::Crypto::Ikev2::Authorization::Policy::Route::Set::Interface::InterfaceList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Authorization::Policy::Route::Set::Interface::InterfaceList> > interface_list;
+        ydk::YList interface_list;
         
 }; // Native::Crypto::Ikev2::Authorization::Policy::Route::Set::Interface
 
@@ -1313,7 +1313,7 @@ class Native::Crypto::Ikev2::Client : public ydk::Entity
 
         class Flexvpn; //type: Native::Crypto::Ikev2::Client::Flexvpn
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Client::Flexvpn> > flexvpn;
+        ydk::YList flexvpn;
         
 }; // Native::Crypto::Ikev2::Client
 
@@ -1341,9 +1341,9 @@ class Native::Crypto::Ikev2::Client::Flexvpn : public ydk::Entity
         class Source; //type: Native::Crypto::Ikev2::Client::Flexvpn::Source
         class Client_; //type: Native::Crypto::Ikev2::Client::Flexvpn::Client_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Client::Flexvpn::Peer> > peer;
+        ydk::YList peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Client::Flexvpn::Connect> connect;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Client::Flexvpn::Source> > source;
+        ydk::YList source;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Client::Flexvpn::Client_> client;
         
 }; // Native::Crypto::Ikev2::Client::Flexvpn
@@ -1643,7 +1643,7 @@ class Native::Crypto::Ikev2::Keyring : public ydk::Entity
         ydk::YLeaf name; //type: string
         class Peer; //type: Native::Crypto::Ikev2::Keyring::Peer
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Keyring::Peer> > peer;
+        ydk::YList peer;
         
 }; // Native::Crypto::Ikev2::Keyring
 
@@ -2186,7 +2186,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap :
 
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::AnyconnectEap
 
@@ -2259,7 +2259,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert : public y
 
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Cert
 
@@ -2332,7 +2332,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap : public yd
 
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Eap
 
@@ -2405,7 +2405,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk : public yd
 
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::Group::Psk
 
@@ -2508,7 +2508,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap : 
         ydk::YLeaf cached; //type: empty
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::AnyconnectEap
 
@@ -2581,7 +2581,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert : public yd
 
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Cert
 
@@ -2655,7 +2655,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap : public ydk
         ydk::YLeaf cached; //type: empty
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Eap
 
@@ -2729,7 +2729,7 @@ class Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk : public ydk
         ydk::YLeaf cached; //type: empty
         class List; //type: Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk::List
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk::List> > list;
+        ydk::YList list;
         
 }; // Native::Crypto::Ikev2::Profile::Aaa::Authorization::User::Psk
 
@@ -3326,7 +3326,7 @@ class Native::Crypto::Ikev2::Profile::Keyring : public ydk::Entity
         ydk::YLeaf local; //type: string
         class Aaa; //type: Native::Crypto::Ikev2::Profile::Keyring::Aaa
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Keyring::Aaa> > aaa;
+        ydk::YList aaa;
         
 }; // Native::Crypto::Ikev2::Profile::Keyring
 
@@ -3567,7 +3567,7 @@ class Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Address : public 
         ydk::YLeafList ipv6_prefix; //type: list of  string
         class Ipv4; //type: Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Address::Ipv4
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Address::Ipv4> > ipv4;
+        ydk::YList ipv4;
         
 }; // Native::Crypto::Ikev2::Profile::Match::Identity::Remote::Address
 

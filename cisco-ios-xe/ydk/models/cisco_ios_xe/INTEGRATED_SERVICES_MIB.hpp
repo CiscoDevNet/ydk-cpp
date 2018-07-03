@@ -32,22 +32,22 @@ class INTEGRATEDSERVICESMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Intsrvgenobjects; //type: INTEGRATEDSERVICESMIB::Intsrvgenobjects
-        class Intsrvifattribtable; //type: INTEGRATEDSERVICESMIB::Intsrvifattribtable
-        class Intsrvflowtable; //type: INTEGRATEDSERVICESMIB::Intsrvflowtable
+        class IntSrvGenObjects; //type: INTEGRATEDSERVICESMIB::IntSrvGenObjects
+        class IntSrvIfAttribTable; //type: INTEGRATEDSERVICESMIB::IntSrvIfAttribTable
+        class IntSrvFlowTable; //type: INTEGRATEDSERVICESMIB::IntSrvFlowTable
 
-        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvgenobjects> intsrvgenobjects;
-        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvifattribtable> intsrvifattribtable;
-        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvflowtable> intsrvflowtable;
+        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::IntSrvGenObjects> intsrvgenobjects;
+        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::IntSrvIfAttribTable> intsrvifattribtable;
+        std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::IntSrvFlowTable> intsrvflowtable;
         
 }; // INTEGRATEDSERVICESMIB
 
 
-class INTEGRATEDSERVICESMIB::Intsrvgenobjects : public ydk::Entity
+class INTEGRATEDSERVICESMIB::IntSrvGenObjects : public ydk::Entity
 {
     public:
-        Intsrvgenobjects();
-        ~Intsrvgenobjects();
+        IntSrvGenObjects();
+        ~IntSrvGenObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,14 +62,14 @@ class INTEGRATEDSERVICESMIB::Intsrvgenobjects : public ydk::Entity
 
         ydk::YLeaf intsrvflownewindex; //type: int32
 
-}; // INTEGRATEDSERVICESMIB::Intsrvgenobjects
+}; // INTEGRATEDSERVICESMIB::IntSrvGenObjects
 
 
-class INTEGRATEDSERVICESMIB::Intsrvifattribtable : public ydk::Entity
+class INTEGRATEDSERVICESMIB::IntSrvIfAttribTable : public ydk::Entity
 {
     public:
-        Intsrvifattribtable();
-        ~Intsrvifattribtable();
+        IntSrvIfAttribTable();
+        ~IntSrvIfAttribTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -82,18 +82,18 @@ class INTEGRATEDSERVICESMIB::Intsrvifattribtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Intsrvifattribentry; //type: INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry
+        class IntSrvIfAttribEntry; //type: INTEGRATEDSERVICESMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry;
+        ydk::YList intsrvifattribentry;
         
-}; // INTEGRATEDSERVICESMIB::Intsrvifattribtable
+}; // INTEGRATEDSERVICESMIB::IntSrvIfAttribTable
 
 
-class INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry : public ydk::Entity
+class INTEGRATEDSERVICESMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry : public ydk::Entity
 {
     public:
-        Intsrvifattribentry();
-        ~Intsrvifattribentry();
+        IntSrvIfAttribEntry();
+        ~IntSrvIfAttribEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -106,7 +106,7 @@ class INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf intsrvifattriballocatedbits; //type: int32
         ydk::YLeaf intsrvifattribmaxallocatedbits; //type: int32
@@ -115,14 +115,14 @@ class INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry : public y
         ydk::YLeaf intsrvifattribpropagationdelay; //type: int32
         ydk::YLeaf intsrvifattribstatus; //type: RowStatus
 
-}; // INTEGRATEDSERVICESMIB::Intsrvifattribtable::Intsrvifattribentry
+}; // INTEGRATEDSERVICESMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry
 
 
-class INTEGRATEDSERVICESMIB::Intsrvflowtable : public ydk::Entity
+class INTEGRATEDSERVICESMIB::IntSrvFlowTable : public ydk::Entity
 {
     public:
-        Intsrvflowtable();
-        ~Intsrvflowtable();
+        IntSrvFlowTable();
+        ~IntSrvFlowTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,18 +135,18 @@ class INTEGRATEDSERVICESMIB::Intsrvflowtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Intsrvflowentry; //type: INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry
+        class IntSrvFlowEntry; //type: INTEGRATEDSERVICESMIB::IntSrvFlowTable::IntSrvFlowEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::INTEGRATED_SERVICES_MIB::INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry;
+        ydk::YList intsrvflowentry;
         
-}; // INTEGRATEDSERVICESMIB::Intsrvflowtable
+}; // INTEGRATEDSERVICESMIB::IntSrvFlowTable
 
 
-class INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry : public ydk::Entity
+class INTEGRATEDSERVICESMIB::IntSrvFlowTable::IntSrvFlowEntry : public ydk::Entity
 {
     public:
-        Intsrvflowentry();
-        ~Intsrvflowentry();
+        IntSrvFlowEntry();
+        ~IntSrvFlowEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -161,7 +161,7 @@ class INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry : public ydk::Enti
 
         ydk::YLeaf intsrvflownumber; //type: int32
         ydk::YLeaf intsrvflowtype; //type: int32
-        ydk::YLeaf intsrvflowowner; //type: Intsrvflowowner
+        ydk::YLeaf intsrvflowowner; //type: IntSrvFlowOwner
         ydk::YLeaf intsrvflowdestaddr; //type: binary
         ydk::YLeaf intsrvflowsenderaddr; //type: binary
         ydk::YLeaf intsrvflowdestaddrlength; //type: int32
@@ -184,9 +184,9 @@ class INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry : public ydk::Enti
         ydk::YLeaf intsrvflowservice; //type: QosService
         ydk::YLeaf intsrvfloworder; //type: int32
         ydk::YLeaf intsrvflowstatus; //type: RowStatus
-        class Intsrvflowowner;
+        class IntSrvFlowOwner;
 
-}; // INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry
+}; // INTEGRATEDSERVICESMIB::IntSrvFlowTable::IntSrvFlowEntry
 
 class QosService : public ydk::Enum
 {
@@ -197,7 +197,7 @@ class QosService : public ydk::Enum
 
 };
 
-class INTEGRATEDSERVICESMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner : public ydk::Enum
+class INTEGRATEDSERVICESMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowOwner : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

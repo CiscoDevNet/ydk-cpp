@@ -16,7 +16,7 @@ NtpOperData::NtpOperData()
     ntp_status_info(nullptr) // presence node
 {
 
-    yang_name = "ntp-oper-data"; yang_parent_name = "Cisco-IOS-XE-ntp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ntp-oper-data"; yang_parent_name = "Cisco-IOS-XE-ntp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NtpOperData::~NtpOperData()
@@ -25,6 +25,7 @@ NtpOperData::~NtpOperData()
 
 bool NtpOperData::has_data() const
 {
+    if (is_presence_container) return true;
     return (ntp_status_info !=  nullptr && ntp_status_info->has_data());
 }
 
@@ -125,12 +126,13 @@ NtpOperData::NtpStatusInfo::NtpStatusInfo()
     root_disp{YType::str, "root-disp"},
     offset{YType::str, "offset"},
     freq_drift_ppm{YType::str, "freq-drift-ppm"}
-    	,
+        ,
     refid(std::make_shared<NtpOperData::NtpStatusInfo::Refid>())
+    , ntp_associations(this, {"assoc_id"})
 {
     refid->parent = this;
 
-    yang_name = "ntp-status-info"; yang_parent_name = "ntp-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ntp-status-info"; yang_parent_name = "ntp-oper-data"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 NtpOperData::NtpStatusInfo::~NtpStatusInfo()
@@ -139,7 +141,8 @@ NtpOperData::NtpStatusInfo::~NtpStatusInfo()
 
 bool NtpOperData::NtpStatusInfo::has_data() const
 {
-    for (std::size_t index=0; index<ntp_associations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ntp_associations.len(); index++)
     {
         if(ntp_associations[index]->has_data())
             return true;
@@ -156,7 +159,7 @@ bool NtpOperData::NtpStatusInfo::has_data() const
 
 bool NtpOperData::NtpStatusInfo::has_operation() const
 {
-    for (std::size_t index=0; index<ntp_associations.size(); index++)
+    for (std::size_t index=0; index<ntp_associations.len(); index++)
     {
         if(ntp_associations[index]->has_operation())
             return true;
@@ -217,7 +220,7 @@ std::shared_ptr<Entity> NtpOperData::NtpStatusInfo::get_child_by_name(const std:
     {
         auto c = std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations>();
         c->parent = this;
-        ntp_associations.push_back(c);
+        ntp_associations.append(c);
         return c;
     }
 
@@ -234,7 +237,7 @@ std::map<std::string, std::shared_ptr<Entity>> NtpOperData::NtpStatusInfo::get_c
     }
 
     count = 0;
-    for (auto const & c : ntp_associations)
+    for (auto c : ntp_associations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -334,14 +337,14 @@ NtpOperData::NtpStatusInfo::Refid::Refid()
     :
     ip_addr{YType::str, "ip-addr"},
     exception_code{YType::uint32, "exception-code"}
-    	,
+        ,
     kod_data(std::make_shared<NtpOperData::NtpStatusInfo::Refid::KodData>())
-	,ref_clk_src_data(std::make_shared<NtpOperData::NtpStatusInfo::Refid::RefClkSrcData>())
+    , ref_clk_src_data(std::make_shared<NtpOperData::NtpStatusInfo::Refid::RefClkSrcData>())
 {
     kod_data->parent = this;
     ref_clk_src_data->parent = this;
 
-    yang_name = "refid"; yang_parent_name = "ntp-status-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "refid"; yang_parent_name = "ntp-status-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NtpOperData::NtpStatusInfo::Refid::~Refid()
@@ -350,6 +353,7 @@ NtpOperData::NtpStatusInfo::Refid::~Refid()
 
 bool NtpOperData::NtpStatusInfo::Refid::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_addr.is_set
 	|| exception_code.is_set
 	|| (kod_data !=  nullptr && kod_data->has_data())
@@ -470,7 +474,7 @@ NtpOperData::NtpStatusInfo::Refid::KodData::KodData()
     kod_type{YType::enumeration, "kod-type"}
 {
 
-    yang_name = "kod-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "kod-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NtpOperData::NtpStatusInfo::Refid::KodData::~KodData()
@@ -479,6 +483,7 @@ NtpOperData::NtpStatusInfo::Refid::KodData::~KodData()
 
 bool NtpOperData::NtpStatusInfo::Refid::KodData::has_data() const
 {
+    if (is_presence_container) return true;
     return kod_type.is_set;
 }
 
@@ -554,7 +559,7 @@ NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::RefClkSrcData()
     ref_clk_src_type{YType::enumeration, "ref-clk-src-type"}
 {
 
-    yang_name = "ref-clk-src-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ref-clk-src-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::~RefClkSrcData()
@@ -563,6 +568,7 @@ NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::~RefClkSrcData()
 
 bool NtpOperData::NtpStatusInfo::Refid::RefClkSrcData::has_data() const
 {
+    if (is_presence_container) return true;
     return ref_clk_src_type.is_set;
 }
 
@@ -644,12 +650,12 @@ NtpOperData::NtpStatusInfo::NtpAssociations::NtpAssociations()
     delay{YType::str, "delay"},
     offset{YType::str, "offset"},
     jitter{YType::str, "jitter"}
-    	,
+        ,
     refid(std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations::Refid>())
 {
     refid->parent = this;
 
-    yang_name = "ntp-associations"; yang_parent_name = "ntp-status-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ntp-associations"; yang_parent_name = "ntp-status-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NtpOperData::NtpStatusInfo::NtpAssociations::~NtpAssociations()
@@ -658,6 +664,7 @@ NtpOperData::NtpStatusInfo::NtpAssociations::~NtpAssociations()
 
 bool NtpOperData::NtpStatusInfo::NtpAssociations::has_data() const
 {
+    if (is_presence_container) return true;
     return assoc_id.is_set
 	|| peer_reach.is_set
 	|| peer_stratum.is_set
@@ -695,7 +702,8 @@ std::string NtpOperData::NtpStatusInfo::NtpAssociations::get_absolute_path() con
 std::string NtpOperData::NtpStatusInfo::NtpAssociations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ntp-associations" <<"[assoc-id='" <<assoc_id <<"']";
+    path_buffer << "ntp-associations";
+    ADD_KEY_TOKEN(assoc_id, "assoc-id");
     return path_buffer.str();
 }
 
@@ -852,14 +860,14 @@ NtpOperData::NtpStatusInfo::NtpAssociations::Refid::Refid()
     :
     ip_addr{YType::str, "ip-addr"},
     exception_code{YType::uint32, "exception-code"}
-    	,
+        ,
     kod_data(std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData>())
-	,ref_clk_src_data(std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData>())
+    , ref_clk_src_data(std::make_shared<NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData>())
 {
     kod_data->parent = this;
     ref_clk_src_data->parent = this;
 
-    yang_name = "refid"; yang_parent_name = "ntp-associations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "refid"; yang_parent_name = "ntp-associations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NtpOperData::NtpStatusInfo::NtpAssociations::Refid::~Refid()
@@ -868,6 +876,7 @@ NtpOperData::NtpStatusInfo::NtpAssociations::Refid::~Refid()
 
 bool NtpOperData::NtpStatusInfo::NtpAssociations::Refid::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_addr.is_set
 	|| exception_code.is_set
 	|| (kod_data !=  nullptr && kod_data->has_data())
@@ -981,7 +990,7 @@ NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::KodData()
     kod_type{YType::enumeration, "kod-type"}
 {
 
-    yang_name = "kod-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "kod-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::~KodData()
@@ -990,6 +999,7 @@ NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::~KodData()
 
 bool NtpOperData::NtpStatusInfo::NtpAssociations::Refid::KodData::has_data() const
 {
+    if (is_presence_container) return true;
     return kod_type.is_set;
 }
 
@@ -1058,7 +1068,7 @@ NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::RefClkSrcData
     ref_clk_src_type{YType::enumeration, "ref-clk-src-type"}
 {
 
-    yang_name = "ref-clk-src-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ref-clk-src-data"; yang_parent_name = "refid"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::~RefClkSrcData()
@@ -1067,6 +1077,7 @@ NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::~RefClkSrcDat
 
 bool NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::has_data() const
 {
+    if (is_presence_container) return true;
     return ref_clk_src_type.is_set;
 }
 
@@ -1130,6 +1141,21 @@ bool NtpOperData::NtpStatusInfo::NtpAssociations::Refid::RefClkSrcData::has_leaf
     return false;
 }
 
+const Enum::YLeaf KissCodeType::ntp_ref_acst {0, "ntp-ref-acst"};
+const Enum::YLeaf KissCodeType::ntp_ref_auth {1, "ntp-ref-auth"};
+const Enum::YLeaf KissCodeType::ntp_ref_auto {2, "ntp-ref-auto"};
+const Enum::YLeaf KissCodeType::ntp_ref_bcst {3, "ntp-ref-bcst"};
+const Enum::YLeaf KissCodeType::ntp_ref_cryp {4, "ntp-ref-cryp"};
+const Enum::YLeaf KissCodeType::ntp_ref_deny {5, "ntp-ref-deny"};
+const Enum::YLeaf KissCodeType::ntp_ref_drop {6, "ntp-ref-drop"};
+const Enum::YLeaf KissCodeType::ntp_ref_rstr {7, "ntp-ref-rstr"};
+const Enum::YLeaf KissCodeType::ntp_ref_init {8, "ntp-ref-init"};
+const Enum::YLeaf KissCodeType::ntp_ref_mcst {9, "ntp-ref-mcst"};
+const Enum::YLeaf KissCodeType::ntp_ref_nkey {10, "ntp-ref-nkey"};
+const Enum::YLeaf KissCodeType::ntp_ref_rate {11, "ntp-ref-rate"};
+const Enum::YLeaf KissCodeType::ntp_ref_rmot {12, "ntp-ref-rmot"};
+const Enum::YLeaf KissCodeType::ntp_ref_step {13, "ntp-ref-step"};
+
 const Enum::YLeaf RefClockSourceType::ntp_ref_goes {0, "ntp-ref-goes"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_gps {1, "ntp-ref-gps"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_gal {2, "ntp-ref-gal"};
@@ -1149,21 +1175,6 @@ const Enum::YLeaf RefClockSourceType::ntp_ref_nist {15, "ntp-ref-nist"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_acts {16, "ntp-ref-acts"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_usno {17, "ntp-ref-usno"};
 const Enum::YLeaf RefClockSourceType::ntp_ref_ptb {18, "ntp-ref-ptb"};
-
-const Enum::YLeaf KissCodeType::ntp_ref_acst {0, "ntp-ref-acst"};
-const Enum::YLeaf KissCodeType::ntp_ref_auth {1, "ntp-ref-auth"};
-const Enum::YLeaf KissCodeType::ntp_ref_auto {2, "ntp-ref-auto"};
-const Enum::YLeaf KissCodeType::ntp_ref_bcst {3, "ntp-ref-bcst"};
-const Enum::YLeaf KissCodeType::ntp_ref_cryp {4, "ntp-ref-cryp"};
-const Enum::YLeaf KissCodeType::ntp_ref_deny {5, "ntp-ref-deny"};
-const Enum::YLeaf KissCodeType::ntp_ref_drop {6, "ntp-ref-drop"};
-const Enum::YLeaf KissCodeType::ntp_ref_rstr {7, "ntp-ref-rstr"};
-const Enum::YLeaf KissCodeType::ntp_ref_init {8, "ntp-ref-init"};
-const Enum::YLeaf KissCodeType::ntp_ref_mcst {9, "ntp-ref-mcst"};
-const Enum::YLeaf KissCodeType::ntp_ref_nkey {10, "ntp-ref-nkey"};
-const Enum::YLeaf KissCodeType::ntp_ref_rate {11, "ntp-ref-rate"};
-const Enum::YLeaf KissCodeType::ntp_ref_rmot {12, "ntp-ref-rmot"};
-const Enum::YLeaf KissCodeType::ntp_ref_step {13, "ntp-ref-step"};
 
 const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_kod {0, "ntp-ref-state-kod"};
 const Enum::YLeaf RefidPktTypeInfo::ntp_ref_state_resolved_with_clk_source {1, "ntp-ref-state-resolved-with-clk-source"};

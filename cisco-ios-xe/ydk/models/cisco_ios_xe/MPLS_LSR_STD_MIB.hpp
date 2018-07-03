@@ -32,30 +32,30 @@ class MPLSLSRSTDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Mplslsrobjects; //type: MPLSLSRSTDMIB::Mplslsrobjects
-        class Mplsinterfacetable; //type: MPLSLSRSTDMIB::Mplsinterfacetable
-        class Mplsinsegmenttable; //type: MPLSLSRSTDMIB::Mplsinsegmenttable
-        class Mplsoutsegmenttable; //type: MPLSLSRSTDMIB::Mplsoutsegmenttable
-        class Mplsxctable; //type: MPLSLSRSTDMIB::Mplsxctable
-        class Mplslabelstacktable; //type: MPLSLSRSTDMIB::Mplslabelstacktable
-        class Mplsinsegmentmaptable; //type: MPLSLSRSTDMIB::Mplsinsegmentmaptable
+        class MplsLsrObjects; //type: MPLSLSRSTDMIB::MplsLsrObjects
+        class MplsInterfaceTable; //type: MPLSLSRSTDMIB::MplsInterfaceTable
+        class MplsInSegmentTable; //type: MPLSLSRSTDMIB::MplsInSegmentTable
+        class MplsOutSegmentTable; //type: MPLSLSRSTDMIB::MplsOutSegmentTable
+        class MplsXCTable; //type: MPLSLSRSTDMIB::MplsXCTable
+        class MplsLabelStackTable; //type: MPLSLSRSTDMIB::MplsLabelStackTable
+        class MplsInSegmentMapTable; //type: MPLSLSRSTDMIB::MplsInSegmentMapTable
 
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslsrobjects> mplslsrobjects;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinterfacetable> mplsinterfacetable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmenttable> mplsinsegmenttable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsoutsegmenttable> mplsoutsegmenttable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsxctable> mplsxctable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslabelstacktable> mplslabelstacktable;
-        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmentmaptable> mplsinsegmentmaptable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsLsrObjects> mplslsrobjects;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsInterfaceTable> mplsinterfacetable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsInSegmentTable> mplsinsegmenttable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsOutSegmentTable> mplsoutsegmenttable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsXCTable> mplsxctable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsLabelStackTable> mplslabelstacktable;
+        std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsInSegmentMapTable> mplsinsegmentmaptable;
         
 }; // MPLSLSRSTDMIB
 
 
-class MPLSLSRSTDMIB::Mplslsrobjects : public ydk::Entity
+class MPLSLSRSTDMIB::MplsLsrObjects : public ydk::Entity
 {
     public:
-        Mplslsrobjects();
-        ~Mplslsrobjects();
+        MplsLsrObjects();
+        ~MplsLsrObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -75,14 +75,14 @@ class MPLSLSRSTDMIB::Mplslsrobjects : public ydk::Entity
         ydk::YLeaf mplslabelstackindexnext; //type: binary
         ydk::YLeaf mplsxcnotificationsenable; //type: boolean
 
-}; // MPLSLSRSTDMIB::Mplslsrobjects
+}; // MPLSLSRSTDMIB::MplsLsrObjects
 
 
-class MPLSLSRSTDMIB::Mplsinterfacetable : public ydk::Entity
+class MPLSLSRSTDMIB::MplsInterfaceTable : public ydk::Entity
 {
     public:
-        Mplsinterfacetable();
-        ~Mplsinterfacetable();
+        MplsInterfaceTable();
+        ~MplsInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -95,18 +95,18 @@ class MPLSLSRSTDMIB::Mplsinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsinterfaceentry; //type: MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry
+        class MplsInterfaceEntry; //type: MPLSLSRSTDMIB::MplsInterfaceTable::MplsInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry> > mplsinterfaceentry;
+        ydk::YList mplsinterfaceentry;
         
-}; // MPLSLSRSTDMIB::Mplsinterfacetable
+}; // MPLSLSRSTDMIB::MplsInterfaceTable
 
 
-class MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry : public ydk::Entity
+class MPLSLSRSTDMIB::MplsInterfaceTable::MplsInterfaceEntry : public ydk::Entity
 {
     public:
-        Mplsinterfaceentry();
-        ~Mplsinterfaceentry();
+        MplsInterfaceEntry();
+        ~MplsInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -126,20 +126,20 @@ class MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry : public ydk::Entity
         ydk::YLeaf mplsinterfacelabelmaxout; //type: uint32
         ydk::YLeaf mplsinterfacetotalbandwidth; //type: uint32
         ydk::YLeaf mplsinterfaceavailablebandwidth; //type: uint32
-        ydk::YLeaf mplsinterfacelabelparticipationtype; //type: Mplsinterfacelabelparticipationtype
+        ydk::YLeaf mplsinterfacelabelparticipationtype; //type: MplsInterfaceLabelParticipationType
         ydk::YLeaf mplsinterfaceperfinlabelsinuse; //type: uint32
         ydk::YLeaf mplsinterfaceperfinlabellookupfailures; //type: uint32
         ydk::YLeaf mplsinterfaceperfoutlabelsinuse; //type: uint32
         ydk::YLeaf mplsinterfaceperfoutfragmentedpkts; //type: uint32
 
-}; // MPLSLSRSTDMIB::Mplsinterfacetable::Mplsinterfaceentry
+}; // MPLSLSRSTDMIB::MplsInterfaceTable::MplsInterfaceEntry
 
 
-class MPLSLSRSTDMIB::Mplsinsegmenttable : public ydk::Entity
+class MPLSLSRSTDMIB::MplsInSegmentTable : public ydk::Entity
 {
     public:
-        Mplsinsegmenttable();
-        ~Mplsinsegmenttable();
+        MplsInSegmentTable();
+        ~MplsInSegmentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -152,18 +152,18 @@ class MPLSLSRSTDMIB::Mplsinsegmenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsinsegmententry; //type: MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry
+        class MplsInSegmentEntry; //type: MPLSLSRSTDMIB::MplsInSegmentTable::MplsInSegmentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry> > mplsinsegmententry;
+        ydk::YList mplsinsegmententry;
         
-}; // MPLSLSRSTDMIB::Mplsinsegmenttable
+}; // MPLSLSRSTDMIB::MplsInSegmentTable
 
 
-class MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry : public ydk::Entity
+class MPLSLSRSTDMIB::MplsInSegmentTable::MplsInSegmentEntry : public ydk::Entity
 {
     public:
-        Mplsinsegmententry();
-        ~Mplsinsegmententry();
+        MplsInSegmentEntry();
+        ~MplsInSegmentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -194,14 +194,14 @@ class MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry : public ydk::Entity
         ydk::YLeaf mplsinsegmentperfhcoctets; //type: uint64
         ydk::YLeaf mplsinsegmentperfdiscontinuitytime; //type: uint32
 
-}; // MPLSLSRSTDMIB::Mplsinsegmenttable::Mplsinsegmententry
+}; // MPLSLSRSTDMIB::MplsInSegmentTable::MplsInSegmentEntry
 
 
-class MPLSLSRSTDMIB::Mplsoutsegmenttable : public ydk::Entity
+class MPLSLSRSTDMIB::MplsOutSegmentTable : public ydk::Entity
 {
     public:
-        Mplsoutsegmenttable();
-        ~Mplsoutsegmenttable();
+        MplsOutSegmentTable();
+        ~MplsOutSegmentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -214,18 +214,18 @@ class MPLSLSRSTDMIB::Mplsoutsegmenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsoutsegmententry; //type: MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry
+        class MplsOutSegmentEntry; //type: MPLSLSRSTDMIB::MplsOutSegmentTable::MplsOutSegmentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry> > mplsoutsegmententry;
+        ydk::YList mplsoutsegmententry;
         
-}; // MPLSLSRSTDMIB::Mplsoutsegmenttable
+}; // MPLSLSRSTDMIB::MplsOutSegmentTable
 
 
-class MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry : public ydk::Entity
+class MPLSLSRSTDMIB::MplsOutSegmentTable::MplsOutSegmentEntry : public ydk::Entity
 {
     public:
-        Mplsoutsegmententry();
-        ~Mplsoutsegmententry();
+        MplsOutSegmentEntry();
+        ~MplsOutSegmentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -257,14 +257,14 @@ class MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry : public ydk::Enti
         ydk::YLeaf mplsoutsegmentperfhcoctets; //type: uint64
         ydk::YLeaf mplsoutsegmentperfdiscontinuitytime; //type: uint32
 
-}; // MPLSLSRSTDMIB::Mplsoutsegmenttable::Mplsoutsegmententry
+}; // MPLSLSRSTDMIB::MplsOutSegmentTable::MplsOutSegmentEntry
 
 
-class MPLSLSRSTDMIB::Mplsxctable : public ydk::Entity
+class MPLSLSRSTDMIB::MplsXCTable : public ydk::Entity
 {
     public:
-        Mplsxctable();
-        ~Mplsxctable();
+        MplsXCTable();
+        ~MplsXCTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -277,18 +277,18 @@ class MPLSLSRSTDMIB::Mplsxctable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsxcentry; //type: MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry
+        class MplsXCEntry; //type: MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry> > mplsxcentry;
+        ydk::YList mplsxcentry;
         
-}; // MPLSLSRSTDMIB::Mplsxctable
+}; // MPLSLSRSTDMIB::MplsXCTable
 
 
-class MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry : public ydk::Entity
+class MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry : public ydk::Entity
 {
     public:
-        Mplsxcentry();
-        ~Mplsxcentry();
+        MplsXCEntry();
+        ~MplsXCEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -309,19 +309,19 @@ class MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry : public ydk::Entity
         ydk::YLeaf mplsxcowner; //type: MplsOwner
         ydk::YLeaf mplsxcrowstatus; //type: RowStatus
         ydk::YLeaf mplsxcstoragetype; //type: StorageType
-        ydk::YLeaf mplsxcadminstatus; //type: Mplsxcadminstatus
-        ydk::YLeaf mplsxcoperstatus; //type: Mplsxcoperstatus
-        class Mplsxcadminstatus;
-        class Mplsxcoperstatus;
+        ydk::YLeaf mplsxcadminstatus; //type: MplsXCAdminStatus
+        ydk::YLeaf mplsxcoperstatus; //type: MplsXCOperStatus
+        class MplsXCAdminStatus;
+        class MplsXCOperStatus;
 
-}; // MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry
+}; // MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry
 
 
-class MPLSLSRSTDMIB::Mplslabelstacktable : public ydk::Entity
+class MPLSLSRSTDMIB::MplsLabelStackTable : public ydk::Entity
 {
     public:
-        Mplslabelstacktable();
-        ~Mplslabelstacktable();
+        MplsLabelStackTable();
+        ~MplsLabelStackTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -334,18 +334,18 @@ class MPLSLSRSTDMIB::Mplslabelstacktable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplslabelstackentry; //type: MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry
+        class MplsLabelStackEntry; //type: MPLSLSRSTDMIB::MplsLabelStackTable::MplsLabelStackEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry> > mplslabelstackentry;
+        ydk::YList mplslabelstackentry;
         
-}; // MPLSLSRSTDMIB::Mplslabelstacktable
+}; // MPLSLSRSTDMIB::MplsLabelStackTable
 
 
-class MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry : public ydk::Entity
+class MPLSLSRSTDMIB::MplsLabelStackTable::MplsLabelStackEntry : public ydk::Entity
 {
     public:
-        Mplslabelstackentry();
-        ~Mplslabelstackentry();
+        MplsLabelStackEntry();
+        ~MplsLabelStackEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -365,14 +365,14 @@ class MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry : public ydk::Enti
         ydk::YLeaf mplslabelstackrowstatus; //type: RowStatus
         ydk::YLeaf mplslabelstackstoragetype; //type: StorageType
 
-}; // MPLSLSRSTDMIB::Mplslabelstacktable::Mplslabelstackentry
+}; // MPLSLSRSTDMIB::MplsLabelStackTable::MplsLabelStackEntry
 
 
-class MPLSLSRSTDMIB::Mplsinsegmentmaptable : public ydk::Entity
+class MPLSLSRSTDMIB::MplsInSegmentMapTable : public ydk::Entity
 {
     public:
-        Mplsinsegmentmaptable();
-        ~Mplsinsegmentmaptable();
+        MplsInSegmentMapTable();
+        ~MplsInSegmentMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -385,18 +385,18 @@ class MPLSLSRSTDMIB::Mplsinsegmentmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mplsinsegmentmapentry; //type: MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry
+        class MplsInSegmentMapEntry; //type: MPLSLSRSTDMIB::MplsInSegmentMapTable::MplsInSegmentMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry> > mplsinsegmentmapentry;
+        ydk::YList mplsinsegmentmapentry;
         
-}; // MPLSLSRSTDMIB::Mplsinsegmentmaptable
+}; // MPLSLSRSTDMIB::MplsInSegmentMapTable
 
 
-class MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry : public ydk::Entity
+class MPLSLSRSTDMIB::MplsInSegmentMapTable::MplsInSegmentMapEntry : public ydk::Entity
 {
     public:
-        Mplsinsegmentmapentry();
-        ~Mplsinsegmentmapentry();
+        MplsInSegmentMapEntry();
+        ~MplsInSegmentMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -414,9 +414,9 @@ class MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry : public ydk::
         ydk::YLeaf mplsinsegmentmaplabelptrindex; //type: string
         ydk::YLeaf mplsinsegmentmapindex; //type: binary
 
-}; // MPLSLSRSTDMIB::Mplsinsegmentmaptable::Mplsinsegmentmapentry
+}; // MPLSLSRSTDMIB::MplsInSegmentMapTable::MplsInSegmentMapEntry
 
-class MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcadminstatus : public ydk::Enum
+class MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::MplsXCAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -425,7 +425,7 @@ class MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcadminstatus : public ydk::E
 
 };
 
-class MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::Mplsxcoperstatus : public ydk::Enum
+class MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::MplsXCOperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;

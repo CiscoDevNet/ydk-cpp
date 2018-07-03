@@ -14,16 +14,16 @@ namespace Cisco_IOS_XE_bgp_oper {
 BgpStateData::BgpStateData()
     :
     neighbors(std::make_shared<BgpStateData::Neighbors>())
-	,address_families(std::make_shared<BgpStateData::AddressFamilies>())
-	,bgp_route_vrfs(std::make_shared<BgpStateData::BgpRouteVrfs>())
-	,bgp_route_rds(std::make_shared<BgpStateData::BgpRouteRds>())
+    , address_families(std::make_shared<BgpStateData::AddressFamilies>())
+    , bgp_route_vrfs(std::make_shared<BgpStateData::BgpRouteVrfs>())
+    , bgp_route_rds(std::make_shared<BgpStateData::BgpRouteRds>())
 {
     neighbors->parent = this;
     address_families->parent = this;
     bgp_route_vrfs->parent = this;
     bgp_route_rds->parent = this;
 
-    yang_name = "bgp-state-data"; yang_parent_name = "Cisco-IOS-XE-bgp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "bgp-state-data"; yang_parent_name = "Cisco-IOS-XE-bgp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BgpStateData::~BgpStateData()
@@ -32,6 +32,7 @@ BgpStateData::~BgpStateData()
 
 bool BgpStateData::has_data() const
 {
+    if (is_presence_container) return true;
     return (neighbors !=  nullptr && neighbors->has_data())
 	|| (address_families !=  nullptr && address_families->has_data())
 	|| (bgp_route_vrfs !=  nullptr && bgp_route_vrfs->has_data())
@@ -172,9 +173,11 @@ bool BgpStateData::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 BgpStateData::Neighbors::Neighbors()
+    :
+    neighbor(this, {"afi_safi", "vrf_name", "neighbor_id"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::Neighbors::~Neighbors()
@@ -183,7 +186,8 @@ BgpStateData::Neighbors::~Neighbors()
 
 bool BgpStateData::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -193,7 +197,7 @@ bool BgpStateData::Neighbors::has_data() const
 
 bool BgpStateData::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -230,7 +234,7 @@ std::shared_ptr<Entity> BgpStateData::Neighbors::get_child_by_name(const std::st
     {
         auto c = std::make_shared<BgpStateData::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -242,7 +246,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::Neighbors::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -283,12 +287,12 @@ BgpStateData::Neighbors::Neighbor::Neighbor()
     session_state{YType::enumeration, "session-state"},
     negotiated_cap{YType::str, "negotiated-cap"},
     as{YType::uint32, "as"}
-    	,
+        ,
     negotiated_keepalive_timers(std::make_shared<BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers>())
-	,bgp_neighbor_counters(std::make_shared<BgpStateData::Neighbors::Neighbor::BgpNeighborCounters>())
-	,connection(std::make_shared<BgpStateData::Neighbors::Neighbor::Connection>())
-	,transport(std::make_shared<BgpStateData::Neighbors::Neighbor::Transport>())
-	,prefix_activity(std::make_shared<BgpStateData::Neighbors::Neighbor::PrefixActivity>())
+    , bgp_neighbor_counters(std::make_shared<BgpStateData::Neighbors::Neighbor::BgpNeighborCounters>())
+    , connection(std::make_shared<BgpStateData::Neighbors::Neighbor::Connection>())
+    , transport(std::make_shared<BgpStateData::Neighbors::Neighbor::Transport>())
+    , prefix_activity(std::make_shared<BgpStateData::Neighbors::Neighbor::PrefixActivity>())
 {
     negotiated_keepalive_timers->parent = this;
     bgp_neighbor_counters->parent = this;
@@ -296,7 +300,7 @@ BgpStateData::Neighbors::Neighbor::Neighbor()
     transport->parent = this;
     prefix_activity->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::Neighbors::Neighbor::~Neighbor()
@@ -305,6 +309,7 @@ BgpStateData::Neighbors::Neighbor::~Neighbor()
 
 bool BgpStateData::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : negotiated_cap.getYLeafs())
     {
         if(leaf.is_set)
@@ -367,7 +372,10 @@ std::string BgpStateData::Neighbors::Neighbor::get_absolute_path() const
 std::string BgpStateData::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[afi-safi='" <<afi_safi <<"']" <<"[vrf-name='" <<vrf_name <<"']" <<"[neighbor-id='" <<neighbor_id <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(afi_safi, "afi-safi");
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(neighbor_id, "neighbor-id");
     return path_buffer.str();
 }
 
@@ -625,7 +633,7 @@ BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers::NegotiatedKeepaliv
     keepalive_interval{YType::uint16, "keepalive-interval"}
 {
 
-    yang_name = "negotiated-keepalive-timers"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "negotiated-keepalive-timers"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers::~NegotiatedKeepaliveTimers()
@@ -634,6 +642,7 @@ BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers::~NegotiatedKeepali
 
 bool BgpStateData::Neighbors::Neighbor::NegotiatedKeepaliveTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_time.is_set
 	|| keepalive_interval.is_set;
 }
@@ -714,14 +723,14 @@ BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::BgpNeighborCounters()
     :
     inq_depth{YType::uint32, "inq-depth"},
     outq_depth{YType::uint32, "outq-depth"}
-    	,
+        ,
     sent(std::make_shared<BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Sent>())
-	,received(std::make_shared<BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Received>())
+    , received(std::make_shared<BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Received>())
 {
     sent->parent = this;
     received->parent = this;
 
-    yang_name = "bgp-neighbor-counters"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-counters"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::~BgpNeighborCounters()
@@ -730,6 +739,7 @@ BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::~BgpNeighborCounters()
 
 bool BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return inq_depth.is_set
 	|| outq_depth.is_set
 	|| (sent !=  nullptr && sent->has_data())
@@ -847,7 +857,7 @@ BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Sent::Sent()
     route_refreshes{YType::uint32, "route-refreshes"}
 {
 
-    yang_name = "sent"; yang_parent_name = "bgp-neighbor-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sent"; yang_parent_name = "bgp-neighbor-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Sent::~Sent()
@@ -856,6 +866,7 @@ BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Sent::~Sent()
 
 bool BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Sent::has_data() const
 {
+    if (is_presence_container) return true;
     return opens.is_set
 	|| updates.is_set
 	|| notifications.is_set
@@ -980,7 +991,7 @@ BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Received::Received()
     route_refreshes{YType::uint32, "route-refreshes"}
 {
 
-    yang_name = "received"; yang_parent_name = "bgp-neighbor-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received"; yang_parent_name = "bgp-neighbor-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Received::~Received()
@@ -989,6 +1000,7 @@ BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Received::~Received()
 
 bool BgpStateData::Neighbors::Neighbor::BgpNeighborCounters::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return opens.is_set
 	|| updates.is_set
 	|| notifications.is_set
@@ -1114,7 +1126,7 @@ BgpStateData::Neighbors::Neighbor::Connection::Connection()
     reset_reason{YType::str, "reset-reason"}
 {
 
-    yang_name = "connection"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::Connection::~Connection()
@@ -1123,6 +1135,7 @@ BgpStateData::Neighbors::Neighbor::Connection::~Connection()
 
 bool BgpStateData::Neighbors::Neighbor::Connection::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| mode.is_set
 	|| total_established.is_set
@@ -1261,7 +1274,7 @@ BgpStateData::Neighbors::Neighbor::Transport::Transport()
     mss{YType::uint32, "mss"}
 {
 
-    yang_name = "transport"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::Transport::~Transport()
@@ -1270,6 +1283,7 @@ BgpStateData::Neighbors::Neighbor::Transport::~Transport()
 
 bool BgpStateData::Neighbors::Neighbor::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return path_mtu_discovery.is_set
 	|| local_port.is_set
 	|| local_host.is_set
@@ -1401,12 +1415,12 @@ bool BgpStateData::Neighbors::Neighbor::Transport::has_leaf_or_child_of_name(con
 BgpStateData::Neighbors::Neighbor::PrefixActivity::PrefixActivity()
     :
     sent(std::make_shared<BgpStateData::Neighbors::Neighbor::PrefixActivity::Sent>())
-	,received(std::make_shared<BgpStateData::Neighbors::Neighbor::PrefixActivity::Received>())
+    , received(std::make_shared<BgpStateData::Neighbors::Neighbor::PrefixActivity::Received>())
 {
     sent->parent = this;
     received->parent = this;
 
-    yang_name = "prefix-activity"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-activity"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::PrefixActivity::~PrefixActivity()
@@ -1415,6 +1429,7 @@ BgpStateData::Neighbors::Neighbor::PrefixActivity::~PrefixActivity()
 
 bool BgpStateData::Neighbors::Neighbor::PrefixActivity::has_data() const
 {
+    if (is_presence_container) return true;
     return (sent !=  nullptr && sent->has_data())
 	|| (received !=  nullptr && received->has_data());
 }
@@ -1507,7 +1522,7 @@ BgpStateData::Neighbors::Neighbor::PrefixActivity::Sent::Sent()
     multipaths{YType::uint64, "multipaths"}
 {
 
-    yang_name = "sent"; yang_parent_name = "prefix-activity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sent"; yang_parent_name = "prefix-activity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::PrefixActivity::Sent::~Sent()
@@ -1516,6 +1531,7 @@ BgpStateData::Neighbors::Neighbor::PrefixActivity::Sent::~Sent()
 
 bool BgpStateData::Neighbors::Neighbor::PrefixActivity::Sent::has_data() const
 {
+    if (is_presence_container) return true;
     return current_prefixes.is_set
 	|| total_prefixes.is_set
 	|| implicit_withdraw.is_set
@@ -1654,7 +1670,7 @@ BgpStateData::Neighbors::Neighbor::PrefixActivity::Received::Received()
     multipaths{YType::uint64, "multipaths"}
 {
 
-    yang_name = "received"; yang_parent_name = "prefix-activity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received"; yang_parent_name = "prefix-activity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::Neighbors::Neighbor::PrefixActivity::Received::~Received()
@@ -1663,6 +1679,7 @@ BgpStateData::Neighbors::Neighbor::PrefixActivity::Received::~Received()
 
 bool BgpStateData::Neighbors::Neighbor::PrefixActivity::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return current_prefixes.is_set
 	|| total_prefixes.is_set
 	|| implicit_withdraw.is_set
@@ -1792,9 +1809,11 @@ bool BgpStateData::Neighbors::Neighbor::PrefixActivity::Received::has_leaf_or_ch
 }
 
 BgpStateData::AddressFamilies::AddressFamilies()
+    :
+    address_family(this, {"afi_safi", "vrf_name"})
 {
 
-    yang_name = "address-families"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address-families"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::AddressFamilies::~AddressFamilies()
@@ -1803,7 +1822,8 @@ BgpStateData::AddressFamilies::~AddressFamilies()
 
 bool BgpStateData::AddressFamilies::has_data() const
 {
-    for (std::size_t index=0; index<address_family.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_family.len(); index++)
     {
         if(address_family[index]->has_data())
             return true;
@@ -1813,7 +1833,7 @@ bool BgpStateData::AddressFamilies::has_data() const
 
 bool BgpStateData::AddressFamilies::has_operation() const
 {
-    for (std::size_t index=0; index<address_family.size(); index++)
+    for (std::size_t index=0; index<address_family.len(); index++)
     {
         if(address_family[index]->has_operation())
             return true;
@@ -1850,7 +1870,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::get_child_by_name(const s
     {
         auto c = std::make_shared<BgpStateData::AddressFamilies::AddressFamily>();
         c->parent = this;
-        address_family.push_back(c);
+        address_family.append(c);
         return c;
     }
 
@@ -1862,7 +1882,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_family)
+    for (auto c : address_family.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1897,14 +1917,14 @@ BgpStateData::AddressFamilies::AddressFamily::AddressFamily()
     routing_table_version{YType::uint64, "routing-table-version"},
     total_memory{YType::uint64, "total-memory"},
     local_as{YType::uint32, "local-as"}
-    	,
+        ,
     prefixes(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::Prefixes>())
-	,path(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::Path>())
-	,as_path(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::AsPath>())
-	,route_map(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::RouteMap>())
-	,filter_list(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::FilterList>())
-	,activities(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::Activities>())
-	,bgp_neighbor_summaries(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries>())
+    , path(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::Path>())
+    , as_path(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::AsPath>())
+    , route_map(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::RouteMap>())
+    , filter_list(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::FilterList>())
+    , activities(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::Activities>())
+    , bgp_neighbor_summaries(std::make_shared<BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries>())
 {
     prefixes->parent = this;
     path->parent = this;
@@ -1914,7 +1934,7 @@ BgpStateData::AddressFamilies::AddressFamily::AddressFamily()
     activities->parent = this;
     bgp_neighbor_summaries->parent = this;
 
-    yang_name = "address-family"; yang_parent_name = "address-families"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address-family"; yang_parent_name = "address-families"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::~AddressFamily()
@@ -1923,6 +1943,7 @@ BgpStateData::AddressFamilies::AddressFamily::~AddressFamily()
 
 bool BgpStateData::AddressFamilies::AddressFamily::has_data() const
 {
+    if (is_presence_container) return true;
     return afi_safi.is_set
 	|| vrf_name.is_set
 	|| router_id.is_set
@@ -1968,7 +1989,9 @@ std::string BgpStateData::AddressFamilies::AddressFamily::get_absolute_path() co
 std::string BgpStateData::AddressFamilies::AddressFamily::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address-family" <<"[afi-safi='" <<afi_safi <<"']" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "address-family";
+    ADD_KEY_TOKEN(afi_safi, "afi-safi");
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -2189,7 +2212,7 @@ BgpStateData::AddressFamilies::AddressFamily::Prefixes::Prefixes()
     memory_usage{YType::uint64, "memory-usage"}
 {
 
-    yang_name = "prefixes"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefixes"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::Prefixes::~Prefixes()
@@ -2198,6 +2221,7 @@ BgpStateData::AddressFamilies::AddressFamily::Prefixes::~Prefixes()
 
 bool BgpStateData::AddressFamilies::AddressFamily::Prefixes::has_data() const
 {
+    if (is_presence_container) return true;
     return total_entries.is_set
 	|| memory_usage.is_set;
 }
@@ -2280,7 +2304,7 @@ BgpStateData::AddressFamilies::AddressFamily::Path::Path()
     memory_usage{YType::uint64, "memory-usage"}
 {
 
-    yang_name = "path"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::Path::~Path()
@@ -2289,6 +2313,7 @@ BgpStateData::AddressFamilies::AddressFamily::Path::~Path()
 
 bool BgpStateData::AddressFamilies::AddressFamily::Path::has_data() const
 {
+    if (is_presence_container) return true;
     return total_entries.is_set
 	|| memory_usage.is_set;
 }
@@ -2371,7 +2396,7 @@ BgpStateData::AddressFamilies::AddressFamily::AsPath::AsPath()
     memory_usage{YType::uint64, "memory-usage"}
 {
 
-    yang_name = "as-path"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-path"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::AsPath::~AsPath()
@@ -2380,6 +2405,7 @@ BgpStateData::AddressFamilies::AddressFamily::AsPath::~AsPath()
 
 bool BgpStateData::AddressFamilies::AddressFamily::AsPath::has_data() const
 {
+    if (is_presence_container) return true;
     return total_entries.is_set
 	|| memory_usage.is_set;
 }
@@ -2462,7 +2488,7 @@ BgpStateData::AddressFamilies::AddressFamily::RouteMap::RouteMap()
     memory_usage{YType::uint64, "memory-usage"}
 {
 
-    yang_name = "route-map"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-map"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::RouteMap::~RouteMap()
@@ -2471,6 +2497,7 @@ BgpStateData::AddressFamilies::AddressFamily::RouteMap::~RouteMap()
 
 bool BgpStateData::AddressFamilies::AddressFamily::RouteMap::has_data() const
 {
+    if (is_presence_container) return true;
     return total_entries.is_set
 	|| memory_usage.is_set;
 }
@@ -2553,7 +2580,7 @@ BgpStateData::AddressFamilies::AddressFamily::FilterList::FilterList()
     memory_usage{YType::uint64, "memory-usage"}
 {
 
-    yang_name = "filter-list"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter-list"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::FilterList::~FilterList()
@@ -2562,6 +2589,7 @@ BgpStateData::AddressFamilies::AddressFamily::FilterList::~FilterList()
 
 bool BgpStateData::AddressFamilies::AddressFamily::FilterList::has_data() const
 {
+    if (is_presence_container) return true;
     return total_entries.is_set
 	|| memory_usage.is_set;
 }
@@ -2645,7 +2673,7 @@ BgpStateData::AddressFamilies::AddressFamily::Activities::Activities()
     scan_interval{YType::str, "scan-interval"}
 {
 
-    yang_name = "activities"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "activities"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::Activities::~Activities()
@@ -2654,6 +2682,7 @@ BgpStateData::AddressFamilies::AddressFamily::Activities::~Activities()
 
 bool BgpStateData::AddressFamilies::AddressFamily::Activities::has_data() const
 {
+    if (is_presence_container) return true;
     return prefixes.is_set
 	|| paths.is_set
 	|| scan_interval.is_set;
@@ -2744,9 +2773,11 @@ bool BgpStateData::AddressFamilies::AddressFamily::Activities::has_leaf_or_child
 }
 
 BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummaries()
+    :
+    bgp_neighbor_summary(this, {"id"})
 {
 
-    yang_name = "bgp-neighbor-summaries"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-summaries"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::~BgpNeighborSummaries()
@@ -2755,7 +2786,8 @@ BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::~BgpNeighbor
 
 bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_neighbor_summary.len(); index++)
     {
         if(bgp_neighbor_summary[index]->has_data())
             return true;
@@ -2765,7 +2797,7 @@ bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::has_dat
 
 bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_summary.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor_summary.len(); index++)
     {
         if(bgp_neighbor_summary[index]->has_operation())
             return true;
@@ -2795,7 +2827,7 @@ std::shared_ptr<Entity> BgpStateData::AddressFamilies::AddressFamily::BgpNeighbo
     {
         auto c = std::make_shared<BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary>();
         c->parent = this;
-        bgp_neighbor_summary.push_back(c);
+        bgp_neighbor_summary.append(c);
         return c;
     }
 
@@ -2807,7 +2839,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::AddressFamilies::Ad
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_neighbor_summary)
+    for (auto c : bgp_neighbor_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2849,7 +2881,7 @@ BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborS
     as{YType::uint32, "as"}
 {
 
-    yang_name = "bgp-neighbor-summary"; yang_parent_name = "bgp-neighbor-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-summary"; yang_parent_name = "bgp-neighbor-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::~BgpNeighborSummary()
@@ -2858,6 +2890,7 @@ BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborS
 
 bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| bgp_version.is_set
 	|| messages_received.is_set
@@ -2892,7 +2925,8 @@ bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeig
 std::string BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeighborSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-neighbor-summary" <<"[id='" <<id <<"']";
+    path_buffer << "bgp-neighbor-summary";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -3065,9 +3099,11 @@ bool BgpStateData::AddressFamilies::AddressFamily::BgpNeighborSummaries::BgpNeig
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrfs()
+    :
+    bgp_route_vrf(this, {"vrf"})
 {
 
-    yang_name = "bgp-route-vrfs"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-route-vrfs"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::BgpRouteVrfs::~BgpRouteVrfs()
@@ -3076,7 +3112,8 @@ BgpStateData::BgpRouteVrfs::~BgpRouteVrfs()
 
 bool BgpStateData::BgpRouteVrfs::has_data() const
 {
-    for (std::size_t index=0; index<bgp_route_vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_route_vrf.len(); index++)
     {
         if(bgp_route_vrf[index]->has_data())
             return true;
@@ -3086,7 +3123,7 @@ bool BgpStateData::BgpRouteVrfs::has_data() const
 
 bool BgpStateData::BgpRouteVrfs::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_route_vrf.size(); index++)
+    for (std::size_t index=0; index<bgp_route_vrf.len(); index++)
     {
         if(bgp_route_vrf[index]->has_operation())
             return true;
@@ -3123,7 +3160,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::get_child_by_name(const std:
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf>();
         c->parent = this;
-        bgp_route_vrf.push_back(c);
+        bgp_route_vrf.append(c);
         return c;
     }
 
@@ -3135,7 +3172,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_route_vrf)
+    for (auto c : bgp_route_vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3164,12 +3201,12 @@ bool BgpStateData::BgpRouteVrfs::has_leaf_or_child_of_name(const std::string & n
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteVrf()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     bgp_route_afs(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs>())
 {
     bgp_route_afs->parent = this;
 
-    yang_name = "bgp-route-vrf"; yang_parent_name = "bgp-route-vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-route-vrf"; yang_parent_name = "bgp-route-vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::~BgpRouteVrf()
@@ -3178,6 +3215,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::~BgpRouteVrf()
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (bgp_route_afs !=  nullptr && bgp_route_afs->has_data());
 }
@@ -3199,7 +3237,8 @@ std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::get_absolute_path() const
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-route-vrf" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "bgp-route-vrf";
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -3265,9 +3304,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::has_leaf_or_child_of_name(const st
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAfs()
+    :
+    bgp_route_af(this, {"afi_safi"})
 {
 
-    yang_name = "bgp-route-afs"; yang_parent_name = "bgp-route-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-afs"; yang_parent_name = "bgp-route-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::~BgpRouteAfs()
@@ -3276,7 +3317,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::~BgpRouteAfs()
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::has_data() const
 {
-    for (std::size_t index=0; index<bgp_route_af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_route_af.len(); index++)
     {
         if(bgp_route_af[index]->has_data())
             return true;
@@ -3286,7 +3328,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::has_data() const
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_route_af.size(); index++)
+    for (std::size_t index=0; index<bgp_route_af.len(); index++)
     {
         if(bgp_route_af[index]->has_operation())
             return true;
@@ -3316,7 +3358,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::ge
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf>();
         c->parent = this;
-        bgp_route_af.push_back(c);
+        bgp_route_af.append(c);
         return c;
     }
 
@@ -3328,7 +3370,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_route_af)
+    for (auto c : bgp_route_af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3357,16 +3399,16 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::has_leaf_or_child_of_
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteAf()
     :
     afi_safi{YType::enumeration, "afi-safi"}
-    	,
+        ,
     bgp_route_filters(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters>())
-	,bgp_route_neighbors(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors>())
-	,bgp_peer_groups(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups>())
+    , bgp_route_neighbors(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors>())
+    , bgp_peer_groups(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups>())
 {
     bgp_route_filters->parent = this;
     bgp_route_neighbors->parent = this;
     bgp_peer_groups->parent = this;
 
-    yang_name = "bgp-route-af"; yang_parent_name = "bgp-route-afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-af"; yang_parent_name = "bgp-route-afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::~BgpRouteAf()
@@ -3375,6 +3417,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::~BgpRouteAf()
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::has_data() const
 {
+    if (is_presence_container) return true;
     return afi_safi.is_set
 	|| (bgp_route_filters !=  nullptr && bgp_route_filters->has_data())
 	|| (bgp_route_neighbors !=  nullptr && bgp_route_neighbors->has_data())
@@ -3393,7 +3436,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::has_opera
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-route-af" <<"[afi-safi='" <<afi_safi <<"']";
+    path_buffer << "bgp-route-af";
+    ADD_KEY_TOKEN(afi_safi, "afi-safi");
     return path_buffer.str();
 }
 
@@ -3487,9 +3531,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::has_leaf_
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilters()
+    :
+    bgp_route_filter(this, {"route_filter"})
 {
 
-    yang_name = "bgp-route-filters"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-filters"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::~BgpRouteFilters()
@@ -3498,7 +3544,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::has_data() const
 {
-    for (std::size_t index=0; index<bgp_route_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_route_filter.len(); index++)
     {
         if(bgp_route_filter[index]->has_data())
             return true;
@@ -3508,7 +3555,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_route_filter.size(); index++)
+    for (std::size_t index=0; index<bgp_route_filter.len(); index++)
     {
         if(bgp_route_filter[index]->has_operation())
             return true;
@@ -3538,7 +3585,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter>();
         c->parent = this;
-        bgp_route_filter.push_back(c);
+        bgp_route_filter.append(c);
         return c;
     }
 
@@ -3550,7 +3597,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_route_filter)
+    for (auto c : bgp_route_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3579,12 +3626,12 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteFilter()
     :
     route_filter{YType::enumeration, "route-filter"}
-    	,
+        ,
     bgp_route_entries(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries>())
 {
     bgp_route_entries->parent = this;
 
-    yang_name = "bgp-route-filter"; yang_parent_name = "bgp-route-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-filter"; yang_parent_name = "bgp-route-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::~BgpRouteFilter()
@@ -3593,6 +3640,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return route_filter.is_set
 	|| (bgp_route_entries !=  nullptr && bgp_route_entries->has_data());
 }
@@ -3607,7 +3655,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-route-filter" <<"[route-filter='" <<route_filter <<"']";
+    path_buffer << "bgp-route-filter";
+    ADD_KEY_TOKEN(route_filter, "route-filter");
     return path_buffer.str();
 }
 
@@ -3673,9 +3722,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntries()
+    :
+    bgp_route_entry(this, {"prefix"})
 {
 
-    yang_name = "bgp-route-entries"; yang_parent_name = "bgp-route-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-entries"; yang_parent_name = "bgp-route-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::~BgpRouteEntries()
@@ -3684,7 +3735,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_route_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_route_entry.len(); index++)
     {
         if(bgp_route_entry[index]->has_data())
             return true;
@@ -3694,7 +3746,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_route_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_route_entry.len(); index++)
     {
         if(bgp_route_entry[index]->has_operation())
             return true;
@@ -3724,7 +3776,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry>();
         c->parent = this;
-        bgp_route_entry.push_back(c);
+        bgp_route_entry.append(c);
         return c;
     }
 
@@ -3736,7 +3788,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_route_entry)
+    for (auto c : bgp_route_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3768,12 +3820,12 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
     version{YType::uint32, "version"},
     available_paths{YType::uint32, "available-paths"},
     advertised_to{YType::str, "advertised-to"}
-    	,
+        ,
     bgp_path_entries(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries>())
 {
     bgp_path_entries->parent = this;
 
-    yang_name = "bgp-route-entry"; yang_parent_name = "bgp-route-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-entry"; yang_parent_name = "bgp-route-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::~BgpRouteEntry()
@@ -3782,6 +3834,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| version.is_set
 	|| available_paths.is_set
@@ -3802,7 +3855,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-route-entry" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "bgp-route-entry";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -3901,9 +3955,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntries()
+    :
+    bgp_path_entry(this, {"nexthop"})
 {
 
-    yang_name = "bgp-path-entries"; yang_parent_name = "bgp-route-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-path-entries"; yang_parent_name = "bgp-route-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::~BgpPathEntries()
@@ -3912,7 +3968,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_path_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_path_entry.len(); index++)
     {
         if(bgp_path_entry[index]->has_data())
             return true;
@@ -3922,7 +3979,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_path_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_path_entry.len(); index++)
     {
         if(bgp_path_entry[index]->has_operation())
             return true;
@@ -3952,7 +4009,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry>();
         c->parent = this;
-        bgp_path_entry.push_back(c);
+        bgp_path_entry.append(c);
         return c;
     }
 
@@ -3964,7 +4021,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_path_entry)
+    for (auto c : bgp_path_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4015,12 +4072,12 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
     extended_community{YType::str, "extended-community"},
     ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
     path_id{YType::uint32, "path-id"}
-    	,
+        ,
     path_status(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::PathStatus>())
 {
     path_status->parent = this;
 
-    yang_name = "bgp-path-entry"; yang_parent_name = "bgp-path-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-path-entry"; yang_parent_name = "bgp-path-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::~BgpPathEntry()
@@ -4029,6 +4086,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nexthop.is_set
 	|| metric.is_set
 	|| local_pref.is_set
@@ -4087,7 +4145,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-path-entry" <<"[nexthop='" <<nexthop <<"']";
+    path_buffer << "bgp-path-entry";
+    ADD_KEY_TOKEN(nexthop, "nexthop");
     return path_buffer.str();
 }
 
@@ -4413,7 +4472,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
     rib_compressed{YType::empty, "rib-compressed"}
 {
 
-    yang_name = "path-status"; yang_parent_name = "bgp-path-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-status"; yang_parent_name = "bgp-path-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::PathStatus::~PathStatus()
@@ -4422,6 +4481,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilter
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteFilters::BgpRouteFilter::BgpRouteEntries::BgpRouteEntry::BgpPathEntries::BgpPathEntry::PathStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return suppressed.is_set
 	|| damped.is_set
 	|| history.is_set
@@ -4668,9 +4728,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteF
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbors()
+    :
+    bgp_route_neighbor(this, {"nbr_id"})
 {
 
-    yang_name = "bgp-route-neighbors"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-neighbors"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::~BgpRouteNeighbors()
@@ -4679,7 +4741,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<bgp_route_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_route_neighbor.len(); index++)
     {
         if(bgp_route_neighbor[index]->has_data())
             return true;
@@ -4689,7 +4752,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_route_neighbor.size(); index++)
+    for (std::size_t index=0; index<bgp_route_neighbor.len(); index++)
     {
         if(bgp_route_neighbor[index]->has_operation())
             return true;
@@ -4719,7 +4782,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor>();
         c->parent = this;
-        bgp_route_neighbor.push_back(c);
+        bgp_route_neighbor.append(c);
         return c;
     }
 
@@ -4731,7 +4794,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_route_neighbor)
+    for (auto c : bgp_route_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4760,12 +4823,12 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpRouteNeighbor()
     :
     nbr_id{YType::str, "nbr-id"}
-    	,
+        ,
     bgp_neighbor_route_filters(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters>())
 {
     bgp_neighbor_route_filters->parent = this;
 
-    yang_name = "bgp-route-neighbor"; yang_parent_name = "bgp-route-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-route-neighbor"; yang_parent_name = "bgp-route-neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::~BgpRouteNeighbor()
@@ -4774,6 +4837,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr_id.is_set
 	|| (bgp_neighbor_route_filters !=  nullptr && bgp_neighbor_route_filters->has_data());
 }
@@ -4788,7 +4852,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-route-neighbor" <<"[nbr-id='" <<nbr_id <<"']";
+    path_buffer << "bgp-route-neighbor";
+    ADD_KEY_TOKEN(nbr_id, "nbr-id");
     return path_buffer.str();
 }
 
@@ -4854,9 +4919,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilters()
+    :
+    bgp_neighbor_route_filter(this, {"nbr_fltr"})
 {
 
-    yang_name = "bgp-neighbor-route-filters"; yang_parent_name = "bgp-route-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-route-filters"; yang_parent_name = "bgp-route-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::~BgpNeighborRouteFilters()
@@ -4865,7 +4932,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::has_data() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_route_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_neighbor_route_filter.len(); index++)
     {
         if(bgp_neighbor_route_filter[index]->has_data())
             return true;
@@ -4875,7 +4943,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_route_filter.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor_route_filter.len(); index++)
     {
         if(bgp_neighbor_route_filter[index]->has_operation())
             return true;
@@ -4905,7 +4973,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter>();
         c->parent = this;
-        bgp_neighbor_route_filter.push_back(c);
+        bgp_neighbor_route_filter.append(c);
         return c;
     }
 
@@ -4917,7 +4985,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_neighbor_route_filter)
+    for (auto c : bgp_neighbor_route_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4946,12 +5014,12 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteFilter()
     :
     nbr_fltr{YType::enumeration, "nbr-fltr"}
-    	,
+        ,
     bgp_neighbor_route_entries(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries>())
 {
     bgp_neighbor_route_entries->parent = this;
 
-    yang_name = "bgp-neighbor-route-filter"; yang_parent_name = "bgp-neighbor-route-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-route-filter"; yang_parent_name = "bgp-neighbor-route-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::~BgpNeighborRouteFilter()
@@ -4960,6 +5028,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr_fltr.is_set
 	|| (bgp_neighbor_route_entries !=  nullptr && bgp_neighbor_route_entries->has_data());
 }
@@ -4974,7 +5043,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-neighbor-route-filter" <<"[nbr-fltr='" <<nbr_fltr <<"']";
+    path_buffer << "bgp-neighbor-route-filter";
+    ADD_KEY_TOKEN(nbr_fltr, "nbr-fltr");
     return path_buffer.str();
 }
 
@@ -5040,9 +5110,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntries()
+    :
+    bgp_neighbor_route_entry(this, {"prefix"})
 {
 
-    yang_name = "bgp-neighbor-route-entries"; yang_parent_name = "bgp-neighbor-route-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-route-entries"; yang_parent_name = "bgp-neighbor-route-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::~BgpNeighborRouteEntries()
@@ -5051,7 +5123,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_route_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_neighbor_route_entry.len(); index++)
     {
         if(bgp_neighbor_route_entry[index]->has_data())
             return true;
@@ -5061,7 +5134,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_route_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor_route_entry.len(); index++)
     {
         if(bgp_neighbor_route_entry[index]->has_operation())
             return true;
@@ -5091,7 +5164,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry>();
         c->parent = this;
-        bgp_neighbor_route_entry.push_back(c);
+        bgp_neighbor_route_entry.append(c);
         return c;
     }
 
@@ -5103,7 +5176,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_neighbor_route_entry)
+    for (auto c : bgp_neighbor_route_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5135,12 +5208,12 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
     version{YType::uint32, "version"},
     available_paths{YType::uint32, "available-paths"},
     advertised_to{YType::str, "advertised-to"}
-    	,
+        ,
     bgp_neighbor_path_entries(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries>())
 {
     bgp_neighbor_path_entries->parent = this;
 
-    yang_name = "bgp-neighbor-route-entry"; yang_parent_name = "bgp-neighbor-route-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-route-entry"; yang_parent_name = "bgp-neighbor-route-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::~BgpNeighborRouteEntry()
@@ -5149,6 +5222,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| version.is_set
 	|| available_paths.is_set
@@ -5169,7 +5243,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-neighbor-route-entry" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "bgp-neighbor-route-entry";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -5268,9 +5343,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntries()
+    :
+    bgp_neighbor_path_entry(this, {"nexthop"})
 {
 
-    yang_name = "bgp-neighbor-path-entries"; yang_parent_name = "bgp-neighbor-route-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-path-entries"; yang_parent_name = "bgp-neighbor-route-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::~BgpNeighborPathEntries()
@@ -5279,7 +5356,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_path_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_neighbor_path_entry.len(); index++)
     {
         if(bgp_neighbor_path_entry[index]->has_data())
             return true;
@@ -5289,7 +5367,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_neighbor_path_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_neighbor_path_entry.len(); index++)
     {
         if(bgp_neighbor_path_entry[index]->has_operation())
             return true;
@@ -5319,7 +5397,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry>();
         c->parent = this;
-        bgp_neighbor_path_entry.push_back(c);
+        bgp_neighbor_path_entry.append(c);
         return c;
     }
 
@@ -5331,7 +5409,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_neighbor_path_entry)
+    for (auto c : bgp_neighbor_path_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5382,12 +5460,12 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
     extended_community{YType::str, "extended-community"},
     ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
     path_id{YType::uint32, "path-id"}
-    	,
+        ,
     path_status(std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus>())
 {
     path_status->parent = this;
 
-    yang_name = "bgp-neighbor-path-entry"; yang_parent_name = "bgp-neighbor-path-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-neighbor-path-entry"; yang_parent_name = "bgp-neighbor-path-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::~BgpNeighborPathEntry()
@@ -5396,6 +5474,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nexthop.is_set
 	|| metric.is_set
 	|| local_pref.is_set
@@ -5454,7 +5533,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-neighbor-path-entry" <<"[nexthop='" <<nexthop <<"']";
+    path_buffer << "bgp-neighbor-path-entry";
+    ADD_KEY_TOKEN(nexthop, "nexthop");
     return path_buffer.str();
 }
 
@@ -5780,7 +5860,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
     rib_compressed{YType::empty, "rib-compressed"}
 {
 
-    yang_name = "path-status"; yang_parent_name = "bgp-neighbor-path-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-status"; yang_parent_name = "bgp-neighbor-path-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::~PathStatus()
@@ -5789,6 +5869,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighb
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteNeighbors::BgpRouteNeighbor::BgpNeighborRouteFilters::BgpNeighborRouteFilter::BgpNeighborRouteEntries::BgpNeighborRouteEntry::BgpNeighborPathEntries::BgpNeighborPathEntry::PathStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return suppressed.is_set
 	|| damped.is_set
 	|| history.is_set
@@ -6035,9 +6116,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpRouteN
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroups()
+    :
+    bgp_peer_group(this, {"name"})
 {
 
-    yang_name = "bgp-peer-groups"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-peer-groups"; yang_parent_name = "bgp-route-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::~BgpPeerGroups()
@@ -6046,7 +6129,8 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups:
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::has_data() const
 {
-    for (std::size_t index=0; index<bgp_peer_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_peer_group.len(); index++)
     {
         if(bgp_peer_group[index]->has_data())
             return true;
@@ -6056,7 +6140,7 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGr
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_peer_group.size(); index++)
+    for (std::size_t index=0; index<bgp_peer_group.len(); index++)
     {
         if(bgp_peer_group[index]->has_operation())
             return true;
@@ -6086,7 +6170,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup>();
         c->parent = this;
-        bgp_peer_group.push_back(c);
+        bgp_peer_group.append(c);
         return c;
     }
 
@@ -6098,7 +6182,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteVrfs::BgpRo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_peer_group)
+    for (auto c : bgp_peer_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6150,7 +6234,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups:
     remove_private_as{YType::boolean, "remove-private-as"}
 {
 
-    yang_name = "bgp-peer-group"; yang_parent_name = "bgp-peer-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-peer-group"; yang_parent_name = "bgp-peer-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::~BgpPeerGroup()
@@ -6159,6 +6243,7 @@ BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups:
 
 bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : peer_members.getYLeafs())
     {
         if(leaf.is_set)
@@ -6222,7 +6307,8 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGr
 std::string BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGroups::BgpPeerGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-peer-group" <<"[name='" <<name <<"']";
+    path_buffer << "bgp-peer-group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6504,9 +6590,11 @@ bool BgpStateData::BgpRouteVrfs::BgpRouteVrf::BgpRouteAfs::BgpRouteAf::BgpPeerGr
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRds()
+    :
+    bgp_route_rd(this, {"rd_value"})
 {
 
-    yang_name = "bgp-route-rds"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-route-rds"; yang_parent_name = "bgp-state-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::BgpRouteRds::~BgpRouteRds()
@@ -6515,7 +6603,8 @@ BgpStateData::BgpRouteRds::~BgpRouteRds()
 
 bool BgpStateData::BgpRouteRds::has_data() const
 {
-    for (std::size_t index=0; index<bgp_route_rd.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_route_rd.len(); index++)
     {
         if(bgp_route_rd[index]->has_data())
             return true;
@@ -6525,7 +6614,7 @@ bool BgpStateData::BgpRouteRds::has_data() const
 
 bool BgpStateData::BgpRouteRds::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_route_rd.size(); index++)
+    for (std::size_t index=0; index<bgp_route_rd.len(); index++)
     {
         if(bgp_route_rd[index]->has_operation())
             return true;
@@ -6562,7 +6651,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::get_child_by_name(const std::
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd>();
         c->parent = this;
-        bgp_route_rd.push_back(c);
+        bgp_route_rd.append(c);
         return c;
     }
 
@@ -6574,7 +6663,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_route_rd)
+    for (auto c : bgp_route_rd.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6603,12 +6692,12 @@ bool BgpStateData::BgpRouteRds::has_leaf_or_child_of_name(const std::string & na
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRouteRd()
     :
     rd_value{YType::str, "rd-value"}
-    	,
+        ,
     bgp_rd_route_afs(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs>())
 {
     bgp_rd_route_afs->parent = this;
 
-    yang_name = "bgp-route-rd"; yang_parent_name = "bgp-route-rds"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-route-rd"; yang_parent_name = "bgp-route-rds"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::~BgpRouteRd()
@@ -6617,6 +6706,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::~BgpRouteRd()
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::has_data() const
 {
+    if (is_presence_container) return true;
     return rd_value.is_set
 	|| (bgp_rd_route_afs !=  nullptr && bgp_rd_route_afs->has_data());
 }
@@ -6638,7 +6728,8 @@ std::string BgpStateData::BgpRouteRds::BgpRouteRd::get_absolute_path() const
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-route-rd" <<"[rd-value='" <<rd_value <<"']";
+    path_buffer << "bgp-route-rd";
+    ADD_KEY_TOKEN(rd_value, "rd-value");
     return path_buffer.str();
 }
 
@@ -6704,9 +6795,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::has_leaf_or_child_of_name(const std:
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAfs()
+    :
+    bgp_rd_route_af(this, {"afi_safi"})
 {
 
-    yang_name = "bgp-rd-route-afs"; yang_parent_name = "bgp-route-rd"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-afs"; yang_parent_name = "bgp-route-rd"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::~BgpRdRouteAfs()
@@ -6715,7 +6808,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::~BgpRdRouteAfs()
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_route_af.len(); index++)
     {
         if(bgp_rd_route_af[index]->has_data())
             return true;
@@ -6725,7 +6819,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::has_data() const
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_af.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_route_af.len(); index++)
     {
         if(bgp_rd_route_af[index]->has_operation())
             return true;
@@ -6755,7 +6849,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::ge
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf>();
         c->parent = this;
-        bgp_rd_route_af.push_back(c);
+        bgp_rd_route_af.append(c);
         return c;
     }
 
@@ -6767,7 +6861,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_route_af)
+    for (auto c : bgp_rd_route_af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6796,14 +6890,14 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::has_leaf_or_child_of_
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteAf()
     :
     afi_safi{YType::enumeration, "afi-safi"}
-    	,
+        ,
     bgp_rd_route_filters(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters>())
-	,bgp_rd_route_neighbors(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors>())
+    , bgp_rd_route_neighbors(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors>())
 {
     bgp_rd_route_filters->parent = this;
     bgp_rd_route_neighbors->parent = this;
 
-    yang_name = "bgp-rd-route-af"; yang_parent_name = "bgp-rd-route-afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-af"; yang_parent_name = "bgp-rd-route-afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::~BgpRdRouteAf()
@@ -6812,6 +6906,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::~BgpRdRouteA
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::has_data() const
 {
+    if (is_presence_container) return true;
     return afi_safi.is_set
 	|| (bgp_rd_route_filters !=  nullptr && bgp_rd_route_filters->has_data())
 	|| (bgp_rd_route_neighbors !=  nullptr && bgp_rd_route_neighbors->has_data());
@@ -6828,7 +6923,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::has_ope
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-route-af" <<"[afi-safi='" <<afi_safi <<"']";
+    path_buffer << "bgp-rd-route-af";
+    ADD_KEY_TOKEN(afi_safi, "afi-safi");
     return path_buffer.str();
 }
 
@@ -6908,9 +7004,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::has_lea
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilters()
+    :
+    bgp_rd_route_filter(this, {"route_filter"})
 {
 
-    yang_name = "bgp-rd-route-filters"; yang_parent_name = "bgp-rd-route-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-filters"; yang_parent_name = "bgp-rd-route-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::~BgpRdRouteFilters()
@@ -6919,7 +7017,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_route_filter.len(); index++)
     {
         if(bgp_rd_route_filter[index]->has_data())
             return true;
@@ -6929,7 +7028,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_filter.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_route_filter.len(); index++)
     {
         if(bgp_rd_route_filter[index]->has_operation())
             return true;
@@ -6959,7 +7058,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter>();
         c->parent = this;
-        bgp_rd_route_filter.push_back(c);
+        bgp_rd_route_filter.append(c);
         return c;
     }
 
@@ -6971,7 +7070,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_route_filter)
+    for (auto c : bgp_rd_route_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7000,12 +7099,12 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteFilter()
     :
     route_filter{YType::enumeration, "route-filter"}
-    	,
+        ,
     bgp_rd_route_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries>())
 {
     bgp_rd_route_entries->parent = this;
 
-    yang_name = "bgp-rd-route-filter"; yang_parent_name = "bgp-rd-route-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-filter"; yang_parent_name = "bgp-rd-route-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::~BgpRdRouteFilter()
@@ -7014,6 +7113,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return route_filter.is_set
 	|| (bgp_rd_route_entries !=  nullptr && bgp_rd_route_entries->has_data());
 }
@@ -7028,7 +7128,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-route-filter" <<"[route-filter='" <<route_filter <<"']";
+    path_buffer << "bgp-rd-route-filter";
+    ADD_KEY_TOKEN(route_filter, "route-filter");
     return path_buffer.str();
 }
 
@@ -7094,9 +7195,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntries()
+    :
+    bgp_rd_route_entry(this, {"prefix"})
 {
 
-    yang_name = "bgp-rd-route-entries"; yang_parent_name = "bgp-rd-route-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-entries"; yang_parent_name = "bgp-rd-route-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::~BgpRdRouteEntries()
@@ -7105,7 +7208,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_route_entry.len(); index++)
     {
         if(bgp_rd_route_entry[index]->has_data())
             return true;
@@ -7115,7 +7219,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_route_entry.len(); index++)
     {
         if(bgp_rd_route_entry[index]->has_operation())
             return true;
@@ -7145,7 +7249,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry>();
         c->parent = this;
-        bgp_rd_route_entry.push_back(c);
+        bgp_rd_route_entry.append(c);
         return c;
     }
 
@@ -7157,7 +7261,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_route_entry)
+    for (auto c : bgp_rd_route_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7189,12 +7293,12 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
     version{YType::uint32, "version"},
     available_paths{YType::uint32, "available-paths"},
     advertised_to{YType::str, "advertised-to"}
-    	,
+        ,
     bgp_rd_path_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries>())
 {
     bgp_rd_path_entries->parent = this;
 
-    yang_name = "bgp-rd-route-entry"; yang_parent_name = "bgp-rd-route-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-entry"; yang_parent_name = "bgp-rd-route-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::~BgpRdRouteEntry()
@@ -7203,6 +7307,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| version.is_set
 	|| available_paths.is_set
@@ -7223,7 +7328,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-route-entry" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "bgp-rd-route-entry";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -7322,9 +7428,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntries()
+    :
+    bgp_rd_path_entry(this, {"nexthop"})
 {
 
-    yang_name = "bgp-rd-path-entries"; yang_parent_name = "bgp-rd-route-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-path-entries"; yang_parent_name = "bgp-rd-route-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::~BgpRdPathEntries()
@@ -7333,7 +7441,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_path_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_path_entry.len(); index++)
     {
         if(bgp_rd_path_entry[index]->has_data())
             return true;
@@ -7343,7 +7452,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_path_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_path_entry.len(); index++)
     {
         if(bgp_rd_path_entry[index]->has_operation())
             return true;
@@ -7373,7 +7482,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry>();
         c->parent = this;
-        bgp_rd_path_entry.push_back(c);
+        bgp_rd_path_entry.append(c);
         return c;
     }
 
@@ -7385,7 +7494,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_path_entry)
+    for (auto c : bgp_rd_path_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7436,12 +7545,12 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
     extended_community{YType::str, "extended-community"},
     ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
     path_id{YType::uint32, "path-id"}
-    	,
+        ,
     path_status(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus>())
 {
     path_status->parent = this;
 
-    yang_name = "bgp-rd-path-entry"; yang_parent_name = "bgp-rd-path-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-path-entry"; yang_parent_name = "bgp-rd-path-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::~BgpRdPathEntry()
@@ -7450,6 +7559,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nexthop.is_set
 	|| metric.is_set
 	|| local_pref.is_set
@@ -7508,7 +7618,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-path-entry" <<"[nexthop='" <<nexthop <<"']";
+    path_buffer << "bgp-rd-path-entry";
+    ADD_KEY_TOKEN(nexthop, "nexthop");
     return path_buffer.str();
 }
 
@@ -7834,7 +7945,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
     rib_compressed{YType::empty, "rib-compressed"}
 {
 
-    yang_name = "path-status"; yang_parent_name = "bgp-rd-path-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-status"; yang_parent_name = "bgp-rd-path-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::~PathStatus()
@@ -7843,6 +7954,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFi
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteFilters::BgpRdRouteFilter::BgpRdRouteEntries::BgpRdRouteEntry::BgpRdPathEntries::BgpRdPathEntry::PathStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return suppressed.is_set
 	|| damped.is_set
 	|| history.is_set
@@ -8089,9 +8201,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbors()
+    :
+    bgp_rd_route_neighbor(this, {"neighbor_id"})
 {
 
-    yang_name = "bgp-rd-route-neighbors"; yang_parent_name = "bgp-rd-route-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-neighbors"; yang_parent_name = "bgp-rd-route-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::~BgpRdRouteNeighbors()
@@ -8100,7 +8214,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_route_neighbor.len(); index++)
     {
         if(bgp_rd_route_neighbor[index]->has_data())
             return true;
@@ -8110,7 +8225,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_route_neighbor.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_route_neighbor.len(); index++)
     {
         if(bgp_rd_route_neighbor[index]->has_operation())
             return true;
@@ -8140,7 +8255,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor>();
         c->parent = this;
-        bgp_rd_route_neighbor.push_back(c);
+        bgp_rd_route_neighbor.append(c);
         return c;
     }
 
@@ -8152,7 +8267,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_route_neighbor)
+    for (auto c : bgp_rd_route_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8181,12 +8296,12 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdRouteNeighbor()
     :
     neighbor_id{YType::str, "neighbor-id"}
-    	,
+        ,
     bgp_rd_neighbor_route_filters(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters>())
 {
     bgp_rd_neighbor_route_filters->parent = this;
 
-    yang_name = "bgp-rd-route-neighbor"; yang_parent_name = "bgp-rd-route-neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-route-neighbor"; yang_parent_name = "bgp-rd-route-neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::~BgpRdRouteNeighbor()
@@ -8195,6 +8310,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_id.is_set
 	|| (bgp_rd_neighbor_route_filters !=  nullptr && bgp_rd_neighbor_route_filters->has_data());
 }
@@ -8209,7 +8325,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-route-neighbor" <<"[neighbor-id='" <<neighbor_id <<"']";
+    path_buffer << "bgp-rd-route-neighbor";
+    ADD_KEY_TOKEN(neighbor_id, "neighbor-id");
     return path_buffer.str();
 }
 
@@ -8275,9 +8392,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilters()
+    :
+    bgp_rd_neighbor_route_filter(this, {"neighbor_filter"})
 {
 
-    yang_name = "bgp-rd-neighbor-route-filters"; yang_parent_name = "bgp-rd-route-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-neighbor-route-filters"; yang_parent_name = "bgp-rd-route-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::~BgpRdNeighborRouteFilters()
@@ -8286,7 +8405,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_neighbor_route_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_filter.len(); index++)
     {
         if(bgp_rd_neighbor_route_filter[index]->has_data())
             return true;
@@ -8296,7 +8416,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_neighbor_route_filter.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_filter.len(); index++)
     {
         if(bgp_rd_neighbor_route_filter[index]->has_operation())
             return true;
@@ -8326,7 +8446,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter>();
         c->parent = this;
-        bgp_rd_neighbor_route_filter.push_back(c);
+        bgp_rd_neighbor_route_filter.append(c);
         return c;
     }
 
@@ -8338,7 +8458,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_neighbor_route_filter)
+    for (auto c : bgp_rd_neighbor_route_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8367,12 +8487,12 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteFilter()
     :
     neighbor_filter{YType::enumeration, "neighbor-filter"}
-    	,
+        ,
     bgp_rd_neighbor_route_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries>())
 {
     bgp_rd_neighbor_route_entries->parent = this;
 
-    yang_name = "bgp-rd-neighbor-route-filter"; yang_parent_name = "bgp-rd-neighbor-route-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-neighbor-route-filter"; yang_parent_name = "bgp-rd-neighbor-route-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::~BgpRdNeighborRouteFilter()
@@ -8381,6 +8501,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_filter.is_set
 	|| (bgp_rd_neighbor_route_entries !=  nullptr && bgp_rd_neighbor_route_entries->has_data());
 }
@@ -8395,7 +8516,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-neighbor-route-filter" <<"[neighbor-filter='" <<neighbor_filter <<"']";
+    path_buffer << "bgp-rd-neighbor-route-filter";
+    ADD_KEY_TOKEN(neighbor_filter, "neighbor-filter");
     return path_buffer.str();
 }
 
@@ -8461,9 +8583,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntries()
+    :
+    bgp_rd_neighbor_route_entry(this, {"prefix"})
 {
 
-    yang_name = "bgp-rd-neighbor-route-entries"; yang_parent_name = "bgp-rd-neighbor-route-filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-neighbor-route-entries"; yang_parent_name = "bgp-rd-neighbor-route-filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::~BgpRdNeighborRouteEntries()
@@ -8472,7 +8596,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_neighbor_route_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_entry.len(); index++)
     {
         if(bgp_rd_neighbor_route_entry[index]->has_data())
             return true;
@@ -8482,7 +8607,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_neighbor_route_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_neighbor_route_entry.len(); index++)
     {
         if(bgp_rd_neighbor_route_entry[index]->has_operation())
             return true;
@@ -8512,7 +8637,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry>();
         c->parent = this;
-        bgp_rd_neighbor_route_entry.push_back(c);
+        bgp_rd_neighbor_route_entry.append(c);
         return c;
     }
 
@@ -8524,7 +8649,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_neighbor_route_entry)
+    for (auto c : bgp_rd_neighbor_route_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8556,12 +8681,12 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
     version{YType::uint32, "version"},
     available_paths{YType::uint32, "available-paths"},
     advertised_to{YType::str, "advertised-to"}
-    	,
+        ,
     bgp_rd_neighbor_path_entries(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries>())
 {
     bgp_rd_neighbor_path_entries->parent = this;
 
-    yang_name = "bgp-rd-neighbor-route-entry"; yang_parent_name = "bgp-rd-neighbor-route-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-neighbor-route-entry"; yang_parent_name = "bgp-rd-neighbor-route-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::~BgpRdNeighborRouteEntry()
@@ -8570,6 +8695,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| version.is_set
 	|| available_paths.is_set
@@ -8590,7 +8716,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-neighbor-route-entry" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "bgp-rd-neighbor-route-entry";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -8689,9 +8816,11 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntries()
+    :
+    bgp_rd_neighbor_path_entry(this, {"nexthop"})
 {
 
-    yang_name = "bgp-rd-neighbor-path-entries"; yang_parent_name = "bgp-rd-neighbor-route-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-neighbor-path-entries"; yang_parent_name = "bgp-rd-neighbor-route-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::~BgpRdNeighborPathEntries()
@@ -8700,7 +8829,8 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::has_data() const
 {
-    for (std::size_t index=0; index<bgp_rd_neighbor_path_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bgp_rd_neighbor_path_entry.len(); index++)
     {
         if(bgp_rd_neighbor_path_entry[index]->has_data())
             return true;
@@ -8710,7 +8840,7 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::has_operation() const
 {
-    for (std::size_t index=0; index<bgp_rd_neighbor_path_entry.size(); index++)
+    for (std::size_t index=0; index<bgp_rd_neighbor_path_entry.len(); index++)
     {
         if(bgp_rd_neighbor_path_entry[index]->has_operation())
             return true;
@@ -8740,7 +8870,7 @@ std::shared_ptr<Entity> BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::Bg
     {
         auto c = std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry>();
         c->parent = this;
-        bgp_rd_neighbor_path_entry.push_back(c);
+        bgp_rd_neighbor_path_entry.append(c);
         return c;
     }
 
@@ -8752,7 +8882,7 @@ std::map<std::string, std::shared_ptr<Entity>> BgpStateData::BgpRouteRds::BgpRou
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bgp_rd_neighbor_path_entry)
+    for (auto c : bgp_rd_neighbor_path_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8803,12 +8933,12 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
     extended_community{YType::str, "extended-community"},
     ext_aigp_metric{YType::uint64, "ext-aigp-metric"},
     path_id{YType::uint32, "path-id"}
-    	,
+        ,
     path_status(std::make_shared<BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus>())
 {
     path_status->parent = this;
 
-    yang_name = "bgp-rd-neighbor-path-entry"; yang_parent_name = "bgp-rd-neighbor-path-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-rd-neighbor-path-entry"; yang_parent_name = "bgp-rd-neighbor-path-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::~BgpRdNeighborPathEntry()
@@ -8817,6 +8947,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return nexthop.is_set
 	|| metric.is_set
 	|| local_pref.is_set
@@ -8875,7 +9006,8 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
 std::string BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bgp-rd-neighbor-path-entry" <<"[nexthop='" <<nexthop <<"']";
+    path_buffer << "bgp-rd-neighbor-path-entry";
+    ADD_KEY_TOKEN(nexthop, "nexthop");
     return path_buffer.str();
 }
 
@@ -9201,7 +9333,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
     rib_compressed{YType::empty, "rib-compressed"}
 {
 
-    yang_name = "path-status"; yang_parent_name = "bgp-rd-neighbor-path-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-status"; yang_parent_name = "bgp-rd-neighbor-path-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::~PathStatus()
@@ -9210,6 +9342,7 @@ BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNe
 
 bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return suppressed.is_set
 	|| damped.is_set
 	|| history.is_set
@@ -9455,9 +9588,6 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
     return false;
 }
 
-const Enum::YLeaf BgpLink::internal {0, "internal"};
-const Enum::YLeaf BgpLink::external {1, "external"};
-
 const Enum::YLeaf BgpFsmState::fsm_idle {0, "fsm-idle"};
 const Enum::YLeaf BgpFsmState::fsm_connect {1, "fsm-connect"};
 const Enum::YLeaf BgpFsmState::fsm_active {2, "fsm-active"};
@@ -9465,6 +9595,9 @@ const Enum::YLeaf BgpFsmState::fsm_opensent {3, "fsm-opensent"};
 const Enum::YLeaf BgpFsmState::fsm_openconfirm {4, "fsm-openconfirm"};
 const Enum::YLeaf BgpFsmState::fsm_established {5, "fsm-established"};
 const Enum::YLeaf BgpFsmState::fsm_nonnegotiated {6, "fsm-nonnegotiated"};
+
+const Enum::YLeaf BgpLink::internal {0, "internal"};
+const Enum::YLeaf BgpLink::external {1, "external"};
 
 const Enum::YLeaf BgpMode::mode_active {0, "mode-active"};
 const Enum::YLeaf BgpMode::mode_passive {1, "mode-passive"};

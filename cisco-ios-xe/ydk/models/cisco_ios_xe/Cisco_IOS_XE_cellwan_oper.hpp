@@ -36,10 +36,10 @@ class CellwanOperData : public ydk::Entity
         class CellwanNetwork; //type: CellwanOperData::CellwanNetwork
         class CellwanConnection; //type: CellwanOperData::CellwanConnection
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cellwan_oper::CellwanOperData::CellwanHardware> > cellwan_hardware;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cellwan_oper::CellwanOperData::CellwanRadio> > cellwan_radio;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cellwan_oper::CellwanOperData::CellwanNetwork> > cellwan_network;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cellwan_oper::CellwanOperData::CellwanConnection> > cellwan_connection;
+        ydk::YList cellwan_hardware;
+        ydk::YList cellwan_radio;
+        ydk::YList cellwan_network;
+        ydk::YList cellwan_connection;
         
 }; // CellwanOperData
 
@@ -191,28 +191,24 @@ class CellwanOperData::CellwanConnection : public ydk::Entity
 
 }; // CellwanOperData::CellwanConnection
 
-class ModemStatus : public ydk::Enum
+class ModemService : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf modem_status_offline;
-        static const ydk::Enum::YLeaf modem_status_online;
-        static const ydk::Enum::YLeaf modem_status_low_power;
-        static const ydk::Enum::YLeaf modem_status_power_off;
-        static const ydk::Enum::YLeaf modem_status_boot_ready;
-        static const ydk::Enum::YLeaf modem_status_unknown;
+        static const ydk::Enum::YLeaf service_type_circuit_switched;
+        static const ydk::Enum::YLeaf service_type_packet_switched;
+        static const ydk::Enum::YLeaf service_type_combined;
+        static const ydk::Enum::YLeaf service_type_invalid;
+        static const ydk::Enum::YLeaf service_type_unknown;
 
 };
 
-class CwRadioPowerStatus : public ydk::Enum
+class ServiceStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf radio_power_mode_online;
-        static const ydk::Enum::YLeaf radio_power_mode_low_power;
-        static const ydk::Enum::YLeaf radio_power_mode_factory_test;
-        static const ydk::Enum::YLeaf radio_power_mode_offline;
-        static const ydk::Enum::YLeaf radio_power_mode_reset;
-        static const ydk::Enum::YLeaf radio_power_mode_off;
-        static const ydk::Enum::YLeaf radio_power_mode_persistent_low_power;
+        static const ydk::Enum::YLeaf service_status_normal;
+        static const ydk::Enum::YLeaf service_status_emergency;
+        static const ydk::Enum::YLeaf service_status_no_service;
+        static const ydk::Enum::YLeaf service_status_unknown;
 
 };
 
@@ -230,12 +226,32 @@ class RadioBandwidth : public ydk::Enum
 
 };
 
-class ModemTechnology : public ydk::Enum
+class RatTechnology : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdma_evdo_1x_rtt;
-        static const ydk::Enum::YLeaf gsm_umts_gprs;
-        static const ydk::Enum::YLeaf tech_unknown;
+        static const ydk::Enum::YLeaf system_mode_none;
+        static const ydk::Enum::YLeaf system_mode_gprs;
+        static const ydk::Enum::YLeaf system_mode_edge;
+        static const ydk::Enum::YLeaf system_mode_umts;
+        static const ydk::Enum::YLeaf system_mode_hsdpa;
+        static const ydk::Enum::YLeaf system_mode_hsupa;
+        static const ydk::Enum::YLeaf system_mode_hspa;
+        static const ydk::Enum::YLeaf system_mode_hspa_plus;
+        static const ydk::Enum::YLeaf system_mode_lte_fdd;
+        static const ydk::Enum::YLeaf system_mode_lte_tdd;
+        static const ydk::Enum::YLeaf system_mode_lte_e_hrpd_1x_rtt;
+        static const ydk::Enum::YLeaf system_mode_lte_e_hrpd_evdo;
+        static const ydk::Enum::YLeaf system_mode_evdo;
+        static const ydk::Enum::YLeaf system_mode_evdo_reva;
+        static const ydk::Enum::YLeaf system_mode_hsdpa_n_wcdma;
+        static const ydk::Enum::YLeaf system_mode_wcdma_n_hsupa;
+        static const ydk::Enum::YLeaf system_mode_hsdpa_n_hsupa;
+        static const ydk::Enum::YLeaf system_mode_hsdpa_plus_n_wcdma;
+        static const ydk::Enum::YLeaf system_mode_hsdpa_plus_n_hsupa;
+        static const ydk::Enum::YLeaf system_mode_dc_hsdpa_plus_n_wcdma;
+        static const ydk::Enum::YLeaf system_mode_dc_hsdpa_plus_n_hsupa;
+        static const ydk::Enum::YLeaf sysyem_mode_null_bearer;
+        static const ydk::Enum::YLeaf system_mode_unknown;
 
 };
 
@@ -269,53 +285,41 @@ class RatPreference : public ydk::Enum
 
 };
 
-class RatTechnology : public ydk::Enum
+class PacketSessStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf system_mode_none;
-        static const ydk::Enum::YLeaf system_mode_gprs;
-        static const ydk::Enum::YLeaf system_mode_edge;
-        static const ydk::Enum::YLeaf system_mode_umts;
-        static const ydk::Enum::YLeaf system_mode_hsdpa;
-        static const ydk::Enum::YLeaf system_mode_hsupa;
-        static const ydk::Enum::YLeaf system_mode_hspa;
-        static const ydk::Enum::YLeaf system_mode_hspa_plus;
-        static const ydk::Enum::YLeaf system_mode_lte_fdd;
-        static const ydk::Enum::YLeaf system_mode_lte_tdd;
-        static const ydk::Enum::YLeaf system_mode_lte_e_hrpd_1x_rtt;
-        static const ydk::Enum::YLeaf system_mode_lte_e_hrpd_evdo;
-        static const ydk::Enum::YLeaf system_mode_evdo;
-        static const ydk::Enum::YLeaf system_mode_evdo_reva;
-        static const ydk::Enum::YLeaf system_mode_hsdpa_n_wcdma;
-        static const ydk::Enum::YLeaf system_mode_wcdma_n_hsupa;
-        static const ydk::Enum::YLeaf system_mode_hsdpa_n_hsupa;
-        static const ydk::Enum::YLeaf system_mode_hsdpa_plus_n_wcdma;
-        static const ydk::Enum::YLeaf system_mode_hsdpa_plus_n_hsupa;
-        static const ydk::Enum::YLeaf system_mode_dc_hsdpa_plus_n_wcdma;
-        static const ydk::Enum::YLeaf system_mode_dc_hsdpa_plus_n_hsupa;
-        static const ydk::Enum::YLeaf sysyem_mode_null_bearer;
-        static const ydk::Enum::YLeaf system_mode_unknown;
+        static const ydk::Enum::YLeaf packet_session_status_inactive;
+        static const ydk::Enum::YLeaf packet_session_status_active;
 
 };
 
-class ServiceStatus : public ydk::Enum
+class CwRadioPowerStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf service_status_normal;
-        static const ydk::Enum::YLeaf service_status_emergency;
-        static const ydk::Enum::YLeaf service_status_no_service;
-        static const ydk::Enum::YLeaf service_status_unknown;
+        static const ydk::Enum::YLeaf radio_power_mode_online;
+        static const ydk::Enum::YLeaf radio_power_mode_low_power;
+        static const ydk::Enum::YLeaf radio_power_mode_factory_test;
+        static const ydk::Enum::YLeaf radio_power_mode_offline;
+        static const ydk::Enum::YLeaf radio_power_mode_reset;
+        static const ydk::Enum::YLeaf radio_power_mode_off;
+        static const ydk::Enum::YLeaf radio_power_mode_persistent_low_power;
 
 };
 
-class ModemService : public ydk::Enum
+class ModemTechnology : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf service_type_circuit_switched;
-        static const ydk::Enum::YLeaf service_type_packet_switched;
-        static const ydk::Enum::YLeaf service_type_combined;
-        static const ydk::Enum::YLeaf service_type_invalid;
-        static const ydk::Enum::YLeaf service_type_unknown;
+        static const ydk::Enum::YLeaf cdma_evdo_1x_rtt;
+        static const ydk::Enum::YLeaf gsm_umts_gprs;
+        static const ydk::Enum::YLeaf tech_unknown;
+
+};
+
+class ProfileScope : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf scope_global;
+        static const ydk::Enum::YLeaf scope_link;
 
 };
 
@@ -329,6 +333,18 @@ class LteCa : public ydk::Enum
 
 };
 
+class ModemStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf modem_status_offline;
+        static const ydk::Enum::YLeaf modem_status_online;
+        static const ydk::Enum::YLeaf modem_status_low_power;
+        static const ydk::Enum::YLeaf modem_status_power_off;
+        static const ydk::Enum::YLeaf modem_status_boot_ready;
+        static const ydk::Enum::YLeaf modem_status_unknown;
+
+};
+
 class RegState : public ydk::Enum
 {
     public:
@@ -337,22 +353,6 @@ class RegState : public ydk::Enum
         static const ydk::Enum::YLeaf reg_status_searching;
         static const ydk::Enum::YLeaf reg_status_registration_denied;
         static const ydk::Enum::YLeaf reg_status_unsupported;
-
-};
-
-class PacketSessStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf packet_session_status_inactive;
-        static const ydk::Enum::YLeaf packet_session_status_active;
-
-};
-
-class ProfileScope : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf scope_global;
-        static const ydk::Enum::YLeaf scope_link;
 
 };
 

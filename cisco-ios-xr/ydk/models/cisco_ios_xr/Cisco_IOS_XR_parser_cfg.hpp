@@ -35,6 +35,7 @@ class Parser : public ydk::Entity
         class Alias; //type: Parser::Alias
         class History; //type: Parser::History
         class Interactive; //type: Parser::Interactive
+        class CommitOptimized; //type: Parser::CommitOptimized
         class SysadminLoginBanner; //type: Parser::SysadminLoginBanner
         class InterfaceDisplay; //type: Parser::InterfaceDisplay
         class NetmaskFormat; //type: Parser::NetmaskFormat
@@ -45,6 +46,7 @@ class Parser : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::Alias> alias;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::History> history;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::Interactive> interactive;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::CommitOptimized> commit_optimized;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::SysadminLoginBanner> sysadmin_login_banner;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::InterfaceDisplay> interface_display;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::NetmaskFormat> netmask_format;
@@ -123,7 +125,7 @@ class Parser::Alias::Execs : public ydk::Entity
 
         class Exec; //type: Parser::Alias::Execs::Exec
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::Alias::Execs::Exec> > exec;
+        ydk::YList exec;
         
 }; // Parser::Alias::Execs
 
@@ -170,7 +172,7 @@ class Parser::Alias::Configurations : public ydk::Entity
 
         class Configuration; //type: Parser::Alias::Configurations::Configuration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::Alias::Configurations::Configuration> > configuration;
+        ydk::YList configuration;
         
 }; // Parser::Alias::Configurations
 
@@ -217,7 +219,7 @@ class Parser::Alias::Alls : public ydk::Entity
 
         class All; //type: Parser::Alias::Alls::All
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_parser_cfg::Parser::Alias::Alls::All> > all;
+        ydk::YList all;
         
 }; // Parser::Alias::Alls
 
@@ -287,6 +289,28 @@ class Parser::Interactive : public ydk::Entity
         ydk::YLeaf interactive_disable; //type: boolean
 
 }; // Parser::Interactive
+
+
+class Parser::CommitOptimized : public ydk::Entity
+{
+    public:
+        CommitOptimized();
+        ~CommitOptimized();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf commit_optimized_enable; //type: boolean
+
+}; // Parser::CommitOptimized
 
 
 class Parser::SysadminLoginBanner : public ydk::Entity

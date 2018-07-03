@@ -13,26 +13,26 @@ namespace CISCO_CEF_MIB {
 
 CISCOCEFMIB::CISCOCEFMIB()
     :
-    ceffib(std::make_shared<CISCOCEFMIB::Ceffib>())
-	,cefcc(std::make_shared<CISCOCEFMIB::Cefcc>())
-	,cefnotifcntl(std::make_shared<CISCOCEFMIB::Cefnotifcntl>())
-	,ceffibsummarytable(std::make_shared<CISCOCEFMIB::Ceffibsummarytable>())
-	,cefprefixtable(std::make_shared<CISCOCEFMIB::Cefprefixtable>())
-	,ceflmprefixtable(std::make_shared<CISCOCEFMIB::Ceflmprefixtable>())
-	,cefpathtable(std::make_shared<CISCOCEFMIB::Cefpathtable>())
-	,cefadjsummarytable(std::make_shared<CISCOCEFMIB::Cefadjsummarytable>())
-	,cefadjtable(std::make_shared<CISCOCEFMIB::Cefadjtable>())
-	,ceffeselectiontable(std::make_shared<CISCOCEFMIB::Ceffeselectiontable>())
-	,cefcfgtable(std::make_shared<CISCOCEFMIB::Cefcfgtable>())
-	,cefresourcetable(std::make_shared<CISCOCEFMIB::Cefresourcetable>())
-	,cefinttable(std::make_shared<CISCOCEFMIB::Cefinttable>())
-	,cefpeertable(std::make_shared<CISCOCEFMIB::Cefpeertable>())
-	,cefpeerfibtable(std::make_shared<CISCOCEFMIB::Cefpeerfibtable>())
-	,cefccglobaltable(std::make_shared<CISCOCEFMIB::Cefccglobaltable>())
-	,cefcctypetable(std::make_shared<CISCOCEFMIB::Cefcctypetable>())
-	,cefinconsistencyrecordtable(std::make_shared<CISCOCEFMIB::Cefinconsistencyrecordtable>())
-	,cefstatsprefixlentable(std::make_shared<CISCOCEFMIB::Cefstatsprefixlentable>())
-	,cefswitchingstatstable(std::make_shared<CISCOCEFMIB::Cefswitchingstatstable>())
+    ceffib(std::make_shared<CISCOCEFMIB::CefFIB>())
+    , cefcc(std::make_shared<CISCOCEFMIB::CefCC>())
+    , cefnotifcntl(std::make_shared<CISCOCEFMIB::CefNotifCntl>())
+    , ceffibsummarytable(std::make_shared<CISCOCEFMIB::CefFIBSummaryTable>())
+    , cefprefixtable(std::make_shared<CISCOCEFMIB::CefPrefixTable>())
+    , ceflmprefixtable(std::make_shared<CISCOCEFMIB::CefLMPrefixTable>())
+    , cefpathtable(std::make_shared<CISCOCEFMIB::CefPathTable>())
+    , cefadjsummarytable(std::make_shared<CISCOCEFMIB::CefAdjSummaryTable>())
+    , cefadjtable(std::make_shared<CISCOCEFMIB::CefAdjTable>())
+    , ceffeselectiontable(std::make_shared<CISCOCEFMIB::CefFESelectionTable>())
+    , cefcfgtable(std::make_shared<CISCOCEFMIB::CefCfgTable>())
+    , cefresourcetable(std::make_shared<CISCOCEFMIB::CefResourceTable>())
+    , cefinttable(std::make_shared<CISCOCEFMIB::CefIntTable>())
+    , cefpeertable(std::make_shared<CISCOCEFMIB::CefPeerTable>())
+    , cefpeerfibtable(std::make_shared<CISCOCEFMIB::CefPeerFIBTable>())
+    , cefccglobaltable(std::make_shared<CISCOCEFMIB::CefCCGlobalTable>())
+    , cefcctypetable(std::make_shared<CISCOCEFMIB::CefCCTypeTable>())
+    , cefinconsistencyrecordtable(std::make_shared<CISCOCEFMIB::CefInconsistencyRecordTable>())
+    , cefstatsprefixlentable(std::make_shared<CISCOCEFMIB::CefStatsPrefixLenTable>())
+    , cefswitchingstatstable(std::make_shared<CISCOCEFMIB::CefSwitchingStatsTable>())
 {
     ceffib->parent = this;
     cefcc->parent = this;
@@ -55,7 +55,7 @@ CISCOCEFMIB::CISCOCEFMIB()
     cefstatsprefixlentable->parent = this;
     cefswitchingstatstable->parent = this;
 
-    yang_name = "CISCO-CEF-MIB"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-CEF-MIB"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOCEFMIB::~CISCOCEFMIB()
@@ -64,6 +64,7 @@ CISCOCEFMIB::~CISCOCEFMIB()
 
 bool CISCOCEFMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ceffib !=  nullptr && ceffib->has_data())
 	|| (cefcc !=  nullptr && cefcc->has_data())
 	|| (cefnotifcntl !=  nullptr && cefnotifcntl->has_data())
@@ -133,7 +134,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(ceffib == nullptr)
         {
-            ceffib = std::make_shared<CISCOCEFMIB::Ceffib>();
+            ceffib = std::make_shared<CISCOCEFMIB::CefFIB>();
         }
         return ceffib;
     }
@@ -142,7 +143,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefcc == nullptr)
         {
-            cefcc = std::make_shared<CISCOCEFMIB::Cefcc>();
+            cefcc = std::make_shared<CISCOCEFMIB::CefCC>();
         }
         return cefcc;
     }
@@ -151,7 +152,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefnotifcntl == nullptr)
         {
-            cefnotifcntl = std::make_shared<CISCOCEFMIB::Cefnotifcntl>();
+            cefnotifcntl = std::make_shared<CISCOCEFMIB::CefNotifCntl>();
         }
         return cefnotifcntl;
     }
@@ -160,7 +161,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(ceffibsummarytable == nullptr)
         {
-            ceffibsummarytable = std::make_shared<CISCOCEFMIB::Ceffibsummarytable>();
+            ceffibsummarytable = std::make_shared<CISCOCEFMIB::CefFIBSummaryTable>();
         }
         return ceffibsummarytable;
     }
@@ -169,7 +170,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefprefixtable == nullptr)
         {
-            cefprefixtable = std::make_shared<CISCOCEFMIB::Cefprefixtable>();
+            cefprefixtable = std::make_shared<CISCOCEFMIB::CefPrefixTable>();
         }
         return cefprefixtable;
     }
@@ -178,7 +179,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(ceflmprefixtable == nullptr)
         {
-            ceflmprefixtable = std::make_shared<CISCOCEFMIB::Ceflmprefixtable>();
+            ceflmprefixtable = std::make_shared<CISCOCEFMIB::CefLMPrefixTable>();
         }
         return ceflmprefixtable;
     }
@@ -187,7 +188,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefpathtable == nullptr)
         {
-            cefpathtable = std::make_shared<CISCOCEFMIB::Cefpathtable>();
+            cefpathtable = std::make_shared<CISCOCEFMIB::CefPathTable>();
         }
         return cefpathtable;
     }
@@ -196,7 +197,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefadjsummarytable == nullptr)
         {
-            cefadjsummarytable = std::make_shared<CISCOCEFMIB::Cefadjsummarytable>();
+            cefadjsummarytable = std::make_shared<CISCOCEFMIB::CefAdjSummaryTable>();
         }
         return cefadjsummarytable;
     }
@@ -205,7 +206,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefadjtable == nullptr)
         {
-            cefadjtable = std::make_shared<CISCOCEFMIB::Cefadjtable>();
+            cefadjtable = std::make_shared<CISCOCEFMIB::CefAdjTable>();
         }
         return cefadjtable;
     }
@@ -214,7 +215,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(ceffeselectiontable == nullptr)
         {
-            ceffeselectiontable = std::make_shared<CISCOCEFMIB::Ceffeselectiontable>();
+            ceffeselectiontable = std::make_shared<CISCOCEFMIB::CefFESelectionTable>();
         }
         return ceffeselectiontable;
     }
@@ -223,7 +224,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefcfgtable == nullptr)
         {
-            cefcfgtable = std::make_shared<CISCOCEFMIB::Cefcfgtable>();
+            cefcfgtable = std::make_shared<CISCOCEFMIB::CefCfgTable>();
         }
         return cefcfgtable;
     }
@@ -232,7 +233,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefresourcetable == nullptr)
         {
-            cefresourcetable = std::make_shared<CISCOCEFMIB::Cefresourcetable>();
+            cefresourcetable = std::make_shared<CISCOCEFMIB::CefResourceTable>();
         }
         return cefresourcetable;
     }
@@ -241,7 +242,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefinttable == nullptr)
         {
-            cefinttable = std::make_shared<CISCOCEFMIB::Cefinttable>();
+            cefinttable = std::make_shared<CISCOCEFMIB::CefIntTable>();
         }
         return cefinttable;
     }
@@ -250,7 +251,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefpeertable == nullptr)
         {
-            cefpeertable = std::make_shared<CISCOCEFMIB::Cefpeertable>();
+            cefpeertable = std::make_shared<CISCOCEFMIB::CefPeerTable>();
         }
         return cefpeertable;
     }
@@ -259,7 +260,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefpeerfibtable == nullptr)
         {
-            cefpeerfibtable = std::make_shared<CISCOCEFMIB::Cefpeerfibtable>();
+            cefpeerfibtable = std::make_shared<CISCOCEFMIB::CefPeerFIBTable>();
         }
         return cefpeerfibtable;
     }
@@ -268,7 +269,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefccglobaltable == nullptr)
         {
-            cefccglobaltable = std::make_shared<CISCOCEFMIB::Cefccglobaltable>();
+            cefccglobaltable = std::make_shared<CISCOCEFMIB::CefCCGlobalTable>();
         }
         return cefccglobaltable;
     }
@@ -277,7 +278,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefcctypetable == nullptr)
         {
-            cefcctypetable = std::make_shared<CISCOCEFMIB::Cefcctypetable>();
+            cefcctypetable = std::make_shared<CISCOCEFMIB::CefCCTypeTable>();
         }
         return cefcctypetable;
     }
@@ -286,7 +287,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefinconsistencyrecordtable == nullptr)
         {
-            cefinconsistencyrecordtable = std::make_shared<CISCOCEFMIB::Cefinconsistencyrecordtable>();
+            cefinconsistencyrecordtable = std::make_shared<CISCOCEFMIB::CefInconsistencyRecordTable>();
         }
         return cefinconsistencyrecordtable;
     }
@@ -295,7 +296,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefstatsprefixlentable == nullptr)
         {
-            cefstatsprefixlentable = std::make_shared<CISCOCEFMIB::Cefstatsprefixlentable>();
+            cefstatsprefixlentable = std::make_shared<CISCOCEFMIB::CefStatsPrefixLenTable>();
         }
         return cefstatsprefixlentable;
     }
@@ -304,7 +305,7 @@ std::shared_ptr<Entity> CISCOCEFMIB::get_child_by_name(const std::string & child
     {
         if(cefswitchingstatstable == nullptr)
         {
-            cefswitchingstatstable = std::make_shared<CISCOCEFMIB::Cefswitchingstatstable>();
+            cefswitchingstatstable = std::make_shared<CISCOCEFMIB::CefSwitchingStatsTable>();
         }
         return cefswitchingstatstable;
     }
@@ -459,44 +460,45 @@ bool CISCOCEFMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOCEFMIB::Ceffib::Ceffib()
+CISCOCEFMIB::CefFIB::CefFIB()
     :
     ceflmprefixspinlock{YType::int32, "cefLMPrefixSpinLock"}
 {
 
-    yang_name = "cefFIB"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefFIB"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Ceffib::~Ceffib()
+CISCOCEFMIB::CefFIB::~CefFIB()
 {
 }
 
-bool CISCOCEFMIB::Ceffib::has_data() const
+bool CISCOCEFMIB::CefFIB::has_data() const
 {
+    if (is_presence_container) return true;
     return ceflmprefixspinlock.is_set;
 }
 
-bool CISCOCEFMIB::Ceffib::has_operation() const
+bool CISCOCEFMIB::CefFIB::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceflmprefixspinlock.yfilter);
 }
 
-std::string CISCOCEFMIB::Ceffib::get_absolute_path() const
+std::string CISCOCEFMIB::CefFIB::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Ceffib::get_segment_path() const
+std::string CISCOCEFMIB::CefFIB::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefFIB";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffib::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFIB::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -506,19 +508,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffib::get_name_lea
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Ceffib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefFIB::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffib::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFIB::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Ceffib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefFIB::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefLMPrefixSpinLock")
     {
@@ -528,7 +530,7 @@ void CISCOCEFMIB::Ceffib::set_value(const std::string & value_path, const std::s
     }
 }
 
-void CISCOCEFMIB::Ceffib::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefFIB::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cefLMPrefixSpinLock")
     {
@@ -536,35 +538,36 @@ void CISCOCEFMIB::Ceffib::set_filter(const std::string & value_path, YFilter yfi
     }
 }
 
-bool CISCOCEFMIB::Ceffib::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefFIB::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefLMPrefixSpinLock")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefcc::Cefcc()
+CISCOCEFMIB::CefCC::CefCC()
     :
     entlastinconsistencydetecttime{YType::uint32, "entLastInconsistencyDetectTime"},
     cefinconsistencyreset{YType::enumeration, "cefInconsistencyReset"},
     cefinconsistencyresetstatus{YType::enumeration, "cefInconsistencyResetStatus"}
 {
 
-    yang_name = "cefCC"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefCC"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefcc::~Cefcc()
+CISCOCEFMIB::CefCC::~CefCC()
 {
 }
 
-bool CISCOCEFMIB::Cefcc::has_data() const
+bool CISCOCEFMIB::CefCC::has_data() const
 {
+    if (is_presence_container) return true;
     return entlastinconsistencydetecttime.is_set
 	|| cefinconsistencyreset.is_set
 	|| cefinconsistencyresetstatus.is_set;
 }
 
-bool CISCOCEFMIB::Cefcc::has_operation() const
+bool CISCOCEFMIB::CefCC::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entlastinconsistencydetecttime.yfilter)
@@ -572,21 +575,21 @@ bool CISCOCEFMIB::Cefcc::has_operation() const
 	|| ydk::is_set(cefinconsistencyresetstatus.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefcc::get_absolute_path() const
+std::string CISCOCEFMIB::CefCC::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefcc::get_segment_path() const
+std::string CISCOCEFMIB::CefCC::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefCC";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCC::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -598,19 +601,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcc::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefcc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefCC::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCC::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefcc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefCC::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entLastInconsistencyDetectTime")
     {
@@ -632,7 +635,7 @@ void CISCOCEFMIB::Cefcc::set_value(const std::string & value_path, const std::st
     }
 }
 
-void CISCOCEFMIB::Cefcc::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefCC::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entLastInconsistencyDetectTime")
     {
@@ -648,14 +651,14 @@ void CISCOCEFMIB::Cefcc::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool CISCOCEFMIB::Cefcc::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefCC::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entLastInconsistencyDetectTime" || name == "cefInconsistencyReset" || name == "cefInconsistencyResetStatus")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefnotifcntl::Cefnotifcntl()
+CISCOCEFMIB::CefNotifCntl::CefNotifCntl()
     :
     cefresourcefailurenotifenable{YType::boolean, "cefResourceFailureNotifEnable"},
     cefpeerstatechangenotifenable{YType::boolean, "cefPeerStateChangeNotifEnable"},
@@ -664,15 +667,16 @@ CISCOCEFMIB::Cefnotifcntl::Cefnotifcntl()
     cefinconsistencynotifenable{YType::boolean, "cefInconsistencyNotifEnable"}
 {
 
-    yang_name = "cefNotifCntl"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefNotifCntl"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefnotifcntl::~Cefnotifcntl()
+CISCOCEFMIB::CefNotifCntl::~CefNotifCntl()
 {
 }
 
-bool CISCOCEFMIB::Cefnotifcntl::has_data() const
+bool CISCOCEFMIB::CefNotifCntl::has_data() const
 {
+    if (is_presence_container) return true;
     return cefresourcefailurenotifenable.is_set
 	|| cefpeerstatechangenotifenable.is_set
 	|| cefpeerfibstatechangenotifenable.is_set
@@ -680,7 +684,7 @@ bool CISCOCEFMIB::Cefnotifcntl::has_data() const
 	|| cefinconsistencynotifenable.is_set;
 }
 
-bool CISCOCEFMIB::Cefnotifcntl::has_operation() const
+bool CISCOCEFMIB::CefNotifCntl::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cefresourcefailurenotifenable.yfilter)
@@ -690,21 +694,21 @@ bool CISCOCEFMIB::Cefnotifcntl::has_operation() const
 	|| ydk::is_set(cefinconsistencynotifenable.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefnotifcntl::get_absolute_path() const
+std::string CISCOCEFMIB::CefNotifCntl::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefnotifcntl::get_segment_path() const
+std::string CISCOCEFMIB::CefNotifCntl::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefNotifCntl";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefnotifcntl::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefNotifCntl::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -718,19 +722,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefnotifcntl::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefnotifcntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefNotifCntl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefnotifcntl::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefNotifCntl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefnotifcntl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefNotifCntl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefResourceFailureNotifEnable")
     {
@@ -764,7 +768,7 @@ void CISCOCEFMIB::Cefnotifcntl::set_value(const std::string & value_path, const 
     }
 }
 
-void CISCOCEFMIB::Cefnotifcntl::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefNotifCntl::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cefResourceFailureNotifEnable")
     {
@@ -788,26 +792,29 @@ void CISCOCEFMIB::Cefnotifcntl::set_filter(const std::string & value_path, YFilt
     }
 }
 
-bool CISCOCEFMIB::Cefnotifcntl::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefNotifCntl::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefResourceFailureNotifEnable" || name == "cefPeerStateChangeNotifEnable" || name == "cefPeerFIBStateChangeNotifEnable" || name == "cefNotifThrottlingInterval" || name == "cefInconsistencyNotifEnable")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Ceffibsummarytable::Ceffibsummarytable()
+CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryTable()
+    :
+    ceffibsummaryentry(this, {"entphysicalindex", "ceffibipversion"})
 {
 
-    yang_name = "cefFIBSummaryTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefFIBSummaryTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Ceffibsummarytable::~Ceffibsummarytable()
+CISCOCEFMIB::CefFIBSummaryTable::~CefFIBSummaryTable()
 {
 }
 
-bool CISCOCEFMIB::Ceffibsummarytable::has_data() const
+bool CISCOCEFMIB::CefFIBSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<ceffibsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceffibsummaryentry.len(); index++)
     {
         if(ceffibsummaryentry[index]->has_data())
             return true;
@@ -815,9 +822,9 @@ bool CISCOCEFMIB::Ceffibsummarytable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Ceffibsummarytable::has_operation() const
+bool CISCOCEFMIB::CefFIBSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceffibsummaryentry.size(); index++)
+    for (std::size_t index=0; index<ceffibsummaryentry.len(); index++)
     {
         if(ceffibsummaryentry[index]->has_operation())
             return true;
@@ -825,21 +832,21 @@ bool CISCOCEFMIB::Ceffibsummarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Ceffibsummarytable::get_absolute_path() const
+std::string CISCOCEFMIB::CefFIBSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Ceffibsummarytable::get_segment_path() const
+std::string CISCOCEFMIB::CefFIBSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefFIBSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffibsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFIBSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -848,25 +855,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffibsummarytable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Ceffibsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefFIBSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefFIBSummaryEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry>();
         c->parent = this;
-        ceffibsummaryentry.push_back(c);
+        ceffibsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffibsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFIBSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceffibsummaryentry)
+    for (auto c : ceffibsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -877,43 +884,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffibsummarytable::
     return children;
 }
 
-void CISCOCEFMIB::Ceffibsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefFIBSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Ceffibsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefFIBSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Ceffibsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefFIBSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefFIBSummaryEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::Ceffibsummaryentry()
+CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::CefFIBSummaryEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
     ceffibsummaryfwdprefixes{YType::uint32, "cefFIBSummaryFwdPrefixes"}
 {
 
-    yang_name = "cefFIBSummaryEntry"; yang_parent_name = "cefFIBSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefFIBSummaryEntry"; yang_parent_name = "cefFIBSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::~Ceffibsummaryentry()
+CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::~CefFIBSummaryEntry()
 {
 }
 
-bool CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::has_data() const
+bool CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ceffibipversion.is_set
 	|| ceffibsummaryfwdprefixes.is_set;
 }
 
-bool CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::has_operation() const
+bool CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -921,21 +929,23 @@ bool CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::has_operation() const
 	|| ydk::is_set(ceffibsummaryfwdprefixes.yfilter);
 }
 
-std::string CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefFIBSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::get_segment_path() const
+std::string CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefFIBSummaryEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']";
+    path_buffer << "cefFIBSummaryEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -947,19 +957,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffibsummarytable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -981,7 +991,7 @@ void CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::set_value(const std::s
     }
 }
 
-void CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -997,26 +1007,29 @@ void CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::set_filter(const std::
     }
 }
 
-bool CISCOCEFMIB::Ceffibsummarytable::Ceffibsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefFIBSummaryTable::CefFIBSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefFIBIpVersion" || name == "cefFIBSummaryFwdPrefixes")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefprefixtable::Cefprefixtable()
+CISCOCEFMIB::CefPrefixTable::CefPrefixTable()
+    :
+    cefprefixentry(this, {"entphysicalindex", "cefprefixtype", "cefprefixaddr", "cefprefixlen"})
 {
 
-    yang_name = "cefPrefixTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPrefixTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefprefixtable::~Cefprefixtable()
+CISCOCEFMIB::CefPrefixTable::~CefPrefixTable()
 {
 }
 
-bool CISCOCEFMIB::Cefprefixtable::has_data() const
+bool CISCOCEFMIB::CefPrefixTable::has_data() const
 {
-    for (std::size_t index=0; index<cefprefixentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefprefixentry.len(); index++)
     {
         if(cefprefixentry[index]->has_data())
             return true;
@@ -1024,9 +1037,9 @@ bool CISCOCEFMIB::Cefprefixtable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefprefixtable::has_operation() const
+bool CISCOCEFMIB::CefPrefixTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefprefixentry.size(); index++)
+    for (std::size_t index=0; index<cefprefixentry.len(); index++)
     {
         if(cefprefixentry[index]->has_operation())
             return true;
@@ -1034,21 +1047,21 @@ bool CISCOCEFMIB::Cefprefixtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefprefixtable::get_absolute_path() const
+std::string CISCOCEFMIB::CefPrefixTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefprefixtable::get_segment_path() const
+std::string CISCOCEFMIB::CefPrefixTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefPrefixTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefprefixtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPrefixTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1057,25 +1070,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefprefixtable::get_
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefprefixtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPrefixEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefprefixtable::Cefprefixentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefPrefixTable::CefPrefixEntry>();
         c->parent = this;
-        cefprefixentry.push_back(c);
+        cefprefixentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefprefixtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPrefixTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefprefixentry)
+    for (auto c : cefprefixentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1086,22 +1099,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefprefixtable::get_
     return children;
 }
 
-void CISCOCEFMIB::Cefprefixtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefprefixtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPrefixTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefprefixtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPrefixTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefPrefixEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefprefixtable::Cefprefixentry::Cefprefixentry()
+CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::CefPrefixEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefprefixtype{YType::enumeration, "cefPrefixType"},
@@ -1122,15 +1135,16 @@ CISCOCEFMIB::Cefprefixtable::Cefprefixentry::Cefprefixentry()
     cefprefixexternalnrhcbytes{YType::uint64, "cefPrefixExternalNRHCBytes"}
 {
 
-    yang_name = "cefPrefixEntry"; yang_parent_name = "cefPrefixTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPrefixEntry"; yang_parent_name = "cefPrefixTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefprefixtable::Cefprefixentry::~Cefprefixentry()
+CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::~CefPrefixEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefprefixtable::Cefprefixentry::has_data() const
+bool CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefprefixtype.is_set
 	|| cefprefixaddr.is_set
@@ -1150,7 +1164,7 @@ bool CISCOCEFMIB::Cefprefixtable::Cefprefixentry::has_data() const
 	|| cefprefixexternalnrhcbytes.is_set;
 }
 
-bool CISCOCEFMIB::Cefprefixtable::Cefprefixentry::has_operation() const
+bool CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1172,21 +1186,25 @@ bool CISCOCEFMIB::Cefprefixtable::Cefprefixentry::has_operation() const
 	|| ydk::is_set(cefprefixexternalnrhcbytes.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefprefixtable::Cefprefixentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefPrefixTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefprefixtable::Cefprefixentry::get_segment_path() const
+std::string CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefPrefixEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefPrefixType='" <<cefprefixtype <<"']" <<"[cefPrefixAddr='" <<cefprefixaddr <<"']" <<"[cefPrefixLen='" <<cefprefixlen <<"']";
+    path_buffer << "cefPrefixEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cefprefixtype, "cefPrefixType");
+    ADD_KEY_TOKEN(cefprefixaddr, "cefPrefixAddr");
+    ADD_KEY_TOKEN(cefprefixlen, "cefPrefixLen");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefprefixtable::Cefprefixentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1212,19 +1230,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefprefixtable::Cefp
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefprefixtable::Cefprefixentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefprefixtable::Cefprefixentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefprefixtable::Cefprefixentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1330,7 +1348,7 @@ void CISCOCEFMIB::Cefprefixtable::Cefprefixentry::set_value(const std::string & 
     }
 }
 
-void CISCOCEFMIB::Cefprefixtable::Cefprefixentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1402,26 +1420,29 @@ void CISCOCEFMIB::Cefprefixtable::Cefprefixentry::set_filter(const std::string &
     }
 }
 
-bool CISCOCEFMIB::Cefprefixtable::Cefprefixentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPrefixTable::CefPrefixEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefPrefixType" || name == "cefPrefixAddr" || name == "cefPrefixLen" || name == "cefPrefixForwardingInfo" || name == "cefPrefixPkts" || name == "cefPrefixHCPkts" || name == "cefPrefixBytes" || name == "cefPrefixHCBytes" || name == "cefPrefixInternalNRPkts" || name == "cefPrefixInternalNRHCPkts" || name == "cefPrefixInternalNRBytes" || name == "cefPrefixInternalNRHCBytes" || name == "cefPrefixExternalNRPkts" || name == "cefPrefixExternalNRHCPkts" || name == "cefPrefixExternalNRBytes" || name == "cefPrefixExternalNRHCBytes")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixtable()
+CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixTable()
+    :
+    ceflmprefixentry(this, {"entphysicalindex", "ceflmprefixdestaddrtype", "ceflmprefixdestaddr"})
 {
 
-    yang_name = "cefLMPrefixTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefLMPrefixTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Ceflmprefixtable::~Ceflmprefixtable()
+CISCOCEFMIB::CefLMPrefixTable::~CefLMPrefixTable()
 {
 }
 
-bool CISCOCEFMIB::Ceflmprefixtable::has_data() const
+bool CISCOCEFMIB::CefLMPrefixTable::has_data() const
 {
-    for (std::size_t index=0; index<ceflmprefixentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceflmprefixentry.len(); index++)
     {
         if(ceflmprefixentry[index]->has_data())
             return true;
@@ -1429,9 +1450,9 @@ bool CISCOCEFMIB::Ceflmprefixtable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Ceflmprefixtable::has_operation() const
+bool CISCOCEFMIB::CefLMPrefixTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceflmprefixentry.size(); index++)
+    for (std::size_t index=0; index<ceflmprefixentry.len(); index++)
     {
         if(ceflmprefixentry[index]->has_operation())
             return true;
@@ -1439,21 +1460,21 @@ bool CISCOCEFMIB::Ceflmprefixtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Ceflmprefixtable::get_absolute_path() const
+std::string CISCOCEFMIB::CefLMPrefixTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Ceflmprefixtable::get_segment_path() const
+std::string CISCOCEFMIB::CefLMPrefixTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefLMPrefixTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceflmprefixtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefLMPrefixTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1462,25 +1483,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceflmprefixtable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Ceflmprefixtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefLMPrefixTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefLMPrefixEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry>();
         c->parent = this;
-        ceflmprefixentry.push_back(c);
+        ceflmprefixentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceflmprefixtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefLMPrefixTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceflmprefixentry)
+    for (auto c : ceflmprefixentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1491,22 +1512,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceflmprefixtable::ge
     return children;
 }
 
-void CISCOCEFMIB::Ceflmprefixtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefLMPrefixTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Ceflmprefixtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefLMPrefixTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Ceflmprefixtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefLMPrefixTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefLMPrefixEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::Ceflmprefixentry()
+CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::CefLMPrefixEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceflmprefixdestaddrtype{YType::enumeration, "cefLMPrefixDestAddrType"},
@@ -1517,15 +1538,16 @@ CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::Ceflmprefixentry()
     ceflmprefixrowstatus{YType::enumeration, "cefLMPrefixRowStatus"}
 {
 
-    yang_name = "cefLMPrefixEntry"; yang_parent_name = "cefLMPrefixTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefLMPrefixEntry"; yang_parent_name = "cefLMPrefixTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::~Ceflmprefixentry()
+CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::~CefLMPrefixEntry()
 {
 }
 
-bool CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::has_data() const
+bool CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ceflmprefixdestaddrtype.is_set
 	|| ceflmprefixdestaddr.is_set
@@ -1535,7 +1557,7 @@ bool CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::has_data() const
 	|| ceflmprefixrowstatus.is_set;
 }
 
-bool CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::has_operation() const
+bool CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1547,21 +1569,24 @@ bool CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::has_operation() const
 	|| ydk::is_set(ceflmprefixrowstatus.yfilter);
 }
 
-std::string CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefLMPrefixTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::get_segment_path() const
+std::string CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefLMPrefixEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefLMPrefixDestAddrType='" <<ceflmprefixdestaddrtype <<"']" <<"[cefLMPrefixDestAddr='" <<ceflmprefixdestaddr <<"']";
+    path_buffer << "cefLMPrefixEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ceflmprefixdestaddrtype, "cefLMPrefixDestAddrType");
+    ADD_KEY_TOKEN(ceflmprefixdestaddr, "cefLMPrefixDestAddr");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1577,19 +1602,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceflmprefixtable::Ce
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1635,7 +1660,7 @@ void CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::set_value(const std::strin
     }
 }
 
-void CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1667,26 +1692,29 @@ void CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::set_filter(const std::stri
     }
 }
 
-bool CISCOCEFMIB::Ceflmprefixtable::Ceflmprefixentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefLMPrefixTable::CefLMPrefixEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefLMPrefixDestAddrType" || name == "cefLMPrefixDestAddr" || name == "cefLMPrefixState" || name == "cefLMPrefixAddr" || name == "cefLMPrefixLen" || name == "cefLMPrefixRowStatus")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefpathtable::Cefpathtable()
+CISCOCEFMIB::CefPathTable::CefPathTable()
+    :
+    cefpathentry(this, {"entphysicalindex", "cefprefixtype", "cefprefixaddr", "cefprefixlen", "cefpathid"})
 {
 
-    yang_name = "cefPathTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPathTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefpathtable::~Cefpathtable()
+CISCOCEFMIB::CefPathTable::~CefPathTable()
 {
 }
 
-bool CISCOCEFMIB::Cefpathtable::has_data() const
+bool CISCOCEFMIB::CefPathTable::has_data() const
 {
-    for (std::size_t index=0; index<cefpathentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefpathentry.len(); index++)
     {
         if(cefpathentry[index]->has_data())
             return true;
@@ -1694,9 +1722,9 @@ bool CISCOCEFMIB::Cefpathtable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefpathtable::has_operation() const
+bool CISCOCEFMIB::CefPathTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefpathentry.size(); index++)
+    for (std::size_t index=0; index<cefpathentry.len(); index++)
     {
         if(cefpathentry[index]->has_operation())
             return true;
@@ -1704,21 +1732,21 @@ bool CISCOCEFMIB::Cefpathtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefpathtable::get_absolute_path() const
+std::string CISCOCEFMIB::CefPathTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefpathtable::get_segment_path() const
+std::string CISCOCEFMIB::CefPathTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefPathTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpathtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPathTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1727,25 +1755,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpathtable::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefpathtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPathTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPathEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefpathtable::Cefpathentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefPathTable::CefPathEntry>();
         c->parent = this;
-        cefpathentry.push_back(c);
+        cefpathentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpathtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPathTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefpathentry)
+    for (auto c : cefpathentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1756,22 +1784,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpathtable::get_ch
     return children;
 }
 
-void CISCOCEFMIB::Cefpathtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPathTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefpathtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPathTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefpathtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPathTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefPathEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefpathtable::Cefpathentry::Cefpathentry()
+CISCOCEFMIB::CefPathTable::CefPathEntry::CefPathEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefprefixtype{YType::enumeration, "cefPrefixType"},
@@ -1784,15 +1812,16 @@ CISCOCEFMIB::Cefpathtable::Cefpathentry::Cefpathentry()
     cefpathrecursevrfname{YType::str, "cefPathRecurseVrfName"}
 {
 
-    yang_name = "cefPathEntry"; yang_parent_name = "cefPathTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPathEntry"; yang_parent_name = "cefPathTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefpathtable::Cefpathentry::~Cefpathentry()
+CISCOCEFMIB::CefPathTable::CefPathEntry::~CefPathEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefpathtable::Cefpathentry::has_data() const
+bool CISCOCEFMIB::CefPathTable::CefPathEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefprefixtype.is_set
 	|| cefprefixaddr.is_set
@@ -1804,7 +1833,7 @@ bool CISCOCEFMIB::Cefpathtable::Cefpathentry::has_data() const
 	|| cefpathrecursevrfname.is_set;
 }
 
-bool CISCOCEFMIB::Cefpathtable::Cefpathentry::has_operation() const
+bool CISCOCEFMIB::CefPathTable::CefPathEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1818,21 +1847,26 @@ bool CISCOCEFMIB::Cefpathtable::Cefpathentry::has_operation() const
 	|| ydk::is_set(cefpathrecursevrfname.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefpathtable::Cefpathentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefPathTable::CefPathEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefPathTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefpathtable::Cefpathentry::get_segment_path() const
+std::string CISCOCEFMIB::CefPathTable::CefPathEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefPathEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefPrefixType='" <<cefprefixtype <<"']" <<"[cefPrefixAddr='" <<cefprefixaddr <<"']" <<"[cefPrefixLen='" <<cefprefixlen <<"']" <<"[cefPathId='" <<cefpathid <<"']";
+    path_buffer << "cefPathEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cefprefixtype, "cefPrefixType");
+    ADD_KEY_TOKEN(cefprefixaddr, "cefPrefixAddr");
+    ADD_KEY_TOKEN(cefprefixlen, "cefPrefixLen");
+    ADD_KEY_TOKEN(cefpathid, "cefPathId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpathtable::Cefpathentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPathTable::CefPathEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1850,19 +1884,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpathtable::Cefpat
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefpathtable::Cefpathentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPathTable::CefPathEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpathtable::Cefpathentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPathTable::CefPathEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefpathtable::Cefpathentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPathTable::CefPathEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1920,7 +1954,7 @@ void CISCOCEFMIB::Cefpathtable::Cefpathentry::set_value(const std::string & valu
     }
 }
 
-void CISCOCEFMIB::Cefpathtable::Cefpathentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPathTable::CefPathEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1960,26 +1994,29 @@ void CISCOCEFMIB::Cefpathtable::Cefpathentry::set_filter(const std::string & val
     }
 }
 
-bool CISCOCEFMIB::Cefpathtable::Cefpathentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPathTable::CefPathEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefPrefixType" || name == "cefPrefixAddr" || name == "cefPrefixLen" || name == "cefPathId" || name == "cefPathType" || name == "cefPathInterface" || name == "cefPathNextHopAddr" || name == "cefPathRecurseVrfName")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefadjsummarytable::Cefadjsummarytable()
+CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryTable()
+    :
+    cefadjsummaryentry(this, {"entphysicalindex", "cefadjsummarylinktype"})
 {
 
-    yang_name = "cefAdjSummaryTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefAdjSummaryTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefadjsummarytable::~Cefadjsummarytable()
+CISCOCEFMIB::CefAdjSummaryTable::~CefAdjSummaryTable()
 {
 }
 
-bool CISCOCEFMIB::Cefadjsummarytable::has_data() const
+bool CISCOCEFMIB::CefAdjSummaryTable::has_data() const
 {
-    for (std::size_t index=0; index<cefadjsummaryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefadjsummaryentry.len(); index++)
     {
         if(cefadjsummaryentry[index]->has_data())
             return true;
@@ -1987,9 +2024,9 @@ bool CISCOCEFMIB::Cefadjsummarytable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefadjsummarytable::has_operation() const
+bool CISCOCEFMIB::CefAdjSummaryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefadjsummaryentry.size(); index++)
+    for (std::size_t index=0; index<cefadjsummaryentry.len(); index++)
     {
         if(cefadjsummaryentry[index]->has_operation())
             return true;
@@ -1997,21 +2034,21 @@ bool CISCOCEFMIB::Cefadjsummarytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefadjsummarytable::get_absolute_path() const
+std::string CISCOCEFMIB::CefAdjSummaryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefadjsummarytable::get_segment_path() const
+std::string CISCOCEFMIB::CefAdjSummaryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefAdjSummaryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjsummarytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjSummaryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2020,25 +2057,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjsummarytable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefadjsummarytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefAdjSummaryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefAdjSummaryEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry>();
         c->parent = this;
-        cefadjsummaryentry.push_back(c);
+        cefadjsummaryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjsummarytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjSummaryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefadjsummaryentry)
+    for (auto c : cefadjsummaryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2049,22 +2086,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjsummarytable::
     return children;
 }
 
-void CISCOCEFMIB::Cefadjsummarytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefAdjSummaryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefadjsummarytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefAdjSummaryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefadjsummarytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefAdjSummaryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefAdjSummaryEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::Cefadjsummaryentry()
+CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::CefAdjSummaryEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefadjsummarylinktype{YType::enumeration, "cefAdjSummaryLinkType"},
@@ -2074,15 +2111,16 @@ CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::Cefadjsummaryentry()
     cefadjsummaryredirect{YType::uint32, "cefAdjSummaryRedirect"}
 {
 
-    yang_name = "cefAdjSummaryEntry"; yang_parent_name = "cefAdjSummaryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefAdjSummaryEntry"; yang_parent_name = "cefAdjSummaryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::~Cefadjsummaryentry()
+CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::~CefAdjSummaryEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::has_data() const
+bool CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefadjsummarylinktype.is_set
 	|| cefadjsummarycomplete.is_set
@@ -2091,7 +2129,7 @@ bool CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::has_data() const
 	|| cefadjsummaryredirect.is_set;
 }
 
-bool CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::has_operation() const
+bool CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -2102,21 +2140,23 @@ bool CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::has_operation() const
 	|| ydk::is_set(cefadjsummaryredirect.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefAdjSummaryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::get_segment_path() const
+std::string CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefAdjSummaryEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefAdjSummaryLinkType='" <<cefadjsummarylinktype <<"']";
+    path_buffer << "cefAdjSummaryEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cefadjsummarylinktype, "cefAdjSummaryLinkType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2131,19 +2171,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjsummarytable::
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2183,7 +2223,7 @@ void CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::set_value(const std::s
     }
 }
 
-void CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2211,26 +2251,29 @@ void CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::set_filter(const std::
     }
 }
 
-bool CISCOCEFMIB::Cefadjsummarytable::Cefadjsummaryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefAdjSummaryTable::CefAdjSummaryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefAdjSummaryLinkType" || name == "cefAdjSummaryComplete" || name == "cefAdjSummaryIncomplete" || name == "cefAdjSummaryFixup" || name == "cefAdjSummaryRedirect")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefadjtable::Cefadjtable()
+CISCOCEFMIB::CefAdjTable::CefAdjTable()
+    :
+    cefadjentry(this, {"entphysicalindex", "ifindex", "cefadjnexthopaddrtype", "cefadjnexthopaddr", "cefadjconnid", "cefadjsummarylinktype"})
 {
 
-    yang_name = "cefAdjTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefAdjTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefadjtable::~Cefadjtable()
+CISCOCEFMIB::CefAdjTable::~CefAdjTable()
 {
 }
 
-bool CISCOCEFMIB::Cefadjtable::has_data() const
+bool CISCOCEFMIB::CefAdjTable::has_data() const
 {
-    for (std::size_t index=0; index<cefadjentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefadjentry.len(); index++)
     {
         if(cefadjentry[index]->has_data())
             return true;
@@ -2238,9 +2281,9 @@ bool CISCOCEFMIB::Cefadjtable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefadjtable::has_operation() const
+bool CISCOCEFMIB::CefAdjTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefadjentry.size(); index++)
+    for (std::size_t index=0; index<cefadjentry.len(); index++)
     {
         if(cefadjentry[index]->has_operation())
             return true;
@@ -2248,21 +2291,21 @@ bool CISCOCEFMIB::Cefadjtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefadjtable::get_absolute_path() const
+std::string CISCOCEFMIB::CefAdjTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefadjtable::get_segment_path() const
+std::string CISCOCEFMIB::CefAdjTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefAdjTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2271,25 +2314,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjtable::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefadjtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefAdjTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefAdjEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefadjtable::Cefadjentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefAdjTable::CefAdjEntry>();
         c->parent = this;
-        cefadjentry.push_back(c);
+        cefadjentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefadjentry)
+    for (auto c : cefadjentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2300,22 +2343,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjtable::get_chi
     return children;
 }
 
-void CISCOCEFMIB::Cefadjtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefAdjTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefadjtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefAdjTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefadjtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefAdjTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefAdjEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefadjtable::Cefadjentry::Cefadjentry()
+CISCOCEFMIB::CefAdjTable::CefAdjEntry::CefAdjEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ifindex{YType::str, "ifIndex"},
@@ -2334,15 +2377,16 @@ CISCOCEFMIB::Cefadjtable::Cefadjentry::Cefadjentry()
     cefadjhcbytes{YType::uint64, "cefAdjHCBytes"}
 {
 
-    yang_name = "cefAdjEntry"; yang_parent_name = "cefAdjTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefAdjEntry"; yang_parent_name = "cefAdjTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefadjtable::Cefadjentry::~Cefadjentry()
+CISCOCEFMIB::CefAdjTable::CefAdjEntry::~CefAdjEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefadjtable::Cefadjentry::has_data() const
+bool CISCOCEFMIB::CefAdjTable::CefAdjEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ifindex.is_set
 	|| cefadjnexthopaddrtype.is_set
@@ -2360,7 +2404,7 @@ bool CISCOCEFMIB::Cefadjtable::Cefadjentry::has_data() const
 	|| cefadjhcbytes.is_set;
 }
 
-bool CISCOCEFMIB::Cefadjtable::Cefadjentry::has_operation() const
+bool CISCOCEFMIB::CefAdjTable::CefAdjEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -2380,21 +2424,27 @@ bool CISCOCEFMIB::Cefadjtable::Cefadjentry::has_operation() const
 	|| ydk::is_set(cefadjhcbytes.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefadjtable::Cefadjentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefAdjTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefadjtable::Cefadjentry::get_segment_path() const
+std::string CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefAdjEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[ifIndex='" <<ifindex <<"']" <<"[cefAdjNextHopAddrType='" <<cefadjnexthopaddrtype <<"']" <<"[cefAdjNextHopAddr='" <<cefadjnexthopaddr <<"']" <<"[cefAdjConnId='" <<cefadjconnid <<"']" <<"[cefAdjSummaryLinkType='" <<cefadjsummarylinktype <<"']";
+    path_buffer << "cefAdjEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(cefadjnexthopaddrtype, "cefAdjNextHopAddrType");
+    ADD_KEY_TOKEN(cefadjnexthopaddr, "cefAdjNextHopAddr");
+    ADD_KEY_TOKEN(cefadjconnid, "cefAdjConnId");
+    ADD_KEY_TOKEN(cefadjsummarylinktype, "cefAdjSummaryLinkType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjtable::Cefadjentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2418,19 +2468,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefadjtable::Cefadje
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefadjtable::Cefadjentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefadjtable::Cefadjentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefAdjTable::CefAdjEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefadjtable::Cefadjentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefAdjTable::CefAdjEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2522,7 +2572,7 @@ void CISCOCEFMIB::Cefadjtable::Cefadjentry::set_value(const std::string & value_
     }
 }
 
-void CISCOCEFMIB::Cefadjtable::Cefadjentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefAdjTable::CefAdjEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2586,26 +2636,29 @@ void CISCOCEFMIB::Cefadjtable::Cefadjentry::set_filter(const std::string & value
     }
 }
 
-bool CISCOCEFMIB::Cefadjtable::Cefadjentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefAdjTable::CefAdjEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "ifIndex" || name == "cefAdjNextHopAddrType" || name == "cefAdjNextHopAddr" || name == "cefAdjConnId" || name == "cefAdjSummaryLinkType" || name == "cefAdjSource" || name == "cefAdjEncap" || name == "cefAdjFixup" || name == "cefAdjMTU" || name == "cefAdjForwardingInfo" || name == "cefAdjPkts" || name == "cefAdjHCPkts" || name == "cefAdjBytes" || name == "cefAdjHCBytes")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Ceffeselectiontable::Ceffeselectiontable()
+CISCOCEFMIB::CefFESelectionTable::CefFESelectionTable()
+    :
+    ceffeselectionentry(this, {"entphysicalindex", "ceffeselectionname", "ceffeselectionid"})
 {
 
-    yang_name = "cefFESelectionTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefFESelectionTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Ceffeselectiontable::~Ceffeselectiontable()
+CISCOCEFMIB::CefFESelectionTable::~CefFESelectionTable()
 {
 }
 
-bool CISCOCEFMIB::Ceffeselectiontable::has_data() const
+bool CISCOCEFMIB::CefFESelectionTable::has_data() const
 {
-    for (std::size_t index=0; index<ceffeselectionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ceffeselectionentry.len(); index++)
     {
         if(ceffeselectionentry[index]->has_data())
             return true;
@@ -2613,9 +2666,9 @@ bool CISCOCEFMIB::Ceffeselectiontable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Ceffeselectiontable::has_operation() const
+bool CISCOCEFMIB::CefFESelectionTable::has_operation() const
 {
-    for (std::size_t index=0; index<ceffeselectionentry.size(); index++)
+    for (std::size_t index=0; index<ceffeselectionentry.len(); index++)
     {
         if(ceffeselectionentry[index]->has_operation())
             return true;
@@ -2623,21 +2676,21 @@ bool CISCOCEFMIB::Ceffeselectiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Ceffeselectiontable::get_absolute_path() const
+std::string CISCOCEFMIB::CefFESelectionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Ceffeselectiontable::get_segment_path() const
+std::string CISCOCEFMIB::CefFESelectionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefFESelectionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffeselectiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFESelectionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2646,25 +2699,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffeselectiontable:
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Ceffeselectiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefFESelectionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefFESelectionEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry>();
         c->parent = this;
-        ceffeselectionentry.push_back(c);
+        ceffeselectionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffeselectiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFESelectionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ceffeselectionentry)
+    for (auto c : ceffeselectionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2675,22 +2728,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffeselectiontable:
     return children;
 }
 
-void CISCOCEFMIB::Ceffeselectiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefFESelectionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Ceffeselectiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefFESelectionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Ceffeselectiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefFESelectionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefFESelectionEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::Ceffeselectionentry()
+CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::CefFESelectionEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceffeselectionname{YType::str, "cefFESelectionName"},
@@ -2706,15 +2759,16 @@ CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::Ceffeselectionentry()
     ceffeselectionweight{YType::uint32, "cefFESelectionWeight"}
 {
 
-    yang_name = "cefFESelectionEntry"; yang_parent_name = "cefFESelectionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefFESelectionEntry"; yang_parent_name = "cefFESelectionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::~Ceffeselectionentry()
+CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::~CefFESelectionEntry()
 {
 }
 
-bool CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::has_data() const
+bool CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ceffeselectionname.is_set
 	|| ceffeselectionid.is_set
@@ -2729,7 +2783,7 @@ bool CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::has_data() const
 	|| ceffeselectionweight.is_set;
 }
 
-bool CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::has_operation() const
+bool CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -2746,21 +2800,24 @@ bool CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::has_operation() cons
 	|| ydk::is_set(ceffeselectionweight.yfilter);
 }
 
-std::string CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefFESelectionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::get_segment_path() const
+std::string CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefFESelectionEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefFESelectionName='" <<ceffeselectionname <<"']" <<"[cefFESelectionId='" <<ceffeselectionid <<"']";
+    path_buffer << "cefFESelectionEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ceffeselectionname, "cefFESelectionName");
+    ADD_KEY_TOKEN(ceffeselectionid, "cefFESelectionId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2781,19 +2838,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Ceffeselectiontable:
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2869,7 +2926,7 @@ void CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::set_value(const std:
     }
 }
 
-void CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -2921,26 +2978,29 @@ void CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::set_filter(const std
     }
 }
 
-bool CISCOCEFMIB::Ceffeselectiontable::Ceffeselectionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefFESelectionTable::CefFESelectionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefFESelectionName" || name == "cefFESelectionId" || name == "cefFESelectionSpecial" || name == "cefFESelectionLabels" || name == "cefFESelectionAdjLinkType" || name == "cefFESelectionAdjInterface" || name == "cefFESelectionAdjNextHopAddrType" || name == "cefFESelectionAdjNextHopAddr" || name == "cefFESelectionAdjConnId" || name == "cefFESelectionVrfName" || name == "cefFESelectionWeight")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefcfgtable::Cefcfgtable()
+CISCOCEFMIB::CefCfgTable::CefCfgTable()
+    :
+    cefcfgentry(this, {"entphysicalindex", "ceffibipversion"})
 {
 
-    yang_name = "cefCfgTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefCfgTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefcfgtable::~Cefcfgtable()
+CISCOCEFMIB::CefCfgTable::~CefCfgTable()
 {
 }
 
-bool CISCOCEFMIB::Cefcfgtable::has_data() const
+bool CISCOCEFMIB::CefCfgTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcfgentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcfgentry.len(); index++)
     {
         if(cefcfgentry[index]->has_data())
             return true;
@@ -2948,9 +3008,9 @@ bool CISCOCEFMIB::Cefcfgtable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefcfgtable::has_operation() const
+bool CISCOCEFMIB::CefCfgTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcfgentry.size(); index++)
+    for (std::size_t index=0; index<cefcfgentry.len(); index++)
     {
         if(cefcfgentry[index]->has_operation())
             return true;
@@ -2958,21 +3018,21 @@ bool CISCOCEFMIB::Cefcfgtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefcfgtable::get_absolute_path() const
+std::string CISCOCEFMIB::CefCfgTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefcfgtable::get_segment_path() const
+std::string CISCOCEFMIB::CefCfgTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefCfgTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcfgtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCfgTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2981,25 +3041,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcfgtable::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefcfgtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefCfgEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefcfgtable::Cefcfgentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefCfgTable::CefCfgEntry>();
         c->parent = this;
-        cefcfgentry.push_back(c);
+        cefcfgentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcfgtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCfgTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcfgentry)
+    for (auto c : cefcfgentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3010,22 +3070,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcfgtable::get_chi
     return children;
 }
 
-void CISCOCEFMIB::Cefcfgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefcfgtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefCfgTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefcfgtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefCfgTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefCfgEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgentry()
+CISCOCEFMIB::CefCfgTable::CefCfgEntry::CefCfgEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
@@ -3040,15 +3100,16 @@ CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgentry()
     cefcfgtrafficstatsupdaterate{YType::uint32, "cefCfgTrafficStatsUpdateRate"}
 {
 
-    yang_name = "cefCfgEntry"; yang_parent_name = "cefCfgTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefCfgEntry"; yang_parent_name = "cefCfgTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefcfgtable::Cefcfgentry::~Cefcfgentry()
+CISCOCEFMIB::CefCfgTable::CefCfgEntry::~CefCfgEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefcfgtable::Cefcfgentry::has_data() const
+bool CISCOCEFMIB::CefCfgTable::CefCfgEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ceffibipversion.is_set
 	|| cefcfgadminstate.is_set
@@ -3062,7 +3123,7 @@ bool CISCOCEFMIB::Cefcfgtable::Cefcfgentry::has_data() const
 	|| cefcfgtrafficstatsupdaterate.is_set;
 }
 
-bool CISCOCEFMIB::Cefcfgtable::Cefcfgentry::has_operation() const
+bool CISCOCEFMIB::CefCfgTable::CefCfgEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3078,21 +3139,23 @@ bool CISCOCEFMIB::Cefcfgtable::Cefcfgentry::has_operation() const
 	|| ydk::is_set(cefcfgtrafficstatsupdaterate.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefcfgtable::Cefcfgentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefCfgTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefcfgtable::Cefcfgentry::get_segment_path() const
+std::string CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefCfgEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']";
+    path_buffer << "cefCfgEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcfgtable::Cefcfgentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3112,19 +3175,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcfgtable::Cefcfge
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefcfgtable::Cefcfgentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcfgtable::Cefcfgentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCfgTable::CefCfgEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefcfgtable::Cefcfgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefCfgTable::CefCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3192,7 +3255,7 @@ void CISCOCEFMIB::Cefcfgtable::Cefcfgentry::set_value(const std::string & value_
     }
 }
 
-void CISCOCEFMIB::Cefcfgtable::Cefcfgentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefCfgTable::CefCfgEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3240,26 +3303,29 @@ void CISCOCEFMIB::Cefcfgtable::Cefcfgentry::set_filter(const std::string & value
     }
 }
 
-bool CISCOCEFMIB::Cefcfgtable::Cefcfgentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefCfgTable::CefCfgEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefFIBIpVersion" || name == "cefCfgAdminState" || name == "cefCfgOperState" || name == "cefCfgDistributionAdminState" || name == "cefCfgDistributionOperState" || name == "cefCfgAccountingMap" || name == "cefCfgLoadSharingAlgorithm" || name == "cefCfgLoadSharingID" || name == "cefCfgTrafficStatsLoadInterval" || name == "cefCfgTrafficStatsUpdateRate")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefresourcetable::Cefresourcetable()
+CISCOCEFMIB::CefResourceTable::CefResourceTable()
+    :
+    cefresourceentry(this, {"entphysicalindex"})
 {
 
-    yang_name = "cefResourceTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefResourceTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefresourcetable::~Cefresourcetable()
+CISCOCEFMIB::CefResourceTable::~CefResourceTable()
 {
 }
 
-bool CISCOCEFMIB::Cefresourcetable::has_data() const
+bool CISCOCEFMIB::CefResourceTable::has_data() const
 {
-    for (std::size_t index=0; index<cefresourceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefresourceentry.len(); index++)
     {
         if(cefresourceentry[index]->has_data())
             return true;
@@ -3267,9 +3333,9 @@ bool CISCOCEFMIB::Cefresourcetable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefresourcetable::has_operation() const
+bool CISCOCEFMIB::CefResourceTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefresourceentry.size(); index++)
+    for (std::size_t index=0; index<cefresourceentry.len(); index++)
     {
         if(cefresourceentry[index]->has_operation())
             return true;
@@ -3277,21 +3343,21 @@ bool CISCOCEFMIB::Cefresourcetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefresourcetable::get_absolute_path() const
+std::string CISCOCEFMIB::CefResourceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefresourcetable::get_segment_path() const
+std::string CISCOCEFMIB::CefResourceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefResourceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefresourcetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefResourceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3300,25 +3366,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefresourcetable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefresourcetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefResourceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefResourceEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefresourcetable::Cefresourceentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefResourceTable::CefResourceEntry>();
         c->parent = this;
-        cefresourceentry.push_back(c);
+        cefresourceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefresourcetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefResourceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefresourceentry)
+    for (auto c : cefresourceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3329,43 +3395,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefresourcetable::ge
     return children;
 }
 
-void CISCOCEFMIB::Cefresourcetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefResourceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefresourcetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefResourceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefresourcetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefResourceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefResourceEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefresourcetable::Cefresourceentry::Cefresourceentry()
+CISCOCEFMIB::CefResourceTable::CefResourceEntry::CefResourceEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cefresourcememoryused{YType::uint32, "cefResourceMemoryUsed"},
     cefresourcefailurereason{YType::enumeration, "cefResourceFailureReason"}
 {
 
-    yang_name = "cefResourceEntry"; yang_parent_name = "cefResourceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefResourceEntry"; yang_parent_name = "cefResourceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefresourcetable::Cefresourceentry::~Cefresourceentry()
+CISCOCEFMIB::CefResourceTable::CefResourceEntry::~CefResourceEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefresourcetable::Cefresourceentry::has_data() const
+bool CISCOCEFMIB::CefResourceTable::CefResourceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cefresourcememoryused.is_set
 	|| cefresourcefailurereason.is_set;
 }
 
-bool CISCOCEFMIB::Cefresourcetable::Cefresourceentry::has_operation() const
+bool CISCOCEFMIB::CefResourceTable::CefResourceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3373,21 +3440,22 @@ bool CISCOCEFMIB::Cefresourcetable::Cefresourceentry::has_operation() const
 	|| ydk::is_set(cefresourcefailurereason.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefresourcetable::Cefresourceentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefResourceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefresourcetable::Cefresourceentry::get_segment_path() const
+std::string CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefResourceEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']";
+    path_buffer << "cefResourceEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefresourcetable::Cefresourceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3399,19 +3467,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefresourcetable::Ce
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefresourcetable::Cefresourceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefresourcetable::Cefresourceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefResourceTable::CefResourceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefresourcetable::Cefresourceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefResourceTable::CefResourceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3433,7 +3501,7 @@ void CISCOCEFMIB::Cefresourcetable::Cefresourceentry::set_value(const std::strin
     }
 }
 
-void CISCOCEFMIB::Cefresourcetable::Cefresourceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefResourceTable::CefResourceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3449,26 +3517,29 @@ void CISCOCEFMIB::Cefresourcetable::Cefresourceentry::set_filter(const std::stri
     }
 }
 
-bool CISCOCEFMIB::Cefresourcetable::Cefresourceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefResourceTable::CefResourceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefResourceMemoryUsed" || name == "cefResourceFailureReason")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefinttable::Cefinttable()
+CISCOCEFMIB::CefIntTable::CefIntTable()
+    :
+    cefintentry(this, {"entphysicalindex", "ceffibipversion", "ifindex"})
 {
 
-    yang_name = "cefIntTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefIntTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefinttable::~Cefinttable()
+CISCOCEFMIB::CefIntTable::~CefIntTable()
 {
 }
 
-bool CISCOCEFMIB::Cefinttable::has_data() const
+bool CISCOCEFMIB::CefIntTable::has_data() const
 {
-    for (std::size_t index=0; index<cefintentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefintentry.len(); index++)
     {
         if(cefintentry[index]->has_data())
             return true;
@@ -3476,9 +3547,9 @@ bool CISCOCEFMIB::Cefinttable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefinttable::has_operation() const
+bool CISCOCEFMIB::CefIntTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefintentry.size(); index++)
+    for (std::size_t index=0; index<cefintentry.len(); index++)
     {
         if(cefintentry[index]->has_operation())
             return true;
@@ -3486,21 +3557,21 @@ bool CISCOCEFMIB::Cefinttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefinttable::get_absolute_path() const
+std::string CISCOCEFMIB::CefIntTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefinttable::get_segment_path() const
+std::string CISCOCEFMIB::CefIntTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefIntTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefIntTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3509,25 +3580,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinttable::get_nam
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefinttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefIntTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefIntEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefinttable::Cefintentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefIntTable::CefIntEntry>();
         c->parent = this;
-        cefintentry.push_back(c);
+        cefintentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefIntTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefintentry)
+    for (auto c : cefintentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3538,22 +3609,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinttable::get_chi
     return children;
 }
 
-void CISCOCEFMIB::Cefinttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefIntTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefinttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefIntTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefinttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefIntTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefIntEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefinttable::Cefintentry::Cefintentry()
+CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
@@ -3563,15 +3634,16 @@ CISCOCEFMIB::Cefinttable::Cefintentry::Cefintentry()
     cefintnonrecursiveaccouting{YType::enumeration, "cefIntNonrecursiveAccouting"}
 {
 
-    yang_name = "cefIntEntry"; yang_parent_name = "cefIntTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefIntEntry"; yang_parent_name = "cefIntTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefinttable::Cefintentry::~Cefintentry()
+CISCOCEFMIB::CefIntTable::CefIntEntry::~CefIntEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefinttable::Cefintentry::has_data() const
+bool CISCOCEFMIB::CefIntTable::CefIntEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ceffibipversion.is_set
 	|| ifindex.is_set
@@ -3580,7 +3652,7 @@ bool CISCOCEFMIB::Cefinttable::Cefintentry::has_data() const
 	|| cefintnonrecursiveaccouting.is_set;
 }
 
-bool CISCOCEFMIB::Cefinttable::Cefintentry::has_operation() const
+bool CISCOCEFMIB::CefIntTable::CefIntEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3591,21 +3663,24 @@ bool CISCOCEFMIB::Cefinttable::Cefintentry::has_operation() const
 	|| ydk::is_set(cefintnonrecursiveaccouting.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefinttable::Cefintentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefIntTable::CefIntEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefIntTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefinttable::Cefintentry::get_segment_path() const
+std::string CISCOCEFMIB::CefIntTable::CefIntEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefIntEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cefIntEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinttable::Cefintentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefIntTable::CefIntEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3620,19 +3695,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinttable::Cefinte
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefinttable::Cefintentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefIntTable::CefIntEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinttable::Cefintentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefIntTable::CefIntEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefinttable::Cefintentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefIntTable::CefIntEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3672,7 +3747,7 @@ void CISCOCEFMIB::Cefinttable::Cefintentry::set_value(const std::string & value_
     }
 }
 
-void CISCOCEFMIB::Cefinttable::Cefintentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefIntTable::CefIntEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3700,26 +3775,29 @@ void CISCOCEFMIB::Cefinttable::Cefintentry::set_filter(const std::string & value
     }
 }
 
-bool CISCOCEFMIB::Cefinttable::Cefintentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefIntTable::CefIntEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefFIBIpVersion" || name == "ifIndex" || name == "cefIntSwitchingState" || name == "cefIntLoadSharing" || name == "cefIntNonrecursiveAccouting")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefpeertable::Cefpeertable()
+CISCOCEFMIB::CefPeerTable::CefPeerTable()
+    :
+    cefpeerentry(this, {"entphysicalindex", "entpeerphysicalindex"})
 {
 
-    yang_name = "cefPeerTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPeerTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefpeertable::~Cefpeertable()
+CISCOCEFMIB::CefPeerTable::~CefPeerTable()
 {
 }
 
-bool CISCOCEFMIB::Cefpeertable::has_data() const
+bool CISCOCEFMIB::CefPeerTable::has_data() const
 {
-    for (std::size_t index=0; index<cefpeerentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefpeerentry.len(); index++)
     {
         if(cefpeerentry[index]->has_data())
             return true;
@@ -3727,9 +3805,9 @@ bool CISCOCEFMIB::Cefpeertable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefpeertable::has_operation() const
+bool CISCOCEFMIB::CefPeerTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefpeerentry.size(); index++)
+    for (std::size_t index=0; index<cefpeerentry.len(); index++)
     {
         if(cefpeerentry[index]->has_operation())
             return true;
@@ -3737,21 +3815,21 @@ bool CISCOCEFMIB::Cefpeertable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefpeertable::get_absolute_path() const
+std::string CISCOCEFMIB::CefPeerTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefpeertable::get_segment_path() const
+std::string CISCOCEFMIB::CefPeerTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefPeerTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeertable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3760,25 +3838,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeertable::get_na
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefpeertable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPeerTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPeerEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefpeertable::Cefpeerentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefPeerTable::CefPeerEntry>();
         c->parent = this;
-        cefpeerentry.push_back(c);
+        cefpeerentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeertable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefpeerentry)
+    for (auto c : cefpeerentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3789,22 +3867,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeertable::get_ch
     return children;
 }
 
-void CISCOCEFMIB::Cefpeertable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPeerTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefpeertable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPeerTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefpeertable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPeerTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefPeerEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefpeertable::Cefpeerentry::Cefpeerentry()
+CISCOCEFMIB::CefPeerTable::CefPeerEntry::CefPeerEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     entpeerphysicalindex{YType::int32, "entPeerPhysicalIndex"},
@@ -3812,22 +3890,23 @@ CISCOCEFMIB::Cefpeertable::Cefpeerentry::Cefpeerentry()
     cefpeernumberofresets{YType::uint32, "cefPeerNumberOfResets"}
 {
 
-    yang_name = "cefPeerEntry"; yang_parent_name = "cefPeerTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPeerEntry"; yang_parent_name = "cefPeerTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefpeertable::Cefpeerentry::~Cefpeerentry()
+CISCOCEFMIB::CefPeerTable::CefPeerEntry::~CefPeerEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefpeertable::Cefpeerentry::has_data() const
+bool CISCOCEFMIB::CefPeerTable::CefPeerEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| entpeerphysicalindex.is_set
 	|| cefpeeroperstate.is_set
 	|| cefpeernumberofresets.is_set;
 }
 
-bool CISCOCEFMIB::Cefpeertable::Cefpeerentry::has_operation() const
+bool CISCOCEFMIB::CefPeerTable::CefPeerEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -3836,21 +3915,23 @@ bool CISCOCEFMIB::Cefpeertable::Cefpeerentry::has_operation() const
 	|| ydk::is_set(cefpeernumberofresets.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefpeertable::Cefpeerentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefPeerTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefpeertable::Cefpeerentry::get_segment_path() const
+std::string CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefPeerEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[entPeerPhysicalIndex='" <<entpeerphysicalindex <<"']";
+    path_buffer << "cefPeerEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(entpeerphysicalindex, "entPeerPhysicalIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeertable::Cefpeerentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3863,19 +3944,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeertable::Cefpee
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefpeertable::Cefpeerentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeertable::Cefpeerentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerTable::CefPeerEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefpeertable::Cefpeerentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPeerTable::CefPeerEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3903,7 +3984,7 @@ void CISCOCEFMIB::Cefpeertable::Cefpeerentry::set_value(const std::string & valu
     }
 }
 
-void CISCOCEFMIB::Cefpeertable::Cefpeerentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPeerTable::CefPeerEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -3923,26 +4004,29 @@ void CISCOCEFMIB::Cefpeertable::Cefpeerentry::set_filter(const std::string & val
     }
 }
 
-bool CISCOCEFMIB::Cefpeertable::Cefpeerentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPeerTable::CefPeerEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "entPeerPhysicalIndex" || name == "cefPeerOperState" || name == "cefPeerNumberOfResets")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibtable()
+CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBTable()
+    :
+    cefpeerfibentry(this, {"entphysicalindex", "entpeerphysicalindex", "ceffibipversion"})
 {
 
-    yang_name = "cefPeerFIBTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPeerFIBTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefpeerfibtable::~Cefpeerfibtable()
+CISCOCEFMIB::CefPeerFIBTable::~CefPeerFIBTable()
 {
 }
 
-bool CISCOCEFMIB::Cefpeerfibtable::has_data() const
+bool CISCOCEFMIB::CefPeerFIBTable::has_data() const
 {
-    for (std::size_t index=0; index<cefpeerfibentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefpeerfibentry.len(); index++)
     {
         if(cefpeerfibentry[index]->has_data())
             return true;
@@ -3950,9 +4034,9 @@ bool CISCOCEFMIB::Cefpeerfibtable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefpeerfibtable::has_operation() const
+bool CISCOCEFMIB::CefPeerFIBTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefpeerfibentry.size(); index++)
+    for (std::size_t index=0; index<cefpeerfibentry.len(); index++)
     {
         if(cefpeerfibentry[index]->has_operation())
             return true;
@@ -3960,21 +4044,21 @@ bool CISCOCEFMIB::Cefpeerfibtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefpeerfibtable::get_absolute_path() const
+std::string CISCOCEFMIB::CefPeerFIBTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefpeerfibtable::get_segment_path() const
+std::string CISCOCEFMIB::CefPeerFIBTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefPeerFIBTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeerfibtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerFIBTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3983,25 +4067,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeerfibtable::get
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefpeerfibtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPeerFIBTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefPeerFIBEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry>();
         c->parent = this;
-        cefpeerfibentry.push_back(c);
+        cefpeerfibentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeerfibtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerFIBTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefpeerfibentry)
+    for (auto c : cefpeerfibentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4012,22 +4096,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeerfibtable::get
     return children;
 }
 
-void CISCOCEFMIB::Cefpeerfibtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPeerFIBTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefpeerfibtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPeerFIBTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefpeerfibtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPeerFIBTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefPeerFIBEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfibentry()
+CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     entpeerphysicalindex{YType::str, "entPeerPhysicalIndex"},
@@ -4035,22 +4119,23 @@ CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfibentry()
     cefpeerfiboperstate{YType::enumeration, "cefPeerFIBOperState"}
 {
 
-    yang_name = "cefPeerFIBEntry"; yang_parent_name = "cefPeerFIBTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefPeerFIBEntry"; yang_parent_name = "cefPeerFIBTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::~Cefpeerfibentry()
+CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::~CefPeerFIBEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::has_data() const
+bool CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| entpeerphysicalindex.is_set
 	|| ceffibipversion.is_set
 	|| cefpeerfiboperstate.is_set;
 }
 
-bool CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::has_operation() const
+bool CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -4059,21 +4144,24 @@ bool CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::has_operation() const
 	|| ydk::is_set(cefpeerfiboperstate.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefPeerFIBTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::get_segment_path() const
+std::string CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefPeerFIBEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[entPeerPhysicalIndex='" <<entpeerphysicalindex <<"']" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']";
+    path_buffer << "cefPeerFIBEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(entpeerphysicalindex, "entPeerPhysicalIndex");
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4086,19 +4174,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefpeerfibtable::Cef
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -4126,7 +4214,7 @@ void CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::set_value(const std::string 
     }
 }
 
-void CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -4146,26 +4234,29 @@ void CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::set_filter(const std::string
     }
 }
 
-bool CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "entPeerPhysicalIndex" || name == "cefFIBIpVersion" || name == "cefPeerFIBOperState")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefccglobaltable::Cefccglobaltable()
+CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalTable()
+    :
+    cefccglobalentry(this, {"ceffibipversion"})
 {
 
-    yang_name = "cefCCGlobalTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefCCGlobalTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefccglobaltable::~Cefccglobaltable()
+CISCOCEFMIB::CefCCGlobalTable::~CefCCGlobalTable()
 {
 }
 
-bool CISCOCEFMIB::Cefccglobaltable::has_data() const
+bool CISCOCEFMIB::CefCCGlobalTable::has_data() const
 {
-    for (std::size_t index=0; index<cefccglobalentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefccglobalentry.len(); index++)
     {
         if(cefccglobalentry[index]->has_data())
             return true;
@@ -4173,9 +4264,9 @@ bool CISCOCEFMIB::Cefccglobaltable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefccglobaltable::has_operation() const
+bool CISCOCEFMIB::CefCCGlobalTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefccglobalentry.size(); index++)
+    for (std::size_t index=0; index<cefccglobalentry.len(); index++)
     {
         if(cefccglobalentry[index]->has_operation())
             return true;
@@ -4183,21 +4274,21 @@ bool CISCOCEFMIB::Cefccglobaltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefccglobaltable::get_absolute_path() const
+std::string CISCOCEFMIB::CefCCGlobalTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefccglobaltable::get_segment_path() const
+std::string CISCOCEFMIB::CefCCGlobalTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefCCGlobalTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefccglobaltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCGlobalTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4206,25 +4297,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefccglobaltable::ge
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefccglobaltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefCCGlobalTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefCCGlobalEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry>();
         c->parent = this;
-        cefccglobalentry.push_back(c);
+        cefccglobalentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefccglobaltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCGlobalTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefccglobalentry)
+    for (auto c : cefccglobalentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4235,22 +4326,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefccglobaltable::ge
     return children;
 }
 
-void CISCOCEFMIB::Cefccglobaltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefCCGlobalTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefccglobaltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefCCGlobalTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefccglobaltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefCCGlobalTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefCCGlobalEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::Cefccglobalentry()
+CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::CefCCGlobalEntry()
     :
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
     cefccglobalautorepairenabled{YType::boolean, "cefCCGlobalAutoRepairEnabled"},
@@ -4261,15 +4352,16 @@ CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::Cefccglobalentry()
     cefccglobalfullscanstatus{YType::enumeration, "cefCCGlobalFullScanStatus"}
 {
 
-    yang_name = "cefCCGlobalEntry"; yang_parent_name = "cefCCGlobalTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefCCGlobalEntry"; yang_parent_name = "cefCCGlobalTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::~Cefccglobalentry()
+CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::~CefCCGlobalEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::has_data() const
+bool CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceffibipversion.is_set
 	|| cefccglobalautorepairenabled.is_set
 	|| cefccglobalautorepairdelay.is_set
@@ -4279,7 +4371,7 @@ bool CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::has_data() const
 	|| cefccglobalfullscanstatus.is_set;
 }
 
-bool CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::has_operation() const
+bool CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceffibipversion.yfilter)
@@ -4291,21 +4383,22 @@ bool CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::has_operation() const
 	|| ydk::is_set(cefccglobalfullscanstatus.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefCCGlobalTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::get_segment_path() const
+std::string CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefCCGlobalEntry" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']";
+    path_buffer << "cefCCGlobalEntry";
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4321,19 +4414,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefccglobaltable::Ce
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefFIBIpVersion")
     {
@@ -4379,7 +4472,7 @@ void CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::set_value(const std::strin
     }
 }
 
-void CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cefFIBIpVersion")
     {
@@ -4411,26 +4504,29 @@ void CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::set_filter(const std::stri
     }
 }
 
-bool CISCOCEFMIB::Cefccglobaltable::Cefccglobalentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefCCGlobalTable::CefCCGlobalEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefFIBIpVersion" || name == "cefCCGlobalAutoRepairEnabled" || name == "cefCCGlobalAutoRepairDelay" || name == "cefCCGlobalAutoRepairHoldDown" || name == "cefCCGlobalErrorMsgEnabled" || name == "cefCCGlobalFullScanAction" || name == "cefCCGlobalFullScanStatus")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefcctypetable::Cefcctypetable()
+CISCOCEFMIB::CefCCTypeTable::CefCCTypeTable()
+    :
+    cefcctypeentry(this, {"ceffibipversion", "cefcctype"})
 {
 
-    yang_name = "cefCCTypeTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefCCTypeTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefcctypetable::~Cefcctypetable()
+CISCOCEFMIB::CefCCTypeTable::~CefCCTypeTable()
 {
 }
 
-bool CISCOCEFMIB::Cefcctypetable::has_data() const
+bool CISCOCEFMIB::CefCCTypeTable::has_data() const
 {
-    for (std::size_t index=0; index<cefcctypeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefcctypeentry.len(); index++)
     {
         if(cefcctypeentry[index]->has_data())
             return true;
@@ -4438,9 +4534,9 @@ bool CISCOCEFMIB::Cefcctypetable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefcctypetable::has_operation() const
+bool CISCOCEFMIB::CefCCTypeTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefcctypeentry.size(); index++)
+    for (std::size_t index=0; index<cefcctypeentry.len(); index++)
     {
         if(cefcctypeentry[index]->has_operation())
             return true;
@@ -4448,21 +4544,21 @@ bool CISCOCEFMIB::Cefcctypetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefcctypetable::get_absolute_path() const
+std::string CISCOCEFMIB::CefCCTypeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefcctypetable::get_segment_path() const
+std::string CISCOCEFMIB::CefCCTypeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefCCTypeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcctypetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCTypeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4471,25 +4567,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcctypetable::get_
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefcctypetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefCCTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefCCTypeEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefcctypetable::Cefcctypeentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry>();
         c->parent = this;
-        cefcctypeentry.push_back(c);
+        cefcctypeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcctypetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCTypeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefcctypeentry)
+    for (auto c : cefcctypeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4500,22 +4596,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcctypetable::get_
     return children;
 }
 
-void CISCOCEFMIB::Cefcctypetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefCCTypeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefcctypetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefCCTypeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefcctypetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefCCTypeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefCCTypeEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::Cefcctypeentry()
+CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::CefCCTypeEntry()
     :
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
     cefcctype{YType::enumeration, "cefCCType"},
@@ -4528,15 +4624,16 @@ CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::Cefcctypeentry()
     cefccqueriesiterated{YType::uint32, "cefCCQueriesIterated"}
 {
 
-    yang_name = "cefCCTypeEntry"; yang_parent_name = "cefCCTypeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefCCTypeEntry"; yang_parent_name = "cefCCTypeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::~Cefcctypeentry()
+CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::~CefCCTypeEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::has_data() const
+bool CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceffibipversion.is_set
 	|| cefcctype.is_set
 	|| cefccenabled.is_set
@@ -4548,7 +4645,7 @@ bool CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::has_data() const
 	|| cefccqueriesiterated.is_set;
 }
 
-bool CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::has_operation() const
+bool CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceffibipversion.yfilter)
@@ -4562,21 +4659,23 @@ bool CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::has_operation() const
 	|| ydk::is_set(cefccqueriesiterated.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefCCTypeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::get_segment_path() const
+std::string CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefCCTypeEntry" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']" <<"[cefCCType='" <<cefcctype <<"']";
+    path_buffer << "cefCCTypeEntry";
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
+    ADD_KEY_TOKEN(cefcctype, "cefCCType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4594,19 +4693,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefcctypetable::Cefc
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefFIBIpVersion")
     {
@@ -4664,7 +4763,7 @@ void CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::set_value(const std::string & 
     }
 }
 
-void CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cefFIBIpVersion")
     {
@@ -4704,26 +4803,29 @@ void CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::set_filter(const std::string &
     }
 }
 
-bool CISCOCEFMIB::Cefcctypetable::Cefcctypeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefCCTypeTable::CefCCTypeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefFIBIpVersion" || name == "cefCCType" || name == "cefCCEnabled" || name == "cefCCCount" || name == "cefCCPeriod" || name == "cefCCQueriesSent" || name == "cefCCQueriesIgnored" || name == "cefCCQueriesChecked" || name == "cefCCQueriesIterated")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordtable()
+CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordTable()
+    :
+    cefinconsistencyrecordentry(this, {"ceffibipversion", "cefinconsistencyrecid"})
 {
 
-    yang_name = "cefInconsistencyRecordTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefInconsistencyRecordTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefinconsistencyrecordtable::~Cefinconsistencyrecordtable()
+CISCOCEFMIB::CefInconsistencyRecordTable::~CefInconsistencyRecordTable()
 {
 }
 
-bool CISCOCEFMIB::Cefinconsistencyrecordtable::has_data() const
+bool CISCOCEFMIB::CefInconsistencyRecordTable::has_data() const
 {
-    for (std::size_t index=0; index<cefinconsistencyrecordentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefinconsistencyrecordentry.len(); index++)
     {
         if(cefinconsistencyrecordentry[index]->has_data())
             return true;
@@ -4731,9 +4833,9 @@ bool CISCOCEFMIB::Cefinconsistencyrecordtable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefinconsistencyrecordtable::has_operation() const
+bool CISCOCEFMIB::CefInconsistencyRecordTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefinconsistencyrecordentry.size(); index++)
+    for (std::size_t index=0; index<cefinconsistencyrecordentry.len(); index++)
     {
         if(cefinconsistencyrecordentry[index]->has_operation())
             return true;
@@ -4741,21 +4843,21 @@ bool CISCOCEFMIB::Cefinconsistencyrecordtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefinconsistencyrecordtable::get_absolute_path() const
+std::string CISCOCEFMIB::CefInconsistencyRecordTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefinconsistencyrecordtable::get_segment_path() const
+std::string CISCOCEFMIB::CefInconsistencyRecordTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefInconsistencyRecordTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinconsistencyrecordtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefInconsistencyRecordTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4764,25 +4866,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinconsistencyreco
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefinconsistencyrecordtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefInconsistencyRecordTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefInconsistencyRecordEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry>();
         c->parent = this;
-        cefinconsistencyrecordentry.push_back(c);
+        cefinconsistencyrecordentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinconsistencyrecordtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefInconsistencyRecordTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefinconsistencyrecordentry)
+    for (auto c : cefinconsistencyrecordentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4793,22 +4895,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinconsistencyreco
     return children;
 }
 
-void CISCOCEFMIB::Cefinconsistencyrecordtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefInconsistencyRecordTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefinconsistencyrecordtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefInconsistencyRecordTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefinconsistencyrecordtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefInconsistencyRecordTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefInconsistencyRecordEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::Cefinconsistencyrecordentry()
+CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::CefInconsistencyRecordEntry()
     :
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
     cefinconsistencyrecid{YType::int32, "cefInconsistencyRecId"},
@@ -4821,15 +4923,16 @@ CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::Cefincons
     cefinconsistencyreason{YType::enumeration, "cefInconsistencyReason"}
 {
 
-    yang_name = "cefInconsistencyRecordEntry"; yang_parent_name = "cefInconsistencyRecordTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefInconsistencyRecordEntry"; yang_parent_name = "cefInconsistencyRecordTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::~Cefinconsistencyrecordentry()
+CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::~CefInconsistencyRecordEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::has_data() const
+bool CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ceffibipversion.is_set
 	|| cefinconsistencyrecid.is_set
 	|| cefinconsistencyprefixtype.is_set
@@ -4841,7 +4944,7 @@ bool CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::has_
 	|| cefinconsistencyreason.is_set;
 }
 
-bool CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::has_operation() const
+bool CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ceffibipversion.yfilter)
@@ -4855,21 +4958,23 @@ bool CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::has_
 	|| ydk::is_set(cefinconsistencyreason.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefInconsistencyRecordTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::get_segment_path() const
+std::string CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefInconsistencyRecordEntry" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']" <<"[cefInconsistencyRecId='" <<cefinconsistencyrecid <<"']";
+    path_buffer << "cefInconsistencyRecordEntry";
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
+    ADD_KEY_TOKEN(cefinconsistencyrecid, "cefInconsistencyRecId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4887,19 +4992,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefinconsistencyreco
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cefFIBIpVersion")
     {
@@ -4957,7 +5062,7 @@ void CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::set_
     }
 }
 
-void CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cefFIBIpVersion")
     {
@@ -4997,26 +5102,29 @@ void CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::set_
     }
 }
 
-bool CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefFIBIpVersion" || name == "cefInconsistencyRecId" || name == "cefInconsistencyPrefixType" || name == "cefInconsistencyPrefixAddr" || name == "cefInconsistencyPrefixLen" || name == "cefInconsistencyVrfName" || name == "cefInconsistencyCCType" || name == "cefInconsistencyEntity" || name == "cefInconsistencyReason")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlentable()
+CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenTable()
+    :
+    cefstatsprefixlenentry(this, {"entphysicalindex", "ceffibipversion", "cefstatsprefixlen"})
 {
 
-    yang_name = "cefStatsPrefixLenTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefStatsPrefixLenTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefstatsprefixlentable::~Cefstatsprefixlentable()
+CISCOCEFMIB::CefStatsPrefixLenTable::~CefStatsPrefixLenTable()
 {
 }
 
-bool CISCOCEFMIB::Cefstatsprefixlentable::has_data() const
+bool CISCOCEFMIB::CefStatsPrefixLenTable::has_data() const
 {
-    for (std::size_t index=0; index<cefstatsprefixlenentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefstatsprefixlenentry.len(); index++)
     {
         if(cefstatsprefixlenentry[index]->has_data())
             return true;
@@ -5024,9 +5132,9 @@ bool CISCOCEFMIB::Cefstatsprefixlentable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefstatsprefixlentable::has_operation() const
+bool CISCOCEFMIB::CefStatsPrefixLenTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefstatsprefixlenentry.size(); index++)
+    for (std::size_t index=0; index<cefstatsprefixlenentry.len(); index++)
     {
         if(cefstatsprefixlenentry[index]->has_operation())
             return true;
@@ -5034,21 +5142,21 @@ bool CISCOCEFMIB::Cefstatsprefixlentable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefstatsprefixlentable::get_absolute_path() const
+std::string CISCOCEFMIB::CefStatsPrefixLenTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefstatsprefixlentable::get_segment_path() const
+std::string CISCOCEFMIB::CefStatsPrefixLenTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefStatsPrefixLenTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefstatsprefixlentable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefStatsPrefixLenTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5057,25 +5165,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefstatsprefixlentab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefstatsprefixlentable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefStatsPrefixLenTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefStatsPrefixLenEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry>();
         c->parent = this;
-        cefstatsprefixlenentry.push_back(c);
+        cefstatsprefixlenentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefstatsprefixlentable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefStatsPrefixLenTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefstatsprefixlenentry)
+    for (auto c : cefstatsprefixlenentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5086,22 +5194,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefstatsprefixlentab
     return children;
 }
 
-void CISCOCEFMIB::Cefstatsprefixlentable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefStatsPrefixLenTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefstatsprefixlentable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefStatsPrefixLenTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefstatsprefixlentable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefStatsPrefixLenTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefStatsPrefixLenEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::Cefstatsprefixlenentry()
+CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::CefStatsPrefixLenEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
@@ -5116,15 +5224,16 @@ CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::Cefstatsprefixlenen
     cefstatsprefixhcelements{YType::uint64, "cefStatsPrefixHCElements"}
 {
 
-    yang_name = "cefStatsPrefixLenEntry"; yang_parent_name = "cefStatsPrefixLenTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefStatsPrefixLenEntry"; yang_parent_name = "cefStatsPrefixLenTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::~Cefstatsprefixlenentry()
+CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::~CefStatsPrefixLenEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::has_data() const
+bool CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ceffibipversion.is_set
 	|| cefstatsprefixlen.is_set
@@ -5138,7 +5247,7 @@ bool CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::has_data() con
 	|| cefstatsprefixhcelements.is_set;
 }
 
-bool CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::has_operation() const
+bool CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -5154,21 +5263,24 @@ bool CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::has_operation(
 	|| ydk::is_set(cefstatsprefixhcelements.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefStatsPrefixLenTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::get_segment_path() const
+std::string CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefStatsPrefixLenEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']" <<"[cefStatsPrefixLen='" <<cefstatsprefixlen <<"']";
+    path_buffer << "cefStatsPrefixLenEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
+    ADD_KEY_TOKEN(cefstatsprefixlen, "cefStatsPrefixLen");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5188,19 +5300,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefstatsprefixlentab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -5270,7 +5382,7 @@ void CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::set_value(cons
     }
 }
 
-void CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -5318,26 +5430,29 @@ void CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::set_filter(con
     }
 }
 
-bool CISCOCEFMIB::Cefstatsprefixlentable::Cefstatsprefixlenentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefStatsPrefixLenTable::CefStatsPrefixLenEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefFIBIpVersion" || name == "cefStatsPrefixLen" || name == "cefStatsPrefixQueries" || name == "cefStatsPrefixHCQueries" || name == "cefStatsPrefixInserts" || name == "cefStatsPrefixHCInserts" || name == "cefStatsPrefixDeletes" || name == "cefStatsPrefixHCDeletes" || name == "cefStatsPrefixElements" || name == "cefStatsPrefixHCElements")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatstable()
+CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsTable()
+    :
+    cefswitchingstatsentry(this, {"entphysicalindex", "ceffibipversion", "cefswitchingindex"})
 {
 
-    yang_name = "cefSwitchingStatsTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefSwitchingStatsTable"; yang_parent_name = "CISCO-CEF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefswitchingstatstable::~Cefswitchingstatstable()
+CISCOCEFMIB::CefSwitchingStatsTable::~CefSwitchingStatsTable()
 {
 }
 
-bool CISCOCEFMIB::Cefswitchingstatstable::has_data() const
+bool CISCOCEFMIB::CefSwitchingStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cefswitchingstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cefswitchingstatsentry.len(); index++)
     {
         if(cefswitchingstatsentry[index]->has_data())
             return true;
@@ -5345,9 +5460,9 @@ bool CISCOCEFMIB::Cefswitchingstatstable::has_data() const
     return false;
 }
 
-bool CISCOCEFMIB::Cefswitchingstatstable::has_operation() const
+bool CISCOCEFMIB::CefSwitchingStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cefswitchingstatsentry.size(); index++)
+    for (std::size_t index=0; index<cefswitchingstatsentry.len(); index++)
     {
         if(cefswitchingstatsentry[index]->has_operation())
             return true;
@@ -5355,21 +5470,21 @@ bool CISCOCEFMIB::Cefswitchingstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCEFMIB::Cefswitchingstatstable::get_absolute_path() const
+std::string CISCOCEFMIB::CefSwitchingStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefswitchingstatstable::get_segment_path() const
+std::string CISCOCEFMIB::CefSwitchingStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cefSwitchingStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefswitchingstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefSwitchingStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5378,25 +5493,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefswitchingstatstab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefswitchingstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefSwitchingStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cefSwitchingStatsEntry")
     {
-        auto c = std::make_shared<CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry>();
+        auto c = std::make_shared<CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry>();
         c->parent = this;
-        cefswitchingstatsentry.push_back(c);
+        cefswitchingstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefswitchingstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefSwitchingStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cefswitchingstatsentry)
+    for (auto c : cefswitchingstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5407,22 +5522,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefswitchingstatstab
     return children;
 }
 
-void CISCOCEFMIB::Cefswitchingstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefSwitchingStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCEFMIB::Cefswitchingstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefSwitchingStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCEFMIB::Cefswitchingstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefSwitchingStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cefSwitchingStatsEntry")
         return true;
     return false;
 }
 
-CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::Cefswitchingstatsentry()
+CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::CefSwitchingStatsEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     ceffibipversion{YType::enumeration, "cefFIBIpVersion"},
@@ -5436,15 +5551,16 @@ CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::Cefswitchingstatsen
     cefswitchinghcpunt2host{YType::uint64, "cefSwitchingHCPunt2Host"}
 {
 
-    yang_name = "cefSwitchingStatsEntry"; yang_parent_name = "cefSwitchingStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cefSwitchingStatsEntry"; yang_parent_name = "cefSwitchingStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::~Cefswitchingstatsentry()
+CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::~CefSwitchingStatsEntry()
 {
 }
 
-bool CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::has_data() const
+bool CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| ceffibipversion.is_set
 	|| cefswitchingindex.is_set
@@ -5457,7 +5573,7 @@ bool CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::has_data() con
 	|| cefswitchinghcpunt2host.is_set;
 }
 
-bool CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::has_operation() const
+bool CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -5472,21 +5588,24 @@ bool CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::has_operation(
 	|| ydk::is_set(cefswitchinghcpunt2host.yfilter);
 }
 
-std::string CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::get_absolute_path() const
+std::string CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CEF-MIB:CISCO-CEF-MIB/cefSwitchingStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::get_segment_path() const
+std::string CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cefSwitchingStatsEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cefFIBIpVersion='" <<ceffibipversion <<"']" <<"[cefSwitchingIndex='" <<cefswitchingindex <<"']";
+    path_buffer << "cefSwitchingStatsEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(ceffibipversion, "cefFIBIpVersion");
+    ADD_KEY_TOKEN(cefswitchingindex, "cefSwitchingIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5505,19 +5624,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCEFMIB::Cefswitchingstatstab
 
 }
 
-std::shared_ptr<Entity> CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -5581,7 +5700,7 @@ void CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::set_value(cons
     }
 }
 
-void CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -5625,41 +5744,41 @@ void CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::set_filter(con
     }
 }
 
-bool CISCOCEFMIB::Cefswitchingstatstable::Cefswitchingstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCEFMIB::CefSwitchingStatsTable::CefSwitchingStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cefFIBIpVersion" || name == "cefSwitchingIndex" || name == "cefSwitchingPath" || name == "cefSwitchingDrop" || name == "cefSwitchingHCDrop" || name == "cefSwitchingPunt" || name == "cefSwitchingHCPunt" || name == "cefSwitchingPunt2Host" || name == "cefSwitchingHCPunt2Host")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgloadsharingalgorithm::none {1, "none"};
-const Enum::YLeaf CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgloadsharingalgorithm::original {2, "original"};
-const Enum::YLeaf CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgloadsharingalgorithm::tunnel {3, "tunnel"};
-const Enum::YLeaf CISCOCEFMIB::Cefcfgtable::Cefcfgentry::Cefcfgloadsharingalgorithm::universal {4, "universal"};
+const Enum::YLeaf CISCOCEFMIB::CefCfgTable::CefCfgEntry::CefCfgLoadSharingAlgorithm::none {1, "none"};
+const Enum::YLeaf CISCOCEFMIB::CefCfgTable::CefCfgEntry::CefCfgLoadSharingAlgorithm::original {2, "original"};
+const Enum::YLeaf CISCOCEFMIB::CefCfgTable::CefCfgEntry::CefCfgLoadSharingAlgorithm::tunnel {3, "tunnel"};
+const Enum::YLeaf CISCOCEFMIB::CefCfgTable::CefCfgEntry::CefCfgLoadSharingAlgorithm::universal {4, "universal"};
 
-const Enum::YLeaf CISCOCEFMIB::Cefinttable::Cefintentry::Cefintswitchingstate::cefEnabled {1, "cefEnabled"};
-const Enum::YLeaf CISCOCEFMIB::Cefinttable::Cefintentry::Cefintswitchingstate::distCefEnabled {2, "distCefEnabled"};
-const Enum::YLeaf CISCOCEFMIB::Cefinttable::Cefintentry::Cefintswitchingstate::cefDisabled {3, "cefDisabled"};
+const Enum::YLeaf CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntSwitchingState::cefEnabled {1, "cefEnabled"};
+const Enum::YLeaf CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntSwitchingState::distCefEnabled {2, "distCefEnabled"};
+const Enum::YLeaf CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntSwitchingState::cefDisabled {3, "cefDisabled"};
 
-const Enum::YLeaf CISCOCEFMIB::Cefinttable::Cefintentry::Cefintloadsharing::perPacket {1, "perPacket"};
-const Enum::YLeaf CISCOCEFMIB::Cefinttable::Cefintentry::Cefintloadsharing::perDestination {2, "perDestination"};
+const Enum::YLeaf CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntLoadSharing::perPacket {1, "perPacket"};
+const Enum::YLeaf CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntLoadSharing::perDestination {2, "perDestination"};
 
-const Enum::YLeaf CISCOCEFMIB::Cefinttable::Cefintentry::Cefintnonrecursiveaccouting::internal {1, "internal"};
-const Enum::YLeaf CISCOCEFMIB::Cefinttable::Cefintentry::Cefintnonrecursiveaccouting::external {2, "external"};
+const Enum::YLeaf CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntNonrecursiveAccouting::internal {1, "internal"};
+const Enum::YLeaf CISCOCEFMIB::CefIntTable::CefIntEntry::CefIntNonrecursiveAccouting::external {2, "external"};
 
-const Enum::YLeaf CISCOCEFMIB::Cefpeertable::Cefpeerentry::Cefpeeroperstate::peerDisabled {1, "peerDisabled"};
-const Enum::YLeaf CISCOCEFMIB::Cefpeertable::Cefpeerentry::Cefpeeroperstate::peerUp {2, "peerUp"};
-const Enum::YLeaf CISCOCEFMIB::Cefpeertable::Cefpeerentry::Cefpeeroperstate::peerHold {3, "peerHold"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerTable::CefPeerEntry::CefPeerOperState::peerDisabled {1, "peerDisabled"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerTable::CefPeerEntry::CefPeerOperState::peerUp {2, "peerUp"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerTable::CefPeerEntry::CefPeerOperState::peerHold {3, "peerHold"};
 
-const Enum::YLeaf CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfiboperstate::peerFIBDown {1, "peerFIBDown"};
-const Enum::YLeaf CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfiboperstate::peerFIBUp {2, "peerFIBUp"};
-const Enum::YLeaf CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfiboperstate::peerFIBReloadRequest {3, "peerFIBReloadRequest"};
-const Enum::YLeaf CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfiboperstate::peerFIBReloading {4, "peerFIBReloading"};
-const Enum::YLeaf CISCOCEFMIB::Cefpeerfibtable::Cefpeerfibentry::Cefpeerfiboperstate::peerFIBSynced {5, "peerFIBSynced"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState::peerFIBDown {1, "peerFIBDown"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState::peerFIBUp {2, "peerFIBUp"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState::peerFIBReloadRequest {3, "peerFIBReloadRequest"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState::peerFIBReloading {4, "peerFIBReloading"};
+const Enum::YLeaf CISCOCEFMIB::CefPeerFIBTable::CefPeerFIBEntry::CefPeerFIBOperState::peerFIBSynced {5, "peerFIBSynced"};
 
-const Enum::YLeaf CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::Cefinconsistencyreason::missing {1, "missing"};
-const Enum::YLeaf CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::Cefinconsistencyreason::checksumErr {2, "checksumErr"};
-const Enum::YLeaf CISCOCEFMIB::Cefinconsistencyrecordtable::Cefinconsistencyrecordentry::Cefinconsistencyreason::unknown {3, "unknown"};
+const Enum::YLeaf CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::CefInconsistencyReason::missing {1, "missing"};
+const Enum::YLeaf CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::CefInconsistencyReason::checksumErr {2, "checksumErr"};
+const Enum::YLeaf CISCOCEFMIB::CefInconsistencyRecordTable::CefInconsistencyRecordEntry::CefInconsistencyReason::unknown {3, "unknown"};
 
 
 }

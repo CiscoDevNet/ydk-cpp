@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_pbr_vrf_policy_cfg {
 
 VrfPolicy::VrfPolicy()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrf-policy"; yang_parent_name = "Cisco-IOS-XR-pbr-vrf-policy-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vrf-policy"; yang_parent_name = "Cisco-IOS-XR-pbr-vrf-policy-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 VrfPolicy::~VrfPolicy()
@@ -23,7 +25,8 @@ VrfPolicy::~VrfPolicy()
 
 bool VrfPolicy::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool VrfPolicy::has_data() const
 
 bool VrfPolicy::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> VrfPolicy::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<VrfPolicy::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> VrfPolicy::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool VrfPolicy::has_leaf_or_child_of_name(const std::string & name) const
 VrfPolicy::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
+        ,
+    afi(this, {"afi_type"})
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrf-policy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrf-policy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VrfPolicy::Vrf::~Vrf()
@@ -140,7 +145,8 @@ VrfPolicy::Vrf::~Vrf()
 
 bool VrfPolicy::Vrf::has_data() const
 {
-    for (std::size_t index=0; index<afi.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<afi.len(); index++)
     {
         if(afi[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool VrfPolicy::Vrf::has_data() const
 
 bool VrfPolicy::Vrf::has_operation() const
 {
-    for (std::size_t index=0; index<afi.size(); index++)
+    for (std::size_t index=0; index<afi.len(); index++)
     {
         if(afi[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string VrfPolicy::Vrf::get_absolute_path() const
 std::string VrfPolicy::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> VrfPolicy::Vrf::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<VrfPolicy::Vrf::Afi>();
         c->parent = this;
-        afi.push_back(c);
+        afi.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> VrfPolicy::Vrf::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : afi)
+    for (auto c : afi.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -243,7 +250,7 @@ VrfPolicy::Vrf::Afi::Afi()
     service_policy_in{YType::str, "service-policy-in"}
 {
 
-    yang_name = "afi"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afi"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VrfPolicy::Vrf::Afi::~Afi()
@@ -252,6 +259,7 @@ VrfPolicy::Vrf::Afi::~Afi()
 
 bool VrfPolicy::Vrf::Afi::has_data() const
 {
+    if (is_presence_container) return true;
     return afi_type.is_set
 	|| service_policy_in.is_set;
 }
@@ -266,7 +274,8 @@ bool VrfPolicy::Vrf::Afi::has_operation() const
 std::string VrfPolicy::Vrf::Afi::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "afi" <<"[afi-type='" <<afi_type <<"']";
+    path_buffer << "afi";
+    ADD_KEY_TOKEN(afi_type, "afi-type");
     return path_buffer.str();
 }
 

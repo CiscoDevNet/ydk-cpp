@@ -12,6 +12,778 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_mpls_te_oper {
 
+MplsLcacStandby::Statistics::Statistics()
+    :
+    summary(std::make_shared<MplsLcacStandby::Statistics::Summary>())
+    , statstics_links(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks>())
+{
+    summary->parent = this;
+    statstics_links->parent = this;
+
+    yang_name = "statistics"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+MplsLcacStandby::Statistics::~Statistics()
+{
+}
+
+bool MplsLcacStandby::Statistics::has_data() const
+{
+    if (is_presence_container) return true;
+    return (summary !=  nullptr && summary->has_data())
+	|| (statstics_links !=  nullptr && statstics_links->has_data());
+}
+
+bool MplsLcacStandby::Statistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (summary !=  nullptr && summary->has_operation())
+	|| (statstics_links !=  nullptr && statstics_links->has_operation());
+}
+
+std::string MplsLcacStandby::Statistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac-standby/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsLcacStandby::Statistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLcacStandby::Statistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLcacStandby::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "summary")
+    {
+        if(summary == nullptr)
+        {
+            summary = std::make_shared<MplsLcacStandby::Statistics::Summary>();
+        }
+        return summary;
+    }
+
+    if(child_yang_name == "statstics-links")
+    {
+        if(statstics_links == nullptr)
+        {
+            statstics_links = std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks>();
+        }
+        return statstics_links;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(summary != nullptr)
+    {
+        children["summary"] = summary;
+    }
+
+    if(statstics_links != nullptr)
+    {
+        children["statstics-links"] = statstics_links;
+    }
+
+    return children;
+}
+
+void MplsLcacStandby::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsLcacStandby::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLcacStandby::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "summary" || name == "statstics-links")
+        return true;
+    return false;
+}
+
+MplsLcacStandby::Statistics::Summary::Summary()
+    :
+    is_role_standby{YType::boolean, "is-role-standby"}
+        ,
+    path_statistics(std::make_shared<MplsLcacStandby::Statistics::Summary::PathStatistics>())
+    , reservation_statistics(std::make_shared<MplsLcacStandby::Statistics::Summary::ReservationStatistics>())
+    , path_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::Summary::PathStatistics32Bit>())
+    , reservation_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit>())
+{
+    path_statistics->parent = this;
+    reservation_statistics->parent = this;
+    path_statistics32_bit->parent = this;
+    reservation_statistics32_bit->parent = this;
+
+    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+MplsLcacStandby::Statistics::Summary::~Summary()
+{
+}
+
+bool MplsLcacStandby::Statistics::Summary::has_data() const
+{
+    if (is_presence_container) return true;
+    return is_role_standby.is_set
+	|| (path_statistics !=  nullptr && path_statistics->has_data())
+	|| (reservation_statistics !=  nullptr && reservation_statistics->has_data())
+	|| (path_statistics32_bit !=  nullptr && path_statistics32_bit->has_data())
+	|| (reservation_statistics32_bit !=  nullptr && reservation_statistics32_bit->has_data());
+}
+
+bool MplsLcacStandby::Statistics::Summary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(is_role_standby.yfilter)
+	|| (path_statistics !=  nullptr && path_statistics->has_operation())
+	|| (reservation_statistics !=  nullptr && reservation_statistics->has_operation())
+	|| (path_statistics32_bit !=  nullptr && path_statistics32_bit->has_operation())
+	|| (reservation_statistics32_bit !=  nullptr && reservation_statistics32_bit->has_operation());
+}
+
+std::string MplsLcacStandby::Statistics::Summary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac-standby/statistics/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsLcacStandby::Statistics::Summary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLcacStandby::Statistics::Summary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (is_role_standby.is_set || is_set(is_role_standby.yfilter)) leaf_name_data.push_back(is_role_standby.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLcacStandby::Statistics::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "path-statistics")
+    {
+        if(path_statistics == nullptr)
+        {
+            path_statistics = std::make_shared<MplsLcacStandby::Statistics::Summary::PathStatistics>();
+        }
+        return path_statistics;
+    }
+
+    if(child_yang_name == "reservation-statistics")
+    {
+        if(reservation_statistics == nullptr)
+        {
+            reservation_statistics = std::make_shared<MplsLcacStandby::Statistics::Summary::ReservationStatistics>();
+        }
+        return reservation_statistics;
+    }
+
+    if(child_yang_name == "path-statistics32-bit")
+    {
+        if(path_statistics32_bit == nullptr)
+        {
+            path_statistics32_bit = std::make_shared<MplsLcacStandby::Statistics::Summary::PathStatistics32Bit>();
+        }
+        return path_statistics32_bit;
+    }
+
+    if(child_yang_name == "reservation-statistics32-bit")
+    {
+        if(reservation_statistics32_bit == nullptr)
+        {
+            reservation_statistics32_bit = std::make_shared<MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit>();
+        }
+        return reservation_statistics32_bit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::Summary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(path_statistics != nullptr)
+    {
+        children["path-statistics"] = path_statistics;
+    }
+
+    if(reservation_statistics != nullptr)
+    {
+        children["reservation-statistics"] = reservation_statistics;
+    }
+
+    if(path_statistics32_bit != nullptr)
+    {
+        children["path-statistics32-bit"] = path_statistics32_bit;
+    }
+
+    if(reservation_statistics32_bit != nullptr)
+    {
+        children["reservation-statistics32-bit"] = reservation_statistics32_bit;
+    }
+
+    return children;
+}
+
+void MplsLcacStandby::Statistics::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "is-role-standby")
+    {
+        is_role_standby = value;
+        is_role_standby.value_namespace = name_space;
+        is_role_standby.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLcacStandby::Statistics::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "is-role-standby")
+    {
+        is_role_standby.yfilter = yfilter;
+    }
+}
+
+bool MplsLcacStandby::Statistics::Summary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "path-statistics" || name == "reservation-statistics" || name == "path-statistics32-bit" || name == "reservation-statistics32-bit" || name == "is-role-standby")
+        return true;
+    return false;
+}
+
+MplsLcacStandby::Statistics::Summary::PathStatistics::PathStatistics()
+    :
+    setup_requests{YType::uint16, "setup-requests"},
+    setup_errors{YType::uint16, "setup-errors"},
+    setup_admits{YType::uint16, "setup-admits"},
+    setup_rejects{YType::uint16, "setup-rejects"},
+    tear_requests{YType::uint16, "tear-requests"},
+    tear_errors{YType::uint16, "tear-errors"},
+    tear_preempts{YType::uint16, "tear-preempts"}
+{
+
+    yang_name = "path-statistics"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+MplsLcacStandby::Statistics::Summary::PathStatistics::~PathStatistics()
+{
+}
+
+bool MplsLcacStandby::Statistics::Summary::PathStatistics::has_data() const
+{
+    if (is_presence_container) return true;
+    return setup_requests.is_set
+	|| setup_errors.is_set
+	|| setup_admits.is_set
+	|| setup_rejects.is_set
+	|| tear_requests.is_set
+	|| tear_errors.is_set
+	|| tear_preempts.is_set;
+}
+
+bool MplsLcacStandby::Statistics::Summary::PathStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(setup_requests.yfilter)
+	|| ydk::is_set(setup_errors.yfilter)
+	|| ydk::is_set(setup_admits.yfilter)
+	|| ydk::is_set(setup_rejects.yfilter)
+	|| ydk::is_set(tear_requests.yfilter)
+	|| ydk::is_set(tear_errors.yfilter)
+	|| ydk::is_set(tear_preempts.yfilter);
+}
+
+std::string MplsLcacStandby::Statistics::Summary::PathStatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac-standby/statistics/summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsLcacStandby::Statistics::Summary::PathStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLcacStandby::Statistics::Summary::PathStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (setup_requests.is_set || is_set(setup_requests.yfilter)) leaf_name_data.push_back(setup_requests.get_name_leafdata());
+    if (setup_errors.is_set || is_set(setup_errors.yfilter)) leaf_name_data.push_back(setup_errors.get_name_leafdata());
+    if (setup_admits.is_set || is_set(setup_admits.yfilter)) leaf_name_data.push_back(setup_admits.get_name_leafdata());
+    if (setup_rejects.is_set || is_set(setup_rejects.yfilter)) leaf_name_data.push_back(setup_rejects.get_name_leafdata());
+    if (tear_requests.is_set || is_set(tear_requests.yfilter)) leaf_name_data.push_back(tear_requests.get_name_leafdata());
+    if (tear_errors.is_set || is_set(tear_errors.yfilter)) leaf_name_data.push_back(tear_errors.get_name_leafdata());
+    if (tear_preempts.is_set || is_set(tear_preempts.yfilter)) leaf_name_data.push_back(tear_preempts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLcacStandby::Statistics::Summary::PathStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::Summary::PathStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLcacStandby::Statistics::Summary::PathStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "setup-requests")
+    {
+        setup_requests = value;
+        setup_requests.value_namespace = name_space;
+        setup_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-errors")
+    {
+        setup_errors = value;
+        setup_errors.value_namespace = name_space;
+        setup_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-admits")
+    {
+        setup_admits = value;
+        setup_admits.value_namespace = name_space;
+        setup_admits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-rejects")
+    {
+        setup_rejects = value;
+        setup_rejects.value_namespace = name_space;
+        setup_rejects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-requests")
+    {
+        tear_requests = value;
+        tear_requests.value_namespace = name_space;
+        tear_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-errors")
+    {
+        tear_errors = value;
+        tear_errors.value_namespace = name_space;
+        tear_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-preempts")
+    {
+        tear_preempts = value;
+        tear_preempts.value_namespace = name_space;
+        tear_preempts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLcacStandby::Statistics::Summary::PathStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "setup-requests")
+    {
+        setup_requests.yfilter = yfilter;
+    }
+    if(value_path == "setup-errors")
+    {
+        setup_errors.yfilter = yfilter;
+    }
+    if(value_path == "setup-admits")
+    {
+        setup_admits.yfilter = yfilter;
+    }
+    if(value_path == "setup-rejects")
+    {
+        setup_rejects.yfilter = yfilter;
+    }
+    if(value_path == "tear-requests")
+    {
+        tear_requests.yfilter = yfilter;
+    }
+    if(value_path == "tear-errors")
+    {
+        tear_errors.yfilter = yfilter;
+    }
+    if(value_path == "tear-preempts")
+    {
+        tear_preempts.yfilter = yfilter;
+    }
+}
+
+bool MplsLcacStandby::Statistics::Summary::PathStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "setup-requests" || name == "setup-errors" || name == "setup-admits" || name == "setup-rejects" || name == "tear-requests" || name == "tear-errors" || name == "tear-preempts")
+        return true;
+    return false;
+}
+
+MplsLcacStandby::Statistics::Summary::ReservationStatistics::ReservationStatistics()
+    :
+    setup_requests{YType::uint16, "setup-requests"},
+    setup_errors{YType::uint16, "setup-errors"},
+    setup_admits{YType::uint16, "setup-admits"},
+    setup_rejects{YType::uint16, "setup-rejects"},
+    tear_requests{YType::uint16, "tear-requests"},
+    tear_errors{YType::uint16, "tear-errors"},
+    tear_preempts{YType::uint16, "tear-preempts"}
+{
+
+    yang_name = "reservation-statistics"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+MplsLcacStandby::Statistics::Summary::ReservationStatistics::~ReservationStatistics()
+{
+}
+
+bool MplsLcacStandby::Statistics::Summary::ReservationStatistics::has_data() const
+{
+    if (is_presence_container) return true;
+    return setup_requests.is_set
+	|| setup_errors.is_set
+	|| setup_admits.is_set
+	|| setup_rejects.is_set
+	|| tear_requests.is_set
+	|| tear_errors.is_set
+	|| tear_preempts.is_set;
+}
+
+bool MplsLcacStandby::Statistics::Summary::ReservationStatistics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(setup_requests.yfilter)
+	|| ydk::is_set(setup_errors.yfilter)
+	|| ydk::is_set(setup_admits.yfilter)
+	|| ydk::is_set(setup_rejects.yfilter)
+	|| ydk::is_set(tear_requests.yfilter)
+	|| ydk::is_set(tear_errors.yfilter)
+	|| ydk::is_set(tear_preempts.yfilter);
+}
+
+std::string MplsLcacStandby::Statistics::Summary::ReservationStatistics::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac-standby/statistics/summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsLcacStandby::Statistics::Summary::ReservationStatistics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reservation-statistics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLcacStandby::Statistics::Summary::ReservationStatistics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (setup_requests.is_set || is_set(setup_requests.yfilter)) leaf_name_data.push_back(setup_requests.get_name_leafdata());
+    if (setup_errors.is_set || is_set(setup_errors.yfilter)) leaf_name_data.push_back(setup_errors.get_name_leafdata());
+    if (setup_admits.is_set || is_set(setup_admits.yfilter)) leaf_name_data.push_back(setup_admits.get_name_leafdata());
+    if (setup_rejects.is_set || is_set(setup_rejects.yfilter)) leaf_name_data.push_back(setup_rejects.get_name_leafdata());
+    if (tear_requests.is_set || is_set(tear_requests.yfilter)) leaf_name_data.push_back(tear_requests.get_name_leafdata());
+    if (tear_errors.is_set || is_set(tear_errors.yfilter)) leaf_name_data.push_back(tear_errors.get_name_leafdata());
+    if (tear_preempts.is_set || is_set(tear_preempts.yfilter)) leaf_name_data.push_back(tear_preempts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLcacStandby::Statistics::Summary::ReservationStatistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::Summary::ReservationStatistics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLcacStandby::Statistics::Summary::ReservationStatistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "setup-requests")
+    {
+        setup_requests = value;
+        setup_requests.value_namespace = name_space;
+        setup_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-errors")
+    {
+        setup_errors = value;
+        setup_errors.value_namespace = name_space;
+        setup_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-admits")
+    {
+        setup_admits = value;
+        setup_admits.value_namespace = name_space;
+        setup_admits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-rejects")
+    {
+        setup_rejects = value;
+        setup_rejects.value_namespace = name_space;
+        setup_rejects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-requests")
+    {
+        tear_requests = value;
+        tear_requests.value_namespace = name_space;
+        tear_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-errors")
+    {
+        tear_errors = value;
+        tear_errors.value_namespace = name_space;
+        tear_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-preempts")
+    {
+        tear_preempts = value;
+        tear_preempts.value_namespace = name_space;
+        tear_preempts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLcacStandby::Statistics::Summary::ReservationStatistics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "setup-requests")
+    {
+        setup_requests.yfilter = yfilter;
+    }
+    if(value_path == "setup-errors")
+    {
+        setup_errors.yfilter = yfilter;
+    }
+    if(value_path == "setup-admits")
+    {
+        setup_admits.yfilter = yfilter;
+    }
+    if(value_path == "setup-rejects")
+    {
+        setup_rejects.yfilter = yfilter;
+    }
+    if(value_path == "tear-requests")
+    {
+        tear_requests.yfilter = yfilter;
+    }
+    if(value_path == "tear-errors")
+    {
+        tear_errors.yfilter = yfilter;
+    }
+    if(value_path == "tear-preempts")
+    {
+        tear_preempts.yfilter = yfilter;
+    }
+}
+
+bool MplsLcacStandby::Statistics::Summary::ReservationStatistics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "setup-requests" || name == "setup-errors" || name == "setup-admits" || name == "setup-rejects" || name == "tear-requests" || name == "tear-errors" || name == "tear-preempts")
+        return true;
+    return false;
+}
+
+MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::PathStatistics32Bit()
+    :
+    setup_requests{YType::uint32, "setup-requests"},
+    setup_errors{YType::uint32, "setup-errors"},
+    setup_admits{YType::uint32, "setup-admits"},
+    setup_rejects{YType::uint32, "setup-rejects"},
+    tear_requests{YType::uint32, "tear-requests"},
+    tear_errors{YType::uint32, "tear-errors"},
+    tear_preempts{YType::uint32, "tear-preempts"}
+{
+
+    yang_name = "path-statistics32-bit"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::~PathStatistics32Bit()
+{
+}
+
+bool MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::has_data() const
+{
+    if (is_presence_container) return true;
+    return setup_requests.is_set
+	|| setup_errors.is_set
+	|| setup_admits.is_set
+	|| setup_rejects.is_set
+	|| tear_requests.is_set
+	|| tear_errors.is_set
+	|| tear_preempts.is_set;
+}
+
+bool MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(setup_requests.yfilter)
+	|| ydk::is_set(setup_errors.yfilter)
+	|| ydk::is_set(setup_admits.yfilter)
+	|| ydk::is_set(setup_rejects.yfilter)
+	|| ydk::is_set(tear_requests.yfilter)
+	|| ydk::is_set(tear_errors.yfilter)
+	|| ydk::is_set(tear_preempts.yfilter);
+}
+
+std::string MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac-standby/statistics/summary/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "path-statistics32-bit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (setup_requests.is_set || is_set(setup_requests.yfilter)) leaf_name_data.push_back(setup_requests.get_name_leafdata());
+    if (setup_errors.is_set || is_set(setup_errors.yfilter)) leaf_name_data.push_back(setup_errors.get_name_leafdata());
+    if (setup_admits.is_set || is_set(setup_admits.yfilter)) leaf_name_data.push_back(setup_admits.get_name_leafdata());
+    if (setup_rejects.is_set || is_set(setup_rejects.yfilter)) leaf_name_data.push_back(setup_rejects.get_name_leafdata());
+    if (tear_requests.is_set || is_set(tear_requests.yfilter)) leaf_name_data.push_back(tear_requests.get_name_leafdata());
+    if (tear_errors.is_set || is_set(tear_errors.yfilter)) leaf_name_data.push_back(tear_errors.get_name_leafdata());
+    if (tear_preempts.is_set || is_set(tear_preempts.yfilter)) leaf_name_data.push_back(tear_preempts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "setup-requests")
+    {
+        setup_requests = value;
+        setup_requests.value_namespace = name_space;
+        setup_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-errors")
+    {
+        setup_errors = value;
+        setup_errors.value_namespace = name_space;
+        setup_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-admits")
+    {
+        setup_admits = value;
+        setup_admits.value_namespace = name_space;
+        setup_admits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "setup-rejects")
+    {
+        setup_rejects = value;
+        setup_rejects.value_namespace = name_space;
+        setup_rejects.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-requests")
+    {
+        tear_requests = value;
+        tear_requests.value_namespace = name_space;
+        tear_requests.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-errors")
+    {
+        tear_errors = value;
+        tear_errors.value_namespace = name_space;
+        tear_errors.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tear-preempts")
+    {
+        tear_preempts = value;
+        tear_preempts.value_namespace = name_space;
+        tear_preempts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "setup-requests")
+    {
+        setup_requests.yfilter = yfilter;
+    }
+    if(value_path == "setup-errors")
+    {
+        setup_errors.yfilter = yfilter;
+    }
+    if(value_path == "setup-admits")
+    {
+        setup_admits.yfilter = yfilter;
+    }
+    if(value_path == "setup-rejects")
+    {
+        setup_rejects.yfilter = yfilter;
+    }
+    if(value_path == "tear-requests")
+    {
+        tear_requests.yfilter = yfilter;
+    }
+    if(value_path == "tear-errors")
+    {
+        tear_errors.yfilter = yfilter;
+    }
+    if(value_path == "tear-preempts")
+    {
+        tear_preempts.yfilter = yfilter;
+    }
+}
+
+bool MplsLcacStandby::Statistics::Summary::PathStatistics32Bit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "setup-requests" || name == "setup-errors" || name == "setup-admits" || name == "setup-rejects" || name == "tear-requests" || name == "tear-errors" || name == "tear-preempts")
+        return true;
+    return false;
+}
+
 MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit::ReservationStatistics32Bit()
     :
     setup_requests{YType::uint32, "setup-requests"},
@@ -23,7 +795,7 @@ MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit::ReservationSta
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "reservation-statistics32-bit"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reservation-statistics32-bit"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit::~ReservationStatistics32Bit()
@@ -32,6 +804,7 @@ MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit::~ReservationSt
 
 bool MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -181,9 +954,11 @@ bool MplsLcacStandby::Statistics::Summary::ReservationStatistics32Bit::has_leaf_
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLinks()
+    :
+    statstics_link(this, {"interface_name"})
 {
 
-    yang_name = "statstics-links"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statstics-links"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::~StatsticsLinks()
@@ -192,7 +967,8 @@ MplsLcacStandby::Statistics::StatsticsLinks::~StatsticsLinks()
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::has_data() const
 {
-    for (std::size_t index=0; index<statstics_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statstics_link.len(); index++)
     {
         if(statstics_link[index]->has_data())
             return true;
@@ -202,7 +978,7 @@ bool MplsLcacStandby::Statistics::StatsticsLinks::has_data() const
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::has_operation() const
 {
-    for (std::size_t index=0; index<statstics_link.size(); index++)
+    for (std::size_t index=0; index<statstics_link.len(); index++)
     {
         if(statstics_link[index]->has_operation())
             return true;
@@ -239,7 +1015,7 @@ std::shared_ptr<Entity> MplsLcacStandby::Statistics::StatsticsLinks::get_child_b
     {
         auto c = std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink>();
         c->parent = this;
-        statstics_link.push_back(c);
+        statstics_link.append(c);
         return c;
     }
 
@@ -251,7 +1027,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::Statistics::Stat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statstics_link)
+    for (auto c : statstics_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -282,15 +1058,15 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::StatsticsLink()
     interface_name{YType::str, "interface-name"},
     interface_name_xr{YType::str, "interface-name-xr"},
     link_address{YType::str, "link-address"}
-    	,
+        ,
     incoming_path_statistics(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics>())
-	,incoming_reservation_statistics(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics>())
-	,outgoing_path_statistics(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics>())
-	,outgoing_reservation_statistics(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics>())
-	,incoming_path_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit>())
-	,incoming_reservation_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit>())
-	,outgoing_path_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit>())
-	,outgoing_reservation_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit>())
+    , incoming_reservation_statistics(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics>())
+    , outgoing_path_statistics(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics>())
+    , outgoing_reservation_statistics(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics>())
+    , incoming_path_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit>())
+    , incoming_reservation_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit>())
+    , outgoing_path_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit>())
+    , outgoing_reservation_statistics32_bit(std::make_shared<MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit>())
 {
     incoming_path_statistics->parent = this;
     incoming_reservation_statistics->parent = this;
@@ -301,7 +1077,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::StatsticsLink()
     outgoing_path_statistics32_bit->parent = this;
     outgoing_reservation_statistics32_bit->parent = this;
 
-    yang_name = "statstics-link"; yang_parent_name = "statstics-links"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statstics-link"; yang_parent_name = "statstics-links"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::~StatsticsLink()
@@ -310,6 +1086,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::~StatsticsLink()
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| link_address.is_set
@@ -349,7 +1126,8 @@ std::string MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::get_abso
 std::string MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statstics-link" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "statstics-link";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -545,7 +1323,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatisti
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "incoming-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::~IncomingPathStatistics()
@@ -554,6 +1332,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatisti
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -706,7 +1485,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationS
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "incoming-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics::~IncomingReservationStatistics()
@@ -715,6 +1494,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationS
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -867,7 +1647,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatisti
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "outgoing-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::~OutgoingPathStatistics()
@@ -876,6 +1656,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatisti
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -1028,7 +1809,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationS
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "outgoing-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics::~OutgoingReservationStatistics()
@@ -1037,6 +1818,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationS
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -1189,7 +1971,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatisti
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "incoming-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit::~IncomingPathStatistics32Bit()
@@ -1198,6 +1980,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatisti
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -1350,7 +2133,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationS
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "incoming-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit::~IncomingReservationStatistics32Bit()
@@ -1359,6 +2142,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationS
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -1511,7 +2295,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatisti
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "outgoing-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit::~OutgoingPathStatistics32Bit()
@@ -1520,6 +2304,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatisti
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -1672,7 +2457,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationS
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "outgoing-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit::~OutgoingReservationStatistics32Bit()
@@ -1681,6 +2466,7 @@ MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationS
 
 bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -1825,12 +2611,12 @@ bool MplsLcacStandby::Statistics::StatsticsLinks::StatsticsLink::OutgoingReserva
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocation()
     :
     global(std::make_shared<MplsLcacStandby::BandwidthAllocation::Global>())
-	,bandwidth_allocation_links(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks>())
+    , bandwidth_allocation_links(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks>())
 {
     global->parent = this;
     bandwidth_allocation_links->parent = this;
 
-    yang_name = "bandwidth-allocation"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-allocation"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BandwidthAllocation::~BandwidthAllocation()
@@ -1839,6 +2625,7 @@ MplsLcacStandby::BandwidthAllocation::~BandwidthAllocation()
 
 bool MplsLcacStandby::BandwidthAllocation::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (bandwidth_allocation_links !=  nullptr && bandwidth_allocation_links->has_data());
 }
@@ -1935,7 +2722,7 @@ MplsLcacStandby::BandwidthAllocation::Global::Global()
     bandwidth_hold_time{YType::uint16, "bandwidth-hold-time"}
 {
 
-    yang_name = "global"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BandwidthAllocation::Global::~Global()
@@ -1944,6 +2731,7 @@ MplsLcacStandby::BandwidthAllocation::Global::~Global()
 
 bool MplsLcacStandby::BandwidthAllocation::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return is_role_standby.is_set
 	|| links.is_set
 	|| bandwidth_hold_time.is_set;
@@ -2041,9 +2829,11 @@ bool MplsLcacStandby::BandwidthAllocation::Global::has_leaf_or_child_of_name(con
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLinks()
+    :
+    bandwidth_allocation_link(this, {"interface_name"})
 {
 
-    yang_name = "bandwidth-allocation-links"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-allocation-links"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::~BandwidthAllocationLinks()
@@ -2052,7 +2842,8 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::~BandwidthAlloca
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::has_data() const
 {
-    for (std::size_t index=0; index<bandwidth_allocation_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bandwidth_allocation_link.len(); index++)
     {
         if(bandwidth_allocation_link[index]->has_data())
             return true;
@@ -2062,7 +2853,7 @@ bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::has_data() 
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::has_operation() const
 {
-    for (std::size_t index=0; index<bandwidth_allocation_link.size(); index++)
+    for (std::size_t index=0; index<bandwidth_allocation_link.len(); index++)
     {
         if(bandwidth_allocation_link[index]->has_operation())
             return true;
@@ -2099,7 +2890,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink>();
         c->parent = this;
-        bandwidth_allocation_link.push_back(c);
+        bandwidth_allocation_link.append(c);
         return c;
     }
 
@@ -2111,7 +2902,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bandwidth_allocation_link)
+    for (auto c : bandwidth_allocation_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2147,16 +2938,18 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     flooding_down_thresholds_are_default{YType::boolean, "flooding-down-thresholds-are-default"},
     flooding_up_thresholds_are_global{YType::boolean, "flooding-up-thresholds-are-global"},
     flooding_down_thresholds_are_global{YType::boolean, "flooding-down-thresholds-are-global"}
-    	,
+        ,
     link_common(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon>())
-	,upstream_bandwidth(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth>())
-	,downstream_bandwidth(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth>())
+    , upstream_bandwidth(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth>())
+    , downstream_bandwidth(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth>())
+    , flooding_up_threshold(this, {})
+    , flooding_down_threshold(this, {})
 {
     link_common->parent = this;
     upstream_bandwidth->parent = this;
     downstream_bandwidth->parent = this;
 
-    yang_name = "bandwidth-allocation-link"; yang_parent_name = "bandwidth-allocation-links"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-allocation-link"; yang_parent_name = "bandwidth-allocation-links"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::~BandwidthAllocationLink()
@@ -2165,12 +2958,13 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::has_data() const
 {
-    for (std::size_t index=0; index<flooding_up_threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flooding_up_threshold.len(); index++)
     {
         if(flooding_up_threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flooding_down_threshold.size(); index++)
+    for (std::size_t index=0; index<flooding_down_threshold.len(); index++)
     {
         if(flooding_down_threshold[index]->has_data())
             return true;
@@ -2190,12 +2984,12 @@ bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::has_operation() const
 {
-    for (std::size_t index=0; index<flooding_up_threshold.size(); index++)
+    for (std::size_t index=0; index<flooding_up_threshold.len(); index++)
     {
         if(flooding_up_threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flooding_down_threshold.size(); index++)
+    for (std::size_t index=0; index<flooding_down_threshold.len(); index++)
     {
         if(flooding_down_threshold[index]->has_operation())
             return true;
@@ -2224,7 +3018,8 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bandwidth-allocation-link" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bandwidth-allocation-link";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2278,7 +3073,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold>();
         c->parent = this;
-        flooding_up_threshold.push_back(c);
+        flooding_up_threshold.append(c);
         return c;
     }
 
@@ -2286,7 +3081,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold>();
         c->parent = this;
-        flooding_down_threshold.push_back(c);
+        flooding_down_threshold.append(c);
         return c;
     }
 
@@ -2313,7 +3108,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     }
 
     count = 0;
-    for (auto const & c : flooding_up_threshold)
+    for (auto c : flooding_up_threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2322,7 +3117,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     }
 
     count = 0;
-    for (auto const & c : flooding_down_threshold)
+    for (auto c : flooding_down_threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2454,12 +3249,15 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     inbound_admission_method{YType::enumeration, "inbound-admission-method"},
     outbound_admission_method{YType::enumeration, "outbound-admission-method"},
     igp_neighbors{YType::uint16, "igp-neighbors"}
-    	,
+        ,
     link_flags(std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags>())
+    , shared_risk_link_group(this, {})
+    , interface_switching_capability_descriptor(this, {})
+    , flooded_areas(this, {})
 {
     link_flags->parent = this;
 
-    yang_name = "link-common"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-common"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::~LinkCommon()
@@ -2468,17 +3266,18 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::has_data() const
 {
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface_switching_capability_descriptor.size(); index++)
+    for (std::size_t index=0; index<interface_switching_capability_descriptor.len(); index++)
     {
         if(interface_switching_capability_descriptor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flooded_areas.size(); index++)
+    for (std::size_t index=0; index<flooded_areas.len(); index++)
     {
         if(flooded_areas[index]->has_data())
             return true;
@@ -2512,17 +3311,17 @@ bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::has_operation() const
 {
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface_switching_capability_descriptor.size(); index++)
+    for (std::size_t index=0; index<interface_switching_capability_descriptor.len(); index++)
     {
         if(interface_switching_capability_descriptor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flooded_areas.size(); index++)
+    for (std::size_t index=0; index<flooded_areas.len(); index++)
     {
         if(flooded_areas[index]->has_operation())
             return true;
@@ -2610,7 +3409,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup>();
         c->parent = this;
-        shared_risk_link_group.push_back(c);
+        shared_risk_link_group.append(c);
         return c;
     }
 
@@ -2618,7 +3417,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor>();
         c->parent = this;
-        interface_switching_capability_descriptor.push_back(c);
+        interface_switching_capability_descriptor.append(c);
         return c;
     }
 
@@ -2626,7 +3425,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas>();
         c->parent = this;
-        flooded_areas.push_back(c);
+        flooded_areas.append(c);
         return c;
     }
 
@@ -2643,7 +3442,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     }
 
     count = 0;
-    for (auto const & c : shared_risk_link_group)
+    for (auto c : shared_risk_link_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2652,7 +3451,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     }
 
     count = 0;
-    for (auto const & c : interface_switching_capability_descriptor)
+    for (auto c : interface_switching_capability_descriptor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2661,7 +3460,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     }
 
     count = 0;
-    for (auto const & c : flooded_areas)
+    for (auto c : flooded_areas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2934,7 +3733,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     is_admin_up{YType::boolean, "is-admin-up"}
 {
 
-    yang_name = "link-flags"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-flags"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags::~LinkFlags()
@@ -2943,6 +3742,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_mpls_te_on.is_set
 	|| signaling_agent.is_set
 	|| is_admin_up.is_set;
@@ -3038,7 +3838,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     srlg_name{YType::str, "srlg-name"}
 {
 
-    yang_name = "shared-risk-link-group"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shared-risk-link-group"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup::~SharedRiskLinkGroup()
@@ -3047,6 +3847,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return shared_risk_group.is_set
 	|| srlg_name.is_set;
 }
@@ -3130,7 +3931,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     encoding{YType::uint8, "encoding"}
 {
 
-    yang_name = "interface-switching-capability-descriptor"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-switching-capability-descriptor"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor::~InterfaceSwitchingCapabilityDescriptor()
@@ -3139,6 +3940,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| switching_capability.is_set
 	|| encoding.is_set;
@@ -3233,7 +4035,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     flooded_area{YType::str, "flooded-area"}
 {
 
-    yang_name = "flooded-areas"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooded-areas"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas::~FloodedAreas()
@@ -3242,6 +4044,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas::has_data() const
 {
+    if (is_presence_container) return true;
     return flooded_area.is_set;
 }
 
@@ -3310,9 +4113,12 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     bandwidth_direction{YType::enumeration, "bandwidth-direction"},
     is_admission_method_allocated_bandwidth{YType::boolean, "is-admission-method-allocated-bandwidth"},
     bandwidth_units{YType::enumeration, "bandwidth-units"}
+        ,
+    bandwidth_pool0(this, {})
+    , bandwidth_pool1(this, {})
 {
 
-    yang_name = "upstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "upstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::~UpstreamBandwidth()
@@ -3321,12 +4127,13 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::has_data() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_data())
             return true;
@@ -3338,12 +4145,12 @@ bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::has_operation() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_operation())
             return true;
@@ -3379,7 +4186,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0>();
         c->parent = this;
-        bandwidth_pool0.push_back(c);
+        bandwidth_pool0.append(c);
         return c;
     }
 
@@ -3387,7 +4194,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1>();
         c->parent = this;
-        bandwidth_pool1.push_back(c);
+        bandwidth_pool1.append(c);
         return c;
     }
 
@@ -3399,7 +4206,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bandwidth_pool0)
+    for (auto c : bandwidth_pool0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3408,7 +4215,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     }
 
     count = 0;
-    for (auto const & c : bandwidth_pool1)
+    for (auto c : bandwidth_pool1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3473,7 +4280,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool0"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool0"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0::~BandwidthPool0()
@@ -3482,6 +4289,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -3606,7 +4414,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool1"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool1"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1::~BandwidthPool1()
@@ -3615,6 +4423,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -3735,9 +4544,12 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     bandwidth_direction{YType::enumeration, "bandwidth-direction"},
     is_admission_method_allocated_bandwidth{YType::boolean, "is-admission-method-allocated-bandwidth"},
     bandwidth_units{YType::enumeration, "bandwidth-units"}
+        ,
+    bandwidth_pool0(this, {})
+    , bandwidth_pool1(this, {})
 {
 
-    yang_name = "downstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "downstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::~DownstreamBandwidth()
@@ -3746,12 +4558,13 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::has_data() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_data())
             return true;
@@ -3763,12 +4576,12 @@ bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::has_operation() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_operation())
             return true;
@@ -3804,7 +4617,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0>();
         c->parent = this;
-        bandwidth_pool0.push_back(c);
+        bandwidth_pool0.append(c);
         return c;
     }
 
@@ -3812,7 +4625,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAllocation::BandwidthAllocatio
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1>();
         c->parent = this;
-        bandwidth_pool1.push_back(c);
+        bandwidth_pool1.append(c);
         return c;
     }
 
@@ -3824,7 +4637,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bandwidth_pool0)
+    for (auto c : bandwidth_pool0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3833,7 +4646,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAllocat
     }
 
     count = 0;
-    for (auto const & c : bandwidth_pool1)
+    for (auto c : bandwidth_pool1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3898,7 +4711,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool0"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool0"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0::~BandwidthPool0()
@@ -3907,6 +4720,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -4031,7 +4845,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool1"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool1"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1::~BandwidthPool1()
@@ -4040,6 +4854,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -4160,7 +4975,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "flooding-up-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding-up-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold::~FloodingUpThreshold()
@@ -4169,6 +4984,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4237,7 +5053,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "flooding-down-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding-down-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold::~FloodingDownThreshold()
@@ -4246,6 +5062,7 @@ MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocat
 
 bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -4312,12 +5129,12 @@ bool MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 MplsLcacStandby::Gmpls::Gmpls()
     :
     nni(std::make_shared<MplsLcacStandby::Gmpls::Nni>())
-	,uni(std::make_shared<MplsLcacStandby::Gmpls::Uni>())
+    , uni(std::make_shared<MplsLcacStandby::Gmpls::Uni>())
 {
     nni->parent = this;
     uni->parent = this;
 
-    yang_name = "gmpls"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gmpls"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::Gmpls::~Gmpls()
@@ -4326,6 +5143,7 @@ MplsLcacStandby::Gmpls::~Gmpls()
 
 bool MplsLcacStandby::Gmpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (nni !=  nullptr && nni->has_data())
 	|| (uni !=  nullptr && uni->has_data());
 }
@@ -4418,7 +5236,7 @@ bool MplsLcacStandby::Gmpls::has_leaf_or_child_of_name(const std::string & name)
 MplsLcacStandby::Gmpls::Nni::Nni()
 {
 
-    yang_name = "nni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::Gmpls::Nni::~Nni()
@@ -4427,6 +5245,7 @@ MplsLcacStandby::Gmpls::Nni::~Nni()
 
 bool MplsLcacStandby::Gmpls::Nni::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4486,7 +5305,7 @@ bool MplsLcacStandby::Gmpls::Nni::has_leaf_or_child_of_name(const std::string & 
 MplsLcacStandby::Gmpls::Uni::Uni()
 {
 
-    yang_name = "uni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "uni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::Gmpls::Uni::~Uni()
@@ -4495,6 +5314,7 @@ MplsLcacStandby::Gmpls::Uni::~Uni()
 
 bool MplsLcacStandby::Gmpls::Uni::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4552,9 +5372,11 @@ bool MplsLcacStandby::Gmpls::Uni::has_leaf_or_child_of_name(const std::string & 
 }
 
 MplsLcacStandby::BfdNeighbors::BfdNeighbors()
+    :
+    bfd_neighbor(this, {"interface_name"})
 {
 
-    yang_name = "bfd-neighbors"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-neighbors"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BfdNeighbors::~BfdNeighbors()
@@ -4563,7 +5385,8 @@ MplsLcacStandby::BfdNeighbors::~BfdNeighbors()
 
 bool MplsLcacStandby::BfdNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<bfd_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_neighbor.len(); index++)
     {
         if(bfd_neighbor[index]->has_data())
             return true;
@@ -4573,7 +5396,7 @@ bool MplsLcacStandby::BfdNeighbors::has_data() const
 
 bool MplsLcacStandby::BfdNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_neighbor.size(); index++)
+    for (std::size_t index=0; index<bfd_neighbor.len(); index++)
     {
         if(bfd_neighbor[index]->has_operation())
             return true;
@@ -4610,7 +5433,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BfdNeighbors::get_child_by_name(const s
     {
         auto c = std::make_shared<MplsLcacStandby::BfdNeighbors::BfdNeighbor>();
         c->parent = this;
-        bfd_neighbor.push_back(c);
+        bfd_neighbor.append(c);
         return c;
     }
 
@@ -4622,7 +5445,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BfdNeighbors::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bfd_neighbor)
+    for (auto c : bfd_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4651,9 +5474,11 @@ bool MplsLcacStandby::BfdNeighbors::has_leaf_or_child_of_name(const std::string 
 MplsLcacStandby::BfdNeighbors::BfdNeighbor::BfdNeighbor()
     :
     interface_name{YType::str, "interface-name"}
+        ,
+    neighbor(this, {})
 {
 
-    yang_name = "bfd-neighbor"; yang_parent_name = "bfd-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-neighbor"; yang_parent_name = "bfd-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BfdNeighbors::BfdNeighbor::~BfdNeighbor()
@@ -4662,7 +5487,8 @@ MplsLcacStandby::BfdNeighbors::BfdNeighbor::~BfdNeighbor()
 
 bool MplsLcacStandby::BfdNeighbors::BfdNeighbor::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -4672,7 +5498,7 @@ bool MplsLcacStandby::BfdNeighbors::BfdNeighbor::has_data() const
 
 bool MplsLcacStandby::BfdNeighbors::BfdNeighbor::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -4691,7 +5517,8 @@ std::string MplsLcacStandby::BfdNeighbors::BfdNeighbor::get_absolute_path() cons
 std::string MplsLcacStandby::BfdNeighbors::BfdNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-neighbor" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bfd-neighbor";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -4711,7 +5538,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BfdNeighbors::BfdNeighbor::get_child_by
     {
         auto c = std::make_shared<MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -4723,7 +5550,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BfdNeighbors::Bf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4765,7 +5592,7 @@ MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor::Neighbor()
     is_bfd_up{YType::boolean, "is-bfd-up"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "bfd-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "bfd-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor::~Neighbor()
@@ -4774,6 +5601,7 @@ MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor::~Neighbor()
 
 bool MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set
 	|| is_bfd_up.is_set;
 }
@@ -4856,7 +5684,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccount()
 {
     bandwidth_account_links->parent = this;
 
-    yang_name = "bandwidth-account"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-account"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BandwidthAccount::~BandwidthAccount()
@@ -4865,6 +5693,7 @@ MplsLcacStandby::BandwidthAccount::~BandwidthAccount()
 
 bool MplsLcacStandby::BandwidthAccount::has_data() const
 {
+    if (is_presence_container) return true;
     return (bandwidth_account_links !=  nullptr && bandwidth_account_links->has_data());
 }
 
@@ -4939,9 +5768,11 @@ bool MplsLcacStandby::BandwidthAccount::has_leaf_or_child_of_name(const std::str
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLinks()
+    :
+    bandwidth_account_link(this, {"interface_name"})
 {
 
-    yang_name = "bandwidth-account-links"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-account-links"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::~BandwidthAccountLinks()
@@ -4950,7 +5781,8 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::~BandwidthAccountLinks
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::has_data() const
 {
-    for (std::size_t index=0; index<bandwidth_account_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bandwidth_account_link.len(); index++)
     {
         if(bandwidth_account_link[index]->has_data())
             return true;
@@ -4960,7 +5792,7 @@ bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::has_data() const
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::has_operation() const
 {
-    for (std::size_t index=0; index<bandwidth_account_link.size(); index++)
+    for (std::size_t index=0; index<bandwidth_account_link.len(); index++)
     {
         if(bandwidth_account_link[index]->has_operation())
             return true;
@@ -4997,7 +5829,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink>();
         c->parent = this;
-        bandwidth_account_link.push_back(c);
+        bandwidth_account_link.append(c);
         return c;
     }
 
@@ -5009,7 +5841,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bandwidth_account_link)
+    for (auto c : bandwidth_account_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5039,16 +5871,16 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     :
     interface_name{YType::str, "interface-name"},
     link_id{YType::str, "link-id"}
-    	,
+        ,
     common_info(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo>())
-	,rsvp_te_sample_history(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory>())
-	,sr_sample_history(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory>())
+    , rsvp_te_sample_history(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory>())
+    , sr_sample_history(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory>())
 {
     common_info->parent = this;
     rsvp_te_sample_history->parent = this;
     sr_sample_history->parent = this;
 
-    yang_name = "bandwidth-account-link"; yang_parent_name = "bandwidth-account-links"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-account-link"; yang_parent_name = "bandwidth-account-links"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::~BandwidthAccountLink()
@@ -5057,6 +5889,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| link_id.is_set
 	|| (common_info !=  nullptr && common_info->has_data())
@@ -5084,7 +5917,8 @@ std::string MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthA
 std::string MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bandwidth-account-link" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bandwidth-account-link";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5200,14 +6034,14 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     last_application_timestamp_nanosec{YType::uint64, "last-application-timestamp-nanosec"},
     next_application_timestamp_nanosec{YType::uint64, "next-application-timestamp-nanosec"},
     effective_maximum_reservable_bandwidth{YType::uint64, "effective-maximum-reservable-bandwidth"}
-    	,
+        ,
     rsvp_te_bandwidth_utilization(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization>())
-	,sr_bandwidth_utilization(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization>())
+    , sr_bandwidth_utilization(std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization>())
 {
     rsvp_te_bandwidth_utilization->parent = this;
     sr_bandwidth_utilization->parent = this;
 
-    yang_name = "common-info"; yang_parent_name = "bandwidth-account-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-info"; yang_parent_name = "bandwidth-account-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::~CommonInfo()
@@ -5216,6 +6050,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return is_bandwidth_account_enabled.is_set
 	|| application_enforced.is_set
 	|| collection_type.is_set
@@ -5437,7 +6272,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     rsvp_te_enforced_bandwidth_utilization{YType::uint64, "rsvp-te-enforced-bandwidth-utilization"}
 {
 
-    yang_name = "rsvp-te-bandwidth-utilization"; yang_parent_name = "common-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-bandwidth-utilization"; yang_parent_name = "common-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::~RsvpTeBandwidthUtilization()
@@ -5446,6 +6281,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::has_data() const
 {
+    if (is_presence_container) return true;
     return total_link_bandwidth_utilization.is_set
 	|| rsvp_te_bandwidth_utilization.is_set
 	|| non_rsvp_te_bandwidth_utilization.is_set
@@ -5568,7 +6404,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     sr_enforced_bandwidth_utilization{YType::uint64, "sr-enforced-bandwidth-utilization"}
 {
 
-    yang_name = "sr-bandwidth-utilization"; yang_parent_name = "common-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-bandwidth-utilization"; yang_parent_name = "common-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization::~SrBandwidthUtilization()
@@ -5577,6 +6413,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization::has_data() const
 {
+    if (is_presence_container) return true;
     return sr_bandwidth_utilization.is_set
 	|| sr_adjusted_bandwidth_utilization.is_set
 	|| sr_enforced_bandwidth_utilization.is_set;
@@ -5667,9 +6504,12 @@ bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeSampleHistory()
+    :
+    rsvp_te_active_interval_sample(this, {})
+    , rsvp_te_previous_interval_sample(this, {})
 {
 
-    yang_name = "rsvp-te-sample-history"; yang_parent_name = "bandwidth-account-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-sample-history"; yang_parent_name = "bandwidth-account-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::~RsvpTeSampleHistory()
@@ -5678,12 +6518,13 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::has_data() const
 {
-    for (std::size_t index=0; index<rsvp_te_active_interval_sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvp_te_active_interval_sample.len(); index++)
     {
         if(rsvp_te_active_interval_sample[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.len(); index++)
     {
         if(rsvp_te_previous_interval_sample[index]->has_data())
             return true;
@@ -5693,12 +6534,12 @@ bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::has_operation() const
 {
-    for (std::size_t index=0; index<rsvp_te_active_interval_sample.size(); index++)
+    for (std::size_t index=0; index<rsvp_te_active_interval_sample.len(); index++)
     {
         if(rsvp_te_active_interval_sample[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.len(); index++)
     {
         if(rsvp_te_previous_interval_sample[index]->has_operation())
             return true;
@@ -5728,7 +6569,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeActiveIntervalSample>();
         c->parent = this;
-        rsvp_te_active_interval_sample.push_back(c);
+        rsvp_te_active_interval_sample.append(c);
         return c;
     }
 
@@ -5736,7 +6577,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTePreviousIntervalSample>();
         c->parent = this;
-        rsvp_te_previous_interval_sample.push_back(c);
+        rsvp_te_previous_interval_sample.append(c);
         return c;
     }
 
@@ -5748,7 +6589,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvp_te_active_interval_sample)
+    for (auto c : rsvp_te_active_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5757,7 +6598,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount
     }
 
     count = 0;
-    for (auto const & c : rsvp_te_previous_interval_sample)
+    for (auto c : rsvp_te_previous_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5794,7 +6635,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     non_rsvp_te_packet_rate{YType::uint64, "non-rsvp-te-packet-rate"}
 {
 
-    yang_name = "rsvp-te-active-interval-sample"; yang_parent_name = "rsvp-te-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-active-interval-sample"; yang_parent_name = "rsvp-te-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeActiveIntervalSample::~RsvpTeActiveIntervalSample()
@@ -5803,6 +6644,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTeActiveIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp_nanosec.is_set
 	|| total_rate.is_set
 	|| total_packet_rate.is_set
@@ -5955,7 +6797,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     non_rsvp_te_packet_rate{YType::uint64, "non-rsvp-te-packet-rate"}
 {
 
-    yang_name = "rsvp-te-previous-interval-sample"; yang_parent_name = "rsvp-te-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-previous-interval-sample"; yang_parent_name = "rsvp-te-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTePreviousIntervalSample::~RsvpTePreviousIntervalSample()
@@ -5964,6 +6806,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory::RsvpTePreviousIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp_nanosec.is_set
 	|| total_rate.is_set
 	|| total_packet_rate.is_set
@@ -6106,9 +6949,12 @@ bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrSampleHistory()
+    :
+    sr_active_interval_sample(this, {})
+    , sr_previous_interval_sample(this, {})
 {
 
-    yang_name = "sr-sample-history"; yang_parent_name = "bandwidth-account-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-sample-history"; yang_parent_name = "bandwidth-account-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::~SrSampleHistory()
@@ -6117,12 +6963,13 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::has_data() const
 {
-    for (std::size_t index=0; index<sr_active_interval_sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_active_interval_sample.len(); index++)
     {
         if(sr_active_interval_sample[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sr_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<sr_previous_interval_sample.len(); index++)
     {
         if(sr_previous_interval_sample[index]->has_data())
             return true;
@@ -6132,12 +6979,12 @@ bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::has_operation() const
 {
-    for (std::size_t index=0; index<sr_active_interval_sample.size(); index++)
+    for (std::size_t index=0; index<sr_active_interval_sample.len(); index++)
     {
         if(sr_active_interval_sample[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sr_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<sr_previous_interval_sample.len(); index++)
     {
         if(sr_previous_interval_sample[index]->has_operation())
             return true;
@@ -6167,7 +7014,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrActiveIntervalSample>();
         c->parent = this;
-        sr_active_interval_sample.push_back(c);
+        sr_active_interval_sample.append(c);
         return c;
     }
 
@@ -6175,7 +7022,7 @@ std::shared_ptr<Entity> MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks
     {
         auto c = std::make_shared<MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrPreviousIntervalSample>();
         c->parent = this;
-        sr_previous_interval_sample.push_back(c);
+        sr_previous_interval_sample.append(c);
         return c;
     }
 
@@ -6187,7 +7034,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sr_active_interval_sample)
+    for (auto c : sr_active_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6196,7 +7043,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::BandwidthAccount
     }
 
     count = 0;
-    for (auto const & c : sr_previous_interval_sample)
+    for (auto c : sr_previous_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6229,7 +7076,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     sr_packet_rate{YType::uint64, "sr-packet-rate"}
 {
 
-    yang_name = "sr-active-interval-sample"; yang_parent_name = "sr-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-active-interval-sample"; yang_parent_name = "sr-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrActiveIntervalSample::~SrActiveIntervalSample()
@@ -6238,6 +7085,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrActiveIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp_nanosec.is_set
 	|| sr_rate.is_set
 	|| sr_packet_rate.is_set;
@@ -6334,7 +7182,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
     sr_packet_rate{YType::uint64, "sr-packet-rate"}
 {
 
-    yang_name = "sr-previous-interval-sample"; yang_parent_name = "sr-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-previous-interval-sample"; yang_parent_name = "sr-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrPreviousIntervalSample::~SrPreviousIntervalSample()
@@ -6343,6 +7191,7 @@ MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::
 
 bool MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory::SrPreviousIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp_nanosec.is_set
 	|| sr_rate.is_set
 	|| sr_packet_rate.is_set;
@@ -6438,12 +7287,13 @@ MplsLcacStandby::LinkSummary::LinkSummary()
     links{YType::uint16, "links"},
     maximum_links{YType::uint16, "maximum-links"},
     is_flooding_enabled{YType::boolean, "is-flooding-enabled"}
-    	,
+        ,
     bandwidth_account_summary(std::make_shared<MplsLcacStandby::LinkSummary::BandwidthAccountSummary>())
+    , areas_summary(this, {})
 {
     bandwidth_account_summary->parent = this;
 
-    yang_name = "link-summary"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-summary"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::LinkSummary::~LinkSummary()
@@ -6452,7 +7302,8 @@ MplsLcacStandby::LinkSummary::~LinkSummary()
 
 bool MplsLcacStandby::LinkSummary::has_data() const
 {
-    for (std::size_t index=0; index<areas_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<areas_summary.len(); index++)
     {
         if(areas_summary[index]->has_data())
             return true;
@@ -6466,7 +7317,7 @@ bool MplsLcacStandby::LinkSummary::has_data() const
 
 bool MplsLcacStandby::LinkSummary::has_operation() const
 {
-    for (std::size_t index=0; index<areas_summary.size(); index++)
+    for (std::size_t index=0; index<areas_summary.len(); index++)
     {
         if(areas_summary[index]->has_operation())
             return true;
@@ -6521,7 +7372,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkSummary::get_child_by_name(const st
     {
         auto c = std::make_shared<MplsLcacStandby::LinkSummary::AreasSummary>();
         c->parent = this;
-        areas_summary.push_back(c);
+        areas_summary.append(c);
         return c;
     }
 
@@ -6538,7 +7389,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkSummary::get
     }
 
     count = 0;
-    for (auto const & c : areas_summary)
+    for (auto c : areas_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6610,10 +7461,12 @@ MplsLcacStandby::LinkSummary::BandwidthAccountSummary::BandwidthAccountSummary()
     sample_interval{YType::uint32, "sample-interval"},
     sample_time_remaining{YType::uint32, "sample-time-remaining"},
     application_interval{YType::uint32, "application-interval"},
-    application_time_remaining{YType::uint32, "application-time-remaining"}
+    application_time_remaining{YType::uint32, "application-time-remaining"},
+    links_count{YType::uint32, "links-count"},
+    maximum_links{YType::uint32, "maximum-links"}
 {
 
-    yang_name = "bandwidth-account-summary"; yang_parent_name = "link-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-account-summary"; yang_parent_name = "link-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::LinkSummary::BandwidthAccountSummary::~BandwidthAccountSummary()
@@ -6622,11 +7475,14 @@ MplsLcacStandby::LinkSummary::BandwidthAccountSummary::~BandwidthAccountSummary(
 
 bool MplsLcacStandby::LinkSummary::BandwidthAccountSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return is_bandwidth_account_enabled.is_set
 	|| sample_interval.is_set
 	|| sample_time_remaining.is_set
 	|| application_interval.is_set
-	|| application_time_remaining.is_set;
+	|| application_time_remaining.is_set
+	|| links_count.is_set
+	|| maximum_links.is_set;
 }
 
 bool MplsLcacStandby::LinkSummary::BandwidthAccountSummary::has_operation() const
@@ -6636,7 +7492,9 @@ bool MplsLcacStandby::LinkSummary::BandwidthAccountSummary::has_operation() cons
 	|| ydk::is_set(sample_interval.yfilter)
 	|| ydk::is_set(sample_time_remaining.yfilter)
 	|| ydk::is_set(application_interval.yfilter)
-	|| ydk::is_set(application_time_remaining.yfilter);
+	|| ydk::is_set(application_time_remaining.yfilter)
+	|| ydk::is_set(links_count.yfilter)
+	|| ydk::is_set(maximum_links.yfilter);
 }
 
 std::string MplsLcacStandby::LinkSummary::BandwidthAccountSummary::get_absolute_path() const
@@ -6662,6 +7520,8 @@ std::vector<std::pair<std::string, LeafData> > MplsLcacStandby::LinkSummary::Ban
     if (sample_time_remaining.is_set || is_set(sample_time_remaining.yfilter)) leaf_name_data.push_back(sample_time_remaining.get_name_leafdata());
     if (application_interval.is_set || is_set(application_interval.yfilter)) leaf_name_data.push_back(application_interval.get_name_leafdata());
     if (application_time_remaining.is_set || is_set(application_time_remaining.yfilter)) leaf_name_data.push_back(application_time_remaining.get_name_leafdata());
+    if (links_count.is_set || is_set(links_count.yfilter)) leaf_name_data.push_back(links_count.get_name_leafdata());
+    if (maximum_links.is_set || is_set(maximum_links.yfilter)) leaf_name_data.push_back(maximum_links.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6711,6 +7571,18 @@ void MplsLcacStandby::LinkSummary::BandwidthAccountSummary::set_value(const std:
         application_time_remaining.value_namespace = name_space;
         application_time_remaining.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "links-count")
+    {
+        links_count = value;
+        links_count.value_namespace = name_space;
+        links_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maximum-links")
+    {
+        maximum_links = value;
+        maximum_links.value_namespace = name_space;
+        maximum_links.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsLcacStandby::LinkSummary::BandwidthAccountSummary::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6735,11 +7607,19 @@ void MplsLcacStandby::LinkSummary::BandwidthAccountSummary::set_filter(const std
     {
         application_time_remaining.yfilter = yfilter;
     }
+    if(value_path == "links-count")
+    {
+        links_count.yfilter = yfilter;
+    }
+    if(value_path == "maximum-links")
+    {
+        maximum_links.yfilter = yfilter;
+    }
 }
 
 bool MplsLcacStandby::LinkSummary::BandwidthAccountSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "is-bandwidth-account-enabled" || name == "sample-interval" || name == "sample-time-remaining" || name == "application-interval" || name == "application-time-remaining")
+    if(name == "is-bandwidth-account-enabled" || name == "sample-interval" || name == "sample-time-remaining" || name == "application-interval" || name == "application-time-remaining" || name == "links-count" || name == "maximum-links")
         return true;
     return false;
 }
@@ -6757,7 +7637,7 @@ MplsLcacStandby::LinkSummary::AreasSummary::AreasSummary()
     igp_neighbors{YType::uint16, "igp-neighbors"}
 {
 
-    yang_name = "areas-summary"; yang_parent_name = "link-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "areas-summary"; yang_parent_name = "link-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::LinkSummary::AreasSummary::~AreasSummary()
@@ -6766,6 +7646,7 @@ MplsLcacStandby::LinkSummary::AreasSummary::~AreasSummary()
 
 bool MplsLcacStandby::LinkSummary::AreasSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return area_id.is_set
 	|| protocol.is_set
 	|| is_flooded.is_set
@@ -6943,12 +7824,12 @@ bool MplsLcacStandby::LinkSummary::AreasSummary::has_leaf_or_child_of_name(const
 MplsLcacStandby::LinkInformation::LinkInformation()
     :
     global(std::make_shared<MplsLcacStandby::LinkInformation::Global>())
-	,links(std::make_shared<MplsLcacStandby::LinkInformation::Links>())
+    , links(std::make_shared<MplsLcacStandby::LinkInformation::Links>())
 {
     global->parent = this;
     links->parent = this;
 
-    yang_name = "link-information"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-information"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::LinkInformation::~LinkInformation()
@@ -6957,6 +7838,7 @@ MplsLcacStandby::LinkInformation::~LinkInformation()
 
 bool MplsLcacStandby::LinkInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (links !=  nullptr && links->has_data());
 }
@@ -7053,7 +7935,7 @@ MplsLcacStandby::LinkInformation::Global::Global()
     maximum_links{YType::uint16, "maximum-links"}
 {
 
-    yang_name = "global"; yang_parent_name = "link-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "link-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::LinkInformation::Global::~Global()
@@ -7062,6 +7944,7 @@ MplsLcacStandby::LinkInformation::Global::~Global()
 
 bool MplsLcacStandby::LinkInformation::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return is_role_standby.is_set
 	|| links.is_set
 	|| maximum_links.is_set;
@@ -7159,9 +8042,11 @@ bool MplsLcacStandby::LinkInformation::Global::has_leaf_or_child_of_name(const s
 }
 
 MplsLcacStandby::LinkInformation::Links::Links()
+    :
+    link(this, {"interface_name"})
 {
 
-    yang_name = "links"; yang_parent_name = "link-information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "links"; yang_parent_name = "link-information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::LinkInformation::Links::~Links()
@@ -7170,7 +8055,8 @@ MplsLcacStandby::LinkInformation::Links::~Links()
 
 bool MplsLcacStandby::LinkInformation::Links::has_data() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_data())
             return true;
@@ -7180,7 +8066,7 @@ bool MplsLcacStandby::LinkInformation::Links::has_data() const
 
 bool MplsLcacStandby::LinkInformation::Links::has_operation() const
 {
-    for (std::size_t index=0; index<link.size(); index++)
+    for (std::size_t index=0; index<link.len(); index++)
     {
         if(link[index]->has_operation())
             return true;
@@ -7217,7 +8103,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::get_child_by_na
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link>();
         c->parent = this;
-        link.push_back(c);
+        link.append(c);
         return c;
     }
 
@@ -7229,7 +8115,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link)
+    for (auto c : link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7270,16 +8156,21 @@ MplsLcacStandby::LinkInformation::Links::Link::Link()
     is_name_based_attribute{YType::boolean, "is-name-based-attribute"},
     te_metric{YType::uint32, "te-metric"},
     is_te_metric_valid{YType::boolean, "is-te-metric-valid"}
-    	,
+        ,
     link_common(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon>())
-	,bandwidth_account(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount>())
-	,hw_oor(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::HwOor>())
+    , bandwidth_account(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount>())
+    , hw_oor(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::HwOor>())
+    , link_extended_attribute(this, {})
+    , link_forwad_ref_value(this, {})
+    , affinity_map(this, {})
+    , areas(this, {})
+    , lockout(this, {})
 {
     link_common->parent = this;
     bandwidth_account->parent = this;
     hw_oor->parent = this;
 
-    yang_name = "link"; yang_parent_name = "links"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link"; yang_parent_name = "links"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::~Link()
@@ -7288,27 +8179,28 @@ MplsLcacStandby::LinkInformation::Links::Link::~Link()
 
 bool MplsLcacStandby::LinkInformation::Links::Link::has_data() const
 {
-    for (std::size_t index=0; index<link_extended_attribute.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_extended_attribute.len(); index++)
     {
         if(link_extended_attribute[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_forwad_ref_value.size(); index++)
+    for (std::size_t index=0; index<link_forwad_ref_value.len(); index++)
     {
         if(link_forwad_ref_value[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<affinity_map.size(); index++)
+    for (std::size_t index=0; index<affinity_map.len(); index++)
     {
         if(affinity_map[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<areas.size(); index++)
+    for (std::size_t index=0; index<areas.len(); index++)
     {
         if(areas[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<lockout.size(); index++)
+    for (std::size_t index=0; index<lockout.len(); index++)
     {
         if(lockout[index]->has_data())
             return true;
@@ -7333,27 +8225,27 @@ bool MplsLcacStandby::LinkInformation::Links::Link::has_data() const
 
 bool MplsLcacStandby::LinkInformation::Links::Link::has_operation() const
 {
-    for (std::size_t index=0; index<link_extended_attribute.size(); index++)
+    for (std::size_t index=0; index<link_extended_attribute.len(); index++)
     {
         if(link_extended_attribute[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_forwad_ref_value.size(); index++)
+    for (std::size_t index=0; index<link_forwad_ref_value.len(); index++)
     {
         if(link_forwad_ref_value[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<affinity_map.size(); index++)
+    for (std::size_t index=0; index<affinity_map.len(); index++)
     {
         if(affinity_map[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<areas.size(); index++)
+    for (std::size_t index=0; index<areas.len(); index++)
     {
         if(areas[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<lockout.size(); index++)
+    for (std::size_t index=0; index<lockout.len(); index++)
     {
         if(lockout[index]->has_operation())
             return true;
@@ -7387,7 +8279,8 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::get_absolute_path() c
 std::string MplsLcacStandby::LinkInformation::Links::Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "link";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -7446,7 +8339,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute>();
         c->parent = this;
-        link_extended_attribute.push_back(c);
+        link_extended_attribute.append(c);
         return c;
     }
 
@@ -7454,7 +8347,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue>();
         c->parent = this;
-        link_forwad_ref_value.push_back(c);
+        link_forwad_ref_value.append(c);
         return c;
     }
 
@@ -7462,7 +8355,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::AffinityMap>();
         c->parent = this;
-        affinity_map.push_back(c);
+        affinity_map.append(c);
         return c;
     }
 
@@ -7470,7 +8363,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::Areas>();
         c->parent = this;
-        areas.push_back(c);
+        areas.append(c);
         return c;
     }
 
@@ -7478,7 +8371,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::get_child
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::Lockout>();
         c->parent = this;
-        lockout.push_back(c);
+        lockout.append(c);
         return c;
     }
 
@@ -7505,7 +8398,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : link_extended_attribute)
+    for (auto c : link_extended_attribute.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7514,7 +8407,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : link_forwad_ref_value)
+    for (auto c : link_forwad_ref_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7523,7 +8416,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : affinity_map)
+    for (auto c : affinity_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7532,7 +8425,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : areas)
+    for (auto c : areas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7541,7 +8434,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : lockout)
+    for (auto c : lockout.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7723,12 +8616,15 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkCommon()
     inbound_admission_method{YType::enumeration, "inbound-admission-method"},
     outbound_admission_method{YType::enumeration, "outbound-admission-method"},
     igp_neighbors{YType::uint16, "igp-neighbors"}
-    	,
+        ,
     link_flags(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkFlags>())
+    , shared_risk_link_group(this, {})
+    , interface_switching_capability_descriptor(this, {})
+    , flooded_areas(this, {})
 {
     link_flags->parent = this;
 
-    yang_name = "link-common"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-common"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::~LinkCommon()
@@ -7737,17 +8633,18 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::~LinkCommon()
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::has_data() const
 {
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface_switching_capability_descriptor.size(); index++)
+    for (std::size_t index=0; index<interface_switching_capability_descriptor.len(); index++)
     {
         if(interface_switching_capability_descriptor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flooded_areas.size(); index++)
+    for (std::size_t index=0; index<flooded_areas.len(); index++)
     {
         if(flooded_areas[index]->has_data())
             return true;
@@ -7781,17 +8678,17 @@ bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::has_data() const
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::has_operation() const
 {
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface_switching_capability_descriptor.size(); index++)
+    for (std::size_t index=0; index<interface_switching_capability_descriptor.len(); index++)
     {
         if(interface_switching_capability_descriptor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flooded_areas.size(); index++)
+    for (std::size_t index=0; index<flooded_areas.len(); index++)
     {
         if(flooded_areas[index]->has_operation())
             return true;
@@ -7879,7 +8776,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup>();
         c->parent = this;
-        shared_risk_link_group.push_back(c);
+        shared_risk_link_group.append(c);
         return c;
     }
 
@@ -7887,7 +8784,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCapabilityDescriptor>();
         c->parent = this;
-        interface_switching_capability_descriptor.push_back(c);
+        interface_switching_capability_descriptor.append(c);
         return c;
     }
 
@@ -7895,7 +8792,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::LinkCommo
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas>();
         c->parent = this;
-        flooded_areas.push_back(c);
+        flooded_areas.append(c);
         return c;
     }
 
@@ -7912,7 +8809,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : shared_risk_link_group)
+    for (auto c : shared_risk_link_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7921,7 +8818,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : interface_switching_capability_descriptor)
+    for (auto c : interface_switching_capability_descriptor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7930,7 +8827,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : flooded_areas)
+    for (auto c : flooded_areas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8203,7 +9100,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkFlags::LinkFlags(
     is_admin_up{YType::boolean, "is-admin-up"}
 {
 
-    yang_name = "link-flags"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-flags"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkFlags::~LinkFlags()
@@ -8212,6 +9109,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkFlags::~LinkFlags
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::LinkFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_mpls_te_on.is_set
 	|| signaling_agent.is_set
 	|| is_admin_up.is_set;
@@ -8307,7 +9205,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup::
     srlg_name{YType::str, "srlg-name"}
 {
 
-    yang_name = "shared-risk-link-group"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shared-risk-link-group"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup::~SharedRiskLinkGroup()
@@ -8316,6 +9214,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup::
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return shared_risk_group.is_set
 	|| srlg_name.is_set;
 }
@@ -8399,7 +9298,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCap
     encoding{YType::uint8, "encoding"}
 {
 
-    yang_name = "interface-switching-capability-descriptor"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-switching-capability-descriptor"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCapabilityDescriptor::~InterfaceSwitchingCapabilityDescriptor()
@@ -8408,6 +9307,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCap
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchingCapabilityDescriptor::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| switching_capability.is_set
 	|| encoding.is_set;
@@ -8502,7 +9402,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas::Flooded
     flooded_area{YType::str, "flooded-area"}
 {
 
-    yang_name = "flooded-areas"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooded-areas"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas::~FloodedAreas()
@@ -8511,6 +9411,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas::~Floode
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas::has_data() const
 {
+    if (is_presence_container) return true;
     return flooded_area.is_set;
 }
 
@@ -8577,14 +9478,14 @@ bool MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAreas::ha
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccount()
     :
     bandwidth_account_common_info(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo>())
-	,rsvp_te_bandwidth_sample_history(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory>())
-	,sr_bandwidth_sample_history(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory>())
+    , rsvp_te_bandwidth_sample_history(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory>())
+    , sr_bandwidth_sample_history(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory>())
 {
     bandwidth_account_common_info->parent = this;
     rsvp_te_bandwidth_sample_history->parent = this;
     sr_bandwidth_sample_history->parent = this;
 
-    yang_name = "bandwidth-account"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-account"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::~BandwidthAccount()
@@ -8593,6 +9494,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::~BandwidthAccou
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::has_data() const
 {
+    if (is_presence_container) return true;
     return (bandwidth_account_common_info !=  nullptr && bandwidth_account_common_info->has_data())
 	|| (rsvp_te_bandwidth_sample_history !=  nullptr && rsvp_te_bandwidth_sample_history->has_data())
 	|| (sr_bandwidth_sample_history !=  nullptr && sr_bandwidth_sample_history->has_data());
@@ -8708,14 +9610,14 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccoun
     max_reservable_bandwidth_threshold_are_default{YType::boolean, "max-reservable-bandwidth-threshold-are-default"},
     up_threshold_max_reservable_bandwidth{YType::uint8, "up-threshold-max-reservable-bandwidth"},
     down_threshold_max_reservable_bandwidth{YType::uint8, "down-threshold-max-reservable-bandwidth"}
-    	,
+        ,
     rsvp_te_bandwidth_utilization(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::RsvpTeBandwidthUtilization>())
-	,sr_bandwidth_utilization(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::SrBandwidthUtilization>())
+    , sr_bandwidth_utilization(std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::SrBandwidthUtilization>())
 {
     rsvp_te_bandwidth_utilization->parent = this;
     sr_bandwidth_utilization->parent = this;
 
-    yang_name = "bandwidth-account-common-info"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-account-common-info"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::~BandwidthAccountCommonInfo()
@@ -8724,6 +9626,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccoun
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return is_bandwidth_account_enabled.is_set
 	|| application_enforced.is_set
 	|| collection_type.is_set
@@ -9010,7 +9913,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccoun
     rsvp_te_enforced_bandwidth_utilization{YType::uint64, "rsvp-te-enforced-bandwidth-utilization"}
 {
 
-    yang_name = "rsvp-te-bandwidth-utilization"; yang_parent_name = "bandwidth-account-common-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-bandwidth-utilization"; yang_parent_name = "bandwidth-account-common-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::RsvpTeBandwidthUtilization::~RsvpTeBandwidthUtilization()
@@ -9019,6 +9922,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccoun
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::RsvpTeBandwidthUtilization::has_data() const
 {
+    if (is_presence_container) return true;
     return total_link_bandwidth_utilization.is_set
 	|| rsvp_te_bandwidth_utilization.is_set
 	|| non_rsvp_te_bandwidth_utilization.is_set
@@ -9141,7 +10045,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccoun
     sr_enforced_bandwidth_utilization{YType::uint64, "sr-enforced-bandwidth-utilization"}
 {
 
-    yang_name = "sr-bandwidth-utilization"; yang_parent_name = "bandwidth-account-common-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-bandwidth-utilization"; yang_parent_name = "bandwidth-account-common-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::SrBandwidthUtilization::~SrBandwidthUtilization()
@@ -9150,6 +10054,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccoun
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthAccountCommonInfo::SrBandwidthUtilization::has_data() const
 {
+    if (is_presence_container) return true;
     return sr_bandwidth_utilization.is_set
 	|| sr_adjusted_bandwidth_utilization.is_set
 	|| sr_enforced_bandwidth_utilization.is_set;
@@ -9240,9 +10145,12 @@ bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::BandwidthA
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeBandwidthSampleHistory()
+    :
+    rsvp_te_active_interval_sample(this, {})
+    , rsvp_te_previous_interval_sample(this, {})
 {
 
-    yang_name = "rsvp-te-bandwidth-sample-history"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-bandwidth-sample-history"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::~RsvpTeBandwidthSampleHistory()
@@ -9251,12 +10159,13 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidth
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::has_data() const
 {
-    for (std::size_t index=0; index<rsvp_te_active_interval_sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsvp_te_active_interval_sample.len(); index++)
     {
         if(rsvp_te_active_interval_sample[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.len(); index++)
     {
         if(rsvp_te_previous_interval_sample[index]->has_data())
             return true;
@@ -9266,12 +10175,12 @@ bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBand
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::has_operation() const
 {
-    for (std::size_t index=0; index<rsvp_te_active_interval_sample.size(); index++)
+    for (std::size_t index=0; index<rsvp_te_active_interval_sample.len(); index++)
     {
         if(rsvp_te_active_interval_sample[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<rsvp_te_previous_interval_sample.len(); index++)
     {
         if(rsvp_te_previous_interval_sample[index]->has_operation())
             return true;
@@ -9301,7 +10210,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeActiveIntervalSample>();
         c->parent = this;
-        rsvp_te_active_interval_sample.push_back(c);
+        rsvp_te_active_interval_sample.append(c);
         return c;
     }
 
@@ -9309,7 +10218,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTePreviousIntervalSample>();
         c->parent = this;
-        rsvp_te_previous_interval_sample.push_back(c);
+        rsvp_te_previous_interval_sample.append(c);
         return c;
     }
 
@@ -9321,7 +10230,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rsvp_te_active_interval_sample)
+    for (auto c : rsvp_te_active_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9330,7 +10239,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : rsvp_te_previous_interval_sample)
+    for (auto c : rsvp_te_previous_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9364,7 +10273,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidth
     non_rsvp_te_rate{YType::uint64, "non-rsvp-te-rate"}
 {
 
-    yang_name = "rsvp-te-active-interval-sample"; yang_parent_name = "rsvp-te-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-active-interval-sample"; yang_parent_name = "rsvp-te-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeActiveIntervalSample::~RsvpTeActiveIntervalSample()
@@ -9373,6 +10282,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidth
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTeActiveIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| total_rate.is_set
 	|| rsvp_te_rate.is_set
@@ -9483,7 +10393,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidth
     non_rsvp_te_rate{YType::uint64, "non-rsvp-te-rate"}
 {
 
-    yang_name = "rsvp-te-previous-interval-sample"; yang_parent_name = "rsvp-te-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rsvp-te-previous-interval-sample"; yang_parent_name = "rsvp-te-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTePreviousIntervalSample::~RsvpTePreviousIntervalSample()
@@ -9492,6 +10402,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidth
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBandwidthSampleHistory::RsvpTePreviousIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| total_rate.is_set
 	|| rsvp_te_rate.is_set
@@ -9595,9 +10506,12 @@ bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBand
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrBandwidthSampleHistory()
+    :
+    sr_active_interval_sample(this, {})
+    , sr_previous_interval_sample(this, {})
 {
 
-    yang_name = "sr-bandwidth-sample-history"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-bandwidth-sample-history"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::~SrBandwidthSampleHistory()
@@ -9606,12 +10520,13 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSamp
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::has_data() const
 {
-    for (std::size_t index=0; index<sr_active_interval_sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_active_interval_sample.len(); index++)
     {
         if(sr_active_interval_sample[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sr_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<sr_previous_interval_sample.len(); index++)
     {
         if(sr_previous_interval_sample[index]->has_data())
             return true;
@@ -9621,12 +10536,12 @@ bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidt
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::has_operation() const
 {
-    for (std::size_t index=0; index<sr_active_interval_sample.size(); index++)
+    for (std::size_t index=0; index<sr_active_interval_sample.len(); index++)
     {
         if(sr_active_interval_sample[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sr_previous_interval_sample.size(); index++)
+    for (std::size_t index=0; index<sr_previous_interval_sample.len(); index++)
     {
         if(sr_previous_interval_sample[index]->has_operation())
             return true;
@@ -9656,7 +10571,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrActiveIntervalSample>();
         c->parent = this;
-        sr_active_interval_sample.push_back(c);
+        sr_active_interval_sample.append(c);
         return c;
     }
 
@@ -9664,7 +10579,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::Bandwidth
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrPreviousIntervalSample>();
         c->parent = this;
-        sr_previous_interval_sample.push_back(c);
+        sr_previous_interval_sample.append(c);
         return c;
     }
 
@@ -9676,7 +10591,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sr_active_interval_sample)
+    for (auto c : sr_active_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9685,7 +10600,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     }
 
     count = 0;
-    for (auto const & c : sr_previous_interval_sample)
+    for (auto c : sr_previous_interval_sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9717,7 +10632,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSamp
     sr_rate{YType::uint64, "sr-rate"}
 {
 
-    yang_name = "sr-active-interval-sample"; yang_parent_name = "sr-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-active-interval-sample"; yang_parent_name = "sr-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrActiveIntervalSample::~SrActiveIntervalSample()
@@ -9726,6 +10641,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSamp
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrActiveIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| sr_rate.is_set;
 }
@@ -9808,7 +10724,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSamp
     sr_rate{YType::uint64, "sr-rate"}
 {
 
-    yang_name = "sr-previous-interval-sample"; yang_parent_name = "sr-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sr-previous-interval-sample"; yang_parent_name = "sr-bandwidth-sample-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrPreviousIntervalSample::~SrPreviousIntervalSample()
@@ -9817,6 +10733,7 @@ MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSamp
 
 bool MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrBandwidthSampleHistory::SrPreviousIntervalSample::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set
 	|| sr_rate.is_set;
 }
@@ -9898,9 +10815,11 @@ MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOor()
     hw_oor_state{YType::enumeration, "hw-oor-state"},
     hw_oor_timestamp{YType::uint32, "hw-oor-timestamp"},
     hw_o_or_green_recovery_time{YType::uint32, "hw-o-or-green-recovery-time"}
+        ,
+    hw_o_or_link_statistic(this, {})
 {
 
-    yang_name = "hw-oor"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-oor"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::HwOor::~HwOor()
@@ -9909,7 +10828,8 @@ MplsLcacStandby::LinkInformation::Links::Link::HwOor::~HwOor()
 
 bool MplsLcacStandby::LinkInformation::Links::Link::HwOor::has_data() const
 {
-    for (std::size_t index=0; index<hw_o_or_link_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hw_o_or_link_statistic.len(); index++)
     {
         if(hw_o_or_link_statistic[index]->has_data())
             return true;
@@ -9921,7 +10841,7 @@ bool MplsLcacStandby::LinkInformation::Links::Link::HwOor::has_data() const
 
 bool MplsLcacStandby::LinkInformation::Links::Link::HwOor::has_operation() const
 {
-    for (std::size_t index=0; index<hw_o_or_link_statistic.size(); index++)
+    for (std::size_t index=0; index<hw_o_or_link_statistic.len(); index++)
     {
         if(hw_o_or_link_statistic[index]->has_operation())
             return true;
@@ -9957,7 +10877,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::HwOor::ge
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic>();
         c->parent = this;
-        hw_o_or_link_statistic.push_back(c);
+        hw_o_or_link_statistic.append(c);
         return c;
     }
 
@@ -9969,7 +10889,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hw_o_or_link_statistic)
+    for (auto c : hw_o_or_link_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10036,7 +10956,7 @@ MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic::HwOOrL
     rejected_reopt_ls_ps_number{YType::uint32, "rejected-reopt-ls-ps-number"}
 {
 
-    yang_name = "hw-o-or-link-statistic"; yang_parent_name = "hw-oor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hw-o-or-link-statistic"; yang_parent_name = "hw-oor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic::~HwOOrLinkStatistic()
@@ -10045,6 +10965,7 @@ MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic::~HwOOr
 
 bool MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return hw_oor_state.is_set
 	|| transitions.is_set
 	|| node_protection_disable_number.is_set
@@ -10191,7 +11112,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute::LinkExtend
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "link-extended-attribute"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-extended-attribute"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute::~LinkExtendedAttribute()
@@ -10200,6 +11121,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute::~LinkExten
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -10268,7 +11190,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue::LinkForwadRef
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "link-forwad-ref-value"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-forwad-ref-value"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue::~LinkForwadRefValue()
@@ -10277,6 +11199,7 @@ MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue::~LinkForwadRe
 
 bool MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -10346,9 +11269,11 @@ MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityMap()
     affinity_value{YType::uint32, "affinity-value"},
     affinity_bit_position{YType::uint8, "affinity-bit-position"},
     affinity_table_id{YType::enumeration, "affinity-table-id"}
+        ,
+    affinity_extended_value(this, {})
 {
 
-    yang_name = "affinity-map"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "affinity-map"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::~AffinityMap()
@@ -10357,7 +11282,8 @@ MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::~AffinityMap()
 
 bool MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::has_data() const
 {
-    for (std::size_t index=0; index<affinity_extended_value.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_extended_value.len(); index++)
     {
         if(affinity_extended_value[index]->has_data())
             return true;
@@ -10370,7 +11296,7 @@ bool MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::has_data() cons
 
 bool MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::has_operation() const
 {
-    for (std::size_t index=0; index<affinity_extended_value.size(); index++)
+    for (std::size_t index=0; index<affinity_extended_value.len(); index++)
     {
         if(affinity_extended_value[index]->has_operation())
             return true;
@@ -10408,7 +11334,7 @@ std::shared_ptr<Entity> MplsLcacStandby::LinkInformation::Links::Link::AffinityM
     {
         auto c = std::make_shared<MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValue>();
         c->parent = this;
-        affinity_extended_value.push_back(c);
+        affinity_extended_value.append(c);
         return c;
     }
 
@@ -10420,7 +11346,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::LinkInformation:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : affinity_extended_value)
+    for (auto c : affinity_extended_value.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10491,7 +11417,7 @@ MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValu
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "affinity-extended-value"; yang_parent_name = "affinity-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "affinity-extended-value"; yang_parent_name = "affinity-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValue::~AffinityExtendedValue()
@@ -10500,6 +11426,7 @@ MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValu
 
 bool MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::AffinityExtendedValue::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -10572,7 +11499,7 @@ MplsLcacStandby::LinkInformation::Links::Link::Areas::Areas()
     igp_metric{YType::uint32, "igp-metric"}
 {
 
-    yang_name = "areas"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "areas"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::Areas::~Areas()
@@ -10581,6 +11508,7 @@ MplsLcacStandby::LinkInformation::Links::Link::Areas::~Areas()
 
 bool MplsLcacStandby::LinkInformation::Links::Link::Areas::has_data() const
 {
+    if (is_presence_container) return true;
     return area_id.is_set
 	|| neighbor_id.is_set
 	|| neighbor_address.is_set
@@ -10703,7 +11631,7 @@ MplsLcacStandby::LinkInformation::Links::Link::Lockout::Lockout()
     lockout_off_timestamp{YType::uint32, "lockout-off-timestamp"}
 {
 
-    yang_name = "lockout"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lockout"; yang_parent_name = "link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::LinkInformation::Links::Link::Lockout::~Lockout()
@@ -10712,6 +11640,7 @@ MplsLcacStandby::LinkInformation::Links::Link::Lockout::~Lockout()
 
 bool MplsLcacStandby::LinkInformation::Links::Link::Lockout::has_data() const
 {
+    if (is_presence_container) return true;
     return is_lockout.is_set
 	|| lockout_on_timestamp.is_set
 	|| lockout_off_timestamp.is_set;
@@ -10804,14 +11733,14 @@ bool MplsLcacStandby::LinkInformation::Links::Link::Lockout::has_leaf_or_child_o
 MplsLcacStandby::AdmissionControl::AdmissionControl()
     :
     global(std::make_shared<MplsLcacStandby::AdmissionControl::Global>())
-	,admitted_tunnels(std::make_shared<MplsLcacStandby::AdmissionControl::AdmittedTunnels>())
-	,link_interfaces(std::make_shared<MplsLcacStandby::AdmissionControl::LinkInterfaces>())
+    , admitted_tunnels(std::make_shared<MplsLcacStandby::AdmissionControl::AdmittedTunnels>())
+    , link_interfaces(std::make_shared<MplsLcacStandby::AdmissionControl::LinkInterfaces>())
 {
     global->parent = this;
     admitted_tunnels->parent = this;
     link_interfaces->parent = this;
 
-    yang_name = "admission-control"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admission-control"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::AdmissionControl::~AdmissionControl()
@@ -10820,6 +11749,7 @@ MplsLcacStandby::AdmissionControl::~AdmissionControl()
 
 bool MplsLcacStandby::AdmissionControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (admitted_tunnels !=  nullptr && admitted_tunnels->has_data())
 	|| (link_interfaces !=  nullptr && link_interfaces->has_data());
@@ -10934,7 +11864,7 @@ MplsLcacStandby::AdmissionControl::Global::Global()
     bandwidth_units{YType::enumeration, "bandwidth-units"}
 {
 
-    yang_name = "global"; yang_parent_name = "admission-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "admission-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::AdmissionControl::Global::~Global()
@@ -10943,6 +11873,7 @@ MplsLcacStandby::AdmissionControl::Global::~Global()
 
 bool MplsLcacStandby::AdmissionControl::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return is_role_standby.is_set
 	|| total_tunnels.is_set
 	|| total_p2mp_tunnels.is_set
@@ -11066,9 +11997,11 @@ bool MplsLcacStandby::AdmissionControl::Global::has_leaf_or_child_of_name(const 
 }
 
 MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnels()
+    :
+    admitted_tunnel(this, {"source_address", "destination_port", "source_port", "destination_address", "extended_tunnel_id", "next_hop_address", "ctype", "p2mp_id"})
 {
 
-    yang_name = "admitted-tunnels"; yang_parent_name = "admission-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admitted-tunnels"; yang_parent_name = "admission-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::AdmissionControl::AdmittedTunnels::~AdmittedTunnels()
@@ -11077,7 +12010,8 @@ MplsLcacStandby::AdmissionControl::AdmittedTunnels::~AdmittedTunnels()
 
 bool MplsLcacStandby::AdmissionControl::AdmittedTunnels::has_data() const
 {
-    for (std::size_t index=0; index<admitted_tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<admitted_tunnel.len(); index++)
     {
         if(admitted_tunnel[index]->has_data())
             return true;
@@ -11087,7 +12021,7 @@ bool MplsLcacStandby::AdmissionControl::AdmittedTunnels::has_data() const
 
 bool MplsLcacStandby::AdmissionControl::AdmittedTunnels::has_operation() const
 {
-    for (std::size_t index=0; index<admitted_tunnel.size(); index++)
+    for (std::size_t index=0; index<admitted_tunnel.len(); index++)
     {
         if(admitted_tunnel[index]->has_operation())
             return true;
@@ -11124,7 +12058,7 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::AdmittedTunnels::get_
     {
         auto c = std::make_shared<MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel>();
         c->parent = this;
-        admitted_tunnel.push_back(c);
+        admitted_tunnel.append(c);
         return c;
     }
 
@@ -11136,7 +12070,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : admitted_tunnel)
+    for (auto c : admitted_tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11165,13 +12099,13 @@ bool MplsLcacStandby::AdmissionControl::AdmittedTunnels::has_leaf_or_child_of_na
 MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::AdmittedTunnel()
     :
     source_address{YType::str, "source-address"},
-    destination_port{YType::int32, "destination-port"},
-    source_port{YType::int32, "source-port"},
+    destination_port{YType::uint32, "destination-port"},
+    source_port{YType::uint32, "source-port"},
     destination_address{YType::str, "destination-address"},
     extended_tunnel_id{YType::str, "extended-tunnel-id"},
     next_hop_address{YType::str, "next-hop-address"},
     ctype{YType::enumeration, "ctype"},
-    p2mp_id{YType::int32, "p2mp-id"},
+    p2mp_id{YType::uint32, "p2mp-id"},
     tunnel_name{YType::str, "tunnel-name"},
     bandwidth_state{YType::enumeration, "bandwidth-state"},
     bandwidth_pool{YType::enumeration, "bandwidth-pool"},
@@ -11187,7 +12121,7 @@ MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::AdmittedTunn
     is_rerouted{YType::boolean, "is-rerouted"}
 {
 
-    yang_name = "admitted-tunnel"; yang_parent_name = "admitted-tunnels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "admitted-tunnel"; yang_parent_name = "admitted-tunnels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::~AdmittedTunnel()
@@ -11196,6 +12130,7 @@ MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::~AdmittedTun
 
 bool MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| destination_port.is_set
 	|| source_port.is_set
@@ -11255,7 +12190,15 @@ std::string MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::
 std::string MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admitted-tunnel" <<"[source-address='" <<source_address <<"']" <<"[destination-port='" <<destination_port <<"']" <<"[source-port='" <<source_port <<"']" <<"[destination-address='" <<destination_address <<"']" <<"[extended-tunnel-id='" <<extended_tunnel_id <<"']" <<"[next-hop-address='" <<next_hop_address <<"']" <<"[ctype='" <<ctype <<"']" <<"[p2mp-id='" <<p2mp_id <<"']";
+    path_buffer << "admitted-tunnel";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(destination_port, "destination-port");
+    ADD_KEY_TOKEN(source_port, "source-port");
+    ADD_KEY_TOKEN(destination_address, "destination-address");
+    ADD_KEY_TOKEN(extended_tunnel_id, "extended-tunnel-id");
+    ADD_KEY_TOKEN(next_hop_address, "next-hop-address");
+    ADD_KEY_TOKEN(ctype, "ctype");
+    ADD_KEY_TOKEN(p2mp_id, "p2mp-id");
     return path_buffer.str();
 }
 
@@ -11527,9 +12470,11 @@ bool MplsLcacStandby::AdmissionControl::AdmittedTunnels::AdmittedTunnel::has_lea
 }
 
 MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterfaces()
+    :
+    link_interface(this, {"interface_name"})
 {
 
-    yang_name = "link-interfaces"; yang_parent_name = "admission-control"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-interfaces"; yang_parent_name = "admission-control"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::AdmissionControl::LinkInterfaces::~LinkInterfaces()
@@ -11538,7 +12483,8 @@ MplsLcacStandby::AdmissionControl::LinkInterfaces::~LinkInterfaces()
 
 bool MplsLcacStandby::AdmissionControl::LinkInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<link_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_interface.len(); index++)
     {
         if(link_interface[index]->has_data())
             return true;
@@ -11548,7 +12494,7 @@ bool MplsLcacStandby::AdmissionControl::LinkInterfaces::has_data() const
 
 bool MplsLcacStandby::AdmissionControl::LinkInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<link_interface.size(); index++)
+    for (std::size_t index=0; index<link_interface.len(); index++)
     {
         if(link_interface[index]->has_operation())
             return true;
@@ -11585,7 +12531,7 @@ std::shared_ptr<Entity> MplsLcacStandby::AdmissionControl::LinkInterfaces::get_c
     {
         auto c = std::make_shared<MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface>();
         c->parent = this;
-        link_interface.push_back(c);
+        link_interface.append(c);
         return c;
     }
 
@@ -11597,7 +12543,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::AdmissionControl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_interface)
+    for (auto c : link_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11633,7 +12579,7 @@ MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface::LinkInterface(
     bandwidth_units{YType::enumeration, "bandwidth-units"}
 {
 
-    yang_name = "link-interface"; yang_parent_name = "link-interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-interface"; yang_parent_name = "link-interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface::~LinkInterface()
@@ -11642,6 +12588,7 @@ MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface::~LinkInterface
 
 bool MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| is_role_standby.is_set
 	|| total_tunnels.is_set
@@ -11671,7 +12618,8 @@ std::string MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface::ge
 std::string MplsLcacStandby::AdmissionControl::LinkInterfaces::LinkInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "link-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11784,7 +12732,7 @@ MplsLcacStandby::SoftPreemptionGlobalInfo::SoftPreemptionGlobalInfo()
     timeout_interval{YType::uint32, "timeout-interval"}
 {
 
-    yang_name = "soft-preemption-global-info"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "soft-preemption-global-info"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::SoftPreemptionGlobalInfo::~SoftPreemptionGlobalInfo()
@@ -11793,6 +12741,7 @@ MplsLcacStandby::SoftPreemptionGlobalInfo::~SoftPreemptionGlobalInfo()
 
 bool MplsLcacStandby::SoftPreemptionGlobalInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return is_configured.is_set
 	|| is_timeout_interval_configured.is_set
 	|| timeout_interval.is_set;
@@ -11890,9 +12839,11 @@ bool MplsLcacStandby::SoftPreemptionGlobalInfo::has_leaf_or_child_of_name(const 
 }
 
 MplsLcacStandby::SoftPreemptions::SoftPreemptions()
+    :
+    soft_preemption(this, {"interface_name"})
 {
 
-    yang_name = "soft-preemptions"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "soft-preemptions"; yang_parent_name = "mpls-lcac-standby"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::SoftPreemptions::~SoftPreemptions()
@@ -11901,7 +12852,8 @@ MplsLcacStandby::SoftPreemptions::~SoftPreemptions()
 
 bool MplsLcacStandby::SoftPreemptions::has_data() const
 {
-    for (std::size_t index=0; index<soft_preemption.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<soft_preemption.len(); index++)
     {
         if(soft_preemption[index]->has_data())
             return true;
@@ -11911,7 +12863,7 @@ bool MplsLcacStandby::SoftPreemptions::has_data() const
 
 bool MplsLcacStandby::SoftPreemptions::has_operation() const
 {
-    for (std::size_t index=0; index<soft_preemption.size(); index++)
+    for (std::size_t index=0; index<soft_preemption.len(); index++)
     {
         if(soft_preemption[index]->has_operation())
             return true;
@@ -11948,7 +12900,7 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptions::get_child_by_name(cons
     {
         auto c = std::make_shared<MplsLcacStandby::SoftPreemptions::SoftPreemption>();
         c->parent = this;
-        soft_preemption.push_back(c);
+        soft_preemption.append(c);
         return c;
     }
 
@@ -11960,7 +12912,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::SoftPreemptions:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : soft_preemption)
+    for (auto c : soft_preemption.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11998,9 +12950,11 @@ MplsLcacStandby::SoftPreemptions::SoftPreemption::SoftPreemption()
     release_soft_preempted_bandwidth_bc1{YType::uint64, "release-soft-preempted-bandwidth-bc1"},
     current_over_subscribed_bandwidth_bc0{YType::uint64, "current-over-subscribed-bandwidth-bc0"},
     current_over_subscribed_bandwidth_bc1{YType::uint64, "current-over-subscribed-bandwidth-bc1"}
+        ,
+    current_soft_preemption_lsp(this, {})
 {
 
-    yang_name = "soft-preemption"; yang_parent_name = "soft-preemptions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "soft-preemption"; yang_parent_name = "soft-preemptions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcacStandby::SoftPreemptions::SoftPreemption::~SoftPreemption()
@@ -12009,7 +12963,8 @@ MplsLcacStandby::SoftPreemptions::SoftPreemption::~SoftPreemption()
 
 bool MplsLcacStandby::SoftPreemptions::SoftPreemption::has_data() const
 {
-    for (std::size_t index=0; index<current_soft_preemption_lsp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<current_soft_preemption_lsp.len(); index++)
     {
         if(current_soft_preemption_lsp[index]->has_data())
             return true;
@@ -12028,7 +12983,7 @@ bool MplsLcacStandby::SoftPreemptions::SoftPreemption::has_data() const
 
 bool MplsLcacStandby::SoftPreemptions::SoftPreemption::has_operation() const
 {
-    for (std::size_t index=0; index<current_soft_preemption_lsp.size(); index++)
+    for (std::size_t index=0; index<current_soft_preemption_lsp.len(); index++)
     {
         if(current_soft_preemption_lsp[index]->has_operation())
             return true;
@@ -12056,7 +13011,8 @@ std::string MplsLcacStandby::SoftPreemptions::SoftPreemption::get_absolute_path(
 std::string MplsLcacStandby::SoftPreemptions::SoftPreemption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "soft-preemption" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "soft-preemption";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12085,7 +13041,7 @@ std::shared_ptr<Entity> MplsLcacStandby::SoftPreemptions::SoftPreemption::get_ch
     {
         auto c = std::make_shared<MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp>();
         c->parent = this;
-        current_soft_preemption_lsp.push_back(c);
+        current_soft_preemption_lsp.append(c);
         return c;
     }
 
@@ -12097,7 +13053,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcacStandby::SoftPreemptions:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : current_soft_preemption_lsp)
+    for (auto c : current_soft_preemption_lsp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12239,7 +13195,7 @@ MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp::Curr
     soft_preempted_fr_rrewrite{YType::boolean, "soft-preempted-fr-rrewrite"}
 {
 
-    yang_name = "current-soft-preemption-lsp"; yang_parent_name = "soft-preemption"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "current-soft-preemption-lsp"; yang_parent_name = "soft-preemption"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp::~CurrentSoftPreemptionLsp()
@@ -12248,6 +13204,7 @@ MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp::~Cur
 
 bool MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set
 	|| lsp_id.is_set
 	|| source_address.is_set
@@ -12457,18 +13414,18 @@ bool MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp:
 MplsLcac::MplsLcac()
     :
     neighbors(std::make_shared<MplsLcac::Neighbors>())
-	,preemption_events(std::make_shared<MplsLcac::PreemptionEvents>())
-	,advertisements(std::make_shared<MplsLcac::Advertisements>())
-	,statistics(std::make_shared<MplsLcac::Statistics>())
-	,bandwidth_allocation(std::make_shared<MplsLcac::BandwidthAllocation>())
-	,gmpls(std::make_shared<MplsLcac::Gmpls>())
-	,bfd_neighbors(std::make_shared<MplsLcac::BfdNeighbors>())
-	,bandwidth_account(std::make_shared<MplsLcac::BandwidthAccount>())
-	,link_summary(std::make_shared<MplsLcac::LinkSummary>())
-	,link_information(std::make_shared<MplsLcac::LinkInformation>())
-	,admission_control(std::make_shared<MplsLcac::AdmissionControl>())
-	,soft_preemption_global_info(std::make_shared<MplsLcac::SoftPreemptionGlobalInfo>())
-	,soft_preemptions(std::make_shared<MplsLcac::SoftPreemptions>())
+    , preemption_events(std::make_shared<MplsLcac::PreemptionEvents>())
+    , advertisements(std::make_shared<MplsLcac::Advertisements>())
+    , statistics(std::make_shared<MplsLcac::Statistics>())
+    , bandwidth_allocation(std::make_shared<MplsLcac::BandwidthAllocation>())
+    , gmpls(std::make_shared<MplsLcac::Gmpls>())
+    , bfd_neighbors(std::make_shared<MplsLcac::BfdNeighbors>())
+    , bandwidth_account(std::make_shared<MplsLcac::BandwidthAccount>())
+    , link_summary(std::make_shared<MplsLcac::LinkSummary>())
+    , link_information(std::make_shared<MplsLcac::LinkInformation>())
+    , admission_control(std::make_shared<MplsLcac::AdmissionControl>())
+    , soft_preemption_global_info(std::make_shared<MplsLcac::SoftPreemptionGlobalInfo>())
+    , soft_preemptions(std::make_shared<MplsLcac::SoftPreemptions>())
 {
     neighbors->parent = this;
     preemption_events->parent = this;
@@ -12484,7 +13441,7 @@ MplsLcac::MplsLcac()
     soft_preemption_global_info->parent = this;
     soft_preemptions->parent = this;
 
-    yang_name = "mpls-lcac"; yang_parent_name = "Cisco-IOS-XR-mpls-te-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-lcac"; yang_parent_name = "Cisco-IOS-XR-mpls-te-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsLcac::~MplsLcac()
@@ -12493,6 +13450,7 @@ MplsLcac::~MplsLcac()
 
 bool MplsLcac::has_data() const
 {
+    if (is_presence_container) return true;
     return (neighbors !=  nullptr && neighbors->has_data())
 	|| (preemption_events !=  nullptr && preemption_events->has_data())
 	|| (advertisements !=  nullptr && advertisements->has_data())
@@ -12777,9 +13735,11 @@ bool MplsLcac::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MplsLcac::Neighbors::Neighbors()
+    :
+    neighbor(this, {"interface_name"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Neighbors::~Neighbors()
@@ -12788,7 +13748,8 @@ MplsLcac::Neighbors::~Neighbors()
 
 bool MplsLcac::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -12798,7 +13759,7 @@ bool MplsLcac::Neighbors::has_data() const
 
 bool MplsLcac::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -12835,7 +13796,7 @@ std::shared_ptr<Entity> MplsLcac::Neighbors::get_child_by_name(const std::string
     {
         auto c = std::make_shared<MplsLcac::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -12847,7 +13808,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Neighbors::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12876,9 +13837,11 @@ bool MplsLcac::Neighbors::has_leaf_or_child_of_name(const std::string & name) co
 MplsLcac::Neighbors::Neighbor::Neighbor()
     :
     interface_name{YType::str, "interface-name"}
+        ,
+    neighbor(this, {})
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Neighbors::Neighbor::~Neighbor()
@@ -12887,7 +13850,8 @@ MplsLcac::Neighbors::Neighbor::~Neighbor()
 
 bool MplsLcac::Neighbors::Neighbor::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -12897,7 +13861,7 @@ bool MplsLcac::Neighbors::Neighbor::has_data() const
 
 bool MplsLcac::Neighbors::Neighbor::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -12916,7 +13880,8 @@ std::string MplsLcac::Neighbors::Neighbor::get_absolute_path() const
 std::string MplsLcac::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -12936,7 +13901,7 @@ std::shared_ptr<Entity> MplsLcac::Neighbors::Neighbor::get_child_by_name(const s
     {
         auto c = std::make_shared<MplsLcac::Neighbors::Neighbor::Neighbor_>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -12948,7 +13913,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Neighbors::Neighbor::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12992,7 +13957,7 @@ MplsLcac::Neighbors::Neighbor::Neighbor_::Neighbor_()
     neighbor_address{YType::str, "neighbor-address"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Neighbors::Neighbor::Neighbor_::~Neighbor_()
@@ -13001,6 +13966,7 @@ MplsLcac::Neighbors::Neighbor::Neighbor_::~Neighbor_()
 
 bool MplsLcac::Neighbors::Neighbor::Neighbor_::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| neighbor_id.is_set
 	|| area_id.is_set
@@ -13104,9 +14070,11 @@ bool MplsLcac::Neighbors::Neighbor::Neighbor_::has_leaf_or_child_of_name(const s
 }
 
 MplsLcac::PreemptionEvents::PreemptionEvents()
+    :
+    preemption_event(this, {"event_index"})
 {
 
-    yang_name = "preemption-events"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "preemption-events"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::PreemptionEvents::~PreemptionEvents()
@@ -13115,7 +14083,8 @@ MplsLcac::PreemptionEvents::~PreemptionEvents()
 
 bool MplsLcac::PreemptionEvents::has_data() const
 {
-    for (std::size_t index=0; index<preemption_event.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<preemption_event.len(); index++)
     {
         if(preemption_event[index]->has_data())
             return true;
@@ -13125,7 +14094,7 @@ bool MplsLcac::PreemptionEvents::has_data() const
 
 bool MplsLcac::PreemptionEvents::has_operation() const
 {
-    for (std::size_t index=0; index<preemption_event.size(); index++)
+    for (std::size_t index=0; index<preemption_event.len(); index++)
     {
         if(preemption_event[index]->has_operation())
             return true;
@@ -13162,7 +14131,7 @@ std::shared_ptr<Entity> MplsLcac::PreemptionEvents::get_child_by_name(const std:
     {
         auto c = std::make_shared<MplsLcac::PreemptionEvents::PreemptionEvent>();
         c->parent = this;
-        preemption_event.push_back(c);
+        preemption_event.append(c);
         return c;
     }
 
@@ -13174,7 +14143,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::PreemptionEvents::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : preemption_event)
+    for (auto c : preemption_event.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13235,9 +14204,11 @@ MplsLcac::PreemptionEvents::PreemptionEvent::PreemptionEvent()
     soft_preempted_tunnels{YType::uint16, "soft-preempted-tunnels"},
     soft_preempted_tunnels_fr_rrewrite{YType::uint16, "soft-preempted-tunnels-fr-rrewrite"},
     hard_preempted_tunnels{YType::uint16, "hard-preempted-tunnels"}
+        ,
+    lsp(this, {})
 {
 
-    yang_name = "preemption-event"; yang_parent_name = "preemption-events"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "preemption-event"; yang_parent_name = "preemption-events"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::PreemptionEvents::PreemptionEvent::~PreemptionEvent()
@@ -13246,7 +14217,8 @@ MplsLcac::PreemptionEvents::PreemptionEvent::~PreemptionEvent()
 
 bool MplsLcac::PreemptionEvents::PreemptionEvent::has_data() const
 {
-    for (std::size_t index=0; index<lsp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp.len(); index++)
     {
         if(lsp[index]->has_data())
             return true;
@@ -13288,7 +14260,7 @@ bool MplsLcac::PreemptionEvents::PreemptionEvent::has_data() const
 
 bool MplsLcac::PreemptionEvents::PreemptionEvent::has_operation() const
 {
-    for (std::size_t index=0; index<lsp.size(); index++)
+    for (std::size_t index=0; index<lsp.len(); index++)
     {
         if(lsp[index]->has_operation())
             return true;
@@ -13339,7 +14311,8 @@ std::string MplsLcac::PreemptionEvents::PreemptionEvent::get_absolute_path() con
 std::string MplsLcac::PreemptionEvents::PreemptionEvent::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "preemption-event" <<"[event-index='" <<event_index <<"']";
+    path_buffer << "preemption-event";
+    ADD_KEY_TOKEN(event_index, "event-index");
     return path_buffer.str();
 }
 
@@ -13391,7 +14364,7 @@ std::shared_ptr<Entity> MplsLcac::PreemptionEvents::PreemptionEvent::get_child_b
     {
         auto c = std::make_shared<MplsLcac::PreemptionEvents::PreemptionEvent::Lsp>();
         c->parent = this;
-        lsp.push_back(c);
+        lsp.append(c);
         return c;
     }
 
@@ -13403,7 +14376,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::PreemptionEvents::Preem
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp)
+    for (auto c : lsp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13775,7 +14748,7 @@ MplsLcac::PreemptionEvents::PreemptionEvent::Lsp::Lsp()
     soft_preempted_fr_rrewrite{YType::boolean, "soft-preempted-fr-rrewrite"}
 {
 
-    yang_name = "lsp"; yang_parent_name = "preemption-event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp"; yang_parent_name = "preemption-event"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::PreemptionEvents::PreemptionEvent::Lsp::~Lsp()
@@ -13784,6 +14757,7 @@ MplsLcac::PreemptionEvents::PreemptionEvent::Lsp::~Lsp()
 
 bool MplsLcac::PreemptionEvents::PreemptionEvent::Lsp::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_id.is_set
 	|| lsp_id.is_set
 	|| source_address.is_set
@@ -13997,9 +14971,11 @@ MplsLcac::Advertisements::Advertisements()
     last_flooding_trigger{YType::enumeration, "last-flooding-trigger"},
     next_flooding_time{YType::uint32, "next-flooding-time"},
     ds_te_mode{YType::enumeration, "ds-te-mode"}
+        ,
+    advertized_areas(this, {})
 {
 
-    yang_name = "advertisements"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "advertisements"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::~Advertisements()
@@ -14008,7 +14984,8 @@ MplsLcac::Advertisements::~Advertisements()
 
 bool MplsLcac::Advertisements::has_data() const
 {
-    for (std::size_t index=0; index<advertized_areas.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<advertized_areas.len(); index++)
     {
         if(advertized_areas[index]->has_data())
             return true;
@@ -14022,7 +14999,7 @@ bool MplsLcac::Advertisements::has_data() const
 
 bool MplsLcac::Advertisements::has_operation() const
 {
-    for (std::size_t index=0; index<advertized_areas.size(); index++)
+    for (std::size_t index=0; index<advertized_areas.len(); index++)
     {
         if(advertized_areas[index]->has_operation())
             return true;
@@ -14069,7 +15046,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::get_child_by_name(const std::s
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas>();
         c->parent = this;
-        advertized_areas.push_back(c);
+        advertized_areas.append(c);
         return c;
     }
 
@@ -14081,7 +15058,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : advertized_areas)
+    for (auto c : advertized_areas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14163,9 +15140,11 @@ MplsLcac::Advertisements::AdvertizedAreas::AdvertizedAreas()
     protocol{YType::enumeration, "protocol"},
     system_id{YType::str, "system-id"},
     router_id{YType::str, "router-id"}
+        ,
+    flooded_link(this, {})
 {
 
-    yang_name = "advertized-areas"; yang_parent_name = "advertisements"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "advertized-areas"; yang_parent_name = "advertisements"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::~AdvertizedAreas()
@@ -14174,7 +15153,8 @@ MplsLcac::Advertisements::AdvertizedAreas::~AdvertizedAreas()
 
 bool MplsLcac::Advertisements::AdvertizedAreas::has_data() const
 {
-    for (std::size_t index=0; index<flooded_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flooded_link.len(); index++)
     {
         if(flooded_link[index]->has_data())
             return true;
@@ -14187,7 +15167,7 @@ bool MplsLcac::Advertisements::AdvertizedAreas::has_data() const
 
 bool MplsLcac::Advertisements::AdvertizedAreas::has_operation() const
 {
-    for (std::size_t index=0; index<flooded_link.size(); index++)
+    for (std::size_t index=0; index<flooded_link.len(); index++)
     {
         if(flooded_link[index]->has_operation())
             return true;
@@ -14232,7 +15212,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::get_child_by_
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink>();
         c->parent = this;
-        flooded_link.push_back(c);
+        flooded_link.append(c);
         return c;
     }
 
@@ -14244,7 +15224,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::Adverti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flooded_link)
+    for (auto c : flooded_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14336,12 +15316,16 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::FloodedLink()
     is_transmitting_reservable_bandwidth_enabled{YType::boolean, "is-transmitting-reservable-bandwidth-enabled"},
     transmitting_direction{YType::enumeration, "transmitting-direction"},
     affinity_attribute_flags{YType::uint32, "affinity-attribute-flags"}
-    	,
+        ,
     odu_link_capabilities(std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities>())
+    , extended_affinity_attribute_flag(this, {})
+    , shared_risk_link_group(this, {})
+    , receiving_reservable_bandwidth(this, {})
+    , transmitting_reservable_bandwidth(this, {})
 {
     odu_link_capabilities->parent = this;
 
-    yang_name = "flooded-link"; yang_parent_name = "advertized-areas"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flooded-link"; yang_parent_name = "advertized-areas"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::~FloodedLink()
@@ -14350,22 +15334,23 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::~FloodedLink()
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::has_data() const
 {
-    for (std::size_t index=0; index<extended_affinity_attribute_flag.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<extended_affinity_attribute_flag.len(); index++)
     {
         if(extended_affinity_attribute_flag[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<receiving_reservable_bandwidth.size(); index++)
+    for (std::size_t index=0; index<receiving_reservable_bandwidth.len(); index++)
     {
         if(receiving_reservable_bandwidth[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<transmitting_reservable_bandwidth.size(); index++)
+    for (std::size_t index=0; index<transmitting_reservable_bandwidth.len(); index++)
     {
         if(transmitting_reservable_bandwidth[index]->has_data())
             return true;
@@ -14399,22 +15384,22 @@ bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::has_data() const
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::has_operation() const
 {
-    for (std::size_t index=0; index<extended_affinity_attribute_flag.size(); index++)
+    for (std::size_t index=0; index<extended_affinity_attribute_flag.len(); index++)
     {
         if(extended_affinity_attribute_flag[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<receiving_reservable_bandwidth.size(); index++)
+    for (std::size_t index=0; index<receiving_reservable_bandwidth.len(); index++)
     {
         if(receiving_reservable_bandwidth[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<transmitting_reservable_bandwidth.size(); index++)
+    for (std::size_t index=0; index<transmitting_reservable_bandwidth.len(); index++)
     {
         if(transmitting_reservable_bandwidth[index]->has_operation())
             return true;
@@ -14509,7 +15494,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag>();
         c->parent = this;
-        extended_affinity_attribute_flag.push_back(c);
+        extended_affinity_attribute_flag.append(c);
         return c;
     }
 
@@ -14517,7 +15502,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup>();
         c->parent = this;
-        shared_risk_link_group.push_back(c);
+        shared_risk_link_group.append(c);
         return c;
     }
 
@@ -14525,7 +15510,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth>();
         c->parent = this;
-        receiving_reservable_bandwidth.push_back(c);
+        receiving_reservable_bandwidth.append(c);
         return c;
     }
 
@@ -14533,7 +15518,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth>();
         c->parent = this;
-        transmitting_reservable_bandwidth.push_back(c);
+        transmitting_reservable_bandwidth.append(c);
         return c;
     }
 
@@ -14550,7 +15535,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::Adverti
     }
 
     count = 0;
-    for (auto const & c : extended_affinity_attribute_flag)
+    for (auto c : extended_affinity_attribute_flag.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14559,7 +15544,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::Adverti
     }
 
     count = 0;
-    for (auto const & c : shared_risk_link_group)
+    for (auto c : shared_risk_link_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14568,7 +15553,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::Adverti
     }
 
     count = 0;
-    for (auto const & c : receiving_reservable_bandwidth)
+    for (auto c : receiving_reservable_bandwidth.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14577,7 +15562,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::Adverti
     }
 
     count = 0;
-    for (auto const & c : transmitting_reservable_bandwidth)
+    for (auto c : transmitting_reservable_bandwidth.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14844,9 +15829,12 @@ bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::has_leaf_or_child_o
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduLinkCapabilities()
+    :
+    max_lsp_bandwidth(this, {})
+    , odu_capability(this, {})
 {
 
-    yang_name = "odu-link-capabilities"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "odu-link-capabilities"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::~OduLinkCapabilities()
@@ -14855,12 +15843,13 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::~Od
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::has_data() const
 {
-    for (std::size_t index=0; index<max_lsp_bandwidth.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<max_lsp_bandwidth.len(); index++)
     {
         if(max_lsp_bandwidth[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<odu_capability.size(); index++)
+    for (std::size_t index=0; index<odu_capability.len(); index++)
     {
         if(odu_capability[index]->has_data())
             return true;
@@ -14870,12 +15859,12 @@ bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::has_operation() const
 {
-    for (std::size_t index=0; index<max_lsp_bandwidth.size(); index++)
+    for (std::size_t index=0; index<max_lsp_bandwidth.len(); index++)
     {
         if(max_lsp_bandwidth[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<odu_capability.size(); index++)
+    for (std::size_t index=0; index<odu_capability.len(); index++)
     {
         if(odu_capability[index]->has_operation())
             return true;
@@ -14912,7 +15901,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth>();
         c->parent = this;
-        max_lsp_bandwidth.push_back(c);
+        max_lsp_bandwidth.append(c);
         return c;
     }
 
@@ -14920,7 +15909,7 @@ std::shared_ptr<Entity> MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::
     {
         auto c = std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability>();
         c->parent = this;
-        odu_capability.push_back(c);
+        odu_capability.append(c);
         return c;
     }
 
@@ -14932,7 +15921,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::Adverti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : max_lsp_bandwidth)
+    for (auto c : max_lsp_bandwidth.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14941,7 +15930,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Advertisements::Adverti
     }
 
     count = 0;
-    for (auto const & c : odu_capability)
+    for (auto c : odu_capability.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14972,7 +15961,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Max
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "max-lsp-bandwidth"; yang_parent_name = "odu-link-capabilities"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "max-lsp-bandwidth"; yang_parent_name = "odu-link-capabilities"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth::~MaxLspBandwidth()
@@ -14981,6 +15970,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Max
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::MaxLspBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -15064,12 +16054,12 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Odu
     tsg2p5{YType::boolean, "tsg2p5"},
     vcat_capable{YType::boolean, "vcat-capable"},
     lcas_capable{YType::boolean, "lcas-capable"}
-    	,
+        ,
     bandwidth_info(std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo>())
 {
     bandwidth_info->parent = this;
 
-    yang_name = "odu-capability"; yang_parent_name = "odu-link-capabilities"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "odu-capability"; yang_parent_name = "odu-link-capabilities"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::~OduCapability()
@@ -15078,6 +16068,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Odu
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::has_data() const
 {
+    if (is_presence_container) return true;
     return signal_type.is_set
 	|| stage1.is_set
 	|| stage2.is_set
@@ -15297,14 +16288,14 @@ bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::BandwidthInfo()
     :
     type{YType::enumeration, "type"}
-    	,
+        ,
     fixed(std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed>())
-	,flex(std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex>())
+    , flex(std::make_shared<MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex>())
 {
     fixed->parent = this;
     flex->parent = this;
 
-    yang_name = "bandwidth-info"; yang_parent_name = "odu-capability"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-info"; yang_parent_name = "odu-capability"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::~BandwidthInfo()
@@ -15313,6 +16304,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Odu
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| (fixed !=  nullptr && fixed->has_data())
 	|| (flex !=  nullptr && flex->has_data());
@@ -15421,7 +16413,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Odu
     unreserved_od_us{YType::uint8, "unreserved-od-us"}
 {
 
-    yang_name = "fixed"; yang_parent_name = "bandwidth-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fixed"; yang_parent_name = "bandwidth-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::~Fixed()
@@ -15430,6 +16422,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Odu
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Fixed::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_od_us.is_set
 	|| unreserved_od_us.is_set;
 }
@@ -15520,7 +16513,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Odu
     max_lsp_bandwidth{YType::uint32, "max-lsp-bandwidth"}
 {
 
-    yang_name = "flex"; yang_parent_name = "bandwidth-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flex"; yang_parent_name = "bandwidth-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::~Flex()
@@ -15529,6 +16522,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::Odu
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapabilities::OduCapability::BandwidthInfo::Flex::has_data() const
 {
+    if (is_presence_container) return true;
     return max_bandwidth.is_set
 	|| unreserved_bandwidth.is_set
 	|| max_lsp_bandwidth.is_set;
@@ -15630,7 +16624,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttribut
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "extended-affinity-attribute-flag"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extended-affinity-attribute-flag"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag::~ExtendedAffinityAttributeFlag()
@@ -15639,6 +16633,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttribut
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffinityAttributeFlag::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -15715,7 +16710,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup::Sha
     srlg_name{YType::str, "srlg-name"}
 {
 
-    yang_name = "shared-risk-link-group"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "shared-risk-link-group"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup::~SharedRiskLinkGroup()
@@ -15724,6 +16719,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup::~Sh
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLinkGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return shared_risk_group.is_set
 	|| srlg_name.is_set;
 }
@@ -15814,7 +16810,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandw
     pool1_bandwidth{YType::uint32, "pool1-bandwidth"}
 {
 
-    yang_name = "receiving-reservable-bandwidth"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "receiving-reservable-bandwidth"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth::~ReceivingReservableBandwidth()
@@ -15823,6 +16819,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandw
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingReservableBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| pool0_bandwidth.is_set
 	|| pool1_bandwidth.is_set;
@@ -15926,7 +16923,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBa
     pool1_bandwidth{YType::uint32, "pool1-bandwidth"}
 {
 
-    yang_name = "transmitting-reservable-bandwidth"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmitting-reservable-bandwidth"; yang_parent_name = "flooded-link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth::~TransmittingReservableBandwidth()
@@ -15935,6 +16932,7 @@ MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBa
 
 bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReservableBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| pool0_bandwidth.is_set
 	|| pool1_bandwidth.is_set;
@@ -16034,12 +17032,12 @@ bool MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::TransmittingReserva
 MplsLcac::Statistics::Statistics()
     :
     summary(std::make_shared<MplsLcac::Statistics::Summary>())
-	,statstics_links(std::make_shared<MplsLcac::Statistics::StatsticsLinks>())
+    , statstics_links(std::make_shared<MplsLcac::Statistics::StatsticsLinks>())
 {
     summary->parent = this;
     statstics_links->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::~Statistics()
@@ -16048,6 +17046,7 @@ MplsLcac::Statistics::~Statistics()
 
 bool MplsLcac::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary !=  nullptr && summary->has_data())
 	|| (statstics_links !=  nullptr && statstics_links->has_data());
 }
@@ -16140,18 +17139,18 @@ bool MplsLcac::Statistics::has_leaf_or_child_of_name(const std::string & name) c
 MplsLcac::Statistics::Summary::Summary()
     :
     is_role_standby{YType::boolean, "is-role-standby"}
-    	,
+        ,
     path_statistics(std::make_shared<MplsLcac::Statistics::Summary::PathStatistics>())
-	,reservation_statistics(std::make_shared<MplsLcac::Statistics::Summary::ReservationStatistics>())
-	,path_statistics32_bit(std::make_shared<MplsLcac::Statistics::Summary::PathStatistics32Bit>())
-	,reservation_statistics32_bit(std::make_shared<MplsLcac::Statistics::Summary::ReservationStatistics32Bit>())
+    , reservation_statistics(std::make_shared<MplsLcac::Statistics::Summary::ReservationStatistics>())
+    , path_statistics32_bit(std::make_shared<MplsLcac::Statistics::Summary::PathStatistics32Bit>())
+    , reservation_statistics32_bit(std::make_shared<MplsLcac::Statistics::Summary::ReservationStatistics32Bit>())
 {
     path_statistics->parent = this;
     reservation_statistics->parent = this;
     path_statistics32_bit->parent = this;
     reservation_statistics32_bit->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::Summary::~Summary()
@@ -16160,6 +17159,7 @@ MplsLcac::Statistics::Summary::~Summary()
 
 bool MplsLcac::Statistics::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return is_role_standby.is_set
 	|| (path_statistics !=  nullptr && path_statistics->has_data())
 	|| (reservation_statistics !=  nullptr && reservation_statistics->has_data())
@@ -16305,7 +17305,7 @@ MplsLcac::Statistics::Summary::PathStatistics::PathStatistics()
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "path-statistics"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-statistics"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::Summary::PathStatistics::~PathStatistics()
@@ -16314,6 +17314,7 @@ MplsLcac::Statistics::Summary::PathStatistics::~PathStatistics()
 
 bool MplsLcac::Statistics::Summary::PathStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -16473,7 +17474,7 @@ MplsLcac::Statistics::Summary::ReservationStatistics::ReservationStatistics()
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "reservation-statistics"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reservation-statistics"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::Summary::ReservationStatistics::~ReservationStatistics()
@@ -16482,6 +17483,7 @@ MplsLcac::Statistics::Summary::ReservationStatistics::~ReservationStatistics()
 
 bool MplsLcac::Statistics::Summary::ReservationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -16641,7 +17643,7 @@ MplsLcac::Statistics::Summary::PathStatistics32Bit::PathStatistics32Bit()
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "path-statistics32-bit"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "path-statistics32-bit"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::Summary::PathStatistics32Bit::~PathStatistics32Bit()
@@ -16650,6 +17652,7 @@ MplsLcac::Statistics::Summary::PathStatistics32Bit::~PathStatistics32Bit()
 
 bool MplsLcac::Statistics::Summary::PathStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -16809,7 +17812,7 @@ MplsLcac::Statistics::Summary::ReservationStatistics32Bit::ReservationStatistics
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "reservation-statistics32-bit"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reservation-statistics32-bit"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::Summary::ReservationStatistics32Bit::~ReservationStatistics32Bit()
@@ -16818,6 +17821,7 @@ MplsLcac::Statistics::Summary::ReservationStatistics32Bit::~ReservationStatistic
 
 bool MplsLcac::Statistics::Summary::ReservationStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -16967,9 +17971,11 @@ bool MplsLcac::Statistics::Summary::ReservationStatistics32Bit::has_leaf_or_chil
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLinks()
+    :
+    statstics_link(this, {"interface_name"})
 {
 
-    yang_name = "statstics-links"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statstics-links"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::~StatsticsLinks()
@@ -16978,7 +17984,8 @@ MplsLcac::Statistics::StatsticsLinks::~StatsticsLinks()
 
 bool MplsLcac::Statistics::StatsticsLinks::has_data() const
 {
-    for (std::size_t index=0; index<statstics_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statstics_link.len(); index++)
     {
         if(statstics_link[index]->has_data())
             return true;
@@ -16988,7 +17995,7 @@ bool MplsLcac::Statistics::StatsticsLinks::has_data() const
 
 bool MplsLcac::Statistics::StatsticsLinks::has_operation() const
 {
-    for (std::size_t index=0; index<statstics_link.size(); index++)
+    for (std::size_t index=0; index<statstics_link.len(); index++)
     {
         if(statstics_link[index]->has_operation())
             return true;
@@ -17025,7 +18032,7 @@ std::shared_ptr<Entity> MplsLcac::Statistics::StatsticsLinks::get_child_by_name(
     {
         auto c = std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink>();
         c->parent = this;
-        statstics_link.push_back(c);
+        statstics_link.append(c);
         return c;
     }
 
@@ -17037,7 +18044,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::Statistics::StatsticsLi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statstics_link)
+    for (auto c : statstics_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17068,15 +18075,15 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::StatsticsLink()
     interface_name{YType::str, "interface-name"},
     interface_name_xr{YType::str, "interface-name-xr"},
     link_address{YType::str, "link-address"}
-    	,
+        ,
     incoming_path_statistics(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics>())
-	,incoming_reservation_statistics(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics>())
-	,outgoing_path_statistics(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics>())
-	,outgoing_reservation_statistics(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics>())
-	,incoming_path_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit>())
-	,incoming_reservation_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit>())
-	,outgoing_path_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit>())
-	,outgoing_reservation_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit>())
+    , incoming_reservation_statistics(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics>())
+    , outgoing_path_statistics(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics>())
+    , outgoing_reservation_statistics(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics>())
+    , incoming_path_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit>())
+    , incoming_reservation_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit>())
+    , outgoing_path_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit>())
+    , outgoing_reservation_statistics32_bit(std::make_shared<MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit>())
 {
     incoming_path_statistics->parent = this;
     incoming_reservation_statistics->parent = this;
@@ -17087,7 +18094,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::StatsticsLink()
     outgoing_path_statistics32_bit->parent = this;
     outgoing_reservation_statistics32_bit->parent = this;
 
-    yang_name = "statstics-link"; yang_parent_name = "statstics-links"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statstics-link"; yang_parent_name = "statstics-links"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::~StatsticsLink()
@@ -17096,6 +18103,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::~StatsticsLink()
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| link_address.is_set
@@ -17135,7 +18143,8 @@ std::string MplsLcac::Statistics::StatsticsLinks::StatsticsLink::get_absolute_pa
 std::string MplsLcac::Statistics::StatsticsLinks::StatsticsLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statstics-link" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "statstics-link";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -17331,7 +18340,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::Inc
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "incoming-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::~IncomingPathStatistics()
@@ -17340,6 +18349,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::~In
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -17492,7 +18502,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatisti
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "incoming-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics::~IncomingReservationStatistics()
@@ -17501,6 +18511,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatisti
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -17653,7 +18664,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::Out
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "outgoing-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-path-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::~OutgoingPathStatistics()
@@ -17662,6 +18673,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::~Ou
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -17814,7 +18826,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatisti
     tear_preempts{YType::uint16, "tear-preempts"}
 {
 
-    yang_name = "outgoing-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-reservation-statistics"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics::~OutgoingReservationStatistics()
@@ -17823,6 +18835,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatisti
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -17975,7 +18988,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "incoming-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit::~IncomingPathStatistics32Bit()
@@ -17984,6 +18997,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingPathStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -18136,7 +19150,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatisti
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "incoming-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit::~IncomingReservationStatistics32Bit()
@@ -18145,6 +19159,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatisti
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::IncomingReservationStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -18297,7 +19312,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "outgoing-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-path-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit::~OutgoingPathStatistics32Bit()
@@ -18306,6 +19321,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingPathStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -18458,7 +19474,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatisti
     tear_preempts{YType::uint32, "tear-preempts"}
 {
 
-    yang_name = "outgoing-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-reservation-statistics32-bit"; yang_parent_name = "statstics-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit::~OutgoingReservationStatistics32Bit()
@@ -18467,6 +19483,7 @@ MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatisti
 
 bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationStatistics32Bit::has_data() const
 {
+    if (is_presence_container) return true;
     return setup_requests.is_set
 	|| setup_errors.is_set
 	|| setup_admits.is_set
@@ -18611,12 +19628,12 @@ bool MplsLcac::Statistics::StatsticsLinks::StatsticsLink::OutgoingReservationSta
 MplsLcac::BandwidthAllocation::BandwidthAllocation()
     :
     global(std::make_shared<MplsLcac::BandwidthAllocation::Global>())
-	,bandwidth_allocation_links(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks>())
+    , bandwidth_allocation_links(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks>())
 {
     global->parent = this;
     bandwidth_allocation_links->parent = this;
 
-    yang_name = "bandwidth-allocation"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-allocation"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::BandwidthAllocation::~BandwidthAllocation()
@@ -18625,6 +19642,7 @@ MplsLcac::BandwidthAllocation::~BandwidthAllocation()
 
 bool MplsLcac::BandwidthAllocation::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (bandwidth_allocation_links !=  nullptr && bandwidth_allocation_links->has_data());
 }
@@ -18721,7 +19739,7 @@ MplsLcac::BandwidthAllocation::Global::Global()
     bandwidth_hold_time{YType::uint16, "bandwidth-hold-time"}
 {
 
-    yang_name = "global"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::BandwidthAllocation::Global::~Global()
@@ -18730,6 +19748,7 @@ MplsLcac::BandwidthAllocation::Global::~Global()
 
 bool MplsLcac::BandwidthAllocation::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return is_role_standby.is_set
 	|| links.is_set
 	|| bandwidth_hold_time.is_set;
@@ -18827,9 +19846,11 @@ bool MplsLcac::BandwidthAllocation::Global::has_leaf_or_child_of_name(const std:
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLinks()
+    :
+    bandwidth_allocation_link(this, {"interface_name"})
 {
 
-    yang_name = "bandwidth-allocation-links"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-allocation-links"; yang_parent_name = "bandwidth-allocation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::~BandwidthAllocationLinks()
@@ -18838,7 +19859,8 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::~BandwidthAllocationLin
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::has_data() const
 {
-    for (std::size_t index=0; index<bandwidth_allocation_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bandwidth_allocation_link.len(); index++)
     {
         if(bandwidth_allocation_link[index]->has_data())
             return true;
@@ -18848,7 +19870,7 @@ bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::has_data() const
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::has_operation() const
 {
-    for (std::size_t index=0; index<bandwidth_allocation_link.size(); index++)
+    for (std::size_t index=0; index<bandwidth_allocation_link.len(); index++)
     {
         if(bandwidth_allocation_link[index]->has_operation())
             return true;
@@ -18885,7 +19907,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink>();
         c->parent = this;
-        bandwidth_allocation_link.push_back(c);
+        bandwidth_allocation_link.append(c);
         return c;
     }
 
@@ -18897,7 +19919,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bandwidth_allocation_link)
+    for (auto c : bandwidth_allocation_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -18933,16 +19955,18 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     flooding_down_thresholds_are_default{YType::boolean, "flooding-down-thresholds-are-default"},
     flooding_up_thresholds_are_global{YType::boolean, "flooding-up-thresholds-are-global"},
     flooding_down_thresholds_are_global{YType::boolean, "flooding-down-thresholds-are-global"}
-    	,
+        ,
     link_common(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon>())
-	,upstream_bandwidth(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth>())
-	,downstream_bandwidth(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth>())
+    , upstream_bandwidth(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth>())
+    , downstream_bandwidth(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth>())
+    , flooding_up_threshold(this, {})
+    , flooding_down_threshold(this, {})
 {
     link_common->parent = this;
     upstream_bandwidth->parent = this;
     downstream_bandwidth->parent = this;
 
-    yang_name = "bandwidth-allocation-link"; yang_parent_name = "bandwidth-allocation-links"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bandwidth-allocation-link"; yang_parent_name = "bandwidth-allocation-links"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::~BandwidthAllocationLink()
@@ -18951,12 +19975,13 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::has_data() const
 {
-    for (std::size_t index=0; index<flooding_up_threshold.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flooding_up_threshold.len(); index++)
     {
         if(flooding_up_threshold[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flooding_down_threshold.size(); index++)
+    for (std::size_t index=0; index<flooding_down_threshold.len(); index++)
     {
         if(flooding_down_threshold[index]->has_data())
             return true;
@@ -18976,12 +20001,12 @@ bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocatio
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::has_operation() const
 {
-    for (std::size_t index=0; index<flooding_up_threshold.size(); index++)
+    for (std::size_t index=0; index<flooding_up_threshold.len(); index++)
     {
         if(flooding_up_threshold[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flooding_down_threshold.size(); index++)
+    for (std::size_t index=0; index<flooding_down_threshold.len(); index++)
     {
         if(flooding_down_threshold[index]->has_operation())
             return true;
@@ -19010,7 +20035,8 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bandwidth-allocation-link" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bandwidth-allocation-link";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -19064,7 +20090,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold>();
         c->parent = this;
-        flooding_up_threshold.push_back(c);
+        flooding_up_threshold.append(c);
         return c;
     }
 
@@ -19072,7 +20098,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold>();
         c->parent = this;
-        flooding_down_threshold.push_back(c);
+        flooding_down_threshold.append(c);
         return c;
     }
 
@@ -19099,7 +20125,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     }
 
     count = 0;
-    for (auto const & c : flooding_up_threshold)
+    for (auto c : flooding_up_threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19108,7 +20134,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     }
 
     count = 0;
-    for (auto const & c : flooding_down_threshold)
+    for (auto c : flooding_down_threshold.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19240,12 +20266,15 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     inbound_admission_method{YType::enumeration, "inbound-admission-method"},
     outbound_admission_method{YType::enumeration, "outbound-admission-method"},
     igp_neighbors{YType::uint16, "igp-neighbors"}
-    	,
+        ,
     link_flags(std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags>())
+    , shared_risk_link_group(this, {})
+    , interface_switching_capability_descriptor(this, {})
+    , flooded_areas(this, {})
 {
     link_flags->parent = this;
 
-    yang_name = "link-common"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-common"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::~LinkCommon()
@@ -19254,17 +20283,18 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::has_data() const
 {
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface_switching_capability_descriptor.size(); index++)
+    for (std::size_t index=0; index<interface_switching_capability_descriptor.len(); index++)
     {
         if(interface_switching_capability_descriptor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flooded_areas.size(); index++)
+    for (std::size_t index=0; index<flooded_areas.len(); index++)
     {
         if(flooded_areas[index]->has_data())
             return true;
@@ -19298,17 +20328,17 @@ bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocatio
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::has_operation() const
 {
-    for (std::size_t index=0; index<shared_risk_link_group.size(); index++)
+    for (std::size_t index=0; index<shared_risk_link_group.len(); index++)
     {
         if(shared_risk_link_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface_switching_capability_descriptor.size(); index++)
+    for (std::size_t index=0; index<interface_switching_capability_descriptor.len(); index++)
     {
         if(interface_switching_capability_descriptor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flooded_areas.size(); index++)
+    for (std::size_t index=0; index<flooded_areas.len(); index++)
     {
         if(flooded_areas[index]->has_operation())
             return true;
@@ -19396,7 +20426,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup>();
         c->parent = this;
-        shared_risk_link_group.push_back(c);
+        shared_risk_link_group.append(c);
         return c;
     }
 
@@ -19404,7 +20434,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor>();
         c->parent = this;
-        interface_switching_capability_descriptor.push_back(c);
+        interface_switching_capability_descriptor.append(c);
         return c;
     }
 
@@ -19412,7 +20442,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas>();
         c->parent = this;
-        flooded_areas.push_back(c);
+        flooded_areas.append(c);
         return c;
     }
 
@@ -19429,7 +20459,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     }
 
     count = 0;
-    for (auto const & c : shared_risk_link_group)
+    for (auto c : shared_risk_link_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19438,7 +20468,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     }
 
     count = 0;
-    for (auto const & c : interface_switching_capability_descriptor)
+    for (auto c : interface_switching_capability_descriptor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19447,7 +20477,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     }
 
     count = 0;
-    for (auto const & c : flooded_areas)
+    for (auto c : flooded_areas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19720,7 +20750,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     is_admin_up{YType::boolean, "is-admin-up"}
 {
 
-    yang_name = "link-flags"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-flags"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags::~LinkFlags()
@@ -19729,6 +20759,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::LinkFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return is_mpls_te_on.is_set
 	|| signaling_agent.is_set
 	|| is_admin_up.is_set;
@@ -19824,7 +20855,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     srlg_name{YType::str, "srlg-name"}
 {
 
-    yang_name = "shared-risk-link-group"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shared-risk-link-group"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup::~SharedRiskLinkGroup()
@@ -19833,6 +20864,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::SharedRiskLinkGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return shared_risk_group.is_set
 	|| srlg_name.is_set;
 }
@@ -19916,7 +20948,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     encoding{YType::uint8, "encoding"}
 {
 
-    yang_name = "interface-switching-capability-descriptor"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-switching-capability-descriptor"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor::~InterfaceSwitchingCapabilityDescriptor()
@@ -19925,6 +20957,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::InterfaceSwitchingCapabilityDescriptor::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| switching_capability.is_set
 	|| encoding.is_set;
@@ -20019,7 +21052,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     flooded_area{YType::str, "flooded-area"}
 {
 
-    yang_name = "flooded-areas"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooded-areas"; yang_parent_name = "link-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas::~FloodedAreas()
@@ -20028,6 +21061,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::LinkCommon::FloodedAreas::has_data() const
 {
+    if (is_presence_container) return true;
     return flooded_area.is_set;
 }
 
@@ -20096,9 +21130,12 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     bandwidth_direction{YType::enumeration, "bandwidth-direction"},
     is_admission_method_allocated_bandwidth{YType::boolean, "is-admission-method-allocated-bandwidth"},
     bandwidth_units{YType::enumeration, "bandwidth-units"}
+        ,
+    bandwidth_pool0(this, {})
+    , bandwidth_pool1(this, {})
 {
 
-    yang_name = "upstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "upstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::~UpstreamBandwidth()
@@ -20107,12 +21144,13 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::has_data() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_data())
             return true;
@@ -20124,12 +21162,12 @@ bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocatio
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::has_operation() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_operation())
             return true;
@@ -20165,7 +21203,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0>();
         c->parent = this;
-        bandwidth_pool0.push_back(c);
+        bandwidth_pool0.append(c);
         return c;
     }
 
@@ -20173,7 +21211,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1>();
         c->parent = this;
-        bandwidth_pool1.push_back(c);
+        bandwidth_pool1.append(c);
         return c;
     }
 
@@ -20185,7 +21223,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bandwidth_pool0)
+    for (auto c : bandwidth_pool0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20194,7 +21232,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     }
 
     count = 0;
-    for (auto const & c : bandwidth_pool1)
+    for (auto c : bandwidth_pool1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20259,7 +21297,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool0"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool0"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0::~BandwidthPool0()
@@ -20268,6 +21306,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool0::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -20392,7 +21431,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool1"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool1"; yang_parent_name = "upstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1::~BandwidthPool1()
@@ -20401,6 +21440,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::UpstreamBandwidth::BandwidthPool1::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -20521,9 +21561,12 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     bandwidth_direction{YType::enumeration, "bandwidth-direction"},
     is_admission_method_allocated_bandwidth{YType::boolean, "is-admission-method-allocated-bandwidth"},
     bandwidth_units{YType::enumeration, "bandwidth-units"}
+        ,
+    bandwidth_pool0(this, {})
+    , bandwidth_pool1(this, {})
 {
 
-    yang_name = "downstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "downstream-bandwidth"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::~DownstreamBandwidth()
@@ -20532,12 +21575,13 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::has_data() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_data())
             return true;
@@ -20549,12 +21593,12 @@ bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocatio
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::has_operation() const
 {
-    for (std::size_t index=0; index<bandwidth_pool0.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool0.len(); index++)
     {
         if(bandwidth_pool0[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bandwidth_pool1.size(); index++)
+    for (std::size_t index=0; index<bandwidth_pool1.len(); index++)
     {
         if(bandwidth_pool1[index]->has_operation())
             return true;
@@ -20590,7 +21634,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0>();
         c->parent = this;
-        bandwidth_pool0.push_back(c);
+        bandwidth_pool0.append(c);
         return c;
     }
 
@@ -20598,7 +21642,7 @@ std::shared_ptr<Entity> MplsLcac::BandwidthAllocation::BandwidthAllocationLinks:
     {
         auto c = std::make_shared<MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1>();
         c->parent = this;
-        bandwidth_pool1.push_back(c);
+        bandwidth_pool1.append(c);
         return c;
     }
 
@@ -20610,7 +21654,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bandwidth_pool0)
+    for (auto c : bandwidth_pool0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20619,7 +21663,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAllocation::Ba
     }
 
     count = 0;
-    for (auto const & c : bandwidth_pool1)
+    for (auto c : bandwidth_pool1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20684,7 +21728,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool0"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool0"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0::~BandwidthPool0()
@@ -20693,6 +21737,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool0::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -20817,7 +21862,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     total_locked_amount{YType::uint32, "total-locked-amount"}
 {
 
-    yang_name = "bandwidth-pool1"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth-pool1"; yang_parent_name = "downstream-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1::~BandwidthPool1()
@@ -20826,6 +21871,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::DownstreamBandwidth::BandwidthPool1::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_priority.is_set
 	|| held_amount.is_set
 	|| total_held_amount.is_set
@@ -20946,7 +21992,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "flooding-up-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding-up-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold::~FloodingUpThreshold()
@@ -20955,6 +22001,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingUpThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -21023,7 +22070,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "flooding-down-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flooding-down-threshold"; yang_parent_name = "bandwidth-allocation-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold::~FloodingDownThreshold()
@@ -21032,6 +22079,7 @@ MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink
 
 bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocationLink::FloodingDownThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -21098,12 +22146,12 @@ bool MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAllocatio
 MplsLcac::Gmpls::Gmpls()
     :
     nni(std::make_shared<MplsLcac::Gmpls::Nni>())
-	,uni(std::make_shared<MplsLcac::Gmpls::Uni>())
+    , uni(std::make_shared<MplsLcac::Gmpls::Uni>())
 {
     nni->parent = this;
     uni->parent = this;
 
-    yang_name = "gmpls"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gmpls"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Gmpls::~Gmpls()
@@ -21112,6 +22160,7 @@ MplsLcac::Gmpls::~Gmpls()
 
 bool MplsLcac::Gmpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (nni !=  nullptr && nni->has_data())
 	|| (uni !=  nullptr && uni->has_data());
 }
@@ -21204,7 +22253,7 @@ bool MplsLcac::Gmpls::has_leaf_or_child_of_name(const std::string & name) const
 MplsLcac::Gmpls::Nni::Nni()
 {
 
-    yang_name = "nni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Gmpls::Nni::~Nni()
@@ -21213,6 +22262,7 @@ MplsLcac::Gmpls::Nni::~Nni()
 
 bool MplsLcac::Gmpls::Nni::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -21272,7 +22322,7 @@ bool MplsLcac::Gmpls::Nni::has_leaf_or_child_of_name(const std::string & name) c
 MplsLcac::Gmpls::Uni::Uni()
 {
 
-    yang_name = "uni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "uni"; yang_parent_name = "gmpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::Gmpls::Uni::~Uni()
@@ -21281,6 +22331,7 @@ MplsLcac::Gmpls::Uni::~Uni()
 
 bool MplsLcac::Gmpls::Uni::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -21338,9 +22389,11 @@ bool MplsLcac::Gmpls::Uni::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 MplsLcac::BfdNeighbors::BfdNeighbors()
+    :
+    bfd_neighbor(this, {"interface_name"})
 {
 
-    yang_name = "bfd-neighbors"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-neighbors"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::BfdNeighbors::~BfdNeighbors()
@@ -21349,7 +22402,8 @@ MplsLcac::BfdNeighbors::~BfdNeighbors()
 
 bool MplsLcac::BfdNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<bfd_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bfd_neighbor.len(); index++)
     {
         if(bfd_neighbor[index]->has_data())
             return true;
@@ -21359,7 +22413,7 @@ bool MplsLcac::BfdNeighbors::has_data() const
 
 bool MplsLcac::BfdNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<bfd_neighbor.size(); index++)
+    for (std::size_t index=0; index<bfd_neighbor.len(); index++)
     {
         if(bfd_neighbor[index]->has_operation())
             return true;
@@ -21396,7 +22450,7 @@ std::shared_ptr<Entity> MplsLcac::BfdNeighbors::get_child_by_name(const std::str
     {
         auto c = std::make_shared<MplsLcac::BfdNeighbors::BfdNeighbor>();
         c->parent = this;
-        bfd_neighbor.push_back(c);
+        bfd_neighbor.append(c);
         return c;
     }
 
@@ -21408,7 +22462,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BfdNeighbors::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bfd_neighbor)
+    for (auto c : bfd_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21437,9 +22491,11 @@ bool MplsLcac::BfdNeighbors::has_leaf_or_child_of_name(const std::string & name)
 MplsLcac::BfdNeighbors::BfdNeighbor::BfdNeighbor()
     :
     interface_name{YType::str, "interface-name"}
+        ,
+    neighbor(this, {})
 {
 
-    yang_name = "bfd-neighbor"; yang_parent_name = "bfd-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-neighbor"; yang_parent_name = "bfd-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLcac::BfdNeighbors::BfdNeighbor::~BfdNeighbor()
@@ -21448,7 +22504,8 @@ MplsLcac::BfdNeighbors::BfdNeighbor::~BfdNeighbor()
 
 bool MplsLcac::BfdNeighbors::BfdNeighbor::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -21458,7 +22515,7 @@ bool MplsLcac::BfdNeighbors::BfdNeighbor::has_data() const
 
 bool MplsLcac::BfdNeighbors::BfdNeighbor::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -21477,7 +22534,8 @@ std::string MplsLcac::BfdNeighbors::BfdNeighbor::get_absolute_path() const
 std::string MplsLcac::BfdNeighbors::BfdNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bfd-neighbor" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bfd-neighbor";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -21497,7 +22555,7 @@ std::shared_ptr<Entity> MplsLcac::BfdNeighbors::BfdNeighbor::get_child_by_name(c
     {
         auto c = std::make_shared<MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -21509,7 +22567,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BfdNeighbors::BfdNeighb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21551,7 +22609,7 @@ MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::Neighbor()
     is_bfd_up{YType::boolean, "is-bfd-up"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "bfd-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "bfd-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::~Neighbor()
@@ -21560,6 +22618,7 @@ MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::~Neighbor()
 
 bool MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set
 	|| is_bfd_up.is_set;
 }
@@ -21632,717 +22691,6 @@ void MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::set_filter(const std::string
 bool MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "neighbor-address" || name == "is-bfd-up")
-        return true;
-    return false;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccount()
-    :
-    bandwidth_account_links(std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks>())
-{
-    bandwidth_account_links->parent = this;
-
-    yang_name = "bandwidth-account"; yang_parent_name = "mpls-lcac"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-MplsLcac::BandwidthAccount::~BandwidthAccount()
-{
-}
-
-bool MplsLcac::BandwidthAccount::has_data() const
-{
-    return (bandwidth_account_links !=  nullptr && bandwidth_account_links->has_data());
-}
-
-bool MplsLcac::BandwidthAccount::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bandwidth_account_links !=  nullptr && bandwidth_account_links->has_operation());
-}
-
-std::string MplsLcac::BandwidthAccount::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string MplsLcac::BandwidthAccount::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bandwidth-account";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLcac::BandwidthAccount::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLcac::BandwidthAccount::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bandwidth-account-links")
-    {
-        if(bandwidth_account_links == nullptr)
-        {
-            bandwidth_account_links = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks>();
-        }
-        return bandwidth_account_links;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(bandwidth_account_links != nullptr)
-    {
-        children["bandwidth-account-links"] = bandwidth_account_links;
-    }
-
-    return children;
-}
-
-void MplsLcac::BandwidthAccount::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsLcac::BandwidthAccount::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsLcac::BandwidthAccount::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bandwidth-account-links")
-        return true;
-    return false;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLinks()
-{
-
-    yang_name = "bandwidth-account-links"; yang_parent_name = "bandwidth-account"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::~BandwidthAccountLinks()
-{
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::has_data() const
-{
-    for (std::size_t index=0; index<bandwidth_account_link.size(); index++)
-    {
-        if(bandwidth_account_link[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::has_operation() const
-{
-    for (std::size_t index=0; index<bandwidth_account_link.size(); index++)
-    {
-        if(bandwidth_account_link[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac/bandwidth-account/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bandwidth-account-links";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bandwidth-account-link")
-    {
-        auto c = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink>();
-        c->parent = this;
-        bandwidth_account_link.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : bandwidth_account_link)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bandwidth-account-link")
-        return true;
-    return false;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::BandwidthAccountLink()
-    :
-    interface_name{YType::str, "interface-name"},
-    link_id{YType::str, "link-id"}
-    	,
-    common_info(std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo>())
-	,rsvp_te_sample_history(std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory>())
-	,sr_sample_history(std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory>())
-{
-    common_info->parent = this;
-    rsvp_te_sample_history->parent = this;
-    sr_sample_history->parent = this;
-
-    yang_name = "bandwidth-account-link"; yang_parent_name = "bandwidth-account-links"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::~BandwidthAccountLink()
-{
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::has_data() const
-{
-    return interface_name.is_set
-	|| link_id.is_set
-	|| (common_info !=  nullptr && common_info->has_data())
-	|| (rsvp_te_sample_history !=  nullptr && rsvp_te_sample_history->has_data())
-	|| (sr_sample_history !=  nullptr && sr_sample_history->has_data());
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(link_id.yfilter)
-	|| (common_info !=  nullptr && common_info->has_operation())
-	|| (rsvp_te_sample_history !=  nullptr && rsvp_te_sample_history->has_operation())
-	|| (sr_sample_history !=  nullptr && sr_sample_history->has_operation());
-}
-
-std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-oper:mpls-lcac/bandwidth-account/bandwidth-account-links/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bandwidth-account-link" <<"[interface-name='" <<interface_name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (link_id.is_set || is_set(link_id.yfilter)) leaf_name_data.push_back(link_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "common-info")
-    {
-        if(common_info == nullptr)
-        {
-            common_info = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo>();
-        }
-        return common_info;
-    }
-
-    if(child_yang_name == "rsvp-te-sample-history")
-    {
-        if(rsvp_te_sample_history == nullptr)
-        {
-            rsvp_te_sample_history = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::RsvpTeSampleHistory>();
-        }
-        return rsvp_te_sample_history;
-    }
-
-    if(child_yang_name == "sr-sample-history")
-    {
-        if(sr_sample_history == nullptr)
-        {
-            sr_sample_history = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::SrSampleHistory>();
-        }
-        return sr_sample_history;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(common_info != nullptr)
-    {
-        children["common-info"] = common_info;
-    }
-
-    if(rsvp_te_sample_history != nullptr)
-    {
-        children["rsvp-te-sample-history"] = rsvp_te_sample_history;
-    }
-
-    if(sr_sample_history != nullptr)
-    {
-        children["sr-sample-history"] = sr_sample_history;
-    }
-
-    return children;
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link-id")
-    {
-        link_id = value;
-        link_id.value_namespace = name_space;
-        link_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "link-id")
-    {
-        link_id.yfilter = yfilter;
-    }
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "common-info" || name == "rsvp-te-sample-history" || name == "sr-sample-history" || name == "interface-name" || name == "link-id")
-        return true;
-    return false;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::CommonInfo()
-    :
-    is_bandwidth_account_enabled{YType::boolean, "is-bandwidth-account-enabled"},
-    application_enforced{YType::boolean, "application-enforced"},
-    collection_type{YType::enumeration, "collection-type"},
-    sample_time_remaining_timestamp_nanosec{YType::uint64, "sample-time-remaining-timestamp-nanosec"},
-    last_sample_collection_timestamp_nanosec{YType::uint64, "last-sample-collection-timestamp-nanosec"},
-    next_sample_collection_nanosec{YType::uint64, "next-sample-collection-nanosec"},
-    application_time_remaining_nanosec{YType::uint64, "application-time-remaining-nanosec"},
-    last_application_timestamp_nanosec{YType::uint64, "last-application-timestamp-nanosec"},
-    next_application_timestamp_nanosec{YType::uint64, "next-application-timestamp-nanosec"},
-    effective_maximum_reservable_bandwidth{YType::uint64, "effective-maximum-reservable-bandwidth"}
-    	,
-    rsvp_te_bandwidth_utilization(std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization>())
-	,sr_bandwidth_utilization(std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization>())
-{
-    rsvp_te_bandwidth_utilization->parent = this;
-    sr_bandwidth_utilization->parent = this;
-
-    yang_name = "common-info"; yang_parent_name = "bandwidth-account-link"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::~CommonInfo()
-{
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::has_data() const
-{
-    return is_bandwidth_account_enabled.is_set
-	|| application_enforced.is_set
-	|| collection_type.is_set
-	|| sample_time_remaining_timestamp_nanosec.is_set
-	|| last_sample_collection_timestamp_nanosec.is_set
-	|| next_sample_collection_nanosec.is_set
-	|| application_time_remaining_nanosec.is_set
-	|| last_application_timestamp_nanosec.is_set
-	|| next_application_timestamp_nanosec.is_set
-	|| effective_maximum_reservable_bandwidth.is_set
-	|| (rsvp_te_bandwidth_utilization !=  nullptr && rsvp_te_bandwidth_utilization->has_data())
-	|| (sr_bandwidth_utilization !=  nullptr && sr_bandwidth_utilization->has_data());
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_bandwidth_account_enabled.yfilter)
-	|| ydk::is_set(application_enforced.yfilter)
-	|| ydk::is_set(collection_type.yfilter)
-	|| ydk::is_set(sample_time_remaining_timestamp_nanosec.yfilter)
-	|| ydk::is_set(last_sample_collection_timestamp_nanosec.yfilter)
-	|| ydk::is_set(next_sample_collection_nanosec.yfilter)
-	|| ydk::is_set(application_time_remaining_nanosec.yfilter)
-	|| ydk::is_set(last_application_timestamp_nanosec.yfilter)
-	|| ydk::is_set(next_application_timestamp_nanosec.yfilter)
-	|| ydk::is_set(effective_maximum_reservable_bandwidth.yfilter)
-	|| (rsvp_te_bandwidth_utilization !=  nullptr && rsvp_te_bandwidth_utilization->has_operation())
-	|| (sr_bandwidth_utilization !=  nullptr && sr_bandwidth_utilization->has_operation());
-}
-
-std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "common-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_bandwidth_account_enabled.is_set || is_set(is_bandwidth_account_enabled.yfilter)) leaf_name_data.push_back(is_bandwidth_account_enabled.get_name_leafdata());
-    if (application_enforced.is_set || is_set(application_enforced.yfilter)) leaf_name_data.push_back(application_enforced.get_name_leafdata());
-    if (collection_type.is_set || is_set(collection_type.yfilter)) leaf_name_data.push_back(collection_type.get_name_leafdata());
-    if (sample_time_remaining_timestamp_nanosec.is_set || is_set(sample_time_remaining_timestamp_nanosec.yfilter)) leaf_name_data.push_back(sample_time_remaining_timestamp_nanosec.get_name_leafdata());
-    if (last_sample_collection_timestamp_nanosec.is_set || is_set(last_sample_collection_timestamp_nanosec.yfilter)) leaf_name_data.push_back(last_sample_collection_timestamp_nanosec.get_name_leafdata());
-    if (next_sample_collection_nanosec.is_set || is_set(next_sample_collection_nanosec.yfilter)) leaf_name_data.push_back(next_sample_collection_nanosec.get_name_leafdata());
-    if (application_time_remaining_nanosec.is_set || is_set(application_time_remaining_nanosec.yfilter)) leaf_name_data.push_back(application_time_remaining_nanosec.get_name_leafdata());
-    if (last_application_timestamp_nanosec.is_set || is_set(last_application_timestamp_nanosec.yfilter)) leaf_name_data.push_back(last_application_timestamp_nanosec.get_name_leafdata());
-    if (next_application_timestamp_nanosec.is_set || is_set(next_application_timestamp_nanosec.yfilter)) leaf_name_data.push_back(next_application_timestamp_nanosec.get_name_leafdata());
-    if (effective_maximum_reservable_bandwidth.is_set || is_set(effective_maximum_reservable_bandwidth.yfilter)) leaf_name_data.push_back(effective_maximum_reservable_bandwidth.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rsvp-te-bandwidth-utilization")
-    {
-        if(rsvp_te_bandwidth_utilization == nullptr)
-        {
-            rsvp_te_bandwidth_utilization = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization>();
-        }
-        return rsvp_te_bandwidth_utilization;
-    }
-
-    if(child_yang_name == "sr-bandwidth-utilization")
-    {
-        if(sr_bandwidth_utilization == nullptr)
-        {
-            sr_bandwidth_utilization = std::make_shared<MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::SrBandwidthUtilization>();
-        }
-        return sr_bandwidth_utilization;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(rsvp_te_bandwidth_utilization != nullptr)
-    {
-        children["rsvp-te-bandwidth-utilization"] = rsvp_te_bandwidth_utilization;
-    }
-
-    if(sr_bandwidth_utilization != nullptr)
-    {
-        children["sr-bandwidth-utilization"] = sr_bandwidth_utilization;
-    }
-
-    return children;
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-bandwidth-account-enabled")
-    {
-        is_bandwidth_account_enabled = value;
-        is_bandwidth_account_enabled.value_namespace = name_space;
-        is_bandwidth_account_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "application-enforced")
-    {
-        application_enforced = value;
-        application_enforced.value_namespace = name_space;
-        application_enforced.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "collection-type")
-    {
-        collection_type = value;
-        collection_type.value_namespace = name_space;
-        collection_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sample-time-remaining-timestamp-nanosec")
-    {
-        sample_time_remaining_timestamp_nanosec = value;
-        sample_time_remaining_timestamp_nanosec.value_namespace = name_space;
-        sample_time_remaining_timestamp_nanosec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-sample-collection-timestamp-nanosec")
-    {
-        last_sample_collection_timestamp_nanosec = value;
-        last_sample_collection_timestamp_nanosec.value_namespace = name_space;
-        last_sample_collection_timestamp_nanosec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-sample-collection-nanosec")
-    {
-        next_sample_collection_nanosec = value;
-        next_sample_collection_nanosec.value_namespace = name_space;
-        next_sample_collection_nanosec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "application-time-remaining-nanosec")
-    {
-        application_time_remaining_nanosec = value;
-        application_time_remaining_nanosec.value_namespace = name_space;
-        application_time_remaining_nanosec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "last-application-timestamp-nanosec")
-    {
-        last_application_timestamp_nanosec = value;
-        last_application_timestamp_nanosec.value_namespace = name_space;
-        last_application_timestamp_nanosec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-application-timestamp-nanosec")
-    {
-        next_application_timestamp_nanosec = value;
-        next_application_timestamp_nanosec.value_namespace = name_space;
-        next_application_timestamp_nanosec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "effective-maximum-reservable-bandwidth")
-    {
-        effective_maximum_reservable_bandwidth = value;
-        effective_maximum_reservable_bandwidth.value_namespace = name_space;
-        effective_maximum_reservable_bandwidth.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-bandwidth-account-enabled")
-    {
-        is_bandwidth_account_enabled.yfilter = yfilter;
-    }
-    if(value_path == "application-enforced")
-    {
-        application_enforced.yfilter = yfilter;
-    }
-    if(value_path == "collection-type")
-    {
-        collection_type.yfilter = yfilter;
-    }
-    if(value_path == "sample-time-remaining-timestamp-nanosec")
-    {
-        sample_time_remaining_timestamp_nanosec.yfilter = yfilter;
-    }
-    if(value_path == "last-sample-collection-timestamp-nanosec")
-    {
-        last_sample_collection_timestamp_nanosec.yfilter = yfilter;
-    }
-    if(value_path == "next-sample-collection-nanosec")
-    {
-        next_sample_collection_nanosec.yfilter = yfilter;
-    }
-    if(value_path == "application-time-remaining-nanosec")
-    {
-        application_time_remaining_nanosec.yfilter = yfilter;
-    }
-    if(value_path == "last-application-timestamp-nanosec")
-    {
-        last_application_timestamp_nanosec.yfilter = yfilter;
-    }
-    if(value_path == "next-application-timestamp-nanosec")
-    {
-        next_application_timestamp_nanosec.yfilter = yfilter;
-    }
-    if(value_path == "effective-maximum-reservable-bandwidth")
-    {
-        effective_maximum_reservable_bandwidth.yfilter = yfilter;
-    }
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rsvp-te-bandwidth-utilization" || name == "sr-bandwidth-utilization" || name == "is-bandwidth-account-enabled" || name == "application-enforced" || name == "collection-type" || name == "sample-time-remaining-timestamp-nanosec" || name == "last-sample-collection-timestamp-nanosec" || name == "next-sample-collection-nanosec" || name == "application-time-remaining-nanosec" || name == "last-application-timestamp-nanosec" || name == "next-application-timestamp-nanosec" || name == "effective-maximum-reservable-bandwidth")
-        return true;
-    return false;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::RsvpTeBandwidthUtilization()
-    :
-    total_link_bandwidth_utilization{YType::uint64, "total-link-bandwidth-utilization"},
-    rsvp_te_bandwidth_utilization{YType::uint64, "rsvp-te-bandwidth-utilization"},
-    non_rsvp_te_bandwidth_utilization{YType::uint64, "non-rsvp-te-bandwidth-utilization"},
-    rsvp_te_adjusted_bandwidth_utilization{YType::uint64, "rsvp-te-adjusted-bandwidth-utilization"},
-    rsvp_te_enforced_bandwidth_utilization{YType::uint64, "rsvp-te-enforced-bandwidth-utilization"}
-{
-
-    yang_name = "rsvp-te-bandwidth-utilization"; yang_parent_name = "common-info"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::~RsvpTeBandwidthUtilization()
-{
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::has_data() const
-{
-    return total_link_bandwidth_utilization.is_set
-	|| rsvp_te_bandwidth_utilization.is_set
-	|| non_rsvp_te_bandwidth_utilization.is_set
-	|| rsvp_te_adjusted_bandwidth_utilization.is_set
-	|| rsvp_te_enforced_bandwidth_utilization.is_set;
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(total_link_bandwidth_utilization.yfilter)
-	|| ydk::is_set(rsvp_te_bandwidth_utilization.yfilter)
-	|| ydk::is_set(non_rsvp_te_bandwidth_utilization.yfilter)
-	|| ydk::is_set(rsvp_te_adjusted_bandwidth_utilization.yfilter)
-	|| ydk::is_set(rsvp_te_enforced_bandwidth_utilization.yfilter);
-}
-
-std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rsvp-te-bandwidth-utilization";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (total_link_bandwidth_utilization.is_set || is_set(total_link_bandwidth_utilization.yfilter)) leaf_name_data.push_back(total_link_bandwidth_utilization.get_name_leafdata());
-    if (rsvp_te_bandwidth_utilization.is_set || is_set(rsvp_te_bandwidth_utilization.yfilter)) leaf_name_data.push_back(rsvp_te_bandwidth_utilization.get_name_leafdata());
-    if (non_rsvp_te_bandwidth_utilization.is_set || is_set(non_rsvp_te_bandwidth_utilization.yfilter)) leaf_name_data.push_back(non_rsvp_te_bandwidth_utilization.get_name_leafdata());
-    if (rsvp_te_adjusted_bandwidth_utilization.is_set || is_set(rsvp_te_adjusted_bandwidth_utilization.yfilter)) leaf_name_data.push_back(rsvp_te_adjusted_bandwidth_utilization.get_name_leafdata());
-    if (rsvp_te_enforced_bandwidth_utilization.is_set || is_set(rsvp_te_enforced_bandwidth_utilization.yfilter)) leaf_name_data.push_back(rsvp_te_enforced_bandwidth_utilization.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "total-link-bandwidth-utilization")
-    {
-        total_link_bandwidth_utilization = value;
-        total_link_bandwidth_utilization.value_namespace = name_space;
-        total_link_bandwidth_utilization.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvp-te-bandwidth-utilization")
-    {
-        rsvp_te_bandwidth_utilization = value;
-        rsvp_te_bandwidth_utilization.value_namespace = name_space;
-        rsvp_te_bandwidth_utilization.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "non-rsvp-te-bandwidth-utilization")
-    {
-        non_rsvp_te_bandwidth_utilization = value;
-        non_rsvp_te_bandwidth_utilization.value_namespace = name_space;
-        non_rsvp_te_bandwidth_utilization.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvp-te-adjusted-bandwidth-utilization")
-    {
-        rsvp_te_adjusted_bandwidth_utilization = value;
-        rsvp_te_adjusted_bandwidth_utilization.value_namespace = name_space;
-        rsvp_te_adjusted_bandwidth_utilization.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rsvp-te-enforced-bandwidth-utilization")
-    {
-        rsvp_te_enforced_bandwidth_utilization = value;
-        rsvp_te_enforced_bandwidth_utilization.value_namespace = name_space;
-        rsvp_te_enforced_bandwidth_utilization.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "total-link-bandwidth-utilization")
-    {
-        total_link_bandwidth_utilization.yfilter = yfilter;
-    }
-    if(value_path == "rsvp-te-bandwidth-utilization")
-    {
-        rsvp_te_bandwidth_utilization.yfilter = yfilter;
-    }
-    if(value_path == "non-rsvp-te-bandwidth-utilization")
-    {
-        non_rsvp_te_bandwidth_utilization.yfilter = yfilter;
-    }
-    if(value_path == "rsvp-te-adjusted-bandwidth-utilization")
-    {
-        rsvp_te_adjusted_bandwidth_utilization.yfilter = yfilter;
-    }
-    if(value_path == "rsvp-te-enforced-bandwidth-utilization")
-    {
-        rsvp_te_enforced_bandwidth_utilization.yfilter = yfilter;
-    }
-}
-
-bool MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountLink::CommonInfo::RsvpTeBandwidthUtilization::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "total-link-bandwidth-utilization" || name == "rsvp-te-bandwidth-utilization" || name == "non-rsvp-te-bandwidth-utilization" || name == "rsvp-te-adjusted-bandwidth-utilization" || name == "rsvp-te-enforced-bandwidth-utilization")
         return true;
     return false;
 }

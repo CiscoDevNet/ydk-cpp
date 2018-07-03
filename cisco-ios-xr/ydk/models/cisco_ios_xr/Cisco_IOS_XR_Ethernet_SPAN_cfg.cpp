@@ -17,7 +17,7 @@ SpanMonitorSession::SpanMonitorSession()
 {
     sessions->parent = this;
 
-    yang_name = "span-monitor-session"; yang_parent_name = "Cisco-IOS-XR-Ethernet-SPAN-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "span-monitor-session"; yang_parent_name = "Cisco-IOS-XR-Ethernet-SPAN-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::~SpanMonitorSession()
@@ -26,6 +26,7 @@ SpanMonitorSession::~SpanMonitorSession()
 
 bool SpanMonitorSession::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
@@ -118,9 +119,11 @@ bool SpanMonitorSession::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 SpanMonitorSession::Sessions::Sessions()
+    :
+    session(this, {"session"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "span-monitor-session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "span-monitor-session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Sessions::~Sessions()
@@ -129,7 +132,8 @@ SpanMonitorSession::Sessions::~Sessions()
 
 bool SpanMonitorSession::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool SpanMonitorSession::Sessions::has_data() const
 
 bool SpanMonitorSession::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Sessions::get_child_by_name(const st
     {
         auto c = std::make_shared<SpanMonitorSession::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Sessions::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,13 +221,14 @@ bool SpanMonitorSession::Sessions::has_leaf_or_child_of_name(const std::string &
 SpanMonitorSession::Sessions::Session::Session()
     :
     session{YType::str, "session"},
-    class_{YType::enumeration, "class"}
-    	,
+    class_{YType::enumeration, "class"},
+    inject_interface{YType::str, "inject-interface"}
+        ,
     destination(std::make_shared<SpanMonitorSession::Sessions::Session::Destination>())
 {
     destination->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Sessions::Session::~Session()
@@ -232,8 +237,10 @@ SpanMonitorSession::Sessions::Session::~Session()
 
 bool SpanMonitorSession::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session.is_set
 	|| class_.is_set
+	|| inject_interface.is_set
 	|| (destination !=  nullptr && destination->has_data());
 }
 
@@ -242,6 +249,7 @@ bool SpanMonitorSession::Sessions::Session::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(session.yfilter)
 	|| ydk::is_set(class_.yfilter)
+	|| ydk::is_set(inject_interface.yfilter)
 	|| (destination !=  nullptr && destination->has_operation());
 }
 
@@ -255,7 +263,8 @@ std::string SpanMonitorSession::Sessions::Session::get_absolute_path() const
 std::string SpanMonitorSession::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session='" <<session <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session, "session");
     return path_buffer.str();
 }
 
@@ -265,6 +274,7 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Sessions::Ses
 
     if (session.is_set || is_set(session.yfilter)) leaf_name_data.push_back(session.get_name_leafdata());
     if (class_.is_set || is_set(class_.yfilter)) leaf_name_data.push_back(class_.get_name_leafdata());
+    if (inject_interface.is_set || is_set(inject_interface.yfilter)) leaf_name_data.push_back(inject_interface.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -310,6 +320,12 @@ void SpanMonitorSession::Sessions::Session::set_value(const std::string & value_
         class_.value_namespace = name_space;
         class_.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "inject-interface")
+    {
+        inject_interface = value;
+        inject_interface.value_namespace = name_space;
+        inject_interface.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SpanMonitorSession::Sessions::Session::set_filter(const std::string & value_path, YFilter yfilter)
@@ -322,11 +338,15 @@ void SpanMonitorSession::Sessions::Session::set_filter(const std::string & value
     {
         class_.yfilter = yfilter;
     }
+    if(value_path == "inject-interface")
+    {
+        inject_interface.yfilter = yfilter;
+    }
 }
 
 bool SpanMonitorSession::Sessions::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "session" || name == "class")
+    if(name == "destination" || name == "session" || name == "class" || name == "inject-interface")
         return true;
     return false;
 }
@@ -339,7 +359,7 @@ SpanMonitorSession::Sessions::Session::Destination::Destination()
     destination_ipv6_address{YType::str, "destination-ipv6-address"}
 {
 
-    yang_name = "destination"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Sessions::Session::Destination::~Destination()
@@ -348,6 +368,7 @@ SpanMonitorSession::Sessions::Session::Destination::~Destination()
 
 bool SpanMonitorSession::Sessions::Session::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_type.is_set
 	|| destination_interface_name.is_set
 	|| destination_ipv4_address.is_set

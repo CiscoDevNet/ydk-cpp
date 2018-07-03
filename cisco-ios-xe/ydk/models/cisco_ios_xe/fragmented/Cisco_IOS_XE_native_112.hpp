@@ -83,11 +83,11 @@ class Native::Track::Timer::StubObject : public ydk::Entity
 }; // Native::Track::Timer::StubObject
 
 
-class Native::Dot1X : public ydk::Entity
+class Native::Dot1x : public ydk::Entity
 {
     public:
-        Dot1X();
-        ~Dot1X();
+        Dot1x();
+        ~Dot1x();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -101,20 +101,20 @@ class Native::Dot1X : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf system_auth_control; //type: empty
-        class Credentials; //type: Native::Dot1X::Credentials
-        class Critical; //type: Native::Dot1X::Critical
-        class Test; //type: Native::Dot1X::Test
-        class Supplicant; //type: Native::Dot1X::Supplicant
+        class Credentials; //type: Native::Dot1x::Credentials
+        class Critical; //type: Native::Dot1x::Critical
+        class Test; //type: Native::Dot1x::Test
+        class Supplicant; //type: Native::Dot1x::Supplicant
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1X::Credentials> > credentials;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1X::Critical> critical;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1X::Test> test;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1X::Supplicant> supplicant;
+        ydk::YList credentials;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1x::Critical> critical;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1x::Test> test;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1x::Supplicant> supplicant;
         
-}; // Native::Dot1X
+}; // Native::Dot1x
 
 
-class Native::Dot1X::Credentials : public ydk::Entity
+class Native::Dot1x::Credentials : public ydk::Entity
 {
     public:
         Credentials();
@@ -134,14 +134,14 @@ class Native::Dot1X::Credentials : public ydk::Entity
         ydk::YLeaf profile_name; //type: string
         ydk::YLeaf username; //type: string
         ydk::YLeaf pki_trustpoint; //type: string
-        class Password; //type: Native::Dot1X::Credentials::Password
+        class Password; //type: Native::Dot1x::Credentials::Password
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1X::Credentials::Password> password;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1x::Credentials::Password> password;
         
-}; // Native::Dot1X::Credentials
+}; // Native::Dot1x::Credentials
 
 
-class Native::Dot1X::Credentials::Password : public ydk::Entity
+class Native::Dot1x::Credentials::Password : public ydk::Entity
 {
     public:
         Password();
@@ -161,10 +161,10 @@ class Native::Dot1X::Credentials::Password : public ydk::Entity
         ydk::YLeaf secret; //type: string
         class Type;
 
-}; // Native::Dot1X::Credentials::Password
+}; // Native::Dot1x::Credentials::Password
 
 
-class Native::Dot1X::Critical : public ydk::Entity
+class Native::Dot1x::Critical : public ydk::Entity
 {
     public:
         Critical();
@@ -182,14 +182,14 @@ class Native::Dot1X::Critical : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf eapol; //type: empty
-        class Recovery; //type: Native::Dot1X::Critical::Recovery
+        class Recovery; //type: Native::Dot1x::Critical::Recovery
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1X::Critical::Recovery> recovery;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dot1x::Critical::Recovery> recovery;
         
-}; // Native::Dot1X::Critical
+}; // Native::Dot1x::Critical
 
 
-class Native::Dot1X::Critical::Recovery : public ydk::Entity
+class Native::Dot1x::Critical::Recovery : public ydk::Entity
 {
     public:
         Recovery();
@@ -208,10 +208,10 @@ class Native::Dot1X::Critical::Recovery : public ydk::Entity
 
         ydk::YLeaf delay; //type: uint16
 
-}; // Native::Dot1X::Critical::Recovery
+}; // Native::Dot1x::Critical::Recovery
 
 
-class Native::Dot1X::Test : public ydk::Entity
+class Native::Dot1x::Test : public ydk::Entity
 {
     public:
         Test();
@@ -230,10 +230,10 @@ class Native::Dot1X::Test : public ydk::Entity
 
         ydk::YLeaf timeout; //type: uint16
 
-}; // Native::Dot1X::Test
+}; // Native::Dot1x::Test
 
 
-class Native::Dot1X::Supplicant : public ydk::Entity
+class Native::Dot1x::Supplicant : public ydk::Entity
 {
     public:
         Supplicant();
@@ -252,7 +252,7 @@ class Native::Dot1X::Supplicant : public ydk::Entity
 
         ydk::YLeaf force_multicast; //type: empty
 
-}; // Native::Dot1X::Supplicant
+}; // Native::Dot1x::Supplicant
 
 
 class Native::Fallback : public ydk::Entity
@@ -298,7 +298,7 @@ class Native::Fallback::Profile : public ydk::Entity
 
         class FallbackList; //type: Native::Fallback::Profile::FallbackList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Fallback::Profile::FallbackList> > fallback_list;
+        ydk::YList fallback_list;
         
 }; // Native::Fallback::Profile
 
@@ -348,7 +348,7 @@ class Native::Fallback::Profile::FallbackList::Ip : public ydk::Entity
         ydk::YLeaf admission; //type: string
         class AccessGroup; //type: Native::Fallback::Profile::FallbackList::Ip::AccessGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Fallback::Profile::FallbackList::Ip::AccessGroup> > access_group;
+        ydk::YList access_group;
         
 }; // Native::Fallback::Profile::FallbackList::Ip
 
@@ -392,7 +392,7 @@ class Native::ParameterMap : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of enumeration, string
+        ydk::YLeaf name; //type: one of string, enumeration
         ydk::YLeaf type; //type: Type
         ydk::YLeaf parameter_map_type; //type: ParameterMapType
         ydk::YLeaf intercept_https_enable; //type: empty
@@ -482,7 +482,7 @@ class Native::ParameterMap::Regex : public ydk::Entity
 
         class Pattern; //type: Native::ParameterMap::Regex::Pattern
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ParameterMap::Regex::Pattern> > pattern;
+        ydk::YList pattern;
         
 }; // Native::ParameterMap::Regex
 
@@ -2044,8 +2044,8 @@ class Native::ParameterMap::UmbrellaGlobal::Resolver : public ydk::Entity
         class Ipv4; //type: Native::ParameterMap::UmbrellaGlobal::Resolver::Ipv4
         class Ipv6; //type: Native::ParameterMap::UmbrellaGlobal::Resolver::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ParameterMap::UmbrellaGlobal::Resolver::Ipv4> > ipv4;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ParameterMap::UmbrellaGlobal::Resolver::Ipv6> > ipv6;
+        ydk::YList ipv4;
+        ydk::YList ipv6;
         
 }; // Native::ParameterMap::UmbrellaGlobal::Resolver
 
@@ -2385,7 +2385,7 @@ class Native::Mac::AccessList : public ydk::Entity
 
         class Extended; //type: Native::Mac::AccessList::Extended
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac::AccessList::Extended> > extended;
+        ydk::YList extended;
         
 }; // Native::Mac::AccessList
 
@@ -2410,7 +2410,7 @@ class Native::Mac::AccessList::Extended : public ydk::Entity
         ydk::YLeaf id; //type: string
         class Entry; //type: Native::Mac::AccessList::Extended::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mac::AccessList::Extended::Entry> > entry;
+        ydk::YList entry;
         
 }; // Native::Mac::AccessList::Extended
 
@@ -2457,7 +2457,7 @@ class Native::Tacacs : public ydk::Entity
 
         class Server; //type: Native::Tacacs::Server
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Tacacs::Server> > server;
+        ydk::YList server;
         
 }; // Native::Tacacs
 
@@ -2557,7 +2557,7 @@ class Native::TacacsServer : public ydk::Entity
         class DirectedRequest; //type: Native::TacacsServer::DirectedRequest
         class Key; //type: Native::TacacsServer::Key
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::TacacsServer::Host> > host;
+        ydk::YList host;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::TacacsServer::DirectedRequest> directed_request; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::TacacsServer::Key> key;
         
@@ -2581,9 +2581,9 @@ class Native::TacacsServer::Host : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf name; //type: one of string, union
+        ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf port; //type: uint16
-        ydk::YLeaf key; //type: one of enumeration, string
+        ydk::YLeaf key; //type: one of string, enumeration
         ydk::YLeaf encryption_key; //type: string
         ydk::YLeaf timeout; //type: uint16
         class Key;
@@ -3243,7 +3243,7 @@ class Native::Key : public ydk::Entity
 
         class Chain; //type: Native::Key::Chain
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Key::Chain> > chain;
+        ydk::YList chain;
         
 }; // Native::Key
 
@@ -3269,7 +3269,7 @@ class Native::Key::Chain : public ydk::Entity
         ydk::YLeaf macsec; //type: empty
         class Key_; //type: Native::Key::Chain::Key_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Key::Chain::Key_> > key;
+        ydk::YList key;
         
 }; // Native::Key::Chain
 
@@ -3484,7 +3484,7 @@ class Native::L2 : public ydk::Entity
         ydk::YLeaf router_id; //type: string
         class Vfi; //type: Native::L2::Vfi
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2::Vfi> > vfi;
+        ydk::YList vfi;
         
 }; // Native::L2
 
@@ -3515,7 +3515,7 @@ class Native::L2::Vfi : public ydk::Entity
         class Neighbor; //type: Native::L2::Vfi::Neighbor
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2::Vfi::Vpn> vpn;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L2::Vfi::Neighbor> > neighbor;
+        ydk::YList neighbor;
                 class Mode;
 
 }; // Native::L2::Vfi
@@ -3584,7 +3584,6 @@ class Native::System : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Mode; //type: Native::System::Mode
         class Debug; //type: Native::System::Debug
         class Disable; //type: Native::System::Disable
         class Environment; //type: Native::System::Environment
@@ -3592,8 +3591,8 @@ class Native::System : public ydk::Entity
         class Ignore; //type: Native::System::Ignore
         class ModeButton; //type: Native::System::ModeButton
         class Mtu; //type: Native::System::Mtu
+        class Mode; //type: Native::System::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode> mode;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Debug> debug;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Disable> disable;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Environment> environment;
@@ -3601,15 +3600,16 @@ class Native::System : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Ignore> ignore;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::ModeButton> mode_button;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mtu> mtu;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode> mode;
         
 }; // Native::System
 
 
-class Native::System::Mode : public ydk::Entity
+class Native::System::Debug : public ydk::Entity
 {
     public:
-        Mode();
-        ~Mode();
+        Debug();
+        ~Debug();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3622,18 +3622,18 @@ class Native::System::Mode : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Maintenance; //type: Native::System::Mode::Maintenance
+        class Shell; //type: Native::System::Debug::Shell
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance> maintenance; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Debug::Shell> shell;
         
-}; // Native::System::Mode
+}; // Native::System::Debug
 
 
-class Native::System::Mode::Maintenance : public ydk::Entity
+class Native::System::Debug::Shell : public ydk::Entity
 {
     public:
-        Maintenance();
-        ~Maintenance();
+        Shell();
+        ~Shell();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3646,18 +3646,18 @@ class Native::System::Mode::Maintenance : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class ConfigMaintenance; //type: Native::System::Mode::Maintenance::ConfigMaintenance
+        class Switch; //type: Native::System::Debug::Shell::Switch
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance> config_maintenance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Debug::Shell::Switch> switch_;
         
-}; // Native::System::Mode::Maintenance
+}; // Native::System::Debug::Shell
 
 
-class Native::System::Mode::Maintenance::ConfigMaintenance : public ydk::Entity
+class Native::System::Debug::Shell::Switch : public ydk::Entity
 {
     public:
-        ConfigMaintenance();
-        ~ConfigMaintenance();
+        Switch();
+        ~Switch();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3670,16 +3670,12 @@ class Native::System::Mode::Maintenance::ConfigMaintenance : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf failsafe; //type: uint8
-        ydk::YLeaf template_; //type: string
-        ydk::YLeaf timeout; //type: uint8
-        class OnReload; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
+        ydk::YLeaf switch_number; //type: uint8
+        ydk::YLeaf all; //type: empty
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload> on_reload;
-        
-}; // Native::System::Mode::Maintenance::ConfigMaintenance
+}; // Native::System::Debug::Shell::Switch
 
-class Native::Dot1X::Credentials::Password::Type : public ydk::Enum
+class Native::Dot1x::Credentials::Password::Type : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf Y_0;

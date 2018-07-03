@@ -97,7 +97,7 @@ class Diagnostic::Monitor::Rejected : public ydk::Entity
 
         class Location; //type: Diagnostic::Monitor::Rejected::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Monitor::Rejected::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::Monitor::Rejected
 
@@ -122,7 +122,7 @@ class Diagnostic::Monitor::Rejected::Location : public ydk::Entity
         ydk::YLeaf loc; //type: string
         class Test; //type: Diagnostic::Monitor::Rejected::Location::Test
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Monitor::Rejected::Location::Test> > test;
+        ydk::YList test;
         
 }; // Diagnostic::Monitor::Rejected::Location
 
@@ -169,7 +169,7 @@ class Diagnostic::Monitor::Interval : public ydk::Entity
 
         class Location; //type: Diagnostic::Monitor::Interval::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Monitor::Interval::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::Monitor::Interval
 
@@ -194,7 +194,7 @@ class Diagnostic::Monitor::Interval::Location : public ydk::Entity
         ydk::YLeaf loc; //type: string
         class Test; //type: Diagnostic::Monitor::Interval::Location::Test
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Monitor::Interval::Location::Test> > test;
+        ydk::YList test;
         
 }; // Diagnostic::Monitor::Interval::Location
 
@@ -241,7 +241,7 @@ class Diagnostic::Monitor::Threshold : public ydk::Entity
 
         class Location; //type: Diagnostic::Monitor::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Monitor::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::Monitor::Threshold
 
@@ -266,7 +266,7 @@ class Diagnostic::Monitor::Threshold::Location : public ydk::Entity
         ydk::YLeaf loc; //type: string
         class Test; //type: Diagnostic::Monitor::Threshold::Location::Test
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Monitor::Threshold::Location::Test> > test;
+        ydk::YList test;
         
 }; // Diagnostic::Monitor::Threshold::Location
 
@@ -336,7 +336,7 @@ class Diagnostic::Schedule::Start : public ydk::Entity
 
         class Location; //type: Diagnostic::Schedule::Start::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Schedule::Start::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::Schedule::Start
 
@@ -361,7 +361,7 @@ class Diagnostic::Schedule::Start::Location : public ydk::Entity
         ydk::YLeaf loc; //type: string
         class Test; //type: Diagnostic::Schedule::Start::Location::Test
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Schedule::Start::Location::Test> > test;
+        ydk::YList test;
         
 }; // Diagnostic::Schedule::Start::Location
 
@@ -387,9 +387,9 @@ class Diagnostic::Schedule::Start::Location::Test : public ydk::Entity
         class On; //type: Diagnostic::Schedule::Start::Location::Test::On
         class Weekly; //type: Diagnostic::Schedule::Start::Location::Test::Weekly
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Schedule::Start::Location::Test::Daily> > daily;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Schedule::Start::Location::Test::On> > on;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Schedule::Start::Location::Test::Weekly> > weekly;
+        ydk::YList daily;
+        ydk::YList on;
+        ydk::YList weekly;
         
 }; // Diagnostic::Schedule::Start::Location::Test
 
@@ -482,7 +482,7 @@ class Diagnostic::Status : public ydk::Entity
 
         class LocationIndex; //type: Diagnostic::Status::LocationIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Status::LocationIndex> > location_index;
+        ydk::YList location_index;
         
 }; // Diagnostic::Status
 
@@ -530,7 +530,7 @@ class Diagnostic::DiagStart : public ydk::Entity
 
         class Location; //type: Diagnostic::DiagStart::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::DiagStart::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::DiagStart
 
@@ -556,7 +556,7 @@ class Diagnostic::DiagStart::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Test; //type: Diagnostic::DiagStart::Location::Test
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::DiagStart::Location::Test> > test;
+        ydk::YList test;
         
 }; // Diagnostic::DiagStart::Location
 
@@ -602,7 +602,7 @@ class Diagnostic::DiagStop : public ydk::Entity
 
         class Location; //type: Diagnostic::DiagStop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::DiagStop::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::DiagStop
 
@@ -628,7 +628,7 @@ class Diagnostic::DiagStop::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Test; //type: Diagnostic::DiagStop::Location::Test
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::DiagStop::Location::Test> > test;
+        ydk::YList test;
         
 }; // Diagnostic::DiagStop::Location
 
@@ -674,7 +674,7 @@ class Diagnostic::Content : public ydk::Entity
 
         class Location; //type: Diagnostic::Content::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Content::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::Content
 
@@ -700,7 +700,7 @@ class Diagnostic::Content::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class DataList; //type: Diagnostic::Content::Location::DataList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Content::Location::DataList> > data_list;
+        ydk::YList data_list;
         
 }; // Diagnostic::Content::Location
 
@@ -750,7 +750,7 @@ class Diagnostic::Result : public ydk::Entity
 
         class Location; //type: Diagnostic::Result::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Result::Location> > location;
+        ydk::YList location;
         
 }; // Diagnostic::Result
 
@@ -776,7 +776,7 @@ class Diagnostic::Result::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Test; //type: Diagnostic::Result::Location::Test
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Result::Location::Test> > test;
+        ydk::YList test;
         
 }; // Diagnostic::Result::Location
 
@@ -801,7 +801,7 @@ class Diagnostic::Result::Location::Test : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Detail; //type: Diagnostic::Result::Location::Test::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Result::Location::Test::Detail> > detail;
+        ydk::YList detail;
         
 }; // Diagnostic::Result::Location::Test
 
@@ -825,7 +825,7 @@ class Diagnostic::Result::Location::Test::Detail : public ydk::Entity
         ydk::YLeaf det; //type: string
         class DataList; //type: Diagnostic::Result::Location::Test::Detail::DataList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sdm_diag::Diagnostic::Result::Location::Test::Detail::DataList> > data_list;
+        ydk::YList data_list;
         
 }; // Diagnostic::Result::Location::Test::Detail
 

@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_mpls_oam_oper {
 MplsOam::MplsOam()
     :
     interface(std::make_shared<MplsOam::Interface>())
-	,packet(std::make_shared<MplsOam::Packet>())
-	,global(std::make_shared<MplsOam::Global>())
+    , packet(std::make_shared<MplsOam::Packet>())
+    , global(std::make_shared<MplsOam::Global>())
 {
     interface->parent = this;
     packet->parent = this;
     global->parent = this;
 
-    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-oam"; yang_parent_name = "Cisco-IOS-XR-mpls-oam-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsOam::~MplsOam()
@@ -30,6 +30,7 @@ MplsOam::~MplsOam()
 
 bool MplsOam::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data())
 	|| (packet !=  nullptr && packet->has_data())
 	|| (global !=  nullptr && global->has_data());
@@ -156,12 +157,12 @@ bool MplsOam::has_leaf_or_child_of_name(const std::string & name) const
 MplsOam::Interface::Interface()
     :
     briefs(std::make_shared<MplsOam::Interface::Briefs>())
-	,details(std::make_shared<MplsOam::Interface::Details>())
+    , details(std::make_shared<MplsOam::Interface::Details>())
 {
     briefs->parent = this;
     details->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Interface::~Interface()
@@ -170,6 +171,7 @@ MplsOam::Interface::~Interface()
 
 bool MplsOam::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return (briefs !=  nullptr && briefs->has_data())
 	|| (details !=  nullptr && details->has_data());
 }
@@ -260,9 +262,11 @@ bool MplsOam::Interface::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 MplsOam::Interface::Briefs::Briefs()
+    :
+    brief(this, {"interface_name"})
 {
 
-    yang_name = "briefs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "briefs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Interface::Briefs::~Briefs()
@@ -271,7 +275,8 @@ MplsOam::Interface::Briefs::~Briefs()
 
 bool MplsOam::Interface::Briefs::has_data() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_data())
             return true;
@@ -281,7 +286,7 @@ bool MplsOam::Interface::Briefs::has_data() const
 
 bool MplsOam::Interface::Briefs::has_operation() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_operation())
             return true;
@@ -318,7 +323,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Briefs::get_child_by_name(const std:
     {
         auto c = std::make_shared<MplsOam::Interface::Briefs::Brief>();
         c->parent = this;
-        brief.push_back(c);
+        brief.append(c);
         return c;
     }
 
@@ -330,7 +335,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Briefs::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief)
+    for (auto c : brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -368,7 +373,7 @@ MplsOam::Interface::Briefs::Brief::Brief()
     primary_address_v6{YType::str, "primary-address-v6"}
 {
 
-    yang_name = "brief"; yang_parent_name = "briefs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "briefs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Interface::Briefs::Brief::~Brief()
@@ -377,6 +382,7 @@ MplsOam::Interface::Briefs::Brief::~Brief()
 
 bool MplsOam::Interface::Briefs::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| state.is_set
@@ -410,7 +416,8 @@ std::string MplsOam::Interface::Briefs::Brief::get_absolute_path() const
 std::string MplsOam::Interface::Briefs::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "brief";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -539,9 +546,11 @@ bool MplsOam::Interface::Briefs::Brief::has_leaf_or_child_of_name(const std::str
 }
 
 MplsOam::Interface::Details::Details()
+    :
+    detail(this, {"interface_name"})
 {
 
-    yang_name = "details"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "details"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Interface::Details::~Details()
@@ -550,7 +559,8 @@ MplsOam::Interface::Details::~Details()
 
 bool MplsOam::Interface::Details::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -560,7 +570,7 @@ bool MplsOam::Interface::Details::has_data() const
 
 bool MplsOam::Interface::Details::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -597,7 +607,7 @@ std::shared_ptr<Entity> MplsOam::Interface::Details::get_child_by_name(const std
     {
         auto c = std::make_shared<MplsOam::Interface::Details::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -609,7 +619,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsOam::Interface::Details::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -638,14 +648,14 @@ bool MplsOam::Interface::Details::has_leaf_or_child_of_name(const std::string & 
 MplsOam::Interface::Details::Detail::Detail()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     interface_brief(std::make_shared<MplsOam::Interface::Details::Detail::InterfaceBrief>())
-	,packet_statistics(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics>())
+    , packet_statistics(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics>())
 {
     interface_brief->parent = this;
     packet_statistics->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Interface::Details::Detail::~Detail()
@@ -654,6 +664,7 @@ MplsOam::Interface::Details::Detail::~Detail()
 
 bool MplsOam::Interface::Details::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (interface_brief !=  nullptr && interface_brief->has_data())
 	|| (packet_statistics !=  nullptr && packet_statistics->has_data());
@@ -677,7 +688,8 @@ std::string MplsOam::Interface::Details::Detail::get_absolute_path() const
 std::string MplsOam::Interface::Details::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -767,7 +779,7 @@ MplsOam::Interface::Details::Detail::InterfaceBrief::InterfaceBrief()
     primary_address_v6{YType::str, "primary-address-v6"}
 {
 
-    yang_name = "interface-brief"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-brief"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::InterfaceBrief::~InterfaceBrief()
@@ -776,6 +788,7 @@ MplsOam::Interface::Details::Detail::InterfaceBrief::~InterfaceBrief()
 
 bool MplsOam::Interface::Details::Detail::InterfaceBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name_xr.is_set
 	|| state.is_set
 	|| mtu.is_set
@@ -920,11 +933,11 @@ bool MplsOam::Interface::Details::Detail::InterfaceBrief::has_leaf_or_child_of_n
 MplsOam::Interface::Details::Detail::PacketStatistics::PacketStatistics()
     :
     received(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received>())
-	,sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent>())
-	,working_req_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent>())
-	,working_rep_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent>())
-	,protect_req_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent>())
-	,protect_rep_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent>())
+    , sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent>())
+    , working_req_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent>())
+    , working_rep_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent>())
+    , protect_req_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent>())
+    , protect_rep_sent(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent>())
 {
     received->parent = this;
     sent->parent = this;
@@ -933,7 +946,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::PacketStatistics()
     protect_req_sent->parent = this;
     protect_rep_sent->parent = this;
 
-    yang_name = "packet-statistics"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-statistics"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::~PacketStatistics()
@@ -942,6 +955,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::~PacketStatistics()
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (received !=  nullptr && received->has_data())
 	|| (sent !=  nullptr && sent->has_data())
 	|| (working_req_sent !=  nullptr && working_req_sent->has_data())
@@ -1091,19 +1105,19 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::has_leaf_or_child_of
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::Received()
     :
     received_good_request(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest>())
-	,received_good_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply>())
-	,received_unknown(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown>())
-	,received_error_ip_header(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader>())
-	,received_error_udp_header(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader>())
-	,received_error_runt(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt>())
-	,received_error_queue_full(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull>())
-	,received_error_general(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral>())
-	,received_error_no_interface(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface>())
-	,received_error_no_memory(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory>())
-	,protect_protocol_received_good_request(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest>())
-	,protect_protocol_received_good_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply>())
-	,received_good_bfd_request(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest>())
-	,received_good_bfd_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply>())
+    , received_good_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply>())
+    , received_unknown(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown>())
+    , received_error_ip_header(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader>())
+    , received_error_udp_header(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader>())
+    , received_error_runt(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt>())
+    , received_error_queue_full(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull>())
+    , received_error_general(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral>())
+    , received_error_no_interface(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface>())
+    , received_error_no_memory(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory>())
+    , protect_protocol_received_good_request(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest>())
+    , protect_protocol_received_good_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply>())
+    , received_good_bfd_request(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest>())
+    , received_good_bfd_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply>())
 {
     received_good_request->parent = this;
     received_good_reply->parent = this;
@@ -1120,7 +1134,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::Received()
     received_good_bfd_request->parent = this;
     received_good_bfd_reply->parent = this;
 
-    yang_name = "received"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::~Received()
@@ -1129,6 +1143,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::~Received()
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return (received_good_request !=  nullptr && received_good_request->has_data())
 	|| (received_good_reply !=  nullptr && received_good_reply->has_data())
 	|| (received_unknown !=  nullptr && received_unknown->has_data())
@@ -1409,7 +1424,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReq
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::~ReceivedGoodRequest()
@@ -1418,6 +1433,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReq
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -1500,7 +1516,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRep
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::~ReceivedGoodReply()
@@ -1509,6 +1525,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodRep
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -1591,7 +1608,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-unknown"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-unknown"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::~ReceivedUnknown()
@@ -1600,6 +1617,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedUnknown::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -1682,7 +1700,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIp
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-ip-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-error-ip-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::~ReceivedErrorIpHeader()
@@ -1691,6 +1709,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIp
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorIpHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -1773,7 +1792,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUd
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-udp-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-error-udp-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::~ReceivedErrorUdpHeader()
@@ -1782,6 +1801,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUd
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorUdpHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -1864,7 +1884,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRu
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-runt"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-error-runt"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::~ReceivedErrorRunt()
@@ -1873,6 +1893,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRu
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorRunt::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -1955,7 +1976,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQu
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-queue-full"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-error-queue-full"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::~ReceivedErrorQueueFull()
@@ -1964,6 +1985,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQu
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorQueueFull::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2046,7 +2068,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGe
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-general"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-error-general"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::~ReceivedErrorGeneral()
@@ -2055,6 +2077,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGe
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorGeneral::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2137,7 +2160,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNo
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-no-interface"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-error-no-interface"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::~ReceivedErrorNoInterface()
@@ -2146,6 +2169,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNo
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2228,7 +2252,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNo
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-no-memory"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-error-no-memory"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::~ReceivedErrorNoMemory()
@@ -2237,6 +2261,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNo
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedErrorNoMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2319,7 +2344,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocol
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::~ProtectProtocolReceivedGoodRequest()
@@ -2328,6 +2353,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocol
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2410,7 +2436,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocol
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::~ProtectProtocolReceivedGoodReply()
@@ -2419,6 +2445,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocol
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ProtectProtocolReceivedGoodReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2501,7 +2528,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfd
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-bfd-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-good-bfd-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::~ReceivedGoodBfdRequest()
@@ -2510,6 +2537,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfd
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2592,7 +2620,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfd
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-bfd-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-good-bfd-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::~ReceivedGoodBfdReply()
@@ -2601,6 +2629,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfd
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGoodBfdReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2680,16 +2709,16 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Received::ReceivedGo
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::Sent()
     :
     transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::~Sent()
@@ -2698,6 +2727,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::~Sent()
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -2818,7 +2848,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::Trans
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::~TransmitGood()
@@ -2827,6 +2857,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::~Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -2909,7 +2940,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::Trans
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-drop"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::~TransmitDrop()
@@ -2918,6 +2949,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::~Tran
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3000,7 +3032,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::Tr
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::~TransmitBfdGood()
@@ -3009,6 +3041,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::~T
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3091,7 +3124,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::BfdNoRe
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-no-reply"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::~BfdNoReply()
@@ -3100,6 +3133,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::~BfdNoR
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3179,16 +3213,16 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::Sent::BfdNoReply::ha
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::WorkingReqSent()
     :
     transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "working-req-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "working-req-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::~WorkingReqSent()
@@ -3197,6 +3231,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::~WorkingR
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -3317,7 +3352,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitG
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::~TransmitGood()
@@ -3326,6 +3361,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitG
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3408,7 +3444,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitD
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::~TransmitDrop()
@@ -3417,6 +3453,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitD
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3499,7 +3536,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitB
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::~TransmitBfdGood()
@@ -3508,6 +3545,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitB
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3590,7 +3628,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoRepl
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::~BfdNoReply()
@@ -3599,6 +3637,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoRepl
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3678,16 +3717,16 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingReqSent::BfdN
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::WorkingRepSent()
     :
     transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "working-rep-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "working-rep-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::~WorkingRepSent()
@@ -3696,6 +3735,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::~WorkingR
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -3816,7 +3856,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitG
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::~TransmitGood()
@@ -3825,6 +3865,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitG
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3907,7 +3948,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitD
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::~TransmitDrop()
@@ -3916,6 +3957,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitD
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -3998,7 +4040,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitB
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::~TransmitBfdGood()
@@ -4007,6 +4049,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitB
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4089,7 +4132,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoRepl
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::~BfdNoReply()
@@ -4098,6 +4141,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoRepl
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4177,16 +4221,16 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::WorkingRepSent::BfdN
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::ProtectReqSent()
     :
     transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "protect-req-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protect-req-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::~ProtectReqSent()
@@ -4195,6 +4239,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::~ProtectR
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -4315,7 +4360,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitG
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::~TransmitGood()
@@ -4324,6 +4369,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitG
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4406,7 +4452,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitD
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::~TransmitDrop()
@@ -4415,6 +4461,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitD
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4497,7 +4544,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitB
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::~TransmitBfdGood()
@@ -4506,6 +4553,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitB
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4588,7 +4636,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoRepl
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::~BfdNoReply()
@@ -4597,6 +4645,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoRepl
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4676,16 +4725,16 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectReqSent::BfdN
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::ProtectRepSent()
     :
     transmit_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "protect-rep-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protect-rep-sent"; yang_parent_name = "packet-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::~ProtectRepSent()
@@ -4694,6 +4743,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::~ProtectR
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -4814,7 +4864,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitG
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::~TransmitGood()
@@ -4823,6 +4873,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitG
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4905,7 +4956,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitD
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::~TransmitDrop()
@@ -4914,6 +4965,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitD
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -4996,7 +5048,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitB
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::~TransmitBfdGood()
@@ -5005,6 +5057,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitB
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -5087,7 +5140,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoRepl
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::~BfdNoReply()
@@ -5096,6 +5149,7 @@ MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoRepl
 
 bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -5175,11 +5229,11 @@ bool MplsOam::Interface::Details::Detail::PacketStatistics::ProtectRepSent::BfdN
 MplsOam::Packet::Packet()
     :
     received(std::make_shared<MplsOam::Packet::Received>())
-	,sent(std::make_shared<MplsOam::Packet::Sent>())
-	,working_req_sent(std::make_shared<MplsOam::Packet::WorkingReqSent>())
-	,working_rep_sent(std::make_shared<MplsOam::Packet::WorkingRepSent>())
-	,protect_req_sent(std::make_shared<MplsOam::Packet::ProtectReqSent>())
-	,protect_rep_sent(std::make_shared<MplsOam::Packet::ProtectRepSent>())
+    , sent(std::make_shared<MplsOam::Packet::Sent>())
+    , working_req_sent(std::make_shared<MplsOam::Packet::WorkingReqSent>())
+    , working_rep_sent(std::make_shared<MplsOam::Packet::WorkingRepSent>())
+    , protect_req_sent(std::make_shared<MplsOam::Packet::ProtectReqSent>())
+    , protect_rep_sent(std::make_shared<MplsOam::Packet::ProtectRepSent>())
 {
     received->parent = this;
     sent->parent = this;
@@ -5188,7 +5242,7 @@ MplsOam::Packet::Packet()
     protect_req_sent->parent = this;
     protect_rep_sent->parent = this;
 
-    yang_name = "packet"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packet"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::~Packet()
@@ -5197,6 +5251,7 @@ MplsOam::Packet::~Packet()
 
 bool MplsOam::Packet::has_data() const
 {
+    if (is_presence_container) return true;
     return (received !=  nullptr && received->has_data())
 	|| (sent !=  nullptr && sent->has_data())
 	|| (working_req_sent !=  nullptr && working_req_sent->has_data())
@@ -5353,19 +5408,19 @@ bool MplsOam::Packet::has_leaf_or_child_of_name(const std::string & name) const
 MplsOam::Packet::Received::Received()
     :
     received_good_request(std::make_shared<MplsOam::Packet::Received::ReceivedGoodRequest>())
-	,received_good_reply(std::make_shared<MplsOam::Packet::Received::ReceivedGoodReply>())
-	,received_unknown(std::make_shared<MplsOam::Packet::Received::ReceivedUnknown>())
-	,received_error_ip_header(std::make_shared<MplsOam::Packet::Received::ReceivedErrorIpHeader>())
-	,received_error_udp_header(std::make_shared<MplsOam::Packet::Received::ReceivedErrorUdpHeader>())
-	,received_error_runt(std::make_shared<MplsOam::Packet::Received::ReceivedErrorRunt>())
-	,received_error_queue_full(std::make_shared<MplsOam::Packet::Received::ReceivedErrorQueueFull>())
-	,received_error_general(std::make_shared<MplsOam::Packet::Received::ReceivedErrorGeneral>())
-	,received_error_no_interface(std::make_shared<MplsOam::Packet::Received::ReceivedErrorNoInterface>())
-	,received_error_no_memory(std::make_shared<MplsOam::Packet::Received::ReceivedErrorNoMemory>())
-	,protect_protocol_received_good_request(std::make_shared<MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest>())
-	,protect_protocol_received_good_reply(std::make_shared<MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply>())
-	,received_good_bfd_request(std::make_shared<MplsOam::Packet::Received::ReceivedGoodBfdRequest>())
-	,received_good_bfd_reply(std::make_shared<MplsOam::Packet::Received::ReceivedGoodBfdReply>())
+    , received_good_reply(std::make_shared<MplsOam::Packet::Received::ReceivedGoodReply>())
+    , received_unknown(std::make_shared<MplsOam::Packet::Received::ReceivedUnknown>())
+    , received_error_ip_header(std::make_shared<MplsOam::Packet::Received::ReceivedErrorIpHeader>())
+    , received_error_udp_header(std::make_shared<MplsOam::Packet::Received::ReceivedErrorUdpHeader>())
+    , received_error_runt(std::make_shared<MplsOam::Packet::Received::ReceivedErrorRunt>())
+    , received_error_queue_full(std::make_shared<MplsOam::Packet::Received::ReceivedErrorQueueFull>())
+    , received_error_general(std::make_shared<MplsOam::Packet::Received::ReceivedErrorGeneral>())
+    , received_error_no_interface(std::make_shared<MplsOam::Packet::Received::ReceivedErrorNoInterface>())
+    , received_error_no_memory(std::make_shared<MplsOam::Packet::Received::ReceivedErrorNoMemory>())
+    , protect_protocol_received_good_request(std::make_shared<MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest>())
+    , protect_protocol_received_good_reply(std::make_shared<MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply>())
+    , received_good_bfd_request(std::make_shared<MplsOam::Packet::Received::ReceivedGoodBfdRequest>())
+    , received_good_bfd_reply(std::make_shared<MplsOam::Packet::Received::ReceivedGoodBfdReply>())
 {
     received_good_request->parent = this;
     received_good_reply->parent = this;
@@ -5382,7 +5437,7 @@ MplsOam::Packet::Received::Received()
     received_good_bfd_request->parent = this;
     received_good_bfd_reply->parent = this;
 
-    yang_name = "received"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::~Received()
@@ -5391,6 +5446,7 @@ MplsOam::Packet::Received::~Received()
 
 bool MplsOam::Packet::Received::has_data() const
 {
+    if (is_presence_container) return true;
     return (received_good_request !=  nullptr && received_good_request->has_data())
 	|| (received_good_reply !=  nullptr && received_good_reply->has_data())
 	|| (received_unknown !=  nullptr && received_unknown->has_data())
@@ -5678,7 +5734,7 @@ MplsOam::Packet::Received::ReceivedGoodRequest::ReceivedGoodRequest()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedGoodRequest::~ReceivedGoodRequest()
@@ -5687,6 +5743,7 @@ MplsOam::Packet::Received::ReceivedGoodRequest::~ReceivedGoodRequest()
 
 bool MplsOam::Packet::Received::ReceivedGoodRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -5776,7 +5833,7 @@ MplsOam::Packet::Received::ReceivedGoodReply::ReceivedGoodReply()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedGoodReply::~ReceivedGoodReply()
@@ -5785,6 +5842,7 @@ MplsOam::Packet::Received::ReceivedGoodReply::~ReceivedGoodReply()
 
 bool MplsOam::Packet::Received::ReceivedGoodReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -5874,7 +5932,7 @@ MplsOam::Packet::Received::ReceivedUnknown::ReceivedUnknown()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-unknown"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-unknown"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedUnknown::~ReceivedUnknown()
@@ -5883,6 +5941,7 @@ MplsOam::Packet::Received::ReceivedUnknown::~ReceivedUnknown()
 
 bool MplsOam::Packet::Received::ReceivedUnknown::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -5972,7 +6031,7 @@ MplsOam::Packet::Received::ReceivedErrorIpHeader::ReceivedErrorIpHeader()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-ip-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-error-ip-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedErrorIpHeader::~ReceivedErrorIpHeader()
@@ -5981,6 +6040,7 @@ MplsOam::Packet::Received::ReceivedErrorIpHeader::~ReceivedErrorIpHeader()
 
 bool MplsOam::Packet::Received::ReceivedErrorIpHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6070,7 +6130,7 @@ MplsOam::Packet::Received::ReceivedErrorUdpHeader::ReceivedErrorUdpHeader()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-udp-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-error-udp-header"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedErrorUdpHeader::~ReceivedErrorUdpHeader()
@@ -6079,6 +6139,7 @@ MplsOam::Packet::Received::ReceivedErrorUdpHeader::~ReceivedErrorUdpHeader()
 
 bool MplsOam::Packet::Received::ReceivedErrorUdpHeader::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6168,7 +6229,7 @@ MplsOam::Packet::Received::ReceivedErrorRunt::ReceivedErrorRunt()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-runt"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-error-runt"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedErrorRunt::~ReceivedErrorRunt()
@@ -6177,6 +6238,7 @@ MplsOam::Packet::Received::ReceivedErrorRunt::~ReceivedErrorRunt()
 
 bool MplsOam::Packet::Received::ReceivedErrorRunt::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6266,7 +6328,7 @@ MplsOam::Packet::Received::ReceivedErrorQueueFull::ReceivedErrorQueueFull()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-queue-full"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-error-queue-full"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedErrorQueueFull::~ReceivedErrorQueueFull()
@@ -6275,6 +6337,7 @@ MplsOam::Packet::Received::ReceivedErrorQueueFull::~ReceivedErrorQueueFull()
 
 bool MplsOam::Packet::Received::ReceivedErrorQueueFull::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6364,7 +6427,7 @@ MplsOam::Packet::Received::ReceivedErrorGeneral::ReceivedErrorGeneral()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-general"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-error-general"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedErrorGeneral::~ReceivedErrorGeneral()
@@ -6373,6 +6436,7 @@ MplsOam::Packet::Received::ReceivedErrorGeneral::~ReceivedErrorGeneral()
 
 bool MplsOam::Packet::Received::ReceivedErrorGeneral::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6462,7 +6526,7 @@ MplsOam::Packet::Received::ReceivedErrorNoInterface::ReceivedErrorNoInterface()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-no-interface"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-error-no-interface"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedErrorNoInterface::~ReceivedErrorNoInterface()
@@ -6471,6 +6535,7 @@ MplsOam::Packet::Received::ReceivedErrorNoInterface::~ReceivedErrorNoInterface()
 
 bool MplsOam::Packet::Received::ReceivedErrorNoInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6560,7 +6625,7 @@ MplsOam::Packet::Received::ReceivedErrorNoMemory::ReceivedErrorNoMemory()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-error-no-memory"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-error-no-memory"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedErrorNoMemory::~ReceivedErrorNoMemory()
@@ -6569,6 +6634,7 @@ MplsOam::Packet::Received::ReceivedErrorNoMemory::~ReceivedErrorNoMemory()
 
 bool MplsOam::Packet::Received::ReceivedErrorNoMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6658,7 +6724,7 @@ MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::ProtectProtocolRe
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protect-protocol-received-good-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::~ProtectProtocolReceivedGoodRequest()
@@ -6667,6 +6733,7 @@ MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::~ProtectProtocolR
 
 bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6756,7 +6823,7 @@ MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::ProtectProtocolRece
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protect-protocol-received-good-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::~ProtectProtocolReceivedGoodReply()
@@ -6765,6 +6832,7 @@ MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::~ProtectProtocolRec
 
 bool MplsOam::Packet::Received::ProtectProtocolReceivedGoodReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6854,7 +6922,7 @@ MplsOam::Packet::Received::ReceivedGoodBfdRequest::ReceivedGoodBfdRequest()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-bfd-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-good-bfd-request"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedGoodBfdRequest::~ReceivedGoodBfdRequest()
@@ -6863,6 +6931,7 @@ MplsOam::Packet::Received::ReceivedGoodBfdRequest::~ReceivedGoodBfdRequest()
 
 bool MplsOam::Packet::Received::ReceivedGoodBfdRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -6952,7 +7021,7 @@ MplsOam::Packet::Received::ReceivedGoodBfdReply::ReceivedGoodBfdReply()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "received-good-bfd-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "received-good-bfd-reply"; yang_parent_name = "received"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Received::ReceivedGoodBfdReply::~ReceivedGoodBfdReply()
@@ -6961,6 +7030,7 @@ MplsOam::Packet::Received::ReceivedGoodBfdReply::~ReceivedGoodBfdReply()
 
 bool MplsOam::Packet::Received::ReceivedGoodBfdReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -7047,16 +7117,16 @@ bool MplsOam::Packet::Received::ReceivedGoodBfdReply::has_leaf_or_child_of_name(
 MplsOam::Packet::Sent::Sent()
     :
     transmit_good(std::make_shared<MplsOam::Packet::Sent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::Sent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::Sent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Packet::Sent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Packet::Sent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Packet::Sent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Packet::Sent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Sent::~Sent()
@@ -7065,6 +7135,7 @@ MplsOam::Packet::Sent::~Sent()
 
 bool MplsOam::Packet::Sent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -7192,7 +7263,7 @@ MplsOam::Packet::Sent::TransmitGood::TransmitGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Sent::TransmitGood::~TransmitGood()
@@ -7201,6 +7272,7 @@ MplsOam::Packet::Sent::TransmitGood::~TransmitGood()
 
 bool MplsOam::Packet::Sent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -7290,7 +7362,7 @@ MplsOam::Packet::Sent::TransmitDrop::TransmitDrop()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-drop"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Sent::TransmitDrop::~TransmitDrop()
@@ -7299,6 +7371,7 @@ MplsOam::Packet::Sent::TransmitDrop::~TransmitDrop()
 
 bool MplsOam::Packet::Sent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -7388,7 +7461,7 @@ MplsOam::Packet::Sent::TransmitBfdGood::TransmitBfdGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Sent::TransmitBfdGood::~TransmitBfdGood()
@@ -7397,6 +7470,7 @@ MplsOam::Packet::Sent::TransmitBfdGood::~TransmitBfdGood()
 
 bool MplsOam::Packet::Sent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -7486,7 +7560,7 @@ MplsOam::Packet::Sent::BfdNoReply::BfdNoReply()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-no-reply"; yang_parent_name = "sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::Sent::BfdNoReply::~BfdNoReply()
@@ -7495,6 +7569,7 @@ MplsOam::Packet::Sent::BfdNoReply::~BfdNoReply()
 
 bool MplsOam::Packet::Sent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -7581,16 +7656,16 @@ bool MplsOam::Packet::Sent::BfdNoReply::has_leaf_or_child_of_name(const std::str
 MplsOam::Packet::WorkingReqSent::WorkingReqSent()
     :
     transmit_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Packet::WorkingReqSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Packet::WorkingReqSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Packet::WorkingReqSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "working-req-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "working-req-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingReqSent::~WorkingReqSent()
@@ -7599,6 +7674,7 @@ MplsOam::Packet::WorkingReqSent::~WorkingReqSent()
 
 bool MplsOam::Packet::WorkingReqSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -7726,7 +7802,7 @@ MplsOam::Packet::WorkingReqSent::TransmitGood::TransmitGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingReqSent::TransmitGood::~TransmitGood()
@@ -7735,6 +7811,7 @@ MplsOam::Packet::WorkingReqSent::TransmitGood::~TransmitGood()
 
 bool MplsOam::Packet::WorkingReqSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -7824,7 +7901,7 @@ MplsOam::Packet::WorkingReqSent::TransmitDrop::TransmitDrop()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-drop"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingReqSent::TransmitDrop::~TransmitDrop()
@@ -7833,6 +7910,7 @@ MplsOam::Packet::WorkingReqSent::TransmitDrop::~TransmitDrop()
 
 bool MplsOam::Packet::WorkingReqSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -7922,7 +8000,7 @@ MplsOam::Packet::WorkingReqSent::TransmitBfdGood::TransmitBfdGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingReqSent::TransmitBfdGood::~TransmitBfdGood()
@@ -7931,6 +8009,7 @@ MplsOam::Packet::WorkingReqSent::TransmitBfdGood::~TransmitBfdGood()
 
 bool MplsOam::Packet::WorkingReqSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8020,7 +8099,7 @@ MplsOam::Packet::WorkingReqSent::BfdNoReply::BfdNoReply()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingReqSent::BfdNoReply::~BfdNoReply()
@@ -8029,6 +8108,7 @@ MplsOam::Packet::WorkingReqSent::BfdNoReply::~BfdNoReply()
 
 bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8115,16 +8195,16 @@ bool MplsOam::Packet::WorkingReqSent::BfdNoReply::has_leaf_or_child_of_name(cons
 MplsOam::Packet::WorkingRepSent::WorkingRepSent()
     :
     transmit_good(std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Packet::WorkingRepSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Packet::WorkingRepSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Packet::WorkingRepSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "working-rep-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "working-rep-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingRepSent::~WorkingRepSent()
@@ -8133,6 +8213,7 @@ MplsOam::Packet::WorkingRepSent::~WorkingRepSent()
 
 bool MplsOam::Packet::WorkingRepSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -8260,7 +8341,7 @@ MplsOam::Packet::WorkingRepSent::TransmitGood::TransmitGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingRepSent::TransmitGood::~TransmitGood()
@@ -8269,6 +8350,7 @@ MplsOam::Packet::WorkingRepSent::TransmitGood::~TransmitGood()
 
 bool MplsOam::Packet::WorkingRepSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8358,7 +8440,7 @@ MplsOam::Packet::WorkingRepSent::TransmitDrop::TransmitDrop()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-drop"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingRepSent::TransmitDrop::~TransmitDrop()
@@ -8367,6 +8449,7 @@ MplsOam::Packet::WorkingRepSent::TransmitDrop::~TransmitDrop()
 
 bool MplsOam::Packet::WorkingRepSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8456,7 +8539,7 @@ MplsOam::Packet::WorkingRepSent::TransmitBfdGood::TransmitBfdGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingRepSent::TransmitBfdGood::~TransmitBfdGood()
@@ -8465,6 +8548,7 @@ MplsOam::Packet::WorkingRepSent::TransmitBfdGood::~TransmitBfdGood()
 
 bool MplsOam::Packet::WorkingRepSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8554,7 +8638,7 @@ MplsOam::Packet::WorkingRepSent::BfdNoReply::BfdNoReply()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-no-reply"; yang_parent_name = "working-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::WorkingRepSent::BfdNoReply::~BfdNoReply()
@@ -8563,6 +8647,7 @@ MplsOam::Packet::WorkingRepSent::BfdNoReply::~BfdNoReply()
 
 bool MplsOam::Packet::WorkingRepSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8649,16 +8734,16 @@ bool MplsOam::Packet::WorkingRepSent::BfdNoReply::has_leaf_or_child_of_name(cons
 MplsOam::Packet::ProtectReqSent::ProtectReqSent()
     :
     transmit_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectReqSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectReqSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectReqSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "protect-req-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protect-req-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectReqSent::~ProtectReqSent()
@@ -8667,6 +8752,7 @@ MplsOam::Packet::ProtectReqSent::~ProtectReqSent()
 
 bool MplsOam::Packet::ProtectReqSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -8794,7 +8880,7 @@ MplsOam::Packet::ProtectReqSent::TransmitGood::TransmitGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectReqSent::TransmitGood::~TransmitGood()
@@ -8803,6 +8889,7 @@ MplsOam::Packet::ProtectReqSent::TransmitGood::~TransmitGood()
 
 bool MplsOam::Packet::ProtectReqSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8892,7 +8979,7 @@ MplsOam::Packet::ProtectReqSent::TransmitDrop::TransmitDrop()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-drop"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectReqSent::TransmitDrop::~TransmitDrop()
@@ -8901,6 +8988,7 @@ MplsOam::Packet::ProtectReqSent::TransmitDrop::~TransmitDrop()
 
 bool MplsOam::Packet::ProtectReqSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -8990,7 +9078,7 @@ MplsOam::Packet::ProtectReqSent::TransmitBfdGood::TransmitBfdGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectReqSent::TransmitBfdGood::~TransmitBfdGood()
@@ -8999,6 +9087,7 @@ MplsOam::Packet::ProtectReqSent::TransmitBfdGood::~TransmitBfdGood()
 
 bool MplsOam::Packet::ProtectReqSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -9088,7 +9177,7 @@ MplsOam::Packet::ProtectReqSent::BfdNoReply::BfdNoReply()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-req-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectReqSent::BfdNoReply::~BfdNoReply()
@@ -9097,6 +9186,7 @@ MplsOam::Packet::ProtectReqSent::BfdNoReply::~BfdNoReply()
 
 bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -9183,16 +9273,16 @@ bool MplsOam::Packet::ProtectReqSent::BfdNoReply::has_leaf_or_child_of_name(cons
 MplsOam::Packet::ProtectRepSent::ProtectRepSent()
     :
     transmit_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitGood>())
-	,transmit_drop(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitDrop>())
-	,transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitBfdGood>())
-	,bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectRepSent::BfdNoReply>())
+    , transmit_drop(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitDrop>())
+    , transmit_bfd_good(std::make_shared<MplsOam::Packet::ProtectRepSent::TransmitBfdGood>())
+    , bfd_no_reply(std::make_shared<MplsOam::Packet::ProtectRepSent::BfdNoReply>())
 {
     transmit_good->parent = this;
     transmit_drop->parent = this;
     transmit_bfd_good->parent = this;
     bfd_no_reply->parent = this;
 
-    yang_name = "protect-rep-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protect-rep-sent"; yang_parent_name = "packet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectRepSent::~ProtectRepSent()
@@ -9201,6 +9291,7 @@ MplsOam::Packet::ProtectRepSent::~ProtectRepSent()
 
 bool MplsOam::Packet::ProtectRepSent::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmit_good !=  nullptr && transmit_good->has_data())
 	|| (transmit_drop !=  nullptr && transmit_drop->has_data())
 	|| (transmit_bfd_good !=  nullptr && transmit_bfd_good->has_data())
@@ -9328,7 +9419,7 @@ MplsOam::Packet::ProtectRepSent::TransmitGood::TransmitGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectRepSent::TransmitGood::~TransmitGood()
@@ -9337,6 +9428,7 @@ MplsOam::Packet::ProtectRepSent::TransmitGood::~TransmitGood()
 
 bool MplsOam::Packet::ProtectRepSent::TransmitGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -9426,7 +9518,7 @@ MplsOam::Packet::ProtectRepSent::TransmitDrop::TransmitDrop()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-drop"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectRepSent::TransmitDrop::~TransmitDrop()
@@ -9435,6 +9527,7 @@ MplsOam::Packet::ProtectRepSent::TransmitDrop::~TransmitDrop()
 
 bool MplsOam::Packet::ProtectRepSent::TransmitDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -9524,7 +9617,7 @@ MplsOam::Packet::ProtectRepSent::TransmitBfdGood::TransmitBfdGood()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transmit-bfd-good"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectRepSent::TransmitBfdGood::~TransmitBfdGood()
@@ -9533,6 +9626,7 @@ MplsOam::Packet::ProtectRepSent::TransmitBfdGood::~TransmitBfdGood()
 
 bool MplsOam::Packet::ProtectRepSent::TransmitBfdGood::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -9622,7 +9716,7 @@ MplsOam::Packet::ProtectRepSent::BfdNoReply::BfdNoReply()
     bytes{YType::uint64, "bytes"}
 {
 
-    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bfd-no-reply"; yang_parent_name = "protect-rep-sent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Packet::ProtectRepSent::BfdNoReply::~BfdNoReply()
@@ -9631,6 +9725,7 @@ MplsOam::Packet::ProtectRepSent::BfdNoReply::~BfdNoReply()
 
 bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| bytes.is_set;
 }
@@ -9717,14 +9812,14 @@ bool MplsOam::Packet::ProtectRepSent::BfdNoReply::has_leaf_or_child_of_name(cons
 MplsOam::Global::Global()
     :
     total_clients{YType::uint32, "total-clients"}
-    	,
+        ,
     message_statistics(std::make_shared<MplsOam::Global::MessageStatistics>())
-	,collaborator_statistics(std::make_shared<MplsOam::Global::CollaboratorStatistics>())
+    , collaborator_statistics(std::make_shared<MplsOam::Global::CollaboratorStatistics>())
 {
     message_statistics->parent = this;
     collaborator_statistics->parent = this;
 
-    yang_name = "global"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "mpls-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Global::~Global()
@@ -9733,6 +9828,7 @@ MplsOam::Global::~Global()
 
 bool MplsOam::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return total_clients.is_set
 	|| (message_statistics !=  nullptr && message_statistics->has_data())
 	|| (collaborator_statistics !=  nullptr && collaborator_statistics->has_data());
@@ -9850,7 +9946,7 @@ MplsOam::Global::MessageStatistics::MessageStatistics()
     thread_request_messages{YType::uint32, "thread-request-messages"}
 {
 
-    yang_name = "message-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Global::MessageStatistics::~MessageStatistics()
@@ -9859,6 +9955,7 @@ MplsOam::Global::MessageStatistics::~MessageStatistics()
 
 bool MplsOam::Global::MessageStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return register_messages.is_set
 	|| unregister_messages.is_set
 	|| echo_submit_messages.is_set
@@ -10062,16 +10159,16 @@ bool MplsOam::Global::MessageStatistics::has_leaf_or_child_of_name(const std::st
 MplsOam::Global::CollaboratorStatistics::CollaboratorStatistics()
     :
     collaborator_i_parm(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIParm>())
-	,collaborator_im(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIm>())
-	,collaborator_net_io(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo>())
-	,collaborator_rib(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>())
+    , collaborator_im(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorIm>())
+    , collaborator_net_io(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo>())
+    , collaborator_rib(std::make_shared<MplsOam::Global::CollaboratorStatistics::CollaboratorRib>())
 {
     collaborator_i_parm->parent = this;
     collaborator_im->parent = this;
     collaborator_net_io->parent = this;
     collaborator_rib->parent = this;
 
-    yang_name = "collaborator-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collaborator-statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Global::CollaboratorStatistics::~CollaboratorStatistics()
@@ -10080,6 +10177,7 @@ MplsOam::Global::CollaboratorStatistics::~CollaboratorStatistics()
 
 bool MplsOam::Global::CollaboratorStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (collaborator_i_parm !=  nullptr && collaborator_i_parm->has_data())
 	|| (collaborator_im !=  nullptr && collaborator_im->has_data())
 	|| (collaborator_net_io !=  nullptr && collaborator_net_io->has_data())
@@ -10207,7 +10305,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::CollaboratorIParm()
     downs{YType::uint32, "downs"}
 {
 
-    yang_name = "collaborator-i-parm"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collaborator-i-parm"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::~CollaboratorIParm()
@@ -10216,6 +10314,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::~CollaboratorIParm()
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorIParm::has_data() const
 {
+    if (is_presence_container) return true;
     return ups.is_set
 	|| downs.is_set;
 }
@@ -10305,7 +10404,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorIm::CollaboratorIm()
     downs{YType::uint32, "downs"}
 {
 
-    yang_name = "collaborator-im"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collaborator-im"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorIm::~CollaboratorIm()
@@ -10314,6 +10413,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorIm::~CollaboratorIm()
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorIm::has_data() const
 {
+    if (is_presence_container) return true;
     return ups.is_set
 	|| downs.is_set;
 }
@@ -10403,7 +10503,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::CollaboratorNetIo()
     downs{YType::uint32, "downs"}
 {
 
-    yang_name = "collaborator-net-io"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collaborator-net-io"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::~CollaboratorNetIo()
@@ -10412,6 +10512,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::~CollaboratorNetIo()
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorNetIo::has_data() const
 {
+    if (is_presence_container) return true;
     return ups.is_set
 	|| downs.is_set;
 }
@@ -10501,7 +10602,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorRib::CollaboratorRib()
     downs{YType::uint32, "downs"}
 {
 
-    yang_name = "collaborator-rib"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collaborator-rib"; yang_parent_name = "collaborator-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsOam::Global::CollaboratorStatistics::CollaboratorRib::~CollaboratorRib()
@@ -10510,6 +10611,7 @@ MplsOam::Global::CollaboratorStatistics::CollaboratorRib::~CollaboratorRib()
 
 bool MplsOam::Global::CollaboratorStatistics::CollaboratorRib::has_data() const
 {
+    if (is_presence_container) return true;
     return ups.is_set
 	|| downs.is_set;
 }

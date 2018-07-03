@@ -10,15 +10,6 @@
 namespace openconfig {
 namespace openconfig_packet_match_types {
 
-class ETHERTYPE : public virtual ydk::Identity
-{
-    public:
-        ETHERTYPE();
-        ~ETHERTYPE();
-
-
-}; // ETHERTYPE
-
 class IPPROTOCOL : public virtual ydk::Identity
 {
     public:
@@ -37,185 +28,14 @@ class TCPFLAGS : public virtual ydk::Identity
 
 }; // TCPFLAGS
 
-class ETHERTYPEIPV4 : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+class ETHERTYPE : public virtual ydk::Identity
 {
     public:
-        ETHERTYPEIPV4();
-        ~ETHERTYPEIPV4();
+        ETHERTYPE();
+        ~ETHERTYPE();
 
 
-}; // ETHERTYPEIPV4
-
-class ETHERTYPEARP : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
-{
-    public:
-        ETHERTYPEARP();
-        ~ETHERTYPEARP();
-
-
-}; // ETHERTYPEARP
-
-class ETHERTYPEVLAN : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
-{
-    public:
-        ETHERTYPEVLAN();
-        ~ETHERTYPEVLAN();
-
-
-}; // ETHERTYPEVLAN
-
-class ETHERTYPEIPV6 : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
-{
-    public:
-        ETHERTYPEIPV6();
-        ~ETHERTYPEIPV6();
-
-
-}; // ETHERTYPEIPV6
-
-class ETHERTYPEMPLS : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
-{
-    public:
-        ETHERTYPEMPLS();
-        ~ETHERTYPEMPLS();
-
-
-}; // ETHERTYPEMPLS
-
-class ETHERTYPELLDP : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
-{
-    public:
-        ETHERTYPELLDP();
-        ~ETHERTYPELLDP();
-
-
-}; // ETHERTYPELLDP
-
-class ETHERTYPEROCE : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
-{
-    public:
-        ETHERTYPEROCE();
-        ~ETHERTYPEROCE();
-
-
-}; // ETHERTYPEROCE
-
-class IPTCP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPTCP();
-        ~IPTCP();
-
-
-}; // IPTCP
-
-class IPUDP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPUDP();
-        ~IPUDP();
-
-
-}; // IPUDP
-
-class IPICMP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPICMP();
-        ~IPICMP();
-
-
-}; // IPICMP
-
-class IPIGMP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPIGMP();
-        ~IPIGMP();
-
-
-}; // IPIGMP
-
-class IPPIM : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPPIM();
-        ~IPPIM();
-
-
-}; // IPPIM
-
-class IPRSVP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPRSVP();
-        ~IPRSVP();
-
-
-}; // IPRSVP
-
-class IPGRE : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPGRE();
-        ~IPGRE();
-
-
-}; // IPGRE
-
-class IPAUTH : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPAUTH();
-        ~IPAUTH();
-
-
-}; // IPAUTH
-
-class IPL2TP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
-{
-    public:
-        IPL2TP();
-        ~IPL2TP();
-
-
-}; // IPL2TP
-
-class TCPSYN : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
-{
-    public:
-        TCPSYN();
-        ~TCPSYN();
-
-
-}; // TCPSYN
-
-class TCPFIN : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
-{
-    public:
-        TCPFIN();
-        ~TCPFIN();
-
-
-}; // TCPFIN
-
-class TCPRST : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
-{
-    public:
-        TCPRST();
-        ~TCPRST();
-
-
-}; // TCPRST
-
-class TCPPSH : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
-{
-    public:
-        TCPPSH();
-        ~TCPPSH();
-
-
-}; // TCPPSH
+}; // ETHERTYPE
 
 class TCPACK : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
 {
@@ -226,14 +46,41 @@ class TCPACK : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtu
 
 }; // TCPACK
 
-class TCPURG : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
+class IPUDP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
 {
     public:
-        TCPURG();
-        ~TCPURG();
+        IPUDP();
+        ~IPUDP();
 
 
-}; // TCPURG
+}; // IPUDP
+
+class ETHERTYPEARP : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+{
+    public:
+        ETHERTYPEARP();
+        ~ETHERTYPEARP();
+
+
+}; // ETHERTYPEARP
+
+class TCPSYN : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
+{
+    public:
+        TCPSYN();
+        ~TCPSYN();
+
+
+}; // TCPSYN
+
+class ETHERTYPEVLAN : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+{
+    public:
+        ETHERTYPEVLAN();
+        ~ETHERTYPEVLAN();
+
+
+}; // ETHERTYPEVLAN
 
 class TCPECE : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
 {
@@ -244,6 +91,150 @@ class TCPECE : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtu
 
 }; // TCPECE
 
+class IPICMP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPICMP();
+        ~IPICMP();
+
+
+}; // IPICMP
+
+class TCPFIN : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
+{
+    public:
+        TCPFIN();
+        ~TCPFIN();
+
+
+}; // TCPFIN
+
+class ETHERTYPEROCE : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+{
+    public:
+        ETHERTYPEROCE();
+        ~ETHERTYPEROCE();
+
+
+}; // ETHERTYPEROCE
+
+class IPPIM : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPPIM();
+        ~IPPIM();
+
+
+}; // IPPIM
+
+class TCPRST : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
+{
+    public:
+        TCPRST();
+        ~TCPRST();
+
+
+}; // TCPRST
+
+class ETHERTYPEIPV4 : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+{
+    public:
+        ETHERTYPEIPV4();
+        ~ETHERTYPEIPV4();
+
+
+}; // ETHERTYPEIPV4
+
+class IPTCP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPTCP();
+        ~IPTCP();
+
+
+}; // IPTCP
+
+class ETHERTYPEIPV6 : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+{
+    public:
+        ETHERTYPEIPV6();
+        ~ETHERTYPEIPV6();
+
+
+}; // ETHERTYPEIPV6
+
+class TCPURG : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
+{
+    public:
+        TCPURG();
+        ~TCPURG();
+
+
+}; // TCPURG
+
+class IPRSVP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPRSVP();
+        ~IPRSVP();
+
+
+}; // IPRSVP
+
+class ETHERTYPEMPLS : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+{
+    public:
+        ETHERTYPEMPLS();
+        ~ETHERTYPEMPLS();
+
+
+}; // ETHERTYPEMPLS
+
+class TCPPSH : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
+{
+    public:
+        TCPPSH();
+        ~TCPPSH();
+
+
+}; // TCPPSH
+
+class IPAUTH : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPAUTH();
+        ~IPAUTH();
+
+
+}; // IPAUTH
+
+class IPGRE : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPGRE();
+        ~IPGRE();
+
+
+}; // IPGRE
+
+class IPIGMP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPIGMP();
+        ~IPIGMP();
+
+
+}; // IPIGMP
+
+class ETHERTYPELLDP : public openconfig::openconfig_packet_match_types::ETHERTYPE, virtual ydk::Identity
+{
+    public:
+        ETHERTYPELLDP();
+        ~ETHERTYPELLDP();
+
+
+}; // ETHERTYPELLDP
+
 class TCPCWR : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtual ydk::Identity
 {
     public:
@@ -252,6 +243,15 @@ class TCPCWR : public openconfig::openconfig_packet_match_types::TCPFLAGS, virtu
 
 
 }; // TCPCWR
+
+class IPL2TP : public openconfig::openconfig_packet_match_types::IPPROTOCOL, virtual ydk::Identity
+{
+    public:
+        IPL2TP();
+        ~IPL2TP();
+
+
+}; // IPL2TP
 
 class PortNumRange : public ydk::Enum
 {

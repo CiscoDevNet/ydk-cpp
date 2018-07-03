@@ -369,7 +369,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf curve_xr; //type: uint16
         class Curve; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve> > curve;
+        ydk::YList curve;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred
 
@@ -552,7 +552,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark
 
@@ -598,7 +598,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform
 
@@ -644,7 +644,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed
 
@@ -690,7 +690,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate
 
@@ -736,7 +736,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark
 
@@ -782,7 +782,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform
 
@@ -828,7 +828,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed
 
@@ -874,7 +874,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput:
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate
 
@@ -942,7 +942,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
 
         class MemberInterface; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface> > member_interface;
+        ydk::YList member_interface;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces
 
@@ -1182,7 +1182,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
 
         class QosShowEaStV1; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1> > qos_show_ea_st_v1;
+        ydk::YList qos_show_ea_st_v1;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy
 
@@ -1822,7 +1822,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf scaling_profile_id; //type: uint32
         class Curve; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve> > curve;
+        ydk::YList curve;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred
 
@@ -2001,7 +2001,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark
 
@@ -2047,7 +2047,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform
 
@@ -2093,7 +2093,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed
 
@@ -2139,7 +2139,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate
 
@@ -2185,7 +2185,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark
 
@@ -2231,7 +2231,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform
 
@@ -2277,7 +2277,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed
 
@@ -2323,7 +2323,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate
 
@@ -2368,7 +2368,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
 
         class QosShowEaStV2; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2> > qos_show_ea_st_v2;
+        ydk::YList qos_show_ea_st_v2;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon
 
@@ -3059,7 +3059,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf curve_xr; //type: uint16
         class Curve; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve> > curve;
+        ydk::YList curve;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred
 
@@ -3242,7 +3242,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark
 
@@ -3288,7 +3288,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform
 
@@ -3334,7 +3334,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed
 
@@ -3380,7 +3380,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate
 
@@ -3426,7 +3426,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark
 
@@ -3472,7 +3472,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform
 
@@ -3518,7 +3518,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed
 
@@ -3564,7 +3564,7 @@ class PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::
         ydk::YLeaf action_type; //type: Action
         class MarkDetail; //type: PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_qos_oper::PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail> > mark_detail;
+        ydk::YList mark_detail;
         
 }; // PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate
 

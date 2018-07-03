@@ -17,7 +17,7 @@ Rcp::Rcp()
 {
     rcp_client->parent = this;
 
-    yang_name = "rcp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rcp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Rcp::~Rcp()
@@ -26,6 +26,7 @@ Rcp::~Rcp()
 
 bool Rcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (rcp_client !=  nullptr && rcp_client->has_data());
 }
 
@@ -123,7 +124,7 @@ Rcp::RcpClient::RcpClient()
     source_interface{YType::str, "source-interface"}
 {
 
-    yang_name = "rcp-client"; yang_parent_name = "rcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rcp-client"; yang_parent_name = "rcp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rcp::RcpClient::~RcpClient()
@@ -132,6 +133,7 @@ Rcp::RcpClient::~RcpClient()
 
 bool Rcp::RcpClient::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| source_interface.is_set;
 }
@@ -221,7 +223,7 @@ Ftp::Ftp()
 {
     ftp_client->parent = this;
 
-    yang_name = "ftp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ftp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ftp::~Ftp()
@@ -230,6 +232,7 @@ Ftp::~Ftp()
 
 bool Ftp::has_data() const
 {
+    if (is_presence_container) return true;
     return (ftp_client !=  nullptr && ftp_client->has_data());
 }
 
@@ -328,12 +331,12 @@ Ftp::FtpClient::FtpClient()
     anonymous_password{YType::str, "anonymous-password"},
     username{YType::str, "username"},
     source_interface{YType::str, "source-interface"}
-    	,
+        ,
     vrfs(std::make_shared<Ftp::FtpClient::Vrfs>())
 {
     vrfs->parent = this;
 
-    yang_name = "ftp-client"; yang_parent_name = "ftp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ftp-client"; yang_parent_name = "ftp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ftp::FtpClient::~FtpClient()
@@ -342,6 +345,7 @@ Ftp::FtpClient::~FtpClient()
 
 bool Ftp::FtpClient::has_data() const
 {
+    if (is_presence_container) return true;
     return passive.is_set
 	|| password.is_set
 	|| anonymous_password.is_set
@@ -481,9 +485,11 @@ bool Ftp::FtpClient::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ftp::FtpClient::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "ftp-client"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "ftp-client"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ftp::FtpClient::Vrfs::~Vrfs()
@@ -492,7 +498,8 @@ Ftp::FtpClient::Vrfs::~Vrfs()
 
 bool Ftp::FtpClient::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -502,7 +509,7 @@ bool Ftp::FtpClient::Vrfs::has_data() const
 
 bool Ftp::FtpClient::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -539,7 +546,7 @@ std::shared_ptr<Entity> Ftp::FtpClient::Vrfs::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<Ftp::FtpClient::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -551,7 +558,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ftp::FtpClient::Vrfs::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -587,7 +594,7 @@ Ftp::FtpClient::Vrfs::Vrf::Vrf()
     passive{YType::empty, "passive"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ftp::FtpClient::Vrfs::Vrf::~Vrf()
@@ -596,6 +603,7 @@ Ftp::FtpClient::Vrfs::Vrf::~Vrf()
 
 bool Ftp::FtpClient::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| source_interface.is_set
 	|| username.is_set
@@ -625,7 +633,8 @@ std::string Ftp::FtpClient::Vrfs::Vrf::get_absolute_path() const
 std::string Ftp::FtpClient::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -737,7 +746,7 @@ Tftp::Tftp()
 {
     tftp_client->parent = this;
 
-    yang_name = "tftp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "tftp"; yang_parent_name = "Cisco-IOS-XR-ipv4-filesystems-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Tftp::~Tftp()
@@ -746,6 +755,7 @@ Tftp::~Tftp()
 
 bool Tftp::has_data() const
 {
+    if (is_presence_container) return true;
     return (tftp_client !=  nullptr && tftp_client->has_data());
 }
 
@@ -842,12 +852,12 @@ Tftp::TftpClient::TftpClient()
     retry{YType::uint32, "retry"},
     timeout{YType::uint32, "timeout"},
     source_interface{YType::str, "source-interface"}
-    	,
+        ,
     vrfs(std::make_shared<Tftp::TftpClient::Vrfs>())
 {
     vrfs->parent = this;
 
-    yang_name = "tftp-client"; yang_parent_name = "tftp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tftp-client"; yang_parent_name = "tftp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tftp::TftpClient::~TftpClient()
@@ -856,6 +866,7 @@ Tftp::TftpClient::~TftpClient()
 
 bool Tftp::TftpClient::has_data() const
 {
+    if (is_presence_container) return true;
     return retry.is_set
 	|| timeout.is_set
 	|| source_interface.is_set
@@ -969,9 +980,11 @@ bool Tftp::TftpClient::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Tftp::TftpClient::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "tftp-client"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "tftp-client"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tftp::TftpClient::Vrfs::~Vrfs()
@@ -980,7 +993,8 @@ Tftp::TftpClient::Vrfs::~Vrfs()
 
 bool Tftp::TftpClient::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -990,7 +1004,7 @@ bool Tftp::TftpClient::Vrfs::has_data() const
 
 bool Tftp::TftpClient::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -1027,7 +1041,7 @@ std::shared_ptr<Entity> Tftp::TftpClient::Vrfs::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Tftp::TftpClient::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -1039,7 +1053,7 @@ std::map<std::string, std::shared_ptr<Entity>> Tftp::TftpClient::Vrfs::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1073,7 +1087,7 @@ Tftp::TftpClient::Vrfs::Vrf::Vrf()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Tftp::TftpClient::Vrfs::Vrf::~Vrf()
@@ -1082,6 +1096,7 @@ Tftp::TftpClient::Vrfs::Vrf::~Vrf()
 
 bool Tftp::TftpClient::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| source_interface.is_set
 	|| retry.is_set
@@ -1107,7 +1122,8 @@ std::string Tftp::TftpClient::Vrfs::Vrf::get_absolute_path() const
 std::string Tftp::TftpClient::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 

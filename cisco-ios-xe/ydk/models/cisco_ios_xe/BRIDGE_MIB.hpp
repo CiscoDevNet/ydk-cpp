@@ -32,32 +32,32 @@ class BRIDGEMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Dot1Dbase; //type: BRIDGEMIB::Dot1Dbase
-        class Dot1Dstp; //type: BRIDGEMIB::Dot1Dstp
-        class Dot1Dtp; //type: BRIDGEMIB::Dot1Dtp
-        class Dot1Dbaseporttable; //type: BRIDGEMIB::Dot1Dbaseporttable
-        class Dot1Dstpporttable; //type: BRIDGEMIB::Dot1Dstpporttable
-        class Dot1Dtpfdbtable; //type: BRIDGEMIB::Dot1Dtpfdbtable
-        class Dot1Dtpporttable; //type: BRIDGEMIB::Dot1Dtpporttable
-        class Dot1Dstatictable; //type: BRIDGEMIB::Dot1Dstatictable
+        class Dot1dBase; //type: BRIDGEMIB::Dot1dBase
+        class Dot1dStp; //type: BRIDGEMIB::Dot1dStp
+        class Dot1dTp; //type: BRIDGEMIB::Dot1dTp
+        class Dot1dBasePortTable; //type: BRIDGEMIB::Dot1dBasePortTable
+        class Dot1dStpPortTable; //type: BRIDGEMIB::Dot1dStpPortTable
+        class Dot1dTpFdbTable; //type: BRIDGEMIB::Dot1dTpFdbTable
+        class Dot1dTpPortTable; //type: BRIDGEMIB::Dot1dTpPortTable
+        class Dot1dStaticTable; //type: BRIDGEMIB::Dot1dStaticTable
 
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbase> dot1dbase;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstp> dot1dstp;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtp> dot1dtp;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable> dot1dbaseporttable;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstpporttable> dot1dstpporttable;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpfdbtable> dot1dtpfdbtable;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpporttable> dot1dtpporttable;
-        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstatictable> dot1dstatictable;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBase> dot1dbase;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dStp> dot1dstp;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dTp> dot1dtp;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dBasePortTable> dot1dbaseporttable;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dStpPortTable> dot1dstpporttable;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dTpFdbTable> dot1dtpfdbtable;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dTpPortTable> dot1dtpporttable;
+        std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1dStaticTable> dot1dstatictable;
         
 }; // BRIDGEMIB
 
 
-class BRIDGEMIB::Dot1Dbase : public ydk::Entity
+class BRIDGEMIB::Dot1dBase : public ydk::Entity
 {
     public:
-        Dot1Dbase();
-        ~Dot1Dbase();
+        Dot1dBase();
+        ~Dot1dBase();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -72,17 +72,17 @@ class BRIDGEMIB::Dot1Dbase : public ydk::Entity
 
         ydk::YLeaf dot1dbasebridgeaddress; //type: string
         ydk::YLeaf dot1dbasenumports; //type: int32
-        ydk::YLeaf dot1dbasetype; //type: Dot1Dbasetype
-        class Dot1Dbasetype;
+        ydk::YLeaf dot1dbasetype; //type: Dot1dBaseType
+        class Dot1dBaseType;
 
-}; // BRIDGEMIB::Dot1Dbase
+}; // BRIDGEMIB::Dot1dBase
 
 
-class BRIDGEMIB::Dot1Dstp : public ydk::Entity
+class BRIDGEMIB::Dot1dStp : public ydk::Entity
 {
     public:
-        Dot1Dstp();
-        ~Dot1Dstp();
+        Dot1dStp();
+        ~Dot1dStp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -95,7 +95,7 @@ class BRIDGEMIB::Dot1Dstp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf dot1dstpprotocolspecification; //type: Dot1Dstpprotocolspecification
+        ydk::YLeaf dot1dstpprotocolspecification; //type: Dot1dStpProtocolSpecification
         ydk::YLeaf dot1dstppriority; //type: int32
         ydk::YLeaf dot1dstptimesincetopologychange; //type: uint32
         ydk::YLeaf dot1dstptopchanges; //type: uint32
@@ -109,16 +109,16 @@ class BRIDGEMIB::Dot1Dstp : public ydk::Entity
         ydk::YLeaf dot1dstpbridgemaxage; //type: int32
         ydk::YLeaf dot1dstpbridgehellotime; //type: int32
         ydk::YLeaf dot1dstpbridgeforwarddelay; //type: int32
-        class Dot1Dstpprotocolspecification;
+        class Dot1dStpProtocolSpecification;
 
-}; // BRIDGEMIB::Dot1Dstp
+}; // BRIDGEMIB::Dot1dStp
 
 
-class BRIDGEMIB::Dot1Dtp : public ydk::Entity
+class BRIDGEMIB::Dot1dTp : public ydk::Entity
 {
     public:
-        Dot1Dtp();
-        ~Dot1Dtp();
+        Dot1dTp();
+        ~Dot1dTp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -134,14 +134,14 @@ class BRIDGEMIB::Dot1Dtp : public ydk::Entity
         ydk::YLeaf dot1dtplearnedentrydiscards; //type: uint32
         ydk::YLeaf dot1dtpagingtime; //type: int32
 
-}; // BRIDGEMIB::Dot1Dtp
+}; // BRIDGEMIB::Dot1dTp
 
 
-class BRIDGEMIB::Dot1Dbaseporttable : public ydk::Entity
+class BRIDGEMIB::Dot1dBasePortTable : public ydk::Entity
 {
     public:
-        Dot1Dbaseporttable();
-        ~Dot1Dbaseporttable();
+        Dot1dBasePortTable();
+        ~Dot1dBasePortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -154,18 +154,18 @@ class BRIDGEMIB::Dot1Dbaseporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dbaseportentry; //type: BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry
+        class Dot1dBasePortEntry; //type: BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry> > dot1dbaseportentry;
+        ydk::YList dot1dbaseportentry;
         
-}; // BRIDGEMIB::Dot1Dbaseporttable
+}; // BRIDGEMIB::Dot1dBasePortTable
 
 
-class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry : public ydk::Entity
+class BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry : public ydk::Entity
 {
     public:
-        Dot1Dbaseportentry();
-        ~Dot1Dbaseportentry();
+        Dot1dBasePortEntry();
+        ~Dot1dBasePortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -183,7 +183,7 @@ class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry : public ydk::Entity
         ydk::YLeaf dot1dbaseportcircuit; //type: string
         ydk::YLeaf dot1dbaseportdelayexceededdiscards; //type: uint32
         ydk::YLeaf dot1dbaseportmtuexceededdiscards; //type: uint32
-        ydk::YLeaf dot1dportcapabilities; //type: Dot1Dportcapabilities
+        ydk::YLeaf dot1dportcapabilities; //type: Dot1dPortCapabilities
         ydk::YLeaf dot1dportdefaultuserpriority; //type: int32
         ydk::YLeaf dot1dportnumtrafficclasses; //type: int32
         ydk::YLeaf dot1dportgarpjointime; //type: int32
@@ -194,22 +194,22 @@ class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry : public ydk::Entity
         ydk::YLeaf dot1dportgmrplastpduorigin; //type: string
         ydk::YLeaf dot1dportrestrictedgroupregistration; //type: boolean
         ydk::YLeaf dot1qpvid; //type: uint32
-        ydk::YLeaf dot1qportacceptableframetypes; //type: Dot1Qportacceptableframetypes
+        ydk::YLeaf dot1qportacceptableframetypes; //type: Dot1qPortAcceptableFrameTypes
         ydk::YLeaf dot1qportingressfiltering; //type: boolean
         ydk::YLeaf dot1qportgvrpstatus; //type: EnabledStatus
         ydk::YLeaf dot1qportgvrpfailedregistrations; //type: uint32
         ydk::YLeaf dot1qportgvrplastpduorigin; //type: string
         ydk::YLeaf dot1qportrestrictedvlanregistration; //type: boolean
-        class Dot1Qportacceptableframetypes;
+        class Dot1qPortAcceptableFrameTypes;
 
-}; // BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry
+}; // BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry
 
 
-class BRIDGEMIB::Dot1Dstpporttable : public ydk::Entity
+class BRIDGEMIB::Dot1dStpPortTable : public ydk::Entity
 {
     public:
-        Dot1Dstpporttable();
-        ~Dot1Dstpporttable();
+        Dot1dStpPortTable();
+        ~Dot1dStpPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -222,18 +222,18 @@ class BRIDGEMIB::Dot1Dstpporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dstpportentry; //type: BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry
+        class Dot1dStpPortEntry; //type: BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry> > dot1dstpportentry;
+        ydk::YList dot1dstpportentry;
         
-}; // BRIDGEMIB::Dot1Dstpporttable
+}; // BRIDGEMIB::Dot1dStpPortTable
 
 
-class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry : public ydk::Entity
+class BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry : public ydk::Entity
 {
     public:
-        Dot1Dstpportentry();
-        ~Dot1Dstpportentry();
+        Dot1dStpPortEntry();
+        ~Dot1dStpPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -248,8 +248,8 @@ class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry : public ydk::Entity
 
         ydk::YLeaf dot1dstpport; //type: int32
         ydk::YLeaf dot1dstpportpriority; //type: int32
-        ydk::YLeaf dot1dstpportstate; //type: Dot1Dstpportstate
-        ydk::YLeaf dot1dstpportenable; //type: Dot1Dstpportenable
+        ydk::YLeaf dot1dstpportstate; //type: Dot1dStpPortState
+        ydk::YLeaf dot1dstpportenable; //type: Dot1dStpPortEnable
         ydk::YLeaf dot1dstpportpathcost; //type: int32
         ydk::YLeaf dot1dstpportdesignatedroot; //type: binary
         ydk::YLeaf dot1dstpportdesignatedcost; //type: int32
@@ -258,17 +258,17 @@ class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry : public ydk::Entity
         ydk::YLeaf dot1dstpportforwardtransitions; //type: uint32
         ydk::YLeaf dot1dstpportpathcost32; //type: int32
         ydk::YLeaf stpxlongstpportpathcost; //type: uint32
-        class Dot1Dstpportstate;
-        class Dot1Dstpportenable;
+        class Dot1dStpPortState;
+        class Dot1dStpPortEnable;
 
-}; // BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry
+}; // BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry
 
 
-class BRIDGEMIB::Dot1Dtpfdbtable : public ydk::Entity
+class BRIDGEMIB::Dot1dTpFdbTable : public ydk::Entity
 {
     public:
-        Dot1Dtpfdbtable();
-        ~Dot1Dtpfdbtable();
+        Dot1dTpFdbTable();
+        ~Dot1dTpFdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -281,18 +281,18 @@ class BRIDGEMIB::Dot1Dtpfdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dtpfdbentry; //type: BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry
+        class Dot1dTpFdbEntry; //type: BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry> > dot1dtpfdbentry;
+        ydk::YList dot1dtpfdbentry;
         
-}; // BRIDGEMIB::Dot1Dtpfdbtable
+}; // BRIDGEMIB::Dot1dTpFdbTable
 
 
-class BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry : public ydk::Entity
+class BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry : public ydk::Entity
 {
     public:
-        Dot1Dtpfdbentry();
-        ~Dot1Dtpfdbentry();
+        Dot1dTpFdbEntry();
+        ~Dot1dTpFdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -307,17 +307,17 @@ class BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry : public ydk::Entity
 
         ydk::YLeaf dot1dtpfdbaddress; //type: string
         ydk::YLeaf dot1dtpfdbport; //type: int32
-        ydk::YLeaf dot1dtpfdbstatus; //type: Dot1Dtpfdbstatus
-        class Dot1Dtpfdbstatus;
+        ydk::YLeaf dot1dtpfdbstatus; //type: Dot1dTpFdbStatus
+        class Dot1dTpFdbStatus;
 
-}; // BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry
+}; // BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry
 
 
-class BRIDGEMIB::Dot1Dtpporttable : public ydk::Entity
+class BRIDGEMIB::Dot1dTpPortTable : public ydk::Entity
 {
     public:
-        Dot1Dtpporttable();
-        ~Dot1Dtpporttable();
+        Dot1dTpPortTable();
+        ~Dot1dTpPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -330,18 +330,18 @@ class BRIDGEMIB::Dot1Dtpporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dtpportentry; //type: BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry
+        class Dot1dTpPortEntry; //type: BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry> > dot1dtpportentry;
+        ydk::YList dot1dtpportentry;
         
-}; // BRIDGEMIB::Dot1Dtpporttable
+}; // BRIDGEMIB::Dot1dTpPortTable
 
 
-class BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry : public ydk::Entity
+class BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry : public ydk::Entity
 {
     public:
-        Dot1Dtpportentry();
-        ~Dot1Dtpportentry();
+        Dot1dTpPortEntry();
+        ~Dot1dTpPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -360,14 +360,14 @@ class BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry : public ydk::Entity
         ydk::YLeaf dot1dtpportoutframes; //type: uint32
         ydk::YLeaf dot1dtpportindiscards; //type: uint32
 
-}; // BRIDGEMIB::Dot1Dtpporttable::Dot1Dtpportentry
+}; // BRIDGEMIB::Dot1dTpPortTable::Dot1dTpPortEntry
 
 
-class BRIDGEMIB::Dot1Dstatictable : public ydk::Entity
+class BRIDGEMIB::Dot1dStaticTable : public ydk::Entity
 {
     public:
-        Dot1Dstatictable();
-        ~Dot1Dstatictable();
+        Dot1dStaticTable();
+        ~Dot1dStaticTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -380,18 +380,18 @@ class BRIDGEMIB::Dot1Dstatictable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dot1Dstaticentry; //type: BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry
+        class Dot1dStaticEntry; //type: BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BRIDGE_MIB::BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry> > dot1dstaticentry;
+        ydk::YList dot1dstaticentry;
         
-}; // BRIDGEMIB::Dot1Dstatictable
+}; // BRIDGEMIB::Dot1dStaticTable
 
 
-class BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry : public ydk::Entity
+class BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry : public ydk::Entity
 {
     public:
-        Dot1Dstaticentry();
-        ~Dot1Dstaticentry();
+        Dot1dStaticEntry();
+        ~Dot1dStaticEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -407,12 +407,12 @@ class BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry : public ydk::Entity
         ydk::YLeaf dot1dstaticaddress; //type: string
         ydk::YLeaf dot1dstaticreceiveport; //type: int32
         ydk::YLeaf dot1dstaticallowedtogoto; //type: binary
-        ydk::YLeaf dot1dstaticstatus; //type: Dot1Dstaticstatus
-        class Dot1Dstaticstatus;
+        ydk::YLeaf dot1dstaticstatus; //type: Dot1dStaticStatus
+        class Dot1dStaticStatus;
 
-}; // BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry
+}; // BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry
 
-class BRIDGEMIB::Dot1Dbase::Dot1Dbasetype : public ydk::Enum
+class BRIDGEMIB::Dot1dBase::Dot1dBaseType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -422,7 +422,7 @@ class BRIDGEMIB::Dot1Dbase::Dot1Dbasetype : public ydk::Enum
 
 };
 
-class BRIDGEMIB::Dot1Dstp::Dot1Dstpprotocolspecification : public ydk::Enum
+class BRIDGEMIB::Dot1dStp::Dot1dStpProtocolSpecification : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -431,7 +431,7 @@ class BRIDGEMIB::Dot1Dstp::Dot1Dstpprotocolspecification : public ydk::Enum
 
 };
 
-class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Qportacceptableframetypes : public ydk::Enum
+class BRIDGEMIB::Dot1dBasePortTable::Dot1dBasePortEntry::Dot1qPortAcceptableFrameTypes : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf admitAll;
@@ -439,7 +439,7 @@ class BRIDGEMIB::Dot1Dbaseporttable::Dot1Dbaseportentry::Dot1Qportacceptablefram
 
 };
 
-class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate : public ydk::Enum
+class BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -451,7 +451,7 @@ class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportstate : publi
 
 };
 
-class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportenable : public ydk::Enum
+class BRIDGEMIB::Dot1dStpPortTable::Dot1dStpPortEntry::Dot1dStpPortEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -459,7 +459,7 @@ class BRIDGEMIB::Dot1Dstpporttable::Dot1Dstpportentry::Dot1Dstpportenable : publ
 
 };
 
-class BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus : public ydk::Enum
+class BRIDGEMIB::Dot1dTpFdbTable::Dot1dTpFdbEntry::Dot1dTpFdbStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -470,7 +470,7 @@ class BRIDGEMIB::Dot1Dtpfdbtable::Dot1Dtpfdbentry::Dot1Dtpfdbstatus : public ydk
 
 };
 
-class BRIDGEMIB::Dot1Dstatictable::Dot1Dstaticentry::Dot1Dstaticstatus : public ydk::Enum
+class BRIDGEMIB::Dot1dStaticTable::Dot1dStaticEntry::Dot1dStaticStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

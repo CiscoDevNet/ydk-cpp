@@ -19,9 +19,11 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     table_id{YType::uint8, "table-id"},
     profile_id{YType::uint32, "profile-id"},
     scaling_profile_id{YType::uint32, "scaling-profile-id"}
+        ,
+    curve(this, {})
 {
 
-    yang_name = "wred"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::~Wred()
@@ -30,7 +32,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::has_data() const
 {
-    for (std::size_t index=0; index<curve.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<curve.len(); index++)
     {
         if(curve[index]->has_data())
             return true;
@@ -44,7 +47,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::has_operation() const
 {
-    for (std::size_t index=0; index<curve.size(); index++)
+    for (std::size_t index=0; index<curve.len(); index++)
     {
         if(curve[index]->has_operation())
             return true;
@@ -84,7 +87,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve>();
         c->parent = this;
-        curve.push_back(c);
+        curve.append(c);
         return c;
     }
 
@@ -96,7 +99,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : curve)
+    for (auto c : curve.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -175,18 +178,18 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::Curve()
     :
     match{YType::str, "match"}
-    	,
+        ,
     min_threshold(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold>())
-	,min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig>())
-	,max_threshold(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold>())
-	,max_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig>())
+    , min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig>())
+    , max_threshold(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold>())
+    , max_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig>())
 {
     min_threshold->parent = this;
     min_threshold_user_config->parent = this;
     max_threshold->parent = this;
     max_threshold_user_config->parent = this;
 
-    yang_name = "curve"; yang_parent_name = "wred"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "curve"; yang_parent_name = "wred"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::~Curve()
@@ -195,6 +198,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::has_data() const
 {
+    if (is_presence_container) return true;
     return match.is_set
 	|| (min_threshold !=  nullptr && min_threshold->has_data())
 	|| (min_threshold_user_config !=  nullptr && min_threshold_user_config->has_data())
@@ -328,7 +332,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "min-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "min-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::~MinThreshold()
@@ -337,6 +341,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -419,7 +424,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "min-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "min-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::~MinThresholdUserConfig()
@@ -428,6 +433,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -510,7 +516,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "max-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::~MaxThreshold()
@@ -519,6 +525,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -601,7 +608,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "max-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::~MaxThresholdUserConfig()
@@ -610,6 +617,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -689,13 +697,13 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::Mark()
     :
     child_mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark>())
-	,police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform>())
-	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed>())
-	,police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate>())
-	,parent_mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark>())
-	,parent_police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform>())
-	,parent_police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed>())
-	,parent_police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate>())
+    , police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform>())
+    , police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed>())
+    , police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate>())
+    , parent_mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark>())
+    , parent_police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform>())
+    , parent_police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed>())
+    , parent_police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate>())
 {
     child_mark->parent = this;
     police_conform->parent = this;
@@ -706,7 +714,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     parent_police_exceed->parent = this;
     parent_police_violate->parent = this;
 
-    yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::~Mark()
@@ -715,6 +723,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::has_data() const
 {
+    if (is_presence_container) return true;
     return (child_mark !=  nullptr && child_mark->has_data())
 	|| (police_conform !=  nullptr && police_conform->has_data())
 	|| (police_exceed !=  nullptr && police_exceed->has_data())
@@ -896,9 +905,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark::ChildMark()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "child-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark::~ChildMark()
@@ -907,7 +918,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -917,7 +929,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -949,7 +961,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -961,7 +973,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1003,7 +1015,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "child-mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "child-mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::~MarkDetail()
@@ -1012,6 +1024,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -1091,9 +1104,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform::PoliceConform()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform::~PoliceConform()
@@ -1102,7 +1117,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -1112,7 +1128,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -1144,7 +1160,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -1156,7 +1172,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1198,7 +1214,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::~MarkDetail()
@@ -1207,6 +1223,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -1286,9 +1303,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::PoliceExceed()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::~PoliceExceed()
@@ -1297,7 +1316,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -1307,7 +1327,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -1339,7 +1359,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -1351,7 +1371,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1393,7 +1413,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::~MarkDetail()
@@ -1402,6 +1422,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -1481,9 +1502,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::PoliceViolate()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::~PoliceViolate()
@@ -1492,7 +1515,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -1502,7 +1526,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -1534,7 +1558,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -1546,7 +1570,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1588,7 +1612,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-violate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-violate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::~MarkDetail()
@@ -1597,6 +1621,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -1676,9 +1701,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark::ParentMark()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark::~ParentMark()
@@ -1687,7 +1714,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -1697,7 +1725,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -1729,7 +1757,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -1741,7 +1769,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1783,7 +1811,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::~MarkDetail()
@@ -1792,6 +1820,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -1871,9 +1900,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::ParentPoliceConform()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::~ParentPoliceConform()
@@ -1882,7 +1913,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -1892,7 +1924,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -1924,7 +1956,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -1936,7 +1968,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1978,7 +2010,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-conform"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-conform"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::~MarkDetail()
@@ -1987,6 +2019,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -2066,9 +2099,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::ParentPoliceExceed()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::~ParentPoliceExceed()
@@ -2077,7 +2112,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -2087,7 +2123,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -2119,7 +2155,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -2131,7 +2167,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2173,7 +2209,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-exceed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-exceed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::~MarkDetail()
@@ -2182,6 +2218,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -2261,9 +2298,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::ParentPoliceViolate()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::~ParentPoliceViolate()
@@ -2272,7 +2311,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -2282,7 +2322,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -2314,7 +2354,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -2326,7 +2366,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2368,7 +2408,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-violate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-violate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::~MarkDetail()
@@ -2377,6 +2417,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosSho
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -2454,9 +2495,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::PolicyTyphoon()
+    :
+    qos_show_ea_st_v2(this, {})
 {
 
-    yang_name = "policy-typhoon"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-typhoon"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::~PolicyTyphoon()
@@ -2465,7 +2508,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::has_data() const
 {
-    for (std::size_t index=0; index<qos_show_ea_st_v2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<qos_show_ea_st_v2.len(); index++)
     {
         if(qos_show_ea_st_v2[index]->has_data())
             return true;
@@ -2475,7 +2519,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::has_operation() const
 {
-    for (std::size_t index=0; index<qos_show_ea_st_v2.size(); index++)
+    for (std::size_t index=0; index<qos_show_ea_st_v2.len(); index++)
     {
         if(qos_show_ea_st_v2[index]->has_operation())
             return true;
@@ -2505,7 +2549,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2>();
         c->parent = this;
-        qos_show_ea_st_v2.push_back(c);
+        qos_show_ea_st_v2.append(c);
         return c;
     }
 
@@ -2517,7 +2561,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : qos_show_ea_st_v2)
+    for (auto c : qos_show_ea_st_v2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2550,14 +2594,14 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     policy_name{YType::str, "policy-name"},
     parent_policy_name{YType::str, "parent-policy-name"},
     parent_class_name{YType::str, "parent-class-name"}
-    	,
+        ,
     queue(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Queue>())
-	,queue_limit_parameters(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters>())
-	,shape(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape>())
-	,police(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police>())
-	,wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq>())
-	,wred(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred>())
-	,mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark>())
+    , queue_limit_parameters(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters>())
+    , shape(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape>())
+    , police(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police>())
+    , wfq(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq>())
+    , wred(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred>())
+    , mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark>())
 {
     queue->parent = this;
     queue_limit_parameters->parent = this;
@@ -2567,7 +2611,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     wred->parent = this;
     mark->parent = this;
 
-    yang_name = "qos-show-ea-st-v2"; yang_parent_name = "policy-typhoon"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-show-ea-st-v2"; yang_parent_name = "policy-typhoon"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::~QosShowEaStV2()
@@ -2576,6 +2620,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::has_data() const
 {
+    if (is_presence_container) return true;
     return class_level.is_set
 	|| class_name.is_set
 	|| policy_name.is_set
@@ -2810,7 +2855,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     class_name{YType::str, "class-name"}
 {
 
-    yang_name = "queue"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Queue::~Queue()
@@ -2819,6 +2864,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return queue_id.is_set
 	|| queue_type.is_set
 	|| class_name.is_set;
@@ -2913,14 +2959,14 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     absolute_index{YType::uint16, "absolute-index"},
     template_id{YType::uint16, "template-id"},
     curve_id{YType::uint16, "curve-id"}
-    	,
+        ,
     queue_limit(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit>())
-	,config_queue_limit(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit>())
+    , config_queue_limit(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit>())
 {
     queue_limit->parent = this;
     config_queue_limit->parent = this;
 
-    yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::~QueueLimitParameters()
@@ -2929,6 +2975,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return absolute_index.is_set
 	|| template_id.is_set
 	|| curve_id.is_set
@@ -3056,7 +3103,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::~QueueLimit()
@@ -3065,6 +3112,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3147,7 +3195,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "config-queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config-queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::~ConfigQueueLimit()
@@ -3156,6 +3204,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3236,14 +3285,14 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     :
     cir_shape_type{YType::enumeration, "cir-shape-type"},
     pir_shape_type{YType::enumeration, "pir-shape-type"}
-    	,
+        ,
     cir_shape(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape>())
-	,pir_shape(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape>())
+    , pir_shape(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape>())
 {
     cir_shape->parent = this;
     pir_shape->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::~Shape()
@@ -3252,6 +3301,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return cir_shape_type.is_set
 	|| pir_shape_type.is_set
 	|| (cir_shape !=  nullptr && cir_shape->has_data())
@@ -3365,16 +3415,16 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     chunk_id{YType::uint32, "chunk-id"},
     profile_id{YType::uint16, "profile-id"},
     scale_factor{YType::uint16, "scale-factor"}
-    	,
+        ,
     cir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir>())
-	,config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth>())
-	,cbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs>())
+    , config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth>())
+    , cbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs>())
 {
     cir->parent = this;
     config_bandwidth->parent = this;
     cbs->parent = this;
 
-    yang_name = "cir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::~CirShape()
@@ -3383,6 +3433,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::has_data() const
 {
+    if (is_presence_container) return true;
     return chunk_id.is_set
 	|| profile_id.is_set
 	|| scale_factor.is_set
@@ -3526,7 +3577,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::~Cir()
@@ -3535,6 +3586,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3617,7 +3669,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 {
     minimum_rate->parent = this;
 
-    yang_name = "config-bandwidth"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config-bandwidth"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::~ConfigBandwidth()
@@ -3626,6 +3678,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return (minimum_rate !=  nullptr && minimum_rate->has_data());
 }
 
@@ -3698,7 +3751,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "minimum-rate"; yang_parent_name = "config-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "minimum-rate"; yang_parent_name = "config-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::~MinimumRate()
@@ -3707,6 +3760,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3789,7 +3843,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::~Cbs()
@@ -3798,6 +3852,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -3879,14 +3934,14 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     chunk_id{YType::uint32, "chunk-id"},
     profile_id{YType::uint16, "profile-id"},
     scale_factor{YType::uint16, "scale-factor"}
-    	,
+        ,
     pir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir>())
-	,pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs>())
+    , pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs>())
 {
     pir->parent = this;
     pbs->parent = this;
 
-    yang_name = "pir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::~PirShape()
@@ -3895,6 +3950,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::has_data() const
 {
+    if (is_presence_container) return true;
     return chunk_id.is_set
 	|| profile_id.is_set
 	|| scale_factor.is_set
@@ -4022,7 +4078,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "pir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "pir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::~Pir()
@@ -4031,6 +4087,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4113,7 +4170,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pbs"; yang_parent_name = "pir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbs"; yang_parent_name = "pir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::~Pbs()
@@ -4122,6 +4179,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4202,12 +4260,12 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     :
     policer_type{YType::enumeration, "policer-type"},
     profile_id{YType::uint32, "profile-id"}
-    	,
+        ,
     cir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir>())
-	,cbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs>())
-	,pir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir>())
-	,pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs>())
-	,police_config_parameters(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters>())
+    , cbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs>())
+    , pir(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir>())
+    , pbs(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs>())
+    , police_config_parameters(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters>())
 {
     cir->parent = this;
     cbs->parent = this;
@@ -4215,7 +4273,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     pbs->parent = this;
     police_config_parameters->parent = this;
 
-    yang_name = "police"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::~Police()
@@ -4224,6 +4282,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return policer_type.is_set
 	|| profile_id.is_set
 	|| (cir !=  nullptr && cir->has_data())
@@ -4386,7 +4445,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::~Cir()
@@ -4395,6 +4454,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4477,7 +4537,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::~Cbs()
@@ -4486,6 +4546,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4568,7 +4629,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::~Pir()
@@ -4577,6 +4638,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4659,7 +4721,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::~Pbs()
@@ -4668,6 +4730,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::Pbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4747,16 +4810,16 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PoliceConfigParameters()
     :
     average_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate>())
-	,peak_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate>())
-	,conform_burst(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst>())
-	,exceed_burst(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst>())
+    , peak_rate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate>())
+    , conform_burst(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst>())
+    , exceed_burst(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst>())
 {
     average_rate->parent = this;
     peak_rate->parent = this;
     conform_burst->parent = this;
     exceed_burst->parent = this;
 
-    yang_name = "police-config-parameters"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-config-parameters"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::~PoliceConfigParameters()
@@ -4765,6 +4828,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return (average_rate !=  nullptr && average_rate->has_data())
 	|| (peak_rate !=  nullptr && peak_rate->has_data())
 	|| (conform_burst !=  nullptr && conform_burst->has_data())
@@ -4885,7 +4949,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "average-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "average-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::~AverageRate()
@@ -4894,6 +4958,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::AverageRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -4976,7 +5041,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "peak-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peak-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::~PeakRate()
@@ -4985,6 +5050,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::PeakRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5067,7 +5133,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "conform-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::~ConformBurst()
@@ -5076,6 +5142,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ConformBurst::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5158,7 +5225,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "exceed-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::~ExceedBurst()
@@ -5167,6 +5234,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Police::PoliceConfigParameters::ExceedBurst::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5251,14 +5319,14 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     excess_ratio{YType::uint16, "excess-ratio"},
     chunk_id{YType::uint32, "chunk-id"},
     level{YType::uint8, "level"}
-    	,
+        ,
     parent_bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth>())
-	,bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth>())
+    , bandwidth(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth>())
 {
     parent_bandwidth->parent = this;
     bandwidth->parent = this;
 
-    yang_name = "wfq"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wfq"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::~Wfq()
@@ -5267,6 +5335,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_id.is_set
 	|| committed_weight.is_set
 	|| excess_weight.is_set
@@ -5433,7 +5502,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "parent-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::~ParentBandwidth()
@@ -5442,6 +5511,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::ParentBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5524,7 +5594,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::~Bandwidth()
@@ -5533,6 +5603,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wfq::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -5613,9 +5684,11 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     :
     type{YType::enumeration, "type"},
     curve_xr{YType::uint16, "curve-xr"}
+        ,
+    curve(this, {})
 {
 
-    yang_name = "wred"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::~Wred()
@@ -5624,7 +5697,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::has_data() const
 {
-    for (std::size_t index=0; index<curve.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<curve.len(); index++)
     {
         if(curve[index]->has_data())
             return true;
@@ -5635,7 +5709,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::has_operation() const
 {
-    for (std::size_t index=0; index<curve.size(); index++)
+    for (std::size_t index=0; index<curve.len(); index++)
     {
         if(curve[index]->has_operation())
             return true;
@@ -5669,7 +5743,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve>();
         c->parent = this;
-        curve.push_back(c);
+        curve.append(c);
         return c;
     }
 
@@ -5681,7 +5755,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : curve)
+    for (auto c : curve.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5734,18 +5808,18 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     curve_id{YType::uint16, "curve-id"},
     match{YType::str, "match"},
     exp_match{YType::str, "exp-match"}
-    	,
+        ,
     min_threshold(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold>())
-	,min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig>())
-	,max_threshold(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold>())
-	,max_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig>())
+    , min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig>())
+    , max_threshold(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold>())
+    , max_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig>())
 {
     min_threshold->parent = this;
     min_threshold_user_config->parent = this;
     max_threshold->parent = this;
     max_threshold_user_config->parent = this;
 
-    yang_name = "curve"; yang_parent_name = "wred"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "curve"; yang_parent_name = "wred"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::~Curve()
@@ -5754,6 +5828,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::has_data() const
 {
+    if (is_presence_container) return true;
     return absolute_index.is_set
 	|| template_id.is_set
 	|| curve_id.is_set
@@ -5939,7 +6014,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "min-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "min-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::~MinThreshold()
@@ -5948,6 +6023,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -6030,7 +6106,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "min-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "min-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::~MinThresholdUserConfig()
@@ -6039,6 +6115,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MinThresholdUserConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -6121,7 +6198,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "max-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::~MaxThreshold()
@@ -6130,6 +6207,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -6212,7 +6290,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "max-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::~MaxThresholdUserConfig()
@@ -6221,6 +6299,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Wred::Curve::MaxThresholdUserConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -6300,13 +6379,13 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::Mark()
     :
     child_mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark>())
-	,police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform>())
-	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed>())
-	,police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate>())
-	,parent_mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark>())
-	,parent_police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform>())
-	,parent_police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed>())
-	,parent_police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate>())
+    , police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform>())
+    , police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed>())
+    , police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate>())
+    , parent_mark(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark>())
+    , parent_police_conform(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform>())
+    , parent_police_exceed(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed>())
+    , parent_police_violate(std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate>())
 {
     child_mark->parent = this;
     police_conform->parent = this;
@@ -6317,7 +6396,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     parent_police_exceed->parent = this;
     parent_police_violate->parent = this;
 
-    yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::~Mark()
@@ -6326,6 +6405,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::has_data() const
 {
+    if (is_presence_container) return true;
     return (child_mark !=  nullptr && child_mark->has_data())
 	|| (police_conform !=  nullptr && police_conform->has_data())
 	|| (police_exceed !=  nullptr && police_exceed->has_data())
@@ -6507,9 +6587,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::ChildMark()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "child-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::~ChildMark()
@@ -6518,7 +6600,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -6528,7 +6611,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -6560,7 +6643,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -6572,7 +6655,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6614,7 +6697,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "child-mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "child-mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::~MarkDetail()
@@ -6623,6 +6706,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ChildMark::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -6702,9 +6786,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::PoliceConform()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::~PoliceConform()
@@ -6713,7 +6799,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -6723,7 +6810,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -6755,7 +6842,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -6767,7 +6854,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6809,7 +6896,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::~MarkDetail()
@@ -6818,6 +6905,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceConform::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -6897,9 +6985,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::PoliceExceed()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::~PoliceExceed()
@@ -6908,7 +6998,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -6918,7 +7009,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -6950,7 +7041,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -6962,7 +7053,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7004,7 +7095,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::~MarkDetail()
@@ -7013,6 +7104,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceExceed::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -7092,9 +7184,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::PoliceViolate()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::~PoliceViolate()
@@ -7103,7 +7197,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -7113,7 +7208,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -7145,7 +7240,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -7157,7 +7252,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7199,7 +7294,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-violate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-violate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::~MarkDetail()
@@ -7208,6 +7303,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::PoliceViolate::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -7287,9 +7383,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::ParentMark()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::~ParentMark()
@@ -7298,7 +7396,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -7308,7 +7407,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -7340,7 +7439,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -7352,7 +7451,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7394,7 +7493,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::~MarkDetail()
@@ -7403,6 +7502,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentMark::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -7482,9 +7582,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::ParentPoliceConform()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::~ParentPoliceConform()
@@ -7493,7 +7595,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -7503,7 +7606,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -7535,7 +7638,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -7547,7 +7650,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7589,7 +7692,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-conform"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-conform"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::~MarkDetail()
@@ -7598,6 +7701,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceConform::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -7677,9 +7781,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::ParentPoliceExceed()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::~ParentPoliceExceed()
@@ -7688,7 +7794,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -7698,7 +7805,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -7730,7 +7837,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -7742,7 +7849,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7784,7 +7891,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-exceed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-exceed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::~MarkDetail()
@@ -7793,6 +7900,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceExceed::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -7872,9 +7980,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::ParentPoliceViolate()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::~ParentPoliceViolate()
@@ -7883,7 +7993,8 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -7893,7 +8004,7 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -7925,7 +8036,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::Interfaces::Interface::Output:
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -7937,7 +8048,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7979,7 +8090,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-violate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-violate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::~MarkDetail()
@@ -7988,6 +8099,7 @@ PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon:
 
 bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyphoon::QosShowEaStV2::Mark::ParentPoliceViolate::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -8065,9 +8177,11 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::PolicyTyp
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterfaces()
+    :
+    bundle_interface(this, {"interface_name"})
 {
 
-    yang_name = "bundle-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::~BundleInterfaces()
@@ -8076,7 +8190,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::~BundleInterfaces()
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<bundle_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
     {
         if(bundle_interface[index]->has_data())
             return true;
@@ -8086,7 +8201,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::has_data() const
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<bundle_interface.size(); index++)
+    for (std::size_t index=0; index<bundle_interface.len(); index++)
     {
         if(bundle_interface[index]->has_operation())
             return true;
@@ -8116,7 +8231,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::get_child_by
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface>();
         c->parent = this;
-        bundle_interface.push_back(c);
+        bundle_interface.append(c);
         return c;
     }
 
@@ -8128,7 +8243,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bundle_interface)
+    for (auto c : bundle_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8157,14 +8272,14 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::has_leaf_or_child_of_name(const
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     bundle_output(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput>())
-	,bundle_input(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput>())
+    , bundle_input(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleInput>())
 {
     bundle_output->parent = this;
     bundle_input->parent = this;
 
-    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-interface"; yang_parent_name = "bundle-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::~BundleInterface()
@@ -8173,6 +8288,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::~BundleInterface()
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (bundle_output !=  nullptr && bundle_output->has_data())
 	|| (bundle_input !=  nullptr && bundle_input->has_data());
@@ -8189,7 +8305,8 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::has_operation(
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bundle-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "bundle-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8274,7 +8391,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Bundl
 {
     member_interfaces->parent = this;
 
-    yang_name = "bundle-output"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bundle-output"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::~BundleOutput()
@@ -8283,6 +8400,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::~Bund
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::has_data() const
 {
+    if (is_presence_container) return true;
     return (member_interfaces !=  nullptr && member_interfaces->has_data());
 }
 
@@ -8350,9 +8468,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterfaces()
+    :
+    member_interface(this, {"interface_name"})
 {
 
-    yang_name = "member-interfaces"; yang_parent_name = "bundle-output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-interfaces"; yang_parent_name = "bundle-output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::~MemberInterfaces()
@@ -8361,7 +8481,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<member_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<member_interface.len(); index++)
     {
         if(member_interface[index]->has_data())
             return true;
@@ -8371,7 +8492,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<member_interface.size(); index++)
+    for (std::size_t index=0; index<member_interface.len(); index++)
     {
         if(member_interface[index]->has_operation())
             return true;
@@ -8401,7 +8522,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface>();
         c->parent = this;
-        member_interface.push_back(c);
+        member_interface.append(c);
         return c;
     }
 
@@ -8413,7 +8534,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : member_interface)
+    for (auto c : member_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8442,12 +8563,12 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::MemberInterface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     details(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details>())
 {
     details->parent = this;
 
-    yang_name = "member-interface"; yang_parent_name = "member-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "member-interface"; yang_parent_name = "member-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::~MemberInterface()
@@ -8456,6 +8577,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (details !=  nullptr && details->has_data());
 }
@@ -8470,7 +8592,8 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "member-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "member-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -8538,14 +8661,14 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Details()
     :
     header(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header>())
-	,policy(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy>())
-	,policy_typhoon(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon>())
+    , policy(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy>())
+    , policy_typhoon(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon>())
 {
     header->parent = this;
     policy->parent = this;
     policy_typhoon->parent = this;
 
-    yang_name = "details"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "member-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::~Details()
@@ -8554,6 +8677,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::has_data() const
 {
+    if (is_presence_container) return true;
     return (header !=  nullptr && header->has_data())
 	|| (policy !=  nullptr && policy->has_data())
 	|| (policy_typhoon !=  nullptr && policy_typhoon->has_data());
@@ -8656,14 +8780,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     :
     classes{YType::uint16, "classes"},
     policy_name{YType::str, "policy-name"}
-    	,
+        ,
     interface_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters>())
-	,programmed_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth>())
+    , programmed_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth>())
 {
     interface_parameters->parent = this;
     programmed_bandwidth->parent = this;
 
-    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::~Header()
@@ -8672,6 +8796,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return classes.is_set
 	|| policy_name.is_set
 	|| (interface_parameters !=  nullptr && interface_parameters->has_data())
@@ -8783,16 +8908,16 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::InterfaceParameters()
     :
     port_config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth>())
-	,ancp_config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth>())
-	,ancp_programmed_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth>())
-	,port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate>())
+    , ancp_config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth>())
+    , ancp_programmed_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth>())
+    , port_shaper_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate>())
 {
     port_config_bandwidth->parent = this;
     ancp_config_bandwidth->parent = this;
     ancp_programmed_bandwidth->parent = this;
     port_shaper_rate->parent = this;
 
-    yang_name = "interface-parameters"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-parameters"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::~InterfaceParameters()
@@ -8801,6 +8926,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return (port_config_bandwidth !=  nullptr && port_config_bandwidth->has_data())
 	|| (ancp_config_bandwidth !=  nullptr && ancp_config_bandwidth->has_data())
 	|| (ancp_programmed_bandwidth !=  nullptr && ancp_programmed_bandwidth->has_data())
@@ -8921,7 +9047,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "port-config-bandwidth"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-config-bandwidth"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth::~PortConfigBandwidth()
@@ -8930,6 +9056,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortConfigBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9012,7 +9139,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "ancp-config-bandwidth"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ancp-config-bandwidth"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth::~AncpConfigBandwidth()
@@ -9021,6 +9148,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpConfigBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9103,7 +9231,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "ancp-programmed-bandwidth"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ancp-programmed-bandwidth"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth::~AncpProgrammedBandwidth()
@@ -9112,6 +9240,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::AncpProgrammedBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9194,7 +9323,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-shaper-rate"; yang_parent_name = "interface-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate::~PortShaperRate()
@@ -9203,6 +9332,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::InterfaceParameters::PortShaperRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9285,7 +9415,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "programmed-bandwidth"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "programmed-bandwidth"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth::~ProgrammedBandwidth()
@@ -9294,6 +9424,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Header::ProgrammedBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -9371,9 +9502,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::Policy()
+    :
+    qos_show_ea_st_v1(this, {})
 {
 
-    yang_name = "policy"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::~Policy()
@@ -9382,7 +9515,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::has_data() const
 {
-    for (std::size_t index=0; index<qos_show_ea_st_v1.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<qos_show_ea_st_v1.len(); index++)
     {
         if(qos_show_ea_st_v1[index]->has_data())
             return true;
@@ -9392,7 +9526,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::has_operation() const
 {
-    for (std::size_t index=0; index<qos_show_ea_st_v1.size(); index++)
+    for (std::size_t index=0; index<qos_show_ea_st_v1.len(); index++)
     {
         if(qos_show_ea_st_v1[index]->has_operation())
             return true;
@@ -9422,7 +9556,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1>();
         c->parent = this;
-        qos_show_ea_st_v1.push_back(c);
+        qos_show_ea_st_v1.append(c);
         return c;
     }
 
@@ -9434,7 +9568,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : qos_show_ea_st_v1)
+    for (auto c : qos_show_ea_st_v1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9467,14 +9601,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     policy_name{YType::str, "policy-name"},
     parent_policy_name{YType::str, "parent-policy-name"},
     parent_class_name{YType::str, "parent-class-name"}
-    	,
+        ,
     queue(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue>())
-	,queue_limit_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters>())
-	,shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape>())
-	,police(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police>())
-	,wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq>())
-	,wred(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred>())
-	,mark(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark>())
+    , queue_limit_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters>())
+    , shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape>())
+    , police(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police>())
+    , wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq>())
+    , wred(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred>())
+    , mark(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark>())
 {
     queue->parent = this;
     queue_limit_parameters->parent = this;
@@ -9484,7 +9618,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     wred->parent = this;
     mark->parent = this;
 
-    yang_name = "qos-show-ea-st-v1"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-show-ea-st-v1"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::~QosShowEaStV1()
@@ -9493,6 +9627,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::has_data() const
 {
+    if (is_presence_container) return true;
     return class_level.is_set
 	|| class_name.is_set
 	|| policy_name.is_set
@@ -9727,7 +9862,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     class_name{YType::str, "class-name"}
 {
 
-    yang_name = "queue"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue::~Queue()
@@ -9736,6 +9871,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return queue_id.is_set
 	|| queue_type.is_set
 	|| class_name.is_set;
@@ -9829,14 +9965,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     :
     profile_id{YType::uint32, "profile-id"},
     scaling_profile_id{YType::uint32, "scaling-profile-id"}
-    	,
+        ,
     queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit>())
-	,config_queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit>())
+    , config_queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit>())
 {
     queue_limit->parent = this;
     config_queue_limit->parent = this;
 
-    yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::~QueueLimitParameters()
@@ -9845,6 +9981,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_id.is_set
 	|| scaling_profile_id.is_set
 	|| (queue_limit !=  nullptr && queue_limit->has_data())
@@ -9959,7 +10096,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit::~QueueLimit()
@@ -9968,6 +10105,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::QueueLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -10050,7 +10188,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "config-queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config-queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit::~ConfigQueueLimit()
@@ -10059,6 +10197,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::QueueLimitParameters::ConfigQueueLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -10138,12 +10277,12 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Shape()
     :
     profile_id{YType::uint16, "profile-id"}
-    	,
+        ,
     cir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir>())
-	,config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth>())
-	,cbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs>())
-	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir>())
-	,pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs>())
+    , config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth>())
+    , cbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs>())
+    , pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir>())
+    , pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs>())
 {
     cir->parent = this;
     config_bandwidth->parent = this;
@@ -10151,7 +10290,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     pir->parent = this;
     pbs->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::~Shape()
@@ -10160,6 +10299,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_id.is_set
 	|| (cir !=  nullptr && cir->has_data())
 	|| (config_bandwidth !=  nullptr && config_bandwidth->has_data())
@@ -10309,7 +10449,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir::~Cir()
@@ -10318,6 +10458,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -10400,7 +10541,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 {
     minimum_rate->parent = this;
 
-    yang_name = "config-bandwidth"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config-bandwidth"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::~ConfigBandwidth()
@@ -10409,6 +10550,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return (minimum_rate !=  nullptr && minimum_rate->has_data());
 }
 
@@ -10481,7 +10623,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "minimum-rate"; yang_parent_name = "config-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "minimum-rate"; yang_parent_name = "config-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate::~MinimumRate()
@@ -10490,6 +10632,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::ConfigBandwidth::MinimumRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -10572,7 +10715,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs::~Cbs()
@@ -10581,6 +10724,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -10663,7 +10807,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir::~Pir()
@@ -10672,6 +10816,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -10754,7 +10899,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbs"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs::~Pbs()
@@ -10763,6 +10908,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Shape::Pbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -10843,12 +10989,12 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     :
     policer_type{YType::enumeration, "policer-type"},
     profile_id{YType::uint32, "profile-id"}
-    	,
+        ,
     cir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir>())
-	,cbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs>())
-	,pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir>())
-	,pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs>())
-	,police_config_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters>())
+    , cbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs>())
+    , pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir>())
+    , pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs>())
+    , police_config_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters>())
 {
     cir->parent = this;
     cbs->parent = this;
@@ -10856,7 +11002,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     pbs->parent = this;
     police_config_parameters->parent = this;
 
-    yang_name = "police"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::~Police()
@@ -10865,6 +11011,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::has_data() const
 {
+    if (is_presence_container) return true;
     return policer_type.is_set
 	|| profile_id.is_set
 	|| (cir !=  nullptr && cir->has_data())
@@ -11027,7 +11174,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir::~Cir()
@@ -11036,6 +11183,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11118,7 +11266,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs::~Cbs()
@@ -11127,6 +11275,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11209,7 +11358,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir::~Pir()
@@ -11218,6 +11367,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11300,7 +11450,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbs"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs::~Pbs()
@@ -11309,6 +11459,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::Pbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11388,16 +11539,16 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PoliceConfigParameters()
     :
     average_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate>())
-	,peak_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate>())
-	,conform_burst(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst>())
-	,exceed_burst(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst>())
+    , peak_rate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate>())
+    , conform_burst(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst>())
+    , exceed_burst(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst>())
 {
     average_rate->parent = this;
     peak_rate->parent = this;
     conform_burst->parent = this;
     exceed_burst->parent = this;
 
-    yang_name = "police-config-parameters"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-config-parameters"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::~PoliceConfigParameters()
@@ -11406,6 +11557,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return (average_rate !=  nullptr && average_rate->has_data())
 	|| (peak_rate !=  nullptr && peak_rate->has_data())
 	|| (conform_burst !=  nullptr && conform_burst->has_data())
@@ -11526,7 +11678,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "average-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "average-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate::~AverageRate()
@@ -11535,6 +11687,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::AverageRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11617,7 +11770,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "peak-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peak-rate"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate::~PeakRate()
@@ -11626,6 +11779,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::PeakRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11708,7 +11862,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "conform-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "conform-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst::~ConformBurst()
@@ -11717,6 +11871,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ConformBurst::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11799,7 +11954,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "exceed-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exceed-burst"; yang_parent_name = "police-config-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst::~ExceedBurst()
@@ -11808,6 +11963,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Police::PoliceConfigParameters::ExceedBurst::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -11892,14 +12048,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     excess_ratio{YType::uint16, "excess-ratio"},
     chunk_id{YType::uint32, "chunk-id"},
     level{YType::uint8, "level"}
-    	,
+        ,
     parent_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth>())
-	,bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth>())
+    , bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth>())
 {
     parent_bandwidth->parent = this;
     bandwidth->parent = this;
 
-    yang_name = "wfq"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wfq"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::~Wfq()
@@ -11908,6 +12064,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_id.is_set
 	|| committed_weight.is_set
 	|| excess_weight.is_set
@@ -12074,7 +12231,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "parent-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth::~ParentBandwidth()
@@ -12083,6 +12240,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::ParentBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -12165,7 +12323,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "wfq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth::~Bandwidth()
@@ -12174,6 +12332,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wfq::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -12257,9 +12416,11 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     table_id{YType::uint8, "table-id"},
     profile_id{YType::uint32, "profile-id"},
     scaling_profile_id{YType::uint32, "scaling-profile-id"}
+        ,
+    curve(this, {})
 {
 
-    yang_name = "wred"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::~Wred()
@@ -12268,7 +12429,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::has_data() const
 {
-    for (std::size_t index=0; index<curve.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<curve.len(); index++)
     {
         if(curve[index]->has_data())
             return true;
@@ -12282,7 +12444,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::has_operation() const
 {
-    for (std::size_t index=0; index<curve.size(); index++)
+    for (std::size_t index=0; index<curve.len(); index++)
     {
         if(curve[index]->has_operation())
             return true;
@@ -12322,7 +12484,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve>();
         c->parent = this;
-        curve.push_back(c);
+        curve.append(c);
         return c;
     }
 
@@ -12334,7 +12496,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : curve)
+    for (auto c : curve.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12413,18 +12575,18 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::Curve()
     :
     match{YType::str, "match"}
-    	,
+        ,
     min_threshold(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold>())
-	,min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig>())
-	,max_threshold(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold>())
-	,max_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig>())
+    , min_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig>())
+    , max_threshold(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold>())
+    , max_threshold_user_config(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig>())
 {
     min_threshold->parent = this;
     min_threshold_user_config->parent = this;
     max_threshold->parent = this;
     max_threshold_user_config->parent = this;
 
-    yang_name = "curve"; yang_parent_name = "wred"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "curve"; yang_parent_name = "wred"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::~Curve()
@@ -12433,6 +12595,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::has_data() const
 {
+    if (is_presence_container) return true;
     return match.is_set
 	|| (min_threshold !=  nullptr && min_threshold->has_data())
 	|| (min_threshold_user_config !=  nullptr && min_threshold_user_config->has_data())
@@ -12566,7 +12729,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "min-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "min-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::~MinThreshold()
@@ -12575,6 +12738,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -12657,7 +12821,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "min-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "min-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::~MinThresholdUserConfig()
@@ -12666,6 +12830,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MinThresholdUserConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -12748,7 +12913,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "max-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-threshold"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::~MaxThreshold()
@@ -12757,6 +12922,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -12839,7 +13005,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "max-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-threshold-user-config"; yang_parent_name = "curve"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::~MaxThresholdUserConfig()
@@ -12848,6 +13014,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Wred::Curve::MaxThresholdUserConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -12927,13 +13094,13 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::Mark()
     :
     child_mark(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark>())
-	,police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform>())
-	,police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed>())
-	,police_violate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate>())
-	,parent_mark(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark>())
-	,parent_police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform>())
-	,parent_police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed>())
-	,parent_police_violate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate>())
+    , police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform>())
+    , police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed>())
+    , police_violate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate>())
+    , parent_mark(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark>())
+    , parent_police_conform(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform>())
+    , parent_police_exceed(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed>())
+    , parent_police_violate(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate>())
 {
     child_mark->parent = this;
     police_conform->parent = this;
@@ -12944,7 +13111,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     parent_police_exceed->parent = this;
     parent_police_violate->parent = this;
 
-    yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark"; yang_parent_name = "qos-show-ea-st-v1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::~Mark()
@@ -12953,6 +13120,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::has_data() const
 {
+    if (is_presence_container) return true;
     return (child_mark !=  nullptr && child_mark->has_data())
 	|| (police_conform !=  nullptr && police_conform->has_data())
 	|| (police_exceed !=  nullptr && police_exceed->has_data())
@@ -13134,9 +13302,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::ChildMark()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "child-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "child-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::~ChildMark()
@@ -13145,7 +13315,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -13155,7 +13326,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -13187,7 +13358,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -13199,7 +13370,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13241,7 +13412,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "child-mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "child-mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::~MarkDetail()
@@ -13250,6 +13421,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ChildMark::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -13329,9 +13501,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::PoliceConform()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::~PoliceConform()
@@ -13340,7 +13514,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -13350,7 +13525,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -13382,7 +13557,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -13394,7 +13569,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13436,7 +13611,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-conform"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::~MarkDetail()
@@ -13445,6 +13620,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceConform::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -13524,9 +13700,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::PoliceExceed()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::~PoliceExceed()
@@ -13535,7 +13713,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -13545,7 +13724,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -13577,7 +13756,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -13589,7 +13768,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13631,7 +13810,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-exceed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::~MarkDetail()
@@ -13640,6 +13819,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceExceed::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -13719,9 +13899,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::PoliceViolate()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::~PoliceViolate()
@@ -13730,7 +13912,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -13740,7 +13923,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -13772,7 +13955,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -13784,7 +13967,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13826,7 +14009,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "police-violate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "police-violate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::~MarkDetail()
@@ -13835,6 +14018,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::PoliceViolate::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -13914,9 +14098,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::ParentMark()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-mark"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::~ParentMark()
@@ -13925,7 +14111,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -13935,7 +14122,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -13967,7 +14154,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -13979,7 +14166,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14021,7 +14208,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::~MarkDetail()
@@ -14030,6 +14217,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentMark::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -14109,9 +14297,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::ParentPoliceConform()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-conform"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::~ParentPoliceConform()
@@ -14120,7 +14310,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -14130,7 +14321,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -14162,7 +14353,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -14174,7 +14365,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14216,7 +14407,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-conform"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-conform"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::~MarkDetail()
@@ -14225,6 +14416,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceConform::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -14304,9 +14496,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::ParentPoliceExceed()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-exceed"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::~ParentPoliceExceed()
@@ -14315,7 +14509,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -14325,7 +14520,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -14357,7 +14552,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -14369,7 +14564,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14411,7 +14606,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-exceed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-exceed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::~MarkDetail()
@@ -14420,6 +14615,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceExceed::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -14499,9 +14695,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::ParentPoliceViolate()
     :
     action_type{YType::enumeration, "action-type"}
+        ,
+    mark_detail(this, {})
 {
 
-    yang_name = "parent-police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parent-police-violate"; yang_parent_name = "mark"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::~ParentPoliceViolate()
@@ -14510,7 +14708,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::has_data() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_data())
             return true;
@@ -14520,7 +14719,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::has_operation() const
 {
-    for (std::size_t index=0; index<mark_detail.size(); index++)
+    for (std::size_t index=0; index<mark_detail.len(); index++)
     {
         if(mark_detail[index]->has_operation())
             return true;
@@ -14552,7 +14751,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail>();
         c->parent = this;
-        mark_detail.push_back(c);
+        mark_detail.append(c);
         return c;
     }
 
@@ -14564,7 +14763,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mark_detail)
+    for (auto c : mark_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14606,7 +14805,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     action_opcode{YType::enumeration, "action-opcode"}
 {
 
-    yang_name = "mark-detail"; yang_parent_name = "parent-police-violate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mark-detail"; yang_parent_name = "parent-police-violate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::~MarkDetail()
@@ -14615,6 +14814,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::Policy::QosShowEaStV1::Mark::ParentPoliceViolate::MarkDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return mark_value.is_set
 	|| action_opcode.is_set;
 }
@@ -14692,9 +14892,11 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::PolicyTyphoon()
+    :
+    qos_show_ea_st_v2(this, {})
 {
 
-    yang_name = "policy-typhoon"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-typhoon"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::~PolicyTyphoon()
@@ -14703,7 +14905,8 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::has_data() const
 {
-    for (std::size_t index=0; index<qos_show_ea_st_v2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<qos_show_ea_st_v2.len(); index++)
     {
         if(qos_show_ea_st_v2[index]->has_data())
             return true;
@@ -14713,7 +14916,7 @@ bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::has_operation() const
 {
-    for (std::size_t index=0; index<qos_show_ea_st_v2.size(); index++)
+    for (std::size_t index=0; index<qos_show_ea_st_v2.len(); index++)
     {
         if(qos_show_ea_st_v2[index]->has_operation())
             return true;
@@ -14743,7 +14946,7 @@ std::shared_ptr<Entity> PlatformQos::Nodes::Node::BundleInterfaces::BundleInterf
     {
         auto c = std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2>();
         c->parent = this;
-        qos_show_ea_st_v2.push_back(c);
+        qos_show_ea_st_v2.append(c);
         return c;
     }
 
@@ -14755,7 +14958,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformQos::Nodes::Node::BundleI
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : qos_show_ea_st_v2)
+    for (auto c : qos_show_ea_st_v2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14788,14 +14991,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     policy_name{YType::str, "policy-name"},
     parent_policy_name{YType::str, "parent-policy-name"},
     parent_class_name{YType::str, "parent-class-name"}
-    	,
+        ,
     queue(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue>())
-	,queue_limit_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters>())
-	,shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape>())
-	,police(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police>())
-	,wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq>())
-	,wred(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred>())
-	,mark(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark>())
+    , queue_limit_parameters(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters>())
+    , shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape>())
+    , police(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Police>())
+    , wfq(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wfq>())
+    , wred(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Wred>())
+    , mark(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Mark>())
 {
     queue->parent = this;
     queue_limit_parameters->parent = this;
@@ -14805,7 +15008,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     wred->parent = this;
     mark->parent = this;
 
-    yang_name = "qos-show-ea-st-v2"; yang_parent_name = "policy-typhoon"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-show-ea-st-v2"; yang_parent_name = "policy-typhoon"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::~QosShowEaStV2()
@@ -14814,6 +15017,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::has_data() const
 {
+    if (is_presence_container) return true;
     return class_level.is_set
 	|| class_name.is_set
 	|| policy_name.is_set
@@ -15048,7 +15252,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     class_name{YType::str, "class-name"}
 {
 
-    yang_name = "queue"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue::~Queue()
@@ -15057,6 +15261,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return queue_id.is_set
 	|| queue_type.is_set
 	|| class_name.is_set;
@@ -15151,14 +15356,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     absolute_index{YType::uint16, "absolute-index"},
     template_id{YType::uint16, "template-id"},
     curve_id{YType::uint16, "curve-id"}
-    	,
+        ,
     queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit>())
-	,config_queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit>())
+    , config_queue_limit(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit>())
 {
     queue_limit->parent = this;
     config_queue_limit->parent = this;
 
-    yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit-parameters"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::~QueueLimitParameters()
@@ -15167,6 +15372,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return absolute_index.is_set
 	|| template_id.is_set
 	|| curve_id.is_set
@@ -15294,7 +15500,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::~QueueLimit()
@@ -15303,6 +15509,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::QueueLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -15385,7 +15592,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "config-queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config-queue-limit"; yang_parent_name = "queue-limit-parameters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::~ConfigQueueLimit()
@@ -15394,6 +15601,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::QueueLimitParameters::ConfigQueueLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -15474,14 +15682,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     :
     cir_shape_type{YType::enumeration, "cir-shape-type"},
     pir_shape_type{YType::enumeration, "pir-shape-type"}
-    	,
+        ,
     cir_shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape>())
-	,pir_shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape>())
+    , pir_shape(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape>())
 {
     cir_shape->parent = this;
     pir_shape->parent = this;
 
-    yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shape"; yang_parent_name = "qos-show-ea-st-v2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::~Shape()
@@ -15490,6 +15698,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::has_data() const
 {
+    if (is_presence_container) return true;
     return cir_shape_type.is_set
 	|| pir_shape_type.is_set
 	|| (cir_shape !=  nullptr && cir_shape->has_data())
@@ -15603,16 +15812,16 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     chunk_id{YType::uint32, "chunk-id"},
     profile_id{YType::uint16, "profile-id"},
     scale_factor{YType::uint16, "scale-factor"}
-    	,
+        ,
     cir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir>())
-	,config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth>())
-	,cbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs>())
+    , config_bandwidth(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth>())
+    , cbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs>())
 {
     cir->parent = this;
     config_bandwidth->parent = this;
     cbs->parent = this;
 
-    yang_name = "cir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::~CirShape()
@@ -15621,6 +15830,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::has_data() const
 {
+    if (is_presence_container) return true;
     return chunk_id.is_set
 	|| profile_id.is_set
 	|| scale_factor.is_set
@@ -15764,7 +15974,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cir"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cir"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::~Cir()
@@ -15773,6 +15983,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -15855,7 +16066,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 {
     minimum_rate->parent = this;
 
-    yang_name = "config-bandwidth"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config-bandwidth"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::~ConfigBandwidth()
@@ -15864,6 +16075,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return (minimum_rate !=  nullptr && minimum_rate->has_data());
 }
 
@@ -15936,7 +16148,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "minimum-rate"; yang_parent_name = "config-bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "minimum-rate"; yang_parent_name = "config-bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::~MinimumRate()
@@ -15945,6 +16157,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::ConfigBandwidth::MinimumRate::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -16027,7 +16240,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "cbs"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cbs"; yang_parent_name = "cir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::~Cbs()
@@ -16036,6 +16249,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::CirShape::Cbs::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }
@@ -16117,14 +16331,14 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     chunk_id{YType::uint32, "chunk-id"},
     profile_id{YType::uint16, "profile-id"},
     scale_factor{YType::uint16, "scale-factor"}
-    	,
+        ,
     pir(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir>())
-	,pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs>())
+    , pbs(std::make_shared<PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pbs>())
 {
     pir->parent = this;
     pbs->parent = this;
 
-    yang_name = "pir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir-shape"; yang_parent_name = "shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::~PirShape()
@@ -16133,6 +16347,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::has_data() const
 {
+    if (is_presence_container) return true;
     return chunk_id.is_set
 	|| profile_id.is_set
 	|| scale_factor.is_set
@@ -16260,7 +16475,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
     unit{YType::enumeration, "unit"}
 {
 
-    yang_name = "pir"; yang_parent_name = "pir-shape"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pir"; yang_parent_name = "pir-shape"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::~Pir()
@@ -16269,6 +16484,7 @@ PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::Membe
 
 bool PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::BundleOutput::MemberInterfaces::MemberInterface::Details::PolicyTyphoon::QosShowEaStV2::Shape::PirShape::Pir::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| unit.is_set;
 }

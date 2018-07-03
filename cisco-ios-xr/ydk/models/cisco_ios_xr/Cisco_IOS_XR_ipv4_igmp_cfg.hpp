@@ -59,7 +59,7 @@ class Igmp::Vrfs : public ydk::Entity
 
         class Vrf; //type: Igmp::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Igmp::Vrfs
 
@@ -214,7 +214,7 @@ class Igmp::Vrfs::Vrf::SsmAccessGroups : public ydk::Entity
 
         class SsmAccessGroup; //type: Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup> > ssm_access_group;
+        ydk::YList ssm_access_group;
         
 }; // Igmp::Vrfs::Vrf::SsmAccessGroups
 
@@ -280,7 +280,7 @@ class Igmp::Vrfs::Vrf::Interfaces : public ydk::Entity
 
         class Interface; //type: Igmp::Vrfs::Vrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::Vrfs::Vrf::Interfaces
 
@@ -340,8 +340,8 @@ class Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups : public ydk::Entity
         class JoinGroup; //type: Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup
         class JoinGroupSourceAddress; //type: Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup> > join_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress> > join_group_source_address;
+        ydk::YList join_group;
+        ydk::YList join_group_source_address;
         
 }; // Igmp::Vrfs::Vrf::Interfaces::Interface::JoinGroups
 
@@ -414,12 +414,12 @@ class Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses : public
         class StaticGroupGroupAddressGroupAddressMaskSourceAddress; //type: Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress
         class StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask; //type: Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress> > static_group_group_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress> > static_group_group_address_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask> > static_group_group_address_source_address_source_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask> > static_group_group_address_group_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress> > static_group_group_address_group_address_mask_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask> > static_group_group_address_group_address_mask_source_address_source_address_mask;
+        ydk::YList static_group_group_address;
+        ydk::YList static_group_group_address_source_address;
+        ydk::YList static_group_group_address_source_address_source_address_mask;
+        ydk::YList static_group_group_address_group_address_mask;
+        ydk::YList static_group_group_address_group_address_mask_source_address;
+        ydk::YList static_group_group_address_group_address_mask_source_address_source_address_mask;
         
 }; // Igmp::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses
 
@@ -850,7 +850,7 @@ class Igmp::DefaultContext::SsmAccessGroups : public ydk::Entity
 
         class SsmAccessGroup; //type: Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::SsmAccessGroups::SsmAccessGroup> > ssm_access_group;
+        ydk::YList ssm_access_group;
         
 }; // Igmp::DefaultContext::SsmAccessGroups
 
@@ -919,7 +919,7 @@ class Igmp::DefaultContext::Interfaces : public ydk::Entity
 
         class Interface; //type: Igmp::DefaultContext::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Igmp::DefaultContext::Interfaces
 
@@ -980,8 +980,8 @@ class Igmp::DefaultContext::Interfaces::Interface::JoinGroups : public ydk::Enti
         class JoinGroup; //type: Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup
         class JoinGroupSourceAddress; //type: Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup> > join_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress> > join_group_source_address;
+        ydk::YList join_group;
+        ydk::YList join_group_source_address;
         
 }; // Igmp::DefaultContext::Interfaces::Interface::JoinGroups
 
@@ -1054,12 +1054,12 @@ class Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses : p
         class StaticGroupGroupAddressGroupAddressMaskSourceAddress; //type: Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress
         class StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask; //type: Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress> > static_group_group_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress> > static_group_group_address_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask> > static_group_group_address_source_address_source_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask> > static_group_group_address_group_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress> > static_group_group_address_group_address_mask_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask> > static_group_group_address_group_address_mask_source_address_source_address_mask;
+        ydk::YList static_group_group_address;
+        ydk::YList static_group_group_address_source_address;
+        ydk::YList static_group_group_address_source_address_source_address_mask;
+        ydk::YList static_group_group_address_group_address_mask;
+        ydk::YList static_group_group_address_group_address_mask_source_address;
+        ydk::YList static_group_group_address_group_address_mask_source_address_source_address_mask;
         
 }; // Igmp::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
 
@@ -1395,7 +1395,7 @@ class Mld::Vrfs : public ydk::Entity
 
         class Vrf; //type: Mld::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Mld::Vrfs
 
@@ -1550,7 +1550,7 @@ class Mld::Vrfs::Vrf::SsmAccessGroups : public ydk::Entity
 
         class SsmAccessGroup; //type: Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::SsmAccessGroups::SsmAccessGroup> > ssm_access_group;
+        ydk::YList ssm_access_group;
         
 }; // Mld::Vrfs::Vrf::SsmAccessGroups
 
@@ -1616,7 +1616,7 @@ class Mld::Vrfs::Vrf::Interfaces : public ydk::Entity
 
         class Interface; //type: Mld::Vrfs::Vrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Mld::Vrfs::Vrf::Interfaces
 
@@ -1676,8 +1676,8 @@ class Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups : public ydk::Entity
         class JoinGroup; //type: Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup
         class JoinGroupSourceAddress; //type: Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroup> > join_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress> > join_group_source_address;
+        ydk::YList join_group;
+        ydk::YList join_group_source_address;
         
 }; // Mld::Vrfs::Vrf::Interfaces::Interface::JoinGroups
 
@@ -1750,12 +1750,12 @@ class Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses : public 
         class StaticGroupGroupAddressGroupAddressMaskSourceAddress; //type: Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress
         class StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask; //type: Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress> > static_group_group_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress> > static_group_group_address_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask> > static_group_group_address_source_address_source_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask> > static_group_group_address_group_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress> > static_group_group_address_group_address_mask_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask> > static_group_group_address_group_address_mask_source_address_source_address_mask;
+        ydk::YList static_group_group_address;
+        ydk::YList static_group_group_address_source_address;
+        ydk::YList static_group_group_address_source_address_source_address_mask;
+        ydk::YList static_group_group_address_group_address_mask;
+        ydk::YList static_group_group_address_group_address_mask_source_address;
+        ydk::YList static_group_group_address_group_address_mask_source_address_source_address_mask;
         
 }; // Mld::Vrfs::Vrf::Interfaces::Interface::StaticGroupGroupAddresses
 
@@ -2186,7 +2186,7 @@ class Mld::DefaultContext::SsmAccessGroups : public ydk::Entity
 
         class SsmAccessGroup; //type: Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::SsmAccessGroups::SsmAccessGroup> > ssm_access_group;
+        ydk::YList ssm_access_group;
         
 }; // Mld::DefaultContext::SsmAccessGroups
 
@@ -2255,7 +2255,7 @@ class Mld::DefaultContext::Interfaces : public ydk::Entity
 
         class Interface; //type: Mld::DefaultContext::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Mld::DefaultContext::Interfaces
 
@@ -2316,8 +2316,8 @@ class Mld::DefaultContext::Interfaces::Interface::JoinGroups : public ydk::Entit
         class JoinGroup; //type: Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup
         class JoinGroupSourceAddress; //type: Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroup> > join_group;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::JoinGroups::JoinGroupSourceAddress> > join_group_source_address;
+        ydk::YList join_group;
+        ydk::YList join_group_source_address;
         
 }; // Mld::DefaultContext::Interfaces::Interface::JoinGroups
 
@@ -2390,12 +2390,12 @@ class Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses : pu
         class StaticGroupGroupAddressGroupAddressMaskSourceAddress; //type: Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress
         class StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask; //type: Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddress> > static_group_group_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddress> > static_group_group_address_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressSourceAddressSourceAddressMask> > static_group_group_address_source_address_source_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMask> > static_group_group_address_group_address_mask;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddress> > static_group_group_address_group_address_mask_source_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_igmp_cfg::Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses::StaticGroupGroupAddressGroupAddressMaskSourceAddressSourceAddressMask> > static_group_group_address_group_address_mask_source_address_source_address_mask;
+        ydk::YList static_group_group_address;
+        ydk::YList static_group_group_address_source_address;
+        ydk::YList static_group_group_address_source_address_source_address_mask;
+        ydk::YList static_group_group_address_group_address_mask;
+        ydk::YList static_group_group_address_group_address_mask_source_address;
+        ydk::YList static_group_group_address_group_address_mask_source_address_source_address_mask;
         
 }; // Mld::DefaultContext::Interfaces::Interface::StaticGroupGroupAddresses
 

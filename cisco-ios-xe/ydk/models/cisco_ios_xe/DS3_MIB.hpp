@@ -31,34 +31,34 @@ class DS3MIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Dsx3Configtable; //type: DS3MIB::Dsx3Configtable
-        class Dsx3Currenttable; //type: DS3MIB::Dsx3Currenttable
-        class Dsx3Intervaltable; //type: DS3MIB::Dsx3Intervaltable
-        class Dsx3Totaltable; //type: DS3MIB::Dsx3Totaltable
-        class Dsx3Farendconfigtable; //type: DS3MIB::Dsx3Farendconfigtable
-        class Dsx3Farendcurrenttable; //type: DS3MIB::Dsx3Farendcurrenttable
-        class Dsx3Farendintervaltable; //type: DS3MIB::Dsx3Farendintervaltable
-        class Dsx3Farendtotaltable; //type: DS3MIB::Dsx3Farendtotaltable
-        class Dsx3Fractable; //type: DS3MIB::Dsx3Fractable
+        class Dsx3ConfigTable; //type: DS3MIB::Dsx3ConfigTable
+        class Dsx3CurrentTable; //type: DS3MIB::Dsx3CurrentTable
+        class Dsx3IntervalTable; //type: DS3MIB::Dsx3IntervalTable
+        class Dsx3TotalTable; //type: DS3MIB::Dsx3TotalTable
+        class Dsx3FarEndConfigTable; //type: DS3MIB::Dsx3FarEndConfigTable
+        class Dsx3FarEndCurrentTable; //type: DS3MIB::Dsx3FarEndCurrentTable
+        class Dsx3FarEndIntervalTable; //type: DS3MIB::Dsx3FarEndIntervalTable
+        class Dsx3FarEndTotalTable; //type: DS3MIB::Dsx3FarEndTotalTable
+        class Dsx3FracTable; //type: DS3MIB::Dsx3FracTable
 
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Configtable> dsx3configtable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Currenttable> dsx3currenttable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Intervaltable> dsx3intervaltable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Totaltable> dsx3totaltable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendconfigtable> dsx3farendconfigtable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendcurrenttable> dsx3farendcurrenttable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendintervaltable> dsx3farendintervaltable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendtotaltable> dsx3farendtotaltable;
-        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Fractable> dsx3fractable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3ConfigTable> dsx3configtable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3CurrentTable> dsx3currenttable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3IntervalTable> dsx3intervaltable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3TotalTable> dsx3totaltable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3FarEndConfigTable> dsx3farendconfigtable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3FarEndCurrentTable> dsx3farendcurrenttable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3FarEndIntervalTable> dsx3farendintervaltable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3FarEndTotalTable> dsx3farendtotaltable;
+        std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3FracTable> dsx3fractable;
         
 }; // DS3MIB
 
 
-class DS3MIB::Dsx3Configtable : public ydk::Entity
+class DS3MIB::Dsx3ConfigTable : public ydk::Entity
 {
     public:
-        Dsx3Configtable();
-        ~Dsx3Configtable();
+        Dsx3ConfigTable();
+        ~Dsx3ConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -71,18 +71,18 @@ class DS3MIB::Dsx3Configtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Configentry; //type: DS3MIB::Dsx3Configtable::Dsx3Configentry
+        class Dsx3ConfigEntry; //type: DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Configtable::Dsx3Configentry> > dsx3configentry;
+        ydk::YList dsx3configentry;
         
-}; // DS3MIB::Dsx3Configtable
+}; // DS3MIB::Dsx3ConfigTable
 
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry : public ydk::Entity
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry : public ydk::Entity
 {
     public:
-        Dsx3Configentry();
-        ~Dsx3Configentry();
+        Dsx3ConfigEntry();
+        ~Dsx3ConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -99,36 +99,36 @@ class DS3MIB::Dsx3Configtable::Dsx3Configentry : public ydk::Entity
         ydk::YLeaf dsx3ifindex; //type: int32
         ydk::YLeaf dsx3timeelapsed; //type: int32
         ydk::YLeaf dsx3validintervals; //type: int32
-        ydk::YLeaf dsx3linetype; //type: Dsx3Linetype
-        ydk::YLeaf dsx3linecoding; //type: Dsx3Linecoding
-        ydk::YLeaf dsx3sendcode; //type: Dsx3Sendcode
+        ydk::YLeaf dsx3linetype; //type: Dsx3LineType
+        ydk::YLeaf dsx3linecoding; //type: Dsx3LineCoding
+        ydk::YLeaf dsx3sendcode; //type: Dsx3SendCode
         ydk::YLeaf dsx3circuitidentifier; //type: string
-        ydk::YLeaf dsx3loopbackconfig; //type: Dsx3Loopbackconfig
+        ydk::YLeaf dsx3loopbackconfig; //type: Dsx3LoopbackConfig
         ydk::YLeaf dsx3linestatus; //type: int32
-        ydk::YLeaf dsx3transmitclocksource; //type: Dsx3Transmitclocksource
+        ydk::YLeaf dsx3transmitclocksource; //type: Dsx3TransmitClockSource
         ydk::YLeaf dsx3invalidintervals; //type: int32
         ydk::YLeaf dsx3linelength; //type: int32
         ydk::YLeaf dsx3linestatuslastchange; //type: uint32
-        ydk::YLeaf dsx3linestatuschangetrapenable; //type: Dsx3Linestatuschangetrapenable
+        ydk::YLeaf dsx3linestatuschangetrapenable; //type: Dsx3LineStatusChangeTrapEnable
         ydk::YLeaf dsx3loopbackstatus; //type: int32
         ydk::YLeaf dsx3channelization; //type: Dsx3Channelization
         ydk::YLeaf dsx3ds1forremoteloop; //type: int32
-        class Dsx3Linetype;
-        class Dsx3Linecoding;
-        class Dsx3Sendcode;
-        class Dsx3Loopbackconfig;
-        class Dsx3Transmitclocksource;
-        class Dsx3Linestatuschangetrapenable;
+        class Dsx3LineType;
+        class Dsx3LineCoding;
+        class Dsx3SendCode;
+        class Dsx3LoopbackConfig;
+        class Dsx3TransmitClockSource;
+        class Dsx3LineStatusChangeTrapEnable;
         class Dsx3Channelization;
 
-}; // DS3MIB::Dsx3Configtable::Dsx3Configentry
+}; // DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry
 
 
-class DS3MIB::Dsx3Currenttable : public ydk::Entity
+class DS3MIB::Dsx3CurrentTable : public ydk::Entity
 {
     public:
-        Dsx3Currenttable();
-        ~Dsx3Currenttable();
+        Dsx3CurrentTable();
+        ~Dsx3CurrentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -141,18 +141,18 @@ class DS3MIB::Dsx3Currenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Currententry; //type: DS3MIB::Dsx3Currenttable::Dsx3Currententry
+        class Dsx3CurrentEntry; //type: DS3MIB::Dsx3CurrentTable::Dsx3CurrentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Currenttable::Dsx3Currententry> > dsx3currententry;
+        ydk::YList dsx3currententry;
         
-}; // DS3MIB::Dsx3Currenttable
+}; // DS3MIB::Dsx3CurrentTable
 
 
-class DS3MIB::Dsx3Currenttable::Dsx3Currententry : public ydk::Entity
+class DS3MIB::Dsx3CurrentTable::Dsx3CurrentEntry : public ydk::Entity
 {
     public:
-        Dsx3Currententry();
-        ~Dsx3Currententry();
+        Dsx3CurrentEntry();
+        ~Dsx3CurrentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -177,14 +177,14 @@ class DS3MIB::Dsx3Currenttable::Dsx3Currententry : public ydk::Entity
         ydk::YLeaf dsx3currentcess; //type: uint32
         ydk::YLeaf dsx3currentcsess; //type: uint32
 
-}; // DS3MIB::Dsx3Currenttable::Dsx3Currententry
+}; // DS3MIB::Dsx3CurrentTable::Dsx3CurrentEntry
 
 
-class DS3MIB::Dsx3Intervaltable : public ydk::Entity
+class DS3MIB::Dsx3IntervalTable : public ydk::Entity
 {
     public:
-        Dsx3Intervaltable();
-        ~Dsx3Intervaltable();
+        Dsx3IntervalTable();
+        ~Dsx3IntervalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -197,18 +197,18 @@ class DS3MIB::Dsx3Intervaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Intervalentry; //type: DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry
+        class Dsx3IntervalEntry; //type: DS3MIB::Dsx3IntervalTable::Dsx3IntervalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry> > dsx3intervalentry;
+        ydk::YList dsx3intervalentry;
         
-}; // DS3MIB::Dsx3Intervaltable
+}; // DS3MIB::Dsx3IntervalTable
 
 
-class DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry : public ydk::Entity
+class DS3MIB::Dsx3IntervalTable::Dsx3IntervalEntry : public ydk::Entity
 {
     public:
-        Dsx3Intervalentry();
-        ~Dsx3Intervalentry();
+        Dsx3IntervalEntry();
+        ~Dsx3IntervalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -235,14 +235,14 @@ class DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry : public ydk::Entity
         ydk::YLeaf dsx3intervalcsess; //type: uint32
         ydk::YLeaf dsx3intervalvaliddata; //type: boolean
 
-}; // DS3MIB::Dsx3Intervaltable::Dsx3Intervalentry
+}; // DS3MIB::Dsx3IntervalTable::Dsx3IntervalEntry
 
 
-class DS3MIB::Dsx3Totaltable : public ydk::Entity
+class DS3MIB::Dsx3TotalTable : public ydk::Entity
 {
     public:
-        Dsx3Totaltable();
-        ~Dsx3Totaltable();
+        Dsx3TotalTable();
+        ~Dsx3TotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -255,18 +255,18 @@ class DS3MIB::Dsx3Totaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Totalentry; //type: DS3MIB::Dsx3Totaltable::Dsx3Totalentry
+        class Dsx3TotalEntry; //type: DS3MIB::Dsx3TotalTable::Dsx3TotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Totaltable::Dsx3Totalentry> > dsx3totalentry;
+        ydk::YList dsx3totalentry;
         
-}; // DS3MIB::Dsx3Totaltable
+}; // DS3MIB::Dsx3TotalTable
 
 
-class DS3MIB::Dsx3Totaltable::Dsx3Totalentry : public ydk::Entity
+class DS3MIB::Dsx3TotalTable::Dsx3TotalEntry : public ydk::Entity
 {
     public:
-        Dsx3Totalentry();
-        ~Dsx3Totalentry();
+        Dsx3TotalEntry();
+        ~Dsx3TotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -291,14 +291,14 @@ class DS3MIB::Dsx3Totaltable::Dsx3Totalentry : public ydk::Entity
         ydk::YLeaf dsx3totalcess; //type: uint32
         ydk::YLeaf dsx3totalcsess; //type: uint32
 
-}; // DS3MIB::Dsx3Totaltable::Dsx3Totalentry
+}; // DS3MIB::Dsx3TotalTable::Dsx3TotalEntry
 
 
-class DS3MIB::Dsx3Farendconfigtable : public ydk::Entity
+class DS3MIB::Dsx3FarEndConfigTable : public ydk::Entity
 {
     public:
-        Dsx3Farendconfigtable();
-        ~Dsx3Farendconfigtable();
+        Dsx3FarEndConfigTable();
+        ~Dsx3FarEndConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -311,18 +311,18 @@ class DS3MIB::Dsx3Farendconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Farendconfigentry; //type: DS3MIB::Dsx3Farendconfigtable::Dsx3Farendconfigentry
+        class Dsx3FarEndConfigEntry; //type: DS3MIB::Dsx3FarEndConfigTable::Dsx3FarEndConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendconfigtable::Dsx3Farendconfigentry> > dsx3farendconfigentry;
+        ydk::YList dsx3farendconfigentry;
         
-}; // DS3MIB::Dsx3Farendconfigtable
+}; // DS3MIB::Dsx3FarEndConfigTable
 
 
-class DS3MIB::Dsx3Farendconfigtable::Dsx3Farendconfigentry : public ydk::Entity
+class DS3MIB::Dsx3FarEndConfigTable::Dsx3FarEndConfigEntry : public ydk::Entity
 {
     public:
-        Dsx3Farendconfigentry();
-        ~Dsx3Farendconfigentry();
+        Dsx3FarEndConfigEntry();
+        ~Dsx3FarEndConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -342,14 +342,14 @@ class DS3MIB::Dsx3Farendconfigtable::Dsx3Farendconfigentry : public ydk::Entity
         ydk::YLeaf dsx3farendunitcode; //type: string
         ydk::YLeaf dsx3farendfacilityidcode; //type: string
 
-}; // DS3MIB::Dsx3Farendconfigtable::Dsx3Farendconfigentry
+}; // DS3MIB::Dsx3FarEndConfigTable::Dsx3FarEndConfigEntry
 
 
-class DS3MIB::Dsx3Farendcurrenttable : public ydk::Entity
+class DS3MIB::Dsx3FarEndCurrentTable : public ydk::Entity
 {
     public:
-        Dsx3Farendcurrenttable();
-        ~Dsx3Farendcurrenttable();
+        Dsx3FarEndCurrentTable();
+        ~Dsx3FarEndCurrentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -362,18 +362,18 @@ class DS3MIB::Dsx3Farendcurrenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Farendcurrententry; //type: DS3MIB::Dsx3Farendcurrenttable::Dsx3Farendcurrententry
+        class Dsx3FarEndCurrentEntry; //type: DS3MIB::Dsx3FarEndCurrentTable::Dsx3FarEndCurrentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendcurrenttable::Dsx3Farendcurrententry> > dsx3farendcurrententry;
+        ydk::YList dsx3farendcurrententry;
         
-}; // DS3MIB::Dsx3Farendcurrenttable
+}; // DS3MIB::Dsx3FarEndCurrentTable
 
 
-class DS3MIB::Dsx3Farendcurrenttable::Dsx3Farendcurrententry : public ydk::Entity
+class DS3MIB::Dsx3FarEndCurrentTable::Dsx3FarEndCurrentEntry : public ydk::Entity
 {
     public:
-        Dsx3Farendcurrententry();
-        ~Dsx3Farendcurrententry();
+        Dsx3FarEndCurrentEntry();
+        ~Dsx3FarEndCurrentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -395,14 +395,14 @@ class DS3MIB::Dsx3Farendcurrenttable::Dsx3Farendcurrententry : public ydk::Entit
         ydk::YLeaf dsx3farendcurrentuass; //type: uint32
         ydk::YLeaf dsx3farendinvalidintervals; //type: int32
 
-}; // DS3MIB::Dsx3Farendcurrenttable::Dsx3Farendcurrententry
+}; // DS3MIB::Dsx3FarEndCurrentTable::Dsx3FarEndCurrentEntry
 
 
-class DS3MIB::Dsx3Farendintervaltable : public ydk::Entity
+class DS3MIB::Dsx3FarEndIntervalTable : public ydk::Entity
 {
     public:
-        Dsx3Farendintervaltable();
-        ~Dsx3Farendintervaltable();
+        Dsx3FarEndIntervalTable();
+        ~Dsx3FarEndIntervalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -415,18 +415,18 @@ class DS3MIB::Dsx3Farendintervaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Farendintervalentry; //type: DS3MIB::Dsx3Farendintervaltable::Dsx3Farendintervalentry
+        class Dsx3FarEndIntervalEntry; //type: DS3MIB::Dsx3FarEndIntervalTable::Dsx3FarEndIntervalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendintervaltable::Dsx3Farendintervalentry> > dsx3farendintervalentry;
+        ydk::YList dsx3farendintervalentry;
         
-}; // DS3MIB::Dsx3Farendintervaltable
+}; // DS3MIB::Dsx3FarEndIntervalTable
 
 
-class DS3MIB::Dsx3Farendintervaltable::Dsx3Farendintervalentry : public ydk::Entity
+class DS3MIB::Dsx3FarEndIntervalTable::Dsx3FarEndIntervalEntry : public ydk::Entity
 {
     public:
-        Dsx3Farendintervalentry();
-        ~Dsx3Farendintervalentry();
+        Dsx3FarEndIntervalEntry();
+        ~Dsx3FarEndIntervalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -447,14 +447,14 @@ class DS3MIB::Dsx3Farendintervaltable::Dsx3Farendintervalentry : public ydk::Ent
         ydk::YLeaf dsx3farendintervaluass; //type: uint32
         ydk::YLeaf dsx3farendintervalvaliddata; //type: boolean
 
-}; // DS3MIB::Dsx3Farendintervaltable::Dsx3Farendintervalentry
+}; // DS3MIB::Dsx3FarEndIntervalTable::Dsx3FarEndIntervalEntry
 
 
-class DS3MIB::Dsx3Farendtotaltable : public ydk::Entity
+class DS3MIB::Dsx3FarEndTotalTable : public ydk::Entity
 {
     public:
-        Dsx3Farendtotaltable();
-        ~Dsx3Farendtotaltable();
+        Dsx3FarEndTotalTable();
+        ~Dsx3FarEndTotalTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -467,18 +467,18 @@ class DS3MIB::Dsx3Farendtotaltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Farendtotalentry; //type: DS3MIB::Dsx3Farendtotaltable::Dsx3Farendtotalentry
+        class Dsx3FarEndTotalEntry; //type: DS3MIB::Dsx3FarEndTotalTable::Dsx3FarEndTotalEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Farendtotaltable::Dsx3Farendtotalentry> > dsx3farendtotalentry;
+        ydk::YList dsx3farendtotalentry;
         
-}; // DS3MIB::Dsx3Farendtotaltable
+}; // DS3MIB::Dsx3FarEndTotalTable
 
 
-class DS3MIB::Dsx3Farendtotaltable::Dsx3Farendtotalentry : public ydk::Entity
+class DS3MIB::Dsx3FarEndTotalTable::Dsx3FarEndTotalEntry : public ydk::Entity
 {
     public:
-        Dsx3Farendtotalentry();
-        ~Dsx3Farendtotalentry();
+        Dsx3FarEndTotalEntry();
+        ~Dsx3FarEndTotalEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -497,14 +497,14 @@ class DS3MIB::Dsx3Farendtotaltable::Dsx3Farendtotalentry : public ydk::Entity
         ydk::YLeaf dsx3farendtotalccvs; //type: uint32
         ydk::YLeaf dsx3farendtotaluass; //type: uint32
 
-}; // DS3MIB::Dsx3Farendtotaltable::Dsx3Farendtotalentry
+}; // DS3MIB::Dsx3FarEndTotalTable::Dsx3FarEndTotalEntry
 
 
-class DS3MIB::Dsx3Fractable : public ydk::Entity
+class DS3MIB::Dsx3FracTable : public ydk::Entity
 {
     public:
-        Dsx3Fractable();
-        ~Dsx3Fractable();
+        Dsx3FracTable();
+        ~Dsx3FracTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -517,18 +517,18 @@ class DS3MIB::Dsx3Fractable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Dsx3Fracentry; //type: DS3MIB::Dsx3Fractable::Dsx3Fracentry
+        class Dsx3FracEntry; //type: DS3MIB::Dsx3FracTable::Dsx3FracEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DS3_MIB::DS3MIB::Dsx3Fractable::Dsx3Fracentry> > dsx3fracentry;
+        ydk::YList dsx3fracentry;
         
-}; // DS3MIB::Dsx3Fractable
+}; // DS3MIB::Dsx3FracTable
 
 
-class DS3MIB::Dsx3Fractable::Dsx3Fracentry : public ydk::Entity
+class DS3MIB::Dsx3FracTable::Dsx3FracEntry : public ydk::Entity
 {
     public:
-        Dsx3Fracentry();
-        ~Dsx3Fracentry();
+        Dsx3FracEntry();
+        ~Dsx3FracEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -545,9 +545,9 @@ class DS3MIB::Dsx3Fractable::Dsx3Fracentry : public ydk::Entity
         ydk::YLeaf dsx3fracnumber; //type: int32
         ydk::YLeaf dsx3fracifindex; //type: int32
 
-}; // DS3MIB::Dsx3Fractable::Dsx3Fracentry
+}; // DS3MIB::Dsx3FracTable::Dsx3FracEntry
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype : public ydk::Enum
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dsx3other;
@@ -561,7 +561,7 @@ class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Linetype : public ydk::Enum
 
 };
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Linecoding : public ydk::Enum
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineCoding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dsx3Other;
@@ -570,7 +570,7 @@ class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Linecoding : public ydk::Enu
 
 };
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode : public ydk::Enum
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3SendCode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dsx3SendNoCode;
@@ -582,7 +582,7 @@ class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Sendcode : public ydk::Enum
 
 };
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig : public ydk::Enum
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LoopbackConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dsx3NoLoop;
@@ -594,7 +594,7 @@ class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Loopbackconfig : public ydk:
 
 };
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Transmitclocksource : public ydk::Enum
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3TransmitClockSource : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf loopTiming;
@@ -603,7 +603,7 @@ class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Transmitclocksource : public
 
 };
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Linestatuschangetrapenable : public ydk::Enum
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3LineStatusChangeTrapEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -611,7 +611,7 @@ class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Linestatuschangetrapenable :
 
 };
 
-class DS3MIB::Dsx3Configtable::Dsx3Configentry::Dsx3Channelization : public ydk::Enum
+class DS3MIB::Dsx3ConfigTable::Dsx3ConfigEntry::Dsx3Channelization : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;

@@ -17,7 +17,7 @@ Ssh1::Ssh1()
 {
     kex->parent = this;
 
-    yang_name = "ssh1"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ssh1"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ssh1::~Ssh1()
@@ -26,6 +26,7 @@ Ssh1::~Ssh1()
 
 bool Ssh1::has_data() const
 {
+    if (is_presence_container) return true;
     return (kex !=  nullptr && kex->has_data());
 }
 
@@ -123,7 +124,7 @@ Ssh1::Kex::Kex()
 {
     nodes->parent = this;
 
-    yang_name = "kex"; yang_parent_name = "ssh1"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "kex"; yang_parent_name = "ssh1"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh1::Kex::~Kex()
@@ -132,6 +133,7 @@ Ssh1::Kex::~Kex()
 
 bool Ssh1::Kex::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -206,9 +208,11 @@ bool Ssh1::Kex::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ssh1::Kex::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "kex"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "kex"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh1::Kex::Nodes::~Nodes()
@@ -217,7 +221,8 @@ Ssh1::Kex::Nodes::~Nodes()
 
 bool Ssh1::Kex::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -227,7 +232,7 @@ bool Ssh1::Kex::Nodes::has_data() const
 
 bool Ssh1::Kex::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -264,7 +269,7 @@ std::shared_ptr<Entity> Ssh1::Kex::Nodes::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Ssh1::Kex::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -276,7 +281,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -305,14 +310,14 @@ bool Ssh1::Kex::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Ssh1::Kex::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     incoming_sessions(std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions>())
-	,outgoing_connections(std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections>())
+    , outgoing_connections(std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections>())
 {
     incoming_sessions->parent = this;
     outgoing_connections->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh1::Kex::Nodes::Node::~Node()
@@ -321,6 +326,7 @@ Ssh1::Kex::Nodes::Node::~Node()
 
 bool Ssh1::Kex::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (incoming_sessions !=  nullptr && incoming_sessions->has_data())
 	|| (outgoing_connections !=  nullptr && outgoing_connections->has_data());
@@ -344,7 +350,8 @@ std::string Ssh1::Kex::Nodes::Node::get_absolute_path() const
 std::string Ssh1::Kex::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -424,9 +431,11 @@ bool Ssh1::Kex::Nodes::Node::has_leaf_or_child_of_name(const std::string & name)
 }
 
 Ssh1::Kex::Nodes::Node::IncomingSessions::IncomingSessions()
+    :
+    session_detail_info(this, {})
 {
 
-    yang_name = "incoming-sessions"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "incoming-sessions"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssh1::Kex::Nodes::Node::IncomingSessions::~IncomingSessions()
@@ -435,7 +444,8 @@ Ssh1::Kex::Nodes::Node::IncomingSessions::~IncomingSessions()
 
 bool Ssh1::Kex::Nodes::Node::IncomingSessions::has_data() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_data())
             return true;
@@ -445,7 +455,7 @@ bool Ssh1::Kex::Nodes::Node::IncomingSessions::has_data() const
 
 bool Ssh1::Kex::Nodes::Node::IncomingSessions::has_operation() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_operation())
             return true;
@@ -475,7 +485,7 @@ std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::get_child_by_n
     {
         auto c = std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(c);
+        session_detail_info.append(c);
         return c;
     }
 
@@ -487,7 +497,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::IncomingS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_detail_info)
+    for (auto c : session_detail_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -521,10 +531,12 @@ Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::SessionDetailInfo()
     in_cipher{YType::enumeration, "in-cipher"},
     out_cipher{YType::enumeration, "out-cipher"},
     in_mac{YType::enumeration, "in-mac"},
-    out_mac{YType::enumeration, "out-mac"}
+    out_mac{YType::enumeration, "out-mac"},
+    start_time{YType::str, "start-time"},
+    end_time{YType::str, "end-time"}
 {
 
-    yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::~SessionDetailInfo()
@@ -533,13 +545,16 @@ Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::~SessionDetailInfo(
 
 bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| key_exchange.is_set
 	|| public_key.is_set
 	|| in_cipher.is_set
 	|| out_cipher.is_set
 	|| in_mac.is_set
-	|| out_mac.is_set;
+	|| out_mac.is_set
+	|| start_time.is_set
+	|| end_time.is_set;
 }
 
 bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_operation() const
@@ -551,7 +566,9 @@ bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_operation(
 	|| ydk::is_set(in_cipher.yfilter)
 	|| ydk::is_set(out_cipher.yfilter)
 	|| ydk::is_set(in_mac.yfilter)
-	|| ydk::is_set(out_mac.yfilter);
+	|| ydk::is_set(out_mac.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(end_time.yfilter);
 }
 
 std::string Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_segment_path() const
@@ -572,6 +589,8 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::IncomingS
     if (out_cipher.is_set || is_set(out_cipher.yfilter)) leaf_name_data.push_back(out_cipher.get_name_leafdata());
     if (in_mac.is_set || is_set(in_mac.yfilter)) leaf_name_data.push_back(in_mac.get_name_leafdata());
     if (out_mac.is_set || is_set(out_mac.yfilter)) leaf_name_data.push_back(out_mac.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (end_time.is_set || is_set(end_time.yfilter)) leaf_name_data.push_back(end_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -633,6 +652,18 @@ void Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::set_value(cons
         out_mac.value_namespace = name_space;
         out_mac.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-time")
+    {
+        end_time = value;
+        end_time.value_namespace = name_space;
+        end_time.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -665,19 +696,29 @@ void Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::set_filter(con
     {
         out_mac.yfilter = yfilter;
     }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "end-time")
+    {
+        end_time.yfilter = yfilter;
+    }
 }
 
 bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac")
+    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
     return false;
 }
 
 Ssh1::Kex::Nodes::Node::OutgoingConnections::OutgoingConnections()
+    :
+    session_detail_info(this, {})
 {
 
-    yang_name = "outgoing-connections"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outgoing-connections"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssh1::Kex::Nodes::Node::OutgoingConnections::~OutgoingConnections()
@@ -686,7 +727,8 @@ Ssh1::Kex::Nodes::Node::OutgoingConnections::~OutgoingConnections()
 
 bool Ssh1::Kex::Nodes::Node::OutgoingConnections::has_data() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_data())
             return true;
@@ -696,7 +738,7 @@ bool Ssh1::Kex::Nodes::Node::OutgoingConnections::has_data() const
 
 bool Ssh1::Kex::Nodes::Node::OutgoingConnections::has_operation() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_operation())
             return true;
@@ -726,7 +768,7 @@ std::shared_ptr<Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::get_child_b
     {
         auto c = std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(c);
+        session_detail_info.append(c);
         return c;
     }
 
@@ -738,7 +780,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh1::Kex::Nodes::Node::OutgoingC
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_detail_info)
+    for (auto c : session_detail_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -772,10 +814,12 @@ Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::SessionDetailInf
     in_cipher{YType::enumeration, "in-cipher"},
     out_cipher{YType::enumeration, "out-cipher"},
     in_mac{YType::enumeration, "in-mac"},
-    out_mac{YType::enumeration, "out-mac"}
+    out_mac{YType::enumeration, "out-mac"},
+    start_time{YType::str, "start-time"},
+    end_time{YType::str, "end-time"}
 {
 
-    yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::~SessionDetailInfo()
@@ -784,13 +828,16 @@ Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::~SessionDetailIn
 
 bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| key_exchange.is_set
 	|| public_key.is_set
 	|| in_cipher.is_set
 	|| out_cipher.is_set
 	|| in_mac.is_set
-	|| out_mac.is_set;
+	|| out_mac.is_set
+	|| start_time.is_set
+	|| end_time.is_set;
 }
 
 bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_operation() const
@@ -802,7 +849,9 @@ bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_operati
 	|| ydk::is_set(in_cipher.yfilter)
 	|| ydk::is_set(out_cipher.yfilter)
 	|| ydk::is_set(in_mac.yfilter)
-	|| ydk::is_set(out_mac.yfilter);
+	|| ydk::is_set(out_mac.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(end_time.yfilter);
 }
 
 std::string Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_segment_path() const
@@ -823,6 +872,8 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::OutgoingC
     if (out_cipher.is_set || is_set(out_cipher.yfilter)) leaf_name_data.push_back(out_cipher.get_name_leafdata());
     if (in_mac.is_set || is_set(in_mac.yfilter)) leaf_name_data.push_back(in_mac.get_name_leafdata());
     if (out_mac.is_set || is_set(out_mac.yfilter)) leaf_name_data.push_back(out_mac.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (end_time.is_set || is_set(end_time.yfilter)) leaf_name_data.push_back(end_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -884,6 +935,18 @@ void Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::set_value(c
         out_mac.value_namespace = name_space;
         out_mac.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-time")
+    {
+        end_time = value;
+        end_time.value_namespace = name_space;
+        end_time.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -916,11 +979,19 @@ void Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::set_filter(
     {
         out_mac.yfilter = yfilter;
     }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "end-time")
+    {
+        end_time.yfilter = yfilter;
+    }
 }
 
 bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac")
+    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
     return false;
 }
@@ -931,7 +1002,7 @@ Ssh::Ssh()
 {
     session->parent = this;
 
-    yang_name = "ssh"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ssh"; yang_parent_name = "Cisco-IOS-XR-crypto-ssh-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ssh::~Ssh()
@@ -940,6 +1011,7 @@ Ssh::~Ssh()
 
 bool Ssh::has_data() const
 {
+    if (is_presence_container) return true;
     return (session !=  nullptr && session->has_data());
 }
 
@@ -1034,14 +1106,18 @@ bool Ssh::has_leaf_or_child_of_name(const std::string & name) const
 Ssh::Session::Session()
     :
     rekey(std::make_shared<Ssh::Session::Rekey>())
-	,brief(std::make_shared<Ssh::Session::Brief>())
-	,detail(std::make_shared<Ssh::Session::Detail>())
+    , history_detail(std::make_shared<Ssh::Session::HistoryDetail>())
+    , brief(std::make_shared<Ssh::Session::Brief>())
+    , history(std::make_shared<Ssh::Session::History>())
+    , detail(std::make_shared<Ssh::Session::Detail>())
 {
     rekey->parent = this;
+    history_detail->parent = this;
     brief->parent = this;
+    history->parent = this;
     detail->parent = this;
 
-    yang_name = "session"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "ssh"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::~Session()
@@ -1050,8 +1126,11 @@ Ssh::Session::~Session()
 
 bool Ssh::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return (rekey !=  nullptr && rekey->has_data())
+	|| (history_detail !=  nullptr && history_detail->has_data())
 	|| (brief !=  nullptr && brief->has_data())
+	|| (history !=  nullptr && history->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
 
@@ -1059,7 +1138,9 @@ bool Ssh::Session::has_operation() const
 {
     return is_set(yfilter)
 	|| (rekey !=  nullptr && rekey->has_operation())
+	|| (history_detail !=  nullptr && history_detail->has_operation())
 	|| (brief !=  nullptr && brief->has_operation())
+	|| (history !=  nullptr && history->has_operation())
 	|| (detail !=  nullptr && detail->has_operation());
 }
 
@@ -1097,6 +1178,15 @@ std::shared_ptr<Entity> Ssh::Session::get_child_by_name(const std::string & chil
         return rekey;
     }
 
+    if(child_yang_name == "history-detail")
+    {
+        if(history_detail == nullptr)
+        {
+            history_detail = std::make_shared<Ssh::Session::HistoryDetail>();
+        }
+        return history_detail;
+    }
+
     if(child_yang_name == "brief")
     {
         if(brief == nullptr)
@@ -1104,6 +1194,15 @@ std::shared_ptr<Entity> Ssh::Session::get_child_by_name(const std::string & chil
             brief = std::make_shared<Ssh::Session::Brief>();
         }
         return brief;
+    }
+
+    if(child_yang_name == "history")
+    {
+        if(history == nullptr)
+        {
+            history = std::make_shared<Ssh::Session::History>();
+        }
+        return history;
     }
 
     if(child_yang_name == "detail")
@@ -1127,9 +1226,19 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::get_children() cons
         children["rekey"] = rekey;
     }
 
+    if(history_detail != nullptr)
+    {
+        children["history-detail"] = history_detail;
+    }
+
     if(brief != nullptr)
     {
         children["brief"] = brief;
+    }
+
+    if(history != nullptr)
+    {
+        children["history"] = history;
     }
 
     if(detail != nullptr)
@@ -1150,7 +1259,7 @@ void Ssh::Session::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Ssh::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "rekey" || name == "brief" || name == "detail")
+    if(name == "rekey" || name == "history-detail" || name == "brief" || name == "history" || name == "detail")
         return true;
     return false;
 }
@@ -1158,12 +1267,12 @@ bool Ssh::Session::has_leaf_or_child_of_name(const std::string & name) const
 Ssh::Session::Rekey::Rekey()
     :
     incoming_sessions(std::make_shared<Ssh::Session::Rekey::IncomingSessions>())
-	,outgoing_connections(std::make_shared<Ssh::Session::Rekey::OutgoingConnections>())
+    , outgoing_connections(std::make_shared<Ssh::Session::Rekey::OutgoingConnections>())
 {
     incoming_sessions->parent = this;
     outgoing_connections->parent = this;
 
-    yang_name = "rekey"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rekey"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Rekey::~Rekey()
@@ -1172,6 +1281,7 @@ Ssh::Session::Rekey::~Rekey()
 
 bool Ssh::Session::Rekey::has_data() const
 {
+    if (is_presence_container) return true;
     return (incoming_sessions !=  nullptr && incoming_sessions->has_data())
 	|| (outgoing_connections !=  nullptr && outgoing_connections->has_data());
 }
@@ -1262,9 +1372,11 @@ bool Ssh::Session::Rekey::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Ssh::Session::Rekey::IncomingSessions::IncomingSessions()
+    :
+    session_rekey_info(this, {})
 {
 
-    yang_name = "incoming-sessions"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "incoming-sessions"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Rekey::IncomingSessions::~IncomingSessions()
@@ -1273,7 +1385,8 @@ Ssh::Session::Rekey::IncomingSessions::~IncomingSessions()
 
 bool Ssh::Session::Rekey::IncomingSessions::has_data() const
 {
-    for (std::size_t index=0; index<session_rekey_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_rekey_info.len(); index++)
     {
         if(session_rekey_info[index]->has_data())
             return true;
@@ -1283,7 +1396,7 @@ bool Ssh::Session::Rekey::IncomingSessions::has_data() const
 
 bool Ssh::Session::Rekey::IncomingSessions::has_operation() const
 {
-    for (std::size_t index=0; index<session_rekey_info.size(); index++)
+    for (std::size_t index=0; index<session_rekey_info.len(); index++)
     {
         if(session_rekey_info[index]->has_operation())
             return true;
@@ -1320,7 +1433,7 @@ std::shared_ptr<Entity> Ssh::Session::Rekey::IncomingSessions::get_child_by_name
     {
         auto c = std::make_shared<Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo>();
         c->parent = this;
-        session_rekey_info.push_back(c);
+        session_rekey_info.append(c);
         return c;
     }
 
@@ -1332,7 +1445,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::IncomingSess
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_rekey_info)
+    for (auto c : session_rekey_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1366,7 +1479,7 @@ Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::SessionRekeyInfo()
     volume_to_rekey{YType::str, "volume-to-rekey"}
 {
 
-    yang_name = "session-rekey-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-rekey-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::~SessionRekeyInfo()
@@ -1375,6 +1488,7 @@ Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::~SessionRekeyInfo()
 
 bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| session_rekey_count.is_set
 	|| time_to_rekey.is_set
@@ -1485,9 +1599,11 @@ bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::has_leaf_or_child_
 }
 
 Ssh::Session::Rekey::OutgoingConnections::OutgoingConnections()
+    :
+    session_rekey_info(this, {})
 {
 
-    yang_name = "outgoing-connections"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "outgoing-connections"; yang_parent_name = "rekey"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Rekey::OutgoingConnections::~OutgoingConnections()
@@ -1496,7 +1612,8 @@ Ssh::Session::Rekey::OutgoingConnections::~OutgoingConnections()
 
 bool Ssh::Session::Rekey::OutgoingConnections::has_data() const
 {
-    for (std::size_t index=0; index<session_rekey_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_rekey_info.len(); index++)
     {
         if(session_rekey_info[index]->has_data())
             return true;
@@ -1506,7 +1623,7 @@ bool Ssh::Session::Rekey::OutgoingConnections::has_data() const
 
 bool Ssh::Session::Rekey::OutgoingConnections::has_operation() const
 {
-    for (std::size_t index=0; index<session_rekey_info.size(); index++)
+    for (std::size_t index=0; index<session_rekey_info.len(); index++)
     {
         if(session_rekey_info[index]->has_operation())
             return true;
@@ -1543,7 +1660,7 @@ std::shared_ptr<Entity> Ssh::Session::Rekey::OutgoingConnections::get_child_by_n
     {
         auto c = std::make_shared<Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo>();
         c->parent = this;
-        session_rekey_info.push_back(c);
+        session_rekey_info.append(c);
         return c;
     }
 
@@ -1555,7 +1672,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Rekey::OutgoingConn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_rekey_info)
+    for (auto c : session_rekey_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1589,7 +1706,7 @@ Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::SessionRekeyInfo()
     volume_to_rekey{YType::str, "volume-to-rekey"}
 {
 
-    yang_name = "session-rekey-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-rekey-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::~SessionRekeyInfo()
@@ -1598,6 +1715,7 @@ Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::~SessionRekeyInfo()
 
 bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| session_rekey_count.is_set
 	|| time_to_rekey.is_set
@@ -1707,15 +1825,716 @@ bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::has_leaf_or_chi
     return false;
 }
 
+Ssh::Session::HistoryDetail::HistoryDetail()
+    :
+    incoming_sessions(std::make_shared<Ssh::Session::HistoryDetail::IncomingSessions>())
+    , outgoing_connections(std::make_shared<Ssh::Session::HistoryDetail::OutgoingConnections>())
+{
+    incoming_sessions->parent = this;
+    outgoing_connections->parent = this;
+
+    yang_name = "history-detail"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::HistoryDetail::~HistoryDetail()
+{
+}
+
+bool Ssh::Session::HistoryDetail::has_data() const
+{
+    if (is_presence_container) return true;
+    return (incoming_sessions !=  nullptr && incoming_sessions->has_data())
+	|| (outgoing_connections !=  nullptr && outgoing_connections->has_data());
+}
+
+bool Ssh::Session::HistoryDetail::has_operation() const
+{
+    return is_set(yfilter)
+	|| (incoming_sessions !=  nullptr && incoming_sessions->has_operation())
+	|| (outgoing_connections !=  nullptr && outgoing_connections->has_operation());
+}
+
+std::string Ssh::Session::HistoryDetail::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::HistoryDetail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "history-detail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::HistoryDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "incoming-sessions")
+    {
+        if(incoming_sessions == nullptr)
+        {
+            incoming_sessions = std::make_shared<Ssh::Session::HistoryDetail::IncomingSessions>();
+        }
+        return incoming_sessions;
+    }
+
+    if(child_yang_name == "outgoing-connections")
+    {
+        if(outgoing_connections == nullptr)
+        {
+            outgoing_connections = std::make_shared<Ssh::Session::HistoryDetail::OutgoingConnections>();
+        }
+        return outgoing_connections;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(incoming_sessions != nullptr)
+    {
+        children["incoming-sessions"] = incoming_sessions;
+    }
+
+    if(outgoing_connections != nullptr)
+    {
+        children["outgoing-connections"] = outgoing_connections;
+    }
+
+    return children;
+}
+
+void Ssh::Session::HistoryDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::HistoryDetail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::HistoryDetail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incoming-sessions" || name == "outgoing-connections")
+        return true;
+    return false;
+}
+
+Ssh::Session::HistoryDetail::IncomingSessions::IncomingSessions()
+    :
+    session_detail_info(this, {})
+{
+
+    yang_name = "incoming-sessions"; yang_parent_name = "history-detail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::HistoryDetail::IncomingSessions::~IncomingSessions()
+{
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
+    {
+        if(session_detail_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::has_operation() const
+{
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
+    {
+        if(session_detail_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::HistoryDetail::IncomingSessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history-detail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::HistoryDetail::IncomingSessions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "incoming-sessions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::IncomingSessions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::HistoryDetail::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-detail-info")
+    {
+        auto c = std::make_shared<Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo>();
+        c->parent = this;
+        session_detail_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::IncomingSessions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : session_detail_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ssh::Session::HistoryDetail::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::HistoryDetail::IncomingSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-detail-info")
+        return true;
+    return false;
+}
+
+Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::SessionDetailInfo()
+    :
+    session_id{YType::uint32, "session-id"},
+    key_exchange{YType::enumeration, "key-exchange"},
+    public_key{YType::enumeration, "public-key"},
+    in_cipher{YType::enumeration, "in-cipher"},
+    out_cipher{YType::enumeration, "out-cipher"},
+    in_mac{YType::enumeration, "in-mac"},
+    out_mac{YType::enumeration, "out-mac"},
+    start_time{YType::str, "start-time"},
+    end_time{YType::str, "end-time"}
+{
+
+    yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::~SessionDetailInfo()
+{
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return session_id.is_set
+	|| key_exchange.is_set
+	|| public_key.is_set
+	|| in_cipher.is_set
+	|| out_cipher.is_set
+	|| in_mac.is_set
+	|| out_mac.is_set
+	|| start_time.is_set
+	|| end_time.is_set;
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(key_exchange.yfilter)
+	|| ydk::is_set(public_key.yfilter)
+	|| ydk::is_set(in_cipher.yfilter)
+	|| ydk::is_set(out_cipher.yfilter)
+	|| ydk::is_set(in_mac.yfilter)
+	|| ydk::is_set(out_mac.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(end_time.yfilter);
+}
+
+std::string Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history-detail/incoming-sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-detail-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (key_exchange.is_set || is_set(key_exchange.yfilter)) leaf_name_data.push_back(key_exchange.get_name_leafdata());
+    if (public_key.is_set || is_set(public_key.yfilter)) leaf_name_data.push_back(public_key.get_name_leafdata());
+    if (in_cipher.is_set || is_set(in_cipher.yfilter)) leaf_name_data.push_back(in_cipher.get_name_leafdata());
+    if (out_cipher.is_set || is_set(out_cipher.yfilter)) leaf_name_data.push_back(out_cipher.get_name_leafdata());
+    if (in_mac.is_set || is_set(in_mac.yfilter)) leaf_name_data.push_back(in_mac.get_name_leafdata());
+    if (out_mac.is_set || is_set(out_mac.yfilter)) leaf_name_data.push_back(out_mac.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (end_time.is_set || is_set(end_time.yfilter)) leaf_name_data.push_back(end_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-exchange")
+    {
+        key_exchange = value;
+        key_exchange.value_namespace = name_space;
+        key_exchange.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "public-key")
+    {
+        public_key = value;
+        public_key.value_namespace = name_space;
+        public_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-cipher")
+    {
+        in_cipher = value;
+        in_cipher.value_namespace = name_space;
+        in_cipher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-cipher")
+    {
+        out_cipher = value;
+        out_cipher.value_namespace = name_space;
+        out_cipher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-mac")
+    {
+        in_mac = value;
+        in_mac.value_namespace = name_space;
+        in_mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-mac")
+    {
+        out_mac = value;
+        out_mac.value_namespace = name_space;
+        out_mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-time")
+    {
+        end_time = value;
+        end_time.value_namespace = name_space;
+        end_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "key-exchange")
+    {
+        key_exchange.yfilter = yfilter;
+    }
+    if(value_path == "public-key")
+    {
+        public_key.yfilter = yfilter;
+    }
+    if(value_path == "in-cipher")
+    {
+        in_cipher.yfilter = yfilter;
+    }
+    if(value_path == "out-cipher")
+    {
+        out_cipher.yfilter = yfilter;
+    }
+    if(value_path == "in-mac")
+    {
+        in_mac.yfilter = yfilter;
+    }
+    if(value_path == "out-mac")
+    {
+        out_mac.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "end-time")
+    {
+        end_time.yfilter = yfilter;
+    }
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+        return true;
+    return false;
+}
+
+Ssh::Session::HistoryDetail::OutgoingConnections::OutgoingConnections()
+    :
+    session_detail_info(this, {})
+{
+
+    yang_name = "outgoing-connections"; yang_parent_name = "history-detail"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::HistoryDetail::OutgoingConnections::~OutgoingConnections()
+{
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
+    {
+        if(session_detail_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::has_operation() const
+{
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
+    {
+        if(session_detail_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::HistoryDetail::OutgoingConnections::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history-detail/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::HistoryDetail::OutgoingConnections::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "outgoing-connections";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::OutgoingConnections::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::HistoryDetail::OutgoingConnections::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-detail-info")
+    {
+        auto c = std::make_shared<Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo>();
+        c->parent = this;
+        session_detail_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::OutgoingConnections::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : session_detail_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ssh::Session::HistoryDetail::OutgoingConnections::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::HistoryDetail::OutgoingConnections::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-detail-info")
+        return true;
+    return false;
+}
+
+Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::SessionDetailInfo()
+    :
+    session_id{YType::uint32, "session-id"},
+    key_exchange{YType::enumeration, "key-exchange"},
+    public_key{YType::enumeration, "public-key"},
+    in_cipher{YType::enumeration, "in-cipher"},
+    out_cipher{YType::enumeration, "out-cipher"},
+    in_mac{YType::enumeration, "in-mac"},
+    out_mac{YType::enumeration, "out-mac"},
+    start_time{YType::str, "start-time"},
+    end_time{YType::str, "end-time"}
+{
+
+    yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::~SessionDetailInfo()
+{
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return session_id.is_set
+	|| key_exchange.is_set
+	|| public_key.is_set
+	|| in_cipher.is_set
+	|| out_cipher.is_set
+	|| in_mac.is_set
+	|| out_mac.is_set
+	|| start_time.is_set
+	|| end_time.is_set;
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(key_exchange.yfilter)
+	|| ydk::is_set(public_key.yfilter)
+	|| ydk::is_set(in_cipher.yfilter)
+	|| ydk::is_set(out_cipher.yfilter)
+	|| ydk::is_set(in_mac.yfilter)
+	|| ydk::is_set(out_mac.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(end_time.yfilter);
+}
+
+std::string Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history-detail/outgoing-connections/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-detail-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (key_exchange.is_set || is_set(key_exchange.yfilter)) leaf_name_data.push_back(key_exchange.get_name_leafdata());
+    if (public_key.is_set || is_set(public_key.yfilter)) leaf_name_data.push_back(public_key.get_name_leafdata());
+    if (in_cipher.is_set || is_set(in_cipher.yfilter)) leaf_name_data.push_back(in_cipher.get_name_leafdata());
+    if (out_cipher.is_set || is_set(out_cipher.yfilter)) leaf_name_data.push_back(out_cipher.get_name_leafdata());
+    if (in_mac.is_set || is_set(in_mac.yfilter)) leaf_name_data.push_back(in_mac.get_name_leafdata());
+    if (out_mac.is_set || is_set(out_mac.yfilter)) leaf_name_data.push_back(out_mac.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (end_time.is_set || is_set(end_time.yfilter)) leaf_name_data.push_back(end_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key-exchange")
+    {
+        key_exchange = value;
+        key_exchange.value_namespace = name_space;
+        key_exchange.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "public-key")
+    {
+        public_key = value;
+        public_key.value_namespace = name_space;
+        public_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-cipher")
+    {
+        in_cipher = value;
+        in_cipher.value_namespace = name_space;
+        in_cipher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-cipher")
+    {
+        out_cipher = value;
+        out_cipher.value_namespace = name_space;
+        out_cipher.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in-mac")
+    {
+        in_mac = value;
+        in_mac.value_namespace = name_space;
+        in_mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "out-mac")
+    {
+        out_mac = value;
+        out_mac.value_namespace = name_space;
+        out_mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-time")
+    {
+        end_time = value;
+        end_time.value_namespace = name_space;
+        end_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "key-exchange")
+    {
+        key_exchange.yfilter = yfilter;
+    }
+    if(value_path == "public-key")
+    {
+        public_key.yfilter = yfilter;
+    }
+    if(value_path == "in-cipher")
+    {
+        in_cipher.yfilter = yfilter;
+    }
+    if(value_path == "out-cipher")
+    {
+        out_cipher.yfilter = yfilter;
+    }
+    if(value_path == "in-mac")
+    {
+        in_mac.yfilter = yfilter;
+    }
+    if(value_path == "out-mac")
+    {
+        out_mac.yfilter = yfilter;
+    }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "end-time")
+    {
+        end_time.yfilter = yfilter;
+    }
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+        return true;
+    return false;
+}
+
 Ssh::Session::Brief::Brief()
     :
     incoming_sessions(std::make_shared<Ssh::Session::Brief::IncomingSessions>())
-	,outgoing_sessions(std::make_shared<Ssh::Session::Brief::OutgoingSessions>())
+    , outgoing_sessions(std::make_shared<Ssh::Session::Brief::OutgoingSessions>())
 {
     incoming_sessions->parent = this;
     outgoing_sessions->parent = this;
 
-    yang_name = "brief"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Brief::~Brief()
@@ -1724,6 +2543,7 @@ Ssh::Session::Brief::~Brief()
 
 bool Ssh::Session::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return (incoming_sessions !=  nullptr && incoming_sessions->has_data())
 	|| (outgoing_sessions !=  nullptr && outgoing_sessions->has_data());
 }
@@ -1814,9 +2634,11 @@ bool Ssh::Session::Brief::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Ssh::Session::Brief::IncomingSessions::IncomingSessions()
+    :
+    session_brief_info(this, {})
 {
 
-    yang_name = "incoming-sessions"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "incoming-sessions"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Brief::IncomingSessions::~IncomingSessions()
@@ -1825,7 +2647,8 @@ Ssh::Session::Brief::IncomingSessions::~IncomingSessions()
 
 bool Ssh::Session::Brief::IncomingSessions::has_data() const
 {
-    for (std::size_t index=0; index<session_brief_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_brief_info.len(); index++)
     {
         if(session_brief_info[index]->has_data())
             return true;
@@ -1835,7 +2658,7 @@ bool Ssh::Session::Brief::IncomingSessions::has_data() const
 
 bool Ssh::Session::Brief::IncomingSessions::has_operation() const
 {
-    for (std::size_t index=0; index<session_brief_info.size(); index++)
+    for (std::size_t index=0; index<session_brief_info.len(); index++)
     {
         if(session_brief_info[index]->has_operation())
             return true;
@@ -1872,7 +2695,7 @@ std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::get_child_by_name
     {
         auto c = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo>();
         c->parent = this;
-        session_brief_info.push_back(c);
+        session_brief_info.append(c);
         return c;
     }
 
@@ -1884,7 +2707,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSess
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_brief_info)
+    for (auto c : session_brief_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1913,19 +2736,17 @@ bool Ssh::Session::Brief::IncomingSessions::has_leaf_or_child_of_name(const std:
 Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::SessionBriefInfo()
     :
     session_id{YType::uint32, "session-id"},
-    channel_id{YType::uint32, "channel-id"},
-    vty_assigned{YType::boolean, "vty-assigned"},
-    vty_line_number{YType::uint32, "vty-line-number"},
     node_name{YType::str, "node-name"},
     session_state{YType::enumeration, "session-state"},
     user_id{YType::str, "user-id"},
     host_address{YType::str, "host-address"},
     version{YType::enumeration, "version"},
-    authentication_type{YType::enumeration, "authentication-type"},
-    connection_type{YType::enumeration, "connection-type"}
+    authentication_type{YType::enumeration, "authentication-type"}
+        ,
+    mc_info(this, {})
 {
 
-    yang_name = "session-brief-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-brief-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::~SessionBriefInfo()
@@ -1934,33 +2755,36 @@ Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::~SessionBriefInfo()
 
 bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::has_data() const
 {
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mc_info.len(); index++)
+    {
+        if(mc_info[index]->has_data())
+            return true;
+    }
     return session_id.is_set
-	|| channel_id.is_set
-	|| vty_assigned.is_set
-	|| vty_line_number.is_set
 	|| node_name.is_set
 	|| session_state.is_set
 	|| user_id.is_set
 	|| host_address.is_set
 	|| version.is_set
-	|| authentication_type.is_set
-	|| connection_type.is_set;
+	|| authentication_type.is_set;
 }
 
 bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::has_operation() const
 {
+    for (std::size_t index=0; index<mc_info.len(); index++)
+    {
+        if(mc_info[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
-	|| ydk::is_set(channel_id.yfilter)
-	|| ydk::is_set(vty_assigned.yfilter)
-	|| ydk::is_set(vty_line_number.yfilter)
 	|| ydk::is_set(node_name.yfilter)
 	|| ydk::is_set(session_state.yfilter)
 	|| ydk::is_set(user_id.yfilter)
 	|| ydk::is_set(host_address.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(authentication_type.yfilter)
-	|| ydk::is_set(connection_type.yfilter);
+	|| ydk::is_set(authentication_type.yfilter);
 }
 
 std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_absolute_path() const
@@ -1982,16 +2806,12 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSess
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (channel_id.is_set || is_set(channel_id.yfilter)) leaf_name_data.push_back(channel_id.get_name_leafdata());
-    if (vty_assigned.is_set || is_set(vty_assigned.yfilter)) leaf_name_data.push_back(vty_assigned.get_name_leafdata());
-    if (vty_line_number.is_set || is_set(vty_line_number.yfilter)) leaf_name_data.push_back(vty_line_number.get_name_leafdata());
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
     if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
     if (user_id.is_set || is_set(user_id.yfilter)) leaf_name_data.push_back(user_id.get_name_leafdata());
     if (host_address.is_set || is_set(host_address.yfilter)) leaf_name_data.push_back(host_address.get_name_leafdata());
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
     if (authentication_type.is_set || is_set(authentication_type.yfilter)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
-    if (connection_type.is_set || is_set(connection_type.yfilter)) leaf_name_data.push_back(connection_type.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1999,6 +2819,14 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSess
 
 std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "mc-info")
+    {
+        auto c = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo>();
+        c->parent = this;
+        mc_info.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -2006,6 +2834,15 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSess
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : mc_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -2016,24 +2853,6 @@ void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::set_value(const st
         session_id = value;
         session_id.value_namespace = name_space;
         session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "channel-id")
-    {
-        channel_id = value;
-        channel_id.value_namespace = name_space;
-        channel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vty-assigned")
-    {
-        vty_assigned = value;
-        vty_assigned.value_namespace = name_space;
-        vty_assigned.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vty-line-number")
-    {
-        vty_line_number = value;
-        vty_line_number.value_namespace = name_space;
-        vty_line_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-name")
     {
@@ -2071,12 +2890,6 @@ void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::set_value(const st
         authentication_type.value_namespace = name_space;
         authentication_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "connection-type")
-    {
-        connection_type = value;
-        connection_type.value_namespace = name_space;
-        connection_type.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2084,18 +2897,6 @@ void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::set_filter(const s
     if(value_path == "session-id")
     {
         session_id.yfilter = yfilter;
-    }
-    if(value_path == "channel-id")
-    {
-        channel_id.yfilter = yfilter;
-    }
-    if(value_path == "vty-assigned")
-    {
-        vty_assigned.yfilter = yfilter;
-    }
-    if(value_path == "vty-line-number")
-    {
-        vty_line_number.yfilter = yfilter;
     }
     if(value_path == "node-name")
     {
@@ -2121,23 +2922,148 @@ void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::set_filter(const s
     {
         authentication_type.yfilter = yfilter;
     }
-    if(value_path == "connection-type")
-    {
-        connection_type.yfilter = yfilter;
-    }
 }
 
 bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "channel-id" || name == "vty-assigned" || name == "vty-line-number" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type" || name == "connection-type")
+    if(name == "mc-info" || name == "session-id" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
+        return true;
+    return false;
+}
+
+Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::McInfo()
+    :
+    channel_id{YType::uint32, "channel-id"},
+    connection_type{YType::enumeration, "connection-type"},
+    vty_line_number{YType::uint32, "vty-line-number"},
+    vty_assigned{YType::boolean, "vty-assigned"}
+{
+
+    yang_name = "mc-info"; yang_parent_name = "session-brief-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::~McInfo()
+{
+}
+
+bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return channel_id.is_set
+	|| connection_type.is_set
+	|| vty_line_number.is_set
+	|| vty_assigned.is_set;
+}
+
+bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(channel_id.yfilter)
+	|| ydk::is_set(connection_type.yfilter)
+	|| ydk::is_set(vty_line_number.yfilter)
+	|| ydk::is_set(vty_assigned.yfilter);
+}
+
+std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/brief/incoming-sessions/session-brief-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mc-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (channel_id.is_set || is_set(channel_id.yfilter)) leaf_name_data.push_back(channel_id.get_name_leafdata());
+    if (connection_type.is_set || is_set(connection_type.yfilter)) leaf_name_data.push_back(connection_type.get_name_leafdata());
+    if (vty_line_number.is_set || is_set(vty_line_number.yfilter)) leaf_name_data.push_back(vty_line_number.get_name_leafdata());
+    if (vty_assigned.is_set || is_set(vty_assigned.yfilter)) leaf_name_data.push_back(vty_assigned.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "channel-id")
+    {
+        channel_id = value;
+        channel_id.value_namespace = name_space;
+        channel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-type")
+    {
+        connection_type = value;
+        connection_type.value_namespace = name_space;
+        connection_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vty-line-number")
+    {
+        vty_line_number = value;
+        vty_line_number.value_namespace = name_space;
+        vty_line_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vty-assigned")
+    {
+        vty_assigned = value;
+        vty_assigned.value_namespace = name_space;
+        vty_assigned.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "channel-id")
+    {
+        channel_id.yfilter = yfilter;
+    }
+    if(value_path == "connection-type")
+    {
+        connection_type.yfilter = yfilter;
+    }
+    if(value_path == "vty-line-number")
+    {
+        vty_line_number.yfilter = yfilter;
+    }
+    if(value_path == "vty-assigned")
+    {
+        vty_assigned.yfilter = yfilter;
+    }
+}
+
+bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "channel-id" || name == "connection-type" || name == "vty-line-number" || name == "vty-assigned")
         return true;
     return false;
 }
 
 Ssh::Session::Brief::OutgoingSessions::OutgoingSessions()
+    :
+    session_brief_info(this, {})
 {
 
-    yang_name = "outgoing-sessions"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "outgoing-sessions"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Brief::OutgoingSessions::~OutgoingSessions()
@@ -2146,7 +3072,8 @@ Ssh::Session::Brief::OutgoingSessions::~OutgoingSessions()
 
 bool Ssh::Session::Brief::OutgoingSessions::has_data() const
 {
-    for (std::size_t index=0; index<session_brief_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_brief_info.len(); index++)
     {
         if(session_brief_info[index]->has_data())
             return true;
@@ -2156,7 +3083,7 @@ bool Ssh::Session::Brief::OutgoingSessions::has_data() const
 
 bool Ssh::Session::Brief::OutgoingSessions::has_operation() const
 {
-    for (std::size_t index=0; index<session_brief_info.size(); index++)
+    for (std::size_t index=0; index<session_brief_info.len(); index++)
     {
         if(session_brief_info[index]->has_operation())
             return true;
@@ -2193,7 +3120,7 @@ std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::get_child_by_name
     {
         auto c = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo>();
         c->parent = this;
-        session_brief_info.push_back(c);
+        session_brief_info.append(c);
         return c;
     }
 
@@ -2205,7 +3132,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSess
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_brief_info)
+    for (auto c : session_brief_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2234,19 +3161,17 @@ bool Ssh::Session::Brief::OutgoingSessions::has_leaf_or_child_of_name(const std:
 Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::SessionBriefInfo()
     :
     session_id{YType::uint32, "session-id"},
-    channel_id{YType::uint32, "channel-id"},
-    vty_assigned{YType::boolean, "vty-assigned"},
-    vty_line_number{YType::uint32, "vty-line-number"},
     node_name{YType::str, "node-name"},
     session_state{YType::enumeration, "session-state"},
     user_id{YType::str, "user-id"},
     host_address{YType::str, "host-address"},
     version{YType::enumeration, "version"},
-    authentication_type{YType::enumeration, "authentication-type"},
-    connection_type{YType::enumeration, "connection-type"}
+    authentication_type{YType::enumeration, "authentication-type"}
+        ,
+    mc_info(this, {})
 {
 
-    yang_name = "session-brief-info"; yang_parent_name = "outgoing-sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-brief-info"; yang_parent_name = "outgoing-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::~SessionBriefInfo()
@@ -2255,33 +3180,36 @@ Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::~SessionBriefInfo()
 
 bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_data() const
 {
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mc_info.len(); index++)
+    {
+        if(mc_info[index]->has_data())
+            return true;
+    }
     return session_id.is_set
-	|| channel_id.is_set
-	|| vty_assigned.is_set
-	|| vty_line_number.is_set
 	|| node_name.is_set
 	|| session_state.is_set
 	|| user_id.is_set
 	|| host_address.is_set
 	|| version.is_set
-	|| authentication_type.is_set
-	|| connection_type.is_set;
+	|| authentication_type.is_set;
 }
 
 bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_operation() const
 {
+    for (std::size_t index=0; index<mc_info.len(); index++)
+    {
+        if(mc_info[index]->has_operation())
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
-	|| ydk::is_set(channel_id.yfilter)
-	|| ydk::is_set(vty_assigned.yfilter)
-	|| ydk::is_set(vty_line_number.yfilter)
 	|| ydk::is_set(node_name.yfilter)
 	|| ydk::is_set(session_state.yfilter)
 	|| ydk::is_set(user_id.yfilter)
 	|| ydk::is_set(host_address.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(authentication_type.yfilter)
-	|| ydk::is_set(connection_type.yfilter);
+	|| ydk::is_set(authentication_type.yfilter);
 }
 
 std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_absolute_path() const
@@ -2303,16 +3231,12 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSess
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
-    if (channel_id.is_set || is_set(channel_id.yfilter)) leaf_name_data.push_back(channel_id.get_name_leafdata());
-    if (vty_assigned.is_set || is_set(vty_assigned.yfilter)) leaf_name_data.push_back(vty_assigned.get_name_leafdata());
-    if (vty_line_number.is_set || is_set(vty_line_number.yfilter)) leaf_name_data.push_back(vty_line_number.get_name_leafdata());
     if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
     if (session_state.is_set || is_set(session_state.yfilter)) leaf_name_data.push_back(session_state.get_name_leafdata());
     if (user_id.is_set || is_set(user_id.yfilter)) leaf_name_data.push_back(user_id.get_name_leafdata());
     if (host_address.is_set || is_set(host_address.yfilter)) leaf_name_data.push_back(host_address.get_name_leafdata());
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
     if (authentication_type.is_set || is_set(authentication_type.yfilter)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
-    if (connection_type.is_set || is_set(connection_type.yfilter)) leaf_name_data.push_back(connection_type.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2320,6 +3244,14 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSess
 
 std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "mc-info")
+    {
+        auto c = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo>();
+        c->parent = this;
+        mc_info.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -2327,6 +3259,15 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSess
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : mc_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -2337,24 +3278,6 @@ void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::set_value(const st
         session_id = value;
         session_id.value_namespace = name_space;
         session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "channel-id")
-    {
-        channel_id = value;
-        channel_id.value_namespace = name_space;
-        channel_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vty-assigned")
-    {
-        vty_assigned = value;
-        vty_assigned.value_namespace = name_space;
-        vty_assigned.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vty-line-number")
-    {
-        vty_line_number = value;
-        vty_line_number.value_namespace = name_space;
-        vty_line_number.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "node-name")
     {
@@ -2392,12 +3315,6 @@ void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::set_value(const st
         authentication_type.value_namespace = name_space;
         authentication_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "connection-type")
-    {
-        connection_type = value;
-        connection_type.value_namespace = name_space;
-        connection_type.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2405,18 +3322,6 @@ void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::set_filter(const s
     if(value_path == "session-id")
     {
         session_id.yfilter = yfilter;
-    }
-    if(value_path == "channel-id")
-    {
-        channel_id.yfilter = yfilter;
-    }
-    if(value_path == "vty-assigned")
-    {
-        vty_assigned.yfilter = yfilter;
-    }
-    if(value_path == "vty-line-number")
-    {
-        vty_line_number.yfilter = yfilter;
     }
     if(value_path == "node-name")
     {
@@ -2442,15 +3347,638 @@ void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::set_filter(const s
     {
         authentication_type.yfilter = yfilter;
     }
-    if(value_path == "connection-type")
-    {
-        connection_type.yfilter = yfilter;
-    }
 }
 
 bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "channel-id" || name == "vty-assigned" || name == "vty-line-number" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type" || name == "connection-type")
+    if(name == "mc-info" || name == "session-id" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
+        return true;
+    return false;
+}
+
+Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::McInfo()
+    :
+    channel_id{YType::uint32, "channel-id"},
+    connection_type{YType::enumeration, "connection-type"},
+    vty_line_number{YType::uint32, "vty-line-number"},
+    vty_assigned{YType::boolean, "vty-assigned"}
+{
+
+    yang_name = "mc-info"; yang_parent_name = "session-brief-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::~McInfo()
+{
+}
+
+bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return channel_id.is_set
+	|| connection_type.is_set
+	|| vty_line_number.is_set
+	|| vty_assigned.is_set;
+}
+
+bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(channel_id.yfilter)
+	|| ydk::is_set(connection_type.yfilter)
+	|| ydk::is_set(vty_line_number.yfilter)
+	|| ydk::is_set(vty_assigned.yfilter);
+}
+
+std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/brief/outgoing-sessions/session-brief-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mc-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (channel_id.is_set || is_set(channel_id.yfilter)) leaf_name_data.push_back(channel_id.get_name_leafdata());
+    if (connection_type.is_set || is_set(connection_type.yfilter)) leaf_name_data.push_back(connection_type.get_name_leafdata());
+    if (vty_line_number.is_set || is_set(vty_line_number.yfilter)) leaf_name_data.push_back(vty_line_number.get_name_leafdata());
+    if (vty_assigned.is_set || is_set(vty_assigned.yfilter)) leaf_name_data.push_back(vty_assigned.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "channel-id")
+    {
+        channel_id = value;
+        channel_id.value_namespace = name_space;
+        channel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-type")
+    {
+        connection_type = value;
+        connection_type.value_namespace = name_space;
+        connection_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vty-line-number")
+    {
+        vty_line_number = value;
+        vty_line_number.value_namespace = name_space;
+        vty_line_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vty-assigned")
+    {
+        vty_assigned = value;
+        vty_assigned.value_namespace = name_space;
+        vty_assigned.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "channel-id")
+    {
+        channel_id.yfilter = yfilter;
+    }
+    if(value_path == "connection-type")
+    {
+        connection_type.yfilter = yfilter;
+    }
+    if(value_path == "vty-line-number")
+    {
+        vty_line_number.yfilter = yfilter;
+    }
+    if(value_path == "vty-assigned")
+    {
+        vty_assigned.yfilter = yfilter;
+    }
+}
+
+bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "channel-id" || name == "connection-type" || name == "vty-line-number" || name == "vty-assigned")
+        return true;
+    return false;
+}
+
+Ssh::Session::History::History()
+    :
+    incoming_sessions(std::make_shared<Ssh::Session::History::IncomingSessions>())
+{
+    incoming_sessions->parent = this;
+
+    yang_name = "history"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::History::~History()
+{
+}
+
+bool Ssh::Session::History::has_data() const
+{
+    if (is_presence_container) return true;
+    return (incoming_sessions !=  nullptr && incoming_sessions->has_data());
+}
+
+bool Ssh::Session::History::has_operation() const
+{
+    return is_set(yfilter)
+	|| (incoming_sessions !=  nullptr && incoming_sessions->has_operation());
+}
+
+std::string Ssh::Session::History::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::History::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "history";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::History::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "incoming-sessions")
+    {
+        if(incoming_sessions == nullptr)
+        {
+            incoming_sessions = std::make_shared<Ssh::Session::History::IncomingSessions>();
+        }
+        return incoming_sessions;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(incoming_sessions != nullptr)
+    {
+        children["incoming-sessions"] = incoming_sessions;
+    }
+
+    return children;
+}
+
+void Ssh::Session::History::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::History::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::History::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incoming-sessions")
+        return true;
+    return false;
+}
+
+Ssh::Session::History::IncomingSessions::IncomingSessions()
+    :
+    session_history_info(this, {})
+{
+
+    yang_name = "incoming-sessions"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::History::IncomingSessions::~IncomingSessions()
+{
+}
+
+bool Ssh::Session::History::IncomingSessions::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_history_info.len(); index++)
+    {
+        if(session_history_info[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ssh::Session::History::IncomingSessions::has_operation() const
+{
+    for (std::size_t index=0; index<session_history_info.len(); index++)
+    {
+        if(session_history_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::History::IncomingSessions::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::History::IncomingSessions::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "incoming-sessions";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSessions::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::History::IncomingSessions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "session-history-info")
+    {
+        auto c = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo>();
+        c->parent = this;
+        session_history_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::IncomingSessions::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : session_history_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ssh::Session::History::IncomingSessions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::History::IncomingSessions::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::History::IncomingSessions::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "session-history-info")
+        return true;
+    return false;
+}
+
+Ssh::Session::History::IncomingSessions::SessionHistoryInfo::SessionHistoryInfo()
+    :
+    session_id{YType::uint32, "session-id"},
+    node_name{YType::str, "node-name"},
+    user_id{YType::str, "user-id"},
+    host_address{YType::str, "host-address"},
+    version{YType::enumeration, "version"},
+    authentication_type{YType::enumeration, "authentication-type"}
+        ,
+    mc_info(this, {})
+{
+
+    yang_name = "session-history-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::History::IncomingSessions::SessionHistoryInfo::~SessionHistoryInfo()
+{
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mc_info.len(); index++)
+    {
+        if(mc_info[index]->has_data())
+            return true;
+    }
+    return session_id.is_set
+	|| node_name.is_set
+	|| user_id.is_set
+	|| host_address.is_set
+	|| version.is_set
+	|| authentication_type.is_set;
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::has_operation() const
+{
+    for (std::size_t index=0; index<mc_info.len(); index++)
+    {
+        if(mc_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(user_id.yfilter)
+	|| ydk::is_set(host_address.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(authentication_type.yfilter);
+}
+
+std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history/incoming-sessions/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session-history-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (user_id.is_set || is_set(user_id.yfilter)) leaf_name_data.push_back(user_id.get_name_leafdata());
+    if (host_address.is_set || is_set(host_address.yfilter)) leaf_name_data.push_back(host_address.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (authentication_type.is_set || is_set(authentication_type.yfilter)) leaf_name_data.push_back(authentication_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mc-info")
+    {
+        auto c = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo>();
+        c->parent = this;
+        mc_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : mc_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "user-id")
+    {
+        user_id = value;
+        user_id.value_namespace = name_space;
+        user_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "host-address")
+    {
+        host_address = value;
+        host_address.value_namespace = name_space;
+        host_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "authentication-type")
+    {
+        authentication_type = value;
+        authentication_type.value_namespace = name_space;
+        authentication_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "user-id")
+    {
+        user_id.yfilter = yfilter;
+    }
+    if(value_path == "host-address")
+    {
+        host_address.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "authentication-type")
+    {
+        authentication_type.yfilter = yfilter;
+    }
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mc-info" || name == "session-id" || name == "node-name" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
+        return true;
+    return false;
+}
+
+Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::McInfo()
+    :
+    channel_id{YType::uint32, "channel-id"},
+    connection_type{YType::enumeration, "connection-type"},
+    vty_line_number{YType::uint32, "vty-line-number"},
+    vty_assigned{YType::boolean, "vty-assigned"}
+{
+
+    yang_name = "mc-info"; yang_parent_name = "session-history-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::~McInfo()
+{
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return channel_id.is_set
+	|| connection_type.is_set
+	|| vty_line_number.is_set
+	|| vty_assigned.is_set;
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(channel_id.yfilter)
+	|| ydk::is_set(connection_type.yfilter)
+	|| ydk::is_set(vty_line_number.yfilter)
+	|| ydk::is_set(vty_assigned.yfilter);
+}
+
+std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history/incoming-sessions/session-history-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mc-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (channel_id.is_set || is_set(channel_id.yfilter)) leaf_name_data.push_back(channel_id.get_name_leafdata());
+    if (connection_type.is_set || is_set(connection_type.yfilter)) leaf_name_data.push_back(connection_type.get_name_leafdata());
+    if (vty_line_number.is_set || is_set(vty_line_number.yfilter)) leaf_name_data.push_back(vty_line_number.get_name_leafdata());
+    if (vty_assigned.is_set || is_set(vty_assigned.yfilter)) leaf_name_data.push_back(vty_assigned.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "channel-id")
+    {
+        channel_id = value;
+        channel_id.value_namespace = name_space;
+        channel_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "connection-type")
+    {
+        connection_type = value;
+        connection_type.value_namespace = name_space;
+        connection_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vty-line-number")
+    {
+        vty_line_number = value;
+        vty_line_number.value_namespace = name_space;
+        vty_line_number.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vty-assigned")
+    {
+        vty_assigned = value;
+        vty_assigned.value_namespace = name_space;
+        vty_assigned.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "channel-id")
+    {
+        channel_id.yfilter = yfilter;
+    }
+    if(value_path == "connection-type")
+    {
+        connection_type.yfilter = yfilter;
+    }
+    if(value_path == "vty-line-number")
+    {
+        vty_line_number.yfilter = yfilter;
+    }
+    if(value_path == "vty-assigned")
+    {
+        vty_assigned.yfilter = yfilter;
+    }
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "channel-id" || name == "connection-type" || name == "vty-line-number" || name == "vty-assigned")
         return true;
     return false;
 }
@@ -2458,12 +3986,12 @@ bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_leaf_or_child_
 Ssh::Session::Detail::Detail()
     :
     incoming_sessions(std::make_shared<Ssh::Session::Detail::IncomingSessions>())
-	,outgoing_connections(std::make_shared<Ssh::Session::Detail::OutgoingConnections>())
+    , outgoing_connections(std::make_shared<Ssh::Session::Detail::OutgoingConnections>())
 {
     incoming_sessions->parent = this;
     outgoing_connections->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Detail::~Detail()
@@ -2472,6 +4000,7 @@ Ssh::Session::Detail::~Detail()
 
 bool Ssh::Session::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return (incoming_sessions !=  nullptr && incoming_sessions->has_data())
 	|| (outgoing_connections !=  nullptr && outgoing_connections->has_data());
 }
@@ -2562,9 +4091,11 @@ bool Ssh::Session::Detail::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Ssh::Session::Detail::IncomingSessions::IncomingSessions()
+    :
+    session_detail_info(this, {})
 {
 
-    yang_name = "incoming-sessions"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "incoming-sessions"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Detail::IncomingSessions::~IncomingSessions()
@@ -2573,7 +4104,8 @@ Ssh::Session::Detail::IncomingSessions::~IncomingSessions()
 
 bool Ssh::Session::Detail::IncomingSessions::has_data() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_data())
             return true;
@@ -2583,7 +4115,7 @@ bool Ssh::Session::Detail::IncomingSessions::has_data() const
 
 bool Ssh::Session::Detail::IncomingSessions::has_operation() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_operation())
             return true;
@@ -2620,7 +4152,7 @@ std::shared_ptr<Entity> Ssh::Session::Detail::IncomingSessions::get_child_by_nam
     {
         auto c = std::make_shared<Ssh::Session::Detail::IncomingSessions::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(c);
+        session_detail_info.append(c);
         return c;
     }
 
@@ -2632,7 +4164,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::IncomingSes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_detail_info)
+    for (auto c : session_detail_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2666,10 +4198,12 @@ Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::SessionDetailInfo()
     in_cipher{YType::enumeration, "in-cipher"},
     out_cipher{YType::enumeration, "out-cipher"},
     in_mac{YType::enumeration, "in-mac"},
-    out_mac{YType::enumeration, "out-mac"}
+    out_mac{YType::enumeration, "out-mac"},
+    start_time{YType::str, "start-time"},
+    end_time{YType::str, "end-time"}
 {
 
-    yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::~SessionDetailInfo()
@@ -2678,13 +4212,16 @@ Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::~SessionDetailInfo()
 
 bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| key_exchange.is_set
 	|| public_key.is_set
 	|| in_cipher.is_set
 	|| out_cipher.is_set
 	|| in_mac.is_set
-	|| out_mac.is_set;
+	|| out_mac.is_set
+	|| start_time.is_set
+	|| end_time.is_set;
 }
 
 bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_operation() const
@@ -2696,7 +4233,9 @@ bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_operation() 
 	|| ydk::is_set(in_cipher.yfilter)
 	|| ydk::is_set(out_cipher.yfilter)
 	|| ydk::is_set(in_mac.yfilter)
-	|| ydk::is_set(out_mac.yfilter);
+	|| ydk::is_set(out_mac.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(end_time.yfilter);
 }
 
 std::string Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_absolute_path() const
@@ -2724,6 +4263,8 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::IncomingSes
     if (out_cipher.is_set || is_set(out_cipher.yfilter)) leaf_name_data.push_back(out_cipher.get_name_leafdata());
     if (in_mac.is_set || is_set(in_mac.yfilter)) leaf_name_data.push_back(in_mac.get_name_leafdata());
     if (out_mac.is_set || is_set(out_mac.yfilter)) leaf_name_data.push_back(out_mac.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (end_time.is_set || is_set(end_time.yfilter)) leaf_name_data.push_back(end_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2785,6 +4326,18 @@ void Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::set_value(const 
         out_mac.value_namespace = name_space;
         out_mac.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-time")
+    {
+        end_time = value;
+        end_time.value_namespace = name_space;
+        end_time.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2817,19 +4370,29 @@ void Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::set_filter(const
     {
         out_mac.yfilter = yfilter;
     }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "end-time")
+    {
+        end_time.yfilter = yfilter;
+    }
 }
 
 bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac")
+    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
     return false;
 }
 
 Ssh::Session::Detail::OutgoingConnections::OutgoingConnections()
+    :
+    session_detail_info(this, {})
 {
 
-    yang_name = "outgoing-connections"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "outgoing-connections"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Detail::OutgoingConnections::~OutgoingConnections()
@@ -2838,7 +4401,8 @@ Ssh::Session::Detail::OutgoingConnections::~OutgoingConnections()
 
 bool Ssh::Session::Detail::OutgoingConnections::has_data() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_data())
             return true;
@@ -2848,7 +4412,7 @@ bool Ssh::Session::Detail::OutgoingConnections::has_data() const
 
 bool Ssh::Session::Detail::OutgoingConnections::has_operation() const
 {
-    for (std::size_t index=0; index<session_detail_info.size(); index++)
+    for (std::size_t index=0; index<session_detail_info.len(); index++)
     {
         if(session_detail_info[index]->has_operation())
             return true;
@@ -2885,7 +4449,7 @@ std::shared_ptr<Entity> Ssh::Session::Detail::OutgoingConnections::get_child_by_
     {
         auto c = std::make_shared<Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo>();
         c->parent = this;
-        session_detail_info.push_back(c);
+        session_detail_info.append(c);
         return c;
     }
 
@@ -2897,7 +4461,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssh::Session::Detail::OutgoingCon
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_detail_info)
+    for (auto c : session_detail_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2931,10 +4495,12 @@ Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::SessionDetailInfo(
     in_cipher{YType::enumeration, "in-cipher"},
     out_cipher{YType::enumeration, "out-cipher"},
     in_mac{YType::enumeration, "in-mac"},
-    out_mac{YType::enumeration, "out-mac"}
+    out_mac{YType::enumeration, "out-mac"},
+    start_time{YType::str, "start-time"},
+    end_time{YType::str, "end-time"}
 {
 
-    yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::~SessionDetailInfo()
@@ -2943,13 +4509,16 @@ Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::~SessionDetailInfo
 
 bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| key_exchange.is_set
 	|| public_key.is_set
 	|| in_cipher.is_set
 	|| out_cipher.is_set
 	|| in_mac.is_set
-	|| out_mac.is_set;
+	|| out_mac.is_set
+	|| start_time.is_set
+	|| end_time.is_set;
 }
 
 bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_operation() const
@@ -2961,7 +4530,9 @@ bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_operation
 	|| ydk::is_set(in_cipher.yfilter)
 	|| ydk::is_set(out_cipher.yfilter)
 	|| ydk::is_set(in_mac.yfilter)
-	|| ydk::is_set(out_mac.yfilter);
+	|| ydk::is_set(out_mac.yfilter)
+	|| ydk::is_set(start_time.yfilter)
+	|| ydk::is_set(end_time.yfilter);
 }
 
 std::string Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_absolute_path() const
@@ -2989,6 +4560,8 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::OutgoingCon
     if (out_cipher.is_set || is_set(out_cipher.yfilter)) leaf_name_data.push_back(out_cipher.get_name_leafdata());
     if (in_mac.is_set || is_set(in_mac.yfilter)) leaf_name_data.push_back(in_mac.get_name_leafdata());
     if (out_mac.is_set || is_set(out_mac.yfilter)) leaf_name_data.push_back(out_mac.get_name_leafdata());
+    if (start_time.is_set || is_set(start_time.yfilter)) leaf_name_data.push_back(start_time.get_name_leafdata());
+    if (end_time.is_set || is_set(end_time.yfilter)) leaf_name_data.push_back(end_time.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3050,6 +4623,18 @@ void Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::set_value(con
         out_mac.value_namespace = name_space;
         out_mac.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "start-time")
+    {
+        start_time = value;
+        start_time.value_namespace = name_space;
+        start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "end-time")
+    {
+        end_time = value;
+        end_time.value_namespace = name_space;
+        end_time.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3082,14 +4667,42 @@ void Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::set_filter(co
     {
         out_mac.yfilter = yfilter;
     }
+    if(value_path == "start-time")
+    {
+        start_time.yfilter = yfilter;
+    }
+    if(value_path == "end-time")
+    {
+        end_time.yfilter = yfilter;
+    }
 }
 
 bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac")
+    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
     return false;
 }
+
+const Enum::YLeaf KexName::diffie_hellman_group1 {0, "diffie-hellman-group1"};
+const Enum::YLeaf KexName::diffie_hellman_group14 {1, "diffie-hellman-group14"};
+const Enum::YLeaf KexName::diffie_hellman_group15 {2, "diffie-hellman-group15"};
+const Enum::YLeaf KexName::diffie_hellman_group16 {3, "diffie-hellman-group16"};
+const Enum::YLeaf KexName::diffie_hellman_group17 {4, "diffie-hellman-group17"};
+const Enum::YLeaf KexName::diffie_hellman_group18 {5, "diffie-hellman-group18"};
+const Enum::YLeaf KexName::ecdh_nistp256 {6, "ecdh-nistp256"};
+const Enum::YLeaf KexName::ecdh_nistp384 {7, "ecdh-nistp384"};
+const Enum::YLeaf KexName::ecdh_nistp521 {8, "ecdh-nistp521"};
+const Enum::YLeaf KexName::password_authenticated {9, "password-authenticated"};
+
+const Enum::YLeaf Hostkey::ssh_dss {0, "ssh-dss"};
+const Enum::YLeaf Hostkey::ssh_rsa {1, "ssh-rsa"};
+const Enum::YLeaf Hostkey::ecdsa_sha2_nistp521 {2, "ecdsa-sha2-nistp521"};
+const Enum::YLeaf Hostkey::ecdsa_sha2_nistp384 {3, "ecdsa-sha2-nistp384"};
+const Enum::YLeaf Hostkey::ecdsa_sha2_nistp256 {4, "ecdsa-sha2-nistp256"};
+
+const Enum::YLeaf Version::v2 {0, "v2"};
+const Enum::YLeaf Version::v1 {1, "v1"};
 
 const Enum::YLeaf Connection::undefined {0, "undefined"};
 const Enum::YLeaf Connection::shell {1, "shell"};
@@ -3099,13 +4712,6 @@ const Enum::YLeaf Connection::sftp_subsystem {4, "sftp-subsystem"};
 const Enum::YLeaf Connection::netconf_subsystem {5, "netconf-subsystem"};
 const Enum::YLeaf Connection::tl1_subsystem {6, "tl1-subsystem"};
 const Enum::YLeaf Connection::netconf_xml_subsystem {7, "netconf-xml-subsystem"};
-
-const Enum::YLeaf Authen::password {0, "password"};
-const Enum::YLeaf Authen::rsa_public_key {1, "rsa-public-key"};
-const Enum::YLeaf Authen::keyboard_interactive {2, "keyboard-interactive"};
-
-const Enum::YLeaf Version::v2 {0, "v2"};
-const Enum::YLeaf Version::v1 {1, "v1"};
 
 const Enum::YLeaf States::open {1, "open"};
 const Enum::YLeaf States::version_ok {2, "version-ok"};
@@ -3137,19 +4743,9 @@ const Enum::YLeaf Cipher::aes256_ctr {6, "aes256-ctr"};
 const Enum::YLeaf Cipher::aes128_gcm {7, "aes128-gcm"};
 const Enum::YLeaf Cipher::aes256_gcm {8, "aes256-gcm"};
 
-const Enum::YLeaf Hostkey::ssh_dss {0, "ssh-dss"};
-const Enum::YLeaf Hostkey::ssh_rsa {1, "ssh-rsa"};
-
-const Enum::YLeaf KexName::diffie_hellman_group1 {0, "diffie-hellman-group1"};
-const Enum::YLeaf KexName::diffie_hellman_group14 {1, "diffie-hellman-group14"};
-const Enum::YLeaf KexName::diffie_hellman_group15 {2, "diffie-hellman-group15"};
-const Enum::YLeaf KexName::diffie_hellman_group16 {3, "diffie-hellman-group16"};
-const Enum::YLeaf KexName::diffie_hellman_group17 {4, "diffie-hellman-group17"};
-const Enum::YLeaf KexName::diffie_hellman_group18 {5, "diffie-hellman-group18"};
-const Enum::YLeaf KexName::ecdh_nistp256 {6, "ecdh-nistp256"};
-const Enum::YLeaf KexName::ecdh_nistp384 {7, "ecdh-nistp384"};
-const Enum::YLeaf KexName::ecdh_nistp521 {8, "ecdh-nistp521"};
-const Enum::YLeaf KexName::password_authenticated {9, "password-authenticated"};
+const Enum::YLeaf Authen::password {0, "password"};
+const Enum::YLeaf Authen::rsa_public_key {1, "rsa-public-key"};
+const Enum::YLeaf Authen::keyboard_interactive {2, "keyboard-interactive"};
 
 
 }

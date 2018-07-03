@@ -57,7 +57,7 @@ class SdrInventoryVm::Nodes : public ydk::Entity
 
         class Node; //type: SdrInventoryVm::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cmproxy_oper::SdrInventoryVm::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // SdrInventoryVm::Nodes
 
@@ -105,7 +105,7 @@ class SdrInventoryVm::Nodes::Node::NodeEntries : public ydk::Entity
 
         class NodeEntry; //type: SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_cmproxy_oper::SdrInventoryVm::Nodes::Node::NodeEntries::NodeEntry> > node_entry;
+        ydk::YList node_entry;
         
 }; // SdrInventoryVm::Nodes::Node::NodeEntries
 

@@ -19,6 +19,7 @@ const Enum::YLeaf MplsLabel::ROUTER_ALERT {1, "ROUTER_ALERT"};
 const Enum::YLeaf MplsLabel::IPV6_EXPLICIT_NULL {2, "IPV6_EXPLICIT_NULL"};
 const Enum::YLeaf MplsLabel::IMPLICIT_NULL {3, "IMPLICIT_NULL"};
 const Enum::YLeaf MplsLabel::ENTROPY_LABEL_INDICATOR {7, "ENTROPY_LABEL_INDICATOR"};
+const Enum::YLeaf MplsLabel::NO_LABEL {8, "NO_LABEL"};
 
 
 }

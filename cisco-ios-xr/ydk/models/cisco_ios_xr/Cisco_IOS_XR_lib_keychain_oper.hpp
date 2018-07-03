@@ -57,7 +57,7 @@ class Keychain::Keies : public ydk::Entity
 
         class Key; //type: Keychain::Keies::Key
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key> > key;
+        ydk::YList key;
         
 }; // Keychain::Keies
 
@@ -106,7 +106,7 @@ class Keychain::Keies::Key::Key_ : public ydk::Entity
 
         class KeyId; //type: Keychain::Keies::Key::Key_::KeyId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_oper::Keychain::Keies::Key::Key_::KeyId> > key_id;
+        ydk::YList key_id;
         
 }; // Keychain::Keies::Key::Key_
 
@@ -212,6 +212,14 @@ class Keychain::Keies::Key::Key_::KeyId::AcceptLifetime : public ydk::Entity
 
 }; // Keychain::Keies::Key::Key_::KeyId::AcceptLifetime
 
+class Enc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf password_type7;
+        static const ydk::Enum::YLeaf password_type6;
+
+};
+
 class CrytoAlgo : public ydk::Enum
 {
     public:
@@ -223,14 +231,6 @@ class CrytoAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf hmac_sha1_20;
         static const ydk::Enum::YLeaf aes_128_cmac;
         static const ydk::Enum::YLeaf aes_256_cmac;
-
-};
-
-class Enc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf password_type7;
-        static const ydk::Enum::YLeaf password_type6;
 
 };
 

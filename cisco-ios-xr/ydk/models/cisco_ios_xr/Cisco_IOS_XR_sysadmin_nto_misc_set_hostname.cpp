@@ -16,7 +16,7 @@ Hostname::Hostname()
     name{YType::str, "name"}
 {
 
-    yang_name = "hostname"; yang_parent_name = "Cisco-IOS-XR-sysadmin-nto-misc-set-hostname"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hostname"; yang_parent_name = "Cisco-IOS-XR-sysadmin-nto-misc-set-hostname"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Hostname::~Hostname()
@@ -25,6 +25,7 @@ Hostname::~Hostname()
 
 bool Hostname::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 

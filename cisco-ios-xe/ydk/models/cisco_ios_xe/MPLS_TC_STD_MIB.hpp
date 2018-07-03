@@ -18,12 +18,32 @@ class MplsLabelDistributionMethod : public ydk::Enum
 
 };
 
+class MplsRetentionMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf conservative;
+        static const ydk::Enum::YLeaf liberal;
+
+};
+
 class MplsLdpLabelType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf generic;
         static const ydk::Enum::YLeaf atm;
         static const ydk::Enum::YLeaf frameRelay;
+
+};
+
+class TeHopAddressType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf asnumber;
+        static const ydk::Enum::YLeaf unnum;
+        static const ydk::Enum::YLeaf lspid;
 
 };
 
@@ -47,26 +67,6 @@ class MplsOwner : public ydk::Enum
         static const ydk::Enum::YLeaf crldp;
         static const ydk::Enum::YLeaf rsvpTe;
         static const ydk::Enum::YLeaf policyAgent;
-
-};
-
-class MplsRetentionMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf conservative;
-        static const ydk::Enum::YLeaf liberal;
-
-};
-
-class TeHopAddressType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf asnumber;
-        static const ydk::Enum::YLeaf unnum;
-        static const ydk::Enum::YLeaf lspid;
 
 };
 

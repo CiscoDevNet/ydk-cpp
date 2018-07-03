@@ -32,24 +32,24 @@ class CISCOIETFFRRMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cmplsfrrscalars; //type: CISCOIETFFRRMIB::Cmplsfrrscalars
-        class Cmplsfrrconsttable; //type: CISCOIETFFRRMIB::Cmplsfrrconsttable
-        class Cmplsfrrlogtable; //type: CISCOIETFFRRMIB::Cmplsfrrlogtable
-        class Cmplsfrrfacroutedbtable; //type: CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable
+        class CmplsFrrScalars; //type: CISCOIETFFRRMIB::CmplsFrrScalars
+        class CmplsFrrConstTable; //type: CISCOIETFFRRMIB::CmplsFrrConstTable
+        class CmplsFrrLogTable; //type: CISCOIETFFRRMIB::CmplsFrrLogTable
+        class CmplsFrrFacRouteDBTable; //type: CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::Cmplsfrrscalars> cmplsfrrscalars;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::Cmplsfrrconsttable> cmplsfrrconsttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::Cmplsfrrlogtable> cmplsfrrlogtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable> cmplsfrrfacroutedbtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::CmplsFrrScalars> cmplsfrrscalars;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::CmplsFrrConstTable> cmplsfrrconsttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::CmplsFrrLogTable> cmplsfrrlogtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable> cmplsfrrfacroutedbtable;
         
 }; // CISCOIETFFRRMIB
 
 
-class CISCOIETFFRRMIB::Cmplsfrrscalars : public ydk::Entity
+class CISCOIETFFRRMIB::CmplsFrrScalars : public ydk::Entity
 {
     public:
-        Cmplsfrrscalars();
-        ~Cmplsfrrscalars();
+        CmplsFrrScalars();
+        ~CmplsFrrScalars();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -71,21 +71,21 @@ class CISCOIETFFRRMIB::Cmplsfrrscalars : public ydk::Entity
         ydk::YLeaf cmplsfrrconfprotectingtuns; //type: uint32
         ydk::YLeaf cmplsfrractprotectedtuns; //type: uint32
         ydk::YLeaf cmplsfrractprotectedlsps; //type: uint32
-        ydk::YLeaf cmplsfrrconstprotectionmethod; //type: Cmplsfrrconstprotectionmethod
+        ydk::YLeaf cmplsfrrconstprotectionmethod; //type: CmplsFrrConstProtectionMethod
         ydk::YLeaf cmplsfrrnotifsenabled; //type: boolean
         ydk::YLeaf cmplsfrrlogtablemaxentries; //type: uint32
         ydk::YLeaf cmplsfrrlogtablecurrentries; //type: uint32
         ydk::YLeaf cmplsfrrnotifmaxrate; //type: uint32
-        class Cmplsfrrconstprotectionmethod;
+        class CmplsFrrConstProtectionMethod;
 
-}; // CISCOIETFFRRMIB::Cmplsfrrscalars
+}; // CISCOIETFFRRMIB::CmplsFrrScalars
 
 
-class CISCOIETFFRRMIB::Cmplsfrrconsttable : public ydk::Entity
+class CISCOIETFFRRMIB::CmplsFrrConstTable : public ydk::Entity
 {
     public:
-        Cmplsfrrconsttable();
-        ~Cmplsfrrconsttable();
+        CmplsFrrConstTable();
+        ~CmplsFrrConstTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,18 +98,18 @@ class CISCOIETFFRRMIB::Cmplsfrrconsttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplsfrrconstentry; //type: CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry
+        class CmplsFrrConstEntry; //type: CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry> > cmplsfrrconstentry;
+        ydk::YList cmplsfrrconstentry;
         
-}; // CISCOIETFFRRMIB::Cmplsfrrconsttable
+}; // CISCOIETFFRRMIB::CmplsFrrConstTable
 
 
-class CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry : public ydk::Entity
+class CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry : public ydk::Entity
 {
     public:
-        Cmplsfrrconstentry();
-        ~Cmplsfrrconstentry();
+        CmplsFrrConstEntry();
+        ~CmplsFrrConstEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -136,14 +136,14 @@ class CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry : public ydk::Enti
         ydk::YLeaf cmplsfrrconstnumprotectingtunonif; //type: uint32
         ydk::YLeaf cmplsfrrconstnumprotectedtunonif; //type: uint32
 
-}; // CISCOIETFFRRMIB::Cmplsfrrconsttable::Cmplsfrrconstentry
+}; // CISCOIETFFRRMIB::CmplsFrrConstTable::CmplsFrrConstEntry
 
 
-class CISCOIETFFRRMIB::Cmplsfrrlogtable : public ydk::Entity
+class CISCOIETFFRRMIB::CmplsFrrLogTable : public ydk::Entity
 {
     public:
-        Cmplsfrrlogtable();
-        ~Cmplsfrrlogtable();
+        CmplsFrrLogTable();
+        ~CmplsFrrLogTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -156,18 +156,18 @@ class CISCOIETFFRRMIB::Cmplsfrrlogtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplsfrrlogentry; //type: CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry
+        class CmplsFrrLogEntry; //type: CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry> > cmplsfrrlogentry;
+        ydk::YList cmplsfrrlogentry;
         
-}; // CISCOIETFFRRMIB::Cmplsfrrlogtable
+}; // CISCOIETFFRRMIB::CmplsFrrLogTable
 
 
-class CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry : public ydk::Entity
+class CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry : public ydk::Entity
 {
     public:
-        Cmplsfrrlogentry();
-        ~Cmplsfrrlogentry();
+        CmplsFrrLogEntry();
+        ~CmplsFrrLogEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -183,19 +183,19 @@ class CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry : public ydk::Entity
         ydk::YLeaf cmplsfrrlogindex; //type: uint32
         ydk::YLeaf cmplsfrrlogeventtime; //type: uint32
         ydk::YLeaf cmplsfrrloginterface; //type: int32
-        ydk::YLeaf cmplsfrrlogeventtype; //type: Cmplsfrrlogeventtype
+        ydk::YLeaf cmplsfrrlogeventtype; //type: CmplsFrrLogEventType
         ydk::YLeaf cmplsfrrlogeventduration; //type: uint32
         ydk::YLeaf cmplsfrrlogeventreasonstring; //type: binary
-        class Cmplsfrrlogeventtype;
+        class CmplsFrrLogEventType;
 
-}; // CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry
+}; // CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry
 
 
-class CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable : public ydk::Entity
+class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable : public ydk::Entity
 {
     public:
-        Cmplsfrrfacroutedbtable();
-        ~Cmplsfrrfacroutedbtable();
+        CmplsFrrFacRouteDBTable();
+        ~CmplsFrrFacRouteDBTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -208,18 +208,18 @@ class CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplsfrrfacroutedbentry; //type: CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry
+        class CmplsFrrFacRouteDBEntry; //type: CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_FRR_MIB::CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry> > cmplsfrrfacroutedbentry;
+        ydk::YList cmplsfrrfacroutedbentry;
         
-}; // CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable
+}; // CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable
 
 
-class CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry : public ydk::Entity
+class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry : public ydk::Entity
 {
     public:
-        Cmplsfrrfacroutedbentry();
-        ~Cmplsfrrfacroutedbentry();
+        CmplsFrrFacRouteDBEntry();
+        ~CmplsFrrFacRouteDBEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,15 +238,15 @@ class CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry : public
         ydk::YLeaf cmplsfrrfacrouteprotectedtuninstance; //type: uint32
         ydk::YLeaf cmplsfrrfacrouteprotectedtuningresslsrid; //type: binary
         ydk::YLeaf cmplsfrrfacrouteprotectedtunegresslsrid; //type: binary
-        ydk::YLeaf cmplsfrrfacrouteprotectedtunstatus; //type: Cmplsfrrfacrouteprotectedtunstatus
+        ydk::YLeaf cmplsfrrfacrouteprotectedtunstatus; //type: CmplsFrrFacRouteProtectedTunStatus
         ydk::YLeaf cmplsfrrfacrouteprotectingtunresvbw; //type: uint32
-        ydk::YLeaf cmplsfrrfacrouteprotectingtunprotectiontype; //type: Cmplsfrrfacrouteprotectingtunprotectiontype
-        class Cmplsfrrfacrouteprotectedtunstatus;
-        class Cmplsfrrfacrouteprotectingtunprotectiontype;
+        ydk::YLeaf cmplsfrrfacrouteprotectingtunprotectiontype; //type: CmplsFrrFacRouteProtectingTunProtectionType
+        class CmplsFrrFacRouteProtectedTunStatus;
+        class CmplsFrrFacRouteProtectingTunProtectionType;
 
-}; // CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry
+}; // CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry
 
-class CISCOIETFFRRMIB::Cmplsfrrscalars::Cmplsfrrconstprotectionmethod : public ydk::Enum
+class CISCOIETFFRRMIB::CmplsFrrScalars::CmplsFrrConstProtectionMethod : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf oneToOneBackup;
@@ -254,7 +254,7 @@ class CISCOIETFFRRMIB::Cmplsfrrscalars::Cmplsfrrconstprotectionmethod : public y
 
 };
 
-class CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::Cmplsfrrlogeventtype : public ydk::Enum
+class CISCOIETFFRRMIB::CmplsFrrLogTable::CmplsFrrLogEntry::CmplsFrrLogEventType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -262,7 +262,7 @@ class CISCOIETFFRRMIB::Cmplsfrrlogtable::Cmplsfrrlogentry::Cmplsfrrlogeventtype 
 
 };
 
-class CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacrouteprotectedtunstatus : public ydk::Enum
+class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectedTunStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf active;
@@ -271,7 +271,7 @@ class CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfr
 
 };
 
-class CISCOIETFFRRMIB::Cmplsfrrfacroutedbtable::Cmplsfrrfacroutedbentry::Cmplsfrrfacrouteprotectingtunprotectiontype : public ydk::Enum
+class CISCOIETFFRRMIB::CmplsFrrFacRouteDBTable::CmplsFrrFacRouteDBEntry::CmplsFrrFacRouteProtectingTunProtectionType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf linkProtection;

@@ -16,7 +16,7 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
 {
     public:
         TdmOptions();
@@ -43,10 +43,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
         ydk::YLeaf timestamp_clock_freq; //type: uint16
         ydk::YLeaf ssrc; //type: uint32
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Tdm::TdmOptions
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm : public ydk::Entity
 {
     public:
         Atm();
@@ -69,10 +69,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
         ydk::YLeaf vpi; //type: uint16
         ydk::YLeaf vci; //type: uint16
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Atm
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr : public ydk::Entity
 {
     public:
         Fr();
@@ -92,10 +92,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
         ydk::YLeaf fr_mode; //type: L2vpnFrMode
         ydk::YLeaf dlci; //type: uint32
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::Fr
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther : public ydk::Entity
 {
     public:
         PseudowireEther();
@@ -114,14 +114,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
 
         ydk::YLeaf is_valid; //type: boolean
         ydk::YLeaf internal_label; //type: uint32
-        class InterfaceList; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList
+        class InterfaceList; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList> interface_list;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList : public ydk::Entity
 {
     public:
         InterfaceList();
@@ -140,14 +140,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
 
         ydk::YLeaf interface_list_name; //type: string
         ydk::YLeaf interface_list_id; //type: uint32
-        class Interface; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
+        class Interface; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface> > interface;
+        ydk::YList interface;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -167,10 +167,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf replicate_status; //type: IflistRepStatus
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw : public ydk::Entity
 {
     public:
         PseudowireIw();
@@ -189,14 +189,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
 
         ydk::YLeaf is_valid; //type: boolean
         ydk::YLeaf internal_label; //type: uint32
-        class InterfaceList; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList
+        class InterfaceList; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList> interface_list;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList : public ydk::Entity
 {
     public:
         InterfaceList();
@@ -215,14 +215,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
 
         ydk::YLeaf interface_list_name; //type: string
         ydk::YLeaf interface_list_id; //type: uint32
-        class Interface; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
+        class Interface; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface> > interface;
+        ydk::YList interface;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -242,10 +242,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInte
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf replicate_status; //type: IflistRepStatus
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface : public ydk::Entity
 {
     public:
         RemoteInterface();
@@ -265,14 +265,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf name; //type: string
         ydk::YLeaf mtu; //type: uint32
         ydk::YLeaf payload_bytes; //type: uint16
-        class Parameters; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters
+        class Parameters; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters> parameters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters> parameters;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters : public ydk::Entity
 {
     public:
         Parameters();
@@ -290,26 +290,26 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: L2vpnInterface
-        class Ethernet; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet
-        class Vlan; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan
-        class Tdm; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm
-        class Atm; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm
-        class Fr; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr
-        class PseudowireEther; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther
-        class PseudowireIw; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw
+        class Ethernet; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet
+        class Vlan; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan
+        class Tdm; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm
+        class Atm; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm
+        class Fr; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr
+        class PseudowireEther; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther
+        class PseudowireIw; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet> ethernet;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan> vlan;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm> tdm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm> atm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr> fr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther> pseudowire_ether;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw> pseudowire_iw;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet> ethernet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm> tdm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm> atm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr> fr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther> pseudowire_ether;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw> pseudowire_iw;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet : public ydk::Entity
 {
     public:
         Ethernet();
@@ -328,10 +328,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
 
         ydk::YLeaf xconnect_tags; //type: uint8
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Ethernet
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -353,16 +353,16 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf simple_efp; //type: uint8
         ydk::YLeaf encapsulation_type; //type: uint8
         ydk::YLeaf outer_tag; //type: uint16
-        class RewriteTag; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag
-        class VlanRange; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange
+        class RewriteTag; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag
+        class VlanRange; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag> > rewrite_tag;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange> > vlan_range;
+        ydk::YList rewrite_tag;
+        ydk::YList vlan_range;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag : public ydk::Entity
 {
     public:
         RewriteTag();
@@ -381,10 +381,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
 
         ydk::YLeaf entry; //type: uint16
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::RewriteTag
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange : public ydk::Entity
 {
     public:
         VlanRange();
@@ -404,10 +404,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf lower; //type: uint16
         ydk::YLeaf upper; //type: uint16
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Vlan::VlanRange
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm : public ydk::Entity
 {
     public:
         Tdm();
@@ -427,14 +427,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf timeslot_group; //type: string
         ydk::YLeaf timeslot_rate; //type: uint8
         ydk::YLeaf tdm_mode; //type: L2vpnTdmMode
-        class TdmOptions; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions
+        class TdmOptions; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions> tdm_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions> tdm_options;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
 {
     public:
         TdmOptions();
@@ -461,10 +461,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf timestamp_clock_freq; //type: uint16
         ydk::YLeaf ssrc; //type: uint32
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Tdm::TdmOptions
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm : public ydk::Entity
 {
     public:
         Atm();
@@ -487,10 +487,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf vpi; //type: uint16
         ydk::YLeaf vci; //type: uint16
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Atm
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr : public ydk::Entity
 {
     public:
         Fr();
@@ -510,10 +510,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf fr_mode; //type: L2vpnFrMode
         ydk::YLeaf dlci; //type: uint32
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::Fr
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther : public ydk::Entity
 {
     public:
         PseudowireEther();
@@ -532,14 +532,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
 
         ydk::YLeaf is_valid; //type: boolean
         ydk::YLeaf internal_label; //type: uint32
-        class InterfaceList; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList
+        class InterfaceList; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList> interface_list;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList : public ydk::Entity
 {
     public:
         InterfaceList();
@@ -558,14 +558,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
 
         ydk::YLeaf interface_list_name; //type: string
         ydk::YLeaf interface_list_id; //type: uint32
-        class Interface; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface
+        class Interface; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface> > interface;
+        ydk::YList interface;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -585,10 +585,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf replicate_status; //type: IflistRepStatus
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireEther::InterfaceList::Interface
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw : public ydk::Entity
 {
     public:
         PseudowireIw();
@@ -607,14 +607,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
 
         ydk::YLeaf is_valid; //type: boolean
         ydk::YLeaf internal_label; //type: uint32
-        class InterfaceList; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList
+        class InterfaceList; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList> interface_list;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList : public ydk::Entity
 {
     public:
         InterfaceList();
@@ -633,14 +633,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
 
         ydk::YLeaf interface_list_name; //type: string
         ydk::YLeaf interface_list_id; //type: uint32
-        class Interface; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface
+        class Interface; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface> > interface;
+        ydk::YList interface;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -660,10 +660,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInt
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf replicate_status; //type: IflistRepStatus
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteInterface::Parameters::PseudowireIw::InterfaceList::Interface
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath : public ydk::Entity
 {
     public:
         PreferredPath();
@@ -685,14 +685,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Preferred
         ydk::YLeaf te_tunnel_interface_number; //type: uint32
         ydk::YLeaf ip_tunnel_interface_number; //type: uint32
         ydk::YLeaf tp_tunnel_interface_number; //type: uint32
-        class SrtePolicy; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy
+        class SrtePolicy; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy> srte_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy> srte_policy;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy : public ydk::Entity
 {
     public:
         SrtePolicy();
@@ -711,10 +711,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Preferred
 
         ydk::YLeaf policy_name; //type: string
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::PreferredPath::SrtePolicy
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling : public ydk::Entity
 {
     public:
         LocalSignalling();
@@ -732,16 +732,16 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSign
         std::string get_absolute_path() const override;
 
         ydk::YLeaf pw_status; //type: uint32
-        class StatusTlv; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv
-        class Tlv; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv
+        class StatusTlv; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv
+        class Tlv; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv> status_tlv;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv> > tlv;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv> status_tlv;
+        ydk::YList tlv;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv : public ydk::Entity
 {
     public:
         StatusTlv();
@@ -763,10 +763,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSign
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf description; //type: string
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::StatusTlv
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv : public ydk::Entity
 {
     public:
         Tlv();
@@ -788,10 +788,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSign
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf description; //type: string
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::LocalSignalling::Tlv
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling : public ydk::Entity
 {
     public:
         RemoteSignalling();
@@ -809,16 +809,16 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSig
         std::string get_absolute_path() const override;
 
         ydk::YLeaf pw_status; //type: uint32
-        class StatusTlv; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv
-        class Tlv; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv
+        class StatusTlv; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv
+        class Tlv; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv> status_tlv;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv> > tlv;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv> status_tlv;
+        ydk::YList tlv;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv : public ydk::Entity
 {
     public:
         StatusTlv();
@@ -840,10 +840,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSig
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf description; //type: string
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::StatusTlv
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv : public ydk::Entity
 {
     public:
         Tlv();
@@ -865,10 +865,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSig
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf description; //type: string
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::RemoteSignalling::Tlv
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics : public ydk::Entity
 {
     public:
         Statistics();
@@ -885,18 +885,18 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class ImpostionStats; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats
-        class DispostionStats; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats
-        class SequenceNumber; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber
+        class ImpostionStats; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats
+        class DispostionStats; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats
+        class SequenceNumber; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats> impostion_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats> dispostion_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber> sequence_number;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats> impostion_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats> dispostion_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber> sequence_number;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats : public ydk::Entity
 {
     public:
         ImpostionStats();
@@ -913,28 +913,28 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class ImpositionStat; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat
-        class ImpositionMtuDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop
-        class ImpostionTailDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop
-        class L2FsbiDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop
-        class Multicast; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast
-        class Broadcast; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast
-        class KnownUnicast; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast
-        class UnknownUnicast; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast
+        class ImpositionStat; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat
+        class ImpositionMtuDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop
+        class ImpostionTailDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop
+        class L2fsbiDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop
+        class Multicast; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast
+        class Broadcast; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast
+        class KnownUnicast; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast
+        class UnknownUnicast; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat> imposition_stat;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop> imposition_mtu_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop> impostion_tail_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop> l2fsbi_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast> multicast;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast> broadcast;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast> known_unicast;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast> unknown_unicast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat> imposition_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop> imposition_mtu_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop> impostion_tail_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop> l2fsbi_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast> multicast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast> broadcast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast> known_unicast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast> unknown_unicast;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat : public ydk::Entity
 {
     public:
         ImpositionStat();
@@ -954,10 +954,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionStat
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop : public ydk::Entity
 {
     public:
         ImpositionMtuDrop();
@@ -977,10 +977,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpositionMtuDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop : public ydk::Entity
 {
     public:
         ImpostionTailDrop();
@@ -1000,14 +1000,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::ImpostionTailDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop : public ydk::Entity
 {
     public:
-        L2FsbiDrop();
-        ~L2FsbiDrop();
+        L2fsbiDrop();
+        ~L2fsbiDrop();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1023,10 +1023,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2FsbiDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::L2fsbiDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast : public ydk::Entity
 {
     public:
         Multicast();
@@ -1046,10 +1046,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Multicast
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast : public ydk::Entity
 {
     public:
         Broadcast();
@@ -1069,10 +1069,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::Broadcast
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast : public ydk::Entity
 {
     public:
         KnownUnicast();
@@ -1092,10 +1092,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::KnownUnicast
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast : public ydk::Entity
 {
     public:
         UnknownUnicast();
@@ -1115,10 +1115,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::ImpostionStats::UnknownUnicast
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats : public ydk::Entity
 {
     public:
         DispostionStats();
@@ -1135,38 +1135,38 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class DispositionStat; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat
-        class DispositionMtuDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop
-        class DispositionTailDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop
-        class MulticastDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop
-        class UnicastDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop
-        class BroadcastDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop
-        class ReceivedDrops; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops
-        class DaiDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop
-        class IpsgDrop; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop
-        class DispositionOoODrops; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops
-        class DispositionP2MpStats; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats
-        class KnownUnicast; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast
-        class MacMove; //type: L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove
+        class DispositionStat; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat
+        class DispositionMtuDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop
+        class DispositionTailDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop
+        class MulticastDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop
+        class UnicastDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop
+        class BroadcastDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop
+        class ReceivedDrops; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops
+        class DaiDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop
+        class IpsgDrop; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop
+        class DispositionOoODrops; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops
+        class DispositionP2mpStats; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats
+        class KnownUnicast; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast
+        class MacMove; //type: L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat> disposition_stat;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop> disposition_mtu_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop> disposition_tail_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop> multicast_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop> unicast_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop> broadcast_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops> received_drops;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop> dai_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop> ipsg_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops> disposition_oo_o_drops;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats> disposition_p2mp_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast> known_unicast;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove> mac_move;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat> disposition_stat;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop> disposition_mtu_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop> disposition_tail_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop> multicast_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop> unicast_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop> broadcast_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops> received_drops;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop> dai_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop> ipsg_drop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops> disposition_oo_o_drops;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats> disposition_p2mp_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast> known_unicast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove> mac_move;
         
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat : public ydk::Entity
 {
     public:
         DispositionStat();
@@ -1186,10 +1186,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionStat
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop : public ydk::Entity
 {
     public:
         DispositionMtuDrop();
@@ -1209,10 +1209,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionMtuDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop : public ydk::Entity
 {
     public:
         DispositionTailDrop();
@@ -1232,10 +1232,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionTailDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop : public ydk::Entity
 {
     public:
         MulticastDrop();
@@ -1255,10 +1255,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MulticastDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop : public ydk::Entity
 {
     public:
         UnicastDrop();
@@ -1278,10 +1278,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::UnicastDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop : public ydk::Entity
 {
     public:
         BroadcastDrop();
@@ -1301,10 +1301,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::BroadcastDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops : public ydk::Entity
 {
     public:
         ReceivedDrops();
@@ -1324,10 +1324,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::ReceivedDrops
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop : public ydk::Entity
 {
     public:
         DaiDrop();
@@ -1347,10 +1347,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DaiDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop : public ydk::Entity
 {
     public:
         IpsgDrop();
@@ -1370,10 +1370,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::IpsgDrop
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops : public ydk::Entity
 {
     public:
         DispositionOoODrops();
@@ -1393,14 +1393,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionOoODrops
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats : public ydk::Entity
 {
     public:
-        DispositionP2MpStats();
-        ~DispositionP2MpStats();
+        DispositionP2mpStats();
+        ~DispositionP2mpStats();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1416,10 +1416,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2MpStats
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::DispositionP2mpStats
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast : public ydk::Entity
 {
     public:
         KnownUnicast();
@@ -1439,10 +1439,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::KnownUnicast
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove : public ydk::Entity
 {
     public:
         MacMove();
@@ -1462,10 +1462,10 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf packet_counts; //type: uint64
         ydk::YLeaf byte_counts; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::DispostionStats::MacMove
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber : public ydk::Entity
 {
     public:
         SequenceNumber();
@@ -1487,14 +1487,14 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistic
         ydk::YLeaf bypassed_inbound_sequence_packet; //type: uint64
         ydk::YLeaf bypassed_out_sequence_packet; //type: uint64
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::Statistics::SequenceNumber
 
 
-class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw : public ydk::Entity
+class L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::P2mpPw : public ydk::Entity
 {
     public:
-        P2MpPw();
-        ~P2MpPw();
+        P2mpPw();
+        ~P2mpPw();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1509,23 +1509,23 @@ class L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw : 
 
         ydk::YLeaf local_available; //type: boolean
         ydk::YLeaf local_label; //type: uint32
-        ydk::YLeaf local_ptree_type; //type: L2vpnP2MpPwPtree
+        ydk::YLeaf local_ptree_type; //type: L2vpnP2mpPwPtree
         ydk::YLeaf local_tunnel_id; //type: uint32
         ydk::YLeaf local_extended_tunnel_id; //type: string
         ydk::YLeaf local_p2mp_id; //type: uint32
         ydk::YLeaf local_flags; //type: uint8
         ydk::YLeaf remote_available; //type: boolean
         ydk::YLeaf remote_label; //type: uint32
-        ydk::YLeaf remote_ptree_type; //type: L2vpnP2MpPwPtree
+        ydk::YLeaf remote_ptree_type; //type: L2vpnP2mpPwPtree
         ydk::YLeaf remote_tunnel_id; //type: uint32
         ydk::YLeaf remote_extended_tunnel_id; //type: string
         ydk::YLeaf remote_p2mp_id; //type: uint32
         ydk::YLeaf remote_flags; //type: uint8
 
-}; // L2Vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::P2MpPw
+}; // L2vpnv2::Active::Xconnects::Xconnect::BackupSegment::PseudoWire::P2mpPw
 
 
-class L2Vpnv2::Active::XconnectGroups : public ydk::Entity
+class L2vpnv2::Active::XconnectGroups : public ydk::Entity
 {
     public:
         XconnectGroups();
@@ -1542,14 +1542,14 @@ class L2Vpnv2::Active::XconnectGroups : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class XconnectGroup; //type: L2Vpnv2::Active::XconnectGroups::XconnectGroup
+        class XconnectGroup; //type: L2vpnv2::Active::XconnectGroups::XconnectGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectGroups::XconnectGroup> > xconnect_group;
+        ydk::YList xconnect_group;
         
-}; // L2Vpnv2::Active::XconnectGroups
+}; // L2vpnv2::Active::XconnectGroups
 
 
-class L2Vpnv2::Active::XconnectGroups::XconnectGroup : public ydk::Entity
+class L2vpnv2::Active::XconnectGroups::XconnectGroup : public ydk::Entity
 {
     public:
         XconnectGroup();
@@ -1570,14 +1570,14 @@ class L2Vpnv2::Active::XconnectGroups::XconnectGroup : public ydk::Entity
         ydk::YLeaf group_name_xr; //type: string
         ydk::YLeaf number_xconnects; //type: uint32
 
-}; // L2Vpnv2::Active::XconnectGroups::XconnectGroup
+}; // L2vpnv2::Active::XconnectGroups::XconnectGroup
 
 
-class L2Vpnv2::Active::XconnectMp2Mps : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps : public ydk::Entity
 {
     public:
-        XconnectMp2Mps();
-        ~XconnectMp2Mps();
+        XconnectMp2mps();
+        ~XconnectMp2mps();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1590,18 +1590,18 @@ class L2Vpnv2::Active::XconnectMp2Mps : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class XconnectMp2Mp; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp
+        class XconnectMp2mp; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp> > xconnect_mp2mp;
+        ydk::YList xconnect_mp2mp;
         
-}; // L2Vpnv2::Active::XconnectMp2Mps
+}; // L2vpnv2::Active::XconnectMp2mps
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp : public ydk::Entity
 {
     public:
-        XconnectMp2Mp();
-        ~XconnectMp2Mp();
+        XconnectMp2mp();
+        ~XconnectMp2mp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1623,14 +1623,14 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp : public ydk::Entity
         ydk::YLeaf vpn_mtu; //type: uint32
         ydk::YLeaf l2_encapsulation; //type: L2vpnBagAdEncap
         ydk::YLeaf xconnect_shutdown; //type: boolean
-        class Discovery; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery
+        class Discovery; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery> discovery;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery> discovery;
         
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery : public ydk::Entity
 {
     public:
         Discovery();
@@ -1659,18 +1659,18 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery : public ydk::En
         ydk::YLeaf number_a_cs; //type: uint32
         ydk::YLeaf number_pseudowires; //type: uint32
         ydk::YLeaf number_ce2c_es; //type: uint32
-        class RdValue; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue
-        class ImportRt; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt
-        class ExportRt; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt
+        class RdValue; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue
+        class ImportRt; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt
+        class ExportRt; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue> rd_value;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt> > import_rt;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt> > export_rt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue> rd_value;
+        ydk::YList import_rt;
+        ydk::YList export_rt;
         
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue : public ydk::Entity
 {
     public:
         RdValue();
@@ -1688,20 +1688,20 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue : publi
         std::string get_absolute_path() const override;
 
         ydk::YLeaf rd; //type: L2vpnAdRd
-        class Auto; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto
-        class TwoByteAs; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs
-        class FourByteAs; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs
-        class V4Addr; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr
+        class Auto; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::Auto
+        class TwoByteAs; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::TwoByteAs
+        class FourByteAs; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::FourByteAs
+        class V4Addr; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto> auto_;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs> two_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs> four_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr> v4_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::Auto> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::TwoByteAs> two_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::FourByteAs> four_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::V4Addr> v4_addr;
         
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::Auto : public ydk::Entity
 {
     public:
         Auto();
@@ -1721,10 +1721,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto :
         ydk::YLeaf router_id; //type: string
         ydk::YLeaf auto_index; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::Auto
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::Auto
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1744,10 +1744,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByt
         ydk::YLeaf two_byte_as; //type: uint16
         ydk::YLeaf four_byte_index; //type: uint32
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::TwoByteAs
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::TwoByteAs
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1767,10 +1767,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourBy
         ydk::YLeaf four_byte_as; //type: uint32
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::FourByteAs
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::FourByteAs
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -1790,10 +1790,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::RdValue::V4Addr
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::RdValue::V4Addr
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt : public ydk::Entity
 {
     public:
         ImportRt();
@@ -1811,20 +1811,20 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt : publ
         std::string get_absolute_path() const override;
 
         ydk::YLeaf rt; //type: L2vpnAdRt
-        class TwoByteAs; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs
-        class FourByteAs; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs
-        class V4Addr; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr
-        class EsImport; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport
+        class TwoByteAs; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::TwoByteAs
+        class FourByteAs; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::FourByteAs
+        class V4Addr; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::V4Addr
+        class EsImport; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::EsImport
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs> two_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs> four_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr> v4_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport> es_import;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::TwoByteAs> two_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::FourByteAs> four_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::V4Addr> v4_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::EsImport> es_import;
         
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1844,10 +1844,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoBy
         ydk::YLeaf two_byte_as; //type: uint16
         ydk::YLeaf four_byte_index; //type: uint32
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::TwoByteAs
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::TwoByteAs
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1867,10 +1867,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourB
         ydk::YLeaf four_byte_as; //type: uint32
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::FourByteAs
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::FourByteAs
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -1890,10 +1890,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Add
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::V4Addr
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::V4Addr
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -1913,10 +1913,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImp
         ydk::YLeaf high_bytes; //type: uint32
         ydk::YLeaf low_bytes; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ImportRt::EsImport
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ImportRt::EsImport
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt : public ydk::Entity
 {
     public:
         ExportRt();
@@ -1934,20 +1934,20 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt : publ
         std::string get_absolute_path() const override;
 
         ydk::YLeaf rt; //type: L2vpnAdRt
-        class TwoByteAs; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs
-        class FourByteAs; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs
-        class V4Addr; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr
-        class EsImport; //type: L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport
+        class TwoByteAs; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::TwoByteAs
+        class FourByteAs; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::FourByteAs
+        class V4Addr; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::V4Addr
+        class EsImport; //type: L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::EsImport
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs> two_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs> four_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr> v4_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport> es_import;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::TwoByteAs> two_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::FourByteAs> four_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::V4Addr> v4_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::EsImport> es_import;
         
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -1967,10 +1967,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoBy
         ydk::YLeaf two_byte_as; //type: uint16
         ydk::YLeaf four_byte_index; //type: uint32
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::TwoByteAs
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::TwoByteAs
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::FourByteAs : public ydk::Entity
 {
     public:
         FourByteAs();
@@ -1990,10 +1990,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourB
         ydk::YLeaf four_byte_as; //type: uint32
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::FourByteAs
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::FourByteAs
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -2013,10 +2013,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Add
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::V4Addr
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::V4Addr
 
 
-class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport : public ydk::Entity
+class L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::EsImport : public ydk::Entity
 {
     public:
         EsImport();
@@ -2036,10 +2036,10 @@ class L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImp
         ydk::YLeaf high_bytes; //type: uint32
         ydk::YLeaf low_bytes; //type: uint16
 
-}; // L2Vpnv2::Active::XconnectMp2Mps::XconnectMp2Mp::Discovery::ExportRt::EsImport
+}; // L2vpnv2::Active::XconnectMp2mps::XconnectMp2mp::Discovery::ExportRt::EsImport
 
 
-class L2Vpnv2::Active::Indexes : public ydk::Entity
+class L2vpnv2::Active::Indexes : public ydk::Entity
 {
     public:
         Indexes();
@@ -2056,14 +2056,14 @@ class L2Vpnv2::Active::Indexes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Index; //type: L2Vpnv2::Active::Indexes::Index
+        class Index; //type: L2vpnv2::Active::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::Indexes::Index> > index_;
+        ydk::YList index_;
         
-}; // L2Vpnv2::Active::Indexes
+}; // L2vpnv2::Active::Indexes
 
 
-class L2Vpnv2::Active::Indexes::Index : public ydk::Entity
+class L2vpnv2::Active::Indexes::Index : public ydk::Entity
 {
     public:
         Index();
@@ -2089,10 +2089,10 @@ class L2Vpnv2::Active::Indexes::Index : public ydk::Entity
         ydk::YLeaf max_num_id_mgr; //type: uint32
         ydk::YLeaf num_id_mgr_in_use; //type: uint32
 
-}; // L2Vpnv2::Active::Indexes::Index
+}; // L2vpnv2::Active::Indexes::Index
 
 
-class L2Vpnv2::Active::XconnectSummary : public ydk::Entity
+class L2vpnv2::Active::XconnectSummary : public ydk::Entity
 {
     public:
         XconnectSummary();
@@ -2143,10 +2143,10 @@ class L2Vpnv2::Active::XconnectSummary : public ydk::Entity
         ydk::YLeaf unresolved_backup_interface_xconnects; //type: uint32
         ydk::YLeaf standby_backup_interface_xconnects; //type: uint32
 
-}; // L2Vpnv2::Active::XconnectSummary
+}; // L2vpnv2::Active::XconnectSummary
 
 
-class L2Vpnv2::Active::ProcFsm : public ydk::Entity
+class L2vpnv2::Active::ProcFsm : public ydk::Entity
 {
     public:
         ProcFsm();
@@ -2167,26 +2167,26 @@ class L2Vpnv2::Active::ProcFsm : public ydk::Entity
         ydk::YLeaf process_state; //type: uint8
         ydk::YLeaf sync_flags; //type: uint32
         ydk::YLeaf sw_install_in_progress; //type: boolean
-        class FailoverStatus; //type: L2Vpnv2::Active::ProcFsm::FailoverStatus
-        class NsrStatus; //type: L2Vpnv2::Active::ProcFsm::NsrStatus
-        class IssuStatus; //type: L2Vpnv2::Active::ProcFsm::IssuStatus
-        class StateTransitionTime; //type: L2Vpnv2::Active::ProcFsm::StateTransitionTime
-        class XidInfo; //type: L2Vpnv2::Active::ProcFsm::XidInfo
-        class ReportCard; //type: L2Vpnv2::Active::ProcFsm::ReportCard
-        class EventHistory; //type: L2Vpnv2::Active::ProcFsm::EventHistory
+        class FailoverStatus; //type: L2vpnv2::Active::ProcFsm::FailoverStatus
+        class NsrStatus; //type: L2vpnv2::Active::ProcFsm::NsrStatus
+        class IssuStatus; //type: L2vpnv2::Active::ProcFsm::IssuStatus
+        class StateTransitionTime; //type: L2vpnv2::Active::ProcFsm::StateTransitionTime
+        class XidInfo; //type: L2vpnv2::Active::ProcFsm::XidInfo
+        class ReportCard; //type: L2vpnv2::Active::ProcFsm::ReportCard
+        class EventHistory; //type: L2vpnv2::Active::ProcFsm::EventHistory
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::FailoverStatus> failover_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::NsrStatus> nsr_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::IssuStatus> issu_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::StateTransitionTime> > state_transition_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::XidInfo> > xid_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::ReportCard> > report_card;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::EventHistory> > event_history;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::ProcFsm::FailoverStatus> failover_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::ProcFsm::NsrStatus> nsr_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::ProcFsm::IssuStatus> issu_status;
+        ydk::YList state_transition_time;
+        ydk::YList xid_info;
+        ydk::YList report_card;
+        ydk::YList event_history;
         
-}; // L2Vpnv2::Active::ProcFsm
+}; // L2vpnv2::Active::ProcFsm
 
 
-class L2Vpnv2::Active::ProcFsm::FailoverStatus : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::FailoverStatus : public ydk::Entity
 {
     public:
         FailoverStatus();
@@ -2207,10 +2207,10 @@ class L2Vpnv2::Active::ProcFsm::FailoverStatus : public ydk::Entity
         ydk::YLeaf start_time; //type: uint32
         ydk::YLeaf master_time; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::FailoverStatus
+}; // L2vpnv2::Active::ProcFsm::FailoverStatus
 
 
-class L2Vpnv2::Active::ProcFsm::NsrStatus : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::NsrStatus : public ydk::Entity
 {
     public:
         NsrStatus();
@@ -2228,16 +2228,16 @@ class L2Vpnv2::Active::ProcFsm::NsrStatus : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf role; //type: L2vpnProcRole
-        class IdtStatus; //type: L2Vpnv2::Active::ProcFsm::NsrStatus::IdtStatus
-        class PreviOusIdtStatus; //type: L2Vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus
+        class IdtStatus; //type: L2vpnv2::Active::ProcFsm::NsrStatus::IdtStatus
+        class PreviOusIdtStatus; //type: L2vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::NsrStatus::IdtStatus> idt_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus> previ_ous_idt_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::ProcFsm::NsrStatus::IdtStatus> idt_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus> previ_ous_idt_status;
         
-}; // L2Vpnv2::Active::ProcFsm::NsrStatus
+}; // L2vpnv2::Active::ProcFsm::NsrStatus
 
 
-class L2Vpnv2::Active::ProcFsm::NsrStatus::IdtStatus : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::NsrStatus::IdtStatus : public ydk::Entity
 {
     public:
         IdtStatus();
@@ -2261,10 +2261,10 @@ class L2Vpnv2::Active::ProcFsm::NsrStatus::IdtStatus : public ydk::Entity
         ydk::YLeaf declare_time; //type: uint32
         ydk::YLeaf withdraw_time; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::NsrStatus::IdtStatus
+}; // L2vpnv2::Active::ProcFsm::NsrStatus::IdtStatus
 
 
-class L2Vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus : public ydk::Entity
 {
     public:
         PreviOusIdtStatus();
@@ -2288,10 +2288,10 @@ class L2Vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus : public ydk::Entit
         ydk::YLeaf declare_time; //type: uint32
         ydk::YLeaf withdraw_time; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus
+}; // L2vpnv2::Active::ProcFsm::NsrStatus::PreviOusIdtStatus
 
 
-class L2Vpnv2::Active::ProcFsm::IssuStatus : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::IssuStatus : public ydk::Entity
 {
     public:
         IssuStatus();
@@ -2309,16 +2309,16 @@ class L2Vpnv2::Active::ProcFsm::IssuStatus : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf role; //type: L2vpnProcRole
-        class IdtStatus; //type: L2Vpnv2::Active::ProcFsm::IssuStatus::IdtStatus
-        class PreviOusIdtStatus; //type: L2Vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus
+        class IdtStatus; //type: L2vpnv2::Active::ProcFsm::IssuStatus::IdtStatus
+        class PreviOusIdtStatus; //type: L2vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::IssuStatus::IdtStatus> idt_status;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus> previ_ous_idt_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::ProcFsm::IssuStatus::IdtStatus> idt_status;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus> previ_ous_idt_status;
         
-}; // L2Vpnv2::Active::ProcFsm::IssuStatus
+}; // L2vpnv2::Active::ProcFsm::IssuStatus
 
 
-class L2Vpnv2::Active::ProcFsm::IssuStatus::IdtStatus : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::IssuStatus::IdtStatus : public ydk::Entity
 {
     public:
         IdtStatus();
@@ -2342,10 +2342,10 @@ class L2Vpnv2::Active::ProcFsm::IssuStatus::IdtStatus : public ydk::Entity
         ydk::YLeaf declare_time; //type: uint32
         ydk::YLeaf withdraw_time; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::IssuStatus::IdtStatus
+}; // L2vpnv2::Active::ProcFsm::IssuStatus::IdtStatus
 
 
-class L2Vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus : public ydk::Entity
 {
     public:
         PreviOusIdtStatus();
@@ -2369,10 +2369,10 @@ class L2Vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus : public ydk::Enti
         ydk::YLeaf declare_time; //type: uint32
         ydk::YLeaf withdraw_time; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus
+}; // L2vpnv2::Active::ProcFsm::IssuStatus::PreviOusIdtStatus
 
 
-class L2Vpnv2::Active::ProcFsm::StateTransitionTime : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::StateTransitionTime : public ydk::Entity
 {
     public:
         StateTransitionTime();
@@ -2391,10 +2391,10 @@ class L2Vpnv2::Active::ProcFsm::StateTransitionTime : public ydk::Entity
 
         ydk::YLeaf entry; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::StateTransitionTime
+}; // L2vpnv2::Active::ProcFsm::StateTransitionTime
 
 
-class L2Vpnv2::Active::ProcFsm::XidInfo : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::XidInfo : public ydk::Entity
 {
     public:
         XidInfo();
@@ -2414,10 +2414,10 @@ class L2Vpnv2::Active::ProcFsm::XidInfo : public ydk::Entity
         ydk::YLeaf app_type; //type: L2vpnIdMgrAppBag
         ydk::YLeaf sent_ids; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::XidInfo
+}; // L2vpnv2::Active::ProcFsm::XidInfo
 
 
-class L2Vpnv2::Active::ProcFsm::ReportCard : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::ReportCard : public ydk::Entity
 {
     public:
         ReportCard();
@@ -2440,10 +2440,10 @@ class L2Vpnv2::Active::ProcFsm::ReportCard : public ydk::Entity
         ydk::YLeaf idt_time; //type: uint32
         ydk::YLeaf collaborator_skipped; //type: boolean
 
-}; // L2Vpnv2::Active::ProcFsm::ReportCard
+}; // L2vpnv2::Active::ProcFsm::ReportCard
 
 
-class L2Vpnv2::Active::ProcFsm::EventHistory : public ydk::Entity
+class L2vpnv2::Active::ProcFsm::EventHistory : public ydk::Entity
 {
     public:
         EventHistory();
@@ -2466,10 +2466,10 @@ class L2Vpnv2::Active::ProcFsm::EventHistory : public ydk::Entity
         ydk::YLeaf process_collaborator; //type: uint16
         ydk::YLeaf event_timestamp; //type: uint32
 
-}; // L2Vpnv2::Active::ProcFsm::EventHistory
+}; // L2vpnv2::Active::ProcFsm::EventHistory
 
 
-class L2Vpnv2::Active::MstpPorts : public ydk::Entity
+class L2vpnv2::Active::MstpPorts : public ydk::Entity
 {
     public:
         MstpPorts();
@@ -2486,14 +2486,14 @@ class L2Vpnv2::Active::MstpPorts : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class MstpPort; //type: L2Vpnv2::Active::MstpPorts::MstpPort
+        class MstpPort; //type: L2vpnv2::Active::MstpPorts::MstpPort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::MstpPorts::MstpPort> > mstp_port;
+        ydk::YList mstp_port;
         
-}; // L2Vpnv2::Active::MstpPorts
+}; // L2vpnv2::Active::MstpPorts
 
 
-class L2Vpnv2::Active::MstpPorts::MstpPort : public ydk::Entity
+class L2vpnv2::Active::MstpPorts::MstpPort : public ydk::Entity
 {
     public:
         MstpPort();
@@ -2515,14 +2515,14 @@ class L2Vpnv2::Active::MstpPorts::MstpPort : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf protected_; //type: boolean
         ydk::YLeaf reference_count; //type: uint32
-        class MstiEntry; //type: L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry
+        class MstiEntry; //type: L2vpnv2::Active::MstpPorts::MstpPort::MstiEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry> > msti_entry;
+        ydk::YList msti_entry;
         
-}; // L2Vpnv2::Active::MstpPorts::MstpPort
+}; // L2vpnv2::Active::MstpPorts::MstpPort
 
 
-class L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry : public ydk::Entity
+class L2vpnv2::Active::MstpPorts::MstpPort::MstiEntry : public ydk::Entity
 {
     public:
         MstiEntry();
@@ -2547,14 +2547,14 @@ class L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry : public ydk::Entity
         ydk::YLeaf bd_count; //type: uint32
         ydk::YLeaf msti_flags; //type: uint32
         ydk::YLeaf msti_state; //type: L2vpnMstiState
-        class BdEntry; //type: L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry
+        class BdEntry; //type: L2vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry> > bd_entry;
+        ydk::YList bd_entry;
         
-}; // L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry
+}; // L2vpnv2::Active::MstpPorts::MstpPort::MstiEntry
 
 
-class L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry : public ydk::Entity
+class L2vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry : public ydk::Entity
 {
     public:
         BdEntry();
@@ -2573,10 +2573,10 @@ class L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry : public ydk::Ent
         ydk::YLeaf bdid; //type: uint32
         ydk::YLeaf bdif_count; //type: uint32
 
-}; // L2Vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry
+}; // L2vpnv2::Active::MstpPorts::MstpPort::MstiEntry::BdEntry
 
 
-class L2Vpnv2::Active::GenericInterfaceListDetails : public ydk::Entity
+class L2vpnv2::Active::GenericInterfaceListDetails : public ydk::Entity
 {
     public:
         GenericInterfaceListDetails();
@@ -2593,14 +2593,14 @@ class L2Vpnv2::Active::GenericInterfaceListDetails : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class GenericInterfaceListDetail; //type: L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail
+        class GenericInterfaceListDetail; //type: L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail> > generic_interface_list_detail;
+        ydk::YList generic_interface_list_detail;
         
-}; // L2Vpnv2::Active::GenericInterfaceListDetails
+}; // L2vpnv2::Active::GenericInterfaceListDetails
 
 
-class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail : public ydk::Entity
+class L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail : public ydk::Entity
 {
     public:
         GenericInterfaceListDetail();
@@ -2622,20 +2622,20 @@ class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail :
         ydk::YLeaf is_provisioned; //type: boolean
         ydk::YLeaf psedowire_ether_items; //type: uint32
         ydk::YLeaf pseudowire_iw_items; //type: uint32
-        class Summary; //type: L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary
-        class Interface; //type: L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Interface
-        class PseudowireEtherRange; //type: L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireEtherRange
-        class PseudowireIwRange; //type: L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireIwRange
+        class Summary; //type: L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary
+        class Interface; //type: L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Interface
+        class PseudowireEtherRange; //type: L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireEtherRange
+        class PseudowireIwRange; //type: L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireIwRange
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary> summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Interface> > interface;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireEtherRange> > pseudowire_ether_range;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireIwRange> > pseudowire_iw_range;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary> summary;
+        ydk::YList interface;
+        ydk::YList pseudowire_ether_range;
+        ydk::YList pseudowire_iw_range;
         
-}; // L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail
+}; // L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail
 
 
-class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary : public ydk::Entity
+class L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -2655,14 +2655,14 @@ class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::
         ydk::YLeaf interface_list_id; //type: uint32
         ydk::YLeaf number_of_interfaces; //type: uint32
         ydk::YLeaf items; //type: uint32
-        class Interface; //type: L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary::Interface
+        class Interface; //type: L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary::Interface> > interface;
+        ydk::YList interface;
         
-}; // L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary
+}; // L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary
 
 
-class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary::Interface : public ydk::Entity
+class L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2683,10 +2683,10 @@ class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::
         ydk::YLeaf not_supported_replications; //type: uint32
         ydk::YLeaf is_fib_downloaded; //type: boolean
 
-}; // L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary::Interface
+}; // L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Summary::Interface
 
 
-class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Interface : public ydk::Entity
+class L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -2707,10 +2707,10 @@ class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::
         ydk::YLeaf not_supported_replications; //type: uint32
         ydk::YLeaf is_fib_downloaded; //type: boolean
 
-}; // L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Interface
+}; // L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::Interface
 
 
-class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireEtherRange : public ydk::Entity
+class L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireEtherRange : public ydk::Entity
 {
     public:
         PseudowireEtherRange();
@@ -2729,10 +2729,10 @@ class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::
         ydk::YLeaf lower; //type: uint16
         ydk::YLeaf upper; //type: uint16
 
-}; // L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireEtherRange
+}; // L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireEtherRange
 
 
-class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireIwRange : public ydk::Entity
+class L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireIwRange : public ydk::Entity
 {
     public:
         PseudowireIwRange();
@@ -2751,14 +2751,14 @@ class L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::
         ydk::YLeaf lower; //type: uint16
         ydk::YLeaf upper; //type: uint16
 
-}; // L2Vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireIwRange
+}; // L2vpnv2::Active::GenericInterfaceListDetails::GenericInterfaceListDetail::PseudowireIwRange
 
 
-class L2Vpnv2::Active::L2VpnResourceState : public ydk::Entity
+class L2vpnv2::Active::L2vpnResourceState : public ydk::Entity
 {
     public:
-        L2VpnResourceState();
-        ~L2VpnResourceState();
+        L2vpnResourceState();
+        ~L2vpnResourceState();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2773,10 +2773,10 @@ class L2Vpnv2::Active::L2VpnResourceState : public ydk::Entity
 
         ydk::YLeaf resource_out_of_memory_state; //type: uint32
 
-}; // L2Vpnv2::Active::L2VpnResourceState
+}; // L2vpnv2::Active::L2vpnResourceState
 
 
-class L2Vpnv2::Active::BridgeDomains : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains : public ydk::Entity
 {
     public:
         BridgeDomains();
@@ -2793,14 +2793,14 @@ class L2Vpnv2::Active::BridgeDomains : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class BridgeDomain; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain
+        class BridgeDomain; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain> > bridge_domain;
+        ydk::YList bridge_domain;
         
-}; // L2Vpnv2::Active::BridgeDomains
+}; // L2vpnv2::Active::BridgeDomains
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain : public ydk::Entity
 {
     public:
         BridgeDomain();
@@ -2819,22 +2819,22 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain : public ydk::Entity
 
         ydk::YLeaf bridge_domain_group_name; //type: string
         ydk::YLeaf bridge_domain_name; //type: string
-        class BridgeAccessVfiTable; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable
-        class BridgeCoreVfiTable; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeCoreVfiTable
-        class BridgeAcs; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAcs
-        class BridgeAccessPws; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws
-        class BridgeDomainInfo; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo
+        class BridgeAccessVfiTable; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable
+        class BridgeCoreVfiTable; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeCoreVfiTable
+        class BridgeAcs; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAcs
+        class BridgeAccessPws; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws
+        class BridgeDomainInfo; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable> bridge_access_vfi_table;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeCoreVfiTable> bridge_core_vfi_table;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAcs> bridge_acs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws> bridge_access_pws;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo> bridge_domain_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable> bridge_access_vfi_table;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeCoreVfiTable> bridge_core_vfi_table;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAcs> bridge_acs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws> bridge_access_pws;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo> bridge_domain_info;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable : public ydk::Entity
 {
     public:
         BridgeAccessVfiTable();
@@ -2851,14 +2851,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class BridgePws; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws
+        class BridgePws; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws> bridge_pws;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws> bridge_pws;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws : public ydk::Entity
 {
     public:
         BridgePws();
@@ -2875,14 +2875,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class BridgePw; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw
+        class BridgePw; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw> > bridge_pw;
+        ydk::YList bridge_pw;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw : public ydk::Entity
 {
     public:
         BridgePw();
@@ -2905,18 +2905,18 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf ve_id_vpls_id_0_3; //type: uint32
         ydk::YLeaf vpls_id_4_7; //type: uint32
         ydk::YLeaf is_access; //type: boolean
-        class Pseudowire; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire
-        class SecurityParameters; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters
-        class StaticMac; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::StaticMac
+        class Pseudowire; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire
+        class SecurityParameters; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters
+        class StaticMac; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::StaticMac
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire> pseudowire;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters> security_parameters;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::StaticMac> > static_mac;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire> pseudowire;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters> security_parameters;
+        ydk::YList static_mac;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire : public ydk::Entity
 {
     public:
         Pseudowire();
@@ -3015,30 +3015,30 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf admited_bw; //type: uint32
         ydk::YLeaf forward_class; //type: uint8
         ydk::YLeaf table_policy_name; //type: string
-        class PeerId; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId
-        class EncapsulationInfo; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo
-        class LocalInterface; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface
-        class RemoteInterface; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface
-        class PreferredPath; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PreferredPath
-        class LocalSignalling; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalSignalling
-        class RemoteSignalling; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteSignalling
-        class Statistics; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics
-        class P2MpPw; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2MpPw
+        class PeerId; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId
+        class EncapsulationInfo; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo
+        class LocalInterface; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface
+        class RemoteInterface; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface
+        class PreferredPath; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PreferredPath
+        class LocalSignalling; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalSignalling
+        class RemoteSignalling; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteSignalling
+        class Statistics; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics
+        class P2mpPw; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId> peer_id;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo> encapsulation_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface> local_interface;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface> remote_interface;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PreferredPath> preferred_path;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalSignalling> local_signalling;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteSignalling> remote_signalling;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics> statistics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2MpPw> p2mp_pw;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId> peer_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo> encapsulation_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface> local_interface;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface> remote_interface;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PreferredPath> preferred_path;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalSignalling> local_signalling;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteSignalling> remote_signalling;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw> p2mp_pw;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId : public ydk::Entity
 {
     public:
         PeerId();
@@ -3060,10 +3060,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf ipv6_peer_id; //type: string
         ydk::YLeaf internal_label; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo : public ydk::Entity
 {
     public:
         EncapsulationInfo();
@@ -3081,16 +3081,16 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         std::string get_absolute_path() const override;
 
         ydk::YLeaf encapsulation; //type: L2vpnEncapMethod
-        class Atom; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom
-        class L2Tpv3; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2Tpv3
+        class Atom; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom
+        class L2tpv3; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2tpv3
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom> atom;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2Tpv3> l2tpv3;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom> atom;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2tpv3> l2tpv3;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom : public ydk::Entity
 {
     public:
         Atom();
@@ -3140,18 +3140,18 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf rem_taii; //type: string
         ydk::YLeaf lsd_rewrite_failed; //type: boolean
         ydk::YLeaf ldp_label_advertisment_failed; //type: boolean
-        class LocalAgi; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi
-        class RemoteAgi; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi
-        class MultiSegmentPseudowireStats; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats
+        class LocalAgi; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi
+        class RemoteAgi; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi
+        class MultiSegmentPseudowireStats; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi> local_agi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi> remote_agi;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats> multi_segment_pseudowire_stats;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi> local_agi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi> remote_agi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats> multi_segment_pseudowire_stats;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi : public ydk::Entity
 {
     public:
         LocalAgi();
@@ -3169,18 +3169,18 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
-        class TwoByteAs; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs
-        class V4Addr; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr
+        class Auto; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
+        class TwoByteAs; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs
+        class V4Addr; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto> auto_;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs> two_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr> v4_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs> two_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr> v4_addr;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto : public ydk::Entity
 {
     public:
         Auto();
@@ -3200,10 +3200,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::Auto
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -3223,10 +3223,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf two_byte_as; //type: uint16
         ydk::YLeaf four_byte_index; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::TwoByteAs
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -3246,10 +3246,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::LocalAgi::V4Addr
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi : public ydk::Entity
 {
     public:
         RemoteAgi();
@@ -3267,18 +3267,18 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vpls_id_type; //type: L2vpnAdVplsId
-        class Auto; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
-        class TwoByteAs; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs
-        class V4Addr; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr
+        class Auto; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
+        class TwoByteAs; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs
+        class V4Addr; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto> auto_;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs> two_byte_as;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr> v4_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto> auto_;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs> two_byte_as;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr> v4_addr;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto : public ydk::Entity
 {
     public:
         Auto();
@@ -3298,10 +3298,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf asn; //type: uint16
         ydk::YLeaf vpn_id; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::Auto
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs : public ydk::Entity
 {
     public:
         TwoByteAs();
@@ -3321,10 +3321,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf two_byte_as; //type: uint16
         ydk::YLeaf four_byte_index; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::TwoByteAs
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr : public ydk::Entity
 {
     public:
         V4Addr();
@@ -3344,10 +3344,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf two_byte_index; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats : public ydk::Entity
 {
     public:
         MultiSegmentPseudowireStats();
@@ -3367,14 +3367,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf received_packets; //type: uint64
         ydk::YLeaf received_bytes; //type: uint64
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2Tpv3 : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2tpv3 : public ydk::Entity
 {
     public:
-        L2Tpv3();
-        ~L2Tpv3();
+        L2tpv3();
+        ~L2tpv3();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3405,15 +3405,15 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf local_cookie_high_value; //type: uint32
         ydk::YLeaf remote_cookie_high_value; //type: uint32
         ydk::YLeaf remote_circuit_status_up; //type: boolean
-        ydk::YLeaf tunnel_state; //type: L2vpnL2TpTunnelState
+        ydk::YLeaf tunnel_state; //type: L2vpnL2tpTunnelState
         ydk::YLeaf local_secondary_cookie_size; //type: uint8
         ydk::YLeaf local_secondary_cookie_low_value; //type: uint32
         ydk::YLeaf local_secondary_cookie_high_value; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2Tpv3
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2tpv3
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface : public ydk::Entity
 {
     public:
         LocalInterface();
@@ -3433,14 +3433,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf name; //type: string
         ydk::YLeaf mtu; //type: uint32
         ydk::YLeaf payload_bytes; //type: uint16
-        class Parameters; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters
+        class Parameters; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters> parameters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters> parameters;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters : public ydk::Entity
 {
     public:
         Parameters();
@@ -3458,26 +3458,26 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: L2vpnInterface
-        class Ethernet; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet
-        class Vlan; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan
-        class Tdm; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm
-        class Atm; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm
-        class Fr; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr
-        class PseudowireEther; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther
-        class PseudowireIw; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw
+        class Ethernet; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet
+        class Vlan; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan
+        class Tdm; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm
+        class Atm; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm
+        class Fr; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr
+        class PseudowireEther; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther
+        class PseudowireIw; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet> ethernet;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan> vlan;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm> tdm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm> atm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr> fr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther> pseudowire_ether;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw> pseudowire_iw;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet> ethernet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm> tdm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm> atm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr> fr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther> pseudowire_ether;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw> pseudowire_iw;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet : public ydk::Entity
 {
     public:
         Ethernet();
@@ -3496,10 +3496,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf xconnect_tags; //type: uint8
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Ethernet
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -3521,16 +3521,16 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf simple_efp; //type: uint8
         ydk::YLeaf encapsulation_type; //type: uint8
         ydk::YLeaf outer_tag; //type: uint16
-        class RewriteTag; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::RewriteTag
-        class VlanRange; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange
+        class RewriteTag; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::RewriteTag
+        class VlanRange; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::RewriteTag> > rewrite_tag;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange> > vlan_range;
+        ydk::YList rewrite_tag;
+        ydk::YList vlan_range;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::RewriteTag : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::RewriteTag : public ydk::Entity
 {
     public:
         RewriteTag();
@@ -3549,10 +3549,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf entry; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::RewriteTag
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::RewriteTag
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange : public ydk::Entity
 {
     public:
         VlanRange();
@@ -3572,10 +3572,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf lower; //type: uint16
         ydk::YLeaf upper; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Vlan::VlanRange
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm : public ydk::Entity
 {
     public:
         Tdm();
@@ -3595,14 +3595,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf timeslot_group; //type: string
         ydk::YLeaf timeslot_rate; //type: uint8
         ydk::YLeaf tdm_mode; //type: L2vpnTdmMode
-        class TdmOptions; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions
+        class TdmOptions; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions> tdm_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions> tdm_options;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
 {
     public:
         TdmOptions();
@@ -3629,10 +3629,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf timestamp_clock_freq; //type: uint16
         ydk::YLeaf ssrc; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Tdm::TdmOptions
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm : public ydk::Entity
 {
     public:
         Atm();
@@ -3655,10 +3655,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf vpi; //type: uint16
         ydk::YLeaf vci; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Atm
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr : public ydk::Entity
 {
     public:
         Fr();
@@ -3678,10 +3678,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf fr_mode; //type: L2vpnFrMode
         ydk::YLeaf dlci; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::Fr
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther : public ydk::Entity
 {
     public:
         PseudowireEther();
@@ -3700,14 +3700,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf is_valid; //type: boolean
         ydk::YLeaf internal_label; //type: uint32
-        class InterfaceList; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList
+        class InterfaceList; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList> interface_list;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList : public ydk::Entity
 {
     public:
         InterfaceList();
@@ -3726,14 +3726,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf interface_list_name; //type: string
         ydk::YLeaf interface_list_id; //type: uint32
-        class Interface; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
+        class Interface; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface> > interface;
+        ydk::YList interface;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3753,10 +3753,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf replicate_status; //type: IflistRepStatus
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireEther::InterfaceList::Interface
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw : public ydk::Entity
 {
     public:
         PseudowireIw();
@@ -3775,14 +3775,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf is_valid; //type: boolean
         ydk::YLeaf internal_label; //type: uint32
-        class InterfaceList; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList
+        class InterfaceList; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList> interface_list;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList> interface_list;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList : public ydk::Entity
 {
     public:
         InterfaceList();
@@ -3801,14 +3801,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf interface_list_name; //type: string
         ydk::YLeaf interface_list_id; //type: uint32
-        class Interface; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
+        class Interface; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface> > interface;
+        ydk::YList interface;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -3828,10 +3828,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf replicate_status; //type: IflistRepStatus
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface::Parameters::PseudowireIw::InterfaceList::Interface
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface : public ydk::Entity
 {
     public:
         RemoteInterface();
@@ -3851,14 +3851,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf name; //type: string
         ydk::YLeaf mtu; //type: uint32
         ydk::YLeaf payload_bytes; //type: uint16
-        class Parameters; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters
+        class Parameters; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters> parameters;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters> parameters;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters : public ydk::Entity
 {
     public:
         Parameters();
@@ -3876,26 +3876,26 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         std::string get_absolute_path() const override;
 
         ydk::YLeaf type; //type: L2vpnInterface
-        class Ethernet; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet
-        class Vlan; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan
-        class Tdm; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm
-        class Atm; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm
-        class Fr; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Fr
-        class PseudowireEther; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireEther
-        class PseudowireIw; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireIw
+        class Ethernet; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet
+        class Vlan; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan
+        class Tdm; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm
+        class Atm; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm
+        class Fr; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Fr
+        class PseudowireEther; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireEther
+        class PseudowireIw; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireIw
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet> ethernet;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan> vlan;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm> tdm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm> atm;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Fr> fr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireEther> pseudowire_ether;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireIw> pseudowire_iw;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet> ethernet;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm> tdm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm> atm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Fr> fr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireEther> pseudowire_ether;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::PseudowireIw> pseudowire_iw;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet : public ydk::Entity
 {
     public:
         Ethernet();
@@ -3914,10 +3914,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf xconnect_tags; //type: uint8
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Ethernet
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -3939,16 +3939,16 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf simple_efp; //type: uint8
         ydk::YLeaf encapsulation_type; //type: uint8
         ydk::YLeaf outer_tag; //type: uint16
-        class RewriteTag; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::RewriteTag
-        class VlanRange; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::VlanRange
+        class RewriteTag; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::RewriteTag
+        class VlanRange; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::VlanRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::RewriteTag> > rewrite_tag;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::VlanRange> > vlan_range;
+        ydk::YList rewrite_tag;
+        ydk::YList vlan_range;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::RewriteTag : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::RewriteTag : public ydk::Entity
 {
     public:
         RewriteTag();
@@ -3967,10 +3967,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
 
         ydk::YLeaf entry; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::RewriteTag
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::RewriteTag
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::VlanRange : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::VlanRange : public ydk::Entity
 {
     public:
         VlanRange();
@@ -3990,10 +3990,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf lower; //type: uint16
         ydk::YLeaf upper; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::VlanRange
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Vlan::VlanRange
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm : public ydk::Entity
 {
     public:
         Tdm();
@@ -4013,14 +4013,14 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf timeslot_group; //type: string
         ydk::YLeaf timeslot_rate; //type: uint8
         ydk::YLeaf tdm_mode; //type: L2vpnTdmMode
-        class TdmOptions; //type: L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions
+        class TdmOptions; //type: L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions> tdm_options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions> tdm_options;
         
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions : public ydk::Entity
 {
     public:
         TdmOptions();
@@ -4047,10 +4047,10 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf timestamp_clock_freq; //type: uint16
         ydk::YLeaf ssrc; //type: uint32
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Tdm::TdmOptions
 
 
-class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm : public ydk::Entity
+class L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm : public ydk::Entity
 {
     public:
         Atm();
@@ -4073,7 +4073,7 @@ class L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::Bridge
         ydk::YLeaf vpi; //type: uint16
         ydk::YLeaf vci; //type: uint16
 
-}; // L2Vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm
+}; // L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface::Parameters::Atm
 
 
 }

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_infra_alarm_logger_oper {
 AlarmLogger::AlarmLogger()
     :
     buffer_status(std::make_shared<AlarmLogger::BufferStatus>())
-	,alarms(std::make_shared<AlarmLogger::Alarms>())
+    , alarms(std::make_shared<AlarmLogger::Alarms>())
 {
     buffer_status->parent = this;
     alarms->parent = this;
 
-    yang_name = "alarm-logger"; yang_parent_name = "Cisco-IOS-XR-infra-alarm-logger-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "alarm-logger"; yang_parent_name = "Cisco-IOS-XR-infra-alarm-logger-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AlarmLogger::~AlarmLogger()
@@ -28,6 +28,7 @@ AlarmLogger::~AlarmLogger()
 
 bool AlarmLogger::has_data() const
 {
+    if (is_presence_container) return true;
     return (buffer_status !=  nullptr && buffer_status->has_data())
 	|| (alarms !=  nullptr && alarms->has_data());
 }
@@ -144,7 +145,7 @@ AlarmLogger::BufferStatus::BufferStatus()
     severity_filter{YType::enumeration, "severity-filter"}
 {
 
-    yang_name = "buffer-status"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "buffer-status"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmLogger::BufferStatus::~BufferStatus()
@@ -153,6 +154,7 @@ AlarmLogger::BufferStatus::~BufferStatus()
 
 bool AlarmLogger::BufferStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return log_buffer_size.is_set
 	|| max_log_buffer_size.is_set
 	|| record_count.is_set
@@ -276,9 +278,11 @@ bool AlarmLogger::BufferStatus::has_leaf_or_child_of_name(const std::string & na
 }
 
 AlarmLogger::Alarms::Alarms()
+    :
+    alarm(this, {"event_id"})
 {
 
-    yang_name = "alarms"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarms"; yang_parent_name = "alarm-logger"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmLogger::Alarms::~Alarms()
@@ -287,7 +291,8 @@ AlarmLogger::Alarms::~Alarms()
 
 bool AlarmLogger::Alarms::has_data() const
 {
-    for (std::size_t index=0; index<alarm.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm.len(); index++)
     {
         if(alarm[index]->has_data())
             return true;
@@ -297,7 +302,7 @@ bool AlarmLogger::Alarms::has_data() const
 
 bool AlarmLogger::Alarms::has_operation() const
 {
-    for (std::size_t index=0; index<alarm.size(); index++)
+    for (std::size_t index=0; index<alarm.len(); index++)
     {
         if(alarm[index]->has_operation())
             return true;
@@ -334,7 +339,7 @@ std::shared_ptr<Entity> AlarmLogger::Alarms::get_child_by_name(const std::string
     {
         auto c = std::make_shared<AlarmLogger::Alarms::Alarm>();
         c->parent = this;
-        alarm.push_back(c);
+        alarm.append(c);
         return c;
     }
 
@@ -346,7 +351,7 @@ std::map<std::string, std::shared_ptr<Entity>> AlarmLogger::Alarms::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm)
+    for (auto c : alarm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -374,7 +379,7 @@ bool AlarmLogger::Alarms::has_leaf_or_child_of_name(const std::string & name) co
 
 AlarmLogger::Alarms::Alarm::Alarm()
     :
-    event_id{YType::int32, "event-id"},
+    event_id{YType::uint32, "event-id"},
     source_id{YType::str, "source-id"},
     timestamp{YType::uint64, "timestamp"},
     category{YType::str, "category"},
@@ -387,7 +392,7 @@ AlarmLogger::Alarms::Alarm::Alarm()
     additional_text{YType::str, "additional-text"}
 {
 
-    yang_name = "alarm"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AlarmLogger::Alarms::Alarm::~Alarm()
@@ -396,6 +401,7 @@ AlarmLogger::Alarms::Alarm::~Alarm()
 
 bool AlarmLogger::Alarms::Alarm::has_data() const
 {
+    if (is_presence_container) return true;
     return event_id.is_set
 	|| source_id.is_set
 	|| timestamp.is_set
@@ -435,7 +441,8 @@ std::string AlarmLogger::Alarms::Alarm::get_absolute_path() const
 std::string AlarmLogger::Alarms::Alarm::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "alarm" <<"[event-id='" <<event_id <<"']";
+    path_buffer << "alarm";
+    ADD_KEY_TOKEN(event_id, "event-id");
     return path_buffer.str();
 }
 

@@ -12,7 +12,7 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -20,22 +20,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -44,14 +45,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -64,19 +65,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -104,7 +105,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -124,14 +125,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -139,22 +140,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -163,14 +165,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -183,19 +185,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -223,7 +225,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -243,14 +245,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::L2tpv2()
     :
     pw_flags{YType::uint8, "pw-flags"},
     tos_val{YType::uint8, "tos-val"},
@@ -261,22 +263,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     xconnect_id{YType::uint32, "xconnect-id"},
     next_hop_address{YType::str, "next-hop-address"},
     source_address{YType::str, "source-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::~L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::~L2tpv2()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_flags.is_set
 	|| tos_val.is_set
 	|| ttl.is_set
@@ -290,7 +293,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_flags.yfilter)
@@ -306,14 +309,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -331,13 +334,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local>();
         }
         return local;
     }
@@ -346,7 +349,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote>();
         }
         return remote;
     }
@@ -354,7 +357,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -371,7 +374,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-flags")
     {
@@ -429,7 +432,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-flags")
     {
@@ -469,47 +472,48 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "pw-flags" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "protocol" || name == "rem-udp-port" || name == "xconnect-id" || name == "next-hop-address" || name == "source-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -520,19 +524,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -548,7 +552,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -560,47 +564,48 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -611,19 +616,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -639,7 +644,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -651,14 +656,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::L2tpIpv6Ts()
     :
     tos_val{YType::uint8, "tos-val"},
     ttl{YType::uint8, "ttl"},
@@ -667,22 +672,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     sequence_number_expected{YType::uint32, "sequence-number-expected"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::~L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::~L2tpIpv6Ts()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::has_data() const
 {
+    if (is_presence_container) return true;
     return tos_val.is_set
 	|| ttl.is_set
 	|| path_mtu.is_set
@@ -694,7 +700,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos_val.yfilter)
@@ -708,14 +714,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp-ipv6-ts";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -731,13 +737,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>();
         }
         return local;
     }
@@ -746,7 +752,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>();
         }
         return remote;
     }
@@ -754,7 +760,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -771,7 +777,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos-val")
     {
@@ -817,7 +823,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos-val")
     {
@@ -849,14 +855,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "sequence-number-sent" || name == "sequence-number-expected" || name == "local-address" || name == "remote-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::Local()
     :
     cookie_size{YType::uint8, "cookie-size"},
     cookie_low_value{YType::uint32, "cookie-low-value"},
@@ -867,15 +873,16 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     session_id{YType::uint32, "session-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set
@@ -885,7 +892,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| session_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cookie_size.yfilter)
@@ -897,14 +904,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| ydk::is_set(session_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -920,19 +927,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-size")
     {
@@ -978,7 +985,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cookie-size")
     {
@@ -1010,14 +1017,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value" || name == "secondary-cookie-size" || name == "secondary-cookie-low-value" || name == "secondary-cookie-high-value" || name == "session-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -1025,22 +1032,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -1049,14 +1057,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1069,19 +1077,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -1109,7 +1117,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -1129,14 +1137,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::BackupPseudoWire()
     :
     backup_next_hop{YType::str, "backup-next-hop"},
     backup_pseudo_wire_id_type{YType::enumeration, "backup-pseudo-wire-id-type"},
@@ -1148,20 +1156,21 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     grouping_supported{YType::boolean, "grouping-supported"},
     group_id{YType::uint32, "group-id"},
     group_state{YType::enumeration, "group-state"}
-    	,
-    atom(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom>())
+        ,
+    atom(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom>())
 {
     atom->parent = this;
 
-    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::~BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::~BackupPseudoWire()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::has_data() const
 {
+    if (is_presence_container) return true;
     return backup_next_hop.is_set
 	|| backup_pseudo_wire_id_type.is_set
 	|| backup_pseudo_wire_id.is_set
@@ -1175,7 +1184,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| (atom !=  nullptr && atom->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(backup_next_hop.yfilter)
@@ -1191,14 +1200,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| (atom !=  nullptr && atom->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-pseudo-wire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1217,13 +1226,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atom")
     {
         if(atom == nullptr)
         {
-            atom = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom>();
+            atom = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom>();
         }
         return atom;
     }
@@ -1231,7 +1240,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1243,7 +1252,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-next-hop")
     {
@@ -1307,7 +1316,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "backup-next-hop")
     {
@@ -1351,14 +1360,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atom" || name == "backup-next-hop" || name == "backup-pseudo-wire-id-type" || name == "backup-pseudo-wire-id" || name == "redundancy-role" || name == "active" || name == "bound" || name == "pw-flow-label-tx" || name == "grouping-supported" || name == "group-id" || name == "group-state")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::Atom()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::Atom()
     :
     pw_label{YType::uint32, "pw-label"},
     pw_local_label{YType::uint32, "pw-local-label"},
@@ -1366,22 +1375,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw:
     pw_xcid{YType::uint32, "pw-xcid"}
 {
 
-    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::~Atom()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::~Atom()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_label.is_set
 	|| pw_local_label.is_set
 	|| pw_tunnel_interface.is_set
 	|| pw_xcid.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_label.yfilter)
@@ -1390,14 +1400,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
 	|| ydk::is_set(pw_xcid.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1410,19 +1420,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
@@ -1450,7 +1460,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-label")
     {
@@ -1470,36 +1480,37 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment1::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Segment2()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Segment2()
     :
     data_type{YType::enumeration, "data-type"}
-    	,
-    ac(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac>())
-	,bp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp>())
-	,fxs(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs>())
-	,pw(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw>())
+        ,
+    ac(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac>())
+    , bp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp>())
+    , fxs(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs>())
+    , pw(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw>())
 {
     ac->parent = this;
     bp->parent = this;
     fxs->parent = this;
     pw->parent = this;
 
-    yang_name = "segment2"; yang_parent_name = "l2fib-mon-sess-x-con"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "segment2"; yang_parent_name = "l2fib-mon-sess-x-con"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::~Segment2()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::~Segment2()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| (ac !=  nullptr && ac->has_data())
 	|| (bp !=  nullptr && bp->has_data())
@@ -1507,7 +1518,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (pw !=  nullptr && pw->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data_type.yfilter)
@@ -1517,14 +1528,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (pw !=  nullptr && pw->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "segment2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1534,13 +1545,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ac")
     {
         if(ac == nullptr)
         {
-            ac = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac>();
+            ac = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac>();
         }
         return ac;
     }
@@ -1549,7 +1560,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(bp == nullptr)
         {
-            bp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp>();
+            bp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp>();
         }
         return bp;
     }
@@ -1558,7 +1569,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(fxs == nullptr)
         {
-            fxs = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs>();
+            fxs = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs>();
         }
         return fxs;
     }
@@ -1567,7 +1578,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(pw == nullptr)
         {
-            pw = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw>();
+            pw = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw>();
         }
         return pw;
     }
@@ -1575,7 +1586,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1602,7 +1613,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
@@ -1612,7 +1623,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data-type")
     {
@@ -1620,14 +1631,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ac" || name == "bp" || name == "fxs" || name == "pw" || name == "data-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Ac()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Ac()
     :
     interface_handle{YType::str, "interface-handle"},
     sub_interface_handle{YType::str, "sub-interface-handle"},
@@ -1643,22 +1654,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac:
     redundancy_object_id{YType::uint64, "redundancy-object-id"},
     evpn_internal_label{YType::uint32, "evpn-internal-label"},
     fxc_next_hop_valid{YType::boolean, "fxc-next-hop-valid"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base>())
-	,fxc_next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base>())
+    , fxc_next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop>())
 {
     base->parent = this;
     fxc_next_hop->parent = this;
 
-    yang_name = "ac"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ac"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::~Ac()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::~Ac()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| sub_interface_handle.is_set
 	|| attachment_circuit_id.is_set
@@ -1677,7 +1689,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (fxc_next_hop !=  nullptr && fxc_next_hop->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_handle.yfilter)
@@ -1698,14 +1710,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (fxc_next_hop !=  nullptr && fxc_next_hop->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1728,13 +1740,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base>();
         }
         return base;
     }
@@ -1743,7 +1755,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(fxc_next_hop == nullptr)
         {
-            fxc_next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop>();
+            fxc_next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop>();
         }
         return fxc_next_hop;
     }
@@ -1751,7 +1763,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1768,7 +1780,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
@@ -1856,7 +1868,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-handle")
     {
@@ -1916,41 +1928,42 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "fxc-next-hop" || name == "interface-handle" || name == "sub-interface-handle" || name == "attachment-circuit-id" || name == "attachment-circuit-mtu" || name == "actype" || name == "inter-working-mode" || name == "adjacency-valid" || name == "adjacency-address" || name == "bound" || name == "ip-inter-working-mac" || name == "redundancy-group-id" || name == "redundancy-object-id" || name == "evpn-internal-label" || name == "fxc-next-hop-valid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1959,32 +1972,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::FxcNextHop()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::FxcNextHop()
     :
     next_hop_address{YType::str, "next-hop-address"},
     next_hop_address_v6{YType::str, "next-hop-address-v6"},
@@ -1992,20 +2005,21 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac:
     ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
     ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
     children_count{YType::uint32, "children-count"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base>())
 {
     base->parent = this;
 
-    yang_name = "fxc-next-hop"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fxc-next-hop"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::~FxcNextHop()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::~FxcNextHop()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| next_hop_address_v6.is_set
 	|| next_hop_internal_label.is_set
@@ -2015,7 +2029,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -2027,14 +2041,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fxc-next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2049,13 +2063,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base>();
         }
         return base;
     }
@@ -2063,7 +2077,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2075,7 +2089,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -2115,7 +2129,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -2143,41 +2157,42 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "fxc-next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "fxc-next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2186,32 +2201,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Ac::FxcNextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Ac::FxcNextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Bp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Bp()
     :
     bridge_id{YType::uint32, "bridge-id"},
     shg_id{YType::uint32, "shg-id"},
@@ -2219,24 +2234,25 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp:
     segment_type{YType::uint8, "segment-type"},
     mvrp_sequence_number{YType::uint16, "mvrp-sequence-number"},
     learn_key{YType::uint8, "learn-key"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base>())
-	,oper(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper>())
-	,p2mp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base>())
+    , oper(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper>())
+    , p2mp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp>())
 {
     base->parent = this;
     oper->parent = this;
     p2mp->parent = this;
 
-    yang_name = "bp"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bp"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::~Bp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::~Bp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_id.is_set
 	|| shg_id.is_set
 	|| msti_pointer.is_set
@@ -2248,7 +2264,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (p2mp !=  nullptr && p2mp->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bridge_id.yfilter)
@@ -2262,14 +2278,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (p2mp !=  nullptr && p2mp->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2284,13 +2300,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base>();
         }
         return base;
     }
@@ -2299,7 +2315,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(oper == nullptr)
         {
-            oper = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper>();
+            oper = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper>();
         }
         return oper;
     }
@@ -2308,7 +2324,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(p2mp == nullptr)
         {
-            p2mp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp>();
+            p2mp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp>();
         }
         return p2mp;
     }
@@ -2316,7 +2332,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2338,7 +2354,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bridge-id")
     {
@@ -2378,7 +2394,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bridge-id")
     {
@@ -2406,41 +2422,42 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "oper" || name == "p2mp" || name == "bridge-id" || name == "shg-id" || name == "msti-pointer" || name == "segment-type" || name == "mvrp-sequence-number" || name == "learn-key")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2449,32 +2466,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::Oper()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::Oper()
     :
     unicast_storm_control_pps{YType::uint64, "unicast-storm-control-pps"},
     unicast_storm_control_kb_ps{YType::uint64, "unicast-storm-control-kb-ps"},
@@ -2482,20 +2499,21 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp:
     broadcast_storm_control_kb_ps{YType::uint64, "broadcast-storm-control-kb-ps"},
     multicast_storm_control_pps{YType::uint64, "multicast-storm-control-pps"},
     multicast_storm_control_kb_ps{YType::uint64, "multicast-storm-control-kb-ps"}
-    	,
-    operational_information(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation>())
+        ,
+    operational_information(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation>())
 {
     operational_information->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oper"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::~Oper()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::~Oper()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast_storm_control_pps.is_set
 	|| unicast_storm_control_kb_ps.is_set
 	|| broadcast_storm_control_pps.is_set
@@ -2505,7 +2523,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (operational_information !=  nullptr && operational_information->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unicast_storm_control_pps.yfilter)
@@ -2517,14 +2535,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (operational_information !=  nullptr && operational_information->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oper";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2539,13 +2557,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operational-information")
     {
         if(operational_information == nullptr)
         {
-            operational_information = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation>();
+            operational_information = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation>();
         }
         return operational_information;
     }
@@ -2553,7 +2571,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2565,7 +2583,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unicast-storm-control-pps")
     {
@@ -2605,7 +2623,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unicast-storm-control-pps")
     {
@@ -2633,14 +2651,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "operational-information" || name == "unicast-storm-control-pps" || name == "unicast-storm-control-kb-ps" || name == "broadcast-storm-control-pps" || name == "broadcast-storm-control-kb-ps" || name == "multicast-storm-control-pps" || name == "multicast-storm-control-kb-ps")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::OperationalInformation()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::OperationalInformation()
     :
     mtu{YType::uint32, "mtu"},
     mac_aging_time{YType::uint32, "mac-aging-time"},
@@ -2700,18 +2718,21 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp:
     is_p2mp_pw_enabled{YType::boolean, "is-p2mp-pw-enabled"},
     is_igmp_snoop_enabled{YType::boolean, "is-igmp-snoop-enabled"},
     nv_satellite_offload_ipv4_multicast_disabled{YType::boolean, "nv-satellite-offload-ipv4-multicast-disabled"}
+        ,
+    feature(this, {})
 {
 
-    yang_name = "operational-information"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operational-information"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::~OperationalInformation()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::~OperationalInformation()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::has_data() const
 {
-    for (std::size_t index=0; index<feature.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<feature.len(); index++)
     {
         if(feature[index]->has_data())
             return true;
@@ -2776,9 +2797,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| nv_satellite_offload_ipv4_multicast_disabled.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::has_operation() const
 {
-    for (std::size_t index=0; index<feature.size(); index++)
+    for (std::size_t index=0; index<feature.len(); index++)
     {
         if(feature[index]->has_operation())
             return true;
@@ -2844,14 +2865,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(nv_satellite_offload_ipv4_multicast_disabled.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "operational-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2918,25 +2939,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "feature")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature>();
         c->parent = this;
-        feature.push_back(c);
+        feature.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : feature)
+    for (auto c : feature.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2947,7 +2968,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
@@ -3299,7 +3320,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mtu")
     {
@@ -3535,41 +3556,42 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "feature" || name == "mtu" || name == "mac-aging-time" || name == "mac-limit" || name == "number-of-macs" || name == "admin-disabled" || name == "flooding-disabled" || name == "flood-unknown-unicast-enabled" || name == "mac-limit-action" || name == "mac-limit-threshold" || name == "mac-learning-disabled" || name == "mac-port-down-flush-disabled" || name == "mac-limit-notification-type" || name == "is-mac-secure-enabled" || name == "is-mac-secure-logging-enabled" || name == "mac-secure-action" || name == "is-mac-secure-accept-shutdown" || name == "is-mac-secure-threshold-enabled" || name == "mac-aging-type" || name == "storm-control-unicast-enabled" || name == "storm-control-broadcast-enabled" || name == "storm-control-multicast-enabled" || name == "storm-control-unicast-rate-unit" || name == "storm-control-broadcast-rate-unit" || name == "storm-control-multicast-rate-unit" || name == "dhcp-enabled" || name == "dhcp-trusted" || name == "is-dai-enabled" || name == "is-dai-addr-validation-ipv4-enabled" || name == "is-dai-addr-validation-source-mac-enabled" || name == "is-dai-addr-validation-destination-mac-enabled" || name == "is-dai-logging-enabled" || name == "is-ipsg-enabled" || name == "is-ipsg-logging-enabled" || name == "is-vpls-flood-optimization-enabled" || name == "igmp-snoop-enabled" || name == "igmp-snoop-profile-enabled" || name == "igmp-flood-forward-enabled" || name == "igmp-mroute-port-enabled" || name == "igmp-route-guard-enabled" || name == "mld-snoop-enabled" || name == "mld-snoop-profile-enabled" || name == "mld-flood-forward-enabled" || name == "mld-mroute-port-enabled" || name == "mld-route-guard-enabled" || name == "stp-participating" || name == "bvi-configured" || name == "is-bvi-up" || name == "is-vni-enabled" || name == "is-evpn-enabled" || name == "unknown-unicast-flooding-disabled" || name == "is-pbbevpn-enabled" || name == "is-swmac-learning" || name == "is-evpn-flow-label" || name == "is-evpn-cw-disable" || name == "msti" || name == "is-p2mp-pw-enabled" || name == "is-igmp-snoop-enabled" || name == "nv-satellite-offload-ipv4-multicast-disabled")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Feature()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Feature()
     :
     feature_type{YType::enumeration, "feature-type"}
-    	,
-    dhcp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>())
-	,igmp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>())
-	,mld(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>())
+        ,
+    dhcp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>())
+    , igmp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>())
+    , mld(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>())
 {
     dhcp->parent = this;
     igmp->parent = this;
     mld->parent = this;
 
-    yang_name = "feature"; yang_parent_name = "operational-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "feature"; yang_parent_name = "operational-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::~Feature()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::~Feature()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_data() const
 {
+    if (is_presence_container) return true;
     return feature_type.is_set
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (igmp !=  nullptr && igmp->has_data())
 	|| (mld !=  nullptr && mld->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(feature_type.yfilter)
@@ -3578,14 +3600,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (mld !=  nullptr && mld->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3595,13 +3617,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
         if(dhcp == nullptr)
         {
-            dhcp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>();
+            dhcp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>();
         }
         return dhcp;
     }
@@ -3610,7 +3632,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(igmp == nullptr)
         {
-            igmp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>();
+            igmp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>();
         }
         return igmp;
     }
@@ -3619,7 +3641,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(mld == nullptr)
         {
-            mld = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>();
+            mld = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>();
         }
         return mld;
     }
@@ -3627,7 +3649,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3649,7 +3671,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "feature-type")
     {
@@ -3659,7 +3681,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "feature-type")
     {
@@ -3667,44 +3689,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp" || name == "igmp" || name == "mld" || name == "feature-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::Dhcp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::Dhcp()
     :
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::~Dhcp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::~Dhcp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3714,19 +3737,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -3736,7 +3759,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -3744,44 +3767,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::Igmp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::Igmp()
     :
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "igmp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::~Igmp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::~Igmp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "igmp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3791,19 +3815,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -3813,7 +3837,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -3821,44 +3845,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::Mld()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::Mld()
     :
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "mld"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mld"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::~Mld()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::~Mld()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mld";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3868,19 +3893,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -3890,7 +3915,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -3898,14 +3923,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::P2Mp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::P2mp()
     :
     ptree_type{YType::enumeration, "ptree-type"},
     lsm_id{YType::uint32, "lsm-id"},
@@ -3915,15 +3940,16 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp:
     ptree_owner_lmrib{YType::boolean, "ptree-owner-lmrib"}
 {
 
-    yang_name = "p2mp"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "p2mp"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::~P2Mp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::~P2mp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::has_data() const
 {
+    if (is_presence_container) return true;
     return ptree_type.is_set
 	|| lsm_id.is_set
 	|| tunnel_id.is_set
@@ -3932,7 +3958,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ptree_owner_lmrib.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ptree_type.yfilter)
@@ -3943,14 +3969,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(ptree_owner_lmrib.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "p2mp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3965,19 +3991,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ptree-type")
     {
@@ -4017,7 +4043,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ptree-type")
     {
@@ -4045,37 +4071,38 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Bp::P2Mp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Bp::P2mp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ptree-type" || name == "lsm-id" || name == "tunnel-id" || name == "p2mp-id" || name == "extended-tunnel-id" || name == "ptree-owner-lmrib")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Fxs()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Fxs()
     :
     fxs_id{YType::uint32, "fxs-id"},
     segment_type{YType::uint8, "segment-type"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base>())
 {
     base->parent = this;
 
-    yang_name = "fxs"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fxs"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::~Fxs()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::~Fxs()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::has_data() const
 {
+    if (is_presence_container) return true;
     return fxs_id.is_set
 	|| segment_type.is_set
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fxs_id.yfilter)
@@ -4083,14 +4110,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fxs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4101,13 +4128,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base>();
         }
         return base;
     }
@@ -4115,7 +4142,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4127,7 +4154,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fxs-id")
     {
@@ -4143,7 +4170,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fxs-id")
     {
@@ -4155,41 +4182,42 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "fxs-id" || name == "segment-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "fxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "fxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4198,32 +4226,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Fxs::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Fxs::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Pw()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Pw()
     :
     pw_id{YType::uint64, "pw-id"},
     signal_capability_flags{YType::uint32, "signal-capability-flags"},
@@ -4244,26 +4272,27 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     ac_id{YType::uint32, "ac-id"},
     forward_class{YType::uint8, "forward-class"},
     next_hop_address{YType::str, "next-hop-address"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base>())
-	,next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop>())
-	,pseudo_wire_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion>())
-	,backup_pseudo_wire(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base>())
+    , next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop>())
+    , pseudo_wire_union(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion>())
+    , backup_pseudo_wire(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire>())
 {
     base->parent = this;
     next_hop->parent = this;
     pseudo_wire_union->parent = this;
     backup_pseudo_wire->parent = this;
 
-    yang_name = "pw"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::~Pw()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::~Pw()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_id.is_set
 	|| signal_capability_flags.is_set
 	|| context.is_set
@@ -4289,7 +4318,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (backup_pseudo_wire !=  nullptr && backup_pseudo_wire->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_id.yfilter)
@@ -4317,14 +4346,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (backup_pseudo_wire !=  nullptr && backup_pseudo_wire->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pw";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4352,13 +4381,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base>();
         }
         return base;
     }
@@ -4367,7 +4396,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop>();
+            next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop>();
         }
         return next_hop;
     }
@@ -4376,7 +4405,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(pseudo_wire_union == nullptr)
         {
-            pseudo_wire_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion>();
+            pseudo_wire_union = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion>();
         }
         return pseudo_wire_union;
     }
@@ -4385,7 +4414,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(backup_pseudo_wire == nullptr)
         {
-            backup_pseudo_wire = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire>();
+            backup_pseudo_wire = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire>();
         }
         return backup_pseudo_wire;
     }
@@ -4393,7 +4422,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4420,7 +4449,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-id")
     {
@@ -4538,7 +4567,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-id")
     {
@@ -4618,41 +4647,42 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop" || name == "pseudo-wire-union" || name == "backup-pseudo-wire" || name == "pw-id" || name == "signal-capability-flags" || name == "context" || name == "sequence-resync-threshold" || name == "bound" || name == "next-hop-valid" || name == "backup-configured" || name == "redundancy-role" || name == "active" || name == "pseudo-wire-id-type" || name == "pw-load-balance-type" || name == "pw-flow-label-tx" || name == "grouping-supported" || name == "group-id" || name == "group-state" || name == "global-id" || name == "ac-id" || name == "forward-class" || name == "next-hop-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4661,32 +4691,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::NextHop()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::NextHop()
     :
     next_hop_address{YType::str, "next-hop-address"},
     next_hop_address_v6{YType::str, "next-hop-address-v6"},
@@ -4694,20 +4724,21 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
     ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
     children_count{YType::uint32, "children-count"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base>())
 {
     base->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::~NextHop()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::~NextHop()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| next_hop_address_v6.is_set
 	|| next_hop_internal_label.is_set
@@ -4717,7 +4748,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -4729,14 +4760,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4751,13 +4782,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base>();
         }
         return base;
     }
@@ -4765,7 +4796,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4777,7 +4808,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -4817,7 +4848,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -4845,41 +4876,42 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4888,54 +4920,55 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::PseudoWireUnion()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::PseudoWireUnion()
     :
     data_type{YType::enumeration, "data-type"}
-    	,
-    mpls(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls>())
-	,l2tp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp>())
-	,l2tpv2(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2>())
-	,l2tp_ipv6_ts(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts>())
+        ,
+    mpls(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls>())
+    , l2tp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp>())
+    , l2tpv2(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2>())
+    , l2tp_ipv6_ts(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts>())
 {
     mpls->parent = this;
     l2tp->parent = this;
     l2tpv2->parent = this;
     l2tp_ipv6_ts->parent = this;
 
-    yang_name = "pseudo-wire-union"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudo-wire-union"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::~PseudoWireUnion()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::~PseudoWireUnion()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| (mpls !=  nullptr && mpls->has_data())
 	|| (l2tp !=  nullptr && l2tp->has_data())
@@ -4943,7 +4976,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (l2tp_ipv6_ts !=  nullptr && l2tp_ipv6_ts->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data_type.yfilter)
@@ -4953,14 +4986,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (l2tp_ipv6_ts !=  nullptr && l2tp_ipv6_ts->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudo-wire-union";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4970,13 +5003,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls")
     {
         if(mpls == nullptr)
         {
-            mpls = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls>();
+            mpls = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls>();
         }
         return mpls;
     }
@@ -4985,7 +5018,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(l2tp == nullptr)
         {
-            l2tp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp>();
+            l2tp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp>();
         }
         return l2tp;
     }
@@ -4994,7 +5027,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(l2tpv2 == nullptr)
         {
-            l2tpv2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2>();
+            l2tpv2 = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2>();
         }
         return l2tpv2;
     }
@@ -5003,7 +5036,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(l2tp_ipv6_ts == nullptr)
         {
-            l2tp_ipv6_ts = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts>();
+            l2tp_ipv6_ts = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts>();
         }
         return l2tp_ipv6_ts;
     }
@@ -5011,7 +5044,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5038,7 +5071,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
@@ -5048,7 +5081,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data-type")
     {
@@ -5056,14 +5089,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mpls" || name == "l2tp" || name == "l2tpv2" || name == "l2tp-ipv6-ts" || name == "data-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::Mpls()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::Mpls()
     :
     pw_label{YType::uint32, "pw-label"},
     pw_local_label{YType::uint32, "pw-local-label"},
@@ -5071,22 +5104,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     pw_xcid{YType::uint32, "pw-xcid"}
 {
 
-    yang_name = "mpls"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::~Mpls()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::~Mpls()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_label.is_set
 	|| pw_local_label.is_set
 	|| pw_tunnel_interface.is_set
 	|| pw_xcid.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_label.yfilter)
@@ -5095,14 +5129,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(pw_xcid.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5115,19 +5149,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
@@ -5155,7 +5189,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-label")
     {
@@ -5175,36 +5209,37 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::Mpls::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::L2Tp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::L2tp()
     :
     tos_val{YType::uint8, "tos-val"},
     ttl{YType::uint8, "ttl"},
     path_mtu{YType::uint16, "path-mtu"},
     sequence_number_sent{YType::uint32, "sequence-number-sent"},
     sequence_number_expected{YType::uint32, "sequence-number-expected"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::~L2Tp()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::~L2tp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::has_data() const
 {
+    if (is_presence_container) return true;
     return tos_val.is_set
 	|| ttl.is_set
 	|| path_mtu.is_set
@@ -5214,7 +5249,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos_val.yfilter)
@@ -5226,14 +5261,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5247,13 +5282,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local>();
         }
         return local;
     }
@@ -5262,7 +5297,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote>();
         }
         return remote;
     }
@@ -5270,7 +5305,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5287,7 +5322,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos-val")
     {
@@ -5321,7 +5356,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos-val")
     {
@@ -5345,14 +5380,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "sequence-number-sent" || name == "sequence-number-expected")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -5360,22 +5395,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -5384,14 +5420,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5404,19 +5440,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -5444,7 +5480,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -5464,14 +5500,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -5479,22 +5515,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -5503,14 +5540,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5523,19 +5560,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -5563,7 +5600,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -5583,14 +5620,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::L2tpv2()
     :
     pw_flags{YType::uint8, "pw-flags"},
     tos_val{YType::uint8, "tos-val"},
@@ -5601,22 +5638,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     xconnect_id{YType::uint32, "xconnect-id"},
     next_hop_address{YType::str, "next-hop-address"},
     source_address{YType::str, "source-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::~L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::~L2tpv2()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_flags.is_set
 	|| tos_val.is_set
 	|| ttl.is_set
@@ -5630,7 +5668,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_flags.yfilter)
@@ -5646,14 +5684,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5671,13 +5709,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local>();
         }
         return local;
     }
@@ -5686,7 +5724,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote>();
         }
         return remote;
     }
@@ -5694,7 +5732,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5711,7 +5749,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-flags")
     {
@@ -5769,7 +5807,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-flags")
     {
@@ -5809,47 +5847,48 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "pw-flags" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "protocol" || name == "rem-udp-port" || name == "xconnect-id" || name == "next-hop-address" || name == "source-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5860,19 +5899,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -5888,7 +5927,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -5900,47 +5939,48 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5951,19 +5991,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -5979,7 +6019,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -5991,14 +6031,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::L2tpIpv6Ts()
     :
     tos_val{YType::uint8, "tos-val"},
     ttl{YType::uint8, "ttl"},
@@ -6007,22 +6047,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     sequence_number_expected{YType::uint32, "sequence-number-expected"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::~L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::~L2tpIpv6Ts()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::has_data() const
 {
+    if (is_presence_container) return true;
     return tos_val.is_set
 	|| ttl.is_set
 	|| path_mtu.is_set
@@ -6034,7 +6075,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos_val.yfilter)
@@ -6048,14 +6089,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp-ipv6-ts";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6071,13 +6112,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>();
         }
         return local;
     }
@@ -6086,7 +6127,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>();
         }
         return remote;
     }
@@ -6094,7 +6135,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6111,7 +6152,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos-val")
     {
@@ -6157,7 +6198,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos-val")
     {
@@ -6189,14 +6230,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "sequence-number-sent" || name == "sequence-number-expected" || name == "local-address" || name == "remote-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::Local()
     :
     cookie_size{YType::uint8, "cookie-size"},
     cookie_low_value{YType::uint32, "cookie-low-value"},
@@ -6207,15 +6248,16 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     session_id{YType::uint32, "session-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set
@@ -6225,7 +6267,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| session_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cookie_size.yfilter)
@@ -6237,14 +6279,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(session_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6260,19 +6302,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-size")
     {
@@ -6318,7 +6360,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cookie-size")
     {
@@ -6350,14 +6392,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value" || name == "secondary-cookie-size" || name == "secondary-cookie-low-value" || name == "secondary-cookie-high-value" || name == "session-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -6365,22 +6407,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -6389,14 +6432,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6409,19 +6452,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -6449,7 +6492,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -6469,14 +6512,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::BackupPseudoWire()
     :
     backup_next_hop{YType::str, "backup-next-hop"},
     backup_pseudo_wire_id_type{YType::enumeration, "backup-pseudo-wire-id-type"},
@@ -6488,20 +6531,21 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     grouping_supported{YType::boolean, "grouping-supported"},
     group_id{YType::uint32, "group-id"},
     group_state{YType::enumeration, "group-state"}
-    	,
-    atom(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom>())
+        ,
+    atom(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom>())
 {
     atom->parent = this;
 
-    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::~BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::~BackupPseudoWire()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::has_data() const
 {
+    if (is_presence_container) return true;
     return backup_next_hop.is_set
 	|| backup_pseudo_wire_id_type.is_set
 	|| backup_pseudo_wire_id.is_set
@@ -6515,7 +6559,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (atom !=  nullptr && atom->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(backup_next_hop.yfilter)
@@ -6531,14 +6575,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| (atom !=  nullptr && atom->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-pseudo-wire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6557,13 +6601,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atom")
     {
         if(atom == nullptr)
         {
-            atom = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom>();
+            atom = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom>();
         }
         return atom;
     }
@@ -6571,7 +6615,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMo
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6583,7 +6627,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-next-hop")
     {
@@ -6647,7 +6691,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "backup-next-hop")
     {
@@ -6691,14 +6735,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atom" || name == "backup-next-hop" || name == "backup-pseudo-wire-id-type" || name == "backup-pseudo-wire-id" || name == "redundancy-role" || name == "active" || name == "bound" || name == "pw-flow-label-tx" || name == "grouping-supported" || name == "group-id" || name == "group-state")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::Atom()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::Atom()
     :
     pw_label{YType::uint32, "pw-label"},
     pw_local_label{YType::uint32, "pw-local-label"},
@@ -6706,22 +6750,23 @@ L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw:
     pw_xcid{YType::uint32, "pw-xcid"}
 {
 
-    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::~Atom()
+L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::~Atom()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_label.is_set
 	|| pw_local_label.is_set
 	|| pw_tunnel_interface.is_set
 	|| pw_xcid.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_label.yfilter)
@@ -6730,14 +6775,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
 	|| ydk::is_set(pw_xcid.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6750,19 +6795,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
@@ -6790,7 +6835,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-label")
     {
@@ -6810,26 +6855,29 @@ void L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMonSessXCons::L2FibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMonSessXCons::L2fibMonSessXCon::Segment2::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummaries()
+L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummaries()
+    :
+    l2fib_mmrp_summary(this, {})
 {
 
-    yang_name = "l2fib-mmrp-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-mmrp-summaries"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::~L2FibMmrpSummaries()
+L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::~L2fibMmrpSummaries()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_mmrp_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_mmrp_summary.len(); index++)
     {
         if(l2fib_mmrp_summary[index]->has_data())
             return true;
@@ -6837,9 +6885,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::has_data() const
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_mmrp_summary.size(); index++)
+    for (std::size_t index=0; index<l2fib_mmrp_summary.len(); index++)
     {
         if(l2fib_mmrp_summary[index]->has_operation())
             return true;
@@ -6847,14 +6895,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mmrp-summaries";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6863,25 +6911,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-mmrp-summary")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary>();
         c->parent = this;
-        l2fib_mmrp_summary.push_back(c);
+        l2fib_mmrp_summary.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_mmrp_summary)
+    for (auto c : l2fib_mmrp_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6892,22 +6940,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-mmrp-summary")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::L2FibMmrpSummary()
+L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::L2fibMmrpSummary()
     :
     bd_group_name{YType::str, "bd-group-name"},
     bd_name{YType::str, "bd-name"},
@@ -6927,18 +6975,21 @@ L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::L2FibMmrpSum
     number_of_xid{YType::uint32, "number-of-xid"},
     stale_deleted{YType::uint32, "stale-deleted"},
     stale_xid_deleted{YType::uint32, "stale-xid-deleted"}
+        ,
+    message(this, {})
 {
 
-    yang_name = "l2fib-mmrp-summary"; yang_parent_name = "l2fib-mmrp-summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-mmrp-summary"; yang_parent_name = "l2fib-mmrp-summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::~L2FibMmrpSummary()
+L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::~L2fibMmrpSummary()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::has_data() const
 {
-    for (std::size_t index=0; index<message.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_data())
             return true;
@@ -6963,9 +7014,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::has_dat
 	|| stale_xid_deleted.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::has_operation() const
 {
-    for (std::size_t index=0; index<message.size(); index++)
+    for (std::size_t index=0; index<message.len(); index++)
     {
         if(message[index]->has_operation())
             return true;
@@ -6991,14 +7042,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::has_ope
 	|| ydk::is_set(stale_xid_deleted.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mmrp-summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7025,25 +7076,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "message")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message>();
         c->parent = this;
-        message.push_back(c);
+        message.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : message)
+    for (auto c : message.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7054,7 +7105,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bd-group-name")
     {
@@ -7166,7 +7217,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::set_val
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bd-group-name")
     {
@@ -7242,14 +7293,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::set_fil
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "message" || name == "bd-group-name" || name == "bd-name" || name == "bridge-domain-name" || name == "bridge-domain-id" || name == "multicast-update" || name == "multicast-update-dropped" || name == "number-of-routes" || name == "number-of-routes-with-ole-offload" || name == "number-of-mroute-add" || name == "number-mroute-deleted" || name == "number-mroutes-deleted-all" || name == "number-mroute-delete-drop" || name == "number-mroute-all-delete-drop" || name == "number-xid-add" || name == "number-xid-deleted" || name == "number-of-xid" || name == "stale-deleted" || name == "stale-xid-deleted")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::Message()
+L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::Message()
     :
     messgae_count{YType::uint32, "messgae-count"},
     time{YType::str, "time"},
@@ -7257,22 +7308,23 @@ L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::Mes
     information2{YType::uint32, "information2"}
 {
 
-    yang_name = "message"; yang_parent_name = "l2fib-mmrp-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message"; yang_parent_name = "l2fib-mmrp-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::~Message()
+L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::~Message()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::has_data() const
 {
+    if (is_presence_container) return true;
     return messgae_count.is_set
 	|| time.is_set
 	|| information1.is_set
 	|| information2.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(messgae_count.yfilter)
@@ -7281,14 +7333,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message
 	|| ydk::is_set(information2.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "message";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7301,19 +7353,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "messgae-count")
     {
@@ -7341,7 +7393,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "messgae-count")
     {
@@ -7361,26 +7413,29 @@ void L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMmrpSummaries::L2FibMmrpSummary::Message::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMmrpSummaries::L2fibMmrpSummary::Message::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "messgae-count" || name == "time" || name == "information1" || name == "information2")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroups()
+L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroups()
+    :
+    l2fib_pw_group(this, {})
 {
 
-    yang_name = "l2fib-pw-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-pw-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibPwGroups::~L2FibPwGroups()
+L2vpnForwarding::Nodes::Node::L2fibPwGroups::~L2fibPwGroups()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibPwGroups::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_pw_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_pw_group.len(); index++)
     {
         if(l2fib_pw_group[index]->has_data())
             return true;
@@ -7388,9 +7443,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::has_data() const
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibPwGroups::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_pw_group.size(); index++)
+    for (std::size_t index=0; index<l2fib_pw_group.len(); index++)
     {
         if(l2fib_pw_group[index]->has_operation())
             return true;
@@ -7398,14 +7453,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibPwGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-pw-groups";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibPwGroups::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7414,25 +7469,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibPwGroups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-pw-group")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup>();
         c->parent = this;
-        l2fib_pw_group.push_back(c);
+        l2fib_pw_group.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibPwGroups::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibPwGroups::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_pw_group)
+    for (auto c : l2fib_pw_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7443,39 +7498,40 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibPwGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibPwGroups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibPwGroups::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibPwGroups::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibPwGroups::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-pw-group")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::L2FibPwGroup()
+L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::L2fibPwGroup()
     :
     peer_address{YType::str, "peer-address"},
-    group_id{YType::int32, "group-id"},
-    tunnel_if_handle{YType::int32, "tunnel-if-handle"},
+    group_id{YType::uint32, "group-id"},
+    tunnel_if_handle{YType::uint32, "tunnel-if-handle"},
     group_state{YType::enumeration, "group-state"},
     pw_list_count{YType::uint32, "pw-list-count"}
 {
 
-    yang_name = "l2fib-pw-group"; yang_parent_name = "l2fib-pw-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-pw-group"; yang_parent_name = "l2fib-pw-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::~L2FibPwGroup()
+L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::~L2fibPwGroup()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| group_id.is_set
 	|| tunnel_if_handle.is_set
@@ -7483,7 +7539,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::has_data() const
 	|| pw_list_count.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(peer_address.yfilter)
@@ -7493,14 +7549,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::has_operation() 
 	|| ydk::is_set(pw_list_count.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-pw-group";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7514,19 +7570,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "peer-address")
     {
@@ -7560,7 +7616,7 @@ void L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::set_value(const 
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "peer-address")
     {
@@ -7584,26 +7640,29 @@ void L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::set_filter(const
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibPwGroups::L2FibPwGroup::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibPwGroups::L2fibPwGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peer-address" || name == "group-id" || name == "tunnel-if-handle" || name == "group-state" || name == "pw-list-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngresses()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngresses()
+    :
+    l2fib_evpn_incl_m_cast_hardware_ingress(this, {"bd_name"})
 {
 
-    yang_name = "l2fib-evpn-incl-m-cast-hardware-ingresses"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-evpn-incl-m-cast-hardware-ingresses"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::~L2FibEvpnInclMCastHardwareIngresses()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::~L2fibEvpnInclMCastHardwareIngresses()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_hardware_ingress.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_hardware_ingress.len(); index++)
     {
         if(l2fib_evpn_incl_m_cast_hardware_ingress[index]->has_data())
             return true;
@@ -7611,9 +7670,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::has_data
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_hardware_ingress.size(); index++)
+    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_hardware_ingress.len(); index++)
     {
         if(l2fib_evpn_incl_m_cast_hardware_ingress[index]->has_operation())
             return true;
@@ -7621,14 +7680,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::has_oper
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-evpn-incl-m-cast-hardware-ingresses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7637,25 +7696,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-evpn-incl-m-cast-hardware-ingress")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress>();
         c->parent = this;
-        l2fib_evpn_incl_m_cast_hardware_ingress.push_back(c);
+        l2fib_evpn_incl_m_cast_hardware_ingress.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_evpn_incl_m_cast_hardware_ingress)
+    for (auto c : l2fib_evpn_incl_m_cast_hardware_ingress.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7666,46 +7725,47 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-evpn-incl-m-cast-hardware-ingress")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastHardwareIngress()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastHardwareIngress()
     :
     bd_name{YType::str, "bd-name"}
-    	,
-    mcast_replication_list(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList>())
-	,l2fib_evpn_incl_m_cast_oles(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles>())
+        ,
+    mcast_replication_list(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList>())
+    , l2fib_evpn_incl_m_cast_oles(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles>())
 {
     mcast_replication_list->parent = this;
     l2fib_evpn_incl_m_cast_oles->parent = this;
 
-    yang_name = "l2fib-evpn-incl-m-cast-hardware-ingress"; yang_parent_name = "l2fib-evpn-incl-m-cast-hardware-ingresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-evpn-incl-m-cast-hardware-ingress"; yang_parent_name = "l2fib-evpn-incl-m-cast-hardware-ingresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::~L2FibEvpnInclMCastHardwareIngress()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::~L2fibEvpnInclMCastHardwareIngress()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::has_data() const
 {
+    if (is_presence_container) return true;
     return bd_name.is_set
 	|| (mcast_replication_list !=  nullptr && mcast_replication_list->has_data())
 	|| (l2fib_evpn_incl_m_cast_oles !=  nullptr && l2fib_evpn_incl_m_cast_oles->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bd_name.yfilter)
@@ -7713,14 +7773,15 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
 	|| (l2fib_evpn_incl_m_cast_oles !=  nullptr && l2fib_evpn_incl_m_cast_oles->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-incl-m-cast-hardware-ingress" <<"[bd-name='" <<bd_name <<"']";
+    path_buffer << "l2fib-evpn-incl-m-cast-hardware-ingress";
+    ADD_KEY_TOKEN(bd_name, "bd-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7730,13 +7791,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mcast-replication-list")
     {
         if(mcast_replication_list == nullptr)
         {
-            mcast_replication_list = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList>();
+            mcast_replication_list = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList>();
         }
         return mcast_replication_list;
     }
@@ -7745,7 +7806,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardware
     {
         if(l2fib_evpn_incl_m_cast_oles == nullptr)
         {
-            l2fib_evpn_incl_m_cast_oles = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles>();
+            l2fib_evpn_incl_m_cast_oles = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles>();
         }
         return l2fib_evpn_incl_m_cast_oles;
     }
@@ -7753,7 +7814,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardware
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7770,7 +7831,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bd-name")
     {
@@ -7780,7 +7841,7 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bd-name")
     {
@@ -7788,14 +7849,14 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mcast-replication-list" || name == "l2fib-evpn-incl-m-cast-oles" || name == "bd-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::McastReplicationList()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::McastReplicationList()
     :
     bridge_domain_name{YType::str, "bridge-domain-name"},
     bridge_domain_id{YType::uint32, "bridge-domain-id"},
@@ -7803,22 +7864,23 @@ L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnIncl
     is_bound{YType::boolean, "is-bound"}
 {
 
-    yang_name = "mcast-replication-list"; yang_parent_name = "l2fib-evpn-incl-m-cast-hardware-ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mcast-replication-list"; yang_parent_name = "l2fib-evpn-incl-m-cast-hardware-ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::~McastReplicationList()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::~McastReplicationList()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_domain_name.is_set
 	|| bridge_domain_id.is_set
 	|| xcid.is_set
 	|| is_bound.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bridge_domain_name.yfilter)
@@ -7827,14 +7889,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
 	|| ydk::is_set(is_bound.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mcast-replication-list";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7847,19 +7909,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bridge-domain-name")
     {
@@ -7887,7 +7949,7 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bridge-domain-name")
     {
@@ -7907,26 +7969,29 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::McastReplicationList::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::McastReplicationList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bridge-domain-name" || name == "bridge-domain-id" || name == "xcid" || name == "is-bound")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOles()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOles()
+    :
+    l2fib_evpn_incl_m_cast_ole(this, {"next_hop_address"})
 {
 
-    yang_name = "l2fib-evpn-incl-m-cast-oles"; yang_parent_name = "l2fib-evpn-incl-m-cast-hardware-ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-evpn-incl-m-cast-oles"; yang_parent_name = "l2fib-evpn-incl-m-cast-hardware-ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::~L2FibEvpnInclMCastOles()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::~L2fibEvpnInclMCastOles()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_ole.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_ole.len(); index++)
     {
         if(l2fib_evpn_incl_m_cast_ole[index]->has_data())
             return true;
@@ -7934,9 +7999,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_ole.size(); index++)
+    for (std::size_t index=0; index<l2fib_evpn_incl_m_cast_ole.len(); index++)
     {
         if(l2fib_evpn_incl_m_cast_ole[index]->has_operation())
             return true;
@@ -7944,14 +8009,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-evpn-incl-m-cast-oles";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7960,25 +8025,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-evpn-incl-m-cast-ole")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle>();
         c->parent = this;
-        l2fib_evpn_incl_m_cast_ole.push_back(c);
+        l2fib_evpn_incl_m_cast_ole.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_evpn_incl_m_cast_ole)
+    for (auto c : l2fib_evpn_incl_m_cast_ole.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7989,42 +8054,43 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-evpn-incl-m-cast-ole")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::L2FibEvpnInclMCastOle()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::L2fibEvpnInclMCastOle()
     :
     next_hop_address{YType::str, "next-hop-address"},
     is_bound{YType::boolean, "is-bound"},
     next_hop_valid{YType::boolean, "next-hop-valid"}
-    	,
-    mcast_ole(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle>())
-	,next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop>())
+        ,
+    mcast_ole(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle>())
+    , next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop>())
 {
     mcast_ole->parent = this;
     next_hop->parent = this;
 
-    yang_name = "l2fib-evpn-incl-m-cast-ole"; yang_parent_name = "l2fib-evpn-incl-m-cast-oles"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-evpn-incl-m-cast-ole"; yang_parent_name = "l2fib-evpn-incl-m-cast-oles"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::~L2FibEvpnInclMCastOle()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::~L2fibEvpnInclMCastOle()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| is_bound.is_set
 	|| next_hop_valid.is_set
@@ -8032,7 +8098,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -8042,14 +8108,15 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "l2fib-evpn-incl-m-cast-ole" <<"[next-hop-address='" <<next_hop_address <<"']";
+    path_buffer << "l2fib-evpn-incl-m-cast-ole";
+    ADD_KEY_TOKEN(next_hop_address, "next-hop-address");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8061,13 +8128,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mcast-ole")
     {
         if(mcast_ole == nullptr)
         {
-            mcast_ole = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle>();
+            mcast_ole = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle>();
         }
         return mcast_ole;
     }
@@ -8076,7 +8143,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardware
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop>();
+            next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop>();
         }
         return next_hop;
     }
@@ -8084,7 +8151,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardware
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8101,7 +8168,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -8123,7 +8190,7 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -8139,47 +8206,48 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mcast-ole" || name == "next-hop" || name == "next-hop-address" || name == "is-bound" || name == "next-hop-valid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::McastOle()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::McastOle()
     :
     next_hop_ipv6_addr{YType::str, "next-hop-ipv6-addr"},
     mcast_label{YType::uint32, "mcast-label"}
 {
 
-    yang_name = "mcast-ole"; yang_parent_name = "l2fib-evpn-incl-m-cast-ole"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mcast-ole"; yang_parent_name = "l2fib-evpn-incl-m-cast-ole"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::~McastOle()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::~McastOle()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_ipv6_addr.is_set
 	|| mcast_label.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_ipv6_addr.yfilter)
 	|| ydk::is_set(mcast_label.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mcast-ole";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8190,19 +8258,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-ipv6-addr")
     {
@@ -8218,7 +8286,7 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-ipv6-addr")
     {
@@ -8230,14 +8298,14 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::McastOle::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::McastOle::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop-ipv6-addr" || name == "mcast-label")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::NextHop()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::NextHop()
     :
     next_hop_address{YType::str, "next-hop-address"},
     next_hop_address_v6{YType::str, "next-hop-address-v6"},
@@ -8245,20 +8313,21 @@ L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnIncl
     ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
     ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
     children_count{YType::uint32, "children-count"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base>())
 {
     base->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "l2fib-evpn-incl-m-cast-ole"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "l2fib-evpn-incl-m-cast-ole"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::~NextHop()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::~NextHop()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| next_hop_address_v6.is_set
 	|| next_hop_internal_label.is_set
@@ -8268,7 +8337,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -8280,14 +8349,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8302,13 +8371,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base>();
         }
         return base;
     }
@@ -8316,7 +8385,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardware
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8328,7 +8397,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -8368,7 +8437,7 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -8396,41 +8465,42 @@ void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvp
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8439,44 +8509,47 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibEvpnInclMCastHardwareIngresses::L2FibEvpnInclMCastHardwareIngress::L2FibEvpnInclMCastOles::L2FibEvpnInclMCastOle::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCastHardwareIngresses::L2fibEvpnInclMCastHardwareIngress::L2fibEvpnInclMCastOles::L2fibEvpnInclMCastOle::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetails()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetails()
+    :
+    l2fib_dhcp_binding_detail(this, {})
 {
 
-    yang_name = "l2fib-dhcp-binding-details"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-dhcp-binding-details"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::~L2FibDhcpBindingDetails()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::~L2fibDhcpBindingDetails()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_dhcp_binding_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_dhcp_binding_detail.len(); index++)
     {
         if(l2fib_dhcp_binding_detail[index]->has_data())
             return true;
@@ -8484,9 +8557,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::has_data() const
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_dhcp_binding_detail.size(); index++)
+    for (std::size_t index=0; index<l2fib_dhcp_binding_detail.len(); index++)
     {
         if(l2fib_dhcp_binding_detail[index]->has_operation())
             return true;
@@ -8494,14 +8567,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::has_operation() cons
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-dhcp-binding-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8510,25 +8583,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-dhcp-binding-detail")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail>();
         c->parent = this;
-        l2fib_dhcp_binding_detail.push_back(c);
+        l2fib_dhcp_binding_detail.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_dhcp_binding_detail)
+    for (auto c : l2fib_dhcp_binding_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8539,42 +8612,43 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-dhcp-binding-detail")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::L2FibDhcpBindingDetail()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::L2fibDhcpBindingDetail()
     :
     xcid{YType::str, "xcid"},
     neighbor_address{YType::str, "neighbor-address"},
     address{YType::str, "address"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base>())
-	,port(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base>())
+    , port(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port>())
 {
     base->parent = this;
     port->parent = this;
 
-    yang_name = "l2fib-dhcp-binding-detail"; yang_parent_name = "l2fib-dhcp-binding-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-dhcp-binding-detail"; yang_parent_name = "l2fib-dhcp-binding-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::~L2FibDhcpBindingDetail()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::~L2fibDhcpBindingDetail()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return xcid.is_set
 	|| neighbor_address.is_set
 	|| address.is_set
@@ -8582,7 +8656,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
 	|| (port !=  nullptr && port->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(xcid.yfilter)
@@ -8592,14 +8666,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
 	|| (port !=  nullptr && port->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-dhcp-binding-detail";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8611,13 +8685,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base>();
         }
         return base;
     }
@@ -8626,7 +8700,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L
     {
         if(port == nullptr)
         {
-            port = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port>();
+            port = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port>();
         }
         return port;
     }
@@ -8634,7 +8708,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8651,7 +8725,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xcid")
     {
@@ -8673,7 +8747,7 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "xcid")
     {
@@ -8689,41 +8763,42 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "port" || name == "xcid" || name == "neighbor-address" || name == "address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "l2fib-dhcp-binding-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "l2fib-dhcp-binding-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8732,56 +8807,57 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Port()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Port()
     :
     data_type{YType::enumeration, "data-type"}
-    	,
-    ac(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac>())
-	,pw(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw>())
+        ,
+    ac(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac>())
+    , pw(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw>())
 {
     ac->parent = this;
     pw->parent = this;
 
-    yang_name = "port"; yang_parent_name = "l2fib-dhcp-binding-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port"; yang_parent_name = "l2fib-dhcp-binding-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::~Port()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::~Port()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| (ac !=  nullptr && ac->has_data())
 	|| (pw !=  nullptr && pw->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data_type.yfilter)
@@ -8789,14 +8865,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
 	|| (pw !=  nullptr && pw->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "port";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8806,13 +8882,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ac")
     {
         if(ac == nullptr)
         {
-            ac = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac>();
+            ac = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac>();
         }
         return ac;
     }
@@ -8821,7 +8897,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L
     {
         if(pw == nullptr)
         {
-            pw = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw>();
+            pw = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw>();
         }
         return pw;
     }
@@ -8829,7 +8905,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8846,7 +8922,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
@@ -8856,7 +8932,7 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data-type")
     {
@@ -8864,44 +8940,45 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ac" || name == "pw" || name == "data-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::Ac()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::Ac()
     :
     interface_handle{YType::str, "interface-handle"}
 {
 
-    yang_name = "ac"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ac"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::~Ac()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::~Ac()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_handle.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8911,19 +8988,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
@@ -8933,7 +9010,7 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-handle")
     {
@@ -8941,35 +9018,36 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Ac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Ac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-handle")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::Pw()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::Pw()
     :
     pw_id{YType::uint64, "pw-id"},
     next_hop_address{YType::str, "next-hop-address"},
     pseudo_wire_id_type{YType::enumeration, "pseudo-wire-id-type"}
 {
 
-    yang_name = "pw"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::~Pw()
+L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::~Pw()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_id.is_set
 	|| next_hop_address.is_set
 	|| pseudo_wire_id_type.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_id.yfilter)
@@ -8977,14 +9055,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
 	|| ydk::is_set(pseudo_wire_id_type.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pw";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8996,19 +9074,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-id")
     {
@@ -9030,7 +9108,7 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-id")
     {
@@ -9046,26 +9124,29 @@ void L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDeta
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibDhcpBindingDetails::L2FibDhcpBindingDetail::Port::Pw::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibDhcpBindingDetails::L2fibDhcpBindingDetail::Port::Pw::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-id" || name == "next-hop-address" || name == "pseudo-wire-id-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCons()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCons()
+    :
+    l2fibx_con(this, {"xcid"})
 {
 
-    yang_name = "l2fibx-cons"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fibx-cons"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::~L2FibxCons()
+L2vpnForwarding::Nodes::Node::L2fibxCons::~L2fibxCons()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::has_data() const
 {
-    for (std::size_t index=0; index<l2fibx_con.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fibx_con.len(); index++)
     {
         if(l2fibx_con[index]->has_data())
             return true;
@@ -9073,9 +9154,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::has_data() const
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::has_operation() const
 {
-    for (std::size_t index=0; index<l2fibx_con.size(); index++)
+    for (std::size_t index=0; index<l2fibx_con.len(); index++)
     {
         if(l2fibx_con[index]->has_operation())
             return true;
@@ -9083,14 +9164,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fibx-cons";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9099,25 +9180,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fibx-con")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon>();
         c->parent = this;
-        l2fibx_con.push_back(c);
+        l2fibx_con.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fibx_con)
+    for (auto c : l2fibx_con.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9128,45 +9209,46 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fibx-con")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::L2FibxCon()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::L2fibxCon()
     :
     xcid{YType::str, "xcid"},
     xcon_name{YType::str, "xcon-name"},
     bound{YType::boolean, "bound"},
     switching_type{YType::enumeration, "switching-type"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base>())
-	,segment1(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1>())
-	,segment2(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base>())
+    , segment1(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1>())
+    , segment2(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2>())
 {
     base->parent = this;
     segment1->parent = this;
     segment2->parent = this;
 
-    yang_name = "l2fibx-con"; yang_parent_name = "l2fibx-cons"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fibx-con"; yang_parent_name = "l2fibx-cons"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::~L2FibxCon()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::~L2fibxCon()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::has_data() const
 {
+    if (is_presence_container) return true;
     return xcid.is_set
 	|| xcon_name.is_set
 	|| bound.is_set
@@ -9176,7 +9258,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::has_data() const
 	|| (segment2 !=  nullptr && segment2->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(xcid.yfilter)
@@ -9188,14 +9270,15 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::has_operation() const
 	|| (segment2 !=  nullptr && segment2->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "l2fibx-con" <<"[xcid='" <<xcid <<"']";
+    path_buffer << "l2fibx-con";
+    ADD_KEY_TOKEN(xcid, "xcid");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9208,13 +9291,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base>();
         }
         return base;
     }
@@ -9223,7 +9306,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get
     {
         if(segment1 == nullptr)
         {
-            segment1 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1>();
+            segment1 = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1>();
         }
         return segment1;
     }
@@ -9232,7 +9315,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get
     {
         if(segment2 == nullptr)
         {
-            segment2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2>();
+            segment2 = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2>();
         }
         return segment2;
     }
@@ -9240,7 +9323,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9262,7 +9345,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xcid")
     {
@@ -9290,7 +9373,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::set_value(const std::s
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "xcid")
     {
@@ -9310,41 +9393,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::set_filter(const std::
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "segment1" || name == "segment2" || name == "xcid" || name == "xcon-name" || name == "bound" || name == "switching-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "l2fibx-con"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "l2fibx-con"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9353,41 +9437,41 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Segment1()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Segment1()
     :
     data_type{YType::enumeration, "data-type"}
-    	,
-    ac(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac>())
-	,pbb(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb>())
-	,vni(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni>())
-	,evpn(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn>())
-	,monitor_session(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession>())
-	,pw(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw>())
+        ,
+    ac(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac>())
+    , pbb(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb>())
+    , vni(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni>())
+    , evpn(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn>())
+    , monitor_session(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession>())
+    , pw(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw>())
 {
     ac->parent = this;
     pbb->parent = this;
@@ -9396,15 +9480,16 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Segment1()
     monitor_session->parent = this;
     pw->parent = this;
 
-    yang_name = "segment1"; yang_parent_name = "l2fibx-con"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "segment1"; yang_parent_name = "l2fibx-con"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::~Segment1()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::~Segment1()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| (ac !=  nullptr && ac->has_data())
 	|| (pbb !=  nullptr && pbb->has_data())
@@ -9414,7 +9499,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::has_data() c
 	|| (pw !=  nullptr && pw->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data_type.yfilter)
@@ -9426,14 +9511,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::has_operatio
 	|| (pw !=  nullptr && pw->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "segment1";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9443,13 +9528,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ac")
     {
         if(ac == nullptr)
         {
-            ac = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac>();
+            ac = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac>();
         }
         return ac;
     }
@@ -9458,7 +9543,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(pbb == nullptr)
         {
-            pbb = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb>();
+            pbb = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb>();
         }
         return pbb;
     }
@@ -9467,7 +9552,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(vni == nullptr)
         {
-            vni = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni>();
+            vni = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni>();
         }
         return vni;
     }
@@ -9476,7 +9561,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(evpn == nullptr)
         {
-            evpn = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn>();
+            evpn = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn>();
         }
         return evpn;
     }
@@ -9485,7 +9570,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(monitor_session == nullptr)
         {
-            monitor_session = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession>();
+            monitor_session = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession>();
         }
         return monitor_session;
     }
@@ -9494,7 +9579,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(pw == nullptr)
         {
-            pw = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw>();
+            pw = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw>();
         }
         return pw;
     }
@@ -9502,7 +9587,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9539,7 +9624,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
@@ -9549,7 +9634,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::set_value(co
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data-type")
     {
@@ -9557,14 +9642,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::set_filter(c
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ac" || name == "pbb" || name == "vni" || name == "evpn" || name == "monitor-session" || name == "pw" || name == "data-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Ac()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Ac()
     :
     interface_handle{YType::str, "interface-handle"},
     sub_interface_handle{YType::str, "sub-interface-handle"},
@@ -9580,22 +9665,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Ac()
     redundancy_object_id{YType::uint64, "redundancy-object-id"},
     evpn_internal_label{YType::uint32, "evpn-internal-label"},
     fxc_next_hop_valid{YType::boolean, "fxc-next-hop-valid"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base>())
-	,fxc_next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base>())
+    , fxc_next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop>())
 {
     base->parent = this;
     fxc_next_hop->parent = this;
 
-    yang_name = "ac"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ac"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::~Ac()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::~Ac()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| sub_interface_handle.is_set
 	|| attachment_circuit_id.is_set
@@ -9614,7 +9700,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::has_data
 	|| (fxc_next_hop !=  nullptr && fxc_next_hop->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_handle.yfilter)
@@ -9635,14 +9721,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::has_oper
 	|| (fxc_next_hop !=  nullptr && fxc_next_hop->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9665,13 +9751,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base>();
         }
         return base;
     }
@@ -9680,7 +9766,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(fxc_next_hop == nullptr)
         {
-            fxc_next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop>();
+            fxc_next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop>();
         }
         return fxc_next_hop;
     }
@@ -9688,7 +9774,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9705,7 +9791,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
@@ -9793,7 +9879,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::set_valu
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-handle")
     {
@@ -9853,41 +9939,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::set_filt
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "fxc-next-hop" || name == "interface-handle" || name == "sub-interface-handle" || name == "attachment-circuit-id" || name == "attachment-circuit-mtu" || name == "actype" || name == "inter-working-mode" || name == "adjacency-valid" || name == "adjacency-address" || name == "bound" || name == "ip-inter-working-mac" || name == "redundancy-group-id" || name == "redundancy-object-id" || name == "evpn-internal-label" || name == "fxc-next-hop-valid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9896,32 +9983,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::FxcNextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::FxcNextHop()
     :
     next_hop_address{YType::str, "next-hop-address"},
     next_hop_address_v6{YType::str, "next-hop-address-v6"},
@@ -9929,20 +10016,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::F
     ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
     ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
     children_count{YType::uint32, "children-count"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base>())
 {
     base->parent = this;
 
-    yang_name = "fxc-next-hop"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fxc-next-hop"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::~FxcNextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::~FxcNextHop()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| next_hop_address_v6.is_set
 	|| next_hop_internal_label.is_set
@@ -9952,7 +10040,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextH
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -9964,14 +10052,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextH
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fxc-next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9986,13 +10074,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base>();
         }
         return base;
     }
@@ -10000,7 +10088,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10012,7 +10100,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -10052,7 +10140,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextH
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -10080,41 +10168,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextH
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "fxc-next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "fxc-next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10123,52 +10212,53 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Ac::FxcNextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Ac::FxcNextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Pbb()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Pbb()
     :
     bound{YType::boolean, "bound"},
     forward_class{YType::uint8, "forward-class"},
     core_pbb_evpn_enabled{YType::boolean, "core-pbb-evpn-enabled"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base>())
-	,pbb_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base>())
+    , pbb_union(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion>())
 {
     base->parent = this;
     pbb_union->parent = this;
 
-    yang_name = "pbb"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbb"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::~Pbb()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::~Pbb()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::has_data() const
 {
+    if (is_presence_container) return true;
     return bound.is_set
 	|| forward_class.is_set
 	|| core_pbb_evpn_enabled.is_set
@@ -10176,7 +10266,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::has_dat
 	|| (pbb_union !=  nullptr && pbb_union->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bound.yfilter)
@@ -10186,14 +10276,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::has_ope
 	|| (pbb_union !=  nullptr && pbb_union->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pbb";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10205,13 +10295,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base>();
         }
         return base;
     }
@@ -10220,7 +10310,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(pbb_union == nullptr)
         {
-            pbb_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion>();
+            pbb_union = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion>();
         }
         return pbb_union;
     }
@@ -10228,7 +10318,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10245,7 +10335,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound")
     {
@@ -10267,7 +10357,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::set_val
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bound")
     {
@@ -10283,41 +10373,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::set_fil
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "pbb-union" || name == "bound" || name == "forward-class" || name == "core-pbb-evpn-enabled")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "pbb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "pbb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10326,56 +10417,57 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::PbbUnion()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::PbbUnion()
     :
     pbb_type{YType::enumeration, "pbb-type"}
-    	,
-    edge(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge>())
-	,core(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core>())
+        ,
+    edge(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge>())
+    , core(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core>())
 {
     edge->parent = this;
     core->parent = this;
 
-    yang_name = "pbb-union"; yang_parent_name = "pbb"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pbb-union"; yang_parent_name = "pbb"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::~PbbUnion()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::~PbbUnion()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::has_data() const
 {
+    if (is_presence_container) return true;
     return pbb_type.is_set
 	|| (edge !=  nullptr && edge->has_data())
 	|| (core !=  nullptr && core->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pbb_type.yfilter)
@@ -10383,14 +10475,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnio
 	|| (core !=  nullptr && core->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pbb-union";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10400,13 +10492,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "edge")
     {
         if(edge == nullptr)
         {
-            edge = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge>();
+            edge = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge>();
         }
         return edge;
     }
@@ -10415,7 +10507,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(core == nullptr)
         {
-            core = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core>();
+            core = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core>();
         }
         return core;
     }
@@ -10423,7 +10515,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10440,7 +10532,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pbb-type")
     {
@@ -10450,7 +10542,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnio
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pbb-type")
     {
@@ -10458,47 +10550,48 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnio
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "edge" || name == "core" || name == "pbb-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::Edge()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::Edge()
     :
     mac_configured{YType::boolean, "mac-configured"},
     mac{YType::str, "mac"}
 {
 
-    yang_name = "edge"; yang_parent_name = "pbb-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "edge"; yang_parent_name = "pbb-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::~Edge()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::~Edge()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_configured.is_set
 	|| mac.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_configured.yfilter)
 	|| ydk::is_set(mac.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "edge";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10509,19 +10602,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-configured")
     {
@@ -10537,7 +10630,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnio
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-configured")
     {
@@ -10549,44 +10642,45 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnio
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Edge::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Edge::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-configured" || name == "mac")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::Core()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::Core()
     :
     vlan_id{YType::uint32, "vlan-id"}
 {
 
-    yang_name = "core"; yang_parent_name = "pbb-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "core"; yang_parent_name = "pbb-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::~Core()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::~Core()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "core";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10596,19 +10690,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
@@ -10618,7 +10712,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnio
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id")
     {
@@ -10626,14 +10720,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnio
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pbb::PbbUnion::Core::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pbb::PbbUnion::Core::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Vni()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Vni()
     :
     srcip{YType::str, "srcip"},
     mcastip{YType::str, "mcastip"},
@@ -10646,20 +10740,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Vni()
     anycast_mcast_ip{YType::str, "anycast-mcast-ip"},
     ingress_replication{YType::boolean, "ingress-replication"},
     vx_lan_mode{YType::uint32, "vx-lan-mode"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base>())
 {
     base->parent = this;
 
-    yang_name = "vni"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vni"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::~Vni()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::~Vni()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::has_data() const
 {
+    if (is_presence_container) return true;
     return srcip.is_set
 	|| mcastip.is_set
 	|| bound.is_set
@@ -10674,7 +10769,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::has_dat
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(srcip.yfilter)
@@ -10691,14 +10786,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::has_ope
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vni";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10718,13 +10813,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base>();
         }
         return base;
     }
@@ -10732,7 +10827,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10744,7 +10839,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "srcip")
     {
@@ -10814,7 +10909,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::set_val
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "srcip")
     {
@@ -10862,41 +10957,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::set_fil
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "srcip" || name == "mcastip" || name == "bound" || name == "parent-if" || name == "encap" || name == "udp-port" || name == "source-vtep-if" || name == "any-cast-ip" || name == "anycast-mcast-ip" || name == "ingress-replication" || name == "vx-lan-mode")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "vni"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "vni"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10905,57 +11001,58 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Vni::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Vni::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Evpn()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Evpn()
     :
     bound{YType::boolean, "bound"},
     evi{YType::uint32, "evi"},
     forward_class{YType::uint8, "forward-class"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base>())
 {
     base->parent = this;
 
-    yang_name = "evpn"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::~Evpn()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::~Evpn()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::has_data() const
 {
+    if (is_presence_container) return true;
     return bound.is_set
 	|| evi.is_set
 	|| forward_class.is_set
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bound.yfilter)
@@ -10964,14 +11061,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::has_op
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evpn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10983,13 +11080,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base>();
         }
         return base;
     }
@@ -10997,7 +11094,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11009,7 +11106,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bound")
     {
@@ -11031,7 +11128,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::set_va
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bound")
     {
@@ -11047,41 +11144,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::set_fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "bound" || name == "evi" || name == "forward-class")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "evpn"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "evpn"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11090,51 +11188,52 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Evpn::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Evpn::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::MonitorSession()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::MonitorSession()
     :
     xcid{YType::uint32, "xcid"},
     session_name{YType::str, "session-name"},
     hardware_information{YType::str, "hardware-information"},
     bound{YType::boolean, "bound"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base>())
 {
     base->parent = this;
 
-    yang_name = "monitor-session"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor-session"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::~MonitorSession()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::~MonitorSession()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::has_data() const
 {
+    if (is_presence_container) return true;
     return xcid.is_set
 	|| session_name.is_set
 	|| hardware_information.is_set
@@ -11142,7 +11241,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSessi
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(xcid.yfilter)
@@ -11152,14 +11251,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSessi
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "monitor-session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11172,13 +11271,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base>();
         }
         return base;
     }
@@ -11186,7 +11285,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11198,7 +11297,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xcid")
     {
@@ -11226,7 +11325,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSessi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "xcid")
     {
@@ -11246,41 +11345,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSessi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "xcid" || name == "session-name" || name == "hardware-information" || name == "bound")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "monitor-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "monitor-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11289,32 +11389,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::MonitorSession::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::MonitorSession::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Pw()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Pw()
     :
     pw_id{YType::uint64, "pw-id"},
     signal_capability_flags{YType::uint32, "signal-capability-flags"},
@@ -11335,26 +11435,27 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Pw()
     ac_id{YType::uint32, "ac-id"},
     forward_class{YType::uint8, "forward-class"},
     next_hop_address{YType::str, "next-hop-address"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base>())
-	,next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop>())
-	,pseudo_wire_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion>())
-	,backup_pseudo_wire(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base>())
+    , next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop>())
+    , pseudo_wire_union(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion>())
+    , backup_pseudo_wire(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire>())
 {
     base->parent = this;
     next_hop->parent = this;
     pseudo_wire_union->parent = this;
     backup_pseudo_wire->parent = this;
 
-    yang_name = "pw"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw"; yang_parent_name = "segment1"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::~Pw()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::~Pw()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_id.is_set
 	|| signal_capability_flags.is_set
 	|| context.is_set
@@ -11380,7 +11481,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::has_data
 	|| (backup_pseudo_wire !=  nullptr && backup_pseudo_wire->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_id.yfilter)
@@ -11408,14 +11509,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::has_oper
 	|| (backup_pseudo_wire !=  nullptr && backup_pseudo_wire->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pw";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11443,13 +11544,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base>();
         }
         return base;
     }
@@ -11458,7 +11559,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop>();
+            next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop>();
         }
         return next_hop;
     }
@@ -11467,7 +11568,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(pseudo_wire_union == nullptr)
         {
-            pseudo_wire_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion>();
+            pseudo_wire_union = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion>();
         }
         return pseudo_wire_union;
     }
@@ -11476,7 +11577,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(backup_pseudo_wire == nullptr)
         {
-            backup_pseudo_wire = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire>();
+            backup_pseudo_wire = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire>();
         }
         return backup_pseudo_wire;
     }
@@ -11484,7 +11585,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11511,7 +11612,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-id")
     {
@@ -11629,7 +11730,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::set_valu
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-id")
     {
@@ -11709,41 +11810,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::set_filt
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop" || name == "pseudo-wire-union" || name == "backup-pseudo-wire" || name == "pw-id" || name == "signal-capability-flags" || name == "context" || name == "sequence-resync-threshold" || name == "bound" || name == "next-hop-valid" || name == "backup-configured" || name == "redundancy-role" || name == "active" || name == "pseudo-wire-id-type" || name == "pw-load-balance-type" || name == "pw-flow-label-tx" || name == "grouping-supported" || name == "group-id" || name == "group-state" || name == "global-id" || name == "ac-id" || name == "forward-class" || name == "next-hop-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11752,32 +11854,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::NextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::NextHop()
     :
     next_hop_address{YType::str, "next-hop-address"},
     next_hop_address_v6{YType::str, "next-hop-address-v6"},
@@ -11785,20 +11887,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Next
     ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
     ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
     children_count{YType::uint32, "children-count"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base>())
 {
     base->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::~NextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::~NextHop()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| next_hop_address_v6.is_set
 	|| next_hop_internal_label.is_set
@@ -11808,7 +11911,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop:
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -11820,14 +11923,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop:
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11842,13 +11945,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base>();
         }
         return base;
     }
@@ -11856,7 +11959,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11868,7 +11971,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -11908,7 +12011,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop:
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -11936,41 +12039,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop:
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11979,54 +12083,55 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::PseudoWireUnion()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::PseudoWireUnion()
     :
     data_type{YType::enumeration, "data-type"}
-    	,
-    mpls(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls>())
-	,l2tp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp>())
-	,l2tpv2(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2>())
-	,l2tp_ipv6_ts(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts>())
+        ,
+    mpls(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls>())
+    , l2tp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp>())
+    , l2tpv2(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2>())
+    , l2tp_ipv6_ts(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts>())
 {
     mpls->parent = this;
     l2tp->parent = this;
     l2tpv2->parent = this;
     l2tp_ipv6_ts->parent = this;
 
-    yang_name = "pseudo-wire-union"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudo-wire-union"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::~PseudoWireUnion()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::~PseudoWireUnion()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| (mpls !=  nullptr && mpls->has_data())
 	|| (l2tp !=  nullptr && l2tp->has_data())
@@ -12034,7 +12139,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (l2tp_ipv6_ts !=  nullptr && l2tp_ipv6_ts->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data_type.yfilter)
@@ -12044,14 +12149,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (l2tp_ipv6_ts !=  nullptr && l2tp_ipv6_ts->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudo-wire-union";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12061,13 +12166,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls")
     {
         if(mpls == nullptr)
         {
-            mpls = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls>();
+            mpls = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls>();
         }
         return mpls;
     }
@@ -12076,7 +12181,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(l2tp == nullptr)
         {
-            l2tp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp>();
+            l2tp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp>();
         }
         return l2tp;
     }
@@ -12085,7 +12190,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(l2tpv2 == nullptr)
         {
-            l2tpv2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2>();
+            l2tpv2 = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2>();
         }
         return l2tpv2;
     }
@@ -12094,7 +12199,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(l2tp_ipv6_ts == nullptr)
         {
-            l2tp_ipv6_ts = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts>();
+            l2tp_ipv6_ts = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts>();
         }
         return l2tp_ipv6_ts;
     }
@@ -12102,7 +12207,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12129,7 +12234,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
@@ -12139,7 +12244,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data-type")
     {
@@ -12147,14 +12252,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mpls" || name == "l2tp" || name == "l2tpv2" || name == "l2tp-ipv6-ts" || name == "data-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::Mpls()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::Mpls()
     :
     pw_label{YType::uint32, "pw-label"},
     pw_local_label{YType::uint32, "pw-local-label"},
@@ -12162,22 +12267,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
     pw_xcid{YType::uint32, "pw-xcid"}
 {
 
-    yang_name = "mpls"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::~Mpls()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::~Mpls()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_label.is_set
 	|| pw_local_label.is_set
 	|| pw_tunnel_interface.is_set
 	|| pw_xcid.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_label.yfilter)
@@ -12186,14 +12292,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| ydk::is_set(pw_xcid.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12206,19 +12312,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
@@ -12246,7 +12352,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-label")
     {
@@ -12266,36 +12372,37 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::Mpls::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::L2Tp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::L2tp()
     :
     tos_val{YType::uint8, "tos-val"},
     ttl{YType::uint8, "ttl"},
     path_mtu{YType::uint16, "path-mtu"},
     sequence_number_sent{YType::uint32, "sequence-number-sent"},
     sequence_number_expected{YType::uint32, "sequence-number-expected"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::~L2Tp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::~L2tp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::has_data() const
 {
+    if (is_presence_container) return true;
     return tos_val.is_set
 	|| ttl.is_set
 	|| path_mtu.is_set
@@ -12305,7 +12412,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos_val.yfilter)
@@ -12317,14 +12424,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12338,13 +12445,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local>();
         }
         return local;
     }
@@ -12353,7 +12460,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote>();
         }
         return remote;
     }
@@ -12361,7 +12468,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12378,7 +12485,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos-val")
     {
@@ -12412,7 +12519,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos-val")
     {
@@ -12436,14 +12543,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "sequence-number-sent" || name == "sequence-number-expected")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -12451,22 +12558,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -12475,14 +12583,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12495,19 +12603,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -12535,7 +12643,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -12555,14 +12663,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -12570,22 +12678,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -12594,14 +12703,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12614,19 +12723,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -12654,7 +12763,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -12674,14 +12783,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::L2tpv2()
     :
     pw_flags{YType::uint8, "pw-flags"},
     tos_val{YType::uint8, "tos-val"},
@@ -12692,22 +12801,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
     xconnect_id{YType::uint32, "xconnect-id"},
     next_hop_address{YType::str, "next-hop-address"},
     source_address{YType::str, "source-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::~L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::~L2tpv2()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_flags.is_set
 	|| tos_val.is_set
 	|| ttl.is_set
@@ -12721,7 +12831,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_flags.yfilter)
@@ -12737,14 +12847,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12762,13 +12872,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local>();
         }
         return local;
     }
@@ -12777,7 +12887,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote>();
         }
         return remote;
     }
@@ -12785,7 +12895,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12802,7 +12912,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-flags")
     {
@@ -12860,7 +12970,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-flags")
     {
@@ -12900,47 +13010,48 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "pw-flags" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "protocol" || name == "rem-udp-port" || name == "xconnect-id" || name == "next-hop-address" || name == "source-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12951,19 +13062,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -12979,7 +13090,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -12991,47 +13102,48 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13042,19 +13154,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -13070,7 +13182,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -13082,14 +13194,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2Tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::L2tpIpv6Ts()
     :
     tos_val{YType::uint8, "tos-val"},
     ttl{YType::uint8, "ttl"},
@@ -13098,22 +13210,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
     sequence_number_expected{YType::uint32, "sequence-number-expected"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::~L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::~L2tpIpv6Ts()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::has_data() const
 {
+    if (is_presence_container) return true;
     return tos_val.is_set
 	|| ttl.is_set
 	|| path_mtu.is_set
@@ -13125,7 +13238,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos_val.yfilter)
@@ -13139,14 +13252,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp-ipv6-ts";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13162,13 +13275,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>();
         }
         return local;
     }
@@ -13177,7 +13290,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>();
         }
         return remote;
     }
@@ -13185,7 +13298,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13202,7 +13315,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos-val")
     {
@@ -13248,7 +13361,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos-val")
     {
@@ -13280,14 +13393,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "sequence-number-sent" || name == "sequence-number-expected" || name == "local-address" || name == "remote-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::Local()
     :
     cookie_size{YType::uint8, "cookie-size"},
     cookie_low_value{YType::uint32, "cookie-low-value"},
@@ -13298,15 +13411,16 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
     session_id{YType::uint32, "session-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set
@@ -13316,7 +13430,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| session_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cookie_size.yfilter)
@@ -13328,14 +13442,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| ydk::is_set(session_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13351,19 +13465,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-size")
     {
@@ -13409,7 +13523,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cookie-size")
     {
@@ -13441,14 +13555,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value" || name == "secondary-cookie-size" || name == "secondary-cookie-low-value" || name == "secondary-cookie-high-value" || name == "session-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -13456,22 +13570,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUni
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -13480,14 +13595,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13500,19 +13615,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -13540,7 +13655,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -13560,14 +13675,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::BackupPseudoWire()
     :
     backup_next_hop{YType::str, "backup-next-hop"},
     backup_pseudo_wire_id_type{YType::enumeration, "backup-pseudo-wire-id-type"},
@@ -13579,20 +13694,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoW
     grouping_supported{YType::boolean, "grouping-supported"},
     group_id{YType::uint32, "group-id"},
     group_state{YType::enumeration, "group-state"}
-    	,
-    atom(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom>())
+        ,
+    atom(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom>())
 {
     atom->parent = this;
 
-    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::~BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::~BackupPseudoWire()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::has_data() const
 {
+    if (is_presence_container) return true;
     return backup_next_hop.is_set
 	|| backup_pseudo_wire_id_type.is_set
 	|| backup_pseudo_wire_id.is_set
@@ -13606,7 +13722,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPs
 	|| (atom !=  nullptr && atom->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(backup_next_hop.yfilter)
@@ -13622,14 +13738,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPs
 	|| (atom !=  nullptr && atom->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-pseudo-wire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13648,13 +13764,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atom")
     {
         if(atom == nullptr)
         {
-            atom = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom>();
+            atom = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom>();
         }
         return atom;
     }
@@ -13662,7 +13778,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13674,7 +13790,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-next-hop")
     {
@@ -13738,7 +13854,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPs
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "backup-next-hop")
     {
@@ -13782,14 +13898,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPs
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atom" || name == "backup-next-hop" || name == "backup-pseudo-wire-id-type" || name == "backup-pseudo-wire-id" || name == "redundancy-role" || name == "active" || name == "bound" || name == "pw-flow-label-tx" || name == "grouping-supported" || name == "group-id" || name == "group-state")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::Atom()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::Atom()
     :
     pw_label{YType::uint32, "pw-label"},
     pw_local_label{YType::uint32, "pw-local-label"},
@@ -13797,22 +13913,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoW
     pw_xcid{YType::uint32, "pw-xcid"}
 {
 
-    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::~Atom()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::~Atom()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_label.is_set
 	|| pw_local_label.is_set
 	|| pw_tunnel_interface.is_set
 	|| pw_xcid.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_label.yfilter)
@@ -13821,14 +13938,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPs
 	|| ydk::is_set(pw_xcid.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13841,19 +13958,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
@@ -13881,7 +13998,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPs
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-label")
     {
@@ -13901,36 +14018,37 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPs
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment1::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment1::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Segment2()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Segment2()
     :
     data_type{YType::enumeration, "data-type"}
-    	,
-    ac(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac>())
-	,bp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp>())
-	,fxs(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs>())
-	,pw(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw>())
+        ,
+    ac(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac>())
+    , bp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp>())
+    , fxs(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs>())
+    , pw(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw>())
 {
     ac->parent = this;
     bp->parent = this;
     fxs->parent = this;
     pw->parent = this;
 
-    yang_name = "segment2"; yang_parent_name = "l2fibx-con"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "segment2"; yang_parent_name = "l2fibx-con"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::~Segment2()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::~Segment2()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| (ac !=  nullptr && ac->has_data())
 	|| (bp !=  nullptr && bp->has_data())
@@ -13938,7 +14056,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::has_data() c
 	|| (pw !=  nullptr && pw->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data_type.yfilter)
@@ -13948,14 +14066,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::has_operatio
 	|| (pw !=  nullptr && pw->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "segment2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13965,13 +14083,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ac")
     {
         if(ac == nullptr)
         {
-            ac = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac>();
+            ac = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac>();
         }
         return ac;
     }
@@ -13980,7 +14098,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(bp == nullptr)
         {
-            bp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp>();
+            bp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp>();
         }
         return bp;
     }
@@ -13989,7 +14107,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(fxs == nullptr)
         {
-            fxs = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs>();
+            fxs = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs>();
         }
         return fxs;
     }
@@ -13998,7 +14116,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(pw == nullptr)
         {
-            pw = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw>();
+            pw = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw>();
         }
         return pw;
     }
@@ -14006,7 +14124,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14033,7 +14151,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
@@ -14043,7 +14161,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::set_value(co
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data-type")
     {
@@ -14051,14 +14169,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::set_filter(c
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ac" || name == "bp" || name == "fxs" || name == "pw" || name == "data-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Ac()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Ac()
     :
     interface_handle{YType::str, "interface-handle"},
     sub_interface_handle{YType::str, "sub-interface-handle"},
@@ -14074,22 +14192,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Ac()
     redundancy_object_id{YType::uint64, "redundancy-object-id"},
     evpn_internal_label{YType::uint32, "evpn-internal-label"},
     fxc_next_hop_valid{YType::boolean, "fxc-next-hop-valid"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base>())
-	,fxc_next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base>())
+    , fxc_next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop>())
 {
     base->parent = this;
     fxc_next_hop->parent = this;
 
-    yang_name = "ac"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ac"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::~Ac()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::~Ac()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| sub_interface_handle.is_set
 	|| attachment_circuit_id.is_set
@@ -14108,7 +14227,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::has_data
 	|| (fxc_next_hop !=  nullptr && fxc_next_hop->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_handle.yfilter)
@@ -14129,14 +14248,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::has_oper
 	|| (fxc_next_hop !=  nullptr && fxc_next_hop->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ac";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14159,13 +14278,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base>();
         }
         return base;
     }
@@ -14174,7 +14293,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(fxc_next_hop == nullptr)
         {
-            fxc_next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop>();
+            fxc_next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop>();
         }
         return fxc_next_hop;
     }
@@ -14182,7 +14301,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14199,7 +14318,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
@@ -14287,7 +14406,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::set_valu
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-handle")
     {
@@ -14347,41 +14466,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::set_filt
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "fxc-next-hop" || name == "interface-handle" || name == "sub-interface-handle" || name == "attachment-circuit-id" || name == "attachment-circuit-mtu" || name == "actype" || name == "inter-working-mode" || name == "adjacency-valid" || name == "adjacency-address" || name == "bound" || name == "ip-inter-working-mac" || name == "redundancy-group-id" || name == "redundancy-object-id" || name == "evpn-internal-label" || name == "fxc-next-hop-valid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14390,32 +14510,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::FxcNextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::FxcNextHop()
     :
     next_hop_address{YType::str, "next-hop-address"},
     next_hop_address_v6{YType::str, "next-hop-address-v6"},
@@ -14423,20 +14543,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::F
     ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
     ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
     children_count{YType::uint32, "children-count"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base>())
 {
     base->parent = this;
 
-    yang_name = "fxc-next-hop"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fxc-next-hop"; yang_parent_name = "ac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::~FxcNextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::~FxcNextHop()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| next_hop_address_v6.is_set
 	|| next_hop_internal_label.is_set
@@ -14446,7 +14567,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextH
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -14458,14 +14579,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextH
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fxc-next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14480,13 +14601,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base>();
         }
         return base;
     }
@@ -14494,7 +14615,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14506,7 +14627,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -14546,7 +14667,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextH
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -14574,41 +14695,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextH
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "fxc-next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "fxc-next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14617,32 +14739,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Ac::FxcNextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Ac::FxcNextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Bp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Bp()
     :
     bridge_id{YType::uint32, "bridge-id"},
     shg_id{YType::uint32, "shg-id"},
@@ -14650,24 +14772,25 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Bp()
     segment_type{YType::uint8, "segment-type"},
     mvrp_sequence_number{YType::uint16, "mvrp-sequence-number"},
     learn_key{YType::uint8, "learn-key"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base>())
-	,oper(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper>())
-	,p2mp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base>())
+    , oper(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper>())
+    , p2mp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp>())
 {
     base->parent = this;
     oper->parent = this;
     p2mp->parent = this;
 
-    yang_name = "bp"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bp"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::~Bp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::~Bp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_id.is_set
 	|| shg_id.is_set
 	|| msti_pointer.is_set
@@ -14679,7 +14802,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::has_data
 	|| (p2mp !=  nullptr && p2mp->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bridge_id.yfilter)
@@ -14693,14 +14816,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::has_oper
 	|| (p2mp !=  nullptr && p2mp->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14715,13 +14838,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base>();
         }
         return base;
     }
@@ -14730,7 +14853,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(oper == nullptr)
         {
-            oper = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper>();
+            oper = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper>();
         }
         return oper;
     }
@@ -14739,7 +14862,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(p2mp == nullptr)
         {
-            p2mp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp>();
+            p2mp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp>();
         }
         return p2mp;
     }
@@ -14747,7 +14870,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14769,7 +14892,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bridge-id")
     {
@@ -14809,7 +14932,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::set_valu
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bridge-id")
     {
@@ -14837,41 +14960,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::set_filt
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "oper" || name == "p2mp" || name == "bridge-id" || name == "shg-id" || name == "msti-pointer" || name == "segment-type" || name == "mvrp-sequence-number" || name == "learn-key")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14880,32 +15004,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Oper()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::Oper()
     :
     unicast_storm_control_pps{YType::uint64, "unicast-storm-control-pps"},
     unicast_storm_control_kb_ps{YType::uint64, "unicast-storm-control-kb-ps"},
@@ -14913,20 +15037,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Oper()
     broadcast_storm_control_kb_ps{YType::uint64, "broadcast-storm-control-kb-ps"},
     multicast_storm_control_pps{YType::uint64, "multicast-storm-control-pps"},
     multicast_storm_control_kb_ps{YType::uint64, "multicast-storm-control-kb-ps"}
-    	,
-    operational_information(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation>())
+        ,
+    operational_information(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation>())
 {
     operational_information->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oper"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::~Oper()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::~Oper()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast_storm_control_pps.is_set
 	|| unicast_storm_control_kb_ps.is_set
 	|| broadcast_storm_control_pps.is_set
@@ -14936,7 +15061,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::ha
 	|| (operational_information !=  nullptr && operational_information->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(unicast_storm_control_pps.yfilter)
@@ -14948,14 +15073,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::ha
 	|| (operational_information !=  nullptr && operational_information->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "oper";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14970,13 +15095,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "operational-information")
     {
         if(operational_information == nullptr)
         {
-            operational_information = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation>();
+            operational_information = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation>();
         }
         return operational_information;
     }
@@ -14984,7 +15109,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14996,7 +15121,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "unicast-storm-control-pps")
     {
@@ -15036,7 +15161,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::se
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "unicast-storm-control-pps")
     {
@@ -15064,14 +15189,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::se
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "operational-information" || name == "unicast-storm-control-pps" || name == "unicast-storm-control-kb-ps" || name == "broadcast-storm-control-pps" || name == "broadcast-storm-control-kb-ps" || name == "multicast-storm-control-pps" || name == "multicast-storm-control-kb-ps")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::OperationalInformation()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::OperationalInformation()
     :
     mtu{YType::uint32, "mtu"},
     mac_aging_time{YType::uint32, "mac-aging-time"},
@@ -15131,18 +15256,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Operati
     is_p2mp_pw_enabled{YType::boolean, "is-p2mp-pw-enabled"},
     is_igmp_snoop_enabled{YType::boolean, "is-igmp-snoop-enabled"},
     nv_satellite_offload_ipv4_multicast_disabled{YType::boolean, "nv-satellite-offload-ipv4-multicast-disabled"}
+        ,
+    feature(this, {})
 {
 
-    yang_name = "operational-information"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operational-information"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::~OperationalInformation()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::~OperationalInformation()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::has_data() const
 {
-    for (std::size_t index=0; index<feature.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<feature.len(); index++)
     {
         if(feature[index]->has_data())
             return true;
@@ -15207,9 +15335,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
 	|| nv_satellite_offload_ipv4_multicast_disabled.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::has_operation() const
 {
-    for (std::size_t index=0; index<feature.size(); index++)
+    for (std::size_t index=0; index<feature.len(); index++)
     {
         if(feature[index]->has_operation())
             return true;
@@ -15275,14 +15403,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
 	|| ydk::is_set(nv_satellite_offload_ipv4_multicast_disabled.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "operational-information";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15349,25 +15477,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "feature")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature>();
         c->parent = this;
-        feature.push_back(c);
+        feature.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : feature)
+    for (auto c : feature.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15378,7 +15506,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mtu")
     {
@@ -15730,7 +15858,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mtu")
     {
@@ -15966,41 +16094,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "feature" || name == "mtu" || name == "mac-aging-time" || name == "mac-limit" || name == "number-of-macs" || name == "admin-disabled" || name == "flooding-disabled" || name == "flood-unknown-unicast-enabled" || name == "mac-limit-action" || name == "mac-limit-threshold" || name == "mac-learning-disabled" || name == "mac-port-down-flush-disabled" || name == "mac-limit-notification-type" || name == "is-mac-secure-enabled" || name == "is-mac-secure-logging-enabled" || name == "mac-secure-action" || name == "is-mac-secure-accept-shutdown" || name == "is-mac-secure-threshold-enabled" || name == "mac-aging-type" || name == "storm-control-unicast-enabled" || name == "storm-control-broadcast-enabled" || name == "storm-control-multicast-enabled" || name == "storm-control-unicast-rate-unit" || name == "storm-control-broadcast-rate-unit" || name == "storm-control-multicast-rate-unit" || name == "dhcp-enabled" || name == "dhcp-trusted" || name == "is-dai-enabled" || name == "is-dai-addr-validation-ipv4-enabled" || name == "is-dai-addr-validation-source-mac-enabled" || name == "is-dai-addr-validation-destination-mac-enabled" || name == "is-dai-logging-enabled" || name == "is-ipsg-enabled" || name == "is-ipsg-logging-enabled" || name == "is-vpls-flood-optimization-enabled" || name == "igmp-snoop-enabled" || name == "igmp-snoop-profile-enabled" || name == "igmp-flood-forward-enabled" || name == "igmp-mroute-port-enabled" || name == "igmp-route-guard-enabled" || name == "mld-snoop-enabled" || name == "mld-snoop-profile-enabled" || name == "mld-flood-forward-enabled" || name == "mld-mroute-port-enabled" || name == "mld-route-guard-enabled" || name == "stp-participating" || name == "bvi-configured" || name == "is-bvi-up" || name == "is-vni-enabled" || name == "is-evpn-enabled" || name == "unknown-unicast-flooding-disabled" || name == "is-pbbevpn-enabled" || name == "is-swmac-learning" || name == "is-evpn-flow-label" || name == "is-evpn-cw-disable" || name == "msti" || name == "is-p2mp-pw-enabled" || name == "is-igmp-snoop-enabled" || name == "nv-satellite-offload-ipv4-multicast-disabled")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Feature()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Feature()
     :
     feature_type{YType::enumeration, "feature-type"}
-    	,
-    dhcp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>())
-	,igmp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>())
-	,mld(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>())
+        ,
+    dhcp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>())
+    , igmp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>())
+    , mld(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>())
 {
     dhcp->parent = this;
     igmp->parent = this;
     mld->parent = this;
 
-    yang_name = "feature"; yang_parent_name = "operational-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "feature"; yang_parent_name = "operational-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::~Feature()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::~Feature()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_data() const
 {
+    if (is_presence_container) return true;
     return feature_type.is_set
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (igmp !=  nullptr && igmp->has_data())
 	|| (mld !=  nullptr && mld->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(feature_type.yfilter)
@@ -16009,14 +16138,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
 	|| (mld !=  nullptr && mld->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16026,13 +16155,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dhcp")
     {
         if(dhcp == nullptr)
         {
-            dhcp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>();
+            dhcp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp>();
         }
         return dhcp;
     }
@@ -16041,7 +16170,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(igmp == nullptr)
         {
-            igmp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>();
+            igmp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp>();
         }
         return igmp;
     }
@@ -16050,7 +16179,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(mld == nullptr)
         {
-            mld = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>();
+            mld = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld>();
         }
         return mld;
     }
@@ -16058,7 +16187,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16080,7 +16209,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "feature-type")
     {
@@ -16090,7 +16219,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "feature-type")
     {
@@ -16098,44 +16227,45 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcp" || name == "igmp" || name == "mld" || name == "feature-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::Dhcp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::Dhcp()
     :
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::~Dhcp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::~Dhcp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dhcp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16145,19 +16275,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -16167,7 +16297,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -16175,44 +16305,45 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::Igmp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::Igmp()
     :
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "igmp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igmp"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::~Igmp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::~Igmp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "igmp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16222,19 +16353,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -16244,7 +16375,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -16252,44 +16383,45 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Igmp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::Mld()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::Mld()
     :
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "mld"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mld"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::~Mld()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::~Mld()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mld";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16299,19 +16431,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -16321,7 +16453,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -16329,14 +16461,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::Op
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::Oper::OperationalInformation::Feature::Mld::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "profile-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::P2Mp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::P2mp()
     :
     ptree_type{YType::enumeration, "ptree-type"},
     lsm_id{YType::uint32, "lsm-id"},
@@ -16346,15 +16478,16 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::P2Mp()
     ptree_owner_lmrib{YType::boolean, "ptree-owner-lmrib"}
 {
 
-    yang_name = "p2mp"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "p2mp"; yang_parent_name = "bp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::~P2Mp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::~P2mp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::has_data() const
 {
+    if (is_presence_container) return true;
     return ptree_type.is_set
 	|| lsm_id.is_set
 	|| tunnel_id.is_set
@@ -16363,7 +16496,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::ha
 	|| ptree_owner_lmrib.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ptree_type.yfilter)
@@ -16374,14 +16507,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::ha
 	|| ydk::is_set(ptree_owner_lmrib.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "p2mp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16396,19 +16529,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ptree-type")
     {
@@ -16448,7 +16581,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::se
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ptree-type")
     {
@@ -16476,37 +16609,38 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::se
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Bp::P2Mp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Bp::P2mp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ptree-type" || name == "lsm-id" || name == "tunnel-id" || name == "p2mp-id" || name == "extended-tunnel-id" || name == "ptree-owner-lmrib")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Fxs()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Fxs()
     :
     fxs_id{YType::uint32, "fxs-id"},
     segment_type{YType::uint8, "segment-type"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base>())
 {
     base->parent = this;
 
-    yang_name = "fxs"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fxs"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::~Fxs()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::~Fxs()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::has_data() const
 {
+    if (is_presence_container) return true;
     return fxs_id.is_set
 	|| segment_type.is_set
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(fxs_id.yfilter)
@@ -16514,14 +16648,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::has_ope
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fxs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16532,13 +16666,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base>();
         }
         return base;
     }
@@ -16546,7 +16680,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16558,7 +16692,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "fxs-id")
     {
@@ -16574,7 +16708,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::set_val
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "fxs-id")
     {
@@ -16586,41 +16720,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::set_fil
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "fxs-id" || name == "segment-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "fxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "fxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16629,32 +16764,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Fxs::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Fxs::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Pw()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Pw()
     :
     pw_id{YType::uint64, "pw-id"},
     signal_capability_flags{YType::uint32, "signal-capability-flags"},
@@ -16675,26 +16810,27 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Pw()
     ac_id{YType::uint32, "ac-id"},
     forward_class{YType::uint8, "forward-class"},
     next_hop_address{YType::str, "next-hop-address"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base>())
-	,next_hop(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop>())
-	,pseudo_wire_union(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion>())
-	,backup_pseudo_wire(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base>())
+    , next_hop(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop>())
+    , pseudo_wire_union(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion>())
+    , backup_pseudo_wire(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire>())
 {
     base->parent = this;
     next_hop->parent = this;
     pseudo_wire_union->parent = this;
     backup_pseudo_wire->parent = this;
 
-    yang_name = "pw"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pw"; yang_parent_name = "segment2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::~Pw()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::~Pw()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_id.is_set
 	|| signal_capability_flags.is_set
 	|| context.is_set
@@ -16720,7 +16856,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::has_data
 	|| (backup_pseudo_wire !=  nullptr && backup_pseudo_wire->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_id.yfilter)
@@ -16748,14 +16884,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::has_oper
 	|| (backup_pseudo_wire !=  nullptr && backup_pseudo_wire->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pw";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16783,13 +16919,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base>();
         }
         return base;
     }
@@ -16798,7 +16934,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(next_hop == nullptr)
         {
-            next_hop = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop>();
+            next_hop = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop>();
         }
         return next_hop;
     }
@@ -16807,7 +16943,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(pseudo_wire_union == nullptr)
         {
-            pseudo_wire_union = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion>();
+            pseudo_wire_union = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion>();
         }
         return pseudo_wire_union;
     }
@@ -16816,7 +16952,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(backup_pseudo_wire == nullptr)
         {
-            backup_pseudo_wire = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire>();
+            backup_pseudo_wire = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire>();
         }
         return backup_pseudo_wire;
     }
@@ -16824,7 +16960,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16851,7 +16987,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-id")
     {
@@ -16969,7 +17105,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::set_valu
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-id")
     {
@@ -17049,41 +17185,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::set_filt
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop" || name == "pseudo-wire-union" || name == "backup-pseudo-wire" || name == "pw-id" || name == "signal-capability-flags" || name == "context" || name == "sequence-resync-threshold" || name == "bound" || name == "next-hop-valid" || name == "backup-configured" || name == "redundancy-role" || name == "active" || name == "pseudo-wire-id-type" || name == "pw-load-balance-type" || name == "pw-flow-label-tx" || name == "grouping-supported" || name == "group-id" || name == "group-state" || name == "global-id" || name == "ac-id" || name == "forward-class" || name == "next-hop-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17092,32 +17229,32 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::NextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::NextHop()
     :
     next_hop_address{YType::str, "next-hop-address"},
     next_hop_address_v6{YType::str, "next-hop-address-v6"},
@@ -17125,20 +17262,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Next
     ecd_plaformt_data_valid{YType::boolean, "ecd-plaformt-data-valid"},
     ecd_platform_data_length{YType::uint32, "ecd-platform-data-length"},
     children_count{YType::uint32, "children-count"}
-    	,
-    base(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base>())
+        ,
+    base(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base>())
 {
     base->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::~NextHop()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::~NextHop()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_address.is_set
 	|| next_hop_address_v6.is_set
 	|| next_hop_internal_label.is_set
@@ -17148,7 +17286,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop:
 	|| (base !=  nullptr && base->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop_address.yfilter)
@@ -17160,14 +17298,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop:
 	|| (base !=  nullptr && base->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17182,13 +17320,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "base")
     {
         if(base == nullptr)
         {
-            base = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base>();
+            base = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base>();
         }
         return base;
     }
@@ -17196,7 +17334,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17208,7 +17346,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop-address")
     {
@@ -17248,7 +17386,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop:
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop-address")
     {
@@ -17276,41 +17414,42 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop:
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "base" || name == "next-hop-address" || name == "next-hop-address-v6" || name == "next-hop-internal-label" || name == "ecd-plaformt-data-valid" || name == "ecd-platform-data-length" || name == "children-count")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::Base()
 {
 
-    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "base"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::~Base()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::~Base()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "base";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17319,54 +17458,55 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::NextHop::Base::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::PseudoWireUnion()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::PseudoWireUnion()
     :
     data_type{YType::enumeration, "data-type"}
-    	,
-    mpls(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls>())
-	,l2tp(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp>())
-	,l2tpv2(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2>())
-	,l2tp_ipv6_ts(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts>())
+        ,
+    mpls(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls>())
+    , l2tp(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp>())
+    , l2tpv2(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2>())
+    , l2tp_ipv6_ts(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts>())
 {
     mpls->parent = this;
     l2tp->parent = this;
     l2tpv2->parent = this;
     l2tp_ipv6_ts->parent = this;
 
-    yang_name = "pseudo-wire-union"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudo-wire-union"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::~PseudoWireUnion()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::~PseudoWireUnion()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::has_data() const
 {
+    if (is_presence_container) return true;
     return data_type.is_set
 	|| (mpls !=  nullptr && mpls->has_data())
 	|| (l2tp !=  nullptr && l2tp->has_data())
@@ -17374,7 +17514,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (l2tp_ipv6_ts !=  nullptr && l2tp_ipv6_ts->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(data_type.yfilter)
@@ -17384,14 +17524,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (l2tp_ipv6_ts !=  nullptr && l2tp_ipv6_ts->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudo-wire-union";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17401,13 +17541,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mpls")
     {
         if(mpls == nullptr)
         {
-            mpls = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls>();
+            mpls = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls>();
         }
         return mpls;
     }
@@ -17416,7 +17556,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(l2tp == nullptr)
         {
-            l2tp = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp>();
+            l2tp = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp>();
         }
         return l2tp;
     }
@@ -17425,7 +17565,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(l2tpv2 == nullptr)
         {
-            l2tpv2 = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2>();
+            l2tpv2 = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2>();
         }
         return l2tpv2;
     }
@@ -17434,7 +17574,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(l2tp_ipv6_ts == nullptr)
         {
-            l2tp_ipv6_ts = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts>();
+            l2tp_ipv6_ts = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts>();
         }
         return l2tp_ipv6_ts;
     }
@@ -17442,7 +17582,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17469,7 +17609,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "data-type")
     {
@@ -17479,7 +17619,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "data-type")
     {
@@ -17487,14 +17627,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mpls" || name == "l2tp" || name == "l2tpv2" || name == "l2tp-ipv6-ts" || name == "data-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::Mpls()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::Mpls()
     :
     pw_label{YType::uint32, "pw-label"},
     pw_local_label{YType::uint32, "pw-local-label"},
@@ -17502,22 +17642,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
     pw_xcid{YType::uint32, "pw-xcid"}
 {
 
-    yang_name = "mpls"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::~Mpls()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::~Mpls()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_label.is_set
 	|| pw_local_label.is_set
 	|| pw_tunnel_interface.is_set
 	|| pw_xcid.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_label.yfilter)
@@ -17526,14 +17667,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| ydk::is_set(pw_xcid.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17546,19 +17687,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
@@ -17586,7 +17727,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-label")
     {
@@ -17606,36 +17747,37 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::Mpls::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::Mpls::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::L2Tp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::L2tp()
     :
     tos_val{YType::uint8, "tos-val"},
     ttl{YType::uint8, "ttl"},
     path_mtu{YType::uint16, "path-mtu"},
     sequence_number_sent{YType::uint32, "sequence-number-sent"},
     sequence_number_expected{YType::uint32, "sequence-number-expected"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::~L2Tp()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::~L2tp()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::has_data() const
 {
+    if (is_presence_container) return true;
     return tos_val.is_set
 	|| ttl.is_set
 	|| path_mtu.is_set
@@ -17645,7 +17787,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos_val.yfilter)
@@ -17657,14 +17799,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17678,13 +17820,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local>();
         }
         return local;
     }
@@ -17693,7 +17835,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote>();
         }
         return remote;
     }
@@ -17701,7 +17843,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -17718,7 +17860,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos-val")
     {
@@ -17752,7 +17894,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos-val")
     {
@@ -17776,14 +17918,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "sequence-number-sent" || name == "sequence-number-expected")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -17791,22 +17933,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -17815,14 +17958,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17835,19 +17978,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -17875,7 +18018,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -17895,14 +18038,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -17910,22 +18053,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -17934,14 +18078,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -17954,19 +18098,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -17994,7 +18138,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -18014,14 +18158,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tp::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::L2tpv2()
     :
     pw_flags{YType::uint8, "pw-flags"},
     tos_val{YType::uint8, "tos-val"},
@@ -18032,22 +18176,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
     xconnect_id{YType::uint32, "xconnect-id"},
     next_hop_address{YType::str, "next-hop-address"},
     source_address{YType::str, "source-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tpv2"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::~L2Tpv2()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::~L2tpv2()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_flags.is_set
 	|| tos_val.is_set
 	|| ttl.is_set
@@ -18061,7 +18206,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_flags.yfilter)
@@ -18077,14 +18222,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18102,13 +18247,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local>();
         }
         return local;
     }
@@ -18117,7 +18262,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote>();
         }
         return remote;
     }
@@ -18125,7 +18270,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18142,7 +18287,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-flags")
     {
@@ -18200,7 +18345,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-flags")
     {
@@ -18240,47 +18385,48 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "pw-flags" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "protocol" || name == "rem-udp-port" || name == "xconnect-id" || name == "next-hop-address" || name == "source-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::Local()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18291,19 +18437,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -18319,7 +18465,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -18331,47 +18477,48 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     tunnel_id{YType::uint32, "tunnel-id"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tpv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| tunnel_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(tunnel_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18382,19 +18529,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -18410,7 +18557,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -18422,14 +18569,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2Tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpv2::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "tunnel-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::L2tpIpv6Ts()
     :
     tos_val{YType::uint8, "tos-val"},
     ttl{YType::uint8, "ttl"},
@@ -18438,22 +18585,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
     sequence_number_expected{YType::uint32, "sequence-number-expected"},
     local_address{YType::str, "local-address"},
     remote_address{YType::str, "remote-address"}
-    	,
-    local(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>())
-	,remote(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>())
+        ,
+    local(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>())
+    , remote(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>())
 {
     local->parent = this;
     remote->parent = this;
 
-    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp-ipv6-ts"; yang_parent_name = "pseudo-wire-union"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::~L2TpIpv6Ts()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::~L2tpIpv6Ts()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::has_data() const
 {
+    if (is_presence_container) return true;
     return tos_val.is_set
 	|| ttl.is_set
 	|| path_mtu.is_set
@@ -18465,7 +18613,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(tos_val.yfilter)
@@ -18479,14 +18627,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp-ipv6-ts";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18502,13 +18650,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "local")
     {
         if(local == nullptr)
         {
-            local = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local>();
+            local = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local>();
         }
         return local;
     }
@@ -18517,7 +18665,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote>();
+            remote = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote>();
         }
         return remote;
     }
@@ -18525,7 +18673,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -18542,7 +18690,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "tos-val")
     {
@@ -18588,7 +18736,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "tos-val")
     {
@@ -18620,14 +18768,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local" || name == "remote" || name == "tos-val" || name == "ttl" || name == "path-mtu" || name == "sequence-number-sent" || name == "sequence-number-expected" || name == "local-address" || name == "remote-address")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::Local()
     :
     cookie_size{YType::uint8, "cookie-size"},
     cookie_low_value{YType::uint32, "cookie-low-value"},
@@ -18638,15 +18786,16 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
     session_id{YType::uint32, "session-id"}
 {
 
-    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::~Local()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::~Local()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set
@@ -18656,7 +18805,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| session_id.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cookie_size.yfilter)
@@ -18668,14 +18817,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| ydk::is_set(session_id.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "local";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18691,19 +18840,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cookie-size")
     {
@@ -18749,7 +18898,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cookie-size")
     {
@@ -18781,14 +18930,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Local::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value" || name == "secondary-cookie-size" || name == "secondary-cookie-low-value" || name == "secondary-cookie-high-value" || name == "session-id")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::Remote()
     :
     session_id{YType::uint32, "session-id"},
     cookie_size{YType::uint8, "cookie-size"},
@@ -18796,22 +18945,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUni
     cookie_high_value{YType::uint32, "cookie-high-value"}
 {
 
-    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote"; yang_parent_name = "l2tp-ipv6-ts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::~Remote()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::~Remote()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| cookie_size.is_set
 	|| cookie_low_value.is_set
 	|| cookie_high_value.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session_id.yfilter)
@@ -18820,14 +18970,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
 	|| ydk::is_set(cookie_high_value.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18840,19 +18990,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session-id")
     {
@@ -18880,7 +19030,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session-id")
     {
@@ -18900,14 +19050,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::PseudoWireUnion::L2TpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::PseudoWireUnion::L2tpIpv6Ts::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "session-id" || name == "cookie-size" || name == "cookie-low-value" || name == "cookie-high-value")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::BackupPseudoWire()
     :
     backup_next_hop{YType::str, "backup-next-hop"},
     backup_pseudo_wire_id_type{YType::enumeration, "backup-pseudo-wire-id-type"},
@@ -18919,20 +19069,21 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoW
     grouping_supported{YType::boolean, "grouping-supported"},
     group_id{YType::uint32, "group-id"},
     group_state{YType::enumeration, "group-state"}
-    	,
-    atom(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom>())
+        ,
+    atom(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom>())
 {
     atom->parent = this;
 
-    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-pseudo-wire"; yang_parent_name = "pw"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::~BackupPseudoWire()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::~BackupPseudoWire()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::has_data() const
 {
+    if (is_presence_container) return true;
     return backup_next_hop.is_set
 	|| backup_pseudo_wire_id_type.is_set
 	|| backup_pseudo_wire_id.is_set
@@ -18946,7 +19097,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPs
 	|| (atom !=  nullptr && atom->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(backup_next_hop.yfilter)
@@ -18962,14 +19113,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPs
 	|| (atom !=  nullptr && atom->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-pseudo-wire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -18988,13 +19139,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "atom")
     {
         if(atom == nullptr)
         {
-            atom = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom>();
+            atom = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom>();
         }
         return atom;
     }
@@ -19002,7 +19153,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Seg
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -19014,7 +19165,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "backup-next-hop")
     {
@@ -19078,7 +19229,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPs
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "backup-next-hop")
     {
@@ -19122,14 +19273,14 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPs
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "atom" || name == "backup-next-hop" || name == "backup-pseudo-wire-id-type" || name == "backup-pseudo-wire-id" || name == "redundancy-role" || name == "active" || name == "bound" || name == "pw-flow-label-tx" || name == "grouping-supported" || name == "group-id" || name == "group-state")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::Atom()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::Atom()
     :
     pw_label{YType::uint32, "pw-label"},
     pw_local_label{YType::uint32, "pw-local-label"},
@@ -19137,22 +19288,23 @@ L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoW
     pw_xcid{YType::uint32, "pw-xcid"}
 {
 
-    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atom"; yang_parent_name = "backup-pseudo-wire"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::~Atom()
+L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::~Atom()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::has_data() const
 {
+    if (is_presence_container) return true;
     return pw_label.is_set
 	|| pw_local_label.is_set
 	|| pw_tunnel_interface.is_set
 	|| pw_xcid.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pw_label.yfilter)
@@ -19161,14 +19313,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPs
 	|| ydk::is_set(pw_xcid.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "atom";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19181,19 +19333,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "pw-label")
     {
@@ -19221,7 +19373,7 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPs
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "pw-label")
     {
@@ -19241,26 +19393,29 @@ void L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPs
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibxCons::L2FibxCon::Segment2::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibxCons::L2fibxCon::Segment2::Pw::BackupPseudoWire::Atom::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pw-label" || name == "pw-local-label" || name == "pw-tunnel-interface" || name == "pw-xcid")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterfaces()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterfaces()
+    :
+    l2fib_main_interface(this, {})
 {
 
-    yang_name = "l2fib-main-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::~L2FibMainInterfaces()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::~L2fibMainInterfaces()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_main_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_main_interface.len(); index++)
     {
         if(l2fib_main_interface[index]->has_data())
             return true;
@@ -19268,9 +19423,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::has_data() const
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_main_interface.size(); index++)
+    for (std::size_t index=0; index<l2fib_main_interface.len(); index++)
     {
         if(l2fib_main_interface[index]->has_operation())
             return true;
@@ -19278,14 +19433,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::has_operation() const
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interfaces";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19294,25 +19449,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-main-interface")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface>();
         c->parent = this;
-        l2fib_main_interface.push_back(c);
+        l2fib_main_interface.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_main_interface)
+    for (auto c : l2fib_main_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19323,33 +19478,33 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-main-interface")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterface()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterface()
     :
-    main_interface_id{YType::int32, "main-interface-id"},
+    main_interface_id{YType::uint32, "main-interface-id"},
     main_interface_type{YType::enumeration, "main-interface-type"}
-    	,
-    l2fib_main_interface_hardware_egress_detail_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo>())
-	,l2fib_main_interface_hardware_egress_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo>())
-	,l2fib_main_interface_instances(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances>())
-	,l2fib_main_interface_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo>())
-	,l2fib_main_interface_detail_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo>())
-	,l2fib_main_interface_hardware_ingress_detail_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo>())
-	,l2fib_main_interface_hardware_ingress_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo>())
+        ,
+    l2fib_main_interface_hardware_egress_detail_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo>())
+    , l2fib_main_interface_hardware_egress_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo>())
+    , l2fib_main_interface_instances(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances>())
+    , l2fib_main_interface_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo>())
+    , l2fib_main_interface_detail_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo>())
+    , l2fib_main_interface_hardware_ingress_detail_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo>())
+    , l2fib_main_interface_hardware_ingress_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo>())
 {
     l2fib_main_interface_hardware_egress_detail_info->parent = this;
     l2fib_main_interface_hardware_egress_info->parent = this;
@@ -19359,15 +19514,16 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     l2fib_main_interface_hardware_ingress_detail_info->parent = this;
     l2fib_main_interface_hardware_ingress_info->parent = this;
 
-    yang_name = "l2fib-main-interface"; yang_parent_name = "l2fib-main-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface"; yang_parent_name = "l2fib-main-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::~L2FibMainInterface()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::~L2fibMainInterface()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return main_interface_id.is_set
 	|| main_interface_type.is_set
 	|| (l2fib_main_interface_hardware_egress_detail_info !=  nullptr && l2fib_main_interface_hardware_egress_detail_info->has_data())
@@ -19379,7 +19535,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::has_
 	|| (l2fib_main_interface_hardware_ingress_info !=  nullptr && l2fib_main_interface_hardware_ingress_info->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(main_interface_id.yfilter)
@@ -19393,14 +19549,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::has_
 	|| (l2fib_main_interface_hardware_ingress_info !=  nullptr && l2fib_main_interface_hardware_ingress_info->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19411,13 +19567,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-main-interface-hardware-egress-detail-info")
     {
         if(l2fib_main_interface_hardware_egress_detail_info == nullptr)
         {
-            l2fib_main_interface_hardware_egress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo>();
+            l2fib_main_interface_hardware_egress_detail_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo>();
         }
         return l2fib_main_interface_hardware_egress_detail_info;
     }
@@ -19426,7 +19582,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_hardware_egress_info == nullptr)
         {
-            l2fib_main_interface_hardware_egress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo>();
+            l2fib_main_interface_hardware_egress_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo>();
         }
         return l2fib_main_interface_hardware_egress_info;
     }
@@ -19435,7 +19591,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instances == nullptr)
         {
-            l2fib_main_interface_instances = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances>();
+            l2fib_main_interface_instances = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances>();
         }
         return l2fib_main_interface_instances;
     }
@@ -19444,7 +19600,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_info == nullptr)
         {
-            l2fib_main_interface_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInfo>();
+            l2fib_main_interface_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInfo>();
         }
         return l2fib_main_interface_info;
     }
@@ -19453,7 +19609,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_detail_info == nullptr)
         {
-            l2fib_main_interface_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceDetailInfo>();
+            l2fib_main_interface_detail_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceDetailInfo>();
         }
         return l2fib_main_interface_detail_info;
     }
@@ -19462,7 +19618,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_hardware_ingress_detail_info == nullptr)
         {
-            l2fib_main_interface_hardware_ingress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressDetailInfo>();
+            l2fib_main_interface_hardware_ingress_detail_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressDetailInfo>();
         }
         return l2fib_main_interface_hardware_ingress_detail_info;
     }
@@ -19471,7 +19627,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_hardware_ingress_info == nullptr)
         {
-            l2fib_main_interface_hardware_ingress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareIngressInfo>();
+            l2fib_main_interface_hardware_ingress_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareIngressInfo>();
         }
         return l2fib_main_interface_hardware_ingress_info;
     }
@@ -19479,7 +19635,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -19521,7 +19677,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "main-interface-id")
     {
@@ -19537,7 +19693,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::set_
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "main-interface-id")
     {
@@ -19549,14 +19705,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::set_
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-main-interface-hardware-egress-detail-info" || name == "l2fib-main-interface-hardware-egress-info" || name == "l2fib-main-interface-instances" || name == "l2fib-main-interface-info" || name == "l2fib-main-interface-detail-info" || name == "l2fib-main-interface-hardware-ingress-detail-info" || name == "l2fib-main-interface-hardware-ingress-info" || name == "main-interface-id" || name == "main-interface-type")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::L2FibMainInterfaceHardwareEgressDetailInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::L2fibMainInterfaceHardwareEgressDetailInfo()
     :
     main_interface{YType::str, "main-interface"},
     main_if_type{YType::uint8, "main-if-type"},
@@ -19564,43 +19720,51 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     mac{YType::str, "mac"},
     esi_id{YType::uint16, "esi-id"},
     evpn_shg_local_label{YType::uint32, "evpn-shg-local-label"}
+        ,
+    instance_id(this, {})
+    , instances_state(this, {})
+    , instances_provisioned(this, {})
+    , bridge_port_count_instance(this, {})
+    , ethernet_segment_identifier(this, {})
+    , evpn_shg_remote_info(this, {})
 {
 
-    yang_name = "l2fib-main-interface-hardware-egress-detail-info"; yang_parent_name = "l2fib-main-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface-hardware-egress-detail-info"; yang_parent_name = "l2fib-main-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::~L2FibMainInterfaceHardwareEgressDetailInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::~L2fibMainInterfaceHardwareEgressDetailInfo()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::has_data() const
 {
-    for (std::size_t index=0; index<instance_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance_id.len(); index++)
     {
         if(instance_id[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<instances_state.size(); index++)
+    for (std::size_t index=0; index<instances_state.len(); index++)
     {
         if(instances_state[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<instances_provisioned.size(); index++)
+    for (std::size_t index=0; index<instances_provisioned.len(); index++)
     {
         if(instances_provisioned[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<bridge_port_count_instance.size(); index++)
+    for (std::size_t index=0; index<bridge_port_count_instance.len(); index++)
     {
         if(bridge_port_count_instance[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ethernet_segment_identifier.size(); index++)
+    for (std::size_t index=0; index<ethernet_segment_identifier.len(); index++)
     {
         if(ethernet_segment_identifier[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<evpn_shg_remote_info.size(); index++)
+    for (std::size_t index=0; index<evpn_shg_remote_info.len(); index++)
     {
         if(evpn_shg_remote_info[index]->has_data())
             return true;
@@ -19613,34 +19777,34 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| evpn_shg_local_label.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::has_operation() const
 {
-    for (std::size_t index=0; index<instance_id.size(); index++)
+    for (std::size_t index=0; index<instance_id.len(); index++)
     {
         if(instance_id[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<instances_state.size(); index++)
+    for (std::size_t index=0; index<instances_state.len(); index++)
     {
         if(instances_state[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<instances_provisioned.size(); index++)
+    for (std::size_t index=0; index<instances_provisioned.len(); index++)
     {
         if(instances_provisioned[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<bridge_port_count_instance.size(); index++)
+    for (std::size_t index=0; index<bridge_port_count_instance.len(); index++)
     {
         if(bridge_port_count_instance[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ethernet_segment_identifier.size(); index++)
+    for (std::size_t index=0; index<ethernet_segment_identifier.len(); index++)
     {
         if(ethernet_segment_identifier[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<evpn_shg_remote_info.size(); index++)
+    for (std::size_t index=0; index<evpn_shg_remote_info.len(); index++)
     {
         if(evpn_shg_remote_info[index]->has_operation())
             return true;
@@ -19654,14 +19818,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| ydk::is_set(evpn_shg_local_label.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interface-hardware-egress-detail-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19676,65 +19840,65 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance-id")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId>();
         c->parent = this;
-        instance_id.push_back(c);
+        instance_id.append(c);
         return c;
     }
 
     if(child_yang_name == "instances-state")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState>();
         c->parent = this;
-        instances_state.push_back(c);
+        instances_state.append(c);
         return c;
     }
 
     if(child_yang_name == "instances-provisioned")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned>();
         c->parent = this;
-        instances_provisioned.push_back(c);
+        instances_provisioned.append(c);
         return c;
     }
 
     if(child_yang_name == "bridge-port-count-instance")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance>();
         c->parent = this;
-        bridge_port_count_instance.push_back(c);
+        bridge_port_count_instance.append(c);
         return c;
     }
 
     if(child_yang_name == "ethernet-segment-identifier")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier>();
         c->parent = this;
-        ethernet_segment_identifier.push_back(c);
+        ethernet_segment_identifier.append(c);
         return c;
     }
 
     if(child_yang_name == "evpn-shg-remote-info")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo>();
         c->parent = this;
-        evpn_shg_remote_info.push_back(c);
+        evpn_shg_remote_info.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance_id)
+    for (auto c : instance_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19743,7 +19907,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     }
 
     count = 0;
-    for (auto const & c : instances_state)
+    for (auto c : instances_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19752,7 +19916,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     }
 
     count = 0;
-    for (auto const & c : instances_provisioned)
+    for (auto c : instances_provisioned.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19761,7 +19925,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     }
 
     count = 0;
-    for (auto const & c : bridge_port_count_instance)
+    for (auto c : bridge_port_count_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19770,7 +19934,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     }
 
     count = 0;
-    for (auto const & c : ethernet_segment_identifier)
+    for (auto c : ethernet_segment_identifier.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19779,7 +19943,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     }
 
     count = 0;
-    for (auto const & c : evpn_shg_remote_info)
+    for (auto c : evpn_shg_remote_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -19790,7 +19954,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "main-interface")
     {
@@ -19830,7 +19994,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "main-interface")
     {
@@ -19858,44 +20022,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "instance-id" || name == "instances-state" || name == "instances-provisioned" || name == "bridge-port-count-instance" || name == "ethernet-segment-identifier" || name == "evpn-shg-remote-info" || name == "main-interface" || name == "main-if-type" || name == "virtual-if-name" || name == "mac" || name == "esi-id" || name == "evpn-shg-local-label")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::InstanceId()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::InstanceId()
     :
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "instance-id"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance-id"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::~InstanceId()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::~InstanceId()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19905,19 +20070,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -19927,7 +20092,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -19935,44 +20100,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstanceId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstanceId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::InstancesState()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::InstancesState()
     :
     entry{YType::enumeration, "entry"}
 {
 
-    yang_name = "instances-state"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances-state"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::~InstancesState()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::~InstancesState()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instances-state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -19982,19 +20148,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -20004,7 +20170,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -20012,44 +20178,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesState::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesState::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::InstancesProvisioned()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::InstancesProvisioned()
     :
     entry{YType::boolean, "entry"}
 {
 
-    yang_name = "instances-provisioned"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances-provisioned"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::~InstancesProvisioned()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::~InstancesProvisioned()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instances-provisioned";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20059,19 +20226,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -20081,7 +20248,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -20089,44 +20256,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::InstancesProvisioned::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::BridgePortCountInstance()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::BridgePortCountInstance()
     :
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "bridge-port-count-instance"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bridge-port-count-instance"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::~BridgePortCountInstance()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::~BridgePortCountInstance()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-port-count-instance";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20136,19 +20304,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -20158,7 +20326,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -20166,44 +20334,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::BridgePortCountInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::EthernetSegmentIdentifier()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::EthernetSegmentIdentifier()
     :
     entry{YType::uint8, "entry"}
 {
 
-    yang_name = "ethernet-segment-identifier"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet-segment-identifier"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::~EthernetSegmentIdentifier()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::~EthernetSegmentIdentifier()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-identifier";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20213,19 +20382,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -20235,7 +20404,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -20243,45 +20412,46 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EthernetSegmentIdentifier::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::EvpnShgRemoteInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::EvpnShgRemoteInfo()
     :
-    remote_split_horizon_group_label(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>())
+    remote_split_horizon_group_label(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>())
 {
     remote_split_horizon_group_label->parent = this;
 
-    yang_name = "evpn-shg-remote-info"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "evpn-shg-remote-info"; yang_parent_name = "l2fib-main-interface-hardware-egress-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::~EvpnShgRemoteInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::~EvpnShgRemoteInfo()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (remote_split_horizon_group_label !=  nullptr && remote_split_horizon_group_label->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| (remote_split_horizon_group_label !=  nullptr && remote_split_horizon_group_label->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evpn-shg-remote-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20290,13 +20460,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote-split-horizon-group-label")
     {
         if(remote_split_horizon_group_label == nullptr)
         {
-            remote_split_horizon_group_label = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>();
+            remote_split_horizon_group_label = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel>();
         }
         return remote_split_horizon_group_label;
     }
@@ -20304,7 +20474,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -20316,55 +20486,56 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "remote-split-horizon-group-label")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::RemoteSplitHorizonGroupLabel()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::RemoteSplitHorizonGroupLabel()
     :
     next_hop{YType::str, "next-hop"},
     label{YType::uint32, "label"}
 {
 
-    yang_name = "remote-split-horizon-group-label"; yang_parent_name = "evpn-shg-remote-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-split-horizon-group-label"; yang_parent_name = "evpn-shg-remote-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::~RemoteSplitHorizonGroupLabel()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::~RemoteSplitHorizonGroupLabel()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop.is_set
 	|| label.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(next_hop.yfilter)
 	|| ydk::is_set(label.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-split-horizon-group-label";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20375,19 +20546,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "next-hop")
     {
@@ -20403,7 +20574,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "next-hop")
     {
@@ -20415,40 +20586,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressDetailInfo::EvpnShgRemoteInfo::RemoteSplitHorizonGroupLabel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "next-hop" || name == "label")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::L2FibMainInterfaceHardwareEgressInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::L2fibMainInterfaceHardwareEgressInfo()
     :
     main_interface{YType::str, "main-interface"},
     main_if_type{YType::uint8, "main-if-type"},
     virtual_if_name{YType::str, "virtual-if-name"}
+        ,
+    instance_id(this, {})
+    , instances_state(this, {})
+    , instances_provisioned(this, {})
 {
 
-    yang_name = "l2fib-main-interface-hardware-egress-info"; yang_parent_name = "l2fib-main-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface-hardware-egress-info"; yang_parent_name = "l2fib-main-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::~L2FibMainInterfaceHardwareEgressInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::~L2fibMainInterfaceHardwareEgressInfo()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::has_data() const
 {
-    for (std::size_t index=0; index<instance_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance_id.len(); index++)
     {
         if(instance_id[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<instances_state.size(); index++)
+    for (std::size_t index=0; index<instances_state.len(); index++)
     {
         if(instances_state[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<instances_provisioned.size(); index++)
+    for (std::size_t index=0; index<instances_provisioned.len(); index++)
     {
         if(instances_provisioned[index]->has_data())
             return true;
@@ -20458,19 +20634,19 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| virtual_if_name.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::has_operation() const
 {
-    for (std::size_t index=0; index<instance_id.size(); index++)
+    for (std::size_t index=0; index<instance_id.len(); index++)
     {
         if(instance_id[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<instances_state.size(); index++)
+    for (std::size_t index=0; index<instances_state.len(); index++)
     {
         if(instances_state[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<instances_provisioned.size(); index++)
+    for (std::size_t index=0; index<instances_provisioned.len(); index++)
     {
         if(instances_provisioned[index]->has_operation())
             return true;
@@ -20481,14 +20657,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| ydk::is_set(virtual_if_name.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interface-hardware-egress-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20500,41 +20676,41 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "instance-id")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId>();
         c->parent = this;
-        instance_id.push_back(c);
+        instance_id.append(c);
         return c;
     }
 
     if(child_yang_name == "instances-state")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState>();
         c->parent = this;
-        instances_state.push_back(c);
+        instances_state.append(c);
         return c;
     }
 
     if(child_yang_name == "instances-provisioned")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned>();
         c->parent = this;
-        instances_provisioned.push_back(c);
+        instances_provisioned.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance_id)
+    for (auto c : instance_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20543,7 +20719,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     }
 
     count = 0;
-    for (auto const & c : instances_state)
+    for (auto c : instances_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20552,7 +20728,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     }
 
     count = 0;
-    for (auto const & c : instances_provisioned)
+    for (auto c : instances_provisioned.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20563,7 +20739,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "main-interface")
     {
@@ -20585,7 +20761,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "main-interface")
     {
@@ -20601,44 +20777,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "instance-id" || name == "instances-state" || name == "instances-provisioned" || name == "main-interface" || name == "main-if-type" || name == "virtual-if-name")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::InstanceId()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::InstanceId()
     :
     entry{YType::uint32, "entry"}
 {
 
-    yang_name = "instance-id"; yang_parent_name = "l2fib-main-interface-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance-id"; yang_parent_name = "l2fib-main-interface-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::~InstanceId()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::~InstanceId()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20648,19 +20825,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -20670,7 +20847,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -20678,44 +20855,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstanceId::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstanceId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::InstancesState()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::InstancesState()
     :
     entry{YType::enumeration, "entry"}
 {
 
-    yang_name = "instances-state"; yang_parent_name = "l2fib-main-interface-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances-state"; yang_parent_name = "l2fib-main-interface-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::~InstancesState()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::~InstancesState()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instances-state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20725,19 +20903,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -20747,7 +20925,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -20755,44 +20933,45 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesState::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesState::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::InstancesProvisioned()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::InstancesProvisioned()
     :
     entry{YType::boolean, "entry"}
 {
 
-    yang_name = "instances-provisioned"; yang_parent_name = "l2fib-main-interface-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances-provisioned"; yang_parent_name = "l2fib-main-interface-hardware-egress-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::~InstancesProvisioned()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::~InstancesProvisioned()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entry.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instances-provisioned";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20802,19 +20981,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entry")
     {
@@ -20824,7 +21003,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entry")
     {
@@ -20832,26 +21011,29 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceHardwareEgressInfo::InstancesProvisioned::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceHardwareEgressInfo::InstancesProvisioned::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entry")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstances()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstances()
+    :
+    l2fib_main_interface_instance(this, {"instance"})
 {
 
-    yang_name = "l2fib-main-interface-instances"; yang_parent_name = "l2fib-main-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface-instances"; yang_parent_name = "l2fib-main-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::~L2FibMainInterfaceInstances()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::~L2fibMainInterfaceInstances()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_main_interface_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_main_interface_instance.len(); index++)
     {
         if(l2fib_main_interface_instance[index]->has_data())
             return true;
@@ -20859,9 +21041,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_main_interface_instance.size(); index++)
+    for (std::size_t index=0; index<l2fib_main_interface_instance.len(); index++)
     {
         if(l2fib_main_interface_instance[index]->has_operation())
             return true;
@@ -20869,14 +21051,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interface-instances";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -20885,25 +21067,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-main-interface-instance")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance>();
         c->parent = this;
-        l2fib_main_interface_instance.push_back(c);
+        l2fib_main_interface_instance.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_main_interface_instance)
+    for (auto c : l2fib_main_interface_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -20914,33 +21096,33 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-main-interface-instance")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstance()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstance()
     :
-    instance{YType::int32, "instance"}
-    	,
-    l2fib_main_interface_instance_detail_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo>())
-	,l2fib_main_interface_instance_bridge_port_details(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails>())
-	,l2fib_main_interface_instance_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo>())
-	,l2fib_main_interface_instance_hardware_ingress_detail_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo>())
-	,l2fib_main_interface_instance_hardware_egress_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo>())
-	,l2fib_main_interface_instance_hardware_ingress_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo>())
-	,l2fib_main_interface_instance_bridge_ports(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts>())
-	,l2fib_main_interface_instance_hardware_egress_detail_info(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo>())
+    instance{YType::uint32, "instance"}
+        ,
+    l2fib_main_interface_instance_detail_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo>())
+    , l2fib_main_interface_instance_bridge_port_details(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails>())
+    , l2fib_main_interface_instance_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceInfo>())
+    , l2fib_main_interface_instance_hardware_ingress_detail_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressDetailInfo>())
+    , l2fib_main_interface_instance_hardware_egress_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressInfo>())
+    , l2fib_main_interface_instance_hardware_ingress_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressInfo>())
+    , l2fib_main_interface_instance_bridge_ports(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePorts>())
+    , l2fib_main_interface_instance_hardware_egress_detail_info(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressDetailInfo>())
 {
     l2fib_main_interface_instance_detail_info->parent = this;
     l2fib_main_interface_instance_bridge_port_details->parent = this;
@@ -20951,15 +21133,16 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     l2fib_main_interface_instance_bridge_ports->parent = this;
     l2fib_main_interface_instance_hardware_egress_detail_info->parent = this;
 
-    yang_name = "l2fib-main-interface-instance"; yang_parent_name = "l2fib-main-interface-instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface-instance"; yang_parent_name = "l2fib-main-interface-instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::~L2FibMainInterfaceInstance()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::~L2fibMainInterfaceInstance()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance.is_set
 	|| (l2fib_main_interface_instance_detail_info !=  nullptr && l2fib_main_interface_instance_detail_info->has_data())
 	|| (l2fib_main_interface_instance_bridge_port_details !=  nullptr && l2fib_main_interface_instance_bridge_port_details->has_data())
@@ -20971,7 +21154,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| (l2fib_main_interface_instance_hardware_egress_detail_info !=  nullptr && l2fib_main_interface_instance_hardware_egress_detail_info->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(instance.yfilter)
@@ -20985,14 +21168,15 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| (l2fib_main_interface_instance_hardware_egress_detail_info !=  nullptr && l2fib_main_interface_instance_hardware_egress_detail_info->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "l2fib-main-interface-instance" <<"[instance='" <<instance <<"']";
+    path_buffer << "l2fib-main-interface-instance";
+    ADD_KEY_TOKEN(instance, "instance");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21002,13 +21186,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-main-interface-instance-detail-info")
     {
         if(l2fib_main_interface_instance_detail_info == nullptr)
         {
-            l2fib_main_interface_instance_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo>();
+            l2fib_main_interface_instance_detail_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo>();
         }
         return l2fib_main_interface_instance_detail_info;
     }
@@ -21017,7 +21201,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instance_bridge_port_details == nullptr)
         {
-            l2fib_main_interface_instance_bridge_port_details = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails>();
+            l2fib_main_interface_instance_bridge_port_details = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails>();
         }
         return l2fib_main_interface_instance_bridge_port_details;
     }
@@ -21026,7 +21210,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instance_info == nullptr)
         {
-            l2fib_main_interface_instance_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceInfo>();
+            l2fib_main_interface_instance_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceInfo>();
         }
         return l2fib_main_interface_instance_info;
     }
@@ -21035,7 +21219,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instance_hardware_ingress_detail_info == nullptr)
         {
-            l2fib_main_interface_instance_hardware_ingress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressDetailInfo>();
+            l2fib_main_interface_instance_hardware_ingress_detail_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressDetailInfo>();
         }
         return l2fib_main_interface_instance_hardware_ingress_detail_info;
     }
@@ -21044,7 +21228,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instance_hardware_egress_info == nullptr)
         {
-            l2fib_main_interface_instance_hardware_egress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressInfo>();
+            l2fib_main_interface_instance_hardware_egress_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressInfo>();
         }
         return l2fib_main_interface_instance_hardware_egress_info;
     }
@@ -21053,7 +21237,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instance_hardware_ingress_info == nullptr)
         {
-            l2fib_main_interface_instance_hardware_ingress_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareIngressInfo>();
+            l2fib_main_interface_instance_hardware_ingress_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareIngressInfo>();
         }
         return l2fib_main_interface_instance_hardware_ingress_info;
     }
@@ -21062,7 +21246,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instance_bridge_ports == nullptr)
         {
-            l2fib_main_interface_instance_bridge_ports = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePorts>();
+            l2fib_main_interface_instance_bridge_ports = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePorts>();
         }
         return l2fib_main_interface_instance_bridge_ports;
     }
@@ -21071,7 +21255,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     {
         if(l2fib_main_interface_instance_hardware_egress_detail_info == nullptr)
         {
-            l2fib_main_interface_instance_hardware_egress_detail_info = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceHardwareEgressDetailInfo>();
+            l2fib_main_interface_instance_hardware_egress_detail_info = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceHardwareEgressDetailInfo>();
         }
         return l2fib_main_interface_instance_hardware_egress_detail_info;
     }
@@ -21079,7 +21263,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -21126,7 +21310,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "instance")
     {
@@ -21136,7 +21320,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "instance")
     {
@@ -21144,14 +21328,14 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-main-interface-instance-detail-info" || name == "l2fib-main-interface-instance-bridge-port-details" || name == "l2fib-main-interface-instance-info" || name == "l2fib-main-interface-instance-hardware-ingress-detail-info" || name == "l2fib-main-interface-instance-hardware-egress-info" || name == "l2fib-main-interface-instance-hardware-ingress-info" || name == "l2fib-main-interface-instance-bridge-ports" || name == "l2fib-main-interface-instance-hardware-egress-detail-info" || name == "instance")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::L2FibMainInterfaceInstanceDetailInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::L2fibMainInterfaceInstanceDetailInfo()
     :
     main_interface{YType::str, "main-interface"},
     main_if_type{YType::uint8, "main-if-type"},
@@ -21162,15 +21346,16 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     instance_provisioned{YType::boolean, "instance-provisioned"}
 {
 
-    yang_name = "l2fib-main-interface-instance-detail-info"; yang_parent_name = "l2fib-main-interface-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface-instance-detail-info"; yang_parent_name = "l2fib-main-interface-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::~L2FibMainInterfaceInstanceDetailInfo()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::~L2fibMainInterfaceInstanceDetailInfo()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return main_interface.is_set
 	|| main_if_type.is_set
 	|| virtual_if_name.is_set
@@ -21180,7 +21365,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| instance_provisioned.is_set;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(main_interface.yfilter)
@@ -21192,14 +21377,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| ydk::is_set(instance_provisioned.yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interface-instance-detail-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21215,19 +21400,19 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "main-interface")
     {
@@ -21273,7 +21458,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "main-interface")
     {
@@ -21305,26 +21490,29 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "main-interface" || name == "main-if-type" || name == "virtual-if-name" || name == "instance" || name == "state" || name == "bridge-port-count" || name == "instance-provisioned")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetails()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetails()
+    :
+    l2fib_main_interface_instance_bridge_port_detail(this, {"xcid"})
 {
 
-    yang_name = "l2fib-main-interface-instance-bridge-port-details"; yang_parent_name = "l2fib-main-interface-instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface-instance-bridge-port-details"; yang_parent_name = "l2fib-main-interface-instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::~L2FibMainInterfaceInstanceBridgePortDetails()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::~L2fibMainInterfaceInstanceBridgePortDetails()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::has_data() const
 {
-    for (std::size_t index=0; index<l2fib_main_interface_instance_bridge_port_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<l2fib_main_interface_instance_bridge_port_detail.len(); index++)
     {
         if(l2fib_main_interface_instance_bridge_port_detail[index]->has_data())
             return true;
@@ -21332,9 +21520,9 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     return false;
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::has_operation() const
 {
-    for (std::size_t index=0; index<l2fib_main_interface_instance_bridge_port_detail.size(); index++)
+    for (std::size_t index=0; index<l2fib_main_interface_instance_bridge_port_detail.len(); index++)
     {
         if(l2fib_main_interface_instance_bridge_port_detail[index]->has_operation())
             return true;
@@ -21342,14 +21530,14 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     return is_set(yfilter);
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-main-interface-instance-bridge-port-details";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21358,25 +21546,25 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "l2fib-main-interface-instance-bridge-port-detail")
     {
-        auto c = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail>();
+        auto c = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail>();
         c->parent = this;
-        l2fib_main_interface_instance_bridge_port_detail.push_back(c);
+        l2fib_main_interface_instance_bridge_port_detail.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : l2fib_main_interface_instance_bridge_port_detail)
+    for (auto c : l2fib_main_interface_instance_bridge_port_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -21387,22 +21575,22 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "l2fib-main-interface-instance-bridge-port-detail")
         return true;
     return false;
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::L2FibMainInterfaceInstanceBridgePortDetail()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::L2fibMainInterfaceInstanceBridgePortDetail()
     :
     xcid{YType::str, "xcid"},
     bridge_port_id{YType::str, "bridge-port-id"},
@@ -21412,20 +21600,21 @@ L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMain
     main_if_type{YType::uint8, "main-if-type"},
     virtual_if_name{YType::str, "virtual-if-name"},
     bp_type{YType::uint8, "bp-type"}
-    	,
-    oper(std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper>())
+        ,
+    oper(std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper>())
 {
     oper->parent = this;
 
-    yang_name = "l2fib-main-interface-instance-bridge-port-detail"; yang_parent_name = "l2fib-main-interface-instance-bridge-port-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2fib-main-interface-instance-bridge-port-detail"; yang_parent_name = "l2fib-main-interface-instance-bridge-port-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::~L2FibMainInterfaceInstanceBridgePortDetail()
+L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::~L2fibMainInterfaceInstanceBridgePortDetail()
 {
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::has_data() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return xcid.is_set
 	|| bridge_port_id.is_set
 	|| bridge_id.is_set
@@ -21437,7 +21626,7 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| (oper !=  nullptr && oper->has_data());
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::has_operation() const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(xcid.yfilter)
@@ -21451,14 +21640,15 @@ bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
 	|| (oper !=  nullptr && oper->has_operation());
 }
 
-std::string L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_segment_path() const
+std::string L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "l2fib-main-interface-instance-bridge-port-detail" <<"[xcid='" <<xcid <<"']";
+    path_buffer << "l2fib-main-interface-instance-bridge-port-detail";
+    ADD_KEY_TOKEN(xcid, "xcid");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -21475,13 +21665,13 @@ std::vector<std::pair<std::string, LeafData> > L2VpnForwarding::Nodes::Node::L2F
 
 }
 
-std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "oper")
     {
         if(oper == nullptr)
         {
-            oper = std::make_shared<L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::Oper>();
+            oper = std::make_shared<L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::Oper>();
         }
         return oper;
     }
@@ -21489,7 +21679,7 @@ std::shared_ptr<Entity> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2Fib
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -21501,7 +21691,7 @@ std::map<std::string, std::shared_ptr<Entity>> L2VpnForwarding::Nodes::Node::L2F
     return children;
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "xcid")
     {
@@ -21553,7 +21743,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::set_filter(const std::string & value_path, YFilter yfilter)
+void L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "xcid")
     {
@@ -21589,7 +21779,7 @@ void L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2Fi
     }
 }
 
-bool L2VpnForwarding::Nodes::Node::L2FibMainInterfaces::L2FibMainInterface::L2FibMainInterfaceInstances::L2FibMainInterfaceInstance::L2FibMainInterfaceInstanceBridgePortDetails::L2FibMainInterfaceInstanceBridgePortDetail::has_leaf_or_child_of_name(const std::string & name) const
+bool L2vpnForwarding::Nodes::Node::L2fibMainInterfaces::L2fibMainInterface::L2fibMainInterfaceInstances::L2fibMainInterfaceInstance::L2fibMainInterfaceInstanceBridgePortDetails::L2fibMainInterfaceInstanceBridgePortDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oper" || name == "xcid" || name == "bridge-port-id" || name == "bridge-id" || name == "state" || name == "main-interface" || name == "main-if-type" || name == "virtual-if-name" || name == "bp-type")
         return true;

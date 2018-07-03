@@ -32,22 +32,22 @@ class CISCOIPSLAECHOMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cipslaicmpechotmpltable; //type: CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable
-        class Cipslaudpechotmpltable; //type: CISCOIPSLAECHOMIB::Cipslaudpechotmpltable
-        class Cipslatcpconntmpltable; //type: CISCOIPSLAECHOMIB::Cipslatcpconntmpltable
+        class CipslaIcmpEchoTmplTable; //type: CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable
+        class CipslaUdpEchoTmplTable; //type: CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable
+        class CipslaTcpConnTmplTable; //type: CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable> cipslaicmpechotmpltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslaudpechotmpltable> cipslaudpechotmpltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslatcpconntmpltable> cipslatcpconntmpltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable> cipslaicmpechotmpltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable> cipslaudpechotmpltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable> cipslatcpconntmpltable;
         
 }; // CISCOIPSLAECHOMIB
 
 
-class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable : public ydk::Entity
+class CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable : public ydk::Entity
 {
     public:
-        Cipslaicmpechotmpltable();
-        ~Cipslaicmpechotmpltable();
+        CipslaIcmpEchoTmplTable();
+        ~CipslaIcmpEchoTmplTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -60,18 +60,18 @@ class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslaicmpechotmplentry; //type: CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry
+        class CipslaIcmpEchoTmplEntry; //type: CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry> > cipslaicmpechotmplentry;
+        ydk::YList cipslaicmpechotmplentry;
         
-}; // CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable
+}; // CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable
 
 
-class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry : public ydk::Entity
+class CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry : public ydk::Entity
 {
     public:
-        Cipslaicmpechotmplentry();
-        ~Cipslaicmpechotmplentry();
+        CipslaIcmpEchoTmplEntry();
+        ~CipslaIcmpEchoTmplEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,22 +96,22 @@ class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry : publ
         ydk::YLeaf cipslaicmpechotmplthreshold; //type: uint32
         ydk::YLeaf cipslaicmpechotmplhistlives; //type: uint32
         ydk::YLeaf cipslaicmpechotmplhistbuckets; //type: uint32
-        ydk::YLeaf cipslaicmpechotmplhistfilter; //type: Cipslaicmpechotmplhistfilter
+        ydk::YLeaf cipslaicmpechotmplhistfilter; //type: CipslaIcmpEchoTmplHistFilter
         ydk::YLeaf cipslaicmpechotmplstatshours; //type: uint32
         ydk::YLeaf cipslaicmpechotmpldistbuckets; //type: uint32
         ydk::YLeaf cipslaicmpechotmpldistinterval; //type: uint32
         ydk::YLeaf cipslaicmpechotmplstoragetype; //type: StorageType
         ydk::YLeaf cipslaicmpechotmplrowstatus; //type: RowStatus
-        class Cipslaicmpechotmplhistfilter;
+        class CipslaIcmpEchoTmplHistFilter;
 
-}; // CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry
+}; // CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry
 
 
-class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable : public ydk::Entity
+class CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable : public ydk::Entity
 {
     public:
-        Cipslaudpechotmpltable();
-        ~Cipslaudpechotmpltable();
+        CipslaUdpEchoTmplTable();
+        ~CipslaUdpEchoTmplTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -124,18 +124,18 @@ class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslaudpechotmplentry; //type: CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry
+        class CipslaUdpEchoTmplEntry; //type: CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry> > cipslaudpechotmplentry;
+        ydk::YList cipslaudpechotmplentry;
         
-}; // CISCOIPSLAECHOMIB::Cipslaudpechotmpltable
+}; // CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable
 
 
-class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry : public ydk::Entity
+class CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry : public ydk::Entity
 {
     public:
-        Cipslaudpechotmplentry();
-        ~Cipslaudpechotmplentry();
+        CipslaUdpEchoTmplEntry();
+        ~CipslaUdpEchoTmplEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -162,22 +162,22 @@ class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry : public
         ydk::YLeaf cipslaudpechotmplthreshold; //type: uint32
         ydk::YLeaf cipslaudpechotmplhistlives; //type: uint32
         ydk::YLeaf cipslaudpechotmplhistbuckets; //type: uint32
-        ydk::YLeaf cipslaudpechotmplhistfilter; //type: Cipslaudpechotmplhistfilter
+        ydk::YLeaf cipslaudpechotmplhistfilter; //type: CipslaUdpEchoTmplHistFilter
         ydk::YLeaf cipslaudpechotmplstatshours; //type: uint32
         ydk::YLeaf cipslaudpechotmpldistbuckets; //type: uint32
         ydk::YLeaf cipslaudpechotmpldistinterval; //type: uint32
         ydk::YLeaf cipslaudpechotmplstoragetype; //type: StorageType
         ydk::YLeaf cipslaudpechotmplrowstatus; //type: RowStatus
-        class Cipslaudpechotmplhistfilter;
+        class CipslaUdpEchoTmplHistFilter;
 
-}; // CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry
+}; // CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry
 
 
-class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable : public ydk::Entity
+class CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable : public ydk::Entity
 {
     public:
-        Cipslatcpconntmpltable();
-        ~Cipslatcpconntmpltable();
+        CipslaTcpConnTmplTable();
+        ~CipslaTcpConnTmplTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -190,18 +190,18 @@ class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslatcpconntmplentry; //type: CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry
+        class CipslaTcpConnTmplEntry; //type: CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_ECHO_MIB::CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry> > cipslatcpconntmplentry;
+        ydk::YList cipslatcpconntmplentry;
         
-}; // CISCOIPSLAECHOMIB::Cipslatcpconntmpltable
+}; // CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable
 
 
-class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry : public ydk::Entity
+class CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry : public ydk::Entity
 {
     public:
-        Cipslatcpconntmplentry();
-        ~Cipslatcpconntmplentry();
+        CipslaTcpConnTmplEntry();
+        ~CipslaTcpConnTmplEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -226,17 +226,17 @@ class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry : public
         ydk::YLeaf cipslatcpconntmplthreshold; //type: uint32
         ydk::YLeaf cipslatcpconntmplhistlives; //type: uint32
         ydk::YLeaf cipslatcpconntmplhistbuckets; //type: uint32
-        ydk::YLeaf cipslatcpconntmplhistfilter; //type: Cipslatcpconntmplhistfilter
+        ydk::YLeaf cipslatcpconntmplhistfilter; //type: CipslaTcpConnTmplHistFilter
         ydk::YLeaf cipslatcpconntmplstatshours; //type: uint32
         ydk::YLeaf cipslatcpconntmpldistbuckets; //type: uint32
         ydk::YLeaf cipslatcpconntmpldistinterval; //type: uint32
         ydk::YLeaf cipslatcpconntmplstoragetype; //type: StorageType
         ydk::YLeaf cipslatcpconntmplrowstatus; //type: RowStatus
-        class Cipslatcpconntmplhistfilter;
+        class CipslaTcpConnTmplHistFilter;
 
-}; // CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry
+}; // CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry
 
-class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry::Cipslaicmpechotmplhistfilter : public ydk::Enum
+class CISCOIPSLAECHOMIB::CipslaIcmpEchoTmplTable::CipslaIcmpEchoTmplEntry::CipslaIcmpEchoTmplHistFilter : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -246,7 +246,7 @@ class CISCOIPSLAECHOMIB::Cipslaicmpechotmpltable::Cipslaicmpechotmplentry::Cipsl
 
 };
 
-class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry::Cipslaudpechotmplhistfilter : public ydk::Enum
+class CISCOIPSLAECHOMIB::CipslaUdpEchoTmplTable::CipslaUdpEchoTmplEntry::CipslaUdpEchoTmplHistFilter : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -256,7 +256,7 @@ class CISCOIPSLAECHOMIB::Cipslaudpechotmpltable::Cipslaudpechotmplentry::Cipslau
 
 };
 
-class CISCOIPSLAECHOMIB::Cipslatcpconntmpltable::Cipslatcpconntmplentry::Cipslatcpconntmplhistfilter : public ydk::Enum
+class CISCOIPSLAECHOMIB::CipslaTcpConnTmplTable::CipslaTcpConnTmplEntry::CipslaTcpConnTmplHistFilter : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

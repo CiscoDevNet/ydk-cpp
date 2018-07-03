@@ -11,26 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace cisco_routing_ext {
 
-Rip::Rip()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:rip")
-{
-
-}
-
-Rip::~Rip()
-{
-}
-
-IsIs::IsIs()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:is-is")
-{
-
-}
-
-IsIs::~IsIs()
-{
-}
-
 Bgp::Bgp()
      : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:bgp")
 {
@@ -38,6 +18,16 @@ Bgp::Bgp()
 }
 
 Bgp::~Bgp()
+{
+}
+
+Mobile::Mobile()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:mobile")
+{
+
+}
+
+Mobile::~Mobile()
 {
 }
 
@@ -51,13 +41,23 @@ Eigrp::~Eigrp()
 {
 }
 
-Mobile::Mobile()
-     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:mobile")
+IsIs::IsIs()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:is-is")
 {
 
 }
 
-Mobile::~Mobile()
+IsIs::~IsIs()
+{
+}
+
+Rip::Rip()
+     : Identity("urn:cisco:params:xml:ns:yang:cisco-routing-ext", "cisco-routing-ext", "cisco-routing-ext:rip")
+{
+
+}
+
+Rip::~Rip()
 {
 }
 

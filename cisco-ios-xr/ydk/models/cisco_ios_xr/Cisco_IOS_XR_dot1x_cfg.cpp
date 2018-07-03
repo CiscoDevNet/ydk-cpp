@@ -11,19 +11,22 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_dot1x_cfg {
 
-Dot1X::Dot1X()
+Dot1x::Dot1x()
+    :
+    dot1x_profile(this, {"profile_name"})
 {
 
-    yang_name = "dot1x"; yang_parent_name = "Cisco-IOS-XR-dot1x-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "dot1x"; yang_parent_name = "Cisco-IOS-XR-dot1x-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-Dot1X::~Dot1X()
+Dot1x::~Dot1x()
 {
 }
 
-bool Dot1X::has_data() const
+bool Dot1x::has_data() const
 {
-    for (std::size_t index=0; index<dot1x_profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot1x_profile.len(); index++)
     {
         if(dot1x_profile[index]->has_data())
             return true;
@@ -31,9 +34,9 @@ bool Dot1X::has_data() const
     return false;
 }
 
-bool Dot1X::has_operation() const
+bool Dot1x::has_operation() const
 {
-    for (std::size_t index=0; index<dot1x_profile.size(); index++)
+    for (std::size_t index=0; index<dot1x_profile.len(); index++)
     {
         if(dot1x_profile[index]->has_operation())
             return true;
@@ -41,14 +44,14 @@ bool Dot1X::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Dot1X::get_segment_path() const
+std::string Dot1x::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-cfg:dot1x";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -57,25 +60,25 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::get_name_leaf_data() const
 
 }
 
-std::shared_ptr<Entity> Dot1X::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot1x-profile")
     {
-        auto c = std::make_shared<Dot1X::Dot1XProfile>();
+        auto c = std::make_shared<Dot1x::Dot1xProfile>();
         c->parent = this;
-        dot1x_profile.push_back(c);
+        dot1x_profile.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot1x_profile)
+    for (auto c : dot1x_profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -86,73 +89,74 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::get_children() const
     return children;
 }
 
-void Dot1X::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-std::shared_ptr<Entity> Dot1X::clone_ptr() const
+std::shared_ptr<Entity> Dot1x::clone_ptr() const
 {
-    return std::make_shared<Dot1X>();
+    return std::make_shared<Dot1x>();
 }
 
-std::string Dot1X::get_bundle_yang_models_location() const
+std::string Dot1x::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string Dot1X::get_bundle_name() const
+std::string Dot1x::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function Dot1X::get_augment_capabilities_function() const
+augment_capabilities_function Dot1x::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> Dot1X::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> Dot1x::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool Dot1X::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot1x-profile")
         return true;
     return false;
 }
 
-Dot1X::Dot1XProfile::Dot1XProfile()
+Dot1x::Dot1xProfile::Dot1xProfile()
     :
     profile_name{YType::str, "profile-name"},
     pae{YType::str, "pae"}
-    	,
-    supplicant(std::make_shared<Dot1X::Dot1XProfile::Supplicant>())
-	,authenticator(std::make_shared<Dot1X::Dot1XProfile::Authenticator>())
+        ,
+    supplicant(std::make_shared<Dot1x::Dot1xProfile::Supplicant>())
+    , authenticator(std::make_shared<Dot1x::Dot1xProfile::Authenticator>())
 {
     supplicant->parent = this;
     authenticator->parent = this;
 
-    yang_name = "dot1x-profile"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1x-profile"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Dot1X::Dot1XProfile::~Dot1XProfile()
+Dot1x::Dot1xProfile::~Dot1xProfile()
 {
 }
 
-bool Dot1X::Dot1XProfile::has_data() const
+bool Dot1x::Dot1xProfile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| pae.is_set
 	|| (supplicant !=  nullptr && supplicant->has_data())
 	|| (authenticator !=  nullptr && authenticator->has_data());
 }
 
-bool Dot1X::Dot1XProfile::has_operation() const
+bool Dot1x::Dot1xProfile::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
@@ -161,21 +165,22 @@ bool Dot1X::Dot1XProfile::has_operation() const
 	|| (authenticator !=  nullptr && authenticator->has_operation());
 }
 
-std::string Dot1X::Dot1XProfile::get_absolute_path() const
+std::string Dot1x::Dot1xProfile::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-dot1x-cfg:dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Dot1X::Dot1XProfile::get_segment_path() const
+std::string Dot1x::Dot1xProfile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot1x-profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "dot1x-profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -186,13 +191,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::get_name_lea
 
 }
 
-std::shared_ptr<Entity> Dot1X::Dot1XProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Dot1xProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "supplicant")
     {
         if(supplicant == nullptr)
         {
-            supplicant = std::make_shared<Dot1X::Dot1XProfile::Supplicant>();
+            supplicant = std::make_shared<Dot1x::Dot1xProfile::Supplicant>();
         }
         return supplicant;
     }
@@ -201,7 +206,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::get_child_by_name(const std::string
     {
         if(authenticator == nullptr)
         {
-            authenticator = std::make_shared<Dot1X::Dot1XProfile::Authenticator>();
+            authenticator = std::make_shared<Dot1x::Dot1xProfile::Authenticator>();
         }
         return authenticator;
     }
@@ -209,7 +214,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::get_child_by_name(const std::string
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -226,7 +231,7 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::get_children
     return children;
 }
 
-void Dot1X::Dot1XProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Dot1xProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "profile-name")
     {
@@ -242,7 +247,7 @@ void Dot1X::Dot1XProfile::set_value(const std::string & value_path, const std::s
     }
 }
 
-void Dot1X::Dot1XProfile::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Dot1xProfile::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "profile-name")
     {
@@ -254,44 +259,45 @@ void Dot1X::Dot1XProfile::set_filter(const std::string & value_path, YFilter yfi
     }
 }
 
-bool Dot1X::Dot1XProfile::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Dot1xProfile::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "supplicant" || name == "authenticator" || name == "profile-name" || name == "pae")
         return true;
     return false;
 }
 
-Dot1X::Dot1XProfile::Supplicant::Supplicant()
+Dot1x::Dot1xProfile::Supplicant::Supplicant()
     :
     eap_profile{YType::str, "eap-profile"}
 {
 
-    yang_name = "supplicant"; yang_parent_name = "dot1x-profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "supplicant"; yang_parent_name = "dot1x-profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Dot1XProfile::Supplicant::~Supplicant()
+Dot1x::Dot1xProfile::Supplicant::~Supplicant()
 {
 }
 
-bool Dot1X::Dot1XProfile::Supplicant::has_data() const
+bool Dot1x::Dot1xProfile::Supplicant::has_data() const
 {
+    if (is_presence_container) return true;
     return eap_profile.is_set;
 }
 
-bool Dot1X::Dot1XProfile::Supplicant::has_operation() const
+bool Dot1x::Dot1xProfile::Supplicant::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(eap_profile.yfilter);
 }
 
-std::string Dot1X::Dot1XProfile::Supplicant::get_segment_path() const
+std::string Dot1x::Dot1xProfile::Supplicant::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "supplicant";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Supplicant::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Supplicant::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -301,19 +307,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Supplicant::
 
 }
 
-std::shared_ptr<Entity> Dot1X::Dot1XProfile::Supplicant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Dot1xProfile::Supplicant::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Supplicant::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Supplicant::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Dot1XProfile::Supplicant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Dot1xProfile::Supplicant::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "eap-profile")
     {
@@ -323,7 +329,7 @@ void Dot1X::Dot1XProfile::Supplicant::set_value(const std::string & value_path, 
     }
 }
 
-void Dot1X::Dot1XProfile::Supplicant::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Dot1xProfile::Supplicant::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "eap-profile")
     {
@@ -331,45 +337,46 @@ void Dot1X::Dot1XProfile::Supplicant::set_filter(const std::string & value_path,
     }
 }
 
-bool Dot1X::Dot1XProfile::Supplicant::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Dot1xProfile::Supplicant::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "eap-profile")
         return true;
     return false;
 }
 
-Dot1X::Dot1XProfile::Authenticator::Authenticator()
+Dot1x::Dot1xProfile::Authenticator::Authenticator()
     :
-    timers(std::make_shared<Dot1X::Dot1XProfile::Authenticator::Timers>())
+    timers(std::make_shared<Dot1x::Dot1xProfile::Authenticator::Timers>())
 {
     timers->parent = this;
 
-    yang_name = "authenticator"; yang_parent_name = "dot1x-profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authenticator"; yang_parent_name = "dot1x-profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Dot1XProfile::Authenticator::~Authenticator()
+Dot1x::Dot1xProfile::Authenticator::~Authenticator()
 {
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::has_data() const
+bool Dot1x::Dot1xProfile::Authenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return (timers !=  nullptr && timers->has_data());
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::has_operation() const
+bool Dot1x::Dot1xProfile::Authenticator::has_operation() const
 {
     return is_set(yfilter)
 	|| (timers !=  nullptr && timers->has_operation());
 }
 
-std::string Dot1X::Dot1XProfile::Authenticator::get_segment_path() const
+std::string Dot1x::Dot1xProfile::Authenticator::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "authenticator";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Authenticator::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticator::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -378,13 +385,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Authenticato
 
 }
 
-std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "timers")
     {
         if(timers == nullptr)
         {
-            timers = std::make_shared<Dot1X::Dot1XProfile::Authenticator::Timers>();
+            timers = std::make_shared<Dot1x::Dot1xProfile::Authenticator::Timers>();
         }
         return timers;
     }
@@ -392,7 +399,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticator::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Authenticator::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -404,53 +411,54 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticato
     return children;
 }
 
-void Dot1X::Dot1XProfile::Authenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Dot1xProfile::Authenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Dot1XProfile::Authenticator::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Dot1xProfile::Authenticator::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Dot1xProfile::Authenticator::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "timers")
         return true;
     return false;
 }
 
-Dot1X::Dot1XProfile::Authenticator::Timers::Timers()
+Dot1x::Dot1xProfile::Authenticator::Timers::Timers()
     :
-    reauth_time(std::make_shared<Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime>())
+    reauth_time(std::make_shared<Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime>())
 {
     reauth_time->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "authenticator"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "authenticator"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Dot1XProfile::Authenticator::Timers::~Timers()
+Dot1x::Dot1xProfile::Authenticator::Timers::~Timers()
 {
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::Timers::has_data() const
+bool Dot1x::Dot1xProfile::Authenticator::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (reauth_time !=  nullptr && reauth_time->has_data());
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::Timers::has_operation() const
+bool Dot1x::Dot1xProfile::Authenticator::Timers::has_operation() const
 {
     return is_set(yfilter)
 	|| (reauth_time !=  nullptr && reauth_time->has_operation());
 }
 
-std::string Dot1X::Dot1XProfile::Authenticator::Timers::get_segment_path() const
+std::string Dot1x::Dot1xProfile::Authenticator::Timers::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "timers";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Authenticator::Timers::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticator::Timers::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -459,13 +467,13 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Authenticato
 
 }
 
-std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::Timers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "reauth-time")
     {
         if(reauth_time == nullptr)
         {
-            reauth_time = std::make_shared<Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime>();
+            reauth_time = std::make_shared<Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime>();
         }
         return reauth_time;
     }
@@ -473,7 +481,7 @@ std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::Timers::get_child_by
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticator::Timers::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Authenticator::Timers::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -485,55 +493,56 @@ std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticato
     return children;
 }
 
-void Dot1X::Dot1XProfile::Authenticator::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Dot1xProfile::Authenticator::Timers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Dot1X::Dot1XProfile::Authenticator::Timers::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Dot1xProfile::Authenticator::Timers::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::Timers::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Dot1xProfile::Authenticator::Timers::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "reauth-time")
         return true;
     return false;
 }
 
-Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::ReauthTime()
+Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::ReauthTime()
     :
     server{YType::boolean, "server"},
     local{YType::uint32, "local"}
 {
 
-    yang_name = "reauth-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reauth-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::~ReauthTime()
+Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::~ReauthTime()
 {
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::has_data() const
+bool Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::has_data() const
 {
+    if (is_presence_container) return true;
     return server.is_set
 	|| local.is_set;
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::has_operation() const
+bool Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(server.yfilter)
 	|| ydk::is_set(local.yfilter);
 }
 
-std::string Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::get_segment_path() const
+std::string Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "reauth-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -544,19 +553,19 @@ std::vector<std::pair<std::string, LeafData> > Dot1X::Dot1XProfile::Authenticato
 
 }
 
-std::shared_ptr<Entity> Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "server")
     {
@@ -572,7 +581,7 @@ void Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::set_value(const std
     }
 }
 
-void Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "server")
     {
@@ -584,7 +593,7 @@ void Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::set_filter(const st
     }
 }
 
-bool Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Dot1x::Dot1xProfile::Authenticator::Timers::ReauthTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "server" || name == "local")
         return true;
@@ -592,9 +601,11 @@ bool Dot1X::Dot1XProfile::Authenticator::Timers::ReauthTime::has_leaf_or_child_o
 }
 
 Eap::Eap()
+    :
+    eap_profile(this, {"profile_name"})
 {
 
-    yang_name = "eap"; yang_parent_name = "Cisco-IOS-XR-dot1x-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "eap"; yang_parent_name = "Cisco-IOS-XR-dot1x-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Eap::~Eap()
@@ -603,7 +614,8 @@ Eap::~Eap()
 
 bool Eap::has_data() const
 {
-    for (std::size_t index=0; index<eap_profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eap_profile.len(); index++)
     {
         if(eap_profile[index]->has_data())
             return true;
@@ -613,7 +625,7 @@ bool Eap::has_data() const
 
 bool Eap::has_operation() const
 {
-    for (std::size_t index=0; index<eap_profile.size(); index++)
+    for (std::size_t index=0; index<eap_profile.len(); index++)
     {
         if(eap_profile[index]->has_operation())
             return true;
@@ -643,7 +655,7 @@ std::shared_ptr<Entity> Eap::get_child_by_name(const std::string & child_yang_na
     {
         auto c = std::make_shared<Eap::EapProfile>();
         c->parent = this;
-        eap_profile.push_back(c);
+        eap_profile.append(c);
         return c;
     }
 
@@ -655,7 +667,7 @@ std::map<std::string, std::shared_ptr<Entity>> Eap::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eap_profile)
+    for (auto c : eap_profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -710,12 +722,12 @@ Eap::EapProfile::EapProfile()
     :
     profile_name{YType::str, "profile-name"},
     identity{YType::str, "identity"}
-    	,
+        ,
     eaptls(std::make_shared<Eap::EapProfile::Eaptls>())
 {
     eaptls->parent = this;
 
-    yang_name = "eap-profile"; yang_parent_name = "eap"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eap-profile"; yang_parent_name = "eap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Eap::EapProfile::~EapProfile()
@@ -724,6 +736,7 @@ Eap::EapProfile::~EapProfile()
 
 bool Eap::EapProfile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| identity.is_set
 	|| (eaptls !=  nullptr && eaptls->has_data());
@@ -747,7 +760,8 @@ std::string Eap::EapProfile::get_absolute_path() const
 std::string Eap::EapProfile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eap-profile" <<"[profile-name='" <<profile_name <<"']";
+    path_buffer << "eap-profile";
+    ADD_KEY_TOKEN(profile_name, "profile-name");
     return path_buffer.str();
 }
 
@@ -828,7 +842,7 @@ Eap::EapProfile::Eaptls::Eaptls()
     pki_trustpoint{YType::str, "pki-trustpoint"}
 {
 
-    yang_name = "eaptls"; yang_parent_name = "eap-profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eaptls"; yang_parent_name = "eap-profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Eap::EapProfile::Eaptls::~Eaptls()
@@ -837,6 +851,7 @@ Eap::EapProfile::Eaptls::~Eaptls()
 
 bool Eap::EapProfile::Eaptls::has_data() const
 {
+    if (is_presence_container) return true;
     return pki_trustpoint.is_set;
 }
 

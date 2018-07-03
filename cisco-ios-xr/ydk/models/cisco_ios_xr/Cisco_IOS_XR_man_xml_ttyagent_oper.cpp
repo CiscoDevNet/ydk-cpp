@@ -17,7 +17,7 @@ Netconf::Netconf()
 {
     agent->parent = this;
 
-    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Netconf::~Netconf()
@@ -26,6 +26,7 @@ Netconf::~Netconf()
 
 bool Netconf::has_data() const
 {
+    if (is_presence_container) return true;
     return (agent !=  nullptr && agent->has_data());
 }
 
@@ -123,7 +124,7 @@ Netconf::Agent::Agent()
 {
     tty->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agent"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::~Agent()
@@ -132,6 +133,7 @@ Netconf::Agent::~Agent()
 
 bool Netconf::Agent::has_data() const
 {
+    if (is_presence_container) return true;
     return (tty !=  nullptr && tty->has_data());
 }
 
@@ -211,7 +213,7 @@ Netconf::Agent::Tty::Tty()
 {
     sessions->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::Tty::~Tty()
@@ -220,6 +222,7 @@ Netconf::Agent::Tty::~Tty()
 
 bool Netconf::Agent::Tty::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
@@ -294,9 +297,11 @@ bool Netconf::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Netconf::Agent::Tty::Sessions::Sessions()
+    :
+    session(this, {"session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::Tty::Sessions::~Sessions()
@@ -305,7 +310,8 @@ Netconf::Agent::Tty::Sessions::~Sessions()
 
 bool Netconf::Agent::Tty::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -315,7 +321,7 @@ bool Netconf::Agent::Tty::Sessions::has_data() const
 
 bool Netconf::Agent::Tty::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -352,7 +358,7 @@ std::shared_ptr<Entity> Netconf::Agent::Tty::Sessions::get_child_by_name(const s
     {
         auto c = std::make_shared<Netconf::Agent::Tty::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -364,7 +370,7 @@ std::map<std::string, std::shared_ptr<Entity>> Netconf::Agent::Tty::Sessions::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -406,7 +412,7 @@ Netconf::Agent::Tty::Sessions::Session::Session()
     last_state_change{YType::uint32, "last-state-change"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::Tty::Sessions::Session::~Session()
@@ -415,6 +421,7 @@ Netconf::Agent::Tty::Sessions::Session::~Session()
 
 bool Netconf::Agent::Tty::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| username.is_set
 	|| state.is_set
@@ -456,7 +463,8 @@ std::string Netconf::Agent::Tty::Sessions::Session::get_absolute_path() const
 std::string Netconf::Agent::Tty::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
@@ -634,7 +642,7 @@ XrXml::XrXml()
 {
     agent->parent = this;
 
-    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 XrXml::~XrXml()
@@ -643,6 +651,7 @@ XrXml::~XrXml()
 
 bool XrXml::has_data() const
 {
+    if (is_presence_container) return true;
     return (agent !=  nullptr && agent->has_data());
 }
 
@@ -737,14 +746,14 @@ bool XrXml::has_leaf_or_child_of_name(const std::string & name) const
 XrXml::Agent::Agent()
     :
     tty(std::make_shared<XrXml::Agent::Tty>())
-	,default_(std::make_shared<XrXml::Agent::Default>())
-	,ssl(std::make_shared<XrXml::Agent::Ssl>())
+    , default_(std::make_shared<XrXml::Agent::Default>())
+    , ssl(std::make_shared<XrXml::Agent::Ssl>())
 {
     tty->parent = this;
     default_->parent = this;
     ssl->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agent"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::~Agent()
@@ -753,6 +762,7 @@ XrXml::Agent::~Agent()
 
 bool XrXml::Agent::has_data() const
 {
+    if (is_presence_container) return true;
     return (tty !=  nullptr && tty->has_data())
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (ssl !=  nullptr && ssl->has_data());
@@ -864,7 +874,7 @@ XrXml::Agent::Tty::Tty()
 {
     sessions->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Tty::~Tty()
@@ -873,6 +883,7 @@ XrXml::Agent::Tty::~Tty()
 
 bool XrXml::Agent::Tty::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
@@ -947,9 +958,11 @@ bool XrXml::Agent::Tty::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 XrXml::Agent::Tty::Sessions::Sessions()
+    :
+    session(this, {"session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Tty::Sessions::~Sessions()
@@ -958,7 +971,8 @@ XrXml::Agent::Tty::Sessions::~Sessions()
 
 bool XrXml::Agent::Tty::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -968,7 +982,7 @@ bool XrXml::Agent::Tty::Sessions::has_data() const
 
 bool XrXml::Agent::Tty::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -1005,7 +1019,7 @@ std::shared_ptr<Entity> XrXml::Agent::Tty::Sessions::get_child_by_name(const std
     {
         auto c = std::make_shared<XrXml::Agent::Tty::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -1017,7 +1031,7 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Tty::Sessions::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1059,7 +1073,7 @@ XrXml::Agent::Tty::Sessions::Session::Session()
     last_state_change{YType::uint32, "last-state-change"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Tty::Sessions::Session::~Session()
@@ -1068,6 +1082,7 @@ XrXml::Agent::Tty::Sessions::Session::~Session()
 
 bool XrXml::Agent::Tty::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| username.is_set
 	|| state.is_set
@@ -1109,7 +1124,8 @@ std::string XrXml::Agent::Tty::Sessions::Session::get_absolute_path() const
 std::string XrXml::Agent::Tty::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
@@ -1287,7 +1303,7 @@ XrXml::Agent::Default::Default()
 {
     sessions->parent = this;
 
-    yang_name = "default"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::~Default()
@@ -1296,6 +1312,7 @@ XrXml::Agent::Default::~Default()
 
 bool XrXml::Agent::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
@@ -1370,9 +1387,11 @@ bool XrXml::Agent::Default::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 XrXml::Agent::Default::Sessions::Sessions()
+    :
+    session(this, {"session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::Sessions::~Sessions()
@@ -1381,7 +1400,8 @@ XrXml::Agent::Default::Sessions::~Sessions()
 
 bool XrXml::Agent::Default::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -1391,7 +1411,7 @@ bool XrXml::Agent::Default::Sessions::has_data() const
 
 bool XrXml::Agent::Default::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -1428,7 +1448,7 @@ std::shared_ptr<Entity> XrXml::Agent::Default::Sessions::get_child_by_name(const
     {
         auto c = std::make_shared<XrXml::Agent::Default::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -1440,7 +1460,7 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Sessions::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1482,7 +1502,7 @@ XrXml::Agent::Default::Sessions::Session::Session()
     last_state_change{YType::uint32, "last-state-change"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::Sessions::Session::~Session()
@@ -1491,6 +1511,7 @@ XrXml::Agent::Default::Sessions::Session::~Session()
 
 bool XrXml::Agent::Default::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| username.is_set
 	|| state.is_set
@@ -1532,7 +1553,8 @@ std::string XrXml::Agent::Default::Sessions::Session::get_absolute_path() const
 std::string XrXml::Agent::Default::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
@@ -1710,7 +1732,7 @@ XrXml::Agent::Ssl::Ssl()
 {
     sessions->parent = this;
 
-    yang_name = "ssl"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssl"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::~Ssl()
@@ -1719,6 +1741,7 @@ XrXml::Agent::Ssl::~Ssl()
 
 bool XrXml::Agent::Ssl::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
@@ -1793,9 +1816,11 @@ bool XrXml::Agent::Ssl::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 XrXml::Agent::Ssl::Sessions::Sessions()
+    :
+    session(this, {"session_id"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::Sessions::~Sessions()
@@ -1804,7 +1829,8 @@ XrXml::Agent::Ssl::Sessions::~Sessions()
 
 bool XrXml::Agent::Ssl::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -1814,7 +1840,7 @@ bool XrXml::Agent::Ssl::Sessions::has_data() const
 
 bool XrXml::Agent::Ssl::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -1851,7 +1877,7 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Sessions::get_child_by_name(const std
     {
         auto c = std::make_shared<XrXml::Agent::Ssl::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -1863,7 +1889,7 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Sessions::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1905,7 +1931,7 @@ XrXml::Agent::Ssl::Sessions::Session::Session()
     last_state_change{YType::uint32, "last-state-change"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::Sessions::Session::~Session()
@@ -1914,6 +1940,7 @@ XrXml::Agent::Ssl::Sessions::Session::~Session()
 
 bool XrXml::Agent::Ssl::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_id.is_set
 	|| username.is_set
 	|| state.is_set
@@ -1955,7 +1982,8 @@ std::string XrXml::Agent::Ssl::Sessions::Session::get_absolute_path() const
 std::string XrXml::Agent::Ssl::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 

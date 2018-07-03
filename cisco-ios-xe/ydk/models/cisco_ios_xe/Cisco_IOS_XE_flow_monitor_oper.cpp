@@ -12,9 +12,14 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_flow_monitor_oper {
 
 FlowMonitors::FlowMonitors()
+    :
+    flow_monitor(this, {"name"})
+    , flow_export_statistics(this, {"name"})
+    , flow_cache_statistics(this, {"name"})
+    , flow_monitor_statistics(this, {"monitor_name"})
 {
 
-    yang_name = "flow-monitors"; yang_parent_name = "Cisco-IOS-XE-flow-monitor-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "flow-monitors"; yang_parent_name = "Cisco-IOS-XE-flow-monitor-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FlowMonitors::~FlowMonitors()
@@ -23,22 +28,23 @@ FlowMonitors::~FlowMonitors()
 
 bool FlowMonitors::has_data() const
 {
-    for (std::size_t index=0; index<flow_monitor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow_monitor.len(); index++)
     {
         if(flow_monitor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flow_export_statistics.size(); index++)
+    for (std::size_t index=0; index<flow_export_statistics.len(); index++)
     {
         if(flow_export_statistics[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flow_cache_statistics.size(); index++)
+    for (std::size_t index=0; index<flow_cache_statistics.len(); index++)
     {
         if(flow_cache_statistics[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<flow_monitor_statistics.size(); index++)
+    for (std::size_t index=0; index<flow_monitor_statistics.len(); index++)
     {
         if(flow_monitor_statistics[index]->has_data())
             return true;
@@ -48,22 +54,22 @@ bool FlowMonitors::has_data() const
 
 bool FlowMonitors::has_operation() const
 {
-    for (std::size_t index=0; index<flow_monitor.size(); index++)
+    for (std::size_t index=0; index<flow_monitor.len(); index++)
     {
         if(flow_monitor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flow_export_statistics.size(); index++)
+    for (std::size_t index=0; index<flow_export_statistics.len(); index++)
     {
         if(flow_export_statistics[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flow_cache_statistics.size(); index++)
+    for (std::size_t index=0; index<flow_cache_statistics.len(); index++)
     {
         if(flow_cache_statistics[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<flow_monitor_statistics.size(); index++)
+    for (std::size_t index=0; index<flow_monitor_statistics.len(); index++)
     {
         if(flow_monitor_statistics[index]->has_operation())
             return true;
@@ -93,7 +99,7 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<FlowMonitors::FlowMonitor>();
         c->parent = this;
-        flow_monitor.push_back(c);
+        flow_monitor.append(c);
         return c;
     }
 
@@ -101,7 +107,7 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<FlowMonitors::FlowExportStatistics>();
         c->parent = this;
-        flow_export_statistics.push_back(c);
+        flow_export_statistics.append(c);
         return c;
     }
 
@@ -109,7 +115,7 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<FlowMonitors::FlowCacheStatistics>();
         c->parent = this;
-        flow_cache_statistics.push_back(c);
+        flow_cache_statistics.append(c);
         return c;
     }
 
@@ -117,7 +123,7 @@ std::shared_ptr<Entity> FlowMonitors::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<FlowMonitors::FlowMonitorStatistics>();
         c->parent = this;
-        flow_monitor_statistics.push_back(c);
+        flow_monitor_statistics.append(c);
         return c;
     }
 
@@ -129,7 +135,7 @@ std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow_monitor)
+    for (auto c : flow_monitor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -138,7 +144,7 @@ std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : flow_export_statistics)
+    for (auto c : flow_export_statistics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -147,7 +153,7 @@ std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : flow_cache_statistics)
+    for (auto c : flow_cache_statistics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -156,7 +162,7 @@ std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : flow_monitor_statistics)
+    for (auto c : flow_monitor_statistics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -211,12 +217,12 @@ FlowMonitors::FlowMonitor::FlowMonitor()
     :
     name{YType::str, "name"},
     time_collected{YType::uint64, "time-collected"}
-    	,
+        ,
     flows(std::make_shared<FlowMonitors::FlowMonitor::Flows>())
 {
     flows->parent = this;
 
-    yang_name = "flow-monitor"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-monitor"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FlowMonitors::FlowMonitor::~FlowMonitor()
@@ -225,6 +231,7 @@ FlowMonitors::FlowMonitor::~FlowMonitor()
 
 bool FlowMonitors::FlowMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| time_collected.is_set
 	|| (flows !=  nullptr && flows->has_data());
@@ -248,7 +255,8 @@ std::string FlowMonitors::FlowMonitor::get_absolute_path() const
 std::string FlowMonitors::FlowMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-monitor" <<"[name='" <<name <<"']";
+    path_buffer << "flow-monitor";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -325,9 +333,11 @@ bool FlowMonitors::FlowMonitor::has_leaf_or_child_of_name(const std::string & na
 }
 
 FlowMonitors::FlowMonitor::Flows::Flows()
+    :
+    flow(this, {"source_address", "destination_address", "interface_input", "is_multicast", "vrf_id_input", "source_port", "destination_port", "ip_tos", "ip_protocol"})
 {
 
-    yang_name = "flows"; yang_parent_name = "flow-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flows"; yang_parent_name = "flow-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FlowMonitors::FlowMonitor::Flows::~Flows()
@@ -336,7 +346,8 @@ FlowMonitors::FlowMonitor::Flows::~Flows()
 
 bool FlowMonitors::FlowMonitor::Flows::has_data() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow.len(); index++)
     {
         if(flow[index]->has_data())
             return true;
@@ -346,7 +357,7 @@ bool FlowMonitors::FlowMonitor::Flows::has_data() const
 
 bool FlowMonitors::FlowMonitor::Flows::has_operation() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    for (std::size_t index=0; index<flow.len(); index++)
     {
         if(flow[index]->has_operation())
             return true;
@@ -376,7 +387,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowMonitor::Flows::get_child_by_name(cons
     {
         auto c = std::make_shared<FlowMonitors::FlowMonitor::Flows::Flow>();
         c->parent = this;
-        flow.push_back(c);
+        flow.append(c);
         return c;
     }
 
@@ -388,7 +399,7 @@ std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowMonitor::Flows:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow)
+    for (auto c : flow.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -430,7 +441,7 @@ FlowMonitors::FlowMonitor::Flows::Flow::Flow()
     packets{YType::int64, "packets"}
 {
 
-    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FlowMonitors::FlowMonitor::Flows::Flow::~Flow()
@@ -439,6 +450,7 @@ FlowMonitors::FlowMonitor::Flows::Flow::~Flow()
 
 bool FlowMonitors::FlowMonitor::Flows::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| destination_address.is_set
 	|| interface_input.is_set
@@ -473,7 +485,16 @@ bool FlowMonitors::FlowMonitor::Flows::Flow::has_operation() const
 std::string FlowMonitors::FlowMonitor::Flows::Flow::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow" <<"[source-address='" <<source_address <<"']" <<"[destination-address='" <<destination_address <<"']" <<"[interface-input='" <<interface_input <<"']" <<"[is-multicast='" <<is_multicast <<"']" <<"[vrf-id-input='" <<vrf_id_input <<"']" <<"[source-port='" <<source_port <<"']" <<"[destination-port='" <<destination_port <<"']" <<"[ip-tos='" <<ip_tos <<"']" <<"[ip-protocol='" <<ip_protocol <<"']";
+    path_buffer << "flow";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(destination_address, "destination-address");
+    ADD_KEY_TOKEN(interface_input, "interface-input");
+    ADD_KEY_TOKEN(is_multicast, "is-multicast");
+    ADD_KEY_TOKEN(vrf_id_input, "vrf-id-input");
+    ADD_KEY_TOKEN(source_port, "source-port");
+    ADD_KEY_TOKEN(destination_port, "destination-port");
+    ADD_KEY_TOKEN(ip_tos, "ip-tos");
+    ADD_KEY_TOKEN(ip_protocol, "ip-protocol");
     return path_buffer.str();
 }
 
@@ -648,12 +669,13 @@ bool FlowMonitors::FlowMonitor::Flows::Flow::has_leaf_or_child_of_name(const std
 FlowMonitors::FlowExportStatistics::FlowExportStatistics()
     :
     name{YType::str, "name"}
-    	,
+        ,
     transport_stats(std::make_shared<FlowMonitors::FlowExportStatistics::TransportStats>())
+    , export_client(this, {})
 {
     transport_stats->parent = this;
 
-    yang_name = "flow-export-statistics"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-export-statistics"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FlowMonitors::FlowExportStatistics::~FlowExportStatistics()
@@ -662,7 +684,8 @@ FlowMonitors::FlowExportStatistics::~FlowExportStatistics()
 
 bool FlowMonitors::FlowExportStatistics::has_data() const
 {
-    for (std::size_t index=0; index<export_client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<export_client.len(); index++)
     {
         if(export_client[index]->has_data())
             return true;
@@ -673,7 +696,7 @@ bool FlowMonitors::FlowExportStatistics::has_data() const
 
 bool FlowMonitors::FlowExportStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<export_client.size(); index++)
+    for (std::size_t index=0; index<export_client.len(); index++)
     {
         if(export_client[index]->has_operation())
             return true;
@@ -693,7 +716,8 @@ std::string FlowMonitors::FlowExportStatistics::get_absolute_path() const
 std::string FlowMonitors::FlowExportStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-export-statistics" <<"[name='" <<name <<"']";
+    path_buffer << "flow-export-statistics";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -722,7 +746,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::get_child_by_name(co
     {
         auto c = std::make_shared<FlowMonitors::FlowExportStatistics::ExportClient>();
         c->parent = this;
-        export_client.push_back(c);
+        export_client.append(c);
         return c;
     }
 
@@ -739,7 +763,7 @@ std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowExportStatistic
     }
 
     count = 0;
-    for (auto const & c : export_client)
+    for (auto c : export_client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -778,9 +802,11 @@ bool FlowMonitors::FlowExportStatistics::has_leaf_or_child_of_name(const std::st
 FlowMonitors::FlowExportStatistics::TransportStats::TransportStats()
     :
     last_cleared{YType::str, "last-cleared"}
+        ,
+    flow_exporter_stats(this, {})
 {
 
-    yang_name = "transport-stats"; yang_parent_name = "flow-export-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-stats"; yang_parent_name = "flow-export-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FlowMonitors::FlowExportStatistics::TransportStats::~TransportStats()
@@ -789,7 +815,8 @@ FlowMonitors::FlowExportStatistics::TransportStats::~TransportStats()
 
 bool FlowMonitors::FlowExportStatistics::TransportStats::has_data() const
 {
-    for (std::size_t index=0; index<flow_exporter_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow_exporter_stats.len(); index++)
     {
         if(flow_exporter_stats[index]->has_data())
             return true;
@@ -799,7 +826,7 @@ bool FlowMonitors::FlowExportStatistics::TransportStats::has_data() const
 
 bool FlowMonitors::FlowExportStatistics::TransportStats::has_operation() const
 {
-    for (std::size_t index=0; index<flow_exporter_stats.size(); index++)
+    for (std::size_t index=0; index<flow_exporter_stats.len(); index++)
     {
         if(flow_exporter_stats[index]->has_operation())
             return true;
@@ -831,7 +858,7 @@ std::shared_ptr<Entity> FlowMonitors::FlowExportStatistics::TransportStats::get_
     {
         auto c = std::make_shared<FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats>();
         c->parent = this;
-        flow_exporter_stats.push_back(c);
+        flow_exporter_stats.append(c);
         return c;
     }
 
@@ -843,7 +870,7 @@ std::map<std::string, std::shared_ptr<Entity>> FlowMonitors::FlowExportStatistic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow_exporter_stats)
+    for (auto c : flow_exporter_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -886,7 +913,7 @@ FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::FlowExpor
     byte_counts{YType::uint64, "byte-counts"}
 {
 
-    yang_name = "flow-exporter-stats"; yang_parent_name = "transport-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-exporter-stats"; yang_parent_name = "transport-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::~FlowExporterStats()
@@ -895,6 +922,7 @@ FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::~FlowExpo
 
 bool FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| pkt_counts.is_set
 	|| byte_counts.is_set;
@@ -988,12 +1016,12 @@ FlowMonitors::FlowExportStatistics::ExportClient::ExportClient()
     :
     name{YType::str, "name"},
     group{YType::str, "group"}
-    	,
+        ,
     protocol_stats(std::make_shared<FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats>())
 {
     protocol_stats->parent = this;
 
-    yang_name = "export-client"; yang_parent_name = "flow-export-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "export-client"; yang_parent_name = "flow-export-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FlowMonitors::FlowExportStatistics::ExportClient::~ExportClient()
@@ -1002,6 +1030,7 @@ FlowMonitors::FlowExportStatistics::ExportClient::~ExportClient()
 
 bool FlowMonitors::FlowExportStatistics::ExportClient::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| group.is_set
 	|| (protocol_stats !=  nullptr && protocol_stats->has_data());
@@ -1104,7 +1133,7 @@ FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::ProtocolStats()
     records_dropped{YType::uint64, "records-dropped"}
 {
 
-    yang_name = "protocol-stats"; yang_parent_name = "export-client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-stats"; yang_parent_name = "export-client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::~ProtocolStats()
@@ -1113,6 +1142,7 @@ FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::~ProtocolStats(
 
 bool FlowMonitors::FlowExportStatistics::ExportClient::ProtocolStats::has_data() const
 {
+    if (is_presence_container) return true;
     return bytes_added.is_set
 	|| bytes_sent.is_set
 	|| bytes_dropped.is_set
@@ -1253,7 +1283,7 @@ FlowMonitors::FlowCacheStatistics::FlowCacheStatistics()
     inactive_flows_timed_out{YType::uint64, "inactive-flows-timed-out"}
 {
 
-    yang_name = "flow-cache-statistics"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-cache-statistics"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FlowMonitors::FlowCacheStatistics::~FlowCacheStatistics()
@@ -1262,6 +1292,7 @@ FlowMonitors::FlowCacheStatistics::~FlowCacheStatistics()
 
 bool FlowMonitors::FlowCacheStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| cache_size.is_set
 	|| current_entries.is_set
@@ -1295,7 +1326,8 @@ std::string FlowMonitors::FlowCacheStatistics::get_absolute_path() const
 std::string FlowMonitors::FlowCacheStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-cache-statistics" <<"[name='" <<name <<"']";
+    path_buffer << "flow-cache-statistics";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1440,12 +1472,12 @@ FlowMonitors::FlowMonitorStatistics::FlowMonitorStatistics()
     synchronized_timeout{YType::uint32, "synchronized-timeout"},
     export_spread_interval{YType::uint32, "export-spread-interval"},
     immediate_timeout{YType::uint32, "immediate-timeout"}
-    	,
+        ,
     cache_data(std::make_shared<FlowMonitors::FlowMonitorStatistics::CacheData>())
 {
     cache_data->parent = this;
 
-    yang_name = "flow-monitor-statistics"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow-monitor-statistics"; yang_parent_name = "flow-monitors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FlowMonitors::FlowMonitorStatistics::~FlowMonitorStatistics()
@@ -1454,6 +1486,7 @@ FlowMonitors::FlowMonitorStatistics::~FlowMonitorStatistics()
 
 bool FlowMonitors::FlowMonitorStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : active_flow_exporter.getYLeafs())
     {
         if(leaf.is_set)
@@ -1521,7 +1554,8 @@ std::string FlowMonitors::FlowMonitorStatistics::get_absolute_path() const
 std::string FlowMonitors::FlowMonitorStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow-monitor-statistics" <<"[monitor-name='" <<monitor_name <<"']";
+    path_buffer << "flow-monitor-statistics";
+    ADD_KEY_TOKEN(monitor_name, "monitor-name");
     return path_buffer.str();
 }
 
@@ -1748,7 +1782,7 @@ FlowMonitors::FlowMonitorStatistics::CacheData::CacheData()
     num_bytes{YType::uint64, "num-bytes"}
 {
 
-    yang_name = "cache-data"; yang_parent_name = "flow-monitor-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cache-data"; yang_parent_name = "flow-monitor-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FlowMonitors::FlowMonitorStatistics::CacheData::~CacheData()
@@ -1757,6 +1791,7 @@ FlowMonitors::FlowMonitorStatistics::CacheData::~CacheData()
 
 bool FlowMonitors::FlowMonitorStatistics::CacheData::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| type.is_set
 	|| cache_name.is_set
@@ -1899,14 +1934,14 @@ const Enum::YLeaf FlowExporterIpwriteStatsType::flow_exporter_ipwrite_stats_othe
 const Enum::YLeaf FlowExporterIpwriteStatsType::flow_exporter_ipwrite_stats_rate_limit {11, "flow-exporter-ipwrite-stats-rate-limit"};
 const Enum::YLeaf FlowExporterIpwriteStatsType::flow_exporter_ipwrite_stats_no_destination {12, "flow-exporter-ipwrite-stats-no-destination"};
 
+const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_deleted {0, "flow-monitor-cache-state-being-deleted"};
+const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_allocated {1, "flow-monitor-cache-state-being-allocated"};
+const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_not_allocated {2, "flow-monitor-cache-state-not-allocated"};
+
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_normal {0, "flow-monitor-cache-type-normal"};
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_permanent {1, "flow-monitor-cache-type-permanent"};
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_synchronized {2, "flow-monitor-cache-type-synchronized"};
 const Enum::YLeaf FlowMonitorCacheType::flow_monitor_cache_type_immediate {3, "flow-monitor-cache-type-immediate"};
-
-const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_deleted {0, "flow-monitor-cache-state-being-deleted"};
-const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_being_allocated {1, "flow-monitor-cache-state-being-allocated"};
-const Enum::YLeaf FlowMonitorCacheState::flow_monitor_cache_state_not_allocated {2, "flow-monitor-cache-state-not-allocated"};
 
 
 }

@@ -32,26 +32,26 @@ class CISCOIETFMPLSTEEXTSTD03MIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cmplsnodeconfigtable; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable
-        class Cmplsnodeipmaptable; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable
-        class Cmplsnodeiccmaptable; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable
-        class Cmplstunnelexttable; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable
-        class Cmplstunnelreverseperftable; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable
+        class CmplsNodeConfigTable; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable
+        class CmplsNodeIpMapTable; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable
+        class CmplsNodeIccMapTable; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable
+        class CmplsTunnelExtTable; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable
+        class CmplsTunnelReversePerfTable; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable> cmplsnodeconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable> cmplsnodeipmaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable> cmplsnodeiccmaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable> cmplstunnelexttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable> cmplstunnelreverseperftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable> cmplsnodeconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable> cmplsnodeipmaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable> cmplsnodeiccmaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable> cmplstunnelexttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable> cmplstunnelreverseperftable;
         
 }; // CISCOIETFMPLSTEEXTSTD03MIB
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable : public ydk::Entity
 {
     public:
-        Cmplsnodeconfigtable();
-        ~Cmplsnodeconfigtable();
+        CmplsNodeConfigTable();
+        ~CmplsNodeConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -64,18 +64,18 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplsnodeconfigentry; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry
+        class CmplsNodeConfigEntry; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry> > cmplsnodeconfigentry;
+        ydk::YList cmplsnodeconfigentry;
         
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry : public ydk::Entity
 {
     public:
-        Cmplsnodeconfigentry();
-        ~Cmplsnodeconfigentry();
+        CmplsNodeConfigEntry();
+        ~CmplsNodeConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -95,14 +95,14 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry : p
         ydk::YLeaf cmplsnodeconfigrowstatus; //type: RowStatus
         ydk::YLeaf cmplsnodeconfigstoragetype; //type: StorageType
 
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeconfigtable::Cmplsnodeconfigentry
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeConfigTable::CmplsNodeConfigEntry
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable : public ydk::Entity
 {
     public:
-        Cmplsnodeipmaptable();
-        ~Cmplsnodeipmaptable();
+        CmplsNodeIpMapTable();
+        ~CmplsNodeIpMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -115,18 +115,18 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplsnodeipmapentry; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable::Cmplsnodeipmapentry
+        class CmplsNodeIpMapEntry; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable::Cmplsnodeipmapentry> > cmplsnodeipmapentry;
+        ydk::YList cmplsnodeipmapentry;
         
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable::Cmplsnodeipmapentry : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry : public ydk::Entity
 {
     public:
-        Cmplsnodeipmapentry();
-        ~Cmplsnodeipmapentry();
+        CmplsNodeIpMapEntry();
+        ~CmplsNodeIpMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,14 +143,14 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable::Cmplsnodeipmapentry : pub
         ydk::YLeaf cmplsnodeipmapnodeid; //type: uint32
         ydk::YLeaf cmplsnodeipmaplocalid; //type: uint32
 
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeipmaptable::Cmplsnodeipmapentry
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIpMapTable::CmplsNodeIpMapEntry
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable : public ydk::Entity
 {
     public:
-        Cmplsnodeiccmaptable();
-        ~Cmplsnodeiccmaptable();
+        CmplsNodeIccMapTable();
+        ~CmplsNodeIccMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -163,18 +163,18 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplsnodeiccmapentry; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry
+        class CmplsNodeIccMapEntry; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry> > cmplsnodeiccmapentry;
+        ydk::YList cmplsnodeiccmapentry;
         
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry : public ydk::Entity
 {
     public:
-        Cmplsnodeiccmapentry();
-        ~Cmplsnodeiccmapentry();
+        CmplsNodeIccMapEntry();
+        ~CmplsNodeIccMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -190,14 +190,14 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry : p
         ydk::YLeaf cmplsnodeiccmapiccid; //type: binary
         ydk::YLeaf cmplsnodeiccmaplocalid; //type: uint32
 
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplsnodeiccmaptable::Cmplsnodeiccmapentry
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsNodeIccMapTable::CmplsNodeIccMapEntry
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable : public ydk::Entity
 {
     public:
-        Cmplstunnelexttable();
-        ~Cmplstunnelexttable();
+        CmplsTunnelExtTable();
+        ~CmplsTunnelExtTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -210,18 +210,18 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplstunnelextentry; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry
+        class CmplsTunnelExtEntry; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry> > cmplstunnelextentry;
+        ydk::YList cmplstunnelextentry;
         
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry : public ydk::Entity
 {
     public:
-        Cmplstunnelextentry();
-        ~Cmplstunnelextentry();
+        CmplsTunnelExtEntry();
+        ~CmplsTunnelExtEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -234,13 +234,13 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelindex)
         ydk::YLeaf mplstunnelindex;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelinstance)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelinstance)
         ydk::YLeaf mplstunnelinstance;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelingresslsrid)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelingresslsrid)
         ydk::YLeaf mplstunnelingresslsrid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelegresslsrid)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelegresslsrid)
         ydk::YLeaf mplstunnelegresslsrid;
         ydk::YLeaf cmplstunneloppositedirptr; //type: string
         ydk::YLeaf cmplstunnelextoppositedirtnlvalid; //type: boolean
@@ -248,14 +248,14 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry : pub
         ydk::YLeaf cmplstunnelextdesttnllspindex; //type: uint32
         ydk::YLeaf cmplstunnelextdesttnlvalid; //type: boolean
 
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelexttable::Cmplstunnelextentry
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelExtTable::CmplsTunnelExtEntry
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable : public ydk::Entity
 {
     public:
-        Cmplstunnelreverseperftable();
-        ~Cmplstunnelreverseperftable();
+        CmplsTunnelReversePerfTable();
+        ~CmplsTunnelReversePerfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -268,18 +268,18 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplstunnelreverseperfentry; //type: CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry
+        class CmplsTunnelReversePerfEntry; //type: CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_MPLS_TE_EXT_STD_03_MIB::CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry> > cmplstunnelreverseperfentry;
+        ydk::YList cmplstunnelreverseperfentry;
         
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable
 
 
-class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry : public ydk::Entity
+class CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry : public ydk::Entity
 {
     public:
-        Cmplstunnelreverseperfentry();
-        ~Cmplstunnelreverseperfentry();
+        CmplsTunnelReversePerfEntry();
+        ~CmplsTunnelReversePerfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -292,13 +292,13 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelrevers
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelindex)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelindex)
         ydk::YLeaf mplstunnelindex;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelinstance)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelinstance)
         ydk::YLeaf mplstunnelinstance;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelingresslsrid)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelingresslsrid)
         ydk::YLeaf mplstunnelingresslsrid;
-        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::Mplstunneltable::Mplstunnelentry::mplstunnelegresslsrid)
+        //type: uint32 (refers to cisco_ios_xe::MPLS_TE_STD_MIB::MPLSTESTDMIB::MplsTunnelTable::MplsTunnelEntry::mplstunnelegresslsrid)
         ydk::YLeaf mplstunnelegresslsrid;
         ydk::YLeaf cmplstunnelreverseperfpackets; //type: uint32
         ydk::YLeaf cmplstunnelreverseperfhcpackets; //type: uint64
@@ -306,7 +306,7 @@ class CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelrevers
         ydk::YLeaf cmplstunnelreverseperfbytes; //type: uint32
         ydk::YLeaf cmplstunnelreverseperfhcbytes; //type: uint64
 
-}; // CISCOIETFMPLSTEEXTSTD03MIB::Cmplstunnelreverseperftable::Cmplstunnelreverseperfentry
+}; // CISCOIETFMPLSTEEXTSTD03MIB::CmplsTunnelReversePerfTable::CmplsTunnelReversePerfEntry
 
 
 }

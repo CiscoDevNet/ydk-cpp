@@ -32,22 +32,22 @@ class CISCONTPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cntpsystem; //type: CISCONTPMIB::Cntpsystem
-        class Cntppeersvartable; //type: CISCONTPMIB::Cntppeersvartable
-        class Cntpfilterregistertable; //type: CISCONTPMIB::Cntpfilterregistertable
+        class CntpSystem; //type: CISCONTPMIB::CntpSystem
+        class CntpPeersVarTable; //type: CISCONTPMIB::CntpPeersVarTable
+        class CntpFilterRegisterTable; //type: CISCONTPMIB::CntpFilterRegisterTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::Cntpsystem> cntpsystem;
-        std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::Cntppeersvartable> cntppeersvartable;
-        std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::Cntpfilterregistertable> cntpfilterregistertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::CntpSystem> cntpsystem;
+        std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::CntpPeersVarTable> cntppeersvartable;
+        std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::CntpFilterRegisterTable> cntpfilterregistertable;
         
 }; // CISCONTPMIB
 
 
-class CISCONTPMIB::Cntpsystem : public ydk::Entity
+class CISCONTPMIB::CntpSystem : public ydk::Entity
 {
     public:
-        Cntpsystem();
-        ~Cntpsystem();
+        CntpSystem();
+        ~CntpSystem();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -70,17 +70,17 @@ class CISCONTPMIB::Cntpsystem : public ydk::Entity
         ydk::YLeaf cntpsyspoll; //type: int32
         ydk::YLeaf cntpsyspeer; //type: int32
         ydk::YLeaf cntpsysclock; //type: binary
-        ydk::YLeaf cntpsyssrvstatus; //type: Cntpsyssrvstatus
-        class Cntpsyssrvstatus;
+        ydk::YLeaf cntpsyssrvstatus; //type: CntpSysSrvStatus
+        class CntpSysSrvStatus;
 
-}; // CISCONTPMIB::Cntpsystem
+}; // CISCONTPMIB::CntpSystem
 
 
-class CISCONTPMIB::Cntppeersvartable : public ydk::Entity
+class CISCONTPMIB::CntpPeersVarTable : public ydk::Entity
 {
     public:
-        Cntppeersvartable();
-        ~Cntppeersvartable();
+        CntpPeersVarTable();
+        ~CntpPeersVarTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -93,18 +93,18 @@ class CISCONTPMIB::Cntppeersvartable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cntppeersvarentry; //type: CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry
+        class CntpPeersVarEntry; //type: CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry> > cntppeersvarentry;
+        ydk::YList cntppeersvarentry;
         
-}; // CISCONTPMIB::Cntppeersvartable
+}; // CISCONTPMIB::CntpPeersVarTable
 
 
-class CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry : public ydk::Entity
+class CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry : public ydk::Entity
 {
     public:
-        Cntppeersvarentry();
-        ~Cntppeersvarentry();
+        CntpPeersVarEntry();
+        ~CntpPeersVarEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -124,7 +124,7 @@ class CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry : public ydk::Entity
         ydk::YLeaf cntppeershostaddress; //type: string
         ydk::YLeaf cntppeershostport; //type: int32
         ydk::YLeaf cntppeersleap; //type: NTPLeapIndicator
-        ydk::YLeaf cntppeersmode; //type: Cntppeersmode
+        ydk::YLeaf cntppeersmode; //type: CntpPeersMode
         ydk::YLeaf cntppeersstratum; //type: int32
         ydk::YLeaf cntppeerspeerpoll; //type: int32
         ydk::YLeaf cntppeershostpoll; //type: int32
@@ -148,16 +148,16 @@ class CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry : public ydk::Entity
         ydk::YLeaf cntppeersprefpeer; //type: boolean
         ydk::YLeaf cntppeerspeertype; //type: InetAddressType
         ydk::YLeaf cntppeerspeername; //type: binary
-        class Cntppeersmode;
+        class CntpPeersMode;
 
-}; // CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry
+}; // CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry
 
 
-class CISCONTPMIB::Cntpfilterregistertable : public ydk::Entity
+class CISCONTPMIB::CntpFilterRegisterTable : public ydk::Entity
 {
     public:
-        Cntpfilterregistertable();
-        ~Cntpfilterregistertable();
+        CntpFilterRegisterTable();
+        ~CntpFilterRegisterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -170,18 +170,18 @@ class CISCONTPMIB::Cntpfilterregistertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cntpfilterregisterentry; //type: CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry
+        class CntpFilterRegisterEntry; //type: CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry> > cntpfilterregisterentry;
+        ydk::YList cntpfilterregisterentry;
         
-}; // CISCONTPMIB::Cntpfilterregistertable
+}; // CISCONTPMIB::CntpFilterRegisterTable
 
 
-class CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry : public ydk::Entity
+class CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry : public ydk::Entity
 {
     public:
-        Cntpfilterregisterentry();
-        ~Cntpfilterregisterentry();
+        CntpFilterRegisterEntry();
+        ~CntpFilterRegisterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -194,14 +194,14 @@ class CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::cntppeersassocid)
+        //type: int32 (refers to cisco_ios_xe::CISCO_NTP_MIB::CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::cntppeersassocid)
         ydk::YLeaf cntppeersassocid;
         ydk::YLeaf cntpfilterindex; //type: int32
         ydk::YLeaf cntpfilterpeersoffset; //type: binary
         ydk::YLeaf cntpfilterpeersdelay; //type: binary
         ydk::YLeaf cntpfilterpeersdispersion; //type: binary
 
-}; // CISCONTPMIB::Cntpfilterregistertable::Cntpfilterregisterentry
+}; // CISCONTPMIB::CntpFilterRegisterTable::CntpFilterRegisterEntry
 
 class NTPLeapIndicator : public ydk::Enum
 {
@@ -213,7 +213,7 @@ class NTPLeapIndicator : public ydk::Enum
 
 };
 
-class CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus : public ydk::Enum
+class CISCONTPMIB::CntpSystem::CntpSysSrvStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -225,7 +225,7 @@ class CISCONTPMIB::Cntpsystem::Cntpsyssrvstatus : public ydk::Enum
 
 };
 
-class CISCONTPMIB::Cntppeersvartable::Cntppeersvarentry::Cntppeersmode : public ydk::Enum
+class CISCONTPMIB::CntpPeersVarTable::CntpPeersVarEntry::CntpPeersMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unspecified;

@@ -80,7 +80,7 @@ class Ipv6Pim::Standby::DefaultContext::NeighborOldFormats : public ydk::Entity
 
         class NeighborOldFormat; //type: Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat> > neighbor_old_format;
+        ydk::YList neighbor_old_format;
         
 }; // Ipv6Pim::Standby::DefaultContext::NeighborOldFormats
 
@@ -121,7 +121,7 @@ class Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat : 
         ydk::YLeaf override_interval; //type: uint16
         class NeighborAddressXr; //type: Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat::NeighborAddressXr> > neighbor_address_xr;
+        ydk::YList neighbor_address_xr;
         
 }; // Ipv6Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat
 
@@ -192,7 +192,7 @@ class Ipv6Pim::Standby::DefaultContext::Ranges : public ydk::Entity
 
         class Range; //type: Ipv6Pim::Standby::DefaultContext::Ranges::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Ranges::Range> > range;
+        ydk::YList range;
         
 }; // Ipv6Pim::Standby::DefaultContext::Ranges
 
@@ -225,7 +225,7 @@ class Ipv6Pim::Standby::DefaultContext::Ranges::Range : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Ranges::Range::RpAddressXr> rp_address_xr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Ranges::Range::SourceOfInformation> source_of_information;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Ranges::Range::GroupRange> > group_range;
+        ydk::YList group_range;
         
 }; // Ipv6Pim::Standby::DefaultContext::Ranges::Range
 
@@ -374,7 +374,7 @@ class Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats : public ydk::Entity
 
         class InterfaceOldFormat; //type: Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat> > interface_old_format;
+        ydk::YList interface_old_format;
         
 }; // Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats
 
@@ -432,7 +432,7 @@ class Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat 
         class InterfaceAddress; //type: Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::DrAddress> dr_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat::InterfaceAddress> > interface_address;
+        ydk::YList interface_address;
         
 }; // Ipv6Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldFormat
 
@@ -530,7 +530,7 @@ class Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches : public ydk::Entity
 
         class RpCache; //type: Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache> > rp_cache;
+        ydk::YList rp_cache;
         
 }; // Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches
 
@@ -605,7 +605,7 @@ class Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList 
 
         class PimBsrCrpBag; //type: Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag> > pim_bsr_crp_bag;
+        ydk::YList pim_bsr_crp_bag;
         
 }; // Ipv6Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList
 
@@ -680,7 +680,7 @@ class Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps : public ydk::Entity
 
         class CandidateRp; //type: Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp> > candidate_rp;
+        ydk::YList candidate_rp;
         
 }; // Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps
 
@@ -714,7 +714,7 @@ class Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp : public 
         class CrpAccess; //type: Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CandidateRp_> candidate_rp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAccess> > crp_access;
+        ydk::YList crp_access;
         
 }; // Ipv6Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp
 
@@ -783,7 +783,7 @@ class Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections : public ydk::Entity
 
         class BsrElection; //type: Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection> > bsr_election;
+        ydk::YList bsr_election;
         
 }; // Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections
 
@@ -805,7 +805,7 @@ class Ipv6Pim::Standby::DefaultContext::Bsr::BsrElections::BsrElection : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf pim_scope; //type: int32
+        ydk::YLeaf pim_scope; //type: uint32
         ydk::YLeaf bsr_priority; //type: uint8
         ydk::YLeaf bsr_mask_length; //type: uint8
         ydk::YLeaf bsr_up_time; //type: uint16
@@ -943,7 +943,7 @@ class Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests : public y
 
         class RoutePolicyTest; //type: Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePolicyTest> > route_policy_test;
+        ydk::YList route_policy_test;
         
 }; // Ipv6Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests
 
@@ -1092,7 +1092,7 @@ class Ipv6Pim::Standby::DefaultContext::Interfaces : public ydk::Entity
 
         class Interface; //type: Ipv6Pim::Standby::DefaultContext::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ipv6Pim::Standby::DefaultContext::Interfaces
 
@@ -1150,7 +1150,7 @@ class Ipv6Pim::Standby::DefaultContext::Interfaces::Interface : public ydk::Enti
         class InterfaceAddress; //type: Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::DrAddress> dr_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddress> > interface_address;
+        ydk::YList interface_address;
         
 }; // Ipv6Pim::Standby::DefaultContext::Interfaces::Interface
 
@@ -1220,7 +1220,7 @@ class Ipv6Pim::Standby::DefaultContext::NetIoTunnels : public ydk::Entity
 
         class NetIoTunnel; //type: Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::NetIoTunnels::NetIoTunnel> > net_io_tunnel;
+        ydk::YList net_io_tunnel;
         
 }; // Ipv6Pim::Standby::DefaultContext::NetIoTunnels
 
@@ -1368,7 +1368,7 @@ class Ipv6Pim::Standby::DefaultContext::BidirDfStates : public ydk::Entity
 
         class BidirDfState; //type: Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::BidirDfStates::BidirDfState> > bidir_df_state;
+        ydk::YList bidir_df_state;
         
 }; // Ipv6Pim::Standby::DefaultContext::BidirDfStates
 
@@ -1448,7 +1448,7 @@ class Ipv6Pim::Standby::DefaultContext::Topologies : public ydk::Entity
 
         class Topology; //type: Ipv6Pim::Standby::DefaultContext::Topologies::Topology
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Topologies::Topology> > topology;
+        ydk::YList topology;
         
 }; // Ipv6Pim::Standby::DefaultContext::Topologies
 
@@ -1472,7 +1472,7 @@ class Ipv6Pim::Standby::DefaultContext::Topologies::Topology : public ydk::Entit
 
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf group_address; //type: string
-        ydk::YLeaf rpt; //type: int32
+        ydk::YLeaf rpt; //type: uint32
         ydk::YLeaf limit_reached; //type: boolean
         ydk::YLeaf low_memory; //type: boolean
         ydk::YLeaf protocol; //type: PimShowProtocol
@@ -1545,7 +1545,7 @@ class Ipv6Pim::Standby::DefaultContext::Topologies::Topology : public ydk::Entit
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Topologies::Topology::RpfRoot> rpf_root;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Topologies::Topology::ProxyAddress> proxy_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OrigSrcAddress> orig_src_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterface> > outgoing_interface;
+        ydk::YList outgoing_interface;
         
 }; // Ipv6Pim::Standby::DefaultContext::Topologies::Topology
 
@@ -1837,7 +1837,7 @@ class Ipv6Pim::Standby::DefaultContext::BgpAfs : public ydk::Entity
 
         class BgpAf; //type: Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::BgpAfs::BgpAf> > bgp_af;
+        ydk::YList bgp_af;
         
 }; // Ipv6Pim::Standby::DefaultContext::BgpAfs
 
@@ -1987,7 +1987,7 @@ class Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts : publi
 
         class TopologyInterfaceFlagRouteCount; //type: Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts::TopologyInterfaceFlagRouteCount> > topology_interface_flag_route_count;
+        ydk::YList topology_interface_flag_route_count;
         
 }; // Ipv6Pim::Standby::DefaultContext::TopologyInterfaceFlagRouteCounts
 
@@ -2039,7 +2039,7 @@ class Ipv6Pim::Standby::DefaultContext::GroupMapSources : public ydk::Entity
 
         class GroupMapSource; //type: Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource> > group_map_source;
+        ydk::YList group_map_source;
         
 }; // Ipv6Pim::Standby::DefaultContext::GroupMapSources
 
@@ -2062,11 +2062,11 @@ class Ipv6Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource : public
         std::string get_absolute_path() const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf client; //type: PimClient
         ydk::YLeaf protocol; //type: PimProtocol
         ydk::YLeaf rp_address; //type: string
-        ydk::YLeaf priority; //type: int32
+        ydk::YLeaf priority; //type: uint32
         ydk::YLeaf holdtime; //type: int32
         ydk::YLeaf expires; //type: uint64
         ydk::YLeaf uptime; //type: uint64
@@ -2268,7 +2268,7 @@ class Ipv6Pim::Standby::DefaultContext::TrafficCounters : public ydk::Entity
         ydk::YLeaf truncated_pim_packets; //type: uint32
         class PacketQueue; //type: Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::TrafficCounters::PacketQueue> > packet_queue;
+        ydk::YList packet_queue;
         
 }; // Ipv6Pim::Standby::DefaultContext::TrafficCounters
 
@@ -2369,7 +2369,7 @@ class Ipv6Pim::Standby::DefaultContext::GroupMapRpfs : public ydk::Entity
 
         class GroupMapRpf; //type: Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf> > group_map_rpf;
+        ydk::YList group_map_rpf;
         
 }; // Ipv6Pim::Standby::DefaultContext::GroupMapRpfs
 
@@ -2392,11 +2392,11 @@ class Ipv6Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf : public ydk::
         std::string get_absolute_path() const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf client; //type: PimClient
         ydk::YLeaf protocol; //type: PimProtocol
         ydk::YLeaf rp_address; //type: string
-        ydk::YLeaf rp_priority; //type: int32
+        ydk::YLeaf rp_priority; //type: uint32
         ydk::YLeaf are_we_rp; //type: boolean
         ydk::YLeaf rpf_interface_name; //type: string
         ydk::YLeaf rpf_vrf_name; //type: string
@@ -2621,7 +2621,7 @@ class Ipv6Pim::Standby::DefaultContext::Gre::GreHashes : public ydk::Entity
 
         class GreHash; //type: Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Gre::GreHashes::GreHash> > gre_hash;
+        ydk::YList gre_hash;
         
 }; // Ipv6Pim::Standby::DefaultContext::Gre::GreHashes
 
@@ -2670,7 +2670,7 @@ class Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops : public ydk::Entity
 
         class GreNextHop; //type: Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop> > gre_next_hop;
+        ydk::YList gre_next_hop;
         
 }; // Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops
 
@@ -2700,7 +2700,7 @@ class Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop : public yd
         class GrePath; //type: Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::RegisteredAddress> registered_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath> > gre_path;
+        ydk::YList gre_path;
         
 }; // Ipv6Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop
 
@@ -2823,7 +2823,7 @@ class Ipv6Pim::Standby::DefaultContext::BidirDfWinners : public ydk::Entity
 
         class BidirDfWinner; //type: Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner> > bidir_df_winner;
+        ydk::YList bidir_df_winner;
         
 }; // Ipv6Pim::Standby::DefaultContext::BidirDfWinners
 
@@ -2929,7 +2929,7 @@ class Ipv6Pim::Standby::DefaultContext::TableContexts : public ydk::Entity
 
         class TableContext; //type: Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::TableContexts::TableContext> > table_context;
+        ydk::YList table_context;
         
 }; // Ipv6Pim::Standby::DefaultContext::TableContexts
 
@@ -2987,7 +2987,7 @@ class Ipv6Pim::Standby::DefaultContext::NeighborSummaries : public ydk::Entity
 
         class NeighborSummary; //type: Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::NeighborSummaries::NeighborSummary> > neighbor_summary;
+        ydk::YList neighbor_summary;
         
 }; // Ipv6Pim::Standby::DefaultContext::NeighborSummaries
 
@@ -3195,9 +3195,9 @@ class Ipv6Pim::Standby::DefaultContext::Context : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Context::RemoteDefaultGroup> remote_default_group;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Context::RpfDefaultTable> rpf_default_table;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Context::ExportRouteTarget> > export_route_target;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Context::ImportRouteTarget> > import_route_target;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Context::AnycastRpRange> > anycast_rp_range;
+        ydk::YList export_route_target;
+        ydk::YList import_route_target;
+        ydk::YList anycast_rp_range;
         
 }; // Ipv6Pim::Standby::DefaultContext::Context
 
@@ -3383,7 +3383,7 @@ class Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts : public yd
 
         class TopologyEntryFlagRouteCount; //type: Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts::TopologyEntryFlagRouteCount> > topology_entry_flag_route_count;
+        ydk::YList topology_entry_flag_route_count;
         
 }; // Ipv6Pim::Standby::DefaultContext::TopologyEntryFlagRouteCounts
 
@@ -3461,7 +3461,7 @@ class Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases : pu
 
         class RedirectRouteDatabase; //type: Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase> > redirect_route_database;
+        ydk::YList redirect_route_database;
         
 }; // Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases
 
@@ -3493,7 +3493,7 @@ class Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::Red
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::GroupAddressXr> group_address_xr;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::SourceAddressXr> source_address_xr;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ipv6Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::RedirectRouteDatabase
 
@@ -3619,7 +3619,7 @@ class Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces : public y
 
         class BundleInterface; //type: Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleInterface> > bundle_interface;
+        ydk::YList bundle_interface;
         
 }; // Ipv6Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces
 
@@ -3675,7 +3675,7 @@ class Ipv6Pim::Standby::DefaultContext::Tunnels : public ydk::Entity
 
         class Tunnel; //type: Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Tunnels::Tunnel> > tunnel;
+        ydk::YList tunnel;
         
 }; // Ipv6Pim::Standby::DefaultContext::Tunnels
 
@@ -3823,7 +3823,7 @@ class Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes : public ydk::Enti
 
         class MulticastStaticRoute; //type: Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRoute> > multicast_static_route;
+        ydk::YList multicast_static_route;
         
 }; // Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes
 
@@ -3846,7 +3846,7 @@ class Ipv6Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStaticRo
         std::string get_absolute_path() const override;
 
         ydk::YLeaf address; //type: string
-        ydk::YLeaf prefix_length; //type: int32
+        ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf distance; //type: uint32
         ydk::YLeaf prefix_length_xr; //type: uint8
@@ -3927,7 +3927,7 @@ class Ipv6Pim::Standby::DefaultContext::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Ipv6Pim::Standby::DefaultContext::Neighbors
 
@@ -3968,7 +3968,7 @@ class Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor : public ydk::Entity
         ydk::YLeaf override_interval; //type: uint16
         class NeighborAddressXr; //type: Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr> > neighbor_address_xr;
+        ydk::YList neighbor_address_xr;
         
 }; // Ipv6Pim::Standby::DefaultContext::Neighbors::Neighbor
 
@@ -4213,7 +4213,7 @@ class Ipv6Pim::Standby::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ipv6Pim::Standby::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipv6Pim::Standby::Vrfs
 
@@ -4327,7 +4327,7 @@ class Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces : public ydk::Entity
 
         class IfrsInterface; //type: Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface> > ifrs_interface;
+        ydk::YList ifrs_interface;
         
 }; // Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces
 
@@ -4384,7 +4384,7 @@ class Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface : public ydk::E
         class InterfaceAddress; //type: Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::DrAddress> dr_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAddress> > interface_address;
+        ydk::YList interface_address;
         
 }; // Ipv6Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface
 
@@ -4453,7 +4453,7 @@ class Ipv6Pim::Standby::Vrfs::Vrf::Safs : public ydk::Entity
 
         class Saf; //type: Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_pim_oper::Ipv6Pim::Standby::Vrfs::Vrf::Safs::Saf> > saf;
+        ydk::YList saf;
         
 }; // Ipv6Pim::Standby::Vrfs::Vrf::Safs
 

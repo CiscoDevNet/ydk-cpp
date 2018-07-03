@@ -14,7 +14,7 @@ namespace Cisco_IOS_XR_snmp_test_trap_act {
 SnmpColdStart::SnmpColdStart()
 {
 
-    yang_name = "snmp-cold-start"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "snmp-cold-start"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SnmpColdStart::~SnmpColdStart()
@@ -23,6 +23,7 @@ SnmpColdStart::~SnmpColdStart()
 
 bool SnmpColdStart::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -100,7 +101,7 @@ bool SnmpColdStart::has_leaf_or_child_of_name(const std::string & name) const
 SnmpWarmStart::SnmpWarmStart()
 {
 
-    yang_name = "snmp-warm-start"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "snmp-warm-start"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SnmpWarmStart::~SnmpWarmStart()
@@ -109,6 +110,7 @@ SnmpWarmStart::~SnmpWarmStart()
 
 bool SnmpWarmStart::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -189,7 +191,7 @@ InterfaceLinkUp::InterfaceLinkUp()
 {
     input->parent = this;
 
-    yang_name = "interface-link-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interface-link-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InterfaceLinkUp::~InterfaceLinkUp()
@@ -198,6 +200,7 @@ InterfaceLinkUp::~InterfaceLinkUp()
 
 bool InterfaceLinkUp::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -294,7 +297,7 @@ InterfaceLinkUp::Input::Input()
     ifindex{YType::uint32, "ifindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "interface-link-up"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "interface-link-up"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceLinkUp::Input::~Input()
@@ -303,6 +306,7 @@ InterfaceLinkUp::Input::~Input()
 
 bool InterfaceLinkUp::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set;
 }
 
@@ -379,7 +383,7 @@ InterfaceLinkDown::InterfaceLinkDown()
 {
     input->parent = this;
 
-    yang_name = "interface-link-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interface-link-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InterfaceLinkDown::~InterfaceLinkDown()
@@ -388,6 +392,7 @@ InterfaceLinkDown::~InterfaceLinkDown()
 
 bool InterfaceLinkDown::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -484,7 +489,7 @@ InterfaceLinkDown::Input::Input()
     ifindex{YType::uint32, "ifindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "interface-link-down"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "interface-link-down"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 InterfaceLinkDown::Input::~Input()
@@ -493,6 +498,7 @@ InterfaceLinkDown::Input::~Input()
 
 bool InterfaceLinkDown::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set;
 }
 
@@ -569,7 +575,7 @@ SonetSectionStatus::SonetSectionStatus()
 {
     input->parent = this;
 
-    yang_name = "sonet-section-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sonet-section-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SonetSectionStatus::~SonetSectionStatus()
@@ -578,6 +584,7 @@ SonetSectionStatus::~SonetSectionStatus()
 
 bool SonetSectionStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -674,7 +681,7 @@ SonetSectionStatus::Input::Input()
     ifindex{YType::uint32, "ifindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "sonet-section-status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "sonet-section-status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SonetSectionStatus::Input::~Input()
@@ -683,6 +690,7 @@ SonetSectionStatus::Input::~Input()
 
 bool SonetSectionStatus::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set;
 }
 
@@ -759,7 +767,7 @@ SonetLineStatus::SonetLineStatus()
 {
     input->parent = this;
 
-    yang_name = "sonet-line-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sonet-line-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SonetLineStatus::~SonetLineStatus()
@@ -768,6 +776,7 @@ SonetLineStatus::~SonetLineStatus()
 
 bool SonetLineStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -864,7 +873,7 @@ SonetLineStatus::Input::Input()
     ifindex{YType::uint32, "ifindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "sonet-line-status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "sonet-line-status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SonetLineStatus::Input::~Input()
@@ -873,6 +882,7 @@ SonetLineStatus::Input::~Input()
 
 bool SonetLineStatus::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set;
 }
 
@@ -949,7 +959,7 @@ SonetPathStatus::SonetPathStatus()
 {
     input->parent = this;
 
-    yang_name = "sonet-path-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sonet-path-status"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SonetPathStatus::~SonetPathStatus()
@@ -958,6 +968,7 @@ SonetPathStatus::~SonetPathStatus()
 
 bool SonetPathStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1054,7 +1065,7 @@ SonetPathStatus::Input::Input()
     ifindex{YType::uint32, "ifindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "sonet-path-status"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "sonet-path-status"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SonetPathStatus::Input::~Input()
@@ -1063,6 +1074,7 @@ SonetPathStatus::Input::~Input()
 
 bool SonetPathStatus::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set;
 }
 
@@ -1136,7 +1148,7 @@ bool SonetPathStatus::Input::has_leaf_or_child_of_name(const std::string & name)
 InfraSyslogMessageGenerated::InfraSyslogMessageGenerated()
 {
 
-    yang_name = "infra-syslog-message-generated"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-syslog-message-generated"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraSyslogMessageGenerated::~InfraSyslogMessageGenerated()
@@ -1145,6 +1157,7 @@ InfraSyslogMessageGenerated::~InfraSyslogMessageGenerated()
 
 bool InfraSyslogMessageGenerated::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1222,7 +1235,7 @@ bool InfraSyslogMessageGenerated::has_leaf_or_child_of_name(const std::string & 
 InfraFlashDeviceInserted::InfraFlashDeviceInserted()
 {
 
-    yang_name = "infra-flash-device-inserted"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-flash-device-inserted"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraFlashDeviceInserted::~InfraFlashDeviceInserted()
@@ -1231,6 +1244,7 @@ InfraFlashDeviceInserted::~InfraFlashDeviceInserted()
 
 bool InfraFlashDeviceInserted::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1308,7 +1322,7 @@ bool InfraFlashDeviceInserted::has_leaf_or_child_of_name(const std::string & nam
 InfraFlashDeviceRemoved::InfraFlashDeviceRemoved()
 {
 
-    yang_name = "infra-flash-device-removed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-flash-device-removed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraFlashDeviceRemoved::~InfraFlashDeviceRemoved()
@@ -1317,6 +1331,7 @@ InfraFlashDeviceRemoved::~InfraFlashDeviceRemoved()
 
 bool InfraFlashDeviceRemoved::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1394,7 +1409,7 @@ bool InfraFlashDeviceRemoved::has_leaf_or_child_of_name(const std::string & name
 InfraRedundancyProgression::InfraRedundancyProgression()
 {
 
-    yang_name = "infra-redundancy-progression"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-redundancy-progression"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraRedundancyProgression::~InfraRedundancyProgression()
@@ -1403,6 +1418,7 @@ InfraRedundancyProgression::~InfraRedundancyProgression()
 
 bool InfraRedundancyProgression::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1480,7 +1496,7 @@ bool InfraRedundancyProgression::has_leaf_or_child_of_name(const std::string & n
 InfraRedundancySwitch::InfraRedundancySwitch()
 {
 
-    yang_name = "infra-redundancy-switch"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-redundancy-switch"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraRedundancySwitch::~InfraRedundancySwitch()
@@ -1489,6 +1505,7 @@ InfraRedundancySwitch::~InfraRedundancySwitch()
 
 bool InfraRedundancySwitch::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1566,7 +1583,7 @@ bool InfraRedundancySwitch::has_leaf_or_child_of_name(const std::string & name) 
 InfraBridgeNewRoot::InfraBridgeNewRoot()
 {
 
-    yang_name = "infra-bridge-new-root"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-bridge-new-root"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraBridgeNewRoot::~InfraBridgeNewRoot()
@@ -1575,6 +1592,7 @@ InfraBridgeNewRoot::~InfraBridgeNewRoot()
 
 bool InfraBridgeNewRoot::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1652,7 +1670,7 @@ bool InfraBridgeNewRoot::has_leaf_or_child_of_name(const std::string & name) con
 InfraBridgeTopologyChange::InfraBridgeTopologyChange()
 {
 
-    yang_name = "infra-bridge-topology-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-bridge-topology-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraBridgeTopologyChange::~InfraBridgeTopologyChange()
@@ -1661,6 +1679,7 @@ InfraBridgeTopologyChange::~InfraBridgeTopologyChange()
 
 bool InfraBridgeTopologyChange::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1738,7 +1757,7 @@ bool InfraBridgeTopologyChange::has_leaf_or_child_of_name(const std::string & na
 InfraConfigEvent::InfraConfigEvent()
 {
 
-    yang_name = "infra-config-event"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "infra-config-event"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 InfraConfigEvent::~InfraConfigEvent()
@@ -1747,6 +1766,7 @@ InfraConfigEvent::~InfraConfigEvent()
 
 bool InfraConfigEvent::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1827,7 +1847,7 @@ EntitySensorThresholdNotification::EntitySensorThresholdNotification()
 {
     input->parent = this;
 
-    yang_name = "entity-sensor-threshold-notification"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "entity-sensor-threshold-notification"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EntitySensorThresholdNotification::~EntitySensorThresholdNotification()
@@ -1836,6 +1856,7 @@ EntitySensorThresholdNotification::~EntitySensorThresholdNotification()
 
 bool EntitySensorThresholdNotification::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1932,7 +1953,7 @@ EntitySensorThresholdNotification::Input::Input()
     entindex{YType::uint32, "entindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "entity-sensor-threshold-notification"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "entity-sensor-threshold-notification"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EntitySensorThresholdNotification::Input::~Input()
@@ -1941,6 +1962,7 @@ EntitySensorThresholdNotification::Input::~Input()
 
 bool EntitySensorThresholdNotification::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entindex.is_set;
 }
 
@@ -2017,7 +2039,7 @@ EntityFruPowerStatusChangeFailed::EntityFruPowerStatusChangeFailed()
 {
     input->parent = this;
 
-    yang_name = "entity-fru-power-status-change-failed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "entity-fru-power-status-change-failed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EntityFruPowerStatusChangeFailed::~EntityFruPowerStatusChangeFailed()
@@ -2026,6 +2048,7 @@ EntityFruPowerStatusChangeFailed::~EntityFruPowerStatusChangeFailed()
 
 bool EntityFruPowerStatusChangeFailed::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2122,7 +2145,7 @@ EntityFruPowerStatusChangeFailed::Input::Input()
     entindex{YType::uint32, "entindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "entity-fru-power-status-change-failed"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "entity-fru-power-status-change-failed"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EntityFruPowerStatusChangeFailed::Input::~Input()
@@ -2131,6 +2154,7 @@ EntityFruPowerStatusChangeFailed::Input::~Input()
 
 bool EntityFruPowerStatusChangeFailed::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entindex.is_set;
 }
 
@@ -2207,7 +2231,7 @@ EntityFruModuleStatusChangeUp::EntityFruModuleStatusChangeUp()
 {
     input->parent = this;
 
-    yang_name = "entity-fru-module-status-change-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "entity-fru-module-status-change-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EntityFruModuleStatusChangeUp::~EntityFruModuleStatusChangeUp()
@@ -2216,6 +2240,7 @@ EntityFruModuleStatusChangeUp::~EntityFruModuleStatusChangeUp()
 
 bool EntityFruModuleStatusChangeUp::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2312,7 +2337,7 @@ EntityFruModuleStatusChangeUp::Input::Input()
     entindex{YType::uint32, "entindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "entity-fru-module-status-change-up"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "entity-fru-module-status-change-up"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EntityFruModuleStatusChangeUp::Input::~Input()
@@ -2321,6 +2346,7 @@ EntityFruModuleStatusChangeUp::Input::~Input()
 
 bool EntityFruModuleStatusChangeUp::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entindex.is_set;
 }
 
@@ -2397,7 +2423,7 @@ EntityFruModuleStatusChangeDown::EntityFruModuleStatusChangeDown()
 {
     input->parent = this;
 
-    yang_name = "entity-fru-module-status-change-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "entity-fru-module-status-change-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EntityFruModuleStatusChangeDown::~EntityFruModuleStatusChangeDown()
@@ -2406,6 +2432,7 @@ EntityFruModuleStatusChangeDown::~EntityFruModuleStatusChangeDown()
 
 bool EntityFruModuleStatusChangeDown::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2502,7 +2529,7 @@ EntityFruModuleStatusChangeDown::Input::Input()
     entindex{YType::uint32, "entindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "entity-fru-module-status-change-down"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "entity-fru-module-status-change-down"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EntityFruModuleStatusChangeDown::Input::~Input()
@@ -2511,6 +2538,7 @@ EntityFruModuleStatusChangeDown::Input::~Input()
 
 bool EntityFruModuleStatusChangeDown::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entindex.is_set;
 }
 
@@ -2587,7 +2615,7 @@ EntityFruFanTrayOperStatusUp::EntityFruFanTrayOperStatusUp()
 {
     input->parent = this;
 
-    yang_name = "entity-fru-fan-tray-oper-status-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "entity-fru-fan-tray-oper-status-up"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EntityFruFanTrayOperStatusUp::~EntityFruFanTrayOperStatusUp()
@@ -2596,6 +2624,7 @@ EntityFruFanTrayOperStatusUp::~EntityFruFanTrayOperStatusUp()
 
 bool EntityFruFanTrayOperStatusUp::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2692,7 +2721,7 @@ EntityFruFanTrayOperStatusUp::Input::Input()
     entindex{YType::uint32, "entindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-oper-status-up"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-oper-status-up"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EntityFruFanTrayOperStatusUp::Input::~Input()
@@ -2701,6 +2730,7 @@ EntityFruFanTrayOperStatusUp::Input::~Input()
 
 bool EntityFruFanTrayOperStatusUp::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entindex.is_set;
 }
 
@@ -2777,7 +2807,7 @@ EntityFruFanTrayInserted::EntityFruFanTrayInserted()
 {
     input->parent = this;
 
-    yang_name = "entity-fru-fan-tray-inserted"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "entity-fru-fan-tray-inserted"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EntityFruFanTrayInserted::~EntityFruFanTrayInserted()
@@ -2786,6 +2816,7 @@ EntityFruFanTrayInserted::~EntityFruFanTrayInserted()
 
 bool EntityFruFanTrayInserted::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -2882,7 +2913,7 @@ EntityFruFanTrayInserted::Input::Input()
     entindex{YType::uint32, "entindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-inserted"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-inserted"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EntityFruFanTrayInserted::Input::~Input()
@@ -2891,6 +2922,7 @@ EntityFruFanTrayInserted::Input::~Input()
 
 bool EntityFruFanTrayInserted::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entindex.is_set;
 }
 
@@ -2967,7 +2999,7 @@ EntityFruFanTrayRemoved::EntityFruFanTrayRemoved()
 {
     input->parent = this;
 
-    yang_name = "entity-fru-fan-tray-removed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "entity-fru-fan-tray-removed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EntityFruFanTrayRemoved::~EntityFruFanTrayRemoved()
@@ -2976,6 +3008,7 @@ EntityFruFanTrayRemoved::~EntityFruFanTrayRemoved()
 
 bool EntityFruFanTrayRemoved::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3072,7 +3105,7 @@ EntityFruFanTrayRemoved::Input::Input()
     entindex{YType::uint32, "entindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-removed"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "entity-fru-fan-tray-removed"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EntityFruFanTrayRemoved::Input::~Input()
@@ -3081,6 +3114,7 @@ EntityFruFanTrayRemoved::Input::~Input()
 
 bool EntityFruFanTrayRemoved::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entindex.is_set;
 }
 
@@ -3157,7 +3191,7 @@ PlatformHfrBundleDownedLink::PlatformHfrBundleDownedLink()
 {
     input->parent = this;
 
-    yang_name = "platform-hfr-bundle-downed-link"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-hfr-bundle-downed-link"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformHfrBundleDownedLink::~PlatformHfrBundleDownedLink()
@@ -3166,6 +3200,7 @@ PlatformHfrBundleDownedLink::~PlatformHfrBundleDownedLink()
 
 bool PlatformHfrBundleDownedLink::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3262,7 +3297,7 @@ PlatformHfrBundleDownedLink::Input::Input()
     bundle_name{YType::str, "bundle-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "platform-hfr-bundle-downed-link"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "platform-hfr-bundle-downed-link"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformHfrBundleDownedLink::Input::~Input()
@@ -3271,6 +3306,7 @@ PlatformHfrBundleDownedLink::Input::~Input()
 
 bool PlatformHfrBundleDownedLink::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set;
 }
 
@@ -3347,7 +3383,7 @@ PlatformHfrBundleState::PlatformHfrBundleState()
 {
     input->parent = this;
 
-    yang_name = "platform-hfr-bundle-state"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-hfr-bundle-state"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformHfrBundleState::~PlatformHfrBundleState()
@@ -3356,6 +3392,7 @@ PlatformHfrBundleState::~PlatformHfrBundleState()
 
 bool PlatformHfrBundleState::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3452,7 +3489,7 @@ PlatformHfrBundleState::Input::Input()
     bundle_name{YType::str, "bundle-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "platform-hfr-bundle-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "platform-hfr-bundle-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformHfrBundleState::Input::~Input()
@@ -3461,6 +3498,7 @@ PlatformHfrBundleState::Input::~Input()
 
 bool PlatformHfrBundleState::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_name.is_set;
 }
 
@@ -3537,7 +3575,7 @@ PlatformHfrPlaneState::PlatformHfrPlaneState()
 {
     input->parent = this;
 
-    yang_name = "platform-hfr-plane-state"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-hfr-plane-state"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformHfrPlaneState::~PlatformHfrPlaneState()
@@ -3546,6 +3584,7 @@ PlatformHfrPlaneState::~PlatformHfrPlaneState()
 
 bool PlatformHfrPlaneState::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3642,7 +3681,7 @@ PlatformHfrPlaneState::Input::Input()
     plane_id{YType::uint32, "plane-id"}
 {
 
-    yang_name = "input"; yang_parent_name = "platform-hfr-plane-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "platform-hfr-plane-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformHfrPlaneState::Input::~Input()
@@ -3651,6 +3690,7 @@ PlatformHfrPlaneState::Input::~Input()
 
 bool PlatformHfrPlaneState::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return plane_id.is_set;
 }
 
@@ -3724,7 +3764,7 @@ bool PlatformHfrPlaneState::Input::has_leaf_or_child_of_name(const std::string &
 RoutingBgpEstablished::RoutingBgpEstablished()
 {
 
-    yang_name = "routing-bgp-established"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-bgp-established"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingBgpEstablished::~RoutingBgpEstablished()
@@ -3733,6 +3773,7 @@ RoutingBgpEstablished::~RoutingBgpEstablished()
 
 bool RoutingBgpEstablished::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3813,7 +3854,7 @@ RoutingBgpEstablishedRemotePeer::RoutingBgpEstablishedRemotePeer()
 {
     input->parent = this;
 
-    yang_name = "routing-bgp-established-remote-peer"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-bgp-established-remote-peer"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingBgpEstablishedRemotePeer::~RoutingBgpEstablishedRemotePeer()
@@ -3822,6 +3863,7 @@ RoutingBgpEstablishedRemotePeer::~RoutingBgpEstablishedRemotePeer()
 
 bool RoutingBgpEstablishedRemotePeer::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -3918,7 +3960,7 @@ RoutingBgpEstablishedRemotePeer::Input::Input()
     address{YType::str, "address"}
 {
 
-    yang_name = "input"; yang_parent_name = "routing-bgp-established-remote-peer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "routing-bgp-established-remote-peer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingBgpEstablishedRemotePeer::Input::~Input()
@@ -3927,6 +3969,7 @@ RoutingBgpEstablishedRemotePeer::Input::~Input()
 
 bool RoutingBgpEstablishedRemotePeer::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4000,7 +4043,7 @@ bool RoutingBgpEstablishedRemotePeer::Input::has_leaf_or_child_of_name(const std
 RoutingBgpStateChange::RoutingBgpStateChange()
 {
 
-    yang_name = "routing-bgp-state-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-bgp-state-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingBgpStateChange::~RoutingBgpStateChange()
@@ -4009,6 +4052,7 @@ RoutingBgpStateChange::~RoutingBgpStateChange()
 
 bool RoutingBgpStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4089,7 +4133,7 @@ RoutingBgpStateChangeRemotePeer::RoutingBgpStateChangeRemotePeer()
 {
     input->parent = this;
 
-    yang_name = "routing-bgp-state-change-remote-peer"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-bgp-state-change-remote-peer"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingBgpStateChangeRemotePeer::~RoutingBgpStateChangeRemotePeer()
@@ -4098,6 +4142,7 @@ RoutingBgpStateChangeRemotePeer::~RoutingBgpStateChangeRemotePeer()
 
 bool RoutingBgpStateChangeRemotePeer::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -4194,7 +4239,7 @@ RoutingBgpStateChangeRemotePeer::Input::Input()
     address{YType::str, "address"}
 {
 
-    yang_name = "input"; yang_parent_name = "routing-bgp-state-change-remote-peer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "routing-bgp-state-change-remote-peer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingBgpStateChangeRemotePeer::Input::~Input()
@@ -4203,6 +4248,7 @@ RoutingBgpStateChangeRemotePeer::Input::~Input()
 
 bool RoutingBgpStateChangeRemotePeer::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -4276,7 +4322,7 @@ bool RoutingBgpStateChangeRemotePeer::Input::has_leaf_or_child_of_name(const std
 RoutingOspfNeighborStateChange::RoutingOspfNeighborStateChange()
 {
 
-    yang_name = "routing-ospf-neighbor-state-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-ospf-neighbor-state-change"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingOspfNeighborStateChange::~RoutingOspfNeighborStateChange()
@@ -4285,6 +4331,7 @@ RoutingOspfNeighborStateChange::~RoutingOspfNeighborStateChange()
 
 bool RoutingOspfNeighborStateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4365,7 +4412,7 @@ RoutingOspfNeighborStateChangeAddress::RoutingOspfNeighborStateChangeAddress()
 {
     input->parent = this;
 
-    yang_name = "routing-ospf-neighbor-state-change-address"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-ospf-neighbor-state-change-address"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingOspfNeighborStateChangeAddress::~RoutingOspfNeighborStateChangeAddress()
@@ -4374,6 +4421,7 @@ RoutingOspfNeighborStateChangeAddress::~RoutingOspfNeighborStateChangeAddress()
 
 bool RoutingOspfNeighborStateChangeAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -4471,7 +4519,7 @@ RoutingOspfNeighborStateChangeAddress::Input::Input()
     ifindex{YType::uint32, "ifindex"}
 {
 
-    yang_name = "input"; yang_parent_name = "routing-ospf-neighbor-state-change-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "routing-ospf-neighbor-state-change-address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingOspfNeighborStateChangeAddress::Input::~Input()
@@ -4480,6 +4528,7 @@ RoutingOspfNeighborStateChangeAddress::Input::~Input()
 
 bool RoutingOspfNeighborStateChangeAddress::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| ifindex.is_set;
 }
@@ -4566,7 +4615,7 @@ bool RoutingOspfNeighborStateChangeAddress::Input::has_leaf_or_child_of_name(con
 RoutingMplsLdpSessionDown::RoutingMplsLdpSessionDown()
 {
 
-    yang_name = "routing-mpls-ldp-session-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-ldp-session-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsLdpSessionDown::~RoutingMplsLdpSessionDown()
@@ -4575,6 +4624,7 @@ RoutingMplsLdpSessionDown::~RoutingMplsLdpSessionDown()
 
 bool RoutingMplsLdpSessionDown::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4655,7 +4705,7 @@ RoutingMplsLdpSessionDownEntityId::RoutingMplsLdpSessionDownEntityId()
 {
     input->parent = this;
 
-    yang_name = "routing-mpls-ldp-session-down-entity-id"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-ldp-session-down-entity-id"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsLdpSessionDownEntityId::~RoutingMplsLdpSessionDownEntityId()
@@ -4664,6 +4714,7 @@ RoutingMplsLdpSessionDownEntityId::~RoutingMplsLdpSessionDownEntityId()
 
 bool RoutingMplsLdpSessionDownEntityId::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -4762,7 +4813,7 @@ RoutingMplsLdpSessionDownEntityId::Input::Input()
     peer_id{YType::str, "peer-id"}
 {
 
-    yang_name = "input"; yang_parent_name = "routing-mpls-ldp-session-down-entity-id"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "routing-mpls-ldp-session-down-entity-id"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingMplsLdpSessionDownEntityId::Input::~Input()
@@ -4771,6 +4822,7 @@ RoutingMplsLdpSessionDownEntityId::Input::~Input()
 
 bool RoutingMplsLdpSessionDownEntityId::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return entity_id.is_set
 	|| entity_index.is_set
 	|| peer_id.is_set;
@@ -4870,7 +4922,7 @@ bool RoutingMplsLdpSessionDownEntityId::Input::has_leaf_or_child_of_name(const s
 RoutingMplsTunnelReRouted::RoutingMplsTunnelReRouted()
 {
 
-    yang_name = "routing-mpls-tunnel-re-routed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-tunnel-re-routed"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelReRouted::~RoutingMplsTunnelReRouted()
@@ -4879,6 +4931,7 @@ RoutingMplsTunnelReRouted::~RoutingMplsTunnelReRouted()
 
 bool RoutingMplsTunnelReRouted::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4959,7 +5012,7 @@ RoutingMplsTunnelReRoutedIndex::RoutingMplsTunnelReRoutedIndex()
 {
     input->parent = this;
 
-    yang_name = "routing-mpls-tunnel-re-routed-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-tunnel-re-routed-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelReRoutedIndex::~RoutingMplsTunnelReRoutedIndex()
@@ -4968,6 +5021,7 @@ RoutingMplsTunnelReRoutedIndex::~RoutingMplsTunnelReRoutedIndex()
 
 bool RoutingMplsTunnelReRoutedIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5067,7 +5121,7 @@ RoutingMplsTunnelReRoutedIndex::Input::Input()
     destination{YType::str, "destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-re-routed-index"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-re-routed-index"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelReRoutedIndex::Input::~Input()
@@ -5076,6 +5130,7 @@ RoutingMplsTunnelReRoutedIndex::Input::~Input()
 
 bool RoutingMplsTunnelReRoutedIndex::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| instance.is_set
 	|| source.is_set
@@ -5188,7 +5243,7 @@ bool RoutingMplsTunnelReRoutedIndex::Input::has_leaf_or_child_of_name(const std:
 RoutingMplsTunnelReOptimized::RoutingMplsTunnelReOptimized()
 {
 
-    yang_name = "routing-mpls-tunnel-re-optimized"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-tunnel-re-optimized"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelReOptimized::~RoutingMplsTunnelReOptimized()
@@ -5197,6 +5252,7 @@ RoutingMplsTunnelReOptimized::~RoutingMplsTunnelReOptimized()
 
 bool RoutingMplsTunnelReOptimized::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5277,7 +5333,7 @@ RoutingMplsTunnelReOptimizedIndex::RoutingMplsTunnelReOptimizedIndex()
 {
     input->parent = this;
 
-    yang_name = "routing-mpls-tunnel-re-optimized-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-tunnel-re-optimized-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelReOptimizedIndex::~RoutingMplsTunnelReOptimizedIndex()
@@ -5286,6 +5342,7 @@ RoutingMplsTunnelReOptimizedIndex::~RoutingMplsTunnelReOptimizedIndex()
 
 bool RoutingMplsTunnelReOptimizedIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5385,7 +5442,7 @@ RoutingMplsTunnelReOptimizedIndex::Input::Input()
     destination{YType::str, "destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-re-optimized-index"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-re-optimized-index"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelReOptimizedIndex::Input::~Input()
@@ -5394,6 +5451,7 @@ RoutingMplsTunnelReOptimizedIndex::Input::~Input()
 
 bool RoutingMplsTunnelReOptimizedIndex::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| instance.is_set
 	|| source.is_set
@@ -5506,7 +5564,7 @@ bool RoutingMplsTunnelReOptimizedIndex::Input::has_leaf_or_child_of_name(const s
 RoutingMplsTunnelDown::RoutingMplsTunnelDown()
 {
 
-    yang_name = "routing-mpls-tunnel-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-tunnel-down"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelDown::~RoutingMplsTunnelDown()
@@ -5515,6 +5573,7 @@ RoutingMplsTunnelDown::~RoutingMplsTunnelDown()
 
 bool RoutingMplsTunnelDown::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5595,7 +5654,7 @@ RoutingMplsTunnelDownIndex::RoutingMplsTunnelDownIndex()
 {
     input->parent = this;
 
-    yang_name = "routing-mpls-tunnel-down-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "routing-mpls-tunnel-down-index"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelDownIndex::~RoutingMplsTunnelDownIndex()
@@ -5604,6 +5663,7 @@ RoutingMplsTunnelDownIndex::~RoutingMplsTunnelDownIndex()
 
 bool RoutingMplsTunnelDownIndex::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5703,7 +5763,7 @@ RoutingMplsTunnelDownIndex::Input::Input()
     destination{YType::str, "destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-down-index"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "routing-mpls-tunnel-down-index"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RoutingMplsTunnelDownIndex::Input::~Input()
@@ -5712,6 +5772,7 @@ RoutingMplsTunnelDownIndex::Input::~Input()
 
 bool RoutingMplsTunnelDownIndex::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| instance.is_set
 	|| source.is_set
@@ -5824,7 +5885,7 @@ bool RoutingMplsTunnelDownIndex::Input::has_leaf_or_child_of_name(const std::str
 All::All()
 {
 
-    yang_name = "all"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "Cisco-IOS-XR-snmp-test-trap-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 All::~All()
@@ -5833,6 +5894,7 @@ All::~All()
 
 bool All::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

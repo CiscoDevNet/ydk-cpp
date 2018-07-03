@@ -32,36 +32,36 @@ class CISCOIFEXTENSIONMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoifextsystemconfig; //type: CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig
-        class Cieifpacketstatstable; //type: CISCOIFEXTENSIONMIB::Cieifpacketstatstable
-        class Cieifinterfacetable; //type: CISCOIFEXTENSIONMIB::Cieifinterfacetable
-        class Cieifstatuslisttable; //type: CISCOIFEXTENSIONMIB::Cieifstatuslisttable
-        class Cieifvlstatstable; //type: CISCOIFEXTENSIONMIB::Cieifvlstatstable
-        class Cieifindexpersistencetable; //type: CISCOIFEXTENSIONMIB::Cieifindexpersistencetable
-        class Cieifdot1Qcustomethertypetable; //type: CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable
-        class Cieifutiltable; //type: CISCOIFEXTENSIONMIB::Cieifutiltable
-        class Cieifdot1Dbasemappingtable; //type: CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable
-        class Cieifnamemappingtable; //type: CISCOIFEXTENSIONMIB::Cieifnamemappingtable
+        class CiscoIfExtSystemConfig; //type: CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig
+        class CieIfPacketStatsTable; //type: CISCOIFEXTENSIONMIB::CieIfPacketStatsTable
+        class CieIfInterfaceTable; //type: CISCOIFEXTENSIONMIB::CieIfInterfaceTable
+        class CieIfStatusListTable; //type: CISCOIFEXTENSIONMIB::CieIfStatusListTable
+        class CieIfVlStatsTable; //type: CISCOIFEXTENSIONMIB::CieIfVlStatsTable
+        class CieIfIndexPersistenceTable; //type: CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable
+        class CieIfDot1qCustomEtherTypeTable; //type: CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable
+        class CieIfUtilTable; //type: CISCOIFEXTENSIONMIB::CieIfUtilTable
+        class CieIfDot1dBaseMappingTable; //type: CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable
+        class CieIfNameMappingTable; //type: CISCOIFEXTENSIONMIB::CieIfNameMappingTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig> ciscoifextsystemconfig;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifpacketstatstable> cieifpacketstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifinterfacetable> cieifinterfacetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifstatuslisttable> cieifstatuslisttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifvlstatstable> cieifvlstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifindexpersistencetable> cieifindexpersistencetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable> cieifdot1qcustomethertypetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifutiltable> cieifutiltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable> cieifdot1dbasemappingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifnamemappingtable> cieifnamemappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig> ciscoifextsystemconfig;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfPacketStatsTable> cieifpacketstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfInterfaceTable> cieifinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfStatusListTable> cieifstatuslisttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfVlStatsTable> cieifvlstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable> cieifindexpersistencetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable> cieifdot1qcustomethertypetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfUtilTable> cieifutiltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable> cieifdot1dbasemappingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::CieIfNameMappingTable> cieifnamemappingtable;
         
 }; // CISCOIFEXTENSIONMIB
 
 
-class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig : public ydk::Entity
 {
     public:
-        Ciscoifextsystemconfig();
-        ~Ciscoifextsystemconfig();
+        CiscoIfExtSystemConfig();
+        ~CiscoIfExtSystemConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -75,23 +75,23 @@ class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ciesystemmtu; //type: int32
-        ydk::YLeaf cielinkupdownenable; //type: Cielinkupdownenable
-        ydk::YLeaf ciestandardlinkupdownvarbinds; //type: Ciestandardlinkupdownvarbinds
+        ydk::YLeaf cielinkupdownenable; //type: CieLinkUpDownEnable
+        ydk::YLeaf ciestandardlinkupdownvarbinds; //type: CieStandardLinkUpDownVarbinds
         ydk::YLeaf cieifindexpersistence; //type: boolean
         ydk::YLeaf ciedelayedlinkupdownnotifenable; //type: boolean
         ydk::YLeaf ciedelayedlinkupdownnotifdelay; //type: uint32
         ydk::YLeaf cieifindexglobalpersistence; //type: IfIndexPersistenceState
-        ydk::YLeaf cielinkupdownconfig; //type: Cielinkupdownconfig
-        class Ciestandardlinkupdownvarbinds;
+        ydk::YLeaf cielinkupdownconfig; //type: CieLinkUpDownConfig
+        class CieStandardLinkUpDownVarbinds;
 
-}; // CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig
+}; // CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig
 
 
-class CISCOIFEXTENSIONMIB::Cieifpacketstatstable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfPacketStatsTable : public ydk::Entity
 {
     public:
-        Cieifpacketstatstable();
-        ~Cieifpacketstatstable();
+        CieIfPacketStatsTable();
+        ~CieIfPacketStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -104,18 +104,18 @@ class CISCOIFEXTENSIONMIB::Cieifpacketstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifpacketstatsentry; //type: CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry
+        class CieIfPacketStatsEntry; //type: CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry> > cieifpacketstatsentry;
+        ydk::YList cieifpacketstatsentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifpacketstatstable
+}; // CISCOIFEXTENSIONMIB::CieIfPacketStatsTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry : public ydk::Entity
 {
     public:
-        Cieifpacketstatsentry();
-        ~Cieifpacketstatsentry();
+        CieIfPacketStatsEntry();
+        ~CieIfPacketStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -128,7 +128,7 @@ class CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cieiflastintime; //type: uint32
         ydk::YLeaf cieiflastouttime; //type: uint32
@@ -143,14 +143,14 @@ class CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry : public
         ydk::YLeaf cieifoutputqueuedrops; //type: uint32
         ydk::YLeaf cieifpacketdiscontinuitytime; //type: uint32
 
-}; // CISCOIFEXTENSIONMIB::Cieifpacketstatstable::Cieifpacketstatsentry
+}; // CISCOIFEXTENSIONMIB::CieIfPacketStatsTable::CieIfPacketStatsEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifinterfacetable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfInterfaceTable : public ydk::Entity
 {
     public:
-        Cieifinterfacetable();
-        ~Cieifinterfacetable();
+        CieIfInterfaceTable();
+        ~CieIfInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -163,18 +163,18 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifinterfaceentry; //type: CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry
+        class CieIfInterfaceEntry; //type: CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry> > cieifinterfaceentry;
+        ydk::YList cieifinterfaceentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifinterfacetable
+}; // CISCOIFEXTENSIONMIB::CieIfInterfaceTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry : public ydk::Entity
 {
     public:
-        Cieifinterfaceentry();
-        ~Cieifinterfaceentry();
+        CieIfInterfaceEntry();
+        ~CieIfInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -187,7 +187,7 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cieifresetcount; //type: uint32
         ydk::YLeaf cieifkeepaliveenabled; //type: boolean
@@ -202,25 +202,25 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry : public ydk
         ydk::YLeaf cieifspeedreceive; //type: uint32
         ydk::YLeaf cieifhighspeedreceive; //type: uint32
         ydk::YLeaf cieifowner; //type: string
-        ydk::YLeaf cieifsharedconfig; //type: Cieifsharedconfig
-        ydk::YLeaf cieifspeedgroupconfig; //type: Cieifspeedgroupconfig
-        ydk::YLeaf cieiftransceiverfrequencyconfig; //type: Cieiftransceiverfrequencyconfig
-        ydk::YLeaf cieiffillpatternconfig; //type: Cieiffillpatternconfig
+        ydk::YLeaf cieifsharedconfig; //type: CieIfSharedConfig
+        ydk::YLeaf cieifspeedgroupconfig; //type: CieIfSpeedGroupConfig
+        ydk::YLeaf cieiftransceiverfrequencyconfig; //type: CieIfTransceiverFrequencyConfig
+        ydk::YLeaf cieiffillpatternconfig; //type: CieIfFillPatternConfig
         ydk::YLeaf cieifignorebiterrorsconfig; //type: boolean
         ydk::YLeaf cieifignoreinterruptthresholdconfig; //type: boolean
-        class Cieifsharedconfig;
-        class Cieifspeedgroupconfig;
-        class Cieiftransceiverfrequencyconfig;
-        class Cieiffillpatternconfig;
+        class CieIfSharedConfig;
+        class CieIfSpeedGroupConfig;
+        class CieIfTransceiverFrequencyConfig;
+        class CieIfFillPatternConfig;
 
-}; // CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry
+}; // CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifstatuslisttable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfStatusListTable : public ydk::Entity
 {
     public:
-        Cieifstatuslisttable();
-        ~Cieifstatuslisttable();
+        CieIfStatusListTable();
+        ~CieIfStatusListTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -233,18 +233,18 @@ class CISCOIFEXTENSIONMIB::Cieifstatuslisttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifstatuslistentry; //type: CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry
+        class CieIfStatusListEntry; //type: CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry> > cieifstatuslistentry;
+        ydk::YList cieifstatuslistentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifstatuslisttable
+}; // CISCOIFEXTENSIONMIB::CieIfStatusListTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry : public ydk::Entity
 {
     public:
-        Cieifstatuslistentry();
-        ~Cieifstatuslistentry();
+        CieIfStatusListEntry();
+        ~CieIfStatusListEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -257,7 +257,7 @@ class CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf cieifstatuslistindex; //type: uint32
         ydk::YLeaf cieinterfacesindex; //type: binary
@@ -265,14 +265,14 @@ class CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry : public y
         ydk::YLeaf cieinterfacesopercause; //type: binary
         ydk::YLeaf cieinterfaceownershipbitmap; //type: binary
 
-}; // CISCOIFEXTENSIONMIB::Cieifstatuslisttable::Cieifstatuslistentry
+}; // CISCOIFEXTENSIONMIB::CieIfStatusListTable::CieIfStatusListEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifvlstatstable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfVlStatsTable : public ydk::Entity
 {
     public:
-        Cieifvlstatstable();
-        ~Cieifvlstatstable();
+        CieIfVlStatsTable();
+        ~CieIfVlStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -285,18 +285,18 @@ class CISCOIFEXTENSIONMIB::Cieifvlstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifvlstatsentry; //type: CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry
+        class CieIfVlStatsEntry; //type: CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry> > cieifvlstatsentry;
+        ydk::YList cieifvlstatsentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifvlstatstable
+}; // CISCOIFEXTENSIONMIB::CieIfVlStatsTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry : public ydk::Entity
 {
     public:
-        Cieifvlstatsentry();
-        ~Cieifvlstatsentry();
+        CieIfVlStatsEntry();
+        ~CieIfVlStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -309,7 +309,7 @@ class CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cieifnodropvlinpkts; //type: uint64
         ydk::YLeaf cieifnodropvlinoctets; //type: uint64
@@ -320,14 +320,14 @@ class CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry : public ydk::En
         ydk::YLeaf cieifdropvloutpkts; //type: uint64
         ydk::YLeaf cieifdropvloutoctets; //type: uint64
 
-}; // CISCOIFEXTENSIONMIB::Cieifvlstatstable::Cieifvlstatsentry
+}; // CISCOIFEXTENSIONMIB::CieIfVlStatsTable::CieIfVlStatsEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable : public ydk::Entity
 {
     public:
-        Cieifindexpersistencetable();
-        ~Cieifindexpersistencetable();
+        CieIfIndexPersistenceTable();
+        ~CieIfIndexPersistenceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -340,18 +340,18 @@ class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifindexpersistenceentry; //type: CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
+        class CieIfIndexPersistenceEntry; //type: CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry> > cieifindexpersistenceentry;
+        ydk::YList cieifindexpersistenceentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifindexpersistencetable
+}; // CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry : public ydk::Entity
 {
     public:
-        Cieifindexpersistenceentry();
-        ~Cieifindexpersistenceentry();
+        CieIfIndexPersistenceEntry();
+        ~CieIfIndexPersistenceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -364,19 +364,19 @@ class CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cieifindexpersistenceenabled; //type: boolean
         ydk::YLeaf cieifindexpersistencecontrol; //type: IfIndexPersistenceState
 
-}; // CISCOIFEXTENSIONMIB::Cieifindexpersistencetable::Cieifindexpersistenceentry
+}; // CISCOIFEXTENSIONMIB::CieIfIndexPersistenceTable::CieIfIndexPersistenceEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable : public ydk::Entity
 {
     public:
-        Cieifdot1Qcustomethertypetable();
-        ~Cieifdot1Qcustomethertypetable();
+        CieIfDot1qCustomEtherTypeTable();
+        ~CieIfDot1qCustomEtherTypeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -389,18 +389,18 @@ class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifdot1Qcustomethertypeentry; //type: CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry
+        class CieIfDot1qCustomEtherTypeEntry; //type: CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry> > cieifdot1qcustomethertypeentry;
+        ydk::YList cieifdot1qcustomethertypeentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable
+}; // CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry : public ydk::Entity
 {
     public:
-        Cieifdot1Qcustomethertypeentry();
-        ~Cieifdot1Qcustomethertypeentry();
+        CieIfDot1qCustomEtherTypeEntry();
+        ~CieIfDot1qCustomEtherTypeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -413,19 +413,19 @@ class CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomether
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cieifdot1qcustomadminethertype; //type: int32
         ydk::YLeaf cieifdot1qcustomoperethertype; //type: int32
 
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Qcustomethertypetable::Cieifdot1Qcustomethertypeentry
+}; // CISCOIFEXTENSIONMIB::CieIfDot1qCustomEtherTypeTable::CieIfDot1qCustomEtherTypeEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifutiltable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfUtilTable : public ydk::Entity
 {
     public:
-        Cieifutiltable();
-        ~Cieifutiltable();
+        CieIfUtilTable();
+        ~CieIfUtilTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -438,18 +438,18 @@ class CISCOIFEXTENSIONMIB::Cieifutiltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifutilentry; //type: CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry
+        class CieIfUtilEntry; //type: CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry> > cieifutilentry;
+        ydk::YList cieifutilentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifutiltable
+}; // CISCOIFEXTENSIONMIB::CieIfUtilTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry : public ydk::Entity
 {
     public:
-        Cieifutilentry();
-        ~Cieifutilentry();
+        CieIfUtilEntry();
+        ~CieIfUtilEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -462,7 +462,7 @@ class CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cieifinpktrate; //type: uint64
         ydk::YLeaf cieifinoctetrate; //type: uint64
@@ -470,14 +470,14 @@ class CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry : public ydk::Entity
         ydk::YLeaf cieifoutoctetrate; //type: uint64
         ydk::YLeaf cieifinterval; //type: uint32
 
-}; // CISCOIFEXTENSIONMIB::Cieifutiltable::Cieifutilentry
+}; // CISCOIFEXTENSIONMIB::CieIfUtilTable::CieIfUtilEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable : public ydk::Entity
 {
     public:
-        Cieifdot1Dbasemappingtable();
-        ~Cieifdot1Dbasemappingtable();
+        CieIfDot1dBaseMappingTable();
+        ~CieIfDot1dBaseMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -490,18 +490,18 @@ class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifdot1Dbasemappingentry; //type: CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
+        class CieIfDot1dBaseMappingEntry; //type: CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry> > cieifdot1dbasemappingentry;
+        ydk::YList cieifdot1dbasemappingentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable
+}; // CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry : public ydk::Entity
 {
     public:
-        Cieifdot1Dbasemappingentry();
-        ~Cieifdot1Dbasemappingentry();
+        CieIfDot1dBaseMappingEntry();
+        ~CieIfDot1dBaseMappingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -514,18 +514,18 @@ class CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cieifdot1dbasemappingport; //type: int32
 
-}; // CISCOIFEXTENSIONMIB::Cieifdot1Dbasemappingtable::Cieifdot1Dbasemappingentry
+}; // CISCOIFEXTENSIONMIB::CieIfDot1dBaseMappingTable::CieIfDot1dBaseMappingEntry
 
 
-class CISCOIFEXTENSIONMIB::Cieifnamemappingtable : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfNameMappingTable : public ydk::Entity
 {
     public:
-        Cieifnamemappingtable();
-        ~Cieifnamemappingtable();
+        CieIfNameMappingTable();
+        ~CieIfNameMappingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -538,18 +538,18 @@ class CISCOIFEXTENSIONMIB::Cieifnamemappingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cieifnamemappingentry; //type: CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry
+        class CieIfNameMappingEntry; //type: CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IF_EXTENSION_MIB::CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry> > cieifnamemappingentry;
+        ydk::YList cieifnamemappingentry;
         
-}; // CISCOIFEXTENSIONMIB::Cieifnamemappingtable
+}; // CISCOIFEXTENSIONMIB::CieIfNameMappingTable
 
 
-class CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry : public ydk::Entity
+class CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry : public ydk::Entity
 {
     public:
-        Cieifnamemappingentry();
-        ~Cieifnamemappingentry();
+        CieIfNameMappingEntry();
+        ~CieIfNameMappingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -565,7 +565,7 @@ class CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry : public
         ydk::YLeaf cieifname; //type: string
         ydk::YLeaf cieifindex; //type: int32
 
-}; // CISCOIFEXTENSIONMIB::Cieifnamemappingtable::Cieifnamemappingentry
+}; // CISCOIFEXTENSIONMIB::CieIfNameMappingTable::CieIfNameMappingEntry
 
 class IfIndexPersistenceState : public ydk::Enum
 {
@@ -576,7 +576,7 @@ class IfIndexPersistenceState : public ydk::Enum
 
 };
 
-class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciestandardlinkupdownvarbinds : public ydk::Enum
+class CISCOIFEXTENSIONMIB::CiscoIfExtSystemConfig::CieStandardLinkUpDownVarbinds : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf standard;
@@ -585,7 +585,7 @@ class CISCOIFEXTENSIONMIB::Ciscoifextsystemconfig::Ciestandardlinkupdownvarbinds
 
 };
 
-class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifsharedconfig : public ydk::Enum
+class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSharedConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -595,7 +595,7 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifshared
 
 };
 
-class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifspeedgroupconfig : public ydk::Enum
+class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfSpeedGroupConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -605,7 +605,7 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieifspeedg
 
 };
 
-class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiftransceiverfrequencyconfig : public ydk::Enum
+class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfTransceiverFrequencyConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notApplicable;
@@ -614,7 +614,7 @@ class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiftransc
 
 };
 
-class CISCOIFEXTENSIONMIB::Cieifinterfacetable::Cieifinterfaceentry::Cieiffillpatternconfig : public ydk::Enum
+class CISCOIFEXTENSIONMIB::CieIfInterfaceTable::CieIfInterfaceEntry::CieIfFillPatternConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf arbff8G;

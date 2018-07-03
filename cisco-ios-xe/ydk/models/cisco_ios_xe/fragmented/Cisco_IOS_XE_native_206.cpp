@@ -17,7 +17,7 @@ Native::License::Boot::Level::Ipbase::Ipbase()
     switch_{YType::uint8, "switch"}
 {
 
-    yang_name = "ipbase"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipbase"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Ipbase::~Ipbase()
@@ -26,6 +26,7 @@ Native::License::Boot::Level::Ipbase::~Ipbase()
 
 bool Native::License::Boot::Level::Ipbase::has_data() const
 {
+    if (is_presence_container) return true;
     return switch_.is_set;
 }
 
@@ -101,7 +102,7 @@ Native::License::Boot::Level::Ipbasek9::Ipbasek9()
     addon{YType::enumeration, "addon"}
 {
 
-    yang_name = "ipbasek9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipbasek9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Ipbasek9::~Ipbasek9()
@@ -110,6 +111,7 @@ Native::License::Boot::Level::Ipbasek9::~Ipbasek9()
 
 bool Native::License::Boot::Level::Ipbasek9::has_data() const
 {
+    if (is_presence_container) return true;
     return addon.is_set;
 }
 
@@ -185,7 +187,7 @@ Native::License::Boot::Level::Ipservices::Ipservices()
     switch_{YType::empty, "switch"}
 {
 
-    yang_name = "ipservices"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipservices"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Ipservices::~Ipservices()
@@ -194,6 +196,7 @@ Native::License::Boot::Level::Ipservices::~Ipservices()
 
 bool Native::License::Boot::Level::Ipservices::has_data() const
 {
+    if (is_presence_container) return true;
     return switch_.is_set;
 }
 
@@ -269,7 +272,7 @@ Native::License::Boot::Level::Ipservicesk9::Ipservicesk9()
     addon{YType::enumeration, "addon"}
 {
 
-    yang_name = "ipservicesk9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipservicesk9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Ipservicesk9::~Ipservicesk9()
@@ -278,6 +281,7 @@ Native::License::Boot::Level::Ipservicesk9::~Ipservicesk9()
 
 bool Native::License::Boot::Level::Ipservicesk9::has_data() const
 {
+    if (is_presence_container) return true;
     return addon.is_set;
 }
 
@@ -353,7 +357,7 @@ Native::License::Boot::Level::Lanbase::Lanbase()
     switch_{YType::empty, "switch"}
 {
 
-    yang_name = "lanbase"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lanbase"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Lanbase::~Lanbase()
@@ -362,6 +366,7 @@ Native::License::Boot::Level::Lanbase::~Lanbase()
 
 bool Native::License::Boot::Level::Lanbase::has_data() const
 {
+    if (is_presence_container) return true;
     return switch_.is_set;
 }
 
@@ -437,7 +442,7 @@ Native::License::Boot::Level::Lanbasek9::Lanbasek9()
     addon{YType::enumeration, "addon"}
 {
 
-    yang_name = "lanbasek9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lanbasek9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Lanbasek9::~Lanbasek9()
@@ -446,6 +451,7 @@ Native::License::Boot::Level::Lanbasek9::~Lanbasek9()
 
 bool Native::License::Boot::Level::Lanbasek9::has_data() const
 {
+    if (is_presence_container) return true;
     return addon.is_set;
 }
 
@@ -521,7 +527,7 @@ Native::License::Boot::Level::Lite::Lite()
     switch_{YType::empty, "switch"}
 {
 
-    yang_name = "lite"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lite"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Lite::~Lite()
@@ -530,6 +536,7 @@ Native::License::Boot::Level::Lite::~Lite()
 
 bool Native::License::Boot::Level::Lite::has_data() const
 {
+    if (is_presence_container) return true;
     return switch_.is_set;
 }
 
@@ -605,7 +612,7 @@ Native::License::Boot::Level::Metroaggrservices::Metroaggrservices()
     switch_{YType::empty, "switch"}
 {
 
-    yang_name = "metroaggrservices"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "metroaggrservices"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Metroaggrservices::~Metroaggrservices()
@@ -614,6 +621,7 @@ Native::License::Boot::Level::Metroaggrservices::~Metroaggrservices()
 
 bool Native::License::Boot::Level::Metroaggrservices::has_data() const
 {
+    if (is_presence_container) return true;
     return switch_.is_set;
 }
 
@@ -689,7 +697,7 @@ Native::License::Boot::Level::Uck9::Uck9()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "uck9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "uck9"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::Uck9::~Uck9()
@@ -698,6 +706,7 @@ Native::License::Boot::Level::Uck9::~Uck9()
 
 bool Native::License::Boot::Level::Uck9::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -773,7 +782,7 @@ Native::License::Boot::Level::NetworkAdvantage::NetworkAdvantage()
     addon{YType::enumeration, "addon"}
 {
 
-    yang_name = "network-advantage"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network-advantage"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::NetworkAdvantage::~NetworkAdvantage()
@@ -782,6 +791,7 @@ Native::License::Boot::Level::NetworkAdvantage::~NetworkAdvantage()
 
 bool Native::License::Boot::Level::NetworkAdvantage::has_data() const
 {
+    if (is_presence_container) return true;
     return addon.is_set;
 }
 
@@ -857,7 +867,7 @@ Native::License::Boot::Level::NetworkEssentials::NetworkEssentials()
     addon{YType::enumeration, "addon"}
 {
 
-    yang_name = "network-essentials"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network-essentials"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::License::Boot::Level::NetworkEssentials::~NetworkEssentials()
@@ -866,6 +876,7 @@ Native::License::Boot::Level::NetworkEssentials::~NetworkEssentials()
 
 bool Native::License::Boot::Level::NetworkEssentials::has_data() const
 {
+    if (is_presence_container) return true;
     return addon.is_set;
 }
 
@@ -939,12 +950,12 @@ bool Native::License::Boot::Level::NetworkEssentials::has_leaf_or_child_of_name(
 Native::License::Boot::BootModule::BootModule()
     :
     module{YType::enumeration, "module"}
-    	,
+        ,
     technology_package(std::make_shared<Native::License::Boot::BootModule::TechnologyPackage>())
 {
     technology_package->parent = this;
 
-    yang_name = "boot-module"; yang_parent_name = "boot"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boot-module"; yang_parent_name = "boot"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Boot::BootModule::~BootModule()
@@ -953,6 +964,7 @@ Native::License::Boot::BootModule::~BootModule()
 
 bool Native::License::Boot::BootModule::has_data() const
 {
+    if (is_presence_container) return true;
     return module.is_set
 	|| (technology_package !=  nullptr && technology_package->has_data());
 }
@@ -1046,7 +1058,7 @@ Native::License::Boot::BootModule::TechnologyPackage::TechnologyPackage()
     datak9{YType::empty, "datak9"}
 {
 
-    yang_name = "technology-package"; yang_parent_name = "boot-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "technology-package"; yang_parent_name = "boot-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Boot::BootModule::TechnologyPackage::~TechnologyPackage()
@@ -1055,6 +1067,7 @@ Native::License::Boot::BootModule::TechnologyPackage::~TechnologyPackage()
 
 bool Native::License::Boot::BootModule::TechnologyPackage::has_data() const
 {
+    if (is_presence_container) return true;
     return securityk9.is_set
 	|| uck9.is_set
 	|| datak9.is_set;
@@ -1156,16 +1169,16 @@ Native::License::Smart::Smart()
     customer_id{YType::str, "customer-id"},
     enable{YType::empty, "enable"},
     transport_type{YType::enumeration, "transport-type"}
-    	,
+        ,
     privacy(std::make_shared<Native::License::Smart::Privacy>())
-	,utility(std::make_shared<Native::License::Smart::Utility>())
-	,url(std::make_shared<Native::License::Smart::Url>())
+    , utility(std::make_shared<Native::License::Smart::Utility>())
+    , url(std::make_shared<Native::License::Smart::Url>())
 {
     privacy->parent = this;
     utility->parent = this;
     url->parent = this;
 
-    yang_name = "smart"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "smart"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Smart::~Smart()
@@ -1174,6 +1187,7 @@ Native::License::Smart::~Smart()
 
 bool Native::License::Smart::has_data() const
 {
+    if (is_presence_container) return true;
     return customer_id.is_set
 	|| enable.is_set
 	|| transport_type.is_set
@@ -1324,7 +1338,7 @@ Native::License::Smart::Privacy::Privacy()
     version{YType::empty, "version"}
 {
 
-    yang_name = "privacy"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "privacy"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Smart::Privacy::~Privacy()
@@ -1333,6 +1347,7 @@ Native::License::Smart::Privacy::~Privacy()
 
 bool Native::License::Smart::Privacy::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| version.is_set;
 }
@@ -1419,12 +1434,12 @@ bool Native::License::Smart::Privacy::has_leaf_or_child_of_name(const std::strin
 Native::License::Smart::Utility::Utility()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     customer_info(std::make_shared<Native::License::Smart::Utility::CustomerInfo>())
 {
     customer_info->parent = this;
 
-    yang_name = "utility"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "utility"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Smart::Utility::~Utility()
@@ -1433,6 +1448,7 @@ Native::License::Smart::Utility::~Utility()
 
 bool Native::License::Smart::Utility::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (customer_info !=  nullptr && customer_info->has_data());
 }
@@ -1530,7 +1546,7 @@ Native::License::Smart::Utility::CustomerInfo::CustomerInfo()
     street{YType::str, "street"}
 {
 
-    yang_name = "customer-info"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "customer-info"; yang_parent_name = "utility"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Smart::Utility::CustomerInfo::~CustomerInfo()
@@ -1539,6 +1555,7 @@ Native::License::Smart::Utility::CustomerInfo::~CustomerInfo()
 
 bool Native::License::Smart::Utility::CustomerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return city.is_set
 	|| country.is_set
 	|| id.is_set
@@ -1694,7 +1711,7 @@ Native::License::Smart::Url::Url()
     utility{YType::str, "utility"}
 {
 
-    yang_name = "url"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "url"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Smart::Url::~Url()
@@ -1703,6 +1720,7 @@ Native::License::Smart::Url::~Url()
 
 bool Native::License::Smart::Url::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| name.is_set
 	|| utility.is_set;
@@ -1804,7 +1822,7 @@ Native::MemorySize::MemorySize()
     iomem{YType::uint8, "iomem"}
 {
 
-    yang_name = "memory-size"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-size"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::MemorySize::~MemorySize()
@@ -1813,6 +1831,7 @@ Native::MemorySize::~MemorySize()
 
 bool Native::MemorySize::has_data() const
 {
+    if (is_presence_container) return true;
     return iomem.is_set;
 }
 
@@ -1889,7 +1908,7 @@ Native::Transceiver::Transceiver()
 {
     type->parent = this;
 
-    yang_name = "transceiver"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transceiver"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Transceiver::~Transceiver()
@@ -1898,6 +1917,7 @@ Native::Transceiver::~Transceiver()
 
 bool Native::Transceiver::has_data() const
 {
+    if (is_presence_container) return true;
     return (type !=  nullptr && type->has_data());
 }
 
@@ -1977,7 +1997,7 @@ Native::Transceiver::Type::Type()
 {
     all->parent = this;
 
-    yang_name = "type"; yang_parent_name = "transceiver"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "type"; yang_parent_name = "transceiver"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Transceiver::Type::~Type()
@@ -1986,6 +2006,7 @@ Native::Transceiver::Type::~Type()
 
 bool Native::Transceiver::Type::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data());
 }
 
@@ -2064,7 +2085,7 @@ Native::Transceiver::Type::All::All()
     monitoring(nullptr) // presence node
 {
 
-    yang_name = "all"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Transceiver::Type::All::~All()
@@ -2073,6 +2094,7 @@ Native::Transceiver::Type::All::~All()
 
 bool Native::Transceiver::Type::All::has_data() const
 {
+    if (is_presence_container) return true;
     return (monitoring !=  nullptr && monitoring->has_data());
 }
 
@@ -2151,7 +2173,7 @@ Native::Transceiver::Type::All::Monitoring::Monitoring()
     interval{YType::uint16, "interval"}
 {
 
-    yang_name = "monitoring"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitoring"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Transceiver::Type::All::Monitoring::~Monitoring()
@@ -2160,6 +2182,7 @@ Native::Transceiver::Type::All::Monitoring::~Monitoring()
 
 bool Native::Transceiver::Type::All::Monitoring::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set;
 }
 
@@ -2233,14 +2256,16 @@ bool Native::Transceiver::Type::All::Monitoring::has_leaf_or_child_of_name(const
 Native::ServiceInsertion::ServiceInsertion()
     :
     acg_reload_delay{YType::uint16, "Cisco-IOS-XE-service-insertion:acg-reload-delay"}
-    	,
-    service_context(std::make_shared<Native::ServiceInsertion::ServiceContext>())
-	,swap(std::make_shared<Native::ServiceInsertion::Swap>())
+        ,
+    appnav_controller_group(this, {"group_name"})
+    , service_context(std::make_shared<Native::ServiceInsertion::ServiceContext>())
+    , service_node_group(this, {"name"})
+    , swap(std::make_shared<Native::ServiceInsertion::Swap>())
 {
     service_context->parent = this;
     swap->parent = this;
 
-    yang_name = "service-insertion"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-insertion"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ServiceInsertion::~ServiceInsertion()
@@ -2249,12 +2274,13 @@ Native::ServiceInsertion::~ServiceInsertion()
 
 bool Native::ServiceInsertion::has_data() const
 {
-    for (std::size_t index=0; index<appnav_controller_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<appnav_controller_group.len(); index++)
     {
         if(appnav_controller_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<service_node_group.size(); index++)
+    for (std::size_t index=0; index<service_node_group.len(); index++)
     {
         if(service_node_group[index]->has_data())
             return true;
@@ -2266,12 +2292,12 @@ bool Native::ServiceInsertion::has_data() const
 
 bool Native::ServiceInsertion::has_operation() const
 {
-    for (std::size_t index=0; index<appnav_controller_group.size(); index++)
+    for (std::size_t index=0; index<appnav_controller_group.len(); index++)
     {
         if(appnav_controller_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<service_node_group.size(); index++)
+    for (std::size_t index=0; index<service_node_group.len(); index++)
     {
         if(service_node_group[index]->has_operation())
             return true;
@@ -2312,7 +2338,7 @@ std::shared_ptr<Entity> Native::ServiceInsertion::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Native::ServiceInsertion::AppnavControllerGroup>();
         c->parent = this;
-        appnav_controller_group.push_back(c);
+        appnav_controller_group.append(c);
         return c;
     }
 
@@ -2329,7 +2355,7 @@ std::shared_ptr<Entity> Native::ServiceInsertion::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Native::ServiceInsertion::ServiceNodeGroup>();
         c->parent = this;
-        service_node_group.push_back(c);
+        service_node_group.append(c);
         return c;
     }
 
@@ -2350,7 +2376,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ServiceInsertion::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : appnav_controller_group)
+    for (auto c : appnav_controller_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2364,7 +2390,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ServiceInsertion::get_chi
     }
 
     count = 0;
-    for (auto const & c : service_node_group)
+    for (auto c : service_node_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2412,7 +2438,7 @@ Native::ServiceInsertion::AppnavControllerGroup::AppnavControllerGroup()
     description{YType::str, "description"}
 {
 
-    yang_name = "appnav-controller-group"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "appnav-controller-group"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ServiceInsertion::AppnavControllerGroup::~AppnavControllerGroup()
@@ -2421,6 +2447,7 @@ Native::ServiceInsertion::AppnavControllerGroup::~AppnavControllerGroup()
 
 bool Native::ServiceInsertion::AppnavControllerGroup::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : appnav_controller.getYLeafs())
     {
         if(leaf.is_set)
@@ -2453,7 +2480,8 @@ std::string Native::ServiceInsertion::AppnavControllerGroup::get_absolute_path()
 std::string Native::ServiceInsertion::AppnavControllerGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-service-insertion:appnav-controller-group" <<"[group-name='" <<group_name <<"']";
+    path_buffer << "Cisco-IOS-XE-service-insertion:appnav-controller-group";
+    ADD_KEY_TOKEN(group_name, "group-name");
     return path_buffer.str();
 }
 
@@ -2526,9 +2554,11 @@ bool Native::ServiceInsertion::AppnavControllerGroup::has_leaf_or_child_of_name(
 }
 
 Native::ServiceInsertion::ServiceContext::ServiceContext()
+    :
+    waas(this, {"name"})
 {
 
-    yang_name = "service-context"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-context"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ServiceInsertion::ServiceContext::~ServiceContext()
@@ -2537,7 +2567,8 @@ Native::ServiceInsertion::ServiceContext::~ServiceContext()
 
 bool Native::ServiceInsertion::ServiceContext::has_data() const
 {
-    for (std::size_t index=0; index<waas.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<waas.len(); index++)
     {
         if(waas[index]->has_data())
             return true;
@@ -2547,7 +2578,7 @@ bool Native::ServiceInsertion::ServiceContext::has_data() const
 
 bool Native::ServiceInsertion::ServiceContext::has_operation() const
 {
-    for (std::size_t index=0; index<waas.size(); index++)
+    for (std::size_t index=0; index<waas.len(); index++)
     {
         if(waas[index]->has_operation())
             return true;
@@ -2584,7 +2615,7 @@ std::shared_ptr<Entity> Native::ServiceInsertion::ServiceContext::get_child_by_n
     {
         auto c = std::make_shared<Native::ServiceInsertion::ServiceContext::Waas>();
         c->parent = this;
-        waas.push_back(c);
+        waas.append(c);
         return c;
     }
 
@@ -2596,7 +2627,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ServiceInsertion::Service
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : waas)
+    for (auto c : waas.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2629,14 +2660,14 @@ Native::ServiceInsertion::ServiceContext::Waas::Waas()
     service_node_group{YType::str, "service-node-group"},
     service_policy{YType::str, "service-policy"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     authentication(std::make_shared<Native::ServiceInsertion::ServiceContext::Waas::Authentication>())
-	,vrf(std::make_shared<Native::ServiceInsertion::ServiceContext::Waas::Vrf>())
+    , vrf(std::make_shared<Native::ServiceInsertion::ServiceContext::Waas::Vrf>())
 {
     authentication->parent = this;
     vrf->parent = this;
 
-    yang_name = "waas"; yang_parent_name = "service-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "waas"; yang_parent_name = "service-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ServiceInsertion::ServiceContext::Waas::~Waas()
@@ -2645,6 +2676,7 @@ Native::ServiceInsertion::ServiceContext::Waas::~Waas()
 
 bool Native::ServiceInsertion::ServiceContext::Waas::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| appnav_controller_group.is_set
 	|| service_node_group.is_set
@@ -2676,7 +2708,8 @@ std::string Native::ServiceInsertion::ServiceContext::Waas::get_absolute_path() 
 std::string Native::ServiceInsertion::ServiceContext::Waas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "waas" <<"[name='" <<name <<"']";
+    path_buffer << "waas";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2807,7 +2840,7 @@ Native::ServiceInsertion::ServiceContext::Waas::Authentication::Authentication()
     string{YType::str, "string"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "waas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "waas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ServiceInsertion::ServiceContext::Waas::Authentication::~Authentication()
@@ -2816,6 +2849,7 @@ Native::ServiceInsertion::ServiceContext::Waas::Authentication::~Authentication(
 
 bool Native::ServiceInsertion::ServiceContext::Waas::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return sha1.is_set
 	|| key.is_set
 	|| encrypt.is_set
@@ -2925,7 +2959,7 @@ Native::ServiceInsertion::ServiceContext::Waas::Vrf::Vrf()
     name{YType::str, "name"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "waas"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "waas"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ServiceInsertion::ServiceContext::Waas::Vrf::~Vrf()
@@ -2934,6 +2968,7 @@ Native::ServiceInsertion::ServiceContext::Waas::Vrf::~Vrf()
 
 bool Native::ServiceInsertion::ServiceContext::Waas::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| global.is_set
 	|| name.is_set;
@@ -3031,7 +3066,7 @@ Native::ServiceInsertion::ServiceNodeGroup::ServiceNodeGroup()
     service_node{YType::str, "service-node"}
 {
 
-    yang_name = "service-node-group"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service-node-group"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ServiceInsertion::ServiceNodeGroup::~ServiceNodeGroup()
@@ -3040,6 +3075,7 @@ Native::ServiceInsertion::ServiceNodeGroup::~ServiceNodeGroup()
 
 bool Native::ServiceInsertion::ServiceNodeGroup::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : service_node.getYLeafs())
     {
         if(leaf.is_set)
@@ -3074,7 +3110,8 @@ std::string Native::ServiceInsertion::ServiceNodeGroup::get_absolute_path() cons
 std::string Native::ServiceInsertion::ServiceNodeGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-service-insertion:service-node-group" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-service-insertion:service-node-group";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3162,7 +3199,7 @@ Native::ServiceInsertion::Swap::Swap()
     src_ip{YType::empty, "src-ip"}
 {
 
-    yang_name = "swap"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "swap"; yang_parent_name = "service-insertion"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ServiceInsertion::Swap::~Swap()
@@ -3171,6 +3208,7 @@ Native::ServiceInsertion::Swap::~Swap()
 
 bool Native::ServiceInsertion::Swap::has_data() const
 {
+    if (is_presence_container) return true;
     return src_ip.is_set;
 }
 
@@ -3245,13 +3283,13 @@ Native::Udld::Udld()
     :
     aggressive{YType::empty, "Cisco-IOS-XE-udld:aggressive"},
     enable{YType::empty, "Cisco-IOS-XE-udld:enable"}
-    	,
+        ,
     message(std::make_shared<Native::Udld::Message>())
-	,recovery(nullptr) // presence node
+    , recovery(nullptr) // presence node
 {
     message->parent = this;
 
-    yang_name = "udld"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udld"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Udld::~Udld()
@@ -3260,6 +3298,7 @@ Native::Udld::~Udld()
 
 bool Native::Udld::has_data() const
 {
+    if (is_presence_container) return true;
     return aggressive.is_set
 	|| enable.is_set
 	|| (message !=  nullptr && message->has_data())
@@ -3380,7 +3419,7 @@ Native::Udld::Message::Message()
     time{YType::uint8, "time"}
 {
 
-    yang_name = "message"; yang_parent_name = "udld"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message"; yang_parent_name = "udld"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Udld::Message::~Message()
@@ -3389,6 +3428,7 @@ Native::Udld::Message::~Message()
 
 bool Native::Udld::Message::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set;
 }
 
@@ -3464,7 +3504,7 @@ Native::Udld::Recovery::Recovery()
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "recovery"; yang_parent_name = "udld"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "recovery"; yang_parent_name = "udld"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Udld::Recovery::~Recovery()
@@ -3473,6 +3513,7 @@ Native::Udld::Recovery::~Recovery()
 
 bool Native::Udld::Recovery::has_data() const
 {
+    if (is_presence_container) return true;
     return interval.is_set;
 }
 
@@ -3548,7 +3589,7 @@ Native::Wireless::Wireless()
     mdns_bridging{YType::boolean, "mdns-bridging"}
 {
 
-    yang_name = "wireless"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "wireless"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Wireless::~Wireless()
@@ -3557,6 +3598,7 @@ Native::Wireless::~Wireless()
 
 bool Native::Wireless::has_data() const
 {
+    if (is_presence_container) return true;
     return mdns_bridging.is_set;
 }
 
@@ -3630,19 +3672,19 @@ bool Native::Wireless::has_leaf_or_child_of_name(const std::string & name) const
 Native::Qos::Qos()
     :
     diffservmib{YType::empty, "Cisco-IOS-XE-qos:diffservmib"}
-    	,
+        ,
     account(std::make_shared<Native::Qos::Account>())
-	,control_packets(nullptr) // presence node
-	,preserve(std::make_shared<Native::Qos::Preserve>())
-	,trace(std::make_shared<Native::Qos::Trace>())
-	,queue_softmax_multiplier(std::make_shared<Native::Qos::QueueSoftmaxMultiplier>())
+    , control_packets(nullptr) // presence node
+    , preserve(std::make_shared<Native::Qos::Preserve>())
+    , trace(std::make_shared<Native::Qos::Trace>())
+    , queue_softmax_multiplier(std::make_shared<Native::Qos::QueueSoftmaxMultiplier>())
 {
     account->parent = this;
     preserve->parent = this;
     trace->parent = this;
     queue_softmax_multiplier->parent = this;
 
-    yang_name = "qos"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qos"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Qos::~Qos()
@@ -3651,6 +3693,7 @@ Native::Qos::~Qos()
 
 bool Native::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return diffservmib.is_set
 	|| (account !=  nullptr && account->has_data())
 	|| (control_packets !=  nullptr && control_packets->has_data())
@@ -3804,12 +3847,12 @@ bool Native::Qos::has_leaf_or_child_of_name(const std::string & name) const
 Native::Qos::Account::Account()
     :
     layer_all(std::make_shared<Native::Qos::Account::LayerAll>())
-	,layer2(std::make_shared<Native::Qos::Account::Layer2>())
+    , layer2(std::make_shared<Native::Qos::Account::Layer2>())
 {
     layer_all->parent = this;
     layer2->parent = this;
 
-    yang_name = "account"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "account"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Account::~Account()
@@ -3818,6 +3861,7 @@ Native::Qos::Account::~Account()
 
 bool Native::Qos::Account::has_data() const
 {
+    if (is_presence_container) return true;
     return (layer_all !=  nullptr && layer_all->has_data())
 	|| (layer2 !=  nullptr && layer2->has_data());
 }
@@ -3912,7 +3956,7 @@ Native::Qos::Account::LayerAll::LayerAll()
     encapsulation{YType::empty, "encapsulation"}
 {
 
-    yang_name = "layer-all"; yang_parent_name = "account"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "layer-all"; yang_parent_name = "account"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Account::LayerAll::~LayerAll()
@@ -3921,6 +3965,7 @@ Native::Qos::Account::LayerAll::~LayerAll()
 
 bool Native::Qos::Account::LayerAll::has_data() const
 {
+    if (is_presence_container) return true;
     return encapsulation.is_set;
 }
 
@@ -3997,7 +4042,7 @@ Native::Qos::Account::Layer2::Layer2()
 {
     encapsulation->parent = this;
 
-    yang_name = "layer2"; yang_parent_name = "account"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "layer2"; yang_parent_name = "account"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Account::Layer2::~Layer2()
@@ -4006,6 +4051,7 @@ Native::Qos::Account::Layer2::~Layer2()
 
 bool Native::Qos::Account::Layer2::has_data() const
 {
+    if (is_presence_container) return true;
     return (encapsulation !=  nullptr && encapsulation->has_data());
 }
 
@@ -4084,11 +4130,11 @@ Native::Qos::Account::Layer2::Encapsulation::Encapsulation()
     arpa{YType::empty, "arpa"},
     dot1q{YType::empty, "dot1q"},
     isl{YType::empty, "isl"}
-    	,
+        ,
     length(nullptr) // presence node
 {
 
-    yang_name = "encapsulation"; yang_parent_name = "layer2"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "encapsulation"; yang_parent_name = "layer2"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Account::Layer2::Encapsulation::~Encapsulation()
@@ -4097,6 +4143,7 @@ Native::Qos::Account::Layer2::Encapsulation::~Encapsulation()
 
 bool Native::Qos::Account::Layer2::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return arpa.is_set
 	|| dot1q.is_set
 	|| isl.is_set
@@ -4214,7 +4261,7 @@ Native::Qos::Account::Layer2::Encapsulation::Length::Length()
     byte_length{YType::int8, "byte-length"}
 {
 
-    yang_name = "length"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "length"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Qos::Account::Layer2::Encapsulation::Length::~Length()
@@ -4223,6 +4270,7 @@ Native::Qos::Account::Layer2::Encapsulation::Length::~Length()
 
 bool Native::Qos::Account::Layer2::Encapsulation::Length::has_data() const
 {
+    if (is_presence_container) return true;
     return byte_length.is_set;
 }
 
@@ -4303,7 +4351,7 @@ Native::Qos::ControlPackets::ControlPackets()
     sstp{YType::empty, "sstp"}
 {
 
-    yang_name = "control-packets"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "control-packets"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Qos::ControlPackets::~ControlPackets()
@@ -4312,6 +4360,7 @@ Native::Qos::ControlPackets::~ControlPackets()
 
 bool Native::Qos::ControlPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return bpdu_range.is_set
 	|| cdp_vtp.is_set
 	|| eapol.is_set
@@ -4450,12 +4499,12 @@ bool Native::Qos::ControlPackets::has_leaf_or_child_of_name(const std::string & 
 Native::Qos::Preserve::Preserve()
     :
     marking(std::make_shared<Native::Qos::Preserve::Marking>())
-	,mpls(std::make_shared<Native::Qos::Preserve::Mpls>())
+    , mpls(std::make_shared<Native::Qos::Preserve::Mpls>())
 {
     marking->parent = this;
     mpls->parent = this;
 
-    yang_name = "preserve"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "preserve"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Preserve::~Preserve()
@@ -4464,6 +4513,7 @@ Native::Qos::Preserve::~Preserve()
 
 bool Native::Qos::Preserve::has_data() const
 {
+    if (is_presence_container) return true;
     return (marking !=  nullptr && marking->has_data())
 	|| (mpls !=  nullptr && mpls->has_data());
 }
@@ -4558,7 +4608,7 @@ Native::Qos::Preserve::Marking::Marking()
     hipriority{YType::empty, "hipriority"}
 {
 
-    yang_name = "marking"; yang_parent_name = "preserve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "marking"; yang_parent_name = "preserve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Preserve::Marking::~Marking()
@@ -4567,6 +4617,7 @@ Native::Qos::Preserve::Marking::~Marking()
 
 bool Native::Qos::Preserve::Marking::has_data() const
 {
+    if (is_presence_container) return true;
     return hipriority.is_set;
 }
 
@@ -4642,7 +4693,7 @@ Native::Qos::Preserve::Mpls::Mpls()
     exp{YType::empty, "exp"}
 {
 
-    yang_name = "mpls"; yang_parent_name = "preserve"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls"; yang_parent_name = "preserve"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Preserve::Mpls::~Mpls()
@@ -4651,6 +4702,7 @@ Native::Qos::Preserve::Mpls::~Mpls()
 
 bool Native::Qos::Preserve::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return exp.is_set;
 }
 
@@ -4727,7 +4779,7 @@ Native::Qos::Trace::Trace()
 {
     resize->parent = this;
 
-    yang_name = "trace"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Trace::~Trace()
@@ -4736,6 +4788,7 @@ Native::Qos::Trace::~Trace()
 
 bool Native::Qos::Trace::has_data() const
 {
+    if (is_presence_container) return true;
     return (resize !=  nullptr && resize->has_data());
 }
 
@@ -4818,7 +4871,7 @@ Native::Qos::Trace::Resize::Resize()
     warning{YType::int32, "warning"}
 {
 
-    yang_name = "resize"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "resize"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::Trace::Resize::~Resize()
@@ -4827,6 +4880,7 @@ Native::Qos::Trace::Resize::~Resize()
 
 bool Native::Qos::Trace::Resize::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set
 	|| all.is_set
 	|| error.is_set
@@ -4954,7 +5008,7 @@ Native::Qos::QueueSoftmaxMultiplier::QueueSoftmaxMultiplier()
     value_{YType::int16, "value"}
 {
 
-    yang_name = "queue-softmax-multiplier"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "queue-softmax-multiplier"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Qos::QueueSoftmaxMultiplier::~QueueSoftmaxMultiplier()
@@ -4963,6 +5017,7 @@ Native::Qos::QueueSoftmaxMultiplier::~QueueSoftmaxMultiplier()
 
 bool Native::Qos::QueueSoftmaxMultiplier::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set;
 }
 
@@ -5036,12 +5091,12 @@ bool Native::Qos::QueueSoftmaxMultiplier::has_leaf_or_child_of_name(const std::s
 Native::TimeRange::TimeRange()
     :
     word{YType::str, "word"}
-    	,
+        ,
     absolute(std::make_shared<Native::TimeRange::Absolute>())
 {
     absolute->parent = this;
 
-    yang_name = "time-range"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "time-range"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::TimeRange::~TimeRange()
@@ -5050,6 +5105,7 @@ Native::TimeRange::~TimeRange()
 
 bool Native::TimeRange::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| (absolute !=  nullptr && absolute->has_data());
 }
@@ -5071,7 +5127,8 @@ std::string Native::TimeRange::get_absolute_path() const
 std::string Native::TimeRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "time-range" <<"[word='" <<word <<"']";
+    path_buffer << "time-range";
+    ADD_KEY_TOKEN(word, "word");
     return path_buffer.str();
 }
 
@@ -5142,7 +5199,7 @@ Native::TimeRange::Absolute::Absolute()
 {
     start->parent = this;
 
-    yang_name = "absolute"; yang_parent_name = "time-range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "absolute"; yang_parent_name = "time-range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::TimeRange::Absolute::~Absolute()
@@ -5151,6 +5208,7 @@ Native::TimeRange::Absolute::~Absolute()
 
 bool Native::TimeRange::Absolute::has_data() const
 {
+    if (is_presence_container) return true;
     return (start !=  nullptr && start->has_data());
 }
 
@@ -5225,7 +5283,7 @@ Native::TimeRange::Absolute::Start::Start()
     year{YType::uint16, "year"}
 {
 
-    yang_name = "start"; yang_parent_name = "absolute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start"; yang_parent_name = "absolute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::TimeRange::Absolute::Start::~Start()
@@ -5234,6 +5292,7 @@ Native::TimeRange::Absolute::Start::~Start()
 
 bool Native::TimeRange::Absolute::Start::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| day_of_month.is_set
 	|| month.is_set
@@ -5338,10 +5397,11 @@ bool Native::TimeRange::Absolute::Start::has_leaf_or_child_of_name(const std::st
 
 Native::DeviceTracking::DeviceTracking()
     :
-    tracking(nullptr) // presence node
+    policy(this, {"word"})
+    , tracking(nullptr) // presence node
 {
 
-    yang_name = "device-tracking"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "device-tracking"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::DeviceTracking::~DeviceTracking()
@@ -5350,7 +5410,8 @@ Native::DeviceTracking::~DeviceTracking()
 
 bool Native::DeviceTracking::has_data() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_data())
             return true;
@@ -5360,7 +5421,7 @@ bool Native::DeviceTracking::has_data() const
 
 bool Native::DeviceTracking::has_operation() const
 {
-    for (std::size_t index=0; index<policy.size(); index++)
+    for (std::size_t index=0; index<policy.len(); index++)
     {
         if(policy[index]->has_operation())
             return true;
@@ -5398,7 +5459,7 @@ std::shared_ptr<Entity> Native::DeviceTracking::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::DeviceTracking::Policy>();
         c->parent = this;
-        policy.push_back(c);
+        policy.append(c);
         return c;
     }
 
@@ -5419,7 +5480,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::DeviceTracking::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy)
+    for (auto c : policy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5453,12 +5514,12 @@ bool Native::DeviceTracking::has_leaf_or_child_of_name(const std::string & name)
 Native::DeviceTracking::Policy::Policy()
     :
     word{YType::str, "word"}
-    	,
+        ,
     device_role(std::make_shared<Native::DeviceTracking::Policy::DeviceRole>())
-	,protocol(std::make_shared<Native::DeviceTracking::Policy::Protocol>())
-	,tracking(std::make_shared<Native::DeviceTracking::Policy::Tracking>())
-	,limit(std::make_shared<Native::DeviceTracking::Policy::Limit>())
-	,security_level(std::make_shared<Native::DeviceTracking::Policy::SecurityLevel>())
+    , protocol(std::make_shared<Native::DeviceTracking::Policy::Protocol>())
+    , tracking(std::make_shared<Native::DeviceTracking::Policy::Tracking>())
+    , limit(std::make_shared<Native::DeviceTracking::Policy::Limit>())
+    , security_level(std::make_shared<Native::DeviceTracking::Policy::SecurityLevel>())
 {
     device_role->parent = this;
     protocol->parent = this;
@@ -5466,7 +5527,7 @@ Native::DeviceTracking::Policy::Policy()
     limit->parent = this;
     security_level->parent = this;
 
-    yang_name = "policy"; yang_parent_name = "device-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "device-tracking"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::DeviceTracking::Policy::~Policy()
@@ -5475,6 +5536,7 @@ Native::DeviceTracking::Policy::~Policy()
 
 bool Native::DeviceTracking::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| (device_role !=  nullptr && device_role->has_data())
 	|| (protocol !=  nullptr && protocol->has_data())
@@ -5504,7 +5566,8 @@ std::string Native::DeviceTracking::Policy::get_absolute_path() const
 std::string Native::DeviceTracking::Policy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-device-tracking:policy" <<"[word='" <<word <<"']";
+    path_buffer << "Cisco-IOS-XE-device-tracking:policy";
+    ADD_KEY_TOKEN(word, "word");
     return path_buffer.str();
 }
 
@@ -5631,7 +5694,7 @@ Native::DeviceTracking::Policy::DeviceRole::DeviceRole()
     switch_{YType::empty, "switch"}
 {
 
-    yang_name = "device-role"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "device-role"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::DeviceTracking::Policy::DeviceRole::~DeviceRole()
@@ -5640,6 +5703,7 @@ Native::DeviceTracking::Policy::DeviceRole::~DeviceRole()
 
 bool Native::DeviceTracking::Policy::DeviceRole::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| switch_.is_set;
 }
@@ -5725,7 +5789,7 @@ Native::DeviceTracking::Policy::Protocol::Protocol()
     ndp{YType::boolean, "ndp"}
 {
 
-    yang_name = "protocol"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::DeviceTracking::Policy::Protocol::~Protocol()
@@ -5734,6 +5798,7 @@ Native::DeviceTracking::Policy::Protocol::~Protocol()
 
 bool Native::DeviceTracking::Policy::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return udp.is_set
 	|| arp.is_set
 	|| dhcp4.is_set
@@ -5854,7 +5919,7 @@ Native::DeviceTracking::Policy::Tracking::Tracking()
     tracking_on_off{YType::enumeration, "tracking-on-off"}
 {
 
-    yang_name = "tracking"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tracking"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::DeviceTracking::Policy::Tracking::~Tracking()
@@ -5863,6 +5928,7 @@ Native::DeviceTracking::Policy::Tracking::~Tracking()
 
 bool Native::DeviceTracking::Policy::Tracking::has_data() const
 {
+    if (is_presence_container) return true;
     return tracking_on_off.is_set;
 }
 
@@ -5931,7 +5997,7 @@ Native::DeviceTracking::Policy::Limit::Limit()
     address_count{YType::uint16, "address-count"}
 {
 
-    yang_name = "limit"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::DeviceTracking::Policy::Limit::~Limit()
@@ -5940,6 +6006,7 @@ Native::DeviceTracking::Policy::Limit::~Limit()
 
 bool Native::DeviceTracking::Policy::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return address_count.is_set;
 }
 
@@ -6008,7 +6075,7 @@ Native::DeviceTracking::Policy::SecurityLevel::SecurityLevel()
     glean{YType::empty, "glean"}
 {
 
-    yang_name = "security-level"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-level"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::DeviceTracking::Policy::SecurityLevel::~SecurityLevel()
@@ -6017,6 +6084,7 @@ Native::DeviceTracking::Policy::SecurityLevel::~SecurityLevel()
 
 bool Native::DeviceTracking::Policy::SecurityLevel::has_data() const
 {
+    if (is_presence_container) return true;
     return glean.is_set;
 }
 
@@ -6083,11 +6151,11 @@ bool Native::DeviceTracking::Policy::SecurityLevel::has_leaf_or_child_of_name(co
 Native::DeviceTracking::Tracking::Tracking()
     :
     retry_interval{YType::uint16, "retry-interval"}
-    	,
+        ,
     auto_source(nullptr) // presence node
 {
 
-    yang_name = "tracking"; yang_parent_name = "device-tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tracking"; yang_parent_name = "device-tracking"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::DeviceTracking::Tracking::~Tracking()
@@ -6096,6 +6164,7 @@ Native::DeviceTracking::Tracking::~Tracking()
 
 bool Native::DeviceTracking::Tracking::has_data() const
 {
+    if (is_presence_container) return true;
     return retry_interval.is_set
 	|| (auto_source !=  nullptr && auto_source->has_data());
 }
@@ -6185,12 +6254,12 @@ bool Native::DeviceTracking::Tracking::has_leaf_or_child_of_name(const std::stri
 Native::DeviceTracking::Tracking::AutoSource::AutoSource()
     :
     override{YType::empty, "override"}
-    	,
+        ,
     fallback(std::make_shared<Native::DeviceTracking::Tracking::AutoSource::Fallback>())
 {
     fallback->parent = this;
 
-    yang_name = "auto-source"; yang_parent_name = "tracking"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auto-source"; yang_parent_name = "tracking"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::DeviceTracking::Tracking::AutoSource::~AutoSource()
@@ -6199,6 +6268,7 @@ Native::DeviceTracking::Tracking::AutoSource::~AutoSource()
 
 bool Native::DeviceTracking::Tracking::AutoSource::has_data() const
 {
+    if (is_presence_container) return true;
     return override.is_set
 	|| (fallback !=  nullptr && fallback->has_data());
 }
@@ -6288,12 +6358,12 @@ bool Native::DeviceTracking::Tracking::AutoSource::has_leaf_or_child_of_name(con
 Native::DeviceTracking::Tracking::AutoSource::Fallback::Fallback()
     :
     ipv4_subnet_type1(std::make_shared<Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType1>())
-	,ipv4_subnet_type2(std::make_shared<Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType2>())
+    , ipv4_subnet_type2(std::make_shared<Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType2>())
 {
     ipv4_subnet_type1->parent = this;
     ipv4_subnet_type2->parent = this;
 
-    yang_name = "fallback"; yang_parent_name = "auto-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fallback"; yang_parent_name = "auto-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::DeviceTracking::Tracking::AutoSource::Fallback::~Fallback()
@@ -6302,6 +6372,7 @@ Native::DeviceTracking::Tracking::AutoSource::Fallback::~Fallback()
 
 bool Native::DeviceTracking::Tracking::AutoSource::Fallback::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_subnet_type1 !=  nullptr && ipv4_subnet_type1->has_data())
 	|| (ipv4_subnet_type2 !=  nullptr && ipv4_subnet_type2->has_data());
 }
@@ -6398,7 +6469,7 @@ Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType1::Ipv4Sub
     override{YType::empty, "override"}
 {
 
-    yang_name = "ipv4-subnet-type1"; yang_parent_name = "fallback"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-subnet-type1"; yang_parent_name = "fallback"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType1::~Ipv4SubnetType1()
@@ -6407,6 +6478,7 @@ Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType1::~Ipv4Su
 
 bool Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType1::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| mask.is_set
 	|| override.is_set;
@@ -6509,7 +6581,7 @@ Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType2::Ipv4Sub
     override{YType::empty, "override"}
 {
 
-    yang_name = "ipv4-subnet-type2"; yang_parent_name = "fallback"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-subnet-type2"; yang_parent_name = "fallback"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType2::~Ipv4SubnetType2()
@@ -6518,6 +6590,7 @@ Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType2::~Ipv4Su
 
 bool Native::DeviceTracking::Tracking::AutoSource::Fallback::Ipv4SubnetType2::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_prefix_name.is_set
 	|| override.is_set;
 }
@@ -6607,7 +6680,7 @@ Native::Fhrp::Fhrp()
 {
     version->parent = this;
 
-    yang_name = "fhrp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fhrp"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Fhrp::~Fhrp()
@@ -6616,6 +6689,7 @@ Native::Fhrp::~Fhrp()
 
 bool Native::Fhrp::has_data() const
 {
+    if (is_presence_container) return true;
     return (version !=  nullptr && version->has_data());
 }
 
@@ -6694,7 +6768,7 @@ Native::Fhrp::Version::Version()
     vrrp{YType::enumeration, "vrrp"}
 {
 
-    yang_name = "version"; yang_parent_name = "fhrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "version"; yang_parent_name = "fhrp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Fhrp::Version::~Version()
@@ -6703,6 +6777,7 @@ Native::Fhrp::Version::~Version()
 
 bool Native::Fhrp::Version::has_data() const
 {
+    if (is_presence_container) return true;
     return vrrp.is_set;
 }
 
@@ -6778,7 +6853,7 @@ Native::Metadata::Metadata()
     flow(nullptr) // presence node
 {
 
-    yang_name = "metadata"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "metadata"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Metadata::~Metadata()
@@ -6787,6 +6862,7 @@ Native::Metadata::~Metadata()
 
 bool Native::Metadata::has_data() const
 {
+    if (is_presence_container) return true;
     return (flow !=  nullptr && flow->has_data());
 }
 
@@ -6865,7 +6941,7 @@ Native::Metadata::Flow::Flow()
     transmit{YType::empty, "transmit"}
 {
 
-    yang_name = "flow"; yang_parent_name = "metadata"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow"; yang_parent_name = "metadata"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Metadata::Flow::~Flow()
@@ -6874,6 +6950,7 @@ Native::Metadata::Flow::~Flow()
 
 bool Native::Metadata::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return transmit.is_set;
 }
 
@@ -6949,7 +7026,7 @@ Native::Profile::Profile()
     flow{YType::empty, "flow"}
 {
 
-    yang_name = "profile"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Profile::~Profile()
@@ -6958,6 +7035,7 @@ Native::Profile::~Profile()
 
 bool Native::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return flow.is_set;
 }
 
@@ -7034,7 +7112,7 @@ Native::Alias::Alias()
 {
     exec->parent = this;
 
-    yang_name = "alias"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alias"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Alias::~Alias()
@@ -7043,6 +7121,7 @@ Native::Alias::~Alias()
 
 bool Native::Alias::has_data() const
 {
+    if (is_presence_container) return true;
     return (exec !=  nullptr && exec->has_data());
 }
 
@@ -7122,7 +7201,7 @@ Native::Alias::Exec::Exec()
     new_alias_name{YType::str, "new-alias-name"}
 {
 
-    yang_name = "exec"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exec"; yang_parent_name = "alias"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Alias::Exec::~Exec()
@@ -7131,6 +7210,7 @@ Native::Alias::Exec::~Exec()
 
 bool Native::Alias::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return alias_name.is_set
 	|| new_alias_name.is_set;
 }
@@ -7215,9 +7295,14 @@ bool Native::Alias::Exec::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 Native::Line::Line()
+    :
+    line_list(this, {"first_number"})
+    , aux(this, {"first"})
+    , console(this, {"first"})
+    , vty(this, {"first"})
 {
 
-    yang_name = "line"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "line"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Line::~Line()
@@ -7226,22 +7311,23 @@ Native::Line::~Line()
 
 bool Native::Line::has_data() const
 {
-    for (std::size_t index=0; index<line_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<line_list.len(); index++)
     {
         if(line_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<aux.size(); index++)
+    for (std::size_t index=0; index<aux.len(); index++)
     {
         if(aux[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<console.size(); index++)
+    for (std::size_t index=0; index<console.len(); index++)
     {
         if(console[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vty.size(); index++)
+    for (std::size_t index=0; index<vty.len(); index++)
     {
         if(vty[index]->has_data())
             return true;
@@ -7251,22 +7337,22 @@ bool Native::Line::has_data() const
 
 bool Native::Line::has_operation() const
 {
-    for (std::size_t index=0; index<line_list.size(); index++)
+    for (std::size_t index=0; index<line_list.len(); index++)
     {
         if(line_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<aux.size(); index++)
+    for (std::size_t index=0; index<aux.len(); index++)
     {
         if(aux[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<console.size(); index++)
+    for (std::size_t index=0; index<console.len(); index++)
     {
         if(console[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vty.size(); index++)
+    for (std::size_t index=0; index<vty.len(); index++)
     {
         if(vty[index]->has_operation())
             return true;
@@ -7303,7 +7389,7 @@ std::shared_ptr<Entity> Native::Line::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Line::LineList>();
         c->parent = this;
-        line_list.push_back(c);
+        line_list.append(c);
         return c;
     }
 
@@ -7311,7 +7397,7 @@ std::shared_ptr<Entity> Native::Line::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Line::Aux>();
         c->parent = this;
-        aux.push_back(c);
+        aux.append(c);
         return c;
     }
 
@@ -7319,7 +7405,7 @@ std::shared_ptr<Entity> Native::Line::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Line::Console>();
         c->parent = this;
-        console.push_back(c);
+        console.append(c);
         return c;
     }
 
@@ -7327,7 +7413,7 @@ std::shared_ptr<Entity> Native::Line::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<Native::Line::Vty>();
         c->parent = this;
-        vty.push_back(c);
+        vty.append(c);
         return c;
     }
 
@@ -7339,7 +7425,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : line_list)
+    for (auto c : line_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7348,7 +7434,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : aux)
+    for (auto c : aux.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7357,7 +7443,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : console)
+    for (auto c : console.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7366,7 +7452,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::get_children() cons
     }
 
     count = 0;
-    for (auto const & c : vty)
+    for (auto c : vty.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7422,34 +7508,34 @@ Native::Line::LineList::LineList()
     terminal_type{YType::str, "terminal-type"},
     txspeed{YType::uint32, "txspeed"},
     width{YType::uint16, "width"}
-    	,
+        ,
     authorization(std::make_shared<Native::Line::LineList::Authorization>())
-	,access_class(std::make_shared<Native::Line::LineList::AccessClass>())
-	,autocommand(std::make_shared<Native::Line::LineList::Autocommand>())
-	,autocommand_options(nullptr) // presence node
-	,databits(std::make_shared<Native::Line::LineList::Databits>())
-	,escape_character(std::make_shared<Native::Line::LineList::EscapeCharacter>())
-	,no_exec(std::make_shared<Native::Line::LineList::NoExec>())
-	,exec(std::make_shared<Native::Line::LineList::Exec>())
-	,exec_timeout(std::make_shared<Native::Line::LineList::ExecTimeout>())
-	,flowcontrol(std::make_shared<Native::Line::LineList::Flowcontrol>())
-	,history(nullptr) // presence node
-	,ip(std::make_shared<Native::Line::LineList::Ip>())
-	,ipv6(std::make_shared<Native::Line::LineList::Ipv6>())
-	,logging(std::make_shared<Native::Line::LineList::Logging>())
-	,login(nullptr) // presence node
-	,media_type(std::make_shared<Native::Line::LineList::MediaType>())
-	,modem(std::make_shared<Native::Line::LineList::Modem>())
-	,padding(std::make_shared<Native::Line::LineList::Padding>())
-	,parity(std::make_shared<Native::Line::LineList::Parity>())
-	,password(std::make_shared<Native::Line::LineList::Password>())
-	,prc(std::make_shared<Native::Line::LineList::Prc>())
-	,privilege(std::make_shared<Native::Line::LineList::Privilege>())
-	,session_timeout(std::make_shared<Native::Line::LineList::SessionTimeout>())
-	,timeout(std::make_shared<Native::Line::LineList::Timeout>())
-	,telnet(std::make_shared<Native::Line::LineList::Telnet>())
-	,transport(std::make_shared<Native::Line::LineList::Transport>())
-	,usb_inactivity_timeout(std::make_shared<Native::Line::LineList::UsbInactivityTimeout>())
+    , access_class(std::make_shared<Native::Line::LineList::AccessClass>())
+    , autocommand(std::make_shared<Native::Line::LineList::Autocommand>())
+    , autocommand_options(nullptr) // presence node
+    , databits(std::make_shared<Native::Line::LineList::Databits>())
+    , escape_character(std::make_shared<Native::Line::LineList::EscapeCharacter>())
+    , no_exec(std::make_shared<Native::Line::LineList::NoExec>())
+    , exec(std::make_shared<Native::Line::LineList::Exec>())
+    , exec_timeout(std::make_shared<Native::Line::LineList::ExecTimeout>())
+    , flowcontrol(std::make_shared<Native::Line::LineList::Flowcontrol>())
+    , history(nullptr) // presence node
+    , ip(std::make_shared<Native::Line::LineList::Ip>())
+    , ipv6(std::make_shared<Native::Line::LineList::Ipv6>())
+    , logging(std::make_shared<Native::Line::LineList::Logging>())
+    , login(nullptr) // presence node
+    , media_type(std::make_shared<Native::Line::LineList::MediaType>())
+    , modem(std::make_shared<Native::Line::LineList::Modem>())
+    , padding(std::make_shared<Native::Line::LineList::Padding>())
+    , parity(std::make_shared<Native::Line::LineList::Parity>())
+    , password(std::make_shared<Native::Line::LineList::Password>())
+    , prc(std::make_shared<Native::Line::LineList::Prc>())
+    , privilege(std::make_shared<Native::Line::LineList::Privilege>())
+    , session_timeout(std::make_shared<Native::Line::LineList::SessionTimeout>())
+    , timeout(std::make_shared<Native::Line::LineList::Timeout>())
+    , telnet(std::make_shared<Native::Line::LineList::Telnet>())
+    , transport(std::make_shared<Native::Line::LineList::Transport>())
+    , usb_inactivity_timeout(std::make_shared<Native::Line::LineList::UsbInactivityTimeout>())
 {
     authorization->parent = this;
     access_class->parent = this;
@@ -7476,7 +7562,7 @@ Native::Line::LineList::LineList()
     transport->parent = this;
     usb_inactivity_timeout->parent = this;
 
-    yang_name = "line-list"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "line-list"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Line::LineList::~LineList()
@@ -7485,6 +7571,7 @@ Native::Line::LineList::~LineList()
 
 bool Native::Line::LineList::has_data() const
 {
+    if (is_presence_container) return true;
     return first_number.is_set
 	|| last_number.is_set
 	|| no_activation_character.is_set
@@ -7612,7 +7699,8 @@ std::string Native::Line::LineList::get_absolute_path() const
 std::string Native::Line::LineList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "line-list" <<"[first-number='" <<first_number <<"']";
+    path_buffer << "line-list";
+    ADD_KEY_TOKEN(first_number, "first-number");
     return path_buffer.str();
 }
 
@@ -8344,7 +8432,7 @@ Native::Line::LineList::Authorization::Authorization()
 {
     command->parent = this;
 
-    yang_name = "authorization"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Authorization::~Authorization()
@@ -8353,6 +8441,7 @@ Native::Line::LineList::Authorization::~Authorization()
 
 bool Native::Line::LineList::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return (command !=  nullptr && command->has_data());
 }
 
@@ -8425,7 +8514,7 @@ Native::Line::LineList::Authorization::Command::Command()
     auth_name{YType::str, "auth-name"}
 {
 
-    yang_name = "command"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "command"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Authorization::Command::~Command()
@@ -8434,6 +8523,7 @@ Native::Line::LineList::Authorization::Command::~Command()
 
 bool Native::Line::LineList::Authorization::Command::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_level.is_set
 	|| auth_name.is_set;
 }
@@ -8511,9 +8601,11 @@ bool Native::Line::LineList::Authorization::Command::has_leaf_or_child_of_name(c
 }
 
 Native::Line::LineList::AccessClass::AccessClass()
+    :
+    acccess_list(this, {"direction"})
 {
 
-    yang_name = "access-class"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-class"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::AccessClass::~AccessClass()
@@ -8522,7 +8614,8 @@ Native::Line::LineList::AccessClass::~AccessClass()
 
 bool Native::Line::LineList::AccessClass::has_data() const
 {
-    for (std::size_t index=0; index<acccess_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<acccess_list.len(); index++)
     {
         if(acccess_list[index]->has_data())
             return true;
@@ -8532,7 +8625,7 @@ bool Native::Line::LineList::AccessClass::has_data() const
 
 bool Native::Line::LineList::AccessClass::has_operation() const
 {
-    for (std::size_t index=0; index<acccess_list.size(); index++)
+    for (std::size_t index=0; index<acccess_list.len(); index++)
     {
         if(acccess_list[index]->has_operation())
             return true;
@@ -8562,7 +8655,7 @@ std::shared_ptr<Entity> Native::Line::LineList::AccessClass::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Line::LineList::AccessClass::AcccessList>();
         c->parent = this;
-        acccess_list.push_back(c);
+        acccess_list.append(c);
         return c;
     }
 
@@ -8574,7 +8667,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::AccessCla
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : acccess_list)
+    for (auto c : acccess_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8607,7 +8700,7 @@ Native::Line::LineList::AccessClass::AcccessList::AcccessList()
     vrf_also{YType::empty, "vrf-also"}
 {
 
-    yang_name = "acccess-list"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acccess-list"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::AccessClass::AcccessList::~AcccessList()
@@ -8616,6 +8709,7 @@ Native::Line::LineList::AccessClass::AcccessList::~AcccessList()
 
 bool Native::Line::LineList::AccessClass::AcccessList::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| access_list.is_set
 	|| vrf_also.is_set;
@@ -8632,7 +8726,8 @@ bool Native::Line::LineList::AccessClass::AcccessList::has_operation() const
 std::string Native::Line::LineList::AccessClass::AcccessList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "acccess-list" <<"[direction='" <<direction <<"']";
+    path_buffer << "acccess-list";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -8708,11 +8803,11 @@ bool Native::Line::LineList::AccessClass::AcccessList::has_leaf_or_child_of_name
 Native::Line::LineList::Autocommand::Autocommand()
     :
     line{YType::str, "line"}
-    	,
+        ,
     no_suppress_linenumber(nullptr) // presence node
 {
 
-    yang_name = "autocommand"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autocommand"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Autocommand::~Autocommand()
@@ -8721,6 +8816,7 @@ Native::Line::LineList::Autocommand::~Autocommand()
 
 bool Native::Line::LineList::Autocommand::has_data() const
 {
+    if (is_presence_container) return true;
     return line.is_set
 	|| (no_suppress_linenumber !=  nullptr && no_suppress_linenumber->has_data());
 }
@@ -8805,7 +8901,7 @@ Native::Line::LineList::Autocommand::NoSuppressLinenumber::NoSuppressLinenumber(
     line{YType::str, "line"}
 {
 
-    yang_name = "no-suppress-linenumber"; yang_parent_name = "autocommand"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-suppress-linenumber"; yang_parent_name = "autocommand"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::Autocommand::NoSuppressLinenumber::~NoSuppressLinenumber()
@@ -8814,6 +8910,7 @@ Native::Line::LineList::Autocommand::NoSuppressLinenumber::~NoSuppressLinenumber
 
 bool Native::Line::LineList::Autocommand::NoSuppressLinenumber::has_data() const
 {
+    if (is_presence_container) return true;
     return line.is_set;
 }
 
@@ -8880,11 +8977,11 @@ bool Native::Line::LineList::Autocommand::NoSuppressLinenumber::has_leaf_or_chil
 Native::Line::LineList::AutocommandOptions::AutocommandOptions()
     :
     abort_character(nullptr) // presence node
-	,delay(nullptr) // presence node
-	,nohangup(nullptr) // presence node
+    , delay(nullptr) // presence node
+    , nohangup(nullptr) // presence node
 {
 
-    yang_name = "autocommand-options"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autocommand-options"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::AutocommandOptions::~AutocommandOptions()
@@ -8893,6 +8990,7 @@ Native::Line::LineList::AutocommandOptions::~AutocommandOptions()
 
 bool Native::Line::LineList::AutocommandOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return (abort_character !=  nullptr && abort_character->has_data())
 	|| (delay !=  nullptr && delay->has_data())
 	|| (nohangup !=  nullptr && nohangup->has_data());
@@ -8996,7 +9094,7 @@ Native::Line::LineList::AutocommandOptions::AbortCharacter::AbortCharacter()
     character{YType::str, "character"}
 {
 
-    yang_name = "abort-character"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "abort-character"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::AutocommandOptions::AbortCharacter::~AbortCharacter()
@@ -9005,6 +9103,7 @@ Native::Line::LineList::AutocommandOptions::AbortCharacter::~AbortCharacter()
 
 bool Native::Line::LineList::AutocommandOptions::AbortCharacter::has_data() const
 {
+    if (is_presence_container) return true;
     return character.is_set;
 }
 
@@ -9073,7 +9172,7 @@ Native::Line::LineList::AutocommandOptions::Delay::Delay()
     time{YType::uint8, "time"}
 {
 
-    yang_name = "delay"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::AutocommandOptions::Delay::~Delay()
@@ -9082,6 +9181,7 @@ Native::Line::LineList::AutocommandOptions::Delay::~Delay()
 
 bool Native::Line::LineList::AutocommandOptions::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set;
 }
 
@@ -9151,7 +9251,7 @@ Native::Line::LineList::AutocommandOptions::Nohangup::Nohangup()
     delay{YType::empty, "delay"}
 {
 
-    yang_name = "nohangup"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nohangup"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::AutocommandOptions::Nohangup::~Nohangup()
@@ -9160,6 +9260,7 @@ Native::Line::LineList::AutocommandOptions::Nohangup::~Nohangup()
 
 bool Native::Line::LineList::AutocommandOptions::Nohangup::has_data() const
 {
+    if (is_presence_container) return true;
     return abort_character.is_set
 	|| delay.is_set;
 }
@@ -9244,7 +9345,7 @@ Native::Line::LineList::Databits::Databits()
     set_to_8{YType::empty, "set-to-8"}
 {
 
-    yang_name = "databits"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "databits"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Databits::~Databits()
@@ -9253,6 +9354,7 @@ Native::Line::LineList::Databits::~Databits()
 
 bool Native::Line::LineList::Databits::has_data() const
 {
+    if (is_presence_container) return true;
     return set_to_5.is_set
 	|| set_to_6.is_set
 	|| set_to_7.is_set
@@ -9361,7 +9463,7 @@ Native::Line::LineList::EscapeCharacter::EscapeCharacter()
     soft{YType::empty, "soft"}
 {
 
-    yang_name = "escape-character"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "escape-character"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::EscapeCharacter::~EscapeCharacter()
@@ -9370,6 +9472,7 @@ Native::Line::LineList::EscapeCharacter::~EscapeCharacter()
 
 bool Native::Line::LineList::EscapeCharacter::has_data() const
 {
+    if (is_presence_container) return true;
     return char_.is_set
 	|| soft.is_set;
 }
@@ -9451,7 +9554,7 @@ Native::Line::LineList::NoExec::NoExec()
     exec{YType::boolean, "exec"}
 {
 
-    yang_name = "no-exec"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-exec"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::NoExec::~NoExec()
@@ -9460,6 +9563,7 @@ Native::Line::LineList::NoExec::~NoExec()
 
 bool Native::Line::LineList::NoExec::has_data() const
 {
+    if (is_presence_container) return true;
     return exec.is_set;
 }
 
@@ -9529,7 +9633,7 @@ Native::Line::LineList::Exec::Exec()
 {
     prompt->parent = this;
 
-    yang_name = "exec"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Exec::~Exec()
@@ -9538,6 +9642,7 @@ Native::Line::LineList::Exec::~Exec()
 
 bool Native::Line::LineList::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return (prompt !=  nullptr && prompt->has_data());
 }
 
@@ -9609,7 +9714,7 @@ Native::Line::LineList::Exec::Prompt::Prompt()
     timestamp{YType::empty, "timestamp"}
 {
 
-    yang_name = "prompt"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prompt"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Exec::Prompt::~Prompt()
@@ -9618,6 +9723,7 @@ Native::Line::LineList::Exec::Prompt::~Prompt()
 
 bool Native::Line::LineList::Exec::Prompt::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set;
 }
 
@@ -9687,7 +9793,7 @@ Native::Line::LineList::ExecTimeout::ExecTimeout()
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "exec-timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec-timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::ExecTimeout::~ExecTimeout()
@@ -9696,6 +9802,7 @@ Native::Line::LineList::ExecTimeout::~ExecTimeout()
 
 bool Native::Line::LineList::ExecTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return minutes.is_set
 	|| seconds.is_set;
 }
@@ -9779,7 +9886,7 @@ Native::Line::LineList::Flowcontrol::Flowcontrol()
     software{YType::empty, "software"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Flowcontrol::~Flowcontrol()
@@ -9788,6 +9895,7 @@ Native::Line::LineList::Flowcontrol::~Flowcontrol()
 
 bool Native::Line::LineList::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| hardware.is_set
 	|| software.is_set;
@@ -9882,7 +9990,7 @@ Native::Line::LineList::History::History()
     size{YType::uint16, "size"}
 {
 
-    yang_name = "history"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::History::~History()
@@ -9891,6 +9999,7 @@ Native::Line::LineList::History::~History()
 
 bool Native::Line::LineList::History::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set;
 }
 
@@ -9957,11 +10066,11 @@ bool Native::Line::LineList::History::has_leaf_or_child_of_name(const std::strin
 Native::Line::LineList::Ip::Ip()
     :
     tcp{YType::empty, "tcp"}
-    	,
+        ,
     netmask_format(nullptr) // presence node
 {
 
-    yang_name = "ip"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Ip::~Ip()
@@ -9970,6 +10079,7 @@ Native::Line::LineList::Ip::~Ip()
 
 bool Native::Line::LineList::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp.is_set
 	|| (netmask_format !=  nullptr && netmask_format->has_data());
 }
@@ -10054,7 +10164,7 @@ Native::Line::LineList::Ip::NetmaskFormat::NetmaskFormat()
     format{YType::enumeration, "format"}
 {
 
-    yang_name = "netmask-format"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "netmask-format"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::Ip::NetmaskFormat::~NetmaskFormat()
@@ -10063,6 +10173,7 @@ Native::Line::LineList::Ip::NetmaskFormat::~NetmaskFormat()
 
 bool Native::Line::LineList::Ip::NetmaskFormat::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set;
 }
 
@@ -10132,7 +10243,7 @@ Native::Line::LineList::Ipv6::Ipv6()
 {
     access_class->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Ipv6::~Ipv6()
@@ -10141,6 +10252,7 @@ Native::Line::LineList::Ipv6::~Ipv6()
 
 bool Native::Line::LineList::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (access_class !=  nullptr && access_class->has_data());
 }
 
@@ -10208,9 +10320,11 @@ bool Native::Line::LineList::Ipv6::has_leaf_or_child_of_name(const std::string &
 }
 
 Native::Line::LineList::Ipv6::AccessClass::AccessClass()
+    :
+    access_class(this, {"access_class_name"})
 {
 
-    yang_name = "access-class"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-class"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Ipv6::AccessClass::~AccessClass()
@@ -10219,7 +10333,8 @@ Native::Line::LineList::Ipv6::AccessClass::~AccessClass()
 
 bool Native::Line::LineList::Ipv6::AccessClass::has_data() const
 {
-    for (std::size_t index=0; index<access_class.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_class.len(); index++)
     {
         if(access_class[index]->has_data())
             return true;
@@ -10229,7 +10344,7 @@ bool Native::Line::LineList::Ipv6::AccessClass::has_data() const
 
 bool Native::Line::LineList::Ipv6::AccessClass::has_operation() const
 {
-    for (std::size_t index=0; index<access_class.size(); index++)
+    for (std::size_t index=0; index<access_class.len(); index++)
     {
         if(access_class[index]->has_operation())
             return true;
@@ -10259,7 +10374,7 @@ std::shared_ptr<Entity> Native::Line::LineList::Ipv6::AccessClass::get_child_by_
     {
         auto c = std::make_shared<Native::Line::LineList::Ipv6::AccessClass::AccessClass_>();
         c->parent = this;
-        access_class.push_back(c);
+        access_class.append(c);
         return c;
     }
 
@@ -10271,7 +10386,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::LineList::Ipv6::Acc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_class)
+    for (auto c : access_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10303,7 +10418,7 @@ Native::Line::LineList::Ipv6::AccessClass::AccessClass_::AccessClass_()
     enumeration_in_out{YType::enumeration, "enumeration-in-out"}
 {
 
-    yang_name = "access-class"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-class"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Ipv6::AccessClass::AccessClass_::~AccessClass_()
@@ -10312,6 +10427,7 @@ Native::Line::LineList::Ipv6::AccessClass::AccessClass_::~AccessClass_()
 
 bool Native::Line::LineList::Ipv6::AccessClass::AccessClass_::has_data() const
 {
+    if (is_presence_container) return true;
     return access_class_name.is_set
 	|| enumeration_in_out.is_set;
 }
@@ -10326,7 +10442,8 @@ bool Native::Line::LineList::Ipv6::AccessClass::AccessClass_::has_operation() co
 std::string Native::Line::LineList::Ipv6::AccessClass::AccessClass_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-class" <<"[access-class-name='" <<access_class_name <<"']";
+    path_buffer << "access-class";
+    ADD_KEY_TOKEN(access_class_name, "access-class-name");
     return path_buffer.str();
 }
 
@@ -10393,7 +10510,7 @@ Native::Line::LineList::Logging::Logging()
     synchronous(nullptr) // presence node
 {
 
-    yang_name = "logging"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Logging::~Logging()
@@ -10402,6 +10519,7 @@ Native::Line::LineList::Logging::~Logging()
 
 bool Native::Line::LineList::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (synchronous !=  nullptr && synchronous->has_data());
 }
 
@@ -10471,7 +10589,7 @@ bool Native::Line::LineList::Logging::has_leaf_or_child_of_name(const std::strin
 Native::Line::LineList::Logging::Synchronous::Synchronous()
 {
 
-    yang_name = "synchronous"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "synchronous"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::Logging::Synchronous::~Synchronous()
@@ -10480,6 +10598,7 @@ Native::Line::LineList::Logging::Synchronous::~Synchronous()
 
 bool Native::Line::LineList::Logging::Synchronous::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -10535,7 +10654,7 @@ Native::Line::LineList::Login::Login()
     authentication{YType::str, "authentication"}
 {
 
-    yang_name = "login"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "login"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::Login::~Login()
@@ -10544,6 +10663,7 @@ Native::Line::LineList::Login::~Login()
 
 bool Native::Line::LineList::Login::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| authentication.is_set;
 }
@@ -10625,7 +10745,7 @@ Native::Line::LineList::MediaType::MediaType()
     rj45{YType::empty, "rj45"}
 {
 
-    yang_name = "media-type"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "media-type"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::MediaType::~MediaType()
@@ -10634,6 +10754,7 @@ Native::Line::LineList::MediaType::~MediaType()
 
 bool Native::Line::LineList::MediaType::has_data() const
 {
+    if (is_presence_container) return true;
     return rj45.is_set;
 }
 
@@ -10709,7 +10830,7 @@ Native::Line::LineList::Modem::Modem()
     dtr_delay{YType::empty, "dtr-delay"}
 {
 
-    yang_name = "modem"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "modem"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Modem::~Modem()
@@ -10718,6 +10839,7 @@ Native::Line::LineList::Modem::~Modem()
 
 bool Native::Line::LineList::Modem::has_data() const
 {
+    if (is_presence_container) return true;
     return cts_alarm.is_set
 	|| dtr_active.is_set
 	|| dialin.is_set
@@ -10878,7 +11000,7 @@ Native::Line::LineList::Padding::Padding()
     null{YType::uint8, "null"}
 {
 
-    yang_name = "padding"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padding"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Padding::~Padding()
@@ -10887,6 +11009,7 @@ Native::Line::LineList::Padding::~Padding()
 
 bool Native::Line::LineList::Padding::has_data() const
 {
+    if (is_presence_container) return true;
     return character.is_set
 	|| null.is_set;
 }
@@ -10972,7 +11095,7 @@ Native::Line::LineList::Parity::Parity()
     space{YType::empty, "space"}
 {
 
-    yang_name = "parity"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Parity::~Parity()
@@ -10981,6 +11104,7 @@ Native::Line::LineList::Parity::~Parity()
 
 bool Native::Line::LineList::Parity::has_data() const
 {
+    if (is_presence_container) return true;
     return even.is_set
 	|| mark.is_set
 	|| none.is_set
@@ -11103,7 +11227,7 @@ Native::Line::LineList::Password::Password()
     secret{YType::str, "secret"}
 {
 
-    yang_name = "password"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Password::~Password()
@@ -11112,6 +11236,7 @@ Native::Line::LineList::Password::~Password()
 
 bool Native::Line::LineList::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set
 	|| secret.is_set;
@@ -11207,7 +11332,7 @@ Native::Line::LineList::Prc::Prc()
     hide{YType::empty, "hide"}
 {
 
-    yang_name = "prc"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prc"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Prc::~Prc()
@@ -11216,6 +11341,7 @@ Native::Line::LineList::Prc::~Prc()
 
 bool Native::Line::LineList::Prc::has_data() const
 {
+    if (is_presence_container) return true;
     return expose.is_set
 	|| hide.is_set;
 }
@@ -11297,7 +11423,7 @@ Native::Line::LineList::Privilege::Privilege()
     level(nullptr) // presence node
 {
 
-    yang_name = "privilege"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "privilege"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Privilege::~Privilege()
@@ -11306,6 +11432,7 @@ Native::Line::LineList::Privilege::~Privilege()
 
 bool Native::Line::LineList::Privilege::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -11377,7 +11504,7 @@ Native::Line::LineList::Privilege::Level::Level()
     number{YType::uint8, "number"}
 {
 
-    yang_name = "level"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::Privilege::Level::~Level()
@@ -11386,6 +11513,7 @@ Native::Line::LineList::Privilege::Level::~Level()
 
 bool Native::Line::LineList::Privilege::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set;
 }
 
@@ -11455,7 +11583,7 @@ Native::Line::LineList::SessionTimeout::SessionTimeout()
     output{YType::empty, "output"}
 {
 
-    yang_name = "session-timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::SessionTimeout::~SessionTimeout()
@@ -11464,6 +11592,7 @@ Native::Line::LineList::SessionTimeout::~SessionTimeout()
 
 bool Native::Line::LineList::SessionTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return session_timeout_value.is_set
 	|| output.is_set;
 }
@@ -11545,7 +11674,7 @@ Native::Line::LineList::Timeout::Timeout()
     login{YType::empty, "login"}
 {
 
-    yang_name = "timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Timeout::~Timeout()
@@ -11554,6 +11683,7 @@ Native::Line::LineList::Timeout::~Timeout()
 
 bool Native::Line::LineList::Timeout::has_data() const
 {
+    if (is_presence_container) return true;
     return login.is_set;
 }
 
@@ -11622,7 +11752,7 @@ Native::Line::LineList::Telnet::Telnet()
     transparent{YType::empty, "transparent"}
 {
 
-    yang_name = "telnet"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "telnet"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Telnet::~Telnet()
@@ -11631,6 +11761,7 @@ Native::Line::LineList::Telnet::~Telnet()
 
 bool Native::Line::LineList::Telnet::has_data() const
 {
+    if (is_presence_container) return true;
     return transparent.is_set;
 }
 
@@ -11697,13 +11828,13 @@ bool Native::Line::LineList::Telnet::has_leaf_or_child_of_name(const std::string
 Native::Line::LineList::Transport::Transport()
     :
     input(std::make_shared<Native::Line::LineList::Transport::Input>())
-	,output(std::make_shared<Native::Line::LineList::Transport::Output>())
-	,preferred(nullptr) // presence node
+    , output(std::make_shared<Native::Line::LineList::Transport::Output>())
+    , preferred(nullptr) // presence node
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "transport"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Transport::~Transport()
@@ -11712,6 +11843,7 @@ Native::Line::LineList::Transport::~Transport()
 
 bool Native::Line::LineList::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data())
 	|| (preferred !=  nullptr && preferred->has_data());
@@ -11815,7 +11947,7 @@ Native::Line::LineList::Transport::Input::Input()
     input{YType::enumeration, "input"}
 {
 
-    yang_name = "input"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Transport::Input::~Input()
@@ -11824,6 +11956,7 @@ Native::Line::LineList::Transport::Input::~Input()
 
 bool Native::Line::LineList::Transport::Input::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : input.getYLeafs())
     {
         if(leaf.is_set)
@@ -11901,7 +12034,7 @@ Native::Line::LineList::Transport::Output::Output()
     output{YType::enumeration, "output"}
 {
 
-    yang_name = "output"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::Transport::Output::~Output()
@@ -11910,6 +12043,7 @@ Native::Line::LineList::Transport::Output::~Output()
 
 bool Native::Line::LineList::Transport::Output::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : output.getYLeafs())
     {
         if(leaf.is_set)
@@ -11987,7 +12121,7 @@ Native::Line::LineList::Transport::Preferred::Preferred()
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "preferred"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preferred"; yang_parent_name = "transport"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::LineList::Transport::Preferred::~Preferred()
@@ -11996,6 +12130,7 @@ Native::Line::LineList::Transport::Preferred::~Preferred()
 
 bool Native::Line::LineList::Transport::Preferred::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set;
 }
 
@@ -12064,7 +12199,7 @@ Native::Line::LineList::UsbInactivityTimeout::UsbInactivityTimeout()
     switch_{YType::empty, "switch"}
 {
 
-    yang_name = "usb-inactivity-timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "usb-inactivity-timeout"; yang_parent_name = "line-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::LineList::UsbInactivityTimeout::~UsbInactivityTimeout()
@@ -12073,6 +12208,7 @@ Native::Line::LineList::UsbInactivityTimeout::~UsbInactivityTimeout()
 
 bool Native::Line::LineList::UsbInactivityTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return switch_.is_set;
 }
 
@@ -12165,34 +12301,34 @@ Native::Line::Aux::Aux()
     terminal_type{YType::str, "terminal-type"},
     txspeed{YType::uint32, "txspeed"},
     width{YType::uint16, "width"}
-    	,
+        ,
     authorization(std::make_shared<Native::Line::Aux::Authorization>())
-	,access_class(std::make_shared<Native::Line::Aux::AccessClass>())
-	,autocommand(std::make_shared<Native::Line::Aux::Autocommand>())
-	,autocommand_options(nullptr) // presence node
-	,databits(std::make_shared<Native::Line::Aux::Databits>())
-	,escape_character(std::make_shared<Native::Line::Aux::EscapeCharacter>())
-	,no_exec(std::make_shared<Native::Line::Aux::NoExec>())
-	,exec(std::make_shared<Native::Line::Aux::Exec>())
-	,exec_timeout(std::make_shared<Native::Line::Aux::ExecTimeout>())
-	,flowcontrol(std::make_shared<Native::Line::Aux::Flowcontrol>())
-	,history(nullptr) // presence node
-	,ip(std::make_shared<Native::Line::Aux::Ip>())
-	,ipv6(std::make_shared<Native::Line::Aux::Ipv6>())
-	,logging(std::make_shared<Native::Line::Aux::Logging>())
-	,login(nullptr) // presence node
-	,media_type(std::make_shared<Native::Line::Aux::MediaType>())
-	,modem(std::make_shared<Native::Line::Aux::Modem>())
-	,padding(std::make_shared<Native::Line::Aux::Padding>())
-	,parity(std::make_shared<Native::Line::Aux::Parity>())
-	,password(std::make_shared<Native::Line::Aux::Password>())
-	,prc(std::make_shared<Native::Line::Aux::Prc>())
-	,privilege(std::make_shared<Native::Line::Aux::Privilege>())
-	,session_timeout(std::make_shared<Native::Line::Aux::SessionTimeout>())
-	,timeout(std::make_shared<Native::Line::Aux::Timeout>())
-	,telnet(std::make_shared<Native::Line::Aux::Telnet>())
-	,transport(std::make_shared<Native::Line::Aux::Transport>())
-	,usb_inactivity_timeout(std::make_shared<Native::Line::Aux::UsbInactivityTimeout>())
+    , access_class(std::make_shared<Native::Line::Aux::AccessClass>())
+    , autocommand(std::make_shared<Native::Line::Aux::Autocommand>())
+    , autocommand_options(nullptr) // presence node
+    , databits(std::make_shared<Native::Line::Aux::Databits>())
+    , escape_character(std::make_shared<Native::Line::Aux::EscapeCharacter>())
+    , no_exec(std::make_shared<Native::Line::Aux::NoExec>())
+    , exec(std::make_shared<Native::Line::Aux::Exec>())
+    , exec_timeout(std::make_shared<Native::Line::Aux::ExecTimeout>())
+    , flowcontrol(std::make_shared<Native::Line::Aux::Flowcontrol>())
+    , history(nullptr) // presence node
+    , ip(std::make_shared<Native::Line::Aux::Ip>())
+    , ipv6(std::make_shared<Native::Line::Aux::Ipv6>())
+    , logging(std::make_shared<Native::Line::Aux::Logging>())
+    , login(nullptr) // presence node
+    , media_type(std::make_shared<Native::Line::Aux::MediaType>())
+    , modem(std::make_shared<Native::Line::Aux::Modem>())
+    , padding(std::make_shared<Native::Line::Aux::Padding>())
+    , parity(std::make_shared<Native::Line::Aux::Parity>())
+    , password(std::make_shared<Native::Line::Aux::Password>())
+    , prc(std::make_shared<Native::Line::Aux::Prc>())
+    , privilege(std::make_shared<Native::Line::Aux::Privilege>())
+    , session_timeout(std::make_shared<Native::Line::Aux::SessionTimeout>())
+    , timeout(std::make_shared<Native::Line::Aux::Timeout>())
+    , telnet(std::make_shared<Native::Line::Aux::Telnet>())
+    , transport(std::make_shared<Native::Line::Aux::Transport>())
+    , usb_inactivity_timeout(std::make_shared<Native::Line::Aux::UsbInactivityTimeout>())
 {
     authorization->parent = this;
     access_class->parent = this;
@@ -12219,7 +12355,7 @@ Native::Line::Aux::Aux()
     transport->parent = this;
     usb_inactivity_timeout->parent = this;
 
-    yang_name = "aux"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aux"; yang_parent_name = "line"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Line::Aux::~Aux()
@@ -12228,6 +12364,7 @@ Native::Line::Aux::~Aux()
 
 bool Native::Line::Aux::has_data() const
 {
+    if (is_presence_container) return true;
     return first.is_set
 	|| no_activation_character.is_set
 	|| activation_character.is_set
@@ -12353,7 +12490,8 @@ std::string Native::Line::Aux::get_absolute_path() const
 std::string Native::Line::Aux::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "aux" <<"[first='" <<first <<"']";
+    path_buffer << "aux";
+    ADD_KEY_TOKEN(first, "first");
     return path_buffer.str();
 }
 
@@ -13074,7 +13212,7 @@ Native::Line::Aux::Authorization::Authorization()
 {
     command->parent = this;
 
-    yang_name = "authorization"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Authorization::~Authorization()
@@ -13083,6 +13221,7 @@ Native::Line::Aux::Authorization::~Authorization()
 
 bool Native::Line::Aux::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return (command !=  nullptr && command->has_data());
 }
 
@@ -13155,7 +13294,7 @@ Native::Line::Aux::Authorization::Command::Command()
     auth_name{YType::str, "auth-name"}
 {
 
-    yang_name = "command"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "command"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Authorization::Command::~Command()
@@ -13164,6 +13303,7 @@ Native::Line::Aux::Authorization::Command::~Command()
 
 bool Native::Line::Aux::Authorization::Command::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_level.is_set
 	|| auth_name.is_set;
 }
@@ -13241,9 +13381,11 @@ bool Native::Line::Aux::Authorization::Command::has_leaf_or_child_of_name(const 
 }
 
 Native::Line::Aux::AccessClass::AccessClass()
+    :
+    acccess_list(this, {"direction"})
 {
 
-    yang_name = "access-class"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-class"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::AccessClass::~AccessClass()
@@ -13252,7 +13394,8 @@ Native::Line::Aux::AccessClass::~AccessClass()
 
 bool Native::Line::Aux::AccessClass::has_data() const
 {
-    for (std::size_t index=0; index<acccess_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<acccess_list.len(); index++)
     {
         if(acccess_list[index]->has_data())
             return true;
@@ -13262,7 +13405,7 @@ bool Native::Line::Aux::AccessClass::has_data() const
 
 bool Native::Line::Aux::AccessClass::has_operation() const
 {
-    for (std::size_t index=0; index<acccess_list.size(); index++)
+    for (std::size_t index=0; index<acccess_list.len(); index++)
     {
         if(acccess_list[index]->has_operation())
             return true;
@@ -13292,7 +13435,7 @@ std::shared_ptr<Entity> Native::Line::Aux::AccessClass::get_child_by_name(const 
     {
         auto c = std::make_shared<Native::Line::Aux::AccessClass::AcccessList>();
         c->parent = this;
-        acccess_list.push_back(c);
+        acccess_list.append(c);
         return c;
     }
 
@@ -13304,7 +13447,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::AccessClass::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : acccess_list)
+    for (auto c : acccess_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13337,7 +13480,7 @@ Native::Line::Aux::AccessClass::AcccessList::AcccessList()
     vrf_also{YType::empty, "vrf-also"}
 {
 
-    yang_name = "acccess-list"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acccess-list"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::AccessClass::AcccessList::~AcccessList()
@@ -13346,6 +13489,7 @@ Native::Line::Aux::AccessClass::AcccessList::~AcccessList()
 
 bool Native::Line::Aux::AccessClass::AcccessList::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| access_list.is_set
 	|| vrf_also.is_set;
@@ -13362,7 +13506,8 @@ bool Native::Line::Aux::AccessClass::AcccessList::has_operation() const
 std::string Native::Line::Aux::AccessClass::AcccessList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "acccess-list" <<"[direction='" <<direction <<"']";
+    path_buffer << "acccess-list";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -13438,11 +13583,11 @@ bool Native::Line::Aux::AccessClass::AcccessList::has_leaf_or_child_of_name(cons
 Native::Line::Aux::Autocommand::Autocommand()
     :
     line{YType::str, "line"}
-    	,
+        ,
     no_suppress_linenumber(nullptr) // presence node
 {
 
-    yang_name = "autocommand"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autocommand"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Autocommand::~Autocommand()
@@ -13451,6 +13596,7 @@ Native::Line::Aux::Autocommand::~Autocommand()
 
 bool Native::Line::Aux::Autocommand::has_data() const
 {
+    if (is_presence_container) return true;
     return line.is_set
 	|| (no_suppress_linenumber !=  nullptr && no_suppress_linenumber->has_data());
 }
@@ -13535,7 +13681,7 @@ Native::Line::Aux::Autocommand::NoSuppressLinenumber::NoSuppressLinenumber()
     line{YType::str, "line"}
 {
 
-    yang_name = "no-suppress-linenumber"; yang_parent_name = "autocommand"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-suppress-linenumber"; yang_parent_name = "autocommand"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::Autocommand::NoSuppressLinenumber::~NoSuppressLinenumber()
@@ -13544,6 +13690,7 @@ Native::Line::Aux::Autocommand::NoSuppressLinenumber::~NoSuppressLinenumber()
 
 bool Native::Line::Aux::Autocommand::NoSuppressLinenumber::has_data() const
 {
+    if (is_presence_container) return true;
     return line.is_set;
 }
 
@@ -13610,11 +13757,11 @@ bool Native::Line::Aux::Autocommand::NoSuppressLinenumber::has_leaf_or_child_of_
 Native::Line::Aux::AutocommandOptions::AutocommandOptions()
     :
     abort_character(nullptr) // presence node
-	,delay(nullptr) // presence node
-	,nohangup(nullptr) // presence node
+    , delay(nullptr) // presence node
+    , nohangup(nullptr) // presence node
 {
 
-    yang_name = "autocommand-options"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autocommand-options"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::AutocommandOptions::~AutocommandOptions()
@@ -13623,6 +13770,7 @@ Native::Line::Aux::AutocommandOptions::~AutocommandOptions()
 
 bool Native::Line::Aux::AutocommandOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return (abort_character !=  nullptr && abort_character->has_data())
 	|| (delay !=  nullptr && delay->has_data())
 	|| (nohangup !=  nullptr && nohangup->has_data());
@@ -13726,7 +13874,7 @@ Native::Line::Aux::AutocommandOptions::AbortCharacter::AbortCharacter()
     character{YType::str, "character"}
 {
 
-    yang_name = "abort-character"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "abort-character"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::AutocommandOptions::AbortCharacter::~AbortCharacter()
@@ -13735,6 +13883,7 @@ Native::Line::Aux::AutocommandOptions::AbortCharacter::~AbortCharacter()
 
 bool Native::Line::Aux::AutocommandOptions::AbortCharacter::has_data() const
 {
+    if (is_presence_container) return true;
     return character.is_set;
 }
 
@@ -13803,7 +13952,7 @@ Native::Line::Aux::AutocommandOptions::Delay::Delay()
     time{YType::uint8, "time"}
 {
 
-    yang_name = "delay"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::AutocommandOptions::Delay::~Delay()
@@ -13812,6 +13961,7 @@ Native::Line::Aux::AutocommandOptions::Delay::~Delay()
 
 bool Native::Line::Aux::AutocommandOptions::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return time.is_set;
 }
 
@@ -13881,7 +14031,7 @@ Native::Line::Aux::AutocommandOptions::Nohangup::Nohangup()
     delay{YType::empty, "delay"}
 {
 
-    yang_name = "nohangup"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nohangup"; yang_parent_name = "autocommand-options"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::AutocommandOptions::Nohangup::~Nohangup()
@@ -13890,6 +14040,7 @@ Native::Line::Aux::AutocommandOptions::Nohangup::~Nohangup()
 
 bool Native::Line::Aux::AutocommandOptions::Nohangup::has_data() const
 {
+    if (is_presence_container) return true;
     return abort_character.is_set
 	|| delay.is_set;
 }
@@ -13974,7 +14125,7 @@ Native::Line::Aux::Databits::Databits()
     set_to_8{YType::empty, "set-to-8"}
 {
 
-    yang_name = "databits"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "databits"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Databits::~Databits()
@@ -13983,6 +14134,7 @@ Native::Line::Aux::Databits::~Databits()
 
 bool Native::Line::Aux::Databits::has_data() const
 {
+    if (is_presence_container) return true;
     return set_to_5.is_set
 	|| set_to_6.is_set
 	|| set_to_7.is_set
@@ -14091,7 +14243,7 @@ Native::Line::Aux::EscapeCharacter::EscapeCharacter()
     soft{YType::empty, "soft"}
 {
 
-    yang_name = "escape-character"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "escape-character"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::EscapeCharacter::~EscapeCharacter()
@@ -14100,6 +14252,7 @@ Native::Line::Aux::EscapeCharacter::~EscapeCharacter()
 
 bool Native::Line::Aux::EscapeCharacter::has_data() const
 {
+    if (is_presence_container) return true;
     return char_.is_set
 	|| soft.is_set;
 }
@@ -14181,7 +14334,7 @@ Native::Line::Aux::NoExec::NoExec()
     exec{YType::boolean, "exec"}
 {
 
-    yang_name = "no-exec"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-exec"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::NoExec::~NoExec()
@@ -14190,6 +14343,7 @@ Native::Line::Aux::NoExec::~NoExec()
 
 bool Native::Line::Aux::NoExec::has_data() const
 {
+    if (is_presence_container) return true;
     return exec.is_set;
 }
 
@@ -14259,7 +14413,7 @@ Native::Line::Aux::Exec::Exec()
 {
     prompt->parent = this;
 
-    yang_name = "exec"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Exec::~Exec()
@@ -14268,6 +14422,7 @@ Native::Line::Aux::Exec::~Exec()
 
 bool Native::Line::Aux::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return (prompt !=  nullptr && prompt->has_data());
 }
 
@@ -14339,7 +14494,7 @@ Native::Line::Aux::Exec::Prompt::Prompt()
     timestamp{YType::empty, "timestamp"}
 {
 
-    yang_name = "prompt"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prompt"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Exec::Prompt::~Prompt()
@@ -14348,6 +14503,7 @@ Native::Line::Aux::Exec::Prompt::~Prompt()
 
 bool Native::Line::Aux::Exec::Prompt::has_data() const
 {
+    if (is_presence_container) return true;
     return timestamp.is_set;
 }
 
@@ -14417,7 +14573,7 @@ Native::Line::Aux::ExecTimeout::ExecTimeout()
     seconds{YType::uint32, "seconds"}
 {
 
-    yang_name = "exec-timeout"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exec-timeout"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::ExecTimeout::~ExecTimeout()
@@ -14426,6 +14582,7 @@ Native::Line::Aux::ExecTimeout::~ExecTimeout()
 
 bool Native::Line::Aux::ExecTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return minutes.is_set
 	|| seconds.is_set;
 }
@@ -14509,7 +14666,7 @@ Native::Line::Aux::Flowcontrol::Flowcontrol()
     software{YType::empty, "software"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Flowcontrol::~Flowcontrol()
@@ -14518,6 +14675,7 @@ Native::Line::Aux::Flowcontrol::~Flowcontrol()
 
 bool Native::Line::Aux::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| hardware.is_set
 	|| software.is_set;
@@ -14612,7 +14770,7 @@ Native::Line::Aux::History::History()
     size{YType::uint16, "size"}
 {
 
-    yang_name = "history"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::History::~History()
@@ -14621,6 +14779,7 @@ Native::Line::Aux::History::~History()
 
 bool Native::Line::Aux::History::has_data() const
 {
+    if (is_presence_container) return true;
     return size.is_set;
 }
 
@@ -14687,11 +14846,11 @@ bool Native::Line::Aux::History::has_leaf_or_child_of_name(const std::string & n
 Native::Line::Aux::Ip::Ip()
     :
     tcp{YType::empty, "tcp"}
-    	,
+        ,
     netmask_format(nullptr) // presence node
 {
 
-    yang_name = "ip"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Ip::~Ip()
@@ -14700,6 +14859,7 @@ Native::Line::Aux::Ip::~Ip()
 
 bool Native::Line::Aux::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp.is_set
 	|| (netmask_format !=  nullptr && netmask_format->has_data());
 }
@@ -14784,7 +14944,7 @@ Native::Line::Aux::Ip::NetmaskFormat::NetmaskFormat()
     format{YType::enumeration, "format"}
 {
 
-    yang_name = "netmask-format"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "netmask-format"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::Ip::NetmaskFormat::~NetmaskFormat()
@@ -14793,6 +14953,7 @@ Native::Line::Aux::Ip::NetmaskFormat::~NetmaskFormat()
 
 bool Native::Line::Aux::Ip::NetmaskFormat::has_data() const
 {
+    if (is_presence_container) return true;
     return format.is_set;
 }
 
@@ -14862,7 +15023,7 @@ Native::Line::Aux::Ipv6::Ipv6()
 {
     access_class->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Ipv6::~Ipv6()
@@ -14871,6 +15032,7 @@ Native::Line::Aux::Ipv6::~Ipv6()
 
 bool Native::Line::Aux::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (access_class !=  nullptr && access_class->has_data());
 }
 
@@ -14938,9 +15100,11 @@ bool Native::Line::Aux::Ipv6::has_leaf_or_child_of_name(const std::string & name
 }
 
 Native::Line::Aux::Ipv6::AccessClass::AccessClass()
+    :
+    access_class(this, {"access_class_name"})
 {
 
-    yang_name = "access-class"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-class"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Ipv6::AccessClass::~AccessClass()
@@ -14949,7 +15113,8 @@ Native::Line::Aux::Ipv6::AccessClass::~AccessClass()
 
 bool Native::Line::Aux::Ipv6::AccessClass::has_data() const
 {
-    for (std::size_t index=0; index<access_class.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_class.len(); index++)
     {
         if(access_class[index]->has_data())
             return true;
@@ -14959,7 +15124,7 @@ bool Native::Line::Aux::Ipv6::AccessClass::has_data() const
 
 bool Native::Line::Aux::Ipv6::AccessClass::has_operation() const
 {
-    for (std::size_t index=0; index<access_class.size(); index++)
+    for (std::size_t index=0; index<access_class.len(); index++)
     {
         if(access_class[index]->has_operation())
             return true;
@@ -14989,7 +15154,7 @@ std::shared_ptr<Entity> Native::Line::Aux::Ipv6::AccessClass::get_child_by_name(
     {
         auto c = std::make_shared<Native::Line::Aux::Ipv6::AccessClass::AccessClass_>();
         c->parent = this;
-        access_class.push_back(c);
+        access_class.append(c);
         return c;
     }
 
@@ -15001,7 +15166,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Line::Aux::Ipv6::AccessCl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_class)
+    for (auto c : access_class.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15033,7 +15198,7 @@ Native::Line::Aux::Ipv6::AccessClass::AccessClass_::AccessClass_()
     enumeration_in_out{YType::enumeration, "enumeration-in-out"}
 {
 
-    yang_name = "access-class"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-class"; yang_parent_name = "access-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Ipv6::AccessClass::AccessClass_::~AccessClass_()
@@ -15042,6 +15207,7 @@ Native::Line::Aux::Ipv6::AccessClass::AccessClass_::~AccessClass_()
 
 bool Native::Line::Aux::Ipv6::AccessClass::AccessClass_::has_data() const
 {
+    if (is_presence_container) return true;
     return access_class_name.is_set
 	|| enumeration_in_out.is_set;
 }
@@ -15056,7 +15222,8 @@ bool Native::Line::Aux::Ipv6::AccessClass::AccessClass_::has_operation() const
 std::string Native::Line::Aux::Ipv6::AccessClass::AccessClass_::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-class" <<"[access-class-name='" <<access_class_name <<"']";
+    path_buffer << "access-class";
+    ADD_KEY_TOKEN(access_class_name, "access-class-name");
     return path_buffer.str();
 }
 
@@ -15123,7 +15290,7 @@ Native::Line::Aux::Logging::Logging()
     synchronous(nullptr) // presence node
 {
 
-    yang_name = "logging"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Logging::~Logging()
@@ -15132,6 +15299,7 @@ Native::Line::Aux::Logging::~Logging()
 
 bool Native::Line::Aux::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (synchronous !=  nullptr && synchronous->has_data());
 }
 
@@ -15201,7 +15369,7 @@ bool Native::Line::Aux::Logging::has_leaf_or_child_of_name(const std::string & n
 Native::Line::Aux::Logging::Synchronous::Synchronous()
 {
 
-    yang_name = "synchronous"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "synchronous"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::Logging::Synchronous::~Synchronous()
@@ -15210,6 +15378,7 @@ Native::Line::Aux::Logging::Synchronous::~Synchronous()
 
 bool Native::Line::Aux::Logging::Synchronous::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -15265,7 +15434,7 @@ Native::Line::Aux::Login::Login()
     authentication{YType::str, "authentication"}
 {
 
-    yang_name = "login"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "login"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::Login::~Login()
@@ -15274,6 +15443,7 @@ Native::Line::Aux::Login::~Login()
 
 bool Native::Line::Aux::Login::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| authentication.is_set;
 }
@@ -15355,7 +15525,7 @@ Native::Line::Aux::MediaType::MediaType()
     rj45{YType::empty, "rj45"}
 {
 
-    yang_name = "media-type"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "media-type"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::MediaType::~MediaType()
@@ -15364,6 +15534,7 @@ Native::Line::Aux::MediaType::~MediaType()
 
 bool Native::Line::Aux::MediaType::has_data() const
 {
+    if (is_presence_container) return true;
     return rj45.is_set;
 }
 
@@ -15439,7 +15610,7 @@ Native::Line::Aux::Modem::Modem()
     dtr_delay{YType::empty, "dtr-delay"}
 {
 
-    yang_name = "modem"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "modem"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Modem::~Modem()
@@ -15448,6 +15619,7 @@ Native::Line::Aux::Modem::~Modem()
 
 bool Native::Line::Aux::Modem::has_data() const
 {
+    if (is_presence_container) return true;
     return cts_alarm.is_set
 	|| dtr_active.is_set
 	|| dialin.is_set
@@ -15608,7 +15780,7 @@ Native::Line::Aux::Padding::Padding()
     null{YType::uint8, "null"}
 {
 
-    yang_name = "padding"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padding"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Padding::~Padding()
@@ -15617,6 +15789,7 @@ Native::Line::Aux::Padding::~Padding()
 
 bool Native::Line::Aux::Padding::has_data() const
 {
+    if (is_presence_container) return true;
     return character.is_set
 	|| null.is_set;
 }
@@ -15702,7 +15875,7 @@ Native::Line::Aux::Parity::Parity()
     space{YType::empty, "space"}
 {
 
-    yang_name = "parity"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "parity"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Parity::~Parity()
@@ -15711,6 +15884,7 @@ Native::Line::Aux::Parity::~Parity()
 
 bool Native::Line::Aux::Parity::has_data() const
 {
+    if (is_presence_container) return true;
     return even.is_set
 	|| mark.is_set
 	|| none.is_set
@@ -15833,7 +16007,7 @@ Native::Line::Aux::Password::Password()
     secret{YType::str, "secret"}
 {
 
-    yang_name = "password"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Password::~Password()
@@ -15842,6 +16016,7 @@ Native::Line::Aux::Password::~Password()
 
 bool Native::Line::Aux::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| type.is_set
 	|| secret.is_set;
@@ -15937,7 +16112,7 @@ Native::Line::Aux::Prc::Prc()
     hide{YType::empty, "hide"}
 {
 
-    yang_name = "prc"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prc"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Prc::~Prc()
@@ -15946,6 +16121,7 @@ Native::Line::Aux::Prc::~Prc()
 
 bool Native::Line::Aux::Prc::has_data() const
 {
+    if (is_presence_container) return true;
     return expose.is_set
 	|| hide.is_set;
 }
@@ -16027,7 +16203,7 @@ Native::Line::Aux::Privilege::Privilege()
     level(nullptr) // presence node
 {
 
-    yang_name = "privilege"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "privilege"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::Privilege::~Privilege()
@@ -16036,6 +16212,7 @@ Native::Line::Aux::Privilege::~Privilege()
 
 bool Native::Line::Aux::Privilege::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -16107,7 +16284,7 @@ Native::Line::Aux::Privilege::Level::Level()
     number{YType::uint8, "number"}
 {
 
-    yang_name = "level"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "privilege"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Line::Aux::Privilege::Level::~Level()
@@ -16116,6 +16293,7 @@ Native::Line::Aux::Privilege::Level::~Level()
 
 bool Native::Line::Aux::Privilege::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set;
 }
 
@@ -16185,7 +16363,7 @@ Native::Line::Aux::SessionTimeout::SessionTimeout()
     output{YType::empty, "output"}
 {
 
-    yang_name = "session-timeout"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-timeout"; yang_parent_name = "aux"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Line::Aux::SessionTimeout::~SessionTimeout()
@@ -16194,6 +16372,7 @@ Native::Line::Aux::SessionTimeout::~SessionTimeout()
 
 bool Native::Line::Aux::SessionTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return session_timeout_value.is_set
 	|| output.is_set;
 }

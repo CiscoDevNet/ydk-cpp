@@ -17,7 +17,7 @@ PlatformLptspIfibStatic::PlatformLptspIfibStatic()
 {
     node_statics->parent = this;
 
-    yang_name = "platform-lptsp-ifib-static"; yang_parent_name = "Cisco-IOS-XR-asr9k-lpts-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-lptsp-ifib-static"; yang_parent_name = "Cisco-IOS-XR-asr9k-lpts-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformLptspIfibStatic::~PlatformLptspIfibStatic()
@@ -26,6 +26,7 @@ PlatformLptspIfibStatic::~PlatformLptspIfibStatic()
 
 bool PlatformLptspIfibStatic::has_data() const
 {
+    if (is_presence_container) return true;
     return (node_statics !=  nullptr && node_statics->has_data());
 }
 
@@ -118,9 +119,11 @@ bool PlatformLptspIfibStatic::has_leaf_or_child_of_name(const std::string & name
 }
 
 PlatformLptspIfibStatic::NodeStatics::NodeStatics()
+    :
+    node_static(this, {"node_name"})
 {
 
-    yang_name = "node-statics"; yang_parent_name = "platform-lptsp-ifib-static"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-statics"; yang_parent_name = "platform-lptsp-ifib-static"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformLptspIfibStatic::NodeStatics::~NodeStatics()
@@ -129,7 +132,8 @@ PlatformLptspIfibStatic::NodeStatics::~NodeStatics()
 
 bool PlatformLptspIfibStatic::NodeStatics::has_data() const
 {
-    for (std::size_t index=0; index<node_static.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_static.len(); index++)
     {
         if(node_static[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool PlatformLptspIfibStatic::NodeStatics::has_data() const
 
 bool PlatformLptspIfibStatic::NodeStatics::has_operation() const
 {
-    for (std::size_t index=0; index<node_static.size(); index++)
+    for (std::size_t index=0; index<node_static.len(); index++)
     {
         if(node_static[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::get_child_by_name(
     {
         auto c = std::make_shared<PlatformLptspIfibStatic::NodeStatics::NodeStatic>();
         c->parent = this;
-        node_static.push_back(c);
+        node_static.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::NodeStat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_static)
+    for (auto c : node_static.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool PlatformLptspIfibStatic::NodeStatics::has_leaf_or_child_of_name(const std::
 PlatformLptspIfibStatic::NodeStatics::NodeStatic::NodeStatic()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     police(std::make_shared<PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police>())
-	,stats(std::make_shared<PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats>())
+    , stats(std::make_shared<PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats>())
 {
     police->parent = this;
     stats->parent = this;
 
-    yang_name = "node-static"; yang_parent_name = "node-statics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-static"; yang_parent_name = "node-statics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformLptspIfibStatic::NodeStatics::NodeStatic::~NodeStatic()
@@ -233,6 +237,7 @@ PlatformLptspIfibStatic::NodeStatics::NodeStatic::~NodeStatic()
 
 bool PlatformLptspIfibStatic::NodeStatics::NodeStatic::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (police !=  nullptr && police->has_data())
 	|| (stats !=  nullptr && stats->has_data());
@@ -256,7 +261,8 @@ std::string PlatformLptspIfibStatic::NodeStatics::NodeStatic::get_absolute_path(
 std::string PlatformLptspIfibStatic::NodeStatics::NodeStatic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node-static" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node-static";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -336,9 +342,11 @@ bool PlatformLptspIfibStatic::NodeStatics::NodeStatic::has_leaf_or_child_of_name
 }
 
 PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::Police()
+    :
+    static_info(this, {})
 {
 
-    yang_name = "police"; yang_parent_name = "node-static"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "node-static"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::~Police()
@@ -347,7 +355,8 @@ PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::~Police()
 
 bool PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::has_data() const
 {
-    for (std::size_t index=0; index<static_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_info.len(); index++)
     {
         if(static_info[index]->has_data())
             return true;
@@ -357,7 +366,7 @@ bool PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::has_data() const
 
 bool PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::has_operation() const
 {
-    for (std::size_t index=0; index<static_info.size(); index++)
+    for (std::size_t index=0; index<static_info.len(); index++)
     {
         if(static_info[index]->has_operation())
             return true;
@@ -387,7 +396,7 @@ std::shared_ptr<Entity> PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police
     {
         auto c = std::make_shared<PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo>();
         c->parent = this;
-        static_info.push_back(c);
+        static_info.append(c);
         return c;
     }
 
@@ -399,7 +408,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibStatic::NodeStat
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_info)
+    for (auto c : static_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -437,7 +446,7 @@ PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo::StaticInfo
     change_type{YType::uint8, "change-type"}
 {
 
-    yang_name = "static-info"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-info"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo::~StaticInfo()
@@ -446,6 +455,7 @@ PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo::~StaticInf
 
 bool PlatformLptspIfibStatic::NodeStatics::NodeStatic::Police::StaticInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return punt_reason.is_set
 	|| sid.is_set
 	|| flow_rate.is_set
@@ -608,7 +618,7 @@ PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats::Stats()
     no_stats_mem_err{YType::uint64, "no-stats-mem-err"}
 {
 
-    yang_name = "stats"; yang_parent_name = "node-static"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "node-static"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats::~Stats()
@@ -617,6 +627,7 @@ PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats::~Stats()
 
 bool PlatformLptspIfibStatic::NodeStatics::NodeStatic::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return accepted.is_set
 	|| dropped.is_set
 	|| clear_ts.is_set
@@ -725,7 +736,7 @@ PlatformLptspIfib::PlatformLptspIfib()
 {
     nodes->parent = this;
 
-    yang_name = "platform-lptsp-ifib"; yang_parent_name = "Cisco-IOS-XR-asr9k-lpts-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-lptsp-ifib"; yang_parent_name = "Cisco-IOS-XR-asr9k-lpts-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformLptspIfib::~PlatformLptspIfib()
@@ -734,6 +745,7 @@ PlatformLptspIfib::~PlatformLptspIfib()
 
 bool PlatformLptspIfib::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -826,9 +838,11 @@ bool PlatformLptspIfib::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 PlatformLptspIfib::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "platform-lptsp-ifib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "platform-lptsp-ifib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformLptspIfib::Nodes::~Nodes()
@@ -837,7 +851,8 @@ PlatformLptspIfib::Nodes::~Nodes()
 
 bool PlatformLptspIfib::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -847,7 +862,7 @@ bool PlatformLptspIfib::Nodes::has_data() const
 
 bool PlatformLptspIfib::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -884,7 +899,7 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::get_child_by_name(const std::s
     {
         auto c = std::make_shared<PlatformLptspIfib::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -896,7 +911,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::Nodes::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -925,14 +940,14 @@ bool PlatformLptspIfib::Nodes::has_leaf_or_child_of_name(const std::string & nam
 PlatformLptspIfib::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     police(std::make_shared<PlatformLptspIfib::Nodes::Node::Police>())
-	,stats(std::make_shared<PlatformLptspIfib::Nodes::Node::Stats>())
+    , stats(std::make_shared<PlatformLptspIfib::Nodes::Node::Stats>())
 {
     police->parent = this;
     stats->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformLptspIfib::Nodes::Node::~Node()
@@ -941,6 +956,7 @@ PlatformLptspIfib::Nodes::Node::~Node()
 
 bool PlatformLptspIfib::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (police !=  nullptr && police->has_data())
 	|| (stats !=  nullptr && stats->has_data());
@@ -964,7 +980,8 @@ std::string PlatformLptspIfib::Nodes::Node::get_absolute_path() const
 std::string PlatformLptspIfib::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1044,9 +1061,11 @@ bool PlatformLptspIfib::Nodes::Node::has_leaf_or_child_of_name(const std::string
 }
 
 PlatformLptspIfib::Nodes::Node::Police::Police()
+    :
+    police_info(this, {})
 {
 
-    yang_name = "police"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfib::Nodes::Node::Police::~Police()
@@ -1055,7 +1074,8 @@ PlatformLptspIfib::Nodes::Node::Police::~Police()
 
 bool PlatformLptspIfib::Nodes::Node::Police::has_data() const
 {
-    for (std::size_t index=0; index<police_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<police_info.len(); index++)
     {
         if(police_info[index]->has_data())
             return true;
@@ -1065,7 +1085,7 @@ bool PlatformLptspIfib::Nodes::Node::Police::has_data() const
 
 bool PlatformLptspIfib::Nodes::Node::Police::has_operation() const
 {
-    for (std::size_t index=0; index<police_info.size(); index++)
+    for (std::size_t index=0; index<police_info.len(); index++)
     {
         if(police_info[index]->has_operation())
             return true;
@@ -1095,7 +1115,7 @@ std::shared_ptr<Entity> PlatformLptspIfib::Nodes::Node::Police::get_child_by_nam
     {
         auto c = std::make_shared<PlatformLptspIfib::Nodes::Node::Police::PoliceInfo>();
         c->parent = this;
-        police_info.push_back(c);
+        police_info.append(c);
         return c;
     }
 
@@ -1107,7 +1127,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfib::Nodes::Node::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : police_info)
+    for (auto c : police_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1149,7 +1169,7 @@ PlatformLptspIfib::Nodes::Node::Police::PoliceInfo::PoliceInfo()
     acl_str{YType::str, "acl-str"}
 {
 
-    yang_name = "police-info"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-info"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfib::Nodes::Node::Police::PoliceInfo::~PoliceInfo()
@@ -1158,6 +1178,7 @@ PlatformLptspIfib::Nodes::Node::Police::PoliceInfo::~PoliceInfo()
 
 bool PlatformLptspIfib::Nodes::Node::Police::PoliceInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return avgrate.is_set
 	|| burst.is_set
 	|| static_avgrate.is_set
@@ -1372,7 +1393,7 @@ PlatformLptspIfib::Nodes::Node::Stats::Stats()
     no_stats_mem_err{YType::uint64, "no-stats-mem-err"}
 {
 
-    yang_name = "stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfib::Nodes::Node::Stats::~Stats()
@@ -1381,6 +1402,7 @@ PlatformLptspIfib::Nodes::Node::Stats::~Stats()
 
 bool PlatformLptspIfib::Nodes::Node::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return accepted.is_set
 	|| dropped.is_set
 	|| clear_ts.is_set
@@ -1489,7 +1511,7 @@ PlatformLptspIfibNpStats::PlatformLptspIfibNpStats()
 {
     node_np_stats->parent = this;
 
-    yang_name = "platform-lptsp-ifib-np-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-lpts-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "platform-lptsp-ifib-np-stats"; yang_parent_name = "Cisco-IOS-XR-asr9k-lpts-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PlatformLptspIfibNpStats::~PlatformLptspIfibNpStats()
@@ -1498,6 +1520,7 @@ PlatformLptspIfibNpStats::~PlatformLptspIfibNpStats()
 
 bool PlatformLptspIfibNpStats::has_data() const
 {
+    if (is_presence_container) return true;
     return (node_np_stats !=  nullptr && node_np_stats->has_data());
 }
 
@@ -1590,9 +1613,11 @@ bool PlatformLptspIfibNpStats::has_leaf_or_child_of_name(const std::string & nam
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStats()
+    :
+    node_np_stat(this, {"node_name"})
 {
 
-    yang_name = "node-np-stats"; yang_parent_name = "platform-lptsp-ifib-np-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-np-stats"; yang_parent_name = "platform-lptsp-ifib-np-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::~NodeNpStats()
@@ -1601,7 +1626,8 @@ PlatformLptspIfibNpStats::NodeNpStats::~NodeNpStats()
 
 bool PlatformLptspIfibNpStats::NodeNpStats::has_data() const
 {
-    for (std::size_t index=0; index<node_np_stat.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node_np_stat.len(); index++)
     {
         if(node_np_stat[index]->has_data())
             return true;
@@ -1611,7 +1637,7 @@ bool PlatformLptspIfibNpStats::NodeNpStats::has_data() const
 
 bool PlatformLptspIfibNpStats::NodeNpStats::has_operation() const
 {
-    for (std::size_t index=0; index<node_np_stat.size(); index++)
+    for (std::size_t index=0; index<node_np_stat.len(); index++)
     {
         if(node_np_stat[index]->has_operation())
             return true;
@@ -1648,7 +1674,7 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::get_child_by_name
     {
         auto c = std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat>();
         c->parent = this;
-        node_np_stat.push_back(c);
+        node_np_stat.append(c);
         return c;
     }
 
@@ -1660,7 +1686,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node_np_stat)
+    for (auto c : node_np_stat.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1689,12 +1715,12 @@ bool PlatformLptspIfibNpStats::NodeNpStats::has_leaf_or_child_of_name(const std:
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::NodeNpStat()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     nps(std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps>())
 {
     nps->parent = this;
 
-    yang_name = "node-np-stat"; yang_parent_name = "node-np-stats"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-np-stat"; yang_parent_name = "node-np-stats"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::~NodeNpStat()
@@ -1703,6 +1729,7 @@ PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::~NodeNpStat()
 
 bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (nps !=  nullptr && nps->has_data());
 }
@@ -1724,7 +1751,8 @@ std::string PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::get_absolute_path
 std::string PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node-np-stat" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node-np-stat";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1790,9 +1818,11 @@ bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::has_leaf_or_child_of_nam
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Nps()
+    :
+    np(this, {"np_name"})
 {
 
-    yang_name = "nps"; yang_parent_name = "node-np-stat"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nps"; yang_parent_name = "node-np-stat"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::~Nps()
@@ -1801,7 +1831,8 @@ PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::~Nps()
 
 bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::has_data() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<np.len(); index++)
     {
         if(np[index]->has_data())
             return true;
@@ -1811,7 +1842,7 @@ bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::has_data() const
 
 bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::has_operation() const
 {
-    for (std::size_t index=0; index<np.size(); index++)
+    for (std::size_t index=0; index<np.len(); index++)
     {
         if(np[index]->has_operation())
             return true;
@@ -1841,7 +1872,7 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
     {
         auto c = std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np>();
         c->parent = this;
-        np.push_back(c);
+        np.append(c);
         return c;
     }
 
@@ -1853,7 +1884,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : np)
+    for (auto c : np.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1882,12 +1913,12 @@ bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::has_leaf_or_child_o
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::Np()
     :
     np_name{YType::str, "np-name"}
-    	,
+        ,
     np_police(std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice>())
 {
     np_police->parent = this;
 
-    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np"; yang_parent_name = "nps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::~Np()
@@ -1896,6 +1927,7 @@ PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::~Np()
 
 bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::has_data() const
 {
+    if (is_presence_container) return true;
     return np_name.is_set
 	|| (np_police !=  nullptr && np_police->has_data());
 }
@@ -1910,7 +1942,8 @@ bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::has_operation()
 std::string PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "np" <<"[np-name='" <<np_name <<"']";
+    path_buffer << "np";
+    ADD_KEY_TOKEN(np_name, "np-name");
     return path_buffer.str();
 }
 
@@ -1976,9 +2009,11 @@ bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::has_leaf_or_chi
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::NpPolice()
+    :
+    police_info(this, {})
 {
 
-    yang_name = "np-police"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np-police"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::~NpPolice()
@@ -1987,7 +2022,8 @@ PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::~NpPolice(
 
 bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::has_data() const
 {
-    for (std::size_t index=0; index<police_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<police_info.len(); index++)
     {
         if(police_info[index]->has_data())
             return true;
@@ -1997,7 +2033,7 @@ bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::has_d
 
 bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::has_operation() const
 {
-    for (std::size_t index=0; index<police_info.size(); index++)
+    for (std::size_t index=0; index<police_info.len(); index++)
     {
         if(police_info[index]->has_operation())
             return true;
@@ -2027,7 +2063,7 @@ std::shared_ptr<Entity> PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::
     {
         auto c = std::make_shared<PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo>();
         c->parent = this;
-        police_info.push_back(c);
+        police_info.append(c);
         return c;
     }
 
@@ -2039,7 +2075,7 @@ std::map<std::string, std::shared_ptr<Entity>> PlatformLptspIfibNpStats::NodeNpS
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : police_info)
+    for (auto c : police_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2081,7 +2117,7 @@ PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo
     acl_str{YType::str, "acl-str"}
 {
 
-    yang_name = "police-info"; yang_parent_name = "np-police"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "police-info"; yang_parent_name = "np-police"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo::~PoliceInfo()
@@ -2090,6 +2126,7 @@ PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo
 
 bool PlatformLptspIfibNpStats::NodeNpStats::NodeNpStat::Nps::Np::NpPolice::PoliceInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return avgrate.is_set
 	|| burst.is_set
 	|| static_avgrate.is_set

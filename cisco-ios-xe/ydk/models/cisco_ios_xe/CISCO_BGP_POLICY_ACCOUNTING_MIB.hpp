@@ -31,18 +31,18 @@ class CISCOBGPPOLICYACCOUNTINGMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cbpaccttable; //type: CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable
+        class CbpAcctTable; //type: CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_BGP_POLICY_ACCOUNTING_MIB::CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable> cbpaccttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_BGP_POLICY_ACCOUNTING_MIB::CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable> cbpaccttable;
         
 }; // CISCOBGPPOLICYACCOUNTINGMIB
 
 
-class CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable : public ydk::Entity
+class CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable : public ydk::Entity
 {
     public:
-        Cbpaccttable();
-        ~Cbpaccttable();
+        CbpAcctTable();
+        ~CbpAcctTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,18 +55,18 @@ class CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cbpacctentry; //type: CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry
+        class CbpAcctEntry; //type: CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_BGP_POLICY_ACCOUNTING_MIB::CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry> > cbpacctentry;
+        ydk::YList cbpacctentry;
         
-}; // CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable
+}; // CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable
 
 
-class CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry : public ydk::Entity
+class CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry : public ydk::Entity
 {
     public:
-        Cbpacctentry();
-        ~Cbpacctentry();
+        CbpAcctEntry();
+        ~CbpAcctEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,7 +79,7 @@ class CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cbpaccttrafficindex; //type: int32
         ydk::YLeaf cbpacctinpacketcount; //type: uint64
@@ -87,7 +87,7 @@ class CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry : public ydk::Enti
         ydk::YLeaf cbpacctoutpacketcount; //type: uint64
         ydk::YLeaf cbpacctoutoctetcount; //type: uint64
 
-}; // CISCOBGPPOLICYACCOUNTINGMIB::Cbpaccttable::Cbpacctentry
+}; // CISCOBGPPOLICYACCOUNTINGMIB::CbpAcctTable::CbpAcctEntry
 
 
 }

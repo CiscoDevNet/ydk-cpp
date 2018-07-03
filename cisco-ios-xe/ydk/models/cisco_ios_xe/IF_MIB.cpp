@@ -14,10 +14,10 @@ namespace IF_MIB {
 IFMIB::IFMIB()
     :
     interfaces(std::make_shared<IFMIB::Interfaces>())
-	,ifmibobjects(std::make_shared<IFMIB::Ifmibobjects>())
-	,iftable(std::make_shared<IFMIB::Iftable>())
-	,ifstacktable(std::make_shared<IFMIB::Ifstacktable>())
-	,ifrcvaddresstable(std::make_shared<IFMIB::Ifrcvaddresstable>())
+    , ifmibobjects(std::make_shared<IFMIB::IfMIBObjects>())
+    , iftable(std::make_shared<IFMIB::IfTable>())
+    , ifstacktable(std::make_shared<IFMIB::IfStackTable>())
+    , ifrcvaddresstable(std::make_shared<IFMIB::IfRcvAddressTable>())
 {
     interfaces->parent = this;
     ifmibobjects->parent = this;
@@ -25,7 +25,7 @@ IFMIB::IFMIB()
     ifstacktable->parent = this;
     ifrcvaddresstable->parent = this;
 
-    yang_name = "IF-MIB"; yang_parent_name = "IF-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "IF-MIB"; yang_parent_name = "IF-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IFMIB::~IFMIB()
@@ -34,6 +34,7 @@ IFMIB::~IFMIB()
 
 bool IFMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data())
 	|| (ifmibobjects !=  nullptr && ifmibobjects->has_data())
 	|| (iftable !=  nullptr && iftable->has_data())
@@ -82,7 +83,7 @@ std::shared_ptr<Entity> IFMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ifmibobjects == nullptr)
         {
-            ifmibobjects = std::make_shared<IFMIB::Ifmibobjects>();
+            ifmibobjects = std::make_shared<IFMIB::IfMIBObjects>();
         }
         return ifmibobjects;
     }
@@ -91,7 +92,7 @@ std::shared_ptr<Entity> IFMIB::get_child_by_name(const std::string & child_yang_
     {
         if(iftable == nullptr)
         {
-            iftable = std::make_shared<IFMIB::Iftable>();
+            iftable = std::make_shared<IFMIB::IfTable>();
         }
         return iftable;
     }
@@ -100,7 +101,7 @@ std::shared_ptr<Entity> IFMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ifstacktable == nullptr)
         {
-            ifstacktable = std::make_shared<IFMIB::Ifstacktable>();
+            ifstacktable = std::make_shared<IFMIB::IfStackTable>();
         }
         return ifstacktable;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> IFMIB::get_child_by_name(const std::string & child_yang_
     {
         if(ifrcvaddresstable == nullptr)
         {
-            ifrcvaddresstable = std::make_shared<IFMIB::Ifrcvaddresstable>();
+            ifrcvaddresstable = std::make_shared<IFMIB::IfRcvAddressTable>();
         }
         return ifrcvaddresstable;
     }
@@ -194,7 +195,7 @@ IFMIB::Interfaces::Interfaces()
     ifnumber{YType::int32, "ifNumber"}
 {
 
-    yang_name = "interfaces"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IFMIB::Interfaces::~Interfaces()
@@ -203,6 +204,7 @@ IFMIB::Interfaces::~Interfaces()
 
 bool IFMIB::Interfaces::has_data() const
 {
+    if (is_presence_container) return true;
     return ifnumber.is_set;
 }
 
@@ -273,47 +275,48 @@ bool IFMIB::Interfaces::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-IFMIB::Ifmibobjects::Ifmibobjects()
+IFMIB::IfMIBObjects::IfMIBObjects()
     :
     iftablelastchange{YType::uint32, "ifTableLastChange"},
     ifstacklastchange{YType::uint32, "ifStackLastChange"}
 {
 
-    yang_name = "ifMIBObjects"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifMIBObjects"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IFMIB::Ifmibobjects::~Ifmibobjects()
+IFMIB::IfMIBObjects::~IfMIBObjects()
 {
 }
 
-bool IFMIB::Ifmibobjects::has_data() const
+bool IFMIB::IfMIBObjects::has_data() const
 {
+    if (is_presence_container) return true;
     return iftablelastchange.is_set
 	|| ifstacklastchange.is_set;
 }
 
-bool IFMIB::Ifmibobjects::has_operation() const
+bool IFMIB::IfMIBObjects::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(iftablelastchange.yfilter)
 	|| ydk::is_set(ifstacklastchange.yfilter);
 }
 
-std::string IFMIB::Ifmibobjects::get_absolute_path() const
+std::string IFMIB::IfMIBObjects::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IF-MIB:IF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IFMIB::Ifmibobjects::get_segment_path() const
+std::string IFMIB::IfMIBObjects::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ifMIBObjects";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IFMIB::Ifmibobjects::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IFMIB::IfMIBObjects::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -324,19 +327,19 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Ifmibobjects::get_name_lea
 
 }
 
-std::shared_ptr<Entity> IFMIB::Ifmibobjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IFMIB::IfMIBObjects::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifmibobjects::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfMIBObjects::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IFMIB::Ifmibobjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IFMIB::IfMIBObjects::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifTableLastChange")
     {
@@ -352,7 +355,7 @@ void IFMIB::Ifmibobjects::set_value(const std::string & value_path, const std::s
     }
 }
 
-void IFMIB::Ifmibobjects::set_filter(const std::string & value_path, YFilter yfilter)
+void IFMIB::IfMIBObjects::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifTableLastChange")
     {
@@ -364,26 +367,29 @@ void IFMIB::Ifmibobjects::set_filter(const std::string & value_path, YFilter yfi
     }
 }
 
-bool IFMIB::Ifmibobjects::has_leaf_or_child_of_name(const std::string & name) const
+bool IFMIB::IfMIBObjects::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifTableLastChange" || name == "ifStackLastChange")
         return true;
     return false;
 }
 
-IFMIB::Iftable::Iftable()
+IFMIB::IfTable::IfTable()
+    :
+    ifentry(this, {"ifindex"})
 {
 
-    yang_name = "ifTable"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifTable"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IFMIB::Iftable::~Iftable()
+IFMIB::IfTable::~IfTable()
 {
 }
 
-bool IFMIB::Iftable::has_data() const
+bool IFMIB::IfTable::has_data() const
 {
-    for (std::size_t index=0; index<ifentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifentry.len(); index++)
     {
         if(ifentry[index]->has_data())
             return true;
@@ -391,9 +397,9 @@ bool IFMIB::Iftable::has_data() const
     return false;
 }
 
-bool IFMIB::Iftable::has_operation() const
+bool IFMIB::IfTable::has_operation() const
 {
-    for (std::size_t index=0; index<ifentry.size(); index++)
+    for (std::size_t index=0; index<ifentry.len(); index++)
     {
         if(ifentry[index]->has_operation())
             return true;
@@ -401,21 +407,21 @@ bool IFMIB::Iftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IFMIB::Iftable::get_absolute_path() const
+std::string IFMIB::IfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IF-MIB:IF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IFMIB::Iftable::get_segment_path() const
+std::string IFMIB::IfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ifTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IFMIB::Iftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IFMIB::IfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -424,25 +430,25 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Iftable::get_name_leaf_dat
 
 }
 
-std::shared_ptr<Entity> IFMIB::Iftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IFMIB::IfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifEntry")
     {
-        auto c = std::make_shared<IFMIB::Iftable::Ifentry>();
+        auto c = std::make_shared<IFMIB::IfTable::IfEntry>();
         c->parent = this;
-        ifentry.push_back(c);
+        ifentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Iftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifentry)
+    for (auto c : ifentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -453,22 +459,22 @@ std::map<std::string, std::shared_ptr<Entity>> IFMIB::Iftable::get_children() co
     return children;
 }
 
-void IFMIB::Iftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IFMIB::IfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IFMIB::Iftable::set_filter(const std::string & value_path, YFilter yfilter)
+void IFMIB::IfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IFMIB::Iftable::has_leaf_or_child_of_name(const std::string & name) const
+bool IFMIB::IfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifEntry")
         return true;
     return false;
 }
 
-IFMIB::Iftable::Ifentry::Ifentry()
+IFMIB::IfTable::IfEntry::IfEntry()
     :
     ifindex{YType::int32, "ifIndex"},
     ifdescr{YType::str, "ifDescr"},
@@ -519,15 +525,16 @@ IFMIB::Iftable::Ifentry::Ifentry()
     iftestowner{YType::str, "ifTestOwner"}
 {
 
-    yang_name = "ifEntry"; yang_parent_name = "ifTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifEntry"; yang_parent_name = "ifTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IFMIB::Iftable::Ifentry::~Ifentry()
+IFMIB::IfTable::IfEntry::~IfEntry()
 {
 }
 
-bool IFMIB::Iftable::Ifentry::has_data() const
+bool IFMIB::IfTable::IfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| ifdescr.is_set
 	|| iftype.is_set
@@ -577,7 +584,7 @@ bool IFMIB::Iftable::Ifentry::has_data() const
 	|| iftestowner.is_set;
 }
 
-bool IFMIB::Iftable::Ifentry::has_operation() const
+bool IFMIB::IfTable::IfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -629,21 +636,22 @@ bool IFMIB::Iftable::Ifentry::has_operation() const
 	|| ydk::is_set(iftestowner.yfilter);
 }
 
-std::string IFMIB::Iftable::Ifentry::get_absolute_path() const
+std::string IFMIB::IfTable::IfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IF-MIB:IF-MIB/ifTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IFMIB::Iftable::Ifentry::get_segment_path() const
+std::string IFMIB::IfTable::IfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "ifEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IFMIB::Iftable::Ifentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IFMIB::IfTable::IfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -699,19 +707,19 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Iftable::Ifentry::get_name
 
 }
 
-std::shared_ptr<Entity> IFMIB::Iftable::Ifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IFMIB::IfTable::IfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Iftable::Ifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfTable::IfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IFMIB::Iftable::Ifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IFMIB::IfTable::IfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -997,7 +1005,7 @@ void IFMIB::Iftable::Ifentry::set_value(const std::string & value_path, const st
     }
 }
 
-void IFMIB::Iftable::Ifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IFMIB::IfTable::IfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1189,26 +1197,29 @@ void IFMIB::Iftable::Ifentry::set_filter(const std::string & value_path, YFilter
     }
 }
 
-bool IFMIB::Iftable::Ifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IFMIB::IfTable::IfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "ifDescr" || name == "ifType" || name == "ifMtu" || name == "ifSpeed" || name == "ifPhysAddress" || name == "ifAdminStatus" || name == "ifOperStatus" || name == "ifLastChange" || name == "ifInOctets" || name == "ifInUcastPkts" || name == "ifInNUcastPkts" || name == "ifInDiscards" || name == "ifInErrors" || name == "ifInUnknownProtos" || name == "ifOutOctets" || name == "ifOutUcastPkts" || name == "ifOutNUcastPkts" || name == "ifOutDiscards" || name == "ifOutErrors" || name == "ifOutQLen" || name == "ifSpecific" || name == "ifName" || name == "ifInMulticastPkts" || name == "ifInBroadcastPkts" || name == "ifOutMulticastPkts" || name == "ifOutBroadcastPkts" || name == "ifHCInOctets" || name == "ifHCInUcastPkts" || name == "ifHCInMulticastPkts" || name == "ifHCInBroadcastPkts" || name == "ifHCOutOctets" || name == "ifHCOutUcastPkts" || name == "ifHCOutMulticastPkts" || name == "ifHCOutBroadcastPkts" || name == "ifLinkUpDownTrapEnable" || name == "ifHighSpeed" || name == "ifPromiscuousMode" || name == "ifConnectorPresent" || name == "ifAlias" || name == "ifCounterDiscontinuityTime" || name == "ifTestId" || name == "ifTestStatus" || name == "ifTestType" || name == "ifTestResult" || name == "ifTestCode" || name == "ifTestOwner")
         return true;
     return false;
 }
 
-IFMIB::Ifstacktable::Ifstacktable()
+IFMIB::IfStackTable::IfStackTable()
+    :
+    ifstackentry(this, {"ifstackhigherlayer", "ifstacklowerlayer"})
 {
 
-    yang_name = "ifStackTable"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifStackTable"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IFMIB::Ifstacktable::~Ifstacktable()
+IFMIB::IfStackTable::~IfStackTable()
 {
 }
 
-bool IFMIB::Ifstacktable::has_data() const
+bool IFMIB::IfStackTable::has_data() const
 {
-    for (std::size_t index=0; index<ifstackentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifstackentry.len(); index++)
     {
         if(ifstackentry[index]->has_data())
             return true;
@@ -1216,9 +1227,9 @@ bool IFMIB::Ifstacktable::has_data() const
     return false;
 }
 
-bool IFMIB::Ifstacktable::has_operation() const
+bool IFMIB::IfStackTable::has_operation() const
 {
-    for (std::size_t index=0; index<ifstackentry.size(); index++)
+    for (std::size_t index=0; index<ifstackentry.len(); index++)
     {
         if(ifstackentry[index]->has_operation())
             return true;
@@ -1226,21 +1237,21 @@ bool IFMIB::Ifstacktable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IFMIB::Ifstacktable::get_absolute_path() const
+std::string IFMIB::IfStackTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IF-MIB:IF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IFMIB::Ifstacktable::get_segment_path() const
+std::string IFMIB::IfStackTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ifStackTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IFMIB::Ifstacktable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IFMIB::IfStackTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1249,25 +1260,25 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Ifstacktable::get_name_lea
 
 }
 
-std::shared_ptr<Entity> IFMIB::Ifstacktable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IFMIB::IfStackTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifStackEntry")
     {
-        auto c = std::make_shared<IFMIB::Ifstacktable::Ifstackentry>();
+        auto c = std::make_shared<IFMIB::IfStackTable::IfStackEntry>();
         c->parent = this;
-        ifstackentry.push_back(c);
+        ifstackentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifstacktable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfStackTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifstackentry)
+    for (auto c : ifstackentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1278,43 +1289,44 @@ std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifstacktable::get_children
     return children;
 }
 
-void IFMIB::Ifstacktable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IFMIB::IfStackTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IFMIB::Ifstacktable::set_filter(const std::string & value_path, YFilter yfilter)
+void IFMIB::IfStackTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IFMIB::Ifstacktable::has_leaf_or_child_of_name(const std::string & name) const
+bool IFMIB::IfStackTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifStackEntry")
         return true;
     return false;
 }
 
-IFMIB::Ifstacktable::Ifstackentry::Ifstackentry()
+IFMIB::IfStackTable::IfStackEntry::IfStackEntry()
     :
     ifstackhigherlayer{YType::int32, "ifStackHigherLayer"},
     ifstacklowerlayer{YType::int32, "ifStackLowerLayer"},
     ifstackstatus{YType::enumeration, "ifStackStatus"}
 {
 
-    yang_name = "ifStackEntry"; yang_parent_name = "ifStackTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifStackEntry"; yang_parent_name = "ifStackTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IFMIB::Ifstacktable::Ifstackentry::~Ifstackentry()
+IFMIB::IfStackTable::IfStackEntry::~IfStackEntry()
 {
 }
 
-bool IFMIB::Ifstacktable::Ifstackentry::has_data() const
+bool IFMIB::IfStackTable::IfStackEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifstackhigherlayer.is_set
 	|| ifstacklowerlayer.is_set
 	|| ifstackstatus.is_set;
 }
 
-bool IFMIB::Ifstacktable::Ifstackentry::has_operation() const
+bool IFMIB::IfStackTable::IfStackEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifstackhigherlayer.yfilter)
@@ -1322,21 +1334,23 @@ bool IFMIB::Ifstacktable::Ifstackentry::has_operation() const
 	|| ydk::is_set(ifstackstatus.yfilter);
 }
 
-std::string IFMIB::Ifstacktable::Ifstackentry::get_absolute_path() const
+std::string IFMIB::IfStackTable::IfStackEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IF-MIB:IF-MIB/ifStackTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IFMIB::Ifstacktable::Ifstackentry::get_segment_path() const
+std::string IFMIB::IfStackTable::IfStackEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifStackEntry" <<"[ifStackHigherLayer='" <<ifstackhigherlayer <<"']" <<"[ifStackLowerLayer='" <<ifstacklowerlayer <<"']";
+    path_buffer << "ifStackEntry";
+    ADD_KEY_TOKEN(ifstackhigherlayer, "ifStackHigherLayer");
+    ADD_KEY_TOKEN(ifstacklowerlayer, "ifStackLowerLayer");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IFMIB::Ifstacktable::Ifstackentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IFMIB::IfStackTable::IfStackEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1348,19 +1362,19 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Ifstacktable::Ifstackentry
 
 }
 
-std::shared_ptr<Entity> IFMIB::Ifstacktable::Ifstackentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IFMIB::IfStackTable::IfStackEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifstacktable::Ifstackentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfStackTable::IfStackEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IFMIB::Ifstacktable::Ifstackentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IFMIB::IfStackTable::IfStackEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifStackHigherLayer")
     {
@@ -1382,7 +1396,7 @@ void IFMIB::Ifstacktable::Ifstackentry::set_value(const std::string & value_path
     }
 }
 
-void IFMIB::Ifstacktable::Ifstackentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IFMIB::IfStackTable::IfStackEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifStackHigherLayer")
     {
@@ -1398,26 +1412,29 @@ void IFMIB::Ifstacktable::Ifstackentry::set_filter(const std::string & value_pat
     }
 }
 
-bool IFMIB::Ifstacktable::Ifstackentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IFMIB::IfStackTable::IfStackEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifStackHigherLayer" || name == "ifStackLowerLayer" || name == "ifStackStatus")
         return true;
     return false;
 }
 
-IFMIB::Ifrcvaddresstable::Ifrcvaddresstable()
+IFMIB::IfRcvAddressTable::IfRcvAddressTable()
+    :
+    ifrcvaddressentry(this, {"ifindex", "ifrcvaddressaddress"})
 {
 
-    yang_name = "ifRcvAddressTable"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifRcvAddressTable"; yang_parent_name = "IF-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IFMIB::Ifrcvaddresstable::~Ifrcvaddresstable()
+IFMIB::IfRcvAddressTable::~IfRcvAddressTable()
 {
 }
 
-bool IFMIB::Ifrcvaddresstable::has_data() const
+bool IFMIB::IfRcvAddressTable::has_data() const
 {
-    for (std::size_t index=0; index<ifrcvaddressentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifrcvaddressentry.len(); index++)
     {
         if(ifrcvaddressentry[index]->has_data())
             return true;
@@ -1425,9 +1442,9 @@ bool IFMIB::Ifrcvaddresstable::has_data() const
     return false;
 }
 
-bool IFMIB::Ifrcvaddresstable::has_operation() const
+bool IFMIB::IfRcvAddressTable::has_operation() const
 {
-    for (std::size_t index=0; index<ifrcvaddressentry.size(); index++)
+    for (std::size_t index=0; index<ifrcvaddressentry.len(); index++)
     {
         if(ifrcvaddressentry[index]->has_operation())
             return true;
@@ -1435,21 +1452,21 @@ bool IFMIB::Ifrcvaddresstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string IFMIB::Ifrcvaddresstable::get_absolute_path() const
+std::string IFMIB::IfRcvAddressTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IF-MIB:IF-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IFMIB::Ifrcvaddresstable::get_segment_path() const
+std::string IFMIB::IfRcvAddressTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ifRcvAddressTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IFMIB::Ifrcvaddresstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IFMIB::IfRcvAddressTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1458,25 +1475,25 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Ifrcvaddresstable::get_nam
 
 }
 
-std::shared_ptr<Entity> IFMIB::Ifrcvaddresstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IFMIB::IfRcvAddressTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ifRcvAddressEntry")
     {
-        auto c = std::make_shared<IFMIB::Ifrcvaddresstable::Ifrcvaddressentry>();
+        auto c = std::make_shared<IFMIB::IfRcvAddressTable::IfRcvAddressEntry>();
         c->parent = this;
-        ifrcvaddressentry.push_back(c);
+        ifrcvaddressentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifrcvaddresstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfRcvAddressTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifrcvaddressentry)
+    for (auto c : ifrcvaddressentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1487,22 +1504,22 @@ std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifrcvaddresstable::get_chi
     return children;
 }
 
-void IFMIB::Ifrcvaddresstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IFMIB::IfRcvAddressTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void IFMIB::Ifrcvaddresstable::set_filter(const std::string & value_path, YFilter yfilter)
+void IFMIB::IfRcvAddressTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool IFMIB::Ifrcvaddresstable::has_leaf_or_child_of_name(const std::string & name) const
+bool IFMIB::IfRcvAddressTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifRcvAddressEntry")
         return true;
     return false;
 }
 
-IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddressentry()
+IFMIB::IfRcvAddressTable::IfRcvAddressEntry::IfRcvAddressEntry()
     :
     ifindex{YType::str, "ifIndex"},
     ifrcvaddressaddress{YType::str, "ifRcvAddressAddress"},
@@ -1510,22 +1527,23 @@ IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddressentry()
     ifrcvaddresstype{YType::enumeration, "ifRcvAddressType"}
 {
 
-    yang_name = "ifRcvAddressEntry"; yang_parent_name = "ifRcvAddressTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifRcvAddressEntry"; yang_parent_name = "ifRcvAddressTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::~Ifrcvaddressentry()
+IFMIB::IfRcvAddressTable::IfRcvAddressEntry::~IfRcvAddressEntry()
 {
 }
 
-bool IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::has_data() const
+bool IFMIB::IfRcvAddressTable::IfRcvAddressEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| ifrcvaddressaddress.is_set
 	|| ifrcvaddressstatus.is_set
 	|| ifrcvaddresstype.is_set;
 }
 
-bool IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::has_operation() const
+bool IFMIB::IfRcvAddressTable::IfRcvAddressEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1534,21 +1552,23 @@ bool IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::has_operation() const
 	|| ydk::is_set(ifrcvaddresstype.yfilter);
 }
 
-std::string IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::get_absolute_path() const
+std::string IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "IF-MIB:IF-MIB/ifRcvAddressTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::get_segment_path() const
+std::string IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifRcvAddressEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[ifRcvAddressAddress='" <<ifrcvaddressaddress <<"']";
+    path_buffer << "ifRcvAddressEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(ifrcvaddressaddress, "ifRcvAddressAddress");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1561,19 +1581,19 @@ std::vector<std::pair<std::string, LeafData> > IFMIB::Ifrcvaddresstable::Ifrcvad
 
 }
 
-std::shared_ptr<Entity> IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> IFMIB::IfRcvAddressTable::IfRcvAddressEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void IFMIB::IfRcvAddressTable::IfRcvAddressEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1601,7 +1621,7 @@ void IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::set_value(const std::string & 
     }
 }
 
-void IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::set_filter(const std::string & value_path, YFilter yfilter)
+void IFMIB::IfRcvAddressTable::IfRcvAddressEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1621,42 +1641,42 @@ void IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::set_filter(const std::string &
     }
 }
 
-bool IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::has_leaf_or_child_of_name(const std::string & name) const
+bool IFMIB::IfRcvAddressTable::IfRcvAddressEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "ifRcvAddressAddress" || name == "ifRcvAddressStatus" || name == "ifRcvAddressType")
         return true;
     return false;
 }
 
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifadminstatus::up {1, "up"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifadminstatus::down {2, "down"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifadminstatus::testing {3, "testing"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfAdminStatus::up {1, "up"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfAdminStatus::down {2, "down"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfAdminStatus::testing {3, "testing"};
 
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifoperstatus::up {1, "up"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifoperstatus::down {2, "down"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifoperstatus::testing {3, "testing"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifoperstatus::unknown {4, "unknown"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifoperstatus::dormant {5, "dormant"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifoperstatus::notPresent {6, "notPresent"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifoperstatus::lowerLayerDown {7, "lowerLayerDown"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfOperStatus::up {1, "up"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfOperStatus::down {2, "down"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfOperStatus::testing {3, "testing"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfOperStatus::unknown {4, "unknown"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfOperStatus::dormant {5, "dormant"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfOperStatus::notPresent {6, "notPresent"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfOperStatus::lowerLayerDown {7, "lowerLayerDown"};
 
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iflinkupdowntrapenable::enabled {1, "enabled"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iflinkupdowntrapenable::disabled {2, "disabled"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfLinkUpDownTrapEnable::enabled {1, "enabled"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfLinkUpDownTrapEnable::disabled {2, "disabled"};
 
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifteststatus::notInUse {1, "notInUse"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Ifteststatus::inUse {2, "inUse"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestStatus::notInUse {1, "notInUse"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestStatus::inUse {2, "inUse"};
 
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iftestresult::none {1, "none"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iftestresult::success {2, "success"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iftestresult::inProgress {3, "inProgress"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iftestresult::notSupported {4, "notSupported"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iftestresult::unAbleToRun {5, "unAbleToRun"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iftestresult::aborted {6, "aborted"};
-const Enum::YLeaf IFMIB::Iftable::Ifentry::Iftestresult::failed {7, "failed"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestResult::none {1, "none"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestResult::success {2, "success"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestResult::inProgress {3, "inProgress"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestResult::notSupported {4, "notSupported"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestResult::unAbleToRun {5, "unAbleToRun"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestResult::aborted {6, "aborted"};
+const Enum::YLeaf IFMIB::IfTable::IfEntry::IfTestResult::failed {7, "failed"};
 
-const Enum::YLeaf IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddresstype::other {1, "other"};
-const Enum::YLeaf IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddresstype::volatile_ {2, "volatile"};
-const Enum::YLeaf IFMIB::Ifrcvaddresstable::Ifrcvaddressentry::Ifrcvaddresstype::nonVolatile {3, "nonVolatile"};
+const Enum::YLeaf IFMIB::IfRcvAddressTable::IfRcvAddressEntry::IfRcvAddressType::other {1, "other"};
+const Enum::YLeaf IFMIB::IfRcvAddressTable::IfRcvAddressEntry::IfRcvAddressType::volatile_ {2, "volatile"};
+const Enum::YLeaf IFMIB::IfRcvAddressTable::IfRcvAddressEntry::IfRcvAddressType::nonVolatile {3, "nonVolatile"};
 
 
 }

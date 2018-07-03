@@ -17,7 +17,7 @@ AtmVcm::AtmVcm()
 {
     nodes->parent = this;
 
-    yang_name = "atm-vcm"; yang_parent_name = "Cisco-IOS-XR-atm-vcm-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "atm-vcm"; yang_parent_name = "Cisco-IOS-XR-atm-vcm-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AtmVcm::~AtmVcm()
@@ -26,6 +26,7 @@ AtmVcm::~AtmVcm()
 
 bool AtmVcm::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool AtmVcm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 AtmVcm::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "atm-vcm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "atm-vcm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AtmVcm::Nodes::~Nodes()
@@ -129,7 +132,8 @@ AtmVcm::Nodes::~Nodes()
 
 bool AtmVcm::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool AtmVcm::Nodes::has_data() const
 
 bool AtmVcm::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> AtmVcm::Nodes::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<AtmVcm::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,13 +221,13 @@ bool AtmVcm::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 AtmVcm::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     vcs(std::make_shared<AtmVcm::Nodes::Node::Vcs>())
-	,cell_packs(std::make_shared<AtmVcm::Nodes::Node::CellPacks>())
-	,pvps(std::make_shared<AtmVcm::Nodes::Node::Pvps>())
-	,class_links(std::make_shared<AtmVcm::Nodes::Node::ClassLinks>())
-	,interfaces(std::make_shared<AtmVcm::Nodes::Node::Interfaces>())
-	,vp_tunnels(std::make_shared<AtmVcm::Nodes::Node::VpTunnels>())
+    , cell_packs(std::make_shared<AtmVcm::Nodes::Node::CellPacks>())
+    , pvps(std::make_shared<AtmVcm::Nodes::Node::Pvps>())
+    , class_links(std::make_shared<AtmVcm::Nodes::Node::ClassLinks>())
+    , interfaces(std::make_shared<AtmVcm::Nodes::Node::Interfaces>())
+    , vp_tunnels(std::make_shared<AtmVcm::Nodes::Node::VpTunnels>())
 {
     vcs->parent = this;
     cell_packs->parent = this;
@@ -232,7 +236,7 @@ AtmVcm::Nodes::Node::Node()
     interfaces->parent = this;
     vp_tunnels->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AtmVcm::Nodes::Node::~Node()
@@ -241,6 +245,7 @@ AtmVcm::Nodes::Node::~Node()
 
 bool AtmVcm::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (vcs !=  nullptr && vcs->has_data())
 	|| (cell_packs !=  nullptr && cell_packs->has_data())
@@ -272,7 +277,8 @@ std::string AtmVcm::Nodes::Node::get_absolute_path() const
 std::string AtmVcm::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -408,9 +414,11 @@ bool AtmVcm::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 AtmVcm::Nodes::Node::Vcs::Vcs()
+    :
+    vc(this, {"interface_name"})
 {
 
-    yang_name = "vcs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vcs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Vcs::~Vcs()
@@ -419,7 +427,8 @@ AtmVcm::Nodes::Node::Vcs::~Vcs()
 
 bool AtmVcm::Nodes::Node::Vcs::has_data() const
 {
-    for (std::size_t index=0; index<vc.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vc.len(); index++)
     {
         if(vc[index]->has_data())
             return true;
@@ -429,7 +438,7 @@ bool AtmVcm::Nodes::Node::Vcs::has_data() const
 
 bool AtmVcm::Nodes::Node::Vcs::has_operation() const
 {
-    for (std::size_t index=0; index<vc.size(); index++)
+    for (std::size_t index=0; index<vc.len(); index++)
     {
         if(vc[index]->has_operation())
             return true;
@@ -459,7 +468,7 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::Vcs::get_child_by_name(const std::s
     {
         auto c = std::make_shared<AtmVcm::Nodes::Node::Vcs::Vc>();
         c->parent = this;
-        vc.push_back(c);
+        vc.append(c);
         return c;
     }
 
@@ -471,7 +480,7 @@ std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Vcs::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vc)
+    for (auto c : vc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -524,12 +533,12 @@ AtmVcm::Nodes::Node::Vcs::Vc::Vc()
     internal_state{YType::enumeration, "internal-state"},
     last_state_change_time{YType::uint32, "last-state-change-time"},
     test_mode{YType::enumeration, "test-mode"}
-    	,
+        ,
     cell_packing_data(std::make_shared<AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData>())
 {
     cell_packing_data->parent = this;
 
-    yang_name = "vc"; yang_parent_name = "vcs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vc"; yang_parent_name = "vcs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Vcs::Vc::~Vc()
@@ -538,6 +547,7 @@ AtmVcm::Nodes::Node::Vcs::Vc::~Vc()
 
 bool AtmVcm::Nodes::Node::Vcs::Vc::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| vpi.is_set
 	|| vci.is_set
@@ -600,7 +610,8 @@ bool AtmVcm::Nodes::Node::Vcs::Vc::has_operation() const
 std::string AtmVcm::Nodes::Node::Vcs::Vc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vc" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "vc";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -936,7 +947,7 @@ AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::CellPackingData()
     max_cell_packed_timeout{YType::uint16, "max-cell-packed-timeout"}
 {
 
-    yang_name = "cell-packing-data"; yang_parent_name = "vc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cell-packing-data"; yang_parent_name = "vc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::~CellPackingData()
@@ -945,6 +956,7 @@ AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::~CellPackingData()
 
 bool AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::has_data() const
 {
+    if (is_presence_container) return true;
     return local_max_cells_packed_per_packet.is_set
 	|| negotiated_max_cells_packed_per_packet.is_set
 	|| max_cell_packed_timeout.is_set;
@@ -1035,9 +1047,11 @@ bool AtmVcm::Nodes::Node::Vcs::Vc::CellPackingData::has_leaf_or_child_of_name(co
 }
 
 AtmVcm::Nodes::Node::CellPacks::CellPacks()
+    :
+    cell_pack(this, {})
 {
 
-    yang_name = "cell-packs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cell-packs"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::CellPacks::~CellPacks()
@@ -1046,7 +1060,8 @@ AtmVcm::Nodes::Node::CellPacks::~CellPacks()
 
 bool AtmVcm::Nodes::Node::CellPacks::has_data() const
 {
-    for (std::size_t index=0; index<cell_pack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cell_pack.len(); index++)
     {
         if(cell_pack[index]->has_data())
             return true;
@@ -1056,7 +1071,7 @@ bool AtmVcm::Nodes::Node::CellPacks::has_data() const
 
 bool AtmVcm::Nodes::Node::CellPacks::has_operation() const
 {
-    for (std::size_t index=0; index<cell_pack.size(); index++)
+    for (std::size_t index=0; index<cell_pack.len(); index++)
     {
         if(cell_pack[index]->has_operation())
             return true;
@@ -1086,7 +1101,7 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::CellPacks::get_child_by_name(const 
     {
         auto c = std::make_shared<AtmVcm::Nodes::Node::CellPacks::CellPack>();
         c->parent = this;
-        cell_pack.push_back(c);
+        cell_pack.append(c);
         return c;
     }
 
@@ -1098,7 +1113,7 @@ std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::CellPacks::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cell_pack)
+    for (auto c : cell_pack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1127,19 +1142,19 @@ bool AtmVcm::Nodes::Node::CellPacks::has_leaf_or_child_of_name(const std::string
 AtmVcm::Nodes::Node::CellPacks::CellPack::CellPack()
     :
     interface_name{YType::str, "interface-name"},
-    pci{YType::int32, "pci"},
+    pci{YType::uint32, "pci"},
     sub_interface_name{YType::str, "sub-interface-name"},
     cell_packing_mode{YType::enumeration, "cell-packing-mode"},
     vpi{YType::uint32, "vpi"},
     vci{YType::uint32, "vci"},
     received_average_cells_packets{YType::uint64, "received-average-cells-packets"},
     sent_cells_packets{YType::uint64, "sent-cells-packets"}
-    	,
+        ,
     cell_packing(std::make_shared<AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking>())
 {
     cell_packing->parent = this;
 
-    yang_name = "cell-pack"; yang_parent_name = "cell-packs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cell-pack"; yang_parent_name = "cell-packs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::CellPacks::CellPack::~CellPack()
@@ -1148,6 +1163,7 @@ AtmVcm::Nodes::Node::CellPacks::CellPack::~CellPack()
 
 bool AtmVcm::Nodes::Node::CellPacks::CellPack::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| pci.is_set
 	|| sub_interface_name.is_set
@@ -1325,7 +1341,7 @@ AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::CellPacking()
     max_cell_packed_timeout{YType::uint16, "max-cell-packed-timeout"}
 {
 
-    yang_name = "cell-packing"; yang_parent_name = "cell-pack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cell-packing"; yang_parent_name = "cell-pack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::~CellPacking()
@@ -1334,6 +1350,7 @@ AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::~CellPacking()
 
 bool AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::has_data() const
 {
+    if (is_presence_container) return true;
     return local_max_cells_packed_per_packet.is_set
 	|| negotiated_max_cells_packed_per_packet.is_set
 	|| max_cell_packed_timeout.is_set;
@@ -1424,9 +1441,11 @@ bool AtmVcm::Nodes::Node::CellPacks::CellPack::CellPacking::has_leaf_or_child_of
 }
 
 AtmVcm::Nodes::Node::Pvps::Pvps()
+    :
+    pvp(this, {"interface_name"})
 {
 
-    yang_name = "pvps"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvps"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Pvps::~Pvps()
@@ -1435,7 +1454,8 @@ AtmVcm::Nodes::Node::Pvps::~Pvps()
 
 bool AtmVcm::Nodes::Node::Pvps::has_data() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_data())
             return true;
@@ -1445,7 +1465,7 @@ bool AtmVcm::Nodes::Node::Pvps::has_data() const
 
 bool AtmVcm::Nodes::Node::Pvps::has_operation() const
 {
-    for (std::size_t index=0; index<pvp.size(); index++)
+    for (std::size_t index=0; index<pvp.len(); index++)
     {
         if(pvp[index]->has_operation())
             return true;
@@ -1475,7 +1495,7 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::Pvps::get_child_by_name(const std::
     {
         auto c = std::make_shared<AtmVcm::Nodes::Node::Pvps::Pvp>();
         c->parent = this;
-        pvp.push_back(c);
+        pvp.append(c);
         return c;
     }
 
@@ -1487,7 +1507,7 @@ std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Pvps::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pvp)
+    for (auto c : pvp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1516,7 +1536,7 @@ bool AtmVcm::Nodes::Node::Pvps::has_leaf_or_child_of_name(const std::string & na
 AtmVcm::Nodes::Node::Pvps::Pvp::Pvp()
     :
     interface_name{YType::str, "interface-name"},
-    vpi{YType::int32, "vpi"},
+    vpi{YType::uint32, "vpi"},
     main_interface{YType::str, "main-interface"},
     sub_interface{YType::str, "sub-interface"},
     vc_interface{YType::str, "vc-interface"},
@@ -1539,12 +1559,12 @@ AtmVcm::Nodes::Node::Pvps::Pvp::Pvp()
     internal_state{YType::enumeration, "internal-state"},
     last_state_change_time{YType::uint32, "last-state-change-time"},
     test_mode{YType::enumeration, "test-mode"}
-    	,
+        ,
     cell_packing_data(std::make_shared<AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData>())
 {
     cell_packing_data->parent = this;
 
-    yang_name = "pvp"; yang_parent_name = "pvps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pvp"; yang_parent_name = "pvps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Pvps::Pvp::~Pvp()
@@ -1553,6 +1573,7 @@ AtmVcm::Nodes::Node::Pvps::Pvp::~Pvp()
 
 bool AtmVcm::Nodes::Node::Pvps::Pvp::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| vpi.is_set
 	|| main_interface.is_set
@@ -1613,7 +1634,8 @@ bool AtmVcm::Nodes::Node::Pvps::Pvp::has_operation() const
 std::string AtmVcm::Nodes::Node::Pvps::Pvp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pvp" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1938,7 +1960,7 @@ AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::CellPackingData()
     max_cell_packed_timeout{YType::uint16, "max-cell-packed-timeout"}
 {
 
-    yang_name = "cell-packing-data"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cell-packing-data"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::~CellPackingData()
@@ -1947,6 +1969,7 @@ AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::~CellPackingData()
 
 bool AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::has_data() const
 {
+    if (is_presence_container) return true;
     return local_max_cells_packed_per_packet.is_set
 	|| negotiated_max_cells_packed_per_packet.is_set
 	|| max_cell_packed_timeout.is_set;
@@ -2037,9 +2060,11 @@ bool AtmVcm::Nodes::Node::Pvps::Pvp::CellPackingData::has_leaf_or_child_of_name(
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLinks()
+    :
+    class_link(this, {"vpi"})
 {
 
-    yang_name = "class-links"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-links"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::~ClassLinks()
@@ -2048,7 +2073,8 @@ AtmVcm::Nodes::Node::ClassLinks::~ClassLinks()
 
 bool AtmVcm::Nodes::Node::ClassLinks::has_data() const
 {
-    for (std::size_t index=0; index<class_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<class_link.len(); index++)
     {
         if(class_link[index]->has_data())
             return true;
@@ -2058,7 +2084,7 @@ bool AtmVcm::Nodes::Node::ClassLinks::has_data() const
 
 bool AtmVcm::Nodes::Node::ClassLinks::has_operation() const
 {
-    for (std::size_t index=0; index<class_link.size(); index++)
+    for (std::size_t index=0; index<class_link.len(); index++)
     {
         if(class_link[index]->has_operation())
             return true;
@@ -2088,7 +2114,7 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::ClassLinks::get_child_by_name(const
     {
         auto c = std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink>();
         c->parent = this;
-        class_link.push_back(c);
+        class_link.append(c);
         return c;
     }
 
@@ -2100,7 +2126,7 @@ std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::ClassLinks::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : class_link)
+    for (auto c : class_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2128,17 +2154,17 @@ bool AtmVcm::Nodes::Node::ClassLinks::has_leaf_or_child_of_name(const std::strin
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::ClassLink()
     :
-    vpi{YType::int32, "vpi"},
-    vci{YType::int32, "vci"},
+    vpi{YType::uint32, "vpi"},
+    vci{YType::uint32, "vci"},
     sub_interface_name{YType::str, "sub-interface-name"}
-    	,
+        ,
     vc_class_not_supported(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported>())
-	,oam_config(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig>())
+    , oam_config(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig>())
 {
     vc_class_not_supported->parent = this;
     oam_config->parent = this;
 
-    yang_name = "class-link"; yang_parent_name = "class-links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-link"; yang_parent_name = "class-links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::~ClassLink()
@@ -2147,6 +2173,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::~ClassLink()
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::has_data() const
 {
+    if (is_presence_container) return true;
     return vpi.is_set
 	|| vci.is_set
 	|| sub_interface_name.is_set
@@ -2167,7 +2194,8 @@ bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::has_operation() const
 std::string AtmVcm::Nodes::Node::ClassLinks::ClassLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "class-link" <<"[vpi='" <<vpi <<"']";
+    path_buffer << "class-link";
+    ADD_KEY_TOKEN(vpi, "vpi");
     return path_buffer.str();
 }
 
@@ -2274,7 +2302,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::VcClassNotSuppo
     not_supported_inherit_level{YType::enumeration, "not-supported-inherit-level"}
 {
 
-    yang_name = "vc-class-not-supported"; yang_parent_name = "class-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vc-class-not-supported"; yang_parent_name = "class-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::~VcClassNotSupported()
@@ -2283,6 +2311,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::~VcClassNotSupp
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::has_data() const
 {
+    if (is_presence_container) return true;
     return encapsulation_not_supported.is_set
 	|| not_supported_inherit_level.is_set;
 }
@@ -2362,10 +2391,10 @@ bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::VcClassNotSupported::has_leaf_o
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamConfig()
     :
     class_link_shaping(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping>())
-	,class_link_encapsulation(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation>())
-	,oam_pvc(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc>())
-	,oam_retry(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry>())
-	,ais_rdi(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi>())
+    , class_link_encapsulation(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation>())
+    , oam_pvc(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc>())
+    , oam_retry(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry>())
+    , ais_rdi(std::make_shared<AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi>())
 {
     class_link_shaping->parent = this;
     class_link_encapsulation->parent = this;
@@ -2373,7 +2402,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamConfig()
     oam_retry->parent = this;
     ais_rdi->parent = this;
 
-    yang_name = "oam-config"; yang_parent_name = "class-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oam-config"; yang_parent_name = "class-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::~OamConfig()
@@ -2382,6 +2411,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::~OamConfig()
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (class_link_shaping !=  nullptr && class_link_shaping->has_data())
 	|| (class_link_encapsulation !=  nullptr && class_link_encapsulation->has_data())
 	|| (oam_pvc !=  nullptr && oam_pvc->has_data())
@@ -2521,7 +2551,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::ClassLi
     shaping_inherit_level{YType::enumeration, "shaping-inherit-level"}
 {
 
-    yang_name = "class-link-shaping"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-link-shaping"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::~ClassLinkShaping()
@@ -2530,6 +2560,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::~ClassL
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkShaping::has_data() const
 {
+    if (is_presence_container) return true;
     return shaping_type.is_set
 	|| peak_output_rate.is_set
 	|| average_output_rate.is_set
@@ -2651,7 +2682,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::C
     encapsulation_inherit_level{YType::enumeration, "encapsulation-inherit-level"}
 {
 
-    yang_name = "class-link-encapsulation"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "class-link-encapsulation"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::~ClassLinkEncapsulation()
@@ -2660,6 +2691,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::~
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::ClassLinkEncapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return encapsulation_type.is_set
 	|| encapsulation_inherit_level.is_set;
 }
@@ -2745,7 +2777,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::OamPvc()
     manage_inherit_level{YType::enumeration, "manage-inherit-level"}
 {
 
-    yang_name = "oam-pvc"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oam-pvc"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::~OamPvc()
@@ -2754,6 +2786,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::~OamPvc()
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamPvc::has_data() const
 {
+    if (is_presence_container) return true;
     return manage_level.is_set
 	|| pvc_frequency.is_set
 	|| keep_vc_up.is_set
@@ -2877,7 +2910,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::OamRetry()
     retry_inherit_level{YType::enumeration, "retry-inherit-level"}
 {
 
-    yang_name = "oam-retry"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oam-retry"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::~OamRetry()
@@ -2886,6 +2919,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::~OamRetry()
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::OamRetry::has_data() const
 {
+    if (is_presence_container) return true;
     return retry_up_count.is_set
 	|| down_count.is_set
 	|| retry_frequency.is_set
@@ -2995,7 +3029,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::AisRdi()
     ais_rdi_inherit_level{YType::enumeration, "ais-rdi-inherit-level"}
 {
 
-    yang_name = "ais-rdi"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ais-rdi"; yang_parent_name = "oam-config"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::~AisRdi()
@@ -3004,6 +3038,7 @@ AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::~AisRdi()
 
 bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::has_data() const
 {
+    if (is_presence_container) return true;
     return ais_rdi_up_count.is_set
 	|| ais_rdi_up_time.is_set
 	|| ais_rdi_inherit_level.is_set;
@@ -3094,9 +3129,11 @@ bool AtmVcm::Nodes::Node::ClassLinks::ClassLink::OamConfig::AisRdi::has_leaf_or_
 }
 
 AtmVcm::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Interfaces::~Interfaces()
@@ -3105,7 +3142,8 @@ AtmVcm::Nodes::Node::Interfaces::~Interfaces()
 
 bool AtmVcm::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3115,7 +3153,7 @@ bool AtmVcm::Nodes::Node::Interfaces::has_data() const
 
 bool AtmVcm::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3145,7 +3183,7 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::Interfaces::get_child_by_name(const
     {
         auto c = std::make_shared<AtmVcm::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3157,7 +3195,7 @@ std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::Interfaces::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3202,12 +3240,12 @@ AtmVcm::Nodes::Node::Interfaces::Interface::Interface()
     port_type{YType::enumeration, "port-type"},
     main_interface{YType::str, "main-interface"},
     l2_cell_packing_count{YType::uint16, "l2-cell-packing-count"}
-    	,
+        ,
     cell_packing_data(std::make_shared<AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData>())
 {
     cell_packing_data->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Interfaces::Interface::~Interface()
@@ -3216,6 +3254,7 @@ AtmVcm::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool AtmVcm::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| ilmi_vpi.is_set
 	|| ilmi_vci.is_set
@@ -3262,7 +3301,8 @@ bool AtmVcm::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string AtmVcm::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3510,7 +3550,7 @@ AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::CellPackingData()
     max_cell_packed_timeout{YType::uint16, "max-cell-packed-timeout"}
 {
 
-    yang_name = "cell-packing-data"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cell-packing-data"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::~CellPackingData()
@@ -3519,6 +3559,7 @@ AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::~CellPackingData()
 
 bool AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::has_data() const
 {
+    if (is_presence_container) return true;
     return local_max_cells_packed_per_packet.is_set
 	|| negotiated_max_cells_packed_per_packet.is_set
 	|| max_cell_packed_timeout.is_set;
@@ -3609,9 +3650,11 @@ bool AtmVcm::Nodes::Node::Interfaces::Interface::CellPackingData::has_leaf_or_ch
 }
 
 AtmVcm::Nodes::Node::VpTunnels::VpTunnels()
+    :
+    vp_tunnel(this, {"interface_name"})
 {
 
-    yang_name = "vp-tunnels"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vp-tunnels"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::VpTunnels::~VpTunnels()
@@ -3620,7 +3663,8 @@ AtmVcm::Nodes::Node::VpTunnels::~VpTunnels()
 
 bool AtmVcm::Nodes::Node::VpTunnels::has_data() const
 {
-    for (std::size_t index=0; index<vp_tunnel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vp_tunnel.len(); index++)
     {
         if(vp_tunnel[index]->has_data())
             return true;
@@ -3630,7 +3674,7 @@ bool AtmVcm::Nodes::Node::VpTunnels::has_data() const
 
 bool AtmVcm::Nodes::Node::VpTunnels::has_operation() const
 {
-    for (std::size_t index=0; index<vp_tunnel.size(); index++)
+    for (std::size_t index=0; index<vp_tunnel.len(); index++)
     {
         if(vp_tunnel[index]->has_operation())
             return true;
@@ -3660,7 +3704,7 @@ std::shared_ptr<Entity> AtmVcm::Nodes::Node::VpTunnels::get_child_by_name(const 
     {
         auto c = std::make_shared<AtmVcm::Nodes::Node::VpTunnels::VpTunnel>();
         c->parent = this;
-        vp_tunnel.push_back(c);
+        vp_tunnel.append(c);
         return c;
     }
 
@@ -3672,7 +3716,7 @@ std::map<std::string, std::shared_ptr<Entity>> AtmVcm::Nodes::Node::VpTunnels::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vp_tunnel)
+    for (auto c : vp_tunnel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3701,7 +3745,7 @@ bool AtmVcm::Nodes::Node::VpTunnels::has_leaf_or_child_of_name(const std::string
 AtmVcm::Nodes::Node::VpTunnels::VpTunnel::VpTunnel()
     :
     interface_name{YType::str, "interface-name"},
-    vpi{YType::int32, "vpi"},
+    vpi{YType::uint32, "vpi"},
     main_interface{YType::str, "main-interface"},
     vp_interface{YType::str, "vp-interface"},
     vpi_xr{YType::uint16, "vpi-xr"},
@@ -3717,7 +3761,7 @@ AtmVcm::Nodes::Node::VpTunnels::VpTunnel::VpTunnel()
     last_vp_state_change_time{YType::uint32, "last-vp-state-change-time"}
 {
 
-    yang_name = "vp-tunnel"; yang_parent_name = "vp-tunnels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vp-tunnel"; yang_parent_name = "vp-tunnels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AtmVcm::Nodes::Node::VpTunnels::VpTunnel::~VpTunnel()
@@ -3726,6 +3770,7 @@ AtmVcm::Nodes::Node::VpTunnels::VpTunnel::~VpTunnel()
 
 bool AtmVcm::Nodes::Node::VpTunnels::VpTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| vpi.is_set
 	|| main_interface.is_set
@@ -3766,7 +3811,8 @@ bool AtmVcm::Nodes::Node::VpTunnels::VpTunnel::has_operation() const
 std::string AtmVcm::Nodes::Node::VpTunnels::VpTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vp-tunnel" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "vp-tunnel";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -3971,13 +4017,35 @@ bool AtmVcm::Nodes::Node::VpTunnels::VpTunnel::has_leaf_or_child_of_name(const s
     return false;
 }
 
-const Enum::YLeaf VcCellPackingMode::vp {1, "vp"};
-const Enum::YLeaf VcCellPackingMode::vc {2, "vc"};
-const Enum::YLeaf VcCellPackingMode::port_mode {3, "port-mode"};
+const Enum::YLeaf Vc::layer3_vc {0, "layer3-vc"};
+const Enum::YLeaf Vc::layer2_vc {1, "layer2-vc"};
+const Enum::YLeaf Vc::layer2_vp {2, "layer2-vp"};
+const Enum::YLeaf Vc::vc_type_unknown {3, "vc-type-unknown"};
+
+const Enum::YLeaf VcEncap::ilmi {1, "ilmi"};
+const Enum::YLeaf VcEncap::qsaal {2, "qsaal"};
+const Enum::YLeaf VcEncap::snap {3, "snap"};
+const Enum::YLeaf VcEncap::mux {4, "mux"};
+const Enum::YLeaf VcEncap::nlpid {5, "nlpid"};
+const Enum::YLeaf VcEncap::f4oam {6, "f4oam"};
+const Enum::YLeaf VcEncap::aal0 {7, "aal0"};
+const Enum::YLeaf VcEncap::aal5 {8, "aal5"};
+const Enum::YLeaf VcEncap::encap_unknown {9, "encap-unknown"};
+
+const Enum::YLeaf VcManageLevel::manage {1, "manage"};
+const Enum::YLeaf VcManageLevel::not_managed {2, "not-managed"};
 
 const Enum::YLeaf VcTestMode::test_mode_none {1, "test-mode-none"};
 const Enum::YLeaf VcTestMode::loop {2, "loop"};
 const Enum::YLeaf VcTestMode::reserved {3, "reserved"};
+
+const Enum::YLeaf VpTrafShaping::vp_cbr {1, "vp-cbr"};
+const Enum::YLeaf VpTrafShaping::vp_vbr_nrt {2, "vp-vbr-nrt"};
+const Enum::YLeaf VpTrafShaping::vp_vbr_rt {3, "vp-vbr-rt"};
+const Enum::YLeaf VpTrafShaping::vp_abr {4, "vp-abr"};
+const Enum::YLeaf VpTrafShaping::vp_ubr_plus {5, "vp-ubr-plus"};
+const Enum::YLeaf VpTrafShaping::vp_ubr {6, "vp-ubr"};
+const Enum::YLeaf VpTrafShaping::vp_traf_shaping_unknown {7, "vp-traf-shaping-unknown"};
 
 const Enum::YLeaf VcState::initialized {0, "initialized"};
 const Enum::YLeaf VcState::modifying {1, "modifying"};
@@ -3992,50 +4060,12 @@ const Enum::YLeaf VcState::deleting {9, "deleting"};
 const Enum::YLeaf VcState::deleted {10, "deleted"};
 const Enum::YLeaf VcState::state_unknown {11, "state-unknown"};
 
-const Enum::YLeaf VcInheritLevel::directly_configured_onvc {0, "directly-configured-onvc"};
-const Enum::YLeaf VcInheritLevel::vc_class_configured_onvc {1, "vc-class-configured-onvc"};
-const Enum::YLeaf VcInheritLevel::vc_class_configured_on_sub_interface {2, "vc-class-configured-on-sub-interface"};
-const Enum::YLeaf VcInheritLevel::vc_class_configured_on_main_interface {3, "vc-class-configured-on-main-interface"};
-const Enum::YLeaf VcInheritLevel::global_default {4, "global-default"};
-const Enum::YLeaf VcInheritLevel::unknown {5, "unknown"};
-const Enum::YLeaf VcInheritLevel::not_supported {6, "not-supported"};
-
-const Enum::YLeaf VcTrafShaping::cbr {1, "cbr"};
-const Enum::YLeaf VcTrafShaping::vbr_nrt {2, "vbr-nrt"};
-const Enum::YLeaf VcTrafShaping::vbr_rt {3, "vbr-rt"};
-const Enum::YLeaf VcTrafShaping::abr {4, "abr"};
-const Enum::YLeaf VcTrafShaping::ubr_plus {5, "ubr-plus"};
-const Enum::YLeaf VcTrafShaping::ubr {6, "ubr"};
-const Enum::YLeaf VcTrafShaping::traf_shaping_unknown {7, "traf-shaping-unknown"};
-
-const Enum::YLeaf VcEncap::ilmi {1, "ilmi"};
-const Enum::YLeaf VcEncap::qsaal {2, "qsaal"};
-const Enum::YLeaf VcEncap::snap {3, "snap"};
-const Enum::YLeaf VcEncap::mux {4, "mux"};
-const Enum::YLeaf VcEncap::nlpid {5, "nlpid"};
-const Enum::YLeaf VcEncap::f4oam {6, "f4oam"};
-const Enum::YLeaf VcEncap::aal0 {7, "aal0"};
-const Enum::YLeaf VcEncap::aal5 {8, "aal5"};
-const Enum::YLeaf VcEncap::encap_unknown {9, "encap-unknown"};
-
-const Enum::YLeaf Vc::layer3_vc {0, "layer3-vc"};
-const Enum::YLeaf Vc::layer2_vc {1, "layer2-vc"};
-const Enum::YLeaf Vc::layer2_vp {2, "layer2-vp"};
-const Enum::YLeaf Vc::vc_type_unknown {3, "vc-type-unknown"};
-
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_configured_onvc {0, "vc-configured-onvc"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_class_onvc {1, "vc-class-onvc"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_class_on_sub_interface {2, "vc-class-on-sub-interface"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_class_on_main_interface {3, "vc-class-on-main-interface"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_global_default {4, "vc-global-default"};
 const Enum::YLeaf ClassLinkOamInheritLevel::vc_inherit_level_unknown {5, "vc-inherit-level-unknown"};
-
-const Enum::YLeaf VcManageLevel::manage {1, "manage"};
-const Enum::YLeaf VcManageLevel::not_managed {2, "not-managed"};
-
-const Enum::YLeaf VcmPort::port_type_layer_2 {0, "port-type-layer-2"};
-const Enum::YLeaf VcmPort::port_type_layer_3 {1, "port-type-layer-3"};
-const Enum::YLeaf VcmPort::port_type_unknown {3, "port-type-unknown"};
 
 const Enum::YLeaf VpState::vp_initialized {0, "vp-initialized"};
 const Enum::YLeaf VpState::vp_modifying {1, "vp-modifying"};
@@ -4045,13 +4075,29 @@ const Enum::YLeaf VpState::vp_deleting {4, "vp-deleting"};
 const Enum::YLeaf VpState::vp_deleted {5, "vp-deleted"};
 const Enum::YLeaf VpState::vp_state_unknown {6, "vp-state-unknown"};
 
-const Enum::YLeaf VpTrafShaping::vp_cbr {1, "vp-cbr"};
-const Enum::YLeaf VpTrafShaping::vp_vbr_nrt {2, "vp-vbr-nrt"};
-const Enum::YLeaf VpTrafShaping::vp_vbr_rt {3, "vp-vbr-rt"};
-const Enum::YLeaf VpTrafShaping::vp_abr {4, "vp-abr"};
-const Enum::YLeaf VpTrafShaping::vp_ubr_plus {5, "vp-ubr-plus"};
-const Enum::YLeaf VpTrafShaping::vp_ubr {6, "vp-ubr"};
-const Enum::YLeaf VpTrafShaping::vp_traf_shaping_unknown {7, "vp-traf-shaping-unknown"};
+const Enum::YLeaf VcTrafShaping::cbr {1, "cbr"};
+const Enum::YLeaf VcTrafShaping::vbr_nrt {2, "vbr-nrt"};
+const Enum::YLeaf VcTrafShaping::vbr_rt {3, "vbr-rt"};
+const Enum::YLeaf VcTrafShaping::abr {4, "abr"};
+const Enum::YLeaf VcTrafShaping::ubr_plus {5, "ubr-plus"};
+const Enum::YLeaf VcTrafShaping::ubr {6, "ubr"};
+const Enum::YLeaf VcTrafShaping::traf_shaping_unknown {7, "traf-shaping-unknown"};
+
+const Enum::YLeaf VcCellPackingMode::vp {1, "vp"};
+const Enum::YLeaf VcCellPackingMode::vc {2, "vc"};
+const Enum::YLeaf VcCellPackingMode::port_mode {3, "port-mode"};
+
+const Enum::YLeaf VcmPort::port_type_layer_2 {0, "port-type-layer-2"};
+const Enum::YLeaf VcmPort::port_type_layer_3 {1, "port-type-layer-3"};
+const Enum::YLeaf VcmPort::port_type_unknown {3, "port-type-unknown"};
+
+const Enum::YLeaf VcInheritLevel::directly_configured_onvc {0, "directly-configured-onvc"};
+const Enum::YLeaf VcInheritLevel::vc_class_configured_onvc {1, "vc-class-configured-onvc"};
+const Enum::YLeaf VcInheritLevel::vc_class_configured_on_sub_interface {2, "vc-class-configured-on-sub-interface"};
+const Enum::YLeaf VcInheritLevel::vc_class_configured_on_main_interface {3, "vc-class-configured-on-main-interface"};
+const Enum::YLeaf VcInheritLevel::global_default {4, "global-default"};
+const Enum::YLeaf VcInheritLevel::unknown {5, "unknown"};
+const Enum::YLeaf VcInheritLevel::not_supported {6, "not-supported"};
 
 
 }

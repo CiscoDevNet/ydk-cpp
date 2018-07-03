@@ -32,28 +32,28 @@ class EXPRESSIONMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Expresource; //type: EXPRESSIONMIB::Expresource
-        class Expnames; //type: EXPRESSIONMIB::Expnames
-        class Expnametable; //type: EXPRESSIONMIB::Expnametable
-        class Expexpressiontable; //type: EXPRESSIONMIB::Expexpressiontable
-        class Expobjecttable; //type: EXPRESSIONMIB::Expobjecttable
-        class Expvaluetable; //type: EXPRESSIONMIB::Expvaluetable
+        class ExpResource; //type: EXPRESSIONMIB::ExpResource
+        class ExpNames; //type: EXPRESSIONMIB::ExpNames
+        class ExpNameTable; //type: EXPRESSIONMIB::ExpNameTable
+        class ExpExpressionTable; //type: EXPRESSIONMIB::ExpExpressionTable
+        class ExpObjectTable; //type: EXPRESSIONMIB::ExpObjectTable
+        class ExpValueTable; //type: EXPRESSIONMIB::ExpValueTable
 
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expresource> expresource;
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnames> expnames;
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable> expnametable;
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expexpressiontable> expexpressiontable;
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expobjecttable> expobjecttable;
-        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expvaluetable> expvaluetable;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpResource> expresource;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpNames> expnames;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpNameTable> expnametable;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpExpressionTable> expexpressiontable;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpObjectTable> expobjecttable;
+        std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpValueTable> expvaluetable;
         
 }; // EXPRESSIONMIB
 
 
-class EXPRESSIONMIB::Expresource : public ydk::Entity
+class EXPRESSIONMIB::ExpResource : public ydk::Entity
 {
     public:
-        Expresource();
-        ~Expresource();
+        ExpResource();
+        ~ExpResource();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -72,14 +72,14 @@ class EXPRESSIONMIB::Expresource : public ydk::Entity
         ydk::YLeaf expresourcedeltawildcardinstanceshigh; //type: uint32
         ydk::YLeaf expresourcedeltawildcardinstanceresourcelacks; //type: uint32
 
-}; // EXPRESSIONMIB::Expresource
+}; // EXPRESSIONMIB::ExpResource
 
 
-class EXPRESSIONMIB::Expnames : public ydk::Entity
+class EXPRESSIONMIB::ExpNames : public ydk::Entity
 {
     public:
-        Expnames();
-        ~Expnames();
+        ExpNames();
+        ~ExpNames();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -95,14 +95,14 @@ class EXPRESSIONMIB::Expnames : public ydk::Entity
         ydk::YLeaf expnamelastchange; //type: uint32
         ydk::YLeaf expnamehighestindex; //type: uint32
 
-}; // EXPRESSIONMIB::Expnames
+}; // EXPRESSIONMIB::ExpNames
 
 
-class EXPRESSIONMIB::Expnametable : public ydk::Entity
+class EXPRESSIONMIB::ExpNameTable : public ydk::Entity
 {
     public:
-        Expnametable();
-        ~Expnametable();
+        ExpNameTable();
+        ~ExpNameTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -115,18 +115,18 @@ class EXPRESSIONMIB::Expnametable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Expnameentry; //type: EXPRESSIONMIB::Expnametable::Expnameentry
+        class ExpNameEntry; //type: EXPRESSIONMIB::ExpNameTable::ExpNameEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable::Expnameentry> > expnameentry;
+        ydk::YList expnameentry;
         
-}; // EXPRESSIONMIB::Expnametable
+}; // EXPRESSIONMIB::ExpNameTable
 
 
-class EXPRESSIONMIB::Expnametable::Expnameentry : public ydk::Entity
+class EXPRESSIONMIB::ExpNameTable::ExpNameEntry : public ydk::Entity
 {
     public:
-        Expnameentry();
-        ~Expnameentry();
+        ExpNameEntry();
+        ~ExpNameEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -143,14 +143,14 @@ class EXPRESSIONMIB::Expnametable::Expnameentry : public ydk::Entity
         ydk::YLeaf expexpressionindex; //type: uint32
         ydk::YLeaf expnamestatus; //type: RowStatus
 
-}; // EXPRESSIONMIB::Expnametable::Expnameentry
+}; // EXPRESSIONMIB::ExpNameTable::ExpNameEntry
 
 
-class EXPRESSIONMIB::Expexpressiontable : public ydk::Entity
+class EXPRESSIONMIB::ExpExpressionTable : public ydk::Entity
 {
     public:
-        Expexpressiontable();
-        ~Expexpressiontable();
+        ExpExpressionTable();
+        ~ExpExpressionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -163,18 +163,18 @@ class EXPRESSIONMIB::Expexpressiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Expexpressionentry; //type: EXPRESSIONMIB::Expexpressiontable::Expexpressionentry
+        class ExpExpressionEntry; //type: EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expexpressiontable::Expexpressionentry> > expexpressionentry;
+        ydk::YList expexpressionentry;
         
-}; // EXPRESSIONMIB::Expexpressiontable
+}; // EXPRESSIONMIB::ExpExpressionTable
 
 
-class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry : public ydk::Entity
+class EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry : public ydk::Entity
 {
     public:
-        Expexpressionentry();
-        ~Expexpressionentry();
+        ExpExpressionEntry();
+        ~ExpExpressionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -187,31 +187,31 @@ class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable::Expnameentry::expexpressionindex)
+        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpNameTable::ExpNameEntry::expexpressionindex)
         ydk::YLeaf expexpressionindex;
         ydk::YLeaf expexpressionname; //type: binary
         ydk::YLeaf expexpression; //type: binary
-        ydk::YLeaf expexpressionvaluetype; //type: Expexpressionvaluetype
+        ydk::YLeaf expexpressionvaluetype; //type: ExpExpressionValueType
         ydk::YLeaf expexpressioncomment; //type: string
         ydk::YLeaf expexpressiondeltainterval; //type: int32
         ydk::YLeaf expexpressionprefix; //type: string
         ydk::YLeaf expexpressionerrors; //type: uint32
         ydk::YLeaf expexpressionerrortime; //type: uint32
         ydk::YLeaf expexpressionerrorindex; //type: int32
-        ydk::YLeaf expexpressionerror; //type: Expexpressionerror
+        ydk::YLeaf expexpressionerror; //type: ExpExpressionError
         ydk::YLeaf expexpressioninstance; //type: string
         ydk::YLeaf expexpressionowner; //type: string
-        class Expexpressionvaluetype;
-        class Expexpressionerror;
+        class ExpExpressionValueType;
+        class ExpExpressionError;
 
-}; // EXPRESSIONMIB::Expexpressiontable::Expexpressionentry
+}; // EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry
 
 
-class EXPRESSIONMIB::Expobjecttable : public ydk::Entity
+class EXPRESSIONMIB::ExpObjectTable : public ydk::Entity
 {
     public:
-        Expobjecttable();
-        ~Expobjecttable();
+        ExpObjectTable();
+        ~ExpObjectTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -224,18 +224,18 @@ class EXPRESSIONMIB::Expobjecttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Expobjectentry; //type: EXPRESSIONMIB::Expobjecttable::Expobjectentry
+        class ExpObjectEntry; //type: EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expobjecttable::Expobjectentry> > expobjectentry;
+        ydk::YList expobjectentry;
         
-}; // EXPRESSIONMIB::Expobjecttable
+}; // EXPRESSIONMIB::ExpObjectTable
 
 
-class EXPRESSIONMIB::Expobjecttable::Expobjectentry : public ydk::Entity
+class EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry : public ydk::Entity
 {
     public:
-        Expobjectentry();
-        ~Expobjectentry();
+        ExpObjectEntry();
+        ~ExpObjectEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -248,29 +248,29 @@ class EXPRESSIONMIB::Expobjecttable::Expobjectentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable::Expnameentry::expexpressionindex)
+        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpNameTable::ExpNameEntry::expexpressionindex)
         ydk::YLeaf expexpressionindex;
         ydk::YLeaf expobjectindex; //type: uint32
         ydk::YLeaf expobjectid; //type: string
         ydk::YLeaf expobjectidwildcard; //type: boolean
-        ydk::YLeaf expobjectsampletype; //type: Expobjectsampletype
+        ydk::YLeaf expobjectsampletype; //type: ExpObjectSampleType
         ydk::YLeaf expobjectdeltadiscontinuityid; //type: string
         ydk::YLeaf expobjectdiscontinuityidwildcard; //type: boolean
-        ydk::YLeaf expobjectdiscontinuityidtype; //type: Expobjectdiscontinuityidtype
+        ydk::YLeaf expobjectdiscontinuityidtype; //type: ExpObjectDiscontinuityIDType
         ydk::YLeaf expobjectconditional; //type: string
         ydk::YLeaf expobjectconditionalwildcard; //type: boolean
         ydk::YLeaf expobjectstatus; //type: RowStatus
-        class Expobjectsampletype;
-        class Expobjectdiscontinuityidtype;
+        class ExpObjectSampleType;
+        class ExpObjectDiscontinuityIDType;
 
-}; // EXPRESSIONMIB::Expobjecttable::Expobjectentry
+}; // EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry
 
 
-class EXPRESSIONMIB::Expvaluetable : public ydk::Entity
+class EXPRESSIONMIB::ExpValueTable : public ydk::Entity
 {
     public:
-        Expvaluetable();
-        ~Expvaluetable();
+        ExpValueTable();
+        ~ExpValueTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -283,18 +283,18 @@ class EXPRESSIONMIB::Expvaluetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Expvalueentry; //type: EXPRESSIONMIB::Expvaluetable::Expvalueentry
+        class ExpValueEntry; //type: EXPRESSIONMIB::ExpValueTable::ExpValueEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expvaluetable::Expvalueentry> > expvalueentry;
+        ydk::YList expvalueentry;
         
-}; // EXPRESSIONMIB::Expvaluetable
+}; // EXPRESSIONMIB::ExpValueTable
 
 
-class EXPRESSIONMIB::Expvaluetable::Expvalueentry : public ydk::Entity
+class EXPRESSIONMIB::ExpValueTable::ExpValueEntry : public ydk::Entity
 {
     public:
-        Expvalueentry();
-        ~Expvalueentry();
+        ExpValueEntry();
+        ~ExpValueEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -307,7 +307,7 @@ class EXPRESSIONMIB::Expvaluetable::Expvalueentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::Expnametable::Expnameentry::expexpressionindex)
+        //type: uint32 (refers to cisco_ios_xe::EXPRESSION_MIB::EXPRESSIONMIB::ExpNameTable::ExpNameEntry::expexpressionindex)
         ydk::YLeaf expexpressionindex;
         ydk::YLeaf expvalueinstance; //type: string
         ydk::YLeaf expvaluecounter32val; //type: uint32
@@ -318,9 +318,9 @@ class EXPRESSIONMIB::Expvaluetable::Expvalueentry : public ydk::Entity
         ydk::YLeaf expvalueoidval; //type: string
         ydk::YLeaf expvaluecounter64val; //type: uint64
 
-}; // EXPRESSIONMIB::Expvaluetable::Expvalueentry
+}; // EXPRESSIONMIB::ExpValueTable::ExpValueEntry
 
-class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluetype : public ydk::Enum
+class EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionValueType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf counter32;
@@ -334,7 +334,7 @@ class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionvaluet
 
 };
 
-class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror : public ydk::Enum
+class EXPRESSIONMIB::ExpExpressionTable::ExpExpressionEntry::ExpExpressionError : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf invalidSyntax;
@@ -351,7 +351,7 @@ class EXPRESSIONMIB::Expexpressiontable::Expexpressionentry::Expexpressionerror 
 
 };
 
-class EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectsampletype : public ydk::Enum
+class EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectSampleType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf absoluteValue;
@@ -359,7 +359,7 @@ class EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectsampletype : publi
 
 };
 
-class EXPRESSIONMIB::Expobjecttable::Expobjectentry::Expobjectdiscontinuityidtype : public ydk::Enum
+class EXPRESSIONMIB::ExpObjectTable::ExpObjectEntry::ExpObjectDiscontinuityIDType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf timeTicks;

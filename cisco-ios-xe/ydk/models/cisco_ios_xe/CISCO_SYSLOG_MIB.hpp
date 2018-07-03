@@ -32,26 +32,26 @@ class CISCOSYSLOGMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Clogbasic; //type: CISCOSYSLOGMIB::Clogbasic
-        class Cloghistory; //type: CISCOSYSLOGMIB::Cloghistory
-        class Clogserver; //type: CISCOSYSLOGMIB::Clogserver
-        class Cloghistorytable; //type: CISCOSYSLOGMIB::Cloghistorytable
-        class Clogserverconfigtable; //type: CISCOSYSLOGMIB::Clogserverconfigtable
+        class ClogBasic; //type: CISCOSYSLOGMIB::ClogBasic
+        class ClogHistory; //type: CISCOSYSLOGMIB::ClogHistory
+        class ClogServer; //type: CISCOSYSLOGMIB::ClogServer
+        class ClogHistoryTable; //type: CISCOSYSLOGMIB::ClogHistoryTable
+        class ClogServerConfigTable; //type: CISCOSYSLOGMIB::ClogServerConfigTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::Clogbasic> clogbasic;
-        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::Cloghistory> cloghistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::Clogserver> clogserver;
-        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::Cloghistorytable> cloghistorytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::Clogserverconfigtable> clogserverconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::ClogBasic> clogbasic;
+        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::ClogHistory> cloghistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::ClogServer> clogserver;
+        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::ClogHistoryTable> cloghistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::ClogServerConfigTable> clogserverconfigtable;
         
 }; // CISCOSYSLOGMIB
 
 
-class CISCOSYSLOGMIB::Clogbasic : public ydk::Entity
+class CISCOSYSLOGMIB::ClogBasic : public ydk::Entity
 {
     public:
-        Clogbasic();
-        ~Clogbasic();
+        ClogBasic();
+        ~ClogBasic();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -69,18 +69,18 @@ class CISCOSYSLOGMIB::Clogbasic : public ydk::Entity
         ydk::YLeaf clogmaxseverity; //type: SyslogSeverity
         ydk::YLeaf clogmsgignores; //type: uint32
         ydk::YLeaf clogmsgdrops; //type: uint32
-        ydk::YLeaf clogoriginidtype; //type: Clogoriginidtype
+        ydk::YLeaf clogoriginidtype; //type: ClogOriginIDType
         ydk::YLeaf clogoriginid; //type: string
-        class Clogoriginidtype;
+        class ClogOriginIDType;
 
-}; // CISCOSYSLOGMIB::Clogbasic
+}; // CISCOSYSLOGMIB::ClogBasic
 
 
-class CISCOSYSLOGMIB::Cloghistory : public ydk::Entity
+class CISCOSYSLOGMIB::ClogHistory : public ydk::Entity
 {
     public:
-        Cloghistory();
-        ~Cloghistory();
+        ClogHistory();
+        ~ClogHistory();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,14 +96,14 @@ class CISCOSYSLOGMIB::Cloghistory : public ydk::Entity
         ydk::YLeaf cloghisttablemaxlength; //type: int32
         ydk::YLeaf cloghistmsgsflushed; //type: uint32
 
-}; // CISCOSYSLOGMIB::Cloghistory
+}; // CISCOSYSLOGMIB::ClogHistory
 
 
-class CISCOSYSLOGMIB::Clogserver : public ydk::Entity
+class CISCOSYSLOGMIB::ClogServer : public ydk::Entity
 {
     public:
-        Clogserver();
-        ~Clogserver();
+        ClogServer();
+        ~ClogServer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,14 +118,14 @@ class CISCOSYSLOGMIB::Clogserver : public ydk::Entity
 
         ydk::YLeaf clogmaxservers; //type: uint32
 
-}; // CISCOSYSLOGMIB::Clogserver
+}; // CISCOSYSLOGMIB::ClogServer
 
 
-class CISCOSYSLOGMIB::Cloghistorytable : public ydk::Entity
+class CISCOSYSLOGMIB::ClogHistoryTable : public ydk::Entity
 {
     public:
-        Cloghistorytable();
-        ~Cloghistorytable();
+        ClogHistoryTable();
+        ~ClogHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -138,18 +138,18 @@ class CISCOSYSLOGMIB::Cloghistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cloghistoryentry; //type: CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry
+        class ClogHistoryEntry; //type: CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry> > cloghistoryentry;
+        ydk::YList cloghistoryentry;
         
-}; // CISCOSYSLOGMIB::Cloghistorytable
+}; // CISCOSYSLOGMIB::ClogHistoryTable
 
 
-class CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry : public ydk::Entity
+class CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry : public ydk::Entity
 {
     public:
-        Cloghistoryentry();
-        ~Cloghistoryentry();
+        ClogHistoryEntry();
+        ~ClogHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -169,14 +169,14 @@ class CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry : public ydk::Entity
         ydk::YLeaf cloghistmsgtext; //type: string
         ydk::YLeaf cloghisttimestamp; //type: uint32
 
-}; // CISCOSYSLOGMIB::Cloghistorytable::Cloghistoryentry
+}; // CISCOSYSLOGMIB::ClogHistoryTable::ClogHistoryEntry
 
 
-class CISCOSYSLOGMIB::Clogserverconfigtable : public ydk::Entity
+class CISCOSYSLOGMIB::ClogServerConfigTable : public ydk::Entity
 {
     public:
-        Clogserverconfigtable();
-        ~Clogserverconfigtable();
+        ClogServerConfigTable();
+        ~ClogServerConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -189,18 +189,18 @@ class CISCOSYSLOGMIB::Clogserverconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Clogserverconfigentry; //type: CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry
+        class ClogServerConfigEntry; //type: CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_SYSLOG_MIB::CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry> > clogserverconfigentry;
+        ydk::YList clogserverconfigentry;
         
-}; // CISCOSYSLOGMIB::Clogserverconfigtable
+}; // CISCOSYSLOGMIB::ClogServerConfigTable
 
 
-class CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry : public ydk::Entity
+class CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry : public ydk::Entity
 {
     public:
-        Clogserverconfigentry();
-        ~Clogserverconfigentry();
+        ClogServerConfigEntry();
+        ~ClogServerConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -217,7 +217,7 @@ class CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry : public ydk:
         ydk::YLeaf clogserveraddr; //type: binary
         ydk::YLeaf clogserverstatus; //type: RowStatus
 
-}; // CISCOSYSLOGMIB::Clogserverconfigtable::Clogserverconfigentry
+}; // CISCOSYSLOGMIB::ClogServerConfigTable::ClogServerConfigEntry
 
 class SyslogSeverity : public ydk::Enum
 {
@@ -233,7 +233,7 @@ class SyslogSeverity : public ydk::Enum
 
 };
 
-class CISCOSYSLOGMIB::Clogbasic::Clogoriginidtype : public ydk::Enum
+class CISCOSYSLOGMIB::ClogBasic::ClogOriginIDType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

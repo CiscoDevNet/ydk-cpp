@@ -17,7 +17,7 @@ Sla::Sla()
 {
     protocols->parent = this;
 
-    yang_name = "sla"; yang_parent_name = "Cisco-IOS-XR-infra-sla-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sla"; yang_parent_name = "Cisco-IOS-XR-infra-sla-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Sla::~Sla()
@@ -26,6 +26,7 @@ Sla::~Sla()
 
 bool Sla::has_data() const
 {
+    if (is_presence_container) return true;
     return (protocols !=  nullptr && protocols->has_data());
 }
 
@@ -123,7 +124,7 @@ Sla::Protocols::Protocols()
 {
     ethernet->parent = this;
 
-    yang_name = "protocols"; yang_parent_name = "sla"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocols"; yang_parent_name = "sla"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::~Protocols()
@@ -132,6 +133,7 @@ Sla::Protocols::~Protocols()
 
 bool Sla::Protocols::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet !=  nullptr && ethernet->has_data());
 }
 
@@ -208,12 +210,12 @@ bool Sla::Protocols::has_leaf_or_child_of_name(const std::string & name) const
 Sla::Protocols::Ethernet::Ethernet()
     :
     statistics_on_demand_currents(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents>())
-	,operations(std::make_shared<Sla::Protocols::Ethernet::Operations>())
-	,statistics_historicals(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals>())
-	,statistics_on_demand_historicals(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals>())
-	,config_errors(std::make_shared<Sla::Protocols::Ethernet::ConfigErrors>())
-	,on_demand_operations(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations>())
-	,statistics_currents(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents>())
+    , operations(std::make_shared<Sla::Protocols::Ethernet::Operations>())
+    , statistics_historicals(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals>())
+    , statistics_on_demand_historicals(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals>())
+    , config_errors(std::make_shared<Sla::Protocols::Ethernet::ConfigErrors>())
+    , on_demand_operations(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations>())
+    , statistics_currents(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents>())
 {
     statistics_on_demand_currents->parent = this;
     operations->parent = this;
@@ -223,7 +225,7 @@ Sla::Protocols::Ethernet::Ethernet()
     on_demand_operations->parent = this;
     statistics_currents->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::~Ethernet()
@@ -232,6 +234,7 @@ Sla::Protocols::Ethernet::~Ethernet()
 
 bool Sla::Protocols::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics_on_demand_currents !=  nullptr && statistics_on_demand_currents->has_data())
 	|| (operations !=  nullptr && operations->has_data())
 	|| (statistics_historicals !=  nullptr && statistics_historicals->has_data())
@@ -402,9 +405,11 @@ bool Sla::Protocols::Ethernet::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrents()
+    :
+    statistics_on_demand_current(this, {})
 {
 
-    yang_name = "statistics-on-demand-currents"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-on-demand-currents"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::~StatisticsOnDemandCurrents()
@@ -413,7 +418,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::~StatisticsOnDemandCurrent
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::has_data() const
 {
-    for (std::size_t index=0; index<statistics_on_demand_current.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistics_on_demand_current.len(); index++)
     {
         if(statistics_on_demand_current[index]->has_data())
             return true;
@@ -423,7 +429,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::has_data() const
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::has_operation() const
 {
-    for (std::size_t index=0; index<statistics_on_demand_current.size(); index++)
+    for (std::size_t index=0; index<statistics_on_demand_current.len(); index++)
     {
         if(statistics_on_demand_current[index]->has_operation())
             return true;
@@ -460,7 +466,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::ge
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent>();
         c->parent = this;
-        statistics_on_demand_current.push_back(c);
+        statistics_on_demand_current.append(c);
         return c;
     }
 
@@ -472,7 +478,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistics_on_demand_current)
+    for (auto c : statistics_on_demand_current.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -509,14 +515,15 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     display_short{YType::str, "display-short"},
     display_long{YType::str, "display-long"},
     flr_calculation_interval{YType::uint32, "flr-calculation-interval"}
-    	,
+        ,
     specific_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions>())
-	,operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule>())
+    , operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule>())
+    , operation_metric(this, {})
 {
     specific_options->parent = this;
     operation_schedule->parent = this;
 
-    yang_name = "statistics-on-demand-current"; yang_parent_name = "statistics-on-demand-currents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-on-demand-current"; yang_parent_name = "statistics-on-demand-currents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::~StatisticsOnDemandCurrent()
@@ -525,7 +532,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::has_data() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_data())
             return true;
@@ -545,7 +553,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::has_operation() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_operation())
             return true;
@@ -620,7 +628,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric>();
         c->parent = this;
-        operation_metric.push_back(c);
+        operation_metric.append(c);
         return c;
     }
 
@@ -642,7 +650,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : operation_metric)
+    for (auto c : operation_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -761,14 +769,14 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::SpecificOptions()
     :
     oper_type{YType::enumeration, "oper-type"}
-    	,
+        ,
     configured_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions>())
-	,ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions>())
+    , ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions>())
 {
     configured_operation_options->parent = this;
     ondemand_operation_options->parent = this;
 
-    yang_name = "specific-options"; yang_parent_name = "statistics-on-demand-current"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "specific-options"; yang_parent_name = "statistics-on-demand-current"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::~SpecificOptions()
@@ -777,6 +785,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return oper_type.is_set
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_data())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_data());
@@ -884,7 +893,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::~ConfiguredOperationOptions()
@@ -893,6 +902,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::ConfiguredOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -969,7 +979,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     probe_count{YType::uint8, "probe-count"}
 {
 
-    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::~OndemandOperationOptions()
@@ -978,6 +988,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::SpecificOptions::OndemandOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return ondemand_operation_id.is_set
 	|| probe_count.is_set;
 }
@@ -1069,7 +1080,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     schedule_interval{YType::uint32, "schedule-interval"}
 {
 
-    yang_name = "operation-schedule"; yang_parent_name = "statistics-on-demand-current"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-schedule"; yang_parent_name = "statistics-on-demand-current"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::~OperationSchedule()
@@ -1078,6 +1089,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationSchedule::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| start_time_configured.is_set
 	|| schedule_duration.is_set
@@ -1190,10 +1202,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::OperationMetric()
     :
     config(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config>())
+    , bucket(this, {})
 {
     config->parent = this;
 
-    yang_name = "operation-metric"; yang_parent_name = "statistics-on-demand-current"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-metric"; yang_parent_name = "statistics-on-demand-current"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::~OperationMetric()
@@ -1202,7 +1215,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::has_data() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_data())
             return true;
@@ -1212,7 +1226,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::has_operation() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_operation())
             return true;
@@ -1259,7 +1273,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket>();
         c->parent = this;
-        bucket.push_back(c);
+        bucket.append(c);
         return c;
     }
 
@@ -1276,7 +1290,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : bucket)
+    for (auto c : bucket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1312,7 +1326,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     buckets_archive{YType::uint32, "buckets-archive"}
 {
 
-    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::~Config()
@@ -1321,6 +1335,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_type.is_set
 	|| bins_count.is_set
 	|| bins_width.is_set
@@ -1489,12 +1504,12 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     suspect_flr_low_packet_count{YType::boolean, "suspect-flr-low-packet-count"},
     premature_reason{YType::uint32, "premature-reason"},
     premature_reason_string{YType::str, "premature-reason-string"}
-    	,
+        ,
     contents(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents>())
 {
     contents->parent = this;
 
-    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::~Bucket()
@@ -1503,6 +1518,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::has_data() const
 {
+    if (is_presence_container) return true;
     return start_at.is_set
 	|| duration.is_set
 	|| sent.is_set
@@ -1982,14 +1998,14 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Contents()
     :
     bucket_type{YType::enumeration, "bucket-type"}
-    	,
+        ,
     aggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated>())
-	,unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated>())
+    , unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated>())
 {
     aggregated->parent = this;
     unaggregated->parent = this;
 
-    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::~Contents()
@@ -1998,6 +2014,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::has_data() const
 {
+    if (is_presence_container) return true;
     return bucket_type.is_set
 	|| (aggregated !=  nullptr && aggregated->has_data())
 	|| (unaggregated !=  nullptr && unaggregated->has_data());
@@ -2101,9 +2118,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
+    :
+    bins(this, {})
 {
 
-    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::~Aggregated()
@@ -2112,7 +2131,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::has_data() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_data())
             return true;
@@ -2122,7 +2142,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::has_operation() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_operation())
             return true;
@@ -2159,7 +2179,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins>();
         c->parent = this;
-        bins.push_back(c);
+        bins.append(c);
         return c;
     }
 
@@ -2171,7 +2191,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bins)
+    for (auto c : bins.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2207,7 +2227,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     count{YType::uint32, "count"}
 {
 
-    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::~Bins()
@@ -2216,6 +2236,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_bound.is_set
 	|| upper_bound.is_set
 	|| lower_bound_tenths.is_set
@@ -2352,9 +2373,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
+    :
+    sample(this, {})
 {
 
-    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::~Unaggregated()
@@ -2363,7 +2386,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -2373,7 +2397,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -2410,7 +2434,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::St
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -2422,7 +2446,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2461,7 +2485,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
     frames_lost{YType::uint32, "frames-lost"}
 {
 
-    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::~Sample()
@@ -2470,6 +2494,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent:
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_at.is_set
 	|| sent.is_set
 	|| timed_out.is_set
@@ -2645,9 +2670,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandCurrents::StatisticsOnDemandCur
 }
 
 Sla::Protocols::Ethernet::Operations::Operations()
+    :
+    operation_(this, {})
 {
 
-    yang_name = "operations"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operations"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::~Operations()
@@ -2656,7 +2683,8 @@ Sla::Protocols::Ethernet::Operations::~Operations()
 
 bool Sla::Protocols::Ethernet::Operations::has_data() const
 {
-    for (std::size_t index=0; index<operation_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_.len(); index++)
     {
         if(operation_[index]->has_data())
             return true;
@@ -2666,7 +2694,7 @@ bool Sla::Protocols::Ethernet::Operations::has_data() const
 
 bool Sla::Protocols::Ethernet::Operations::has_operation() const
 {
-    for (std::size_t index=0; index<operation_.size(); index++)
+    for (std::size_t index=0; index<operation_.len(); index++)
     {
         if(operation_[index]->has_operation())
             return true;
@@ -2703,7 +2731,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::get_child_by_name(
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::Operations::Operation>();
         c->parent = this;
-        operation_.push_back(c);
+        operation_.append(c);
         return c;
     }
 
@@ -2715,7 +2743,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : operation_)
+    for (auto c : operation_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2751,14 +2779,14 @@ Sla::Protocols::Ethernet::Operations::Operation::Operation()
     display_short{YType::str, "display-short"},
     display_long{YType::str, "display-long"},
     last_run{YType::uint32, "last-run"}
-    	,
+        ,
     profile_options(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions>())
-	,specific_options(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions>())
+    , specific_options(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions>())
 {
     profile_options->parent = this;
     specific_options->parent = this;
 
-    yang_name = "operation"; yang_parent_name = "operations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation"; yang_parent_name = "operations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::~Operation()
@@ -2767,6 +2795,7 @@ Sla::Protocols::Ethernet::Operations::Operation::~Operation()
 
 bool Sla::Protocols::Ethernet::Operations::Operation::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set
 	|| domain_name.is_set
 	|| interface_name.is_set
@@ -2968,16 +2997,17 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::ProfileOptions(
     bursts_per_probe{YType::uint32, "bursts-per-probe"},
     inter_burst_interval{YType::uint32, "inter-burst-interval"},
     flr_calculation_interval{YType::uint32, "flr-calculation-interval"}
-    	,
+        ,
     packet_padding(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding>())
-	,priority(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority>())
-	,operation_schedule(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule>())
+    , priority(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority>())
+    , operation_schedule(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule>())
+    , operation_metric(this, {})
 {
     packet_padding->parent = this;
     priority->parent = this;
     operation_schedule->parent = this;
 
-    yang_name = "profile-options"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile-options"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::~ProfileOptions()
@@ -2986,7 +3016,8 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::~ProfileOptions
 
 bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::has_data() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_data())
             return true;
@@ -3004,7 +3035,7 @@ bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::has_data()
 
 bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::has_operation() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_operation())
             return true;
@@ -3083,7 +3114,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::Operations::Operation::Profile
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric>();
         c->parent = this;
-        operation_metric.push_back(c);
+        operation_metric.append(c);
         return c;
     }
 
@@ -3110,7 +3141,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Operati
     }
 
     count = 0;
-    for (auto const & c : operation_metric)
+    for (auto c : operation_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3203,7 +3234,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::
     test_pattern_pad_hex_string{YType::uint32, "test-pattern-pad-hex-string"}
 {
 
-    yang_name = "packet-padding"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packet-padding"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::~PacketPadding()
@@ -3212,6 +3243,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::
 
 bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::PacketPadding::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_pad_size.is_set
 	|| test_pattern_pad_scheme.is_set
 	|| test_pattern_pad_hex_string.is_set;
@@ -3314,7 +3346,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::Prior
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "priority"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::~Priority()
@@ -3323,6 +3355,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::~Prio
 
 bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return priority_type.is_set
 	|| cos.is_set;
 }
@@ -3414,7 +3447,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedu
     schedule_interval{YType::uint32, "schedule-interval"}
 {
 
-    yang_name = "operation-schedule"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-schedule"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule::~OperationSchedule()
@@ -3423,6 +3456,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedu
 
 bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationSchedule::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| start_time_configured.is_set
 	|| schedule_duration.is_set
@@ -3535,12 +3569,12 @@ bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationS
 Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::OperationMetric()
     :
     current_buckets_archive{YType::uint32, "current-buckets-archive"}
-    	,
+        ,
     metric_config(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig>())
 {
     metric_config->parent = this;
 
-    yang_name = "operation-metric"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-metric"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::~OperationMetric()
@@ -3549,6 +3583,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric
 
 bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return current_buckets_archive.is_set
 	|| (metric_config !=  nullptr && metric_config->has_data());
 }
@@ -3645,7 +3680,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric
     buckets_archive{YType::uint32, "buckets-archive"}
 {
 
-    yang_name = "metric-config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "metric-config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig::~MetricConfig()
@@ -3654,6 +3689,7 @@ Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric
 
 bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationMetric::MetricConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_type.is_set
 	|| bins_count.is_set
 	|| bins_width.is_set
@@ -3792,14 +3828,14 @@ bool Sla::Protocols::Ethernet::Operations::Operation::ProfileOptions::OperationM
 Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::SpecificOptions()
     :
     oper_type{YType::enumeration, "oper-type"}
-    	,
+        ,
     configured_operation_options(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions>())
-	,ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions>())
+    , ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions>())
 {
     configured_operation_options->parent = this;
     ondemand_operation_options->parent = this;
 
-    yang_name = "specific-options"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "specific-options"; yang_parent_name = "operation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::~SpecificOptions()
@@ -3808,6 +3844,7 @@ Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::~SpecificOptio
 
 bool Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return oper_type.is_set
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_data())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_data());
@@ -3915,7 +3952,7 @@ Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOper
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions::~ConfiguredOperationOptions()
@@ -3924,6 +3961,7 @@ Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOper
 
 bool Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::ConfiguredOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -4000,7 +4038,7 @@ Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperat
     probe_count{YType::uint8, "probe-count"}
 {
 
-    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions::~OndemandOperationOptions()
@@ -4009,6 +4047,7 @@ Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperat
 
 bool Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return ondemand_operation_id.is_set
 	|| probe_count.is_set;
 }
@@ -4093,9 +4132,11 @@ bool Sla::Protocols::Ethernet::Operations::Operation::SpecificOptions::OndemandO
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistoricals()
+    :
+    statistics_historical(this, {})
 {
 
-    yang_name = "statistics-historicals"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-historicals"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::~StatisticsHistoricals()
@@ -4104,7 +4145,8 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::~StatisticsHistoricals()
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::has_data() const
 {
-    for (std::size_t index=0; index<statistics_historical.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistics_historical.len(); index++)
     {
         if(statistics_historical[index]->has_data())
             return true;
@@ -4114,7 +4156,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::has_data() const
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::has_operation() const
 {
-    for (std::size_t index=0; index<statistics_historical.size(); index++)
+    for (std::size_t index=0; index<statistics_historical.len(); index++)
     {
         if(statistics_historical[index]->has_operation())
             return true;
@@ -4151,7 +4193,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::get_chi
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical>();
         c->parent = this;
-        statistics_historical.push_back(c);
+        statistics_historical.append(c);
         return c;
     }
 
@@ -4163,7 +4205,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistics_historical)
+    for (auto c : statistics_historical.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4200,14 +4242,15 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Statistic
     display_short{YType::str, "display-short"},
     display_long{YType::str, "display-long"},
     flr_calculation_interval{YType::uint32, "flr-calculation-interval"}
-    	,
+        ,
     specific_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions>())
-	,operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule>())
+    , operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule>())
+    , operation_metric(this, {})
 {
     specific_options->parent = this;
     operation_schedule->parent = this;
 
-    yang_name = "statistics-historical"; yang_parent_name = "statistics-historicals"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-historical"; yang_parent_name = "statistics-historicals"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::~StatisticsHistorical()
@@ -4216,7 +4259,8 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::~Statisti
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::has_data() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_data())
             return true;
@@ -4236,7 +4280,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::has_
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::has_operation() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_operation())
             return true;
@@ -4311,7 +4355,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric>();
         c->parent = this;
-        operation_metric.push_back(c);
+        operation_metric.append(c);
         return c;
     }
 
@@ -4333,7 +4377,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : operation_metric)
+    for (auto c : operation_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4452,14 +4496,14 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::has_
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::SpecificOptions()
     :
     oper_type{YType::enumeration, "oper-type"}
-    	,
+        ,
     configured_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions>())
-	,ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions>())
+    , ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions>())
 {
     configured_operation_options->parent = this;
     ondemand_operation_options->parent = this;
 
-    yang_name = "specific-options"; yang_parent_name = "statistics-historical"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "specific-options"; yang_parent_name = "statistics-historical"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::~SpecificOptions()
@@ -4468,6 +4512,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificO
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return oper_type.is_set
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_data())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_data());
@@ -4575,7 +4620,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificO
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::~ConfiguredOperationOptions()
@@ -4584,6 +4629,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificO
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::ConfiguredOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -4660,7 +4706,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificO
     probe_count{YType::uint8, "probe-count"}
 {
 
-    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::~OndemandOperationOptions()
@@ -4669,6 +4715,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificO
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::SpecificOptions::OndemandOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return ondemand_operation_id.is_set
 	|| probe_count.is_set;
 }
@@ -4760,7 +4807,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
     schedule_interval{YType::uint32, "schedule-interval"}
 {
 
-    yang_name = "operation-schedule"; yang_parent_name = "statistics-historical"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-schedule"; yang_parent_name = "statistics-historical"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::~OperationSchedule()
@@ -4769,6 +4816,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationSchedule::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| start_time_configured.is_set
 	|| schedule_duration.is_set
@@ -4881,10 +4929,11 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::OperationMetric()
     :
     config(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config>())
+    , bucket(this, {})
 {
     config->parent = this;
 
-    yang_name = "operation-metric"; yang_parent_name = "statistics-historical"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-metric"; yang_parent_name = "statistics-historical"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::~OperationMetric()
@@ -4893,7 +4942,8 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::has_data() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_data())
             return true;
@@ -4903,7 +4953,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::has_operation() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_operation())
             return true;
@@ -4950,7 +5000,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket>();
         c->parent = this;
-        bucket.push_back(c);
+        bucket.append(c);
         return c;
     }
 
@@ -4967,7 +5017,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : bucket)
+    for (auto c : bucket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5003,7 +5053,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
     buckets_archive{YType::uint32, "buckets-archive"}
 {
 
-    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::~Config()
@@ -5012,6 +5062,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_type.is_set
 	|| bins_count.is_set
 	|| bins_width.is_set
@@ -5180,12 +5231,12 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
     suspect_flr_low_packet_count{YType::boolean, "suspect-flr-low-packet-count"},
     premature_reason{YType::uint32, "premature-reason"},
     premature_reason_string{YType::str, "premature-reason-string"}
-    	,
+        ,
     contents(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents>())
 {
     contents->parent = this;
 
-    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::~Bucket()
@@ -5194,6 +5245,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::has_data() const
 {
+    if (is_presence_container) return true;
     return start_at.is_set
 	|| duration.is_set
 	|| sent.is_set
@@ -5673,14 +5725,14 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Contents()
     :
     bucket_type{YType::enumeration, "bucket-type"}
-    	,
+        ,
     aggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated>())
-	,unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated>())
+    , unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated>())
 {
     aggregated->parent = this;
     unaggregated->parent = this;
 
-    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::~Contents()
@@ -5689,6 +5741,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::has_data() const
 {
+    if (is_presence_container) return true;
     return bucket_type.is_set
 	|| (aggregated !=  nullptr && aggregated->has_data())
 	|| (unaggregated !=  nullptr && unaggregated->has_data());
@@ -5792,9 +5845,11 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
+    :
+    bins(this, {})
 {
 
-    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::~Aggregated()
@@ -5803,7 +5858,8 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::has_data() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_data())
             return true;
@@ -5813,7 +5869,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::has_operation() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_operation())
             return true;
@@ -5850,7 +5906,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins>();
         c->parent = this;
-        bins.push_back(c);
+        bins.append(c);
         return c;
     }
 
@@ -5862,7 +5918,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bins)
+    for (auto c : bins.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5898,7 +5954,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
     count{YType::uint32, "count"}
 {
 
-    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::~Bins()
@@ -5907,6 +5963,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_bound.is_set
 	|| upper_bound.is_set
 	|| lower_bound_tenths.is_set
@@ -6043,9 +6100,11 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
+    :
+    sample(this, {})
 {
 
-    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::~Unaggregated()
@@ -6054,7 +6113,8 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -6064,7 +6124,7 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -6101,7 +6161,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsHistoricals::Statist
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -6113,7 +6173,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6152,7 +6212,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
     frames_lost{YType::uint32, "frames-lost"}
 {
 
-    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::~Sample()
@@ -6161,6 +6221,7 @@ Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Operation
 
 bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_at.is_set
 	|| sent.is_set
 	|| timed_out.is_set
@@ -6336,9 +6397,11 @@ bool Sla::Protocols::Ethernet::StatisticsHistoricals::StatisticsHistorical::Oper
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistoricals()
+    :
+    statistics_on_demand_historical(this, {})
 {
 
-    yang_name = "statistics-on-demand-historicals"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-on-demand-historicals"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::~StatisticsOnDemandHistoricals()
@@ -6347,7 +6410,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::~StatisticsOnDemandHist
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::has_data() const
 {
-    for (std::size_t index=0; index<statistics_on_demand_historical.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistics_on_demand_historical.len(); index++)
     {
         if(statistics_on_demand_historical[index]->has_data())
             return true;
@@ -6357,7 +6421,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::has_data() const
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::has_operation() const
 {
-    for (std::size_t index=0; index<statistics_on_demand_historical.size(); index++)
+    for (std::size_t index=0; index<statistics_on_demand_historical.len(); index++)
     {
         if(statistics_on_demand_historical[index]->has_operation())
             return true;
@@ -6394,7 +6458,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical>();
         c->parent = this;
-        statistics_on_demand_historical.push_back(c);
+        statistics_on_demand_historical.append(c);
         return c;
     }
 
@@ -6406,7 +6470,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistics_on_demand_historical)
+    for (auto c : statistics_on_demand_historical.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6443,14 +6507,15 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     display_short{YType::str, "display-short"},
     display_long{YType::str, "display-long"},
     flr_calculation_interval{YType::uint32, "flr-calculation-interval"}
-    	,
+        ,
     specific_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions>())
-	,operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule>())
+    , operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule>())
+    , operation_metric(this, {})
 {
     specific_options->parent = this;
     operation_schedule->parent = this;
 
-    yang_name = "statistics-on-demand-historical"; yang_parent_name = "statistics-on-demand-historicals"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-on-demand-historical"; yang_parent_name = "statistics-on-demand-historicals"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::~StatisticsOnDemandHistorical()
@@ -6459,7 +6524,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::has_data() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_data())
             return true;
@@ -6479,7 +6545,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::has_operation() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_operation())
             return true;
@@ -6554,7 +6620,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric>();
         c->parent = this;
-        operation_metric.push_back(c);
+        operation_metric.append(c);
         return c;
     }
 
@@ -6576,7 +6642,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : operation_metric)
+    for (auto c : operation_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6695,14 +6761,14 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::SpecificOptions()
     :
     oper_type{YType::enumeration, "oper-type"}
-    	,
+        ,
     configured_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions>())
-	,ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions>())
+    , ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions>())
 {
     configured_operation_options->parent = this;
     ondemand_operation_options->parent = this;
 
-    yang_name = "specific-options"; yang_parent_name = "statistics-on-demand-historical"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "specific-options"; yang_parent_name = "statistics-on-demand-historical"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::~SpecificOptions()
@@ -6711,6 +6777,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return oper_type.is_set
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_data())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_data());
@@ -6818,7 +6885,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::~ConfiguredOperationOptions()
@@ -6827,6 +6894,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::ConfiguredOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -6903,7 +6971,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     probe_count{YType::uint8, "probe-count"}
 {
 
-    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::~OndemandOperationOptions()
@@ -6912,6 +6980,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::SpecificOptions::OndemandOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return ondemand_operation_id.is_set
 	|| probe_count.is_set;
 }
@@ -7003,7 +7072,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     schedule_interval{YType::uint32, "schedule-interval"}
 {
 
-    yang_name = "operation-schedule"; yang_parent_name = "statistics-on-demand-historical"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-schedule"; yang_parent_name = "statistics-on-demand-historical"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::~OperationSchedule()
@@ -7012,6 +7081,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationSchedule::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| start_time_configured.is_set
 	|| schedule_duration.is_set
@@ -7124,10 +7194,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::OperationMetric()
     :
     config(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config>())
+    , bucket(this, {})
 {
     config->parent = this;
 
-    yang_name = "operation-metric"; yang_parent_name = "statistics-on-demand-historical"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-metric"; yang_parent_name = "statistics-on-demand-historical"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::~OperationMetric()
@@ -7136,7 +7207,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::has_data() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_data())
             return true;
@@ -7146,7 +7218,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::has_operation() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_operation())
             return true;
@@ -7193,7 +7265,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket>();
         c->parent = this;
-        bucket.push_back(c);
+        bucket.append(c);
         return c;
     }
 
@@ -7210,7 +7282,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : bucket)
+    for (auto c : bucket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7246,7 +7318,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     buckets_archive{YType::uint32, "buckets-archive"}
 {
 
-    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::~Config()
@@ -7255,6 +7327,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_type.is_set
 	|| bins_count.is_set
 	|| bins_width.is_set
@@ -7423,12 +7496,12 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     suspect_flr_low_packet_count{YType::boolean, "suspect-flr-low-packet-count"},
     premature_reason{YType::uint32, "premature-reason"},
     premature_reason_string{YType::str, "premature-reason-string"}
-    	,
+        ,
     contents(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents>())
 {
     contents->parent = this;
 
-    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::~Bucket()
@@ -7437,6 +7510,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::has_data() const
 {
+    if (is_presence_container) return true;
     return start_at.is_set
 	|| duration.is_set
 	|| sent.is_set
@@ -7916,14 +7990,14 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Contents()
     :
     bucket_type{YType::enumeration, "bucket-type"}
-    	,
+        ,
     aggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated>())
-	,unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated>())
+    , unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated>())
 {
     aggregated->parent = this;
     unaggregated->parent = this;
 
-    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::~Contents()
@@ -7932,6 +8006,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::has_data() const
 {
+    if (is_presence_container) return true;
     return bucket_type.is_set
 	|| (aggregated !=  nullptr && aggregated->has_data())
 	|| (unaggregated !=  nullptr && unaggregated->has_data());
@@ -8035,9 +8110,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
+    :
+    bins(this, {})
 {
 
-    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::~Aggregated()
@@ -8046,7 +8123,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::has_data() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_data())
             return true;
@@ -8056,7 +8134,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::has_operation() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_operation())
             return true;
@@ -8093,7 +8171,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins>();
         c->parent = this;
-        bins.push_back(c);
+        bins.append(c);
         return c;
     }
 
@@ -8105,7 +8183,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bins)
+    for (auto c : bins.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8141,7 +8219,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     count{YType::uint32, "count"}
 {
 
-    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::~Bins()
@@ -8150,6 +8228,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Aggregated::Bins::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_bound.is_set
 	|| upper_bound.is_set
 	|| lower_bound_tenths.is_set
@@ -8286,9 +8365,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
+    :
+    sample(this, {})
 {
 
-    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::~Unaggregated()
@@ -8297,7 +8378,8 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -8307,7 +8389,7 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -8344,7 +8426,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals:
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -8356,7 +8438,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8395,7 +8477,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
     frames_lost{YType::uint32, "frames-lost"}
 {
 
-    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::~Sample()
@@ -8404,6 +8486,7 @@ Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHisto
 
 bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemandHistorical::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_at.is_set
 	|| sent.is_set
 	|| timed_out.is_set
@@ -8579,9 +8662,11 @@ bool Sla::Protocols::Ethernet::StatisticsOnDemandHistoricals::StatisticsOnDemand
 }
 
 Sla::Protocols::Ethernet::ConfigErrors::ConfigErrors()
+    :
+    config_error(this, {})
 {
 
-    yang_name = "config-errors"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config-errors"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::ConfigErrors::~ConfigErrors()
@@ -8590,7 +8675,8 @@ Sla::Protocols::Ethernet::ConfigErrors::~ConfigErrors()
 
 bool Sla::Protocols::Ethernet::ConfigErrors::has_data() const
 {
-    for (std::size_t index=0; index<config_error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<config_error.len(); index++)
     {
         if(config_error[index]->has_data())
             return true;
@@ -8600,7 +8686,7 @@ bool Sla::Protocols::Ethernet::ConfigErrors::has_data() const
 
 bool Sla::Protocols::Ethernet::ConfigErrors::has_operation() const
 {
-    for (std::size_t index=0; index<config_error.size(); index++)
+    for (std::size_t index=0; index<config_error.len(); index++)
     {
         if(config_error[index]->has_operation())
             return true;
@@ -8637,7 +8723,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::ConfigErrors::get_child_by_nam
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::ConfigErrors::ConfigError>();
         c->parent = this;
-        config_error.push_back(c);
+        config_error.append(c);
         return c;
     }
 
@@ -8649,7 +8735,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::ConfigE
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : config_error)
+    for (auto c : config_error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8703,7 +8789,7 @@ Sla::Protocols::Ethernet::ConfigErrors::ConfigError::ConfigError()
     error_string{YType::str, "error-string"}
 {
 
-    yang_name = "config-error"; yang_parent_name = "config-errors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config-error"; yang_parent_name = "config-errors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::ConfigErrors::ConfigError::~ConfigError()
@@ -8712,6 +8798,7 @@ Sla::Protocols::Ethernet::ConfigErrors::ConfigError::~ConfigError()
 
 bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : error_string.getYLeafs())
     {
         if(leaf.is_set)
@@ -9090,9 +9177,11 @@ bool Sla::Protocols::Ethernet::ConfigErrors::ConfigError::has_leaf_or_child_of_n
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperations()
+    :
+    on_demand_operation(this, {})
 {
 
-    yang_name = "on-demand-operations"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "on-demand-operations"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::~OnDemandOperations()
@@ -9101,7 +9190,8 @@ Sla::Protocols::Ethernet::OnDemandOperations::~OnDemandOperations()
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::has_data() const
 {
-    for (std::size_t index=0; index<on_demand_operation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<on_demand_operation.len(); index++)
     {
         if(on_demand_operation[index]->has_data())
             return true;
@@ -9111,7 +9201,7 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::has_data() const
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::has_operation() const
 {
-    for (std::size_t index=0; index<on_demand_operation.size(); index++)
+    for (std::size_t index=0; index<on_demand_operation.len(); index++)
     {
         if(on_demand_operation[index]->has_operation())
             return true;
@@ -9148,7 +9238,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::get_child_
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation>();
         c->parent = this;
-        on_demand_operation.push_back(c);
+        on_demand_operation.append(c);
         return c;
     }
 
@@ -9160,7 +9250,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : on_demand_operation)
+    for (auto c : on_demand_operation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9196,14 +9286,14 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::OnDemandOperati
     display_short{YType::str, "display-short"},
     display_long{YType::str, "display-long"},
     last_run{YType::uint32, "last-run"}
-    	,
+        ,
     profile_options(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions>())
-	,specific_options(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions>())
+    , specific_options(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions>())
 {
     profile_options->parent = this;
     specific_options->parent = this;
 
-    yang_name = "on-demand-operation"; yang_parent_name = "on-demand-operations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "on-demand-operation"; yang_parent_name = "on-demand-operations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::~OnDemandOperation()
@@ -9212,6 +9302,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::~OnDemandOperat
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_id.is_set
 	|| domain_name.is_set
 	|| interface_name.is_set
@@ -9413,16 +9504,17 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
     bursts_per_probe{YType::uint32, "bursts-per-probe"},
     inter_burst_interval{YType::uint32, "inter-burst-interval"},
     flr_calculation_interval{YType::uint32, "flr-calculation-interval"}
-    	,
+        ,
     packet_padding(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding>())
-	,priority(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority>())
-	,operation_schedule(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule>())
+    , priority(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority>())
+    , operation_schedule(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule>())
+    , operation_metric(this, {})
 {
     packet_padding->parent = this;
     priority->parent = this;
     operation_schedule->parent = this;
 
-    yang_name = "profile-options"; yang_parent_name = "on-demand-operation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile-options"; yang_parent_name = "on-demand-operation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::~ProfileOptions()
@@ -9431,7 +9523,8 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::has_data() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_data())
             return true;
@@ -9449,7 +9542,7 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::has_operation() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_operation())
             return true;
@@ -9528,7 +9621,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOp
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric>();
         c->parent = this;
-        operation_metric.push_back(c);
+        operation_metric.append(c);
         return c;
     }
 
@@ -9555,7 +9648,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::OnDeman
     }
 
     count = 0;
-    for (auto const & c : operation_metric)
+    for (auto c : operation_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9648,7 +9741,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
     test_pattern_pad_hex_string{YType::uint32, "test-pattern-pad-hex-string"}
 {
 
-    yang_name = "packet-padding"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "packet-padding"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::~PacketPadding()
@@ -9657,6 +9750,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::PacketPadding::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_pad_size.is_set
 	|| test_pattern_pad_scheme.is_set
 	|| test_pattern_pad_hex_string.is_set;
@@ -9759,7 +9853,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "priority"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::~Priority()
@@ -9768,6 +9862,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return priority_type.is_set
 	|| cos.is_set;
 }
@@ -9859,7 +9954,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
     schedule_interval{YType::uint32, "schedule-interval"}
 {
 
-    yang_name = "operation-schedule"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-schedule"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::~OperationSchedule()
@@ -9868,6 +9963,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationSchedule::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| start_time_configured.is_set
 	|| schedule_duration.is_set
@@ -9980,12 +10076,12 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::OperationMetric()
     :
     current_buckets_archive{YType::uint32, "current-buckets-archive"}
-    	,
+        ,
     metric_config(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig>())
 {
     metric_config->parent = this;
 
-    yang_name = "operation-metric"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-metric"; yang_parent_name = "profile-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::~OperationMetric()
@@ -9994,6 +10090,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::has_data() const
 {
+    if (is_presence_container) return true;
     return current_buckets_archive.is_set
 	|| (metric_config !=  nullptr && metric_config->has_data());
 }
@@ -10090,7 +10187,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
     buckets_archive{YType::uint32, "buckets-archive"}
 {
 
-    yang_name = "metric-config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "metric-config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::~MetricConfig()
@@ -10099,6 +10196,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions:
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOptions::OperationMetric::MetricConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_type.is_set
 	|| bins_count.is_set
 	|| bins_width.is_set
@@ -10237,14 +10335,14 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::ProfileOpt
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::SpecificOptions()
     :
     oper_type{YType::enumeration, "oper-type"}
-    	,
+        ,
     configured_operation_options(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions>())
-	,ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions>())
+    , ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions>())
 {
     configured_operation_options->parent = this;
     ondemand_operation_options->parent = this;
 
-    yang_name = "specific-options"; yang_parent_name = "on-demand-operation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "specific-options"; yang_parent_name = "on-demand-operation"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::~SpecificOptions()
@@ -10253,6 +10351,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return oper_type.is_set
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_data())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_data());
@@ -10360,7 +10459,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::~ConfiguredOperationOptions()
@@ -10369,6 +10468,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::ConfiguredOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -10445,7 +10545,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
     probe_count{YType::uint8, "probe-count"}
 {
 
-    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::~OndemandOperationOptions()
@@ -10454,6 +10554,7 @@ Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions
 
 bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOptions::OndemandOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return ondemand_operation_id.is_set
 	|| probe_count.is_set;
 }
@@ -10538,9 +10639,11 @@ bool Sla::Protocols::Ethernet::OnDemandOperations::OnDemandOperation::SpecificOp
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrents()
+    :
+    statistics_current(this, {})
 {
 
-    yang_name = "statistics-currents"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-currents"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::~StatisticsCurrents()
@@ -10549,7 +10652,8 @@ Sla::Protocols::Ethernet::StatisticsCurrents::~StatisticsCurrents()
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::has_data() const
 {
-    for (std::size_t index=0; index<statistics_current.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistics_current.len(); index++)
     {
         if(statistics_current[index]->has_data())
             return true;
@@ -10559,7 +10663,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::has_data() const
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::has_operation() const
 {
-    for (std::size_t index=0; index<statistics_current.size(); index++)
+    for (std::size_t index=0; index<statistics_current.len(); index++)
     {
         if(statistics_current[index]->has_operation())
             return true;
@@ -10596,7 +10700,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::get_child_
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent>();
         c->parent = this;
-        statistics_current.push_back(c);
+        statistics_current.append(c);
         return c;
     }
 
@@ -10608,7 +10712,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistics_current)
+    for (auto c : statistics_current.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10645,14 +10749,15 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::StatisticsCurre
     display_short{YType::str, "display-short"},
     display_long{YType::str, "display-long"},
     flr_calculation_interval{YType::uint32, "flr-calculation-interval"}
-    	,
+        ,
     specific_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions>())
-	,operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule>())
+    , operation_schedule(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule>())
+    , operation_metric(this, {})
 {
     specific_options->parent = this;
     operation_schedule->parent = this;
 
-    yang_name = "statistics-current"; yang_parent_name = "statistics-currents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics-current"; yang_parent_name = "statistics-currents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::~StatisticsCurrent()
@@ -10661,7 +10766,8 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::~StatisticsCurr
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::has_data() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_data())
             return true;
@@ -10681,7 +10787,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::has_data()
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::has_operation() const
 {
-    for (std::size_t index=0; index<operation_metric.size(); index++)
+    for (std::size_t index=0; index<operation_metric.len(); index++)
     {
         if(operation_metric[index]->has_operation())
             return true;
@@ -10756,7 +10862,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric>();
         c->parent = this;
-        operation_metric.push_back(c);
+        operation_metric.append(c);
         return c;
     }
 
@@ -10778,7 +10884,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : operation_metric)
+    for (auto c : operation_metric.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10897,14 +11003,14 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::has_leaf_o
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::SpecificOptions()
     :
     oper_type{YType::enumeration, "oper-type"}
-    	,
+        ,
     configured_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions>())
-	,ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions>())
+    , ondemand_operation_options(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions>())
 {
     configured_operation_options->parent = this;
     ondemand_operation_options->parent = this;
 
-    yang_name = "specific-options"; yang_parent_name = "statistics-current"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "specific-options"; yang_parent_name = "statistics-current"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::~SpecificOptions()
@@ -10913,6 +11019,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return oper_type.is_set
 	|| (configured_operation_options !=  nullptr && configured_operation_options->has_data())
 	|| (ondemand_operation_options !=  nullptr && ondemand_operation_options->has_data());
@@ -11020,7 +11127,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
     profile_name{YType::str, "profile-name"}
 {
 
-    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configured-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::~ConfiguredOperationOptions()
@@ -11029,6 +11136,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::ConfiguredOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return profile_name.is_set;
 }
 
@@ -11105,7 +11213,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
     probe_count{YType::uint8, "probe-count"}
 {
 
-    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ondemand-operation-options"; yang_parent_name = "specific-options"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::~OndemandOperationOptions()
@@ -11114,6 +11222,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::SpecificOptions::OndemandOperationOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return ondemand_operation_id.is_set
 	|| probe_count.is_set;
 }
@@ -11205,7 +11314,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedu
     schedule_interval{YType::uint32, "schedule-interval"}
 {
 
-    yang_name = "operation-schedule"; yang_parent_name = "statistics-current"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-schedule"; yang_parent_name = "statistics-current"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::~OperationSchedule()
@@ -11214,6 +11323,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedu
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationSchedule::has_data() const
 {
+    if (is_presence_container) return true;
     return start_time.is_set
 	|| start_time_configured.is_set
 	|| schedule_duration.is_set
@@ -11326,10 +11436,11 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationS
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::OperationMetric()
     :
     config(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config>())
+    , bucket(this, {})
 {
     config->parent = this;
 
-    yang_name = "operation-metric"; yang_parent_name = "statistics-current"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "operation-metric"; yang_parent_name = "statistics-current"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::~OperationMetric()
@@ -11338,7 +11449,8 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::has_data() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_data())
             return true;
@@ -11348,7 +11460,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::has_operation() const
 {
-    for (std::size_t index=0; index<bucket.size(); index++)
+    for (std::size_t index=0; index<bucket.len(); index++)
     {
         if(bucket[index]->has_operation())
             return true;
@@ -11395,7 +11507,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket>();
         c->parent = this;
-        bucket.push_back(c);
+        bucket.append(c);
         return c;
     }
 
@@ -11412,7 +11524,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     }
 
     count = 0;
-    for (auto const & c : bucket)
+    for (auto c : bucket.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11448,7 +11560,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
     buckets_archive{YType::uint32, "buckets-archive"}
 {
 
-    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::~Config()
@@ -11457,6 +11569,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_type.is_set
 	|| bins_count.is_set
 	|| bins_width.is_set
@@ -11625,12 +11738,12 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
     suspect_flr_low_packet_count{YType::boolean, "suspect-flr-low-packet-count"},
     premature_reason{YType::uint32, "premature-reason"},
     premature_reason_string{YType::str, "premature-reason-string"}
-    	,
+        ,
     contents(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents>())
 {
     contents->parent = this;
 
-    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bucket"; yang_parent_name = "operation-metric"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::~Bucket()
@@ -11639,6 +11752,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::has_data() const
 {
+    if (is_presence_container) return true;
     return start_at.is_set
 	|| duration.is_set
 	|| sent.is_set
@@ -12118,14 +12232,14 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Contents()
     :
     bucket_type{YType::enumeration, "bucket-type"}
-    	,
+        ,
     aggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated>())
-	,unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated>())
+    , unaggregated(std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated>())
 {
     aggregated->parent = this;
     unaggregated->parent = this;
 
-    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "contents"; yang_parent_name = "bucket"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::~Contents()
@@ -12134,6 +12248,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::has_data() const
 {
+    if (is_presence_container) return true;
     return bucket_type.is_set
 	|| (aggregated !=  nullptr && aggregated->has_data())
 	|| (unaggregated !=  nullptr && unaggregated->has_data());
@@ -12237,9 +12352,11 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Aggregated()
+    :
+    bins(this, {})
 {
 
-    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::~Aggregated()
@@ -12248,7 +12365,8 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::has_data() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_data())
             return true;
@@ -12258,7 +12376,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::has_operation() const
 {
-    for (std::size_t index=0; index<bins.size(); index++)
+    for (std::size_t index=0; index<bins.len(); index++)
     {
         if(bins[index]->has_operation())
             return true;
@@ -12295,7 +12413,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins>();
         c->parent = this;
-        bins.push_back(c);
+        bins.append(c);
         return c;
     }
 
@@ -12307,7 +12425,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bins)
+    for (auto c : bins.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12343,7 +12461,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
     count{YType::uint32, "count"}
 {
 
-    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bins"; yang_parent_name = "aggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::~Bins()
@@ -12352,6 +12470,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Aggregated::Bins::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_bound.is_set
 	|| upper_bound.is_set
 	|| lower_bound_tenths.is_set
@@ -12488,9 +12607,11 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Unaggregated()
+    :
+    sample(this, {})
 {
 
-    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unaggregated"; yang_parent_name = "contents"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::~Unaggregated()
@@ -12499,7 +12620,8 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::has_data() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_data())
             return true;
@@ -12509,7 +12631,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::has_operation() const
 {
-    for (std::size_t index=0; index<sample.size(); index++)
+    for (std::size_t index=0; index<sample.len(); index++)
     {
         if(sample[index]->has_operation())
             return true;
@@ -12546,7 +12668,7 @@ std::shared_ptr<Entity> Sla::Protocols::Ethernet::StatisticsCurrents::Statistics
     {
         auto c = std::make_shared<Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample>();
         c->parent = this;
-        sample.push_back(c);
+        sample.append(c);
         return c;
     }
 
@@ -12558,7 +12680,7 @@ std::map<std::string, std::shared_ptr<Entity>> Sla::Protocols::Ethernet::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sample)
+    for (auto c : sample.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12597,7 +12719,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
     frames_lost{YType::uint32, "frames-lost"}
 {
 
-    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sample"; yang_parent_name = "unaggregated"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::~Sample()
@@ -12606,6 +12728,7 @@ Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric
 
 bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationMetric::Bucket::Contents::Unaggregated::Sample::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_at.is_set
 	|| sent.is_set
 	|| timed_out.is_set
@@ -12783,7 +12906,7 @@ bool Sla::Protocols::Ethernet::StatisticsCurrents::StatisticsCurrent::OperationM
 SlaNodes::SlaNodes()
 {
 
-    yang_name = "sla-nodes"; yang_parent_name = "Cisco-IOS-XR-infra-sla-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sla-nodes"; yang_parent_name = "Cisco-IOS-XR-infra-sla-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SlaNodes::~SlaNodes()
@@ -12792,6 +12915,7 @@ SlaNodes::~SlaNodes()
 
 bool SlaNodes::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

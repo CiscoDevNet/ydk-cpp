@@ -31,18 +31,18 @@ class CISCOMPLSLSREXTSTDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cmplsxcexttable; //type: CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable
+        class CmplsXCExtTable; //type: CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_MPLS_LSR_EXT_STD_MIB::CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable> cmplsxcexttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MPLS_LSR_EXT_STD_MIB::CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable> cmplsxcexttable;
         
 }; // CISCOMPLSLSREXTSTDMIB
 
 
-class CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable : public ydk::Entity
+class CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable : public ydk::Entity
 {
     public:
-        Cmplsxcexttable();
-        ~Cmplsxcexttable();
+        CmplsXCExtTable();
+        ~CmplsXCExtTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,18 +55,18 @@ class CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmplsxcextentry; //type: CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry
+        class CmplsXCExtEntry; //type: CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MPLS_LSR_EXT_STD_MIB::CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry> > cmplsxcextentry;
+        ydk::YList cmplsxcextentry;
         
-}; // CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable
+}; // CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable
 
 
-class CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry : public ydk::Entity
+class CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry : public ydk::Entity
 {
     public:
-        Cmplsxcextentry();
-        ~Cmplsxcextentry();
+        CmplsXCExtEntry();
+        ~CmplsXCExtEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,16 +79,16 @@ class CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: binary (refers to cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::mplsxcindex)
+        //type: binary (refers to cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::mplsxcindex)
         ydk::YLeaf mplsxcindex;
-        //type: binary (refers to cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::mplsxcinsegmentindex)
+        //type: binary (refers to cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::mplsxcinsegmentindex)
         ydk::YLeaf mplsxcinsegmentindex;
-        //type: binary (refers to cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::Mplsxctable::Mplsxcentry::mplsxcoutsegmentindex)
+        //type: binary (refers to cisco_ios_xe::MPLS_LSR_STD_MIB::MPLSLSRSTDMIB::MplsXCTable::MplsXCEntry::mplsxcoutsegmentindex)
         ydk::YLeaf mplsxcoutsegmentindex;
         ydk::YLeaf cmplsxcexttunnelpointer; //type: string
         ydk::YLeaf cmplsxcoppositedirxcptr; //type: string
 
-}; // CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry
+}; // CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry
 
 
 }

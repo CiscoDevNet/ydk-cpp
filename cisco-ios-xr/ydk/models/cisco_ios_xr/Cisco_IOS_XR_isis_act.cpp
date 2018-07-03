@@ -17,7 +17,7 @@ ClearIsisProcess::ClearIsisProcess()
 {
     input->parent = this;
 
-    yang_name = "clear-isis-process"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-isis-process"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearIsisProcess::~ClearIsisProcess()
@@ -26,6 +26,7 @@ ClearIsisProcess::~ClearIsisProcess()
 
 bool ClearIsisProcess::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -120,12 +121,12 @@ bool ClearIsisProcess::has_leaf_or_child_of_name(const std::string & name) const
 ClearIsisProcess::Input::Input()
     :
     process{YType::empty, "process"}
-    	,
+        ,
     instance(std::make_shared<ClearIsisProcess::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-isis-process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-isis-process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisProcess::Input::~Input()
@@ -134,6 +135,7 @@ ClearIsisProcess::Input::~Input()
 
 bool ClearIsisProcess::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return process.is_set
 	|| (instance !=  nullptr && instance->has_data());
 }
@@ -225,7 +227,7 @@ ClearIsisProcess::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisProcess::Input::Instance::~Instance()
@@ -234,6 +236,7 @@ ClearIsisProcess::Input::Instance::~Instance()
 
 bool ClearIsisProcess::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -310,7 +313,7 @@ ClearIsisRoute::ClearIsisRoute()
 {
     input->parent = this;
 
-    yang_name = "clear-isis-route"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-isis-route"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearIsisRoute::~ClearIsisRoute()
@@ -319,6 +322,7 @@ ClearIsisRoute::~ClearIsisRoute()
 
 bool ClearIsisRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -413,12 +417,12 @@ bool ClearIsisRoute::has_leaf_or_child_of_name(const std::string & name) const
 ClearIsisRoute::Input::Input()
     :
     route{YType::empty, "route"}
-    	,
+        ,
     instance(std::make_shared<ClearIsisRoute::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-isis-route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-isis-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisRoute::Input::~Input()
@@ -427,6 +431,7 @@ ClearIsisRoute::Input::~Input()
 
 bool ClearIsisRoute::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| (instance !=  nullptr && instance->has_data());
 }
@@ -518,7 +523,7 @@ ClearIsisRoute::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisRoute::Input::Instance::~Instance()
@@ -527,6 +532,7 @@ ClearIsisRoute::Input::Instance::~Instance()
 
 bool ClearIsisRoute::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -603,7 +609,7 @@ ClearIsisStat::ClearIsisStat()
 {
     input->parent = this;
 
-    yang_name = "clear-isis-stat"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-isis-stat"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearIsisStat::~ClearIsisStat()
@@ -612,6 +618,7 @@ ClearIsisStat::~ClearIsisStat()
 
 bool ClearIsisStat::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -706,12 +713,12 @@ bool ClearIsisStat::has_leaf_or_child_of_name(const std::string & name) const
 ClearIsisStat::Input::Input()
     :
     instance(std::make_shared<ClearIsisStat::Input::Instance>())
-	,statistics(std::make_shared<ClearIsisStat::Input::Statistics>())
+    , statistics(std::make_shared<ClearIsisStat::Input::Statistics>())
 {
     instance->parent = this;
     statistics->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-isis-stat"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-isis-stat"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisStat::Input::~Input()
@@ -720,6 +727,7 @@ ClearIsisStat::Input::~Input()
 
 bool ClearIsisStat::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (instance !=  nullptr && instance->has_data())
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -814,7 +822,7 @@ ClearIsisStat::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisStat::Input::Instance::~Instance()
@@ -823,6 +831,7 @@ ClearIsisStat::Input::Instance::~Instance()
 
 bool ClearIsisStat::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -898,7 +907,7 @@ ClearIsisStat::Input::Statistics::Statistics()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisStat::Input::Statistics::~Statistics()
@@ -907,6 +916,7 @@ ClearIsisStat::Input::Statistics::~Statistics()
 
 bool ClearIsisStat::Input::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -983,7 +993,7 @@ ClearIsisDist::ClearIsisDist()
 {
     input->parent = this;
 
-    yang_name = "clear-isis-dist"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-isis-dist"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearIsisDist::~ClearIsisDist()
@@ -992,6 +1002,7 @@ ClearIsisDist::~ClearIsisDist()
 
 bool ClearIsisDist::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1086,12 +1097,12 @@ bool ClearIsisDist::has_leaf_or_child_of_name(const std::string & name) const
 ClearIsisDist::Input::Input()
     :
     distribution{YType::empty, "distribution"}
-    	,
+        ,
     instance(std::make_shared<ClearIsisDist::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-isis-dist"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-isis-dist"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisDist::Input::~Input()
@@ -1100,6 +1111,7 @@ ClearIsisDist::Input::~Input()
 
 bool ClearIsisDist::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return distribution.is_set
 	|| (instance !=  nullptr && instance->has_data());
 }
@@ -1191,7 +1203,7 @@ ClearIsisDist::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisDist::Input::Instance::~Instance()
@@ -1200,6 +1212,7 @@ ClearIsisDist::Input::Instance::~Instance()
 
 bool ClearIsisDist::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -1276,7 +1289,7 @@ ClearIsisLocalLsp::ClearIsisLocalLsp()
 {
     input->parent = this;
 
-    yang_name = "clear-isis-local-lsp"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-isis-local-lsp"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearIsisLocalLsp::~ClearIsisLocalLsp()
@@ -1285,6 +1298,7 @@ ClearIsisLocalLsp::~ClearIsisLocalLsp()
 
 bool ClearIsisLocalLsp::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1379,12 +1393,12 @@ bool ClearIsisLocalLsp::has_leaf_or_child_of_name(const std::string & name) cons
 ClearIsisLocalLsp::Input::Input()
     :
     local_lsp{YType::empty, "local-lsp"}
-    	,
+        ,
     instance(std::make_shared<ClearIsisLocalLsp::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-isis-local-lsp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-isis-local-lsp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisLocalLsp::Input::~Input()
@@ -1393,6 +1407,7 @@ ClearIsisLocalLsp::Input::~Input()
 
 bool ClearIsisLocalLsp::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return local_lsp.is_set
 	|| (instance !=  nullptr && instance->has_data());
 }
@@ -1484,7 +1499,7 @@ ClearIsisLocalLsp::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsisLocalLsp::Input::Instance::~Instance()
@@ -1493,6 +1508,7 @@ ClearIsisLocalLsp::Input::Instance::~Instance()
 
 bool ClearIsisLocalLsp::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 
@@ -1569,7 +1585,7 @@ ClearIsis::ClearIsis()
 {
     input->parent = this;
 
-    yang_name = "clear-isis"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-isis"; yang_parent_name = "Cisco-IOS-XR-isis-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearIsis::~ClearIsis()
@@ -1578,6 +1594,7 @@ ClearIsis::~ClearIsis()
 
 bool ClearIsis::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1674,12 +1691,12 @@ ClearIsis::Input::Input()
     rt_type{YType::enumeration, "rt-type"},
     route{YType::empty, "route"},
     topology{YType::str, "topology"}
-    	,
+        ,
     instance(std::make_shared<ClearIsis::Input::Instance>())
 {
     instance->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear-isis"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-isis"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsis::Input::~Input()
@@ -1688,6 +1705,7 @@ ClearIsis::Input::~Input()
 
 bool ClearIsis::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return rt_type.is_set
 	|| route.is_set
 	|| topology.is_set
@@ -1805,7 +1823,7 @@ ClearIsis::Input::Instance::Instance()
     instance_identifier{YType::str, "instance-identifier"}
 {
 
-    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearIsis::Input::Instance::~Instance()
@@ -1814,6 +1832,7 @@ ClearIsis::Input::Instance::~Instance()
 
 bool ClearIsis::Input::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_identifier.is_set;
 }
 

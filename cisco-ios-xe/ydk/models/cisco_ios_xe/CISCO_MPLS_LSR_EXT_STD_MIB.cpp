@@ -13,11 +13,11 @@ namespace CISCO_MPLS_LSR_EXT_STD_MIB {
 
 CISCOMPLSLSREXTSTDMIB::CISCOMPLSLSREXTSTDMIB()
     :
-    cmplsxcexttable(std::make_shared<CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable>())
+    cmplsxcexttable(std::make_shared<CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable>())
 {
     cmplsxcexttable->parent = this;
 
-    yang_name = "CISCO-MPLS-LSR-EXT-STD-MIB"; yang_parent_name = "CISCO-MPLS-LSR-EXT-STD-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-MPLS-LSR-EXT-STD-MIB"; yang_parent_name = "CISCO-MPLS-LSR-EXT-STD-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOMPLSLSREXTSTDMIB::~CISCOMPLSLSREXTSTDMIB()
@@ -26,6 +26,7 @@ CISCOMPLSLSREXTSTDMIB::~CISCOMPLSLSREXTSTDMIB()
 
 bool CISCOMPLSLSREXTSTDMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cmplsxcexttable !=  nullptr && cmplsxcexttable->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::get_child_by_name(const std::stri
     {
         if(cmplsxcexttable == nullptr)
         {
-            cmplsxcexttable = std::make_shared<CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable>();
+            cmplsxcexttable = std::make_shared<CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable>();
         }
         return cmplsxcexttable;
     }
@@ -117,19 +118,22 @@ bool CISCOMPLSLSREXTSTDMIB::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
-CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcexttable()
+CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtTable()
+    :
+    cmplsxcextentry(this, {"mplsxcindex", "mplsxcinsegmentindex", "mplsxcoutsegmentindex"})
 {
 
-    yang_name = "cmplsXCExtTable"; yang_parent_name = "CISCO-MPLS-LSR-EXT-STD-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsXCExtTable"; yang_parent_name = "CISCO-MPLS-LSR-EXT-STD-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::~Cmplsxcexttable()
+CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::~CmplsXCExtTable()
 {
 }
 
-bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::has_data() const
+bool CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::has_data() const
 {
-    for (std::size_t index=0; index<cmplsxcextentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cmplsxcextentry.len(); index++)
     {
         if(cmplsxcextentry[index]->has_data())
             return true;
@@ -137,9 +141,9 @@ bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::has_data() const
     return false;
 }
 
-bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::has_operation() const
+bool CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::has_operation() const
 {
-    for (std::size_t index=0; index<cmplsxcextentry.size(); index++)
+    for (std::size_t index=0; index<cmplsxcextentry.len(); index++)
     {
         if(cmplsxcextentry[index]->has_operation())
             return true;
@@ -147,21 +151,21 @@ bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_absolute_path() const
+std::string CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MPLS-LSR-EXT-STD-MIB:CISCO-MPLS-LSR-EXT-STD-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_segment_path() const
+std::string CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cmplsXCExtTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -170,25 +174,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::Cmplsxcext
 
 }
 
-std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cmplsXCExtEntry")
     {
-        auto c = std::make_shared<CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry>();
+        auto c = std::make_shared<CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry>();
         c->parent = this;
-        cmplsxcextentry.push_back(c);
+        cmplsxcextentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cmplsxcextentry)
+    for (auto c : cmplsxcextentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -199,22 +203,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::Cmplsxcext
     return children;
 }
 
-void CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cmplsXCExtEntry")
         return true;
     return false;
 }
 
-CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::Cmplsxcextentry()
+CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::CmplsXCExtEntry()
     :
     mplsxcindex{YType::str, "mplsXCIndex"},
     mplsxcinsegmentindex{YType::str, "mplsXCInSegmentIndex"},
@@ -223,15 +227,16 @@ CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::Cmplsxcextentry()
     cmplsxcoppositedirxcptr{YType::str, "cmplsXCOppositeDirXCPtr"}
 {
 
-    yang_name = "cmplsXCExtEntry"; yang_parent_name = "cmplsXCExtTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cmplsXCExtEntry"; yang_parent_name = "cmplsXCExtTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::~Cmplsxcextentry()
+CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::~CmplsXCExtEntry()
 {
 }
 
-bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::has_data() const
+bool CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return mplsxcindex.is_set
 	|| mplsxcinsegmentindex.is_set
 	|| mplsxcoutsegmentindex.is_set
@@ -239,7 +244,7 @@ bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::has_data() const
 	|| cmplsxcoppositedirxcptr.is_set;
 }
 
-bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::has_operation() const
+bool CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mplsxcindex.yfilter)
@@ -249,21 +254,24 @@ bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::has_operation() co
 	|| ydk::is_set(cmplsxcoppositedirxcptr.yfilter);
 }
 
-std::string CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::get_absolute_path() const
+std::string CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-MPLS-LSR-EXT-STD-MIB:CISCO-MPLS-LSR-EXT-STD-MIB/cmplsXCExtTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::get_segment_path() const
+std::string CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cmplsXCExtEntry" <<"[mplsXCIndex='" <<mplsxcindex <<"']" <<"[mplsXCInSegmentIndex='" <<mplsxcinsegmentindex <<"']" <<"[mplsXCOutSegmentIndex='" <<mplsxcoutsegmentindex <<"']";
+    path_buffer << "cmplsXCExtEntry";
+    ADD_KEY_TOKEN(mplsxcindex, "mplsXCIndex");
+    ADD_KEY_TOKEN(mplsxcinsegmentindex, "mplsXCInSegmentIndex");
+    ADD_KEY_TOKEN(mplsxcoutsegmentindex, "mplsXCOutSegmentIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -277,19 +285,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOMPLSLSREXTSTDMIB::Cmplsxcext
 
 }
 
-std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mplsXCIndex")
     {
@@ -323,7 +331,7 @@ void CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::set_value(const st
     }
 }
 
-void CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mplsXCIndex")
     {
@@ -347,7 +355,7 @@ void CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::set_filter(const s
     }
 }
 
-bool CISCOMPLSLSREXTSTDMIB::Cmplsxcexttable::Cmplsxcextentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOMPLSLSREXTSTDMIB::CmplsXCExtTable::CmplsXCExtEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mplsXCIndex" || name == "mplsXCInSegmentIndex" || name == "mplsXCOutSegmentIndex" || name == "cmplsXCExtTunnelPointer" || name == "cmplsXCOppositeDirXCPtr")
         return true;

@@ -59,7 +59,7 @@ class Suppression::RuleSummaries : public ydk::Entity
 
         class RuleSummary; //type: Suppression::RuleSummaries::RuleSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleSummaries::RuleSummary> > rule_summary;
+        ydk::YList rule_summary;
         
 }; // Suppression::RuleSummaries
 
@@ -108,7 +108,7 @@ class Suppression::RuleDetails : public ydk::Entity
 
         class RuleDetail; //type: Suppression::RuleDetails::RuleDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail> > rule_detail;
+        ydk::YList rule_detail;
         
 }; // Suppression::RuleDetails
 
@@ -138,7 +138,7 @@ class Suppression::RuleDetails::RuleDetail : public ydk::Entity
         class Codes; //type: Suppression::RuleDetails::RuleDetail::Codes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::RuleSummary> rule_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Suppression::RuleDetails::RuleDetail::Codes> > codes;
+        ydk::YList codes;
         
 }; // Suppression::RuleDetails::RuleDetail
 
@@ -247,7 +247,7 @@ class Correlator::Rules : public ydk::Entity
 
         class Rule; //type: Correlator::Rules::Rule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule> > rule;
+        ydk::YList rule;
         
 }; // Correlator::Rules
 
@@ -277,7 +277,7 @@ class Correlator::Rules::Rule : public ydk::Entity
         ydk::YLeafList apply_context; //type: list of  string
         class Codes; //type: Correlator::Rules::Rule::Codes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Rules::Rule::Codes> > codes;
+        ydk::YList codes;
         
 }; // Correlator::Rules::Rule
 
@@ -347,7 +347,7 @@ class Correlator::Alarms : public ydk::Entity
 
         class Alarm; //type: Correlator::Alarms::Alarm
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::Alarms::Alarm> > alarm;
+        ydk::YList alarm;
         
 }; // Correlator::Alarms
 
@@ -369,7 +369,7 @@ class Correlator::Alarms::Alarm : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm_id; //type: int32
+        ydk::YLeaf alarm_id; //type: uint32
         ydk::YLeaf rule_name; //type: string
         ydk::YLeaf context; //type: string
         class AlarmInfo; //type: Correlator::Alarms::Alarm::AlarmInfo
@@ -428,7 +428,7 @@ class Correlator::RuleSetSummaries : public ydk::Entity
 
         class RuleSetSummary; //type: Correlator::RuleSetSummaries::RuleSetSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetSummaries::RuleSetSummary> > rule_set_summary;
+        ydk::YList rule_set_summary;
         
 }; // Correlator::RuleSetSummaries
 
@@ -475,7 +475,7 @@ class Correlator::RuleSetDetails : public ydk::Entity
 
         class RuleSetDetail; //type: Correlator::RuleSetDetails::RuleSetDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetDetails::RuleSetDetail> > rule_set_detail;
+        ydk::YList rule_set_detail;
         
 }; // Correlator::RuleSetDetails
 
@@ -501,7 +501,7 @@ class Correlator::RuleSetDetails::RuleSetDetail : public ydk::Entity
         ydk::YLeaf rule_set_name_xr; //type: string
         class Rules; //type: Correlator::RuleSetDetails::RuleSetDetail::Rules
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSetDetails::RuleSetDetail::Rules> > rules;
+        ydk::YList rules;
         
 }; // Correlator::RuleSetDetails::RuleSetDetail
 
@@ -549,7 +549,7 @@ class Correlator::RuleDetails : public ydk::Entity
 
         class RuleDetail; //type: Correlator::RuleDetails::RuleDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail> > rule_detail;
+        ydk::YList rule_detail;
         
 }; // Correlator::RuleDetails
 
@@ -584,7 +584,7 @@ class Correlator::RuleDetails::RuleDetail : public ydk::Entity
         class Codes; //type: Correlator::RuleDetails::RuleDetail::Codes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::RuleSummary> rule_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleDetails::RuleDetail::Codes> > codes;
+        ydk::YList codes;
         
 }; // Correlator::RuleDetails::RuleDetail
 
@@ -655,7 +655,7 @@ class Correlator::RuleSummaries : public ydk::Entity
 
         class RuleSummary; //type: Correlator::RuleSummaries::RuleSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_correlator_oper::Correlator::RuleSummaries::RuleSummary> > rule_summary;
+        ydk::YList rule_summary;
         
 }; // Correlator::RuleSummaries
 

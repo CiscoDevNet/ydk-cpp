@@ -13,17 +13,17 @@ namespace CISCO_CONTEXT_MAPPING_MIB {
 
 CISCOCONTEXTMAPPINGMIB::CISCOCONTEXTMAPPINGMIB()
     :
-    ccontextmappingtable(std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable>())
-	,ccontextmappingbridgedomaintable(std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable>())
-	,ccontextmappingbridgeinstancetable(std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable>())
-	,ccontextmappinglicensegrouptable(std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable>())
+    ccontextmappingtable(std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingTable>())
+    , ccontextmappingbridgedomaintable(std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable>())
+    , ccontextmappingbridgeinstancetable(std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable>())
+    , ccontextmappinglicensegrouptable(std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable>())
 {
     ccontextmappingtable->parent = this;
     ccontextmappingbridgedomaintable->parent = this;
     ccontextmappingbridgeinstancetable->parent = this;
     ccontextmappinglicensegrouptable->parent = this;
 
-    yang_name = "CISCO-CONTEXT-MAPPING-MIB"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-CONTEXT-MAPPING-MIB"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOCONTEXTMAPPINGMIB::~CISCOCONTEXTMAPPINGMIB()
@@ -32,6 +32,7 @@ CISCOCONTEXTMAPPINGMIB::~CISCOCONTEXTMAPPINGMIB()
 
 bool CISCOCONTEXTMAPPINGMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ccontextmappingtable !=  nullptr && ccontextmappingtable->has_data())
 	|| (ccontextmappingbridgedomaintable !=  nullptr && ccontextmappingbridgedomaintable->has_data())
 	|| (ccontextmappingbridgeinstancetable !=  nullptr && ccontextmappingbridgeinstancetable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::str
     {
         if(ccontextmappingtable == nullptr)
         {
-            ccontextmappingtable = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable>();
+            ccontextmappingtable = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingTable>();
         }
         return ccontextmappingtable;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::str
     {
         if(ccontextmappingbridgedomaintable == nullptr)
         {
-            ccontextmappingbridgedomaintable = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable>();
+            ccontextmappingbridgedomaintable = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable>();
         }
         return ccontextmappingbridgedomaintable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::str
     {
         if(ccontextmappingbridgeinstancetable == nullptr)
         {
-            ccontextmappingbridgeinstancetable = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable>();
+            ccontextmappingbridgeinstancetable = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable>();
         }
         return ccontextmappingbridgeinstancetable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::get_child_by_name(const std::str
     {
         if(ccontextmappinglicensegrouptable == nullptr)
         {
-            ccontextmappinglicensegrouptable = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable>();
+            ccontextmappinglicensegrouptable = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable>();
         }
         return ccontextmappinglicensegrouptable;
     }
@@ -171,19 +172,22 @@ bool CISCOCONTEXTMAPPINGMIB::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingtable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingTable()
+    :
+    ccontextmappingentry(this, {"ccontextmappingvacmcontextname"})
 {
 
-    yang_name = "cContextMappingTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::~Ccontextmappingtable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingTable::~CContextMappingTable()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingTable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappingentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccontextmappingentry.len(); index++)
     {
         if(ccontextmappingentry[index]->has_data())
             return true;
@@ -191,9 +195,9 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::has_data() const
     return false;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingTable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappingentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingentry.len(); index++)
     {
         if(ccontextmappingentry[index]->has_operation())
             return true;
@@ -201,21 +205,21 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cContextMappingTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -224,25 +228,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry>();
+        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry>();
         c->parent = this;
-        ccontextmappingentry.push_back(c);
+        ccontextmappingentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccontextmappingentry)
+    for (auto c : ccontextmappingentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,22 +257,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextm
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingEntry")
         return true;
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::Ccontextmappingentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::CContextMappingEntry()
     :
     ccontextmappingvacmcontextname{YType::str, "cContextMappingVacmContextName"},
     ccontextmappingvrfname{YType::str, "cContextMappingVrfName"},
@@ -278,15 +282,16 @@ CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::Ccontextmapp
     ccontextmappingrowstatus{YType::enumeration, "cContextMappingRowStatus"}
 {
 
-    yang_name = "cContextMappingEntry"; yang_parent_name = "cContextMappingTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingEntry"; yang_parent_name = "cContextMappingTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::~Ccontextmappingentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::~CContextMappingEntry()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccontextmappingvacmcontextname.is_set
 	|| ccontextmappingvrfname.is_set
 	|| ccontextmappingtopologyname.is_set
@@ -295,7 +300,7 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::has_dat
 	|| ccontextmappingrowstatus.is_set;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccontextmappingvacmcontextname.yfilter)
@@ -306,21 +311,22 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::has_ope
 	|| ydk::is_set(ccontextmappingrowstatus.yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/cContextMappingTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cContextMappingEntry" <<"[cContextMappingVacmContextName='" <<ccontextmappingvacmcontextname <<"']";
+    path_buffer << "cContextMappingEntry";
+    ADD_KEY_TOKEN(ccontextmappingvacmcontextname, "cContextMappingVacmContextName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -335,19 +341,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -387,7 +393,7 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::set_val
     }
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -415,26 +421,29 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::set_fil
     }
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingtable::Ccontextmappingentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingTable::CContextMappingEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingVacmContextName" || name == "cContextMappingVrfName" || name == "cContextMappingTopologyName" || name == "cContextMappingProtoInstName" || name == "cContextMappingStorageType" || name == "cContextMappingRowStatus")
         return true;
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomaintable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainTable()
+    :
+    ccontextmappingbridgedomainentry(this, {"ccontextmappingvacmcontextname"})
 {
 
-    yang_name = "cContextMappingBridgeDomainTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingBridgeDomainTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::~Ccontextmappingbridgedomaintable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::~CContextMappingBridgeDomainTable()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgedomainentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccontextmappingbridgedomainentry.len(); index++)
     {
         if(ccontextmappingbridgedomainentry[index]->has_data())
             return true;
@@ -442,9 +451,9 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::has_data() const
     return false;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgedomainentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingbridgedomainentry.len(); index++)
     {
         if(ccontextmappingbridgedomainentry[index]->has_operation())
             return true;
@@ -452,21 +461,21 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::has_operation() c
     return is_set(yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cContextMappingBridgeDomainTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -475,25 +484,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingBridgeDomainEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry>();
+        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry>();
         c->parent = this;
-        ccontextmappingbridgedomainentry.push_back(c);
+        ccontextmappingbridgedomainentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccontextmappingbridgedomainentry)
+    for (auto c : ccontextmappingbridgedomainentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -504,22 +513,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextm
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingBridgeDomainEntry")
         return true;
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::Ccontextmappingbridgedomainentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::CContextMappingBridgeDomainEntry()
     :
     ccontextmappingvacmcontextname{YType::str, "cContextMappingVacmContextName"},
     ccontextmappingbridgedomainidentifier{YType::uint32, "cContextMappingBridgeDomainIdentifier"},
@@ -527,22 +536,23 @@ CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridged
     ccontextmappingbridgedomainrowstatus{YType::enumeration, "cContextMappingBridgeDomainRowStatus"}
 {
 
-    yang_name = "cContextMappingBridgeDomainEntry"; yang_parent_name = "cContextMappingBridgeDomainTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingBridgeDomainEntry"; yang_parent_name = "cContextMappingBridgeDomainTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::~Ccontextmappingbridgedomainentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::~CContextMappingBridgeDomainEntry()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccontextmappingvacmcontextname.is_set
 	|| ccontextmappingbridgedomainidentifier.is_set
 	|| ccontextmappingbridgedomainstoragetype.is_set
 	|| ccontextmappingbridgedomainrowstatus.is_set;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccontextmappingvacmcontextname.yfilter)
@@ -551,21 +561,22 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbr
 	|| ydk::is_set(ccontextmappingbridgedomainrowstatus.yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/cContextMappingBridgeDomainTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cContextMappingBridgeDomainEntry" <<"[cContextMappingVacmContextName='" <<ccontextmappingvacmcontextname <<"']";
+    path_buffer << "cContextMappingBridgeDomainEntry";
+    ADD_KEY_TOKEN(ccontextmappingvacmcontextname, "cContextMappingVacmContextName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -578,19 +589,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -618,7 +629,7 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbr
     }
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -638,26 +649,29 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbr
     }
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgedomaintable::Ccontextmappingbridgedomainentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeDomainTable::CContextMappingBridgeDomainEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingVacmContextName" || name == "cContextMappingBridgeDomainIdentifier" || name == "cContextMappingBridgeDomainStorageType" || name == "cContextMappingBridgeDomainRowStatus")
         return true;
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstancetable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceTable()
+    :
+    ccontextmappingbridgeinstanceentry(this, {"ccontextmappingvacmcontextname"})
 {
 
-    yang_name = "cContextMappingBridgeInstanceTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingBridgeInstanceTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::~Ccontextmappingbridgeinstancetable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::~CContextMappingBridgeInstanceTable()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry.len(); index++)
     {
         if(ccontextmappingbridgeinstanceentry[index]->has_data())
             return true;
@@ -665,9 +679,9 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::has_data() cons
     return false;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappingbridgeinstanceentry.len(); index++)
     {
         if(ccontextmappingbridgeinstanceentry[index]->has_operation())
             return true;
@@ -675,21 +689,21 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::has_operation()
     return is_set(yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cContextMappingBridgeInstanceTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -698,25 +712,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingBridgeInstanceEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry>();
+        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry>();
         c->parent = this;
-        ccontextmappingbridgeinstanceentry.push_back(c);
+        ccontextmappingbridgeinstanceentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccontextmappingbridgeinstanceentry)
+    for (auto c : ccontextmappingbridgeinstanceentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -727,22 +741,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextm
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingBridgeInstanceEntry")
         return true;
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::Ccontextmappingbridgeinstanceentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::CContextMappingBridgeInstanceEntry()
     :
     ccontextmappingvacmcontextname{YType::str, "cContextMappingVacmContextName"},
     ccontextmappingbridgeinstname{YType::str, "cContextMappingBridgeInstName"},
@@ -750,22 +764,23 @@ CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridg
     ccontextmappingbridgeinstrowstatus{YType::enumeration, "cContextMappingBridgeInstRowStatus"}
 {
 
-    yang_name = "cContextMappingBridgeInstanceEntry"; yang_parent_name = "cContextMappingBridgeInstanceTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingBridgeInstanceEntry"; yang_parent_name = "cContextMappingBridgeInstanceTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::~Ccontextmappingbridgeinstanceentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::~CContextMappingBridgeInstanceEntry()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccontextmappingvacmcontextname.is_set
 	|| ccontextmappingbridgeinstname.is_set
 	|| ccontextmappingbridgeinststoragetype.is_set
 	|| ccontextmappingbridgeinstrowstatus.is_set;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccontextmappingvacmcontextname.yfilter)
@@ -774,21 +789,22 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmapping
 	|| ydk::is_set(ccontextmappingbridgeinstrowstatus.yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/cContextMappingBridgeInstanceTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cContextMappingBridgeInstanceEntry" <<"[cContextMappingVacmContextName='" <<ccontextmappingvacmcontextname <<"']";
+    path_buffer << "cContextMappingBridgeInstanceEntry";
+    ADD_KEY_TOKEN(ccontextmappingvacmcontextname, "cContextMappingVacmContextName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -801,19 +817,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -841,7 +857,7 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmapping
     }
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -861,26 +877,29 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmapping
     }
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappingbridgeinstancetable::Ccontextmappingbridgeinstanceentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingBridgeInstanceTable::CContextMappingBridgeInstanceEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingVacmContextName" || name == "cContextMappingBridgeInstName" || name == "cContextMappingBridgeInstStorageType" || name == "cContextMappingBridgeInstRowStatus")
         return true;
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegrouptable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupTable()
+    :
+    ccontextmappinglicensegroupentry(this, {"ccontextmappingvacmcontextname"})
 {
 
-    yang_name = "cContextMappingLicenseGroupTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingLicenseGroupTable"; yang_parent_name = "CISCO-CONTEXT-MAPPING-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::~Ccontextmappinglicensegrouptable()
+CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::~CContextMappingLicenseGroupTable()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::has_data() const
 {
-    for (std::size_t index=0; index<ccontextmappinglicensegroupentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccontextmappinglicensegroupentry.len(); index++)
     {
         if(ccontextmappinglicensegroupentry[index]->has_data())
             return true;
@@ -888,9 +907,9 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::has_data() const
     return false;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::has_operation() const
 {
-    for (std::size_t index=0; index<ccontextmappinglicensegroupentry.size(); index++)
+    for (std::size_t index=0; index<ccontextmappinglicensegroupentry.len(); index++)
     {
         if(ccontextmappinglicensegroupentry[index]->has_operation())
             return true;
@@ -898,21 +917,21 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::has_operation() c
     return is_set(yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cContextMappingLicenseGroupTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -921,25 +940,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cContextMappingLicenseGroupEntry")
     {
-        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry>();
+        auto c = std::make_shared<CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry>();
         c->parent = this;
-        ccontextmappinglicensegroupentry.push_back(c);
+        ccontextmappinglicensegroupentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccontextmappinglicensegroupentry)
+    for (auto c : ccontextmappinglicensegroupentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -950,22 +969,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextm
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingLicenseGroupEntry")
         return true;
     return false;
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::Ccontextmappinglicensegroupentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::CContextMappingLicenseGroupEntry()
     :
     ccontextmappingvacmcontextname{YType::str, "cContextMappingVacmContextName"},
     ccontextmappinglicensegroupname{YType::str, "cContextMappingLicenseGroupName"},
@@ -973,22 +992,23 @@ CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicense
     ccontextmappinglicensegrouprowstatus{YType::enumeration, "cContextMappingLicenseGroupRowStatus"}
 {
 
-    yang_name = "cContextMappingLicenseGroupEntry"; yang_parent_name = "cContextMappingLicenseGroupTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cContextMappingLicenseGroupEntry"; yang_parent_name = "cContextMappingLicenseGroupTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::~Ccontextmappinglicensegroupentry()
+CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::~CContextMappingLicenseGroupEntry()
 {
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::has_data() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccontextmappingvacmcontextname.is_set
 	|| ccontextmappinglicensegroupname.is_set
 	|| ccontextmappinglicensegroupstoragetype.is_set
 	|| ccontextmappinglicensegrouprowstatus.is_set;
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::has_operation() const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccontextmappingvacmcontextname.yfilter)
@@ -997,21 +1017,22 @@ bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappingli
 	|| ydk::is_set(ccontextmappinglicensegrouprowstatus.yfilter);
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::get_absolute_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-CONTEXT-MAPPING-MIB:CISCO-CONTEXT-MAPPING-MIB/cContextMappingLicenseGroupTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::get_segment_path() const
+std::string CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cContextMappingLicenseGroupEntry" <<"[cContextMappingVacmContextName='" <<ccontextmappingvacmcontextname <<"']";
+    path_buffer << "cContextMappingLicenseGroupEntry";
+    ADD_KEY_TOKEN(ccontextmappingvacmcontextname, "cContextMappingVacmContextName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1024,19 +1045,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOCONTEXTMAPPINGMIB::Ccontextm
 
 }
 
-std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -1064,7 +1085,7 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappingli
     }
 }
 
-void CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cContextMappingVacmContextName")
     {
@@ -1084,7 +1105,7 @@ void CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappingli
     }
 }
 
-bool CISCOCONTEXTMAPPINGMIB::Ccontextmappinglicensegrouptable::Ccontextmappinglicensegroupentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOCONTEXTMAPPINGMIB::CContextMappingLicenseGroupTable::CContextMappingLicenseGroupEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cContextMappingVacmContextName" || name == "cContextMappingLicenseGroupName" || name == "cContextMappingLicenseGroupStorageType" || name == "cContextMappingLicenseGroupRowStatus")
         return true;

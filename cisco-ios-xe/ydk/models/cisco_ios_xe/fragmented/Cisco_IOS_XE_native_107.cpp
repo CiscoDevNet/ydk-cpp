@@ -19,7 +19,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::Range()
     additive{YType::empty, "additive"}
 {
 
-    yang_name = "range"; yang_parent_name = "rt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "rt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::~Range()
@@ -28,6 +28,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::~Range(
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_limit.is_set
 	|| high_limit.is_set
 	|| additive.is_set;
@@ -122,7 +123,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::Soo()
     asn_nn{YType::str, "asn-nn"}
 {
 
-    yang_name = "soo"; yang_parent_name = "extcommunity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "soo"; yang_parent_name = "extcommunity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::~Soo()
@@ -131,6 +132,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::~Soo()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::has_data() const
 {
+    if (is_presence_container) return true;
     return asn_nn.is_set;
 }
 
@@ -197,12 +199,12 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Soo::has_leaf
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::VpnDistinguisher()
     :
     asn_nn{YType::str, "asn-nn"}
-    	,
+        ,
     range(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range>())
 {
     range->parent = this;
 
-    yang_name = "vpn-distinguisher"; yang_parent_name = "extcommunity"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpn-distinguisher"; yang_parent_name = "extcommunity"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::~VpnDistinguisher()
@@ -211,6 +213,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::has_data() const
 {
+    if (is_presence_container) return true;
     return asn_nn.is_set
 	|| (range !=  nullptr && range->has_data());
 }
@@ -297,7 +300,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::
     additive{YType::empty, "additive"}
 {
 
-    yang_name = "range"; yang_parent_name = "vpn-distinguisher"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "vpn-distinguisher"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range::~Range()
@@ -306,6 +309,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::VpnDistinguisher::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return lower_limit.is_set
 	|| high_limit.is_set
 	|| additive.is_set;
@@ -429,18 +433,18 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::Interface()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::~Interface()
@@ -449,6 +453,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::~Interface()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -984,7 +989,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::ATMS
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::~ATMSubinterface()
@@ -993,6 +998,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::~ATM
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -1061,7 +1067,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::A
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -1070,6 +1076,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::~
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -1138,7 +1145,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::LIS
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::~LISPSubinterface()
@@ -1147,6 +1154,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::~LI
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -1215,7 +1223,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterfa
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -1224,6 +1232,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterfa
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -1290,15 +1299,15 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Interface::PortChannelSubin
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Ip()
     :
     df{YType::uint8, "df"}
-    	,
+        ,
     address(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address>())
-	,default_(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default>())
-	,global(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global>())
-	,next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop>())
-	,precedence(nullptr) // presence node
-	,qos_group(nullptr) // presence node
-	,tos(nullptr) // presence node
-	,vrf(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf>())
+    , default_(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default>())
+    , global(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global>())
+    , next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop>())
+    , precedence(nullptr) // presence node
+    , qos_group(nullptr) // presence node
+    , tos(nullptr) // presence node
+    , vrf(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf>())
 {
     address->parent = this;
     default_->parent = this;
@@ -1306,7 +1315,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Ip()
     next_hop->parent = this;
     vrf->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::~Ip()
@@ -1315,6 +1324,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::~Ip()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return df.is_set
 	|| (address !=  nullptr && address->has_data())
 	|| (default_ !=  nullptr && default_->has_data())
@@ -1511,7 +1521,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::Address()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::~Address()
@@ -1520,6 +1530,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::~Address()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_list.is_set;
 }
 
@@ -1586,14 +1597,14 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Address::has_leaf_or_ch
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Default()
     :
     global(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global>())
-	,next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop>())
-	,vrf(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf>())
+    , next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop>())
+    , vrf(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf>())
 {
     global->parent = this;
     next_hop->parent = this;
     vrf->parent = this;
 
-    yang_name = "default"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::~Default()
@@ -1602,6 +1613,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::~Default()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (next_hop !=  nullptr && next_hop->has_data())
 	|| (vrf !=  nullptr && vrf->has_data());
@@ -1706,7 +1718,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::Global()
 {
     next_hop->parent = this;
 
-    yang_name = "global"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::~Global()
@@ -1715,6 +1727,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::~Global()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return (next_hop !=  nullptr && next_hop->has_data());
 }
 
@@ -1786,7 +1799,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::Ne
     address{YType::str, "address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::~NextHop()
@@ -1795,6 +1808,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::~N
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Global::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -1872,7 +1886,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::NextHop()
     address{YType::str, "address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::~NextHop()
@@ -1881,6 +1895,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::~NextHop()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -1954,9 +1969,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::NextHop::has_l
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrf()
+    :
+    vrfs(this, {"vrf"})
 {
 
-    yang_name = "vrf"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::~Vrf()
@@ -1965,7 +1982,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::~Vrf()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::has_data() const
 {
-    for (std::size_t index=0; index<vrfs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrfs.len(); index++)
     {
         if(vrfs[index]->has_data())
             return true;
@@ -1975,7 +1993,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::has_data(
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::has_operation() const
 {
-    for (std::size_t index=0; index<vrfs.size(); index++)
+    for (std::size_t index=0; index<vrfs.len(); index++)
     {
         if(vrfs[index]->has_operation())
             return true;
@@ -2005,7 +2023,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Defa
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs>();
         c->parent = this;
-        vrfs.push_back(c);
+        vrfs.append(c);
         return c;
     }
 
@@ -2017,7 +2035,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrfs)
+    for (auto c : vrfs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2046,12 +2064,12 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::has_leaf_
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::Vrfs()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "vrfs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::~Vrfs()
@@ -2060,6 +2078,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::~Vrfs()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
@@ -2074,7 +2093,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::has
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrfs" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "vrfs";
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -2144,7 +2164,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop:
     address{YType::str, "address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop::~NextHop()
@@ -2153,6 +2173,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Default::Vrf::Vrfs::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -2231,7 +2252,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::Global()
 {
     next_hop->parent = this;
 
-    yang_name = "global"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::~Global()
@@ -2240,6 +2261,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::~Global()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return (next_hop !=  nullptr && next_hop->has_data());
 }
 
@@ -2311,7 +2333,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::NextHop()
     address{YType::str, "address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::~NextHop()
@@ -2320,6 +2342,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::~NextHop()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Global::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -2397,17 +2420,17 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::NextHop()
     address{YType::str, "address"},
     peer_address{YType::empty, "peer-address"},
     self{YType::empty, "self"}
-    	,
+        ,
     dynamic(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic>())
-	,encapsulate(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate>())
-	,recursive(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive>())
-	,verify_availability(nullptr) // presence node
+    , encapsulate(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate>())
+    , recursive(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive>())
+    , verify_availability(nullptr) // presence node
 {
     dynamic->parent = this;
     encapsulate->parent = this;
     recursive->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::~NextHop()
@@ -2416,6 +2439,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::~NextHop()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| peer_address.is_set
 	|| self.is_set
@@ -2574,7 +2598,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::Dynamic()
     dhcp{YType::empty, "dhcp"}
 {
 
-    yang_name = "dynamic"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::~Dynamic()
@@ -2583,6 +2607,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::~Dynamic()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Dynamic::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set;
 }
 
@@ -2651,7 +2676,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::Encaps
     l3vpn{YType::str, "l3vpn"}
 {
 
-    yang_name = "encapsulate"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulate"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::~Encapsulate()
@@ -2660,6 +2685,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::~Encap
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Encapsulate::has_data() const
 {
+    if (is_presence_container) return true;
     return l3vpn.is_set;
 }
 
@@ -2727,12 +2753,12 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Recursiv
     :
     ipv4{YType::str, "ipv4"},
     global{YType::str, "global"}
-    	,
+        ,
     vrf(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf>())
 {
     vrf->parent = this;
 
-    yang_name = "recursive"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recursive"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::~Recursive()
@@ -2741,6 +2767,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::~Recursi
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| global.is_set
 	|| (vrf !=  nullptr && vrf->has_data());
@@ -2834,9 +2861,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::has
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrf()
+    :
+    vrfs(this, {"vrf"})
 {
 
-    yang_name = "vrf"; yang_parent_name = "recursive"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "recursive"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::~Vrf()
@@ -2845,7 +2874,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::~Vr
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::has_data() const
 {
-    for (std::size_t index=0; index<vrfs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrfs.len(); index++)
     {
         if(vrfs[index]->has_data())
             return true;
@@ -2855,7 +2885,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::has_operation() const
 {
-    for (std::size_t index=0; index<vrfs.size(); index++)
+    for (std::size_t index=0; index<vrfs.len(); index++)
     {
         if(vrfs[index]->has_operation())
             return true;
@@ -2885,7 +2915,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Next
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs>();
         c->parent = this;
-        vrfs.push_back(c);
+        vrfs.append(c);
         return c;
     }
 
@@ -2897,7 +2927,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrfs)
+    for (auto c : vrfs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2929,7 +2959,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrf
     ipv4{YType::str, "ipv4"}
 {
 
-    yang_name = "vrfs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::~Vrfs()
@@ -2938,6 +2968,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrf
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| ipv4.is_set;
 }
@@ -2952,7 +2983,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrfs" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "vrfs";
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -3015,9 +3047,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::Recursive::Vrf
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::VerifyAvailability()
+    :
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "verify-availability"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify-availability"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::~VerifyAvailability()
@@ -3026,7 +3060,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -3036,7 +3071,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailabi
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -3066,7 +3101,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Next
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -3078,7 +3113,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3111,7 +3146,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability:
     track{YType::uint16, "track"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "verify-availability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "verify-availability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::~Ipv4()
@@ -3120,6 +3155,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| range.is_set
 	|| track.is_set;
@@ -3136,7 +3172,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailabi
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::NextHop::VerifyAvailability::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -3215,7 +3252,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::Precedence()
     precedence_fields{YType::enumeration, "precedence-fields"}
 {
 
-    yang_name = "precedence"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "precedence"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::~Precedence()
@@ -3224,6 +3261,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::~Precedence()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Precedence::has_data() const
 {
+    if (is_presence_container) return true;
     return precedence_value.is_set
 	|| precedence_fields.is_set;
 }
@@ -3305,7 +3343,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::QosGroup()
     qos_id{YType::uint8, "qos-id"}
 {
 
-    yang_name = "qos-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::~QosGroup()
@@ -3314,6 +3352,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::~QosGroup()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::QosGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_id.is_set;
 }
 
@@ -3383,7 +3422,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::Tos()
     tos_fields{YType::enumeration, "tos-fields"}
 {
 
-    yang_name = "tos"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tos"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::~Tos()
@@ -3392,6 +3431,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::~Tos()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::has_data() const
 {
+    if (is_presence_container) return true;
     return service_value.is_set
 	|| tos_fields.is_set;
 }
@@ -3469,9 +3509,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Tos::has_leaf_or_child_
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrf()
+    :
+    vrfs(this, {"vrf"})
 {
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::~Vrf()
@@ -3480,7 +3522,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::~Vrf()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::has_data() const
 {
-    for (std::size_t index=0; index<vrfs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrfs.len(); index++)
     {
         if(vrfs[index]->has_data())
             return true;
@@ -3490,7 +3533,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::has_data() const
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::has_operation() const
 {
-    for (std::size_t index=0; index<vrfs.size(); index++)
+    for (std::size_t index=0; index<vrfs.len(); index++)
     {
         if(vrfs[index]->has_operation())
             return true;
@@ -3520,7 +3563,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf:
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs>();
         c->parent = this;
-        vrfs.push_back(c);
+        vrfs.append(c);
         return c;
     }
 
@@ -3532,7 +3575,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrfs)
+    for (auto c : vrfs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3561,12 +3604,12 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::has_leaf_or_child_
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::Vrfs()
     :
     vrf{YType::str, "vrf"}
-    	,
+        ,
     next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "vrfs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::~Vrfs()
@@ -3575,6 +3618,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::~Vrfs()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
@@ -3589,7 +3633,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::has_operatio
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrfs" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "vrfs";
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -3659,7 +3704,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::NextHop(
     address{YType::str, "address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::~NextHop()
@@ -3668,6 +3713,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::~NextHop
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -3743,18 +3789,19 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ip::Vrf::Vrfs::NextHop::has
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Ipv6()
     :
     precedence{YType::uint8, "precedence"}
-    	,
+        ,
     address(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address>())
-	,default_(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default>())
-	,global(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global>())
-	,next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop>())
+    , default_(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default>())
+    , global(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global>())
+    , next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop>())
+    , bvrf(this, {"bvrf"})
 {
     address->parent = this;
     default_->parent = this;
     global->parent = this;
     next_hop->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::~Ipv6()
@@ -3763,7 +3810,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::~Ipv6()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<bvrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bvrf.len(); index++)
     {
         if(bvrf[index]->has_data())
             return true;
@@ -3777,7 +3825,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::has_data() const
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<bvrf.size(); index++)
+    for (std::size_t index=0; index<bvrf.len(); index++)
     {
         if(bvrf[index]->has_operation())
             return true;
@@ -3849,7 +3897,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::ge
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf>();
         c->parent = this;
-        bvrf.push_back(c);
+        bvrf.append(c);
         return c;
     }
 
@@ -3881,7 +3929,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     }
 
     count = 0;
-    for (auto const & c : bvrf)
+    for (auto c : bvrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3922,7 +3970,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::Address()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::~Address()
@@ -3931,6 +3979,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::~Address()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : prefix_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -4006,12 +4055,13 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Address::has_leaf_or_
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Default()
     :
     global(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global>())
-	,next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop>())
+    , next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop>())
+    , dvrf(this, {"dvrf"})
 {
     global->parent = this;
     next_hop->parent = this;
 
-    yang_name = "default"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::~Default()
@@ -4020,7 +4070,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::~Default()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::has_data() const
 {
-    for (std::size_t index=0; index<dvrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dvrf.len(); index++)
     {
         if(dvrf[index]->has_data())
             return true;
@@ -4031,7 +4082,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::has_data() c
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::has_operation() const
 {
-    for (std::size_t index=0; index<dvrf.size(); index++)
+    for (std::size_t index=0; index<dvrf.len(); index++)
     {
         if(dvrf[index]->has_operation())
             return true;
@@ -4081,7 +4132,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::De
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf>();
         c->parent = this;
-        dvrf.push_back(c);
+        dvrf.append(c);
         return c;
     }
 
@@ -4103,7 +4154,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     }
 
     count = 0;
-    for (auto const & c : dvrf)
+    for (auto c : dvrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4134,7 +4185,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::Global()
     next_hop{YType::str, "next-hop"}
 {
 
-    yang_name = "global"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::~Global()
@@ -4143,6 +4194,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::~Global()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop.is_set;
 }
 
@@ -4209,9 +4261,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Global::has_
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::NextHop()
     :
     next_hop_address{YType::str, "next-hop-address"}
+        ,
+    ipv6s(this, {"ipv6"})
 {
 
-    yang_name = "next-hop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::~NextHop()
@@ -4220,7 +4274,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::~NextHop
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::has_data() const
 {
-    for (std::size_t index=0; index<ipv6s.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6s.len(); index++)
     {
         if(ipv6s[index]->has_data())
             return true;
@@ -4230,7 +4285,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::has
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6s.size(); index++)
+    for (std::size_t index=0; index<ipv6s.len(); index++)
     {
         if(ipv6s[index]->has_operation())
             return true;
@@ -4260,9 +4315,9 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::De
 {
     if(child_yang_name == "ipv6s")
     {
-        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S>();
+        auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s>();
         c->parent = this;
-        ipv6s.push_back(c);
+        ipv6s.append(c);
         return c;
     }
 
@@ -4274,7 +4329,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6s)
+    for (auto c : ipv6s.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4310,37 +4365,39 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::has
     return false;
 }
 
-Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::Ipv6S()
+Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::Ipv6s()
     :
     ipv6{YType::str, "ipv6"}
 {
 
-    yang_name = "ipv6s"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6s"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::~Ipv6S()
+Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::~Ipv6s()
 {
 }
 
-bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::has_data() const
+bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6.is_set;
 }
 
-bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::has_operation() const
+bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ipv6.yfilter);
 }
 
-std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::get_segment_path() const
+std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6s" <<"[ipv6='" <<ipv6 <<"']";
+    path_buffer << "ipv6s";
+    ADD_KEY_TOKEN(ipv6, "ipv6");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4350,19 +4407,19 @@ std::vector<std::pair<std::string, LeafData> > Native::RouteMap::RouteMapWithout
 
 }
 
-std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ipv6")
     {
@@ -4372,7 +4429,7 @@ void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv
     }
 }
 
-void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ipv6")
     {
@@ -4380,7 +4437,7 @@ void Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv
     }
 }
 
-bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6S::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv6s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6")
         return true;
@@ -4390,9 +4447,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::NextHop::Ipv
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf()
     :
     dvrf{YType::str, "dvrf"}
+        ,
+    dvrf0(this, {"dvrf0"})
 {
 
-    yang_name = "dvrf"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dvrf"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::~Dvrf()
@@ -4401,7 +4460,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::~Dvrf()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::has_data() const
 {
-    for (std::size_t index=0; index<dvrf0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dvrf0.len(); index++)
     {
         if(dvrf0[index]->has_data())
             return true;
@@ -4411,7 +4471,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::has_da
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::has_operation() const
 {
-    for (std::size_t index=0; index<dvrf0.size(); index++)
+    for (std::size_t index=0; index<dvrf0.len(); index++)
     {
         if(dvrf0[index]->has_operation())
             return true;
@@ -4423,7 +4483,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::has_op
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dvrf" <<"[dvrf='" <<dvrf <<"']";
+    path_buffer << "dvrf";
+    ADD_KEY_TOKEN(dvrf, "dvrf");
     return path_buffer.str();
 }
 
@@ -4443,7 +4504,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::De
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0>();
         c->parent = this;
-        dvrf0.push_back(c);
+        dvrf0.append(c);
         return c;
     }
 
@@ -4455,7 +4516,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dvrf0)
+    for (auto c : dvrf0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4497,7 +4558,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::Dvrf
     next_hop{YType::empty, "next-hop"}
 {
 
-    yang_name = "dvrf0"; yang_parent_name = "dvrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dvrf0"; yang_parent_name = "dvrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::~Dvrf0()
@@ -4506,6 +4567,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::~Dvr
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::has_data() const
 {
+    if (is_presence_container) return true;
     return dvrf0.is_set
 	|| next_hop.is_set;
 }
@@ -4520,7 +4582,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0:
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Default::Dvrf::Dvrf0::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dvrf0" <<"[dvrf0='" <<dvrf0 <<"']";
+    path_buffer << "dvrf0";
+    ADD_KEY_TOKEN(dvrf0, "dvrf0");
     return path_buffer.str();
 }
 
@@ -4588,7 +4651,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::Global()
 {
     next_hop->parent = this;
 
-    yang_name = "global"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::~Global()
@@ -4597,6 +4660,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::~Global()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return (next_hop !=  nullptr && next_hop->has_data());
 }
 
@@ -4666,9 +4730,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::has_leaf_or_c
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NextHop()
     :
     verify_availability{YType::str, "verify-availability"}
+        ,
+    nh_ipv6(this, {"nh_ipv6"})
 {
 
-    yang_name = "next-hop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::~NextHop()
@@ -4677,7 +4743,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::~NextHop(
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::has_data() const
 {
-    for (std::size_t index=0; index<nh_ipv6.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nh_ipv6.len(); index++)
     {
         if(nh_ipv6[index]->has_data())
             return true;
@@ -4687,7 +4754,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::has_
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::has_operation() const
 {
-    for (std::size_t index=0; index<nh_ipv6.size(); index++)
+    for (std::size_t index=0; index<nh_ipv6.len(); index++)
     {
         if(nh_ipv6[index]->has_operation())
             return true;
@@ -4719,7 +4786,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Gl
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6>();
         c->parent = this;
-        nh_ipv6.push_back(c);
+        nh_ipv6.append(c);
         return c;
     }
 
@@ -4731,7 +4798,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nh_ipv6)
+    for (auto c : nh_ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4773,7 +4840,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::N
     nh_ipv60{YType::str, "nh-ipv60"}
 {
 
-    yang_name = "nh-ipv6"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nh-ipv6"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::~NhIpv6()
@@ -4782,6 +4849,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::~
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_ipv6.is_set
 	|| nh_ipv60.is_set;
 }
@@ -4796,7 +4864,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIp
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Global::NextHop::NhIpv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nh-ipv6" <<"[nh-ipv6='" <<nh_ipv6 <<"']";
+    path_buffer << "nh-ipv6";
+    ADD_KEY_TOKEN(nh_ipv6, "nh-ipv6");
     return path_buffer.str();
 }
 
@@ -4862,14 +4931,15 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NextHop()
     :
     peer_address{YType::empty, "peer-address"},
     recursive{YType::str, "recursive"}
-    	,
-    encapsulate(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate>())
-	,verify_availability(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability>())
+        ,
+    nha_ipv6(this, {"nha_ipv6"})
+    , encapsulate(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate>())
+    , verify_availability(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability>())
 {
     encapsulate->parent = this;
     verify_availability->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::~NextHop()
@@ -4878,7 +4948,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::~NextHop()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::has_data() const
 {
-    for (std::size_t index=0; index<nha_ipv6.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nha_ipv6.len(); index++)
     {
         if(nha_ipv6[index]->has_data())
             return true;
@@ -4891,7 +4962,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::has_data() c
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::has_operation() const
 {
-    for (std::size_t index=0; index<nha_ipv6.size(); index++)
+    for (std::size_t index=0; index<nha_ipv6.len(); index++)
     {
         if(nha_ipv6[index]->has_operation())
             return true;
@@ -4927,7 +4998,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Ne
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6>();
         c->parent = this;
-        nha_ipv6.push_back(c);
+        nha_ipv6.append(c);
         return c;
     }
 
@@ -4957,7 +5028,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nha_ipv6)
+    for (auto c : nha_ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5016,9 +5087,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::has_leaf_or_
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv6()
     :
     nha_ipv6{YType::str, "nha-ipv6"}
+        ,
+    nha_ipv60(this, {"nha_ipv60"})
 {
 
-    yang_name = "nha-ipv6"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nha-ipv6"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::~NhaIpv6()
@@ -5027,7 +5100,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::~NhaIpv6
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::has_data() const
 {
-    for (std::size_t index=0; index<nha_ipv60.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nha_ipv60.len(); index++)
     {
         if(nha_ipv60[index]->has_data())
             return true;
@@ -5037,7 +5111,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::has
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::has_operation() const
 {
-    for (std::size_t index=0; index<nha_ipv60.size(); index++)
+    for (std::size_t index=0; index<nha_ipv60.len(); index++)
     {
         if(nha_ipv60[index]->has_operation())
             return true;
@@ -5049,7 +5123,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::has
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nha-ipv6" <<"[nha-ipv6='" <<nha_ipv6 <<"']";
+    path_buffer << "nha-ipv6";
+    ADD_KEY_TOKEN(nha_ipv6, "nha-ipv6");
     return path_buffer.str();
 }
 
@@ -5069,7 +5144,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Ne
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60>();
         c->parent = this;
-        nha_ipv60.push_back(c);
+        nha_ipv60.append(c);
         return c;
     }
 
@@ -5081,7 +5156,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nha_ipv60)
+    for (auto c : nha_ipv60.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5123,7 +5198,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60
     nh_ipv6{YType::str, "nh-ipv6"}
 {
 
-    yang_name = "nha-ipv60"; yang_parent_name = "nha-ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nha-ipv60"; yang_parent_name = "nha-ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::~NhaIpv60()
@@ -5132,6 +5207,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::has_data() const
 {
+    if (is_presence_container) return true;
     return nha_ipv60.is_set
 	|| nh_ipv6.is_set;
 }
@@ -5146,7 +5222,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::Nha
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::NhaIpv6::NhaIpv60::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nha-ipv60" <<"[nha-ipv60='" <<nha_ipv60 <<"']";
+    path_buffer << "nha-ipv60";
+    ADD_KEY_TOKEN(nha_ipv60, "nha-ipv60");
     return path_buffer.str();
 }
 
@@ -5213,7 +5290,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::Enca
     l3vpn{YType::str, "l3vpn"}
 {
 
-    yang_name = "encapsulate"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulate"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::~Encapsulate()
@@ -5222,6 +5299,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::~Enc
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate::has_data() const
 {
+    if (is_presence_container) return true;
     return l3vpn.is_set;
 }
 
@@ -5286,9 +5364,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::Encapsulate:
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VerifyAvailability()
+    :
+    va_ipv6(this, {"va_ipv6"})
 {
 
-    yang_name = "verify-availability"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify-availability"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::~VerifyAvailability()
@@ -5297,7 +5377,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailabilit
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::has_data() const
 {
-    for (std::size_t index=0; index<va_ipv6.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<va_ipv6.len(); index++)
     {
         if(va_ipv6[index]->has_data())
             return true;
@@ -5307,7 +5388,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvaila
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::has_operation() const
 {
-    for (std::size_t index=0; index<va_ipv6.size(); index++)
+    for (std::size_t index=0; index<va_ipv6.len(); index++)
     {
         if(va_ipv6[index]->has_operation())
             return true;
@@ -5337,7 +5418,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Ne
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6>();
         c->parent = this;
-        va_ipv6.push_back(c);
+        va_ipv6.append(c);
         return c;
     }
 
@@ -5349,7 +5430,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : va_ipv6)
+    for (auto c : va_ipv6.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5381,7 +5462,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailabilit
     seq_nh{YType::uint16, "seq-nh"}
 {
 
-    yang_name = "va-ipv6"; yang_parent_name = "verify-availability"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "va-ipv6"; yang_parent_name = "verify-availability"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::~VaIpv6()
@@ -5390,6 +5471,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailabilit
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::has_data() const
 {
+    if (is_presence_container) return true;
     return va_ipv6.is_set
 	|| seq_nh.is_set;
 }
@@ -5404,7 +5486,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvaila
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvailability::VaIpv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "va-ipv6" <<"[va-ipv6='" <<va_ipv6 <<"']";
+    path_buffer << "va-ipv6";
+    ADD_KEY_TOKEN(va_ipv6, "va-ipv6");
     return path_buffer.str();
 }
 
@@ -5469,9 +5552,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::NextHop::VerifyAvaila
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf()
     :
     bvrf{YType::str, "bvrf"}
+        ,
+    bvrf0(this, {"bvrf0"})
 {
 
-    yang_name = "bvrf"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bvrf"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::~Bvrf()
@@ -5480,7 +5565,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::~Bvrf()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::has_data() const
 {
-    for (std::size_t index=0; index<bvrf0.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bvrf0.len(); index++)
     {
         if(bvrf0[index]->has_data())
             return true;
@@ -5490,7 +5576,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::has_data() cons
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::has_operation() const
 {
-    for (std::size_t index=0; index<bvrf0.size(); index++)
+    for (std::size_t index=0; index<bvrf0.len(); index++)
     {
         if(bvrf0[index]->has_operation())
             return true;
@@ -5502,7 +5588,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::has_operation()
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bvrf" <<"[bvrf='" <<bvrf <<"']";
+    path_buffer << "bvrf";
+    ADD_KEY_TOKEN(bvrf, "bvrf");
     return path_buffer.str();
 }
 
@@ -5522,7 +5609,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bv
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0>();
         c->parent = this;
-        bvrf0.push_back(c);
+        bvrf0.append(c);
         return c;
     }
 
@@ -5534,7 +5621,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bvrf0)
+    for (auto c : bvrf0.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5573,12 +5660,12 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::has_leaf_or_chi
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::Bvrf0()
     :
     bvrf0{YType::str, "bvrf0"}
-    	,
+        ,
     next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop>())
 {
     next_hop->parent = this;
 
-    yang_name = "bvrf0"; yang_parent_name = "bvrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bvrf0"; yang_parent_name = "bvrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::~Bvrf0()
@@ -5587,6 +5674,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::~Bvrf0()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::has_data() const
 {
+    if (is_presence_container) return true;
     return bvrf0.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
@@ -5601,7 +5689,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::has_oper
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bvrf0" <<"[bvrf0='" <<bvrf0 <<"']";
+    path_buffer << "bvrf0";
+    ADD_KEY_TOKEN(bvrf0, "bvrf0");
     return path_buffer.str();
 }
 
@@ -5672,7 +5761,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::Next
     verify_availability{YType::empty, "verify-availability"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "bvrf0"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "bvrf0"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::~NextHop()
@@ -5681,6 +5770,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::~Nex
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Ipv6::Bvrf::Bvrf0::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return bipv6.is_set
 	|| verify_availability.is_set;
 }
@@ -5765,7 +5855,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::Level()
     nssa_only{YType::empty, "nssa-only"}
 {
 
-    yang_name = "level"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::~Level()
@@ -5774,6 +5864,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::~Level()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return level_1.is_set
 	|| level_1_2.is_set
 	|| level_2.is_set
@@ -5881,7 +5972,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::Lisp()
     locator_set{YType::str, "locator-set"}
 {
 
-    yang_name = "lisp"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lisp"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::~Lisp()
@@ -5890,6 +5981,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::~Lisp()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Lisp::has_data() const
 {
+    if (is_presence_container) return true;
     return locator_set.is_set;
 }
 
@@ -5959,7 +6051,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::Origin()
     egp{YType::uint32, "egp"}
 {
 
-    yang_name = "origin"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "origin"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::~Origin()
@@ -5968,6 +6060,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::~Origin()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Origin::has_data() const
 {
+    if (is_presence_container) return true;
     return origin_value.is_set
 	|| egp.is_set;
 }
@@ -6050,7 +6143,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::Tag()
     tag_ipv4{YType::str, "tag-ipv4"}
 {
 
-    yang_name = "tag"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tag"; yang_parent_name = "set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::~Tag()
@@ -6059,6 +6152,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::~Tag()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Set::Tag::has_data() const
 {
+    if (is_presence_container) return true;
     return tag_val.is_set
 	|| tag_ipv4.is_set;
 }
@@ -6139,24 +6233,24 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Match()
     :
     mpls_label{YType::empty, "mpls-label"},
     track{YType::uint16, "track"}
-    	,
+        ,
     additional_paths(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths>())
-	,as_path(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath>())
-	,clns(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns>())
-	,community(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community>())
-	,extcommunity(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity>())
-	,interface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface>())
-	,ip(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip>())
-	,ipv6(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6>())
-	,length(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length>())
-	,local_preference(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference>())
-	,mdt_group(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup>())
-	,metric(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric>())
-	,policy_list(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList>())
-	,route_type(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType>())
-	,rpki(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki>())
-	,source_protocol(nullptr) // presence node
-	,tag(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag>())
+    , as_path(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath>())
+    , clns(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns>())
+    , community(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community>())
+    , extcommunity(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity>())
+    , interface(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface>())
+    , ip(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip>())
+    , ipv6(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6>())
+    , length(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length>())
+    , local_preference(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference>())
+    , mdt_group(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup>())
+    , metric(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric>())
+    , policy_list(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList>())
+    , route_type(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType>())
+    , rpki(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki>())
+    , source_protocol(nullptr) // presence node
+    , tag(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag>())
 {
     additional_paths->parent = this;
     as_path->parent = this;
@@ -6175,7 +6269,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Match()
     rpki->parent = this;
     tag->parent = this;
 
-    yang_name = "match"; yang_parent_name = "route-map-without-order-seq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "match"; yang_parent_name = "route-map-without-order-seq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::~Match()
@@ -6184,6 +6278,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::~Match()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::has_data() const
 {
+    if (is_presence_container) return true;
     return mpls_label.is_set
 	|| track.is_set
 	|| (additional_paths !=  nullptr && additional_paths->has_data())
@@ -6538,7 +6633,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdditionalPat
 {
     advertise_set->parent = this;
 
-    yang_name = "additional-paths"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "additional-paths"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::~AdditionalPaths()
@@ -6547,6 +6642,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::~AdditionalPa
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::has_data() const
 {
+    if (is_presence_container) return true;
     return (advertise_set !=  nullptr && advertise_set->has_data());
 }
 
@@ -6616,14 +6712,14 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::has_leaf
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::AdvertiseSet()
     :
     all(nullptr) // presence node
-	,best(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best>())
-	,best_range(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange>())
-	,group_best(nullptr) // presence node
+    , best(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best>())
+    , best_range(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange>())
+    , group_best(nullptr) // presence node
 {
     best->parent = this;
     best_range->parent = this;
 
-    yang_name = "advertise-set"; yang_parent_name = "additional-paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertise-set"; yang_parent_name = "additional-paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::~AdvertiseSet()
@@ -6632,6 +6728,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::has_data() const
 {
+    if (is_presence_container) return true;
     return (all !=  nullptr && all->has_data())
 	|| (best !=  nullptr && best->has_data())
 	|| (best_range !=  nullptr && best_range->has_data())
@@ -6750,11 +6847,11 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
     :
     best{YType::uint8, "best"},
     best_range{YType::uint8, "best-range"}
-    	,
+        ,
     group_best(nullptr) // presence node
 {
 
-    yang_name = "all"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::~All()
@@ -6763,6 +6860,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::has_data() const
 {
+    if (is_presence_container) return true;
     return best.is_set
 	|| best_range.is_set
 	|| (group_best !=  nullptr && group_best->has_data());
@@ -6861,7 +6959,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
     best_range{YType::empty, "best-range"}
 {
 
-    yang_name = "group-best"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-best"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::GroupBest::~GroupBest()
@@ -6870,6 +6968,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::All::GroupBest::has_data() const
 {
+    if (is_presence_container) return true;
     return best.is_set
 	|| best_range.is_set;
 }
@@ -6947,9 +7046,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Advertis
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::Best()
+    :
+    best_range(this, {"best_range"})
 {
 
-    yang_name = "best"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "best"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::~Best()
@@ -6958,7 +7059,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::has_data() const
 {
-    for (std::size_t index=0; index<best_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<best_range.len(); index++)
     {
         if(best_range[index]->has_data())
             return true;
@@ -6968,7 +7070,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Advertis
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::has_operation() const
 {
-    for (std::size_t index=0; index<best_range.size(); index++)
+    for (std::size_t index=0; index<best_range.len(); index++)
     {
         if(best_range[index]->has_operation())
             return true;
@@ -6998,7 +7100,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Additi
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange>();
         c->parent = this;
-        best_range.push_back(c);
+        best_range.append(c);
         return c;
     }
 
@@ -7010,7 +7112,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : best_range)
+    for (auto c : best_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7043,7 +7145,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
     group_best{YType::empty, "group-best"}
 {
 
-    yang_name = "best-range"; yang_parent_name = "best"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "best-range"; yang_parent_name = "best"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::~BestRange()
@@ -7052,6 +7154,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::has_data() const
 {
+    if (is_presence_container) return true;
     return best_range.is_set
 	|| all.is_set
 	|| group_best.is_set;
@@ -7068,7 +7171,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Advertis
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::Best::BestRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "best-range" <<"[best-range='" <<best_range <<"']";
+    path_buffer << "best-range";
+    ADD_KEY_TOKEN(best_range, "best-range");
     return path_buffer.str();
 }
 
@@ -7142,9 +7246,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Advertis
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::BestRange()
+    :
+    adv_path(this, {"adv_path"})
 {
 
-    yang_name = "best-range"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "best-range"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::~BestRange()
@@ -7153,7 +7259,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::has_data() const
 {
-    for (std::size_t index=0; index<adv_path.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<adv_path.len(); index++)
     {
         if(adv_path[index]->has_data())
             return true;
@@ -7163,7 +7270,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Advertis
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::has_operation() const
 {
-    for (std::size_t index=0; index<adv_path.size(); index++)
+    for (std::size_t index=0; index<adv_path.len(); index++)
     {
         if(adv_path[index]->has_operation())
             return true;
@@ -7193,7 +7300,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Additi
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath>();
         c->parent = this;
-        adv_path.push_back(c);
+        adv_path.append(c);
         return c;
     }
 
@@ -7205,7 +7312,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : adv_path)
+    for (auto c : adv_path.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7237,7 +7344,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
     adv_path0{YType::uint8, "adv-path0"}
 {
 
-    yang_name = "adv-path"; yang_parent_name = "best-range"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adv-path"; yang_parent_name = "best-range"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::~AdvPath()
@@ -7246,6 +7353,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::has_data() const
 {
+    if (is_presence_container) return true;
     return adv_path.is_set
 	|| adv_path0.is_set;
 }
@@ -7260,7 +7368,8 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::Advertis
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::BestRange::AdvPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "adv-path" <<"[adv-path='" <<adv_path <<"']";
+    path_buffer << "adv-path";
+    ADD_KEY_TOKEN(adv_path, "adv-path");
     return path_buffer.str();
 }
 
@@ -7329,7 +7438,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
     best_range{YType::uint8, "best-range"}
 {
 
-    yang_name = "group-best"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "group-best"; yang_parent_name = "advertise-set"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::GroupBest::~GroupBest()
@@ -7338,6 +7447,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet:
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AdditionalPaths::AdvertiseSet::GroupBest::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| best.is_set
 	|| best_range.is_set;
@@ -7432,7 +7542,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::AsPath()
     access_list{YType::uint16, "access-list"}
 {
 
-    yang_name = "as-path"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-path"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::~AsPath()
@@ -7441,6 +7551,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::~AsPath()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::AsPath::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : access_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -7518,7 +7629,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::Clns()
     name{YType::str, "name"}
 {
 
-    yang_name = "clns"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clns"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::~Clns()
@@ -7527,6 +7638,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::~Clns()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Clns::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : name.getYLeafs())
     {
         if(leaf.is_set)
@@ -7604,7 +7716,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::Community()
     name{YType::str, "name"}
 {
 
-    yang_name = "community"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::~Community()
@@ -7613,6 +7725,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::~Community()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Community::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : name.getYLeafs())
     {
         if(leaf.is_set)
@@ -7690,7 +7803,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::Extcommunity()
     name{YType::str, "name"}
 {
 
-    yang_name = "extcommunity"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extcommunity"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::~Extcommunity()
@@ -7699,6 +7812,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::~Extcommunity()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Extcommunity::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : name.getYLeafs())
     {
         if(leaf.is_set)
@@ -7776,7 +7890,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::Interface()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "interface"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::~Interface()
@@ -7785,6 +7899,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::~Interface()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : interface.getYLeafs())
     {
         if(leaf.is_set)
@@ -7860,10 +7975,10 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Interface::has_leaf_or_ch
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Ip()
     :
     address(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address>())
-	,flowspec(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec>())
-	,next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop>())
-	,redistribution_source(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource>())
-	,route_source(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource>())
+    , flowspec(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec>())
+    , next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop>())
+    , redistribution_source(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource>())
+    , route_source(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource>())
 {
     address->parent = this;
     flowspec->parent = this;
@@ -7871,7 +7986,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Ip()
     redistribution_source->parent = this;
     route_source->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::~Ip()
@@ -7880,6 +7995,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::~Ip()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data())
 	|| (flowspec !=  nullptr && flowspec->has_data())
 	|| (next_hop !=  nullptr && next_hop->has_data())
@@ -8016,7 +8132,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::Address()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::~Address()
@@ -8025,6 +8141,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::~Address()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : access_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -8121,12 +8238,12 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Address::has_leaf_or_
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::Flowspec()
     :
     dest_pfx(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx>())
-	,src_pfx(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx>())
+    , src_pfx(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx>())
 {
     dest_pfx->parent = this;
     src_pfx->parent = this;
 
-    yang_name = "flowspec"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowspec"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::~Flowspec()
@@ -8135,6 +8252,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::~Flowspec()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::has_data() const
 {
+    if (is_presence_container) return true;
     return (dest_pfx !=  nullptr && dest_pfx->has_data())
 	|| (src_pfx !=  nullptr && src_pfx->has_data());
 }
@@ -8223,7 +8341,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::DestPfx
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "dest-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dest-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::~DestPfx()
@@ -8232,6 +8350,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::~DestPf
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::DestPfx::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : access_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -8331,7 +8450,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::SrcPfx()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "src-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::~SrcPfx()
@@ -8340,6 +8459,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::~SrcPfx(
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::Flowspec::SrcPfx::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : access_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -8439,7 +8559,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::NextHop()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::~NextHop()
@@ -8448,6 +8568,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::~NextHop()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : access_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -8547,7 +8668,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::Redi
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "redistribution-source"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redistribution-source"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::~RedistributionSource()
@@ -8556,6 +8677,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::~Red
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RedistributionSource::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : access_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -8655,7 +8777,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::RouteSource()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "route-source"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-source"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::~RouteSource()
@@ -8664,6 +8786,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::~RouteSource(
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : access_list.getYLeafs())
     {
         if(leaf.is_set)
@@ -8760,16 +8883,16 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ip::RouteSource::has_leaf
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Ipv6()
     :
     address(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address>())
-	,flowspec(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec>())
-	,next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop>())
-	,route_source(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource>())
+    , flowspec(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec>())
+    , next_hop(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop>())
+    , route_source(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource>())
 {
     address->parent = this;
     flowspec->parent = this;
     next_hop->parent = this;
     route_source->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::~Ipv6()
@@ -8778,6 +8901,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::~Ipv6()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data())
 	|| (flowspec !=  nullptr && flowspec->has_data())
 	|| (next_hop !=  nullptr && next_hop->has_data())
@@ -8898,7 +9022,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::Address()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::~Address()
@@ -8907,6 +9031,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::~Address()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set
 	|| prefix_list.is_set;
 }
@@ -8986,12 +9111,12 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Address::has_leaf_o
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::Flowspec()
     :
     dest_pfx(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx>())
-	,src_pfx(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx>())
+    , src_pfx(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx>())
 {
     dest_pfx->parent = this;
     src_pfx->parent = this;
 
-    yang_name = "flowspec"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowspec"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::~Flowspec()
@@ -9000,6 +9125,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::~Flowspec()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::has_data() const
 {
+    if (is_presence_container) return true;
     return (dest_pfx !=  nullptr && dest_pfx->has_data())
 	|| (src_pfx !=  nullptr && src_pfx->has_data());
 }
@@ -9088,7 +9214,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::DestP
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "dest-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dest-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::~DestPfx()
@@ -9097,6 +9223,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::~Dest
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::DestPfx::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set
 	|| prefix_list.is_set;
 }
@@ -9179,7 +9306,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::SrcPfx
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "src-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-pfx"; yang_parent_name = "flowspec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::~SrcPfx()
@@ -9188,6 +9315,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::~SrcPf
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::Flowspec::SrcPfx::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set
 	|| prefix_list.is_set;
 }
@@ -9270,7 +9398,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::NextHop()
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::~NextHop()
@@ -9279,6 +9407,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::~NextHop()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set
 	|| prefix_list.is_set;
 }
@@ -9361,7 +9490,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::RouteSource
     prefix_list{YType::str, "prefix-list"}
 {
 
-    yang_name = "route-source"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-source"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::~RouteSource()
@@ -9370,6 +9499,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::~RouteSourc
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::has_data() const
 {
+    if (is_presence_container) return true;
     return access_list.is_set
 	|| prefix_list.is_set;
 }
@@ -9447,9 +9577,11 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Ipv6::RouteSource::has_le
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Length()
+    :
+    lengths(this, {"min_len", "max_len"})
 {
 
-    yang_name = "length"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "length"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::~Length()
@@ -9458,7 +9590,8 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::~Length()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::has_data() const
 {
-    for (std::size_t index=0; index<lengths.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lengths.len(); index++)
     {
         if(lengths[index]->has_data())
             return true;
@@ -9468,7 +9601,7 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::has_data() const
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::has_operation() const
 {
-    for (std::size_t index=0; index<lengths.size(); index++)
+    for (std::size_t index=0; index<lengths.len(); index++)
     {
         if(lengths[index]->has_operation())
             return true;
@@ -9498,7 +9631,7 @@ std::shared_ptr<Entity> Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length
     {
         auto c = std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths>();
         c->parent = this;
-        lengths.push_back(c);
+        lengths.append(c);
         return c;
     }
 
@@ -9510,7 +9643,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteMap::RouteMapWithout
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lengths)
+    for (auto c : lengths.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9542,7 +9675,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::Lengths()
     max_len{YType::uint32, "max-len"}
 {
 
-    yang_name = "lengths"; yang_parent_name = "length"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lengths"; yang_parent_name = "length"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::~Lengths()
@@ -9551,6 +9684,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::~Lengths()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::has_data() const
 {
+    if (is_presence_container) return true;
     return min_len.is_set
 	|| max_len.is_set;
 }
@@ -9565,7 +9699,9 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::has_oper
 std::string Native::RouteMap::RouteMapWithoutOrderSeq::Match::Length::Lengths::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lengths" <<"[min-len='" <<min_len <<"']" <<"[max-len='" <<max_len <<"']";
+    path_buffer << "lengths";
+    ADD_KEY_TOKEN(min_len, "min-len");
+    ADD_KEY_TOKEN(max_len, "max-len");
     return path_buffer.str();
 }
 
@@ -9632,7 +9768,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::LocalPreferen
     values{YType::str, "values"}
 {
 
-    yang_name = "local-preference"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-preference"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::~LocalPreference()
@@ -9641,6 +9777,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::~LocalPrefere
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::LocalPreference::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : values.getYLeafs())
     {
         if(leaf.is_set)
@@ -9718,7 +9855,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::MdtGroup()
     name{YType::str, "name"}
 {
 
-    yang_name = "mdt-group"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdt-group"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::~MdtGroup()
@@ -9727,6 +9864,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::~MdtGroup()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::MdtGroup::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : name.getYLeafs())
     {
         if(leaf.is_set)
@@ -9805,7 +9943,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::Metric()
     external{YType::str, "external"}
 {
 
-    yang_name = "metric"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::~Metric()
@@ -9814,6 +9952,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::~Metric()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return metric_value.is_set
 	|| external.is_set;
 }
@@ -9895,7 +10034,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::PolicyList()
     policy_map_names{YType::str, "policy-map-names"}
 {
 
-    yang_name = "policy-list"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy-list"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::~PolicyList()
@@ -9904,6 +10043,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::~PolicyList()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::PolicyList::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : policy_map_names.getYLeafs())
     {
         if(leaf.is_set)
@@ -9982,12 +10122,12 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::RouteType()
     level_1{YType::empty, "level-1"},
     level_2{YType::empty, "level-2"},
     local{YType::empty, "local"}
-    	,
+        ,
     external(nullptr) // presence node
-	,nssa_external(nullptr) // presence node
+    , nssa_external(nullptr) // presence node
 {
 
-    yang_name = "route-type"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-type"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::~RouteType()
@@ -9996,6 +10136,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::~RouteType()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::has_data() const
 {
+    if (is_presence_container) return true;
     return internal.is_set
 	|| level_1.is_set
 	|| level_2.is_set
@@ -10136,7 +10277,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::External(
     type_2{YType::empty, "type-2"}
 {
 
-    yang_name = "external"; yang_parent_name = "route-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "external"; yang_parent_name = "route-type"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::~External()
@@ -10145,6 +10286,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::~External
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::External::has_data() const
 {
+    if (is_presence_container) return true;
     return type_1.is_set
 	|| type_2.is_set;
 }
@@ -10227,7 +10369,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::NssaE
     type_2{YType::empty, "type-2"}
 {
 
-    yang_name = "nssa-external"; yang_parent_name = "route-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nssa-external"; yang_parent_name = "route-type"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::~NssaExternal()
@@ -10236,6 +10378,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::~Nssa
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::RouteType::NssaExternal::has_data() const
 {
+    if (is_presence_container) return true;
     return type_1.is_set
 	|| type_2.is_set;
 }
@@ -10319,7 +10462,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::Rpki()
     valid{YType::empty, "valid"}
 {
 
-    yang_name = "rpki"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpki"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::~Rpki()
@@ -10328,6 +10471,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::~Rpki()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Rpki::has_data() const
 {
+    if (is_presence_container) return true;
     return invalid.is_set
 	|| not_found.is_set
 	|| valid.is_set;
@@ -10431,7 +10575,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::SourceProtocol
     static_{YType::empty, "static"}
 {
 
-    yang_name = "source-protocol"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-protocol"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::~SourceProtocol()
@@ -10440,6 +10584,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::~SourceProtoco
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : bgp.getYLeafs())
     {
         if(leaf.is_set)
@@ -10656,12 +10801,12 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::Tag()
     :
     tag_value{YType::uint32, "tag_value"},
     ipv4_address{YType::str, "ipv4-address"}
-    	,
+        ,
     list(std::make_shared<Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List>())
 {
     list->parent = this;
 
-    yang_name = "tag"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tag"; yang_parent_name = "match"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::~Tag()
@@ -10670,6 +10815,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::~Tag()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : tag_value.getYLeafs())
     {
         if(leaf.is_set)
@@ -10783,7 +10929,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::List()
     tag_names{YType::str, "tag-names"}
 {
 
-    yang_name = "list"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "list"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::~List()
@@ -10792,6 +10938,7 @@ Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::~List()
 
 bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : tag_names.getYLeafs())
     {
         if(leaf.is_set)
@@ -10867,12 +11014,12 @@ bool Native::RouteMap::RouteMapWithoutOrderSeq::Match::Tag::List::has_leaf_or_ch
 Native::RouteTag::RouteTag()
     :
     list(std::make_shared<Native::RouteTag::List>())
-	,notation(std::make_shared<Native::RouteTag::Notation>())
+    , notation(std::make_shared<Native::RouteTag::Notation>())
 {
     list->parent = this;
     notation->parent = this;
 
-    yang_name = "route-tag"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-tag"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::RouteTag::~RouteTag()
@@ -10881,6 +11028,7 @@ Native::RouteTag::~RouteTag()
 
 bool Native::RouteTag::has_data() const
 {
+    if (is_presence_container) return true;
     return (list !=  nullptr && list->has_data())
 	|| (notation !=  nullptr && notation->has_data());
 }
@@ -10971,9 +11119,11 @@ bool Native::RouteTag::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Native::RouteTag::List::List()
+    :
+    rt_name(this, {"rt_name"})
 {
 
-    yang_name = "list"; yang_parent_name = "route-tag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "list"; yang_parent_name = "route-tag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::RouteTag::List::~List()
@@ -10982,7 +11132,8 @@ Native::RouteTag::List::~List()
 
 bool Native::RouteTag::List::has_data() const
 {
-    for (std::size_t index=0; index<rt_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rt_name.len(); index++)
     {
         if(rt_name[index]->has_data())
             return true;
@@ -10992,7 +11143,7 @@ bool Native::RouteTag::List::has_data() const
 
 bool Native::RouteTag::List::has_operation() const
 {
-    for (std::size_t index=0; index<rt_name.size(); index++)
+    for (std::size_t index=0; index<rt_name.len(); index++)
     {
         if(rt_name[index]->has_operation())
             return true;
@@ -11029,7 +11180,7 @@ std::shared_ptr<Entity> Native::RouteTag::List::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Native::RouteTag::List::RtName>();
         c->parent = this;
-        rt_name.push_back(c);
+        rt_name.append(c);
         return c;
     }
 
@@ -11041,7 +11192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rt_name)
+    for (auto c : rt_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11070,16 +11221,16 @@ bool Native::RouteTag::List::has_leaf_or_child_of_name(const std::string & name)
 Native::RouteTag::List::RtName::RtName()
     :
     rt_name{YType::str, "rt-name"}
-    	,
+        ,
     deny(std::make_shared<Native::RouteTag::List::RtName::Deny>())
-	,permit(std::make_shared<Native::RouteTag::List::RtName::Permit>())
-	,seq(std::make_shared<Native::RouteTag::List::RtName::Seq>())
+    , permit(std::make_shared<Native::RouteTag::List::RtName::Permit>())
+    , seq(std::make_shared<Native::RouteTag::List::RtName::Seq>())
 {
     deny->parent = this;
     permit->parent = this;
     seq->parent = this;
 
-    yang_name = "rt-name"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rt-name"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::RouteTag::List::RtName::~RtName()
@@ -11088,6 +11239,7 @@ Native::RouteTag::List::RtName::~RtName()
 
 bool Native::RouteTag::List::RtName::has_data() const
 {
+    if (is_presence_container) return true;
     return rt_name.is_set
 	|| (deny !=  nullptr && deny->has_data())
 	|| (permit !=  nullptr && permit->has_data())
@@ -11113,7 +11265,8 @@ std::string Native::RouteTag::List::RtName::get_absolute_path() const
 std::string Native::RouteTag::List::RtName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rt-name" <<"[rt-name='" <<rt_name <<"']";
+    path_buffer << "rt-name";
+    ADD_KEY_TOKEN(rt_name, "rt-name");
     return path_buffer.str();
 }
 
@@ -11207,9 +11360,11 @@ bool Native::RouteTag::List::RtName::has_leaf_or_child_of_name(const std::string
 }
 
 Native::RouteTag::List::RtName::Deny::Deny()
+    :
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "deny"; yang_parent_name = "rt-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "deny"; yang_parent_name = "rt-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Deny::~Deny()
@@ -11218,7 +11373,8 @@ Native::RouteTag::List::RtName::Deny::~Deny()
 
 bool Native::RouteTag::List::RtName::Deny::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -11228,7 +11384,7 @@ bool Native::RouteTag::List::RtName::Deny::has_data() const
 
 bool Native::RouteTag::List::RtName::Deny::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -11258,7 +11414,7 @@ std::shared_ptr<Entity> Native::RouteTag::List::RtName::Deny::get_child_by_name(
     {
         auto c = std::make_shared<Native::RouteTag::List::RtName::Deny::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -11270,7 +11426,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11302,7 +11458,7 @@ Native::RouteTag::List::RtName::Deny::Ipv4::Ipv4()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "deny"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "deny"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Deny::Ipv4::~Ipv4()
@@ -11311,6 +11467,7 @@ Native::RouteTag::List::RtName::Deny::Ipv4::~Ipv4()
 
 bool Native::RouteTag::List::RtName::Deny::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| mask.is_set;
 }
@@ -11325,7 +11482,8 @@ bool Native::RouteTag::List::RtName::Deny::Ipv4::has_operation() const
 std::string Native::RouteTag::List::RtName::Deny::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -11388,9 +11546,11 @@ bool Native::RouteTag::List::RtName::Deny::Ipv4::has_leaf_or_child_of_name(const
 }
 
 Native::RouteTag::List::RtName::Permit::Permit()
+    :
+    ipv4(this, {"ipv4"})
 {
 
-    yang_name = "permit"; yang_parent_name = "rt-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "permit"; yang_parent_name = "rt-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Permit::~Permit()
@@ -11399,7 +11559,8 @@ Native::RouteTag::List::RtName::Permit::~Permit()
 
 bool Native::RouteTag::List::RtName::Permit::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -11409,7 +11570,7 @@ bool Native::RouteTag::List::RtName::Permit::has_data() const
 
 bool Native::RouteTag::List::RtName::Permit::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -11439,7 +11600,7 @@ std::shared_ptr<Entity> Native::RouteTag::List::RtName::Permit::get_child_by_nam
     {
         auto c = std::make_shared<Native::RouteTag::List::RtName::Permit::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -11451,7 +11612,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11483,7 +11644,7 @@ Native::RouteTag::List::RtName::Permit::Ipv4::Ipv4()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "permit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "permit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Permit::Ipv4::~Ipv4()
@@ -11492,6 +11653,7 @@ Native::RouteTag::List::RtName::Permit::Ipv4::~Ipv4()
 
 bool Native::RouteTag::List::RtName::Permit::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| mask.is_set;
 }
@@ -11506,7 +11668,8 @@ bool Native::RouteTag::List::RtName::Permit::Ipv4::has_operation() const
 std::string Native::RouteTag::List::RtName::Permit::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[ipv4='" <<ipv4 <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(ipv4, "ipv4");
     return path_buffer.str();
 }
 
@@ -11569,9 +11732,11 @@ bool Native::RouteTag::List::RtName::Permit::Ipv4::has_leaf_or_child_of_name(con
 }
 
 Native::RouteTag::List::RtName::Seq::Seq()
+    :
+    seq_num(this, {"seq_num"})
 {
 
-    yang_name = "seq"; yang_parent_name = "rt-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "seq"; yang_parent_name = "rt-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Seq::~Seq()
@@ -11580,7 +11745,8 @@ Native::RouteTag::List::RtName::Seq::~Seq()
 
 bool Native::RouteTag::List::RtName::Seq::has_data() const
 {
-    for (std::size_t index=0; index<seq_num.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<seq_num.len(); index++)
     {
         if(seq_num[index]->has_data())
             return true;
@@ -11590,7 +11756,7 @@ bool Native::RouteTag::List::RtName::Seq::has_data() const
 
 bool Native::RouteTag::List::RtName::Seq::has_operation() const
 {
-    for (std::size_t index=0; index<seq_num.size(); index++)
+    for (std::size_t index=0; index<seq_num.len(); index++)
     {
         if(seq_num[index]->has_operation())
             return true;
@@ -11620,7 +11786,7 @@ std::shared_ptr<Entity> Native::RouteTag::List::RtName::Seq::get_child_by_name(c
     {
         auto c = std::make_shared<Native::RouteTag::List::RtName::Seq::SeqNum>();
         c->parent = this;
-        seq_num.push_back(c);
+        seq_num.append(c);
         return c;
     }
 
@@ -11632,7 +11798,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::RouteTag::List::RtName::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : seq_num)
+    for (auto c : seq_num.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11661,14 +11827,14 @@ bool Native::RouteTag::List::RtName::Seq::has_leaf_or_child_of_name(const std::s
 Native::RouteTag::List::RtName::Seq::SeqNum::SeqNum()
     :
     seq_num{YType::uint32, "seq-num"}
-    	,
+        ,
     deny(std::make_shared<Native::RouteTag::List::RtName::Seq::SeqNum::Deny>())
-	,permit(std::make_shared<Native::RouteTag::List::RtName::Seq::SeqNum::Permit>())
+    , permit(std::make_shared<Native::RouteTag::List::RtName::Seq::SeqNum::Permit>())
 {
     deny->parent = this;
     permit->parent = this;
 
-    yang_name = "seq-num"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "seq-num"; yang_parent_name = "seq"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Seq::SeqNum::~SeqNum()
@@ -11677,6 +11843,7 @@ Native::RouteTag::List::RtName::Seq::SeqNum::~SeqNum()
 
 bool Native::RouteTag::List::RtName::Seq::SeqNum::has_data() const
 {
+    if (is_presence_container) return true;
     return seq_num.is_set
 	|| (deny !=  nullptr && deny->has_data())
 	|| (permit !=  nullptr && permit->has_data());
@@ -11693,7 +11860,8 @@ bool Native::RouteTag::List::RtName::Seq::SeqNum::has_operation() const
 std::string Native::RouteTag::List::RtName::Seq::SeqNum::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "seq-num" <<"[seq-num='" <<seq_num <<"']";
+    path_buffer << "seq-num";
+    ADD_KEY_TOKEN(seq_num, "seq-num");
     return path_buffer.str();
 }
 
@@ -11778,7 +11946,7 @@ Native::RouteTag::List::RtName::Seq::SeqNum::Deny::Deny()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "deny"; yang_parent_name = "seq-num"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "deny"; yang_parent_name = "seq-num"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Seq::SeqNum::Deny::~Deny()
@@ -11787,6 +11955,7 @@ Native::RouteTag::List::RtName::Seq::SeqNum::Deny::~Deny()
 
 bool Native::RouteTag::List::RtName::Seq::SeqNum::Deny::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| mask.is_set;
 }
@@ -11869,7 +12038,7 @@ Native::RouteTag::List::RtName::Seq::SeqNum::Permit::Permit()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "permit"; yang_parent_name = "seq-num"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "permit"; yang_parent_name = "seq-num"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::RouteTag::List::RtName::Seq::SeqNum::Permit::~Permit()
@@ -11878,6 +12047,7 @@ Native::RouteTag::List::RtName::Seq::SeqNum::Permit::~Permit()
 
 bool Native::RouteTag::List::RtName::Seq::SeqNum::Permit::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4.is_set
 	|| mask.is_set;
 }
@@ -11959,7 +12129,7 @@ Native::RouteTag::Notation::Notation()
     dotted_decimal{YType::empty, "dotted-decimal"}
 {
 
-    yang_name = "notation"; yang_parent_name = "route-tag"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "notation"; yang_parent_name = "route-tag"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::RouteTag::Notation::~Notation()
@@ -11968,6 +12138,7 @@ Native::RouteTag::Notation::~Notation()
 
 bool Native::RouteTag::Notation::has_data() const
 {
+    if (is_presence_container) return true;
     return dotted_decimal.is_set;
 }
 
@@ -12042,9 +12213,11 @@ Native::TableMap::TableMap()
     :
     name{YType::str, "name"},
     default_{YType::str, "Cisco-IOS-XE-qos:default"}
+        ,
+    map(this, {"from", "to"})
 {
 
-    yang_name = "table-map"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "table-map"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::TableMap::~TableMap()
@@ -12053,7 +12226,8 @@ Native::TableMap::~TableMap()
 
 bool Native::TableMap::has_data() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_data())
             return true;
@@ -12064,7 +12238,7 @@ bool Native::TableMap::has_data() const
 
 bool Native::TableMap::has_operation() const
 {
-    for (std::size_t index=0; index<map.size(); index++)
+    for (std::size_t index=0; index<map.len(); index++)
     {
         if(map[index]->has_operation())
             return true;
@@ -12084,7 +12258,8 @@ std::string Native::TableMap::get_absolute_path() const
 std::string Native::TableMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "table-map" <<"[name='" <<name <<"']";
+    path_buffer << "table-map";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12105,7 +12280,7 @@ std::shared_ptr<Entity> Native::TableMap::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Native::TableMap::Map>();
         c->parent = this;
-        map.push_back(c);
+        map.append(c);
         return c;
     }
 
@@ -12117,7 +12292,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::TableMap::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : map)
+    for (auto c : map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12169,7 +12344,7 @@ Native::TableMap::Map::Map()
     to{YType::uint8, "to"}
 {
 
-    yang_name = "map"; yang_parent_name = "table-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map"; yang_parent_name = "table-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::TableMap::Map::~Map()
@@ -12178,6 +12353,7 @@ Native::TableMap::Map::~Map()
 
 bool Native::TableMap::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return from.is_set
 	|| to.is_set;
 }
@@ -12192,7 +12368,9 @@ bool Native::TableMap::Map::has_operation() const
 std::string Native::TableMap::Map::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-qos:map" <<"[from='" <<from <<"']" <<"[to='" <<to <<"']";
+    path_buffer << "Cisco-IOS-XE-qos:map";
+    ADD_KEY_TOKEN(from, "from");
+    ADD_KEY_TOKEN(to, "to");
     return path_buffer.str();
 }
 
@@ -12259,7 +12437,7 @@ Native::Sdm::Sdm()
     prefer(nullptr) // presence node
 {
 
-    yang_name = "sdm"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdm"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Sdm::~Sdm()
@@ -12268,6 +12446,7 @@ Native::Sdm::~Sdm()
 
 bool Native::Sdm::has_data() const
 {
+    if (is_presence_container) return true;
     return (prefer !=  nullptr && prefer->has_data());
 }
 
@@ -12347,7 +12526,7 @@ Native::Sdm::Prefer::Prefer()
     qos{YType::empty, "qos"}
 {
 
-    yang_name = "prefer"; yang_parent_name = "sdm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefer"; yang_parent_name = "sdm"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Sdm::Prefer::~Prefer()
@@ -12356,6 +12535,7 @@ Native::Sdm::Prefer::~Prefer()
 
 bool Native::Sdm::Prefer::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| qos.is_set;
 }
@@ -12442,7 +12622,7 @@ bool Native::Sdm::Prefer::has_leaf_or_child_of_name(const std::string & name) co
 Native::Mls::Mls()
 {
 
-    yang_name = "mls"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mls"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Mls::~Mls()
@@ -12451,6 +12631,7 @@ Native::Mls::~Mls()
 
 bool Native::Mls::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -12508,9 +12689,13 @@ bool Native::Mls::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Native::ObjectGroup::ObjectGroup()
+    :
+    network(this, {"name"})
+    , security(this, {"name"})
+    , service(this, {"name"})
 {
 
-    yang_name = "object-group"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "object-group"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ObjectGroup::~ObjectGroup()
@@ -12519,17 +12704,18 @@ Native::ObjectGroup::~ObjectGroup()
 
 bool Native::ObjectGroup::has_data() const
 {
-    for (std::size_t index=0; index<network.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<security.size(); index++)
+    for (std::size_t index=0; index<security.len(); index++)
     {
         if(security[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<service.size(); index++)
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_data())
             return true;
@@ -12539,17 +12725,17 @@ bool Native::ObjectGroup::has_data() const
 
 bool Native::ObjectGroup::has_operation() const
 {
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<security.size(); index++)
+    for (std::size_t index=0; index<security.len(); index++)
     {
         if(security[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<service.size(); index++)
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_operation())
             return true;
@@ -12586,7 +12772,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::ObjectGroup::Network>();
         c->parent = this;
-        network.push_back(c);
+        network.append(c);
         return c;
     }
 
@@ -12594,7 +12780,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::ObjectGroup::Security>();
         c->parent = this;
-        security.push_back(c);
+        security.append(c);
         return c;
     }
 
@@ -12602,7 +12788,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::get_child_by_name(const std::string
     {
         auto c = std::make_shared<Native::ObjectGroup::Service>();
         c->parent = this;
-        service.push_back(c);
+        service.append(c);
         return c;
     }
 
@@ -12614,7 +12800,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network)
+    for (auto c : network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12623,7 +12809,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::get_children
     }
 
     count = 0;
-    for (auto const & c : security)
+    for (auto c : security.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12632,7 +12818,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::get_children
     }
 
     count = 0;
-    for (auto const & c : service)
+    for (auto c : service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12661,12 +12847,12 @@ bool Native::ObjectGroup::has_leaf_or_child_of_name(const std::string & name) co
 Native::ObjectGroup::Network::Network()
     :
     name{YType::str, "name"}
-    	,
+        ,
     obj_mode_config_network_group(std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup>())
 {
     obj_mode_config_network_group->parent = this;
 
-    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ObjectGroup::Network::~Network()
@@ -12675,6 +12861,7 @@ Native::ObjectGroup::Network::~Network()
 
 bool Native::ObjectGroup::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (obj_mode_config_network_group !=  nullptr && obj_mode_config_network_group->has_data());
 }
@@ -12696,7 +12883,8 @@ std::string Native::ObjectGroup::Network::get_absolute_path() const
 std::string Native::ObjectGroup::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-object-group:network" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-object-group:network";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12765,12 +12953,14 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::ObjModeConfigNetworkGro
     :
     description{YType::str, "description"},
     group_object{YType::str, "group-object"}
-    	,
-    range(std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range>())
+        ,
+    network_address(this, {"ipv4_addr", "ipv4_mask"})
+    , host(this, {"ipv4_host"})
+    , range(std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range>())
 {
     range->parent = this;
 
-    yang_name = "obj-Mode-config-network-group"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "obj-Mode-config-network-group"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::~ObjModeConfigNetworkGroup()
@@ -12779,12 +12969,13 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::~ObjModeConfigNetworkGr
 
 bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::has_data() const
 {
-    for (std::size_t index=0; index<network_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network_address.len(); index++)
     {
         if(network_address[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -12796,12 +12987,12 @@ bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::has_data() const
 
 bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::has_operation() const
 {
-    for (std::size_t index=0; index<network_address.size(); index++)
+    for (std::size_t index=0; index<network_address.len(); index++)
     {
         if(network_address[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -12836,7 +13027,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup:
     {
         auto c = std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress>();
         c->parent = this;
-        network_address.push_back(c);
+        network_address.append(c);
         return c;
     }
 
@@ -12844,7 +13035,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::Network::ObjModeConfigNetworkGroup:
     {
         auto c = std::make_shared<Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -12865,7 +13056,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Network::Obj
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network_address)
+    for (auto c : network_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12874,7 +13065,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Network::Obj
     }
 
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12931,7 +13122,7 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::Network
     ipv4_mask{YType::str, "ipv4_mask"}
 {
 
-    yang_name = "network_address"; yang_parent_name = "obj-Mode-config-network-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network_address"; yang_parent_name = "obj-Mode-config-network-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::~NetworkAddress()
@@ -12940,6 +13131,7 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::~Networ
 
 bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_addr.is_set
 	|| ipv4_mask.is_set;
 }
@@ -12954,7 +13146,9 @@ bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::ha
 std::string Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::NetworkAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "network_address" <<"[ipv4_addr='" <<ipv4_addr <<"']" <<"[ipv4_mask='" <<ipv4_mask <<"']";
+    path_buffer << "network_address";
+    ADD_KEY_TOKEN(ipv4_addr, "ipv4_addr");
+    ADD_KEY_TOKEN(ipv4_mask, "ipv4_mask");
     return path_buffer.str();
 }
 
@@ -13021,7 +13215,7 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::Host()
     ipv4_host{YType::str, "ipv4-host"}
 {
 
-    yang_name = "host"; yang_parent_name = "obj-Mode-config-network-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "obj-Mode-config-network-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::~Host()
@@ -13030,6 +13224,7 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::~Host()
 
 bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_host.is_set;
 }
 
@@ -13042,7 +13237,8 @@ bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::has_operatio
 std::string Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[ipv4-host='" <<ipv4_host <<"']";
+    path_buffer << "host";
+    ADD_KEY_TOKEN(ipv4_host, "ipv4-host");
     return path_buffer.str();
 }
 
@@ -13099,7 +13295,7 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::Range()
     ip_addr_max{YType::str, "ip-addr-max"}
 {
 
-    yang_name = "range"; yang_parent_name = "obj-Mode-config-network-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "range"; yang_parent_name = "obj-Mode-config-network-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::~Range()
@@ -13108,6 +13304,7 @@ Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::~Range()
 
 bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_addr_min.is_set
 	|| ip_addr_max.is_set;
 }
@@ -13187,12 +13384,12 @@ bool Native::ObjectGroup::Network::ObjModeConfigNetworkGroup::Range::has_leaf_or
 Native::ObjectGroup::Security::Security()
     :
     name{YType::str, "name"}
-    	,
+        ,
     security_group(std::make_shared<Native::ObjectGroup::Security::SecurityGroup>())
 {
     security_group->parent = this;
 
-    yang_name = "security"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "security"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ObjectGroup::Security::~Security()
@@ -13201,6 +13398,7 @@ Native::ObjectGroup::Security::~Security()
 
 bool Native::ObjectGroup::Security::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (security_group !=  nullptr && security_group->has_data());
 }
@@ -13222,7 +13420,8 @@ std::string Native::ObjectGroup::Security::get_absolute_path() const
 std::string Native::ObjectGroup::Security::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-object-group:security" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-object-group:security";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13291,12 +13490,12 @@ Native::ObjectGroup::Security::SecurityGroup::SecurityGroup()
     :
     description{YType::str, "description"},
     group_object{YType::str, "group-object"}
-    	,
+        ,
     security_group(std::make_shared<Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_>())
 {
     security_group->parent = this;
 
-    yang_name = "security-group"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-group"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Security::SecurityGroup::~SecurityGroup()
@@ -13305,6 +13504,7 @@ Native::ObjectGroup::Security::SecurityGroup::~SecurityGroup()
 
 bool Native::ObjectGroup::Security::SecurityGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| group_object.is_set
 	|| (security_group !=  nullptr && security_group->has_data());
@@ -13402,7 +13602,7 @@ Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::SecurityGroup_()
     tag{YType::uint16, "tag"}
 {
 
-    yang_name = "security-group"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security-group"; yang_parent_name = "security-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::~SecurityGroup_()
@@ -13411,6 +13611,7 @@ Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::~SecurityGroup_()
 
 bool Native::ObjectGroup::Security::SecurityGroup::SecurityGroup_::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -13491,14 +13692,14 @@ Native::ObjectGroup::Service::Service()
     ospf{YType::empty, "ospf"},
     pcp{YType::empty, "pcp"},
     pim{YType::empty, "pim"}
-    	,
+        ,
     icmp(nullptr) // presence node
-	,tcp(nullptr) // presence node
-	,tcp_udp(nullptr) // presence node
-	,udp(nullptr) // presence node
+    , tcp(nullptr) // presence node
+    , tcp_udp(nullptr) // presence node
+    , udp(nullptr) // presence node
 {
 
-    yang_name = "service"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::ObjectGroup::Service::~Service()
@@ -13507,6 +13708,7 @@ Native::ObjectGroup::Service::~Service()
 
 bool Native::ObjectGroup::Service::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| description.is_set
 	|| group_object.is_set
@@ -13562,7 +13764,8 @@ std::string Native::ObjectGroup::Service::get_absolute_path() const
 std::string Native::ObjectGroup::Service::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-object-group:service" <<"[name='" <<name <<"']";
+    path_buffer << "Cisco-IOS-XE-object-group:service";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -13847,7 +14050,7 @@ Native::ObjectGroup::Service::Icmp::Icmp()
     unreachable{YType::empty, "unreachable"}
 {
 
-    yang_name = "icmp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::ObjectGroup::Service::Icmp::~Icmp()
@@ -13856,6 +14059,7 @@ Native::ObjectGroup::Service::Icmp::~Icmp()
 
 bool Native::ObjectGroup::Service::Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return port_number.is_set
 	|| alternate_address.is_set
 	|| conversion_error.is_set
@@ -14167,9 +14371,11 @@ bool Native::ObjectGroup::Service::Icmp::has_leaf_or_child_of_name(const std::st
 }
 
 Native::ObjectGroup::Service::Tcp::Tcp()
+    :
+    tcp_port_list(this, {"tcp_port"})
 {
 
-    yang_name = "tcp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::ObjectGroup::Service::Tcp::~Tcp()
@@ -14178,7 +14384,8 @@ Native::ObjectGroup::Service::Tcp::~Tcp()
 
 bool Native::ObjectGroup::Service::Tcp::has_data() const
 {
-    for (std::size_t index=0; index<tcp_port_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcp_port_list.len(); index++)
     {
         if(tcp_port_list[index]->has_data())
             return true;
@@ -14188,7 +14395,7 @@ bool Native::ObjectGroup::Service::Tcp::has_data() const
 
 bool Native::ObjectGroup::Service::Tcp::has_operation() const
 {
-    for (std::size_t index=0; index<tcp_port_list.size(); index++)
+    for (std::size_t index=0; index<tcp_port_list.len(); index++)
     {
         if(tcp_port_list[index]->has_operation())
             return true;
@@ -14218,7 +14425,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::Service::Tcp::get_child_by_name(con
     {
         auto c = std::make_shared<Native::ObjectGroup::Service::Tcp::TcpPortList>();
         c->parent = this;
-        tcp_port_list.push_back(c);
+        tcp_port_list.append(c);
         return c;
     }
 
@@ -14230,7 +14437,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Service::Tcp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tcp_port_list)
+    for (auto c : tcp_port_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14263,7 +14470,7 @@ Native::ObjectGroup::Service::Tcp::TcpPortList::TcpPortList()
     max_tcp_port{YType::str, "max-tcp-port"}
 {
 
-    yang_name = "tcp-port-list"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-port-list"; yang_parent_name = "tcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Service::Tcp::TcpPortList::~TcpPortList()
@@ -14272,6 +14479,7 @@ Native::ObjectGroup::Service::Tcp::TcpPortList::~TcpPortList()
 
 bool Native::ObjectGroup::Service::Tcp::TcpPortList::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp_port.is_set
 	|| operator_.is_set
 	|| max_tcp_port.is_set;
@@ -14288,7 +14496,8 @@ bool Native::ObjectGroup::Service::Tcp::TcpPortList::has_operation() const
 std::string Native::ObjectGroup::Service::Tcp::TcpPortList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tcp-port-list" <<"[tcp-port='" <<tcp_port <<"']";
+    path_buffer << "tcp-port-list";
+    ADD_KEY_TOKEN(tcp_port, "tcp-port");
     return path_buffer.str();
 }
 
@@ -14362,9 +14571,11 @@ bool Native::ObjectGroup::Service::Tcp::TcpPortList::has_leaf_or_child_of_name(c
 }
 
 Native::ObjectGroup::Service::TcpUdp::TcpUdp()
+    :
+    udp_port_list(this, {"udp_port"})
 {
 
-    yang_name = "tcp-udp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-udp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::ObjectGroup::Service::TcpUdp::~TcpUdp()
@@ -14373,7 +14584,8 @@ Native::ObjectGroup::Service::TcpUdp::~TcpUdp()
 
 bool Native::ObjectGroup::Service::TcpUdp::has_data() const
 {
-    for (std::size_t index=0; index<udp_port_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<udp_port_list.len(); index++)
     {
         if(udp_port_list[index]->has_data())
             return true;
@@ -14383,7 +14595,7 @@ bool Native::ObjectGroup::Service::TcpUdp::has_data() const
 
 bool Native::ObjectGroup::Service::TcpUdp::has_operation() const
 {
-    for (std::size_t index=0; index<udp_port_list.size(); index++)
+    for (std::size_t index=0; index<udp_port_list.len(); index++)
     {
         if(udp_port_list[index]->has_operation())
             return true;
@@ -14413,7 +14625,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::Service::TcpUdp::get_child_by_name(
     {
         auto c = std::make_shared<Native::ObjectGroup::Service::TcpUdp::UdpPortList>();
         c->parent = this;
-        udp_port_list.push_back(c);
+        udp_port_list.append(c);
         return c;
     }
 
@@ -14425,7 +14637,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Service::Tcp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : udp_port_list)
+    for (auto c : udp_port_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14458,7 +14670,7 @@ Native::ObjectGroup::Service::TcpUdp::UdpPortList::UdpPortList()
     max_udp_port{YType::str, "max-udp-port"}
 {
 
-    yang_name = "udp-port-list"; yang_parent_name = "tcp-udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-port-list"; yang_parent_name = "tcp-udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Service::TcpUdp::UdpPortList::~UdpPortList()
@@ -14467,6 +14679,7 @@ Native::ObjectGroup::Service::TcpUdp::UdpPortList::~UdpPortList()
 
 bool Native::ObjectGroup::Service::TcpUdp::UdpPortList::has_data() const
 {
+    if (is_presence_container) return true;
     return udp_port.is_set
 	|| operator_.is_set
 	|| max_udp_port.is_set;
@@ -14483,7 +14696,8 @@ bool Native::ObjectGroup::Service::TcpUdp::UdpPortList::has_operation() const
 std::string Native::ObjectGroup::Service::TcpUdp::UdpPortList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "udp-port-list" <<"[udp-port='" <<udp_port <<"']";
+    path_buffer << "udp-port-list";
+    ADD_KEY_TOKEN(udp_port, "udp-port");
     return path_buffer.str();
 }
 
@@ -14557,9 +14771,11 @@ bool Native::ObjectGroup::Service::TcpUdp::UdpPortList::has_leaf_or_child_of_nam
 }
 
 Native::ObjectGroup::Service::Udp::Udp()
+    :
+    udp_port_list(this, {"udp_port"})
 {
 
-    yang_name = "udp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::ObjectGroup::Service::Udp::~Udp()
@@ -14568,7 +14784,8 @@ Native::ObjectGroup::Service::Udp::~Udp()
 
 bool Native::ObjectGroup::Service::Udp::has_data() const
 {
-    for (std::size_t index=0; index<udp_port_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<udp_port_list.len(); index++)
     {
         if(udp_port_list[index]->has_data())
             return true;
@@ -14578,7 +14795,7 @@ bool Native::ObjectGroup::Service::Udp::has_data() const
 
 bool Native::ObjectGroup::Service::Udp::has_operation() const
 {
-    for (std::size_t index=0; index<udp_port_list.size(); index++)
+    for (std::size_t index=0; index<udp_port_list.len(); index++)
     {
         if(udp_port_list[index]->has_operation())
             return true;
@@ -14608,7 +14825,7 @@ std::shared_ptr<Entity> Native::ObjectGroup::Service::Udp::get_child_by_name(con
     {
         auto c = std::make_shared<Native::ObjectGroup::Service::Udp::UdpPortList>();
         c->parent = this;
-        udp_port_list.push_back(c);
+        udp_port_list.append(c);
         return c;
     }
 
@@ -14620,7 +14837,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::ObjectGroup::Service::Udp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : udp_port_list)
+    for (auto c : udp_port_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14653,7 +14870,7 @@ Native::ObjectGroup::Service::Udp::UdpPortList::UdpPortList()
     max_udp_port{YType::str, "max-udp-port"}
 {
 
-    yang_name = "udp-port-list"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "udp-port-list"; yang_parent_name = "udp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::ObjectGroup::Service::Udp::UdpPortList::~UdpPortList()
@@ -14662,6 +14879,7 @@ Native::ObjectGroup::Service::Udp::UdpPortList::~UdpPortList()
 
 bool Native::ObjectGroup::Service::Udp::UdpPortList::has_data() const
 {
+    if (is_presence_container) return true;
     return udp_port.is_set
 	|| operator_.is_set
 	|| max_udp_port.is_set;
@@ -14678,7 +14896,8 @@ bool Native::ObjectGroup::Service::Udp::UdpPortList::has_operation() const
 std::string Native::ObjectGroup::Service::Udp::UdpPortList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "udp-port-list" <<"[udp-port='" <<udp_port <<"']";
+    path_buffer << "udp-port-list";
+    ADD_KEY_TOKEN(udp_port, "udp-port");
     return path_buffer.str();
 }
 
@@ -14758,16 +14977,16 @@ Native::PseudowireClass::PseudowireClass()
     control_word{YType::empty, "Cisco-IOS-XE-l2vpn:control-word"},
     interworking{YType::enumeration, "Cisco-IOS-XE-l2vpn:interworking"},
     sequencing{YType::enumeration, "Cisco-IOS-XE-l2vpn:sequencing"}
-    	,
+        ,
     ip(std::make_shared<Native::PseudowireClass::Ip>())
-	,load_balance(std::make_shared<Native::PseudowireClass::LoadBalance>())
-	,monitor(std::make_shared<Native::PseudowireClass::Monitor>())
-	,preferred_path(std::make_shared<Native::PseudowireClass::PreferredPath>())
-	,protocol_mpls(std::make_shared<Native::PseudowireClass::ProtocolMpls>())
-	,protocol_l2tpv2(std::make_shared<Native::PseudowireClass::ProtocolL2Tpv2>())
-	,protocol_l2tpv3(std::make_shared<Native::PseudowireClass::ProtocolL2Tpv3>())
-	,status(nullptr) // presence node
-	,switching(std::make_shared<Native::PseudowireClass::Switching>())
+    , load_balance(std::make_shared<Native::PseudowireClass::LoadBalance>())
+    , monitor(std::make_shared<Native::PseudowireClass::Monitor>())
+    , preferred_path(std::make_shared<Native::PseudowireClass::PreferredPath>())
+    , protocol_mpls(std::make_shared<Native::PseudowireClass::ProtocolMpls>())
+    , protocol_l2tpv2(std::make_shared<Native::PseudowireClass::ProtocolL2tpv2>())
+    , protocol_l2tpv3(std::make_shared<Native::PseudowireClass::ProtocolL2tpv3>())
+    , status(nullptr) // presence node
+    , switching(std::make_shared<Native::PseudowireClass::Switching>())
 {
     ip->parent = this;
     load_balance->parent = this;
@@ -14778,7 +14997,7 @@ Native::PseudowireClass::PseudowireClass()
     protocol_l2tpv3->parent = this;
     switching->parent = this;
 
-    yang_name = "pseudowire-class"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowire-class"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::PseudowireClass::~PseudowireClass()
@@ -14787,6 +15006,7 @@ Native::PseudowireClass::~PseudowireClass()
 
 bool Native::PseudowireClass::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| encapsulation.is_set
 	|| control_word.is_set
@@ -14832,7 +15052,8 @@ std::string Native::PseudowireClass::get_absolute_path() const
 std::string Native::PseudowireClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pseudowire-class" <<"[name='" <<name <<"']";
+    path_buffer << "pseudowire-class";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -14901,7 +15122,7 @@ std::shared_ptr<Entity> Native::PseudowireClass::get_child_by_name(const std::st
     {
         if(protocol_l2tpv2 == nullptr)
         {
-            protocol_l2tpv2 = std::make_shared<Native::PseudowireClass::ProtocolL2Tpv2>();
+            protocol_l2tpv2 = std::make_shared<Native::PseudowireClass::ProtocolL2tpv2>();
         }
         return protocol_l2tpv2;
     }
@@ -14910,7 +15131,7 @@ std::shared_ptr<Entity> Native::PseudowireClass::get_child_by_name(const std::st
     {
         if(protocol_l2tpv3 == nullptr)
         {
-            protocol_l2tpv3 = std::make_shared<Native::PseudowireClass::ProtocolL2Tpv3>();
+            protocol_l2tpv3 = std::make_shared<Native::PseudowireClass::ProtocolL2tpv3>();
         }
         return protocol_l2tpv3;
     }
@@ -15057,17 +15278,17 @@ Native::PseudowireClass::Ip::Ip()
     :
     protocol{YType::enumeration, "protocol"},
     ttl{YType::uint8, "ttl"}
-    	,
+        ,
     dfbit(std::make_shared<Native::PseudowireClass::Ip::Dfbit>())
-	,local(std::make_shared<Native::PseudowireClass::Ip::Local>())
-	,pmtu(nullptr) // presence node
-	,tos(std::make_shared<Native::PseudowireClass::Ip::Tos>())
+    , local(std::make_shared<Native::PseudowireClass::Ip::Local>())
+    , pmtu(nullptr) // presence node
+    , tos(std::make_shared<Native::PseudowireClass::Ip::Tos>())
 {
     dfbit->parent = this;
     local->parent = this;
     tos->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::~Ip()
@@ -15076,6 +15297,7 @@ Native::PseudowireClass::Ip::~Ip()
 
 bool Native::PseudowireClass::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol.is_set
 	|| ttl.is_set
 	|| (dfbit !=  nullptr && dfbit->has_data())
@@ -15221,7 +15443,7 @@ Native::PseudowireClass::Ip::Dfbit::Dfbit()
     set{YType::empty, "set"}
 {
 
-    yang_name = "dfbit"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dfbit"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Dfbit::~Dfbit()
@@ -15230,6 +15452,7 @@ Native::PseudowireClass::Ip::Dfbit::~Dfbit()
 
 bool Native::PseudowireClass::Ip::Dfbit::has_data() const
 {
+    if (is_presence_container) return true;
     return set.is_set;
 }
 
@@ -15299,7 +15522,7 @@ Native::PseudowireClass::Ip::Local::Local()
 {
     interface->parent = this;
 
-    yang_name = "local"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Local::~Local()
@@ -15308,6 +15531,7 @@ Native::PseudowireClass::Ip::Local::~Local()
 
 bool Native::PseudowireClass::Ip::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface !=  nullptr && interface->has_data());
 }
 
@@ -15408,18 +15632,18 @@ Native::PseudowireClass::Ip::Local::Interface::Interface()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::PseudowireClass::Ip::Local::Interface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::PseudowireClass::Ip::Local::Interface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::PseudowireClass::Ip::Local::Interface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::PseudowireClass::Ip::Local::Interface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::PseudowireClass::Ip::Local::Interface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::PseudowireClass::Ip::Local::Interface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::PseudowireClass::Ip::Local::Interface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Local::Interface::~Interface()
@@ -15428,6 +15652,7 @@ Native::PseudowireClass::Ip::Local::Interface::~Interface()
 
 bool Native::PseudowireClass::Ip::Local::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -15963,7 +16188,7 @@ Native::PseudowireClass::Ip::Local::Interface::ATMSubinterface::ATMSubinterface(
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Local::Interface::ATMSubinterface::~ATMSubinterface()
@@ -15972,6 +16197,7 @@ Native::PseudowireClass::Ip::Local::Interface::ATMSubinterface::~ATMSubinterface
 
 bool Native::PseudowireClass::Ip::Local::Interface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -16040,7 +16266,7 @@ Native::PseudowireClass::Ip::Local::Interface::ATMACRsubinterface::ATMACRsubinte
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Local::Interface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -16049,6 +16275,7 @@ Native::PseudowireClass::Ip::Local::Interface::ATMACRsubinterface::~ATMACRsubint
 
 bool Native::PseudowireClass::Ip::Local::Interface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -16117,7 +16344,7 @@ Native::PseudowireClass::Ip::Local::Interface::LISPSubinterface::LISPSubinterfac
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Local::Interface::LISPSubinterface::~LISPSubinterface()
@@ -16126,6 +16353,7 @@ Native::PseudowireClass::Ip::Local::Interface::LISPSubinterface::~LISPSubinterfa
 
 bool Native::PseudowireClass::Ip::Local::Interface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -16194,7 +16422,7 @@ Native::PseudowireClass::Ip::Local::Interface::PortChannelSubinterface::PortChan
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Local::Interface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -16203,6 +16431,7 @@ Native::PseudowireClass::Ip::Local::Interface::PortChannelSubinterface::~PortCha
 
 bool Native::PseudowireClass::Ip::Local::Interface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -16271,7 +16500,7 @@ Native::PseudowireClass::Ip::Pmtu::Pmtu()
     max{YType::uint16, "max"}
 {
 
-    yang_name = "pmtu"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pmtu"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::PseudowireClass::Ip::Pmtu::~Pmtu()
@@ -16280,6 +16509,7 @@ Native::PseudowireClass::Ip::Pmtu::~Pmtu()
 
 bool Native::PseudowireClass::Ip::Pmtu::has_data() const
 {
+    if (is_presence_container) return true;
     return max.is_set;
 }
 
@@ -16349,7 +16579,7 @@ Native::PseudowireClass::Ip::Tos::Tos()
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "tos"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tos"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Ip::Tos::~Tos()
@@ -16358,6 +16588,7 @@ Native::PseudowireClass::Ip::Tos::~Tos()
 
 bool Native::PseudowireClass::Ip::Tos::has_data() const
 {
+    if (is_presence_container) return true;
     return reflect.is_set
 	|| value_.is_set;
 }
@@ -16439,7 +16670,7 @@ Native::PseudowireClass::LoadBalance::LoadBalance()
     flow(nullptr) // presence node
 {
 
-    yang_name = "load-balance"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load-balance"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::LoadBalance::~LoadBalance()
@@ -16448,6 +16679,7 @@ Native::PseudowireClass::LoadBalance::~LoadBalance()
 
 bool Native::PseudowireClass::LoadBalance::has_data() const
 {
+    if (is_presence_container) return true;
     return (flow !=  nullptr && flow->has_data());
 }
 
@@ -16519,7 +16751,7 @@ Native::PseudowireClass::LoadBalance::Flow::Flow()
     ethernet{YType::enumeration, "ethernet"}
 {
 
-    yang_name = "flow"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::PseudowireClass::LoadBalance::Flow::~Flow()
@@ -16528,6 +16760,7 @@ Native::PseudowireClass::LoadBalance::Flow::~Flow()
 
 bool Native::PseudowireClass::LoadBalance::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return ethernet.is_set;
 }
 
@@ -16597,7 +16830,7 @@ Native::PseudowireClass::Monitor::Monitor()
 {
     peer->parent = this;
 
-    yang_name = "monitor"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "monitor"; yang_parent_name = "pseudowire-class"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::~Monitor()
@@ -16606,6 +16839,7 @@ Native::PseudowireClass::Monitor::~Monitor()
 
 bool Native::PseudowireClass::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return (peer !=  nullptr && peer->has_data());
 }
 
@@ -16677,7 +16911,7 @@ Native::PseudowireClass::Monitor::Peer::Peer()
     bfd(nullptr) // presence node
 {
 
-    yang_name = "peer"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::PseudowireClass::Monitor::Peer::~Peer()
@@ -16686,6 +16920,7 @@ Native::PseudowireClass::Monitor::Peer::~Peer()
 
 bool Native::PseudowireClass::Monitor::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (bfd !=  nullptr && bfd->has_data());
 }
 

@@ -17,7 +17,7 @@ Config::Config()
 {
     global->parent = this;
 
-    yang_name = "config"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "config"; yang_parent_name = "Cisco-IOS-XR-config-cfgmgr-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Config::~Config()
@@ -26,6 +26,7 @@ Config::~Config()
 
 bool Config::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data());
 }
 
@@ -120,7 +121,7 @@ bool Config::has_leaf_or_child_of_name(const std::string & name) const
 Config::Global::Global()
 {
 
-    yang_name = "global"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Config::Global::~Global()
@@ -129,6 +130,7 @@ Config::Global::~Global()
 
 bool Config::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

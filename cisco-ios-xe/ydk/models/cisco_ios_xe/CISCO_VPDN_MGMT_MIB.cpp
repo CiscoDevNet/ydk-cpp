@@ -13,18 +13,18 @@ namespace CISCO_VPDN_MGMT_MIB {
 
 CISCOVPDNMGMTMIB::CISCOVPDNMGMTMIB()
     :
-    ciscovpdnmgmtmibnotifs(std::make_shared<CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs>())
-	,cvpdnsysteminfo(std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsysteminfo>())
-	,cvpdnmultilinkinfo(std::make_shared<CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo>())
-	,cvpdnsystemtable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsystemtable>())
-	,cvpdntunneltable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunneltable>())
-	,cvpdntunnelattrtable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunnelattrtable>())
-	,cvpdntunnelsessiontable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable>())
-	,cvpdnsessionattrtable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsessionattrtable>())
-	,cvpdnusertofailhistinfotable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable>())
-	,cvpdntemplatetable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdntemplatetable>())
-	,cvpdnbundletable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdnbundletable>())
-	,cvpdnbundlechildtable(std::make_shared<CISCOVPDNMGMTMIB::Cvpdnbundlechildtable>())
+    ciscovpdnmgmtmibnotifs(std::make_shared<CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs>())
+    , cvpdnsysteminfo(std::make_shared<CISCOVPDNMGMTMIB::CvpdnSystemInfo>())
+    , cvpdnmultilinkinfo(std::make_shared<CISCOVPDNMGMTMIB::CvpdnMultilinkInfo>())
+    , cvpdnsystemtable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnSystemTable>())
+    , cvpdntunneltable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelTable>())
+    , cvpdntunnelattrtable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable>())
+    , cvpdntunnelsessiontable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable>())
+    , cvpdnsessionattrtable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnSessionAttrTable>())
+    , cvpdnusertofailhistinfotable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable>())
+    , cvpdntemplatetable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnTemplateTable>())
+    , cvpdnbundletable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleTable>())
+    , cvpdnbundlechildtable(std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleChildTable>())
 {
     ciscovpdnmgmtmibnotifs->parent = this;
     cvpdnsysteminfo->parent = this;
@@ -39,7 +39,7 @@ CISCOVPDNMGMTMIB::CISCOVPDNMGMTMIB()
     cvpdnbundletable->parent = this;
     cvpdnbundlechildtable->parent = this;
 
-    yang_name = "CISCO-VPDN-MGMT-MIB"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-VPDN-MGMT-MIB"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOVPDNMGMTMIB::~CISCOVPDNMGMTMIB()
@@ -48,6 +48,7 @@ CISCOVPDNMGMTMIB::~CISCOVPDNMGMTMIB()
 
 bool CISCOVPDNMGMTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscovpdnmgmtmibnotifs !=  nullptr && ciscovpdnmgmtmibnotifs->has_data())
 	|| (cvpdnsysteminfo !=  nullptr && cvpdnsysteminfo->has_data())
 	|| (cvpdnmultilinkinfo !=  nullptr && cvpdnmultilinkinfo->has_data())
@@ -101,7 +102,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(ciscovpdnmgmtmibnotifs == nullptr)
         {
-            ciscovpdnmgmtmibnotifs = std::make_shared<CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs>();
+            ciscovpdnmgmtmibnotifs = std::make_shared<CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs>();
         }
         return ciscovpdnmgmtmibnotifs;
     }
@@ -110,7 +111,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdnsysteminfo == nullptr)
         {
-            cvpdnsysteminfo = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsysteminfo>();
+            cvpdnsysteminfo = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSystemInfo>();
         }
         return cvpdnsysteminfo;
     }
@@ -119,7 +120,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdnmultilinkinfo == nullptr)
         {
-            cvpdnmultilinkinfo = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo>();
+            cvpdnmultilinkinfo = std::make_shared<CISCOVPDNMGMTMIB::CvpdnMultilinkInfo>();
         }
         return cvpdnmultilinkinfo;
     }
@@ -128,7 +129,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdnsystemtable == nullptr)
         {
-            cvpdnsystemtable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsystemtable>();
+            cvpdnsystemtable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSystemTable>();
         }
         return cvpdnsystemtable;
     }
@@ -137,7 +138,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdntunneltable == nullptr)
         {
-            cvpdntunneltable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunneltable>();
+            cvpdntunneltable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelTable>();
         }
         return cvpdntunneltable;
     }
@@ -146,7 +147,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdntunnelattrtable == nullptr)
         {
-            cvpdntunnelattrtable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunnelattrtable>();
+            cvpdntunnelattrtable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable>();
         }
         return cvpdntunnelattrtable;
     }
@@ -155,7 +156,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdntunnelsessiontable == nullptr)
         {
-            cvpdntunnelsessiontable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable>();
+            cvpdntunnelsessiontable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable>();
         }
         return cvpdntunnelsessiontable;
     }
@@ -164,7 +165,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdnsessionattrtable == nullptr)
         {
-            cvpdnsessionattrtable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsessionattrtable>();
+            cvpdnsessionattrtable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSessionAttrTable>();
         }
         return cvpdnsessionattrtable;
     }
@@ -173,7 +174,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdnusertofailhistinfotable == nullptr)
         {
-            cvpdnusertofailhistinfotable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable>();
+            cvpdnusertofailhistinfotable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable>();
         }
         return cvpdnusertofailhistinfotable;
     }
@@ -182,7 +183,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdntemplatetable == nullptr)
         {
-            cvpdntemplatetable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntemplatetable>();
+            cvpdntemplatetable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTemplateTable>();
         }
         return cvpdntemplatetable;
     }
@@ -191,7 +192,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdnbundletable == nullptr)
         {
-            cvpdnbundletable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnbundletable>();
+            cvpdnbundletable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleTable>();
         }
         return cvpdnbundletable;
     }
@@ -200,7 +201,7 @@ std::shared_ptr<Entity> CISCOVPDNMGMTMIB::get_child_by_name(const std::string & 
     {
         if(cvpdnbundlechildtable == nullptr)
         {
-            cvpdnbundlechildtable = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnbundlechildtable>();
+            cvpdnbundlechildtable = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleChildTable>();
         }
         return cvpdnbundlechildtable;
     }
@@ -315,47 +316,48 @@ bool CISCOVPDNMGMTMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::Ciscovpdnmgmtmibnotifs()
+CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CiscoVpdnMgmtMIBNotifs()
     :
     cvpdnnotifsessionid{YType::int32, "cvpdnNotifSessionID"},
     cvpdnnotifsessionevent{YType::enumeration, "cvpdnNotifSessionEvent"}
 {
 
-    yang_name = "ciscoVpdnMgmtMIBNotifs"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoVpdnMgmtMIBNotifs"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::~Ciscovpdnmgmtmibnotifs()
+CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::~CiscoVpdnMgmtMIBNotifs()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::has_data() const
+bool CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnnotifsessionid.is_set
 	|| cvpdnnotifsessionevent.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::has_operation() const
+bool CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnnotifsessionid.yfilter)
 	|| ydk::is_set(cvpdnnotifsessionevent.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoVpdnMgmtMIBNotifs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -366,19 +368,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Ciscovpdnmgmtmi
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnNotifSessionID")
     {
@@ -394,7 +396,7 @@ void CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::set_value(const std::string & val
     }
 }
 
-void CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnNotifSessionID")
     {
@@ -406,14 +408,14 @@ void CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::set_filter(const std::string & va
     }
 }
 
-bool CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnNotifSessionID" || name == "cvpdnNotifSessionEvent")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsysteminfo()
+CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemInfo()
     :
     cvpdntunneltotal{YType::uint32, "cvpdnTunnelTotal"},
     cvpdnsessiontotal{YType::uint32, "cvpdnSessionTotal"},
@@ -422,15 +424,16 @@ CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsysteminfo()
     cvpdnsystemclearsessions{YType::enumeration, "cvpdnSystemClearSessions"}
 {
 
-    yang_name = "cvpdnSystemInfo"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnSystemInfo"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsysteminfo::~Cvpdnsysteminfo()
+CISCOVPDNMGMTMIB::CvpdnSystemInfo::~CvpdnSystemInfo()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsysteminfo::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnSystemInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdntunneltotal.is_set
 	|| cvpdnsessiontotal.is_set
 	|| cvpdndenieduserstotal.is_set
@@ -438,7 +441,7 @@ bool CISCOVPDNMGMTMIB::Cvpdnsysteminfo::has_data() const
 	|| cvpdnsystemclearsessions.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsysteminfo::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnSystemInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdntunneltotal.yfilter)
@@ -448,21 +451,21 @@ bool CISCOVPDNMGMTMIB::Cvpdnsysteminfo::has_operation() const
 	|| ydk::is_set(cvpdnsystemclearsessions.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsysteminfo::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsysteminfo::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnSystemInfo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsysteminfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -476,19 +479,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsysteminfo
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnsysteminfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnsysteminfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSystemInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsysteminfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnSystemInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnTunnelTotal")
     {
@@ -522,7 +525,7 @@ void CISCOVPDNMGMTMIB::Cvpdnsysteminfo::set_value(const std::string & value_path
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsysteminfo::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnSystemInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnTunnelTotal")
     {
@@ -546,14 +549,14 @@ void CISCOVPDNMGMTMIB::Cvpdnsysteminfo::set_filter(const std::string & value_pat
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsysteminfo::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnSystemInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTunnelTotal" || name == "cvpdnSessionTotal" || name == "cvpdnDeniedUsersTotal" || name == "cvpdnSystemNotifSessionEnabled" || name == "cvpdnSystemClearSessions")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::Cvpdnmultilinkinfo()
+CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::CvpdnMultilinkInfo()
     :
     cvpdnbundleswithonelink{YType::uint32, "cvpdnBundlesWithOneLink"},
     cvpdnbundleswithtwolinks{YType::uint32, "cvpdnBundlesWithTwoLinks"},
@@ -561,22 +564,23 @@ CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::Cvpdnmultilinkinfo()
     cvpdnbundlelastchanged{YType::uint32, "cvpdnBundleLastChanged"}
 {
 
-    yang_name = "cvpdnMultilinkInfo"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnMultilinkInfo"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::~Cvpdnmultilinkinfo()
+CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::~CvpdnMultilinkInfo()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnbundleswithonelink.is_set
 	|| cvpdnbundleswithtwolinks.is_set
 	|| cvpdnbundleswithmorethantwolinks.is_set
 	|| cvpdnbundlelastchanged.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnbundleswithonelink.yfilter)
@@ -585,21 +589,21 @@ bool CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::has_operation() const
 	|| ydk::is_set(cvpdnbundlelastchanged.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnMultilinkInfo";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -612,19 +616,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnmultilinki
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnBundlesWithOneLink")
     {
@@ -652,7 +656,7 @@ void CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::set_value(const std::string & value_p
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnBundlesWithOneLink")
     {
@@ -672,26 +676,29 @@ void CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::set_filter(const std::string & value_
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnMultilinkInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnBundlesWithOneLink" || name == "cvpdnBundlesWithTwoLinks" || name == "cvpdnBundlesWithMoreThanTwoLinks" || name == "cvpdnBundleLastChanged")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystemtable()
+CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemTable()
+    :
+    cvpdnsystementry(this, {"cvpdnsystemtunneltype"})
 {
 
-    yang_name = "cvpdnSystemTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnSystemTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsystemtable::~Cvpdnsystemtable()
+CISCOVPDNMGMTMIB::CvpdnSystemTable::~CvpdnSystemTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnSystemTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnsystementry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdnsystementry.len(); index++)
     {
         if(cvpdnsystementry[index]->has_data())
             return true;
@@ -699,9 +706,9 @@ bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnSystemTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnsystementry.size(); index++)
+    for (std::size_t index=0; index<cvpdnsystementry.len(); index++)
     {
         if(cvpdnsystementry[index]->has_operation())
             return true;
@@ -709,21 +716,21 @@ bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsystemtable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSystemTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsystemtable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSystemTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnSystemTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsystemtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSystemTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -732,25 +739,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsystemtabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnsystemtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSystemTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnSystemEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry>();
         c->parent = this;
-        cvpdnsystementry.push_back(c);
+        cvpdnsystementry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnsystemtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSystemTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdnsystementry)
+    for (auto c : cvpdnsystementry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -761,22 +768,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnsystemtabl
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsystemtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnSystemTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsystemtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnSystemTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnSystemTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnSystemEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::Cvpdnsystementry()
+CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::CvpdnSystemEntry()
     :
     cvpdnsystemtunneltype{YType::enumeration, "cvpdnSystemTunnelType"},
     cvpdnsystemtunneltotal{YType::uint32, "cvpdnSystemTunnelTotal"},
@@ -787,15 +794,16 @@ CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::Cvpdnsystementry()
     cvpdnsystemfailedconnreq{YType::uint32, "cvpdnSystemFailedConnReq"}
 {
 
-    yang_name = "cvpdnSystemEntry"; yang_parent_name = "cvpdnSystemTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnSystemEntry"; yang_parent_name = "cvpdnSystemTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::~Cvpdnsystementry()
+CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::~CvpdnSystemEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnsystemtunneltype.is_set
 	|| cvpdnsystemtunneltotal.is_set
 	|| cvpdnsystemsessiontotal.is_set
@@ -805,7 +813,7 @@ bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::has_data() const
 	|| cvpdnsystemfailedconnreq.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnsystemtunneltype.yfilter)
@@ -817,21 +825,22 @@ bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::has_operation() const
 	|| ydk::is_set(cvpdnsystemfailedconnreq.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnSystemTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnSystemEntry" <<"[cvpdnSystemTunnelType='" <<cvpdnsystemtunneltype <<"']";
+    path_buffer << "cvpdnSystemEntry";
+    ADD_KEY_TOKEN(cvpdnsystemtunneltype, "cvpdnSystemTunnelType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -847,19 +856,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsystemtabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnSystemTunnelType")
     {
@@ -905,7 +914,7 @@ void CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::set_value(const std::
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnSystemTunnelType")
     {
@@ -937,26 +946,29 @@ void CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::set_filter(const std:
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnSystemTunnelType" || name == "cvpdnSystemTunnelTotal" || name == "cvpdnSystemSessionTotal" || name == "cvpdnSystemDeniedUsersTotal" || name == "cvpdnSystemInitialConnReq" || name == "cvpdnSystemSuccessConnReq" || name == "cvpdnSystemFailedConnReq")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunneltable()
+CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelTable()
+    :
+    cvpdntunnelentry(this, {"cvpdntunneltunnelid"})
 {
 
-    yang_name = "cvpdnTunnelTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTunnelTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunneltable::~Cvpdntunneltable()
+CISCOVPDNMGMTMIB::CvpdnTunnelTable::~CvpdnTunnelTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunneltable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntunnelentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdntunnelentry.len(); index++)
     {
         if(cvpdntunnelentry[index]->has_data())
             return true;
@@ -964,9 +976,9 @@ bool CISCOVPDNMGMTMIB::Cvpdntunneltable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunneltable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntunnelentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelentry.len(); index++)
     {
         if(cvpdntunnelentry[index]->has_operation())
             return true;
@@ -974,21 +986,21 @@ bool CISCOVPDNMGMTMIB::Cvpdntunneltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunneltable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunneltable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnTunnelTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunneltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -997,25 +1009,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunneltabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntunneltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTunnelEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry>();
         c->parent = this;
-        cvpdntunnelentry.push_back(c);
+        cvpdntunnelentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunneltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdntunnelentry)
+    for (auto c : cvpdntunnelentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1026,22 +1038,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunneltabl
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunneltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTunnelTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunneltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTunnelTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunneltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTunnelEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelentry()
+CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelEntry()
     :
     cvpdntunneltunnelid{YType::uint32, "cvpdnTunnelTunnelId"},
     cvpdntunnelremotetunnelid{YType::uint32, "cvpdnTunnelRemoteTunnelId"},
@@ -1060,15 +1072,16 @@ CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelentry()
     cvpdntunnelremoteipaddress{YType::str, "cvpdnTunnelRemoteIpAddress"}
 {
 
-    yang_name = "cvpdnTunnelEntry"; yang_parent_name = "cvpdnTunnelTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTunnelEntry"; yang_parent_name = "cvpdnTunnelTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::~Cvpdntunnelentry()
+CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::~CvpdnTunnelEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdntunneltunnelid.is_set
 	|| cvpdntunnelremotetunnelid.is_set
 	|| cvpdntunnellocalname.is_set
@@ -1086,7 +1099,7 @@ bool CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::has_data() const
 	|| cvpdntunnelremoteipaddress.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdntunneltunnelid.yfilter)
@@ -1106,21 +1119,22 @@ bool CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::has_operation() const
 	|| ydk::is_set(cvpdntunnelremoteipaddress.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnTunnelTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnTunnelEntry" <<"[cvpdnTunnelTunnelId='" <<cvpdntunneltunnelid <<"']";
+    path_buffer << "cvpdnTunnelEntry";
+    ADD_KEY_TOKEN(cvpdntunneltunnelid, "cvpdnTunnelTunnelId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1144,19 +1158,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunneltabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnTunnelTunnelId")
     {
@@ -1250,7 +1264,7 @@ void CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::set_value(const std::
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnTunnelTunnelId")
     {
@@ -1314,26 +1328,29 @@ void CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::set_filter(const std:
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTunnelTunnelId" || name == "cvpdnTunnelRemoteTunnelId" || name == "cvpdnTunnelLocalName" || name == "cvpdnTunnelRemoteName" || name == "cvpdnTunnelRemoteEndpointName" || name == "cvpdnTunnelLocalInitConnection" || name == "cvpdnTunnelOrigCause" || name == "cvpdnTunnelState" || name == "cvpdnTunnelActiveSessions" || name == "cvpdnTunnelDeniedUsers" || name == "cvpdnTunnelSoftshut" || name == "cvpdnTunnelNetworkServiceType" || name == "cvpdnTunnelLocalIpAddress" || name == "cvpdnTunnelSourceIpAddress" || name == "cvpdnTunnelRemoteIpAddress")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrtable()
+CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrTable()
+    :
+    cvpdntunnelattrentry(this, {"cvpdnsystemtunneltype", "cvpdntunnelattrtunnelid"})
 {
 
-    yang_name = "cvpdnTunnelAttrTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTunnelAttrTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::~Cvpdntunnelattrtable()
+CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::~CvpdnTunnelAttrTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntunnelattrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdntunnelattrentry.len(); index++)
     {
         if(cvpdntunnelattrentry[index]->has_data())
             return true;
@@ -1341,9 +1358,9 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntunnelattrentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelattrentry.len(); index++)
     {
         if(cvpdntunnelattrentry[index]->has_operation())
             return true;
@@ -1351,21 +1368,21 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnTunnelAttrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1374,25 +1391,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelattr
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTunnelAttrEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry>();
         c->parent = this;
-        cvpdntunnelattrentry.push_back(c);
+        cvpdntunnelattrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdntunnelattrentry)
+    for (auto c : cvpdntunnelattrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1403,22 +1420,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunnelattr
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTunnelAttrEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrentry()
+CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrEntry()
     :
     cvpdnsystemtunneltype{YType::enumeration, "cvpdnSystemTunnelType"},
     cvpdntunnelattrtunnelid{YType::int32, "cvpdnTunnelAttrTunnelId"},
@@ -1444,15 +1461,16 @@ CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrent
     cvpdntunnelattrremoteinetaddress{YType::str, "cvpdnTunnelAttrRemoteInetAddress"}
 {
 
-    yang_name = "cvpdnTunnelAttrEntry"; yang_parent_name = "cvpdnTunnelAttrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTunnelAttrEntry"; yang_parent_name = "cvpdnTunnelAttrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::~Cvpdntunnelattrentry()
+CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::~CvpdnTunnelAttrEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnsystemtunneltype.is_set
 	|| cvpdntunnelattrtunnelid.is_set
 	|| cvpdntunnelattrremotetunnelid.is_set
@@ -1477,7 +1495,7 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::has_data() co
 	|| cvpdntunnelattrremoteinetaddress.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnsystemtunneltype.yfilter)
@@ -1504,21 +1522,23 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::has_operation
 	|| ydk::is_set(cvpdntunnelattrremoteinetaddress.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnTunnelAttrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnTunnelAttrEntry" <<"[cvpdnSystemTunnelType='" <<cvpdnsystemtunneltype <<"']" <<"[cvpdnTunnelAttrTunnelId='" <<cvpdntunnelattrtunnelid <<"']";
+    path_buffer << "cvpdnTunnelAttrEntry";
+    ADD_KEY_TOKEN(cvpdnsystemtunneltype, "cvpdnSystemTunnelType");
+    ADD_KEY_TOKEN(cvpdntunnelattrtunnelid, "cvpdnTunnelAttrTunnelId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1549,19 +1569,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelattr
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnSystemTunnelType")
     {
@@ -1697,7 +1717,7 @@ void CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::set_value(con
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnSystemTunnelType")
     {
@@ -1789,26 +1809,29 @@ void CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::set_filter(co
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnSystemTunnelType" || name == "cvpdnTunnelAttrTunnelId" || name == "cvpdnTunnelAttrRemoteTunnelId" || name == "cvpdnTunnelAttrLocalName" || name == "cvpdnTunnelAttrRemoteName" || name == "cvpdnTunnelAttrRemoteEndpointName" || name == "cvpdnTunnelAttrLocalInitConnection" || name == "cvpdnTunnelAttrOrigCause" || name == "cvpdnTunnelAttrState" || name == "cvpdnTunnelAttrActiveSessions" || name == "cvpdnTunnelAttrDeniedUsers" || name == "cvpdnTunnelAttrSoftshut" || name == "cvpdnTunnelAttrNetworkServiceType" || name == "cvpdnTunnelAttrLocalIpAddress" || name == "cvpdnTunnelAttrSourceIpAddress" || name == "cvpdnTunnelAttrRemoteIpAddress" || name == "cvpdnTunnelAttrLocalInetAddressType" || name == "cvpdnTunnelAttrLocalInetAddress" || name == "cvpdnTunnelAttrSourceInetAddressType" || name == "cvpdnTunnelAttrSourceInetAddress" || name == "cvpdnTunnelAttrRemoteInetAddressType" || name == "cvpdnTunnelAttrRemoteInetAddress")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessiontable()
+CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionTable()
+    :
+    cvpdntunnelsessionentry(this, {"cvpdntunneltunnelid", "cvpdntunnelsessionid"})
 {
 
-    yang_name = "cvpdnTunnelSessionTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTunnelSessionTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::~Cvpdntunnelsessiontable()
+CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::~CvpdnTunnelSessionTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntunnelsessionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdntunnelsessionentry.len(); index++)
     {
         if(cvpdntunnelsessionentry[index]->has_data())
             return true;
@@ -1816,9 +1839,9 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntunnelsessionentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntunnelsessionentry.len(); index++)
     {
         if(cvpdntunnelsessionentry[index]->has_operation())
             return true;
@@ -1826,21 +1849,21 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnTunnelSessionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1849,25 +1872,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelsess
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTunnelSessionEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry>();
         c->parent = this;
-        cvpdntunnelsessionentry.push_back(c);
+        cvpdntunnelsessionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdntunnelsessionentry)
+    for (auto c : cvpdntunnelsessionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1878,22 +1901,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunnelsess
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTunnelSessionEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessionentry()
+CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionEntry()
     :
     cvpdntunneltunnelid{YType::str, "cvpdnTunnelTunnelId"},
     cvpdntunnelsessionid{YType::uint32, "cvpdnTunnelSessionId"},
@@ -1917,15 +1940,16 @@ CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnels
     cvpdntunnelsessionmodemcallstartindex{YType::uint32, "cvpdnTunnelSessionModemCallStartIndex"}
 {
 
-    yang_name = "cvpdnTunnelSessionEntry"; yang_parent_name = "cvpdnTunnelSessionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTunnelSessionEntry"; yang_parent_name = "cvpdnTunnelSessionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::~Cvpdntunnelsessionentry()
+CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::~CvpdnTunnelSessionEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdntunneltunnelid.is_set
 	|| cvpdntunnelsessionid.is_set
 	|| cvpdntunnelsessionusername.is_set
@@ -1948,7 +1972,7 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::has_dat
 	|| cvpdntunnelsessionmodemcallstartindex.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdntunneltunnelid.yfilter)
@@ -1973,21 +1997,23 @@ bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::has_ope
 	|| ydk::is_set(cvpdntunnelsessionmodemcallstartindex.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnTunnelSessionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnTunnelSessionEntry" <<"[cvpdnTunnelTunnelId='" <<cvpdntunneltunnelid <<"']" <<"[cvpdnTunnelSessionId='" <<cvpdntunnelsessionid <<"']";
+    path_buffer << "cvpdnTunnelSessionEntry";
+    ADD_KEY_TOKEN(cvpdntunneltunnelid, "cvpdnTunnelTunnelId");
+    ADD_KEY_TOKEN(cvpdntunnelsessionid, "cvpdnTunnelSessionId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2016,19 +2042,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntunnelsess
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnTunnelTunnelId")
     {
@@ -2152,7 +2178,7 @@ void CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::set_val
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnTunnelTunnelId")
     {
@@ -2236,26 +2262,29 @@ void CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::set_fil
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTunnelTunnelId" || name == "cvpdnTunnelSessionId" || name == "cvpdnTunnelSessionUserName" || name == "cvpdnTunnelSessionState" || name == "cvpdnTunnelSessionCallDuration" || name == "cvpdnTunnelSessionPacketsOut" || name == "cvpdnTunnelSessionBytesOut" || name == "cvpdnTunnelSessionPacketsIn" || name == "cvpdnTunnelSessionBytesIn" || name == "cvpdnTunnelSessionDeviceType" || name == "cvpdnTunnelSessionDeviceCallerId" || name == "cvpdnTunnelSessionDevicePhyId" || name == "cvpdnTunnelSessionMultilink" || name == "cvpdnTunnelSessionModemSlotIndex" || name == "cvpdnTunnelSessionModemPortIndex" || name == "cvpdnTunnelSessionDS1SlotIndex" || name == "cvpdnTunnelSessionDS1PortIndex" || name == "cvpdnTunnelSessionDS1ChannelIndex" || name == "cvpdnTunnelSessionModemCallStartTime" || name == "cvpdnTunnelSessionModemCallStartIndex")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrtable()
+CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrTable()
+    :
+    cvpdnsessionattrentry(this, {"cvpdnsystemtunneltype", "cvpdntunnelattrtunnelid", "cvpdnsessionattrsessionid"})
 {
 
-    yang_name = "cvpdnSessionAttrTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnSessionAttrTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::~Cvpdnsessionattrtable()
+CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::~CvpdnSessionAttrTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnsessionattrentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdnsessionattrentry.len(); index++)
     {
         if(cvpdnsessionattrentry[index]->has_data())
             return true;
@@ -2263,9 +2292,9 @@ bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnsessionattrentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnsessionattrentry.len(); index++)
     {
         if(cvpdnsessionattrentry[index]->has_operation())
             return true;
@@ -2273,21 +2302,21 @@ bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnSessionAttrTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2296,25 +2325,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsessionatt
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnSessionAttrEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry>();
         c->parent = this;
-        cvpdnsessionattrentry.push_back(c);
+        cvpdnsessionattrentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdnsessionattrentry)
+    for (auto c : cvpdnsessionattrentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2325,22 +2354,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnsessionatt
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnSessionAttrEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrentry()
+CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrEntry()
     :
     cvpdnsystemtunneltype{YType::enumeration, "cvpdnSystemTunnelType"},
     cvpdntunnelattrtunnelid{YType::str, "cvpdnTunnelAttrTunnelId"},
@@ -2370,15 +2399,16 @@ CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattr
     cvpdnsessionattrmultilinkifindex{YType::int32, "cvpdnSessionAttrMultilinkIfIndex"}
 {
 
-    yang_name = "cvpdnSessionAttrEntry"; yang_parent_name = "cvpdnSessionAttrTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnSessionAttrEntry"; yang_parent_name = "cvpdnSessionAttrTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::~Cvpdnsessionattrentry()
+CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::~CvpdnSessionAttrEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnsystemtunneltype.is_set
 	|| cvpdntunnelattrtunnelid.is_set
 	|| cvpdnsessionattrsessionid.is_set
@@ -2407,7 +2437,7 @@ bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::has_data() 
 	|| cvpdnsessionattrmultilinkifindex.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnsystemtunneltype.yfilter)
@@ -2438,21 +2468,24 @@ bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::has_operati
 	|| ydk::is_set(cvpdnsessionattrmultilinkifindex.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnSessionAttrTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnSessionAttrEntry" <<"[cvpdnSystemTunnelType='" <<cvpdnsystemtunneltype <<"']" <<"[cvpdnTunnelAttrTunnelId='" <<cvpdntunnelattrtunnelid <<"']" <<"[cvpdnSessionAttrSessionId='" <<cvpdnsessionattrsessionid <<"']";
+    path_buffer << "cvpdnSessionAttrEntry";
+    ADD_KEY_TOKEN(cvpdnsystemtunneltype, "cvpdnSystemTunnelType");
+    ADD_KEY_TOKEN(cvpdntunnelattrtunnelid, "cvpdnTunnelAttrTunnelId");
+    ADD_KEY_TOKEN(cvpdnsessionattrsessionid, "cvpdnSessionAttrSessionId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2487,19 +2520,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnsessionatt
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnSystemTunnelType")
     {
@@ -2659,7 +2692,7 @@ void CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::set_value(c
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnSystemTunnelType")
     {
@@ -2767,26 +2800,29 @@ void CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::set_filter(
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnSystemTunnelType" || name == "cvpdnTunnelAttrTunnelId" || name == "cvpdnSessionAttrSessionId" || name == "cvpdnSessionAttrUserName" || name == "cvpdnSessionAttrState" || name == "cvpdnSessionAttrCallDuration" || name == "cvpdnSessionAttrPacketsOut" || name == "cvpdnSessionAttrBytesOut" || name == "cvpdnSessionAttrPacketsIn" || name == "cvpdnSessionAttrBytesIn" || name == "cvpdnSessionAttrDeviceType" || name == "cvpdnSessionAttrDeviceCallerId" || name == "cvpdnSessionAttrDevicePhyId" || name == "cvpdnSessionAttrMultilink" || name == "cvpdnSessionAttrModemSlotIndex" || name == "cvpdnSessionAttrModemPortIndex" || name == "cvpdnSessionAttrDS1SlotIndex" || name == "cvpdnSessionAttrDS1PortIndex" || name == "cvpdnSessionAttrDS1ChannelIndex" || name == "cvpdnSessionAttrModemCallStartTime" || name == "cvpdnSessionAttrModemCallStartIndex" || name == "cvpdnSessionAttrVirtualCircuitID" || name == "cvpdnSessionAttrSentPktsDropped" || name == "cvpdnSessionAttrRecvPktsDropped" || name == "cvpdnSessionAttrMultilinkBundle" || name == "cvpdnSessionAttrMultilinkIfIndex")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfotable()
+CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoTable()
+    :
+    cvpdnusertofailhistinfoentry(this, {"cvpdnunametofailhistuname", "cvpdnunametofailhisttunnelid"})
 {
 
-    yang_name = "cvpdnUserToFailHistInfoTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnUserToFailHistInfoTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::~Cvpdnusertofailhistinfotable()
+CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::~CvpdnUserToFailHistInfoTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry.len(); index++)
     {
         if(cvpdnusertofailhistinfoentry[index]->has_data())
             return true;
@@ -2794,9 +2830,9 @@ bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnusertofailhistinfoentry.len(); index++)
     {
         if(cvpdnusertofailhistinfoentry[index]->has_operation())
             return true;
@@ -2804,21 +2840,21 @@ bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnUserToFailHistInfoTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2827,25 +2863,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnusertofail
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnUserToFailHistInfoEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry>();
         c->parent = this;
-        cvpdnusertofailhistinfoentry.push_back(c);
+        cvpdnusertofailhistinfoentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdnusertofailhistinfoentry)
+    for (auto c : cvpdnusertofailhistinfoentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2856,22 +2892,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnusertofail
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnUserToFailHistInfoEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::Cvpdnusertofailhistinfoentry()
+CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::CvpdnUserToFailHistInfoEntry()
     :
     cvpdnunametofailhistuname{YType::str, "cvpdnUnameToFailHistUname"},
     cvpdnunametofailhisttunnelid{YType::uint32, "cvpdnUnameToFailHistTunnelId"},
@@ -2891,15 +2927,16 @@ CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::Cv
     cvpdnunametofailhistdestinetaddr{YType::str, "cvpdnUnameToFailHistDestInetAddr"}
 {
 
-    yang_name = "cvpdnUserToFailHistInfoEntry"; yang_parent_name = "cvpdnUserToFailHistInfoTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnUserToFailHistInfoEntry"; yang_parent_name = "cvpdnUserToFailHistInfoTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::~Cvpdnusertofailhistinfoentry()
+CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::~CvpdnUserToFailHistInfoEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnunametofailhistuname.is_set
 	|| cvpdnunametofailhisttunnelid.is_set
 	|| cvpdnunametofailhistuserid.is_set
@@ -2918,7 +2955,7 @@ bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentr
 	|| cvpdnunametofailhistdestinetaddr.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnunametofailhistuname.yfilter)
@@ -2939,21 +2976,23 @@ bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentr
 	|| ydk::is_set(cvpdnunametofailhistdestinetaddr.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnUserToFailHistInfoTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnUserToFailHistInfoEntry" <<"[cvpdnUnameToFailHistUname='" <<cvpdnunametofailhistuname <<"']" <<"[cvpdnUnameToFailHistTunnelId='" <<cvpdnunametofailhisttunnelid <<"']";
+    path_buffer << "cvpdnUserToFailHistInfoEntry";
+    ADD_KEY_TOKEN(cvpdnunametofailhistuname, "cvpdnUnameToFailHistUname");
+    ADD_KEY_TOKEN(cvpdnunametofailhisttunnelid, "cvpdnUnameToFailHistTunnelId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2978,19 +3017,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnusertofail
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnUnameToFailHistUname")
     {
@@ -3090,7 +3129,7 @@ void CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentr
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnUnameToFailHistUname")
     {
@@ -3158,26 +3197,29 @@ void CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentr
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnUnameToFailHistUname" || name == "cvpdnUnameToFailHistTunnelId" || name == "cvpdnUnameToFailHistUserId" || name == "cvpdnUnameToFailHistLocalInitConn" || name == "cvpdnUnameToFailHistLocalName" || name == "cvpdnUnameToFailHistRemoteName" || name == "cvpdnUnameToFailHistSourceIp" || name == "cvpdnUnameToFailHistDestIp" || name == "cvpdnUnameToFailHistCount" || name == "cvpdnUnameToFailHistFailTime" || name == "cvpdnUnameToFailHistFailType" || name == "cvpdnUnameToFailHistFailReason" || name == "cvpdnUnameToFailHistSourceInetType" || name == "cvpdnUnameToFailHistSourceInetAddr" || name == "cvpdnUnameToFailHistDestInetType" || name == "cvpdnUnameToFailHistDestInetAddr")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplatetable()
+CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateTable()
+    :
+    cvpdntemplateentry(this, {"cvpdntemplatename"})
 {
 
-    yang_name = "cvpdnTemplateTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTemplateTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntemplatetable::~Cvpdntemplatetable()
+CISCOVPDNMGMTMIB::CvpdnTemplateTable::~CvpdnTemplateTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTemplateTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdntemplateentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdntemplateentry.len(); index++)
     {
         if(cvpdntemplateentry[index]->has_data())
             return true;
@@ -3185,9 +3227,9 @@ bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTemplateTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdntemplateentry.size(); index++)
+    for (std::size_t index=0; index<cvpdntemplateentry.len(); index++)
     {
         if(cvpdntemplateentry[index]->has_operation())
             return true;
@@ -3195,21 +3237,21 @@ bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntemplatetable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntemplatetable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnTemplateTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntemplatetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3218,25 +3260,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntemplateta
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntemplatetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnTemplateEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry>();
         c->parent = this;
-        cvpdntemplateentry.push_back(c);
+        cvpdntemplateentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntemplatetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTemplateTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdntemplateentry)
+    for (auto c : cvpdntemplateentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3247,62 +3289,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntemplateta
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntemplatetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTemplateTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntemplatetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTemplateTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTemplateTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTemplateEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::Cvpdntemplateentry()
+CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::CvpdnTemplateEntry()
     :
     cvpdntemplatename{YType::str, "cvpdnTemplateName"},
     cvpdntemplateactivesessions{YType::uint32, "cvpdnTemplateActiveSessions"}
 {
 
-    yang_name = "cvpdnTemplateEntry"; yang_parent_name = "cvpdnTemplateTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnTemplateEntry"; yang_parent_name = "cvpdnTemplateTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::~Cvpdntemplateentry()
+CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::~CvpdnTemplateEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdntemplatename.is_set
 	|| cvpdntemplateactivesessions.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdntemplatename.yfilter)
 	|| ydk::is_set(cvpdntemplateactivesessions.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnTemplateTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnTemplateEntry" <<"[cvpdnTemplateName='" <<cvpdntemplatename <<"']";
+    path_buffer << "cvpdnTemplateEntry";
+    ADD_KEY_TOKEN(cvpdntemplatename, "cvpdnTemplateName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3313,19 +3357,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdntemplateta
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnTemplateName")
     {
@@ -3341,7 +3385,7 @@ void CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::set_value(const s
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnTemplateName")
     {
@@ -3353,26 +3397,29 @@ void CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::set_filter(const 
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnTemplateName" || name == "cvpdnTemplateActiveSessions")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundletable()
+CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleTable()
+    :
+    cvpdnbundleentry(this, {"cvpdnbundlename"})
 {
 
-    yang_name = "cvpdnBundleTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnBundleTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundletable::~Cvpdnbundletable()
+CISCOVPDNMGMTMIB::CvpdnBundleTable::~CvpdnBundleTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundletable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnbundleentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdnbundleentry.len(); index++)
     {
         if(cvpdnbundleentry[index]->has_data())
             return true;
@@ -3380,9 +3427,9 @@ bool CISCOVPDNMGMTMIB::Cvpdnbundletable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundletable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnbundleentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnbundleentry.len(); index++)
     {
         if(cvpdnbundleentry[index]->has_operation())
             return true;
@@ -3390,21 +3437,21 @@ bool CISCOVPDNMGMTMIB::Cvpdnbundletable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundletable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundletable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnBundleTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundletable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3413,25 +3460,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundletabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnbundletable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnBundleEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry>();
         c->parent = this;
-        cvpdnbundleentry.push_back(c);
+        cvpdnbundleentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnbundletable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdnbundleentry)
+    for (auto c : cvpdnbundleentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3442,22 +3489,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnbundletabl
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundletable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnBundleTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundletable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnBundleTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundletable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnBundleTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnBundleEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleentry()
+CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEntry()
     :
     cvpdnbundlename{YType::str, "cvpdnBundleName"},
     cvpdnbundlelinkcount{YType::uint32, "cvpdnBundleLinkCount"},
@@ -3468,15 +3515,16 @@ CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleentry()
     cvpdnbundleendpointclass{YType::enumeration, "cvpdnBundleEndpointClass"}
 {
 
-    yang_name = "cvpdnBundleEntry"; yang_parent_name = "cvpdnBundleTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnBundleEntry"; yang_parent_name = "cvpdnBundleTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::~Cvpdnbundleentry()
+CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::~CvpdnBundleEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnbundlename.is_set
 	|| cvpdnbundlelinkcount.is_set
 	|| cvpdnbundleendpointtype.is_set
@@ -3486,7 +3534,7 @@ bool CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::has_data() const
 	|| cvpdnbundleendpointclass.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnbundlename.yfilter)
@@ -3498,21 +3546,22 @@ bool CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::has_operation() const
 	|| ydk::is_set(cvpdnbundleendpointclass.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnBundleTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnBundleEntry" <<"[cvpdnBundleName='" <<cvpdnbundlename <<"']";
+    path_buffer << "cvpdnBundleEntry";
+    ADD_KEY_TOKEN(cvpdnbundlename, "cvpdnBundleName");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3528,19 +3577,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundletabl
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnBundleName")
     {
@@ -3586,7 +3635,7 @@ void CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::set_value(const std::
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnBundleName")
     {
@@ -3618,26 +3667,29 @@ void CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::set_filter(const std:
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnBundleName" || name == "cvpdnBundleLinkCount" || name == "cvpdnBundleEndpointType" || name == "cvpdnBundleEndpoint" || name == "cvpdnBundlePeerIpAddrType" || name == "cvpdnBundlePeerIpAddr" || name == "cvpdnBundleEndpointClass")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildtable()
+CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildTable()
+    :
+    cvpdnbundlechildentry(this, {"cvpdnbundlename", "cvpdnbundlechildtunneltype", "cvpdnbundlechildtunnelid", "cvpdnbundlechildsessionid"})
 {
 
-    yang_name = "cvpdnBundleChildTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnBundleChildTable"; yang_parent_name = "CISCO-VPDN-MGMT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::~Cvpdnbundlechildtable()
+CISCOVPDNMGMTMIB::CvpdnBundleChildTable::~CvpdnBundleChildTable()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleChildTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpdnbundlechildentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpdnbundlechildentry.len(); index++)
     {
         if(cvpdnbundlechildentry[index]->has_data())
             return true;
@@ -3645,9 +3697,9 @@ bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::has_data() const
     return false;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleChildTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpdnbundlechildentry.size(); index++)
+    for (std::size_t index=0; index<cvpdnbundlechildentry.len(); index++)
     {
         if(cvpdnbundlechildentry[index]->has_operation())
             return true;
@@ -3655,21 +3707,21 @@ bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvpdnBundleChildTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3678,25 +3730,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundlechil
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvpdnBundleChildEntry")
     {
-        auto c = std::make_shared<CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry>();
+        auto c = std::make_shared<CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry>();
         c->parent = this;
-        cvpdnbundlechildentry.push_back(c);
+        cvpdnbundlechildentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpdnbundlechildentry)
+    for (auto c : cvpdnbundlechildentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3707,22 +3759,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnbundlechil
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnBundleChildTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnBundleChildTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnBundleChildTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnBundleChildEntry")
         return true;
     return false;
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::Cvpdnbundlechildentry()
+CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::CvpdnBundleChildEntry()
     :
     cvpdnbundlename{YType::str, "cvpdnBundleName"},
     cvpdnbundlechildtunneltype{YType::enumeration, "cvpdnBundleChildTunnelType"},
@@ -3730,22 +3782,23 @@ CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::Cvpdnbundlechild
     cvpdnbundlechildsessionid{YType::uint32, "cvpdnBundleChildSessionId"}
 {
 
-    yang_name = "cvpdnBundleChildEntry"; yang_parent_name = "cvpdnBundleChildTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvpdnBundleChildEntry"; yang_parent_name = "cvpdnBundleChildTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::~Cvpdnbundlechildentry()
+CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::~CvpdnBundleChildEntry()
 {
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::has_data() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpdnbundlename.is_set
 	|| cvpdnbundlechildtunneltype.is_set
 	|| cvpdnbundlechildtunnelid.is_set
 	|| cvpdnbundlechildsessionid.is_set;
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::has_operation() const
+bool CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpdnbundlename.yfilter)
@@ -3754,21 +3807,25 @@ bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::has_operati
 	|| ydk::is_set(cvpdnbundlechildsessionid.yfilter);
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::get_absolute_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VPDN-MGMT-MIB:CISCO-VPDN-MGMT-MIB/cvpdnBundleChildTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::get_segment_path() const
+std::string CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvpdnBundleChildEntry" <<"[cvpdnBundleName='" <<cvpdnbundlename <<"']" <<"[cvpdnBundleChildTunnelType='" <<cvpdnbundlechildtunneltype <<"']" <<"[cvpdnBundleChildTunnelId='" <<cvpdnbundlechildtunnelid <<"']" <<"[cvpdnBundleChildSessionId='" <<cvpdnbundlechildsessionid <<"']";
+    path_buffer << "cvpdnBundleChildEntry";
+    ADD_KEY_TOKEN(cvpdnbundlename, "cvpdnBundleName");
+    ADD_KEY_TOKEN(cvpdnbundlechildtunneltype, "cvpdnBundleChildTunnelType");
+    ADD_KEY_TOKEN(cvpdnbundlechildtunnelid, "cvpdnBundleChildTunnelId");
+    ADD_KEY_TOKEN(cvpdnbundlechildsessionid, "cvpdnBundleChildSessionId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3781,19 +3838,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVPDNMGMTMIB::Cvpdnbundlechil
 
 }
 
-std::shared_ptr<Entity> CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvpdnBundleName")
     {
@@ -3821,7 +3878,7 @@ void CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::set_value(c
     }
 }
 
-void CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvpdnBundleName")
     {
@@ -3841,16 +3898,12 @@ void CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::set_filter(
     }
 }
 
-bool CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvpdnBundleName" || name == "cvpdnBundleChildTunnelType" || name == "cvpdnBundleChildTunnelId" || name == "cvpdnBundleChildSessionId")
         return true;
     return false;
 }
-
-const Enum::YLeaf TunnelType::l2f {1, "l2f"};
-const Enum::YLeaf TunnelType::l2tp {2, "l2tp"};
-const Enum::YLeaf TunnelType::pptp {3, "pptp"};
 
 const Enum::YLeaf EndpointClass::none {1, "none"};
 const Enum::YLeaf EndpointClass::local {2, "local"};
@@ -3859,105 +3912,109 @@ const Enum::YLeaf EndpointClass::macAddress {4, "macAddress"};
 const Enum::YLeaf EndpointClass::magicNumber {5, "magicNumber"};
 const Enum::YLeaf EndpointClass::phone {6, "phone"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::Cvpdnnotifsessionevent::up {1, "up"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::Cvpdnnotifsessionevent::down {2, "down"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::Cvpdnnotifsessionevent::pwUp {3, "pwUp"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::Cvpdnnotifsessionevent::pwDown {4, "pwDown"};
+const Enum::YLeaf TunnelType::l2f {1, "l2f"};
+const Enum::YLeaf TunnelType::l2tp {2, "l2tp"};
+const Enum::YLeaf TunnelType::pptp {3, "pptp"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsystemclearsessions::none {1, "none"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsystemclearsessions::all {2, "all"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsystemclearsessions::l2f {3, "l2f"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsystemclearsessions::l2tp {4, "l2tp"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsystemclearsessions::pptp {5, "pptp"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent::up {1, "up"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent::down {2, "down"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent::pwUp {3, "pwUp"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent::pwDown {4, "pwDown"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelorigcause::domain {1, "domain"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelorigcause::dnis {2, "dnis"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelorigcause::stack {3, "stack"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions::none {1, "none"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions::all {2, "all"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions::l2f {3, "l2f"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions::l2tp {4, "l2tp"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions::pptp {5, "pptp"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelstate::unknown {1, "unknown"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelstate::opening {2, "opening"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelstate::open {3, "open"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelstate::closing {4, "closing"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelOrigCause::domain {1, "domain"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelOrigCause::dnis {2, "dnis"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelOrigCause::stack {3, "stack"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelnetworkservicetype::ip {1, "ip"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelState::unknown {1, "unknown"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelState::opening {2, "opening"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelState::open {3, "open"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelState::closing {4, "closing"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrorigcause::domain {1, "domain"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrorigcause::dnis {2, "dnis"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrorigcause::stack {3, "stack"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrorigcause::xconnect {4, "xconnect"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelNetworkServiceType::ip {1, "ip"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::unknown {1, "unknown"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2fOpening {2, "l2fOpening"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2fOpenWait {3, "l2fOpenWait"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2fOpen {4, "l2fOpen"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2fClosing {5, "l2fClosing"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2fCloseWait {6, "l2fCloseWait"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2tpIdle {7, "l2tpIdle"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2tpWaitCtlReply {8, "l2tpWaitCtlReply"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2tpEstablished {9, "l2tpEstablished"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2tpShuttingDown {10, "l2tpShuttingDown"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::l2tpNoSessionLeft {11, "l2tpNoSessionLeft"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::pptpIdle {12, "pptpIdle"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::pptpWaitConnect {13, "pptpWaitConnect"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::pptpWaitCtlRequest {14, "pptpWaitCtlRequest"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::pptpWaitCtlReply {15, "pptpWaitCtlReply"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::pptpEstablished {16, "pptpEstablished"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::pptpWaitStopReply {17, "pptpWaitStopReply"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate::pptpTerminal {18, "pptpTerminal"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrOrigCause::domain {1, "domain"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrOrigCause::dnis {2, "dnis"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrOrigCause::stack {3, "stack"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrOrigCause::xconnect {4, "xconnect"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrnetworkservicetype::ip {1, "ip"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::unknown {1, "unknown"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2fOpening {2, "l2fOpening"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2fOpenWait {3, "l2fOpenWait"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2fOpen {4, "l2fOpen"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2fClosing {5, "l2fClosing"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2fCloseWait {6, "l2fCloseWait"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2tpIdle {7, "l2tpIdle"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2tpWaitCtlReply {8, "l2tpWaitCtlReply"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2tpEstablished {9, "l2tpEstablished"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2tpShuttingDown {10, "l2tpShuttingDown"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::l2tpNoSessionLeft {11, "l2tpNoSessionLeft"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::pptpIdle {12, "pptpIdle"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::pptpWaitConnect {13, "pptpWaitConnect"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::pptpWaitCtlRequest {14, "pptpWaitCtlRequest"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::pptpWaitCtlReply {15, "pptpWaitCtlReply"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::pptpEstablished {16, "pptpEstablished"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::pptpWaitStopReply {17, "pptpWaitStopReply"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState::pptpTerminal {18, "pptpTerminal"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessionstate::unknown {1, "unknown"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessionstate::opening {2, "opening"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessionstate::open {3, "open"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessionstate::closing {4, "closing"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessionstate::waitingForTunnel {5, "waitingForTunnel"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrNetworkServiceType::ip {1, "ip"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::other {1, "other"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::asyncInternalModem {2, "asyncInternalModem"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::async {3, "async"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::bchan {4, "bchan"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::sync {5, "sync"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::virtualAccess {6, "virtualAccess"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::xdsl {7, "xdsl"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype::cable {8, "cable"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionState::unknown {1, "unknown"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionState::opening {2, "opening"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionState::open {3, "open"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionState::closing {4, "closing"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionState::waitingForTunnel {5, "waitingForTunnel"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::unknown {1, "unknown"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2fOpening {2, "l2fOpening"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2fOpen {3, "l2fOpen"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2fCloseWait {4, "l2fCloseWait"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2fWaitingForTunnel {5, "l2fWaitingForTunnel"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2tpIdle {6, "l2tpIdle"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2tpWaitingTunnel {7, "l2tpWaitingTunnel"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2tpWaitReply {8, "l2tpWaitReply"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2tpWaitConnect {9, "l2tpWaitConnect"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2tpEstablished {10, "l2tpEstablished"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::l2tpShuttingDown {11, "l2tpShuttingDown"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::pptpWaitVAccess {12, "pptpWaitVAccess"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::pptpPacEstablished {13, "pptpPacEstablished"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::pptpWaitTunnel {14, "pptpWaitTunnel"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::pptpWaitOCRP {15, "pptpWaitOCRP"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::pptpPnsEstablished {16, "pptpPnsEstablished"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::pptpWaitCallDisc {17, "pptpWaitCallDisc"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate::pptpTerminal {18, "pptpTerminal"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::other {1, "other"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::asyncInternalModem {2, "asyncInternalModem"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::async {3, "async"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::bchan {4, "bchan"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::sync {5, "sync"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::virtualAccess {6, "virtualAccess"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::xdsl {7, "xdsl"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType::cable {8, "cable"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::other {1, "other"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::asyncInternalModem {2, "asyncInternalModem"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::async {3, "async"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::bchan {4, "bchan"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::sync {5, "sync"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::virtualAccess {6, "virtualAccess"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::xdsl {7, "xdsl"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype::cable {8, "cable"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::unknown {1, "unknown"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2fOpening {2, "l2fOpening"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2fOpen {3, "l2fOpen"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2fCloseWait {4, "l2fCloseWait"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2fWaitingForTunnel {5, "l2fWaitingForTunnel"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2tpIdle {6, "l2tpIdle"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2tpWaitingTunnel {7, "l2tpWaitingTunnel"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2tpWaitReply {8, "l2tpWaitReply"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2tpWaitConnect {9, "l2tpWaitConnect"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2tpEstablished {10, "l2tpEstablished"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::l2tpShuttingDown {11, "l2tpShuttingDown"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::pptpWaitVAccess {12, "pptpWaitVAccess"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::pptpPacEstablished {13, "pptpPacEstablished"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::pptpWaitTunnel {14, "pptpWaitTunnel"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::pptpWaitOCRP {15, "pptpWaitOCRP"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::pptpPnsEstablished {16, "pptpPnsEstablished"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::pptpWaitCallDisc {17, "pptpWaitCallDisc"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState::pptpTerminal {18, "pptpTerminal"};
 
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::none {1, "none"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::hostname {2, "hostname"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::string {3, "string"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::macAddress {4, "macAddress"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::ipV4Address {5, "ipV4Address"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::ipV6Address {6, "ipV6Address"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::phone {7, "phone"};
-const Enum::YLeaf CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype::magicNumber {8, "magicNumber"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::other {1, "other"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::asyncInternalModem {2, "asyncInternalModem"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::async {3, "async"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::bchan {4, "bchan"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::sync {5, "sync"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::virtualAccess {6, "virtualAccess"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::xdsl {7, "xdsl"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType::cable {8, "cable"};
+
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::none {1, "none"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::hostname {2, "hostname"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::string {3, "string"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::macAddress {4, "macAddress"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::ipV4Address {5, "ipV4Address"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::ipV6Address {6, "ipV6Address"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::phone {7, "phone"};
+const Enum::YLeaf CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType::magicNumber {8, "magicNumber"};
 
 
 }

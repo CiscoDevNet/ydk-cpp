@@ -32,22 +32,22 @@ class IPFORWARDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ipforward; //type: IPFORWARDMIB::Ipforward
-        class Ipforwardtable; //type: IPFORWARDMIB::Ipforwardtable
-        class Ipcidrroutetable; //type: IPFORWARDMIB::Ipcidrroutetable
+        class IpForward; //type: IPFORWARDMIB::IpForward
+        class IpForwardTable; //type: IPFORWARDMIB::IpForwardTable
+        class IpCidrRouteTable; //type: IPFORWARDMIB::IpCidrRouteTable
 
-        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipforward> ipforward;
-        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipforwardtable> ipforwardtable;
-        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipcidrroutetable> ipcidrroutetable;
+        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::IpForward> ipforward;
+        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::IpForwardTable> ipforwardtable;
+        std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::IpCidrRouteTable> ipcidrroutetable;
         
 }; // IPFORWARDMIB
 
 
-class IPFORWARDMIB::Ipforward : public ydk::Entity
+class IPFORWARDMIB::IpForward : public ydk::Entity
 {
     public:
-        Ipforward();
-        ~Ipforward();
+        IpForward();
+        ~IpForward();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -63,14 +63,14 @@ class IPFORWARDMIB::Ipforward : public ydk::Entity
         ydk::YLeaf ipforwardnumber; //type: uint32
         ydk::YLeaf ipcidrroutenumber; //type: uint32
 
-}; // IPFORWARDMIB::Ipforward
+}; // IPFORWARDMIB::IpForward
 
 
-class IPFORWARDMIB::Ipforwardtable : public ydk::Entity
+class IPFORWARDMIB::IpForwardTable : public ydk::Entity
 {
     public:
-        Ipforwardtable();
-        ~Ipforwardtable();
+        IpForwardTable();
+        ~IpForwardTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -83,18 +83,18 @@ class IPFORWARDMIB::Ipforwardtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipforwardentry; //type: IPFORWARDMIB::Ipforwardtable::Ipforwardentry
+        class IpForwardEntry; //type: IPFORWARDMIB::IpForwardTable::IpForwardEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipforwardtable::Ipforwardentry> > ipforwardentry;
+        ydk::YList ipforwardentry;
         
-}; // IPFORWARDMIB::Ipforwardtable
+}; // IPFORWARDMIB::IpForwardTable
 
 
-class IPFORWARDMIB::Ipforwardtable::Ipforwardentry : public ydk::Entity
+class IPFORWARDMIB::IpForwardTable::IpForwardEntry : public ydk::Entity
 {
     public:
-        Ipforwardentry();
-        ~Ipforwardentry();
+        IpForwardEntry();
+        ~IpForwardEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -108,12 +108,12 @@ class IPFORWARDMIB::Ipforwardtable::Ipforwardentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ipforwarddest; //type: string
-        ydk::YLeaf ipforwardproto; //type: Ipforwardproto
+        ydk::YLeaf ipforwardproto; //type: IpForwardProto
         ydk::YLeaf ipforwardpolicy; //type: int32
         ydk::YLeaf ipforwardnexthop; //type: string
         ydk::YLeaf ipforwardmask; //type: string
         ydk::YLeaf ipforwardifindex; //type: int32
-        ydk::YLeaf ipforwardtype; //type: Ipforwardtype
+        ydk::YLeaf ipforwardtype; //type: IpForwardType
         ydk::YLeaf ipforwardage; //type: int32
         ydk::YLeaf ipforwardinfo; //type: string
         ydk::YLeaf ipforwardnexthopas; //type: int32
@@ -122,17 +122,17 @@ class IPFORWARDMIB::Ipforwardtable::Ipforwardentry : public ydk::Entity
         ydk::YLeaf ipforwardmetric3; //type: int32
         ydk::YLeaf ipforwardmetric4; //type: int32
         ydk::YLeaf ipforwardmetric5; //type: int32
-        class Ipforwardproto;
-        class Ipforwardtype;
+        class IpForwardProto;
+        class IpForwardType;
 
-}; // IPFORWARDMIB::Ipforwardtable::Ipforwardentry
+}; // IPFORWARDMIB::IpForwardTable::IpForwardEntry
 
 
-class IPFORWARDMIB::Ipcidrroutetable : public ydk::Entity
+class IPFORWARDMIB::IpCidrRouteTable : public ydk::Entity
 {
     public:
-        Ipcidrroutetable();
-        ~Ipcidrroutetable();
+        IpCidrRouteTable();
+        ~IpCidrRouteTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -145,18 +145,18 @@ class IPFORWARDMIB::Ipcidrroutetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ipcidrrouteentry; //type: IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry
+        class IpCidrRouteEntry; //type: IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IP_FORWARD_MIB::IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry> > ipcidrrouteentry;
+        ydk::YList ipcidrrouteentry;
         
-}; // IPFORWARDMIB::Ipcidrroutetable
+}; // IPFORWARDMIB::IpCidrRouteTable
 
 
-class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry : public ydk::Entity
+class IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry : public ydk::Entity
 {
     public:
-        Ipcidrrouteentry();
-        ~Ipcidrrouteentry();
+        IpCidrRouteEntry();
+        ~IpCidrRouteEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -174,8 +174,8 @@ class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry : public ydk::Entity
         ydk::YLeaf ipcidrroutetos; //type: int32
         ydk::YLeaf ipcidrroutenexthop; //type: string
         ydk::YLeaf ipcidrrouteifindex; //type: int32
-        ydk::YLeaf ipcidrroutetype; //type: Ipcidrroutetype
-        ydk::YLeaf ipcidrrouteproto; //type: Ipcidrrouteproto
+        ydk::YLeaf ipcidrroutetype; //type: IpCidrRouteType
+        ydk::YLeaf ipcidrrouteproto; //type: IpCidrRouteProto
         ydk::YLeaf ipcidrrouteage; //type: int32
         ydk::YLeaf ipcidrrouteinfo; //type: string
         ydk::YLeaf ipcidrroutenexthopas; //type: int32
@@ -185,12 +185,12 @@ class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry : public ydk::Entity
         ydk::YLeaf ipcidrroutemetric4; //type: int32
         ydk::YLeaf ipcidrroutemetric5; //type: int32
         ydk::YLeaf ipcidrroutestatus; //type: RowStatus
-        class Ipcidrroutetype;
-        class Ipcidrrouteproto;
+        class IpCidrRouteType;
+        class IpCidrRouteProto;
 
-}; // IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry
+}; // IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry
 
-class IPFORWARDMIB::Ipforwardtable::Ipforwardentry::Ipforwardproto : public ydk::Enum
+class IPFORWARDMIB::IpForwardTable::IpForwardEntry::IpForwardProto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -211,7 +211,7 @@ class IPFORWARDMIB::Ipforwardtable::Ipforwardentry::Ipforwardproto : public ydk:
 
 };
 
-class IPFORWARDMIB::Ipforwardtable::Ipforwardentry::Ipforwardtype : public ydk::Enum
+class IPFORWARDMIB::IpForwardTable::IpForwardEntry::IpForwardType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -221,7 +221,7 @@ class IPFORWARDMIB::Ipforwardtable::Ipforwardentry::Ipforwardtype : public ydk::
 
 };
 
-class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype : public ydk::Enum
+class IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::IpCidrRouteType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -231,7 +231,7 @@ class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrroutetype : public
 
 };
 
-class IPFORWARDMIB::Ipcidrroutetable::Ipcidrrouteentry::Ipcidrrouteproto : public ydk::Enum
+class IPFORWARDMIB::IpCidrRouteTable::IpCidrRouteEntry::IpCidrRouteProto : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

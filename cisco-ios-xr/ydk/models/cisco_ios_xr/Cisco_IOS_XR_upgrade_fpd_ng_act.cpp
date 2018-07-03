@@ -17,7 +17,7 @@ UpgradeFpd::UpgradeFpd()
 {
     input->parent = this;
 
-    yang_name = "upgrade-fpd"; yang_parent_name = "Cisco-IOS-XR-upgrade-fpd-ng-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "upgrade-fpd"; yang_parent_name = "Cisco-IOS-XR-upgrade-fpd-ng-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 UpgradeFpd::~UpgradeFpd()
@@ -26,6 +26,7 @@ UpgradeFpd::~UpgradeFpd()
 
 bool UpgradeFpd::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -124,7 +125,7 @@ UpgradeFpd::Input::Input()
     force{YType::empty, "force"}
 {
 
-    yang_name = "input"; yang_parent_name = "upgrade-fpd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "upgrade-fpd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 UpgradeFpd::Input::~Input()
@@ -133,6 +134,7 @@ UpgradeFpd::Input::~Input()
 
 bool UpgradeFpd::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| fpd.is_set
 	|| force.is_set;

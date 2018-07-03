@@ -21,6 +21,26 @@ Marking::~Marking()
 {
 }
 
+DropType::DropType()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:drop-type")
+{
+
+}
+
+DropType::~DropType()
+{
+}
+
+MinRate::MinRate()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:min-rate")
+{
+
+}
+
+MinRate::~MinRate()
+{
+}
+
 Meter::Meter()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:meter")
 {
@@ -41,16 +61,6 @@ Priority::~Priority()
 {
 }
 
-MinRate::MinRate()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:min-rate")
-{
-
-}
-
-MinRate::~MinRate()
-{
-}
-
 MaxRate::MaxRate()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:max-rate")
 {
@@ -61,26 +71,6 @@ MaxRate::~MaxRate()
 {
 }
 
-AlgorithmicDrop::AlgorithmicDrop()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:algorithmic-drop")
-{
-
-}
-
-AlgorithmicDrop::~AlgorithmicDrop()
-{
-}
-
-DropType::DropType()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:drop-type")
-{
-
-}
-
-DropType::~DropType()
-{
-}
-
 MeterActionType::MeterActionType()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:meter-action-type")
 {
@@ -88,6 +78,16 @@ MeterActionType::MeterActionType()
 }
 
 MeterActionType::~MeterActionType()
+{
+}
+
+AlgorithmicDrop::AlgorithmicDrop()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:algorithmic-drop")
+{
+
+}
+
+AlgorithmicDrop::~AlgorithmicDrop()
 {
 }
 
@@ -111,16 +111,6 @@ TailDrop::~TailDrop()
 {
 }
 
-RandomDetect::RandomDetect()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:random-detect")
-{
-
-}
-
-RandomDetect::~RandomDetect()
-{
-}
-
 MeterActionDrop::MeterActionDrop()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:meter-action-drop")
 {
@@ -138,6 +128,16 @@ MeterActionSet::MeterActionSet()
 }
 
 MeterActionSet::~MeterActionSet()
+{
+}
+
+RandomDetect::RandomDetect()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-diffserv-action", "ietf-diffserv-action", "ietf-diffserv-action:random-detect")
+{
+
+}
+
+RandomDetect::~RandomDetect()
 {
 }
 

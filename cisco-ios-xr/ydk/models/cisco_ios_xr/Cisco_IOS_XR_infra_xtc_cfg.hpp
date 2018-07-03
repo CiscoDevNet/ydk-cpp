@@ -32,8 +32,10 @@ class Pce : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf server_address; //type: string
+        ydk::YLeaf ipv6_server_address; //type: string
         ydk::YLeaf password; //type: string
         ydk::YLeaf enable; //type: empty
+        class Ipv6StateSyncs; //type: Pce::Ipv6StateSyncs
         class PccAddresses; //type: Pce::PccAddresses
         class Logging; //type: Pce::Logging
         class Backoff; //type: Pce::Backoff
@@ -44,17 +46,64 @@ class Pce : public ydk::Entity
         class DisjointPath; //type: Pce::DisjointPath
         class ExplicitPaths; //type: Pce::ExplicitPaths
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Ipv6StateSyncs> ipv6_state_syncs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses> pcc_addresses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Logging> logging;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Backoff> backoff;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Backoff> backoff; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::StateSyncs> state_syncs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::SegmentRouting> segment_routing;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Timers> timers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Timers> timers; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Netconf> netconf;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::DisjointPath> disjoint_path;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::ExplicitPaths> explicit_paths;
         
 }; // Pce
+
+
+class Pce::Ipv6StateSyncs : public ydk::Entity
+{
+    public:
+        Ipv6StateSyncs();
+        ~Ipv6StateSyncs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Ipv6StateSync; //type: Pce::Ipv6StateSyncs::Ipv6StateSync
+
+        ydk::YList ipv6_state_sync;
+        
+}; // Pce::Ipv6StateSyncs
+
+
+class Pce::Ipv6StateSyncs::Ipv6StateSync : public ydk::Entity
+{
+    public:
+        Ipv6StateSync();
+        ~Ipv6StateSync();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf address; //type: string
+
+}; // Pce::Ipv6StateSyncs::Ipv6StateSync
 
 
 class Pce::PccAddresses : public ydk::Entity
@@ -76,7 +125,7 @@ class Pce::PccAddresses : public ydk::Entity
 
         class PccAddress; //type: Pce::PccAddresses::PccAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses::PccAddress> > pcc_address;
+        ydk::YList pcc_address;
         
 }; // Pce::PccAddresses
 
@@ -125,7 +174,7 @@ class Pce::PccAddresses::PccAddress::LspNames : public ydk::Entity
 
         class LspName; //type: Pce::PccAddresses::PccAddress::LspNames::LspName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses::PccAddress::LspNames::LspName> > lsp_name;
+        ydk::YList lsp_name;
         
 }; // Pce::PccAddresses::PccAddress::LspNames
 
@@ -152,7 +201,7 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName : public ydk::Entity
         ydk::YLeaf enable; //type: empty
         class RsvpTe; //type: Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe> rsvp_te;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe> rsvp_te; // presence node
         
 }; // Pce::PccAddresses::PccAddress::LspNames::LspName
 
@@ -174,7 +223,7 @@ class Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf fast_protect; //type: empty
-        ydk::YLeaf bandwidth; //type: int32
+        ydk::YLeaf bandwidth; //type: uint32
         ydk::YLeaf enable; //type: empty
         class Affinity; //type: Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Affinity
         class Priority; //type: Pce::PccAddresses::PccAddress::LspNames::LspName::RsvpTe::Priority
@@ -297,7 +346,7 @@ class Pce::StateSyncs : public ydk::Entity
 
         class StateSync; //type: Pce::StateSyncs::StateSync
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::StateSyncs::StateSync> > state_sync;
+        ydk::YList state_sync;
         
 }; // Pce::StateSyncs
 
@@ -390,7 +439,7 @@ class Pce::Netconf : public ydk::Entity
 
         class NetconfSsh; //type: Pce::Netconf::NetconfSsh
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Netconf::NetconfSsh> netconf_ssh;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Netconf::NetconfSsh> netconf_ssh; // presence node
         
 }; // Pce::Netconf
 
@@ -462,7 +511,7 @@ class Pce::DisjointPath::Groups : public ydk::Entity
 
         class Group; //type: Pce::DisjointPath::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::DisjointPath::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Pce::DisjointPath::Groups
 
@@ -514,7 +563,7 @@ class Pce::DisjointPath::Groups::Group::GroupLspRecords : public ydk::Entity
 
         class GroupLspRecord; //type: Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord> > group_lsp_record;
+        ydk::YList group_lsp_record;
         
 }; // Pce::DisjointPath::Groups::Group::GroupLspRecords
 
@@ -538,7 +587,7 @@ class Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord : public
         ydk::YLeaf lsp_id; //type: uint32
         ydk::YLeaf ip_addr; //type: string
         ydk::YLeaf lsp_name; //type: string
-        ydk::YLeaf disj_path; //type: int32
+        ydk::YLeaf disj_path; //type: uint32
 
 }; // Pce::DisjointPath::Groups::Group::GroupLspRecords::GroupLspRecord
 
@@ -562,7 +611,7 @@ class Pce::ExplicitPaths : public ydk::Entity
 
         class ExplicitPath; //type: Pce::ExplicitPaths::ExplicitPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::ExplicitPaths::ExplicitPath> > explicit_path;
+        ydk::YList explicit_path;
         
 }; // Pce::ExplicitPaths
 
@@ -611,7 +660,7 @@ class Pce::ExplicitPaths::ExplicitPath::PathHops : public ydk::Entity
 
         class PathHop; //type: Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop> > path_hop;
+        ydk::YList path_hop;
         
 }; // Pce::ExplicitPaths::ExplicitPath::PathHops
 
@@ -640,16 +689,6 @@ class Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop : public ydk::Entity
 
 }; // Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop
 
-class PceDisjointPath : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link;
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf srlg;
-        static const ydk::Enum::YLeaf srlg_node;
-
-};
-
 class PceExplicitPathHop : public ydk::Enum
 {
     public:
@@ -657,6 +696,16 @@ class PceExplicitPathHop : public ydk::Enum
         static const ydk::Enum::YLeaf sid_node;
         static const ydk::Enum::YLeaf sid_adjancency;
         static const ydk::Enum::YLeaf binding_sid;
+
+};
+
+class PceDisjointPath : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link;
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf srlg;
+        static const ydk::Enum::YLeaf srlg_node;
 
 };
 

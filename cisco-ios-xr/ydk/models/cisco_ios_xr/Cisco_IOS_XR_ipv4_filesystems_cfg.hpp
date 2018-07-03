@@ -136,7 +136,7 @@ class Ftp::FtpClient::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ftp::FtpClient::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_filesystems_cfg::Ftp::FtpClient::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ftp::FtpClient::Vrfs
 
@@ -241,7 +241,7 @@ class Tftp::TftpClient::Vrfs : public ydk::Entity
 
         class Vrf; //type: Tftp::TftpClient::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_filesystems_cfg::Tftp::TftpClient::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Tftp::TftpClient::Vrfs
 

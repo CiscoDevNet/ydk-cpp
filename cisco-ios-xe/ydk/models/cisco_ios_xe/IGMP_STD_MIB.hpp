@@ -32,20 +32,20 @@ class IGMPSTDMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Igmpinterfacetable; //type: IGMPSTDMIB::Igmpinterfacetable
-        class Igmpcachetable; //type: IGMPSTDMIB::Igmpcachetable
+        class IgmpInterfaceTable; //type: IGMPSTDMIB::IgmpInterfaceTable
+        class IgmpCacheTable; //type: IGMPSTDMIB::IgmpCacheTable
 
-        std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpinterfacetable> igmpinterfacetable;
-        std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpcachetable> igmpcachetable;
+        std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::IgmpInterfaceTable> igmpinterfacetable;
+        std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::IgmpCacheTable> igmpcachetable;
         
 }; // IGMPSTDMIB
 
 
-class IGMPSTDMIB::Igmpinterfacetable : public ydk::Entity
+class IGMPSTDMIB::IgmpInterfaceTable : public ydk::Entity
 {
     public:
-        Igmpinterfacetable();
-        ~Igmpinterfacetable();
+        IgmpInterfaceTable();
+        ~IgmpInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -58,18 +58,18 @@ class IGMPSTDMIB::Igmpinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Igmpinterfaceentry; //type: IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry
+        class IgmpInterfaceEntry; //type: IGMPSTDMIB::IgmpInterfaceTable::IgmpInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry> > igmpinterfaceentry;
+        ydk::YList igmpinterfaceentry;
         
-}; // IGMPSTDMIB::Igmpinterfacetable
+}; // IGMPSTDMIB::IgmpInterfaceTable
 
 
-class IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry : public ydk::Entity
+class IGMPSTDMIB::IgmpInterfaceTable::IgmpInterfaceEntry : public ydk::Entity
 {
     public:
-        Igmpinterfaceentry();
-        ~Igmpinterfaceentry();
+        IgmpInterfaceEntry();
+        ~IgmpInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,14 +98,14 @@ class IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry : public ydk::Entity
         ydk::YLeaf igmpinterfacerobustness; //type: uint32
         ydk::YLeaf igmpinterfacelastmembqueryintvl; //type: uint32
 
-}; // IGMPSTDMIB::Igmpinterfacetable::Igmpinterfaceentry
+}; // IGMPSTDMIB::IgmpInterfaceTable::IgmpInterfaceEntry
 
 
-class IGMPSTDMIB::Igmpcachetable : public ydk::Entity
+class IGMPSTDMIB::IgmpCacheTable : public ydk::Entity
 {
     public:
-        Igmpcachetable();
-        ~Igmpcachetable();
+        IgmpCacheTable();
+        ~IgmpCacheTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,18 +118,18 @@ class IGMPSTDMIB::Igmpcachetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Igmpcacheentry; //type: IGMPSTDMIB::Igmpcachetable::Igmpcacheentry
+        class IgmpCacheEntry; //type: IGMPSTDMIB::IgmpCacheTable::IgmpCacheEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::IGMP_STD_MIB::IGMPSTDMIB::Igmpcachetable::Igmpcacheentry> > igmpcacheentry;
+        ydk::YList igmpcacheentry;
         
-}; // IGMPSTDMIB::Igmpcachetable
+}; // IGMPSTDMIB::IgmpCacheTable
 
 
-class IGMPSTDMIB::Igmpcachetable::Igmpcacheentry : public ydk::Entity
+class IGMPSTDMIB::IgmpCacheTable::IgmpCacheEntry : public ydk::Entity
 {
     public:
-        Igmpcacheentry();
-        ~Igmpcacheentry();
+        IgmpCacheEntry();
+        ~IgmpCacheEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,7 +151,7 @@ class IGMPSTDMIB::Igmpcachetable::Igmpcacheentry : public ydk::Entity
         ydk::YLeaf igmpcachestatus; //type: RowStatus
         ydk::YLeaf igmpcacheversion1hosttimer; //type: uint32
 
-}; // IGMPSTDMIB::Igmpcachetable::Igmpcacheentry
+}; // IGMPSTDMIB::IgmpCacheTable::IgmpCacheEntry
 
 
 }

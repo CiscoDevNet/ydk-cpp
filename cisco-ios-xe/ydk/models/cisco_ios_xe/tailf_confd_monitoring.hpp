@@ -128,7 +128,7 @@ class ConfdState::LoadedDataModels : public ydk::Entity
 
         class DataModel; //type: ConfdState::LoadedDataModels::DataModel
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::LoadedDataModels::DataModel> > data_model;
+        ydk::YList data_model;
         
 }; // ConfdState::LoadedDataModels
 
@@ -155,7 +155,7 @@ class ConfdState::LoadedDataModels::DataModel : public ydk::Entity
         ydk::YLeaf namespace_; //type: string
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf exported_to_all; //type: empty
-        ydk::YLeafList exported_to; //type: list of  one of enumeration, string
+        ydk::YLeafList exported_to; //type: list of  one of string, enumeration
         class ExportedTo;
 
 }; // ConfdState::LoadedDataModels::DataModel
@@ -205,8 +205,8 @@ class ConfdState::Netconf::Listen : public ydk::Entity
         class Tcp; //type: ConfdState::Netconf::Listen::Tcp
         class Ssh; //type: ConfdState::Netconf::Listen::Ssh
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Netconf::Listen::Tcp> > tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Netconf::Listen::Ssh> > ssh;
+        ydk::YList tcp;
+        ydk::YList ssh;
         
 }; // ConfdState::Netconf::Listen
 
@@ -300,7 +300,7 @@ class ConfdState::Cli::Listen : public ydk::Entity
 
         class Ssh; //type: ConfdState::Cli::Listen::Ssh
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Cli::Listen::Ssh> > ssh;
+        ydk::YList ssh;
         
 }; // ConfdState::Cli::Listen
 
@@ -372,8 +372,8 @@ class ConfdState::Webui::Listen : public ydk::Entity
         class Tcp; //type: ConfdState::Webui::Listen::Tcp
         class Ssl; //type: ConfdState::Webui::Listen::Ssl
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Webui::Listen::Tcp> > tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Webui::Listen::Ssl> > ssl;
+        ydk::YList tcp;
+        ydk::YList ssl;
         
 }; // ConfdState::Webui::Listen
 
@@ -468,8 +468,8 @@ class ConfdState::Rest::Listen : public ydk::Entity
         class Tcp; //type: ConfdState::Rest::Listen::Tcp
         class Ssl; //type: ConfdState::Rest::Listen::Ssl
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Rest::Listen::Tcp> > tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Rest::Listen::Ssl> > ssl;
+        ydk::YList tcp;
+        ydk::YList ssl;
         
 }; // ConfdState::Rest::Listen
 
@@ -567,7 +567,7 @@ class ConfdState::Snmp::Listen : public ydk::Entity
 
         class Udp; //type: ConfdState::Snmp::Listen::Udp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Snmp::Listen::Udp> > udp;
+        ydk::YList udp;
         
 }; // ConfdState::Snmp::Listen
 
@@ -674,14 +674,14 @@ class ConfdState::Internal::Callpoints : public ydk::Entity
         class AuthenticationCallback; //type: ConfdState::Internal::Callpoints::AuthenticationCallback
         class AuthorizationCallbacks; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint> > callpoint;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint> > validationpoint;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint> > actionpoint;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback> > snmp_inform_callback;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription> > snmp_notification_subscription;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback> > error_formatting_callback;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint> > typepoint;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay> > notification_stream_replay;
+        ydk::YList callpoint;
+        ydk::YList validationpoint;
+        ydk::YList actionpoint;
+        ydk::YList snmp_inform_callback;
+        ydk::YList snmp_notification_subscription;
+        ydk::YList error_formatting_callback;
+        ydk::YList typepoint;
+        ydk::YList notification_stream_replay;
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback> authentication_callback; // presence node
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks> authorization_callbacks; // presence node
         
@@ -713,7 +713,7 @@ class ConfdState::Internal::Callpoints::Callpoint : public ydk::Entity
         class Range; //type: ConfdState::Internal::Callpoints::Callpoint::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Callpoint::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::Callpoint
@@ -818,7 +818,7 @@ class ConfdState::Internal::Callpoints::Validationpoint : public ydk::Entity
         class Range; //type: ConfdState::Internal::Callpoints::Validationpoint::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Validationpoint::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::Validationpoint
@@ -923,7 +923,7 @@ class ConfdState::Internal::Callpoints::Actionpoint : public ydk::Entity
         class Range; //type: ConfdState::Internal::Callpoints::Actionpoint::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Actionpoint::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::Actionpoint
@@ -1028,7 +1028,7 @@ class ConfdState::Internal::Callpoints::SnmpInformCallback : public ydk::Entity
         class Range; //type: ConfdState::Internal::Callpoints::SnmpInformCallback::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpInformCallback::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpInformCallback
@@ -1133,7 +1133,7 @@ class ConfdState::Internal::Callpoints::SnmpNotificationSubscription : public yd
         class Range; //type: ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::SnmpNotificationSubscription::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::SnmpNotificationSubscription
@@ -1238,7 +1238,7 @@ class ConfdState::Internal::Callpoints::ErrorFormattingCallback : public ydk::En
         class Range; //type: ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::ErrorFormattingCallback::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::ErrorFormattingCallback
@@ -1343,7 +1343,7 @@ class ConfdState::Internal::Callpoints::Typepoint : public ydk::Entity
         class Range; //type: ConfdState::Internal::Callpoints::Typepoint::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::Typepoint::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::Typepoint
@@ -1449,7 +1449,7 @@ class ConfdState::Internal::Callpoints::NotificationStreamReplay : public ydk::E
         class Range; //type: ConfdState::Internal::Callpoints::NotificationStreamReplay::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::NotificationStreamReplay::Range> > range;
+        ydk::YList range;
                 class ReplaySupport;
         class Error;
 
@@ -1555,7 +1555,7 @@ class ConfdState::Internal::Callpoints::AuthenticationCallback : public ydk::Ent
         class Range; //type: ConfdState::Internal::Callpoints::AuthenticationCallback::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthenticationCallback::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthenticationCallback
@@ -1663,7 +1663,7 @@ class ConfdState::Internal::Callpoints::AuthorizationCallbacks : public ydk::Ent
         class Range; //type: ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Daemon> daemon;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Callpoints::AuthorizationCallbacks::Range> > range;
+        ydk::YList range;
                 class Error;
 
 }; // ConfdState::Internal::Callpoints::AuthorizationCallbacks
@@ -1766,8 +1766,8 @@ class ConfdState::Internal::Cdb : public ydk::Entity
         class Datastore; //type: ConfdState::Internal::Cdb::Datastore
         class Client; //type: ConfdState::Internal::Cdb::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore> > datastore;
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Cdb::Client> > client;
+        ydk::YList datastore;
+        ydk::YList client;
         
 }; // ConfdState::Internal::Cdb
 
@@ -1803,7 +1803,7 @@ class ConfdState::Internal::Cdb::Datastore : public ydk::Entity
         class PendingNotificationQueue; //type: ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue
 
         std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync> pending_subscription_sync; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue> > pending_notification_queue;
+        ydk::YList pending_notification_queue;
         
 }; // ConfdState::Internal::Cdb::Datastore
 
@@ -1828,7 +1828,7 @@ class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync : public ydk
         ydk::YLeaf time_remaining; //type: one of uint64, enumeration
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification> > notification;
+        ydk::YList notification;
                 class TimeRemaining;
 
 }; // ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync
@@ -1874,7 +1874,7 @@ class ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue : public yd
 
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue::Notification> > notification;
+        ydk::YList notification;
         
 }; // ConfdState::Internal::Cdb::Datastore::PendingNotificationQueue
 
@@ -1926,7 +1926,7 @@ class ConfdState::Internal::Cdb::Client : public ydk::Entity
         ydk::YLeaf lock; //type: Lock
         class Subscription; //type: ConfdState::Internal::Cdb::Client::Subscription
 
-        std::vector<std::shared_ptr<cisco_ios_xe::tailf_confd_monitoring::ConfdState::Internal::Cdb::Client::Subscription> > subscription;
+        ydk::YList subscription;
                 class Type;
         class Datastore;
         class Lock;

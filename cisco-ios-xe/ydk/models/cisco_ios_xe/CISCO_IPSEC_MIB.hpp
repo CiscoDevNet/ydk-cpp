@@ -31,36 +31,36 @@ class CISCOIPSECMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cipsisakmpgroup; //type: CISCOIPSECMIB::Cipsisakmpgroup
-        class Cipsipsecglobals; //type: CISCOIPSECMIB::Cipsipsecglobals
-        class Cipsipsecstatistics; //type: CISCOIPSECMIB::Cipsipsecstatistics
-        class Cipssyscapacitygroup; //type: CISCOIPSECMIB::Cipssyscapacitygroup
-        class Cipstrapcntlgroup; //type: CISCOIPSECMIB::Cipstrapcntlgroup
-        class Cipsisakmppolicytable; //type: CISCOIPSECMIB::Cipsisakmppolicytable
-        class Cipsstaticcryptomapsettable; //type: CISCOIPSECMIB::Cipsstaticcryptomapsettable
-        class Cipsdynamiccryptomapsettable; //type: CISCOIPSECMIB::Cipsdynamiccryptomapsettable
-        class Cipsstaticcryptomaptable; //type: CISCOIPSECMIB::Cipsstaticcryptomaptable
-        class Cipscryptomapsetiftable; //type: CISCOIPSECMIB::Cipscryptomapsetiftable
+        class CipsIsakmpGroup; //type: CISCOIPSECMIB::CipsIsakmpGroup
+        class CipsIPsecGlobals; //type: CISCOIPSECMIB::CipsIPsecGlobals
+        class CipsIPsecStatistics; //type: CISCOIPSECMIB::CipsIPsecStatistics
+        class CipsSysCapacityGroup; //type: CISCOIPSECMIB::CipsSysCapacityGroup
+        class CipsTrapCntlGroup; //type: CISCOIPSECMIB::CipsTrapCntlGroup
+        class CipsIsakmpPolicyTable; //type: CISCOIPSECMIB::CipsIsakmpPolicyTable
+        class CipsStaticCryptomapSetTable; //type: CISCOIPSECMIB::CipsStaticCryptomapSetTable
+        class CipsDynamicCryptomapSetTable; //type: CISCOIPSECMIB::CipsDynamicCryptomapSetTable
+        class CipsStaticCryptomapTable; //type: CISCOIPSECMIB::CipsStaticCryptomapTable
+        class CipsCryptomapSetIfTable; //type: CISCOIPSECMIB::CipsCryptomapSetIfTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsisakmpgroup> cipsisakmpgroup;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsipsecglobals> cipsipsecglobals;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsipsecstatistics> cipsipsecstatistics;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipssyscapacitygroup> cipssyscapacitygroup;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipstrapcntlgroup> cipstrapcntlgroup;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsisakmppolicytable> cipsisakmppolicytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsstaticcryptomapsettable> cipsstaticcryptomapsettable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsdynamiccryptomapsettable> cipsdynamiccryptomapsettable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsstaticcryptomaptable> cipsstaticcryptomaptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipscryptomapsetiftable> cipscryptomapsetiftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsIsakmpGroup> cipsisakmpgroup;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsIPsecGlobals> cipsipsecglobals;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsIPsecStatistics> cipsipsecstatistics;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsSysCapacityGroup> cipssyscapacitygroup;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsTrapCntlGroup> cipstrapcntlgroup;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsIsakmpPolicyTable> cipsisakmppolicytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsStaticCryptomapSetTable> cipsstaticcryptomapsettable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsDynamicCryptomapSetTable> cipsdynamiccryptomapsettable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsStaticCryptomapTable> cipsstaticcryptomaptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsCryptomapSetIfTable> cipscryptomapsetiftable;
         
 }; // CISCOIPSECMIB
 
 
-class CISCOIPSECMIB::Cipsisakmpgroup : public ydk::Entity
+class CISCOIPSECMIB::CipsIsakmpGroup : public ydk::Entity
 {
     public:
-        Cipsisakmpgroup();
-        ~Cipsisakmpgroup();
+        CipsIsakmpGroup();
+        ~CipsIsakmpGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -78,14 +78,14 @@ class CISCOIPSECMIB::Cipsisakmpgroup : public ydk::Entity
         ydk::YLeaf cipsisakmpkeepaliveinterval; //type: int32
         ydk::YLeaf cipsnumisakmppolicies; //type: int32
 
-}; // CISCOIPSECMIB::Cipsisakmpgroup
+}; // CISCOIPSECMIB::CipsIsakmpGroup
 
 
-class CISCOIPSECMIB::Cipsipsecglobals : public ydk::Entity
+class CISCOIPSECMIB::CipsIPsecGlobals : public ydk::Entity
 {
     public:
-        Cipsipsecglobals();
-        ~Cipsipsecglobals();
+        CipsIPsecGlobals();
+        ~CipsIPsecGlobals();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -105,14 +105,14 @@ class CISCOIPSECMIB::Cipsipsecglobals : public ydk::Entity
         ydk::YLeaf cipsnumdynamiccryptomapsets; //type: uint32
         ydk::YLeaf cipsnumtedcryptomapsets; //type: uint32
 
-}; // CISCOIPSECMIB::Cipsipsecglobals
+}; // CISCOIPSECMIB::CipsIPsecGlobals
 
 
-class CISCOIPSECMIB::Cipsipsecstatistics : public ydk::Entity
+class CISCOIPSECMIB::CipsIPsecStatistics : public ydk::Entity
 {
     public:
-        Cipsipsecstatistics();
-        ~Cipsipsecstatistics();
+        CipsIPsecStatistics();
+        ~CipsIPsecStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -129,14 +129,14 @@ class CISCOIPSECMIB::Cipsipsecstatistics : public ydk::Entity
         ydk::YLeaf cipsnumtedprobessent; //type: uint32
         ydk::YLeaf cipsnumtedfailures; //type: uint32
 
-}; // CISCOIPSECMIB::Cipsipsecstatistics
+}; // CISCOIPSECMIB::CipsIPsecStatistics
 
 
-class CISCOIPSECMIB::Cipssyscapacitygroup : public ydk::Entity
+class CISCOIPSECMIB::CipsSysCapacityGroup : public ydk::Entity
 {
     public:
-        Cipssyscapacitygroup();
-        ~Cipssyscapacitygroup();
+        CipsSysCapacityGroup();
+        ~CipsSysCapacityGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -152,14 +152,14 @@ class CISCOIPSECMIB::Cipssyscapacitygroup : public ydk::Entity
         ydk::YLeaf cipsmaxsas; //type: int32
         ydk::YLeaf cips3descapable; //type: boolean
 
-}; // CISCOIPSECMIB::Cipssyscapacitygroup
+}; // CISCOIPSECMIB::CipsSysCapacityGroup
 
 
-class CISCOIPSECMIB::Cipstrapcntlgroup : public ydk::Entity
+class CISCOIPSECMIB::CipsTrapCntlGroup : public ydk::Entity
 {
     public:
-        Cipstrapcntlgroup();
-        ~Cipstrapcntlgroup();
+        CipsTrapCntlGroup();
+        ~CipsTrapCntlGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -180,14 +180,14 @@ class CISCOIPSECMIB::Cipstrapcntlgroup : public ydk::Entity
         ydk::YLeaf cipscntlcryptomapsetdetached; //type: TrapStatus
         ydk::YLeaf cipscntltoomanysas; //type: TrapStatus
 
-}; // CISCOIPSECMIB::Cipstrapcntlgroup
+}; // CISCOIPSECMIB::CipsTrapCntlGroup
 
 
-class CISCOIPSECMIB::Cipsisakmppolicytable : public ydk::Entity
+class CISCOIPSECMIB::CipsIsakmpPolicyTable : public ydk::Entity
 {
     public:
-        Cipsisakmppolicytable();
-        ~Cipsisakmppolicytable();
+        CipsIsakmpPolicyTable();
+        ~CipsIsakmpPolicyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -200,18 +200,18 @@ class CISCOIPSECMIB::Cipsisakmppolicytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsisakmppolicyentry; //type: CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry
+        class CipsIsakmpPolicyEntry; //type: CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry> > cipsisakmppolicyentry;
+        ydk::YList cipsisakmppolicyentry;
         
-}; // CISCOIPSECMIB::Cipsisakmppolicytable
+}; // CISCOIPSECMIB::CipsIsakmpPolicyTable
 
 
-class CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry : public ydk::Entity
+class CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry : public ydk::Entity
 {
     public:
-        Cipsisakmppolicyentry();
-        ~Cipsisakmppolicyentry();
+        CipsIsakmpPolicyEntry();
+        ~CipsIsakmpPolicyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -231,14 +231,14 @@ class CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry : public ydk::
         ydk::YLeaf cipsisakmppolgroup; //type: DiffHellmanGrp
         ydk::YLeaf cipsisakmppollifetime; //type: int32
 
-}; // CISCOIPSECMIB::Cipsisakmppolicytable::Cipsisakmppolicyentry
+}; // CISCOIPSECMIB::CipsIsakmpPolicyTable::CipsIsakmpPolicyEntry
 
 
-class CISCOIPSECMIB::Cipsstaticcryptomapsettable : public ydk::Entity
+class CISCOIPSECMIB::CipsStaticCryptomapSetTable : public ydk::Entity
 {
     public:
-        Cipsstaticcryptomapsettable();
-        ~Cipsstaticcryptomapsettable();
+        CipsStaticCryptomapSetTable();
+        ~CipsStaticCryptomapSetTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -251,18 +251,18 @@ class CISCOIPSECMIB::Cipsstaticcryptomapsettable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsstaticcryptomapsetentry; //type: CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry
+        class CipsStaticCryptomapSetEntry; //type: CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry> > cipsstaticcryptomapsetentry;
+        ydk::YList cipsstaticcryptomapsetentry;
         
-}; // CISCOIPSECMIB::Cipsstaticcryptomapsettable
+}; // CISCOIPSECMIB::CipsStaticCryptomapSetTable
 
 
-class CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry : public ydk::Entity
+class CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry : public ydk::Entity
 {
     public:
-        Cipsstaticcryptomapsetentry();
-        ~Cipsstaticcryptomapsetentry();
+        CipsStaticCryptomapSetEntry();
+        ~CipsStaticCryptomapSetEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -284,14 +284,14 @@ class CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry : 
         ydk::YLeaf cipsstaticcryptomapsetnumdisc; //type: uint32
         ydk::YLeaf cipsstaticcryptomapsetnumsas; //type: uint32
 
-}; // CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry
+}; // CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry
 
 
-class CISCOIPSECMIB::Cipsdynamiccryptomapsettable : public ydk::Entity
+class CISCOIPSECMIB::CipsDynamicCryptomapSetTable : public ydk::Entity
 {
     public:
-        Cipsdynamiccryptomapsettable();
-        ~Cipsdynamiccryptomapsettable();
+        CipsDynamicCryptomapSetTable();
+        ~CipsDynamicCryptomapSetTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -304,18 +304,18 @@ class CISCOIPSECMIB::Cipsdynamiccryptomapsettable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsdynamiccryptomapsetentry; //type: CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry
+        class CipsDynamicCryptomapSetEntry; //type: CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry> > cipsdynamiccryptomapsetentry;
+        ydk::YList cipsdynamiccryptomapsetentry;
         
-}; // CISCOIPSECMIB::Cipsdynamiccryptomapsettable
+}; // CISCOIPSECMIB::CipsDynamicCryptomapSetTable
 
 
-class CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry : public ydk::Entity
+class CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry : public ydk::Entity
 {
     public:
-        Cipsdynamiccryptomapsetentry();
-        ~Cipsdynamiccryptomapsetentry();
+        CipsDynamicCryptomapSetEntry();
+        ~CipsDynamicCryptomapSetEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -332,14 +332,14 @@ class CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry 
         ydk::YLeaf cipsdynamiccryptomapsetsize; //type: uint32
         ydk::YLeaf cipsdynamiccryptomapsetnumassoc; //type: uint32
 
-}; // CISCOIPSECMIB::Cipsdynamiccryptomapsettable::Cipsdynamiccryptomapsetentry
+}; // CISCOIPSECMIB::CipsDynamicCryptomapSetTable::CipsDynamicCryptomapSetEntry
 
 
-class CISCOIPSECMIB::Cipsstaticcryptomaptable : public ydk::Entity
+class CISCOIPSECMIB::CipsStaticCryptomapTable : public ydk::Entity
 {
     public:
-        Cipsstaticcryptomaptable();
-        ~Cipsstaticcryptomaptable();
+        CipsStaticCryptomapTable();
+        ~CipsStaticCryptomapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -352,18 +352,18 @@ class CISCOIPSECMIB::Cipsstaticcryptomaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipsstaticcryptomapentry; //type: CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry
+        class CipsStaticCryptomapEntry; //type: CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry> > cipsstaticcryptomapentry;
+        ydk::YList cipsstaticcryptomapentry;
         
-}; // CISCOIPSECMIB::Cipsstaticcryptomaptable
+}; // CISCOIPSECMIB::CipsStaticCryptomapTable
 
 
-class CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry : public ydk::Entity
+class CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry : public ydk::Entity
 {
     public:
-        Cipsstaticcryptomapentry();
-        ~Cipsstaticcryptomapentry();
+        CipsStaticCryptomapEntry();
+        ~CipsStaticCryptomapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -376,7 +376,7 @@ class CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::cipsstaticcryptomapsetname)
+        //type: string (refers to cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry::cipsstaticcryptomapsetname)
         ydk::YLeaf cipsstaticcryptomapsetname;
         ydk::YLeaf cipsstaticcryptomappriority; //type: int32
         ydk::YLeaf cipsstaticcryptomaptype; //type: CryptomapType
@@ -388,14 +388,14 @@ class CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry : public
         ydk::YLeaf cipsstaticcryptomaplifesize; //type: int32
         ydk::YLeaf cipsstaticcryptomaplevelhost; //type: boolean
 
-}; // CISCOIPSECMIB::Cipsstaticcryptomaptable::Cipsstaticcryptomapentry
+}; // CISCOIPSECMIB::CipsStaticCryptomapTable::CipsStaticCryptomapEntry
 
 
-class CISCOIPSECMIB::Cipscryptomapsetiftable : public ydk::Entity
+class CISCOIPSECMIB::CipsCryptomapSetIfTable : public ydk::Entity
 {
     public:
-        Cipscryptomapsetiftable();
-        ~Cipscryptomapsetiftable();
+        CipsCryptomapSetIfTable();
+        ~CipsCryptomapSetIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -408,18 +408,18 @@ class CISCOIPSECMIB::Cipscryptomapsetiftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipscryptomapsetifentry; //type: CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry
+        class CipsCryptomapSetIfEntry; //type: CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry> > cipscryptomapsetifentry;
+        ydk::YList cipscryptomapsetifentry;
         
-}; // CISCOIPSECMIB::Cipscryptomapsetiftable
+}; // CISCOIPSECMIB::CipsCryptomapSetIfTable
 
 
-class CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry : public ydk::Entity
+class CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry : public ydk::Entity
 {
     public:
-        Cipscryptomapsetifentry();
-        ~Cipscryptomapsetifentry();
+        CipsCryptomapSetIfEntry();
+        ~CipsCryptomapSetIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -432,14 +432,23 @@ class CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: string (refers to cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::Cipsstaticcryptomapsettable::Cipsstaticcryptomapsetentry::cipsstaticcryptomapsetname)
+        //type: string (refers to cisco_ios_xe::CISCO_IPSEC_MIB::CISCOIPSECMIB::CipsStaticCryptomapSetTable::CipsStaticCryptomapSetEntry::cipsstaticcryptomapsetname)
         ydk::YLeaf cipsstaticcryptomapsetname;
         ydk::YLeaf cipscryptomapsetifvirtual; //type: boolean
         ydk::YLeaf cipscryptomapsetifstatus; //type: CryptomapSetBindStatus
 
-}; // CISCOIPSECMIB::Cipscryptomapsetiftable::Cipscryptomapsetifentry
+}; // CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry
+
+class IkeHashAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha;
+
+};
 
 class CryptomapType : public ydk::Enum
 {
@@ -453,21 +462,29 @@ class CryptomapType : public ydk::Enum
 
 };
 
-class CryptomapSetBindStatus : public ydk::Enum
+class IkeIdentityType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf attached;
-        static const ydk::Enum::YLeaf detached;
+        static const ydk::Enum::YLeaf isakmpIdTypeUNKNOWN;
+        static const ydk::Enum::YLeaf isakmpIdTypeADDRESS;
+        static const ydk::Enum::YLeaf isakmpIdTypeHOSTNAME;
 
 };
 
-class IkeHashAlgo : public ydk::Enum
+class TrapStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+
+};
+
+class EncryptAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha;
+        static const ydk::Enum::YLeaf des;
+        static const ydk::Enum::YLeaf des3;
 
 };
 
@@ -482,12 +499,12 @@ class IkeAuthMethod : public ydk::Enum
 
 };
 
-class IkeIdentityType : public ydk::Enum
+class CryptomapSetBindStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isakmpIdTypeUNKNOWN;
-        static const ydk::Enum::YLeaf isakmpIdTypeADDRESS;
-        static const ydk::Enum::YLeaf isakmpIdTypeHOSTNAME;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf detached;
 
 };
 
@@ -497,23 +514,6 @@ class DiffHellmanGrp : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf dhGroup1;
         static const ydk::Enum::YLeaf dhGroup2;
-
-};
-
-class EncryptAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf des;
-        static const ydk::Enum::YLeaf des3;
-
-};
-
-class TrapStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
 
 };
 

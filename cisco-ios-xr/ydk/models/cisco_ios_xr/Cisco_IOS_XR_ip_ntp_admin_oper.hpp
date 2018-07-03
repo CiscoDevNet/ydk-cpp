@@ -57,7 +57,7 @@ class Ntp::Racks : public ydk::Entity
 
         class Rack; //type: Ntp::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // Ntp::Racks
 
@@ -79,7 +79,7 @@ class Ntp::Racks::Rack : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Slots; //type: Ntp::Racks::Rack::Slots
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots> slots;
@@ -105,7 +105,7 @@ class Ntp::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: Ntp::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // Ntp::Racks::Rack::Slots
 
@@ -126,7 +126,7 @@ class Ntp::Racks::Rack::Slots::Slot : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Instances; //type: Ntp::Racks::Rack::Slots::Slot::Instances
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances> instances;
@@ -152,7 +152,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances : public ydk::Entity
 
         class Instance; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance> > instance;
+        ydk::YList instance;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances
 
@@ -173,7 +173,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class Status; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status
         class Associations; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations
         class AssociationsDetail; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail
@@ -378,7 +378,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations : public 
         ydk::YLeaf sys_leap; //type: NtpLeap
         class PeerSummaryInfo; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo> > peer_summary_info;
+        ydk::YList peer_summary_info;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations
 
@@ -459,7 +459,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail : p
         ydk::YLeaf sys_leap; //type: NtpLeap
         class PeerDetailInfo; //type: Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo> > peer_detail_info;
+        ydk::YList peer_detail_info;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail
 
@@ -503,7 +503,7 @@ class Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pe
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime> originate_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime> receive_time;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime> transmit_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_ntp_admin_oper::Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail> > filter_detail;
+        ydk::YList filter_detail;
         
 }; // Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo
 

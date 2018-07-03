@@ -17,7 +17,7 @@ Ssespan::Ssespan()
 {
     nodes->parent = this;
 
-    yang_name = "ssespan"; yang_parent_name = "Cisco-IOS-XR-sse-span-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ssespan"; yang_parent_name = "Cisco-IOS-XR-sse-span-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ssespan::~Ssespan()
@@ -26,6 +26,7 @@ Ssespan::~Ssespan()
 
 bool Ssespan::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ssespan::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ssespan::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ssespan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ssespan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssespan::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Ssespan::Nodes::~Nodes()
 
 bool Ssespan::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ssespan::Nodes::has_data() const
 
 bool Ssespan::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ssespan::Nodes::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Ssespan::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool Ssespan::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Ssespan::Nodes::Node::Node()
     :
     node{YType::str, "node"}
-    	,
+        ,
     span_mirr_infos(std::make_shared<Ssespan::Nodes::Node::SpanMirrInfos>())
-	,spanudf(std::make_shared<Ssespan::Nodes::Node::Spanudf>())
-	,span_sess_infos(std::make_shared<Ssespan::Nodes::Node::SpanSessInfos>())
+    , spanudf(std::make_shared<Ssespan::Nodes::Node::Spanudf>())
+    , span_sess_infos(std::make_shared<Ssespan::Nodes::Node::SpanSessInfos>())
 {
     span_mirr_infos->parent = this;
     spanudf->parent = this;
     span_sess_infos->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ssespan::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ Ssespan::Nodes::Node::~Node()
 
 bool Ssespan::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (span_mirr_infos !=  nullptr && span_mirr_infos->has_data())
 	|| (spanudf !=  nullptr && spanudf->has_data())
@@ -260,7 +265,8 @@ std::string Ssespan::Nodes::Node::get_absolute_path() const
 std::string Ssespan::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -354,9 +360,11 @@ bool Ssespan::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfos()
+    :
+    span_mirr_info(this, {"intf_name"})
 {
 
-    yang_name = "span-mirr-infos"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "span-mirr-infos"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssespan::Nodes::Node::SpanMirrInfos::~SpanMirrInfos()
@@ -365,7 +373,8 @@ Ssespan::Nodes::Node::SpanMirrInfos::~SpanMirrInfos()
 
 bool Ssespan::Nodes::Node::SpanMirrInfos::has_data() const
 {
-    for (std::size_t index=0; index<span_mirr_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<span_mirr_info.len(); index++)
     {
         if(span_mirr_info[index]->has_data())
             return true;
@@ -375,7 +384,7 @@ bool Ssespan::Nodes::Node::SpanMirrInfos::has_data() const
 
 bool Ssespan::Nodes::Node::SpanMirrInfos::has_operation() const
 {
-    for (std::size_t index=0; index<span_mirr_info.size(); index++)
+    for (std::size_t index=0; index<span_mirr_info.len(); index++)
     {
         if(span_mirr_info[index]->has_operation())
             return true;
@@ -405,7 +414,7 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanMirrInfos::get_child_by_name(c
     {
         auto c = std::make_shared<Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo>();
         c->parent = this;
-        span_mirr_info.push_back(c);
+        span_mirr_info.append(c);
         return c;
     }
 
@@ -417,7 +426,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::SpanMirrInf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : span_mirr_info)
+    for (auto c : span_mirr_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -471,7 +480,7 @@ Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::SpanMirrInfo()
     sft_hw_data{YType::uint32, "sft-hw-data"}
 {
 
-    yang_name = "span-mirr-info"; yang_parent_name = "span-mirr-infos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "span-mirr-info"; yang_parent_name = "span-mirr-infos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::~SpanMirrInfo()
@@ -480,6 +489,7 @@ Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::~SpanMirrInfo()
 
 bool Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : uidb.getYLeafs())
     {
         if(leaf.is_set)
@@ -556,7 +566,8 @@ bool Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::has_operation() const
 std::string Ssespan::Nodes::Node::SpanMirrInfos::SpanMirrInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "span-mirr-info" <<"[intf-name='" <<intf_name <<"']";
+    path_buffer << "span-mirr-info";
+    ADD_KEY_TOKEN(intf_name, "intf-name");
     return path_buffer.str();
 }
 
@@ -867,7 +878,7 @@ Ssespan::Nodes::Node::Spanudf::Spanudf()
     udf_hw_data{YType::uint32, "udf-hw-data"}
 {
 
-    yang_name = "spanudf"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spanudf"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssespan::Nodes::Node::Spanudf::~Spanudf()
@@ -876,6 +887,7 @@ Ssespan::Nodes::Node::Spanudf::~Spanudf()
 
 bool Ssespan::Nodes::Node::Spanudf::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : udf_hdr.getYLeafs())
     {
         if(leaf.is_set)
@@ -1033,9 +1045,11 @@ bool Ssespan::Nodes::Node::Spanudf::has_leaf_or_child_of_name(const std::string 
 }
 
 Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfos()
+    :
+    span_sess_info(this, {"session_id", "session_class"})
 {
 
-    yang_name = "span-sess-infos"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "span-sess-infos"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssespan::Nodes::Node::SpanSessInfos::~SpanSessInfos()
@@ -1044,7 +1058,8 @@ Ssespan::Nodes::Node::SpanSessInfos::~SpanSessInfos()
 
 bool Ssespan::Nodes::Node::SpanSessInfos::has_data() const
 {
-    for (std::size_t index=0; index<span_sess_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<span_sess_info.len(); index++)
     {
         if(span_sess_info[index]->has_data())
             return true;
@@ -1054,7 +1069,7 @@ bool Ssespan::Nodes::Node::SpanSessInfos::has_data() const
 
 bool Ssespan::Nodes::Node::SpanSessInfos::has_operation() const
 {
-    for (std::size_t index=0; index<span_sess_info.size(); index++)
+    for (std::size_t index=0; index<span_sess_info.len(); index++)
     {
         if(span_sess_info[index]->has_operation())
             return true;
@@ -1084,7 +1099,7 @@ std::shared_ptr<Entity> Ssespan::Nodes::Node::SpanSessInfos::get_child_by_name(c
     {
         auto c = std::make_shared<Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo>();
         c->parent = this;
-        span_sess_info.push_back(c);
+        span_sess_info.append(c);
         return c;
     }
 
@@ -1096,7 +1111,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ssespan::Nodes::Node::SpanSessInf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : span_sess_info)
+    for (auto c : span_sess_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1143,7 +1158,7 @@ Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::SpanSessInfo()
     sdt_hw_data{YType::uint32, "sdt-hw-data"}
 {
 
-    yang_name = "span-sess-info"; yang_parent_name = "span-sess-infos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "span-sess-info"; yang_parent_name = "span-sess-infos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::~SpanSessInfo()
@@ -1152,6 +1167,7 @@ Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::~SpanSessInfo()
 
 bool Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : src_ip.getYLeafs())
     {
         if(leaf.is_set)
@@ -1223,7 +1239,9 @@ bool Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::has_operation() const
 std::string Ssespan::Nodes::Node::SpanSessInfos::SpanSessInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "span-sess-info" <<"[session-id='" <<session_id <<"']" <<"[session-class='" <<session_class <<"']";
+    path_buffer << "span-sess-info";
+    ADD_KEY_TOKEN(session_id, "session-id");
+    ADD_KEY_TOKEN(session_class, "session-class");
     return path_buffer.str();
 }
 

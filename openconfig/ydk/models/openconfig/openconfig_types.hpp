@@ -19,14 +19,14 @@ class ADDRESSFAMILY : public virtual ydk::Identity
 
 }; // ADDRESSFAMILY
 
-class IPV4 : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
+class L2ETHERNET : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
 {
     public:
-        IPV4();
-        ~IPV4();
+        L2ETHERNET();
+        ~L2ETHERNET();
 
 
-}; // IPV4
+}; // L2ETHERNET
 
 class IPV6 : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
 {
@@ -46,14 +46,14 @@ class MPLS : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Id
 
 }; // MPLS
 
-class L2ETHERNET : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
+class IPV4 : public openconfig::openconfig_types::ADDRESSFAMILY, virtual ydk::Identity
 {
     public:
-        L2ETHERNET();
-        ~L2ETHERNET();
+        IPV4();
+        ~IPV4();
 
 
-}; // L2ETHERNET
+}; // IPV4
 
 
 }

@@ -22,12 +22,12 @@ Watchdog::Watchdog()
     restart_cpuhog_disable{YType::empty, "restart-cpuhog-disable"},
     restart_memoryhog_disable{YType::empty, "restart-memoryhog-disable"},
     overload_throttle_timeout{YType::uint32, "overload-throttle-timeout"}
-    	,
+        ,
     threshold_memory(std::make_shared<Watchdog::ThresholdMemory>())
 {
     threshold_memory->parent = this;
 
-    yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-wd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "watchdog"; yang_parent_name = "Cisco-IOS-XR-wd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Watchdog::~Watchdog()
@@ -36,6 +36,7 @@ Watchdog::~Watchdog()
 
 bool Watchdog::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_memory_switchover.is_set
 	|| restart_deadlock_disable.is_set
 	|| monitor_qnet_timeout.is_set
@@ -251,7 +252,7 @@ Watchdog::ThresholdMemory::ThresholdMemory()
     critical{YType::uint32, "critical"}
 {
 
-    yang_name = "threshold-memory"; yang_parent_name = "watchdog"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold-memory"; yang_parent_name = "watchdog"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Watchdog::ThresholdMemory::~ThresholdMemory()
@@ -260,6 +261,7 @@ Watchdog::ThresholdMemory::~ThresholdMemory()
 
 bool Watchdog::ThresholdMemory::has_data() const
 {
+    if (is_presence_container) return true;
     return minor.is_set
 	|| severe.is_set
 	|| critical.is_set;

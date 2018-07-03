@@ -14,9 +14,11 @@ namespace ietf_yang_library {
 ModulesState::ModulesState()
     :
     module_set_id{YType::str, "module-set-id"}
+        ,
+    module(this, {"name", "revision"})
 {
 
-    yang_name = "modules-state"; yang_parent_name = "ietf-yang-library"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "modules-state"; yang_parent_name = "ietf-yang-library"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ModulesState::~ModulesState()
@@ -25,7 +27,8 @@ ModulesState::~ModulesState()
 
 bool ModulesState::has_data() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_data())
             return true;
@@ -35,7 +38,7 @@ bool ModulesState::has_data() const
 
 bool ModulesState::has_operation() const
 {
-    for (std::size_t index=0; index<module.size(); index++)
+    for (std::size_t index=0; index<module.len(); index++)
     {
         if(module[index]->has_operation())
             return true;
@@ -67,7 +70,7 @@ std::shared_ptr<Entity> ModulesState::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<ModulesState::Module>();
         c->parent = this;
-        module.push_back(c);
+        module.append(c);
         return c;
     }
 
@@ -79,7 +82,7 @@ std::map<std::string, std::shared_ptr<Entity>> ModulesState::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : module)
+    for (auto c : module.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -148,9 +151,12 @@ ModulesState::Module::Module()
     namespace_{YType::str, "namespace"},
     feature{YType::str, "feature"},
     conformance_type{YType::enumeration, "conformance-type"}
+        ,
+    deviation(this, {"name", "revision"})
+    , submodule(this, {"name", "revision"})
 {
 
-    yang_name = "module"; yang_parent_name = "modules-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "module"; yang_parent_name = "modules-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ModulesState::Module::~Module()
@@ -159,12 +165,13 @@ ModulesState::Module::~Module()
 
 bool ModulesState::Module::has_data() const
 {
-    for (std::size_t index=0; index<deviation.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<deviation.len(); index++)
     {
         if(deviation[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<submodule.size(); index++)
+    for (std::size_t index=0; index<submodule.len(); index++)
     {
         if(submodule[index]->has_data())
             return true;
@@ -183,12 +190,12 @@ bool ModulesState::Module::has_data() const
 
 bool ModulesState::Module::has_operation() const
 {
-    for (std::size_t index=0; index<deviation.size(); index++)
+    for (std::size_t index=0; index<deviation.len(); index++)
     {
         if(deviation[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<submodule.size(); index++)
+    for (std::size_t index=0; index<submodule.len(); index++)
     {
         if(submodule[index]->has_operation())
             return true;
@@ -217,7 +224,9 @@ std::string ModulesState::Module::get_absolute_path() const
 std::string ModulesState::Module::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "module" <<"[name='" <<name <<"']" <<"[revision='" <<revision <<"']";
+    path_buffer << "module";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(revision, "revision");
     return path_buffer.str();
 }
 
@@ -243,7 +252,7 @@ std::shared_ptr<Entity> ModulesState::Module::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<ModulesState::Module::Deviation>();
         c->parent = this;
-        deviation.push_back(c);
+        deviation.append(c);
         return c;
     }
 
@@ -251,7 +260,7 @@ std::shared_ptr<Entity> ModulesState::Module::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<ModulesState::Module::Submodule>();
         c->parent = this;
-        submodule.push_back(c);
+        submodule.append(c);
         return c;
     }
 
@@ -263,7 +272,7 @@ std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : deviation)
+    for (auto c : deviation.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -272,7 +281,7 @@ std::map<std::string, std::shared_ptr<Entity>> ModulesState::Module::get_childre
     }
 
     count = 0;
-    for (auto const & c : submodule)
+    for (auto c : submodule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -362,7 +371,7 @@ ModulesState::Module::Deviation::Deviation()
     revision{YType::str, "revision"}
 {
 
-    yang_name = "deviation"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "deviation"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ModulesState::Module::Deviation::~Deviation()
@@ -371,6 +380,7 @@ ModulesState::Module::Deviation::~Deviation()
 
 bool ModulesState::Module::Deviation::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| revision.is_set;
 }
@@ -385,7 +395,9 @@ bool ModulesState::Module::Deviation::has_operation() const
 std::string ModulesState::Module::Deviation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "deviation" <<"[name='" <<name <<"']" <<"[revision='" <<revision <<"']";
+    path_buffer << "deviation";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(revision, "revision");
     return path_buffer.str();
 }
 
@@ -454,7 +466,7 @@ ModulesState::Module::Submodule::Submodule()
     schema{YType::str, "schema"}
 {
 
-    yang_name = "submodule"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "submodule"; yang_parent_name = "module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ModulesState::Module::Submodule::~Submodule()
@@ -463,6 +475,7 @@ ModulesState::Module::Submodule::~Submodule()
 
 bool ModulesState::Module::Submodule::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| revision.is_set
 	|| schema.is_set;
@@ -479,7 +492,9 @@ bool ModulesState::Module::Submodule::has_operation() const
 std::string ModulesState::Module::Submodule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "submodule" <<"[name='" <<name <<"']" <<"[revision='" <<revision <<"']";
+    path_buffer << "submodule";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(revision, "revision");
     return path_buffer.str();
 }
 

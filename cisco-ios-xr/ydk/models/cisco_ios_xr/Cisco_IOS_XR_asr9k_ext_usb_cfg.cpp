@@ -16,7 +16,7 @@ HardwareModuleExtUsb::HardwareModuleExtUsb()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "hardware-module-ext-usb"; yang_parent_name = "Cisco-IOS-XR-asr9k-ext-usb-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module-ext-usb"; yang_parent_name = "Cisco-IOS-XR-asr9k-ext-usb-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModuleExtUsb::~HardwareModuleExtUsb()
@@ -25,6 +25,7 @@ HardwareModuleExtUsb::~HardwareModuleExtUsb()
 
 bool HardwareModuleExtUsb::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 

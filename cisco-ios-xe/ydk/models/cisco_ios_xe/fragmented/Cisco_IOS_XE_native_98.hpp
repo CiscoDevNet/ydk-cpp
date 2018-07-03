@@ -16,29 +16,6 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString : public ydk::Entity
-{
-    public:
-        KeyString();
-        ~KeyString();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf encrypt; //type: Encrypt
-        ydk::YLeaf string; //type: string
-        class Encrypt;
-
-}; // Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString
-
-
 class Native::Interface::Tunnel::Ospfv3::Manet : public ydk::Entity
 {
     public:
@@ -248,11 +225,11 @@ class Native::Interface::Tunnel::Ospfv3::PrefixSuppression : public ydk::Entity
 }; // Native::Interface::Tunnel::Ospfv3::PrefixSuppression
 
 
-class Native::Interface::Tunnel::Udld : public ydk::Entity
+class Native::Interface::Tunnel::Ntp : public ydk::Entity
 {
     public:
-        Udld();
-        ~Udld();
+        Ntp();
+        ~Ntp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -264,18 +241,19 @@ class Native::Interface::Tunnel::Udld : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Port; //type: Native::Interface::Tunnel::Udld::Port
+        ydk::YLeaf broadcast; //type: empty
+        class BroadcastOption; //type: Native::Interface::Tunnel::Ntp::BroadcastOption
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Udld::Port> port; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ntp::BroadcastOption> broadcast_option;
         
-}; // Native::Interface::Tunnel::Udld
+}; // Native::Interface::Tunnel::Ntp
 
 
-class Native::Interface::Tunnel::Udld::Port : public ydk::Entity
+class Native::Interface::Tunnel::Ntp::BroadcastOption : public ydk::Entity
 {
     public:
-        Port();
-        ~Port();
+        BroadcastOption();
+        ~BroadcastOption();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,17 +265,18 @@ class Native::Interface::Tunnel::Udld::Port : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf aggressive; //type: empty
-        ydk::YLeaf disable; //type: empty
+        class Broadcast; //type: Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast
 
-}; // Native::Interface::Tunnel::Udld::Port
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast> broadcast;
+        
+}; // Native::Interface::Tunnel::Ntp::BroadcastOption
 
 
-class Native::Interface::Tunnel::Umbrella : public ydk::Entity
+class Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast : public ydk::Entity
 {
     public:
-        Umbrella();
-        ~Umbrella();
+        Broadcast();
+        ~Broadcast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -309,17 +288,16 @@ class Native::Interface::Tunnel::Umbrella : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf out; //type: empty
-        ydk::YLeaf in; //type: string
+        ydk::YLeaf client; //type: empty
 
-}; // Native::Interface::Tunnel::Umbrella
+}; // Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast
 
 
-class Native::Interface::Tunnel::Utd : public ydk::Entity
+class Native::Interface::Tunnel::Cdp : public ydk::Entity
 {
     public:
-        Utd();
-        ~Utd();
+        Cdp();
+        ~Cdp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -331,16 +309,19 @@ class Native::Interface::Tunnel::Utd : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf enable; //type: boolean
+        class Tlv; //type: Native::Interface::Tunnel::Cdp::Tlv
 
-}; // Native::Interface::Tunnel::Utd
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cdp::Tlv> tlv;
+        
+}; // Native::Interface::Tunnel::Cdp
 
 
-class Native::Interface::Tunnel::ZoneMember : public ydk::Entity
+class Native::Interface::Tunnel::Cdp::Tlv : public ydk::Entity
 {
     public:
-        ZoneMember();
-        ~ZoneMember();
+        Tlv();
+        ~Tlv();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -352,9 +333,35 @@ class Native::Interface::Tunnel::ZoneMember : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf security; //type: string
+        ydk::YLeaf server_location; //type: empty
+        ydk::YLeaf location; //type: empty
+        class App; //type: Native::Interface::Tunnel::Cdp::Tlv::App
 
-}; // Native::Interface::Tunnel::ZoneMember
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cdp::Tlv::App> app; // presence node
+        
+}; // Native::Interface::Tunnel::Cdp::Tlv
+
+
+class Native::Interface::Tunnel::Cdp::Tlv::App : public ydk::Entity
+{
+    public:
+        App();
+        ~App();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tlvtype; //type: uint16
+        ydk::YLeaf value_; //type: string
+
+}; // Native::Interface::Tunnel::Cdp::Tlv::App
 
 
 class Native::Interface::VirtualTemplate : public ydk::Entity
@@ -395,7 +402,7 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         class Backup; //type: Native::Interface::VirtualTemplate::Backup
         class Cemoudp; //type: Native::Interface::VirtualTemplate::Cemoudp
         class CwsTunnel; //type: Native::Interface::VirtualTemplate::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::VirtualTemplate::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::VirtualTemplate::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::VirtualTemplate::Encapsulation
         class FairQueueConf; //type: Native::Interface::VirtualTemplate::FairQueueConf
         class FairQueue; //type: Native::Interface::VirtualTemplate::FairQueue
@@ -424,6 +431,12 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         class RcvQueue; //type: Native::Interface::VirtualTemplate::RcvQueue
         class Peer; //type: Native::Interface::VirtualTemplate::Peer
         class PmPath; //type: Native::Interface::VirtualTemplate::PmPath
+        class ServicePolicy; //type: Native::Interface::VirtualTemplate::ServicePolicy
+        class Utd; //type: Native::Interface::VirtualTemplate::Utd
+        class Cts; //type: Native::Interface::VirtualTemplate::Cts
+        class Umbrella; //type: Native::Interface::VirtualTemplate::Umbrella
+        class Ppp; //type: Native::Interface::VirtualTemplate::Ppp
+        class Snmp; //type: Native::Interface::VirtualTemplate::Snmp
         class CarrierDelay; //type: Native::Interface::VirtualTemplate::CarrierDelay
         class ChannelGroup; //type: Native::Interface::VirtualTemplate::ChannelGroup
         class Ethernet; //type: Native::Interface::VirtualTemplate::Ethernet
@@ -435,20 +448,14 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         class Pppoe; //type: Native::Interface::VirtualTemplate::Pppoe
         class Service; //type: Native::Interface::VirtualTemplate::Service
         class Lacp; //type: Native::Interface::VirtualTemplate::Lacp
-        class Cdp; //type: Native::Interface::VirtualTemplate::Cdp
-        class Snmp; //type: Native::Interface::VirtualTemplate::Snmp
+        class EtAnalytics; //type: Native::Interface::VirtualTemplate::EtAnalytics
+        class ZoneMember; //type: Native::Interface::VirtualTemplate::ZoneMember
         class Nhrp; //type: Native::Interface::VirtualTemplate::Nhrp
         class Tunnel; //type: Native::Interface::VirtualTemplate::Tunnel
         class Crypto; //type: Native::Interface::VirtualTemplate::Crypto
-        class Cts; //type: Native::Interface::VirtualTemplate::Cts
-        class EtAnalytics; //type: Native::Interface::VirtualTemplate::EtAnalytics
-        class ServicePolicy; //type: Native::Interface::VirtualTemplate::ServicePolicy
-        class Ntp; //type: Native::Interface::VirtualTemplate::Ntp
-        class Ppp; //type: Native::Interface::VirtualTemplate::Ppp
         class Mab; //type: Native::Interface::VirtualTemplate::Mab
-        class Umbrella; //type: Native::Interface::VirtualTemplate::Umbrella
-        class Utd; //type: Native::Interface::VirtualTemplate::Utd
-        class ZoneMember; //type: Native::Interface::VirtualTemplate::ZoneMember
+        class Ntp; //type: Native::Interface::VirtualTemplate::Ntp
+        class Cdp; //type: Native::Interface::VirtualTemplate::Cdp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Switchport> switchport;
@@ -457,7 +464,7 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::FairQueue> fair_queue;
@@ -468,7 +475,7 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Vrf> vrf;
@@ -486,6 +493,12 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Umbrella> umbrella;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp> ppp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Snmp> snmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ethernet> ethernet;
@@ -497,20 +510,14 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Lacp> lacp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cdp> cdp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Snmp> snmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ZoneMember> zone_member;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Nhrp> nhrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel> tunnel;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp> ppp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Mab> mab; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cdp> cdp;
                 class Type;
         class IfState;
         class ServiceInsertion;
@@ -913,11 +920,11 @@ class Native::Interface::VirtualTemplate::CwsTunnel::Out : public ydk::Entity
 }; // Native::Interface::VirtualTemplate::CwsTunnel::Out
 
 
-class Native::Interface::VirtualTemplate::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::VirtualTemplate::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -932,16 +939,16 @@ class Native::Interface::VirtualTemplate::L2ProtocolTunnel : public ydk::Entity
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::VirtualTemplate::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::VirtualTemplate::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::VirtualTemplate::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::VirtualTemplate::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::VirtualTemplate::L2ProtocolTunnel
+}; // Native::Interface::VirtualTemplate::L2protocolTunnel
 
 
-class Native::Interface::VirtualTemplate::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::VirtualTemplate::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -962,10 +969,10 @@ class Native::Interface::VirtualTemplate::L2ProtocolTunnel::DropThreshold : publ
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::VirtualTemplate::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::VirtualTemplate::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::VirtualTemplate::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::VirtualTemplate::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -986,7 +993,7 @@ class Native::Interface::VirtualTemplate::L2ProtocolTunnel::ShutdownThreshold : 
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::VirtualTemplate::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::VirtualTemplate::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::VirtualTemplate::Encapsulation : public ydk::Entity
@@ -1405,7 +1412,7 @@ class Native::Interface::VirtualTemplate::Isis::Authentication::KeyChain : publi
         ydk::YLeaf name; //type: string
         class KeyChainList; //type: Native::Interface::VirtualTemplate::Isis::Authentication::KeyChain::KeyChainList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::Authentication::KeyChain::KeyChainList> > key_chain_list;
+        ydk::YList key_chain_list;
         
 }; // Native::Interface::VirtualTemplate::Isis::Authentication::KeyChain
 
@@ -1494,7 +1501,7 @@ class Native::Interface::VirtualTemplate::Isis::CsnpInterval : public ydk::Entit
         ydk::YLeaf value_; //type: uint16
         class CsnpIntervalList; //type: Native::Interface::VirtualTemplate::Isis::CsnpInterval::CsnpIntervalList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::CsnpInterval::CsnpIntervalList> > csnp_interval_list;
+        ydk::YList csnp_interval_list;
         
 }; // Native::Interface::VirtualTemplate::Isis::CsnpInterval
 
@@ -1585,7 +1592,7 @@ class Native::Interface::VirtualTemplate::Isis::HelloInterval : public ydk::Enti
         ydk::YLeaf value_; //type: one of uint16, enumeration
         class HelloIntervalList; //type: Native::Interface::VirtualTemplate::Isis::HelloInterval::HelloIntervalList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::HelloInterval::HelloIntervalList> > hello_interval_list;
+        ydk::YList hello_interval_list;
                 class Value_;
 
 }; // Native::Interface::VirtualTemplate::Isis::HelloInterval
@@ -1634,7 +1641,7 @@ class Native::Interface::VirtualTemplate::Isis::HelloMultiplier : public ydk::En
         ydk::YLeaf value_; //type: uint16
         class HelloMultiplierList; //type: Native::Interface::VirtualTemplate::Isis::HelloMultiplier::HelloMultiplierList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::HelloMultiplier::HelloMultiplierList> > hello_multiplier_list;
+        ydk::YList hello_multiplier_list;
         
 }; // Native::Interface::VirtualTemplate::Isis::HelloMultiplier
 
@@ -1707,7 +1714,7 @@ class Native::Interface::VirtualTemplate::Isis::Ipv6::Metric : public ydk::Entit
         ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::VirtualTemplate::Isis::Ipv6::Metric::MetricList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::Ipv6::Metric::MetricList> > metric_list;
+        ydk::YList metric_list;
                 class Value_;
 
 }; // Native::Interface::VirtualTemplate::Isis::Ipv6::Metric
@@ -1777,7 +1784,7 @@ class Native::Interface::VirtualTemplate::Isis::Metric : public ydk::Entity
         ydk::YLeaf value_; //type: one of uint32, enumeration
         class MetricList; //type: Native::Interface::VirtualTemplate::Isis::Metric::MetricList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::Metric::MetricList> > metric_list;
+        ydk::YList metric_list;
                 class Value_;
 
 }; // Native::Interface::VirtualTemplate::Isis::Metric
@@ -1826,7 +1833,7 @@ class Native::Interface::VirtualTemplate::Isis::Password : public ydk::Entity
         ydk::YLeaf password; //type: string
         class PasswordList; //type: Native::Interface::VirtualTemplate::Isis::Password::PasswordList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::Password::PasswordList> > password_list;
+        ydk::YList password_list;
         
 }; // Native::Interface::VirtualTemplate::Isis::Password
 
@@ -1873,7 +1880,7 @@ class Native::Interface::VirtualTemplate::Isis::Priority : public ydk::Entity
         ydk::YLeaf value_; //type: uint8
         class PriorityList; //type: Native::Interface::VirtualTemplate::Isis::Priority::PriorityList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Isis::Priority::PriorityList> > priority_list;
+        ydk::YList priority_list;
         
 }; // Native::Interface::VirtualTemplate::Isis::Priority
 
@@ -2339,7 +2346,7 @@ class Native::Interface::VirtualTemplate::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Rip> rip;
@@ -2679,7 +2686,7 @@ class Native::Interface::VirtualTemplate::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::VirtualTemplate::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::VirtualTemplate::Ip::Address
@@ -3203,7 +3210,7 @@ class Native::Interface::VirtualTemplate::Ip::SummaryAddress : public ydk::Entit
 
         class Eigrp; //type: Native::Interface::VirtualTemplate::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::VirtualTemplate::Ip::SummaryAddress
 
@@ -3414,7 +3421,7 @@ class Native::Interface::VirtualTemplate::Ip::Igmp : public ydk::Entity
         class JoinGroup; //type: Native::Interface::VirtualTemplate::Ip::Igmp::JoinGroup
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup> static_group;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Igmp::JoinGroup> > join_group;
+        ydk::YList join_group;
         
 }; // Native::Interface::VirtualTemplate::Ip::Igmp
 
@@ -3438,8 +3445,8 @@ class Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup : public ydk::En
         class Groups; //type: Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup::Groups
         class ClassMap; //type: Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup::ClassMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup::Groups> > groups;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup::ClassMap> > class_map;
+        ydk::YList groups;
+        ydk::YList class_map;
         
 }; // Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup
 
@@ -3460,8 +3467,8 @@ class Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup::Groups : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of enumeration, string
-        ydk::YLeafList source; //type: list of  one of enumeration, string
+        ydk::YLeaf name; //type: one of string, enumeration
+        ydk::YLeafList source; //type: list of  one of string, enumeration
         class Name;
         class Source;
 
@@ -3547,7 +3554,7 @@ class Native::Interface::VirtualTemplate::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Tcp> tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::TrafficFilter> > traffic_filter;
+        ydk::YList traffic_filter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Crypto> crypto;
         
 }; // Native::Interface::VirtualTemplate::Ipv6
@@ -3638,8 +3645,8 @@ class Native::Interface::VirtualTemplate::Ipv6::Address : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Address::Dhcp> dhcp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Address::Autoconfig> autoconfig; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Address::PrefixList> > prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ipv6::Address::LinkLocalAddress> > link_local_address;
+        ydk::YList prefix_list;
+        ydk::YList link_local_address;
         
 }; // Native::Interface::VirtualTemplate::Ipv6::Address
 
@@ -3729,14 +3736,6 @@ class Native::Interface::VirtualTemplate::Ipv6::Address::LinkLocalAddress : publ
         ydk::YLeaf link_local; //type: empty
 
 }; // Native::Interface::VirtualTemplate::Ipv6::Address::LinkLocalAddress
-
-class Native::Interface::Tunnel::Ospfv3::Encryption::Ipsec::AesCbc::Aes256::KeyString::Encrypt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_0;
-        static const ydk::Enum::YLeaf Y_7;
-
-};
 
 class Native::Interface::Tunnel::Ospfv3::Neighbor::DatabaseFilter::All : public ydk::Enum
 {

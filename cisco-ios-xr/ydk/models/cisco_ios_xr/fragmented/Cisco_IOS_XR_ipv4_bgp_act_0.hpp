@@ -697,7 +697,7 @@ class ClearBgpAfiSafiAsSoftInPrefixFilter::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpAfiSafiAsSoftInPrefixFilter::Input
 
@@ -747,7 +747,7 @@ class ClearBgpAfiSafiAsSoftIn::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpAfiSafiAsSoftIn::Input
 
@@ -797,7 +797,7 @@ class ClearBgpAfiSafiAsSoftOut::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpAfiSafiAsSoftOut::Input
 
@@ -847,7 +847,7 @@ class ClearBgpAfiSafiAsSoft::Input : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf afi_safi_name; //type: AfiSafiType
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpAfiSafiAsSoft::Input
 
@@ -2290,7 +2290,7 @@ class ClearBgpAsGraceful::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpAsGraceful::Input
 
@@ -2339,7 +2339,7 @@ class ClearBgpAs::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf as_number; //type: one of uint16, union
+        ydk::YLeaf as_number; //type: one of union, uint16
 
 }; // ClearBgpAs::Input
 
@@ -3755,6 +3755,58 @@ class ClearBgpBestpathAfiSafi::Input : public ydk::Entity
 
 }; // ClearBgpBestpathAfiSafi::Input
 
+class InstanceName : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+};
+
+class Vpnv6Safi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
+
+};
+
+class Afi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf l2vpn;
+        static const ydk::Enum::YLeaf link_state;
+        static const ydk::Enum::YLeaf vpnv4;
+        static const ydk::Enum::YLeaf vpnv6;
+
+};
+
+class VrfName : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+};
+
+class Ipv4Safi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf labeled_unicast;
+        static const ydk::Enum::YLeaf mdt;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf mvpn;
+        static const ydk::Enum::YLeaf rt_filter;
+        static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf unicast;
+
+};
+
 class AfiSafiType : public ydk::Enum
 {
     public:
@@ -3803,31 +3855,11 @@ class AfiSafiType : public ydk::Enum
 
 };
 
-class Afi : public ydk::Enum
+class Vpnv4Safi : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf l2vpn;
-        static const ydk::Enum::YLeaf link_state;
-        static const ydk::Enum::YLeaf vpnv4;
-        static const ydk::Enum::YLeaf vpnv6;
-
-};
-
-class Ipv4Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf labeled_unicast;
-        static const ydk::Enum::YLeaf mdt;
         static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf mvpn;
-        static const ydk::Enum::YLeaf rt_filter;
-        static const ydk::Enum::YLeaf sr_policy;
-        static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf unicast;
 
 };
@@ -3841,41 +3873,6 @@ class Ipv6Safi : public ydk::Enum
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf mvpn;
         static const ydk::Enum::YLeaf sr_policy;
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class L2VpnSafi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn;
-        static const ydk::Enum::YLeaf mspw;
-        static const ydk::Enum::YLeaf vpls;
-        static const ydk::Enum::YLeaf vpws;
-
-};
-
-class LinkStateSafi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link_state;
-
-};
-
-class Vpnv4Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class Vpnv6Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf unicast;
 
 };
@@ -3909,7 +3906,7 @@ class Ipv6Safi_ : public ydk::Enum
 
 };
 
-class L2VpnSafi_ : public ydk::Enum
+class L2vpnSafi : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf evpn;
@@ -3919,7 +3916,7 @@ class L2VpnSafi_ : public ydk::Enum
 
 };
 
-class LinkStateSafi_ : public ydk::Enum
+class LinkStateSafi : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf link_state;
@@ -3944,17 +3941,20 @@ class Vpnv6Safi_ : public ydk::Enum
 
 };
 
-class InstanceName : public ydk::Enum
+class L2vpnSafi_ : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf evpn;
+        static const ydk::Enum::YLeaf mspw;
+        static const ydk::Enum::YLeaf vpls;
+        static const ydk::Enum::YLeaf vpws;
 
 };
 
-class VrfName : public ydk::Enum
+class LinkStateSafi_ : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf link_state;
 
 };
 

@@ -7,9 +7,9 @@
 #include "Cisco_IOS_XE_native_93.hpp"
 #include "Cisco_IOS_XE_native_94.hpp"
 #include "Cisco_IOS_XE_native_95.hpp"
-#include "Cisco_IOS_XE_native_98.hpp"
-#include "Cisco_IOS_XE_native_97.hpp"
 #include "Cisco_IOS_XE_native_96.hpp"
+#include "Cisco_IOS_XE_native_97.hpp"
+#include "Cisco_IOS_XE_native_98.hpp"
 
 using namespace ydk;
 
@@ -20,12 +20,12 @@ Native::Interface::Serial::Ip::Vrf::Vrf()
     :
     receive{YType::str, "receive"},
     sitemap{YType::str, "sitemap"}
-    	,
+        ,
     forwarding(std::make_shared<Native::Interface::Serial::Ip::Vrf::Forwarding>())
 {
     forwarding->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Vrf::~Vrf()
@@ -34,6 +34,7 @@ Native::Interface::Serial::Ip::Vrf::~Vrf()
 
 bool Native::Interface::Serial::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| sitemap.is_set
 	|| (forwarding !=  nullptr && forwarding->has_data());
@@ -133,7 +134,7 @@ Native::Interface::Serial::Ip::Vrf::Forwarding::Forwarding()
     word{YType::str, "word"}
 {
 
-    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Vrf::Forwarding::~Forwarding()
@@ -142,6 +143,7 @@ Native::Interface::Serial::Ip::Vrf::Forwarding::~Forwarding()
 
 bool Native::Interface::Serial::Ip::Vrf::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return liin_vrf.is_set
 	|| mgmtvrf.is_set
 	|| word.is_set;
@@ -236,7 +238,7 @@ Native::Interface::Serial::Ip::NoAddress::NoAddress()
     address{YType::boolean, "address"}
 {
 
-    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::NoAddress::~NoAddress()
@@ -245,6 +247,7 @@ Native::Interface::Serial::Ip::NoAddress::~NoAddress()
 
 bool Native::Interface::Serial::Ip::NoAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -311,13 +314,14 @@ bool Native::Interface::Serial::Ip::NoAddress::has_leaf_or_child_of_name(const s
 Native::Interface::Serial::Ip::Address::Address()
     :
     negotiated{YType::empty, "negotiated"}
-    	,
+        ,
     primary(std::make_shared<Native::Interface::Serial::Ip::Address::Primary>())
-	,dhcp(nullptr) // presence node
+    , secondary(this, {"address"})
+    , dhcp(nullptr) // presence node
 {
     primary->parent = this;
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Address::~Address()
@@ -326,7 +330,8 @@ Native::Interface::Serial::Ip::Address::~Address()
 
 bool Native::Interface::Serial::Ip::Address::has_data() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_data())
             return true;
@@ -338,7 +343,7 @@ bool Native::Interface::Serial::Ip::Address::has_data() const
 
 bool Native::Interface::Serial::Ip::Address::has_operation() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_operation())
             return true;
@@ -381,7 +386,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::Ip::Address::get_child_by_nam
     {
         auto c = std::make_shared<Native::Interface::Serial::Ip::Address::Secondary>();
         c->parent = this;
-        secondary.push_back(c);
+        secondary.append(c);
         return c;
     }
 
@@ -407,7 +412,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::Ip::Ad
     }
 
     count = 0;
-    for (auto const & c : secondary)
+    for (auto c : secondary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -454,7 +459,7 @@ Native::Interface::Serial::Ip::Address::Primary::Primary()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Address::Primary::~Primary()
@@ -463,6 +468,7 @@ Native::Interface::Serial::Ip::Address::Primary::~Primary()
 
 bool Native::Interface::Serial::Ip::Address::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
@@ -546,7 +552,7 @@ Native::Interface::Serial::Ip::Address::Secondary::Secondary()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Address::Secondary::~Secondary()
@@ -555,6 +561,7 @@ Native::Interface::Serial::Ip::Address::Secondary::~Secondary()
 
 bool Native::Interface::Serial::Ip::Address::Secondary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set
 	|| secondary.is_set;
@@ -571,7 +578,8 @@ bool Native::Interface::Serial::Ip::Address::Secondary::has_operation() const
 std::string Native::Interface::Serial::Ip::Address::Secondary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary" <<"[address='" <<address <<"']";
+    path_buffer << "secondary";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -647,12 +655,12 @@ bool Native::Interface::Serial::Ip::Address::Secondary::has_leaf_or_child_of_nam
 Native::Interface::Serial::Ip::Address::Dhcp::Dhcp()
     :
     hostname{YType::str, "hostname"}
-    	,
+        ,
     client_id(std::make_shared<Native::Interface::Serial::Ip::Address::Dhcp::ClientId>())
 {
     client_id->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ip::Address::Dhcp::~Dhcp()
@@ -661,6 +669,7 @@ Native::Interface::Serial::Ip::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::Serial::Ip::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| (client_id !=  nullptr && client_id->has_data());
 }
@@ -754,7 +763,7 @@ Native::Interface::Serial::Ip::Address::Dhcp::ClientId::ClientId()
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Address::Dhcp::ClientId::~ClientId()
@@ -763,6 +772,7 @@ Native::Interface::Serial::Ip::Address::Dhcp::ClientId::~ClientId()
 
 bool Native::Interface::Serial::Ip::Address::Dhcp::ClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return fastethernet.is_set
 	|| gigabitethernet.is_set
 	|| fivegigabitethernet.is_set
@@ -949,7 +959,7 @@ Native::Interface::Serial::Ip::HelloInterval::HelloInterval()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::HelloInterval::~HelloInterval()
@@ -958,6 +968,7 @@ Native::Interface::Serial::Ip::HelloInterval::~HelloInterval()
 
 bool Native::Interface::Serial::Ip::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -1037,12 +1048,12 @@ bool Native::Interface::Serial::Ip::HelloInterval::has_leaf_or_child_of_name(con
 Native::Interface::Serial::Ip::Authentication::Authentication()
     :
     key_chain(std::make_shared<Native::Interface::Serial::Ip::Authentication::KeyChain>())
-	,mode(std::make_shared<Native::Interface::Serial::Ip::Authentication::Mode>())
+    , mode(std::make_shared<Native::Interface::Serial::Ip::Authentication::Mode>())
 {
     key_chain->parent = this;
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Authentication::~Authentication()
@@ -1051,6 +1062,7 @@ Native::Interface::Serial::Ip::Authentication::~Authentication()
 
 bool Native::Interface::Serial::Ip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (key_chain !=  nullptr && key_chain->has_data())
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -1139,7 +1151,7 @@ Native::Interface::Serial::Ip::Authentication::KeyChain::KeyChain()
     name{YType::str, "name"}
 {
 
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Authentication::KeyChain::~KeyChain()
@@ -1148,6 +1160,7 @@ Native::Interface::Serial::Ip::Authentication::KeyChain::~KeyChain()
 
 bool Native::Interface::Serial::Ip::Authentication::KeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| name.is_set;
 }
@@ -1230,7 +1243,7 @@ Native::Interface::Serial::Ip::Authentication::Mode::Mode()
     md5{YType::empty, "md5"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Authentication::Mode::~Mode()
@@ -1239,6 +1252,7 @@ Native::Interface::Serial::Ip::Authentication::Mode::~Mode()
 
 bool Native::Interface::Serial::Ip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| md5.is_set;
 }
@@ -1321,7 +1335,7 @@ Native::Interface::Serial::Ip::HoldTime::HoldTime()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::HoldTime::~HoldTime()
@@ -1330,6 +1344,7 @@ Native::Interface::Serial::Ip::HoldTime::~HoldTime()
 
 bool Native::Interface::Serial::Ip::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -1413,7 +1428,7 @@ Native::Interface::Serial::Ip::HelperAddress::HelperAddress()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::HelperAddress::~HelperAddress()
@@ -1422,6 +1437,7 @@ Native::Interface::Serial::Ip::HelperAddress::~HelperAddress()
 
 bool Native::Interface::Serial::Ip::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| global.is_set
 	|| vrf.is_set;
@@ -1438,7 +1454,8 @@ bool Native::Interface::Serial::Ip::HelperAddress::has_operation() const
 std::string Native::Interface::Serial::Ip::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[address='" <<address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -1514,7 +1531,7 @@ bool Native::Interface::Serial::Ip::HelperAddress::has_leaf_or_child_of_name(con
 Native::Interface::Serial::Ip::Pim::Pim()
 {
 
-    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Pim::~Pim()
@@ -1523,6 +1540,7 @@ Native::Interface::Serial::Ip::Pim::~Pim()
 
 bool Native::Interface::Serial::Ip::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -1577,7 +1595,7 @@ Native::Interface::Serial::Ip::Policy::Policy()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Policy::~Policy()
@@ -1586,6 +1604,7 @@ Native::Interface::Serial::Ip::Policy::~Policy()
 
 bool Native::Interface::Serial::Ip::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set;
 }
 
@@ -1655,7 +1674,7 @@ Native::Interface::Serial::Ip::Rip::Rip()
 {
     authentication->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Rip::~Rip()
@@ -1664,6 +1683,7 @@ Native::Interface::Serial::Ip::Rip::~Rip()
 
 bool Native::Interface::Serial::Ip::Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -1733,12 +1753,12 @@ bool Native::Interface::Serial::Ip::Rip::has_leaf_or_child_of_name(const std::st
 Native::Interface::Serial::Ip::Rip::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     mode(std::make_shared<Native::Interface::Serial::Ip::Rip::Authentication::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Rip::Authentication::~Authentication()
@@ -1747,6 +1767,7 @@ Native::Interface::Serial::Ip::Rip::Authentication::~Authentication()
 
 bool Native::Interface::Serial::Ip::Rip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -1832,7 +1853,7 @@ Native::Interface::Serial::Ip::Rip::Authentication::Mode::Mode()
     text{YType::empty, "text"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Rip::Authentication::Mode::~Mode()
@@ -1841,6 +1862,7 @@ Native::Interface::Serial::Ip::Rip::Authentication::Mode::~Mode()
 
 bool Native::Interface::Serial::Ip::Rip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return md5.is_set
 	|| text.is_set;
 }
@@ -1922,7 +1944,7 @@ Native::Interface::Serial::Ip::RouteCacheConf::RouteCacheConf()
     route_cache{YType::boolean, "route-cache"}
 {
 
-    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::RouteCacheConf::~RouteCacheConf()
@@ -1931,6 +1953,7 @@ Native::Interface::Serial::Ip::RouteCacheConf::~RouteCacheConf()
 
 bool Native::Interface::Serial::Ip::RouteCacheConf::has_data() const
 {
+    if (is_presence_container) return true;
     return route_cache.is_set;
 }
 
@@ -2002,7 +2025,7 @@ Native::Interface::Serial::Ip::RouteCache::RouteCache()
     same_interface{YType::boolean, "same-interface"}
 {
 
-    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ip::RouteCache::~RouteCache()
@@ -2011,6 +2034,7 @@ Native::Interface::Serial::Ip::RouteCache::~RouteCache()
 
 bool Native::Interface::Serial::Ip::RouteCache::has_data() const
 {
+    if (is_presence_container) return true;
     return cef.is_set
 	|| flow.is_set
 	|| policy.is_set
@@ -2118,7 +2142,7 @@ Native::Interface::Serial::Ip::Router::Router()
     isis(nullptr) // presence node
 {
 
-    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Router::~Router()
@@ -2127,6 +2151,7 @@ Native::Interface::Serial::Ip::Router::~Router()
 
 bool Native::Interface::Serial::Ip::Router::has_data() const
 {
+    if (is_presence_container) return true;
     return (isis !=  nullptr && isis->has_data());
 }
 
@@ -2198,7 +2223,7 @@ Native::Interface::Serial::Ip::Router::Isis::Isis()
     tag{YType::str, "tag"}
 {
 
-    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ip::Router::Isis::~Isis()
@@ -2207,6 +2232,7 @@ Native::Interface::Serial::Ip::Router::Isis::~Isis()
 
 bool Native::Interface::Serial::Ip::Router::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -2275,7 +2301,7 @@ Native::Interface::Serial::Ip::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Tcp::~Tcp()
@@ -2284,6 +2310,7 @@ Native::Interface::Serial::Ip::Tcp::~Tcp()
 
 bool Native::Interface::Serial::Ip::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -2356,7 +2383,7 @@ Native::Interface::Serial::Ip::VirtualReassembly::VirtualReassembly()
     in{YType::empty, "in"}
 {
 
-    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::VirtualReassembly::~VirtualReassembly()
@@ -2365,6 +2392,7 @@ Native::Interface::Serial::Ip::VirtualReassembly::~VirtualReassembly()
 
 bool Native::Interface::Serial::Ip::VirtualReassembly::has_data() const
 {
+    if (is_presence_container) return true;
     return max_reassemblies.is_set
 	|| max_fragments.is_set
 	|| timeout.is_set
@@ -2483,7 +2511,7 @@ bool Native::Interface::Serial::Ip::VirtualReassembly::has_leaf_or_child_of_name
 Native::Interface::Serial::Ip::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Dhcp::~Dhcp()
@@ -2492,6 +2520,7 @@ Native::Interface::Serial::Ip::Dhcp::~Dhcp()
 
 bool Native::Interface::Serial::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2542,9 +2571,11 @@ bool Native::Interface::Serial::Ip::Dhcp::has_leaf_or_child_of_name(const std::s
 }
 
 Native::Interface::Serial::Ip::SummaryAddress::SummaryAddress()
+    :
+    eigrp(this, {"id"})
 {
 
-    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::SummaryAddress::~SummaryAddress()
@@ -2553,7 +2584,8 @@ Native::Interface::Serial::Ip::SummaryAddress::~SummaryAddress()
 
 bool Native::Interface::Serial::Ip::SummaryAddress::has_data() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -2563,7 +2595,7 @@ bool Native::Interface::Serial::Ip::SummaryAddress::has_data() const
 
 bool Native::Interface::Serial::Ip::SummaryAddress::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -2593,7 +2625,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::Ip::SummaryAddress::get_child
     {
         auto c = std::make_shared<Native::Interface::Serial::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -2605,7 +2637,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::Ip::Su
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2639,7 +2671,7 @@ Native::Interface::Serial::Ip::SummaryAddress::Eigrp::Eigrp()
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::SummaryAddress::Eigrp::~Eigrp()
@@ -2648,6 +2680,7 @@ Native::Interface::Serial::Ip::SummaryAddress::Eigrp::~Eigrp()
 
 bool Native::Interface::Serial::Ip::SummaryAddress::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| ip.is_set
 	|| mask.is_set
@@ -2666,7 +2699,8 @@ bool Native::Interface::Serial::Ip::SummaryAddress::Eigrp::has_operation() const
 std::string Native::Interface::Serial::Ip::SummaryAddress::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[id='" <<id <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -2753,11 +2787,11 @@ bool Native::Interface::Serial::Ip::SummaryAddress::Eigrp::has_leaf_or_child_of_
 Native::Interface::Serial::Ip::Verify::Verify()
     :
     source(nullptr) // presence node
-	,unicast(std::make_shared<Native::Interface::Serial::Ip::Verify::Unicast>())
+    , unicast(std::make_shared<Native::Interface::Serial::Ip::Verify::Unicast>())
 {
     unicast->parent = this;
 
-    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Verify::~Verify()
@@ -2766,6 +2800,7 @@ Native::Interface::Serial::Ip::Verify::~Verify()
 
 bool Native::Interface::Serial::Ip::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data())
 	|| (unicast !=  nullptr && unicast->has_data());
 }
@@ -2854,7 +2889,7 @@ Native::Interface::Serial::Ip::Verify::Source::Source()
 {
     vlan->parent = this;
 
-    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ip::Verify::Source::~Source()
@@ -2863,6 +2898,7 @@ Native::Interface::Serial::Ip::Verify::Source::~Source()
 
 bool Native::Interface::Serial::Ip::Verify::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -2934,7 +2970,7 @@ Native::Interface::Serial::Ip::Verify::Source::Vlan::Vlan()
     dhcp_snooping(nullptr) // presence node
 {
 
-    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Verify::Source::Vlan::~Vlan()
@@ -2943,6 +2979,7 @@ Native::Interface::Serial::Ip::Verify::Source::Vlan::~Vlan()
 
 bool Native::Interface::Serial::Ip::Verify::Source::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp_snooping !=  nullptr && dhcp_snooping->has_data());
 }
 
@@ -3014,7 +3051,7 @@ Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping::DhcpSnooping(
     port_security{YType::empty, "port-security"}
 {
 
-    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping::~DhcpSnooping()
@@ -3023,6 +3060,7 @@ Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping::~DhcpSnooping
 
 bool Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return port_security.is_set;
 }
 
@@ -3089,11 +3127,11 @@ bool Native::Interface::Serial::Ip::Verify::Source::Vlan::DhcpSnooping::has_leaf
 Native::Interface::Serial::Ip::Verify::Unicast::Unicast()
     :
     reverse_path(nullptr) // presence node
-	,source(std::make_shared<Native::Interface::Serial::Ip::Verify::Unicast::Source>())
+    , source(std::make_shared<Native::Interface::Serial::Ip::Verify::Unicast::Source>())
 {
     source->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Verify::Unicast::~Unicast()
@@ -3102,6 +3140,7 @@ Native::Interface::Serial::Ip::Verify::Unicast::~Unicast()
 
 bool Native::Interface::Serial::Ip::Verify::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (reverse_path !=  nullptr && reverse_path->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -3187,7 +3226,7 @@ bool Native::Interface::Serial::Ip::Verify::Unicast::has_leaf_or_child_of_name(c
 Native::Interface::Serial::Ip::Verify::Unicast::ReversePath::ReversePath()
 {
 
-    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ip::Verify::Unicast::ReversePath::~ReversePath()
@@ -3196,6 +3235,7 @@ Native::Interface::Serial::Ip::Verify::Unicast::ReversePath::~ReversePath()
 
 bool Native::Interface::Serial::Ip::Verify::Unicast::ReversePath::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3252,7 +3292,7 @@ Native::Interface::Serial::Ip::Verify::Unicast::Source::Source()
     allow_default{YType::empty, "allow-default"}
 {
 
-    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ip::Verify::Unicast::Source::~Source()
@@ -3261,6 +3301,7 @@ Native::Interface::Serial::Ip::Verify::Unicast::Source::~Source()
 
 bool Native::Interface::Serial::Ip::Verify::Unicast::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return reachable_via.is_set
 	|| allow_self_ping.is_set
 	|| allow_default.is_set;
@@ -3356,20 +3397,21 @@ Native::Interface::Serial::Ipv6::Ipv6()
     enable{YType::empty, "enable"},
     mtu{YType::uint16, "mtu"},
     redirects{YType::boolean, "redirects"}
-    	,
+        ,
     destination_guard(nullptr) // presence node
-	,source_guard(nullptr) // presence node
-	,dhcp(std::make_shared<Native::Interface::Serial::Ipv6::Dhcp>())
-	,address(std::make_shared<Native::Interface::Serial::Ipv6::Address>())
-	,nd(std::make_shared<Native::Interface::Serial::Ipv6::Nd>())
-	,tcp(std::make_shared<Native::Interface::Serial::Ipv6::Tcp>())
+    , source_guard(nullptr) // presence node
+    , dhcp(std::make_shared<Native::Interface::Serial::Ipv6::Dhcp>())
+    , address(std::make_shared<Native::Interface::Serial::Ipv6::Address>())
+    , nd(std::make_shared<Native::Interface::Serial::Ipv6::Nd>())
+    , tcp(std::make_shared<Native::Interface::Serial::Ipv6::Tcp>())
+    , traffic_filter(this, {"direction"})
 {
     dhcp->parent = this;
     address->parent = this;
     nd->parent = this;
     tcp->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::~Ipv6()
@@ -3378,7 +3420,8 @@ Native::Interface::Serial::Ipv6::~Ipv6()
 
 bool Native::Interface::Serial::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_data())
             return true;
@@ -3397,7 +3440,7 @@ bool Native::Interface::Serial::Ipv6::has_data() const
 
 bool Native::Interface::Serial::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_operation())
             return true;
@@ -3495,7 +3538,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::Ipv6::get_child_by_name(const
     {
         auto c = std::make_shared<Native::Interface::Serial::Ipv6::TrafficFilter>();
         c->parent = this;
-        traffic_filter.push_back(c);
+        traffic_filter.append(c);
         return c;
     }
 
@@ -3537,7 +3580,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::Ipv6::
     }
 
     count = 0;
-    for (auto const & c : traffic_filter)
+    for (auto c : traffic_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3608,7 +3651,7 @@ Native::Interface::Serial::Ipv6::DestinationGuard::DestinationGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ipv6::DestinationGuard::~DestinationGuard()
@@ -3617,6 +3660,7 @@ Native::Interface::Serial::Ipv6::DestinationGuard::~DestinationGuard()
 
 bool Native::Interface::Serial::Ipv6::DestinationGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -3685,7 +3729,7 @@ Native::Interface::Serial::Ipv6::SourceGuard::SourceGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ipv6::SourceGuard::~SourceGuard()
@@ -3694,6 +3738,7 @@ Native::Interface::Serial::Ipv6::SourceGuard::~SourceGuard()
 
 bool Native::Interface::Serial::Ipv6::SourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -3760,7 +3805,7 @@ bool Native::Interface::Serial::Ipv6::SourceGuard::has_leaf_or_child_of_name(con
 Native::Interface::Serial::Ipv6::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::Dhcp::~Dhcp()
@@ -3769,6 +3814,7 @@ Native::Interface::Serial::Ipv6::Dhcp::~Dhcp()
 
 bool Native::Interface::Serial::Ipv6::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3821,10 +3867,12 @@ bool Native::Interface::Serial::Ipv6::Dhcp::has_leaf_or_child_of_name(const std:
 Native::Interface::Serial::Ipv6::Address::Address()
     :
     dhcp(nullptr) // presence node
-	,autoconfig(nullptr) // presence node
+    , autoconfig(nullptr) // presence node
+    , prefix_list(this, {"prefix"})
+    , link_local_address(this, {"address"})
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::Address::~Address()
@@ -3833,12 +3881,13 @@ Native::Interface::Serial::Ipv6::Address::~Address()
 
 bool Native::Interface::Serial::Ipv6::Address::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_data())
             return true;
@@ -3849,12 +3898,12 @@ bool Native::Interface::Serial::Ipv6::Address::has_data() const
 
 bool Native::Interface::Serial::Ipv6::Address::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_operation())
             return true;
@@ -3904,7 +3953,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::Ipv6::Address::get_child_by_n
     {
         auto c = std::make_shared<Native::Interface::Serial::Ipv6::Address::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -3912,7 +3961,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::Ipv6::Address::get_child_by_n
     {
         auto c = std::make_shared<Native::Interface::Serial::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
-        link_local_address.push_back(c);
+        link_local_address.append(c);
         return c;
     }
 
@@ -3934,7 +3983,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::Ipv6::
     }
 
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3943,7 +3992,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::Ipv6::
     }
 
     count = 0;
-    for (auto const & c : link_local_address)
+    for (auto c : link_local_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3974,7 +4023,7 @@ Native::Interface::Serial::Ipv6::Address::Dhcp::Dhcp()
     rapid_commit{YType::empty, "rapid-commit"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ipv6::Address::Dhcp::~Dhcp()
@@ -3983,6 +4032,7 @@ Native::Interface::Serial::Ipv6::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::Serial::Ipv6::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return rapid_commit.is_set;
 }
 
@@ -4051,7 +4101,7 @@ Native::Interface::Serial::Ipv6::Address::Autoconfig::Autoconfig()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ipv6::Address::Autoconfig::~Autoconfig()
@@ -4060,6 +4110,7 @@ Native::Interface::Serial::Ipv6::Address::Autoconfig::~Autoconfig()
 
 bool Native::Interface::Serial::Ipv6::Address::Autoconfig::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -4130,7 +4181,7 @@ Native::Interface::Serial::Ipv6::Address::PrefixList::PrefixList()
     eui_64{YType::empty, "eui-64"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::Address::PrefixList::~PrefixList()
@@ -4139,6 +4190,7 @@ Native::Interface::Serial::Ipv6::Address::PrefixList::~PrefixList()
 
 bool Native::Interface::Serial::Ipv6::Address::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| anycast.is_set
 	|| eui_64.is_set;
@@ -4155,7 +4207,8 @@ bool Native::Interface::Serial::Ipv6::Address::PrefixList::has_operation() const
 std::string Native::Interface::Serial::Ipv6::Address::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -4234,7 +4287,7 @@ Native::Interface::Serial::Ipv6::Address::LinkLocalAddress::LinkLocalAddress()
     link_local{YType::empty, "link-local"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::Address::LinkLocalAddress::~LinkLocalAddress()
@@ -4243,6 +4296,7 @@ Native::Interface::Serial::Ipv6::Address::LinkLocalAddress::~LinkLocalAddress()
 
 bool Native::Interface::Serial::Ipv6::Address::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| link_local.is_set;
 }
@@ -4257,7 +4311,8 @@ bool Native::Interface::Serial::Ipv6::Address::LinkLocalAddress::has_operation()
 std::string Native::Interface::Serial::Ipv6::Address::LinkLocalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-local-address" <<"[address='" <<address <<"']";
+    path_buffer << "link-local-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4322,7 +4377,7 @@ bool Native::Interface::Serial::Ipv6::Address::LinkLocalAddress::has_leaf_or_chi
 Native::Interface::Serial::Ipv6::Nd::Nd()
 {
 
-    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::Nd::~Nd()
@@ -4331,6 +4386,7 @@ Native::Interface::Serial::Ipv6::Nd::~Nd()
 
 bool Native::Interface::Serial::Ipv6::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4385,7 +4441,7 @@ Native::Interface::Serial::Ipv6::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::Tcp::~Tcp()
@@ -4394,6 +4450,7 @@ Native::Interface::Serial::Ipv6::Tcp::~Tcp()
 
 bool Native::Interface::Serial::Ipv6::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -4463,7 +4520,7 @@ Native::Interface::Serial::Ipv6::TrafficFilter::TrafficFilter()
     access_list{YType::str, "access-list"}
 {
 
-    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ipv6::TrafficFilter::~TrafficFilter()
@@ -4472,6 +4529,7 @@ Native::Interface::Serial::Ipv6::TrafficFilter::~TrafficFilter()
 
 bool Native::Interface::Serial::Ipv6::TrafficFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| access_list.is_set;
 }
@@ -4486,7 +4544,8 @@ bool Native::Interface::Serial::Ipv6::TrafficFilter::has_operation() const
 std::string Native::Interface::Serial::Ipv6::TrafficFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-filter" <<"[direction='" <<direction <<"']";
+    path_buffer << "traffic-filter";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -4554,7 +4613,7 @@ Native::Interface::Serial::Logging::Logging()
 {
     event->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Logging::~Logging()
@@ -4563,6 +4622,7 @@ Native::Interface::Serial::Logging::~Logging()
 
 bool Native::Interface::Serial::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (event !=  nullptr && event->has_data());
 }
 
@@ -4637,12 +4697,12 @@ Native::Interface::Serial::Logging::Event::Event()
     nfas_status{YType::empty, "nfas-status"},
     power_inline_status{YType::empty, "power-inline-status"},
     status{YType::empty, "status"}
-    	,
+        ,
     spanning_tree(nullptr) // presence node
-	,subif_link_status(nullptr) // presence node
+    , subif_link_status(nullptr) // presence node
 {
 
-    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Logging::Event::~Event()
@@ -4651,6 +4711,7 @@ Native::Interface::Serial::Logging::Event::~Event()
 
 bool Native::Interface::Serial::Logging::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| link_status.is_set
 	|| trunk_status.is_set
@@ -4816,7 +4877,7 @@ Native::Interface::Serial::Logging::Event::SpanningTree::SpanningTree()
     status{YType::empty, "status"}
 {
 
-    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Logging::Event::SpanningTree::~SpanningTree()
@@ -4825,6 +4886,7 @@ Native::Interface::Serial::Logging::Event::SpanningTree::~SpanningTree()
 
 bool Native::Interface::Serial::Logging::Event::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -4893,7 +4955,7 @@ Native::Interface::Serial::Logging::Event::SubifLinkStatus::SubifLinkStatus()
     ignore_bulk{YType::empty, "ignore-bulk"}
 {
 
-    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Logging::Event::SubifLinkStatus::~SubifLinkStatus()
@@ -4902,6 +4964,7 @@ Native::Interface::Serial::Logging::Event::SubifLinkStatus::~SubifLinkStatus()
 
 bool Native::Interface::Serial::Logging::Event::SubifLinkStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_bulk.is_set;
 }
 
@@ -4970,7 +5033,7 @@ Native::Interface::Serial::Mdix::Mdix()
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "mdix"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdix"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Mdix::~Mdix()
@@ -4979,6 +5042,7 @@ Native::Interface::Serial::Mdix::~Mdix()
 
 bool Native::Interface::Serial::Mdix::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -5048,7 +5112,7 @@ Native::Interface::Serial::Mop::Mop()
     sysid{YType::boolean, "sysid"}
 {
 
-    yang_name = "mop"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mop"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Mop::~Mop()
@@ -5057,6 +5121,7 @@ Native::Interface::Serial::Mop::~Mop()
 
 bool Native::Interface::Serial::Mop::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| sysid.is_set;
 }
@@ -5139,7 +5204,7 @@ Native::Interface::Serial::InterfaceQos::InterfaceQos()
 {
     trust->parent = this;
 
-    yang_name = "interface_qos"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface_qos"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::InterfaceQos::~InterfaceQos()
@@ -5148,6 +5213,7 @@ Native::Interface::Serial::InterfaceQos::~InterfaceQos()
 
 bool Native::Interface::Serial::InterfaceQos::has_data() const
 {
+    if (is_presence_container) return true;
     return (trust !=  nullptr && trust->has_data());
 }
 
@@ -5219,7 +5285,7 @@ Native::Interface::Serial::InterfaceQos::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::InterfaceQos::Trust::~Trust()
@@ -5228,6 +5294,7 @@ Native::Interface::Serial::InterfaceQos::Trust::~Trust()
 
 bool Native::Interface::Serial::InterfaceQos::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -5296,13 +5363,14 @@ Native::Interface::Serial::Standby::Standby()
     version{YType::enumeration, "version"},
     bfd{YType::empty, "bfd"},
     mac_refresh{YType::uint8, "mac-refresh"}
-    	,
+        ,
     delay(std::make_shared<Native::Interface::Serial::Standby::Delay>())
-	,use_bia(nullptr) // presence node
+    , use_bia(nullptr) // presence node
+    , standby_list(this, {"group_number"})
 {
     delay->parent = this;
 
-    yang_name = "standby"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::~Standby()
@@ -5311,7 +5379,8 @@ Native::Interface::Serial::Standby::~Standby()
 
 bool Native::Interface::Serial::Standby::has_data() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_data())
             return true;
@@ -5325,7 +5394,7 @@ bool Native::Interface::Serial::Standby::has_data() const
 
 bool Native::Interface::Serial::Standby::has_operation() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_operation())
             return true;
@@ -5381,7 +5450,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::Standby::get_child_by_name(co
     {
         auto c = std::make_shared<Native::Interface::Serial::Standby::StandbyList>();
         c->parent = this;
-        standby_list.push_back(c);
+        standby_list.append(c);
         return c;
     }
 
@@ -5403,7 +5472,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::Standb
     }
 
     count = 0;
-    for (auto const & c : standby_list)
+    for (auto c : standby_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5465,7 +5534,7 @@ Native::Interface::Serial::Standby::Delay::Delay()
     reload{YType::uint16, "reload"}
 {
 
-    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::Delay::~Delay()
@@ -5474,6 +5543,7 @@ Native::Interface::Serial::Standby::Delay::~Delay()
 
 bool Native::Interface::Serial::Standby::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set;
 }
@@ -5556,7 +5626,7 @@ Native::Interface::Serial::Standby::UseBia::UseBia()
 {
     scope->parent = this;
 
-    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Standby::UseBia::~UseBia()
@@ -5565,6 +5635,7 @@ Native::Interface::Serial::Standby::UseBia::~UseBia()
 
 bool Native::Interface::Serial::Standby::UseBia::has_data() const
 {
+    if (is_presence_container) return true;
     return (scope !=  nullptr && scope->has_data());
 }
 
@@ -5636,7 +5707,7 @@ Native::Interface::Serial::Standby::UseBia::Scope::Scope()
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::UseBia::Scope::~Scope()
@@ -5645,6 +5716,7 @@ Native::Interface::Serial::Standby::UseBia::Scope::~Scope()
 
 bool Native::Interface::Serial::Standby::UseBia::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -5716,18 +5788,19 @@ Native::Interface::Serial::Standby::StandbyList::StandbyList()
     mac_address{YType::str, "mac-address"},
     name{YType::str, "name"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     authentication(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Authentication>())
-	,ip(nullptr) // presence node
-	,preempt(nullptr) // presence node
-	,redirect(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Redirect>())
-	,timers(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Timers>())
+    , ip(nullptr) // presence node
+    , preempt(nullptr) // presence node
+    , redirect(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Redirect>())
+    , timers(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Timers>())
+    , track(this, {"number"})
 {
     authentication->parent = this;
     redirect->parent = this;
     timers->parent = this;
 
-    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::~StandbyList()
@@ -5736,7 +5809,8 @@ Native::Interface::Serial::Standby::StandbyList::~StandbyList()
 
 bool Native::Interface::Serial::Standby::StandbyList::has_data() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_data())
             return true;
@@ -5756,7 +5830,7 @@ bool Native::Interface::Serial::Standby::StandbyList::has_data() const
 
 bool Native::Interface::Serial::Standby::StandbyList::has_operation() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_operation())
             return true;
@@ -5778,7 +5852,8 @@ bool Native::Interface::Serial::Standby::StandbyList::has_operation() const
 std::string Native::Interface::Serial::Standby::StandbyList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "standby-list" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "standby-list";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -5848,7 +5923,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::Standby::StandbyList::get_chi
     {
         auto c = std::make_shared<Native::Interface::Serial::Standby::StandbyList::Track>();
         c->parent = this;
-        track.push_back(c);
+        track.append(c);
         return c;
     }
 
@@ -5885,7 +5960,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::Standb
     }
 
     count = 0;
-    for (auto const & c : track)
+    for (auto c : track.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5975,12 +6050,12 @@ Native::Interface::Serial::Standby::StandbyList::Authentication::Authentication(
     :
     word{YType::str, "word"},
     text{YType::str, "text"}
-    	,
+        ,
     md5(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Authentication::Md5>())
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Authentication::~Authentication()
@@ -5989,6 +6064,7 @@ Native::Interface::Serial::Standby::StandbyList::Authentication::~Authentication
 
 bool Native::Interface::Serial::Standby::StandbyList::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| text.is_set
 	|| (md5 !=  nullptr && md5->has_data());
@@ -6084,12 +6160,12 @@ bool Native::Interface::Serial::Standby::StandbyList::Authentication::has_leaf_o
 Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::~Md5()
@@ -6098,6 +6174,7 @@ Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::~Md5()
 
 bool Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -6184,7 +6261,7 @@ Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString:
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString::~KeyString()
@@ -6193,6 +6270,7 @@ Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString:
 
 bool Native::Interface::Serial::Standby::StandbyList::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -6288,7 +6366,7 @@ Native::Interface::Serial::Standby::StandbyList::Ip::Ip()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Standby::StandbyList::Ip::~Ip()
@@ -6297,6 +6375,7 @@ Native::Interface::Serial::Standby::StandbyList::Ip::~Ip()
 
 bool Native::Interface::Serial::Standby::StandbyList::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| secondary.is_set;
 }
@@ -6379,7 +6458,7 @@ Native::Interface::Serial::Standby::StandbyList::Preempt::Preempt()
 {
     delay->parent = this;
 
-    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Standby::StandbyList::Preempt::~Preempt()
@@ -6388,6 +6467,7 @@ Native::Interface::Serial::Standby::StandbyList::Preempt::~Preempt()
 
 bool Native::Interface::Serial::Standby::StandbyList::Preempt::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data());
 }
 
@@ -6461,7 +6541,7 @@ Native::Interface::Serial::Standby::StandbyList::Preempt::Delay::Delay()
     sync{YType::uint16, "sync"}
 {
 
-    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Preempt::Delay::~Delay()
@@ -6470,6 +6550,7 @@ Native::Interface::Serial::Standby::StandbyList::Preempt::Delay::~Delay()
 
 bool Native::Interface::Serial::Standby::StandbyList::Preempt::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set
 	|| sync.is_set;
@@ -6562,14 +6643,14 @@ bool Native::Interface::Serial::Standby::StandbyList::Preempt::Delay::has_leaf_o
 Native::Interface::Serial::Standby::StandbyList::Redirect::Redirect()
     :
     unknown{YType::empty, "unknown"}
-    	,
+        ,
     advertisement(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement>())
-	,timers(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Redirect::Timers>())
+    , timers(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Redirect::Timers>())
 {
     advertisement->parent = this;
     timers->parent = this;
 
-    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Redirect::~Redirect()
@@ -6578,6 +6659,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::~Redirect()
 
 bool Native::Interface::Serial::Standby::StandbyList::Redirect::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown.is_set
 	|| (advertisement !=  nullptr && advertisement->has_data())
 	|| (timers !=  nullptr && timers->has_data());
@@ -6679,7 +6761,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Advert
 {
     authentication->parent = this;
 
-    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::~Advertisement()
@@ -6688,6 +6770,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::~Adver
 
 bool Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -6760,7 +6843,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authen
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::~Authentication()
@@ -6769,6 +6852,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authen
 
 bool Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (md5 !=  nullptr && md5->has_data());
 }
 
@@ -6838,12 +6922,12 @@ bool Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::A
 Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::~Md5()
@@ -6852,6 +6936,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authen
 
 bool Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -6938,7 +7023,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authen
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::~KeyString()
@@ -6947,6 +7032,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authen
 
 bool Native::Interface::Serial::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -7042,7 +7128,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Timers::Timers()
     holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Redirect::Timers::~Timers()
@@ -7051,6 +7137,7 @@ Native::Interface::Serial::Standby::StandbyList::Redirect::Timers::~Timers()
 
 bool Native::Interface::Serial::Standby::StandbyList::Redirect::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return advertisement.is_set
 	|| holddown.is_set;
 }
@@ -7130,12 +7217,12 @@ bool Native::Interface::Serial::Standby::StandbyList::Redirect::Timers::has_leaf
 Native::Interface::Serial::Standby::StandbyList::Timers::Timers()
     :
     hello_interval(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval>())
-	,hold_time(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime>())
+    , hold_time(std::make_shared<Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime>())
 {
     hello_interval->parent = this;
     hold_time->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Timers::~Timers()
@@ -7144,6 +7231,7 @@ Native::Interface::Serial::Standby::StandbyList::Timers::~Timers()
 
 bool Native::Interface::Serial::Standby::StandbyList::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (hello_interval !=  nullptr && hello_interval->has_data())
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -7232,7 +7320,7 @@ Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval::HelloInt
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval::~HelloInterval()
@@ -7241,6 +7329,7 @@ Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval::~HelloIn
 
 bool Native::Interface::Serial::Standby::StandbyList::Timers::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -7323,7 +7412,7 @@ Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime::HoldTime()
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime::~HoldTime()
@@ -7332,6 +7421,7 @@ Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime::~HoldTime()
 
 bool Native::Interface::Serial::Standby::StandbyList::Timers::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -7415,7 +7505,7 @@ Native::Interface::Serial::Standby::StandbyList::Track::Track()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Standby::StandbyList::Track::~Track()
@@ -7424,6 +7514,7 @@ Native::Interface::Serial::Standby::StandbyList::Track::~Track()
 
 bool Native::Interface::Serial::Standby::StandbyList::Track::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| decrement.is_set
 	|| shutdown.is_set;
@@ -7440,7 +7531,8 @@ bool Native::Interface::Serial::Standby::StandbyList::Track::has_operation() con
 std::string Native::Interface::Serial::Standby::StandbyList::Track::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track" <<"[number='" <<number <<"']";
+    path_buffer << "track";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -7517,12 +7609,12 @@ Native::Interface::Serial::AccessSession::AccessSession()
     :
     closed{YType::empty, "closed"},
     host_mode{YType::enumeration, "host-mode"}
-    	,
+        ,
     port_control(std::make_shared<Native::Interface::Serial::AccessSession::PortControl>())
 {
     port_control->parent = this;
 
-    yang_name = "access-session"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-session"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::AccessSession::~AccessSession()
@@ -7531,6 +7623,7 @@ Native::Interface::Serial::AccessSession::~AccessSession()
 
 bool Native::Interface::Serial::AccessSession::has_data() const
 {
+    if (is_presence_container) return true;
     return closed.is_set
 	|| host_mode.is_set
 	|| (port_control !=  nullptr && port_control->has_data());
@@ -7628,7 +7721,7 @@ Native::Interface::Serial::AccessSession::PortControl::PortControl()
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::AccessSession::PortControl::~PortControl()
@@ -7637,6 +7730,7 @@ Native::Interface::Serial::AccessSession::PortControl::~PortControl()
 
 bool Native::Interface::Serial::AccessSession::PortControl::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -7703,16 +7797,16 @@ bool Native::Interface::Serial::AccessSession::PortControl::has_leaf_or_child_of
 Native::Interface::Serial::StormControl::StormControl()
     :
     action(std::make_shared<Native::Interface::Serial::StormControl::Action>())
-	,broadcast(std::make_shared<Native::Interface::Serial::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Interface::Serial::StormControl::Multicast>())
-	,unicast(std::make_shared<Native::Interface::Serial::StormControl::Unicast>())
+    , broadcast(std::make_shared<Native::Interface::Serial::StormControl::Broadcast>())
+    , multicast(std::make_shared<Native::Interface::Serial::StormControl::Multicast>())
+    , unicast(std::make_shared<Native::Interface::Serial::StormControl::Unicast>())
 {
     action->parent = this;
     broadcast->parent = this;
     multicast->parent = this;
     unicast->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::~StormControl()
@@ -7721,6 +7815,7 @@ Native::Interface::Serial::StormControl::~StormControl()
 
 bool Native::Interface::Serial::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
@@ -7842,7 +7937,7 @@ Native::Interface::Serial::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Action::~Action()
@@ -7851,6 +7946,7 @@ Native::Interface::Serial::StormControl::Action::~Action()
 
 bool Native::Interface::Serial::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| shutdown.is_set
 	|| trap.is_set;
@@ -7943,12 +8039,12 @@ bool Native::Interface::Serial::StormControl::Action::has_leaf_or_child_of_name(
 Native::Interface::Serial::StormControl::Broadcast::Broadcast()
     :
     include(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Include>())
-	,level(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Level>())
+    , level(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Level>())
 {
     include->parent = this;
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Broadcast::~Broadcast()
@@ -7957,6 +8053,7 @@ Native::Interface::Serial::StormControl::Broadcast::~Broadcast()
 
 bool Native::Interface::Serial::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (include !=  nullptr && include->has_data())
 	|| (level !=  nullptr && level->has_data());
 }
@@ -8044,7 +8141,7 @@ Native::Interface::Serial::StormControl::Broadcast::Include::Include()
     multicast{YType::empty, "multicast"}
 {
 
-    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Broadcast::Include::~Include()
@@ -8053,6 +8150,7 @@ Native::Interface::Serial::StormControl::Broadcast::Include::~Include()
 
 bool Native::Interface::Serial::StormControl::Broadcast::Include::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast.is_set;
 }
 
@@ -8119,14 +8217,14 @@ bool Native::Interface::Serial::StormControl::Broadcast::Include::has_leaf_or_ch
 Native::Interface::Serial::StormControl::Broadcast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Serial::StormControl::Broadcast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Broadcast::Level::~Level()
@@ -8135,6 +8233,7 @@ Native::Interface::Serial::StormControl::Broadcast::Level::~Level()
 
 bool Native::Interface::Serial::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -8239,7 +8338,7 @@ Native::Interface::Serial::StormControl::Broadcast::Level::Threshold::Threshold(
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Broadcast::Level::Threshold::~Threshold()
@@ -8248,6 +8347,7 @@ Native::Interface::Serial::StormControl::Broadcast::Level::Threshold::~Threshold
 
 bool Native::Interface::Serial::StormControl::Broadcast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -8330,7 +8430,7 @@ Native::Interface::Serial::StormControl::Broadcast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Broadcast::Level::Bps::~Bps()
@@ -8339,6 +8439,7 @@ Native::Interface::Serial::StormControl::Broadcast::Level::Bps::~Bps()
 
 bool Native::Interface::Serial::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -8421,7 +8522,7 @@ Native::Interface::Serial::StormControl::Broadcast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Broadcast::Level::Pps::~Pps()
@@ -8430,6 +8531,7 @@ Native::Interface::Serial::StormControl::Broadcast::Level::Pps::~Pps()
 
 bool Native::Interface::Serial::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -8512,7 +8614,7 @@ Native::Interface::Serial::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Multicast::~Multicast()
@@ -8521,6 +8623,7 @@ Native::Interface::Serial::StormControl::Multicast::~Multicast()
 
 bool Native::Interface::Serial::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -8590,14 +8693,14 @@ bool Native::Interface::Serial::StormControl::Multicast::has_leaf_or_child_of_na
 Native::Interface::Serial::StormControl::Multicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Serial::StormControl::Multicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Serial::StormControl::Multicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Serial::StormControl::Multicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Serial::StormControl::Multicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Serial::StormControl::Multicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Multicast::Level::~Level()
@@ -8606,6 +8709,7 @@ Native::Interface::Serial::StormControl::Multicast::Level::~Level()
 
 bool Native::Interface::Serial::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -8710,7 +8814,7 @@ Native::Interface::Serial::StormControl::Multicast::Level::Threshold::Threshold(
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Multicast::Level::Threshold::~Threshold()
@@ -8719,6 +8823,7 @@ Native::Interface::Serial::StormControl::Multicast::Level::Threshold::~Threshold
 
 bool Native::Interface::Serial::StormControl::Multicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -8801,7 +8906,7 @@ Native::Interface::Serial::StormControl::Multicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Multicast::Level::Bps::~Bps()
@@ -8810,6 +8915,7 @@ Native::Interface::Serial::StormControl::Multicast::Level::Bps::~Bps()
 
 bool Native::Interface::Serial::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -8892,7 +8998,7 @@ Native::Interface::Serial::StormControl::Multicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Multicast::Level::Pps::~Pps()
@@ -8901,6 +9007,7 @@ Native::Interface::Serial::StormControl::Multicast::Level::Pps::~Pps()
 
 bool Native::Interface::Serial::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -8983,7 +9090,7 @@ Native::Interface::Serial::StormControl::Unicast::Unicast()
 {
     level->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Unicast::~Unicast()
@@ -8992,6 +9099,7 @@ Native::Interface::Serial::StormControl::Unicast::~Unicast()
 
 bool Native::Interface::Serial::StormControl::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -9061,14 +9169,14 @@ bool Native::Interface::Serial::StormControl::Unicast::has_leaf_or_child_of_name
 Native::Interface::Serial::StormControl::Unicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::Serial::StormControl::Unicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::Serial::StormControl::Unicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::Serial::StormControl::Unicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::Serial::StormControl::Unicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::Serial::StormControl::Unicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Unicast::Level::~Level()
@@ -9077,6 +9185,7 @@ Native::Interface::Serial::StormControl::Unicast::Level::~Level()
 
 bool Native::Interface::Serial::StormControl::Unicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -9181,7 +9290,7 @@ Native::Interface::Serial::StormControl::Unicast::Level::Threshold::Threshold()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Unicast::Level::Threshold::~Threshold()
@@ -9190,6 +9299,7 @@ Native::Interface::Serial::StormControl::Unicast::Level::Threshold::~Threshold()
 
 bool Native::Interface::Serial::StormControl::Unicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -9272,7 +9382,7 @@ Native::Interface::Serial::StormControl::Unicast::Level::Bps::Bps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Unicast::Level::Bps::~Bps()
@@ -9281,6 +9391,7 @@ Native::Interface::Serial::StormControl::Unicast::Level::Bps::~Bps()
 
 bool Native::Interface::Serial::StormControl::Unicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -9363,7 +9474,7 @@ Native::Interface::Serial::StormControl::Unicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::StormControl::Unicast::Level::Pps::~Pps()
@@ -9372,6 +9483,7 @@ Native::Interface::Serial::StormControl::Unicast::Level::Pps::~Pps()
 
 bool Native::Interface::Serial::StormControl::Unicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -9453,7 +9565,7 @@ Native::Interface::Serial::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Trust::~Trust()
@@ -9462,6 +9574,7 @@ Native::Interface::Serial::Trust::~Trust()
 
 bool Native::Interface::Serial::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -9528,12 +9641,12 @@ bool Native::Interface::Serial::Trust::has_leaf_or_child_of_name(const std::stri
 Native::Interface::Serial::PriorityQueue::PriorityQueue()
     :
     out{YType::empty, "out"}
-    	,
+        ,
     cos_map(std::make_shared<Native::Interface::Serial::PriorityQueue::CosMap>())
 {
     cos_map->parent = this;
 
-    yang_name = "priority-queue"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-queue"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::PriorityQueue::~PriorityQueue()
@@ -9542,6 +9655,7 @@ Native::Interface::Serial::PriorityQueue::~PriorityQueue()
 
 bool Native::Interface::Serial::PriorityQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set
 	|| (cos_map !=  nullptr && cos_map->has_data());
 }
@@ -9627,7 +9741,7 @@ Native::Interface::Serial::PriorityQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::PriorityQueue::CosMap::~CosMap()
@@ -9636,6 +9750,7 @@ Native::Interface::Serial::PriorityQueue::CosMap::~CosMap()
 
 bool Native::Interface::Serial::PriorityQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -9721,9 +9836,11 @@ bool Native::Interface::Serial::PriorityQueue::CosMap::has_leaf_or_child_of_name
 }
 
 Native::Interface::Serial::RcvQueue::RcvQueue()
+    :
+    cos_map(this, {"queue_id", "threshold_id"})
 {
 
-    yang_name = "rcv-queue"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-queue"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::RcvQueue::~RcvQueue()
@@ -9732,7 +9849,8 @@ Native::Interface::Serial::RcvQueue::~RcvQueue()
 
 bool Native::Interface::Serial::RcvQueue::has_data() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_data())
             return true;
@@ -9742,7 +9860,7 @@ bool Native::Interface::Serial::RcvQueue::has_data() const
 
 bool Native::Interface::Serial::RcvQueue::has_operation() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_operation())
             return true;
@@ -9772,7 +9890,7 @@ std::shared_ptr<Entity> Native::Interface::Serial::RcvQueue::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Interface::Serial::RcvQueue::CosMap>();
         c->parent = this;
-        cos_map.push_back(c);
+        cos_map.append(c);
         return c;
     }
 
@@ -9784,7 +9902,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Serial::RcvQue
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cos_map)
+    for (auto c : cos_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9817,7 +9935,7 @@ Native::Interface::Serial::RcvQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::RcvQueue::CosMap::~CosMap()
@@ -9826,6 +9944,7 @@ Native::Interface::Serial::RcvQueue::CosMap::~CosMap()
 
 bool Native::Interface::Serial::RcvQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -9851,7 +9970,9 @@ bool Native::Interface::Serial::RcvQueue::CosMap::has_operation() const
 std::string Native::Interface::Serial::RcvQueue::CosMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cos-map" <<"[queue-id='" <<queue_id <<"']" <<"[threshold-id='" <<threshold_id <<"']";
+    path_buffer << "cos-map";
+    ADD_KEY_TOKEN(queue_id, "queue-id");
+    ADD_KEY_TOKEN(threshold_id, "threshold-id");
     return path_buffer.str();
 }
 
@@ -9929,7 +10050,7 @@ Native::Interface::Serial::Peer::Peer()
 {
     default_->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Peer::~Peer()
@@ -9938,6 +10059,7 @@ Native::Interface::Serial::Peer::~Peer()
 
 bool Native::Interface::Serial::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -10010,7 +10132,7 @@ Native::Interface::Serial::Peer::Default::Default()
 {
     ip->parent = this;
 
-    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Peer::Default::~Default()
@@ -10019,6 +10141,7 @@ Native::Interface::Serial::Peer::Default::~Default()
 
 bool Native::Interface::Serial::Peer::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -10091,7 +10214,7 @@ Native::Interface::Serial::Peer::Default::Ip::Ip()
 {
     address->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Peer::Default::Ip::~Ip()
@@ -10100,6 +10223,7 @@ Native::Interface::Serial::Peer::Default::Ip::~Ip()
 
 bool Native::Interface::Serial::Peer::Default::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -10169,12 +10293,12 @@ bool Native::Interface::Serial::Peer::Default::Ip::has_leaf_or_child_of_name(con
 Native::Interface::Serial::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
-    	,
+        ,
     dhcp_pool(nullptr) // presence node
-	,pool(nullptr) // presence node
+    , pool(nullptr) // presence node
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Peer::Default::Ip::Address::~Address()
@@ -10183,6 +10307,7 @@ Native::Interface::Serial::Peer::Default::Ip::Address::~Address()
 
 bool Native::Interface::Serial::Peer::Default::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
@@ -10283,7 +10408,7 @@ Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool::DhcpPool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
@@ -10292,6 +10417,7 @@ Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
 
 bool Native::Interface::Serial::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -10360,7 +10486,7 @@ Native::Interface::Serial::Peer::Default::Ip::Address::Pool::Pool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Peer::Default::Ip::Address::Pool::~Pool()
@@ -10369,6 +10495,7 @@ Native::Interface::Serial::Peer::Default::Ip::Address::Pool::~Pool()
 
 bool Native::Interface::Serial::Peer::Default::Ip::Address::Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -10438,7 +10565,7 @@ Native::Interface::Serial::PmPath::PmPath()
     interface_id{YType::uint8, "interface-id"}
 {
 
-    yang_name = "pm-path"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pm-path"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::PmPath::~PmPath()
@@ -10447,6 +10574,7 @@ Native::Interface::Serial::PmPath::~PmPath()
 
 bool Native::Interface::Serial::PmPath::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_id.is_set;
 }
@@ -10527,17 +10655,17 @@ Native::Interface::Serial::Ppp::Ppp()
     :
     accounting{YType::str, "accounting"},
     authorization{YType::str, "authorization"}
-    	,
+        ,
     chap(std::make_shared<Native::Interface::Serial::Ppp::Chap>())
-	,authentication(std::make_shared<Native::Interface::Serial::Ppp::Authentication>())
-	,ipcp(std::make_shared<Native::Interface::Serial::Ppp::Ipcp>())
-	,multilink(nullptr) // presence node
+    , authentication(std::make_shared<Native::Interface::Serial::Ppp::Authentication>())
+    , ipcp(std::make_shared<Native::Interface::Serial::Ppp::Ipcp>())
+    , multilink(nullptr) // presence node
 {
     chap->parent = this;
     authentication->parent = this;
     ipcp->parent = this;
 
-    yang_name = "ppp"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "Serial"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::~Ppp()
@@ -10546,6 +10674,7 @@ Native::Interface::Serial::Ppp::~Ppp()
 
 bool Native::Interface::Serial::Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting.is_set
 	|| authorization.is_set
 	|| (chap !=  nullptr && chap->has_data())
@@ -10692,7 +10821,7 @@ Native::Interface::Serial::Ppp::Chap::Chap()
     challenge_length{YType::uint8, "challenge-length"}
 {
 
-    yang_name = "chap"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chap"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Chap::~Chap()
@@ -10701,6 +10830,7 @@ Native::Interface::Serial::Ppp::Chap::~Chap()
 
 bool Native::Interface::Serial::Ppp::Chap::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| challenge_length.is_set;
 }
@@ -10794,7 +10924,7 @@ Native::Interface::Serial::Ppp::Authentication::Authentication()
     pap{YType::empty, "pap"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Authentication::~Authentication()
@@ -10803,6 +10933,7 @@ Native::Interface::Serial::Ppp::Authentication::~Authentication()
 
 bool Native::Interface::Serial::Ppp::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return method.is_set
 	|| list_name.is_set
 	|| chap.is_set
@@ -11028,7 +11159,7 @@ Native::Interface::Serial::Ppp::Ipcp::Ipcp()
 {
     dns->parent = this;
 
-    yang_name = "ipcp"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipcp"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Ipcp::~Ipcp()
@@ -11037,6 +11168,7 @@ Native::Interface::Serial::Ppp::Ipcp::~Ipcp()
 
 bool Native::Interface::Serial::Ppp::Ipcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (dns !=  nullptr && dns->has_data());
 }
 
@@ -11108,7 +11240,7 @@ Native::Interface::Serial::Ppp::Ipcp::Dns::Dns()
     primary{YType::str, "primary"}
 {
 
-    yang_name = "dns"; yang_parent_name = "ipcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dns"; yang_parent_name = "ipcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Ipcp::Dns::~Dns()
@@ -11117,6 +11249,7 @@ Native::Interface::Serial::Ppp::Ipcp::Dns::~Dns()
 
 bool Native::Interface::Serial::Ppp::Ipcp::Dns::has_data() const
 {
+    if (is_presence_container) return true;
     return primary.is_set;
 }
 
@@ -11183,16 +11316,16 @@ bool Native::Interface::Serial::Ppp::Ipcp::Dns::has_leaf_or_child_of_name(const 
 Native::Interface::Serial::Ppp::Multilink::Multilink()
     :
     group{YType::uint32, "group"}
-    	,
+        ,
     links(std::make_shared<Native::Interface::Serial::Ppp::Multilink::Links>())
-	,endpoint(std::make_shared<Native::Interface::Serial::Ppp::Multilink::Endpoint>())
-	,fragment(std::make_shared<Native::Interface::Serial::Ppp::Multilink::Fragment>())
+    , endpoint(std::make_shared<Native::Interface::Serial::Ppp::Multilink::Endpoint>())
+    , fragment(std::make_shared<Native::Interface::Serial::Ppp::Multilink::Fragment>())
 {
     links->parent = this;
     endpoint->parent = this;
     fragment->parent = this;
 
-    yang_name = "multilink"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multilink"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Serial::Ppp::Multilink::~Multilink()
@@ -11201,6 +11334,7 @@ Native::Interface::Serial::Ppp::Multilink::~Multilink()
 
 bool Native::Interface::Serial::Ppp::Multilink::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| (links !=  nullptr && links->has_data())
 	|| (endpoint !=  nullptr && endpoint->has_data())
@@ -11318,7 +11452,7 @@ Native::Interface::Serial::Ppp::Multilink::Links::Links()
 {
     minimum->parent = this;
 
-    yang_name = "links"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "links"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Multilink::Links::~Links()
@@ -11327,6 +11461,7 @@ Native::Interface::Serial::Ppp::Multilink::Links::~Links()
 
 bool Native::Interface::Serial::Ppp::Multilink::Links::has_data() const
 {
+    if (is_presence_container) return true;
     return (minimum !=  nullptr && minimum->has_data());
 }
 
@@ -11399,7 +11534,7 @@ Native::Interface::Serial::Ppp::Multilink::Links::Minimum::Minimum()
     mandatory{YType::empty, "mandatory"}
 {
 
-    yang_name = "minimum"; yang_parent_name = "links"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "minimum"; yang_parent_name = "links"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Multilink::Links::Minimum::~Minimum()
@@ -11408,6 +11543,7 @@ Native::Interface::Serial::Ppp::Multilink::Links::Minimum::~Minimum()
 
 bool Native::Interface::Serial::Ppp::Multilink::Links::Minimum::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_value.is_set
 	|| mandatory.is_set;
 }
@@ -11489,7 +11625,7 @@ Native::Interface::Serial::Ppp::Multilink::Endpoint::Endpoint()
     string{YType::str, "string"}
 {
 
-    yang_name = "endpoint"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "endpoint"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Multilink::Endpoint::~Endpoint()
@@ -11498,6 +11634,7 @@ Native::Interface::Serial::Ppp::Multilink::Endpoint::~Endpoint()
 
 bool Native::Interface::Serial::Ppp::Multilink::Endpoint::has_data() const
 {
+    if (is_presence_container) return true;
     return string.is_set;
 }
 
@@ -11564,12 +11701,12 @@ bool Native::Interface::Serial::Ppp::Multilink::Endpoint::has_leaf_or_child_of_n
 Native::Interface::Serial::Ppp::Multilink::Fragment::Fragment()
     :
     disable{YType::empty, "disable"}
-    	,
+        ,
     delay(std::make_shared<Native::Interface::Serial::Ppp::Multilink::Fragment::Delay>())
 {
     delay->parent = this;
 
-    yang_name = "fragment"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fragment"; yang_parent_name = "multilink"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Multilink::Fragment::~Fragment()
@@ -11578,6 +11715,7 @@ Native::Interface::Serial::Ppp::Multilink::Fragment::~Fragment()
 
 bool Native::Interface::Serial::Ppp::Multilink::Fragment::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| (delay !=  nullptr && delay->has_data());
 }
@@ -11663,7 +11801,7 @@ Native::Interface::Serial::Ppp::Multilink::Fragment::Delay::Delay()
     additional_delay_value{YType::uint16, "additional-delay-value"}
 {
 
-    yang_name = "delay"; yang_parent_name = "fragment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "fragment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Serial::Ppp::Multilink::Fragment::Delay::~Delay()
@@ -11672,6 +11810,7 @@ Native::Interface::Serial::Ppp::Multilink::Fragment::Delay::~Delay()
 
 bool Native::Interface::Serial::Ppp::Multilink::Fragment::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return delay_value.is_set
 	|| additional_delay_value.is_set;
 }
@@ -11762,59 +11901,60 @@ Native::Interface::Tunnel::Tunnel()
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"},
     nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"}
-    	,
+        ,
     switchport_conf(std::make_shared<Native::Interface::Tunnel::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::Tunnel::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::Tunnel::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::Tunnel::Arp>())
-	,backup(std::make_shared<Native::Interface::Tunnel::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::Tunnel::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::Tunnel::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::Tunnel::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::Tunnel::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::Tunnel::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::Tunnel::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::Tunnel::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::Tunnel::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::Tunnel::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::Tunnel::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::Tunnel::Dampening>())
-	,domain(std::make_shared<Native::Interface::Tunnel::Domain>())
-	,mpls(std::make_shared<Native::Interface::Tunnel::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::Tunnel::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::Tunnel::Vrf>())
-	,ip(std::make_shared<Native::Interface::Tunnel::Ip>())
-	,ipv6(std::make_shared<Native::Interface::Tunnel::Ipv6>())
-	,logging(std::make_shared<Native::Interface::Tunnel::Logging>())
-	,mdix(std::make_shared<Native::Interface::Tunnel::Mdix>())
-	,mop(std::make_shared<Native::Interface::Tunnel::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::Tunnel::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::Tunnel::Standby>())
-	,access_session(std::make_shared<Native::Interface::Tunnel::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::Tunnel::StormControl>())
-	,trust(std::make_shared<Native::Interface::Tunnel::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::Tunnel::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::Tunnel::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::Tunnel::Peer>())
-	,pm_path(std::make_shared<Native::Interface::Tunnel::PmPath>())
-	,qos(std::make_shared<Native::Interface::Tunnel::Qos>())
-	,cdp(std::make_shared<Native::Interface::Tunnel::Cdp>())
-	,snmp(std::make_shared<Native::Interface::Tunnel::Snmp>())
-	,nhrp(std::make_shared<Native::Interface::Tunnel::Nhrp>())
-	,tunnel(std::make_shared<Native::Interface::Tunnel::Tunnel_>())
-	,crypto(std::make_shared<Native::Interface::Tunnel::Crypto>())
-	,cts(std::make_shared<Native::Interface::Tunnel::Cts>())
-	,et_analytics(std::make_shared<Native::Interface::Tunnel::EtAnalytics>())
-	,performance(std::make_shared<Native::Interface::Tunnel::Performance>())
-	,service_policy(std::make_shared<Native::Interface::Tunnel::ServicePolicy>())
-	,lisp(std::make_shared<Native::Interface::Tunnel::Lisp>())
-	,ntp(std::make_shared<Native::Interface::Tunnel::Ntp>())
-	,ospfv3(std::make_shared<Native::Interface::Tunnel::Ospfv3>())
-	,udld(std::make_shared<Native::Interface::Tunnel::Udld>())
-	,umbrella(std::make_shared<Native::Interface::Tunnel::Umbrella>())
-	,utd(std::make_shared<Native::Interface::Tunnel::Utd>())
-	,zone_member(std::make_shared<Native::Interface::Tunnel::ZoneMember>())
+    , switchport(std::make_shared<Native::Interface::Tunnel::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::Tunnel::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::Tunnel::Arp>())
+    , backup(std::make_shared<Native::Interface::Tunnel::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::Tunnel::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::Tunnel::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::Tunnel::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::Tunnel::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::Tunnel::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::Tunnel::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::Tunnel::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::Tunnel::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::Tunnel::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::Tunnel::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::Tunnel::Dampening>())
+    , domain(std::make_shared<Native::Interface::Tunnel::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::Tunnel::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::Tunnel::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::Tunnel::Vrf>())
+    , ip(std::make_shared<Native::Interface::Tunnel::Ip>())
+    , ipv6(std::make_shared<Native::Interface::Tunnel::Ipv6>())
+    , logging(std::make_shared<Native::Interface::Tunnel::Logging>())
+    , mdix(std::make_shared<Native::Interface::Tunnel::Mdix>())
+    , mop(std::make_shared<Native::Interface::Tunnel::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::Tunnel::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::Tunnel::Standby>())
+    , access_session(std::make_shared<Native::Interface::Tunnel::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::Tunnel::StormControl>())
+    , trust(std::make_shared<Native::Interface::Tunnel::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::Tunnel::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::Tunnel::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::Tunnel::Peer>())
+    , pm_path(std::make_shared<Native::Interface::Tunnel::PmPath>())
+    , qos(std::make_shared<Native::Interface::Tunnel::Qos>())
+    , service_policy(std::make_shared<Native::Interface::Tunnel::ServicePolicy>())
+    , utd(std::make_shared<Native::Interface::Tunnel::Utd>())
+    , cts(std::make_shared<Native::Interface::Tunnel::Cts>())
+    , umbrella(std::make_shared<Native::Interface::Tunnel::Umbrella>())
+    , snmp(std::make_shared<Native::Interface::Tunnel::Snmp>())
+    , performance(std::make_shared<Native::Interface::Tunnel::Performance>())
+    , et_analytics(std::make_shared<Native::Interface::Tunnel::EtAnalytics>())
+    , lisp(std::make_shared<Native::Interface::Tunnel::Lisp>())
+    , zone_member(std::make_shared<Native::Interface::Tunnel::ZoneMember>())
+    , nhrp(std::make_shared<Native::Interface::Tunnel::Nhrp>())
+    , tunnel(std::make_shared<Native::Interface::Tunnel::Tunnel_>())
+    , crypto(std::make_shared<Native::Interface::Tunnel::Crypto>())
+    , udld(std::make_shared<Native::Interface::Tunnel::Udld>())
+    , ospfv3(std::make_shared<Native::Interface::Tunnel::Ospfv3>())
+    , ntp(std::make_shared<Native::Interface::Tunnel::Ntp>())
+    , cdp(std::make_shared<Native::Interface::Tunnel::Cdp>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -11851,24 +11991,24 @@ Native::Interface::Tunnel::Tunnel()
     peer->parent = this;
     pm_path->parent = this;
     qos->parent = this;
-    cdp->parent = this;
+    service_policy->parent = this;
+    utd->parent = this;
+    cts->parent = this;
+    umbrella->parent = this;
     snmp->parent = this;
+    performance->parent = this;
+    et_analytics->parent = this;
+    lisp->parent = this;
+    zone_member->parent = this;
     nhrp->parent = this;
     tunnel->parent = this;
     crypto->parent = this;
-    cts->parent = this;
-    et_analytics->parent = this;
-    performance->parent = this;
-    service_policy->parent = this;
-    lisp->parent = this;
-    ntp->parent = this;
-    ospfv3->parent = this;
     udld->parent = this;
-    umbrella->parent = this;
-    utd->parent = this;
-    zone_member->parent = this;
+    ospfv3->parent = this;
+    ntp->parent = this;
+    cdp->parent = this;
 
-    yang_name = "Tunnel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Tunnel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::Tunnel::~Tunnel()
@@ -11877,7 +12017,8 @@ Native::Interface::Tunnel::~Tunnel()
 
 bool Native::Interface::Tunnel::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
@@ -11930,27 +12071,27 @@ bool Native::Interface::Tunnel::has_data() const
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
 	|| (qos !=  nullptr && qos->has_data())
-	|| (cdp !=  nullptr && cdp->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (utd !=  nullptr && utd->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (umbrella !=  nullptr && umbrella->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
+	|| (performance !=  nullptr && performance->has_data())
+	|| (et_analytics !=  nullptr && et_analytics->has_data())
+	|| (lisp !=  nullptr && lisp->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data())
 	|| (nhrp !=  nullptr && nhrp->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data())
 	|| (crypto !=  nullptr && crypto->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (et_analytics !=  nullptr && et_analytics->has_data())
-	|| (performance !=  nullptr && performance->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
-	|| (lisp !=  nullptr && lisp->has_data())
-	|| (ntp !=  nullptr && ntp->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
 	|| (udld !=  nullptr && udld->has_data())
-	|| (umbrella !=  nullptr && umbrella->has_data())
-	|| (utd !=  nullptr && utd->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data());
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (ntp !=  nullptr && ntp->has_data())
+	|| (cdp !=  nullptr && cdp->has_data());
 }
 
 bool Native::Interface::Tunnel::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
@@ -12004,22 +12145,22 @@ bool Native::Interface::Tunnel::has_operation() const
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
 	|| (qos !=  nullptr && qos->has_operation())
-	|| (cdp !=  nullptr && cdp->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (utd !=  nullptr && utd->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (umbrella !=  nullptr && umbrella->has_operation())
 	|| (snmp !=  nullptr && snmp->has_operation())
+	|| (performance !=  nullptr && performance->has_operation())
+	|| (et_analytics !=  nullptr && et_analytics->has_operation())
+	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation())
 	|| (nhrp !=  nullptr && nhrp->has_operation())
 	|| (tunnel !=  nullptr && tunnel->has_operation())
 	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (et_analytics !=  nullptr && et_analytics->has_operation())
-	|| (performance !=  nullptr && performance->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
-	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
 	|| (udld !=  nullptr && udld->has_operation())
-	|| (umbrella !=  nullptr && umbrella->has_operation())
-	|| (utd !=  nullptr && utd->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation());
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (cdp !=  nullptr && cdp->has_operation());
 }
 
 std::string Native::Interface::Tunnel::get_absolute_path() const
@@ -12032,7 +12173,8 @@ std::string Native::Interface::Tunnel::get_absolute_path() const
 std::string Native::Interface::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Tunnel" <<"[name='" <<name <<"']";
+    path_buffer << "Tunnel";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12126,7 +12268,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::get_child_by_name(const std::
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::Tunnel::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::Tunnel::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -12225,7 +12367,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::get_child_by_name(const std::
     {
         auto c = std::make_shared<Native::Interface::Tunnel::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -12391,13 +12533,40 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::get_child_by_name(const std::
         return qos;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
     {
-        if(cdp == nullptr)
+        if(service_policy == nullptr)
         {
-            cdp = std::make_shared<Native::Interface::Tunnel::Cdp>();
+            service_policy = std::make_shared<Native::Interface::Tunnel::ServicePolicy>();
         }
-        return cdp;
+        return service_policy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    {
+        if(utd == nullptr)
+        {
+            utd = std::make_shared<Native::Interface::Tunnel::Utd>();
+        }
+        return utd;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::Tunnel::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
+    {
+        if(umbrella == nullptr)
+        {
+            umbrella = std::make_shared<Native::Interface::Tunnel::Umbrella>();
+        }
+        return umbrella;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
@@ -12407,6 +12576,42 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::get_child_by_name(const std::
             snmp = std::make_shared<Native::Interface::Tunnel::Snmp>();
         }
         return snmp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
+    {
+        if(performance == nullptr)
+        {
+            performance = std::make_shared<Native::Interface::Tunnel::Performance>();
+        }
+        return performance;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
+    {
+        if(et_analytics == nullptr)
+        {
+            et_analytics = std::make_shared<Native::Interface::Tunnel::EtAnalytics>();
+        }
+        return et_analytics;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
+    {
+        if(lisp == nullptr)
+        {
+            lisp = std::make_shared<Native::Interface::Tunnel::Lisp>();
+        }
+        return lisp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
+    {
+        if(zone_member == nullptr)
+        {
+            zone_member = std::make_shared<Native::Interface::Tunnel::ZoneMember>();
+        }
+        return zone_member;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-tunnel:nhrp")
@@ -12436,58 +12641,13 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::get_child_by_name(const std::
         return crypto;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
     {
-        if(cts == nullptr)
+        if(udld == nullptr)
         {
-            cts = std::make_shared<Native::Interface::Tunnel::Cts>();
+            udld = std::make_shared<Native::Interface::Tunnel::Udld>();
         }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
-    {
-        if(et_analytics == nullptr)
-        {
-            et_analytics = std::make_shared<Native::Interface::Tunnel::EtAnalytics>();
-        }
-        return et_analytics;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
-    {
-        if(performance == nullptr)
-        {
-            performance = std::make_shared<Native::Interface::Tunnel::Performance>();
-        }
-        return performance;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::Tunnel::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
-    {
-        if(lisp == nullptr)
-        {
-            lisp = std::make_shared<Native::Interface::Tunnel::Lisp>();
-        }
-        return lisp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
-    {
-        if(ntp == nullptr)
-        {
-            ntp = std::make_shared<Native::Interface::Tunnel::Ntp>();
-        }
-        return ntp;
+        return udld;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
@@ -12499,40 +12659,22 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::get_child_by_name(const std::
         return ospfv3;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
+    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
     {
-        if(udld == nullptr)
+        if(ntp == nullptr)
         {
-            udld = std::make_shared<Native::Interface::Tunnel::Udld>();
+            ntp = std::make_shared<Native::Interface::Tunnel::Ntp>();
         }
-        return udld;
+        return ntp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
+    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
     {
-        if(umbrella == nullptr)
+        if(cdp == nullptr)
         {
-            umbrella = std::make_shared<Native::Interface::Tunnel::Umbrella>();
+            cdp = std::make_shared<Native::Interface::Tunnel::Cdp>();
         }
-        return umbrella;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
-    {
-        if(utd == nullptr)
-        {
-            utd = std::make_shared<Native::Interface::Tunnel::Utd>();
-        }
-        return utd;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
-    {
-        if(zone_member == nullptr)
-        {
-            zone_member = std::make_shared<Native::Interface::Tunnel::ZoneMember>();
-        }
-        return zone_member;
+        return cdp;
     }
 
     return nullptr;
@@ -12633,7 +12775,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::get_ch
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12731,14 +12873,49 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::get_ch
         children["qos"] = qos;
     }
 
-    if(cdp != nullptr)
+    if(service_policy != nullptr)
     {
-        children["Cisco-IOS-XE-cdp:cdp"] = cdp;
+        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
+    if(utd != nullptr)
+    {
+        children["Cisco-IOS-XE-utd:utd"] = utd;
+    }
+
+    if(cts != nullptr)
+    {
+        children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(umbrella != nullptr)
+    {
+        children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
     if(snmp != nullptr)
     {
         children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+    }
+
+    if(performance != nullptr)
+    {
+        children["Cisco-IOS-XE-ezpm:performance"] = performance;
+    }
+
+    if(et_analytics != nullptr)
+    {
+        children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
+    }
+
+    if(lisp != nullptr)
+    {
+        children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+    }
+
+    if(zone_member != nullptr)
+    {
+        children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
     }
 
     if(nhrp != nullptr)
@@ -12756,34 +12933,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::get_ch
         children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
-    if(cts != nullptr)
+    if(udld != nullptr)
     {
-        children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(et_analytics != nullptr)
-    {
-        children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
-    }
-
-    if(performance != nullptr)
-    {
-        children["Cisco-IOS-XE-ezpm:performance"] = performance;
-    }
-
-    if(service_policy != nullptr)
-    {
-        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
-    }
-
-    if(lisp != nullptr)
-    {
-        children["Cisco-IOS-XE-lisp:lisp"] = lisp;
-    }
-
-    if(ntp != nullptr)
-    {
-        children["Cisco-IOS-XE-ntp:ntp"] = ntp;
+        children["Cisco-IOS-XE-udld:udld"] = udld;
     }
 
     if(ospfv3 != nullptr)
@@ -12791,24 +12943,14 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::get_ch
         children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
     }
 
-    if(udld != nullptr)
+    if(ntp != nullptr)
     {
-        children["Cisco-IOS-XE-udld:udld"] = udld;
+        children["Cisco-IOS-XE-ntp:ntp"] = ntp;
     }
 
-    if(umbrella != nullptr)
+    if(cdp != nullptr)
     {
-        children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
-    }
-
-    if(utd != nullptr)
-    {
-        children["Cisco-IOS-XE-utd:utd"] = utd;
-    }
-
-    if(zone_member != nullptr)
-    {
-        children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+        children["Cisco-IOS-XE-cdp:cdp"] = cdp;
     }
 
     return children;
@@ -12944,7 +13086,7 @@ void Native::Interface::Tunnel::set_filter(const std::string & value_path, YFilt
 
 bool Native::Interface::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "qos" || name == "cdp" || name == "snmp" || name == "nhrp" || name == "tunnel" || name == "crypto" || name == "cts" || name == "et-analytics" || name == "performance" || name == "service-policy" || name == "lisp" || name == "ntp" || name == "ospfv3" || name == "udld" || name == "umbrella" || name == "utd" || name == "zone-member" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "qos" || name == "service-policy" || name == "utd" || name == "cts" || name == "umbrella" || name == "snmp" || name == "performance" || name == "et-analytics" || name == "lisp" || name == "zone-member" || name == "nhrp" || name == "tunnel" || name == "crypto" || name == "udld" || name == "ospfv3" || name == "ntp" || name == "cdp" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
         return true;
     return false;
 }
@@ -12954,7 +13096,7 @@ Native::Interface::Tunnel::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::SwitchportConf::~SwitchportConf()
@@ -12963,6 +13105,7 @@ Native::Interface::Tunnel::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::Tunnel::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -13029,7 +13172,7 @@ bool Native::Interface::Tunnel::SwitchportConf::has_leaf_or_child_of_name(const 
 Native::Interface::Tunnel::Switchport::Switchport()
 {
 
-    yang_name = "switchport"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Switchport::~Switchport()
@@ -13038,6 +13181,7 @@ Native::Interface::Tunnel::Switchport::~Switchport()
 
 bool Native::Interface::Tunnel::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -13093,7 +13237,7 @@ Native::Interface::Tunnel::StackwiseVirtual::StackwiseVirtual()
     dual_active_detection{YType::empty, "dual-active-detection"}
 {
 
-    yang_name = "stackwise-virtual"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stackwise-virtual"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::StackwiseVirtual::~StackwiseVirtual()
@@ -13102,6 +13246,7 @@ Native::Interface::Tunnel::StackwiseVirtual::~StackwiseVirtual()
 
 bool Native::Interface::Tunnel::StackwiseVirtual::has_data() const
 {
+    if (is_presence_container) return true;
     return link.is_set
 	|| dual_active_detection.is_set;
 }
@@ -13183,7 +13328,7 @@ Native::Interface::Tunnel::Arp::Arp()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "arp"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Arp::~Arp()
@@ -13192,6 +13337,7 @@ Native::Interface::Tunnel::Arp::~Arp()
 
 bool Native::Interface::Tunnel::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -13258,14 +13404,14 @@ bool Native::Interface::Tunnel::Arp::has_leaf_or_child_of_name(const std::string
 Native::Interface::Tunnel::Backup::Backup()
     :
     delay(std::make_shared<Native::Interface::Tunnel::Backup::Delay>())
-	,interface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_>())
-	,load(std::make_shared<Native::Interface::Tunnel::Backup::Load>())
+    , interface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_>())
+    , load(std::make_shared<Native::Interface::Tunnel::Backup::Load>())
 {
     delay->parent = this;
     interface->parent = this;
     load->parent = this;
 
-    yang_name = "backup"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::~Backup()
@@ -13274,6 +13420,7 @@ Native::Interface::Tunnel::Backup::~Backup()
 
 bool Native::Interface::Tunnel::Backup::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data())
 	|| (interface !=  nullptr && interface->has_data())
 	|| (load !=  nullptr && load->has_data());
@@ -13378,7 +13525,7 @@ Native::Interface::Tunnel::Backup::Delay::Delay()
     secondary_disable{YType::str, "secondary-disable"}
 {
 
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::Delay::~Delay()
@@ -13387,6 +13534,7 @@ Native::Interface::Tunnel::Backup::Delay::~Delay()
 
 bool Native::Interface::Tunnel::Backup::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return failure.is_set
 	|| secondary_disable.is_set;
 }
@@ -13497,18 +13645,18 @@ Native::Interface::Tunnel::Backup::Interface_::Interface_()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::Interface_::~Interface_()
@@ -13517,6 +13665,7 @@ Native::Interface::Tunnel::Backup::Interface_::~Interface_()
 
 bool Native::Interface::Tunnel::Backup::Interface_::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -14052,7 +14201,7 @@ Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface::ATMSubinterface(
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface::~ATMSubinterface()
@@ -14061,6 +14210,7 @@ Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface::~ATMSubinterface
 
 bool Native::Interface::Tunnel::Backup::Interface_::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -14129,7 +14279,7 @@ Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface::ATMACRsubinte
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface::~ATMACRsubinterface()
@@ -14138,6 +14288,7 @@ Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface::~ATMACRsubint
 
 bool Native::Interface::Tunnel::Backup::Interface_::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -14206,7 +14357,7 @@ Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface::LISPSubinterfac
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface::~LISPSubinterface()
@@ -14215,6 +14366,7 @@ Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface::~LISPSubinterfa
 
 bool Native::Interface::Tunnel::Backup::Interface_::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -14283,7 +14435,7 @@ Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface::PortChan
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface::~PortChannelSubinterface()
@@ -14292,6 +14444,7 @@ Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface::~PortCha
 
 bool Native::Interface::Tunnel::Backup::Interface_::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -14361,7 +14514,7 @@ Native::Interface::Tunnel::Backup::Load::Load()
     kickout{YType::str, "kickout"}
 {
 
-    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "load"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Backup::Load::~Load()
@@ -14370,6 +14523,7 @@ Native::Interface::Tunnel::Backup::Load::~Load()
 
 bool Native::Interface::Tunnel::Backup::Load::has_data() const
 {
+    if (is_presence_container) return true;
     return kickin.is_set
 	|| kickout.is_set;
 }
@@ -14452,7 +14606,7 @@ Native::Interface::Tunnel::Cemoudp::Cemoudp()
 {
     reserve->parent = this;
 
-    yang_name = "cemoudp"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cemoudp"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Cemoudp::~Cemoudp()
@@ -14461,6 +14615,7 @@ Native::Interface::Tunnel::Cemoudp::~Cemoudp()
 
 bool Native::Interface::Tunnel::Cemoudp::has_data() const
 {
+    if (is_presence_container) return true;
     return (reserve !=  nullptr && reserve->has_data());
 }
 
@@ -14532,7 +14687,7 @@ Native::Interface::Tunnel::Cemoudp::Reserve::Reserve()
     acr{YType::uint8, "acr"}
 {
 
-    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reserve"; yang_parent_name = "cemoudp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Cemoudp::Reserve::~Reserve()
@@ -14541,6 +14696,7 @@ Native::Interface::Tunnel::Cemoudp::Reserve::~Reserve()
 
 bool Native::Interface::Tunnel::Cemoudp::Reserve::has_data() const
 {
+    if (is_presence_container) return true;
     return acr.is_set;
 }
 
@@ -14607,12 +14763,12 @@ bool Native::Interface::Tunnel::Cemoudp::Reserve::has_leaf_or_child_of_name(cons
 Native::Interface::Tunnel::CwsTunnel::CwsTunnel()
     :
     in{YType::empty, "in"}
-    	,
+        ,
     out(std::make_shared<Native::Interface::Tunnel::CwsTunnel::Out>())
 {
     out->parent = this;
 
-    yang_name = "cws-tunnel"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cws-tunnel"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::CwsTunnel::~CwsTunnel()
@@ -14621,6 +14777,7 @@ Native::Interface::Tunnel::CwsTunnel::~CwsTunnel()
 
 bool Native::Interface::Tunnel::CwsTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return in.is_set
 	|| (out !=  nullptr && out->has_data());
 }
@@ -14705,7 +14862,7 @@ Native::Interface::Tunnel::CwsTunnel::Out::Out()
     tunnel_number{YType::uint16, "tunnel-number"}
 {
 
-    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "cws-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::CwsTunnel::Out::~Out()
@@ -14714,6 +14871,7 @@ Native::Interface::Tunnel::CwsTunnel::Out::~Out()
 
 bool Native::Interface::Tunnel::CwsTunnel::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel_number.is_set;
 }
 
@@ -14777,27 +14935,28 @@ bool Native::Interface::Tunnel::CwsTunnel::Out::has_leaf_or_child_of_name(const 
     return false;
 }
 
-Native::Interface::Tunnel::L2ProtocolTunnel::L2ProtocolTunnel()
+Native::Interface::Tunnel::L2protocolTunnel::L2protocolTunnel()
     :
     cdp{YType::empty, "cdp"},
     stp{YType::empty, "stp"},
     vtp{YType::empty, "vtp"}
-    	,
-    drop_threshold(std::make_shared<Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold>())
-	,shutdown_threshold(std::make_shared<Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold>())
+        ,
+    drop_threshold(std::make_shared<Native::Interface::Tunnel::L2protocolTunnel::DropThreshold>())
+    , shutdown_threshold(std::make_shared<Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold>())
 {
     drop_threshold->parent = this;
     shutdown_threshold->parent = this;
 
-    yang_name = "l2protocol-tunnel"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol-tunnel"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::Tunnel::L2ProtocolTunnel::~L2ProtocolTunnel()
+Native::Interface::Tunnel::L2protocolTunnel::~L2protocolTunnel()
 {
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::has_data() const
+bool Native::Interface::Tunnel::L2protocolTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set
@@ -14805,7 +14964,7 @@ bool Native::Interface::Tunnel::L2ProtocolTunnel::has_data() const
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_data());
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::has_operation() const
+bool Native::Interface::Tunnel::L2protocolTunnel::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cdp.yfilter)
@@ -14815,14 +14974,14 @@ bool Native::Interface::Tunnel::L2ProtocolTunnel::has_operation() const
 	|| (shutdown_threshold !=  nullptr && shutdown_threshold->has_operation());
 }
 
-std::string Native::Interface::Tunnel::L2ProtocolTunnel::get_segment_path() const
+std::string Native::Interface::Tunnel::L2protocolTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2ProtocolTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2protocolTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14834,13 +14993,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2Prot
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Tunnel::L2ProtocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Tunnel::L2protocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "drop-threshold")
     {
         if(drop_threshold == nullptr)
         {
-            drop_threshold = std::make_shared<Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold>();
+            drop_threshold = std::make_shared<Native::Interface::Tunnel::L2protocolTunnel::DropThreshold>();
         }
         return drop_threshold;
     }
@@ -14849,7 +15008,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::L2ProtocolTunnel::get_child_b
     {
         if(shutdown_threshold == nullptr)
         {
-            shutdown_threshold = std::make_shared<Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold>();
+            shutdown_threshold = std::make_shared<Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold>();
         }
         return shutdown_threshold;
     }
@@ -14857,7 +15016,7 @@ std::shared_ptr<Entity> Native::Interface::Tunnel::L2ProtocolTunnel::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::L2ProtocolTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::L2protocolTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14874,7 +15033,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::L2Prot
     return children;
 }
 
-void Native::Interface::Tunnel::L2ProtocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Tunnel::L2protocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cdp")
     {
@@ -14896,7 +15055,7 @@ void Native::Interface::Tunnel::L2ProtocolTunnel::set_value(const std::string & 
     }
 }
 
-void Native::Interface::Tunnel::L2ProtocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Tunnel::L2protocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cdp")
     {
@@ -14912,14 +15071,14 @@ void Native::Interface::Tunnel::L2ProtocolTunnel::set_filter(const std::string &
     }
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Tunnel::L2protocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "drop-threshold" || name == "shutdown-threshold" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::DropThreshold()
+Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::DropThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -14927,22 +15086,23 @@ Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::DropThreshold()
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::~DropThreshold()
+Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::~DropThreshold()
 {
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::has_data() const
+bool Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::has_operation() const
+bool Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -14951,14 +15111,14 @@ bool Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::has_operation()
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::get_segment_path() const
+std::string Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "drop-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14971,19 +15131,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2Prot
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -15011,7 +15171,7 @@ void Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::set_value(const
     }
 }
 
-void Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -15031,14 +15191,14 @@ void Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::set_filter(cons
     }
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Tunnel::L2protocolTunnel::DropThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
     return false;
 }
 
-Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::ShutdownThreshold()
+Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::ShutdownThreshold()
     :
     packet_rate{YType::uint16, "packet-rate"},
     cdp{YType::uint16, "cdp"},
@@ -15046,22 +15206,23 @@ Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::ShutdownThreshol
     vtp{YType::uint16, "vtp"}
 {
 
-    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shutdown-threshold"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::~ShutdownThreshold()
+Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::~ShutdownThreshold()
 {
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::has_data() const
+bool Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_rate.is_set
 	|| cdp.is_set
 	|| stp.is_set
 	|| vtp.is_set;
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::has_operation() const
+bool Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(packet_rate.yfilter)
@@ -15070,14 +15231,14 @@ bool Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::has_operati
 	|| ydk::is_set(vtp.yfilter);
 }
 
-std::string Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::get_segment_path() const
+std::string Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "shutdown-threshold";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15090,19 +15251,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Tunnel::L2Prot
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "packet-rate")
     {
@@ -15130,7 +15291,7 @@ void Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::set_value(c
     }
 }
 
-void Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "packet-rate")
     {
@@ -15150,7 +15311,7 @@ void Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::set_filter(
     }
 }
 
-bool Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Tunnel::L2protocolTunnel::ShutdownThreshold::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packet-rate" || name == "cdp" || name == "stp" || name == "vtp")
         return true;
@@ -15160,15 +15321,15 @@ bool Native::Interface::Tunnel::L2ProtocolTunnel::ShutdownThreshold::has_leaf_or
 Native::Interface::Tunnel::Encapsulation::Encapsulation()
     :
     dot1q(std::make_shared<Native::Interface::Tunnel::Encapsulation::Dot1Q>())
-	,isl(std::make_shared<Native::Interface::Tunnel::Encapsulation::Isl>())
-	,ppp(nullptr) // presence node
-	,slip(nullptr) // presence node
-	,frame_relay(nullptr) // presence node
+    , isl(std::make_shared<Native::Interface::Tunnel::Encapsulation::Isl>())
+    , ppp(nullptr) // presence node
+    , slip(nullptr) // presence node
+    , frame_relay(nullptr) // presence node
 {
     dot1q->parent = this;
     isl->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Encapsulation::~Encapsulation()
@@ -15177,6 +15338,7 @@ Native::Interface::Tunnel::Encapsulation::~Encapsulation()
 
 bool Native::Interface::Tunnel::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1q !=  nullptr && dot1q->has_data())
 	|| (isl !=  nullptr && isl->has_data())
 	|| (ppp !=  nullptr && ppp->has_data())
@@ -15313,7 +15475,7 @@ Native::Interface::Tunnel::Encapsulation::Dot1Q::Dot1Q()
     native{YType::empty, "native"}
 {
 
-    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Encapsulation::Dot1Q::~Dot1Q()
@@ -15322,6 +15484,7 @@ Native::Interface::Tunnel::Encapsulation::Dot1Q::~Dot1Q()
 
 bool Native::Interface::Tunnel::Encapsulation::Dot1Q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| native.is_set;
 }
@@ -15403,7 +15566,7 @@ Native::Interface::Tunnel::Encapsulation::Isl::Isl()
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Encapsulation::Isl::~Isl()
@@ -15412,6 +15575,7 @@ Native::Interface::Tunnel::Encapsulation::Isl::~Isl()
 
 bool Native::Interface::Tunnel::Encapsulation::Isl::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -15478,7 +15642,7 @@ bool Native::Interface::Tunnel::Encapsulation::Isl::has_leaf_or_child_of_name(co
 Native::Interface::Tunnel::Encapsulation::Ppp::Ppp()
 {
 
-    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Tunnel::Encapsulation::Ppp::~Ppp()
@@ -15487,6 +15651,7 @@ Native::Interface::Tunnel::Encapsulation::Ppp::~Ppp()
 
 bool Native::Interface::Tunnel::Encapsulation::Ppp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -15539,7 +15704,7 @@ bool Native::Interface::Tunnel::Encapsulation::Ppp::has_leaf_or_child_of_name(co
 Native::Interface::Tunnel::Encapsulation::Slip::Slip()
 {
 
-    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Tunnel::Encapsulation::Slip::~Slip()
@@ -15548,6 +15713,7 @@ Native::Interface::Tunnel::Encapsulation::Slip::~Slip()
 
 bool Native::Interface::Tunnel::Encapsulation::Slip::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -15602,7 +15768,7 @@ Native::Interface::Tunnel::Encapsulation::FrameRelay::FrameRelay()
     ietf{YType::empty, "ietf"}
 {
 
-    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Tunnel::Encapsulation::FrameRelay::~FrameRelay()
@@ -15611,6 +15777,7 @@ Native::Interface::Tunnel::Encapsulation::FrameRelay::~FrameRelay()
 
 bool Native::Interface::Tunnel::Encapsulation::FrameRelay::has_data() const
 {
+    if (is_presence_container) return true;
     return ietf.is_set;
 }
 
@@ -15679,7 +15846,7 @@ Native::Interface::Tunnel::FairQueueConf::FairQueueConf()
     fair_queue{YType::boolean, "fair-queue"}
 {
 
-    yang_name = "fair-queue-conf"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue-conf"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::FairQueueConf::~FairQueueConf()
@@ -15688,6 +15855,7 @@ Native::Interface::Tunnel::FairQueueConf::~FairQueueConf()
 
 bool Native::Interface::Tunnel::FairQueueConf::has_data() const
 {
+    if (is_presence_container) return true;
     return fair_queue.is_set;
 }
 
@@ -15756,7 +15924,7 @@ Native::Interface::Tunnel::FairQueue::FairQueue()
     incomplete{YType::empty, "incomplete"}
 {
 
-    yang_name = "fair-queue"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fair-queue"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::FairQueue::~FairQueue()
@@ -15765,6 +15933,7 @@ Native::Interface::Tunnel::FairQueue::~FairQueue()
 
 bool Native::Interface::Tunnel::FairQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return incomplete.is_set;
 }
 
@@ -15834,7 +16003,7 @@ Native::Interface::Tunnel::Flowcontrol::Flowcontrol()
     send{YType::enumeration, "send"}
 {
 
-    yang_name = "flowcontrol"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flowcontrol"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Flowcontrol::~Flowcontrol()
@@ -15843,6 +16012,7 @@ Native::Interface::Tunnel::Flowcontrol::~Flowcontrol()
 
 bool Native::Interface::Tunnel::Flowcontrol::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| send.is_set;
 }
@@ -15928,21 +16098,21 @@ Native::Interface::Tunnel::Isis::Isis()
     retransmit_interval{YType::uint16, "Cisco-IOS-XE-isis:retransmit-interval"},
     retransmit_throttle_interval{YType::uint16, "Cisco-IOS-XE-isis:retransmit-throttle-interval"},
     tag{YType::uint32, "Cisco-IOS-XE-isis:tag"}
-    	,
+        ,
     adjacency_filter(std::make_shared<Native::Interface::Tunnel::Isis::AdjacencyFilter>())
-	,advertise(std::make_shared<Native::Interface::Tunnel::Isis::Advertise>())
-	,authentication(std::make_shared<Native::Interface::Tunnel::Isis::Authentication>())
-	,circuit_type(nullptr) // presence node
-	,csnp_interval(std::make_shared<Native::Interface::Tunnel::Isis::CsnpInterval>())
-	,hello(std::make_shared<Native::Interface::Tunnel::Isis::Hello>())
-	,hello_interval(std::make_shared<Native::Interface::Tunnel::Isis::HelloInterval>())
-	,hello_multiplier(std::make_shared<Native::Interface::Tunnel::Isis::HelloMultiplier>())
-	,ipv6(std::make_shared<Native::Interface::Tunnel::Isis::Ipv6>())
-	,metric(std::make_shared<Native::Interface::Tunnel::Isis::Metric>())
-	,password(std::make_shared<Native::Interface::Tunnel::Isis::Password>())
-	,priority(std::make_shared<Native::Interface::Tunnel::Isis::Priority>())
-	,bfd(nullptr) // presence node
-	,three_way_handshake(nullptr) // presence node
+    , advertise(std::make_shared<Native::Interface::Tunnel::Isis::Advertise>())
+    , authentication(std::make_shared<Native::Interface::Tunnel::Isis::Authentication>())
+    , circuit_type(nullptr) // presence node
+    , csnp_interval(std::make_shared<Native::Interface::Tunnel::Isis::CsnpInterval>())
+    , hello(std::make_shared<Native::Interface::Tunnel::Isis::Hello>())
+    , hello_interval(std::make_shared<Native::Interface::Tunnel::Isis::HelloInterval>())
+    , hello_multiplier(std::make_shared<Native::Interface::Tunnel::Isis::HelloMultiplier>())
+    , ipv6(std::make_shared<Native::Interface::Tunnel::Isis::Ipv6>())
+    , metric(std::make_shared<Native::Interface::Tunnel::Isis::Metric>())
+    , password(std::make_shared<Native::Interface::Tunnel::Isis::Password>())
+    , priority(std::make_shared<Native::Interface::Tunnel::Isis::Priority>())
+    , bfd(nullptr) // presence node
+    , three_way_handshake(nullptr) // presence node
 {
     adjacency_filter->parent = this;
     advertise->parent = this;
@@ -15956,7 +16126,7 @@ Native::Interface::Tunnel::Isis::Isis()
     password->parent = this;
     priority->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "Tunnel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Isis::~Isis()
@@ -15965,6 +16135,7 @@ Native::Interface::Tunnel::Isis::~Isis()
 
 bool Native::Interface::Tunnel::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_interval.is_set
 	|| mesh_group.is_set
 	|| network.is_set
@@ -16336,7 +16507,7 @@ Native::Interface::Tunnel::Isis::AdjacencyFilter::AdjacencyFilter()
     match_all{YType::empty, "match-all"}
 {
 
-    yang_name = "adjacency-filter"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-filter"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Tunnel::Isis::AdjacencyFilter::~AdjacencyFilter()
@@ -16345,6 +16516,7 @@ Native::Interface::Tunnel::Isis::AdjacencyFilter::~AdjacencyFilter()
 
 bool Native::Interface::Tunnel::Isis::AdjacencyFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| match_all.is_set;
 }

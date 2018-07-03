@@ -106,7 +106,7 @@ class Sla::Protocols::Ethernet::Profiles : public ydk::Entity
 
         class Profile; //type: Sla::Protocols::Ethernet::Profiles::Profile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile> > profile;
+        ydk::YList profile;
         
 }; // Sla::Protocols::Ethernet::Profiles
 
@@ -159,7 +159,7 @@ class Sla::Protocols::Ethernet::Profiles::Profile::Statistics : public ydk::Enti
 
         class Statistic; //type: Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_sla_cfg::Sla::Protocols::Ethernet::Profiles::Profile::Statistics::Statistic> > statistic;
+        ydk::YList statistic;
         
 }; // Sla::Protocols::Ethernet::Profiles::Profile::Statistics
 

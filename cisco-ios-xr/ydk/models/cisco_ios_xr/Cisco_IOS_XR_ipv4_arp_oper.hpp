@@ -59,7 +59,7 @@ class ArpGmp::VrfInfos : public ydk::Entity
 
         class VrfInfo; //type: ArpGmp::VrfInfos::VrfInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::ArpGmp::VrfInfos::VrfInfo> > vrf_info;
+        ydk::YList vrf_info;
         
 }; // ArpGmp::VrfInfos
 
@@ -110,7 +110,7 @@ class ArpGmp::Vrfs : public ydk::Entity
 
         class Vrf; //type: ArpGmp::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::ArpGmp::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // ArpGmp::Vrfs
 
@@ -162,7 +162,7 @@ class ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses : public ydk::Entity
 
         class ConfiguredIpAddress; //type: ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses::ConfiguredIpAddress> > configured_ip_address;
+        ydk::YList configured_ip_address;
         
 }; // ArpGmp::Vrfs::Vrf::ConfiguredIpAddresses
 
@@ -210,7 +210,7 @@ class ArpGmp::Vrfs::Vrf::Routes : public ydk::Entity
 
         class Route; //type: ArpGmp::Vrfs::Vrf::Routes::Route
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::ArpGmp::Vrfs::Vrf::Routes::Route> > route;
+        ydk::YList route;
         
 }; // ArpGmp::Vrfs::Vrf::Routes
 
@@ -259,7 +259,7 @@ class ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps : public ydk::Entity
 
         class InterfaceConfiguredIp; //type: ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp> > interface_configured_ip;
+        ydk::YList interface_configured_ip;
         
 }; // ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps
 
@@ -361,7 +361,7 @@ class Arp::Nodes : public ydk::Entity
 
         class Node; //type: Arp::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Arp::Nodes
 
@@ -419,7 +419,7 @@ class Arp::Nodes::Node::ResolutionHistoryDynamic : public ydk::Entity
 
         class ArpEntry; //type: Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry> > arp_entry;
+        ydk::YList arp_entry;
         
 }; // Arp::Nodes::Node::ResolutionHistoryDynamic
 
@@ -470,7 +470,7 @@ class Arp::Nodes::Node::TrafficVrfs : public ydk::Entity
 
         class TrafficVrf; //type: Arp::Nodes::Node::TrafficVrfs::TrafficVrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::TrafficVrfs::TrafficVrf> > traffic_vrf;
+        ydk::YList traffic_vrf;
         
 }; // Arp::Nodes::Node::TrafficVrfs
 
@@ -592,7 +592,7 @@ class Arp::Nodes::Node::ResolutionHistoryClient : public ydk::Entity
 
         class ArpEntry; //type: Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry> > arp_entry;
+        ydk::YList arp_entry;
         
 }; // Arp::Nodes::Node::ResolutionHistoryClient
 
@@ -643,7 +643,7 @@ class Arp::Nodes::Node::Entries : public ydk::Entity
 
         class Entry; //type: Arp::Nodes::Node::Entries::Entry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::Entries::Entry> > entry;
+        ydk::YList entry;
         
 }; // Arp::Nodes::Node::Entries
 
@@ -695,7 +695,7 @@ class Arp::Nodes::Node::TrafficInterfaces : public ydk::Entity
 
         class TrafficInterface; //type: Arp::Nodes::Node::TrafficInterfaces::TrafficInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::TrafficInterfaces::TrafficInterface> > traffic_interface;
+        ydk::YList traffic_interface;
         
 }; // Arp::Nodes::Node::TrafficInterfaces
 
@@ -749,41 +749,6 @@ class Arp::Nodes::Node::TrafficInterfaces::TrafficInterface : public ydk::Entity
 
 }; // Arp::Nodes::Node::TrafficInterfaces::TrafficInterface
 
-class ArpGmpBagEntry : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf alias;
-
-};
-
-class ArpGmpBagEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf arpa;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf ieee802_1q;
-        static const ydk::Enum::YLeaf srp;
-        static const ydk::Enum::YLeaf srpa;
-        static const ydk::Enum::YLeaf srpb;
-
-};
-
-class IpArpBagEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf arpa;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf ieee802_1q;
-        static const ydk::Enum::YLeaf srp;
-        static const ydk::Enum::YLeaf srpa;
-        static const ydk::Enum::YLeaf srpb;
-
-};
-
 class IpArpBagFlags : public ydk::Enum
 {
     public:
@@ -791,38 +756,6 @@ class IpArpBagFlags : public ydk::Enum
         static const ydk::Enum::YLeaf flag_dynamic;
         static const ydk::Enum::YLeaf flag_evpn_sync;
         static const ydk::Enum::YLeaf flag_max;
-
-};
-
-class IpArpBagState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_none;
-        static const ydk::Enum::YLeaf state_interface;
-        static const ydk::Enum::YLeaf state_standby;
-        static const ydk::Enum::YLeaf state_static;
-        static const ydk::Enum::YLeaf state_alias;
-        static const ydk::Enum::YLeaf state_mobile;
-        static const ydk::Enum::YLeaf state_incomplete;
-        static const ydk::Enum::YLeaf state_deleted;
-        static const ydk::Enum::YLeaf state_dynamic;
-        static const ydk::Enum::YLeaf state_probe;
-        static const ydk::Enum::YLeaf state_purge_delayed;
-        static const ydk::Enum::YLeaf state_dhcp;
-        static const ydk::Enum::YLeaf state_vxlan;
-        static const ydk::Enum::YLeaf state_evpn_sync;
-        static const ydk::Enum::YLeaf state_sat;
-        static const ydk::Enum::YLeaf state_r_sync;
-        static const ydk::Enum::YLeaf state_max;
-
-};
-
-class IpArpBagMedia : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf media_arpa;
-        static const ydk::Enum::YLeaf media_srp;
-        static const ydk::Enum::YLeaf media_unknown;
 
 };
 
@@ -852,6 +785,73 @@ class ArpResolutionHistoryStatus : public ydk::Enum
         static const ydk::Enum::YLeaf status_removed_v1;
         static const ydk::Enum::YLeaf status_resolved_peer_sync;
         static const ydk::Enum::YLeaf status_dropped_unsolicited_pak;
+
+};
+
+class IpArpBagEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf arpa;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf ieee802_1q;
+        static const ydk::Enum::YLeaf srp;
+        static const ydk::Enum::YLeaf srpa;
+        static const ydk::Enum::YLeaf srpb;
+
+};
+
+class ArpGmpBagEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf arpa;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf ieee802_1q;
+        static const ydk::Enum::YLeaf srp;
+        static const ydk::Enum::YLeaf srpa;
+        static const ydk::Enum::YLeaf srpb;
+
+};
+
+class IpArpBagMedia : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf media_arpa;
+        static const ydk::Enum::YLeaf media_srp;
+        static const ydk::Enum::YLeaf media_unknown;
+
+};
+
+class ArpGmpBagEntry : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf alias;
+
+};
+
+class IpArpBagState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_none;
+        static const ydk::Enum::YLeaf state_interface;
+        static const ydk::Enum::YLeaf state_standby;
+        static const ydk::Enum::YLeaf state_static;
+        static const ydk::Enum::YLeaf state_alias;
+        static const ydk::Enum::YLeaf state_mobile;
+        static const ydk::Enum::YLeaf state_incomplete;
+        static const ydk::Enum::YLeaf state_deleted;
+        static const ydk::Enum::YLeaf state_dynamic;
+        static const ydk::Enum::YLeaf state_probe;
+        static const ydk::Enum::YLeaf state_purge_delayed;
+        static const ydk::Enum::YLeaf state_dhcp;
+        static const ydk::Enum::YLeaf state_vxlan;
+        static const ydk::Enum::YLeaf state_evpn_sync;
+        static const ydk::Enum::YLeaf state_sat;
+        static const ydk::Enum::YLeaf state_r_sync;
+        static const ydk::Enum::YLeaf state_max;
 
 };
 

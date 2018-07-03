@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_rsvp_cfg {
 Rsvp::Rsvp()
     :
     neighbors(std::make_shared<Rsvp::Neighbors>())
-	,controllers(std::make_shared<Rsvp::Controllers>())
-	,global_logging(std::make_shared<Rsvp::GlobalLogging>())
-	,global_bandwidth(std::make_shared<Rsvp::GlobalBandwidth>())
-	,interfaces(std::make_shared<Rsvp::Interfaces>())
-	,signalling(std::make_shared<Rsvp::Signalling>())
-	,authentication(std::make_shared<Rsvp::Authentication>())
+    , controllers(std::make_shared<Rsvp::Controllers>())
+    , global_logging(std::make_shared<Rsvp::GlobalLogging>())
+    , global_bandwidth(std::make_shared<Rsvp::GlobalBandwidth>())
+    , interfaces(std::make_shared<Rsvp::Interfaces>())
+    , signalling(std::make_shared<Rsvp::Signalling>())
+    , authentication(std::make_shared<Rsvp::Authentication>())
 {
     neighbors->parent = this;
     controllers->parent = this;
@@ -29,7 +29,7 @@ Rsvp::Rsvp()
     signalling->parent = this;
     authentication->parent = this;
 
-    yang_name = "rsvp"; yang_parent_name = "Cisco-IOS-XR-ip-rsvp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "rsvp"; yang_parent_name = "Cisco-IOS-XR-ip-rsvp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Rsvp::~Rsvp()
@@ -38,6 +38,7 @@ Rsvp::~Rsvp()
 
 bool Rsvp::has_data() const
 {
+    if (is_presence_container) return true;
     return (neighbors !=  nullptr && neighbors->has_data())
 	|| (controllers !=  nullptr && controllers->has_data())
 	|| (global_logging !=  nullptr && global_logging->has_data())
@@ -226,9 +227,11 @@ bool Rsvp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Rsvp::Neighbors::Neighbors()
+    :
+    neighbor(this, {"neighbor"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Neighbors::~Neighbors()
@@ -237,7 +240,8 @@ Rsvp::Neighbors::~Neighbors()
 
 bool Rsvp::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -247,7 +251,7 @@ bool Rsvp::Neighbors::has_data() const
 
 bool Rsvp::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -284,7 +288,7 @@ std::shared_ptr<Entity> Rsvp::Neighbors::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Rsvp::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -296,7 +300,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::Neighbors::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -325,12 +329,12 @@ bool Rsvp::Neighbors::has_leaf_or_child_of_name(const std::string & name) const
 Rsvp::Neighbors::Neighbor::Neighbor()
     :
     neighbor{YType::str, "neighbor"}
-    	,
+        ,
     authentication(std::make_shared<Rsvp::Neighbors::Neighbor::Authentication>())
 {
     authentication->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Neighbors::Neighbor::~Neighbor()
@@ -339,6 +343,7 @@ Rsvp::Neighbors::Neighbor::~Neighbor()
 
 bool Rsvp::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor.is_set
 	|| (authentication !=  nullptr && authentication->has_data());
 }
@@ -360,7 +365,8 @@ std::string Rsvp::Neighbors::Neighbor::get_absolute_path() const
 std::string Rsvp::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[neighbor='" <<neighbor <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(neighbor, "neighbor");
     return path_buffer.str();
 }
 
@@ -433,7 +439,7 @@ Rsvp::Neighbors::Neighbor::Authentication::Authentication()
     key_chain{YType::str, "key-chain"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Neighbors::Neighbor::Authentication::~Authentication()
@@ -442,6 +448,7 @@ Rsvp::Neighbors::Neighbor::Authentication::~Authentication()
 
 bool Rsvp::Neighbors::Neighbor::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return life_time.is_set
 	|| enable.is_set
 	|| window_size.is_set
@@ -545,9 +552,11 @@ bool Rsvp::Neighbors::Neighbor::Authentication::has_leaf_or_child_of_name(const 
 }
 
 Rsvp::Controllers::Controllers()
+    :
+    controller(this, {"controller_name"})
 {
 
-    yang_name = "controllers"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controllers"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Controllers::~Controllers()
@@ -556,7 +565,8 @@ Rsvp::Controllers::~Controllers()
 
 bool Rsvp::Controllers::has_data() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_data())
             return true;
@@ -566,7 +576,7 @@ bool Rsvp::Controllers::has_data() const
 
 bool Rsvp::Controllers::has_operation() const
 {
-    for (std::size_t index=0; index<controller.size(); index++)
+    for (std::size_t index=0; index<controller.len(); index++)
     {
         if(controller[index]->has_operation())
             return true;
@@ -603,7 +613,7 @@ std::shared_ptr<Entity> Rsvp::Controllers::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<Rsvp::Controllers::Controller>();
         c->parent = this;
-        controller.push_back(c);
+        controller.append(c);
         return c;
     }
 
@@ -615,7 +625,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::Controllers::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : controller)
+    for (auto c : controller.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -645,12 +655,12 @@ Rsvp::Controllers::Controller::Controller()
     :
     controller_name{YType::str, "controller-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     cntl_signalling(std::make_shared<Rsvp::Controllers::Controller::CntlSignalling>())
 {
     cntl_signalling->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "controllers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Controllers::Controller::~Controller()
@@ -659,6 +669,7 @@ Rsvp::Controllers::Controller::~Controller()
 
 bool Rsvp::Controllers::Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set
 	|| enable.is_set
 	|| (cntl_signalling !=  nullptr && cntl_signalling->has_data());
@@ -682,7 +693,8 @@ std::string Rsvp::Controllers::Controller::get_absolute_path() const
 std::string Rsvp::Controllers::Controller::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller" <<"[controller-name='" <<controller_name <<"']";
+    path_buffer << "controller";
+    ADD_KEY_TOKEN(controller_name, "controller-name");
     return path_buffer.str();
 }
 
@@ -764,7 +776,7 @@ Rsvp::Controllers::Controller::CntlSignalling::CntlSignalling()
 {
     out_of_band->parent = this;
 
-    yang_name = "cntl-signalling"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cntl-signalling"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Controllers::Controller::CntlSignalling::~CntlSignalling()
@@ -773,6 +785,7 @@ Rsvp::Controllers::Controller::CntlSignalling::~CntlSignalling()
 
 bool Rsvp::Controllers::Controller::CntlSignalling::has_data() const
 {
+    if (is_presence_container) return true;
     return (out_of_band !=  nullptr && out_of_band->has_data());
 }
 
@@ -845,7 +858,7 @@ Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::OutOfBand()
     refresh_interval{YType::uint32, "refresh-interval"}
 {
 
-    yang_name = "out-of-band"; yang_parent_name = "cntl-signalling"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-of-band"; yang_parent_name = "cntl-signalling"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::~OutOfBand()
@@ -854,6 +867,7 @@ Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::~OutOfBand()
 
 bool Rsvp::Controllers::Controller::CntlSignalling::OutOfBand::has_data() const
 {
+    if (is_presence_container) return true;
     return missed_messages.is_set
 	|| refresh_interval.is_set;
 }
@@ -936,7 +950,7 @@ Rsvp::GlobalLogging::GlobalLogging()
     log_issu_status{YType::empty, "log-issu-status"}
 {
 
-    yang_name = "global-logging"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-logging"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::GlobalLogging::~GlobalLogging()
@@ -945,6 +959,7 @@ Rsvp::GlobalLogging::~GlobalLogging()
 
 bool Rsvp::GlobalLogging::has_data() const
 {
+    if (is_presence_container) return true;
     return log_nsr_status.is_set
 	|| log_issu_status.is_set;
 }
@@ -1034,7 +1049,7 @@ Rsvp::GlobalBandwidth::GlobalBandwidth()
 {
     default_interface_percent->parent = this;
 
-    yang_name = "global-bandwidth"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-bandwidth"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::GlobalBandwidth::~GlobalBandwidth()
@@ -1043,6 +1058,7 @@ Rsvp::GlobalBandwidth::~GlobalBandwidth()
 
 bool Rsvp::GlobalBandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_interface_percent !=  nullptr && default_interface_percent->has_data());
 }
 
@@ -1119,12 +1135,12 @@ bool Rsvp::GlobalBandwidth::has_leaf_or_child_of_name(const std::string & name) 
 Rsvp::GlobalBandwidth::DefaultInterfacePercent::DefaultInterfacePercent()
     :
     mam(std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam>())
-	,rdm(std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm>())
+    , rdm(std::make_shared<Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm>())
 {
     mam->parent = this;
     rdm->parent = this;
 
-    yang_name = "default-interface-percent"; yang_parent_name = "global-bandwidth"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-interface-percent"; yang_parent_name = "global-bandwidth"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::GlobalBandwidth::DefaultInterfacePercent::~DefaultInterfacePercent()
@@ -1133,6 +1149,7 @@ Rsvp::GlobalBandwidth::DefaultInterfacePercent::~DefaultInterfacePercent()
 
 bool Rsvp::GlobalBandwidth::DefaultInterfacePercent::has_data() const
 {
+    if (is_presence_container) return true;
     return (mam !=  nullptr && mam->has_data())
 	|| (rdm !=  nullptr && rdm->has_data());
 }
@@ -1229,7 +1246,7 @@ Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::Mam()
     bc1_percent{YType::uint32, "bc1-percent"}
 {
 
-    yang_name = "mam"; yang_parent_name = "default-interface-percent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mam"; yang_parent_name = "default-interface-percent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::~Mam()
@@ -1238,6 +1255,7 @@ Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::~Mam()
 
 bool Rsvp::GlobalBandwidth::DefaultInterfacePercent::Mam::has_data() const
 {
+    if (is_presence_container) return true;
     return max_res_percent.is_set
 	|| bc0_percent.is_set
 	|| bc1_percent.is_set;
@@ -1340,7 +1358,7 @@ Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::Rdm()
     bc1_percent{YType::uint32, "bc1-percent"}
 {
 
-    yang_name = "rdm"; yang_parent_name = "default-interface-percent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rdm"; yang_parent_name = "default-interface-percent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::~Rdm()
@@ -1349,6 +1367,7 @@ Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::~Rdm()
 
 bool Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::has_data() const
 {
+    if (is_presence_container) return true;
     return bc0_percent.is_set
 	|| bc1_percent.is_set;
 }
@@ -1433,9 +1452,11 @@ bool Rsvp::GlobalBandwidth::DefaultInterfacePercent::Rdm::has_leaf_or_child_of_n
 }
 
 Rsvp::Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Interfaces::~Interfaces()
@@ -1444,7 +1465,8 @@ Rsvp::Interfaces::~Interfaces()
 
 bool Rsvp::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1454,7 +1476,7 @@ bool Rsvp::Interfaces::has_data() const
 
 bool Rsvp::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1491,7 +1513,7 @@ std::shared_ptr<Entity> Rsvp::Interfaces::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Rsvp::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1503,7 +1525,7 @@ std::map<std::string, std::shared_ptr<Entity>> Rsvp::Interfaces::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1533,16 +1555,16 @@ Rsvp::Interfaces::Interface::Interface()
     :
     name{YType::str, "name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     if_signalling(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling>())
-	,bandwidth(std::make_shared<Rsvp::Interfaces::Interface::Bandwidth>())
-	,authentication(std::make_shared<Rsvp::Interfaces::Interface::Authentication>())
+    , bandwidth(std::make_shared<Rsvp::Interfaces::Interface::Bandwidth>())
+    , authentication(std::make_shared<Rsvp::Interfaces::Interface::Authentication>())
 {
     if_signalling->parent = this;
     bandwidth->parent = this;
     authentication->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Interfaces::Interface::~Interface()
@@ -1551,6 +1573,7 @@ Rsvp::Interfaces::Interface::~Interface()
 
 bool Rsvp::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| enable.is_set
 	|| (if_signalling !=  nullptr && if_signalling->has_data())
@@ -1578,7 +1601,8 @@ std::string Rsvp::Interfaces::Interface::get_absolute_path() const
 std::string Rsvp::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1689,16 +1713,16 @@ Rsvp::Interfaces::Interface::IfSignalling::IfSignalling()
     hello_graceful_restart_if_based{YType::empty, "hello-graceful-restart-if-based"},
     pacing{YType::empty, "pacing"},
     refresh_interval{YType::uint32, "refresh-interval"}
-    	,
+        ,
     refresh_reduction(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction>())
-	,interval_rate(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::IntervalRate>())
-	,out_of_band(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::OutOfBand>())
+    , interval_rate(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::IntervalRate>())
+    , out_of_band(std::make_shared<Rsvp::Interfaces::Interface::IfSignalling::OutOfBand>())
 {
     refresh_reduction->parent = this;
     interval_rate->parent = this;
     out_of_band->parent = this;
 
-    yang_name = "if-signalling"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-signalling"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::IfSignalling::~IfSignalling()
@@ -1707,6 +1731,7 @@ Rsvp::Interfaces::Interface::IfSignalling::~IfSignalling()
 
 bool Rsvp::Interfaces::Interface::IfSignalling::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set
 	|| missed_messages.is_set
 	|| hello_graceful_restart_if_based.is_set
@@ -1881,7 +1906,7 @@ Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::RefreshReduction()
     bundle_message_max_size{YType::uint32, "bundle-message-max-size"}
 {
 
-    yang_name = "refresh-reduction"; yang_parent_name = "if-signalling"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "refresh-reduction"; yang_parent_name = "if-signalling"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::~RefreshReduction()
@@ -1890,6 +1915,7 @@ Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::~RefreshReduction()
 
 bool Rsvp::Interfaces::Interface::IfSignalling::RefreshReduction::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set
 	|| reliable_ack_max_size.is_set
 	|| reliable_ack_hold_time.is_set
@@ -2037,7 +2063,7 @@ Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::IntervalRate()
     interval_size{YType::uint32, "interval-size"}
 {
 
-    yang_name = "interval-rate"; yang_parent_name = "if-signalling"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interval-rate"; yang_parent_name = "if-signalling"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::~IntervalRate()
@@ -2046,6 +2072,7 @@ Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::~IntervalRate()
 
 bool Rsvp::Interfaces::Interface::IfSignalling::IntervalRate::has_data() const
 {
+    if (is_presence_container) return true;
     return messages_per_interval.is_set
 	|| interval_size.is_set;
 }
@@ -2128,7 +2155,7 @@ Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::OutOfBand()
     refresh_interval{YType::uint32, "refresh-interval"}
 {
 
-    yang_name = "out-of-band"; yang_parent_name = "if-signalling"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-of-band"; yang_parent_name = "if-signalling"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::~OutOfBand()
@@ -2137,6 +2164,7 @@ Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::~OutOfBand()
 
 bool Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::has_data() const
 {
+    if (is_presence_container) return true;
     return missed_messages.is_set
 	|| refresh_interval.is_set;
 }
@@ -2216,12 +2244,12 @@ bool Rsvp::Interfaces::Interface::IfSignalling::OutOfBand::has_leaf_or_child_of_
 Rsvp::Interfaces::Interface::Bandwidth::Bandwidth()
     :
     mam(std::make_shared<Rsvp::Interfaces::Interface::Bandwidth::Mam>())
-	,rdm(std::make_shared<Rsvp::Interfaces::Interface::Bandwidth::Rdm>())
+    , rdm(std::make_shared<Rsvp::Interfaces::Interface::Bandwidth::Rdm>())
 {
     mam->parent = this;
     rdm->parent = this;
 
-    yang_name = "bandwidth"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bandwidth"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::Bandwidth::~Bandwidth()
@@ -2230,6 +2258,7 @@ Rsvp::Interfaces::Interface::Bandwidth::~Bandwidth()
 
 bool Rsvp::Interfaces::Interface::Bandwidth::has_data() const
 {
+    if (is_presence_container) return true;
     return (mam !=  nullptr && mam->has_data())
 	|| (rdm !=  nullptr && rdm->has_data());
 }
@@ -2321,7 +2350,7 @@ Rsvp::Interfaces::Interface::Bandwidth::Mam::Mam()
     bandwidth_mode{YType::enumeration, "bandwidth-mode"}
 {
 
-    yang_name = "mam"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mam"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::Bandwidth::Mam::~Mam()
@@ -2330,6 +2359,7 @@ Rsvp::Interfaces::Interface::Bandwidth::Mam::~Mam()
 
 bool Rsvp::Interfaces::Interface::Bandwidth::Mam::has_data() const
 {
+    if (is_presence_container) return true;
     return max_resv_bandwidth.is_set
 	|| max_resv_flow.is_set
 	|| bc0_bandwidth.is_set
@@ -2456,7 +2486,7 @@ Rsvp::Interfaces::Interface::Bandwidth::Rdm::Rdm()
     bandwidth_mode{YType::enumeration, "bandwidth-mode"}
 {
 
-    yang_name = "rdm"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rdm"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::Bandwidth::Rdm::~Rdm()
@@ -2465,6 +2495,7 @@ Rsvp::Interfaces::Interface::Bandwidth::Rdm::~Rdm()
 
 bool Rsvp::Interfaces::Interface::Bandwidth::Rdm::has_data() const
 {
+    if (is_presence_container) return true;
     return max_resv_flow.is_set
 	|| bc0_bandwidth.is_set
 	|| bc1_bandwidth.is_set
@@ -2614,7 +2645,7 @@ Rsvp::Interfaces::Interface::Authentication::Authentication()
     key_chain{YType::str, "key-chain"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Rsvp::Interfaces::Interface::Authentication::~Authentication()
@@ -2623,6 +2654,7 @@ Rsvp::Interfaces::Interface::Authentication::~Authentication()
 
 bool Rsvp::Interfaces::Interface::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return life_time.is_set
 	|| enable.is_set
 	|| window_size.is_set
@@ -2729,12 +2761,12 @@ Rsvp::Signalling::Signalling()
     :
     hello_graceful_restart_misses{YType::uint32, "hello-graceful-restart-misses"},
     hello_graceful_restart_interval{YType::uint32, "hello-graceful-restart-interval"}
-    	,
+        ,
     global_out_of_band(std::make_shared<Rsvp::Signalling::GlobalOutOfBand>())
-	,graceful_restart(std::make_shared<Rsvp::Signalling::GracefulRestart>())
-	,prefix_filtering(std::make_shared<Rsvp::Signalling::PrefixFiltering>())
-	,pesr(std::make_shared<Rsvp::Signalling::Pesr>())
-	,checksum(std::make_shared<Rsvp::Signalling::Checksum>())
+    , graceful_restart(std::make_shared<Rsvp::Signalling::GracefulRestart>())
+    , prefix_filtering(std::make_shared<Rsvp::Signalling::PrefixFiltering>())
+    , pesr(std::make_shared<Rsvp::Signalling::Pesr>())
+    , checksum(std::make_shared<Rsvp::Signalling::Checksum>())
 {
     global_out_of_band->parent = this;
     graceful_restart->parent = this;
@@ -2742,7 +2774,7 @@ Rsvp::Signalling::Signalling()
     pesr->parent = this;
     checksum->parent = this;
 
-    yang_name = "signalling"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "signalling"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::~Signalling()
@@ -2751,6 +2783,7 @@ Rsvp::Signalling::~Signalling()
 
 bool Rsvp::Signalling::has_data() const
 {
+    if (is_presence_container) return true;
     return hello_graceful_restart_misses.is_set
 	|| hello_graceful_restart_interval.is_set
 	|| (global_out_of_band !=  nullptr && global_out_of_band->has_data())
@@ -2919,7 +2952,7 @@ Rsvp::Signalling::GlobalOutOfBand::GlobalOutOfBand()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "global-out-of-band"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-out-of-band"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::GlobalOutOfBand::~GlobalOutOfBand()
@@ -2928,6 +2961,7 @@ Rsvp::Signalling::GlobalOutOfBand::~GlobalOutOfBand()
 
 bool Rsvp::Signalling::GlobalOutOfBand::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -3003,12 +3037,12 @@ Rsvp::Signalling::GracefulRestart::GracefulRestart()
     enable{YType::boolean, "enable"},
     restart_time{YType::uint32, "restart-time"},
     recovery_time{YType::uint32, "recovery-time"}
-    	,
+        ,
     lsp_class_type(std::make_shared<Rsvp::Signalling::GracefulRestart::LspClassType>())
 {
     lsp_class_type->parent = this;
 
-    yang_name = "graceful-restart"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "graceful-restart"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::GracefulRestart::~GracefulRestart()
@@ -3017,6 +3051,7 @@ Rsvp::Signalling::GracefulRestart::~GracefulRestart()
 
 bool Rsvp::Signalling::GracefulRestart::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| restart_time.is_set
 	|| recovery_time.is_set
@@ -3134,7 +3169,7 @@ Rsvp::Signalling::GracefulRestart::LspClassType::LspClassType()
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "lsp-class-type"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsp-class-type"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::GracefulRestart::LspClassType::~LspClassType()
@@ -3143,6 +3178,7 @@ Rsvp::Signalling::GracefulRestart::LspClassType::~LspClassType()
 
 bool Rsvp::Signalling::GracefulRestart::LspClassType::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -3216,12 +3252,12 @@ bool Rsvp::Signalling::GracefulRestart::LspClassType::has_leaf_or_child_of_name(
 Rsvp::Signalling::PrefixFiltering::PrefixFiltering()
     :
     acl{YType::str, "acl"}
-    	,
+        ,
     default_deny_action(std::make_shared<Rsvp::Signalling::PrefixFiltering::DefaultDenyAction>())
 {
     default_deny_action->parent = this;
 
-    yang_name = "prefix-filtering"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-filtering"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::PrefixFiltering::~PrefixFiltering()
@@ -3230,6 +3266,7 @@ Rsvp::Signalling::PrefixFiltering::~PrefixFiltering()
 
 bool Rsvp::Signalling::PrefixFiltering::has_data() const
 {
+    if (is_presence_container) return true;
     return acl.is_set
 	|| (default_deny_action !=  nullptr && default_deny_action->has_data());
 }
@@ -3321,7 +3358,7 @@ Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::DefaultDenyAction()
     drop{YType::empty, "drop"}
 {
 
-    yang_name = "default-deny-action"; yang_parent_name = "prefix-filtering"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-deny-action"; yang_parent_name = "prefix-filtering"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::~DefaultDenyAction()
@@ -3330,6 +3367,7 @@ Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::~DefaultDenyAction()
 
 bool Rsvp::Signalling::PrefixFiltering::DefaultDenyAction::has_data() const
 {
+    if (is_presence_container) return true;
     return drop.is_set;
 }
 
@@ -3405,7 +3443,7 @@ Rsvp::Signalling::Pesr::Pesr()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "pesr"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pesr"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::Pesr::~Pesr()
@@ -3414,6 +3452,7 @@ Rsvp::Signalling::Pesr::~Pesr()
 
 bool Rsvp::Signalling::Pesr::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -3489,7 +3528,7 @@ Rsvp::Signalling::Checksum::Checksum()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "checksum"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "checksum"; yang_parent_name = "signalling"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Signalling::Checksum::~Checksum()
@@ -3498,6 +3537,7 @@ Rsvp::Signalling::Checksum::~Checksum()
 
 bool Rsvp::Signalling::Checksum::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -3576,7 +3616,7 @@ Rsvp::Authentication::Authentication()
     key_chain{YType::str, "key-chain"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "rsvp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Rsvp::Authentication::~Authentication()
@@ -3585,6 +3625,7 @@ Rsvp::Authentication::~Authentication()
 
 bool Rsvp::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return life_time.is_set
 	|| enable.is_set
 	|| window_size.is_set
@@ -3694,19 +3735,19 @@ bool Rsvp::Authentication::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
-const Enum::YLeaf RsvpRdm::rdm {1, "rdm"};
-const Enum::YLeaf RsvpRdm::not_specified {2, "not-specified"};
-const Enum::YLeaf RsvpRdm::use_default_bandwidth {3, "use-default-bandwidth"};
+const Enum::YLeaf RsvpBwCfg::absolute {0, "absolute"};
+const Enum::YLeaf RsvpBwCfg::percentage {1, "percentage"};
 
 const Enum::YLeaf RsvpBc0::bc0 {1, "bc0"};
 const Enum::YLeaf RsvpBc0::global_pool {2, "global-pool"};
 const Enum::YLeaf RsvpBc0::not_specified {3, "not-specified"};
 
-const Enum::YLeaf RsvpBwCfg::absolute {0, "absolute"};
-const Enum::YLeaf RsvpBwCfg::percentage {1, "percentage"};
-
 const Enum::YLeaf RsvpBc1::bc1 {1, "bc1"};
 const Enum::YLeaf RsvpBc1::sub_pool {2, "sub-pool"};
+
+const Enum::YLeaf RsvpRdm::rdm {1, "rdm"};
+const Enum::YLeaf RsvpRdm::not_specified {2, "not-specified"};
+const Enum::YLeaf RsvpRdm::use_default_bandwidth {3, "use-default-bandwidth"};
 
 
 }

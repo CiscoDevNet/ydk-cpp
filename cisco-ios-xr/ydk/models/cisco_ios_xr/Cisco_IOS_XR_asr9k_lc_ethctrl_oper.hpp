@@ -57,7 +57,7 @@ class Mlan::Nodes : public ydk::Entity
 
         class Node; //type: Mlan::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_ethctrl_oper::Mlan::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Mlan::Nodes
 
@@ -111,7 +111,7 @@ class Mlan::Nodes::Node::PortStatusNumbers : public ydk::Entity
 
         class PortStatusNumber; //type: Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_ethctrl_oper::Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber> > port_status_number;
+        ydk::YList port_status_number;
         
 }; // Mlan::Nodes::Node::PortStatusNumbers
 
@@ -132,7 +132,7 @@ class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class PortStatus; //type: Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_ethctrl_oper::Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus> port_status;
@@ -214,9 +214,32 @@ class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList reg; //type: list of  uint16
+        class Reg; //type: Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg
 
+        ydk::YList reg;
+        
 }; // Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy
+
+
+class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg : public ydk::Entity
+{
+    public:
+        Reg();
+        ~Reg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg
 
 
 class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes : public ydk::Entity
@@ -235,9 +258,32 @@ class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList reg; //type: list of  uint16
+        class Reg; //type: Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg
 
+        ydk::YList reg;
+        
 }; // Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes
+
+
+class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg : public ydk::Entity
+{
+    public:
+        Reg();
+        ~Reg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg
 
 
 class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac : public ydk::Entity
@@ -256,9 +302,32 @@ class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList reg; //type: list of  uint16
+        class Reg; //type: Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg
 
+        ydk::YList reg;
+        
 }; // Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac
+
+
+class Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg : public ydk::Entity
+{
+    public:
+        Reg();
+        ~Reg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg
 
 
 class Mlan::Nodes::Node::SwitchStatusTable : public ydk::Entity
@@ -328,9 +397,32 @@ class Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1 : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList reg; //type: list of  uint16
+        class Reg; //type: Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg
 
+        ydk::YList reg;
+        
 }; // Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1
+
+
+class Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg : public ydk::Entity
+{
+    public:
+        Reg();
+        ~Reg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg
 
 
 class Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2 : public ydk::Entity
@@ -349,9 +441,32 @@ class Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2 : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList reg; //type: list of  uint16
+        class Reg; //type: Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg
 
+        ydk::YList reg;
+        
 }; // Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2
+
+
+class Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg : public ydk::Entity
+{
+    public:
+        Reg();
+        ~Reg();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg
 
 
 class Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus : public ydk::Entity
@@ -399,7 +514,7 @@ class Mlan::Nodes::Node::PortCountersNumbers : public ydk::Entity
 
         class PortCountersNumber; //type: Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_ethctrl_oper::Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber> > port_counters_number;
+        ydk::YList port_counters_number;
         
 }; // Mlan::Nodes::Node::PortCountersNumbers
 
@@ -420,7 +535,7 @@ class Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         class PortCounters; //type: Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_ethctrl_oper::Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters> port_counters;
@@ -525,7 +640,7 @@ class Mlan::Nodes::Node::AtuEntryNumbers : public ydk::Entity
 
         class AtuEntryNumber; //type: Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_ethctrl_oper::Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber> > atu_entry_number;
+        ydk::YList atu_entry_number;
         
 }; // Mlan::Nodes::Node::AtuEntryNumbers
 
@@ -546,7 +661,7 @@ class Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf entry; //type: int32
+        ydk::YLeaf entry; //type: uint32
         class SwitchCounters; //type: Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_lc_ethctrl_oper::Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters> switch_counters;
@@ -599,9 +714,32 @@ class Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu : 
         ydk::YLeaf trunk; //type: boolean
         ydk::YLeaf dpv; //type: uint8
         ydk::YLeaf es; //type: uint8
-        ydk::YLeafList macaddr; //type: list of  uint16
+        class Macaddr; //type: Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr
 
+        ydk::YList macaddr;
+        
 }; // Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu
+
+
+class Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr : public ydk::Entity
+{
+    public:
+        Macaddr();
+        ~Macaddr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint16
+
+}; // Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr
 
 
 }

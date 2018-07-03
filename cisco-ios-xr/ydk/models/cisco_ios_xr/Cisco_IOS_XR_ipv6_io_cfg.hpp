@@ -36,10 +36,10 @@ class Ipv6Configuration : public ydk::Entity
         ydk::YLeaf ipv6_pmtu_enable; //type: boolean
         ydk::YLeaf ipv6_hop_limit; //type: uint32
         class Ipv6Assembler; //type: Ipv6Configuration::Ipv6Assembler
-        class Ipv6Icmp; //type: Ipv6Configuration::Ipv6Icmp
+        class Ipv6icmp; //type: Ipv6Configuration::Ipv6icmp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_cfg::Ipv6Configuration::Ipv6Assembler> ipv6_assembler;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_cfg::Ipv6Configuration::Ipv6Icmp> ipv6icmp; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_io_cfg::Ipv6Configuration::Ipv6icmp> ipv6icmp; // presence node
         
 }; // Ipv6Configuration
 
@@ -67,11 +67,11 @@ class Ipv6Configuration::Ipv6Assembler : public ydk::Entity
 }; // Ipv6Configuration::Ipv6Assembler
 
 
-class Ipv6Configuration::Ipv6Icmp : public ydk::Entity
+class Ipv6Configuration::Ipv6icmp : public ydk::Entity
 {
     public:
-        Ipv6Icmp();
-        ~Ipv6Icmp();
+        Ipv6icmp();
+        ~Ipv6icmp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -87,7 +87,7 @@ class Ipv6Configuration::Ipv6Icmp : public ydk::Entity
         ydk::YLeaf error_interval; //type: uint32
         ydk::YLeaf bucket_size; //type: uint32
 
-}; // Ipv6Configuration::Ipv6Icmp
+}; // Ipv6Configuration::Ipv6icmp
 
 
 }

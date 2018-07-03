@@ -105,7 +105,7 @@ class Lacp::Interfaces : public ydk::Entity
 
         class Interface; //type: Lacp::Interfaces::Interface
 
-        std::vector<std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Lacp::Interfaces
 
@@ -210,7 +210,7 @@ class Lacp::Interfaces::Interface::Members : public ydk::Entity
 
         class Member; //type: Lacp::Interfaces::Interface::Members::Member
 
-        std::vector<std::shared_ptr<openconfig::openconfig_lacp::Lacp::Interfaces::Interface::Members::Member> > member;
+        ydk::YList member;
         
 }; // Lacp::Interfaces::Interface::Members
 
@@ -300,14 +300,6 @@ class Lacp::Interfaces::Interface::Members::Member::State::Counters : public ydk
 
 }; // Lacp::Interfaces::Interface::Members::Member::State::Counters
 
-class LacpActivityType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ACTIVE;
-        static const ydk::Enum::YLeaf PASSIVE;
-
-};
-
 class LacpTimeoutType : public ydk::Enum
 {
     public:
@@ -316,19 +308,27 @@ class LacpTimeoutType : public ydk::Enum
 
 };
 
-class LacpSynchronizationType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf IN_SYNC;
-        static const ydk::Enum::YLeaf OUT_SYNC;
-
-};
-
 class LacpPeriodType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf FAST;
         static const ydk::Enum::YLeaf SLOW;
+
+};
+
+class LacpActivityType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ACTIVE;
+        static const ydk::Enum::YLeaf PASSIVE;
+
+};
+
+class LacpSynchronizationType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf IN_SYNC;
+        static const ydk::Enum::YLeaf OUT_SYNC;
 
 };
 

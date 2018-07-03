@@ -13,18 +13,18 @@ namespace CISCO_SUBSCRIBER_SESSION_MIB {
 
 CISCOSUBSCRIBERSESSIONMIB::CISCOSUBSCRIBERSESSIONMIB()
     :
-    csubjob(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjob>())
-	,csubaggthresh(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh>())
-	,csubsessiontable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable>())
-	,csubsessionbytypetable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable>())
-	,csubaggstatstable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable>())
-	,csubaggstatsinttable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable>())
-	,csubaggstatsthreshtable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable>())
-	,csubjobtable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobtable>())
-	,csubjobmatchparamstable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable>())
-	,csubjobqueryparamstable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable>())
-	,csubjobqueuetable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable>())
-	,csubjobreporttable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable>())
+    csubjob(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJob>())
+    , csubaggthresh(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh>())
+    , csubsessiontable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable>())
+    , csubsessionbytypetable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable>())
+    , csubaggstatstable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable>())
+    , csubaggstatsinttable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable>())
+    , csubaggstatsthreshtable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable>())
+    , csubjobtable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobTable>())
+    , csubjobmatchparamstable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable>())
+    , csubjobqueryparamstable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable>())
+    , csubjobqueuetable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable>())
+    , csubjobreporttable(std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable>())
 {
     csubjob->parent = this;
     csubaggthresh->parent = this;
@@ -39,7 +39,7 @@ CISCOSUBSCRIBERSESSIONMIB::CISCOSUBSCRIBERSESSIONMIB()
     csubjobqueuetable->parent = this;
     csubjobreporttable->parent = this;
 
-    yang_name = "CISCO-SUBSCRIBER-SESSION-MIB"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-SUBSCRIBER-SESSION-MIB"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOSUBSCRIBERSESSIONMIB::~CISCOSUBSCRIBERSESSIONMIB()
@@ -48,6 +48,7 @@ CISCOSUBSCRIBERSESSIONMIB::~CISCOSUBSCRIBERSESSIONMIB()
 
 bool CISCOSUBSCRIBERSESSIONMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (csubjob !=  nullptr && csubjob->has_data())
 	|| (csubaggthresh !=  nullptr && csubaggthresh->has_data())
 	|| (csubsessiontable !=  nullptr && csubsessiontable->has_data())
@@ -101,7 +102,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubjob == nullptr)
         {
-            csubjob = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjob>();
+            csubjob = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJob>();
         }
         return csubjob;
     }
@@ -110,7 +111,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubaggthresh == nullptr)
         {
-            csubaggthresh = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh>();
+            csubaggthresh = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh>();
         }
         return csubaggthresh;
     }
@@ -119,7 +120,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubsessiontable == nullptr)
         {
-            csubsessiontable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable>();
+            csubsessiontable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable>();
         }
         return csubsessiontable;
     }
@@ -128,7 +129,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubsessionbytypetable == nullptr)
         {
-            csubsessionbytypetable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable>();
+            csubsessionbytypetable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable>();
         }
         return csubsessionbytypetable;
     }
@@ -137,7 +138,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubaggstatstable == nullptr)
         {
-            csubaggstatstable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable>();
+            csubaggstatstable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable>();
         }
         return csubaggstatstable;
     }
@@ -146,7 +147,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubaggstatsinttable == nullptr)
         {
-            csubaggstatsinttable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable>();
+            csubaggstatsinttable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable>();
         }
         return csubaggstatsinttable;
     }
@@ -155,7 +156,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubaggstatsthreshtable == nullptr)
         {
-            csubaggstatsthreshtable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable>();
+            csubaggstatsthreshtable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable>();
         }
         return csubaggstatsthreshtable;
     }
@@ -164,7 +165,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubjobtable == nullptr)
         {
-            csubjobtable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobtable>();
+            csubjobtable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobTable>();
         }
         return csubjobtable;
     }
@@ -173,7 +174,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubjobmatchparamstable == nullptr)
         {
-            csubjobmatchparamstable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable>();
+            csubjobmatchparamstable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable>();
         }
         return csubjobmatchparamstable;
     }
@@ -182,7 +183,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubjobqueryparamstable == nullptr)
         {
-            csubjobqueryparamstable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable>();
+            csubjobqueryparamstable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable>();
         }
         return csubjobqueryparamstable;
     }
@@ -191,7 +192,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubjobqueuetable == nullptr)
         {
-            csubjobqueuetable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable>();
+            csubjobqueuetable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable>();
         }
         return csubjobqueuetable;
     }
@@ -200,7 +201,7 @@ std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::get_child_by_name(const std::
     {
         if(csubjobreporttable == nullptr)
         {
-            csubjobreporttable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable>();
+            csubjobreporttable = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable>();
         }
         return csubjobreporttable;
     }
@@ -315,7 +316,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjob::Csubjob()
+CISCOSUBSCRIBERSESSIONMIB::CsubJob::CsubJob()
     :
     csubjobfinishednotifyenable{YType::boolean, "csubJobFinishedNotifyEnable"},
     csubjobindexedattributes{YType::bits, "csubJobIndexedAttributes"},
@@ -325,15 +326,16 @@ CISCOSUBSCRIBERSESSIONMIB::Csubjob::Csubjob()
     csubjobcount{YType::uint32, "csubJobCount"}
 {
 
-    yang_name = "csubJob"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJob"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjob::~Csubjob()
+CISCOSUBSCRIBERSESSIONMIB::CsubJob::~CsubJob()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjob::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJob::has_data() const
 {
+    if (is_presence_container) return true;
     return csubjobfinishednotifyenable.is_set
 	|| csubjobindexedattributes.is_set
 	|| csubjobidnext.is_set
@@ -342,7 +344,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjob::has_data() const
 	|| csubjobcount.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjob::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJob::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubjobfinishednotifyenable.yfilter)
@@ -353,21 +355,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjob::has_operation() const
 	|| ydk::is_set(csubjobcount.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjob::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjob::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubJob";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjob::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -382,19 +384,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjob::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjob::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJob::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjob::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJob::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubJobFinishedNotifyEnable")
     {
@@ -432,7 +434,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjob::set_value(const std::string & value_pat
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjob::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJob::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubJobFinishedNotifyEnable")
     {
@@ -460,51 +462,52 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjob::set_filter(const std::string & value_pa
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjob::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJob::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobFinishedNotifyEnable" || name == "csubJobIndexedAttributes" || name == "csubJobIdNext" || name == "csubJobMaxNumber" || name == "csubJobMaxLife" || name == "csubJobCount")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::Csubaggthresh()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::CsubAggThresh()
     :
     csubaggstatsthreshnotifenable{YType::boolean, "csubAggStatsThreshNotifEnable"}
 {
 
-    yang_name = "csubAggThresh"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubAggThresh"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::~Csubaggthresh()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::~CsubAggThresh()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::has_data() const
 {
+    if (is_presence_container) return true;
     return csubaggstatsthreshnotifenable.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubaggstatsthreshnotifenable.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubAggThresh";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -514,19 +517,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubag
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubAggStatsThreshNotifEnable")
     {
@@ -536,7 +539,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::set_value(const std::string & val
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubAggStatsThreshNotifEnable")
     {
@@ -544,26 +547,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::set_filter(const std::string & va
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggthresh::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggThresh::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubAggStatsThreshNotifEnable")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessiontable()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionTable()
+    :
+    csubsessionentry(this, {"ifindex"})
 {
 
-    yang_name = "csubSessionTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubSessionTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::~Csubsessiontable()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::~CsubSessionTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::has_data() const
 {
-    for (std::size_t index=0; index<csubsessionentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubsessionentry.len(); index++)
     {
         if(csubsessionentry[index]->has_data())
             return true;
@@ -571,9 +577,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubsessionentry.size(); index++)
+    for (std::size_t index=0; index<csubsessionentry.len(); index++)
     {
         if(csubsessionentry[index]->has_operation())
             return true;
@@ -581,21 +587,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubSessionTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -604,25 +610,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubse
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubSessionEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry>();
         c->parent = this;
-        csubsessionentry.push_back(c);
+        csubsessionentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubsessionentry)
+    for (auto c : csubsessionentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -633,22 +639,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubse
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubSessionEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionEntry()
     :
     ifindex{YType::str, "ifIndex"},
     csubsessiontype{YType::enumeration, "csubSessionType"},
@@ -690,15 +696,16 @@ CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionentry(
     csubsessionnativeipmask2{YType::str, "csubSessionNativeIpMask2"}
 {
 
-    yang_name = "csubSessionEntry"; yang_parent_name = "csubSessionTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubSessionEntry"; yang_parent_name = "csubSessionTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::~Csubsessionentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::~CsubSessionEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| csubsessiontype.is_set
 	|| csubsessionipaddrassignment.is_set
@@ -739,7 +746,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::has_data() c
 	|| csubsessionnativeipmask2.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -782,21 +789,22 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::has_operatio
 	|| ydk::is_set(csubsessionnativeipmask2.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubSessionTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubSessionEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "csubSessionEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -843,19 +851,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubse
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1085,7 +1093,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::set_value(co
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1241,26 +1249,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::set_filter(c
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "csubSessionType" || name == "csubSessionIpAddrAssignment" || name == "csubSessionState" || name == "csubSessionAuthenticated" || name == "csubSessionRedundancyMode" || name == "csubSessionCreationTime" || name == "csubSessionDerivedCfg" || name == "csubSessionAvailableIdentities" || name == "csubSessionSubscriberLabel" || name == "csubSessionMacAddress" || name == "csubSessionNativeVrf" || name == "csubSessionNativeIpAddrType" || name == "csubSessionNativeIpAddr" || name == "csubSessionNativeIpMask" || name == "csubSessionDomainVrf" || name == "csubSessionDomainIpAddrType" || name == "csubSessionDomainIpAddr" || name == "csubSessionDomainIpMask" || name == "csubSessionPbhk" || name == "csubSessionRemoteId" || name == "csubSessionCircuitId" || name == "csubSessionNasPort" || name == "csubSessionDomain" || name == "csubSessionUsername" || name == "csubSessionAcctSessionId" || name == "csubSessionDnis" || name == "csubSessionMedia" || name == "csubSessionMlpNegotiated" || name == "csubSessionProtocol" || name == "csubSessionDhcpClass" || name == "csubSessionTunnelName" || name == "csubSessionLocationIdentifier" || name == "csubSessionServiceIdentifier" || name == "csubSessionLastChanged" || name == "csubSessionNativeIpAddrType2" || name == "csubSessionNativeIpAddr2" || name == "csubSessionNativeIpMask2")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypetable()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeTable()
+    :
+    csubsessionbytypeentry(this, {"csubsessionbytype", "csubsessionifindex"})
 {
 
-    yang_name = "csubSessionByTypeTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubSessionByTypeTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::~Csubsessionbytypetable()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::~CsubSessionByTypeTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::has_data() const
 {
-    for (std::size_t index=0; index<csubsessionbytypeentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubsessionbytypeentry.len(); index++)
     {
         if(csubsessionbytypeentry[index]->has_data())
             return true;
@@ -1268,9 +1279,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubsessionbytypeentry.size(); index++)
+    for (std::size_t index=0; index<csubsessionbytypeentry.len(); index++)
     {
         if(csubsessionbytypeentry[index]->has_operation())
             return true;
@@ -1278,21 +1289,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubSessionByTypeTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1301,25 +1312,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubse
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubSessionByTypeEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry>();
         c->parent = this;
-        csubsessionbytypeentry.push_back(c);
+        csubsessionbytypeentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubsessionbytypeentry)
+    for (auto c : csubsessionbytypeentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1330,62 +1341,65 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubse
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubSessionByTypeEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::Csubsessionbytypeentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::CsubSessionByTypeEntry()
     :
     csubsessionbytype{YType::enumeration, "csubSessionByType"},
     csubsessionifindex{YType::int32, "csubSessionIfIndex"}
 {
 
-    yang_name = "csubSessionByTypeEntry"; yang_parent_name = "csubSessionByTypeTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubSessionByTypeEntry"; yang_parent_name = "csubSessionByTypeTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::~Csubsessionbytypeentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::~CsubSessionByTypeEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubsessionbytype.is_set
 	|| csubsessionifindex.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubsessionbytype.yfilter)
 	|| ydk::is_set(csubsessionifindex.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubSessionByTypeTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubSessionByTypeEntry" <<"[csubSessionByType='" <<csubsessionbytype <<"']" <<"[csubSessionIfIndex='" <<csubsessionifindex <<"']";
+    path_buffer << "csubSessionByTypeEntry";
+    ADD_KEY_TOKEN(csubsessionbytype, "csubSessionByType");
+    ADD_KEY_TOKEN(csubsessionifindex, "csubSessionIfIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1396,19 +1410,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubse
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubSessionByType")
     {
@@ -1424,7 +1438,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubSessionByType")
     {
@@ -1436,26 +1450,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubsessionbytypetable::Csubsessionbytypeentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubSessionByTypeTable::CsubSessionByTypeEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubSessionByType" || name == "csubSessionIfIndex")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatstable()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsTable()
+    :
+    csubaggstatsentry(this, {"csubaggstatspointtype", "csubaggstatspoint", "csubaggstatssessiontype"})
 {
 
-    yang_name = "csubAggStatsTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubAggStatsTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::~Csubaggstatstable()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::~CsubAggStatsTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<csubaggstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubaggstatsentry.len(); index++)
     {
         if(csubaggstatsentry[index]->has_data())
             return true;
@@ -1463,9 +1480,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubaggstatsentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsentry.len(); index++)
     {
         if(csubaggstatsentry[index]->has_operation())
             return true;
@@ -1473,21 +1490,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubAggStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1496,25 +1513,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubag
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubAggStatsEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry>();
         c->parent = this;
-        csubaggstatsentry.push_back(c);
+        csubaggstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubaggstatsentry)
+    for (auto c : csubaggstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1525,22 +1542,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubag
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubAggStatsEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::Csubaggstatsentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::CsubAggStatsEntry()
     :
     csubaggstatspointtype{YType::enumeration, "csubAggStatsPointType"},
     csubaggstatspoint{YType::uint32, "csubAggStatsPoint"},
@@ -1580,15 +1597,16 @@ CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::Csubaggstatsent
     csubaggstatsdiscontinuitytime{YType::str, "csubAggStatsDiscontinuityTime"}
 {
 
-    yang_name = "csubAggStatsEntry"; yang_parent_name = "csubAggStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubAggStatsEntry"; yang_parent_name = "csubAggStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::~Csubaggstatsentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::~CsubAggStatsEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubaggstatspointtype.is_set
 	|| csubaggstatspoint.is_set
 	|| csubaggstatssessiontype.is_set
@@ -1627,7 +1645,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::has_data()
 	|| csubaggstatsdiscontinuitytime.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubaggstatspointtype.yfilter)
@@ -1668,21 +1686,24 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::has_operat
 	|| ydk::is_set(csubaggstatsdiscontinuitytime.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubAggStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubAggStatsEntry" <<"[csubAggStatsPointType='" <<csubaggstatspointtype <<"']" <<"[csubAggStatsPoint='" <<csubaggstatspoint <<"']" <<"[csubAggStatsSessionType='" <<csubaggstatssessiontype <<"']";
+    path_buffer << "csubAggStatsEntry";
+    ADD_KEY_TOKEN(csubaggstatspointtype, "csubAggStatsPointType");
+    ADD_KEY_TOKEN(csubaggstatspoint, "csubAggStatsPoint");
+    ADD_KEY_TOKEN(csubaggstatssessiontype, "csubAggStatsSessionType");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1727,19 +1748,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubag
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubAggStatsPointType")
     {
@@ -1959,7 +1980,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::set_value(
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubAggStatsPointType")
     {
@@ -2107,26 +2128,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::set_filter
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubAggStatsPointType" || name == "csubAggStatsPoint" || name == "csubAggStatsSessionType" || name == "csubAggStatsPendingSessions" || name == "csubAggStatsUpSessions" || name == "csubAggStatsAuthSessions" || name == "csubAggStatsUnAuthSessions" || name == "csubAggStatsLightWeightSessions" || name == "csubAggStatsRedSessions" || name == "csubAggStatsHighUpSessions" || name == "csubAggStatsAvgSessionUptime" || name == "csubAggStatsAvgSessionRPM" || name == "csubAggStatsAvgSessionRPH" || name == "csubAggStatsThrottleEngagements" || name == "csubAggStatsTotalCreatedSessions" || name == "csubAggStatsTotalFailedSessions" || name == "csubAggStatsTotalUpSessions" || name == "csubAggStatsTotalAuthSessions" || name == "csubAggStatsTotalDiscSessions" || name == "csubAggStatsTotalLightWeightSessions" || name == "csubAggStatsTotalFlowsUp" || name == "csubAggStatsDayCreatedSessions" || name == "csubAggStatsDayFailedSessions" || name == "csubAggStatsDayUpSessions" || name == "csubAggStatsDayAuthSessions" || name == "csubAggStatsDayDiscSessions" || name == "csubAggStatsCurrTimeElapsed" || name == "csubAggStatsCurrValidIntervals" || name == "csubAggStatsCurrInvalidIntervals" || name == "csubAggStatsCurrFlowsUp" || name == "csubAggStatsCurrCreatedSessions" || name == "csubAggStatsCurrFailedSessions" || name == "csubAggStatsCurrUpSessions" || name == "csubAggStatsCurrAuthSessions" || name == "csubAggStatsCurrDiscSessions" || name == "csubAggStatsDiscontinuityTime")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsinttable()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntTable()
+    :
+    csubaggstatsintentry(this, {"csubaggstatspointtype", "csubaggstatspoint", "csubaggstatssessiontype", "csubaggstatsintnumber"})
 {
 
-    yang_name = "csubAggStatsIntTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubAggStatsIntTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::~Csubaggstatsinttable()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::~CsubAggStatsIntTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::has_data() const
 {
-    for (std::size_t index=0; index<csubaggstatsintentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubaggstatsintentry.len(); index++)
     {
         if(csubaggstatsintentry[index]->has_data())
             return true;
@@ -2134,9 +2158,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubaggstatsintentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsintentry.len(); index++)
     {
         if(csubaggstatsintentry[index]->has_operation())
             return true;
@@ -2144,21 +2168,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubAggStatsIntTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2167,25 +2191,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubag
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubAggStatsIntEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry>();
         c->parent = this;
-        csubaggstatsintentry.push_back(c);
+        csubaggstatsintentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubaggstatsintentry)
+    for (auto c : csubaggstatsintentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2196,22 +2220,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubag
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubAggStatsIntEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::Csubaggstatsintentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::CsubAggStatsIntEntry()
     :
     csubaggstatspointtype{YType::enumeration, "csubAggStatsPointType"},
     csubaggstatspoint{YType::str, "csubAggStatsPoint"},
@@ -2225,15 +2249,16 @@ CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::Csubaggst
     csubaggstatsintdiscsessions{YType::uint32, "csubAggStatsIntDiscSessions"}
 {
 
-    yang_name = "csubAggStatsIntEntry"; yang_parent_name = "csubAggStatsIntTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubAggStatsIntEntry"; yang_parent_name = "csubAggStatsIntTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::~Csubaggstatsintentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::~CsubAggStatsIntEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubaggstatspointtype.is_set
 	|| csubaggstatspoint.is_set
 	|| csubaggstatssessiontype.is_set
@@ -2246,7 +2271,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::has_
 	|| csubaggstatsintdiscsessions.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubaggstatspointtype.yfilter)
@@ -2261,21 +2286,25 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::has_
 	|| ydk::is_set(csubaggstatsintdiscsessions.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubAggStatsIntTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubAggStatsIntEntry" <<"[csubAggStatsPointType='" <<csubaggstatspointtype <<"']" <<"[csubAggStatsPoint='" <<csubaggstatspoint <<"']" <<"[csubAggStatsSessionType='" <<csubaggstatssessiontype <<"']" <<"[csubAggStatsIntNumber='" <<csubaggstatsintnumber <<"']";
+    path_buffer << "csubAggStatsIntEntry";
+    ADD_KEY_TOKEN(csubaggstatspointtype, "csubAggStatsPointType");
+    ADD_KEY_TOKEN(csubaggstatspoint, "csubAggStatsPoint");
+    ADD_KEY_TOKEN(csubaggstatssessiontype, "csubAggStatsSessionType");
+    ADD_KEY_TOKEN(csubaggstatsintnumber, "csubAggStatsIntNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2294,19 +2323,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubag
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubAggStatsPointType")
     {
@@ -2370,7 +2399,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::set_
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubAggStatsPointType")
     {
@@ -2414,26 +2443,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::set_
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsinttable::Csubaggstatsintentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsIntTable::CsubAggStatsIntEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubAggStatsPointType" || name == "csubAggStatsPoint" || name == "csubAggStatsSessionType" || name == "csubAggStatsIntNumber" || name == "csubAggStatsIntValid" || name == "csubAggStatsIntCreatedSessions" || name == "csubAggStatsIntFailedSessions" || name == "csubAggStatsIntUpSessions" || name == "csubAggStatsIntAuthSessions" || name == "csubAggStatsIntDiscSessions")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshtable()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshTable()
+    :
+    csubaggstatsthreshentry(this, {"csubsessionrisingthresh"})
 {
 
-    yang_name = "csubAggStatsThreshTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubAggStatsThreshTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::~Csubaggstatsthreshtable()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::~CsubAggStatsThreshTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::has_data() const
 {
-    for (std::size_t index=0; index<csubaggstatsthreshentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubaggstatsthreshentry.len(); index++)
     {
         if(csubaggstatsthreshentry[index]->has_data())
             return true;
@@ -2441,9 +2473,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubaggstatsthreshentry.size(); index++)
+    for (std::size_t index=0; index<csubaggstatsthreshentry.len(); index++)
     {
         if(csubaggstatsthreshentry[index]->has_operation())
             return true;
@@ -2451,21 +2483,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubAggStatsThreshTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2474,25 +2506,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubag
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubAggStatsThreshEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry>();
         c->parent = this;
-        csubaggstatsthreshentry.push_back(c);
+        csubaggstatsthreshentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubaggstatsthreshentry)
+    for (auto c : csubaggstatsthreshentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2503,22 +2535,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubag
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubAggStatsThreshEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::Csubaggstatsthreshentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::CsubAggStatsThreshEntry()
     :
     csubsessionrisingthresh{YType::uint32, "csubSessionRisingThresh"},
     csubsessionfallingthresh{YType::uint32, "csubSessionFallingThresh"},
@@ -2526,22 +2558,23 @@ CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::Csu
     csubsessionthreshevalinterval{YType::uint32, "csubSessionThreshEvalInterval"}
 {
 
-    yang_name = "csubAggStatsThreshEntry"; yang_parent_name = "csubAggStatsThreshTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubAggStatsThreshEntry"; yang_parent_name = "csubAggStatsThreshTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::~Csubaggstatsthreshentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::~CsubAggStatsThreshEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubsessionrisingthresh.is_set
 	|| csubsessionfallingthresh.is_set
 	|| csubsessiondeltapercentfallingthresh.is_set
 	|| csubsessionthreshevalinterval.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubsessionrisingthresh.yfilter)
@@ -2550,21 +2583,22 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry
 	|| ydk::is_set(csubsessionthreshevalinterval.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubAggStatsThreshTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubAggStatsThreshEntry" <<"[csubSessionRisingThresh='" <<csubsessionrisingthresh <<"']";
+    path_buffer << "csubAggStatsThreshEntry";
+    ADD_KEY_TOKEN(csubsessionrisingthresh, "csubSessionRisingThresh");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2577,19 +2611,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubag
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubSessionRisingThresh")
     {
@@ -2617,7 +2651,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubSessionRisingThresh")
     {
@@ -2637,26 +2671,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubaggstatsthreshtable::Csubaggstatsthreshentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsThreshTable::CsubAggStatsThreshEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubSessionRisingThresh" || name == "csubSessionFallingThresh" || name == "csubSessionDeltaPercentFallingThresh" || name == "csubSessionThreshEvalInterval")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobtable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobTable()
+    :
+    csubjobentry(this, {"csubjobid"})
 {
 
-    yang_name = "csubJobTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::~Csubjobtable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::~CsubJobTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubjobentry.len(); index++)
     {
         if(csubjobentry[index]->has_data())
             return true;
@@ -2664,9 +2701,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobentry.size(); index++)
+    for (std::size_t index=0; index<csubjobentry.len(); index++)
     {
         if(csubjobentry[index]->has_operation())
             return true;
@@ -2674,21 +2711,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubJobTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2697,25 +2734,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry>();
         c->parent = this;
-        csubjobentry.push_back(c);
+        csubjobentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubjobentry)
+    for (auto c : csubjobentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2726,22 +2763,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjo
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobEntry()
     :
     csubjobid{YType::uint32, "csubJobId"},
     csubjobstatus{YType::enumeration, "csubJobStatus"},
@@ -2754,15 +2791,16 @@ CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobentry()
     csubjobfinishedreason{YType::enumeration, "csubJobFinishedReason"}
 {
 
-    yang_name = "csubJobEntry"; yang_parent_name = "csubJobTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobEntry"; yang_parent_name = "csubJobTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::~Csubjobentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::~CsubJobEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubjobid.is_set
 	|| csubjobstatus.is_set
 	|| csubjobstorage.is_set
@@ -2774,7 +2812,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::has_data() const
 	|| csubjobfinishedreason.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubjobid.yfilter)
@@ -2788,21 +2826,22 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::has_operation() cons
 	|| ydk::is_set(csubjobfinishedreason.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubJobTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubJobEntry" <<"[csubJobId='" <<csubjobid <<"']";
+    path_buffer << "csubJobEntry";
+    ADD_KEY_TOKEN(csubjobid, "csubJobId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2820,19 +2859,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubJobId")
     {
@@ -2890,7 +2929,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::set_value(const std:
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubJobId")
     {
@@ -2930,26 +2969,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::set_filter(const std
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobId" || name == "csubJobStatus" || name == "csubJobStorage" || name == "csubJobType" || name == "csubJobControl" || name == "csubJobState" || name == "csubJobStartedTime" || name == "csubJobFinishedTime" || name == "csubJobFinishedReason")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamstable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsTable()
+    :
+    csubjobmatchparamsentry(this, {"csubjobid"})
 {
 
-    yang_name = "csubJobMatchParamsTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobMatchParamsTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::~Csubjobmatchparamstable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::~CsubJobMatchParamsTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobmatchparamsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubjobmatchparamsentry.len(); index++)
     {
         if(csubjobmatchparamsentry[index]->has_data())
             return true;
@@ -2957,9 +2999,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobmatchparamsentry.size(); index++)
+    for (std::size_t index=0; index<csubjobmatchparamsentry.len(); index++)
     {
         if(csubjobmatchparamsentry[index]->has_operation())
             return true;
@@ -2967,21 +3009,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubJobMatchParamsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2990,25 +3032,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobMatchParamsEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry>();
         c->parent = this;
-        csubjobmatchparamsentry.push_back(c);
+        csubjobmatchparamsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubjobmatchparamsentry)
+    for (auto c : csubjobmatchparamsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3019,22 +3061,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjo
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobMatchParamsEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::Csubjobmatchparamsentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::CsubJobMatchParamsEntry()
     :
     csubjobid{YType::str, "csubJobId"},
     csubjobmatchidentities{YType::bits, "csubJobMatchIdentities"},
@@ -3069,15 +3111,16 @@ CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::Csu
     csubjobmatchredundancymode{YType::enumeration, "csubJobMatchRedundancyMode"}
 {
 
-    yang_name = "csubJobMatchParamsEntry"; yang_parent_name = "csubJobMatchParamsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobMatchParamsEntry"; yang_parent_name = "csubJobMatchParamsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::~Csubjobmatchparamsentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::~CsubJobMatchParamsEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubjobid.is_set
 	|| csubjobmatchidentities.is_set
 	|| csubjobmatchotherparams.is_set
@@ -3111,7 +3154,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry
 	|| csubjobmatchredundancymode.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubjobid.yfilter)
@@ -3147,21 +3190,22 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry
 	|| ydk::is_set(csubjobmatchredundancymode.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubJobMatchParamsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubJobMatchParamsEntry" <<"[csubJobId='" <<csubjobid <<"']";
+    path_buffer << "csubJobMatchParamsEntry";
+    ADD_KEY_TOKEN(csubjobid, "csubJobId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3201,19 +3245,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubJobId")
     {
@@ -3399,7 +3443,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubJobId")
     {
@@ -3527,26 +3571,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobmatchparamstable::Csubjobmatchparamsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobMatchParamsTable::CsubJobMatchParamsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobId" || name == "csubJobMatchIdentities" || name == "csubJobMatchOtherParams" || name == "csubJobMatchSubscriberLabel" || name == "csubJobMatchMacAddress" || name == "csubJobMatchNativeVrf" || name == "csubJobMatchNativeIpAddrType" || name == "csubJobMatchNativeIpAddr" || name == "csubJobMatchNativeIpMask" || name == "csubJobMatchDomainVrf" || name == "csubJobMatchDomainIpAddrType" || name == "csubJobMatchDomainIpAddr" || name == "csubJobMatchDomainIpMask" || name == "csubJobMatchPbhk" || name == "csubJobMatchRemoteId" || name == "csubJobMatchCircuitId" || name == "csubJobMatchNasPort" || name == "csubJobMatchDomain" || name == "csubJobMatchUsername" || name == "csubJobMatchAcctSessionId" || name == "csubJobMatchDnis" || name == "csubJobMatchMedia" || name == "csubJobMatchMlpNegotiated" || name == "csubJobMatchProtocol" || name == "csubJobMatchServiceName" || name == "csubJobMatchDhcpClass" || name == "csubJobMatchTunnelName" || name == "csubJobMatchDanglingDuration" || name == "csubJobMatchState" || name == "csubJobMatchAuthenticated" || name == "csubJobMatchRedundancyMode")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamstable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsTable()
+    :
+    csubjobqueryparamsentry(this, {"csubjobid"})
 {
 
-    yang_name = "csubJobQueryParamsTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobQueryParamsTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::~Csubjobqueryparamstable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::~CsubJobQueryParamsTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobqueryparamsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubjobqueryparamsentry.len(); index++)
     {
         if(csubjobqueryparamsentry[index]->has_data())
             return true;
@@ -3554,9 +3601,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobqueryparamsentry.size(); index++)
+    for (std::size_t index=0; index<csubjobqueryparamsentry.len(); index++)
     {
         if(csubjobqueryparamsentry[index]->has_operation())
             return true;
@@ -3564,21 +3611,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubJobQueryParamsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3587,25 +3634,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobQueryParamsEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry>();
         c->parent = this;
-        csubjobqueryparamsentry.push_back(c);
+        csubjobqueryparamsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubjobqueryparamsentry)
+    for (auto c : csubjobqueryparamsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3616,22 +3663,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjo
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobQueryParamsEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::Csubjobqueryparamsentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::CsubJobQueryParamsEntry()
     :
     csubjobid{YType::str, "csubJobId"},
     csubjobquerysortkey1{YType::enumeration, "csubJobQuerySortKey1"},
@@ -3640,15 +3687,16 @@ CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::Csu
     csubjobqueryresultingreportsize{YType::uint32, "csubJobQueryResultingReportSize"}
 {
 
-    yang_name = "csubJobQueryParamsEntry"; yang_parent_name = "csubJobQueryParamsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobQueryParamsEntry"; yang_parent_name = "csubJobQueryParamsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::~Csubjobqueryparamsentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::~CsubJobQueryParamsEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubjobid.is_set
 	|| csubjobquerysortkey1.is_set
 	|| csubjobquerysortkey2.is_set
@@ -3656,7 +3704,7 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry
 	|| csubjobqueryresultingreportsize.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubjobid.yfilter)
@@ -3666,21 +3714,22 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry
 	|| ydk::is_set(csubjobqueryresultingreportsize.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubJobQueryParamsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubJobQueryParamsEntry" <<"[csubJobId='" <<csubjobid <<"']";
+    path_buffer << "csubJobQueryParamsEntry";
+    ADD_KEY_TOKEN(csubjobid, "csubJobId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3694,19 +3743,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubJobId")
     {
@@ -3740,7 +3789,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubJobId")
     {
@@ -3764,26 +3813,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueryparamstable::Csubjobqueryparamsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueryParamsTable::CsubJobQueryParamsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobId" || name == "csubJobQuerySortKey1" || name == "csubJobQuerySortKey2" || name == "csubJobQuerySortKey3" || name == "csubJobQueryResultingReportSize")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueuetable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueTable()
+    :
+    csubjobqueueentry(this, {"csubjobqueuenumber"})
 {
 
-    yang_name = "csubJobQueueTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobQueueTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::~Csubjobqueuetable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::~CsubJobQueueTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobqueueentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubjobqueueentry.len(); index++)
     {
         if(csubjobqueueentry[index]->has_data())
             return true;
@@ -3791,9 +3843,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobqueueentry.size(); index++)
+    for (std::size_t index=0; index<csubjobqueueentry.len(); index++)
     {
         if(csubjobqueueentry[index]->has_operation())
             return true;
@@ -3801,21 +3853,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubJobQueueTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3824,25 +3876,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobQueueEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry>();
         c->parent = this;
-        csubjobqueueentry.push_back(c);
+        csubjobqueueentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubjobqueueentry)
+    for (auto c : csubjobqueueentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3853,62 +3905,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjo
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobQueueEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::Csubjobqueueentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::CsubJobQueueEntry()
     :
     csubjobqueuenumber{YType::uint32, "csubJobQueueNumber"},
     csubjobqueuejobid{YType::uint32, "csubJobQueueJobId"}
 {
 
-    yang_name = "csubJobQueueEntry"; yang_parent_name = "csubJobQueueTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobQueueEntry"; yang_parent_name = "csubJobQueueTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::~Csubjobqueueentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::~CsubJobQueueEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubjobqueuenumber.is_set
 	|| csubjobqueuejobid.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubjobqueuenumber.yfilter)
 	|| ydk::is_set(csubjobqueuejobid.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubJobQueueTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubJobQueueEntry" <<"[csubJobQueueNumber='" <<csubjobqueuenumber <<"']";
+    path_buffer << "csubJobQueueEntry";
+    ADD_KEY_TOKEN(csubjobqueuenumber, "csubJobQueueNumber");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3919,19 +3973,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubJobQueueNumber")
     {
@@ -3947,7 +4001,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::set_value(
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubJobQueueNumber")
     {
@@ -3959,26 +4013,29 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::set_filter
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobqueuetable::Csubjobqueueentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobQueueTable::CsubJobQueueEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobQueueNumber" || name == "csubJobQueueJobId")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreporttable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportTable()
+    :
+    csubjobreportentry(this, {"csubjobid", "csubjobreportid"})
 {
 
-    yang_name = "csubJobReportTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobReportTable"; yang_parent_name = "CISCO-SUBSCRIBER-SESSION-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::~Csubjobreporttable()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::~CsubJobReportTable()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::has_data() const
 {
-    for (std::size_t index=0; index<csubjobreportentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<csubjobreportentry.len(); index++)
     {
         if(csubjobreportentry[index]->has_data())
             return true;
@@ -3986,9 +4043,9 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::has_data() const
     return false;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::has_operation() const
 {
-    for (std::size_t index=0; index<csubjobreportentry.size(); index++)
+    for (std::size_t index=0; index<csubjobreportentry.len(); index++)
     {
         if(csubjobreportentry[index]->has_operation())
             return true;
@@ -3996,21 +4053,21 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "csubJobReportTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4019,25 +4076,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "csubJobReportEntry")
     {
-        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry>();
+        auto c = std::make_shared<CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry>();
         c->parent = this;
-        csubjobreportentry.push_back(c);
+        csubjobreportentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : csubjobreportentry)
+    for (auto c : csubjobreportentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4048,43 +4105,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjo
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobReportEntry")
         return true;
     return false;
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::Csubjobreportentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::CsubJobReportEntry()
     :
     csubjobid{YType::str, "csubJobId"},
     csubjobreportid{YType::uint32, "csubJobReportId"},
     csubjobreportsession{YType::int32, "csubJobReportSession"}
 {
 
-    yang_name = "csubJobReportEntry"; yang_parent_name = "csubJobReportTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csubJobReportEntry"; yang_parent_name = "csubJobReportTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::~Csubjobreportentry()
+CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::~CsubJobReportEntry()
 {
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::has_data() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return csubjobid.is_set
 	|| csubjobreportid.is_set
 	|| csubjobreportsession.is_set;
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::has_operation() const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(csubjobid.yfilter)
@@ -4092,21 +4150,23 @@ bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::has_oper
 	|| ydk::is_set(csubjobreportsession.yfilter);
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::get_absolute_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-SUBSCRIBER-SESSION-MIB:CISCO-SUBSCRIBER-SESSION-MIB/csubJobReportTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::get_segment_path() const
+std::string CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "csubJobReportEntry" <<"[csubJobId='" <<csubjobid <<"']" <<"[csubJobReportId='" <<csubjobreportid <<"']";
+    path_buffer << "csubJobReportEntry";
+    ADD_KEY_TOKEN(csubjobid, "csubJobId");
+    ADD_KEY_TOKEN(csubjobreportid, "csubJobReportId");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4118,19 +4178,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOSUBSCRIBERSESSIONMIB::Csubjo
 
 }
 
-std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "csubJobId")
     {
@@ -4152,7 +4212,7 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::set_valu
     }
 }
 
-void CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "csubJobId")
     {
@@ -4168,46 +4228,46 @@ void CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::set_filt
     }
 }
 
-bool CISCOSUBSCRIBERSESSIONMIB::Csubjobreporttable::Csubjobreportentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOSUBSCRIBERSESSIONMIB::CsubJobReportTable::CsubJobReportEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "csubJobId" || name == "csubJobReportId" || name == "csubJobReportSession")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::none {1, "none"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::other {2, "other"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::static_ {3, "static"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::localPool {4, "localPool"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::dhcpv4 {5, "dhcpv4"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::dhcpv6 {6, "dhcpv6"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::userProfileIpAddr {7, "userProfileIpAddr"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::userProfileIpSubnet {8, "userProfileIpSubnet"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubsessiontable::Csubsessionentry::Csubsessionipaddrassignment::userProfileNamedPool {9, "userProfileNamedPool"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::none {1, "none"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::other {2, "other"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::static_ {3, "static"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::localPool {4, "localPool"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::dhcpv4 {5, "dhcpv4"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::dhcpv6 {6, "dhcpv6"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::userProfileIpAddr {7, "userProfileIpAddr"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::userProfileIpSubnet {8, "userProfileIpSubnet"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubSessionTable::CsubSessionEntry::CsubSessionIpAddrAssignment::userProfileNamedPool {9, "userProfileNamedPool"};
 
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::Csubaggstatspointtype::physical {1, "physical"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubaggstatstable::Csubaggstatsentry::Csubaggstatspointtype::interface {2, "interface"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::CsubAggStatsPointType::physical {1, "physical"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubAggStatsTable::CsubAggStatsEntry::CsubAggStatsPointType::interface {2, "interface"};
 
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobtype::noop {1, "noop"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobtype::query {2, "query"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobtype::clear {3, "clear"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobType::noop {1, "noop"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobType::query {2, "query"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobType::clear {3, "clear"};
 
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobcontrol::noop {1, "noop"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobcontrol::start {2, "start"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobcontrol::abort {3, "abort"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobcontrol::release {4, "release"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobControl::noop {1, "noop"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobControl::start {2, "start"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobControl::abort {3, "abort"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobControl::release {4, "release"};
 
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobstate::idle {1, "idle"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobstate::pending {2, "pending"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobstate::inProgress {3, "inProgress"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobstate::finished {4, "finished"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobState::idle {1, "idle"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobState::pending {2, "pending"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobState::inProgress {3, "inProgress"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobState::finished {4, "finished"};
 
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobfinishedreason::invalid {1, "invalid"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobfinishedreason::other {2, "other"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobfinishedreason::normal {3, "normal"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobfinishedreason::aborted {4, "aborted"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobfinishedreason::insufficientResources {5, "insufficientResources"};
-const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::Csubjobtable::Csubjobentry::Csubjobfinishedreason::error {6, "error"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReason::invalid {1, "invalid"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReason::other {2, "other"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReason::normal {3, "normal"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReason::aborted {4, "aborted"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReason::insufficientResources {5, "insufficientResources"};
+const Enum::YLeaf CISCOSUBSCRIBERSESSIONMIB::CsubJobTable::CsubJobEntry::CsubJobFinishedReason::error {6, "error"};
 
 
 }

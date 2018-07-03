@@ -16,7 +16,7 @@ FastShutdown::FastShutdown()
     ethernet{YType::empty, "ethernet"}
 {
 
-    yang_name = "fast-shutdown"; yang_parent_name = "Cisco-IOS-XR-mdrv-lib-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fast-shutdown"; yang_parent_name = "Cisco-IOS-XR-mdrv-lib-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FastShutdown::~FastShutdown()
@@ -25,6 +25,7 @@ FastShutdown::~FastShutdown()
 
 bool FastShutdown::has_data() const
 {
+    if (is_presence_container) return true;
     return ethernet.is_set;
 }
 

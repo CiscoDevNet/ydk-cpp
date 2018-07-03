@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_l2_eth_infra_cfg {
 EthernetFeatures::EthernetFeatures()
     :
     egress_filtering(std::make_shared<EthernetFeatures::EgressFiltering>())
-	,cfm(std::make_shared<EthernetFeatures::Cfm>())
-	,ether_link_oam(std::make_shared<EthernetFeatures::EtherLinkOam>())
+    , cfm(std::make_shared<EthernetFeatures::Cfm>())
+    , ether_link_oam(std::make_shared<EthernetFeatures::EtherLinkOam>())
 {
     egress_filtering->parent = this;
     cfm->parent = this;
     ether_link_oam->parent = this;
 
-    yang_name = "ethernet-features"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ethernet-features"; yang_parent_name = "Cisco-IOS-XR-l2-eth-infra-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EthernetFeatures::~EthernetFeatures()
@@ -30,6 +30,7 @@ EthernetFeatures::~EthernetFeatures()
 
 bool EthernetFeatures::has_data() const
 {
+    if (is_presence_container) return true;
     return (egress_filtering !=  nullptr && egress_filtering->has_data())
 	|| (cfm !=  nullptr && cfm->has_data())
 	|| (ether_link_oam !=  nullptr && ether_link_oam->has_data());
@@ -158,7 +159,7 @@ EthernetFeatures::EgressFiltering::EgressFiltering()
     egress_filtering_default_on{YType::empty, "egress-filtering-default-on"}
 {
 
-    yang_name = "egress-filtering"; yang_parent_name = "ethernet-features"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "egress-filtering"; yang_parent_name = "ethernet-features"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::EgressFiltering::~EgressFiltering()
@@ -167,6 +168,7 @@ EthernetFeatures::EgressFiltering::~EgressFiltering()
 
 bool EthernetFeatures::EgressFiltering::has_data() const
 {
+    if (is_presence_container) return true;
     return egress_filtering_default_on.is_set;
 }
 
@@ -240,14 +242,14 @@ bool EthernetFeatures::EgressFiltering::has_leaf_or_child_of_name(const std::str
 EthernetFeatures::Cfm::Cfm()
     :
     nv_satellite_sla_processing_disable{YType::empty, "nv-satellite-sla-processing-disable"}
-    	,
+        ,
     traceroute_cache(std::make_shared<EthernetFeatures::Cfm::TracerouteCache>())
-	,domains(std::make_shared<EthernetFeatures::Cfm::Domains>())
+    , domains(std::make_shared<EthernetFeatures::Cfm::Domains>())
 {
     traceroute_cache->parent = this;
     domains->parent = this;
 
-    yang_name = "cfm"; yang_parent_name = "ethernet-features"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cfm"; yang_parent_name = "ethernet-features"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::Cfm::~Cfm()
@@ -256,6 +258,7 @@ EthernetFeatures::Cfm::~Cfm()
 
 bool EthernetFeatures::Cfm::has_data() const
 {
+    if (is_presence_container) return true;
     return nv_satellite_sla_processing_disable.is_set
 	|| (traceroute_cache !=  nullptr && traceroute_cache->has_data())
 	|| (domains !=  nullptr && domains->has_data());
@@ -364,7 +367,7 @@ EthernetFeatures::Cfm::TracerouteCache::TracerouteCache()
     cache_size{YType::uint32, "cache-size"}
 {
 
-    yang_name = "traceroute-cache"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traceroute-cache"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::Cfm::TracerouteCache::~TracerouteCache()
@@ -373,6 +376,7 @@ EthernetFeatures::Cfm::TracerouteCache::~TracerouteCache()
 
 bool EthernetFeatures::Cfm::TracerouteCache::has_data() const
 {
+    if (is_presence_container) return true;
     return hold_time.is_set
 	|| cache_size.is_set;
 }
@@ -457,9 +461,11 @@ bool EthernetFeatures::Cfm::TracerouteCache::has_leaf_or_child_of_name(const std
 }
 
 EthernetFeatures::Cfm::Domains::Domains()
+    :
+    domain(this, {"domain"})
 {
 
-    yang_name = "domains"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domains"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::Cfm::Domains::~Domains()
@@ -468,7 +474,8 @@ EthernetFeatures::Cfm::Domains::~Domains()
 
 bool EthernetFeatures::Cfm::Domains::has_data() const
 {
-    for (std::size_t index=0; index<domain.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<domain.len(); index++)
     {
         if(domain[index]->has_data())
             return true;
@@ -478,7 +485,7 @@ bool EthernetFeatures::Cfm::Domains::has_data() const
 
 bool EthernetFeatures::Cfm::Domains::has_operation() const
 {
-    for (std::size_t index=0; index<domain.size(); index++)
+    for (std::size_t index=0; index<domain.len(); index++)
     {
         if(domain[index]->has_operation())
             return true;
@@ -515,7 +522,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::get_child_by_name(const 
     {
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain>();
         c->parent = this;
-        domain.push_back(c);
+        domain.append(c);
         return c;
     }
 
@@ -527,7 +534,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : domain)
+    for (auto c : domain.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -556,14 +563,14 @@ bool EthernetFeatures::Cfm::Domains::has_leaf_or_child_of_name(const std::string
 EthernetFeatures::Cfm::Domains::Domain::Domain()
     :
     domain{YType::str, "domain"}
-    	,
+        ,
     services(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services>())
-	,domain_properties(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::DomainProperties>())
+    , domain_properties(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::DomainProperties>())
 {
     services->parent = this;
     domain_properties->parent = this;
 
-    yang_name = "domain"; yang_parent_name = "domains"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domain"; yang_parent_name = "domains"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::~Domain()
@@ -572,6 +579,7 @@ EthernetFeatures::Cfm::Domains::Domain::~Domain()
 
 bool EthernetFeatures::Cfm::Domains::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| (services !=  nullptr && services->has_data())
 	|| (domain_properties !=  nullptr && domain_properties->has_data());
@@ -595,7 +603,8 @@ std::string EthernetFeatures::Cfm::Domains::Domain::get_absolute_path() const
 std::string EthernetFeatures::Cfm::Domains::Domain::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "domain" <<"[domain='" <<domain <<"']";
+    path_buffer << "domain";
+    ADD_KEY_TOKEN(domain, "domain");
     return path_buffer.str();
 }
 
@@ -675,9 +684,11 @@ bool EthernetFeatures::Cfm::Domains::Domain::has_leaf_or_child_of_name(const std
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Services()
+    :
+    service(this, {"service"})
 {
 
-    yang_name = "services"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "services"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::~Services()
@@ -686,7 +697,8 @@ EthernetFeatures::Cfm::Domains::Domain::Services::~Services()
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::has_data() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_data())
             return true;
@@ -696,7 +708,7 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::has_data() const
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::has_operation() const
 {
-    for (std::size_t index=0; index<service.size(); index++)
+    for (std::size_t index=0; index<service.len(); index++)
     {
         if(service[index]->has_operation())
             return true;
@@ -726,7 +738,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::get_ch
     {
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service>();
         c->parent = this;
-        service.push_back(c);
+        service.append(c);
         return c;
     }
 
@@ -738,7 +750,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service)
+    for (auto c : service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -776,18 +788,18 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Service()
     continuity_check_auto_traceroute{YType::empty, "continuity-check-auto-traceroute"},
     log_continuity_check_errors{YType::empty, "log-continuity-check-errors"},
     log_ais{YType::empty, "log-ais"}
-    	,
+        ,
     efd2(nullptr) // presence node
-	,continuity_check_interval(nullptr) // presence node
-	,mip_auto_creation(nullptr) // presence node
-	,ais(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais>())
-	,cross_check(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck>())
-	,service_properties(nullptr) // presence node
+    , continuity_check_interval(nullptr) // presence node
+    , mip_auto_creation(nullptr) // presence node
+    , ais(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais>())
+    , cross_check(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck>())
+    , service_properties(nullptr) // presence node
 {
     ais->parent = this;
     cross_check->parent = this;
 
-    yang_name = "service"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service"; yang_parent_name = "services"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::~Service()
@@ -796,6 +808,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::~Service()
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::has_data() const
 {
+    if (is_presence_container) return true;
     return service.is_set
 	|| maximum_meps.is_set
 	|| log_cross_check_errors.is_set
@@ -838,7 +851,8 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::has_operation() 
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service" <<"[service='" <<service <<"']";
+    path_buffer << "service";
+    ADD_KEY_TOKEN(service, "service");
     return path_buffer.str();
 }
 
@@ -1078,7 +1092,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::Efd2()
     protection_switching_enable{YType::empty, "protection-switching-enable"}
 {
 
-    yang_name = "efd2"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "efd2"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::~Efd2()
@@ -1087,6 +1101,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::~Efd2()
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Efd2::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| protection_switching_enable.is_set;
 }
@@ -1169,7 +1184,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterv
     loss_threshold{YType::uint32, "loss-threshold"}
 {
 
-    yang_name = "continuity-check-interval"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "continuity-check-interval"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::~ContinuityCheckInterval()
@@ -1178,6 +1193,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterv
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ContinuityCheckInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return ccm_interval.is_set
 	|| loss_threshold.is_set;
 }
@@ -1260,7 +1276,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::MipA
     ccm_learning_enable{YType::empty, "ccm-learning-enable"}
 {
 
-    yang_name = "mip-auto-creation"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mip-auto-creation"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::~MipAutoCreation()
@@ -1269,6 +1285,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::~Mip
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::MipAutoCreation::has_data() const
 {
+    if (is_presence_container) return true;
     return mip_policy.is_set
 	|| ccm_learning_enable.is_set;
 }
@@ -1350,7 +1367,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Ais()
     transmission(nullptr) // presence node
 {
 
-    yang_name = "ais"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ais"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::~Ais()
@@ -1359,6 +1376,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::~Ais()
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::has_data() const
 {
+    if (is_presence_container) return true;
     return (transmission !=  nullptr && transmission->has_data());
 }
 
@@ -1431,7 +1449,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::Tr
     cos{YType::uint32, "cos"}
 {
 
-    yang_name = "transmission"; yang_parent_name = "ais"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmission"; yang_parent_name = "ais"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::~Transmission()
@@ -1440,6 +1458,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::~T
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmission::has_data() const
 {
+    if (is_presence_container) return true;
     return ais_interval.is_set
 	|| cos.is_set;
 }
@@ -1519,12 +1538,12 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::Ais::Transmissio
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheck()
     :
     auto_{YType::empty, "auto"}
-    	,
+        ,
     cross_check_meps(std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps>())
 {
     cross_check_meps->parent = this;
 
-    yang_name = "cross-check"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cross-check"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::~CrossCheck()
@@ -1533,6 +1552,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::~CrossChe
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set
 	|| (cross_check_meps !=  nullptr && cross_check_meps->has_data());
 }
@@ -1613,9 +1633,11 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::has_
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMeps()
+    :
+    cross_check_mep(this, {"mep_id"})
 {
 
-    yang_name = "cross-check-meps"; yang_parent_name = "cross-check"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cross-check-meps"; yang_parent_name = "cross-check"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::~CrossCheckMeps()
@@ -1624,7 +1646,8 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossChec
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::has_data() const
 {
-    for (std::size_t index=0; index<cross_check_mep.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cross_check_mep.len(); index++)
     {
         if(cross_check_mep[index]->has_data())
             return true;
@@ -1634,7 +1657,7 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cros
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::has_operation() const
 {
-    for (std::size_t index=0; index<cross_check_mep.size(); index++)
+    for (std::size_t index=0; index<cross_check_mep.len(); index++)
     {
         if(cross_check_mep[index]->has_operation())
             return true;
@@ -1664,7 +1687,7 @@ std::shared_ptr<Entity> EthernetFeatures::Cfm::Domains::Domain::Services::Servic
     {
         auto c = std::make_shared<EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep>();
         c->parent = this;
-        cross_check_mep.push_back(c);
+        cross_check_mep.append(c);
         return c;
     }
 
@@ -1676,7 +1699,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::Cfm::Domains::D
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cross_check_mep)
+    for (auto c : cross_check_mep.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1709,7 +1732,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossChec
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "cross-check-mep"; yang_parent_name = "cross-check-meps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cross-check-mep"; yang_parent_name = "cross-check-meps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::~CrossCheckMep()
@@ -1718,6 +1741,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossChec
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::has_data() const
 {
+    if (is_presence_container) return true;
     return mep_id.is_set
 	|| enable_mac_address.is_set
 	|| mac_address.is_set;
@@ -1734,7 +1758,8 @@ bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::Cros
 std::string EthernetFeatures::Cfm::Domains::Domain::Services::Service::CrossCheck::CrossCheckMeps::CrossCheckMep::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cross-check-mep" <<"[mep-id='" <<mep_id <<"']";
+    path_buffer << "cross-check-mep";
+    ADD_KEY_TOKEN(mep_id, "mep-id");
     return path_buffer.str();
 }
 
@@ -1819,12 +1844,12 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::Se
     short_ma_name_string{YType::str, "short-ma-name-string"},
     short_ma_name_number{YType::uint32, "short-ma-name-number"},
     short_ma_name_oui{YType::uint32, "short-ma-name-oui"},
-    short_ma_name_vpn_index{YType::int32, "short-ma-name-vpn-index"},
+    short_ma_name_vpn_index{YType::uint32, "short-ma-name-vpn-index"},
     short_ma_name_icc{YType::str, "short-ma-name-icc"},
     short_ma_name_umc{YType::str, "short-ma-name-umc"}
 {
 
-    yang_name = "service-properties"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-properties"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::~ServiceProperties()
@@ -1833,6 +1858,7 @@ EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::~S
 
 bool EthernetFeatures::Cfm::Domains::Domain::Services::Service::ServiceProperties::has_data() const
 {
+    if (is_presence_container) return true;
     return service_type.is_set
 	|| group_name.is_set
 	|| switching_name.is_set
@@ -2061,7 +2087,7 @@ EthernetFeatures::Cfm::Domains::Domain::DomainProperties::DomainProperties()
     mdid_string{YType::str, "mdid-string"}
 {
 
-    yang_name = "domain-properties"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain-properties"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::Cfm::Domains::Domain::DomainProperties::~DomainProperties()
@@ -2070,6 +2096,7 @@ EthernetFeatures::Cfm::Domains::Domain::DomainProperties::~DomainProperties()
 
 bool EthernetFeatures::Cfm::Domains::Domain::DomainProperties::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| mdid_format.is_set
 	|| mdid_mac_address.is_set
@@ -2191,7 +2218,7 @@ EthernetFeatures::EtherLinkOam::EtherLinkOam()
 {
     profiles->parent = this;
 
-    yang_name = "ether-link-oam"; yang_parent_name = "ethernet-features"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ether-link-oam"; yang_parent_name = "ethernet-features"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::EtherLinkOam::~EtherLinkOam()
@@ -2200,6 +2227,7 @@ EthernetFeatures::EtherLinkOam::~EtherLinkOam()
 
 bool EthernetFeatures::EtherLinkOam::has_data() const
 {
+    if (is_presence_container) return true;
     return (profiles !=  nullptr && profiles->has_data());
 }
 
@@ -2274,9 +2302,11 @@ bool EthernetFeatures::EtherLinkOam::has_leaf_or_child_of_name(const std::string
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profiles()
+    :
+    profile(this, {"profile"})
 {
 
-    yang_name = "profiles"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profiles"; yang_parent_name = "ether-link-oam"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::~Profiles()
@@ -2285,7 +2315,8 @@ EthernetFeatures::EtherLinkOam::Profiles::~Profiles()
 
 bool EthernetFeatures::EtherLinkOam::Profiles::has_data() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_data())
             return true;
@@ -2295,7 +2326,7 @@ bool EthernetFeatures::EtherLinkOam::Profiles::has_data() const
 
 bool EthernetFeatures::EtherLinkOam::Profiles::has_operation() const
 {
-    for (std::size_t index=0; index<profile.size(); index++)
+    for (std::size_t index=0; index<profile.len(); index++)
     {
         if(profile[index]->has_operation())
             return true;
@@ -2332,7 +2363,7 @@ std::shared_ptr<Entity> EthernetFeatures::EtherLinkOam::Profiles::get_child_by_n
     {
         auto c = std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile>();
         c->parent = this;
-        profile.push_back(c);
+        profile.append(c);
         return c;
     }
 
@@ -2344,7 +2375,7 @@ std::map<std::string, std::shared_ptr<Entity>> EthernetFeatures::EtherLinkOam::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : profile)
+    for (auto c : profile.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2379,16 +2410,16 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::Profile()
     mode{YType::enumeration, "mode"},
     remote_loopback{YType::boolean, "remote-loopback"},
     timeout{YType::uint32, "timeout"}
-    	,
+        ,
     action(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::Action>())
-	,require_remote(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote>())
-	,link_monitoring(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring>())
+    , require_remote(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote>())
+    , link_monitoring(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring>())
 {
     action->parent = this;
     require_remote->parent = this;
     link_monitoring->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "profiles"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::~Profile()
@@ -2397,6 +2428,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::~Profile()
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return profile.is_set
 	|| mib_retrieval.is_set
 	|| udlf.is_set
@@ -2434,7 +2466,8 @@ std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::get_absolute_path
 std::string EthernetFeatures::EtherLinkOam::Profiles::Profile::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[profile='" <<profile <<"']";
+    path_buffer << "profile";
+    ADD_KEY_TOKEN(profile, "profile");
     return path_buffer.str();
 }
 
@@ -2607,7 +2640,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::Action()
     wiring_conflict{YType::enumeration, "wiring-conflict"}
 {
 
-    yang_name = "action"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::~Action()
@@ -2616,6 +2649,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::~Action()
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return dying_gasp.is_set
 	|| session_up.is_set
 	|| critical_event.is_set
@@ -2804,7 +2838,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::RequireRemote(
     link_monitoring{YType::boolean, "link-monitoring"}
 {
 
-    yang_name = "require-remote"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "require-remote"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::~RequireRemote()
@@ -2813,6 +2847,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::~RequireRemote
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::has_data() const
 {
+    if (is_presence_container) return true;
     return mib_retrieval.is_set
 	|| mode.is_set
 	|| remote_loopback.is_set
@@ -2918,18 +2953,18 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::RequireRemote::has_leaf_
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::LinkMonitoring()
     :
     monitoring{YType::boolean, "monitoring"}
-    	,
+        ,
     symbol_period(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod>())
-	,frame_period(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod>())
-	,frame_seconds(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds>())
-	,frame(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame>())
+    , frame_period(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod>())
+    , frame_seconds(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds>())
+    , frame(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame>())
 {
     symbol_period->parent = this;
     frame_period->parent = this;
     frame_seconds->parent = this;
     frame->parent = this;
 
-    yang_name = "link-monitoring"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-monitoring"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::~LinkMonitoring()
@@ -2938,6 +2973,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::~LinkMonitori
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::has_data() const
 {
+    if (is_presence_container) return true;
     return monitoring.is_set
 	|| (symbol_period !=  nullptr && symbol_period->has_data())
 	|| (frame_period !=  nullptr && frame_period->has_data())
@@ -3068,11 +3104,11 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::has_leaf
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::SymbolPeriod()
     :
     window(nullptr) // presence node
-	,threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold>())
+    , threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "symbol-period"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "symbol-period"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::~SymbolPeriod()
@@ -3081,6 +3117,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod:
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::has_data() const
 {
+    if (is_presence_container) return true;
     return (window !=  nullptr && window->has_data())
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -3170,7 +3207,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod:
     multiplier{YType::enumeration, "multiplier"}
 {
 
-    yang_name = "window"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "window"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::~Window()
@@ -3179,6 +3216,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod:
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Window::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| units.is_set
 	|| multiplier.is_set;
@@ -3277,7 +3315,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod:
     multiplier_high{YType::enumeration, "multiplier-high"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::~Threshold()
@@ -3286,6 +3324,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod:
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPeriod::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_low.is_set
 	|| threshold_high.is_set
 	|| units.is_set
@@ -3404,11 +3443,11 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::SymbolPe
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::FramePeriod()
     :
     window(nullptr) // presence node
-	,threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold>())
+    , threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "frame-period"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-period"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::~FramePeriod()
@@ -3417,6 +3456,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::has_data() const
 {
+    if (is_presence_container) return true;
     return (window !=  nullptr && window->has_data())
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -3506,7 +3546,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::
     multiplier{YType::enumeration, "multiplier"}
 {
 
-    yang_name = "window"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "window"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::~Window()
@@ -3515,6 +3555,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Window::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| units.is_set
 	|| multiplier.is_set;
@@ -3613,7 +3654,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::
     multiplier_high{YType::enumeration, "multiplier-high"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::~Threshold()
@@ -3622,6 +3663,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePeriod::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_low.is_set
 	|| threshold_high.is_set
 	|| units.is_set
@@ -3740,12 +3782,12 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FramePer
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::FrameSeconds()
     :
     window{YType::uint32, "window"}
-    	,
+        ,
     threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "frame-seconds"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-seconds"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::~FrameSeconds()
@@ -3754,6 +3796,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds:
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -3839,7 +3882,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds:
     threshold_high{YType::uint32, "threshold-high"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::~Threshold()
@@ -3848,6 +3891,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds:
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSeconds::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_low.is_set
 	|| threshold_high.is_set;
 }
@@ -3927,12 +3971,12 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::FrameSec
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Frame()
     :
     window{YType::uint32, "window"}
-    	,
+        ,
     threshold(std::make_shared<EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "frame"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::~Frame()
@@ -3941,6 +3985,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::~Frame
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -4028,7 +4073,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Thresh
     multiplier_high{YType::enumeration, "multiplier-high"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::~Threshold()
@@ -4037,6 +4082,7 @@ EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Thresh
 
 bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_low.is_set
 	|| threshold_high.is_set
 	|| multiplier_low.is_set
@@ -4139,23 +4185,23 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::T
     return false;
 }
 
+const Enum::YLeaf EgressFiltering::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
+const Enum::YLeaf EgressFiltering::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
+const Enum::YLeaf EgressFiltering::egress_filtering_type_default {3, "egress-filtering-type-default"};
+
 const Enum::YLeaf L2ProtocolName::cdp {0, "cdp"};
 const Enum::YLeaf L2ProtocolName::stp {1, "stp"};
 const Enum::YLeaf L2ProtocolName::vtp {2, "vtp"};
 const Enum::YLeaf L2ProtocolName::pvst {3, "pvst"};
 const Enum::YLeaf L2ProtocolName::cpsv {4, "cpsv"};
 
+const Enum::YLeaf Filtering::filtering_type_dot1q {0, "filtering-type-dot1q"};
+const Enum::YLeaf Filtering::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
+
 const Enum::YLeaf L2ProtocolMode::forward {0, "forward"};
 const Enum::YLeaf L2ProtocolMode::drop {1, "drop"};
 const Enum::YLeaf L2ProtocolMode::tunnel {2, "tunnel"};
 const Enum::YLeaf L2ProtocolMode::reverse_tunnel {3, "reverse-tunnel"};
-
-const Enum::YLeaf EgressFiltering::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
-const Enum::YLeaf EgressFiltering::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
-const Enum::YLeaf EgressFiltering::egress_filtering_type_default {3, "egress-filtering-type-default"};
-
-const Enum::YLeaf Filtering::filtering_type_dot1q {0, "filtering-type-dot1q"};
-const Enum::YLeaf Filtering::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
 
 
 }

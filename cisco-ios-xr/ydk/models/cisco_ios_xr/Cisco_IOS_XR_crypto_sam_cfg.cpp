@@ -16,7 +16,7 @@ Sam::Sam()
     prompt_interval(nullptr) // presence node
 {
 
-    yang_name = "sam"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sam"; yang_parent_name = "Cisco-IOS-XR-crypto-sam-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Sam::~Sam()
@@ -25,6 +25,7 @@ Sam::~Sam()
 
 bool Sam::has_data() const
 {
+    if (is_presence_container) return true;
     return (prompt_interval !=  nullptr && prompt_interval->has_data());
 }
 
@@ -122,7 +123,7 @@ Sam::PromptInterval::PromptInterval()
     prompt_time{YType::uint32, "prompt-time"}
 {
 
-    yang_name = "prompt-interval"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prompt-interval"; yang_parent_name = "sam"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Sam::PromptInterval::~PromptInterval()
@@ -131,6 +132,7 @@ Sam::PromptInterval::~PromptInterval()
 
 bool Sam::PromptInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| prompt_time.is_set;
 }

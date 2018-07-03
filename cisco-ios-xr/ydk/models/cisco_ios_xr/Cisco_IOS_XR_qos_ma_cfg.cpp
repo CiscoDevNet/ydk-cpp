@@ -16,7 +16,7 @@ Qos::Qos()
     fabric_service_policy{YType::str, "fabric-service-policy"}
 {
 
-    yang_name = "qos"; yang_parent_name = "Cisco-IOS-XR-qos-ma-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "qos"; yang_parent_name = "Cisco-IOS-XR-qos-ma-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Qos::~Qos()
@@ -25,6 +25,7 @@ Qos::~Qos()
 
 bool Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return fabric_service_policy.is_set;
 }
 

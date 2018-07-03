@@ -31,20 +31,20 @@ class CISCOETHERCFMMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceccfmevents; //type: CISCOETHERCFMMIB::Ceccfmevents
-        class Cethercfmeventtable; //type: CISCOETHERCFMMIB::Cethercfmeventtable
+        class CecCfmEvents; //type: CISCOETHERCFMMIB::CecCfmEvents
+        class CEtherCfmEventTable; //type: CISCOETHERCFMMIB::CEtherCfmEventTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::Ceccfmevents> ceccfmevents;
-        std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::Cethercfmeventtable> cethercfmeventtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::CecCfmEvents> ceccfmevents;
+        std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::CEtherCfmEventTable> cethercfmeventtable;
         
 }; // CISCOETHERCFMMIB
 
 
-class CISCOETHERCFMMIB::Ceccfmevents : public ydk::Entity
+class CISCOETHERCFMMIB::CecCfmEvents : public ydk::Entity
 {
     public:
-        Ceccfmevents();
-        ~Ceccfmevents();
+        CecCfmEvents();
+        ~CecCfmEvents();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,14 +59,14 @@ class CISCOETHERCFMMIB::Ceccfmevents : public ydk::Entity
 
         ydk::YLeaf cethercfmmaxeventindex; //type: uint32
 
-}; // CISCOETHERCFMMIB::Ceccfmevents
+}; // CISCOETHERCFMMIB::CecCfmEvents
 
 
-class CISCOETHERCFMMIB::Cethercfmeventtable : public ydk::Entity
+class CISCOETHERCFMMIB::CEtherCfmEventTable : public ydk::Entity
 {
     public:
-        Cethercfmeventtable();
-        ~Cethercfmeventtable();
+        CEtherCfmEventTable();
+        ~CEtherCfmEventTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,18 +79,18 @@ class CISCOETHERCFMMIB::Cethercfmeventtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cethercfmevententry; //type: CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry
+        class CEtherCfmEventEntry; //type: CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ETHER_CFM_MIB::CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry> > cethercfmevententry;
+        ydk::YList cethercfmevententry;
         
-}; // CISCOETHERCFMMIB::Cethercfmeventtable
+}; // CISCOETHERCFMMIB::CEtherCfmEventTable
 
 
-class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry : public ydk::Entity
+class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry : public ydk::Entity
 {
     public:
-        Cethercfmevententry();
-        ~Cethercfmevententry();
+        CEtherCfmEventEntry();
+        ~CEtherCfmEventEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -107,7 +107,7 @@ class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry : public ydk::E
         ydk::YLeaf cethercfmeventsvlan; //type: int32
         ydk::YLeaf cethercfmeventindex; //type: uint32
         ydk::YLeaf cethercfmeventdomainname; //type: string
-        ydk::YLeaf cethercfmeventtype; //type: Cethercfmeventtype
+        ydk::YLeaf cethercfmeventtype; //type: CEtherCfmEventType
         ydk::YLeaf cethercfmeventlastchange; //type: uint32
         ydk::YLeaf cethercfmeventserviceid; //type: string
         ydk::YLeaf cethercfmeventlclmepid; //type: uint32
@@ -116,18 +116,18 @@ class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry : public ydk::E
         ydk::YLeaf cethercfmeventlclifcount; //type: uint32
         ydk::YLeaf cethercfmeventrmtmepid; //type: uint32
         ydk::YLeaf cethercfmeventrmtmacaddress; //type: string
-        ydk::YLeaf cethercfmeventrmtportstate; //type: Cethercfmeventrmtportstate
+        ydk::YLeaf cethercfmeventrmtportstate; //type: CEtherCfmEventRmtPortState
         ydk::YLeaf cethercfmeventrmtserviceid; //type: string
-        ydk::YLeaf cethercfmeventcode; //type: Cethercfmeventcode
-        ydk::YLeaf cethercfmeventdeleterow; //type: Cethercfmeventdeleterow
-        class Cethercfmeventtype;
-        class Cethercfmeventrmtportstate;
-        class Cethercfmeventcode;
-        class Cethercfmeventdeleterow;
+        ydk::YLeaf cethercfmeventcode; //type: CEtherCfmEventCode
+        ydk::YLeaf cethercfmeventdeleterow; //type: CEtherCfmEventDeleteRow
+        class CEtherCfmEventType;
+        class CEtherCfmEventRmtPortState;
+        class CEtherCfmEventCode;
+        class CEtherCfmEventDeleteRow;
 
-}; // CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry
+}; // CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry
 
-class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventtype : public ydk::Enum
+class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf mepUp;
@@ -141,7 +141,7 @@ class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmevent
 
 };
 
-class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventrmtportstate : public ydk::Enum
+class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventRmtPortState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -154,7 +154,7 @@ class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmevent
 
 };
 
-class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventcode : public ydk::Enum
+class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventCode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf new_;
@@ -169,7 +169,7 @@ class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmevent
 
 };
 
-class CISCOETHERCFMMIB::Cethercfmeventtable::Cethercfmevententry::Cethercfmeventdeleterow : public ydk::Enum
+class CISCOETHERCFMMIB::CEtherCfmEventTable::CEtherCfmEventEntry::CEtherCfmEventDeleteRow : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noop;

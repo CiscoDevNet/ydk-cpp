@@ -33,7 +33,7 @@ class ChannelMonitors : public ydk::Entity
 
         class ChannelMonitor; //type: ChannelMonitors::ChannelMonitor
 
-        std::vector<std::shared_ptr<openconfig::openconfig_channel_monitor::ChannelMonitors::ChannelMonitor> > channel_monitor;
+        ydk::YList channel_monitor;
         
 }; // ChannelMonitors
 
@@ -134,7 +134,7 @@ class ChannelMonitors::ChannelMonitor::Channels : public ydk::Entity
 
         class Channel; //type: ChannelMonitors::ChannelMonitor::Channels::Channel
 
-        std::vector<std::shared_ptr<openconfig::openconfig_channel_monitor::ChannelMonitors::ChannelMonitor::Channels::Channel> > channel;
+        ydk::YList channel;
         
 }; // ChannelMonitors::ChannelMonitor::Channels
 

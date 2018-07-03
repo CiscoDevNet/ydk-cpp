@@ -89,7 +89,7 @@ class Ipsla::MplsData::LspMonitors : public ydk::Entity
 
         class LspMonitor; //type: Ipsla::MplsData::LspMonitors::LspMonitor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::MplsData::LspMonitors::LspMonitor> > lsp_monitor;
+        ydk::YList lsp_monitor;
         
 }; // Ipsla::MplsData::LspMonitors
 
@@ -111,7 +111,7 @@ class Ipsla::MplsData::LspMonitors::LspMonitor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf monitor_id; //type: int32
+        ydk::YLeaf monitor_id; //type: uint32
         class State; //type: Ipsla::MplsData::LspMonitors::LspMonitor::State
         class Operations; //type: Ipsla::MplsData::LspMonitors::LspMonitor::Operations
         class ScanQueues; //type: Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues
@@ -165,7 +165,7 @@ class Ipsla::MplsData::LspMonitors::LspMonitor::Operations : public ydk::Entity
 
         class Operation; //type: Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation> > operation_;
+        ydk::YList operation_;
         
 }; // Ipsla::MplsData::LspMonitors::LspMonitor::Operations
 
@@ -186,7 +186,7 @@ class Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf operation_id; //type: int32
+        ydk::YLeaf operation_id; //type: uint32
         class State; //type: Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::State
         class LpdPaths; //type: Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths
 
@@ -238,7 +238,7 @@ class Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths 
 
         class LpdPath; //type: Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths::LpdPath> > lpd_path;
+        ydk::YList lpd_path;
         
 }; // Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths
 
@@ -259,7 +259,7 @@ class Ipsla::MplsData::LspMonitors::LspMonitor::Operations::Operation::LpdPaths:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_index; //type: int32
+        ydk::YLeaf path_index; //type: uint32
         ydk::YLeaf path_status; //type: IpslaLspGrpPathStatusEnum
         ydk::YLeaf operation_time; //type: uint64
         ydk::YLeaf response_time; //type: uint32
@@ -314,7 +314,7 @@ class Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues : public ydk::Entity
 
         class ScanQueue; //type: Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues::ScanQueue> > scan_queue;
+        ydk::YList scan_queue;
         
 }; // Ipsla::MplsData::LspMonitors::LspMonitor::ScanQueues
 
@@ -434,7 +434,7 @@ class Ipsla::MplsData::Discovery::Vpn::Nexthops : public ydk::Entity
 
         class Nexthop; //type: Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop> > nexthop;
+        ydk::YList nexthop;
         
 }; // Ipsla::MplsData::Discovery::Vpn::Nexthops
 
@@ -484,7 +484,7 @@ class Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs : public ydk::Ent
 
         class Vrf; //type: Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ipsla::MplsData::Discovery::Vpn::Nexthops::Nexthop::Vrfs
 
@@ -576,7 +576,7 @@ class Ipsla::Responder::Ports : public ydk::Entity
 
         class Port; //type: Ipsla::Responder::Ports::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::Responder::Ports::Port> > port;
+        ydk::YList port;
         
 }; // Ipsla::Responder::Ports
 
@@ -611,7 +611,7 @@ class Ipsla::Responder::Ports::Port : public ydk::Entity
         ydk::YLeaf socket; //type: int32
         class Sender; //type: Ipsla::Responder::Ports::Port::Sender
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::Responder::Ports::Port::Sender> > sender;
+        ydk::YList sender;
         
 }; // Ipsla::Responder::Ports::Port
 
@@ -682,7 +682,7 @@ class Ipsla::OperationData::Operations : public ydk::Entity
 
         class Operation; //type: Ipsla::OperationData::Operations::Operation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation> > operation_;
+        ydk::YList operation_;
         
 }; // Ipsla::OperationData::Operations
 
@@ -704,7 +704,7 @@ class Ipsla::OperationData::Operations::Operation : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf operation_id; //type: int32
+        ydk::YLeaf operation_id; //type: uint32
         class Common; //type: Ipsla::OperationData::Operations::Operation::Common
         class Lpd; //type: Ipsla::OperationData::Operations::Operation::Lpd
         class History; //type: Ipsla::OperationData::Operations::Operation::History
@@ -1024,7 +1024,7 @@ class Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::
 
         class Hour; //type: Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours::Hour> > hour;
+        ydk::YList hour;
         
 }; // Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::Hours
 
@@ -1045,7 +1045,7 @@ class Ipsla::OperationData::Operations::Operation::Lpd::Statistics::Aggregated::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hour_index; //type: int32
+        ydk::YLeaf hour_index; //type: uint32
         ydk::YLeaf start_time; //type: uint64
         ydk::YLeaf return_code; //type: IpslaMplsLpdRetCode
         ydk::YLeaf completion_time_count; //type: uint32
@@ -1209,7 +1209,7 @@ class Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths : publi
 
         class LpdPath; //type: Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath> > lpd_path;
+        ydk::YList lpd_path;
         
 }; // Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths
 
@@ -1230,7 +1230,7 @@ class Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPat
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_index; //type: int32
+        ydk::YLeaf path_index; //type: uint32
         ydk::YLeaf path_status; //type: IpslaMplsLpdPathDiscoveryStatus
         class PathId; //type: Ipsla::OperationData::Operations::Operation::Lpd::Status::LpdPaths::LpdPath::PathId
 
@@ -1453,7 +1453,7 @@ class Ipsla::OperationData::Operations::Operation::History::Path::Lifes : public
 
         class Life; //type: Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life> > life;
+        ydk::YList life;
         
 }; // Ipsla::OperationData::Operations::Operation::History::Path::Lifes
 
@@ -1474,7 +1474,7 @@ class Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf life_index; //type: int32
+        ydk::YLeaf life_index; //type: uint32
         class Buckets; //type: Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets> buckets;
@@ -1500,7 +1500,7 @@ class Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::B
 
         class Bucket; //type: Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket> > bucket;
+        ydk::YList bucket;
         
 }; // Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets
 
@@ -1521,7 +1521,7 @@ class Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::B
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bucket_index; //type: int32
+        ydk::YLeaf bucket_index; //type: uint32
         class Samples; //type: Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples> samples;
@@ -1547,7 +1547,7 @@ class Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::B
 
         class Sample; //type: Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples::Sample> > sample;
+        ydk::YList sample;
         
 }; // Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::Buckets::Bucket::Samples
 
@@ -1568,7 +1568,7 @@ class Ipsla::OperationData::Operations::Operation::History::Path::Lifes::Life::B
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sample_index; //type: int32
+        ydk::YLeaf sample_index; //type: uint32
         ydk::YLeaf start_time; //type: uint64
         ydk::YLeaf response_time; //type: uint32
         ydk::YLeaf return_code; //type: IpslaRetCode
@@ -1715,7 +1715,7 @@ class Ipsla::OperationData::Operations::Operation::History::Target::Lifes : publ
 
         class Life; //type: Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life> > life;
+        ydk::YList life;
         
 }; // Ipsla::OperationData::Operations::Operation::History::Target::Lifes
 
@@ -1736,7 +1736,7 @@ class Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf life_index; //type: int32
+        ydk::YLeaf life_index; //type: uint32
         class Buckets; //type: Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets> buckets;
@@ -1762,7 +1762,7 @@ class Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life:
 
         class Bucket; //type: Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets::Bucket> > bucket;
+        ydk::YList bucket;
         
 }; // Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life::Buckets
 
@@ -1783,7 +1783,7 @@ class Ipsla::OperationData::Operations::Operation::History::Target::Lifes::Life:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf bucket_index; //type: int32
+        ydk::YLeaf bucket_index; //type: uint32
         ydk::YLeaf start_time; //type: uint64
         ydk::YLeaf response_time; //type: uint32
         ydk::YLeaf return_code; //type: IpslaRetCode
@@ -2155,7 +2155,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops : pu
 
         class Hop; //type: Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop> > hop;
+        ydk::YList hop;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops
 
@@ -2176,7 +2176,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hop_index; //type: int32
+        ydk::YLeaf hop_index; //type: uint32
         class CommonStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::CommonStats
         class SpecificStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Latest::Hops::Hop::SpecificStats
 
@@ -2375,7 +2375,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths 
 
         class LpdPath; //type: Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath> > lpd_path;
+        ydk::YList lpd_path;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths
 
@@ -2396,7 +2396,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_index; //type: int32
+        ydk::YLeaf path_index; //type: uint32
         ydk::YLeaf return_code; //type: IpslaRetCode
         class PathId; //type: Ipsla::OperationData::Operations::Operation::Statistics::Latest::LpdPaths::LpdPath::PathId
 
@@ -2472,7 +2472,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhan
 
         class EnhancedInterval; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval> > enhanced_interval;
+        ydk::YList enhanced_interval;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals
 
@@ -2493,7 +2493,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhan
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enhanced_interval; //type: int32
+        ydk::YLeaf enhanced_interval; //type: uint32
         class StartTimes; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes> start_times;
@@ -2519,7 +2519,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Enhan
 
         class StartTime; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes::StartTime> > start_time;
+        ydk::YList start_time;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::EnhancedIntervals::EnhancedInterval::StartTimes
 
@@ -2739,7 +2739,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class Hour; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour> > hour;
+        ydk::YList hour;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
@@ -2760,7 +2760,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hour_index; //type: int32
+        ydk::YLeaf hour_index; //type: uint32
         class Distributed; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed
         class NonDistributed; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed
 
@@ -2813,7 +2813,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class Path; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path> > path;
+        ydk::YList path;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths
 
@@ -2834,7 +2834,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_index; //type: int32
+        ydk::YLeaf path_index; //type: uint32
         class Hops; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops> hops;
@@ -2860,7 +2860,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class Hop; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop> > hop;
+        ydk::YList hop;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops
 
@@ -2881,7 +2881,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hop_index; //type: int32
+        ydk::YLeaf hop_index; //type: uint32
         class DistributionIntervals; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals> distribution_intervals;
@@ -2907,7 +2907,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class DistributionInterval; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval> > distribution_interval;
+        ydk::YList distribution_interval;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals
 
@@ -2928,7 +2928,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf distribution_index; //type: int32
+        ydk::YLeaf distribution_index; //type: uint32
         class CommonStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::CommonStats
         class SpecificStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Paths::Path::Hops::Hop::DistributionIntervals::DistributionInterval::SpecificStats
 
@@ -3150,7 +3150,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class DistributionInterval; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval> > distribution_interval;
+        ydk::YList distribution_interval;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals
 
@@ -3171,7 +3171,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf distribution_index; //type: int32
+        ydk::YLeaf distribution_index; //type: uint32
         class CommonStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::CommonStats
         class SpecificStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::Distributed::Target::DistributionIntervals::DistributionInterval::SpecificStats
 
@@ -3593,7 +3593,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class Path; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path> > path;
+        ydk::YList path;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths
 
@@ -3614,7 +3614,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_index; //type: int32
+        ydk::YLeaf path_index; //type: uint32
         class Hops; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops> hops;
@@ -3640,7 +3640,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class Hop; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop> > hop;
+        ydk::YList hop;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops
 
@@ -3661,7 +3661,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf hop_index; //type: int32
+        ydk::YLeaf hop_index; //type: uint32
         class CommonStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::CommonStats
         class SpecificStats; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::Paths::Path::Hops::Hop::SpecificStats
 
@@ -3860,7 +3860,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
 
         class LpdPath; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_man_ipsla_oper::Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath> > lpd_path;
+        ydk::YList lpd_path;
         
 }; // Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths
 
@@ -3881,7 +3881,7 @@ class Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_index; //type: int32
+        ydk::YLeaf path_index; //type: uint32
         ydk::YLeaf return_code; //type: IpslaRetCode
         class PathId; //type: Ipsla::OperationData::Operations::Operation::Statistics::Aggregated::Hours::Hour::NonDistributed::LpdPaths::LpdPath::PathId
 
@@ -3944,17 +3944,28 @@ class Ipsla::ApplicationInfo : public ydk::Entity
 
 }; // Ipsla::ApplicationInfo
 
-class OpTypeEnum : public ydk::Enum
+class IpslaTargetTypeEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf icmp_echo;
-        static const ydk::Enum::YLeaf icmp_path_jitter;
-        static const ydk::Enum::YLeaf icmp_path_echo;
-        static const ydk::Enum::YLeaf udp_jitter;
-        static const ydk::Enum::YLeaf udp_echo;
-        static const ydk::Enum::YLeaf mpls_lsp_ping;
-        static const ydk::Enum::YLeaf mpls_lsp_trace;
-        static const ydk::Enum::YLeaf mpls_lsp_group;
+        static const ydk::Enum::YLeaf ipv4_address_target_type;
+        static const ydk::Enum::YLeaf ipv4_prefix_target_type;
+        static const ydk::Enum::YLeaf tunnel_id_target_type;
+        static const ydk::Enum::YLeaf ipv4_pseudowire_target_type;
+        static const ydk::Enum::YLeaf ipv6_address_target_type;
+
+};
+
+class SlaOpTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf oper_icmp_echo;
+        static const ydk::Enum::YLeaf oper_icmp_path_jitter;
+        static const ydk::Enum::YLeaf oper_icmp_path_echo;
+        static const ydk::Enum::YLeaf oper_udp_jitter;
+        static const ydk::Enum::YLeaf oper_udp_echo;
+        static const ydk::Enum::YLeaf oper_mpls_lsp_ping;
+        static const ydk::Enum::YLeaf oper_mpls_lsp_trace;
+        static const ydk::Enum::YLeaf oper_mpls_lsp_group;
 
 };
 
@@ -4014,6 +4025,40 @@ class IpslaRetCode : public ydk::Enum
 
 };
 
+class OpTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf icmp_echo;
+        static const ydk::Enum::YLeaf icmp_path_jitter;
+        static const ydk::Enum::YLeaf icmp_path_echo;
+        static const ydk::Enum::YLeaf udp_jitter;
+        static const ydk::Enum::YLeaf udp_echo;
+        static const ydk::Enum::YLeaf mpls_lsp_ping;
+        static const ydk::Enum::YLeaf mpls_lsp_trace;
+        static const ydk::Enum::YLeaf mpls_lsp_group;
+
+};
+
+class IpslaLspGrpPathStatusEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_unknown;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_up;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_down;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_retry;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_pending;
+
+};
+
+class IpslaOperStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipsla_oper_state_inactive;
+        static const ydk::Enum::YLeaf ipsla_oper_state_pending;
+        static const ydk::Enum::YLeaf ipsla_oper_state_active;
+
+};
+
 class IpslaMplsLpdDiscoveryModeEnum : public ydk::Enum
 {
     public:
@@ -4022,16 +4067,6 @@ class IpslaMplsLpdDiscoveryModeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_initial_complete;
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_rediscovery_running;
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_rediscovery_complete;
-
-};
-
-class IpslaMplsLpdPathDiscoveryStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unknown;
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_ok;
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_broken;
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unexplorable;
 
 };
 
@@ -4049,45 +4084,6 @@ class IpslaMplsLpdRetCode : public ydk::Enum
 
 };
 
-class IpslaTargetTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4_address_target_type;
-        static const ydk::Enum::YLeaf ipv4_prefix_target_type;
-        static const ydk::Enum::YLeaf tunnel_id_target_type;
-        static const ydk::Enum::YLeaf ipv4_pseudowire_target_type;
-        static const ydk::Enum::YLeaf ipv6_address_target_type;
-
-};
-
-class IpslaOperStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipsla_oper_state_inactive;
-        static const ydk::Enum::YLeaf ipsla_oper_state_pending;
-        static const ydk::Enum::YLeaf ipsla_oper_state_active;
-
-};
-
-class IpslaMplsAddDeleteEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipsla_mpls_add_delete_add_q;
-        static const ydk::Enum::YLeaf ipsla_mpls_add_delete_delete_q;
-
-};
-
-class IpslaLspGrpPathStatusEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_unknown;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_up;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_down;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_retry;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_pending;
-
-};
-
 class IpslaLspGrpStatusEnum : public ydk::Enum
 {
     public:
@@ -4099,17 +4095,21 @@ class IpslaLspGrpStatusEnum : public ydk::Enum
 
 };
 
-class SlaOpTypes : public ydk::Enum
+class IpslaMplsAddDeleteEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf oper_icmp_echo;
-        static const ydk::Enum::YLeaf oper_icmp_path_jitter;
-        static const ydk::Enum::YLeaf oper_icmp_path_echo;
-        static const ydk::Enum::YLeaf oper_udp_jitter;
-        static const ydk::Enum::YLeaf oper_udp_echo;
-        static const ydk::Enum::YLeaf oper_mpls_lsp_ping;
-        static const ydk::Enum::YLeaf oper_mpls_lsp_trace;
-        static const ydk::Enum::YLeaf oper_mpls_lsp_group;
+        static const ydk::Enum::YLeaf ipsla_mpls_add_delete_add_q;
+        static const ydk::Enum::YLeaf ipsla_mpls_add_delete_delete_q;
+
+};
+
+class IpslaMplsLpdPathDiscoveryStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unknown;
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_ok;
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_broken;
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unexplorable;
 
 };
 

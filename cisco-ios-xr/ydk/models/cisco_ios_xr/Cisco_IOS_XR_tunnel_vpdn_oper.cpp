@@ -14,10 +14,10 @@ namespace Cisco_IOS_XR_tunnel_vpdn_oper {
 Vpdn::Vpdn()
     :
     sessions(std::make_shared<Vpdn::Sessions>())
-	,tunnel_destinations(std::make_shared<Vpdn::TunnelDestinations>())
-	,vpdn_mirroring(std::make_shared<Vpdn::VpdnMirroring>())
-	,vpdn_redundancy(std::make_shared<Vpdn::VpdnRedundancy>())
-	,history_failures(std::make_shared<Vpdn::HistoryFailures>())
+    , tunnel_destinations(std::make_shared<Vpdn::TunnelDestinations>())
+    , vpdn_mirroring(std::make_shared<Vpdn::VpdnMirroring>())
+    , vpdn_redundancy(std::make_shared<Vpdn::VpdnRedundancy>())
+    , history_failures(std::make_shared<Vpdn::HistoryFailures>())
 {
     sessions->parent = this;
     tunnel_destinations->parent = this;
@@ -25,7 +25,7 @@ Vpdn::Vpdn()
     vpdn_redundancy->parent = this;
     history_failures->parent = this;
 
-    yang_name = "vpdn"; yang_parent_name = "Cisco-IOS-XR-tunnel-vpdn-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vpdn"; yang_parent_name = "Cisco-IOS-XR-tunnel-vpdn-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vpdn::~Vpdn()
@@ -34,6 +34,7 @@ Vpdn::~Vpdn()
 
 bool Vpdn::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data())
 	|| (tunnel_destinations !=  nullptr && tunnel_destinations->has_data())
 	|| (vpdn_mirroring !=  nullptr && vpdn_mirroring->has_data())
@@ -190,9 +191,11 @@ bool Vpdn::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vpdn::Sessions::Sessions()
+    :
+    session(this, {"session_label"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Sessions::~Sessions()
@@ -201,7 +204,8 @@ Vpdn::Sessions::~Sessions()
 
 bool Vpdn::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -211,7 +215,7 @@ bool Vpdn::Sessions::has_data() const
 
 bool Vpdn::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -248,7 +252,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Vpdn::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -260,7 +264,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -291,18 +295,18 @@ Vpdn::Sessions::Session::Session()
     session_label{YType::str, "session-label"},
     setup_time{YType::uint32, "setup-time"},
     parent_interface_name{YType::str, "parent-interface-name"}
-    	,
+        ,
     session(std::make_shared<Vpdn::Sessions::Session::Session_>())
-	,l2tp(std::make_shared<Vpdn::Sessions::Session::L2Tp>())
-	,subscriber(std::make_shared<Vpdn::Sessions::Session::Subscriber>())
-	,configuration(std::make_shared<Vpdn::Sessions::Session::Configuration>())
+    , l2tp(std::make_shared<Vpdn::Sessions::Session::L2tp>())
+    , subscriber(std::make_shared<Vpdn::Sessions::Session::Subscriber>())
+    , configuration(std::make_shared<Vpdn::Sessions::Session::Configuration>())
 {
     session->parent = this;
     l2tp->parent = this;
     subscriber->parent = this;
     configuration->parent = this;
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::Sessions::Session::~Session()
@@ -311,6 +315,7 @@ Vpdn::Sessions::Session::~Session()
 
 bool Vpdn::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session_label.is_set
 	|| setup_time.is_set
 	|| parent_interface_name.is_set
@@ -342,7 +347,8 @@ std::string Vpdn::Sessions::Session::get_absolute_path() const
 std::string Vpdn::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session-label='" <<session_label <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session_label, "session-label");
     return path_buffer.str();
 }
 
@@ -373,7 +379,7 @@ std::shared_ptr<Entity> Vpdn::Sessions::Session::get_child_by_name(const std::st
     {
         if(l2tp == nullptr)
         {
-            l2tp = std::make_shared<Vpdn::Sessions::Session::L2Tp>();
+            l2tp = std::make_shared<Vpdn::Sessions::Session::L2tp>();
         }
         return l2tp;
     }
@@ -483,7 +489,7 @@ Vpdn::Sessions::Session::Session_::Session_()
     srg_slave{YType::boolean, "srg-slave"}
 {
 
-    yang_name = "session"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Sessions::Session::Session_::~Session_()
@@ -492,6 +498,7 @@ Vpdn::Sessions::Session::Session_::~Session_()
 
 bool Vpdn::Sessions::Session::Session_::has_data() const
 {
+    if (is_presence_container) return true;
     return last_change.is_set
 	|| interface_name.is_set
 	|| username.is_set
@@ -646,7 +653,7 @@ bool Vpdn::Sessions::Session::Session_::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
-Vpdn::Sessions::Session::L2Tp::L2Tp()
+Vpdn::Sessions::Session::L2tp::L2tp()
     :
     local_endpoint{YType::str, "local-endpoint"},
     remote_endpoint{YType::str, "remote-endpoint"},
@@ -663,15 +670,16 @@ Vpdn::Sessions::Session::L2Tp::L2Tp()
     is_tunnel_authentication_enabled{YType::boolean, "is-tunnel-authentication-enabled"}
 {
 
-    yang_name = "l2tp"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2tp"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Vpdn::Sessions::Session::L2Tp::~L2Tp()
+Vpdn::Sessions::Session::L2tp::~L2tp()
 {
 }
 
-bool Vpdn::Sessions::Session::L2Tp::has_data() const
+bool Vpdn::Sessions::Session::L2tp::has_data() const
 {
+    if (is_presence_container) return true;
     return local_endpoint.is_set
 	|| remote_endpoint.is_set
 	|| call_serial_number.is_set
@@ -687,7 +695,7 @@ bool Vpdn::Sessions::Session::L2Tp::has_data() const
 	|| is_tunnel_authentication_enabled.is_set;
 }
 
-bool Vpdn::Sessions::Session::L2Tp::has_operation() const
+bool Vpdn::Sessions::Session::L2tp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local_endpoint.yfilter)
@@ -705,14 +713,14 @@ bool Vpdn::Sessions::Session::L2Tp::has_operation() const
 	|| ydk::is_set(is_tunnel_authentication_enabled.yfilter);
 }
 
-std::string Vpdn::Sessions::Session::L2Tp::get_segment_path() const
+std::string Vpdn::Sessions::Session::L2tp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::L2Tp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::L2tp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -734,19 +742,19 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::L2Tp::ge
 
 }
 
-std::shared_ptr<Entity> Vpdn::Sessions::Session::L2Tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Vpdn::Sessions::Session::L2tp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::L2Tp::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Vpdn::Sessions::Session::L2tp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Vpdn::Sessions::Session::L2Tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Vpdn::Sessions::Session::L2tp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local-endpoint")
     {
@@ -828,7 +836,7 @@ void Vpdn::Sessions::Session::L2Tp::set_value(const std::string & value_path, co
     }
 }
 
-void Vpdn::Sessions::Session::L2Tp::set_filter(const std::string & value_path, YFilter yfilter)
+void Vpdn::Sessions::Session::L2tp::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local-endpoint")
     {
@@ -884,7 +892,7 @@ void Vpdn::Sessions::Session::L2Tp::set_filter(const std::string & value_path, Y
     }
 }
 
-bool Vpdn::Sessions::Session::L2Tp::has_leaf_or_child_of_name(const std::string & name) const
+bool Vpdn::Sessions::Session::L2tp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "local-endpoint" || name == "remote-endpoint" || name == "call-serial-number" || name == "is-l2tp-class-attribute-mask-set" || name == "local-tunnel-id" || name == "remote-tunnel-id" || name == "local-session-id" || name == "remote-session-id" || name == "remote-port" || name == "tunnel-client-authentication-id" || name == "tunnel-server-authentication-id" || name == "tunnel-assignment-id" || name == "is-tunnel-authentication-enabled")
         return true;
@@ -900,7 +908,7 @@ Vpdn::Sessions::Session::Subscriber::Subscriber()
     nas_port{YType::uint8, "nas-port"}
 {
 
-    yang_name = "subscriber"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Sessions::Session::Subscriber::~Subscriber()
@@ -909,6 +917,7 @@ Vpdn::Sessions::Session::Subscriber::~Subscriber()
 
 bool Vpdn::Sessions::Session::Subscriber::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : nas_port.getYLeafs())
     {
         if(leaf.is_set)
@@ -1040,12 +1049,12 @@ Vpdn::Sessions::Session::Configuration::Configuration()
     tos_mode{YType::enumeration, "tos-mode"},
     tos{YType::uint8, "tos"},
     dsl_line_forwarding{YType::boolean, "dsl-line-forwarding"}
-    	,
+        ,
     vpn_id(std::make_shared<Vpdn::Sessions::Session::Configuration::VpnId>())
 {
     vpn_id->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configuration"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Sessions::Session::Configuration::~Configuration()
@@ -1054,6 +1063,7 @@ Vpdn::Sessions::Session::Configuration::~Configuration()
 
 bool Vpdn::Sessions::Session::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| vrf_name.is_set
 	|| l2tp_busy_timeout.is_set
@@ -1204,7 +1214,7 @@ Vpdn::Sessions::Session::Configuration::VpnId::VpnId()
     index_{YType::uint32, "index"}
 {
 
-    yang_name = "vpn-id"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpn-id"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vpdn::Sessions::Session::Configuration::VpnId::~VpnId()
@@ -1213,6 +1223,7 @@ Vpdn::Sessions::Session::Configuration::VpnId::~VpnId()
 
 bool Vpdn::Sessions::Session::Configuration::VpnId::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| index_.is_set;
 }
@@ -1290,9 +1301,11 @@ bool Vpdn::Sessions::Session::Configuration::VpnId::has_leaf_or_child_of_name(co
 }
 
 Vpdn::TunnelDestinations::TunnelDestinations()
+    :
+    tunnel_destination(this, {})
 {
 
-    yang_name = "tunnel-destinations"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-destinations"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::TunnelDestinations::~TunnelDestinations()
@@ -1301,7 +1314,8 @@ Vpdn::TunnelDestinations::~TunnelDestinations()
 
 bool Vpdn::TunnelDestinations::has_data() const
 {
-    for (std::size_t index=0; index<tunnel_destination.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tunnel_destination.len(); index++)
     {
         if(tunnel_destination[index]->has_data())
             return true;
@@ -1311,7 +1325,7 @@ bool Vpdn::TunnelDestinations::has_data() const
 
 bool Vpdn::TunnelDestinations::has_operation() const
 {
-    for (std::size_t index=0; index<tunnel_destination.size(); index++)
+    for (std::size_t index=0; index<tunnel_destination.len(); index++)
     {
         if(tunnel_destination[index]->has_operation())
             return true;
@@ -1348,7 +1362,7 @@ std::shared_ptr<Entity> Vpdn::TunnelDestinations::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Vpdn::TunnelDestinations::TunnelDestination>();
         c->parent = this;
-        tunnel_destination.push_back(c);
+        tunnel_destination.append(c);
         return c;
     }
 
@@ -1360,7 +1374,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::TunnelDestinations::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tunnel_destination)
+    for (auto c : tunnel_destination.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1399,7 +1413,7 @@ Vpdn::TunnelDestinations::TunnelDestination::TunnelDestination()
     status_change_time{YType::uint32, "status-change-time"}
 {
 
-    yang_name = "tunnel-destination"; yang_parent_name = "tunnel-destinations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel-destination"; yang_parent_name = "tunnel-destinations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::TunnelDestinations::TunnelDestination::~TunnelDestination()
@@ -1408,6 +1422,7 @@ Vpdn::TunnelDestinations::TunnelDestination::~TunnelDestination()
 
 bool Vpdn::TunnelDestinations::TunnelDestination::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| address.is_set
 	|| vrf_name_xr.is_set
@@ -1589,18 +1604,18 @@ Vpdn::VpdnMirroring::VpdnMirroring()
     sso_batch_err_cnt{YType::uint32, "sso-batch-err-cnt"},
     alloc_err_cnt{YType::uint32, "alloc-err-cnt"},
     alloc_cnt{YType::uint32, "alloc-cnt"}
-    	,
+        ,
     qad_send_stats(std::make_shared<Vpdn::VpdnMirroring::QadSendStats>())
-	,qad_recv_stats(std::make_shared<Vpdn::VpdnMirroring::QadRecvStats>())
-	,qad_send_stats_last_clear(std::make_shared<Vpdn::VpdnMirroring::QadSendStatsLastClear>())
-	,qad_recv_stats_last_clear(std::make_shared<Vpdn::VpdnMirroring::QadRecvStatsLastClear>())
+    , qad_recv_stats(std::make_shared<Vpdn::VpdnMirroring::QadRecvStats>())
+    , qad_send_stats_last_clear(std::make_shared<Vpdn::VpdnMirroring::QadSendStatsLastClear>())
+    , qad_recv_stats_last_clear(std::make_shared<Vpdn::VpdnMirroring::QadRecvStatsLastClear>())
 {
     qad_send_stats->parent = this;
     qad_recv_stats->parent = this;
     qad_send_stats_last_clear->parent = this;
     qad_recv_stats_last_clear->parent = this;
 
-    yang_name = "vpdn-mirroring"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vpdn-mirroring"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdnMirroring::~VpdnMirroring()
@@ -1609,6 +1624,7 @@ Vpdn::VpdnMirroring::~VpdnMirroring()
 
 bool Vpdn::VpdnMirroring::has_data() const
 {
+    if (is_presence_container) return true;
     return sync_not_conn_cnt.is_set
 	|| sso_err_cnt.is_set
 	|| sso_batch_err_cnt.is_set
@@ -1818,7 +1834,7 @@ Vpdn::VpdnMirroring::QadSendStats::QadSendStats()
     qad_rx_first_seq_number{YType::uint32, "qad-rx-first-seq-number"}
 {
 
-    yang_name = "qad-send-stats"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qad-send-stats"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdnMirroring::QadSendStats::~QadSendStats()
@@ -1827,6 +1843,7 @@ Vpdn::VpdnMirroring::QadSendStats::~QadSendStats()
 
 bool Vpdn::VpdnMirroring::QadSendStats::has_data() const
 {
+    if (is_presence_container) return true;
     return msgs_sent.is_set
 	|| acks_sent.is_set
 	|| no_partner.is_set
@@ -2142,7 +2159,7 @@ Vpdn::VpdnMirroring::QadRecvStats::QadRecvStats()
     stale_msgs{YType::uint32, "stale-msgs"}
 {
 
-    yang_name = "qad-recv-stats"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qad-recv-stats"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdnMirroring::QadRecvStats::~QadRecvStats()
@@ -2151,6 +2168,7 @@ Vpdn::VpdnMirroring::QadRecvStats::~QadRecvStats()
 
 bool Vpdn::VpdnMirroring::QadRecvStats::has_data() const
 {
+    if (is_presence_container) return true;
     return msgs_recvd.is_set
 	|| acks_recvd.is_set
 	|| recvd_acks_failed.is_set
@@ -2322,7 +2340,7 @@ Vpdn::VpdnMirroring::QadSendStatsLastClear::QadSendStatsLastClear()
     qad_rx_first_seq_number{YType::uint32, "qad-rx-first-seq-number"}
 {
 
-    yang_name = "qad-send-stats-last-clear"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qad-send-stats-last-clear"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdnMirroring::QadSendStatsLastClear::~QadSendStatsLastClear()
@@ -2331,6 +2349,7 @@ Vpdn::VpdnMirroring::QadSendStatsLastClear::~QadSendStatsLastClear()
 
 bool Vpdn::VpdnMirroring::QadSendStatsLastClear::has_data() const
 {
+    if (is_presence_container) return true;
     return msgs_sent.is_set
 	|| acks_sent.is_set
 	|| no_partner.is_set
@@ -2646,7 +2665,7 @@ Vpdn::VpdnMirroring::QadRecvStatsLastClear::QadRecvStatsLastClear()
     stale_msgs{YType::uint32, "stale-msgs"}
 {
 
-    yang_name = "qad-recv-stats-last-clear"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "qad-recv-stats-last-clear"; yang_parent_name = "vpdn-mirroring"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdnMirroring::QadRecvStatsLastClear::~QadRecvStatsLastClear()
@@ -2655,6 +2674,7 @@ Vpdn::VpdnMirroring::QadRecvStatsLastClear::~QadRecvStatsLastClear()
 
 bool Vpdn::VpdnMirroring::QadRecvStatsLastClear::has_data() const
 {
+    if (is_presence_container) return true;
     return msgs_recvd.is_set
 	|| acks_recvd.is_set
 	|| recvd_acks_failed.is_set
@@ -2813,7 +2833,7 @@ Vpdn::VpdnRedundancy::VpdnRedundancy()
     abort_time{YType::uint64, "abort-time"}
 {
 
-    yang_name = "vpdn-redundancy"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vpdn-redundancy"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::VpdnRedundancy::~VpdnRedundancy()
@@ -2822,6 +2842,7 @@ Vpdn::VpdnRedundancy::~VpdnRedundancy()
 
 bool Vpdn::VpdnRedundancy::has_data() const
 {
+    if (is_presence_container) return true;
     return session_total.is_set
 	|| session_synced.is_set
 	|| state.is_set
@@ -2958,9 +2979,11 @@ bool Vpdn::VpdnRedundancy::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Vpdn::HistoryFailures::HistoryFailures()
+    :
+    history_failure(this, {})
 {
 
-    yang_name = "history-failures"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history-failures"; yang_parent_name = "vpdn"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::HistoryFailures::~HistoryFailures()
@@ -2969,7 +2992,8 @@ Vpdn::HistoryFailures::~HistoryFailures()
 
 bool Vpdn::HistoryFailures::has_data() const
 {
-    for (std::size_t index=0; index<history_failure.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<history_failure.len(); index++)
     {
         if(history_failure[index]->has_data())
             return true;
@@ -2979,7 +3003,7 @@ bool Vpdn::HistoryFailures::has_data() const
 
 bool Vpdn::HistoryFailures::has_operation() const
 {
-    for (std::size_t index=0; index<history_failure.size(); index++)
+    for (std::size_t index=0; index<history_failure.len(); index++)
     {
         if(history_failure[index]->has_operation())
             return true;
@@ -3016,7 +3040,7 @@ std::shared_ptr<Entity> Vpdn::HistoryFailures::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Vpdn::HistoryFailures::HistoryFailure>();
         c->parent = this;
-        history_failure.push_back(c);
+        history_failure.append(c);
         return c;
     }
 
@@ -3028,7 +3052,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vpdn::HistoryFailures::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : history_failure)
+    for (auto c : history_failure.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3072,7 +3096,7 @@ Vpdn::HistoryFailures::HistoryFailure::HistoryFailure()
     failure_type{YType::enumeration, "failure-type"}
 {
 
-    yang_name = "history-failure"; yang_parent_name = "history-failures"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history-failure"; yang_parent_name = "history-failures"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vpdn::HistoryFailures::HistoryFailure::~HistoryFailure()
@@ -3081,6 +3105,7 @@ Vpdn::HistoryFailures::HistoryFailure::~HistoryFailure()
 
 bool Vpdn::HistoryFailures::HistoryFailure::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| remote_name.is_set
 	|| username_xr.is_set
@@ -3320,6 +3345,14 @@ bool Vpdn::HistoryFailures::HistoryFailure::has_leaf_or_child_of_name(const std:
     return false;
 }
 
+const Enum::YLeaf SessionState::idle {0, "idle"};
+const Enum::YLeaf SessionState::connected {1, "connected"};
+const Enum::YLeaf SessionState::established {2, "established"};
+
+const Enum::YLeaf VpdnState::initial_state {0, "initial-state"};
+const Enum::YLeaf VpdnState::init_sync_in_progress {1, "init-sync-in-progress"};
+const Enum::YLeaf VpdnState::steady_state {2, "steady-state"};
+
 const Enum::YLeaf VpdnFailcode::unknown {0, "unknown"};
 const Enum::YLeaf VpdnFailcode::peer_action {1, "peer-action"};
 const Enum::YLeaf VpdnFailcode::authentication {2, "authentication"};
@@ -3339,20 +3372,6 @@ const Enum::YLeaf VpdnFailcode::link_failure {15, "link-failure"};
 const Enum::YLeaf VpdnFailcode::security {16, "security"};
 const Enum::YLeaf VpdnFailcode::tunnel_in_resync {17, "tunnel-in-resync"};
 const Enum::YLeaf VpdnFailcode::call_prarmeters {18, "call-prarmeters"};
-
-const Enum::YLeaf VpdnState::initial_state {0, "initial-state"};
-const Enum::YLeaf VpdnState::init_sync_in_progress {1, "init-sync-in-progress"};
-const Enum::YLeaf VpdnState::steady_state {2, "steady-state"};
-
-const Enum::YLeaf LsgStatus::none {0, "none"};
-const Enum::YLeaf LsgStatus::active {1, "active"};
-const Enum::YLeaf LsgStatus::down {2, "down"};
-const Enum::YLeaf LsgStatus::testable {3, "testable"};
-const Enum::YLeaf LsgStatus::testing {4, "testing"};
-
-const Enum::YLeaf TosMode::default_ {0, "default"};
-const Enum::YLeaf TosMode::set {1, "set"};
-const Enum::YLeaf TosMode::reflect {2, "reflect"};
 
 const Enum::YLeaf VpdnNasPort::none {0, "none"};
 const Enum::YLeaf VpdnNasPort::primary {1, "primary"};
@@ -3384,9 +3403,15 @@ const Enum::YLeaf VpdnNasPort::virtual_i_po_e_over_vlan {26, "virtual-i-po-e-ove
 const Enum::YLeaf VpdnNasPort::virtual_i_po_e_over_q_in_q {27, "virtual-i-po-e-over-q-in-q"};
 const Enum::YLeaf VpdnNasPort::unknown {28, "unknown"};
 
-const Enum::YLeaf SessionState::idle {0, "idle"};
-const Enum::YLeaf SessionState::connected {1, "connected"};
-const Enum::YLeaf SessionState::established {2, "established"};
+const Enum::YLeaf TosMode::default_ {0, "default"};
+const Enum::YLeaf TosMode::set {1, "set"};
+const Enum::YLeaf TosMode::reflect {2, "reflect"};
+
+const Enum::YLeaf LsgStatus::none {0, "none"};
+const Enum::YLeaf LsgStatus::active {1, "active"};
+const Enum::YLeaf LsgStatus::down {2, "down"};
+const Enum::YLeaf LsgStatus::testable {3, "testable"};
+const Enum::YLeaf LsgStatus::testing {4, "testing"};
 
 
 }

@@ -32,24 +32,24 @@ class CISCOATMQOSMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Caqvccparamstable; //type: CISCOATMQOSMIB::Caqvccparamstable
-        class Caqvpcparamstable; //type: CISCOATMQOSMIB::Caqvpcparamstable
-        class Caqqueuingparamstable; //type: CISCOATMQOSMIB::Caqqueuingparamstable
-        class Caqqueuingparamsclasstable; //type: CISCOATMQOSMIB::Caqqueuingparamsclasstable
+        class CaqVccParamsTable; //type: CISCOATMQOSMIB::CaqVccParamsTable
+        class CaqVpcParamsTable; //type: CISCOATMQOSMIB::CaqVpcParamsTable
+        class CaqQueuingParamsTable; //type: CISCOATMQOSMIB::CaqQueuingParamsTable
+        class CaqQueuingParamsClassTable; //type: CISCOATMQOSMIB::CaqQueuingParamsClassTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvccparamstable> caqvccparamstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvpcparamstable> caqvpcparamstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamstable> caqqueuingparamstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamsclasstable> caqqueuingparamsclasstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::CaqVccParamsTable> caqvccparamstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::CaqVpcParamsTable> caqvpcparamstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::CaqQueuingParamsTable> caqqueuingparamstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::CaqQueuingParamsClassTable> caqqueuingparamsclasstable;
         
 }; // CISCOATMQOSMIB
 
 
-class CISCOATMQOSMIB::Caqvccparamstable : public ydk::Entity
+class CISCOATMQOSMIB::CaqVccParamsTable : public ydk::Entity
 {
     public:
-        Caqvccparamstable();
-        ~Caqvccparamstable();
+        CaqVccParamsTable();
+        ~CaqVccParamsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,18 +62,18 @@ class CISCOATMQOSMIB::Caqvccparamstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Caqvccparamsentry; //type: CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry
+        class CaqVccParamsEntry; //type: CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry> > caqvccparamsentry;
+        ydk::YList caqvccparamsentry;
         
-}; // CISCOATMQOSMIB::Caqvccparamstable
+}; // CISCOATMQOSMIB::CaqVccParamsTable
 
 
-class CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
+class CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry : public ydk::Entity
 {
     public:
-        Caqvccparamsentry();
-        ~Caqvccparamsentry();
+        CaqVccParamsEntry();
+        ~CaqVccParamsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -86,11 +86,11 @@ class CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvpi)
         ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvci)
         ydk::YLeaf atmvclvci;
         ydk::YLeaf caqvccparamstype; //type: AtmServiceCategory
         ydk::YLeaf caqvccparamspcrin0; //type: uint32
@@ -121,14 +121,14 @@ class CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry : public ydk::Entity
         ydk::YLeaf caqvccparamsinvcdf; //type: uint32
         ydk::YLeaf caqvccparamsadtf; //type: uint32
 
-}; // CISCOATMQOSMIB::Caqvccparamstable::Caqvccparamsentry
+}; // CISCOATMQOSMIB::CaqVccParamsTable::CaqVccParamsEntry
 
 
-class CISCOATMQOSMIB::Caqvpcparamstable : public ydk::Entity
+class CISCOATMQOSMIB::CaqVpcParamsTable : public ydk::Entity
 {
     public:
-        Caqvpcparamstable();
-        ~Caqvpcparamstable();
+        CaqVpcParamsTable();
+        ~CaqVpcParamsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -141,18 +141,18 @@ class CISCOATMQOSMIB::Caqvpcparamstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Caqvpcparamsentry; //type: CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry
+        class CaqVpcParamsEntry; //type: CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry> > caqvpcparamsentry;
+        ydk::YList caqvpcparamsentry;
         
-}; // CISCOATMQOSMIB::Caqvpcparamstable
+}; // CISCOATMQOSMIB::CaqVpcParamsTable
 
 
-class CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry : public ydk::Entity
+class CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry : public ydk::Entity
 {
     public:
-        Caqvpcparamsentry();
-        ~Caqvpcparamsentry();
+        CaqVpcParamsEntry();
+        ~CaqVpcParamsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -165,9 +165,9 @@ class CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvpltable::Atmvplentry::atmvplvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVplTable::AtmVplEntry::atmvplvpi)
         ydk::YLeaf atmvplvpi;
         ydk::YLeaf caqvpcparamsvpstate; //type: VpState
         ydk::YLeaf caqvpcparamspeakrate; //type: uint32
@@ -180,14 +180,14 @@ class CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry : public ydk::Entity
         ydk::YLeaf caqvpcparamsmbs; //type: uint32
         ydk::YLeaf caqvpcparamsavailbw; //type: uint32
 
-}; // CISCOATMQOSMIB::Caqvpcparamstable::Caqvpcparamsentry
+}; // CISCOATMQOSMIB::CaqVpcParamsTable::CaqVpcParamsEntry
 
 
-class CISCOATMQOSMIB::Caqqueuingparamstable : public ydk::Entity
+class CISCOATMQOSMIB::CaqQueuingParamsTable : public ydk::Entity
 {
     public:
-        Caqqueuingparamstable();
-        ~Caqqueuingparamstable();
+        CaqQueuingParamsTable();
+        ~CaqQueuingParamsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -200,18 +200,18 @@ class CISCOATMQOSMIB::Caqqueuingparamstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Caqqueuingparamsentry; //type: CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry
+        class CaqQueuingParamsEntry; //type: CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry> > caqqueuingparamsentry;
+        ydk::YList caqqueuingparamsentry;
         
-}; // CISCOATMQOSMIB::Caqqueuingparamstable
+}; // CISCOATMQOSMIB::CaqQueuingParamsTable
 
 
-class CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry : public ydk::Entity
+class CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry : public ydk::Entity
 {
     public:
-        Caqqueuingparamsentry();
-        ~Caqqueuingparamsentry();
+        CaqQueuingParamsEntry();
+        ~CaqQueuingParamsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -224,22 +224,22 @@ class CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvpi)
         ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvci)
         ydk::YLeaf atmvclvci;
         ydk::YLeaf caqqueuingparamsmeanqdepth; //type: uint32
 
-}; // CISCOATMQOSMIB::Caqqueuingparamstable::Caqqueuingparamsentry
+}; // CISCOATMQOSMIB::CaqQueuingParamsTable::CaqQueuingParamsEntry
 
 
-class CISCOATMQOSMIB::Caqqueuingparamsclasstable : public ydk::Entity
+class CISCOATMQOSMIB::CaqQueuingParamsClassTable : public ydk::Entity
 {
     public:
-        Caqqueuingparamsclasstable();
-        ~Caqqueuingparamsclasstable();
+        CaqQueuingParamsClassTable();
+        ~CaqQueuingParamsClassTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -252,18 +252,18 @@ class CISCOATMQOSMIB::Caqqueuingparamsclasstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Caqqueuingparamsclassentry; //type: CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry
+        class CaqQueuingParamsClassEntry; //type: CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ATM_QOS_MIB::CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry> > caqqueuingparamsclassentry;
+        ydk::YList caqqueuingparamsclassentry;
         
-}; // CISCOATMQOSMIB::Caqqueuingparamsclasstable
+}; // CISCOATMQOSMIB::CaqQueuingParamsClassTable
 
 
-class CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry : public ydk::Entity
+class CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry : public ydk::Entity
 {
     public:
-        Caqqueuingparamsclassentry();
-        ~Caqqueuingparamsclassentry();
+        CaqQueuingParamsClassEntry();
+        ~CaqQueuingParamsClassEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -276,11 +276,11 @@ class CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvpi)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvpi)
         ydk::YLeaf atmvclvpi;
-        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::Atmvcltable::Atmvclentry::atmvclvci)
+        //type: int32 (refers to cisco_ios_xe::ATM_MIB::ATMMIB::AtmVclTable::AtmVclEntry::atmvclvci)
         ydk::YLeaf atmvclvci;
         ydk::YLeaf caqqueuingparamsclassindex; //type: int32
         ydk::YLeaf caqqueuingparamsclassranddrp; //type: uint32
@@ -289,7 +289,7 @@ class CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry : p
         ydk::YLeaf caqqueuingparamsclassmaxthre; //type: uint32
         ydk::YLeaf caqqueuingparamsclassmrkprob; //type: uint32
 
-}; // CISCOATMQOSMIB::Caqqueuingparamsclasstable::Caqqueuingparamsclassentry
+}; // CISCOATMQOSMIB::CaqQueuingParamsClassTable::CaqQueuingParamsClassEntry
 
 class VcParamConfigLocation : public ydk::Enum
 {

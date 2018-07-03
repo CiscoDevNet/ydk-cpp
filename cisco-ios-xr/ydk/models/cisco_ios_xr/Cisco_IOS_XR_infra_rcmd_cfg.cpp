@@ -19,18 +19,20 @@ RouterConvergence::RouterConvergence()
     enable{YType::empty, "enable"},
     max_events_stored{YType::uint32, "max-events-stored"},
     monitoring_interval{YType::uint32, "monitoring-interval"}
-    	,
+        ,
     protocols(std::make_shared<RouterConvergence::Protocols>())
-	,storage_location(nullptr) // presence node
-	,mpls_ldp(nullptr) // presence node
-	,collect_diagnostics(std::make_shared<RouterConvergence::CollectDiagnostics>())
-	,nodes(std::make_shared<RouterConvergence::Nodes>())
+    , storage_location(std::make_shared<RouterConvergence::StorageLocation>())
+    , mpls_ldp(std::make_shared<RouterConvergence::MplsLdp>())
+    , collect_diagnostics(std::make_shared<RouterConvergence::CollectDiagnostics>())
+    , nodes(std::make_shared<RouterConvergence::Nodes>())
 {
     protocols->parent = this;
+    storage_location->parent = this;
+    mpls_ldp->parent = this;
     collect_diagnostics->parent = this;
     nodes->parent = this;
 
-    yang_name = "router-convergence"; yang_parent_name = "Cisco-IOS-XR-infra-rcmd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "router-convergence"; yang_parent_name = "Cisco-IOS-XR-infra-rcmd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RouterConvergence::~RouterConvergence()
@@ -39,6 +41,7 @@ RouterConvergence::~RouterConvergence()
 
 bool RouterConvergence::has_data() const
 {
+    if (is_presence_container) return true;
     return event_buffer_size.is_set
 	|| prefix_monitor_limit.is_set
 	|| disable.is_set
@@ -273,9 +276,11 @@ bool RouterConvergence::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 RouterConvergence::Protocols::Protocols()
+    :
+    protocol(this, {"protocol_name"})
 {
 
-    yang_name = "protocols"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocols"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::Protocols::~Protocols()
@@ -284,7 +289,8 @@ RouterConvergence::Protocols::~Protocols()
 
 bool RouterConvergence::Protocols::has_data() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_data())
             return true;
@@ -294,7 +300,7 @@ bool RouterConvergence::Protocols::has_data() const
 
 bool RouterConvergence::Protocols::has_operation() const
 {
-    for (std::size_t index=0; index<protocol.size(); index++)
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
         if(protocol[index]->has_operation())
             return true;
@@ -331,7 +337,7 @@ std::shared_ptr<Entity> RouterConvergence::Protocols::get_child_by_name(const st
     {
         auto c = std::make_shared<RouterConvergence::Protocols::Protocol>();
         c->parent = this;
-        protocol.push_back(c);
+        protocol.append(c);
         return c;
     }
 
@@ -343,7 +349,7 @@ std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : protocol)
+    for (auto c : protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -373,12 +379,12 @@ RouterConvergence::Protocols::Protocol::Protocol()
     :
     protocol_name{YType::enumeration, "protocol-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     priorities(std::make_shared<RouterConvergence::Protocols::Protocol::Priorities>())
 {
     priorities->parent = this;
 
-    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol"; yang_parent_name = "protocols"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::Protocols::Protocol::~Protocol()
@@ -387,6 +393,7 @@ RouterConvergence::Protocols::Protocol::~Protocol()
 
 bool RouterConvergence::Protocols::Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| enable.is_set
 	|| (priorities !=  nullptr && priorities->has_data());
@@ -410,7 +417,8 @@ std::string RouterConvergence::Protocols::Protocol::get_absolute_path() const
 std::string RouterConvergence::Protocols::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "protocol";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -487,9 +495,11 @@ bool RouterConvergence::Protocols::Protocol::has_leaf_or_child_of_name(const std
 }
 
 RouterConvergence::Protocols::Protocol::Priorities::Priorities()
+    :
+    priority(this, {"rcmd_priority"})
 {
 
-    yang_name = "priorities"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priorities"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RouterConvergence::Protocols::Protocol::Priorities::~Priorities()
@@ -498,7 +508,8 @@ RouterConvergence::Protocols::Protocol::Priorities::~Priorities()
 
 bool RouterConvergence::Protocols::Protocol::Priorities::has_data() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_data())
             return true;
@@ -508,7 +519,7 @@ bool RouterConvergence::Protocols::Protocol::Priorities::has_data() const
 
 bool RouterConvergence::Protocols::Protocol::Priorities::has_operation() const
 {
-    for (std::size_t index=0; index<priority.size(); index++)
+    for (std::size_t index=0; index<priority.len(); index++)
     {
         if(priority[index]->has_operation())
             return true;
@@ -538,7 +549,7 @@ std::shared_ptr<Entity> RouterConvergence::Protocols::Protocol::Priorities::get_
     {
         auto c = std::make_shared<RouterConvergence::Protocols::Protocol::Priorities::Priority>();
         c->parent = this;
-        priority.push_back(c);
+        priority.append(c);
         return c;
     }
 
@@ -550,7 +561,7 @@ std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Protocols::Pro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : priority)
+    for (auto c : priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -579,14 +590,14 @@ bool RouterConvergence::Protocols::Protocol::Priorities::has_leaf_or_child_of_na
 RouterConvergence::Protocols::Protocol::Priorities::Priority::Priority()
     :
     rcmd_priority{YType::enumeration, "rcmd-priority"},
-    threshold{YType::int32, "threshold"},
+    threshold{YType::uint32, "threshold"},
     leaf_networks{YType::uint32, "leaf-networks"},
     disable{YType::empty, "disable"},
     enable{YType::empty, "enable"},
     frr_threshold{YType::uint32, "frr-threshold"}
 {
 
-    yang_name = "priority"; yang_parent_name = "priorities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "priorities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 RouterConvergence::Protocols::Protocol::Priorities::Priority::~Priority()
@@ -595,6 +606,7 @@ RouterConvergence::Protocols::Protocol::Priorities::Priority::~Priority()
 
 bool RouterConvergence::Protocols::Protocol::Priorities::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return rcmd_priority.is_set
 	|| threshold.is_set
 	|| leaf_networks.is_set
@@ -617,7 +629,8 @@ bool RouterConvergence::Protocols::Protocol::Priorities::Priority::has_operation
 std::string RouterConvergence::Protocols::Protocol::Priorities::Priority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priority" <<"[rcmd-priority='" <<rcmd_priority <<"']";
+    path_buffer << "priority";
+    ADD_KEY_TOKEN(rcmd_priority, "rcmd-priority");
     return path_buffer.str();
 }
 
@@ -731,7 +744,7 @@ RouterConvergence::StorageLocation::StorageLocation()
     reports{YType::str, "reports"}
 {
 
-    yang_name = "storage-location"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "storage-location"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::StorageLocation::~StorageLocation()
@@ -740,6 +753,7 @@ RouterConvergence::StorageLocation::~StorageLocation()
 
 bool RouterConvergence::StorageLocation::has_data() const
 {
+    if (is_presence_container) return true;
     return diagnostics.is_set
 	|| diagnostics_size.is_set
 	|| reports_size.is_set
@@ -851,10 +865,11 @@ bool RouterConvergence::StorageLocation::has_leaf_or_child_of_name(const std::st
 
 RouterConvergence::MplsLdp::MplsLdp()
     :
-    remote_lfa(nullptr) // presence node
+    remote_lfa(std::make_shared<RouterConvergence::MplsLdp::RemoteLfa>())
 {
+    remote_lfa->parent = this;
 
-    yang_name = "mpls-ldp"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls-ldp"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::MplsLdp::~MplsLdp()
@@ -863,6 +878,7 @@ RouterConvergence::MplsLdp::~MplsLdp()
 
 bool RouterConvergence::MplsLdp::has_data() const
 {
+    if (is_presence_container) return true;
     return (remote_lfa !=  nullptr && remote_lfa->has_data());
 }
 
@@ -941,7 +957,7 @@ RouterConvergence::MplsLdp::RemoteLfa::RemoteLfa()
     threshold{YType::uint32, "threshold"}
 {
 
-    yang_name = "remote-lfa"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-lfa"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::MplsLdp::RemoteLfa::~RemoteLfa()
@@ -950,6 +966,7 @@ RouterConvergence::MplsLdp::RemoteLfa::~RemoteLfa()
 
 bool RouterConvergence::MplsLdp::RemoteLfa::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -1021,9 +1038,11 @@ bool RouterConvergence::MplsLdp::RemoteLfa::has_leaf_or_child_of_name(const std:
 }
 
 RouterConvergence::CollectDiagnostics::CollectDiagnostics()
+    :
+    collect_diagnostic(this, {"node_name"})
 {
 
-    yang_name = "collect-diagnostics"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collect-diagnostics"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::CollectDiagnostics::~CollectDiagnostics()
@@ -1032,7 +1051,8 @@ RouterConvergence::CollectDiagnostics::~CollectDiagnostics()
 
 bool RouterConvergence::CollectDiagnostics::has_data() const
 {
-    for (std::size_t index=0; index<collect_diagnostic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<collect_diagnostic.len(); index++)
     {
         if(collect_diagnostic[index]->has_data())
             return true;
@@ -1042,7 +1062,7 @@ bool RouterConvergence::CollectDiagnostics::has_data() const
 
 bool RouterConvergence::CollectDiagnostics::has_operation() const
 {
-    for (std::size_t index=0; index<collect_diagnostic.size(); index++)
+    for (std::size_t index=0; index<collect_diagnostic.len(); index++)
     {
         if(collect_diagnostic[index]->has_operation())
             return true;
@@ -1079,7 +1099,7 @@ std::shared_ptr<Entity> RouterConvergence::CollectDiagnostics::get_child_by_name
     {
         auto c = std::make_shared<RouterConvergence::CollectDiagnostics::CollectDiagnostic>();
         c->parent = this;
-        collect_diagnostic.push_back(c);
+        collect_diagnostic.append(c);
         return c;
     }
 
@@ -1091,7 +1111,7 @@ std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::CollectDiagnos
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : collect_diagnostic)
+    for (auto c : collect_diagnostic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1123,7 +1143,7 @@ RouterConvergence::CollectDiagnostics::CollectDiagnostic::CollectDiagnostic()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "collect-diagnostic"; yang_parent_name = "collect-diagnostics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "collect-diagnostic"; yang_parent_name = "collect-diagnostics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::CollectDiagnostics::CollectDiagnostic::~CollectDiagnostic()
@@ -1132,6 +1152,7 @@ RouterConvergence::CollectDiagnostics::CollectDiagnostic::~CollectDiagnostic()
 
 bool RouterConvergence::CollectDiagnostics::CollectDiagnostic::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| enable.is_set;
 }
@@ -1153,7 +1174,8 @@ std::string RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_absolu
 std::string RouterConvergence::CollectDiagnostics::CollectDiagnostic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "collect-diagnostic" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "collect-diagnostic";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1216,9 +1238,11 @@ bool RouterConvergence::CollectDiagnostics::CollectDiagnostic::has_leaf_or_child
 }
 
 RouterConvergence::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "router-convergence"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::Nodes::~Nodes()
@@ -1227,7 +1251,8 @@ RouterConvergence::Nodes::~Nodes()
 
 bool RouterConvergence::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -1237,7 +1262,7 @@ bool RouterConvergence::Nodes::has_data() const
 
 bool RouterConvergence::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -1274,7 +1299,7 @@ std::shared_ptr<Entity> RouterConvergence::Nodes::get_child_by_name(const std::s
     {
         auto c = std::make_shared<RouterConvergence::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -1286,7 +1311,7 @@ std::map<std::string, std::shared_ptr<Entity>> RouterConvergence::Nodes::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1319,7 +1344,7 @@ RouterConvergence::Nodes::Node::Node()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RouterConvergence::Nodes::Node::~Node()
@@ -1328,6 +1353,7 @@ RouterConvergence::Nodes::Node::~Node()
 
 bool RouterConvergence::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| disable.is_set
 	|| enable.is_set;
@@ -1351,7 +1377,8 @@ std::string RouterConvergence::Nodes::Node::get_absolute_path() const
 std::string RouterConvergence::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 

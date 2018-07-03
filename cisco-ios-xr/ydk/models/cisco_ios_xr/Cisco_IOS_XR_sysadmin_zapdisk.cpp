@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_sysadmin_zapdisk {
 Zapdisk::Zapdisk()
     :
     input(std::make_shared<Zapdisk::Input>())
-	,output(std::make_shared<Zapdisk::Output>())
+    , output(std::make_shared<Zapdisk::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "zapdisk"; yang_parent_name = "Cisco-IOS-XR-sysadmin-zapdisk"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "zapdisk"; yang_parent_name = "Cisco-IOS-XR-sysadmin-zapdisk"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Zapdisk::~Zapdisk()
@@ -28,6 +28,7 @@ Zapdisk::~Zapdisk()
 
 bool Zapdisk::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -138,12 +139,12 @@ bool Zapdisk::has_leaf_or_child_of_name(const std::string & name) const
 Zapdisk::Input::Input()
     :
     set{YType::empty, "set"}
-    	,
+        ,
     czapdisk_unset(std::make_shared<Zapdisk::Input::CzapdiskUnset>())
 {
     czapdisk_unset->parent = this;
 
-    yang_name = "input"; yang_parent_name = "zapdisk"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "zapdisk"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Zapdisk::Input::~Input()
@@ -152,6 +153,7 @@ Zapdisk::Input::~Input()
 
 bool Zapdisk::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return set.is_set
 	|| (czapdisk_unset !=  nullptr && czapdisk_unset->has_data());
 }
@@ -243,7 +245,7 @@ Zapdisk::Input::CzapdiskUnset::CzapdiskUnset()
     unset{YType::empty, "unset"}
 {
 
-    yang_name = "czapdisk-unset"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "czapdisk-unset"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Zapdisk::Input::CzapdiskUnset::~CzapdiskUnset()
@@ -252,6 +254,7 @@ Zapdisk::Input::CzapdiskUnset::~CzapdiskUnset()
 
 bool Zapdisk::Input::CzapdiskUnset::has_data() const
 {
+    if (is_presence_container) return true;
     return unset.is_set;
 }
 
@@ -327,7 +330,7 @@ Zapdisk::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "zapdisk"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "zapdisk"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Zapdisk::Output::~Output()
@@ -336,6 +339,7 @@ Zapdisk::Output::~Output()
 
 bool Zapdisk::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XE_rpc {
 Switch::Switch()
     :
     input(std::make_shared<Switch::Input>())
-	,output(std::make_shared<Switch::Output>())
+    , output(std::make_shared<Switch::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "switch"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "switch"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Switch::~Switch()
@@ -28,6 +28,7 @@ Switch::~Switch()
 
 bool Switch::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -140,12 +141,12 @@ Switch::Input::Input()
     y_switch_number{YType::uint8, "_switch-number"},
     priority{YType::uint8, "priority"},
     renumber{YType::uint8, "renumber"}
-    	,
+        ,
     statck(std::make_shared<Switch::Input::Statck>())
 {
     statck->parent = this;
 
-    yang_name = "input"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Switch::Input::~Input()
@@ -154,6 +155,7 @@ Switch::Input::~Input()
 
 bool Switch::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return y_switch_number.is_set
 	|| priority.is_set
 	|| renumber.is_set
@@ -271,7 +273,7 @@ Switch::Input::Statck::Statck()
     port{YType::uint8, "port"}
 {
 
-    yang_name = "statck"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statck"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Switch::Input::Statck::~Statck()
@@ -280,6 +282,7 @@ Switch::Input::Statck::~Statck()
 
 bool Switch::Input::Statck::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set;
 }
 
@@ -355,7 +358,7 @@ Switch::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Switch::Output::~Output()
@@ -364,6 +367,7 @@ Switch::Output::~Output()
 
 bool Switch::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -437,12 +441,12 @@ bool Switch::Output::has_leaf_or_child_of_name(const std::string & name) const
 Default::Default()
     :
     input(std::make_shared<Default::Input>())
-	,output(std::make_shared<Default::Output>())
+    , output(std::make_shared<Default::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "default"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Default::~Default()
@@ -451,6 +455,7 @@ Default::~Default()
 
 bool Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -563,7 +568,7 @@ Default::Input::Input()
     interface{YType::str, "interface"}
 {
 
-    yang_name = "input"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Default::Input::~Input()
@@ -572,6 +577,7 @@ Default::Input::~Input()
 
 bool Default::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -647,7 +653,7 @@ Default::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Default::Output::~Output()
@@ -656,6 +662,7 @@ Default::Output::~Output()
 
 bool Default::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -729,12 +736,12 @@ bool Default::Output::has_leaf_or_child_of_name(const std::string & name) const
 Clear::Clear()
     :
     input(std::make_shared<Clear::Input>())
-	,output(std::make_shared<Clear::Output>())
+    , output(std::make_shared<Clear::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "clear"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Clear::~Clear()
@@ -743,6 +750,7 @@ Clear::~Clear()
 
 bool Clear::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -854,17 +862,17 @@ Clear::Input::Input()
     :
     interface{YType::str, "interface"},
     count{YType::str, "count"}
-    	,
+        ,
     flow(std::make_shared<Clear::Input::Flow>())
-	,ip(std::make_shared<Clear::Input::Ip>())
-	,arp_cache(nullptr) // presence node
-	,aaa(std::make_shared<Clear::Input::Aaa>())
+    , ip(std::make_shared<Clear::Input::Ip>())
+    , arp_cache(nullptr) // presence node
+    , aaa(std::make_shared<Clear::Input::Aaa>())
 {
     flow->parent = this;
     ip->parent = this;
     aaa->parent = this;
 
-    yang_name = "input"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::~Input()
@@ -873,6 +881,7 @@ Clear::Input::~Input()
 
 bool Clear::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| count.is_set
 	|| (flow !=  nullptr && flow->has_data())
@@ -1023,12 +1032,12 @@ bool Clear::Input::has_leaf_or_child_of_name(const std::string & name) const
 Clear::Input::Flow::Flow()
     :
     monitor(std::make_shared<Clear::Input::Flow::Monitor>())
-	,exporter(std::make_shared<Clear::Input::Flow::Exporter>())
+    , exporter(std::make_shared<Clear::Input::Flow::Exporter>())
 {
     monitor->parent = this;
     exporter->parent = this;
 
-    yang_name = "flow"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Flow::~Flow()
@@ -1037,6 +1046,7 @@ Clear::Input::Flow::~Flow()
 
 bool Clear::Input::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return (monitor !=  nullptr && monitor->has_data())
 	|| (exporter !=  nullptr && exporter->has_data());
 }
@@ -1131,12 +1141,12 @@ Clear::Input::Flow::Monitor::Monitor()
     name{YType::str, "name"},
     force_export{YType::empty, "force-export"},
     statistics{YType::empty, "statistics"}
-    	,
+        ,
     cache(std::make_shared<Clear::Input::Flow::Monitor::Cache>())
 {
     cache->parent = this;
 
-    yang_name = "monitor"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Flow::Monitor::~Monitor()
@@ -1145,6 +1155,7 @@ Clear::Input::Flow::Monitor::~Monitor()
 
 bool Clear::Input::Flow::Monitor::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| force_export.is_set
 	|| statistics.is_set
@@ -1262,7 +1273,7 @@ Clear::Input::Flow::Monitor::Cache::Cache()
     force_export{YType::empty, "force-export"}
 {
 
-    yang_name = "cache"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cache"; yang_parent_name = "monitor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Flow::Monitor::Cache::~Cache()
@@ -1271,6 +1282,7 @@ Clear::Input::Flow::Monitor::Cache::~Cache()
 
 bool Clear::Input::Flow::Monitor::Cache::has_data() const
 {
+    if (is_presence_container) return true;
     return force_export.is_set;
 }
 
@@ -1347,7 +1359,7 @@ Clear::Input::Flow::Exporter::Exporter()
     statistics{YType::empty, "statistics"}
 {
 
-    yang_name = "exporter"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exporter"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Flow::Exporter::~Exporter()
@@ -1356,6 +1368,7 @@ Clear::Input::Flow::Exporter::~Exporter()
 
 bool Clear::Input::Flow::Exporter::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| statistics.is_set;
 }
@@ -1442,14 +1455,14 @@ bool Clear::Input::Flow::Exporter::has_leaf_or_child_of_name(const std::string &
 Clear::Input::Ip::Ip()
     :
     dhcp(std::make_shared<Clear::Input::Ip::Dhcp>())
-	,ospf(std::make_shared<Clear::Input::Ip::Ospf>())
-	,bgp(std::make_shared<Clear::Input::Ip::Bgp>())
+    , ospf(std::make_shared<Clear::Input::Ip::Ospf>())
+    , bgp(std::make_shared<Clear::Input::Ip::Bgp>())
 {
     dhcp->parent = this;
     ospf->parent = this;
     bgp->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Ip::~Ip()
@@ -1458,6 +1471,7 @@ Clear::Input::Ip::~Ip()
 
 bool Clear::Input::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp !=  nullptr && dhcp->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
 	|| (bgp !=  nullptr && bgp->has_data());
@@ -1569,7 +1583,7 @@ Clear::Input::Ip::Dhcp::Dhcp()
 {
     binding->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Ip::Dhcp::~Dhcp()
@@ -1578,6 +1592,7 @@ Clear::Input::Ip::Dhcp::~Dhcp()
 
 bool Clear::Input::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (binding !=  nullptr && binding->has_data());
 }
 
@@ -1657,7 +1672,7 @@ Clear::Input::Ip::Dhcp::Binding::Binding()
     y_all{YType::str, "_all"}
 {
 
-    yang_name = "binding"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "binding"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Ip::Dhcp::Binding::~Binding()
@@ -1666,6 +1681,7 @@ Clear::Input::Ip::Dhcp::Binding::~Binding()
 
 bool Clear::Input::Ip::Dhcp::Binding::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| y_all.is_set;
 }
@@ -1755,7 +1771,7 @@ Clear::Input::Ip::Ospf::Ospf()
     process{YType::empty, "process"}
 {
 
-    yang_name = "ospf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Ip::Ospf::~Ospf()
@@ -1764,6 +1780,7 @@ Clear::Input::Ip::Ospf::~Ospf()
 
 bool Clear::Input::Ip::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return y_id.is_set
 	|| process.is_set;
 }
@@ -1853,7 +1870,7 @@ Clear::Input::Ip::Bgp::Bgp()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Ip::Bgp::~Bgp()
@@ -1862,6 +1879,7 @@ Clear::Input::Ip::Bgp::~Bgp()
 
 bool Clear::Input::Ip::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return y_peer_address.is_set
 	|| vrf.is_set;
 }
@@ -1952,7 +1970,7 @@ Clear::Input::ArpCache::ArpCache()
     y_ip{YType::str, "_ip"}
 {
 
-    yang_name = "arp-cache"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "arp-cache"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Clear::Input::ArpCache::~ArpCache()
@@ -1961,6 +1979,7 @@ Clear::Input::ArpCache::~ArpCache()
 
 bool Clear::Input::ArpCache::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| interface.is_set
 	|| y_ip.is_set;
@@ -2063,7 +2082,7 @@ Clear::Input::Aaa::Aaa()
 {
     local->parent = this;
 
-    yang_name = "aaa"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aaa"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Aaa::~Aaa()
@@ -2072,6 +2091,7 @@ Clear::Input::Aaa::~Aaa()
 
 bool Clear::Input::Aaa::has_data() const
 {
+    if (is_presence_container) return true;
     return (local !=  nullptr && local->has_data());
 }
 
@@ -2151,7 +2171,7 @@ Clear::Input::Aaa::Local::Local()
 {
     user->parent = this;
 
-    yang_name = "local"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Aaa::Local::~Local()
@@ -2160,6 +2180,7 @@ Clear::Input::Aaa::Local::~Local()
 
 bool Clear::Input::Aaa::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (user !=  nullptr && user->has_data());
 }
 
@@ -2239,7 +2260,7 @@ Clear::Input::Aaa::Local::User::User()
 {
     lockout->parent = this;
 
-    yang_name = "user"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "user"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Aaa::Local::User::~User()
@@ -2248,6 +2269,7 @@ Clear::Input::Aaa::Local::User::~User()
 
 bool Clear::Input::Aaa::Local::User::has_data() const
 {
+    if (is_presence_container) return true;
     return (lockout !=  nullptr && lockout->has_data());
 }
 
@@ -2326,7 +2348,7 @@ Clear::Input::Aaa::Local::User::Lockout::Lockout()
     username{YType::str, "username"}
 {
 
-    yang_name = "lockout"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lockout"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Input::Aaa::Local::User::Lockout::~Lockout()
@@ -2335,6 +2357,7 @@ Clear::Input::Aaa::Local::User::Lockout::~Lockout()
 
 bool Clear::Input::Aaa::Local::User::Lockout::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set;
 }
 
@@ -2410,7 +2433,7 @@ Clear::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "clear"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Clear::Output::~Output()
@@ -2419,6 +2442,7 @@ Clear::Output::~Output()
 
 bool Clear::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -2492,12 +2516,12 @@ bool Clear::Output::has_leaf_or_child_of_name(const std::string & name) const
 Release::Release()
     :
     input(std::make_shared<Release::Input>())
-	,output(std::make_shared<Release::Output>())
+    , output(std::make_shared<Release::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "release"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "release"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Release::~Release()
@@ -2506,6 +2530,7 @@ Release::~Release()
 
 bool Release::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -2618,7 +2643,7 @@ Release::Input::Input()
     dhcp{YType::str, "dhcp"}
 {
 
-    yang_name = "input"; yang_parent_name = "release"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "release"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Release::Input::~Input()
@@ -2627,6 +2652,7 @@ Release::Input::~Input()
 
 bool Release::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set;
 }
 
@@ -2702,7 +2728,7 @@ Release::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "release"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "release"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Release::Output::~Output()
@@ -2711,6 +2737,7 @@ Release::Output::~Output()
 
 bool Release::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -2784,12 +2811,12 @@ bool Release::Output::has_leaf_or_child_of_name(const std::string & name) const
 Reload::Reload()
     :
     input(std::make_shared<Reload::Input>())
-	,output(std::make_shared<Reload::Output>())
+    , output(std::make_shared<Reload::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "reload"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "reload"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Reload::~Reload()
@@ -2798,6 +2825,7 @@ Reload::~Reload()
 
 bool Reload::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -2911,7 +2939,7 @@ Reload::Input::Input()
     reason{YType::str, "reason"}
 {
 
-    yang_name = "input"; yang_parent_name = "reload"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "reload"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Reload::Input::~Input()
@@ -2920,6 +2948,7 @@ Reload::Input::~Input()
 
 bool Reload::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return force.is_set
 	|| reason.is_set;
 }
@@ -3008,7 +3037,7 @@ Reload::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "reload"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "reload"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Reload::Output::~Output()
@@ -3017,6 +3046,7 @@ Reload::Output::~Output()
 
 bool Reload::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -3090,12 +3120,12 @@ bool Reload::Output::has_leaf_or_child_of_name(const std::string & name) const
 Cellular::Cellular()
     :
     input(std::make_shared<Cellular::Input>())
-	,output(std::make_shared<Cellular::Output>())
+    , output(std::make_shared<Cellular::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "cellular"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cellular"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Cellular::~Cellular()
@@ -3104,6 +3134,7 @@ Cellular::~Cellular()
 
 bool Cellular::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -3214,12 +3245,12 @@ bool Cellular::has_leaf_or_child_of_name(const std::string & name) const
 Cellular::Input::Input()
     :
     y_if_name{YType::str, "_if-name"}
-    	,
+        ,
     lte(std::make_shared<Cellular::Input::Lte>())
 {
     lte->parent = this;
 
-    yang_name = "input"; yang_parent_name = "cellular"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "cellular"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cellular::Input::~Input()
@@ -3228,6 +3259,7 @@ Cellular::Input::~Input()
 
 bool Cellular::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return y_if_name.is_set
 	|| (lte !=  nullptr && lte->has_data());
 }
@@ -3317,12 +3349,12 @@ bool Cellular::Input::has_leaf_or_child_of_name(const std::string & name) const
 Cellular::Input::Lte::Lte()
     :
     technology(std::make_shared<Cellular::Input::Lte::Technology>())
-	,profile(std::make_shared<Cellular::Input::Lte::Profile>())
+    , profile(std::make_shared<Cellular::Input::Lte::Profile>())
 {
     technology->parent = this;
     profile->parent = this;
 
-    yang_name = "lte"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lte"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cellular::Input::Lte::~Lte()
@@ -3331,6 +3363,7 @@ Cellular::Input::Lte::~Lte()
 
 bool Cellular::Input::Lte::has_data() const
 {
+    if (is_presence_container) return true;
     return (technology !=  nullptr && technology->has_data())
 	|| (profile !=  nullptr && profile->has_data());
 }
@@ -3427,7 +3460,7 @@ Cellular::Input::Lte::Technology::Technology()
     umts{YType::empty, "umts"}
 {
 
-    yang_name = "technology"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "technology"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cellular::Input::Lte::Technology::~Technology()
@@ -3436,6 +3469,7 @@ Cellular::Input::Lte::Technology::~Technology()
 
 bool Cellular::Input::Lte::Technology::has_data() const
 {
+    if (is_presence_container) return true;
     return lte.is_set
 	|| auto_.is_set
 	|| umts.is_set;
@@ -3535,12 +3569,12 @@ bool Cellular::Input::Lte::Technology::has_leaf_or_child_of_name(const std::stri
 Cellular::Input::Lte::Profile::Profile()
     :
     delete_(std::make_shared<Cellular::Input::Lte::Profile::Delete>())
-	,create(std::make_shared<Cellular::Input::Lte::Profile::Create>())
+    , create(std::make_shared<Cellular::Input::Lte::Profile::Create>())
 {
     delete_->parent = this;
     create->parent = this;
 
-    yang_name = "profile"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "profile"; yang_parent_name = "lte"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cellular::Input::Lte::Profile::~Profile()
@@ -3549,6 +3583,7 @@ Cellular::Input::Lte::Profile::~Profile()
 
 bool Cellular::Input::Lte::Profile::has_data() const
 {
+    if (is_presence_container) return true;
     return (delete_ !=  nullptr && delete_->has_data())
 	|| (create !=  nullptr && create->has_data());
 }
@@ -3643,7 +3678,7 @@ Cellular::Input::Lte::Profile::Delete::Delete()
     y_profile_id{YType::uint8, "_profile-id"}
 {
 
-    yang_name = "delete"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delete"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cellular::Input::Lte::Profile::Delete::~Delete()
@@ -3652,6 +3687,7 @@ Cellular::Input::Lte::Profile::Delete::~Delete()
 
 bool Cellular::Input::Lte::Profile::Delete::has_data() const
 {
+    if (is_presence_container) return true;
     return y_profile_id.is_set;
 }
 
@@ -3737,7 +3773,7 @@ Cellular::Input::Lte::Profile::Create::Create()
     ipv4v6{YType::empty, "ipv4v6"}
 {
 
-    yang_name = "create"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "create"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cellular::Input::Lte::Profile::Create::~Create()
@@ -3746,6 +3782,7 @@ Cellular::Input::Lte::Profile::Create::~Create()
 
 bool Cellular::Input::Lte::Profile::Create::has_data() const
 {
+    if (is_presence_container) return true;
     return y_profile_id.is_set
 	|| y_prof_name.is_set
 	|| none.is_set
@@ -3951,7 +3988,7 @@ Cellular::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "cellular"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "cellular"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cellular::Output::~Output()
@@ -3960,6 +3997,7 @@ Cellular::Output::~Output()
 
 bool Cellular::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -4033,12 +4071,12 @@ bool Cellular::Output::has_leaf_or_child_of_name(const std::string & name) const
 License::License()
     :
     input(std::make_shared<License::Input>())
-	,output(std::make_shared<License::Output>())
+    , output(std::make_shared<License::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "license"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "license"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 License::~License()
@@ -4047,6 +4085,7 @@ License::~License()
 
 bool License::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -4160,7 +4199,7 @@ License::Input::Input()
 {
     smart->parent = this;
 
-    yang_name = "input"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 License::Input::~Input()
@@ -4169,6 +4208,7 @@ License::Input::~Input()
 
 bool License::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (smart !=  nullptr && smart->has_data());
 }
 
@@ -4245,14 +4285,14 @@ bool License::Input::has_leaf_or_child_of_name(const std::string & name) const
 License::Input::Smart::Smart()
     :
     deregister{YType::empty, "deregister"}
-    	,
+        ,
     register_(std::make_shared<License::Input::Smart::Register>())
-	,renew(std::make_shared<License::Input::Smart::Renew>())
+    , renew(std::make_shared<License::Input::Smart::Renew>())
 {
     register_->parent = this;
     renew->parent = this;
 
-    yang_name = "smart"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "smart"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 License::Input::Smart::~Smart()
@@ -4261,6 +4301,7 @@ License::Input::Smart::~Smart()
 
 bool License::Input::Smart::has_data() const
 {
+    if (is_presence_container) return true;
     return deregister.is_set
 	|| (register_ !=  nullptr && register_->has_data())
 	|| (renew !=  nullptr && renew->has_data());
@@ -4369,7 +4410,7 @@ License::Input::Smart::Register::Register()
     force{YType::empty, "force"}
 {
 
-    yang_name = "register"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "register"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 License::Input::Smart::Register::~Register()
@@ -4378,6 +4419,7 @@ License::Input::Smart::Register::~Register()
 
 bool License::Input::Smart::Register::has_data() const
 {
+    if (is_presence_container) return true;
     return idtoken.is_set
 	|| force.is_set;
 }
@@ -4467,7 +4509,7 @@ License::Input::Smart::Renew::Renew()
     auth{YType::empty, "auth"}
 {
 
-    yang_name = "renew"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "renew"; yang_parent_name = "smart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 License::Input::Smart::Renew::~Renew()
@@ -4476,6 +4518,7 @@ License::Input::Smart::Renew::~Renew()
 
 bool License::Input::Smart::Renew::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| auth.is_set;
 }
@@ -4564,7 +4607,7 @@ License::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 License::Output::~Output()
@@ -4573,6 +4616,7 @@ License::Output::~Output()
 
 bool License::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -4646,12 +4690,12 @@ bool License::Output::has_leaf_or_child_of_name(const std::string & name) const
 Service::Service()
     :
     input(std::make_shared<Service::Input>())
-	,output(std::make_shared<Service::Output>())
+    , output(std::make_shared<Service::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "service"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "service"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Service::~Service()
@@ -4660,6 +4704,7 @@ Service::~Service()
 
 bool Service::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -4773,7 +4818,7 @@ Service::Input::Input()
 {
     sd_avc->parent = this;
 
-    yang_name = "input"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Input::~Input()
@@ -4782,6 +4827,7 @@ Service::Input::~Input()
 
 bool Service::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (sd_avc !=  nullptr && sd_avc->has_data());
 }
 
@@ -4864,16 +4910,16 @@ Service::Input::SdAvc::SdAvc()
     status{YType::empty, "status"},
     unconfigure{YType::empty, "unconfigure"},
     uninstall{YType::empty, "uninstall"}
-    	,
+        ,
     configure(std::make_shared<Service::Input::SdAvc::Configure>())
-	,install(std::make_shared<Service::Input::SdAvc::Install>())
-	,upgrade(std::make_shared<Service::Input::SdAvc::Upgrade>())
+    , install(std::make_shared<Service::Input::SdAvc::Install>())
+    , upgrade(std::make_shared<Service::Input::SdAvc::Upgrade>())
 {
     configure->parent = this;
     install->parent = this;
     upgrade->parent = this;
 
-    yang_name = "sd-avc"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sd-avc"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Input::SdAvc::~SdAvc()
@@ -4882,6 +4928,7 @@ Service::Input::SdAvc::~SdAvc()
 
 bool Service::Input::SdAvc::has_data() const
 {
+    if (is_presence_container) return true;
     return activate.is_set
 	|| connect.is_set
 	|| help.is_set
@@ -5084,7 +5131,7 @@ Service::Input::SdAvc::Configure::Configure()
 {
     gateway->parent = this;
 
-    yang_name = "configure"; yang_parent_name = "sd-avc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configure"; yang_parent_name = "sd-avc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Input::SdAvc::Configure::~Configure()
@@ -5093,6 +5140,7 @@ Service::Input::SdAvc::Configure::~Configure()
 
 bool Service::Input::SdAvc::Configure::has_data() const
 {
+    if (is_presence_container) return true;
     return (gateway !=  nullptr && gateway->has_data());
 }
 
@@ -5173,7 +5221,7 @@ Service::Input::SdAvc::Configure::Gateway::Gateway()
     activate{YType::empty, "activate"}
 {
 
-    yang_name = "gateway"; yang_parent_name = "configure"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "gateway"; yang_parent_name = "configure"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Input::SdAvc::Configure::Gateway::~Gateway()
@@ -5182,6 +5230,7 @@ Service::Input::SdAvc::Configure::Gateway::~Gateway()
 
 bool Service::Input::SdAvc::Configure::Gateway::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| service_ip.is_set
 	|| activate.is_set;
@@ -5283,7 +5332,7 @@ Service::Input::SdAvc::Install::Install()
     package{YType::str, "package"}
 {
 
-    yang_name = "install"; yang_parent_name = "sd-avc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install"; yang_parent_name = "sd-avc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Input::SdAvc::Install::~Install()
@@ -5292,6 +5341,7 @@ Service::Input::SdAvc::Install::~Install()
 
 bool Service::Input::SdAvc::Install::has_data() const
 {
+    if (is_presence_container) return true;
     return package.is_set;
 }
 
@@ -5367,7 +5417,7 @@ Service::Input::SdAvc::Upgrade::Upgrade()
     package{YType::str, "package"}
 {
 
-    yang_name = "upgrade"; yang_parent_name = "sd-avc"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "upgrade"; yang_parent_name = "sd-avc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Input::SdAvc::Upgrade::~Upgrade()
@@ -5376,6 +5426,7 @@ Service::Input::SdAvc::Upgrade::~Upgrade()
 
 bool Service::Input::SdAvc::Upgrade::has_data() const
 {
+    if (is_presence_container) return true;
     return package.is_set;
 }
 
@@ -5451,7 +5502,7 @@ Service::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Output::~Output()
@@ -5460,6 +5511,7 @@ Service::Output::~Output()
 
 bool Service::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -5533,12 +5585,12 @@ bool Service::Output::has_leaf_or_child_of_name(const std::string & name) const
 VirtualService::VirtualService()
     :
     input(std::make_shared<VirtualService::Input>())
-	,output(std::make_shared<VirtualService::Output>())
+    , output(std::make_shared<VirtualService::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "virtual-service"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "virtual-service"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 VirtualService::~VirtualService()
@@ -5547,6 +5599,7 @@ VirtualService::~VirtualService()
 
 bool VirtualService::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -5657,14 +5710,14 @@ bool VirtualService::has_leaf_or_child_of_name(const std::string & name) const
 VirtualService::Input::Input()
     :
     install(std::make_shared<VirtualService::Input::Install>())
-	,uninstall(std::make_shared<VirtualService::Input::Uninstall>())
-	,upgrade(std::make_shared<VirtualService::Input::Upgrade>())
+    , uninstall(std::make_shared<VirtualService::Input::Uninstall>())
+    , upgrade(std::make_shared<VirtualService::Input::Upgrade>())
 {
     install->parent = this;
     uninstall->parent = this;
     upgrade->parent = this;
 
-    yang_name = "input"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VirtualService::Input::~Input()
@@ -5673,6 +5726,7 @@ VirtualService::Input::~Input()
 
 bool VirtualService::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (install !=  nullptr && install->has_data())
 	|| (uninstall !=  nullptr && uninstall->has_data())
 	|| (upgrade !=  nullptr && upgrade->has_data());
@@ -5785,7 +5839,7 @@ VirtualService::Input::Install::Install()
     media{YType::str, "media"}
 {
 
-    yang_name = "install"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VirtualService::Input::Install::~Install()
@@ -5794,6 +5848,7 @@ VirtualService::Input::Install::~Install()
 
 bool VirtualService::Input::Install::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| package.is_set
 	|| media.is_set;
@@ -5895,7 +5950,7 @@ VirtualService::Input::Uninstall::Uninstall()
     name{YType::str, "name"}
 {
 
-    yang_name = "uninstall"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "uninstall"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VirtualService::Input::Uninstall::~Uninstall()
@@ -5904,6 +5959,7 @@ VirtualService::Input::Uninstall::~Uninstall()
 
 bool VirtualService::Input::Uninstall::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -5980,7 +6036,7 @@ VirtualService::Input::Upgrade::Upgrade()
     package{YType::str, "package"}
 {
 
-    yang_name = "upgrade"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "upgrade"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VirtualService::Input::Upgrade::~Upgrade()
@@ -5989,6 +6045,7 @@ VirtualService::Input::Upgrade::~Upgrade()
 
 bool VirtualService::Input::Upgrade::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| package.is_set;
 }
@@ -6077,7 +6134,7 @@ VirtualService::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VirtualService::Output::~Output()
@@ -6086,6 +6143,7 @@ VirtualService::Output::~Output()
 
 bool VirtualService::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -6159,12 +6217,12 @@ bool VirtualService::Output::has_leaf_or_child_of_name(const std::string & name)
 Copy::Copy()
     :
     input(std::make_shared<Copy::Input>())
-	,output(std::make_shared<Copy::Output>())
+    , output(std::make_shared<Copy::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "copy"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "copy"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Copy::~Copy()
@@ -6173,6 +6231,7 @@ Copy::~Copy()
 
 bool Copy::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -6286,7 +6345,7 @@ Copy::Input::Input()
     y_destination{YType::str, "_destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "copy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "copy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Copy::Input::~Input()
@@ -6295,6 +6354,7 @@ Copy::Input::~Input()
 
 bool Copy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return y_source.is_set
 	|| y_destination.is_set;
 }
@@ -6383,7 +6443,7 @@ Copy::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "copy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "copy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Copy::Output::~Output()
@@ -6392,6 +6452,7 @@ Copy::Output::~Output()
 
 bool Copy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -6465,12 +6526,12 @@ bool Copy::Output::has_leaf_or_child_of_name(const std::string & name) const
 Delete::Delete()
     :
     input(std::make_shared<Delete::Input>())
-	,output(std::make_shared<Delete::Output>())
+    , output(std::make_shared<Delete::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "delete"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "delete"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Delete::~Delete()
@@ -6479,6 +6540,7 @@ Delete::~Delete()
 
 bool Delete::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -6591,7 +6653,7 @@ Delete::Input::Input()
     y_filename{YType::str, "_filename"}
 {
 
-    yang_name = "input"; yang_parent_name = "delete"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "delete"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Delete::Input::~Input()
@@ -6600,6 +6662,7 @@ Delete::Input::~Input()
 
 bool Delete::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return y_filename.is_set;
 }
 
@@ -6675,7 +6738,7 @@ Delete::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "delete"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "delete"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Delete::Output::~Output()
@@ -6684,6 +6747,7 @@ Delete::Output::~Output()
 
 bool Delete::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -6757,12 +6821,12 @@ bool Delete::Output::has_leaf_or_child_of_name(const std::string & name) const
 AppHosting::AppHosting()
     :
     input(std::make_shared<AppHosting::Input>())
-	,output(std::make_shared<AppHosting::Output>())
+    , output(std::make_shared<AppHosting::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "app-hosting"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "app-hosting"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 AppHosting::~AppHosting()
@@ -6771,6 +6835,7 @@ AppHosting::~AppHosting()
 
 bool AppHosting::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -6881,11 +6946,11 @@ bool AppHosting::has_leaf_or_child_of_name(const std::string & name) const
 AppHosting::Input::Input()
     :
     install(std::make_shared<AppHosting::Input::Install>())
-	,uninstall(std::make_shared<AppHosting::Input::Uninstall>())
-	,activate(std::make_shared<AppHosting::Input::Activate>())
-	,deactivate(std::make_shared<AppHosting::Input::Deactivate>())
-	,start(std::make_shared<AppHosting::Input::Start>())
-	,stop(std::make_shared<AppHosting::Input::Stop>())
+    , uninstall(std::make_shared<AppHosting::Input::Uninstall>())
+    , activate(std::make_shared<AppHosting::Input::Activate>())
+    , deactivate(std::make_shared<AppHosting::Input::Deactivate>())
+    , start(std::make_shared<AppHosting::Input::Start>())
+    , stop(std::make_shared<AppHosting::Input::Stop>())
 {
     install->parent = this;
     uninstall->parent = this;
@@ -6894,7 +6959,7 @@ AppHosting::Input::Input()
     start->parent = this;
     stop->parent = this;
 
-    yang_name = "input"; yang_parent_name = "app-hosting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "app-hosting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Input::~Input()
@@ -6903,6 +6968,7 @@ AppHosting::Input::~Input()
 
 bool AppHosting::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (install !=  nullptr && install->has_data())
 	|| (uninstall !=  nullptr && uninstall->has_data())
 	|| (activate !=  nullptr && activate->has_data())
@@ -7062,7 +7128,7 @@ AppHosting::Input::Install::Install()
     package{YType::str, "package"}
 {
 
-    yang_name = "install"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Input::Install::~Install()
@@ -7071,6 +7137,7 @@ AppHosting::Input::Install::~Install()
 
 bool AppHosting::Input::Install::has_data() const
 {
+    if (is_presence_container) return true;
     return appid.is_set
 	|| package.is_set;
 }
@@ -7159,7 +7226,7 @@ AppHosting::Input::Uninstall::Uninstall()
     appid{YType::str, "appid"}
 {
 
-    yang_name = "uninstall"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "uninstall"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Input::Uninstall::~Uninstall()
@@ -7168,6 +7235,7 @@ AppHosting::Input::Uninstall::~Uninstall()
 
 bool AppHosting::Input::Uninstall::has_data() const
 {
+    if (is_presence_container) return true;
     return appid.is_set;
 }
 
@@ -7243,7 +7311,7 @@ AppHosting::Input::Activate::Activate()
     appid{YType::str, "appid"}
 {
 
-    yang_name = "activate"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "activate"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Input::Activate::~Activate()
@@ -7252,6 +7320,7 @@ AppHosting::Input::Activate::~Activate()
 
 bool AppHosting::Input::Activate::has_data() const
 {
+    if (is_presence_container) return true;
     return appid.is_set;
 }
 
@@ -7327,7 +7396,7 @@ AppHosting::Input::Deactivate::Deactivate()
     appid{YType::str, "appid"}
 {
 
-    yang_name = "deactivate"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "deactivate"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Input::Deactivate::~Deactivate()
@@ -7336,6 +7405,7 @@ AppHosting::Input::Deactivate::~Deactivate()
 
 bool AppHosting::Input::Deactivate::has_data() const
 {
+    if (is_presence_container) return true;
     return appid.is_set;
 }
 
@@ -7411,7 +7481,7 @@ AppHosting::Input::Start::Start()
     appid{YType::str, "appid"}
 {
 
-    yang_name = "start"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "start"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Input::Start::~Start()
@@ -7420,6 +7490,7 @@ AppHosting::Input::Start::~Start()
 
 bool AppHosting::Input::Start::has_data() const
 {
+    if (is_presence_container) return true;
     return appid.is_set;
 }
 
@@ -7495,7 +7566,7 @@ AppHosting::Input::Stop::Stop()
     appid{YType::str, "appid"}
 {
 
-    yang_name = "stop"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stop"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Input::Stop::~Stop()
@@ -7504,6 +7575,7 @@ AppHosting::Input::Stop::~Stop()
 
 bool AppHosting::Input::Stop::has_data() const
 {
+    if (is_presence_container) return true;
     return appid.is_set;
 }
 
@@ -7579,7 +7651,7 @@ AppHosting::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "app-hosting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "app-hosting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 AppHosting::Output::~Output()
@@ -7588,6 +7660,7 @@ AppHosting::Output::~Output()
 
 bool AppHosting::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 
@@ -7661,12 +7734,12 @@ bool AppHosting::Output::has_leaf_or_child_of_name(const std::string & name) con
 Guestshell::Guestshell()
     :
     input(std::make_shared<Guestshell::Input>())
-	,output(std::make_shared<Guestshell::Output>())
+    , output(std::make_shared<Guestshell::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "guestshell"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "guestshell"; yang_parent_name = "Cisco-IOS-XE-rpc"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Guestshell::~Guestshell()
@@ -7675,6 +7748,7 @@ Guestshell::~Guestshell()
 
 bool Guestshell::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -7789,7 +7863,7 @@ Guestshell::Input::Input()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "input"; yang_parent_name = "guestshell"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "guestshell"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Guestshell::Input::~Input()
@@ -7798,6 +7872,7 @@ Guestshell::Input::~Input()
 
 bool Guestshell::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return destroy.is_set
 	|| disable.is_set
 	|| enable.is_set;
@@ -7899,7 +7974,7 @@ Guestshell::Output::Output()
     result{YType::str, "result"}
 {
 
-    yang_name = "output"; yang_parent_name = "guestshell"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "guestshell"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Guestshell::Output::~Output()
@@ -7908,6 +7983,7 @@ Guestshell::Output::~Output()
 
 bool Guestshell::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return result.is_set;
 }
 

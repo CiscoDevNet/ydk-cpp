@@ -57,7 +57,7 @@ class OpticsOper::OpticsPorts : public ydk::Entity
 
         class OpticsPort; //type: OpticsOper::OpticsPorts::OpticsPort
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort> > optics_port;
+        ydk::YList optics_port;
         
 }; // OpticsOper::OpticsPorts
 
@@ -80,28 +80,28 @@ class OpticsOper::OpticsPorts::OpticsPort : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class OpticsDwdmCarrierChannelMap; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap
+        class OpticsDwdmCarrrierChannelMap; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap
         class OtsSpectrumInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo
-        class OpticsDwdmCarrierChannelMapFlexi; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi
         class OpticsInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo
         class OpticsLanes; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsLanes
+        class OpticsDwdmCarrrierChannelMapFlexi; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi
         class OpticsDbInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap> optics_dwdm_carrier_channel_map;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap> optics_dwdm_carrrier_channel_map;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo> ots_spectrum_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi> optics_dwdm_carrier_channel_map_flexi;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo> optics_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsLanes> optics_lanes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi> optics_dwdm_carrrier_channel_map_flexi;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo> optics_db_info;
         
 }; // OpticsOper::OpticsPorts::OpticsPort
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap : public ydk::Entity
 {
     public:
-        OpticsDwdmCarrierChannelMap();
-        ~OpticsDwdmCarrierChannelMap();
+        OpticsDwdmCarrrierChannelMap();
+        ~OpticsDwdmCarrrierChannelMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -116,14 +116,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap : public 
         ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
         ydk::YLeaf dwdm_carrier_min; //type: uint32
         ydk::YLeaf dwdm_carrier_max; //type: uint32
-        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo
+        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo> > dwdm_carrier_map_info;
+        ydk::YList dwdm_carrier_map_info;
         
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo : public ydk::Entity
 {
     public:
         DwdmCarrierMapInfo();
@@ -144,7 +144,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarr
         ydk::YLeaf frequency; //type: string
         ydk::YLeaf wavelength; //type: string
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo
 
 
 class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo : public ydk::Entity
@@ -191,7 +191,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo : publi
         ydk::YLeaf first_slice_wavelength; //type: string
         class SpectrumSlicePowerInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo> > spectrum_slice_power_info;
+        ydk::YList spectrum_slice_power_info;
         
 }; // OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo
 
@@ -221,56 +221,6 @@ class OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::Spectr
         ydk::YLeaf tx_psd; //type: string
 
 }; // OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo
-
-
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi : public ydk::Entity
-{
-    public:
-        OpticsDwdmCarrierChannelMapFlexi();
-        ~OpticsDwdmCarrierChannelMapFlexi();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
-        ydk::YLeaf dwdm_carrier_min; //type: uint32
-        ydk::YLeaf dwdm_carrier_max; //type: uint32
-        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo> > dwdm_carrier_map_info;
-        
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi
-
-
-class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo : public ydk::Entity
-{
-    public:
-        DwdmCarrierMapInfo();
-        ~DwdmCarrierMapInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf itu_chan_num; //type: uint32
-        ydk::YLeaf g694_chan_num; //type: int32
-        ydk::YLeaf frequency; //type: string
-        ydk::YLeaf wavelength; //type: string
-
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo
 
 
 class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
@@ -337,7 +287,6 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf display_volt_temp; //type: boolean
         ydk::YLeaf cd_configurable; //type: boolean
         ydk::YLeaf optics_fec; //type: OpticsFec
-        ydk::YLeaf skip_snmp_pm_table; //type: int32
         ydk::YLeaf port_type; //type: OpticsPort
         ydk::YLeaf port_status; //type: OpticsPortStatus
         ydk::YLeaf rx_voa_attenuation; //type: int32
@@ -375,14 +324,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf temp_high_warning_threshold; //type: int32
         ydk::YLeaf volt_low_warning_threshold; //type: int32
         ydk::YLeaf volt_high_warning_threshold; //type: int32
+        ydk::YLeaf description; //type: string
         ydk::YLeaf ampli_gain_range; //type: OpticsAmplifierGainRange
         ydk::YLeaf safety_control_mode; //type: OpticsAmplifierSafetyControlMode
         ydk::YLeaf osri; //type: boolean
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf is_optics_type_string_valid; //type: boolean
-        ydk::YLeaf optics_type_str; //type: string
         ydk::YLeaf tx_enable; //type: boolean
         ydk::YLeaf rx_enable; //type: boolean
+        ydk::YLeaf is_optics_type_string_valid; //type: boolean
+        ydk::YLeaf optics_type_str; //type: string
         ydk::YLeaf rx_low_threshold_current; //type: int32
         class NetworkSrlgInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo
         class OpticsAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo
@@ -400,7 +349,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal> ext_param_val;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal> ext_param_threshold_val;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo> extended_alarm_alarm_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData> > lane_data;
+        ydk::YList lane_data;
         
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo
 
@@ -423,7 +372,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo : public 
 
         class NetworkSrlgArray; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray> > network_srlg_array;
+        ydk::YList network_srlg_array;
         
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo
 
@@ -491,14 +440,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo : public 
         class LowTx2Power; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power
         class LowTx3Power; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power
         class LowTx4Power; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power
-        class HighTx1Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc
-        class HighTx2Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc
-        class HighTx3Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc
-        class HighTx4Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc
-        class LowTx1Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc
-        class LowTx2Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc
-        class LowTx3Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc
-        class LowTx4Lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc
+        class HighTx1lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc
+        class HighTx2lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc
+        class HighTx3lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc
+        class HighTx4lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc
+        class LowTx1lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc
+        class LowTx2lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc
+        class LowTx3lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc
+        class LowTx4lbc; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc
         class RxLos; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos
         class TxLos; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos
         class RxLol; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol
@@ -540,14 +489,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo : public 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power> low_tx2_power;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power> low_tx3_power;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power> low_tx4_power;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc> high_tx1lbc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc> high_tx2lbc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc> high_tx3lbc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc> high_tx4lbc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc> low_tx1lbc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc> low_tx2lbc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc> low_tx3lbc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc> low_tx4lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc> high_tx1lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc> high_tx2lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc> high_tx3lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc> high_tx4lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc> low_tx1lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc> low_tx2lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc> low_tx3lbc;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc> low_tx4lbc;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos> rx_los;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos> tx_los;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol> rx_lol;
@@ -1117,11 +1066,11 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Po
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc : public ydk::Entity
 {
     public:
-        HighTx1Lbc();
-        ~HighTx1Lbc();
+        HighTx1lbc();
+        ~HighTx1lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1136,14 +1085,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1L
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc : public ydk::Entity
 {
     public:
-        HighTx2Lbc();
-        ~HighTx2Lbc();
+        HighTx2lbc();
+        ~HighTx2lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1158,14 +1107,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2L
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc : public ydk::Entity
 {
     public:
-        HighTx3Lbc();
-        ~HighTx3Lbc();
+        HighTx3lbc();
+        ~HighTx3lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1180,14 +1129,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3L
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc : public ydk::Entity
 {
     public:
-        HighTx4Lbc();
-        ~HighTx4Lbc();
+        HighTx4lbc();
+        ~HighTx4lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1202,14 +1151,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4L
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc : public ydk::Entity
 {
     public:
-        LowTx1Lbc();
-        ~LowTx1Lbc();
+        LowTx1lbc();
+        ~LowTx1lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1224,14 +1173,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lb
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc : public ydk::Entity
 {
     public:
-        LowTx2Lbc();
-        ~LowTx2Lbc();
+        LowTx2lbc();
+        ~LowTx2lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1246,14 +1195,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lb
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc : public ydk::Entity
 {
     public:
-        LowTx3Lbc();
-        ~LowTx3Lbc();
+        LowTx3lbc();
+        ~LowTx3lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1268,14 +1217,14 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lb
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc
 
 
-class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc : public ydk::Entity
+class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc : public ydk::Entity
 {
     public:
-        LowTx4Lbc();
-        ~LowTx4Lbc();
+        LowTx4lbc();
+        ~LowTx4lbc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1290,7 +1239,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lb
         ydk::YLeaf is_detected; //type: boolean
         ydk::YLeaf counter; //type: uint32
 
-}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc
 
 
 class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos : public ydk::Entity
@@ -3026,7 +2975,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsLanes : public ydk::Entity
 
         class OpticsLane; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane> > optics_lane;
+        ydk::YList optics_lane;
         
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsLanes
 
@@ -3047,7 +2996,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf number; //type: int32
+        ydk::YLeaf number; //type: uint32
         ydk::YLeaf lane_index; //type: uint32
         ydk::YLeaf laser_bias_current_percent; //type: uint32
         ydk::YLeaf laser_bias_current_milli_amps; //type: uint32
@@ -3205,6 +3154,56 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInf
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc
 
 
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi : public ydk::Entity
+{
+    public:
+        OpticsDwdmCarrrierChannelMapFlexi();
+        ~OpticsDwdmCarrrierChannelMapFlexi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf dwdm_carrier_band; //type: OpticsWaveBand
+        ydk::YLeaf dwdm_carrier_min; //type: uint32
+        ydk::YLeaf dwdm_carrier_max; //type: uint32
+        class DwdmCarrierMapInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo
+
+        ydk::YList dwdm_carrier_map_info;
+        
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi
+
+
+class OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo : public ydk::Entity
+{
+    public:
+        DwdmCarrierMapInfo();
+        ~DwdmCarrierMapInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf itu_chan_num; //type: uint32
+        ydk::YLeaf g694_chan_num; //type: int32
+        ydk::YLeaf frequency; //type: string
+        ydk::YLeaf wavelength; //type: string
+
+}; // OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo
+
+
 class OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo : public ydk::Entity
 {
     public:
@@ -3248,7 +3247,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo : publi
 
         class NetworkSrlgArray; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_controller_optics_oper::OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray> > network_srlg_array;
+        ydk::YList network_srlg_array;
         
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo
 
@@ -3273,6 +3272,23 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::Networ
         ydk::YLeafList network_srlg; //type: list of  uint32
 
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray
+
+class OpticsAmplifierGainRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf optics_amplifier_gain_range_invalid;
+        static const ydk::Enum::YLeaf optics_amplifier_gain_range_normal;
+        static const ydk::Enum::YLeaf optics_amplifier_gain_range_ext_end_ed;
+
+};
+
+class OpticsAmplifierControlMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf automatic;
+        static const ydk::Enum::YLeaf manual;
+
+};
 
 class EthernetPmd : public ydk::Enum
 {
@@ -3310,25 +3326,14 @@ class EthernetPmd : public ydk::Enum
 
 };
 
-class SonetApplicationCode : public ydk::Enum
+class OpticsWaveBand : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf optics_sonet_not_set;
-        static const ydk::Enum::YLeaf optics_vsr2000_3r2;
-        static const ydk::Enum::YLeaf optics_vsr2000_3r3;
-        static const ydk::Enum::YLeaf optics_vsr2000_3r5;
-        static const ydk::Enum::YLeaf optics_sonet_undefined;
-
-};
-
-class OtnApplicationCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf optics_not_set;
-        static const ydk::Enum::YLeaf optics_p1l1_2d1;
-        static const ydk::Enum::YLeaf optics_p1s1_2d2;
-        static const ydk::Enum::YLeaf optics_p1l1_2d2;
-        static const ydk::Enum::YLeaf optics_undefined;
+        static const ydk::Enum::YLeaf c_band;
+        static const ydk::Enum::YLeaf l_band;
+        static const ydk::Enum::YLeaf c_band_odd;
+        static const ydk::Enum::YLeaf c_band_even;
+        static const ydk::Enum::YLeaf invalid_band;
 
 };
 
@@ -3343,6 +3348,48 @@ class FiberConnector : public ydk::Enum
 
 };
 
+class OpticsFormFactor : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf cpak;
+        static const ydk::Enum::YLeaf cxp;
+        static const ydk::Enum::YLeaf sfp_plus;
+        static const ydk::Enum::YLeaf qsfp;
+        static const ydk::Enum::YLeaf qsfp_plus;
+        static const ydk::Enum::YLeaf qsfp28;
+        static const ydk::Enum::YLeaf sfp;
+        static const ydk::Enum::YLeaf cfp;
+        static const ydk::Enum::YLeaf cfp2;
+        static const ydk::Enum::YLeaf cfp4;
+        static const ydk::Enum::YLeaf xfp;
+        static const ydk::Enum::YLeaf x2;
+        static const ydk::Enum::YLeaf non_pluggable;
+        static const ydk::Enum::YLeaf other;
+
+};
+
+class SonetApplicationCode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf optics_sonet_not_set;
+        static const ydk::Enum::YLeaf optics_vsr2000_3r2;
+        static const ydk::Enum::YLeaf optics_vsr2000_3r3;
+        static const ydk::Enum::YLeaf optics_vsr2000_3r5;
+        static const ydk::Enum::YLeaf optics_sonet_undefined;
+
+};
+
+class OpticsControllerState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf optics_state_up;
+        static const ydk::Enum::YLeaf optics_state_down;
+        static const ydk::Enum::YLeaf optics_state_admin_down;
+
+};
+
 class OpticsAmplifierSafetyControlMode : public ydk::Enum
 {
     public:
@@ -3352,40 +3399,13 @@ class OpticsAmplifierSafetyControlMode : public ydk::Enum
 
 };
 
-class OpticsAmplifierGainRange : public ydk::Enum
+class OpticsLaserState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf optics_amplifier_gain_range_invalid;
-        static const ydk::Enum::YLeaf optics_amplifier_gain_range_normal;
-        static const ydk::Enum::YLeaf optics_amplifier_gain_range_ext_end_ed;
-
-};
-
-class OpticsAmplifierControlMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf automatic;
-        static const ydk::Enum::YLeaf manual;
-
-};
-
-class OpticsPortStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf standby;
-
-};
-
-class OpticsPort : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf com;
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf osc;
-        static const ydk::Enum::YLeaf com_check;
-        static const ydk::Enum::YLeaf work;
-        static const ydk::Enum::YLeaf prot;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf apr;
 
 };
 
@@ -3399,6 +3419,15 @@ class OpticsFec : public ydk::Enum
         static const ydk::Enum::YLeaf fec_hg25_de;
         static const ydk::Enum::YLeaf fec_enabled;
         static const ydk::Enum::YLeaf fec_not_set;
+        static const ydk::Enum::YLeaf fec_cl91;
+
+};
+
+class OpticsPortStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
 
 };
 
@@ -3462,37 +3491,46 @@ class OpticsPhy : public ydk::Enum
         static const ydk::Enum::YLeaf hundred_gig_e;
         static const ydk::Enum::YLeaf ten_gig_bx;
         static const ydk::Enum::YLeaf one_geige;
+        static const ydk::Enum::YLeaf ten_x_ten_gig_e_long_reach_one_lane;
+        static const ydk::Enum::YLeaf ten_x_ten_gig_e_extended_reach_one_lane;
+        static const ydk::Enum::YLeaf passive_copper_one_lane;
+        static const ydk::Enum::YLeaf ten_gig_ecwdm;
+        static const ydk::Enum::YLeaf one_gig_ecwdm;
+        static const ydk::Enum::YLeaf one_gig_edwdm;
+        static const ydk::Enum::YLeaf fx_one_lane;
+        static const ydk::Enum::YLeaf ten_gig_emrdwdm;
+        static const ydk::Enum::YLeaf ten_gig_e_edge_performance;
 
 };
 
-class OpticsFormFactor : public ydk::Enum
+class OpticsTas : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf cpak;
-        static const ydk::Enum::YLeaf cxp;
-        static const ydk::Enum::YLeaf sfp_plus;
-        static const ydk::Enum::YLeaf qsfp;
-        static const ydk::Enum::YLeaf qsfp_plus;
-        static const ydk::Enum::YLeaf qsfp28;
-        static const ydk::Enum::YLeaf sfp;
-        static const ydk::Enum::YLeaf cfp;
-        static const ydk::Enum::YLeaf cfp2;
-        static const ydk::Enum::YLeaf cfp4;
-        static const ydk::Enum::YLeaf xfp;
-        static const ydk::Enum::YLeaf x2;
-        static const ydk::Enum::YLeaf non_pluggable;
-        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf tas_ui_oos;
+        static const ydk::Enum::YLeaf tas_ui_main;
+        static const ydk::Enum::YLeaf tas_ui_is;
+        static const ydk::Enum::YLeaf tas_ui_ains;
 
 };
 
-class OpticsControllerState : public ydk::Enum
+class Optics : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf optics_state_up;
-        static const ydk::Enum::YLeaf optics_state_down;
-        static const ydk::Enum::YLeaf optics_state_admin_down;
+        static const ydk::Enum::YLeaf optics_unknown;
+        static const ydk::Enum::YLeaf optics_grey;
+        static const ydk::Enum::YLeaf optics_dwdm;
+        static const ydk::Enum::YLeaf optics_cwdm;
+
+};
+
+class OtnApplicationCode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf optics_not_set;
+        static const ydk::Enum::YLeaf optics_p1l1_2d1;
+        static const ydk::Enum::YLeaf optics_p1s1_2d2;
+        static const ydk::Enum::YLeaf optics_p1l1_2d2;
+        static const ydk::Enum::YLeaf optics_undefined;
 
 };
 
@@ -3509,44 +3547,15 @@ class OpticsLedState : public ydk::Enum
 
 };
 
-class OpticsLaserState : public ydk::Enum
+class OpticsPort : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf apr;
-
-};
-
-class Optics : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf optics_unknown;
-        static const ydk::Enum::YLeaf optics_grey;
-        static const ydk::Enum::YLeaf optics_dwdm;
-        static const ydk::Enum::YLeaf optics_cwdm;
-
-};
-
-class OpticsTas : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tas_ui_oos;
-        static const ydk::Enum::YLeaf tas_ui_main;
-        static const ydk::Enum::YLeaf tas_ui_is;
-        static const ydk::Enum::YLeaf tas_ui_ains;
-
-};
-
-class OpticsWaveBand : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf c_band;
-        static const ydk::Enum::YLeaf l_band;
-        static const ydk::Enum::YLeaf c_band_odd;
-        static const ydk::Enum::YLeaf c_band_even;
-        static const ydk::Enum::YLeaf invalid_band;
+        static const ydk::Enum::YLeaf com;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf osc;
+        static const ydk::Enum::YLeaf com_check;
+        static const ydk::Enum::YLeaf work;
+        static const ydk::Enum::YLeaf prot;
 
 };
 

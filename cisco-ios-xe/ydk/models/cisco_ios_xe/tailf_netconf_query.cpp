@@ -14,12 +14,12 @@ namespace tailf_netconf_query {
 StartQuery::StartQuery()
     :
     input(std::make_shared<StartQuery::Input>())
-	,output(std::make_shared<StartQuery::Output>())
+    , output(std::make_shared<StartQuery::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "start-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "start-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 StartQuery::~StartQuery()
@@ -28,6 +28,7 @@ StartQuery::~StartQuery()
 
 bool StartQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -142,9 +143,11 @@ StartQuery::Input::Input()
     limit{YType::uint32, "limit"},
     offset{YType::uint32, "offset"},
     timeout{YType::uint32, "timeout"}
+        ,
+    select(this, {})
 {
 
-    yang_name = "input"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StartQuery::Input::~Input()
@@ -153,7 +156,8 @@ StartQuery::Input::~Input()
 
 bool StartQuery::Input::has_data() const
 {
-    for (std::size_t index=0; index<select.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<select.len(); index++)
     {
         if(select[index]->has_data())
             return true;
@@ -171,7 +175,7 @@ bool StartQuery::Input::has_data() const
 
 bool StartQuery::Input::has_operation() const
 {
-    for (std::size_t index=0; index<select.size(); index++)
+    for (std::size_t index=0; index<select.len(); index++)
     {
         if(select[index]->has_operation())
             return true;
@@ -224,7 +228,7 @@ std::shared_ptr<Entity> StartQuery::Input::get_child_by_name(const std::string &
     {
         auto c = std::make_shared<StartQuery::Input::Select>();
         c->parent = this;
-        select.push_back(c);
+        select.append(c);
         return c;
     }
 
@@ -236,7 +240,7 @@ std::map<std::string, std::shared_ptr<Entity>> StartQuery::Input::get_children()
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : select)
+    for (auto c : select.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -317,7 +321,7 @@ StartQuery::Input::Select::Select()
     result_type{YType::enumeration, "result-type"}
 {
 
-    yang_name = "select"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "select"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StartQuery::Input::Select::~Select()
@@ -326,6 +330,7 @@ StartQuery::Input::Select::~Select()
 
 bool StartQuery::Input::Select::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : result_type.getYLeafs())
     {
         if(leaf.is_set)
@@ -435,7 +440,7 @@ StartQuery::Output::Output()
     query_handle{YType::uint32, "query-handle"}
 {
 
-    yang_name = "output"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "start-query"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StartQuery::Output::~Output()
@@ -444,6 +449,7 @@ StartQuery::Output::~Output()
 
 bool StartQuery::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return query_handle.is_set;
 }
 
@@ -517,12 +523,12 @@ bool StartQuery::Output::has_leaf_or_child_of_name(const std::string & name) con
 FetchQueryResult::FetchQueryResult()
     :
     input(std::make_shared<FetchQueryResult::Input>())
-	,output(std::make_shared<FetchQueryResult::Output>())
+    , output(std::make_shared<FetchQueryResult::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "fetch-query-result"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fetch-query-result"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FetchQueryResult::~FetchQueryResult()
@@ -531,6 +537,7 @@ FetchQueryResult::~FetchQueryResult()
 
 bool FetchQueryResult::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -643,7 +650,7 @@ FetchQueryResult::Input::Input()
     query_handle{YType::uint32, "query-handle"}
 {
 
-    yang_name = "input"; yang_parent_name = "fetch-query-result"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "fetch-query-result"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FetchQueryResult::Input::~Input()
@@ -652,6 +659,7 @@ FetchQueryResult::Input::~Input()
 
 bool FetchQueryResult::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return query_handle.is_set;
 }
 
@@ -728,7 +736,7 @@ FetchQueryResult::Output::Output()
 {
     query_result->parent = this;
 
-    yang_name = "output"; yang_parent_name = "fetch-query-result"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "fetch-query-result"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FetchQueryResult::Output::~Output()
@@ -737,6 +745,7 @@ FetchQueryResult::Output::~Output()
 
 bool FetchQueryResult::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (query_result !=  nullptr && query_result->has_data());
 }
 
@@ -811,9 +820,11 @@ bool FetchQueryResult::Output::has_leaf_or_child_of_name(const std::string & nam
 }
 
 FetchQueryResult::Output::QueryResult::QueryResult()
+    :
+    result(this, {})
 {
 
-    yang_name = "query-result"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "query-result"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FetchQueryResult::Output::QueryResult::~QueryResult()
@@ -822,7 +833,8 @@ FetchQueryResult::Output::QueryResult::~QueryResult()
 
 bool FetchQueryResult::Output::QueryResult::has_data() const
 {
-    for (std::size_t index=0; index<result.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<result.len(); index++)
     {
         if(result[index]->has_data())
             return true;
@@ -832,7 +844,7 @@ bool FetchQueryResult::Output::QueryResult::has_data() const
 
 bool FetchQueryResult::Output::QueryResult::has_operation() const
 {
-    for (std::size_t index=0; index<result.size(); index++)
+    for (std::size_t index=0; index<result.len(); index++)
     {
         if(result[index]->has_operation())
             return true;
@@ -869,7 +881,7 @@ std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::get_child_by_name
     {
         auto c = std::make_shared<FetchQueryResult::Output::QueryResult::Result>();
         c->parent = this;
-        result.push_back(c);
+        result.append(c);
         return c;
     }
 
@@ -881,7 +893,7 @@ std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryRe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : result)
+    for (auto c : result.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -908,9 +920,11 @@ bool FetchQueryResult::Output::QueryResult::has_leaf_or_child_of_name(const std:
 }
 
 FetchQueryResult::Output::QueryResult::Result::Result()
+    :
+    select(this, {})
 {
 
-    yang_name = "result"; yang_parent_name = "query-result"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "result"; yang_parent_name = "query-result"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FetchQueryResult::Output::QueryResult::Result::~Result()
@@ -919,7 +933,8 @@ FetchQueryResult::Output::QueryResult::Result::~Result()
 
 bool FetchQueryResult::Output::QueryResult::Result::has_data() const
 {
-    for (std::size_t index=0; index<select.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<select.len(); index++)
     {
         if(select[index]->has_data())
             return true;
@@ -929,7 +944,7 @@ bool FetchQueryResult::Output::QueryResult::Result::has_data() const
 
 bool FetchQueryResult::Output::QueryResult::Result::has_operation() const
 {
-    for (std::size_t index=0; index<select.size(); index++)
+    for (std::size_t index=0; index<select.len(); index++)
     {
         if(select[index]->has_operation())
             return true;
@@ -966,7 +981,7 @@ std::shared_ptr<Entity> FetchQueryResult::Output::QueryResult::Result::get_child
     {
         auto c = std::make_shared<FetchQueryResult::Output::QueryResult::Result::Select>();
         c->parent = this;
-        select.push_back(c);
+        select.append(c);
         return c;
     }
 
@@ -978,7 +993,7 @@ std::map<std::string, std::shared_ptr<Entity>> FetchQueryResult::Output::QueryRe
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : select)
+    for (auto c : select.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1012,7 +1027,7 @@ FetchQueryResult::Output::QueryResult::Result::Select::Select()
     data{YType::str, "data"}
 {
 
-    yang_name = "select"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "select"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FetchQueryResult::Output::QueryResult::Result::Select::~Select()
@@ -1021,6 +1036,7 @@ FetchQueryResult::Output::QueryResult::Result::Select::~Select()
 
 bool FetchQueryResult::Output::QueryResult::Result::Select::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| path.is_set
 	|| value_.is_set
@@ -1136,7 +1152,7 @@ ResetQuery::ResetQuery()
 {
     input->parent = this;
 
-    yang_name = "reset-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "reset-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ResetQuery::~ResetQuery()
@@ -1145,6 +1161,7 @@ ResetQuery::~ResetQuery()
 
 bool ResetQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1243,7 +1260,7 @@ ResetQuery::Input::Input()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "input"; yang_parent_name = "reset-query"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "reset-query"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ResetQuery::Input::~Input()
@@ -1252,6 +1269,7 @@ ResetQuery::Input::~Input()
 
 bool ResetQuery::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return query_handle.is_set
 	|| offset.is_set
 	|| timeout.is_set;
@@ -1354,7 +1372,7 @@ StopQuery::StopQuery()
 {
     input->parent = this;
 
-    yang_name = "stop-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "stop-query"; yang_parent_name = "tailf-netconf-query"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 StopQuery::~StopQuery()
@@ -1363,6 +1381,7 @@ StopQuery::~StopQuery()
 
 bool StopQuery::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -1459,7 +1478,7 @@ StopQuery::Input::Input()
     query_handle{YType::uint32, "query-handle"}
 {
 
-    yang_name = "input"; yang_parent_name = "stop-query"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "stop-query"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 StopQuery::Input::~Input()
@@ -1468,6 +1487,7 @@ StopQuery::Input::~Input()
 
 bool StopQuery::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return query_handle.is_set;
 }
 

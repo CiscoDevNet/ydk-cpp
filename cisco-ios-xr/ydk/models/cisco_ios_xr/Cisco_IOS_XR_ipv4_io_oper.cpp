@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ipv4_io_oper {
 Ipv4Network::Ipv4Network()
     :
     nodes(std::make_shared<Ipv4Network::Nodes>())
-	,interfaces(std::make_shared<Ipv4Network::Interfaces>())
+    , interfaces(std::make_shared<Ipv4Network::Interfaces>())
 {
     nodes->parent = this;
     interfaces->parent = this;
 
-    yang_name = "ipv4-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-io-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv4-network"; yang_parent_name = "Cisco-IOS-XR-ipv4-io-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv4Network::~Ipv4Network()
@@ -28,6 +28,7 @@ Ipv4Network::~Ipv4Network()
 
 bool Ipv4Network::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
@@ -136,9 +137,11 @@ bool Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipv4Network::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ipv4-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ipv4-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Network::Nodes::~Nodes()
@@ -147,7 +150,8 @@ Ipv4Network::Nodes::~Nodes()
 
 bool Ipv4Network::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Ipv4Network::Nodes::has_data() const
 
 bool Ipv4Network::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,14 +239,14 @@ bool Ipv4Network::Nodes::has_leaf_or_child_of_name(const std::string & name) con
 Ipv4Network::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     interface_data(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData>())
-	,statistics(std::make_shared<Ipv4Network::Nodes::Node::Statistics>())
+    , statistics(std::make_shared<Ipv4Network::Nodes::Node::Statistics>())
 {
     interface_data->parent = this;
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Network::Nodes::Node::~Node()
@@ -251,6 +255,7 @@ Ipv4Network::Nodes::Node::~Node()
 
 bool Ipv4Network::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (interface_data !=  nullptr && interface_data->has_data())
 	|| (statistics !=  nullptr && statistics->has_data());
@@ -274,7 +279,8 @@ std::string Ipv4Network::Nodes::Node::get_absolute_path() const
 std::string Ipv4Network::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -356,12 +362,12 @@ bool Ipv4Network::Nodes::Node::has_leaf_or_child_of_name(const std::string & nam
 Ipv4Network::Nodes::Node::InterfaceData::InterfaceData()
     :
     vrfs(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs>())
-	,summary(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary>())
+    , summary(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary>())
 {
     vrfs->parent = this;
     summary->parent = this;
 
-    yang_name = "interface-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-data"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::~InterfaceData()
@@ -370,6 +376,7 @@ Ipv4Network::Nodes::Node::InterfaceData::~InterfaceData()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (summary !=  nullptr && summary->has_data());
 }
@@ -453,9 +460,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::has_leaf_or_child_of_name(const st
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::~Vrfs()
@@ -464,7 +473,8 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::~Vrfs()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -474,7 +484,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::has_data() const
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -504,7 +514,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::get_child
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -516,7 +526,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -545,14 +555,14 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::has_leaf_or_child_of_name(co
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     briefs(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs>())
-	,details(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details>())
+    , details(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details>())
 {
     briefs->parent = this;
     details->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::~Vrf()
@@ -561,6 +571,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (briefs !=  nullptr && briefs->has_data())
 	|| (details !=  nullptr && details->has_data());
@@ -577,7 +588,8 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_operation() const
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -657,9 +669,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::has_leaf_or_child_of_na
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Briefs()
+    :
+    brief(this, {"interface_name"})
 {
 
-    yang_name = "briefs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "briefs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::~Briefs()
@@ -668,7 +682,8 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::~Briefs()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_data() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_data())
             return true;
@@ -678,7 +693,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_data() cons
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::has_operation() const
 {
-    for (std::size_t index=0; index<brief.size(); index++)
+    for (std::size_t index=0; index<brief.len(); index++)
     {
         if(brief[index]->has_operation())
             return true;
@@ -708,7 +723,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Brie
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief>();
         c->parent = this;
-        brief.push_back(c);
+        brief.append(c);
         return c;
     }
 
@@ -720,7 +735,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief)
+    for (auto c : brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -755,7 +770,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Brief()
     line_state{YType::enumeration, "line-state"}
 {
 
-    yang_name = "brief"; yang_parent_name = "briefs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "briefs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::~Brief()
@@ -764,6 +779,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::~Brief()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| primary_address.is_set
 	|| vrf_id.is_set
@@ -784,7 +800,8 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_oper
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "brief";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -880,9 +897,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::has_leaf
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Details()
+    :
+    detail(this, {"interface_name"})
 {
 
-    yang_name = "details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::~Details()
@@ -891,7 +910,8 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::~Details()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -901,7 +921,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_data() con
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -931,7 +951,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -943,7 +963,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -988,17 +1008,19 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     proxy_arp_disabled{YType::boolean, "proxy-arp-disabled"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
     flow_tag_dst{YType::boolean, "flow-tag-dst"}
-    	,
+        ,
     acl(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl>())
-	,multi_acl(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl>())
-	,helper_address(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress>())
-	,rpf(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>())
-	,bgp_pa(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>())
-	,pub_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime>())
-	,idb_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>())
-	,caps_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>())
-	,fwd_en_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>())
-	,fwd_dis_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>())
+    , multi_acl(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl>())
+    , helper_address(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress>())
+    , rpf(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf>())
+    , bgp_pa(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa>())
+    , pub_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime>())
+    , idb_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime>())
+    , multicast_group(this, {})
+    , secondary_address(this, {})
 {
     acl->parent = this;
     multi_acl->parent = this;
@@ -1011,7 +1033,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Detail()
     fwd_en_utime->parent = this;
     fwd_dis_utime->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::~Detail()
@@ -1020,12 +1042,13 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::~Detail()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_data() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<secondary_address.size(); index++)
+    for (std::size_t index=0; index<secondary_address.len(); index++)
     {
         if(secondary_address[index]->has_data())
             return true;
@@ -1061,12 +1084,12 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_da
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<secondary_address.size(); index++)
+    for (std::size_t index=0; index<secondary_address.len(); index++)
     {
         if(secondary_address[index]->has_operation())
             return true;
@@ -1104,7 +1127,8 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::has_op
 std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "detail";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1230,7 +1254,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup>();
         c->parent = this;
-        multicast_group.push_back(c);
+        multicast_group.append(c);
         return c;
     }
 
@@ -1238,7 +1262,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress>();
         c->parent = this;
-        secondary_address.push_back(c);
+        secondary_address.append(c);
         return c;
     }
 
@@ -1300,7 +1324,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : multicast_group)
+    for (auto c : multicast_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1309,7 +1333,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : secondary_address)
+    for (auto c : secondary_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1513,7 +1537,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::Acl()
     common_out_bound{YType::str, "common-out-bound"}
 {
 
-    yang_name = "acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::~Acl()
@@ -1522,6 +1546,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::~Acl()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return inbound.is_set
 	|| outbound.is_set
 	|| common_in_bound.is_set
@@ -1625,9 +1650,13 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl::h
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::MultiAcl()
+    :
+    inbound(this, {})
+    , outbound(this, {})
+    , common(this, {})
 {
 
-    yang_name = "multi-acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::~MultiAcl()
@@ -1636,17 +1665,18 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::~
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::has_data() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_data())
             return true;
@@ -1656,17 +1686,17 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::has_operation() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_operation())
             return true;
@@ -1696,7 +1726,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Inbound>();
         c->parent = this;
-        inbound.push_back(c);
+        inbound.append(c);
         return c;
     }
 
@@ -1704,7 +1734,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Outbound>();
         c->parent = this;
-        outbound.push_back(c);
+        outbound.append(c);
         return c;
     }
 
@@ -1712,7 +1742,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Common>();
         c->parent = this;
-        common.push_back(c);
+        common.append(c);
         return c;
     }
 
@@ -1724,7 +1754,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inbound)
+    for (auto c : inbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1733,7 +1763,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : outbound)
+    for (auto c : outbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1742,7 +1772,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     }
 
     count = 0;
-    for (auto const & c : common)
+    for (auto c : common.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1773,7 +1803,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::I
     entry{YType::str, "entry"}
 {
 
-    yang_name = "inbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Inbound::~Inbound()
@@ -1782,6 +1812,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::I
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Inbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -1850,7 +1881,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::O
     entry{YType::str, "entry"}
 {
 
-    yang_name = "outbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Outbound::~Outbound()
@@ -1859,6 +1890,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::O
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Outbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -1927,7 +1959,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::C
     entry{YType::str, "entry"}
 {
 
-    yang_name = "common"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Common::~Common()
@@ -1936,6 +1968,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::C
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2000,9 +2033,11 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiA
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::HelperAddress()
+    :
+    address_array(this, {})
 {
 
-    yang_name = "helper-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::~HelperAddress()
@@ -2011,7 +2046,8 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddre
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::has_data() const
 {
-    for (std::size_t index=0; index<address_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_array.len(); index++)
     {
         if(address_array[index]->has_data())
             return true;
@@ -2021,7 +2057,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Helper
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::has_operation() const
 {
-    for (std::size_t index=0; index<address_array.size(); index++)
+    for (std::size_t index=0; index<address_array.len(); index++)
     {
         if(address_array[index]->has_operation())
             return true;
@@ -2051,7 +2087,7 @@ std::shared_ptr<Entity> Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Deta
     {
         auto c = std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::AddressArray>();
         c->parent = this;
-        address_array.push_back(c);
+        address_array.append(c);
         return c;
     }
 
@@ -2063,7 +2099,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Nodes::Node::Interfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_array)
+    for (auto c : address_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2094,7 +2130,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddre
     entry{YType::str, "entry"}
 {
 
-    yang_name = "address-array"; yang_parent_name = "helper-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-array"; yang_parent_name = "helper-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::AddressArray::~AddressArray()
@@ -2103,6 +2139,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddre
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::HelperAddress::AddressArray::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -2174,7 +2211,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::Rpf()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "rpf"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpf"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::~Rpf()
@@ -2183,6 +2220,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::~Rpf()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| allow_default_route.is_set
 	|| allow_self_ping.is_set
@@ -2288,12 +2326,12 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Rpf::h
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::BgpPa()
     :
     input(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input>())
-	,output(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output>())
+    , output(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "bgp-pa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-pa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::~BgpPa()
@@ -2302,6 +2340,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::~Bgp
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -2391,7 +2430,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Inpu
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::~Input()
@@ -2400,6 +2439,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Inpu
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -2496,7 +2536,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Outp
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::~Output()
@@ -2505,6 +2545,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Outp
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -2597,7 +2638,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::BgpPa:
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::PubUtime()
 {
 
-    yang_name = "pub-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pub-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::~PubUtime()
@@ -2606,6 +2647,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::~
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2658,7 +2700,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::PubUti
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::IdbUtime()
 {
 
-    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::~IdbUtime()
@@ -2667,6 +2709,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::~
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2719,7 +2762,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::IdbUti
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::CapsUtime()
 {
 
-    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::~CapsUtime()
@@ -2728,6 +2771,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2780,7 +2824,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::CapsUt
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::FwdEnUtime()
 {
 
-    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::~FwdEnUtime()
@@ -2789,6 +2833,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime:
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2841,7 +2886,7 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdEnU
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::FwdDisUtime()
 {
 
-    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::~FwdDisUtime()
@@ -2850,6 +2895,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::FwdDisUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2904,7 +2950,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGr
     group_address{YType::str, "group-address"}
 {
 
-    yang_name = "multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::~MulticastGroup()
@@ -2913,6 +2959,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGr
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MulticastGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set;
 }
 
@@ -2983,7 +3030,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAd
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "secondary-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::~SecondaryAddress()
@@ -2992,6 +3039,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAd
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::SecondaryAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| route_tag.is_set;
@@ -3084,18 +3132,18 @@ bool Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Second
 Ipv4Network::Nodes::Node::InterfaceData::Summary::Summary()
     :
     if_up_down_basecaps_up{YType::uint32, "if-up-down-basecaps-up"}
-    	,
+        ,
     if_up_up(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp>())
-	,if_up_down(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown>())
-	,if_down_down(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown>())
-	,if_shutdown_down(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown>())
+    , if_up_down(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown>())
+    , if_down_down(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown>())
+    , if_shutdown_down(std::make_shared<Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown>())
 {
     if_up_up->parent = this;
     if_up_down->parent = this;
     if_down_down->parent = this;
     if_shutdown_down->parent = this;
 
-    yang_name = "summary"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "interface-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::~Summary()
@@ -3104,6 +3152,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::~Summary()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return if_up_down_basecaps_up.is_set
 	|| (if_up_up !=  nullptr && if_up_up->has_data())
 	|| (if_up_down !=  nullptr && if_up_down->has_data())
@@ -3238,7 +3287,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::IfUpUp()
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-up-up"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-up-up"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::~IfUpUp()
@@ -3247,6 +3296,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::~IfUpUp()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpUp::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -3343,7 +3393,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::IfUpDown()
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-up-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-up-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::~IfUpDown()
@@ -3352,6 +3402,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::~IfUpDown()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfUpDown::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -3448,7 +3499,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::IfDownDown()
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-down-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-down-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::~IfDownDown()
@@ -3457,6 +3508,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::~IfDownDown()
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfDownDown::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -3553,7 +3605,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::IfShutdownDown
     ip_unassigned{YType::uint32, "ip-unassigned"}
 {
 
-    yang_name = "if-shutdown-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "if-shutdown-down"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::~IfShutdownDown()
@@ -3562,6 +3614,7 @@ Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::~IfShutdownDow
 
 bool Ipv4Network::Nodes::Node::InterfaceData::Summary::IfShutdownDown::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_assigned.is_set
 	|| ip_unnumbered.is_set
 	|| ip_unassigned.is_set;
@@ -3657,7 +3710,7 @@ Ipv4Network::Nodes::Node::Statistics::Statistics()
 {
     traffic->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::Statistics::~Statistics()
@@ -3666,6 +3719,7 @@ Ipv4Network::Nodes::Node::Statistics::~Statistics()
 
 bool Ipv4Network::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (traffic !=  nullptr && traffic->has_data());
 }
 
@@ -3735,12 +3789,12 @@ bool Ipv4Network::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::
 Ipv4Network::Nodes::Node::Statistics::Traffic::Traffic()
     :
     ipv4_stats(std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats>())
-	,icmp_stats(std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats>())
+    , icmp_stats(std::make_shared<Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats>())
 {
     ipv4_stats->parent = this;
     icmp_stats->parent = this;
 
-    yang_name = "traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::Statistics::Traffic::~Traffic()
@@ -3749,6 +3803,7 @@ Ipv4Network::Nodes::Node::Statistics::Traffic::~Traffic()
 
 bool Ipv4Network::Nodes::Node::Statistics::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_stats !=  nullptr && ipv4_stats->has_data())
 	|| (icmp_stats !=  nullptr && icmp_stats->has_data());
 }
@@ -3880,7 +3935,7 @@ Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::Ipv4Stats()
     lisp_decap_error{YType::uint32, "lisp-decap-error"}
 {
 
-    yang_name = "ipv4-stats"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-stats"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::~Ipv4Stats()
@@ -3889,6 +3944,7 @@ Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::~Ipv4Stats()
 
 bool Ipv4Network::Nodes::Node::Statistics::Traffic::Ipv4Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return input_packets.is_set
 	|| received_packets.is_set
 	|| format_errors.is_set
@@ -4565,7 +4621,7 @@ Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::IcmpStats()
     router_solicit_received{YType::uint32, "router-solicit-received"}
 {
 
-    yang_name = "icmp-stats"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp-stats"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::~IcmpStats()
@@ -4574,6 +4630,7 @@ Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::~IcmpStats()
 
 bool Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::has_data() const
 {
+    if (is_presence_container) return true;
     return received.is_set
 	|| checksum_error.is_set
 	|| unknown.is_set
@@ -5106,9 +5163,11 @@ bool Ipv4Network::Nodes::Node::Statistics::Traffic::IcmpStats::has_leaf_or_child
 }
 
 Ipv4Network::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv4-network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ipv4-network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Network::Interfaces::~Interfaces()
@@ -5117,7 +5176,8 @@ Ipv4Network::Interfaces::~Interfaces()
 
 bool Ipv4Network::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -5127,7 +5187,7 @@ bool Ipv4Network::Interfaces::has_data() const
 
 bool Ipv4Network::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -5164,7 +5224,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -5176,7 +5236,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5205,12 +5265,12 @@ bool Ipv4Network::Interfaces::has_leaf_or_child_of_name(const std::string & name
 Ipv4Network::Interfaces::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"}
-    	,
+        ,
     vrfs(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs>())
 {
     vrfs->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv4Network::Interfaces::Interface::~Interface()
@@ -5219,6 +5279,7 @@ Ipv4Network::Interfaces::Interface::~Interface()
 
 bool Ipv4Network::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
@@ -5240,7 +5301,8 @@ std::string Ipv4Network::Interfaces::Interface::get_absolute_path() const
 std::string Ipv4Network::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5306,9 +5368,11 @@ bool Ipv4Network::Interfaces::Interface::has_leaf_or_child_of_name(const std::st
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrfs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::~Vrfs()
@@ -5317,7 +5381,8 @@ Ipv4Network::Interfaces::Interface::Vrfs::~Vrfs()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -5327,7 +5392,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::has_data() const
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -5357,7 +5422,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::get_child_by_n
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -5369,7 +5434,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5398,14 +5463,14 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::has_leaf_or_child_of_name(const s
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     detail(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail>())
-	,brief(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief>())
+    , brief(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief>())
 {
     detail->parent = this;
     brief->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::~Vrf()
@@ -5414,6 +5479,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::~Vrf()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (detail !=  nullptr && detail->has_data())
 	|| (brief !=  nullptr && brief->has_data());
@@ -5430,7 +5496,8 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::has_operation() const
 std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -5527,17 +5594,19 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Detail()
     proxy_arp_disabled{YType::boolean, "proxy-arp-disabled"},
     flow_tag_src{YType::boolean, "flow-tag-src"},
     flow_tag_dst{YType::boolean, "flow-tag-dst"}
-    	,
+        ,
     acl(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl>())
-	,multi_acl(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl>())
-	,helper_address(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress>())
-	,rpf(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf>())
-	,bgp_pa(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa>())
-	,pub_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime>())
-	,idb_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime>())
-	,caps_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime>())
-	,fwd_en_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime>())
-	,fwd_dis_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime>())
+    , multi_acl(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl>())
+    , helper_address(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress>())
+    , rpf(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf>())
+    , bgp_pa(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa>())
+    , pub_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime>())
+    , idb_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime>())
+    , caps_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime>())
+    , fwd_en_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime>())
+    , fwd_dis_utime(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime>())
+    , multicast_group(this, {})
+    , secondary_address(this, {})
 {
     acl->parent = this;
     multi_acl->parent = this;
@@ -5550,7 +5619,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Detail()
     fwd_en_utime->parent = this;
     fwd_dis_utime->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::~Detail()
@@ -5559,12 +5628,13 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::~Detail()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_data() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<secondary_address.size(); index++)
+    for (std::size_t index=0; index<secondary_address.len(); index++)
     {
         if(secondary_address[index]->has_data())
             return true;
@@ -5599,12 +5669,12 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_data() const
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<multicast_group.size(); index++)
+    for (std::size_t index=0; index<multicast_group.len(); index++)
     {
         if(multicast_group[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<secondary_address.size(); index++)
+    for (std::size_t index=0; index<secondary_address.len(); index++)
     {
         if(secondary_address[index]->has_operation())
             return true;
@@ -5766,7 +5836,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::g
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup>();
         c->parent = this;
-        multicast_group.push_back(c);
+        multicast_group.append(c);
         return c;
     }
 
@@ -5774,7 +5844,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::g
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress>();
         c->parent = this;
-        secondary_address.push_back(c);
+        secondary_address.append(c);
         return c;
     }
 
@@ -5836,7 +5906,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : multicast_group)
+    for (auto c : multicast_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5845,7 +5915,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : secondary_address)
+    for (auto c : secondary_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6039,7 +6109,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::Acl()
     common_out_bound{YType::str, "common-out-bound"}
 {
 
-    yang_name = "acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::~Acl()
@@ -6048,6 +6118,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::~Acl()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return inbound.is_set
 	|| outbound.is_set
 	|| common_in_bound.is_set
@@ -6151,9 +6222,13 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl::has_leaf_or_chi
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::MultiAcl()
+    :
+    inbound(this, {})
+    , outbound(this, {})
+    , common(this, {})
 {
 
-    yang_name = "multi-acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multi-acl"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::~MultiAcl()
@@ -6162,17 +6237,18 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::~MultiAcl()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_data() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_data())
             return true;
@@ -6182,17 +6258,17 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_data()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::has_operation() const
 {
-    for (std::size_t index=0; index<inbound.size(); index++)
+    for (std::size_t index=0; index<inbound.len(); index++)
     {
         if(inbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<outbound.size(); index++)
+    for (std::size_t index=0; index<outbound.len(); index++)
     {
         if(outbound[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<common.size(); index++)
+    for (std::size_t index=0; index<common.len(); index++)
     {
         if(common[index]->has_operation())
             return true;
@@ -6222,7 +6298,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::M
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound>();
         c->parent = this;
-        inbound.push_back(c);
+        inbound.append(c);
         return c;
     }
 
@@ -6230,7 +6306,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::M
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound>();
         c->parent = this;
-        outbound.push_back(c);
+        outbound.append(c);
         return c;
     }
 
@@ -6238,7 +6314,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::M
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common>();
         c->parent = this;
-        common.push_back(c);
+        common.append(c);
         return c;
     }
 
@@ -6250,7 +6326,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : inbound)
+    for (auto c : inbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6259,7 +6335,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : outbound)
+    for (auto c : outbound.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6268,7 +6344,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : common)
+    for (auto c : common.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6299,7 +6375,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::Inboun
     entry{YType::str, "entry"}
 {
 
-    yang_name = "inbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::~Inbound()
@@ -6308,6 +6384,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::~Inbou
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6376,7 +6453,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::Outbo
     entry{YType::str, "entry"}
 {
 
-    yang_name = "outbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outbound"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::~Outbound()
@@ -6385,6 +6462,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::~Outb
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Outbound::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6453,7 +6531,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::Common(
     entry{YType::str, "entry"}
 {
 
-    yang_name = "common"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common"; yang_parent_name = "multi-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::~Common()
@@ -6462,6 +6540,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::~Common
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6526,9 +6605,11 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Common::ha
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::HelperAddress()
+    :
+    address_array(this, {})
 {
 
-    yang_name = "helper-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::~HelperAddress()
@@ -6537,7 +6618,8 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::~HelperAdd
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_data() const
 {
-    for (std::size_t index=0; index<address_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_array.len(); index++)
     {
         if(address_array[index]->has_data())
             return true;
@@ -6547,7 +6629,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_d
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::has_operation() const
 {
-    for (std::size_t index=0; index<address_array.size(); index++)
+    for (std::size_t index=0; index<address_array.len(); index++)
     {
         if(address_array[index]->has_operation())
             return true;
@@ -6577,7 +6659,7 @@ std::shared_ptr<Entity> Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::H
     {
         auto c = std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray>();
         c->parent = this;
-        address_array.push_back(c);
+        address_array.append(c);
         return c;
     }
 
@@ -6589,7 +6671,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Network::Interfaces::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_array)
+    for (auto c : address_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6620,7 +6702,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArr
     entry{YType::str, "entry"}
 {
 
-    yang_name = "address-array"; yang_parent_name = "helper-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-array"; yang_parent_name = "helper-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::~AddressArray()
@@ -6629,6 +6711,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArr
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress::AddressArray::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set;
 }
 
@@ -6700,7 +6783,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::Rpf()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "rpf"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpf"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::~Rpf()
@@ -6709,6 +6792,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::~Rpf()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| allow_default_route.is_set
 	|| allow_self_ping.is_set
@@ -6814,12 +6898,12 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Rpf::has_leaf_or_chi
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::BgpPa()
     :
     input(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input>())
-	,output(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output>())
+    , output(std::make_shared<Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "bgp-pa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-pa"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::~BgpPa()
@@ -6828,6 +6912,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::~BgpPa()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -6917,7 +7002,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::Input()
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::~Input()
@@ -6926,6 +7011,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::~Input()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -7022,7 +7108,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::Output()
     destination{YType::boolean, "destination"}
 {
 
-    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "bgp-pa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::~Output()
@@ -7031,6 +7117,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::~Output()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| source.is_set
 	|| destination.is_set;
@@ -7123,7 +7210,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::BgpPa::Output::has_l
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::PubUtime()
 {
 
-    yang_name = "pub-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pub-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::~PubUtime()
@@ -7132,6 +7219,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::~PubUtime()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7184,7 +7272,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::PubUtime::has_leaf_o
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::IdbUtime()
 {
 
-    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idb-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::~IdbUtime()
@@ -7193,6 +7281,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::~IdbUtime()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7245,7 +7334,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::IdbUtime::has_leaf_o
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::CapsUtime()
 {
 
-    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "caps-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::~CapsUtime()
@@ -7254,6 +7343,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::~CapsUtime()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7306,7 +7396,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::CapsUtime::has_leaf_
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::FwdEnUtime()
 {
 
-    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-en-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::~FwdEnUtime()
@@ -7315,6 +7405,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::~FwdEnUtime()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7367,7 +7458,7 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdEnUtime::has_leaf
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::FwdDisUtime()
 {
 
-    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fwd-dis-utime"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::~FwdDisUtime()
@@ -7376,6 +7467,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::~FwdDisUtime
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::FwdDisUtime::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7430,7 +7522,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::Multicast
     group_address{YType::str, "group-address"}
 {
 
-    yang_name = "multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast-group"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::~MulticastGroup()
@@ -7439,6 +7531,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::~Multicas
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_address.is_set;
 }
 
@@ -7509,7 +7602,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::Seconda
     route_tag{YType::uint32, "route-tag"}
 {
 
-    yang_name = "secondary-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary-address"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::~SecondaryAddress()
@@ -7518,6 +7611,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::~Second
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| route_tag.is_set;
@@ -7615,7 +7709,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::Brief()
     line_state{YType::enumeration, "line-state"}
 {
 
-    yang_name = "brief"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "brief"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::~Brief()
@@ -7624,6 +7718,7 @@ Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::~Brief()
 
 bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return primary_address.is_set
 	|| vrf_id.is_set
 	|| vrf_name.is_set

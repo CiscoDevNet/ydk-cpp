@@ -26,26 +26,27 @@ Native::Interface::EmbeddedServiceEngine::Ip::Ip()
     redirects{YType::boolean, "redirects"},
     mtu{YType::uint16, "mtu"},
     mroute_cache{YType::boolean, "mroute-cache"}
-    	,
+        ,
     access_group(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup>())
-	,arp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Arp>())
-	,vrf(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Vrf>())
-	,no_address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::NoAddress>())
-	,address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Address>())
-	,hello_interval(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval>())
-	,authentication(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Authentication>())
-	,hold_time(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::HoldTime>())
-	,pim(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Pim>())
-	,policy(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Policy>())
-	,rip(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Rip>())
-	,route_cache_conf(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::RouteCacheConf>())
-	,route_cache(nullptr) // presence node
-	,router(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Router>())
-	,tcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Tcp>())
-	,virtual_reassembly(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::VirtualReassembly>())
-	,dhcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Dhcp>())
-	,summary_address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress>())
-	,verify(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Verify>())
+    , arp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Arp>())
+    , vrf(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Vrf>())
+    , no_address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::NoAddress>())
+    , address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Address>())
+    , hello_interval(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval>())
+    , authentication(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Authentication>())
+    , hold_time(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::HoldTime>())
+    , helper_address(this, {"address"})
+    , pim(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Pim>())
+    , policy(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Policy>())
+    , rip(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Rip>())
+    , route_cache_conf(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::RouteCacheConf>())
+    , route_cache(nullptr) // presence node
+    , router(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Router>())
+    , tcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Tcp>())
+    , virtual_reassembly(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::VirtualReassembly>())
+    , dhcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Dhcp>())
+    , summary_address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress>())
+    , verify(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Verify>())
 {
     access_group->parent = this;
     arp->parent = this;
@@ -66,7 +67,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Ip()
     summary_address->parent = this;
     verify->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::~Ip()
@@ -75,7 +76,8 @@ Native::Interface::EmbeddedServiceEngine::Ip::~Ip()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::has_data() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_data())
             return true;
@@ -111,7 +113,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::has_data() const
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::has_operation() const
 {
-    for (std::size_t index=0; index<helper_address.size(); index++)
+    for (std::size_t index=0; index<helper_address.len(); index++)
     {
         if(helper_address[index]->has_operation())
             return true;
@@ -248,7 +250,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Ip::get_child_
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress>();
         c->parent = this;
-        helper_address.push_back(c);
+        helper_address.append(c);
         return c;
     }
 
@@ -399,7 +401,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : helper_address)
+    for (auto c : helper_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -563,12 +565,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::has_leaf_or_child_of_name(con
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::AccessGroup()
     :
     in(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In>())
-	,out(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out>())
+    , out(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out>())
 {
     in->parent = this;
     out->parent = this;
 
-    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::~AccessGroup()
@@ -577,6 +579,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::~AccessGroup()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (in !=  nullptr && in->has_data())
 	|| (out !=  nullptr && out->has_data());
 }
@@ -662,12 +665,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::has_leaf_or_chil
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::In()
     :
     common_acl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::Acl>())
+    , acl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::~In()
@@ -676,6 +679,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::~In()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -764,7 +768,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::CommonAcl::Common
     in{YType::empty, "in"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::CommonAcl::~CommonAcl()
@@ -773,6 +777,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::CommonAcl::~Commo
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| in.is_set;
 }
@@ -855,7 +860,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::Acl::Acl()
     in{YType::empty, "in"}
 {
 
-    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::Acl::~Acl()
@@ -864,6 +869,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::Acl::~Acl()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set;
 }
@@ -943,12 +949,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::In::Acl::has_lea
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::Out()
     :
     common_acl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::CommonAcl>())
-	,acl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::Acl>())
+    , acl(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::Acl>())
 {
     common_acl->parent = this;
     acl->parent = this;
 
-    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out"; yang_parent_name = "access-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::~Out()
@@ -957,6 +963,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::~Out()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::has_data() const
 {
+    if (is_presence_container) return true;
     return (common_acl !=  nullptr && common_acl->has_data())
 	|| (acl !=  nullptr && acl->has_data());
 }
@@ -1045,7 +1052,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::CommonAcl::Commo
     out{YType::empty, "out"}
 {
 
-    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::CommonAcl::~CommonAcl()
@@ -1054,6 +1061,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::CommonAcl::~Comm
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return common.is_set
 	|| out.is_set;
 }
@@ -1136,7 +1144,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::Acl::Acl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::Acl::~Acl()
@@ -1145,6 +1153,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::Acl::~Acl()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::AccessGroup::Out::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| out.is_set;
 }
@@ -1227,7 +1236,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Arp::Arp()
 {
     inspection->parent = this;
 
-    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "arp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Arp::~Arp()
@@ -1236,6 +1245,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Arp::~Arp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Arp::has_data() const
 {
+    if (is_presence_container) return true;
     return (inspection !=  nullptr && inspection->has_data());
 }
 
@@ -1305,12 +1315,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Arp::has_leaf_or_child_of_nam
 Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::Inspection()
     :
     trust{YType::empty, "trust"}
-    	,
+        ,
     limit(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::Limit>())
 {
     limit->parent = this;
 
-    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inspection"; yang_parent_name = "arp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::~Inspection()
@@ -1319,6 +1329,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::~Inspection()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| (limit !=  nullptr && limit->has_data());
 }
@@ -1404,7 +1415,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::Limit::Limit()
     rate{YType::uint32, "rate"}
 {
 
-    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limit"; yang_parent_name = "inspection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::Limit::~Limit()
@@ -1413,6 +1424,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::Limit::~Limit()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Arp::Inspection::Limit::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| rate.is_set;
 }
@@ -1493,12 +1505,12 @@ Native::Interface::EmbeddedServiceEngine::Ip::Vrf::Vrf()
     :
     receive{YType::str, "receive"},
     sitemap{YType::str, "sitemap"}
-    	,
+        ,
     forwarding(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Vrf::Forwarding>())
 {
     forwarding->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Vrf::~Vrf()
@@ -1507,6 +1519,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Vrf::~Vrf()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return receive.is_set
 	|| sitemap.is_set
 	|| (forwarding !=  nullptr && forwarding->has_data());
@@ -1606,7 +1619,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Vrf::Forwarding::Forwarding()
     word{YType::str, "word"}
 {
 
-    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Vrf::Forwarding::~Forwarding()
@@ -1615,6 +1628,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Vrf::Forwarding::~Forwarding()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Vrf::Forwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return liin_vrf.is_set
 	|| mgmtvrf.is_set
 	|| word.is_set;
@@ -1709,7 +1723,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::NoAddress::NoAddress()
     address{YType::boolean, "address"}
 {
 
-    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "no-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::NoAddress::~NoAddress()
@@ -1718,6 +1732,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::NoAddress::~NoAddress()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::NoAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set;
 }
 
@@ -1784,13 +1799,14 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::NoAddress::has_leaf_or_child_
 Native::Interface::EmbeddedServiceEngine::Ip::Address::Address()
     :
     negotiated{YType::empty, "negotiated"}
-    	,
+        ,
     primary(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Address::Primary>())
-	,dhcp(nullptr) // presence node
+    , secondary(this, {"address"})
+    , dhcp(nullptr) // presence node
 {
     primary->parent = this;
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Address::~Address()
@@ -1799,7 +1815,8 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::~Address()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Address::has_data() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_data())
             return true;
@@ -1811,7 +1828,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Address::has_data() const
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Address::has_operation() const
 {
-    for (std::size_t index=0; index<secondary.size(); index++)
+    for (std::size_t index=0; index<secondary.len(); index++)
     {
         if(secondary[index]->has_operation())
             return true;
@@ -1854,7 +1871,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Ip::Address::g
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary>();
         c->parent = this;
-        secondary.push_back(c);
+        secondary.append(c);
         return c;
     }
 
@@ -1880,7 +1897,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : secondary)
+    for (auto c : secondary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1927,7 +1944,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::Primary::Primary()
     mask{YType::str, "mask"}
 {
 
-    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "primary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Address::Primary::~Primary()
@@ -1936,6 +1953,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::Primary::~Primary()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Address::Primary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
@@ -2019,7 +2037,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary::Secondary()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "secondary"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary::~Secondary()
@@ -2028,6 +2046,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary::~Secondary()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set
 	|| secondary.is_set;
@@ -2044,7 +2063,8 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary::has_opera
 std::string Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "secondary" <<"[address='" <<address <<"']";
+    path_buffer << "secondary";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2120,12 +2140,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary::has_leaf_
 Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::Dhcp()
     :
     hostname{YType::str, "hostname"}
-    	,
+        ,
     client_id(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::ClientId>())
 {
     client_id->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::~Dhcp()
@@ -2134,6 +2154,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return hostname.is_set
 	|| (client_id !=  nullptr && client_id->has_data());
 }
@@ -2227,7 +2248,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::ClientId::ClientId(
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-id"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::ClientId::~ClientId()
@@ -2236,6 +2257,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::ClientId::~ClientId
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp::ClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return fastethernet.is_set
 	|| gigabitethernet.is_set
 	|| fivegigabitethernet.is_set
@@ -2422,7 +2444,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval::HelloInterval()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval::~HelloInterval()
@@ -2431,6 +2453,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval::~HelloInterval()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -2510,12 +2533,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval::has_leaf_or_ch
 Native::Interface::EmbeddedServiceEngine::Ip::Authentication::Authentication()
     :
     key_chain(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Authentication::KeyChain>())
-	,mode(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Authentication::Mode>())
+    , mode(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Authentication::Mode>())
 {
     key_chain->parent = this;
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Authentication::~Authentication()
@@ -2524,6 +2547,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Authentication::~Authentication()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (key_chain !=  nullptr && key_chain->has_data())
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -2612,7 +2636,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Authentication::KeyChain::KeyChain
     name{YType::str, "name"}
 {
 
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Authentication::KeyChain::~KeyChain()
@@ -2621,6 +2645,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Authentication::KeyChain::~KeyChai
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Authentication::KeyChain::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| name.is_set;
 }
@@ -2703,7 +2728,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Authentication::Mode::Mode()
     md5{YType::empty, "md5"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Authentication::Mode::~Mode()
@@ -2712,6 +2737,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Authentication::Mode::~Mode()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| md5.is_set;
 }
@@ -2794,7 +2820,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::HoldTime::HoldTime()
     seconds{YType::uint16, "seconds"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::HoldTime::~HoldTime()
@@ -2803,6 +2829,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::HoldTime::~HoldTime()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return eigrp.is_set
 	|| seconds.is_set;
 }
@@ -2886,7 +2913,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress::HelperAddress()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "helper-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress::~HelperAddress()
@@ -2895,6 +2922,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress::~HelperAddress()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| global.is_set
 	|| vrf.is_set;
@@ -2911,7 +2939,8 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress::has_operation(
 std::string Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper-address" <<"[address='" <<address <<"']";
+    path_buffer << "helper-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2987,7 +3016,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress::has_leaf_or_ch
 Native::Interface::EmbeddedServiceEngine::Ip::Pim::Pim()
 {
 
-    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pim"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Pim::~Pim()
@@ -2996,6 +3025,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Pim::~Pim()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -3050,7 +3080,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Policy::Policy()
     route_map{YType::str, "route-map"}
 {
 
-    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "policy"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Policy::~Policy()
@@ -3059,6 +3089,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Policy::~Policy()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return route_map.is_set;
 }
 
@@ -3128,7 +3159,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Rip::Rip()
 {
     authentication->parent = this;
 
-    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Rip::~Rip()
@@ -3137,6 +3168,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Rip::~Rip()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Rip::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -3206,12 +3238,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Rip::has_leaf_or_child_of_nam
 Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::Authentication()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     mode(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::Mode>())
 {
     mode->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "rip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::~Authentication()
@@ -3220,6 +3252,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::~Authenticati
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (mode !=  nullptr && mode->has_data());
 }
@@ -3305,7 +3338,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::Mode::Mode()
     text{YType::empty, "text"}
 {
 
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::Mode::~Mode()
@@ -3314,6 +3347,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::Mode::~Mode()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Rip::Authentication::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return md5.is_set
 	|| text.is_set;
 }
@@ -3395,7 +3429,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::RouteCacheConf::RouteCacheConf()
     route_cache{YType::boolean, "route-cache"}
 {
 
-    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::RouteCacheConf::~RouteCacheConf()
@@ -3404,6 +3438,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::RouteCacheConf::~RouteCacheConf()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::RouteCacheConf::has_data() const
 {
+    if (is_presence_container) return true;
     return route_cache.is_set;
 }
 
@@ -3475,7 +3510,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::RouteCache::RouteCache()
     same_interface{YType::boolean, "same-interface"}
 {
 
-    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::RouteCache::~RouteCache()
@@ -3484,6 +3519,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::RouteCache::~RouteCache()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::RouteCache::has_data() const
 {
+    if (is_presence_container) return true;
     return cef.is_set
 	|| flow.is_set
 	|| policy.is_set
@@ -3591,7 +3627,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Router::Router()
     isis(nullptr) // presence node
 {
 
-    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Router::~Router()
@@ -3600,6 +3636,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Router::~Router()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Router::has_data() const
 {
+    if (is_presence_container) return true;
     return (isis !=  nullptr && isis->has_data());
 }
 
@@ -3671,7 +3708,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Router::Isis::Isis()
     tag{YType::str, "tag"}
 {
 
-    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Router::Isis::~Isis()
@@ -3680,6 +3717,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Router::Isis::~Isis()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Router::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return tag.is_set;
 }
 
@@ -3748,7 +3786,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Tcp::~Tcp()
@@ -3757,6 +3795,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Tcp::~Tcp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -3829,7 +3868,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::VirtualReassembly::VirtualReassemb
     in{YType::empty, "in"}
 {
 
-    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::VirtualReassembly::~VirtualReassembly()
@@ -3838,6 +3877,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::VirtualReassembly::~VirtualReassem
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::VirtualReassembly::has_data() const
 {
+    if (is_presence_container) return true;
     return max_reassemblies.is_set
 	|| max_fragments.is_set
 	|| timeout.is_set
@@ -3956,7 +3996,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::VirtualReassembly::has_leaf_o
 Native::Interface::EmbeddedServiceEngine::Ip::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Dhcp::~Dhcp()
@@ -3965,6 +4005,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Dhcp::~Dhcp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4015,9 +4056,11 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Dhcp::has_leaf_or_child_of_na
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::SummaryAddress()
+    :
+    eigrp(this, {"id"})
 {
 
-    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::~SummaryAddress()
@@ -4026,7 +4069,8 @@ Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::~SummaryAddress()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::has_data() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_data())
             return true;
@@ -4036,7 +4080,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::has_data() co
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp.size(); index++)
+    for (std::size_t index=0; index<eigrp.len(); index++)
     {
         if(eigrp[index]->has_operation())
             return true;
@@ -4066,7 +4110,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Ip::SummaryAdd
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp>();
         c->parent = this;
-        eigrp.push_back(c);
+        eigrp.append(c);
         return c;
     }
 
@@ -4078,7 +4122,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp)
+    for (auto c : eigrp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4112,7 +4156,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp::Eigrp()
     metric{YType::uint32, "metric"}
 {
 
-    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp::~Eigrp()
@@ -4121,6 +4165,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp::~Eigrp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| ip.is_set
 	|| mask.is_set
@@ -4139,7 +4184,8 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp::has_op
 std::string Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp" <<"[id='" <<id <<"']";
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -4226,11 +4272,11 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp::has_le
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Verify()
     :
     source(nullptr) // presence node
-	,unicast(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast>())
+    , unicast(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast>())
 {
     unicast->parent = this;
 
-    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::~Verify()
@@ -4239,6 +4285,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::~Verify()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return (source !=  nullptr && source->has_data())
 	|| (unicast !=  nullptr && unicast->has_data());
 }
@@ -4327,7 +4374,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Source()
 {
     vlan->parent = this;
 
-    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::~Source()
@@ -4336,6 +4383,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::~Source()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -4407,7 +4455,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::Vlan()
     dhcp_snooping(nullptr) // presence node
 {
 
-    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::~Vlan()
@@ -4416,6 +4464,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::~Vlan()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (dhcp_snooping !=  nullptr && dhcp_snooping->has_data());
 }
 
@@ -4487,7 +4536,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::DhcpSnooping
     port_security{YType::empty, "port-security"}
 {
 
-    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::DhcpSnooping::~DhcpSnooping()
@@ -4496,6 +4545,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::DhcpSnooping
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::DhcpSnooping::has_data() const
 {
+    if (is_presence_container) return true;
     return port_security.is_set;
 }
 
@@ -4562,11 +4612,11 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Source::Vlan::DhcpSno
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::Unicast()
     :
     reverse_path(nullptr) // presence node
-	,source(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::Source>())
+    , source(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::Source>())
 {
     source->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::~Unicast()
@@ -4575,6 +4625,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::~Unicast()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (reverse_path !=  nullptr && reverse_path->has_data())
 	|| (source !=  nullptr && source->has_data());
 }
@@ -4660,7 +4711,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::has_leaf_or_
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::ReversePath::ReversePath()
 {
 
-    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::ReversePath::~ReversePath()
@@ -4669,6 +4720,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::ReversePath::~Rev
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::ReversePath::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4725,7 +4777,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::Source::Source()
     allow_default{YType::empty, "allow-default"}
 {
 
-    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::Source::~Source()
@@ -4734,6 +4786,7 @@ Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::Source::~Source()
 
 bool Native::Interface::EmbeddedServiceEngine::Ip::Verify::Unicast::Source::has_data() const
 {
+    if (is_presence_container) return true;
     return reachable_via.is_set
 	|| allow_self_ping.is_set
 	|| allow_default.is_set;
@@ -4829,20 +4882,21 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Ipv6()
     enable{YType::empty, "enable"},
     mtu{YType::uint16, "mtu"},
     redirects{YType::boolean, "redirects"}
-    	,
+        ,
     destination_guard(nullptr) // presence node
-	,source_guard(nullptr) // presence node
-	,dhcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Dhcp>())
-	,address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Address>())
-	,nd(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Nd>())
-	,tcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Tcp>())
+    , source_guard(nullptr) // presence node
+    , dhcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Dhcp>())
+    , address(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Address>())
+    , nd(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Nd>())
+    , tcp(std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Tcp>())
+    , traffic_filter(this, {"direction"})
 {
     dhcp->parent = this;
     address->parent = this;
     nd->parent = this;
     tcp->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::~Ipv6()
@@ -4851,7 +4905,8 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::~Ipv6()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::has_data() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_data())
             return true;
@@ -4870,7 +4925,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::has_data() const
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_filter.size(); index++)
+    for (std::size_t index=0; index<traffic_filter.len(); index++)
     {
         if(traffic_filter[index]->has_operation())
             return true;
@@ -4968,7 +5023,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Ipv6::get_chil
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter>();
         c->parent = this;
-        traffic_filter.push_back(c);
+        traffic_filter.append(c);
         return c;
     }
 
@@ -5010,7 +5065,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : traffic_filter)
+    for (auto c : traffic_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5081,7 +5136,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::DestinationGuard::DestinationGua
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::DestinationGuard::~DestinationGuard()
@@ -5090,6 +5145,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::DestinationGuard::~DestinationGu
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::DestinationGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -5158,7 +5214,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::SourceGuard::SourceGuard()
     attach_policy{YType::str, "attach-policy"}
 {
 
-    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-guard"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::SourceGuard::~SourceGuard()
@@ -5167,6 +5223,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::SourceGuard::~SourceGuard()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::SourceGuard::has_data() const
 {
+    if (is_presence_container) return true;
     return attach_policy.is_set;
 }
 
@@ -5233,7 +5290,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::SourceGuard::has_leaf_or_ch
 Native::Interface::EmbeddedServiceEngine::Ipv6::Dhcp::Dhcp()
 {
 
-    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Dhcp::~Dhcp()
@@ -5242,6 +5299,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Dhcp::~Dhcp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5294,10 +5352,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::Dhcp::has_leaf_or_child_of_
 Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Address()
     :
     dhcp(nullptr) // presence node
-	,autoconfig(nullptr) // presence node
+    , autoconfig(nullptr) // presence node
+    , prefix_list(this, {"prefix"})
+    , link_local_address(this, {"address"})
 {
 
-    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Address::~Address()
@@ -5306,12 +5366,13 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::~Address()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_data())
             return true;
@@ -5322,12 +5383,12 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::has_data() const
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list.size(); index++)
+    for (std::size_t index=0; index<prefix_list.len(); index++)
     {
         if(prefix_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<link_local_address.size(); index++)
+    for (std::size_t index=0; index<link_local_address.len(); index++)
     {
         if(link_local_address[index]->has_operation())
             return true;
@@ -5377,7 +5438,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Ipv6::Address:
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList>();
         c->parent = this;
-        prefix_list.push_back(c);
+        prefix_list.append(c);
         return c;
     }
 
@@ -5385,7 +5446,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Ipv6::Address:
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress>();
         c->parent = this;
-        link_local_address.push_back(c);
+        link_local_address.append(c);
         return c;
     }
 
@@ -5407,7 +5468,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : prefix_list)
+    for (auto c : prefix_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5416,7 +5477,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : link_local_address)
+    for (auto c : link_local_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5447,7 +5508,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Dhcp::Dhcp()
     rapid_commit{YType::empty, "rapid-commit"}
 {
 
-    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Dhcp::~Dhcp()
@@ -5456,6 +5517,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Dhcp::~Dhcp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return rapid_commit.is_set;
 }
 
@@ -5524,7 +5586,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Autoconfig::Autoconfig(
     default_{YType::empty, "default"}
 {
 
-    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autoconfig"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Autoconfig::~Autoconfig()
@@ -5533,6 +5595,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Autoconfig::~Autoconfig
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Autoconfig::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set;
 }
 
@@ -5603,7 +5666,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList::PrefixList(
     eui_64{YType::empty, "eui-64"}
 {
 
-    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList::~PrefixList()
@@ -5612,6 +5675,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList::~PrefixList
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| anycast.is_set
 	|| eui_64.is_set;
@@ -5628,7 +5692,8 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList::has_op
 std::string Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "prefix-list";
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -5707,7 +5772,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress::LinkL
     link_local{YType::empty, "link-local"}
 {
 
-    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-local-address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress::~LinkLocalAddress()
@@ -5716,6 +5781,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress::~Link
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| link_local.is_set;
 }
@@ -5730,7 +5796,8 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress::
 std::string Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-local-address" <<"[address='" <<address <<"']";
+    path_buffer << "link-local-address";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -5795,7 +5862,7 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress::
 Native::Interface::EmbeddedServiceEngine::Ipv6::Nd::Nd()
 {
 
-    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Nd::~Nd()
@@ -5804,6 +5871,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Nd::~Nd()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Nd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5858,7 +5926,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Tcp::Tcp()
     adjust_mss{YType::uint16, "adjust-mss"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::Tcp::~Tcp()
@@ -5867,6 +5935,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::Tcp::~Tcp()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return adjust_mss.is_set;
 }
 
@@ -5936,7 +6005,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter::TrafficFilter()
     access_list{YType::str, "access-list"}
 {
 
-    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter::~TrafficFilter()
@@ -5945,6 +6014,7 @@ Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter::~TrafficFilter()
 
 bool Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| access_list.is_set;
 }
@@ -5959,7 +6029,8 @@ bool Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter::has_operatio
 std::string Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-filter" <<"[direction='" <<direction <<"']";
+    path_buffer << "traffic-filter";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -6027,7 +6098,7 @@ Native::Interface::EmbeddedServiceEngine::Logging::Logging()
 {
     event->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "logging"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Logging::~Logging()
@@ -6036,6 +6107,7 @@ Native::Interface::EmbeddedServiceEngine::Logging::~Logging()
 
 bool Native::Interface::EmbeddedServiceEngine::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return (event !=  nullptr && event->has_data());
 }
 
@@ -6110,12 +6182,12 @@ Native::Interface::EmbeddedServiceEngine::Logging::Event::Event()
     nfas_status{YType::empty, "nfas-status"},
     power_inline_status{YType::empty, "power-inline-status"},
     status{YType::empty, "status"}
-    	,
+        ,
     spanning_tree(nullptr) // presence node
-	,subif_link_status(nullptr) // presence node
+    , subif_link_status(nullptr) // presence node
 {
 
-    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "event"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Logging::Event::~Event()
@@ -6124,6 +6196,7 @@ Native::Interface::EmbeddedServiceEngine::Logging::Event::~Event()
 
 bool Native::Interface::EmbeddedServiceEngine::Logging::Event::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_status.is_set
 	|| link_status.is_set
 	|| trunk_status.is_set
@@ -6289,7 +6362,7 @@ Native::Interface::EmbeddedServiceEngine::Logging::Event::SpanningTree::Spanning
     status{YType::empty, "status"}
 {
 
-    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spanning-tree"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Logging::Event::SpanningTree::~SpanningTree()
@@ -6298,6 +6371,7 @@ Native::Interface::EmbeddedServiceEngine::Logging::Event::SpanningTree::~Spannin
 
 bool Native::Interface::EmbeddedServiceEngine::Logging::Event::SpanningTree::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -6366,7 +6440,7 @@ Native::Interface::EmbeddedServiceEngine::Logging::Event::SubifLinkStatus::Subif
     ignore_bulk{YType::empty, "ignore-bulk"}
 {
 
-    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subif-link-status"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Logging::Event::SubifLinkStatus::~SubifLinkStatus()
@@ -6375,6 +6449,7 @@ Native::Interface::EmbeddedServiceEngine::Logging::Event::SubifLinkStatus::~Subi
 
 bool Native::Interface::EmbeddedServiceEngine::Logging::Event::SubifLinkStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_bulk.is_set;
 }
 
@@ -6443,7 +6518,7 @@ Native::Interface::EmbeddedServiceEngine::Mdix::Mdix()
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "mdix"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdix"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Mdix::~Mdix()
@@ -6452,6 +6527,7 @@ Native::Interface::EmbeddedServiceEngine::Mdix::~Mdix()
 
 bool Native::Interface::EmbeddedServiceEngine::Mdix::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -6521,7 +6597,7 @@ Native::Interface::EmbeddedServiceEngine::Mop::Mop()
     sysid{YType::boolean, "sysid"}
 {
 
-    yang_name = "mop"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mop"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Mop::~Mop()
@@ -6530,6 +6606,7 @@ Native::Interface::EmbeddedServiceEngine::Mop::~Mop()
 
 bool Native::Interface::EmbeddedServiceEngine::Mop::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| sysid.is_set;
 }
@@ -6612,7 +6689,7 @@ Native::Interface::EmbeddedServiceEngine::InterfaceQos::InterfaceQos()
 {
     trust->parent = this;
 
-    yang_name = "interface_qos"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface_qos"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::InterfaceQos::~InterfaceQos()
@@ -6621,6 +6698,7 @@ Native::Interface::EmbeddedServiceEngine::InterfaceQos::~InterfaceQos()
 
 bool Native::Interface::EmbeddedServiceEngine::InterfaceQos::has_data() const
 {
+    if (is_presence_container) return true;
     return (trust !=  nullptr && trust->has_data());
 }
 
@@ -6692,7 +6770,7 @@ Native::Interface::EmbeddedServiceEngine::InterfaceQos::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "interface_qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::InterfaceQos::Trust::~Trust()
@@ -6701,6 +6779,7 @@ Native::Interface::EmbeddedServiceEngine::InterfaceQos::Trust::~Trust()
 
 bool Native::Interface::EmbeddedServiceEngine::InterfaceQos::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -6769,13 +6848,14 @@ Native::Interface::EmbeddedServiceEngine::Standby::Standby()
     version{YType::enumeration, "version"},
     bfd{YType::empty, "bfd"},
     mac_refresh{YType::uint8, "mac-refresh"}
-    	,
+        ,
     delay(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::Delay>())
-	,use_bia(nullptr) // presence node
+    , use_bia(nullptr) // presence node
+    , standby_list(this, {"group_number"})
 {
     delay->parent = this;
 
-    yang_name = "standby"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::~Standby()
@@ -6784,7 +6864,8 @@ Native::Interface::EmbeddedServiceEngine::Standby::~Standby()
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::has_data() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_data())
             return true;
@@ -6798,7 +6879,7 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::has_data() const
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::has_operation() const
 {
-    for (std::size_t index=0; index<standby_list.size(); index++)
+    for (std::size_t index=0; index<standby_list.len(); index++)
     {
         if(standby_list[index]->has_operation())
             return true;
@@ -6854,7 +6935,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Standby::get_c
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList>();
         c->parent = this;
-        standby_list.push_back(c);
+        standby_list.append(c);
         return c;
     }
 
@@ -6876,7 +6957,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : standby_list)
+    for (auto c : standby_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6938,7 +7019,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::Delay::Delay()
     reload{YType::uint16, "reload"}
 {
 
-    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::Delay::~Delay()
@@ -6947,6 +7028,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::Delay::~Delay()
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set;
 }
@@ -7029,7 +7111,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::UseBia::UseBia()
 {
     scope->parent = this;
 
-    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "use-bia"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::UseBia::~UseBia()
@@ -7038,6 +7120,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::UseBia::~UseBia()
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::UseBia::has_data() const
 {
+    if (is_presence_container) return true;
     return (scope !=  nullptr && scope->has_data());
 }
 
@@ -7109,7 +7192,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::UseBia::Scope::Scope()
     interface{YType::empty, "interface"}
 {
 
-    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scope"; yang_parent_name = "use-bia"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::UseBia::Scope::~Scope()
@@ -7118,6 +7201,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::UseBia::Scope::~Scope()
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::UseBia::Scope::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set;
 }
 
@@ -7189,18 +7273,19 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::StandbyList()
     mac_address{YType::str, "mac-address"},
     name{YType::str, "name"},
     priority{YType::uint8, "priority"}
-    	,
+        ,
     authentication(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication>())
-	,ip(nullptr) // presence node
-	,preempt(nullptr) // presence node
-	,redirect(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect>())
-	,timers(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers>())
+    , ip(nullptr) // presence node
+    , preempt(nullptr) // presence node
+    , redirect(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect>())
+    , timers(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers>())
+    , track(this, {"number"})
 {
     authentication->parent = this;
     redirect->parent = this;
     timers->parent = this;
 
-    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "standby-list"; yang_parent_name = "standby"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::~StandbyList()
@@ -7209,7 +7294,8 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::~StandbyList()
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::has_data() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_data())
             return true;
@@ -7229,7 +7315,7 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::has_data() 
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::has_operation() const
 {
-    for (std::size_t index=0; index<track.size(); index++)
+    for (std::size_t index=0; index<track.len(); index++)
     {
         if(track[index]->has_operation())
             return true;
@@ -7251,7 +7337,8 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::has_operati
 std::string Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "standby-list" <<"[group-number='" <<group_number <<"']";
+    path_buffer << "standby-list";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
@@ -7321,7 +7408,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::Standby::Stand
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track>();
         c->parent = this;
-        track.push_back(c);
+        track.append(c);
         return c;
     }
 
@@ -7358,7 +7445,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     }
 
     count = 0;
-    for (auto const & c : track)
+    for (auto c : track.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7448,12 +7535,12 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::
     :
     word{YType::str, "word"},
     text{YType::str, "text"}
-    	,
+        ,
     md5(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::Md5>())
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::~Authentication()
@@ -7462,6 +7549,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return word.is_set
 	|| text.is_set
 	|| (md5 !=  nullptr && md5->has_data());
@@ -7557,12 +7645,12 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authenticat
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::Md5::~Md5()
@@ -7571,6 +7659,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -7657,7 +7746,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::Md5::KeyString::~KeyString()
@@ -7666,6 +7755,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -7761,7 +7851,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Ip::Ip()
     secondary{YType::empty, "secondary"}
 {
 
-    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Ip::~Ip()
@@ -7770,6 +7860,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Ip::~Ip()
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| secondary.is_set;
 }
@@ -7852,7 +7943,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::Preempt
 {
     delay->parent = this;
 
-    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "preempt"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::~Preempt()
@@ -7861,6 +7952,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::~Preemp
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::has_data() const
 {
+    if (is_presence_container) return true;
     return (delay !=  nullptr && delay->has_data());
 }
 
@@ -7934,7 +8026,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::Delay::
     sync{YType::uint16, "sync"}
 {
 
-    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay"; yang_parent_name = "preempt"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::Delay::~Delay()
@@ -7943,6 +8035,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::Delay::
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::Delay::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum.is_set
 	|| reload.is_set
 	|| sync.is_set;
@@ -8035,14 +8128,14 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt::De
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Redirect()
     :
     unknown{YType::empty, "unknown"}
-    	,
+        ,
     advertisement(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement>())
-	,timers(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Timers>())
+    , timers(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Timers>())
 {
     advertisement->parent = this;
     timers->parent = this;
 
-    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redirect"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::~Redirect()
@@ -8051,6 +8144,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::~Redir
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown.is_set
 	|| (advertisement !=  nullptr && advertisement->has_data())
 	|| (timers !=  nullptr && timers->has_data());
@@ -8152,7 +8246,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advert
 {
     authentication->parent = this;
 
-    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertisement"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::~Advertisement()
@@ -8161,6 +8255,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advert
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -8233,7 +8328,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advert
 {
     md5->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "advertisement"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::~Authentication()
@@ -8242,6 +8337,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advert
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (md5 !=  nullptr && md5->has_data());
 }
 
@@ -8311,12 +8407,12 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::A
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::Md5()
     :
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     key_string(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString>())
 {
     key_string->parent = this;
 
-    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "md5"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::~Md5()
@@ -8325,6 +8421,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advert
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| (key_string !=  nullptr && key_string->has_data());
 }
@@ -8411,7 +8508,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advert
     timeout{YType::uint16, "timeout"}
 {
 
-    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key-string"; yang_parent_name = "md5"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::~KeyString()
@@ -8420,6 +8517,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advert
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Advertisement::Authentication::Md5::KeyString::has_data() const
 {
+    if (is_presence_container) return true;
     return encrypt.is_set
 	|| string.is_set
 	|| timeout.is_set;
@@ -8515,7 +8613,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Timers
     holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Timers::~Timers()
@@ -8524,6 +8622,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Timers
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return advertisement.is_set
 	|| holddown.is_set;
 }
@@ -8603,12 +8702,12 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect::T
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::Timers()
     :
     hello_interval(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HelloInterval>())
-	,hold_time(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HoldTime>())
+    , hold_time(std::make_shared<Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HoldTime>())
 {
     hello_interval->parent = this;
     hold_time->parent = this;
 
-    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::~Timers()
@@ -8617,6 +8716,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::~Timers(
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return (hello_interval !=  nullptr && hello_interval->has_data())
 	|| (hold_time !=  nullptr && hold_time->has_data());
 }
@@ -8705,7 +8805,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HelloInt
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HelloInterval::~HelloInterval()
@@ -8714,6 +8814,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HelloInt
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -8796,7 +8897,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HoldTime
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "timers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HoldTime::~HoldTime()
@@ -8805,6 +8906,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HoldTime
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -8888,7 +8990,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track::Track()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track"; yang_parent_name = "standby-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track::~Track()
@@ -8897,6 +8999,7 @@ Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track::~Track()
 
 bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| decrement.is_set
 	|| shutdown.is_set;
@@ -8913,7 +9016,8 @@ bool Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track::has_
 std::string Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "track" <<"[number='" <<number <<"']";
+    path_buffer << "track";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -8990,12 +9094,12 @@ Native::Interface::EmbeddedServiceEngine::AccessSession::AccessSession()
     :
     closed{YType::empty, "closed"},
     host_mode{YType::enumeration, "host-mode"}
-    	,
+        ,
     port_control(std::make_shared<Native::Interface::EmbeddedServiceEngine::AccessSession::PortControl>())
 {
     port_control->parent = this;
 
-    yang_name = "access-session"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-session"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::AccessSession::~AccessSession()
@@ -9004,6 +9108,7 @@ Native::Interface::EmbeddedServiceEngine::AccessSession::~AccessSession()
 
 bool Native::Interface::EmbeddedServiceEngine::AccessSession::has_data() const
 {
+    if (is_presence_container) return true;
     return closed.is_set
 	|| host_mode.is_set
 	|| (port_control !=  nullptr && port_control->has_data());
@@ -9101,7 +9206,7 @@ Native::Interface::EmbeddedServiceEngine::AccessSession::PortControl::PortContro
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-control"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::AccessSession::PortControl::~PortControl()
@@ -9110,6 +9215,7 @@ Native::Interface::EmbeddedServiceEngine::AccessSession::PortControl::~PortContr
 
 bool Native::Interface::EmbeddedServiceEngine::AccessSession::PortControl::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -9176,16 +9282,16 @@ bool Native::Interface::EmbeddedServiceEngine::AccessSession::PortControl::has_l
 Native::Interface::EmbeddedServiceEngine::StormControl::StormControl()
     :
     action(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Action>())
-	,broadcast(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast>())
-	,multicast(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Multicast>())
-	,unicast(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Unicast>())
+    , broadcast(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast>())
+    , multicast(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Multicast>())
+    , unicast(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Unicast>())
 {
     action->parent = this;
     broadcast->parent = this;
     multicast->parent = this;
     unicast->parent = this;
 
-    yang_name = "storm-control"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storm-control"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::~StormControl()
@@ -9194,6 +9300,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::~StormControl()
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data())
 	|| (broadcast !=  nullptr && broadcast->has_data())
 	|| (multicast !=  nullptr && multicast->has_data())
@@ -9315,7 +9422,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Action::Action()
     trap{YType::empty, "trap"}
 {
 
-    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Action::~Action()
@@ -9324,6 +9431,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Action::~Action()
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| shutdown.is_set
 	|| trap.is_set;
@@ -9416,12 +9524,12 @@ bool Native::Interface::EmbeddedServiceEngine::StormControl::Action::has_leaf_or
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Broadcast()
     :
     include(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Include>())
-	,level(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level>())
+    , level(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level>())
 {
     include->parent = this;
     level->parent = this;
 
-    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::~Broadcast()
@@ -9430,6 +9538,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::~Broadcast()
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::has_data() const
 {
+    if (is_presence_container) return true;
     return (include !=  nullptr && include->has_data())
 	|| (level !=  nullptr && level->has_data());
 }
@@ -9517,7 +9626,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Include::Incl
     multicast{YType::empty, "multicast"}
 {
 
-    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "include"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Include::~Include()
@@ -9526,6 +9635,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Include::~Inc
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Include::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast.is_set;
 }
 
@@ -9592,14 +9702,14 @@ bool Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Include:
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "broadcast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::~Level()
@@ -9608,6 +9718,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::~Level
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -9712,7 +9823,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Thresh
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Threshold::~Threshold()
@@ -9721,6 +9832,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Thresh
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -9803,7 +9915,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Bps::B
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Bps::~Bps()
@@ -9812,6 +9924,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Bps::~
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -9894,7 +10007,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Pps::P
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Pps::~Pps()
@@ -9903,6 +10016,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Pps::~
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Broadcast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -9985,7 +10099,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Multicast()
 {
     level->parent = this;
 
-    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "multicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::~Multicast()
@@ -9994,6 +10108,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::~Multicast()
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -10063,14 +10178,14 @@ bool Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::has_leaf
 Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "multicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::~Level()
@@ -10079,6 +10194,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::~Level
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -10183,7 +10299,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Thresh
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Threshold::~Threshold()
@@ -10192,6 +10308,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Thresh
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -10274,7 +10391,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Bps::B
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Bps::~Bps()
@@ -10283,6 +10400,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Bps::~
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -10365,7 +10483,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Pps::P
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Pps::~Pps()
@@ -10374,6 +10492,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Pps::~
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Multicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -10456,7 +10575,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Unicast()
 {
     level->parent = this;
 
-    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unicast"; yang_parent_name = "storm-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::~Unicast()
@@ -10465,6 +10584,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::~Unicast()
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data());
 }
 
@@ -10534,14 +10654,14 @@ bool Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::has_leaf_o
 Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Level()
     :
     threshold(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Threshold>())
-	,bps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Bps>())
-	,pps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Pps>())
+    , bps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Bps>())
+    , pps(std::make_shared<Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Pps>())
 {
     threshold->parent = this;
     bps->parent = this;
     pps->parent = this;
 
-    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "level"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::~Level()
@@ -10550,6 +10670,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::~Level()
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (bps !=  nullptr && bps->has_data())
 	|| (pps !=  nullptr && pps->has_data());
@@ -10654,7 +10775,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Threshol
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Threshold::~Threshold()
@@ -10663,6 +10784,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Threshol
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -10745,7 +10867,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Bps::Bps
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Bps::~Bps()
@@ -10754,6 +10876,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Bps::~Bp
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Bps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -10836,7 +10959,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Pps::Pps
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Pps::~Pps()
@@ -10845,6 +10968,7 @@ Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Pps::~Pp
 
 bool Native::Interface::EmbeddedServiceEngine::StormControl::Unicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -10926,7 +11050,7 @@ Native::Interface::EmbeddedServiceEngine::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Trust::~Trust()
@@ -10935,6 +11059,7 @@ Native::Interface::EmbeddedServiceEngine::Trust::~Trust()
 
 bool Native::Interface::EmbeddedServiceEngine::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -11001,12 +11126,12 @@ bool Native::Interface::EmbeddedServiceEngine::Trust::has_leaf_or_child_of_name(
 Native::Interface::EmbeddedServiceEngine::PriorityQueue::PriorityQueue()
     :
     out{YType::empty, "out"}
-    	,
+        ,
     cos_map(std::make_shared<Native::Interface::EmbeddedServiceEngine::PriorityQueue::CosMap>())
 {
     cos_map->parent = this;
 
-    yang_name = "priority-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::PriorityQueue::~PriorityQueue()
@@ -11015,6 +11140,7 @@ Native::Interface::EmbeddedServiceEngine::PriorityQueue::~PriorityQueue()
 
 bool Native::Interface::EmbeddedServiceEngine::PriorityQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set
 	|| (cos_map !=  nullptr && cos_map->has_data());
 }
@@ -11100,7 +11226,7 @@ Native::Interface::EmbeddedServiceEngine::PriorityQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::PriorityQueue::CosMap::~CosMap()
@@ -11109,6 +11235,7 @@ Native::Interface::EmbeddedServiceEngine::PriorityQueue::CosMap::~CosMap()
 
 bool Native::Interface::EmbeddedServiceEngine::PriorityQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -11194,9 +11321,11 @@ bool Native::Interface::EmbeddedServiceEngine::PriorityQueue::CosMap::has_leaf_o
 }
 
 Native::Interface::EmbeddedServiceEngine::RcvQueue::RcvQueue()
+    :
+    cos_map(this, {"queue_id", "threshold_id"})
 {
 
-    yang_name = "rcv-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-queue"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::RcvQueue::~RcvQueue()
@@ -11205,7 +11334,8 @@ Native::Interface::EmbeddedServiceEngine::RcvQueue::~RcvQueue()
 
 bool Native::Interface::EmbeddedServiceEngine::RcvQueue::has_data() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_data())
             return true;
@@ -11215,7 +11345,7 @@ bool Native::Interface::EmbeddedServiceEngine::RcvQueue::has_data() const
 
 bool Native::Interface::EmbeddedServiceEngine::RcvQueue::has_operation() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_operation())
             return true;
@@ -11245,7 +11375,7 @@ std::shared_ptr<Entity> Native::Interface::EmbeddedServiceEngine::RcvQueue::get_
     {
         auto c = std::make_shared<Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap>();
         c->parent = this;
-        cos_map.push_back(c);
+        cos_map.append(c);
         return c;
     }
 
@@ -11257,7 +11387,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::EmbeddedServic
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cos_map)
+    for (auto c : cos_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11290,7 +11420,7 @@ Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap::~CosMap()
@@ -11299,6 +11429,7 @@ Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap::~CosMap()
 
 bool Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -11324,7 +11455,9 @@ bool Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap::has_operation()
 std::string Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cos-map" <<"[queue-id='" <<queue_id <<"']" <<"[threshold-id='" <<threshold_id <<"']";
+    path_buffer << "cos-map";
+    ADD_KEY_TOKEN(queue_id, "queue-id");
+    ADD_KEY_TOKEN(threshold_id, "threshold-id");
     return path_buffer.str();
 }
 
@@ -11402,7 +11535,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Peer()
 {
     default_->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Peer::~Peer()
@@ -11411,6 +11544,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::~Peer()
 
 bool Native::Interface::EmbeddedServiceEngine::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -11483,7 +11617,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Default()
 {
     ip->parent = this;
 
-    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Peer::Default::~Default()
@@ -11492,6 +11626,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::~Default()
 
 bool Native::Interface::EmbeddedServiceEngine::Peer::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -11564,7 +11699,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Ip()
 {
     address->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::~Ip()
@@ -11573,6 +11708,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::~Ip()
 
 bool Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -11642,12 +11778,12 @@ bool Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::has_leaf_or_ch
 Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
-    	,
+        ,
     dhcp_pool(nullptr) // presence node
-	,pool(nullptr) // presence node
+    , pool(nullptr) // presence node
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::~Address()
@@ -11656,6 +11792,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::~Address()
 
 bool Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
@@ -11756,7 +11893,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::DhcpPool::
     pools{YType::str, "pools"}
 {
 
-    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
@@ -11765,6 +11902,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::DhcpPool::
 
 bool Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -11833,7 +11971,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::Pool::Pool
     pools{YType::str, "pools"}
 {
 
-    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::Pool::~Pool()
@@ -11842,6 +11980,7 @@ Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::Pool::~Poo
 
 bool Native::Interface::EmbeddedServiceEngine::Peer::Default::Ip::Address::Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -11911,7 +12050,7 @@ Native::Interface::EmbeddedServiceEngine::PmPath::PmPath()
     interface_id{YType::uint8, "interface-id"}
 {
 
-    yang_name = "pm-path"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pm-path"; yang_parent_name = "Embedded-Service-Engine"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::EmbeddedServiceEngine::PmPath::~PmPath()
@@ -11920,6 +12059,7 @@ Native::Interface::EmbeddedServiceEngine::PmPath::~PmPath()
 
 bool Native::Interface::EmbeddedServiceEngine::PmPath::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_id.is_set;
 }
@@ -12009,95 +12149,97 @@ Native::Interface::FastEthernet::FastEthernet()
     max_reserved_bandwidth{YType::uint8, "max-reserved-bandwidth"},
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"},
+    cisco_ios_xe_switch_macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"},
     channel_protocol{YType::enumeration, "Cisco-IOS-XE-ethernet:channel-protocol"},
     duplex{YType::enumeration, "Cisco-IOS-XE-ethernet:duplex"},
     cisco_ios_xe_ethernet_macsec{YType::empty, "Cisco-IOS-XE-ethernet:macsec"},
-    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"},
-    cisco_ios_xe_switch_macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"}
-    	,
+    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"}
+        ,
     switchport_conf(std::make_shared<Native::Interface::FastEthernet::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::FastEthernet::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::FastEthernet::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::FastEthernet::Arp>())
-	,backup(std::make_shared<Native::Interface::FastEthernet::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::FastEthernet::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::FastEthernet::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::FastEthernet::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::FastEthernet::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::FastEthernet::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::FastEthernet::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::FastEthernet::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::FastEthernet::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::FastEthernet::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::FastEthernet::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::FastEthernet::Dampening>())
-	,domain(std::make_shared<Native::Interface::FastEthernet::Domain>())
-	,mpls(std::make_shared<Native::Interface::FastEthernet::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::FastEthernet::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::FastEthernet::Vrf>())
-	,ip(std::make_shared<Native::Interface::FastEthernet::Ip>())
-	,ipv6(std::make_shared<Native::Interface::FastEthernet::Ipv6>())
-	,logging(std::make_shared<Native::Interface::FastEthernet::Logging>())
-	,mdix(std::make_shared<Native::Interface::FastEthernet::Mdix>())
-	,mop(std::make_shared<Native::Interface::FastEthernet::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::FastEthernet::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::FastEthernet::Standby>())
-	,access_session(std::make_shared<Native::Interface::FastEthernet::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::FastEthernet::StormControl>())
-	,trust(std::make_shared<Native::Interface::FastEthernet::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::FastEthernet::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::FastEthernet::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::FastEthernet::Peer>())
-	,pm_path(std::make_shared<Native::Interface::FastEthernet::PmPath>())
-	,carrier_delay(std::make_shared<Native::Interface::FastEthernet::CarrierDelay>())
-	,channel_group(std::make_shared<Native::Interface::FastEthernet::ChannelGroup>())
-	,ethernet(std::make_shared<Native::Interface::FastEthernet::Ethernet>())
-	,negotiation(std::make_shared<Native::Interface::FastEthernet::Negotiation>())
-	,eapol(std::make_shared<Native::Interface::FastEthernet::Eapol>())
-	,synchronous(std::make_shared<Native::Interface::FastEthernet::Synchronous>())
-	,speed(std::make_shared<Native::Interface::FastEthernet::Speed>())
-	,plim(std::make_shared<Native::Interface::FastEthernet::Plim>())
-	,pppoe(std::make_shared<Native::Interface::FastEthernet::Pppoe>())
-	,service(std::make_shared<Native::Interface::FastEthernet::Service>())
-	,lacp(std::make_shared<Native::Interface::FastEthernet::Lacp>())
-	,cisco_ios_xe_ethernet_macsec_option(std::make_shared<Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption>())
-	,xconnect(std::make_shared<Native::Interface::FastEthernet::Xconnect>())
-	,cdp(std::make_shared<Native::Interface::FastEthernet::Cdp>())
-	,snmp(std::make_shared<Native::Interface::FastEthernet::Snmp>())
-	,crypto(std::make_shared<Native::Interface::FastEthernet::Crypto>())
-	,cts(std::make_shared<Native::Interface::FastEthernet::Cts>())
-	,dot1x(std::make_shared<Native::Interface::FastEthernet::Dot1X>())
-	,et_analytics(std::make_shared<Native::Interface::FastEthernet::EtAnalytics>())
-	,performance(std::make_shared<Native::Interface::FastEthernet::Performance>())
-	,service_policy(std::make_shared<Native::Interface::FastEthernet::ServicePolicy>())
-	,fabric_domain(std::make_shared<Native::Interface::FastEthernet::FabricDomain>())
-	,lisp(std::make_shared<Native::Interface::FastEthernet::Lisp>())
-	,lldp(std::make_shared<Native::Interface::FastEthernet::Lldp>())
-	,mka(std::make_shared<Native::Interface::FastEthernet::Mka>())
-	,mvrp(nullptr) // presence node
-	,ntp(std::make_shared<Native::Interface::FastEthernet::Ntp>())
-	,ospfv3(std::make_shared<Native::Interface::FastEthernet::Ospfv3>())
-	,power(std::make_shared<Native::Interface::FastEthernet::Power>())
-	,authentication(std::make_shared<Native::Interface::FastEthernet::Authentication>())
-	,mab(nullptr) // presence node
-	,spanning_tree(std::make_shared<Native::Interface::FastEthernet::SpanningTree>())
-	,auto_(std::make_shared<Native::Interface::FastEthernet::Auto>())
-	,datalink(std::make_shared<Native::Interface::FastEthernet::Datalink>())
-	,energywise(nullptr) // presence node
-	,location(std::make_shared<Native::Interface::FastEthernet::Location>())
-	,mac(std::make_shared<Native::Interface::FastEthernet::Mac>())
-	,macro(std::make_shared<Native::Interface::FastEthernet::Macro>())
-	,dual_active(std::make_shared<Native::Interface::FastEthernet::DualActive>())
-	,load_balancing(std::make_shared<Native::Interface::FastEthernet::LoadBalancing>())
-	,switch_(std::make_shared<Native::Interface::FastEthernet::Switch>())
-	,srr_queue(std::make_shared<Native::Interface::FastEthernet::SrrQueue>())
-	,cisco_ios_xe_switch_macsec_option_(std::make_shared<Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption>())
-	,device_tracking(std::make_shared<Native::Interface::FastEthernet::DeviceTracking>())
-	,udld(std::make_shared<Native::Interface::FastEthernet::Udld>())
-	,umbrella(std::make_shared<Native::Interface::FastEthernet::Umbrella>())
-	,utd(std::make_shared<Native::Interface::FastEthernet::Utd>())
-	,zone_member(std::make_shared<Native::Interface::FastEthernet::ZoneMember>())
+    , switchport(std::make_shared<Native::Interface::FastEthernet::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::FastEthernet::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::FastEthernet::Arp>())
+    , backup(std::make_shared<Native::Interface::FastEthernet::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::FastEthernet::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::FastEthernet::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::FastEthernet::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::FastEthernet::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::FastEthernet::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::FastEthernet::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::FastEthernet::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::FastEthernet::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::FastEthernet::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::FastEthernet::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::FastEthernet::Dampening>())
+    , domain(std::make_shared<Native::Interface::FastEthernet::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::FastEthernet::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::FastEthernet::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::FastEthernet::Vrf>())
+    , ip(std::make_shared<Native::Interface::FastEthernet::Ip>())
+    , ipv6(std::make_shared<Native::Interface::FastEthernet::Ipv6>())
+    , logging(std::make_shared<Native::Interface::FastEthernet::Logging>())
+    , mdix(std::make_shared<Native::Interface::FastEthernet::Mdix>())
+    , mop(std::make_shared<Native::Interface::FastEthernet::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::FastEthernet::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::FastEthernet::Standby>())
+    , access_session(std::make_shared<Native::Interface::FastEthernet::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::FastEthernet::StormControl>())
+    , trust(std::make_shared<Native::Interface::FastEthernet::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::FastEthernet::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::FastEthernet::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::FastEthernet::Peer>())
+    , pm_path(std::make_shared<Native::Interface::FastEthernet::PmPath>())
+    , fabric_domain(std::make_shared<Native::Interface::FastEthernet::FabricDomain>())
+    , lldp(std::make_shared<Native::Interface::FastEthernet::Lldp>())
+    , service_policy(std::make_shared<Native::Interface::FastEthernet::ServicePolicy>())
+    , utd(std::make_shared<Native::Interface::FastEthernet::Utd>())
+    , dot1x(std::make_shared<Native::Interface::FastEthernet::Dot1x>())
+    , auto_(std::make_shared<Native::Interface::FastEthernet::Auto>())
+    , datalink(std::make_shared<Native::Interface::FastEthernet::Datalink>())
+    , energywise(nullptr) // presence node
+    , location(std::make_shared<Native::Interface::FastEthernet::Location>())
+    , mac(std::make_shared<Native::Interface::FastEthernet::Mac>())
+    , macro(std::make_shared<Native::Interface::FastEthernet::Macro>())
+    , dual_active(std::make_shared<Native::Interface::FastEthernet::DualActive>())
+    , load_balancing(std::make_shared<Native::Interface::FastEthernet::LoadBalancing>())
+    , vlan_range(this, {"id"})
+    , switch_(std::make_shared<Native::Interface::FastEthernet::Switch>())
+    , srr_queue(std::make_shared<Native::Interface::FastEthernet::SrrQueue>())
+    , cisco_ios_xe_switch_macsec_option(std::make_shared<Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption>())
+    , device_tracking(std::make_shared<Native::Interface::FastEthernet::DeviceTracking>())
+    , cts(std::make_shared<Native::Interface::FastEthernet::Cts>())
+    , power(std::make_shared<Native::Interface::FastEthernet::Power>())
+    , mka(std::make_shared<Native::Interface::FastEthernet::Mka>())
+    , umbrella(std::make_shared<Native::Interface::FastEthernet::Umbrella>())
+    , snmp(std::make_shared<Native::Interface::FastEthernet::Snmp>())
+    , performance(std::make_shared<Native::Interface::FastEthernet::Performance>())
+    , carrier_delay(std::make_shared<Native::Interface::FastEthernet::CarrierDelay>())
+    , channel_group(std::make_shared<Native::Interface::FastEthernet::ChannelGroup>())
+    , ethernet(std::make_shared<Native::Interface::FastEthernet::Ethernet>())
+    , negotiation(std::make_shared<Native::Interface::FastEthernet::Negotiation>())
+    , eapol(std::make_shared<Native::Interface::FastEthernet::Eapol>())
+    , synchronous(std::make_shared<Native::Interface::FastEthernet::Synchronous>())
+    , speed(std::make_shared<Native::Interface::FastEthernet::Speed>())
+    , plim(std::make_shared<Native::Interface::FastEthernet::Plim>())
+    , pppoe(std::make_shared<Native::Interface::FastEthernet::Pppoe>())
+    , service(std::make_shared<Native::Interface::FastEthernet::Service>())
+    , lacp(std::make_shared<Native::Interface::FastEthernet::Lacp>())
+    , cisco_ios_xe_ethernet_macsec_option_(std::make_shared<Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption>())
+    , xconnect(std::make_shared<Native::Interface::FastEthernet::Xconnect>())
+    , mvrp(nullptr) // presence node
+    , et_analytics(std::make_shared<Native::Interface::FastEthernet::EtAnalytics>())
+    , lisp(std::make_shared<Native::Interface::FastEthernet::Lisp>())
+    , zone_member(std::make_shared<Native::Interface::FastEthernet::ZoneMember>())
+    , crypto(std::make_shared<Native::Interface::FastEthernet::Crypto>())
+    , udld(std::make_shared<Native::Interface::FastEthernet::Udld>())
+    , authentication(std::make_shared<Native::Interface::FastEthernet::Authentication>())
+    , mab(nullptr) // presence node
+    , ospfv3(std::make_shared<Native::Interface::FastEthernet::Ospfv3>())
+    , spanning_tree(std::make_shared<Native::Interface::FastEthernet::SpanningTree>())
+    , ntp(std::make_shared<Native::Interface::FastEthernet::Ntp>())
+    , cdp(std::make_shared<Native::Interface::FastEthernet::Cdp>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -12133,6 +12275,28 @@ Native::Interface::FastEthernet::FastEthernet()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
+    fabric_domain->parent = this;
+    lldp->parent = this;
+    service_policy->parent = this;
+    utd->parent = this;
+    dot1x->parent = this;
+    auto_->parent = this;
+    datalink->parent = this;
+    location->parent = this;
+    mac->parent = this;
+    macro->parent = this;
+    dual_active->parent = this;
+    load_balancing->parent = this;
+    switch_->parent = this;
+    srr_queue->parent = this;
+    cisco_ios_xe_switch_macsec_option->parent = this;
+    device_tracking->parent = this;
+    cts->parent = this;
+    power->parent = this;
+    mka->parent = this;
+    umbrella->parent = this;
+    snmp->parent = this;
+    performance->parent = this;
     carrier_delay->parent = this;
     channel_group->parent = this;
     ethernet->parent = this;
@@ -12144,42 +12308,20 @@ Native::Interface::FastEthernet::FastEthernet()
     pppoe->parent = this;
     service->parent = this;
     lacp->parent = this;
-    cisco_ios_xe_ethernet_macsec_option->parent = this;
+    cisco_ios_xe_ethernet_macsec_option_->parent = this;
     xconnect->parent = this;
-    cdp->parent = this;
-    snmp->parent = this;
-    crypto->parent = this;
-    cts->parent = this;
-    dot1x->parent = this;
     et_analytics->parent = this;
-    performance->parent = this;
-    service_policy->parent = this;
-    fabric_domain->parent = this;
     lisp->parent = this;
-    lldp->parent = this;
-    mka->parent = this;
-    ntp->parent = this;
-    ospfv3->parent = this;
-    power->parent = this;
-    authentication->parent = this;
-    spanning_tree->parent = this;
-    auto_->parent = this;
-    datalink->parent = this;
-    location->parent = this;
-    mac->parent = this;
-    macro->parent = this;
-    dual_active->parent = this;
-    load_balancing->parent = this;
-    switch_->parent = this;
-    srr_queue->parent = this;
-    cisco_ios_xe_switch_macsec_option_->parent = this;
-    device_tracking->parent = this;
-    udld->parent = this;
-    umbrella->parent = this;
-    utd->parent = this;
     zone_member->parent = this;
+    crypto->parent = this;
+    udld->parent = this;
+    authentication->parent = this;
+    ospfv3->parent = this;
+    spanning_tree->parent = this;
+    ntp->parent = this;
+    cdp->parent = this;
 
-    yang_name = "FastEthernet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "FastEthernet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::FastEthernet::~FastEthernet()
@@ -12188,12 +12330,13 @@ Native::Interface::FastEthernet::~FastEthernet()
 
 bool Native::Interface::FastEthernet::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_data())
             return true;
@@ -12209,11 +12352,11 @@ bool Native::Interface::FastEthernet::has_data() const
 	|| max_reserved_bandwidth.is_set
 	|| mtu.is_set
 	|| service_insertion.is_set
+	|| cisco_ios_xe_switch_macsec.is_set
 	|| channel_protocol.is_set
 	|| duplex.is_set
 	|| cisco_ios_xe_ethernet_macsec.is_set
 	|| nat66.is_set
-	|| cisco_ios_xe_switch_macsec.is_set
 	|| (switchport_conf !=  nullptr && switchport_conf->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
 	|| (stackwise_virtual !=  nullptr && stackwise_virtual->has_data())
@@ -12249,6 +12392,29 @@ bool Native::Interface::FastEthernet::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
+	|| (fabric_domain !=  nullptr && fabric_domain->has_data())
+	|| (lldp !=  nullptr && lldp->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (utd !=  nullptr && utd->has_data())
+	|| (dot1x !=  nullptr && dot1x->has_data())
+	|| (auto_ !=  nullptr && auto_->has_data())
+	|| (datalink !=  nullptr && datalink->has_data())
+	|| (energywise !=  nullptr && energywise->has_data())
+	|| (location !=  nullptr && location->has_data())
+	|| (mac !=  nullptr && mac->has_data())
+	|| (macro !=  nullptr && macro->has_data())
+	|| (dual_active !=  nullptr && dual_active->has_data())
+	|| (load_balancing !=  nullptr && load_balancing->has_data())
+	|| (switch_ !=  nullptr && switch_->has_data())
+	|| (srr_queue !=  nullptr && srr_queue->has_data())
+	|| (cisco_ios_xe_switch_macsec_option !=  nullptr && cisco_ios_xe_switch_macsec_option->has_data())
+	|| (device_tracking !=  nullptr && device_tracking->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (power !=  nullptr && power->has_data())
+	|| (mka !=  nullptr && mka->has_data())
+	|| (umbrella !=  nullptr && umbrella->has_data())
+	|| (snmp !=  nullptr && snmp->has_data())
+	|| (performance !=  nullptr && performance->has_data())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_data())
 	|| (channel_group !=  nullptr && channel_group->has_data())
 	|| (ethernet !=  nullptr && ethernet->has_data())
@@ -12260,53 +12426,30 @@ bool Native::Interface::FastEthernet::has_data() const
 	|| (pppoe !=  nullptr && pppoe->has_data())
 	|| (service !=  nullptr && service->has_data())
 	|| (lacp !=  nullptr && lacp->has_data())
-	|| (cisco_ios_xe_ethernet_macsec_option !=  nullptr && cisco_ios_xe_ethernet_macsec_option->has_data())
+	|| (cisco_ios_xe_ethernet_macsec_option_ !=  nullptr && cisco_ios_xe_ethernet_macsec_option_->has_data())
 	|| (xconnect !=  nullptr && xconnect->has_data())
-	|| (cdp !=  nullptr && cdp->has_data())
-	|| (snmp !=  nullptr && snmp->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (dot1x !=  nullptr && dot1x->has_data())
-	|| (et_analytics !=  nullptr && et_analytics->has_data())
-	|| (performance !=  nullptr && performance->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
-	|| (fabric_domain !=  nullptr && fabric_domain->has_data())
-	|| (lisp !=  nullptr && lisp->has_data())
-	|| (lldp !=  nullptr && lldp->has_data())
-	|| (mka !=  nullptr && mka->has_data())
 	|| (mvrp !=  nullptr && mvrp->has_data())
-	|| (ntp !=  nullptr && ntp->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
-	|| (power !=  nullptr && power->has_data())
+	|| (et_analytics !=  nullptr && et_analytics->has_data())
+	|| (lisp !=  nullptr && lisp->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (udld !=  nullptr && udld->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (mab !=  nullptr && mab->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
 	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
-	|| (auto_ !=  nullptr && auto_->has_data())
-	|| (datalink !=  nullptr && datalink->has_data())
-	|| (energywise !=  nullptr && energywise->has_data())
-	|| (location !=  nullptr && location->has_data())
-	|| (mac !=  nullptr && mac->has_data())
-	|| (macro !=  nullptr && macro->has_data())
-	|| (dual_active !=  nullptr && dual_active->has_data())
-	|| (load_balancing !=  nullptr && load_balancing->has_data())
-	|| (switch_ !=  nullptr && switch_->has_data())
-	|| (srr_queue !=  nullptr && srr_queue->has_data())
-	|| (cisco_ios_xe_switch_macsec_option_ !=  nullptr && cisco_ios_xe_switch_macsec_option_->has_data())
-	|| (device_tracking !=  nullptr && device_tracking->has_data())
-	|| (udld !=  nullptr && udld->has_data())
-	|| (umbrella !=  nullptr && umbrella->has_data())
-	|| (utd !=  nullptr && utd->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data());
+	|| (ntp !=  nullptr && ntp->has_data())
+	|| (cdp !=  nullptr && cdp->has_data());
 }
 
 bool Native::Interface::FastEthernet::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_operation())
             return true;
@@ -12323,11 +12466,11 @@ bool Native::Interface::FastEthernet::has_operation() const
 	|| ydk::is_set(max_reserved_bandwidth.yfilter)
 	|| ydk::is_set(mtu.yfilter)
 	|| ydk::is_set(service_insertion.yfilter)
+	|| ydk::is_set(cisco_ios_xe_switch_macsec.yfilter)
 	|| ydk::is_set(channel_protocol.yfilter)
 	|| ydk::is_set(duplex.yfilter)
 	|| ydk::is_set(cisco_ios_xe_ethernet_macsec.yfilter)
 	|| ydk::is_set(nat66.yfilter)
-	|| ydk::is_set(cisco_ios_xe_switch_macsec.yfilter)
 	|| (switchport_conf !=  nullptr && switchport_conf->has_operation())
 	|| (switchport !=  nullptr && switchport->has_operation())
 	|| (stackwise_virtual !=  nullptr && stackwise_virtual->has_operation())
@@ -12363,6 +12506,29 @@ bool Native::Interface::FastEthernet::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
+	|| (fabric_domain !=  nullptr && fabric_domain->has_operation())
+	|| (lldp !=  nullptr && lldp->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (utd !=  nullptr && utd->has_operation())
+	|| (dot1x !=  nullptr && dot1x->has_operation())
+	|| (auto_ !=  nullptr && auto_->has_operation())
+	|| (datalink !=  nullptr && datalink->has_operation())
+	|| (energywise !=  nullptr && energywise->has_operation())
+	|| (location !=  nullptr && location->has_operation())
+	|| (mac !=  nullptr && mac->has_operation())
+	|| (macro !=  nullptr && macro->has_operation())
+	|| (dual_active !=  nullptr && dual_active->has_operation())
+	|| (load_balancing !=  nullptr && load_balancing->has_operation())
+	|| (switch_ !=  nullptr && switch_->has_operation())
+	|| (srr_queue !=  nullptr && srr_queue->has_operation())
+	|| (cisco_ios_xe_switch_macsec_option !=  nullptr && cisco_ios_xe_switch_macsec_option->has_operation())
+	|| (device_tracking !=  nullptr && device_tracking->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (power !=  nullptr && power->has_operation())
+	|| (mka !=  nullptr && mka->has_operation())
+	|| (umbrella !=  nullptr && umbrella->has_operation())
+	|| (snmp !=  nullptr && snmp->has_operation())
+	|| (performance !=  nullptr && performance->has_operation())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_operation())
 	|| (channel_group !=  nullptr && channel_group->has_operation())
 	|| (ethernet !=  nullptr && ethernet->has_operation())
@@ -12374,43 +12540,20 @@ bool Native::Interface::FastEthernet::has_operation() const
 	|| (pppoe !=  nullptr && pppoe->has_operation())
 	|| (service !=  nullptr && service->has_operation())
 	|| (lacp !=  nullptr && lacp->has_operation())
-	|| (cisco_ios_xe_ethernet_macsec_option !=  nullptr && cisco_ios_xe_ethernet_macsec_option->has_operation())
+	|| (cisco_ios_xe_ethernet_macsec_option_ !=  nullptr && cisco_ios_xe_ethernet_macsec_option_->has_operation())
 	|| (xconnect !=  nullptr && xconnect->has_operation())
-	|| (cdp !=  nullptr && cdp->has_operation())
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (dot1x !=  nullptr && dot1x->has_operation())
-	|| (et_analytics !=  nullptr && et_analytics->has_operation())
-	|| (performance !=  nullptr && performance->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
-	|| (fabric_domain !=  nullptr && fabric_domain->has_operation())
-	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (lldp !=  nullptr && lldp->has_operation())
-	|| (mka !=  nullptr && mka->has_operation())
 	|| (mvrp !=  nullptr && mvrp->has_operation())
-	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
-	|| (power !=  nullptr && power->has_operation())
+	|| (et_analytics !=  nullptr && et_analytics->has_operation())
+	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (udld !=  nullptr && udld->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (mab !=  nullptr && mab->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
 	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
-	|| (auto_ !=  nullptr && auto_->has_operation())
-	|| (datalink !=  nullptr && datalink->has_operation())
-	|| (energywise !=  nullptr && energywise->has_operation())
-	|| (location !=  nullptr && location->has_operation())
-	|| (mac !=  nullptr && mac->has_operation())
-	|| (macro !=  nullptr && macro->has_operation())
-	|| (dual_active !=  nullptr && dual_active->has_operation())
-	|| (load_balancing !=  nullptr && load_balancing->has_operation())
-	|| (switch_ !=  nullptr && switch_->has_operation())
-	|| (srr_queue !=  nullptr && srr_queue->has_operation())
-	|| (cisco_ios_xe_switch_macsec_option_ !=  nullptr && cisco_ios_xe_switch_macsec_option_->has_operation())
-	|| (device_tracking !=  nullptr && device_tracking->has_operation())
-	|| (udld !=  nullptr && udld->has_operation())
-	|| (umbrella !=  nullptr && umbrella->has_operation())
-	|| (utd !=  nullptr && utd->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation());
+	|| (ntp !=  nullptr && ntp->has_operation())
+	|| (cdp !=  nullptr && cdp->has_operation());
 }
 
 std::string Native::Interface::FastEthernet::get_absolute_path() const
@@ -12423,7 +12566,8 @@ std::string Native::Interface::FastEthernet::get_absolute_path() const
 std::string Native::Interface::FastEthernet::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "FastEthernet" <<"[name='" <<name <<"']";
+    path_buffer << "FastEthernet";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -12442,11 +12586,11 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::FastEthernet::
     if (max_reserved_bandwidth.is_set || is_set(max_reserved_bandwidth.yfilter)) leaf_name_data.push_back(max_reserved_bandwidth.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
     if (service_insertion.is_set || is_set(service_insertion.yfilter)) leaf_name_data.push_back(service_insertion.get_name_leafdata());
+    if (cisco_ios_xe_switch_macsec.is_set || is_set(cisco_ios_xe_switch_macsec.yfilter)) leaf_name_data.push_back(cisco_ios_xe_switch_macsec.get_name_leafdata());
     if (channel_protocol.is_set || is_set(channel_protocol.yfilter)) leaf_name_data.push_back(channel_protocol.get_name_leafdata());
     if (duplex.is_set || is_set(duplex.yfilter)) leaf_name_data.push_back(duplex.get_name_leafdata());
     if (cisco_ios_xe_ethernet_macsec.is_set || is_set(cisco_ios_xe_ethernet_macsec.yfilter)) leaf_name_data.push_back(cisco_ios_xe_ethernet_macsec.get_name_leafdata());
     if (nat66.is_set || is_set(nat66.yfilter)) leaf_name_data.push_back(nat66.get_name_leafdata());
-    if (cisco_ios_xe_switch_macsec.is_set || is_set(cisco_ios_xe_switch_macsec.yfilter)) leaf_name_data.push_back(cisco_ios_xe_switch_macsec.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12521,7 +12665,7 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::FastEthernet::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::FastEthernet::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -12620,7 +12764,7 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
     {
         auto c = std::make_shared<Native::Interface::FastEthernet::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -12777,6 +12921,221 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
         return pm_path;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-iwanfabric:fabric-domain")
+    {
+        if(fabric_domain == nullptr)
+        {
+            fabric_domain = std::make_shared<Native::Interface::FastEthernet::FabricDomain>();
+        }
+        return fabric_domain;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lldp:lldp")
+    {
+        if(lldp == nullptr)
+        {
+            lldp = std::make_shared<Native::Interface::FastEthernet::Lldp>();
+        }
+        return lldp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::FastEthernet::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    {
+        if(utd == nullptr)
+        {
+            utd = std::make_shared<Native::Interface::FastEthernet::Utd>();
+        }
+        return utd;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
+    {
+        if(dot1x == nullptr)
+        {
+            dot1x = std::make_shared<Native::Interface::FastEthernet::Dot1x>();
+        }
+        return dot1x;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:auto")
+    {
+        if(auto_ == nullptr)
+        {
+            auto_ = std::make_shared<Native::Interface::FastEthernet::Auto>();
+        }
+        return auto_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:datalink")
+    {
+        if(datalink == nullptr)
+        {
+            datalink = std::make_shared<Native::Interface::FastEthernet::Datalink>();
+        }
+        return datalink;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:energywise")
+    {
+        if(energywise == nullptr)
+        {
+            energywise = std::make_shared<Native::Interface::FastEthernet::Energywise>();
+        }
+        return energywise;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:location")
+    {
+        if(location == nullptr)
+        {
+            location = std::make_shared<Native::Interface::FastEthernet::Location>();
+        }
+        return location;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:mac")
+    {
+        if(mac == nullptr)
+        {
+            mac = std::make_shared<Native::Interface::FastEthernet::Mac>();
+        }
+        return mac;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:macro")
+    {
+        if(macro == nullptr)
+        {
+            macro = std::make_shared<Native::Interface::FastEthernet::Macro>();
+        }
+        return macro;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:dual-active")
+    {
+        if(dual_active == nullptr)
+        {
+            dual_active = std::make_shared<Native::Interface::FastEthernet::DualActive>();
+        }
+        return dual_active;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:load-balancing")
+    {
+        if(load_balancing == nullptr)
+        {
+            load_balancing = std::make_shared<Native::Interface::FastEthernet::LoadBalancing>();
+        }
+        return load_balancing;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:vlan-range")
+    {
+        auto c = std::make_shared<Native::Interface::FastEthernet::VlanRange>();
+        c->parent = this;
+        vlan_range.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:switch")
+    {
+        if(switch_ == nullptr)
+        {
+            switch_ = std::make_shared<Native::Interface::FastEthernet::Switch>();
+        }
+        return switch_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:srr-queue")
+    {
+        if(srr_queue == nullptr)
+        {
+            srr_queue = std::make_shared<Native::Interface::FastEthernet::SrrQueue>();
+        }
+        return srr_queue;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:macsec-option")
+    {
+        if(cisco_ios_xe_switch_macsec_option == nullptr)
+        {
+            cisco_ios_xe_switch_macsec_option = std::make_shared<Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption>();
+        }
+        return cisco_ios_xe_switch_macsec_option;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:device-tracking")
+    {
+        if(device_tracking == nullptr)
+        {
+            device_tracking = std::make_shared<Native::Interface::FastEthernet::DeviceTracking>();
+        }
+        return device_tracking;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::FastEthernet::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-power:power")
+    {
+        if(power == nullptr)
+        {
+            power = std::make_shared<Native::Interface::FastEthernet::Power>();
+        }
+        return power;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-mka:mka")
+    {
+        if(mka == nullptr)
+        {
+            mka = std::make_shared<Native::Interface::FastEthernet::Mka>();
+        }
+        return mka;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
+    {
+        if(umbrella == nullptr)
+        {
+            umbrella = std::make_shared<Native::Interface::FastEthernet::Umbrella>();
+        }
+        return umbrella;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
+    {
+        if(snmp == nullptr)
+        {
+            snmp = std::make_shared<Native::Interface::FastEthernet::Snmp>();
+        }
+        return snmp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
+    {
+        if(performance == nullptr)
+        {
+            performance = std::make_shared<Native::Interface::FastEthernet::Performance>();
+        }
+        return performance;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-ethernet:carrier-delay")
     {
         if(carrier_delay == nullptr)
@@ -12878,11 +13237,11 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
 
     if(child_yang_name == "Cisco-IOS-XE-ethernet:macsec-option")
     {
-        if(cisco_ios_xe_ethernet_macsec_option == nullptr)
+        if(cisco_ios_xe_ethernet_macsec_option_ == nullptr)
         {
-            cisco_ios_xe_ethernet_macsec_option = std::make_shared<Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption>();
+            cisco_ios_xe_ethernet_macsec_option_ = std::make_shared<Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption>();
         }
-        return cisco_ios_xe_ethernet_macsec_option;
+        return cisco_ios_xe_ethernet_macsec_option_;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-l2vpn:xconnect")
@@ -12894,49 +13253,13 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
         return xconnect;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
+    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
     {
-        if(cdp == nullptr)
+        if(mvrp == nullptr)
         {
-            cdp = std::make_shared<Native::Interface::FastEthernet::Cdp>();
+            mvrp = std::make_shared<Native::Interface::FastEthernet::Mvrp>();
         }
-        return cdp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
-    {
-        if(snmp == nullptr)
-        {
-            snmp = std::make_shared<Native::Interface::FastEthernet::Snmp>();
-        }
-        return snmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::FastEthernet::Crypto>();
-        }
-        return crypto;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::FastEthernet::Cts>();
-        }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
-    {
-        if(dot1x == nullptr)
-        {
-            dot1x = std::make_shared<Native::Interface::FastEthernet::Dot1X>();
-        }
-        return dot1x;
+        return mvrp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
@@ -12948,33 +13271,6 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
         return et_analytics;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
-    {
-        if(performance == nullptr)
-        {
-            performance = std::make_shared<Native::Interface::FastEthernet::Performance>();
-        }
-        return performance;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::FastEthernet::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-iwanfabric:fabric-domain")
-    {
-        if(fabric_domain == nullptr)
-        {
-            fabric_domain = std::make_shared<Native::Interface::FastEthernet::FabricDomain>();
-        }
-        return fabric_domain;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
     {
         if(lisp == nullptr)
@@ -12984,58 +13280,31 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
         return lisp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-lldp:lldp")
+    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
     {
-        if(lldp == nullptr)
+        if(zone_member == nullptr)
         {
-            lldp = std::make_shared<Native::Interface::FastEthernet::Lldp>();
+            zone_member = std::make_shared<Native::Interface::FastEthernet::ZoneMember>();
         }
-        return lldp;
+        return zone_member;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-mka:mka")
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
     {
-        if(mka == nullptr)
+        if(crypto == nullptr)
         {
-            mka = std::make_shared<Native::Interface::FastEthernet::Mka>();
+            crypto = std::make_shared<Native::Interface::FastEthernet::Crypto>();
         }
-        return mka;
+        return crypto;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
+    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
     {
-        if(mvrp == nullptr)
+        if(udld == nullptr)
         {
-            mvrp = std::make_shared<Native::Interface::FastEthernet::Mvrp>();
+            udld = std::make_shared<Native::Interface::FastEthernet::Udld>();
         }
-        return mvrp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
-    {
-        if(ntp == nullptr)
-        {
-            ntp = std::make_shared<Native::Interface::FastEthernet::Ntp>();
-        }
-        return ntp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Native::Interface::FastEthernet::Ospfv3>();
-        }
-        return ospfv3;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-power:power")
-    {
-        if(power == nullptr)
-        {
-            power = std::make_shared<Native::Interface::FastEthernet::Power>();
-        }
-        return power;
+        return udld;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-sanet:authentication")
@@ -13056,6 +13325,15 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
         return mab;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
+    {
+        if(ospfv3 == nullptr)
+        {
+            ospfv3 = std::make_shared<Native::Interface::FastEthernet::Ospfv3>();
+        }
+        return ospfv3;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
     {
         if(spanning_tree == nullptr)
@@ -13065,156 +13343,22 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::get_child_by_name(const
         return spanning_tree;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-switch:auto")
+    if(child_yang_name == "Cisco-IOS-XE-ntp:ntp")
     {
-        if(auto_ == nullptr)
+        if(ntp == nullptr)
         {
-            auto_ = std::make_shared<Native::Interface::FastEthernet::Auto>();
+            ntp = std::make_shared<Native::Interface::FastEthernet::Ntp>();
         }
-        return auto_;
+        return ntp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-switch:datalink")
+    if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
     {
-        if(datalink == nullptr)
+        if(cdp == nullptr)
         {
-            datalink = std::make_shared<Native::Interface::FastEthernet::Datalink>();
+            cdp = std::make_shared<Native::Interface::FastEthernet::Cdp>();
         }
-        return datalink;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:energywise")
-    {
-        if(energywise == nullptr)
-        {
-            energywise = std::make_shared<Native::Interface::FastEthernet::Energywise>();
-        }
-        return energywise;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:location")
-    {
-        if(location == nullptr)
-        {
-            location = std::make_shared<Native::Interface::FastEthernet::Location>();
-        }
-        return location;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:mac")
-    {
-        if(mac == nullptr)
-        {
-            mac = std::make_shared<Native::Interface::FastEthernet::Mac>();
-        }
-        return mac;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:macro")
-    {
-        if(macro == nullptr)
-        {
-            macro = std::make_shared<Native::Interface::FastEthernet::Macro>();
-        }
-        return macro;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:dual-active")
-    {
-        if(dual_active == nullptr)
-        {
-            dual_active = std::make_shared<Native::Interface::FastEthernet::DualActive>();
-        }
-        return dual_active;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:load-balancing")
-    {
-        if(load_balancing == nullptr)
-        {
-            load_balancing = std::make_shared<Native::Interface::FastEthernet::LoadBalancing>();
-        }
-        return load_balancing;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:vlan-range")
-    {
-        auto c = std::make_shared<Native::Interface::FastEthernet::VlanRange>();
-        c->parent = this;
-        vlan_range.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:switch")
-    {
-        if(switch_ == nullptr)
-        {
-            switch_ = std::make_shared<Native::Interface::FastEthernet::Switch>();
-        }
-        return switch_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:srr-queue")
-    {
-        if(srr_queue == nullptr)
-        {
-            srr_queue = std::make_shared<Native::Interface::FastEthernet::SrrQueue>();
-        }
-        return srr_queue;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:macsec-option")
-    {
-        if(cisco_ios_xe_switch_macsec_option_ == nullptr)
-        {
-            cisco_ios_xe_switch_macsec_option_ = std::make_shared<Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption>();
-        }
-        return cisco_ios_xe_switch_macsec_option_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:device-tracking")
-    {
-        if(device_tracking == nullptr)
-        {
-            device_tracking = std::make_shared<Native::Interface::FastEthernet::DeviceTracking>();
-        }
-        return device_tracking;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
-    {
-        if(udld == nullptr)
-        {
-            udld = std::make_shared<Native::Interface::FastEthernet::Udld>();
-        }
-        return udld;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
-    {
-        if(umbrella == nullptr)
-        {
-            umbrella = std::make_shared<Native::Interface::FastEthernet::Umbrella>();
-        }
-        return umbrella;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
-    {
-        if(utd == nullptr)
-        {
-            utd = std::make_shared<Native::Interface::FastEthernet::Utd>();
-        }
-        return utd;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
-    {
-        if(zone_member == nullptr)
-        {
-            zone_member = std::make_shared<Native::Interface::FastEthernet::ZoneMember>();
-        }
-        return zone_member;
+        return cdp;
     }
 
     return nullptr;
@@ -13315,7 +13459,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13408,6 +13552,130 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::
         children["pm-path"] = pm_path;
     }
 
+    if(fabric_domain != nullptr)
+    {
+        children["Cisco-IOS-XE-iwanfabric:fabric-domain"] = fabric_domain;
+    }
+
+    if(lldp != nullptr)
+    {
+        children["Cisco-IOS-XE-lldp:lldp"] = lldp;
+    }
+
+    if(service_policy != nullptr)
+    {
+        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
+    if(utd != nullptr)
+    {
+        children["Cisco-IOS-XE-utd:utd"] = utd;
+    }
+
+    if(dot1x != nullptr)
+    {
+        children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
+    }
+
+    if(auto_ != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:auto"] = auto_;
+    }
+
+    if(datalink != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:datalink"] = datalink;
+    }
+
+    if(energywise != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:energywise"] = energywise;
+    }
+
+    if(location != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:location"] = location;
+    }
+
+    if(mac != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:mac"] = mac;
+    }
+
+    if(macro != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:macro"] = macro;
+    }
+
+    if(dual_active != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:dual-active"] = dual_active;
+    }
+
+    if(load_balancing != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:load-balancing"] = load_balancing;
+    }
+
+    count = 0;
+    for (auto c : vlan_range.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    if(switch_ != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:switch"] = switch_;
+    }
+
+    if(srr_queue != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:srr-queue"] = srr_queue;
+    }
+
+    if(cisco_ios_xe_switch_macsec_option != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:macsec-option"] = cisco_ios_xe_switch_macsec_option;
+    }
+
+    if(device_tracking != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:device-tracking"] = device_tracking;
+    }
+
+    if(cts != nullptr)
+    {
+        children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(power != nullptr)
+    {
+        children["Cisco-IOS-XE-power:power"] = power;
+    }
+
+    if(mka != nullptr)
+    {
+        children["Cisco-IOS-XE-mka:mka"] = mka;
+    }
+
+    if(umbrella != nullptr)
+    {
+        children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
+    }
+
+    if(snmp != nullptr)
+    {
+        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+    }
+
+    if(performance != nullptr)
+    {
+        children["Cisco-IOS-XE-ezpm:performance"] = performance;
+    }
+
     if(carrier_delay != nullptr)
     {
         children["Cisco-IOS-XE-ethernet:carrier-delay"] = carrier_delay;
@@ -13463,9 +13731,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::
         children["Cisco-IOS-XE-ethernet:lacp"] = lacp;
     }
 
-    if(cisco_ios_xe_ethernet_macsec_option != nullptr)
+    if(cisco_ios_xe_ethernet_macsec_option_ != nullptr)
     {
-        children["Cisco-IOS-XE-ethernet:macsec-option"] = cisco_ios_xe_ethernet_macsec_option;
+        children["Cisco-IOS-XE-ethernet:macsec-option"] = cisco_ios_xe_ethernet_macsec_option_;
     }
 
     if(xconnect != nullptr)
@@ -13473,29 +13741,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::
         children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
     }
 
-    if(cdp != nullptr)
+    if(mvrp != nullptr)
     {
-        children["Cisco-IOS-XE-cdp:cdp"] = cdp;
-    }
-
-    if(snmp != nullptr)
-    {
-        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
-    }
-
-    if(crypto != nullptr)
-    {
-        children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
-    if(cts != nullptr)
-    {
-        children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(dot1x != nullptr)
-    {
-        children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
+        children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
     }
 
     if(et_analytics != nullptr)
@@ -13503,54 +13751,24 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::
         children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
     }
 
-    if(performance != nullptr)
-    {
-        children["Cisco-IOS-XE-ezpm:performance"] = performance;
-    }
-
-    if(service_policy != nullptr)
-    {
-        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
-    }
-
-    if(fabric_domain != nullptr)
-    {
-        children["Cisco-IOS-XE-iwanfabric:fabric-domain"] = fabric_domain;
-    }
-
     if(lisp != nullptr)
     {
         children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
-    if(lldp != nullptr)
+    if(zone_member != nullptr)
     {
-        children["Cisco-IOS-XE-lldp:lldp"] = lldp;
+        children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
     }
 
-    if(mka != nullptr)
+    if(crypto != nullptr)
     {
-        children["Cisco-IOS-XE-mka:mka"] = mka;
+        children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
-    if(mvrp != nullptr)
+    if(udld != nullptr)
     {
-        children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
-    }
-
-    if(ntp != nullptr)
-    {
-        children["Cisco-IOS-XE-ntp:ntp"] = ntp;
-    }
-
-    if(ospfv3 != nullptr)
-    {
-        children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
-    }
-
-    if(power != nullptr)
-    {
-        children["Cisco-IOS-XE-power:power"] = power;
+        children["Cisco-IOS-XE-udld:udld"] = udld;
     }
 
     if(authentication != nullptr)
@@ -13563,98 +13781,24 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::
         children["Cisco-IOS-XE-sanet:mab"] = mab;
     }
 
+    if(ospfv3 != nullptr)
+    {
+        children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+    }
+
     if(spanning_tree != nullptr)
     {
         children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
     }
 
-    if(auto_ != nullptr)
+    if(ntp != nullptr)
     {
-        children["Cisco-IOS-XE-switch:auto"] = auto_;
+        children["Cisco-IOS-XE-ntp:ntp"] = ntp;
     }
 
-    if(datalink != nullptr)
+    if(cdp != nullptr)
     {
-        children["Cisco-IOS-XE-switch:datalink"] = datalink;
-    }
-
-    if(energywise != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:energywise"] = energywise;
-    }
-
-    if(location != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:location"] = location;
-    }
-
-    if(mac != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:mac"] = mac;
-    }
-
-    if(macro != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:macro"] = macro;
-    }
-
-    if(dual_active != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:dual-active"] = dual_active;
-    }
-
-    if(load_balancing != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:load-balancing"] = load_balancing;
-    }
-
-    count = 0;
-    for (auto const & c : vlan_range)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(switch_ != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:switch"] = switch_;
-    }
-
-    if(srr_queue != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:srr-queue"] = srr_queue;
-    }
-
-    if(cisco_ios_xe_switch_macsec_option_ != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:macsec-option"] = cisco_ios_xe_switch_macsec_option_;
-    }
-
-    if(device_tracking != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:device-tracking"] = device_tracking;
-    }
-
-    if(udld != nullptr)
-    {
-        children["Cisco-IOS-XE-udld:udld"] = udld;
-    }
-
-    if(umbrella != nullptr)
-    {
-        children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
-    }
-
-    if(utd != nullptr)
-    {
-        children["Cisco-IOS-XE-utd:utd"] = utd;
-    }
-
-    if(zone_member != nullptr)
-    {
-        children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
+        children["Cisco-IOS-XE-cdp:cdp"] = cdp;
     }
 
     return children;
@@ -13728,6 +13872,12 @@ void Native::Interface::FastEthernet::set_value(const std::string & value_path, 
         service_insertion.value_namespace = name_space;
         service_insertion.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "Cisco-IOS-XE-switch:macsec")
+    {
+        cisco_ios_xe_switch_macsec = value;
+        cisco_ios_xe_switch_macsec.value_namespace = name_space;
+        cisco_ios_xe_switch_macsec.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "Cisco-IOS-XE-ethernet:channel-protocol")
     {
         channel_protocol = value;
@@ -13751,12 +13901,6 @@ void Native::Interface::FastEthernet::set_value(const std::string & value_path, 
         nat66 = value;
         nat66.value_namespace = name_space;
         nat66.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-switch:macsec")
-    {
-        cisco_ios_xe_switch_macsec = value;
-        cisco_ios_xe_switch_macsec.value_namespace = name_space;
-        cisco_ios_xe_switch_macsec.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -13806,6 +13950,10 @@ void Native::Interface::FastEthernet::set_filter(const std::string & value_path,
     {
         service_insertion.yfilter = yfilter;
     }
+    if(value_path == "macsec")
+    {
+        cisco_ios_xe_switch_macsec.yfilter = yfilter;
+    }
     if(value_path == "channel-protocol")
     {
         channel_protocol.yfilter = yfilter;
@@ -13822,15 +13970,11 @@ void Native::Interface::FastEthernet::set_filter(const std::string & value_path,
     {
         nat66.yfilter = yfilter;
     }
-    if(value_path == "macsec")
-    {
-        cisco_ios_xe_switch_macsec.yfilter = yfilter;
-    }
 }
 
 bool Native::Interface::FastEthernet::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "macsec-option" || name == "xconnect" || name == "cdp" || name == "snmp" || name == "crypto" || name == "cts" || name == "dot1x" || name == "et-analytics" || name == "performance" || name == "service-policy" || name == "fabric-domain" || name == "lisp" || name == "lldp" || name == "mka" || name == "mvrp" || name == "ntp" || name == "ospfv3" || name == "power" || name == "authentication" || name == "mab" || name == "spanning-tree" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "device-tracking" || name == "udld" || name == "umbrella" || name == "utd" || name == "zone-member" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "macsec" || name == "nat66" || name == "macsec")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "fabric-domain" || name == "lldp" || name == "service-policy" || name == "utd" || name == "dot1x" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "device-tracking" || name == "cts" || name == "power" || name == "mka" || name == "umbrella" || name == "snmp" || name == "performance" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "macsec-option" || name == "xconnect" || name == "mvrp" || name == "et-analytics" || name == "lisp" || name == "zone-member" || name == "crypto" || name == "udld" || name == "authentication" || name == "mab" || name == "ospfv3" || name == "spanning-tree" || name == "ntp" || name == "cdp" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "macsec" || name == "channel-protocol" || name == "duplex" || name == "macsec" || name == "nat66")
         return true;
     return false;
 }
@@ -13840,7 +13984,7 @@ Native::Interface::FastEthernet::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "FastEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "FastEthernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::SwitchportConf::~SwitchportConf()
@@ -13849,6 +13993,7 @@ Native::Interface::FastEthernet::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::FastEthernet::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -13917,18 +14062,18 @@ Native::Interface::FastEthernet::Switchport::Switchport()
     nonegotiate{YType::empty, "Cisco-IOS-XE-switch:nonegotiate"},
     protected_{YType::empty, "Cisco-IOS-XE-switch:protected"},
     host{YType::empty, "Cisco-IOS-XE-switch:host"}
-    	,
+        ,
     access(std::make_shared<Native::Interface::FastEthernet::Switchport::Access>())
-	,block(std::make_shared<Native::Interface::FastEthernet::Switchport::Block>())
-	,mode(std::make_shared<Native::Interface::FastEthernet::Switchport::Mode>())
-	,port_security(nullptr) // presence node
-	,trunk(std::make_shared<Native::Interface::FastEthernet::Switchport::Trunk>())
-	,voice(std::make_shared<Native::Interface::FastEthernet::Switchport::Voice>())
-	,priority(std::make_shared<Native::Interface::FastEthernet::Switchport::Priority>())
-	,autostate(std::make_shared<Native::Interface::FastEthernet::Switchport::Autostate>())
-	,private_vlan(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan>())
-	,vepa(std::make_shared<Native::Interface::FastEthernet::Switchport::Vepa>())
-	,device_tracking(std::make_shared<Native::Interface::FastEthernet::Switchport::DeviceTracking>())
+    , block(std::make_shared<Native::Interface::FastEthernet::Switchport::Block>())
+    , mode(std::make_shared<Native::Interface::FastEthernet::Switchport::Mode>())
+    , port_security(nullptr) // presence node
+    , trunk(std::make_shared<Native::Interface::FastEthernet::Switchport::Trunk>())
+    , voice(std::make_shared<Native::Interface::FastEthernet::Switchport::Voice>())
+    , priority(std::make_shared<Native::Interface::FastEthernet::Switchport::Priority>())
+    , autostate(std::make_shared<Native::Interface::FastEthernet::Switchport::Autostate>())
+    , private_vlan(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan>())
+    , vepa(std::make_shared<Native::Interface::FastEthernet::Switchport::Vepa>())
+    , device_tracking(std::make_shared<Native::Interface::FastEthernet::Switchport::DeviceTracking>())
 {
     access->parent = this;
     block->parent = this;
@@ -13941,7 +14086,7 @@ Native::Interface::FastEthernet::Switchport::Switchport()
     vepa->parent = this;
     device_tracking->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "FastEthernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "FastEthernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::~Switchport()
@@ -13950,6 +14095,7 @@ Native::Interface::FastEthernet::Switchport::~Switchport()
 
 bool Native::Interface::FastEthernet::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return nonegotiate.is_set
 	|| protected_.is_set
 	|| host.is_set
@@ -14221,7 +14367,7 @@ Native::Interface::FastEthernet::Switchport::Access::Access()
 {
     vlan->parent = this;
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Access::~Access()
@@ -14230,6 +14376,7 @@ Native::Interface::FastEthernet::Switchport::Access::~Access()
 
 bool Native::Interface::FastEthernet::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -14302,7 +14449,7 @@ Native::Interface::FastEthernet::Switchport::Access::Vlan::Vlan()
     name{YType::str, "name"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Access::Vlan::~Vlan()
@@ -14311,6 +14458,7 @@ Native::Interface::FastEthernet::Switchport::Access::Vlan::~Vlan()
 
 bool Native::Interface::FastEthernet::Switchport::Access::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set
 	|| name.is_set;
 }
@@ -14393,7 +14541,7 @@ Native::Interface::FastEthernet::Switchport::Block::Block()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Block::~Block()
@@ -14402,6 +14550,7 @@ Native::Interface::FastEthernet::Switchport::Block::~Block()
 
 bool Native::Interface::FastEthernet::Switchport::Block::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast.is_set
 	|| unicast.is_set;
 }
@@ -14481,15 +14630,15 @@ bool Native::Interface::FastEthernet::Switchport::Block::has_leaf_or_child_of_na
 Native::Interface::FastEthernet::Switchport::Mode::Mode()
     :
     dynamic{YType::enumeration, "dynamic"}
-    	,
+        ,
     access(nullptr) // presence node
-	,dot1q_tunnel(nullptr) // presence node
-	,private_vlan(std::make_shared<Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan>())
-	,trunk(nullptr) // presence node
+    , dot1q_tunnel(nullptr) // presence node
+    , private_vlan(std::make_shared<Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan>())
+    , trunk(nullptr) // presence node
 {
     private_vlan->parent = this;
 
-    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Mode::~Mode()
@@ -14498,6 +14647,7 @@ Native::Interface::FastEthernet::Switchport::Mode::~Mode()
 
 bool Native::Interface::FastEthernet::Switchport::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return dynamic.is_set
 	|| (access !=  nullptr && access->has_data())
 	|| (dot1q_tunnel !=  nullptr && dot1q_tunnel->has_data())
@@ -14547,7 +14697,7 @@ std::shared_ptr<Entity> Native::Interface::FastEthernet::Switchport::Mode::get_c
     {
         if(dot1q_tunnel == nullptr)
         {
-            dot1q_tunnel = std::make_shared<Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel>();
+            dot1q_tunnel = std::make_shared<Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel>();
         }
         return dot1q_tunnel;
     }
@@ -14628,7 +14778,7 @@ bool Native::Interface::FastEthernet::Switchport::Mode::has_leaf_or_child_of_nam
 Native::Interface::FastEthernet::Switchport::Mode::Access::Access()
 {
 
-    yang_name = "access"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::FastEthernet::Switchport::Mode::Access::~Access()
@@ -14637,6 +14787,7 @@ Native::Interface::FastEthernet::Switchport::Mode::Access::~Access()
 
 bool Native::Interface::FastEthernet::Switchport::Mode::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -14686,34 +14837,35 @@ bool Native::Interface::FastEthernet::Switchport::Mode::Access::has_leaf_or_chil
     return false;
 }
 
-Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::Dot1QTunnel()
+Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::Dot1qTunnel()
 {
 
-    yang_name = "dot1q-tunnel"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1q-tunnel"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::~Dot1QTunnel()
+Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::~Dot1qTunnel()
 {
 }
 
-bool Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::has_data() const
+bool Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::has_operation() const
+bool Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::get_segment_path() const
+std::string Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1q-tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14722,27 +14874,27 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::FastEthernet::
 
 }
 
-std::shared_ptr<Entity> Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
@@ -14753,7 +14905,7 @@ Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan::PrivateVlan()
     promiscuous{YType::empty, "promiscuous"}
 {
 
-    yang_name = "private-vlan"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "private-vlan"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan::~PrivateVlan()
@@ -14762,6 +14914,7 @@ Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan::~PrivateVlan()
 
 bool Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return host.is_set
 	|| promiscuous.is_set;
 }
@@ -14841,7 +14994,7 @@ bool Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan::has_leaf_or
 Native::Interface::FastEthernet::Switchport::Mode::Trunk::Trunk()
 {
 
-    yang_name = "trunk"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trunk"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::FastEthernet::Switchport::Mode::Trunk::~Trunk()
@@ -14850,6 +15003,7 @@ Native::Interface::FastEthernet::Switchport::Mode::Trunk::~Trunk()
 
 bool Native::Interface::FastEthernet::Switchport::Mode::Trunk::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -14902,16 +15056,16 @@ bool Native::Interface::FastEthernet::Switchport::Mode::Trunk::has_leaf_or_child
 Native::Interface::FastEthernet::Switchport::PortSecurity::PortSecurity()
     :
     violation{YType::enumeration, "violation"}
-    	,
+        ,
     aging(std::make_shared<Native::Interface::FastEthernet::Switchport::PortSecurity::Aging>())
-	,mac_address(std::make_shared<Native::Interface::FastEthernet::Switchport::PortSecurity::MacAddress>())
-	,maximum(std::make_shared<Native::Interface::FastEthernet::Switchport::PortSecurity::Maximum>())
+    , mac_address(std::make_shared<Native::Interface::FastEthernet::Switchport::PortSecurity::MacAddress>())
+    , maximum(std::make_shared<Native::Interface::FastEthernet::Switchport::PortSecurity::Maximum>())
 {
     aging->parent = this;
     mac_address->parent = this;
     maximum->parent = this;
 
-    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-security"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::FastEthernet::Switchport::PortSecurity::~PortSecurity()
@@ -14920,6 +15074,7 @@ Native::Interface::FastEthernet::Switchport::PortSecurity::~PortSecurity()
 
 bool Native::Interface::FastEthernet::Switchport::PortSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return violation.is_set
 	|| (aging !=  nullptr && aging->has_data())
 	|| (mac_address !=  nullptr && mac_address->has_data())
@@ -15038,7 +15193,7 @@ Native::Interface::FastEthernet::Switchport::PortSecurity::Aging::Aging()
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aging"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::PortSecurity::Aging::~Aging()
@@ -15047,6 +15202,7 @@ Native::Interface::FastEthernet::Switchport::PortSecurity::Aging::~Aging()
 
 bool Native::Interface::FastEthernet::Switchport::PortSecurity::Aging::has_data() const
 {
+    if (is_presence_container) return true;
     return static_.is_set
 	|| time.is_set
 	|| type.is_set;
@@ -15143,7 +15299,7 @@ Native::Interface::FastEthernet::Switchport::PortSecurity::MacAddress::MacAddres
     vlan{YType::uint16, "vlan"}
 {
 
-    yang_name = "mac-address"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::PortSecurity::MacAddress::~MacAddress()
@@ -15152,6 +15308,7 @@ Native::Interface::FastEthernet::Switchport::PortSecurity::MacAddress::~MacAddre
 
 bool Native::Interface::FastEthernet::Switchport::PortSecurity::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return sticky.is_set
 	|| hw_address.is_set
 	|| vlan.is_set;
@@ -15247,7 +15404,7 @@ Native::Interface::FastEthernet::Switchport::PortSecurity::Maximum::Maximum()
     vlan{YType::str, "vlan"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum"; yang_parent_name = "port-security"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::PortSecurity::Maximum::~Maximum()
@@ -15256,6 +15413,7 @@ Native::Interface::FastEthernet::Switchport::PortSecurity::Maximum::~Maximum()
 
 bool Native::Interface::FastEthernet::Switchport::PortSecurity::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return max_addresses.is_set
 	|| vlan.is_set;
 }
@@ -15335,16 +15493,16 @@ bool Native::Interface::FastEthernet::Switchport::PortSecurity::Maximum::has_lea
 Native::Interface::FastEthernet::Switchport::Trunk::Trunk()
     :
     encapsulation{YType::enumeration, "encapsulation"}
-    	,
+        ,
     allowed(std::make_shared<Native::Interface::FastEthernet::Switchport::Trunk::Allowed>())
-	,native(std::make_shared<Native::Interface::FastEthernet::Switchport::Trunk::Native_>())
-	,pruning(std::make_shared<Native::Interface::FastEthernet::Switchport::Trunk::Pruning>())
+    , native(std::make_shared<Native::Interface::FastEthernet::Switchport::Trunk::Native_>())
+    , pruning(std::make_shared<Native::Interface::FastEthernet::Switchport::Trunk::Pruning>())
 {
     allowed->parent = this;
     native->parent = this;
     pruning->parent = this;
 
-    yang_name = "trunk"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trunk"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Trunk::~Trunk()
@@ -15353,6 +15511,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::~Trunk()
 
 bool Native::Interface::FastEthernet::Switchport::Trunk::has_data() const
 {
+    if (is_presence_container) return true;
     return encapsulation.is_set
 	|| (allowed !=  nullptr && allowed->has_data())
 	|| (native !=  nullptr && native->has_data())
@@ -15470,7 +15629,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Allowed::Allowed()
 {
     vlan->parent = this;
 
-    yang_name = "allowed"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allowed"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Trunk::Allowed::~Allowed()
@@ -15479,6 +15638,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Allowed::~Allowed()
 
 bool Native::Interface::FastEthernet::Switchport::Trunk::Allowed::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -15555,7 +15715,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Allowed::Vlan::Vlan()
     remove{YType::str, "remove"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "allowed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "allowed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Trunk::Allowed::Vlan::~Vlan()
@@ -15564,6 +15724,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Allowed::Vlan::~Vlan()
 
 bool Native::Interface::FastEthernet::Switchport::Trunk::Allowed::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : except.getYLeafs())
     {
         if(leaf.is_set)
@@ -15705,7 +15866,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Native_::Native_()
     vlan{YType::str, "vlan"}
 {
 
-    yang_name = "native"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "native"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Trunk::Native_::~Native_()
@@ -15714,6 +15875,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Native_::~Native_()
 
 bool Native::Interface::FastEthernet::Switchport::Trunk::Native_::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -15783,7 +15945,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Pruning::Pruning()
 {
     vlan->parent = this;
 
-    yang_name = "pruning"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pruning"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Trunk::Pruning::~Pruning()
@@ -15792,6 +15954,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Pruning::~Pruning()
 
 bool Native::Interface::FastEthernet::Switchport::Trunk::Pruning::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -15867,7 +16030,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Pruning::Vlan::Vlan()
     remove{YType::str, "remove"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "pruning"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "pruning"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Trunk::Pruning::Vlan::~Vlan()
@@ -15876,6 +16039,7 @@ Native::Interface::FastEthernet::Switchport::Trunk::Pruning::Vlan::~Vlan()
 
 bool Native::Interface::FastEthernet::Switchport::Trunk::Pruning::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : vlans.getYLeafs())
     {
         if(leaf.is_set)
@@ -16010,12 +16174,12 @@ bool Native::Interface::FastEthernet::Switchport::Trunk::Pruning::Vlan::has_leaf
 Native::Interface::FastEthernet::Switchport::Voice::Voice()
     :
     vlan(std::make_shared<Native::Interface::FastEthernet::Switchport::Voice::Vlan>())
-	,detect(std::make_shared<Native::Interface::FastEthernet::Switchport::Voice::Detect>())
+    , detect(std::make_shared<Native::Interface::FastEthernet::Switchport::Voice::Detect>())
 {
     vlan->parent = this;
     detect->parent = this;
 
-    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "voice"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Voice::~Voice()
@@ -16024,6 +16188,7 @@ Native::Interface::FastEthernet::Switchport::Voice::~Voice()
 
 bool Native::Interface::FastEthernet::Switchport::Voice::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data())
 	|| (detect !=  nullptr && detect->has_data());
 }
@@ -16112,7 +16277,7 @@ Native::Interface::FastEthernet::Switchport::Voice::Vlan::Vlan()
     name{YType::str, "name"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "voice"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "voice"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Voice::Vlan::~Vlan()
@@ -16121,6 +16286,7 @@ Native::Interface::FastEthernet::Switchport::Voice::Vlan::~Vlan()
 
 bool Native::Interface::FastEthernet::Switchport::Voice::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set
 	|| name.is_set;
 }
@@ -16202,7 +16368,7 @@ Native::Interface::FastEthernet::Switchport::Voice::Detect::Detect()
     cisco_phone(nullptr) // presence node
 {
 
-    yang_name = "detect"; yang_parent_name = "voice"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detect"; yang_parent_name = "voice"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Voice::Detect::~Detect()
@@ -16211,6 +16377,7 @@ Native::Interface::FastEthernet::Switchport::Voice::Detect::~Detect()
 
 bool Native::Interface::FastEthernet::Switchport::Voice::Detect::has_data() const
 {
+    if (is_presence_container) return true;
     return (cisco_phone !=  nullptr && cisco_phone->has_data());
 }
 
@@ -16282,7 +16449,7 @@ Native::Interface::FastEthernet::Switchport::Voice::Detect::CiscoPhone::CiscoPho
     full_duplex{YType::empty, "full-duplex"}
 {
 
-    yang_name = "cisco-phone"; yang_parent_name = "detect"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cisco-phone"; yang_parent_name = "detect"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::FastEthernet::Switchport::Voice::Detect::CiscoPhone::~CiscoPhone()
@@ -16291,6 +16458,7 @@ Native::Interface::FastEthernet::Switchport::Voice::Detect::CiscoPhone::~CiscoPh
 
 bool Native::Interface::FastEthernet::Switchport::Voice::Detect::CiscoPhone::has_data() const
 {
+    if (is_presence_container) return true;
     return full_duplex.is_set;
 }
 
@@ -16360,7 +16528,7 @@ Native::Interface::FastEthernet::Switchport::Priority::Priority()
 {
     extend->parent = this;
 
-    yang_name = "priority"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Priority::~Priority()
@@ -16369,6 +16537,7 @@ Native::Interface::FastEthernet::Switchport::Priority::~Priority()
 
 bool Native::Interface::FastEthernet::Switchport::Priority::has_data() const
 {
+    if (is_presence_container) return true;
     return (extend !=  nullptr && extend->has_data());
 }
 
@@ -16441,7 +16610,7 @@ Native::Interface::FastEthernet::Switchport::Priority::Extend::Extend()
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "extend"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extend"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Priority::Extend::~Extend()
@@ -16450,6 +16619,7 @@ Native::Interface::FastEthernet::Switchport::Priority::Extend::~Extend()
 
 bool Native::Interface::FastEthernet::Switchport::Priority::Extend::has_data() const
 {
+    if (is_presence_container) return true;
     return trust.is_set
 	|| cos.is_set;
 }
@@ -16531,7 +16701,7 @@ Native::Interface::FastEthernet::Switchport::Autostate::Autostate()
     exclude{YType::empty, "exclude"}
 {
 
-    yang_name = "autostate"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "autostate"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::Autostate::~Autostate()
@@ -16540,6 +16710,7 @@ Native::Interface::FastEthernet::Switchport::Autostate::~Autostate()
 
 bool Native::Interface::FastEthernet::Switchport::Autostate::has_data() const
 {
+    if (is_presence_container) return true;
     return exclude.is_set;
 }
 
@@ -16606,14 +16777,14 @@ bool Native::Interface::FastEthernet::Switchport::Autostate::has_leaf_or_child_o
 Native::Interface::FastEthernet::Switchport::PrivateVlan::PrivateVlan()
     :
     association(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::Association>())
-	,host_association(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::HostAssociation>())
-	,mapping(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::Mapping>())
+    , host_association(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::HostAssociation>())
+    , mapping(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::Mapping>())
 {
     association->parent = this;
     host_association->parent = this;
     mapping->parent = this;
 
-    yang_name = "private-vlan"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "private-vlan"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::PrivateVlan::~PrivateVlan()
@@ -16622,6 +16793,7 @@ Native::Interface::FastEthernet::Switchport::PrivateVlan::~PrivateVlan()
 
 bool Native::Interface::FastEthernet::Switchport::PrivateVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (association !=  nullptr && association->has_data())
 	|| (host_association !=  nullptr && host_association->has_data())
 	|| (mapping !=  nullptr && mapping->has_data());
@@ -16723,12 +16895,12 @@ bool Native::Interface::FastEthernet::Switchport::PrivateVlan::has_leaf_or_child
 Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Association()
     :
     host(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Host>())
-	,mapping(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Mapping>())
+    , mapping(std::make_shared<Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Mapping>())
 {
     host->parent = this;
     mapping->parent = this;
 
-    yang_name = "association"; yang_parent_name = "private-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "association"; yang_parent_name = "private-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::~Association()
@@ -16737,6 +16909,7 @@ Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::~Associat
 
 bool Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::has_data() const
 {
+    if (is_presence_container) return true;
     return (host !=  nullptr && host->has_data())
 	|| (mapping !=  nullptr && mapping->has_data());
 }
@@ -16825,7 +16998,7 @@ Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Host::Hos
     secondary_range{YType::uint16, "secondary-range"}
 {
 
-    yang_name = "host"; yang_parent_name = "association"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "association"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Host::~Host()
@@ -16834,6 +17007,7 @@ Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Host::~Ho
 
 bool Native::Interface::FastEthernet::Switchport::PrivateVlan::Association::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return primary_range.is_set
 	|| secondary_range.is_set;
 }

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ethernet_lldp_oper {
 Lldp::Lldp()
     :
     global_lldp(std::make_shared<Lldp::GlobalLldp>())
-	,nodes(std::make_shared<Lldp::Nodes>())
+    , nodes(std::make_shared<Lldp::Nodes>())
 {
     global_lldp->parent = this;
     nodes->parent = this;
 
-    yang_name = "lldp"; yang_parent_name = "Cisco-IOS-XR-ethernet-lldp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lldp"; yang_parent_name = "Cisco-IOS-XR-ethernet-lldp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Lldp::~Lldp()
@@ -28,6 +28,7 @@ Lldp::~Lldp()
 
 bool Lldp::has_data() const
 {
+    if (is_presence_container) return true;
     return (global_lldp !=  nullptr && global_lldp->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -141,7 +142,7 @@ Lldp::GlobalLldp::GlobalLldp()
 {
     lldp_info->parent = this;
 
-    yang_name = "global-lldp"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-lldp"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::GlobalLldp::~GlobalLldp()
@@ -150,6 +151,7 @@ Lldp::GlobalLldp::~GlobalLldp()
 
 bool Lldp::GlobalLldp::has_data() const
 {
+    if (is_presence_container) return true;
     return (lldp_info !=  nullptr && lldp_info->has_data());
 }
 
@@ -233,7 +235,7 @@ Lldp::GlobalLldp::LldpInfo::LldpInfo()
     re_init{YType::uint32, "re-init"}
 {
 
-    yang_name = "lldp-info"; yang_parent_name = "global-lldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lldp-info"; yang_parent_name = "global-lldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::GlobalLldp::LldpInfo::~LldpInfo()
@@ -242,6 +244,7 @@ Lldp::GlobalLldp::LldpInfo::~LldpInfo()
 
 bool Lldp::GlobalLldp::LldpInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return chassis_id.is_set
 	|| chassis_id_sub_type.is_set
 	|| system_name.is_set
@@ -378,9 +381,11 @@ bool Lldp::GlobalLldp::LldpInfo::has_leaf_or_child_of_name(const std::string & n
 }
 
 Lldp::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "lldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::Nodes::~Nodes()
@@ -389,7 +394,8 @@ Lldp::Nodes::~Nodes()
 
 bool Lldp::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -399,7 +405,7 @@ bool Lldp::Nodes::has_data() const
 
 bool Lldp::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -436,7 +442,7 @@ std::shared_ptr<Entity> Lldp::Nodes::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Lldp::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -448,7 +454,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -477,16 +483,16 @@ bool Lldp::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Lldp::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     neighbors(std::make_shared<Lldp::Nodes::Node::Neighbors>())
-	,interfaces(std::make_shared<Lldp::Nodes::Node::Interfaces>())
-	,statistics(std::make_shared<Lldp::Nodes::Node::Statistics>())
+    , interfaces(std::make_shared<Lldp::Nodes::Node::Interfaces>())
+    , statistics(std::make_shared<Lldp::Nodes::Node::Statistics>())
 {
     neighbors->parent = this;
     interfaces->parent = this;
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lldp::Nodes::Node::~Node()
@@ -495,6 +501,7 @@ Lldp::Nodes::Node::~Node()
 
 bool Lldp::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (neighbors !=  nullptr && neighbors->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data())
@@ -520,7 +527,8 @@ std::string Lldp::Nodes::Node::get_absolute_path() const
 std::string Lldp::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -616,14 +624,14 @@ bool Lldp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) cons
 Lldp::Nodes::Node::Neighbors::Neighbors()
     :
     devices(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices>())
-	,details(std::make_shared<Lldp::Nodes::Node::Neighbors::Details>())
-	,summaries(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries>())
+    , details(std::make_shared<Lldp::Nodes::Node::Neighbors::Details>())
+    , summaries(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries>())
 {
     devices->parent = this;
     details->parent = this;
     summaries->parent = this;
 
-    yang_name = "neighbors"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::~Neighbors()
@@ -632,6 +640,7 @@ Lldp::Nodes::Node::Neighbors::~Neighbors()
 
 bool Lldp::Nodes::Node::Neighbors::has_data() const
 {
+    if (is_presence_container) return true;
     return (devices !=  nullptr && devices->has_data())
 	|| (details !=  nullptr && details->has_data())
 	|| (summaries !=  nullptr && summaries->has_data());
@@ -731,9 +740,11 @@ bool Lldp::Nodes::Node::Neighbors::has_leaf_or_child_of_name(const std::string &
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Devices()
+    :
+    device(this, {})
 {
 
-    yang_name = "devices"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "devices"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::~Devices()
@@ -742,7 +753,8 @@ Lldp::Nodes::Node::Neighbors::Devices::~Devices()
 
 bool Lldp::Nodes::Node::Neighbors::Devices::has_data() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_data())
             return true;
@@ -752,7 +764,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::has_data() const
 
 bool Lldp::Nodes::Node::Neighbors::Devices::has_operation() const
 {
-    for (std::size_t index=0; index<device.size(); index++)
+    for (std::size_t index=0; index<device.len(); index++)
     {
         if(device[index]->has_operation())
             return true;
@@ -782,7 +794,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::get_child_by_name
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device>();
         c->parent = this;
-        device.push_back(c);
+        device.append(c);
         return c;
     }
 
@@ -794,7 +806,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : device)
+    for (auto c : device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -824,9 +836,11 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::Device()
     :
     device_id{YType::str, "device-id"},
     interface_name{YType::str, "interface-name"}
+        ,
+    lldp_neighbor(this, {})
 {
 
-    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "device"; yang_parent_name = "devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::~Device()
@@ -835,7 +849,8 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::~Device()
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::has_data() const
 {
-    for (std::size_t index=0; index<lldp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_neighbor.len(); index++)
     {
         if(lldp_neighbor[index]->has_data())
             return true;
@@ -846,7 +861,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::has_data() const
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_neighbor.size(); index++)
+    for (std::size_t index=0; index<lldp_neighbor.len(); index++)
     {
         if(lldp_neighbor[index]->has_operation())
             return true;
@@ -880,7 +895,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::get_child
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor>();
         c->parent = this;
-        lldp_neighbor.push_back(c);
+        lldp_neighbor.append(c);
         return c;
     }
 
@@ -892,7 +907,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_neighbor)
+    for (auto c : lldp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -949,14 +964,14 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::LldpNeighbor()
     hold_time{YType::uint16, "hold-time"},
     enabled_capabilities{YType::str, "enabled-capabilities"},
     platform{YType::str, "platform"}
-    	,
+        ,
     detail(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail>())
-	,mib(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib>())
+    , mib(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib>())
 {
     detail->parent = this;
     mib->parent = this;
 
-    yang_name = "lldp-neighbor"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-neighbor"; yang_parent_name = "device"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::~LldpNeighbor()
@@ -965,6 +980,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::~LldpNeighbor()
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return receiving_interface_name.is_set
 	|| receiving_parent_interface_name.is_set
 	|| device_id.is_set
@@ -1177,12 +1193,12 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Detail()
     physical_media_capabilities{YType::str, "physical-media-capabilities"},
     media_attachment_unit_type{YType::uint32, "media-attachment-unit-type"},
     port_vlan_id{YType::uint32, "port-vlan-id"}
-    	,
+        ,
     network_addresses(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses>())
 {
     network_addresses->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::~Detail()
@@ -1191,6 +1207,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::~Detail()
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_mac_address.is_set
 	|| port_description.is_set
 	|| system_name.is_set
@@ -1401,9 +1418,11 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::has_le
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
+    :
+    lldp_addr_entry(this, {})
 {
 
-    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::~NetworkAddresses()
@@ -1412,7 +1431,8 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddr
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::has_data() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_data())
             return true;
@@ -1422,7 +1442,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::Networ
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_operation())
             return true;
@@ -1452,7 +1472,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
-        lldp_addr_entry.push_back(c);
+        lldp_addr_entry.append(c);
         return c;
     }
 
@@ -1464,7 +1484,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_addr_entry)
+    for (auto c : lldp_addr_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1494,12 +1514,12 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddr
     :
     ma_subtype{YType::uint8, "ma-subtype"},
     if_num{YType::uint32, "if-num"}
-    	,
+        ,
     address(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address>())
 {
     address->parent = this;
 
-    yang_name = "lldp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::~LldpAddrEntry()
@@ -1508,6 +1528,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddr
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ma_subtype.is_set
 	|| if_num.is_set
 	|| (address !=  nullptr && address->has_data());
@@ -1607,7 +1628,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddr
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::~Address()
@@ -1616,6 +1637,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddr
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1715,14 +1737,14 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::Mib()
     port_id_sub_type{YType::uint8, "port-id-sub-type"},
     port_id_len{YType::uint16, "port-id-len"},
     combined_capabilities{YType::uint32, "combined-capabilities"}
-    	,
+        ,
     unknown_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList>())
-	,org_def_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList>())
+    , org_def_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList>())
 {
     unknown_tlv_list->parent = this;
     org_def_tlv_list->parent = this;
 
-    yang_name = "mib"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mib"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::~Mib()
@@ -1731,6 +1753,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::~Mib()
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::has_data() const
 {
+    if (is_presence_container) return true;
     return rem_time_mark.is_set
 	|| rem_local_port_num.is_set
 	|| rem_index.is_set
@@ -1918,9 +1941,11 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::has_leaf_
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::UnknownTlvList()
+    :
+    lldp_unknown_tlv_entry(this, {})
 {
 
-    yang_name = "unknown-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::~UnknownTlvList()
@@ -1929,7 +1954,8 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::has_data() const
 {
-    for (std::size_t index=0; index<lldp_unknown_tlv_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_unknown_tlv_entry.len(); index++)
     {
         if(lldp_unknown_tlv_entry[index]->has_data())
             return true;
@@ -1939,7 +1965,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTl
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_unknown_tlv_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_unknown_tlv_entry.len(); index++)
     {
         if(lldp_unknown_tlv_entry[index]->has_operation())
             return true;
@@ -1969,7 +1995,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry>();
         c->parent = this;
-        lldp_unknown_tlv_entry.push_back(c);
+        lldp_unknown_tlv_entry.append(c);
         return c;
     }
 
@@ -1981,7 +2007,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_unknown_tlv_entry)
+    for (auto c : lldp_unknown_tlv_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2013,7 +2039,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList
     tlv_value{YType::str, "tlv-value"}
 {
 
-    yang_name = "lldp-unknown-tlv-entry"; yang_parent_name = "unknown-tlv-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-unknown-tlv-entry"; yang_parent_name = "unknown-tlv-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::~LldpUnknownTlvEntry()
@@ -2022,6 +2048,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tlv_type.is_set
 	|| tlv_value.is_set;
 }
@@ -2099,9 +2126,11 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::UnknownTl
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::OrgDefTlvList()
+    :
+    lldp_org_def_tlv_entry(this, {})
 {
 
-    yang_name = "org-def-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "org-def-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::~OrgDefTlvList()
@@ -2110,7 +2139,8 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList:
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::has_data() const
 {
-    for (std::size_t index=0; index<lldp_org_def_tlv_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_org_def_tlv_entry.len(); index++)
     {
         if(lldp_org_def_tlv_entry[index]->has_data())
             return true;
@@ -2120,7 +2150,7 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlv
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_org_def_tlv_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_org_def_tlv_entry.len(); index++)
     {
         if(lldp_org_def_tlv_entry[index]->has_operation())
             return true;
@@ -2150,7 +2180,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeigh
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry>();
         c->parent = this;
-        lldp_org_def_tlv_entry.push_back(c);
+        lldp_org_def_tlv_entry.append(c);
         return c;
     }
 
@@ -2162,7 +2192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Dev
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_org_def_tlv_entry)
+    for (auto c : lldp_org_def_tlv_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2196,7 +2226,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList:
     tlv_value{YType::str, "tlv-value"}
 {
 
-    yang_name = "lldp-org-def-tlv-entry"; yang_parent_name = "org-def-tlv-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-org-def-tlv-entry"; yang_parent_name = "org-def-tlv-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::~LldpOrgDefTlvEntry()
@@ -2205,6 +2235,7 @@ Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList:
 
 bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| tlv_subtype.is_set
 	|| tlv_info_indes.is_set
@@ -2308,9 +2339,11 @@ bool Lldp::Nodes::Node::Neighbors::Devices::Device::LldpNeighbor::Mib::OrgDefTlv
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Details()
+    :
+    detail(this, {})
 {
 
-    yang_name = "details"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::~Details()
@@ -2319,7 +2352,8 @@ Lldp::Nodes::Node::Neighbors::Details::~Details()
 
 bool Lldp::Nodes::Node::Neighbors::Details::has_data() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_data())
             return true;
@@ -2329,7 +2363,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::has_data() const
 
 bool Lldp::Nodes::Node::Neighbors::Details::has_operation() const
 {
-    for (std::size_t index=0; index<detail.size(); index++)
+    for (std::size_t index=0; index<detail.len(); index++)
     {
         if(detail[index]->has_operation())
             return true;
@@ -2359,7 +2393,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::get_child_by_name
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail>();
         c->parent = this;
-        detail.push_back(c);
+        detail.append(c);
         return c;
     }
 
@@ -2371,7 +2405,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail)
+    for (auto c : detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2401,9 +2435,11 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::Detail()
     :
     interface_name{YType::str, "interface-name"},
     device_id{YType::str, "device-id"}
+        ,
+    lldp_neighbor(this, {})
 {
 
-    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::~Detail()
@@ -2412,7 +2448,8 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::~Detail()
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::has_data() const
 {
-    for (std::size_t index=0; index<lldp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_neighbor.len(); index++)
     {
         if(lldp_neighbor[index]->has_data())
             return true;
@@ -2423,7 +2460,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::has_data() const
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_neighbor.size(); index++)
+    for (std::size_t index=0; index<lldp_neighbor.len(); index++)
     {
         if(lldp_neighbor[index]->has_operation())
             return true;
@@ -2457,7 +2494,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::get_child
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor>();
         c->parent = this;
-        lldp_neighbor.push_back(c);
+        lldp_neighbor.append(c);
         return c;
     }
 
@@ -2469,7 +2506,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_neighbor)
+    for (auto c : lldp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2526,14 +2563,14 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::LldpNeighbor()
     hold_time{YType::uint16, "hold-time"},
     enabled_capabilities{YType::str, "enabled-capabilities"},
     platform{YType::str, "platform"}
-    	,
+        ,
     detail(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_>())
-	,mib(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib>())
+    , mib(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib>())
 {
     detail->parent = this;
     mib->parent = this;
 
-    yang_name = "lldp-neighbor"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-neighbor"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::~LldpNeighbor()
@@ -2542,6 +2579,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::~LldpNeighbor()
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return receiving_interface_name.is_set
 	|| receiving_parent_interface_name.is_set
 	|| device_id.is_set
@@ -2754,12 +2792,12 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Detail_()
     physical_media_capabilities{YType::str, "physical-media-capabilities"},
     media_attachment_unit_type{YType::uint32, "media-attachment-unit-type"},
     port_vlan_id{YType::uint32, "port-vlan-id"}
-    	,
+        ,
     network_addresses(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses>())
 {
     network_addresses->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::~Detail_()
@@ -2768,6 +2806,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::~Detail_()
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_mac_address.is_set
 	|| port_description.is_set
 	|| system_name.is_set
@@ -2978,9 +3017,11 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::has_l
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::NetworkAddresses()
+    :
+    lldp_addr_entry(this, {})
 {
 
-    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::~NetworkAddresses()
@@ -2989,7 +3030,8 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAdd
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::has_data() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_data())
             return true;
@@ -2999,7 +3041,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::Netwo
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_operation())
             return true;
@@ -3029,7 +3071,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
-        lldp_addr_entry.push_back(c);
+        lldp_addr_entry.append(c);
         return c;
     }
 
@@ -3041,7 +3083,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_addr_entry)
+    for (auto c : lldp_addr_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3071,12 +3113,12 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAdd
     :
     ma_subtype{YType::uint8, "ma-subtype"},
     if_num{YType::uint32, "if-num"}
-    	,
+        ,
     address(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address>())
 {
     address->parent = this;
 
-    yang_name = "lldp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::~LldpAddrEntry()
@@ -3085,6 +3127,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAdd
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ma_subtype.is_set
 	|| if_num.is_set
 	|| (address !=  nullptr && address->has_data());
@@ -3184,7 +3227,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAdd
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::~Address()
@@ -3193,6 +3236,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAdd
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Detail_::NetworkAddresses::LldpAddrEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3292,14 +3336,14 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::Mib()
     port_id_sub_type{YType::uint8, "port-id-sub-type"},
     port_id_len{YType::uint16, "port-id-len"},
     combined_capabilities{YType::uint32, "combined-capabilities"}
-    	,
+        ,
     unknown_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList>())
-	,org_def_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList>())
+    , org_def_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList>())
 {
     unknown_tlv_list->parent = this;
     org_def_tlv_list->parent = this;
 
-    yang_name = "mib"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mib"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::~Mib()
@@ -3308,6 +3352,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::~Mib()
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::has_data() const
 {
+    if (is_presence_container) return true;
     return rem_time_mark.is_set
 	|| rem_local_port_num.is_set
 	|| rem_index.is_set
@@ -3495,9 +3540,11 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::has_leaf_
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::UnknownTlvList()
+    :
+    lldp_unknown_tlv_entry(this, {})
 {
 
-    yang_name = "unknown-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::~UnknownTlvList()
@@ -3506,7 +3553,8 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::has_data() const
 {
-    for (std::size_t index=0; index<lldp_unknown_tlv_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_unknown_tlv_entry.len(); index++)
     {
         if(lldp_unknown_tlv_entry[index]->has_data())
             return true;
@@ -3516,7 +3564,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTl
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_unknown_tlv_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_unknown_tlv_entry.len(); index++)
     {
         if(lldp_unknown_tlv_entry[index]->has_operation())
             return true;
@@ -3546,7 +3594,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry>();
         c->parent = this;
-        lldp_unknown_tlv_entry.push_back(c);
+        lldp_unknown_tlv_entry.append(c);
         return c;
     }
 
@@ -3558,7 +3606,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_unknown_tlv_entry)
+    for (auto c : lldp_unknown_tlv_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3590,7 +3638,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
     tlv_value{YType::str, "tlv-value"}
 {
 
-    yang_name = "lldp-unknown-tlv-entry"; yang_parent_name = "unknown-tlv-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-unknown-tlv-entry"; yang_parent_name = "unknown-tlv-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::~LldpUnknownTlvEntry()
@@ -3599,6 +3647,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tlv_type.is_set
 	|| tlv_value.is_set;
 }
@@ -3676,9 +3725,11 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::UnknownTl
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::OrgDefTlvList()
+    :
+    lldp_org_def_tlv_entry(this, {})
 {
 
-    yang_name = "org-def-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "org-def-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::~OrgDefTlvList()
@@ -3687,7 +3738,8 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList:
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::has_data() const
 {
-    for (std::size_t index=0; index<lldp_org_def_tlv_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_org_def_tlv_entry.len(); index++)
     {
         if(lldp_org_def_tlv_entry[index]->has_data())
             return true;
@@ -3697,7 +3749,7 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlv
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_org_def_tlv_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_org_def_tlv_entry.len(); index++)
     {
         if(lldp_org_def_tlv_entry[index]->has_operation())
             return true;
@@ -3727,7 +3779,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeigh
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry>();
         c->parent = this;
-        lldp_org_def_tlv_entry.push_back(c);
+        lldp_org_def_tlv_entry.append(c);
         return c;
     }
 
@@ -3739,7 +3791,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Det
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_org_def_tlv_entry)
+    for (auto c : lldp_org_def_tlv_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3773,7 +3825,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList:
     tlv_value{YType::str, "tlv-value"}
 {
 
-    yang_name = "lldp-org-def-tlv-entry"; yang_parent_name = "org-def-tlv-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-org-def-tlv-entry"; yang_parent_name = "org-def-tlv-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::~LldpOrgDefTlvEntry()
@@ -3782,6 +3834,7 @@ Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList:
 
 bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| tlv_subtype.is_set
 	|| tlv_info_indes.is_set
@@ -3885,9 +3938,11 @@ bool Lldp::Nodes::Node::Neighbors::Details::Detail::LldpNeighbor::Mib::OrgDefTlv
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summaries()
+    :
+    summary(this, {})
 {
 
-    yang_name = "summaries"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summaries"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::~Summaries()
@@ -3896,7 +3951,8 @@ Lldp::Nodes::Node::Neighbors::Summaries::~Summaries()
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::has_data() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_data())
             return true;
@@ -3906,7 +3962,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::has_data() const
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::has_operation() const
 {
-    for (std::size_t index=0; index<summary.size(); index++)
+    for (std::size_t index=0; index<summary.len(); index++)
     {
         if(summary[index]->has_operation())
             return true;
@@ -3936,7 +3992,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::get_child_by_na
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary>();
         c->parent = this;
-        summary.push_back(c);
+        summary.append(c);
         return c;
     }
 
@@ -3948,7 +4004,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : summary)
+    for (auto c : summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3978,9 +4034,11 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::Summary()
     :
     interface_name{YType::str, "interface-name"},
     device_id{YType::str, "device-id"}
+        ,
+    lldp_neighbor(this, {})
 {
 
-    yang_name = "summary"; yang_parent_name = "summaries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "summaries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::~Summary()
@@ -3989,7 +4047,8 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::~Summary()
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::has_data() const
 {
-    for (std::size_t index=0; index<lldp_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_neighbor.len(); index++)
     {
         if(lldp_neighbor[index]->has_data())
             return true;
@@ -4000,7 +4059,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::has_data() const
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_neighbor.size(); index++)
+    for (std::size_t index=0; index<lldp_neighbor.len(); index++)
     {
         if(lldp_neighbor[index]->has_operation())
             return true;
@@ -4034,7 +4093,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::get_ch
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor>();
         c->parent = this;
-        lldp_neighbor.push_back(c);
+        lldp_neighbor.append(c);
         return c;
     }
 
@@ -4046,7 +4105,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_neighbor)
+    for (auto c : lldp_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4103,14 +4162,14 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::LldpNeighbor()
     hold_time{YType::uint16, "hold-time"},
     enabled_capabilities{YType::str, "enabled-capabilities"},
     platform{YType::str, "platform"}
-    	,
+        ,
     detail(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail>())
-	,mib(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib>())
+    , mib(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib>())
 {
     detail->parent = this;
     mib->parent = this;
 
-    yang_name = "lldp-neighbor"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-neighbor"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::~LldpNeighbor()
@@ -4119,6 +4178,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::~LldpNeighbor()
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return receiving_interface_name.is_set
 	|| receiving_parent_interface_name.is_set
 	|| device_id.is_set
@@ -4331,12 +4391,12 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Detail()
     physical_media_capabilities{YType::str, "physical-media-capabilities"},
     media_attachment_unit_type{YType::uint32, "media-attachment-unit-type"},
     port_vlan_id{YType::uint32, "port-vlan-id"}
-    	,
+        ,
     network_addresses(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses>())
 {
     network_addresses->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::~Detail()
@@ -4345,6 +4405,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::~Detail(
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_mac_address.is_set
 	|| port_description.is_set
 	|| system_name.is_set
@@ -4555,9 +4616,11 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::has
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::NetworkAddresses()
+    :
+    lldp_addr_entry(this, {})
 {
 
-    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-addresses"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::~NetworkAddresses()
@@ -4566,7 +4629,8 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkA
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::has_data() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_data())
             return true;
@@ -4576,7 +4640,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::Net
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_operation())
             return true;
@@ -4606,7 +4670,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry>();
         c->parent = this;
-        lldp_addr_entry.push_back(c);
+        lldp_addr_entry.append(c);
         return c;
     }
 
@@ -4618,7 +4682,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_addr_entry)
+    for (auto c : lldp_addr_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4648,12 +4712,12 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkA
     :
     ma_subtype{YType::uint8, "ma-subtype"},
     if_num{YType::uint32, "if-num"}
-    	,
+        ,
     address(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address>())
 {
     address->parent = this;
 
-    yang_name = "lldp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-addr-entry"; yang_parent_name = "network-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::~LldpAddrEntry()
@@ -4662,6 +4726,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkA
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ma_subtype.is_set
 	|| if_num.is_set
 	|| (address !=  nullptr && address->has_data());
@@ -4761,7 +4826,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkA
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::~Address()
@@ -4770,6 +4835,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkA
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Detail::NetworkAddresses::LldpAddrEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4869,14 +4935,14 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Mib()
     port_id_sub_type{YType::uint8, "port-id-sub-type"},
     port_id_len{YType::uint16, "port-id-len"},
     combined_capabilities{YType::uint32, "combined-capabilities"}
-    	,
+        ,
     unknown_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList>())
-	,org_def_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList>())
+    , org_def_tlv_list(std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList>())
 {
     unknown_tlv_list->parent = this;
     org_def_tlv_list->parent = this;
 
-    yang_name = "mib"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mib"; yang_parent_name = "lldp-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::~Mib()
@@ -4885,6 +4951,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::~Mib()
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::has_data() const
 {
+    if (is_presence_container) return true;
     return rem_time_mark.is_set
 	|| rem_local_port_num.is_set
 	|| rem_index.is_set
@@ -5072,9 +5139,11 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::has_le
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::UnknownTlvList()
+    :
+    lldp_unknown_tlv_entry(this, {})
 {
 
-    yang_name = "unknown-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::~UnknownTlvList()
@@ -5083,7 +5152,8 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvL
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::has_data() const
 {
-    for (std::size_t index=0; index<lldp_unknown_tlv_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_unknown_tlv_entry.len(); index++)
     {
         if(lldp_unknown_tlv_entry[index]->has_data())
             return true;
@@ -5093,7 +5163,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Unknow
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_unknown_tlv_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_unknown_tlv_entry.len(); index++)
     {
         if(lldp_unknown_tlv_entry[index]->has_operation())
             return true;
@@ -5123,7 +5193,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry>();
         c->parent = this;
-        lldp_unknown_tlv_entry.push_back(c);
+        lldp_unknown_tlv_entry.append(c);
         return c;
     }
 
@@ -5135,7 +5205,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_unknown_tlv_entry)
+    for (auto c : lldp_unknown_tlv_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5167,7 +5237,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvL
     tlv_value{YType::str, "tlv-value"}
 {
 
-    yang_name = "lldp-unknown-tlv-entry"; yang_parent_name = "unknown-tlv-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-unknown-tlv-entry"; yang_parent_name = "unknown-tlv-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::~LldpUnknownTlvEntry()
@@ -5176,6 +5246,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvL
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::UnknownTlvList::LldpUnknownTlvEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return tlv_type.is_set
 	|| tlv_value.is_set;
 }
@@ -5253,9 +5324,11 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::Unknow
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::OrgDefTlvList()
+    :
+    lldp_org_def_tlv_entry(this, {})
 {
 
-    yang_name = "org-def-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "org-def-tlv-list"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::~OrgDefTlvList()
@@ -5264,7 +5337,8 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvLi
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::has_data() const
 {
-    for (std::size_t index=0; index<lldp_org_def_tlv_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_org_def_tlv_entry.len(); index++)
     {
         if(lldp_org_def_tlv_entry[index]->has_data())
             return true;
@@ -5274,7 +5348,7 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDef
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_org_def_tlv_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_org_def_tlv_entry.len(); index++)
     {
         if(lldp_org_def_tlv_entry[index]->has_operation())
             return true;
@@ -5304,7 +5378,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNe
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry>();
         c->parent = this;
-        lldp_org_def_tlv_entry.push_back(c);
+        lldp_org_def_tlv_entry.append(c);
         return c;
     }
 
@@ -5316,7 +5390,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Neighbors::Sum
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_org_def_tlv_entry)
+    for (auto c : lldp_org_def_tlv_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5350,7 +5424,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvLi
     tlv_value{YType::str, "tlv-value"}
 {
 
-    yang_name = "lldp-org-def-tlv-entry"; yang_parent_name = "org-def-tlv-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-org-def-tlv-entry"; yang_parent_name = "org-def-tlv-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::~LldpOrgDefTlvEntry()
@@ -5359,6 +5433,7 @@ Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvLi
 
 bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDefTlvList::LldpOrgDefTlvEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| tlv_subtype.is_set
 	|| tlv_info_indes.is_set
@@ -5462,9 +5537,11 @@ bool Lldp::Nodes::Node::Neighbors::Summaries::Summary::LldpNeighbor::Mib::OrgDef
 }
 
 Lldp::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Interfaces::~Interfaces()
@@ -5473,7 +5550,8 @@ Lldp::Nodes::Node::Interfaces::~Interfaces()
 
 bool Lldp::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -5483,7 +5561,7 @@ bool Lldp::Nodes::Node::Interfaces::has_data() const
 
 bool Lldp::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -5513,7 +5591,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::get_child_by_name(const s
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -5525,7 +5603,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5563,12 +5641,12 @@ Lldp::Nodes::Node::Interfaces::Interface::Interface()
     port_id{YType::str, "port-id"},
     port_id_sub_type{YType::uint8, "port-id-sub-type"},
     port_description{YType::str, "port-description"}
-    	,
+        ,
     local_network_addresses(std::make_shared<Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses>())
 {
     local_network_addresses->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::~Interface()
@@ -5577,6 +5655,7 @@ Lldp::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool Lldp::Nodes::Node::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_name_xr.is_set
 	|| tx_enabled.is_set
@@ -5609,7 +5688,8 @@ bool Lldp::Nodes::Node::Interfaces::Interface::has_operation() const
 std::string Lldp::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5774,9 +5854,11 @@ bool Lldp::Nodes::Node::Interfaces::Interface::has_leaf_or_child_of_name(const s
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LocalNetworkAddresses()
+    :
+    lldp_addr_entry(this, {})
 {
 
-    yang_name = "local-network-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-network-addresses"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::~LocalNetworkAddresses()
@@ -5785,7 +5867,8 @@ Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::~LocalNetworkAd
 
 bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::has_data() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_data())
             return true;
@@ -5795,7 +5878,7 @@ bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::has_data()
 
 bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<lldp_addr_entry.size(); index++)
+    for (std::size_t index=0; index<lldp_addr_entry.len(); index++)
     {
         if(lldp_addr_entry[index]->has_operation())
             return true;
@@ -5825,7 +5908,7 @@ std::shared_ptr<Entity> Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAd
     {
         auto c = std::make_shared<Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry>();
         c->parent = this;
-        lldp_addr_entry.push_back(c);
+        lldp_addr_entry.append(c);
         return c;
     }
 
@@ -5837,7 +5920,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lldp::Nodes::Node::Interfaces::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lldp_addr_entry)
+    for (auto c : lldp_addr_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5867,12 +5950,12 @@ Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::
     :
     ma_subtype{YType::uint8, "ma-subtype"},
     if_num{YType::uint32, "if-num"}
-    	,
+        ,
     address(std::make_shared<Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address>())
 {
     address->parent = this;
 
-    yang_name = "lldp-addr-entry"; yang_parent_name = "local-network-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lldp-addr-entry"; yang_parent_name = "local-network-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::~LldpAddrEntry()
@@ -5881,6 +5964,7 @@ Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::
 
 bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ma_subtype.is_set
 	|| if_num.is_set
 	|| (address !=  nullptr && address->has_data());
@@ -5980,7 +6064,7 @@ Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "lldp-addr-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::~Address()
@@ -5989,6 +6073,7 @@ Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::
 
 bool Lldp::Nodes::Node::Interfaces::Interface::LocalNetworkAddresses::LldpAddrEntry::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6093,7 +6178,7 @@ Lldp::Nodes::Node::Statistics::Statistics()
     table_overflow_errors{YType::uint32, "table-overflow-errors"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lldp::Nodes::Node::Statistics::~Statistics()
@@ -6102,6 +6187,7 @@ Lldp::Nodes::Node::Statistics::~Statistics()
 
 bool Lldp::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return transmitted_packets.is_set
 	|| aged_out_entries.is_set
 	|| discarded_packets.is_set

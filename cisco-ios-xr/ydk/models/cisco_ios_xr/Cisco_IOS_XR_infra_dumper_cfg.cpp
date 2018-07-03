@@ -20,18 +20,15 @@ Exception::Exception()
     packet_memory{YType::boolean, "packet-memory"},
     sparse_size{YType::uint32, "sparse-size"},
     memory_threshold{YType::uint32, "memory-threshold"}
-    	,
-    choice1(std::make_shared<Exception::Choice1>())
-	,choice3(std::make_shared<Exception::Choice3>())
-	,process_names(std::make_shared<Exception::ProcessNames>())
-	,choice2(std::make_shared<Exception::Choice2>())
+        ,
+    choice1(nullptr) // presence node
+    , choice3(nullptr) // presence node
+    , process_names(std::make_shared<Exception::ProcessNames>())
+    , choice2(nullptr) // presence node
 {
-    choice1->parent = this;
-    choice3->parent = this;
     process_names->parent = this;
-    choice2->parent = this;
 
-    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-infra-dumper-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-infra-dumper-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Exception::~Exception()
@@ -40,6 +37,7 @@ Exception::~Exception()
 
 bool Exception::has_data() const
 {
+    if (is_presence_container) return true;
     return sparse.is_set
 	|| core_verification.is_set
 	|| core_size.is_set
@@ -279,7 +277,7 @@ Exception::Choice1::Choice1()
     filename{YType::str, "filename"}
 {
 
-    yang_name = "choice1"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "choice1"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Exception::Choice1::~Choice1()
@@ -288,6 +286,7 @@ Exception::Choice1::~Choice1()
 
 bool Exception::Choice1::has_data() const
 {
+    if (is_presence_container) return true;
     return compress.is_set
 	|| lower_limit.is_set
 	|| higher_limit.is_set
@@ -419,7 +418,7 @@ Exception::Choice3::Choice3()
     filename{YType::str, "filename"}
 {
 
-    yang_name = "choice3"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "choice3"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Exception::Choice3::~Choice3()
@@ -428,6 +427,7 @@ Exception::Choice3::~Choice3()
 
 bool Exception::Choice3::has_data() const
 {
+    if (is_presence_container) return true;
     return compress.is_set
 	|| lower_limit.is_set
 	|| higher_limit.is_set
@@ -551,9 +551,11 @@ bool Exception::Choice3::has_leaf_or_child_of_name(const std::string & name) con
 }
 
 Exception::ProcessNames::ProcessNames()
+    :
+    process_name(this, {"processname"})
 {
 
-    yang_name = "process-names"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-names"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::ProcessNames::~ProcessNames()
@@ -562,7 +564,8 @@ Exception::ProcessNames::~ProcessNames()
 
 bool Exception::ProcessNames::has_data() const
 {
-    for (std::size_t index=0; index<process_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process_name.len(); index++)
     {
         if(process_name[index]->has_data())
             return true;
@@ -572,7 +575,7 @@ bool Exception::ProcessNames::has_data() const
 
 bool Exception::ProcessNames::has_operation() const
 {
-    for (std::size_t index=0; index<process_name.size(); index++)
+    for (std::size_t index=0; index<process_name.len(); index++)
     {
         if(process_name[index]->has_operation())
             return true;
@@ -609,7 +612,7 @@ std::shared_ptr<Entity> Exception::ProcessNames::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Exception::ProcessNames::ProcessName>();
         c->parent = this;
-        process_name.push_back(c);
+        process_name.append(c);
         return c;
     }
 
@@ -621,7 +624,7 @@ std::map<std::string, std::shared_ptr<Entity>> Exception::ProcessNames::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process_name)
+    for (auto c : process_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -650,12 +653,12 @@ bool Exception::ProcessNames::has_leaf_or_child_of_name(const std::string & name
 Exception::ProcessNames::ProcessName::ProcessName()
     :
     processname{YType::str, "processname"}
-    	,
+        ,
     core_option(std::make_shared<Exception::ProcessNames::ProcessName::CoreOption>())
 {
     core_option->parent = this;
 
-    yang_name = "process-name"; yang_parent_name = "process-names"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-name"; yang_parent_name = "process-names"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::ProcessNames::ProcessName::~ProcessName()
@@ -664,6 +667,7 @@ Exception::ProcessNames::ProcessName::~ProcessName()
 
 bool Exception::ProcessNames::ProcessName::has_data() const
 {
+    if (is_presence_container) return true;
     return processname.is_set
 	|| (core_option !=  nullptr && core_option->has_data());
 }
@@ -685,7 +689,8 @@ std::string Exception::ProcessNames::ProcessName::get_absolute_path() const
 std::string Exception::ProcessNames::ProcessName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process-name" <<"[processname='" <<processname <<"']";
+    path_buffer << "process-name";
+    ADD_KEY_TOKEN(processname, "processname");
     return path_buffer.str();
 }
 
@@ -762,7 +767,7 @@ Exception::ProcessNames::ProcessName::CoreOption::CoreOption()
     nocoreval{YType::enumeration, "nocoreval"}
 {
 
-    yang_name = "core-option"; yang_parent_name = "process-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "core-option"; yang_parent_name = "process-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Exception::ProcessNames::ProcessName::CoreOption::~CoreOption()
@@ -771,6 +776,7 @@ Exception::ProcessNames::ProcessName::CoreOption::~CoreOption()
 
 bool Exception::ProcessNames::ProcessName::CoreOption::has_data() const
 {
+    if (is_presence_container) return true;
     return main_memoryval.is_set
 	|| shared_memoryval.is_set
 	|| packet_memoryval.is_set
@@ -934,7 +940,7 @@ Exception::Choice2::Choice2()
     filename{YType::str, "filename"}
 {
 
-    yang_name = "choice2"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "choice2"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Exception::Choice2::~Choice2()
@@ -943,6 +949,7 @@ Exception::Choice2::~Choice2()
 
 bool Exception::Choice2::has_data() const
 {
+    if (is_presence_container) return true;
     return compress.is_set
 	|| lower_limit.is_set
 	|| higher_limit.is_set
@@ -1065,29 +1072,29 @@ bool Exception::Choice2::has_leaf_or_child_of_name(const std::string & name) con
     return false;
 }
 
-const Enum::YLeaf Copy::default_ {0, "default"};
-const Enum::YLeaf Copy::copy {512, "copy"};
-
 const Enum::YLeaf Context::default_ {0, "default"};
 const Enum::YLeaf Context::context {65536, "context"};
-
-const Enum::YLeaf Sharedmemory::default_ {0, "default"};
-const Enum::YLeaf Sharedmemory::shared_memory {2, "shared-memory"};
-
-const Enum::YLeaf Sparse::default_ {0, "default"};
-const Enum::YLeaf Sparse::sparse {1024, "sparse"};
-
-const Enum::YLeaf Nocore::default_ {0, "default"};
-const Enum::YLeaf Nocore::no_core {131072, "no-core"};
-
-const Enum::YLeaf Packetmemory::default_ {0, "default"};
-const Enum::YLeaf Packetmemory::packet_memory {8, "packet-memory"};
 
 const Enum::YLeaf Skipcpuinfo::default_ {0, "default"};
 const Enum::YLeaf Skipcpuinfo::skip_cpu_info {4096, "skip-cpu-info"};
 
+const Enum::YLeaf Packetmemory::default_ {0, "default"};
+const Enum::YLeaf Packetmemory::packet_memory {8, "packet-memory"};
+
+const Enum::YLeaf Sparse::default_ {0, "default"};
+const Enum::YLeaf Sparse::sparse {1024, "sparse"};
+
 const Enum::YLeaf Mainmemory::default_ {0, "default"};
 const Enum::YLeaf Mainmemory::main_memory {1, "main-memory"};
+
+const Enum::YLeaf Nocore::default_ {0, "default"};
+const Enum::YLeaf Nocore::no_core {131072, "no-core"};
+
+const Enum::YLeaf Copy::default_ {0, "default"};
+const Enum::YLeaf Copy::copy {512, "copy"};
+
+const Enum::YLeaf Sharedmemory::default_ {0, "default"};
+const Enum::YLeaf Sharedmemory::shared_memory {2, "shared-memory"};
 
 
 }

@@ -32,22 +32,22 @@ class INTSERVMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Intsrvgenobjects; //type: INTSERVMIB::Intsrvgenobjects
-        class Intsrvifattribtable; //type: INTSERVMIB::Intsrvifattribtable
-        class Intsrvflowtable; //type: INTSERVMIB::Intsrvflowtable
+        class IntSrvGenObjects; //type: INTSERVMIB::IntSrvGenObjects
+        class IntSrvIfAttribTable; //type: INTSERVMIB::IntSrvIfAttribTable
+        class IntSrvFlowTable; //type: INTSERVMIB::IntSrvFlowTable
 
-        std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::Intsrvgenobjects> intsrvgenobjects;
-        std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::Intsrvifattribtable> intsrvifattribtable;
-        std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::Intsrvflowtable> intsrvflowtable;
+        std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::IntSrvGenObjects> intsrvgenobjects;
+        std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::IntSrvIfAttribTable> intsrvifattribtable;
+        std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::IntSrvFlowTable> intsrvflowtable;
         
 }; // INTSERVMIB
 
 
-class INTSERVMIB::Intsrvgenobjects : public ydk::Entity
+class INTSERVMIB::IntSrvGenObjects : public ydk::Entity
 {
     public:
-        Intsrvgenobjects();
-        ~Intsrvgenobjects();
+        IntSrvGenObjects();
+        ~IntSrvGenObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,14 +62,14 @@ class INTSERVMIB::Intsrvgenobjects : public ydk::Entity
 
         ydk::YLeaf intsrvflownewindex; //type: int32
 
-}; // INTSERVMIB::Intsrvgenobjects
+}; // INTSERVMIB::IntSrvGenObjects
 
 
-class INTSERVMIB::Intsrvifattribtable : public ydk::Entity
+class INTSERVMIB::IntSrvIfAttribTable : public ydk::Entity
 {
     public:
-        Intsrvifattribtable();
-        ~Intsrvifattribtable();
+        IntSrvIfAttribTable();
+        ~IntSrvIfAttribTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -82,18 +82,18 @@ class INTSERVMIB::Intsrvifattribtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Intsrvifattribentry; //type: INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry
+        class IntSrvIfAttribEntry; //type: INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry> > intsrvifattribentry;
+        ydk::YList intsrvifattribentry;
         
-}; // INTSERVMIB::Intsrvifattribtable
+}; // INTSERVMIB::IntSrvIfAttribTable
 
 
-class INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry : public ydk::Entity
+class INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry : public ydk::Entity
 {
     public:
-        Intsrvifattribentry();
-        ~Intsrvifattribentry();
+        IntSrvIfAttribEntry();
+        ~IntSrvIfAttribEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -106,7 +106,7 @@ class INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf intsrvifattriballocatedbits; //type: int32
         ydk::YLeaf intsrvifattribmaxallocatedbits; //type: int32
@@ -115,14 +115,14 @@ class INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry : public ydk::Entity
         ydk::YLeaf intsrvifattribpropagationdelay; //type: int32
         ydk::YLeaf intsrvifattribstatus; //type: RowStatus
 
-}; // INTSERVMIB::Intsrvifattribtable::Intsrvifattribentry
+}; // INTSERVMIB::IntSrvIfAttribTable::IntSrvIfAttribEntry
 
 
-class INTSERVMIB::Intsrvflowtable : public ydk::Entity
+class INTSERVMIB::IntSrvFlowTable : public ydk::Entity
 {
     public:
-        Intsrvflowtable();
-        ~Intsrvflowtable();
+        IntSrvFlowTable();
+        ~IntSrvFlowTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,18 +135,18 @@ class INTSERVMIB::Intsrvflowtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Intsrvflowentry; //type: INTSERVMIB::Intsrvflowtable::Intsrvflowentry
+        class IntSrvFlowEntry; //type: INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::INT_SERV_MIB::INTSERVMIB::Intsrvflowtable::Intsrvflowentry> > intsrvflowentry;
+        ydk::YList intsrvflowentry;
         
-}; // INTSERVMIB::Intsrvflowtable
+}; // INTSERVMIB::IntSrvFlowTable
 
 
-class INTSERVMIB::Intsrvflowtable::Intsrvflowentry : public ydk::Entity
+class INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry : public ydk::Entity
 {
     public:
-        Intsrvflowentry();
-        ~Intsrvflowentry();
+        IntSrvFlowEntry();
+        ~IntSrvFlowEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -161,7 +161,7 @@ class INTSERVMIB::Intsrvflowtable::Intsrvflowentry : public ydk::Entity
 
         ydk::YLeaf intsrvflownumber; //type: int32
         ydk::YLeaf intsrvflowtype; //type: int32
-        ydk::YLeaf intsrvflowowner; //type: Intsrvflowowner
+        ydk::YLeaf intsrvflowowner; //type: IntSrvFlowOwner
         ydk::YLeaf intsrvflowdestaddr; //type: binary
         ydk::YLeaf intsrvflowsenderaddr; //type: binary
         ydk::YLeaf intsrvflowdestaddrlength; //type: int32
@@ -184,9 +184,9 @@ class INTSERVMIB::Intsrvflowtable::Intsrvflowentry : public ydk::Entity
         ydk::YLeaf intsrvflowservice; //type: QosService
         ydk::YLeaf intsrvfloworder; //type: int32
         ydk::YLeaf intsrvflowstatus; //type: RowStatus
-        class Intsrvflowowner;
+        class IntSrvFlowOwner;
 
-}; // INTSERVMIB::Intsrvflowtable::Intsrvflowentry
+}; // INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry
 
 class QosService : public ydk::Enum
 {
@@ -197,7 +197,7 @@ class QosService : public ydk::Enum
 
 };
 
-class INTSERVMIB::Intsrvflowtable::Intsrvflowentry::Intsrvflowowner : public ydk::Enum
+class INTSERVMIB::IntSrvFlowTable::IntSrvFlowEntry::IntSrvFlowOwner : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

@@ -34,7 +34,7 @@ class VrrpOperData : public ydk::Entity
 
         class VrrpOperState; //type: VrrpOperData::VrrpOperState
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_vrrp_oper::VrrpOperData::VrrpOperState> > vrrp_oper_state;
+        ydk::YList vrrp_oper_state;
         
 }; // VrrpOperData
 
@@ -87,7 +87,7 @@ class VrrpOperData::VrrpOperState : public ydk::Entity
         ydk::YLeaf omp_state; //type: OmpStateUpdown
         class TrackList; //type: VrrpOperData::VrrpOperState::TrackList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_vrrp_oper::VrrpOperData::VrrpOperState::TrackList> > track_list;
+        ydk::YList track_list;
         
 }; // VrrpOperData::VrrpOperState
 
@@ -113,13 +113,6 @@ class VrrpOperData::VrrpOperState::TrackList : public ydk::Entity
 
 }; // VrrpOperData::VrrpOperState::TrackList
 
-class ProtoVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vrrp_v3;
-
-};
-
 class MasterReason : public ydk::Enum
 {
     public:
@@ -140,11 +133,10 @@ class VrrpProtoState : public ydk::Enum
 
 };
 
-class OmpStateUpdown : public ydk::Enum
+class ProtoVersion : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf omp_up;
-        static const ydk::Enum::YLeaf omp_down;
+        static const ydk::Enum::YLeaf vrrp_v3;
 
 };
 
@@ -153,6 +145,14 @@ class TrackState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf vrrp_track_state_resolved;
         static const ydk::Enum::YLeaf vrrp_track_state_unresolved;
+
+};
+
+class OmpStateUpdown : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf omp_up;
+        static const ydk::Enum::YLeaf omp_down;
 
 };
 

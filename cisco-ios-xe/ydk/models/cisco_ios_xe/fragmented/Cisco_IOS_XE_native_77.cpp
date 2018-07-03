@@ -5,11 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_77.hpp"
-#include "Cisco_IOS_XE_native_80.hpp"
-#include "Cisco_IOS_XE_native_82.hpp"
-#include "Cisco_IOS_XE_native_79.hpp"
 #include "Cisco_IOS_XE_native_78.hpp"
+#include "Cisco_IOS_XE_native_79.hpp"
+#include "Cisco_IOS_XE_native_82.hpp"
 #include "Cisco_IOS_XE_native_81.hpp"
+#include "Cisco_IOS_XE_native_80.hpp"
 
 using namespace ydk;
 
@@ -22,7 +22,7 @@ Native::Interface::Overlay::StormControl::Unicast::Level::Pps::Pps()
     falling_threshold{YType::str, "falling-threshold"}
 {
 
-    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pps"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::StormControl::Unicast::Level::Pps::~Pps()
@@ -31,6 +31,7 @@ Native::Interface::Overlay::StormControl::Unicast::Level::Pps::~Pps()
 
 bool Native::Interface::Overlay::StormControl::Unicast::Level::Pps::has_data() const
 {
+    if (is_presence_container) return true;
     return rising_threshold.is_set
 	|| falling_threshold.is_set;
 }
@@ -112,7 +113,7 @@ Native::Interface::Overlay::Trust::Trust()
     device{YType::enumeration, "device"}
 {
 
-    yang_name = "trust"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trust"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Trust::~Trust()
@@ -121,6 +122,7 @@ Native::Interface::Overlay::Trust::~Trust()
 
 bool Native::Interface::Overlay::Trust::has_data() const
 {
+    if (is_presence_container) return true;
     return device.is_set;
 }
 
@@ -187,12 +189,12 @@ bool Native::Interface::Overlay::Trust::has_leaf_or_child_of_name(const std::str
 Native::Interface::Overlay::PriorityQueue::PriorityQueue()
     :
     out{YType::empty, "out"}
-    	,
+        ,
     cos_map(std::make_shared<Native::Interface::Overlay::PriorityQueue::CosMap>())
 {
     cos_map->parent = this;
 
-    yang_name = "priority-queue"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-queue"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::PriorityQueue::~PriorityQueue()
@@ -201,6 +203,7 @@ Native::Interface::Overlay::PriorityQueue::~PriorityQueue()
 
 bool Native::Interface::Overlay::PriorityQueue::has_data() const
 {
+    if (is_presence_container) return true;
     return out.is_set
 	|| (cos_map !=  nullptr && cos_map->has_data());
 }
@@ -286,7 +289,7 @@ Native::Interface::Overlay::PriorityQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "priority-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::PriorityQueue::CosMap::~CosMap()
@@ -295,6 +298,7 @@ Native::Interface::Overlay::PriorityQueue::CosMap::~CosMap()
 
 bool Native::Interface::Overlay::PriorityQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -380,9 +384,11 @@ bool Native::Interface::Overlay::PriorityQueue::CosMap::has_leaf_or_child_of_nam
 }
 
 Native::Interface::Overlay::RcvQueue::RcvQueue()
+    :
+    cos_map(this, {"queue_id", "threshold_id"})
 {
 
-    yang_name = "rcv-queue"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rcv-queue"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::RcvQueue::~RcvQueue()
@@ -391,7 +397,8 @@ Native::Interface::Overlay::RcvQueue::~RcvQueue()
 
 bool Native::Interface::Overlay::RcvQueue::has_data() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_data())
             return true;
@@ -401,7 +408,7 @@ bool Native::Interface::Overlay::RcvQueue::has_data() const
 
 bool Native::Interface::Overlay::RcvQueue::has_operation() const
 {
-    for (std::size_t index=0; index<cos_map.size(); index++)
+    for (std::size_t index=0; index<cos_map.len(); index++)
     {
         if(cos_map[index]->has_operation())
             return true;
@@ -431,7 +438,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::RcvQueue::get_child_by_name(
     {
         auto c = std::make_shared<Native::Interface::Overlay::RcvQueue::CosMap>();
         c->parent = this;
-        cos_map.push_back(c);
+        cos_map.append(c);
         return c;
     }
 
@@ -443,7 +450,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::RcvQu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cos_map)
+    for (auto c : cos_map.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -476,7 +483,7 @@ Native::Interface::Overlay::RcvQueue::CosMap::CosMap()
     cos_values{YType::uint8, "cos-values"}
 {
 
-    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-map"; yang_parent_name = "rcv-queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::RcvQueue::CosMap::~CosMap()
@@ -485,6 +492,7 @@ Native::Interface::Overlay::RcvQueue::CosMap::~CosMap()
 
 bool Native::Interface::Overlay::RcvQueue::CosMap::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos_values.getYLeafs())
     {
         if(leaf.is_set)
@@ -510,7 +518,9 @@ bool Native::Interface::Overlay::RcvQueue::CosMap::has_operation() const
 std::string Native::Interface::Overlay::RcvQueue::CosMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cos-map" <<"[queue-id='" <<queue_id <<"']" <<"[threshold-id='" <<threshold_id <<"']";
+    path_buffer << "cos-map";
+    ADD_KEY_TOKEN(queue_id, "queue-id");
+    ADD_KEY_TOKEN(threshold_id, "threshold-id");
     return path_buffer.str();
 }
 
@@ -588,7 +598,7 @@ Native::Interface::Overlay::Peer::Peer()
 {
     default_->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Peer::~Peer()
@@ -597,6 +607,7 @@ Native::Interface::Overlay::Peer::~Peer()
 
 bool Native::Interface::Overlay::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -669,7 +680,7 @@ Native::Interface::Overlay::Peer::Default::Default()
 {
     ip->parent = this;
 
-    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Peer::Default::~Default()
@@ -678,6 +689,7 @@ Native::Interface::Overlay::Peer::Default::~Default()
 
 bool Native::Interface::Overlay::Peer::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -750,7 +762,7 @@ Native::Interface::Overlay::Peer::Default::Ip::Ip()
 {
     address->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Peer::Default::Ip::~Ip()
@@ -759,6 +771,7 @@ Native::Interface::Overlay::Peer::Default::Ip::~Ip()
 
 bool Native::Interface::Overlay::Peer::Default::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (address !=  nullptr && address->has_data());
 }
 
@@ -828,12 +841,12 @@ bool Native::Interface::Overlay::Peer::Default::Ip::has_leaf_or_child_of_name(co
 Native::Interface::Overlay::Peer::Default::Ip::Address::Address()
     :
     dhcp{YType::empty, "dhcp"}
-    	,
+        ,
     dhcp_pool(nullptr) // presence node
-	,pool(nullptr) // presence node
+    , pool(nullptr) // presence node
 {
 
-    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Peer::Default::Ip::Address::~Address()
@@ -842,6 +855,7 @@ Native::Interface::Overlay::Peer::Default::Ip::Address::~Address()
 
 bool Native::Interface::Overlay::Peer::Default::Ip::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return dhcp.is_set
 	|| (dhcp_pool !=  nullptr && dhcp_pool->has_data())
 	|| (pool !=  nullptr && pool->has_data());
@@ -942,7 +956,7 @@ Native::Interface::Overlay::Peer::Default::Ip::Address::DhcpPool::DhcpPool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp-pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
@@ -951,6 +965,7 @@ Native::Interface::Overlay::Peer::Default::Ip::Address::DhcpPool::~DhcpPool()
 
 bool Native::Interface::Overlay::Peer::Default::Ip::Address::DhcpPool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -1019,7 +1034,7 @@ Native::Interface::Overlay::Peer::Default::Ip::Address::Pool::Pool()
     pools{YType::str, "pools"}
 {
 
-    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pool"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Peer::Default::Ip::Address::Pool::~Pool()
@@ -1028,6 +1043,7 @@ Native::Interface::Overlay::Peer::Default::Ip::Address::Pool::~Pool()
 
 bool Native::Interface::Overlay::Peer::Default::Ip::Address::Pool::has_data() const
 {
+    if (is_presence_container) return true;
     return pools.is_set;
 }
 
@@ -1097,7 +1113,7 @@ Native::Interface::Overlay::PmPath::PmPath()
     interface_id{YType::uint8, "interface-id"}
 {
 
-    yang_name = "pm-path"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pm-path"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::PmPath::~PmPath()
@@ -1106,6 +1122,7 @@ Native::Interface::Overlay::PmPath::~PmPath()
 
 bool Native::Interface::Overlay::PmPath::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| interface_id.is_set;
 }
@@ -1186,14 +1203,14 @@ Native::Interface::Overlay::CarrierDelay::CarrierDelay()
     :
     seconds{YType::uint8, "seconds"},
     msec{YType::uint16, "msec"}
-    	,
+        ,
     down(std::make_shared<Native::Interface::Overlay::CarrierDelay::Down>())
-	,up(std::make_shared<Native::Interface::Overlay::CarrierDelay::Up>())
+    , up(std::make_shared<Native::Interface::Overlay::CarrierDelay::Up>())
 {
     down->parent = this;
     up->parent = this;
 
-    yang_name = "carrier-delay"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "carrier-delay"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::CarrierDelay::~CarrierDelay()
@@ -1202,6 +1219,7 @@ Native::Interface::Overlay::CarrierDelay::~CarrierDelay()
 
 bool Native::Interface::Overlay::CarrierDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set
 	|| (down !=  nullptr && down->has_data())
@@ -1316,7 +1334,7 @@ Native::Interface::Overlay::CarrierDelay::Down::Down()
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "down"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "down"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::CarrierDelay::Down::~Down()
@@ -1325,6 +1343,7 @@ Native::Interface::Overlay::CarrierDelay::Down::~Down()
 
 bool Native::Interface::Overlay::CarrierDelay::Down::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -1407,7 +1426,7 @@ Native::Interface::Overlay::CarrierDelay::Up::Up()
     msec{YType::uint16, "msec"}
 {
 
-    yang_name = "up"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "up"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::CarrierDelay::Up::~Up()
@@ -1416,6 +1435,7 @@ Native::Interface::Overlay::CarrierDelay::Up::~Up()
 
 bool Native::Interface::Overlay::CarrierDelay::Up::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| msec.is_set;
 }
@@ -1501,7 +1521,7 @@ Native::Interface::Overlay::ChannelGroup::ChannelGroup()
     auto_{YType::empty, "auto"}
 {
 
-    yang_name = "channel-group"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel-group"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::ChannelGroup::~ChannelGroup()
@@ -1510,6 +1530,7 @@ Native::Interface::Overlay::ChannelGroup::~ChannelGroup()
 
 bool Native::Interface::Overlay::ChannelGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| mode.is_set
 	|| non_silent.is_set
@@ -1630,7 +1651,7 @@ Native::Interface::Overlay::Ethernet::Ethernet()
     oam(nullptr) // presence node
 {
 
-    yang_name = "ethernet"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::~Ethernet()
@@ -1639,6 +1660,7 @@ Native::Interface::Overlay::Ethernet::~Ethernet()
 
 bool Native::Interface::Overlay::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (oam !=  nullptr && oam->has_data());
 }
 
@@ -1711,16 +1733,16 @@ Native::Interface::Overlay::Ethernet::Oam::Oam()
     min_rate{YType::uint8, "min-rate"},
     mode{YType::enumeration, "mode"},
     timeout{YType::uint8, "timeout"}
-    	,
+        ,
     link_monitor(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor>())
-	,remote_failure(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteFailure>())
-	,remote_loopback(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteLoopback>())
+    , remote_failure(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteFailure>())
+    , remote_loopback(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteLoopback>())
 {
     link_monitor->parent = this;
     remote_failure->parent = this;
     remote_loopback->parent = this;
 
-    yang_name = "oam"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oam"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Ethernet::Oam::~Oam()
@@ -1729,6 +1751,7 @@ Native::Interface::Overlay::Ethernet::Oam::~Oam()
 
 bool Native::Interface::Overlay::Ethernet::Oam::has_data() const
 {
+    if (is_presence_container) return true;
     return max_rate.is_set
 	|| min_rate.is_set
 	|| mode.is_set
@@ -1883,13 +1906,13 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::LinkMonitor()
     :
     on{YType::empty, "on"},
     supported{YType::empty, "supported"}
-    	,
+        ,
     frame(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame>())
-	,frame_period(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod>())
-	,frame_seconds(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds>())
-	,high_threshold(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold>())
-	,receive_crc(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc>())
-	,symbol_period(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod>())
+    , frame_period(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod>())
+    , frame_seconds(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds>())
+    , high_threshold(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold>())
+    , receive_crc(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc>())
+    , symbol_period(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod>())
 {
     frame->parent = this;
     frame_period->parent = this;
@@ -1898,7 +1921,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::LinkMonitor()
     receive_crc->parent = this;
     symbol_period->parent = this;
 
-    yang_name = "link-monitor"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-monitor"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::~LinkMonitor()
@@ -1907,6 +1930,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::~LinkMonitor()
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return on.is_set
 	|| supported.is_set
 	|| (frame !=  nullptr && frame->has_data())
@@ -2082,12 +2106,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::has_leaf_or_child_o
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Frame()
     :
     window{YType::uint16, "window"}
-    	,
+        ,
     threshold(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "frame"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::~Frame()
@@ -2096,6 +2120,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::~Frame()
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -2178,12 +2203,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::has_leaf_or_
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
-    	,
+        ,
     high(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>())
 {
     high->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::~Threshold()
@@ -2192,6 +2217,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::~Thres
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
@@ -2277,7 +2303,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::
     none{YType::empty, "none"}
 {
 
-    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::~High()
@@ -2286,6 +2312,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_data() const
 {
+    if (is_presence_container) return true;
     return thresh.is_set
 	|| none.is_set;
 }
@@ -2365,12 +2392,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::Frame::Threshold::H
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::FramePeriod()
     :
     window{YType::uint16, "window"}
-    	,
+        ,
     threshold(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "frame-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::~FramePeriod()
@@ -2379,6 +2406,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::~FramePerio
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -2461,12 +2489,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::has_le
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
-    	,
+        ,
     high(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>())
 {
     high->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::~Threshold()
@@ -2475,6 +2503,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
@@ -2560,7 +2589,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::
     none{YType::empty, "none"}
 {
 
-    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::~High()
@@ -2569,6 +2598,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_data() const
 {
+    if (is_presence_container) return true;
     return f_thresh.is_set
 	|| none.is_set;
 }
@@ -2648,12 +2678,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FramePeriod::Thresh
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::FrameSeconds()
     :
     window{YType::uint16, "window"}
-    	,
+        ,
     threshold(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "frame-seconds"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frame-seconds"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::~FrameSeconds()
@@ -2662,6 +2692,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::~FrameSeco
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -2744,12 +2775,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::has_l
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
-    	,
+        ,
     high(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>())
 {
     high->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::~Threshold()
@@ -2758,6 +2789,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold:
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
@@ -2843,7 +2875,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold:
     none{YType::empty, "none"}
 {
 
-    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::~High()
@@ -2852,6 +2884,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold:
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_data() const
 {
+    if (is_presence_container) return true;
     return e_thresh.is_set
 	|| none.is_set;
 }
@@ -2934,7 +2967,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::HighThres
 {
     action->parent = this;
 
-    yang_name = "high-threshold"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-threshold"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::~HighThreshold()
@@ -2943,6 +2976,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::~HighThre
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data());
 }
 
@@ -3014,7 +3048,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::Action::A
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
 
-    yang_name = "action"; yang_parent_name = "high-threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "high-threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::Action::~Action()
@@ -3023,6 +3057,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::Action::~
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return error_disable_interface.is_set;
 }
 
@@ -3089,12 +3124,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::HighThreshold::Acti
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::ReceiveCrc()
     :
     window{YType::uint16, "window"}
-    	,
+        ,
     threshold(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "receive-crc"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-crc"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::~ReceiveCrc()
@@ -3103,6 +3138,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::~ReceiveCrc(
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -3185,12 +3221,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_lea
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
-    	,
+        ,
     high(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>())
 {
     high->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "receive-crc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "receive-crc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::~Threshold()
@@ -3199,6 +3235,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::~
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
@@ -3284,7 +3321,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::H
     none{YType::empty, "none"}
 {
 
-    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::~High()
@@ -3293,6 +3330,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::H
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_data() const
 {
+    if (is_presence_container) return true;
     return crc_thresh.is_set
 	|| none.is_set;
 }
@@ -3372,12 +3410,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::ReceiveCrc::Thresho
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::SymbolPeriod()
     :
     window{YType::uint16, "window"}
-    	,
+        ,
     threshold(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "symbol-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "symbol-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::~SymbolPeriod()
@@ -3386,6 +3424,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::~SymbolPer
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_data() const
 {
+    if (is_presence_container) return true;
     return window.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
 }
@@ -3468,12 +3507,12 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_l
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::Threshold()
     :
     low{YType::uint16, "low"}
-    	,
+        ,
     high(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>())
 {
     high->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::~Threshold()
@@ -3482,6 +3521,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold:
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return low.is_set
 	|| (high !=  nullptr && high->has_data());
 }
@@ -3567,7 +3607,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold:
     none{YType::empty, "none"}
 {
 
-    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::~High()
@@ -3576,6 +3616,7 @@ Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold:
 
 bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_data() const
 {
+    if (is_presence_container) return true;
     return err_thresh.is_set
 	|| none.is_set;
 }
@@ -3655,14 +3696,14 @@ bool Native::Interface::Overlay::Ethernet::Oam::LinkMonitor::SymbolPeriod::Thres
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::RemoteFailure()
     :
     critical_event(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent>())
-	,dying_gasp(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp>())
-	,link_fault(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault>())
+    , dying_gasp(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp>())
+    , link_fault(std::make_shared<Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault>())
 {
     critical_event->parent = this;
     dying_gasp->parent = this;
     link_fault->parent = this;
 
-    yang_name = "remote-failure"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-failure"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::~RemoteFailure()
@@ -3671,6 +3712,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::~RemoteFailure()
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::has_data() const
 {
+    if (is_presence_container) return true;
     return (critical_event !=  nullptr && critical_event->has_data())
 	|| (dying_gasp !=  nullptr && dying_gasp->has_data())
 	|| (link_fault !=  nullptr && link_fault->has_data());
@@ -3775,7 +3817,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::Critica
 {
     action->parent = this;
 
-    yang_name = "critical-event"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "critical-event"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::~CriticalEvent()
@@ -3784,6 +3826,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::~Critic
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data());
 }
 
@@ -3855,7 +3898,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::Action:
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
 
-    yang_name = "action"; yang_parent_name = "critical-event"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "critical-event"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::~Action()
@@ -3864,6 +3907,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::Action:
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return error_disable_interface.is_set;
 }
 
@@ -3932,7 +3976,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::DyingGasp()
     action(nullptr) // presence node
 {
 
-    yang_name = "dying-gasp"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dying-gasp"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::~DyingGasp()
@@ -3941,6 +3985,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::~DyingGasp(
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data());
 }
 
@@ -4012,7 +4057,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::Action::Act
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
 
-    yang_name = "action"; yang_parent_name = "dying-gasp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "dying-gasp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::Action::~Action()
@@ -4021,6 +4066,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::Action::~Ac
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return error_disable_interface.is_set;
 }
 
@@ -4089,7 +4135,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::LinkFault()
     action(nullptr) // presence node
 {
 
-    yang_name = "link-fault"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "link-fault"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::~LinkFault()
@@ -4098,6 +4144,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::~LinkFault(
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::has_data() const
 {
+    if (is_presence_container) return true;
     return (action !=  nullptr && action->has_data());
 }
 
@@ -4169,7 +4216,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::Action::Act
     error_disable_interface{YType::empty, "error-disable-interface"}
 {
 
-    yang_name = "action"; yang_parent_name = "link-fault"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action"; yang_parent_name = "link-fault"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::Action::~Action()
@@ -4178,6 +4225,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::Action::~Ac
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_data() const
 {
+    if (is_presence_container) return true;
     return error_disable_interface.is_set;
 }
 
@@ -4247,7 +4295,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteLoopback::RemoteLoopback()
     timeout{YType::uint8, "timeout"}
 {
 
-    yang_name = "remote-loopback"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-loopback"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Ethernet::Oam::RemoteLoopback::~RemoteLoopback()
@@ -4256,6 +4304,7 @@ Native::Interface::Overlay::Ethernet::Oam::RemoteLoopback::~RemoteLoopback()
 
 bool Native::Interface::Overlay::Ethernet::Oam::RemoteLoopback::has_data() const
 {
+    if (is_presence_container) return true;
     return supported.is_set
 	|| timeout.is_set;
 }
@@ -4337,7 +4386,7 @@ Native::Interface::Overlay::Negotiation::Negotiation()
     auto_{YType::boolean, "auto"}
 {
 
-    yang_name = "negotiation"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "negotiation"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Negotiation::~Negotiation()
@@ -4346,6 +4395,7 @@ Native::Interface::Overlay::Negotiation::~Negotiation()
 
 bool Native::Interface::Overlay::Negotiation::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set;
 }
 
@@ -4415,7 +4465,7 @@ Native::Interface::Overlay::Eapol::Eapol()
 {
     destination_address->parent = this;
 
-    yang_name = "eapol"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eapol"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Eapol::~Eapol()
@@ -4424,6 +4474,7 @@ Native::Interface::Overlay::Eapol::~Eapol()
 
 bool Native::Interface::Overlay::Eapol::has_data() const
 {
+    if (is_presence_container) return true;
     return (destination_address !=  nullptr && destination_address->has_data());
 }
 
@@ -4495,7 +4546,7 @@ Native::Interface::Overlay::Eapol::DestinationAddress::DestinationAddress()
     broadcast_address{YType::empty, "broadcast-address"}
 {
 
-    yang_name = "destination-address"; yang_parent_name = "eapol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-address"; yang_parent_name = "eapol"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Eapol::DestinationAddress::~DestinationAddress()
@@ -4504,6 +4555,7 @@ Native::Interface::Overlay::Eapol::DestinationAddress::~DestinationAddress()
 
 bool Native::Interface::Overlay::Eapol::DestinationAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast_address.is_set;
 }
 
@@ -4572,7 +4624,7 @@ Native::Interface::Overlay::Synchronous::Synchronous()
     mode{YType::empty, "mode"}
 {
 
-    yang_name = "synchronous"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "synchronous"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Synchronous::~Synchronous()
@@ -4581,6 +4633,7 @@ Native::Interface::Overlay::Synchronous::~Synchronous()
 
 bool Native::Interface::Overlay::Synchronous::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set;
 }
 
@@ -4654,7 +4707,7 @@ Native::Interface::Overlay::Speed::Speed()
     nonegotiate{YType::empty, "nonegotiate"}
 {
 
-    yang_name = "speed"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "speed"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Speed::~Speed()
@@ -4663,6 +4716,7 @@ Native::Interface::Overlay::Speed::~Speed()
 
 bool Native::Interface::Overlay::Speed::has_data() const
 {
+    if (is_presence_container) return true;
     return auto_.is_set
 	|| value_10.is_set
 	|| value_100.is_set
@@ -4794,12 +4848,12 @@ bool Native::Interface::Overlay::Speed::has_leaf_or_child_of_name(const std::str
 Native::Interface::Overlay::Plim::Plim()
     :
     ethernet(std::make_shared<Native::Interface::Overlay::Plim::Ethernet>())
-	,qos(std::make_shared<Native::Interface::Overlay::Plim::Qos>())
+    , qos(std::make_shared<Native::Interface::Overlay::Plim::Qos>())
 {
     ethernet->parent = this;
     qos->parent = this;
 
-    yang_name = "plim"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "plim"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::~Plim()
@@ -4808,6 +4862,7 @@ Native::Interface::Overlay::Plim::~Plim()
 
 bool Native::Interface::Overlay::Plim::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet !=  nullptr && ethernet->has_data())
 	|| (qos !=  nullptr && qos->has_data());
 }
@@ -4896,7 +4951,7 @@ Native::Interface::Overlay::Plim::Ethernet::Ethernet()
 {
     vlan->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Ethernet::~Ethernet()
@@ -4905,6 +4960,7 @@ Native::Interface::Overlay::Plim::Ethernet::~Ethernet()
 
 bool Native::Interface::Overlay::Plim::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -4977,7 +5033,7 @@ Native::Interface::Overlay::Plim::Ethernet::Vlan::Vlan()
 {
     filter->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Ethernet::Vlan::~Vlan()
@@ -4986,6 +5042,7 @@ Native::Interface::Overlay::Plim::Ethernet::Vlan::~Vlan()
 
 bool Native::Interface::Overlay::Plim::Ethernet::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (filter !=  nullptr && filter->has_data());
 }
 
@@ -5057,7 +5114,7 @@ Native::Interface::Overlay::Plim::Ethernet::Vlan::Filter::Filter()
     disable{YType::empty, "disable"}
 {
 
-    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Ethernet::Vlan::Filter::~Filter()
@@ -5066,6 +5123,7 @@ Native::Interface::Overlay::Plim::Ethernet::Vlan::Filter::~Filter()
 
 bool Native::Interface::Overlay::Plim::Ethernet::Vlan::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return disable.is_set;
 }
 
@@ -5135,7 +5193,7 @@ Native::Interface::Overlay::Plim::Qos::Qos()
 {
     input->parent = this;
 
-    yang_name = "qos"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qos"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Qos::~Qos()
@@ -5144,6 +5202,7 @@ Native::Interface::Overlay::Plim::Qos::~Qos()
 
 bool Native::Interface::Overlay::Plim::Qos::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -5216,7 +5275,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Input()
 {
     queue->parent = this;
 
-    yang_name = "input"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Qos::Input::~Input()
@@ -5225,6 +5284,7 @@ Native::Interface::Overlay::Plim::Qos::Input::~Input()
 
 bool Native::Interface::Overlay::Plim::Qos::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (queue !=  nullptr && queue->has_data());
 }
 
@@ -5294,12 +5354,12 @@ bool Native::Interface::Overlay::Plim::Qos::Input::has_leaf_or_child_of_name(con
 Native::Interface::Overlay::Plim::Qos::Input::Queue::Queue()
     :
     zero(std::make_shared<Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero>())
-	,strict_priority(std::make_shared<Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority>())
+    , strict_priority(std::make_shared<Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority>())
 {
     zero->parent = this;
     strict_priority->parent = this;
 
-    yang_name = "queue"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queue"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Qos::Input::Queue::~Queue()
@@ -5308,6 +5368,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::~Queue()
 
 bool Native::Interface::Overlay::Plim::Qos::Input::Queue::has_data() const
 {
+    if (is_presence_container) return true;
     return (zero !=  nullptr && zero->has_data())
 	|| (strict_priority !=  nullptr && strict_priority->has_data());
 }
@@ -5396,7 +5457,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::Zero()
 {
     pause->parent = this;
 
-    yang_name = "zero"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "zero"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::~Zero()
@@ -5405,6 +5466,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::~Zero()
 
 bool Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::has_data() const
 {
+    if (is_presence_container) return true;
     return (pause !=  nullptr && pause->has_data());
 }
 
@@ -5477,7 +5539,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::Pause::Pause()
     threshold{YType::uint8, "threshold"}
 {
 
-    yang_name = "pause"; yang_parent_name = "zero"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pause"; yang_parent_name = "zero"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::Pause::~Pause()
@@ -5486,6 +5548,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::Pause::~Pause()
 
 bool Native::Interface::Overlay::Plim::Qos::Input::Queue::Zero::Pause::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| threshold.is_set;
 }
@@ -5568,7 +5631,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::StrictPrior
 {
     pause->parent = this;
 
-    yang_name = "strict-priority"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "strict-priority"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::~StrictPriority()
@@ -5577,6 +5640,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::~StrictPrio
 
 bool Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::has_data() const
 {
+    if (is_presence_container) return true;
     return (pause !=  nullptr && pause->has_data());
 }
 
@@ -5649,7 +5713,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::Pause::Paus
     threshold{YType::uint8, "threshold"}
 {
 
-    yang_name = "pause"; yang_parent_name = "strict-priority"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pause"; yang_parent_name = "strict-priority"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::Pause::~Pause()
@@ -5658,6 +5722,7 @@ Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::Pause::~Pau
 
 bool Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::Pause::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| threshold.is_set;
 }
@@ -5737,11 +5802,11 @@ bool Native::Interface::Overlay::Plim::Qos::Input::Queue::StrictPriority::Pause:
 Native::Interface::Overlay::Pppoe::Pppoe()
     :
     max_sessions{YType::uint16, "max-sessions"}
-    	,
+        ,
     enable(nullptr) // presence node
 {
 
-    yang_name = "pppoe"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pppoe"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Pppoe::~Pppoe()
@@ -5750,6 +5815,7 @@ Native::Interface::Overlay::Pppoe::~Pppoe()
 
 bool Native::Interface::Overlay::Pppoe::has_data() const
 {
+    if (is_presence_container) return true;
     return max_sessions.is_set
 	|| (enable !=  nullptr && enable->has_data());
 }
@@ -5834,7 +5900,7 @@ Native::Interface::Overlay::Pppoe::Enable::Enable()
     group{YType::str, "group"}
 {
 
-    yang_name = "enable"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "enable"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Pppoe::Enable::~Enable()
@@ -5843,6 +5909,7 @@ Native::Interface::Overlay::Pppoe::Enable::~Enable()
 
 bool Native::Interface::Overlay::Pppoe::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -5907,9 +5974,11 @@ bool Native::Interface::Overlay::Pppoe::Enable::has_leaf_or_child_of_name(const 
 }
 
 Native::Interface::Overlay::Service::Service()
+    :
+    instance(this, {"id"})
 {
 
-    yang_name = "service"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::~Service()
@@ -5918,7 +5987,8 @@ Native::Interface::Overlay::Service::~Service()
 
 bool Native::Interface::Overlay::Service::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -5928,7 +5998,7 @@ bool Native::Interface::Overlay::Service::has_data() const
 
 bool Native::Interface::Overlay::Service::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -5958,7 +6028,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::get_child_by_name(c
     {
         auto c = std::make_shared<Native::Interface::Overlay::Service::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -5970,7 +6040,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Servi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6007,19 +6077,19 @@ Native::Interface::Overlay::Service::Instance::Instance()
     evc_name{YType::str, "evc-name"},
     group{YType::uint32, "group"},
     shutdown{YType::empty, "shutdown"}
-    	,
+        ,
     encapsulation(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation>())
-	,ip(std::make_shared<Native::Interface::Overlay::Service::Instance::Ip>())
-	,ipv6(std::make_shared<Native::Interface::Overlay::Service::Instance::Ipv6>())
-	,rewrite(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite>())
-	,errdisable(std::make_shared<Native::Interface::Overlay::Service::Instance::Errdisable>())
-	,ethernet_container(std::make_shared<Native::Interface::Overlay::Service::Instance::EthernetContainer>())
-	,snmp(std::make_shared<Native::Interface::Overlay::Service::Instance::Snmp>())
-	,bridge_domain(std::make_shared<Native::Interface::Overlay::Service::Instance::BridgeDomain>())
-	,mac(std::make_shared<Native::Interface::Overlay::Service::Instance::Mac>())
-	,service_policy(std::make_shared<Native::Interface::Overlay::Service::Instance::ServicePolicy>())
-	,cfm(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm>())
-	,l2protocol(std::make_shared<Native::Interface::Overlay::Service::Instance::L2Protocol>())
+    , ip(std::make_shared<Native::Interface::Overlay::Service::Instance::Ip>())
+    , ipv6(std::make_shared<Native::Interface::Overlay::Service::Instance::Ipv6>())
+    , rewrite(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite>())
+    , errdisable(std::make_shared<Native::Interface::Overlay::Service::Instance::Errdisable>())
+    , ethernet_container(std::make_shared<Native::Interface::Overlay::Service::Instance::EthernetContainer>())
+    , snmp(std::make_shared<Native::Interface::Overlay::Service::Instance::Snmp>())
+    , bridge_domain(std::make_shared<Native::Interface::Overlay::Service::Instance::BridgeDomain>())
+    , mac(std::make_shared<Native::Interface::Overlay::Service::Instance::Mac>())
+    , service_policy(std::make_shared<Native::Interface::Overlay::Service::Instance::ServicePolicy>())
+    , cfm(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm>())
+    , l2protocol(std::make_shared<Native::Interface::Overlay::Service::Instance::L2protocol>())
 {
     encapsulation->parent = this;
     ip->parent = this;
@@ -6034,7 +6104,7 @@ Native::Interface::Overlay::Service::Instance::Instance()
     cfm->parent = this;
     l2protocol->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::~Instance()
@@ -6043,6 +6113,7 @@ Native::Interface::Overlay::Service::Instance::~Instance()
 
 bool Native::Interface::Overlay::Service::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| trunk.is_set
 	|| gigabitethernet.is_set
@@ -6095,7 +6166,8 @@ bool Native::Interface::Overlay::Service::Instance::has_operation() const
 std::string Native::Interface::Overlay::Service::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[id='" <<id <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -6222,7 +6294,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::get_child
     {
         if(l2protocol == nullptr)
         {
-            l2protocol = std::make_shared<Native::Interface::Overlay::Service::Instance::L2Protocol>();
+            l2protocol = std::make_shared<Native::Interface::Overlay::Service::Instance::L2protocol>();
         }
         return l2protocol;
     }
@@ -6405,17 +6477,17 @@ bool Native::Interface::Overlay::Service::Instance::has_leaf_or_child_of_name(co
 Native::Interface::Overlay::Service::Instance::Encapsulation::Encapsulation()
     :
     default_{YType::empty, "default"}
-    	,
-    dot1ad(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad>())
-	,dot1q(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q>())
-	,priority_tagged(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged>())
-	,untagged(nullptr) // presence node
+        ,
+    dot1ad(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad>())
+    , dot1q(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q>())
+    , priority_tagged(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged>())
+    , untagged(nullptr) // presence node
 {
     dot1ad->parent = this;
     dot1q->parent = this;
     priority_tagged->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Encapsulation::~Encapsulation()
@@ -6424,6 +6496,7 @@ Native::Interface::Overlay::Service::Instance::Encapsulation::~Encapsulation()
 
 bool Native::Interface::Overlay::Service::Instance::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| (dot1ad !=  nullptr && dot1ad->has_data())
 	|| (dot1q !=  nullptr && dot1q->has_data())
@@ -6464,7 +6537,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsula
     {
         if(dot1ad == nullptr)
         {
-            dot1ad = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad>();
+            dot1ad = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad>();
         }
         return dot1ad;
     }
@@ -6473,7 +6546,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsula
     {
         if(dot1q == nullptr)
         {
-            dot1q = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q>();
+            dot1q = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q>();
         }
         return dot1q;
     }
@@ -6551,27 +6624,28 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::has_leaf_or_c
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Dot1Ad()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Dot1ad()
     :
     id{YType::str, "id"},
     cos{YType::uint8, "cos"},
     dot1q{YType::str, "dot1q"},
     etype{YType::enumeration, "etype"},
     exact{YType::empty, "exact"}
-    	,
-    cos2(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2>())
+        ,
+    cos2(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2>())
 {
     cos2->parent = this;
 
-    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::~Dot1Ad()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::~Dot1ad()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::has_data() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : id.getYLeafs())
     {
         if(leaf.is_set)
@@ -6596,7 +6670,7 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::has_d
 	|| (cos2 !=  nullptr && cos2->has_data());
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::has_operation() const
 {
     for (auto const & leaf : id.getYLeafs())
     {
@@ -6627,14 +6701,14 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::has_o
 	|| (cos2 !=  nullptr && cos2->has_operation());
 }
 
-std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6652,13 +6726,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cos2")
     {
         if(cos2 == nullptr)
         {
-            cos2 = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2>();
+            cos2 = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2>();
         }
         return cos2;
     }
@@ -6666,7 +6740,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsula
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6678,7 +6752,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Servi
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -6704,7 +6778,7 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::set_v
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -6728,27 +6802,28 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::set_f
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos2" || name == "id" || name == "cos" || name == "dot1q" || name == "etype" || name == "exact")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::Cos2()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::Cos2()
     :
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "cos2"; yang_parent_name = "dot1ad"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos2"; yang_parent_name = "dot1ad"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::~Cos2()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::~Cos2()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::has_data() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
@@ -6757,7 +6832,7 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2:
     return false;
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::has_operation() const
 {
     for (auto const & leaf : cos.getYLeafs())
     {
@@ -6768,14 +6843,14 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2:
 	|| ydk::is_set(cos.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cos2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6786,19 +6861,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
@@ -6806,7 +6881,7 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2:
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cos")
     {
@@ -6814,14 +6889,14 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2:
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Cos2::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Dot1Q()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Dot1q()
     :
     id{YType::str, "id"},
     cos{YType::uint8, "cos"},
@@ -6829,20 +6904,21 @@ Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Dot1Q()
     etype{YType::enumeration, "etype"},
     exact{YType::empty, "exact"},
     vlan_type{YType::enumeration, "vlan-type"}
-    	,
-    cos2(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2>())
+        ,
+    cos2(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2>())
 {
     cos2->parent = this;
 
-    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::~Dot1Q()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::~Dot1q()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::has_data() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : id.getYLeafs())
     {
         if(leaf.is_set)
@@ -6868,7 +6944,7 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::has_da
 	|| (cos2 !=  nullptr && cos2->has_data());
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::has_operation() const
 {
     for (auto const & leaf : id.getYLeafs())
     {
@@ -6900,14 +6976,14 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::has_op
 	|| (cos2 !=  nullptr && cos2->has_operation());
 }
 
-std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6926,13 +7002,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cos2")
     {
         if(cos2 == nullptr)
         {
-            cos2 = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2>();
+            cos2 = std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2>();
         }
         return cos2;
     }
@@ -6940,7 +7016,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsula
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6952,7 +7028,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Servi
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "id")
     {
@@ -6984,7 +7060,7 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::set_va
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "id")
     {
@@ -7012,27 +7088,28 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::set_fi
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos2" || name == "id" || name == "cos" || name == "second-dot1q" || name == "etype" || name == "exact" || name == "vlan-type")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::Cos2()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::Cos2()
     :
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "cos2"; yang_parent_name = "dot1q"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos2"; yang_parent_name = "dot1q"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::~Cos2()
+Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::~Cos2()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::has_data() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
@@ -7041,7 +7118,7 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::
     return false;
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::has_operation() const
 {
     for (auto const & leaf : cos.getYLeafs())
     {
@@ -7052,14 +7129,14 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::
 	|| ydk::is_set(cos.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cos2";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7070,19 +7147,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cos")
     {
@@ -7090,7 +7167,7 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cos")
     {
@@ -7098,7 +7175,7 @@ void Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cos")
         return true;
@@ -7108,12 +7185,12 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Cos2::
 Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::PriorityTagged()
     :
     etype{YType::enumeration, "etype"}
-    	,
+        ,
     cos_container(std::make_shared<Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::CosContainer>())
 {
     cos_container->parent = this;
 
-    yang_name = "priority-tagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-tagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::~PriorityTagged()
@@ -7122,6 +7199,7 @@ Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::~P
 
 bool Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : etype.getYLeafs())
     {
         if(leaf.is_set)
@@ -7214,7 +7292,7 @@ Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::Co
     cos{YType::uint8, "cos"}
 {
 
-    yang_name = "cos-container"; yang_parent_name = "priority-tagged"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-container"; yang_parent_name = "priority-tagged"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::CosContainer::~CosContainer()
@@ -7223,6 +7301,7 @@ Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::Co
 
 bool Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::CosContainer::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : cos.getYLeafs())
     {
         if(leaf.is_set)
@@ -7298,7 +7377,7 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagge
 Native::Interface::Overlay::Service::Instance::Encapsulation::Untagged::Untagged()
 {
 
-    yang_name = "untagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "untagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Service::Instance::Encapsulation::Untagged::~Untagged()
@@ -7307,6 +7386,7 @@ Native::Interface::Overlay::Service::Instance::Encapsulation::Untagged::~Untagge
 
 bool Native::Interface::Overlay::Service::Instance::Encapsulation::Untagged::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -7359,14 +7439,14 @@ bool Native::Interface::Overlay::Service::Instance::Encapsulation::Untagged::has
 Native::Interface::Overlay::Service::Instance::Ip::Ip()
     :
     acl(std::make_shared<Native::Interface::Overlay::Service::Instance::Ip::Acl>())
-	,dhcp(std::make_shared<Native::Interface::Overlay::Service::Instance::Ip::Dhcp>())
-	,verify(std::make_shared<Native::Interface::Overlay::Service::Instance::Ip::Verify>())
+    , dhcp(std::make_shared<Native::Interface::Overlay::Service::Instance::Ip::Dhcp>())
+    , verify(std::make_shared<Native::Interface::Overlay::Service::Instance::Ip::Verify>())
 {
     acl->parent = this;
     dhcp->parent = this;
     verify->parent = this;
 
-    yang_name = "ip"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ip::~Ip()
@@ -7375,6 +7455,7 @@ Native::Interface::Overlay::Service::Instance::Ip::~Ip()
 
 bool Native::Interface::Overlay::Service::Instance::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return (acl !=  nullptr && acl->has_data())
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (verify !=  nullptr && verify->has_data());
@@ -7480,7 +7561,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Acl::Acl()
     out{YType::empty, "out"}
 {
 
-    yang_name = "acl"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ip::Acl::~Acl()
@@ -7489,6 +7570,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Acl::~Acl()
 
 bool Native::Interface::Overlay::Service::Instance::Ip::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return access_group.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -7584,7 +7666,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Dhcp()
 {
     relay->parent = this;
 
-    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ip::Dhcp::~Dhcp()
@@ -7593,6 +7675,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::~Dhcp()
 
 bool Native::Interface::Overlay::Service::Instance::Ip::Dhcp::has_data() const
 {
+    if (is_presence_container) return true;
     return (relay !=  nullptr && relay->has_data());
 }
 
@@ -7665,7 +7748,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Relay()
 {
     information->parent = this;
 
-    yang_name = "relay"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "relay"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::~Relay()
@@ -7674,6 +7757,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::~Relay()
 
 bool Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::has_data() const
 {
+    if (is_presence_container) return true;
     return (information !=  nullptr && information->has_data());
 }
 
@@ -7746,7 +7830,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::Inf
 {
     option->parent = this;
 
-    yang_name = "information"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "information"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::~Information()
@@ -7755,6 +7839,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::~In
 
 bool Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::has_data() const
 {
+    if (is_presence_container) return true;
     return (option !=  nullptr && option->has_data());
 }
 
@@ -7826,7 +7911,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::Opt
     subscriber_id{YType::str, "subscriber-id"}
 {
 
-    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::Option::~Option()
@@ -7835,6 +7920,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::Opt
 
 bool Native::Interface::Overlay::Service::Instance::Ip::Dhcp::Relay::Information::Option::has_data() const
 {
+    if (is_presence_container) return true;
     return subscriber_id.is_set;
 }
 
@@ -7906,7 +7992,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Verify::Verify()
     port_security{YType::empty, "port-security"}
 {
 
-    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ip::Verify::~Verify()
@@ -7915,6 +8001,7 @@ Native::Interface::Overlay::Service::Instance::Ip::Verify::~Verify()
 
 bool Native::Interface::Overlay::Service::Instance::Ip::Verify::has_data() const
 {
+    if (is_presence_container) return true;
     return source.is_set
 	|| vlan.is_set
 	|| dhcp_snooping.is_set
@@ -8024,7 +8111,7 @@ Native::Interface::Overlay::Service::Instance::Ipv6::Ipv6()
     out{YType::empty, "out"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Ipv6::~Ipv6()
@@ -8033,6 +8120,7 @@ Native::Interface::Overlay::Service::Instance::Ipv6::~Ipv6()
 
 bool Native::Interface::Overlay::Service::Instance::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_filter.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -8128,7 +8216,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Rewrite()
 {
     ingress->parent = this;
 
-    yang_name = "rewrite"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rewrite"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::~Rewrite()
@@ -8137,6 +8225,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::~Rewrite()
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::has_data() const
 {
+    if (is_presence_container) return true;
     return (ingress !=  nullptr && ingress->has_data());
 }
 
@@ -8209,7 +8298,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Ingress()
 {
     tag->parent = this;
 
-    yang_name = "ingress"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ingress"; yang_parent_name = "rewrite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::~Ingress()
@@ -8218,6 +8307,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::~Ingress()
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::has_data() const
 {
+    if (is_presence_container) return true;
     return (tag !=  nullptr && tag->has_data());
 }
 
@@ -8287,14 +8377,14 @@ bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::has_leaf_o
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Tag()
     :
     pop(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Pop>())
-	,push(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Push>())
-	,translate(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate>())
+    , push(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Push>())
+    , translate(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate>())
 {
     pop->parent = this;
     push->parent = this;
     translate->parent = this;
 
-    yang_name = "tag"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tag"; yang_parent_name = "ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::~Tag()
@@ -8303,6 +8393,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::~Tag()
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::has_data() const
 {
+    if (is_presence_container) return true;
     return (pop !=  nullptr && pop->has_data())
 	|| (push !=  nullptr && push->has_data())
 	|| (translate !=  nullptr && translate->has_data());
@@ -8407,7 +8498,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Pop::Pop()
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "pop"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pop"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Pop::~Pop()
@@ -8416,6 +8507,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Pop::~Pop(
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Pop::has_data() const
 {
+    if (is_presence_container) return true;
     return way.is_set
 	|| mode.is_set;
 }
@@ -8498,7 +8590,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Push::Push
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "push"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "push"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Push::~Push()
@@ -8507,6 +8599,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Push::~Pus
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Push::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -8586,16 +8679,16 @@ bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Push:
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::Translate()
     :
     t1_to_1(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1>())
-	,t1_to_2(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2>())
-	,t2_to_1(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1>())
-	,t2_to_2(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2>())
+    , t1_to_2(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2>())
+    , t2_to_1(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1>())
+    , t2_to_2(std::make_shared<Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2>())
 {
     t1_to_1->parent = this;
     t1_to_2->parent = this;
     t2_to_1->parent = this;
     t2_to_2->parent = this;
 
-    yang_name = "translate"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "translate"; yang_parent_name = "tag"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::~Translate()
@@ -8604,6 +8697,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::has_data() const
 {
+    if (is_presence_container) return true;
     return (t1_to_1 !=  nullptr && t1_to_1->has_data())
 	|| (t1_to_2 !=  nullptr && t1_to_2->has_data())
 	|| (t2_to_1 !=  nullptr && t2_to_1->has_data())
@@ -8724,7 +8818,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t1-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t1-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::~T1To1()
@@ -8733,6 +8827,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To1::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -8816,7 +8911,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t1-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t1-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::~T1To2()
@@ -8825,6 +8920,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T1To2::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| second_dot1q.is_set
 	|| mode.is_set;
@@ -8920,7 +9016,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t2-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t2-to-1"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::~T2To1()
@@ -8929,6 +9025,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To1::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| mode.is_set;
 }
@@ -9012,7 +9109,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
     mode{YType::enumeration, "mode"}
 {
 
-    yang_name = "t2-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "t2-to-2"; yang_parent_name = "translate"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::~T2To2()
@@ -9021,6 +9118,7 @@ Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate:
 
 bool Native::Interface::Overlay::Service::Instance::Rewrite::Ingress::Tag::Translate::T2To2::has_data() const
 {
+    if (is_presence_container) return true;
     return dot1q.is_set
 	|| second_dot1q.is_set
 	|| mode.is_set;
@@ -9116,7 +9214,7 @@ Native::Interface::Overlay::Service::Instance::Errdisable::Errdisable()
 {
     recovery->parent = this;
 
-    yang_name = "errdisable"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "errdisable"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Errdisable::~Errdisable()
@@ -9125,6 +9223,7 @@ Native::Interface::Overlay::Service::Instance::Errdisable::~Errdisable()
 
 bool Native::Interface::Overlay::Service::Instance::Errdisable::has_data() const
 {
+    if (is_presence_container) return true;
     return (recovery !=  nullptr && recovery->has_data());
 }
 
@@ -9197,7 +9296,7 @@ Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::Recovery()
 {
     cause->parent = this;
 
-    yang_name = "recovery"; yang_parent_name = "errdisable"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recovery"; yang_parent_name = "errdisable"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::~Recovery()
@@ -9206,6 +9305,7 @@ Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::~Recovery()
 
 bool Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (cause !=  nullptr && cause->has_data());
 }
 
@@ -9277,7 +9377,7 @@ Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::Cause::Caus
     mac_security{YType::uint32, "mac-security"}
 {
 
-    yang_name = "cause"; yang_parent_name = "recovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cause"; yang_parent_name = "recovery"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::Cause::~Cause()
@@ -9286,6 +9386,7 @@ Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::Cause::~Cau
 
 bool Native::Interface::Overlay::Service::Instance::Errdisable::Recovery::Cause::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_security.is_set;
 }
 
@@ -9355,7 +9456,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::EthernetContai
 {
     ethernet->parent = this;
 
-    yang_name = "ethernet-container"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet-container"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::EthernetContainer::~EthernetContainer()
@@ -9364,6 +9465,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::~EthernetConta
 
 bool Native::Interface::Overlay::Service::Instance::EthernetContainer::has_data() const
 {
+    if (is_presence_container) return true;
     return (ethernet !=  nullptr && ethernet->has_data());
 }
 
@@ -9433,12 +9535,12 @@ bool Native::Interface::Overlay::Service::Instance::EthernetContainer::has_leaf_
 Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Ethernet()
     :
     lmi(std::make_shared<Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi>())
-	,loopback(std::make_shared<Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loopback>())
+    , loopback(std::make_shared<Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loopback>())
 {
     lmi->parent = this;
     loopback->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "ethernet-container"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "ethernet-container"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::~Ethernet()
@@ -9447,6 +9549,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::~Eth
 
 bool Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (lmi !=  nullptr && lmi->has_data())
 	|| (loopback !=  nullptr && loopback->has_data());
 }
@@ -9535,7 +9638,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi:
 {
     ce_vlan->parent = this;
 
-    yang_name = "lmi"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lmi"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi::~Lmi()
@@ -9544,6 +9647,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi:
 
 bool Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi::has_data() const
 {
+    if (is_presence_container) return true;
     return (ce_vlan !=  nullptr && ce_vlan->has_data());
 }
 
@@ -9616,7 +9720,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi:
 {
     map->parent = this;
 
-    yang_name = "ce-vlan"; yang_parent_name = "lmi"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ce-vlan"; yang_parent_name = "lmi"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::~CeVlan()
@@ -9625,6 +9729,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi:
 
 bool Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (map !=  nullptr && map->has_data());
 }
 
@@ -9699,7 +9804,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi:
     vlan_range{YType::str, "vlan-range"}
 {
 
-    yang_name = "map"; yang_parent_name = "ce-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map"; yang_parent_name = "ce-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::~Map()
@@ -9708,6 +9813,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi:
 
 bool Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Lmi::CeVlan::Map::has_data() const
 {
+    if (is_presence_container) return true;
     return any.is_set
 	|| default_.is_set
 	|| untagged.is_set
@@ -9816,7 +9922,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loop
 {
     permit->parent = this;
 
-    yang_name = "loopback"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "loopback"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loopback::~Loopback()
@@ -9825,6 +9931,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loop
 
 bool Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loopback::has_data() const
 {
+    if (is_presence_container) return true;
     return (permit !=  nullptr && permit->has_data());
 }
 
@@ -9897,7 +10004,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loop
     internal{YType::empty, "internal"}
 {
 
-    yang_name = "permit"; yang_parent_name = "loopback"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "permit"; yang_parent_name = "loopback"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loopback::Permit::~Permit()
@@ -9906,6 +10013,7 @@ Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loop
 
 bool Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet::Loopback::Permit::has_data() const
 {
+    if (is_presence_container) return true;
     return external.is_set
 	|| internal.is_set;
 }
@@ -9985,12 +10093,12 @@ bool Native::Interface::Overlay::Service::Instance::EthernetContainer::Ethernet:
 Native::Interface::Overlay::Service::Instance::Snmp::Snmp()
     :
     trap(std::make_shared<Native::Interface::Overlay::Service::Instance::Snmp::Trap>())
-	,ifindex(std::make_shared<Native::Interface::Overlay::Service::Instance::Snmp::Ifindex>())
+    , ifindex(std::make_shared<Native::Interface::Overlay::Service::Instance::Snmp::Ifindex>())
 {
     trap->parent = this;
     ifindex->parent = this;
 
-    yang_name = "snmp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "snmp"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Snmp::~Snmp()
@@ -9999,6 +10107,7 @@ Native::Interface::Overlay::Service::Instance::Snmp::~Snmp()
 
 bool Native::Interface::Overlay::Service::Instance::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (trap !=  nullptr && trap->has_data())
 	|| (ifindex !=  nullptr && ifindex->has_data());
 }
@@ -10086,7 +10195,7 @@ Native::Interface::Overlay::Service::Instance::Snmp::Trap::Trap()
     link_status{YType::empty, "link-status"}
 {
 
-    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Snmp::Trap::~Trap()
@@ -10095,6 +10204,7 @@ Native::Interface::Overlay::Service::Instance::Snmp::Trap::~Trap()
 
 bool Native::Interface::Overlay::Service::Instance::Snmp::Trap::has_data() const
 {
+    if (is_presence_container) return true;
     return link_status.is_set;
 }
 
@@ -10163,7 +10273,7 @@ Native::Interface::Overlay::Service::Instance::Snmp::Ifindex::Ifindex()
     persist{YType::empty, "persist"}
 {
 
-    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Snmp::Ifindex::~Ifindex()
@@ -10172,6 +10282,7 @@ Native::Interface::Overlay::Service::Instance::Snmp::Ifindex::~Ifindex()
 
 bool Native::Interface::Overlay::Service::Instance::Snmp::Ifindex::has_data() const
 {
+    if (is_presence_container) return true;
     return persist.is_set;
 }
 
@@ -10239,12 +10350,12 @@ Native::Interface::Overlay::Service::Instance::BridgeDomain::BridgeDomain()
     :
     bridge_id{YType::uint16, "bridge-id"},
     from_encapsulation{YType::empty, "from-encapsulation"}
-    	,
+        ,
     split_horizon(std::make_shared<Native::Interface::Overlay::Service::Instance::BridgeDomain::SplitHorizon>())
 {
     split_horizon->parent = this;
 
-    yang_name = "bridge-domain"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bridge-domain"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::BridgeDomain::~BridgeDomain()
@@ -10253,6 +10364,7 @@ Native::Interface::Overlay::Service::Instance::BridgeDomain::~BridgeDomain()
 
 bool Native::Interface::Overlay::Service::Instance::BridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_id.is_set
 	|| from_encapsulation.is_set
 	|| (split_horizon !=  nullptr && split_horizon->has_data());
@@ -10350,7 +10462,7 @@ Native::Interface::Overlay::Service::Instance::BridgeDomain::SplitHorizon::Split
     group{YType::uint8, "group"}
 {
 
-    yang_name = "split-horizon"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "split-horizon"; yang_parent_name = "bridge-domain"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::BridgeDomain::SplitHorizon::~SplitHorizon()
@@ -10359,6 +10471,7 @@ Native::Interface::Overlay::Service::Instance::BridgeDomain::SplitHorizon::~Spli
 
 bool Native::Interface::Overlay::Service::Instance::BridgeDomain::SplitHorizon::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -10425,9 +10538,10 @@ bool Native::Interface::Overlay::Service::Instance::BridgeDomain::SplitHorizon::
 Native::Interface::Overlay::Service::Instance::Mac::Mac()
     :
     security(nullptr) // presence node
+    , access_group(this, {"acl_name"})
 {
 
-    yang_name = "mac"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Mac::~Mac()
@@ -10436,7 +10550,8 @@ Native::Interface::Overlay::Service::Instance::Mac::~Mac()
 
 bool Native::Interface::Overlay::Service::Instance::Mac::has_data() const
 {
-    for (std::size_t index=0; index<access_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_group.len(); index++)
     {
         if(access_group[index]->has_data())
             return true;
@@ -10446,7 +10561,7 @@ bool Native::Interface::Overlay::Service::Instance::Mac::has_data() const
 
 bool Native::Interface::Overlay::Service::Instance::Mac::has_operation() const
 {
-    for (std::size_t index=0; index<access_group.size(); index++)
+    for (std::size_t index=0; index<access_group.len(); index++)
     {
         if(access_group[index]->has_operation())
             return true;
@@ -10486,7 +10601,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Mac::get_
     {
         auto c = std::make_shared<Native::Interface::Overlay::Service::Instance::Mac::AccessGroup>();
         c->parent = this;
-        access_group.push_back(c);
+        access_group.append(c);
         return c;
     }
 
@@ -10503,7 +10618,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Servi
     }
 
     count = 0;
-    for (auto const & c : access_group)
+    for (auto c : access_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10532,12 +10647,12 @@ bool Native::Interface::Overlay::Service::Instance::Mac::has_leaf_or_child_of_na
 Native::Interface::Overlay::Service::Instance::Mac::Security::Security()
     :
     violation{YType::enumeration, "violation"}
-    	,
+        ,
     maximum(std::make_shared<Native::Interface::Overlay::Service::Instance::Mac::Security::Maximum>())
 {
     maximum->parent = this;
 
-    yang_name = "security"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "security"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Service::Instance::Mac::Security::~Security()
@@ -10546,6 +10661,7 @@ Native::Interface::Overlay::Service::Instance::Mac::Security::~Security()
 
 bool Native::Interface::Overlay::Service::Instance::Mac::Security::has_data() const
 {
+    if (is_presence_container) return true;
     return violation.is_set
 	|| (maximum !=  nullptr && maximum->has_data());
 }
@@ -10630,7 +10746,7 @@ Native::Interface::Overlay::Service::Instance::Mac::Security::Maximum::Maximum()
     addresses{YType::uint16, "addresses"}
 {
 
-    yang_name = "maximum"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maximum"; yang_parent_name = "security"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Mac::Security::Maximum::~Maximum()
@@ -10639,6 +10755,7 @@ Native::Interface::Overlay::Service::Instance::Mac::Security::Maximum::~Maximum(
 
 bool Native::Interface::Overlay::Service::Instance::Mac::Security::Maximum::has_data() const
 {
+    if (is_presence_container) return true;
     return addresses.is_set;
 }
 
@@ -10709,7 +10826,7 @@ Native::Interface::Overlay::Service::Instance::Mac::AccessGroup::AccessGroup()
     out{YType::empty, "out"}
 {
 
-    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Mac::AccessGroup::~AccessGroup()
@@ -10718,6 +10835,7 @@ Native::Interface::Overlay::Service::Instance::Mac::AccessGroup::~AccessGroup()
 
 bool Native::Interface::Overlay::Service::Instance::Mac::AccessGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
 	|| in.is_set
 	|| out.is_set;
@@ -10734,7 +10852,8 @@ bool Native::Interface::Overlay::Service::Instance::Mac::AccessGroup::has_operat
 std::string Native::Interface::Overlay::Service::Instance::Mac::AccessGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-group" <<"[acl-name='" <<acl_name <<"']";
+    path_buffer << "access-group";
+    ADD_KEY_TOKEN(acl_name, "acl-name");
     return path_buffer.str();
 }
 
@@ -10808,9 +10927,12 @@ bool Native::Interface::Overlay::Service::Instance::Mac::AccessGroup::has_leaf_o
 }
 
 Native::Interface::Overlay::Service::Instance::ServicePolicy::ServicePolicy()
+    :
+    input(this, {"name"})
+    , output(this, {"name"})
 {
 
-    yang_name = "service-policy"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-policy"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::ServicePolicy::~ServicePolicy()
@@ -10819,12 +10941,13 @@ Native::Interface::Overlay::Service::Instance::ServicePolicy::~ServicePolicy()
 
 bool Native::Interface::Overlay::Service::Instance::ServicePolicy::has_data() const
 {
-    for (std::size_t index=0; index<input.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<input.len(); index++)
     {
         if(input[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<output.size(); index++)
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_data())
             return true;
@@ -10834,12 +10957,12 @@ bool Native::Interface::Overlay::Service::Instance::ServicePolicy::has_data() co
 
 bool Native::Interface::Overlay::Service::Instance::ServicePolicy::has_operation() const
 {
-    for (std::size_t index=0; index<input.size(); index++)
+    for (std::size_t index=0; index<input.len(); index++)
     {
         if(input[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<output.size(); index++)
+    for (std::size_t index=0; index<output.len(); index++)
     {
         if(output[index]->has_operation())
             return true;
@@ -10869,7 +10992,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::ServicePo
     {
         auto c = std::make_shared<Native::Interface::Overlay::Service::Instance::ServicePolicy::Input>();
         c->parent = this;
-        input.push_back(c);
+        input.append(c);
         return c;
     }
 
@@ -10877,7 +11000,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::ServicePo
     {
         auto c = std::make_shared<Native::Interface::Overlay::Service::Instance::ServicePolicy::Output>();
         c->parent = this;
-        output.push_back(c);
+        output.append(c);
         return c;
     }
 
@@ -10889,7 +11012,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Servi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : input)
+    for (auto c : input.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10898,7 +11021,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Servi
     }
 
     count = 0;
-    for (auto const & c : output)
+    for (auto c : output.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10929,7 +11052,7 @@ Native::Interface::Overlay::Service::Instance::ServicePolicy::Input::Input()
     name{YType::str, "name"}
 {
 
-    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::ServicePolicy::Input::~Input()
@@ -10938,6 +11061,7 @@ Native::Interface::Overlay::Service::Instance::ServicePolicy::Input::~Input()
 
 bool Native::Interface::Overlay::Service::Instance::ServicePolicy::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -10950,7 +11074,8 @@ bool Native::Interface::Overlay::Service::Instance::ServicePolicy::Input::has_op
 std::string Native::Interface::Overlay::Service::Instance::ServicePolicy::Input::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "input" <<"[name='" <<name <<"']";
+    path_buffer << "input";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11006,7 +11131,7 @@ Native::Interface::Overlay::Service::Instance::ServicePolicy::Output::Output()
     name{YType::str, "name"}
 {
 
-    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::ServicePolicy::Output::~Output()
@@ -11015,6 +11140,7 @@ Native::Interface::Overlay::Service::Instance::ServicePolicy::Output::~Output()
 
 bool Native::Interface::Overlay::Service::Instance::ServicePolicy::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
@@ -11027,7 +11153,8 @@ bool Native::Interface::Overlay::Service::Instance::ServicePolicy::Output::has_o
 std::string Native::Interface::Overlay::Service::Instance::ServicePolicy::Output::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "output" <<"[name='" <<name <<"']";
+    path_buffer << "output";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -11081,14 +11208,14 @@ bool Native::Interface::Overlay::Service::Instance::ServicePolicy::Output::has_l
 Native::Interface::Overlay::Service::Instance::Cfm::Cfm()
     :
     encapsulation(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation>())
-	,mep(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Mep>())
-	,mip(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Mip>())
+    , mep(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Mep>())
+    , mip(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Mip>())
 {
     encapsulation->parent = this;
     mep->parent = this;
     mip->parent = this;
 
-    yang_name = "cfm"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cfm"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Cfm::~Cfm()
@@ -11097,6 +11224,7 @@ Native::Interface::Overlay::Service::Instance::Cfm::~Cfm()
 
 bool Native::Interface::Overlay::Service::Instance::Cfm::has_data() const
 {
+    if (is_presence_container) return true;
     return (encapsulation !=  nullptr && encapsulation->has_data())
 	|| (mep !=  nullptr && mep->has_data())
 	|| (mip !=  nullptr && mip->has_data());
@@ -11197,13 +11325,13 @@ bool Native::Interface::Overlay::Service::Instance::Cfm::has_leaf_or_child_of_na
 
 Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Encapsulation()
     :
-    dot1ad(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad>())
-	,dot1q(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q>())
+    dot1ad(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad>())
+    , dot1q(std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q>())
 {
     dot1ad->parent = this;
     dot1q->parent = this;
 
-    yang_name = "encapsulation"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::~Encapsulation()
@@ -11212,6 +11340,7 @@ Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::~Encapsulatio
 
 bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot1ad !=  nullptr && dot1ad->has_data())
 	|| (dot1q !=  nullptr && dot1q->has_data());
 }
@@ -11245,7 +11374,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Cfm::Enca
     {
         if(dot1ad == nullptr)
         {
-            dot1ad = std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad>();
+            dot1ad = std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad>();
         }
         return dot1ad;
     }
@@ -11254,7 +11383,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Cfm::Enca
     {
         if(dot1q == nullptr)
         {
-            dot1q = std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q>();
+            dot1q = std::make_shared<Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q>();
         }
         return dot1q;
     }
@@ -11294,28 +11423,29 @@ bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::has_leaf
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::Dot1Ad()
+Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::Dot1ad()
     :
     vlan_id{YType::uint16, "vlan-id"},
     cos{YType::uint8, "cos"},
     dot1q{YType::uint16, "dot1q"}
 {
 
-    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::~Dot1Ad()
+Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::~Dot1ad()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_data() const
+bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| cos.is_set
 	|| dot1q.is_set;
 }
 
-bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter)
@@ -11323,14 +11453,14 @@ bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::
 	|| ydk::is_set(dot1q.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1ad";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11342,19 +11472,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
@@ -11376,7 +11506,7 @@ void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id")
     {
@@ -11392,35 +11522,36 @@ void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Ad::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id" || name == "cos" || name == "dot1q")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::Dot1Q()
+Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::Dot1q()
     :
     vlan_id{YType::uint16, "vlan-id"},
     cos{YType::uint8, "cos"},
     second_dot1q{YType::uint16, "second-dot1q"}
 {
 
-    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::~Dot1Q()
+Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::~Dot1q()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::has_data() const
+bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set
 	|| cos.is_set
 	|| second_dot1q.is_set;
 }
 
-bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vlan_id.yfilter)
@@ -11428,14 +11559,14 @@ bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::h
 	|| ydk::is_set(second_dot1q.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1q";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11447,19 +11578,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vlan-id")
     {
@@ -11481,7 +11612,7 @@ void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::s
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vlan-id")
     {
@@ -11497,7 +11628,7 @@ void Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::s
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1Q::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::Cfm::Encapsulation::Dot1q::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vlan-id" || name == "cos" || name == "second-dot1q")
         return true;
@@ -11510,7 +11641,7 @@ Native::Interface::Overlay::Service::Instance::Cfm::Mep::Mep()
     mpid{YType::uint16, "mpid"}
 {
 
-    yang_name = "mep"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mep"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Cfm::Mep::~Mep()
@@ -11519,6 +11650,7 @@ Native::Interface::Overlay::Service::Instance::Cfm::Mep::~Mep()
 
 bool Native::Interface::Overlay::Service::Instance::Cfm::Mep::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| mpid.is_set;
 }
@@ -11600,7 +11732,7 @@ Native::Interface::Overlay::Service::Instance::Cfm::Mip::Mip()
     level{YType::uint8, "level"}
 {
 
-    yang_name = "mip"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mip"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Service::Instance::Cfm::Mip::~Mip()
@@ -11609,6 +11741,7 @@ Native::Interface::Overlay::Service::Instance::Cfm::Mip::~Mip()
 
 bool Native::Interface::Overlay::Service::Instance::Cfm::Mip::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set;
 }
 
@@ -11672,30 +11805,31 @@ bool Native::Interface::Overlay::Service::Instance::Cfm::Mip::has_leaf_or_child_
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::L2Protocol()
+Native::Interface::Overlay::Service::Instance::L2protocol::L2protocol()
     :
     discard(nullptr) // presence node
-	,peer(nullptr) // presence node
-	,forward(nullptr) // presence node
-	,tunnel(nullptr) // presence node
+    , peer(nullptr) // presence node
+    , forward(nullptr) // presence node
+    , tunnel(nullptr) // presence node
 {
 
-    yang_name = "l2protocol"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "l2protocol"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::~L2Protocol()
+Native::Interface::Overlay::Service::Instance::L2protocol::~L2protocol()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::has_data() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (discard !=  nullptr && discard->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (forward !=  nullptr && forward->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data());
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::has_operation() const
 {
     return is_set(yfilter)
 	|| (discard !=  nullptr && discard->has_operation())
@@ -11704,14 +11838,14 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::has_operation() 
 	|| (tunnel !=  nullptr && tunnel->has_operation());
 }
 
-std::string Native::Interface::Overlay::Service::Instance::L2Protocol::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::L2protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2protocol";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2Protocol::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2protocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11720,13 +11854,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "discard")
     {
         if(discard == nullptr)
         {
-            discard = std::make_shared<Native::Interface::Overlay::Service::Instance::L2Protocol::Discard>();
+            discard = std::make_shared<Native::Interface::Overlay::Service::Instance::L2protocol::Discard>();
         }
         return discard;
     }
@@ -11735,7 +11869,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protoco
     {
         if(peer == nullptr)
         {
-            peer = std::make_shared<Native::Interface::Overlay::Service::Instance::L2Protocol::Peer>();
+            peer = std::make_shared<Native::Interface::Overlay::Service::Instance::L2protocol::Peer>();
         }
         return peer;
     }
@@ -11744,7 +11878,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protoco
     {
         if(forward == nullptr)
         {
-            forward = std::make_shared<Native::Interface::Overlay::Service::Instance::L2Protocol::Forward>();
+            forward = std::make_shared<Native::Interface::Overlay::Service::Instance::L2protocol::Forward>();
         }
         return forward;
     }
@@ -11753,7 +11887,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protoco
     {
         if(tunnel == nullptr)
         {
-            tunnel = std::make_shared<Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel>();
+            tunnel = std::make_shared<Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel>();
         }
         return tunnel;
     }
@@ -11761,7 +11895,7 @@ std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protoco
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2Protocol::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11788,35 +11922,36 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Servi
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::L2protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::L2protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "discard" || name == "peer" || name == "forward" || name == "tunnel")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Discard()
+Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Discard()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "discard"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discard"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::~Discard()
+Native::Interface::Overlay::Service::Instance::L2protocol::Discard::~Discard()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::has_data() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Discard::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -11825,7 +11960,7 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::has_dat
     return false;
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Discard::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -11836,14 +11971,14 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::has_ope
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::L2protocol::Discard::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "discard";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2protocol::Discard::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11854,19 +11989,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2protocol::Discard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2protocol::Discard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Discard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -11874,7 +12009,7 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::set_val
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Discard::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -11882,27 +12017,28 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::set_fil
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Discard::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Peer()
+Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Peer()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "peer"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::~Peer()
+Native::Interface::Overlay::Service::Instance::L2protocol::Peer::~Peer()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::has_data() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -11911,7 +12047,7 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::has_data()
     return false;
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Peer::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -11922,14 +12058,14 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::has_operat
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::L2protocol::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2protocol::Peer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11940,19 +12076,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2protocol::Peer::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -11960,7 +12096,7 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::set_value(
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Peer::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -11968,27 +12104,28 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::set_filter
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Peer::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Forward()
+Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Forward()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "forward"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forward"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::~Forward()
+Native::Interface::Overlay::Service::Instance::L2protocol::Forward::~Forward()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::has_data() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Forward::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -11997,7 +12134,7 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::has_dat
     return false;
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Forward::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -12008,14 +12145,14 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::has_ope
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::L2protocol::Forward::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "forward";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2protocol::Forward::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12026,19 +12163,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2protocol::Forward::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -12046,7 +12183,7 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::set_val
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Forward::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -12054,27 +12191,28 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::set_fil
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Forward::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
     return false;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Tunnel()
+Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Tunnel()
     :
     protocol{YType::enumeration, "protocol"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::~Tunnel()
+Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::~Tunnel()
 {
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::has_data() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : protocol.getYLeafs())
     {
         if(leaf.is_set)
@@ -12083,7 +12221,7 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::has_data
     return false;
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::has_operation() const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::has_operation() const
 {
     for (auto const & leaf : protocol.getYLeafs())
     {
@@ -12094,14 +12232,14 @@ bool Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::has_oper
 	|| ydk::is_set(protocol.yfilter);
 }
 
-std::string Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::get_segment_path() const
+std::string Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12112,19 +12250,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::Overlay::Servi
 
 }
 
-std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "protocol")
     {
@@ -12132,7 +12270,7 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::set_valu
     }
 }
 
-void Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "protocol")
     {
@@ -12140,7 +12278,7 @@ void Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::set_filt
     }
 }
 
-bool Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "protocol")
         return true;
@@ -12153,13 +12291,13 @@ Native::Interface::Overlay::Otv::Otv()
     data_group{YType::str, "data-group"},
     filter_fhrp{YType::empty, "filter-fhrp"},
     vpn_name{YType::str, "vpn-name"}
-    	,
+        ,
     adjacency_server(std::make_shared<Native::Interface::Overlay::Otv::AdjacencyServer>())
-	,encapsulation_format(std::make_shared<Native::Interface::Overlay::Otv::EncapsulationFormat>())
-	,isis(std::make_shared<Native::Interface::Overlay::Otv::Isis>())
-	,join_interface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface>())
-	,suppress(std::make_shared<Native::Interface::Overlay::Otv::Suppress>())
-	,use_adjacency_server(std::make_shared<Native::Interface::Overlay::Otv::UseAdjacencyServer>())
+    , encapsulation_format(std::make_shared<Native::Interface::Overlay::Otv::EncapsulationFormat>())
+    , isis(std::make_shared<Native::Interface::Overlay::Otv::Isis>())
+    , join_interface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface>())
+    , suppress(std::make_shared<Native::Interface::Overlay::Otv::Suppress>())
+    , use_adjacency_server(std::make_shared<Native::Interface::Overlay::Otv::UseAdjacencyServer>())
 {
     adjacency_server->parent = this;
     encapsulation_format->parent = this;
@@ -12168,7 +12306,7 @@ Native::Interface::Overlay::Otv::Otv()
     suppress->parent = this;
     use_adjacency_server->parent = this;
 
-    yang_name = "otv"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otv"; yang_parent_name = "overlay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::~Otv()
@@ -12177,6 +12315,7 @@ Native::Interface::Overlay::Otv::~Otv()
 
 bool Native::Interface::Overlay::Otv::has_data() const
 {
+    if (is_presence_container) return true;
     return control_group.is_set
 	|| data_group.is_set
 	|| filter_fhrp.is_set
@@ -12380,7 +12519,7 @@ Native::Interface::Overlay::Otv::AdjacencyServer::AdjacencyServer()
     unicast_only{YType::empty, "unicast-only"}
 {
 
-    yang_name = "adjacency-server"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adjacency-server"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::AdjacencyServer::~AdjacencyServer()
@@ -12389,6 +12528,7 @@ Native::Interface::Overlay::Otv::AdjacencyServer::~AdjacencyServer()
 
 bool Native::Interface::Overlay::Otv::AdjacencyServer::has_data() const
 {
+    if (is_presence_container) return true;
     return unicast_only.is_set;
 }
 
@@ -12458,7 +12598,7 @@ Native::Interface::Overlay::Otv::EncapsulationFormat::EncapsulationFormat()
 {
     ip->parent = this;
 
-    yang_name = "encapsulation-format"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "encapsulation-format"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::EncapsulationFormat::~EncapsulationFormat()
@@ -12467,6 +12607,7 @@ Native::Interface::Overlay::Otv::EncapsulationFormat::~EncapsulationFormat()
 
 bool Native::Interface::Overlay::Otv::EncapsulationFormat::has_data() const
 {
+    if (is_presence_container) return true;
     return (ip !=  nullptr && ip->has_data());
 }
 
@@ -12538,7 +12679,7 @@ Native::Interface::Overlay::Otv::EncapsulationFormat::Ip::Ip()
     gre{YType::empty, "gre"}
 {
 
-    yang_name = "ip"; yang_parent_name = "encapsulation-format"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "encapsulation-format"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::EncapsulationFormat::Ip::~Ip()
@@ -12547,6 +12688,7 @@ Native::Interface::Overlay::Otv::EncapsulationFormat::Ip::~Ip()
 
 bool Native::Interface::Overlay::Otv::EncapsulationFormat::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return gre.is_set;
 }
 
@@ -12619,18 +12761,18 @@ Native::Interface::Overlay::Otv::Isis::Isis()
     priority{YType::uint8, "priority"},
     retransmit_interval{YType::uint16, "retransmit-interval"},
     retransmit_throttle_interval{YType::uint16, "retransmit-throttle-interval"}
-    	,
+        ,
     authentication(std::make_shared<Native::Interface::Overlay::Otv::Isis::Authentication>())
-	,hello(std::make_shared<Native::Interface::Overlay::Otv::Isis::Hello>())
-	,hello_interval(std::make_shared<Native::Interface::Overlay::Otv::Isis::HelloInterval>())
-	,metric(std::make_shared<Native::Interface::Overlay::Otv::Isis::Metric>())
+    , hello(std::make_shared<Native::Interface::Overlay::Otv::Isis::Hello>())
+    , hello_interval(std::make_shared<Native::Interface::Overlay::Otv::Isis::HelloInterval>())
+    , metric(std::make_shared<Native::Interface::Overlay::Otv::Isis::Metric>())
 {
     authentication->parent = this;
     hello->parent = this;
     hello_interval->parent = this;
     metric->parent = this;
 
-    yang_name = "isis"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::Isis::~Isis()
@@ -12639,6 +12781,7 @@ Native::Interface::Overlay::Otv::Isis::~Isis()
 
 bool Native::Interface::Overlay::Otv::Isis::has_data() const
 {
+    if (is_presence_container) return true;
     return bfd.is_set
 	|| csnp_interval.is_set
 	|| hello_multiplier.is_set
@@ -12851,7 +12994,7 @@ Native::Interface::Overlay::Otv::Isis::Authentication::Authentication()
     send_only{YType::empty, "send-only"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::Isis::Authentication::~Authentication()
@@ -12860,6 +13003,7 @@ Native::Interface::Overlay::Otv::Isis::Authentication::~Authentication()
 
 bool Native::Interface::Overlay::Otv::Isis::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return key_chain.is_set
 	|| mode.is_set
 	|| send_only.is_set;
@@ -12954,7 +13098,7 @@ Native::Interface::Overlay::Otv::Isis::Hello::Hello()
     padding(nullptr) // presence node
 {
 
-    yang_name = "hello"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::Isis::Hello::~Hello()
@@ -12963,6 +13107,7 @@ Native::Interface::Overlay::Otv::Isis::Hello::~Hello()
 
 bool Native::Interface::Overlay::Otv::Isis::Hello::has_data() const
 {
+    if (is_presence_container) return true;
     return (padding !=  nullptr && padding->has_data());
 }
 
@@ -13034,7 +13179,7 @@ Native::Interface::Overlay::Otv::Isis::Hello::Padding::Padding()
     always{YType::empty, "always"}
 {
 
-    yang_name = "padding"; yang_parent_name = "hello"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "padding"; yang_parent_name = "hello"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::Overlay::Otv::Isis::Hello::Padding::~Padding()
@@ -13043,6 +13188,7 @@ Native::Interface::Overlay::Otv::Isis::Hello::Padding::~Padding()
 
 bool Native::Interface::Overlay::Otv::Isis::Hello::Padding::has_data() const
 {
+    if (is_presence_container) return true;
     return always.is_set;
 }
 
@@ -13112,7 +13258,7 @@ Native::Interface::Overlay::Otv::Isis::HelloInterval::HelloInterval()
     minimal{YType::empty, "minimal"}
 {
 
-    yang_name = "hello-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hello-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::Isis::HelloInterval::~HelloInterval()
@@ -13121,6 +13267,7 @@ Native::Interface::Overlay::Otv::Isis::HelloInterval::~HelloInterval()
 
 bool Native::Interface::Overlay::Otv::Isis::HelloInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| minimal.is_set;
 }
@@ -13206,7 +13353,7 @@ Native::Interface::Overlay::Otv::Isis::Metric::Metric()
     error{YType::uint32, "error"}
 {
 
-    yang_name = "metric"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "metric"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::Isis::Metric::~Metric()
@@ -13215,6 +13362,7 @@ Native::Interface::Overlay::Otv::Isis::Metric::~Metric()
 
 bool Native::Interface::Overlay::Otv::Isis::Metric::has_data() const
 {
+    if (is_presence_container) return true;
     return default_.is_set
 	|| maximum.is_set
 	|| delay.is_set
@@ -13364,18 +13512,18 @@ Native::Interface::Overlay::Otv::JoinInterface::JoinInterface()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Interface::Overlay::Otv::JoinInterface::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "join-interface"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "join-interface"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::JoinInterface::~JoinInterface()
@@ -13384,6 +13532,7 @@ Native::Interface::Overlay::Otv::JoinInterface::~JoinInterface()
 
 bool Native::Interface::Overlay::Otv::JoinInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -13919,7 +14068,7 @@ Native::Interface::Overlay::Otv::JoinInterface::ATMSubinterface::ATMSubinterface
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-subinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::JoinInterface::ATMSubinterface::~ATMSubinterface()
@@ -13928,6 +14077,7 @@ Native::Interface::Overlay::Otv::JoinInterface::ATMSubinterface::~ATMSubinterfac
 
 bool Native::Interface::Overlay::Otv::JoinInterface::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -13996,7 +14146,7 @@ Native::Interface::Overlay::Otv::JoinInterface::ATMACRsubinterface::ATMACRsubint
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::JoinInterface::ATMACRsubinterface::~ATMACRsubinterface()
@@ -14005,6 +14155,7 @@ Native::Interface::Overlay::Otv::JoinInterface::ATMACRsubinterface::~ATMACRsubin
 
 bool Native::Interface::Overlay::Otv::JoinInterface::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -14073,7 +14224,7 @@ Native::Interface::Overlay::Otv::JoinInterface::LISPSubinterface::LISPSubinterfa
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "LISP-subinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::JoinInterface::LISPSubinterface::~LISPSubinterface()
@@ -14082,6 +14233,7 @@ Native::Interface::Overlay::Otv::JoinInterface::LISPSubinterface::~LISPSubinterf
 
 bool Native::Interface::Overlay::Otv::JoinInterface::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -14150,7 +14302,7 @@ Native::Interface::Overlay::Otv::JoinInterface::PortChannelSubinterface::PortCha
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "join-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::JoinInterface::PortChannelSubinterface::~PortChannelSubinterface()
@@ -14159,6 +14311,7 @@ Native::Interface::Overlay::Otv::JoinInterface::PortChannelSubinterface::~PortCh
 
 bool Native::Interface::Overlay::Otv::JoinInterface::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -14227,7 +14380,7 @@ Native::Interface::Overlay::Otv::Suppress::Suppress()
     arp_nd{YType::empty, "arp-nd"}
 {
 
-    yang_name = "suppress"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppress"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::Suppress::~Suppress()
@@ -14236,6 +14389,7 @@ Native::Interface::Overlay::Otv::Suppress::~Suppress()
 
 bool Native::Interface::Overlay::Otv::Suppress::has_data() const
 {
+    if (is_presence_container) return true;
     return arp_nd.is_set;
 }
 
@@ -14306,7 +14460,7 @@ Native::Interface::Overlay::Otv::UseAdjacencyServer::UseAdjacencyServer()
     unicast_only{YType::empty, "unicast-only"}
 {
 
-    yang_name = "use-adjacency-server"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "use-adjacency-server"; yang_parent_name = "otv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::Overlay::Otv::UseAdjacencyServer::~UseAdjacencyServer()
@@ -14315,6 +14469,7 @@ Native::Interface::Overlay::Otv::UseAdjacencyServer::~UseAdjacencyServer()
 
 bool Native::Interface::Overlay::Otv::UseAdjacencyServer::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_pri_ip.is_set
 	|| remote_sec_ip.is_set
 	|| unicast_only.is_set;
@@ -14418,82 +14573,84 @@ Native::Interface::PortChannel::PortChannel()
     max_reserved_bandwidth{YType::uint8, "max-reserved-bandwidth"},
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"},
+    macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"},
     channel_protocol{YType::enumeration, "Cisco-IOS-XE-ethernet:channel-protocol"},
     duplex{YType::enumeration, "Cisco-IOS-XE-ethernet:duplex"},
-    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"},
-    macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"}
-    	,
+    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"}
+        ,
     port_channel(std::make_shared<Native::Interface::PortChannel::PortChannel_>())
-	,switchport_conf(std::make_shared<Native::Interface::PortChannel::SwitchportConf>())
-	,switchport(std::make_shared<Native::Interface::PortChannel::Switchport>())
-	,stackwise_virtual(std::make_shared<Native::Interface::PortChannel::StackwiseVirtual>())
-	,arp(std::make_shared<Native::Interface::PortChannel::Arp>())
-	,backup(std::make_shared<Native::Interface::PortChannel::Backup>())
-	,cemoudp(std::make_shared<Native::Interface::PortChannel::Cemoudp>())
-	,cws_tunnel(std::make_shared<Native::Interface::PortChannel::CwsTunnel>())
-	,l2protocol_tunnel(nullptr) // presence node
-	,encapsulation(std::make_shared<Native::Interface::PortChannel::Encapsulation>())
-	,fair_queue_conf(std::make_shared<Native::Interface::PortChannel::FairQueueConf>())
-	,fair_queue(std::make_shared<Native::Interface::PortChannel::FairQueue>())
-	,flowcontrol(std::make_shared<Native::Interface::PortChannel::Flowcontrol>())
-	,isis(std::make_shared<Native::Interface::PortChannel::Isis>())
-	,keepalive_settings(std::make_shared<Native::Interface::PortChannel::KeepaliveSettings>())
-	,bfd(std::make_shared<Native::Interface::PortChannel::Bfd>())
-	,bandwidth(std::make_shared<Native::Interface::PortChannel::Bandwidth>())
-	,dampening(std::make_shared<Native::Interface::PortChannel::Dampening>())
-	,domain(std::make_shared<Native::Interface::PortChannel::Domain>())
-	,mpls(std::make_shared<Native::Interface::PortChannel::Mpls>())
-	,ip_vrf(std::make_shared<Native::Interface::PortChannel::IpVrf>())
-	,vrf(std::make_shared<Native::Interface::PortChannel::Vrf>())
-	,ip(std::make_shared<Native::Interface::PortChannel::Ip>())
-	,ipv6(std::make_shared<Native::Interface::PortChannel::Ipv6>())
-	,logging(std::make_shared<Native::Interface::PortChannel::Logging>())
-	,mdix(std::make_shared<Native::Interface::PortChannel::Mdix>())
-	,mop(std::make_shared<Native::Interface::PortChannel::Mop>())
-	,interface_qos(std::make_shared<Native::Interface::PortChannel::InterfaceQos>())
-	,standby(std::make_shared<Native::Interface::PortChannel::Standby>())
-	,access_session(std::make_shared<Native::Interface::PortChannel::AccessSession>())
-	,storm_control(std::make_shared<Native::Interface::PortChannel::StormControl>())
-	,trust(std::make_shared<Native::Interface::PortChannel::Trust>())
-	,priority_queue(std::make_shared<Native::Interface::PortChannel::PriorityQueue>())
-	,rcv_queue(std::make_shared<Native::Interface::PortChannel::RcvQueue>())
-	,peer(std::make_shared<Native::Interface::PortChannel::Peer>())
-	,pm_path(std::make_shared<Native::Interface::PortChannel::PmPath>())
-	,carrier_delay(std::make_shared<Native::Interface::PortChannel::CarrierDelay>())
-	,channel_group(std::make_shared<Native::Interface::PortChannel::ChannelGroup>())
-	,ethernet(std::make_shared<Native::Interface::PortChannel::Ethernet>())
-	,negotiation(std::make_shared<Native::Interface::PortChannel::Negotiation>())
-	,eapol(std::make_shared<Native::Interface::PortChannel::Eapol>())
-	,synchronous(std::make_shared<Native::Interface::PortChannel::Synchronous>())
-	,speed(std::make_shared<Native::Interface::PortChannel::Speed>())
-	,plim(std::make_shared<Native::Interface::PortChannel::Plim>())
-	,pppoe(std::make_shared<Native::Interface::PortChannel::Pppoe>())
-	,service(std::make_shared<Native::Interface::PortChannel::Service>())
-	,lacp(std::make_shared<Native::Interface::PortChannel::Lacp>())
-	,mlacp(std::make_shared<Native::Interface::PortChannel::Mlacp>())
-	,xconnect(std::make_shared<Native::Interface::PortChannel::Xconnect>())
-	,snmp(std::make_shared<Native::Interface::PortChannel::Snmp>())
-	,crypto(std::make_shared<Native::Interface::PortChannel::Crypto>())
-	,cts(std::make_shared<Native::Interface::PortChannel::Cts>())
-	,dot1x(std::make_shared<Native::Interface::PortChannel::Dot1X>())
-	,service_policy(std::make_shared<Native::Interface::PortChannel::ServicePolicy>())
-	,lisp(std::make_shared<Native::Interface::PortChannel::Lisp>())
-	,mvrp(nullptr) // presence node
-	,ospfv3(std::make_shared<Native::Interface::PortChannel::Ospfv3>())
-	,authentication(std::make_shared<Native::Interface::PortChannel::Authentication>())
-	,mab(nullptr) // presence node
-	,spanning_tree(std::make_shared<Native::Interface::PortChannel::SpanningTree>())
-	,auto_(std::make_shared<Native::Interface::PortChannel::Auto>())
-	,datalink(std::make_shared<Native::Interface::PortChannel::Datalink>())
-	,energywise(nullptr) // presence node
-	,location(std::make_shared<Native::Interface::PortChannel::Location>())
-	,mac(std::make_shared<Native::Interface::PortChannel::Mac>())
-	,macro(std::make_shared<Native::Interface::PortChannel::Macro>())
-	,dual_active(std::make_shared<Native::Interface::PortChannel::DualActive>())
-	,load_balancing(std::make_shared<Native::Interface::PortChannel::LoadBalancing>())
-	,switch_(std::make_shared<Native::Interface::PortChannel::Switch>())
-	,srr_queue(std::make_shared<Native::Interface::PortChannel::SrrQueue>())
-	,macsec_option(std::make_shared<Native::Interface::PortChannel::MacsecOption>())
+    , switchport_conf(std::make_shared<Native::Interface::PortChannel::SwitchportConf>())
+    , switchport(std::make_shared<Native::Interface::PortChannel::Switchport>())
+    , stackwise_virtual(std::make_shared<Native::Interface::PortChannel::StackwiseVirtual>())
+    , arp(std::make_shared<Native::Interface::PortChannel::Arp>())
+    , backup(std::make_shared<Native::Interface::PortChannel::Backup>())
+    , cemoudp(std::make_shared<Native::Interface::PortChannel::Cemoudp>())
+    , cws_tunnel(std::make_shared<Native::Interface::PortChannel::CwsTunnel>())
+    , l2protocol_tunnel(nullptr) // presence node
+    , encapsulation(std::make_shared<Native::Interface::PortChannel::Encapsulation>())
+    , fair_queue_conf(std::make_shared<Native::Interface::PortChannel::FairQueueConf>())
+    , fair_queue(std::make_shared<Native::Interface::PortChannel::FairQueue>())
+    , flowcontrol(std::make_shared<Native::Interface::PortChannel::Flowcontrol>())
+    , isis(std::make_shared<Native::Interface::PortChannel::Isis>())
+    , keepalive_settings(std::make_shared<Native::Interface::PortChannel::KeepaliveSettings>())
+    , bfd(std::make_shared<Native::Interface::PortChannel::Bfd>())
+    , bandwidth(std::make_shared<Native::Interface::PortChannel::Bandwidth>())
+    , dampening(std::make_shared<Native::Interface::PortChannel::Dampening>())
+    , domain(std::make_shared<Native::Interface::PortChannel::Domain>())
+    , hold_queue(this, {"direction"})
+    , mpls(std::make_shared<Native::Interface::PortChannel::Mpls>())
+    , ip_vrf(std::make_shared<Native::Interface::PortChannel::IpVrf>())
+    , vrf(std::make_shared<Native::Interface::PortChannel::Vrf>())
+    , ip(std::make_shared<Native::Interface::PortChannel::Ip>())
+    , ipv6(std::make_shared<Native::Interface::PortChannel::Ipv6>())
+    , logging(std::make_shared<Native::Interface::PortChannel::Logging>())
+    , mdix(std::make_shared<Native::Interface::PortChannel::Mdix>())
+    , mop(std::make_shared<Native::Interface::PortChannel::Mop>())
+    , interface_qos(std::make_shared<Native::Interface::PortChannel::InterfaceQos>())
+    , standby(std::make_shared<Native::Interface::PortChannel::Standby>())
+    , access_session(std::make_shared<Native::Interface::PortChannel::AccessSession>())
+    , storm_control(std::make_shared<Native::Interface::PortChannel::StormControl>())
+    , trust(std::make_shared<Native::Interface::PortChannel::Trust>())
+    , priority_queue(std::make_shared<Native::Interface::PortChannel::PriorityQueue>())
+    , rcv_queue(std::make_shared<Native::Interface::PortChannel::RcvQueue>())
+    , peer(std::make_shared<Native::Interface::PortChannel::Peer>())
+    , pm_path(std::make_shared<Native::Interface::PortChannel::PmPath>())
+    , service_policy(std::make_shared<Native::Interface::PortChannel::ServicePolicy>())
+    , dot1x(std::make_shared<Native::Interface::PortChannel::Dot1x>())
+    , auto_(std::make_shared<Native::Interface::PortChannel::Auto>())
+    , datalink(std::make_shared<Native::Interface::PortChannel::Datalink>())
+    , energywise(nullptr) // presence node
+    , location(std::make_shared<Native::Interface::PortChannel::Location>())
+    , mac(std::make_shared<Native::Interface::PortChannel::Mac>())
+    , macro(std::make_shared<Native::Interface::PortChannel::Macro>())
+    , dual_active(std::make_shared<Native::Interface::PortChannel::DualActive>())
+    , load_balancing(std::make_shared<Native::Interface::PortChannel::LoadBalancing>())
+    , vlan_range(this, {"id"})
+    , switch_(std::make_shared<Native::Interface::PortChannel::Switch>())
+    , srr_queue(std::make_shared<Native::Interface::PortChannel::SrrQueue>())
+    , macsec_option(std::make_shared<Native::Interface::PortChannel::MacsecOption>())
+    , cts(std::make_shared<Native::Interface::PortChannel::Cts>())
+    , snmp(std::make_shared<Native::Interface::PortChannel::Snmp>())
+    , carrier_delay(std::make_shared<Native::Interface::PortChannel::CarrierDelay>())
+    , channel_group(std::make_shared<Native::Interface::PortChannel::ChannelGroup>())
+    , ethernet(std::make_shared<Native::Interface::PortChannel::Ethernet>())
+    , negotiation(std::make_shared<Native::Interface::PortChannel::Negotiation>())
+    , eapol(std::make_shared<Native::Interface::PortChannel::Eapol>())
+    , synchronous(std::make_shared<Native::Interface::PortChannel::Synchronous>())
+    , speed(std::make_shared<Native::Interface::PortChannel::Speed>())
+    , plim(std::make_shared<Native::Interface::PortChannel::Plim>())
+    , pppoe(std::make_shared<Native::Interface::PortChannel::Pppoe>())
+    , service(std::make_shared<Native::Interface::PortChannel::Service>())
+    , lacp(std::make_shared<Native::Interface::PortChannel::Lacp>())
+    , mlacp(std::make_shared<Native::Interface::PortChannel::Mlacp>())
+    , xconnect(std::make_shared<Native::Interface::PortChannel::Xconnect>())
+    , mvrp(nullptr) // presence node
+    , lisp(std::make_shared<Native::Interface::PortChannel::Lisp>())
+    , crypto(std::make_shared<Native::Interface::PortChannel::Crypto>())
+    , authentication(std::make_shared<Native::Interface::PortChannel::Authentication>())
+    , mab(nullptr) // presence node
+    , ospfv3(std::make_shared<Native::Interface::PortChannel::Ospfv3>())
+    , spanning_tree(std::make_shared<Native::Interface::PortChannel::SpanningTree>())
 {
     port_channel->parent = this;
     switchport_conf->parent = this;
@@ -14530,6 +14687,20 @@ Native::Interface::PortChannel::PortChannel()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
+    service_policy->parent = this;
+    dot1x->parent = this;
+    auto_->parent = this;
+    datalink->parent = this;
+    location->parent = this;
+    mac->parent = this;
+    macro->parent = this;
+    dual_active->parent = this;
+    load_balancing->parent = this;
+    switch_->parent = this;
+    srr_queue->parent = this;
+    macsec_option->parent = this;
+    cts->parent = this;
+    snmp->parent = this;
     carrier_delay->parent = this;
     channel_group->parent = this;
     ethernet->parent = this;
@@ -14543,27 +14714,13 @@ Native::Interface::PortChannel::PortChannel()
     lacp->parent = this;
     mlacp->parent = this;
     xconnect->parent = this;
-    snmp->parent = this;
-    crypto->parent = this;
-    cts->parent = this;
-    dot1x->parent = this;
-    service_policy->parent = this;
     lisp->parent = this;
-    ospfv3->parent = this;
+    crypto->parent = this;
     authentication->parent = this;
+    ospfv3->parent = this;
     spanning_tree->parent = this;
-    auto_->parent = this;
-    datalink->parent = this;
-    location->parent = this;
-    mac->parent = this;
-    macro->parent = this;
-    dual_active->parent = this;
-    load_balancing->parent = this;
-    switch_->parent = this;
-    srr_queue->parent = this;
-    macsec_option->parent = this;
 
-    yang_name = "Port-channel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Port-channel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Interface::PortChannel::~PortChannel()
@@ -14572,12 +14729,13 @@ Native::Interface::PortChannel::~PortChannel()
 
 bool Native::Interface::PortChannel::has_data() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_data())
             return true;
@@ -14594,10 +14752,10 @@ bool Native::Interface::PortChannel::has_data() const
 	|| max_reserved_bandwidth.is_set
 	|| mtu.is_set
 	|| service_insertion.is_set
+	|| macsec.is_set
 	|| channel_protocol.is_set
 	|| duplex.is_set
 	|| nat66.is_set
-	|| macsec.is_set
 	|| (port_channel !=  nullptr && port_channel->has_data())
 	|| (switchport_conf !=  nullptr && switchport_conf->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
@@ -14634,6 +14792,21 @@ bool Native::Interface::PortChannel::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (dot1x !=  nullptr && dot1x->has_data())
+	|| (auto_ !=  nullptr && auto_->has_data())
+	|| (datalink !=  nullptr && datalink->has_data())
+	|| (energywise !=  nullptr && energywise->has_data())
+	|| (location !=  nullptr && location->has_data())
+	|| (mac !=  nullptr && mac->has_data())
+	|| (macro !=  nullptr && macro->has_data())
+	|| (dual_active !=  nullptr && dual_active->has_data())
+	|| (load_balancing !=  nullptr && load_balancing->has_data())
+	|| (switch_ !=  nullptr && switch_->has_data())
+	|| (srr_queue !=  nullptr && srr_queue->has_data())
+	|| (macsec_option !=  nullptr && macsec_option->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (snmp !=  nullptr && snmp->has_data())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_data())
 	|| (channel_group !=  nullptr && channel_group->has_data())
 	|| (ethernet !=  nullptr && ethernet->has_data())
@@ -14647,38 +14820,23 @@ bool Native::Interface::PortChannel::has_data() const
 	|| (lacp !=  nullptr && lacp->has_data())
 	|| (mlacp !=  nullptr && mlacp->has_data())
 	|| (xconnect !=  nullptr && xconnect->has_data())
-	|| (snmp !=  nullptr && snmp->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (dot1x !=  nullptr && dot1x->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
-	|| (lisp !=  nullptr && lisp->has_data())
 	|| (mvrp !=  nullptr && mvrp->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (lisp !=  nullptr && lisp->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (mab !=  nullptr && mab->has_data())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
-	|| (auto_ !=  nullptr && auto_->has_data())
-	|| (datalink !=  nullptr && datalink->has_data())
-	|| (energywise !=  nullptr && energywise->has_data())
-	|| (location !=  nullptr && location->has_data())
-	|| (mac !=  nullptr && mac->has_data())
-	|| (macro !=  nullptr && macro->has_data())
-	|| (dual_active !=  nullptr && dual_active->has_data())
-	|| (load_balancing !=  nullptr && load_balancing->has_data())
-	|| (switch_ !=  nullptr && switch_->has_data())
-	|| (srr_queue !=  nullptr && srr_queue->has_data())
-	|| (macsec_option !=  nullptr && macsec_option->has_data());
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_data());
 }
 
 bool Native::Interface::PortChannel::has_operation() const
 {
-    for (std::size_t index=0; index<hold_queue.size(); index++)
+    for (std::size_t index=0; index<hold_queue.len(); index++)
     {
         if(hold_queue[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<vlan_range.size(); index++)
+    for (std::size_t index=0; index<vlan_range.len(); index++)
     {
         if(vlan_range[index]->has_operation())
             return true;
@@ -14696,10 +14854,10 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| ydk::is_set(max_reserved_bandwidth.yfilter)
 	|| ydk::is_set(mtu.yfilter)
 	|| ydk::is_set(service_insertion.yfilter)
+	|| ydk::is_set(macsec.yfilter)
 	|| ydk::is_set(channel_protocol.yfilter)
 	|| ydk::is_set(duplex.yfilter)
 	|| ydk::is_set(nat66.yfilter)
-	|| ydk::is_set(macsec.yfilter)
 	|| (port_channel !=  nullptr && port_channel->has_operation())
 	|| (switchport_conf !=  nullptr && switchport_conf->has_operation())
 	|| (switchport !=  nullptr && switchport->has_operation())
@@ -14736,6 +14894,21 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (dot1x !=  nullptr && dot1x->has_operation())
+	|| (auto_ !=  nullptr && auto_->has_operation())
+	|| (datalink !=  nullptr && datalink->has_operation())
+	|| (energywise !=  nullptr && energywise->has_operation())
+	|| (location !=  nullptr && location->has_operation())
+	|| (mac !=  nullptr && mac->has_operation())
+	|| (macro !=  nullptr && macro->has_operation())
+	|| (dual_active !=  nullptr && dual_active->has_operation())
+	|| (load_balancing !=  nullptr && load_balancing->has_operation())
+	|| (switch_ !=  nullptr && switch_->has_operation())
+	|| (srr_queue !=  nullptr && srr_queue->has_operation())
+	|| (macsec_option !=  nullptr && macsec_option->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (snmp !=  nullptr && snmp->has_operation())
 	|| (carrier_delay !=  nullptr && carrier_delay->has_operation())
 	|| (channel_group !=  nullptr && channel_group->has_operation())
 	|| (ethernet !=  nullptr && ethernet->has_operation())
@@ -14749,28 +14922,13 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| (lacp !=  nullptr && lacp->has_operation())
 	|| (mlacp !=  nullptr && mlacp->has_operation())
 	|| (xconnect !=  nullptr && xconnect->has_operation())
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (dot1x !=  nullptr && dot1x->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
-	|| (lisp !=  nullptr && lisp->has_operation())
 	|| (mvrp !=  nullptr && mvrp->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (mab !=  nullptr && mab->has_operation())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
-	|| (auto_ !=  nullptr && auto_->has_operation())
-	|| (datalink !=  nullptr && datalink->has_operation())
-	|| (energywise !=  nullptr && energywise->has_operation())
-	|| (location !=  nullptr && location->has_operation())
-	|| (mac !=  nullptr && mac->has_operation())
-	|| (macro !=  nullptr && macro->has_operation())
-	|| (dual_active !=  nullptr && dual_active->has_operation())
-	|| (load_balancing !=  nullptr && load_balancing->has_operation())
-	|| (switch_ !=  nullptr && switch_->has_operation())
-	|| (srr_queue !=  nullptr && srr_queue->has_operation())
-	|| (macsec_option !=  nullptr && macsec_option->has_operation());
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_operation());
 }
 
 std::string Native::Interface::PortChannel::get_absolute_path() const
@@ -14783,7 +14941,8 @@ std::string Native::Interface::PortChannel::get_absolute_path() const
 std::string Native::Interface::PortChannel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Port-channel" <<"[name='" <<name <<"']";
+    path_buffer << "Port-channel";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -14803,10 +14962,10 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannel::g
     if (max_reserved_bandwidth.is_set || is_set(max_reserved_bandwidth.yfilter)) leaf_name_data.push_back(max_reserved_bandwidth.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
     if (service_insertion.is_set || is_set(service_insertion.yfilter)) leaf_name_data.push_back(service_insertion.get_name_leafdata());
+    if (macsec.is_set || is_set(macsec.yfilter)) leaf_name_data.push_back(macsec.get_name_leafdata());
     if (channel_protocol.is_set || is_set(channel_protocol.yfilter)) leaf_name_data.push_back(channel_protocol.get_name_leafdata());
     if (duplex.is_set || is_set(duplex.yfilter)) leaf_name_data.push_back(duplex.get_name_leafdata());
     if (nat66.is_set || is_set(nat66.yfilter)) leaf_name_data.push_back(nat66.get_name_leafdata());
-    if (macsec.is_set || is_set(macsec.yfilter)) leaf_name_data.push_back(macsec.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14890,7 +15049,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::get_child_by_name(const 
     {
         if(l2protocol_tunnel == nullptr)
         {
-            l2protocol_tunnel = std::make_shared<Native::Interface::PortChannel::L2ProtocolTunnel>();
+            l2protocol_tunnel = std::make_shared<Native::Interface::PortChannel::L2protocolTunnel>();
         }
         return l2protocol_tunnel;
     }
@@ -14989,7 +15148,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::get_child_by_name(const 
     {
         auto c = std::make_shared<Native::Interface::PortChannel::HoldQueue>();
         c->parent = this;
-        hold_queue.push_back(c);
+        hold_queue.append(c);
         return c;
     }
 
@@ -15146,6 +15305,149 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::get_child_by_name(const 
         return pm_path;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::PortChannel::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
+    {
+        if(dot1x == nullptr)
+        {
+            dot1x = std::make_shared<Native::Interface::PortChannel::Dot1x>();
+        }
+        return dot1x;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:auto")
+    {
+        if(auto_ == nullptr)
+        {
+            auto_ = std::make_shared<Native::Interface::PortChannel::Auto>();
+        }
+        return auto_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:datalink")
+    {
+        if(datalink == nullptr)
+        {
+            datalink = std::make_shared<Native::Interface::PortChannel::Datalink>();
+        }
+        return datalink;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:energywise")
+    {
+        if(energywise == nullptr)
+        {
+            energywise = std::make_shared<Native::Interface::PortChannel::Energywise>();
+        }
+        return energywise;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:location")
+    {
+        if(location == nullptr)
+        {
+            location = std::make_shared<Native::Interface::PortChannel::Location>();
+        }
+        return location;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:mac")
+    {
+        if(mac == nullptr)
+        {
+            mac = std::make_shared<Native::Interface::PortChannel::Mac>();
+        }
+        return mac;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:macro")
+    {
+        if(macro == nullptr)
+        {
+            macro = std::make_shared<Native::Interface::PortChannel::Macro>();
+        }
+        return macro;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:dual-active")
+    {
+        if(dual_active == nullptr)
+        {
+            dual_active = std::make_shared<Native::Interface::PortChannel::DualActive>();
+        }
+        return dual_active;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:load-balancing")
+    {
+        if(load_balancing == nullptr)
+        {
+            load_balancing = std::make_shared<Native::Interface::PortChannel::LoadBalancing>();
+        }
+        return load_balancing;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:vlan-range")
+    {
+        auto c = std::make_shared<Native::Interface::PortChannel::VlanRange>();
+        c->parent = this;
+        vlan_range.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:switch")
+    {
+        if(switch_ == nullptr)
+        {
+            switch_ = std::make_shared<Native::Interface::PortChannel::Switch>();
+        }
+        return switch_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:srr-queue")
+    {
+        if(srr_queue == nullptr)
+        {
+            srr_queue = std::make_shared<Native::Interface::PortChannel::SrrQueue>();
+        }
+        return srr_queue;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-switch:macsec-option")
+    {
+        if(macsec_option == nullptr)
+        {
+            macsec_option = std::make_shared<Native::Interface::PortChannel::MacsecOption>();
+        }
+        return macsec_option;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::PortChannel::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
+    {
+        if(snmp == nullptr)
+        {
+            snmp = std::make_shared<Native::Interface::PortChannel::Snmp>();
+        }
+        return snmp;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-ethernet:carrier-delay")
     {
         if(carrier_delay == nullptr)
@@ -15263,49 +15565,13 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::get_child_by_name(const 
         return xconnect;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
+    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
     {
-        if(snmp == nullptr)
+        if(mvrp == nullptr)
         {
-            snmp = std::make_shared<Native::Interface::PortChannel::Snmp>();
+            mvrp = std::make_shared<Native::Interface::PortChannel::Mvrp>();
         }
-        return snmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::PortChannel::Crypto>();
-        }
-        return crypto;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::PortChannel::Cts>();
-        }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
-    {
-        if(dot1x == nullptr)
-        {
-            dot1x = std::make_shared<Native::Interface::PortChannel::Dot1X>();
-        }
-        return dot1x;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::PortChannel::ServicePolicy>();
-        }
-        return service_policy;
+        return mvrp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
@@ -15317,22 +15583,13 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::get_child_by_name(const 
         return lisp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
     {
-        if(mvrp == nullptr)
+        if(crypto == nullptr)
         {
-            mvrp = std::make_shared<Native::Interface::PortChannel::Mvrp>();
+            crypto = std::make_shared<Native::Interface::PortChannel::Crypto>();
         }
-        return mvrp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Native::Interface::PortChannel::Ospfv3>();
-        }
-        return ospfv3;
+        return crypto;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-sanet:authentication")
@@ -15353,6 +15610,15 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::get_child_by_name(const 
         return mab;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
+    {
+        if(ospfv3 == nullptr)
+        {
+            ospfv3 = std::make_shared<Native::Interface::PortChannel::Ospfv3>();
+        }
+        return ospfv3;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
     {
         if(spanning_tree == nullptr)
@@ -15360,113 +15626,6 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::get_child_by_name(const 
             spanning_tree = std::make_shared<Native::Interface::PortChannel::SpanningTree>();
         }
         return spanning_tree;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:auto")
-    {
-        if(auto_ == nullptr)
-        {
-            auto_ = std::make_shared<Native::Interface::PortChannel::Auto>();
-        }
-        return auto_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:datalink")
-    {
-        if(datalink == nullptr)
-        {
-            datalink = std::make_shared<Native::Interface::PortChannel::Datalink>();
-        }
-        return datalink;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:energywise")
-    {
-        if(energywise == nullptr)
-        {
-            energywise = std::make_shared<Native::Interface::PortChannel::Energywise>();
-        }
-        return energywise;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:location")
-    {
-        if(location == nullptr)
-        {
-            location = std::make_shared<Native::Interface::PortChannel::Location>();
-        }
-        return location;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:mac")
-    {
-        if(mac == nullptr)
-        {
-            mac = std::make_shared<Native::Interface::PortChannel::Mac>();
-        }
-        return mac;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:macro")
-    {
-        if(macro == nullptr)
-        {
-            macro = std::make_shared<Native::Interface::PortChannel::Macro>();
-        }
-        return macro;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:dual-active")
-    {
-        if(dual_active == nullptr)
-        {
-            dual_active = std::make_shared<Native::Interface::PortChannel::DualActive>();
-        }
-        return dual_active;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:load-balancing")
-    {
-        if(load_balancing == nullptr)
-        {
-            load_balancing = std::make_shared<Native::Interface::PortChannel::LoadBalancing>();
-        }
-        return load_balancing;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:vlan-range")
-    {
-        auto c = std::make_shared<Native::Interface::PortChannel::VlanRange>();
-        c->parent = this;
-        vlan_range.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:switch")
-    {
-        if(switch_ == nullptr)
-        {
-            switch_ = std::make_shared<Native::Interface::PortChannel::Switch>();
-        }
-        return switch_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:srr-queue")
-    {
-        if(srr_queue == nullptr)
-        {
-            srr_queue = std::make_shared<Native::Interface::PortChannel::SrrQueue>();
-        }
-        return srr_queue;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-switch:macsec-option")
-    {
-        if(macsec_option == nullptr)
-        {
-            macsec_option = std::make_shared<Native::Interface::PortChannel::MacsecOption>();
-        }
-        return macsec_option;
     }
 
     return nullptr;
@@ -15572,7 +15731,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannel::g
     }
 
     count = 0;
-    for (auto const & c : hold_queue)
+    for (auto c : hold_queue.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15665,6 +15824,90 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannel::g
         children["pm-path"] = pm_path;
     }
 
+    if(service_policy != nullptr)
+    {
+        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
+    if(dot1x != nullptr)
+    {
+        children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
+    }
+
+    if(auto_ != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:auto"] = auto_;
+    }
+
+    if(datalink != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:datalink"] = datalink;
+    }
+
+    if(energywise != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:energywise"] = energywise;
+    }
+
+    if(location != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:location"] = location;
+    }
+
+    if(mac != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:mac"] = mac;
+    }
+
+    if(macro != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:macro"] = macro;
+    }
+
+    if(dual_active != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:dual-active"] = dual_active;
+    }
+
+    if(load_balancing != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:load-balancing"] = load_balancing;
+    }
+
+    count = 0;
+    for (auto c : vlan_range.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    if(switch_ != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:switch"] = switch_;
+    }
+
+    if(srr_queue != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:srr-queue"] = srr_queue;
+    }
+
+    if(macsec_option != nullptr)
+    {
+        children["Cisco-IOS-XE-switch:macsec-option"] = macsec_option;
+    }
+
+    if(cts != nullptr)
+    {
+        children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(snmp != nullptr)
+    {
+        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+    }
+
     if(carrier_delay != nullptr)
     {
         children["Cisco-IOS-XE-ethernet:carrier-delay"] = carrier_delay;
@@ -15730,29 +15973,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannel::g
         children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
     }
 
-    if(snmp != nullptr)
+    if(mvrp != nullptr)
     {
-        children["Cisco-IOS-XE-snmp:snmp"] = snmp;
-    }
-
-    if(crypto != nullptr)
-    {
-        children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
-    if(cts != nullptr)
-    {
-        children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(dot1x != nullptr)
-    {
-        children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
-    }
-
-    if(service_policy != nullptr)
-    {
-        children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+        children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
     }
 
     if(lisp != nullptr)
@@ -15760,14 +15983,9 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannel::g
         children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
-    if(mvrp != nullptr)
+    if(crypto != nullptr)
     {
-        children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
-    }
-
-    if(ospfv3 != nullptr)
-    {
-        children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+        children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
     if(authentication != nullptr)
@@ -15780,73 +15998,14 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Interface::PortChannel::g
         children["Cisco-IOS-XE-sanet:mab"] = mab;
     }
 
+    if(ospfv3 != nullptr)
+    {
+        children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+    }
+
     if(spanning_tree != nullptr)
     {
         children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
-    }
-
-    if(auto_ != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:auto"] = auto_;
-    }
-
-    if(datalink != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:datalink"] = datalink;
-    }
-
-    if(energywise != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:energywise"] = energywise;
-    }
-
-    if(location != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:location"] = location;
-    }
-
-    if(mac != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:mac"] = mac;
-    }
-
-    if(macro != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:macro"] = macro;
-    }
-
-    if(dual_active != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:dual-active"] = dual_active;
-    }
-
-    if(load_balancing != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:load-balancing"] = load_balancing;
-    }
-
-    count = 0;
-    for (auto const & c : vlan_range)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(switch_ != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:switch"] = switch_;
-    }
-
-    if(srr_queue != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:srr-queue"] = srr_queue;
-    }
-
-    if(macsec_option != nullptr)
-    {
-        children["Cisco-IOS-XE-switch:macsec-option"] = macsec_option;
     }
 
     return children;
@@ -15926,6 +16085,12 @@ void Native::Interface::PortChannel::set_value(const std::string & value_path, c
         service_insertion.value_namespace = name_space;
         service_insertion.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "Cisco-IOS-XE-switch:macsec")
+    {
+        macsec = value;
+        macsec.value_namespace = name_space;
+        macsec.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "Cisco-IOS-XE-ethernet:channel-protocol")
     {
         channel_protocol = value;
@@ -15943,12 +16108,6 @@ void Native::Interface::PortChannel::set_value(const std::string & value_path, c
         nat66 = value;
         nat66.value_namespace = name_space;
         nat66.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-switch:macsec")
-    {
-        macsec = value;
-        macsec.value_namespace = name_space;
-        macsec.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -16002,6 +16161,10 @@ void Native::Interface::PortChannel::set_filter(const std::string & value_path, 
     {
         service_insertion.yfilter = yfilter;
     }
+    if(value_path == "macsec")
+    {
+        macsec.yfilter = yfilter;
+    }
     if(value_path == "channel-protocol")
     {
         channel_protocol.yfilter = yfilter;
@@ -16014,15 +16177,11 @@ void Native::Interface::PortChannel::set_filter(const std::string & value_path, 
     {
         nat66.yfilter = yfilter;
     }
-    if(value_path == "macsec")
-    {
-        macsec.yfilter = yfilter;
-    }
 }
 
 bool Native::Interface::PortChannel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "port-channel" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "mlacp" || name == "xconnect" || name == "snmp" || name == "crypto" || name == "cts" || name == "dot1x" || name == "service-policy" || name == "lisp" || name == "mvrp" || name == "ospfv3" || name == "authentication" || name == "mab" || name == "spanning-tree" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "name" || name == "pc-speed" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "nat66" || name == "macsec")
+    if(name == "port-channel" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "service-policy" || name == "dot1x" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "cts" || name == "snmp" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "negotiation" || name == "eapol" || name == "synchronous" || name == "speed" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "mlacp" || name == "xconnect" || name == "mvrp" || name == "lisp" || name == "crypto" || name == "authentication" || name == "mab" || name == "ospfv3" || name == "spanning-tree" || name == "name" || name == "pc-speed" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "macsec" || name == "channel-protocol" || name == "duplex" || name == "nat66")
         return true;
     return false;
 }
@@ -16033,7 +16192,7 @@ Native::Interface::PortChannel::PortChannel_::PortChannel_()
     standalone_disable{YType::empty, "standalone-disable"}
 {
 
-    yang_name = "port-channel"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-channel"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannel::PortChannel_::~PortChannel_()
@@ -16042,6 +16201,7 @@ Native::Interface::PortChannel::PortChannel_::~PortChannel_()
 
 bool Native::Interface::PortChannel::PortChannel_::has_data() const
 {
+    if (is_presence_container) return true;
     return min_links.is_set
 	|| standalone_disable.is_set;
 }
@@ -16123,7 +16283,7 @@ Native::Interface::PortChannel::SwitchportConf::SwitchportConf()
     switchport{YType::boolean, "switchport"}
 {
 
-    yang_name = "switchport-conf"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport-conf"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannel::SwitchportConf::~SwitchportConf()
@@ -16132,6 +16292,7 @@ Native::Interface::PortChannel::SwitchportConf::~SwitchportConf()
 
 bool Native::Interface::PortChannel::SwitchportConf::has_data() const
 {
+    if (is_presence_container) return true;
     return switchport.is_set;
 }
 
@@ -16200,17 +16361,17 @@ Native::Interface::PortChannel::Switchport::Switchport()
     nonegotiate{YType::empty, "Cisco-IOS-XE-switch:nonegotiate"},
     protected_{YType::empty, "Cisco-IOS-XE-switch:protected"},
     host{YType::empty, "Cisco-IOS-XE-switch:host"}
-    	,
+        ,
     access(std::make_shared<Native::Interface::PortChannel::Switchport::Access>())
-	,block(std::make_shared<Native::Interface::PortChannel::Switchport::Block>())
-	,mode(std::make_shared<Native::Interface::PortChannel::Switchport::Mode>())
-	,port_security(nullptr) // presence node
-	,trunk(std::make_shared<Native::Interface::PortChannel::Switchport::Trunk>())
-	,voice(std::make_shared<Native::Interface::PortChannel::Switchport::Voice>())
-	,priority(std::make_shared<Native::Interface::PortChannel::Switchport::Priority>())
-	,autostate(std::make_shared<Native::Interface::PortChannel::Switchport::Autostate>())
-	,private_vlan(std::make_shared<Native::Interface::PortChannel::Switchport::PrivateVlan>())
-	,vepa(std::make_shared<Native::Interface::PortChannel::Switchport::Vepa>())
+    , block(std::make_shared<Native::Interface::PortChannel::Switchport::Block>())
+    , mode(std::make_shared<Native::Interface::PortChannel::Switchport::Mode>())
+    , port_security(nullptr) // presence node
+    , trunk(std::make_shared<Native::Interface::PortChannel::Switchport::Trunk>())
+    , voice(std::make_shared<Native::Interface::PortChannel::Switchport::Voice>())
+    , priority(std::make_shared<Native::Interface::PortChannel::Switchport::Priority>())
+    , autostate(std::make_shared<Native::Interface::PortChannel::Switchport::Autostate>())
+    , private_vlan(std::make_shared<Native::Interface::PortChannel::Switchport::PrivateVlan>())
+    , vepa(std::make_shared<Native::Interface::PortChannel::Switchport::Vepa>())
 {
     access->parent = this;
     block->parent = this;
@@ -16222,7 +16383,7 @@ Native::Interface::PortChannel::Switchport::Switchport()
     private_vlan->parent = this;
     vepa->parent = this;
 
-    yang_name = "switchport"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switchport"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannel::Switchport::~Switchport()
@@ -16231,6 +16392,7 @@ Native::Interface::PortChannel::Switchport::~Switchport()
 
 bool Native::Interface::PortChannel::Switchport::has_data() const
 {
+    if (is_presence_container) return true;
     return nonegotiate.is_set
 	|| protected_.is_set
 	|| host.is_set
@@ -16486,7 +16648,7 @@ Native::Interface::PortChannel::Switchport::Access::Access()
 {
     vlan->parent = this;
 
-    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannel::Switchport::Access::~Access()
@@ -16495,6 +16657,7 @@ Native::Interface::PortChannel::Switchport::Access::~Access()
 
 bool Native::Interface::PortChannel::Switchport::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data());
 }
 
@@ -16567,7 +16730,7 @@ Native::Interface::PortChannel::Switchport::Access::Vlan::Vlan()
     name{YType::str, "name"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannel::Switchport::Access::Vlan::~Vlan()
@@ -16576,6 +16739,7 @@ Native::Interface::PortChannel::Switchport::Access::Vlan::~Vlan()
 
 bool Native::Interface::PortChannel::Switchport::Access::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set
 	|| name.is_set;
 }
@@ -16658,7 +16822,7 @@ Native::Interface::PortChannel::Switchport::Block::Block()
     unicast{YType::empty, "unicast"}
 {
 
-    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "block"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannel::Switchport::Block::~Block()
@@ -16667,6 +16831,7 @@ Native::Interface::PortChannel::Switchport::Block::~Block()
 
 bool Native::Interface::PortChannel::Switchport::Block::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast.is_set
 	|| unicast.is_set;
 }
@@ -16746,15 +16911,15 @@ bool Native::Interface::PortChannel::Switchport::Block::has_leaf_or_child_of_nam
 Native::Interface::PortChannel::Switchport::Mode::Mode()
     :
     dynamic{YType::enumeration, "dynamic"}
-    	,
+        ,
     access(nullptr) // presence node
-	,dot1q_tunnel(nullptr) // presence node
-	,private_vlan(std::make_shared<Native::Interface::PortChannel::Switchport::Mode::PrivateVlan>())
-	,trunk(nullptr) // presence node
+    , dot1q_tunnel(nullptr) // presence node
+    , private_vlan(std::make_shared<Native::Interface::PortChannel::Switchport::Mode::PrivateVlan>())
+    , trunk(nullptr) // presence node
 {
     private_vlan->parent = this;
 
-    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "switchport"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Interface::PortChannel::Switchport::Mode::~Mode()
@@ -16763,6 +16928,7 @@ Native::Interface::PortChannel::Switchport::Mode::~Mode()
 
 bool Native::Interface::PortChannel::Switchport::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return dynamic.is_set
 	|| (access !=  nullptr && access->has_data())
 	|| (dot1q_tunnel !=  nullptr && dot1q_tunnel->has_data())
@@ -16812,7 +16978,7 @@ std::shared_ptr<Entity> Native::Interface::PortChannel::Switchport::Mode::get_ch
     {
         if(dot1q_tunnel == nullptr)
         {
-            dot1q_tunnel = std::make_shared<Native::Interface::PortChannel::Switchport::Mode::Dot1QTunnel>();
+            dot1q_tunnel = std::make_shared<Native::Interface::PortChannel::Switchport::Mode::Dot1qTunnel>();
         }
         return dot1q_tunnel;
     }
@@ -16893,7 +17059,7 @@ bool Native::Interface::PortChannel::Switchport::Mode::has_leaf_or_child_of_name
 Native::Interface::PortChannel::Switchport::Mode::Access::Access()
 {
 
-    yang_name = "access"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Interface::PortChannel::Switchport::Mode::Access::~Access()
@@ -16902,6 +17068,7 @@ Native::Interface::PortChannel::Switchport::Mode::Access::~Access()
 
 bool Native::Interface::PortChannel::Switchport::Mode::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -16967,29 +17134,29 @@ const Enum::YLeaf Native::Interface::Overlay::Ethernet::Oam::Mode::passive {1, "
 
 const Enum::YLeaf Native::Interface::Overlay::Pppoe::Enable::Group::global {0, "global"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Id::any {0, "any"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Id::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Dot1Q::any {0, "any"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Dot1q::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Etype::ipv4 {0, "ipv4"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Etype::ipv6 {1, "ipv6"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Etype::pppoe_all {2, "pppoe-all"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Etype::pppoe_discovery {3, "pppoe-discovery"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Ad::Etype::pppoe_session {4, "pppoe-session"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Etype::ipv4 {0, "ipv4"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Etype::ipv6 {1, "ipv6"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_all {2, "pppoe-all"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_discovery {3, "pppoe-discovery"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_session {4, "pppoe-session"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Id::any {0, "any"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Id::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::SecondDot1Q::any {0, "any"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::SecondDot1q::any {0, "any"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Etype::ipv4 {0, "ipv4"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Etype::ipv6 {1, "ipv6"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Etype::pppoe_all {2, "pppoe-all"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Etype::pppoe_discovery {3, "pppoe-discovery"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::Etype::pppoe_session {4, "pppoe-session"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Etype::ipv4 {0, "ipv4"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Etype::ipv6 {1, "ipv6"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_all {2, "pppoe-all"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_discovery {3, "pppoe-discovery"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_session {4, "pppoe-session"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::VlanType::Y_0x88A8 {0, "0x88A8"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::VlanType::Y_0x9100 {1, "0x9100"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1Q::VlanType::Y_0x9200 {2, "0x9200"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x88A8 {0, "0x88A8"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x9100 {1, "0x9100"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x9200 {2, "0x9200"};
 
 const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::Etype::ipv4 {0, "ipv4"};
 const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Encapsulation::PriorityTagged::Etype::ipv6 {1, "ipv6"};
@@ -17015,97 +17182,97 @@ const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Rewrite::Ingres
 const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Mac::Security::Violation::protect {0, "protect"};
 const Enum::YLeaf Native::Interface::Overlay::Service::Instance::Mac::Security::Violation::restrict {1, "restrict"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Discard::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Discard::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Peer::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Peer::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Forward::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Forward::Protocol::vtp {21, "vtp"};
 
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2Protocol::Tunnel::Protocol::vtp {21, "vtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::R4 {0, "R4"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::R5 {1, "R5"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::R6 {2, "R6"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::R8 {3, "R8"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::R9 {4, "R9"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::RA {5, "RA"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::RB {6, "RB"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::RC {7, "RC"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::RD {8, "RD"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::RF {9, "RF"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::cdp {10, "cdp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::dtp {11, "dtp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::elmi {12, "elmi"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::esmc {13, "esmc"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::lacp {14, "lacp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::lldp {15, "lldp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::loam {16, "loam"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::pagp {17, "pagp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::ptppd {18, "ptppd"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::stp {19, "stp"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::udld {20, "udld"};
+const Enum::YLeaf Native::Interface::Overlay::Service::Instance::L2protocol::Tunnel::Protocol::vtp {21, "vtp"};
 
 const Enum::YLeaf Native::Interface::Overlay::Otv::Isis::Authentication::Mode::md5 {0, "md5"};
 const Enum::YLeaf Native::Interface::Overlay::Otv::Isis::Authentication::Mode::text {1, "text"};

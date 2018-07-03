@@ -17,7 +17,7 @@ Locale::Locale()
     language{YType::enumeration, "language"}
 {
 
-    yang_name = "locale"; yang_parent_name = "Cisco-IOS-XR-infra-infra-locale-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "locale"; yang_parent_name = "Cisco-IOS-XR-infra-infra-locale-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Locale::~Locale()
@@ -26,6 +26,7 @@ Locale::~Locale()
 
 bool Locale::has_data() const
 {
+    if (is_presence_container) return true;
     return country.is_set
 	|| language.is_set;
 }

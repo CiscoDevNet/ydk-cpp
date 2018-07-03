@@ -17,7 +17,7 @@ Macsec::Macsec()
 {
     mka->parent = this;
 
-    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "macsec"; yang_parent_name = "Cisco-IOS-XR-crypto-macsec-mka-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Macsec::~Macsec()
@@ -26,6 +26,7 @@ Macsec::~Macsec()
 
 bool Macsec::has_data() const
 {
+    if (is_presence_container) return true;
     return (mka !=  nullptr && mka->has_data());
 }
 
@@ -123,7 +124,7 @@ Macsec::Mka::Mka()
 {
     interfaces->parent = this;
 
-    yang_name = "mka"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mka"; yang_parent_name = "macsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Macsec::Mka::~Mka()
@@ -132,6 +133,7 @@ Macsec::Mka::~Mka()
 
 bool Macsec::Mka::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -206,9 +208,11 @@ bool Macsec::Mka::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Macsec::Mka::Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "mka"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "mka"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Macsec::Mka::Interfaces::~Interfaces()
@@ -217,7 +221,8 @@ Macsec::Mka::Interfaces::~Interfaces()
 
 bool Macsec::Mka::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -227,7 +232,7 @@ bool Macsec::Mka::Interfaces::has_data() const
 
 bool Macsec::Mka::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -264,7 +269,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -276,7 +281,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -305,12 +310,12 @@ bool Macsec::Mka::Interfaces::has_leaf_or_child_of_name(const std::string & name
 Macsec::Mka::Interfaces::Interface::Interface()
     :
     name{YType::str, "name"}
-    	,
+        ,
     session(std::make_shared<Macsec::Mka::Interfaces::Interface::Session>())
 {
     session->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Macsec::Mka::Interfaces::Interface::~Interface()
@@ -319,6 +324,7 @@ Macsec::Mka::Interfaces::Interface::~Interface()
 
 bool Macsec::Mka::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (session !=  nullptr && session->has_data());
 }
@@ -340,7 +346,8 @@ std::string Macsec::Mka::Interfaces::Interface::get_absolute_path() const
 std::string Macsec::Mka::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -408,12 +415,13 @@ bool Macsec::Mka::Interfaces::Interface::has_leaf_or_child_of_name(const std::st
 Macsec::Mka::Interfaces::Interface::Session::Session()
     :
     session_summary(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary>())
-	,vp(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp>())
+    , vp(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp>())
+    , ca(this, {})
 {
     session_summary->parent = this;
     vp->parent = this;
 
-    yang_name = "session"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::~Session()
@@ -422,7 +430,8 @@ Macsec::Mka::Interfaces::Interface::Session::~Session()
 
 bool Macsec::Mka::Interfaces::Interface::Session::has_data() const
 {
-    for (std::size_t index=0; index<ca.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ca.len(); index++)
     {
         if(ca[index]->has_data())
             return true;
@@ -433,7 +442,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::has_data() const
 
 bool Macsec::Mka::Interfaces::Interface::Session::has_operation() const
 {
-    for (std::size_t index=0; index<ca.size(); index++)
+    for (std::size_t index=0; index<ca.len(); index++)
     {
         if(ca[index]->has_operation())
             return true;
@@ -483,7 +492,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::get_child_b
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca>();
         c->parent = this;
-        ca.push_back(c);
+        ca.append(c);
         return c;
     }
 
@@ -505,7 +514,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : ca)
+    for (auto c : ca.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -545,16 +554,17 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::SessionSummary()
     confidentiality_offset{YType::uint32, "confidentiality-offset"},
     algo_agility{YType::uint32, "algo-agility"},
     capability{YType::uint32, "capability"},
-    cipher_str{YType::str, "cipher-str"},
+    mka_cipher_suite{YType::str, "mka-cipher-suite"},
+    configured_mac_sec_cipher_suite{YType::str, "configured-mac-sec-cipher-suite"},
     mac_sec_desired{YType::boolean, "mac-sec-desired"}
-    	,
+        ,
     outer_tag(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag>())
-	,inner_tag(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag>())
+    , inner_tag(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag>())
 {
     outer_tag->parent = this;
     inner_tag->parent = this;
 
-    yang_name = "session-summary"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-summary"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::~SessionSummary()
@@ -563,6 +573,7 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::~SessionSummary()
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| inherited_policy.is_set
 	|| policy.is_set
@@ -575,7 +586,8 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::has_data() con
 	|| confidentiality_offset.is_set
 	|| algo_agility.is_set
 	|| capability.is_set
-	|| cipher_str.is_set
+	|| mka_cipher_suite.is_set
+	|| configured_mac_sec_cipher_suite.is_set
 	|| mac_sec_desired.is_set
 	|| (outer_tag !=  nullptr && outer_tag->has_data())
 	|| (inner_tag !=  nullptr && inner_tag->has_data());
@@ -596,7 +608,8 @@ bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::has_operation(
 	|| ydk::is_set(confidentiality_offset.yfilter)
 	|| ydk::is_set(algo_agility.yfilter)
 	|| ydk::is_set(capability.yfilter)
-	|| ydk::is_set(cipher_str.yfilter)
+	|| ydk::is_set(mka_cipher_suite.yfilter)
+	|| ydk::is_set(configured_mac_sec_cipher_suite.yfilter)
 	|| ydk::is_set(mac_sec_desired.yfilter)
 	|| (outer_tag !=  nullptr && outer_tag->has_operation())
 	|| (inner_tag !=  nullptr && inner_tag->has_operation());
@@ -625,7 +638,8 @@ std::vector<std::pair<std::string, LeafData> > Macsec::Mka::Interfaces::Interfac
     if (confidentiality_offset.is_set || is_set(confidentiality_offset.yfilter)) leaf_name_data.push_back(confidentiality_offset.get_name_leafdata());
     if (algo_agility.is_set || is_set(algo_agility.yfilter)) leaf_name_data.push_back(algo_agility.get_name_leafdata());
     if (capability.is_set || is_set(capability.yfilter)) leaf_name_data.push_back(capability.get_name_leafdata());
-    if (cipher_str.is_set || is_set(cipher_str.yfilter)) leaf_name_data.push_back(cipher_str.get_name_leafdata());
+    if (mka_cipher_suite.is_set || is_set(mka_cipher_suite.yfilter)) leaf_name_data.push_back(mka_cipher_suite.get_name_leafdata());
+    if (configured_mac_sec_cipher_suite.is_set || is_set(configured_mac_sec_cipher_suite.yfilter)) leaf_name_data.push_back(configured_mac_sec_cipher_suite.get_name_leafdata());
     if (mac_sec_desired.is_set || is_set(mac_sec_desired.yfilter)) leaf_name_data.push_back(mac_sec_desired.get_name_leafdata());
 
     return leaf_name_data;
@@ -746,11 +760,17 @@ void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::set_value(cons
         capability.value_namespace = name_space;
         capability.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "cipher-str")
+    if(value_path == "mka-cipher-suite")
     {
-        cipher_str = value;
-        cipher_str.value_namespace = name_space;
-        cipher_str.value_namespace_prefix = name_space_prefix;
+        mka_cipher_suite = value;
+        mka_cipher_suite.value_namespace = name_space;
+        mka_cipher_suite.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configured-mac-sec-cipher-suite")
+    {
+        configured_mac_sec_cipher_suite = value;
+        configured_mac_sec_cipher_suite.value_namespace = name_space;
+        configured_mac_sec_cipher_suite.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "mac-sec-desired")
     {
@@ -810,9 +830,13 @@ void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::set_filter(con
     {
         capability.yfilter = yfilter;
     }
-    if(value_path == "cipher-str")
+    if(value_path == "mka-cipher-suite")
     {
-        cipher_str.yfilter = yfilter;
+        mka_cipher_suite.yfilter = yfilter;
+    }
+    if(value_path == "configured-mac-sec-cipher-suite")
+    {
+        configured_mac_sec_cipher_suite.yfilter = yfilter;
     }
     if(value_path == "mac-sec-desired")
     {
@@ -822,7 +846,7 @@ void Macsec::Mka::Interfaces::Interface::Session::SessionSummary::set_filter(con
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "outer-tag" || name == "inner-tag" || name == "interface-name" || name == "inherited-policy" || name == "policy" || name == "priority" || name == "my-mac" || name == "delay-protection" || name == "replay-protect" || name == "window-size" || name == "include-icv-indicator" || name == "confidentiality-offset" || name == "algo-agility" || name == "capability" || name == "cipher-str" || name == "mac-sec-desired")
+    if(name == "outer-tag" || name == "inner-tag" || name == "interface-name" || name == "inherited-policy" || name == "policy" || name == "priority" || name == "my-mac" || name == "delay-protection" || name == "replay-protect" || name == "window-size" || name == "include-icv-indicator" || name == "confidentiality-offset" || name == "algo-agility" || name == "capability" || name == "mka-cipher-suite" || name == "configured-mac-sec-cipher-suite" || name == "mac-sec-desired")
         return true;
     return false;
 }
@@ -835,7 +859,7 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::OuterTag(
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "outer-tag"; yang_parent_name = "session-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "outer-tag"; yang_parent_name = "session-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::~OuterTag()
@@ -844,6 +868,7 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::~OuterTag
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::OuterTag::has_data() const
 {
+    if (is_presence_container) return true;
     return ether_type.is_set
 	|| priority.is_set
 	|| cfi.is_set
@@ -954,7 +979,7 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::InnerTag(
     vlan_id{YType::uint16, "vlan-id"}
 {
 
-    yang_name = "inner-tag"; yang_parent_name = "session-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inner-tag"; yang_parent_name = "session-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::~InnerTag()
@@ -963,6 +988,7 @@ Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::~InnerTag
 
 bool Macsec::Mka::Interfaces::Interface::Session::SessionSummary::InnerTag::has_data() const
 {
+    if (is_presence_container) return true;
     return ether_type.is_set
 	|| priority.is_set
 	|| cfi.is_set
@@ -1084,9 +1110,11 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::Vp()
     cipher_suite{YType::uint32, "cipher-suite"},
     ssci{YType::uint32, "ssci"},
     time_to_sak_rekey{YType::str, "time-to-sak-rekey"}
+        ,
+    fallback_keepalive(this, {})
 {
 
-    yang_name = "vp"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vp"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Vp::~Vp()
@@ -1095,7 +1123,8 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::~Vp()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_data() const
 {
-    for (std::size_t index=0; index<fallback_keepalive.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fallback_keepalive.len(); index++)
     {
         if(fallback_keepalive[index]->has_data())
             return true;
@@ -1121,7 +1150,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_data() const
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::has_operation() const
 {
-    for (std::size_t index=0; index<fallback_keepalive.size(); index++)
+    for (std::size_t index=0; index<fallback_keepalive.len(); index++)
     {
         if(fallback_keepalive[index]->has_operation())
             return true;
@@ -1185,7 +1214,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::get_chi
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive>();
         c->parent = this;
-        fallback_keepalive.push_back(c);
+        fallback_keepalive.append(c);
         return c;
     }
 
@@ -1197,7 +1226,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fallback_keepalive)
+    for (auto c : fallback_keepalive.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1398,12 +1427,12 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::FallbackKeep
     ckn{YType::str, "ckn"},
     mi{YType::str, "mi"},
     mn{YType::uint32, "mn"}
-    	,
+        ,
     peers_status(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus>())
 {
     peers_status->parent = this;
 
-    yang_name = "fallback-keepalive"; yang_parent_name = "vp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fallback-keepalive"; yang_parent_name = "vp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::~FallbackKeepalive()
@@ -1412,6 +1441,7 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::~FallbackKee
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::has_data() const
 {
+    if (is_presence_container) return true;
     return ckn.is_set
 	|| mi.is_set
 	|| mn.is_set
@@ -1521,9 +1551,11 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus:
     :
     tx_mkpdu_timestamp{YType::str, "tx-mkpdu-timestamp"},
     peer_count{YType::uint32, "peer-count"}
+        ,
+    peer(this, {})
 {
 
-    yang_name = "peers-status"; yang_parent_name = "fallback-keepalive"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers-status"; yang_parent_name = "fallback-keepalive"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::~PeersStatus()
@@ -1532,7 +1564,8 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus:
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -1543,7 +1576,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersSt
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -1577,7 +1610,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Vp::Fallbac
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -1589,7 +1622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1638,12 +1671,12 @@ bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersSt
 Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::Peer()
     :
     sci{YType::str, "sci"}
-    	,
+        ,
     peer_data(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData>())
 {
     peer_data->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "peers-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::~Peer()
@@ -1652,6 +1685,7 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus:
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return sci.is_set
 	|| (peer_data !=  nullptr && peer_data->has_data());
 }
@@ -1738,7 +1772,7 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus:
     icv_check_timestamp{YType::str, "icv-check-timestamp"}
 {
 
-    yang_name = "peer-data"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-data"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::~PeerData()
@@ -1747,6 +1781,7 @@ Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus:
 
 bool Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::PeersStatus::Peer::PeerData::has_data() const
 {
+    if (is_presence_container) return true;
     return mi.is_set
 	|| icv_status.is_set
 	|| icv_check_timestamp.is_set;
@@ -1851,12 +1886,15 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::Ca()
     status_description{YType::str, "status-description"},
     authentication_mode{YType::str, "authentication-mode"},
     key_chain{YType::str, "key-chain"}
-    	,
+        ,
     peers_status(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus>())
+    , live_peer(this, {})
+    , potential_peer(this, {})
+    , dormant_peer(this, {})
 {
     peers_status->parent = this;
 
-    yang_name = "ca"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ca"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Ca::~Ca()
@@ -1865,17 +1903,18 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::~Ca()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_data() const
 {
-    for (std::size_t index=0; index<live_peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<live_peer.len(); index++)
     {
         if(live_peer[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<potential_peer.size(); index++)
+    for (std::size_t index=0; index<potential_peer.len(); index++)
     {
         if(potential_peer[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dormant_peer.size(); index++)
+    for (std::size_t index=0; index<dormant_peer.len(); index++)
     {
         if(dormant_peer[index]->has_data())
             return true;
@@ -1898,17 +1937,17 @@ bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_data() const
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::has_operation() const
 {
-    for (std::size_t index=0; index<live_peer.size(); index++)
+    for (std::size_t index=0; index<live_peer.len(); index++)
     {
         if(live_peer[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<potential_peer.size(); index++)
+    for (std::size_t index=0; index<potential_peer.len(); index++)
     {
         if(potential_peer[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dormant_peer.size(); index++)
+    for (std::size_t index=0; index<dormant_peer.len(); index++)
     {
         if(dormant_peer[index]->has_operation())
             return true;
@@ -1974,7 +2013,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer>();
         c->parent = this;
-        live_peer.push_back(c);
+        live_peer.append(c);
         return c;
     }
 
@@ -1982,7 +2021,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer>();
         c->parent = this;
-        potential_peer.push_back(c);
+        potential_peer.append(c);
         return c;
     }
 
@@ -1990,7 +2029,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::get_chi
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer>();
         c->parent = this;
-        dormant_peer.push_back(c);
+        dormant_peer.append(c);
         return c;
     }
 
@@ -2007,7 +2046,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : live_peer)
+    for (auto c : live_peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2016,7 +2055,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : potential_peer)
+    for (auto c : potential_peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2025,7 +2064,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     }
 
     count = 0;
-    for (auto const & c : dormant_peer)
+    for (auto c : dormant_peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2185,9 +2224,11 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::PeersStatus()
     :
     tx_mkpdu_timestamp{YType::str, "tx-mkpdu-timestamp"},
     peer_count{YType::uint32, "peer-count"}
+        ,
+    peer(this, {})
 {
 
-    yang_name = "peers-status"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers-status"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::~PeersStatus()
@@ -2196,7 +2237,8 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::~PeersStatus()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -2207,7 +2249,7 @@ bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::has_data() co
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -2241,7 +2283,7 @@ std::shared_ptr<Entity> Macsec::Mka::Interfaces::Interface::Session::Ca::PeersSt
     {
         auto c = std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -2253,7 +2295,7 @@ std::map<std::string, std::shared_ptr<Entity>> Macsec::Mka::Interfaces::Interfac
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2302,12 +2344,12 @@ bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::has_leaf_or_c
 Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::Peer()
     :
     sci{YType::str, "sci"}
-    	,
+        ,
     peer_data(std::make_shared<Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData>())
 {
     peer_data->parent = this;
 
-    yang_name = "peer"; yang_parent_name = "peers-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::~Peer()
@@ -2316,6 +2358,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::~Peer()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return sci.is_set
 	|| (peer_data !=  nullptr && peer_data->has_data());
 }
@@ -2402,7 +2445,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::Pe
     icv_check_timestamp{YType::str, "icv-check-timestamp"}
 {
 
-    yang_name = "peer-data"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-data"; yang_parent_name = "peer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::~PeerData()
@@ -2411,6 +2454,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::~P
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::PeerData::has_data() const
 {
+    if (is_presence_container) return true;
     return mi.is_set
 	|| icv_status.is_set
 	|| icv_check_timestamp.is_set;
@@ -2509,7 +2553,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::LivePeer()
     ssci{YType::uint32, "ssci"}
 {
 
-    yang_name = "live-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "live-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::~LivePeer()
@@ -2518,6 +2562,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::~LivePeer()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::has_data() const
 {
+    if (is_presence_container) return true;
     return mi.is_set
 	|| sci.is_set
 	|| mn.is_set
@@ -2642,7 +2687,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::PotentialPeer()
     ssci{YType::uint32, "ssci"}
 {
 
-    yang_name = "potential-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "potential-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::~PotentialPeer()
@@ -2651,6 +2696,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::~PotentialPeer()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::has_data() const
 {
+    if (is_presence_container) return true;
     return mi.is_set
 	|| sci.is_set
 	|| mn.is_set
@@ -2775,7 +2821,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::DormantPeer()
     ssci{YType::uint32, "ssci"}
 {
 
-    yang_name = "dormant-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dormant-peer"; yang_parent_name = "ca"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::~DormantPeer()
@@ -2784,6 +2830,7 @@ Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::~DormantPeer()
 
 bool Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::has_data() const
 {
+    if (is_presence_container) return true;
     return mi.is_set
 	|| sci.is_set
 	|| mn.is_set

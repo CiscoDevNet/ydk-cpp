@@ -17,7 +17,7 @@ ClearCountersController::ClearCountersController()
 {
     input->parent = this;
 
-    yang_name = "clear-counters-controller"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-counters-controller"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearCountersController::~ClearCountersController()
@@ -26,6 +26,7 @@ ClearCountersController::~ClearCountersController()
 
 bool ClearCountersController::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -122,7 +123,7 @@ ClearCountersController::Input::Input()
     controller_name{YType::str, "controller-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-counters-controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-counters-controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearCountersController::Input::~Input()
@@ -131,6 +132,7 @@ ClearCountersController::Input::~Input()
 
 bool ClearCountersController::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return controller_name.is_set;
 }
 
@@ -204,7 +206,7 @@ bool ClearCountersController::Input::has_leaf_or_child_of_name(const std::string
 ClearCountersAll::ClearCountersAll()
 {
 
-    yang_name = "clear-counters-all"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-counters-all"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearCountersAll::~ClearCountersAll()
@@ -213,6 +215,7 @@ ClearCountersAll::~ClearCountersAll()
 
 bool ClearCountersAll::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -293,7 +296,7 @@ ClearCountersInterface::ClearCountersInterface()
 {
     input->parent = this;
 
-    yang_name = "clear-counters-interface"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-counters-interface"; yang_parent_name = "Cisco-IOS-XR-infra-statsd-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearCountersInterface::~ClearCountersInterface()
@@ -302,6 +305,7 @@ ClearCountersInterface::~ClearCountersInterface()
 
 bool ClearCountersInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -398,7 +402,7 @@ ClearCountersInterface::Input::Input()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-counters-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-counters-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearCountersInterface::Input::~Input()
@@ -407,6 +411,7 @@ ClearCountersInterface::Input::~Input()
 
 bool ClearCountersInterface::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 

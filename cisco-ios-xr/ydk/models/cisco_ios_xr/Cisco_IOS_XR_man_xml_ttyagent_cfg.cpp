@@ -17,7 +17,7 @@ XrXml::XrXml()
 {
     agent->parent = this;
 
-    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "xr-xml"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 XrXml::~XrXml()
@@ -26,6 +26,7 @@ XrXml::~XrXml()
 
 bool XrXml::has_data() const
 {
+    if (is_presence_container) return true;
     return (agent !=  nullptr && agent->has_data());
 }
 
@@ -120,14 +121,14 @@ bool XrXml::has_leaf_or_child_of_name(const std::string & name) const
 XrXml::Agent::Agent()
     :
     default_(std::make_shared<XrXml::Agent::Default>())
-	,tty(std::make_shared<XrXml::Agent::Tty>())
-	,ssl(std::make_shared<XrXml::Agent::Ssl>())
+    , tty(std::make_shared<XrXml::Agent::Tty>())
+    , ssl(std::make_shared<XrXml::Agent::Ssl>())
 {
     default_->parent = this;
     tty->parent = this;
     ssl->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agent"; yang_parent_name = "xr-xml"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::~Agent()
@@ -136,6 +137,7 @@ XrXml::Agent::~Agent()
 
 bool XrXml::Agent::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data())
 	|| (tty !=  nullptr && tty->has_data())
 	|| (ssl !=  nullptr && ssl->has_data());
@@ -248,16 +250,16 @@ XrXml::Agent::Default::Default()
     iteration_size{YType::uint32, "iteration-size"},
     enable{YType::empty, "enable"},
     streaming_size{YType::uint32, "streaming-size"}
-    	,
+        ,
     session(std::make_shared<XrXml::Agent::Default::Session>())
-	,throttle(std::make_shared<XrXml::Agent::Default::Throttle>())
-	,vrfs(std::make_shared<XrXml::Agent::Default::Vrfs>())
+    , throttle(std::make_shared<XrXml::Agent::Default::Throttle>())
+    , vrfs(std::make_shared<XrXml::Agent::Default::Vrfs>())
 {
     session->parent = this;
     throttle->parent = this;
     vrfs->parent = this;
 
-    yang_name = "default"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::~Default()
@@ -266,6 +268,7 @@ XrXml::Agent::Default::~Default()
 
 bool XrXml::Agent::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_enable.is_set
 	|| ipv4_disable.is_set
 	|| iteration_size.is_set
@@ -441,7 +444,7 @@ XrXml::Agent::Default::Session::Session()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "session"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::Session::~Session()
@@ -450,6 +453,7 @@ XrXml::Agent::Default::Session::~Session()
 
 bool XrXml::Agent::Default::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -526,7 +530,7 @@ XrXml::Agent::Default::Throttle::Throttle()
     memory{YType::uint32, "memory"}
 {
 
-    yang_name = "throttle"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "throttle"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::Throttle::~Throttle()
@@ -535,6 +539,7 @@ XrXml::Agent::Default::Throttle::~Throttle()
 
 bool XrXml::Agent::Default::Throttle::has_data() const
 {
+    if (is_presence_container) return true;
     return process_rate.is_set
 	|| memory.is_set;
 }
@@ -619,9 +624,11 @@ bool XrXml::Agent::Default::Throttle::has_leaf_or_child_of_name(const std::strin
 }
 
 XrXml::Agent::Default::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::Vrfs::~Vrfs()
@@ -630,7 +637,8 @@ XrXml::Agent::Default::Vrfs::~Vrfs()
 
 bool XrXml::Agent::Default::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -640,7 +648,7 @@ bool XrXml::Agent::Default::Vrfs::has_data() const
 
 bool XrXml::Agent::Default::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -677,7 +685,7 @@ std::shared_ptr<Entity> XrXml::Agent::Default::Vrfs::get_child_by_name(const std
     {
         auto c = std::make_shared<XrXml::Agent::Default::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -689,7 +697,7 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Default::Vrfs::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -724,7 +732,7 @@ XrXml::Agent::Default::Vrfs::Vrf::Vrf()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Default::Vrfs::Vrf::~Vrf()
@@ -733,6 +741,7 @@ XrXml::Agent::Default::Vrfs::Vrf::~Vrf()
 
 bool XrXml::Agent::Default::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| ipv6_access_list.is_set
 	|| ipv4_access_list.is_set
@@ -760,7 +769,8 @@ std::string XrXml::Agent::Default::Vrfs::Vrf::get_absolute_path() const
 std::string XrXml::Agent::Default::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -860,14 +870,14 @@ XrXml::Agent::Tty::Tty()
     iteration_size{YType::uint32, "iteration-size"},
     enable{YType::empty, "enable"},
     streaming_size{YType::uint32, "streaming-size"}
-    	,
+        ,
     session(std::make_shared<XrXml::Agent::Tty::Session>())
-	,throttle(std::make_shared<XrXml::Agent::Tty::Throttle>())
+    , throttle(std::make_shared<XrXml::Agent::Tty::Throttle>())
 {
     session->parent = this;
     throttle->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Tty::~Tty()
@@ -876,6 +886,7 @@ XrXml::Agent::Tty::~Tty()
 
 bool XrXml::Agent::Tty::has_data() const
 {
+    if (is_presence_container) return true;
     return iteration_size.is_set
 	|| enable.is_set
 	|| streaming_size.is_set
@@ -1009,7 +1020,7 @@ XrXml::Agent::Tty::Session::Session()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "session"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Tty::Session::~Session()
@@ -1018,6 +1029,7 @@ XrXml::Agent::Tty::Session::~Session()
 
 bool XrXml::Agent::Tty::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -1094,7 +1106,7 @@ XrXml::Agent::Tty::Throttle::Throttle()
     memory{YType::uint32, "memory"}
 {
 
-    yang_name = "throttle"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "throttle"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Tty::Throttle::~Throttle()
@@ -1103,6 +1115,7 @@ XrXml::Agent::Tty::Throttle::~Throttle()
 
 bool XrXml::Agent::Tty::Throttle::has_data() const
 {
+    if (is_presence_container) return true;
     return process_rate.is_set
 	|| memory.is_set;
 }
@@ -1191,16 +1204,16 @@ XrXml::Agent::Ssl::Ssl()
     iteration_size{YType::uint32, "iteration-size"},
     enable{YType::empty, "enable"},
     streaming_size{YType::uint32, "streaming-size"}
-    	,
+        ,
     session(std::make_shared<XrXml::Agent::Ssl::Session>())
-	,throttle(std::make_shared<XrXml::Agent::Ssl::Throttle>())
-	,vrfs(std::make_shared<XrXml::Agent::Ssl::Vrfs>())
+    , throttle(std::make_shared<XrXml::Agent::Ssl::Throttle>())
+    , vrfs(std::make_shared<XrXml::Agent::Ssl::Vrfs>())
 {
     session->parent = this;
     throttle->parent = this;
     vrfs->parent = this;
 
-    yang_name = "ssl"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssl"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::~Ssl()
@@ -1209,6 +1222,7 @@ XrXml::Agent::Ssl::~Ssl()
 
 bool XrXml::Agent::Ssl::has_data() const
 {
+    if (is_presence_container) return true;
     return iteration_size.is_set
 	|| enable.is_set
 	|| streaming_size.is_set
@@ -1358,7 +1372,7 @@ XrXml::Agent::Ssl::Session::Session()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "session"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::Session::~Session()
@@ -1367,6 +1381,7 @@ XrXml::Agent::Ssl::Session::~Session()
 
 bool XrXml::Agent::Ssl::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 
@@ -1443,7 +1458,7 @@ XrXml::Agent::Ssl::Throttle::Throttle()
     memory{YType::uint32, "memory"}
 {
 
-    yang_name = "throttle"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "throttle"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::Throttle::~Throttle()
@@ -1452,6 +1467,7 @@ XrXml::Agent::Ssl::Throttle::~Throttle()
 
 bool XrXml::Agent::Ssl::Throttle::has_data() const
 {
+    if (is_presence_container) return true;
     return process_rate.is_set
 	|| memory.is_set;
 }
@@ -1536,9 +1552,11 @@ bool XrXml::Agent::Ssl::Throttle::has_leaf_or_child_of_name(const std::string & 
 }
 
 XrXml::Agent::Ssl::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "ssl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::Vrfs::~Vrfs()
@@ -1547,7 +1565,8 @@ XrXml::Agent::Ssl::Vrfs::~Vrfs()
 
 bool XrXml::Agent::Ssl::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -1557,7 +1576,7 @@ bool XrXml::Agent::Ssl::Vrfs::has_data() const
 
 bool XrXml::Agent::Ssl::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -1594,7 +1613,7 @@ std::shared_ptr<Entity> XrXml::Agent::Ssl::Vrfs::get_child_by_name(const std::st
     {
         auto c = std::make_shared<XrXml::Agent::Ssl::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -1606,7 +1625,7 @@ std::map<std::string, std::shared_ptr<Entity>> XrXml::Agent::Ssl::Vrfs::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1641,7 +1660,7 @@ XrXml::Agent::Ssl::Vrfs::Vrf::Vrf()
     shutdown{YType::empty, "shutdown"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 XrXml::Agent::Ssl::Vrfs::Vrf::~Vrf()
@@ -1650,6 +1669,7 @@ XrXml::Agent::Ssl::Vrfs::Vrf::~Vrf()
 
 bool XrXml::Agent::Ssl::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| ipv6_access_list.is_set
 	|| ipv4_access_list.is_set
@@ -1677,7 +1697,8 @@ std::string XrXml::Agent::Ssl::Vrfs::Vrf::get_absolute_path() const
 std::string XrXml::Agent::Ssl::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -1778,7 +1799,7 @@ Netconf::Netconf()
 {
     agent->parent = this;
 
-    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "netconf"; yang_parent_name = "Cisco-IOS-XR-man-xml-ttyagent-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Netconf::~Netconf()
@@ -1787,6 +1808,7 @@ Netconf::~Netconf()
 
 bool Netconf::has_data() const
 {
+    if (is_presence_container) return true;
     return (agent !=  nullptr && agent->has_data());
 }
 
@@ -1884,7 +1906,7 @@ Netconf::Agent::Agent()
 {
     tty->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agent"; yang_parent_name = "netconf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::~Agent()
@@ -1893,6 +1915,7 @@ Netconf::Agent::~Agent()
 
 bool Netconf::Agent::has_data() const
 {
+    if (is_presence_container) return true;
     return (tty !=  nullptr && tty->has_data());
 }
 
@@ -1969,14 +1992,14 @@ bool Netconf::Agent::has_leaf_or_child_of_name(const std::string & name) const
 Netconf::Agent::Tty::Tty()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     throttle(std::make_shared<Netconf::Agent::Tty::Throttle>())
-	,session(std::make_shared<Netconf::Agent::Tty::Session>())
+    , session(std::make_shared<Netconf::Agent::Tty::Session>())
 {
     throttle->parent = this;
     session->parent = this;
 
-    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tty"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::Tty::~Tty()
@@ -1985,6 +2008,7 @@ Netconf::Agent::Tty::~Tty()
 
 bool Netconf::Agent::Tty::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (throttle !=  nullptr && throttle->has_data())
 	|| (session !=  nullptr && session->has_data());
@@ -2094,7 +2118,7 @@ Netconf::Agent::Tty::Throttle::Throttle()
     process_rate{YType::uint32, "process-rate"}
 {
 
-    yang_name = "throttle"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "throttle"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::Tty::Throttle::~Throttle()
@@ -2103,6 +2127,7 @@ Netconf::Agent::Tty::Throttle::~Throttle()
 
 bool Netconf::Agent::Tty::Throttle::has_data() const
 {
+    if (is_presence_container) return true;
     return memory.is_set
 	|| offload_memory.is_set
 	|| process_rate.is_set;
@@ -2204,7 +2229,7 @@ Netconf::Agent::Tty::Session::Session()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "session"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "tty"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Netconf::Agent::Tty::Session::~Session()
@@ -2213,6 +2238,7 @@ Netconf::Agent::Tty::Session::~Session()
 
 bool Netconf::Agent::Tty::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set;
 }
 

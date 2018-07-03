@@ -69,7 +69,7 @@ class Rsvp::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Rsvp::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_cfg::Rsvp::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Rsvp::Neighbors
 
@@ -142,7 +142,7 @@ class Rsvp::Controllers : public ydk::Entity
 
         class Controller; //type: Rsvp::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_cfg::Rsvp::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // Rsvp::Controllers
 
@@ -357,7 +357,7 @@ class Rsvp::Interfaces : public ydk::Entity
 
         class Interface; //type: Rsvp::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_rsvp_cfg::Rsvp::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Rsvp::Interfaces
 
@@ -816,12 +816,11 @@ class Rsvp::Authentication : public ydk::Entity
 
 }; // Rsvp::Authentication
 
-class RsvpRdm : public ydk::Enum
+class RsvpBwCfg : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rdm;
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf use_default_bandwidth;
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf percentage;
 
 };
 
@@ -834,19 +833,20 @@ class RsvpBc0 : public ydk::Enum
 
 };
 
-class RsvpBwCfg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf percentage;
-
-};
-
 class RsvpBc1 : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bc1;
         static const ydk::Enum::YLeaf sub_pool;
+
+};
+
+class RsvpRdm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rdm;
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf use_default_bandwidth;
 
 };
 

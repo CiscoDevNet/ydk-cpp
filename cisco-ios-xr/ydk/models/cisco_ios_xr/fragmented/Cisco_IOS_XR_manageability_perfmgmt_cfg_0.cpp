@@ -15,10 +15,10 @@ namespace Cisco_IOS_XR_manageability_perfmgmt_cfg {
 PerfMgmt::PerfMgmt()
     :
     resources(std::make_shared<PerfMgmt::Resources>())
-	,statistics(std::make_shared<PerfMgmt::Statistics>())
-	,enable(std::make_shared<PerfMgmt::Enable>())
-	,reg_exp_groups(std::make_shared<PerfMgmt::RegExpGroups>())
-	,threshold(std::make_shared<PerfMgmt::Threshold>())
+    , statistics(std::make_shared<PerfMgmt::Statistics>())
+    , enable(std::make_shared<PerfMgmt::Enable>())
+    , reg_exp_groups(std::make_shared<PerfMgmt::RegExpGroups>())
+    , threshold(std::make_shared<PerfMgmt::Threshold>())
 {
     resources->parent = this;
     statistics->parent = this;
@@ -26,7 +26,7 @@ PerfMgmt::PerfMgmt()
     reg_exp_groups->parent = this;
     threshold->parent = this;
 
-    yang_name = "perf-mgmt"; yang_parent_name = "Cisco-IOS-XR-manageability-perfmgmt-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "perf-mgmt"; yang_parent_name = "Cisco-IOS-XR-manageability-perfmgmt-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PerfMgmt::~PerfMgmt()
@@ -35,6 +35,7 @@ PerfMgmt::~PerfMgmt()
 
 bool PerfMgmt::has_data() const
 {
+    if (is_presence_container) return true;
     return (resources !=  nullptr && resources->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (enable !=  nullptr && enable->has_data())
@@ -193,13 +194,13 @@ bool PerfMgmt::has_leaf_or_child_of_name(const std::string & name) const
 PerfMgmt::Resources::Resources()
     :
     tftp_resources(nullptr) // presence node
-	,dump_local(std::make_shared<PerfMgmt::Resources::DumpLocal>())
-	,memory_resources(std::make_shared<PerfMgmt::Resources::MemoryResources>())
+    , dump_local(std::make_shared<PerfMgmt::Resources::DumpLocal>())
+    , memory_resources(std::make_shared<PerfMgmt::Resources::MemoryResources>())
 {
     dump_local->parent = this;
     memory_resources->parent = this;
 
-    yang_name = "resources"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "resources"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Resources::~Resources()
@@ -208,6 +209,7 @@ PerfMgmt::Resources::~Resources()
 
 bool PerfMgmt::Resources::has_data() const
 {
+    if (is_presence_container) return true;
     return (tftp_resources !=  nullptr && tftp_resources->has_data())
 	|| (dump_local !=  nullptr && dump_local->has_data())
 	|| (memory_resources !=  nullptr && memory_resources->has_data());
@@ -320,7 +322,7 @@ PerfMgmt::Resources::TftpResources::TftpResources()
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "tftp-resources"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tftp-resources"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 PerfMgmt::Resources::TftpResources::~TftpResources()
@@ -329,6 +331,7 @@ PerfMgmt::Resources::TftpResources::~TftpResources()
 
 bool PerfMgmt::Resources::TftpResources::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
 	|| directory.is_set
 	|| vrf_name.is_set;
@@ -430,7 +433,7 @@ PerfMgmt::Resources::DumpLocal::DumpLocal()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "dump-local"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dump-local"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Resources::DumpLocal::~DumpLocal()
@@ -439,6 +442,7 @@ PerfMgmt::Resources::DumpLocal::~DumpLocal()
 
 bool PerfMgmt::Resources::DumpLocal::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -515,7 +519,7 @@ PerfMgmt::Resources::MemoryResources::MemoryResources()
     min_reserved{YType::int32, "min-reserved"}
 {
 
-    yang_name = "memory-resources"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-resources"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Resources::MemoryResources::~MemoryResources()
@@ -524,6 +528,7 @@ PerfMgmt::Resources::MemoryResources::~MemoryResources()
 
 bool PerfMgmt::Resources::MemoryResources::has_data() const
 {
+    if (is_presence_container) return true;
     return max_limit.is_set
 	|| min_reserved.is_set;
 }
@@ -610,15 +615,15 @@ bool PerfMgmt::Resources::MemoryResources::has_leaf_or_child_of_name(const std::
 PerfMgmt::Statistics::Statistics()
     :
     generic_counter_interface(std::make_shared<PerfMgmt::Statistics::GenericCounterInterface>())
-	,process_node(std::make_shared<PerfMgmt::Statistics::ProcessNode>())
-	,basic_counter_interface(std::make_shared<PerfMgmt::Statistics::BasicCounterInterface>())
-	,ospfv3_protocol(std::make_shared<PerfMgmt::Statistics::Ospfv3Protocol>())
-	,cpu_node(std::make_shared<PerfMgmt::Statistics::CpuNode>())
-	,data_rate_interface(std::make_shared<PerfMgmt::Statistics::DataRateInterface>())
-	,memory_node(std::make_shared<PerfMgmt::Statistics::MemoryNode>())
-	,ldp_mpls(std::make_shared<PerfMgmt::Statistics::LdpMpls>())
-	,bgp(std::make_shared<PerfMgmt::Statistics::Bgp>())
-	,ospfv2_protocol(std::make_shared<PerfMgmt::Statistics::Ospfv2Protocol>())
+    , process_node(std::make_shared<PerfMgmt::Statistics::ProcessNode>())
+    , basic_counter_interface(std::make_shared<PerfMgmt::Statistics::BasicCounterInterface>())
+    , ospfv3_protocol(std::make_shared<PerfMgmt::Statistics::Ospfv3Protocol>())
+    , cpu_node(std::make_shared<PerfMgmt::Statistics::CpuNode>())
+    , data_rate_interface(std::make_shared<PerfMgmt::Statistics::DataRateInterface>())
+    , memory_node(std::make_shared<PerfMgmt::Statistics::MemoryNode>())
+    , ldp_mpls(std::make_shared<PerfMgmt::Statistics::LdpMpls>())
+    , bgp(std::make_shared<PerfMgmt::Statistics::Bgp>())
+    , ospfv2_protocol(std::make_shared<PerfMgmt::Statistics::Ospfv2Protocol>())
 {
     generic_counter_interface->parent = this;
     process_node->parent = this;
@@ -631,7 +636,7 @@ PerfMgmt::Statistics::Statistics()
     bgp->parent = this;
     ospfv2_protocol->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::~Statistics()
@@ -640,6 +645,7 @@ PerfMgmt::Statistics::~Statistics()
 
 bool PerfMgmt::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (generic_counter_interface !=  nullptr && generic_counter_interface->has_data())
 	|| (process_node !=  nullptr && process_node->has_data())
 	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_data())
@@ -863,7 +869,7 @@ PerfMgmt::Statistics::GenericCounterInterface::GenericCounterInterface()
 {
     templates->parent = this;
 
-    yang_name = "generic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::GenericCounterInterface::~GenericCounterInterface()
@@ -872,6 +878,7 @@ PerfMgmt::Statistics::GenericCounterInterface::~GenericCounterInterface()
 
 bool PerfMgmt::Statistics::GenericCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -946,9 +953,11 @@ bool PerfMgmt::Statistics::GenericCounterInterface::has_leaf_or_child_of_name(co
 }
 
 PerfMgmt::Statistics::GenericCounterInterface::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::GenericCounterInterface::Templates::~Templates()
@@ -957,7 +966,8 @@ PerfMgmt::Statistics::GenericCounterInterface::Templates::~Templates()
 
 bool PerfMgmt::Statistics::GenericCounterInterface::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -967,7 +977,7 @@ bool PerfMgmt::Statistics::GenericCounterInterface::Templates::has_data() const
 
 bool PerfMgmt::Statistics::GenericCounterInterface::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -1004,7 +1014,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::GenericCounterInterface::Templates
     {
         auto c = std::make_shared<PerfMgmt::Statistics::GenericCounterInterface::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -1016,7 +1026,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::GenericCoun
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1052,7 +1062,7 @@ PerfMgmt::Statistics::GenericCounterInterface::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::GenericCounterInterface::Templates::Template::~Template()
@@ -1061,6 +1071,7 @@ PerfMgmt::Statistics::GenericCounterInterface::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::GenericCounterInterface::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -1090,7 +1101,8 @@ std::string PerfMgmt::Statistics::GenericCounterInterface::Templates::Template::
 std::string PerfMgmt::Statistics::GenericCounterInterface::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -1202,7 +1214,7 @@ PerfMgmt::Statistics::ProcessNode::ProcessNode()
 {
     templates->parent = this;
 
-    yang_name = "process-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::ProcessNode::~ProcessNode()
@@ -1211,6 +1223,7 @@ PerfMgmt::Statistics::ProcessNode::~ProcessNode()
 
 bool PerfMgmt::Statistics::ProcessNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -1285,9 +1298,11 @@ bool PerfMgmt::Statistics::ProcessNode::has_leaf_or_child_of_name(const std::str
 }
 
 PerfMgmt::Statistics::ProcessNode::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::ProcessNode::Templates::~Templates()
@@ -1296,7 +1311,8 @@ PerfMgmt::Statistics::ProcessNode::Templates::~Templates()
 
 bool PerfMgmt::Statistics::ProcessNode::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -1306,7 +1322,7 @@ bool PerfMgmt::Statistics::ProcessNode::Templates::has_data() const
 
 bool PerfMgmt::Statistics::ProcessNode::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -1343,7 +1359,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::ProcessNode::Templates::get_child_
     {
         auto c = std::make_shared<PerfMgmt::Statistics::ProcessNode::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -1355,7 +1371,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::ProcessNode
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1391,7 +1407,7 @@ PerfMgmt::Statistics::ProcessNode::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::ProcessNode::Templates::Template::~Template()
@@ -1400,6 +1416,7 @@ PerfMgmt::Statistics::ProcessNode::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::ProcessNode::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -1429,7 +1446,8 @@ std::string PerfMgmt::Statistics::ProcessNode::Templates::Template::get_absolute
 std::string PerfMgmt::Statistics::ProcessNode::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -1541,7 +1559,7 @@ PerfMgmt::Statistics::BasicCounterInterface::BasicCounterInterface()
 {
     templates->parent = this;
 
-    yang_name = "basic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::BasicCounterInterface::~BasicCounterInterface()
@@ -1550,6 +1568,7 @@ PerfMgmt::Statistics::BasicCounterInterface::~BasicCounterInterface()
 
 bool PerfMgmt::Statistics::BasicCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -1624,9 +1643,11 @@ bool PerfMgmt::Statistics::BasicCounterInterface::has_leaf_or_child_of_name(cons
 }
 
 PerfMgmt::Statistics::BasicCounterInterface::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "basic-counter-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::BasicCounterInterface::Templates::~Templates()
@@ -1635,7 +1656,8 @@ PerfMgmt::Statistics::BasicCounterInterface::Templates::~Templates()
 
 bool PerfMgmt::Statistics::BasicCounterInterface::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -1645,7 +1667,7 @@ bool PerfMgmt::Statistics::BasicCounterInterface::Templates::has_data() const
 
 bool PerfMgmt::Statistics::BasicCounterInterface::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -1682,7 +1704,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::BasicCounterInterface::Templates::
     {
         auto c = std::make_shared<PerfMgmt::Statistics::BasicCounterInterface::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -1694,7 +1716,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::BasicCounte
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1730,7 +1752,7 @@ PerfMgmt::Statistics::BasicCounterInterface::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::BasicCounterInterface::Templates::Template::~Template()
@@ -1739,6 +1761,7 @@ PerfMgmt::Statistics::BasicCounterInterface::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::BasicCounterInterface::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -1768,7 +1791,8 @@ std::string PerfMgmt::Statistics::BasicCounterInterface::Templates::Template::ge
 std::string PerfMgmt::Statistics::BasicCounterInterface::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -1880,7 +1904,7 @@ PerfMgmt::Statistics::Ospfv3Protocol::Ospfv3Protocol()
 {
     templates->parent = this;
 
-    yang_name = "ospfv3-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Ospfv3Protocol::~Ospfv3Protocol()
@@ -1889,6 +1913,7 @@ PerfMgmt::Statistics::Ospfv3Protocol::~Ospfv3Protocol()
 
 bool PerfMgmt::Statistics::Ospfv3Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -1963,9 +1988,11 @@ bool PerfMgmt::Statistics::Ospfv3Protocol::has_leaf_or_child_of_name(const std::
 }
 
 PerfMgmt::Statistics::Ospfv3Protocol::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "ospfv3-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "ospfv3-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Ospfv3Protocol::Templates::~Templates()
@@ -1974,7 +2001,8 @@ PerfMgmt::Statistics::Ospfv3Protocol::Templates::~Templates()
 
 bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -1984,7 +2012,7 @@ bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::has_data() const
 
 bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -2021,7 +2049,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv3Protocol::Templates::get_chi
     {
         auto c = std::make_shared<PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -2033,7 +2061,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv3Proto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2069,7 +2097,7 @@ PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template::~Template()
@@ -2078,6 +2106,7 @@ PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -2107,7 +2136,8 @@ std::string PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template::get_absol
 std::string PerfMgmt::Statistics::Ospfv3Protocol::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -2219,7 +2249,7 @@ PerfMgmt::Statistics::CpuNode::CpuNode()
 {
     templates->parent = this;
 
-    yang_name = "cpu-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::CpuNode::~CpuNode()
@@ -2228,6 +2258,7 @@ PerfMgmt::Statistics::CpuNode::~CpuNode()
 
 bool PerfMgmt::Statistics::CpuNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -2302,9 +2333,11 @@ bool PerfMgmt::Statistics::CpuNode::has_leaf_or_child_of_name(const std::string 
 }
 
 PerfMgmt::Statistics::CpuNode::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::CpuNode::Templates::~Templates()
@@ -2313,7 +2346,8 @@ PerfMgmt::Statistics::CpuNode::Templates::~Templates()
 
 bool PerfMgmt::Statistics::CpuNode::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -2323,7 +2357,7 @@ bool PerfMgmt::Statistics::CpuNode::Templates::has_data() const
 
 bool PerfMgmt::Statistics::CpuNode::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -2360,7 +2394,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::CpuNode::Templates::get_child_by_n
     {
         auto c = std::make_shared<PerfMgmt::Statistics::CpuNode::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -2372,7 +2406,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::CpuNode::Te
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2408,7 +2442,7 @@ PerfMgmt::Statistics::CpuNode::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::CpuNode::Templates::Template::~Template()
@@ -2417,6 +2451,7 @@ PerfMgmt::Statistics::CpuNode::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::CpuNode::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -2446,7 +2481,8 @@ std::string PerfMgmt::Statistics::CpuNode::Templates::Template::get_absolute_pat
 std::string PerfMgmt::Statistics::CpuNode::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -2558,7 +2594,7 @@ PerfMgmt::Statistics::DataRateInterface::DataRateInterface()
 {
     templates->parent = this;
 
-    yang_name = "data-rate-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::DataRateInterface::~DataRateInterface()
@@ -2567,6 +2603,7 @@ PerfMgmt::Statistics::DataRateInterface::~DataRateInterface()
 
 bool PerfMgmt::Statistics::DataRateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -2641,9 +2678,11 @@ bool PerfMgmt::Statistics::DataRateInterface::has_leaf_or_child_of_name(const st
 }
 
 PerfMgmt::Statistics::DataRateInterface::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "data-rate-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::DataRateInterface::Templates::~Templates()
@@ -2652,7 +2691,8 @@ PerfMgmt::Statistics::DataRateInterface::Templates::~Templates()
 
 bool PerfMgmt::Statistics::DataRateInterface::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -2662,7 +2702,7 @@ bool PerfMgmt::Statistics::DataRateInterface::Templates::has_data() const
 
 bool PerfMgmt::Statistics::DataRateInterface::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -2699,7 +2739,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::DataRateInterface::Templates::get_
     {
         auto c = std::make_shared<PerfMgmt::Statistics::DataRateInterface::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -2711,7 +2751,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::DataRateInt
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2747,7 +2787,7 @@ PerfMgmt::Statistics::DataRateInterface::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::DataRateInterface::Templates::Template::~Template()
@@ -2756,6 +2796,7 @@ PerfMgmt::Statistics::DataRateInterface::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::DataRateInterface::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -2785,7 +2826,8 @@ std::string PerfMgmt::Statistics::DataRateInterface::Templates::Template::get_ab
 std::string PerfMgmt::Statistics::DataRateInterface::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -2897,7 +2939,7 @@ PerfMgmt::Statistics::MemoryNode::MemoryNode()
 {
     templates->parent = this;
 
-    yang_name = "memory-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::MemoryNode::~MemoryNode()
@@ -2906,6 +2948,7 @@ PerfMgmt::Statistics::MemoryNode::~MemoryNode()
 
 bool PerfMgmt::Statistics::MemoryNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -2980,9 +3023,11 @@ bool PerfMgmt::Statistics::MemoryNode::has_leaf_or_child_of_name(const std::stri
 }
 
 PerfMgmt::Statistics::MemoryNode::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::MemoryNode::Templates::~Templates()
@@ -2991,7 +3036,8 @@ PerfMgmt::Statistics::MemoryNode::Templates::~Templates()
 
 bool PerfMgmt::Statistics::MemoryNode::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -3001,7 +3047,7 @@ bool PerfMgmt::Statistics::MemoryNode::Templates::has_data() const
 
 bool PerfMgmt::Statistics::MemoryNode::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -3038,7 +3084,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::MemoryNode::Templates::get_child_b
     {
         auto c = std::make_shared<PerfMgmt::Statistics::MemoryNode::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -3050,7 +3096,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::MemoryNode:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3086,7 +3132,7 @@ PerfMgmt::Statistics::MemoryNode::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::MemoryNode::Templates::Template::~Template()
@@ -3095,6 +3141,7 @@ PerfMgmt::Statistics::MemoryNode::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::MemoryNode::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -3124,7 +3171,8 @@ std::string PerfMgmt::Statistics::MemoryNode::Templates::Template::get_absolute_
 std::string PerfMgmt::Statistics::MemoryNode::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -3236,7 +3284,7 @@ PerfMgmt::Statistics::LdpMpls::LdpMpls()
 {
     templates->parent = this;
 
-    yang_name = "ldp-mpls"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-mpls"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::LdpMpls::~LdpMpls()
@@ -3245,6 +3293,7 @@ PerfMgmt::Statistics::LdpMpls::~LdpMpls()
 
 bool PerfMgmt::Statistics::LdpMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -3319,9 +3368,11 @@ bool PerfMgmt::Statistics::LdpMpls::has_leaf_or_child_of_name(const std::string 
 }
 
 PerfMgmt::Statistics::LdpMpls::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "ldp-mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "ldp-mpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::LdpMpls::Templates::~Templates()
@@ -3330,7 +3381,8 @@ PerfMgmt::Statistics::LdpMpls::Templates::~Templates()
 
 bool PerfMgmt::Statistics::LdpMpls::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -3340,7 +3392,7 @@ bool PerfMgmt::Statistics::LdpMpls::Templates::has_data() const
 
 bool PerfMgmt::Statistics::LdpMpls::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -3377,7 +3429,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::LdpMpls::Templates::get_child_by_n
     {
         auto c = std::make_shared<PerfMgmt::Statistics::LdpMpls::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -3389,7 +3441,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::LdpMpls::Te
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3425,7 +3477,7 @@ PerfMgmt::Statistics::LdpMpls::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::LdpMpls::Templates::Template::~Template()
@@ -3434,6 +3486,7 @@ PerfMgmt::Statistics::LdpMpls::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::LdpMpls::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -3463,7 +3516,8 @@ std::string PerfMgmt::Statistics::LdpMpls::Templates::Template::get_absolute_pat
 std::string PerfMgmt::Statistics::LdpMpls::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -3575,7 +3629,7 @@ PerfMgmt::Statistics::Bgp::Bgp()
 {
     templates->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Bgp::~Bgp()
@@ -3584,6 +3638,7 @@ PerfMgmt::Statistics::Bgp::~Bgp()
 
 bool PerfMgmt::Statistics::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -3658,9 +3713,11 @@ bool PerfMgmt::Statistics::Bgp::has_leaf_or_child_of_name(const std::string & na
 }
 
 PerfMgmt::Statistics::Bgp::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Bgp::Templates::~Templates()
@@ -3669,7 +3726,8 @@ PerfMgmt::Statistics::Bgp::Templates::~Templates()
 
 bool PerfMgmt::Statistics::Bgp::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -3679,7 +3737,7 @@ bool PerfMgmt::Statistics::Bgp::Templates::has_data() const
 
 bool PerfMgmt::Statistics::Bgp::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -3716,7 +3774,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::Bgp::Templates::get_child_by_name(
     {
         auto c = std::make_shared<PerfMgmt::Statistics::Bgp::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -3728,7 +3786,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Bgp::Templa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3764,7 +3822,7 @@ PerfMgmt::Statistics::Bgp::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Bgp::Templates::Template::~Template()
@@ -3773,6 +3831,7 @@ PerfMgmt::Statistics::Bgp::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::Bgp::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -3802,7 +3861,8 @@ std::string PerfMgmt::Statistics::Bgp::Templates::Template::get_absolute_path() 
 std::string PerfMgmt::Statistics::Bgp::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -3914,7 +3974,7 @@ PerfMgmt::Statistics::Ospfv2Protocol::Ospfv2Protocol()
 {
     templates->parent = this;
 
-    yang_name = "ospfv2-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Ospfv2Protocol::~Ospfv2Protocol()
@@ -3923,6 +3983,7 @@ PerfMgmt::Statistics::Ospfv2Protocol::~Ospfv2Protocol()
 
 bool PerfMgmt::Statistics::Ospfv2Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (templates !=  nullptr && templates->has_data());
 }
 
@@ -3997,9 +4058,11 @@ bool PerfMgmt::Statistics::Ospfv2Protocol::has_leaf_or_child_of_name(const std::
 }
 
 PerfMgmt::Statistics::Ospfv2Protocol::Templates::Templates()
+    :
+    template_(this, {"template_name"})
 {
 
-    yang_name = "templates"; yang_parent_name = "ospfv2-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "templates"; yang_parent_name = "ospfv2-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Ospfv2Protocol::Templates::~Templates()
@@ -4008,7 +4071,8 @@ PerfMgmt::Statistics::Ospfv2Protocol::Templates::~Templates()
 
 bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::has_data() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_data())
             return true;
@@ -4018,7 +4082,7 @@ bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::has_data() const
 
 bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::has_operation() const
 {
-    for (std::size_t index=0; index<template_.size(); index++)
+    for (std::size_t index=0; index<template_.len(); index++)
     {
         if(template_[index]->has_operation())
             return true;
@@ -4055,7 +4119,7 @@ std::shared_ptr<Entity> PerfMgmt::Statistics::Ospfv2Protocol::Templates::get_chi
     {
         auto c = std::make_shared<PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template>();
         c->parent = this;
-        template_.push_back(c);
+        template_.append(c);
         return c;
     }
 
@@ -4067,7 +4131,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Statistics::Ospfv2Proto
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : template_)
+    for (auto c : template_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4103,7 +4167,7 @@ PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template::Template()
     sample_size{YType::uint32, "sample-size"}
 {
 
-    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "template"; yang_parent_name = "templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template::~Template()
@@ -4112,6 +4176,7 @@ PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template::~Template()
 
 bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| reg_exp_group.is_set
 	|| history_persistent.is_set
@@ -4141,7 +4206,8 @@ std::string PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template::get_absol
 std::string PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -4250,14 +4316,14 @@ bool PerfMgmt::Statistics::Ospfv2Protocol::Templates::Template::has_leaf_or_chil
 PerfMgmt::Enable::Enable()
     :
     threshold(std::make_shared<PerfMgmt::Enable::Threshold>())
-	,statistics(std::make_shared<PerfMgmt::Enable::Statistics>())
-	,monitor_enable(std::make_shared<PerfMgmt::Enable::MonitorEnable>())
+    , statistics(std::make_shared<PerfMgmt::Enable::Statistics>())
+    , monitor_enable(std::make_shared<PerfMgmt::Enable::MonitorEnable>())
 {
     threshold->parent = this;
     statistics->parent = this;
     monitor_enable->parent = this;
 
-    yang_name = "enable"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "enable"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::~Enable()
@@ -4266,6 +4332,7 @@ PerfMgmt::Enable::~Enable()
 
 bool PerfMgmt::Enable::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (monitor_enable !=  nullptr && monitor_enable->has_data());
@@ -4374,15 +4441,15 @@ bool PerfMgmt::Enable::has_leaf_or_child_of_name(const std::string & name) const
 PerfMgmt::Enable::Threshold::Threshold()
     :
     ospfv3_protocol(std::make_shared<PerfMgmt::Enable::Threshold::Ospfv3Protocol>())
-	,bgp(std::make_shared<PerfMgmt::Enable::Threshold::Bgp>())
-	,data_rate_interface(std::make_shared<PerfMgmt::Enable::Threshold::DataRateInterface>())
-	,ospfv2_protocol(std::make_shared<PerfMgmt::Enable::Threshold::Ospfv2Protocol>())
-	,memory_node(std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode>())
-	,generic_counter_interface(std::make_shared<PerfMgmt::Enable::Threshold::GenericCounterInterface>())
-	,cpu_node(std::make_shared<PerfMgmt::Enable::Threshold::CpuNode>())
-	,ldp_mpls(std::make_shared<PerfMgmt::Enable::Threshold::LdpMpls>())
-	,process_node(std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode>())
-	,basic_counter_interface(std::make_shared<PerfMgmt::Enable::Threshold::BasicCounterInterface>())
+    , bgp(std::make_shared<PerfMgmt::Enable::Threshold::Bgp>())
+    , data_rate_interface(std::make_shared<PerfMgmt::Enable::Threshold::DataRateInterface>())
+    , ospfv2_protocol(std::make_shared<PerfMgmt::Enable::Threshold::Ospfv2Protocol>())
+    , memory_node(std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode>())
+    , generic_counter_interface(std::make_shared<PerfMgmt::Enable::Threshold::GenericCounterInterface>())
+    , cpu_node(std::make_shared<PerfMgmt::Enable::Threshold::CpuNode>())
+    , ldp_mpls(std::make_shared<PerfMgmt::Enable::Threshold::LdpMpls>())
+    , process_node(std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode>())
+    , basic_counter_interface(std::make_shared<PerfMgmt::Enable::Threshold::BasicCounterInterface>())
 {
     ospfv3_protocol->parent = this;
     bgp->parent = this;
@@ -4395,7 +4462,7 @@ PerfMgmt::Enable::Threshold::Threshold()
     process_node->parent = this;
     basic_counter_interface->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::~Threshold()
@@ -4404,6 +4471,7 @@ PerfMgmt::Enable::Threshold::~Threshold()
 
 bool PerfMgmt::Enable::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospfv3_protocol !=  nullptr && ospfv3_protocol->has_data())
 	|| (bgp !=  nullptr && bgp->has_data())
 	|| (data_rate_interface !=  nullptr && data_rate_interface->has_data())
@@ -4626,7 +4694,7 @@ PerfMgmt::Enable::Threshold::Ospfv3Protocol::Ospfv3Protocol()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ospfv3-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::Ospfv3Protocol::~Ospfv3Protocol()
@@ -4635,6 +4703,7 @@ PerfMgmt::Enable::Threshold::Ospfv3Protocol::~Ospfv3Protocol()
 
 bool PerfMgmt::Enable::Threshold::Ospfv3Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -4710,7 +4779,7 @@ PerfMgmt::Enable::Threshold::Bgp::Bgp()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::Bgp::~Bgp()
@@ -4719,6 +4788,7 @@ PerfMgmt::Enable::Threshold::Bgp::~Bgp()
 
 bool PerfMgmt::Enable::Threshold::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -4794,7 +4864,7 @@ PerfMgmt::Enable::Threshold::DataRateInterface::DataRateInterface()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "data-rate-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::DataRateInterface::~DataRateInterface()
@@ -4803,6 +4873,7 @@ PerfMgmt::Enable::Threshold::DataRateInterface::~DataRateInterface()
 
 bool PerfMgmt::Enable::Threshold::DataRateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -4878,7 +4949,7 @@ PerfMgmt::Enable::Threshold::Ospfv2Protocol::Ospfv2Protocol()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ospfv2-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::Ospfv2Protocol::~Ospfv2Protocol()
@@ -4887,6 +4958,7 @@ PerfMgmt::Enable::Threshold::Ospfv2Protocol::~Ospfv2Protocol()
 
 bool PerfMgmt::Enable::Threshold::Ospfv2Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -4960,12 +5032,12 @@ bool PerfMgmt::Enable::Threshold::Ospfv2Protocol::has_leaf_or_child_of_name(cons
 PerfMgmt::Enable::Threshold::MemoryNode::MemoryNode()
     :
     nodes(std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::Nodes>())
-	,node_all(std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::NodeAll>())
+    , node_all(std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::NodeAll>())
 {
     nodes->parent = this;
     node_all->parent = this;
 
-    yang_name = "memory-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::~MemoryNode()
@@ -4974,6 +5046,7 @@ PerfMgmt::Enable::Threshold::MemoryNode::~MemoryNode()
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (node_all !=  nullptr && node_all->has_data());
 }
@@ -5064,9 +5137,11 @@ bool PerfMgmt::Enable::Threshold::MemoryNode::has_leaf_or_child_of_name(const st
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::Nodes::~Nodes()
@@ -5075,7 +5150,8 @@ PerfMgmt::Enable::Threshold::MemoryNode::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -5085,7 +5161,7 @@ bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::has_data() const
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -5122,7 +5198,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::MemoryNode::Nodes::get_chil
     {
         auto c = std::make_shared<PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -5134,7 +5210,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Memo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5166,7 +5242,7 @@ PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::~Node()
@@ -5175,6 +5251,7 @@ PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -5196,7 +5273,8 @@ std::string PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_absolute_p
 std::string PerfMgmt::Enable::Threshold::MemoryNode::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -5263,7 +5341,7 @@ PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::NodeAll()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node-all"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-all"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::~NodeAll()
@@ -5272,6 +5350,7 @@ PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::~NodeAll()
 
 bool PerfMgmt::Enable::Threshold::MemoryNode::NodeAll::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -5347,7 +5426,7 @@ PerfMgmt::Enable::Threshold::GenericCounterInterface::GenericCounterInterface()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "generic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::GenericCounterInterface::~GenericCounterInterface()
@@ -5356,6 +5435,7 @@ PerfMgmt::Enable::Threshold::GenericCounterInterface::~GenericCounterInterface()
 
 bool PerfMgmt::Enable::Threshold::GenericCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -5429,12 +5509,12 @@ bool PerfMgmt::Enable::Threshold::GenericCounterInterface::has_leaf_or_child_of_
 PerfMgmt::Enable::Threshold::CpuNode::CpuNode()
     :
     nodes(std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::Nodes>())
-	,node_all(std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::NodeAll>())
+    , node_all(std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::NodeAll>())
 {
     nodes->parent = this;
     node_all->parent = this;
 
-    yang_name = "cpu-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::~CpuNode()
@@ -5443,6 +5523,7 @@ PerfMgmt::Enable::Threshold::CpuNode::~CpuNode()
 
 bool PerfMgmt::Enable::Threshold::CpuNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (node_all !=  nullptr && node_all->has_data());
 }
@@ -5533,9 +5614,11 @@ bool PerfMgmt::Enable::Threshold::CpuNode::has_leaf_or_child_of_name(const std::
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::Nodes::~Nodes()
@@ -5544,7 +5627,8 @@ PerfMgmt::Enable::Threshold::CpuNode::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -5554,7 +5638,7 @@ bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::has_data() const
 
 bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -5591,7 +5675,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::CpuNode::Nodes::get_child_b
     {
         auto c = std::make_shared<PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -5603,7 +5687,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::CpuN
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5635,7 +5719,7 @@ PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::~Node()
@@ -5644,6 +5728,7 @@ PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -5665,7 +5750,8 @@ std::string PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_absolute_path
 std::string PerfMgmt::Enable::Threshold::CpuNode::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -5732,7 +5818,7 @@ PerfMgmt::Enable::Threshold::CpuNode::NodeAll::NodeAll()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node-all"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-all"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::CpuNode::NodeAll::~NodeAll()
@@ -5741,6 +5827,7 @@ PerfMgmt::Enable::Threshold::CpuNode::NodeAll::~NodeAll()
 
 bool PerfMgmt::Enable::Threshold::CpuNode::NodeAll::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -5816,7 +5903,7 @@ PerfMgmt::Enable::Threshold::LdpMpls::LdpMpls()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ldp-mpls"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-mpls"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::LdpMpls::~LdpMpls()
@@ -5825,6 +5912,7 @@ PerfMgmt::Enable::Threshold::LdpMpls::~LdpMpls()
 
 bool PerfMgmt::Enable::Threshold::LdpMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -5898,12 +5986,12 @@ bool PerfMgmt::Enable::Threshold::LdpMpls::has_leaf_or_child_of_name(const std::
 PerfMgmt::Enable::Threshold::ProcessNode::ProcessNode()
     :
     nodes(std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::Nodes>())
-	,node_all(std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::NodeAll>())
+    , node_all(std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::NodeAll>())
 {
     nodes->parent = this;
     node_all->parent = this;
 
-    yang_name = "process-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-node"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::~ProcessNode()
@@ -5912,6 +6000,7 @@ PerfMgmt::Enable::Threshold::ProcessNode::~ProcessNode()
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (node_all !=  nullptr && node_all->has_data());
 }
@@ -6002,9 +6091,11 @@ bool PerfMgmt::Enable::Threshold::ProcessNode::has_leaf_or_child_of_name(const s
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::Nodes::~Nodes()
@@ -6013,7 +6104,8 @@ PerfMgmt::Enable::Threshold::ProcessNode::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -6023,7 +6115,7 @@ bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::has_data() const
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -6060,7 +6152,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Threshold::ProcessNode::Nodes::get_chi
     {
         auto c = std::make_shared<PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -6072,7 +6164,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Threshold::Proc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6104,7 +6196,7 @@ PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::~Node()
@@ -6113,6 +6205,7 @@ PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -6134,7 +6227,8 @@ std::string PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_absolute_
 std::string PerfMgmt::Enable::Threshold::ProcessNode::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -6201,7 +6295,7 @@ PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::NodeAll()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node-all"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-all"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::~NodeAll()
@@ -6210,6 +6304,7 @@ PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::~NodeAll()
 
 bool PerfMgmt::Enable::Threshold::ProcessNode::NodeAll::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -6285,7 +6380,7 @@ PerfMgmt::Enable::Threshold::BasicCounterInterface::BasicCounterInterface()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "basic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Threshold::BasicCounterInterface::~BasicCounterInterface()
@@ -6294,6 +6389,7 @@ PerfMgmt::Enable::Threshold::BasicCounterInterface::~BasicCounterInterface()
 
 bool PerfMgmt::Enable::Threshold::BasicCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -6367,15 +6463,15 @@ bool PerfMgmt::Enable::Threshold::BasicCounterInterface::has_leaf_or_child_of_na
 PerfMgmt::Enable::Statistics::Statistics()
     :
     generic_counter_interface(std::make_shared<PerfMgmt::Enable::Statistics::GenericCounterInterface>())
-	,bgp(std::make_shared<PerfMgmt::Enable::Statistics::Bgp>())
-	,ospfv2_protocol(std::make_shared<PerfMgmt::Enable::Statistics::Ospfv2Protocol>())
-	,ospfv3_protocol(std::make_shared<PerfMgmt::Enable::Statistics::Ospfv3Protocol>())
-	,cpu_node(std::make_shared<PerfMgmt::Enable::Statistics::CpuNode>())
-	,basic_counter_interface(std::make_shared<PerfMgmt::Enable::Statistics::BasicCounterInterface>())
-	,process_node(std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode>())
-	,data_rate_interface(std::make_shared<PerfMgmt::Enable::Statistics::DataRateInterface>())
-	,memory_node(std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode>())
-	,ldp_mpls(std::make_shared<PerfMgmt::Enable::Statistics::LdpMpls>())
+    , bgp(std::make_shared<PerfMgmt::Enable::Statistics::Bgp>())
+    , ospfv2_protocol(std::make_shared<PerfMgmt::Enable::Statistics::Ospfv2Protocol>())
+    , ospfv3_protocol(std::make_shared<PerfMgmt::Enable::Statistics::Ospfv3Protocol>())
+    , cpu_node(std::make_shared<PerfMgmt::Enable::Statistics::CpuNode>())
+    , basic_counter_interface(std::make_shared<PerfMgmt::Enable::Statistics::BasicCounterInterface>())
+    , process_node(std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode>())
+    , data_rate_interface(std::make_shared<PerfMgmt::Enable::Statistics::DataRateInterface>())
+    , memory_node(std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode>())
+    , ldp_mpls(std::make_shared<PerfMgmt::Enable::Statistics::LdpMpls>())
 {
     generic_counter_interface->parent = this;
     bgp->parent = this;
@@ -6388,7 +6484,7 @@ PerfMgmt::Enable::Statistics::Statistics()
     memory_node->parent = this;
     ldp_mpls->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::~Statistics()
@@ -6397,6 +6493,7 @@ PerfMgmt::Enable::Statistics::~Statistics()
 
 bool PerfMgmt::Enable::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (generic_counter_interface !=  nullptr && generic_counter_interface->has_data())
 	|| (bgp !=  nullptr && bgp->has_data())
 	|| (ospfv2_protocol !=  nullptr && ospfv2_protocol->has_data())
@@ -6619,7 +6716,7 @@ PerfMgmt::Enable::Statistics::GenericCounterInterface::GenericCounterInterface()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "generic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::GenericCounterInterface::~GenericCounterInterface()
@@ -6628,6 +6725,7 @@ PerfMgmt::Enable::Statistics::GenericCounterInterface::~GenericCounterInterface(
 
 bool PerfMgmt::Enable::Statistics::GenericCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -6703,7 +6801,7 @@ PerfMgmt::Enable::Statistics::Bgp::Bgp()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "bgp"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::Bgp::~Bgp()
@@ -6712,6 +6810,7 @@ PerfMgmt::Enable::Statistics::Bgp::~Bgp()
 
 bool PerfMgmt::Enable::Statistics::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -6787,7 +6886,7 @@ PerfMgmt::Enable::Statistics::Ospfv2Protocol::Ospfv2Protocol()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ospfv2-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::Ospfv2Protocol::~Ospfv2Protocol()
@@ -6796,6 +6895,7 @@ PerfMgmt::Enable::Statistics::Ospfv2Protocol::~Ospfv2Protocol()
 
 bool PerfMgmt::Enable::Statistics::Ospfv2Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -6871,7 +6971,7 @@ PerfMgmt::Enable::Statistics::Ospfv3Protocol::Ospfv3Protocol()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ospfv3-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::Ospfv3Protocol::~Ospfv3Protocol()
@@ -6880,6 +6980,7 @@ PerfMgmt::Enable::Statistics::Ospfv3Protocol::~Ospfv3Protocol()
 
 bool PerfMgmt::Enable::Statistics::Ospfv3Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -6953,12 +7054,12 @@ bool PerfMgmt::Enable::Statistics::Ospfv3Protocol::has_leaf_or_child_of_name(con
 PerfMgmt::Enable::Statistics::CpuNode::CpuNode()
     :
     node_all(std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::NodeAll>())
-	,nodes(std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::Nodes>())
+    , nodes(std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::Nodes>())
 {
     node_all->parent = this;
     nodes->parent = this;
 
-    yang_name = "cpu-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::~CpuNode()
@@ -6967,6 +7068,7 @@ PerfMgmt::Enable::Statistics::CpuNode::~CpuNode()
 
 bool PerfMgmt::Enable::Statistics::CpuNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (node_all !=  nullptr && node_all->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -7061,7 +7163,7 @@ PerfMgmt::Enable::Statistics::CpuNode::NodeAll::NodeAll()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node-all"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-all"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::NodeAll::~NodeAll()
@@ -7070,6 +7172,7 @@ PerfMgmt::Enable::Statistics::CpuNode::NodeAll::~NodeAll()
 
 bool PerfMgmt::Enable::Statistics::CpuNode::NodeAll::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -7141,9 +7244,11 @@ bool PerfMgmt::Enable::Statistics::CpuNode::NodeAll::has_leaf_or_child_of_name(c
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "cpu-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::Nodes::~Nodes()
@@ -7152,7 +7257,8 @@ PerfMgmt::Enable::Statistics::CpuNode::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -7162,7 +7268,7 @@ bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::has_data() const
 
 bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -7199,7 +7305,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::CpuNode::Nodes::get_child_
     {
         auto c = std::make_shared<PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -7211,7 +7317,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Cpu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7243,7 +7349,7 @@ PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::~Node()
@@ -7252,6 +7358,7 @@ PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -7273,7 +7380,8 @@ std::string PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_absolute_pat
 std::string PerfMgmt::Enable::Statistics::CpuNode::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -7340,7 +7448,7 @@ PerfMgmt::Enable::Statistics::BasicCounterInterface::BasicCounterInterface()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "basic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counter-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::BasicCounterInterface::~BasicCounterInterface()
@@ -7349,6 +7457,7 @@ PerfMgmt::Enable::Statistics::BasicCounterInterface::~BasicCounterInterface()
 
 bool PerfMgmt::Enable::Statistics::BasicCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -7422,12 +7531,12 @@ bool PerfMgmt::Enable::Statistics::BasicCounterInterface::has_leaf_or_child_of_n
 PerfMgmt::Enable::Statistics::ProcessNode::ProcessNode()
     :
     node_all(std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::NodeAll>())
-	,nodes(std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::Nodes>())
+    , nodes(std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::Nodes>())
 {
     node_all->parent = this;
     nodes->parent = this;
 
-    yang_name = "process-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::~ProcessNode()
@@ -7436,6 +7545,7 @@ PerfMgmt::Enable::Statistics::ProcessNode::~ProcessNode()
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (node_all !=  nullptr && node_all->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -7530,7 +7640,7 @@ PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::NodeAll()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node-all"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-all"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::~NodeAll()
@@ -7539,6 +7649,7 @@ PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::~NodeAll()
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -7610,9 +7721,11 @@ bool PerfMgmt::Enable::Statistics::ProcessNode::NodeAll::has_leaf_or_child_of_na
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::Nodes::~Nodes()
@@ -7621,7 +7734,8 @@ PerfMgmt::Enable::Statistics::ProcessNode::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -7631,7 +7745,7 @@ bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::has_data() const
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -7668,7 +7782,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::ProcessNode::Nodes::get_ch
     {
         auto c = std::make_shared<PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -7680,7 +7794,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Pro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7712,7 +7826,7 @@ PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::~Node()
@@ -7721,6 +7835,7 @@ PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -7742,7 +7857,8 @@ std::string PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_absolute
 std::string PerfMgmt::Enable::Statistics::ProcessNode::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -7809,7 +7925,7 @@ PerfMgmt::Enable::Statistics::DataRateInterface::DataRateInterface()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "data-rate-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rate-interface"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::DataRateInterface::~DataRateInterface()
@@ -7818,6 +7934,7 @@ PerfMgmt::Enable::Statistics::DataRateInterface::~DataRateInterface()
 
 bool PerfMgmt::Enable::Statistics::DataRateInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -7891,12 +8008,12 @@ bool PerfMgmt::Enable::Statistics::DataRateInterface::has_leaf_or_child_of_name(
 PerfMgmt::Enable::Statistics::MemoryNode::MemoryNode()
     :
     node_all(std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::NodeAll>())
-	,nodes(std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::Nodes>())
+    , nodes(std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::Nodes>())
 {
     node_all->parent = this;
     nodes->parent = this;
 
-    yang_name = "memory-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory-node"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::~MemoryNode()
@@ -7905,6 +8022,7 @@ PerfMgmt::Enable::Statistics::MemoryNode::~MemoryNode()
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::has_data() const
 {
+    if (is_presence_container) return true;
     return (node_all !=  nullptr && node_all->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -7999,7 +8117,7 @@ PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::NodeAll()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node-all"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node-all"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::~NodeAll()
@@ -8008,6 +8126,7 @@ PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::~NodeAll()
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -8079,9 +8198,11 @@ bool PerfMgmt::Enable::Statistics::MemoryNode::NodeAll::has_leaf_or_child_of_nam
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "memory-node"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::Nodes::~Nodes()
@@ -8090,7 +8211,8 @@ PerfMgmt::Enable::Statistics::MemoryNode::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -8100,7 +8222,7 @@ bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::has_data() const
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -8137,7 +8259,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::Statistics::MemoryNode::Nodes::get_chi
     {
         auto c = std::make_shared<PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -8149,7 +8271,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::Statistics::Mem
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8181,7 +8303,7 @@ PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::~Node()
@@ -8190,6 +8312,7 @@ PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -8211,7 +8334,8 @@ std::string PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_absolute_
 std::string PerfMgmt::Enable::Statistics::MemoryNode::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -8278,7 +8402,7 @@ PerfMgmt::Enable::Statistics::LdpMpls::LdpMpls()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ldp-mpls"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-mpls"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::Statistics::LdpMpls::~LdpMpls()
@@ -8287,6 +8411,7 @@ PerfMgmt::Enable::Statistics::LdpMpls::~LdpMpls()
 
 bool PerfMgmt::Enable::Statistics::LdpMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set;
 }
 
@@ -8360,15 +8485,15 @@ bool PerfMgmt::Enable::Statistics::LdpMpls::has_leaf_or_child_of_name(const std:
 PerfMgmt::Enable::MonitorEnable::MonitorEnable()
     :
     ldp_mpls(std::make_shared<PerfMgmt::Enable::MonitorEnable::LdpMpls>())
-	,ospfv3_protocol(std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol>())
-	,generic_counters(std::make_shared<PerfMgmt::Enable::MonitorEnable::GenericCounters>())
-	,process(std::make_shared<PerfMgmt::Enable::MonitorEnable::Process>())
-	,basic_counters(std::make_shared<PerfMgmt::Enable::MonitorEnable::BasicCounters>())
-	,memory(std::make_shared<PerfMgmt::Enable::MonitorEnable::Memory>())
-	,ospfv2_protocol(std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol>())
-	,cpu(std::make_shared<PerfMgmt::Enable::MonitorEnable::Cpu>())
-	,bgp(std::make_shared<PerfMgmt::Enable::MonitorEnable::Bgp>())
-	,data_rates(std::make_shared<PerfMgmt::Enable::MonitorEnable::DataRates>())
+    , ospfv3_protocol(std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol>())
+    , generic_counters(std::make_shared<PerfMgmt::Enable::MonitorEnable::GenericCounters>())
+    , process(std::make_shared<PerfMgmt::Enable::MonitorEnable::Process>())
+    , basic_counters(std::make_shared<PerfMgmt::Enable::MonitorEnable::BasicCounters>())
+    , memory(std::make_shared<PerfMgmt::Enable::MonitorEnable::Memory>())
+    , ospfv2_protocol(std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol>())
+    , cpu(std::make_shared<PerfMgmt::Enable::MonitorEnable::Cpu>())
+    , bgp(std::make_shared<PerfMgmt::Enable::MonitorEnable::Bgp>())
+    , data_rates(std::make_shared<PerfMgmt::Enable::MonitorEnable::DataRates>())
 {
     ldp_mpls->parent = this;
     ospfv3_protocol->parent = this;
@@ -8381,7 +8506,7 @@ PerfMgmt::Enable::MonitorEnable::MonitorEnable()
     bgp->parent = this;
     data_rates->parent = this;
 
-    yang_name = "monitor-enable"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "monitor-enable"; yang_parent_name = "enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::~MonitorEnable()
@@ -8390,6 +8515,7 @@ PerfMgmt::Enable::MonitorEnable::~MonitorEnable()
 
 bool PerfMgmt::Enable::MonitorEnable::has_data() const
 {
+    if (is_presence_container) return true;
     return (ldp_mpls !=  nullptr && ldp_mpls->has_data())
 	|| (ospfv3_protocol !=  nullptr && ospfv3_protocol->has_data())
 	|| (generic_counters !=  nullptr && generic_counters->has_data())
@@ -8613,7 +8739,7 @@ PerfMgmt::Enable::MonitorEnable::LdpMpls::LdpMpls()
 {
     sessions->parent = this;
 
-    yang_name = "ldp-mpls"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-mpls"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::LdpMpls::~LdpMpls()
@@ -8622,6 +8748,7 @@ PerfMgmt::Enable::MonitorEnable::LdpMpls::~LdpMpls()
 
 bool PerfMgmt::Enable::MonitorEnable::LdpMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (sessions !=  nullptr && sessions->has_data());
 }
 
@@ -8696,9 +8823,11 @@ bool PerfMgmt::Enable::MonitorEnable::LdpMpls::has_leaf_or_child_of_name(const s
 }
 
 PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Sessions()
+    :
+    session(this, {"session"})
 {
 
-    yang_name = "sessions"; yang_parent_name = "ldp-mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sessions"; yang_parent_name = "ldp-mpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::~Sessions()
@@ -8707,7 +8836,8 @@ PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::~Sessions()
 
 bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::has_data() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_data())
             return true;
@@ -8717,7 +8847,7 @@ bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::has_operation() const
 {
-    for (std::size_t index=0; index<session.size(); index++)
+    for (std::size_t index=0; index<session.len(); index++)
     {
         if(session[index]->has_operation())
             return true;
@@ -8754,7 +8884,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::get_
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session>();
         c->parent = this;
-        session.push_back(c);
+        session.append(c);
         return c;
     }
 
@@ -8766,7 +8896,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session)
+    for (auto c : session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8798,7 +8928,7 @@ PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::Session()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::~Session()
@@ -8807,6 +8937,7 @@ PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::~Session()
 
 bool PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return session.is_set
 	|| template_name.is_set;
 }
@@ -8828,7 +8959,8 @@ std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_abs
 std::string PerfMgmt::Enable::MonitorEnable::LdpMpls::Sessions::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session" <<"[session='" <<session <<"']";
+    path_buffer << "session";
+    ADD_KEY_TOKEN(session, "session");
     return path_buffer.str();
 }
 
@@ -8896,7 +9028,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::Ospfv3Protocol()
 {
     ospf_instances->parent = this;
 
-    yang_name = "ospfv3-protocol"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv3-protocol"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::~Ospfv3Protocol()
@@ -8905,6 +9037,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::~Ospfv3Protocol()
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospf_instances !=  nullptr && ospf_instances->has_data());
 }
 
@@ -8979,9 +9112,11 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::has_leaf_or_child_of_name(
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstances()
+    :
+    ospf_instance(this, {"instance_name"})
 {
 
-    yang_name = "ospf-instances"; yang_parent_name = "ospfv3-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf-instances"; yang_parent_name = "ospfv3-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::~OspfInstances()
@@ -8990,7 +9125,8 @@ PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::~OspfInstances()
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::has_data() const
 {
-    for (std::size_t index=0; index<ospf_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_instance.len(); index++)
     {
         if(ospf_instance[index]->has_data())
             return true;
@@ -9000,7 +9136,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::has_data() 
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_instance.size(); index++)
+    for (std::size_t index=0; index<ospf_instance.len(); index++)
     {
         if(ospf_instance[index]->has_operation())
             return true;
@@ -9037,7 +9173,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfIns
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance>();
         c->parent = this;
-        ospf_instance.push_back(c);
+        ospf_instance.append(c);
         return c;
     }
 
@@ -9049,7 +9185,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf_instance)
+    for (auto c : ospf_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9081,7 +9217,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::Os
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ospf-instance"; yang_parent_name = "ospf-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf-instance"; yang_parent_name = "ospf-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::~OspfInstance()
@@ -9090,6 +9226,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::~O
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| template_name.is_set;
 }
@@ -9111,7 +9248,8 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::Ospf
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv3Protocol::OspfInstances::OspfInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospf-instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -9179,7 +9317,7 @@ PerfMgmt::Enable::MonitorEnable::GenericCounters::GenericCounters()
 {
     interfaces->parent = this;
 
-    yang_name = "generic-counters"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counters"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::GenericCounters::~GenericCounters()
@@ -9188,6 +9326,7 @@ PerfMgmt::Enable::MonitorEnable::GenericCounters::~GenericCounters()
 
 bool PerfMgmt::Enable::MonitorEnable::GenericCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -9262,9 +9401,11 @@ bool PerfMgmt::Enable::MonitorEnable::GenericCounters::has_leaf_or_child_of_name
 }
 
 PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "generic-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "generic-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::~Interfaces()
@@ -9273,7 +9414,8 @@ PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::~Interfaces()
 
 bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -9283,7 +9425,7 @@ bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::has_data() co
 
 bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -9320,7 +9462,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::GenericCounters::Interf
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -9332,7 +9474,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9364,7 +9506,7 @@ PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::Interfa
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::~Interface()
@@ -9373,6 +9515,7 @@ PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::~Interf
 
 bool PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| template_name.is_set;
 }
@@ -9394,7 +9537,8 @@ std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interf
 std::string PerfMgmt::Enable::MonitorEnable::GenericCounters::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -9462,7 +9606,7 @@ PerfMgmt::Enable::MonitorEnable::Process::Process()
 {
     process_nodes->parent = this;
 
-    yang_name = "process"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::~Process()
@@ -9471,6 +9615,7 @@ PerfMgmt::Enable::MonitorEnable::Process::~Process()
 
 bool PerfMgmt::Enable::MonitorEnable::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return (process_nodes !=  nullptr && process_nodes->has_data());
 }
 
@@ -9545,9 +9690,11 @@ bool PerfMgmt::Enable::MonitorEnable::Process::has_leaf_or_child_of_name(const s
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNodes()
+    :
+    process_node(this, {"node_id"})
 {
 
-    yang_name = "process-nodes"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-nodes"; yang_parent_name = "process"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::~ProcessNodes()
@@ -9556,7 +9703,8 @@ PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::~ProcessNodes()
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::has_data() const
 {
-    for (std::size_t index=0; index<process_node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process_node.len(); index++)
     {
         if(process_node[index]->has_data())
             return true;
@@ -9566,7 +9714,7 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::has_operation() const
 {
-    for (std::size_t index=0; index<process_node.size(); index++)
+    for (std::size_t index=0; index<process_node.len(); index++)
     {
         if(process_node[index]->has_operation())
             return true;
@@ -9603,7 +9751,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode>();
         c->parent = this;
-        process_node.push_back(c);
+        process_node.append(c);
         return c;
     }
 
@@ -9615,7 +9763,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process_node)
+    for (auto c : process_node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9644,12 +9792,12 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::has_leaf_or_child_o
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::ProcessNode()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     pids(std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids>())
 {
     pids->parent = this;
 
-    yang_name = "process-node"; yang_parent_name = "process-nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "process-node"; yang_parent_name = "process-nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::~ProcessNode()
@@ -9658,6 +9806,7 @@ PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::~ProcessNod
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (pids !=  nullptr && pids->has_data());
 }
@@ -9679,7 +9828,8 @@ std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode:
 std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process-node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "process-node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -9745,9 +9895,11 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::has_le
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pids()
+    :
+    pid(this, {"pid"})
 {
 
-    yang_name = "pids"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pids"; yang_parent_name = "process-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::~Pids()
@@ -9756,7 +9908,8 @@ PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::~Pids
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::has_data() const
 {
-    for (std::size_t index=0; index<pid.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pid.len(); index++)
     {
         if(pid[index]->has_data())
             return true;
@@ -9766,7 +9919,7 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::has_operation() const
 {
-    for (std::size_t index=0; index<pid.size(); index++)
+    for (std::size_t index=0; index<pid.len(); index++)
     {
         if(pid[index]->has_operation())
             return true;
@@ -9796,7 +9949,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid>();
         c->parent = this;
-        pid.push_back(c);
+        pid.append(c);
         return c;
     }
 
@@ -9808,7 +9961,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pid)
+    for (auto c : pid.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9840,7 +9993,7 @@ PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "pid"; yang_parent_name = "pids"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pid"; yang_parent_name = "pids"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::~Pid()
@@ -9849,6 +10002,7 @@ PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::
 
 bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::has_data() const
 {
+    if (is_presence_container) return true;
     return pid.is_set
 	|| template_name.is_set;
 }
@@ -9863,7 +10017,8 @@ bool PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::
 std::string PerfMgmt::Enable::MonitorEnable::Process::ProcessNodes::ProcessNode::Pids::Pid::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pid" <<"[pid='" <<pid <<"']";
+    path_buffer << "pid";
+    ADD_KEY_TOKEN(pid, "pid");
     return path_buffer.str();
 }
 
@@ -9931,7 +10086,7 @@ PerfMgmt::Enable::MonitorEnable::BasicCounters::BasicCounters()
 {
     interfaces->parent = this;
 
-    yang_name = "basic-counters"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "basic-counters"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::BasicCounters::~BasicCounters()
@@ -9940,6 +10095,7 @@ PerfMgmt::Enable::MonitorEnable::BasicCounters::~BasicCounters()
 
 bool PerfMgmt::Enable::MonitorEnable::BasicCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -10014,9 +10170,11 @@ bool PerfMgmt::Enable::MonitorEnable::BasicCounters::has_leaf_or_child_of_name(c
 }
 
 PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "basic-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "basic-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::~Interfaces()
@@ -10025,7 +10183,8 @@ PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::~Interfaces()
 
 bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -10035,7 +10194,7 @@ bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::has_data() cons
 
 bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -10072,7 +10231,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfac
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -10084,7 +10243,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10116,7 +10275,7 @@ PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::Interface
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::~Interface()
@@ -10125,6 +10284,7 @@ PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::~Interfac
 
 bool PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| template_name.is_set;
 }
@@ -10146,7 +10306,8 @@ std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interfac
 std::string PerfMgmt::Enable::MonitorEnable::BasicCounters::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -10214,7 +10375,7 @@ PerfMgmt::Enable::MonitorEnable::Memory::Memory()
 {
     nodes->parent = this;
 
-    yang_name = "memory"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Memory::~Memory()
@@ -10223,6 +10384,7 @@ PerfMgmt::Enable::MonitorEnable::Memory::~Memory()
 
 bool PerfMgmt::Enable::MonitorEnable::Memory::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -10297,9 +10459,11 @@ bool PerfMgmt::Enable::MonitorEnable::Memory::has_leaf_or_child_of_name(const st
 }
 
 PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "memory"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Memory::Nodes::~Nodes()
@@ -10308,7 +10472,8 @@ PerfMgmt::Enable::MonitorEnable::Memory::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -10318,7 +10483,7 @@ bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -10355,7 +10520,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Memory::Nodes::get_chil
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -10367,7 +10532,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10399,7 +10564,7 @@ PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::~Node()
@@ -10408,6 +10573,7 @@ PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -10429,7 +10595,8 @@ std::string PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_absolute_p
 std::string PerfMgmt::Enable::MonitorEnable::Memory::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -10497,7 +10664,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::Ospfv2Protocol()
 {
     ospf_instances->parent = this;
 
-    yang_name = "ospfv2-protocol"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospfv2-protocol"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::~Ospfv2Protocol()
@@ -10506,6 +10673,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::~Ospfv2Protocol()
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::has_data() const
 {
+    if (is_presence_container) return true;
     return (ospf_instances !=  nullptr && ospf_instances->has_data());
 }
 
@@ -10580,9 +10748,11 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::has_leaf_or_child_of_name(
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstances()
+    :
+    ospf_instance(this, {"instance_name"})
 {
 
-    yang_name = "ospf-instances"; yang_parent_name = "ospfv2-protocol"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf-instances"; yang_parent_name = "ospfv2-protocol"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::~OspfInstances()
@@ -10591,7 +10761,8 @@ PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::~OspfInstances()
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::has_data() const
 {
-    for (std::size_t index=0; index<ospf_instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_instance.len(); index++)
     {
         if(ospf_instance[index]->has_data())
             return true;
@@ -10601,7 +10772,7 @@ bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::has_data() 
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_instance.size(); index++)
+    for (std::size_t index=0; index<ospf_instance.len(); index++)
     {
         if(ospf_instance[index]->has_operation())
             return true;
@@ -10638,7 +10809,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfIns
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance>();
         c->parent = this;
-        ospf_instance.push_back(c);
+        ospf_instance.append(c);
         return c;
     }
 
@@ -10650,7 +10821,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf_instance)
+    for (auto c : ospf_instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10682,7 +10853,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::Os
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "ospf-instance"; yang_parent_name = "ospf-instances"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf-instance"; yang_parent_name = "ospf-instances"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::~OspfInstance()
@@ -10691,6 +10862,7 @@ PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::~O
 
 bool PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| template_name.is_set;
 }
@@ -10712,7 +10884,8 @@ std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::Ospf
 std::string PerfMgmt::Enable::MonitorEnable::Ospfv2Protocol::OspfInstances::OspfInstance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-instance" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospf-instance";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -10780,7 +10953,7 @@ PerfMgmt::Enable::MonitorEnable::Cpu::Cpu()
 {
     nodes->parent = this;
 
-    yang_name = "cpu"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Cpu::~Cpu()
@@ -10789,6 +10962,7 @@ PerfMgmt::Enable::MonitorEnable::Cpu::~Cpu()
 
 bool PerfMgmt::Enable::MonitorEnable::Cpu::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -10863,9 +11037,11 @@ bool PerfMgmt::Enable::MonitorEnable::Cpu::has_leaf_or_child_of_name(const std::
 }
 
 PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "cpu"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "cpu"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::~Nodes()
@@ -10874,7 +11050,8 @@ PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::~Nodes()
 
 bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -10884,7 +11061,7 @@ bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -10921,7 +11098,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::get_child_b
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -10933,7 +11110,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10965,7 +11142,7 @@ PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::Node()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::~Node()
@@ -10974,6 +11151,7 @@ PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::~Node()
 
 bool PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| template_name.is_set;
 }
@@ -10995,7 +11173,8 @@ std::string PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_absolute_path
 std::string PerfMgmt::Enable::MonitorEnable::Cpu::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -11063,7 +11242,7 @@ PerfMgmt::Enable::MonitorEnable::Bgp::Bgp()
 {
     neighbors->parent = this;
 
-    yang_name = "bgp"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Bgp::~Bgp()
@@ -11072,6 +11251,7 @@ PerfMgmt::Enable::MonitorEnable::Bgp::~Bgp()
 
 bool PerfMgmt::Enable::MonitorEnable::Bgp::has_data() const
 {
+    if (is_presence_container) return true;
     return (neighbors !=  nullptr && neighbors->has_data());
 }
 
@@ -11146,9 +11326,11 @@ bool PerfMgmt::Enable::MonitorEnable::Bgp::has_leaf_or_child_of_name(const std::
 }
 
 PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbors()
+    :
+    neighbor(this, {"peer_address"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "bgp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::~Neighbors()
@@ -11157,7 +11339,8 @@ PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::~Neighbors()
 
 bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -11167,7 +11350,7 @@ bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -11204,7 +11387,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::get_chi
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -11216,7 +11399,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11248,7 +11431,7 @@ PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::Neighbor()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::~Neighbor()
@@ -11257,6 +11440,7 @@ PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::~Neighbor()
 
 bool PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_address.is_set
 	|| template_name.is_set;
 }
@@ -11278,7 +11462,8 @@ std::string PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_absol
 std::string PerfMgmt::Enable::MonitorEnable::Bgp::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[peer-address='" <<peer_address <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(peer_address, "peer-address");
     return path_buffer.str();
 }
 
@@ -11346,7 +11531,7 @@ PerfMgmt::Enable::MonitorEnable::DataRates::DataRates()
 {
     interfaces->parent = this;
 
-    yang_name = "data-rates"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "data-rates"; yang_parent_name = "monitor-enable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::DataRates::~DataRates()
@@ -11355,6 +11540,7 @@ PerfMgmt::Enable::MonitorEnable::DataRates::~DataRates()
 
 bool PerfMgmt::Enable::MonitorEnable::DataRates::has_data() const
 {
+    if (is_presence_container) return true;
     return (interfaces !=  nullptr && interfaces->has_data());
 }
 
@@ -11429,9 +11615,11 @@ bool PerfMgmt::Enable::MonitorEnable::DataRates::has_leaf_or_child_of_name(const
 }
 
 PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "data-rates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "data-rates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::~Interfaces()
@@ -11440,7 +11628,8 @@ PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::~Interfaces()
 
 bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -11450,7 +11639,7 @@ bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::has_data() const
 
 bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -11487,7 +11676,7 @@ std::shared_ptr<Entity> PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::
     {
         auto c = std::make_shared<PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -11499,7 +11688,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Enable::MonitorEnable::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11531,7 +11720,7 @@ PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::Interface()
     template_name{YType::str, "template-name"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::~Interface()
@@ -11540,6 +11729,7 @@ PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::~Interface()
 
 bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| template_name.is_set;
 }
@@ -11561,7 +11751,8 @@ std::string PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::g
 std::string PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -11624,9 +11815,11 @@ bool PerfMgmt::Enable::MonitorEnable::DataRates::Interfaces::Interface::has_leaf
 }
 
 PerfMgmt::RegExpGroups::RegExpGroups()
+    :
+    reg_exp_group(this, {"reg_exp_group_name"})
 {
 
-    yang_name = "reg-exp-groups"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reg-exp-groups"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::RegExpGroups::~RegExpGroups()
@@ -11635,7 +11828,8 @@ PerfMgmt::RegExpGroups::~RegExpGroups()
 
 bool PerfMgmt::RegExpGroups::has_data() const
 {
-    for (std::size_t index=0; index<reg_exp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg_exp_group.len(); index++)
     {
         if(reg_exp_group[index]->has_data())
             return true;
@@ -11645,7 +11839,7 @@ bool PerfMgmt::RegExpGroups::has_data() const
 
 bool PerfMgmt::RegExpGroups::has_operation() const
 {
-    for (std::size_t index=0; index<reg_exp_group.size(); index++)
+    for (std::size_t index=0; index<reg_exp_group.len(); index++)
     {
         if(reg_exp_group[index]->has_operation())
             return true;
@@ -11682,7 +11876,7 @@ std::shared_ptr<Entity> PerfMgmt::RegExpGroups::get_child_by_name(const std::str
     {
         auto c = std::make_shared<PerfMgmt::RegExpGroups::RegExpGroup>();
         c->parent = this;
-        reg_exp_group.push_back(c);
+        reg_exp_group.append(c);
         return c;
     }
 
@@ -11694,7 +11888,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reg_exp_group)
+    for (auto c : reg_exp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11723,12 +11917,12 @@ bool PerfMgmt::RegExpGroups::has_leaf_or_child_of_name(const std::string & name)
 PerfMgmt::RegExpGroups::RegExpGroup::RegExpGroup()
     :
     reg_exp_group_name{YType::str, "reg-exp-group-name"}
-    	,
+        ,
     reg_exps(std::make_shared<PerfMgmt::RegExpGroups::RegExpGroup::RegExps>())
 {
     reg_exps->parent = this;
 
-    yang_name = "reg-exp-group"; yang_parent_name = "reg-exp-groups"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reg-exp-group"; yang_parent_name = "reg-exp-groups"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::RegExpGroups::RegExpGroup::~RegExpGroup()
@@ -11737,6 +11931,7 @@ PerfMgmt::RegExpGroups::RegExpGroup::~RegExpGroup()
 
 bool PerfMgmt::RegExpGroups::RegExpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return reg_exp_group_name.is_set
 	|| (reg_exps !=  nullptr && reg_exps->has_data());
 }
@@ -11758,7 +11953,8 @@ std::string PerfMgmt::RegExpGroups::RegExpGroup::get_absolute_path() const
 std::string PerfMgmt::RegExpGroups::RegExpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reg-exp-group" <<"[reg-exp-group-name='" <<reg_exp_group_name <<"']";
+    path_buffer << "reg-exp-group";
+    ADD_KEY_TOKEN(reg_exp_group_name, "reg-exp-group-name");
     return path_buffer.str();
 }
 
@@ -11824,9 +12020,11 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::has_leaf_or_child_of_name(const std::s
 }
 
 PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExps()
+    :
+    reg_exp(this, {"reg_exp_index"})
 {
 
-    yang_name = "reg-exps"; yang_parent_name = "reg-exp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reg-exps"; yang_parent_name = "reg-exp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::RegExpGroups::RegExpGroup::RegExps::~RegExps()
@@ -11835,7 +12033,8 @@ PerfMgmt::RegExpGroups::RegExpGroup::RegExps::~RegExps()
 
 bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::has_data() const
 {
-    for (std::size_t index=0; index<reg_exp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg_exp.len(); index++)
     {
         if(reg_exp[index]->has_data())
             return true;
@@ -11845,7 +12044,7 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::has_data() const
 
 bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::has_operation() const
 {
-    for (std::size_t index=0; index<reg_exp.size(); index++)
+    for (std::size_t index=0; index<reg_exp.len(); index++)
     {
         if(reg_exp[index]->has_operation())
             return true;
@@ -11875,7 +12074,7 @@ std::shared_ptr<Entity> PerfMgmt::RegExpGroups::RegExpGroup::RegExps::get_child_
     {
         auto c = std::make_shared<PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp>();
         c->parent = this;
-        reg_exp.push_back(c);
+        reg_exp.append(c);
         return c;
     }
 
@@ -11887,7 +12086,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::RegExpGroups::RegExpGro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reg_exp)
+    for (auto c : reg_exp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11919,7 +12118,7 @@ PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::RegExp()
     reg_exp_string{YType::str, "reg-exp-string"}
 {
 
-    yang_name = "reg-exp"; yang_parent_name = "reg-exps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reg-exp"; yang_parent_name = "reg-exps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::~RegExp()
@@ -11928,6 +12127,7 @@ PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::~RegExp()
 
 bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::has_data() const
 {
+    if (is_presence_container) return true;
     return reg_exp_index.is_set
 	|| reg_exp_string.is_set;
 }
@@ -11942,7 +12142,8 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::has_operation() const
 std::string PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reg-exp" <<"[reg-exp-index='" <<reg_exp_index <<"']";
+    path_buffer << "reg-exp";
+    ADD_KEY_TOKEN(reg_exp_index, "reg-exp-index");
     return path_buffer.str();
 }
 
@@ -12007,15 +12208,15 @@ bool PerfMgmt::RegExpGroups::RegExpGroup::RegExps::RegExp::has_leaf_or_child_of_
 PerfMgmt::Threshold::Threshold()
     :
     generic_counter_interface(std::make_shared<PerfMgmt::Threshold::GenericCounterInterface>())
-	,ldp_mpls(std::make_shared<PerfMgmt::Threshold::LdpMpls>())
-	,basic_counter_interface(std::make_shared<PerfMgmt::Threshold::BasicCounterInterface>())
-	,bgp(std::make_shared<PerfMgmt::Threshold::Bgp>())
-	,ospfv2_protocol(std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol>())
-	,cpu_node(std::make_shared<PerfMgmt::Threshold::CpuNode>())
-	,data_rate_interface(std::make_shared<PerfMgmt::Threshold::DataRateInterface>())
-	,process_node(std::make_shared<PerfMgmt::Threshold::ProcessNode>())
-	,memory_node(std::make_shared<PerfMgmt::Threshold::MemoryNode>())
-	,ospfv3_protocol(std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol>())
+    , ldp_mpls(std::make_shared<PerfMgmt::Threshold::LdpMpls>())
+    , basic_counter_interface(std::make_shared<PerfMgmt::Threshold::BasicCounterInterface>())
+    , bgp(std::make_shared<PerfMgmt::Threshold::Bgp>())
+    , ospfv2_protocol(std::make_shared<PerfMgmt::Threshold::Ospfv2Protocol>())
+    , cpu_node(std::make_shared<PerfMgmt::Threshold::CpuNode>())
+    , data_rate_interface(std::make_shared<PerfMgmt::Threshold::DataRateInterface>())
+    , process_node(std::make_shared<PerfMgmt::Threshold::ProcessNode>())
+    , memory_node(std::make_shared<PerfMgmt::Threshold::MemoryNode>())
+    , ospfv3_protocol(std::make_shared<PerfMgmt::Threshold::Ospfv3Protocol>())
 {
     generic_counter_interface->parent = this;
     ldp_mpls->parent = this;
@@ -12028,7 +12229,7 @@ PerfMgmt::Threshold::Threshold()
     memory_node->parent = this;
     ospfv3_protocol->parent = this;
 
-    yang_name = "threshold"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "threshold"; yang_parent_name = "perf-mgmt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::~Threshold()
@@ -12037,6 +12238,7 @@ PerfMgmt::Threshold::~Threshold()
 
 bool PerfMgmt::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return (generic_counter_interface !=  nullptr && generic_counter_interface->has_data())
 	|| (ldp_mpls !=  nullptr && ldp_mpls->has_data())
 	|| (basic_counter_interface !=  nullptr && basic_counter_interface->has_data())
@@ -12260,7 +12462,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterface()
 {
     generic_counter_interface_templates->parent = this;
 
-    yang_name = "generic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::~GenericCounterInterface()
@@ -12269,6 +12471,7 @@ PerfMgmt::Threshold::GenericCounterInterface::~GenericCounterInterface()
 
 bool PerfMgmt::Threshold::GenericCounterInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (generic_counter_interface_templates !=  nullptr && generic_counter_interface_templates->has_data());
 }
 
@@ -12343,9 +12546,11 @@ bool PerfMgmt::Threshold::GenericCounterInterface::has_leaf_or_child_of_name(con
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplates()
+    :
+    generic_counter_interface_template(this, {"template_name"})
 {
 
-    yang_name = "generic-counter-interface-templates"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface-templates"; yang_parent_name = "generic-counter-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::~GenericCounterInterfaceTemplates()
@@ -12354,7 +12559,8 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::has_data() const
 {
-    for (std::size_t index=0; index<generic_counter_interface_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<generic_counter_interface_template.len(); index++)
     {
         if(generic_counter_interface_template[index]->has_data())
             return true;
@@ -12364,7 +12570,7 @@ bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTempla
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<generic_counter_interface_template.size(); index++)
+    for (std::size_t index=0; index<generic_counter_interface_template.len(); index++)
     {
         if(generic_counter_interface_template[index]->has_operation())
             return true;
@@ -12401,7 +12607,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::GenericCounterInterface::GenericCou
     {
         auto c = std::make_shared<PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate>();
         c->parent = this;
-        generic_counter_interface_template.push_back(c);
+        generic_counter_interface_template.append(c);
         return c;
     }
 
@@ -12413,7 +12619,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::GenericCount
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : generic_counter_interface_template)
+    for (auto c : generic_counter_interface_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12445,30 +12651,30 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     sample_interval{YType::uint32, "sample-interval"},
     reg_exp_group{YType::str, "reg-exp-group"},
     vrf_group{YType::str, "vrf-group"}
-    	,
+        ,
     in_octets(nullptr) // presence node
-	,in_ucast_pkts(nullptr) // presence node
-	,out_ucast_pkts(nullptr) // presence node
-	,out_broadcast_pkts(nullptr) // presence node
-	,out_multicast_pkts(nullptr) // presence node
-	,input_overrun(nullptr) // presence node
-	,out_octets(nullptr) // presence node
-	,output_underrun(nullptr) // presence node
-	,input_total_errors(nullptr) // presence node
-	,output_total_drops(nullptr) // presence node
-	,input_crc(nullptr) // presence node
-	,in_broadcast_pkts(nullptr) // presence node
-	,in_multicast_pkts(nullptr) // presence node
-	,out_packets(nullptr) // presence node
-	,output_total_errors(nullptr) // presence node
-	,in_packets(nullptr) // presence node
-	,input_unknown_proto(nullptr) // presence node
-	,input_queue_drops(nullptr) // presence node
-	,input_total_drops(nullptr) // presence node
-	,input_frame(nullptr) // presence node
+    , in_ucast_pkts(nullptr) // presence node
+    , out_ucast_pkts(nullptr) // presence node
+    , out_broadcast_pkts(nullptr) // presence node
+    , out_multicast_pkts(nullptr) // presence node
+    , input_overrun(nullptr) // presence node
+    , out_octets(nullptr) // presence node
+    , output_underrun(nullptr) // presence node
+    , input_total_errors(nullptr) // presence node
+    , output_total_drops(nullptr) // presence node
+    , input_crc(nullptr) // presence node
+    , in_broadcast_pkts(nullptr) // presence node
+    , in_multicast_pkts(nullptr) // presence node
+    , out_packets(nullptr) // presence node
+    , output_total_errors(nullptr) // presence node
+    , in_packets(nullptr) // presence node
+    , input_unknown_proto(nullptr) // presence node
+    , input_queue_drops(nullptr) // presence node
+    , input_total_drops(nullptr) // presence node
+    , input_frame(nullptr) // presence node
 {
 
-    yang_name = "generic-counter-interface-template"; yang_parent_name = "generic-counter-interface-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "generic-counter-interface-template"; yang_parent_name = "generic-counter-interface-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::~GenericCounterInterfaceTemplate()
@@ -12477,6 +12683,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| reg_exp_group.is_set
@@ -12542,7 +12749,8 @@ std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfac
 std::string PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "generic-counter-interface-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "generic-counter-interface-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -12916,7 +13124,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "in-octets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-octets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::~InOctets()
@@ -12925,6 +13133,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13063,7 +13272,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "in-ucast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-ucast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::~InUcastPkts()
@@ -13072,6 +13281,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InUcastPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13210,7 +13420,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "out-ucast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-ucast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::~OutUcastPkts()
@@ -13219,6 +13429,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutUcastPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13357,7 +13568,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "out-broadcast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-broadcast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::~OutBroadcastPkts()
@@ -13366,6 +13577,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutBroadcastPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13504,7 +13716,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "out-multicast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-multicast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::~OutMulticastPkts()
@@ -13513,6 +13725,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutMulticastPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13651,7 +13864,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-overrun"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-overrun"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::~InputOverrun()
@@ -13660,6 +13873,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputOverrun::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13798,7 +14012,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "out-octets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-octets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::~OutOctets()
@@ -13807,6 +14021,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutOctets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -13945,7 +14160,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-underrun"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-underrun"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::~OutputUnderrun()
@@ -13954,6 +14169,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputUnderrun::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14092,7 +14308,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-total-errors"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-total-errors"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::~InputTotalErrors()
@@ -14101,6 +14317,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14239,7 +14456,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-total-drops"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-total-drops"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::~OutputTotalDrops()
@@ -14248,6 +14465,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalDrops::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14386,7 +14604,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-crc"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-crc"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::~InputCrc()
@@ -14395,6 +14613,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputCrc::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14533,7 +14752,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "in-broadcast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-broadcast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::~InBroadcastPkts()
@@ -14542,6 +14761,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InBroadcastPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14680,7 +14900,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "in-multicast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-multicast-pkts"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::~InMulticastPkts()
@@ -14689,6 +14909,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InMulticastPkts::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14827,7 +15048,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "out-packets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "out-packets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::~OutPackets()
@@ -14836,6 +15057,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -14974,7 +15196,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "output-total-errors"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-total-errors"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::~OutputTotalErrors()
@@ -14983,6 +15205,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::OutputTotalErrors::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15121,7 +15344,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "in-packets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "in-packets"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::~InPackets()
@@ -15130,6 +15353,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InPackets::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15268,7 +15492,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-unknown-proto"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-unknown-proto"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::~InputUnknownProto()
@@ -15277,6 +15501,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputUnknownProto::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15415,7 +15640,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-queue-drops"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-queue-drops"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::~InputQueueDrops()
@@ -15424,6 +15649,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputQueueDrops::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15562,7 +15788,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-total-drops"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-total-drops"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::~InputTotalDrops()
@@ -15571,6 +15797,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputTotalDrops::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15709,7 +15936,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "input-frame"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "input-frame"; yang_parent_name = "generic-counter-interface-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::~InputFrame()
@@ -15718,6 +15945,7 @@ PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::
 
 bool PerfMgmt::Threshold::GenericCounterInterface::GenericCounterInterfaceTemplates::GenericCounterInterfaceTemplate::InputFrame::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -15852,7 +16080,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMpls()
 {
     ldp_mpls_templates->parent = this;
 
-    yang_name = "ldp-mpls"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-mpls"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::LdpMpls::~LdpMpls()
@@ -15861,6 +16089,7 @@ PerfMgmt::Threshold::LdpMpls::~LdpMpls()
 
 bool PerfMgmt::Threshold::LdpMpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (ldp_mpls_templates !=  nullptr && ldp_mpls_templates->has_data());
 }
 
@@ -15935,9 +16164,11 @@ bool PerfMgmt::Threshold::LdpMpls::has_leaf_or_child_of_name(const std::string &
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplates()
+    :
+    ldp_mpls_template(this, {"template_name"})
 {
 
-    yang_name = "ldp-mpls-templates"; yang_parent_name = "ldp-mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-mpls-templates"; yang_parent_name = "ldp-mpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::~LdpMplsTemplates()
@@ -15946,7 +16177,8 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::~LdpMplsTemplates()
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::has_data() const
 {
-    for (std::size_t index=0; index<ldp_mpls_template.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ldp_mpls_template.len(); index++)
     {
         if(ldp_mpls_template[index]->has_data())
             return true;
@@ -15956,7 +16188,7 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::has_data() const
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::has_operation() const
 {
-    for (std::size_t index=0; index<ldp_mpls_template.size(); index++)
+    for (std::size_t index=0; index<ldp_mpls_template.len(); index++)
     {
         if(ldp_mpls_template[index]->has_operation())
             return true;
@@ -15993,7 +16225,7 @@ std::shared_ptr<Entity> PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::get_chil
     {
         auto c = std::make_shared<PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate>();
         c->parent = this;
-        ldp_mpls_template.push_back(c);
+        ldp_mpls_template.append(c);
         return c;
     }
 
@@ -16005,7 +16237,7 @@ std::map<std::string, std::shared_ptr<Entity>> PerfMgmt::Threshold::LdpMpls::Ldp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ldp_mpls_template)
+    for (auto c : ldp_mpls_template.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16035,28 +16267,28 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LdpMplsTemplate
     :
     template_name{YType::str, "template-name"},
     sample_interval{YType::uint32, "sample-interval"}
-    	,
+        ,
     address_withdraw_msgs_rcvd(nullptr) // presence node
-	,label_withdraw_msgs_rcvd(nullptr) // presence node
-	,address_withdraw_msgs_sent(nullptr) // presence node
-	,label_withdraw_msgs_sent(nullptr) // presence node
-	,notification_msgs_rcvd(nullptr) // presence node
-	,total_msgs_rcvd(nullptr) // presence node
-	,notification_msgs_sent(nullptr) // presence node
-	,total_msgs_sent(nullptr) // presence node
-	,label_release_msgs_rcvd(nullptr) // presence node
-	,init_msgs_rcvd(nullptr) // presence node
-	,label_release_msgs_sent(nullptr) // presence node
-	,init_msgs_sent(nullptr) // presence node
-	,label_mapping_msgs_rcvd(nullptr) // presence node
-	,keepalive_msgs_rcvd(nullptr) // presence node
-	,label_mapping_msgs_sent(nullptr) // presence node
-	,keepalive_msgs_sent(nullptr) // presence node
-	,address_msgs_rcvd(nullptr) // presence node
-	,address_msgs_sent(nullptr) // presence node
+    , label_withdraw_msgs_rcvd(nullptr) // presence node
+    , address_withdraw_msgs_sent(nullptr) // presence node
+    , label_withdraw_msgs_sent(nullptr) // presence node
+    , notification_msgs_rcvd(nullptr) // presence node
+    , total_msgs_rcvd(nullptr) // presence node
+    , notification_msgs_sent(nullptr) // presence node
+    , total_msgs_sent(nullptr) // presence node
+    , label_release_msgs_rcvd(nullptr) // presence node
+    , init_msgs_rcvd(nullptr) // presence node
+    , label_release_msgs_sent(nullptr) // presence node
+    , init_msgs_sent(nullptr) // presence node
+    , label_mapping_msgs_rcvd(nullptr) // presence node
+    , keepalive_msgs_rcvd(nullptr) // presence node
+    , label_mapping_msgs_sent(nullptr) // presence node
+    , keepalive_msgs_sent(nullptr) // presence node
+    , address_msgs_rcvd(nullptr) // presence node
+    , address_msgs_sent(nullptr) // presence node
 {
 
-    yang_name = "ldp-mpls-template"; yang_parent_name = "ldp-mpls-templates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp-mpls-template"; yang_parent_name = "ldp-mpls-templates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::~LdpMplsTemplate()
@@ -16065,6 +16297,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::~LdpMplsTemplat
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::has_data() const
 {
+    if (is_presence_container) return true;
     return template_name.is_set
 	|| sample_interval.is_set
 	|| (address_withdraw_msgs_rcvd !=  nullptr && address_withdraw_msgs_rcvd->has_data())
@@ -16122,7 +16355,8 @@ std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get
 std::string PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ldp-mpls-template" <<"[template-name='" <<template_name <<"']";
+    path_buffer << "ldp-mpls-template";
+    ADD_KEY_TOKEN(template_name, "template-name");
     return path_buffer.str();
 }
 
@@ -16446,7 +16680,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdraw
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "address-withdraw-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-withdraw-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::~AddressWithdrawMsgsRcvd()
@@ -16455,6 +16689,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdraw
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -16593,7 +16828,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMs
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "label-withdraw-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-withdraw-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::~LabelWithdrawMsgsRcvd()
@@ -16602,6 +16837,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMs
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -16740,7 +16976,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdraw
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "address-withdraw-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-withdraw-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::~AddressWithdrawMsgsSent()
@@ -16749,6 +16985,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdraw
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::AddressWithdrawMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -16887,7 +17124,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMs
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "label-withdraw-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-withdraw-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::~LabelWithdrawMsgsSent()
@@ -16896,6 +17133,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMs
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelWithdrawMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -17034,7 +17272,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsg
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "notification-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "notification-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::~NotificationMsgsRcvd()
@@ -17043,6 +17281,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -17181,7 +17420,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "total-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "total-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::~TotalMsgsRcvd()
@@ -17190,6 +17429,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -17328,7 +17568,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsg
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "notification-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "notification-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::~NotificationMsgsSent()
@@ -17337,6 +17577,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::NotificationMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -17475,7 +17716,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "total-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "total-msgs-sent"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::~TotalMsgsSent()
@@ -17484,6 +17725,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::TotalMsgsSent::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -17622,7 +17864,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsg
     rearm_window{YType::uint32, "rearm-window"}
 {
 
-    yang_name = "label-release-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-release-msgs-rcvd"; yang_parent_name = "ldp-mpls-template"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::~LabelReleaseMsgsRcvd()
@@ -17631,6 +17873,7 @@ PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsg
 
 bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelReleaseMsgsRcvd::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_.is_set
 	|| value_.is_set
 	|| end_range_value.is_set
@@ -17759,10 +18002,6 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRelea
     return false;
 }
 
-const Enum::YLeaf PmThresholdRearm::always {0, "always"};
-const Enum::YLeaf PmThresholdRearm::window {1, "window"};
-const Enum::YLeaf PmThresholdRearm::toggle {2, "toggle"};
-
 const Enum::YLeaf PmThresholdOp::eq {1, "eq"};
 const Enum::YLeaf PmThresholdOp::ne {2, "ne"};
 const Enum::YLeaf PmThresholdOp::lt {3, "lt"};
@@ -17770,6 +18009,10 @@ const Enum::YLeaf PmThresholdOp::le {4, "le"};
 const Enum::YLeaf PmThresholdOp::gt {5, "gt"};
 const Enum::YLeaf PmThresholdOp::ge {6, "ge"};
 const Enum::YLeaf PmThresholdOp::rg {7, "rg"};
+
+const Enum::YLeaf PmThresholdRearm::always {0, "always"};
+const Enum::YLeaf PmThresholdRearm::window {1, "window"};
+const Enum::YLeaf PmThresholdRearm::toggle {2, "toggle"};
 
 
 }

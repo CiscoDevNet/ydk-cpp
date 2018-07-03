@@ -57,7 +57,7 @@ class Pbr::Nodes : public ydk::Entity
 
         class Node; //type: Pbr::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Pbr::Nodes
 
@@ -128,7 +128,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces : public ydk::Entity
 
         class Interface; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces
 
@@ -202,7 +202,7 @@ class Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input : pub
         ydk::YLeaf state_description; //type: string
         class ClassStat; //type: Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pbr_oper::Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input::ClassStat> > class_stat;
+        ydk::YList class_stat;
         
 }; // Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 

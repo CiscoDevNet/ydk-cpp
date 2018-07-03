@@ -17,7 +17,7 @@ MpaInternal::MpaInternal()
 {
     nodes->parent = this;
 
-    yang_name = "mpa-internal"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-fca-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpa-internal"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-fca-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MpaInternal::~MpaInternal()
@@ -26,6 +26,7 @@ MpaInternal::~MpaInternal()
 
 bool MpaInternal::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool MpaInternal::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MpaInternal::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "mpa-internal"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "mpa-internal"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MpaInternal::Nodes::~Nodes()
@@ -129,7 +132,8 @@ MpaInternal::Nodes::~Nodes()
 
 bool MpaInternal::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool MpaInternal::Nodes::has_data() const
 
 bool MpaInternal::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> MpaInternal::Nodes::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<MpaInternal::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,9 +221,11 @@ bool MpaInternal::Nodes::has_leaf_or_child_of_name(const std::string & name) con
 MpaInternal::Nodes::Node::Node()
     :
     node{YType::str, "node"}
+        ,
+    bay(this, {"number"})
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MpaInternal::Nodes::Node::~Node()
@@ -228,7 +234,8 @@ MpaInternal::Nodes::Node::~Node()
 
 bool MpaInternal::Nodes::Node::has_data() const
 {
-    for (std::size_t index=0; index<bay.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bay.len(); index++)
     {
         if(bay[index]->has_data())
             return true;
@@ -238,7 +245,7 @@ bool MpaInternal::Nodes::Node::has_data() const
 
 bool MpaInternal::Nodes::Node::has_operation() const
 {
-    for (std::size_t index=0; index<bay.size(); index++)
+    for (std::size_t index=0; index<bay.len(); index++)
     {
         if(bay[index]->has_operation())
             return true;
@@ -257,7 +264,8 @@ std::string MpaInternal::Nodes::Node::get_absolute_path() const
 std::string MpaInternal::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -277,7 +285,7 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::get_child_by_name(const std::s
     {
         auto c = std::make_shared<MpaInternal::Nodes::Node::Bay>();
         c->parent = this;
-        bay.push_back(c);
+        bay.append(c);
         return c;
     }
 
@@ -289,7 +297,7 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bay)
+    for (auto c : bay.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -328,12 +336,12 @@ bool MpaInternal::Nodes::Node::has_leaf_or_child_of_name(const std::string & nam
 MpaInternal::Nodes::Node::Bay::Bay()
     :
     number{YType::int32, "number"}
-    	,
+        ,
     ifsubsies(std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies>())
 {
     ifsubsies->parent = this;
 
-    yang_name = "bay"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bay"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MpaInternal::Nodes::Node::Bay::~Bay()
@@ -342,6 +350,7 @@ MpaInternal::Nodes::Node::Bay::~Bay()
 
 bool MpaInternal::Nodes::Node::Bay::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (ifsubsies !=  nullptr && ifsubsies->has_data());
 }
@@ -356,7 +365,8 @@ bool MpaInternal::Nodes::Node::Bay::has_operation() const
 std::string MpaInternal::Nodes::Node::Bay::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bay" <<"[number='" <<number <<"']";
+    path_buffer << "bay";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -422,9 +432,11 @@ bool MpaInternal::Nodes::Node::Bay::has_leaf_or_child_of_name(const std::string 
 }
 
 MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsies()
+    :
+    ifsubsy(this, {"number"})
 {
 
-    yang_name = "ifsubsies"; yang_parent_name = "bay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifsubsies"; yang_parent_name = "bay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MpaInternal::Nodes::Node::Bay::Ifsubsies::~Ifsubsies()
@@ -433,7 +445,8 @@ MpaInternal::Nodes::Node::Bay::Ifsubsies::~Ifsubsies()
 
 bool MpaInternal::Nodes::Node::Bay::Ifsubsies::has_data() const
 {
-    for (std::size_t index=0; index<ifsubsy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ifsubsy.len(); index++)
     {
         if(ifsubsy[index]->has_data())
             return true;
@@ -443,7 +456,7 @@ bool MpaInternal::Nodes::Node::Bay::Ifsubsies::has_data() const
 
 bool MpaInternal::Nodes::Node::Bay::Ifsubsies::has_operation() const
 {
-    for (std::size_t index=0; index<ifsubsy.size(); index++)
+    for (std::size_t index=0; index<ifsubsy.len(); index++)
     {
         if(ifsubsy[index]->has_operation())
             return true;
@@ -473,7 +486,7 @@ std::shared_ptr<Entity> MpaInternal::Nodes::Node::Bay::Ifsubsies::get_child_by_n
     {
         auto c = std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy>();
         c->parent = this;
-        ifsubsy.push_back(c);
+        ifsubsy.append(c);
         return c;
     }
 
@@ -485,7 +498,7 @@ std::map<std::string, std::shared_ptr<Entity>> MpaInternal::Nodes::Node::Bay::If
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ifsubsy)
+    for (auto c : ifsubsy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -514,12 +527,12 @@ bool MpaInternal::Nodes::Node::Bay::Ifsubsies::has_leaf_or_child_of_name(const s
 MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::Ifsubsy()
     :
     number{YType::str, "number"}
-    	,
+        ,
     mpa_internal_info(std::make_shared<MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo>())
 {
     mpa_internal_info->parent = this;
 
-    yang_name = "ifsubsy"; yang_parent_name = "ifsubsies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ifsubsy"; yang_parent_name = "ifsubsies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::~Ifsubsy()
@@ -528,6 +541,7 @@ MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::~Ifsubsy()
 
 bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (mpa_internal_info !=  nullptr && mpa_internal_info->has_data());
 }
@@ -542,7 +556,8 @@ bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::has_operation() const
 std::string MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ifsubsy" <<"[number='" <<number <<"']";
+    path_buffer << "ifsubsy";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -621,7 +636,7 @@ MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::MpaInternalI
     ep_idprom_data{YType::str, "ep-idprom-data"}
 {
 
-    yang_name = "mpa-internal-info"; yang_parent_name = "ifsubsy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpa-internal-info"; yang_parent_name = "ifsubsy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::~MpaInternalInfo()
@@ -630,6 +645,7 @@ MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::~MpaInternal
 
 bool MpaInternal::Nodes::Node::Bay::Ifsubsies::Ifsubsy::MpaInternalInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return bay.is_set
 	|| ifsubsys.is_set
 	|| if_state.is_set
@@ -816,7 +832,7 @@ Mpa::Mpa()
 {
     nodes->parent = this;
 
-    yang_name = "mpa"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-fca-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpa"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-fca-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Mpa::~Mpa()
@@ -825,6 +841,7 @@ Mpa::~Mpa()
 
 bool Mpa::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -917,9 +934,11 @@ bool Mpa::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Mpa::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "mpa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "mpa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mpa::Nodes::~Nodes()
@@ -928,7 +947,8 @@ Mpa::Nodes::~Nodes()
 
 bool Mpa::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -938,7 +958,7 @@ bool Mpa::Nodes::has_data() const
 
 bool Mpa::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -975,7 +995,7 @@ std::shared_ptr<Entity> Mpa::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Mpa::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -987,7 +1007,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1016,9 +1036,11 @@ bool Mpa::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Mpa::Nodes::Node::Node()
     :
     node{YType::str, "node"}
+        ,
+    bay(this, {"number"})
 {
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mpa::Nodes::Node::~Node()
@@ -1027,7 +1049,8 @@ Mpa::Nodes::Node::~Node()
 
 bool Mpa::Nodes::Node::has_data() const
 {
-    for (std::size_t index=0; index<bay.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bay.len(); index++)
     {
         if(bay[index]->has_data())
             return true;
@@ -1037,7 +1060,7 @@ bool Mpa::Nodes::Node::has_data() const
 
 bool Mpa::Nodes::Node::has_operation() const
 {
-    for (std::size_t index=0; index<bay.size(); index++)
+    for (std::size_t index=0; index<bay.len(); index++)
     {
         if(bay[index]->has_operation())
             return true;
@@ -1056,7 +1079,8 @@ std::string Mpa::Nodes::Node::get_absolute_path() const
 std::string Mpa::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -1076,7 +1100,7 @@ std::shared_ptr<Entity> Mpa::Nodes::Node::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<Mpa::Nodes::Node::Bay>();
         c->parent = this;
-        bay.push_back(c);
+        bay.append(c);
         return c;
     }
 
@@ -1088,7 +1112,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mpa::Nodes::Node::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bay)
+    for (auto c : bay.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1127,12 +1151,12 @@ bool Mpa::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 Mpa::Nodes::Node::Bay::Bay()
     :
     number{YType::int32, "number"}
-    	,
+        ,
     mpa_detail_table(std::make_shared<Mpa::Nodes::Node::Bay::MpaDetailTable>())
 {
     mpa_detail_table->parent = this;
 
-    yang_name = "bay"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bay"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mpa::Nodes::Node::Bay::~Bay()
@@ -1141,6 +1165,7 @@ Mpa::Nodes::Node::Bay::~Bay()
 
 bool Mpa::Nodes::Node::Bay::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (mpa_detail_table !=  nullptr && mpa_detail_table->has_data());
 }
@@ -1155,7 +1180,8 @@ bool Mpa::Nodes::Node::Bay::has_operation() const
 std::string Mpa::Nodes::Node::Bay::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bay" <<"[number='" <<number <<"']";
+    path_buffer << "bay";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -1226,7 +1252,7 @@ Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetailTable()
 {
     mpa_detail->parent = this;
 
-    yang_name = "mpa-detail-table"; yang_parent_name = "bay"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpa-detail-table"; yang_parent_name = "bay"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mpa::Nodes::Node::Bay::MpaDetailTable::~MpaDetailTable()
@@ -1235,6 +1261,7 @@ Mpa::Nodes::Node::Bay::MpaDetailTable::~MpaDetailTable()
 
 bool Mpa::Nodes::Node::Bay::MpaDetailTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpa_detail !=  nullptr && mpa_detail->has_data());
 }
 
@@ -1318,7 +1345,7 @@ Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::MpaDetail()
     up_time{YType::uint32, "up-time"}
 {
 
-    yang_name = "mpa-detail"; yang_parent_name = "mpa-detail-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpa-detail"; yang_parent_name = "mpa-detail-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::~MpaDetail()
@@ -1327,6 +1354,7 @@ Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::~MpaDetail()
 
 bool Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return bay_number.is_set
 	|| is_spa_inserted.is_set
 	|| spa_type.is_set
@@ -1546,6 +1574,12 @@ bool Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::has_leaf_or_child_of_name
     return false;
 }
 
+const Enum::YLeaf SpaResetReason::spa_reset_reason_unknown {1, "spa-reset-reason-unknown"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_manual {2, "spa-reset-reason-manual"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_fpd_upgrade {3, "spa-reset-reason-fpd-upgrade"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_audit_fail {4, "spa-reset-reason-audit-fail"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_failure {5, "spa-reset-reason-failure"};
+
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_unknown {1, "spa-failure-reason-unknown"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_spi_failure {2, "spa-failure-reason-spi-failure"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_boot {3, "spa-failure-reason-boot"};
@@ -1554,12 +1588,6 @@ const Enum::YLeaf SpaFailureReason::spa_failure_reason_sw_failed {5, "spa-failur
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_sw_restart {6, "spa-failure-reason-sw-restart"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_check_fpd {7, "spa-failure-reason-check-fpd"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_read_type {8, "spa-failure-reason-read-type"};
-
-const Enum::YLeaf SpaResetReason::spa_reset_reason_unknown {1, "spa-reset-reason-unknown"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_manual {2, "spa-reset-reason-manual"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_fpd_upgrade {3, "spa-reset-reason-fpd-upgrade"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_audit_fail {4, "spa-reset-reason-audit-fail"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_failure {5, "spa-reset-reason-failure"};
 
 const Enum::YLeaf SpaOperState::spa_state_reset {1, "spa-state-reset"};
 const Enum::YLeaf SpaOperState::spa_state_failed {2, "spa-state-failed"};

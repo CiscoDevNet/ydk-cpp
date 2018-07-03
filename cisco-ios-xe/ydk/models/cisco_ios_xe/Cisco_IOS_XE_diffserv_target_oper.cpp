@@ -22,9 +22,11 @@ Direction::~Direction()
 }
 
 DiffservInterfacesState::DiffservInterfacesState()
+    :
+    diffserv_interface(this, {"name"})
 {
 
-    yang_name = "diffserv-interfaces-state"; yang_parent_name = "Cisco-IOS-XE-diffserv-target-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "diffserv-interfaces-state"; yang_parent_name = "Cisco-IOS-XE-diffserv-target-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 DiffservInterfacesState::~DiffservInterfacesState()
@@ -33,7 +35,8 @@ DiffservInterfacesState::~DiffservInterfacesState()
 
 bool DiffservInterfacesState::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_interface.len(); index++)
     {
         if(diffserv_interface[index]->has_data())
             return true;
@@ -43,7 +46,7 @@ bool DiffservInterfacesState::has_data() const
 
 bool DiffservInterfacesState::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_interface.size(); index++)
+    for (std::size_t index=0; index<diffserv_interface.len(); index++)
     {
         if(diffserv_interface[index]->has_operation())
             return true;
@@ -73,7 +76,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::get_child_by_name(const std::st
     {
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface>();
         c->parent = this;
-        diffserv_interface.push_back(c);
+        diffserv_interface.append(c);
         return c;
     }
 
@@ -85,7 +88,7 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffserv_interface)
+    for (auto c : diffserv_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -139,9 +142,11 @@ bool DiffservInterfacesState::has_leaf_or_child_of_name(const std::string & name
 DiffservInterfacesState::DiffservInterface::DiffservInterface()
     :
     name{YType::str, "name"}
+        ,
+    diffserv_target_entry(this, {"direction", "policy_name"})
 {
 
-    yang_name = "diffserv-interface"; yang_parent_name = "diffserv-interfaces-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "diffserv-interface"; yang_parent_name = "diffserv-interfaces-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 DiffservInterfacesState::DiffservInterface::~DiffservInterface()
@@ -150,7 +155,8 @@ DiffservInterfacesState::DiffservInterface::~DiffservInterface()
 
 bool DiffservInterfacesState::DiffservInterface::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_target_entry.len(); index++)
     {
         if(diffserv_target_entry[index]->has_data())
             return true;
@@ -160,7 +166,7 @@ bool DiffservInterfacesState::DiffservInterface::has_data() const
 
 bool DiffservInterfacesState::DiffservInterface::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_entry.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_entry.len(); index++)
     {
         if(diffserv_target_entry[index]->has_operation())
             return true;
@@ -179,7 +185,8 @@ std::string DiffservInterfacesState::DiffservInterface::get_absolute_path() cons
 std::string DiffservInterfacesState::DiffservInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffserv-interface" <<"[name='" <<name <<"']";
+    path_buffer << "diffserv-interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -199,7 +206,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::get_child_by
     {
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry>();
         c->parent = this;
-        diffserv_target_entry.push_back(c);
+        diffserv_target_entry.append(c);
         return c;
     }
 
@@ -211,7 +218,7 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffserv_target_entry)
+    for (auto c : diffserv_target_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -251,9 +258,11 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetE
     :
     direction{YType::identityref, "direction"},
     policy_name{YType::str, "policy-name"}
+        ,
+    diffserv_target_classifier_statistics(this, {"classifier_entry_name", "parent_path"})
 {
 
-    yang_name = "diffserv-target-entry"; yang_parent_name = "diffserv-interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diffserv-target-entry"; yang_parent_name = "diffserv-interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::~DiffservTargetEntry()
@@ -262,7 +271,8 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::~DiffservTarget
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics.len(); index++)
     {
         if(diffserv_target_classifier_statistics[index]->has_data())
             return true;
@@ -273,7 +283,7 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_data()
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_statistics.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_classifier_statistics.len(); index++)
     {
         if(diffserv_target_classifier_statistics[index]->has_operation())
             return true;
@@ -286,7 +296,9 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::has_operat
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffserv-target-entry" <<"[direction='" <<direction <<"']" <<"[policy-name='" <<policy_name <<"']";
+    path_buffer << "diffserv-target-entry";
+    ADD_KEY_TOKEN(direction, "direction");
+    ADD_KEY_TOKEN(policy_name, "policy-name");
     return path_buffer.str();
 }
 
@@ -307,7 +319,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
     {
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics>();
         c->parent = this;
-        diffserv_target_classifier_statistics.push_back(c);
+        diffserv_target_classifier_statistics.append(c);
         return c;
     }
 
@@ -319,7 +331,7 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffserv_target_classifier_statistics)
+    for (auto c : diffserv_target_classifier_statistics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -369,14 +381,15 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     :
     classifier_entry_name{YType::str, "classifier-entry-name"},
     parent_path{YType::str, "parent-path"}
-    	,
+        ,
     classifier_entry_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics>())
-	,queuing_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
+    , meter_statistics(this, {"meter_id"})
+    , queuing_statistics(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics>())
 {
     classifier_entry_statistics->parent = this;
     queuing_statistics->parent = this;
 
-    yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diffserv-target-classifier-statistics"; yang_parent_name = "diffserv-target-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::~DiffservTargetClassifierStatistics()
@@ -385,7 +398,8 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_data() const
 {
-    for (std::size_t index=0; index<meter_statistics.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<meter_statistics.len(); index++)
     {
         if(meter_statistics[index]->has_data())
             return true;
@@ -398,7 +412,7 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<meter_statistics.size(); index++)
+    for (std::size_t index=0; index<meter_statistics.len(); index++)
     {
         if(meter_statistics[index]->has_operation())
             return true;
@@ -413,7 +427,9 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffserv-target-classifier-statistics" <<"[classifier-entry-name='" <<classifier_entry_name <<"']" <<"[parent-path='" <<parent_path <<"']";
+    path_buffer << "diffserv-target-classifier-statistics";
+    ADD_KEY_TOKEN(classifier_entry_name, "classifier-entry-name");
+    ADD_KEY_TOKEN(parent_path, "parent-path");
     return path_buffer.str();
 }
 
@@ -443,7 +459,7 @@ std::shared_ptr<Entity> DiffservInterfacesState::DiffservInterface::DiffservTarg
     {
         auto c = std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics>();
         c->parent = this;
-        meter_statistics.push_back(c);
+        meter_statistics.append(c);
         return c;
     }
 
@@ -469,7 +485,7 @@ std::map<std::string, std::shared_ptr<Entity>> DiffservInterfacesState::Diffserv
     }
 
     count = 0;
-    for (auto const & c : meter_statistics)
+    for (auto c : meter_statistics.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -527,7 +543,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     classified_rate{YType::uint64, "classified-rate"}
 {
 
-    yang_name = "classifier-entry-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classifier-entry-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::~ClassifierEntryStatistics()
@@ -536,6 +552,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::ClassifierEntryStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return classified_pkts.is_set
 	|| classified_bytes.is_set
 	|| classified_rate.is_set;
@@ -634,7 +651,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     meter_failed_bytes{YType::uint64, "meter-failed-bytes"}
 {
 
-    yang_name = "meter-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "meter-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::~MeterStatistics()
@@ -643,6 +660,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return meter_id.is_set
 	|| meter_succeed_pkts.is_set
 	|| meter_succeed_bytes.is_set
@@ -663,7 +681,8 @@ bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTa
 std::string DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::MeterStatistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "meter-statistics" <<"[meter-id='" <<meter_id <<"']";
+    path_buffer << "meter-statistics";
+    ADD_KEY_TOKEN(meter_id, "meter-id");
     return path_buffer.str();
 }
 
@@ -766,12 +785,12 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     queue_size_bytes{YType::uint64, "queue-size-bytes"},
     drop_pkts{YType::uint64, "drop-pkts"},
     drop_bytes{YType::uint64, "drop-bytes"}
-    	,
+        ,
     wred_stats(std::make_shared<DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats>())
 {
     wred_stats->parent = this;
 
-    yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queuing-statistics"; yang_parent_name = "diffserv-target-classifier-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::~QueuingStatistics()
@@ -780,6 +799,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return output_pkts.is_set
 	|| output_bytes.is_set
 	|| queue_size_pkts.is_set
@@ -930,7 +950,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
     early_drop_bytes{YType::uint64, "early-drop-bytes"}
 {
 
-    yang_name = "wred-stats"; yang_parent_name = "queuing-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats"; yang_parent_name = "queuing-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::~WredStats()
@@ -939,6 +959,7 @@ DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetC
 
 bool DiffservInterfacesState::DiffservInterface::DiffservTargetEntry::DiffservTargetClassifierStatistics::QueuingStatistics::WredStats::has_data() const
 {
+    if (is_presence_container) return true;
     return early_drop_pkts.is_set
 	|| early_drop_bytes.is_set;
 }

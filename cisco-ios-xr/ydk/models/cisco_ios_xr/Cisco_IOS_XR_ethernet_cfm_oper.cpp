@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ethernet_cfm_oper {
 Cfm::Cfm()
     :
     nodes(std::make_shared<Cfm::Nodes>())
-	,global(std::make_shared<Cfm::Global>())
+    , global(std::make_shared<Cfm::Global>())
 {
     nodes->parent = this;
     global->parent = this;
 
-    yang_name = "cfm"; yang_parent_name = "Cisco-IOS-XR-ethernet-cfm-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cfm"; yang_parent_name = "Cisco-IOS-XR-ethernet-cfm-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Cfm::~Cfm()
@@ -28,6 +28,7 @@ Cfm::~Cfm()
 
 bool Cfm::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data())
 	|| (global !=  nullptr && global->has_data());
 }
@@ -136,9 +137,11 @@ bool Cfm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Cfm::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Nodes::~Nodes()
@@ -147,7 +150,8 @@ Cfm::Nodes::~Nodes()
 
 bool Cfm::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -157,7 +161,7 @@ bool Cfm::Nodes::has_data() const
 
 bool Cfm::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -194,7 +198,7 @@ std::shared_ptr<Entity> Cfm::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Cfm::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -206,7 +210,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -235,18 +239,18 @@ bool Cfm::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Cfm::Nodes::Node::Node()
     :
     node{YType::str, "node"}
-    	,
+        ,
     interface_aises(std::make_shared<Cfm::Nodes::Node::InterfaceAises>())
-	,interface_statistics(std::make_shared<Cfm::Nodes::Node::InterfaceStatistics>())
-	,summary(std::make_shared<Cfm::Nodes::Node::Summary>())
-	,ccm_learning_databases(std::make_shared<Cfm::Nodes::Node::CcmLearningDatabases>())
+    , interface_statistics(std::make_shared<Cfm::Nodes::Node::InterfaceStatistics>())
+    , summary(std::make_shared<Cfm::Nodes::Node::Summary>())
+    , ccm_learning_databases(std::make_shared<Cfm::Nodes::Node::CcmLearningDatabases>())
 {
     interface_aises->parent = this;
     interface_statistics->parent = this;
     summary->parent = this;
     ccm_learning_databases->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Nodes::Node::~Node()
@@ -255,6 +259,7 @@ Cfm::Nodes::Node::~Node()
 
 bool Cfm::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (interface_aises !=  nullptr && interface_aises->has_data())
 	|| (interface_statistics !=  nullptr && interface_statistics->has_data())
@@ -282,7 +287,8 @@ std::string Cfm::Nodes::Node::get_absolute_path() const
 std::string Cfm::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -390,9 +396,11 @@ bool Cfm::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAises()
+    :
+    interface_ais(this, {"interface_name", "direction"})
 {
 
-    yang_name = "interface-aises"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-aises"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceAises::~InterfaceAises()
@@ -401,7 +409,8 @@ Cfm::Nodes::Node::InterfaceAises::~InterfaceAises()
 
 bool Cfm::Nodes::Node::InterfaceAises::has_data() const
 {
-    for (std::size_t index=0; index<interface_ais.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_ais.len(); index++)
     {
         if(interface_ais[index]->has_data())
             return true;
@@ -411,7 +420,7 @@ bool Cfm::Nodes::Node::InterfaceAises::has_data() const
 
 bool Cfm::Nodes::Node::InterfaceAises::has_operation() const
 {
-    for (std::size_t index=0; index<interface_ais.size(); index++)
+    for (std::size_t index=0; index<interface_ais.len(); index++)
     {
         if(interface_ais[index]->has_operation())
             return true;
@@ -441,7 +450,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceAises::get_child_by_name(cons
     {
         auto c = std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis>();
         c->parent = this;
-        interface_ais.push_back(c);
+        interface_ais.append(c);
         return c;
     }
 
@@ -453,7 +462,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceAises:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_ais)
+    for (auto c : interface_ais.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -487,12 +496,12 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::InterfaceAis()
     interface_state{YType::str, "interface-state"},
     interworking_state{YType::enumeration, "interworking-state"},
     stp_state{YType::enumeration, "stp-state"}
-    	,
+        ,
     statistics(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "interface-ais"; yang_parent_name = "interface-aises"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ais"; yang_parent_name = "interface-aises"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAis::~InterfaceAis()
@@ -501,6 +510,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::~InterfaceAis()
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| direction.is_set
 	|| interface.is_set
@@ -525,7 +535,9 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::has_operation() const
 std::string Cfm::Nodes::Node::InterfaceAises::InterfaceAis::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-ais" <<"[interface-name='" <<interface_name <<"']" <<"[direction='" <<direction <<"']";
+    path_buffer << "interface-ais";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -653,14 +665,14 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Statistics()
     transmission_interval{YType::enumeration, "transmission-interval"},
     sent_packets{YType::uint32, "sent-packets"},
     via_level{YType::enumeration, "via-level"}
-    	,
+        ,
     defects(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects>())
-	,last_started(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted>())
+    , last_started(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted>())
 {
     defects->parent = this;
     last_started->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "interface-ais"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "interface-ais"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::~Statistics()
@@ -669,6 +681,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::~Statistics()
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : via_level.getYLeafs())
     {
         if(leaf.is_set)
@@ -846,12 +859,12 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::Defects()
     unexpected{YType::uint32, "unexpected"},
     local_port_status{YType::boolean, "local-port-status"},
     peer_port_status{YType::boolean, "peer-port-status"}
-    	,
+        ,
     remote_meps_defects(std::make_shared<Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects>())
 {
     remote_meps_defects->parent = this;
 
-    yang_name = "defects"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "defects"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::~Defects()
@@ -860,6 +873,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::~Defects()
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::has_data() const
 {
+    if (is_presence_container) return true;
     return ais_received.is_set
 	|| peer_meps_that_timed_out.is_set
 	|| missing.is_set
@@ -1028,7 +1042,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsD
     received_rdi{YType::boolean, "received-rdi"}
 {
 
-    yang_name = "remote-meps-defects"; yang_parent_name = "defects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-meps-defects"; yang_parent_name = "defects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::~RemoteMepsDefects()
@@ -1037,6 +1051,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsD
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::Defects::RemoteMepsDefects::has_data() const
 {
+    if (is_presence_container) return true;
     return loss_threshold_exceeded.is_set
 	|| invalid_level.is_set
 	|| invalid_maid.is_set
@@ -1184,7 +1199,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::LastSta
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "last-started"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-started"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::~LastStarted()
@@ -1193,6 +1208,7 @@ Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::~LastSt
 
 bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -1270,9 +1286,11 @@ bool Cfm::Nodes::Node::InterfaceAises::InterfaceAis::Statistics::LastStarted::ha
 }
 
 Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistics()
+    :
+    interface_statistic(this, {"interface"})
 {
 
-    yang_name = "interface-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceStatistics::~InterfaceStatistics()
@@ -1281,7 +1299,8 @@ Cfm::Nodes::Node::InterfaceStatistics::~InterfaceStatistics()
 
 bool Cfm::Nodes::Node::InterfaceStatistics::has_data() const
 {
-    for (std::size_t index=0; index<interface_statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_statistic.len(); index++)
     {
         if(interface_statistic[index]->has_data())
             return true;
@@ -1291,7 +1310,7 @@ bool Cfm::Nodes::Node::InterfaceStatistics::has_data() const
 
 bool Cfm::Nodes::Node::InterfaceStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<interface_statistic.size(); index++)
+    for (std::size_t index=0; index<interface_statistic.len(); index++)
     {
         if(interface_statistic[index]->has_operation())
             return true;
@@ -1321,7 +1340,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::InterfaceStatistics::get_child_by_name
     {
         auto c = std::make_shared<Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic>();
         c->parent = this;
-        interface_statistic.push_back(c);
+        interface_statistic.append(c);
         return c;
     }
 
@@ -1333,7 +1352,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::InterfaceStatis
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_statistic)
+    for (auto c : interface_statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1363,12 +1382,12 @@ Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::InterfaceStatistic()
     :
     interface{YType::str, "interface"},
     interface_xr{YType::str, "interface-xr"}
-    	,
+        ,
     statistics(std::make_shared<Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "interface-statistic"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-statistic"; yang_parent_name = "interface-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::~InterfaceStatistic()
@@ -1377,6 +1396,7 @@ Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::~InterfaceStatistic()
 
 bool Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_xr.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
@@ -1393,7 +1413,8 @@ bool Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::has_operation() 
 std::string Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-statistic" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface-statistic";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -1477,7 +1498,7 @@ Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::Statistic
     last_malformed_reason{YType::enumeration, "last-malformed-reason"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "interface-statistic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::~Statistics()
@@ -1486,6 +1507,7 @@ Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::~Statisti
 
 bool Cfm::Nodes::Node::InterfaceStatistics::InterfaceStatistic::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return malformed_packets.is_set
 	|| dropped_packets.is_set
 	|| last_malformed_opcode.is_set
@@ -1618,7 +1640,7 @@ Cfm::Nodes::Node::Summary::Summary()
     bnm_enabled_links{YType::uint32, "bnm-enabled-links"}
 {
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::Summary::~Summary()
@@ -1627,6 +1649,7 @@ Cfm::Nodes::Node::Summary::~Summary()
 
 bool Cfm::Nodes::Node::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return domains.is_set
 	|| services.is_set
 	|| ccm_rate.is_set
@@ -2016,9 +2039,11 @@ bool Cfm::Nodes::Node::Summary::has_leaf_or_child_of_name(const std::string & na
 }
 
 Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabases()
+    :
+    ccm_learning_database(this, {"domain", "service", "mac_address"})
 {
 
-    yang_name = "ccm-learning-databases"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccm-learning-databases"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::CcmLearningDatabases::~CcmLearningDatabases()
@@ -2027,7 +2052,8 @@ Cfm::Nodes::Node::CcmLearningDatabases::~CcmLearningDatabases()
 
 bool Cfm::Nodes::Node::CcmLearningDatabases::has_data() const
 {
-    for (std::size_t index=0; index<ccm_learning_database.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ccm_learning_database.len(); index++)
     {
         if(ccm_learning_database[index]->has_data())
             return true;
@@ -2037,7 +2063,7 @@ bool Cfm::Nodes::Node::CcmLearningDatabases::has_data() const
 
 bool Cfm::Nodes::Node::CcmLearningDatabases::has_operation() const
 {
-    for (std::size_t index=0; index<ccm_learning_database.size(); index++)
+    for (std::size_t index=0; index<ccm_learning_database.len(); index++)
     {
         if(ccm_learning_database[index]->has_operation())
             return true;
@@ -2067,7 +2093,7 @@ std::shared_ptr<Entity> Cfm::Nodes::Node::CcmLearningDatabases::get_child_by_nam
     {
         auto c = std::make_shared<Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase>();
         c->parent = this;
-        ccm_learning_database.push_back(c);
+        ccm_learning_database.append(c);
         return c;
     }
 
@@ -2079,7 +2105,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Nodes::Node::CcmLearningData
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ccm_learning_database)
+    for (auto c : ccm_learning_database.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2119,7 +2145,7 @@ Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::CcmLearningDatabase
     ingress_interface_string{YType::str, "ingress-interface-string"}
 {
 
-    yang_name = "ccm-learning-database"; yang_parent_name = "ccm-learning-databases"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ccm-learning-database"; yang_parent_name = "ccm-learning-databases"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::~CcmLearningDatabase()
@@ -2128,6 +2154,7 @@ Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::~CcmLearningDatabas
 
 bool Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| mac_address.is_set
@@ -2158,7 +2185,10 @@ bool Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::has_operation(
 std::string Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ccm-learning-database" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mac-address='" <<mac_address <<"']";
+    path_buffer << "ccm-learning-database";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
+    ADD_KEY_TOKEN(mac_address, "mac-address");
     return path_buffer.str();
 }
 
@@ -2311,12 +2341,12 @@ bool Cfm::Nodes::Node::CcmLearningDatabases::CcmLearningDatabase::has_leaf_or_ch
 Cfm::Global::Global()
     :
     incomplete_traceroutes(std::make_shared<Cfm::Global::IncompleteTraceroutes>())
-	,maintenance_points(std::make_shared<Cfm::Global::MaintenancePoints>())
-	,global_configuration_errors(std::make_shared<Cfm::Global::GlobalConfigurationErrors>())
-	,mep_configuration_errors(std::make_shared<Cfm::Global::MepConfigurationErrors>())
-	,traceroute_caches(std::make_shared<Cfm::Global::TracerouteCaches>())
-	,local_meps(std::make_shared<Cfm::Global::LocalMeps>())
-	,peer_me_pv2s(std::make_shared<Cfm::Global::PeerMePv2S>())
+    , maintenance_points(std::make_shared<Cfm::Global::MaintenancePoints>())
+    , global_configuration_errors(std::make_shared<Cfm::Global::GlobalConfigurationErrors>())
+    , mep_configuration_errors(std::make_shared<Cfm::Global::MepConfigurationErrors>())
+    , traceroute_caches(std::make_shared<Cfm::Global::TracerouteCaches>())
+    , local_meps(std::make_shared<Cfm::Global::LocalMeps>())
+    , peer_me_pv2s(std::make_shared<Cfm::Global::PeerMePv2s>())
 {
     incomplete_traceroutes->parent = this;
     maintenance_points->parent = this;
@@ -2326,7 +2356,7 @@ Cfm::Global::Global()
     local_meps->parent = this;
     peer_me_pv2s->parent = this;
 
-    yang_name = "global"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::~Global()
@@ -2335,6 +2365,7 @@ Cfm::Global::~Global()
 
 bool Cfm::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return (incomplete_traceroutes !=  nullptr && incomplete_traceroutes->has_data())
 	|| (maintenance_points !=  nullptr && maintenance_points->has_data())
 	|| (global_configuration_errors !=  nullptr && global_configuration_errors->has_data())
@@ -2439,7 +2470,7 @@ std::shared_ptr<Entity> Cfm::Global::get_child_by_name(const std::string & child
     {
         if(peer_me_pv2s == nullptr)
         {
-            peer_me_pv2s = std::make_shared<Cfm::Global::PeerMePv2S>();
+            peer_me_pv2s = std::make_shared<Cfm::Global::PeerMePv2s>();
         }
         return peer_me_pv2s;
     }
@@ -2505,9 +2536,11 @@ bool Cfm::Global::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroutes()
+    :
+    incomplete_traceroute(this, {"domain", "service", "mep_id", "interface", "transaction_id"})
 {
 
-    yang_name = "incomplete-traceroutes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "incomplete-traceroutes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::IncompleteTraceroutes::~IncompleteTraceroutes()
@@ -2516,7 +2549,8 @@ Cfm::Global::IncompleteTraceroutes::~IncompleteTraceroutes()
 
 bool Cfm::Global::IncompleteTraceroutes::has_data() const
 {
-    for (std::size_t index=0; index<incomplete_traceroute.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<incomplete_traceroute.len(); index++)
     {
         if(incomplete_traceroute[index]->has_data())
             return true;
@@ -2526,7 +2560,7 @@ bool Cfm::Global::IncompleteTraceroutes::has_data() const
 
 bool Cfm::Global::IncompleteTraceroutes::has_operation() const
 {
-    for (std::size_t index=0; index<incomplete_traceroute.size(); index++)
+    for (std::size_t index=0; index<incomplete_traceroute.len(); index++)
     {
         if(incomplete_traceroute[index]->has_operation())
             return true;
@@ -2563,7 +2597,7 @@ std::shared_ptr<Entity> Cfm::Global::IncompleteTraceroutes::get_child_by_name(co
     {
         auto c = std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute>();
         c->parent = this;
-        incomplete_traceroute.push_back(c);
+        incomplete_traceroute.append(c);
         return c;
     }
 
@@ -2575,7 +2609,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::IncompleteTraceroute
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : incomplete_traceroute)
+    for (auto c : incomplete_traceroute.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2607,14 +2641,14 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::IncompleteTraceroute()
     service{YType::str, "service"},
     mep_id{YType::uint32, "mep-id"},
     interface{YType::str, "interface"},
-    transaction_id{YType::int32, "transaction-id"},
+    transaction_id{YType::uint32, "transaction-id"},
     time_left{YType::uint64, "time-left"}
-    	,
+        ,
     traceroute_information(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation>())
 {
     traceroute_information->parent = this;
 
-    yang_name = "incomplete-traceroute"; yang_parent_name = "incomplete-traceroutes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "incomplete-traceroute"; yang_parent_name = "incomplete-traceroutes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::~IncompleteTraceroute()
@@ -2623,6 +2657,7 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::~IncompleteTraceroute(
 
 bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| mep_id.is_set
@@ -2654,7 +2689,12 @@ std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_absolu
 std::string Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "incomplete-traceroute" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[interface='" <<interface <<"']" <<"[transaction-id='" <<transaction_id <<"']";
+    path_buffer << "incomplete-traceroute";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
+    ADD_KEY_TOKEN(mep_id, "mep-id");
+    ADD_KEY_TOKEN(interface, "interface");
+    ADD_KEY_TOKEN(transaction_id, "transaction-id");
     return path_buffer.str();
 }
 
@@ -2788,12 +2828,12 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
     timestamp{YType::uint64, "timestamp"},
     ttl{YType::uint8, "ttl"},
     transaction_id{YType::uint32, "transaction-id"}
-    	,
+        ,
     options(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options>())
 {
     options->parent = this;
 
-    yang_name = "traceroute-information"; yang_parent_name = "incomplete-traceroute"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traceroute-information"; yang_parent_name = "incomplete-traceroute"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::~TracerouteInformation()
@@ -2802,6 +2842,7 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
 
 bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| level.is_set
@@ -3027,14 +3068,14 @@ bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInforma
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::Options()
     :
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     basic_options(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions>())
-	,exploratory_options(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions>())
+    , exploratory_options(std::make_shared<Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions>())
 {
     basic_options->parent = this;
     exploratory_options->parent = this;
 
-    yang_name = "options"; yang_parent_name = "traceroute-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "options"; yang_parent_name = "traceroute-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::~Options()
@@ -3043,6 +3084,7 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
 
 bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| (basic_options !=  nullptr && basic_options->has_data())
 	|| (exploratory_options !=  nullptr && exploratory_options->has_data());
@@ -3144,7 +3186,7 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
     fdb_only{YType::boolean, "fdb-only"}
 {
 
-    yang_name = "basic-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::~BasicOptions()
@@ -3153,6 +3195,7 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
 
 bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::BasicOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return is_auto.is_set
 	|| fdb_only.is_set;
 }
@@ -3236,7 +3279,7 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
     reply_filter{YType::enumeration, "reply-filter"}
 {
 
-    yang_name = "exploratory-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exploratory-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::~ExploratoryOptions()
@@ -3245,6 +3288,7 @@ Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation:
 
 bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInformation::Options::ExploratoryOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return delay_model.is_set
 	|| delay_constant_factor.is_set
 	|| reply_filter.is_set;
@@ -3335,9 +3379,11 @@ bool Cfm::Global::IncompleteTraceroutes::IncompleteTraceroute::TracerouteInforma
 }
 
 Cfm::Global::MaintenancePoints::MaintenancePoints()
+    :
+    maintenance_point(this, {"domain", "service", "interface"})
 {
 
-    yang_name = "maintenance-points"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maintenance-points"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::MaintenancePoints::~MaintenancePoints()
@@ -3346,7 +3392,8 @@ Cfm::Global::MaintenancePoints::~MaintenancePoints()
 
 bool Cfm::Global::MaintenancePoints::has_data() const
 {
-    for (std::size_t index=0; index<maintenance_point.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<maintenance_point.len(); index++)
     {
         if(maintenance_point[index]->has_data())
             return true;
@@ -3356,7 +3403,7 @@ bool Cfm::Global::MaintenancePoints::has_data() const
 
 bool Cfm::Global::MaintenancePoints::has_operation() const
 {
-    for (std::size_t index=0; index<maintenance_point.size(); index++)
+    for (std::size_t index=0; index<maintenance_point.len(); index++)
     {
         if(maintenance_point[index]->has_operation())
             return true;
@@ -3393,7 +3440,7 @@ std::shared_ptr<Entity> Cfm::Global::MaintenancePoints::get_child_by_name(const 
     {
         auto c = std::make_shared<Cfm::Global::MaintenancePoints::MaintenancePoint>();
         c->parent = this;
-        maintenance_point.push_back(c);
+        maintenance_point.append(c);
         return c;
     }
 
@@ -3405,7 +3452,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MaintenancePoints::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : maintenance_point)
+    for (auto c : maintenance_point.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3438,12 +3485,12 @@ Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint()
     interface{YType::str, "interface"},
     mep_has_error{YType::boolean, "mep-has-error"},
     mac_address{YType::str, "mac-address"}
-    	,
+        ,
     maintenance_point(std::make_shared<Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_>())
 {
     maintenance_point->parent = this;
 
-    yang_name = "maintenance-point"; yang_parent_name = "maintenance-points"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "maintenance-point"; yang_parent_name = "maintenance-points"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::MaintenancePoints::MaintenancePoint::~MaintenancePoint()
@@ -3452,6 +3499,7 @@ Cfm::Global::MaintenancePoints::MaintenancePoint::~MaintenancePoint()
 
 bool Cfm::Global::MaintenancePoints::MaintenancePoint::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| interface.is_set
@@ -3481,7 +3529,10 @@ std::string Cfm::Global::MaintenancePoints::MaintenancePoint::get_absolute_path(
 std::string Cfm::Global::MaintenancePoints::MaintenancePoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "maintenance-point" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "maintenance-point";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -3600,7 +3651,7 @@ Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::Maintenance
     mep_id{YType::uint16, "mep-id"}
 {
 
-    yang_name = "maintenance-point"; yang_parent_name = "maintenance-point"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "maintenance-point"; yang_parent_name = "maintenance-point"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::~MaintenancePoint_()
@@ -3609,6 +3660,7 @@ Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::~Maintenanc
 
 bool Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_name.is_set
 	|| level.is_set
 	|| service_name.is_set
@@ -3738,9 +3790,11 @@ bool Cfm::Global::MaintenancePoints::MaintenancePoint::MaintenancePoint_::has_le
 }
 
 Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationErrors()
+    :
+    global_configuration_error(this, {"domain", "service"})
 {
 
-    yang_name = "global-configuration-errors"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-configuration-errors"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::GlobalConfigurationErrors::~GlobalConfigurationErrors()
@@ -3749,7 +3803,8 @@ Cfm::Global::GlobalConfigurationErrors::~GlobalConfigurationErrors()
 
 bool Cfm::Global::GlobalConfigurationErrors::has_data() const
 {
-    for (std::size_t index=0; index<global_configuration_error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_configuration_error.len(); index++)
     {
         if(global_configuration_error[index]->has_data())
             return true;
@@ -3759,7 +3814,7 @@ bool Cfm::Global::GlobalConfigurationErrors::has_data() const
 
 bool Cfm::Global::GlobalConfigurationErrors::has_operation() const
 {
-    for (std::size_t index=0; index<global_configuration_error.size(); index++)
+    for (std::size_t index=0; index<global_configuration_error.len(); index++)
     {
         if(global_configuration_error[index]->has_operation())
             return true;
@@ -3796,7 +3851,7 @@ std::shared_ptr<Entity> Cfm::Global::GlobalConfigurationErrors::get_child_by_nam
     {
         auto c = std::make_shared<Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError>();
         c->parent = this;
-        global_configuration_error.push_back(c);
+        global_configuration_error.append(c);
         return c;
     }
 
@@ -3808,7 +3863,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::GlobalConfigurationE
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_configuration_error)
+    for (auto c : global_configuration_error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3843,12 +3898,12 @@ Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::GlobalConfigur
     service_name{YType::str, "service-name"},
     bridge_domain_is_configured{YType::boolean, "bridge-domain-is-configured"},
     l2_fib_download_error{YType::boolean, "l2-fib-download-error"}
-    	,
+        ,
     bridge_domain_id(std::make_shared<Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId>())
 {
     bridge_domain_id->parent = this;
 
-    yang_name = "global-configuration-error"; yang_parent_name = "global-configuration-errors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-configuration-error"; yang_parent_name = "global-configuration-errors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::~GlobalConfigurationError()
@@ -3857,6 +3912,7 @@ Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::~GlobalConfigu
 
 bool Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| domain_name.is_set
@@ -3890,7 +3946,9 @@ std::string Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::ge
 std::string Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-configuration-error" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']";
+    path_buffer << "global-configuration-error";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
     return path_buffer.str();
 }
 
@@ -4031,7 +4089,7 @@ Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId
     evi{YType::uint32, "evi"}
 {
 
-    yang_name = "bridge-domain-id"; yang_parent_name = "global-configuration-error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bridge-domain-id"; yang_parent_name = "global-configuration-error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::~BridgeDomainId()
@@ -4040,6 +4098,7 @@ Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId
 
 bool Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDomainId::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_domain_id_format.is_set
 	|| group.is_set
 	|| name.is_set
@@ -4169,9 +4228,11 @@ bool Cfm::Global::GlobalConfigurationErrors::GlobalConfigurationError::BridgeDom
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationErrors()
+    :
+    mep_configuration_error(this, {"domain", "service", "interface"})
 {
 
-    yang_name = "mep-configuration-errors"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mep-configuration-errors"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::MepConfigurationErrors::~MepConfigurationErrors()
@@ -4180,7 +4241,8 @@ Cfm::Global::MepConfigurationErrors::~MepConfigurationErrors()
 
 bool Cfm::Global::MepConfigurationErrors::has_data() const
 {
-    for (std::size_t index=0; index<mep_configuration_error.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mep_configuration_error.len(); index++)
     {
         if(mep_configuration_error[index]->has_data())
             return true;
@@ -4190,7 +4252,7 @@ bool Cfm::Global::MepConfigurationErrors::has_data() const
 
 bool Cfm::Global::MepConfigurationErrors::has_operation() const
 {
-    for (std::size_t index=0; index<mep_configuration_error.size(); index++)
+    for (std::size_t index=0; index<mep_configuration_error.len(); index++)
     {
         if(mep_configuration_error[index]->has_operation())
             return true;
@@ -4227,7 +4289,7 @@ std::shared_ptr<Entity> Cfm::Global::MepConfigurationErrors::get_child_by_name(c
     {
         auto c = std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError>();
         c->parent = this;
-        mep_configuration_error.push_back(c);
+        mep_configuration_error.append(c);
         return c;
     }
 
@@ -4239,7 +4301,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::MepConfigurationErro
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mep_configuration_error)
+    for (auto c : mep_configuration_error.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4296,18 +4358,18 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::MepConfigurationErro
     no_mlacp{YType::boolean, "no-mlacp"},
     satellite_error_string{YType::str, "satellite-error-string"},
     satellite_id{YType::uint16, "satellite-id"}
-    	,
+        ,
     mep(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep>())
-	,service_bridge_domain(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain>())
-	,interface_bridge_domain(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain>())
-	,satellite_capabilities(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities>())
+    , service_bridge_domain(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain>())
+    , interface_bridge_domain(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain>())
+    , satellite_capabilities(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities>())
 {
     mep->parent = this;
     service_bridge_domain->parent = this;
     interface_bridge_domain->parent = this;
     satellite_capabilities->parent = this;
 
-    yang_name = "mep-configuration-error"; yang_parent_name = "mep-configuration-errors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mep-configuration-error"; yang_parent_name = "mep-configuration-errors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::~MepConfigurationError()
@@ -4316,6 +4378,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::~MepConfigurationErr
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| interface.is_set
@@ -4399,7 +4462,10 @@ std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_abso
 std::string Cfm::Global::MepConfigurationErrors::MepConfigurationError::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mep-configuration-error" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "mep-configuration-error";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -4824,7 +4890,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::Mep()
     mep_id{YType::uint16, "mep-id"}
 {
 
-    yang_name = "mep"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mep"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::~Mep()
@@ -4833,6 +4899,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::~Mep()
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::Mep::has_data() const
 {
+    if (is_presence_container) return true;
     return domain_name.is_set
 	|| level.is_set
 	|| service_name.is_set
@@ -4971,7 +5038,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain:
     evi{YType::uint32, "evi"}
 {
 
-    yang_name = "service-bridge-domain"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-bridge-domain"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::~ServiceBridgeDomain()
@@ -4980,6 +5047,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain:
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::ServiceBridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_domain_id_format.is_set
 	|| group.is_set
 	|| name.is_set
@@ -5118,7 +5186,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomai
     evi{YType::uint32, "evi"}
 {
 
-    yang_name = "interface-bridge-domain"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-bridge-domain"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::~InterfaceBridgeDomain()
@@ -5127,6 +5195,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomai
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridgeDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return bridge_domain_id_format.is_set
 	|| group.is_set
 	|| name.is_set
@@ -5258,14 +5327,14 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::InterfaceBridge
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SatelliteCapabilities()
     :
     loopback(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback>())
-	,delay_measurement(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement>())
-	,synthetic_loss_measurement(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement>())
+    , delay_measurement(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement>())
+    , synthetic_loss_measurement(std::make_shared<Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement>())
 {
     loopback->parent = this;
     delay_measurement->parent = this;
     synthetic_loss_measurement->parent = this;
 
-    yang_name = "satellite-capabilities"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "satellite-capabilities"; yang_parent_name = "mep-configuration-error"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::~SatelliteCapabilities()
@@ -5274,6 +5343,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::has_data() const
 {
+    if (is_presence_container) return true;
     return (loopback !=  nullptr && loopback->has_data())
 	|| (delay_measurement !=  nullptr && delay_measurement->has_data())
 	|| (synthetic_loss_measurement !=  nullptr && synthetic_loss_measurement->has_data());
@@ -5378,7 +5448,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
     controller{YType::boolean, "controller"}
 {
 
-    yang_name = "loopback"; yang_parent_name = "satellite-capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "loopback"; yang_parent_name = "satellite-capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::~Loopback()
@@ -5387,6 +5457,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::Loopback::has_data() const
 {
+    if (is_presence_container) return true;
     return responder.is_set
 	|| controller.is_set;
 }
@@ -5469,7 +5540,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
     controller{YType::boolean, "controller"}
 {
 
-    yang_name = "delay-measurement"; yang_parent_name = "satellite-capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delay-measurement"; yang_parent_name = "satellite-capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::~DelayMeasurement()
@@ -5478,6 +5549,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::DelayMeasurement::has_data() const
 {
+    if (is_presence_container) return true;
     return responder.is_set
 	|| controller.is_set;
 }
@@ -5560,7 +5632,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
     controller{YType::boolean, "controller"}
 {
 
-    yang_name = "synthetic-loss-measurement"; yang_parent_name = "satellite-capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "synthetic-loss-measurement"; yang_parent_name = "satellite-capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::~SyntheticLossMeasurement()
@@ -5569,6 +5641,7 @@ Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilitie
 
 bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabilities::SyntheticLossMeasurement::has_data() const
 {
+    if (is_presence_container) return true;
     return responder.is_set
 	|| controller.is_set;
 }
@@ -5646,9 +5719,11 @@ bool Cfm::Global::MepConfigurationErrors::MepConfigurationError::SatelliteCapabi
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCaches()
+    :
+    traceroute_cache(this, {"domain", "service", "mep_id", "interface", "transaction_id"})
 {
 
-    yang_name = "traceroute-caches"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traceroute-caches"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::TracerouteCaches::~TracerouteCaches()
@@ -5657,7 +5732,8 @@ Cfm::Global::TracerouteCaches::~TracerouteCaches()
 
 bool Cfm::Global::TracerouteCaches::has_data() const
 {
-    for (std::size_t index=0; index<traceroute_cache.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traceroute_cache.len(); index++)
     {
         if(traceroute_cache[index]->has_data())
             return true;
@@ -5667,7 +5743,7 @@ bool Cfm::Global::TracerouteCaches::has_data() const
 
 bool Cfm::Global::TracerouteCaches::has_operation() const
 {
-    for (std::size_t index=0; index<traceroute_cache.size(); index++)
+    for (std::size_t index=0; index<traceroute_cache.len(); index++)
     {
         if(traceroute_cache[index]->has_operation())
             return true;
@@ -5704,7 +5780,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::get_child_by_name(const s
     {
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache>();
         c->parent = this;
-        traceroute_cache.push_back(c);
+        traceroute_cache.append(c);
         return c;
     }
 
@@ -5716,7 +5792,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traceroute_cache)
+    for (auto c : traceroute_cache.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5748,14 +5824,16 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteCache()
     service{YType::str, "service"},
     mep_id{YType::uint32, "mep-id"},
     interface{YType::str, "interface"},
-    transaction_id{YType::int32, "transaction-id"},
+    transaction_id{YType::uint32, "transaction-id"},
     replies_dropped{YType::uint32, "replies-dropped"}
-    	,
+        ,
     traceroute_information(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation>())
+    , linktrace_reply(this, {})
+    , exploratory_linktrace_reply(this, {})
 {
     traceroute_information->parent = this;
 
-    yang_name = "traceroute-cache"; yang_parent_name = "traceroute-caches"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traceroute-cache"; yang_parent_name = "traceroute-caches"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::~TracerouteCache()
@@ -5764,12 +5842,13 @@ Cfm::Global::TracerouteCaches::TracerouteCache::~TracerouteCache()
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::has_data() const
 {
-    for (std::size_t index=0; index<linktrace_reply.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<linktrace_reply.len(); index++)
     {
         if(linktrace_reply[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<exploratory_linktrace_reply.size(); index++)
+    for (std::size_t index=0; index<exploratory_linktrace_reply.len(); index++)
     {
         if(exploratory_linktrace_reply[index]->has_data())
             return true;
@@ -5785,12 +5864,12 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::has_data() const
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::has_operation() const
 {
-    for (std::size_t index=0; index<linktrace_reply.size(); index++)
+    for (std::size_t index=0; index<linktrace_reply.len(); index++)
     {
         if(linktrace_reply[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<exploratory_linktrace_reply.size(); index++)
+    for (std::size_t index=0; index<exploratory_linktrace_reply.len(); index++)
     {
         if(exploratory_linktrace_reply[index]->has_operation())
             return true;
@@ -5815,7 +5894,12 @@ std::string Cfm::Global::TracerouteCaches::TracerouteCache::get_absolute_path() 
 std::string Cfm::Global::TracerouteCaches::TracerouteCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traceroute-cache" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[interface='" <<interface <<"']" <<"[transaction-id='" <<transaction_id <<"']";
+    path_buffer << "traceroute-cache";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
+    ADD_KEY_TOKEN(mep_id, "mep-id");
+    ADD_KEY_TOKEN(interface, "interface");
+    ADD_KEY_TOKEN(transaction_id, "transaction-id");
     return path_buffer.str();
 }
 
@@ -5849,7 +5933,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_chil
     {
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply>();
         c->parent = this;
-        linktrace_reply.push_back(c);
+        linktrace_reply.append(c);
         return c;
     }
 
@@ -5857,7 +5941,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::get_chil
     {
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply>();
         c->parent = this;
-        exploratory_linktrace_reply.push_back(c);
+        exploratory_linktrace_reply.append(c);
         return c;
     }
 
@@ -5874,7 +5958,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
     }
 
     count = 0;
-    for (auto const & c : linktrace_reply)
+    for (auto c : linktrace_reply.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5883,7 +5967,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
     }
 
     count = 0;
-    for (auto const & c : exploratory_linktrace_reply)
+    for (auto c : exploratory_linktrace_reply.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5983,12 +6067,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Tracerout
     timestamp{YType::uint64, "timestamp"},
     ttl{YType::uint8, "ttl"},
     transaction_id{YType::uint32, "transaction-id"}
-    	,
+        ,
     options(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options>())
 {
     options->parent = this;
 
-    yang_name = "traceroute-information"; yang_parent_name = "traceroute-cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traceroute-information"; yang_parent_name = "traceroute-cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::~TracerouteInformation()
@@ -5997,6 +6081,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::~Tracerou
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| level.is_set
@@ -6222,14 +6307,14 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::has_
 Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::Options()
     :
     mode{YType::enumeration, "mode"}
-    	,
+        ,
     basic_options(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions>())
-	,exploratory_options(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions>())
+    , exploratory_options(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions>())
 {
     basic_options->parent = this;
     exploratory_options->parent = this;
 
-    yang_name = "options"; yang_parent_name = "traceroute-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "options"; yang_parent_name = "traceroute-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::~Options()
@@ -6238,6 +6323,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::has_data() const
 {
+    if (is_presence_container) return true;
     return mode.is_set
 	|| (basic_options !=  nullptr && basic_options->has_data())
 	|| (exploratory_options !=  nullptr && exploratory_options->has_data());
@@ -6339,7 +6425,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::
     fdb_only{YType::boolean, "fdb-only"}
 {
 
-    yang_name = "basic-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "basic-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::~BasicOptions()
@@ -6348,6 +6434,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::BasicOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return is_auto.is_set
 	|| fdb_only.is_set;
 }
@@ -6431,7 +6518,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::
     reply_filter{YType::enumeration, "reply-filter"}
 {
 
-    yang_name = "exploratory-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exploratory-options"; yang_parent_name = "options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::~ExploratoryOptions()
@@ -6440,6 +6527,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Options::ExploratoryOptions::has_data() const
 {
+    if (is_presence_container) return true;
     return delay_model.is_set
 	|| delay_constant_factor.is_set
 	|| reply_filter.is_set;
@@ -6532,13 +6620,15 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::TracerouteInformation::Opti
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LinktraceReply()
     :
     raw_data{YType::str, "raw-data"}
-    	,
+        ,
     header(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header>())
-	,sender_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId>())
-	,egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId>())
-	,reply_ingress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress>())
-	,reply_egress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress>())
-	,last_hop(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop>())
+    , sender_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId>())
+    , egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId>())
+    , reply_ingress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress>())
+    , reply_egress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress>())
+    , last_hop(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop>())
+    , organization_specific_tlv(this, {})
+    , unknown_tlv(this, {})
 {
     header->parent = this;
     sender_id->parent = this;
@@ -6547,7 +6637,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LinktraceReply()
     reply_egress->parent = this;
     last_hop->parent = this;
 
-    yang_name = "linktrace-reply"; yang_parent_name = "traceroute-cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "linktrace-reply"; yang_parent_name = "traceroute-cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::~LinktraceReply()
@@ -6556,12 +6646,13 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::~LinktraceReply(
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::has_data() const
 {
-    for (std::size_t index=0; index<organization_specific_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<organization_specific_tlv.len(); index++)
     {
         if(organization_specific_tlv[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_data())
             return true;
@@ -6577,12 +6668,12 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::has_data() 
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::has_operation() const
 {
-    for (std::size_t index=0; index<organization_specific_tlv.size(); index++)
+    for (std::size_t index=0; index<organization_specific_tlv.len(); index++)
     {
         if(organization_specific_tlv[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_operation())
             return true;
@@ -6674,7 +6765,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
     {
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv>();
         c->parent = this;
-        organization_specific_tlv.push_back(c);
+        organization_specific_tlv.append(c);
         return c;
     }
 
@@ -6682,7 +6773,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Linktrac
     {
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(c);
+        unknown_tlv.append(c);
         return c;
     }
 
@@ -6724,7 +6815,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
     }
 
     count = 0;
-    for (auto const & c : organization_specific_tlv)
+    for (auto c : organization_specific_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6733,7 +6824,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
     }
 
     count = 0;
-    for (auto const & c : unknown_tlv)
+    for (auto c : unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6781,7 +6872,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::Header()
     relay_action{YType::enumeration, "relay-action"}
 {
 
-    yang_name = "header"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::~Header()
@@ -6790,6 +6881,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::~Header(
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| version.is_set
 	|| use_fdb_only.is_set
@@ -6948,12 +7040,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::Sender
     :
     management_address_domain{YType::str, "management-address-domain"},
     management_address{YType::str, "management-address"}
-    	,
+        ,
     chassis_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId>())
 {
     chassis_id->parent = this;
 
-    yang_name = "sender-id"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sender-id"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::~SenderId()
@@ -6962,6 +7054,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::~Sende
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::has_data() const
 {
+    if (is_presence_container) return true;
     return management_address_domain.is_set
 	|| management_address.is_set
 	|| (chassis_id !=  nullptr && chassis_id->has_data());
@@ -7059,12 +7152,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::Chassi
     chassis_id_type{YType::enumeration, "chassis-id-type"},
     chassis_id_type_value{YType::uint8, "chassis-id-type-value"},
     chassis_id{YType::str, "chassis-id"}
-    	,
+        ,
     chassis_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue>())
 {
     chassis_id_value->parent = this;
 
-    yang_name = "chassis-id"; yang_parent_name = "sender-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-id"; yang_parent_name = "sender-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::~ChassisId()
@@ -7073,6 +7166,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::Chassi
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::has_data() const
 {
+    if (is_presence_container) return true;
     return chassis_id_type.is_set
 	|| chassis_id_type_value.is_set
 	|| chassis_id.is_set
@@ -7186,7 +7280,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::Chassi
     chassis_id_raw{YType::str, "chassis-id-raw"}
 {
 
-    yang_name = "chassis-id-value"; yang_parent_name = "chassis-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-id-value"; yang_parent_name = "chassis-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::~ChassisIdValue()
@@ -7195,6 +7289,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::Chassi
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::ChassisId::ChassisIdValue::has_data() const
 {
+    if (is_presence_container) return true;
     return chassis_id_format.is_set
 	|| chassis_id_string.is_set
 	|| chassis_id_mac.is_set
@@ -7300,12 +7395,12 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::SenderId::C
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::EgressId()
     :
     last_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId>())
-	,next_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId>())
+    , next_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId>())
 {
     last_egress_id->parent = this;
     next_egress_id->parent = this;
 
-    yang_name = "egress-id"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "egress-id"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::~EgressId()
@@ -7314,6 +7409,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::~Egres
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return (last_egress_id !=  nullptr && last_egress_id->has_data())
 	|| (next_egress_id !=  nullptr && next_egress_id->has_data());
 }
@@ -7402,7 +7498,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEg
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "last-egress-id"; yang_parent_name = "egress-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-egress-id"; yang_parent_name = "egress-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::~LastEgressId()
@@ -7411,6 +7507,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEg
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::LastEgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -7493,7 +7590,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEg
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "next-egress-id"; yang_parent_name = "egress-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-egress-id"; yang_parent_name = "egress-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::~NextEgressId()
@@ -7502,6 +7599,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEg
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::EgressId::NextEgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -7582,12 +7680,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::Re
     :
     action{YType::enumeration, "action"},
     mac_address{YType::str, "mac-address"}
-    	,
+        ,
     port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId>())
 {
     port_id->parent = this;
 
-    yang_name = "reply-ingress"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reply-ingress"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::~ReplyIngress()
@@ -7596,6 +7694,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::~R
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| mac_address.is_set
 	|| (port_id !=  nullptr && port_id->has_data());
@@ -7693,12 +7792,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::Po
     port_id_type{YType::enumeration, "port-id-type"},
     port_id_type_value{YType::uint8, "port-id-type-value"},
     port_id{YType::str, "port-id"}
-    	,
+        ,
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
 
-    yang_name = "port-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::~PortId()
@@ -7707,6 +7806,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::Po
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_type.is_set
 	|| port_id_type_value.is_set
 	|| port_id.is_set
@@ -7820,7 +7920,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::Po
     port_id_raw{YType::str, "port-id-raw"}
 {
 
-    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::~PortIdValue()
@@ -7829,6 +7929,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::Po
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyIngress::PortId::PortIdValue::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_format.is_set
 	|| port_id_string.is_set
 	|| port_id_mac.is_set
@@ -7935,12 +8036,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::Rep
     :
     action{YType::enumeration, "action"},
     mac_address{YType::str, "mac-address"}
-    	,
+        ,
     port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId>())
 {
     port_id->parent = this;
 
-    yang_name = "reply-egress"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reply-egress"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::~ReplyEgress()
@@ -7949,6 +8050,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::~Re
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| mac_address.is_set
 	|| (port_id !=  nullptr && port_id->has_data());
@@ -8046,12 +8148,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::Por
     port_id_type{YType::enumeration, "port-id-type"},
     port_id_type_value{YType::uint8, "port-id-type-value"},
     port_id{YType::str, "port-id"}
-    	,
+        ,
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
 
-    yang_name = "port-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::~PortId()
@@ -8060,6 +8162,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::Por
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_type.is_set
 	|| port_id_type_value.is_set
 	|| port_id.is_set
@@ -8173,7 +8276,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::Por
     port_id_raw{YType::str, "port-id-raw"}
 {
 
-    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::~PortIdValue()
@@ -8182,6 +8285,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::Por
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::ReplyEgress::PortId::PortIdValue::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_format.is_set
 	|| port_id_string.is_set
 	|| port_id_mac.is_set
@@ -8288,12 +8392,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::LastHop
     :
     last_hop_format{YType::enumeration, "last-hop-format"},
     host_name{YType::str, "host-name"}
-    	,
+        ,
     egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId>())
 {
     egress_id->parent = this;
 
-    yang_name = "last-hop"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-hop"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::~LastHop()
@@ -8302,6 +8406,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::~LastHo
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::has_data() const
 {
+    if (is_presence_container) return true;
     return last_hop_format.is_set
 	|| host_name.is_set
 	|| (egress_id !=  nullptr && egress_id->has_data());
@@ -8400,7 +8505,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressI
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "egress-id"; yang_parent_name = "last-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "egress-id"; yang_parent_name = "last-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::~EgressId()
@@ -8409,6 +8514,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressI
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::LastHop::EgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -8492,7 +8598,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpec
     value_{YType::str, "value"}
 {
 
-    yang_name = "organization-specific-tlv"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "organization-specific-tlv"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::~OrganizationSpecificTlv()
@@ -8501,6 +8607,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpec
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::OrganizationSpecificTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| subtype.is_set
 	|| value_.is_set;
@@ -8596,7 +8703,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::Unkn
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-tlv"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv"; yang_parent_name = "linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::~UnknownTlv()
@@ -8605,6 +8712,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::~Unk
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return typecode.is_set
 	|| value_.is_set;
 }
@@ -8684,12 +8792,14 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::LinktraceReply::UnknownTlv:
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ExploratoryLinktraceReply()
     :
     raw_data{YType::str, "raw-data"}
-    	,
+        ,
     header(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header>())
-	,sender_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId>())
-	,reply_ingress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress>())
-	,reply_egress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress>())
-	,last_hop(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop>())
+    , sender_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId>())
+    , reply_ingress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress>())
+    , reply_egress(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress>())
+    , last_hop(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop>())
+    , organization_specific_tlv(this, {})
+    , unknown_tlv(this, {})
 {
     header->parent = this;
     sender_id->parent = this;
@@ -8697,7 +8807,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Explo
     reply_egress->parent = this;
     last_hop->parent = this;
 
-    yang_name = "exploratory-linktrace-reply"; yang_parent_name = "traceroute-cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "exploratory-linktrace-reply"; yang_parent_name = "traceroute-cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::~ExploratoryLinktraceReply()
@@ -8706,12 +8816,13 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::~Expl
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::has_data() const
 {
-    for (std::size_t index=0; index<organization_specific_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<organization_specific_tlv.len(); index++)
     {
         if(organization_specific_tlv[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_data())
             return true;
@@ -8726,12 +8837,12 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::has_operation() const
 {
-    for (std::size_t index=0; index<organization_specific_tlv.size(); index++)
+    for (std::size_t index=0; index<organization_specific_tlv.len(); index++)
     {
         if(organization_specific_tlv[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_operation())
             return true;
@@ -8813,7 +8924,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
     {
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv>();
         c->parent = this;
-        organization_specific_tlv.push_back(c);
+        organization_specific_tlv.append(c);
         return c;
     }
 
@@ -8821,7 +8932,7 @@ std::shared_ptr<Entity> Cfm::Global::TracerouteCaches::TracerouteCache::Explorat
     {
         auto c = std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(c);
+        unknown_tlv.append(c);
         return c;
     }
 
@@ -8858,7 +8969,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
     }
 
     count = 0;
-    for (auto const & c : organization_specific_tlv)
+    for (auto c : organization_specific_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8867,7 +8978,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::TracerouteCaches::Tr
     }
 
     count = 0;
-    for (auto const & c : unknown_tlv)
+    for (auto c : unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8917,7 +9028,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Heade
     delay_model{YType::enumeration, "delay-model"}
 {
 
-    yang_name = "header"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::~Header()
@@ -8926,6 +9037,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Heade
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| version.is_set
 	|| forwarded.is_set
@@ -9110,12 +9222,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
     :
     management_address_domain{YType::str, "management-address-domain"},
     management_address{YType::str, "management-address"}
-    	,
+        ,
     chassis_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId>())
 {
     chassis_id->parent = this;
 
-    yang_name = "sender-id"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sender-id"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::~SenderId()
@@ -9124,6 +9236,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::has_data() const
 {
+    if (is_presence_container) return true;
     return management_address_domain.is_set
 	|| management_address.is_set
 	|| (chassis_id !=  nullptr && chassis_id->has_data());
@@ -9221,12 +9334,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
     chassis_id_type{YType::enumeration, "chassis-id-type"},
     chassis_id_type_value{YType::uint8, "chassis-id-type-value"},
     chassis_id{YType::str, "chassis-id"}
-    	,
+        ,
     chassis_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue>())
 {
     chassis_id_value->parent = this;
 
-    yang_name = "chassis-id"; yang_parent_name = "sender-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-id"; yang_parent_name = "sender-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::~ChassisId()
@@ -9235,6 +9348,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::has_data() const
 {
+    if (is_presence_container) return true;
     return chassis_id_type.is_set
 	|| chassis_id_type_value.is_set
 	|| chassis_id.is_set
@@ -9348,7 +9462,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
     chassis_id_raw{YType::str, "chassis-id-raw"}
 {
 
-    yang_name = "chassis-id-value"; yang_parent_name = "chassis-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-id-value"; yang_parent_name = "chassis-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::~ChassisIdValue()
@@ -9357,6 +9471,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Sende
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::SenderId::ChassisId::ChassisIdValue::has_data() const
 {
+    if (is_presence_container) return true;
     return chassis_id_format.is_set
 	|| chassis_id_string.is_set
 	|| chassis_id_mac.is_set
@@ -9463,16 +9578,16 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     :
     action{YType::enumeration, "action"},
     mac_address{YType::str, "mac-address"}
-    	,
+        ,
     last_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId>())
-	,next_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId>())
-	,port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId>())
+    , next_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId>())
+    , port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId>())
 {
     last_egress_id->parent = this;
     next_egress_id->parent = this;
     port_id->parent = this;
 
-    yang_name = "reply-ingress"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reply-ingress"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::~ReplyIngress()
@@ -9481,6 +9596,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| mac_address.is_set
 	|| (last_egress_id !=  nullptr && last_egress_id->has_data())
@@ -9611,7 +9727,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "last-egress-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-egress-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::~LastEgressId()
@@ -9620,6 +9736,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::LastEgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -9702,7 +9819,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "next-egress-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-egress-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::~NextEgressId()
@@ -9711,6 +9828,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::NextEgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -9792,12 +9910,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     port_id_type{YType::enumeration, "port-id-type"},
     port_id_type_value{YType::uint8, "port-id-type-value"},
     port_id{YType::str, "port-id"}
-    	,
+        ,
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
 
-    yang_name = "port-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id"; yang_parent_name = "reply-ingress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::~PortId()
@@ -9806,6 +9924,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_type.is_set
 	|| port_id_type_value.is_set
 	|| port_id.is_set
@@ -9919,7 +10038,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     port_id_raw{YType::str, "port-id-raw"}
 {
 
-    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::~PortIdValue()
@@ -9928,6 +10047,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyIngress::PortId::PortIdValue::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_format.is_set
 	|| port_id_string.is_set
 	|| port_id_mac.is_set
@@ -10034,16 +10154,16 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     :
     action{YType::enumeration, "action"},
     mac_address{YType::str, "mac-address"}
-    	,
+        ,
     last_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId>())
-	,next_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId>())
-	,port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId>())
+    , next_egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId>())
+    , port_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId>())
 {
     last_egress_id->parent = this;
     next_egress_id->parent = this;
     port_id->parent = this;
 
-    yang_name = "reply-egress"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reply-egress"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::~ReplyEgress()
@@ -10052,6 +10172,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::has_data() const
 {
+    if (is_presence_container) return true;
     return action.is_set
 	|| mac_address.is_set
 	|| (last_egress_id !=  nullptr && last_egress_id->has_data())
@@ -10182,7 +10303,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "last-egress-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-egress-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::~LastEgressId()
@@ -10191,6 +10312,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::LastEgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -10273,7 +10395,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "next-egress-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-egress-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::~NextEgressId()
@@ -10282,6 +10404,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::NextEgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -10363,12 +10486,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     port_id_type{YType::enumeration, "port-id-type"},
     port_id_type_value{YType::uint8, "port-id-type-value"},
     port_id{YType::str, "port-id"}
-    	,
+        ,
     port_id_value(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue>())
 {
     port_id_value->parent = this;
 
-    yang_name = "port-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id"; yang_parent_name = "reply-egress"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::~PortId()
@@ -10377,6 +10500,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_type.is_set
 	|| port_id_type_value.is_set
 	|| port_id.is_set
@@ -10490,7 +10614,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
     port_id_raw{YType::str, "port-id-raw"}
 {
 
-    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-id-value"; yang_parent_name = "port-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::~PortIdValue()
@@ -10499,6 +10623,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Reply
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::ReplyEgress::PortId::PortIdValue::has_data() const
 {
+    if (is_presence_container) return true;
     return port_id_format.is_set
 	|| port_id_string.is_set
 	|| port_id_mac.is_set
@@ -10605,12 +10730,12 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastH
     :
     last_hop_format{YType::enumeration, "last-hop-format"},
     host_name{YType::str, "host-name"}
-    	,
+        ,
     egress_id(std::make_shared<Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId>())
 {
     egress_id->parent = this;
 
-    yang_name = "last-hop"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-hop"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::~LastHop()
@@ -10619,6 +10744,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastH
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::has_data() const
 {
+    if (is_presence_container) return true;
     return last_hop_format.is_set
 	|| host_name.is_set
 	|| (egress_id !=  nullptr && egress_id->has_data());
@@ -10717,7 +10843,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastH
     mac_address{YType::str, "mac-address"}
 {
 
-    yang_name = "egress-id"; yang_parent_name = "last-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "egress-id"; yang_parent_name = "last-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::~EgressId()
@@ -10726,6 +10852,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastH
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::LastHop::EgressId::has_data() const
 {
+    if (is_presence_container) return true;
     return unique_id.is_set
 	|| mac_address.is_set;
 }
@@ -10809,7 +10936,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Organ
     value_{YType::str, "value"}
 {
 
-    yang_name = "organization-specific-tlv"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "organization-specific-tlv"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::~OrganizationSpecificTlv()
@@ -10818,6 +10945,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Organ
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::OrganizationSpecificTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| subtype.is_set
 	|| value_.is_set;
@@ -10913,7 +11041,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Unkno
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-tlv"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv"; yang_parent_name = "exploratory-linktrace-reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::~UnknownTlv()
@@ -10922,6 +11050,7 @@ Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::Unkno
 
 bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return typecode.is_set
 	|| value_.is_set;
 }
@@ -10999,9 +11128,11 @@ bool Cfm::Global::TracerouteCaches::TracerouteCache::ExploratoryLinktraceReply::
 }
 
 Cfm::Global::LocalMeps::LocalMeps()
+    :
+    local_mep(this, {"domain", "service", "mep_id", "interface"})
 {
 
-    yang_name = "local-meps"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-meps"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::LocalMeps::~LocalMeps()
@@ -11010,7 +11141,8 @@ Cfm::Global::LocalMeps::~LocalMeps()
 
 bool Cfm::Global::LocalMeps::has_data() const
 {
-    for (std::size_t index=0; index<local_mep.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_mep.len(); index++)
     {
         if(local_mep[index]->has_data())
             return true;
@@ -11020,7 +11152,7 @@ bool Cfm::Global::LocalMeps::has_data() const
 
 bool Cfm::Global::LocalMeps::has_operation() const
 {
-    for (std::size_t index=0; index<local_mep.size(); index++)
+    for (std::size_t index=0; index<local_mep.len(); index++)
     {
         if(local_mep[index]->has_operation())
             return true;
@@ -11057,7 +11189,7 @@ std::shared_ptr<Entity> Cfm::Global::LocalMeps::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Cfm::Global::LocalMeps::LocalMep>();
         c->parent = this;
-        local_mep.push_back(c);
+        local_mep.append(c);
         return c;
     }
 
@@ -11069,7 +11201,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::LocalMeps::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_mep)
+    for (auto c : local_mep.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11131,16 +11263,16 @@ Cfm::Global::LocalMeps::LocalMep::LocalMep()
     standby{YType::boolean, "standby"},
     hairpin{YType::boolean, "hairpin"},
     defects_ignored{YType::boolean, "defects-ignored"}
-    	,
+        ,
     statistics(std::make_shared<Cfm::Global::LocalMeps::LocalMep::Statistics>())
-	,ais_statistics(std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics>())
-	,defects(std::make_shared<Cfm::Global::LocalMeps::LocalMep::Defects>())
+    , ais_statistics(std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics>())
+    , defects(std::make_shared<Cfm::Global::LocalMeps::LocalMep::Defects>())
 {
     statistics->parent = this;
     ais_statistics->parent = this;
     defects->parent = this;
 
-    yang_name = "local-mep"; yang_parent_name = "local-meps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-mep"; yang_parent_name = "local-meps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Cfm::Global::LocalMeps::LocalMep::~LocalMep()
@@ -11149,6 +11281,7 @@ Cfm::Global::LocalMeps::LocalMep::~LocalMep()
 
 bool Cfm::Global::LocalMeps::LocalMep::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| mep_id.is_set
@@ -11240,7 +11373,11 @@ std::string Cfm::Global::LocalMeps::LocalMep::get_absolute_path() const
 std::string Cfm::Global::LocalMeps::LocalMep::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-mep" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[mep-id='" <<mep_id <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "local-mep";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
+    ADD_KEY_TOKEN(mep_id, "mep-id");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -11728,7 +11865,7 @@ Cfm::Global::LocalMeps::LocalMep::Statistics::Statistics()
     bn_ms_discarded{YType::uint64, "bn-ms-discarded"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "local-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "local-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::LocalMeps::LocalMep::Statistics::~Statistics()
@@ -11737,6 +11874,7 @@ Cfm::Global::LocalMeps::LocalMep::Statistics::~Statistics()
 
 bool Cfm::Global::LocalMeps::LocalMep::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return ccms_sent.is_set
 	|| ccms_received.is_set
 	|| ccms_out_of_sequence.is_set
@@ -12159,14 +12297,14 @@ Cfm::Global::LocalMeps::LocalMep::AisStatistics::AisStatistics()
     receiving_ais{YType::enumeration, "receiving-ais"},
     last_interval{YType::enumeration, "last-interval"},
     last_mac_address{YType::str, "last-mac-address"}
-    	,
+        ,
     sending_start(std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart>())
-	,receiving_start(std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart>())
+    , receiving_start(std::make_shared<Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart>())
 {
     sending_start->parent = this;
     receiving_start->parent = this;
 
-    yang_name = "ais-statistics"; yang_parent_name = "local-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ais-statistics"; yang_parent_name = "local-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::LocalMeps::LocalMep::AisStatistics::~AisStatistics()
@@ -12175,6 +12313,7 @@ Cfm::Global::LocalMeps::LocalMep::AisStatistics::~AisStatistics()
 
 bool Cfm::Global::LocalMeps::LocalMep::AisStatistics::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| interval.is_set
 	|| sending_ais.is_set
@@ -12341,7 +12480,7 @@ Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::SendingStart()
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "sending-start"; yang_parent_name = "ais-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sending-start"; yang_parent_name = "ais-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::~SendingStart()
@@ -12350,6 +12489,7 @@ Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::~SendingStart()
 
 bool Cfm::Global::LocalMeps::LocalMep::AisStatistics::SendingStart::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -12432,7 +12572,7 @@ Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::ReceivingStart(
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "receiving-start"; yang_parent_name = "ais-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receiving-start"; yang_parent_name = "ais-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::~ReceivingStart()
@@ -12441,6 +12581,7 @@ Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::~ReceivingStart
 
 bool Cfm::Global::LocalMeps::LocalMep::AisStatistics::ReceivingStart::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -12526,12 +12667,12 @@ Cfm::Global::LocalMeps::LocalMep::Defects::Defects()
     unexpected{YType::uint32, "unexpected"},
     local_port_status{YType::boolean, "local-port-status"},
     peer_port_status{YType::boolean, "peer-port-status"}
-    	,
+        ,
     remote_meps_defects(std::make_shared<Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects>())
 {
     remote_meps_defects->parent = this;
 
-    yang_name = "defects"; yang_parent_name = "local-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "defects"; yang_parent_name = "local-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::LocalMeps::LocalMep::Defects::~Defects()
@@ -12540,6 +12681,7 @@ Cfm::Global::LocalMeps::LocalMep::Defects::~Defects()
 
 bool Cfm::Global::LocalMeps::LocalMep::Defects::has_data() const
 {
+    if (is_presence_container) return true;
     return ais_received.is_set
 	|| peer_meps_that_timed_out.is_set
 	|| missing.is_set
@@ -12708,7 +12850,7 @@ Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::RemoteMepsDefects(
     received_rdi{YType::boolean, "received-rdi"}
 {
 
-    yang_name = "remote-meps-defects"; yang_parent_name = "defects"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-meps-defects"; yang_parent_name = "defects"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::~RemoteMepsDefects()
@@ -12717,6 +12859,7 @@ Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::~RemoteMepsDefects
 
 bool Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::has_data() const
 {
+    if (is_presence_container) return true;
     return loss_threshold_exceeded.is_set
 	|| invalid_level.is_set
 	|| invalid_maid.is_set
@@ -12858,19 +13001,22 @@ bool Cfm::Global::LocalMeps::LocalMep::Defects::RemoteMepsDefects::has_leaf_or_c
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2S()
+Cfm::Global::PeerMePv2s::PeerMePv2s()
+    :
+    peer_me_pv2(this, {"domain", "service", "local_mep_id", "interface", "peer_mep_id", "peer_mac_address"})
 {
 
-    yang_name = "peer-me-pv2s"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-me-pv2s"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Cfm::Global::PeerMePv2S::~PeerMePv2S()
+Cfm::Global::PeerMePv2s::~PeerMePv2s()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::has_data() const
+bool Cfm::Global::PeerMePv2s::has_data() const
 {
-    for (std::size_t index=0; index<peer_me_pv2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_me_pv2.len(); index++)
     {
         if(peer_me_pv2[index]->has_data())
             return true;
@@ -12878,9 +13024,9 @@ bool Cfm::Global::PeerMePv2S::has_data() const
     return false;
 }
 
-bool Cfm::Global::PeerMePv2S::has_operation() const
+bool Cfm::Global::PeerMePv2s::has_operation() const
 {
-    for (std::size_t index=0; index<peer_me_pv2.size(); index++)
+    for (std::size_t index=0; index<peer_me_pv2.len(); index++)
     {
         if(peer_me_pv2[index]->has_operation())
             return true;
@@ -12888,21 +13034,21 @@ bool Cfm::Global::PeerMePv2S::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::get_absolute_path() const
+std::string Cfm::Global::PeerMePv2s::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ethernet-cfm-oper:cfm/global/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Cfm::Global::PeerMePv2S::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-me-pv2s";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12911,25 +13057,25 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::get_name
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-me-pv2")
     {
-        auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2>();
+        auto c = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2>();
         c->parent = this;
-        peer_me_pv2.push_back(c);
+        peer_me_pv2.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_me_pv2)
+    for (auto c : peer_me_pv2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12940,22 +13086,22 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::get_chil
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Cfm::Global::PeerMePv2S::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Cfm::Global::PeerMePv2S::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peer-me-pv2")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMePv2()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMePv2()
     :
     domain{YType::str, "domain"},
     service{YType::str, "service"},
@@ -12970,20 +13116,21 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMePv2()
     interface_xr{YType::str, "interface-xr"},
     mep_direction{YType::enumeration, "mep-direction"},
     standby{YType::boolean, "standby"}
-    	,
-    peer_mep(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep>())
+        ,
+    peer_mep(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep>())
 {
     peer_mep->parent = this;
 
-    yang_name = "peer-me-pv2"; yang_parent_name = "peer-me-pv2s"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "peer-me-pv2"; yang_parent_name = "peer-me-pv2s"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::~PeerMePv2()
+Cfm::Global::PeerMePv2s::PeerMePv2::~PeerMePv2()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::has_data() const
 {
+    if (is_presence_container) return true;
     return domain.is_set
 	|| service.is_set
 	|| local_mep_id.is_set
@@ -13000,7 +13147,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::has_data() const
 	|| (peer_mep !=  nullptr && peer_mep->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(domain.yfilter)
@@ -13019,21 +13166,27 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::has_operation() const
 	|| (peer_mep !=  nullptr && peer_mep->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::get_absolute_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ethernet-cfm-oper:cfm/global/peer-me-pv2s/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer-me-pv2" <<"[domain='" <<domain <<"']" <<"[service='" <<service <<"']" <<"[local-mep-id='" <<local_mep_id <<"']" <<"[interface='" <<interface <<"']" <<"[peer-mep-id='" <<peer_mep_id <<"']" <<"[peer-mac-address='" <<peer_mac_address <<"']";
+    path_buffer << "peer-me-pv2";
+    ADD_KEY_TOKEN(domain, "domain");
+    ADD_KEY_TOKEN(service, "service");
+    ADD_KEY_TOKEN(local_mep_id, "local-mep-id");
+    ADD_KEY_TOKEN(interface, "interface");
+    ADD_KEY_TOKEN(peer_mep_id, "peer-mep-id");
+    ADD_KEY_TOKEN(peer_mac_address, "peer-mac-address");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13055,13 +13208,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "peer-mep")
     {
         if(peer_mep == nullptr)
         {
-            peer_mep = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep>();
+            peer_mep = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep>();
         }
         return peer_mep;
     }
@@ -13069,7 +13222,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::get_child_by_name(co
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13081,7 +13234,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "domain")
     {
@@ -13163,7 +13316,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::set_value(const std::string & value_pat
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "domain")
     {
@@ -13219,40 +13372,41 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::set_filter(const std::string & value_pa
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "peer-mep" || name == "domain" || name == "service" || name == "local-mep-id" || name == "interface" || name == "peer-mep-id" || name == "peer-mac-address" || name == "domain-xr" || name == "service-xr" || name == "level" || name == "mep-id" || name == "interface-xr" || name == "mep-direction" || name == "standby")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::PeerMep()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::PeerMep()
     :
     mep_id{YType::uint16, "mep-id"},
     mac_address{YType::str, "mac-address"},
     cross_check_state{YType::enumeration, "cross-check-state"},
     peer_mep_state{YType::enumeration, "peer-mep-state"},
     ccm_offload{YType::enumeration, "ccm-offload"}
-    	,
-    error_state(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState>())
-	,last_up_down_time(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime>())
-	,last_ccm_received(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived>())
-	,statistics(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics>())
+        ,
+    error_state(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState>())
+    , last_up_down_time(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime>())
+    , last_ccm_received(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived>())
+    , statistics(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics>())
 {
     error_state->parent = this;
     last_up_down_time->parent = this;
     last_ccm_received->parent = this;
     statistics->parent = this;
 
-    yang_name = "peer-mep"; yang_parent_name = "peer-me-pv2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-mep"; yang_parent_name = "peer-me-pv2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::~PeerMep()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::~PeerMep()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::has_data() const
 {
+    if (is_presence_container) return true;
     return mep_id.is_set
 	|| mac_address.is_set
 	|| cross_check_state.is_set
@@ -13264,7 +13418,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::has_data() const
 	|| (statistics !=  nullptr && statistics->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mep_id.yfilter)
@@ -13278,14 +13432,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::has_operation() const
 	|| (statistics !=  nullptr && statistics->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-mep";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13299,13 +13453,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "error-state")
     {
         if(error_state == nullptr)
         {
-            error_state = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState>();
+            error_state = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState>();
         }
         return error_state;
     }
@@ -13314,7 +13468,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_child_b
     {
         if(last_up_down_time == nullptr)
         {
-            last_up_down_time = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime>();
+            last_up_down_time = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime>();
         }
         return last_up_down_time;
     }
@@ -13323,7 +13477,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_child_b
     {
         if(last_ccm_received == nullptr)
         {
-            last_ccm_received = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived>();
+            last_ccm_received = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived>();
         }
         return last_ccm_received;
     }
@@ -13332,7 +13486,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_child_b
     {
         if(statistics == nullptr)
         {
-            statistics = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics>();
+            statistics = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics>();
         }
         return statistics;
     }
@@ -13340,7 +13494,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_child_b
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13367,7 +13521,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mep-id")
     {
@@ -13401,7 +13555,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::set_value(const std::string & 
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mep-id")
     {
@@ -13425,14 +13579,14 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::set_filter(const std::string &
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "error-state" || name == "last-up-down-time" || name == "last-ccm-received" || name == "statistics" || name == "mep-id" || name == "mac-address" || name == "cross-check-state" || name == "peer-mep-state" || name == "ccm-offload")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::ErrorState()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::ErrorState()
     :
     loss_threshold_exceeded{YType::boolean, "loss-threshold-exceeded"},
     invalid_level{YType::boolean, "invalid-level"},
@@ -13443,15 +13597,16 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::ErrorState()
     received_rdi{YType::boolean, "received-rdi"}
 {
 
-    yang_name = "error-state"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "error-state"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::~ErrorState()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::~ErrorState()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::has_data() const
 {
+    if (is_presence_container) return true;
     return loss_threshold_exceeded.is_set
 	|| invalid_level.is_set
 	|| invalid_maid.is_set
@@ -13461,7 +13616,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::has_data() const
 	|| received_rdi.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(loss_threshold_exceeded.yfilter)
@@ -13473,14 +13628,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::has_operation() co
 	|| ydk::is_set(received_rdi.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "error-state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13496,19 +13651,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "loss-threshold-exceeded")
     {
@@ -13554,7 +13709,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::set_value(const st
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "loss-threshold-exceeded")
     {
@@ -13586,47 +13741,48 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::set_filter(const s
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::ErrorState::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::ErrorState::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "loss-threshold-exceeded" || name == "invalid-level" || name == "invalid-maid" || name == "invalid-ccm-interval" || name == "received-our-mac" || name == "received-our-mep-id" || name == "received-rdi")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::LastUpDownTime()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::LastUpDownTime()
     :
     seconds{YType::uint32, "seconds"},
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "last-up-down-time"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-up-down-time"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::~LastUpDownTime()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::~LastUpDownTime()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(seconds.yfilter)
 	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "last-up-down-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13637,19 +13793,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "seconds")
     {
@@ -13665,7 +13821,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::set_value(cons
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "seconds")
     {
@@ -13677,43 +13833,46 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::set_filter(con
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastUpDownTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastUpDownTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::LastCcmReceived()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::LastCcmReceived()
     :
     port_status{YType::enumeration, "port-status"},
     interface_status{YType::enumeration, "interface-status"},
     additional_interface_status{YType::enumeration, "additional-interface-status"},
     raw_data{YType::str, "raw-data"}
-    	,
-    header(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header>())
-	,sender_id(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId>())
-	,mep_name(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName>())
+        ,
+    header(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header>())
+    , sender_id(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId>())
+    , mep_name(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName>())
+    , organization_specific_tlv(this, {})
+    , unknown_tlv(this, {})
 {
     header->parent = this;
     sender_id->parent = this;
     mep_name->parent = this;
 
-    yang_name = "last-ccm-received"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-ccm-received"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::~LastCcmReceived()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::~LastCcmReceived()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::has_data() const
 {
-    for (std::size_t index=0; index<organization_specific_tlv.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<organization_specific_tlv.len(); index++)
     {
         if(organization_specific_tlv[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_data())
             return true;
@@ -13727,14 +13886,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::has_data() co
 	|| (mep_name !=  nullptr && mep_name->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::has_operation() const
 {
-    for (std::size_t index=0; index<organization_specific_tlv.size(); index++)
+    for (std::size_t index=0; index<organization_specific_tlv.len(); index++)
     {
         if(organization_specific_tlv[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_tlv.size(); index++)
+    for (std::size_t index=0; index<unknown_tlv.len(); index++)
     {
         if(unknown_tlv[index]->has_operation())
             return true;
@@ -13749,14 +13908,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::has_operation
 	|| (mep_name !=  nullptr && mep_name->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "last-ccm-received";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13769,13 +13928,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "header")
     {
         if(header == nullptr)
         {
-            header = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header>();
+            header = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header>();
         }
         return header;
     }
@@ -13784,7 +13943,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     {
         if(sender_id == nullptr)
         {
-            sender_id = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId>();
+            sender_id = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId>();
         }
         return sender_id;
     }
@@ -13793,31 +13952,31 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     {
         if(mep_name == nullptr)
         {
-            mep_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName>();
+            mep_name = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName>();
         }
         return mep_name;
     }
 
     if(child_yang_name == "organization-specific-tlv")
     {
-        auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv>();
+        auto c = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv>();
         c->parent = this;
-        organization_specific_tlv.push_back(c);
+        organization_specific_tlv.append(c);
         return c;
     }
 
     if(child_yang_name == "unknown-tlv")
     {
-        auto c = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv>();
+        auto c = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv>();
         c->parent = this;
-        unknown_tlv.push_back(c);
+        unknown_tlv.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13837,7 +13996,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     }
 
     count = 0;
-    for (auto const & c : organization_specific_tlv)
+    for (auto c : organization_specific_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13846,7 +14005,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     }
 
     count = 0;
-    for (auto const & c : unknown_tlv)
+    for (auto c : unknown_tlv.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13857,7 +14016,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "port-status")
     {
@@ -13885,7 +14044,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::set_value(con
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "port-status")
     {
@@ -13905,14 +14064,14 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::set_filter(co
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "header" || name == "sender-id" || name == "mep-name" || name == "organization-specific-tlv" || name == "unknown-tlv" || name == "port-status" || name == "interface-status" || name == "additional-interface-status" || name == "raw-data")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Header()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Header()
     :
     level{YType::enumeration, "level"},
     version{YType::uint8, "version"},
@@ -13922,22 +14081,23 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Header()
     mep_id{YType::uint16, "mep-id"},
     mdid_format{YType::uint8, "mdid-format"},
     short_ma_name_format{YType::uint8, "short-ma-name-format"}
-    	,
-    mdid(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid>())
-	,short_ma_name(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName>())
+        ,
+    mdid(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid>())
+    , short_ma_name(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName>())
 {
     mdid->parent = this;
     short_ma_name->parent = this;
 
-    yang_name = "header"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::~Header()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::~Header()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| version.is_set
 	|| interval.is_set
@@ -13950,7 +14110,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::has_d
 	|| (short_ma_name !=  nullptr && short_ma_name->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(level.yfilter)
@@ -13965,14 +14125,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::has_o
 	|| (short_ma_name !=  nullptr && short_ma_name->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "header";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13989,13 +14149,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mdid")
     {
         if(mdid == nullptr)
         {
-            mdid = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid>();
+            mdid = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid>();
         }
         return mdid;
     }
@@ -14004,7 +14164,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     {
         if(short_ma_name == nullptr)
         {
-            short_ma_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName>();
+            short_ma_name = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName>();
         }
         return short_ma_name;
     }
@@ -14012,7 +14172,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14029,7 +14189,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "level")
     {
@@ -14081,7 +14241,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::set_v
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "level")
     {
@@ -14117,33 +14277,34 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::set_f
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mdid" || name == "short-ma-name" || name == "level" || name == "version" || name == "interval" || name == "rdi" || name == "sequence-number" || name == "mep-id" || name == "mdid-format" || name == "short-ma-name-format")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::Mdid()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::Mdid()
     :
     mdid_format_value{YType::enumeration, "mdid-format-value"},
     dns_like_name{YType::str, "dns-like-name"},
     string_name{YType::str, "string-name"},
     mdid_data{YType::str, "mdid-data"}
-    	,
-    mac_name(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName>())
+        ,
+    mac_name(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName>())
 {
     mac_name->parent = this;
 
-    yang_name = "mdid"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mdid"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::~Mdid()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::~Mdid()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::has_data() const
 {
+    if (is_presence_container) return true;
     return mdid_format_value.is_set
 	|| dns_like_name.is_set
 	|| string_name.is_set
@@ -14151,7 +14312,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid:
 	|| (mac_name !=  nullptr && mac_name->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mdid_format_value.yfilter)
@@ -14161,14 +14322,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid:
 	|| (mac_name !=  nullptr && mac_name->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mdid";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14181,13 +14342,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "mac-name")
     {
         if(mac_name == nullptr)
         {
-            mac_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName>();
+            mac_name = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName>();
         }
         return mac_name;
     }
@@ -14195,7 +14356,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14207,7 +14368,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mdid-format-value")
     {
@@ -14235,7 +14396,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid:
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mdid-format-value")
     {
@@ -14255,47 +14416,48 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid:
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-name" || name == "mdid-format-value" || name == "dns-like-name" || name == "string-name" || name == "mdid-data")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::MacName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::MacName()
     :
     mac_address{YType::str, "mac-address"},
     integer{YType::uint16, "integer"}
 {
 
-    yang_name = "mac-name"; yang_parent_name = "mdid"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-name"; yang_parent_name = "mdid"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::~MacName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::~MacName()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| integer.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(mac_address.yfilter)
 	|| ydk::is_set(integer.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14306,19 +14468,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "mac-address")
     {
@@ -14334,7 +14496,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid:
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "mac-address")
     {
@@ -14346,14 +14508,14 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid:
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::Mdid::MacName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mac-address" || name == "integer")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::ShortMaName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::ShortMaName()
     :
     short_ma_name_format_value{YType::enumeration, "short-ma-name-format-value"},
     vlan_id_name{YType::uint16, "vlan-id-name"},
@@ -14361,20 +14523,21 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaNam
     integer_name{YType::uint16, "integer-name"},
     icc_based{YType::str, "icc-based"},
     short_ma_name_data{YType::str, "short-ma-name-data"}
-    	,
-    vpn_id_name(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName>())
+        ,
+    vpn_id_name(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName>())
 {
     vpn_id_name->parent = this;
 
-    yang_name = "short-ma-name"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "short-ma-name"; yang_parent_name = "header"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::~ShortMaName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::~ShortMaName()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::has_data() const
 {
+    if (is_presence_container) return true;
     return short_ma_name_format_value.is_set
 	|| vlan_id_name.is_set
 	|| string_name.is_set
@@ -14384,7 +14547,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Short
 	|| (vpn_id_name !=  nullptr && vpn_id_name->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(short_ma_name_format_value.yfilter)
@@ -14396,14 +14559,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Short
 	|| (vpn_id_name !=  nullptr && vpn_id_name->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "short-ma-name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14418,13 +14581,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vpn-id-name")
     {
         if(vpn_id_name == nullptr)
         {
-            vpn_id_name = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName>();
+            vpn_id_name = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName>();
         }
         return vpn_id_name;
     }
@@ -14432,7 +14595,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14444,7 +14607,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "short-ma-name-format-value")
     {
@@ -14484,7 +14647,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Short
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "short-ma-name-format-value")
     {
@@ -14512,47 +14675,48 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Short
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vpn-id-name" || name == "short-ma-name-format-value" || name == "vlan-id-name" || name == "string-name" || name == "integer-name" || name == "icc-based" || name == "short-ma-name-data")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::VpnIdName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::VpnIdName()
     :
     oui{YType::uint32, "oui"},
     index_{YType::uint32, "index"}
 {
 
-    yang_name = "vpn-id-name"; yang_parent_name = "short-ma-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vpn-id-name"; yang_parent_name = "short-ma-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::~VpnIdName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::~VpnIdName()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| index_.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oui.yfilter)
 	|| ydk::is_set(index_.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vpn-id-name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14563,19 +14727,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oui")
     {
@@ -14591,7 +14755,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Short
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oui")
     {
@@ -14603,37 +14767,38 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::Short
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::Header::ShortMaName::VpnIdName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oui" || name == "index")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::SenderId()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::SenderId()
     :
     management_address_domain{YType::str, "management-address-domain"},
     management_address{YType::str, "management-address"}
-    	,
-    chassis_id(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId>())
+        ,
+    chassis_id(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId>())
 {
     chassis_id->parent = this;
 
-    yang_name = "sender-id"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sender-id"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::~SenderId()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::~SenderId()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has_data() const
 {
+    if (is_presence_container) return true;
     return management_address_domain.is_set
 	|| management_address.is_set
 	|| (chassis_id !=  nullptr && chassis_id->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(management_address_domain.yfilter)
@@ -14641,14 +14806,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has
 	|| (chassis_id !=  nullptr && chassis_id->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sender-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14659,13 +14824,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis-id")
     {
         if(chassis_id == nullptr)
         {
-            chassis_id = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId>();
+            chassis_id = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId>();
         }
         return chassis_id;
     }
@@ -14673,7 +14838,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14685,7 +14850,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "management-address-domain")
     {
@@ -14701,7 +14866,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::set
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "management-address-domain")
     {
@@ -14713,39 +14878,40 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::set
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "chassis-id" || name == "management-address-domain" || name == "management-address")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisId()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisId()
     :
     chassis_id_type{YType::enumeration, "chassis-id-type"},
     chassis_id_type_value{YType::uint8, "chassis-id-type-value"},
     chassis_id{YType::str, "chassis-id"}
-    	,
-    chassis_id_value(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue>())
+        ,
+    chassis_id_value(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue>())
 {
     chassis_id_value->parent = this;
 
-    yang_name = "chassis-id"; yang_parent_name = "sender-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-id"; yang_parent_name = "sender-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::~ChassisId()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::~ChassisId()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::has_data() const
 {
+    if (is_presence_container) return true;
     return chassis_id_type.is_set
 	|| chassis_id_type_value.is_set
 	|| chassis_id.is_set
 	|| (chassis_id_value !=  nullptr && chassis_id_value->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(chassis_id_type.yfilter)
@@ -14754,14 +14920,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Cha
 	|| (chassis_id_value !=  nullptr && chassis_id_value->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "chassis-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14773,13 +14939,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "chassis-id-value")
     {
         if(chassis_id_value == nullptr)
         {
-            chassis_id_value = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue>();
+            chassis_id_value = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue>();
         }
         return chassis_id_value;
     }
@@ -14787,7 +14953,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmRece
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14799,7 +14965,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id-type")
     {
@@ -14821,7 +14987,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Cha
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "chassis-id-type")
     {
@@ -14837,14 +15003,14 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Cha
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "chassis-id-value" || name == "chassis-id-type" || name == "chassis-id-type-value" || name == "chassis-id")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::ChassisIdValue()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::ChassisIdValue()
     :
     chassis_id_format{YType::enumeration, "chassis-id-format"},
     chassis_id_string{YType::str, "chassis-id-string"},
@@ -14852,22 +15018,23 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisI
     chassis_id_raw{YType::str, "chassis-id-raw"}
 {
 
-    yang_name = "chassis-id-value"; yang_parent_name = "chassis-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "chassis-id-value"; yang_parent_name = "chassis-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::~ChassisIdValue()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::~ChassisIdValue()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::has_data() const
 {
+    if (is_presence_container) return true;
     return chassis_id_format.is_set
 	|| chassis_id_string.is_set
 	|| chassis_id_mac.is_set
 	|| chassis_id_raw.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(chassis_id_format.yfilter)
@@ -14876,14 +15043,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Cha
 	|| ydk::is_set(chassis_id_raw.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "chassis-id-value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14896,19 +15063,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "chassis-id-format")
     {
@@ -14936,7 +15103,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Cha
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "chassis-id-format")
     {
@@ -14956,44 +15123,45 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::Cha
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::SenderId::ChassisId::ChassisIdValue::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "chassis-id-format" || name == "chassis-id-string" || name == "chassis-id-mac" || name == "chassis-id-raw")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::MepName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::MepName()
     :
     name{YType::str, "name"}
 {
 
-    yang_name = "mep-name"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mep-name"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::~MepName()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::~MepName()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mep-name";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15003,19 +15171,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -15025,7 +15193,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::set_
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -15033,35 +15201,36 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::set_
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::MepName::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::MepName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "name")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::OrganizationSpecificTlv()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::OrganizationSpecificTlv()
     :
     oui{YType::str, "oui"},
     subtype{YType::uint8, "subtype"},
     value_{YType::str, "value"}
 {
 
-    yang_name = "organization-specific-tlv"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "organization-specific-tlv"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::~OrganizationSpecificTlv()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::~OrganizationSpecificTlv()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return oui.is_set
 	|| subtype.is_set
 	|| value_.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(oui.yfilter)
@@ -15069,14 +15238,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationS
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "organization-specific-tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15088,19 +15257,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "oui")
     {
@@ -15122,7 +15291,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationS
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "oui")
     {
@@ -15138,47 +15307,48 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationS
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::OrganizationSpecificTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "oui" || name == "subtype" || name == "value")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::UnknownTlv()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::UnknownTlv()
     :
     typecode{YType::uint8, "typecode"},
     value_{YType::str, "value"}
 {
 
-    yang_name = "unknown-tlv"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-tlv"; yang_parent_name = "last-ccm-received"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::~UnknownTlv()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::~UnknownTlv()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::has_data() const
 {
+    if (is_presence_container) return true;
     return typecode.is_set
 	|| value_.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(typecode.yfilter)
 	|| ydk::is_set(value_.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-tlv";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15189,19 +15359,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "typecode")
     {
@@ -15217,7 +15387,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::s
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "typecode")
     {
@@ -15229,14 +15399,14 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::s
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::LastCcmReceived::UnknownTlv::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "typecode" || name == "value")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::Statistics()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::Statistics()
     :
     ccms_received{YType::uint64, "ccms-received"},
     ccms_wrong_level{YType::uint64, "ccms-wrong-level"},
@@ -15247,20 +15417,21 @@ Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::Statistics()
     ccms_rdi{YType::uint64, "ccms-rdi"},
     ccms_out_of_sequence{YType::uint64, "ccms-out-of-sequence"},
     last_ccm_sequence_number{YType::uint32, "last-ccm-sequence-number"}
-    	,
-    last_ccm_received_time(std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime>())
+        ,
+    last_ccm_received_time(std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime>())
 {
     last_ccm_received_time->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "peer-mep"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::~Statistics()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::~Statistics()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return ccms_received.is_set
 	|| ccms_wrong_level.is_set
 	|| ccms_invalid_maid.is_set
@@ -15273,7 +15444,7 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::has_data() const
 	|| (last_ccm_received_time !=  nullptr && last_ccm_received_time->has_data());
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccms_received.yfilter)
@@ -15288,14 +15459,14 @@ bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::has_operation() co
 	|| (last_ccm_received_time !=  nullptr && last_ccm_received_time->has_operation());
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "statistics";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15313,13 +15484,13 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "last-ccm-received-time")
     {
         if(last_ccm_received_time == nullptr)
         {
-            last_ccm_received_time = std::make_shared<Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime>();
+            last_ccm_received_time = std::make_shared<Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime>();
         }
         return last_ccm_received_time;
     }
@@ -15327,7 +15498,7 @@ std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15339,7 +15510,7 @@ std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ccms-received")
     {
@@ -15397,7 +15568,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::set_value(const st
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ccms-received")
     {
@@ -15437,47 +15608,48 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::set_filter(const s
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "last-ccm-received-time" || name == "ccms-received" || name == "ccms-wrong-level" || name == "ccms-invalid-maid" || name == "ccms-invalid-interval" || name == "ccms-invalid-source-mac-address" || name == "ccms-our-mep-id" || name == "ccms-rdi" || name == "ccms-out-of-sequence" || name == "last-ccm-sequence-number")
         return true;
     return false;
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::LastCcmReceivedTime()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::LastCcmReceivedTime()
     :
     seconds{YType::uint32, "seconds"},
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "last-ccm-received-time"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-ccm-received-time"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::~LastCcmReceivedTime()
+Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::~LastCcmReceivedTime()
 {
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::has_data() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::has_operation() const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(seconds.yfilter)
 	|| ydk::is_set(nanoseconds.yfilter);
 }
 
-std::string Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_segment_path() const
+std::string Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "last-ccm-received-time";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15488,19 +15660,19 @@ std::vector<std::pair<std::string, LeafData> > Cfm::Global::PeerMePv2S::PeerMePv
 
 }
 
-std::shared_ptr<Entity> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "seconds")
     {
@@ -15516,7 +15688,7 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTim
     }
 }
 
-void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
+void Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "seconds")
     {
@@ -15528,15 +15700,21 @@ void Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTim
     }
 }
 
-bool Cfm::Global::PeerMePv2S::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
+bool Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "seconds" || name == "nanoseconds")
         return true;
     return false;
 }
 
-const Enum::YLeaf CfmAisDir::up {0, "up"};
-const Enum::YLeaf CfmAisDir::down {1, "down"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_ok {1, "elr-ingress-ok"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_down {2, "elr-ingress-down"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_blocked {3, "elr-ingress-blocked"};
+const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_vid {4, "elr-ingress-vid"};
+
+const Enum::YLeaf CfmPmRelayAction::relay_hit {1, "relay-hit"};
+const Enum::YLeaf CfmPmRelayAction::relay_fdb {2, "relay-fdb"};
+const Enum::YLeaf CfmPmRelayAction::relay_mpdb {3, "relay-mpdb"};
 
 const Enum::YLeaf CfmBagSmanFmt::sman_vlan_id {1, "sman-vlan-id"};
 const Enum::YLeaf CfmBagSmanFmt::sman_string {2, "sman-string"};
@@ -15545,15 +15723,23 @@ const Enum::YLeaf CfmBagSmanFmt::sman_vpn_id {4, "sman-vpn-id"};
 const Enum::YLeaf CfmBagSmanFmt::sman_icc {32, "sman-icc"};
 const Enum::YLeaf CfmBagSmanFmt::sman_unknown {33, "sman-unknown"};
 
-const Enum::YLeaf CfmBagMdidFmt::mdid_null {1, "mdid-null"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_dns_like {2, "mdid-dns-like"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_mac_address {3, "mdid-mac-address"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_string {4, "mdid-string"};
-const Enum::YLeaf CfmBagMdidFmt::mdid_unknown {5, "mdid-unknown"};
+const Enum::YLeaf CfmPmMepDefect::defect_none {0, "defect-none"};
+const Enum::YLeaf CfmPmMepDefect::defect_rdi_ccm {1, "defect-rdi-ccm"};
+const Enum::YLeaf CfmPmMepDefect::defect_ma_cstatus {2, "defect-ma-cstatus"};
+const Enum::YLeaf CfmPmMepDefect::defect_remote_ccm {3, "defect-remote-ccm"};
+const Enum::YLeaf CfmPmMepDefect::defect_error_ccm {4, "defect-error-ccm"};
+const Enum::YLeaf CfmPmMepDefect::defect_cross_connect_ccm {5, "defect-cross-connect-ccm"};
 
-const Enum::YLeaf CfmBagCcmOffload::offload_none {0, "offload-none"};
-const Enum::YLeaf CfmBagCcmOffload::offload_software {1, "offload-software"};
-const Enum::YLeaf CfmBagCcmOffload::offload_hardware {2, "offload-hardware"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_ok {1, "elr-egress-ok"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_down {2, "elr-egress-down"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_blocked {3, "elr-egress-blocked"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_vid {4, "elr-egress-vid"};
+const Enum::YLeaf CfmPmElrEgressAction::elr_egress_mac {255, "elr-egress-mac"};
+
+const Enum::YLeaf CfmPmIngressAction::ingress_ok {1, "ingress-ok"};
+const Enum::YLeaf CfmPmIngressAction::ingress_down {2, "ingress-down"};
+const Enum::YLeaf CfmPmIngressAction::ingress_blocked {3, "ingress-blocked"};
+const Enum::YLeaf CfmPmIngressAction::ingress_vid {4, "ingress-vid"};
 
 const Enum::YLeaf CfmBagCcmInterval::interval_none {0, "interval-none"};
 const Enum::YLeaf CfmBagCcmInterval::interval3_3ms {1, "interval3-3ms"};
@@ -15564,146 +15750,6 @@ const Enum::YLeaf CfmBagCcmInterval::interval10s {5, "interval10s"};
 const Enum::YLeaf CfmBagCcmInterval::interval1m {6, "interval1m"};
 const Enum::YLeaf CfmBagCcmInterval::interval10m {7, "interval10m"};
 
-const Enum::YLeaf CfmBagBdidFmt::invalid {0, "invalid"};
-const Enum::YLeaf CfmBagBdidFmt::bd_id {1, "bd-id"};
-const Enum::YLeaf CfmBagBdidFmt::xc_p2p_id {2, "xc-p2p-id"};
-const Enum::YLeaf CfmBagBdidFmt::xc_mp2mp_id {3, "xc-mp2mp-id"};
-const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_aware_id {4, "fxc-vlan-aware-id"};
-const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_unaware_id {5, "fxc-vlan-unaware-id"};
-const Enum::YLeaf CfmBagBdidFmt::down_only {6, "down-only"};
-
-const Enum::YLeaf CfmMaMpVariety::mip {0, "mip"};
-const Enum::YLeaf CfmMaMpVariety::up_mep {1, "up-mep"};
-const Enum::YLeaf CfmMaMpVariety::downmep {2, "downmep"};
-const Enum::YLeaf CfmMaMpVariety::unknown_mep {3, "unknown-mep"};
-
-const Enum::YLeaf CfmBagIssuRole::unknown {0, "unknown"};
-const Enum::YLeaf CfmBagIssuRole::primary {1, "primary"};
-const Enum::YLeaf CfmBagIssuRole::secondary {2, "secondary"};
-
-const Enum::YLeaf CfmBagOpcode::reserved {0, "reserved"};
-const Enum::YLeaf CfmBagOpcode::ccm {1, "ccm"};
-const Enum::YLeaf CfmBagOpcode::lbr {2, "lbr"};
-const Enum::YLeaf CfmBagOpcode::lbm {3, "lbm"};
-const Enum::YLeaf CfmBagOpcode::ltr {4, "ltr"};
-const Enum::YLeaf CfmBagOpcode::ltm {5, "ltm"};
-
-const Enum::YLeaf CfmBagAisInterval::ais_interval_none {0, "ais-interval-none"};
-const Enum::YLeaf CfmBagAisInterval::ais_interval1s {4, "ais-interval1s"};
-const Enum::YLeaf CfmBagAisInterval::ais_interval1m {6, "ais-interval1m"};
-
-const Enum::YLeaf CfmBagMdLevel::level0 {0, "level0"};
-const Enum::YLeaf CfmBagMdLevel::level1 {1, "level1"};
-const Enum::YLeaf CfmBagMdLevel::level2 {2, "level2"};
-const Enum::YLeaf CfmBagMdLevel::level3 {3, "level3"};
-const Enum::YLeaf CfmBagMdLevel::level4 {4, "level4"};
-const Enum::YLeaf CfmBagMdLevel::level5 {5, "level5"};
-const Enum::YLeaf CfmBagMdLevel::level6 {6, "level6"};
-const Enum::YLeaf CfmBagMdLevel::level7 {7, "level7"};
-const Enum::YLeaf CfmBagMdLevel::level_invalid {8, "level-invalid"};
-
-const Enum::YLeaf CfmBagDirection::direction_up {0, "direction-up"};
-const Enum::YLeaf CfmBagDirection::direction_down {1, "direction-down"};
-const Enum::YLeaf CfmBagDirection::direction_invalid {2, "direction-invalid"};
-
-const Enum::YLeaf CfmBagStpState::stp_up {0, "stp-up"};
-const Enum::YLeaf CfmBagStpState::stp_blocked {1, "stp-blocked"};
-const Enum::YLeaf CfmBagStpState::stp_unknown {2, "stp-unknown"};
-
-const Enum::YLeaf CfmBagIwState::interworking_up {0, "interworking-up"};
-const Enum::YLeaf CfmBagIwState::interworking_test {1, "interworking-test"};
-
-const Enum::YLeaf CfmPmAddlIntfStatus::unknown {0, "unknown"};
-const Enum::YLeaf CfmPmAddlIntfStatus::administratively_down {1, "administratively-down"};
-const Enum::YLeaf CfmPmAddlIntfStatus::remote_excessive_errors {2, "remote-excessive-errors"};
-const Enum::YLeaf CfmPmAddlIntfStatus::local_excessive_errors {3, "local-excessive-errors"};
-
-const Enum::YLeaf CfmPmIntfStatus::interface_status_up {1, "interface-status-up"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_down {2, "interface-status-down"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_testing {3, "interface-status-testing"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_unknown {4, "interface-status-unknown"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_dormant {5, "interface-status-dormant"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_not_present {6, "interface-status-not-present"};
-const Enum::YLeaf CfmPmIntfStatus::interface_status_lower_layer_down {7, "interface-status-lower-layer-down"};
-
-const Enum::YLeaf CfmPmPortStatus::port_status_blocked {1, "port-status-blocked"};
-const Enum::YLeaf CfmPmPortStatus::port_status_up {2, "port-status-up"};
-const Enum::YLeaf CfmPmPortStatus::port_status_unknown {3, "port-status-unknown"};
-
-const Enum::YLeaf CfmPmRmepState::peer_mep_idle {1, "peer-mep-idle"};
-const Enum::YLeaf CfmPmRmepState::peer_mep_start {2, "peer-mep-start"};
-const Enum::YLeaf CfmPmRmepState::peer_mep_failed {3, "peer-mep-failed"};
-const Enum::YLeaf CfmPmRmepState::peer_mep_ok {4, "peer-mep-ok"};
-
-const Enum::YLeaf CfmPmRmepXcState::cross_check_ok {0, "cross-check-ok"};
-const Enum::YLeaf CfmPmRmepXcState::cross_check_missing {1, "cross-check-missing"};
-const Enum::YLeaf CfmPmRmepXcState::cross_check_extra {2, "cross-check-extra"};
-
-const Enum::YLeaf CfmPmAisReceive::receive_none {0, "receive-none"};
-const Enum::YLeaf CfmPmAisReceive::receive_ais {1, "receive-ais"};
-const Enum::YLeaf CfmPmAisReceive::receive_lck {2, "receive-lck"};
-const Enum::YLeaf CfmPmAisReceive::receive_direct {3, "receive-direct"};
-
-const Enum::YLeaf CfmPmAisTransmit::transmit_none {0, "transmit-none"};
-const Enum::YLeaf CfmPmAisTransmit::transmit_ais {1, "transmit-ais"};
-const Enum::YLeaf CfmPmAisTransmit::transmit_ais_direct {2, "transmit-ais-direct"};
-
-const Enum::YLeaf CfmPmMepDefect::defect_none {0, "defect-none"};
-const Enum::YLeaf CfmPmMepDefect::defect_rdi_ccm {1, "defect-rdi-ccm"};
-const Enum::YLeaf CfmPmMepDefect::defect_ma_cstatus {2, "defect-ma-cstatus"};
-const Enum::YLeaf CfmPmMepDefect::defect_remote_ccm {3, "defect-remote-ccm"};
-const Enum::YLeaf CfmPmMepDefect::defect_error_ccm {4, "defect-error-ccm"};
-const Enum::YLeaf CfmPmMepDefect::defect_cross_connect_ccm {5, "defect-cross-connect-ccm"};
-
-const Enum::YLeaf CfmPmMepFngState::fng_reset {1, "fng-reset"};
-const Enum::YLeaf CfmPmMepFngState::fng_defect {2, "fng-defect"};
-const Enum::YLeaf CfmPmMepFngState::fng_report_defect {3, "fng-report-defect"};
-const Enum::YLeaf CfmPmMepFngState::fng_defect_reported {4, "fng-defect-reported"};
-const Enum::YLeaf CfmPmMepFngState::fng_defect_clearing {5, "fng-defect-clearing"};
-
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_ok {1, "elr-egress-ok"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_down {2, "elr-egress-down"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_blocked {3, "elr-egress-blocked"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_vid {4, "elr-egress-vid"};
-const Enum::YLeaf CfmPmElrEgressAction::elr_egress_mac {255, "elr-egress-mac"};
-
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_ok {1, "elr-ingress-ok"};
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_down {2, "elr-ingress-down"};
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_blocked {3, "elr-ingress-blocked"};
-const Enum::YLeaf CfmPmElrIngressAction::elr_ingress_vid {4, "elr-ingress-vid"};
-
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_hit {1, "elr-relay-hit"};
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_fdb {2, "elr-relay-fdb"};
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_flood {3, "elr-relay-flood"};
-const Enum::YLeaf CfmPmElrRelayAction::elr_relay_drop {4, "elr-relay-drop"};
-
-const Enum::YLeaf CfmPmLastHopFmt::last_hop_none {0, "last-hop-none"};
-const Enum::YLeaf CfmPmLastHopFmt::last_hop_host_name {1, "last-hop-host-name"};
-const Enum::YLeaf CfmPmLastHopFmt::last_hop_egress_id {2, "last-hop-egress-id"};
-
-const Enum::YLeaf CfmPmEgressAction::egress_ok {1, "egress-ok"};
-const Enum::YLeaf CfmPmEgressAction::egress_down {2, "egress-down"};
-const Enum::YLeaf CfmPmEgressAction::egress_blocked {3, "egress-blocked"};
-const Enum::YLeaf CfmPmEgressAction::egress_vid {4, "egress-vid"};
-
-const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_alias {1, "port-id-interface-alias"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_port_component {2, "port-id-port-component"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_mac_address {3, "port-id-mac-address"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_network_address {4, "port-id-network-address"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_name {5, "port-id-interface-name"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_agent_circuit_id {6, "port-id-agent-circuit-id"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_local {7, "port-id-local"};
-const Enum::YLeaf CfmPmPortIdFmt::port_id_unknown {8, "port-id-unknown"};
-
-const Enum::YLeaf CfmPmIngressAction::ingress_ok {1, "ingress-ok"};
-const Enum::YLeaf CfmPmIngressAction::ingress_down {2, "ingress-down"};
-const Enum::YLeaf CfmPmIngressAction::ingress_blocked {3, "ingress-blocked"};
-const Enum::YLeaf CfmPmIngressAction::ingress_vid {4, "ingress-vid"};
-
-const Enum::YLeaf CfmPmIdFmt::id_format_is_string {0, "id-format-is-string"};
-const Enum::YLeaf CfmPmIdFmt::id_format_is_mac_address {1, "id-format-is-mac-address"};
-const Enum::YLeaf CfmPmIdFmt::id_format_is_raw_hex {2, "id-format-is-raw-hex"};
-
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_chassis_component {1, "chassis-id-chassis-component"};
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_interface_alias {2, "chassis-id-interface-alias"};
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_port_component {3, "chassis-id-port-component"};
@@ -15713,22 +15759,35 @@ const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_interface_name {6, "chassis-id-i
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_local {7, "chassis-id-local"};
 const Enum::YLeaf CfmPmChassisIdFmt::chassis_id_unknown_type {8, "chassis-id-unknown-type"};
 
-const Enum::YLeaf CfmPmRelayAction::relay_hit {1, "relay-hit"};
-const Enum::YLeaf CfmPmRelayAction::relay_fdb {2, "relay-fdb"};
-const Enum::YLeaf CfmPmRelayAction::relay_mpdb {3, "relay-mpdb"};
+const Enum::YLeaf SlaOperOperation::operation_type_configured {0, "operation-type-configured"};
+const Enum::YLeaf SlaOperOperation::operation_type_ondemand {1, "operation-type-ondemand"};
 
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_not_present {0, "reply-filter-not-present"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_default {1, "reply-filter-default"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_vlan_topology {2, "reply-filter-vlan-topology"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_spanning_tree {3, "reply-filter-spanning-tree"};
-const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_all_ports {4, "reply-filter-all-ports"};
+const Enum::YLeaf CfmPmLastHopFmt::last_hop_none {0, "last-hop-none"};
+const Enum::YLeaf CfmPmLastHopFmt::last_hop_host_name {1, "last-hop-host-name"};
+const Enum::YLeaf CfmPmLastHopFmt::last_hop_egress_id {2, "last-hop-egress-id"};
 
-const Enum::YLeaf CfmPmEltDelayModel::delay_model_invalid {0, "delay-model-invalid"};
-const Enum::YLeaf CfmPmEltDelayModel::delay_model_logarithmic {1, "delay-model-logarithmic"};
-const Enum::YLeaf CfmPmEltDelayModel::delay_model_constant {2, "delay-model-constant"};
+const Enum::YLeaf CfmPmIdFmt::id_format_is_string {0, "id-format-is-string"};
+const Enum::YLeaf CfmPmIdFmt::id_format_is_mac_address {1, "id-format-is-mac-address"};
+const Enum::YLeaf CfmPmIdFmt::id_format_is_raw_hex {2, "id-format-is-raw-hex"};
 
-const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_basic {1, "cfm-pm-lt-mode-basic"};
-const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_exploratory {2, "cfm-pm-lt-mode-exploratory"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_idle {1, "peer-mep-idle"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_start {2, "peer-mep-start"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_failed {3, "peer-mep-failed"};
+const Enum::YLeaf CfmPmRmepState::peer_mep_ok {4, "peer-mep-ok"};
+
+const Enum::YLeaf CfmBagCcmOffload::offload_none {0, "offload-none"};
+const Enum::YLeaf CfmBagCcmOffload::offload_software {1, "offload-software"};
+const Enum::YLeaf CfmBagCcmOffload::offload_hardware {2, "offload-hardware"};
+
+const Enum::YLeaf CfmPmAisReceive::receive_none {0, "receive-none"};
+const Enum::YLeaf CfmPmAisReceive::receive_ais {1, "receive-ais"};
+const Enum::YLeaf CfmPmAisReceive::receive_lck {2, "receive-lck"};
+const Enum::YLeaf CfmPmAisReceive::receive_direct {3, "receive-direct"};
+
+const Enum::YLeaf CfmMaMpVariety::mip {0, "mip"};
+const Enum::YLeaf CfmMaMpVariety::up_mep {1, "up-mep"};
+const Enum::YLeaf CfmMaMpVariety::downmep {2, "downmep"};
+const Enum::YLeaf CfmMaMpVariety::unknown_mep {3, "unknown-mep"};
 
 const Enum::YLeaf CfmPmPktAction::packet_processed {0, "packet-processed"};
 const Enum::YLeaf CfmPmPktAction::packet_forwarded {1, "packet-forwarded"};
@@ -15824,17 +15883,133 @@ const Enum::YLeaf CfmPmPktAction::filter_foward_issu_secondary {120, "filter-fow
 const Enum::YLeaf CfmPmPktAction::filter_response_standby {121, "filter-response-standby"};
 const Enum::YLeaf CfmPmPktAction::filter_response_issu_secondary {122, "filter-response-issu-secondary"};
 
+const Enum::YLeaf SlaBucketSize::buckets_per_probe {0, "buckets-per-probe"};
+const Enum::YLeaf SlaBucketSize::probes_per_bucket {1, "probes-per-bucket"};
+
+const Enum::YLeaf CfmPmEltDelayModel::delay_model_invalid {0, "delay-model-invalid"};
+const Enum::YLeaf CfmPmEltDelayModel::delay_model_logarithmic {1, "delay-model-logarithmic"};
+const Enum::YLeaf CfmPmEltDelayModel::delay_model_constant {2, "delay-model-constant"};
+
+const Enum::YLeaf CfmPmAisTransmit::transmit_none {0, "transmit-none"};
+const Enum::YLeaf CfmPmAisTransmit::transmit_ais {1, "transmit-ais"};
+const Enum::YLeaf CfmPmAisTransmit::transmit_ais_direct {2, "transmit-ais-direct"};
+
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_hit {1, "elr-relay-hit"};
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_fdb {2, "elr-relay-fdb"};
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_flood {3, "elr-relay-flood"};
+const Enum::YLeaf CfmPmElrRelayAction::elr_relay_drop {4, "elr-relay-drop"};
+
+const Enum::YLeaf CfmPmPortStatus::port_status_blocked {1, "port-status-blocked"};
+const Enum::YLeaf CfmPmPortStatus::port_status_up {2, "port-status-up"};
+const Enum::YLeaf CfmPmPortStatus::port_status_unknown {3, "port-status-unknown"};
+
+const Enum::YLeaf CfmBagIwState::interworking_up {0, "interworking-up"};
+const Enum::YLeaf CfmBagIwState::interworking_test {1, "interworking-test"};
+
+const Enum::YLeaf CfmBagMdidFmt::mdid_null {1, "mdid-null"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_dns_like {2, "mdid-dns-like"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_mac_address {3, "mdid-mac-address"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_string {4, "mdid-string"};
+const Enum::YLeaf CfmBagMdidFmt::mdid_unknown {5, "mdid-unknown"};
+
+const Enum::YLeaf CfmBagBdidFmt::invalid {0, "invalid"};
+const Enum::YLeaf CfmBagBdidFmt::bd_id {1, "bd-id"};
+const Enum::YLeaf CfmBagBdidFmt::xc_p2p_id {2, "xc-p2p-id"};
+const Enum::YLeaf CfmBagBdidFmt::xc_mp2mp_id {3, "xc-mp2mp-id"};
+const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_aware_id {4, "fxc-vlan-aware-id"};
+const Enum::YLeaf CfmBagBdidFmt::fxc_vlan_unaware_id {5, "fxc-vlan-unaware-id"};
+const Enum::YLeaf CfmBagBdidFmt::down_only {6, "down-only"};
+
+const Enum::YLeaf CfmBagIssuRole::unknown {0, "unknown"};
+const Enum::YLeaf CfmBagIssuRole::primary {1, "primary"};
+const Enum::YLeaf CfmBagIssuRole::secondary {2, "secondary"};
+
+const Enum::YLeaf CfmBagStpState::stp_up {0, "stp-up"};
+const Enum::YLeaf CfmBagStpState::stp_blocked {1, "stp-blocked"};
+const Enum::YLeaf CfmBagStpState::stp_unknown {2, "stp-unknown"};
+
+const Enum::YLeaf CfmBagMdLevel::level0 {0, "level0"};
+const Enum::YLeaf CfmBagMdLevel::level1 {1, "level1"};
+const Enum::YLeaf CfmBagMdLevel::level2 {2, "level2"};
+const Enum::YLeaf CfmBagMdLevel::level3 {3, "level3"};
+const Enum::YLeaf CfmBagMdLevel::level4 {4, "level4"};
+const Enum::YLeaf CfmBagMdLevel::level5 {5, "level5"};
+const Enum::YLeaf CfmBagMdLevel::level6 {6, "level6"};
+const Enum::YLeaf CfmBagMdLevel::level7 {7, "level7"};
+const Enum::YLeaf CfmBagMdLevel::level_invalid {8, "level-invalid"};
+
 const Enum::YLeaf SlaOperPacketPriority::priority_none {0, "priority-none"};
 const Enum::YLeaf SlaOperPacketPriority::priority_cos {1, "priority-cos"};
+
+const Enum::YLeaf CfmBagAisInterval::ais_interval_none {0, "ais-interval-none"};
+const Enum::YLeaf CfmBagAisInterval::ais_interval1s {4, "ais-interval1s"};
+const Enum::YLeaf CfmBagAisInterval::ais_interval1m {6, "ais-interval1m"};
+
+const Enum::YLeaf CfmPmRmepXcState::cross_check_ok {0, "cross-check-ok"};
+const Enum::YLeaf CfmPmRmepXcState::cross_check_missing {1, "cross-check-missing"};
+const Enum::YLeaf CfmPmRmepXcState::cross_check_extra {2, "cross-check-extra"};
+
+const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_basic {1, "cfm-pm-lt-mode-basic"};
+const Enum::YLeaf CfmPmLtMode::cfm_pm_lt_mode_exploratory {2, "cfm-pm-lt-mode-exploratory"};
+
+const Enum::YLeaf CfmPmIntfStatus::interface_status_up {1, "interface-status-up"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_down {2, "interface-status-down"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_testing {3, "interface-status-testing"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_unknown {4, "interface-status-unknown"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_dormant {5, "interface-status-dormant"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_not_present {6, "interface-status-not-present"};
+const Enum::YLeaf CfmPmIntfStatus::interface_status_lower_layer_down {7, "interface-status-lower-layer-down"};
+
+const Enum::YLeaf CfmBagDirection::direction_up {0, "direction-up"};
+const Enum::YLeaf CfmBagDirection::direction_down {1, "direction-down"};
+const Enum::YLeaf CfmBagDirection::direction_invalid {2, "direction-invalid"};
+
+const Enum::YLeaf CfmPmEgressAction::egress_ok {1, "egress-ok"};
+const Enum::YLeaf CfmPmEgressAction::egress_down {2, "egress-down"};
+const Enum::YLeaf CfmPmEgressAction::egress_blocked {3, "egress-blocked"};
+const Enum::YLeaf CfmPmEgressAction::egress_vid {4, "egress-vid"};
+
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_not_present {0, "reply-filter-not-present"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_default {1, "reply-filter-default"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_vlan_topology {2, "reply-filter-vlan-topology"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_spanning_tree {3, "reply-filter-spanning-tree"};
+const Enum::YLeaf CfmPmElmReplyFilter::reply_filter_all_ports {4, "reply-filter-all-ports"};
+
+const Enum::YLeaf CfmAisDir::up {0, "up"};
+const Enum::YLeaf CfmAisDir::down {1, "down"};
+
+const Enum::YLeaf CfmPmAddlIntfStatus::unknown {0, "unknown"};
+const Enum::YLeaf CfmPmAddlIntfStatus::administratively_down {1, "administratively-down"};
+const Enum::YLeaf CfmPmAddlIntfStatus::remote_excessive_errors {2, "remote-excessive-errors"};
+const Enum::YLeaf CfmPmAddlIntfStatus::local_excessive_errors {3, "local-excessive-errors"};
+
+const Enum::YLeaf CfmBagOpcode::reserved {0, "reserved"};
+const Enum::YLeaf CfmBagOpcode::ccm {1, "ccm"};
+const Enum::YLeaf CfmBagOpcode::lbr {2, "lbr"};
+const Enum::YLeaf CfmBagOpcode::lbm {3, "lbm"};
+const Enum::YLeaf CfmBagOpcode::ltr {4, "ltr"};
+const Enum::YLeaf CfmBagOpcode::ltm {5, "ltm"};
 
 const Enum::YLeaf SlaOperTestPatternScheme::hex {0, "hex"};
 const Enum::YLeaf SlaOperTestPatternScheme::pseudo_random {1, "pseudo-random"};
 
+const Enum::YLeaf CfmPmMepFngState::fng_reset {1, "fng-reset"};
+const Enum::YLeaf CfmPmMepFngState::fng_defect {2, "fng-defect"};
+const Enum::YLeaf CfmPmMepFngState::fng_report_defect {3, "fng-report-defect"};
+const Enum::YLeaf CfmPmMepFngState::fng_defect_reported {4, "fng-defect-reported"};
+const Enum::YLeaf CfmPmMepFngState::fng_defect_clearing {5, "fng-defect-clearing"};
+
+const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_alias {1, "port-id-interface-alias"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_port_component {2, "port-id-port-component"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_mac_address {3, "port-id-mac-address"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_network_address {4, "port-id-network-address"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_interface_name {5, "port-id-interface-name"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_agent_circuit_id {6, "port-id-agent-circuit-id"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_local {7, "port-id-local"};
+const Enum::YLeaf CfmPmPortIdFmt::port_id_unknown {8, "port-id-unknown"};
+
 const Enum::YLeaf SlaOperBucket::bucket_type_bins {0, "bucket-type-bins"};
 const Enum::YLeaf SlaOperBucket::bucket_type_samples {1, "bucket-type-samples"};
-
-const Enum::YLeaf SlaBucketSize::buckets_per_probe {0, "buckets-per-probe"};
-const Enum::YLeaf SlaBucketSize::probes_per_bucket {1, "probes-per-bucket"};
 
 const Enum::YLeaf SlaRecordableMetric::metric_invalid {0, "metric-invalid"};
 const Enum::YLeaf SlaRecordableMetric::metric_round_trip_delay {1, "metric-round-trip-delay"};
@@ -15845,9 +16020,6 @@ const Enum::YLeaf SlaRecordableMetric::metric_one_way_jitter_sd {5, "metric-one-
 const Enum::YLeaf SlaRecordableMetric::metric_one_way_jitter_ds {6, "metric-one-way-jitter-ds"};
 const Enum::YLeaf SlaRecordableMetric::metric_one_way_flr_sd {7, "metric-one-way-flr-sd"};
 const Enum::YLeaf SlaRecordableMetric::metric_one_way_flr_ds {8, "metric-one-way-flr-ds"};
-
-const Enum::YLeaf SlaOperOperation::operation_type_configured {0, "operation-type-configured"};
-const Enum::YLeaf SlaOperOperation::operation_type_ondemand {1, "operation-type-ondemand"};
 
 
 }

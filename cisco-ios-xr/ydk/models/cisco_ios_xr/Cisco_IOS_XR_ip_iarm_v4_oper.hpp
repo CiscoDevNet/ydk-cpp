@@ -10,11 +10,11 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_iarm_v4_oper {
 
-class Ipv4Arm : public ydk::Entity
+class Ipv4arm : public ydk::Entity
 {
     public:
-        Ipv4Arm();
-        ~Ipv4Arm();
+        Ipv4arm();
+        ~Ipv4arm();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,20 +32,20 @@ class Ipv4Arm : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf multicast_host_interface; //type: string
-        class Addresses; //type: Ipv4Arm::Addresses
-        class Summary; //type: Ipv4Arm::Summary
-        class VrfSummaries; //type: Ipv4Arm::VrfSummaries
-        class RouterId; //type: Ipv4Arm::RouterId
+        class Addresses; //type: Ipv4arm::Addresses
+        class Summary; //type: Ipv4arm::Summary
+        class VrfSummaries; //type: Ipv4arm::VrfSummaries
+        class RouterId; //type: Ipv4arm::RouterId
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses> addresses;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Summary> summary;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::VrfSummaries> vrf_summaries;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::RouterId> router_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Addresses> addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Summary> summary;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::VrfSummaries> vrf_summaries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::RouterId> router_id;
         
-}; // Ipv4Arm
+}; // Ipv4arm
 
 
-class Ipv4Arm::Addresses : public ydk::Entity
+class Ipv4arm::Addresses : public ydk::Entity
 {
     public:
         Addresses();
@@ -62,14 +62,14 @@ class Ipv4Arm::Addresses : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vrfs; //type: Ipv4Arm::Addresses::Vrfs
+        class Vrfs; //type: Ipv4arm::Addresses::Vrfs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs> vrfs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Addresses::Vrfs> vrfs;
         
-}; // Ipv4Arm::Addresses
+}; // Ipv4arm::Addresses
 
 
-class Ipv4Arm::Addresses::Vrfs : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs : public ydk::Entity
 {
     public:
         Vrfs();
@@ -86,14 +86,14 @@ class Ipv4Arm::Addresses::Vrfs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vrf; //type: Ipv4Arm::Addresses::Vrfs::Vrf
+        class Vrf; //type: Ipv4arm::Addresses::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
-}; // Ipv4Arm::Addresses::Vrfs
+}; // Ipv4arm::Addresses::Vrfs
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -111,16 +111,16 @@ class Ipv4Arm::Addresses::Vrfs::Vrf : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf vrf_name; //type: string
-        class Networks; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Networks
-        class Interfaces; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces
+        class Networks; //type: Ipv4arm::Addresses::Vrfs::Vrf::Networks
+        class Interfaces; //type: Ipv4arm::Addresses::Vrfs::Vrf::Interfaces
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Networks> networks;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces> interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Addresses::Vrfs::Vrf::Networks> networks;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Addresses::Vrfs::Vrf::Interfaces> interfaces;
         
-}; // Ipv4Arm::Addresses::Vrfs::Vrf
+}; // Ipv4arm::Addresses::Vrfs::Vrf
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Networks : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Networks : public ydk::Entity
 {
     public:
         Networks();
@@ -136,14 +136,14 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Networks : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Network; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network
+        class Network; //type: Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network> > network;
+        ydk::YList network;
         
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Networks
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Networks
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network : public ydk::Entity
 {
     public:
         Network();
@@ -165,14 +165,14 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf referenced_interface; //type: string
         ydk::YLeaf vrf_name; //type: string
-        class AddressXr; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr
+        class AddressXr; //type: Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr> address_xr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr> address_xr;
         
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr : public ydk::Entity
 {
     public:
         AddressXr();
@@ -194,14 +194,14 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr : public ydk::
         ydk::YLeaf is_tentative; //type: boolean
         ydk::YLeaf is_prefix_sid; //type: boolean
         ydk::YLeaf producer; //type: string
-        class Address; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address
+        class Address; //type: Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address> address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address> address;
         
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address : public ydk::Entity
 {
     public:
         Address();
@@ -221,10 +221,10 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address : pub
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Interfaces : public ydk::Entity
 {
     public:
         Interfaces();
@@ -240,14 +240,14 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Interface; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface
+        class Interface; //type: Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Interfaces
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface : public ydk::Entity
 {
     public:
         Interface();
@@ -266,14 +266,14 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf interface; //type: string
         ydk::YLeaf referenced_interface; //type: string
         ydk::YLeaf vrf_name; //type: string
-        class Address; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address
+        class Address; //type: Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address> > address;
+        ydk::YList address;
         
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address : public ydk::Entity
 {
     public:
         Address();
@@ -295,14 +295,14 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address : public ydk
         ydk::YLeaf is_tentative; //type: boolean
         ydk::YLeaf is_prefix_sid; //type: boolean
         ydk::YLeaf producer; //type: string
-        class Address_; //type: Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_
+        class Address_; //type: Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_> address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_> address;
         
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address
 
 
-class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_ : public ydk::Entity
+class Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_ : public ydk::Entity
 {
     public:
         Address_();
@@ -322,10 +322,10 @@ class Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_ : 
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_
+}; // Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_
 
 
-class Ipv4Arm::Summary : public ydk::Entity
+class Ipv4arm::Summary : public ydk::Entity
 {
     public:
         Summary();
@@ -348,10 +348,10 @@ class Ipv4Arm::Summary : public ydk::Entity
         ydk::YLeaf db_master_version; //type: uint32
         ydk::YLeaf vrf_count; //type: int32
 
-}; // Ipv4Arm::Summary
+}; // Ipv4arm::Summary
 
 
-class Ipv4Arm::VrfSummaries : public ydk::Entity
+class Ipv4arm::VrfSummaries : public ydk::Entity
 {
     public:
         VrfSummaries();
@@ -368,14 +368,14 @@ class Ipv4Arm::VrfSummaries : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class VrfSummary; //type: Ipv4Arm::VrfSummaries::VrfSummary
+        class VrfSummary; //type: Ipv4arm::VrfSummaries::VrfSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_iarm_v4_oper::Ipv4Arm::VrfSummaries::VrfSummary> > vrf_summary;
+        ydk::YList vrf_summary;
         
-}; // Ipv4Arm::VrfSummaries
+}; // Ipv4arm::VrfSummaries
 
 
-class Ipv4Arm::VrfSummaries::VrfSummary : public ydk::Entity
+class Ipv4arm::VrfSummaries::VrfSummary : public ydk::Entity
 {
     public:
         VrfSummary();
@@ -396,10 +396,10 @@ class Ipv4Arm::VrfSummaries::VrfSummary : public ydk::Entity
         ydk::YLeaf vrf_id; //type: uint32
         ydk::YLeaf vrf_name_xr; //type: string
 
-}; // Ipv4Arm::VrfSummaries::VrfSummary
+}; // Ipv4arm::VrfSummaries::VrfSummary
 
 
-class Ipv4Arm::RouterId : public ydk::Entity
+class Ipv4arm::RouterId : public ydk::Entity
 {
     public:
         RouterId();
@@ -421,7 +421,7 @@ class Ipv4Arm::RouterId : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf router_id; //type: string
 
-}; // Ipv4Arm::RouterId
+}; // Ipv4arm::RouterId
 
 
 }

@@ -17,7 +17,7 @@ CpuUsage::CpuUsage()
 {
     cpu_utilization->parent = this;
 
-    yang_name = "cpu-usage"; yang_parent_name = "Cisco-IOS-XE-process-cpu-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "cpu-usage"; yang_parent_name = "Cisco-IOS-XE-process-cpu-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CpuUsage::~CpuUsage()
@@ -26,6 +26,7 @@ CpuUsage::~CpuUsage()
 
 bool CpuUsage::has_data() const
 {
+    if (is_presence_container) return true;
     return (cpu_utilization !=  nullptr && cpu_utilization->has_data());
 }
 
@@ -123,12 +124,12 @@ CpuUsage::CpuUtilization::CpuUtilization()
     five_seconds_intr{YType::uint8, "five-seconds-intr"},
     one_minute{YType::uint8, "one-minute"},
     five_minutes{YType::uint8, "five-minutes"}
-    	,
+        ,
     cpu_usage_processes(std::make_shared<CpuUsage::CpuUtilization::CpuUsageProcesses>())
 {
     cpu_usage_processes->parent = this;
 
-    yang_name = "cpu-utilization"; yang_parent_name = "cpu-usage"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-utilization"; yang_parent_name = "cpu-usage"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CpuUsage::CpuUtilization::~CpuUtilization()
@@ -137,6 +138,7 @@ CpuUsage::CpuUtilization::~CpuUtilization()
 
 bool CpuUsage::CpuUtilization::has_data() const
 {
+    if (is_presence_container) return true;
     return five_seconds.is_set
 	|| five_seconds_intr.is_set
 	|| one_minute.is_set
@@ -263,9 +265,11 @@ bool CpuUsage::CpuUtilization::has_leaf_or_child_of_name(const std::string & nam
 }
 
 CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcesses()
+    :
+    cpu_usage_process(this, {"pid", "name"})
 {
 
-    yang_name = "cpu-usage-processes"; yang_parent_name = "cpu-utilization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-usage-processes"; yang_parent_name = "cpu-utilization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CpuUsage::CpuUtilization::CpuUsageProcesses::~CpuUsageProcesses()
@@ -274,7 +278,8 @@ CpuUsage::CpuUtilization::CpuUsageProcesses::~CpuUsageProcesses()
 
 bool CpuUsage::CpuUtilization::CpuUsageProcesses::has_data() const
 {
-    for (std::size_t index=0; index<cpu_usage_process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cpu_usage_process.len(); index++)
     {
         if(cpu_usage_process[index]->has_data())
             return true;
@@ -284,7 +289,7 @@ bool CpuUsage::CpuUtilization::CpuUsageProcesses::has_data() const
 
 bool CpuUsage::CpuUtilization::CpuUsageProcesses::has_operation() const
 {
-    for (std::size_t index=0; index<cpu_usage_process.size(); index++)
+    for (std::size_t index=0; index<cpu_usage_process.len(); index++)
     {
         if(cpu_usage_process[index]->has_operation())
             return true;
@@ -321,7 +326,7 @@ std::shared_ptr<Entity> CpuUsage::CpuUtilization::CpuUsageProcesses::get_child_b
     {
         auto c = std::make_shared<CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess>();
         c->parent = this;
-        cpu_usage_process.push_back(c);
+        cpu_usage_process.append(c);
         return c;
     }
 
@@ -333,7 +338,7 @@ std::map<std::string, std::shared_ptr<Entity>> CpuUsage::CpuUtilization::CpuUsag
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cpu_usage_process)
+    for (auto c : cpu_usage_process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -372,7 +377,7 @@ CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::CpuUsageProcess()
     five_minutes{YType::str, "five-minutes"}
 {
 
-    yang_name = "cpu-usage-process"; yang_parent_name = "cpu-usage-processes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu-usage-process"; yang_parent_name = "cpu-usage-processes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::~CpuUsageProcess()
@@ -381,6 +386,7 @@ CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::~CpuUsageProcess()
 
 bool CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::has_data() const
 {
+    if (is_presence_container) return true;
     return pid.is_set
 	|| name.is_set
 	|| tty.is_set
@@ -416,7 +422,9 @@ std::string CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::get_ab
 std::string CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cpu-usage-process" <<"[pid='" <<pid <<"']" <<"[name='" <<name <<"']";
+    path_buffer << "cpu-usage-process";
+    ADD_KEY_TOKEN(pid, "pid");
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 

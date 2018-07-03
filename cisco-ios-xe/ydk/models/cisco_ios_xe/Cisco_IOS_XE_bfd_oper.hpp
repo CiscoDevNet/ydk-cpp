@@ -57,7 +57,7 @@ class BfdState::Sessions : public ydk::Entity
 
         class Session; //type: BfdState::Sessions::Session
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // BfdState::Sessions
 
@@ -113,7 +113,7 @@ class BfdState::Sessions::Session::BfdTunnelPaths : public ydk::Entity
 
         class BfdTunnelPath; //type: BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdTunnelPaths::BfdTunnelPath> > bfd_tunnel_path;
+        ydk::YList bfd_tunnel_path;
         
 }; // BfdState::Sessions::Session::BfdTunnelPaths
 
@@ -162,7 +162,7 @@ class BfdState::Sessions::Session::BfdCircuits : public ydk::Entity
 
         class BfdCircuit; //type: BfdState::Sessions::Session::BfdCircuits::BfdCircuit
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdCircuits::BfdCircuit> > bfd_circuit;
+        ydk::YList bfd_circuit;
         
 }; // BfdState::Sessions::Session::BfdCircuits
 
@@ -211,7 +211,7 @@ class BfdState::Sessions::Session::BfdNbrs : public ydk::Entity
 
         class BfdNbr; //type: BfdState::Sessions::Session::BfdNbrs::BfdNbr
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdNbrs::BfdNbr> > bfd_nbr;
+        ydk::YList bfd_nbr;
         
 }; // BfdState::Sessions::Session::BfdNbrs
 
@@ -260,7 +260,7 @@ class BfdState::Sessions::Session::BfdMhopNbrs : public ydk::Entity
 
         class BfdMhopNbr; //type: BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopNbrs::BfdMhopNbr> > bfd_mhop_nbr;
+        ydk::YList bfd_mhop_nbr;
         
 }; // BfdState::Sessions::Session::BfdMhopNbrs
 
@@ -309,7 +309,7 @@ class BfdState::Sessions::Session::BfdMhopVrfNbrs : public ydk::Entity
 
         class BfdMhopVrfNbr; //type: BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_bfd_oper::BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr> > bfd_mhop_vrf_nbr;
+        ydk::YList bfd_mhop_vrf_nbr;
         
 }; // BfdState::Sessions::Session::BfdMhopVrfNbrs
 
@@ -340,6 +340,26 @@ class BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr : public ydk::E
 
 }; // BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr
 
+class BfdRemoteStateType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf remote_up;
+        static const ydk::Enum::YLeaf remote_down;
+        static const ydk::Enum::YLeaf remote_init;
+        static const ydk::Enum::YLeaf remote_admindown;
+        static const ydk::Enum::YLeaf remote_invalid;
+
+};
+
+class BfdLspType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf working;
+        static const ydk::Enum::YLeaf protect;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
 class BfdOperSessionType : public ydk::Enum
 {
     public:
@@ -352,17 +372,6 @@ class BfdOperSessionType : public ydk::Enum
 
 };
 
-class BfdRemoteStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf remote_up;
-        static const ydk::Enum::YLeaf remote_down;
-        static const ydk::Enum::YLeaf remote_init;
-        static const ydk::Enum::YLeaf remote_admindown;
-        static const ydk::Enum::YLeaf remote_invalid;
-
-};
-
 class BfdStateType : public ydk::Enum
 {
     public:
@@ -372,15 +381,6 @@ class BfdStateType : public ydk::Enum
         static const ydk::Enum::YLeaf init;
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf invalid;
-
-};
-
-class BfdLspType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf working;
-        static const ydk::Enum::YLeaf protect;
-        static const ydk::Enum::YLeaf unknown;
 
 };
 

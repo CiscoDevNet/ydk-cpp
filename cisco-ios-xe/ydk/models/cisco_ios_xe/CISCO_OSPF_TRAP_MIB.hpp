@@ -31,18 +31,18 @@ class CISCOOSPFTRAPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cospftrapcontrol; //type: CISCOOSPFTRAPMIB::Cospftrapcontrol
+        class CospfTrapControl; //type: CISCOOSPFTRAPMIB::CospfTrapControl
 
-        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_TRAP_MIB::CISCOOSPFTRAPMIB::Cospftrapcontrol> cospftrapcontrol;
+        std::shared_ptr<cisco_ios_xe::CISCO_OSPF_TRAP_MIB::CISCOOSPFTRAPMIB::CospfTrapControl> cospftrapcontrol;
         
 }; // CISCOOSPFTRAPMIB
 
 
-class CISCOOSPFTRAPMIB::Cospftrapcontrol : public ydk::Entity
+class CISCOOSPFTRAPMIB::CospfTrapControl : public ydk::Entity
 {
     public:
-        Cospftrapcontrol();
-        ~Cospftrapcontrol();
+        CospfTrapControl();
+        ~CospfTrapControl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,16 +55,16 @@ class CISCOOSPFTRAPMIB::Cospftrapcontrol : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cospfsettrap; //type: Cospfsettrap
-        ydk::YLeaf cospfconfigerrortype; //type: Cospfconfigerrortype
-        ydk::YLeaf cospfpackettype; //type: Cospfpackettype
+        ydk::YLeaf cospfsettrap; //type: CospfSetTrap
+        ydk::YLeaf cospfconfigerrortype; //type: CospfConfigErrorType
+        ydk::YLeaf cospfpackettype; //type: CospfPacketType
         ydk::YLeaf cospfpacketsrc; //type: string
-        class Cospfconfigerrortype;
-        class Cospfpackettype;
+        class CospfConfigErrorType;
+        class CospfPacketType;
 
-}; // CISCOOSPFTRAPMIB::Cospftrapcontrol
+}; // CISCOOSPFTRAPMIB::CospfTrapControl
 
-class CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype : public ydk::Enum
+class CISCOOSPFTRAPMIB::CospfTrapControl::CospfConfigErrorType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf badVersion;
@@ -83,7 +83,7 @@ class CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfconfigerrortype : public ydk::Enu
 
 };
 
-class CISCOOSPFTRAPMIB::Cospftrapcontrol::Cospfpackettype : public ydk::Enum
+class CISCOOSPFTRAPMIB::CospfTrapControl::CospfPacketType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf hello;

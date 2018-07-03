@@ -14,16 +14,16 @@ namespace SNMPv2_MIB {
 SNMPv2MIB::SNMPv2MIB()
     :
     system(std::make_shared<SNMPv2MIB::System>())
-	,snmp(std::make_shared<SNMPv2MIB::Snmp>())
-	,snmpset(std::make_shared<SNMPv2MIB::Snmpset>())
-	,sysortable(std::make_shared<SNMPv2MIB::Sysortable>())
+    , snmp(std::make_shared<SNMPv2MIB::Snmp>())
+    , snmpset(std::make_shared<SNMPv2MIB::SnmpSet>())
+    , sysortable(std::make_shared<SNMPv2MIB::SysORTable>())
 {
     system->parent = this;
     snmp->parent = this;
     snmpset->parent = this;
     sysortable->parent = this;
 
-    yang_name = "SNMPv2-MIB"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "SNMPv2-MIB"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SNMPv2MIB::~SNMPv2MIB()
@@ -32,6 +32,7 @@ SNMPv2MIB::~SNMPv2MIB()
 
 bool SNMPv2MIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (system !=  nullptr && system->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
 	|| (snmpset !=  nullptr && snmpset->has_data())
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> SNMPv2MIB::get_child_by_name(const std::string & child_y
     {
         if(snmpset == nullptr)
         {
-            snmpset = std::make_shared<SNMPv2MIB::Snmpset>();
+            snmpset = std::make_shared<SNMPv2MIB::SnmpSet>();
         }
         return snmpset;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> SNMPv2MIB::get_child_by_name(const std::string & child_y
     {
         if(sysortable == nullptr)
         {
-            sysortable = std::make_shared<SNMPv2MIB::Sysortable>();
+            sysortable = std::make_shared<SNMPv2MIB::SysORTable>();
         }
         return sysortable;
     }
@@ -183,7 +184,7 @@ SNMPv2MIB::System::System()
     sysorlastchange{YType::uint32, "sysORLastChange"}
 {
 
-    yang_name = "system"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SNMPv2MIB::System::~System()
@@ -192,6 +193,7 @@ SNMPv2MIB::System::~System()
 
 bool SNMPv2MIB::System::has_data() const
 {
+    if (is_presence_container) return true;
     return sysdescr.is_set
 	|| sysobjectid.is_set
 	|| sysuptime.is_set
@@ -387,7 +389,7 @@ SNMPv2MIB::Snmp::Snmp()
     snmpproxydrops{YType::uint32, "snmpProxyDrops"}
 {
 
-    yang_name = "snmp"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmp"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SNMPv2MIB::Snmp::~Snmp()
@@ -396,6 +398,7 @@ SNMPv2MIB::Snmp::~Snmp()
 
 bool SNMPv2MIB::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return snmpinpkts.is_set
 	|| snmpoutpkts.is_set
 	|| snmpinbadversions.is_set
@@ -843,44 +846,45 @@ bool SNMPv2MIB::Snmp::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-SNMPv2MIB::Snmpset::Snmpset()
+SNMPv2MIB::SnmpSet::SnmpSet()
     :
     snmpsetserialno{YType::int32, "snmpSetSerialNo"}
 {
 
-    yang_name = "snmpSet"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmpSet"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPv2MIB::Snmpset::~Snmpset()
+SNMPv2MIB::SnmpSet::~SnmpSet()
 {
 }
 
-bool SNMPv2MIB::Snmpset::has_data() const
+bool SNMPv2MIB::SnmpSet::has_data() const
 {
+    if (is_presence_container) return true;
     return snmpsetserialno.is_set;
 }
 
-bool SNMPv2MIB::Snmpset::has_operation() const
+bool SNMPv2MIB::SnmpSet::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(snmpsetserialno.yfilter);
 }
 
-std::string SNMPv2MIB::Snmpset::get_absolute_path() const
+std::string SNMPv2MIB::SnmpSet::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPv2MIB::Snmpset::get_segment_path() const
+std::string SNMPv2MIB::SnmpSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "snmpSet";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Snmpset::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::SnmpSet::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -890,19 +894,19 @@ std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Snmpset::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> SNMPv2MIB::Snmpset::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::SnmpSet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Snmpset::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::SnmpSet::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SNMPv2MIB::Snmpset::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::SnmpSet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "snmpSetSerialNo")
     {
@@ -912,7 +916,7 @@ void SNMPv2MIB::Snmpset::set_value(const std::string & value_path, const std::st
     }
 }
 
-void SNMPv2MIB::Snmpset::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::SnmpSet::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "snmpSetSerialNo")
     {
@@ -920,26 +924,29 @@ void SNMPv2MIB::Snmpset::set_filter(const std::string & value_path, YFilter yfil
     }
 }
 
-bool SNMPv2MIB::Snmpset::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::SnmpSet::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "snmpSetSerialNo")
         return true;
     return false;
 }
 
-SNMPv2MIB::Sysortable::Sysortable()
+SNMPv2MIB::SysORTable::SysORTable()
+    :
+    sysorentry(this, {"sysorindex"})
 {
 
-    yang_name = "sysORTable"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sysORTable"; yang_parent_name = "SNMPv2-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPv2MIB::Sysortable::~Sysortable()
+SNMPv2MIB::SysORTable::~SysORTable()
 {
 }
 
-bool SNMPv2MIB::Sysortable::has_data() const
+bool SNMPv2MIB::SysORTable::has_data() const
 {
-    for (std::size_t index=0; index<sysorentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sysorentry.len(); index++)
     {
         if(sysorentry[index]->has_data())
             return true;
@@ -947,9 +954,9 @@ bool SNMPv2MIB::Sysortable::has_data() const
     return false;
 }
 
-bool SNMPv2MIB::Sysortable::has_operation() const
+bool SNMPv2MIB::SysORTable::has_operation() const
 {
-    for (std::size_t index=0; index<sysorentry.size(); index++)
+    for (std::size_t index=0; index<sysorentry.len(); index++)
     {
         if(sysorentry[index]->has_operation())
             return true;
@@ -957,21 +964,21 @@ bool SNMPv2MIB::Sysortable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string SNMPv2MIB::Sysortable::get_absolute_path() const
+std::string SNMPv2MIB::SysORTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMPv2-MIB:SNMPv2-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPv2MIB::Sysortable::get_segment_path() const
+std::string SNMPv2MIB::SysORTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "sysORTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Sysortable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::SysORTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -980,25 +987,25 @@ std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Sysortable::get_name_l
 
 }
 
-std::shared_ptr<Entity> SNMPv2MIB::Sysortable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::SysORTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sysOREntry")
     {
-        auto c = std::make_shared<SNMPv2MIB::Sysortable::Sysorentry>();
+        auto c = std::make_shared<SNMPv2MIB::SysORTable::SysOREntry>();
         c->parent = this;
-        sysorentry.push_back(c);
+        sysorentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Sysortable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::SysORTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sysorentry)
+    for (auto c : sysorentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1009,22 +1016,22 @@ std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Sysortable::get_childr
     return children;
 }
 
-void SNMPv2MIB::Sysortable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::SysORTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void SNMPv2MIB::Sysortable::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::SysORTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool SNMPv2MIB::Sysortable::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::SysORTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sysOREntry")
         return true;
     return false;
 }
 
-SNMPv2MIB::Sysortable::Sysorentry::Sysorentry()
+SNMPv2MIB::SysORTable::SysOREntry::SysOREntry()
     :
     sysorindex{YType::int32, "sysORIndex"},
     sysorid{YType::str, "sysORID"},
@@ -1032,22 +1039,23 @@ SNMPv2MIB::Sysortable::Sysorentry::Sysorentry()
     sysoruptime{YType::uint32, "sysORUpTime"}
 {
 
-    yang_name = "sysOREntry"; yang_parent_name = "sysORTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sysOREntry"; yang_parent_name = "sysORTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-SNMPv2MIB::Sysortable::Sysorentry::~Sysorentry()
+SNMPv2MIB::SysORTable::SysOREntry::~SysOREntry()
 {
 }
 
-bool SNMPv2MIB::Sysortable::Sysorentry::has_data() const
+bool SNMPv2MIB::SysORTable::SysOREntry::has_data() const
 {
+    if (is_presence_container) return true;
     return sysorindex.is_set
 	|| sysorid.is_set
 	|| sysordescr.is_set
 	|| sysoruptime.is_set;
 }
 
-bool SNMPv2MIB::Sysortable::Sysorentry::has_operation() const
+bool SNMPv2MIB::SysORTable::SysOREntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sysorindex.yfilter)
@@ -1056,21 +1064,22 @@ bool SNMPv2MIB::Sysortable::Sysorentry::has_operation() const
 	|| ydk::is_set(sysoruptime.yfilter);
 }
 
-std::string SNMPv2MIB::Sysortable::Sysorentry::get_absolute_path() const
+std::string SNMPv2MIB::SysORTable::SysOREntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "SNMPv2-MIB:SNMPv2-MIB/sysORTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string SNMPv2MIB::Sysortable::Sysorentry::get_segment_path() const
+std::string SNMPv2MIB::SysORTable::SysOREntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sysOREntry" <<"[sysORIndex='" <<sysorindex <<"']";
+    path_buffer << "sysOREntry";
+    ADD_KEY_TOKEN(sysorindex, "sysORIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Sysortable::Sysorentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::SysORTable::SysOREntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1083,19 +1092,19 @@ std::vector<std::pair<std::string, LeafData> > SNMPv2MIB::Sysortable::Sysorentry
 
 }
 
-std::shared_ptr<Entity> SNMPv2MIB::Sysortable::Sysorentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> SNMPv2MIB::SysORTable::SysOREntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::Sysortable::Sysorentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> SNMPv2MIB::SysORTable::SysOREntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void SNMPv2MIB::Sysortable::Sysorentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void SNMPv2MIB::SysORTable::SysOREntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sysORIndex")
     {
@@ -1123,7 +1132,7 @@ void SNMPv2MIB::Sysortable::Sysorentry::set_value(const std::string & value_path
     }
 }
 
-void SNMPv2MIB::Sysortable::Sysorentry::set_filter(const std::string & value_path, YFilter yfilter)
+void SNMPv2MIB::SysORTable::SysOREntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sysORIndex")
     {
@@ -1143,15 +1152,15 @@ void SNMPv2MIB::Sysortable::Sysorentry::set_filter(const std::string & value_pat
     }
 }
 
-bool SNMPv2MIB::Sysortable::Sysorentry::has_leaf_or_child_of_name(const std::string & name) const
+bool SNMPv2MIB::SysORTable::SysOREntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sysORIndex" || name == "sysORID" || name == "sysORDescr" || name == "sysORUpTime")
         return true;
     return false;
 }
 
-const Enum::YLeaf SNMPv2MIB::Snmp::Snmpenableauthentraps::enabled {1, "enabled"};
-const Enum::YLeaf SNMPv2MIB::Snmp::Snmpenableauthentraps::disabled {2, "disabled"};
+const Enum::YLeaf SNMPv2MIB::Snmp::SnmpEnableAuthenTraps::enabled {1, "enabled"};
+const Enum::YLeaf SNMPv2MIB::Snmp::SnmpEnableAuthenTraps::disabled {2, "disabled"};
 
 
 }

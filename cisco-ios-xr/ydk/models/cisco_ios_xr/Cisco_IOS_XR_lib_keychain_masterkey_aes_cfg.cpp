@@ -17,7 +17,7 @@ Password::Password()
 {
     encryption->parent = this;
 
-    yang_name = "password"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-masterkey-aes-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-masterkey-aes-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Password::~Password()
@@ -26,6 +26,7 @@ Password::~Password()
 
 bool Password::has_data() const
 {
+    if (is_presence_container) return true;
     return (encryption !=  nullptr && encryption->has_data());
 }
 
@@ -119,10 +120,10 @@ bool Password::has_leaf_or_child_of_name(const std::string & name) const
 
 Password::Encryption::Encryption()
     :
-    aes{YType::int32, "aes"}
+    aes{YType::uint32, "aes"}
 {
 
-    yang_name = "encryption"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "encryption"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Password::Encryption::~Encryption()
@@ -131,6 +132,7 @@ Password::Encryption::~Encryption()
 
 bool Password::Encryption::has_data() const
 {
+    if (is_presence_container) return true;
     return aes.is_set;
 }
 

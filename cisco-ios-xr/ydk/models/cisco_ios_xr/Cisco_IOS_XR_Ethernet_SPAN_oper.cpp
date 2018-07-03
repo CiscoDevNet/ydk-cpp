@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_Ethernet_SPAN_oper {
 SpanMonitorSession::SpanMonitorSession()
     :
     global(std::make_shared<SpanMonitorSession::Global>())
-	,nodes(std::make_shared<SpanMonitorSession::Nodes>())
+    , nodes(std::make_shared<SpanMonitorSession::Nodes>())
 {
     global->parent = this;
     nodes->parent = this;
 
-    yang_name = "span-monitor-session"; yang_parent_name = "Cisco-IOS-XR-Ethernet-SPAN-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "span-monitor-session"; yang_parent_name = "Cisco-IOS-XR-Ethernet-SPAN-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::~SpanMonitorSession()
@@ -28,6 +28,7 @@ SpanMonitorSession::~SpanMonitorSession()
 
 bool SpanMonitorSession::has_data() const
 {
+    if (is_presence_container) return true;
     return (global !=  nullptr && global->has_data())
 	|| (nodes !=  nullptr && nodes->has_data());
 }
@@ -138,12 +139,12 @@ bool SpanMonitorSession::has_leaf_or_child_of_name(const std::string & name) con
 SpanMonitorSession::Global::Global()
     :
     statistics(std::make_shared<SpanMonitorSession::Global::Statistics>())
-	,global_sessions(std::make_shared<SpanMonitorSession::Global::GlobalSessions>())
+    , global_sessions(std::make_shared<SpanMonitorSession::Global::GlobalSessions>())
 {
     statistics->parent = this;
     global_sessions->parent = this;
 
-    yang_name = "global"; yang_parent_name = "span-monitor-session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global"; yang_parent_name = "span-monitor-session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Global::~Global()
@@ -152,6 +153,7 @@ SpanMonitorSession::Global::~Global()
 
 bool SpanMonitorSession::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data())
 	|| (global_sessions !=  nullptr && global_sessions->has_data());
 }
@@ -242,9 +244,11 @@ bool SpanMonitorSession::Global::has_leaf_or_child_of_name(const std::string & n
 }
 
 SpanMonitorSession::Global::Statistics::Statistics()
+    :
+    statistic(this, {"session", "interface"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Global::Statistics::~Statistics()
@@ -253,7 +257,8 @@ SpanMonitorSession::Global::Statistics::~Statistics()
 
 bool SpanMonitorSession::Global::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_data())
             return true;
@@ -263,7 +268,7 @@ bool SpanMonitorSession::Global::Statistics::has_data() const
 
 bool SpanMonitorSession::Global::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<statistic.size(); index++)
+    for (std::size_t index=0; index<statistic.len(); index++)
     {
         if(statistic[index]->has_operation())
             return true;
@@ -300,7 +305,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::Statistics::get_child_by_nam
     {
         auto c = std::make_shared<SpanMonitorSession::Global::Statistics::Statistic>();
         c->parent = this;
-        statistic.push_back(c);
+        statistic.append(c);
         return c;
     }
 
@@ -312,7 +317,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : statistic)
+    for (auto c : statistic.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -350,7 +355,7 @@ SpanMonitorSession::Global::Statistics::Statistic::Statistic()
     octets_not_mirrored{YType::uint64, "octets-not-mirrored"}
 {
 
-    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Global::Statistics::Statistic::~Statistic()
@@ -359,6 +364,7 @@ SpanMonitorSession::Global::Statistics::Statistic::~Statistic()
 
 bool SpanMonitorSession::Global::Statistics::Statistic::has_data() const
 {
+    if (is_presence_container) return true;
     return session.is_set
 	|| interface.is_set
 	|| rx_packets_mirrored.is_set
@@ -392,7 +398,9 @@ std::string SpanMonitorSession::Global::Statistics::Statistic::get_absolute_path
 std::string SpanMonitorSession::Global::Statistics::Statistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistic" <<"[session='" <<session <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "statistic";
+    ADD_KEY_TOKEN(session, "session");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -521,9 +529,11 @@ bool SpanMonitorSession::Global::Statistics::Statistic::has_leaf_or_child_of_nam
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSessions()
+    :
+    global_session(this, {"session"})
 {
 
-    yang_name = "global-sessions"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-sessions"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::~GlobalSessions()
@@ -532,7 +542,8 @@ SpanMonitorSession::Global::GlobalSessions::~GlobalSessions()
 
 bool SpanMonitorSession::Global::GlobalSessions::has_data() const
 {
-    for (std::size_t index=0; index<global_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_session.len(); index++)
     {
         if(global_session[index]->has_data())
             return true;
@@ -542,7 +553,7 @@ bool SpanMonitorSession::Global::GlobalSessions::has_data() const
 
 bool SpanMonitorSession::Global::GlobalSessions::has_operation() const
 {
-    for (std::size_t index=0; index<global_session.size(); index++)
+    for (std::size_t index=0; index<global_session.len(); index++)
     {
         if(global_session[index]->has_operation())
             return true;
@@ -579,7 +590,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::get_child_by
     {
         auto c = std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession>();
         c->parent = this;
-        global_session.push_back(c);
+        global_session.append(c);
         return c;
     }
 
@@ -591,7 +602,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_session)
+    for (auto c : global_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -627,14 +638,16 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::GlobalSession()
     destination_interface_name{YType::str, "destination-interface-name"},
     destination_interface_handle{YType::str, "destination-interface-handle"},
     interface_error{YType::uint32, "interface-error"}
-    	,
+        ,
     destination_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData>())
-	,destination_id(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId>())
+    , destination_id(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId>())
+    , inject_interface(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface>())
 {
     destination_data->parent = this;
     destination_id->parent = this;
+    inject_interface->parent = this;
 
-    yang_name = "global-session"; yang_parent_name = "global-sessions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-session"; yang_parent_name = "global-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::~GlobalSession()
@@ -643,6 +656,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::~GlobalSession()
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_data() const
 {
+    if (is_presence_container) return true;
     return session.is_set
 	|| name.is_set
 	|| session_class.is_set
@@ -652,7 +666,8 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_data() const
 	|| destination_interface_handle.is_set
 	|| interface_error.is_set
 	|| (destination_data !=  nullptr && destination_data->has_data())
-	|| (destination_id !=  nullptr && destination_id->has_data());
+	|| (destination_id !=  nullptr && destination_id->has_data())
+	|| (inject_interface !=  nullptr && inject_interface->has_data());
 }
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_operation() const
@@ -667,7 +682,8 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_operation() 
 	|| ydk::is_set(destination_interface_handle.yfilter)
 	|| ydk::is_set(interface_error.yfilter)
 	|| (destination_data !=  nullptr && destination_data->has_operation())
-	|| (destination_id !=  nullptr && destination_id->has_operation());
+	|| (destination_id !=  nullptr && destination_id->has_operation())
+	|| (inject_interface !=  nullptr && inject_interface->has_operation());
 }
 
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_absolute_path() const
@@ -680,7 +696,8 @@ std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_absol
 std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-session" <<"[session='" <<session <<"']";
+    path_buffer << "global-session";
+    ADD_KEY_TOKEN(session, "session");
     return path_buffer.str();
 }
 
@@ -721,6 +738,15 @@ std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSessio
         return destination_id;
     }
 
+    if(child_yang_name == "inject-interface")
+    {
+        if(inject_interface == nullptr)
+        {
+            inject_interface = std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface>();
+        }
+        return inject_interface;
+    }
+
     return nullptr;
 }
 
@@ -736,6 +762,11 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::Globa
     if(destination_id != nullptr)
     {
         children["destination-id"] = destination_id;
+    }
+
+    if(inject_interface != nullptr)
+    {
+        children["inject-interface"] = inject_interface;
     }
 
     return children;
@@ -831,7 +862,7 @@ void SpanMonitorSession::Global::GlobalSessions::GlobalSession::set_filter(const
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination-data" || name == "destination-id" || name == "session" || name == "name" || name == "session-class" || name == "id" || name == "destination-error" || name == "destination-interface-name" || name == "destination-interface-handle" || name == "interface-error")
+    if(name == "destination-data" || name == "destination-id" || name == "inject-interface" || name == "session" || name == "name" || name == "session-class" || name == "id" || name == "destination-error" || name == "destination-interface-name" || name == "destination-interface-handle" || name == "interface-error")
         return true;
     return false;
 }
@@ -840,18 +871,18 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Dest
     :
     destination_class{YType::enumeration, "destination-class"},
     invalid_value{YType::uint32, "invalid-value"}
-    	,
+        ,
     interface_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData>())
-	,pseudowire_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData>())
-	,next_hop_ipv4_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data>())
-	,next_hop_ipv6_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data>())
+    , pseudowire_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData>())
+    , next_hop_ipv4_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data>())
+    , next_hop_ipv6_data(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data>())
 {
     interface_data->parent = this;
     pseudowire_data->parent = this;
     next_hop_ipv4_data->parent = this;
     next_hop_ipv6_data->parent = this;
 
-    yang_name = "destination-data"; yang_parent_name = "global-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-data"; yang_parent_name = "global-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::~DestinationData()
@@ -860,6 +891,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::~Des
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_class.is_set
 	|| invalid_value.is_set
 	|| (interface_data !=  nullptr && interface_data->has_data())
@@ -1006,7 +1038,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Inte
     interface_state{YType::enumeration, "interface-state"}
 {
 
-    yang_name = "interface-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::~InterfaceData()
@@ -1015,6 +1047,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Inte
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::InterfaceData::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_state.is_set;
 }
@@ -1097,7 +1130,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Pseu
     pseudowire_is_up{YType::boolean, "pseudowire-is-up"}
 {
 
-    yang_name = "pseudowire-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pseudowire-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::~PseudowireData()
@@ -1106,6 +1139,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Pseu
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::PseudowireData::has_data() const
 {
+    if (is_presence_container) return true;
     return pseudowire_name.is_set
 	|| pseudowire_is_up.is_set;
 }
@@ -1189,7 +1223,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Next
     address_is_reachable{YType::boolean, "address-is-reachable"}
 {
 
-    yang_name = "next-hop-ipv4-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-ipv4-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::~NextHopIpv4Data()
@@ -1198,6 +1232,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Next
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv4Data::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_address.is_set
 	|| vrf_name.is_set
 	|| address_is_reachable.is_set;
@@ -1294,7 +1329,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Next
     address_is_reachable{YType::boolean, "address-is-reachable"}
 {
 
-    yang_name = "next-hop-ipv6-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-ipv6-data"; yang_parent_name = "destination-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::~NextHopIpv6Data()
@@ -1303,6 +1338,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::Next
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData::NextHopIpv6Data::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| vrf_name.is_set
 	|| address_is_reachable.is_set;
@@ -1398,14 +1434,14 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Destin
     interface{YType::str, "interface"},
     pseudowire_id{YType::uint32, "pseudowire-id"},
     invalid_value{YType::uint32, "invalid-value"}
-    	,
+        ,
     ipv4_address_and_vrf(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf>())
-	,ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf>())
+    , ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf>())
 {
     ipv4_address_and_vrf->parent = this;
     ipv6_address_and_vrf->parent = this;
 
-    yang_name = "destination-id"; yang_parent_name = "global-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-id"; yang_parent_name = "global-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::~DestinationId()
@@ -1414,6 +1450,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::~Desti
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_class.is_set
 	|| interface.is_set
 	|| pseudowire_id.is_set
@@ -1554,7 +1591,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4Ad
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::~Ipv4AddressAndVrf()
@@ -1563,6 +1600,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4Ad
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv4AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_address.is_set
 	|| vrf_name.is_set;
 }
@@ -1645,7 +1683,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6Ad
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::~Ipv6AddressAndVrf()
@@ -1654,6 +1692,7 @@ SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6Ad
 
 bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| vrf_name.is_set;
 }
@@ -1730,10 +1769,90 @@ bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::I
     return false;
 }
 
-SpanMonitorSession::Nodes::Nodes()
+SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::InjectInterface()
+    :
+    name{YType::str, "name"}
 {
 
-    yang_name = "nodes"; yang_parent_name = "span-monitor-session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "inject-interface"; yang_parent_name = "global-session"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::~InjectInterface()
+{
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set;
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inject-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
+}
+
+SpanMonitorSession::Nodes::Nodes()
+    :
+    node(this, {"node"})
+{
+
+    yang_name = "nodes"; yang_parent_name = "span-monitor-session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Nodes::~Nodes()
@@ -1742,7 +1861,8 @@ SpanMonitorSession::Nodes::~Nodes()
 
 bool SpanMonitorSession::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -1752,7 +1872,7 @@ bool SpanMonitorSession::Nodes::has_data() const
 
 bool SpanMonitorSession::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -1789,7 +1909,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::get_child_by_name(const std::
     {
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -1801,7 +1921,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1830,16 +1950,16 @@ bool SpanMonitorSession::Nodes::has_leaf_or_child_of_name(const std::string & na
 SpanMonitorSession::Nodes::Node::Node()
     :
     node{YType::str, "node"}
-    	,
+        ,
     attachments(std::make_shared<SpanMonitorSession::Nodes::Node::Attachments>())
-	,hardware_sessions(std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions>())
-	,interfaces(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces>())
+    , hardware_sessions(std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions>())
+    , interfaces(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces>())
 {
     attachments->parent = this;
     hardware_sessions->parent = this;
     interfaces->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SpanMonitorSession::Nodes::Node::~Node()
@@ -1848,6 +1968,7 @@ SpanMonitorSession::Nodes::Node::~Node()
 
 bool SpanMonitorSession::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (attachments !=  nullptr && attachments->has_data())
 	|| (hardware_sessions !=  nullptr && hardware_sessions->has_data())
@@ -1873,7 +1994,8 @@ std::string SpanMonitorSession::Nodes::Node::get_absolute_path() const
 std::string SpanMonitorSession::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -1967,9 +2089,11 @@ bool SpanMonitorSession::Nodes::Node::has_leaf_or_child_of_name(const std::strin
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachments()
+    :
+    attachment(this, {"session", "interface"})
 {
 
-    yang_name = "attachments"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attachments"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::~Attachments()
@@ -1978,7 +2102,8 @@ SpanMonitorSession::Nodes::Node::Attachments::~Attachments()
 
 bool SpanMonitorSession::Nodes::Node::Attachments::has_data() const
 {
-    for (std::size_t index=0; index<attachment.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<attachment.len(); index++)
     {
         if(attachment[index]->has_data())
             return true;
@@ -1988,7 +2113,7 @@ bool SpanMonitorSession::Nodes::Node::Attachments::has_data() const
 
 bool SpanMonitorSession::Nodes::Node::Attachments::has_operation() const
 {
-    for (std::size_t index=0; index<attachment.size(); index++)
+    for (std::size_t index=0; index<attachment.len(); index++)
     {
         if(attachment[index]->has_operation())
             return true;
@@ -2018,7 +2143,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Attachments::get_child_
     {
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment>();
         c->parent = this;
-        attachment.push_back(c);
+        attachment.append(c);
         return c;
     }
 
@@ -2030,7 +2155,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : attachment)
+    for (auto c : attachment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2072,14 +2197,14 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::Attachment()
     source_interface_is_a_destination{YType::boolean, "source-interface-is-a-destination"},
     destination_interface{YType::str, "destination-interface"},
     traffic_direction{YType::enumeration, "traffic-direction"}
-    	,
+        ,
     traffic_parameters(std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters>())
-	,destination_id(std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId>())
+    , destination_id(std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId>())
 {
     traffic_parameters->parent = this;
     destination_id->parent = this;
 
-    yang_name = "attachment"; yang_parent_name = "attachments"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attachment"; yang_parent_name = "attachments"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::~Attachment()
@@ -2088,6 +2213,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::~Attachment()
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::has_data() const
 {
+    if (is_presence_container) return true;
     return session.is_set
 	|| interface.is_set
 	|| name.is_set
@@ -2130,7 +2256,9 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::has_operation() c
 std::string SpanMonitorSession::Nodes::Node::Attachments::Attachment::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "attachment" <<"[session='" <<session <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "attachment";
+    ADD_KEY_TOKEN(session, "session");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -2362,7 +2490,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::Tra
     acl_name{YType::str, "acl-name"}
 {
 
-    yang_name = "traffic-parameters"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-parameters"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::~TrafficParameters()
@@ -2371,6 +2499,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::~Tr
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::TrafficParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_direction.is_set
 	|| port_level.is_set
 	|| is_acl_enabled.is_set
@@ -2505,14 +2634,14 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Destina
     interface{YType::str, "interface"},
     pseudowire_id{YType::uint32, "pseudowire-id"},
     invalid_value{YType::uint32, "invalid-value"}
-    	,
+        ,
     ipv4_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf>())
-	,ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf>())
+    , ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf>())
 {
     ipv4_address_and_vrf->parent = this;
     ipv6_address_and_vrf->parent = this;
 
-    yang_name = "destination-id"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-id"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::~DestinationId()
@@ -2521,6 +2650,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::~Destin
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_class.is_set
 	|| interface.is_set
 	|| pseudowire_id.is_set
@@ -2661,7 +2791,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4Add
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::~Ipv4AddressAndVrf()
@@ -2670,6 +2800,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4Add
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv4AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_address.is_set
 	|| vrf_name.is_set;
 }
@@ -2752,7 +2883,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6Add
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::~Ipv6AddressAndVrf()
@@ -2761,6 +2892,7 @@ SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6Add
 
 bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ipv6AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| vrf_name.is_set;
 }
@@ -2838,9 +2970,11 @@ bool SpanMonitorSession::Nodes::Node::Attachments::Attachment::DestinationId::Ip
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSessions()
+    :
+    hardware_session(this, {})
 {
 
-    yang_name = "hardware-sessions"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-sessions"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::~HardwareSessions()
@@ -2849,7 +2983,8 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::~HardwareSessions()
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::has_data() const
 {
-    for (std::size_t index=0; index<hardware_session.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hardware_session.len(); index++)
     {
         if(hardware_session[index]->has_data())
             return true;
@@ -2859,7 +2994,7 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::has_data() const
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::has_operation() const
 {
-    for (std::size_t index=0; index<hardware_session.size(); index++)
+    for (std::size_t index=0; index<hardware_session.len(); index++)
     {
         if(hardware_session[index]->has_operation())
             return true;
@@ -2889,7 +3024,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::HardwareSessions::get_c
     {
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession>();
         c->parent = this;
-        hardware_session.push_back(c);
+        hardware_session.append(c);
         return c;
     }
 
@@ -2901,7 +3036,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hardware_session)
+    for (auto c : hardware_session.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2930,18 +3065,21 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::has_leaf_or_child_of_nam
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::HardwareSession()
     :
     session_class{YType::enumeration, "session-class"},
-    session_id{YType::int32, "session-id"},
+    session_id{YType::uint32, "session-id"},
     id{YType::uint32, "id"},
     name{YType::str, "name"},
     session_class_xr{YType::enumeration, "session-class-xr"},
     destination_interface{YType::str, "destination-interface"},
-    platform_error{YType::uint32, "platform-error"}
-    	,
+    platform_error{YType::uint32, "platform-error"},
+    inject_interface_ifh{YType::str, "inject-interface-ifh"},
+    inject_interface_mac{YType::str, "inject-interface-mac"},
+    inject_interface_invalid{YType::boolean, "inject-interface-invalid"}
+        ,
     destination_id(std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId>())
 {
     destination_id->parent = this;
 
-    yang_name = "hardware-session"; yang_parent_name = "hardware-sessions"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hardware-session"; yang_parent_name = "hardware-sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::~HardwareSession()
@@ -2950,6 +3088,7 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::~HardwareSes
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_data() const
 {
+    if (is_presence_container) return true;
     return session_class.is_set
 	|| session_id.is_set
 	|| id.is_set
@@ -2957,6 +3096,9 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_dat
 	|| session_class_xr.is_set
 	|| destination_interface.is_set
 	|| platform_error.is_set
+	|| inject_interface_ifh.is_set
+	|| inject_interface_mac.is_set
+	|| inject_interface_invalid.is_set
 	|| (destination_id !=  nullptr && destination_id->has_data());
 }
 
@@ -2970,6 +3112,9 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_ope
 	|| ydk::is_set(session_class_xr.yfilter)
 	|| ydk::is_set(destination_interface.yfilter)
 	|| ydk::is_set(platform_error.yfilter)
+	|| ydk::is_set(inject_interface_ifh.yfilter)
+	|| ydk::is_set(inject_interface_mac.yfilter)
+	|| ydk::is_set(inject_interface_invalid.yfilter)
 	|| (destination_id !=  nullptr && destination_id->has_operation());
 }
 
@@ -2991,6 +3136,9 @@ std::vector<std::pair<std::string, LeafData> > SpanMonitorSession::Nodes::Node::
     if (session_class_xr.is_set || is_set(session_class_xr.yfilter)) leaf_name_data.push_back(session_class_xr.get_name_leafdata());
     if (destination_interface.is_set || is_set(destination_interface.yfilter)) leaf_name_data.push_back(destination_interface.get_name_leafdata());
     if (platform_error.is_set || is_set(platform_error.yfilter)) leaf_name_data.push_back(platform_error.get_name_leafdata());
+    if (inject_interface_ifh.is_set || is_set(inject_interface_ifh.yfilter)) leaf_name_data.push_back(inject_interface_ifh.get_name_leafdata());
+    if (inject_interface_mac.is_set || is_set(inject_interface_mac.yfilter)) leaf_name_data.push_back(inject_interface_mac.get_name_leafdata());
+    if (inject_interface_invalid.is_set || is_set(inject_interface_invalid.yfilter)) leaf_name_data.push_back(inject_interface_invalid.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3066,6 +3214,24 @@ void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::set_val
         platform_error.value_namespace = name_space;
         platform_error.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "inject-interface-ifh")
+    {
+        inject_interface_ifh = value;
+        inject_interface_ifh.value_namespace = name_space;
+        inject_interface_ifh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inject-interface-mac")
+    {
+        inject_interface_mac = value;
+        inject_interface_mac.value_namespace = name_space;
+        inject_interface_mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inject-interface-invalid")
+    {
+        inject_interface_invalid = value;
+        inject_interface_invalid.value_namespace = name_space;
+        inject_interface_invalid.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3098,11 +3264,23 @@ void SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::set_fil
     {
         platform_error.yfilter = yfilter;
     }
+    if(value_path == "inject-interface-ifh")
+    {
+        inject_interface_ifh.yfilter = yfilter;
+    }
+    if(value_path == "inject-interface-mac")
+    {
+        inject_interface_mac.yfilter = yfilter;
+    }
+    if(value_path == "inject-interface-invalid")
+    {
+        inject_interface_invalid.yfilter = yfilter;
+    }
 }
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination-id" || name == "session-class" || name == "session-id" || name == "id" || name == "name" || name == "session-class-xr" || name == "destination-interface" || name == "platform-error")
+    if(name == "destination-id" || name == "session-class" || name == "session-id" || name == "id" || name == "name" || name == "session-class-xr" || name == "destination-interface" || name == "platform-error" || name == "inject-interface-ifh" || name == "inject-interface-mac" || name == "inject-interface-invalid")
         return true;
     return false;
 }
@@ -3113,14 +3291,14 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationI
     interface{YType::str, "interface"},
     pseudowire_id{YType::uint32, "pseudowire-id"},
     invalid_value{YType::uint32, "invalid-value"}
-    	,
+        ,
     ipv4_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf>())
-	,ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf>())
+    , ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf>())
 {
     ipv4_address_and_vrf->parent = this;
     ipv6_address_and_vrf->parent = this;
 
-    yang_name = "destination-id"; yang_parent_name = "hardware-session"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-id"; yang_parent_name = "hardware-session"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::~DestinationId()
@@ -3129,6 +3307,7 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationI
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_class.is_set
 	|| interface.is_set
 	|| pseudowire_id.is_set
@@ -3269,7 +3448,7 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationI
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::~Ipv4AddressAndVrf()
@@ -3278,6 +3457,7 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationI
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv4AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_address.is_set
 	|| vrf_name.is_set;
 }
@@ -3360,7 +3540,7 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationI
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::~Ipv6AddressAndVrf()
@@ -3369,6 +3549,7 @@ SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationI
 
 bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId::Ipv6AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| vrf_name.is_set;
 }
@@ -3446,9 +3627,11 @@ bool SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::Destina
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interfaces()
+    :
+    interface(this, {"interface"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::~Interfaces()
@@ -3457,7 +3640,8 @@ SpanMonitorSession::Nodes::Node::Interfaces::~Interfaces()
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -3467,7 +3651,7 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::has_data() const
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -3497,7 +3681,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::get_child_b
     {
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -3509,7 +3693,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3542,14 +3726,15 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Interface()
     platform_error{YType::uint32, "platform-error"},
     destination_interface{YType::str, "destination-interface"},
     traffic_direction{YType::enumeration, "traffic-direction"}
-    	,
+        ,
     destination_id(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId>())
-	,traffic_mirroring_parameters(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters>())
+    , traffic_mirroring_parameters(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters>())
+    , attachment(this, {})
 {
     destination_id->parent = this;
     traffic_mirroring_parameters->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::~Interface()
@@ -3558,7 +3743,8 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::~Interface()
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<attachment.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<attachment.len(); index++)
     {
         if(attachment[index]->has_data())
             return true;
@@ -3574,7 +3760,7 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::has_data() const
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<attachment.size(); index++)
+    for (std::size_t index=0; index<attachment.len(); index++)
     {
         if(attachment[index]->has_operation())
             return true;
@@ -3592,7 +3778,8 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::has_operation() con
 std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -3634,7 +3821,7 @@ std::shared_ptr<Entity> SpanMonitorSession::Nodes::Node::Interfaces::Interface::
     {
         auto c = std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment>();
         c->parent = this;
-        attachment.push_back(c);
+        attachment.append(c);
         return c;
     }
 
@@ -3656,7 +3843,7 @@ std::map<std::string, std::shared_ptr<Entity>> SpanMonitorSession::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : attachment)
+    for (auto c : attachment.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3738,14 +3925,14 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Destinati
     interface{YType::str, "interface"},
     pseudowire_id{YType::uint32, "pseudowire-id"},
     invalid_value{YType::uint32, "invalid-value"}
-    	,
+        ,
     ipv4_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf>())
-	,ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf>())
+    , ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf>())
 {
     ipv4_address_and_vrf->parent = this;
     ipv6_address_and_vrf->parent = this;
 
-    yang_name = "destination-id"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-id"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::~DestinationId()
@@ -3754,6 +3941,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::~Destinat
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_class.is_set
 	|| interface.is_set
 	|| pseudowire_id.is_set
@@ -3894,7 +4082,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4Addre
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::~Ipv4AddressAndVrf()
@@ -3903,6 +4091,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4Addre
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv4AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_address.is_set
 	|| vrf_name.is_set;
 }
@@ -3985,7 +4174,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6Addre
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::~Ipv6AddressAndVrf()
@@ -3994,6 +4183,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6Addre
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId::Ipv6AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| vrf_name.is_set;
 }
@@ -4080,7 +4270,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParamete
     acl_name{YType::str, "acl-name"}
 {
 
-    yang_name = "traffic-mirroring-parameters"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-mirroring-parameters"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::~TrafficMirroringParameters()
@@ -4089,6 +4279,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParamete
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_direction.is_set
 	|| port_level.is_set
 	|| is_acl_enabled.is_set
@@ -4220,14 +4411,14 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringPar
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Attachment()
     :
     class_{YType::enumeration, "class"}
-    	,
+        ,
     destination_id(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId>())
-	,traffic_mirroring_parameters(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters>())
+    , traffic_mirroring_parameters(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters>())
 {
     destination_id->parent = this;
     traffic_mirroring_parameters->parent = this;
 
-    yang_name = "attachment"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attachment"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::~Attachment()
@@ -4236,6 +4427,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::~Attachment(
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::has_data() const
 {
+    if (is_presence_container) return true;
     return class_.is_set
 	|| (destination_id !=  nullptr && destination_id->has_data())
 	|| (traffic_mirroring_parameters !=  nullptr && traffic_mirroring_parameters->has_data());
@@ -4337,14 +4529,14 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationI
     interface{YType::str, "interface"},
     pseudowire_id{YType::uint32, "pseudowire-id"},
     invalid_value{YType::uint32, "invalid-value"}
-    	,
+        ,
     ipv4_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf>())
-	,ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf>())
+    , ipv6_address_and_vrf(std::make_shared<SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf>())
 {
     ipv4_address_and_vrf->parent = this;
     ipv6_address_and_vrf->parent = this;
 
-    yang_name = "destination-id"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-id"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::~DestinationId()
@@ -4353,6 +4545,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationI
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_class.is_set
 	|| interface.is_set
 	|| pseudowire_id.is_set
@@ -4493,7 +4686,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationI
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::~Ipv4AddressAndVrf()
@@ -4502,6 +4695,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationI
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv4AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv4_address.is_set
 	|| vrf_name.is_set;
 }
@@ -4584,7 +4778,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationI
     vrf_name{YType::str, "vrf-name"}
 {
 
-    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-address-and-vrf"; yang_parent_name = "destination-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::~Ipv6AddressAndVrf()
@@ -4593,6 +4787,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationI
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::DestinationId::Ipv6AddressAndVrf::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| vrf_name.is_set;
 }
@@ -4679,7 +4874,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirro
     acl_name{YType::str, "acl-name"}
 {
 
-    yang_name = "traffic-mirroring-parameters"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-mirroring-parameters"; yang_parent_name = "attachment"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::~TrafficMirroringParameters()
@@ -4688,6 +4883,7 @@ SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirro
 
 bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return traffic_direction.is_set
 	|| port_level.is_set
 	|| is_acl_enabled.is_set
@@ -4816,32 +5012,6 @@ bool SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Traffic
     return false;
 }
 
-const Enum::YLeaf MirrorInterval::mirror_interval_all {0, "mirror-interval-all"};
-const Enum::YLeaf MirrorInterval::mirror_interval512 {1, "mirror-interval512"};
-const Enum::YLeaf MirrorInterval::mirror_interval1k {2, "mirror-interval1k"};
-const Enum::YLeaf MirrorInterval::mirror_interval2k {3, "mirror-interval2k"};
-const Enum::YLeaf MirrorInterval::mirror_interval4k {4, "mirror-interval4k"};
-const Enum::YLeaf MirrorInterval::mirror_interval8k {5, "mirror-interval8k"};
-const Enum::YLeaf MirrorInterval::mirror_interval16k {6, "mirror-interval16k"};
-
-const Enum::YLeaf TrafficDirection::invalid {0, "invalid"};
-const Enum::YLeaf TrafficDirection::rx_only {1, "rx-only"};
-const Enum::YLeaf TrafficDirection::tx_only {2, "tx-only"};
-const Enum::YLeaf TrafficDirection::both {3, "both"};
-
-const Enum::YLeaf DestinationClass::interface_class {0, "interface-class"};
-const Enum::YLeaf DestinationClass::pseudowire_class {1, "pseudowire-class"};
-const Enum::YLeaf DestinationClass::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
-const Enum::YLeaf DestinationClass::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
-const Enum::YLeaf DestinationClass::invalid_class {255, "invalid-class"};
-
-const Enum::YLeaf SessionClass::ethernet_class {0, "ethernet-class"};
-const Enum::YLeaf SessionClass::ipv4_class {1, "ipv4-class"};
-const Enum::YLeaf SessionClass::ipv6_class {2, "ipv6-class"};
-const Enum::YLeaf SessionClass::mplsipv4_class {3, "mplsipv4-class"};
-const Enum::YLeaf SessionClass::mplsipv6_class {4, "mplsipv6-class"};
-const Enum::YLeaf SessionClass::invalid_class {65535, "invalid-class"};
-
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
 const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
@@ -4861,6 +5031,32 @@ const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"}
 const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
 const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
 const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+
+const Enum::YLeaf DestinationClass::interface_class {0, "interface-class"};
+const Enum::YLeaf DestinationClass::pseudowire_class {1, "pseudowire-class"};
+const Enum::YLeaf DestinationClass::next_hop_ipv4_class {2, "next-hop-ipv4-class"};
+const Enum::YLeaf DestinationClass::next_hop_ipv6_class {3, "next-hop-ipv6-class"};
+const Enum::YLeaf DestinationClass::invalid_class {255, "invalid-class"};
+
+const Enum::YLeaf SessionClass::ethernet_class {0, "ethernet-class"};
+const Enum::YLeaf SessionClass::ipv4_class {1, "ipv4-class"};
+const Enum::YLeaf SessionClass::ipv6_class {2, "ipv6-class"};
+const Enum::YLeaf SessionClass::mplsipv4_class {3, "mplsipv4-class"};
+const Enum::YLeaf SessionClass::mplsipv6_class {4, "mplsipv6-class"};
+const Enum::YLeaf SessionClass::invalid_class {65535, "invalid-class"};
+
+const Enum::YLeaf MirrorInterval::mirror_interval_all {0, "mirror-interval-all"};
+const Enum::YLeaf MirrorInterval::mirror_interval512 {1, "mirror-interval512"};
+const Enum::YLeaf MirrorInterval::mirror_interval1k {2, "mirror-interval1k"};
+const Enum::YLeaf MirrorInterval::mirror_interval2k {3, "mirror-interval2k"};
+const Enum::YLeaf MirrorInterval::mirror_interval4k {4, "mirror-interval4k"};
+const Enum::YLeaf MirrorInterval::mirror_interval8k {5, "mirror-interval8k"};
+const Enum::YLeaf MirrorInterval::mirror_interval16k {6, "mirror-interval16k"};
+
+const Enum::YLeaf TrafficDirection::invalid {0, "invalid"};
+const Enum::YLeaf TrafficDirection::rx_only {1, "rx-only"};
+const Enum::YLeaf TrafficDirection::tx_only {2, "tx-only"};
+const Enum::YLeaf TrafficDirection::both {3, "both"};
 
 
 }

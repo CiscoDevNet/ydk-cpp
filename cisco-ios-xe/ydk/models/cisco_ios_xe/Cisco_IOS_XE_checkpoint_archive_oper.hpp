@@ -60,7 +60,7 @@ class CheckpointArchives::Archives : public ydk::Entity
 
         class Archive; //type: CheckpointArchives::Archives::Archive
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_checkpoint_archive_oper::CheckpointArchives::Archives::Archive> > archive;
+        ydk::YList archive;
         
 }; // CheckpointArchives::Archives
 

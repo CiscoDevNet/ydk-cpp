@@ -13,12 +13,13 @@ namespace Cisco_IOS_XR_ipv4_mfwd_cfg {
 
 Mfwd::Mfwd()
     :
-    default_context(nullptr) // presence node
-	,vrfs(std::make_shared<Mfwd::Vrfs>())
+    default_context(std::make_shared<Mfwd::DefaultContext>())
+    , vrfs(std::make_shared<Mfwd::Vrfs>())
 {
+    default_context->parent = this;
     vrfs->parent = this;
 
-    yang_name = "mfwd"; yang_parent_name = "Cisco-IOS-XR-ipv4-mfwd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mfwd"; yang_parent_name = "Cisco-IOS-XR-ipv4-mfwd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Mfwd::~Mfwd()
@@ -27,6 +28,7 @@ Mfwd::~Mfwd()
 
 bool Mfwd::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_context !=  nullptr && default_context->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
@@ -137,12 +139,12 @@ bool Mfwd::has_leaf_or_child_of_name(const std::string & name) const
 Mfwd::DefaultContext::DefaultContext()
     :
     ipv6(std::make_shared<Mfwd::DefaultContext::Ipv6>())
-	,ipv4(std::make_shared<Mfwd::DefaultContext::Ipv4>())
+    , ipv4(std::make_shared<Mfwd::DefaultContext::Ipv4>())
 {
     ipv6->parent = this;
     ipv4->parent = this;
 
-    yang_name = "default-context"; yang_parent_name = "mfwd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default-context"; yang_parent_name = "mfwd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::~DefaultContext()
@@ -151,6 +153,7 @@ Mfwd::DefaultContext::~DefaultContext()
 
 bool Mfwd::DefaultContext::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
@@ -252,14 +255,14 @@ Mfwd::DefaultContext::Ipv6::Ipv6()
     multicast_forwarding{YType::empty, "multicast-forwarding"},
     log_traps{YType::empty, "log-traps"},
     accounting{YType::enumeration, "accounting"}
-    	,
+        ,
     static_rpf_rules(std::make_shared<Mfwd::DefaultContext::Ipv6::StaticRpfRules>())
-	,interfaces(std::make_shared<Mfwd::DefaultContext::Ipv6::Interfaces>())
+    , interfaces(std::make_shared<Mfwd::DefaultContext::Ipv6::Interfaces>())
 {
     static_rpf_rules->parent = this;
     interfaces->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv6::~Ipv6()
@@ -268,6 +271,7 @@ Mfwd::DefaultContext::Ipv6::~Ipv6()
 
 bool Mfwd::DefaultContext::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_on_all_interfaces.is_set
 	|| maximum_checking_disable.is_set
 	|| rate_per_route.is_set
@@ -488,9 +492,11 @@ bool Mfwd::DefaultContext::Ipv6::has_leaf_or_child_of_name(const std::string & n
 }
 
 Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRules()
+    :
+    static_rpf_rule(this, {"address", "prefix_mask"})
 {
 
-    yang_name = "static-rpf-rules"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static-rpf-rules"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv6::StaticRpfRules::~StaticRpfRules()
@@ -499,7 +505,8 @@ Mfwd::DefaultContext::Ipv6::StaticRpfRules::~StaticRpfRules()
 
 bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::has_data() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_data())
             return true;
@@ -509,7 +516,7 @@ bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::has_data() const
 
 bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::has_operation() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_operation())
             return true;
@@ -546,7 +553,7 @@ std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::StaticRpfRules::get_child_by
     {
         auto c = std::make_shared<Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule>();
         c->parent = this;
-        static_rpf_rule.push_back(c);
+        static_rpf_rule.append(c);
         return c;
     }
 
@@ -558,7 +565,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_rpf_rule)
+    for (auto c : static_rpf_rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -592,7 +599,7 @@ Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::StaticRpfRule()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
@@ -601,6 +608,7 @@ Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
 
 bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_mask.is_set
 	|| neighbor_address.is_set
@@ -626,7 +634,9 @@ std::string Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_absol
 std::string Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-rpf-rule" <<"[address='" <<address <<"']" <<"[prefix-mask='" <<prefix_mask <<"']";
+    path_buffer << "static-rpf-rule";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_mask, "prefix-mask");
     return path_buffer.str();
 }
 
@@ -711,9 +721,11 @@ bool Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule::has_leaf_or_chil
 }
 
 Mfwd::DefaultContext::Ipv6::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv6::Interfaces::~Interfaces()
@@ -722,7 +734,8 @@ Mfwd::DefaultContext::Ipv6::Interfaces::~Interfaces()
 
 bool Mfwd::DefaultContext::Ipv6::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -732,7 +745,7 @@ bool Mfwd::DefaultContext::Ipv6::Interfaces::has_data() const
 
 bool Mfwd::DefaultContext::Ipv6::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -769,7 +782,7 @@ std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv6::Interfaces::get_child_by_nam
     {
         auto c = std::make_shared<Mfwd::DefaultContext::Ipv6::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -781,7 +794,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv6::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -815,7 +828,7 @@ Mfwd::DefaultContext::Ipv6::Interfaces::Interface::Interface()
     boundary{YType::str, "boundary"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv6::Interfaces::Interface::~Interface()
@@ -824,6 +837,7 @@ Mfwd::DefaultContext::Ipv6::Interfaces::Interface::~Interface()
 
 bool Mfwd::DefaultContext::Ipv6::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| ttl_threshold.is_set
 	|| enable_on_interface.is_set
@@ -849,7 +863,8 @@ std::string Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_absolute_path
 std::string Mfwd::DefaultContext::Ipv6::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -946,14 +961,14 @@ Mfwd::DefaultContext::Ipv4::Ipv4()
     multicast_forwarding{YType::empty, "multicast-forwarding"},
     log_traps{YType::empty, "log-traps"},
     accounting{YType::enumeration, "accounting"}
-    	,
+        ,
     static_rpf_rules(std::make_shared<Mfwd::DefaultContext::Ipv4::StaticRpfRules>())
-	,interfaces(std::make_shared<Mfwd::DefaultContext::Ipv4::Interfaces>())
+    , interfaces(std::make_shared<Mfwd::DefaultContext::Ipv4::Interfaces>())
 {
     static_rpf_rules->parent = this;
     interfaces->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv4::~Ipv4()
@@ -962,6 +977,7 @@ Mfwd::DefaultContext::Ipv4::~Ipv4()
 
 bool Mfwd::DefaultContext::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return out_of_memory_handling.is_set
 	|| enable_on_all_interfaces.is_set
 	|| maximum_checking_disable.is_set
@@ -1195,9 +1211,11 @@ bool Mfwd::DefaultContext::Ipv4::has_leaf_or_child_of_name(const std::string & n
 }
 
 Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRules()
+    :
+    static_rpf_rule(this, {"address", "prefix_mask"})
 {
 
-    yang_name = "static-rpf-rules"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static-rpf-rules"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv4::StaticRpfRules::~StaticRpfRules()
@@ -1206,7 +1224,8 @@ Mfwd::DefaultContext::Ipv4::StaticRpfRules::~StaticRpfRules()
 
 bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::has_data() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_data())
             return true;
@@ -1216,7 +1235,7 @@ bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::has_data() const
 
 bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::has_operation() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_operation())
             return true;
@@ -1253,7 +1272,7 @@ std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::StaticRpfRules::get_child_by
     {
         auto c = std::make_shared<Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule>();
         c->parent = this;
-        static_rpf_rule.push_back(c);
+        static_rpf_rule.append(c);
         return c;
     }
 
@@ -1265,7 +1284,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Stati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_rpf_rule)
+    for (auto c : static_rpf_rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1299,7 +1318,7 @@ Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::StaticRpfRule()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
@@ -1308,6 +1327,7 @@ Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
 
 bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_mask.is_set
 	|| neighbor_address.is_set
@@ -1333,7 +1353,9 @@ std::string Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_absol
 std::string Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-rpf-rule" <<"[address='" <<address <<"']" <<"[prefix-mask='" <<prefix_mask <<"']";
+    path_buffer << "static-rpf-rule";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_mask, "prefix-mask");
     return path_buffer.str();
 }
 
@@ -1418,9 +1440,11 @@ bool Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule::has_leaf_or_chil
 }
 
 Mfwd::DefaultContext::Ipv4::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv4::Interfaces::~Interfaces()
@@ -1429,7 +1453,8 @@ Mfwd::DefaultContext::Ipv4::Interfaces::~Interfaces()
 
 bool Mfwd::DefaultContext::Ipv4::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1439,7 +1464,7 @@ bool Mfwd::DefaultContext::Ipv4::Interfaces::has_data() const
 
 bool Mfwd::DefaultContext::Ipv4::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1476,7 +1501,7 @@ std::shared_ptr<Entity> Mfwd::DefaultContext::Ipv4::Interfaces::get_child_by_nam
     {
         auto c = std::make_shared<Mfwd::DefaultContext::Ipv4::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1488,7 +1513,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::DefaultContext::Ipv4::Inter
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1522,7 +1547,7 @@ Mfwd::DefaultContext::Ipv4::Interfaces::Interface::Interface()
     boundary{YType::str, "boundary"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::DefaultContext::Ipv4::Interfaces::Interface::~Interface()
@@ -1531,6 +1556,7 @@ Mfwd::DefaultContext::Ipv4::Interfaces::Interface::~Interface()
 
 bool Mfwd::DefaultContext::Ipv4::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| ttl_threshold.is_set
 	|| enable_on_interface.is_set
@@ -1556,7 +1582,8 @@ std::string Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_absolute_path
 std::string Mfwd::DefaultContext::Ipv4::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1641,9 +1668,11 @@ bool Mfwd::DefaultContext::Ipv4::Interfaces::Interface::has_leaf_or_child_of_nam
 }
 
 Mfwd::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "mfwd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "mfwd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::Vrfs::~Vrfs()
@@ -1652,7 +1681,8 @@ Mfwd::Vrfs::~Vrfs()
 
 bool Mfwd::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -1662,7 +1692,7 @@ bool Mfwd::Vrfs::has_data() const
 
 bool Mfwd::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -1699,7 +1729,7 @@ std::shared_ptr<Entity> Mfwd::Vrfs::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Mfwd::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -1711,7 +1741,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1740,14 +1770,14 @@ bool Mfwd::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 Mfwd::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     ipv6(std::make_shared<Mfwd::Vrfs::Vrf::Ipv6>())
-	,ipv4(std::make_shared<Mfwd::Vrfs::Vrf::Ipv4>())
+    , ipv4(std::make_shared<Mfwd::Vrfs::Vrf::Ipv4>())
 {
     ipv6->parent = this;
     ipv4->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mfwd::Vrfs::Vrf::~Vrf()
@@ -1756,6 +1786,7 @@ Mfwd::Vrfs::Vrf::~Vrf()
 
 bool Mfwd::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data());
@@ -1779,7 +1810,8 @@ std::string Mfwd::Vrfs::Vrf::get_absolute_path() const
 std::string Mfwd::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -1865,14 +1897,14 @@ Mfwd::Vrfs::Vrf::Ipv6::Ipv6()
     multicast_forwarding{YType::empty, "multicast-forwarding"},
     log_traps{YType::empty, "log-traps"},
     accounting{YType::enumeration, "accounting"}
-    	,
+        ,
     static_rpf_rules(std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules>())
-	,interfaces(std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::Interfaces>())
+    , interfaces(std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::Interfaces>())
 {
     static_rpf_rules->parent = this;
     interfaces->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::~Ipv6()
@@ -1881,6 +1913,7 @@ Mfwd::Vrfs::Vrf::Ipv6::~Ipv6()
 
 bool Mfwd::Vrfs::Vrf::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_on_all_interfaces.is_set
 	|| rate_per_route.is_set
 	|| multicast_forwarding.is_set
@@ -2029,9 +2062,11 @@ bool Mfwd::Vrfs::Vrf::Ipv6::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRules()
+    :
+    static_rpf_rule(this, {"address", "prefix_mask"})
 {
 
-    yang_name = "static-rpf-rules"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-rpf-rules"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::~StaticRpfRules()
@@ -2040,7 +2075,8 @@ Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::~StaticRpfRules()
 
 bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::has_data() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_data())
             return true;
@@ -2050,7 +2086,7 @@ bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::has_operation() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_operation())
             return true;
@@ -2080,7 +2116,7 @@ std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::get_child_by_name
     {
         auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule>();
         c->parent = this;
-        static_rpf_rule.push_back(c);
+        static_rpf_rule.append(c);
         return c;
     }
 
@@ -2092,7 +2128,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::StaticRpfR
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_rpf_rule)
+    for (auto c : static_rpf_rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2126,7 +2162,7 @@ Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::StaticRpfRule()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
@@ -2135,6 +2171,7 @@ Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
 
 bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_mask.is_set
 	|| neighbor_address.is_set
@@ -2153,7 +2190,9 @@ bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::has_operation() const
 std::string Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-rpf-rule" <<"[address='" <<address <<"']" <<"[prefix-mask='" <<prefix_mask <<"']";
+    path_buffer << "static-rpf-rule";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_mask, "prefix-mask");
     return path_buffer.str();
 }
 
@@ -2238,9 +2277,11 @@ bool Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule::has_leaf_or_child_of_
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::Interfaces::~Interfaces()
@@ -2249,7 +2290,8 @@ Mfwd::Vrfs::Vrf::Ipv6::Interfaces::~Interfaces()
 
 bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2259,7 +2301,7 @@ bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2289,7 +2331,7 @@ std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv6::Interfaces::get_child_by_name(con
     {
         auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2301,7 +2343,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv6::Interfaces
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2335,7 +2377,7 @@ Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::Interface()
     boundary{YType::str, "boundary"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::~Interface()
@@ -2344,6 +2386,7 @@ Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::~Interface()
 
 bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| ttl_threshold.is_set
 	|| enable_on_interface.is_set
@@ -2362,7 +2405,8 @@ bool Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::has_operation() const
 std::string Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -2453,14 +2497,14 @@ Mfwd::Vrfs::Vrf::Ipv4::Ipv4()
     multicast_forwarding{YType::empty, "multicast-forwarding"},
     log_traps{YType::empty, "log-traps"},
     accounting{YType::enumeration, "accounting"}
-    	,
+        ,
     static_rpf_rules(std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules>())
-	,interfaces(std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::Interfaces>())
+    , interfaces(std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::Interfaces>())
 {
     static_rpf_rules->parent = this;
     interfaces->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::~Ipv4()
@@ -2469,6 +2513,7 @@ Mfwd::Vrfs::Vrf::Ipv4::~Ipv4()
 
 bool Mfwd::Vrfs::Vrf::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_on_all_interfaces.is_set
 	|| rate_per_route.is_set
 	|| multicast_forwarding.is_set
@@ -2617,9 +2662,11 @@ bool Mfwd::Vrfs::Vrf::Ipv4::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRules()
+    :
+    static_rpf_rule(this, {"address", "prefix_mask"})
 {
 
-    yang_name = "static-rpf-rules"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-rpf-rules"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::~StaticRpfRules()
@@ -2628,7 +2675,8 @@ Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::~StaticRpfRules()
 
 bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::has_data() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_data())
             return true;
@@ -2638,7 +2686,7 @@ bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::has_operation() const
 {
-    for (std::size_t index=0; index<static_rpf_rule.size(); index++)
+    for (std::size_t index=0; index<static_rpf_rule.len(); index++)
     {
         if(static_rpf_rule[index]->has_operation())
             return true;
@@ -2668,7 +2716,7 @@ std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::get_child_by_name
     {
         auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule>();
         c->parent = this;
-        static_rpf_rule.push_back(c);
+        static_rpf_rule.append(c);
         return c;
     }
 
@@ -2680,7 +2728,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::StaticRpfR
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : static_rpf_rule)
+    for (auto c : static_rpf_rule.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2714,7 +2762,7 @@ Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::StaticRpfRule()
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-rpf-rule"; yang_parent_name = "static-rpf-rules"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
@@ -2723,6 +2771,7 @@ Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::~StaticRpfRule()
 
 bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_mask.is_set
 	|| neighbor_address.is_set
@@ -2741,7 +2790,9 @@ bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::has_operation() const
 std::string Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "static-rpf-rule" <<"[address='" <<address <<"']" <<"[prefix-mask='" <<prefix_mask <<"']";
+    path_buffer << "static-rpf-rule";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_mask, "prefix-mask");
     return path_buffer.str();
 }
 
@@ -2826,9 +2877,11 @@ bool Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule::has_leaf_or_child_of_
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::Interfaces::~Interfaces()
@@ -2837,7 +2890,8 @@ Mfwd::Vrfs::Vrf::Ipv4::Interfaces::~Interfaces()
 
 bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -2847,7 +2901,7 @@ bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::has_data() const
 
 bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -2877,7 +2931,7 @@ std::shared_ptr<Entity> Mfwd::Vrfs::Vrf::Ipv4::Interfaces::get_child_by_name(con
     {
         auto c = std::make_shared<Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -2889,7 +2943,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mfwd::Vrfs::Vrf::Ipv4::Interfaces
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2923,7 +2977,7 @@ Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::Interface()
     boundary{YType::str, "boundary"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::~Interface()
@@ -2932,6 +2986,7 @@ Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::~Interface()
 
 bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| ttl_threshold.is_set
 	|| enable_on_interface.is_set
@@ -2950,7 +3005,8 @@ bool Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::has_operation() const
 std::string Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 

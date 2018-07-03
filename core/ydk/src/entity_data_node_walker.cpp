@@ -74,14 +74,18 @@ static void walk_children(Entity & entity, path::DataNode & data_node)
     map<string, shared_ptr<Entity>> children = entity.get_children();
     vector<string> order = entity.get_order_of_children();
     YLOG_DEBUG("Children count for: {} : {}",get_entity_path(entity, entity.parent).path, children.size());
+    YLOG_DEBUG("Children order count : {}",order.size());
     if(order.size()>0)
     {
         for(auto child_seg : order)
         {
-            YLOG_DEBUG("Inserting in order");
+            YLOG_DEBUG("Inserting in order for child segpath path: '{}' in parent '{}'", child_seg, get_entity_path(entity, entity.parent).path);
             auto child = children[child_seg];
             if(child == nullptr)
+            {
+                YLOG_DEBUG("Child '{}' is null", child_seg);
                 continue;
+            }
             YLOG_DEBUG("==================");
             YLOG_DEBUG("Looking at child '{}': {}", child_seg, get_entity_path(*(child), child->parent).path);
             if(child->has_operation() || child->has_data() || child->is_presence_container)
@@ -111,6 +115,7 @@ static void populate_data_node(Entity & entity, path::DataNode & parent_data_nod
 {
     EntityPath path = get_entity_path(entity, entity.parent);
     path::DataNode* data_node = &parent_data_node.create_datanode(path.path);
+    YLOG_DEBUG("Created child datanode '{}'", path.path);
 
     if(is_set(entity.yfilter))
     {
@@ -127,18 +132,22 @@ static void populate_name_values(path::DataNode & data_node, EntityPath & path)
     for(const pair<string, LeafData> & name_value : path.value_paths)
     {
         LeafData leaf_data = name_value.second;
-        YLOG_DEBUG("Creating leaf {} of {} with value: '{}', is_set: {}", name_value.first, data_node.get_path(),
+        YLOG_DEBUG("Creating leaf '{}' of '{}' with value: '{}', is_set: {}", name_value.first, data_node.get_path(),
                 leaf_data.value, leaf_data.is_set);
 
         if(leaf_data.is_set)
         {
-            YLOG_DEBUG("Creating datanode");
+            YLOG_DEBUG("Creating leaf datanode '{}' with value '{}'", name_value.first, leaf_data.value);
             auto & result = data_node.create_datanode(name_value.first, leaf_data.value);
-            YLOG_DEBUG("Created datanode");
+            YLOG_DEBUG("Created leaf datanode '{}' with value '{}'", name_value.first, leaf_data.value);
 
             if(is_set(leaf_data.yfilter))
             {
                 add_annotation_to_datanode(name_value, result);
+            }
+            else
+            {
+                YLOG_DEBUG("Leaf '{}' has no yfilter", name_value.first);
             }
         }
     }
@@ -196,13 +205,14 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
         }
 
         YLOG_DEBUG("Looking at child {} '{}'", child_data_node->get_schema_node().get_statement().keyword, child_data_node->get_path());
-        
+
         if(data_node_is_leaf(*child_data_node))
         {
-            YLOG_DEBUG("Creating entity leaf {} of value '{}' in parent {}", child_name,
+            YLOG_DEBUG("Creating entity leaf '{}' of value '{}' in parent '{}'", child_name,
                     child_data_node->get_value(), node->get_path());
             entity->set_value(child_name, child_data_node->get_value());
-            YLOG_DEBUG("Created leaf");
+            YLOG_DEBUG("Created entity leaf '{}' of value '{}' in parent '{}'", child_name,
+                    child_data_node->get_value(), node->get_path());
         }
         else
         {
@@ -221,6 +231,10 @@ void get_entity_from_data_node(path::DataNode * node, shared_ptr<Entity> entity)
             {
                 YLOG_ERROR("Couldn't fetch child entity {} in parent {}!", child_name, node->get_path());
                 throw(path::YCoreError{"Couldn't fetch child entity '" + child_name + "' in parent " + node->get_path()});
+            }
+            else
+            {
+                YLOG_DEBUG("Created entity child '{}' in parent '{}'", child_name, node->get_path());
             }
             child_entity->parent = entity.get();
             get_entity_from_data_node(child_data_node.get(), child_entity);

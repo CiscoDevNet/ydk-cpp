@@ -11,53 +11,53 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace EtherLike_MIB {
 
-Dot3Testtdr::Dot3Testtdr()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestTdr")
-{
-
-}
-
-Dot3Testtdr::~Dot3Testtdr()
-{
-}
-
-Dot3Testloopback::Dot3Testloopback()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestLoopBack")
-{
-
-}
-
-Dot3Testloopback::~Dot3Testloopback()
-{
-}
-
-Dot3Erroriniterror::Dot3Erroriniterror()
+Dot3ErrorInitError::Dot3ErrorInitError()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorInitError")
 {
 
 }
 
-Dot3Erroriniterror::~Dot3Erroriniterror()
+Dot3ErrorInitError::~Dot3ErrorInitError()
 {
 }
 
-Dot3Errorloopbackerror::Dot3Errorloopbackerror()
+Dot3TestTdr::Dot3TestTdr()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestTdr")
+{
+
+}
+
+Dot3TestTdr::~Dot3TestTdr()
+{
+}
+
+Dot3ErrorLoopbackError::Dot3ErrorLoopbackError()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorLoopbackError")
 {
 
 }
 
-Dot3Errorloopbackerror::~Dot3Errorloopbackerror()
+Dot3ErrorLoopbackError::~Dot3ErrorLoopbackError()
+{
+}
+
+Dot3TestLoopBack::Dot3TestLoopBack()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestLoopBack")
+{
+
+}
+
+Dot3TestLoopBack::~Dot3TestLoopBack()
 {
 }
 
 EtherLikeMIB::EtherLikeMIB()
     :
-    dot3statstable(std::make_shared<EtherLikeMIB::Dot3Statstable>())
-	,dot3colltable(std::make_shared<EtherLikeMIB::Dot3Colltable>())
-	,dot3controltable(std::make_shared<EtherLikeMIB::Dot3Controltable>())
-	,dot3pausetable(std::make_shared<EtherLikeMIB::Dot3Pausetable>())
-	,dot3hcstatstable(std::make_shared<EtherLikeMIB::Dot3Hcstatstable>())
+    dot3statstable(std::make_shared<EtherLikeMIB::Dot3StatsTable>())
+    , dot3colltable(std::make_shared<EtherLikeMIB::Dot3CollTable>())
+    , dot3controltable(std::make_shared<EtherLikeMIB::Dot3ControlTable>())
+    , dot3pausetable(std::make_shared<EtherLikeMIB::Dot3PauseTable>())
+    , dot3hcstatstable(std::make_shared<EtherLikeMIB::Dot3HCStatsTable>())
 {
     dot3statstable->parent = this;
     dot3colltable->parent = this;
@@ -65,7 +65,7 @@ EtherLikeMIB::EtherLikeMIB()
     dot3pausetable->parent = this;
     dot3hcstatstable->parent = this;
 
-    yang_name = "EtherLike-MIB"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "EtherLike-MIB"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EtherLikeMIB::~EtherLikeMIB()
@@ -74,6 +74,7 @@ EtherLikeMIB::~EtherLikeMIB()
 
 bool EtherLikeMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (dot3statstable !=  nullptr && dot3statstable->has_data())
 	|| (dot3colltable !=  nullptr && dot3colltable->has_data())
 	|| (dot3controltable !=  nullptr && dot3controltable->has_data())
@@ -113,7 +114,7 @@ std::shared_ptr<Entity> EtherLikeMIB::get_child_by_name(const std::string & chil
     {
         if(dot3statstable == nullptr)
         {
-            dot3statstable = std::make_shared<EtherLikeMIB::Dot3Statstable>();
+            dot3statstable = std::make_shared<EtherLikeMIB::Dot3StatsTable>();
         }
         return dot3statstable;
     }
@@ -122,7 +123,7 @@ std::shared_ptr<Entity> EtherLikeMIB::get_child_by_name(const std::string & chil
     {
         if(dot3colltable == nullptr)
         {
-            dot3colltable = std::make_shared<EtherLikeMIB::Dot3Colltable>();
+            dot3colltable = std::make_shared<EtherLikeMIB::Dot3CollTable>();
         }
         return dot3colltable;
     }
@@ -131,7 +132,7 @@ std::shared_ptr<Entity> EtherLikeMIB::get_child_by_name(const std::string & chil
     {
         if(dot3controltable == nullptr)
         {
-            dot3controltable = std::make_shared<EtherLikeMIB::Dot3Controltable>();
+            dot3controltable = std::make_shared<EtherLikeMIB::Dot3ControlTable>();
         }
         return dot3controltable;
     }
@@ -140,7 +141,7 @@ std::shared_ptr<Entity> EtherLikeMIB::get_child_by_name(const std::string & chil
     {
         if(dot3pausetable == nullptr)
         {
-            dot3pausetable = std::make_shared<EtherLikeMIB::Dot3Pausetable>();
+            dot3pausetable = std::make_shared<EtherLikeMIB::Dot3PauseTable>();
         }
         return dot3pausetable;
     }
@@ -149,7 +150,7 @@ std::shared_ptr<Entity> EtherLikeMIB::get_child_by_name(const std::string & chil
     {
         if(dot3hcstatstable == nullptr)
         {
-            dot3hcstatstable = std::make_shared<EtherLikeMIB::Dot3Hcstatstable>();
+            dot3hcstatstable = std::make_shared<EtherLikeMIB::Dot3HCStatsTable>();
         }
         return dot3hcstatstable;
     }
@@ -229,19 +230,22 @@ bool EtherLikeMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-EtherLikeMIB::Dot3Statstable::Dot3Statstable()
+EtherLikeMIB::Dot3StatsTable::Dot3StatsTable()
+    :
+    dot3statsentry(this, {"dot3statsindex"})
 {
 
-    yang_name = "dot3StatsTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3StatsTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Statstable::~Dot3Statstable()
+EtherLikeMIB::Dot3StatsTable::~Dot3StatsTable()
 {
 }
 
-bool EtherLikeMIB::Dot3Statstable::has_data() const
+bool EtherLikeMIB::Dot3StatsTable::has_data() const
 {
-    for (std::size_t index=0; index<dot3statsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot3statsentry.len(); index++)
     {
         if(dot3statsentry[index]->has_data())
             return true;
@@ -249,9 +253,9 @@ bool EtherLikeMIB::Dot3Statstable::has_data() const
     return false;
 }
 
-bool EtherLikeMIB::Dot3Statstable::has_operation() const
+bool EtherLikeMIB::Dot3StatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3statsentry.size(); index++)
+    for (std::size_t index=0; index<dot3statsentry.len(); index++)
     {
         if(dot3statsentry[index]->has_operation())
             return true;
@@ -259,21 +263,21 @@ bool EtherLikeMIB::Dot3Statstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Statstable::get_absolute_path() const
+std::string EtherLikeMIB::Dot3StatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Statstable::get_segment_path() const
+std::string EtherLikeMIB::Dot3StatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot3StatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Statstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3StatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -282,25 +286,25 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Statstable::get
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Statstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3StatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot3StatsEntry")
     {
-        auto c = std::make_shared<EtherLikeMIB::Dot3Statstable::Dot3Statsentry>();
+        auto c = std::make_shared<EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry>();
         c->parent = this;
-        dot3statsentry.push_back(c);
+        dot3statsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Statstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3StatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot3statsentry)
+    for (auto c : dot3statsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -311,22 +315,22 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Statstable::get
     return children;
 }
 
-void EtherLikeMIB::Dot3Statstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3StatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void EtherLikeMIB::Dot3Statstable::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3StatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool EtherLikeMIB::Dot3Statstable::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3StatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3StatsEntry")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsentry()
+EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsEntry()
     :
     dot3statsindex{YType::int32, "dot3StatsIndex"},
     dot3statsalignmenterrors{YType::uint32, "dot3StatsAlignmentErrors"},
@@ -348,15 +352,16 @@ EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsentry()
     dot3statsratecontrolstatus{YType::enumeration, "dot3StatsRateControlStatus"}
 {
 
-    yang_name = "dot3StatsEntry"; yang_parent_name = "dot3StatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3StatsEntry"; yang_parent_name = "dot3StatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Statstable::Dot3Statsentry::~Dot3Statsentry()
+EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::~Dot3StatsEntry()
 {
 }
 
-bool EtherLikeMIB::Dot3Statstable::Dot3Statsentry::has_data() const
+bool EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot3statsindex.is_set
 	|| dot3statsalignmenterrors.is_set
 	|| dot3statsfcserrors.is_set
@@ -377,7 +382,7 @@ bool EtherLikeMIB::Dot3Statstable::Dot3Statsentry::has_data() const
 	|| dot3statsratecontrolstatus.is_set;
 }
 
-bool EtherLikeMIB::Dot3Statstable::Dot3Statsentry::has_operation() const
+bool EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot3statsindex.yfilter)
@@ -400,21 +405,22 @@ bool EtherLikeMIB::Dot3Statstable::Dot3Statsentry::has_operation() const
 	|| ydk::is_set(dot3statsratecontrolstatus.yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Statstable::Dot3Statsentry::get_absolute_path() const
+std::string EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/dot3StatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Statstable::Dot3Statsentry::get_segment_path() const
+std::string EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot3StatsEntry" <<"[dot3StatsIndex='" <<dot3statsindex <<"']";
+    path_buffer << "dot3StatsEntry";
+    ADD_KEY_TOKEN(dot3statsindex, "dot3StatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Statstable::Dot3Statsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -441,19 +447,19 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Statstable::Dot
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Statstable::Dot3Statsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Statstable::Dot3Statsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void EtherLikeMIB::Dot3Statstable::Dot3Statsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -565,7 +571,7 @@ void EtherLikeMIB::Dot3Statstable::Dot3Statsentry::set_value(const std::string &
     }
 }
 
-void EtherLikeMIB::Dot3Statstable::Dot3Statsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -641,26 +647,29 @@ void EtherLikeMIB::Dot3Statstable::Dot3Statsentry::set_filter(const std::string 
     }
 }
 
-bool EtherLikeMIB::Dot3Statstable::Dot3Statsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3StatsIndex" || name == "dot3StatsAlignmentErrors" || name == "dot3StatsFCSErrors" || name == "dot3StatsSingleCollisionFrames" || name == "dot3StatsMultipleCollisionFrames" || name == "dot3StatsSQETestErrors" || name == "dot3StatsDeferredTransmissions" || name == "dot3StatsLateCollisions" || name == "dot3StatsExcessiveCollisions" || name == "dot3StatsInternalMacTransmitErrors" || name == "dot3StatsCarrierSenseErrors" || name == "dot3StatsFrameTooLongs" || name == "dot3StatsInternalMacReceiveErrors" || name == "dot3StatsEtherChipSet" || name == "dot3StatsSymbolErrors" || name == "dot3StatsDuplexStatus" || name == "dot3StatsRateControlAbility" || name == "dot3StatsRateControlStatus")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Colltable::Dot3Colltable()
+EtherLikeMIB::Dot3CollTable::Dot3CollTable()
+    :
+    dot3collentry(this, {"ifindex", "dot3collcount"})
 {
 
-    yang_name = "dot3CollTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3CollTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Colltable::~Dot3Colltable()
+EtherLikeMIB::Dot3CollTable::~Dot3CollTable()
 {
 }
 
-bool EtherLikeMIB::Dot3Colltable::has_data() const
+bool EtherLikeMIB::Dot3CollTable::has_data() const
 {
-    for (std::size_t index=0; index<dot3collentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot3collentry.len(); index++)
     {
         if(dot3collentry[index]->has_data())
             return true;
@@ -668,9 +677,9 @@ bool EtherLikeMIB::Dot3Colltable::has_data() const
     return false;
 }
 
-bool EtherLikeMIB::Dot3Colltable::has_operation() const
+bool EtherLikeMIB::Dot3CollTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3collentry.size(); index++)
+    for (std::size_t index=0; index<dot3collentry.len(); index++)
     {
         if(dot3collentry[index]->has_operation())
             return true;
@@ -678,21 +687,21 @@ bool EtherLikeMIB::Dot3Colltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Colltable::get_absolute_path() const
+std::string EtherLikeMIB::Dot3CollTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Colltable::get_segment_path() const
+std::string EtherLikeMIB::Dot3CollTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot3CollTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Colltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3CollTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -701,25 +710,25 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Colltable::get_
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Colltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3CollTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot3CollEntry")
     {
-        auto c = std::make_shared<EtherLikeMIB::Dot3Colltable::Dot3Collentry>();
+        auto c = std::make_shared<EtherLikeMIB::Dot3CollTable::Dot3CollEntry>();
         c->parent = this;
-        dot3collentry.push_back(c);
+        dot3collentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Colltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3CollTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot3collentry)
+    for (auto c : dot3collentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -730,43 +739,44 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Colltable::get_
     return children;
 }
 
-void EtherLikeMIB::Dot3Colltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3CollTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void EtherLikeMIB::Dot3Colltable::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3CollTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool EtherLikeMIB::Dot3Colltable::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3CollTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3CollEntry")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Colltable::Dot3Collentry::Dot3Collentry()
+EtherLikeMIB::Dot3CollTable::Dot3CollEntry::Dot3CollEntry()
     :
     ifindex{YType::str, "ifIndex"},
     dot3collcount{YType::int32, "dot3CollCount"},
     dot3collfrequencies{YType::uint32, "dot3CollFrequencies"}
 {
 
-    yang_name = "dot3CollEntry"; yang_parent_name = "dot3CollTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3CollEntry"; yang_parent_name = "dot3CollTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Colltable::Dot3Collentry::~Dot3Collentry()
+EtherLikeMIB::Dot3CollTable::Dot3CollEntry::~Dot3CollEntry()
 {
 }
 
-bool EtherLikeMIB::Dot3Colltable::Dot3Collentry::has_data() const
+bool EtherLikeMIB::Dot3CollTable::Dot3CollEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| dot3collcount.is_set
 	|| dot3collfrequencies.is_set;
 }
 
-bool EtherLikeMIB::Dot3Colltable::Dot3Collentry::has_operation() const
+bool EtherLikeMIB::Dot3CollTable::Dot3CollEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -774,21 +784,23 @@ bool EtherLikeMIB::Dot3Colltable::Dot3Collentry::has_operation() const
 	|| ydk::is_set(dot3collfrequencies.yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Colltable::Dot3Collentry::get_absolute_path() const
+std::string EtherLikeMIB::Dot3CollTable::Dot3CollEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/dot3CollTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Colltable::Dot3Collentry::get_segment_path() const
+std::string EtherLikeMIB::Dot3CollTable::Dot3CollEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot3CollEntry" <<"[ifIndex='" <<ifindex <<"']" <<"[dot3CollCount='" <<dot3collcount <<"']";
+    path_buffer << "dot3CollEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
+    ADD_KEY_TOKEN(dot3collcount, "dot3CollCount");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Colltable::Dot3Collentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3CollTable::Dot3CollEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -800,19 +812,19 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Colltable::Dot3
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Colltable::Dot3Collentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3CollTable::Dot3CollEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Colltable::Dot3Collentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3CollTable::Dot3CollEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void EtherLikeMIB::Dot3Colltable::Dot3Collentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3CollTable::Dot3CollEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -834,7 +846,7 @@ void EtherLikeMIB::Dot3Colltable::Dot3Collentry::set_value(const std::string & v
     }
 }
 
-void EtherLikeMIB::Dot3Colltable::Dot3Collentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3CollTable::Dot3CollEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -850,26 +862,29 @@ void EtherLikeMIB::Dot3Colltable::Dot3Collentry::set_filter(const std::string & 
     }
 }
 
-bool EtherLikeMIB::Dot3Colltable::Dot3Collentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3CollTable::Dot3CollEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "dot3CollCount" || name == "dot3CollFrequencies")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Controltable::Dot3Controltable()
+EtherLikeMIB::Dot3ControlTable::Dot3ControlTable()
+    :
+    dot3controlentry(this, {"dot3statsindex"})
 {
 
-    yang_name = "dot3ControlTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3ControlTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Controltable::~Dot3Controltable()
+EtherLikeMIB::Dot3ControlTable::~Dot3ControlTable()
 {
 }
 
-bool EtherLikeMIB::Dot3Controltable::has_data() const
+bool EtherLikeMIB::Dot3ControlTable::has_data() const
 {
-    for (std::size_t index=0; index<dot3controlentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot3controlentry.len(); index++)
     {
         if(dot3controlentry[index]->has_data())
             return true;
@@ -877,9 +892,9 @@ bool EtherLikeMIB::Dot3Controltable::has_data() const
     return false;
 }
 
-bool EtherLikeMIB::Dot3Controltable::has_operation() const
+bool EtherLikeMIB::Dot3ControlTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3controlentry.size(); index++)
+    for (std::size_t index=0; index<dot3controlentry.len(); index++)
     {
         if(dot3controlentry[index]->has_operation())
             return true;
@@ -887,21 +902,21 @@ bool EtherLikeMIB::Dot3Controltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Controltable::get_absolute_path() const
+std::string EtherLikeMIB::Dot3ControlTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Controltable::get_segment_path() const
+std::string EtherLikeMIB::Dot3ControlTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot3ControlTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Controltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3ControlTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -910,25 +925,25 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Controltable::g
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Controltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3ControlTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot3ControlEntry")
     {
-        auto c = std::make_shared<EtherLikeMIB::Dot3Controltable::Dot3Controlentry>();
+        auto c = std::make_shared<EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry>();
         c->parent = this;
-        dot3controlentry.push_back(c);
+        dot3controlentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Controltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3ControlTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot3controlentry)
+    for (auto c : dot3controlentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -939,22 +954,22 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Controltable::g
     return children;
 }
 
-void EtherLikeMIB::Dot3Controltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3ControlTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void EtherLikeMIB::Dot3Controltable::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3ControlTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool EtherLikeMIB::Dot3Controltable::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3ControlTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3ControlEntry")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Controltable::Dot3Controlentry::Dot3Controlentry()
+EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::Dot3ControlEntry()
     :
     dot3statsindex{YType::str, "dot3StatsIndex"},
     dot3controlfunctionssupported{YType::bits, "dot3ControlFunctionsSupported"},
@@ -962,22 +977,23 @@ EtherLikeMIB::Dot3Controltable::Dot3Controlentry::Dot3Controlentry()
     dot3hccontrolinunknownopcodes{YType::uint64, "dot3HCControlInUnknownOpcodes"}
 {
 
-    yang_name = "dot3ControlEntry"; yang_parent_name = "dot3ControlTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3ControlEntry"; yang_parent_name = "dot3ControlTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Controltable::Dot3Controlentry::~Dot3Controlentry()
+EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::~Dot3ControlEntry()
 {
 }
 
-bool EtherLikeMIB::Dot3Controltable::Dot3Controlentry::has_data() const
+bool EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot3statsindex.is_set
 	|| dot3controlfunctionssupported.is_set
 	|| dot3controlinunknownopcodes.is_set
 	|| dot3hccontrolinunknownopcodes.is_set;
 }
 
-bool EtherLikeMIB::Dot3Controltable::Dot3Controlentry::has_operation() const
+bool EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot3statsindex.yfilter)
@@ -986,21 +1002,22 @@ bool EtherLikeMIB::Dot3Controltable::Dot3Controlentry::has_operation() const
 	|| ydk::is_set(dot3hccontrolinunknownopcodes.yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Controltable::Dot3Controlentry::get_absolute_path() const
+std::string EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/dot3ControlTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Controltable::Dot3Controlentry::get_segment_path() const
+std::string EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot3ControlEntry" <<"[dot3StatsIndex='" <<dot3statsindex <<"']";
+    path_buffer << "dot3ControlEntry";
+    ADD_KEY_TOKEN(dot3statsindex, "dot3StatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Controltable::Dot3Controlentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1013,19 +1030,19 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Controltable::D
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Controltable::Dot3Controlentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Controltable::Dot3Controlentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void EtherLikeMIB::Dot3Controltable::Dot3Controlentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -1051,7 +1068,7 @@ void EtherLikeMIB::Dot3Controltable::Dot3Controlentry::set_value(const std::stri
     }
 }
 
-void EtherLikeMIB::Dot3Controltable::Dot3Controlentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -1071,26 +1088,29 @@ void EtherLikeMIB::Dot3Controltable::Dot3Controlentry::set_filter(const std::str
     }
 }
 
-bool EtherLikeMIB::Dot3Controltable::Dot3Controlentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3ControlTable::Dot3ControlEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3StatsIndex" || name == "dot3ControlFunctionsSupported" || name == "dot3ControlInUnknownOpcodes" || name == "dot3HCControlInUnknownOpcodes")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Pausetable::Dot3Pausetable()
+EtherLikeMIB::Dot3PauseTable::Dot3PauseTable()
+    :
+    dot3pauseentry(this, {"dot3statsindex"})
 {
 
-    yang_name = "dot3PauseTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3PauseTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Pausetable::~Dot3Pausetable()
+EtherLikeMIB::Dot3PauseTable::~Dot3PauseTable()
 {
 }
 
-bool EtherLikeMIB::Dot3Pausetable::has_data() const
+bool EtherLikeMIB::Dot3PauseTable::has_data() const
 {
-    for (std::size_t index=0; index<dot3pauseentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot3pauseentry.len(); index++)
     {
         if(dot3pauseentry[index]->has_data())
             return true;
@@ -1098,9 +1118,9 @@ bool EtherLikeMIB::Dot3Pausetable::has_data() const
     return false;
 }
 
-bool EtherLikeMIB::Dot3Pausetable::has_operation() const
+bool EtherLikeMIB::Dot3PauseTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3pauseentry.size(); index++)
+    for (std::size_t index=0; index<dot3pauseentry.len(); index++)
     {
         if(dot3pauseentry[index]->has_operation())
             return true;
@@ -1108,21 +1128,21 @@ bool EtherLikeMIB::Dot3Pausetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Pausetable::get_absolute_path() const
+std::string EtherLikeMIB::Dot3PauseTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Pausetable::get_segment_path() const
+std::string EtherLikeMIB::Dot3PauseTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot3PauseTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Pausetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3PauseTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1131,25 +1151,25 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Pausetable::get
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Pausetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3PauseTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot3PauseEntry")
     {
-        auto c = std::make_shared<EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry>();
+        auto c = std::make_shared<EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry>();
         c->parent = this;
-        dot3pauseentry.push_back(c);
+        dot3pauseentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Pausetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3PauseTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot3pauseentry)
+    for (auto c : dot3pauseentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1160,22 +1180,22 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Pausetable::get
     return children;
 }
 
-void EtherLikeMIB::Dot3Pausetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3PauseTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void EtherLikeMIB::Dot3Pausetable::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3PauseTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool EtherLikeMIB::Dot3Pausetable::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3PauseTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3PauseEntry")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseentry()
+EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseEntry()
     :
     dot3statsindex{YType::str, "dot3StatsIndex"},
     dot3pauseadminmode{YType::enumeration, "dot3PauseAdminMode"},
@@ -1186,15 +1206,16 @@ EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseentry()
     dot3hcoutpauseframes{YType::uint64, "dot3HCOutPauseFrames"}
 {
 
-    yang_name = "dot3PauseEntry"; yang_parent_name = "dot3PauseTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3PauseEntry"; yang_parent_name = "dot3PauseTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::~Dot3Pauseentry()
+EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::~Dot3PauseEntry()
 {
 }
 
-bool EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::has_data() const
+bool EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot3statsindex.is_set
 	|| dot3pauseadminmode.is_set
 	|| dot3pauseopermode.is_set
@@ -1204,7 +1225,7 @@ bool EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::has_data() const
 	|| dot3hcoutpauseframes.is_set;
 }
 
-bool EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::has_operation() const
+bool EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot3statsindex.yfilter)
@@ -1216,21 +1237,22 @@ bool EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::has_operation() const
 	|| ydk::is_set(dot3hcoutpauseframes.yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::get_absolute_path() const
+std::string EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/dot3PauseTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::get_segment_path() const
+std::string EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot3PauseEntry" <<"[dot3StatsIndex='" <<dot3statsindex <<"']";
+    path_buffer << "dot3PauseEntry";
+    ADD_KEY_TOKEN(dot3statsindex, "dot3StatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1246,19 +1268,19 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Pausetable::Dot
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -1304,7 +1326,7 @@ void EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::set_value(const std::string &
     }
 }
 
-void EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -1336,26 +1358,29 @@ void EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::set_filter(const std::string 
     }
 }
 
-bool EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3StatsIndex" || name == "dot3PauseAdminMode" || name == "dot3PauseOperMode" || name == "dot3InPauseFrames" || name == "dot3OutPauseFrames" || name == "dot3HCInPauseFrames" || name == "dot3HCOutPauseFrames")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatstable()
+EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsTable()
+    :
+    dot3hcstatsentry(this, {"dot3statsindex"})
 {
 
-    yang_name = "dot3HCStatsTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3HCStatsTable"; yang_parent_name = "EtherLike-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Hcstatstable::~Dot3Hcstatstable()
+EtherLikeMIB::Dot3HCStatsTable::~Dot3HCStatsTable()
 {
 }
 
-bool EtherLikeMIB::Dot3Hcstatstable::has_data() const
+bool EtherLikeMIB::Dot3HCStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<dot3hcstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dot3hcstatsentry.len(); index++)
     {
         if(dot3hcstatsentry[index]->has_data())
             return true;
@@ -1363,9 +1388,9 @@ bool EtherLikeMIB::Dot3Hcstatstable::has_data() const
     return false;
 }
 
-bool EtherLikeMIB::Dot3Hcstatstable::has_operation() const
+bool EtherLikeMIB::Dot3HCStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<dot3hcstatsentry.size(); index++)
+    for (std::size_t index=0; index<dot3hcstatsentry.len(); index++)
     {
         if(dot3hcstatsentry[index]->has_operation())
             return true;
@@ -1373,21 +1398,21 @@ bool EtherLikeMIB::Dot3Hcstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Hcstatstable::get_absolute_path() const
+std::string EtherLikeMIB::Dot3HCStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Hcstatstable::get_segment_path() const
+std::string EtherLikeMIB::Dot3HCStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot3HCStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Hcstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3HCStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1396,25 +1421,25 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Hcstatstable::g
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Hcstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3HCStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dot3HCStatsEntry")
     {
-        auto c = std::make_shared<EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry>();
+        auto c = std::make_shared<EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry>();
         c->parent = this;
-        dot3hcstatsentry.push_back(c);
+        dot3hcstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Hcstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3HCStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dot3hcstatsentry)
+    for (auto c : dot3hcstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1425,22 +1450,22 @@ std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Hcstatstable::g
     return children;
 }
 
-void EtherLikeMIB::Dot3Hcstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3HCStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void EtherLikeMIB::Dot3Hcstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3HCStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool EtherLikeMIB::Dot3Hcstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3HCStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3HCStatsEntry")
         return true;
     return false;
 }
 
-EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::Dot3Hcstatsentry()
+EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::Dot3HCStatsEntry()
     :
     dot3statsindex{YType::str, "dot3StatsIndex"},
     dot3hcstatsalignmenterrors{YType::uint64, "dot3HCStatsAlignmentErrors"},
@@ -1451,15 +1476,16 @@ EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::Dot3Hcstatsentry()
     dot3hcstatssymbolerrors{YType::uint64, "dot3HCStatsSymbolErrors"}
 {
 
-    yang_name = "dot3HCStatsEntry"; yang_parent_name = "dot3HCStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot3HCStatsEntry"; yang_parent_name = "dot3HCStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::~Dot3Hcstatsentry()
+EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::~Dot3HCStatsEntry()
 {
 }
 
-bool EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::has_data() const
+bool EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return dot3statsindex.is_set
 	|| dot3hcstatsalignmenterrors.is_set
 	|| dot3hcstatsfcserrors.is_set
@@ -1469,7 +1495,7 @@ bool EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::has_data() const
 	|| dot3hcstatssymbolerrors.is_set;
 }
 
-bool EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::has_operation() const
+bool EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(dot3statsindex.yfilter)
@@ -1481,21 +1507,22 @@ bool EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::has_operation() const
 	|| ydk::is_set(dot3hcstatssymbolerrors.yfilter);
 }
 
-std::string EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::get_absolute_path() const
+std::string EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "EtherLike-MIB:EtherLike-MIB/dot3HCStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::get_segment_path() const
+std::string EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dot3HCStatsEntry" <<"[dot3StatsIndex='" <<dot3statsindex <<"']";
+    path_buffer << "dot3HCStatsEntry";
+    ADD_KEY_TOKEN(dot3statsindex, "dot3StatsIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1511,19 +1538,19 @@ std::vector<std::pair<std::string, LeafData> > EtherLikeMIB::Dot3Hcstatstable::D
 
 }
 
-std::shared_ptr<Entity> EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -1569,7 +1596,7 @@ void EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::set_value(const std::stri
     }
 }
 
-void EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dot3StatsIndex")
     {
@@ -1601,30 +1628,30 @@ void EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::set_filter(const std::str
     }
 }
 
-bool EtherLikeMIB::Dot3Hcstatstable::Dot3Hcstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool EtherLikeMIB::Dot3HCStatsTable::Dot3HCStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dot3StatsIndex" || name == "dot3HCStatsAlignmentErrors" || name == "dot3HCStatsFCSErrors" || name == "dot3HCStatsInternalMacTransmitErrors" || name == "dot3HCStatsFrameTooLongs" || name == "dot3HCStatsInternalMacReceiveErrors" || name == "dot3HCStatsSymbolErrors")
         return true;
     return false;
 }
 
-const Enum::YLeaf EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus::unknown {1, "unknown"};
-const Enum::YLeaf EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus::halfDuplex {2, "halfDuplex"};
-const Enum::YLeaf EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsduplexstatus::fullDuplex {3, "fullDuplex"};
+const Enum::YLeaf EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsDuplexStatus::unknown {1, "unknown"};
+const Enum::YLeaf EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsDuplexStatus::halfDuplex {2, "halfDuplex"};
+const Enum::YLeaf EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsDuplexStatus::fullDuplex {3, "fullDuplex"};
 
-const Enum::YLeaf EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus::rateControlOff {1, "rateControlOff"};
-const Enum::YLeaf EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus::rateControlOn {2, "rateControlOn"};
-const Enum::YLeaf EtherLikeMIB::Dot3Statstable::Dot3Statsentry::Dot3Statsratecontrolstatus::unknown {3, "unknown"};
+const Enum::YLeaf EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsRateControlStatus::rateControlOff {1, "rateControlOff"};
+const Enum::YLeaf EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsRateControlStatus::rateControlOn {2, "rateControlOn"};
+const Enum::YLeaf EtherLikeMIB::Dot3StatsTable::Dot3StatsEntry::Dot3StatsRateControlStatus::unknown {3, "unknown"};
 
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::disabled {1, "disabled"};
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::enabledXmit {2, "enabledXmit"};
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::enabledRcv {3, "enabledRcv"};
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseadminmode::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseAdminMode::disabled {1, "disabled"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseAdminMode::enabledXmit {2, "enabledXmit"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseAdminMode::enabledRcv {3, "enabledRcv"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseAdminMode::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
 
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::disabled {1, "disabled"};
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::enabledXmit {2, "enabledXmit"};
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::enabledRcv {3, "enabledRcv"};
-const Enum::YLeaf EtherLikeMIB::Dot3Pausetable::Dot3Pauseentry::Dot3Pauseopermode::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseOperMode::disabled {1, "disabled"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseOperMode::enabledXmit {2, "enabledXmit"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseOperMode::enabledRcv {3, "enabledRcv"};
+const Enum::YLeaf EtherLikeMIB::Dot3PauseTable::Dot3PauseEntry::Dot3PauseOperMode::enabledXmitAndRcv {4, "enabledXmitAndRcv"};
 
 
 }

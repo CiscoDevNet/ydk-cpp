@@ -17,7 +17,7 @@ Ipv6Io::Ipv6Io()
 {
     nodes->parent = this;
 
-    yang_name = "ipv6-io"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-io"; yang_parent_name = "Cisco-IOS-XR-ipv6-io-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6Io::~Ipv6Io()
@@ -26,6 +26,7 @@ Ipv6Io::~Ipv6Io()
 
 bool Ipv6Io::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ipv6Io::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ipv6Io::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "ipv6-io"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "ipv6-io"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Io::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Ipv6Io::Nodes::~Nodes()
 
 bool Ipv6Io::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ipv6Io::Nodes::has_data() const
 
 bool Ipv6Io::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ipv6Io::Nodes::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Ipv6Io::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6Io::Nodes::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool Ipv6Io::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Ipv6Io::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     statistics(std::make_shared<Ipv6Io::Nodes::Node::Statistics>())
 {
     statistics->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6Io::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ Ipv6Io::Nodes::Node::~Node()
 
 bool Ipv6Io::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (statistics !=  nullptr && statistics->has_data());
 }
@@ -252,7 +257,8 @@ std::string Ipv6Io::Nodes::Node::get_absolute_path() const
 std::string Ipv6Io::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -323,7 +329,7 @@ Ipv6Io::Nodes::Node::Statistics::Statistics()
 {
     traffic->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Io::Nodes::Node::Statistics::~Statistics()
@@ -332,6 +338,7 @@ Ipv6Io::Nodes::Node::Statistics::~Statistics()
 
 bool Ipv6Io::Nodes::Node::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (traffic !=  nullptr && traffic->has_data());
 }
 
@@ -401,14 +408,14 @@ bool Ipv6Io::Nodes::Node::Statistics::has_leaf_or_child_of_name(const std::strin
 Ipv6Io::Nodes::Node::Statistics::Traffic::Traffic()
     :
     ipv6(std::make_shared<Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6>())
-	,icmp(std::make_shared<Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp>())
-	,ipv6_node_discovery(std::make_shared<Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery>())
+    , icmp(std::make_shared<Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp>())
+    , ipv6_node_discovery(std::make_shared<Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery>())
 {
     ipv6->parent = this;
     icmp->parent = this;
     ipv6_node_discovery->parent = this;
 
-    yang_name = "traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Io::Nodes::Node::Statistics::Traffic::~Traffic()
@@ -417,6 +424,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::~Traffic()
 
 bool Ipv6Io::Nodes::Node::Statistics::Traffic::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv6 !=  nullptr && ipv6->has_data())
 	|| (icmp !=  nullptr && icmp->has_data())
 	|| (ipv6_node_discovery !=  nullptr && ipv6_node_discovery->has_data());
@@ -550,7 +558,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::Ipv6()
     lisp_decap_errors{YType::uint32, "lisp-decap-errors"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::~Ipv6()
@@ -559,6 +567,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::~Ipv6()
 
 bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return total_packets.is_set
 	|| local_destination_packets.is_set
 	|| format_errors.is_set
@@ -1054,7 +1063,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::Icmp()
     received_unreachable_unknown_type_messages{YType::uint32, "received-unreachable-unknown-type-messages"}
 {
 
-    yang_name = "icmp"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::~Icmp()
@@ -1063,6 +1072,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::~Icmp()
 
 bool Ipv6Io::Nodes::Node::Statistics::Traffic::Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return total_messages.is_set
 	|| too_short_error_messages.is_set
 	|| checksum_error_messages.is_set
@@ -1621,7 +1631,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::Ipv6NodeDiscovery()
     received_redirect_messages{YType::uint32, "received-redirect-messages"}
 {
 
-    yang_name = "ipv6-node-discovery"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-node-discovery"; yang_parent_name = "traffic"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::~Ipv6NodeDiscovery()
@@ -1630,6 +1640,7 @@ Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::~Ipv6NodeDiscovery(
 
 bool Ipv6Io::Nodes::Node::Statistics::Traffic::Ipv6NodeDiscovery::has_data() const
 {
+    if (is_presence_container) return true;
     return sent_router_solicitation_messages.is_set
 	|| sent_router_advertisement_messages.is_set
 	|| sent_neighbor_solicitation_messages.is_set

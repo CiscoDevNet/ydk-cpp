@@ -57,7 +57,7 @@ class Aaa::Usernames : public ydk::Entity
 
         class Username; //type: Aaa::Usernames::Username
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username> > username;
+        ydk::YList username;
         
 }; // Aaa::Usernames
 
@@ -107,7 +107,7 @@ class Aaa::Usernames::Username::UsergroupUnderUsernames : public ydk::Entity
 
         class UsergroupUnderUsername; //type: Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_aaa_locald_admin_cfg::Aaa::Usernames::Username::UsergroupUnderUsernames::UsergroupUnderUsername> > usergroup_under_username;
+        ydk::YList usergroup_under_username;
         
 }; // Aaa::Usernames::Username::UsergroupUnderUsernames
 

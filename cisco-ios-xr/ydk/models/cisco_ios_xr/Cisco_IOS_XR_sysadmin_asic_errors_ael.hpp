@@ -35,7 +35,7 @@ class AsicErrors : public ydk::Entity
         class Instance; //type: AsicErrors::Instance
         class ShowAllInstances; //type: AsicErrors::ShowAllInstances
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance> > instance;
+        ydk::YList instance;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances> show_all_instances;
         
 }; // AsicErrors
@@ -117,7 +117,7 @@ class AsicErrors::Instance::Sbe : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Sbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Sbe::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Sbe
 
@@ -141,7 +141,7 @@ class AsicErrors::Instance::Sbe::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Sbe::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Sbe::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Sbe::Location
 
@@ -185,7 +185,7 @@ class AsicErrors::Instance::Mbe : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Mbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Mbe::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Mbe
 
@@ -209,7 +209,7 @@ class AsicErrors::Instance::Mbe::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Mbe::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Mbe::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Mbe::Location
 
@@ -253,7 +253,7 @@ class AsicErrors::Instance::Parity : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Parity::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Parity::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Parity
 
@@ -277,7 +277,7 @@ class AsicErrors::Instance::Parity::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Parity::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Parity::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Parity::Location
 
@@ -321,7 +321,7 @@ class AsicErrors::Instance::Generic : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Generic::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Generic::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Generic
 
@@ -345,7 +345,7 @@ class AsicErrors::Instance::Generic::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Generic::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Generic::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Generic::Location
 
@@ -389,7 +389,7 @@ class AsicErrors::Instance::Crc : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Crc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Crc::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Crc
 
@@ -413,7 +413,7 @@ class AsicErrors::Instance::Crc::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Crc::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Crc::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Crc::Location
 
@@ -457,7 +457,7 @@ class AsicErrors::Instance::Reset : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Reset::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Reset::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Reset
 
@@ -481,7 +481,7 @@ class AsicErrors::Instance::Reset::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Reset::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Reset::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Reset::Location
 
@@ -525,7 +525,7 @@ class AsicErrors::Instance::Barrier : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Barrier::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Barrier::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Barrier
 
@@ -549,7 +549,7 @@ class AsicErrors::Instance::Barrier::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Barrier::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Barrier::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Barrier::Location
 
@@ -593,7 +593,7 @@ class AsicErrors::Instance::Unexpected : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Unexpected::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Unexpected::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Unexpected
 
@@ -617,7 +617,7 @@ class AsicErrors::Instance::Unexpected::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Unexpected::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Unexpected::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Unexpected::Location
 
@@ -661,7 +661,7 @@ class AsicErrors::Instance::Link : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Link::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Link::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Link
 
@@ -685,7 +685,7 @@ class AsicErrors::Instance::Link::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Link::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Link::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Link::Location
 
@@ -729,7 +729,7 @@ class AsicErrors::Instance::OorThresh : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::OorThresh::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::OorThresh::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::OorThresh
 
@@ -753,7 +753,7 @@ class AsicErrors::Instance::OorThresh::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::OorThresh::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::OorThresh::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::OorThresh::Location
 
@@ -797,7 +797,7 @@ class AsicErrors::Instance::Bp : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Bp::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Bp::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Bp
 
@@ -821,7 +821,7 @@ class AsicErrors::Instance::Bp::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Bp::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Bp::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Bp::Location
 
@@ -865,7 +865,7 @@ class AsicErrors::Instance::Io : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Io::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Io::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Io
 
@@ -889,7 +889,7 @@ class AsicErrors::Instance::Io::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Io::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Io::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Io::Location
 
@@ -933,7 +933,7 @@ class AsicErrors::Instance::Ucode : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Ucode::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Ucode::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Ucode
 
@@ -957,7 +957,7 @@ class AsicErrors::Instance::Ucode::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Ucode::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Ucode::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Ucode::Location
 
@@ -1001,7 +1001,7 @@ class AsicErrors::Instance::Config : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Config::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Config::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Config
 
@@ -1025,7 +1025,7 @@ class AsicErrors::Instance::Config::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Config::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Config::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Config::Location
 
@@ -1069,7 +1069,7 @@ class AsicErrors::Instance::Indirect : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Indirect::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Indirect::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Indirect
 
@@ -1093,7 +1093,7 @@ class AsicErrors::Instance::Indirect::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Indirect::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Indirect::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Indirect::Location
 
@@ -1137,7 +1137,7 @@ class AsicErrors::Instance::Nonerr : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Nonerr::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Nonerr::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Nonerr
 
@@ -1161,7 +1161,7 @@ class AsicErrors::Instance::Nonerr::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Nonerr::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Nonerr::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Nonerr::Location
 
@@ -1205,7 +1205,7 @@ class AsicErrors::Instance::Summary : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Summary::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::Summary
 
@@ -1229,7 +1229,7 @@ class AsicErrors::Instance::Summary::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::Summary::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::Summary::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::Summary::Location
 
@@ -1275,7 +1275,7 @@ class AsicErrors::Instance::All : public ydk::Entity
         class Location; //type: AsicErrors::Instance::All::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::All::History> history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::All::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::All
 
@@ -1298,7 +1298,7 @@ class AsicErrors::Instance::All::History : public ydk::Entity
 
         class Location; //type: AsicErrors::Instance::All::History::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::All::History::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::Instance::All::History
 
@@ -1322,7 +1322,7 @@ class AsicErrors::Instance::All::History::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::All::History::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::All::History::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::All::History::Location
 
@@ -1367,7 +1367,7 @@ class AsicErrors::Instance::All::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::Instance::All::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::Instance::All::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::Instance::All::Location
 
@@ -1468,7 +1468,7 @@ class AsicErrors::ShowAllInstances::Sbe : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Sbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Sbe::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Sbe
 
@@ -1492,7 +1492,7 @@ class AsicErrors::ShowAllInstances::Sbe::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Sbe::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Sbe::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Sbe::Location
 
@@ -1536,7 +1536,7 @@ class AsicErrors::ShowAllInstances::Mbe : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Mbe::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Mbe::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Mbe
 
@@ -1560,7 +1560,7 @@ class AsicErrors::ShowAllInstances::Mbe::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Mbe::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Mbe::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Mbe::Location
 
@@ -1604,7 +1604,7 @@ class AsicErrors::ShowAllInstances::Parity : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Parity::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Parity::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Parity
 
@@ -1628,7 +1628,7 @@ class AsicErrors::ShowAllInstances::Parity::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Parity::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Parity::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Parity::Location
 
@@ -1672,7 +1672,7 @@ class AsicErrors::ShowAllInstances::Generic : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Generic::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Generic::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Generic
 
@@ -1696,7 +1696,7 @@ class AsicErrors::ShowAllInstances::Generic::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Generic::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Generic::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Generic::Location
 
@@ -1740,7 +1740,7 @@ class AsicErrors::ShowAllInstances::Crc : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Crc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Crc::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Crc
 
@@ -1764,7 +1764,7 @@ class AsicErrors::ShowAllInstances::Crc::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Crc::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Crc::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Crc::Location
 
@@ -1808,7 +1808,7 @@ class AsicErrors::ShowAllInstances::Reset : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Reset::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Reset::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Reset
 
@@ -1832,7 +1832,7 @@ class AsicErrors::ShowAllInstances::Reset::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Reset::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Reset::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Reset::Location
 
@@ -1876,7 +1876,7 @@ class AsicErrors::ShowAllInstances::Barrier : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Barrier::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Barrier::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Barrier
 
@@ -1900,7 +1900,7 @@ class AsicErrors::ShowAllInstances::Barrier::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Barrier::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Barrier::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Barrier::Location
 
@@ -1944,7 +1944,7 @@ class AsicErrors::ShowAllInstances::Unexpected : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Unexpected::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Unexpected::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Unexpected
 
@@ -1968,7 +1968,7 @@ class AsicErrors::ShowAllInstances::Unexpected::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Unexpected::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Unexpected::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Unexpected::Location
 
@@ -2012,7 +2012,7 @@ class AsicErrors::ShowAllInstances::Link : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Link::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Link::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Link
 
@@ -2036,7 +2036,7 @@ class AsicErrors::ShowAllInstances::Link::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Link::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Link::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Link::Location
 
@@ -2080,7 +2080,7 @@ class AsicErrors::ShowAllInstances::OorThresh : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::OorThresh::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::OorThresh::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::OorThresh
 
@@ -2104,7 +2104,7 @@ class AsicErrors::ShowAllInstances::OorThresh::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::OorThresh::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::OorThresh::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::OorThresh::Location
 
@@ -2148,7 +2148,7 @@ class AsicErrors::ShowAllInstances::Bp : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Bp::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Bp::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Bp
 
@@ -2172,7 +2172,7 @@ class AsicErrors::ShowAllInstances::Bp::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Bp::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Bp::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Bp::Location
 
@@ -2216,7 +2216,7 @@ class AsicErrors::ShowAllInstances::Io : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Io::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Io::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Io
 
@@ -2240,7 +2240,7 @@ class AsicErrors::ShowAllInstances::Io::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Io::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Io::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Io::Location
 
@@ -2284,7 +2284,7 @@ class AsicErrors::ShowAllInstances::Ucode : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Ucode::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Ucode::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Ucode
 
@@ -2308,7 +2308,7 @@ class AsicErrors::ShowAllInstances::Ucode::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Ucode::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Ucode::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Ucode::Location
 
@@ -2352,7 +2352,7 @@ class AsicErrors::ShowAllInstances::Config : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Config::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Config::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Config
 
@@ -2376,7 +2376,7 @@ class AsicErrors::ShowAllInstances::Config::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Config::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Config::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Config::Location
 
@@ -2420,7 +2420,7 @@ class AsicErrors::ShowAllInstances::Indirect : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Indirect::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Indirect::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Indirect
 
@@ -2444,7 +2444,7 @@ class AsicErrors::ShowAllInstances::Indirect::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Indirect::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Indirect::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Indirect::Location
 
@@ -2488,7 +2488,7 @@ class AsicErrors::ShowAllInstances::Nonerr : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Nonerr::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Nonerr::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Nonerr
 
@@ -2512,7 +2512,7 @@ class AsicErrors::ShowAllInstances::Nonerr::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Nonerr::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Nonerr::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Nonerr::Location
 
@@ -2556,7 +2556,7 @@ class AsicErrors::ShowAllInstances::Summary : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Summary::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::Summary
 
@@ -2580,7 +2580,7 @@ class AsicErrors::ShowAllInstances::Summary::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::Summary::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::Summary::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::Summary::Location
 
@@ -2624,7 +2624,7 @@ class AsicErrors::ShowAllInstances::All : public ydk::Entity
 
         class Location; //type: AsicErrors::ShowAllInstances::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::All::Location> > location;
+        ydk::YList location;
         
 }; // AsicErrors::ShowAllInstances::All
 
@@ -2648,7 +2648,7 @@ class AsicErrors::ShowAllInstances::All::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class LogLst; //type: AsicErrors::ShowAllInstances::All::Location::LogLst
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_asic_errors_ael::AsicErrors::ShowAllInstances::All::Location::LogLst> > log_lst;
+        ydk::YList log_lst;
         
 }; // AsicErrors::ShowAllInstances::All::Location
 

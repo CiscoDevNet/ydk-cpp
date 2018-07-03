@@ -40,7 +40,7 @@ class Environment : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper> oper;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All> all;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config> config;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Trace> > trace;
+        ydk::YList trace;
         
 }; // Environment
 
@@ -98,7 +98,7 @@ class Environment::Oper::Temperatures : public ydk::Entity
 
         class Location; //type: Environment::Oper::Temperatures::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Temperatures::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Oper::Temperatures
 
@@ -123,7 +123,7 @@ class Environment::Oper::Temperatures::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class SensorAttributes; //type: Environment::Oper::Temperatures::Location::SensorAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Temperatures::Location::SensorAttributes> > sensor_attributes;
+        ydk::YList sensor_attributes;
         
 }; // Environment::Oper::Temperatures::Location
 
@@ -178,7 +178,7 @@ class Environment::Oper::Voltages : public ydk::Entity
 
         class Location; //type: Environment::Oper::Voltages::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Voltages::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Oper::Voltages
 
@@ -203,7 +203,7 @@ class Environment::Oper::Voltages::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class SensorAttributes; //type: Environment::Oper::Voltages::Location::SensorAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Voltages::Location::SensorAttributes> > sensor_attributes;
+        ydk::YList sensor_attributes;
         
 }; // Environment::Oper::Voltages::Location
 
@@ -258,7 +258,7 @@ class Environment::Oper::Current : public ydk::Entity
 
         class Location; //type: Environment::Oper::Current::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Current::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Oper::Current
 
@@ -283,7 +283,7 @@ class Environment::Oper::Current::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class SensorAttributes; //type: Environment::Oper::Current::Location::SensorAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Current::Location::SensorAttributes> > sensor_attributes;
+        ydk::YList sensor_attributes;
         
 }; // Environment::Oper::Current::Location
 
@@ -332,7 +332,7 @@ class Environment::Oper::Fan : public ydk::Entity
 
         class Location; //type: Environment::Oper::Fan::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Fan::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Oper::Fan
 
@@ -357,7 +357,7 @@ class Environment::Oper::Fan::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class FanAttributes; //type: Environment::Oper::Fan::Location::FanAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Fan::Location::FanAttributes> > fan_attributes;
+        ydk::YList fan_attributes;
         
 }; // Environment::Oper::Fan::Location
 
@@ -408,7 +408,7 @@ class Environment::Oper::Power : public ydk::Entity
 
         class Location; //type: Environment::Oper::Power::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Power::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Oper::Power
 
@@ -433,7 +433,7 @@ class Environment::Oper::Power::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class PemAttributes; //type: Environment::Oper::Power::Location::PemAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Power::Location::PemAttributes> > pem_attributes;
+        ydk::YList pem_attributes;
         
 }; // Environment::Oper::Power::Location
 
@@ -505,7 +505,7 @@ class Environment::Oper::Altitude : public ydk::Entity
 
         class Location; //type: Environment::Oper::Altitude::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Altitude::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Oper::Altitude
 
@@ -530,7 +530,7 @@ class Environment::Oper::Altitude::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class AltAttributes; //type: Environment::Oper::Altitude::Location::AltAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Oper::Altitude::Location::AltAttributes> > alt_attributes;
+        ydk::YList alt_attributes;
         
 }; // Environment::Oper::Altitude::Location
 
@@ -578,7 +578,7 @@ class Environment::All : public ydk::Entity
 
         class Location; //type: Environment::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location> > location;
+        ydk::YList location;
         
 }; // Environment::All
 
@@ -606,10 +606,10 @@ class Environment::All::Location : public ydk::Entity
         class Current; //type: Environment::All::Location::Current
         class Fan; //type: Environment::All::Location::Fan
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Temperatures> > temperatures;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Voltages> > voltages;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Current> > current;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Fan> > fan;
+        ydk::YList temperatures;
+        ydk::YList voltages;
+        ydk::YList current;
+        ydk::YList fan;
         
 }; // Environment::All::Location
 
@@ -634,7 +634,7 @@ class Environment::All::Location::Temperatures : public ydk::Entity
         ydk::YLeaf print_header; //type: boolean
         class SensorAttributes; //type: Environment::All::Location::Temperatures::SensorAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Temperatures::SensorAttributes> > sensor_attributes;
+        ydk::YList sensor_attributes;
         
 }; // Environment::All::Location::Temperatures
 
@@ -690,7 +690,7 @@ class Environment::All::Location::Voltages : public ydk::Entity
         ydk::YLeaf print_header; //type: boolean
         class SensorAttributes; //type: Environment::All::Location::Voltages::SensorAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Voltages::SensorAttributes> > sensor_attributes;
+        ydk::YList sensor_attributes;
         
 }; // Environment::All::Location::Voltages
 
@@ -746,7 +746,7 @@ class Environment::All::Location::Current : public ydk::Entity
         ydk::YLeaf print_header; //type: boolean
         class SensorAttributes; //type: Environment::All::Location::Current::SensorAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Current::SensorAttributes> > sensor_attributes;
+        ydk::YList sensor_attributes;
         
 }; // Environment::All::Location::Current
 
@@ -793,7 +793,7 @@ class Environment::All::Location::Fan : public ydk::Entity
         ydk::YLeaf loc_iden; //type: string
         class FanAttributes; //type: Environment::All::Location::Fan::FanAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::All::Location::Fan::FanAttributes> > fan_attributes;
+        ydk::YList fan_attributes;
         
 }; // Environment::All::Location::Fan
 
@@ -842,20 +842,21 @@ class Environment::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf raise_fan_speed; //type: uint32
-        ydk::YLeaf fan_ctrl_optics; //type: uint32
-        ydk::YLeaf graceful_shutdown; //type: uint32
         class Router; //type: Environment::Config::Router
         class AirFilter; //type: Environment::Config::AirFilter
         class FanCtrl; //type: Environment::Config::FanCtrl
         class Temperature; //type: Environment::Config::Temperature
         class Monitoring; //type: Environment::Config::Monitoring
+        class RaiseFanSpeed; //type: Environment::Config::RaiseFanSpeed
+        class FanCtrlOptics; //type: Environment::Config::FanCtrlOptics
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Router> router;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::AirFilter> air_filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrl> fan_ctrl;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Temperature> temperature;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Monitoring> monitoring;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::RaiseFanSpeed> raise_fan_speed;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrlOptics> fan_ctrl_optics;
         
 }; // Environment::Config
 
@@ -951,7 +952,7 @@ class Environment::Config::Router::Altitude::RackLoc : public ydk::Entity
 
         class Location; //type: Environment::Config::Router::Altitude::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Router::Altitude::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Config::Router::Altitude::RackLoc
 
@@ -1070,7 +1071,7 @@ class Environment::Config::AirFilter::Replaced::RackLoc : public ydk::Entity
 
         class Location; //type: Environment::Config::AirFilter::Replaced::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::AirFilter::Replaced::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Config::AirFilter::Replaced::RackLoc
 
@@ -1166,7 +1167,7 @@ class Environment::Config::FanCtrl::Disable::RackLoc : public ydk::Entity
         ydk::YLeaf all; //type: empty
         class Location; //type: Environment::Config::FanCtrl::Disable::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrl::Disable::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Config::FanCtrl::Disable::RackLoc
 
@@ -1261,7 +1262,7 @@ class Environment::Config::Temperature::Disable::RackLoc : public ydk::Entity
         ydk::YLeaf all; //type: empty
         class Location; //type: Environment::Config::Temperature::Disable::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Temperature::Disable::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Config::Temperature::Disable::RackLoc
 
@@ -1356,7 +1357,7 @@ class Environment::Config::Monitoring::Disable::RackLoc : public ydk::Entity
         ydk::YLeaf all; //type: empty
         class Location; //type: Environment::Config::Monitoring::Disable::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::Monitoring::Disable::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Config::Monitoring::Disable::RackLoc
 
@@ -1383,6 +1384,196 @@ class Environment::Config::Monitoring::Disable::RackLoc::Location : public ydk::
 }; // Environment::Config::Monitoring::Disable::RackLoc::Location
 
 
+class Environment::Config::RaiseFanSpeed : public ydk::Entity
+{
+    public:
+        RaiseFanSpeed();
+        ~RaiseFanSpeed();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class All; //type: Environment::Config::RaiseFanSpeed::All
+        class RackLoc; //type: Environment::Config::RaiseFanSpeed::RackLoc
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::RaiseFanSpeed::All> all;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::RaiseFanSpeed::RackLoc> rack_loc;
+        
+}; // Environment::Config::RaiseFanSpeed
+
+
+class Environment::Config::RaiseFanSpeed::All : public ydk::Entity
+{
+    public:
+        All();
+        ~All();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf speed_pwm; //type: uint32
+
+}; // Environment::Config::RaiseFanSpeed::All
+
+
+class Environment::Config::RaiseFanSpeed::RackLoc : public ydk::Entity
+{
+    public:
+        RackLoc();
+        ~RackLoc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Location; //type: Environment::Config::RaiseFanSpeed::RackLoc::Location
+
+        ydk::YList location;
+        
+}; // Environment::Config::RaiseFanSpeed::RackLoc
+
+
+class Environment::Config::RaiseFanSpeed::RackLoc::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rackid; //type: RackId
+        ydk::YLeaf speed_pwm; //type: uint32
+
+}; // Environment::Config::RaiseFanSpeed::RackLoc::Location
+
+
+class Environment::Config::FanCtrlOptics : public ydk::Entity
+{
+    public:
+        FanCtrlOptics();
+        ~FanCtrlOptics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Enable; //type: Environment::Config::FanCtrlOptics::Enable
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrlOptics::Enable> enable;
+        
+}; // Environment::Config::FanCtrlOptics
+
+
+class Environment::Config::FanCtrlOptics::Enable : public ydk::Entity
+{
+    public:
+        Enable();
+        ~Enable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class RackLoc; //type: Environment::Config::FanCtrlOptics::Enable::RackLoc
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Config::FanCtrlOptics::Enable::RackLoc> rack_loc;
+        
+}; // Environment::Config::FanCtrlOptics::Enable
+
+
+class Environment::Config::FanCtrlOptics::Enable::RackLoc : public ydk::Entity
+{
+    public:
+        RackLoc();
+        ~RackLoc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf all; //type: empty
+        class Location; //type: Environment::Config::FanCtrlOptics::Enable::RackLoc::Location
+
+        ydk::YList location;
+        
+}; // Environment::Config::FanCtrlOptics::Enable::RackLoc
+
+
+class Environment::Config::FanCtrlOptics::Enable::RackLoc::Location : public ydk::Entity
+{
+    public:
+        Location();
+        ~Location();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf rackid; //type: RackId
+
+}; // Environment::Config::FanCtrlOptics::Enable::RackLoc::Location
+
+
 class Environment::Trace : public ydk::Entity
 {
     public:
@@ -1403,7 +1594,7 @@ class Environment::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Environment::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Environment::Trace
 
@@ -1427,7 +1618,7 @@ class Environment::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Environment::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Environment::Trace::Location
 
@@ -1451,7 +1642,7 @@ class Environment::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Environment::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::Environment::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Environment::Trace::Location::AllOptions
 
@@ -1602,7 +1793,7 @@ class PowerMgmt::Config::Action::Disable::RackLoc : public ydk::Entity
         ydk::YLeaf all; //type: empty
         class Location; //type: PowerMgmt::Config::Action::Disable::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::PowerMgmt::Config::Action::Disable::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // PowerMgmt::Config::Action::Disable::RackLoc
 
@@ -1697,7 +1888,7 @@ class PowerMgmt::Config::SingleFeedMode::Enable::RackLoc : public ydk::Entity
         ydk::YLeaf all; //type: empty
         class Location; //type: PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::PowerMgmt::Config::SingleFeedMode::Enable::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // PowerMgmt::Config::SingleFeedMode::Enable::RackLoc
 
@@ -1792,7 +1983,7 @@ class PowerMgmt::Config::ExtendedTemp::Enable::RackLoc : public ydk::Entity
         ydk::YLeaf all; //type: empty
         class Location; //type: PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::PowerMgmt::Config::ExtendedTemp::Enable::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // PowerMgmt::Config::ExtendedTemp::Enable::RackLoc
 
@@ -1886,7 +2077,7 @@ class PowerMgmt::Config::RedundancyNumPms::RackLoc : public ydk::Entity
 
         class Location; //type: PowerMgmt::Config::RedundancyNumPms::RackLoc::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_envmon_ui::PowerMgmt::Config::RedundancyNumPms::RackLoc::Location> > location;
+        ydk::YList location;
         
 }; // PowerMgmt::Config::RedundancyNumPms::RackLoc
 

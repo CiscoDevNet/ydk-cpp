@@ -10,15 +10,6 @@
 namespace ietf {
 namespace ietf_netconf_monitoring {
 
-class Transport : public virtual ydk::Identity
-{
-    public:
-        Transport();
-        ~Transport();
-
-
-}; // Transport
-
 class SchemaFormat : public virtual ydk::Identity
 {
     public:
@@ -27,6 +18,15 @@ class SchemaFormat : public virtual ydk::Identity
 
 
 }; // SchemaFormat
+
+class Transport : public virtual ydk::Identity
+{
+    public:
+        Transport();
+        ~Transport();
+
+
+}; // Transport
 
 class GetSchema : public ydk::Entity
 {
@@ -180,7 +180,7 @@ class NetconfState::Datastores : public ydk::Entity
 
         class Datastore; //type: NetconfState::Datastores::Datastore
 
-        std::vector<std::shared_ptr<ietf::ietf_netconf_monitoring::NetconfState::Datastores::Datastore> > datastore;
+        ydk::YList datastore;
         
 }; // NetconfState::Datastores
 
@@ -230,7 +230,7 @@ class NetconfState::Datastores::Datastore::Locks : public ydk::Entity
         class PartialLock; //type: NetconfState::Datastores::Datastore::Locks::PartialLock
 
         std::shared_ptr<ietf::ietf_netconf_monitoring::NetconfState::Datastores::Datastore::Locks::GlobalLock> global_lock;
-        std::vector<std::shared_ptr<ietf::ietf_netconf_monitoring::NetconfState::Datastores::Datastore::Locks::PartialLock> > partial_lock;
+        ydk::YList partial_lock;
         
 }; // NetconfState::Datastores::Datastore::Locks
 
@@ -301,7 +301,7 @@ class NetconfState::Schemas : public ydk::Entity
 
         class Schema; //type: NetconfState::Schemas::Schema
 
-        std::vector<std::shared_ptr<ietf::ietf_netconf_monitoring::NetconfState::Schemas::Schema> > schema;
+        ydk::YList schema;
         
 }; // NetconfState::Schemas
 
@@ -327,7 +327,7 @@ class NetconfState::Schemas::Schema : public ydk::Entity
         ydk::YLeaf version; //type: string
         ydk::YLeaf format; //type: SchemaFormat
         ydk::YLeaf namespace_; //type: string
-        ydk::YLeafList location; //type: list of  one of enumeration, string
+        ydk::YLeafList location; //type: list of  one of string, enumeration
         class Location;
 
 }; // NetconfState::Schemas::Schema
@@ -352,7 +352,7 @@ class NetconfState::Sessions : public ydk::Entity
 
         class Session; //type: NetconfState::Sessions::Session
 
-        std::vector<std::shared_ptr<ietf::ietf_netconf_monitoring::NetconfState::Sessions::Session> > session;
+        ydk::YList session;
         
 }; // NetconfState::Sessions
 
@@ -415,33 +415,6 @@ class NetconfState::Statistics : public ydk::Entity
 
 }; // NetconfState::Statistics
 
-class NetconfSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSsh();
-        ~NetconfSsh();
-
-
-}; // NetconfSsh
-
-class NetconfSoapOverBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSoapOverBeep();
-        ~NetconfSoapOverBeep();
-
-
-}; // NetconfSoapOverBeep
-
-class NetconfSoapOverHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSoapOverHttps();
-        ~NetconfSoapOverHttps();
-
-
-}; // NetconfSoapOverHttps
-
 class NetconfBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
@@ -451,32 +424,23 @@ class NetconfBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk
 
 }; // NetconfBeep
 
-class NetconfTls : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+class NetconfSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        NetconfTls();
-        ~NetconfTls();
+        NetconfSsh();
+        ~NetconfSsh();
 
 
-}; // NetconfTls
+}; // NetconfSsh
 
-class Xsd : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+class Rnc : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        Xsd();
-        ~Xsd();
+        Rnc();
+        ~Rnc();
 
 
-}; // Xsd
-
-class Yang : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
-{
-    public:
-        Yang();
-        ~Yang();
-
-
-}; // Yang
+}; // Rnc
 
 class Yin : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
@@ -496,14 +460,50 @@ class Rng : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Ide
 
 }; // Rng
 
-class Rnc : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+class Xsd : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        Rnc();
-        ~Rnc();
+        Xsd();
+        ~Xsd();
 
 
-}; // Rnc
+}; // Xsd
+
+class NetconfSoapOverBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfSoapOverBeep();
+        ~NetconfSoapOverBeep();
+
+
+}; // NetconfSoapOverBeep
+
+class NetconfTls : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfTls();
+        ~NetconfTls();
+
+
+}; // NetconfTls
+
+class Yang : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+{
+    public:
+        Yang();
+        ~Yang();
+
+
+}; // Yang
+
+class NetconfSoapOverHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfSoapOverHttps();
+        ~NetconfSoapOverHttps();
+
+
+}; // NetconfSoapOverHttps
 
 class NetconfDatastoreType : public ydk::Enum
 {

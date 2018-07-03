@@ -17,7 +17,7 @@ OpticsOper::OpticsOper()
 {
     optics_ports->parent = this;
 
-    yang_name = "optics-oper"; yang_parent_name = "Cisco-IOS-XR-controller-optics-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "optics-oper"; yang_parent_name = "Cisco-IOS-XR-controller-optics-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 OpticsOper::~OpticsOper()
@@ -26,6 +26,7 @@ OpticsOper::~OpticsOper()
 
 bool OpticsOper::has_data() const
 {
+    if (is_presence_container) return true;
     return (optics_ports !=  nullptr && optics_ports->has_data());
 }
 
@@ -118,9 +119,11 @@ bool OpticsOper::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 OpticsOper::OpticsPorts::OpticsPorts()
+    :
+    optics_port(this, {"name"})
 {
 
-    yang_name = "optics-ports"; yang_parent_name = "optics-oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "optics-ports"; yang_parent_name = "optics-oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OpticsOper::OpticsPorts::~OpticsPorts()
@@ -129,7 +132,8 @@ OpticsOper::OpticsPorts::~OpticsPorts()
 
 bool OpticsOper::OpticsPorts::has_data() const
 {
-    for (std::size_t index=0; index<optics_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_port.len(); index++)
     {
         if(optics_port[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool OpticsOper::OpticsPorts::has_data() const
 
 bool OpticsOper::OpticsPorts::has_operation() const
 {
-    for (std::size_t index=0; index<optics_port.size(); index++)
+    for (std::size_t index=0; index<optics_port.len(); index++)
     {
         if(optics_port[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::get_child_by_name(const std::st
     {
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort>();
         c->parent = this;
-        optics_port.push_back(c);
+        optics_port.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_port)
+    for (auto c : optics_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,22 +221,22 @@ bool OpticsOper::OpticsPorts::has_leaf_or_child_of_name(const std::string & name
 OpticsOper::OpticsPorts::OpticsPort::OpticsPort()
     :
     name{YType::str, "name"}
-    	,
-    optics_dwdm_carrier_channel_map(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap>())
-	,ots_spectrum_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo>())
-	,optics_dwdm_carrier_channel_map_flexi(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi>())
-	,optics_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo>())
-	,optics_lanes(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes>())
-	,optics_db_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo>())
+        ,
+    optics_dwdm_carrrier_channel_map(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap>())
+    , ots_spectrum_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo>())
+    , optics_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo>())
+    , optics_lanes(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes>())
+    , optics_dwdm_carrrier_channel_map_flexi(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi>())
+    , optics_db_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo>())
 {
-    optics_dwdm_carrier_channel_map->parent = this;
+    optics_dwdm_carrrier_channel_map->parent = this;
     ots_spectrum_info->parent = this;
-    optics_dwdm_carrier_channel_map_flexi->parent = this;
     optics_info->parent = this;
     optics_lanes->parent = this;
+    optics_dwdm_carrrier_channel_map_flexi->parent = this;
     optics_db_info->parent = this;
 
-    yang_name = "optics-port"; yang_parent_name = "optics-ports"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "optics-port"; yang_parent_name = "optics-ports"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::~OpticsPort()
@@ -241,12 +245,13 @@ OpticsOper::OpticsPorts::OpticsPort::~OpticsPort()
 
 bool OpticsOper::OpticsPorts::OpticsPort::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
-	|| (optics_dwdm_carrier_channel_map !=  nullptr && optics_dwdm_carrier_channel_map->has_data())
+	|| (optics_dwdm_carrrier_channel_map !=  nullptr && optics_dwdm_carrrier_channel_map->has_data())
 	|| (ots_spectrum_info !=  nullptr && ots_spectrum_info->has_data())
-	|| (optics_dwdm_carrier_channel_map_flexi !=  nullptr && optics_dwdm_carrier_channel_map_flexi->has_data())
 	|| (optics_info !=  nullptr && optics_info->has_data())
 	|| (optics_lanes !=  nullptr && optics_lanes->has_data())
+	|| (optics_dwdm_carrrier_channel_map_flexi !=  nullptr && optics_dwdm_carrrier_channel_map_flexi->has_data())
 	|| (optics_db_info !=  nullptr && optics_db_info->has_data());
 }
 
@@ -254,11 +259,11 @@ bool OpticsOper::OpticsPorts::OpticsPort::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| (optics_dwdm_carrier_channel_map !=  nullptr && optics_dwdm_carrier_channel_map->has_operation())
+	|| (optics_dwdm_carrrier_channel_map !=  nullptr && optics_dwdm_carrrier_channel_map->has_operation())
 	|| (ots_spectrum_info !=  nullptr && ots_spectrum_info->has_operation())
-	|| (optics_dwdm_carrier_channel_map_flexi !=  nullptr && optics_dwdm_carrier_channel_map_flexi->has_operation())
 	|| (optics_info !=  nullptr && optics_info->has_operation())
 	|| (optics_lanes !=  nullptr && optics_lanes->has_operation())
+	|| (optics_dwdm_carrrier_channel_map_flexi !=  nullptr && optics_dwdm_carrrier_channel_map_flexi->has_operation())
 	|| (optics_db_info !=  nullptr && optics_db_info->has_operation());
 }
 
@@ -272,7 +277,8 @@ std::string OpticsOper::OpticsPorts::OpticsPort::get_absolute_path() const
 std::string OpticsOper::OpticsPorts::OpticsPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-port" <<"[name='" <<name <<"']";
+    path_buffer << "optics-port";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -288,13 +294,13 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "optics-dwdm-carrier-channel-map")
+    if(child_yang_name == "optics-dwdm-carrrier-channel-map")
     {
-        if(optics_dwdm_carrier_channel_map == nullptr)
+        if(optics_dwdm_carrrier_channel_map == nullptr)
         {
-            optics_dwdm_carrier_channel_map = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap>();
+            optics_dwdm_carrrier_channel_map = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap>();
         }
-        return optics_dwdm_carrier_channel_map;
+        return optics_dwdm_carrrier_channel_map;
     }
 
     if(child_yang_name == "ots-spectrum-info")
@@ -304,15 +310,6 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::get_child_by_name(c
             ots_spectrum_info = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo>();
         }
         return ots_spectrum_info;
-    }
-
-    if(child_yang_name == "optics-dwdm-carrier-channel-map-flexi")
-    {
-        if(optics_dwdm_carrier_channel_map_flexi == nullptr)
-        {
-            optics_dwdm_carrier_channel_map_flexi = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi>();
-        }
-        return optics_dwdm_carrier_channel_map_flexi;
     }
 
     if(child_yang_name == "optics-info")
@@ -333,6 +330,15 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::get_child_by_name(c
         return optics_lanes;
     }
 
+    if(child_yang_name == "optics-dwdm-carrrier-channel-map-flexi")
+    {
+        if(optics_dwdm_carrrier_channel_map_flexi == nullptr)
+        {
+            optics_dwdm_carrrier_channel_map_flexi = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi>();
+        }
+        return optics_dwdm_carrrier_channel_map_flexi;
+    }
+
     if(child_yang_name == "optics-db-info")
     {
         if(optics_db_info == nullptr)
@@ -349,19 +355,14 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(optics_dwdm_carrier_channel_map != nullptr)
+    if(optics_dwdm_carrrier_channel_map != nullptr)
     {
-        children["optics-dwdm-carrier-channel-map"] = optics_dwdm_carrier_channel_map;
+        children["optics-dwdm-carrrier-channel-map"] = optics_dwdm_carrrier_channel_map;
     }
 
     if(ots_spectrum_info != nullptr)
     {
         children["ots-spectrum-info"] = ots_spectrum_info;
-    }
-
-    if(optics_dwdm_carrier_channel_map_flexi != nullptr)
-    {
-        children["optics-dwdm-carrier-channel-map-flexi"] = optics_dwdm_carrier_channel_map_flexi;
     }
 
     if(optics_info != nullptr)
@@ -372,6 +373,11 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
     if(optics_lanes != nullptr)
     {
         children["optics-lanes"] = optics_lanes;
+    }
+
+    if(optics_dwdm_carrrier_channel_map_flexi != nullptr)
+    {
+        children["optics-dwdm-carrrier-channel-map-flexi"] = optics_dwdm_carrrier_channel_map_flexi;
     }
 
     if(optics_db_info != nullptr)
@@ -402,28 +408,31 @@ void OpticsOper::OpticsPorts::OpticsPort::set_filter(const std::string & value_p
 
 bool OpticsOper::OpticsPorts::OpticsPort::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "optics-dwdm-carrier-channel-map" || name == "ots-spectrum-info" || name == "optics-dwdm-carrier-channel-map-flexi" || name == "optics-info" || name == "optics-lanes" || name == "optics-db-info" || name == "name")
+    if(name == "optics-dwdm-carrrier-channel-map" || name == "ots-spectrum-info" || name == "optics-info" || name == "optics-lanes" || name == "optics-dwdm-carrrier-channel-map-flexi" || name == "optics-db-info" || name == "name")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::OpticsDwdmCarrierChannelMap()
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::OpticsDwdmCarrrierChannelMap()
     :
     dwdm_carrier_band{YType::enumeration, "dwdm-carrier-band"},
     dwdm_carrier_min{YType::uint32, "dwdm-carrier-min"},
     dwdm_carrier_max{YType::uint32, "dwdm-carrier-max"}
+        ,
+    dwdm_carrier_map_info(this, {})
 {
 
-    yang_name = "optics-dwdm-carrier-channel-map"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-dwdm-carrrier-channel-map"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::~OpticsDwdmCarrierChannelMap()
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::~OpticsDwdmCarrrierChannelMap()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::has_data() const
 {
-    for (std::size_t index=0; index<dwdm_carrier_map_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_carrier_map_info.len(); index++)
     {
         if(dwdm_carrier_map_info[index]->has_data())
             return true;
@@ -433,9 +442,9 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::has_data(
 	|| dwdm_carrier_max.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::has_operation() const
 {
-    for (std::size_t index=0; index<dwdm_carrier_map_info.size(); index++)
+    for (std::size_t index=0; index<dwdm_carrier_map_info.len(); index++)
     {
         if(dwdm_carrier_map_info[index]->has_operation())
             return true;
@@ -446,14 +455,14 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::has_opera
 	|| ydk::is_set(dwdm_carrier_max.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-dwdm-carrier-channel-map";
+    path_buffer << "optics-dwdm-carrrier-channel-map";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -465,25 +474,25 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "dwdm-carrier-map-info")
     {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo>();
+        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo>();
         c->parent = this;
-        dwdm_carrier_map_info.push_back(c);
+        dwdm_carrier_map_info.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dwdm_carrier_map_info)
+    for (auto c : dwdm_carrier_map_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -494,7 +503,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "dwdm-carrier-band")
     {
@@ -516,7 +525,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::set_value
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "dwdm-carrier-band")
     {
@@ -532,14 +541,14 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::set_filte
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dwdm-carrier-map-info" || name == "dwdm-carrier-band" || name == "dwdm-carrier-min" || name == "dwdm-carrier-max")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::DwdmCarrierMapInfo()
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::DwdmCarrierMapInfo()
     :
     itu_chan_num{YType::uint32, "itu-chan-num"},
     g694_chan_num{YType::int32, "g694-chan-num"},
@@ -547,22 +556,23 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMap
     wavelength{YType::str, "wavelength"}
 {
 
-    yang_name = "dwdm-carrier-map-info"; yang_parent_name = "optics-dwdm-carrier-channel-map"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dwdm-carrier-map-info"; yang_parent_name = "optics-dwdm-carrrier-channel-map"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::~DwdmCarrierMapInfo()
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::~DwdmCarrierMapInfo()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return itu_chan_num.is_set
 	|| g694_chan_num.is_set
 	|| frequency.is_set
 	|| wavelength.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(itu_chan_num.yfilter)
@@ -571,14 +581,14 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarri
 	|| ydk::is_set(wavelength.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-carrier-map-info";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -591,19 +601,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "itu-chan-num")
     {
@@ -631,7 +641,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarri
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "itu-chan-num")
     {
@@ -651,7 +661,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarri
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::DwdmCarrierMapInfo::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMap::DwdmCarrierMapInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "itu-chan-num" || name == "g694-chan-num" || name == "frequency" || name == "wavelength")
         return true;
@@ -664,7 +674,7 @@ OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::OtsSpectrumInfo()
 {
     spectrum_info->parent = this;
 
-    yang_name = "ots-spectrum-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ots-spectrum-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::~OtsSpectrumInfo()
@@ -673,6 +683,7 @@ OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::~OtsSpectrumInfo()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (spectrum_info !=  nullptr && spectrum_info->has_data());
 }
 
@@ -744,9 +755,11 @@ OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumInfo
     total_spectrum_slice_count{YType::uint32, "total-spectrum-slice-count"},
     spectrum_slice_spacing{YType::uint32, "spectrum-slice-spacing"},
     first_slice_wavelength{YType::str, "first-slice-wavelength"}
+        ,
+    spectrum_slice_power_info(this, {})
 {
 
-    yang_name = "spectrum-info"; yang_parent_name = "ots-spectrum-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spectrum-info"; yang_parent_name = "ots-spectrum-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::~SpectrumInfo()
@@ -755,7 +768,8 @@ OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::~SpectrumInf
 
 bool OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::has_data() const
 {
-    for (std::size_t index=0; index<spectrum_slice_power_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<spectrum_slice_power_info.len(); index++)
     {
         if(spectrum_slice_power_info[index]->has_data())
             return true;
@@ -767,7 +781,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::has_dat
 
 bool OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::has_operation() const
 {
-    for (std::size_t index=0; index<spectrum_slice_power_info.size(); index++)
+    for (std::size_t index=0; index<spectrum_slice_power_info.len(); index++)
     {
         if(spectrum_slice_power_info[index]->has_operation())
             return true;
@@ -803,7 +817,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::Sp
     {
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo>();
         c->parent = this;
-        spectrum_slice_power_info.push_back(c);
+        spectrum_slice_power_info.append(c);
         return c;
     }
 
@@ -815,7 +829,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : spectrum_slice_power_info)
+    for (auto c : spectrum_slice_power_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -882,7 +896,7 @@ OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlic
     tx_psd{YType::str, "tx-psd"}
 {
 
-    yang_name = "spectrum-slice-power-info"; yang_parent_name = "spectrum-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "spectrum-slice-power-info"; yang_parent_name = "spectrum-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo::~SpectrumSlicePowerInfo()
@@ -891,6 +905,7 @@ OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlic
 
 bool OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::SpectrumSlicePowerInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return slice_num.is_set
 	|| lower_frequency.is_set
 	|| upper_frequency.is_set
@@ -1032,257 +1047,6 @@ bool OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::Spectru
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::OpticsDwdmCarrierChannelMapFlexi()
-    :
-    dwdm_carrier_band{YType::enumeration, "dwdm-carrier-band"},
-    dwdm_carrier_min{YType::uint32, "dwdm-carrier-min"},
-    dwdm_carrier_max{YType::uint32, "dwdm-carrier-max"}
-{
-
-    yang_name = "optics-dwdm-carrier-channel-map-flexi"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::~OpticsDwdmCarrierChannelMapFlexi()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::has_data() const
-{
-    for (std::size_t index=0; index<dwdm_carrier_map_info.size(); index++)
-    {
-        if(dwdm_carrier_map_info[index]->has_data())
-            return true;
-    }
-    return dwdm_carrier_band.is_set
-	|| dwdm_carrier_min.is_set
-	|| dwdm_carrier_max.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::has_operation() const
-{
-    for (std::size_t index=0; index<dwdm_carrier_map_info.size(); index++)
-    {
-        if(dwdm_carrier_map_info[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(dwdm_carrier_band.yfilter)
-	|| ydk::is_set(dwdm_carrier_min.yfilter)
-	|| ydk::is_set(dwdm_carrier_max.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics-dwdm-carrier-channel-map-flexi";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dwdm_carrier_band.is_set || is_set(dwdm_carrier_band.yfilter)) leaf_name_data.push_back(dwdm_carrier_band.get_name_leafdata());
-    if (dwdm_carrier_min.is_set || is_set(dwdm_carrier_min.yfilter)) leaf_name_data.push_back(dwdm_carrier_min.get_name_leafdata());
-    if (dwdm_carrier_max.is_set || is_set(dwdm_carrier_max.yfilter)) leaf_name_data.push_back(dwdm_carrier_max.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dwdm-carrier-map-info")
-    {
-        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo>();
-        c->parent = this;
-        dwdm_carrier_map_info.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : dwdm_carrier_map_info)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dwdm-carrier-band")
-    {
-        dwdm_carrier_band = value;
-        dwdm_carrier_band.value_namespace = name_space;
-        dwdm_carrier_band.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dwdm-carrier-min")
-    {
-        dwdm_carrier_min = value;
-        dwdm_carrier_min.value_namespace = name_space;
-        dwdm_carrier_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dwdm-carrier-max")
-    {
-        dwdm_carrier_max = value;
-        dwdm_carrier_max.value_namespace = name_space;
-        dwdm_carrier_max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dwdm-carrier-band")
-    {
-        dwdm_carrier_band.yfilter = yfilter;
-    }
-    if(value_path == "dwdm-carrier-min")
-    {
-        dwdm_carrier_min.yfilter = yfilter;
-    }
-    if(value_path == "dwdm-carrier-max")
-    {
-        dwdm_carrier_max.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dwdm-carrier-map-info" || name == "dwdm-carrier-band" || name == "dwdm-carrier-min" || name == "dwdm-carrier-max")
-        return true;
-    return false;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::DwdmCarrierMapInfo()
-    :
-    itu_chan_num{YType::uint32, "itu-chan-num"},
-    g694_chan_num{YType::int32, "g694-chan-num"},
-    frequency{YType::str, "frequency"},
-    wavelength{YType::str, "wavelength"}
-{
-
-    yang_name = "dwdm-carrier-map-info"; yang_parent_name = "optics-dwdm-carrier-channel-map-flexi"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::~DwdmCarrierMapInfo()
-{
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::has_data() const
-{
-    return itu_chan_num.is_set
-	|| g694_chan_num.is_set
-	|| frequency.is_set
-	|| wavelength.is_set;
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(itu_chan_num.yfilter)
-	|| ydk::is_set(g694_chan_num.yfilter)
-	|| ydk::is_set(frequency.yfilter)
-	|| ydk::is_set(wavelength.yfilter);
-}
-
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dwdm-carrier-map-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (itu_chan_num.is_set || is_set(itu_chan_num.yfilter)) leaf_name_data.push_back(itu_chan_num.get_name_leafdata());
-    if (g694_chan_num.is_set || is_set(g694_chan_num.yfilter)) leaf_name_data.push_back(g694_chan_num.get_name_leafdata());
-    if (frequency.is_set || is_set(frequency.yfilter)) leaf_name_data.push_back(frequency.get_name_leafdata());
-    if (wavelength.is_set || is_set(wavelength.yfilter)) leaf_name_data.push_back(wavelength.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "itu-chan-num")
-    {
-        itu_chan_num = value;
-        itu_chan_num.value_namespace = name_space;
-        itu_chan_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "g694-chan-num")
-    {
-        g694_chan_num = value;
-        g694_chan_num.value_namespace = name_space;
-        g694_chan_num.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "frequency")
-    {
-        frequency = value;
-        frequency.value_namespace = name_space;
-        frequency.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "wavelength")
-    {
-        wavelength = value;
-        wavelength.value_namespace = name_space;
-        wavelength.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "itu-chan-num")
-    {
-        itu_chan_num.yfilter = yfilter;
-    }
-    if(value_path == "g694-chan-num")
-    {
-        g694_chan_num.yfilter = yfilter;
-    }
-    if(value_path == "frequency")
-    {
-        frequency.yfilter = yfilter;
-    }
-    if(value_path == "wavelength")
-    {
-        wavelength.yfilter = yfilter;
-    }
-}
-
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlexi::DwdmCarrierMapInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "itu-chan-num" || name == "g694-chan-num" || name == "frequency" || name == "wavelength")
-        return true;
-    return false;
-}
-
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     :
     transport_admin_state{YType::enumeration, "transport-admin-state"},
@@ -1333,7 +1097,6 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     display_volt_temp{YType::boolean, "display-volt-temp"},
     cd_configurable{YType::boolean, "cd-configurable"},
     optics_fec{YType::enumeration, "optics-fec"},
-    skip_snmp_pm_table{YType::int32, "skip-snmp-pm-table"},
     port_type{YType::enumeration, "port-type"},
     port_status{YType::enumeration, "port-status"},
     rx_voa_attenuation{YType::int32, "rx-voa-attenuation"},
@@ -1371,23 +1134,24 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     temp_high_warning_threshold{YType::int32, "temp-high-warning-threshold"},
     volt_low_warning_threshold{YType::int32, "volt-low-warning-threshold"},
     volt_high_warning_threshold{YType::int32, "volt-high-warning-threshold"},
+    description{YType::str, "description"},
     ampli_gain_range{YType::enumeration, "ampli-gain-range"},
     safety_control_mode{YType::enumeration, "safety-control-mode"},
     osri{YType::boolean, "osri"},
-    description{YType::str, "description"},
-    is_optics_type_string_valid{YType::boolean, "is-optics-type-string-valid"},
-    optics_type_str{YType::str, "optics-type-str"},
     tx_enable{YType::boolean, "tx-enable"},
     rx_enable{YType::boolean, "rx-enable"},
+    is_optics_type_string_valid{YType::boolean, "is-optics-type-string-valid"},
+    optics_type_str{YType::str, "optics-type-str"},
     rx_low_threshold_current{YType::int32, "rx-low-threshold-current"}
-    	,
+        ,
     network_srlg_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo>())
-	,optics_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo>())
-	,ots_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo>())
-	,transceiver_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo>())
-	,ext_param_val(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal>())
-	,ext_param_threshold_val(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal>())
-	,extended_alarm_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo>())
+    , optics_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo>())
+    , ots_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo>())
+    , transceiver_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo>())
+    , ext_param_val(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal>())
+    , ext_param_threshold_val(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal>())
+    , extended_alarm_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo>())
+    , lane_data(this, {})
 {
     network_srlg_info->parent = this;
     optics_alarm_info->parent = this;
@@ -1397,7 +1161,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsInfo()
     ext_param_threshold_val->parent = this;
     extended_alarm_alarm_info->parent = this;
 
-    yang_name = "optics-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::~OpticsInfo()
@@ -1406,7 +1170,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::~OpticsInfo()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 {
-    for (std::size_t index=0; index<lane_data.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lane_data.len(); index++)
     {
         if(lane_data[index]->has_data())
             return true;
@@ -1459,7 +1224,6 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| display_volt_temp.is_set
 	|| cd_configurable.is_set
 	|| optics_fec.is_set
-	|| skip_snmp_pm_table.is_set
 	|| port_type.is_set
 	|| port_status.is_set
 	|| rx_voa_attenuation.is_set
@@ -1497,14 +1261,14 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 	|| temp_high_warning_threshold.is_set
 	|| volt_low_warning_threshold.is_set
 	|| volt_high_warning_threshold.is_set
+	|| description.is_set
 	|| ampli_gain_range.is_set
 	|| safety_control_mode.is_set
 	|| osri.is_set
-	|| description.is_set
-	|| is_optics_type_string_valid.is_set
-	|| optics_type_str.is_set
 	|| tx_enable.is_set
 	|| rx_enable.is_set
+	|| is_optics_type_string_valid.is_set
+	|| optics_type_str.is_set
 	|| rx_low_threshold_current.is_set
 	|| (network_srlg_info !=  nullptr && network_srlg_info->has_data())
 	|| (optics_alarm_info !=  nullptr && optics_alarm_info->has_data())
@@ -1517,7 +1281,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_data() const
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 {
-    for (std::size_t index=0; index<lane_data.size(); index++)
+    for (std::size_t index=0; index<lane_data.len(); index++)
     {
         if(lane_data[index]->has_operation())
             return true;
@@ -1571,7 +1335,6 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(display_volt_temp.yfilter)
 	|| ydk::is_set(cd_configurable.yfilter)
 	|| ydk::is_set(optics_fec.yfilter)
-	|| ydk::is_set(skip_snmp_pm_table.yfilter)
 	|| ydk::is_set(port_type.yfilter)
 	|| ydk::is_set(port_status.yfilter)
 	|| ydk::is_set(rx_voa_attenuation.yfilter)
@@ -1609,14 +1372,14 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_operation() const
 	|| ydk::is_set(temp_high_warning_threshold.yfilter)
 	|| ydk::is_set(volt_low_warning_threshold.yfilter)
 	|| ydk::is_set(volt_high_warning_threshold.yfilter)
+	|| ydk::is_set(description.yfilter)
 	|| ydk::is_set(ampli_gain_range.yfilter)
 	|| ydk::is_set(safety_control_mode.yfilter)
 	|| ydk::is_set(osri.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(is_optics_type_string_valid.yfilter)
-	|| ydk::is_set(optics_type_str.yfilter)
 	|| ydk::is_set(tx_enable.yfilter)
 	|| ydk::is_set(rx_enable.yfilter)
+	|| ydk::is_set(is_optics_type_string_valid.yfilter)
+	|| ydk::is_set(optics_type_str.yfilter)
 	|| ydk::is_set(rx_low_threshold_current.yfilter)
 	|| (network_srlg_info !=  nullptr && network_srlg_info->has_operation())
 	|| (optics_alarm_info !=  nullptr && optics_alarm_info->has_operation())
@@ -1686,7 +1449,6 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
     if (display_volt_temp.is_set || is_set(display_volt_temp.yfilter)) leaf_name_data.push_back(display_volt_temp.get_name_leafdata());
     if (cd_configurable.is_set || is_set(cd_configurable.yfilter)) leaf_name_data.push_back(cd_configurable.get_name_leafdata());
     if (optics_fec.is_set || is_set(optics_fec.yfilter)) leaf_name_data.push_back(optics_fec.get_name_leafdata());
-    if (skip_snmp_pm_table.is_set || is_set(skip_snmp_pm_table.yfilter)) leaf_name_data.push_back(skip_snmp_pm_table.get_name_leafdata());
     if (port_type.is_set || is_set(port_type.yfilter)) leaf_name_data.push_back(port_type.get_name_leafdata());
     if (port_status.is_set || is_set(port_status.yfilter)) leaf_name_data.push_back(port_status.get_name_leafdata());
     if (rx_voa_attenuation.is_set || is_set(rx_voa_attenuation.yfilter)) leaf_name_data.push_back(rx_voa_attenuation.get_name_leafdata());
@@ -1724,14 +1486,14 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
     if (temp_high_warning_threshold.is_set || is_set(temp_high_warning_threshold.yfilter)) leaf_name_data.push_back(temp_high_warning_threshold.get_name_leafdata());
     if (volt_low_warning_threshold.is_set || is_set(volt_low_warning_threshold.yfilter)) leaf_name_data.push_back(volt_low_warning_threshold.get_name_leafdata());
     if (volt_high_warning_threshold.is_set || is_set(volt_high_warning_threshold.yfilter)) leaf_name_data.push_back(volt_high_warning_threshold.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
     if (ampli_gain_range.is_set || is_set(ampli_gain_range.yfilter)) leaf_name_data.push_back(ampli_gain_range.get_name_leafdata());
     if (safety_control_mode.is_set || is_set(safety_control_mode.yfilter)) leaf_name_data.push_back(safety_control_mode.get_name_leafdata());
     if (osri.is_set || is_set(osri.yfilter)) leaf_name_data.push_back(osri.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (is_optics_type_string_valid.is_set || is_set(is_optics_type_string_valid.yfilter)) leaf_name_data.push_back(is_optics_type_string_valid.get_name_leafdata());
-    if (optics_type_str.is_set || is_set(optics_type_str.yfilter)) leaf_name_data.push_back(optics_type_str.get_name_leafdata());
     if (tx_enable.is_set || is_set(tx_enable.yfilter)) leaf_name_data.push_back(tx_enable.get_name_leafdata());
     if (rx_enable.is_set || is_set(rx_enable.yfilter)) leaf_name_data.push_back(rx_enable.get_name_leafdata());
+    if (is_optics_type_string_valid.is_set || is_set(is_optics_type_string_valid.yfilter)) leaf_name_data.push_back(is_optics_type_string_valid.get_name_leafdata());
+    if (optics_type_str.is_set || is_set(optics_type_str.yfilter)) leaf_name_data.push_back(optics_type_str.get_name_leafdata());
     if (rx_low_threshold_current.is_set || is_set(rx_low_threshold_current.yfilter)) leaf_name_data.push_back(rx_low_threshold_current.get_name_leafdata());
 
     return leaf_name_data;
@@ -1807,7 +1569,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::get_chi
     {
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData>();
         c->parent = this;
-        lane_data.push_back(c);
+        lane_data.append(c);
         return c;
     }
 
@@ -1854,7 +1616,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
     }
 
     count = 0;
-    for (auto const & c : lane_data)
+    for (auto c : lane_data.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2155,12 +1917,6 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         optics_fec.value_namespace = name_space;
         optics_fec.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "skip-snmp-pm-table")
-    {
-        skip_snmp_pm_table = value;
-        skip_snmp_pm_table.value_namespace = name_space;
-        skip_snmp_pm_table.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "port-type")
     {
         port_type = value;
@@ -2383,6 +2139,12 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         volt_high_warning_threshold.value_namespace = name_space;
         volt_high_warning_threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ampli-gain-range")
     {
         ampli_gain_range = value;
@@ -2401,11 +2163,17 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         osri.value_namespace = name_space;
         osri.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "description")
+    if(value_path == "tx-enable")
     {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
+        tx_enable = value;
+        tx_enable.value_namespace = name_space;
+        tx_enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-enable")
+    {
+        rx_enable = value;
+        rx_enable.value_namespace = name_space;
+        rx_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-optics-type-string-valid")
     {
@@ -2418,18 +2186,6 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_value(const std::strin
         optics_type_str = value;
         optics_type_str.value_namespace = name_space;
         optics_type_str.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-enable")
-    {
-        tx_enable = value;
-        tx_enable.value_namespace = name_space;
-        tx_enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-enable")
-    {
-        rx_enable = value;
-        rx_enable.value_namespace = name_space;
-        rx_enable.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "rx-low-threshold-current")
     {
@@ -2633,10 +2389,6 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         optics_fec.yfilter = yfilter;
     }
-    if(value_path == "skip-snmp-pm-table")
-    {
-        skip_snmp_pm_table.yfilter = yfilter;
-    }
     if(value_path == "port-type")
     {
         port_type.yfilter = yfilter;
@@ -2785,6 +2537,10 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         volt_high_warning_threshold.yfilter = yfilter;
     }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
     if(value_path == "ampli-gain-range")
     {
         ampli_gain_range.yfilter = yfilter;
@@ -2797,9 +2553,13 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         osri.yfilter = yfilter;
     }
-    if(value_path == "description")
+    if(value_path == "tx-enable")
     {
-        description.yfilter = yfilter;
+        tx_enable.yfilter = yfilter;
+    }
+    if(value_path == "rx-enable")
+    {
+        rx_enable.yfilter = yfilter;
     }
     if(value_path == "is-optics-type-string-valid")
     {
@@ -2809,14 +2569,6 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
     {
         optics_type_str.yfilter = yfilter;
     }
-    if(value_path == "tx-enable")
-    {
-        tx_enable.yfilter = yfilter;
-    }
-    if(value_path == "rx-enable")
-    {
-        rx_enable.yfilter = yfilter;
-    }
     if(value_path == "rx-low-threshold-current")
     {
         rx_low_threshold_current.yfilter = yfilter;
@@ -2825,15 +2577,17 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::set_filter(const std::stri
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "network-srlg-info" || name == "optics-alarm-info" || name == "ots-alarm-info" || name == "transceiver-info" || name == "ext-param-val" || name == "ext-param-threshold-val" || name == "extended-alarm-alarm-info" || name == "lane-data" || name == "transport-admin-state" || name == "optics-present" || name == "optics-type" || name == "derived-optics-type" || name == "optics-module" || name == "dwdm-carrier-band" || name == "dwdm-carrier-channel" || name == "dwdm-carrier-frequency" || name == "dwdm-carrier-wavelength" || name == "grey-wavelength" || name == "rx-low-threshold" || name == "rx-high-threshold" || name == "lbc-high-threshold" || name == "tx-low-threshold" || name == "tx-high-threshold" || name == "lbc-th-high-default" || name == "lbc-th-low-default" || name == "temp-low-threshold" || name == "temp-high-threshold" || name == "volt-low-threshold" || name == "volt-high-threshold" || name == "cd" || name == "cd-min" || name == "cd-max" || name == "cd-low-threshold" || name == "cd-high-threshold" || name == "osnr-low-threshold" || name == "dgd-high-threshold" || name == "polarization-mode-dispersion" || name == "second-order-polarization-mode-dispersion" || name == "optical-signal-to-noise-ratio" || name == "polarization-dependent-loss" || name == "polarization-change-rate" || name == "differential-group-delay" || name == "phase-noise" || name == "pm-enable" || name == "laser-state" || name == "led-state" || name == "controller-state" || name == "form-factor" || name == "phy-type" || name == "cfg-tx-power" || name == "cfg-tx-power-configurable" || name == "temperature" || name == "voltage" || name == "display-volt-temp" || name == "cd-configurable" || name == "optics-fec" || name == "skip-snmp-pm-table" || name == "port-type" || name == "port-status" || name == "rx-voa-attenuation" || name == "tx-voa-attenuation" || name == "ampli-gain" || name == "ampli-tilt" || name == "rx-power-th-configurable" || name == "tx-power-th-configurable" || name == "rx-voa-attenuation-config-val" || name == "tx-voa-attenuation-config-val" || name == "ampli-control-mode-config-val" || name == "ampli-gain-range-config-val" || name == "ampli-gain-config-val" || name == "ampli-tilt-config-val" || name == "ampli-channel-power-config-val" || name == "channel-power-max-delta-config-val" || name == "ampli-gain-thr-deg-low-config-val" || name == "ampli-gain-thr-deg-high-config-val" || name == "osri-config-val" || name == "tx-config-val" || name == "rx-config-val" || name == "safety-control-mode-config-val" || name == "total-rx-power" || name == "total-tx-power" || name == "is-bo-configured" || name == "is-ext-param-valid" || name == "alarm-detected" || name == "rx-low-warning-threshold" || name == "rx-high-warning-threshold" || name == "tx-low-warning-threshold" || name == "tx-high-warning-threshold" || name == "lbc-th-high-warning-default" || name == "lbc-th-low-warning-default" || name == "temp-low-warning-threshold" || name == "temp-high-warning-threshold" || name == "volt-low-warning-threshold" || name == "volt-high-warning-threshold" || name == "ampli-gain-range" || name == "safety-control-mode" || name == "osri" || name == "description" || name == "is-optics-type-string-valid" || name == "optics-type-str" || name == "tx-enable" || name == "rx-enable" || name == "rx-low-threshold-current")
+    if(name == "network-srlg-info" || name == "optics-alarm-info" || name == "ots-alarm-info" || name == "transceiver-info" || name == "ext-param-val" || name == "ext-param-threshold-val" || name == "extended-alarm-alarm-info" || name == "lane-data" || name == "transport-admin-state" || name == "optics-present" || name == "optics-type" || name == "derived-optics-type" || name == "optics-module" || name == "dwdm-carrier-band" || name == "dwdm-carrier-channel" || name == "dwdm-carrier-frequency" || name == "dwdm-carrier-wavelength" || name == "grey-wavelength" || name == "rx-low-threshold" || name == "rx-high-threshold" || name == "lbc-high-threshold" || name == "tx-low-threshold" || name == "tx-high-threshold" || name == "lbc-th-high-default" || name == "lbc-th-low-default" || name == "temp-low-threshold" || name == "temp-high-threshold" || name == "volt-low-threshold" || name == "volt-high-threshold" || name == "cd" || name == "cd-min" || name == "cd-max" || name == "cd-low-threshold" || name == "cd-high-threshold" || name == "osnr-low-threshold" || name == "dgd-high-threshold" || name == "polarization-mode-dispersion" || name == "second-order-polarization-mode-dispersion" || name == "optical-signal-to-noise-ratio" || name == "polarization-dependent-loss" || name == "polarization-change-rate" || name == "differential-group-delay" || name == "phase-noise" || name == "pm-enable" || name == "laser-state" || name == "led-state" || name == "controller-state" || name == "form-factor" || name == "phy-type" || name == "cfg-tx-power" || name == "cfg-tx-power-configurable" || name == "temperature" || name == "voltage" || name == "display-volt-temp" || name == "cd-configurable" || name == "optics-fec" || name == "port-type" || name == "port-status" || name == "rx-voa-attenuation" || name == "tx-voa-attenuation" || name == "ampli-gain" || name == "ampli-tilt" || name == "rx-power-th-configurable" || name == "tx-power-th-configurable" || name == "rx-voa-attenuation-config-val" || name == "tx-voa-attenuation-config-val" || name == "ampli-control-mode-config-val" || name == "ampli-gain-range-config-val" || name == "ampli-gain-config-val" || name == "ampli-tilt-config-val" || name == "ampli-channel-power-config-val" || name == "channel-power-max-delta-config-val" || name == "ampli-gain-thr-deg-low-config-val" || name == "ampli-gain-thr-deg-high-config-val" || name == "osri-config-val" || name == "tx-config-val" || name == "rx-config-val" || name == "safety-control-mode-config-val" || name == "total-rx-power" || name == "total-tx-power" || name == "is-bo-configured" || name == "is-ext-param-valid" || name == "alarm-detected" || name == "rx-low-warning-threshold" || name == "rx-high-warning-threshold" || name == "tx-low-warning-threshold" || name == "tx-high-warning-threshold" || name == "lbc-th-high-warning-default" || name == "lbc-th-low-warning-default" || name == "temp-low-warning-threshold" || name == "temp-high-warning-threshold" || name == "volt-low-warning-threshold" || name == "volt-high-warning-threshold" || name == "description" || name == "ampli-gain-range" || name == "safety-control-mode" || name == "osri" || name == "tx-enable" || name == "rx-enable" || name == "is-optics-type-string-valid" || name == "optics-type-str" || name == "rx-low-threshold-current")
         return true;
     return false;
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgInfo()
+    :
+    network_srlg_array(this, {})
 {
 
-    yang_name = "network-srlg-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-srlg-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::~NetworkSrlgInfo()
@@ -2842,7 +2596,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::~NetworkSrlgIn
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_data() const
 {
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network_srlg_array.len(); index++)
     {
         if(network_srlg_array[index]->has_data())
             return true;
@@ -2852,7 +2607,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_data(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::has_operation() const
 {
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    for (std::size_t index=0; index<network_srlg_array.len(); index++)
     {
         if(network_srlg_array[index]->has_operation())
             return true;
@@ -2882,7 +2637,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::Network
     {
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray>();
         c->parent = this;
-        network_srlg_array.push_back(c);
+        network_srlg_array.append(c);
         return c;
     }
 
@@ -2894,7 +2649,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network_srlg_array)
+    for (auto c : network_srlg_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2926,7 +2681,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArr
     network_srlg{YType::uint32, "network-srlg"}
 {
 
-    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::~NetworkSrlgArray()
@@ -2935,6 +2690,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArr
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(leaf.is_set)
@@ -3022,53 +2778,53 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::NetworkSr
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::OpticsAlarmInfo()
     :
     high_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower>())
-	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower>())
-	,high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower>())
-	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower>())
-	,high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc>())
-	,low_temperature(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature>())
-	,high_temperature(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature>())
-	,low_voltage(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage>())
-	,high_voltage(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage>())
-	,high_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power>())
-	,high_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power>())
-	,high_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power>())
-	,high_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power>())
-	,low_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power>())
-	,low_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power>())
-	,low_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power>())
-	,low_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power>())
-	,high_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power>())
-	,high_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power>())
-	,high_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power>())
-	,high_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power>())
-	,low_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power>())
-	,low_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power>())
-	,low_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power>())
-	,low_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power>())
-	,high_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc>())
-	,high_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc>())
-	,high_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc>())
-	,high_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc>())
-	,low_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc>())
-	,low_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc>())
-	,low_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc>())
-	,low_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc>())
-	,rx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos>())
-	,tx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos>())
-	,rx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol>())
-	,tx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol>())
-	,tx_fault(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault>())
-	,hidgd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd>())
-	,oorcd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd>())
-	,osnr(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr>())
-	,wvlool(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>())
-	,mea(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea>())
-	,imp_removal(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval>())
-	,rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc>())
-	,amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow>())
-	,amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh>())
-	,txpwr_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch>())
+    , low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower>())
+    , high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower>())
+    , low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower>())
+    , high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc>())
+    , low_temperature(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature>())
+    , high_temperature(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature>())
+    , low_voltage(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage>())
+    , high_voltage(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage>())
+    , high_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power>())
+    , high_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power>())
+    , high_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power>())
+    , high_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power>())
+    , low_rx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power>())
+    , low_rx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power>())
+    , low_rx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power>())
+    , low_rx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power>())
+    , high_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power>())
+    , high_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power>())
+    , high_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power>())
+    , high_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power>())
+    , low_tx1_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power>())
+    , low_tx2_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power>())
+    , low_tx3_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power>())
+    , low_tx4_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power>())
+    , high_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc>())
+    , high_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc>())
+    , high_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc>())
+    , high_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc>())
+    , low_tx1lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc>())
+    , low_tx2lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc>())
+    , low_tx3lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc>())
+    , low_tx4lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc>())
+    , rx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos>())
+    , tx_los(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos>())
+    , rx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol>())
+    , tx_lol(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol>())
+    , tx_fault(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault>())
+    , hidgd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd>())
+    , oorcd(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd>())
+    , osnr(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr>())
+    , wvlool(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool>())
+    , mea(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea>())
+    , imp_removal(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval>())
+    , rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc>())
+    , amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow>())
+    , amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh>())
+    , txpwr_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch>())
 {
     high_rx_power->parent = this;
     low_rx_power->parent = this;
@@ -3119,7 +2875,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::OpticsAlarmInf
     amp_gain_deg_high->parent = this;
     txpwr_mismatch->parent = this;
 
-    yang_name = "optics-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::~OpticsAlarmInfo()
@@ -3128,6 +2884,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::~OpticsAlarmIn
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (high_rx_power !=  nullptr && high_rx_power->has_data())
 	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
 	|| (high_tx_power !=  nullptr && high_tx_power->has_data())
@@ -3478,7 +3235,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(high_tx1lbc == nullptr)
         {
-            high_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc>();
+            high_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc>();
         }
         return high_tx1lbc;
     }
@@ -3487,7 +3244,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(high_tx2lbc == nullptr)
         {
-            high_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc>();
+            high_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc>();
         }
         return high_tx2lbc;
     }
@@ -3496,7 +3253,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(high_tx3lbc == nullptr)
         {
-            high_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc>();
+            high_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc>();
         }
         return high_tx3lbc;
     }
@@ -3505,7 +3262,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(high_tx4lbc == nullptr)
         {
-            high_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc>();
+            high_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc>();
         }
         return high_tx4lbc;
     }
@@ -3514,7 +3271,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(low_tx1lbc == nullptr)
         {
-            low_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc>();
+            low_tx1lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc>();
         }
         return low_tx1lbc;
     }
@@ -3523,7 +3280,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(low_tx2lbc == nullptr)
         {
-            low_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc>();
+            low_tx2lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc>();
         }
         return low_tx2lbc;
     }
@@ -3532,7 +3289,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(low_tx3lbc == nullptr)
         {
-            low_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc>();
+            low_tx3lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc>();
         }
         return low_tx3lbc;
     }
@@ -3541,7 +3298,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsA
     {
         if(low_tx4lbc == nullptr)
         {
-            low_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc>();
+            low_tx4lbc = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc>();
         }
         return low_tx4lbc;
     }
@@ -3952,7 +3709,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::H
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-rx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-rx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::~HighRxPower()
@@ -3961,6 +3718,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4043,7 +3801,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::Lo
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::~LowRxPower()
@@ -4052,6 +3810,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::~L
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4134,7 +3893,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::H
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::~HighTxPower()
@@ -4143,6 +3902,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4225,7 +3985,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::Lo
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::~LowTxPower()
@@ -4234,6 +3994,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::~L
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4316,7 +4077,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::HighL
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::~HighLbc()
@@ -4325,6 +4086,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::~High
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighLbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4407,7 +4169,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-temperature"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-temperature"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature::~LowTemperature()
@@ -4416,6 +4178,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTemperature::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4498,7 +4261,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperatur
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-temperature"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-temperature"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature::~HighTemperature()
@@ -4507,6 +4270,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperatur
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTemperature::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4589,7 +4353,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::Lo
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-voltage"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-voltage"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::~LowVoltage()
@@ -4598,6 +4362,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::~L
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowVoltage::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4680,7 +4445,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::H
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-voltage"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-voltage"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::~HighVoltage()
@@ -4689,6 +4454,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighVoltage::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4771,7 +4537,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-rx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-rx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::~HighRx1Power()
@@ -4780,6 +4546,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx1Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4862,7 +4629,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-rx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-rx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::~HighRx2Power()
@@ -4871,6 +4638,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx2Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -4953,7 +4721,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-rx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-rx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::~HighRx3Power()
@@ -4962,6 +4730,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx3Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5044,7 +4813,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-rx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-rx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::~HighRx4Power()
@@ -5053,6 +4822,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighRx4Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5135,7 +4905,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::~LowRx1Power()
@@ -5144,6 +4914,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx1Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5226,7 +4997,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::~LowRx2Power()
@@ -5235,6 +5006,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx2Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5317,7 +5089,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::~LowRx3Power()
@@ -5326,6 +5098,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx3Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5408,7 +5181,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::~LowRx4Power()
@@ -5417,6 +5190,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowRx4Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5499,7 +5273,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::~HighTx1Power()
@@ -5508,6 +5282,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5590,7 +5365,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::~HighTx2Power()
@@ -5599,6 +5374,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5681,7 +5457,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::~HighTx3Power()
@@ -5690,6 +5466,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5772,7 +5549,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::~HighTx4Power()
@@ -5781,6 +5558,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5863,7 +5641,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx1-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::~LowTx1Power()
@@ -5872,6 +5650,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -5954,7 +5733,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx2-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::~LowTx2Power()
@@ -5963,6 +5742,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -6045,7 +5825,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx3-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::~LowTx3Power()
@@ -6054,6 +5834,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -6136,7 +5917,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::L
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx4-power"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::~LowTx4Power()
@@ -6145,6 +5926,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Power::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -6221,40 +6003,41 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Pow
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::HighTx1Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::HighTx1lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx1lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx1lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::~HighTx1Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::~HighTx1lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high-tx1lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6265,19 +6048,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6293,7 +6076,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lb
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6305,47 +6088,48 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lb
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx1lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::HighTx2Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::HighTx2lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx2lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx2lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::~HighTx2Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::~HighTx2lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high-tx2lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6356,19 +6140,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6384,7 +6168,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lb
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6396,47 +6180,48 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lb
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx2lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::HighTx3Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::HighTx3lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx3lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx3lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::~HighTx3Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::~HighTx3lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high-tx3lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6447,19 +6232,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6475,7 +6260,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lb
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6487,47 +6272,48 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lb
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx3lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::HighTx4Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::HighTx4lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx4lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx4lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::~HighTx4Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::~HighTx4lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "high-tx4lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6538,19 +6324,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6566,7 +6352,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lb
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6578,47 +6364,48 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lb
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::HighTx4lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::LowTx1Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::LowTx1lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx1lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx1lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::~LowTx1Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::~LowTx1lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "low-tx1lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6629,19 +6416,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6657,7 +6444,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6669,47 +6456,48 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx1lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::LowTx2Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::LowTx2lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx2lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx2lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::~LowTx2Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::~LowTx2lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "low-tx2lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6720,19 +6508,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6748,7 +6536,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6760,47 +6548,48 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx2lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::LowTx3Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::LowTx3lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx3lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx3lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::~LowTx3Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::~LowTx3lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "low-tx3lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6811,19 +6600,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6839,7 +6628,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6851,47 +6640,48 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx3lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
     return false;
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::LowTx4Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::LowTx4lbc()
     :
     is_detected{YType::boolean, "is-detected"},
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx4lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx4lbc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::~LowTx4Lbc()
+OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::~LowTx4lbc()
 {
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_data() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_operation() const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(is_detected.yfilter)
 	|| ydk::is_set(counter.yfilter);
 }
 
-std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_segment_path() const
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "low-tx4lbc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6902,19 +6692,19 @@ std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPo
 
 }
 
-std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "is-detected")
     {
@@ -6930,7 +6720,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc
     }
 }
 
-void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::set_filter(const std::string & value_path, YFilter yfilter)
+void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "is-detected")
     {
@@ -6942,7 +6732,7 @@ void OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc
     }
 }
 
-bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4Lbc::has_leaf_or_child_of_name(const std::string & name) const
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::LowTx4lbc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "is-detected" || name == "counter")
         return true;
@@ -6955,7 +6745,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::RxLos()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "rx-los"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-los"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::~RxLos()
@@ -6964,6 +6754,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::~RxLos(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLos::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7046,7 +6837,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::TxLos()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "tx-los"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-los"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::~TxLos()
@@ -7055,6 +6846,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::~TxLos(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLos::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7137,7 +6929,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::RxLol()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "rx-lol"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-lol"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::~RxLol()
@@ -7146,6 +6938,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::~RxLol(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLol::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7228,7 +7021,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::TxLol()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "tx-lol"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-lol"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::~TxLol()
@@ -7237,6 +7030,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::~TxLol(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxLol::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7319,7 +7113,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::TxFau
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "tx-fault"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tx-fault"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::~TxFault()
@@ -7328,6 +7122,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::~TxFa
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxFault::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7410,7 +7205,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::Hidgd()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hidgd"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hidgd"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::~Hidgd()
@@ -7419,6 +7214,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::~Hidgd(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Hidgd::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7501,7 +7297,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::Oorcd()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "oorcd"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "oorcd"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::~Oorcd()
@@ -7510,6 +7306,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::~Oorcd(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Oorcd::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7592,7 +7389,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::Osnr()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "osnr"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "osnr"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::~Osnr()
@@ -7601,6 +7398,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::~Osnr()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Osnr::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7683,7 +7481,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::Wvlool
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "wvlool"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wvlool"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::~Wvlool()
@@ -7692,6 +7490,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::~Wvloo
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Wvlool::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7774,7 +7573,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::Mea()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "mea"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mea"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::~Mea()
@@ -7783,6 +7582,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::~Mea()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::Mea::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7865,7 +7665,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::Im
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "imp-removal"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "imp-removal"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::~ImpRemoval()
@@ -7874,6 +7674,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::~I
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::ImpRemoval::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -7956,7 +7757,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::RxLoc()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "rx-loc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-loc"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::~RxLoc()
@@ -7965,6 +7766,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::~RxLoc(
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::RxLoc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8047,7 +7849,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "amp-gain-deg-low"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "amp-gain-deg-low"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::~AmpGainDegLow()
@@ -8056,6 +7858,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegLow::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8138,7 +7941,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "amp-gain-deg-high"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "amp-gain-deg-high"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::~AmpGainDegHigh()
@@ -8147,6 +7950,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::AmpGainDegHigh::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8229,7 +8033,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "txpwr-mismatch"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "txpwr-mismatch"; yang_parent_name = "optics-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::~TxpwrMismatch()
@@ -8238,6 +8042,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMismatch::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8317,17 +8122,17 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo::TxpwrMism
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::OtsAlarmInfo()
     :
     low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower>())
-	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower>())
-	,rx_los_p(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP>())
-	,rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc>())
-	,amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow>())
-	,amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh>())
-	,auto_laser_shut(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut>())
-	,auto_power_red(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed>())
-	,auto_ampli_ctrl_disabled(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled>())
-	,auto_ampli_ctrl_config_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch>())
-	,switch_to_protect(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>())
-	,auto_ampli_ctrl_running(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning>())
+    , low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower>())
+    , rx_los_p(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP>())
+    , rx_loc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc>())
+    , amp_gain_deg_low(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow>())
+    , amp_gain_deg_high(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh>())
+    , auto_laser_shut(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut>())
+    , auto_power_red(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed>())
+    , auto_ampli_ctrl_disabled(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled>())
+    , auto_ampli_ctrl_config_mismatch(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch>())
+    , switch_to_protect(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect>())
+    , auto_ampli_ctrl_running(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning>())
 {
     low_tx_power->parent = this;
     low_rx_power->parent = this;
@@ -8342,7 +8147,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::OtsAlarmInfo()
     switch_to_protect->parent = this;
     auto_ampli_ctrl_running->parent = this;
 
-    yang_name = "ots-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ots-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::~OtsAlarmInfo()
@@ -8351,6 +8156,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::~OtsAlarmInfo()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (low_tx_power !=  nullptr && low_tx_power->has_data())
 	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
 	|| (rx_los_p !=  nullptr && rx_los_p->has_data())
@@ -8599,7 +8405,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::LowTx
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx-power"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx-power"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::~LowTxPower()
@@ -8608,6 +8414,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::~LowT
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowTxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8690,7 +8497,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::LowRx
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx-power"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx-power"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::~LowRxPower()
@@ -8699,6 +8506,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::~LowR
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::LowRxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8781,7 +8589,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::RxLosP()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "rx-los-p"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-los-p"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::~RxLosP()
@@ -8790,6 +8598,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::~RxLosP()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLosP::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8872,7 +8681,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::RxLoc()
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "rx-loc"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rx-loc"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::~RxLoc()
@@ -8881,6 +8690,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::~RxLoc()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::RxLoc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -8963,7 +8773,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::Am
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "amp-gain-deg-low"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "amp-gain-deg-low"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::~AmpGainDegLow()
@@ -8972,6 +8782,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::~A
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegLow::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9054,7 +8865,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::A
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "amp-gain-deg-high"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "amp-gain-deg-high"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::~AmpGainDegHigh()
@@ -9063,6 +8874,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::~
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AmpGainDegHigh::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9145,7 +8957,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::Au
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "auto-laser-shut"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-laser-shut"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::~AutoLaserShut()
@@ -9154,6 +8966,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::~A
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoLaserShut::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9236,7 +9049,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::Aut
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "auto-power-red"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-power-red"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::~AutoPowerRed()
@@ -9245,6 +9058,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::~Au
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoPowerRed::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9327,7 +9141,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisa
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "auto-ampli-ctrl-disabled"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-ampli-ctrl-disabled"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::~AutoAmpliCtrlDisabled()
@@ -9336,6 +9150,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisa
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlDisabled::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9418,7 +9233,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConf
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "auto-ampli-ctrl-config-mismatch"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-ampli-ctrl-config-mismatch"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::~AutoAmpliCtrlConfigMismatch()
@@ -9427,6 +9242,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConf
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlConfigMismatch::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9509,7 +9325,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "switch-to-protect"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-to-protect"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::~SwitchToProtect()
@@ -9518,6 +9334,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::SwitchToProtect::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9600,7 +9417,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunn
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "auto-ampli-ctrl-running"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-ampli-ctrl-running"; yang_parent_name = "ots-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::~AutoAmpliCtrlRunning()
@@ -9609,6 +9426,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunn
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo::AutoAmpliCtrlRunning::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -9705,7 +9523,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::TransceiverInf
     internal_temperature{YType::int32, "internal-temperature"}
 {
 
-    yang_name = "transceiver-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transceiver-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::~TransceiverInfo()
@@ -9714,6 +9532,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::~TransceiverIn
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::TransceiverInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return vendor_info.is_set
 	|| adapter_vendor_info.is_set
 	|| date.is_set
@@ -9998,7 +9817,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::ExtParamVal()
     uncorrected_ber_instantaneous{YType::int64, "uncorrected-ber-instantaneous"}
 {
 
-    yang_name = "ext-param-val"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-param-val"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::~ExtParamVal()
@@ -10007,6 +9826,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::~ExtParamVal()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamVal::has_data() const
 {
+    if (is_presence_container) return true;
     return snr_lane1.is_set
 	|| snr_lane2.is_set
 	|| isi_correction_lane1.is_set
@@ -10411,7 +10231,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::ExtParamT
     uncorrected_ber_instantaneous_warn_low_threshold{YType::int64, "uncorrected-ber-instantaneous-warn-low-threshold"}
 {
 
-    yang_name = "ext-param-threshold-val"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-param-threshold-val"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::~ExtParamThresholdVal()
@@ -10420,6 +10240,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::~ExtParam
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::has_data() const
 {
+    if (is_presence_container) return true;
     return snr_alarm_high_threshold.is_set
 	|| snr_alarm_low_threshold.is_set
 	|| snr_warn_high_threshold.is_set
@@ -11305,35 +11126,35 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtParamThresholdVal::has_
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::ExtendedAlarmAlarmInfo()
     :
     lo_snr(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr>())
-	,hi_snr1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1>())
-	,lo_snr1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1>())
-	,hi_snr2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2>())
-	,lo_isi1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1>())
-	,hi_isi1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1>())
-	,lo_isi2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2>())
-	,hi_isi2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2>())
-	,lo_pam1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1>())
-	,hi_pam1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1>())
-	,lo_pam2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2>())
-	,hi_pam2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2>())
-	,lo_tec1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1>())
-	,hi_tec1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1>())
-	,lo_tec2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2>())
-	,hi_tec2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2>())
-	,lo_laser_freq1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1>())
-	,hi_laser_freq1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1>())
-	,lo_laser_freq2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2>())
-	,hi_laser_freq2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2>())
-	,hi_pre_fecber_cur_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc>())
-	,hi_pre_fecber_min(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin>())
-	,hi_pre_fecber_max(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax>())
-	,hi_pre_fecber_prior_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc>())
-	,hi_pre_fecber_cur(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur>())
-	,hi_uncorrected_ber_cur_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc>())
-	,hi_uncorrected_ber_min(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin>())
-	,hi_uncorrected_ber_max(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax>())
-	,hi_uncorrected_ber_prior_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc>())
-	,hi_uncorrected_ber_cur(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur>())
+    , hi_snr1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1>())
+    , lo_snr1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1>())
+    , hi_snr2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2>())
+    , lo_isi1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1>())
+    , hi_isi1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1>())
+    , lo_isi2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2>())
+    , hi_isi2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2>())
+    , lo_pam1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1>())
+    , hi_pam1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1>())
+    , lo_pam2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2>())
+    , hi_pam2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2>())
+    , lo_tec1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1>())
+    , hi_tec1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1>())
+    , lo_tec2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2>())
+    , hi_tec2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2>())
+    , lo_laser_freq1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1>())
+    , hi_laser_freq1(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1>())
+    , lo_laser_freq2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2>())
+    , hi_laser_freq2(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2>())
+    , hi_pre_fecber_cur_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc>())
+    , hi_pre_fecber_min(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin>())
+    , hi_pre_fecber_max(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax>())
+    , hi_pre_fecber_prior_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc>())
+    , hi_pre_fecber_cur(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur>())
+    , hi_uncorrected_ber_cur_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc>())
+    , hi_uncorrected_ber_min(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin>())
+    , hi_uncorrected_ber_max(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax>())
+    , hi_uncorrected_ber_prior_acc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc>())
+    , hi_uncorrected_ber_cur(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur>())
 {
     lo_snr->parent = this;
     hi_snr1->parent = this;
@@ -11366,7 +11187,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::Extende
     hi_uncorrected_ber_prior_acc->parent = this;
     hi_uncorrected_ber_cur->parent = this;
 
-    yang_name = "extended-alarm-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "extended-alarm-alarm-info"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::~ExtendedAlarmAlarmInfo()
@@ -11375,6 +11196,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::~Extend
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (lo_snr !=  nullptr && lo_snr->has_data())
 	|| (hi_snr1 !=  nullptr && hi_snr1->has_data())
 	|| (lo_snr1 !=  nullptr && lo_snr1->has_data())
@@ -11911,7 +11733,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-snr"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-snr"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::~LoSnr()
@@ -11920,6 +11742,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12002,7 +11825,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-snr1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-snr1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1::~HiSnr1()
@@ -12011,6 +11834,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12093,7 +11917,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-snr1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-snr1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1::~LoSnr1()
@@ -12102,6 +11926,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoSnr1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12184,7 +12009,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-snr2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-snr2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2::~HiSnr2()
@@ -12193,6 +12018,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiSnr2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12275,7 +12101,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-isi1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-isi1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1::~LoIsi1()
@@ -12284,6 +12110,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12366,7 +12193,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-isi1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-isi1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1::~HiIsi1()
@@ -12375,6 +12202,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12457,7 +12285,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-isi2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-isi2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2::~LoIsi2()
@@ -12466,6 +12294,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoIsi2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12548,7 +12377,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-isi2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-isi2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2::~HiIsi2()
@@ -12557,6 +12386,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiIsi2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12639,7 +12469,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-pam1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-pam1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1::~LoPam1()
@@ -12648,6 +12478,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12730,7 +12561,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-pam1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-pam1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1::~HiPam1()
@@ -12739,6 +12570,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12821,7 +12653,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-pam2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-pam2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2::~LoPam2()
@@ -12830,6 +12662,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoPam2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -12912,7 +12745,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-pam2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-pam2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2::~HiPam2()
@@ -12921,6 +12754,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPam2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13003,7 +12837,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-tec1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-tec1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1::~LoTec1()
@@ -13012,6 +12846,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13094,7 +12929,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-tec1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-tec1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1::~HiTec1()
@@ -13103,6 +12938,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13185,7 +13021,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-tec2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-tec2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2::~LoTec2()
@@ -13194,6 +13030,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoTec2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13276,7 +13113,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2:
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-tec2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-tec2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2::~HiTec2()
@@ -13285,6 +13122,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2:
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiTec2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13367,7 +13205,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaser
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-laser-freq1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-laser-freq1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1::~LoLaserFreq1()
@@ -13376,6 +13214,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaser
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13458,7 +13297,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaser
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-laser-freq1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-laser-freq1"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1::~HiLaserFreq1()
@@ -13467,6 +13306,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaser
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq1::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13549,7 +13389,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaser
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "lo-laser-freq2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lo-laser-freq2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2::~LoLaserFreq2()
@@ -13558,6 +13398,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaser
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::LoLaserFreq2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13640,7 +13481,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaser
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-laser-freq2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-laser-freq2"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2::~HiLaserFreq2()
@@ -13649,6 +13490,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaser
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiLaserFreq2::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13731,7 +13573,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-pre-fecber-cur-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-pre-fecber-cur-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc::~HiPreFecberCurAcc()
@@ -13740,6 +13582,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCurAcc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13822,7 +13665,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-pre-fecber-min"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-pre-fecber-min"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin::~HiPreFecberMin()
@@ -13831,6 +13674,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMin::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -13913,7 +13757,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-pre-fecber-max"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-pre-fecber-max"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax::~HiPreFecberMax()
@@ -13922,6 +13766,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberMax::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14004,7 +13849,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-pre-fecber-prior-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-pre-fecber-prior-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc::~HiPreFecberPriorAcc()
@@ -14013,6 +13858,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberPriorAcc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14095,7 +13941,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-pre-fecber-cur"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-pre-fecber-cur"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur::~HiPreFecberCur()
@@ -14104,6 +13950,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFe
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiPreFecberCur::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14186,7 +14033,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-uncorrected-ber-cur-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-uncorrected-ber-cur-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc::~HiUncorrectedBerCurAcc()
@@ -14195,6 +14042,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCurAcc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14277,7 +14125,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-uncorrected-ber-min"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-uncorrected-ber-min"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin::~HiUncorrectedBerMin()
@@ -14286,6 +14134,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMin::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14368,7 +14217,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-uncorrected-ber-max"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-uncorrected-ber-max"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax::~HiUncorrectedBerMax()
@@ -14377,6 +14226,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerMax::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14459,7 +14309,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-uncorrected-ber-prior-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-uncorrected-ber-prior-acc"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc::~HiUncorrectedBerPriorAcc()
@@ -14468,6 +14318,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerPriorAcc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14550,7 +14401,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "hi-uncorrected-ber-cur"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hi-uncorrected-ber-cur"; yang_parent_name = "extended-alarm-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur::~HiUncorrectedBerCur()
@@ -14559,6 +14410,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncor
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::ExtendedAlarmAlarmInfo::HiUncorrectedBerCur::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -14646,12 +14498,12 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneData()
     transmit_signal_power{YType::int32, "transmit-signal-power"},
     output_frequency{YType::int32, "output-frequency"},
     frequency_offset{YType::int32, "frequency-offset"}
-    	,
+        ,
     lane_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo>())
 {
     lane_alarm_info->parent = this;
 
-    yang_name = "lane-data"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lane-data"; yang_parent_name = "optics-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::~LaneData()
@@ -14660,6 +14512,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::~LaneData()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::has_data() const
 {
+    if (is_presence_container) return true;
     return lane_index.is_set
 	|| laser_bias_current_percent.is_set
 	|| laser_bias_current_milli_amps.is_set
@@ -14846,10 +14699,10 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::has_leaf_or_chil
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LaneAlarmInfo()
     :
     high_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower>())
-	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower>())
-	,high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower>())
-	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower>())
-	,high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc>())
+    , low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower>())
+    , high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower>())
+    , low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower>())
+    , high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc>())
 {
     high_rx_power->parent = this;
     low_rx_power->parent = this;
@@ -14857,7 +14710,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LaneAl
     low_tx_power->parent = this;
     high_lbc->parent = this;
 
-    yang_name = "lane-alarm-info"; yang_parent_name = "lane-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lane-alarm-info"; yang_parent_name = "lane-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::~LaneAlarmInfo()
@@ -14866,6 +14719,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::~LaneA
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (high_rx_power !=  nullptr && high_rx_power->has_data())
 	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
 	|| (high_tx_power !=  nullptr && high_tx_power->has_data())
@@ -15002,7 +14856,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRx
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::~HighRxPower()
@@ -15011,6 +14865,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRx
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighRxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -15093,7 +14948,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxP
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::~LowRxPower()
@@ -15102,6 +14957,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxP
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowRxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -15184,7 +15040,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTx
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::~HighTxPower()
@@ -15193,6 +15049,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTx
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighTxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -15275,7 +15132,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxP
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::~LowTxPower()
@@ -15284,6 +15141,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxP
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::LowTxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -15366,7 +15224,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLb
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::~HighLbc()
@@ -15375,6 +15233,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLb
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::HighLbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -15452,9 +15311,11 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::LaneAlarmInfo::H
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLanes()
+    :
+    optics_lane(this, {"number"})
 {
 
-    yang_name = "optics-lanes"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-lanes"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::~OpticsLanes()
@@ -15463,7 +15324,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::~OpticsLanes()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::has_data() const
 {
-    for (std::size_t index=0; index<optics_lane.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_lane.len(); index++)
     {
         if(optics_lane[index]->has_data())
             return true;
@@ -15473,7 +15335,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::has_data() const
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::has_operation() const
 {
-    for (std::size_t index=0; index<optics_lane.size(); index++)
+    for (std::size_t index=0; index<optics_lane.len(); index++)
     {
         if(optics_lane[index]->has_operation())
             return true;
@@ -15503,7 +15365,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::get_ch
     {
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane>();
         c->parent = this;
-        optics_lane.push_back(c);
+        optics_lane.append(c);
         return c;
     }
 
@@ -15515,7 +15377,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optics_lane)
+    for (auto c : optics_lane.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15543,7 +15405,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::has_leaf_or_child_of_name
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::OpticsLane()
     :
-    number{YType::int32, "number"},
+    number{YType::uint32, "number"},
     lane_index{YType::uint32, "lane-index"},
     laser_bias_current_percent{YType::uint32, "laser-bias-current-percent"},
     laser_bias_current_milli_amps{YType::uint32, "laser-bias-current-milli-amps"},
@@ -15553,12 +15415,12 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::OpticsLane()
     transmit_signal_power{YType::int32, "transmit-signal-power"},
     output_frequency{YType::int32, "output-frequency"},
     frequency_offset{YType::int32, "frequency-offset"}
-    	,
+        ,
     lane_alarm_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo>())
 {
     lane_alarm_info->parent = this;
 
-    yang_name = "optics-lane"; yang_parent_name = "optics-lanes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-lane"; yang_parent_name = "optics-lanes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::~OpticsLane()
@@ -15567,6 +15429,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::~OpticsLane()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| lane_index.is_set
 	|| laser_bias_current_percent.is_set
@@ -15599,7 +15462,8 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::has_operation
 std::string OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optics-lane" <<"[number='" <<number <<"']";
+    path_buffer << "optics-lane";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -15766,10 +15630,10 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::has_leaf_or_c
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LaneAlarmInfo()
     :
     high_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower>())
-	,low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower>())
-	,high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower>())
-	,low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower>())
-	,high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc>())
+    , low_rx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower>())
+    , high_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower>())
+    , low_tx_power(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower>())
+    , high_lbc(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc>())
 {
     high_rx_power->parent = this;
     low_rx_power->parent = this;
@@ -15777,7 +15641,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Lan
     low_tx_power->parent = this;
     high_lbc->parent = this;
 
-    yang_name = "lane-alarm-info"; yang_parent_name = "optics-lane"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lane-alarm-info"; yang_parent_name = "optics-lane"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::~LaneAlarmInfo()
@@ -15786,6 +15650,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::~La
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (high_rx_power !=  nullptr && high_rx_power->has_data())
 	|| (low_rx_power !=  nullptr && low_rx_power->has_data())
 	|| (high_tx_power !=  nullptr && high_tx_power->has_data())
@@ -15922,7 +15787,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Hig
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::~HighRxPower()
@@ -15931,6 +15796,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Hig
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighRxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -16013,7 +15879,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Low
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-rx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::~LowRxPower()
@@ -16022,6 +15888,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Low
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowRxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -16104,7 +15971,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Hig
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::~HighTxPower()
@@ -16113,6 +15980,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Hig
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighTxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -16195,7 +16063,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Low
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "low-tx-power"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::~LowTxPower()
@@ -16204,6 +16072,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Low
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::LowTxPower::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -16286,7 +16155,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Hig
     counter{YType::uint32, "counter"}
 {
 
-    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "high-lbc"; yang_parent_name = "lane-alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::~HighLbc()
@@ -16295,6 +16164,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::Hig
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo::HighLbc::has_data() const
 {
+    if (is_presence_container) return true;
     return is_detected.is_set
 	|| counter.is_set;
 }
@@ -16371,16 +16241,271 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsLanes::OpticsLane::LaneAlarmInfo
     return false;
 }
 
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::OpticsDwdmCarrrierChannelMapFlexi()
+    :
+    dwdm_carrier_band{YType::enumeration, "dwdm-carrier-band"},
+    dwdm_carrier_min{YType::uint32, "dwdm-carrier-min"},
+    dwdm_carrier_max{YType::uint32, "dwdm-carrier-max"}
+        ,
+    dwdm_carrier_map_info(this, {})
+{
+
+    yang_name = "optics-dwdm-carrrier-channel-map-flexi"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::~OpticsDwdmCarrrierChannelMapFlexi()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dwdm_carrier_map_info.len(); index++)
+    {
+        if(dwdm_carrier_map_info[index]->has_data())
+            return true;
+    }
+    return dwdm_carrier_band.is_set
+	|| dwdm_carrier_min.is_set
+	|| dwdm_carrier_max.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::has_operation() const
+{
+    for (std::size_t index=0; index<dwdm_carrier_map_info.len(); index++)
+    {
+        if(dwdm_carrier_map_info[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(dwdm_carrier_band.yfilter)
+	|| ydk::is_set(dwdm_carrier_min.yfilter)
+	|| ydk::is_set(dwdm_carrier_max.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-dwdm-carrrier-channel-map-flexi";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dwdm_carrier_band.is_set || is_set(dwdm_carrier_band.yfilter)) leaf_name_data.push_back(dwdm_carrier_band.get_name_leafdata());
+    if (dwdm_carrier_min.is_set || is_set(dwdm_carrier_min.yfilter)) leaf_name_data.push_back(dwdm_carrier_min.get_name_leafdata());
+    if (dwdm_carrier_max.is_set || is_set(dwdm_carrier_max.yfilter)) leaf_name_data.push_back(dwdm_carrier_max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dwdm-carrier-map-info")
+    {
+        auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo>();
+        c->parent = this;
+        dwdm_carrier_map_info.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : dwdm_carrier_map_info.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dwdm-carrier-band")
+    {
+        dwdm_carrier_band = value;
+        dwdm_carrier_band.value_namespace = name_space;
+        dwdm_carrier_band.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dwdm-carrier-min")
+    {
+        dwdm_carrier_min = value;
+        dwdm_carrier_min.value_namespace = name_space;
+        dwdm_carrier_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dwdm-carrier-max")
+    {
+        dwdm_carrier_max = value;
+        dwdm_carrier_max.value_namespace = name_space;
+        dwdm_carrier_max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dwdm-carrier-band")
+    {
+        dwdm_carrier_band.yfilter = yfilter;
+    }
+    if(value_path == "dwdm-carrier-min")
+    {
+        dwdm_carrier_min.yfilter = yfilter;
+    }
+    if(value_path == "dwdm-carrier-max")
+    {
+        dwdm_carrier_max.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dwdm-carrier-map-info" || name == "dwdm-carrier-band" || name == "dwdm-carrier-min" || name == "dwdm-carrier-max")
+        return true;
+    return false;
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::DwdmCarrierMapInfo()
+    :
+    itu_chan_num{YType::uint32, "itu-chan-num"},
+    g694_chan_num{YType::int32, "g694-chan-num"},
+    frequency{YType::str, "frequency"},
+    wavelength{YType::str, "wavelength"}
+{
+
+    yang_name = "dwdm-carrier-map-info"; yang_parent_name = "optics-dwdm-carrrier-channel-map-flexi"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::~DwdmCarrierMapInfo()
+{
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return itu_chan_num.is_set
+	|| g694_chan_num.is_set
+	|| frequency.is_set
+	|| wavelength.is_set;
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(itu_chan_num.yfilter)
+	|| ydk::is_set(g694_chan_num.yfilter)
+	|| ydk::is_set(frequency.yfilter)
+	|| ydk::is_set(wavelength.yfilter);
+}
+
+std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dwdm-carrier-map-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (itu_chan_num.is_set || is_set(itu_chan_num.yfilter)) leaf_name_data.push_back(itu_chan_num.get_name_leafdata());
+    if (g694_chan_num.is_set || is_set(g694_chan_num.yfilter)) leaf_name_data.push_back(g694_chan_num.get_name_leafdata());
+    if (frequency.is_set || is_set(frequency.yfilter)) leaf_name_data.push_back(frequency.get_name_leafdata());
+    if (wavelength.is_set || is_set(wavelength.yfilter)) leaf_name_data.push_back(wavelength.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "itu-chan-num")
+    {
+        itu_chan_num = value;
+        itu_chan_num.value_namespace = name_space;
+        itu_chan_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "g694-chan-num")
+    {
+        g694_chan_num = value;
+        g694_chan_num.value_namespace = name_space;
+        g694_chan_num.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "frequency")
+    {
+        frequency = value;
+        frequency.value_namespace = name_space;
+        frequency.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "wavelength")
+    {
+        wavelength = value;
+        wavelength.value_namespace = name_space;
+        wavelength.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "itu-chan-num")
+    {
+        itu_chan_num.yfilter = yfilter;
+    }
+    if(value_path == "g694-chan-num")
+    {
+        g694_chan_num.yfilter = yfilter;
+    }
+    if(value_path == "frequency")
+    {
+        frequency.yfilter = yfilter;
+    }
+    if(value_path == "wavelength")
+    {
+        wavelength.yfilter = yfilter;
+    }
+}
+
+bool OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrrierChannelMapFlexi::DwdmCarrierMapInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "itu-chan-num" || name == "g694-chan-num" || name == "frequency" || name == "wavelength")
+        return true;
+    return false;
+}
+
 OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::OpticsDbInfo()
     :
     transport_admin_state{YType::enumeration, "transport-admin-state"},
     controller_state{YType::enumeration, "controller-state"}
-    	,
+        ,
     network_srlg_info(std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo>())
 {
     network_srlg_info->parent = this;
 
-    yang_name = "optics-db-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optics-db-info"; yang_parent_name = "optics-port"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::~OpticsDbInfo()
@@ -16389,6 +16514,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::~OpticsDbInfo()
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return transport_admin_state.is_set
 	|| controller_state.is_set
 	|| (network_srlg_info !=  nullptr && network_srlg_info->has_data());
@@ -16482,9 +16608,11 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::has_leaf_or_child_of_nam
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgInfo()
+    :
+    network_srlg_array(this, {})
 {
 
-    yang_name = "network-srlg-info"; yang_parent_name = "optics-db-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-srlg-info"; yang_parent_name = "optics-db-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::~NetworkSrlgInfo()
@@ -16493,7 +16621,8 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::~NetworkSrlg
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_data() const
 {
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network_srlg_array.len(); index++)
     {
         if(network_srlg_array[index]->has_data())
             return true;
@@ -16503,7 +16632,7 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_dat
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::has_operation() const
 {
-    for (std::size_t index=0; index<network_srlg_array.size(); index++)
+    for (std::size_t index=0; index<network_srlg_array.len(); index++)
     {
         if(network_srlg_array[index]->has_operation())
             return true;
@@ -16533,7 +16662,7 @@ std::shared_ptr<Entity> OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::Netwo
     {
         auto c = std::make_shared<OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray>();
         c->parent = this;
-        network_srlg_array.push_back(c);
+        network_srlg_array.append(c);
         return c;
     }
 
@@ -16545,7 +16674,7 @@ std::map<std::string, std::shared_ptr<Entity>> OpticsOper::OpticsPorts::OpticsPo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network_srlg_array)
+    for (auto c : network_srlg_array.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16577,7 +16706,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgA
     network_srlg{YType::uint32, "network-srlg"}
 {
 
-    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-srlg-array"; yang_parent_name = "network-srlg-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::~NetworkSrlgArray()
@@ -16586,6 +16715,7 @@ OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgA
 
 bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : network_srlg.getYLeafs())
     {
         if(leaf.is_set)
@@ -16670,6 +16800,13 @@ bool OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::Network
     return false;
 }
 
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_invalid {0, "optics-amplifier-gain-range-invalid"};
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
+const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
+
+const Enum::YLeaf OpticsAmplifierControlMode::automatic {1, "automatic"};
+const Enum::YLeaf OpticsAmplifierControlMode::manual {2, "manual"};
+
 const Enum::YLeaf EthernetPmd::optics_eth_not_set {0, "optics-eth-not-set"};
 const Enum::YLeaf EthernetPmd::optics_eth_10gbase_lrm {1, "optics-eth-10gbase-lrm"};
 const Enum::YLeaf EthernetPmd::optics_eth_10gbase_lr {2, "optics-eth-10gbase-lr"};
@@ -16701,17 +16838,11 @@ const Enum::YLeaf EthernetPmd::optics_eth_100gbase_al {27, "optics-eth-100gbase-
 const Enum::YLeaf EthernetPmd::optics_eth_100gbase_pl {28, "optics-eth-100gbase-pl"};
 const Enum::YLeaf EthernetPmd::optics_eth_undefined {29, "optics-eth-undefined"};
 
-const Enum::YLeaf SonetApplicationCode::optics_sonet_not_set {0, "optics-sonet-not-set"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
-const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
-const Enum::YLeaf SonetApplicationCode::optics_sonet_undefined {4, "optics-sonet-undefined"};
-
-const Enum::YLeaf OtnApplicationCode::optics_not_set {0, "optics-not-set"};
-const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
-const Enum::YLeaf OtnApplicationCode::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
-const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
-const Enum::YLeaf OtnApplicationCode::optics_undefined {4, "optics-undefined"};
+const Enum::YLeaf OpticsWaveBand::c_band {0, "c-band"};
+const Enum::YLeaf OpticsWaveBand::l_band {1, "l-band"};
+const Enum::YLeaf OpticsWaveBand::c_band_odd {2, "c-band-odd"};
+const Enum::YLeaf OpticsWaveBand::c_band_even {3, "c-band-even"};
+const Enum::YLeaf OpticsWaveBand::invalid_band {4, "invalid-band"};
 
 const Enum::YLeaf FiberConnector::optics_connect_or_not_set {0, "optics-connect-or-not-set"};
 const Enum::YLeaf FiberConnector::optics_sc_connect_or {1, "optics-sc-connect-or"};
@@ -16719,26 +16850,41 @@ const Enum::YLeaf FiberConnector::optics_lc_connect_or {2, "optics-lc-connect-or
 const Enum::YLeaf FiberConnector::optics_mpo_connect_or {3, "optics-mpo-connect-or"};
 const Enum::YLeaf FiberConnector::optics_undefined_connect_or {4, "optics-undefined-connect-or"};
 
+const Enum::YLeaf OpticsFormFactor::not_set {0, "not-set"};
+const Enum::YLeaf OpticsFormFactor::invalid {1, "invalid"};
+const Enum::YLeaf OpticsFormFactor::cpak {2, "cpak"};
+const Enum::YLeaf OpticsFormFactor::cxp {3, "cxp"};
+const Enum::YLeaf OpticsFormFactor::sfp_plus {4, "sfp-plus"};
+const Enum::YLeaf OpticsFormFactor::qsfp {5, "qsfp"};
+const Enum::YLeaf OpticsFormFactor::qsfp_plus {6, "qsfp-plus"};
+const Enum::YLeaf OpticsFormFactor::qsfp28 {7, "qsfp28"};
+const Enum::YLeaf OpticsFormFactor::sfp {8, "sfp"};
+const Enum::YLeaf OpticsFormFactor::cfp {9, "cfp"};
+const Enum::YLeaf OpticsFormFactor::cfp2 {10, "cfp2"};
+const Enum::YLeaf OpticsFormFactor::cfp4 {11, "cfp4"};
+const Enum::YLeaf OpticsFormFactor::xfp {12, "xfp"};
+const Enum::YLeaf OpticsFormFactor::x2 {13, "x2"};
+const Enum::YLeaf OpticsFormFactor::non_pluggable {14, "non-pluggable"};
+const Enum::YLeaf OpticsFormFactor::other {15, "other"};
+
+const Enum::YLeaf SonetApplicationCode::optics_sonet_not_set {0, "optics-sonet-not-set"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r2 {1, "optics-vsr2000-3r2"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r3 {2, "optics-vsr2000-3r3"};
+const Enum::YLeaf SonetApplicationCode::optics_vsr2000_3r5 {3, "optics-vsr2000-3r5"};
+const Enum::YLeaf SonetApplicationCode::optics_sonet_undefined {4, "optics-sonet-undefined"};
+
+const Enum::YLeaf OpticsControllerState::optics_state_up {0, "optics-state-up"};
+const Enum::YLeaf OpticsControllerState::optics_state_down {1, "optics-state-down"};
+const Enum::YLeaf OpticsControllerState::optics_state_admin_down {2, "optics-state-admin-down"};
+
 const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_invalid {0, "optics-amplifier-safety-mode-invalid"};
 const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_auto {1, "optics-amplifier-safety-mode-auto"};
 const Enum::YLeaf OpticsAmplifierSafetyControlMode::optics_amplifier_safety_mode_disabled {2, "optics-amplifier-safety-mode-disabled"};
 
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_invalid {0, "optics-amplifier-gain-range-invalid"};
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_normal {1, "optics-amplifier-gain-range-normal"};
-const Enum::YLeaf OpticsAmplifierGainRange::optics_amplifier_gain_range_ext_end_ed {2, "optics-amplifier-gain-range-ext-end-ed"};
-
-const Enum::YLeaf OpticsAmplifierControlMode::automatic {1, "automatic"};
-const Enum::YLeaf OpticsAmplifierControlMode::manual {2, "manual"};
-
-const Enum::YLeaf OpticsPortStatus::active {0, "active"};
-const Enum::YLeaf OpticsPortStatus::standby {1, "standby"};
-
-const Enum::YLeaf OpticsPort::com {0, "com"};
-const Enum::YLeaf OpticsPort::line {1, "line"};
-const Enum::YLeaf OpticsPort::osc {2, "osc"};
-const Enum::YLeaf OpticsPort::com_check {3, "com-check"};
-const Enum::YLeaf OpticsPort::work {4, "work"};
-const Enum::YLeaf OpticsPort::prot {5, "prot"};
+const Enum::YLeaf OpticsLaserState::on {0, "on"};
+const Enum::YLeaf OpticsLaserState::off {1, "off"};
+const Enum::YLeaf OpticsLaserState::unknown {2, "unknown"};
+const Enum::YLeaf OpticsLaserState::apr {3, "apr"};
 
 const Enum::YLeaf OpticsFec::fec_none {0, "fec-none"};
 const Enum::YLeaf OpticsFec::fec_hg15 {1, "fec-hg15"};
@@ -16747,6 +16893,10 @@ const Enum::YLeaf OpticsFec::fec_hg15_de {4, "fec-hg15-de"};
 const Enum::YLeaf OpticsFec::fec_hg25_de {8, "fec-hg25-de"};
 const Enum::YLeaf OpticsFec::fec_enabled {16, "fec-enabled"};
 const Enum::YLeaf OpticsFec::fec_not_set {32, "fec-not-set"};
+const Enum::YLeaf OpticsFec::fec_cl91 {64, "fec-cl91"};
+
+const Enum::YLeaf OpticsPortStatus::active {0, "active"};
+const Enum::YLeaf OpticsPortStatus::standby {1, "standby"};
 
 const Enum::YLeaf OpticsPhy::not_set {0, "not-set"};
 const Enum::YLeaf OpticsPhy::invalid {1, "invalid"};
@@ -16805,27 +16955,31 @@ const Enum::YLeaf OpticsPhy::twenty_five_gig_ecu_one_lanes {53, "twenty-five-gig
 const Enum::YLeaf OpticsPhy::hundred_gig_e {54, "hundred-gig-e"};
 const Enum::YLeaf OpticsPhy::ten_gig_bx {55, "ten-gig-bx"};
 const Enum::YLeaf OpticsPhy::one_geige {56, "one-geige"};
+const Enum::YLeaf OpticsPhy::ten_x_ten_gig_e_long_reach_one_lane {57, "ten-x-ten-gig-e-long-reach-one-lane"};
+const Enum::YLeaf OpticsPhy::ten_x_ten_gig_e_extended_reach_one_lane {58, "ten-x-ten-gig-e-extended-reach-one-lane"};
+const Enum::YLeaf OpticsPhy::passive_copper_one_lane {59, "passive-copper-one-lane"};
+const Enum::YLeaf OpticsPhy::ten_gig_ecwdm {60, "ten-gig-ecwdm"};
+const Enum::YLeaf OpticsPhy::one_gig_ecwdm {61, "one-gig-ecwdm"};
+const Enum::YLeaf OpticsPhy::one_gig_edwdm {62, "one-gig-edwdm"};
+const Enum::YLeaf OpticsPhy::fx_one_lane {63, "fx-one-lane"};
+const Enum::YLeaf OpticsPhy::ten_gig_emrdwdm {64, "ten-gig-emrdwdm"};
+const Enum::YLeaf OpticsPhy::ten_gig_e_edge_performance {65, "ten-gig-e-edge-performance"};
 
-const Enum::YLeaf OpticsFormFactor::not_set {0, "not-set"};
-const Enum::YLeaf OpticsFormFactor::invalid {1, "invalid"};
-const Enum::YLeaf OpticsFormFactor::cpak {2, "cpak"};
-const Enum::YLeaf OpticsFormFactor::cxp {3, "cxp"};
-const Enum::YLeaf OpticsFormFactor::sfp_plus {4, "sfp-plus"};
-const Enum::YLeaf OpticsFormFactor::qsfp {5, "qsfp"};
-const Enum::YLeaf OpticsFormFactor::qsfp_plus {6, "qsfp-plus"};
-const Enum::YLeaf OpticsFormFactor::qsfp28 {7, "qsfp28"};
-const Enum::YLeaf OpticsFormFactor::sfp {8, "sfp"};
-const Enum::YLeaf OpticsFormFactor::cfp {9, "cfp"};
-const Enum::YLeaf OpticsFormFactor::cfp2 {10, "cfp2"};
-const Enum::YLeaf OpticsFormFactor::cfp4 {11, "cfp4"};
-const Enum::YLeaf OpticsFormFactor::xfp {12, "xfp"};
-const Enum::YLeaf OpticsFormFactor::x2 {13, "x2"};
-const Enum::YLeaf OpticsFormFactor::non_pluggable {14, "non-pluggable"};
-const Enum::YLeaf OpticsFormFactor::other {15, "other"};
+const Enum::YLeaf OpticsTas::tas_ui_oos {0, "tas-ui-oos"};
+const Enum::YLeaf OpticsTas::tas_ui_main {1, "tas-ui-main"};
+const Enum::YLeaf OpticsTas::tas_ui_is {2, "tas-ui-is"};
+const Enum::YLeaf OpticsTas::tas_ui_ains {3, "tas-ui-ains"};
 
-const Enum::YLeaf OpticsControllerState::optics_state_up {0, "optics-state-up"};
-const Enum::YLeaf OpticsControllerState::optics_state_down {1, "optics-state-down"};
-const Enum::YLeaf OpticsControllerState::optics_state_admin_down {2, "optics-state-admin-down"};
+const Enum::YLeaf Optics::optics_unknown {0, "optics-unknown"};
+const Enum::YLeaf Optics::optics_grey {1, "optics-grey"};
+const Enum::YLeaf Optics::optics_dwdm {2, "optics-dwdm"};
+const Enum::YLeaf Optics::optics_cwdm {3, "optics-cwdm"};
+
+const Enum::YLeaf OtnApplicationCode::optics_not_set {0, "optics-not-set"};
+const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d1 {1, "optics-p1l1-2d1"};
+const Enum::YLeaf OtnApplicationCode::optics_p1s1_2d2 {2, "optics-p1s1-2d2"};
+const Enum::YLeaf OtnApplicationCode::optics_p1l1_2d2 {3, "optics-p1l1-2d2"};
+const Enum::YLeaf OtnApplicationCode::optics_undefined {4, "optics-undefined"};
 
 const Enum::YLeaf OpticsLedState::off {0, "off"};
 const Enum::YLeaf OpticsLedState::green_on {1, "green-on"};
@@ -16835,26 +16989,12 @@ const Enum::YLeaf OpticsLedState::yellow_flashing {4, "yellow-flashing"};
 const Enum::YLeaf OpticsLedState::red_on {5, "red-on"};
 const Enum::YLeaf OpticsLedState::red_flashing {6, "red-flashing"};
 
-const Enum::YLeaf OpticsLaserState::on {0, "on"};
-const Enum::YLeaf OpticsLaserState::off {1, "off"};
-const Enum::YLeaf OpticsLaserState::unknown {2, "unknown"};
-const Enum::YLeaf OpticsLaserState::apr {3, "apr"};
-
-const Enum::YLeaf Optics::optics_unknown {0, "optics-unknown"};
-const Enum::YLeaf Optics::optics_grey {1, "optics-grey"};
-const Enum::YLeaf Optics::optics_dwdm {2, "optics-dwdm"};
-const Enum::YLeaf Optics::optics_cwdm {3, "optics-cwdm"};
-
-const Enum::YLeaf OpticsTas::tas_ui_oos {0, "tas-ui-oos"};
-const Enum::YLeaf OpticsTas::tas_ui_main {1, "tas-ui-main"};
-const Enum::YLeaf OpticsTas::tas_ui_is {2, "tas-ui-is"};
-const Enum::YLeaf OpticsTas::tas_ui_ains {3, "tas-ui-ains"};
-
-const Enum::YLeaf OpticsWaveBand::c_band {0, "c-band"};
-const Enum::YLeaf OpticsWaveBand::l_band {1, "l-band"};
-const Enum::YLeaf OpticsWaveBand::c_band_odd {2, "c-band-odd"};
-const Enum::YLeaf OpticsWaveBand::c_band_even {3, "c-band-even"};
-const Enum::YLeaf OpticsWaveBand::invalid_band {4, "invalid-band"};
+const Enum::YLeaf OpticsPort::com {0, "com"};
+const Enum::YLeaf OpticsPort::line {1, "line"};
+const Enum::YLeaf OpticsPort::osc {2, "osc"};
+const Enum::YLeaf OpticsPort::com_check {3, "com-check"};
+const Enum::YLeaf OpticsPort::work {4, "work"};
+const Enum::YLeaf OpticsPort::prot {5, "prot"};
 
 
 }

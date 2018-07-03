@@ -12,70 +12,680 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Switch::Switch()
+Native::Diagnostic::Schedule::Switch::Test::All::All()
     :
-    number{YType::uint8, "number"},
-    provision{YType::enumeration, "provision"}
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Weekly>())
+    , port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port>())
 {
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+    port->parent = this;
 
-    yang_name = "switch"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Switch::~Switch()
+Native::Diagnostic::Schedule::Switch::Test::All::~All()
 {
 }
 
-bool Native::Switch::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::has_data() const
 {
-    return number.is_set
-	|| provision.is_set;
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data())
+	|| (port !=  nullptr && port->has_data());
 }
 
-bool Native::Switch::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(provision.yfilter);
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation())
+	|| (port !=  nullptr && port->has_operation());
 }
 
-std::string Native::Switch::get_absolute_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    path_buffer << "all";
     return path_buffer.str();
 }
 
-std::string Native::Switch::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:switch" <<"[number='" <<number <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Switch::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (provision.is_set || is_set(provision.yfilter)) leaf_name_data.push_back(provision.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Weekly>();
+        }
+        return weekly;
+    }
+
+    if(child_yang_name == "port")
+    {
+        if(port == nullptr)
+        {
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port>();
+        }
+        return port;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    if(port != nullptr)
+    {
+        children["port"] = port;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "port")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Switch::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Daily::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Diagnostic::Schedule::Switch::Test::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::Port()
+    :
+    interface_port_number(this, {"number"})
+    , port_number_list(this, {"number_list"})
+    , all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_>())
+{
+    all->parent = this;
+
+    yang_name = "port"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::~Port()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_data())
+            return true;
+    }
+    return (all !=  nullptr && all->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::has_operation() const
+{
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (all !=  nullptr && all->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-port-number")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber>();
+        c->parent = this;
+        interface_port_number.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "port-number-list")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList>();
+        c->parent = this;
+        port_number_list.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "all")
+    {
+        if(all == nullptr)
+        {
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_>();
+        }
+        return all;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface_port_number.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : port_number_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    if(all != nullptr)
+    {
+        children["all"] = all;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-port-number" || name == "port-number-list" || name == "all")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::InterfacePortNumber()
+    :
+    number{YType::uint8, "number"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::~InterfacePortNumber()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::has_data() const
+{
+    if (is_presence_container) return true;
+    return number.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-port-number";
+    ADD_KEY_TOKEN(number, "number");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "number")
     {
@@ -83,404 +693,9158 @@ void Native::Switch::set_value(const std::string & value_path, const std::string
         number.value_namespace = name_space;
         number.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "provision")
-    {
-        provision = value;
-        provision.value_namespace = name_space;
-        provision.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::Switch::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "number")
     {
         number.yfilter = yfilter;
     }
-    if(value_path == "provision")
-    {
-        provision.yfilter = yfilter;
-    }
 }
 
-bool Native::Switch::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "number" || name == "provision")
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number")
         return true;
     return false;
 }
 
-Native::SwitchVirtual::SwitchVirtual()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::Daily()
     :
-    domain{YType::uint32, "domain"},
-    virtual_{YType::empty, "virtual"}
-    	,
-    switch_(std::make_shared<Native::SwitchVirtual::Switch>())
-	,mac_address(std::make_shared<Native::SwitchVirtual::MacAddress>())
-	,dual_active(std::make_shared<Native::SwitchVirtual::DualActive>())
+    hh_mm{YType::str, "hh-mm"}
 {
-    switch_->parent = this;
-    mac_address->parent = this;
-    dual_active->parent = this;
 
-    yang_name = "switch-virtual"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::SwitchVirtual::~SwitchVirtual()
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::~Daily()
 {
 }
 
-bool Native::SwitchVirtual::has_data() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::has_data() const
 {
-    return domain.is_set
-	|| virtual_.is_set
-	|| (switch_ !=  nullptr && switch_->has_data())
-	|| (mac_address !=  nullptr && mac_address->has_data())
-	|| (dual_active !=  nullptr && dual_active->has_data());
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
 }
 
-bool Native::SwitchVirtual::has_operation() const
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(domain.yfilter)
-	|| ydk::is_set(virtual_.yfilter)
-	|| (switch_ !=  nullptr && switch_->has_operation())
-	|| (mac_address !=  nullptr && mac_address->has_operation())
-	|| (dual_active !=  nullptr && dual_active->has_operation());
+	|| ydk::is_set(hh_mm.yfilter);
 }
 
-std::string Native::SwitchVirtual::get_absolute_path() const
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::PortNumberList()
+    :
+    number_list{YType::str, "number-list"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::~PortNumberList()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::has_data() const
+{
+    if (is_presence_container) return true;
+    return number_list.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number_list.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-number-list";
+    ADD_KEY_TOKEN(number_list, "number-list");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number_list.is_set || is_set(number_list.yfilter)) leaf_name_data.push_back(number_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number-list")
+    {
+        number_list = value;
+        number_list.value_namespace = name_space;
+        number_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-list")
+    {
+        number_list.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::All_()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::~All_()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "all";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::All::Port::All_::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Basic()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly>())
+    , port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+    port->parent = this;
+
+    yang_name = "basic"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::~Basic()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data())
+	|| (port !=  nullptr && port->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation())
+	|| (port !=  nullptr && port->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "basic";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly>();
+        }
+        return weekly;
+    }
+
+    if(child_yang_name == "port")
+    {
+        if(port == nullptr)
+        {
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port>();
+        }
+        return port;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    if(port != nullptr)
+    {
+        children["port"] = port;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "port")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::Port()
+    :
+    interface_port_number(this, {"number"})
+    , port_number_list(this, {"number_list"})
+    , all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All>())
+{
+    all->parent = this;
+
+    yang_name = "port"; yang_parent_name = "basic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::~Port()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_data())
+            return true;
+    }
+    return (all !=  nullptr && all->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::has_operation() const
+{
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (all !=  nullptr && all->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-port-number")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber>();
+        c->parent = this;
+        interface_port_number.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "port-number-list")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList>();
+        c->parent = this;
+        port_number_list.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "all")
+    {
+        if(all == nullptr)
+        {
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All>();
+        }
+        return all;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface_port_number.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : port_number_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    if(all != nullptr)
+    {
+        children["all"] = all;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-port-number" || name == "port-number-list" || name == "all")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::InterfacePortNumber()
+    :
+    number{YType::uint8, "number"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::~InterfacePortNumber()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::has_data() const
+{
+    if (is_presence_container) return true;
+    return number.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-port-number";
+    ADD_KEY_TOKEN(number, "number");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::PortNumberList()
+    :
+    number_list{YType::str, "number-list"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::~PortNumberList()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::has_data() const
+{
+    if (is_presence_container) return true;
+    return number_list.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number_list.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-number-list";
+    ADD_KEY_TOKEN(number_list, "number-list");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number_list.is_set || is_set(number_list.yfilter)) leaf_name_data.push_back(number_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number-list")
+    {
+        number_list = value;
+        number_list.value_namespace = name_space;
+        number_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-list")
+    {
+        number_list.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::All()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::~All()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "all";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Basic::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::Complete()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "complete"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::~Complete()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "complete";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "complete"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "complete"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "complete"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Complete::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Minimal()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "minimal"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::~Minimal()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minimal";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "minimal"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "minimal"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "minimal"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::Minimal::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::NonDisruptive()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly>())
+    , port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+    port->parent = this;
+
+    yang_name = "non-disruptive"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::~NonDisruptive()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data())
+	|| (port !=  nullptr && port->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation())
+	|| (port !=  nullptr && port->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "non-disruptive";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly>();
+        }
+        return weekly;
+    }
+
+    if(child_yang_name == "port")
+    {
+        if(port == nullptr)
+        {
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port>();
+        }
+        return port;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    if(port != nullptr)
+    {
+        children["port"] = port;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "port")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::Port()
+    :
+    interface_port_number(this, {"number"})
+    , port_number_list(this, {"number_list"})
+    , all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All>())
+{
+    all->parent = this;
+
+    yang_name = "port"; yang_parent_name = "non-disruptive"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::~Port()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_data())
+            return true;
+    }
+    return (all !=  nullptr && all->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::has_operation() const
+{
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (all !=  nullptr && all->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-port-number")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber>();
+        c->parent = this;
+        interface_port_number.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "port-number-list")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList>();
+        c->parent = this;
+        port_number_list.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "all")
+    {
+        if(all == nullptr)
+        {
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All>();
+        }
+        return all;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface_port_number.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : port_number_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    if(all != nullptr)
+    {
+        children["all"] = all;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-port-number" || name == "port-number-list" || name == "all")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::InterfacePortNumber()
+    :
+    number{YType::uint8, "number"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::~InterfacePortNumber()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::has_data() const
+{
+    if (is_presence_container) return true;
+    return number.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-port-number";
+    ADD_KEY_TOKEN(number, "number");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::PortNumberList()
+    :
+    number_list{YType::str, "number-list"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::~PortNumberList()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::has_data() const
+{
+    if (is_presence_container) return true;
+    return number_list.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number_list.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-number-list";
+    ADD_KEY_TOKEN(number_list, "number-list");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number_list.is_set || is_set(number_list.yfilter)) leaf_name_data.push_back(number_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number-list")
+    {
+        number_list = value;
+        number_list.value_namespace = name_space;
+        number_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-list")
+    {
+        number_list.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::All()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::~All()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "all";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::NonDisruptive::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::PerPort()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly>())
+    , port(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+    port->parent = this;
+
+    yang_name = "per-port"; yang_parent_name = "test"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::~PerPort()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data())
+	|| (port !=  nullptr && port->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation())
+	|| (port !=  nullptr && port->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "per-port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly>();
+        }
+        return weekly;
+    }
+
+    if(child_yang_name == "port")
+    {
+        if(port == nullptr)
+        {
+            port = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port>();
+        }
+        return port;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    if(port != nullptr)
+    {
+        children["port"] = port;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "port")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::Port()
+    :
+    interface_port_number(this, {"number"})
+    , port_number_list(this, {"number_list"})
+    , all(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All>())
+{
+    all->parent = this;
+
+    yang_name = "port"; yang_parent_name = "per-port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::~Port()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_data())
+            return true;
+    }
+    return (all !=  nullptr && all->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::has_operation() const
+{
+    for (std::size_t index=0; index<interface_port_number.len(); index++)
+    {
+        if(interface_port_number[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<port_number_list.len(); index++)
+    {
+        if(port_number_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| (all !=  nullptr && all->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "interface-port-number")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber>();
+        c->parent = this;
+        interface_port_number.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "port-number-list")
+    {
+        auto c = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList>();
+        c->parent = this;
+        port_number_list.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "all")
+    {
+        if(all == nullptr)
+        {
+            all = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All>();
+        }
+        return all;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : interface_port_number.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : port_number_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    if(all != nullptr)
+    {
+        children["all"] = all;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-port-number" || name == "port-number-list" || name == "all")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::InterfacePortNumber()
+    :
+    number{YType::uint8, "number"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "interface-port-number"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::~InterfacePortNumber()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::has_data() const
+{
+    if (is_presence_container) return true;
+    return number.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "interface-port-number";
+    ADD_KEY_TOKEN(number, "number");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "interface-port-number"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::InterfacePortNumber::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::PortNumberList()
+    :
+    number_list{YType::str, "number-list"}
+        ,
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "port-number-list"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::~PortNumberList()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::has_data() const
+{
+    if (is_presence_container) return true;
+    return number_list.is_set
+	|| (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(number_list.yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port-number-list";
+    ADD_KEY_TOKEN(number_list, "number-list");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number_list.is_set || is_set(number_list.yfilter)) leaf_name_data.push_back(number_list.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number-list")
+    {
+        number_list = value;
+        number_list.value_namespace = name_space;
+        number_list.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number-list")
+    {
+        number_list.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly" || name == "number-list")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "port-number-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::PortNumberList::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::All()
+    :
+    daily(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily>())
+    , on(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On>())
+    , weekly(std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly>())
+{
+    daily->parent = this;
+    on->parent = this;
+    weekly->parent = this;
+
+    yang_name = "all"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::~All()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::has_data() const
+{
+    if (is_presence_container) return true;
+    return (daily !=  nullptr && daily->has_data())
+	|| (on !=  nullptr && on->has_data())
+	|| (weekly !=  nullptr && weekly->has_data());
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::has_operation() const
+{
+    return is_set(yfilter)
+	|| (daily !=  nullptr && daily->has_operation())
+	|| (on !=  nullptr && on->has_operation())
+	|| (weekly !=  nullptr && weekly->has_operation());
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "all";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "daily")
+    {
+        if(daily == nullptr)
+        {
+            daily = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily>();
+        }
+        return daily;
+    }
+
+    if(child_yang_name == "on")
+    {
+        if(on == nullptr)
+        {
+            on = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On>();
+        }
+        return on;
+    }
+
+    if(child_yang_name == "weekly")
+    {
+        if(weekly == nullptr)
+        {
+            weekly = std::make_shared<Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly>();
+        }
+        return weekly;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(daily != nullptr)
+    {
+        children["daily"] = daily;
+    }
+
+    if(on != nullptr)
+    {
+        children["on"] = on;
+    }
+
+    if(weekly != nullptr)
+    {
+        children["weekly"] = weekly;
+    }
+
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "daily" || name == "on" || name == "weekly")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::Daily()
+    :
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "daily"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::~Daily()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::has_data() const
+{
+    if (is_presence_container) return true;
+    return hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "daily";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Daily::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::On()
+    :
+    month{YType::enumeration, "month"},
+    day_of_month{YType::uint16, "day-of-month"},
+    year{YType::uint16, "Year"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "on"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::~On()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::has_data() const
+{
+    if (is_presence_container) return true;
+    return month.is_set
+	|| day_of_month.is_set
+	|| year.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(month.yfilter)
+	|| ydk::is_set(day_of_month.yfilter)
+	|| ydk::is_set(year.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "on";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
+    if (day_of_month.is_set || is_set(day_of_month.yfilter)) leaf_name_data.push_back(day_of_month.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "month")
+    {
+        month = value;
+        month.value_namespace = name_space;
+        month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month = value;
+        day_of_month.value_namespace = name_space;
+        day_of_month.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "month")
+    {
+        month.yfilter = yfilter;
+    }
+    if(value_path == "day-of-month")
+    {
+        day_of_month.yfilter = yfilter;
+    }
+    if(value_path == "Year")
+    {
+        year.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::On::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "month" || name == "day-of-month" || name == "Year" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::Weekly()
+    :
+    day{YType::enumeration, "day"},
+    hh_mm{YType::str, "hh-mm"}
+{
+
+    yang_name = "weekly"; yang_parent_name = "all"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::~Weekly()
+{
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::has_data() const
+{
+    if (is_presence_container) return true;
+    return day.is_set
+	|| hh_mm.is_set;
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(day.yfilter)
+	|| ydk::is_set(hh_mm.yfilter);
+}
+
+std::string Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weekly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
+    if (hh_mm.is_set || is_set(hh_mm.yfilter)) leaf_name_data.push_back(hh_mm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "day")
+    {
+        day = value;
+        day.value_namespace = name_space;
+        day.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm = value;
+        hh_mm.value_namespace = name_space;
+        hh_mm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "day")
+    {
+        day.yfilter = yfilter;
+    }
+    if(value_path == "hh-mm")
+    {
+        hh_mm.yfilter = yfilter;
+    }
+}
+
+bool Native::Diagnostic::Schedule::Switch::Test::PerPort::Port::All::Weekly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "day" || name == "hh-mm")
+        return true;
+    return false;
+}
+
+Native::Shell::Shell()
+    :
+    trigger(this, {"word"})
+{
+
+    yang_name = "shell"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Shell::~Shell()
+{
+}
+
+bool Native::Shell::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trigger.len(); index++)
+    {
+        if(trigger[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Shell::has_operation() const
+{
+    for (std::size_t index=0; index<trigger.len(); index++)
+    {
+        if(trigger[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Shell::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SwitchVirtual::get_segment_path() const
+std::string Native::Shell::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:switch-virtual" <<"[domain='" <<domain <<"']";
+    path_buffer << "Cisco-IOS-XE-platform:shell";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Shell::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (domain.is_set || is_set(domain.yfilter)) leaf_name_data.push_back(domain.get_name_leafdata());
-    if (virtual_.is_set || is_set(virtual_.yfilter)) leaf_name_data.push_back(virtual_.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::SwitchVirtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Shell::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "switch")
+    if(child_yang_name == "trigger")
     {
-        if(switch_ == nullptr)
-        {
-            switch_ = std::make_shared<Native::SwitchVirtual::Switch>();
-        }
-        return switch_;
-    }
-
-    if(child_yang_name == "mac-address")
-    {
-        if(mac_address == nullptr)
-        {
-            mac_address = std::make_shared<Native::SwitchVirtual::MacAddress>();
-        }
-        return mac_address;
-    }
-
-    if(child_yang_name == "dual-active")
-    {
-        if(dual_active == nullptr)
-        {
-            dual_active = std::make_shared<Native::SwitchVirtual::DualActive>();
-        }
-        return dual_active;
+        auto c = std::make_shared<Native::Shell::Trigger>();
+        c->parent = this;
+        trigger.append(c);
+        return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Shell::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(switch_ != nullptr)
+    count = 0;
+    for (auto c : trigger.entities())
     {
-        children["switch"] = switch_;
-    }
-
-    if(mac_address != nullptr)
-    {
-        children["mac-address"] = mac_address;
-    }
-
-    if(dual_active != nullptr)
-    {
-        children["dual-active"] = dual_active;
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
     }
 
     return children;
 }
 
-void Native::SwitchVirtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Shell::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "domain")
-    {
-        domain = value;
-        domain.value_namespace = name_space;
-        domain.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "virtual")
-    {
-        virtual_ = value;
-        virtual_.value_namespace = name_space;
-        virtual_.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::SwitchVirtual::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Shell::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "domain")
-    {
-        domain.yfilter = yfilter;
-    }
-    if(value_path == "virtual")
-    {
-        virtual_.yfilter = yfilter;
-    }
 }
 
-bool Native::SwitchVirtual::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Shell::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switch" || name == "mac-address" || name == "dual-active" || name == "domain" || name == "virtual")
+    if(name == "trigger")
         return true;
     return false;
 }
 
-Native::SwitchVirtual::Switch::Switch()
+Native::Shell::Trigger::Trigger()
     :
-    switch_number{YType::uint32, "switch-number"},
-    priority{YType::uint32, "priority"},
-    mode{YType::enumeration, "mode"}
+    word{YType::str, "word"},
+    line{YType::str, "line"}
 {
 
-    yang_name = "switch"; yang_parent_name = "switch-virtual"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trigger"; yang_parent_name = "shell"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SwitchVirtual::Switch::~Switch()
+Native::Shell::Trigger::~Trigger()
 {
 }
 
-bool Native::SwitchVirtual::Switch::has_data() const
+bool Native::Shell::Trigger::has_data() const
 {
-    return switch_number.is_set
-	|| priority.is_set
-	|| mode.is_set;
+    if (is_presence_container) return true;
+    return word.is_set
+	|| line.is_set;
 }
 
-bool Native::SwitchVirtual::Switch::has_operation() const
+bool Native::Shell::Trigger::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(switch_number.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(mode.yfilter);
+	|| ydk::is_set(word.yfilter)
+	|| ydk::is_set(line.yfilter);
 }
 
-std::string Native::SwitchVirtual::Switch::get_segment_path() const
+std::string Native::Shell::Trigger::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "switch";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-platform:shell/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::Switch::get_name_leaf_data() const
+std::string Native::Shell::Trigger::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "trigger";
+    ADD_KEY_TOKEN(word, "word");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Shell::Trigger::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (switch_number.is_set || is_set(switch_number.yfilter)) leaf_name_data.push_back(switch_number.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (word.is_set || is_set(word.yfilter)) leaf_name_data.push_back(word.get_name_leafdata());
+    if (line.is_set || is_set(line.yfilter)) leaf_name_data.push_back(line.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::SwitchVirtual::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Shell::Trigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::Switch::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Shell::Trigger::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SwitchVirtual::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Shell::Trigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "switch-number")
+    if(value_path == "word")
     {
-        switch_number = value;
-        switch_number.value_namespace = name_space;
-        switch_number.value_namespace_prefix = name_space_prefix;
+        word = value;
+        word.value_namespace = name_space;
+        word.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "priority")
+    if(value_path == "line")
     {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
+        line = value;
+        line.value_namespace = name_space;
+        line.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::SwitchVirtual::Switch::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Shell::Trigger::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "switch-number")
+    if(value_path == "word")
     {
-        switch_number.yfilter = yfilter;
+        word.yfilter = yfilter;
     }
-    if(value_path == "priority")
+    if(value_path == "line")
     {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
+        line.yfilter = yfilter;
     }
 }
 
-bool Native::SwitchVirtual::Switch::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Shell::Trigger::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switch-number" || name == "priority" || name == "mode")
+    if(name == "word" || name == "line")
         return true;
     return false;
 }
 
-Native::SwitchVirtual::MacAddress::MacAddress()
+Native::BbaGroup::BbaGroup()
     :
-    use_virtual{YType::empty, "use-virtual"}
+    pppoe(this, {"id"})
 {
 
-    yang_name = "mac-address"; yang_parent_name = "switch-virtual"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bba-group"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SwitchVirtual::MacAddress::~MacAddress()
+Native::BbaGroup::~BbaGroup()
 {
 }
 
-bool Native::SwitchVirtual::MacAddress::has_data() const
+bool Native::BbaGroup::has_data() const
 {
-    return use_virtual.is_set;
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pppoe.len(); index++)
+    {
+        if(pppoe[index]->has_data())
+            return true;
+    }
+    return false;
 }
 
-bool Native::SwitchVirtual::MacAddress::has_operation() const
+bool Native::BbaGroup::has_operation() const
+{
+    for (std::size_t index=0; index<pppoe.len(); index++)
+    {
+        if(pppoe[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::BbaGroup::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::BbaGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-bba-group:bba-group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::BbaGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::BbaGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pppoe")
+    {
+        auto c = std::make_shared<Native::BbaGroup::Pppoe>();
+        c->parent = this;
+        pppoe.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : pppoe.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::BbaGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::BbaGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::BbaGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pppoe")
+        return true;
+    return false;
+}
+
+Native::BbaGroup::Pppoe::Pppoe()
+    :
+    id{YType::str, "id"},
+    virtual_template{YType::uint16, "virtual-template"}
+        ,
+    vendor_tag(std::make_shared<Native::BbaGroup::Pppoe::VendorTag>())
+{
+    vendor_tag->parent = this;
+
+    yang_name = "pppoe"; yang_parent_name = "bba-group"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::BbaGroup::Pppoe::~Pppoe()
+{
+}
+
+bool Native::BbaGroup::Pppoe::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| virtual_template.is_set
+	|| (vendor_tag !=  nullptr && vendor_tag->has_data());
+}
+
+bool Native::BbaGroup::Pppoe::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(use_virtual.yfilter);
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(virtual_template.yfilter)
+	|| (vendor_tag !=  nullptr && vendor_tag->has_operation());
 }
 
-std::string Native::SwitchVirtual::MacAddress::get_segment_path() const
+std::string Native::BbaGroup::Pppoe::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac-address";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-bba-group:bba-group/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::MacAddress::get_name_leaf_data() const
+std::string Native::BbaGroup::Pppoe::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pppoe";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::BbaGroup::Pppoe::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (use_virtual.is_set || is_set(use_virtual.yfilter)) leaf_name_data.push_back(use_virtual.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (virtual_template.is_set || is_set(virtual_template.yfilter)) leaf_name_data.push_back(virtual_template.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::SwitchVirtual::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::BbaGroup::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vendor-tag")
+    {
+        if(vendor_tag == nullptr)
+        {
+            vendor_tag = std::make_shared<Native::BbaGroup::Pppoe::VendorTag>();
+        }
+        return vendor_tag;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(vendor_tag != nullptr)
+    {
+        children["vendor-tag"] = vendor_tag;
+    }
+
+    return children;
+}
+
+void Native::BbaGroup::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "virtual-template")
+    {
+        virtual_template = value;
+        virtual_template.value_namespace = name_space;
+        virtual_template.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::BbaGroup::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "virtual-template")
+    {
+        virtual_template.yfilter = yfilter;
+    }
+}
+
+bool Native::BbaGroup::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vendor-tag" || name == "id" || name == "virtual-template")
+        return true;
+    return false;
+}
+
+Native::BbaGroup::Pppoe::VendorTag::VendorTag()
+    :
+    strip{YType::empty, "strip"}
+        ,
+    circuit_id(std::make_shared<Native::BbaGroup::Pppoe::VendorTag::CircuitId>())
+    , dsl_sync_rate(std::make_shared<Native::BbaGroup::Pppoe::VendorTag::DslSyncRate>())
+    , remote_id(std::make_shared<Native::BbaGroup::Pppoe::VendorTag::RemoteId>())
+{
+    circuit_id->parent = this;
+    dsl_sync_rate->parent = this;
+    remote_id->parent = this;
+
+    yang_name = "vendor-tag"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::BbaGroup::Pppoe::VendorTag::~VendorTag()
+{
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::has_data() const
+{
+    if (is_presence_container) return true;
+    return strip.is_set
+	|| (circuit_id !=  nullptr && circuit_id->has_data())
+	|| (dsl_sync_rate !=  nullptr && dsl_sync_rate->has_data())
+	|| (remote_id !=  nullptr && remote_id->has_data());
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(strip.yfilter)
+	|| (circuit_id !=  nullptr && circuit_id->has_operation())
+	|| (dsl_sync_rate !=  nullptr && dsl_sync_rate->has_operation())
+	|| (remote_id !=  nullptr && remote_id->has_operation());
+}
+
+std::string Native::BbaGroup::Pppoe::VendorTag::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vendor-tag";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::BbaGroup::Pppoe::VendorTag::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (strip.is_set || is_set(strip.yfilter)) leaf_name_data.push_back(strip.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "circuit-id")
+    {
+        if(circuit_id == nullptr)
+        {
+            circuit_id = std::make_shared<Native::BbaGroup::Pppoe::VendorTag::CircuitId>();
+        }
+        return circuit_id;
+    }
+
+    if(child_yang_name == "dsl-sync-rate")
+    {
+        if(dsl_sync_rate == nullptr)
+        {
+            dsl_sync_rate = std::make_shared<Native::BbaGroup::Pppoe::VendorTag::DslSyncRate>();
+        }
+        return dsl_sync_rate;
+    }
+
+    if(child_yang_name == "remote-id")
+    {
+        if(remote_id == nullptr)
+        {
+            remote_id = std::make_shared<Native::BbaGroup::Pppoe::VendorTag::RemoteId>();
+        }
+        return remote_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(circuit_id != nullptr)
+    {
+        children["circuit-id"] = circuit_id;
+    }
+
+    if(dsl_sync_rate != nullptr)
+    {
+        children["dsl-sync-rate"] = dsl_sync_rate;
+    }
+
+    if(remote_id != nullptr)
+    {
+        children["remote-id"] = remote_id;
+    }
+
+    return children;
+}
+
+void Native::BbaGroup::Pppoe::VendorTag::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "strip")
+    {
+        strip = value;
+        strip.value_namespace = name_space;
+        strip.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::BbaGroup::Pppoe::VendorTag::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "strip")
+    {
+        strip.yfilter = yfilter;
+    }
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "circuit-id" || name == "dsl-sync-rate" || name == "remote-id" || name == "strip")
+        return true;
+    return false;
+}
+
+Native::BbaGroup::Pppoe::VendorTag::CircuitId::CircuitId()
+    :
+    service{YType::empty, "service"}
+{
+
+    yang_name = "circuit-id"; yang_parent_name = "vendor-tag"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::BbaGroup::Pppoe::VendorTag::CircuitId::~CircuitId()
+{
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::CircuitId::has_data() const
+{
+    if (is_presence_container) return true;
+    return service.is_set;
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::CircuitId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(service.yfilter);
+}
+
+std::string Native::BbaGroup::Pppoe::VendorTag::CircuitId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "circuit-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::BbaGroup::Pppoe::VendorTag::CircuitId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::CircuitId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::MacAddress::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::CircuitId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SwitchVirtual::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::BbaGroup::Pppoe::VendorTag::CircuitId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "use-virtual")
+    if(value_path == "service")
     {
-        use_virtual = value;
-        use_virtual.value_namespace = name_space;
-        use_virtual.value_namespace_prefix = name_space_prefix;
+        service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::SwitchVirtual::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::BbaGroup::Pppoe::VendorTag::CircuitId::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "use-virtual")
+    if(value_path == "service")
     {
-        use_virtual.yfilter = yfilter;
+        service.yfilter = yfilter;
     }
 }
 
-bool Native::SwitchVirtual::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::BbaGroup::Pppoe::VendorTag::CircuitId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "use-virtual")
+    if(name == "service")
         return true;
     return false;
 }
 
-Native::SwitchVirtual::DualActive::DualActive()
+Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::DslSyncRate()
     :
-    recovery(std::make_shared<Native::SwitchVirtual::DualActive::Recovery>())
-	,detection(std::make_shared<Native::SwitchVirtual::DualActive::Detection>())
+    service{YType::empty, "service"}
+{
+
+    yang_name = "dsl-sync-rate"; yang_parent_name = "vendor-tag"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::~DslSyncRate()
+{
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::has_data() const
+{
+    if (is_presence_container) return true;
+    return service.is_set;
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(service.yfilter);
+}
+
+std::string Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dsl-sync-rate";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "service")
+    {
+        service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service")
+    {
+        service.yfilter = yfilter;
+    }
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::DslSyncRate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service")
+        return true;
+    return false;
+}
+
+Native::BbaGroup::Pppoe::VendorTag::RemoteId::RemoteId()
+    :
+    service{YType::empty, "service"}
+{
+
+    yang_name = "remote-id"; yang_parent_name = "vendor-tag"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::BbaGroup::Pppoe::VendorTag::RemoteId::~RemoteId()
+{
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::RemoteId::has_data() const
+{
+    if (is_presence_container) return true;
+    return service.is_set;
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::RemoteId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(service.yfilter);
+}
+
+std::string Native::BbaGroup::Pppoe::VendorTag::RemoteId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::BbaGroup::Pppoe::VendorTag::RemoteId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (service.is_set || is_set(service.yfilter)) leaf_name_data.push_back(service.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::BbaGroup::Pppoe::VendorTag::RemoteId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::BbaGroup::Pppoe::VendorTag::RemoteId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::BbaGroup::Pppoe::VendorTag::RemoteId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "service")
+    {
+        service = value;
+        service.value_namespace = name_space;
+        service.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::BbaGroup::Pppoe::VendorTag::RemoteId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service")
+    {
+        service.yfilter = yfilter;
+    }
+}
+
+bool Native::BbaGroup::Pppoe::VendorTag::RemoteId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service")
+        return true;
+    return false;
+}
+
+Native::AccessSession::AccessSession()
+    :
+    attributes(std::make_shared<Native::AccessSession::Attributes>())
+    , mac_move(std::make_shared<Native::AccessSession::MacMove>())
+{
+    attributes->parent = this;
+    mac_move->parent = this;
+
+    yang_name = "access-session"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::AccessSession::~AccessSession()
+{
+}
+
+bool Native::AccessSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return (attributes !=  nullptr && attributes->has_data())
+	|| (mac_move !=  nullptr && mac_move->has_data());
+}
+
+bool Native::AccessSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| (attributes !=  nullptr && attributes->has_operation())
+	|| (mac_move !=  nullptr && mac_move->has_operation());
+}
+
+std::string Native::AccessSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::AccessSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-sanet:access-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::AccessSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::AccessSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "attributes")
+    {
+        if(attributes == nullptr)
+        {
+            attributes = std::make_shared<Native::AccessSession::Attributes>();
+        }
+        return attributes;
+    }
+
+    if(child_yang_name == "mac-move")
+    {
+        if(mac_move == nullptr)
+        {
+            mac_move = std::make_shared<Native::AccessSession::MacMove>();
+        }
+        return mac_move;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(attributes != nullptr)
+    {
+        children["attributes"] = attributes;
+    }
+
+    if(mac_move != nullptr)
+    {
+        children["mac-move"] = mac_move;
+    }
+
+    return children;
+}
+
+void Native::AccessSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::AccessSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::AccessSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "attributes" || name == "mac-move")
+        return true;
+    return false;
+}
+
+Native::AccessSession::Attributes::Attributes()
+    :
+    filter_list(std::make_shared<Native::AccessSession::Attributes::FilterList>())
+{
+    filter_list->parent = this;
+
+    yang_name = "attributes"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::AccessSession::Attributes::~Attributes()
+{
+}
+
+bool Native::AccessSession::Attributes::has_data() const
+{
+    if (is_presence_container) return true;
+    return (filter_list !=  nullptr && filter_list->has_data());
+}
+
+bool Native::AccessSession::Attributes::has_operation() const
+{
+    return is_set(yfilter)
+	|| (filter_list !=  nullptr && filter_list->has_operation());
+}
+
+std::string Native::AccessSession::Attributes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:access-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::AccessSession::Attributes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "attributes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::AccessSession::Attributes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::AccessSession::Attributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "filter-list")
+    {
+        if(filter_list == nullptr)
+        {
+            filter_list = std::make_shared<Native::AccessSession::Attributes::FilterList>();
+        }
+        return filter_list;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::Attributes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(filter_list != nullptr)
+    {
+        children["filter-list"] = filter_list;
+    }
+
+    return children;
+}
+
+void Native::AccessSession::Attributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::AccessSession::Attributes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::AccessSession::Attributes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filter-list")
+        return true;
+    return false;
+}
+
+Native::AccessSession::Attributes::FilterList::FilterList()
+    :
+    list(this, {"name"})
+{
+
+    yang_name = "filter-list"; yang_parent_name = "attributes"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::AccessSession::Attributes::FilterList::~FilterList()
+{
+}
+
+bool Native::AccessSession::Attributes::FilterList::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<list.len(); index++)
+    {
+        if(list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::AccessSession::Attributes::FilterList::has_operation() const
+{
+    for (std::size_t index=0; index<list.len(); index++)
+    {
+        if(list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::AccessSession::Attributes::FilterList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:access-session/attributes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::AccessSession::Attributes::FilterList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "filter-list";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::AccessSession::Attributes::FilterList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::AccessSession::Attributes::FilterList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list")
+    {
+        auto c = std::make_shared<Native::AccessSession::Attributes::FilterList::List>();
+        c->parent = this;
+        list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::Attributes::FilterList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::AccessSession::Attributes::FilterList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::AccessSession::Attributes::FilterList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::AccessSession::Attributes::FilterList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list")
+        return true;
+    return false;
+}
+
+Native::AccessSession::Attributes::FilterList::List::List()
+    :
+    name{YType::str, "name"},
+    cdp{YType::empty, "cdp"},
+    dhcp{YType::empty, "dhcp"},
+    lldp{YType::empty, "lldp"}
+{
+
+    yang_name = "list"; yang_parent_name = "filter-list"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::AccessSession::Attributes::FilterList::List::~List()
+{
+}
+
+bool Native::AccessSession::Attributes::FilterList::List::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| cdp.is_set
+	|| dhcp.is_set
+	|| lldp.is_set;
+}
+
+bool Native::AccessSession::Attributes::FilterList::List::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(cdp.yfilter)
+	|| ydk::is_set(dhcp.yfilter)
+	|| ydk::is_set(lldp.yfilter);
+}
+
+std::string Native::AccessSession::Attributes::FilterList::List::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:access-session/attributes/filter-list/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::AccessSession::Attributes::FilterList::List::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "list";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::AccessSession::Attributes::FilterList::List::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (cdp.is_set || is_set(cdp.yfilter)) leaf_name_data.push_back(cdp.get_name_leafdata());
+    if (dhcp.is_set || is_set(dhcp.yfilter)) leaf_name_data.push_back(dhcp.get_name_leafdata());
+    if (lldp.is_set || is_set(lldp.yfilter)) leaf_name_data.push_back(lldp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::AccessSession::Attributes::FilterList::List::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::Attributes::FilterList::List::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::AccessSession::Attributes::FilterList::List::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cdp")
+    {
+        cdp = value;
+        cdp.value_namespace = name_space;
+        cdp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dhcp")
+    {
+        dhcp = value;
+        dhcp.value_namespace = name_space;
+        dhcp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lldp")
+    {
+        lldp = value;
+        lldp.value_namespace = name_space;
+        lldp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::AccessSession::Attributes::FilterList::List::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "cdp")
+    {
+        cdp.yfilter = yfilter;
+    }
+    if(value_path == "dhcp")
+    {
+        dhcp.yfilter = yfilter;
+    }
+    if(value_path == "lldp")
+    {
+        lldp.yfilter = yfilter;
+    }
+}
+
+bool Native::AccessSession::Attributes::FilterList::List::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "cdp" || name == "dhcp" || name == "lldp")
+        return true;
+    return false;
+}
+
+Native::AccessSession::MacMove::MacMove()
+    :
+    deny{YType::empty, "deny"}
+{
+
+    yang_name = "mac-move"; yang_parent_name = "access-session"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::AccessSession::MacMove::~MacMove()
+{
+}
+
+bool Native::AccessSession::MacMove::has_data() const
+{
+    if (is_presence_container) return true;
+    return deny.is_set;
+}
+
+bool Native::AccessSession::MacMove::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(deny.yfilter);
+}
+
+std::string Native::AccessSession::MacMove::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:access-session/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::AccessSession::MacMove::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-move";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::AccessSession::MacMove::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (deny.is_set || is_set(deny.yfilter)) leaf_name_data.push_back(deny.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::AccessSession::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::AccessSession::MacMove::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::AccessSession::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "deny")
+    {
+        deny = value;
+        deny.value_namespace = name_space;
+        deny.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::AccessSession::MacMove::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deny")
+    {
+        deny.yfilter = yfilter;
+    }
+}
+
+bool Native::AccessSession::MacMove::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deny")
+        return true;
+    return false;
+}
+
+Native::Authentication::Authentication()
+    :
+    command(std::make_shared<Native::Authentication::Command>())
+    , critical(std::make_shared<Native::Authentication::Critical>())
+    , mac_move(std::make_shared<Native::Authentication::MacMove>())
+{
+    command->parent = this;
+    critical->parent = this;
+    mac_move->parent = this;
+
+    yang_name = "authentication"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Authentication::~Authentication()
+{
+}
+
+bool Native::Authentication::has_data() const
+{
+    if (is_presence_container) return true;
+    return (command !=  nullptr && command->has_data())
+	|| (critical !=  nullptr && critical->has_data())
+	|| (mac_move !=  nullptr && mac_move->has_data());
+}
+
+bool Native::Authentication::has_operation() const
+{
+    return is_set(yfilter)
+	|| (command !=  nullptr && command->has_operation())
+	|| (critical !=  nullptr && critical->has_operation())
+	|| (mac_move !=  nullptr && mac_move->has_operation());
+}
+
+std::string Native::Authentication::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Authentication::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-sanet:authentication";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Authentication::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "command")
+    {
+        if(command == nullptr)
+        {
+            command = std::make_shared<Native::Authentication::Command>();
+        }
+        return command;
+    }
+
+    if(child_yang_name == "critical")
+    {
+        if(critical == nullptr)
+        {
+            critical = std::make_shared<Native::Authentication::Critical>();
+        }
+        return critical;
+    }
+
+    if(child_yang_name == "mac-move")
+    {
+        if(mac_move == nullptr)
+        {
+            mac_move = std::make_shared<Native::Authentication::MacMove>();
+        }
+        return mac_move;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(command != nullptr)
+    {
+        children["command"] = command;
+    }
+
+    if(critical != nullptr)
+    {
+        children["critical"] = critical;
+    }
+
+    if(mac_move != nullptr)
+    {
+        children["mac-move"] = mac_move;
+    }
+
+    return children;
+}
+
+void Native::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "command" || name == "critical" || name == "mac-move")
+        return true;
+    return false;
+}
+
+Native::Authentication::Command::Command()
+    :
+    bounce_port(std::make_shared<Native::Authentication::Command::BouncePort>())
+    , disable_port(std::make_shared<Native::Authentication::Command::DisablePort>())
+{
+    bounce_port->parent = this;
+    disable_port->parent = this;
+
+    yang_name = "command"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Authentication::Command::~Command()
+{
+}
+
+bool Native::Authentication::Command::has_data() const
+{
+    if (is_presence_container) return true;
+    return (bounce_port !=  nullptr && bounce_port->has_data())
+	|| (disable_port !=  nullptr && disable_port->has_data());
+}
+
+bool Native::Authentication::Command::has_operation() const
+{
+    return is_set(yfilter)
+	|| (bounce_port !=  nullptr && bounce_port->has_operation())
+	|| (disable_port !=  nullptr && disable_port->has_operation());
+}
+
+std::string Native::Authentication::Command::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:authentication/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Authentication::Command::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "command";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Authentication::Command::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Authentication::Command::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "bounce-port")
+    {
+        if(bounce_port == nullptr)
+        {
+            bounce_port = std::make_shared<Native::Authentication::Command::BouncePort>();
+        }
+        return bounce_port;
+    }
+
+    if(child_yang_name == "disable-port")
+    {
+        if(disable_port == nullptr)
+        {
+            disable_port = std::make_shared<Native::Authentication::Command::DisablePort>();
+        }
+        return disable_port;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Command::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(bounce_port != nullptr)
+    {
+        children["bounce-port"] = bounce_port;
+    }
+
+    if(disable_port != nullptr)
+    {
+        children["disable-port"] = disable_port;
+    }
+
+    return children;
+}
+
+void Native::Authentication::Command::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Authentication::Command::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Authentication::Command::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "bounce-port" || name == "disable-port")
+        return true;
+    return false;
+}
+
+Native::Authentication::Command::BouncePort::BouncePort()
+    :
+    ignore{YType::empty, "ignore"}
+{
+
+    yang_name = "bounce-port"; yang_parent_name = "command"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Authentication::Command::BouncePort::~BouncePort()
+{
+}
+
+bool Native::Authentication::Command::BouncePort::has_data() const
+{
+    if (is_presence_container) return true;
+    return ignore.is_set;
+}
+
+bool Native::Authentication::Command::BouncePort::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ignore.yfilter);
+}
+
+std::string Native::Authentication::Command::BouncePort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:authentication/command/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Authentication::Command::BouncePort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bounce-port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Authentication::Command::BouncePort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ignore.is_set || is_set(ignore.yfilter)) leaf_name_data.push_back(ignore.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Authentication::Command::BouncePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Command::BouncePort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Authentication::Command::BouncePort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ignore")
+    {
+        ignore = value;
+        ignore.value_namespace = name_space;
+        ignore.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Authentication::Command::BouncePort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ignore")
+    {
+        ignore.yfilter = yfilter;
+    }
+}
+
+bool Native::Authentication::Command::BouncePort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ignore")
+        return true;
+    return false;
+}
+
+Native::Authentication::Command::DisablePort::DisablePort()
+    :
+    ignore{YType::empty, "ignore"}
+{
+
+    yang_name = "disable-port"; yang_parent_name = "command"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Authentication::Command::DisablePort::~DisablePort()
+{
+}
+
+bool Native::Authentication::Command::DisablePort::has_data() const
+{
+    if (is_presence_container) return true;
+    return ignore.is_set;
+}
+
+bool Native::Authentication::Command::DisablePort::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ignore.yfilter);
+}
+
+std::string Native::Authentication::Command::DisablePort::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:authentication/command/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Authentication::Command::DisablePort::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disable-port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Authentication::Command::DisablePort::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ignore.is_set || is_set(ignore.yfilter)) leaf_name_data.push_back(ignore.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Authentication::Command::DisablePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Command::DisablePort::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Authentication::Command::DisablePort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ignore")
+    {
+        ignore = value;
+        ignore.value_namespace = name_space;
+        ignore.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Authentication::Command::DisablePort::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ignore")
+    {
+        ignore.yfilter = yfilter;
+    }
+}
+
+bool Native::Authentication::Command::DisablePort::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ignore")
+        return true;
+    return false;
+}
+
+Native::Authentication::Critical::Critical()
+    :
+    recovery(std::make_shared<Native::Authentication::Critical::Recovery>())
 {
     recovery->parent = this;
-    detection->parent = this;
 
-    yang_name = "dual-active"; yang_parent_name = "switch-virtual"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "critical"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SwitchVirtual::DualActive::~DualActive()
+Native::Authentication::Critical::~Critical()
 {
 }
 
-bool Native::SwitchVirtual::DualActive::has_data() const
+bool Native::Authentication::Critical::has_data() const
 {
-    return (recovery !=  nullptr && recovery->has_data())
-	|| (detection !=  nullptr && detection->has_data());
+    if (is_presence_container) return true;
+    return (recovery !=  nullptr && recovery->has_data());
 }
 
-bool Native::SwitchVirtual::DualActive::has_operation() const
+bool Native::Authentication::Critical::has_operation() const
 {
     return is_set(yfilter)
-	|| (recovery !=  nullptr && recovery->has_operation())
-	|| (detection !=  nullptr && detection->has_operation());
+	|| (recovery !=  nullptr && recovery->has_operation());
 }
 
-std::string Native::SwitchVirtual::DualActive::get_segment_path() const
+std::string Native::Authentication::Critical::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dual-active";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:authentication/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive::get_name_leaf_data() const
+std::string Native::Authentication::Critical::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "critical";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Authentication::Critical::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -489,30 +9853,21 @@ std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive
 
 }
 
-std::shared_ptr<Entity> Native::SwitchVirtual::DualActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Authentication::Critical::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "recovery")
     {
         if(recovery == nullptr)
         {
-            recovery = std::make_shared<Native::SwitchVirtual::DualActive::Recovery>();
+            recovery = std::make_shared<Native::Authentication::Critical::Recovery>();
         }
         return recovery;
-    }
-
-    if(child_yang_name == "detection")
-    {
-        if(detection == nullptr)
-        {
-            detection = std::make_shared<Native::SwitchVirtual::DualActive::Detection>();
-        }
-        return detection;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::DualActive::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Critical::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -521,159 +9876,1172 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::DualActive
         children["recovery"] = recovery;
     }
 
-    if(detection != nullptr)
-    {
-        children["detection"] = detection;
-    }
-
     return children;
 }
 
-void Native::SwitchVirtual::DualActive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Authentication::Critical::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::SwitchVirtual::DualActive::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Authentication::Critical::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::SwitchVirtual::DualActive::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Authentication::Critical::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "recovery" || name == "detection")
+    if(name == "recovery")
         return true;
     return false;
 }
 
-Native::SwitchVirtual::DualActive::Recovery::Recovery()
+Native::Authentication::Critical::Recovery::Recovery()
     :
-    switch_{YType::uint8, "switch"}
-    	,
-    ip(std::make_shared<Native::SwitchVirtual::DualActive::Recovery::Ip>())
+    delay{YType::uint32, "delay"}
 {
-    ip->parent = this;
 
-    yang_name = "recovery"; yang_parent_name = "dual-active"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "recovery"; yang_parent_name = "critical"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SwitchVirtual::DualActive::Recovery::~Recovery()
+Native::Authentication::Critical::Recovery::~Recovery()
 {
 }
 
-bool Native::SwitchVirtual::DualActive::Recovery::has_data() const
+bool Native::Authentication::Critical::Recovery::has_data() const
 {
-    return switch_.is_set
-	|| (ip !=  nullptr && ip->has_data());
+    if (is_presence_container) return true;
+    return delay.is_set;
 }
 
-bool Native::SwitchVirtual::DualActive::Recovery::has_operation() const
+bool Native::Authentication::Critical::Recovery::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(switch_.yfilter)
-	|| (ip !=  nullptr && ip->has_operation());
+	|| ydk::is_set(delay.yfilter);
 }
 
-std::string Native::SwitchVirtual::DualActive::Recovery::get_segment_path() const
+std::string Native::Authentication::Critical::Recovery::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:authentication/critical/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Authentication::Critical::Recovery::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "recovery";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive::Recovery::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Authentication::Critical::Recovery::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (switch_.is_set || is_set(switch_.yfilter)) leaf_name_data.push_back(switch_.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::SwitchVirtual::DualActive::Recovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Authentication::Critical::Recovery::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ip")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::Critical::Recovery::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Authentication::Critical::Recovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "delay")
     {
-        if(ip == nullptr)
+        delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Authentication::Critical::Recovery::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+}
+
+bool Native::Authentication::Critical::Recovery::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delay")
+        return true;
+    return false;
+}
+
+Native::Authentication::MacMove::MacMove()
+    :
+    permit{YType::empty, "permit"}
+{
+
+    yang_name = "mac-move"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Authentication::MacMove::~MacMove()
+{
+}
+
+bool Native::Authentication::MacMove::has_data() const
+{
+    if (is_presence_container) return true;
+    return permit.is_set;
+}
+
+bool Native::Authentication::MacMove::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(permit.yfilter);
+}
+
+std::string Native::Authentication::MacMove::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-sanet:authentication/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Authentication::MacMove::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-move";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Authentication::MacMove::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (permit.is_set || is_set(permit.yfilter)) leaf_name_data.push_back(permit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Authentication::MacMove::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Authentication::MacMove::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Authentication::MacMove::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "permit")
+    {
+        permit = value;
+        permit.value_namespace = name_space;
+        permit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Authentication::MacMove::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "permit")
+    {
+        permit.yfilter = yfilter;
+    }
+}
+
+bool Native::Authentication::MacMove::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "permit")
+        return true;
+    return false;
+}
+
+Native::Nat66::Nat66()
+    :
+    prefix(std::make_shared<Native::Nat66::Prefix>())
+{
+    prefix->parent = this;
+
+    yang_name = "nat66"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Nat66::~Nat66()
+{
+}
+
+bool Native::Nat66::has_data() const
+{
+    if (is_presence_container) return true;
+    return (prefix !=  nullptr && prefix->has_data());
+}
+
+bool Native::Nat66::has_operation() const
+{
+    return is_set(yfilter)
+	|| (prefix !=  nullptr && prefix->has_operation());
+}
+
+std::string Native::Nat66::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Nat66::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-nat:nat66";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Nat66::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Nat66::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix")
+    {
+        if(prefix == nullptr)
         {
-            ip = std::make_shared<Native::SwitchVirtual::DualActive::Recovery::Ip>();
+            prefix = std::make_shared<Native::Nat66::Prefix>();
         }
-        return ip;
+        return prefix;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::DualActive::Recovery::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Nat66::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(ip != nullptr)
+    if(prefix != nullptr)
     {
-        children["ip"] = ip;
+        children["prefix"] = prefix;
     }
 
     return children;
 }
 
-void Native::SwitchVirtual::DualActive::Recovery::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Nat66::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "switch")
-    {
-        switch_ = value;
-        switch_.value_namespace = name_space;
-        switch_.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::SwitchVirtual::DualActive::Recovery::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Nat66::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "switch")
-    {
-        switch_.yfilter = yfilter;
-    }
 }
 
-bool Native::SwitchVirtual::DualActive::Recovery::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Nat66::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ip" || name == "switch")
+    if(name == "prefix")
         return true;
     return false;
 }
 
-Native::SwitchVirtual::DualActive::Recovery::Ip::Ip()
+Native::Nat66::Prefix::Prefix()
+    :
+    inside(this, {"inside_pfx"})
+{
+
+    yang_name = "prefix"; yang_parent_name = "nat66"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Nat66::Prefix::~Prefix()
+{
+}
+
+bool Native::Nat66::Prefix::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<inside.len(); index++)
+    {
+        if(inside[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Nat66::Prefix::has_operation() const
+{
+    for (std::size_t index=0; index<inside.len(); index++)
+    {
+        if(inside[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Nat66::Prefix::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-nat:nat66/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Nat66::Prefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Nat66::Prefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Nat66::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "inside")
+    {
+        auto c = std::make_shared<Native::Nat66::Prefix::Inside>();
+        c->parent = this;
+        inside.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Nat66::Prefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : inside.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::Nat66::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Nat66::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Nat66::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inside")
+        return true;
+    return false;
+}
+
+Native::Nat66::Prefix::Inside::Inside()
+    :
+    inside_pfx{YType::str, "inside-pfx"},
+    outside{YType::str, "outside"}
+{
+
+    yang_name = "inside"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Nat66::Prefix::Inside::~Inside()
+{
+}
+
+bool Native::Nat66::Prefix::Inside::has_data() const
+{
+    if (is_presence_container) return true;
+    return inside_pfx.is_set
+	|| outside.is_set;
+}
+
+bool Native::Nat66::Prefix::Inside::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(inside_pfx.yfilter)
+	|| ydk::is_set(outside.yfilter);
+}
+
+std::string Native::Nat66::Prefix::Inside::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-nat:nat66/prefix/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Nat66::Prefix::Inside::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inside";
+    ADD_KEY_TOKEN(inside_pfx, "inside-pfx");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Nat66::Prefix::Inside::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (inside_pfx.is_set || is_set(inside_pfx.yfilter)) leaf_name_data.push_back(inside_pfx.get_name_leafdata());
+    if (outside.is_set || is_set(outside.yfilter)) leaf_name_data.push_back(outside.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Nat66::Prefix::Inside::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Nat66::Prefix::Inside::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Nat66::Prefix::Inside::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "inside-pfx")
+    {
+        inside_pfx = value;
+        inside_pfx.value_namespace = name_space;
+        inside_pfx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outside")
+    {
+        outside = value;
+        outside.value_namespace = name_space;
+        outside.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Nat66::Prefix::Inside::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "inside-pfx")
+    {
+        inside_pfx.yfilter = yfilter;
+    }
+    if(value_path == "outside")
+    {
+        outside.yfilter = yfilter;
+    }
+}
+
+bool Native::Nat66::Prefix::Inside::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inside-pfx" || name == "outside")
+        return true;
+    return false;
+}
+
+Native::ServiceRouting::ServiceRouting()
+    :
+    capabilities_manager{YType::boolean, "capabilities-manager"}
+        ,
+    mdns_sd(nullptr) // presence node
+{
+
+    yang_name = "service-routing"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::ServiceRouting::~ServiceRouting()
+{
+}
+
+bool Native::ServiceRouting::has_data() const
+{
+    if (is_presence_container) return true;
+    return capabilities_manager.is_set
+	|| (mdns_sd !=  nullptr && mdns_sd->has_data());
+}
+
+bool Native::ServiceRouting::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(capabilities_manager.yfilter)
+	|| (mdns_sd !=  nullptr && mdns_sd->has_operation());
+}
+
+std::string Native::ServiceRouting::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::ServiceRouting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-service-routing:service-routing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::ServiceRouting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (capabilities_manager.is_set || is_set(capabilities_manager.yfilter)) leaf_name_data.push_back(capabilities_manager.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::ServiceRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mdns-sd")
+    {
+        if(mdns_sd == nullptr)
+        {
+            mdns_sd = std::make_shared<Native::ServiceRouting::MdnsSd>();
+        }
+        return mdns_sd;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::ServiceRouting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(mdns_sd != nullptr)
+    {
+        children["mdns-sd"] = mdns_sd;
+    }
+
+    return children;
+}
+
+void Native::ServiceRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "capabilities-manager")
+    {
+        capabilities_manager = value;
+        capabilities_manager.value_namespace = name_space;
+        capabilities_manager.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::ServiceRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "capabilities-manager")
+    {
+        capabilities_manager.yfilter = yfilter;
+    }
+}
+
+bool Native::ServiceRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mdns-sd" || name == "capabilities-manager")
+        return true;
+    return false;
+}
+
+Native::ServiceRouting::MdnsSd::MdnsSd()
+    :
+    service_policy(this, {"direction"})
+{
+
+    yang_name = "mdns-sd"; yang_parent_name = "service-routing"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::ServiceRouting::MdnsSd::~MdnsSd()
+{
+}
+
+bool Native::ServiceRouting::MdnsSd::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_policy.len(); index++)
+    {
+        if(service_policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::ServiceRouting::MdnsSd::has_operation() const
+{
+    for (std::size_t index=0; index<service_policy.len(); index++)
+    {
+        if(service_policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::ServiceRouting::MdnsSd::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-service-routing:service-routing/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::ServiceRouting::MdnsSd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mdns-sd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::ServiceRouting::MdnsSd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::ServiceRouting::MdnsSd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "service-policy")
+    {
+        auto c = std::make_shared<Native::ServiceRouting::MdnsSd::ServicePolicy>();
+        c->parent = this;
+        service_policy.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::ServiceRouting::MdnsSd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : service_policy.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::ServiceRouting::MdnsSd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::ServiceRouting::MdnsSd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::ServiceRouting::MdnsSd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy")
+        return true;
+    return false;
+}
+
+Native::ServiceRouting::MdnsSd::ServicePolicy::ServicePolicy()
+    :
+    direction{YType::enumeration, "direction"},
+    policy_name{YType::str, "policy-name"}
+{
+
+    yang_name = "service-policy"; yang_parent_name = "mdns-sd"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::ServiceRouting::MdnsSd::ServicePolicy::~ServicePolicy()
+{
+}
+
+bool Native::ServiceRouting::MdnsSd::ServicePolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return direction.is_set
+	|| policy_name.is_set;
+}
+
+bool Native::ServiceRouting::MdnsSd::ServicePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(direction.yfilter)
+	|| ydk::is_set(policy_name.yfilter);
+}
+
+std::string Native::ServiceRouting::MdnsSd::ServicePolicy::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-service-routing:service-routing/mdns-sd/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::ServiceRouting::MdnsSd::ServicePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service-policy";
+    ADD_KEY_TOKEN(direction, "direction");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::ServiceRouting::MdnsSd::ServicePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+    if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::ServiceRouting::MdnsSd::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::ServiceRouting::MdnsSd::ServicePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::ServiceRouting::MdnsSd::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name = value;
+        policy_name.value_namespace = name_space;
+        policy_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::ServiceRouting::MdnsSd::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+    if(value_path == "policy-name")
+    {
+        policy_name.yfilter = yfilter;
+    }
+}
+
+bool Native::ServiceRouting::MdnsSd::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "direction" || name == "policy-name")
+        return true;
+    return false;
+}
+
+Native::Dialer::Dialer()
+    :
+    watch_list(this, {"number"})
+{
+
+    yang_name = "dialer"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Dialer::~Dialer()
+{
+}
+
+bool Native::Dialer::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<watch_list.len(); index++)
+    {
+        if(watch_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Dialer::has_operation() const
+{
+    for (std::size_t index=0; index<watch_list.len(); index++)
+    {
+        if(watch_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Dialer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Dialer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-cellular:dialer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Dialer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Dialer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "watch-list")
+    {
+        auto c = std::make_shared<Native::Dialer::WatchList>();
+        c->parent = this;
+        watch_list.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Dialer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : watch_list.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::Dialer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Dialer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Dialer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "watch-list")
+        return true;
+    return false;
+}
+
+Native::Dialer::WatchList::WatchList()
+    :
+    number{YType::uint8, "number"}
+        ,
+    delay(this, {"interval"})
+    , ip(this, {"address"})
+{
+
+    yang_name = "watch-list"; yang_parent_name = "dialer"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Dialer::WatchList::~WatchList()
+{
+}
+
+bool Native::Dialer::WatchList::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<delay.len(); index++)
+    {
+        if(delay[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<ip.len(); index++)
+    {
+        if(ip[index]->has_data())
+            return true;
+    }
+    return number.is_set;
+}
+
+bool Native::Dialer::WatchList::has_operation() const
+{
+    for (std::size_t index=0; index<delay.len(); index++)
+    {
+        if(delay[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ip.len(); index++)
+    {
+        if(ip[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(number.yfilter);
+}
+
+std::string Native::Dialer::WatchList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cellular:dialer/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Dialer::WatchList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "watch-list";
+    ADD_KEY_TOKEN(number, "number");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Dialer::WatchList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Dialer::WatchList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "delay")
+    {
+        auto c = std::make_shared<Native::Dialer::WatchList::Delay>();
+        c->parent = this;
+        delay.append(c);
+        return c;
+    }
+
+    if(child_yang_name == "ip")
+    {
+        auto c = std::make_shared<Native::Dialer::WatchList::Ip>();
+        c->parent = this;
+        ip.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Dialer::WatchList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : delay.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : ip.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Native::Dialer::WatchList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "number")
+    {
+        number = value;
+        number.value_namespace = name_space;
+        number.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Dialer::WatchList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "number")
+    {
+        number.yfilter = yfilter;
+    }
+}
+
+bool Native::Dialer::WatchList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "delay" || name == "ip" || name == "number")
+        return true;
+    return false;
+}
+
+Native::Dialer::WatchList::Delay::Delay()
+    :
+    interval{YType::enumeration, "interval"},
+    initial{YType::empty, "initial"},
+    delay_time{YType::uint32, "delay-time"}
+{
+
+    yang_name = "delay"; yang_parent_name = "watch-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Dialer::WatchList::Delay::~Delay()
+{
+}
+
+bool Native::Dialer::WatchList::Delay::has_data() const
+{
+    if (is_presence_container) return true;
+    return interval.is_set
+	|| initial.is_set
+	|| delay_time.is_set;
+}
+
+bool Native::Dialer::WatchList::Delay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interval.yfilter)
+	|| ydk::is_set(initial.yfilter)
+	|| ydk::is_set(delay_time.yfilter);
+}
+
+std::string Native::Dialer::WatchList::Delay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delay";
+    ADD_KEY_TOKEN(interval, "interval");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Dialer::WatchList::Delay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+    if (initial.is_set || is_set(initial.yfilter)) leaf_name_data.push_back(initial.get_name_leafdata());
+    if (delay_time.is_set || is_set(delay_time.yfilter)) leaf_name_data.push_back(delay_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Dialer::WatchList::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Dialer::WatchList::Delay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Dialer::WatchList::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "initial")
+    {
+        initial = value;
+        initial.value_namespace = name_space;
+        initial.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delay-time")
+    {
+        delay_time = value;
+        delay_time.value_namespace = name_space;
+        delay_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Dialer::WatchList::Delay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+    if(value_path == "initial")
+    {
+        initial.yfilter = yfilter;
+    }
+    if(value_path == "delay-time")
+    {
+        delay_time.yfilter = yfilter;
+    }
+}
+
+bool Native::Dialer::WatchList::Delay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interval" || name == "initial" || name == "delay-time")
+        return true;
+    return false;
+}
+
+Native::Dialer::WatchList::Ip::Ip()
     :
     address{YType::str, "address"},
     mask{YType::str, "mask"}
 {
 
-    yang_name = "ip"; yang_parent_name = "recovery"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ip"; yang_parent_name = "watch-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::SwitchVirtual::DualActive::Recovery::Ip::~Ip()
+Native::Dialer::WatchList::Ip::~Ip()
 {
 }
 
-bool Native::SwitchVirtual::DualActive::Recovery::Ip::has_data() const
+bool Native::Dialer::WatchList::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| mask.is_set;
 }
 
-bool Native::SwitchVirtual::DualActive::Recovery::Ip::has_operation() const
+bool Native::Dialer::WatchList::Ip::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(mask.yfilter);
 }
 
-std::string Native::SwitchVirtual::DualActive::Recovery::Ip::get_segment_path() const
+std::string Native::Dialer::WatchList::Ip::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ip";
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive::Recovery::Ip::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Dialer::WatchList::Ip::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -684,19 +11052,19 @@ std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive
 
 }
 
-std::shared_ptr<Entity> Native::SwitchVirtual::DualActive::Recovery::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Dialer::WatchList::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::DualActive::Recovery::Ip::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Dialer::WatchList::Ip::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SwitchVirtual::DualActive::Recovery::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Dialer::WatchList::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -712,7 +11080,7 @@ void Native::SwitchVirtual::DualActive::Recovery::Ip::set_value(const std::strin
     }
 }
 
-void Native::SwitchVirtual::DualActive::Recovery::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Dialer::WatchList::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -724,854 +11092,93 @@ void Native::SwitchVirtual::DualActive::Recovery::Ip::set_filter(const std::stri
     }
 }
 
-bool Native::SwitchVirtual::DualActive::Recovery::Ip::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Dialer::WatchList::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address" || name == "mask")
         return true;
     return false;
 }
 
-Native::SwitchVirtual::DualActive::Detection::Detection()
+Native::DialerList::DialerList()
     :
-    pagp(nullptr) // presence node
+    group_number{YType::uint8, "group-number"}
+        ,
+    protocol(this, {"protocol_type"})
 {
 
-    yang_name = "detection"; yang_parent_name = "dual-active"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dialer-list"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SwitchVirtual::DualActive::Detection::~Detection()
+Native::DialerList::~DialerList()
 {
 }
 
-bool Native::SwitchVirtual::DualActive::Detection::has_data() const
+bool Native::DialerList::has_data() const
 {
-    return (pagp !=  nullptr && pagp->has_data());
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pagp !=  nullptr && pagp->has_operation());
-}
-
-std::string Native::SwitchVirtual::DualActive::Detection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "detection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive::Detection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::SwitchVirtual::DualActive::Detection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pagp")
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
-        if(pagp == nullptr)
-        {
-            pagp = std::make_shared<Native::SwitchVirtual::DualActive::Detection::Pagp>();
-        }
-        return pagp;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::DualActive::Detection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(pagp != nullptr)
-    {
-        children["pagp"] = pagp;
-    }
-
-    return children;
-}
-
-void Native::SwitchVirtual::DualActive::Detection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::SwitchVirtual::DualActive::Detection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pagp")
-        return true;
-    return false;
-}
-
-Native::SwitchVirtual::DualActive::Detection::Pagp::Pagp()
-    :
-    trust(std::make_shared<Native::SwitchVirtual::DualActive::Detection::Pagp::Trust>())
-{
-    trust->parent = this;
-
-    yang_name = "pagp"; yang_parent_name = "detection"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::SwitchVirtual::DualActive::Detection::Pagp::~Pagp()
-{
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::Pagp::has_data() const
-{
-    return (trust !=  nullptr && trust->has_data());
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::Pagp::has_operation() const
-{
-    return is_set(yfilter)
-	|| (trust !=  nullptr && trust->has_operation());
-}
-
-std::string Native::SwitchVirtual::DualActive::Detection::Pagp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pagp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive::Detection::Pagp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::SwitchVirtual::DualActive::Detection::Pagp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "trust")
-    {
-        if(trust == nullptr)
-        {
-            trust = std::make_shared<Native::SwitchVirtual::DualActive::Detection::Pagp::Trust>();
-        }
-        return trust;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::DualActive::Detection::Pagp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(trust != nullptr)
-    {
-        children["trust"] = trust;
-    }
-
-    return children;
-}
-
-void Native::SwitchVirtual::DualActive::Detection::Pagp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::SwitchVirtual::DualActive::Detection::Pagp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::Pagp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trust")
-        return true;
-    return false;
-}
-
-Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::Trust()
-    :
-    channel_group{YType::uint8, "channel-group"}
-{
-
-    yang_name = "trust"; yang_parent_name = "pagp"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::~Trust()
-{
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::has_data() const
-{
-    return channel_group.is_set;
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(channel_group.yfilter);
-}
-
-std::string Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trust";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (channel_group.is_set || is_set(channel_group.yfilter)) leaf_name_data.push_back(channel_group.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "channel-group")
-    {
-        channel_group = value;
-        channel_group.value_namespace = name_space;
-        channel_group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "channel-group")
-    {
-        channel_group.yfilter = yfilter;
-    }
-}
-
-bool Native::SwitchVirtual::DualActive::Detection::Pagp::Trust::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "channel-group")
-        return true;
-    return false;
-}
-
-Native::Device::Device()
-    :
-    classifier{YType::empty, "classifier"}
-{
-
-    yang_name = "device"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Device::~Device()
-{
-}
-
-bool Native::Device::has_data() const
-{
-    return classifier.is_set;
-}
-
-bool Native::Device::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(classifier.yfilter);
-}
-
-std::string Native::Device::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Device::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:device";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Device::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (classifier.is_set || is_set(classifier.yfilter)) leaf_name_data.push_back(classifier.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Device::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "classifier")
-    {
-        classifier = value;
-        classifier.value_namespace = name_space;
-        classifier.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Device::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "classifier")
-    {
-        classifier.yfilter = yfilter;
-    }
-}
-
-bool Native::Device::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "classifier")
-        return true;
-    return false;
-}
-
-Native::StackMac::StackMac()
-    :
-    persistent(std::make_shared<Native::StackMac::Persistent>())
-{
-    persistent->parent = this;
-
-    yang_name = "stack-mac"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::StackMac::~StackMac()
-{
-}
-
-bool Native::StackMac::has_data() const
-{
-    return (persistent !=  nullptr && persistent->has_data());
-}
-
-bool Native::StackMac::has_operation() const
-{
-    return is_set(yfilter)
-	|| (persistent !=  nullptr && persistent->has_operation());
-}
-
-std::string Native::StackMac::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::StackMac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:stack-mac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::StackMac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::StackMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "persistent")
-    {
-        if(persistent == nullptr)
-        {
-            persistent = std::make_shared<Native::StackMac::Persistent>();
-        }
-        return persistent;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::StackMac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(persistent != nullptr)
-    {
-        children["persistent"] = persistent;
-    }
-
-    return children;
-}
-
-void Native::StackMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::StackMac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::StackMac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "persistent")
-        return true;
-    return false;
-}
-
-Native::StackMac::Persistent::Persistent()
-    :
-    timer{YType::uint8, "timer"}
-{
-
-    yang_name = "persistent"; yang_parent_name = "stack-mac"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::StackMac::Persistent::~Persistent()
-{
-}
-
-bool Native::StackMac::Persistent::has_data() const
-{
-    return timer.is_set;
-}
-
-bool Native::StackMac::Persistent::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(timer.yfilter);
-}
-
-std::string Native::StackMac::Persistent::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-switch:stack-mac/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::StackMac::Persistent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "persistent";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::StackMac::Persistent::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (timer.is_set || is_set(timer.yfilter)) leaf_name_data.push_back(timer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::StackMac::Persistent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::StackMac::Persistent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::StackMac::Persistent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "timer")
-    {
-        timer = value;
-        timer.value_namespace = name_space;
-        timer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::StackMac::Persistent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "timer")
-    {
-        timer.yfilter = yfilter;
-    }
-}
-
-bool Native::StackMac::Persistent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "timer")
-        return true;
-    return false;
-}
-
-Native::L2ProtocolTunnel::L2ProtocolTunnel()
-    :
-    cos{YType::uint8, "cos"}
-    	,
-    global(std::make_shared<Native::L2ProtocolTunnel::Global>())
-{
-    global->parent = this;
-
-    yang_name = "l2protocol-tunnel"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::L2ProtocolTunnel::~L2ProtocolTunnel()
-{
-}
-
-bool Native::L2ProtocolTunnel::has_data() const
-{
-    return cos.is_set
-	|| (global !=  nullptr && global->has_data());
-}
-
-bool Native::L2ProtocolTunnel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| (global !=  nullptr && global->has_operation());
-}
-
-std::string Native::L2ProtocolTunnel::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::L2ProtocolTunnel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:l2protocol-tunnel";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::L2ProtocolTunnel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::L2ProtocolTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "global")
-    {
-        if(global == nullptr)
-        {
-            global = std::make_shared<Native::L2ProtocolTunnel::Global>();
-        }
-        return global;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::L2ProtocolTunnel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(global != nullptr)
-    {
-        children["global"] = global;
-    }
-
-    return children;
-}
-
-void Native::L2ProtocolTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cos")
-    {
-        cos = value;
-        cos.value_namespace = name_space;
-        cos.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::L2ProtocolTunnel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-}
-
-bool Native::L2ProtocolTunnel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global" || name == "cos")
-        return true;
-    return false;
-}
-
-Native::L2ProtocolTunnel::Global::Global()
-    :
-    drop_threshold{YType::uint16, "drop-threshold"}
-{
-
-    yang_name = "global"; yang_parent_name = "l2protocol-tunnel"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::L2ProtocolTunnel::Global::~Global()
-{
-}
-
-bool Native::L2ProtocolTunnel::Global::has_data() const
-{
-    return drop_threshold.is_set;
-}
-
-bool Native::L2ProtocolTunnel::Global::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(drop_threshold.yfilter);
-}
-
-std::string Native::L2ProtocolTunnel::Global::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-switch:l2protocol-tunnel/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::L2ProtocolTunnel::Global::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "global";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::L2ProtocolTunnel::Global::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (drop_threshold.is_set || is_set(drop_threshold.yfilter)) leaf_name_data.push_back(drop_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::L2ProtocolTunnel::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::L2ProtocolTunnel::Global::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::L2ProtocolTunnel::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "drop-threshold")
-    {
-        drop_threshold = value;
-        drop_threshold.value_namespace = name_space;
-        drop_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::L2ProtocolTunnel::Global::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "drop-threshold")
-    {
-        drop_threshold.yfilter = yfilter;
-    }
-}
-
-bool Native::L2ProtocolTunnel::Global::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "drop-threshold")
-        return true;
-    return false;
-}
-
-Native::Rep::Rep()
-    :
-    admin(std::make_shared<Native::Rep::Admin>())
-{
-    admin->parent = this;
-
-    yang_name = "rep"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Rep::~Rep()
-{
-}
-
-bool Native::Rep::has_data() const
-{
-    return (admin !=  nullptr && admin->has_data());
-}
-
-bool Native::Rep::has_operation() const
-{
-    return is_set(yfilter)
-	|| (admin !=  nullptr && admin->has_operation());
-}
-
-std::string Native::Rep::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Rep::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:rep";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Rep::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Rep::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "admin")
-    {
-        if(admin == nullptr)
-        {
-            admin = std::make_shared<Native::Rep::Admin>();
-        }
-        return admin;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Rep::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(admin != nullptr)
-    {
-        children["admin"] = admin;
-    }
-
-    return children;
-}
-
-void Native::Rep::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Rep::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Rep::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "admin")
-        return true;
-    return false;
-}
-
-Native::Rep::Admin::Admin()
-{
-
-    yang_name = "admin"; yang_parent_name = "rep"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Rep::Admin::~Admin()
-{
-}
-
-bool Native::Rep::Admin::has_data() const
-{
-    for (std::size_t index=0; index<vlan.size(); index++)
-    {
-        if(vlan[index]->has_data())
+        if(protocol[index]->has_data())
             return true;
     }
-    return false;
+    return group_number.is_set;
 }
 
-bool Native::Rep::Admin::has_operation() const
+bool Native::DialerList::has_operation() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<protocol.len(); index++)
     {
-        if(vlan[index]->has_operation())
+        if(protocol[index]->has_operation())
             return true;
     }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| ydk::is_set(group_number.yfilter);
 }
 
-std::string Native::Rep::Admin::get_absolute_path() const
+std::string Native::DialerList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-switch:rep/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Rep::Admin::get_segment_path() const
+std::string Native::DialerList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "admin";
+    path_buffer << "Cisco-IOS-XE-cellular:dialer-list";
+    ADD_KEY_TOKEN(group_number, "group-number");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Rep::Admin::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::DialerList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (group_number.is_set || is_set(group_number.yfilter)) leaf_name_data.push_back(group_number.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Rep::Admin::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::DialerList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "vlan")
+    if(child_yang_name == "protocol")
     {
-        auto c = std::make_shared<Native::Rep::Admin::Vlan>();
+        auto c = std::make_shared<Native::DialerList::Protocol>();
         c->parent = this;
-        vlan.push_back(c);
+        protocol.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Rep::Admin::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::DialerList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan)
+    for (auto c : protocol.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1582,144 +11189,299 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Rep::Admin::get_children(
     return children;
 }
 
-void Native::Rep::Admin::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::DialerList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "group-number")
+    {
+        group_number = value;
+        group_number.value_namespace = name_space;
+        group_number.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::Rep::Admin::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::DialerList::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "group-number")
+    {
+        group_number.yfilter = yfilter;
+    }
 }
 
-bool Native::Rep::Admin::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::DialerList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vlan")
+    if(name == "protocol" || name == "group-number")
         return true;
     return false;
 }
 
-Native::Rep::Admin::Vlan::Vlan()
+Native::DialerList::Protocol::Protocol()
     :
-    name{YType::uint16, "name"}
+    protocol_type{YType::enumeration, "protocol-type"},
+    access{YType::enumeration, "access"},
+    list_name{YType::str, "list-name"}
 {
 
-    yang_name = "vlan"; yang_parent_name = "admin"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protocol"; yang_parent_name = "dialer-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Rep::Admin::Vlan::~Vlan()
+Native::DialerList::Protocol::~Protocol()
 {
 }
 
-bool Native::Rep::Admin::Vlan::has_data() const
+bool Native::DialerList::Protocol::has_data() const
 {
-    return name.is_set;
+    if (is_presence_container) return true;
+    return protocol_type.is_set
+	|| access.is_set
+	|| list_name.is_set;
 }
 
-bool Native::Rep::Admin::Vlan::has_operation() const
+bool Native::DialerList::Protocol::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
+	|| ydk::is_set(protocol_type.yfilter)
+	|| ydk::is_set(access.yfilter)
+	|| ydk::is_set(list_name.yfilter);
 }
 
-std::string Native::Rep::Admin::Vlan::get_absolute_path() const
+std::string Native::DialerList::Protocol::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-switch:rep/admin/" << get_segment_path();
+    path_buffer << "protocol";
+    ADD_KEY_TOKEN(protocol_type, "protocol-type");
     return path_buffer.str();
 }
 
-std::string Native::Rep::Admin::Vlan::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vlan" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Rep::Admin::Vlan::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::DialerList::Protocol::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (protocol_type.is_set || is_set(protocol_type.yfilter)) leaf_name_data.push_back(protocol_type.get_name_leafdata());
+    if (access.is_set || is_set(access.yfilter)) leaf_name_data.push_back(access.get_name_leafdata());
+    if (list_name.is_set || is_set(list_name.yfilter)) leaf_name_data.push_back(list_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Rep::Admin::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::DialerList::Protocol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Rep::Admin::Vlan::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::DialerList::Protocol::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Rep::Admin::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::DialerList::Protocol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
+    if(value_path == "protocol-type")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        protocol_type = value;
+        protocol_type.value_namespace = name_space;
+        protocol_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access")
+    {
+        access = value;
+        access.value_namespace = name_space;
+        access.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "list-name")
+    {
+        list_name = value;
+        list_name.value_namespace = name_space;
+        list_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Rep::Admin::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::DialerList::Protocol::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
+    if(value_path == "protocol-type")
     {
-        name.yfilter = yfilter;
+        protocol_type.yfilter = yfilter;
+    }
+    if(value_path == "access")
+    {
+        access.yfilter = yfilter;
+    }
+    if(value_path == "list-name")
+    {
+        list_name.yfilter = yfilter;
     }
 }
 
-bool Native::Rep::Admin::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::DialerList::Protocol::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name")
+    if(name == "protocol-type" || name == "access" || name == "list-name")
         return true;
     return false;
 }
 
-Native::HwSwitch::HwSwitch()
+Native::Vpdn::Vpdn()
     :
-    switch_(std::make_shared<Native::HwSwitch::Switch>())
+    authen_before_forward{YType::empty, "authen-before-forward"},
+    enable{YType::empty, "enable"},
+    search_order{YType::enumeration, "search-order"}
 {
-    switch_->parent = this;
 
-    yang_name = "hw-switch"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vpdn"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::HwSwitch::~HwSwitch()
+Native::Vpdn::~Vpdn()
 {
 }
 
-bool Native::HwSwitch::has_data() const
+bool Native::Vpdn::has_data() const
 {
-    return (switch_ !=  nullptr && switch_->has_data());
+    if (is_presence_container) return true;
+    for (auto const & leaf : search_order.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return authen_before_forward.is_set
+	|| enable.is_set;
 }
 
-bool Native::HwSwitch::has_operation() const
+bool Native::Vpdn::has_operation() const
 {
+    for (auto const & leaf : search_order.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
-	|| (switch_ !=  nullptr && switch_->has_operation());
+	|| ydk::is_set(authen_before_forward.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(search_order.yfilter);
 }
 
-std::string Native::HwSwitch::get_absolute_path() const
+std::string Native::Vpdn::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::HwSwitch::get_segment_path() const
+std::string Native::Vpdn::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:hw-switch";
+    path_buffer << "Cisco-IOS-XE-vpdn:vpdn";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::HwSwitch::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Vpdn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (authen_before_forward.is_set || is_set(authen_before_forward.yfilter)) leaf_name_data.push_back(authen_before_forward.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    auto search_order_name_datas = search_order.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), search_order_name_datas.begin(), search_order_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Vpdn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Vpdn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Vpdn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "authen-before-forward")
+    {
+        authen_before_forward = value;
+        authen_before_forward.value_namespace = name_space;
+        authen_before_forward.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "search-order")
+    {
+        search_order.append(value);
+    }
+}
+
+void Native::Vpdn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "authen-before-forward")
+    {
+        authen_before_forward.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "search-order")
+    {
+        search_order.yfilter = yfilter;
+    }
+}
+
+bool Native::Vpdn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authen-before-forward" || name == "enable" || name == "search-order")
+        return true;
+    return false;
+}
+
+Native::Coap::Coap()
+    :
+    http(std::make_shared<Native::Coap::Http>())
+{
+    http->parent = this;
+
+    yang_name = "coap"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Coap::~Coap()
+{
+}
+
+bool Native::Coap::has_data() const
+{
+    if (is_presence_container) return true;
+    return (http !=  nullptr && http->has_data());
+}
+
+bool Native::Coap::has_operation() const
+{
+    return is_set(yfilter)
+	|| (http !=  nullptr && http->has_operation());
+}
+
+std::string Native::Coap::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Coap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-coap:coap";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Coap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1728,92 +11490,378 @@ std::vector<std::pair<std::string, LeafData> > Native::HwSwitch::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Native::HwSwitch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Coap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "switch")
+    if(child_yang_name == "http")
     {
-        if(switch_ == nullptr)
+        if(http == nullptr)
         {
-            switch_ = std::make_shared<Native::HwSwitch::Switch>();
+            http = std::make_shared<Native::Coap::Http>();
         }
-        return switch_;
+        return http;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::HwSwitch::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Coap::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(switch_ != nullptr)
+    if(http != nullptr)
     {
-        children["switch"] = switch_;
+        children["http"] = http;
     }
 
     return children;
 }
 
-void Native::HwSwitch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Coap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::HwSwitch::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Coap::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::HwSwitch::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Coap::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switch")
+    if(name == "http")
         return true;
     return false;
 }
 
-Native::HwSwitch::Switch::Switch()
+Native::Coap::Http::Http()
+    :
+    enable{YType::empty, "enable"}
 {
 
-    yang_name = "switch"; yang_parent_name = "hw-switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "http"; yang_parent_name = "coap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::HwSwitch::Switch::~Switch()
+Native::Coap::Http::~Http()
 {
 }
 
-bool Native::HwSwitch::Switch::has_data() const
+bool Native::Coap::Http::has_data() const
 {
-    for (std::size_t index=0; index<switch_number.size(); index++)
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Native::Coap::Http::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Native::Coap::Http::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-coap:coap/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Coap::Http::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "http";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Coap::Http::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Coap::Http::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Coap::Http::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Coap::Http::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
     {
-        if(switch_number[index]->has_data())
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Coap::Http::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Coap::Http::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+Native::Card::Card()
+    :
+    type{YType::enumeration, "type"},
+    slot{YType::uint32, "slot"},
+    bay{YType::uint32, "bay"}
+{
+
+    yang_name = "card"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Card::~Card()
+{
+}
+
+bool Native::Card::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| slot.is_set
+	|| bay.is_set;
+}
+
+bool Native::Card::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(slot.yfilter)
+	|| ydk::is_set(bay.yfilter);
+}
+
+std::string Native::Card::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Card::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-card:card";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Card::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
+    if (bay.is_set || is_set(bay.yfilter)) leaf_name_data.push_back(bay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Card::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Card::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Card::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "slot")
+    {
+        slot = value;
+        slot.value_namespace = name_space;
+        slot.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bay")
+    {
+        bay = value;
+        bay.value_namespace = name_space;
+        bay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Card::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "slot")
+    {
+        slot.yfilter = yfilter;
+    }
+    if(value_path == "bay")
+    {
+        bay.yfilter = yfilter;
+    }
+}
+
+bool Native::Card::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "slot" || name == "bay")
+        return true;
+    return false;
+}
+
+Native::Vstack::Vstack()
+    :
+    director{YType::str, "director"}
+{
+
+    yang_name = "vstack"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Vstack::~Vstack()
+{
+}
+
+bool Native::Vstack::has_data() const
+{
+    if (is_presence_container) return true;
+    return director.is_set;
+}
+
+bool Native::Vstack::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(director.yfilter);
+}
+
+std::string Native::Vstack::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Vstack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-vstack:vstack";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Vstack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (director.is_set || is_set(director.yfilter)) leaf_name_data.push_back(director.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Vstack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Vstack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Vstack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "director")
+    {
+        director = value;
+        director.value_namespace = name_space;
+        director.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Vstack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "director")
+    {
+        director.yfilter = yfilter;
+    }
+}
+
+bool Native::Vstack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "director")
+        return true;
+    return false;
+}
+
+Native::Voice::Voice()
+    :
+    service(this, {"type"})
+{
+
+    yang_name = "voice"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Voice::~Voice()
+{
+}
+
+bool Native::Voice::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service.len(); index++)
+    {
+        if(service[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Native::HwSwitch::Switch::has_operation() const
+bool Native::Voice::has_operation() const
 {
-    for (std::size_t index=0; index<switch_number.size(); index++)
+    for (std::size_t index=0; index<service.len(); index++)
     {
-        if(switch_number[index]->has_operation())
+        if(service[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Native::HwSwitch::Switch::get_absolute_path() const
+std::string Native::Voice::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-switch:hw-switch/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::HwSwitch::Switch::get_segment_path() const
+std::string Native::Voice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "switch";
+    path_buffer << "Cisco-IOS-XE-voice:voice";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::HwSwitch::Switch::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Voice::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1822,25 +11870,25 @@ std::vector<std::pair<std::string, LeafData> > Native::HwSwitch::Switch::get_nam
 
 }
 
-std::shared_ptr<Entity> Native::HwSwitch::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Voice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "switch-number")
+    if(child_yang_name == "service")
     {
-        auto c = std::make_shared<Native::HwSwitch::Switch::SwitchNumber>();
+        auto c = std::make_shared<Native::Voice::Service>();
         c->parent = this;
-        switch_number.push_back(c);
+        service.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::HwSwitch::Switch::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Voice::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : switch_number)
+    for (auto c : service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1851,480 +11899,400 @@ std::map<std::string, std::shared_ptr<Entity>> Native::HwSwitch::Switch::get_chi
     return children;
 }
 
-void Native::HwSwitch::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Voice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::HwSwitch::Switch::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Voice::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::HwSwitch::Switch::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Voice::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switch-number")
+    if(name == "service")
         return true;
     return false;
 }
 
-Native::HwSwitch::Switch::SwitchNumber::SwitchNumber()
+Native::Voice::Service::Service()
     :
-    switch_number{YType::uint8, "switch-number"}
-    	,
-    logging(std::make_shared<Native::HwSwitch::Switch::SwitchNumber::Logging>())
+    type{YType::enumeration, "type"}
+        ,
+    fax(std::make_shared<Native::Voice::Service::Fax>())
 {
-    logging->parent = this;
+    fax->parent = this;
 
-    yang_name = "switch-number"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "service"; yang_parent_name = "voice"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::HwSwitch::Switch::SwitchNumber::~SwitchNumber()
+Native::Voice::Service::~Service()
 {
 }
 
-bool Native::HwSwitch::Switch::SwitchNumber::has_data() const
+bool Native::Voice::Service::has_data() const
 {
-    return switch_number.is_set
-	|| (logging !=  nullptr && logging->has_data());
+    if (is_presence_container) return true;
+    return type.is_set
+	|| (fax !=  nullptr && fax->has_data());
 }
 
-bool Native::HwSwitch::Switch::SwitchNumber::has_operation() const
+bool Native::Voice::Service::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(switch_number.yfilter)
-	|| (logging !=  nullptr && logging->has_operation());
+	|| ydk::is_set(type.yfilter)
+	|| (fax !=  nullptr && fax->has_operation());
 }
 
-std::string Native::HwSwitch::Switch::SwitchNumber::get_absolute_path() const
+std::string Native::Voice::Service::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-switch:hw-switch/switch/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-voice:voice/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::HwSwitch::Switch::SwitchNumber::get_segment_path() const
+std::string Native::Voice::Service::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "switch-number" <<"[switch-number='" <<switch_number <<"']";
+    path_buffer << "service";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::HwSwitch::Switch::SwitchNumber::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Voice::Service::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (switch_number.is_set || is_set(switch_number.yfilter)) leaf_name_data.push_back(switch_number.get_name_leafdata());
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::HwSwitch::Switch::SwitchNumber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Voice::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "logging")
+    if(child_yang_name == "fax")
     {
-        if(logging == nullptr)
+        if(fax == nullptr)
         {
-            logging = std::make_shared<Native::HwSwitch::Switch::SwitchNumber::Logging>();
+            fax = std::make_shared<Native::Voice::Service::Fax>();
         }
-        return logging;
+        return fax;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::HwSwitch::Switch::SwitchNumber::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Voice::Service::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(logging != nullptr)
+    if(fax != nullptr)
     {
-        children["logging"] = logging;
+        children["fax"] = fax;
     }
 
     return children;
 }
 
-void Native::HwSwitch::Switch::SwitchNumber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Voice::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "switch-number")
+    if(value_path == "type")
     {
-        switch_number = value;
-        switch_number.value_namespace = name_space;
-        switch_number.value_namespace_prefix = name_space_prefix;
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::HwSwitch::Switch::SwitchNumber::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Voice::Service::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "switch-number")
+    if(value_path == "type")
     {
-        switch_number.yfilter = yfilter;
+        type.yfilter = yfilter;
     }
 }
 
-bool Native::HwSwitch::Switch::SwitchNumber::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Voice::Service::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "logging" || name == "switch-number")
+    if(name == "fax" || name == "type")
         return true;
     return false;
 }
 
-Native::HwSwitch::Switch::SwitchNumber::Logging::Logging()
+Native::Voice::Service::Fax::Fax()
     :
-    onboard(nullptr) // presence node
+    protocol{YType::enumeration, "protocol"},
+    fallback{YType::enumeration, "fallback"},
+    codec{YType::enumeration, "codec"},
+    ls_redundancy{YType::uint8, "ls-redundancy"},
+    hs_redundancy{YType::uint8, "hs-redundancy"},
+    version{YType::enumeration, "version"}
 {
 
-    yang_name = "logging"; yang_parent_name = "switch-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fax"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::HwSwitch::Switch::SwitchNumber::Logging::~Logging()
+Native::Voice::Service::Fax::~Fax()
 {
 }
 
-bool Native::HwSwitch::Switch::SwitchNumber::Logging::has_data() const
+bool Native::Voice::Service::Fax::has_data() const
 {
-    return (onboard !=  nullptr && onboard->has_data());
+    if (is_presence_container) return true;
+    return protocol.is_set
+	|| fallback.is_set
+	|| codec.is_set
+	|| ls_redundancy.is_set
+	|| hs_redundancy.is_set
+	|| version.is_set;
 }
 
-bool Native::HwSwitch::Switch::SwitchNumber::Logging::has_operation() const
+bool Native::Voice::Service::Fax::has_operation() const
 {
     return is_set(yfilter)
-	|| (onboard !=  nullptr && onboard->has_operation());
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(fallback.yfilter)
+	|| ydk::is_set(codec.yfilter)
+	|| ydk::is_set(ls_redundancy.yfilter)
+	|| ydk::is_set(hs_redundancy.yfilter)
+	|| ydk::is_set(version.yfilter);
 }
 
-std::string Native::HwSwitch::Switch::SwitchNumber::Logging::get_segment_path() const
+std::string Native::Voice::Service::Fax::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "logging";
+    path_buffer << "fax";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::HwSwitch::Switch::SwitchNumber::Logging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Voice::Service::Fax::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (fallback.is_set || is_set(fallback.yfilter)) leaf_name_data.push_back(fallback.get_name_leafdata());
+    if (codec.is_set || is_set(codec.yfilter)) leaf_name_data.push_back(codec.get_name_leafdata());
+    if (ls_redundancy.is_set || is_set(ls_redundancy.yfilter)) leaf_name_data.push_back(ls_redundancy.get_name_leafdata());
+    if (hs_redundancy.is_set || is_set(hs_redundancy.yfilter)) leaf_name_data.push_back(hs_redundancy.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::HwSwitch::Switch::SwitchNumber::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "onboard")
-    {
-        if(onboard == nullptr)
-        {
-            onboard = std::make_shared<Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard>();
-        }
-        return onboard;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::HwSwitch::Switch::SwitchNumber::Logging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(onboard != nullptr)
-    {
-        children["onboard"] = onboard;
-    }
-
-    return children;
-}
-
-void Native::HwSwitch::Switch::SwitchNumber::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::HwSwitch::Switch::SwitchNumber::Logging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::HwSwitch::Switch::SwitchNumber::Logging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "onboard")
-        return true;
-    return false;
-}
-
-Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::Onboard()
-    :
-    counter{YType::empty, "counter"},
-    environment{YType::empty, "environment"},
-    message{YType::empty, "message"},
-    poe{YType::empty, "poe"},
-    temperature{YType::empty, "temperature"},
-    voltage{YType::empty, "voltage"}
-{
-
-    yang_name = "onboard"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::~Onboard()
-{
-}
-
-bool Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::has_data() const
-{
-    return counter.is_set
-	|| environment.is_set
-	|| message.is_set
-	|| poe.is_set
-	|| temperature.is_set
-	|| voltage.is_set;
-}
-
-bool Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(counter.yfilter)
-	|| ydk::is_set(environment.yfilter)
-	|| ydk::is_set(message.yfilter)
-	|| ydk::is_set(poe.yfilter)
-	|| ydk::is_set(temperature.yfilter)
-	|| ydk::is_set(voltage.yfilter);
-}
-
-std::string Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "onboard";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (counter.is_set || is_set(counter.yfilter)) leaf_name_data.push_back(counter.get_name_leafdata());
-    if (environment.is_set || is_set(environment.yfilter)) leaf_name_data.push_back(environment.get_name_leafdata());
-    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
-    if (poe.is_set || is_set(poe.yfilter)) leaf_name_data.push_back(poe.get_name_leafdata());
-    if (temperature.is_set || is_set(temperature.yfilter)) leaf_name_data.push_back(temperature.get_name_leafdata());
-    if (voltage.is_set || is_set(voltage.yfilter)) leaf_name_data.push_back(voltage.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Voice::Service::Fax::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Voice::Service::Fax::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Voice::Service::Fax::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "counter")
+    if(value_path == "protocol")
     {
-        counter = value;
-        counter.value_namespace = name_space;
-        counter.value_namespace_prefix = name_space_prefix;
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "environment")
+    if(value_path == "fallback")
     {
-        environment = value;
-        environment.value_namespace = name_space;
-        environment.value_namespace_prefix = name_space_prefix;
+        fallback = value;
+        fallback.value_namespace = name_space;
+        fallback.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "message")
+    if(value_path == "codec")
     {
-        message = value;
-        message.value_namespace = name_space;
-        message.value_namespace_prefix = name_space_prefix;
+        codec = value;
+        codec.value_namespace = name_space;
+        codec.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "poe")
+    if(value_path == "ls-redundancy")
     {
-        poe = value;
-        poe.value_namespace = name_space;
-        poe.value_namespace_prefix = name_space_prefix;
+        ls_redundancy = value;
+        ls_redundancy.value_namespace = name_space;
+        ls_redundancy.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "temperature")
+    if(value_path == "hs-redundancy")
     {
-        temperature = value;
-        temperature.value_namespace = name_space;
-        temperature.value_namespace_prefix = name_space_prefix;
+        hs_redundancy = value;
+        hs_redundancy.value_namespace = name_space;
+        hs_redundancy.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "voltage")
+    if(value_path == "version")
     {
-        voltage = value;
-        voltage.value_namespace = name_space;
-        voltage.value_namespace_prefix = name_space_prefix;
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Voice::Service::Fax::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "counter")
+    if(value_path == "protocol")
     {
-        counter.yfilter = yfilter;
+        protocol.yfilter = yfilter;
     }
-    if(value_path == "environment")
+    if(value_path == "fallback")
     {
-        environment.yfilter = yfilter;
+        fallback.yfilter = yfilter;
     }
-    if(value_path == "message")
+    if(value_path == "codec")
     {
-        message.yfilter = yfilter;
+        codec.yfilter = yfilter;
     }
-    if(value_path == "poe")
+    if(value_path == "ls-redundancy")
     {
-        poe.yfilter = yfilter;
+        ls_redundancy.yfilter = yfilter;
     }
-    if(value_path == "temperature")
+    if(value_path == "hs-redundancy")
     {
-        temperature.yfilter = yfilter;
+        hs_redundancy.yfilter = yfilter;
     }
-    if(value_path == "voltage")
+    if(value_path == "version")
     {
-        voltage.yfilter = yfilter;
+        version.yfilter = yfilter;
     }
 }
 
-bool Native::HwSwitch::Switch::SwitchNumber::Logging::Onboard::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Voice::Service::Fax::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counter" || name == "environment" || name == "message" || name == "poe" || name == "temperature" || name == "voltage")
+    if(name == "protocol" || name == "fallback" || name == "codec" || name == "ls-redundancy" || name == "hs-redundancy" || name == "version")
         return true;
     return false;
 }
 
-Native::Feature::Feature()
+Native::VoiceCard::VoiceCard()
     :
-    openflow{YType::empty, "openflow"}
+    slot{YType::uint8, "slot"}
 {
 
-    yang_name = "feature"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "voice-card"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Feature::~Feature()
+Native::VoiceCard::~VoiceCard()
 {
 }
 
-bool Native::Feature::has_data() const
+bool Native::VoiceCard::has_data() const
 {
-    return openflow.is_set;
+    if (is_presence_container) return true;
+    return slot.is_set;
 }
 
-bool Native::Feature::has_operation() const
+bool Native::VoiceCard::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(openflow.yfilter);
+	|| ydk::is_set(slot.yfilter);
 }
 
-std::string Native::Feature::get_absolute_path() const
+std::string Native::VoiceCard::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Feature::get_segment_path() const
+std::string Native::VoiceCard::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:feature";
+    path_buffer << "Cisco-IOS-XE-voice:voice-card";
+    ADD_KEY_TOKEN(slot, "slot");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Feature::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::VoiceCard::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (openflow.is_set || is_set(openflow.yfilter)) leaf_name_data.push_back(openflow.get_name_leafdata());
+    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Feature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::VoiceCard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Feature::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::VoiceCard::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Feature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::VoiceCard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "openflow")
+    if(value_path == "slot")
     {
-        openflow = value;
-        openflow.value_namespace = name_space;
-        openflow.value_namespace_prefix = name_space_prefix;
+        slot = value;
+        slot.value_namespace = name_space;
+        slot.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Feature::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::VoiceCard::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "openflow")
+    if(value_path == "slot")
     {
-        openflow.yfilter = yfilter;
+        slot.yfilter = yfilter;
     }
 }
 
-bool Native::Feature::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::VoiceCard::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "openflow")
+    if(name == "slot")
         return true;
     return false;
 }
 
-Native::Openflow::Openflow()
+Native::Cef::Cef()
+    :
+    table(std::make_shared<Native::Cef::Table>())
 {
+    table->parent = this;
 
-    yang_name = "openflow"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cef"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::~Openflow()
+Native::Cef::~Cef()
 {
 }
 
-bool Native::Openflow::has_data() const
+bool Native::Cef::has_data() const
 {
-    for (std::size_t index=0; index<switch_.size(); index++)
-    {
-        if(switch_[index]->has_data())
-            return true;
-    }
-    return false;
+    if (is_presence_container) return true;
+    return (table !=  nullptr && table->has_data());
 }
 
-bool Native::Openflow::has_operation() const
+bool Native::Cef::has_operation() const
 {
-    for (std::size_t index=0; index<switch_.size(); index++)
-    {
-        if(switch_[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| (table !=  nullptr && table->has_operation());
 }
 
-std::string Native::Openflow::get_absolute_path() const
+std::string Native::Cef::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Openflow::get_segment_path() const
+std::string Native::Cef::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:openflow";
+    path_buffer << "Cisco-IOS-XE-cef:cef";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2333,393 +12301,227 @@ std::vector<std::pair<std::string, LeafData> > Native::Openflow::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "switch")
+    if(child_yang_name == "table")
     {
-        auto c = std::make_shared<Native::Openflow::Switch>();
-        c->parent = this;
-        switch_.push_back(c);
-        return c;
+        if(table == nullptr)
+        {
+            table = std::make_shared<Native::Cef::Table>();
+        }
+        return table;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : switch_)
+    if(table != nullptr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
+        children["table"] = table;
     }
 
     return children;
 }
 
-void Native::Openflow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Openflow::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Openflow::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switch")
+    if(name == "table")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Switch()
+Native::Cef::Table::Table()
     :
-    number{YType::uint32, "number"},
-    pipeline{YType::uint32, "pipeline"},
-    datapath_id{YType::str, "datapath-id"},
-    protocol_version{YType::enumeration, "protocol-version"},
-    max_backoff{YType::uint16, "max-backoff"},
-    probe_interval{YType::uint16, "probe-interval"},
-    shutdown{YType::empty, "shutdown"},
-    dataplane_default{YType::enumeration, "dataplane-default"},
-    default_miss{YType::enumeration, "default-miss"}
-    	,
-    controller(std::make_shared<Native::Openflow::Switch::Controller>())
-	,of_port(std::make_shared<Native::Openflow::Switch::OfPort>())
-	,rate_limit(std::make_shared<Native::Openflow::Switch::RateLimit>())
-	,statistics(std::make_shared<Native::Openflow::Switch::Statistics>())
-	,logging(std::make_shared<Native::Openflow::Switch::Logging>())
-	,tls(std::make_shared<Native::Openflow::Switch::Tls>())
+    rate_monitor_period{YType::uint8, "rate-monitor-period"}
+        ,
+    output_chain(std::make_shared<Native::Cef::Table::OutputChain>())
+    , consistency_check(std::make_shared<Native::Cef::Table::ConsistencyCheck>())
+    , download(std::make_shared<Native::Cef::Table::Download>())
 {
-    controller->parent = this;
-    of_port->parent = this;
-    rate_limit->parent = this;
-    statistics->parent = this;
-    logging->parent = this;
-    tls->parent = this;
+    output_chain->parent = this;
+    consistency_check->parent = this;
+    download->parent = this;
 
-    yang_name = "switch"; yang_parent_name = "openflow"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "table"; yang_parent_name = "cef"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::~Switch()
+Native::Cef::Table::~Table()
 {
 }
 
-bool Native::Openflow::Switch::has_data() const
+bool Native::Cef::Table::has_data() const
 {
-    return number.is_set
-	|| pipeline.is_set
-	|| datapath_id.is_set
-	|| protocol_version.is_set
-	|| max_backoff.is_set
-	|| probe_interval.is_set
-	|| shutdown.is_set
-	|| dataplane_default.is_set
-	|| default_miss.is_set
-	|| (controller !=  nullptr && controller->has_data())
-	|| (of_port !=  nullptr && of_port->has_data())
-	|| (rate_limit !=  nullptr && rate_limit->has_data())
-	|| (statistics !=  nullptr && statistics->has_data())
-	|| (logging !=  nullptr && logging->has_data())
-	|| (tls !=  nullptr && tls->has_data());
+    if (is_presence_container) return true;
+    return rate_monitor_period.is_set
+	|| (output_chain !=  nullptr && output_chain->has_data())
+	|| (consistency_check !=  nullptr && consistency_check->has_data())
+	|| (download !=  nullptr && download->has_data());
 }
 
-bool Native::Openflow::Switch::has_operation() const
+bool Native::Cef::Table::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(pipeline.yfilter)
-	|| ydk::is_set(datapath_id.yfilter)
-	|| ydk::is_set(protocol_version.yfilter)
-	|| ydk::is_set(max_backoff.yfilter)
-	|| ydk::is_set(probe_interval.yfilter)
-	|| ydk::is_set(shutdown.yfilter)
-	|| ydk::is_set(dataplane_default.yfilter)
-	|| ydk::is_set(default_miss.yfilter)
-	|| (controller !=  nullptr && controller->has_operation())
-	|| (of_port !=  nullptr && of_port->has_operation())
-	|| (rate_limit !=  nullptr && rate_limit->has_operation())
-	|| (statistics !=  nullptr && statistics->has_operation())
-	|| (logging !=  nullptr && logging->has_operation())
-	|| (tls !=  nullptr && tls->has_operation());
+	|| ydk::is_set(rate_monitor_period.yfilter)
+	|| (output_chain !=  nullptr && output_chain->has_operation())
+	|| (consistency_check !=  nullptr && consistency_check->has_operation())
+	|| (download !=  nullptr && download->has_operation());
 }
 
-std::string Native::Openflow::Switch::get_absolute_path() const
+std::string Native::Cef::Table::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-switch:openflow/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::get_segment_path() const
+std::string Native::Cef::Table::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "switch" <<"[number='" <<number <<"']";
+    path_buffer << "table";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (pipeline.is_set || is_set(pipeline.yfilter)) leaf_name_data.push_back(pipeline.get_name_leafdata());
-    if (datapath_id.is_set || is_set(datapath_id.yfilter)) leaf_name_data.push_back(datapath_id.get_name_leafdata());
-    if (protocol_version.is_set || is_set(protocol_version.yfilter)) leaf_name_data.push_back(protocol_version.get_name_leafdata());
-    if (max_backoff.is_set || is_set(max_backoff.yfilter)) leaf_name_data.push_back(max_backoff.get_name_leafdata());
-    if (probe_interval.is_set || is_set(probe_interval.yfilter)) leaf_name_data.push_back(probe_interval.get_name_leafdata());
-    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
-    if (dataplane_default.is_set || is_set(dataplane_default.yfilter)) leaf_name_data.push_back(dataplane_default.get_name_leafdata());
-    if (default_miss.is_set || is_set(default_miss.yfilter)) leaf_name_data.push_back(default_miss.get_name_leafdata());
+    if (rate_monitor_period.is_set || is_set(rate_monitor_period.yfilter)) leaf_name_data.push_back(rate_monitor_period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "controller")
+    if(child_yang_name == "output-chain")
     {
-        if(controller == nullptr)
+        if(output_chain == nullptr)
         {
-            controller = std::make_shared<Native::Openflow::Switch::Controller>();
+            output_chain = std::make_shared<Native::Cef::Table::OutputChain>();
         }
-        return controller;
+        return output_chain;
     }
 
-    if(child_yang_name == "of-port")
+    if(child_yang_name == "consistency-check")
     {
-        if(of_port == nullptr)
+        if(consistency_check == nullptr)
         {
-            of_port = std::make_shared<Native::Openflow::Switch::OfPort>();
+            consistency_check = std::make_shared<Native::Cef::Table::ConsistencyCheck>();
         }
-        return of_port;
+        return consistency_check;
     }
 
-    if(child_yang_name == "rate-limit")
+    if(child_yang_name == "download")
     {
-        if(rate_limit == nullptr)
+        if(download == nullptr)
         {
-            rate_limit = std::make_shared<Native::Openflow::Switch::RateLimit>();
+            download = std::make_shared<Native::Cef::Table::Download>();
         }
-        return rate_limit;
-    }
-
-    if(child_yang_name == "statistics")
-    {
-        if(statistics == nullptr)
-        {
-            statistics = std::make_shared<Native::Openflow::Switch::Statistics>();
-        }
-        return statistics;
-    }
-
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<Native::Openflow::Switch::Logging>();
-        }
-        return logging;
-    }
-
-    if(child_yang_name == "tls")
-    {
-        if(tls == nullptr)
-        {
-            tls = std::make_shared<Native::Openflow::Switch::Tls>();
-        }
-        return tls;
+        return download;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(controller != nullptr)
+    if(output_chain != nullptr)
     {
-        children["controller"] = controller;
+        children["output-chain"] = output_chain;
     }
 
-    if(of_port != nullptr)
+    if(consistency_check != nullptr)
     {
-        children["of-port"] = of_port;
+        children["consistency-check"] = consistency_check;
     }
 
-    if(rate_limit != nullptr)
+    if(download != nullptr)
     {
-        children["rate-limit"] = rate_limit;
-    }
-
-    if(statistics != nullptr)
-    {
-        children["statistics"] = statistics;
-    }
-
-    if(logging != nullptr)
-    {
-        children["logging"] = logging;
-    }
-
-    if(tls != nullptr)
-    {
-        children["tls"] = tls;
+        children["download"] = download;
     }
 
     return children;
 }
 
-void Native::Openflow::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "number")
+    if(value_path == "rate-monitor-period")
     {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pipeline")
-    {
-        pipeline = value;
-        pipeline.value_namespace = name_space;
-        pipeline.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "datapath-id")
-    {
-        datapath_id = value;
-        datapath_id.value_namespace = name_space;
-        datapath_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "protocol-version")
-    {
-        protocol_version = value;
-        protocol_version.value_namespace = name_space;
-        protocol_version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max-backoff")
-    {
-        max_backoff = value;
-        max_backoff.value_namespace = name_space;
-        max_backoff.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "probe-interval")
-    {
-        probe_interval = value;
-        probe_interval.value_namespace = name_space;
-        probe_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "shutdown")
-    {
-        shutdown = value;
-        shutdown.value_namespace = name_space;
-        shutdown.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dataplane-default")
-    {
-        dataplane_default = value;
-        dataplane_default.value_namespace = name_space;
-        dataplane_default.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "default-miss")
-    {
-        default_miss = value;
-        default_miss.value_namespace = name_space;
-        default_miss.value_namespace_prefix = name_space_prefix;
+        rate_monitor_period = value;
+        rate_monitor_period.value_namespace = name_space;
+        rate_monitor_period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Openflow::Switch::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "number")
+    if(value_path == "rate-monitor-period")
     {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "pipeline")
-    {
-        pipeline.yfilter = yfilter;
-    }
-    if(value_path == "datapath-id")
-    {
-        datapath_id.yfilter = yfilter;
-    }
-    if(value_path == "protocol-version")
-    {
-        protocol_version.yfilter = yfilter;
-    }
-    if(value_path == "max-backoff")
-    {
-        max_backoff.yfilter = yfilter;
-    }
-    if(value_path == "probe-interval")
-    {
-        probe_interval.yfilter = yfilter;
-    }
-    if(value_path == "shutdown")
-    {
-        shutdown.yfilter = yfilter;
-    }
-    if(value_path == "dataplane-default")
-    {
-        dataplane_default.yfilter = yfilter;
-    }
-    if(value_path == "default-miss")
-    {
-        default_miss.yfilter = yfilter;
+        rate_monitor_period.yfilter = yfilter;
     }
 }
 
-bool Native::Openflow::Switch::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "controller" || name == "of-port" || name == "rate-limit" || name == "statistics" || name == "logging" || name == "tls" || name == "number" || name == "pipeline" || name == "datapath-id" || name == "protocol-version" || name == "max-backoff" || name == "probe-interval" || name == "shutdown" || name == "dataplane-default" || name == "default-miss")
+    if(name == "output-chain" || name == "consistency-check" || name == "download" || name == "rate-monitor-period")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Controller::Controller()
+Native::Cef::Table::OutputChain::OutputChain()
+    :
+    build(std::make_shared<Native::Cef::Table::OutputChain::Build>())
 {
+    build->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "output-chain"; yang_parent_name = "table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::Controller::~Controller()
+Native::Cef::Table::OutputChain::~OutputChain()
 {
 }
 
-bool Native::Openflow::Switch::Controller::has_data() const
+bool Native::Cef::Table::OutputChain::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
-    {
-        if(ipv4[index]->has_data())
-            return true;
-    }
-    return false;
+    if (is_presence_container) return true;
+    return (build !=  nullptr && build->has_data());
 }
 
-bool Native::Openflow::Switch::Controller::has_operation() const
+bool Native::Cef::Table::OutputChain::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
-    {
-        if(ipv4[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
+    return is_set(yfilter)
+	|| (build !=  nullptr && build->has_operation());
 }
 
-std::string Native::Openflow::Switch::Controller::get_segment_path() const
+std::string Native::Cef::Table::OutputChain::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "controller";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Controller::get_name_leaf_data() const
+std::string Native::Cef::Table::OutputChain::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output-chain";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::OutputChain::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2728,793 +12530,1441 @@ std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Control
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::Controller::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::OutputChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "build")
+    {
+        if(build == nullptr)
+        {
+            build = std::make_shared<Native::Cef::Table::OutputChain::Build>();
+        }
+        return build;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(build != nullptr)
+    {
+        children["build"] = build;
+    }
+
+    return children;
+}
+
+void Native::Cef::Table::OutputChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Cef::Table::OutputChain::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Cef::Table::OutputChain::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "build")
+        return true;
+    return false;
+}
+
+Native::Cef::Table::OutputChain::Build::Build()
+    :
+    favor(std::make_shared<Native::Cef::Table::OutputChain::Build::Favor>())
+    , indirection(std::make_shared<Native::Cef::Table::OutputChain::Build::Indirection>())
+    , inplace_modify(std::make_shared<Native::Cef::Table::OutputChain::Build::InplaceModify>())
+{
+    favor->parent = this;
+    indirection->parent = this;
+    inplace_modify->parent = this;
+
+    yang_name = "build"; yang_parent_name = "output-chain"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Cef::Table::OutputChain::Build::~Build()
+{
+}
+
+bool Native::Cef::Table::OutputChain::Build::has_data() const
+{
+    if (is_presence_container) return true;
+    return (favor !=  nullptr && favor->has_data())
+	|| (indirection !=  nullptr && indirection->has_data())
+	|| (inplace_modify !=  nullptr && inplace_modify->has_data());
+}
+
+bool Native::Cef::Table::OutputChain::Build::has_operation() const
+{
+    return is_set(yfilter)
+	|| (favor !=  nullptr && favor->has_operation())
+	|| (indirection !=  nullptr && indirection->has_operation())
+	|| (inplace_modify !=  nullptr && inplace_modify->has_operation());
+}
+
+std::string Native::Cef::Table::OutputChain::Build::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/output-chain/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Cef::Table::OutputChain::Build::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "build";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::OutputChain::Build::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "favor")
+    {
+        if(favor == nullptr)
+        {
+            favor = std::make_shared<Native::Cef::Table::OutputChain::Build::Favor>();
+        }
+        return favor;
+    }
+
+    if(child_yang_name == "indirection")
+    {
+        if(indirection == nullptr)
+        {
+            indirection = std::make_shared<Native::Cef::Table::OutputChain::Build::Indirection>();
+        }
+        return indirection;
+    }
+
+    if(child_yang_name == "inplace-modify")
+    {
+        if(inplace_modify == nullptr)
+        {
+            inplace_modify = std::make_shared<Native::Cef::Table::OutputChain::Build::InplaceModify>();
+        }
+        return inplace_modify;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(favor != nullptr)
+    {
+        children["favor"] = favor;
+    }
+
+    if(indirection != nullptr)
+    {
+        children["indirection"] = indirection;
+    }
+
+    if(inplace_modify != nullptr)
+    {
+        children["inplace-modify"] = inplace_modify;
+    }
+
+    return children;
+}
+
+void Native::Cef::Table::OutputChain::Build::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Cef::Table::OutputChain::Build::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Cef::Table::OutputChain::Build::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "favor" || name == "indirection" || name == "inplace-modify")
+        return true;
+    return false;
+}
+
+Native::Cef::Table::OutputChain::Build::Favor::Favor()
+    :
+    convergence_speed{YType::empty, "convergence-speed"},
+    memory_utilization{YType::empty, "memory-utilization"}
+{
+
+    yang_name = "favor"; yang_parent_name = "build"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Cef::Table::OutputChain::Build::Favor::~Favor()
+{
+}
+
+bool Native::Cef::Table::OutputChain::Build::Favor::has_data() const
+{
+    if (is_presence_container) return true;
+    return convergence_speed.is_set
+	|| memory_utilization.is_set;
+}
+
+bool Native::Cef::Table::OutputChain::Build::Favor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(convergence_speed.yfilter)
+	|| ydk::is_set(memory_utilization.yfilter);
+}
+
+std::string Native::Cef::Table::OutputChain::Build::Favor::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/output-chain/build/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Cef::Table::OutputChain::Build::Favor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "favor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::OutputChain::Build::Favor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (convergence_speed.is_set || is_set(convergence_speed.yfilter)) leaf_name_data.push_back(convergence_speed.get_name_leafdata());
+    if (memory_utilization.is_set || is_set(memory_utilization.yfilter)) leaf_name_data.push_back(memory_utilization.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::Favor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::Favor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Cef::Table::OutputChain::Build::Favor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "convergence-speed")
+    {
+        convergence_speed = value;
+        convergence_speed.value_namespace = name_space;
+        convergence_speed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "memory-utilization")
+    {
+        memory_utilization = value;
+        memory_utilization.value_namespace = name_space;
+        memory_utilization.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Cef::Table::OutputChain::Build::Favor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "convergence-speed")
+    {
+        convergence_speed.yfilter = yfilter;
+    }
+    if(value_path == "memory-utilization")
+    {
+        memory_utilization.yfilter = yfilter;
+    }
+}
+
+bool Native::Cef::Table::OutputChain::Build::Favor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "convergence-speed" || name == "memory-utilization")
+        return true;
+    return false;
+}
+
+Native::Cef::Table::OutputChain::Build::Indirection::Indirection()
+    :
+    ipv4_to_mpls{YType::empty, "ipv4-to-mpls"},
+    ipv6_to_mpls{YType::empty, "ipv6-to-mpls"},
+    mpls_end_of_stack{YType::empty, "mpls-end-of-stack"},
+    mpls_non_end_of_stack{YType::empty, "mpls-non-end-of-stack"},
+    non_recursive_prefix{YType::empty, "non-recursive-prefix"},
+    recursive_prefix{YType::empty, "recursive-prefix"}
+{
+
+    yang_name = "indirection"; yang_parent_name = "build"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Cef::Table::OutputChain::Build::Indirection::~Indirection()
+{
+}
+
+bool Native::Cef::Table::OutputChain::Build::Indirection::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4_to_mpls.is_set
+	|| ipv6_to_mpls.is_set
+	|| mpls_end_of_stack.is_set
+	|| mpls_non_end_of_stack.is_set
+	|| non_recursive_prefix.is_set
+	|| recursive_prefix.is_set;
+}
+
+bool Native::Cef::Table::OutputChain::Build::Indirection::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_to_mpls.yfilter)
+	|| ydk::is_set(ipv6_to_mpls.yfilter)
+	|| ydk::is_set(mpls_end_of_stack.yfilter)
+	|| ydk::is_set(mpls_non_end_of_stack.yfilter)
+	|| ydk::is_set(non_recursive_prefix.yfilter)
+	|| ydk::is_set(recursive_prefix.yfilter);
+}
+
+std::string Native::Cef::Table::OutputChain::Build::Indirection::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/output-chain/build/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Cef::Table::OutputChain::Build::Indirection::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "indirection";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::OutputChain::Build::Indirection::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4_to_mpls.is_set || is_set(ipv4_to_mpls.yfilter)) leaf_name_data.push_back(ipv4_to_mpls.get_name_leafdata());
+    if (ipv6_to_mpls.is_set || is_set(ipv6_to_mpls.yfilter)) leaf_name_data.push_back(ipv6_to_mpls.get_name_leafdata());
+    if (mpls_end_of_stack.is_set || is_set(mpls_end_of_stack.yfilter)) leaf_name_data.push_back(mpls_end_of_stack.get_name_leafdata());
+    if (mpls_non_end_of_stack.is_set || is_set(mpls_non_end_of_stack.yfilter)) leaf_name_data.push_back(mpls_non_end_of_stack.get_name_leafdata());
+    if (non_recursive_prefix.is_set || is_set(non_recursive_prefix.yfilter)) leaf_name_data.push_back(non_recursive_prefix.get_name_leafdata());
+    if (recursive_prefix.is_set || is_set(recursive_prefix.yfilter)) leaf_name_data.push_back(recursive_prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::Indirection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::Indirection::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Cef::Table::OutputChain::Build::Indirection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4-to-mpls")
+    {
+        ipv4_to_mpls = value;
+        ipv4_to_mpls.value_namespace = name_space;
+        ipv4_to_mpls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-to-mpls")
+    {
+        ipv6_to_mpls = value;
+        ipv6_to_mpls.value_namespace = name_space;
+        ipv6_to_mpls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-end-of-stack")
+    {
+        mpls_end_of_stack = value;
+        mpls_end_of_stack.value_namespace = name_space;
+        mpls_end_of_stack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mpls-non-end-of-stack")
+    {
+        mpls_non_end_of_stack = value;
+        mpls_non_end_of_stack.value_namespace = name_space;
+        mpls_non_end_of_stack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-recursive-prefix")
+    {
+        non_recursive_prefix = value;
+        non_recursive_prefix.value_namespace = name_space;
+        non_recursive_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "recursive-prefix")
+    {
+        recursive_prefix = value;
+        recursive_prefix.value_namespace = name_space;
+        recursive_prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Cef::Table::OutputChain::Build::Indirection::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-to-mpls")
+    {
+        ipv4_to_mpls.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-to-mpls")
+    {
+        ipv6_to_mpls.yfilter = yfilter;
+    }
+    if(value_path == "mpls-end-of-stack")
+    {
+        mpls_end_of_stack.yfilter = yfilter;
+    }
+    if(value_path == "mpls-non-end-of-stack")
+    {
+        mpls_non_end_of_stack.yfilter = yfilter;
+    }
+    if(value_path == "non-recursive-prefix")
+    {
+        non_recursive_prefix.yfilter = yfilter;
+    }
+    if(value_path == "recursive-prefix")
+    {
+        recursive_prefix.yfilter = yfilter;
+    }
+}
+
+bool Native::Cef::Table::OutputChain::Build::Indirection::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-to-mpls" || name == "ipv6-to-mpls" || name == "mpls-end-of-stack" || name == "mpls-non-end-of-stack" || name == "non-recursive-prefix" || name == "recursive-prefix")
+        return true;
+    return false;
+}
+
+Native::Cef::Table::OutputChain::Build::InplaceModify::InplaceModify()
+    :
+    load_sharing{YType::empty, "load-sharing"},
+    push_counter{YType::empty, "push-counter"}
+{
+
+    yang_name = "inplace-modify"; yang_parent_name = "build"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Cef::Table::OutputChain::Build::InplaceModify::~InplaceModify()
+{
+}
+
+bool Native::Cef::Table::OutputChain::Build::InplaceModify::has_data() const
+{
+    if (is_presence_container) return true;
+    return load_sharing.is_set
+	|| push_counter.is_set;
+}
+
+bool Native::Cef::Table::OutputChain::Build::InplaceModify::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(load_sharing.yfilter)
+	|| ydk::is_set(push_counter.yfilter);
+}
+
+std::string Native::Cef::Table::OutputChain::Build::InplaceModify::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/output-chain/build/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Cef::Table::OutputChain::Build::InplaceModify::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inplace-modify";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::OutputChain::Build::InplaceModify::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (load_sharing.is_set || is_set(load_sharing.yfilter)) leaf_name_data.push_back(load_sharing.get_name_leafdata());
+    if (push_counter.is_set || is_set(push_counter.yfilter)) leaf_name_data.push_back(push_counter.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Cef::Table::OutputChain::Build::InplaceModify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::OutputChain::Build::InplaceModify::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Native::Cef::Table::OutputChain::Build::InplaceModify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "load-sharing")
+    {
+        load_sharing = value;
+        load_sharing.value_namespace = name_space;
+        load_sharing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "push-counter")
+    {
+        push_counter = value;
+        push_counter.value_namespace = name_space;
+        push_counter.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Cef::Table::OutputChain::Build::InplaceModify::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "load-sharing")
+    {
+        load_sharing.yfilter = yfilter;
+    }
+    if(value_path == "push-counter")
+    {
+        push_counter.yfilter = yfilter;
+    }
+}
+
+bool Native::Cef::Table::OutputChain::Build::InplaceModify::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "load-sharing" || name == "push-counter")
+        return true;
+    return false;
+}
+
+Native::Cef::Table::ConsistencyCheck::ConsistencyCheck()
+    :
+    ipv4(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4>())
+    , ipv6(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6>())
+{
+    ipv4->parent = this;
+    ipv6->parent = this;
+
+    yang_name = "consistency-check"; yang_parent_name = "table"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Cef::Table::ConsistencyCheck::~ConsistencyCheck()
+{
+}
+
+bool Native::Cef::Table::ConsistencyCheck::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
+}
+
+bool Native::Cef::Table::ConsistencyCheck::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "consistency-check";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ipv4")
     {
-        auto c = std::make_shared<Native::Openflow::Switch::Controller::Ipv4>();
-        c->parent = this;
-        ipv4.push_back(c);
-        return c;
+        if(ipv4 == nullptr)
+        {
+            ipv4 = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4>();
+        }
+        return ipv4;
+    }
+
+    if(child_yang_name == "ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6>();
+        }
+        return ipv6;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Controller::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : ipv4)
+    if(ipv4 != nullptr)
+    {
+        children["ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
+        children["ipv6"] = ipv6;
     }
 
     return children;
 }
 
-void Native::Openflow::Switch::Controller::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Openflow::Switch::Controller::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Openflow::Switch::Controller::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4")
+    if(name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Controller::Ipv4::Ipv4()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Ipv4()
     :
-    address{YType::str, "address"}
+    data_checking{YType::empty, "data-checking"},
+    error_message{YType::empty, "error-message"}
+        ,
+    auto_repair(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair>())
+    , type(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type>())
 {
+    auto_repair->parent = this;
+    type->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "consistency-check"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::Controller::Ipv4::~Ipv4()
+Native::Cef::Table::ConsistencyCheck::Ipv4::~Ipv4()
 {
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
-    {
-        if(port[index]->has_data())
-            return true;
-    }
-    return address.is_set;
+    if (is_presence_container) return true;
+    return data_checking.is_set
+	|| error_message.is_set
+	|| (auto_repair !=  nullptr && auto_repair->has_data())
+	|| (type !=  nullptr && type->has_data());
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<port.size(); index++)
-    {
-        if(port[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(address.yfilter);
+	|| ydk::is_set(data_checking.yfilter)
+	|| ydk::is_set(error_message.yfilter)
+	|| (auto_repair !=  nullptr && auto_repair->has_operation())
+	|| (type !=  nullptr && type->has_operation());
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::Controller::Ipv4::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[address='" <<address <<"']";
+    path_buffer << "ipv4";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Controller::Ipv4::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (data_checking.is_set || is_set(data_checking.yfilter)) leaf_name_data.push_back(data_checking.get_name_leafdata());
+    if (error_message.is_set || is_set(error_message.yfilter)) leaf_name_data.push_back(error_message.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::Controller::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "port")
+    if(child_yang_name == "auto-repair")
+    {
+        if(auto_repair == nullptr)
+        {
+            auto_repair = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair>();
+        }
+        return auto_repair;
+    }
+
+    if(child_yang_name == "type")
     {
-        auto c = std::make_shared<Native::Openflow::Switch::Controller::Ipv4::Port>();
-        c->parent = this;
-        port.push_back(c);
-        return c;
+        if(type == nullptr)
+        {
+            type = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type>();
+        }
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Controller::Ipv4::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : port)
+    if(auto_repair != nullptr)
+    {
+        children["auto-repair"] = auto_repair;
+    }
+
+    if(type != nullptr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
+        children["type"] = type;
     }
 
     return children;
 }
 
-void Native::Openflow::Switch::Controller::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "address")
+    if(value_path == "data-checking")
+    {
+        data_checking = value;
+        data_checking.value_namespace = name_space;
+        data_checking.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-message")
     {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
+        error_message = value;
+        error_message.value_namespace = name_space;
+        error_message.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Openflow::Switch::Controller::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "address")
+    if(value_path == "data-checking")
+    {
+        data_checking.yfilter = yfilter;
+    }
+    if(value_path == "error-message")
     {
-        address.yfilter = yfilter;
+        error_message.yfilter = yfilter;
     }
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "port" || name == "address")
+    if(name == "auto-repair" || name == "type" || name == "data-checking" || name == "error-message")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Controller::Ipv4::Port::Port()
+Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::AutoRepair()
     :
-    number{YType::uint16, "number"}
+    delay{YType::uint16, "delay"},
+    holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "port"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auto-repair"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::Controller::Ipv4::Port::~Port()
+Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::~AutoRepair()
 {
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::Port::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_data())
-            return true;
-    }
-    return number.is_set;
+    if (is_presence_container) return true;
+    return delay.is_set
+	|| holddown.is_set;
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::Port::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(number.yfilter);
+	|| ydk::is_set(delay.yfilter)
+	|| ydk::is_set(holddown.yfilter);
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::Controller::Ipv4::Port::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port" <<"[number='" <<number <<"']";
+    path_buffer << "auto-repair";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Controller::Ipv4::Port::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (holddown.is_set || is_set(holddown.yfilter)) leaf_name_data.push_back(holddown.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::Controller::Ipv4::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "vrf")
-    {
-        auto c = std::make_shared<Native::Openflow::Switch::Controller::Ipv4::Port::Vrf>();
-        c->parent = this;
-        vrf.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Controller::Ipv4::Port::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : vrf)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
     return children;
 }
 
-void Native::Openflow::Switch::Controller::Ipv4::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "number")
+    if(value_path == "delay")
     {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
+        delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "holddown")
+    {
+        holddown = value;
+        holddown.value_namespace = name_space;
+        holddown.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::Openflow::Switch::Controller::Ipv4::Port::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "number")
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+    if(value_path == "holddown")
     {
-        number.yfilter = yfilter;
+        holddown.yfilter = yfilter;
     }
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::Port::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::AutoRepair::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrf" || name == "number")
+    if(name == "delay" || name == "holddown")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::Vrf()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::Type()
     :
-    name{YType::str, "name"},
-    security{YType::enumeration, "security"}
+    lc_detect{YType::empty, "lc-detect"}
+        ,
+    scan_ios_rib(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib>())
+    , scan_rib_ios(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos>())
+    , scan_lc_rp(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp>())
+    , scan_rp_lc(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc>())
 {
+    scan_ios_rib->parent = this;
+    scan_rib_ios->parent = this;
+    scan_lc_rp->parent = this;
+    scan_rp_lc->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "type"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::~Vrf()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::~Type()
 {
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::has_data() const
 {
-    return name.is_set
-	|| security.is_set;
+    if (is_presence_container) return true;
+    return lc_detect.is_set
+	|| (scan_ios_rib !=  nullptr && scan_ios_rib->has_data())
+	|| (scan_rib_ios !=  nullptr && scan_rib_ios->has_data())
+	|| (scan_lc_rp !=  nullptr && scan_lc_rp->has_data())
+	|| (scan_rp_lc !=  nullptr && scan_rp_lc->has_data());
 }
 
-bool Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(security.yfilter);
+	|| ydk::is_set(lc_detect.yfilter)
+	|| (scan_ios_rib !=  nullptr && scan_ios_rib->has_operation())
+	|| (scan_rib_ios !=  nullptr && scan_rib_ios->has_operation())
+	|| (scan_lc_rp !=  nullptr && scan_lc_rp->has_operation())
+	|| (scan_rp_lc !=  nullptr && scan_rp_lc->has_operation());
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
+    path_buffer << "type";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (security.is_set || is_set(security.yfilter)) leaf_name_data.push_back(security.get_name_leafdata());
+    if (lc_detect.is_set || is_set(lc_detect.yfilter)) leaf_name_data.push_back(lc_detect.get_name_leafdata());
 
     return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
 }
 
-void Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(value_path == "name")
+    if(child_yang_name == "scan-ios-rib")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        if(scan_ios_rib == nullptr)
+        {
+            scan_ios_rib = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib>();
+        }
+        return scan_ios_rib;
     }
-    if(value_path == "security")
+
+    if(child_yang_name == "scan-rib-ios")
     {
-        security = value;
-        security.value_namespace = name_space;
-        security.value_namespace_prefix = name_space_prefix;
+        if(scan_rib_ios == nullptr)
+        {
+            scan_rib_ios = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos>();
+        }
+        return scan_rib_ios;
     }
-}
 
-void Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
+    if(child_yang_name == "scan-lc-rp")
     {
-        name.yfilter = yfilter;
+        if(scan_lc_rp == nullptr)
+        {
+            scan_lc_rp = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp>();
+        }
+        return scan_lc_rp;
     }
-    if(value_path == "security")
+
+    if(child_yang_name == "scan-rp-lc")
     {
-        security.yfilter = yfilter;
+        if(scan_rp_lc == nullptr)
+        {
+            scan_rp_lc = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc>();
+        }
+        return scan_rp_lc;
     }
-}
 
-bool Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "security")
-        return true;
-    return false;
-}
-
-Native::Openflow::Switch::OfPort::OfPort()
-{
-
-    yang_name = "of-port"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Openflow::Switch::OfPort::~OfPort()
-{
+    return nullptr;
 }
 
-bool Native::Openflow::Switch::OfPort::has_data() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::get_children() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(scan_ios_rib != nullptr)
     {
-        if(interface[index]->has_data())
-            return true;
+        children["scan-ios-rib"] = scan_ios_rib;
     }
-    return false;
-}
 
-bool Native::Openflow::Switch::OfPort::has_operation() const
-{
-    for (std::size_t index=0; index<interface.size(); index++)
+    if(scan_rib_ios != nullptr)
     {
-        if(interface[index]->has_operation())
-            return true;
+        children["scan-rib-ios"] = scan_rib_ios;
     }
-    return is_set(yfilter);
-}
-
-std::string Native::Openflow::Switch::OfPort::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "of-port";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::OfPort::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
 
-}
-
-std::shared_ptr<Entity> Native::Openflow::Switch::OfPort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "interface")
+    if(scan_lc_rp != nullptr)
     {
-        auto c = std::make_shared<Native::Openflow::Switch::OfPort::Interface>();
-        c->parent = this;
-        interface.push_back(c);
-        return c;
+        children["scan-lc-rp"] = scan_lc_rp;
     }
-
-    return nullptr;
-}
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::OfPort::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : interface)
+    if(scan_rp_lc != nullptr)
     {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
+        children["scan-rp-lc"] = scan_rp_lc;
     }
 
     return children;
 }
 
-void Native::Openflow::Switch::OfPort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "lc-detect")
+    {
+        lc_detect = value;
+        lc_detect.value_namespace = name_space;
+        lc_detect.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::Openflow::Switch::OfPort::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "lc-detect")
+    {
+        lc_detect.yfilter = yfilter;
+    }
 }
 
-bool Native::Openflow::Switch::OfPort::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface")
+    if(name == "scan-ios-rib" || name == "scan-rib-ios" || name == "scan-lc-rp" || name == "scan-rp-lc" || name == "lc-detect")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::OfPort::Interface::Interface()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanIosRib()
     :
-    name{YType::str, "name"}
+    scan_opt(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt>())
 {
+    scan_opt->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "of-port"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scan-ios-rib"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::OfPort::Interface::~Interface()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::~ScanIosRib()
 {
 }
 
-bool Native::Openflow::Switch::OfPort::Interface::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::has_data() const
 {
-    return name.is_set;
+    if (is_presence_container) return true;
+    return (scan_opt !=  nullptr && scan_opt->has_data());
 }
 
-bool Native::Openflow::Switch::OfPort::Interface::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
+	|| (scan_opt !=  nullptr && scan_opt->has_operation());
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::OfPort::Interface::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "scan-ios-rib";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::OfPort::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::OfPort::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "scan-opt")
+    {
+        if(scan_opt == nullptr)
+        {
+            scan_opt = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt>();
+        }
+        return scan_opt;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::OfPort::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(scan_opt != nullptr)
+    {
+        children["scan-opt"] = scan_opt;
+    }
+
     return children;
 }
 
-void Native::Openflow::Switch::OfPort::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::Openflow::Switch::OfPort::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
 }
 
-bool Native::Openflow::Switch::OfPort::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name")
+    if(name == "scan-opt")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::RateLimit::RateLimit()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::ScanOpt()
     :
-    packet_in{YType::uint16, "packet_in"},
-    burst{YType::uint16, "burst"}
+    count{YType::uint16, "count"},
+    period{YType::uint16, "period"}
 {
 
-    yang_name = "rate-limit"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scan-opt"; yang_parent_name = "scan-ios-rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::RateLimit::~RateLimit()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::~ScanOpt()
 {
 }
 
-bool Native::Openflow::Switch::RateLimit::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::has_data() const
 {
-    return packet_in.is_set
-	|| burst.is_set;
+    if (is_presence_container) return true;
+    return count.is_set
+	|| period.is_set;
 }
 
-bool Native::Openflow::Switch::RateLimit::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(packet_in.yfilter)
-	|| ydk::is_set(burst.yfilter);
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(period.yfilter);
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/scan-ios-rib/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::RateLimit::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rate-limit";
+    path_buffer << "scan-opt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::RateLimit::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (packet_in.is_set || is_set(packet_in.yfilter)) leaf_name_data.push_back(packet_in.get_name_leafdata());
-    if (burst.is_set || is_set(burst.yfilter)) leaf_name_data.push_back(burst.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::RateLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::RateLimit::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Openflow::Switch::RateLimit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "packet_in")
+    if(value_path == "count")
     {
-        packet_in = value;
-        packet_in.value_namespace = name_space;
-        packet_in.value_namespace_prefix = name_space_prefix;
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "burst")
+    if(value_path == "period")
     {
-        burst = value;
-        burst.value_namespace = name_space;
-        burst.value_namespace_prefix = name_space_prefix;
+        period = value;
+        period.value_namespace = name_space;
+        period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Openflow::Switch::RateLimit::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "packet_in")
+    if(value_path == "count")
     {
-        packet_in.yfilter = yfilter;
+        count.yfilter = yfilter;
     }
-    if(value_path == "burst")
+    if(value_path == "period")
     {
-        burst.yfilter = yfilter;
+        period.yfilter = yfilter;
     }
 }
 
-bool Native::Openflow::Switch::RateLimit::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanIosRib::ScanOpt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "packet_in" || name == "burst")
+    if(name == "count" || name == "period")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Statistics::Statistics()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanRibIos()
     :
-    collection_interval{YType::uint8, "collection-interval"}
+    scan_opt(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt>())
 {
+    scan_opt->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scan-rib-ios"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::Statistics::~Statistics()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::~ScanRibIos()
 {
 }
 
-bool Native::Openflow::Switch::Statistics::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::has_data() const
 {
-    return collection_interval.is_set;
+    if (is_presence_container) return true;
+    return (scan_opt !=  nullptr && scan_opt->has_data());
 }
 
-bool Native::Openflow::Switch::Statistics::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(collection_interval.yfilter);
+	|| (scan_opt !=  nullptr && scan_opt->has_operation());
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::Statistics::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "statistics";
+    path_buffer << "scan-rib-ios";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Statistics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (collection_interval.is_set || is_set(collection_interval.yfilter)) leaf_name_data.push_back(collection_interval.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::Statistics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "scan-opt")
+    {
+        if(scan_opt == nullptr)
+        {
+            scan_opt = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt>();
+        }
+        return scan_opt;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Statistics::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(scan_opt != nullptr)
+    {
+        children["scan-opt"] = scan_opt;
+    }
+
     return children;
 }
 
-void Native::Openflow::Switch::Statistics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "collection-interval")
-    {
-        collection_interval = value;
-        collection_interval.value_namespace = name_space;
-        collection_interval.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::Openflow::Switch::Statistics::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "collection-interval")
-    {
-        collection_interval.yfilter = yfilter;
-    }
 }
 
-bool Native::Openflow::Switch::Statistics::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "collection-interval")
+    if(name == "scan-opt")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Logging::Logging()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::ScanOpt()
     :
-    flow_modify{YType::empty, "flow-modify"}
+    count{YType::uint16, "count"},
+    period{YType::uint16, "period"}
 {
 
-    yang_name = "logging"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scan-opt"; yang_parent_name = "scan-rib-ios"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::Logging::~Logging()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::~ScanOpt()
 {
 }
 
-bool Native::Openflow::Switch::Logging::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::has_data() const
 {
-    return flow_modify.is_set;
+    if (is_presence_container) return true;
+    return count.is_set
+	|| period.is_set;
 }
 
-bool Native::Openflow::Switch::Logging::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(flow_modify.yfilter);
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(period.yfilter);
 }
 
-std::string Native::Openflow::Switch::Logging::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "logging";
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/scan-rib-ios/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Logging::get_name_leaf_data() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::get_segment_path() const
 {
+    std::ostringstream path_buffer;
+    path_buffer << "scan-opt";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::get_name_leaf_data() const
+{
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (flow_modify.is_set || is_set(flow_modify.yfilter)) leaf_name_data.push_back(flow_modify.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Logging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Openflow::Switch::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "flow-modify")
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "period")
     {
-        flow_modify = value;
-        flow_modify.value_namespace = name_space;
-        flow_modify.value_namespace_prefix = name_space_prefix;
+        period = value;
+        period.value_namespace = name_space;
+        period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Openflow::Switch::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "flow-modify")
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "period")
     {
-        flow_modify.yfilter = yfilter;
+        period.yfilter = yfilter;
     }
 }
 
-bool Native::Openflow::Switch::Logging::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRibIos::ScanOpt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "flow-modify")
+    if(name == "count" || name == "period")
         return true;
     return false;
 }
 
-Native::Openflow::Switch::Tls::Tls()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanLcRp()
     :
-    trustpoint(std::make_shared<Native::Openflow::Switch::Tls::Trustpoint>())
+    scan_opt(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt>())
 {
-    trustpoint->parent = this;
+    scan_opt->parent = this;
 
-    yang_name = "tls"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "scan-lc-rp"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Openflow::Switch::Tls::~Tls()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::~ScanLcRp()
 {
 }
 
-bool Native::Openflow::Switch::Tls::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::has_data() const
 {
-    return (trustpoint !=  nullptr && trustpoint->has_data());
+    if (is_presence_container) return true;
+    return (scan_opt !=  nullptr && scan_opt->has_data());
 }
 
-bool Native::Openflow::Switch::Tls::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::has_operation() const
 {
     return is_set(yfilter)
-	|| (trustpoint !=  nullptr && trustpoint->has_operation());
+	|| (scan_opt !=  nullptr && scan_opt->has_operation());
+}
+
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::Openflow::Switch::Tls::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "tls";
+    path_buffer << "scan-lc-rp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Tls::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3523,297 +13973,186 @@ std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Tls::ge
 
 }
 
-std::shared_ptr<Entity> Native::Openflow::Switch::Tls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "trustpoint")
+    if(child_yang_name == "scan-opt")
     {
-        if(trustpoint == nullptr)
+        if(scan_opt == nullptr)
         {
-            trustpoint = std::make_shared<Native::Openflow::Switch::Tls::Trustpoint>();
+            scan_opt = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt>();
         }
-        return trustpoint;
+        return scan_opt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Tls::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(trustpoint != nullptr)
+    if(scan_opt != nullptr)
     {
-        children["trustpoint"] = trustpoint;
+        children["scan-opt"] = scan_opt;
     }
-
-    return children;
-}
-
-void Native::Openflow::Switch::Tls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Openflow::Switch::Tls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Openflow::Switch::Tls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "trustpoint")
-        return true;
-    return false;
-}
-
-Native::Openflow::Switch::Tls::Trustpoint::Trustpoint()
-    :
-    local{YType::str, "local"},
-    remote{YType::str, "remote"}
-{
-
-    yang_name = "trustpoint"; yang_parent_name = "tls"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::Openflow::Switch::Tls::Trustpoint::~Trustpoint()
-{
-}
-
-bool Native::Openflow::Switch::Tls::Trustpoint::has_data() const
-{
-    return local.is_set
-	|| remote.is_set;
-}
-
-bool Native::Openflow::Switch::Tls::Trustpoint::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(local.yfilter)
-	|| ydk::is_set(remote.yfilter);
-}
-
-std::string Native::Openflow::Switch::Tls::Trustpoint::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trustpoint";
-    return path_buffer.str();
-}
 
-std::vector<std::pair<std::string, LeafData> > Native::Openflow::Switch::Tls::Trustpoint::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (local.is_set || is_set(local.yfilter)) leaf_name_data.push_back(local.get_name_leafdata());
-    if (remote.is_set || is_set(remote.yfilter)) leaf_name_data.push_back(remote.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Openflow::Switch::Tls::Trustpoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Openflow::Switch::Tls::Trustpoint::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
     return children;
 }
 
-void Native::Openflow::Switch::Tls::Trustpoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "local")
-    {
-        local = value;
-        local.value_namespace = name_space;
-        local.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote")
-    {
-        remote = value;
-        remote.value_namespace = name_space;
-        remote.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::Openflow::Switch::Tls::Trustpoint::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "local")
-    {
-        local.yfilter = yfilter;
-    }
-    if(value_path == "remote")
-    {
-        remote.yfilter = yfilter;
-    }
 }
 
-bool Native::Openflow::Switch::Tls::Trustpoint::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local" || name == "remote")
+    if(name == "scan-opt")
         return true;
     return false;
 }
 
-Native::Utd::Utd()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::ScanOpt()
     :
-    all_interfaces{YType::empty, "all-interfaces"}
-    	,
-    redirect(std::make_shared<Native::Utd::Redirect>())
-	,engine(nullptr) // presence node
+    count{YType::uint16, "count"},
+    period{YType::uint16, "period"}
 {
-    redirect->parent = this;
 
-    yang_name = "utd"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-opt"; yang_parent_name = "scan-lc-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Utd::~Utd()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::~ScanOpt()
 {
 }
 
-bool Native::Utd::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::has_data() const
 {
-    return all_interfaces.is_set
-	|| (redirect !=  nullptr && redirect->has_data())
-	|| (engine !=  nullptr && engine->has_data());
+    if (is_presence_container) return true;
+    return count.is_set
+	|| period.is_set;
 }
 
-bool Native::Utd::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(all_interfaces.yfilter)
-	|| (redirect !=  nullptr && redirect->has_operation())
-	|| (engine !=  nullptr && engine->has_operation());
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(period.yfilter);
 }
 
-std::string Native::Utd::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/scan-lc-rp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Utd::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-utd:utd";
+    path_buffer << "scan-opt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Utd::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (all_interfaces.is_set || is_set(all_interfaces.yfilter)) leaf_name_data.push_back(all_interfaces.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "redirect")
-    {
-        if(redirect == nullptr)
-        {
-            redirect = std::make_shared<Native::Utd::Redirect>();
-        }
-        return redirect;
-    }
-
-    if(child_yang_name == "engine")
-    {
-        if(engine == nullptr)
-        {
-            engine = std::make_shared<Native::Utd::Engine>();
-        }
-        return engine;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Utd::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(redirect != nullptr)
-    {
-        children["redirect"] = redirect;
-    }
-
-    if(engine != nullptr)
-    {
-        children["engine"] = engine;
-    }
-
     return children;
 }
 
-void Native::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "all-interfaces")
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "period")
     {
-        all_interfaces = value;
-        all_interfaces.value_namespace = name_space;
-        all_interfaces.value_namespace_prefix = name_space_prefix;
+        period = value;
+        period.value_namespace = name_space;
+        period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Utd::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "all-interfaces")
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "period")
     {
-        all_interfaces.yfilter = yfilter;
+        period.yfilter = yfilter;
     }
 }
 
-bool Native::Utd::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanLcRp::ScanOpt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "redirect" || name == "engine" || name == "all-interfaces")
+    if(name == "count" || name == "period")
         return true;
     return false;
 }
 
-Native::Utd::Redirect::Redirect()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanRpLc()
     :
-    interface(std::make_shared<Native::Utd::Redirect::Interface>())
+    scan_opt(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt>())
 {
-    interface->parent = this;
+    scan_opt->parent = this;
 
-    yang_name = "redirect"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-rp-lc"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Utd::Redirect::~Redirect()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::~ScanRpLc()
 {
 }
 
-bool Native::Utd::Redirect::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::has_data() const
 {
-    return (interface !=  nullptr && interface->has_data());
+    if (is_presence_container) return true;
+    return (scan_opt !=  nullptr && scan_opt->has_data());
 }
 
-bool Native::Utd::Redirect::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::has_operation() const
 {
     return is_set(yfilter)
-	|| (interface !=  nullptr && interface->has_operation());
+	|| (scan_opt !=  nullptr && scan_opt->has_operation());
 }
 
-std::string Native::Utd::Redirect::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Utd::Redirect::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "redirect";
+    path_buffer << "scan-rp-lc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Utd::Redirect::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3822,9905 +14161,561 @@ std::vector<std::pair<std::string, LeafData> > Native::Utd::Redirect::get_name_l
 
 }
 
-std::shared_ptr<Entity> Native::Utd::Redirect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "interface")
+    if(child_yang_name == "scan-opt")
     {
-        if(interface == nullptr)
+        if(scan_opt == nullptr)
         {
-            interface = std::make_shared<Native::Utd::Redirect::Interface>();
+            scan_opt = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt>();
         }
-        return interface;
+        return scan_opt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Redirect::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(interface != nullptr)
+    if(scan_opt != nullptr)
     {
-        children["interface"] = interface;
+        children["scan-opt"] = scan_opt;
     }
 
     return children;
 }
 
-void Native::Utd::Redirect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Utd::Redirect::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Utd::Redirect::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface")
+    if(name == "scan-opt")
         return true;
     return false;
 }
 
-Native::Utd::Redirect::Interface::Interface()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::ScanOpt()
     :
-    bdi{YType::str, "BDI"},
-    virtualportgroup{YType::uint16, "VirtualPortGroup"}
+    count{YType::uint16, "count"},
+    period{YType::uint16, "period"}
 {
 
-    yang_name = "interface"; yang_parent_name = "redirect"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-opt"; yang_parent_name = "scan-rp-lc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Utd::Redirect::Interface::~Interface()
+Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::~ScanOpt()
 {
 }
 
-bool Native::Utd::Redirect::Interface::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::has_data() const
 {
-    return bdi.is_set
-	|| virtualportgroup.is_set;
+    if (is_presence_container) return true;
+    return count.is_set
+	|| period.is_set;
 }
 
-bool Native::Utd::Redirect::Interface::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(bdi.yfilter)
-	|| ydk::is_set(virtualportgroup.yfilter);
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(period.yfilter);
 }
 
-std::string Native::Utd::Redirect::Interface::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd/redirect/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv4/type/scan-rp-lc/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Utd::Redirect::Interface::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface";
+    path_buffer << "scan-opt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Utd::Redirect::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (bdi.is_set || is_set(bdi.yfilter)) leaf_name_data.push_back(bdi.get_name_leafdata());
-    if (virtualportgroup.is_set || is_set(virtualportgroup.yfilter)) leaf_name_data.push_back(virtualportgroup.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::Utd::Redirect::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Redirect::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Utd::Redirect::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "BDI")
+    if(value_path == "count")
     {
-        bdi = value;
-        bdi.value_namespace = name_space;
-        bdi.value_namespace_prefix = name_space_prefix;
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "VirtualPortGroup")
+    if(value_path == "period")
     {
-        virtualportgroup = value;
-        virtualportgroup.value_namespace = name_space;
-        virtualportgroup.value_namespace_prefix = name_space_prefix;
+        period = value;
+        period.value_namespace = name_space;
+        period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Utd::Redirect::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "BDI")
-    {
-        bdi.yfilter = yfilter;
-    }
-    if(value_path == "VirtualPortGroup")
+    if(value_path == "count")
     {
-        virtualportgroup.yfilter = yfilter;
+        count.yfilter = yfilter;
     }
-}
-
-bool Native::Utd::Redirect::Interface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "BDI" || name == "VirtualPortGroup")
-        return true;
-    return false;
-}
-
-Native::Utd::Engine::Engine()
-    :
-    mode{YType::enumeration, "mode"}
-    	,
-    fail(std::make_shared<Native::Utd::Engine::Fail>())
-{
-    fail->parent = this;
-
-    yang_name = "engine"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Utd::Engine::~Engine()
-{
-}
-
-bool Native::Utd::Engine::has_data() const
-{
-    return mode.is_set
-	|| (fail !=  nullptr && fail->has_data());
-}
-
-bool Native::Utd::Engine::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mode.yfilter)
-	|| (fail !=  nullptr && fail->has_operation());
-}
-
-std::string Native::Utd::Engine::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Utd::Engine::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "engine";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Utd::Engine::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Utd::Engine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fail")
-    {
-        if(fail == nullptr)
-        {
-            fail = std::make_shared<Native::Utd::Engine::Fail>();
-        }
-        return fail;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Engine::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(fail != nullptr)
-    {
-        children["fail"] = fail;
-    }
-
-    return children;
-}
-
-void Native::Utd::Engine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Utd::Engine::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-}
-
-bool Native::Utd::Engine::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fail" || name == "mode")
-        return true;
-    return false;
-}
-
-Native::Utd::Engine::Fail::Fail()
-    :
-    close{YType::empty, "close"}
-{
-
-    yang_name = "fail"; yang_parent_name = "engine"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::Utd::Engine::Fail::~Fail()
-{
-}
-
-bool Native::Utd::Engine::Fail::has_data() const
-{
-    return close.is_set;
-}
-
-bool Native::Utd::Engine::Fail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(close.yfilter);
-}
-
-std::string Native::Utd::Engine::Fail::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd/engine/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Utd::Engine::Fail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Utd::Engine::Fail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (close.is_set || is_set(close.yfilter)) leaf_name_data.push_back(close.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::Utd::Engine::Fail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::Utd::Engine::Fail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::Utd::Engine::Fail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "close")
-    {
-        close = value;
-        close.value_namespace = name_space;
-        close.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Utd::Engine::Fail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "close")
-    {
-        close.yfilter = yfilter;
-    }
-}
-
-bool Native::Utd::Engine::Fail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "close")
-        return true;
-    return false;
-}
-
-Native::UtdSt::UtdSt()
-    :
-    utd(std::make_shared<Native::UtdSt::Utd>())
-{
-    utd->parent = this;
-
-    yang_name = "utd-st"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::~UtdSt()
-{
-}
-
-bool Native::UtdSt::has_data() const
-{
-    return (utd !=  nullptr && utd->has_data());
-}
-
-bool Native::UtdSt::has_operation() const
-{
-    return is_set(yfilter)
-	|| (utd !=  nullptr && utd->has_operation());
-}
-
-std::string Native::UtdSt::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-utd:utd-st";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "utd")
-    {
-        if(utd == nullptr)
-        {
-            utd = std::make_shared<Native::UtdSt::Utd>();
-        }
-        return utd;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(utd != nullptr)
-    {
-        children["utd"] = utd;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "utd")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Utd()
-    :
-    web_filter(std::make_shared<Native::UtdSt::Utd::WebFilter>())
-	,engine(std::make_shared<Native::UtdSt::Utd::Engine>())
-	,threat_inspection(std::make_shared<Native::UtdSt::Utd::ThreatInspection>())
-{
-    web_filter->parent = this;
-    engine->parent = this;
-    threat_inspection->parent = this;
-
-    yang_name = "utd"; yang_parent_name = "utd-st"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::~Utd()
-{
-}
-
-bool Native::UtdSt::Utd::has_data() const
-{
-    return (web_filter !=  nullptr && web_filter->has_data())
-	|| (engine !=  nullptr && engine->has_data())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_data());
-}
-
-bool Native::UtdSt::Utd::has_operation() const
-{
-    return is_set(yfilter)
-	|| (web_filter !=  nullptr && web_filter->has_operation())
-	|| (engine !=  nullptr && engine->has_operation())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_operation());
-}
-
-std::string Native::UtdSt::Utd::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "utd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "web-filter")
-    {
-        if(web_filter == nullptr)
-        {
-            web_filter = std::make_shared<Native::UtdSt::Utd::WebFilter>();
-        }
-        return web_filter;
-    }
-
-    if(child_yang_name == "engine")
-    {
-        if(engine == nullptr)
-        {
-            engine = std::make_shared<Native::UtdSt::Utd::Engine>();
-        }
-        return engine;
-    }
-
-    if(child_yang_name == "threat-inspection")
-    {
-        if(threat_inspection == nullptr)
-        {
-            threat_inspection = std::make_shared<Native::UtdSt::Utd::ThreatInspection>();
-        }
-        return threat_inspection;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(web_filter != nullptr)
-    {
-        children["web-filter"] = web_filter;
-    }
-
-    if(engine != nullptr)
-    {
-        children["engine"] = engine;
-    }
-
-    if(threat_inspection != nullptr)
-    {
-        children["threat-inspection"] = threat_inspection;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "web-filter" || name == "engine" || name == "threat-inspection")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::WebFilter()
-    :
-    block(std::make_shared<Native::UtdSt::Utd::WebFilter::Block>())
-	,url(std::make_shared<Native::UtdSt::Utd::WebFilter::Url>())
-	,domain(std::make_shared<Native::UtdSt::Utd::WebFilter::Domain>())
-{
-    block->parent = this;
-    url->parent = this;
-    domain->parent = this;
-
-    yang_name = "web-filter"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::~WebFilter()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::has_data() const
-{
-    for (std::size_t index=0; index<sourcedb.size(); index++)
-    {
-        if(sourcedb[index]->has_data())
-            return true;
-    }
-    return (block !=  nullptr && block->has_data())
-	|| (url !=  nullptr && url->has_data())
-	|| (domain !=  nullptr && domain->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::has_operation() const
-{
-    for (std::size_t index=0; index<sourcedb.size(); index++)
-    {
-        if(sourcedb[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (block !=  nullptr && block->has_operation())
-	|| (url !=  nullptr && url->has_operation())
-	|| (domain !=  nullptr && domain->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "web-filter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "block")
-    {
-        if(block == nullptr)
-        {
-            block = std::make_shared<Native::UtdSt::Utd::WebFilter::Block>();
-        }
-        return block;
-    }
-
-    if(child_yang_name == "sourcedb")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Sourcedb>();
-        c->parent = this;
-        sourcedb.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "url")
-    {
-        if(url == nullptr)
-        {
-            url = std::make_shared<Native::UtdSt::Utd::WebFilter::Url>();
-        }
-        return url;
-    }
-
-    if(child_yang_name == "domain")
-    {
-        if(domain == nullptr)
-        {
-            domain = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain>();
-        }
-        return domain;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(block != nullptr)
-    {
-        children["block"] = block;
-    }
-
-    count = 0;
-    for (auto const & c : sourcedb)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(url != nullptr)
-    {
-        children["url"] = url;
-    }
-
-    if(domain != nullptr)
-    {
-        children["domain"] = domain;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block" || name == "sourcedb" || name == "url" || name == "domain")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::Block()
-    :
-    local_server(std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer>())
-	,page(std::make_shared<Native::UtdSt::Utd::WebFilter::Block::Page>())
-{
-    local_server->parent = this;
-    page->parent = this;
-
-    yang_name = "block"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::~Block()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::has_data() const
-{
-    return (local_server !=  nullptr && local_server->has_data())
-	|| (page !=  nullptr && page->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::has_operation() const
-{
-    return is_set(yfilter)
-	|| (local_server !=  nullptr && local_server->has_operation())
-	|| (page !=  nullptr && page->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Block::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "local-server")
-    {
-        if(local_server == nullptr)
-        {
-            local_server = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer>();
-        }
-        return local_server;
-    }
-
-    if(child_yang_name == "page")
-    {
-        if(page == nullptr)
-        {
-            page = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::Page>();
-        }
-        return page;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(local_server != nullptr)
-    {
-        children["local-server"] = local_server;
-    }
-
-    if(page != nullptr)
-    {
-        children["page"] = page;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-server" || name == "page")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::LocalServer()
-{
-
-    yang_name = "local-server"; yang_parent_name = "block"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::~LocalServer()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/block/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "local-server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Profile()
-    :
-    id{YType::str, "id"},
-    http_ports{YType::str, "http-ports"}
-    	,
-    block_page_interface(std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface>())
-	,content(std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content>())
-{
-    block_page_interface->parent = this;
-    content->parent = this;
-
-    yang_name = "profile"; yang_parent_name = "local-server"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::~Profile()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::has_data() const
-{
-    return id.is_set
-	|| http_ports.is_set
-	|| (block_page_interface !=  nullptr && block_page_interface->has_data())
-	|| (content !=  nullptr && content->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(http_ports.yfilter)
-	|| (block_page_interface !=  nullptr && block_page_interface->has_operation())
-	|| (content !=  nullptr && content->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/block/local-server/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (http_ports.is_set || is_set(http_ports.yfilter)) leaf_name_data.push_back(http_ports.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "block-page-interface")
-    {
-        if(block_page_interface == nullptr)
-        {
-            block_page_interface = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface>();
-        }
-        return block_page_interface;
-    }
-
-    if(child_yang_name == "content")
-    {
-        if(content == nullptr)
-        {
-            content = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content>();
-        }
-        return content;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(block_page_interface != nullptr)
-    {
-        children["block-page-interface"] = block_page_interface;
-    }
-
-    if(content != nullptr)
-    {
-        children["content"] = content;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "http-ports")
-    {
-        http_ports = value;
-        http_ports.value_namespace = name_space;
-        http_ports.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "http-ports")
-    {
-        http_ports.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block-page-interface" || name == "content" || name == "id" || name == "http-ports")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::BlockPageInterface()
-    :
-    loopback{YType::uint32, "Loopback"}
-{
-
-    yang_name = "block-page-interface"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::~BlockPageInterface()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::has_data() const
-{
-    return loopback.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(loopback.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block-page-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "Loopback")
-    {
-        loopback = value;
-        loopback.value_namespace = name_space;
-        loopback.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "Loopback")
-    {
-        loopback.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::BlockPageInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "Loopback")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::Content()
-    :
-    text{YType::str, "text"},
-    file{YType::str, "file"}
-{
-
-    yang_name = "content"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::~Content()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::has_data() const
-{
-    return text.is_set
-	|| file.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(text.yfilter)
-	|| ydk::is_set(file.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "content";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "text")
-    {
-        text = value;
-        text.value_namespace = name_space;
-        text.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "text")
-    {
-        text.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::LocalServer::Profile::Content::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "text" || name == "file")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::Page::Page()
-{
-
-    yang_name = "page"; yang_parent_name = "block"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::Page::~Page()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::Page::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::Page::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::Page::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/block/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::Page::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "page";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Block::Page::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::Page::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Block::Page::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::Page::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::Page::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::Page::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::Page::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::Page::Profile::Profile()
-    :
-    id{YType::str, "id"},
-    file{YType::str, "file"},
-    redirect_url{YType::str, "redirect-url"},
-    text{YType::str, "text"}
-{
-
-    yang_name = "profile"; yang_parent_name = "page"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Block::Page::Profile::~Profile()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::Page::Profile::has_data() const
-{
-    return id.is_set
-	|| file.is_set
-	|| redirect_url.is_set
-	|| text.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::Page::Profile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(file.yfilter)
-	|| ydk::is_set(redirect_url.yfilter)
-	|| ydk::is_set(text.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::Page::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/block/page/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Block::Page::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Block::Page::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-    if (redirect_url.is_set || is_set(redirect_url.yfilter)) leaf_name_data.push_back(redirect_url.get_name_leafdata());
-    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Block::Page::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Block::Page::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::Page::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redirect-url")
-    {
-        redirect_url = value;
-        redirect_url.value_namespace = name_space;
-        redirect_url.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "text")
-    {
-        text = value;
-        text.value_namespace = name_space;
-        text.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Block::Page::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-    if(value_path == "redirect-url")
-    {
-        redirect_url.yfilter = yfilter;
-    }
-    if(value_path == "text")
-    {
-        text.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Block::Page::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id" || name == "file" || name == "redirect-url" || name == "text")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Sourcedb::Sourcedb()
-    :
-    id{YType::str, "id"}
-    	,
-    logging(std::make_shared<Native::UtdSt::Utd::WebFilter::Sourcedb::Logging>())
-{
-    logging->parent = this;
-
-    yang_name = "sourcedb"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Sourcedb::~Sourcedb()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Sourcedb::has_data() const
-{
-    return id.is_set
-	|| (logging !=  nullptr && logging->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Sourcedb::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| (logging !=  nullptr && logging->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Sourcedb::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Sourcedb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sourcedb" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Sourcedb::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Sourcedb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<Native::UtdSt::Utd::WebFilter::Sourcedb::Logging>();
-        }
-        return logging;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Sourcedb::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(logging != nullptr)
-    {
-        children["logging"] = logging;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Sourcedb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Sourcedb::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Sourcedb::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "logging" || name == "id")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::Logging()
-    :
-    level{YType::enumeration, "level"}
-{
-
-    yang_name = "logging"; yang_parent_name = "sourcedb"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::~Logging()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::has_data() const
-{
-    return level.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Url()
-{
-
-    yang_name = "url"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::~Url()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "url";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Profile()
-    :
-    id{YType::str, "id"},
-    alert{YType::enumeration, "alert"}
-    	,
-    blacklist(nullptr) // presence node
-	,categories(std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories>())
-	,block(std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Block>())
-	,log(std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Log>())
-	,reputation(nullptr) // presence node
-	,sourcedb(std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb>())
-	,whitelist(nullptr) // presence node
-{
-    categories->parent = this;
-    block->parent = this;
-    log->parent = this;
-    sourcedb->parent = this;
-
-    yang_name = "profile"; yang_parent_name = "url"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::~Profile()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::has_data() const
-{
-    for (auto const & leaf : alert.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return id.is_set
-	|| (blacklist !=  nullptr && blacklist->has_data())
-	|| (categories !=  nullptr && categories->has_data())
-	|| (block !=  nullptr && block->has_data())
-	|| (log !=  nullptr && log->has_data())
-	|| (reputation !=  nullptr && reputation->has_data())
-	|| (sourcedb !=  nullptr && sourcedb->has_data())
-	|| (whitelist !=  nullptr && whitelist->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::has_operation() const
-{
-    for (auto const & leaf : alert.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(alert.yfilter)
-	|| (blacklist !=  nullptr && blacklist->has_operation())
-	|| (categories !=  nullptr && categories->has_operation())
-	|| (block !=  nullptr && block->has_operation())
-	|| (log !=  nullptr && log->has_operation())
-	|| (reputation !=  nullptr && reputation->has_operation())
-	|| (sourcedb !=  nullptr && sourcedb->has_operation())
-	|| (whitelist !=  nullptr && whitelist->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/url/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    auto alert_name_datas = alert.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), alert_name_datas.begin(), alert_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "blacklist")
-    {
-        if(blacklist == nullptr)
-        {
-            blacklist = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist>();
-        }
-        return blacklist;
-    }
-
-    if(child_yang_name == "categories")
-    {
-        if(categories == nullptr)
-        {
-            categories = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories>();
-        }
-        return categories;
-    }
-
-    if(child_yang_name == "block")
-    {
-        if(block == nullptr)
-        {
-            block = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Block>();
-        }
-        return block;
-    }
-
-    if(child_yang_name == "log")
-    {
-        if(log == nullptr)
-        {
-            log = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Log>();
-        }
-        return log;
-    }
-
-    if(child_yang_name == "reputation")
-    {
-        if(reputation == nullptr)
-        {
-            reputation = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation>();
-        }
-        return reputation;
-    }
-
-    if(child_yang_name == "sourcedb")
-    {
-        if(sourcedb == nullptr)
-        {
-            sourcedb = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb>();
-        }
-        return sourcedb;
-    }
-
-    if(child_yang_name == "whitelist")
-    {
-        if(whitelist == nullptr)
-        {
-            whitelist = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist>();
-        }
-        return whitelist;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(blacklist != nullptr)
-    {
-        children["blacklist"] = blacklist;
-    }
-
-    if(categories != nullptr)
-    {
-        children["categories"] = categories;
-    }
-
-    if(block != nullptr)
-    {
-        children["block"] = block;
-    }
-
-    if(log != nullptr)
-    {
-        children["log"] = log;
-    }
-
-    if(reputation != nullptr)
-    {
-        children["reputation"] = reputation;
-    }
-
-    if(sourcedb != nullptr)
-    {
-        children["sourcedb"] = sourcedb;
-    }
-
-    if(whitelist != nullptr)
-    {
-        children["whitelist"] = whitelist;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alert")
-    {
-        alert.append(value);
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "alert")
-    {
-        alert.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "blacklist" || name == "categories" || name == "block" || name == "log" || name == "reputation" || name == "sourcedb" || name == "whitelist" || name == "id" || name == "alert")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::Blacklist()
-    :
-    parameter_map(std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap>())
-{
-    parameter_map->parent = this;
-
-    yang_name = "blacklist"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::~Blacklist()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::has_data() const
-{
-    return (parameter_map !=  nullptr && parameter_map->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::has_operation() const
-{
-    return is_set(yfilter)
-	|| (parameter_map !=  nullptr && parameter_map->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "blacklist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parameter-map")
-    {
-        if(parameter_map == nullptr)
-        {
-            parameter_map = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap>();
-        }
-        return parameter_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(parameter_map != nullptr)
-    {
-        children["parameter-map"] = parameter_map;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parameter-map")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::ParameterMap()
-    :
-    regex{YType::str, "regex"}
-{
-
-    yang_name = "parameter-map"; yang_parent_name = "blacklist"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::~ParameterMap()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::has_data() const
-{
-    return regex.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(regex.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parameter-map";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "regex")
-    {
-        regex = value;
-        regex.value_namespace = name_space;
-        regex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "regex")
-    {
-        regex.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Blacklist::ParameterMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "regex")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Categories()
-    :
-    allow(nullptr) // presence node
-	,block(nullptr) // presence node
-{
-
-    yang_name = "categories"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::~Categories()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::has_data() const
-{
-    return (allow !=  nullptr && allow->has_data())
-	|| (block !=  nullptr && block->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::has_operation() const
-{
-    return is_set(yfilter)
-	|| (allow !=  nullptr && allow->has_operation())
-	|| (block !=  nullptr && block->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "categories";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "allow")
-    {
-        if(allow == nullptr)
-        {
-            allow = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow>();
-        }
-        return allow;
-    }
-
-    if(child_yang_name == "block")
-    {
-        if(block == nullptr)
-        {
-            block = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block>();
-        }
-        return block;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(allow != nullptr)
-    {
-        children["allow"] = allow;
-    }
-
-    if(block != nullptr)
-    {
-        children["block"] = block;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "allow" || name == "block")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Allow()
-{
-
-    yang_name = "allow"; yang_parent_name = "categories"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::~Allow()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::has_data() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::has_operation() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "allow";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "category")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category>();
-        c->parent = this;
-        category.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : category)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "category")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::Category()
-    :
-    name{YType::enumeration, "name"}
-{
-
-    yang_name = "category"; yang_parent_name = "allow"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::~Category()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::has_data() const
-{
-    return name.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "category" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Allow::Category::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Block()
-{
-
-    yang_name = "block"; yang_parent_name = "categories"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::~Block()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::has_data() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::has_operation() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "category")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category>();
-        c->parent = this;
-        category.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : category)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "category")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::Category()
-    :
-    name{YType::enumeration, "name"}
-{
-
-    yang_name = "category"; yang_parent_name = "block"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::~Category()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::has_data() const
-{
-    return name.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "category" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Categories::Block::Category::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Block::Block()
-    :
-    local_server{YType::str, "local-server"},
-    page_profile{YType::str, "page-profile"}
-{
-
-    yang_name = "block"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Block::~Block()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Block::has_data() const
-{
-    return local_server.is_set
-	|| page_profile.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Block::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(local_server.yfilter)
-	|| ydk::is_set(page_profile.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Block::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Block::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (local_server.is_set || is_set(local_server.yfilter)) leaf_name_data.push_back(local_server.get_name_leafdata());
-    if (page_profile.is_set || is_set(page_profile.yfilter)) leaf_name_data.push_back(page_profile.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Block::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "local-server")
-    {
-        local_server = value;
-        local_server.value_namespace = name_space;
-        local_server.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "page-profile")
-    {
-        page_profile = value;
-        page_profile.value_namespace = name_space;
-        page_profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Block::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "local-server")
-    {
-        local_server.yfilter = yfilter;
-    }
-    if(value_path == "page-profile")
-    {
-        page_profile.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Block::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-server" || name == "page-profile")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Log::Log()
-    :
-    level{YType::enumeration, "level"}
-{
-
-    yang_name = "log"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Log::~Log()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Log::has_data() const
-{
-    return level.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Log::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Log::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "log";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Log::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Log::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Log::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Log::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Log::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::Reputation()
-    :
-    block_threshold{YType::enumeration, "block-threshold"}
-{
-
-    yang_name = "reputation"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::~Reputation()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::has_data() const
-{
-    return block_threshold.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(block_threshold.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "reputation";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (block_threshold.is_set || is_set(block_threshold.yfilter)) leaf_name_data.push_back(block_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "block-threshold")
-    {
-        block_threshold = value;
-        block_threshold.value_namespace = name_space;
-        block_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "block-threshold")
-    {
-        block_threshold.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block-threshold")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Sourcedb()
-    :
-    fail(std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail>())
-{
-    fail->parent = this;
-
-    yang_name = "sourcedb"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::~Sourcedb()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::has_data() const
-{
-    return (fail !=  nullptr && fail->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::has_operation() const
-{
-    return is_set(yfilter)
-	|| (fail !=  nullptr && fail->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sourcedb";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fail")
-    {
-        if(fail == nullptr)
-        {
-            fail = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail>();
-        }
-        return fail;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(fail != nullptr)
-    {
-        children["fail"] = fail;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fail")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::Fail()
-    :
-    close{YType::empty, "close"}
-{
-
-    yang_name = "fail"; yang_parent_name = "sourcedb"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::~Fail()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::has_data() const
-{
-    return close.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(close.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (close.is_set || is_set(close.yfilter)) leaf_name_data.push_back(close.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "close")
-    {
-        close = value;
-        close.value_namespace = name_space;
-        close.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "close")
-    {
-        close.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Sourcedb::Fail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "close")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::Whitelist()
-    :
-    parameter_map(std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap>())
-{
-    parameter_map->parent = this;
-
-    yang_name = "whitelist"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::~Whitelist()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::has_data() const
-{
-    return (parameter_map !=  nullptr && parameter_map->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::has_operation() const
-{
-    return is_set(yfilter)
-	|| (parameter_map !=  nullptr && parameter_map->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "whitelist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parameter-map")
-    {
-        if(parameter_map == nullptr)
-        {
-            parameter_map = std::make_shared<Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap>();
-        }
-        return parameter_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(parameter_map != nullptr)
-    {
-        children["parameter-map"] = parameter_map;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parameter-map")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::ParameterMap()
-    :
-    regex{YType::str, "regex"}
-{
-
-    yang_name = "parameter-map"; yang_parent_name = "whitelist"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::~ParameterMap()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::has_data() const
-{
-    return regex.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(regex.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parameter-map";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "regex")
-    {
-        regex = value;
-        regex.value_namespace = name_space;
-        regex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "regex")
-    {
-        regex.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Url::Profile::Whitelist::ParameterMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "regex")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Domain()
-{
-
-    yang_name = "domain"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::~Domain()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "domain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Domain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Profile()
-    :
-    id{YType::str, "id"},
-    alert{YType::enumeration, "alert"}
-    	,
-    blacklist(nullptr) // presence node
-	,redirect_server(std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer>())
-	,whitelist(nullptr) // presence node
-{
-    redirect_server->parent = this;
-
-    yang_name = "profile"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::~Profile()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::has_data() const
-{
-    return id.is_set
-	|| alert.is_set
-	|| (blacklist !=  nullptr && blacklist->has_data())
-	|| (redirect_server !=  nullptr && redirect_server->has_data())
-	|| (whitelist !=  nullptr && whitelist->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(alert.yfilter)
-	|| (blacklist !=  nullptr && blacklist->has_operation())
-	|| (redirect_server !=  nullptr && redirect_server->has_operation())
-	|| (whitelist !=  nullptr && whitelist->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/web-filter/domain/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Domain::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (alert.is_set || is_set(alert.yfilter)) leaf_name_data.push_back(alert.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "blacklist")
-    {
-        if(blacklist == nullptr)
-        {
-            blacklist = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist>();
-        }
-        return blacklist;
-    }
-
-    if(child_yang_name == "redirect-server")
-    {
-        if(redirect_server == nullptr)
-        {
-            redirect_server = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer>();
-        }
-        return redirect_server;
-    }
-
-    if(child_yang_name == "whitelist")
-    {
-        if(whitelist == nullptr)
-        {
-            whitelist = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist>();
-        }
-        return whitelist;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(blacklist != nullptr)
-    {
-        children["blacklist"] = blacklist;
-    }
-
-    if(redirect_server != nullptr)
-    {
-        children["redirect-server"] = redirect_server;
-    }
-
-    if(whitelist != nullptr)
-    {
-        children["whitelist"] = whitelist;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alert")
-    {
-        alert = value;
-        alert.value_namespace = name_space;
-        alert.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "alert")
-    {
-        alert.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "blacklist" || name == "redirect-server" || name == "whitelist" || name == "id" || name == "alert")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::Blacklist()
-    :
-    parameter_map(std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap>())
-{
-    parameter_map->parent = this;
-
-    yang_name = "blacklist"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::~Blacklist()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::has_data() const
-{
-    return (parameter_map !=  nullptr && parameter_map->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::has_operation() const
-{
-    return is_set(yfilter)
-	|| (parameter_map !=  nullptr && parameter_map->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "blacklist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parameter-map")
-    {
-        if(parameter_map == nullptr)
-        {
-            parameter_map = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap>();
-        }
-        return parameter_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(parameter_map != nullptr)
-    {
-        children["parameter-map"] = parameter_map;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parameter-map")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::ParameterMap()
-    :
-    regex{YType::str, "regex"}
-{
-
-    yang_name = "parameter-map"; yang_parent_name = "blacklist"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::~ParameterMap()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::has_data() const
-{
-    return regex.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(regex.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parameter-map";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "regex")
-    {
-        regex = value;
-        regex.value_namespace = name_space;
-        regex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "regex")
-    {
-        regex.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Blacklist::ParameterMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "regex")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::RedirectServer()
-    :
-    external{YType::str, "external"},
-    local_block_server{YType::str, "local-block-server"}
-{
-
-    yang_name = "redirect-server"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::~RedirectServer()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::has_data() const
-{
-    return external.is_set
-	|| local_block_server.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(external.yfilter)
-	|| ydk::is_set(local_block_server.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "redirect-server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (external.is_set || is_set(external.yfilter)) leaf_name_data.push_back(external.get_name_leafdata());
-    if (local_block_server.is_set || is_set(local_block_server.yfilter)) leaf_name_data.push_back(local_block_server.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "external")
-    {
-        external = value;
-        external.value_namespace = name_space;
-        external.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-block-server")
-    {
-        local_block_server = value;
-        local_block_server.value_namespace = name_space;
-        local_block_server.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "external")
-    {
-        external.yfilter = yfilter;
-    }
-    if(value_path == "local-block-server")
-    {
-        local_block_server.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::RedirectServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "external" || name == "local-block-server")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::Whitelist()
-    :
-    parameter_map(std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap>())
-{
-    parameter_map->parent = this;
-
-    yang_name = "whitelist"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::~Whitelist()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::has_data() const
-{
-    return (parameter_map !=  nullptr && parameter_map->has_data());
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::has_operation() const
-{
-    return is_set(yfilter)
-	|| (parameter_map !=  nullptr && parameter_map->has_operation());
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "whitelist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parameter-map")
-    {
-        if(parameter_map == nullptr)
-        {
-            parameter_map = std::make_shared<Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap>();
-        }
-        return parameter_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(parameter_map != nullptr)
-    {
-        children["parameter-map"] = parameter_map;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parameter-map")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::ParameterMap()
-    :
-    regex{YType::str, "regex"}
-{
-
-    yang_name = "parameter-map"; yang_parent_name = "whitelist"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::~ParameterMap()
-{
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::has_data() const
-{
-    return regex.is_set;
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(regex.yfilter);
-}
-
-std::string Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parameter-map";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "regex")
-    {
-        regex = value;
-        regex.value_namespace = name_space;
-        regex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "regex")
-    {
-        regex.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::WebFilter::Domain::Profile::Whitelist::ParameterMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "regex")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Engine()
-    :
-    advanced(nullptr) // presence node
-	,standard(nullptr) // presence node
-{
-
-    yang_name = "engine"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::~Engine()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::has_data() const
-{
-    return (advanced !=  nullptr && advanced->has_data())
-	|| (standard !=  nullptr && standard->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::has_operation() const
-{
-    return is_set(yfilter)
-	|| (advanced !=  nullptr && advanced->has_operation())
-	|| (standard !=  nullptr && standard->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "engine";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "advanced")
-    {
-        if(advanced == nullptr)
-        {
-            advanced = std::make_shared<Native::UtdSt::Utd::Engine::Advanced>();
-        }
-        return advanced;
-    }
-
-    if(child_yang_name == "standard")
-    {
-        if(standard == nullptr)
-        {
-            standard = std::make_shared<Native::UtdSt::Utd::Engine::Standard>();
-        }
-        return standard;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(advanced != nullptr)
-    {
-        children["advanced"] = advanced;
-    }
-
-    if(standard != nullptr)
-    {
-        children["standard"] = standard;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::Engine::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::Engine::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "advanced" || name == "standard")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Advanced::Advanced()
-    :
-    threat(std::make_shared<Native::UtdSt::Utd::Engine::Advanced::Threat>())
-{
-    threat->parent = this;
-
-    yang_name = "advanced"; yang_parent_name = "engine"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Advanced::~Advanced()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Advanced::has_data() const
-{
-    return (threat !=  nullptr && threat->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::Advanced::has_operation() const
-{
-    return is_set(yfilter)
-	|| (threat !=  nullptr && threat->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::Advanced::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Advanced::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "advanced";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Advanced::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Advanced::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "threat")
-    {
-        if(threat == nullptr)
-        {
-            threat = std::make_shared<Native::UtdSt::Utd::Engine::Advanced::Threat>();
-        }
-        return threat;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Advanced::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(threat != nullptr)
-    {
-        children["threat"] = threat;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Advanced::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::Engine::Advanced::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Advanced::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threat")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Advanced::Threat::Threat()
-    :
-    detection{YType::empty, "detection"}
-{
-
-    yang_name = "threat"; yang_parent_name = "advanced"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Advanced::Threat::~Threat()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Advanced::Threat::has_data() const
-{
-    return detection.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Advanced::Threat::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(detection.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Advanced::Threat::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/advanced/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Advanced::Threat::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threat";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Advanced::Threat::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (detection.is_set || is_set(detection.yfilter)) leaf_name_data.push_back(detection.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Advanced::Threat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Advanced::Threat::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Advanced::Threat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "detection")
-    {
-        detection = value;
-        detection.value_namespace = name_space;
-        detection.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Advanced::Threat::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "detection")
-    {
-        detection.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Advanced::Threat::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "detection")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::Standard()
-    :
-    logging(std::make_shared<Native::UtdSt::Utd::Engine::Standard::Logging>())
-	,threat_inspection(nullptr) // presence node
-	,web_filter(nullptr) // presence node
-{
-    logging->parent = this;
-
-    yang_name = "standard"; yang_parent_name = "engine"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::~Standard()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::has_data() const
-{
-    return (logging !=  nullptr && logging->has_data())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_data())
-	|| (web_filter !=  nullptr && web_filter->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::has_operation() const
-{
-    return is_set(yfilter)
-	|| (logging !=  nullptr && logging->has_operation())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_operation())
-	|| (web_filter !=  nullptr && web_filter->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "standard";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<Native::UtdSt::Utd::Engine::Standard::Logging>();
-        }
-        return logging;
-    }
-
-    if(child_yang_name == "threat-inspection")
-    {
-        if(threat_inspection == nullptr)
-        {
-            threat_inspection = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection>();
-        }
-        return threat_inspection;
-    }
-
-    if(child_yang_name == "web-filter")
-    {
-        if(web_filter == nullptr)
-        {
-            web_filter = std::make_shared<Native::UtdSt::Utd::Engine::Standard::WebFilter>();
-        }
-        return web_filter;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(logging != nullptr)
-    {
-        children["logging"] = logging;
-    }
-
-    if(threat_inspection != nullptr)
-    {
-        children["threat-inspection"] = threat_inspection;
-    }
-
-    if(web_filter != nullptr)
-    {
-        children["web-filter"] = web_filter;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::Engine::Standard::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "logging" || name == "threat-inspection" || name == "web-filter")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::Logging::Logging()
-    :
-    syslog{YType::empty, "syslog"}
-{
-
-    yang_name = "logging"; yang_parent_name = "standard"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::Logging::~Logging()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::Logging::has_data() const
-{
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_data())
-            return true;
-    }
-    return syslog.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::Logging::has_operation() const
-{
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(syslog.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::Logging::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::Logging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::Logging::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (syslog.is_set || is_set(syslog.yfilter)) leaf_name_data.push_back(syslog.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "host")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::Engine::Standard::Logging::Host>();
-        c->parent = this;
-        host.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::Logging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : host)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "syslog")
-    {
-        syslog = value;
-        syslog.value_namespace = name_space;
-        syslog.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::Logging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "syslog")
-    {
-        syslog.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::Logging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host" || name == "syslog")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::Logging::Host::Host()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "host"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::Logging::Host::~Host()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::Logging::Host::has_data() const
-{
-    return name.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::Logging::Host::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::Logging::Host::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/logging/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::Logging::Host::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "host" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::Logging::Host::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::Logging::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::Logging::Host::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::Logging::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::Logging::Host::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::Logging::Host::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::ThreatInspection()
-    :
-    threat{YType::enumeration, "threat"},
-    policy{YType::enumeration, "policy"},
-    whitelist{YType::empty, "whitelist"}
-    	,
-    signature(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature>())
-	,logging(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging>())
-{
-    signature->parent = this;
-    logging->parent = this;
-
-    yang_name = "threat-inspection"; yang_parent_name = "standard"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::~ThreatInspection()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::has_data() const
-{
-    return threat.is_set
-	|| policy.is_set
-	|| whitelist.is_set
-	|| (signature !=  nullptr && signature->has_data())
-	|| (logging !=  nullptr && logging->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(threat.yfilter)
-	|| ydk::is_set(policy.yfilter)
-	|| ydk::is_set(whitelist.yfilter)
-	|| (signature !=  nullptr && signature->has_operation())
-	|| (logging !=  nullptr && logging->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threat-inspection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (threat.is_set || is_set(threat.yfilter)) leaf_name_data.push_back(threat.get_name_leafdata());
-    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
-    if (whitelist.is_set || is_set(whitelist.yfilter)) leaf_name_data.push_back(whitelist.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "signature")
-    {
-        if(signature == nullptr)
-        {
-            signature = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature>();
-        }
-        return signature;
-    }
-
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging>();
-        }
-        return logging;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(signature != nullptr)
-    {
-        children["signature"] = signature;
-    }
-
-    if(logging != nullptr)
-    {
-        children["logging"] = logging;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "threat")
-    {
-        threat = value;
-        threat.value_namespace = name_space;
-        threat.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy")
-    {
-        policy = value;
-        policy.value_namespace = name_space;
-        policy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "whitelist")
-    {
-        whitelist = value;
-        whitelist.value_namespace = name_space;
-        whitelist.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "threat")
-    {
-        threat.yfilter = yfilter;
-    }
-    if(value_path == "policy")
-    {
-        policy.yfilter = yfilter;
-    }
-    if(value_path == "whitelist")
-    {
-        whitelist.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "signature" || name == "logging" || name == "threat" || name == "policy" || name == "whitelist")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Signature()
-    :
-    update(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update>())
-{
-    update->parent = this;
-
-    yang_name = "signature"; yang_parent_name = "threat-inspection"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::~Signature()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::has_data() const
-{
-    return (update !=  nullptr && update->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::has_operation() const
-{
-    return is_set(yfilter)
-	|| (update !=  nullptr && update->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "signature";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "update")
-    {
-        if(update == nullptr)
-        {
-            update = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update>();
-        }
-        return update;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(update != nullptr)
-    {
-        children["update"] = update;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "update")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Update()
-    :
-    occur_at(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt>())
-	,server(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server>())
-{
-    occur_at->parent = this;
-    server->parent = this;
-
-    yang_name = "update"; yang_parent_name = "signature"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::~Update()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::has_data() const
-{
-    return (occur_at !=  nullptr && occur_at->has_data())
-	|| (server !=  nullptr && server->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::has_operation() const
-{
-    return is_set(yfilter)
-	|| (occur_at !=  nullptr && occur_at->has_operation())
-	|| (server !=  nullptr && server->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/signature/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "update";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "occur-at")
-    {
-        if(occur_at == nullptr)
-        {
-            occur_at = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt>();
-        }
-        return occur_at;
-    }
-
-    if(child_yang_name == "server")
-    {
-        if(server == nullptr)
-        {
-            server = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server>();
-        }
-        return server;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(occur_at != nullptr)
-    {
-        children["occur-at"] = occur_at;
-    }
-
-    if(server != nullptr)
-    {
-        children["server"] = server;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "occur-at" || name == "server")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::OccurAt()
-    :
-    daily{YType::empty, "daily"},
-    monthly{YType::str, "monthly"},
-    weekly{YType::str, "weekly"},
-    hours{YType::uint8, "hours"},
-    minutes{YType::uint8, "minutes"}
-{
-
-    yang_name = "occur-at"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::~OccurAt()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::has_data() const
-{
-    return daily.is_set
-	|| monthly.is_set
-	|| weekly.is_set
-	|| hours.is_set
-	|| minutes.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(daily.yfilter)
-	|| ydk::is_set(monthly.yfilter)
-	|| ydk::is_set(weekly.yfilter)
-	|| ydk::is_set(hours.yfilter)
-	|| ydk::is_set(minutes.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/signature/update/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "occur-at";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (daily.is_set || is_set(daily.yfilter)) leaf_name_data.push_back(daily.get_name_leafdata());
-    if (monthly.is_set || is_set(monthly.yfilter)) leaf_name_data.push_back(monthly.get_name_leafdata());
-    if (weekly.is_set || is_set(weekly.yfilter)) leaf_name_data.push_back(weekly.get_name_leafdata());
-    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
-    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "daily")
-    {
-        daily = value;
-        daily.value_namespace = name_space;
-        daily.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "monthly")
-    {
-        monthly = value;
-        monthly.value_namespace = name_space;
-        monthly.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weekly")
-    {
-        weekly = value;
-        weekly.value_namespace = name_space;
-        weekly.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hours")
-    {
-        hours = value;
-        hours.value_namespace = name_space;
-        hours.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minutes")
-    {
-        minutes = value;
-        minutes.value_namespace = name_space;
-        minutes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "daily")
-    {
-        daily.yfilter = yfilter;
-    }
-    if(value_path == "monthly")
-    {
-        monthly.yfilter = yfilter;
-    }
-    if(value_path == "weekly")
-    {
-        weekly.yfilter = yfilter;
-    }
-    if(value_path == "hours")
-    {
-        hours.yfilter = yfilter;
-    }
-    if(value_path == "minutes")
-    {
-        minutes.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::OccurAt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "daily" || name == "monthly" || name == "weekly" || name == "hours" || name == "minutes")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Server()
-    :
-    cisco(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco>())
-	,url(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url>())
-{
-    cisco->parent = this;
-    url->parent = this;
-
-    yang_name = "server"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::~Server()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::has_data() const
-{
-    return (cisco !=  nullptr && cisco->has_data())
-	|| (url !=  nullptr && url->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::has_operation() const
-{
-    return is_set(yfilter)
-	|| (cisco !=  nullptr && cisco->has_operation())
-	|| (url !=  nullptr && url->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/signature/update/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cisco")
-    {
-        if(cisco == nullptr)
-        {
-            cisco = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco>();
-        }
-        return cisco;
-    }
-
-    if(child_yang_name == "url")
-    {
-        if(url == nullptr)
-        {
-            url = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url>();
-        }
-        return url;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(cisco != nullptr)
-    {
-        children["cisco"] = cisco;
-    }
-
-    if(url != nullptr)
-    {
-        children["url"] = url;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cisco" || name == "url")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::Cisco()
-    :
-    username{YType::str, "username"},
-    password{YType::str, "password"}
-{
-
-    yang_name = "cisco"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::~Cisco()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::has_data() const
-{
-    return username.is_set
-	|| password.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(username.yfilter)
-	|| ydk::is_set(password.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/signature/update/server/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cisco";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "username")
-    {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "username")
-    {
-        username.yfilter = yfilter;
-    }
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Cisco::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "username" || name == "password")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::Url()
-    :
-    name{YType::str, "name"}
-    	,
-    all(std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All>())
-{
-    all->parent = this;
-
-    yang_name = "url"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::~Url()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::has_data() const
-{
-    return name.is_set
-	|| (all !=  nullptr && all->has_data());
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (all !=  nullptr && all->has_operation());
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/signature/update/server/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "url";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "all")
-    {
-        if(all == nullptr)
-        {
-            all = std::make_shared<Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All>();
-        }
-        return all;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(all != nullptr)
-    {
-        children["all"] = all;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "all" || name == "name")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::All()
-    :
-    name{YType::str, "name"},
-    username{YType::str, "username"},
-    password{YType::str, "password"}
-{
-
-    yang_name = "all"; yang_parent_name = "url"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::~All()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::has_data() const
-{
-    return name.is_set
-	|| username.is_set
-	|| password.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(username.yfilter)
-	|| ydk::is_set(password.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/signature/update/server/url/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "all";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "username")
-    {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "username")
-    {
-        username.yfilter = yfilter;
-    }
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Signature::Update::Server::Url::All::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "username" || name == "password")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Logging()
-    :
-    level{YType::enumeration, "level"}
-{
-
-    yang_name = "logging"; yang_parent_name = "threat-inspection"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::~Logging()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::has_data() const
-{
-    return level.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/threat-inspection/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::WebFilter::WebFilter()
-    :
-    sourcedb{YType::str, "sourcedb"},
-    domain_profile{YType::str, "domain-profile"},
-    url_profile{YType::str, "url-profile"}
-{
-
-    yang_name = "web-filter"; yang_parent_name = "standard"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::Engine::Standard::WebFilter::~WebFilter()
-{
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::WebFilter::has_data() const
-{
-    return sourcedb.is_set
-	|| domain_profile.is_set
-	|| url_profile.is_set;
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::WebFilter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sourcedb.yfilter)
-	|| ydk::is_set(domain_profile.yfilter)
-	|| ydk::is_set(url_profile.yfilter);
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::WebFilter::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/engine/standard/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::Engine::Standard::WebFilter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "web-filter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::Engine::Standard::WebFilter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sourcedb.is_set || is_set(sourcedb.yfilter)) leaf_name_data.push_back(sourcedb.get_name_leafdata());
-    if (domain_profile.is_set || is_set(domain_profile.yfilter)) leaf_name_data.push_back(domain_profile.get_name_leafdata());
-    if (url_profile.is_set || is_set(url_profile.yfilter)) leaf_name_data.push_back(url_profile.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::Engine::Standard::WebFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::Engine::Standard::WebFilter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::Engine::Standard::WebFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sourcedb")
-    {
-        sourcedb = value;
-        sourcedb.value_namespace = name_space;
-        sourcedb.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "domain-profile")
-    {
-        domain_profile = value;
-        domain_profile.value_namespace = name_space;
-        domain_profile.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "url-profile")
-    {
-        url_profile = value;
-        url_profile.value_namespace = name_space;
-        url_profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::Engine::Standard::WebFilter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sourcedb")
-    {
-        sourcedb.yfilter = yfilter;
-    }
-    if(value_path == "domain-profile")
-    {
-        domain_profile.yfilter = yfilter;
-    }
-    if(value_path == "url-profile")
-    {
-        url_profile.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::Engine::Standard::WebFilter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sourcedb" || name == "domain-profile" || name == "url-profile")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::ThreatInspection::ThreatInspection()
-    :
-    whitelist(nullptr) // presence node
-{
-
-    yang_name = "threat-inspection"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::ThreatInspection::~ThreatInspection()
-{
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::has_data() const
-{
-    return (whitelist !=  nullptr && whitelist->has_data());
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::has_operation() const
-{
-    return is_set(yfilter)
-	|| (whitelist !=  nullptr && whitelist->has_operation());
-}
-
-std::string Native::UtdSt::Utd::ThreatInspection::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::ThreatInspection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threat-inspection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::ThreatInspection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::ThreatInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "whitelist")
-    {
-        if(whitelist == nullptr)
-        {
-            whitelist = std::make_shared<Native::UtdSt::Utd::ThreatInspection::Whitelist>();
-        }
-        return whitelist;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::ThreatInspection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(whitelist != nullptr)
-    {
-        children["whitelist"] = whitelist;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::ThreatInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::ThreatInspection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "whitelist")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::ThreatInspection::Whitelist::Whitelist()
-{
-
-    yang_name = "whitelist"; yang_parent_name = "threat-inspection"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::ThreatInspection::Whitelist::~Whitelist()
-{
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::Whitelist::has_data() const
-{
-    for (std::size_t index=0; index<signature.size(); index++)
-    {
-        if(signature[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::Whitelist::has_operation() const
-{
-    for (std::size_t index=0; index<signature.size(); index++)
-    {
-        if(signature[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdSt::Utd::ThreatInspection::Whitelist::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/threat-inspection/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::ThreatInspection::Whitelist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "whitelist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::ThreatInspection::Whitelist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::ThreatInspection::Whitelist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "signature")
-    {
-        auto c = std::make_shared<Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature>();
-        c->parent = this;
-        signature.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::ThreatInspection::Whitelist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : signature)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdSt::Utd::ThreatInspection::Whitelist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdSt::Utd::ThreatInspection::Whitelist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::Whitelist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "signature")
-        return true;
-    return false;
-}
-
-Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::Signature()
-    :
-    id{YType::uint32, "id"},
-    comment{YType::str, "comment"}
-{
-
-    yang_name = "signature"; yang_parent_name = "whitelist"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::~Signature()
-{
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::has_data() const
-{
-    return id.is_set
-	|| comment.is_set;
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(comment.yfilter);
-}
-
-std::string Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-st/utd/threat-inspection/whitelist/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "signature" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "comment")
-    {
-        comment = value;
-        comment.value_namespace = name_space;
-        comment.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "comment")
-    {
-        comment.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdSt::Utd::ThreatInspection::Whitelist::Signature::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id" || name == "comment")
-        return true;
-    return false;
-}
-
-Native::UtdMt::UtdMt()
-    :
-    utd(std::make_shared<Native::UtdMt::Utd>())
-{
-    utd->parent = this;
-
-    yang_name = "utd-mt"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::~UtdMt()
-{
-}
-
-bool Native::UtdMt::has_data() const
-{
-    return (utd !=  nullptr && utd->has_data());
-}
-
-bool Native::UtdMt::has_operation() const
-{
-    return is_set(yfilter)
-	|| (utd !=  nullptr && utd->has_operation());
-}
-
-std::string Native::UtdMt::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-utd:utd-mt";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "utd")
-    {
-        if(utd == nullptr)
-        {
-            utd = std::make_shared<Native::UtdMt::Utd>();
-        }
-        return utd;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(utd != nullptr)
-    {
-        children["utd"] = utd;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "utd")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Utd()
-    :
-    multi_tenancy{YType::empty, "multi-tenancy"}
-    	,
-    engine(std::make_shared<Native::UtdMt::Utd::Engine>())
-{
-    engine->parent = this;
-
-    yang_name = "utd"; yang_parent_name = "utd-mt"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::~Utd()
-{
-}
-
-bool Native::UtdMt::Utd::has_data() const
-{
-    return multi_tenancy.is_set
-	|| (engine !=  nullptr && engine->has_data());
-}
-
-bool Native::UtdMt::Utd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(multi_tenancy.yfilter)
-	|| (engine !=  nullptr && engine->has_operation());
-}
-
-std::string Native::UtdMt::Utd::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "utd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (multi_tenancy.is_set || is_set(multi_tenancy.yfilter)) leaf_name_data.push_back(multi_tenancy.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "engine")
-    {
-        if(engine == nullptr)
-        {
-            engine = std::make_shared<Native::UtdMt::Utd::Engine>();
-        }
-        return engine;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(engine != nullptr)
-    {
-        children["engine"] = engine;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "multi-tenancy")
-    {
-        multi_tenancy = value;
-        multi_tenancy.value_namespace = name_space;
-        multi_tenancy.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "multi-tenancy")
-    {
-        multi_tenancy.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "engine" || name == "multi-tenancy")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Engine()
-    :
-    standard(std::make_shared<Native::UtdMt::Utd::Engine::Standard>())
-{
-    standard->parent = this;
-
-    yang_name = "engine"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::~Engine()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::has_data() const
-{
-    return (standard !=  nullptr && standard->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::has_operation() const
-{
-    return is_set(yfilter)
-	|| (standard !=  nullptr && standard->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "engine";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "standard")
-    {
-        if(standard == nullptr)
-        {
-            standard = std::make_shared<Native::UtdMt::Utd::Engine::Standard>();
-        }
-        return standard;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(standard != nullptr)
-    {
-        children["standard"] = standard;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "standard")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::Standard()
-    :
-    multi_tenancy(nullptr) // presence node
-{
-
-    yang_name = "standard"; yang_parent_name = "engine"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::~Standard()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::has_data() const
-{
-    return (multi_tenancy !=  nullptr && multi_tenancy->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::has_operation() const
-{
-    return is_set(yfilter)
-	|| (multi_tenancy !=  nullptr && multi_tenancy->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "standard";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "multi-tenancy")
-    {
-        if(multi_tenancy == nullptr)
-        {
-            multi_tenancy = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy>();
-        }
-        return multi_tenancy;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(multi_tenancy != nullptr)
-    {
-        children["multi-tenancy"] = multi_tenancy;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "multi-tenancy")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::MultiTenancy()
-    :
-    web_filter(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter>())
-	,threat_inspection(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection>())
-	,utd(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_>())
-{
-    web_filter->parent = this;
-    threat_inspection->parent = this;
-    utd->parent = this;
-
-    yang_name = "multi-tenancy"; yang_parent_name = "standard"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::~MultiTenancy()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::has_data() const
-{
-    for (std::size_t index=0; index<policy.size(); index++)
-    {
-        if(policy[index]->has_data())
-            return true;
-    }
-    return (web_filter !=  nullptr && web_filter->has_data())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_data())
-	|| (utd !=  nullptr && utd->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::has_operation() const
-{
-    for (std::size_t index=0; index<policy.size(); index++)
-    {
-        if(policy[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (web_filter !=  nullptr && web_filter->has_operation())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_operation())
-	|| (utd !=  nullptr && utd->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multi-tenancy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "web-filter")
-    {
-        if(web_filter == nullptr)
-        {
-            web_filter = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter>();
-        }
-        return web_filter;
-    }
-
-    if(child_yang_name == "threat-inspection")
-    {
-        if(threat_inspection == nullptr)
-        {
-            threat_inspection = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection>();
-        }
-        return threat_inspection;
-    }
-
-    if(child_yang_name == "utd")
-    {
-        if(utd == nullptr)
-        {
-            utd = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_>();
-        }
-        return utd;
-    }
-
-    if(child_yang_name == "policy")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy>();
-        c->parent = this;
-        policy.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(web_filter != nullptr)
-    {
-        children["web-filter"] = web_filter;
-    }
-
-    if(threat_inspection != nullptr)
-    {
-        children["threat-inspection"] = threat_inspection;
-    }
-
-    if(utd != nullptr)
-    {
-        children["utd"] = utd;
-    }
-
-    count = 0;
-    for (auto const & c : policy)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "web-filter" || name == "threat-inspection" || name == "utd" || name == "policy")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::WebFilter()
-    :
-    block(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block>())
-	,url(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url>())
-{
-    block->parent = this;
-    url->parent = this;
-
-    yang_name = "web-filter"; yang_parent_name = "multi-tenancy"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::~WebFilter()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::has_data() const
-{
-    for (std::size_t index=0; index<sourcedb.size(); index++)
-    {
-        if(sourcedb[index]->has_data())
-            return true;
-    }
-    return (block !=  nullptr && block->has_data())
-	|| (url !=  nullptr && url->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::has_operation() const
-{
-    for (std::size_t index=0; index<sourcedb.size(); index++)
-    {
-        if(sourcedb[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (block !=  nullptr && block->has_operation())
-	|| (url !=  nullptr && url->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "web-filter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "block")
-    {
-        if(block == nullptr)
-        {
-            block = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block>();
-        }
-        return block;
-    }
-
-    if(child_yang_name == "sourcedb")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb>();
-        c->parent = this;
-        sourcedb.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "url")
-    {
-        if(url == nullptr)
-        {
-            url = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url>();
-        }
-        return url;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(block != nullptr)
-    {
-        children["block"] = block;
-    }
-
-    count = 0;
-    for (auto const & c : sourcedb)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(url != nullptr)
-    {
-        children["url"] = url;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block" || name == "sourcedb" || name == "url")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Block()
-    :
-    local_server(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer>())
-	,page(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page>())
-{
-    local_server->parent = this;
-    page->parent = this;
-
-    yang_name = "block"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::~Block()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::has_data() const
-{
-    return (local_server !=  nullptr && local_server->has_data())
-	|| (page !=  nullptr && page->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::has_operation() const
-{
-    return is_set(yfilter)
-	|| (local_server !=  nullptr && local_server->has_operation())
-	|| (page !=  nullptr && page->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "local-server")
-    {
-        if(local_server == nullptr)
-        {
-            local_server = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer>();
-        }
-        return local_server;
-    }
-
-    if(child_yang_name == "page")
-    {
-        if(page == nullptr)
-        {
-            page = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page>();
-        }
-        return page;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(local_server != nullptr)
-    {
-        children["local-server"] = local_server;
-    }
-
-    if(page != nullptr)
-    {
-        children["page"] = page;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-server" || name == "page")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::LocalServer()
-{
-
-    yang_name = "local-server"; yang_parent_name = "block"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::~LocalServer()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/block/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "local-server";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Profile()
-    :
-    id{YType::str, "id"},
-    http_ports{YType::str, "http-ports"}
-    	,
-    block_page_interface(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface>())
-	,content(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content>())
-{
-    block_page_interface->parent = this;
-    content->parent = this;
-
-    yang_name = "profile"; yang_parent_name = "local-server"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::~Profile()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::has_data() const
-{
-    return id.is_set
-	|| http_ports.is_set
-	|| (block_page_interface !=  nullptr && block_page_interface->has_data())
-	|| (content !=  nullptr && content->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(http_ports.yfilter)
-	|| (block_page_interface !=  nullptr && block_page_interface->has_operation())
-	|| (content !=  nullptr && content->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/block/local-server/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (http_ports.is_set || is_set(http_ports.yfilter)) leaf_name_data.push_back(http_ports.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "block-page-interface")
-    {
-        if(block_page_interface == nullptr)
-        {
-            block_page_interface = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface>();
-        }
-        return block_page_interface;
-    }
-
-    if(child_yang_name == "content")
-    {
-        if(content == nullptr)
-        {
-            content = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content>();
-        }
-        return content;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(block_page_interface != nullptr)
-    {
-        children["block-page-interface"] = block_page_interface;
-    }
-
-    if(content != nullptr)
-    {
-        children["content"] = content;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "http-ports")
-    {
-        http_ports = value;
-        http_ports.value_namespace = name_space;
-        http_ports.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "http-ports")
-    {
-        http_ports.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block-page-interface" || name == "content" || name == "id" || name == "http-ports")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::BlockPageInterface()
-    :
-    loopback{YType::uint32, "Loopback"}
-{
-
-    yang_name = "block-page-interface"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::~BlockPageInterface()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::has_data() const
-{
-    return loopback.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(loopback.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block-page-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "Loopback")
-    {
-        loopback = value;
-        loopback.value_namespace = name_space;
-        loopback.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "Loopback")
-    {
-        loopback.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::BlockPageInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "Loopback")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::Content()
-    :
-    text{YType::str, "text"},
-    file{YType::str, "file"}
-{
-
-    yang_name = "content"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::~Content()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::has_data() const
-{
-    return text.is_set
-	|| file.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(text.yfilter)
-	|| ydk::is_set(file.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "content";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "text")
-    {
-        text = value;
-        text.value_namespace = name_space;
-        text.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "text")
-    {
-        text.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::LocalServer::Profile::Content::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "text" || name == "file")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Page()
-{
-
-    yang_name = "page"; yang_parent_name = "block"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::~Page()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/block/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "page";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::Profile()
-    :
-    id{YType::str, "id"},
-    file{YType::str, "file"},
-    redirect_url{YType::str, "redirect-url"},
-    text{YType::str, "text"}
-{
-
-    yang_name = "profile"; yang_parent_name = "page"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::~Profile()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::has_data() const
-{
-    return id.is_set
-	|| file.is_set
-	|| redirect_url.is_set
-	|| text.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(file.yfilter)
-	|| ydk::is_set(redirect_url.yfilter)
-	|| ydk::is_set(text.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/block/page/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (file.is_set || is_set(file.yfilter)) leaf_name_data.push_back(file.get_name_leafdata());
-    if (redirect_url.is_set || is_set(redirect_url.yfilter)) leaf_name_data.push_back(redirect_url.get_name_leafdata());
-    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "file")
-    {
-        file = value;
-        file.value_namespace = name_space;
-        file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redirect-url")
-    {
-        redirect_url = value;
-        redirect_url.value_namespace = name_space;
-        redirect_url.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "text")
-    {
-        text = value;
-        text.value_namespace = name_space;
-        text.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "file")
-    {
-        file.yfilter = yfilter;
-    }
-    if(value_path == "redirect-url")
-    {
-        redirect_url.yfilter = yfilter;
-    }
-    if(value_path == "text")
-    {
-        text.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Block::Page::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id" || name == "file" || name == "redirect-url" || name == "text")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Sourcedb()
-    :
-    id{YType::str, "id"}
-    	,
-    logging(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging>())
-{
-    logging->parent = this;
-
-    yang_name = "sourcedb"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::~Sourcedb()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::has_data() const
-{
-    return id.is_set
-	|| (logging !=  nullptr && logging->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| (logging !=  nullptr && logging->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sourcedb" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging>();
-        }
-        return logging;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(logging != nullptr)
-    {
-        children["logging"] = logging;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "logging" || name == "id")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::Logging()
-    :
-    level{YType::enumeration, "level"}
-{
-
-    yang_name = "logging"; yang_parent_name = "sourcedb"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::~Logging()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::has_data() const
-{
-    return level.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Url()
-{
-
-    yang_name = "url"; yang_parent_name = "web-filter"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::~Url()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "url";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Profile()
-    :
-    id{YType::str, "id"},
-    alert{YType::enumeration, "alert"}
-    	,
-    blacklist(nullptr) // presence node
-	,categories(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories>())
-	,block(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block>())
-	,log(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log>())
-	,reputation(nullptr) // presence node
-	,sourcedb(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb>())
-	,whitelist(nullptr) // presence node
-{
-    categories->parent = this;
-    block->parent = this;
-    log->parent = this;
-    sourcedb->parent = this;
-
-    yang_name = "profile"; yang_parent_name = "url"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::~Profile()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::has_data() const
-{
-    for (auto const & leaf : alert.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return id.is_set
-	|| (blacklist !=  nullptr && blacklist->has_data())
-	|| (categories !=  nullptr && categories->has_data())
-	|| (block !=  nullptr && block->has_data())
-	|| (log !=  nullptr && log->has_data())
-	|| (reputation !=  nullptr && reputation->has_data())
-	|| (sourcedb !=  nullptr && sourcedb->has_data())
-	|| (whitelist !=  nullptr && whitelist->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::has_operation() const
-{
-    for (auto const & leaf : alert.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(alert.yfilter)
-	|| (blacklist !=  nullptr && blacklist->has_operation())
-	|| (categories !=  nullptr && categories->has_operation())
-	|| (block !=  nullptr && block->has_operation())
-	|| (log !=  nullptr && log->has_operation())
-	|| (reputation !=  nullptr && reputation->has_operation())
-	|| (sourcedb !=  nullptr && sourcedb->has_operation())
-	|| (whitelist !=  nullptr && whitelist->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/web-filter/url/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    auto alert_name_datas = alert.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), alert_name_datas.begin(), alert_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "blacklist")
-    {
-        if(blacklist == nullptr)
-        {
-            blacklist = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist>();
-        }
-        return blacklist;
-    }
-
-    if(child_yang_name == "categories")
-    {
-        if(categories == nullptr)
-        {
-            categories = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories>();
-        }
-        return categories;
-    }
-
-    if(child_yang_name == "block")
-    {
-        if(block == nullptr)
-        {
-            block = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block>();
-        }
-        return block;
-    }
-
-    if(child_yang_name == "log")
-    {
-        if(log == nullptr)
-        {
-            log = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log>();
-        }
-        return log;
-    }
-
-    if(child_yang_name == "reputation")
-    {
-        if(reputation == nullptr)
-        {
-            reputation = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation>();
-        }
-        return reputation;
-    }
-
-    if(child_yang_name == "sourcedb")
-    {
-        if(sourcedb == nullptr)
-        {
-            sourcedb = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb>();
-        }
-        return sourcedb;
-    }
-
-    if(child_yang_name == "whitelist")
-    {
-        if(whitelist == nullptr)
-        {
-            whitelist = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist>();
-        }
-        return whitelist;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(blacklist != nullptr)
-    {
-        children["blacklist"] = blacklist;
-    }
-
-    if(categories != nullptr)
-    {
-        children["categories"] = categories;
-    }
-
-    if(block != nullptr)
-    {
-        children["block"] = block;
-    }
-
-    if(log != nullptr)
-    {
-        children["log"] = log;
-    }
-
-    if(reputation != nullptr)
-    {
-        children["reputation"] = reputation;
-    }
-
-    if(sourcedb != nullptr)
-    {
-        children["sourcedb"] = sourcedb;
-    }
-
-    if(whitelist != nullptr)
-    {
-        children["whitelist"] = whitelist;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "alert")
-    {
-        alert.append(value);
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "alert")
-    {
-        alert.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "blacklist" || name == "categories" || name == "block" || name == "log" || name == "reputation" || name == "sourcedb" || name == "whitelist" || name == "id" || name == "alert")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::Blacklist()
-    :
-    parameter_map(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap>())
-{
-    parameter_map->parent = this;
-
-    yang_name = "blacklist"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::~Blacklist()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::has_data() const
-{
-    return (parameter_map !=  nullptr && parameter_map->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::has_operation() const
-{
-    return is_set(yfilter)
-	|| (parameter_map !=  nullptr && parameter_map->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "blacklist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parameter-map")
-    {
-        if(parameter_map == nullptr)
-        {
-            parameter_map = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap>();
-        }
-        return parameter_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(parameter_map != nullptr)
-    {
-        children["parameter-map"] = parameter_map;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parameter-map")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::ParameterMap()
-    :
-    regex{YType::str, "regex"}
-{
-
-    yang_name = "parameter-map"; yang_parent_name = "blacklist"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::~ParameterMap()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::has_data() const
-{
-    return regex.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(regex.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parameter-map";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "regex")
-    {
-        regex = value;
-        regex.value_namespace = name_space;
-        regex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "regex")
-    {
-        regex.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Blacklist::ParameterMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "regex")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Categories()
-    :
-    allow(nullptr) // presence node
-	,block(nullptr) // presence node
-{
-
-    yang_name = "categories"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::~Categories()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::has_data() const
-{
-    return (allow !=  nullptr && allow->has_data())
-	|| (block !=  nullptr && block->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::has_operation() const
-{
-    return is_set(yfilter)
-	|| (allow !=  nullptr && allow->has_operation())
-	|| (block !=  nullptr && block->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "categories";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "allow")
-    {
-        if(allow == nullptr)
-        {
-            allow = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow>();
-        }
-        return allow;
-    }
-
-    if(child_yang_name == "block")
-    {
-        if(block == nullptr)
-        {
-            block = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block>();
-        }
-        return block;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(allow != nullptr)
-    {
-        children["allow"] = allow;
-    }
-
-    if(block != nullptr)
-    {
-        children["block"] = block;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "allow" || name == "block")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Allow()
-{
-
-    yang_name = "allow"; yang_parent_name = "categories"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::~Allow()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::has_data() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::has_operation() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "allow";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "category")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category>();
-        c->parent = this;
-        category.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : category)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "category")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::Category()
-    :
-    name{YType::enumeration, "name"}
-{
-
-    yang_name = "category"; yang_parent_name = "allow"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::~Category()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::has_data() const
-{
-    return name.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "category" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Allow::Category::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Block()
-{
-
-    yang_name = "block"; yang_parent_name = "categories"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::~Block()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::has_data() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::has_operation() const
-{
-    for (std::size_t index=0; index<category.size(); index++)
-    {
-        if(category[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "category")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category>();
-        c->parent = this;
-        category.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : category)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "category")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::Category()
-    :
-    name{YType::enumeration, "name"}
-{
-
-    yang_name = "category"; yang_parent_name = "block"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::~Category()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::has_data() const
-{
-    return name.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "category" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Categories::Block::Category::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::Block()
-    :
-    local_server{YType::str, "local-server"},
-    page_profile{YType::str, "page-profile"}
-{
-
-    yang_name = "block"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::~Block()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::has_data() const
-{
-    return local_server.is_set
-	|| page_profile.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(local_server.yfilter)
-	|| ydk::is_set(page_profile.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "block";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (local_server.is_set || is_set(local_server.yfilter)) leaf_name_data.push_back(local_server.get_name_leafdata());
-    if (page_profile.is_set || is_set(page_profile.yfilter)) leaf_name_data.push_back(page_profile.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "local-server")
-    {
-        local_server = value;
-        local_server.value_namespace = name_space;
-        local_server.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "page-profile")
-    {
-        page_profile = value;
-        page_profile.value_namespace = name_space;
-        page_profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "local-server")
-    {
-        local_server.yfilter = yfilter;
-    }
-    if(value_path == "page-profile")
-    {
-        page_profile.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Block::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "local-server" || name == "page-profile")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::Log()
-    :
-    level{YType::enumeration, "level"}
-{
-
-    yang_name = "log"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::~Log()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::has_data() const
-{
-    return level.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "log";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::Reputation()
-    :
-    block_threshold{YType::enumeration, "block-threshold"}
-{
-
-    yang_name = "reputation"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::~Reputation()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::has_data() const
-{
-    return block_threshold.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(block_threshold.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "reputation";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (block_threshold.is_set || is_set(block_threshold.yfilter)) leaf_name_data.push_back(block_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "block-threshold")
-    {
-        block_threshold = value;
-        block_threshold.value_namespace = name_space;
-        block_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "block-threshold")
-    {
-        block_threshold.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "block-threshold")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Sourcedb()
-    :
-    fail(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail>())
-{
-    fail->parent = this;
-
-    yang_name = "sourcedb"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::~Sourcedb()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::has_data() const
-{
-    return (fail !=  nullptr && fail->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::has_operation() const
-{
-    return is_set(yfilter)
-	|| (fail !=  nullptr && fail->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sourcedb";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "fail")
-    {
-        if(fail == nullptr)
-        {
-            fail = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail>();
-        }
-        return fail;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(fail != nullptr)
-    {
-        children["fail"] = fail;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fail")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::Fail()
-    :
-    close{YType::empty, "close"}
-{
-
-    yang_name = "fail"; yang_parent_name = "sourcedb"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::~Fail()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::has_data() const
-{
-    return close.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(close.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fail";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (close.is_set || is_set(close.yfilter)) leaf_name_data.push_back(close.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "close")
-    {
-        close = value;
-        close.value_namespace = name_space;
-        close.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "close")
-    {
-        close.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Sourcedb::Fail::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "close")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::Whitelist()
-    :
-    parameter_map(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap>())
-{
-    parameter_map->parent = this;
-
-    yang_name = "whitelist"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::~Whitelist()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::has_data() const
-{
-    return (parameter_map !=  nullptr && parameter_map->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::has_operation() const
-{
-    return is_set(yfilter)
-	|| (parameter_map !=  nullptr && parameter_map->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "whitelist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parameter-map")
-    {
-        if(parameter_map == nullptr)
-        {
-            parameter_map = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap>();
-        }
-        return parameter_map;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(parameter_map != nullptr)
-    {
-        children["parameter-map"] = parameter_map;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parameter-map")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::ParameterMap()
-    :
-    regex{YType::str, "regex"}
-{
-
-    yang_name = "parameter-map"; yang_parent_name = "whitelist"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::~ParameterMap()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::has_data() const
-{
-    return regex.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(regex.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parameter-map";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (regex.is_set || is_set(regex.yfilter)) leaf_name_data.push_back(regex.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "regex")
-    {
-        regex = value;
-        regex.value_namespace = name_space;
-        regex.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "regex")
-    {
-        regex.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Whitelist::ParameterMap::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "regex")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::ThreatInspection()
-    :
-    whitelist(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist>())
-{
-    whitelist->parent = this;
-
-    yang_name = "threat-inspection"; yang_parent_name = "multi-tenancy"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::~ThreatInspection()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return (whitelist !=  nullptr && whitelist->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (whitelist !=  nullptr && whitelist->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threat-inspection";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "whitelist")
-    {
-        if(whitelist == nullptr)
-        {
-            whitelist = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist>();
-        }
-        return whitelist;
-    }
-
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(whitelist != nullptr)
-    {
-        children["whitelist"] = whitelist;
-    }
-
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "whitelist" || name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Whitelist()
-{
-
-    yang_name = "whitelist"; yang_parent_name = "threat-inspection"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::~Whitelist()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::has_data() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::has_operation() const
-{
-    for (std::size_t index=0; index<profile.size(); index++)
-    {
-        if(profile[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/threat-inspection/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "whitelist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "profile")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile>();
-        c->parent = this;
-        profile.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : profile)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Profile()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "profile"; yang_parent_name = "whitelist"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::~Profile()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::has_data() const
-{
-    for (std::size_t index=0; index<signature.size(); index++)
-    {
-        if(signature[index]->has_data())
-            return true;
-    }
-    return name.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::has_operation() const
-{
-    for (std::size_t index=0; index<signature.size(); index++)
-    {
-        if(signature[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/threat-inspection/whitelist/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "signature")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature>();
-        c->parent = this;
-        signature.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : signature)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "signature" || name == "name")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::Signature()
-    :
-    id{YType::uint32, "id"},
-    comment{YType::str, "comment"}
-{
-
-    yang_name = "signature"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::~Signature()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::has_data() const
-{
-    return id.is_set
-	|| comment.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(comment.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "signature" <<"[id='" <<id <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (comment.is_set || is_set(comment.yfilter)) leaf_name_data.push_back(comment.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "comment")
-    {
-        comment = value;
-        comment.value_namespace = name_space;
-        comment.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "comment")
-    {
-        comment.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Whitelist::Profile::Signature::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "id" || name == "comment")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Profile()
-    :
-    name{YType::str, "name"},
-    threat{YType::enumeration, "threat"},
-    policy{YType::enumeration, "policy"}
-    	,
-    logging(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging>())
-	,whitelist(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist>())
-{
-    logging->parent = this;
-    whitelist->parent = this;
-
-    yang_name = "profile"; yang_parent_name = "threat-inspection"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::~Profile()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::has_data() const
-{
-    return name.is_set
-	|| threat.is_set
-	|| policy.is_set
-	|| (logging !=  nullptr && logging->has_data())
-	|| (whitelist !=  nullptr && whitelist->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(threat.yfilter)
-	|| ydk::is_set(policy.yfilter)
-	|| (logging !=  nullptr && logging->has_operation())
-	|| (whitelist !=  nullptr && whitelist->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/threat-inspection/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "profile" <<"[name='" <<name <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (threat.is_set || is_set(threat.yfilter)) leaf_name_data.push_back(threat.get_name_leafdata());
-    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging>();
-        }
-        return logging;
-    }
-
-    if(child_yang_name == "whitelist")
-    {
-        if(whitelist == nullptr)
-        {
-            whitelist = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist>();
-        }
-        return whitelist;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(logging != nullptr)
-    {
-        children["logging"] = logging;
-    }
-
-    if(whitelist != nullptr)
-    {
-        children["whitelist"] = whitelist;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threat")
-    {
-        threat = value;
-        threat.value_namespace = name_space;
-        threat.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "policy")
-    {
-        policy = value;
-        policy.value_namespace = name_space;
-        policy.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "threat")
-    {
-        threat.yfilter = yfilter;
-    }
-    if(value_path == "policy")
-    {
-        policy.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "logging" || name == "whitelist" || name == "name" || name == "threat" || name == "policy")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Logging()
-    :
-    level{YType::enumeration, "level"}
-{
-
-    yang_name = "logging"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::~Logging()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::has_data() const
-{
-    return level.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "logging";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::Whitelist()
-    :
-    profile{YType::str, "profile"}
-{
-
-    yang_name = "whitelist"; yang_parent_name = "profile"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::~Whitelist()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::has_data() const
-{
-    return profile.is_set;
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "whitelist";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile")
-    {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile")
-    {
-        profile.yfilter = yfilter;
-    }
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Whitelist::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Utd_()
-    :
-    global(nullptr) // presence node
-{
-
-    yang_name = "utd"; yang_parent_name = "multi-tenancy"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::~Utd_()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::has_data() const
-{
-    return (global !=  nullptr && global->has_data());
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::has_operation() const
-{
-    return is_set(yfilter)
-	|| (global !=  nullptr && global->has_operation());
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "utd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "global")
-    {
-        if(global == nullptr)
-        {
-            global = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global>();
-        }
-        return global;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(global != nullptr)
-    {
-        children["global"] = global;
-    }
-
-    return children;
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::set_filter(const std::string & value_path, YFilter yfilter)
-{
+    if(value_path == "period")
+    {
+        period.yfilter = yfilter;
+    }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv4::Type::ScanRpLc::ScanOpt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "global")
+    if(name == "count" || name == "period")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Global()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Ipv6()
     :
-    logging(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging>())
-	,threat_inspection(nullptr) // presence node
-	,web_filter(nullptr) // presence node
+    data_checking{YType::empty, "data-checking"},
+    error_message{YType::empty, "error-message"}
+        ,
+    auto_repair(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair>())
+    , type(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type>())
 {
-    logging->parent = this;
+    auto_repair->parent = this;
+    type->parent = this;
 
-    yang_name = "global"; yang_parent_name = "utd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "consistency-check"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::~Global()
+Native::Cef::Table::ConsistencyCheck::Ipv6::~Ipv6()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::has_data() const
 {
-    return (logging !=  nullptr && logging->has_data())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_data())
-	|| (web_filter !=  nullptr && web_filter->has_data());
+    if (is_presence_container) return true;
+    return data_checking.is_set
+	|| error_message.is_set
+	|| (auto_repair !=  nullptr && auto_repair->has_data())
+	|| (type !=  nullptr && type->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::has_operation() const
 {
     return is_set(yfilter)
-	|| (logging !=  nullptr && logging->has_operation())
-	|| (threat_inspection !=  nullptr && threat_inspection->has_operation())
-	|| (web_filter !=  nullptr && web_filter->has_operation());
+	|| ydk::is_set(data_checking.yfilter)
+	|| ydk::is_set(error_message.yfilter)
+	|| (auto_repair !=  nullptr && auto_repair->has_operation())
+	|| (type !=  nullptr && type->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global";
+    path_buffer << "ipv6";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (data_checking.is_set || is_set(data_checking.yfilter)) leaf_name_data.push_back(data_checking.get_name_leafdata());
+    if (error_message.is_set || is_set(error_message.yfilter)) leaf_name_data.push_back(error_message.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging>();
-        }
-        return logging;
-    }
-
-    if(child_yang_name == "threat-inspection")
+    if(child_yang_name == "auto-repair")
     {
-        if(threat_inspection == nullptr)
+        if(auto_repair == nullptr)
         {
-            threat_inspection = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection>();
+            auto_repair = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair>();
         }
-        return threat_inspection;
+        return auto_repair;
     }
 
-    if(child_yang_name == "web-filter")
+    if(child_yang_name == "type")
     {
-        if(web_filter == nullptr)
+        if(type == nullptr)
         {
-            web_filter = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter>();
+            type = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type>();
         }
-        return web_filter;
+        return type;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(logging != nullptr)
-    {
-        children["logging"] = logging;
-    }
-
-    if(threat_inspection != nullptr)
+    if(auto_repair != nullptr)
     {
-        children["threat-inspection"] = threat_inspection;
+        children["auto-repair"] = auto_repair;
     }
 
-    if(web_filter != nullptr)
+    if(type != nullptr)
     {
-        children["web-filter"] = web_filter;
+        children["type"] = type;
     }
 
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "data-checking")
+    {
+        data_checking = value;
+        data_checking.value_namespace = name_space;
+        data_checking.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "error-message")
+    {
+        error_message = value;
+        error_message.value_namespace = name_space;
+        error_message.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "data-checking")
+    {
+        data_checking.yfilter = yfilter;
+    }
+    if(value_path == "error-message")
+    {
+        error_message.yfilter = yfilter;
+    }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "logging" || name == "threat-inspection" || name == "web-filter")
+    if(name == "auto-repair" || name == "type" || name == "data-checking" || name == "error-message")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Logging()
+Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::AutoRepair()
     :
-    syslog{YType::empty, "syslog"}
+    delay{YType::uint16, "delay"},
+    holddown{YType::uint16, "holddown"}
 {
 
-    yang_name = "logging"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auto-repair"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::~Logging()
+Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::~AutoRepair()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_data())
-            return true;
-    }
-    return syslog.is_set;
+    if (is_presence_container) return true;
+    return delay.is_set
+	|| holddown.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
-    {
-        if(host[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(syslog.yfilter);
+	|| ydk::is_set(delay.yfilter)
+	|| ydk::is_set(holddown.yfilter);
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "logging";
+    path_buffer << "auto-repair";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (syslog.is_set || is_set(syslog.yfilter)) leaf_name_data.push_back(syslog.get_name_leafdata());
+    if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
+    if (holddown.is_set || is_set(holddown.yfilter)) leaf_name_data.push_back(holddown.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "host")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host>();
-        c->parent = this;
-        host.push_back(c);
-        return c;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : host)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "syslog")
+    if(value_path == "delay")
     {
-        syslog = value;
-        syslog.value_namespace = name_space;
-        syslog.value_namespace_prefix = name_space_prefix;
+        delay = value;
+        delay.value_namespace = name_space;
+        delay.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "holddown")
+    {
+        holddown = value;
+        holddown.value_namespace = name_space;
+        holddown.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "syslog")
+    if(value_path == "delay")
+    {
+        delay.yfilter = yfilter;
+    }
+    if(value_path == "holddown")
     {
-        syslog.yfilter = yfilter;
+        holddown.yfilter = yfilter;
     }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::AutoRepair::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "host" || name == "syslog")
+    if(name == "delay" || name == "holddown")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::Host()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::Type()
     :
-    name{YType::str, "name"}
+    lc_detect{YType::empty, "lc-detect"}
+        ,
+    scan_ios_rib(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib>())
+    , scan_lc_rp(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp>())
+    , scan_rp_lc(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc>())
 {
+    scan_ios_rib->parent = this;
+    scan_lc_rp->parent = this;
+    scan_rp_lc->parent = this;
 
-    yang_name = "host"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "type"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::~Host()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::~Type()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::has_data() const
 {
-    return name.is_set;
+    if (is_presence_container) return true;
+    return lc_detect.is_set
+	|| (scan_ios_rib !=  nullptr && scan_ios_rib->has_data())
+	|| (scan_lc_rp !=  nullptr && scan_lc_rp->has_data())
+	|| (scan_rp_lc !=  nullptr && scan_rp_lc->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
+	|| ydk::is_set(lc_detect.yfilter)
+	|| (scan_ios_rib !=  nullptr && scan_ios_rib->has_operation())
+	|| (scan_lc_rp !=  nullptr && scan_lc_rp->has_operation())
+	|| (scan_rp_lc !=  nullptr && scan_rp_lc->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/logging/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[name='" <<name <<"']";
+    path_buffer << "type";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::Type::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (lc_detect.is_set || is_set(lc_detect.yfilter)) leaf_name_data.push_back(lc_detect.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "scan-ios-rib")
+    {
+        if(scan_ios_rib == nullptr)
+        {
+            scan_ios_rib = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib>();
+        }
+        return scan_ios_rib;
+    }
+
+    if(child_yang_name == "scan-lc-rp")
+    {
+        if(scan_lc_rp == nullptr)
+        {
+            scan_lc_rp = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp>();
+        }
+        return scan_lc_rp;
+    }
+
+    if(child_yang_name == "scan-rp-lc")
+    {
+        if(scan_rp_lc == nullptr)
+        {
+            scan_rp_lc = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc>();
+        }
+        return scan_rp_lc;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(scan_ios_rib != nullptr)
+    {
+        children["scan-ios-rib"] = scan_ios_rib;
+    }
+
+    if(scan_lc_rp != nullptr)
+    {
+        children["scan-lc-rp"] = scan_lc_rp;
+    }
+
+    if(scan_rp_lc != nullptr)
+    {
+        children["scan-rp-lc"] = scan_rp_lc;
+    }
+
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
+    if(value_path == "lc-detect")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        lc_detect = value;
+        lc_detect.value_namespace = name_space;
+        lc_detect.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
+    if(value_path == "lc-detect")
     {
-        name.yfilter = yfilter;
+        lc_detect.yfilter = yfilter;
     }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::Logging::Host::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name")
+    if(name == "scan-ios-rib" || name == "scan-lc-rp" || name == "scan-rp-lc" || name == "lc-detect")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::ThreatInspection()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanIosRib()
     :
-    signature(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature>())
+    scan_opt(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt>())
 {
-    signature->parent = this;
+    scan_opt->parent = this;
 
-    yang_name = "threat-inspection"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-ios-rib"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::~ThreatInspection()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::~ScanIosRib()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::has_data() const
 {
-    return (signature !=  nullptr && signature->has_data());
+    if (is_presence_container) return true;
+    return (scan_opt !=  nullptr && scan_opt->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::has_operation() const
 {
     return is_set(yfilter)
-	|| (signature !=  nullptr && signature->has_operation());
+	|| (scan_opt !=  nullptr && scan_opt->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/type/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "threat-inspection";
+    path_buffer << "scan-ios-rib";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13729,178 +14724,186 @@ std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Stand
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "signature")
+    if(child_yang_name == "scan-opt")
     {
-        if(signature == nullptr)
+        if(scan_opt == nullptr)
         {
-            signature = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature>();
+            scan_opt = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt>();
         }
-        return signature;
+        return scan_opt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(signature != nullptr)
+    if(scan_opt != nullptr)
     {
-        children["signature"] = signature;
+        children["scan-opt"] = scan_opt;
     }
 
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "signature")
+    if(name == "scan-opt")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Signature()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::ScanOpt()
     :
-    update(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update>())
+    count{YType::uint16, "count"},
+    period{YType::uint16, "period"}
 {
-    update->parent = this;
 
-    yang_name = "signature"; yang_parent_name = "threat-inspection"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-opt"; yang_parent_name = "scan-ios-rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::~Signature()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::~ScanOpt()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::has_data() const
 {
-    return (update !=  nullptr && update->has_data());
+    if (is_presence_container) return true;
+    return count.is_set
+	|| period.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::has_operation() const
 {
     return is_set(yfilter)
-	|| (update !=  nullptr && update->has_operation());
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(period.yfilter);
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/threat-inspection/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/type/scan-ios-rib/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "signature";
+    path_buffer << "scan-opt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "update")
-    {
-        if(update == nullptr)
-        {
-            update = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update>();
-        }
-        return update;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(update != nullptr)
-    {
-        children["update"] = update;
-    }
-
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "count")
+    {
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "period")
+    {
+        period = value;
+        period.value_namespace = name_space;
+        period.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "count")
+    {
+        count.yfilter = yfilter;
+    }
+    if(value_path == "period")
+    {
+        period.yfilter = yfilter;
+    }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanIosRib::ScanOpt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "update")
+    if(name == "count" || name == "period")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Update()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanLcRp()
     :
-    occur_at(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt>())
-	,server(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server>())
+    scan_opt(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt>())
 {
-    occur_at->parent = this;
-    server->parent = this;
+    scan_opt->parent = this;
 
-    yang_name = "update"; yang_parent_name = "signature"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-lc-rp"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::~Update()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::~ScanLcRp()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::has_data() const
 {
-    return (occur_at !=  nullptr && occur_at->has_data())
-	|| (server !=  nullptr && server->has_data());
+    if (is_presence_container) return true;
+    return (scan_opt !=  nullptr && scan_opt->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::has_operation() const
 {
     return is_set(yfilter)
-	|| (occur_at !=  nullptr && occur_at->has_operation())
-	|| (server !=  nullptr && server->has_operation());
+	|| (scan_opt !=  nullptr && scan_opt->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/threat-inspection/signature/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/type/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "update";
+    path_buffer << "scan-lc-rp";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13909,244 +14912,186 @@ std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Stand
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "occur-at")
+    if(child_yang_name == "scan-opt")
     {
-        if(occur_at == nullptr)
+        if(scan_opt == nullptr)
         {
-            occur_at = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt>();
+            scan_opt = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt>();
         }
-        return occur_at;
+        return scan_opt;
     }
 
-    if(child_yang_name == "server")
-    {
-        if(server == nullptr)
-        {
-            server = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server>();
-        }
-        return server;
-    }
-
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(occur_at != nullptr)
-    {
-        children["occur-at"] = occur_at;
-    }
-
-    if(server != nullptr)
+    if(scan_opt != nullptr)
     {
-        children["server"] = server;
+        children["scan-opt"] = scan_opt;
     }
 
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "occur-at" || name == "server")
+    if(name == "scan-opt")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::OccurAt()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::ScanOpt()
     :
-    daily{YType::empty, "daily"},
-    monthly{YType::str, "monthly"},
-    weekly{YType::str, "weekly"},
-    hours{YType::uint8, "hours"},
-    minutes{YType::uint8, "minutes"}
+    count{YType::uint16, "count"},
+    period{YType::uint16, "period"}
 {
 
-    yang_name = "occur-at"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-opt"; yang_parent_name = "scan-lc-rp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::~OccurAt()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::~ScanOpt()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::has_data() const
 {
-    return daily.is_set
-	|| monthly.is_set
-	|| weekly.is_set
-	|| hours.is_set
-	|| minutes.is_set;
+    if (is_presence_container) return true;
+    return count.is_set
+	|| period.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(daily.yfilter)
-	|| ydk::is_set(monthly.yfilter)
-	|| ydk::is_set(weekly.yfilter)
-	|| ydk::is_set(hours.yfilter)
-	|| ydk::is_set(minutes.yfilter);
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(period.yfilter);
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/threat-inspection/signature/update/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/type/scan-lc-rp/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "occur-at";
+    path_buffer << "scan-opt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (daily.is_set || is_set(daily.yfilter)) leaf_name_data.push_back(daily.get_name_leafdata());
-    if (monthly.is_set || is_set(monthly.yfilter)) leaf_name_data.push_back(monthly.get_name_leafdata());
-    if (weekly.is_set || is_set(weekly.yfilter)) leaf_name_data.push_back(weekly.get_name_leafdata());
-    if (hours.is_set || is_set(hours.yfilter)) leaf_name_data.push_back(hours.get_name_leafdata());
-    if (minutes.is_set || is_set(minutes.yfilter)) leaf_name_data.push_back(minutes.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "daily")
+    if(value_path == "count")
     {
-        daily = value;
-        daily.value_namespace = name_space;
-        daily.value_namespace_prefix = name_space_prefix;
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "monthly")
+    if(value_path == "period")
     {
-        monthly = value;
-        monthly.value_namespace = name_space;
-        monthly.value_namespace_prefix = name_space_prefix;
+        period = value;
+        period.value_namespace = name_space;
+        period.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "weekly")
-    {
-        weekly = value;
-        weekly.value_namespace = name_space;
-        weekly.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hours")
-    {
-        hours = value;
-        hours.value_namespace = name_space;
-        hours.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minutes")
-    {
-        minutes = value;
-        minutes.value_namespace = name_space;
-        minutes.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "daily")
-    {
-        daily.yfilter = yfilter;
-    }
-    if(value_path == "monthly")
+    if(value_path == "count")
     {
-        monthly.yfilter = yfilter;
+        count.yfilter = yfilter;
     }
-    if(value_path == "weekly")
+    if(value_path == "period")
     {
-        weekly.yfilter = yfilter;
+        period.yfilter = yfilter;
     }
-    if(value_path == "hours")
-    {
-        hours.yfilter = yfilter;
-    }
-    if(value_path == "minutes")
-    {
-        minutes.yfilter = yfilter;
-    }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::OccurAt::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanLcRp::ScanOpt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "daily" || name == "monthly" || name == "weekly" || name == "hours" || name == "minutes")
+    if(name == "count" || name == "period")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Server()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanRpLc()
     :
-    cisco(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco>())
-	,url(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url>())
+    scan_opt(std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt>())
 {
-    cisco->parent = this;
-    url->parent = this;
+    scan_opt->parent = this;
 
-    yang_name = "server"; yang_parent_name = "update"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-rp-lc"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::~Server()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::~ScanRpLc()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::has_data() const
 {
-    return (cisco !=  nullptr && cisco->has_data())
-	|| (url !=  nullptr && url->has_data());
+    if (is_presence_container) return true;
+    return (scan_opt !=  nullptr && scan_opt->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::has_operation() const
 {
     return is_set(yfilter)
-	|| (cisco !=  nullptr && cisco->has_operation())
-	|| (url !=  nullptr && url->has_operation());
+	|| (scan_opt !=  nullptr && scan_opt->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/threat-inspection/signature/update/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/type/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server";
+    path_buffer << "scan-rp-lc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14155,899 +15100,815 @@ std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Stand
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "cisco")
-    {
-        if(cisco == nullptr)
-        {
-            cisco = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco>();
-        }
-        return cisco;
-    }
-
-    if(child_yang_name == "url")
+    if(child_yang_name == "scan-opt")
     {
-        if(url == nullptr)
+        if(scan_opt == nullptr)
         {
-            url = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url>();
+            scan_opt = std::make_shared<Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt>();
         }
-        return url;
+        return scan_opt;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(cisco != nullptr)
-    {
-        children["cisco"] = cisco;
-    }
-
-    if(url != nullptr)
+    if(scan_opt != nullptr)
     {
-        children["url"] = url;
+        children["scan-opt"] = scan_opt;
     }
 
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cisco" || name == "url")
+    if(name == "scan-opt")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::Cisco()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::ScanOpt()
     :
-    username{YType::str, "username"},
-    password{YType::str, "password"}
+    count{YType::uint16, "count"},
+    period{YType::uint16, "period"}
 {
 
-    yang_name = "cisco"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "scan-opt"; yang_parent_name = "scan-rp-lc"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::~Cisco()
+Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::~ScanOpt()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::has_data() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::has_data() const
 {
-    return username.is_set
-	|| password.is_set;
+    if (is_presence_container) return true;
+    return count.is_set
+	|| period.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::has_operation() const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(username.yfilter)
-	|| ydk::is_set(password.yfilter);
+	|| ydk::is_set(count.yfilter)
+	|| ydk::is_set(period.yfilter);
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::get_absolute_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/threat-inspection/signature/update/server/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/consistency-check/ipv6/type/scan-rp-lc/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::get_segment_path() const
+std::string Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cisco";
+    path_buffer << "scan-opt";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (count.is_set || is_set(count.yfilter)) leaf_name_data.push_back(count.get_name_leafdata());
+    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "username")
+    if(value_path == "count")
     {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
+        count = value;
+        count.value_namespace = name_space;
+        count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "password")
+    if(value_path == "period")
     {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
+        period = value;
+        period.value_namespace = name_space;
+        period.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "username")
+    if(value_path == "count")
     {
-        username.yfilter = yfilter;
+        count.yfilter = yfilter;
     }
-    if(value_path == "password")
+    if(value_path == "period")
     {
-        password.yfilter = yfilter;
+        period.yfilter = yfilter;
     }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Cisco::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::ConsistencyCheck::Ipv6::Type::ScanRpLc::ScanOpt::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "username" || name == "password")
+    if(name == "count" || name == "period")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::Url()
+Native::Cef::Table::Download::Download()
     :
-    name{YType::str, "name"}
-    	,
-    all(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All>())
+    catch_all(std::make_shared<Native::Cef::Table::Download::CatchAll>())
+    , connected_route(std::make_shared<Native::Cef::Table::Download::ConnectedRoute>())
+    , default_route(std::make_shared<Native::Cef::Table::Download::DefaultRoute>())
+    , receive_route(std::make_shared<Native::Cef::Table::Download::ReceiveRoute>())
+    , recursive_dependents(std::make_shared<Native::Cef::Table::Download::RecursiveDependents>())
+    , route_in_vrf(std::make_shared<Native::Cef::Table::Download::RouteInVrf>())
 {
-    all->parent = this;
+    catch_all->parent = this;
+    connected_route->parent = this;
+    default_route->parent = this;
+    receive_route->parent = this;
+    recursive_dependents->parent = this;
+    route_in_vrf->parent = this;
 
-    yang_name = "url"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "download"; yang_parent_name = "table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::~Url()
+Native::Cef::Table::Download::~Download()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::has_data() const
+bool Native::Cef::Table::Download::has_data() const
 {
-    return name.is_set
-	|| (all !=  nullptr && all->has_data());
+    if (is_presence_container) return true;
+    return (catch_all !=  nullptr && catch_all->has_data())
+	|| (connected_route !=  nullptr && connected_route->has_data())
+	|| (default_route !=  nullptr && default_route->has_data())
+	|| (receive_route !=  nullptr && receive_route->has_data())
+	|| (recursive_dependents !=  nullptr && recursive_dependents->has_data())
+	|| (route_in_vrf !=  nullptr && route_in_vrf->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::has_operation() const
+bool Native::Cef::Table::Download::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (all !=  nullptr && all->has_operation());
+	|| (catch_all !=  nullptr && catch_all->has_operation())
+	|| (connected_route !=  nullptr && connected_route->has_operation())
+	|| (default_route !=  nullptr && default_route->has_operation())
+	|| (receive_route !=  nullptr && receive_route->has_operation())
+	|| (recursive_dependents !=  nullptr && recursive_dependents->has_operation())
+	|| (route_in_vrf !=  nullptr && route_in_vrf->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::get_absolute_path() const
+std::string Native::Cef::Table::Download::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/threat-inspection/signature/update/server/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::get_segment_path() const
+std::string Native::Cef::Table::Download::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "url";
+    path_buffer << "download";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "all")
+    if(child_yang_name == "catch-all")
+    {
+        if(catch_all == nullptr)
+        {
+            catch_all = std::make_shared<Native::Cef::Table::Download::CatchAll>();
+        }
+        return catch_all;
+    }
+
+    if(child_yang_name == "connected-route")
+    {
+        if(connected_route == nullptr)
+        {
+            connected_route = std::make_shared<Native::Cef::Table::Download::ConnectedRoute>();
+        }
+        return connected_route;
+    }
+
+    if(child_yang_name == "default-route")
+    {
+        if(default_route == nullptr)
+        {
+            default_route = std::make_shared<Native::Cef::Table::Download::DefaultRoute>();
+        }
+        return default_route;
+    }
+
+    if(child_yang_name == "receive-route")
+    {
+        if(receive_route == nullptr)
+        {
+            receive_route = std::make_shared<Native::Cef::Table::Download::ReceiveRoute>();
+        }
+        return receive_route;
+    }
+
+    if(child_yang_name == "recursive-dependents")
     {
-        if(all == nullptr)
+        if(recursive_dependents == nullptr)
         {
-            all = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All>();
+            recursive_dependents = std::make_shared<Native::Cef::Table::Download::RecursiveDependents>();
         }
-        return all;
+        return recursive_dependents;
     }
 
+    if(child_yang_name == "route-in-vrf")
+    {
+        if(route_in_vrf == nullptr)
+        {
+            route_in_vrf = std::make_shared<Native::Cef::Table::Download::RouteInVrf>();
+        }
+        return route_in_vrf;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(all != nullptr)
+    if(catch_all != nullptr)
+    {
+        children["catch-all"] = catch_all;
+    }
+
+    if(connected_route != nullptr)
     {
-        children["all"] = all;
+        children["connected-route"] = connected_route;
     }
 
+    if(default_route != nullptr)
+    {
+        children["default-route"] = default_route;
+    }
+
+    if(receive_route != nullptr)
+    {
+        children["receive-route"] = receive_route;
+    }
+
+    if(recursive_dependents != nullptr)
+    {
+        children["recursive-dependents"] = recursive_dependents;
+    }
+
+    if(route_in_vrf != nullptr)
+    {
+        children["route-in-vrf"] = route_in_vrf;
+    }
+
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "all" || name == "name")
+    if(name == "catch-all" || name == "connected-route" || name == "default-route" || name == "receive-route" || name == "recursive-dependents" || name == "route-in-vrf")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::All()
+Native::Cef::Table::Download::CatchAll::CatchAll()
     :
-    name{YType::str, "name"},
-    username{YType::str, "username"},
-    password{YType::str, "password"}
+    priority(std::make_shared<Native::Cef::Table::Download::CatchAll::Priority>())
 {
+    priority->parent = this;
 
-    yang_name = "all"; yang_parent_name = "url"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "catch-all"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::~All()
+Native::Cef::Table::Download::CatchAll::~CatchAll()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::has_data() const
+bool Native::Cef::Table::Download::CatchAll::has_data() const
 {
-    return name.is_set
-	|| username.is_set
-	|| password.is_set;
+    if (is_presence_container) return true;
+    return (priority !=  nullptr && priority->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::has_operation() const
+bool Native::Cef::Table::Download::CatchAll::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(username.yfilter)
-	|| ydk::is_set(password.yfilter);
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::get_absolute_path() const
+std::string Native::Cef::Table::Download::CatchAll::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/threat-inspection/signature/update/server/url/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::get_segment_path() const
+std::string Native::Cef::Table::Download::CatchAll::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all";
+    path_buffer << "catch-all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::CatchAll::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (username.is_set || is_set(username.yfilter)) leaf_name_data.push_back(username.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::CatchAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "priority")
+    {
+        if(priority == nullptr)
+        {
+            priority = std::make_shared<Native::Cef::Table::Download::CatchAll::Priority>();
+        }
+        return priority;
+    }
+
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::CatchAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    if(priority != nullptr)
+    {
+        children["priority"] = priority;
+    }
+
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::CatchAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "username")
-    {
-        username = value;
-        username.value_namespace = name_space;
-        username.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::CatchAll::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "username")
-    {
-        username.yfilter = yfilter;
-    }
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::ThreatInspection::Signature::Update::Server::Url::All::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::CatchAll::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name" || name == "username" || name == "password")
+    if(name == "priority")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::WebFilter()
+Native::Cef::Table::Download::CatchAll::Priority::Priority()
     :
-    sourcedb{YType::str, "sourcedb"}
+    priority1{YType::empty, "priority1"},
+    priority2{YType::empty, "priority2"},
+    priority3{YType::empty, "priority3"},
+    priority4{YType::empty, "priority4"}
 {
 
-    yang_name = "web-filter"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "priority"; yang_parent_name = "catch-all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::~WebFilter()
+Native::Cef::Table::Download::CatchAll::Priority::~Priority()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::has_data() const
+bool Native::Cef::Table::Download::CatchAll::Priority::has_data() const
 {
-    return sourcedb.is_set;
+    if (is_presence_container) return true;
+    return priority1.is_set
+	|| priority2.is_set
+	|| priority3.is_set
+	|| priority4.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::has_operation() const
+bool Native::Cef::Table::Download::CatchAll::Priority::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(sourcedb.yfilter);
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(priority3.yfilter)
+	|| ydk::is_set(priority4.yfilter);
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::get_absolute_path() const
+std::string Native::Cef::Table::Download::CatchAll::Priority::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/utd/global/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/catch-all/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::get_segment_path() const
+std::string Native::Cef::Table::Download::CatchAll::Priority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "web-filter";
+    path_buffer << "priority";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::CatchAll::Priority::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sourcedb.is_set || is_set(sourcedb.yfilter)) leaf_name_data.push_back(sourcedb.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (priority3.is_set || is_set(priority3.yfilter)) leaf_name_data.push_back(priority3.get_name_leafdata());
+    if (priority4.is_set || is_set(priority4.yfilter)) leaf_name_data.push_back(priority4.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::CatchAll::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::CatchAll::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::CatchAll::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "sourcedb")
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority3")
     {
-        sourcedb = value;
-        sourcedb.value_namespace = name_space;
-        sourcedb.value_namespace_prefix = name_space_prefix;
+        priority3 = value;
+        priority3.value_namespace = name_space;
+        priority3.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "priority4")
+    {
+        priority4 = value;
+        priority4.value_namespace = name_space;
+        priority4.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::CatchAll::Priority::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "sourcedb")
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "priority3")
+    {
+        priority3.yfilter = yfilter;
+    }
+    if(value_path == "priority4")
     {
-        sourcedb.yfilter = yfilter;
+        priority4.yfilter = yfilter;
     }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Utd_::Global::WebFilter::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::CatchAll::Priority::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sourcedb")
+    if(name == "priority1" || name == "priority2" || name == "priority3" || name == "priority4")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Policy()
+Native::Cef::Table::Download::ConnectedRoute::ConnectedRoute()
     :
-    name{YType::str, "name"}
-    	,
-    threat_inspection(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection>())
-	,web_filter(std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter>())
+    priority(std::make_shared<Native::Cef::Table::Download::ConnectedRoute::Priority>())
 {
-    threat_inspection->parent = this;
-    web_filter->parent = this;
+    priority->parent = this;
 
-    yang_name = "policy"; yang_parent_name = "multi-tenancy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "connected-route"; yang_parent_name = "download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::~Policy()
+Native::Cef::Table::Download::ConnectedRoute::~ConnectedRoute()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::has_data() const
+bool Native::Cef::Table::Download::ConnectedRoute::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_data())
-            return true;
-    }
-    return name.is_set
-	|| (threat_inspection !=  nullptr && threat_inspection->has_data())
-	|| (web_filter !=  nullptr && web_filter->has_data());
+    if (is_presence_container) return true;
+    return (priority !=  nullptr && priority->has_data());
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::has_operation() const
+bool Native::Cef::Table::Download::ConnectedRoute::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
-    {
-        if(vrf[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (threat_inspection !=  nullptr && threat_inspection->has_operation())
-	|| (web_filter !=  nullptr && web_filter->has_operation());
+	|| (priority !=  nullptr && priority->has_operation());
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::get_absolute_path() const
+std::string Native::Cef::Table::Download::ConnectedRoute::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-utd:utd-mt/utd/engine/standard/multi-tenancy/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::get_segment_path() const
+std::string Native::Cef::Table::Download::ConnectedRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy" <<"[name='" <<name <<"']";
+    path_buffer << "connected-route";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::ConnectedRoute::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::ConnectedRoute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "vrf")
-    {
-        auto c = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf>();
-        c->parent = this;
-        vrf.push_back(c);
-        return c;
-    }
-
-    if(child_yang_name == "threat-inspection")
-    {
-        if(threat_inspection == nullptr)
-        {
-            threat_inspection = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection>();
-        }
-        return threat_inspection;
-    }
-
-    if(child_yang_name == "web-filter")
+    if(child_yang_name == "priority")
     {
-        if(web_filter == nullptr)
+        if(priority == nullptr)
         {
-            web_filter = std::make_shared<Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::WebFilter>();
+            priority = std::make_shared<Native::Cef::Table::Download::ConnectedRoute::Priority>();
         }
-        return web_filter;
+        return priority;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ConnectedRoute::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    count = 0;
-    for (auto const & c : vrf)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    if(threat_inspection != nullptr)
-    {
-        children["threat-inspection"] = threat_inspection;
-    }
-
-    if(web_filter != nullptr)
+    if(priority != nullptr)
     {
-        children["web-filter"] = web_filter;
+        children["priority"] = priority;
     }
 
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::ConnectedRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::ConnectedRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::ConnectedRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrf" || name == "threat-inspection" || name == "web-filter" || name == "name")
+    if(name == "priority")
         return true;
     return false;
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::Vrf()
+Native::Cef::Table::Download::ConnectedRoute::Priority::Priority()
     :
-    name{YType::str, "name"}
+    priority1{YType::empty, "priority1"},
+    priority2{YType::empty, "priority2"},
+    priority3{YType::empty, "priority3"},
+    priority4{YType::empty, "priority4"}
 {
 
-    yang_name = "vrf"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority"; yang_parent_name = "connected-route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::~Vrf()
+Native::Cef::Table::Download::ConnectedRoute::Priority::~Priority()
 {
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::has_data() const
+bool Native::Cef::Table::Download::ConnectedRoute::Priority::has_data() const
 {
-    return name.is_set;
+    if (is_presence_container) return true;
+    return priority1.is_set
+	|| priority2.is_set
+	|| priority3.is_set
+	|| priority4.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::has_operation() const
+bool Native::Cef::Table::Download::ConnectedRoute::Priority::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
+	|| ydk::is_set(priority1.yfilter)
+	|| ydk::is_set(priority2.yfilter)
+	|| ydk::is_set(priority3.yfilter)
+	|| ydk::is_set(priority4.yfilter);
+}
+
+std::string Native::Cef::Table::Download::ConnectedRoute::Priority::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/Cisco-IOS-XE-cef:cef/table/download/connected-route/" << get_segment_path();
+    return path_buffer.str();
 }
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::get_segment_path() const
+std::string Native::Cef::Table::Download::ConnectedRoute::Priority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
+    path_buffer << "priority";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Cef::Table::Download::ConnectedRoute::Priority::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (priority1.is_set || is_set(priority1.yfilter)) leaf_name_data.push_back(priority1.get_name_leafdata());
+    if (priority2.is_set || is_set(priority2.yfilter)) leaf_name_data.push_back(priority2.get_name_leafdata());
+    if (priority3.is_set || is_set(priority3.yfilter)) leaf_name_data.push_back(priority3.get_name_leafdata());
+    if (priority4.is_set || is_set(priority4.yfilter)) leaf_name_data.push_back(priority4.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Cef::Table::Download::ConnectedRoute::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Cef::Table::Download::ConnectedRoute::Priority::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Cef::Table::Download::ConnectedRoute::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "name")
+    if(value_path == "priority1")
+    {
+        priority1 = value;
+        priority1.value_namespace = name_space;
+        priority1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority2")
+    {
+        priority2 = value;
+        priority2.value_namespace = name_space;
+        priority2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority3")
+    {
+        priority3 = value;
+        priority3.value_namespace = name_space;
+        priority3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority4")
     {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
+        priority4 = value;
+        priority4.value_namespace = name_space;
+        priority4.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Cef::Table::Download::ConnectedRoute::Priority::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "name")
+    if(value_path == "priority1")
+    {
+        priority1.yfilter = yfilter;
+    }
+    if(value_path == "priority2")
+    {
+        priority2.yfilter = yfilter;
+    }
+    if(value_path == "priority3")
+    {
+        priority3.yfilter = yfilter;
+    }
+    if(value_path == "priority4")
     {
-        name.yfilter = yfilter;
+        priority4.yfilter = yfilter;
     }
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Cef::Table::Download::ConnectedRoute::Priority::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "name")
+    if(name == "priority1" || name == "priority2" || name == "priority3" || name == "priority4")
         return true;
     return false;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::ThreatInspection()
-    :
-    profile{YType::str, "profile"}
-{
-
-    yang_name = "threat-inspection"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::~ThreatInspection()
-{
-}
-
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::has_data() const
-{
-    return profile.is_set;
 }
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(profile.yfilter);
-}
+const Enum::YLeaf Native::BbaGroup::Pppoe::Id::global {0, "global"};
 
-std::string Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threat-inspection";
-    return path_buffer.str();
-}
+const Enum::YLeaf Native::ServiceRouting::MdnsSd::ServicePolicy::Direction::IN {0, "IN"};
+const Enum::YLeaf Native::ServiceRouting::MdnsSd::ServicePolicy::Direction::OUT {1, "OUT"};
 
-std::vector<std::pair<std::string, LeafData> > Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+const Enum::YLeaf Native::Dialer::WatchList::Delay::Interval::connect {0, "connect"};
+const Enum::YLeaf Native::Dialer::WatchList::Delay::Interval::disconnect {1, "disconnect"};
+const Enum::YLeaf Native::Dialer::WatchList::Delay::Interval::route_check {2, "route-check"};
 
-    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::appletalk {0, "appletalk"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::bridge {1, "bridge"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::clns {2, "clns"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::clns_es {3, "clns_es"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::clns_is {4, "clns_is"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::decnet {5, "decnet"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::decnet_node {6, "decnet_node"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::decnet_router_L1 {7, "decnet_router-L1"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::decnet_router_L2 {8, "decnet_router-L2"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::ip {9, "ip"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::ipv6 {10, "ipv6"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::ipx {11, "ipx"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::llc2 {12, "llc2"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::netbios {13, "netbios"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::novell {14, "novell"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::vines {15, "vines"};
+const Enum::YLeaf Native::DialerList::Protocol::ProtocolType::xns {16, "xns"};
 
-    return leaf_name_data;
+const Enum::YLeaf Native::DialerList::Protocol::Access::deny {0, "deny"};
+const Enum::YLeaf Native::DialerList::Protocol::Access::list {1, "list"};
+const Enum::YLeaf Native::DialerList::Protocol::Access::permit {2, "permit"};
 
-}
+const Enum::YLeaf Native::Vpdn::SearchOrder::dnis {0, "dnis"};
+const Enum::YLeaf Native::Vpdn::SearchOrder::domain {1, "domain"};
+const Enum::YLeaf Native::Vpdn::SearchOrder::multihop_hostname {2, "multihop-hostname"};
 
-std::shared_ptr<Entity> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
+const Enum::YLeaf Native::Card::Type::t1 {0, "t1"};
+const Enum::YLeaf Native::Card::Type::e1 {1, "e1"};
 
-std::map<std::string, std::shared_ptr<Entity>> Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
+const Enum::YLeaf Native::Voice::Service::Type::pots {0, "pots"};
+const Enum::YLeaf Native::Voice::Service::Type::saf {1, "saf"};
+const Enum::YLeaf Native::Voice::Service::Type::voatm {2, "voatm"};
+const Enum::YLeaf Native::Voice::Service::Type::vofr {3, "vofr"};
+const Enum::YLeaf Native::Voice::Service::Type::voip {4, "voip"};
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "profile")
-    {
-        profile = value;
-        profile.value_namespace = name_space;
-        profile.value_namespace_prefix = name_space_prefix;
-    }
-}
+const Enum::YLeaf Native::Voice::Service::Fax::Protocol::cisco {0, "cisco"};
+const Enum::YLeaf Native::Voice::Service::Fax::Protocol::none {1, "none"};
+const Enum::YLeaf Native::Voice::Service::Fax::Protocol::pass_through {2, "pass-through"};
+const Enum::YLeaf Native::Voice::Service::Fax::Protocol::t38 {3, "t38"};
 
-void Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "profile")
-    {
-        profile.yfilter = yfilter;
-    }
-}
+const Enum::YLeaf Native::Voice::Service::Fax::Fallback::cisco {0, "cisco"};
+const Enum::YLeaf Native::Voice::Service::Fax::Fallback::none {1, "none"};
+const Enum::YLeaf Native::Voice::Service::Fax::Fallback::pass_through {2, "pass-through"};
 
-bool Native::UtdMt::Utd::Engine::Standard::MultiTenancy::Policy::ThreatInspection::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "profile")
-        return true;
-    return false;
-}
+const Enum::YLeaf Native::Voice::Service::Fax::Codec::g711alaw {0, "g711alaw"};
+const Enum::YLeaf Native::Voice::Service::Fax::Codec::g711ulaw {1, "g711ulaw"};
 
-const Enum::YLeaf Native::Switch::Provision::ws_c2960x_24pd_l {0, "ws-c2960x-24pd-l"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_48ps {1, "ws-c3650-48ps"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_24ps {2, "ws-c3650-24ps"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_48p {3, "ws-c3850-48p"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_24p {4, "ws-c3850-24p"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_48t {5, "ws-c3850-48t"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_24t {6, "ws-c3850-24t"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_48f {7, "ws-c3850-48f"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_48u {8, "ws-c3850-48u"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_24u {9, "ws-c3850-24u"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_12x48u {10, "ws-c3850-12x48u"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_24xu {11, "ws-c3850-24xu"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_24ux {12, "ws-c3850-24ux"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_12s {13, "ws-c3850-12s"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_24s {14, "ws-c3850-24s"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_12xs {15, "ws-c3850-12xs"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_24xs {16, "ws-c3850-24xs"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_48xs {17, "ws-c3850-48xs"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_12x48fd {18, "ws-c3650-12x48fd"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_12x48uq {19, "ws-c3650-12x48uq"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_12x48ur {20, "ws-c3650-12x48ur"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_12x48uz {21, "ws-c3650-12x48uz"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_24pd {22, "ws-c3650-24pd"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_24pdm {23, "ws-c3650-24pdm"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_24td {24, "ws-c3650-24td"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_24ts {25, "ws-c3650-24ts"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_48fqm {26, "ws-c3650-48fqm"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_48pd {27, "ws-c3650-48pd"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_48pq {28, "ws-c3650-48pq"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_48td {29, "ws-c3650-48td"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_48tq {30, "ws-c3650-48tq"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_48ts {31, "ws-c3650-48ts"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_8x24pd {32, "ws-c3650-8x24pd"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3650_8x24uq {33, "ws-c3650-8x24uq"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3750x_24p {34, "ws-c3750x-24p"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3750x_12s {35, "ws-c3750x-12s"};
-const Enum::YLeaf Native::Switch::Provision::ws_c3850_12x48au {36, "ws-c3850-12x48au"};
-const Enum::YLeaf Native::Switch::Provision::c9300_24p {37, "c9300-24p"};
-const Enum::YLeaf Native::Switch::Provision::c9300_24t {38, "c9300-24t"};
-const Enum::YLeaf Native::Switch::Provision::c9300_24u {39, "c9300-24u"};
-const Enum::YLeaf Native::Switch::Provision::c9300_48p {40, "c9300-48p"};
-const Enum::YLeaf Native::Switch::Provision::c9300_48t {41, "c9300-48t"};
-const Enum::YLeaf Native::Switch::Provision::c9300_48u {42, "c9300-48u"};
-
-const Enum::YLeaf Native::SwitchVirtual::Switch::Mode::virtual_ {0, "virtual"};
-
-const Enum::YLeaf Native::Openflow::Switch::ProtocolVersion::Y_1__DOT__0 {0, "1.0"};
-const Enum::YLeaf Native::Openflow::Switch::ProtocolVersion::Y_1__DOT__3 {1, "1.3"};
-const Enum::YLeaf Native::Openflow::Switch::ProtocolVersion::negotiate {2, "negotiate"};
-
-const Enum::YLeaf Native::Openflow::Switch::DataplaneDefault::secure {0, "secure"};
-const Enum::YLeaf Native::Openflow::Switch::DataplaneDefault::standalone {1, "standalone"};
-
-const Enum::YLeaf Native::Openflow::Switch::DefaultMiss::continue_drop {0, "continue-drop"};
-const Enum::YLeaf Native::Openflow::Switch::DefaultMiss::drop {1, "drop"};
-
-const Enum::YLeaf Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::Security::none {0, "none"};
-const Enum::YLeaf Native::Openflow::Switch::Controller::Ipv4::Port::Vrf::Security::tls {1, "tls"};
-
-const Enum::YLeaf Native::Utd::Engine::Mode::standard {0, "standard"};
-const Enum::YLeaf Native::Utd::Engine::Mode::advanced {1, "advanced"};
-
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::Level::debug {0, "debug"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::Level::error {1, "error"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::Level::info {2, "info"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::Level::trace {3, "trace"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Sourcedb::Logging::Level::warning {4, "warning"};
-
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Alert::all {0, "all"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Alert::blacklist {1, "blacklist"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Alert::categories_reputation {2, "categories-reputation"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Alert::whitelist {3, "whitelist"};
-
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Log::Level::detailed {0, "detailed"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Log::Level::error {1, "error"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Log::Level::info {2, "info"};
-
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::BlockThreshold::high_risk {0, "high-risk"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::BlockThreshold::low_risk {1, "low-risk"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::BlockThreshold::moderate_risk {2, "moderate-risk"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::BlockThreshold::suspicious {3, "suspicious"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Url::Profile::Reputation::BlockThreshold::trustworthy {4, "trustworthy"};
-
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Domain::Profile::Alert::all {0, "all"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Domain::Profile::Alert::blacklist {1, "blacklist"};
-const Enum::YLeaf Native::UtdSt::Utd::WebFilter::Domain::Profile::Alert::whitelist {2, "whitelist"};
-
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Threat::detection {0, "detection"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Threat::protection {1, "protection"};
-
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Policy::balanced {0, "balanced"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Policy::connectivity {1, "connectivity"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Policy::security {2, "security"};
-
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::emerg {0, "emerg"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::alert {1, "alert"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::crit {2, "crit"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::err {3, "err"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::warning {4, "warning"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::notice {5, "notice"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::info {6, "info"};
-const Enum::YLeaf Native::UtdSt::Utd::Engine::Standard::ThreatInspection::Logging::Level::debug {7, "debug"};
-
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::Level::debug {0, "debug"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::Level::error {1, "error"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::Level::info {2, "info"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::Level::trace {3, "trace"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Sourcedb::Logging::Level::warning {4, "warning"};
-
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Alert::all {0, "all"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Alert::blacklist {1, "blacklist"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Alert::categories_reputation {2, "categories-reputation"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Alert::whitelist {3, "whitelist"};
-
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::Level::detailed {0, "detailed"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::Level::error {1, "error"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Log::Level::info {2, "info"};
-
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::BlockThreshold::high_risk {0, "high-risk"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::BlockThreshold::low_risk {1, "low-risk"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::BlockThreshold::moderate_risk {2, "moderate-risk"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::BlockThreshold::suspicious {3, "suspicious"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::WebFilter::Url::Profile::Reputation::BlockThreshold::trustworthy {4, "trustworthy"};
-
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Threat::detection {0, "detection"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Threat::protection {1, "protection"};
-
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Policy::balanced {0, "balanced"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Policy::connectivity {1, "connectivity"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Policy::security {2, "security"};
-
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::emerg {0, "emerg"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::alert {1, "alert"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::crit {2, "crit"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::err {3, "err"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::warning {4, "warning"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::notice {5, "notice"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::info {6, "info"};
-const Enum::YLeaf Native::UtdMt::Utd::Engine::Standard::MultiTenancy::ThreatInspection::Profile::Logging::Level::debug {7, "debug"};
+const Enum::YLeaf Native::Voice::Service::Fax::Version::Y_0 {0, "0"};
+const Enum::YLeaf Native::Voice::Service::Fax::Version::Y_3 {1, "3"};
 
 
 }

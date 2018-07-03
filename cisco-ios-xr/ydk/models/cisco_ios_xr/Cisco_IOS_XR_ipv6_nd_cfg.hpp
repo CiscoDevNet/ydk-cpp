@@ -58,7 +58,7 @@ class Ipv6Neighbor::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Ipv6Neighbor::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_cfg::Ipv6Neighbor::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Ipv6Neighbor::Neighbors
 
@@ -88,14 +88,6 @@ class Ipv6Neighbor::Neighbors::Neighbor : public ydk::Entity
 
 }; // Ipv6Neighbor::Neighbors::Neighbor
 
-class Ipv6srpEncapsulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf srpa;
-        static const ydk::Enum::YLeaf srpb;
-
-};
-
 class Ipv6ndMonth : public ydk::Enum
 {
     public:
@@ -120,6 +112,14 @@ class Ipv6NdRouterPref : public ydk::Enum
         static const ydk::Enum::YLeaf high;
         static const ydk::Enum::YLeaf medium;
         static const ydk::Enum::YLeaf low;
+
+};
+
+class Ipv6srpEncapsulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf srpa;
+        static const ydk::Enum::YLeaf srpb;
 
 };
 

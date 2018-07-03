@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_vlan_oper {
 
 Vlans::Vlans()
+    :
+    vlan(this, {"id"})
 {
 
-    yang_name = "vlans"; yang_parent_name = "Cisco-IOS-XE-vlan-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vlans"; yang_parent_name = "Cisco-IOS-XE-vlan-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vlans::~Vlans()
@@ -23,7 +25,8 @@ Vlans::~Vlans()
 
 bool Vlans::has_data() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Vlans::has_data() const
 
 bool Vlans::has_operation() const
 {
-    for (std::size_t index=0; index<vlan.size(); index++)
+    for (std::size_t index=0; index<vlan.len(); index++)
     {
         if(vlan[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Vlans::get_child_by_name(const std::string & child_yang_
     {
         auto c = std::make_shared<Vlans::Vlan>();
         c->parent = this;
-        vlan.push_back(c);
+        vlan.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlans::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan)
+    for (auto c : vlan.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -131,9 +134,11 @@ Vlans::Vlan::Vlan()
     id{YType::uint16, "id"},
     name{YType::str, "name"},
     status{YType::enumeration, "status"}
+        ,
+    ports(this, {})
 {
 
-    yang_name = "vlan"; yang_parent_name = "vlans"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "vlans"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vlans::Vlan::~Vlan()
@@ -142,7 +147,8 @@ Vlans::Vlan::~Vlan()
 
 bool Vlans::Vlan::has_data() const
 {
-    for (std::size_t index=0; index<ports.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ports.len(); index++)
     {
         if(ports[index]->has_data())
             return true;
@@ -154,7 +160,7 @@ bool Vlans::Vlan::has_data() const
 
 bool Vlans::Vlan::has_operation() const
 {
-    for (std::size_t index=0; index<ports.size(); index++)
+    for (std::size_t index=0; index<ports.len(); index++)
     {
         if(ports[index]->has_operation())
             return true;
@@ -175,7 +181,8 @@ std::string Vlans::Vlan::get_absolute_path() const
 std::string Vlans::Vlan::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan" <<"[id='" <<id <<"']";
+    path_buffer << "vlan";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -197,7 +204,7 @@ std::shared_ptr<Entity> Vlans::Vlan::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Vlans::Vlan::Ports>();
         c->parent = this;
-        ports.push_back(c);
+        ports.append(c);
         return c;
     }
 
@@ -209,7 +216,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vlans::Vlan::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ports)
+    for (auto c : ports.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -271,7 +278,7 @@ Vlans::Vlan::Ports::Ports()
     subinterface{YType::uint32, "subinterface"}
 {
 
-    yang_name = "ports"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ports"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vlans::Vlan::Ports::~Ports()
@@ -280,6 +287,7 @@ Vlans::Vlan::Ports::~Ports()
 
 bool Vlans::Vlan::Ports::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }

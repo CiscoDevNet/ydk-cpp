@@ -18,7 +18,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::~MethodList()
@@ -27,6 +27,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -109,7 +110,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::CallingS
 {
     format->parent = this;
 
-    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::~CallingStationId()
@@ -118,6 +119,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::~Calling
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::has_data() const
 {
+    if (is_presence_container) return true;
     return (format !=  nullptr && format->has_data());
 }
 
@@ -187,12 +189,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::has
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::Format()
     :
     msisdn{YType::empty, "msisdn"}
-    	,
+        ,
     mac_address(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::~Format()
@@ -201,6 +203,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::has_data() const
 {
+    if (is_presence_container) return true;
     return msisdn.is_set
 	|| (mac_address !=  nullptr && mac_address->has_data());
 }
@@ -283,19 +286,19 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::For
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::MacAddress()
     :
     none{YType::empty, "none"}
-    	,
+        ,
     default_(nullptr) // presence node
-	,ietf(nullptr) // presence node
-	,one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte>())
-	,three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte>())
-	,two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte>())
-	,unformatted(nullptr) // presence node
+    , ietf(nullptr) // presence node
+    , one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte>())
+    , three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte>())
+    , two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte>())
+    , unformatted(nullptr) // presence node
 {
     one_byte->parent = this;
     three_byte->parent = this;
     two_byte->parent = this;
 
-    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::~MacAddress()
@@ -304,6 +307,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (ietf !=  nullptr && ietf->has_data())
@@ -468,7 +472,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::~Default()
@@ -477,6 +481,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -545,7 +550,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::~Ietf()
@@ -554,6 +559,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Ietf::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -623,7 +629,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 {
     delimiter->parent = this;
 
-    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::~OneByte()
@@ -632,6 +638,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -701,11 +708,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::For
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::~Delimiter()
@@ -714,6 +721,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -817,7 +825,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::~Colon()
@@ -826,6 +834,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -894,7 +903,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::~Dot()
@@ -903,6 +912,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -971,7 +981,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::~Hyphen()
@@ -980,6 +990,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1049,7 +1060,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 {
     delimiter->parent = this;
 
-    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::~ThreeByte()
@@ -1058,6 +1069,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -1127,11 +1139,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::For
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::~Delimiter()
@@ -1140,6 +1152,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -1243,7 +1256,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::~Colon()
@@ -1252,6 +1265,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1320,7 +1334,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::~Dot()
@@ -1329,6 +1343,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1397,7 +1412,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::~Hyphen()
@@ -1406,6 +1421,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1475,7 +1491,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 {
     delimiter->parent = this;
 
-    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::~TwoByte()
@@ -1484,6 +1500,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -1553,11 +1570,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::For
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::~Delimiter()
@@ -1566,6 +1583,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -1669,7 +1687,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::~Colon()
@@ -1678,6 +1696,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1746,7 +1765,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::~Dot()
@@ -1755,6 +1774,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1823,7 +1843,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::~Hyphen()
@@ -1832,6 +1852,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1900,7 +1921,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::~Unformatted()
@@ -1909,6 +1930,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId::Format::MacAddress::Unformatted::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -1977,7 +1999,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::EapUser()
     ignore_open_session{YType::empty, "ignore-open-session"}
 {
 
-    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::~EapUser()
@@ -1986,6 +2008,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::~EapUser()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_open_session.is_set;
 }
 
@@ -2052,14 +2075,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser::has_leaf_or_
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Filter()
     :
     access(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access>())
-	,accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting>())
-	,attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute>())
+    , accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting>())
+    , attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute>())
 {
     access->parent = this;
     accounting->parent = this;
     attribute->parent = this;
 
-    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::~Filter()
@@ -2068,6 +2091,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::~Filter()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return (access !=  nullptr && access->has_data())
 	|| (accounting !=  nullptr && accounting->has_data())
 	|| (attribute !=  nullptr && attribute->has_data());
@@ -2169,14 +2193,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::has_leaf_or_c
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Access()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::~Access()
@@ -2185,6 +2209,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::~Access()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -2291,7 +2316,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::Ack()
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::~Ack()
@@ -2300,6 +2325,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::~Ack(
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2410,7 +2436,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::Drop
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::~Drop()
@@ -2419,6 +2445,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::~Dro
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2529,7 +2556,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::Ig
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::~Ignore()
@@ -2538,6 +2565,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::~I
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2643,14 +2671,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Access::Ignor
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Accounting()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::~Accounting()
@@ -2659,6 +2687,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::~Accou
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -2765,7 +2794,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::A
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::~Ack()
@@ -2774,6 +2803,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::~
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -2884,7 +2914,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::~Drop()
@@ -2893,6 +2923,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -3003,7 +3034,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore::~Ignore()
@@ -3012,6 +3043,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Accounting::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -3120,7 +3152,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::Attribu
     block{YType::str, "block"}
 {
 
-    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::~Attribute()
@@ -3129,6 +3161,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::~Attrib
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter::Attribute::has_data() const
 {
+    if (is_presence_container) return true;
     return allow.is_set
 	|| block.is_set;
 }
@@ -3211,7 +3244,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::~Key()
@@ -3220,6 +3253,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -3301,7 +3335,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Mess
     ignore(nullptr) // presence node
 {
 
-    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::~MessageAuthenticator()
@@ -3310,6 +3344,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::~Mes
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return (ignore !=  nullptr && ignore->has_data());
 }
 
@@ -3381,7 +3416,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Igno
     accounting{YType::empty, "accounting"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Ignore::~Ignore()
@@ -3390,6 +3425,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Igno
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting.is_set;
 }
 
@@ -3458,7 +3494,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::Mode()
     pass_through{YType::empty, "pass-through"}
 {
 
-    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::~Mode()
@@ -3467,6 +3503,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::~Mode()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return pass_through.is_set;
 }
 
@@ -3535,7 +3572,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::PwlanSession
     reconnect{YType::empty, "reconnect"}
 {
 
-    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::~PwlanSession()
@@ -3544,6 +3581,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::~PwlanSessio
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession::has_data() const
 {
+    if (is_presence_container) return true;
     return reconnect.is_set;
 }
 
@@ -3612,7 +3650,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::ReAuthen
     do_not_apply{YType::empty, "do-not-apply"}
 {
 
-    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::~ReAuthentication()
@@ -3621,6 +3659,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::~ReAuthe
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return do_not_apply.is_set;
 }
 
@@ -3687,12 +3726,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication::has
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::SessionIdentifier()
     :
     attribute{YType::uint8, "attribute"}
-    	,
+        ,
     vsa(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa>())
 {
     vsa->parent = this;
 
-    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::~SessionIdentifier()
@@ -3701,6 +3740,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::~Sessio
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute.is_set
 	|| (vsa !=  nullptr && vsa->has_data());
 }
@@ -3786,7 +3826,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::Vs
     type{YType::uint8, "type"}
 {
 
-    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::~Vsa()
@@ -3795,6 +3835,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::~V
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier::Vsa::has_data() const
 {
+    if (is_presence_container) return true;
     return vendor.is_set
 	|| type.is_set;
 }
@@ -3877,12 +3918,12 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Timer()
     reconnect{YType::uint16, "reconnect"},
     request{YType::uint16, "request"},
     roaming{YType::uint16, "roaming"}
-    	,
+        ,
     disconnect(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect>())
 {
     disconnect->parent = this;
 
-    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::~Timer()
@@ -3891,6 +3932,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::~Timer()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| reconnect.is_set
 	|| request.is_set
@@ -4015,7 +4057,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::Disconn
     reauth_fail{YType::uint16, "reauth-fail"}
 {
 
-    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::~Disconnect()
@@ -4024,6 +4066,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::~Discon
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return acct_stop.is_set
 	|| reauth_fail.is_set;
 }
@@ -4101,9 +4144,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer::Disconnect::ha
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::ClientIpMask()
+    :
+    client(this, {"ip", "mask"})
 {
 
-    yang_name = "client-ip-mask"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-ip-mask"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::~ClientIpMask()
@@ -4112,7 +4157,8 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::~ClientIpMask()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -4122,7 +4168,7 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::has_data() const
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -4159,7 +4205,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMask::get_ch
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -4171,7 +4217,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Prox
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4201,19 +4247,19 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Client()
     :
     ip{YType::str, "ip"},
     mask{YType::str, "mask"}
-    	,
+        ,
     accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting>())
-	,authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication>())
-	,calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId>())
-	,eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser>())
-	,filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter>())
-	,key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key>())
-	,message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator>())
-	,mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode>())
-	,pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession>())
-	,re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication>())
-	,session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier>())
-	,timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer>())
+    , authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication>())
+    , calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId>())
+    , eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser>())
+    , filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter>())
+    , key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key>())
+    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator>())
+    , mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode>())
+    , pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession>())
+    , re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication>())
+    , session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier>())
+    , timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer>())
 {
     accounting->parent = this;
     authentication->parent = this;
@@ -4228,7 +4274,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Client()
     session_identifier->parent = this;
     timer->parent = this;
 
-    yang_name = "client"; yang_parent_name = "client-ip-mask"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "client-ip-mask"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::~Client()
@@ -4237,6 +4283,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::~Client()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| mask.is_set
 	|| (accounting !=  nullptr && accounting->has_data())
@@ -4282,7 +4329,9 @@ std::string Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::get_absolu
 std::string Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[ip='" <<ip <<"']" <<"[mask='" <<mask <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(ip, "ip");
+    ADD_KEY_TOKEN(mask, "mask");
     return path_buffer.str();
 }
 
@@ -4515,12 +4564,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::has_leaf_or_child
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::Accounting()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::~Accounting()
@@ -4529,6 +4578,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::~Accountin
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -4614,7 +4664,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList::~MethodList()
@@ -4623,6 +4673,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -4702,12 +4753,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Accounting::Metho
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::Authentication()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::~Authentication()
@@ -4716,6 +4767,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::~Authe
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -4801,7 +4853,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::Method
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList::~MethodList()
@@ -4810,6 +4862,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::Method
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Authentication::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -4892,7 +4945,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Call
 {
     format->parent = this;
 
-    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::~CallingStationId()
@@ -4901,6 +4954,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::~Cal
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::has_data() const
 {
+    if (is_presence_container) return true;
     return (format !=  nullptr && format->has_data());
 }
 
@@ -4970,12 +5024,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId:
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::Format()
     :
     msisdn{YType::empty, "msisdn"}
-    	,
+        ,
     mac_address(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::~Format()
@@ -4984,6 +5038,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::has_data() const
 {
+    if (is_presence_container) return true;
     return msisdn.is_set
 	|| (mac_address !=  nullptr && mac_address->has_data());
 }
@@ -5066,19 +5121,19 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId:
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::MacAddress()
     :
     none{YType::empty, "none"}
-    	,
+        ,
     default_(nullptr) // presence node
-	,ietf(nullptr) // presence node
-	,one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte>())
-	,three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte>())
-	,two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte>())
-	,unformatted(nullptr) // presence node
+    , ietf(nullptr) // presence node
+    , one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte>())
+    , three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte>())
+    , two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte>())
+    , unformatted(nullptr) // presence node
 {
     one_byte->parent = this;
     three_byte->parent = this;
     two_byte->parent = this;
 
-    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::~MacAddress()
@@ -5087,6 +5142,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (ietf !=  nullptr && ietf->has_data())
@@ -5251,7 +5307,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Default::~Default()
@@ -5260,6 +5316,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -5328,7 +5385,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Ietf::~Ietf()
@@ -5337,6 +5394,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Ietf::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -5406,7 +5464,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 {
     delimiter->parent = this;
 
-    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::~OneByte()
@@ -5415,6 +5473,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -5484,11 +5543,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId:
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::~Delimiter()
@@ -5497,6 +5556,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -5600,7 +5660,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::~Colon()
@@ -5609,6 +5669,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -5677,7 +5738,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::~Dot()
@@ -5686,6 +5747,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -5754,7 +5816,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::~Hyphen()
@@ -5763,6 +5825,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -5832,7 +5895,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 {
     delimiter->parent = this;
 
-    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::~ThreeByte()
@@ -5841,6 +5904,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -5910,11 +5974,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId:
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::~Delimiter()
@@ -5923,6 +5987,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -6026,7 +6091,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::~Colon()
@@ -6035,6 +6100,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6103,7 +6169,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::~Dot()
@@ -6112,6 +6178,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6180,7 +6247,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::~Hyphen()
@@ -6189,6 +6256,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6258,7 +6326,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 {
     delimiter->parent = this;
 
-    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::~TwoByte()
@@ -6267,6 +6335,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -6336,11 +6405,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId:
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::~Delimiter()
@@ -6349,6 +6418,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -6452,7 +6522,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::~Colon()
@@ -6461,6 +6531,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6529,7 +6600,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::~Dot()
@@ -6538,6 +6609,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6606,7 +6678,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::~Hyphen()
@@ -6615,6 +6687,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6683,7 +6756,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Unformatted::~Unformatted()
@@ -6692,6 +6765,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Form
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::CallingStationId::Format::MacAddress::Unformatted::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -6760,7 +6834,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::EapUser()
     ignore_open_session{YType::empty, "ignore-open-session"}
 {
 
-    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::~EapUser()
@@ -6769,6 +6843,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::~EapUser()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_open_session.is_set;
 }
 
@@ -6835,14 +6910,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::EapUser::has_leaf
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Filter()
     :
     access(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access>())
-	,accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting>())
-	,attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute>())
+    , accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting>())
+    , attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute>())
 {
     access->parent = this;
     accounting->parent = this;
     attribute->parent = this;
 
-    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::~Filter()
@@ -6851,6 +6926,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::~Filter()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return (access !=  nullptr && access->has_data())
 	|| (accounting !=  nullptr && accounting->has_data())
 	|| (attribute !=  nullptr && attribute->has_data());
@@ -6952,14 +7028,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::has_leaf_
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Access()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::~Access()
@@ -6968,6 +7044,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::~Acces
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -7074,7 +7151,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::A
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::~Ack()
@@ -7083,6 +7160,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::~
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -7193,7 +7271,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::~Drop()
@@ -7202,6 +7280,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -7312,7 +7391,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore::~Ignore()
@@ -7321,6 +7400,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -7426,14 +7506,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Access::I
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Accounting()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::~Accounting()
@@ -7442,6 +7522,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::~A
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -7548,7 +7629,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ac
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack::~Ack()
@@ -7557,6 +7638,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ac
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -7667,7 +7749,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Dr
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop::~Drop()
@@ -7676,6 +7758,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Dr
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -7786,7 +7869,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ig
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore::~Ignore()
@@ -7795,6 +7878,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ig
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Accounting::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -7903,7 +7987,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::Att
     block{YType::str, "block"}
 {
 
-    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::~Attribute()
@@ -7912,6 +7996,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::~At
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Filter::Attribute::has_data() const
 {
+    if (is_presence_container) return true;
     return allow.is_set
 	|| block.is_set;
 }
@@ -7994,7 +8079,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::~Key()
@@ -8003,6 +8088,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -8084,7 +8170,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::
     ignore(nullptr) // presence node
 {
 
-    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::~MessageAuthenticator()
@@ -8093,6 +8179,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return (ignore !=  nullptr && ignore->has_data());
 }
 
@@ -8164,7 +8251,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::
     accounting{YType::empty, "accounting"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::Ignore::~Ignore()
@@ -8173,6 +8260,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::MessageAuthenticator::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting.is_set;
 }
 
@@ -8241,7 +8329,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::Mode()
     pass_through{YType::empty, "pass-through"}
 {
 
-    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::~Mode()
@@ -8250,6 +8338,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::~Mode()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return pass_through.is_set;
 }
 
@@ -8318,7 +8407,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::PwlanSes
     reconnect{YType::empty, "reconnect"}
 {
 
-    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::~PwlanSession()
@@ -8327,6 +8416,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::~PwlanSe
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::PwlanSession::has_data() const
 {
+    if (is_presence_container) return true;
     return reconnect.is_set;
 }
 
@@ -8395,7 +8485,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::ReAu
     do_not_apply{YType::empty, "do-not-apply"}
 {
 
-    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::~ReAuthentication()
@@ -8404,6 +8494,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::~ReA
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return do_not_apply.is_set;
 }
 
@@ -8470,12 +8561,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::ReAuthentication:
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::SessionIdentifier()
     :
     attribute{YType::uint8, "attribute"}
-    	,
+        ,
     vsa(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa>())
 {
     vsa->parent = this;
 
-    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::~SessionIdentifier()
@@ -8484,6 +8575,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::~Se
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute.is_set
 	|| (vsa !=  nullptr && vsa->has_data());
 }
@@ -8569,7 +8661,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa
     type{YType::uint8, "type"}
 {
 
-    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa::~Vsa()
@@ -8578,6 +8670,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::SessionIdentifier::Vsa::has_data() const
 {
+    if (is_presence_container) return true;
     return vendor.is_set
 	|| type.is_set;
 }
@@ -8660,12 +8753,12 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Timer()
     reconnect{YType::uint16, "reconnect"},
     request{YType::uint16, "request"},
     roaming{YType::uint16, "roaming"}
-    	,
+        ,
     disconnect(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect>())
 {
     disconnect->parent = this;
 
-    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::~Timer()
@@ -8674,6 +8767,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::~Timer()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| reconnect.is_set
 	|| request.is_set
@@ -8798,7 +8892,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::Dis
     reauth_fail{YType::uint16, "reauth-fail"}
 {
 
-    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::~Disconnect()
@@ -8807,6 +8901,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::~Di
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return acct_stop.is_set
 	|| reauth_fail.is_set;
 }
@@ -8884,9 +8979,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMask::Client::Timer::Disconnect
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::ClientIpVrf()
+    :
+    client(this, {"ip", "vrf"})
 {
 
-    yang_name = "client-ip-vrf"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-ip-vrf"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::~ClientIpVrf()
@@ -8895,7 +8992,8 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::~ClientIpVrf()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -8905,7 +9003,7 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::has_data() const
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -8942,7 +9040,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpVrf::get_chi
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -8954,7 +9052,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Prox
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8984,19 +9082,19 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Client()
     :
     ip{YType::str, "ip"},
     vrf{YType::str, "vrf"}
-    	,
+        ,
     accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting>())
-	,authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication>())
-	,calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId>())
-	,eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser>())
-	,filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter>())
-	,key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key>())
-	,message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator>())
-	,mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Mode>())
-	,pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::PwlanSession>())
-	,re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::ReAuthentication>())
-	,session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier>())
-	,timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer>())
+    , authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication>())
+    , calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId>())
+    , eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser>())
+    , filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter>())
+    , key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key>())
+    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator>())
+    , mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Mode>())
+    , pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::PwlanSession>())
+    , re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::ReAuthentication>())
+    , session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier>())
+    , timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer>())
 {
     accounting->parent = this;
     authentication->parent = this;
@@ -9011,7 +9109,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Client()
     session_identifier->parent = this;
     timer->parent = this;
 
-    yang_name = "client"; yang_parent_name = "client-ip-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "client-ip-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::~Client()
@@ -9020,6 +9118,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::~Client()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| vrf.is_set
 	|| (accounting !=  nullptr && accounting->has_data())
@@ -9065,7 +9164,9 @@ std::string Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::get_absolut
 std::string Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[ip='" <<ip <<"']" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(ip, "ip");
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -9298,12 +9399,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::has_leaf_or_child_
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::Accounting()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::~Accounting()
@@ -9312,6 +9413,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::~Accounting
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -9397,7 +9499,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList:
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList::~MethodList()
@@ -9406,6 +9508,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList:
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -9485,12 +9588,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Accounting::Method
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::Authentication()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::~Authentication()
@@ -9499,6 +9602,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::~Authen
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -9584,7 +9688,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodL
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList::~MethodList()
@@ -9593,6 +9697,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodL
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Authentication::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -9675,7 +9780,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Calli
 {
     format->parent = this;
 
-    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::~CallingStationId()
@@ -9684,6 +9789,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::~Call
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::has_data() const
 {
+    if (is_presence_container) return true;
     return (format !=  nullptr && format->has_data());
 }
 
@@ -9753,12 +9859,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::Format()
     :
     msisdn{YType::empty, "msisdn"}
-    	,
+        ,
     mac_address(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::~Format()
@@ -9767,6 +9873,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::has_data() const
 {
+    if (is_presence_container) return true;
     return msisdn.is_set
 	|| (mac_address !=  nullptr && mac_address->has_data());
 }
@@ -9849,19 +9956,19 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::MacAddress()
     :
     none{YType::empty, "none"}
-    	,
+        ,
     default_(nullptr) // presence node
-	,ietf(nullptr) // presence node
-	,one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte>())
-	,three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte>())
-	,two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte>())
-	,unformatted(nullptr) // presence node
+    , ietf(nullptr) // presence node
+    , one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte>())
+    , three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte>())
+    , two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte>())
+    , unformatted(nullptr) // presence node
 {
     one_byte->parent = this;
     three_byte->parent = this;
     two_byte->parent = this;
 
-    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::~MacAddress()
@@ -9870,6 +9977,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (ietf !=  nullptr && ietf->has_data())
@@ -10034,7 +10142,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Default::~Default()
@@ -10043,6 +10151,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -10111,7 +10220,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::~Ietf()
@@ -10120,6 +10229,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Ietf::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -10189,7 +10299,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 {
     delimiter->parent = this;
 
-    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::~OneByte()
@@ -10198,6 +10308,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -10267,11 +10378,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::~Delimiter()
@@ -10280,6 +10391,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -10383,7 +10495,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::~Colon()
@@ -10392,6 +10504,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -10460,7 +10573,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::~Dot()
@@ -10469,6 +10582,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -10537,7 +10651,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::~Hyphen()
@@ -10546,6 +10660,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -10615,7 +10730,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 {
     delimiter->parent = this;
 
-    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::~ThreeByte()
@@ -10624,6 +10739,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -10693,11 +10809,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::~Delimiter()
@@ -10706,6 +10822,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -10809,7 +10926,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::~Colon()
@@ -10818,6 +10935,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -10886,7 +11004,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::~Dot()
@@ -10895,6 +11013,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -10963,7 +11082,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::~Hyphen()
@@ -10972,6 +11091,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -11041,7 +11161,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 {
     delimiter->parent = this;
 
-    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::~TwoByte()
@@ -11050,6 +11170,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -11119,11 +11240,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::~Delimiter()
@@ -11132,6 +11253,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -11235,7 +11357,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::~Colon()
@@ -11244,6 +11366,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -11312,7 +11435,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::~Dot()
@@ -11321,6 +11444,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -11389,7 +11513,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::~Hyphen()
@@ -11398,6 +11522,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -11466,7 +11591,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::~Unformatted()
@@ -11475,6 +11600,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Forma
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::CallingStationId::Format::MacAddress::Unformatted::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -11543,7 +11669,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::EapUser()
     ignore_open_session{YType::empty, "ignore-open-session"}
 {
 
-    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eap-user"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::~EapUser()
@@ -11552,6 +11678,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::~EapUser()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_open_session.is_set;
 }
 
@@ -11618,14 +11745,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::EapUser::has_leaf_
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Filter()
     :
     access(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access>())
-	,accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting>())
-	,attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Attribute>())
+    , accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting>())
+    , attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Attribute>())
 {
     access->parent = this;
     accounting->parent = this;
     attribute->parent = this;
 
-    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::~Filter()
@@ -11634,6 +11761,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::~Filter()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return (access !=  nullptr && access->has_data())
 	|| (accounting !=  nullptr && accounting->has_data())
 	|| (attribute !=  nullptr && attribute->has_data());
@@ -11735,14 +11863,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::has_leaf_o
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Access()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::~Access()
@@ -11751,6 +11879,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::~Access
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -11857,7 +11986,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::Ac
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::~Ack()
@@ -11866,6 +11995,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::~A
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -11976,7 +12106,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::D
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::~Drop()
@@ -11985,6 +12115,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::~
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -12095,7 +12226,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore:
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore::~Ignore()
@@ -12104,6 +12235,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore:
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -12209,14 +12341,14 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Access::Ig
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Accounting()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::~Accounting()
@@ -12225,6 +12357,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::~Ac
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -12331,7 +12464,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ack
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ack::~Ack()
@@ -12340,6 +12473,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ack
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -12450,7 +12584,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Dro
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Drop::~Drop()
@@ -12459,6 +12593,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Dro
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -12569,7 +12704,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ign
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ignore::~Ignore()
@@ -12578,6 +12713,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ign
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Accounting::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -12686,7 +12822,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Attribute::Attr
     block{YType::str, "block"}
 {
 
-    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Attribute::~Attribute()
@@ -12695,6 +12831,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Attribute::~Att
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Filter::Attribute::has_data() const
 {
+    if (is_presence_container) return true;
     return allow.is_set
 	|| block.is_set;
 }
@@ -12777,7 +12914,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key::~Key()
@@ -12786,6 +12923,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -12867,7 +13005,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::M
     ignore(nullptr) // presence node
 {
 
-    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "message-authenticator"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::~MessageAuthenticator()
@@ -12876,6 +13014,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::~
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return (ignore !=  nullptr && ignore->has_data());
 }
 
@@ -12947,7 +13086,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::I
     accounting{YType::empty, "accounting"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::Ignore::~Ignore()
@@ -12956,6 +13095,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::I
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::MessageAuthenticator::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting.is_set;
 }
 
@@ -13024,7 +13164,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Mode::Mode()
     pass_through{YType::empty, "pass-through"}
 {
 
-    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mode"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Mode::~Mode()
@@ -13033,6 +13173,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Mode::~Mode()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return pass_through.is_set;
 }
 
@@ -13101,7 +13242,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::PwlanSession::PwlanSess
     reconnect{YType::empty, "reconnect"}
 {
 
-    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pwlan-session"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::PwlanSession::~PwlanSession()
@@ -13110,6 +13251,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::PwlanSession::~PwlanSes
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::PwlanSession::has_data() const
 {
+    if (is_presence_container) return true;
     return reconnect.is_set;
 }
 
@@ -13178,7 +13320,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::ReAuthentication::ReAut
     do_not_apply{YType::empty, "do-not-apply"}
 {
 
-    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "re-authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::ReAuthentication::~ReAuthentication()
@@ -13187,6 +13329,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::ReAuthentication::~ReAu
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::ReAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return do_not_apply.is_set;
 }
 
@@ -13253,12 +13396,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::ReAuthentication::
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::SessionIdentifier()
     :
     attribute{YType::uint8, "attribute"}
-    	,
+        ,
     vsa(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::Vsa>())
 {
     vsa->parent = this;
 
-    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-identifier"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::~SessionIdentifier()
@@ -13267,6 +13410,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::~Ses
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute.is_set
 	|| (vsa !=  nullptr && vsa->has_data());
 }
@@ -13352,7 +13496,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::Vsa:
     type{YType::uint8, "type"}
 {
 
-    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::Vsa::~Vsa()
@@ -13361,6 +13505,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::Vsa:
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::SessionIdentifier::Vsa::has_data() const
 {
+    if (is_presence_container) return true;
     return vendor.is_set
 	|| type.is_set;
 }
@@ -13443,12 +13588,12 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::Timer()
     reconnect{YType::uint16, "reconnect"},
     request{YType::uint16, "request"},
     roaming{YType::uint16, "roaming"}
-    	,
+        ,
     disconnect(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::Disconnect>())
 {
     disconnect->parent = this;
 
-    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timer"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::~Timer()
@@ -13457,6 +13602,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::~Timer()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| reconnect.is_set
 	|| request.is_set
@@ -13581,7 +13727,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::Disconnect::Disc
     reauth_fail{YType::uint16, "reauth-fail"}
 {
 
-    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::Disconnect::~Disconnect()
@@ -13590,6 +13736,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::Disconnect::~Dis
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::Disconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return acct_stop.is_set
 	|| reauth_fail.is_set;
 }
@@ -13667,9 +13814,11 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpVrf::Client::Timer::Disconnect:
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::ClientIpMaskVrf()
+    :
+    client(this, {"ip", "mask", "vrf"})
 {
 
-    yang_name = "client-ip-mask-vrf"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-ip-mask-vrf"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::~ClientIpMaskVrf()
@@ -13678,7 +13827,8 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::~ClientIpMaskVrf()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -13688,7 +13838,7 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::has_data() const
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -13725,7 +13875,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::get
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -13737,7 +13887,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Prox
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13768,19 +13918,19 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Client()
     ip{YType::str, "ip"},
     mask{YType::str, "mask"},
     vrf{YType::str, "vrf"}
-    	,
+        ,
     accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting>())
-	,authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication>())
-	,calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId>())
-	,eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::EapUser>())
-	,filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter>())
-	,key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key>())
-	,message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticator>())
-	,mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Mode>())
-	,pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::PwlanSession>())
-	,re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::ReAuthentication>())
-	,session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier>())
-	,timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer>())
+    , authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication>())
+    , calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId>())
+    , eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::EapUser>())
+    , filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Filter>())
+    , key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Key>())
+    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::MessageAuthenticator>())
+    , mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Mode>())
+    , pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::PwlanSession>())
+    , re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::ReAuthentication>())
+    , session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::SessionIdentifier>())
+    , timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Timer>())
 {
     accounting->parent = this;
     authentication->parent = this;
@@ -13795,7 +13945,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Client()
     session_identifier->parent = this;
     timer->parent = this;
 
-    yang_name = "client"; yang_parent_name = "client-ip-mask-vrf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "client-ip-mask-vrf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::~Client()
@@ -13804,6 +13954,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::~Client()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| mask.is_set
 	|| vrf.is_set
@@ -13851,7 +14002,10 @@ std::string Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::get_abs
 std::string Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[ip='" <<ip <<"']" <<"[mask='" <<mask <<"']" <<"[vrf='" <<vrf <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(ip, "ip");
+    ADD_KEY_TOKEN(mask, "mask");
+    ADD_KEY_TOKEN(vrf, "vrf");
     return path_buffer.str();
 }
 
@@ -14095,12 +14249,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::has_leaf_or_ch
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::Accounting()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::~Accounting()
@@ -14109,6 +14263,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::~Accoun
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -14194,7 +14349,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::MethodL
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::MethodList::~MethodList()
@@ -14203,6 +14358,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::MethodL
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -14282,12 +14438,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Accounting::Me
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::Authentication()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::~Authentication()
@@ -14296,6 +14452,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::~Au
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -14381,7 +14538,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::Met
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::MethodList::~MethodList()
@@ -14390,6 +14547,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::Met
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::Authentication::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -14472,7 +14630,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::C
 {
     format->parent = this;
 
-    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "calling-station-id"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::~CallingStationId()
@@ -14481,6 +14639,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::~
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::has_data() const
 {
+    if (is_presence_container) return true;
     return (format !=  nullptr && format->has_data());
 }
 
@@ -14550,12 +14709,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStation
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::Format()
     :
     msisdn{YType::empty, "msisdn"}
-    	,
+        ,
     mac_address(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::~Format()
@@ -14564,6 +14723,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::has_data() const
 {
+    if (is_presence_container) return true;
     return msisdn.is_set
 	|| (mac_address !=  nullptr && mac_address->has_data());
 }
@@ -14646,19 +14806,19 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStation
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::MacAddress()
     :
     none{YType::empty, "none"}
-    	,
+        ,
     default_(nullptr) // presence node
-	,ietf(nullptr) // presence node
-	,one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte>())
-	,three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte>())
-	,two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte>())
-	,unformatted(nullptr) // presence node
+    , ietf(nullptr) // presence node
+    , one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::OneByte>())
+    , three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::ThreeByte>())
+    , two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::TwoByte>())
+    , unformatted(nullptr) // presence node
 {
     one_byte->parent = this;
     three_byte->parent = this;
     two_byte->parent = this;
 
-    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::~MacAddress()
@@ -14667,6 +14827,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (ietf !=  nullptr && ietf->has_data())
@@ -14831,7 +14992,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Default::~Default()
@@ -14840,6 +15001,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -14908,7 +15070,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Ietf::~Ietf()
@@ -14917,6 +15079,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::F
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf::Client::CallingStationId::Format::MacAddress::Ietf::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 

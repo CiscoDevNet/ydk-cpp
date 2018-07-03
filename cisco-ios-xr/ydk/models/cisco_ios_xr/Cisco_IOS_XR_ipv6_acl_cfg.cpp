@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_ipv6_acl_cfg {
 Ipv6AclAndPrefixList::Ipv6AclAndPrefixList()
     :
     prefixes(std::make_shared<Ipv6AclAndPrefixList::Prefixes>())
-	,log_update(std::make_shared<Ipv6AclAndPrefixList::LogUpdate>())
-	,accesses(std::make_shared<Ipv6AclAndPrefixList::Accesses>())
+    , log_update(std::make_shared<Ipv6AclAndPrefixList::LogUpdate>())
+    , accesses(std::make_shared<Ipv6AclAndPrefixList::Accesses>())
 {
     prefixes->parent = this;
     log_update->parent = this;
     accesses->parent = this;
 
-    yang_name = "ipv6-acl-and-prefix-list"; yang_parent_name = "Cisco-IOS-XR-ipv6-acl-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv6-acl-and-prefix-list"; yang_parent_name = "Cisco-IOS-XR-ipv6-acl-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ipv6AclAndPrefixList::~Ipv6AclAndPrefixList()
@@ -30,6 +30,7 @@ Ipv6AclAndPrefixList::~Ipv6AclAndPrefixList()
 
 bool Ipv6AclAndPrefixList::has_data() const
 {
+    if (is_presence_container) return true;
     return (prefixes !=  nullptr && prefixes->has_data())
 	|| (log_update !=  nullptr && log_update->has_data())
 	|| (accesses !=  nullptr && accesses->has_data());
@@ -154,9 +155,11 @@ bool Ipv6AclAndPrefixList::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Ipv6AclAndPrefixList::Prefixes::Prefixes()
+    :
+    prefix(this, {"name"})
 {
 
-    yang_name = "prefixes"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefixes"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6AclAndPrefixList::Prefixes::~Prefixes()
@@ -165,7 +168,8 @@ Ipv6AclAndPrefixList::Prefixes::~Prefixes()
 
 bool Ipv6AclAndPrefixList::Prefixes::has_data() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool Ipv6AclAndPrefixList::Prefixes::has_data() const
 
 bool Ipv6AclAndPrefixList::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<prefix.size(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
         if(prefix[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Prefixes::get_child_by_name(const 
     {
         auto c = std::make_shared<Ipv6AclAndPrefixList::Prefixes::Prefix>();
         c->parent = this;
-        prefix.push_back(c);
+        prefix.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Prefixes::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix)
+    for (auto c : prefix.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,11 +257,12 @@ bool Ipv6AclAndPrefixList::Prefixes::has_leaf_or_child_of_name(const std::string
 Ipv6AclAndPrefixList::Prefixes::Prefix::Prefix()
     :
     name{YType::str, "name"}
-    	,
-    prefix_list_entries(nullptr) // presence node
+        ,
+    prefix_list_entries(std::make_shared<Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries>())
 {
+    prefix_list_entries->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6AclAndPrefixList::Prefixes::Prefix::~Prefix()
@@ -266,6 +271,7 @@ Ipv6AclAndPrefixList::Prefixes::Prefix::~Prefix()
 
 bool Ipv6AclAndPrefixList::Prefixes::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (prefix_list_entries !=  nullptr && prefix_list_entries->has_data());
 }
@@ -287,7 +293,8 @@ std::string Ipv6AclAndPrefixList::Prefixes::Prefix::get_absolute_path() const
 std::string Ipv6AclAndPrefixList::Prefixes::Prefix::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix" <<"[name='" <<name <<"']";
+    path_buffer << "prefix";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -353,9 +360,11 @@ bool Ipv6AclAndPrefixList::Prefixes::Prefix::has_leaf_or_child_of_name(const std
 }
 
 Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntries()
+    :
+    prefix_list_entry(this, {"sequence_number"})
 {
 
-    yang_name = "prefix-list-entries"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list-entries"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::~PrefixListEntries()
@@ -364,7 +373,8 @@ Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::~PrefixListEntries()
 
 bool Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::has_data() const
 {
-    for (std::size_t index=0; index<prefix_list_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefix_list_entry.len(); index++)
     {
         if(prefix_list_entry[index]->has_data())
             return true;
@@ -374,7 +384,7 @@ bool Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::has_data() const
 
 bool Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_list_entry.size(); index++)
+    for (std::size_t index=0; index<prefix_list_entry.len(); index++)
     {
         if(prefix_list_entry[index]->has_operation())
             return true;
@@ -404,7 +414,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntrie
     {
         auto c = std::make_shared<Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry>();
         c->parent = this;
-        prefix_list_entry.push_back(c);
+        prefix_list_entry.append(c);
         return c;
     }
 
@@ -416,7 +426,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Prefixes::P
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefix_list_entry)
+    for (auto c : prefix_list_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -459,7 +469,7 @@ Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::Pref
     remark{YType::str, "remark"}
 {
 
-    yang_name = "prefix-list-entry"; yang_parent_name = "prefix-list-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-list-entry"; yang_parent_name = "prefix-list-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::~PrefixListEntry()
@@ -468,6 +478,7 @@ Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::~Pre
 
 bool Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| grant.is_set
 	|| ipv6_address_as_string.is_set
@@ -504,7 +515,8 @@ bool Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry:
 std::string Ipv6AclAndPrefixList::Prefixes::Prefix::PrefixListEntries::PrefixListEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-list-entry" <<"[sequence-number='" <<sequence_number <<"']";
+    path_buffer << "prefix-list-entry";
+    ADD_KEY_TOKEN(sequence_number, "sequence-number");
     return path_buffer.str();
 }
 
@@ -693,7 +705,7 @@ Ipv6AclAndPrefixList::LogUpdate::LogUpdate()
     rate{YType::uint32, "rate"}
 {
 
-    yang_name = "log-update"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "log-update"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6AclAndPrefixList::LogUpdate::~LogUpdate()
@@ -702,6 +714,7 @@ Ipv6AclAndPrefixList::LogUpdate::~LogUpdate()
 
 bool Ipv6AclAndPrefixList::LogUpdate::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| rate.is_set;
 }
@@ -786,9 +799,11 @@ bool Ipv6AclAndPrefixList::LogUpdate::has_leaf_or_child_of_name(const std::strin
 }
 
 Ipv6AclAndPrefixList::Accesses::Accesses()
+    :
+    access(this, {"name"})
 {
 
-    yang_name = "accesses"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accesses"; yang_parent_name = "ipv6-acl-and-prefix-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6AclAndPrefixList::Accesses::~Accesses()
@@ -797,7 +812,8 @@ Ipv6AclAndPrefixList::Accesses::~Accesses()
 
 bool Ipv6AclAndPrefixList::Accesses::has_data() const
 {
-    for (std::size_t index=0; index<access.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access.len(); index++)
     {
         if(access[index]->has_data())
             return true;
@@ -807,7 +823,7 @@ bool Ipv6AclAndPrefixList::Accesses::has_data() const
 
 bool Ipv6AclAndPrefixList::Accesses::has_operation() const
 {
-    for (std::size_t index=0; index<access.size(); index++)
+    for (std::size_t index=0; index<access.len(); index++)
     {
         if(access[index]->has_operation())
             return true;
@@ -844,7 +860,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::get_child_by_name(const 
     {
         auto c = std::make_shared<Ipv6AclAndPrefixList::Accesses::Access>();
         c->parent = this;
-        access.push_back(c);
+        access.append(c);
         return c;
     }
 
@@ -856,7 +872,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access)
+    for (auto c : access.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -885,12 +901,12 @@ bool Ipv6AclAndPrefixList::Accesses::has_leaf_or_child_of_name(const std::string
 Ipv6AclAndPrefixList::Accesses::Access::Access()
     :
     name{YType::str, "name"}
-    	,
+        ,
     access_list_entries(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries>())
 {
     access_list_entries->parent = this;
 
-    yang_name = "access"; yang_parent_name = "accesses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "accesses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::~Access()
@@ -899,6 +915,7 @@ Ipv6AclAndPrefixList::Accesses::Access::~Access()
 
 bool Ipv6AclAndPrefixList::Accesses::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (access_list_entries !=  nullptr && access_list_entries->has_data());
 }
@@ -920,7 +937,8 @@ std::string Ipv6AclAndPrefixList::Accesses::Access::get_absolute_path() const
 std::string Ipv6AclAndPrefixList::Accesses::Access::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access" <<"[name='" <<name <<"']";
+    path_buffer << "access";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -986,9 +1004,11 @@ bool Ipv6AclAndPrefixList::Accesses::Access::has_leaf_or_child_of_name(const std
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntries()
+    :
+    access_list_entry(this, {"sequence_number"})
 {
 
-    yang_name = "access-list-entries"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-list-entries"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::~AccessListEntries()
@@ -997,7 +1017,8 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::~AccessListEntries()
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::has_data() const
 {
-    for (std::size_t index=0; index<access_list_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<access_list_entry.len(); index++)
     {
         if(access_list_entry[index]->has_data())
             return true;
@@ -1007,7 +1028,7 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::has_data() const
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::has_operation() const
 {
-    for (std::size_t index=0; index<access_list_entry.size(); index++)
+    for (std::size_t index=0; index<access_list_entry.len(); index++)
     {
         if(access_list_entry[index]->has_operation())
             return true;
@@ -1037,7 +1058,7 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntrie
     {
         auto c = std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry>();
         c->parent = this;
-        access_list_entry.push_back(c);
+        access_list_entry.append(c);
         return c;
     }
 
@@ -1049,7 +1070,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : access_list_entry)
+    for (auto c : access_list_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1097,17 +1118,18 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Acce
     source_port_group{YType::str, "source-port-group"},
     destination_port_group{YType::str, "destination-port-group"},
     sequence_str{YType::str, "sequence-str"}
-    	,
+        ,
     source_network(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork>())
-	,destination_network(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>())
-	,source_port(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort>())
-	,destination_port(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort>())
-	,icmp(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp>())
-	,tcp(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp>())
-	,packet_length(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength>())
-	,time_to_live(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive>())
-	,next_hop(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop>())
-	,header_flags(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags>())
+    , destination_network(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork>())
+    , source_port(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort>())
+    , destination_port(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort>())
+    , icmp(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp>())
+    , tcp(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp>())
+    , packet_length(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength>())
+    , time_to_live(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive>())
+    , dscpvalues(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues>())
+    , next_hop(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop>())
+    , header_flags(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags>())
 {
     source_network->parent = this;
     destination_network->parent = this;
@@ -1117,10 +1139,11 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Acce
     tcp->parent = this;
     packet_length->parent = this;
     time_to_live->parent = this;
+    dscpvalues->parent = this;
     next_hop->parent = this;
     header_flags->parent = this;
 
-    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "access-list-entry"; yang_parent_name = "access-list-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::~AccessListEntry()
@@ -1129,6 +1152,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::~Acc
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| grant.is_set
 	|| protocol_operator.is_set
@@ -1157,6 +1181,7 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
 	|| (tcp !=  nullptr && tcp->has_data())
 	|| (packet_length !=  nullptr && packet_length->has_data())
 	|| (time_to_live !=  nullptr && time_to_live->has_data())
+	|| (dscpvalues !=  nullptr && dscpvalues->has_data())
 	|| (next_hop !=  nullptr && next_hop->has_data())
 	|| (header_flags !=  nullptr && header_flags->has_data());
 }
@@ -1192,6 +1217,7 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
 	|| (tcp !=  nullptr && tcp->has_operation())
 	|| (packet_length !=  nullptr && packet_length->has_operation())
 	|| (time_to_live !=  nullptr && time_to_live->has_operation())
+	|| (dscpvalues !=  nullptr && dscpvalues->has_operation())
 	|| (next_hop !=  nullptr && next_hop->has_operation())
 	|| (header_flags !=  nullptr && header_flags->has_operation());
 }
@@ -1199,7 +1225,8 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
 std::string Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "access-list-entry" <<"[sequence-number='" <<sequence_number <<"']";
+    path_buffer << "access-list-entry";
+    ADD_KEY_TOKEN(sequence_number, "sequence-number");
     return path_buffer.str();
 }
 
@@ -1306,6 +1333,15 @@ std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntrie
         return time_to_live;
     }
 
+    if(child_yang_name == "DSCPValues")
+    {
+        if(dscpvalues == nullptr)
+        {
+            dscpvalues = std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues>();
+        }
+        return dscpvalues;
+    }
+
     if(child_yang_name == "next-hop")
     {
         if(next_hop == nullptr)
@@ -1369,6 +1405,11 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::A
     if(time_to_live != nullptr)
     {
         children["time-to-live"] = time_to_live;
+    }
+
+    if(dscpvalues != nullptr)
+    {
+        children["DSCPValues"] = dscpvalues;
     }
 
     if(next_hop != nullptr)
@@ -1594,7 +1635,7 @@ void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source-network" || name == "destination-network" || name == "source-port" || name == "destination-port" || name == "icmp" || name == "tcp" || name == "packet-length" || name == "time-to-live" || name == "next-hop" || name == "header-flags" || name == "sequence-number" || name == "grant" || name == "protocol-operator" || name == "protocol" || name == "protocol2" || name == "dscp" || name == "precedence" || name == "counter-name" || name == "log-option" || name == "capture" || name == "undetermined-transport" || name == "icmp-off" || name == "qos-group" || name == "set-ttl" || name == "remark" || name == "source-prefix-group" || name == "destination-prefix-group" || name == "source-port-group" || name == "destination-port-group" || name == "sequence-str")
+    if(name == "source-network" || name == "destination-network" || name == "source-port" || name == "destination-port" || name == "icmp" || name == "tcp" || name == "packet-length" || name == "time-to-live" || name == "DSCPValues" || name == "next-hop" || name == "header-flags" || name == "sequence-number" || name == "grant" || name == "protocol-operator" || name == "protocol" || name == "protocol2" || name == "dscp" || name == "precedence" || name == "counter-name" || name == "log-option" || name == "capture" || name == "undetermined-transport" || name == "icmp-off" || name == "qos-group" || name == "set-ttl" || name == "remark" || name == "source-prefix-group" || name == "destination-prefix-group" || name == "source-port-group" || name == "destination-port-group" || name == "sequence-str")
         return true;
     return false;
 }
@@ -1606,7 +1647,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Sour
     source_mask{YType::str, "source-mask"}
 {
 
-    yang_name = "source-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::~SourceNetwork()
@@ -1615,6 +1656,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Sour
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourceNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| source_wild_card_bits.is_set
 	|| source_mask.is_set;
@@ -1711,7 +1753,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dest
     destination_mask{YType::str, "destination-mask"}
 {
 
-    yang_name = "destination-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-network"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::~DestinationNetwork()
@@ -1720,6 +1762,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dest
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_address.is_set
 	|| destination_wild_card_bits.is_set
 	|| destination_mask.is_set;
@@ -1816,7 +1859,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Sour
     second_source_port{YType::str, "second-source-port"}
 {
 
-    yang_name = "source-port"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-port"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort::~SourcePort()
@@ -1825,6 +1868,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Sour
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::SourcePort::has_data() const
 {
+    if (is_presence_container) return true;
     return source_operator.is_set
 	|| first_source_port.is_set
 	|| second_source_port.is_set;
@@ -1921,7 +1965,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dest
     second_destination_port{YType::str, "second-destination-port"}
 {
 
-    yang_name = "destination-port"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-port"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort::~DestinationPort()
@@ -1930,6 +1974,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Dest
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DestinationPort::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_operator.is_set
 	|| first_destination_port.is_set
 	|| second_destination_port.is_set;
@@ -2024,7 +2069,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp
     icmp_type_code{YType::enumeration, "icmp-type-code"}
 {
 
-    yang_name = "icmp"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icmp"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp::~Icmp()
@@ -2033,6 +2078,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Icmp::has_data() const
 {
+    if (is_presence_container) return true;
     return icmp_type_code.is_set;
 }
 
@@ -2103,7 +2149,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp:
     tcp_bits_mask{YType::str, "tcp-bits-mask"}
 {
 
-    yang_name = "tcp"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::~Tcp()
@@ -2112,6 +2158,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp:
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Tcp::has_data() const
 {
+    if (is_presence_container) return true;
     return tcp_bits_match_operator.is_set
 	|| tcp_bits.is_set
 	|| tcp_bits_mask.is_set;
@@ -2208,7 +2255,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Pack
     packet_length_max{YType::uint32, "packet-length-max"}
 {
 
-    yang_name = "packet-length"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "packet-length"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength::~PacketLength()
@@ -2217,6 +2264,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Pack
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::PacketLength::has_data() const
 {
+    if (is_presence_container) return true;
     return packet_length_operator.is_set
 	|| packet_length_min.is_set
 	|| packet_length_max.is_set;
@@ -2313,7 +2361,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Time
     time_to_live_max{YType::uint32, "time-to-live-max"}
 {
 
-    yang_name = "time-to-live"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time-to-live"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive::~TimeToLive()
@@ -2322,6 +2370,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Time
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::TimeToLive::has_data() const
 {
+    if (is_presence_container) return true;
     return time_to_live_operator.is_set
 	|| time_to_live_min.is_set
 	|| time_to_live_max.is_set;
@@ -2411,19 +2460,125 @@ bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry:
     return false;
 }
 
+Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::DSCPValues()
+    :
+    dscp_operator{YType::enumeration, "dscp-operator"},
+    dscp_lower{YType::str, "dscp-lower"},
+    dscp_upper{YType::str, "dscp-upper"}
+{
+
+    yang_name = "DSCPValues"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::~DSCPValues()
+{
+}
+
+bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::has_data() const
+{
+    if (is_presence_container) return true;
+    return dscp_operator.is_set
+	|| dscp_lower.is_set
+	|| dscp_upper.is_set;
+}
+
+bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dscp_operator.yfilter)
+	|| ydk::is_set(dscp_lower.yfilter)
+	|| ydk::is_set(dscp_upper.yfilter);
+}
+
+std::string Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "DSCPValues";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dscp_operator.is_set || is_set(dscp_operator.yfilter)) leaf_name_data.push_back(dscp_operator.get_name_leafdata());
+    if (dscp_lower.is_set || is_set(dscp_lower.yfilter)) leaf_name_data.push_back(dscp_lower.get_name_leafdata());
+    if (dscp_upper.is_set || is_set(dscp_upper.yfilter)) leaf_name_data.push_back(dscp_upper.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dscp-operator")
+    {
+        dscp_operator = value;
+        dscp_operator.value_namespace = name_space;
+        dscp_operator.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dscp-lower")
+    {
+        dscp_lower = value;
+        dscp_lower.value_namespace = name_space;
+        dscp_lower.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dscp-upper")
+    {
+        dscp_upper = value;
+        dscp_upper.value_namespace = name_space;
+        dscp_upper.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dscp-operator")
+    {
+        dscp_operator.yfilter = yfilter;
+    }
+    if(value_path == "dscp-lower")
+    {
+        dscp_lower.yfilter = yfilter;
+    }
+    if(value_path == "dscp-upper")
+    {
+        dscp_upper.yfilter = yfilter;
+    }
+}
+
+bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::DSCPValues::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dscp-operator" || name == "dscp-lower" || name == "dscp-upper")
+        return true;
+    return false;
+}
+
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop()
     :
     next_hop_type{YType::enumeration, "next-hop-type"}
-    	,
+        ,
     next_hop_1(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1>())
-	,next_hop_2(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2>())
-	,next_hop_3(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3>())
+    , next_hop_2(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2>())
+    , next_hop_3(std::make_shared<Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3>())
 {
     next_hop_1->parent = this;
     next_hop_2->parent = this;
     next_hop_3->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::~NextHop()
@@ -2432,6 +2587,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Next
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop_type.is_set
 	|| (next_hop_1 !=  nullptr && next_hop_1->has_data())
 	|| (next_hop_2 !=  nullptr && next_hop_2->has_data())
@@ -2550,7 +2706,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Next
     track_name{YType::str, "track-name"}
 {
 
-    yang_name = "next-hop-1"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-1"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1::~NextHop1()
@@ -2559,6 +2715,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Next
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop1::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop.is_set
 	|| vrf_name.is_set
 	|| track_name.is_set;
@@ -2655,7 +2812,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Next
     track_name{YType::str, "track-name"}
 {
 
-    yang_name = "next-hop-2"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-2"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2::~NextHop2()
@@ -2664,6 +2821,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Next
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop2::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop.is_set
 	|| vrf_name.is_set
 	|| track_name.is_set;
@@ -2760,7 +2918,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Next
     track_name{YType::str, "track-name"}
 {
 
-    yang_name = "next-hop-3"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-3"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3::~NextHop3()
@@ -2769,6 +2927,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Next
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::NextHop::NextHop3::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop.is_set
 	|| vrf_name.is_set
 	|| track_name.is_set;
@@ -2867,7 +3026,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Head
     authen{YType::empty, "authen"}
 {
 
-    yang_name = "header-flags"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "header-flags"; yang_parent_name = "access-list-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags::~HeaderFlags()
@@ -2876,6 +3035,7 @@ Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::Head
 
 bool Ipv6AclAndPrefixList::Accesses::Access::AccessListEntries::AccessListEntry::HeaderFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return routing.is_set
 	|| destopts.is_set
 	|| hop_by_hop.is_set

@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_traceroute_act {
 Traceroute::Traceroute()
     :
     input(std::make_shared<Traceroute::Input>())
-	,output(std::make_shared<Traceroute::Output>())
+    , output(std::make_shared<Traceroute::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "traceroute"; yang_parent_name = "Cisco-IOS-XR-traceroute-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "traceroute"; yang_parent_name = "Cisco-IOS-XR-traceroute-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Traceroute::~Traceroute()
@@ -28,6 +28,7 @@ Traceroute::~Traceroute()
 
 bool Traceroute::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -138,14 +139,14 @@ bool Traceroute::has_leaf_or_child_of_name(const std::string & name) const
 Traceroute::Input::Input()
     :
     destination(std::make_shared<Traceroute::Input::Destination>())
-	,ipv4(std::make_shared<Traceroute::Input::Ipv4>())
-	,ipv6(std::make_shared<Traceroute::Input::Ipv6>())
+    , ipv4(std::make_shared<Traceroute::Input::Ipv4>())
+    , ipv6(std::make_shared<Traceroute::Input::Ipv6>())
 {
     destination->parent = this;
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "input"; yang_parent_name = "traceroute"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "traceroute"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Input::~Input()
@@ -154,6 +155,7 @@ Traceroute::Input::~Input()
 
 bool Traceroute::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return (destination !=  nullptr && destination->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
@@ -275,7 +277,7 @@ Traceroute::Input::Destination::Destination()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Input::Destination::~Destination()
@@ -284,6 +286,7 @@ Traceroute::Input::Destination::~Destination()
 
 bool Traceroute::Input::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| source.is_set
 	|| timeout.is_set
@@ -511,7 +514,7 @@ Traceroute::Input::Ipv4::Ipv4()
     verbose{YType::boolean, "verbose"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Input::Ipv4::~Ipv4()
@@ -520,6 +523,7 @@ Traceroute::Input::Ipv4::~Ipv4()
 
 bool Traceroute::Input::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| source.is_set
 	|| timeout.is_set
@@ -723,7 +727,7 @@ Traceroute::Input::Ipv6::Ipv6()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Input::Ipv6::~Ipv6()
@@ -732,6 +736,7 @@ Traceroute::Input::Ipv6::~Ipv6()
 
 bool Traceroute::Input::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| source.is_set
 	|| timeout.is_set
@@ -951,7 +956,7 @@ Traceroute::Output::Output()
 {
     traceroute_response->parent = this;
 
-    yang_name = "output"; yang_parent_name = "traceroute"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "traceroute"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::~Output()
@@ -960,6 +965,7 @@ Traceroute::Output::~Output()
 
 bool Traceroute::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (traceroute_response !=  nullptr && traceroute_response->has_data());
 }
 
@@ -1036,12 +1042,12 @@ bool Traceroute::Output::has_leaf_or_child_of_name(const std::string & name) con
 Traceroute::Output::TracerouteResponse::TracerouteResponse()
     :
     ipv4(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4>())
-	,ipv6(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6>())
+    , ipv6(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "traceroute-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traceroute-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::TracerouteResponse::~TracerouteResponse()
@@ -1050,6 +1056,7 @@ Traceroute::Output::TracerouteResponse::~TracerouteResponse()
 
 bool Traceroute::Output::TracerouteResponse::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -1143,12 +1150,12 @@ Traceroute::Output::TracerouteResponse::Ipv4::Ipv4()
     :
     destination{YType::str, "destination"},
     verbose_output{YType::str, "verbose-output"}
-    	,
+        ,
     hops(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops>())
 {
     hops->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::~Ipv4()
@@ -1157,6 +1164,7 @@ Traceroute::Output::TracerouteResponse::Ipv4::~Ipv4()
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| verbose_output.is_set
 	|| (hops !=  nullptr && hops->has_data());
@@ -1257,9 +1265,11 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::has_leaf_or_child_of_name(con
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hops()
+    :
+    hop(this, {"hop_index"})
 {
 
-    yang_name = "hops"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hops"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::~Hops()
@@ -1268,7 +1278,8 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::~Hops()
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::has_data() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_data())
             return true;
@@ -1278,7 +1289,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::has_data() const
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::has_operation() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_operation())
             return true;
@@ -1315,7 +1326,7 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::get_
     {
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop>();
         c->parent = this;
-        hop.push_back(c);
+        hop.append(c);
         return c;
     }
 
@@ -1327,7 +1338,7 @@ std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteRes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hop)
+    for (auto c : hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1358,12 +1369,12 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Hop()
     hop_index{YType::uint32, "hop-index"},
     hop_address{YType::str, "hop-address"},
     hop_hostname{YType::str, "hop-hostname"}
-    	,
+        ,
     probes(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes>())
 {
     probes->parent = this;
 
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::~Hop()
@@ -1372,6 +1383,7 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::~Hop()
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_index.is_set
 	|| hop_address.is_set
 	|| hop_hostname.is_set
@@ -1397,7 +1409,8 @@ std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::get_absolut
 std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[hop-index='" <<hop_index <<"']";
+    path_buffer << "hop";
+    ADD_KEY_TOKEN(hop_index, "hop-index");
     return path_buffer.str();
 }
 
@@ -1485,9 +1498,11 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::has_leaf_or_child_
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probes()
+    :
+    probe(this, {"probe_index"})
 {
 
-    yang_name = "probes"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "probes"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::~Probes()
@@ -1496,7 +1511,8 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::~Probes()
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::has_data() const
 {
-    for (std::size_t index=0; index<probe.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<probe.len(); index++)
     {
         if(probe[index]->has_data())
             return true;
@@ -1506,7 +1522,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::has_data()
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::has_operation() const
 {
-    for (std::size_t index=0; index<probe.size(); index++)
+    for (std::size_t index=0; index<probe.len(); index++)
     {
         if(probe[index]->has_operation())
             return true;
@@ -1536,7 +1552,7 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop:
     {
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe>();
         c->parent = this;
-        probe.push_back(c);
+        probe.append(c);
         return c;
     }
 
@@ -1548,7 +1564,7 @@ std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteRes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : probe)
+    for (auto c : probe.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1583,7 +1599,7 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::Probe()
     hop_hostname{YType::str, "hop-hostname"}
 {
 
-    yang_name = "probe"; yang_parent_name = "probes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "probe"; yang_parent_name = "probes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::~Probe()
@@ -1592,6 +1608,7 @@ Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::~Probe()
 
 bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::has_data() const
 {
+    if (is_presence_container) return true;
     return probe_index.is_set
 	|| result.is_set
 	|| delta_time.is_set
@@ -1612,7 +1629,8 @@ bool Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::has
 std::string Traceroute::Output::TracerouteResponse::Ipv4::Hops::Hop::Probes::Probe::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "probe" <<"[probe-index='" <<probe_index <<"']";
+    path_buffer << "probe";
+    ADD_KEY_TOKEN(probe_index, "probe-index");
     return path_buffer.str();
 }
 
@@ -1711,12 +1729,12 @@ Traceroute::Output::TracerouteResponse::Ipv6::Ipv6()
     :
     destination{YType::str, "destination"},
     verbose_output{YType::str, "verbose-output"}
-    	,
+        ,
     hops(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops>())
 {
     hops->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::~Ipv6()
@@ -1725,6 +1743,7 @@ Traceroute::Output::TracerouteResponse::Ipv6::~Ipv6()
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| verbose_output.is_set
 	|| (hops !=  nullptr && hops->has_data());
@@ -1825,9 +1844,11 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::has_leaf_or_child_of_name(con
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hops()
+    :
+    hop(this, {"hop_index"})
 {
 
-    yang_name = "hops"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hops"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::~Hops()
@@ -1836,7 +1857,8 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::~Hops()
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::has_data() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_data())
             return true;
@@ -1846,7 +1868,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::has_data() const
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::has_operation() const
 {
-    for (std::size_t index=0; index<hop.size(); index++)
+    for (std::size_t index=0; index<hop.len(); index++)
     {
         if(hop[index]->has_operation())
             return true;
@@ -1883,7 +1905,7 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::get_
     {
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop>();
         c->parent = this;
-        hop.push_back(c);
+        hop.append(c);
         return c;
     }
 
@@ -1895,7 +1917,7 @@ std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteRes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : hop)
+    for (auto c : hop.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1926,12 +1948,12 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Hop()
     hop_index{YType::uint32, "hop-index"},
     hop_address{YType::str, "hop-address"},
     hop_hostname{YType::str, "hop-hostname"}
-    	,
+        ,
     probes(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes>())
 {
     probes->parent = this;
 
-    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hop"; yang_parent_name = "hops"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::~Hop()
@@ -1940,6 +1962,7 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::~Hop()
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::has_data() const
 {
+    if (is_presence_container) return true;
     return hop_index.is_set
 	|| hop_address.is_set
 	|| hop_hostname.is_set
@@ -1965,7 +1988,8 @@ std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::get_absolut
 std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "hop" <<"[hop-index='" <<hop_index <<"']";
+    path_buffer << "hop";
+    ADD_KEY_TOKEN(hop_index, "hop-index");
     return path_buffer.str();
 }
 
@@ -2053,9 +2077,11 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::has_leaf_or_child_
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probes()
+    :
+    probe(this, {"probe_index"})
 {
 
-    yang_name = "probes"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "probes"; yang_parent_name = "hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::~Probes()
@@ -2064,7 +2090,8 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::~Probes()
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::has_data() const
 {
-    for (std::size_t index=0; index<probe.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<probe.len(); index++)
     {
         if(probe[index]->has_data())
             return true;
@@ -2074,7 +2101,7 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::has_data()
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::has_operation() const
 {
-    for (std::size_t index=0; index<probe.size(); index++)
+    for (std::size_t index=0; index<probe.len(); index++)
     {
         if(probe[index]->has_operation())
             return true;
@@ -2104,7 +2131,7 @@ std::shared_ptr<Entity> Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop:
     {
         auto c = std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe>();
         c->parent = this;
-        probe.push_back(c);
+        probe.append(c);
         return c;
     }
 
@@ -2116,7 +2143,7 @@ std::map<std::string, std::shared_ptr<Entity>> Traceroute::Output::TracerouteRes
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : probe)
+    for (auto c : probe.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2151,7 +2178,7 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::Probe()
     hop_hostname{YType::str, "hop-hostname"}
 {
 
-    yang_name = "probe"; yang_parent_name = "probes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "probe"; yang_parent_name = "probes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::~Probe()
@@ -2160,6 +2187,7 @@ Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::~Probe()
 
 bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::has_data() const
 {
+    if (is_presence_container) return true;
     return probe_index.is_set
 	|| result.is_set
 	|| delta_time.is_set
@@ -2180,7 +2208,8 @@ bool Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::has
 std::string Traceroute::Output::TracerouteResponse::Ipv6::Hops::Hop::Probes::Probe::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "probe" <<"[probe-index='" <<probe_index <<"']";
+    path_buffer << "probe";
+    ADD_KEY_TOKEN(probe_index, "probe-index");
     return path_buffer.str();
 }
 

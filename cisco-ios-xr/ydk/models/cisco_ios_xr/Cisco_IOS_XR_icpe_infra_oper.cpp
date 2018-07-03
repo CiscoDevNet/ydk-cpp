@@ -14,21 +14,20 @@ namespace Cisco_IOS_XR_icpe_infra_oper {
 NvSatellite::NvSatellite()
     :
     reload_op_statuses(std::make_shared<NvSatellite::ReloadOpStatuses>())
-	,sdacp_redundancies(std::make_shared<NvSatellite::SdacpRedundancies>())
-	,install_shows(std::make_shared<NvSatellite::InstallShows>())
-	,satellite_statuses(std::make_shared<NvSatellite::SatelliteStatuses>())
-	,satellite_priorities(std::make_shared<NvSatellite::SatellitePriorities>())
-	,satellite_versions(std::make_shared<NvSatellite::SatelliteVersions>())
-	,satellite_topologies(std::make_shared<NvSatellite::SatelliteTopologies>())
-	,install_reference_info(std::make_shared<NvSatellite::InstallReferenceInfo>())
-	,install_op_progresses(std::make_shared<NvSatellite::InstallOpProgresses>())
-	,reload_statuses(std::make_shared<NvSatellite::ReloadStatuses>())
-	,install(std::make_shared<NvSatellite::Install>())
-	,install_op_statuses(std::make_shared<NvSatellite::InstallOpStatuses>())
-	,satellite_properties(std::make_shared<NvSatellite::SatelliteProperties>())
-	,sdacp_discovery2s(std::make_shared<NvSatellite::SdacpDiscovery2S>())
-	,icpe_dpms(std::make_shared<NvSatellite::IcpeDpms>())
-	,sdacp_controls(std::make_shared<NvSatellite::SdacpControls>())
+    , sdacp_redundancies(std::make_shared<NvSatellite::SdacpRedundancies>())
+    , install_shows(std::make_shared<NvSatellite::InstallShows>())
+    , satellite_statuses(std::make_shared<NvSatellite::SatelliteStatuses>())
+    , satellite_priorities(std::make_shared<NvSatellite::SatellitePriorities>())
+    , satellite_versions(std::make_shared<NvSatellite::SatelliteVersions>())
+    , satellite_topologies(std::make_shared<NvSatellite::SatelliteTopologies>())
+    , install_reference_info(std::make_shared<NvSatellite::InstallReferenceInfo>())
+    , install_op_progresses(std::make_shared<NvSatellite::InstallOpProgresses>())
+    , install(std::make_shared<NvSatellite::Install>())
+    , install_op_statuses(std::make_shared<NvSatellite::InstallOpStatuses>())
+    , satellite_properties(std::make_shared<NvSatellite::SatelliteProperties>())
+    , sdacp_discovery2s(std::make_shared<NvSatellite::SdacpDiscovery2s>())
+    , icpe_dpms(std::make_shared<NvSatellite::IcpeDpms>())
+    , sdacp_controls(std::make_shared<NvSatellite::SdacpControls>())
 {
     reload_op_statuses->parent = this;
     sdacp_redundancies->parent = this;
@@ -39,7 +38,6 @@ NvSatellite::NvSatellite()
     satellite_topologies->parent = this;
     install_reference_info->parent = this;
     install_op_progresses->parent = this;
-    reload_statuses->parent = this;
     install->parent = this;
     install_op_statuses->parent = this;
     satellite_properties->parent = this;
@@ -47,7 +45,7 @@ NvSatellite::NvSatellite()
     icpe_dpms->parent = this;
     sdacp_controls->parent = this;
 
-    yang_name = "nv-satellite"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "nv-satellite"; yang_parent_name = "Cisco-IOS-XR-icpe-infra-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NvSatellite::~NvSatellite()
@@ -56,6 +54,7 @@ NvSatellite::~NvSatellite()
 
 bool NvSatellite::has_data() const
 {
+    if (is_presence_container) return true;
     return (reload_op_statuses !=  nullptr && reload_op_statuses->has_data())
 	|| (sdacp_redundancies !=  nullptr && sdacp_redundancies->has_data())
 	|| (install_shows !=  nullptr && install_shows->has_data())
@@ -65,7 +64,6 @@ bool NvSatellite::has_data() const
 	|| (satellite_topologies !=  nullptr && satellite_topologies->has_data())
 	|| (install_reference_info !=  nullptr && install_reference_info->has_data())
 	|| (install_op_progresses !=  nullptr && install_op_progresses->has_data())
-	|| (reload_statuses !=  nullptr && reload_statuses->has_data())
 	|| (install !=  nullptr && install->has_data())
 	|| (install_op_statuses !=  nullptr && install_op_statuses->has_data())
 	|| (satellite_properties !=  nullptr && satellite_properties->has_data())
@@ -86,7 +84,6 @@ bool NvSatellite::has_operation() const
 	|| (satellite_topologies !=  nullptr && satellite_topologies->has_operation())
 	|| (install_reference_info !=  nullptr && install_reference_info->has_operation())
 	|| (install_op_progresses !=  nullptr && install_op_progresses->has_operation())
-	|| (reload_statuses !=  nullptr && reload_statuses->has_operation())
 	|| (install !=  nullptr && install->has_operation())
 	|| (install_op_statuses !=  nullptr && install_op_statuses->has_operation())
 	|| (satellite_properties !=  nullptr && satellite_properties->has_operation())
@@ -194,15 +191,6 @@ std::shared_ptr<Entity> NvSatellite::get_child_by_name(const std::string & child
         return install_op_progresses;
     }
 
-    if(child_yang_name == "reload-statuses")
-    {
-        if(reload_statuses == nullptr)
-        {
-            reload_statuses = std::make_shared<NvSatellite::ReloadStatuses>();
-        }
-        return reload_statuses;
-    }
-
     if(child_yang_name == "install")
     {
         if(install == nullptr)
@@ -234,7 +222,7 @@ std::shared_ptr<Entity> NvSatellite::get_child_by_name(const std::string & child
     {
         if(sdacp_discovery2s == nullptr)
         {
-            sdacp_discovery2s = std::make_shared<NvSatellite::SdacpDiscovery2S>();
+            sdacp_discovery2s = std::make_shared<NvSatellite::SdacpDiscovery2s>();
         }
         return sdacp_discovery2s;
     }
@@ -309,11 +297,6 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::get_children() const
         children["install-op-progresses"] = install_op_progresses;
     }
 
-    if(reload_statuses != nullptr)
-    {
-        children["reload-statuses"] = reload_statuses;
-    }
-
     if(install != nullptr)
     {
         children["install"] = install;
@@ -382,15 +365,17 @@ std::map<std::pair<std::string, std::string>, std::string> NvSatellite::get_name
 
 bool NvSatellite::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "reload-op-statuses" || name == "sdacp-redundancies" || name == "install-shows" || name == "satellite-statuses" || name == "satellite-priorities" || name == "satellite-versions" || name == "satellite-topologies" || name == "install-reference-info" || name == "install-op-progresses" || name == "reload-statuses" || name == "install" || name == "install-op-statuses" || name == "satellite-properties" || name == "sdacp-discovery2s" || name == "icpe-dpms" || name == "sdacp-controls")
+    if(name == "reload-op-statuses" || name == "sdacp-redundancies" || name == "install-shows" || name == "satellite-statuses" || name == "satellite-priorities" || name == "satellite-versions" || name == "satellite-topologies" || name == "install-reference-info" || name == "install-op-progresses" || name == "install" || name == "install-op-statuses" || name == "satellite-properties" || name == "sdacp-discovery2s" || name == "icpe-dpms" || name == "sdacp-controls")
         return true;
     return false;
 }
 
 NvSatellite::ReloadOpStatuses::ReloadOpStatuses()
+    :
+    reload_op_status(this, {"operation_id"})
 {
 
-    yang_name = "reload-op-statuses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reload-op-statuses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::ReloadOpStatuses::~ReloadOpStatuses()
@@ -399,7 +384,8 @@ NvSatellite::ReloadOpStatuses::~ReloadOpStatuses()
 
 bool NvSatellite::ReloadOpStatuses::has_data() const
 {
-    for (std::size_t index=0; index<reload_op_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reload_op_status.len(); index++)
     {
         if(reload_op_status[index]->has_data())
             return true;
@@ -409,7 +395,7 @@ bool NvSatellite::ReloadOpStatuses::has_data() const
 
 bool NvSatellite::ReloadOpStatuses::has_operation() const
 {
-    for (std::size_t index=0; index<reload_op_status.size(); index++)
+    for (std::size_t index=0; index<reload_op_status.len(); index++)
     {
         if(reload_op_status[index]->has_operation())
             return true;
@@ -446,7 +432,7 @@ std::shared_ptr<Entity> NvSatellite::ReloadOpStatuses::get_child_by_name(const s
     {
         auto c = std::make_shared<NvSatellite::ReloadOpStatuses::ReloadOpStatus>();
         c->parent = this;
-        reload_op_status.push_back(c);
+        reload_op_status.append(c);
         return c;
     }
 
@@ -458,7 +444,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadOpStatuses::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reload_op_status)
+    for (auto c : reload_op_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -495,7 +481,7 @@ NvSatellite::ReloadOpStatuses::ReloadOpStatus::ReloadOpStatus()
     sats_reload_failed{YType::uint16, "sats-reload-failed"}
 {
 
-    yang_name = "reload-op-status"; yang_parent_name = "reload-op-statuses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reload-op-status"; yang_parent_name = "reload-op-statuses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::ReloadOpStatuses::ReloadOpStatus::~ReloadOpStatus()
@@ -504,6 +490,7 @@ NvSatellite::ReloadOpStatuses::ReloadOpStatus::~ReloadOpStatus()
 
 bool NvSatellite::ReloadOpStatuses::ReloadOpStatus::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(leaf.is_set)
@@ -571,7 +558,8 @@ std::string NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_absolute_path() c
 std::string NvSatellite::ReloadOpStatuses::ReloadOpStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reload-op-status" <<"[operation-id='" <<operation_id <<"']";
+    path_buffer << "reload-op-status";
+    ADD_KEY_TOKEN(operation_id, "operation-id");
     return path_buffer.str();
 }
 
@@ -685,9 +673,11 @@ bool NvSatellite::ReloadOpStatuses::ReloadOpStatus::has_leaf_or_child_of_name(co
 }
 
 NvSatellite::SdacpRedundancies::SdacpRedundancies()
+    :
+    sdacp_redundancy(this, {"iccp_group"})
 {
 
-    yang_name = "sdacp-redundancies"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdacp-redundancies"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SdacpRedundancies::~SdacpRedundancies()
@@ -696,7 +686,8 @@ NvSatellite::SdacpRedundancies::~SdacpRedundancies()
 
 bool NvSatellite::SdacpRedundancies::has_data() const
 {
-    for (std::size_t index=0; index<sdacp_redundancy.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdacp_redundancy.len(); index++)
     {
         if(sdacp_redundancy[index]->has_data())
             return true;
@@ -706,7 +697,7 @@ bool NvSatellite::SdacpRedundancies::has_data() const
 
 bool NvSatellite::SdacpRedundancies::has_operation() const
 {
-    for (std::size_t index=0; index<sdacp_redundancy.size(); index++)
+    for (std::size_t index=0; index<sdacp_redundancy.len(); index++)
     {
         if(sdacp_redundancy[index]->has_operation())
             return true;
@@ -743,7 +734,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::get_child_by_name(const 
     {
         auto c = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy>();
         c->parent = this;
-        sdacp_redundancy.push_back(c);
+        sdacp_redundancy.append(c);
         return c;
     }
 
@@ -755,7 +746,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdacp_redundancy)
+    for (auto c : sdacp_redundancy.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -793,12 +784,13 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::SdacpRedundancy()
     primacy{YType::enumeration, "primacy"},
     system_mac{YType::str, "system-mac"},
     isolated{YType::boolean, "isolated"}
-    	,
+        ,
     protocol_state_timestamp(std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp>())
+    , channel(this, {})
 {
     protocol_state_timestamp->parent = this;
 
-    yang_name = "sdacp-redundancy"; yang_parent_name = "sdacp-redundancies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdacp-redundancy"; yang_parent_name = "sdacp-redundancies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SdacpRedundancies::SdacpRedundancy::~SdacpRedundancy()
@@ -807,7 +799,8 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::~SdacpRedundancy()
 
 bool NvSatellite::SdacpRedundancies::SdacpRedundancy::has_data() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_data())
             return true;
@@ -827,7 +820,7 @@ bool NvSatellite::SdacpRedundancies::SdacpRedundancy::has_data() const
 
 bool NvSatellite::SdacpRedundancies::SdacpRedundancy::has_operation() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_operation())
             return true;
@@ -856,7 +849,8 @@ std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::get_absolute_path()
 std::string NvSatellite::SdacpRedundancies::SdacpRedundancy::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdacp-redundancy" <<"[iccp-group='" <<iccp_group <<"']";
+    path_buffer << "sdacp-redundancy";
+    ADD_KEY_TOKEN(iccp_group, "iccp-group");
     return path_buffer.str();
 }
 
@@ -894,7 +888,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpRedundancies::SdacpRedundancy::get_chi
     {
         auto c = std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel>();
         c->parent = this;
-        channel.push_back(c);
+        channel.append(c);
         return c;
     }
 
@@ -911,7 +905,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpRedundancies::S
     }
 
     count = 0;
-    for (auto const & c : channel)
+    for (auto c : channel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1043,7 +1037,7 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::Protoco
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "protocol-state-timestamp"; yang_parent_name = "sdacp-redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-state-timestamp"; yang_parent_name = "sdacp-redundancy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::~ProtocolStateTimestamp()
@@ -1052,6 +1046,7 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::~Protoc
 
 bool NvSatellite::SdacpRedundancies::SdacpRedundancy::ProtocolStateTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -1137,14 +1132,14 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::Channel()
     normal_messages_sent{YType::uint64, "normal-messages-sent"},
     control_messages_received{YType::uint64, "control-messages-received"},
     normal_messages_received{YType::uint64, "normal-messages-received"}
-    	,
+        ,
     channel_state_timestamp(std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp>())
-	,resync_state_timestamp(std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp>())
+    , resync_state_timestamp(std::make_shared<NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp>())
 {
     channel_state_timestamp->parent = this;
     resync_state_timestamp->parent = this;
 
-    yang_name = "channel"; yang_parent_name = "sdacp-redundancy"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel"; yang_parent_name = "sdacp-redundancy"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::~Channel()
@@ -1153,6 +1148,7 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::~Channel()
 
 bool NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::has_data() const
 {
+    if (is_presence_container) return true;
     return channel_id.is_set
 	|| chan_state.is_set
 	|| resync_state.is_set
@@ -1332,7 +1328,7 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp:
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "channel-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::~ChannelStateTimestamp()
@@ -1341,6 +1337,7 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp:
 
 bool NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ChannelStateTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -1423,7 +1420,7 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "resync-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resync-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::~ResyncStateTimestamp()
@@ -1432,6 +1429,7 @@ NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::
 
 bool NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -1509,9 +1507,11 @@ bool NvSatellite::SdacpRedundancies::SdacpRedundancy::Channel::ResyncStateTimest
 }
 
 NvSatellite::InstallShows::InstallShows()
+    :
+    install_show(this, {"operation_id"})
 {
 
-    yang_name = "install-shows"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install-shows"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallShows::~InstallShows()
@@ -1520,7 +1520,8 @@ NvSatellite::InstallShows::~InstallShows()
 
 bool NvSatellite::InstallShows::has_data() const
 {
-    for (std::size_t index=0; index<install_show.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<install_show.len(); index++)
     {
         if(install_show[index]->has_data())
             return true;
@@ -1530,7 +1531,7 @@ bool NvSatellite::InstallShows::has_data() const
 
 bool NvSatellite::InstallShows::has_operation() const
 {
-    for (std::size_t index=0; index<install_show.size(); index++)
+    for (std::size_t index=0; index<install_show.len(); index++)
     {
         if(install_show[index]->has_operation())
             return true;
@@ -1567,7 +1568,7 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::get_child_by_name(const std::
     {
         auto c = std::make_shared<NvSatellite::InstallShows::InstallShow>();
         c->parent = this;
-        install_show.push_back(c);
+        install_show.append(c);
         return c;
     }
 
@@ -1579,7 +1580,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : install_show)
+    for (auto c : install_show.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1619,24 +1620,29 @@ NvSatellite::InstallShows::InstallShow::InstallShow()
     sats_transferring{YType::uint16, "sats-transferring"},
     sats_activating{YType::uint16, "sats-activating"},
     sats_updating{YType::uint16, "sats-updating"},
+    sats_replacing{YType::uint16, "sats-replacing"},
     sats_deactivating{YType::uint16, "sats-deactivating"},
     sats_removing{YType::uint16, "sats-removing"},
     sats_transfer_failed{YType::uint16, "sats-transfer-failed"},
     sats_activate_failed{YType::uint16, "sats-activate-failed"},
     sats_update_failed{YType::uint16, "sats-update-failed"},
+    sats_replace_failed{YType::uint16, "sats-replace-failed"},
     sats_deactivate_failed{YType::uint16, "sats-deactivate-failed"},
     sats_remove_failed{YType::uint16, "sats-remove-failed"},
     sats_transfer_aborted{YType::uint16, "sats-transfer-aborted"},
     sats_activate_aborted{YType::uint16, "sats-activate-aborted"},
     sats_update_aborted{YType::uint16, "sats-update-aborted"},
+    sats_replace_aborted{YType::uint16, "sats-replace-aborted"},
     sats_deactivate_aborted{YType::uint16, "sats-deactivate-aborted"},
     sats_remove_aborted{YType::uint16, "sats-remove-aborted"},
     sats_no_operation{YType::uint16, "sats-no-operation"},
     sats_completed{YType::uint16, "sats-completed"},
     name_string{YType::str, "name-string"}
+        ,
+    satellite(this, {})
 {
 
-    yang_name = "install-show"; yang_parent_name = "install-shows"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install-show"; yang_parent_name = "install-shows"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallShows::InstallShow::~InstallShow()
@@ -1645,7 +1651,8 @@ NvSatellite::InstallShows::InstallShow::~InstallShow()
 
 bool NvSatellite::InstallShows::InstallShow::has_data() const
 {
-    for (std::size_t index=0; index<satellite.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_data())
             return true;
@@ -1666,6 +1673,11 @@ bool NvSatellite::InstallShows::InstallShow::has_data() const
             return true;
     }
     for (auto const & leaf : sats_updating.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : sats_replacing.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1695,6 +1707,11 @@ bool NvSatellite::InstallShows::InstallShow::has_data() const
         if(leaf.is_set)
             return true;
     }
+    for (auto const & leaf : sats_replace_failed.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
     for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(leaf.is_set)
@@ -1716,6 +1733,11 @@ bool NvSatellite::InstallShows::InstallShow::has_data() const
             return true;
     }
     for (auto const & leaf : sats_update_aborted.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : sats_replace_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -1757,7 +1779,7 @@ bool NvSatellite::InstallShows::InstallShow::has_data() const
 
 bool NvSatellite::InstallShows::InstallShow::has_operation() const
 {
-    for (std::size_t index=0; index<satellite.size(); index++)
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_operation())
             return true;
@@ -1778,6 +1800,11 @@ bool NvSatellite::InstallShows::InstallShow::has_operation() const
             return true;
     }
     for (auto const & leaf : sats_updating.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : sats_replacing.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
@@ -1807,6 +1834,11 @@ bool NvSatellite::InstallShows::InstallShow::has_operation() const
         if(is_set(leaf.yfilter))
             return true;
     }
+    for (auto const & leaf : sats_replace_failed.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(is_set(leaf.yfilter))
@@ -1828,6 +1860,11 @@ bool NvSatellite::InstallShows::InstallShow::has_operation() const
             return true;
     }
     for (auto const & leaf : sats_update_aborted.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : sats_replace_aborted.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
@@ -1870,16 +1907,19 @@ bool NvSatellite::InstallShows::InstallShow::has_operation() const
 	|| ydk::is_set(sats_transferring.yfilter)
 	|| ydk::is_set(sats_activating.yfilter)
 	|| ydk::is_set(sats_updating.yfilter)
+	|| ydk::is_set(sats_replacing.yfilter)
 	|| ydk::is_set(sats_deactivating.yfilter)
 	|| ydk::is_set(sats_removing.yfilter)
 	|| ydk::is_set(sats_transfer_failed.yfilter)
 	|| ydk::is_set(sats_activate_failed.yfilter)
 	|| ydk::is_set(sats_update_failed.yfilter)
+	|| ydk::is_set(sats_replace_failed.yfilter)
 	|| ydk::is_set(sats_deactivate_failed.yfilter)
 	|| ydk::is_set(sats_remove_failed.yfilter)
 	|| ydk::is_set(sats_transfer_aborted.yfilter)
 	|| ydk::is_set(sats_activate_aborted.yfilter)
 	|| ydk::is_set(sats_update_aborted.yfilter)
+	|| ydk::is_set(sats_replace_aborted.yfilter)
 	|| ydk::is_set(sats_deactivate_aborted.yfilter)
 	|| ydk::is_set(sats_remove_aborted.yfilter)
 	|| ydk::is_set(sats_no_operation.yfilter)
@@ -1897,7 +1937,8 @@ std::string NvSatellite::InstallShows::InstallShow::get_absolute_path() const
 std::string NvSatellite::InstallShows::InstallShow::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "install-show" <<"[operation-id='" <<operation_id <<"']";
+    path_buffer << "install-show";
+    ADD_KEY_TOKEN(operation_id, "operation-id");
     return path_buffer.str();
 }
 
@@ -1922,6 +1963,8 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::InstallShows::Instal
     leaf_name_data.insert(leaf_name_data.end(), sats_activating_name_datas.begin(), sats_activating_name_datas.end());
     auto sats_updating_name_datas = sats_updating.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_updating_name_datas.begin(), sats_updating_name_datas.end());
+    auto sats_replacing_name_datas = sats_replacing.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sats_replacing_name_datas.begin(), sats_replacing_name_datas.end());
     auto sats_deactivating_name_datas = sats_deactivating.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_deactivating_name_datas.begin(), sats_deactivating_name_datas.end());
     auto sats_removing_name_datas = sats_removing.get_name_leafdata();
@@ -1932,6 +1975,8 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::InstallShows::Instal
     leaf_name_data.insert(leaf_name_data.end(), sats_activate_failed_name_datas.begin(), sats_activate_failed_name_datas.end());
     auto sats_update_failed_name_datas = sats_update_failed.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_update_failed_name_datas.begin(), sats_update_failed_name_datas.end());
+    auto sats_replace_failed_name_datas = sats_replace_failed.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sats_replace_failed_name_datas.begin(), sats_replace_failed_name_datas.end());
     auto sats_deactivate_failed_name_datas = sats_deactivate_failed.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_deactivate_failed_name_datas.begin(), sats_deactivate_failed_name_datas.end());
     auto sats_remove_failed_name_datas = sats_remove_failed.get_name_leafdata();
@@ -1942,6 +1987,8 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::InstallShows::Instal
     leaf_name_data.insert(leaf_name_data.end(), sats_activate_aborted_name_datas.begin(), sats_activate_aborted_name_datas.end());
     auto sats_update_aborted_name_datas = sats_update_aborted.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_update_aborted_name_datas.begin(), sats_update_aborted_name_datas.end());
+    auto sats_replace_aborted_name_datas = sats_replace_aborted.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sats_replace_aborted_name_datas.begin(), sats_replace_aborted_name_datas.end());
     auto sats_deactivate_aborted_name_datas = sats_deactivate_aborted.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_deactivate_aborted_name_datas.begin(), sats_deactivate_aborted_name_datas.end());
     auto sats_remove_aborted_name_datas = sats_remove_aborted.get_name_leafdata();
@@ -1962,7 +2009,7 @@ std::shared_ptr<Entity> NvSatellite::InstallShows::InstallShow::get_child_by_nam
     {
         auto c = std::make_shared<NvSatellite::InstallShows::InstallShow::Satellite>();
         c->parent = this;
-        satellite.push_back(c);
+        satellite.append(c);
         return c;
     }
 
@@ -1974,7 +2021,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallShows::Instal
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite)
+    for (auto c : satellite.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2051,6 +2098,10 @@ void NvSatellite::InstallShows::InstallShow::set_value(const std::string & value
     {
         sats_updating.append(value);
     }
+    if(value_path == "sats-replacing")
+    {
+        sats_replacing.append(value);
+    }
     if(value_path == "sats-deactivating")
     {
         sats_deactivating.append(value);
@@ -2071,6 +2122,10 @@ void NvSatellite::InstallShows::InstallShow::set_value(const std::string & value
     {
         sats_update_failed.append(value);
     }
+    if(value_path == "sats-replace-failed")
+    {
+        sats_replace_failed.append(value);
+    }
     if(value_path == "sats-deactivate-failed")
     {
         sats_deactivate_failed.append(value);
@@ -2090,6 +2145,10 @@ void NvSatellite::InstallShows::InstallShow::set_value(const std::string & value
     if(value_path == "sats-update-aborted")
     {
         sats_update_aborted.append(value);
+    }
+    if(value_path == "sats-replace-aborted")
+    {
+        sats_replace_aborted.append(value);
     }
     if(value_path == "sats-deactivate-aborted")
     {
@@ -2163,6 +2222,10 @@ void NvSatellite::InstallShows::InstallShow::set_filter(const std::string & valu
     {
         sats_updating.yfilter = yfilter;
     }
+    if(value_path == "sats-replacing")
+    {
+        sats_replacing.yfilter = yfilter;
+    }
     if(value_path == "sats-deactivating")
     {
         sats_deactivating.yfilter = yfilter;
@@ -2183,6 +2246,10 @@ void NvSatellite::InstallShows::InstallShow::set_filter(const std::string & valu
     {
         sats_update_failed.yfilter = yfilter;
     }
+    if(value_path == "sats-replace-failed")
+    {
+        sats_replace_failed.yfilter = yfilter;
+    }
     if(value_path == "sats-deactivate-failed")
     {
         sats_deactivate_failed.yfilter = yfilter;
@@ -2202,6 +2269,10 @@ void NvSatellite::InstallShows::InstallShow::set_filter(const std::string & valu
     if(value_path == "sats-update-aborted")
     {
         sats_update_aborted.yfilter = yfilter;
+    }
+    if(value_path == "sats-replace-aborted")
+    {
+        sats_replace_aborted.yfilter = yfilter;
     }
     if(value_path == "sats-deactivate-aborted")
     {
@@ -2227,7 +2298,7 @@ void NvSatellite::InstallShows::InstallShow::set_filter(const std::string & valu
 
 bool NvSatellite::InstallShows::InstallShow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "satellite" || name == "operation-id" || name == "operation-id-xr" || name == "satellite-range" || name == "operation-type" || name == "progress-percentage" || name == "start-time" || name == "end-time" || name == "ref-state" || name == "sats-not-initiated" || name == "sats-transferring" || name == "sats-activating" || name == "sats-updating" || name == "sats-deactivating" || name == "sats-removing" || name == "sats-transfer-failed" || name == "sats-activate-failed" || name == "sats-update-failed" || name == "sats-deactivate-failed" || name == "sats-remove-failed" || name == "sats-transfer-aborted" || name == "sats-activate-aborted" || name == "sats-update-aborted" || name == "sats-deactivate-aborted" || name == "sats-remove-aborted" || name == "sats-no-operation" || name == "sats-completed" || name == "name-string")
+    if(name == "satellite" || name == "operation-id" || name == "operation-id-xr" || name == "satellite-range" || name == "operation-type" || name == "progress-percentage" || name == "start-time" || name == "end-time" || name == "ref-state" || name == "sats-not-initiated" || name == "sats-transferring" || name == "sats-activating" || name == "sats-updating" || name == "sats-replacing" || name == "sats-deactivating" || name == "sats-removing" || name == "sats-transfer-failed" || name == "sats-activate-failed" || name == "sats-update-failed" || name == "sats-replace-failed" || name == "sats-deactivate-failed" || name == "sats-remove-failed" || name == "sats-transfer-aborted" || name == "sats-activate-aborted" || name == "sats-update-aborted" || name == "sats-replace-aborted" || name == "sats-deactivate-aborted" || name == "sats-remove-aborted" || name == "sats-no-operation" || name == "sats-completed" || name == "name-string")
         return true;
     return false;
 }
@@ -2243,7 +2314,7 @@ NvSatellite::InstallShows::InstallShow::Satellite::Satellite()
     info{YType::str, "info"}
 {
 
-    yang_name = "satellite"; yang_parent_name = "install-show"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "satellite"; yang_parent_name = "install-show"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::InstallShows::InstallShow::Satellite::~Satellite()
@@ -2252,6 +2323,7 @@ NvSatellite::InstallShows::InstallShow::Satellite::~Satellite()
 
 bool NvSatellite::InstallShows::InstallShow::Satellite::has_data() const
 {
+    if (is_presence_container) return true;
     return satellite_id.is_set
 	|| state.is_set
 	|| percentage.is_set
@@ -2394,9 +2466,11 @@ bool NvSatellite::InstallShows::InstallShow::Satellite::has_leaf_or_child_of_nam
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatuses()
+    :
+    satellite_status(this, {"satellite_id"})
 {
 
-    yang_name = "satellite-statuses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-statuses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteStatuses::~SatelliteStatuses()
@@ -2405,7 +2479,8 @@ NvSatellite::SatelliteStatuses::~SatelliteStatuses()
 
 bool NvSatellite::SatelliteStatuses::has_data() const
 {
-    for (std::size_t index=0; index<satellite_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite_status.len(); index++)
     {
         if(satellite_status[index]->has_data())
             return true;
@@ -2415,7 +2490,7 @@ bool NvSatellite::SatelliteStatuses::has_data() const
 
 bool NvSatellite::SatelliteStatuses::has_operation() const
 {
-    for (std::size_t index=0; index<satellite_status.size(); index++)
+    for (std::size_t index=0; index<satellite_status.len(); index++)
     {
         if(satellite_status[index]->has_operation())
             return true;
@@ -2452,7 +2527,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::get_child_by_name(const 
     {
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus>();
         c->parent = this;
-        satellite_status.push_back(c);
+        satellite_status.append(c);
         return c;
     }
 
@@ -2464,7 +2539,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite_status)
+    for (auto c : satellite_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2529,16 +2604,18 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::SatelliteStatus()
     sdacp_session_failure_reason{YType::enumeration, "sdacp-session-failure-reason"},
     install_state{YType::enumeration, "install-state"},
     remote_version{YType::str, "remote-version"}
-    	,
+        ,
     candidate_fabric_ports(std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts>())
-	,optical_status(std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus>())
-	,redundancy_out_of_sync_timestamp(std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp>())
+    , optical_status(std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus>())
+    , redundancy_out_of_sync_timestamp(std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp>())
+    , reload_data(this, {})
+    , configured_link(this, {})
 {
     candidate_fabric_ports->parent = this;
     optical_status->parent = this;
     redundancy_out_of_sync_timestamp->parent = this;
 
-    yang_name = "satellite-status"; yang_parent_name = "satellite-statuses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-status"; yang_parent_name = "satellite-statuses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::~SatelliteStatus()
@@ -2547,7 +2624,13 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::~SatelliteStatus()
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_data() const
 {
-    for (std::size_t index=0; index<configured_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reload_data.len(); index++)
+    {
+        if(reload_data[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<configured_link.len(); index++)
     {
         if(configured_link[index]->has_data())
             return true;
@@ -2600,7 +2683,12 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_data() const
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_operation() const
 {
-    for (std::size_t index=0; index<configured_link.size(); index++)
+    for (std::size_t index=0; index<reload_data.len(); index++)
+    {
+        if(reload_data[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<configured_link.len(); index++)
     {
         if(configured_link[index]->has_operation())
             return true;
@@ -2663,7 +2751,8 @@ std::string NvSatellite::SatelliteStatuses::SatelliteStatus::get_absolute_path()
 std::string NvSatellite::SatelliteStatuses::SatelliteStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellite-status" <<"[satellite-id='" <<satellite_id <<"']";
+    path_buffer << "satellite-status";
+    ADD_KEY_TOKEN(satellite_id, "satellite-id");
     return path_buffer.str();
 }
 
@@ -2743,11 +2832,19 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::get_chi
         return redundancy_out_of_sync_timestamp;
     }
 
+    if(child_yang_name == "reload-data")
+    {
+        auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData>();
+        c->parent = this;
+        reload_data.append(c);
+        return c;
+    }
+
     if(child_yang_name == "configured-link")
     {
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink>();
         c->parent = this;
-        configured_link.push_back(c);
+        configured_link.append(c);
         return c;
     }
 
@@ -2774,7 +2871,16 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::S
     }
 
     count = 0;
-    for (auto const & c : configured_link)
+    for (auto c : reload_data.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    count = 0;
+    for (auto c : configured_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3163,7 +3269,7 @@ void NvSatellite::SatelliteStatuses::SatelliteStatus::set_filter(const std::stri
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "candidate-fabric-ports" || name == "optical-status" || name == "redundancy-out-of-sync-timestamp" || name == "configured-link" || name == "satellite-id" || name == "satellite-id-xr" || name == "version-check-state" || name == "remote-version-present" || name == "type" || name == "ethernet-fabric-supported" || name == "optical-supported" || name == "ip-address" || name == "ip-address-present" || name == "ip-address-auto" || name == "ipv6-address" || name == "ipv6-address-present" || name == "vrf-name" || name == "vrfid" || name == "description" || name == "description-present" || name == "mac-address" || name == "mac-address-present" || name == "configured-serial-number" || name == "configured-serial-number-present" || name == "received-serial-number" || name == "received-serial-number-present" || name == "password" || name == "password-error" || name == "received-host-name" || name == "cfgd-timeout" || name == "timeout-warning" || name == "conflict-reason" || name == "conflict-context" || name == "redundancy-iccp-group" || name == "recovery-delay-time-left" || name == "host-treating-as-active" || name == "satellite-treating-as-active" || name == "sdacp-session-state" || name == "sdacp-session-failure-reason" || name == "install-state" || name == "remote-version")
+    if(name == "candidate-fabric-ports" || name == "optical-status" || name == "redundancy-out-of-sync-timestamp" || name == "reload-data" || name == "configured-link" || name == "satellite-id" || name == "satellite-id-xr" || name == "version-check-state" || name == "remote-version-present" || name == "type" || name == "ethernet-fabric-supported" || name == "optical-supported" || name == "ip-address" || name == "ip-address-present" || name == "ip-address-auto" || name == "ipv6-address" || name == "ipv6-address-present" || name == "vrf-name" || name == "vrfid" || name == "description" || name == "description-present" || name == "mac-address" || name == "mac-address-present" || name == "configured-serial-number" || name == "configured-serial-number-present" || name == "received-serial-number" || name == "received-serial-number-present" || name == "password" || name == "password-error" || name == "received-host-name" || name == "cfgd-timeout" || name == "timeout-warning" || name == "conflict-reason" || name == "conflict-context" || name == "redundancy-iccp-group" || name == "recovery-delay-time-left" || name == "host-treating-as-active" || name == "satellite-treating-as-active" || name == "sdacp-session-state" || name == "sdacp-session-failure-reason" || name == "install-state" || name == "remote-version")
         return true;
     return false;
 }
@@ -3173,9 +3279,12 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Candidate
     channel_up{YType::boolean, "channel-up"},
     out_of_sync{YType::boolean, "out-of-sync"},
     error_string{YType::str, "error-string"}
+        ,
+    configured_port(this, {})
+    , current_port(this, {})
 {
 
-    yang_name = "candidate-fabric-ports"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "candidate-fabric-ports"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::~CandidateFabricPorts()
@@ -3184,12 +3293,13 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::~Candidat
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::has_data() const
 {
-    for (std::size_t index=0; index<configured_port.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<configured_port.len(); index++)
     {
         if(configured_port[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<current_port.size(); index++)
+    for (std::size_t index=0; index<current_port.len(); index++)
     {
         if(current_port[index]->has_data())
             return true;
@@ -3201,12 +3311,12 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::has_
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::has_operation() const
 {
-    for (std::size_t index=0; index<configured_port.size(); index++)
+    for (std::size_t index=0; index<configured_port.len(); index++)
     {
         if(configured_port[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<current_port.size(); index++)
+    for (std::size_t index=0; index<current_port.len(); index++)
     {
         if(current_port[index]->has_operation())
             return true;
@@ -3242,7 +3352,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
     {
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort>();
         c->parent = this;
-        configured_port.push_back(c);
+        configured_port.append(c);
         return c;
     }
 
@@ -3250,7 +3360,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Candida
     {
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort>();
         c->parent = this;
-        current_port.push_back(c);
+        current_port.append(c);
         return c;
     }
 
@@ -3262,7 +3372,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : configured_port)
+    for (auto c : configured_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3271,7 +3381,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::S
     }
 
     count = 0;
-    for (auto const & c : current_port)
+    for (auto c : current_port.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3336,7 +3446,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Configure
     valid{YType::boolean, "valid"}
 {
 
-    yang_name = "configured-port"; yang_parent_name = "candidate-fabric-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configured-port"; yang_parent_name = "candidate-fabric-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::~ConfiguredPort()
@@ -3345,6 +3455,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Configure
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::ConfiguredPort::has_data() const
 {
+    if (is_presence_container) return true;
     return port_type.is_set
 	|| slot.is_set
 	|| subslot.is_set
@@ -3470,7 +3581,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPo
     requested{YType::boolean, "requested"}
 {
 
-    yang_name = "current-port"; yang_parent_name = "candidate-fabric-ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "current-port"; yang_parent_name = "candidate-fabric-ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::~CurrentPort()
@@ -3479,6 +3590,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPo
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::CurrentPort::has_data() const
 {
+    if (is_presence_container) return true;
     return port_type.is_set
 	|| slot.is_set
 	|| subslot.is_set
@@ -3610,9 +3722,11 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::CandidateFabricPorts::Curr
 NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::OpticalStatus()
     :
     chassis_sync_state{YType::enumeration, "chassis-sync-state"}
+        ,
+    application(this, {})
 {
 
-    yang_name = "optical-status"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-status"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::~OpticalStatus()
@@ -3621,7 +3735,8 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::~OpticalStatus()
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::has_data() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_data())
             return true;
@@ -3631,7 +3746,7 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::has_data() 
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::has_operation() const
 {
-    for (std::size_t index=0; index<application.size(); index++)
+    for (std::size_t index=0; index<application.len(); index++)
     {
         if(application[index]->has_operation())
             return true;
@@ -3663,7 +3778,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Optical
     {
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application>();
         c->parent = this;
-        application.push_back(c);
+        application.append(c);
         return c;
     }
 
@@ -3675,7 +3790,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : application)
+    for (auto c : application.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3717,7 +3832,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::App
     sync_state{YType::enumeration, "sync-state"}
 {
 
-    yang_name = "application"; yang_parent_name = "optical-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "optical-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::~Application()
@@ -3726,6 +3841,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::~Ap
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::OpticalStatus::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| sync_state.is_set;
 }
@@ -3808,7 +3924,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::R
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "redundancy-out-of-sync-timestamp"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redundancy-out-of-sync-timestamp"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::~RedundancyOutOfSyncTimestamp()
@@ -3817,6 +3933,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::~
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -3893,6 +4010,112 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::RedundancyOutOfSyncTimesta
     return false;
 }
 
+NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::ReloadData()
+    :
+    level{YType::enumeration, "level"},
+    time{YType::uint64, "time"},
+    info{YType::str, "info"}
+{
+
+    yang_name = "reload-data"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::~ReloadData()
+{
+}
+
+bool NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::has_data() const
+{
+    if (is_presence_container) return true;
+    return level.is_set
+	|| time.is_set
+	|| info.is_set;
+}
+
+bool NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(time.yfilter)
+	|| ydk::is_set(info.yfilter);
+}
+
+std::string NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reload-data";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (time.is_set || is_set(time.yfilter)) leaf_name_data.push_back(time.get_name_leafdata());
+    if (info.is_set || is_set(info.yfilter)) leaf_name_data.push_back(info.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "time")
+    {
+        time = value;
+        time.value_namespace = name_space;
+        time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "info")
+    {
+        info = value;
+        info.value_namespace = name_space;
+        info.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "time")
+    {
+        time.yfilter = yfilter;
+    }
+    if(value_path == "info")
+    {
+        info.yfilter = yfilter;
+    }
+}
+
+bool NvSatellite::SatelliteStatuses::SatelliteStatus::ReloadData::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "time" || name == "info")
+        return true;
+    return false;
+}
+
 NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::ConfiguredLink()
     :
     interface_handle{YType::str, "interface-handle"},
@@ -3907,9 +4130,12 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::ConfiguredLink(
     required_min_links_satisfied{YType::boolean, "required-min-links-satisfied"},
     conflict_reason{YType::enumeration, "conflict-reason"},
     conflict_context{YType::str, "conflict-context"}
+        ,
+    port_range(this, {})
+    , discovered_link(this, {})
 {
 
-    yang_name = "configured-link"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "configured-link"; yang_parent_name = "satellite-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::~ConfiguredLink()
@@ -3918,12 +4144,13 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::~ConfiguredLink
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::has_data() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_range.len(); index++)
     {
         if(port_range[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<discovered_link.size(); index++)
+    for (std::size_t index=0; index<discovered_link.len(); index++)
     {
         if(discovered_link[index]->has_data())
             return true;
@@ -3944,12 +4171,12 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::has_data()
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::has_operation() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
+    for (std::size_t index=0; index<port_range.len(); index++)
     {
         if(port_range[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<discovered_link.size(); index++)
+    for (std::size_t index=0; index<discovered_link.len(); index++)
     {
         if(discovered_link[index]->has_operation())
             return true;
@@ -4003,7 +4230,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
     {
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange>();
         c->parent = this;
-        port_range.push_back(c);
+        port_range.append(c);
         return c;
     }
 
@@ -4011,7 +4238,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteStatuses::SatelliteStatus::Configu
     {
         auto c = std::make_shared<NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink>();
         c->parent = this;
-        discovered_link.push_back(c);
+        discovered_link.append(c);
         return c;
     }
 
@@ -4023,7 +4250,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::S
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_range)
+    for (auto c : port_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4032,7 +4259,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteStatuses::S
     }
 
     count = 0;
-    for (auto const & c : discovered_link)
+    for (auto c : discovered_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4189,7 +4416,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::Port
     conflict_context{YType::str, "conflict-context"}
 {
 
-    yang_name = "port-range"; yang_parent_name = "configured-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-range"; yang_parent_name = "configured-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::~PortRange()
@@ -4198,6 +4425,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::~Por
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::PortRange::has_data() const
 {
+    if (is_presence_container) return true;
     return slot.is_set
 	|| subslot.is_set
 	|| low_port.is_set
@@ -4347,7 +4575,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink:
     conflict_context{YType::str, "conflict-context"}
 {
 
-    yang_name = "discovered-link"; yang_parent_name = "configured-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discovered-link"; yang_parent_name = "configured-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::~DiscoveredLink()
@@ -4356,6 +4584,7 @@ NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink:
 
 bool NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::DiscoveredLink::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| state.is_set
 	|| conflict_reason.is_set
@@ -4459,9 +4688,11 @@ bool NvSatellite::SatelliteStatuses::SatelliteStatus::ConfiguredLink::Discovered
 }
 
 NvSatellite::SatellitePriorities::SatellitePriorities()
+    :
+    satellite_priority(this, {"satellite_id"})
 {
 
-    yang_name = "satellite-priorities"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-priorities"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatellitePriorities::~SatellitePriorities()
@@ -4470,7 +4701,8 @@ NvSatellite::SatellitePriorities::~SatellitePriorities()
 
 bool NvSatellite::SatellitePriorities::has_data() const
 {
-    for (std::size_t index=0; index<satellite_priority.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite_priority.len(); index++)
     {
         if(satellite_priority[index]->has_data())
             return true;
@@ -4480,7 +4712,7 @@ bool NvSatellite::SatellitePriorities::has_data() const
 
 bool NvSatellite::SatellitePriorities::has_operation() const
 {
-    for (std::size_t index=0; index<satellite_priority.size(); index++)
+    for (std::size_t index=0; index<satellite_priority.len(); index++)
     {
         if(satellite_priority[index]->has_operation())
             return true;
@@ -4517,7 +4749,7 @@ std::shared_ptr<Entity> NvSatellite::SatellitePriorities::get_child_by_name(cons
     {
         auto c = std::make_shared<NvSatellite::SatellitePriorities::SatellitePriority>();
         c->parent = this;
-        satellite_priority.push_back(c);
+        satellite_priority.append(c);
         return c;
     }
 
@@ -4529,7 +4761,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatellitePriorities:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite_priority)
+    for (auto c : satellite_priority.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4567,7 +4799,7 @@ NvSatellite::SatellitePriorities::SatellitePriority::SatellitePriority()
     multichassis_redundancy{YType::enumeration, "multichassis-redundancy"}
 {
 
-    yang_name = "satellite-priority"; yang_parent_name = "satellite-priorities"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-priority"; yang_parent_name = "satellite-priorities"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatellitePriorities::SatellitePriority::~SatellitePriority()
@@ -4576,6 +4808,7 @@ NvSatellite::SatellitePriorities::SatellitePriority::~SatellitePriority()
 
 bool NvSatellite::SatellitePriorities::SatellitePriority::has_data() const
 {
+    if (is_presence_container) return true;
     return satellite_id.is_set
 	|| satellite_id_xr.is_set
 	|| rgid.is_set
@@ -4609,7 +4842,8 @@ std::string NvSatellite::SatellitePriorities::SatellitePriority::get_absolute_pa
 std::string NvSatellite::SatellitePriorities::SatellitePriority::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellite-priority" <<"[satellite-id='" <<satellite_id <<"']";
+    path_buffer << "satellite-priority";
+    ADD_KEY_TOKEN(satellite_id, "satellite-id");
     return path_buffer.str();
 }
 
@@ -4738,9 +4972,11 @@ bool NvSatellite::SatellitePriorities::SatellitePriority::has_leaf_or_child_of_n
 }
 
 NvSatellite::SatelliteVersions::SatelliteVersions()
+    :
+    satellite_version(this, {"satellite_id"})
 {
 
-    yang_name = "satellite-versions"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-versions"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteVersions::~SatelliteVersions()
@@ -4749,7 +4985,8 @@ NvSatellite::SatelliteVersions::~SatelliteVersions()
 
 bool NvSatellite::SatelliteVersions::has_data() const
 {
-    for (std::size_t index=0; index<satellite_version.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite_version.len(); index++)
     {
         if(satellite_version[index]->has_data())
             return true;
@@ -4759,7 +4996,7 @@ bool NvSatellite::SatelliteVersions::has_data() const
 
 bool NvSatellite::SatelliteVersions::has_operation() const
 {
-    for (std::size_t index=0; index<satellite_version.size(); index++)
+    for (std::size_t index=0; index<satellite_version.len(); index++)
     {
         if(satellite_version[index]->has_operation())
             return true;
@@ -4796,7 +5033,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteVersions::get_child_by_name(const 
     {
         auto c = std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion>();
         c->parent = this;
-        satellite_version.push_back(c);
+        satellite_version.append(c);
         return c;
     }
 
@@ -4808,7 +5045,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteVersions::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite_version)
+    for (auto c : satellite_version.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4841,16 +5078,16 @@ NvSatellite::SatelliteVersions::SatelliteVersion::SatelliteVersion()
     version_check_state{YType::enumeration, "version-check-state"},
     remote_version_present{YType::boolean, "remote-version-present"},
     remote_version{YType::str, "remote-version"}
-    	,
+        ,
     active_version(std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion>())
-	,transferred_version(std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion>())
-	,committed_version(std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion>())
+    , transferred_version(std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion>())
+    , committed_version(std::make_shared<NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion>())
 {
     active_version->parent = this;
     transferred_version->parent = this;
     committed_version->parent = this;
 
-    yang_name = "satellite-version"; yang_parent_name = "satellite-versions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-version"; yang_parent_name = "satellite-versions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteVersions::SatelliteVersion::~SatelliteVersion()
@@ -4859,6 +5096,7 @@ NvSatellite::SatelliteVersions::SatelliteVersion::~SatelliteVersion()
 
 bool NvSatellite::SatelliteVersions::SatelliteVersion::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : remote_version.getYLeafs())
     {
         if(leaf.is_set)
@@ -4901,7 +5139,8 @@ std::string NvSatellite::SatelliteVersions::SatelliteVersion::get_absolute_path(
 std::string NvSatellite::SatelliteVersions::SatelliteVersion::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellite-version" <<"[satellite-id='" <<satellite_id <<"']";
+    path_buffer << "satellite-version";
+    ADD_KEY_TOKEN(satellite_id, "satellite-id");
     return path_buffer.str();
 }
 
@@ -5044,7 +5283,7 @@ NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::ActiveVersion()
     remote_version{YType::str, "remote-version"}
 {
 
-    yang_name = "active-version"; yang_parent_name = "satellite-version"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active-version"; yang_parent_name = "satellite-version"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::~ActiveVersion()
@@ -5053,6 +5292,7 @@ NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::~ActiveVersion(
 
 bool NvSatellite::SatelliteVersions::SatelliteVersion::ActiveVersion::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : remote_version.getYLeafs())
     {
         if(leaf.is_set)
@@ -5157,7 +5397,7 @@ NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::Transferre
     remote_version{YType::str, "remote-version"}
 {
 
-    yang_name = "transferred-version"; yang_parent_name = "satellite-version"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transferred-version"; yang_parent_name = "satellite-version"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::~TransferredVersion()
@@ -5166,6 +5406,7 @@ NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::~Transferr
 
 bool NvSatellite::SatelliteVersions::SatelliteVersion::TransferredVersion::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : remote_version.getYLeafs())
     {
         if(leaf.is_set)
@@ -5270,7 +5511,7 @@ NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::CommittedVer
     remote_version{YType::str, "remote-version"}
 {
 
-    yang_name = "committed-version"; yang_parent_name = "satellite-version"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "committed-version"; yang_parent_name = "satellite-version"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::~CommittedVersion()
@@ -5279,6 +5520,7 @@ NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::~CommittedVe
 
 bool NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : remote_version.getYLeafs())
     {
         if(leaf.is_set)
@@ -5377,9 +5619,11 @@ bool NvSatellite::SatelliteVersions::SatelliteVersion::CommittedVersion::has_lea
 }
 
 NvSatellite::SatelliteTopologies::SatelliteTopologies()
+    :
+    satellite_topology(this, {"interface_name"})
 {
 
-    yang_name = "satellite-topologies"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-topologies"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteTopologies::~SatelliteTopologies()
@@ -5388,7 +5632,8 @@ NvSatellite::SatelliteTopologies::~SatelliteTopologies()
 
 bool NvSatellite::SatelliteTopologies::has_data() const
 {
-    for (std::size_t index=0; index<satellite_topology.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite_topology.len(); index++)
     {
         if(satellite_topology[index]->has_data())
             return true;
@@ -5398,7 +5643,7 @@ bool NvSatellite::SatelliteTopologies::has_data() const
 
 bool NvSatellite::SatelliteTopologies::has_operation() const
 {
-    for (std::size_t index=0; index<satellite_topology.size(); index++)
+    for (std::size_t index=0; index<satellite_topology.len(); index++)
     {
         if(satellite_topology[index]->has_operation())
             return true;
@@ -5435,7 +5680,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::get_child_by_name(cons
     {
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology>();
         c->parent = this;
-        satellite_topology.push_back(c);
+        satellite_topology.append(c);
         return c;
     }
 
@@ -5447,7 +5692,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite_topology)
+    for (auto c : satellite_topology.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5481,9 +5726,12 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::SatelliteTopology()
     redundancy_iccp_group{YType::uint32, "redundancy-iccp-group"},
     is_physical{YType::boolean, "is-physical"},
     ring_whole{YType::boolean, "ring-whole"}
+        ,
+    discovered_link(this, {})
+    , satellite(this, {})
 {
 
-    yang_name = "satellite-topology"; yang_parent_name = "satellite-topologies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-topology"; yang_parent_name = "satellite-topologies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteTopologies::SatelliteTopology::~SatelliteTopology()
@@ -5492,12 +5740,13 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::~SatelliteTopology()
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::has_data() const
 {
-    for (std::size_t index=0; index<discovered_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<discovered_link.len(); index++)
     {
         if(discovered_link[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<satellite.size(); index++)
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_data())
             return true;
@@ -5512,12 +5761,12 @@ bool NvSatellite::SatelliteTopologies::SatelliteTopology::has_data() const
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::has_operation() const
 {
-    for (std::size_t index=0; index<discovered_link.size(); index++)
+    for (std::size_t index=0; index<discovered_link.len(); index++)
     {
         if(discovered_link[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<satellite.size(); index++)
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_operation())
             return true;
@@ -5541,7 +5790,8 @@ std::string NvSatellite::SatelliteTopologies::SatelliteTopology::get_absolute_pa
 std::string NvSatellite::SatelliteTopologies::SatelliteTopology::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellite-topology" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "satellite-topology";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -5566,7 +5816,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get
     {
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink>();
         c->parent = this;
-        discovered_link.push_back(c);
+        discovered_link.append(c);
         return c;
     }
 
@@ -5574,7 +5824,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::get
     {
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite>();
         c->parent = this;
-        satellite.push_back(c);
+        satellite.append(c);
         return c;
     }
 
@@ -5586,7 +5836,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : discovered_link)
+    for (auto c : discovered_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5595,7 +5845,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies:
     }
 
     count = 0;
-    for (auto const & c : satellite)
+    for (auto c : satellite.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5688,7 +5938,7 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::DiscoveredL
     discovery_running{YType::boolean, "discovery-running"}
 {
 
-    yang_name = "discovered-link"; yang_parent_name = "satellite-topology"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discovered-link"; yang_parent_name = "satellite-topology"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::~DiscoveredLink()
@@ -5697,6 +5947,7 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::~Discovered
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::DiscoveredLink::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_handle.is_set
 	|| discovery_running.is_set;
@@ -5799,9 +6050,11 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::Satellite()
     display_name{YType::str, "display-name"},
     conflict_reason{YType::enumeration, "conflict-reason"},
     conflict_context{YType::str, "conflict-context"}
+        ,
+    fabric_link(this, {})
 {
 
-    yang_name = "satellite"; yang_parent_name = "satellite-topology"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "satellite"; yang_parent_name = "satellite-topology"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::~Satellite()
@@ -5810,7 +6063,8 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::~Satellite()
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::has_data() const
 {
-    for (std::size_t index=0; index<fabric_link.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fabric_link.len(); index++)
     {
         if(fabric_link[index]->has_data())
             return true;
@@ -5830,7 +6084,7 @@ bool NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::has_data() 
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::has_operation() const
 {
-    for (std::size_t index=0; index<fabric_link.size(); index++)
+    for (std::size_t index=0; index<fabric_link.len(); index++)
     {
         if(fabric_link[index]->has_operation())
             return true;
@@ -5882,7 +6136,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
     {
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink>();
         c->parent = this;
-        fabric_link.push_back(c);
+        fabric_link.append(c);
         return c;
     }
 
@@ -5894,7 +6148,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fabric_link)
+    for (auto c : fabric_link.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6038,9 +6292,11 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::Fabr
     redundant{YType::boolean, "redundant"},
     active{YType::boolean, "active"},
     obsolete{YType::boolean, "obsolete"}
+        ,
+    remote_device(this, {})
 {
 
-    yang_name = "fabric-link"; yang_parent_name = "satellite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fabric-link"; yang_parent_name = "satellite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::~FabricLink()
@@ -6049,7 +6305,8 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::~Fab
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::has_data() const
 {
-    for (std::size_t index=0; index<remote_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_device.len(); index++)
     {
         if(remote_device[index]->has_data())
             return true;
@@ -6064,7 +6321,7 @@ bool NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink:
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::has_operation() const
 {
-    for (std::size_t index=0; index<remote_device.size(); index++)
+    for (std::size_t index=0; index<remote_device.len(); index++)
     {
         if(remote_device[index]->has_operation())
             return true;
@@ -6106,7 +6363,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteTopologies::SatelliteTopology::Sat
     {
         auto c = std::make_shared<NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice>();
         c->parent = this;
-        remote_device.push_back(c);
+        remote_device.append(c);
         return c;
     }
 
@@ -6118,7 +6375,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteTopologies:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_device)
+    for (auto c : remote_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6215,7 +6472,7 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::Remo
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "remote-device"; yang_parent_name = "fabric-link"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-device"; yang_parent_name = "fabric-link"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::~RemoteDevice()
@@ -6224,6 +6481,7 @@ NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::Remo
 
 bool NvSatellite::SatelliteTopologies::SatelliteTopology::Satellite::FabricLink::RemoteDevice::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| source.is_set
 	|| remote_is_satellite.is_set
@@ -6371,7 +6629,7 @@ NvSatellite::InstallReferenceInfo::InstallReferenceInfo()
 {
     references->parent = this;
 
-    yang_name = "install-reference-info"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install-reference-info"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallReferenceInfo::~InstallReferenceInfo()
@@ -6380,6 +6638,7 @@ NvSatellite::InstallReferenceInfo::~InstallReferenceInfo()
 
 bool NvSatellite::InstallReferenceInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (references !=  nullptr && references->has_data());
 }
 
@@ -6454,9 +6713,11 @@ bool NvSatellite::InstallReferenceInfo::has_leaf_or_child_of_name(const std::str
 }
 
 NvSatellite::InstallReferenceInfo::References::References()
+    :
+    reference(this, {"reference_name"})
 {
 
-    yang_name = "references"; yang_parent_name = "install-reference-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "references"; yang_parent_name = "install-reference-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallReferenceInfo::References::~References()
@@ -6465,7 +6726,8 @@ NvSatellite::InstallReferenceInfo::References::~References()
 
 bool NvSatellite::InstallReferenceInfo::References::has_data() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_data())
             return true;
@@ -6475,7 +6737,7 @@ bool NvSatellite::InstallReferenceInfo::References::has_data() const
 
 bool NvSatellite::InstallReferenceInfo::References::has_operation() const
 {
-    for (std::size_t index=0; index<reference.size(); index++)
+    for (std::size_t index=0; index<reference.len(); index++)
     {
         if(reference[index]->has_operation())
             return true;
@@ -6512,7 +6774,7 @@ std::shared_ptr<Entity> NvSatellite::InstallReferenceInfo::References::get_child
     {
         auto c = std::make_shared<NvSatellite::InstallReferenceInfo::References::Reference>();
         c->parent = this;
-        reference.push_back(c);
+        reference.append(c);
         return c;
     }
 
@@ -6524,7 +6786,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallReferenceInfo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reference)
+    for (auto c : reference.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6557,7 +6819,7 @@ NvSatellite::InstallReferenceInfo::References::Reference::Reference()
     reference_file{YType::str, "reference-file"}
 {
 
-    yang_name = "reference"; yang_parent_name = "references"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reference"; yang_parent_name = "references"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallReferenceInfo::References::Reference::~Reference()
@@ -6566,6 +6828,7 @@ NvSatellite::InstallReferenceInfo::References::Reference::~Reference()
 
 bool NvSatellite::InstallReferenceInfo::References::Reference::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : reference_file.getYLeafs())
     {
         if(leaf.is_set)
@@ -6598,7 +6861,8 @@ std::string NvSatellite::InstallReferenceInfo::References::Reference::get_absolu
 std::string NvSatellite::InstallReferenceInfo::References::Reference::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reference" <<"[reference-name='" <<reference_name <<"']";
+    path_buffer << "reference";
+    ADD_KEY_TOKEN(reference_name, "reference-name");
     return path_buffer.str();
 }
 
@@ -6671,9 +6935,11 @@ bool NvSatellite::InstallReferenceInfo::References::Reference::has_leaf_or_child
 }
 
 NvSatellite::InstallOpProgresses::InstallOpProgresses()
+    :
+    install_op_progress(this, {"operation_id"})
 {
 
-    yang_name = "install-op-progresses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install-op-progresses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallOpProgresses::~InstallOpProgresses()
@@ -6682,7 +6948,8 @@ NvSatellite::InstallOpProgresses::~InstallOpProgresses()
 
 bool NvSatellite::InstallOpProgresses::has_data() const
 {
-    for (std::size_t index=0; index<install_op_progress.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<install_op_progress.len(); index++)
     {
         if(install_op_progress[index]->has_data())
             return true;
@@ -6692,7 +6959,7 @@ bool NvSatellite::InstallOpProgresses::has_data() const
 
 bool NvSatellite::InstallOpProgresses::has_operation() const
 {
-    for (std::size_t index=0; index<install_op_progress.size(); index++)
+    for (std::size_t index=0; index<install_op_progress.len(); index++)
     {
         if(install_op_progress[index]->has_operation())
             return true;
@@ -6729,7 +6996,7 @@ std::shared_ptr<Entity> NvSatellite::InstallOpProgresses::get_child_by_name(cons
     {
         auto c = std::make_shared<NvSatellite::InstallOpProgresses::InstallOpProgress>();
         c->parent = this;
-        install_op_progress.push_back(c);
+        install_op_progress.append(c);
         return c;
     }
 
@@ -6741,7 +7008,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpProgresses:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : install_op_progress)
+    for (auto c : install_op_progress.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6775,7 +7042,7 @@ NvSatellite::InstallOpProgresses::InstallOpProgress::InstallOpProgress()
     satellite_count{YType::uint32, "satellite-count"}
 {
 
-    yang_name = "install-op-progress"; yang_parent_name = "install-op-progresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install-op-progress"; yang_parent_name = "install-op-progresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallOpProgresses::InstallOpProgress::~InstallOpProgress()
@@ -6784,6 +7051,7 @@ NvSatellite::InstallOpProgresses::InstallOpProgress::~InstallOpProgress()
 
 bool NvSatellite::InstallOpProgresses::InstallOpProgress::has_data() const
 {
+    if (is_presence_container) return true;
     return operation_id.is_set
 	|| operation_id_xr.is_set
 	|| progress_percentage.is_set
@@ -6809,7 +7077,8 @@ std::string NvSatellite::InstallOpProgresses::InstallOpProgress::get_absolute_pa
 std::string NvSatellite::InstallOpProgresses::InstallOpProgress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "install-op-progress" <<"[operation-id='" <<operation_id <<"']";
+    path_buffer << "install-op-progress";
+    ADD_KEY_TOKEN(operation_id, "operation-id");
     return path_buffer.str();
 }
 
@@ -6893,296 +7162,13 @@ bool NvSatellite::InstallOpProgresses::InstallOpProgress::has_leaf_or_child_of_n
     return false;
 }
 
-NvSatellite::ReloadStatuses::ReloadStatuses()
-{
-
-    yang_name = "reload-statuses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-NvSatellite::ReloadStatuses::~ReloadStatuses()
-{
-}
-
-bool NvSatellite::ReloadStatuses::has_data() const
-{
-    for (std::size_t index=0; index<reload_status.size(); index++)
-    {
-        if(reload_status[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool NvSatellite::ReloadStatuses::has_operation() const
-{
-    for (std::size_t index=0; index<reload_status.size(); index++)
-    {
-        if(reload_status[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string NvSatellite::ReloadStatuses::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-oper:nv-satellite/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string NvSatellite::ReloadStatuses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "reload-statuses";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NvSatellite::ReloadStatuses::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NvSatellite::ReloadStatuses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "reload-status")
-    {
-        auto c = std::make_shared<NvSatellite::ReloadStatuses::ReloadStatus>();
-        c->parent = this;
-        reload_status.push_back(c);
-        return c;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadStatuses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    count = 0;
-    for (auto const & c : reload_status)
-    {
-        if(children.find(c->get_segment_path()) == children.end())
-            children[c->get_segment_path()] = c;
-        else
-            children[c->get_segment_path()+count++] = c;
-    }
-
-    return children;
-}
-
-void NvSatellite::ReloadStatuses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void NvSatellite::ReloadStatuses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool NvSatellite::ReloadStatuses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "reload-status")
-        return true;
-    return false;
-}
-
-NvSatellite::ReloadStatuses::ReloadStatus::ReloadStatus()
-    :
-    satellite_range{YType::str, "satellite-range"},
-    satellite_range_xr{YType::str, "satellite-range-xr"},
-    sats_not_initiated{YType::uint16, "sats-not-initiated"},
-    sats_reloading{YType::uint16, "sats-reloading"},
-    sats_reloaded{YType::uint16, "sats-reloaded"},
-    sats_reload_failed{YType::uint16, "sats-reload-failed"}
-{
-
-    yang_name = "reload-status"; yang_parent_name = "reload-statuses"; is_top_level_class = false; has_list_ancestor = false;
-}
-
-NvSatellite::ReloadStatuses::ReloadStatus::~ReloadStatus()
-{
-}
-
-bool NvSatellite::ReloadStatuses::ReloadStatus::has_data() const
-{
-    for (auto const & leaf : sats_not_initiated.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : sats_reloading.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : sats_reloaded.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : sats_reload_failed.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return satellite_range.is_set
-	|| satellite_range_xr.is_set;
-}
-
-bool NvSatellite::ReloadStatuses::ReloadStatus::has_operation() const
-{
-    for (auto const & leaf : sats_not_initiated.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : sats_reloading.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : sats_reloaded.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : sats_reload_failed.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(satellite_range.yfilter)
-	|| ydk::is_set(satellite_range_xr.yfilter)
-	|| ydk::is_set(sats_not_initiated.yfilter)
-	|| ydk::is_set(sats_reloading.yfilter)
-	|| ydk::is_set(sats_reloaded.yfilter)
-	|| ydk::is_set(sats_reload_failed.yfilter);
-}
-
-std::string NvSatellite::ReloadStatuses::ReloadStatus::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-oper:nv-satellite/reload-statuses/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string NvSatellite::ReloadStatuses::ReloadStatus::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "reload-status" <<"[satellite-range='" <<satellite_range <<"']";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > NvSatellite::ReloadStatuses::ReloadStatus::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (satellite_range.is_set || is_set(satellite_range.yfilter)) leaf_name_data.push_back(satellite_range.get_name_leafdata());
-    if (satellite_range_xr.is_set || is_set(satellite_range_xr.yfilter)) leaf_name_data.push_back(satellite_range_xr.get_name_leafdata());
-
-    auto sats_not_initiated_name_datas = sats_not_initiated.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sats_not_initiated_name_datas.begin(), sats_not_initiated_name_datas.end());
-    auto sats_reloading_name_datas = sats_reloading.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sats_reloading_name_datas.begin(), sats_reloading_name_datas.end());
-    auto sats_reloaded_name_datas = sats_reloaded.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sats_reloaded_name_datas.begin(), sats_reloaded_name_datas.end());
-    auto sats_reload_failed_name_datas = sats_reload_failed.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), sats_reload_failed_name_datas.begin(), sats_reload_failed_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> NvSatellite::ReloadStatuses::ReloadStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> NvSatellite::ReloadStatuses::ReloadStatus::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void NvSatellite::ReloadStatuses::ReloadStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "satellite-range")
-    {
-        satellite_range = value;
-        satellite_range.value_namespace = name_space;
-        satellite_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "satellite-range-xr")
-    {
-        satellite_range_xr = value;
-        satellite_range_xr.value_namespace = name_space;
-        satellite_range_xr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sats-not-initiated")
-    {
-        sats_not_initiated.append(value);
-    }
-    if(value_path == "sats-reloading")
-    {
-        sats_reloading.append(value);
-    }
-    if(value_path == "sats-reloaded")
-    {
-        sats_reloaded.append(value);
-    }
-    if(value_path == "sats-reload-failed")
-    {
-        sats_reload_failed.append(value);
-    }
-}
-
-void NvSatellite::ReloadStatuses::ReloadStatus::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "satellite-range")
-    {
-        satellite_range.yfilter = yfilter;
-    }
-    if(value_path == "satellite-range-xr")
-    {
-        satellite_range_xr.yfilter = yfilter;
-    }
-    if(value_path == "sats-not-initiated")
-    {
-        sats_not_initiated.yfilter = yfilter;
-    }
-    if(value_path == "sats-reloading")
-    {
-        sats_reloading.yfilter = yfilter;
-    }
-    if(value_path == "sats-reloaded")
-    {
-        sats_reloaded.yfilter = yfilter;
-    }
-    if(value_path == "sats-reload-failed")
-    {
-        sats_reload_failed.yfilter = yfilter;
-    }
-}
-
-bool NvSatellite::ReloadStatuses::ReloadStatus::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "satellite-range" || name == "satellite-range-xr" || name == "sats-not-initiated" || name == "sats-reloading" || name == "sats-reloaded" || name == "sats-reload-failed")
-        return true;
-    return false;
-}
-
 NvSatellite::Install::Install()
     :
     satellite_software_versions(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions>())
 {
     satellite_software_versions->parent = this;
 
-    yang_name = "install"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::Install::~Install()
@@ -7191,6 +7177,7 @@ NvSatellite::Install::~Install()
 
 bool NvSatellite::Install::has_data() const
 {
+    if (is_presence_container) return true;
     return (satellite_software_versions !=  nullptr && satellite_software_versions->has_data());
 }
 
@@ -7265,9 +7252,11 @@ bool NvSatellite::Install::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersions()
+    :
+    satellite_software_version(this, {"satellite_id"})
 {
 
-    yang_name = "satellite-software-versions"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-software-versions"; yang_parent_name = "install"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::~SatelliteSoftwareVersions()
@@ -7276,7 +7265,8 @@ NvSatellite::Install::SatelliteSoftwareVersions::~SatelliteSoftwareVersions()
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::has_data() const
 {
-    for (std::size_t index=0; index<satellite_software_version.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite_software_version.len(); index++)
     {
         if(satellite_software_version[index]->has_data())
             return true;
@@ -7286,7 +7276,7 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::has_data() const
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::has_operation() const
 {
-    for (std::size_t index=0; index<satellite_software_version.size(); index++)
+    for (std::size_t index=0; index<satellite_software_version.len(); index++)
     {
         if(satellite_software_version[index]->has_operation())
             return true;
@@ -7323,7 +7313,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::get_chi
     {
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion>();
         c->parent = this;
-        satellite_software_version.push_back(c);
+        satellite_software_version.append(c);
         return c;
     }
 
@@ -7335,7 +7325,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite_software_version)
+    for (auto c : satellite_software_version.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7366,12 +7356,12 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Satel
     satellite_id{YType::uint32, "satellite-id"},
     satellite_id_xr{YType::uint16, "satellite-id-xr"},
     package_support{YType::enumeration, "package-support"}
-    	,
+        ,
     install_package_info(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo>())
 {
     install_package_info->parent = this;
 
-    yang_name = "satellite-software-version"; yang_parent_name = "satellite-software-versions"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-software-version"; yang_parent_name = "satellite-software-versions"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::~SatelliteSoftwareVersion()
@@ -7380,6 +7370,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::~Sate
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::has_data() const
 {
+    if (is_presence_container) return true;
     return satellite_id.is_set
 	|| satellite_id_xr.is_set
 	|| package_support.is_set
@@ -7405,7 +7396,8 @@ std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVe
 std::string NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "satellite-software-version" <<"[satellite-id='" <<satellite_id <<"']";
+    path_buffer << "satellite-software-version";
+    ADD_KEY_TOKEN(satellite_id, "satellite-id");
     return path_buffer.str();
 }
 
@@ -7495,14 +7487,14 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InstallPackageInfo()
     :
     active_packages(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages>())
-	,inactive_packages(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages>())
-	,committed_packages(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages>())
+    , inactive_packages(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages>())
+    , committed_packages(std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages>())
 {
     active_packages->parent = this;
     inactive_packages->parent = this;
     committed_packages->parent = this;
 
-    yang_name = "install-package-info"; yang_parent_name = "satellite-software-version"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "install-package-info"; yang_parent_name = "satellite-software-version"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::~InstallPackageInfo()
@@ -7511,6 +7503,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return (active_packages !=  nullptr && active_packages->has_data())
 	|| (inactive_packages !=  nullptr && inactive_packages->has_data())
 	|| (committed_packages !=  nullptr && committed_packages->has_data());
@@ -7610,9 +7603,11 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::ActivePackages()
+    :
+    package(this, {})
 {
 
-    yang_name = "active-packages"; yang_parent_name = "install-package-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active-packages"; yang_parent_name = "install-package-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::~ActivePackages()
@@ -7621,7 +7616,8 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::has_data() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_data())
             return true;
@@ -7631,7 +7627,7 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::has_operation() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_operation())
             return true;
@@ -7661,7 +7657,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
     {
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package>();
         c->parent = this;
-        package.push_back(c);
+        package.append(c);
         return c;
     }
 
@@ -7673,7 +7669,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : package)
+    for (auto c : package.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7706,7 +7702,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
     is_base_image{YType::boolean, "is-base-image"}
 {
 
-    yang_name = "package"; yang_parent_name = "active-packages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "active-packages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::~Package()
@@ -7715,6 +7711,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::ActivePackages::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| version.is_set
 	|| is_base_image.is_set;
@@ -7805,9 +7802,11 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::InactivePackages()
+    :
+    package(this, {})
 {
 
-    yang_name = "inactive-packages"; yang_parent_name = "install-package-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "inactive-packages"; yang_parent_name = "install-package-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::~InactivePackages()
@@ -7816,7 +7815,8 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::has_data() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_data())
             return true;
@@ -7826,7 +7826,7 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::has_operation() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_operation())
             return true;
@@ -7856,7 +7856,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
     {
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package>();
         c->parent = this;
-        package.push_back(c);
+        package.append(c);
         return c;
     }
 
@@ -7868,7 +7868,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : package)
+    for (auto c : package.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7901,7 +7901,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
     is_base_image{YType::boolean, "is-base-image"}
 {
 
-    yang_name = "package"; yang_parent_name = "inactive-packages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "inactive-packages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::~Package()
@@ -7910,6 +7910,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::InactivePackages::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| version.is_set
 	|| is_base_image.is_set;
@@ -8000,9 +8001,11 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::CommittedPackages()
+    :
+    package(this, {})
 {
 
-    yang_name = "committed-packages"; yang_parent_name = "install-package-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "committed-packages"; yang_parent_name = "install-package-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::~CommittedPackages()
@@ -8011,7 +8014,8 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::has_data() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_data())
             return true;
@@ -8021,7 +8025,7 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::has_operation() const
 {
-    for (std::size_t index=0; index<package.size(); index++)
+    for (std::size_t index=0; index<package.len(); index++)
     {
         if(package[index]->has_operation())
             return true;
@@ -8051,7 +8055,7 @@ std::shared_ptr<Entity> NvSatellite::Install::SatelliteSoftwareVersions::Satelli
     {
         auto c = std::make_shared<NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package>();
         c->parent = this;
-        package.push_back(c);
+        package.append(c);
         return c;
     }
 
@@ -8063,7 +8067,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::Install::SatelliteSo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : package)
+    for (auto c : package.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8096,7 +8100,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
     is_base_image{YType::boolean, "is-base-image"}
 {
 
-    yang_name = "package"; yang_parent_name = "committed-packages"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package"; yang_parent_name = "committed-packages"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::~Package()
@@ -8105,6 +8109,7 @@ NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::Insta
 
 bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::InstallPackageInfo::CommittedPackages::Package::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| version.is_set
 	|| is_base_image.is_set;
@@ -8195,9 +8200,11 @@ bool NvSatellite::Install::SatelliteSoftwareVersions::SatelliteSoftwareVersion::
 }
 
 NvSatellite::InstallOpStatuses::InstallOpStatuses()
+    :
+    install_op_status(this, {"operation_id"})
 {
 
-    yang_name = "install-op-statuses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install-op-statuses"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallOpStatuses::~InstallOpStatuses()
@@ -8206,7 +8213,8 @@ NvSatellite::InstallOpStatuses::~InstallOpStatuses()
 
 bool NvSatellite::InstallOpStatuses::has_data() const
 {
-    for (std::size_t index=0; index<install_op_status.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<install_op_status.len(); index++)
     {
         if(install_op_status[index]->has_data())
             return true;
@@ -8216,7 +8224,7 @@ bool NvSatellite::InstallOpStatuses::has_data() const
 
 bool NvSatellite::InstallOpStatuses::has_operation() const
 {
-    for (std::size_t index=0; index<install_op_status.size(); index++)
+    for (std::size_t index=0; index<install_op_status.len(); index++)
     {
         if(install_op_status[index]->has_operation())
             return true;
@@ -8253,7 +8261,7 @@ std::shared_ptr<Entity> NvSatellite::InstallOpStatuses::get_child_by_name(const 
     {
         auto c = std::make_shared<NvSatellite::InstallOpStatuses::InstallOpStatus>();
         c->parent = this;
-        install_op_status.push_back(c);
+        install_op_status.append(c);
         return c;
     }
 
@@ -8265,7 +8273,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::InstallOpStatuses::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : install_op_status)
+    for (auto c : install_op_status.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8300,23 +8308,26 @@ NvSatellite::InstallOpStatuses::InstallOpStatus::InstallOpStatus()
     sats_transferring{YType::uint16, "sats-transferring"},
     sats_activating{YType::uint16, "sats-activating"},
     sats_updating{YType::uint16, "sats-updating"},
+    sats_replacing{YType::uint16, "sats-replacing"},
     sats_deactivating{YType::uint16, "sats-deactivating"},
     sats_removing{YType::uint16, "sats-removing"},
     sats_transfer_failed{YType::uint16, "sats-transfer-failed"},
     sats_activate_failed{YType::uint16, "sats-activate-failed"},
     sats_update_failed{YType::uint16, "sats-update-failed"},
+    sats_replace_failed{YType::uint16, "sats-replace-failed"},
     sats_deactivate_failed{YType::uint16, "sats-deactivate-failed"},
     sats_remove_failed{YType::uint16, "sats-remove-failed"},
     sats_transfer_aborted{YType::uint16, "sats-transfer-aborted"},
     sats_activate_aborted{YType::uint16, "sats-activate-aborted"},
     sats_update_aborted{YType::uint16, "sats-update-aborted"},
+    sats_replace_aborted{YType::uint16, "sats-replace-aborted"},
     sats_deactivate_aborted{YType::uint16, "sats-deactivate-aborted"},
     sats_remove_aborted{YType::uint16, "sats-remove-aborted"},
     sats_no_operation{YType::uint16, "sats-no-operation"},
     sats_completed{YType::uint16, "sats-completed"}
 {
 
-    yang_name = "install-op-status"; yang_parent_name = "install-op-statuses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "install-op-status"; yang_parent_name = "install-op-statuses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::InstallOpStatuses::InstallOpStatus::~InstallOpStatus()
@@ -8325,6 +8336,7 @@ NvSatellite::InstallOpStatuses::InstallOpStatus::~InstallOpStatus()
 
 bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : sats_not_initiated.getYLeafs())
     {
         if(leaf.is_set)
@@ -8341,6 +8353,11 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_data() const
             return true;
     }
     for (auto const & leaf : sats_updating.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : sats_replacing.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8370,6 +8387,11 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_data() const
         if(leaf.is_set)
             return true;
     }
+    for (auto const & leaf : sats_replace_failed.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
     for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(leaf.is_set)
@@ -8391,6 +8413,11 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_data() const
             return true;
     }
     for (auto const & leaf : sats_update_aborted.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    for (auto const & leaf : sats_replace_aborted.getYLeafs())
     {
         if(leaf.is_set)
             return true;
@@ -8442,6 +8469,11 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_operation() const
         if(is_set(leaf.yfilter))
             return true;
     }
+    for (auto const & leaf : sats_replacing.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     for (auto const & leaf : sats_deactivating.getYLeafs())
     {
         if(is_set(leaf.yfilter))
@@ -8467,6 +8499,11 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_operation() const
         if(is_set(leaf.yfilter))
             return true;
     }
+    for (auto const & leaf : sats_replace_failed.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     for (auto const & leaf : sats_deactivate_failed.getYLeafs())
     {
         if(is_set(leaf.yfilter))
@@ -8488,6 +8525,11 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_operation() const
             return true;
     }
     for (auto const & leaf : sats_update_aborted.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    for (auto const & leaf : sats_replace_aborted.getYLeafs())
     {
         if(is_set(leaf.yfilter))
             return true;
@@ -8520,16 +8562,19 @@ bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_operation() const
 	|| ydk::is_set(sats_transferring.yfilter)
 	|| ydk::is_set(sats_activating.yfilter)
 	|| ydk::is_set(sats_updating.yfilter)
+	|| ydk::is_set(sats_replacing.yfilter)
 	|| ydk::is_set(sats_deactivating.yfilter)
 	|| ydk::is_set(sats_removing.yfilter)
 	|| ydk::is_set(sats_transfer_failed.yfilter)
 	|| ydk::is_set(sats_activate_failed.yfilter)
 	|| ydk::is_set(sats_update_failed.yfilter)
+	|| ydk::is_set(sats_replace_failed.yfilter)
 	|| ydk::is_set(sats_deactivate_failed.yfilter)
 	|| ydk::is_set(sats_remove_failed.yfilter)
 	|| ydk::is_set(sats_transfer_aborted.yfilter)
 	|| ydk::is_set(sats_activate_aborted.yfilter)
 	|| ydk::is_set(sats_update_aborted.yfilter)
+	|| ydk::is_set(sats_replace_aborted.yfilter)
 	|| ydk::is_set(sats_deactivate_aborted.yfilter)
 	|| ydk::is_set(sats_remove_aborted.yfilter)
 	|| ydk::is_set(sats_no_operation.yfilter)
@@ -8546,7 +8591,8 @@ std::string NvSatellite::InstallOpStatuses::InstallOpStatus::get_absolute_path()
 std::string NvSatellite::InstallOpStatuses::InstallOpStatus::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "install-op-status" <<"[operation-id='" <<operation_id <<"']";
+    path_buffer << "install-op-status";
+    ADD_KEY_TOKEN(operation_id, "operation-id");
     return path_buffer.str();
 }
 
@@ -8566,6 +8612,8 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::InstallOpStatuses::I
     leaf_name_data.insert(leaf_name_data.end(), sats_activating_name_datas.begin(), sats_activating_name_datas.end());
     auto sats_updating_name_datas = sats_updating.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_updating_name_datas.begin(), sats_updating_name_datas.end());
+    auto sats_replacing_name_datas = sats_replacing.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sats_replacing_name_datas.begin(), sats_replacing_name_datas.end());
     auto sats_deactivating_name_datas = sats_deactivating.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_deactivating_name_datas.begin(), sats_deactivating_name_datas.end());
     auto sats_removing_name_datas = sats_removing.get_name_leafdata();
@@ -8576,6 +8624,8 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::InstallOpStatuses::I
     leaf_name_data.insert(leaf_name_data.end(), sats_activate_failed_name_datas.begin(), sats_activate_failed_name_datas.end());
     auto sats_update_failed_name_datas = sats_update_failed.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_update_failed_name_datas.begin(), sats_update_failed_name_datas.end());
+    auto sats_replace_failed_name_datas = sats_replace_failed.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sats_replace_failed_name_datas.begin(), sats_replace_failed_name_datas.end());
     auto sats_deactivate_failed_name_datas = sats_deactivate_failed.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_deactivate_failed_name_datas.begin(), sats_deactivate_failed_name_datas.end());
     auto sats_remove_failed_name_datas = sats_remove_failed.get_name_leafdata();
@@ -8586,6 +8636,8 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::InstallOpStatuses::I
     leaf_name_data.insert(leaf_name_data.end(), sats_activate_aborted_name_datas.begin(), sats_activate_aborted_name_datas.end());
     auto sats_update_aborted_name_datas = sats_update_aborted.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_update_aborted_name_datas.begin(), sats_update_aborted_name_datas.end());
+    auto sats_replace_aborted_name_datas = sats_replace_aborted.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), sats_replace_aborted_name_datas.begin(), sats_replace_aborted_name_datas.end());
     auto sats_deactivate_aborted_name_datas = sats_deactivate_aborted.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), sats_deactivate_aborted_name_datas.begin(), sats_deactivate_aborted_name_datas.end());
     auto sats_remove_aborted_name_datas = sats_remove_aborted.get_name_leafdata();
@@ -8646,6 +8698,10 @@ void NvSatellite::InstallOpStatuses::InstallOpStatus::set_value(const std::strin
     {
         sats_updating.append(value);
     }
+    if(value_path == "sats-replacing")
+    {
+        sats_replacing.append(value);
+    }
     if(value_path == "sats-deactivating")
     {
         sats_deactivating.append(value);
@@ -8666,6 +8722,10 @@ void NvSatellite::InstallOpStatuses::InstallOpStatus::set_value(const std::strin
     {
         sats_update_failed.append(value);
     }
+    if(value_path == "sats-replace-failed")
+    {
+        sats_replace_failed.append(value);
+    }
     if(value_path == "sats-deactivate-failed")
     {
         sats_deactivate_failed.append(value);
@@ -8685,6 +8745,10 @@ void NvSatellite::InstallOpStatuses::InstallOpStatus::set_value(const std::strin
     if(value_path == "sats-update-aborted")
     {
         sats_update_aborted.append(value);
+    }
+    if(value_path == "sats-replace-aborted")
+    {
+        sats_replace_aborted.append(value);
     }
     if(value_path == "sats-deactivate-aborted")
     {
@@ -8734,6 +8798,10 @@ void NvSatellite::InstallOpStatuses::InstallOpStatus::set_filter(const std::stri
     {
         sats_updating.yfilter = yfilter;
     }
+    if(value_path == "sats-replacing")
+    {
+        sats_replacing.yfilter = yfilter;
+    }
     if(value_path == "sats-deactivating")
     {
         sats_deactivating.yfilter = yfilter;
@@ -8753,6 +8821,10 @@ void NvSatellite::InstallOpStatuses::InstallOpStatus::set_filter(const std::stri
     if(value_path == "sats-update-failed")
     {
         sats_update_failed.yfilter = yfilter;
+    }
+    if(value_path == "sats-replace-failed")
+    {
+        sats_replace_failed.yfilter = yfilter;
     }
     if(value_path == "sats-deactivate-failed")
     {
@@ -8774,6 +8846,10 @@ void NvSatellite::InstallOpStatuses::InstallOpStatus::set_filter(const std::stri
     {
         sats_update_aborted.yfilter = yfilter;
     }
+    if(value_path == "sats-replace-aborted")
+    {
+        sats_replace_aborted.yfilter = yfilter;
+    }
     if(value_path == "sats-deactivate-aborted")
     {
         sats_deactivate_aborted.yfilter = yfilter;
@@ -8794,7 +8870,7 @@ void NvSatellite::InstallOpStatuses::InstallOpStatus::set_filter(const std::stri
 
 bool NvSatellite::InstallOpStatuses::InstallOpStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "operation-id" || name == "operation-id-xr" || name == "satellite-range" || name == "sats-not-initiated" || name == "sats-transferring" || name == "sats-activating" || name == "sats-updating" || name == "sats-deactivating" || name == "sats-removing" || name == "sats-transfer-failed" || name == "sats-activate-failed" || name == "sats-update-failed" || name == "sats-deactivate-failed" || name == "sats-remove-failed" || name == "sats-transfer-aborted" || name == "sats-activate-aborted" || name == "sats-update-aborted" || name == "sats-deactivate-aborted" || name == "sats-remove-aborted" || name == "sats-no-operation" || name == "sats-completed")
+    if(name == "operation-id" || name == "operation-id-xr" || name == "satellite-range" || name == "sats-not-initiated" || name == "sats-transferring" || name == "sats-activating" || name == "sats-updating" || name == "sats-replacing" || name == "sats-deactivating" || name == "sats-removing" || name == "sats-transfer-failed" || name == "sats-activate-failed" || name == "sats-update-failed" || name == "sats-replace-failed" || name == "sats-deactivate-failed" || name == "sats-remove-failed" || name == "sats-transfer-aborted" || name == "sats-activate-aborted" || name == "sats-update-aborted" || name == "sats-replace-aborted" || name == "sats-deactivate-aborted" || name == "sats-remove-aborted" || name == "sats-no-operation" || name == "sats-completed")
         return true;
     return false;
 }
@@ -8805,7 +8881,7 @@ NvSatellite::SatelliteProperties::SatelliteProperties()
 {
     id_ranges->parent = this;
 
-    yang_name = "satellite-properties"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "satellite-properties"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteProperties::~SatelliteProperties()
@@ -8814,6 +8890,7 @@ NvSatellite::SatelliteProperties::~SatelliteProperties()
 
 bool NvSatellite::SatelliteProperties::has_data() const
 {
+    if (is_presence_container) return true;
     return (id_ranges !=  nullptr && id_ranges->has_data());
 }
 
@@ -8888,9 +8965,11 @@ bool NvSatellite::SatelliteProperties::has_leaf_or_child_of_name(const std::stri
 }
 
 NvSatellite::SatelliteProperties::IdRanges::IdRanges()
+    :
+    id_range(this, {"sat_id_range"})
 {
 
-    yang_name = "id-ranges"; yang_parent_name = "satellite-properties"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "id-ranges"; yang_parent_name = "satellite-properties"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteProperties::IdRanges::~IdRanges()
@@ -8899,7 +8978,8 @@ NvSatellite::SatelliteProperties::IdRanges::~IdRanges()
 
 bool NvSatellite::SatelliteProperties::IdRanges::has_data() const
 {
-    for (std::size_t index=0; index<id_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<id_range.len(); index++)
     {
         if(id_range[index]->has_data())
             return true;
@@ -8909,7 +8989,7 @@ bool NvSatellite::SatelliteProperties::IdRanges::has_data() const
 
 bool NvSatellite::SatelliteProperties::IdRanges::has_operation() const
 {
-    for (std::size_t index=0; index<id_range.size(); index++)
+    for (std::size_t index=0; index<id_range.len(); index++)
     {
         if(id_range[index]->has_operation())
             return true;
@@ -8946,7 +9026,7 @@ std::shared_ptr<Entity> NvSatellite::SatelliteProperties::IdRanges::get_child_by
     {
         auto c = std::make_shared<NvSatellite::SatelliteProperties::IdRanges::IdRange>();
         c->parent = this;
-        id_range.push_back(c);
+        id_range.append(c);
         return c;
     }
 
@@ -8958,7 +9038,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SatelliteProperties:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : id_range)
+    for (auto c : id_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8991,7 +9071,7 @@ NvSatellite::SatelliteProperties::IdRanges::IdRange::IdRange()
     max{YType::uint32, "max"}
 {
 
-    yang_name = "id-range"; yang_parent_name = "id-ranges"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "id-range"; yang_parent_name = "id-ranges"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SatelliteProperties::IdRanges::IdRange::~IdRange()
@@ -9000,6 +9080,7 @@ NvSatellite::SatelliteProperties::IdRanges::IdRange::~IdRange()
 
 bool NvSatellite::SatelliteProperties::IdRanges::IdRange::has_data() const
 {
+    if (is_presence_container) return true;
     return sat_id_range.is_set
 	|| min.is_set
 	|| max.is_set;
@@ -9023,7 +9104,8 @@ std::string NvSatellite::SatelliteProperties::IdRanges::IdRange::get_absolute_pa
 std::string NvSatellite::SatelliteProperties::IdRanges::IdRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "id-range" <<"[sat-id-range='" <<sat_id_range <<"']";
+    path_buffer << "id-range";
+    ADD_KEY_TOKEN(sat_id_range, "sat-id-range");
     return path_buffer.str();
 }
 
@@ -9096,19 +9178,22 @@ bool NvSatellite::SatelliteProperties::IdRanges::IdRange::has_leaf_or_child_of_n
     return false;
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2S()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2s()
+    :
+    sdacp_discovery2(this, {"interface_name"})
 {
 
-    yang_name = "sdacp-discovery2s"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdacp-discovery2s"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NvSatellite::SdacpDiscovery2S::~SdacpDiscovery2S()
+NvSatellite::SdacpDiscovery2s::~SdacpDiscovery2s()
 {
 }
 
-bool NvSatellite::SdacpDiscovery2S::has_data() const
+bool NvSatellite::SdacpDiscovery2s::has_data() const
 {
-    for (std::size_t index=0; index<sdacp_discovery2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdacp_discovery2.len(); index++)
     {
         if(sdacp_discovery2[index]->has_data())
             return true;
@@ -9116,9 +9201,9 @@ bool NvSatellite::SdacpDiscovery2S::has_data() const
     return false;
 }
 
-bool NvSatellite::SdacpDiscovery2S::has_operation() const
+bool NvSatellite::SdacpDiscovery2s::has_operation() const
 {
-    for (std::size_t index=0; index<sdacp_discovery2.size(); index++)
+    for (std::size_t index=0; index<sdacp_discovery2.len(); index++)
     {
         if(sdacp_discovery2[index]->has_operation())
             return true;
@@ -9126,21 +9211,21 @@ bool NvSatellite::SdacpDiscovery2S::has_operation() const
     return is_set(yfilter);
 }
 
-std::string NvSatellite::SdacpDiscovery2S::get_absolute_path() const
+std::string NvSatellite::SdacpDiscovery2s::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-icpe-infra-oper:nv-satellite/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NvSatellite::SdacpDiscovery2S::get_segment_path() const
+std::string NvSatellite::SdacpDiscovery2s::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-icpe-sdacp-oper:sdacp-discovery2s";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2s::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9149,25 +9234,25 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::ge
 
 }
 
-std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2s::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "sdacp-discovery2")
     {
-        auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2>();
+        auto c = std::make_shared<NvSatellite::SdacpDiscovery2s::SdacpDiscovery2>();
         c->parent = this;
-        sdacp_discovery2.push_back(c);
+        sdacp_discovery2.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2s::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdacp_discovery2)
+    for (auto c : sdacp_discovery2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9178,42 +9263,46 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::ge
     return children;
 }
 
-void NvSatellite::SdacpDiscovery2S::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NvSatellite::SdacpDiscovery2s::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void NvSatellite::SdacpDiscovery2S::set_filter(const std::string & value_path, YFilter yfilter)
+void NvSatellite::SdacpDiscovery2s::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool NvSatellite::SdacpDiscovery2S::has_leaf_or_child_of_name(const std::string & name) const
+bool NvSatellite::SdacpDiscovery2s::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sdacp-discovery2")
         return true;
     return false;
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::SdacpDiscovery2()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::SdacpDiscovery2()
     :
     interface_name{YType::str, "interface-name"},
     interface_name_xr{YType::str, "interface-name-xr"}
+        ,
+    interface(this, {})
+    , satellite(this, {})
 {
 
-    yang_name = "sdacp-discovery2"; yang_parent_name = "sdacp-discovery2s"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdacp-discovery2"; yang_parent_name = "sdacp-discovery2s"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::~SdacpDiscovery2()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::~SdacpDiscovery2()
 {
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::has_data() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<satellite.size(); index++)
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_data())
             return true;
@@ -9222,14 +9311,14 @@ bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::has_data() const
 	|| interface_name_xr.is_set;
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::has_operation() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<satellite.size(); index++)
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_operation())
             return true;
@@ -9239,21 +9328,22 @@ bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::has_operation() const
 	|| ydk::is_set(interface_name_xr.yfilter);
 }
 
-std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_absolute_path() const
+std::string NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-icpe-infra-oper:nv-satellite/Cisco-IOS-XR-icpe-sdacp-oper:sdacp-discovery2s/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_segment_path() const
+std::string NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdacp-discovery2" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "sdacp-discovery2";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9264,33 +9354,33 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::Sd
 
 }
 
-std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface>();
+        auto c = std::make_shared<NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
     if(child_yang_name == "satellite")
     {
-        auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite>();
+        auto c = std::make_shared<NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite>();
         c->parent = this;
-        satellite.push_back(c);
+        satellite.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9299,7 +9389,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::Sd
     }
 
     count = 0;
-    for (auto const & c : satellite)
+    for (auto c : satellite.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9310,7 +9400,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::Sd
     return children;
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -9326,7 +9416,7 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::set_value(const std::string
     }
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::set_filter(const std::string & value_path, YFilter yfilter)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -9338,47 +9428,48 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::set_filter(const std::strin
     }
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::has_leaf_or_child_of_name(const std::string & name) const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "satellite" || name == "interface-name" || name == "interface-name-xr")
         return true;
     return false;
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::Interface()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::Interface()
     :
     interface_name{YType::str, "interface-name"},
     interface_status{YType::enumeration, "interface-status"}
 {
 
-    yang_name = "interface"; yang_parent_name = "sdacp-discovery2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "sdacp-discovery2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::~Interface()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::~Interface()
 {
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::has_data() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_status.is_set;
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::has_operation() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(interface_status.yfilter);
 }
 
-std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_segment_path() const
+std::string NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9389,19 +9480,19 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::Sd
 
 }
 
-std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-name")
     {
@@ -9417,7 +9508,7 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::set_value(const 
     }
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-name")
     {
@@ -9429,32 +9520,35 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::set_filter(const
     }
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-name" || name == "interface-status")
         return true;
     return false;
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Satellite()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Satellite()
     :
     satellite_id{YType::uint16, "satellite-id"},
     satellite_status{YType::enumeration, "satellite-status"},
     conflict_reason{YType::uint32, "conflict-reason"},
     satellite_ip_address{YType::str, "satellite-ip-address"},
     host_ip_address{YType::str, "host-ip-address"}
+        ,
+    interface(this, {})
 {
 
-    yang_name = "satellite"; yang_parent_name = "sdacp-discovery2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "satellite"; yang_parent_name = "sdacp-discovery2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::~Satellite()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::~Satellite()
 {
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::has_data() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -9466,9 +9560,9 @@ bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::has_data() const
 	|| host_ip_address.is_set;
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::has_operation() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -9481,14 +9575,14 @@ bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::has_operation() 
 	|| ydk::is_set(host_ip_address.yfilter);
 }
 
-std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_segment_path() const
+std::string NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "satellite";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9502,25 +9596,25 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::Sd
 
 }
 
-std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface>();
+        auto c = std::make_shared<NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9531,7 +9625,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::Sd
     return children;
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "satellite-id")
     {
@@ -9565,7 +9659,7 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::set_value(const 
     }
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::set_filter(const std::string & value_path, YFilter yfilter)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "satellite-id")
     {
@@ -9589,14 +9683,14 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::set_filter(const
     }
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::has_leaf_or_child_of_name(const std::string & name) const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "satellite-id" || name == "satellite-status" || name == "conflict-reason" || name == "satellite-ip-address" || name == "host-ip-address")
         return true;
     return false;
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::Interface()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::Interface()
     :
     interface_handle{YType::str, "interface-handle"},
     satellite_status{YType::enumeration, "satellite-status"},
@@ -9609,15 +9703,16 @@ NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::Interface(
     satellite_module_vendor{YType::str, "satellite-module-vendor"}
 {
 
-    yang_name = "interface"; yang_parent_name = "satellite"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "satellite"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::~Interface()
+NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::~Interface()
 {
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::has_data() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_handle.is_set
 	|| satellite_status.is_set
 	|| conflict_reason.is_set
@@ -9629,7 +9724,7 @@ bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::has_d
 	|| satellite_module_vendor.is_set;
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::has_operation() const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface_handle.yfilter)
@@ -9643,14 +9738,14 @@ bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::has_o
 	|| ydk::is_set(satellite_module_vendor.yfilter);
 }
 
-std::string NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_segment_path() const
+std::string NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9668,19 +9763,19 @@ std::vector<std::pair<std::string, LeafData> > NvSatellite::SdacpDiscovery2S::Sd
 
 }
 
-std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface-handle")
     {
@@ -9738,7 +9833,7 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::set_v
     }
 }
 
-void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface-handle")
     {
@@ -9778,7 +9873,7 @@ void NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::set_f
     }
 }
 
-bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool NvSatellite::SdacpDiscovery2s::SdacpDiscovery2::Satellite::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface-handle" || name == "satellite-status" || name == "conflict-reason" || name == "satellite-chassis-vendor" || name == "satellite-interface-id" || name == "satellite-interface-mac" || name == "satellite-chassis-mac" || name == "satellite-serial-id" || name == "satellite-module-vendor")
         return true;
@@ -9786,9 +9881,11 @@ bool NvSatellite::SdacpDiscovery2S::SdacpDiscovery2::Satellite::Interface::has_l
 }
 
 NvSatellite::IcpeDpms::IcpeDpms()
+    :
+    icpe_dpm(this, {"discovery_interface"})
 {
 
-    yang_name = "icpe-dpms"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icpe-dpms"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::IcpeDpms::~IcpeDpms()
@@ -9797,7 +9894,8 @@ NvSatellite::IcpeDpms::~IcpeDpms()
 
 bool NvSatellite::IcpeDpms::has_data() const
 {
-    for (std::size_t index=0; index<icpe_dpm.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<icpe_dpm.len(); index++)
     {
         if(icpe_dpm[index]->has_data())
             return true;
@@ -9807,7 +9905,7 @@ bool NvSatellite::IcpeDpms::has_data() const
 
 bool NvSatellite::IcpeDpms::has_operation() const
 {
-    for (std::size_t index=0; index<icpe_dpm.size(); index++)
+    for (std::size_t index=0; index<icpe_dpm.len(); index++)
     {
         if(icpe_dpm[index]->has_operation())
             return true;
@@ -9844,7 +9942,7 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm>();
         c->parent = this;
-        icpe_dpm.push_back(c);
+        icpe_dpm.append(c);
         return c;
     }
 
@@ -9856,7 +9954,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : icpe_dpm)
+    for (auto c : icpe_dpm.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9899,9 +9997,12 @@ NvSatellite::IcpeDpms::IcpeDpm::IcpeDpm()
     host_ack_packets_received{YType::uint64, "host-ack-packets-received"},
     host_ack_packets_sent{YType::uint64, "host-ack-packets-sent"},
     secs_since_pkts_cleaned{YType::uint64, "secs-since-pkts-cleaned"}
+        ,
+    satellite(this, {})
+    , remote_host(this, {})
 {
 
-    yang_name = "icpe-dpm"; yang_parent_name = "icpe-dpms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icpe-dpm"; yang_parent_name = "icpe-dpms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::IcpeDpms::IcpeDpm::~IcpeDpm()
@@ -9910,12 +10011,13 @@ NvSatellite::IcpeDpms::IcpeDpm::~IcpeDpm()
 
 bool NvSatellite::IcpeDpms::IcpeDpm::has_data() const
 {
-    for (std::size_t index=0; index<satellite.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<remote_host.size(); index++)
+    for (std::size_t index=0; index<remote_host.len(); index++)
     {
         if(remote_host[index]->has_data())
             return true;
@@ -9939,12 +10041,12 @@ bool NvSatellite::IcpeDpms::IcpeDpm::has_data() const
 
 bool NvSatellite::IcpeDpms::IcpeDpm::has_operation() const
 {
-    for (std::size_t index=0; index<satellite.size(); index++)
+    for (std::size_t index=0; index<satellite.len(); index++)
     {
         if(satellite[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<remote_host.size(); index++)
+    for (std::size_t index=0; index<remote_host.len(); index++)
     {
         if(remote_host[index]->has_operation())
             return true;
@@ -9977,7 +10079,8 @@ std::string NvSatellite::IcpeDpms::IcpeDpm::get_absolute_path() const
 std::string NvSatellite::IcpeDpms::IcpeDpm::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "icpe-dpm" <<"[discovery-interface='" <<discovery_interface <<"']";
+    path_buffer << "icpe-dpm";
+    ADD_KEY_TOKEN(discovery_interface, "discovery-interface");
     return path_buffer.str();
 }
 
@@ -10011,7 +10114,7 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const 
     {
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm::Satellite>();
         c->parent = this;
-        satellite.push_back(c);
+        satellite.append(c);
         return c;
     }
 
@@ -10019,7 +10122,7 @@ std::shared_ptr<Entity> NvSatellite::IcpeDpms::IcpeDpm::get_child_by_name(const 
     {
         auto c = std::make_shared<NvSatellite::IcpeDpms::IcpeDpm::RemoteHost>();
         c->parent = this;
-        remote_host.push_back(c);
+        remote_host.append(c);
         return c;
     }
 
@@ -10031,7 +10134,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : satellite)
+    for (auto c : satellite.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10040,7 +10143,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::IcpeDpms::IcpeDpm::g
     }
 
     count = 0;
-    for (auto const & c : remote_host)
+    for (auto c : remote_host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10253,7 +10356,7 @@ NvSatellite::IcpeDpms::IcpeDpm::Satellite::Satellite()
     secs_since_pkts_cleaned{YType::uint64, "secs-since-pkts-cleaned"}
 {
 
-    yang_name = "satellite"; yang_parent_name = "icpe-dpm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "satellite"; yang_parent_name = "icpe-dpm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::IcpeDpms::IcpeDpm::Satellite::~Satellite()
@@ -10262,6 +10365,7 @@ NvSatellite::IcpeDpms::IcpeDpm::Satellite::~Satellite()
 
 bool NvSatellite::IcpeDpms::IcpeDpm::Satellite::has_data() const
 {
+    if (is_presence_container) return true;
     return satellite_id.is_set
 	|| satellite_interface_id.is_set
 	|| satellite_interface_mac.is_set
@@ -10753,7 +10857,7 @@ NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::RemoteHost()
     secs_since_pkts_cleaned{YType::uint64, "secs-since-pkts-cleaned"}
 {
 
-    yang_name = "remote-host"; yang_parent_name = "icpe-dpm"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-host"; yang_parent_name = "icpe-dpm"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::~RemoteHost()
@@ -10762,6 +10866,7 @@ NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::~RemoteHost()
 
 bool NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::has_data() const
 {
+    if (is_presence_container) return true;
     return host_chassis_mac.is_set
 	|| host_interface_mac.is_set
 	|| discovery_protocol_state.is_set
@@ -10917,9 +11022,11 @@ bool NvSatellite::IcpeDpms::IcpeDpm::RemoteHost::has_leaf_or_child_of_name(const
 }
 
 NvSatellite::SdacpControls::SdacpControls()
+    :
+    sdacp_control(this, {"satellite_id"})
 {
 
-    yang_name = "sdacp-controls"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdacp-controls"; yang_parent_name = "nv-satellite"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SdacpControls::~SdacpControls()
@@ -10928,7 +11035,8 @@ NvSatellite::SdacpControls::~SdacpControls()
 
 bool NvSatellite::SdacpControls::has_data() const
 {
-    for (std::size_t index=0; index<sdacp_control.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdacp_control.len(); index++)
     {
         if(sdacp_control[index]->has_data())
             return true;
@@ -10938,7 +11046,7 @@ bool NvSatellite::SdacpControls::has_data() const
 
 bool NvSatellite::SdacpControls::has_operation() const
 {
-    for (std::size_t index=0; index<sdacp_control.size(); index++)
+    for (std::size_t index=0; index<sdacp_control.len(); index++)
     {
         if(sdacp_control[index]->has_operation())
             return true;
@@ -10975,7 +11083,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::get_child_by_name(const std:
     {
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl>();
         c->parent = this;
-        sdacp_control.push_back(c);
+        sdacp_control.append(c);
         return c;
     }
 
@@ -10987,7 +11095,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdacp_control)
+    for (auto c : sdacp_control.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11022,14 +11130,15 @@ NvSatellite::SdacpControls::SdacpControl::SdacpControl()
     vrf_name{YType::str, "vrf-name"},
     control_protocol_state{YType::enumeration, "control-protocol-state"},
     transport_error{YType::uint32, "transport-error"}
-    	,
+        ,
     protocol_state_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp>())
-	,transport_error_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp>())
+    , transport_error_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp>())
+    , channel(this, {})
 {
     protocol_state_timestamp->parent = this;
     transport_error_timestamp->parent = this;
 
-    yang_name = "sdacp-control"; yang_parent_name = "sdacp-controls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdacp-control"; yang_parent_name = "sdacp-controls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::~SdacpControl()
@@ -11038,7 +11147,8 @@ NvSatellite::SdacpControls::SdacpControl::~SdacpControl()
 
 bool NvSatellite::SdacpControls::SdacpControl::has_data() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_data())
             return true;
@@ -11056,7 +11166,7 @@ bool NvSatellite::SdacpControls::SdacpControl::has_data() const
 
 bool NvSatellite::SdacpControls::SdacpControl::has_operation() const
 {
-    for (std::size_t index=0; index<channel.size(); index++)
+    for (std::size_t index=0; index<channel.len(); index++)
     {
         if(channel[index]->has_operation())
             return true;
@@ -11083,7 +11193,8 @@ std::string NvSatellite::SdacpControls::SdacpControl::get_absolute_path() const
 std::string NvSatellite::SdacpControls::SdacpControl::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdacp-control" <<"[satellite-id='" <<satellite_id <<"']";
+    path_buffer << "sdacp-control";
+    ADD_KEY_TOKEN(satellite_id, "satellite-id");
     return path_buffer.str();
 }
 
@@ -11127,7 +11238,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::get_child_by_n
     {
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel>();
         c->parent = this;
-        channel.push_back(c);
+        channel.append(c);
         return c;
     }
 
@@ -11149,7 +11260,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::Sdacp
     }
 
     count = 0;
-    for (auto const & c : channel)
+    for (auto c : channel.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11251,7 +11362,7 @@ NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::ProtocolStateT
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "protocol-state-timestamp"; yang_parent_name = "sdacp-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-state-timestamp"; yang_parent_name = "sdacp-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::~ProtocolStateTimestamp()
@@ -11260,6 +11371,7 @@ NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::~ProtocolState
 
 bool NvSatellite::SdacpControls::SdacpControl::ProtocolStateTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -11342,7 +11454,7 @@ NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::TransportErro
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "transport-error-timestamp"; yang_parent_name = "sdacp-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport-error-timestamp"; yang_parent_name = "sdacp-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::~TransportErrorTimestamp()
@@ -11351,6 +11463,7 @@ NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::~TransportErr
 
 bool NvSatellite::SdacpControls::SdacpControl::TransportErrorTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -11440,16 +11553,16 @@ NvSatellite::SdacpControls::SdacpControl::Channel::Channel()
     normal_messages_dropped{YType::uint64, "normal-messages-dropped"},
     secs_since_last_cleared{YType::uint64, "secs-since-last-cleared"},
     version{YType::uint16, "version"}
-    	,
+        ,
     capabilities(std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities>())
-	,resync_state_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp>())
-	,channel_state_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp>())
+    , resync_state_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp>())
+    , channel_state_timestamp(std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp>())
 {
     capabilities->parent = this;
     resync_state_timestamp->parent = this;
     channel_state_timestamp->parent = this;
 
-    yang_name = "channel"; yang_parent_name = "sdacp-control"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel"; yang_parent_name = "sdacp-control"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::Channel::~Channel()
@@ -11458,6 +11571,7 @@ NvSatellite::SdacpControls::SdacpControl::Channel::~Channel()
 
 bool NvSatellite::SdacpControls::SdacpControl::Channel::has_data() const
 {
+    if (is_presence_container) return true;
     return channel_id.is_set
 	|| resync_state.is_set
 	|| channel_state.is_set
@@ -11700,9 +11814,11 @@ bool NvSatellite::SdacpControls::SdacpControl::Channel::has_leaf_or_child_of_nam
 }
 
 NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::Capabilities()
+    :
+    tl_vs(this, {})
 {
 
-    yang_name = "capabilities"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capabilities"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::~Capabilities()
@@ -11711,7 +11827,8 @@ NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::~Capabilities()
 
 bool NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<tl_vs.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tl_vs.len(); index++)
     {
         if(tl_vs[index]->has_data())
             return true;
@@ -11721,7 +11838,7 @@ bool NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::has_data()
 
 bool NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<tl_vs.size(); index++)
+    for (std::size_t index=0; index<tl_vs.len(); index++)
     {
         if(tl_vs[index]->has_operation())
             return true;
@@ -11751,7 +11868,7 @@ std::shared_ptr<Entity> NvSatellite::SdacpControls::SdacpControl::Channel::Capab
     {
         auto c = std::make_shared<NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs>();
         c->parent = this;
-        tl_vs.push_back(c);
+        tl_vs.append(c);
         return c;
     }
 
@@ -11763,7 +11880,7 @@ std::map<std::string, std::shared_ptr<Entity>> NvSatellite::SdacpControls::Sdacp
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : tl_vs)
+    for (auto c : tl_vs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11796,7 +11913,7 @@ NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::TlVs()
     value_{YType::uint8, "value"}
 {
 
-    yang_name = "tl-vs"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tl-vs"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::~TlVs()
@@ -11805,6 +11922,7 @@ NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::~TlVs()
 
 bool NvSatellite::SdacpControls::SdacpControl::Channel::Capabilities::TlVs::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : value_.getYLeafs())
     {
         if(leaf.is_set)
@@ -11908,7 +12026,7 @@ NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::ResyncS
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "resync-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resync-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::~ResyncStateTimestamp()
@@ -11917,6 +12035,7 @@ NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::~Resync
 
 bool NvSatellite::SdacpControls::SdacpControl::Channel::ResyncStateTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -11999,7 +12118,7 @@ NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::Channe
     nanoseconds{YType::uint32, "nanoseconds"}
 {
 
-    yang_name = "channel-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "channel-state-timestamp"; yang_parent_name = "channel"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::~ChannelStateTimestamp()
@@ -12008,6 +12127,7 @@ NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::~Chann
 
 bool NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| nanoseconds.is_set;
 }
@@ -12084,30 +12204,9 @@ bool NvSatellite::SdacpControls::SdacpControl::Channel::ChannelStateTimestamp::h
     return false;
 }
 
-const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_not_redundant {0, "icpe-oper-multi-chassis-redundancy-not-redundant"};
-const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_active {1, "icpe-oper-multi-chassis-redundancy-active"};
-const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_standby {2, "icpe-oper-multi-chassis-redundancy-standby"};
-
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_stopped {0, "icpe-oper-discd-link-state-stopped"};
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_probing {1, "icpe-oper-discd-link-state-probing"};
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_configuring {2, "icpe-oper-discd-link-state-configuring"};
-const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_ready {3, "icpe-oper-discd-link-state-ready"};
-
-const Enum::YLeaf IcpeOperPort::icpe_oper_port_unknown {0, "icpe-oper-port-unknown"};
-const Enum::YLeaf IcpeOperPort::icpe_oper_port_gigabit_ethernet {1, "icpe-oper-port-gigabit-ethernet"};
-const Enum::YLeaf IcpeOperPort::icpe_oper_port_ten_gig_e {2, "icpe-oper-port-ten-gig-e"};
-
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_stable {0, "icpe-oper-install-state-stable"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferring {1, "icpe-oper-install-state-transferring"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferred {2, "icpe-oper-install-state-transferred"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_installing {3, "icpe-oper-install-state-installing"};
-const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_in_progress {4, "icpe-oper-install-state-in-progress"};
-
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_unknown_error {0, "icpe-gco-oper-control-reason-unknown-error"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_type {1, "icpe-gco-oper-control-reason-wrong-chassis-type"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_serial {2, "icpe-gco-oper-control-reason-wrong-chassis-serial"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_needs_to_upgrade {3, "icpe-gco-oper-control-reason-needs-to-upgrade"};
-const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_none {4, "icpe-gco-oper-control-reason-none"};
+const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_split_brain {0, "icpe-opm-sync-fsm-state-split-brain"};
+const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_waiting {1, "icpe-opm-sync-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_whole_brain {2, "icpe-opm-sync-fsm-state-whole-brain"};
 
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_not_created {0, "icpe-oper-sdacp-sess-state-not-created"};
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_created {1, "icpe-oper-sdacp-sess-state-created"};
@@ -12116,6 +12215,94 @@ const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_authenticat
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_version_not_ok {4, "icpe-oper-sdacp-sess-state-version-not-ok"};
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_up {5, "icpe-oper-sdacp-sess-state-up"};
 const Enum::YLeaf IcpeOperSdacpSessState::icpe_oper_sdacp_sess_state_issu {6, "icpe-oper-sdacp-sess-state-issu"};
+
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_disconnected {0, "icpe-opm-transport-state-disconnected"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_iccp_unavailable {1, "icpe-opm-transport-state-iccp-unavailable"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_no_member_present {2, "icpe-opm-transport-state-no-member-present"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_down {3, "icpe-opm-transport-state-member-down"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_not_reachable {4, "icpe-opm-transport-state-member-not-reachable"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect {5, "icpe-opm-transport-state-waiting-for-app-connect"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect_response {6, "icpe-opm-transport-state-waiting-for-app-connect-response"};
+const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_connected {7, "icpe-opm-transport-state-connected"};
+
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_unauth {0, "icpe-opm-auth-fsm-state-unauth"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting {1, "icpe-opm-auth-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_auth {2, "icpe-opm-auth-fsm-state-waiting-for-auth"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_reply {3, "icpe-opm-auth-fsm-state-waiting-for-reply"};
+const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_authed {4, "icpe-opm-auth-fsm-state-authed"};
+
+const Enum::YLeaf IcpeOpmController::icpe_opm_controller_unknown {0, "icpe-opm-controller-unknown"};
+const Enum::YLeaf IcpeOpmController::icpe_opm_controller_primary {1, "icpe-opm-controller-primary"};
+const Enum::YLeaf IcpeOpmController::icpe_opm_controller_secondary {2, "icpe-opm-controller-secondary"};
+
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_not_open {0, "icpe-opm-resync-fsm-state-not-open"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_stable {1, "icpe-opm-resync-fsm-state-stable"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_in_resync {2, "icpe-opm-resync-fsm-state-in-resync"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_queued {3, "icpe-opm-resync-fsm-state-queued"};
+const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_resync_req {4, "icpe-opm-resync-fsm-state-resync-req"};
+
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_down {0, "icpe-opm-chan-fsm-state-down"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_closed {1, "icpe-opm-chan-fsm-state-closed"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opening {2, "icpe-opm-chan-fsm-state-opening"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opened {3, "icpe-opm-chan-fsm-state-opened"};
+const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_open {4, "icpe-opm-chan-fsm-state-open"};
+
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_disconnected {0, "icpe-opm-sess-state-disconnected"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connecting {1, "icpe-opm-sess-state-connecting"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_authenticating {2, "icpe-opm-sess-state-authenticating"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_arbitrating {3, "icpe-opm-sess-state-arbitrating"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_waiting_for_resyncs {4, "icpe-opm-sess-state-waiting-for-resyncs"};
+const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connected {5, "icpe-opm-sess-state-connected"};
+
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_stable {0, "icpe-oper-install-state-stable"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferring {1, "icpe-oper-install-state-transferring"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_transferred {2, "icpe-oper-install-state-transferred"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_installing {3, "icpe-oper-install-state-installing"};
+const Enum::YLeaf IcpeOperInstallState::icpe_oper_install_state_in_progress {4, "icpe-oper-install-state-in-progress"};
+
+const Enum::YLeaf IcpeOperPort::icpe_oper_port_unknown {0, "icpe-oper-port-unknown"};
+const Enum::YLeaf IcpeOperPort::icpe_oper_port_gigabit_ethernet {1, "icpe-oper-port-gigabit-ethernet"};
+const Enum::YLeaf IcpeOperPort::icpe_oper_port_ten_gig_e {2, "icpe-oper-port-ten-gig-e"};
+
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_unknown {0, "icpe-oper-fabric-port-unknown"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_gig_e {1, "icpe-oper-fabric-port-n-v-fabric-gig-e"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_ten_gig_e {2, "icpe-oper-fabric-port-n-v-fabric-ten-gig-e"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_forty_gig_e {3, "icpe-oper-fabric-port-n-v-fabric-forty-gig-e"};
+const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_hundred_gig_e {4, "icpe-oper-fabric-port-n-v-fabric-hundred-gig-e"};
+
+const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_unknown {0, "icpe-install-pkg-supp-unknown"};
+const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_not_supported {1, "icpe-install-pkg-supp-not-supported"};
+const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_supported {2, "icpe-install-pkg-supp-supported"};
+
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_unknown_error {0, "icpe-gco-oper-control-reason-unknown-error"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_type {1, "icpe-gco-oper-control-reason-wrong-chassis-type"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_wrong_chassis_serial {2, "icpe-gco-oper-control-reason-wrong-chassis-serial"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_needs_to_upgrade {3, "icpe-gco-oper-control-reason-needs-to-upgrade"};
+const Enum::YLeaf IcpeGcoOperControlReason::icpe_gco_oper_control_reason_none {4, "icpe-gco-oper-control-reason-none"};
+
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_unknown {0, "icpe-install-sat-state-unknown"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_not_initiat_ed {1, "icpe-install-sat-state-not-initiat-ed"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_transferring {2, "icpe-install-sat-state-transferring"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_activating {3, "icpe-install-sat-state-activating"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_updating {4, "icpe-install-sat-state-updating"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_replacing {5, "icpe-install-sat-state-replacing"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_deactivating {6, "icpe-install-sat-state-deactivating"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_removing {7, "icpe-install-sat-state-removing"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_success {8, "icpe-install-sat-state-success"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_failure {9, "icpe-install-sat-state-failure"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_multiple_ops {10, "icpe-install-sat-state-multiple-ops"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_aborted {11, "icpe-install-sat-state-aborted"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_protocol_version {12, "icpe-install-sat-state-protocol-version"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_pkg_not_present {13, "icpe-install-sat-state-pkg-not-present"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_image {14, "icpe-install-sat-state-no-image"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_such_file {15, "icpe-install-sat-state-no-such-file"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_sat_uncfgd {16, "icpe-install-sat-state-sat-uncfgd"};
+const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_processing {17, "icpe-install-sat-state-processing"};
+
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_unarbitrated {0, "icpe-opm-arbitration-fsm-state-unarbitrated"};
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_waiting {1, "icpe-opm-arbitration-fsm-state-waiting"};
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrating {2, "icpe-opm-arbitration-fsm-state-arbitrating"};
+const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrated {3, "icpe-opm-arbitration-fsm-state-arbitrated"};
 
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_not_calculated {0, "icpe-oper-conflict-not-calculated"};
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_no_conflict {1, "icpe-oper-conflict-no-conflict"};
@@ -12156,86 +12343,24 @@ const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_satellite_icl_not_support
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_multiple_serial_number {36, "icpe-oper-conflict-multiple-serial-number"};
 const Enum::YLeaf IcpeOperConflict::icpe_oper_conflict_multiple_mac_address {37, "icpe-oper-conflict-multiple-mac-address"};
 
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_unknown {0, "icpe-optical-sync-state-unknown"};
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_syncing {1, "icpe-optical-sync-state-syncing"};
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_synced {2, "icpe-optical-sync-state-synced"};
-const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_not_connected {3, "icpe-optical-sync-state-not-connected"};
-
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_unknown {0, "icpe-oper-ver-check-state-unknown"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_not_compatible {1, "icpe-oper-ver-check-state-not-compatible"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_current_version {2, "icpe-oper-ver-check-state-current-version"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_compatible_older {3, "icpe-oper-ver-check-state-compatible-older"};
 const Enum::YLeaf IcpeOperVerCheckState::icpe_oper_ver_check_state_compatible_newer {4, "icpe-oper-ver-check-state-compatible-newer"};
 
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_unknown {0, "icpe-oper-fabric-port-unknown"};
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_gig_e {1, "icpe-oper-fabric-port-n-v-fabric-gig-e"};
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_ten_gig_e {2, "icpe-oper-fabric-port-n-v-fabric-ten-gig-e"};
-const Enum::YLeaf IcpeOperFabricPort::icpe_oper_fabric_port_n_v_fabric_hundred_gig_e {3, "icpe-oper-fabric-port-n-v-fabric-hundred-gig-e"};
+const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_unknown {0, "icpe-oper-reload-level-unknown"};
+const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_system {1, "icpe-oper-reload-level-system"};
+const Enum::YLeaf IcpeOperReloadLevel::icpe_oper_reload_level_container {2, "icpe-oper-reload-level-container"};
 
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_not_open {0, "icpe-opm-resync-fsm-state-not-open"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_stable {1, "icpe-opm-resync-fsm-state-stable"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_in_resync {2, "icpe-opm-resync-fsm-state-in-resync"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_queued {3, "icpe-opm-resync-fsm-state-queued"};
-const Enum::YLeaf IcpeOpmResyncFsmState::icpe_opm_resync_fsm_state_resync_req {4, "icpe-opm-resync-fsm-state-resync-req"};
+const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_not_redundant {0, "icpe-oper-multi-chassis-redundancy-not-redundant"};
+const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_active {1, "icpe-oper-multi-chassis-redundancy-active"};
+const Enum::YLeaf IcpeOperMultichassisRedundancy::icpe_oper_multi_chassis_redundancy_standby {2, "icpe-oper-multi-chassis-redundancy-standby"};
 
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_down {0, "icpe-opm-chan-fsm-state-down"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_closed {1, "icpe-opm-chan-fsm-state-closed"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opening {2, "icpe-opm-chan-fsm-state-opening"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_opened {3, "icpe-opm-chan-fsm-state-opened"};
-const Enum::YLeaf IcpeOpmChanFsmState::icpe_opm_chan_fsm_state_open {4, "icpe-opm-chan-fsm-state-open"};
-
-const Enum::YLeaf IcpeOpmController::icpe_opm_controller_unknown {0, "icpe-opm-controller-unknown"};
-const Enum::YLeaf IcpeOpmController::icpe_opm_controller_primary {1, "icpe-opm-controller-primary"};
-const Enum::YLeaf IcpeOpmController::icpe_opm_controller_secondary {2, "icpe-opm-controller-secondary"};
-
-const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_split_brain {0, "icpe-opm-sync-fsm-state-split-brain"};
-const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_waiting {1, "icpe-opm-sync-fsm-state-waiting"};
-const Enum::YLeaf IcpeOpmSyncFsmState::icpe_opm_sync_fsm_state_whole_brain {2, "icpe-opm-sync-fsm-state-whole-brain"};
-
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_unarbitrated {0, "icpe-opm-arbitration-fsm-state-unarbitrated"};
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_waiting {1, "icpe-opm-arbitration-fsm-state-waiting"};
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrating {2, "icpe-opm-arbitration-fsm-state-arbitrating"};
-const Enum::YLeaf IcpeOpmArbitrationFsmState::icpe_opm_arbitration_fsm_state_arbitrated {3, "icpe-opm-arbitration-fsm-state-arbitrated"};
-
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_unauth {0, "icpe-opm-auth-fsm-state-unauth"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting {1, "icpe-opm-auth-fsm-state-waiting"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_auth {2, "icpe-opm-auth-fsm-state-waiting-for-auth"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_waiting_for_reply {3, "icpe-opm-auth-fsm-state-waiting-for-reply"};
-const Enum::YLeaf IcpeOpmAuthFsmState::icpe_opm_auth_fsm_state_authed {4, "icpe-opm-auth-fsm-state-authed"};
-
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_disconnected {0, "icpe-opm-transport-state-disconnected"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_iccp_unavailable {1, "icpe-opm-transport-state-iccp-unavailable"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_no_member_present {2, "icpe-opm-transport-state-no-member-present"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_down {3, "icpe-opm-transport-state-member-down"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_member_not_reachable {4, "icpe-opm-transport-state-member-not-reachable"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect {5, "icpe-opm-transport-state-waiting-for-app-connect"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_waiting_for_app_connect_response {6, "icpe-opm-transport-state-waiting-for-app-connect-response"};
-const Enum::YLeaf IcpeOpmTransportState::icpe_opm_transport_state_connected {7, "icpe-opm-transport-state-connected"};
-
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_disconnected {0, "icpe-opm-sess-state-disconnected"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connecting {1, "icpe-opm-sess-state-connecting"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_authenticating {2, "icpe-opm-sess-state-authenticating"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_arbitrating {3, "icpe-opm-sess-state-arbitrating"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_waiting_for_resyncs {4, "icpe-opm-sess-state-waiting-for-resyncs"};
-const Enum::YLeaf IcpeOpmSessState::icpe_opm_sess_state_connected {5, "icpe-opm-sess-state-connected"};
-
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_unknown {0, "icpe-install-sat-state-unknown"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_not_initiat_ed {1, "icpe-install-sat-state-not-initiat-ed"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_transferring {2, "icpe-install-sat-state-transferring"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_activating {3, "icpe-install-sat-state-activating"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_updating {4, "icpe-install-sat-state-updating"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_deactivating {5, "icpe-install-sat-state-deactivating"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_removing {6, "icpe-install-sat-state-removing"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_success {7, "icpe-install-sat-state-success"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_failure {8, "icpe-install-sat-state-failure"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_multiple_ops {9, "icpe-install-sat-state-multiple-ops"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_aborted {10, "icpe-install-sat-state-aborted"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_protocol_version {11, "icpe-install-sat-state-protocol-version"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_pkg_not_present {12, "icpe-install-sat-state-pkg-not-present"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_image {13, "icpe-install-sat-state-no-image"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_no_such_file {14, "icpe-install-sat-state-no-such-file"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_sat_uncfgd {15, "icpe-install-sat-state-sat-uncfgd"};
-const Enum::YLeaf IcpeInstallSatState::icpe_install_sat_state_processing {16, "icpe-install-sat-state-processing"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_stopped {0, "icpe-oper-discd-link-state-stopped"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_probing {1, "icpe-oper-discd-link-state-probing"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_configuring {2, "icpe-oper-discd-link-state-configuring"};
+const Enum::YLeaf IcpeOperDiscdLinkState::icpe_oper_discd_link_state_ready {3, "icpe-oper-discd-link-state-ready"};
 
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_unknown {0, "icpe-oper-topo-remote-source-unknown"};
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_remote_icl_id {1, "icpe-oper-topo-remote-source-remote-icl-id"};
@@ -12244,9 +12369,10 @@ const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_remote_
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_direct_satellite {4, "icpe-oper-topo-remote-source-direct-satellite"};
 const Enum::YLeaf IcpeOperTopoRemoteSource::icpe_oper_topo_remote_source_direct_host {5, "icpe-oper-topo-remote-source-direct-host"};
 
-const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_unknown {0, "icpe-install-pkg-supp-unknown"};
-const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_not_supported {1, "icpe-install-pkg-supp-not-supported"};
-const Enum::YLeaf IcpeInstallPkgSupp::icpe_install_pkg_supp_supported {2, "icpe-install-pkg-supp-supported"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_unknown {0, "icpe-optical-sync-state-unknown"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_syncing {1, "icpe-optical-sync-state-syncing"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_synced {2, "icpe-optical-sync-state-synced"};
+const Enum::YLeaf IcpeOpticalSyncState::icpe_optical_sync_state_not_connected {3, "icpe-optical-sync-state-not-connected"};
 
 
 }

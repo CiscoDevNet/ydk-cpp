@@ -278,7 +278,7 @@ class Native::Interface::LISP::Ip::SummaryAddress : public ydk::Entity
 
         class Eigrp; //type: Native::Interface::LISP::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::LISP::Ip::SummaryAddress
 
@@ -502,7 +502,7 @@ class Native::Interface::LISP::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::Tcp> tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::TrafficFilter> > traffic_filter;
+        ydk::YList traffic_filter;
         
 }; // Native::Interface::LISP::Ipv6
 
@@ -592,8 +592,8 @@ class Native::Interface::LISP::Ipv6::Address : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::Address::Dhcp> dhcp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::Address::Autoconfig> autoconfig; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::Address::PrefixList> > prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Ipv6::Address::LinkLocalAddress> > link_local_address;
+        ydk::YList prefix_list;
+        ydk::YList link_local_address;
         
 }; // Native::Interface::LISP::Ipv6::Address
 
@@ -958,7 +958,7 @@ class Native::Interface::LISP::Standby : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Standby::Delay> delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Standby::UseBia> use_bia; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Standby::StandbyList> > standby_list;
+        ydk::YList standby_list;
                 class Version;
 
 }; // Native::Interface::LISP::Standby
@@ -1048,7 +1048,7 @@ class Native::Interface::LISP::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -1064,7 +1064,7 @@ class Native::Interface::LISP::Standby::StandbyList : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Standby::StandbyList::Preempt> preempt; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Standby::StandbyList::Redirect> redirect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Standby::StandbyList::Timers> timers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::Standby::StandbyList::Track> > track;
+        ydk::YList track;
                 class Ipv6;
 
 }; // Native::Interface::LISP::Standby::StandbyList
@@ -2001,7 +2001,7 @@ class Native::Interface::LISP::RcvQueue : public ydk::Entity
 
         class CosMap; //type: Native::Interface::LISP::RcvQueue::CosMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP::RcvQueue::CosMap> > cos_map;
+        ydk::YList cos_map;
         
 }; // Native::Interface::LISP::RcvQueue
 
@@ -2188,27 +2188,6 @@ class Native::Interface::LISP::PmPath : public ydk::Entity
 }; // Native::Interface::LISP::PmPath
 
 
-class Native::Interface::LISP::EtAnalytics : public ydk::Entity
-{
-    public:
-        EtAnalytics();
-        ~EtAnalytics();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf enable; //type: empty
-
-}; // Native::Interface::LISP::EtAnalytics
-
-
 class Native::Interface::LISP::ServicePolicy : public ydk::Entity
 {
     public:
@@ -2373,6 +2352,27 @@ class Native::Interface::LISP::ServicePolicy::Type::ServiceChain::Output : publi
 }; // Native::Interface::LISP::ServicePolicy::Type::ServiceChain::Output
 
 
+class Native::Interface::LISP::Utd : public ydk::Entity
+{
+    public:
+        Utd();
+        ~Utd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Native::Interface::LISP::Utd
+
+
 class Native::Interface::LISP::Umbrella : public ydk::Entity
 {
     public:
@@ -2395,11 +2395,11 @@ class Native::Interface::LISP::Umbrella : public ydk::Entity
 }; // Native::Interface::LISP::Umbrella
 
 
-class Native::Interface::LISP::Utd : public ydk::Entity
+class Native::Interface::LISP::EtAnalytics : public ydk::Entity
 {
     public:
-        Utd();
-        ~Utd();
+        EtAnalytics();
+        ~EtAnalytics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2413,7 +2413,7 @@ class Native::Interface::LISP::Utd : public ydk::Entity
 
         ydk::YLeaf enable; //type: empty
 
-}; // Native::Interface::LISP::Utd
+}; // Native::Interface::LISP::EtAnalytics
 
 
 class Native::Interface::LISP::ZoneMember : public ydk::Entity
@@ -2456,7 +2456,7 @@ class Native::Interface::LISPSubinterface : public ydk::Entity
 
         class LISP; //type: Native::Interface::LISPSubinterface::LISP
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP> > lisp;
+        ydk::YList lisp;
         
 }; // Native::Interface::LISPSubinterface
 
@@ -2496,7 +2496,7 @@ class Native::Interface::LISPSubinterface::LISP : public ydk::Entity
         class Backup; //type: Native::Interface::LISPSubinterface::LISP::Backup
         class Cemoudp; //type: Native::Interface::LISPSubinterface::LISP::Cemoudp
         class CwsTunnel; //type: Native::Interface::LISPSubinterface::LISP::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::LISPSubinterface::LISP::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::LISPSubinterface::LISP::Encapsulation
         class FairQueueConf; //type: Native::Interface::LISPSubinterface::LISP::FairQueueConf
         class FairQueue; //type: Native::Interface::LISPSubinterface::LISP::FairQueue
@@ -2533,7 +2533,7 @@ class Native::Interface::LISPSubinterface::LISP : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::FairQueue> fair_queue;
@@ -2544,7 +2544,7 @@ class Native::Interface::LISPSubinterface::LISP : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::Vrf> vrf;
@@ -2961,11 +2961,11 @@ class Native::Interface::LISPSubinterface::LISP::CwsTunnel::Out : public ydk::En
 }; // Native::Interface::LISPSubinterface::LISP::CwsTunnel::Out
 
 
-class Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::L2protocolTunnel : public ydk::Entity
 {
     public:
-        L2ProtocolTunnel();
-        ~L2ProtocolTunnel();
+        L2protocolTunnel();
+        ~L2protocolTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2980,16 +2980,16 @@ class Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel : public ydk::
         ydk::YLeaf cdp; //type: empty
         ydk::YLeaf stp; //type: empty
         ydk::YLeaf vtp; //type: empty
-        class DropThreshold; //type: Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::DropThreshold
-        class ShutdownThreshold; //type: Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::ShutdownThreshold
+        class DropThreshold; //type: Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::DropThreshold
+        class ShutdownThreshold; //type: Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::ShutdownThreshold
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::DropThreshold> drop_threshold;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::ShutdownThreshold> shutdown_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::DropThreshold> drop_threshold;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::ShutdownThreshold> shutdown_threshold;
         
-}; // Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel
+}; // Native::Interface::LISPSubinterface::LISP::L2protocolTunnel
 
 
-class Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::DropThreshold : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::DropThreshold : public ydk::Entity
 {
     public:
         DropThreshold();
@@ -3010,10 +3010,10 @@ class Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::DropThreshold
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::DropThreshold
+}; // Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::DropThreshold
 
 
-class Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::ShutdownThreshold : public ydk::Entity
+class Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::ShutdownThreshold : public ydk::Entity
 {
     public:
         ShutdownThreshold();
@@ -3034,7 +3034,7 @@ class Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::ShutdownThres
         ydk::YLeaf stp; //type: uint16
         ydk::YLeaf vtp; //type: uint16
 
-}; // Native::Interface::LISPSubinterface::LISP::L2ProtocolTunnel::ShutdownThreshold
+}; // Native::Interface::LISPSubinterface::LISP::L2protocolTunnel::ShutdownThreshold
 
 
 class Native::Interface::LISPSubinterface::LISP::Encapsulation : public ydk::Entity

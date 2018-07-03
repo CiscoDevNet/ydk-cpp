@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_fib_oper {
 
 FibOperData::FibOperData()
+    :
+    fib_ni_entry(this, {"instance_name"})
 {
 
-    yang_name = "fib-oper-data"; yang_parent_name = "Cisco-IOS-XE-fib-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "fib-oper-data"; yang_parent_name = "Cisco-IOS-XE-fib-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 FibOperData::~FibOperData()
@@ -23,7 +25,8 @@ FibOperData::~FibOperData()
 
 bool FibOperData::has_data() const
 {
-    for (std::size_t index=0; index<fib_ni_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_ni_entry.len(); index++)
     {
         if(fib_ni_entry[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool FibOperData::has_data() const
 
 bool FibOperData::has_operation() const
 {
-    for (std::size_t index=0; index<fib_ni_entry.size(); index++)
+    for (std::size_t index=0; index<fib_ni_entry.len(); index++)
     {
         if(fib_ni_entry[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> FibOperData::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<FibOperData::FibNiEntry>();
         c->parent = this;
-        fib_ni_entry.push_back(c);
+        fib_ni_entry.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> FibOperData::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fib_ni_entry)
+    for (auto c : fib_ni_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -133,9 +136,11 @@ FibOperData::FibNiEntry::FibNiEntry()
     num_pfx{YType::uint32, "num-pfx"},
     num_pfx_fwd{YType::uint32, "num-pfx-fwd"},
     num_pfx_non_fwd{YType::uint32, "num-pfx-non-fwd"}
+        ,
+    fib_entries(this, {"ip_addr"})
 {
 
-    yang_name = "fib-ni-entry"; yang_parent_name = "fib-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fib-ni-entry"; yang_parent_name = "fib-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 FibOperData::FibNiEntry::~FibNiEntry()
@@ -144,7 +149,8 @@ FibOperData::FibNiEntry::~FibNiEntry()
 
 bool FibOperData::FibNiEntry::has_data() const
 {
-    for (std::size_t index=0; index<fib_entries.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_entries.len(); index++)
     {
         if(fib_entries[index]->has_data())
             return true;
@@ -158,7 +164,7 @@ bool FibOperData::FibNiEntry::has_data() const
 
 bool FibOperData::FibNiEntry::has_operation() const
 {
-    for (std::size_t index=0; index<fib_entries.size(); index++)
+    for (std::size_t index=0; index<fib_entries.len(); index++)
     {
         if(fib_entries[index]->has_operation())
             return true;
@@ -181,7 +187,8 @@ std::string FibOperData::FibNiEntry::get_absolute_path() const
 std::string FibOperData::FibNiEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fib-ni-entry" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "fib-ni-entry";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -205,7 +212,7 @@ std::shared_ptr<Entity> FibOperData::FibNiEntry::get_child_by_name(const std::st
     {
         auto c = std::make_shared<FibOperData::FibNiEntry::FibEntries>();
         c->parent = this;
-        fib_entries.push_back(c);
+        fib_entries.append(c);
         return c;
     }
 
@@ -217,7 +224,7 @@ std::map<std::string, std::shared_ptr<Entity>> FibOperData::FibNiEntry::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fib_entries)
+    for (auto c : fib_entries.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -301,9 +308,11 @@ FibOperData::FibNiEntry::FibEntries::FibEntries()
     num_paths{YType::uint8, "num-paths"},
     packets_forwarded{YType::uint64, "packets-forwarded"},
     octets_forwarded{YType::uint64, "octets-forwarded"}
+        ,
+    fib_nexthop_entries(this, {"nh_addr"})
 {
 
-    yang_name = "fib-entries"; yang_parent_name = "fib-ni-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-entries"; yang_parent_name = "fib-ni-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FibOperData::FibNiEntry::FibEntries::~FibEntries()
@@ -312,7 +321,8 @@ FibOperData::FibNiEntry::FibEntries::~FibEntries()
 
 bool FibOperData::FibNiEntry::FibEntries::has_data() const
 {
-    for (std::size_t index=0; index<fib_nexthop_entries.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fib_nexthop_entries.len(); index++)
     {
         if(fib_nexthop_entries[index]->has_data())
             return true;
@@ -327,7 +337,7 @@ bool FibOperData::FibNiEntry::FibEntries::has_data() const
 
 bool FibOperData::FibNiEntry::FibEntries::has_operation() const
 {
-    for (std::size_t index=0; index<fib_nexthop_entries.size(); index++)
+    for (std::size_t index=0; index<fib_nexthop_entries.len(); index++)
     {
         if(fib_nexthop_entries[index]->has_operation())
             return true;
@@ -344,7 +354,8 @@ bool FibOperData::FibNiEntry::FibEntries::has_operation() const
 std::string FibOperData::FibNiEntry::FibEntries::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fib-entries" <<"[ip-addr='" <<ip_addr <<"']";
+    path_buffer << "fib-entries";
+    ADD_KEY_TOKEN(ip_addr, "ip-addr");
     return path_buffer.str();
 }
 
@@ -369,7 +380,7 @@ std::shared_ptr<Entity> FibOperData::FibNiEntry::FibEntries::get_child_by_name(c
     {
         auto c = std::make_shared<FibOperData::FibNiEntry::FibEntries::FibNexthopEntries>();
         c->parent = this;
-        fib_nexthop_entries.push_back(c);
+        fib_nexthop_entries.append(c);
         return c;
     }
 
@@ -381,7 +392,7 @@ std::map<std::string, std::shared_ptr<Entity>> FibOperData::FibNiEntry::FibEntri
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fib_nexthop_entries)
+    for (auto c : fib_nexthop_entries.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -480,7 +491,7 @@ FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::FibNexthopEntries()
     decap{YType::enumeration, "decap"}
 {
 
-    yang_name = "fib-nexthop-entries"; yang_parent_name = "fib-entries"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fib-nexthop-entries"; yang_parent_name = "fib-entries"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::~FibNexthopEntries()
@@ -489,6 +500,7 @@ FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::~FibNexthopEntries()
 
 bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_data() const
 {
+    if (is_presence_container) return true;
     return nh_addr.is_set
 	|| index_.is_set
 	|| af.is_set
@@ -517,7 +529,8 @@ bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_operation() con
 std::string FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fib-nexthop-entries" <<"[nh-addr='" <<nh_addr <<"']";
+    path_buffer << "fib-nexthop-entries";
+    ADD_KEY_TOKEN(nh_addr, "nh-addr");
     return path_buffer.str();
 }
 
@@ -656,16 +669,6 @@ bool FibOperData::FibNiEntry::FibEntries::FibNexthopEntries::has_leaf_or_child_o
     return false;
 }
 
-const Enum::YLeaf FibAddressFamily::fib_addr_fam_unknown {0, "fib-addr-fam-unknown"};
-const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv4 {1, "fib-addr-fam-ipv4"};
-const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv6 {2, "fib-addr-fam-ipv6"};
-
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_unknown {0, "encap-hdr-type-unknown"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_gre {1, "encap-hdr-type-gre"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv4 {2, "encap-hdr-type-ipv4"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv6 {3, "encap-hdr-type-ipv6"};
-const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_mpls {4, "encap-hdr-type-mpls"};
-
 const Enum::YLeaf FibPathType::fib_path_type_unknown {0, "fib-path-type-unknown"};
 const Enum::YLeaf FibPathType::fib_path_type_receive {1, "fib-path-type-receive"};
 const Enum::YLeaf FibPathType::fib_path_type_connected {2, "fib-path-type-connected"};
@@ -675,6 +678,16 @@ const Enum::YLeaf FibPathType::fib_path_type_attached_nexthop {5, "fib-path-type
 const Enum::YLeaf FibPathType::fib_path_type_recursive {6, "fib-path-type-recursive"};
 const Enum::YLeaf FibPathType::fib_path_type_adjacency_prefix {7, "fib-path-type-adjacency-prefix"};
 const Enum::YLeaf FibPathType::fib_path_type_special_prefix {8, "fib-path-type-special-prefix"};
+
+const Enum::YLeaf FibAddressFamily::fib_addr_fam_unknown {0, "fib-addr-fam-unknown"};
+const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv4 {1, "fib-addr-fam-ipv4"};
+const Enum::YLeaf FibAddressFamily::fib_addr_fam_ipv6 {2, "fib-addr-fam-ipv6"};
+
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_unknown {0, "encap-hdr-type-unknown"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_gre {1, "encap-hdr-type-gre"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv4 {2, "encap-hdr-type-ipv4"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_ipv6 {3, "encap-hdr-type-ipv6"};
+const Enum::YLeaf EncapsulationHeaderType::encap_hdr_type_mpls {4, "encap-hdr-type-mpls"};
 
 
 }

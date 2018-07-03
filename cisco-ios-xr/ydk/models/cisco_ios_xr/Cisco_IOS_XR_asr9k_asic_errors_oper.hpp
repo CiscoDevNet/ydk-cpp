@@ -57,7 +57,7 @@ class AsicErrorStats::Racks : public ydk::Entity
 
         class Rack; //type: AsicErrorStats::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // AsicErrorStats::Racks
 
@@ -79,7 +79,7 @@ class AsicErrorStats::Racks::Rack : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf rack; //type: int32
+        ydk::YLeaf rack; //type: uint32
         class Nodes; //type: AsicErrorStats::Racks::Rack::Nodes
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Racks::Rack::Nodes> nodes;
@@ -105,7 +105,7 @@ class AsicErrorStats::Racks::Rack::Nodes : public ydk::Entity
 
         class Node; //type: AsicErrorStats::Racks::Rack::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Racks::Rack::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // AsicErrorStats::Racks::Rack::Nodes
 
@@ -152,7 +152,7 @@ class AsicErrorStats::Racks::Rack::Nodes::Node::Counts : public ydk::Entity
 
         class Count; //type: AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count> > count;
+        ydk::YList count;
         
 }; // AsicErrorStats::Racks::Rack::Nodes::Node::Counts
 
@@ -176,7 +176,7 @@ class AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count : public ydk::Enti
         ydk::YLeaf type; //type: string
         class SumData; //type: AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_asr9k_asic_errors_oper::AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count::SumData> > sum_data;
+        ydk::YList sum_data;
         
 }; // AsicErrorStats::Racks::Rack::Nodes::Node::Counts::Count
 

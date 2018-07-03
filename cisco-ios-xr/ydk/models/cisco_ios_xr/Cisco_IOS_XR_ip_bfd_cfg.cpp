@@ -19,13 +19,13 @@ Bfd::Bfd()
     ttl_drop_threshold{YType::uint32, "ttl-drop-threshold"},
     single_hop_trap{YType::empty, "single-hop-trap"},
     global_ipv4_echo_source{YType::str, "global-ipv4-echo-source"}
-    	,
+        ,
     flap_damp(std::make_shared<Bfd::FlapDamp>())
-	,echo_latency(std::make_shared<Bfd::EchoLatency>())
-	,echo_startup(std::make_shared<Bfd::EchoStartup>())
-	,interfaces(std::make_shared<Bfd::Interfaces>())
-	,multi_path_includes(std::make_shared<Bfd::MultiPathIncludes>())
-	,bundle(std::make_shared<Bfd::Bundle>())
+    , echo_latency(std::make_shared<Bfd::EchoLatency>())
+    , echo_startup(std::make_shared<Bfd::EchoStartup>())
+    , interfaces(std::make_shared<Bfd::Interfaces>())
+    , multi_path_includes(std::make_shared<Bfd::MultiPathIncludes>())
+    , bundle(std::make_shared<Bfd::Bundle>())
 {
     flap_damp->parent = this;
     echo_latency->parent = this;
@@ -34,7 +34,7 @@ Bfd::Bfd()
     multi_path_includes->parent = this;
     bundle->parent = this;
 
-    yang_name = "bfd"; yang_parent_name = "Cisco-IOS-XR-ip-bfd-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "bfd"; yang_parent_name = "Cisco-IOS-XR-ip-bfd-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Bfd::~Bfd()
@@ -43,6 +43,7 @@ Bfd::~Bfd()
 
 bool Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return global_echo_usage.is_set
 	|| ipv6_checksum_disable.is_set
 	|| global_echo_min_interval.is_set
@@ -299,14 +300,14 @@ Bfd::FlapDamp::FlapDamp()
     maximum_delay{YType::uint32, "maximum-delay"},
     dampen_disable{YType::empty, "dampen-disable"},
     secondary_delay{YType::uint32, "secondary-delay"}
-    	,
+        ,
     bundle_member(std::make_shared<Bfd::FlapDamp::BundleMember>())
-	,extensions(std::make_shared<Bfd::FlapDamp::Extensions>())
+    , extensions(std::make_shared<Bfd::FlapDamp::Extensions>())
 {
     bundle_member->parent = this;
     extensions->parent = this;
 
-    yang_name = "flap-damp"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flap-damp"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::FlapDamp::~FlapDamp()
@@ -315,6 +316,7 @@ Bfd::FlapDamp::~FlapDamp()
 
 bool Bfd::FlapDamp::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set
 	|| initial_delay.is_set
 	|| maximum_delay.is_set
@@ -477,7 +479,7 @@ Bfd::FlapDamp::BundleMember::BundleMember()
     l3_only_mode{YType::empty, "l3-only-mode"}
 {
 
-    yang_name = "bundle-member"; yang_parent_name = "flap-damp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle-member"; yang_parent_name = "flap-damp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::FlapDamp::BundleMember::~BundleMember()
@@ -486,6 +488,7 @@ Bfd::FlapDamp::BundleMember::~BundleMember()
 
 bool Bfd::FlapDamp::BundleMember::has_data() const
 {
+    if (is_presence_container) return true;
     return initial_delay.is_set
 	|| maximum_delay.is_set
 	|| secondary_delay.is_set
@@ -600,7 +603,7 @@ Bfd::FlapDamp::Extensions::Extensions()
     down_monitor{YType::empty, "down-monitor"}
 {
 
-    yang_name = "extensions"; yang_parent_name = "flap-damp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "extensions"; yang_parent_name = "flap-damp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::FlapDamp::Extensions::~Extensions()
@@ -609,6 +612,7 @@ Bfd::FlapDamp::Extensions::~Extensions()
 
 bool Bfd::FlapDamp::Extensions::has_data() const
 {
+    if (is_presence_container) return true;
     return down_monitor.is_set;
 }
 
@@ -685,7 +689,7 @@ Bfd::EchoLatency::EchoLatency()
 {
     detect->parent = this;
 
-    yang_name = "echo-latency"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "echo-latency"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::EchoLatency::~EchoLatency()
@@ -694,6 +698,7 @@ Bfd::EchoLatency::~EchoLatency()
 
 bool Bfd::EchoLatency::has_data() const
 {
+    if (is_presence_container) return true;
     return (detect !=  nullptr && detect->has_data());
 }
 
@@ -774,7 +779,7 @@ Bfd::EchoLatency::Detect::Detect()
     latency_detect_count{YType::uint32, "latency-detect-count"}
 {
 
-    yang_name = "detect"; yang_parent_name = "echo-latency"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detect"; yang_parent_name = "echo-latency"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::EchoLatency::Detect::~Detect()
@@ -783,6 +788,7 @@ Bfd::EchoLatency::Detect::~Detect()
 
 bool Bfd::EchoLatency::Detect::has_data() const
 {
+    if (is_presence_container) return true;
     return latency_detect_enabled.is_set
 	|| latency_detect_percentage.is_set
 	|| latency_detect_count.is_set;
@@ -884,7 +890,7 @@ Bfd::EchoStartup::EchoStartup()
     validate{YType::enumeration, "validate"}
 {
 
-    yang_name = "echo-startup"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "echo-startup"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::EchoStartup::~EchoStartup()
@@ -893,6 +899,7 @@ Bfd::EchoStartup::~EchoStartup()
 
 bool Bfd::EchoStartup::has_data() const
 {
+    if (is_presence_container) return true;
     return validate.is_set;
 }
 
@@ -964,9 +971,11 @@ bool Bfd::EchoStartup::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Bfd::Interfaces::Interfaces()
+    :
+    interface(this, {"interface_name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Interfaces::~Interfaces()
@@ -975,7 +984,8 @@ Bfd::Interfaces::~Interfaces()
 
 bool Bfd::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -985,7 +995,7 @@ bool Bfd::Interfaces::has_data() const
 
 bool Bfd::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1022,7 +1032,7 @@ std::shared_ptr<Entity> Bfd::Interfaces::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Bfd::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -1034,7 +1044,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::Interfaces::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1068,7 +1078,7 @@ Bfd::Interfaces::Interface::Interface()
     interface_ipv4_echo_source{YType::str, "interface-ipv4-echo-source"}
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Interfaces::Interface::~Interface()
@@ -1077,6 +1087,7 @@ Bfd::Interfaces::Interface::~Interface()
 
 bool Bfd::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set
 	|| interface_echo_usage.is_set
 	|| ipv6_checksum.is_set
@@ -1102,7 +1113,8 @@ std::string Bfd::Interfaces::Interface::get_absolute_path() const
 std::string Bfd::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -1187,9 +1199,11 @@ bool Bfd::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & n
 }
 
 Bfd::MultiPathIncludes::MultiPathIncludes()
+    :
+    multi_path_include(this, {"location"})
 {
 
-    yang_name = "multi-path-includes"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multi-path-includes"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::MultiPathIncludes::~MultiPathIncludes()
@@ -1198,7 +1212,8 @@ Bfd::MultiPathIncludes::~MultiPathIncludes()
 
 bool Bfd::MultiPathIncludes::has_data() const
 {
-    for (std::size_t index=0; index<multi_path_include.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<multi_path_include.len(); index++)
     {
         if(multi_path_include[index]->has_data())
             return true;
@@ -1208,7 +1223,7 @@ bool Bfd::MultiPathIncludes::has_data() const
 
 bool Bfd::MultiPathIncludes::has_operation() const
 {
-    for (std::size_t index=0; index<multi_path_include.size(); index++)
+    for (std::size_t index=0; index<multi_path_include.len(); index++)
     {
         if(multi_path_include[index]->has_operation())
             return true;
@@ -1245,7 +1260,7 @@ std::shared_ptr<Entity> Bfd::MultiPathIncludes::get_child_by_name(const std::str
     {
         auto c = std::make_shared<Bfd::MultiPathIncludes::MultiPathInclude>();
         c->parent = this;
-        multi_path_include.push_back(c);
+        multi_path_include.append(c);
         return c;
     }
 
@@ -1257,7 +1272,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bfd::MultiPathIncludes::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : multi_path_include)
+    for (auto c : multi_path_include.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1288,7 +1303,7 @@ Bfd::MultiPathIncludes::MultiPathInclude::MultiPathInclude()
     location{YType::str, "location"}
 {
 
-    yang_name = "multi-path-include"; yang_parent_name = "multi-path-includes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multi-path-include"; yang_parent_name = "multi-path-includes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::MultiPathIncludes::MultiPathInclude::~MultiPathInclude()
@@ -1297,6 +1312,7 @@ Bfd::MultiPathIncludes::MultiPathInclude::~MultiPathInclude()
 
 bool Bfd::MultiPathIncludes::MultiPathInclude::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set;
 }
 
@@ -1316,7 +1332,8 @@ std::string Bfd::MultiPathIncludes::MultiPathInclude::get_absolute_path() const
 std::string Bfd::MultiPathIncludes::MultiPathInclude::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "multi-path-include" <<"[location='" <<location <<"']";
+    path_buffer << "multi-path-include";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -1373,7 +1390,7 @@ Bfd::Bundle::Bundle()
 {
     coexistence->parent = this;
 
-    yang_name = "bundle"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bundle"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Bundle::~Bundle()
@@ -1382,6 +1399,7 @@ Bfd::Bundle::~Bundle()
 
 bool Bfd::Bundle::has_data() const
 {
+    if (is_presence_container) return true;
     return (coexistence !=  nullptr && coexistence->has_data());
 }
 
@@ -1460,7 +1478,7 @@ Bfd::Bundle::Coexistence::Coexistence()
     bob_blb{YType::enumeration, "bob-blb"}
 {
 
-    yang_name = "coexistence"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "coexistence"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Bfd::Bundle::Coexistence::~Coexistence()
@@ -1469,6 +1487,7 @@ Bfd::Bundle::Coexistence::~Coexistence()
 
 bool Bfd::Bundle::Coexistence::has_data() const
 {
+    if (is_presence_container) return true;
     return bob_blb.is_set;
 }
 
@@ -1543,14 +1562,14 @@ const Enum::YLeaf BfdEchoStartupValidate::off {0, "off"};
 const Enum::YLeaf BfdEchoStartupValidate::on {1, "on"};
 const Enum::YLeaf BfdEchoStartupValidate::force {2, "force"};
 
-const Enum::YLeaf BfdBundleCoexistenceBobBlb::inherited {1, "inherited"};
-const Enum::YLeaf BfdBundleCoexistenceBobBlb::logical {2, "logical"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::disable {0, "disable"};
+const Enum::YLeaf BfdIfIpv6ChecksumUsage::enable {1, "enable"};
 
 const Enum::YLeaf BfdIfEchoUsage::enable {0, "enable"};
 const Enum::YLeaf BfdIfEchoUsage::disable {1, "disable"};
 
-const Enum::YLeaf BfdIfIpv6ChecksumUsage::disable {0, "disable"};
-const Enum::YLeaf BfdIfIpv6ChecksumUsage::enable {1, "enable"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::inherited {1, "inherited"};
+const Enum::YLeaf BfdBundleCoexistenceBobBlb::logical {2, "logical"};
 
 
 }

@@ -119,7 +119,7 @@ class RoutingPolicy::Policies::RoutePolicies : public ydk::Entity
 
         class RoutePolicy; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Policies::RoutePolicies::RoutePolicy> > route_policy;
+        ydk::YList route_policy;
         
 }; // RoutingPolicy::Policies::RoutePolicies
 
@@ -221,7 +221,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSe
 
         class Sets; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets::Sets> > sets;
+        ydk::YList sets;
         
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::AllUsedSets
 
@@ -266,7 +266,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyU
 
         class Sets; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets::Sets> > sets;
+        ydk::YList sets;
         
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::PolicyUses::DirectlyUsedSets
 
@@ -332,7 +332,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy : public ydk::
 
         class Reference; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::UsedBy
 
@@ -378,7 +378,7 @@ class RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached : public ydk
 
         class Binding; //type: RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Policies::RoutePolicies::RoutePolicy::Attached
 
@@ -592,7 +592,7 @@ class RoutingPolicy::Sets::Etag::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::Etag::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Etag::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::Etag::Sets_
 
@@ -642,7 +642,7 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy : public ydk::Entity
 
         class Reference; //type: RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::Etag::Sets_::Set::UsedBy
 
@@ -688,7 +688,7 @@ class RoutingPolicy::Sets::Etag::Sets_::Set::Attached : public ydk::Entity
 
         class Binding; //type: RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Etag::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::Etag::Sets_::Set::Attached
 
@@ -848,7 +848,7 @@ class RoutingPolicy::Sets::OspfArea::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::OspfArea::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::OspfArea::Sets_
 
@@ -898,7 +898,7 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy : public ydk::Entity
 
         class Reference; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::UsedBy
 
@@ -944,7 +944,7 @@ class RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached : public ydk::Entity
 
         class Binding; //type: RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::OspfArea::Sets_::Set::Attached
 
@@ -1104,7 +1104,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_
 
@@ -1154,7 +1154,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy : public 
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::UsedBy
 
@@ -1200,7 +1200,7 @@ class RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached : publi
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityOpaque::Sets_::Set::Attached
 
@@ -1360,7 +1360,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_
 
@@ -1410,7 +1410,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy : public y
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::UsedBy
 
@@ -1456,7 +1456,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached : public
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySegNh::Sets_::Set::Attached
 
@@ -1616,7 +1616,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_
 
@@ -1666,7 +1666,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy : public ydk
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::UsedBy
 
@@ -1712,7 +1712,7 @@ class RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached : public y
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::ExtendedCommunitySoo::Sets_::Set::Attached
 
@@ -1872,7 +1872,7 @@ class RoutingPolicy::Sets::Tag::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::Tag::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Tag::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::Tag::Sets_
 
@@ -1922,7 +1922,7 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy : public ydk::Entity
 
         class Reference; //type: RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::Tag::Sets_::Set::UsedBy
 
@@ -1968,7 +1968,7 @@ class RoutingPolicy::Sets::Tag::Sets_::Set::Attached : public ydk::Entity
 
         class Binding; //type: RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Tag::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::Tag::Sets_::Set::Attached
 
@@ -2128,7 +2128,7 @@ class RoutingPolicy::Sets::Prefix::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::Prefix::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Prefix::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::Prefix::Sets_
 
@@ -2178,7 +2178,7 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy : public ydk::Entity
 
         class Reference; //type: RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::Prefix::Sets_::Set::UsedBy
 
@@ -2224,7 +2224,7 @@ class RoutingPolicy::Sets::Prefix::Sets_::Set::Attached : public ydk::Entity
 
         class Binding; //type: RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Prefix::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::Prefix::Sets_::Set::Attached
 
@@ -2384,7 +2384,7 @@ class RoutingPolicy::Sets::Community::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::Community::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Community::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::Community::Sets_
 
@@ -2434,7 +2434,7 @@ class RoutingPolicy::Sets::Community::Sets_::Set::UsedBy : public ydk::Entity
 
         class Reference; //type: RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Community::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::Community::Sets_::Set::UsedBy
 
@@ -2480,7 +2480,7 @@ class RoutingPolicy::Sets::Community::Sets_::Set::Attached : public ydk::Entity
 
         class Binding; //type: RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Community::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::Community::Sets_::Set::Attached
 
@@ -2640,7 +2640,7 @@ class RoutingPolicy::Sets::AsPath::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::AsPath::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::AsPath::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::AsPath::Sets_
 
@@ -2690,7 +2690,7 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy : public ydk::Entity
 
         class Reference; //type: RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::AsPath::Sets_::Set::UsedBy
 
@@ -2736,7 +2736,7 @@ class RoutingPolicy::Sets::AsPath::Sets_::Set::Attached : public ydk::Entity
 
         class Binding; //type: RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::AsPath::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::AsPath::Sets_::Set::Attached
 
@@ -2896,7 +2896,7 @@ class RoutingPolicy::Sets::LargeCommunity::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::LargeCommunity::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::LargeCommunity::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::LargeCommunity::Sets_
 
@@ -2946,7 +2946,7 @@ class RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy : public ydk::Enti
 
         class Reference; //type: RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::LargeCommunity::Sets_::Set::UsedBy
 
@@ -2992,7 +2992,7 @@ class RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached : public ydk::En
 
         class Binding; //type: RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::LargeCommunity::Sets_::Set::Attached
 
@@ -3152,7 +3152,7 @@ class RoutingPolicy::Sets::Esi::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::Esi::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Esi::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::Esi::Sets_
 
@@ -3202,7 +3202,7 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy : public ydk::Entity
 
         class Reference; //type: RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::Esi::Sets_::Set::UsedBy
 
@@ -3248,7 +3248,7 @@ class RoutingPolicy::Sets::Esi::Sets_::Set::Attached : public ydk::Entity
 
         class Binding; //type: RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::Esi::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::Esi::Sets_::Set::Attached
 
@@ -3406,7 +3406,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_ : public ydk::Entit
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_
 
@@ -3456,7 +3456,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy : publ
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::UsedBy
 
@@ -3502,7 +3502,7 @@ class RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached : pu
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityBandwidth::Sets_::Set::Attached
 
@@ -3640,7 +3640,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_ : public ydk::Entity
 
         class Set; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set> > set;
+        ydk::YList set;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_
 
@@ -3690,7 +3690,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy : public ydk:
 
         class Reference; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::Reference> > reference;
+        ydk::YList reference;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy
 
@@ -3736,7 +3736,7 @@ class RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached : public yd
 
         class Binding; //type: RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_policy_repository_oper::RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached::Binding> > binding;
+        ydk::YList binding;
         
 }; // RoutingPolicy::Sets::ExtendedCommunityRt::Sets_::Set::Attached
 

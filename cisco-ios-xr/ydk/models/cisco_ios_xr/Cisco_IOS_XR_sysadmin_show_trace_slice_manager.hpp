@@ -33,7 +33,7 @@ class SliceManager : public ydk::Entity
 
         class Trace; //type: SliceManager::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_slice_manager::SliceManager::Trace> > trace;
+        ydk::YList trace;
         
 }; // SliceManager
 
@@ -58,7 +58,7 @@ class SliceManager::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: SliceManager::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_slice_manager::SliceManager::Trace::Location> > location;
+        ydk::YList location;
         
 }; // SliceManager::Trace
 
@@ -82,7 +82,7 @@ class SliceManager::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: SliceManager::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_slice_manager::SliceManager::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // SliceManager::Trace::Location
 
@@ -106,7 +106,7 @@ class SliceManager::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: SliceManager::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_show_trace_slice_manager::SliceManager::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // SliceManager::Trace::Location::AllOptions
 

@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_vm_mgr {
 
 VM::VM()
+    :
+    all_locations(this, {"location"})
 {
 
-    yang_name = "VM"; yang_parent_name = "Cisco-IOS-XR-sysadmin-vm-mgr"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "VM"; yang_parent_name = "Cisco-IOS-XR-sysadmin-vm-mgr"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 VM::~VM()
@@ -23,7 +25,8 @@ VM::~VM()
 
 bool VM::has_data() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool VM::has_data() const
 
 bool VM::has_operation() const
 {
-    for (std::size_t index=0; index<all_locations.size(); index++)
+    for (std::size_t index=0; index<all_locations.len(); index++)
     {
         if(all_locations[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> VM::get_child_by_name(const std::string & child_yang_nam
     {
         auto c = std::make_shared<VM::AllLocations>();
         c->parent = this;
-        all_locations.push_back(c);
+        all_locations.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> VM::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_locations)
+    for (auto c : all_locations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool VM::has_leaf_or_child_of_name(const std::string & name) const
 VM::AllLocations::AllLocations()
     :
     location{YType::str, "location"}
+        ,
+    all_uiids(this, {"uiid"})
 {
 
-    yang_name = "all-locations"; yang_parent_name = "VM"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "all-locations"; yang_parent_name = "VM"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VM::AllLocations::~AllLocations()
@@ -140,7 +145,8 @@ VM::AllLocations::~AllLocations()
 
 bool VM::AllLocations::has_data() const
 {
-    for (std::size_t index=0; index<all_uiids.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_uiids.len(); index++)
     {
         if(all_uiids[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool VM::AllLocations::has_data() const
 
 bool VM::AllLocations::has_operation() const
 {
-    for (std::size_t index=0; index<all_uiids.size(); index++)
+    for (std::size_t index=0; index<all_uiids.len(); index++)
     {
         if(all_uiids[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string VM::AllLocations::get_absolute_path() const
 std::string VM::AllLocations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-locations" <<"[location='" <<location <<"']";
+    path_buffer << "all-locations";
+    ADD_KEY_TOKEN(location, "location");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> VM::AllLocations::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<VM::AllLocations::AllUiids>();
         c->parent = this;
-        all_uiids.push_back(c);
+        all_uiids.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> VM::AllLocations::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_uiids)
+    for (auto c : all_uiids.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -250,7 +257,7 @@ VM::AllLocations::AllUiids::AllUiids()
     role{YType::str, "role"}
 {
 
-    yang_name = "all-uiids"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-uiids"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VM::AllLocations::AllUiids::~AllUiids()
@@ -259,6 +266,7 @@ VM::AllLocations::AllUiids::~AllUiids()
 
 bool VM::AllLocations::AllUiids::has_data() const
 {
+    if (is_presence_container) return true;
     return uiid.is_set
 	|| id.is_set
 	|| status.is_set
@@ -287,7 +295,8 @@ bool VM::AllLocations::AllUiids::has_operation() const
 std::string VM::AllLocations::AllUiids::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-uiids" <<"[uiid='" <<uiid <<"']";
+    path_buffer << "all-uiids";
+    ADD_KEY_TOKEN(uiid, "uiid");
     return path_buffer.str();
 }
 

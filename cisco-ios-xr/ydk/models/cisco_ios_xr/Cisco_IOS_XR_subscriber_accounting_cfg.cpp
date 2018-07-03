@@ -17,7 +17,7 @@ SubscriberAccounting::SubscriberAccounting()
 {
     prepaid_configurations->parent = this;
 
-    yang_name = "subscriber-accounting"; yang_parent_name = "Cisco-IOS-XR-subscriber-accounting-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-accounting"; yang_parent_name = "Cisco-IOS-XR-subscriber-accounting-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberAccounting::~SubscriberAccounting()
@@ -26,6 +26,7 @@ SubscriberAccounting::~SubscriberAccounting()
 
 bool SubscriberAccounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (prepaid_configurations !=  nullptr && prepaid_configurations->has_data());
 }
 
@@ -118,9 +119,11 @@ bool SubscriberAccounting::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 SubscriberAccounting::PrepaidConfigurations::PrepaidConfigurations()
+    :
+    prepaid_configuration(this, {"prepaid_config_name"})
 {
 
-    yang_name = "prepaid-configurations"; yang_parent_name = "subscriber-accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prepaid-configurations"; yang_parent_name = "subscriber-accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberAccounting::PrepaidConfigurations::~PrepaidConfigurations()
@@ -129,7 +132,8 @@ SubscriberAccounting::PrepaidConfigurations::~PrepaidConfigurations()
 
 bool SubscriberAccounting::PrepaidConfigurations::has_data() const
 {
-    for (std::size_t index=0; index<prepaid_configuration.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prepaid_configuration.len(); index++)
     {
         if(prepaid_configuration[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool SubscriberAccounting::PrepaidConfigurations::has_data() const
 
 bool SubscriberAccounting::PrepaidConfigurations::has_operation() const
 {
-    for (std::size_t index=0; index<prepaid_configuration.size(); index++)
+    for (std::size_t index=0; index<prepaid_configuration.len(); index++)
     {
         if(prepaid_configuration[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> SubscriberAccounting::PrepaidConfigurations::get_child_b
     {
         auto c = std::make_shared<SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration>();
         c->parent = this;
-        prepaid_configuration.push_back(c);
+        prepaid_configuration.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::PrepaidConf
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prepaid_configuration)
+    for (auto c : prepaid_configuration.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -227,7 +231,7 @@ SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::PrepaidConfig
     time_valid{YType::int32, "time-valid"}
 {
 
-    yang_name = "prepaid-configuration"; yang_parent_name = "prepaid-configurations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prepaid-configuration"; yang_parent_name = "prepaid-configurations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::~PrepaidConfiguration()
@@ -236,6 +240,7 @@ SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::~PrepaidConfi
 
 bool SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return prepaid_config_name.is_set
 	|| password.is_set
 	|| volume_threshold.is_set
@@ -271,7 +276,8 @@ std::string SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::g
 std::string SubscriberAccounting::PrepaidConfigurations::PrepaidConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prepaid-configuration" <<"[prepaid-config-name='" <<prepaid_config_name <<"']";
+    path_buffer << "prepaid-configuration";
+    ADD_KEY_TOKEN(prepaid_config_name, "prepaid-config-name");
     return path_buffer.str();
 }
 

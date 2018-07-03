@@ -17,7 +17,7 @@ Service::Service()
 {
     cli->parent = this;
 
-    yang_name = "service"; yang_parent_name = "Cisco-IOS-XR-sysadmin-services"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "service"; yang_parent_name = "Cisco-IOS-XR-sysadmin-services"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Service::~Service()
@@ -26,6 +26,7 @@ Service::~Service()
 
 bool Service::has_data() const
 {
+    if (is_presence_container) return true;
     return (cli !=  nullptr && cli->has_data());
 }
 
@@ -123,7 +124,7 @@ Service::Cli::Cli()
 {
     interactive->parent = this;
 
-    yang_name = "cli"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cli"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Cli::~Cli()
@@ -132,6 +133,7 @@ Service::Cli::~Cli()
 
 bool Service::Cli::has_data() const
 {
+    if (is_presence_container) return true;
     return (interactive !=  nullptr && interactive->has_data());
 }
 
@@ -210,7 +212,7 @@ Service::Cli::Interactive::Interactive()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "interactive"; yang_parent_name = "cli"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interactive"; yang_parent_name = "cli"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Service::Cli::Interactive::~Interactive()
@@ -219,6 +221,7 @@ Service::Cli::Interactive::~Interactive()
 
 bool Service::Cli::Interactive::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 

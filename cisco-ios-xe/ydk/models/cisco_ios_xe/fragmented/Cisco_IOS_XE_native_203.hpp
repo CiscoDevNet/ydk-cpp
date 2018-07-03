@@ -297,7 +297,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable : public ydk::E
 
         class PassiveInterface; //type: Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable::PassiveInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable::PassiveInterface> > passive_interface;
+        ydk::YList passive_interface;
         
 }; // Native::Router::Rip::AddressFamily::Ipv4::Unicast::Disable
 
@@ -402,12 +402,12 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf : public ydk::Entity
         class Redistribute; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute
         class Timers; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Neighbor> > neighbor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Network> > network;
+        ydk::YList neighbor;
+        ydk::YList network;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::DefaultInformation> default_information;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Distance> distance;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList> distribute_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::OffsetList> > offset_list;
+        ydk::YList offset_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute> redistribute;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Timers> timers;
         
@@ -519,7 +519,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Distance : public ydk::Enti
         ydk::YLeaf distance_leaf; //type: uint8
         class DistanceList; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Distance::DistanceList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Distance::DistanceList> > distance_list;
+        ydk::YList distance_list;
         
 }; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Distance
 
@@ -568,10 +568,10 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList : public ydk
         class AccesslistPrefixGateway; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistPrefixGateway
         class AccesslistPrefixGatewayIfname; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistPrefixGatewayIfname
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::Accesslist> > accesslist;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistIfname> > accesslist_ifname;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistPrefixGateway> > accesslist_prefix_gateway;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList::AccesslistPrefixGatewayIfname> > accesslist_prefix_gateway_ifname;
+        ydk::YList accesslist;
+        ydk::YList accesslist_ifname;
+        ydk::YList accesslist_prefix_gateway;
+        ydk::YList accesslist_prefix_gateway_ifname;
         
 }; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::DistributeList
 
@@ -726,13 +726,13 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute : public ydk::
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::RipMetricRouteMap> rip_metric_route_map;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Connected> connected; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Eigrp> > eigrp;
+        ydk::YList bgp;
+        ydk::YList eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis> isis; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::IsoIgrp> iso_igrp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Odr> odr; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf> > ospf;
+        ydk::YList ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Rip_> rip; // presence node
         
@@ -1013,7 +1013,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis : public
         class IsisArea; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::IsisArea
         class RipIsisRedist; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::RipIsisRedist
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::IsisArea> > isis_area;
+        ydk::YList isis_area;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis::RipIsisRedist> rip_isis_redist;
         
 }; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Isis
@@ -1204,7 +1204,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::IsoIgrp : pub
         class IsoigrpList; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::IsoIgrp::IsoigrpList
         class RipMetricRouteMap; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::IsoIgrp::IsoigrpList> > isoigrp_list;
+        ydk::YList isoigrp_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap> rip_metric_route_map;
         
 }; // Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::IsoIgrp
@@ -1485,7 +1485,7 @@ class Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf : public
         class Match; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::Match
         class RipMetricRouteMap; //type: Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::Vrf_> > vrf;
+        ydk::YList vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::Match> match;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::AddressFamily::Ipv4::Vrf::Redistribute::Ospf::RipMetricRouteMap> rip_metric_route_map;
         
@@ -2020,12 +2020,12 @@ class Native::Router::Rip::Default : public ydk::Entity
         class TrafficShare; //type: Native::Router::Rip::Default::TrafficShare
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::AddressFamily> address_family;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Neighbor> > neighbor;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Network> > network;
+        ydk::YList neighbor;
+        ydk::YList network;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DefaultInformation> default_information;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Distance> distance;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList> distribute_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::OffsetList> > offset_list;
+        ydk::YList offset_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::PassiveInterface> passive_interface;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Disable> disable;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute> redistribute;
@@ -2079,7 +2079,7 @@ class Native::Router::Rip::Default::AddressFamily::Ipv4 : public ydk::Entity
         ydk::YLeaf unicast; //type: empty
         class Vrf; //type: Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::AddressFamily::Ipv4::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Router::Rip::Default::AddressFamily::Ipv4
 
@@ -2192,7 +2192,7 @@ class Native::Router::Rip::Default::Distance : public ydk::Entity
         ydk::YLeaf distance_leaf; //type: uint8
         class DistanceList; //type: Native::Router::Rip::Default::Distance::DistanceList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Distance::DistanceList> > distance_list;
+        ydk::YList distance_list;
         
 }; // Native::Router::Rip::Default::Distance
 
@@ -2217,7 +2217,7 @@ class Native::Router::Rip::Default::Distance::DistanceList : public ydk::Entity
         ydk::YLeaf number; //type: uint8
         ydk::YLeaf ip; //type: string
         ydk::YLeaf mask; //type: string
-        ydk::YLeaf access_list; //type: one of uint8, uint16
+        ydk::YLeaf access_list; //type: one of uint16, uint8
 
 }; // Native::Router::Rip::Default::Distance::DistanceList
 
@@ -2244,10 +2244,10 @@ class Native::Router::Rip::Default::DistributeList : public ydk::Entity
         class AccesslistPrefixGateway; //type: Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway
         class AccesslistPrefixGatewayIfname; //type: Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::Accesslist> > accesslist;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::AccesslistIfname> > accesslist_ifname;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::AccesslistPrefixGateway> > accesslist_prefix_gateway;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::DistributeList::AccesslistPrefixGatewayIfname> > accesslist_prefix_gateway_ifname;
+        ydk::YList accesslist;
+        ydk::YList accesslist_ifname;
+        ydk::YList accesslist_prefix_gateway;
+        ydk::YList accesslist_prefix_gateway_ifname;
         
 }; // Native::Router::Rip::Default::DistributeList
 
@@ -2422,7 +2422,7 @@ class Native::Router::Rip::Default::Disable : public ydk::Entity
 
         class PassiveInterface; //type: Native::Router::Rip::Default::Disable::PassiveInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Disable::PassiveInterface> > passive_interface;
+        ydk::YList passive_interface;
         
 }; // Native::Router::Rip::Default::Disable
 
@@ -2478,13 +2478,13 @@ class Native::Router::Rip::Default::Redistribute : public ydk::Entity
         class Rip_; //type: Native::Router::Rip::Default::Redistribute::Rip_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Connected> connected; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Eigrp> > eigrp;
+        ydk::YList bgp;
+        ydk::YList eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis> isis; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp> iso_igrp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Mobile> mobile; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Odr> odr; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf> > ospf;
+        ydk::YList ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Static> static_; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Rip_> rip; // presence node
         
@@ -2725,7 +2725,7 @@ class Native::Router::Rip::Default::Redistribute::Isis : public ydk::Entity
         class IsisArea; //type: Native::Router::Rip::Default::Redistribute::Isis::IsisArea
         class RipIsisRedist; //type: Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::IsisArea> > isis_area;
+        ydk::YList isis_area;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Isis::RipIsisRedist> rip_isis_redist;
         
 }; // Native::Router::Rip::Default::Redistribute::Isis
@@ -2921,7 +2921,7 @@ class Native::Router::Rip::Default::Redistribute::IsoIgrp : public ydk::Entity
         class IsoigrpList; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList
         class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp::IsoigrpList> > isoigrp_list;
+        ydk::YList isoigrp_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::IsoIgrp::RipMetricRouteMap> rip_metric_route_map;
         
 }; // Native::Router::Rip::Default::Redistribute::IsoIgrp
@@ -3212,7 +3212,7 @@ class Native::Router::Rip::Default::Redistribute::Ospf : public ydk::Entity
         class Match; //type: Native::Router::Rip::Default::Redistribute::Ospf::Match
         class RipMetricRouteMap; //type: Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Vrf> > vrf;
+        ydk::YList vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::Match> match;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip::Default::Redistribute::Ospf::RipMetricRouteMap> rip_metric_route_map;
         

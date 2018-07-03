@@ -34,7 +34,7 @@ class Vrfs : public ydk::Entity
 
         class Vrf; //type: Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Vrfs
 
@@ -64,10 +64,12 @@ class Vrfs::Vrf : public ydk::Entity
         ydk::YLeaf description; //type: string
         class VpnId; //type: Vrfs::Vrf::VpnId
         class Afs; //type: Vrfs::Vrf::Afs
+        class BgpGlobal; //type: Vrfs::Vrf::BgpGlobal
         class MulticastHost; //type: Vrfs::Vrf::MulticastHost
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::VpnId> vpn_id; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs> afs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::BgpGlobal> bgp_global;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::MulticastHost> multicast_host;
         
 }; // Vrfs::Vrf
@@ -113,7 +115,7 @@ class Vrfs::Vrf::Afs : public ydk::Entity
 
         class Af; //type: Vrfs::Vrf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // Vrfs::Vrf::Afs
 
@@ -138,35 +140,13 @@ class Vrfs::Vrf::Afs::Af : public ydk::Entity
         ydk::YLeaf saf_name; //type: VrfSubAddressFamily
         ydk::YLeaf topology_name; //type: string
         ydk::YLeaf create; //type: empty
-        class MaximumPrefix; //type: Vrfs::Vrf::Afs::Af::MaximumPrefix
         class Bgp; //type: Vrfs::Vrf::Afs::Af::Bgp
+        class MaximumPrefix; //type: Vrfs::Vrf::Afs::Af::MaximumPrefix
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::MaximumPrefix> maximum_prefix; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::MaximumPrefix> maximum_prefix; // presence node
         
 }; // Vrfs::Vrf::Afs::Af
-
-
-class Vrfs::Vrf::Afs::Af::MaximumPrefix : public ydk::Entity
-{
-    public:
-        MaximumPrefix();
-        ~MaximumPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_limit; //type: uint32
-        ydk::YLeaf mid_threshold; //type: uint32
-
-}; // Vrfs::Vrf::Afs::Af::MaximumPrefix
 
 
 class Vrfs::Vrf::Afs::Af::Bgp : public ydk::Entity
@@ -244,7 +224,7 @@ class Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets : public ydk::En
 
         class RouteTarget; //type: Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget> > route_target;
+        ydk::YList route_target;
         
 }; // Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets
 
@@ -269,8 +249,8 @@ class Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget : p
         class AsOrFourByteAs; //type: Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs
         class Ipv4Address; //type: Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs> > as_or_four_byte_as;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address> > ipv4_address;
+        ydk::YList as_or_four_byte_as;
+        ydk::YList ipv4_address;
         
 }; // Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget
 
@@ -363,7 +343,7 @@ class Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets : public ydk::En
 
         class RouteTarget; //type: Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget> > route_target;
+        ydk::YList route_target;
         
 }; // Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets
 
@@ -388,8 +368,8 @@ class Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget : p
         class AsOrFourByteAs; //type: Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs
         class Ipv4Address; //type: Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs> > as_or_four_byte_as;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address> > ipv4_address;
+        ydk::YList as_or_four_byte_as;
+        ydk::YList ipv4_address;
         
 }; // Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget
 
@@ -507,6 +487,77 @@ class Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy : public ydk::Entity
 }; // Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy
 
 
+class Vrfs::Vrf::Afs::Af::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_limit; //type: uint32
+        ydk::YLeaf mid_threshold; //type: uint32
+
+}; // Vrfs::Vrf::Afs::Af::MaximumPrefix
+
+
+class Vrfs::Vrf::BgpGlobal : public ydk::Entity
+{
+    public:
+        BgpGlobal();
+        ~BgpGlobal();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RouteDistinguisher; //type: Vrfs::Vrf::BgpGlobal::RouteDistinguisher
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Vrfs::Vrf::BgpGlobal::RouteDistinguisher> route_distinguisher;
+        
+}; // Vrfs::Vrf::BgpGlobal
+
+
+class Vrfs::Vrf::BgpGlobal::RouteDistinguisher : public ydk::Entity
+{
+    public:
+        RouteDistinguisher();
+        ~RouteDistinguisher();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: BgpGlobalRouteDistinguisher
+        ydk::YLeaf as_xx; //type: uint32
+        ydk::YLeaf as; //type: uint32
+        ydk::YLeaf as_index; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf address_index; //type: uint32
+
+}; // Vrfs::Vrf::BgpGlobal::RouteDistinguisher
+
+
 class Vrfs::Vrf::MulticastHost : public ydk::Entity
 {
     public:
@@ -620,7 +671,7 @@ class GlobalAf::Afs : public ydk::Entity
 
         class Af; //type: GlobalAf::Afs::Af
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af> > af;
+        ydk::YList af;
         
 }; // GlobalAf::Afs
 
@@ -646,35 +697,13 @@ class GlobalAf::Afs::Af : public ydk::Entity
         ydk::YLeaf saf_name; //type: VrfSubAddressFamily
         ydk::YLeaf topology_name; //type: string
         ydk::YLeaf create; //type: empty
-        class MaximumPrefix; //type: GlobalAf::Afs::Af::MaximumPrefix
         class Bgp; //type: GlobalAf::Afs::Af::Bgp
+        class MaximumPrefix; //type: GlobalAf::Afs::Af::MaximumPrefix
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::MaximumPrefix> maximum_prefix; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::MaximumPrefix> maximum_prefix; // presence node
         
 }; // GlobalAf::Afs::Af
-
-
-class GlobalAf::Afs::Af::MaximumPrefix : public ydk::Entity
-{
-    public:
-        MaximumPrefix();
-        ~MaximumPrefix();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf prefix_limit; //type: uint32
-        ydk::YLeaf mid_threshold; //type: uint32
-
-}; // GlobalAf::Afs::Af::MaximumPrefix
 
 
 class GlobalAf::Afs::Af::Bgp : public ydk::Entity
@@ -752,7 +781,7 @@ class GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets : public ydk::Ent
 
         class RouteTarget; //type: GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget> > route_target;
+        ydk::YList route_target;
         
 }; // GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets
 
@@ -777,8 +806,8 @@ class GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget : pu
         class AsOrFourByteAs; //type: GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs
         class Ipv4Address; //type: GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs> > as_or_four_byte_as;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget::Ipv4Address> > ipv4_address;
+        ydk::YList as_or_four_byte_as;
+        ydk::YList ipv4_address;
         
 }; // GlobalAf::Afs::Af::Bgp::ImportRouteTargets::RouteTargets::RouteTarget
 
@@ -871,7 +900,7 @@ class GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets : public ydk::Ent
 
         class RouteTarget; //type: GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget> > route_target;
+        ydk::YList route_target;
         
 }; // GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets
 
@@ -896,8 +925,8 @@ class GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget : pu
         class AsOrFourByteAs; //type: GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs
         class Ipv4Address; //type: GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::AsOrFourByteAs> > as_or_four_byte_as;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget::Ipv4Address> > ipv4_address;
+        ydk::YList as_or_four_byte_as;
+        ydk::YList ipv4_address;
         
 }; // GlobalAf::Afs::Af::Bgp::ExportRouteTargets::RouteTargets::RouteTarget
 
@@ -1014,6 +1043,28 @@ class GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy : public ydk::Entity
 
 }; // GlobalAf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy
 
+
+class GlobalAf::Afs::Af::MaximumPrefix : public ydk::Entity
+{
+    public:
+        MaximumPrefix();
+        ~MaximumPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_limit; //type: uint32
+        ydk::YLeaf mid_threshold; //type: uint32
+
+}; // GlobalAf::Afs::Af::MaximumPrefix
+
 class Srlg : public ydk::Entity
 {
     public:
@@ -1068,7 +1119,7 @@ class Srlg::Interfaces : public ydk::Entity
 
         class Interface; //type: Srlg::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Srlg::Interfaces
 
@@ -1169,7 +1220,7 @@ class Srlg::Interfaces::Interface::InterfaceGroup::GroupNames : public ydk::Enti
 
         class GroupName; //type: Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Interfaces::Interface::InterfaceGroup::GroupNames::GroupName> > group_name;
+        ydk::YList group_name;
         
 }; // Srlg::Interfaces::Interface::InterfaceGroup::GroupNames
 
@@ -1215,7 +1266,7 @@ class Srlg::Interfaces::Interface::Values : public ydk::Entity
 
         class Value; //type: Srlg::Interfaces::Interface::Values::Value
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Interfaces::Interface::Values::Value> > value_;
+        ydk::YList value_;
         
 }; // Srlg::Interfaces::Interface::Values
 
@@ -1261,7 +1312,7 @@ class Srlg::Interfaces::Interface::InterfaceSrlgNames : public ydk::Entity
 
         class InterfaceSrlgName; //type: Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Interfaces::Interface::InterfaceSrlgNames::InterfaceSrlgName> > interface_srlg_name;
+        ydk::YList interface_srlg_name;
         
 }; // Srlg::Interfaces::Interface::InterfaceSrlgNames
 
@@ -1306,7 +1357,7 @@ class Srlg::SrlgNames : public ydk::Entity
 
         class SrlgName; //type: Srlg::SrlgNames::SrlgName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::SrlgNames::SrlgName> > srlg_name;
+        ydk::YList srlg_name;
         
 }; // Srlg::SrlgNames
 
@@ -1353,7 +1404,7 @@ class Srlg::Groups : public ydk::Entity
 
         class Group; //type: Srlg::Groups::Group
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Srlg::Groups
 
@@ -1402,7 +1453,7 @@ class Srlg::Groups::Group::GroupValues : public ydk::Entity
 
         class GroupValue; //type: Srlg::Groups::Group::GroupValues::GroupValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::Groups::Group::GroupValues::GroupValue> > group_value;
+        ydk::YList group_value;
         
 }; // Srlg::Groups::Group::GroupValues
 
@@ -1449,7 +1500,7 @@ class Srlg::InheritNodes : public ydk::Entity
 
         class InheritNode; //type: Srlg::InheritNodes::InheritNode
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::InheritNodes::InheritNode> > inherit_node;
+        ydk::YList inherit_node;
         
 }; // Srlg::InheritNodes
 
@@ -1498,7 +1549,7 @@ class Srlg::InheritNodes::InheritNode::InheritNodeValues : public ydk::Entity
 
         class InheritNodeValue; //type: Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::Srlg::InheritNodes::InheritNode::InheritNodeValues::InheritNodeValue> > inherit_node_value;
+        ydk::YList inherit_node_value;
         
 }; // Srlg::InheritNodes::InheritNode::InheritNodeValues
 
@@ -1548,7 +1599,7 @@ class VrfGroups : public ydk::Entity
 
         class VrfGroup; //type: VrfGroups::VrfGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::VrfGroups::VrfGroup> > vrf_group;
+        ydk::YList vrf_group;
         
 }; // VrfGroups
 
@@ -1597,7 +1648,7 @@ class VrfGroups::VrfGroup::Vrfs : public ydk::Entity
 
         class Vrf; //type: VrfGroups::VrfGroup::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rsi_cfg::VrfGroups::VrfGroup::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // VrfGroups::VrfGroup::Vrfs
 
@@ -1647,15 +1698,6 @@ class SelectiveVrfDownload : public ydk::Entity
 
 }; // SelectiveVrfDownload
 
-class VrfSubAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf flow_spec;
-
-};
-
 class VrfAddressFamily : public ydk::Enum
 {
     public:
@@ -1672,6 +1714,15 @@ class SrlgPriority : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf low;
         static const ydk::Enum::YLeaf very_low;
+
+};
+
+class VrfSubAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf flow_spec;
 
 };
 

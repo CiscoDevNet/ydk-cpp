@@ -243,7 +243,7 @@ class Lmp::Clients : public ydk::Entity
 
         class Client; //type: Lmp::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_oper::Lmp::Clients::Client> > client;
+        ydk::YList client;
         
 }; // Lmp::Clients
 
@@ -340,7 +340,7 @@ class Lmp::GmplsUni::TeLinks : public ydk::Entity
 
         class TeLink; //type: Lmp::GmplsUni::TeLinks::TeLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_oper::Lmp::GmplsUni::TeLinks::TeLink> > te_link;
+        ydk::YList te_link;
         
 }; // Lmp::GmplsUni::TeLinks
 
@@ -702,7 +702,7 @@ class Lmp::GmplsUni::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Lmp::GmplsUni::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_oper::Lmp::GmplsUni::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Lmp::GmplsUni::Neighbors
 
@@ -738,8 +738,8 @@ class Lmp::GmplsUni::Neighbors::Neighbor : public ydk::Entity
         class Ipcc; //type: Lmp::GmplsUni::Neighbors::Neighbor::Ipcc
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_oper::Lmp::GmplsUni::Neighbors::Neighbor::NeighborAddress> neighbor_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_oper::Lmp::GmplsUni::Neighbors::Neighbor::TeLink> > te_link;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_oper::Lmp::GmplsUni::Neighbors::Neighbor::Ipcc> > ipcc;
+        ydk::YList te_link;
+        ydk::YList ipcc;
         
 }; // Lmp::GmplsUni::Neighbors::Neighbor
 
@@ -1284,7 +1284,7 @@ class Lmp::ComponentLinkIds : public ydk::Entity
 
         class ComponentLinkId; //type: Lmp::ComponentLinkIds::ComponentLinkId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_oper::Lmp::ComponentLinkIds::ComponentLinkId> > component_link_id;
+        ydk::YList component_link_id;
         
 }; // Lmp::ComponentLinkIds
 
@@ -1311,26 +1311,14 @@ class Lmp::ComponentLinkIds::ComponentLinkId : public ydk::Entity
 
 }; // Lmp::ComponentLinkIds::ComponentLinkId
 
-class OlmipccState : public ydk::Enum
+class OlmCompLinkImState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipcc_state_oir_removed;
-        static const ydk::Enum::YLeaf ipcc_state_admin_down;
-        static const ydk::Enum::YLeaf ipcc_state_down;
-        static const ydk::Enum::YLeaf ipcc_state_cfg_send;
-        static const ydk::Enum::YLeaf ipcc_state_cfg_rcv;
-        static const ydk::Enum::YLeaf ipcc_state_active;
-        static const ydk::Enum::YLeaf ipcc_state_up;
-        static const ydk::Enum::YLeaf ipcc_state_going_down;
-        static const ydk::Enum::YLeaf ipcc_state_unknown;
-
-};
-
-class OlmCompLinkLmpStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf comp_link_lmp_status_if_id_mismatch;
-        static const ydk::Enum::YLeaf comp_link_lmp_status_switch_cap_mismatch;
+        static const ydk::Enum::YLeaf comp_link_im_state_oir;
+        static const ydk::Enum::YLeaf comp_link_im_state_down;
+        static const ydk::Enum::YLeaf comp_link_im_state_admin_down;
+        static const ydk::Enum::YLeaf comp_link_im_state_up;
+        static const ydk::Enum::YLeaf comp_link_im_state_unknown;
 
 };
 
@@ -1353,40 +1341,6 @@ class OlmLinkEncoding : public ydk::Enum
 
 };
 
-class OlmteLinkLmpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf te_link_lmp_state_down;
-        static const ydk::Enum::YLeaf te_link_lmp_state_init;
-        static const ydk::Enum::YLeaf te_link_lmp_state_up;
-        static const ydk::Enum::YLeaf te_link_lmp_state_degraded;
-        static const ydk::Enum::YLeaf te_link_lmp_state_unknown;
-
-};
-
-class OlmCompLinkLmpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf comp_link_lmp_state_down;
-        static const ydk::Enum::YLeaf comp_link_lmp_state_test;
-        static const ydk::Enum::YLeaf comp_link_lmp_state_passive_test;
-        static const ydk::Enum::YLeaf comp_link_lmp_state_up_free;
-        static const ydk::Enum::YLeaf comp_link_lmp_state_up_allocated;
-        static const ydk::Enum::YLeaf comp_link_lmp_state_unknown;
-
-};
-
-class OlmCompLinkImState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf comp_link_im_state_oir;
-        static const ydk::Enum::YLeaf comp_link_im_state_down;
-        static const ydk::Enum::YLeaf comp_link_im_state_admin_down;
-        static const ydk::Enum::YLeaf comp_link_im_state_up;
-        static const ydk::Enum::YLeaf comp_link_im_state_unknown;
-
-};
-
 class OlmMuxCap : public ydk::Enum
 {
     public:
@@ -1402,13 +1356,33 @@ class OlmMuxCap : public ydk::Enum
 
 };
 
-class Olmipcc : public ydk::Enum
+class OlmCompLinkLmpStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipcc_type_global_routed;
-        static const ydk::Enum::YLeaf ipcc_type_global_if_bound;
-        static const ydk::Enum::YLeaf ipcc_type_ldcc_sdcc;
-        static const ydk::Enum::YLeaf ipcc_type_unknown;
+        static const ydk::Enum::YLeaf comp_link_lmp_status_if_id_mismatch;
+        static const ydk::Enum::YLeaf comp_link_lmp_status_switch_cap_mismatch;
+
+};
+
+class OlmAddrTypeId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown_address;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf unnumbered;
+
+};
+
+class OlmCompLinkLmpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf comp_link_lmp_state_down;
+        static const ydk::Enum::YLeaf comp_link_lmp_state_test;
+        static const ydk::Enum::YLeaf comp_link_lmp_state_passive_test;
+        static const ydk::Enum::YLeaf comp_link_lmp_state_up_free;
+        static const ydk::Enum::YLeaf comp_link_lmp_state_up_allocated;
+        static const ydk::Enum::YLeaf comp_link_lmp_state_unknown;
 
 };
 
@@ -1422,6 +1396,42 @@ class OlmObjectOwner : public ydk::Enum
 
 };
 
+class OlmteLinkLmpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf te_link_lmp_state_down;
+        static const ydk::Enum::YLeaf te_link_lmp_state_init;
+        static const ydk::Enum::YLeaf te_link_lmp_state_up;
+        static const ydk::Enum::YLeaf te_link_lmp_state_degraded;
+        static const ydk::Enum::YLeaf te_link_lmp_state_unknown;
+
+};
+
+class Olmipcc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipcc_type_global_routed;
+        static const ydk::Enum::YLeaf ipcc_type_global_if_bound;
+        static const ydk::Enum::YLeaf ipcc_type_ldcc_sdcc;
+        static const ydk::Enum::YLeaf ipcc_type_unknown;
+
+};
+
+class OlmipccState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipcc_state_oir_removed;
+        static const ydk::Enum::YLeaf ipcc_state_admin_down;
+        static const ydk::Enum::YLeaf ipcc_state_down;
+        static const ydk::Enum::YLeaf ipcc_state_cfg_send;
+        static const ydk::Enum::YLeaf ipcc_state_cfg_rcv;
+        static const ydk::Enum::YLeaf ipcc_state_active;
+        static const ydk::Enum::YLeaf ipcc_state_up;
+        static const ydk::Enum::YLeaf ipcc_state_going_down;
+        static const ydk::Enum::YLeaf ipcc_state_unknown;
+
+};
+
 class OlmRouterId : public ydk::Enum
 {
     public:
@@ -1431,16 +1441,6 @@ class OlmRouterId : public ydk::Enum
         static const ydk::Enum::YLeaf interface;
         static const ydk::Enum::YLeaf network_element;
         static const ydk::Enum::YLeaf unknown_type;
-
-};
-
-class OlmAddrTypeId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown_address;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf unnumbered;
 
 };
 

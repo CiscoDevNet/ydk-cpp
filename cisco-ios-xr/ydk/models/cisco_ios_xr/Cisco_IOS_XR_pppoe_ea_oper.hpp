@@ -57,7 +57,7 @@ class PppoeEa::Nodes : public ydk::Entity
 
         class Node; //type: PppoeEa::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pppoe_ea_oper::PppoeEa::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // PppoeEa::Nodes
 
@@ -107,7 +107,7 @@ class PppoeEa::Nodes::Node::ParentInterfaceIds : public ydk::Entity
 
         class ParentInterfaceId; //type: PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pppoe_ea_oper::PppoeEa::Nodes::Node::ParentInterfaceIds::ParentInterfaceId> > parent_interface_id;
+        ydk::YList parent_interface_id;
         
 }; // PppoeEa::Nodes::Node::ParentInterfaceIds
 
@@ -177,7 +177,7 @@ class PppoeEa::Nodes::Node::InterfaceIds : public ydk::Entity
 
         class InterfaceId; //type: PppoeEa::Nodes::Node::InterfaceIds::InterfaceId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_pppoe_ea_oper::PppoeEa::Nodes::Node::InterfaceIds::InterfaceId> > interface_id;
+        ydk::YList interface_id;
         
 }; // PppoeEa::Nodes::Node::InterfaceIds
 

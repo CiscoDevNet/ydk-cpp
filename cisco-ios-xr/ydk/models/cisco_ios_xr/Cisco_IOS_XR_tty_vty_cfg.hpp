@@ -57,7 +57,7 @@ class Vty::VtyPools : public ydk::Entity
 
         class VtyPool; //type: Vty::VtyPools::VtyPool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_tty_vty_cfg::Vty::VtyPools::VtyPool> > vty_pool;
+        ydk::YList vty_pool;
         
 }; // Vty::VtyPools
 
@@ -80,8 +80,8 @@ class Vty::VtyPools::VtyPool : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf pool_name; //type: string
-        ydk::YLeaf first_vty; //type: int32
-        ydk::YLeaf last_vty; //type: int32
+        ydk::YLeaf first_vty; //type: uint32
+        ydk::YLeaf last_vty; //type: uint32
         ydk::YLeaf line_template; //type: string
         ydk::YLeaf none; //type: string
 

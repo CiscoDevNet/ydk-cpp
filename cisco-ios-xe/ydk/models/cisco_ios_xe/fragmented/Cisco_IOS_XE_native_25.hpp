@@ -68,7 +68,7 @@ class Native::Interface::EmbeddedServiceEngine::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::HelloInterval> hello_interval;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::HoldTime> hold_time;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::HelperAddress> > helper_address;
+        ydk::YList helper_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::Pim> pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::Policy> policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::Rip> rip;
@@ -407,7 +407,7 @@ class Native::Interface::EmbeddedServiceEngine::Ip::Address : public ydk::Entity
         class Dhcp; //type: Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::Address::Primary> primary;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::Address::Secondary> > secondary;
+        ydk::YList secondary;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::Address::Dhcp> dhcp; // presence node
         
 }; // Native::Interface::EmbeddedServiceEngine::Ip::Address
@@ -931,7 +931,7 @@ class Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress : public ydk:
 
         class Eigrp; //type: Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress::Eigrp> > eigrp;
+        ydk::YList eigrp;
         
 }; // Native::Interface::EmbeddedServiceEngine::Ip::SummaryAddress
 
@@ -1155,7 +1155,7 @@ class Native::Interface::EmbeddedServiceEngine::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::Address> address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::Tcp> tcp;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::TrafficFilter> > traffic_filter;
+        ydk::YList traffic_filter;
         
 }; // Native::Interface::EmbeddedServiceEngine::Ipv6
 
@@ -1245,8 +1245,8 @@ class Native::Interface::EmbeddedServiceEngine::Ipv6::Address : public ydk::Enti
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Dhcp> dhcp; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::Address::Autoconfig> autoconfig; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::Address::PrefixList> > prefix_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Ipv6::Address::LinkLocalAddress> > link_local_address;
+        ydk::YList prefix_list;
+        ydk::YList link_local_address;
         
 }; // Native::Interface::EmbeddedServiceEngine::Ipv6::Address
 
@@ -1611,7 +1611,7 @@ class Native::Interface::EmbeddedServiceEngine::Standby : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Standby::Delay> delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Standby::UseBia> use_bia; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Standby::StandbyList> > standby_list;
+        ydk::YList standby_list;
                 class Version;
 
 }; // Native::Interface::EmbeddedServiceEngine::Standby
@@ -1701,7 +1701,7 @@ class Native::Interface::EmbeddedServiceEngine::Standby::StandbyList : public yd
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of enumeration, string
+        ydk::YLeaf ipv6; //type: one of string, enumeration
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -1717,7 +1717,7 @@ class Native::Interface::EmbeddedServiceEngine::Standby::StandbyList : public yd
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Preempt> preempt; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Redirect> redirect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Timers> timers;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::Standby::StandbyList::Track> > track;
+        ydk::YList track;
                 class Ipv6;
 
 }; // Native::Interface::EmbeddedServiceEngine::Standby::StandbyList
@@ -2654,7 +2654,7 @@ class Native::Interface::EmbeddedServiceEngine::RcvQueue : public ydk::Entity
 
         class CosMap; //type: Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine::RcvQueue::CosMap> > cos_map;
+        ydk::YList cos_map;
         
 }; // Native::Interface::EmbeddedServiceEngine::RcvQueue
 
@@ -2869,11 +2869,11 @@ class Native::Interface::FastEthernet : public ydk::Entity
         ydk::YLeaf max_reserved_bandwidth; //type: uint8
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf service_insertion; //type: ServiceInsertion
+        ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
         ydk::YLeaf channel_protocol; //type: ChannelProtocol
         ydk::YLeaf duplex; //type: Duplex
         ydk::YLeaf cisco_ios_xe_ethernet_macsec; //type: empty
         ydk::YLeaf nat66; //type: Nat66
-        ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
         class SwitchportConf; //type: Native::Interface::FastEthernet::SwitchportConf
         class Switchport; //type: Native::Interface::FastEthernet::Switchport
         class StackwiseVirtual; //type: Native::Interface::FastEthernet::StackwiseVirtual
@@ -2881,7 +2881,7 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class Backup; //type: Native::Interface::FastEthernet::Backup
         class Cemoudp; //type: Native::Interface::FastEthernet::Cemoudp
         class CwsTunnel; //type: Native::Interface::FastEthernet::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::FastEthernet::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::FastEthernet::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::FastEthernet::Encapsulation
         class FairQueueConf; //type: Native::Interface::FastEthernet::FairQueueConf
         class FairQueue; //type: Native::Interface::FastEthernet::FairQueue
@@ -2910,38 +2910,11 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class RcvQueue; //type: Native::Interface::FastEthernet::RcvQueue
         class Peer; //type: Native::Interface::FastEthernet::Peer
         class PmPath; //type: Native::Interface::FastEthernet::PmPath
-        class CarrierDelay; //type: Native::Interface::FastEthernet::CarrierDelay
-        class ChannelGroup; //type: Native::Interface::FastEthernet::ChannelGroup
-        class Ethernet; //type: Native::Interface::FastEthernet::Ethernet
-        class Negotiation; //type: Native::Interface::FastEthernet::Negotiation
-        class Eapol; //type: Native::Interface::FastEthernet::Eapol
-        class Synchronous; //type: Native::Interface::FastEthernet::Synchronous
-        class Speed; //type: Native::Interface::FastEthernet::Speed
-        class Plim; //type: Native::Interface::FastEthernet::Plim
-        class Pppoe; //type: Native::Interface::FastEthernet::Pppoe
-        class Service; //type: Native::Interface::FastEthernet::Service
-        class Lacp; //type: Native::Interface::FastEthernet::Lacp
-        class CiscoIOSXEEthernetMacsecOption; //type: Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption
-        class Xconnect; //type: Native::Interface::FastEthernet::Xconnect
-        class Cdp; //type: Native::Interface::FastEthernet::Cdp
-        class Snmp; //type: Native::Interface::FastEthernet::Snmp
-        class Crypto; //type: Native::Interface::FastEthernet::Crypto
-        class Cts; //type: Native::Interface::FastEthernet::Cts
-        class Dot1X; //type: Native::Interface::FastEthernet::Dot1X
-        class EtAnalytics; //type: Native::Interface::FastEthernet::EtAnalytics
-        class Performance; //type: Native::Interface::FastEthernet::Performance
-        class ServicePolicy; //type: Native::Interface::FastEthernet::ServicePolicy
         class FabricDomain; //type: Native::Interface::FastEthernet::FabricDomain
-        class Lisp; //type: Native::Interface::FastEthernet::Lisp
         class Lldp; //type: Native::Interface::FastEthernet::Lldp
-        class Mka; //type: Native::Interface::FastEthernet::Mka
-        class Mvrp; //type: Native::Interface::FastEthernet::Mvrp
-        class Ntp; //type: Native::Interface::FastEthernet::Ntp
-        class Ospfv3; //type: Native::Interface::FastEthernet::Ospfv3
-        class Power; //type: Native::Interface::FastEthernet::Power
-        class Authentication; //type: Native::Interface::FastEthernet::Authentication
-        class Mab; //type: Native::Interface::FastEthernet::Mab
-        class SpanningTree; //type: Native::Interface::FastEthernet::SpanningTree
+        class ServicePolicy; //type: Native::Interface::FastEthernet::ServicePolicy
+        class Utd; //type: Native::Interface::FastEthernet::Utd
+        class Dot1x; //type: Native::Interface::FastEthernet::Dot1x
         class Auto; //type: Native::Interface::FastEthernet::Auto
         class Datalink; //type: Native::Interface::FastEthernet::Datalink
         class Energywise; //type: Native::Interface::FastEthernet::Energywise
@@ -2955,10 +2928,37 @@ class Native::Interface::FastEthernet : public ydk::Entity
         class SrrQueue; //type: Native::Interface::FastEthernet::SrrQueue
         class CiscoIOSXESwitchMacsecOption; //type: Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption
         class DeviceTracking; //type: Native::Interface::FastEthernet::DeviceTracking
-        class Udld; //type: Native::Interface::FastEthernet::Udld
+        class Cts; //type: Native::Interface::FastEthernet::Cts
+        class Power; //type: Native::Interface::FastEthernet::Power
+        class Mka; //type: Native::Interface::FastEthernet::Mka
         class Umbrella; //type: Native::Interface::FastEthernet::Umbrella
-        class Utd; //type: Native::Interface::FastEthernet::Utd
+        class Snmp; //type: Native::Interface::FastEthernet::Snmp
+        class Performance; //type: Native::Interface::FastEthernet::Performance
+        class CarrierDelay; //type: Native::Interface::FastEthernet::CarrierDelay
+        class ChannelGroup; //type: Native::Interface::FastEthernet::ChannelGroup
+        class Ethernet; //type: Native::Interface::FastEthernet::Ethernet
+        class Negotiation; //type: Native::Interface::FastEthernet::Negotiation
+        class Eapol; //type: Native::Interface::FastEthernet::Eapol
+        class Synchronous; //type: Native::Interface::FastEthernet::Synchronous
+        class Speed; //type: Native::Interface::FastEthernet::Speed
+        class Plim; //type: Native::Interface::FastEthernet::Plim
+        class Pppoe; //type: Native::Interface::FastEthernet::Pppoe
+        class Service; //type: Native::Interface::FastEthernet::Service
+        class Lacp; //type: Native::Interface::FastEthernet::Lacp
+        class CiscoIOSXEEthernetMacsecOption; //type: Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption
+        class Xconnect; //type: Native::Interface::FastEthernet::Xconnect
+        class Mvrp; //type: Native::Interface::FastEthernet::Mvrp
+        class EtAnalytics; //type: Native::Interface::FastEthernet::EtAnalytics
+        class Lisp; //type: Native::Interface::FastEthernet::Lisp
         class ZoneMember; //type: Native::Interface::FastEthernet::ZoneMember
+        class Crypto; //type: Native::Interface::FastEthernet::Crypto
+        class Udld; //type: Native::Interface::FastEthernet::Udld
+        class Authentication; //type: Native::Interface::FastEthernet::Authentication
+        class Mab; //type: Native::Interface::FastEthernet::Mab
+        class Ospfv3; //type: Native::Interface::FastEthernet::Ospfv3
+        class SpanningTree; //type: Native::Interface::FastEthernet::SpanningTree
+        class Ntp; //type: Native::Interface::FastEthernet::Ntp
+        class Cdp; //type: Native::Interface::FastEthernet::Cdp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switchport> switchport;
@@ -2967,7 +2967,7 @@ class Native::Interface::FastEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::FairQueue> fair_queue;
@@ -2978,7 +2978,7 @@ class Native::Interface::FastEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Vrf> vrf;
@@ -2996,6 +2996,30 @@ class Native::Interface::FastEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::PmPath> pm_path;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::FabricDomain> fabric_domain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lldp> lldp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Auto> auto_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Datalink> datalink;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Energywise> energywise; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Location> location;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mac> mac;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Macro> macro;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::DualActive> dual_active;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::LoadBalancing> load_balancing;
+        ydk::YList vlan_range;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switch> switch_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SrrQueue> srr_queue;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::DeviceTracking> device_tracking;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Power> power;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mka> mka;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Umbrella> umbrella;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Snmp> snmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Performance> performance;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ethernet> ethernet;
@@ -3007,44 +3031,20 @@ class Native::Interface::FastEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lacp> lacp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption> cisco_ios_xe_ethernet_macsec_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CiscoIOSXEEthernetMacsecOption> cisco_ios_xe_ethernet_macsec_option_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cdp> cdp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Dot1X> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Performance> performance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::FabricDomain> fabric_domain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mka> mka;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mvrp> mvrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Power> power;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Udld> udld;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mab> mab; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ospfv3> ospfv3;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SpanningTree> spanning_tree;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Auto> auto_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Datalink> datalink;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Energywise> energywise; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Location> location;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Mac> mac;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Macro> macro;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::DualActive> dual_active;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::LoadBalancing> load_balancing;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::VlanRange> > vlan_range;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switch> switch_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::SrrQueue> srr_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::DeviceTracking> device_tracking;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Cdp> cdp;
                 class IfState;
         class ServiceInsertion;
         class ChannelProtocol;
@@ -3207,12 +3207,12 @@ class Native::Interface::FastEthernet::Switchport::Mode : public ydk::Entity
 
         ydk::YLeaf dynamic; //type: Dynamic
         class Access; //type: Native::Interface::FastEthernet::Switchport::Mode::Access
-        class Dot1QTunnel; //type: Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel
+        class Dot1qTunnel; //type: Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel
         class PrivateVlan; //type: Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan
         class Trunk; //type: Native::Interface::FastEthernet::Switchport::Mode::Trunk
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switchport::Mode::Access> access; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel> dot1q_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel> dot1q_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan> private_vlan;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Switchport::Mode::Trunk> trunk; // presence node
                 class Dynamic;
@@ -3240,11 +3240,11 @@ class Native::Interface::FastEthernet::Switchport::Mode::Access : public ydk::En
 }; // Native::Interface::FastEthernet::Switchport::Mode::Access
 
 
-class Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel : public ydk::Entity
+class Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel : public ydk::Entity
 {
     public:
-        Dot1QTunnel();
-        ~Dot1QTunnel();
+        Dot1qTunnel();
+        ~Dot1qTunnel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3257,7 +3257,7 @@ class Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::FastEthernet::Switchport::Mode::Dot1QTunnel
+}; // Native::Interface::FastEthernet::Switchport::Mode::Dot1qTunnel
 
 
 class Native::Interface::FastEthernet::Switchport::Mode::PrivateVlan : public ydk::Entity
@@ -3589,7 +3589,7 @@ class Native::Interface::FastEthernet::Switchport::Voice::Vlan : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration, string
+        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
         ydk::YLeaf name; //type: string
         class Vlan_;
 

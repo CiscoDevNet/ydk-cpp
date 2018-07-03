@@ -33,7 +33,7 @@ class CdpNeighborDetails : public ydk::Entity
 
         class CdpNeighborDetail; //type: CdpNeighborDetails::CdpNeighborDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_cdp_oper::CdpNeighborDetails::CdpNeighborDetail> > cdp_neighbor_detail;
+        ydk::YList cdp_neighbor_detail;
         
 }; // CdpNeighborDetails
 
@@ -185,6 +185,22 @@ class CdpNeighborDetails::CdpNeighborDetail::SparePair : public ydk::Entity
 
 }; // CdpNeighborDetails::CdpNeighborDetail::SparePair
 
+class CdpEnableDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_disable;
+        static const ydk::Enum::YLeaf cdp_enable;
+
+};
+
+class CdpYesNo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_no;
+        static const ydk::Enum::YLeaf cdp_yes;
+
+};
+
 class CdpDuplex : public ydk::Enum
 {
     public:
@@ -193,15 +209,6 @@ class CdpDuplex : public ydk::Enum
         static const ydk::Enum::YLeaf cdp_full_duplex;
         static const ydk::Enum::YLeaf cdp_half_duplex_mismatch;
         static const ydk::Enum::YLeaf cdp_full_duplex_mismatch;
-
-};
-
-class CdpAdvVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_advertised_none;
-        static const ydk::Enum::YLeaf cdp_advertised_v1;
-        static const ydk::Enum::YLeaf cdp_advertised_v2;
 
 };
 
@@ -215,19 +222,12 @@ class CdpUnidirectionalMode : public ydk::Enum
 
 };
 
-class CdpYesNo : public ydk::Enum
+class CdpAdvVersion : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdp_no;
-        static const ydk::Enum::YLeaf cdp_yes;
-
-};
-
-class CdpEnableDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_disable;
-        static const ydk::Enum::YLeaf cdp_enable;
+        static const ydk::Enum::YLeaf cdp_advertised_none;
+        static const ydk::Enum::YLeaf cdp_advertised_v1;
+        static const ydk::Enum::YLeaf cdp_advertised_v2;
 
 };
 

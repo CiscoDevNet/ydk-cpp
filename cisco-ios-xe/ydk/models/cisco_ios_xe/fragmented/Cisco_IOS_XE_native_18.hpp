@@ -2821,7 +2821,7 @@ class Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp : public ydk:
 
         class Dscp; //type: Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp::Dscp> > dscp;
+        ydk::YList dscp;
         
 }; // Native::Policy::PolicyMap::Class::ActionList::QueueLimitDscp
 
@@ -2881,7 +2881,7 @@ class Native::Policy::PolicyMap::Class::ActionList::RandomDetect : public ydk::E
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Aggregate> aggregate; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Cos> cos;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::DiscardClass> discard_class;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp> > dscp;
+        ydk::YList dscp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence> precedence;
         
 }; // Native::Policy::PolicyMap::Class::ActionList::RandomDetect
@@ -3480,46 +3480,46 @@ class Native::Interface : public ydk::Entity
         class Vasileft; //type: Native::Interface::Vasileft
         class Vasiright; //type: Native::Interface::Vasiright
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress> > appnav_compress;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavUnCompress> > appnav_uncompress;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM> > atm;
+        ydk::YList appnav_compress;
+        ydk::YList appnav_uncompress;
+        ydk::YList atm;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface> atm_subinterface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACR> > atm_acr;
+        ydk::YList atm_acr;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMACRsubinterface> atm_acrsubinterface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::BDI> > bdi;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::CEM> > cem;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::CEMACR> > cem_acr;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EmbeddedServiceEngine> > embedded_service_engine;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet> > fastethernet;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ucse> > ucse;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::EthernetInternal> > ethernet_internal;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ServiceEngine> > service_engine;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet> > gigabitethernet;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwoGigabitEthernet> > twogigabitethernet;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet> > fivegigabitethernet;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet> > tengigabitethernet;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE> > twentyfivegige;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FortyGigabitEthernet> > fortygigabitethernet;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE> > hundredgige;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Loopback> > loopback;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISP> > lisp;
+        ydk::YList bdi;
+        ydk::YList cem;
+        ydk::YList cem_acr;
+        ydk::YList embedded_service_engine;
+        ydk::YList fastethernet;
+        ydk::YList ucse;
+        ydk::YList ethernet_internal;
+        ydk::YList service_engine;
+        ydk::YList gigabitethernet;
+        ydk::YList twogigabitethernet;
+        ydk::YList fivegigabitethernet;
+        ydk::YList tengigabitethernet;
+        ydk::YList twentyfivegige;
+        ydk::YList fortygigabitethernet;
+        ydk::YList hundredgige;
+        ydk::YList loopback;
+        ydk::YList lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::LISPSubinterface> lisp_subinterface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Nve> > nve;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Overlay> > overlay;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel> > port_channel;
+        ydk::YList nve;
+        ydk::YList overlay;
+        ydk::YList port_channel;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannelSubinterface> port_channel_subinterface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Pseudowire> > pseudowire;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::SM> > sm;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular> > cellular;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan> > vlan;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GroupAsync> > group_async;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Multilink> > multilink;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial> > serial;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel> > tunnel;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate> > virtual_template;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup> > virtualportgroup;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasileft> > vasileft;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright> > vasiright;
+        ydk::YList pseudowire;
+        ydk::YList sm;
+        ydk::YList cellular;
+        ydk::YList vlan;
+        ydk::YList group_async;
+        ydk::YList multilink;
+        ydk::YList serial;
+        ydk::YList tunnel;
+        ydk::YList virtual_template;
+        ydk::YList virtualportgroup;
+        ydk::YList vasileft;
+        ydk::YList vasiright;
         
 }; // Native::Interface
 
@@ -3559,7 +3559,7 @@ class Native::Interface::AppNavCompress : public ydk::Entity
         class Backup; //type: Native::Interface::AppNavCompress::Backup
         class Cemoudp; //type: Native::Interface::AppNavCompress::Cemoudp
         class CwsTunnel; //type: Native::Interface::AppNavCompress::CwsTunnel
-        class L2ProtocolTunnel; //type: Native::Interface::AppNavCompress::L2ProtocolTunnel
+        class L2protocolTunnel; //type: Native::Interface::AppNavCompress::L2protocolTunnel
         class Encapsulation; //type: Native::Interface::AppNavCompress::Encapsulation
         class FairQueueConf; //type: Native::Interface::AppNavCompress::FairQueueConf
         class FairQueue; //type: Native::Interface::AppNavCompress::FairQueue
@@ -3596,7 +3596,7 @@ class Native::Interface::AppNavCompress : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Backup> backup;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Cemoudp> cemoudp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::CwsTunnel> cws_tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::L2ProtocolTunnel> l2protocol_tunnel; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::L2protocolTunnel> l2protocol_tunnel; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Encapsulation> encapsulation;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::FairQueueConf> fair_queue_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::FairQueue> fair_queue;
@@ -3607,7 +3607,7 @@ class Native::Interface::AppNavCompress : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Bandwidth> bandwidth;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Dampening> dampening;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Domain> domain;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::HoldQueue> > hold_queue;
+        ydk::YList hold_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::AppNavCompress::Vrf> vrf;

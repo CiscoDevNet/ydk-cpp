@@ -117,7 +117,7 @@ class Pmipv6::Lma::Statistics::CustomerStatistics : public ydk::Entity
 
         class CustomerStatistic; //type: Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::Statistics::CustomerStatistics::CustomerStatistic> > customer_statistic;
+        ydk::YList customer_statistic;
         
 }; // Pmipv6::Lma::Statistics::CustomerStatistics
 
@@ -777,7 +777,7 @@ class Pmipv6::Lma::Statistics::MagStatistics : public ydk::Entity
 
         class MagStatistic; //type: Pmipv6::Lma::Statistics::MagStatistics::MagStatistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::Statistics::MagStatistics::MagStatistic> > mag_statistic;
+        ydk::YList mag_statistic;
         
 }; // Pmipv6::Lma::Statistics::MagStatistics
 
@@ -1058,7 +1058,7 @@ class Pmipv6::Lma::Bindings : public ydk::Entity
 
         class Binding; //type: Pmipv6::Lma::Bindings::Binding
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::Bindings::Binding> > binding;
+        ydk::YList binding;
         
 }; // Pmipv6::Lma::Bindings
 
@@ -1113,9 +1113,9 @@ class Pmipv6::Lma::Bindings::Binding : public ydk::Entity
         class DmnpV4; //type: Pmipv6::Lma::Bindings::Binding::DmnpV4
         class DmnpV6; //type: Pmipv6::Lma::Bindings::Binding::DmnpV6
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::Bindings::Binding::Coa> > coa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::Bindings::Binding::DmnpV4> > dmnp_v4;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::Bindings::Binding::DmnpV6> > dmnp_v6;
+        ydk::YList coa;
+        ydk::YList dmnp_v4;
+        ydk::YList dmnp_v6;
         
 }; // Pmipv6::Lma::Bindings::Binding
 
@@ -1227,7 +1227,7 @@ class Pmipv6::Lma::Heartbeats : public ydk::Entity
 
         class Heartbeat; //type: Pmipv6::Lma::Heartbeats::Heartbeat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::Heartbeats::Heartbeat> > heartbeat;
+        ydk::YList heartbeat;
         
 }; // Pmipv6::Lma::Heartbeats
 
@@ -1309,7 +1309,7 @@ class Pmipv6::Lma::ConfigVariables::CustomerVariables : public ydk::Entity
 
         class CustomerVariable; //type: Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::ConfigVariables::CustomerVariables::CustomerVariable> > customer_variable;
+        ydk::YList customer_variable;
         
 }; // Pmipv6::Lma::ConfigVariables::CustomerVariables
 
@@ -1417,10 +1417,10 @@ class Pmipv6::Lma::ConfigVariables::GlobalVariables : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::ConfigVariables::GlobalVariables::Parameters> parameters;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::ConfigVariables::GlobalVariables::MllService> mll_service;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf> > intf;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer> > peer;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::ConfigVariables::GlobalVariables::Network> > network;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_oper::Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust> > cust;
+        ydk::YList intf;
+        ydk::YList peer;
+        ydk::YList network;
+        ydk::YList cust;
         
 }; // Pmipv6::Lma::ConfigVariables::GlobalVariables
 
@@ -1631,6 +1631,18 @@ class Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust : public ydk::Entity
 
 }; // Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust
 
+class Pmipv6Role : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf wlan;
+        static const ydk::Enum::YLeaf gpp;
+        static const ydk::Enum::YLeaf lte;
+        static const ydk::Enum::YLeaf wi_max;
+        static const ydk::Enum::YLeaf gma;
+        static const ydk::Enum::YLeaf rmax;
+
+};
+
 class Pmipv6Encap : public ydk::Enum
 {
     public:
@@ -1656,18 +1668,6 @@ class Pmipv6Addr : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf pmipv6_addr_ipv4_ipv6;
-
-};
-
-class Pmipv6Role : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf wlan;
-        static const ydk::Enum::YLeaf gpp;
-        static const ydk::Enum::YLeaf lte;
-        static const ydk::Enum::YLeaf wi_max;
-        static const ydk::Enum::YLeaf gma;
-        static const ydk::Enum::YLeaf rmax;
 
 };
 

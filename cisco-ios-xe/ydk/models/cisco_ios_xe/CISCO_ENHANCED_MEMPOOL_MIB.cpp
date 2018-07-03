@@ -13,17 +13,17 @@ namespace CISCO_ENHANCED_MEMPOOL_MIB {
 
 CISCOENHANCEDMEMPOOLMIB::CISCOENHANCEDMEMPOOLMIB()
     :
-    cempnotificationconfig(std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig>())
-	,cempmempooltable(std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmempooltable>())
-	,cempmembufferpooltable(std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable>())
-	,cempmembuffercachepooltable(std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable>())
+    cempnotificationconfig(std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig>())
+    , cempmempooltable(std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable>())
+    , cempmembufferpooltable(std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable>())
+    , cempmembuffercachepooltable(std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable>())
 {
     cempnotificationconfig->parent = this;
     cempmempooltable->parent = this;
     cempmembufferpooltable->parent = this;
     cempmembuffercachepooltable->parent = this;
 
-    yang_name = "CISCO-ENHANCED-MEMPOOL-MIB"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-ENHANCED-MEMPOOL-MIB"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOENHANCEDMEMPOOLMIB::~CISCOENHANCEDMEMPOOLMIB()
@@ -32,6 +32,7 @@ CISCOENHANCEDMEMPOOLMIB::~CISCOENHANCEDMEMPOOLMIB()
 
 bool CISCOENHANCEDMEMPOOLMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cempnotificationconfig !=  nullptr && cempnotificationconfig->has_data())
 	|| (cempmempooltable !=  nullptr && cempmempooltable->has_data())
 	|| (cempmembufferpooltable !=  nullptr && cempmembufferpooltable->has_data())
@@ -69,7 +70,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::st
     {
         if(cempnotificationconfig == nullptr)
         {
-            cempnotificationconfig = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig>();
+            cempnotificationconfig = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig>();
         }
         return cempnotificationconfig;
     }
@@ -78,7 +79,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::st
     {
         if(cempmempooltable == nullptr)
         {
-            cempmempooltable = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmempooltable>();
+            cempmempooltable = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable>();
         }
         return cempmempooltable;
     }
@@ -87,7 +88,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::st
     {
         if(cempmembufferpooltable == nullptr)
         {
-            cempmembufferpooltable = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable>();
+            cempmembufferpooltable = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable>();
         }
         return cempmembufferpooltable;
     }
@@ -96,7 +97,7 @@ std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::get_child_by_name(const std::st
     {
         if(cempmembuffercachepooltable == nullptr)
         {
-            cempmembuffercachepooltable = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable>();
+            cempmembuffercachepooltable = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable>();
         }
         return cempmembuffercachepooltable;
     }
@@ -171,44 +172,45 @@ bool CISCOENHANCEDMEMPOOLMIB::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::Cempnotificationconfig()
+CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::CempNotificationConfig()
     :
     cempmembuffernotifyenabled{YType::boolean, "cempMemBufferNotifyEnabled"}
 {
 
-    yang_name = "cempNotificationConfig"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cempNotificationConfig"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::~Cempnotificationconfig()
+CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::~CempNotificationConfig()
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::has_data() const
+bool CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return cempmembuffernotifyenabled.is_set;
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::has_operation() const
+bool CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cempmembuffernotifyenabled.yfilter);
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::get_absolute_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENHANCED-MEMPOOL-MIB:CISCO-ENHANCED-MEMPOOL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::get_segment_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cempNotificationConfig";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -218,19 +220,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempnoti
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cempMemBufferNotifyEnabled")
     {
@@ -240,7 +242,7 @@ void CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::set_value(const std::strin
     }
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cempMemBufferNotifyEnabled")
     {
@@ -248,26 +250,29 @@ void CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::set_filter(const std::stri
     }
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempnotificationconfig::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENHANCEDMEMPOOLMIB::CempNotificationConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cempMemBufferNotifyEnabled")
         return true;
     return false;
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempooltable()
+CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolTable()
+    :
+    cempmempoolentry(this, {"entphysicalindex", "cempmempoolindex"})
 {
 
-    yang_name = "cempMemPoolTable"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cempMemPoolTable"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::~Cempmempooltable()
+CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::~CempMemPoolTable()
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::has_data() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::has_data() const
 {
-    for (std::size_t index=0; index<cempmempoolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cempmempoolentry.len(); index++)
     {
         if(cempmempoolentry[index]->has_data())
             return true;
@@ -275,9 +280,9 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::has_data() const
     return false;
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::has_operation() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::has_operation() const
 {
-    for (std::size_t index=0; index<cempmempoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmempoolentry.len(); index++)
     {
         if(cempmempoolentry[index]->has_operation())
             return true;
@@ -285,21 +290,21 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_absolute_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENHANCED-MEMPOOL-MIB:CISCO-ENHANCED-MEMPOOL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_segment_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cempMemPoolTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -308,25 +313,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmemp
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cempMemPoolEntry")
     {
-        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry>();
+        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry>();
         c->parent = this;
-        cempmempoolentry.push_back(c);
+        cempmempoolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cempmempoolentry)
+    for (auto c : cempmempoolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -337,22 +342,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmemp
     return children;
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cempMemPoolEntry")
         return true;
     return false;
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::Cempmempoolentry()
+CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::CempMemPoolEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cempmempoolindex{YType::int32, "cempMemPoolIndex"},
@@ -385,15 +390,16 @@ CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::Cempmempoolentry()
     cempmempoolhcshared{YType::uint64, "cempMemPoolHCShared"}
 {
 
-    yang_name = "cempMemPoolEntry"; yang_parent_name = "cempMemPoolTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cempMemPoolEntry"; yang_parent_name = "cempMemPoolTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::~Cempmempoolentry()
+CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::~CempMemPoolEntry()
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::has_data() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cempmempoolindex.is_set
 	|| cempmempooltype.is_set
@@ -425,7 +431,7 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::has_data() con
 	|| cempmempoolhcshared.is_set;
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::has_operation() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -459,21 +465,23 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::has_operation(
 	|| ydk::is_set(cempmempoolhcshared.yfilter);
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::get_absolute_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENHANCED-MEMPOOL-MIB:CISCO-ENHANCED-MEMPOOL-MIB/cempMemPoolTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::get_segment_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cempMemPoolEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cempMemPoolIndex='" <<cempmempoolindex <<"']";
+    path_buffer << "cempMemPoolEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cempmempoolindex, "cempMemPoolIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -511,19 +519,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmemp
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -701,7 +709,7 @@ void CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::set_value(cons
     }
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -821,26 +829,29 @@ void CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::set_filter(con
     }
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmempooltable::Cempmempoolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemPoolTable::CempMemPoolEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cempMemPoolIndex" || name == "cempMemPoolType" || name == "cempMemPoolName" || name == "cempMemPoolPlatformMemory" || name == "cempMemPoolAlternate" || name == "cempMemPoolValid" || name == "cempMemPoolUsed" || name == "cempMemPoolFree" || name == "cempMemPoolLargestFree" || name == "cempMemPoolLowestFree" || name == "cempMemPoolUsedLowWaterMark" || name == "cempMemPoolAllocHit" || name == "cempMemPoolAllocMiss" || name == "cempMemPoolFreeHit" || name == "cempMemPoolFreeMiss" || name == "cempMemPoolShared" || name == "cempMemPoolUsedOvrflw" || name == "cempMemPoolHCUsed" || name == "cempMemPoolFreeOvrflw" || name == "cempMemPoolHCFree" || name == "cempMemPoolLargestFreeOvrflw" || name == "cempMemPoolHCLargestFree" || name == "cempMemPoolLowestFreeOvrflw" || name == "cempMemPoolHCLowestFree" || name == "cempMemPoolUsedLowWaterMarkOvrflw" || name == "cempMemPoolHCUsedLowWaterMark" || name == "cempMemPoolSharedOvrflw" || name == "cempMemPoolHCShared")
         return true;
     return false;
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpooltable()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolTable()
+    :
+    cempmembufferpoolentry(this, {"entphysicalindex", "cempmembufferpoolindex"})
 {
 
-    yang_name = "cempMemBufferPoolTable"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cempMemBufferPoolTable"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::~Cempmembufferpooltable()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::~CempMemBufferPoolTable()
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::has_data() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::has_data() const
 {
-    for (std::size_t index=0; index<cempmembufferpoolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cempmembufferpoolentry.len(); index++)
     {
         if(cempmembufferpoolentry[index]->has_data())
             return true;
@@ -848,9 +859,9 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::has_data() const
     return false;
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::has_operation() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::has_operation() const
 {
-    for (std::size_t index=0; index<cempmembufferpoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmembufferpoolentry.len(); index++)
     {
         if(cempmembufferpoolentry[index]->has_operation())
             return true;
@@ -858,21 +869,21 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_absolute_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENHANCED-MEMPOOL-MIB:CISCO-ENHANCED-MEMPOOL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_segment_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cempMemBufferPoolTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -881,25 +892,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmemb
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cempMemBufferPoolEntry")
     {
-        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry>();
+        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry>();
         c->parent = this;
-        cempmembufferpoolentry.push_back(c);
+        cempmembufferpoolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cempmembufferpoolentry)
+    for (auto c : cempmembufferpoolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -910,22 +921,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmemb
     return children;
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cempMemBufferPoolEntry")
         return true;
     return false;
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::Cempmembufferpoolentry()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::CempMemBufferPoolEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cempmembufferpoolindex{YType::uint32, "cempMemBufferPoolIndex"},
@@ -952,15 +963,16 @@ CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::Cempmem
     cempmembuffernostorage{YType::uint32, "cempMemBufferNoStorage"}
 {
 
-    yang_name = "cempMemBufferPoolEntry"; yang_parent_name = "cempMemBufferPoolTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cempMemBufferPoolEntry"; yang_parent_name = "cempMemBufferPoolTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::~Cempmembufferpoolentry()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::~CempMemBufferPoolEntry()
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::has_data() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cempmembufferpoolindex.is_set
 	|| cempmembuffermempoolindex.is_set
@@ -986,7 +998,7 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::ha
 	|| cempmembuffernostorage.is_set;
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::has_operation() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1014,21 +1026,23 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::ha
 	|| ydk::is_set(cempmembuffernostorage.yfilter);
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::get_absolute_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENHANCED-MEMPOOL-MIB:CISCO-ENHANCED-MEMPOOL-MIB/cempMemBufferPoolTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::get_segment_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cempMemBufferPoolEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cempMemBufferPoolIndex='" <<cempmembufferpoolindex <<"']";
+    path_buffer << "cempMemBufferPoolEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cempmembufferpoolindex, "cempMemBufferPoolIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1060,19 +1074,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmemb
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1214,7 +1228,7 @@ void CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::se
     }
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1310,26 +1324,29 @@ void CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::se
     }
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembufferpooltable::Cempmembufferpoolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferPoolTable::CempMemBufferPoolEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cempMemBufferPoolIndex" || name == "cempMemBufferMemPoolIndex" || name == "cempMemBufferName" || name == "cempMemBufferDynamic" || name == "cempMemBufferSize" || name == "cempMemBufferMin" || name == "cempMemBufferMax" || name == "cempMemBufferPermanent" || name == "cempMemBufferTransient" || name == "cempMemBufferTotal" || name == "cempMemBufferFree" || name == "cempMemBufferHit" || name == "cempMemBufferMiss" || name == "cempMemBufferFreeHit" || name == "cempMemBufferFreeMiss" || name == "cempMemBufferPermChange" || name == "cempMemBufferPeak" || name == "cempMemBufferPeakTime" || name == "cempMemBufferTrim" || name == "cempMemBufferGrow" || name == "cempMemBufferFailures" || name == "cempMemBufferNoStorage")
         return true;
     return false;
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepooltable()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolTable()
+    :
+    cempmembuffercachepoolentry(this, {"entphysicalindex", "cempmembufferpoolindex"})
 {
 
-    yang_name = "cempMemBufferCachePoolTable"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cempMemBufferCachePoolTable"; yang_parent_name = "CISCO-ENHANCED-MEMPOOL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::~Cempmembuffercachepooltable()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::~CempMemBufferCachePoolTable()
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::has_data() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::has_data() const
 {
-    for (std::size_t index=0; index<cempmembuffercachepoolentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cempmembuffercachepoolentry.len(); index++)
     {
         if(cempmembuffercachepoolentry[index]->has_data())
             return true;
@@ -1337,9 +1354,9 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::has_data() const
     return false;
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::has_operation() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::has_operation() const
 {
-    for (std::size_t index=0; index<cempmembuffercachepoolentry.size(); index++)
+    for (std::size_t index=0; index<cempmembuffercachepoolentry.len(); index++)
     {
         if(cempmembuffercachepoolentry[index]->has_operation())
             return true;
@@ -1347,21 +1364,21 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::get_absolute_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENHANCED-MEMPOOL-MIB:CISCO-ENHANCED-MEMPOOL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::get_segment_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cempMemBufferCachePoolTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1370,25 +1387,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmemb
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cempMemBufferCachePoolEntry")
     {
-        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry>();
+        auto c = std::make_shared<CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry>();
         c->parent = this;
-        cempmembuffercachepoolentry.push_back(c);
+        cempmembuffercachepoolentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cempmembuffercachepoolentry)
+    for (auto c : cempmembuffercachepoolentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1399,22 +1416,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmemb
     return children;
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cempMemBufferCachePoolEntry")
         return true;
     return false;
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::Cempmembuffercachepoolentry()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::CempMemBufferCachePoolEntry()
     :
     entphysicalindex{YType::str, "entPhysicalIndex"},
     cempmembufferpoolindex{YType::str, "cempMemBufferPoolIndex"},
@@ -1427,15 +1444,16 @@ CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentr
     cempmembuffercachethresholdcount{YType::uint32, "cempMemBufferCacheThresholdCount"}
 {
 
-    yang_name = "cempMemBufferCachePoolEntry"; yang_parent_name = "cempMemBufferCachePoolTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cempMemBufferCachePoolEntry"; yang_parent_name = "cempMemBufferCachePoolTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::~Cempmembuffercachepoolentry()
+CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::~CempMemBufferCachePoolEntry()
 {
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::has_data() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return entphysicalindex.is_set
 	|| cempmembufferpoolindex.is_set
 	|| cempmembuffercachesize.is_set
@@ -1447,7 +1465,7 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoo
 	|| cempmembuffercachethresholdcount.is_set;
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::has_operation() const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(entphysicalindex.yfilter)
@@ -1461,21 +1479,23 @@ bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoo
 	|| ydk::is_set(cempmembuffercachethresholdcount.yfilter);
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::get_absolute_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-ENHANCED-MEMPOOL-MIB:CISCO-ENHANCED-MEMPOOL-MIB/cempMemBufferCachePoolTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::get_segment_path() const
+std::string CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cempMemBufferCachePoolEntry" <<"[entPhysicalIndex='" <<entphysicalindex <<"']" <<"[cempMemBufferPoolIndex='" <<cempmembufferpoolindex <<"']";
+    path_buffer << "cempMemBufferCachePoolEntry";
+    ADD_KEY_TOKEN(entphysicalindex, "entPhysicalIndex");
+    ADD_KEY_TOKEN(cempmembufferpoolindex, "cempMemBufferPoolIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1493,19 +1513,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOENHANCEDMEMPOOLMIB::Cempmemb
 
 }
 
-std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1563,7 +1583,7 @@ void CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoo
     }
 }
 
-void CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "entPhysicalIndex")
     {
@@ -1603,7 +1623,7 @@ void CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoo
     }
 }
 
-bool CISCOENHANCEDMEMPOOLMIB::Cempmembuffercachepooltable::Cempmembuffercachepoolentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOENHANCEDMEMPOOLMIB::CempMemBufferCachePoolTable::CempMemBufferCachePoolEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "entPhysicalIndex" || name == "cempMemBufferPoolIndex" || name == "cempMemBufferCacheSize" || name == "cempMemBufferCacheTotal" || name == "cempMemBufferCacheUsed" || name == "cempMemBufferCacheHit" || name == "cempMemBufferCacheMiss" || name == "cempMemBufferCacheThreshold" || name == "cempMemBufferCacheThresholdCount")
         return true;

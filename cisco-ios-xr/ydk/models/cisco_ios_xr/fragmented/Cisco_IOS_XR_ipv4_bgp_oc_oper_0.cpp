@@ -18,7 +18,7 @@ OcBgp::OcBgp()
 {
     bgp_rib->parent = this;
 
-    yang_name = "oc-bgp"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-oc-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "oc-bgp"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-oc-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 OcBgp::~OcBgp()
@@ -27,6 +27,7 @@ OcBgp::~OcBgp()
 
 bool OcBgp::has_data() const
 {
+    if (is_presence_container) return true;
     return (bgp_rib !=  nullptr && bgp_rib->has_data());
 }
 
@@ -124,7 +125,7 @@ OcBgp::BgpRib::BgpRib()
 {
     afi_safi_table->parent = this;
 
-    yang_name = "bgp-rib"; yang_parent_name = "oc-bgp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bgp-rib"; yang_parent_name = "oc-bgp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::~BgpRib()
@@ -133,6 +134,7 @@ OcBgp::BgpRib::~BgpRib()
 
 bool OcBgp::BgpRib::has_data() const
 {
+    if (is_presence_container) return true;
     return (afi_safi_table !=  nullptr && afi_safi_table->has_data());
 }
 
@@ -209,12 +211,12 @@ bool OcBgp::BgpRib::has_leaf_or_child_of_name(const std::string & name) const
 OcBgp::BgpRib::AfiSafiTable::AfiSafiTable()
     :
     ipv4_unicast(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast>())
-	,ipv6_unicast(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast>())
+    , ipv6_unicast(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast>())
 {
     ipv4_unicast->parent = this;
     ipv6_unicast->parent = this;
 
-    yang_name = "afi-safi-table"; yang_parent_name = "bgp-rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "afi-safi-table"; yang_parent_name = "bgp-rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::~AfiSafiTable()
@@ -223,6 +225,7 @@ OcBgp::BgpRib::AfiSafiTable::~AfiSafiTable()
 
 bool OcBgp::BgpRib::AfiSafiTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4_unicast !=  nullptr && ipv4_unicast->has_data())
 	|| (ipv6_unicast !=  nullptr && ipv6_unicast->has_data());
 }
@@ -315,12 +318,12 @@ bool OcBgp::BgpRib::AfiSafiTable::has_leaf_or_child_of_name(const std::string & 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::Ipv4Unicast()
     :
     loc_rib(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib>())
-	,open_config_neighbors(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors>())
+    , open_config_neighbors(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors>())
 {
     loc_rib->parent = this;
     open_config_neighbors->parent = this;
 
-    yang_name = "ipv4-unicast"; yang_parent_name = "afi-safi-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-unicast"; yang_parent_name = "afi-safi-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::~Ipv4Unicast()
@@ -329,6 +332,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::~Ipv4Unicast()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (loc_rib !=  nullptr && loc_rib->has_data())
 	|| (open_config_neighbors !=  nullptr && open_config_neighbors->has_data());
 }
@@ -421,12 +425,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::has_leaf_or_child_of_name(const s
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::LocRib()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "loc-rib"; yang_parent_name = "ipv4-unicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loc-rib"; yang_parent_name = "ipv4-unicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::~LocRib()
@@ -435,6 +439,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::~LocRib()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -525,9 +530,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::has_leaf_or_child_of_name
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::~Routes()
@@ -536,7 +543,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::~Routes()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -546,7 +554,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::has_data() const
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -583,7 +591,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -595,7 +603,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -625,16 +633,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::Route()
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -642,7 +650,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::Route()
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::~Route()
@@ -651,6 +659,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::~Route()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -869,12 +878,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::has_leaf_o
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::~PrefixName()
@@ -883,6 +892,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::~Pr
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -976,7 +986,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::Pre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -985,6 +995,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::Pre
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1089,14 +1100,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -1105,7 +1117,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -1122,7 +1135,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrL
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -1191,7 +1204,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -1213,7 +1226,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1306,7 +1319,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -1315,6 +1328,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -1418,7 +1432,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -1427,6 +1441,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -1528,7 +1543,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::Community::~Community()
@@ -1537,6 +1552,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -1613,9 +1629,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesLi
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -1624,12 +1643,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesLi
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -1646,12 +1666,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttribu
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -1702,7 +1722,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -1710,7 +1730,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -1722,7 +1742,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1731,7 +1751,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1800,7 +1820,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesLi
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -1809,6 +1829,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesLi
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -1886,7 +1907,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesLi
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -1895,6 +1916,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesLi
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -1996,7 +2018,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastModifiedDat
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -2005,6 +2027,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastModifiedDat
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -2080,7 +2103,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastUpdateRecie
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -2089,6 +2112,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastUpdateRecie
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -2164,7 +2188,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::NumRoutes::NumRoutes()
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "num-routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::NumRoutes::~NumRoutes()
@@ -2173,6 +2197,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::NumRoutes::~NumRoutes()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -2244,9 +2269,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::NumRoutes::has_leaf_or_ch
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbors()
+    :
+    open_config_neighbor(this, {"neighbor_address"})
 {
 
-    yang_name = "open-config-neighbors"; yang_parent_name = "ipv4-unicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "open-config-neighbors"; yang_parent_name = "ipv4-unicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::~OpenConfigNeighbors()
@@ -2255,7 +2282,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::~OpenConfigNeighb
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<open_config_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<open_config_neighbor.len(); index++)
     {
         if(open_config_neighbor[index]->has_data())
             return true;
@@ -2265,7 +2293,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::has_data() c
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<open_config_neighbor.size(); index++)
+    for (std::size_t index=0; index<open_config_neighbor.len(); index++)
     {
         if(open_config_neighbor[index]->has_operation())
             return true;
@@ -2302,7 +2330,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor>();
         c->parent = this;
-        open_config_neighbor.push_back(c);
+        open_config_neighbor.append(c);
         return c;
     }
 
@@ -2314,7 +2342,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : open_config_neighbor)
+    for (auto c : open_config_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2343,18 +2371,18 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::has_leaf_or_
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::OpenConfigNeighbor()
     :
     neighbor_address{YType::str, "neighbor-address"}
-    	,
+        ,
     adj_rib_in_post(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost>())
-	,adj_rib_out_post(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost>())
-	,adj_rib_out_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre>())
-	,adj_rib_in_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre>())
+    , adj_rib_out_post(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost>())
+    , adj_rib_out_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre>())
+    , adj_rib_in_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre>())
 {
     adj_rib_in_post->parent = this;
     adj_rib_out_post->parent = this;
     adj_rib_out_pre->parent = this;
     adj_rib_in_pre->parent = this;
 
-    yang_name = "open-config-neighbor"; yang_parent_name = "open-config-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "open-config-neighbor"; yang_parent_name = "open-config-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::~OpenConfigNeighbor()
@@ -2363,6 +2391,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set
 	|| (adj_rib_in_post !=  nullptr && adj_rib_in_post->has_data())
 	|| (adj_rib_out_post !=  nullptr && adj_rib_out_post->has_data())
@@ -2390,7 +2419,8 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "open-config-neighbor" <<"[neighbor-address='" <<neighbor_address <<"']";
+    path_buffer << "open-config-neighbor";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
     return path_buffer.str();
 }
 
@@ -2500,12 +2530,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::AdjRibInPost()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-in-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-in-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::~AdjRibInPost()
@@ -2514,6 +2544,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -2597,9 +2628,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::~Routes()
@@ -2608,7 +2641,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -2618,7 +2652,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -2648,7 +2682,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -2660,7 +2694,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2690,16 +2724,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -2707,7 +2741,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::~Route()
@@ -2716,6 +2750,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -2927,12 +2962,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::~PrefixName()
@@ -2941,6 +2976,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -3027,7 +3063,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -3036,6 +3072,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3133,14 +3170,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -3149,7 +3187,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -3166,7 +3205,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -3228,7 +3267,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -3250,7 +3289,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3343,7 +3382,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -3352,6 +3391,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3448,7 +3488,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -3457,6 +3497,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -3551,7 +3592,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::Community::~Community()
@@ -3560,6 +3601,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -3629,9 +3671,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -3640,12 +3685,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -3662,12 +3708,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -3711,7 +3757,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -3719,7 +3765,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -3731,7 +3777,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3740,7 +3786,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3809,7 +3855,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -3818,6 +3864,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -3888,7 +3935,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -3897,6 +3944,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -3991,7 +4039,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -4000,6 +4048,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -4068,7 +4117,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -4077,6 +4126,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -4145,7 +4195,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "num-routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes::~NumRoutes()
@@ -4154,6 +4204,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -4220,12 +4271,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::AdjRibOutPost()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-out-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-out-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::~AdjRibOutPost()
@@ -4234,6 +4285,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -4317,9 +4369,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::~Routes()
@@ -4328,7 +4382,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -4338,7 +4393,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -4368,7 +4423,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -4380,7 +4435,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4410,16 +4465,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -4427,7 +4482,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::~Route()
@@ -4436,6 +4491,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -4647,12 +4703,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::~PrefixName()
@@ -4661,6 +4717,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -4747,7 +4804,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -4756,6 +4813,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -4853,14 +4911,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -4869,7 +4928,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -4886,7 +4946,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -4948,7 +5008,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -4970,7 +5030,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5063,7 +5123,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -5072,6 +5132,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -5168,7 +5229,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -5177,6 +5238,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -5271,7 +5333,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::Community::~Community()
@@ -5280,6 +5342,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -5349,9 +5412,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -5360,12 +5426,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -5382,12 +5449,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -5431,7 +5498,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -5439,7 +5506,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -5451,7 +5518,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5460,7 +5527,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5529,7 +5596,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -5538,6 +5605,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -5608,7 +5676,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -5617,6 +5685,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -5711,7 +5780,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -5720,6 +5789,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -5788,7 +5858,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -5797,6 +5867,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -5865,7 +5936,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes::~NumRoutes()
@@ -5874,6 +5945,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -5940,12 +6012,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::AdjRibOutPre()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-out-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-out-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::~AdjRibOutPre()
@@ -5954,6 +6026,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -6037,9 +6110,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::~Routes()
@@ -6048,7 +6123,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -6058,7 +6134,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -6088,7 +6164,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -6100,7 +6176,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6130,16 +6206,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -6147,7 +6223,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::~Route()
@@ -6156,6 +6232,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -6367,12 +6444,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::~PrefixName()
@@ -6381,6 +6458,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -6467,7 +6545,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -6476,6 +6554,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6573,14 +6652,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -6589,7 +6669,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -6606,7 +6687,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -6668,7 +6749,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -6690,7 +6771,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6783,7 +6864,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -6792,6 +6873,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6888,7 +6970,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -6897,6 +6979,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -6991,7 +7074,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::Community::~Community()
@@ -7000,6 +7083,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -7069,9 +7153,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -7080,12 +7167,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -7102,12 +7190,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -7151,7 +7239,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -7159,7 +7247,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -7171,7 +7259,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7180,7 +7268,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7249,7 +7337,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -7258,6 +7346,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -7328,7 +7417,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -7337,6 +7426,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -7431,7 +7521,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -7440,6 +7530,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -7508,7 +7599,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -7517,6 +7608,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -7585,7 +7677,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes::~NumRoutes()
@@ -7594,6 +7686,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -7660,12 +7753,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::AdjRibInPre()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-in-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-in-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::~AdjRibInPre()
@@ -7674,6 +7767,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -7757,9 +7851,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-in-pre"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-in-pre"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::~Routes()
@@ -7768,7 +7864,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -7778,7 +7875,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -7808,7 +7905,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -7820,7 +7917,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7850,16 +7947,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -7867,7 +7964,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::~Route()
@@ -7876,6 +7973,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -8087,12 +8185,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::~PrefixName()
@@ -8101,6 +8199,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -8187,7 +8286,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -8196,6 +8295,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8293,14 +8393,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -8309,7 +8410,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -8326,7 +8428,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -8388,7 +8490,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -8410,7 +8512,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8503,7 +8605,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -8512,6 +8614,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -8608,7 +8711,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -8617,6 +8720,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -8711,7 +8815,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::Community::~Community()
@@ -8720,6 +8824,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -8789,9 +8894,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -8800,12 +8908,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -8822,12 +8931,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -8871,7 +8980,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -8879,7 +8988,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -8891,7 +9000,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8900,7 +9009,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv4
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8969,7 +9078,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -8978,6 +9087,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -9048,7 +9158,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -9057,6 +9167,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -9151,7 +9262,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -9160,6 +9271,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -9228,7 +9340,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -9237,6 +9349,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -9305,7 +9418,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "adj-rib-in-pre"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "num-routes"; yang_parent_name = "adj-rib-in-pre"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::NumRoutes::~NumRoutes()
@@ -9314,6 +9427,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -9380,12 +9494,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::Ipv6Unicast()
     :
     loc_rib(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib>())
-	,open_config_neighbors(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors>())
+    , open_config_neighbors(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors>())
 {
     loc_rib->parent = this;
     open_config_neighbors->parent = this;
 
-    yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6-unicast"; yang_parent_name = "afi-safi-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::~Ipv6Unicast()
@@ -9394,6 +9508,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::~Ipv6Unicast()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::has_data() const
 {
+    if (is_presence_container) return true;
     return (loc_rib !=  nullptr && loc_rib->has_data())
 	|| (open_config_neighbors !=  nullptr && open_config_neighbors->has_data());
 }
@@ -9486,12 +9601,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::has_leaf_or_child_of_name(const s
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::LocRib()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "loc-rib"; yang_parent_name = "ipv6-unicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "loc-rib"; yang_parent_name = "ipv6-unicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::~LocRib()
@@ -9500,6 +9615,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::~LocRib()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -9590,9 +9706,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::has_leaf_or_child_of_name
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::~Routes()
@@ -9601,7 +9719,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::~Routes()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -9611,7 +9730,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::has_data() const
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -9648,7 +9767,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -9660,7 +9779,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9690,16 +9809,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::Route()
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -9707,7 +9826,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::Route()
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::~Route()
@@ -9716,6 +9835,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::~Route()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -9934,12 +10054,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::has_leaf_o
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::~PrefixName()
@@ -9948,6 +10068,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::~Pr
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -10041,7 +10162,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::Pre
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -10050,6 +10171,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::Pre
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10154,14 +10276,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -10170,7 +10293,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -10187,7 +10311,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrL
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -10256,7 +10380,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -10278,7 +10402,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10371,7 +10495,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -10380,6 +10504,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10483,7 +10608,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -10492,6 +10617,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -10593,7 +10719,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::Community::~Community()
@@ -10602,6 +10728,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -10678,9 +10805,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesLi
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -10689,12 +10819,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesLi
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -10711,12 +10842,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttribu
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -10767,7 +10898,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -10775,7 +10906,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -10787,7 +10918,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10796,7 +10927,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10865,7 +10996,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesLi
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -10874,6 +11005,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesLi
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -10951,7 +11083,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesLi
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -10960,6 +11092,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesLi
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -11061,7 +11194,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastModifiedDat
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -11070,6 +11203,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastModifiedDat
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -11145,7 +11279,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastUpdateRecie
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -11154,6 +11288,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastUpdateRecie
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -11229,7 +11364,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::NumRoutes::NumRoutes()
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "num-routes"; yang_parent_name = "loc-rib"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::NumRoutes::~NumRoutes()
@@ -11238,6 +11373,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::NumRoutes::~NumRoutes()
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -11309,9 +11445,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::NumRoutes::has_leaf_or_ch
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbors()
+    :
+    open_config_neighbor(this, {"neighbor_address"})
 {
 
-    yang_name = "open-config-neighbors"; yang_parent_name = "ipv6-unicast"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "open-config-neighbors"; yang_parent_name = "ipv6-unicast"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::~OpenConfigNeighbors()
@@ -11320,7 +11458,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::~OpenConfigNeighb
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::has_data() const
 {
-    for (std::size_t index=0; index<open_config_neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<open_config_neighbor.len(); index++)
     {
         if(open_config_neighbor[index]->has_data())
             return true;
@@ -11330,7 +11469,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::has_data() c
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::has_operation() const
 {
-    for (std::size_t index=0; index<open_config_neighbor.size(); index++)
+    for (std::size_t index=0; index<open_config_neighbor.len(); index++)
     {
         if(open_config_neighbor[index]->has_operation())
             return true;
@@ -11367,7 +11506,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor>();
         c->parent = this;
-        open_config_neighbor.push_back(c);
+        open_config_neighbor.append(c);
         return c;
     }
 
@@ -11379,7 +11518,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : open_config_neighbor)
+    for (auto c : open_config_neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11408,18 +11547,18 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::has_leaf_or_
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::OpenConfigNeighbor()
     :
     neighbor_address{YType::str, "neighbor-address"}
-    	,
+        ,
     adj_rib_in_post(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost>())
-	,adj_rib_out_post(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost>())
-	,adj_rib_out_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre>())
-	,adj_rib_in_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre>())
+    , adj_rib_out_post(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost>())
+    , adj_rib_out_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre>())
+    , adj_rib_in_pre(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre>())
 {
     adj_rib_in_post->parent = this;
     adj_rib_out_post->parent = this;
     adj_rib_out_pre->parent = this;
     adj_rib_in_pre->parent = this;
 
-    yang_name = "open-config-neighbor"; yang_parent_name = "open-config-neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "open-config-neighbor"; yang_parent_name = "open-config-neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::~OpenConfigNeighbor()
@@ -11428,6 +11567,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return neighbor_address.is_set
 	|| (adj_rib_in_post !=  nullptr && adj_rib_in_post->has_data())
 	|| (adj_rib_out_post !=  nullptr && adj_rib_out_post->has_data())
@@ -11455,7 +11595,8 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "open-config-neighbor" <<"[neighbor-address='" <<neighbor_address <<"']";
+    path_buffer << "open-config-neighbor";
+    ADD_KEY_TOKEN(neighbor_address, "neighbor-address");
     return path_buffer.str();
 }
 
@@ -11565,12 +11706,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::AdjRibInPost()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-in-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-in-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::~AdjRibInPost()
@@ -11579,6 +11720,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -11662,9 +11804,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::~Routes()
@@ -11673,7 +11817,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -11683,7 +11828,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -11713,7 +11858,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -11725,7 +11870,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11755,16 +11900,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -11772,7 +11917,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::~Route()
@@ -11781,6 +11926,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -11992,12 +12138,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::~PrefixName()
@@ -12006,6 +12152,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -12092,7 +12239,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -12101,6 +12248,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -12198,14 +12346,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -12214,7 +12363,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -12231,7 +12381,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -12293,7 +12443,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -12315,7 +12465,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12408,7 +12558,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -12417,6 +12567,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -12513,7 +12664,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -12522,6 +12673,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -12616,7 +12768,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::Community::~Community()
@@ -12625,6 +12777,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -12694,9 +12847,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -12705,12 +12861,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -12727,12 +12884,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -12776,7 +12933,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -12784,7 +12941,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -12796,7 +12953,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12805,7 +12962,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12874,7 +13031,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -12883,6 +13040,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -12953,7 +13111,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -12962,6 +13120,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -13056,7 +13215,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -13065,6 +13224,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -13133,7 +13293,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -13142,6 +13302,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -13210,7 +13371,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "num-routes"; yang_parent_name = "adj-rib-in-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes::~NumRoutes()
@@ -13219,6 +13380,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPost::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -13285,12 +13447,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::AdjRibOutPost()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-out-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-out-post"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::~AdjRibOutPost()
@@ -13299,6 +13461,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -13382,9 +13545,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::~Routes()
@@ -13393,7 +13558,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -13403,7 +13569,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -13433,7 +13599,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -13445,7 +13611,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13475,16 +13641,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -13492,7 +13658,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::~Route()
@@ -13501,6 +13667,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -13712,12 +13879,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::~PrefixName()
@@ -13726,6 +13893,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -13812,7 +13980,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -13821,6 +13989,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13918,14 +14087,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -13934,7 +14104,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -13951,7 +14122,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -14013,7 +14184,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -14035,7 +14206,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14128,7 +14299,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -14137,6 +14308,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -14233,7 +14405,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -14242,6 +14414,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -14336,7 +14509,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::Community::~Community()
@@ -14345,6 +14518,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -14414,9 +14588,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -14425,12 +14602,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -14447,12 +14625,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -14496,7 +14674,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -14504,7 +14682,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -14516,7 +14694,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14525,7 +14703,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14594,7 +14772,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -14603,6 +14781,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -14673,7 +14852,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -14682,6 +14861,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -14776,7 +14956,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -14785,6 +14965,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -14853,7 +15034,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -14862,6 +15043,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -14930,7 +15112,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-post"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes::~NumRoutes()
@@ -14939,6 +15121,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPost::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -15005,12 +15188,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::AdjRibOutPre()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-out-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-out-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::~AdjRibOutPre()
@@ -15019,6 +15202,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -15102,9 +15286,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::~Routes()
@@ -15113,7 +15299,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -15123,7 +15310,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -15153,7 +15340,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -15165,7 +15352,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15195,16 +15382,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -15212,7 +15399,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::~Route()
@@ -15221,6 +15408,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -15432,12 +15620,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::~PrefixName()
@@ -15446,6 +15634,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -15532,7 +15721,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -15541,6 +15730,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -15638,14 +15828,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -15654,7 +15845,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -15671,7 +15863,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -15733,7 +15925,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -15755,7 +15947,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15848,7 +16040,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::NextHop::~NextHop()
@@ -15857,6 +16049,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::NextHop::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -15953,7 +16146,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     address{YType::str, "address"}
 {
 
-    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregrator-attributes"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes::~AggregratorAttributes()
@@ -15962,6 +16155,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::AggregratorAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| as4.is_set
 	|| address.is_set;
@@ -16056,7 +16250,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "community"; yang_parent_name = "route-attr-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::Community::~Community()
@@ -16065,6 +16259,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::RouteAttrList::Community::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -16134,9 +16329,12 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     aigp{YType::uint64, "aigp"},
     path_id{YType::uint32, "path-id"},
     cluster{YType::str, "cluster"}
+        ,
+    ext_community(this, {})
+    , unknown_attributes(this, {})
 {
 
-    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-attributes-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::~ExtAttributesList()
@@ -16145,12 +16343,13 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::has_data() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_data())
             return true;
@@ -16167,12 +16366,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::has_operation() const
 {
-    for (std::size_t index=0; index<ext_community.size(); index++)
+    for (std::size_t index=0; index<ext_community.len(); index++)
     {
         if(ext_community[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<unknown_attributes.size(); index++)
+    for (std::size_t index=0; index<unknown_attributes.len(); index++)
     {
         if(unknown_attributes[index]->has_operation())
             return true;
@@ -16216,7 +16415,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::ExtCommunity>();
         c->parent = this;
-        ext_community.push_back(c);
+        ext_community.append(c);
         return c;
     }
 
@@ -16224,7 +16423,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::UnknownAttributes>();
         c->parent = this;
-        unknown_attributes.push_back(c);
+        unknown_attributes.append(c);
         return c;
     }
 
@@ -16236,7 +16435,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ext_community)
+    for (auto c : ext_community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16245,7 +16444,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : unknown_attributes)
+    for (auto c : unknown_attributes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16314,7 +16513,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     objects{YType::str, "objects"}
 {
 
-    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ext-community"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::ExtCommunity::~ExtCommunity()
@@ -16323,6 +16522,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::ExtCommunity::has_data() const
 {
+    if (is_presence_container) return true;
     return objects.is_set;
 }
 
@@ -16393,7 +16593,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     attribute_value{YType::str, "attribute-value"}
 {
 
-    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unknown-attributes"; yang_parent_name = "ext-attributes-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::UnknownAttributes::~UnknownAttributes()
@@ -16402,6 +16602,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::ExtAttributesList::UnknownAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_type.is_set
 	|| attribute_length.is_set
 	|| attribute_value.is_set;
@@ -16496,7 +16697,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-modified-date"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate::~LastModifiedDate()
@@ -16505,6 +16706,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastModifiedDate::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -16573,7 +16775,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     time_value{YType::str, "time-value"}
 {
 
-    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-update-recieved"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved::~LastUpdateRecieved()
@@ -16582,6 +16784,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::Routes::Route::LastUpdateRecieved::has_data() const
 {
+    if (is_presence_container) return true;
     return time_value.is_set;
 }
 
@@ -16650,7 +16853,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     num_routes{YType::uint64, "num-routes"}
 {
 
-    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "num-routes"; yang_parent_name = "adj-rib-out-pre"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes::~NumRoutes()
@@ -16659,6 +16862,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibOutPre::NumRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return num_routes.is_set;
 }
 
@@ -16725,12 +16929,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::AdjRibInPre()
     :
     routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes>())
-	,num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::NumRoutes>())
+    , num_routes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::NumRoutes>())
 {
     routes->parent = this;
     num_routes->parent = this;
 
-    yang_name = "adj-rib-in-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "adj-rib-in-pre"; yang_parent_name = "open-config-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::~AdjRibInPre()
@@ -16739,6 +16943,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::has_data() const
 {
+    if (is_presence_container) return true;
     return (routes !=  nullptr && routes->has_data())
 	|| (num_routes !=  nullptr && num_routes->has_data());
 }
@@ -16822,9 +17027,11 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Routes()
+    :
+    route(this, {})
 {
 
-    yang_name = "routes"; yang_parent_name = "adj-rib-in-pre"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routes"; yang_parent_name = "adj-rib-in-pre"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::~Routes()
@@ -16833,7 +17040,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::has_data() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_data())
             return true;
@@ -16843,7 +17051,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::has_operation() const
 {
-    for (std::size_t index=0; index<route.size(); index++)
+    for (std::size_t index=0; index<route.len(); index++)
     {
         if(route[index]->has_operation())
             return true;
@@ -16873,7 +17081,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route>();
         c->parent = this;
-        route.push_back(c);
+        route.append(c);
         return c;
     }
 
@@ -16885,7 +17093,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : route)
+    for (auto c : route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16915,16 +17123,16 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     :
     route{YType::str, "route"},
     neighbor_address{YType::str, "neighbor-address"},
-    path_id{YType::int32, "path-id"},
+    path_id{YType::uint32, "path-id"},
     valid_route{YType::boolean, "valid-route"},
     invalid_reason{YType::enumeration, "invalid-reason"},
     best_path{YType::boolean, "best-path"}
-    	,
+        ,
     prefix_name(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName>())
-	,route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList>())
-	,ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList>())
-	,last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastModifiedDate>())
-	,last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastUpdateRecieved>())
+    , route_attr_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList>())
+    , ext_attributes_list(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::ExtAttributesList>())
+    , last_modified_date(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastModifiedDate>())
+    , last_update_recieved(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::LastUpdateRecieved>())
 {
     prefix_name->parent = this;
     route_attr_list->parent = this;
@@ -16932,7 +17140,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     last_modified_date->parent = this;
     last_update_recieved->parent = this;
 
-    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::~Route()
@@ -16941,6 +17149,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set
 	|| neighbor_address.is_set
 	|| path_id.is_set
@@ -17152,12 +17361,12 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::PrefixName()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::Prefix>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix-name"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::~PrefixName()
@@ -17166,6 +17375,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -17252,7 +17462,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::Prefix::~Prefix()
@@ -17261,6 +17471,7 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::PrefixName::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -17358,14 +17569,15 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
     med{YType::uint32, "med"},
     local_pref{YType::uint32, "local-pref"},
     atomic_aggr{YType::boolean, "atomic-aggr"}
-    	,
+        ,
     next_hop(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::NextHop>())
-	,aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , aggregrator_attributes(std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::AggregratorAttributes>())
+    , community(this, {})
 {
     next_hop->parent = this;
     aggregrator_attributes->parent = this;
 
-    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route-attr-list"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::~RouteAttrList()
@@ -17374,7 +17586,8 @@ OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbo
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::has_data() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_data())
             return true;
@@ -17391,7 +17604,7 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
 
 bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::has_operation() const
 {
-    for (std::size_t index=0; index<community.size(); index++)
+    for (std::size_t index=0; index<community.len(); index++)
     {
         if(community[index]->has_operation())
             return true;
@@ -17453,7 +17666,7 @@ std::shared_ptr<Entity> OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeig
     {
         auto c = std::make_shared<OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::Routes::Route::RouteAttrList::Community>();
         c->parent = this;
-        community.push_back(c);
+        community.append(c);
         return c;
     }
 
@@ -17475,7 +17688,7 @@ std::map<std::string, std::shared_ptr<Entity>> OcBgp::BgpRib::AfiSafiTable::Ipv6
     }
 
     count = 0;
-    for (auto const & c : community)
+    for (auto c : community.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17561,15 +17774,15 @@ bool OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNe
     return false;
 }
 
+const Enum::YLeaf BgpOcOriginAttr::igp {0, "igp"};
+const Enum::YLeaf BgpOcOriginAttr::egp {1, "egp"};
+const Enum::YLeaf BgpOcOriginAttr::incomplete {2, "incomplete"};
+
 const Enum::YLeaf BgpOcInvalidRouteReason::valid_route {1, "valid-route"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_clsuter_loop {2, "invalid-clsuter-loop"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_as_path_loop {3, "invalid-as-path-loop"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_origin_at_or_id {4, "invalid-origin-at-or-id"};
 const Enum::YLeaf BgpOcInvalidRouteReason::invalid_as_confed_loop {5, "invalid-as-confed-loop"};
-
-const Enum::YLeaf BgpOcOriginAttr::igp {0, "igp"};
-const Enum::YLeaf BgpOcOriginAttr::egp {1, "egp"};
-const Enum::YLeaf BgpOcOriginAttr::incomplete {2, "incomplete"};
 
 const Enum::YLeaf BgpOcAfi::ipv4 {0, "ipv4"};
 const Enum::YLeaf BgpOcAfi::ipv6 {5, "ipv6"};

@@ -33,7 +33,7 @@ class Vlans : public ydk::Entity
 
         class Vlan; //type: Vlans::Vlan
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_vlan_oper::Vlans::Vlan> > vlan;
+        ydk::YList vlan;
         
 }; // Vlans
 
@@ -60,7 +60,7 @@ class Vlans::Vlan : public ydk::Entity
         ydk::YLeaf status; //type: VlanStatusType
         class Ports; //type: Vlans::Vlan::Ports
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_vlan_oper::Vlans::Vlan::Ports> > ports;
+        ydk::YList ports;
         
 }; // Vlans::Vlan
 

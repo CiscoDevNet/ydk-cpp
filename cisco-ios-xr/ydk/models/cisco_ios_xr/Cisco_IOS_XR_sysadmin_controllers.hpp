@@ -34,7 +34,7 @@ class Gaspp : public ydk::Entity
 
         class Asic; //type: Gaspp::Asic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic> > asic;
+        ydk::YList asic;
         
 }; // Gaspp
 
@@ -59,7 +59,7 @@ class Gaspp::Asic : public ydk::Entity
         ydk::YLeaf asic_name; //type: string
         class Instance; //type: Gaspp::Asic::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance> > instance;
+        ydk::YList instance;
         
 }; // Gaspp::Asic
 
@@ -86,9 +86,9 @@ class Gaspp::Asic::Instance : public ydk::Entity
         class BlockName; //type: Gaspp::Asic::Instance::BlockName
         class BlockNumber; //type: Gaspp::Asic::Instance::BlockNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::Address> > address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockName> > block_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber> > block_number;
+        ydk::YList address;
+        ydk::YList block_name;
+        ydk::YList block_number;
         
 }; // Gaspp::Asic::Instance
 
@@ -115,7 +115,7 @@ class Gaspp::Asic::Instance::Address : public ydk::Entity
         ydk::YLeaf width; //type: uint32
         class Location; //type: Gaspp::Asic::Instance::Address::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::Address::Location> > location;
+        ydk::YList location;
         
 }; // Gaspp::Asic::Instance::Address
 
@@ -139,7 +139,7 @@ class Gaspp::Asic::Instance::Address::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class DirectData; //type: Gaspp::Asic::Instance::Address::Location::DirectData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::Address::Location::DirectData> > direct_data;
+        ydk::YList direct_data;
         
 }; // Gaspp::Asic::Instance::Address::Location
 
@@ -188,7 +188,7 @@ class Gaspp::Asic::Instance::BlockName : public ydk::Entity
         ydk::YLeaf block_num; //type: uint32
         class RegisterName; //type: Gaspp::Asic::Instance::BlockName::RegisterName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockName::RegisterName> > register_name;
+        ydk::YList register_name;
         
 }; // Gaspp::Asic::Instance::BlockName
 
@@ -213,7 +213,7 @@ class Gaspp::Asic::Instance::BlockName::RegisterName : public ydk::Entity
         ydk::YLeaf register_; //type: uint32
         class Data; //type: Gaspp::Asic::Instance::BlockName::RegisterName::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockName::RegisterName::Data> > data;
+        ydk::YList data;
         
 }; // Gaspp::Asic::Instance::BlockName::RegisterName
 
@@ -262,7 +262,7 @@ class Gaspp::Asic::Instance::BlockNumber : public ydk::Entity
         ydk::YLeaf block_nm; //type: string
         class RegisterNumber; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber> > register_number;
+        ydk::YList register_number;
         
 }; // Gaspp::Asic::Instance::BlockNumber
 
@@ -288,8 +288,8 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber : public ydk::Entity
         class RegisterOffsets; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
         class Location; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets> > register_offsets;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location> > location;
+        ydk::YList register_offsets;
+        ydk::YList location;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber
 
@@ -314,7 +314,7 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets : publ
         ydk::YLeaf num_entries; //type: uint32
         class Location; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location> > location;
+        ydk::YList location;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
 
@@ -338,7 +338,7 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Locat
         ydk::YLeaf location_name; //type: string
         class Data; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data> > data;
+        ydk::YList data;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
@@ -386,7 +386,7 @@ class Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location : public ydk:
         ydk::YLeaf location_name; //type: string
         class Data; //type: Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location::Data> > data;
+        ydk::YList data;
         
 }; // Gaspp::Asic::Instance::BlockNumber::RegisterNumber::Location
 
@@ -461,7 +461,7 @@ class Set::Controller : public ydk::Entity
 
         class Asic; //type: Set::Controller::Asic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic> > asic;
+        ydk::YList asic;
         
 }; // Set::Controller
 
@@ -486,7 +486,7 @@ class Set::Controller::Asic : public ydk::Entity
         ydk::YLeaf asic_name; //type: string
         class Instance; //type: Set::Controller::Asic::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance> > instance;
+        ydk::YList instance;
         
 }; // Set::Controller::Asic
 
@@ -533,7 +533,7 @@ class Set::Controller::Asic::Instance::FaultInjection : public ydk::Entity
 
         class Module; //type: Set::Controller::Asic::Instance::FaultInjection::Module
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module> > module;
+        ydk::YList module;
         
 }; // Set::Controller::Asic::Instance::FaultInjection
 
@@ -609,7 +609,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc : 
         class BlockNameLst; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc
 
@@ -633,8 +633,8 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::A
         class Threshold; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All
 
@@ -658,7 +658,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::A
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::All::Threshold
 
@@ -753,7 +753,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One
 
@@ -776,7 +776,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate
 
@@ -800,7 +800,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber
 
@@ -824,7 +824,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -891,7 +891,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous
 
@@ -914,7 +914,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate
 
@@ -938,7 +938,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -962,7 +962,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1027,7 +1027,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::B
 
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Ecc::BlockNameLst::Stop
 
@@ -1073,7 +1073,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class BlockNameLst; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
@@ -1097,8 +1097,8 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class Threshold; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All
 
@@ -1122,7 +1122,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::All::Threshold
 
@@ -1217,7 +1217,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One
 
@@ -1240,7 +1240,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate
 
@@ -1264,7 +1264,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber
 
@@ -1288,7 +1288,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -1355,7 +1355,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous
 
@@ -1378,7 +1378,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate
 
@@ -1402,7 +1402,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -1426,7 +1426,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1491,7 +1491,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity
 
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Parity::BlockNameLst::Stop
 
@@ -1537,7 +1537,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other 
         class BlockNameLst; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst> > block_name_lst;
+        ydk::YList block_name_lst;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other
 
@@ -1561,8 +1561,8 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         class Threshold; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold> > threshold;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Location> > location;
+        ydk::YList threshold;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All
 
@@ -1586,7 +1586,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::All::Threshold
 
@@ -1681,7 +1681,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One
 
@@ -1704,7 +1704,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate
 
@@ -1728,7 +1728,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber
 
@@ -1752,7 +1752,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::One::Rate::ErrorNumber::Duration
 
@@ -1819,7 +1819,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate> rate;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous
 
@@ -1842,7 +1842,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
 
         class ErrorNumber; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber> > error_number;
+        ydk::YList error_number;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate
 
@@ -1866,7 +1866,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_errs; //type: uint32
         class Duration; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration> > duration;
+        ydk::YList duration;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber
 
@@ -1890,7 +1890,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
         ydk::YLeaf num_seconds; //type: uint32
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Continuous::Rate::ErrorNumber::Duration
 
@@ -1955,7 +1955,7 @@ class Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other:
 
         class Location; //type: Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop::Location> > location;
+        ydk::YList location;
         
 }; // Set::Controller::Asic::Instance::FaultInjection::Module::FaultType::Other::BlockNameLst::Stop
 
@@ -2012,7 +2012,7 @@ class Controller : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric> fabric;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper> sfe_oper;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic> > asic;
+        ydk::YList asic;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper> oper;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen> zen;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver> ccc_driver;
@@ -2094,7 +2094,7 @@ class Controller::Fabric::Fabric_::Fsdbagg : public ydk::Entity
         class Plane; //type: Controller::Fabric::Fabric_::Fsdbagg::Plane
         class Link; //type: Controller::Fabric::Fabric_::Fsdbagg::Link
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Plane> > plane;
+        ydk::YList plane;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Link> link;
         
 }; // Controller::Fabric::Fabric_::Fsdbagg
@@ -2123,8 +2123,8 @@ class Controller::Fabric::Fabric_::Fsdbagg::Plane : public ydk::Entity
         class Instance; //type: Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance
         class InstanceFolded; //type: Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Plane::Instance> > instance;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Plane::InstanceFolded> > instance_folded;
+        ydk::YList instance;
+        ydk::YList instance_folded;
         
 }; // Controller::Fabric::Fabric_::Fsdbagg::Plane
 
@@ -2216,7 +2216,7 @@ class Controller::Fabric::Fabric_::Fsdbagg::Link::Port : public ydk::Entity
 
         class Location; //type: Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Fabric_::Fsdbagg::Link::Port::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Fabric_::Fsdbagg::Link::Port
 
@@ -2430,7 +2430,7 @@ class Controller::Fabric::Oper::Cxp::Dom : public ydk::Entity
 
         class Location; //type: Controller::Fabric::Oper::Cxp::Dom::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Dom::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::Cxp::Dom
 
@@ -2456,7 +2456,7 @@ class Controller::Fabric::Oper::Cxp::Dom::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Port; //type: Controller::Fabric::Oper::Cxp::Dom::Location::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Dom::Location::Port> > port;
+        ydk::YList port;
         
 }; // Controller::Fabric::Oper::Cxp::Dom::Location
 
@@ -2661,7 +2661,7 @@ class Controller::Fabric::Oper::Cxp::Summary : public ydk::Entity
 
         class Rack; //type: Controller::Fabric::Oper::Cxp::Summary::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Summary::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::Fabric::Oper::Cxp::Summary
 
@@ -2687,7 +2687,7 @@ class Controller::Fabric::Oper::Cxp::Summary::Rack : public ydk::Entity
         ydk::YLeaf description; //type: string
         class SplitTblFlag; //type: Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag> > split_tbl_flag;
+        ydk::YList split_tbl_flag;
         
 }; // Controller::Fabric::Oper::Cxp::Summary::Rack
 
@@ -2711,7 +2711,7 @@ class Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag : public ydk::E
         ydk::YLeaf tbl_splt; //type: uint32
         class SmryPerSlot; //type: Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag::SmryPerSlot> > smry_per_slot;
+        ydk::YList smry_per_slot;
         
 }; // Controller::Fabric::Oper::Cxp::Summary::Rack::SplitTblFlag
 
@@ -2788,7 +2788,7 @@ class Controller::Fabric::Oper::Fgid : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource> resource;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr> fgid_mgr;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::ProgramError> > program_error;
+        ydk::YList program_error;
         
 }; // Controller::Fabric::Oper::Fgid
 
@@ -2812,7 +2812,7 @@ class Controller::Fabric::Oper::Fgid::Information : public ydk::Entity
 
         class Id; //type: Controller::Fabric::Oper::Fgid::Information::Id
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id> > id;
+        ydk::YList id;
         
 }; // Controller::Fabric::Oper::Fgid::Information
 
@@ -2842,10 +2842,10 @@ class Controller::Fabric::Oper::Fgid::Information::Id : public ydk::Entity
         class AssoFabricqIds; //type: Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds
         class Drivers; //type: Controller::Fabric::Oper::Fgid::Information::Id::Drivers
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::HexBitmaps> > hex_bitmaps;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::BinaryBitmaps> > binary_bitmaps;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::AssoFabricqIds> > asso_fabricq_ids;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::Drivers> > drivers;
+        ydk::YList hex_bitmaps;
+        ydk::YList binary_bitmaps;
+        ydk::YList asso_fabricq_ids;
+        ydk::YList drivers;
         
 }; // Controller::Fabric::Oper::Fgid::Information::Id
 
@@ -2934,7 +2934,7 @@ class Controller::Fabric::Oper::Fgid::Information::Id::Drivers : public ydk::Ent
         ydk::YLeaf rack_number; //type: int32
         class Clients; //type: Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Information::Id::Drivers::Clients> > clients;
+        ydk::YList clients;
         
 }; // Controller::Fabric::Oper::Fgid::Information::Id::Drivers
 
@@ -3051,7 +3051,7 @@ class Controller::Fabric::Oper::Fgid::Resource : public ydk::Entity
 
         class Sdr; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr> > sdr;
+        ydk::YList sdr;
         
 }; // Controller::Fabric::Oper::Fgid::Resource
 
@@ -3077,7 +3077,7 @@ class Controller::Fabric::Oper::Fgid::Resource::Sdr : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Application; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr::Application> > application;
+        ydk::YList application;
         
 }; // Controller::Fabric::Oper::Fgid::Resource::Sdr
 
@@ -3102,7 +3102,7 @@ class Controller::Fabric::Oper::Fgid::Resource::Sdr::Application : public ydk::E
         ydk::YLeaf description; //type: string
         class IdsRange; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange> > ids_range;
+        ydk::YList ids_range;
         
 }; // Controller::Fabric::Oper::Fgid::Resource::Sdr::Application
 
@@ -3127,7 +3127,7 @@ class Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange : pub
         ydk::YLeaf elements; //type: int32
         class FgidIds; //type: Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange::FgidIds> > fgid_ids;
+        ydk::YList fgid_ids;
         
 }; // Controller::Fabric::Oper::Fgid::Resource::Sdr::Application::IdsRange
 
@@ -3207,9 +3207,9 @@ class Controller::Fabric::Oper::Fgid::Statistics::All : public ydk::Entity
         class SdrList; //type: Controller::Fabric::Oper::Fgid::Statistics::All::SdrList
         class PoolList; //type: Controller::Fabric::Oper::Fgid::Statistics::All::PoolList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::StatsList> > stats_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::SdrList> > sdr_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::PoolList> > pool_list;
+        ydk::YList stats_list;
+        ydk::YList sdr_list;
+        ydk::YList pool_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::All
 
@@ -3263,7 +3263,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::All::SdrList : public ydk::Ent
         ydk::YLeaf sdr_hwm_fgids; //type: uint32
         class Application; //type: Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::All::SdrList::Application> > application;
+        ydk::YList application;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::All::SdrList
 
@@ -3341,7 +3341,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::Sdr : public ydk::Entity
 
         class SdrList; //type: Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList> > sdr_list;
+        ydk::YList sdr_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::Sdr
 
@@ -3370,7 +3370,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList : public ydk::Ent
         ydk::YLeaf sdr_hwm_fgids; //type: uint32
         class Application; //type: Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList::Application> > application;
+        ydk::YList application;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::Sdr::SdrList
 
@@ -3420,7 +3420,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::Pool : public ydk::Entity
 
         class PoolList; //type: Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::Pool::PoolList> > pool_list;
+        ydk::YList pool_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::Pool
 
@@ -3472,7 +3472,7 @@ class Controller::Fabric::Oper::Fgid::Statistics::System : public ydk::Entity
 
         class StatsList; //type: Controller::Fabric::Oper::Fgid::Statistics::System::StatsList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::Statistics::System::StatsList> > stats_list;
+        ydk::YList stats_list;
         
 }; // Controller::Fabric::Oper::Fgid::Statistics::System
 
@@ -3521,7 +3521,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr : public ydk::Entity
 
         class Trace; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr
 
@@ -3546,7 +3546,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr::Trace
 
@@ -3570,7 +3570,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location : public ydk::Ent
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location
 
@@ -3594,7 +3594,7 @@ class Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions : pub
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Fabric::Oper::Fgid::FgidMgr::Trace::Location::AllOptions
 
@@ -3641,7 +3641,7 @@ class Controller::Fabric::Oper::Fgid::ProgramError : public ydk::Entity
         ydk::YLeaf end; //type: int32
         class Rack; //type: Controller::Fabric::Oper::Fgid::ProgramError::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Fgid::ProgramError::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::Fabric::Oper::Fgid::ProgramError
 
@@ -3694,7 +3694,7 @@ class Controller::Fabric::Oper::FsdbaggActive : public ydk::Entity
         class Bundle; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggActive::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Plane> > plane;
+        ydk::YList plane;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle> bundle;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Statistics> statistics;
         
@@ -3751,7 +3751,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Plane : public ydk::Entity
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Plane
 
@@ -3812,7 +3812,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary> summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::All> all;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port> port;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle
 
@@ -3836,7 +3836,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary : public ydk::Ent
 
         class BundleSummaryList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary::BundleSummaryList> > bundle_summary_list;
+        ydk::YList bundle_summary_list;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Summary
 
@@ -3888,7 +3888,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::All : public ydk::Entity
 
         class BundleAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::All::BundleAllList> > bundle_all_list;
+        ydk::YList bundle_all_list;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::All
 
@@ -3943,7 +3943,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port : public ydk::Entity
         class Location; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All> all;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port
 
@@ -3968,7 +3968,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All : public ydk::E
         class BportAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::BportAllList> > bport_all_list;
+        ydk::YList bport_all_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics> statistics;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All
@@ -4019,7 +4019,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics : p
 
         class BportStatsAllRacks; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks> > bport_stats_all_racks;
+        ydk::YList bport_stats_all_racks;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics
 
@@ -4045,7 +4045,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::Bp
         ydk::YLeaf total_racks; //type: uint32
         class BportStatsRack; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack> > bport_stats_rack;
+        ydk::YList bport_stats_rack;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks
 
@@ -4070,7 +4070,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::Bp
         ydk::YLeaf rack_num_str; //type: string
         class BportStats; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack::BportStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack::BportStats> > bport_stats;
+        ydk::YList bport_stats;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::All::Statistics::BportStatsAllRacks::BportStatsRack
 
@@ -4127,7 +4127,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location : public y
         class BportAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::BportAllList
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::BportAllList> > bport_all_list;
+        ydk::YList bport_all_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics> statistics;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location
@@ -4176,7 +4176,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistic
 
         class BportStatsAllRacks; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks> > bport_stats_all_racks;
+        ydk::YList bport_stats_all_racks;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics
 
@@ -4201,7 +4201,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistic
         ydk::YLeaf total_racks; //type: uint32
         class BportStatsRack; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack> > bport_stats_rack;
+        ydk::YList bport_stats_rack;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks
 
@@ -4226,7 +4226,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistic
         ydk::YLeaf rack_num_str; //type: string
         class BportStats; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack::BportStats
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack::BportStats> > bport_stats;
+        ydk::YList bport_stats;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Port::Location::Statistics::BportStatsAllRacks::BportStatsRack
 
@@ -4282,7 +4282,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Bundle::Location : public ydk::En
         ydk::YLeaf loc_str; //type: string
         class BundleAllList; //type: Controller::Fabric::Oper::FsdbaggActive::Bundle::Location::BundleAllList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Bundle::Location::BundleAllList> > bundle_all_list;
+        ydk::YList bundle_all_list;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Bundle::Location
 
@@ -4334,7 +4334,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Statistics : public ydk::Entity
 
         class Plane; //type: Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane> > plane;
+        ydk::YList plane;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Statistics
 
@@ -4389,7 +4389,7 @@ class Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane : public ydk::E
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggActive::Statistics::Plane
 
@@ -4444,7 +4444,7 @@ class Controller::Fabric::Oper::FsdbaggLink : public ydk::Entity
 
         class Port; //type: Controller::Fabric::Oper::FsdbaggLink::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggLink::Port> > port;
+        ydk::YList port;
         
 }; // Controller::Fabric::Oper::FsdbaggLink
 
@@ -4491,7 +4491,7 @@ class Controller::Fabric::Oper::FsdbaggSfeAsicType : public ydk::Entity
 
         class AsicTypes; //type: Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes> > asic_types;
+        ydk::YList asic_types;
         
 }; // Controller::Fabric::Oper::FsdbaggSfeAsicType
 
@@ -4517,7 +4517,7 @@ class Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes : public ydk::Enti
         ydk::YLeaf description; //type: string
         class Block; //type: Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes::Block
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes::Block> > block;
+        ydk::YList block;
         
 }; // Controller::Fabric::Oper::FsdbaggSfeAsicType::AsicTypes
 
@@ -4563,7 +4563,7 @@ class Controller::Fabric::Oper::FsdbaggStandby : public ydk::Entity
         class Plane; //type: Controller::Fabric::Oper::FsdbaggStandby::Plane
         class Statistics; //type: Controller::Fabric::Oper::FsdbaggStandby::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Plane> > plane;
+        ydk::YList plane;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Statistics> statistics;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby
@@ -4619,7 +4619,7 @@ class Controller::Fabric::Oper::FsdbaggStandby::Plane : public ydk::Entity
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggStandby::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby::Plane
 
@@ -4674,7 +4674,7 @@ class Controller::Fabric::Oper::FsdbaggStandby::Statistics : public ydk::Entity
 
         class Plane; //type: Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane> > plane;
+        ydk::YList plane;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby::Statistics
 
@@ -4729,7 +4729,7 @@ class Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane : public ydk::
         ydk::YLeaf ppu_state; //type: string
         class AsicInternalError; //type: Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane::AsicInternalError
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane::AsicInternalError> > asic_internal_error;
+        ydk::YList asic_internal_error;
         
 }; // Controller::Fabric::Oper::FsdbaggStandby::Statistics::Plane
 
@@ -4784,7 +4784,7 @@ class Controller::Fabric::Oper::FabHealth : public ydk::Entity
 
         class SysInfoList; //type: Controller::Fabric::Oper::FabHealth::SysInfoList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList> > sys_info_list;
+        ydk::YList sys_info_list;
         
 }; // Controller::Fabric::Oper::FabHealth
 
@@ -4833,12 +4833,12 @@ class Controller::Fabric::Oper::FabHealth::SysInfoList : public ydk::Entity
         class SfeDrvrLoc; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::SfeDrvrLoc
         class SfeFmSep; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::SfeFmSep
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SysPlaneInfoList> > sys_plane_info_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList> > rack_info_list;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::FsdbStatus> > fsdb_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SfeStatus> > sfe_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SfeDrvrLoc> > sfe_drvr_loc;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::SfeFmSep> > sfe_fm_sep;
+        ydk::YList sys_plane_info_list;
+        ydk::YList rack_info_list;
+        ydk::YList fsdb_status;
+        ydk::YList sfe_status;
+        ydk::YList sfe_drvr_loc;
+        ydk::YList sfe_fm_sep;
         
 }; // Controller::Fabric::Oper::FabHealth::SysInfoList
 
@@ -4902,7 +4902,7 @@ class Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList : public yd
         ydk::YLeaf amba_valid; //type: int32
         class RackPlaneInfoList; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList> > rack_plane_info_list;
+        ydk::YList rack_plane_info_list;
         
 }; // Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList
 
@@ -4931,7 +4931,7 @@ class Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneI
         ydk::YLeaf asics_dn; //type: int32
         class ReachableAmba; //type: Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList::ReachableAmba
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList::ReachableAmba> > reachable_amba;
+        ydk::YList reachable_amba;
         
 }; // Controller::Fabric::Oper::FabHealth::SysInfoList::RackInfoList::RackPlaneInfoList
 
@@ -5087,7 +5087,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg : public ydk::Entity
 
         class Trace; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg
 
@@ -5112,7 +5112,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace : public ydk::Ent
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace
 
@@ -5136,7 +5136,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location : publi
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location
 
@@ -5160,7 +5160,7 @@ class Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOpt
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Fabric::Oper::FsdbAggregator::Fsdbagg::Trace::Location::AllOptions
 
@@ -5206,8 +5206,8 @@ class Controller::Fabric::Oper::Link : public ydk::Entity
         class Rack; //type: Controller::Fabric::Oper::Link::Rack
         class NodeLocation; //type: Controller::Fabric::Oper::Link::NodeLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack> > rack;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::NodeLocation> > node_location;
+        ydk::YList rack;
+        ydk::YList node_location;
         
 }; // Controller::Fabric::Oper::Link
 
@@ -5232,7 +5232,7 @@ class Controller::Fabric::Oper::Link::Rack : public ydk::Entity
         ydk::YLeaf rack_number; //type: int32
         class Port; //type: Controller::Fabric::Oper::Link::Rack::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port> > port;
+        ydk::YList port;
         
 }; // Controller::Fabric::Oper::Link::Rack
 
@@ -5259,7 +5259,7 @@ class Controller::Fabric::Oper::Link::Rack::Port : public ydk::Entity
         class Rx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx
         class Tx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location> > location;
+        ydk::YList location;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx> rx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx> tx;
         
@@ -5314,7 +5314,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx : public ydk::Ent
         class State; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State
         class Statistics; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail> detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State> state;
@@ -5350,7 +5350,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx : public
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::DataIdx
 
@@ -5398,7 +5398,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief : public y
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief
 
@@ -5430,7 +5430,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx :
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Brief::DataIdx
 
@@ -5478,7 +5478,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail
 
@@ -5510,7 +5510,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Detail::DataIdx
 
@@ -5589,7 +5589,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail> detail;
         
@@ -5623,7 +5623,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::DataIdx
 
@@ -5671,7 +5671,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
 
@@ -5703,7 +5703,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Brief::DataIdx
 
@@ -5751,7 +5751,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail
 
@@ -5783,7 +5783,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Up::Detail::DataIdx
 
@@ -5833,7 +5833,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down : pu
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail> detail;
         
@@ -5867,7 +5867,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Dat
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::DataIdx
 
@@ -5915,7 +5915,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Bri
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief
 
@@ -5947,7 +5947,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Bri
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Brief::DataIdx
 
@@ -5995,7 +5995,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Det
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail
 
@@ -6027,7 +6027,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Det
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Down::Detail::DataIdx
 
@@ -6077,7 +6077,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail> detail;
         
@@ -6111,7 +6111,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::DataIdx
 
@@ -6159,7 +6159,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
 
@@ -6191,7 +6191,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Brief::DataIdx
 
@@ -6239,7 +6239,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail
 
@@ -6271,7 +6271,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Er::Detail::DataIdx
 
@@ -6321,7 +6321,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch 
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail> detail;
         
@@ -6355,7 +6355,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::DataIdx
 
@@ -6403,7 +6403,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief
 
@@ -6435,7 +6435,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Brief::DataIdx
 
@@ -6483,7 +6483,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail
 
@@ -6515,7 +6515,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::State::Mismatch::Detail::DataIdx
 
@@ -6565,7 +6565,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics : pub
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail> detail;
         
@@ -6636,7 +6636,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brie
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Brief
 
@@ -6705,7 +6705,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Deta
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Rx::Statistics::Detail
 
@@ -6778,7 +6778,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx : public ydk::Ent
         class State; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State
         class Statistics; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail> detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State> state;
@@ -6814,7 +6814,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx : public
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::DataIdx
 
@@ -6862,7 +6862,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief : public y
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief
 
@@ -6894,7 +6894,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx :
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Brief::DataIdx
 
@@ -6942,7 +6942,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail
 
@@ -6974,7 +6974,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Detail::DataIdx
 
@@ -7053,7 +7053,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail> detail;
         
@@ -7087,7 +7087,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::DataIdx
 
@@ -7135,7 +7135,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
 
@@ -7167,7 +7167,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Brief::DataIdx
 
@@ -7215,7 +7215,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail
 
@@ -7247,7 +7247,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Up::Detail::DataIdx
 
@@ -7297,7 +7297,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down : pu
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail> detail;
         
@@ -7331,7 +7331,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Dat
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::DataIdx
 
@@ -7379,7 +7379,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Bri
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief
 
@@ -7411,7 +7411,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Bri
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Brief::DataIdx
 
@@ -7459,7 +7459,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Det
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail
 
@@ -7491,7 +7491,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Det
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Down::Detail::DataIdx
 
@@ -7541,7 +7541,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er : publ
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail> detail;
         
@@ -7575,7 +7575,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::DataIdx
 
@@ -7623,7 +7623,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
 
@@ -7655,7 +7655,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Brief::DataIdx
 
@@ -7703,7 +7703,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detai
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail
 
@@ -7735,7 +7735,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detai
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Er::Detail::DataIdx
 
@@ -7785,7 +7785,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch 
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail> detail;
         
@@ -7819,7 +7819,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::DataIdx
 
@@ -7867,7 +7867,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief
 
@@ -7899,7 +7899,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Brief::DataIdx
 
@@ -7947,7 +7947,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail
 
@@ -7979,7 +7979,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch:
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::State::Mismatch::Detail::DataIdx
 
@@ -8029,7 +8029,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics : pub
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail> detail;
         
@@ -8100,7 +8100,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brie
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Brief
 
@@ -8169,7 +8169,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Deta
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Location::Tx::Statistics::Detail
 
@@ -8242,7 +8242,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx : public ydk::Entity
         class State; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State
         class Statistics; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail> detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State> state;
@@ -8278,7 +8278,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx : public ydk::Enti
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::DataIdx
 
@@ -8326,7 +8326,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief : public ydk::Entity
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief
 
@@ -8358,7 +8358,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx : public yd
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::Brief::DataIdx
 
@@ -8406,7 +8406,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail : public ydk::Entit
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail
 
@@ -8438,7 +8438,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx : public y
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::Detail::DataIdx
 
@@ -8517,7 +8517,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up : public ydk::En
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail> detail;
         
@@ -8551,7 +8551,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx : publi
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::DataIdx
 
@@ -8599,7 +8599,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief
 
@@ -8631,7 +8631,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Brief::DataIdx
 
@@ -8679,7 +8679,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail : public
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail
 
@@ -8711,7 +8711,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Up::Detail::DataIdx
 
@@ -8761,7 +8761,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down : public ydk::
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail> detail;
         
@@ -8795,7 +8795,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx : pub
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::DataIdx
 
@@ -8843,7 +8843,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief : publi
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief
 
@@ -8875,7 +8875,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataId
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Brief::DataIdx
 
@@ -8923,7 +8923,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail : publ
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail
 
@@ -8955,7 +8955,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Down::Detail::DataIdx
 
@@ -9005,7 +9005,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er : public ydk::En
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail> detail;
         
@@ -9039,7 +9039,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx : publi
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::DataIdx
 
@@ -9087,7 +9087,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief
 
@@ -9119,7 +9119,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Brief::DataIdx
 
@@ -9167,7 +9167,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail : public
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail
 
@@ -9199,7 +9199,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Er::Detail::DataIdx
 
@@ -9249,7 +9249,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch : public y
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail> detail;
         
@@ -9283,7 +9283,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx :
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::DataIdx
 
@@ -9331,7 +9331,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief : p
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief
 
@@ -9363,7 +9363,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::Da
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Brief::DataIdx
 
@@ -9411,7 +9411,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail : 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail
 
@@ -9443,7 +9443,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::D
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::State::Mismatch::Detail::DataIdx
 
@@ -9493,7 +9493,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics : public ydk::E
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail> detail;
         
@@ -9564,7 +9564,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief : public
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Brief
 
@@ -9633,7 +9633,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail : publi
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Rx::Statistics::Detail
 
@@ -9706,7 +9706,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx : public ydk::Entity
         class State; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State
         class Statistics; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail> detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State> state;
@@ -9742,7 +9742,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx : public ydk::Enti
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::DataIdx
 
@@ -9790,7 +9790,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief : public ydk::Entity
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief
 
@@ -9822,7 +9822,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx : public yd
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::Brief::DataIdx
 
@@ -9870,7 +9870,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail : public ydk::Entit
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail
 
@@ -9902,7 +9902,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx : public y
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::Detail::DataIdx
 
@@ -9981,7 +9981,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up : public ydk::En
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail> detail;
         
@@ -10015,7 +10015,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx : publi
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::DataIdx
 
@@ -10063,7 +10063,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief
 
@@ -10095,7 +10095,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Brief::DataIdx
 
@@ -10143,7 +10143,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail : public
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail
 
@@ -10175,7 +10175,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Up::Detail::DataIdx
 
@@ -10225,7 +10225,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down : public ydk::
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail> detail;
         
@@ -10259,7 +10259,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx : pub
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::DataIdx
 
@@ -10307,7 +10307,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief : publi
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief
 
@@ -10339,7 +10339,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataId
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Brief::DataIdx
 
@@ -10387,7 +10387,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail : publ
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail
 
@@ -10419,7 +10419,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataI
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Down::Detail::DataIdx
 
@@ -10469,7 +10469,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er : public ydk::En
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail> detail;
         
@@ -10503,7 +10503,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx : publi
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::DataIdx
 
@@ -10551,7 +10551,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief : public 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief
 
@@ -10583,7 +10583,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx 
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Brief::DataIdx
 
@@ -10631,7 +10631,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail : public
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail
 
@@ -10663,7 +10663,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Er::Detail::DataIdx
 
@@ -10713,7 +10713,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch : public y
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail> detail;
         
@@ -10747,7 +10747,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx :
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::DataIdx
 
@@ -10795,7 +10795,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief : p
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief
 
@@ -10827,7 +10827,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::Da
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Brief::DataIdx
 
@@ -10875,7 +10875,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail : 
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail
 
@@ -10907,7 +10907,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::D
         ydk::YLeaf neighbor_link; //type: string
         class History; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::State::Mismatch::Detail::DataIdx
 
@@ -10957,7 +10957,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics : public ydk::E
         class Brief; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief
         class Detail; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::DataIdx> > data_idx;
+        ydk::YList data_idx;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail> detail;
         
@@ -11028,7 +11028,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief : public
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Brief
 
@@ -11097,7 +11097,7 @@ class Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail : publi
 
         class DataIdx; //type: Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail::DataIdx> > data_idx;
+        ydk::YList data_idx;
         
 }; // Controller::Fabric::Oper::Link::Rack::Port::Tx::Statistics::Detail
 
@@ -11189,7 +11189,7 @@ class Controller::Fabric::Oper::Sfe : public ydk::Entity
 
         class Rack; //type: Controller::Fabric::Oper::Sfe::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::Fabric::Oper::Sfe
 
@@ -11214,7 +11214,7 @@ class Controller::Fabric::Oper::Sfe::Rack : public ydk::Entity
         ydk::YLeaf rack_number; //type: int32
         class AsicStages; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages> > asic_stages;
+        ydk::YList asic_stages;
         
 }; // Controller::Fabric::Oper::Sfe::Rack
 
@@ -11241,8 +11241,8 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages : public ydk::Entity
         class Brief; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief
         class Detail; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location> > location;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList> > asic_list;
+        ydk::YList location;
+        ydk::YList asic_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail> detail;
         
@@ -11270,7 +11270,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location : public ydk::En
         class Brief; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief
         class Detail; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList> > asic_list;
+        ydk::YList asic_list;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief> brief;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail> detail;
         
@@ -11301,7 +11301,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList : publ
         ydk::YLeaf fab_group; //type: string
         class History; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::AsicList
 
@@ -11349,7 +11349,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief : public 
 
         class AsicList; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList> > asic_list;
+        ydk::YList asic_list;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief
 
@@ -11378,7 +11378,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList
         ydk::YLeaf fab_group; //type: string
         class History; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Brief::AsicList
 
@@ -11426,7 +11426,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail : public
 
         class AsicList; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList> > asic_list;
+        ydk::YList asic_list;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail
 
@@ -11455,7 +11455,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicLis
         ydk::YLeaf fab_group; //type: string
         class History; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Location::Detail::AsicList
 
@@ -11509,7 +11509,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList : public ydk::En
         ydk::YLeaf fab_group; //type: string
         class History; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::AsicList
 
@@ -11557,7 +11557,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief : public ydk::Entit
 
         class AsicList; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList> > asic_list;
+        ydk::YList asic_list;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief
 
@@ -11586,7 +11586,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList : public 
         ydk::YLeaf fab_group; //type: string
         class History; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Brief::AsicList
 
@@ -11634,7 +11634,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail : public ydk::Enti
 
         class AsicList; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList> > asic_list;
+        ydk::YList asic_list;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail
 
@@ -11663,7 +11663,7 @@ class Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList : public
         ydk::YLeaf fab_group; //type: string
         class History; //type: Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList::History> > history;
+        ydk::YList history;
         
 }; // Controller::Fabric::Oper::Sfe::Rack::AsicStages::Detail::AsicList
 
@@ -11712,7 +11712,7 @@ class Controller::Fabric::Oper::FsdbPla : public ydk::Entity
 
         class Rack; //type: Controller::Fabric::Oper::FsdbPla::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::Fabric::Oper::FsdbPla
 
@@ -11737,7 +11737,7 @@ class Controller::Fabric::Oper::FsdbPla::Rack : public ydk::Entity
         ydk::YLeaf rack_number; //type: int32
         class AsicStages; //type: Controller::Fabric::Oper::FsdbPla::Rack::AsicStages
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack::AsicStages> > asic_stages;
+        ydk::YList asic_stages;
         
 }; // Controller::Fabric::Oper::FsdbPla::Rack
 
@@ -11766,9 +11766,9 @@ class Controller::Fabric::Oper::FsdbPla::Rack::AsicStages : public ydk::Entity
         class DownFabids; //type: Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids
         class Destination; //type: Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Fabids> > fabids;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::DownFabids> > down_fabids;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination> > destination;
+        ydk::YList fabids;
+        ydk::YList down_fabids;
+        ydk::YList destination;
         
 }; // Controller::Fabric::Oper::FsdbPla::Rack::AsicStages
 
@@ -11850,7 +11850,7 @@ class Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination : public 
         ydk::YLeaf amba_id; //type: string
         class Planes; //type: Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes> > planes;
+        ydk::YList planes;
         
 }; // Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination
 
@@ -11878,7 +11878,7 @@ class Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes :
         ydk::YLeaf asic_stage; //type: string
         class Cards; //type: Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards> > cards;
+        ydk::YList cards;
         
 }; // Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes
 
@@ -11902,7 +11902,7 @@ class Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::
         ydk::YLeaf card_idx; //type: int32
         class Asics; //type: Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::Asics
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards::Asics> > asics;
+        ydk::YList asics;
         
 }; // Controller::Fabric::Oper::FsdbPla::Rack::AsicStages::Destination::Planes::Cards
 
@@ -11979,7 +11979,7 @@ class Controller::Fabric::Oper::FsdbSrvr::FsdbServer : public ydk::Entity
 
         class Trace; //type: Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Fabric::Oper::FsdbSrvr::FsdbServer
 
@@ -12004,7 +12004,7 @@ class Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace
 
@@ -12028,7 +12028,7 @@ class Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location : public y
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location
 
@@ -12052,7 +12052,7 @@ class Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOption
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Fabric::Oper::FsdbSrvr::FsdbServer::Trace::Location::AllOptions
 
@@ -12159,7 +12159,7 @@ class Controller::SfeOper::Sfe::Driver : public ydk::Entity
 
         class Rack; //type: Controller::SfeOper::Sfe::Driver::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Driver::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::SfeOper::Sfe::Driver
 
@@ -12185,7 +12185,7 @@ class Controller::SfeOper::Sfe::Driver::Rack : public ydk::Entity
         ydk::YLeaf description; //type: string
         class DrvrInfo; //type: Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo> > drvr_info;
+        ydk::YList drvr_info;
         
 }; // Controller::SfeOper::Sfe::Driver::Rack
 
@@ -12252,7 +12252,7 @@ class Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo : public ydk::Entity
         ydk::YLeaf startup_time; //type: string
         class AsicList; //type: Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList> > asic_list;
+        ydk::YList asic_list;
         
 }; // Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo
 
@@ -12279,6 +12279,7 @@ class Controller::SfeOper::Sfe::Driver::Rack::DrvrInfo::AsicList : public ydk::E
         ydk::YLeaf card_powered; //type: string
         ydk::YLeaf hotplug_event; //type: uint32
         ydk::YLeaf asic_type; //type: string
+        ydk::YLeaf asic_cardname; //type: string
         ydk::YLeaf admin_state; //type: string
         ydk::YLeaf oper_state; //type: string
         ydk::YLeaf fab_plane; //type: string
@@ -12312,7 +12313,7 @@ class Controller::SfeOper::Sfe::Statistics : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::Statistics
 
@@ -12336,18 +12337,18 @@ class Controller::SfeOper::Sfe::Statistics::Location : public ydk::Entity
 
         ydk::YLeaf loc_str; //type: string
         ydk::YLeaf description; //type: string
-        class Asic; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic
+        class AsicTypes; //type: Controller::SfeOper::Sfe::Statistics::Location::AsicTypes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic> asic;
+        ydk::YList asic_types;
         
 }; // Controller::SfeOper::Sfe::Statistics::Location
 
 
-class Controller::SfeOper::Sfe::Statistics::Location::Asic : public ydk::Entity
+class Controller::SfeOper::Sfe::Statistics::Location::AsicTypes : public ydk::Entity
 {
     public:
-        Asic();
-        ~Asic();
+        AsicTypes();
+        ~AsicTypes();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12359,36 +12360,19 @@ class Controller::SfeOper::Sfe::Statistics::Location::Asic : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class CCS; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS
-        class DCH; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH
-        class DCl; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl
-        class DCMA; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA
-        class DCMB; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB
-        class ECI; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI
-        class FMAC; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC
-        class GCK; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK
-        class RTP; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP
-        class All; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::All
+        ydk::YLeaf asicname; //type: string
+        class Block; //type: Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS> ccs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH> dch;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl> dcl;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA> dcma;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB> dcmb;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI> eci;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC> fmac;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK> gck;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP> rtp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::All> all;
+        ydk::YList block;
         
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic
+}; // Controller::SfeOper::Sfe::Statistics::Location::AsicTypes
 
 
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS : public ydk::Entity
+class Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block : public ydk::Entity
 {
     public:
-        CCS();
-        ~CCS();
+        Block();
+        ~Block();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -12400,14 +12384,15 @@ class Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance
+        ydk::YLeaf blockname; //type: string
+        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance> > instance;
+        ydk::YList instance;
         
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS
+}; // Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block
 
 
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance : public ydk::Entity
+class Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::Instance : public ydk::Entity
 {
     public:
         Instance();
@@ -12424,5764 +12409,9 @@ class Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
+        ydk::YLeaf stats_output; //type: string
 
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::CCS::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH : public ydk::Entity
-{
-    public:
-        DCH();
-        ~DCH();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCH::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl : public ydk::Entity
-{
-    public:
-        DCl();
-        ~DCl();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCl::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA : public ydk::Entity
-{
-    public:
-        DCMA();
-        ~DCMA();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMA::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB : public ydk::Entity
-{
-    public:
-        DCMB();
-        ~DCMB();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::DCMB::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI : public ydk::Entity
-{
-    public:
-        ECI();
-        ~ECI();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::ECI::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC : public ydk::Entity
-{
-    public:
-        FMAC();
-        ~FMAC();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::FMAC::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK : public ydk::Entity
-{
-    public:
-        GCK();
-        ~GCK();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::GCK::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP : public ydk::Entity
-{
-    public:
-        RTP();
-        ~RTP();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::RTP::Instance
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::All : public ydk::Entity
-{
-    public:
-        All();
-        ~All();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Instance; //type: Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance
-
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance> > instance;
-        
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::All
-
-
-class Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance : public ydk::Entity
-{
-    public:
-        Instance();
-        ~Instance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf instance_id; //type: string
-        ydk::YLeaf rack_num; //type: uint32
-        ydk::YLeaf slot_num; //type: uint32
-        ydk::YLeaf asic_instance; //type: uint32
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_capturefifodiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_crpparityerrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounterp_ovf; //type: boolean
-        ydk::YLeaf dch0_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_fifodiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch1_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch2_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch3_dchreorddiscardcounters_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_unreachdestcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcntp_ovf; //type: boolean
-        ydk::YLeaf dch0_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch1_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch2_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch3_dchdroppedlowmulcnts_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntap_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbp_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntas_ovf; //type: boolean
-        ydk::YLeaf dch0_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch1_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch2_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch3_errorfiltercntbs_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricntp_ovf; //type: boolean
-        ydk::YLeaf dch0_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch1_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch2_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch3_droplowpricnts_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dch0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dch3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cntp_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp0cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp1cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp2cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl1_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl2_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl3_dcldroppedp3cnts_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_tagparerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl0_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl1_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl2_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcl3_datacrcerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcma1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip0_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip1_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip2_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedip3_ovf; //type: boolean
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb0_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf dcmb1_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf eci_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf rtp_parityerrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_1berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac0_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac1_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac2_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac3_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac4_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac5_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac6_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac7_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac8_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac9_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac10_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac11_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac12_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac13_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac14_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac15_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac16_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac17_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac18_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac19_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac20_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac21_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac22_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac23_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac24_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac25_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac26_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac27_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac28_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac29_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac30_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf fmac31_ecc_2berrcnt_ovf; //type: boolean
-        ydk::YLeaf ccs0_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs1_unreachabledestinationcellscnt; //type: uint64
-        ydk::YLeaf ccs0_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_capturefifodiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmalpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs1_cdmblpcellsdiscardcnt; //type: uint64
-        ydk::YLeaf ccs0_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs1_crpparityerrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf ccs0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf ccs1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounterp; //type: uint64
-        ydk::YLeaf dch0_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch1_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch2_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch3_fifodiscardcounters; //type: uint64
-        ydk::YLeaf dch0_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch1_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch2_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch3_dchreorddiscardcounters; //type: uint64
-        ydk::YLeaf dch0_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch1_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch2_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch3_unreachdestcntp; //type: uint64
-        ydk::YLeaf dch0_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch1_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch2_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch3_unreachdestcnts; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcntp; //type: uint64
-        ydk::YLeaf dch0_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch1_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch2_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch3_dchdroppedlowmulcnts; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntap; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbp; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntas; //type: uint64
-        ydk::YLeaf dch0_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch1_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch2_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch3_errorfiltercntbs; //type: uint64
-        ydk::YLeaf dch0_droplowpricntp; //type: uint64
-        ydk::YLeaf dch1_droplowpricntp; //type: uint64
-        ydk::YLeaf dch2_droplowpricntp; //type: uint64
-        ydk::YLeaf dch3_droplowpricntp; //type: uint64
-        ydk::YLeaf dch0_droplowpricnts; //type: uint64
-        ydk::YLeaf dch1_droplowpricnts; //type: uint64
-        ydk::YLeaf dch2_droplowpricnts; //type: uint64
-        ydk::YLeaf dch3_droplowpricnts; //type: uint64
-        ydk::YLeaf dch0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dch0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dch0_parityerrcnt; //type: uint64
-        ydk::YLeaf dch1_parityerrcnt; //type: uint64
-        ydk::YLeaf dch2_parityerrcnt; //type: uint64
-        ydk::YLeaf dch3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cntp; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp0cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp1cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp2cnts; //type: uint64
-        ydk::YLeaf dcl0_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl1_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl2_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl3_dcldroppedp3cnts; //type: uint64
-        ydk::YLeaf dcl0_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp0cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl1_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl2_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl3_ccp1cifdscrdcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcl0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcl0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl2_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl3_parityerrcnt; //type: uint64
-        ydk::YLeaf dcl0_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl1_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl2_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl3_tagparerrcnt; //type: uint64
-        ydk::YLeaf dcl0_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl1_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl2_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcl3_datacrcerrcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcma0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcma0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcma0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcma1_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmmdroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip0; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip1; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip2; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedip3; //type: uint64
-        ydk::YLeaf dcmb0_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb1_dcmudroppedtotalcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf dcmb0_parityerrcnt; //type: uint64
-        ydk::YLeaf dcmb1_parityerrcnt; //type: uint64
-        ydk::YLeaf eci_parityerrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf rtp_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf rtp_parityerrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_1berrcnt; //type: uint64
-        ydk::YLeaf fmac0_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac1_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac2_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac3_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac4_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac5_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac6_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac7_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac8_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac9_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac10_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac11_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac12_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac13_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac14_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac15_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac16_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac17_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac18_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac19_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac20_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac21_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac22_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac23_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac24_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac25_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac26_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac27_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac28_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac29_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac30_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf fmac31_ecc_2berrcnt; //type: uint64
-        ydk::YLeaf is_show; //type: boolean
-        ydk::YLeaf show_ccs; //type: boolean
-        ydk::YLeaf show_dch; //type: boolean
-        ydk::YLeaf show_dcl; //type: boolean
-        ydk::YLeaf show_dcma; //type: boolean
-        ydk::YLeaf show_dcmb; //type: boolean
-        ydk::YLeaf show_eci; //type: boolean
-        ydk::YLeaf show_fmac; //type: boolean
-        ydk::YLeaf show_rtp; //type: boolean
-
-}; // Controller::SfeOper::Sfe::Statistics::Location::Asic::All::Instance
+}; // Controller::SfeOper::Sfe::Statistics::Location::AsicTypes::Block::Instance
 
 
 class Controller::SfeOper::Sfe::LinkInfo : public ydk::Entity
@@ -18203,7 +12433,7 @@ class Controller::SfeOper::Sfe::LinkInfo : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::LinkInfo::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::LinkInfo
 
@@ -18230,8 +12460,8 @@ class Controller::SfeOper::Sfe::LinkInfo::Location : public ydk::Entity
         class Rx; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx
         class Tx; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx> > rx;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx> > tx;
+        ydk::YList rx;
+        ydk::YList tx;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location
 
@@ -18310,7 +12540,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo : public yd
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo
 
@@ -18336,7 +12566,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance :
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance
 
@@ -18359,6 +12589,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -18389,7 +12620,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Topo::Instance::LinkIdxList
 
@@ -18438,7 +12669,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap : public yd
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap
 
@@ -18464,7 +12695,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance :
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance
 
@@ -18487,6 +12718,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -18517,7 +12749,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Detail::Flap::Instance::LinkIdxList
 
@@ -18566,7 +12798,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo : public ydk::Entit
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo
 
@@ -18592,7 +12824,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance : public 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance
 
@@ -18615,6 +12847,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxL
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -18645,7 +12878,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxL
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Topo::Instance::LinkIdxList
 
@@ -18694,7 +12927,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap : public ydk::Entit
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap
 
@@ -18720,7 +12953,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance : public 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance
 
@@ -18743,6 +12976,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxL
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -18773,7 +13007,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxL
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Flap::Instance::LinkIdxList
 
@@ -18849,7 +13083,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data
 
@@ -18875,7 +13109,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance
 
@@ -18898,6 +13132,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -18928,7 +13163,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Data::Instance::LinkIdxList
 
@@ -18977,7 +13212,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl
 
@@ -19003,7 +13238,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance
 
@@ -19026,6 +13261,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -19056,7 +13292,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::Ctrl::Instance::LinkIdxList
 
@@ -19105,7 +13341,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All : public ydk:
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All
 
@@ -19131,7 +13367,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance : p
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance
 
@@ -19154,6 +13390,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::Li
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -19184,7 +13421,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::Li
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Rx::Stats::All::Instance::LinkIdxList
 
@@ -19238,7 +13475,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx : public ydk::Entity
         class Stats; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail> detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance> > instance;
+        ydk::YList instance;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats> stats;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx
@@ -19262,7 +13499,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail : public ydk::Ent
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail
 
@@ -19288,7 +13525,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance : publi
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance
 
@@ -19311,6 +13548,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkId
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -19341,7 +13579,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkId
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Detail::Instance::LinkIdxList
 
@@ -19393,7 +13631,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance : public ydk::E
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance
 
@@ -19416,6 +13654,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList : 
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -19446,7 +13685,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList : 
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Instance::LinkIdxList
 
@@ -19522,7 +13761,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data
 
@@ -19548,7 +13787,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance
 
@@ -19571,6 +13810,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -19601,7 +13841,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Data::Instance::LinkIdxList
 
@@ -19650,7 +13890,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl : public ydk
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl
 
@@ -19676,7 +13916,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance : 
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance
 
@@ -19699,6 +13939,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::L
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -19729,7 +13970,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::L
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::Ctrl::Instance::LinkIdxList
 
@@ -19778,7 +14019,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All : public ydk:
 
         class Instance; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All
 
@@ -19804,7 +14045,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance : p
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance
 
@@ -19827,6 +14068,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::Li
 
         ydk::YLeaf link_idx; //type: int64
         ydk::YLeaf link_id_str; //type: string
+        ydk::YLeaf phy_link; //type: string
         ydk::YLeaf speed; //type: string
         ydk::YLeaf stage; //type: string
         ydk::YLeaf fab_plane; //type: uint32
@@ -19857,7 +14099,7 @@ class Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::Li
         ydk::YLeaf fsm_state; //type: string
         class History; //type: Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList::History
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList::History> > history;
+        ydk::YList history;
         
 }; // Controller::SfeOper::Sfe::LinkInfo::Location::Tx::Stats::All::Instance::LinkIdxList
 
@@ -19907,7 +14149,7 @@ class Controller::SfeOper::Sfe::Diagshell : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::Diagshell::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::Diagshell
 
@@ -19933,7 +14175,7 @@ class Controller::SfeOper::Sfe::Diagshell::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Instance; //type: Controller::SfeOper::Sfe::Diagshell::Location::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::Diagshell::Location
 
@@ -19957,7 +14199,7 @@ class Controller::SfeOper::Sfe::Diagshell::Location::Instance : public ydk::Enti
         ydk::YLeaf instance_num; //type: int32
         class DiagCmd; //type: Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd> > diag_cmd;
+        ydk::YList diag_cmd;
         
 }; // Controller::SfeOper::Sfe::Diagshell::Location::Instance
 
@@ -19981,7 +14223,7 @@ class Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd : public 
         ydk::YLeaf cmd_str; //type: string
         class Bytes; //type: Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd::Bytes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd::Bytes> > bytes;
+        ydk::YList bytes;
         
 }; // Controller::SfeOper::Sfe::Diagshell::Location::Instance::DiagCmd
 
@@ -20027,7 +14269,7 @@ class Controller::SfeOper::Sfe::Register : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::Register::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Register::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::Register
 
@@ -20053,7 +14295,7 @@ class Controller::SfeOper::Sfe::Register::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Instance; //type: Controller::SfeOper::Sfe::Register::Location::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Register::Location::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::Register::Location
 
@@ -20077,7 +14319,7 @@ class Controller::SfeOper::Sfe::Register::Location::Instance : public ydk::Entit
         ydk::YLeaf instance_num; //type: int32
         class Bytes; //type: Controller::SfeOper::Sfe::Register::Location::Instance::Bytes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Register::Location::Instance::Bytes> > bytes;
+        ydk::YList bytes;
         
 }; // Controller::SfeOper::Sfe::Register::Location::Instance
 
@@ -20123,7 +14365,7 @@ class Controller::SfeOper::Sfe::DumpFile : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::DumpFile::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::DumpFile::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::DumpFile
 
@@ -20149,7 +14391,7 @@ class Controller::SfeOper::Sfe::DumpFile::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class File; //type: Controller::SfeOper::Sfe::DumpFile::Location::File
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::DumpFile::Location::File> > file;
+        ydk::YList file;
         
 }; // Controller::SfeOper::Sfe::DumpFile::Location
 
@@ -20173,7 +14415,7 @@ class Controller::SfeOper::Sfe::DumpFile::Location::File : public ydk::Entity
         ydk::YLeaf file_name; //type: string
         class Bytes; //type: Controller::SfeOper::Sfe::DumpFile::Location::File::Bytes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::DumpFile::Location::File::Bytes> > bytes;
+        ydk::YList bytes;
         
 }; // Controller::SfeOper::Sfe::DumpFile::Location::File
 
@@ -20219,7 +14461,7 @@ class Controller::SfeOper::Sfe::Parse : public ydk::Entity
 
         class Location; //type: Controller::SfeOper::Sfe::Parse::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::Sfe::Parse
 
@@ -20245,7 +14487,7 @@ class Controller::SfeOper::Sfe::Parse::Location : public ydk::Entity
         ydk::YLeaf description; //type: string
         class Link; //type: Controller::SfeOper::Sfe::Parse::Location::Link
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location::Link> > link;
+        ydk::YList link;
         
 }; // Controller::SfeOper::Sfe::Parse::Location
 
@@ -20270,7 +14512,7 @@ class Controller::SfeOper::Sfe::Parse::Location::Link : public ydk::Entity
         ydk::YLeaf end; //type: int32
         class Instance; //type: Controller::SfeOper::Sfe::Parse::Location::Link::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location::Link::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::SfeOper::Sfe::Parse::Location::Link
 
@@ -20295,7 +14537,7 @@ class Controller::SfeOper::Sfe::Parse::Location::Link::Instance : public ydk::En
         ydk::YLeaf is_show; //type: boolean
         class LinkIdxList; //type: Controller::SfeOper::Sfe::Parse::Location::Link::Instance::LinkIdxList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::Sfe::Parse::Location::Link::Instance::LinkIdxList> > link_idx_list;
+        ydk::YList link_idx_list;
         
 }; // Controller::SfeOper::Sfe::Parse::Location::Link::Instance
 
@@ -20375,7 +14617,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver : public ydk::Entity
 
         class Trace; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver
 
@@ -20400,7 +14642,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver::Trace
 
@@ -20424,7 +14666,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location : public ydk::En
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location
 
@@ -20448,7 +14690,7 @@ class Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions : pu
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::SfeOper::SfeTrace::SfeDriver::Trace::Location::AllOptions
 
@@ -20494,7 +14736,7 @@ class Controller::Asic : public ydk::Entity
         ydk::YLeaf asic_name; //type: string
         class Instance; //type: Controller::Asic::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::Asic
 
@@ -20521,9 +14763,9 @@ class Controller::Asic::Instance : public ydk::Entity
         class BlockName; //type: Controller::Asic::Instance::BlockName
         class BlockNumber; //type: Controller::Asic::Instance::BlockNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::Address> > address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockName> > block_name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber> > block_number;
+        ydk::YList address;
+        ydk::YList block_name;
+        ydk::YList block_number;
         
 }; // Controller::Asic::Instance
 
@@ -20550,7 +14792,7 @@ class Controller::Asic::Instance::Address : public ydk::Entity
         ydk::YLeaf width; //type: uint32
         class Location; //type: Controller::Asic::Instance::Address::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::Address::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Asic::Instance::Address
 
@@ -20574,7 +14816,7 @@ class Controller::Asic::Instance::Address::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class DirectData; //type: Controller::Asic::Instance::Address::Location::DirectData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::Address::Location::DirectData> > direct_data;
+        ydk::YList direct_data;
         
 }; // Controller::Asic::Instance::Address::Location
 
@@ -20623,7 +14865,7 @@ class Controller::Asic::Instance::BlockName : public ydk::Entity
         ydk::YLeaf block_num; //type: uint32
         class RegisterName; //type: Controller::Asic::Instance::BlockName::RegisterName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockName::RegisterName> > register_name;
+        ydk::YList register_name;
         
 }; // Controller::Asic::Instance::BlockName
 
@@ -20648,7 +14890,7 @@ class Controller::Asic::Instance::BlockName::RegisterName : public ydk::Entity
         ydk::YLeaf register_; //type: uint32
         class Data; //type: Controller::Asic::Instance::BlockName::RegisterName::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockName::RegisterName::Data> > data;
+        ydk::YList data;
         
 }; // Controller::Asic::Instance::BlockName::RegisterName
 
@@ -20697,7 +14939,7 @@ class Controller::Asic::Instance::BlockNumber : public ydk::Entity
         ydk::YLeaf block_nm; //type: string
         class RegisterNumber; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber> > register_number;
+        ydk::YList register_number;
         
 }; // Controller::Asic::Instance::BlockNumber
 
@@ -20723,8 +14965,8 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber : public ydk::Enti
         class RegisterOffsets; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
         class Location; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets> > register_offsets;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::Location> > location;
+        ydk::YList register_offsets;
+        ydk::YList location;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber
 
@@ -20749,7 +14991,7 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets :
         ydk::YLeaf num_entries; //type: uint32
         class Location; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets
 
@@ -20773,7 +15015,7 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::
         ydk::YLeaf location_name; //type: string
         class Data; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location::Data> > data;
+        ydk::YList data;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber::RegisterOffsets::Location
 
@@ -20821,7 +15063,7 @@ class Controller::Asic::Instance::BlockNumber::RegisterNumber::Location : public
         ydk::YLeaf location_name; //type: string
         class Data; //type: Controller::Asic::Instance::BlockNumber::RegisterNumber::Location::Data
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Asic::Instance::BlockNumber::RegisterNumber::Location::Data> > data;
+        ydk::YList data;
         
 }; // Controller::Asic::Instance::BlockNumber::RegisterNumber::Location
 
@@ -20893,7 +15135,7 @@ class Controller::Oper::SliceControl : public ydk::Entity
 
         class LocationList; //type: Controller::Oper::SliceControl::LocationList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList> > location_list;
+        ydk::YList location_list;
         
 }; // Controller::Oper::SliceControl
 
@@ -20920,8 +15162,8 @@ class Controller::Oper::SliceControl::LocationList : public ydk::Entity
         class ManagerContextInfo; //type: Controller::Oper::SliceControl::LocationList::ManagerContextInfo
         class FPGA; //type: Controller::Oper::SliceControl::LocationList::FPGA
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::ManagerContextInfo> > manager_context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA> > fpga;
+        ydk::YList manager_context_info;
+        ydk::YList fpga;
         
 }; // Controller::Oper::SliceControl::LocationList
 
@@ -20978,9 +15220,9 @@ class Controller::Oper::SliceControl::LocationList::FPGA : public ydk::Entity
         class ClockingDevices; //type: Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices
         class Slice; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::SliceContextInfo> > slice_context_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices> > clocking_devices;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice> > slice;
+        ydk::YList slice_context_info;
+        ydk::YList clocking_devices;
+        ydk::YList slice;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA
 
@@ -21046,7 +15288,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices : publ
         ydk::YLeaf is_data_available; //type: boolean
         class Pll; //type: Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices::Pll
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices::Pll> > pll;
+        ydk::YList pll;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::ClockingDevices
 
@@ -21112,22 +15354,22 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice : public ydk::En
         class Modena; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary> summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::CurrSensor> > curr_sensor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Eeprom> > eeprom;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::OpticsSummary> > optics_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics> > optics;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Phy> > phy;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::TempSensor> > temp_sensor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::VoltSensor> > volt_sensor;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::GearboxSummary> > gearbox_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2Summary> > gearbox2_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearboxSummary> > dual_gearbox_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox> > gearbox;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2> > gearbox2;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox> > dual_gearbox;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Cpak> > cpak;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::ModenaSummary> > modena_summary;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena> > modena;
+        ydk::YList curr_sensor;
+        ydk::YList eeprom;
+        ydk::YList optics_summary;
+        ydk::YList optics;
+        ydk::YList phy;
+        ydk::YList temp_sensor;
+        ydk::YList volt_sensor;
+        ydk::YList gearbox_summary;
+        ydk::YList gearbox2_summary;
+        ydk::YList dual_gearbox_summary;
+        ydk::YList gearbox;
+        ydk::YList gearbox2;
+        ydk::YList dual_gearbox;
+        ydk::YList cpak;
+        ydk::YList modena_summary;
+        ydk::YList modena;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice
 
@@ -21150,7 +15392,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary : publi
 
         class SliceSummary; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary::SliceSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary::SliceSummary> > slice_summary;
+        ydk::YList slice_summary;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Summary
 
@@ -21289,11 +15531,11 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics : public
         class TxCoefficients; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::TxCoefficients
         class RxCoefficients; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::RxCoefficients
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::Cxp> > cxp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::TxInfo> > tx_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::RxInfo> > rx_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::TxCoefficients> > tx_coefficients;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics::RxCoefficients> > rx_coefficients;
+        ydk::YList cxp;
+        ydk::YList tx_info;
+        ydk::YList rx_info;
+        ydk::YList tx_coefficients;
+        ydk::YList rx_coefficients;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Optics
 
@@ -21685,7 +15927,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox : publi
         ydk::YLeaf gearbox_id; //type: string
         class GearboxLane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox::GearboxLane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox::GearboxLane> > gearbox_lane;
+        ydk::YList gearbox_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox
 
@@ -21739,7 +15981,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2 : publ
         ydk::YLeaf gearbox2_id; //type: string
         class Gearbox2Lane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2::Gearbox2Lane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2::Gearbox2Lane> > gearbox2_lane;
+        ydk::YList gearbox2_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Gearbox2
 
@@ -21793,7 +16035,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox : p
         ydk::YLeaf dual_gearbox_id; //type: string
         class DualGearboxLane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox::DualGearboxLane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox::DualGearboxLane> > dual_gearbox_lane;
+        ydk::YList dual_gearbox_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::DualGearbox
 
@@ -21926,7 +16168,7 @@ class Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena : public
         ydk::YLeaf modena_id; //type: string
         class ModenaLane; //type: Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena::ModenaLane
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena::ModenaLane> > modena_lane;
+        ydk::YList modena_lane;
         
 }; // Controller::Oper::SliceControl::LocationList::FPGA::Slice::Modena
 
@@ -21975,7 +16217,7 @@ class Controller::Zen : public ydk::Entity
         class Trace; //type: Controller::Zen::Trace
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper> zen_oper;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Zen
 
@@ -21999,7 +16241,7 @@ class Controller::Zen::ZenOper : public ydk::Entity
 
         class ZenLocation; //type: Controller::Zen::ZenOper::ZenLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation> > zen_location;
+        ydk::YList zen_location;
         
 }; // Controller::Zen::ZenOper
 
@@ -22096,7 +16338,7 @@ class Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensor
 
         class ZenTempSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData::ZenTempSensor> > zen_temp_sensor;
+        ydk::YList zen_temp_sensor;
         
 }; // Controller::Zen::ZenOper::ZenLocation::ZenTempSensorDefault::ZenTempSensorData
 
@@ -22173,7 +16415,7 @@ class Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensor
 
         class ZenVoltSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData::ZenVoltSensor> > zen_volt_sensor;
+        ydk::YList zen_volt_sensor;
         
 }; // Controller::Zen::ZenOper::ZenLocation::ZenVoltSensorDefault::ZenVoltSensorData
 
@@ -22250,7 +16492,7 @@ class Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensor
 
         class ZenCurrSensor; //type: Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData::ZenCurrSensor> > zen_curr_sensor;
+        ydk::YList zen_curr_sensor;
         
 }; // Controller::Zen::ZenOper::ZenLocation::ZenCurrSensorDefault::ZenCurrSensorData
 
@@ -22306,7 +16548,7 @@ class Controller::Zen::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Zen::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Zen::Trace
 
@@ -22330,7 +16572,7 @@ class Controller::Zen::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Zen::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Zen::Trace::Location
 
@@ -22354,7 +16596,7 @@ class Controller::Zen::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Zen::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Zen::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Zen::Trace::Location::AllOptions
 
@@ -22404,7 +16646,7 @@ class Controller::CccDriver : public ydk::Entity
         class ResetHistory; //type: Controller::CccDriver::ResetHistory
         class Register; //type: Controller::CccDriver::Register
         class Ejector; //type: Controller::CccDriver::Ejector
-        class I2CDev; //type: Controller::CccDriver::I2CDev
+        class I2cDev; //type: Controller::CccDriver::I2cDev
         class Ethernet; //type: Controller::CccDriver::Ethernet
         class EventHistory; //type: Controller::CccDriver::EventHistory
         class OirHistory; //type: Controller::CccDriver::OirHistory
@@ -22412,14 +16654,14 @@ class Controller::CccDriver : public ydk::Entity
         class Slave; //type: Controller::CccDriver::Slave
         class Action; //type: Controller::CccDriver::Action
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace> > trace;
+        ydk::YList trace;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash> bootflash;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory> inventory;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Power> power;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory> reset_history;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register> register_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ejector> ejector;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev> i2c_dev;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev> i2c_dev;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ethernet> ethernet;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::EventHistory> event_history;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::OirHistory> oir_history;
@@ -22450,7 +16692,7 @@ class Controller::CccDriver::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::CccDriver::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Trace
 
@@ -22474,7 +16716,7 @@ class Controller::CccDriver::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::CccDriver::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::CccDriver::Trace::Location
 
@@ -22498,7 +16740,7 @@ class Controller::CccDriver::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::CccDriver::Trace::Location::AllOptions
 
@@ -22571,7 +16813,7 @@ class Controller::CccDriver::Bootflash::Info : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Bootflash::Info::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash::Info::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Bootflash::Info
 
@@ -22641,7 +16883,7 @@ class Controller::CccDriver::Bootflash::Status : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Bootflash::Status::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash::Status::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Bootflash::Status
 
@@ -22711,7 +16953,7 @@ class Controller::CccDriver::Bootflash::CreStatus : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Bootflash::CreStatus::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Bootflash::CreStatus::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Bootflash::CreStatus
 
@@ -22811,7 +17053,7 @@ class Controller::CccDriver::Inventory::Summary : public ydk::Entity
 
         class CccInvSummary; //type: Controller::CccDriver::Inventory::Summary::CccInvSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Summary::CccInvSummary> > ccc_inv_summary;
+        ydk::YList ccc_inv_summary;
         
 }; // Controller::CccDriver::Inventory::Summary
 
@@ -22862,7 +17104,7 @@ class Controller::CccDriver::Inventory::Version : public ydk::Entity
 
         class CccInvVersion; //type: Controller::CccDriver::Inventory::Version::CccInvVersion
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Version::CccInvVersion> > ccc_inv_version;
+        ydk::YList ccc_inv_version;
         
 }; // Controller::CccDriver::Inventory::Version
 
@@ -22913,7 +17155,7 @@ class Controller::CccDriver::Inventory::Status : public ydk::Entity
 
         class CccInvStatus; //type: Controller::CccDriver::Inventory::Status::CccInvStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Status::CccInvStatus> > ccc_inv_status;
+        ydk::YList ccc_inv_status;
         
 }; // Controller::CccDriver::Inventory::Status
 
@@ -22983,7 +17225,7 @@ class Controller::CccDriver::Inventory::Detail : public ydk::Entity
 
         class CccInvDetail; //type: Controller::CccDriver::Inventory::Detail::CccInvDetail
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Inventory::Detail::CccInvDetail> > ccc_inv_detail;
+        ydk::YList ccc_inv_detail;
         
 }; // Controller::CccDriver::Inventory::Detail
 
@@ -23103,7 +17345,7 @@ class Controller::CccDriver::Power::MasterAccess::Summary : public ydk::Entity
 
         class PowerSummary; //type: Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Power::MasterAccess::Summary::PowerSummary> > power_summary;
+        ydk::YList power_summary;
         
 }; // Controller::CccDriver::Power::MasterAccess::Summary
 
@@ -23151,7 +17393,7 @@ class Controller::CccDriver::Power::MasterAccess::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Power::MasterAccess::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Power::MasterAccess::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Power::MasterAccess::Detail
 
@@ -23247,7 +17489,7 @@ class Controller::CccDriver::ResetHistory::Onchip : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::ResetHistory::Onchip::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onchip::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::ResetHistory::Onchip
 
@@ -23275,7 +17517,7 @@ class Controller::CccDriver::ResetHistory::Onchip::Location : public ydk::Entity
         ydk::YLeaf ccc_hw_reset_count; //type: uint32
         class CccResetEntry; //type: Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onchip::Location::CccResetEntry> > ccc_reset_entry;
+        ydk::YList ccc_reset_entry;
         
 }; // Controller::CccDriver::ResetHistory::Onchip::Location
 
@@ -23334,7 +17576,7 @@ class Controller::CccDriver::ResetHistory::Onboard : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::ResetHistory::Onboard::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onboard::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::ResetHistory::Onboard
 
@@ -23363,7 +17605,7 @@ class Controller::CccDriver::ResetHistory::Onboard::Location : public ydk::Entit
         ydk::YLeaf ccc_reset_history_count; //type: uint32
         class CccResetOnboardEntry; //type: Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::ResetHistory::Onboard::Location::CccResetOnboardEntry> > ccc_reset_onboard_entry;
+        ydk::YList ccc_reset_onboard_entry;
         
 }; // Controller::CccDriver::ResetHistory::Onboard::Location
 
@@ -23422,7 +17664,7 @@ class Controller::CccDriver::Register : public ydk::Entity
 
         class RegisterLocation; //type: Controller::CccDriver::Register::RegisterLocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation> > register_location;
+        ydk::YList register_location;
         
 }; // Controller::CccDriver::Register
 
@@ -23449,9 +17691,9 @@ class Controller::CccDriver::Register::RegisterLocation : public ydk::Entity
         class CccOffset; //type: Controller::CccDriver::Register::RegisterLocation::CccOffset
         class CccAddress; //type: Controller::CccDriver::Register::RegisterLocation::CccAddress
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccBlockNumber> > ccc_block_number;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccOffset> > ccc_offset;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccAddress> > ccc_address;
+        ydk::YList ccc_block_number;
+        ydk::YList ccc_offset;
+        ydk::YList ccc_address;
         
 }; // Controller::CccDriver::Register::RegisterLocation
 
@@ -23477,7 +17719,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccBlockNumber : public
         ydk::YLeaf ccc_block_nm; //type: string
         class CccRegisterNumber; //type: Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber> > ccc_register_number;
+        ydk::YList ccc_register_number;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccBlockNumber
 
@@ -23502,7 +17744,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegi
         ydk::YLeaf ccc_register_name; //type: string
         class CccData; //type: Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::CccData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber::CccData> > ccc_data;
+        ydk::YList ccc_data;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccBlockNumber::CccRegisterNumber
 
@@ -23549,7 +17791,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccOffset : public ydk:
         ydk::YLeaf hex_offset; //type: string
         class CccRegOffsetData; //type: Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccOffset::CccRegOffsetData> > ccc_reg_offset_data;
+        ydk::YList ccc_reg_offset_data;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccOffset
 
@@ -23596,7 +17838,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccAddress : public ydk
         ydk::YLeaf end_hex_addr; //type: string
         class CccRegRangeAddrList; //type: Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList> > ccc_reg_range_addr_list;
+        ydk::YList ccc_reg_range_addr_list;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccAddress
 
@@ -23620,7 +17862,7 @@ class Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRange
         ydk::YLeaf ccc_reg_range_addr; //type: uint32
         class CccRegData; //type: Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList::CccRegData> > ccc_reg_data;
+        ydk::YList ccc_reg_data;
         
 }; // Controller::CccDriver::Register::RegisterLocation::CccAddress::CccRegRangeAddrList
 
@@ -23690,7 +17932,7 @@ class Controller::CccDriver::Ejector::Status : public ydk::Entity
 
         class CccEjectorStatus; //type: Controller::CccDriver::Ejector::Status::CccEjectorStatus
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ejector::Status::CccEjectorStatus> > ccc_ejector_status;
+        ydk::YList ccc_ejector_status;
         
 }; // Controller::CccDriver::Ejector::Status
 
@@ -23739,11 +17981,11 @@ class Controller::CccDriver::Ejector::Status::CccEjectorStatus : public ydk::Ent
 }; // Controller::CccDriver::Ejector::Status::CccEjectorStatus
 
 
-class Controller::CccDriver::I2CDev : public ydk::Entity
+class Controller::CccDriver::I2cDev : public ydk::Entity
 {
     public:
-        I2CDev();
-        ~I2CDev();
+        I2cDev();
+        ~I2cDev();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -23756,16 +17998,16 @@ class Controller::CccDriver::I2CDev : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class CpuComplex; //type: Controller::CccDriver::I2CDev::CpuComplex
-        class Ioexpander; //type: Controller::CccDriver::I2CDev::Ioexpander
+        class CpuComplex; //type: Controller::CccDriver::I2cDev::CpuComplex
+        class Ioexpander; //type: Controller::CccDriver::I2cDev::Ioexpander
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::CpuComplex> cpu_complex;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::Ioexpander> ioexpander;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::CpuComplex> cpu_complex;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::Ioexpander> ioexpander;
         
-}; // Controller::CccDriver::I2CDev
+}; // Controller::CccDriver::I2cDev
 
 
-class Controller::CccDriver::I2CDev::CpuComplex : public ydk::Entity
+class Controller::CccDriver::I2cDev::CpuComplex : public ydk::Entity
 {
     public:
         CpuComplex();
@@ -23782,14 +18024,14 @@ class Controller::CccDriver::I2CDev::CpuComplex : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Location; //type: Controller::CccDriver::I2CDev::CpuComplex::Location
+        class Location; //type: Controller::CccDriver::I2cDev::CpuComplex::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::CpuComplex::Location> > location;
+        ydk::YList location;
         
-}; // Controller::CccDriver::I2CDev::CpuComplex
+}; // Controller::CccDriver::I2cDev::CpuComplex
 
 
-class Controller::CccDriver::I2CDev::CpuComplex::Location : public ydk::Entity
+class Controller::CccDriver::I2cDev::CpuComplex::Location : public ydk::Entity
 {
     public:
         Location();
@@ -23807,14 +18049,14 @@ class Controller::CccDriver::I2CDev::CpuComplex::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
-        class CpuComplexDetail; //type: Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail
+        class CpuComplexDetail; //type: Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail> cpu_complex_detail;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail> cpu_complex_detail;
         
-}; // Controller::CccDriver::I2CDev::CpuComplex::Location
+}; // Controller::CccDriver::I2cDev::CpuComplex::Location
 
 
-class Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail : public ydk::Entity
+class Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail : public ydk::Entity
 {
     public:
         CpuComplexDetail();
@@ -23832,10 +18074,10 @@ class Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail : pu
 
         ydk::YLeafList cpu_complex_values; //type: list of  string
 
-}; // Controller::CccDriver::I2CDev::CpuComplex::Location::CpuComplexDetail
+}; // Controller::CccDriver::I2cDev::CpuComplex::Location::CpuComplexDetail
 
 
-class Controller::CccDriver::I2CDev::Ioexpander : public ydk::Entity
+class Controller::CccDriver::I2cDev::Ioexpander : public ydk::Entity
 {
     public:
         Ioexpander();
@@ -23852,14 +18094,14 @@ class Controller::CccDriver::I2CDev::Ioexpander : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Location; //type: Controller::CccDriver::I2CDev::Ioexpander::Location
+        class Location; //type: Controller::CccDriver::I2cDev::Ioexpander::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::Ioexpander::Location> > location;
+        ydk::YList location;
         
-}; // Controller::CccDriver::I2CDev::Ioexpander
+}; // Controller::CccDriver::I2cDev::Ioexpander
 
 
-class Controller::CccDriver::I2CDev::Ioexpander::Location : public ydk::Entity
+class Controller::CccDriver::I2cDev::Ioexpander::Location : public ydk::Entity
 {
     public:
         Location();
@@ -23877,14 +18119,14 @@ class Controller::CccDriver::I2CDev::Ioexpander::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location; //type: string
-        class IoExpVal; //type: Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal
+        class IoExpVal; //type: Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal> io_exp_val;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal> io_exp_val;
         
-}; // Controller::CccDriver::I2CDev::Ioexpander::Location
+}; // Controller::CccDriver::I2cDev::Ioexpander::Location
 
 
-class Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal : public ydk::Entity
+class Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal : public ydk::Entity
 {
     public:
         IoExpVal();
@@ -23902,7 +18144,7 @@ class Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal : public ydk
 
         ydk::YLeafList io_exp_details; //type: list of  string
 
-}; // Controller::CccDriver::I2CDev::Ioexpander::Location::IoExpVal
+}; // Controller::CccDriver::I2cDev::Ioexpander::Location::IoExpVal
 
 
 class Controller::CccDriver::Ethernet : public ydk::Entity
@@ -23950,7 +18192,7 @@ class Controller::CccDriver::Ethernet::EthernetStatus : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Ethernet::EthernetStatus::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ethernet::EthernetStatus::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Ethernet::EthernetStatus
 
@@ -24020,7 +18262,7 @@ class Controller::CccDriver::Ethernet::EthernetCounters : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Ethernet::EthernetCounters::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Ethernet::EthernetCounters::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Ethernet::EthernetCounters
 
@@ -24116,7 +18358,7 @@ class Controller::CccDriver::EventHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::EventHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::EventHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::EventHistory::Brief
 
@@ -24186,7 +18428,7 @@ class Controller::CccDriver::EventHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::EventHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::EventHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::EventHistory::Detail
 
@@ -24256,7 +18498,7 @@ class Controller::CccDriver::OirHistory : public ydk::Entity
 
         class Rack; //type: Controller::CccDriver::OirHistory::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::OirHistory::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::CccDriver::OirHistory
 
@@ -24352,7 +18594,7 @@ class Controller::CccDriver::NotifHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::NotifHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::NotifHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::NotifHistory::Brief
 
@@ -24422,7 +18664,7 @@ class Controller::CccDriver::NotifHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::NotifHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::NotifHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::NotifHistory::Detail
 
@@ -24546,7 +18788,7 @@ class Controller::CccDriver::Slave::EventHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::EventHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::EventHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::EventHistory::Brief
 
@@ -24616,7 +18858,7 @@ class Controller::CccDriver::Slave::EventHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::EventHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::EventHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::EventHistory::Detail
 
@@ -24712,7 +18954,7 @@ class Controller::CccDriver::Slave::NotifHistory::Brief : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::NotifHistory::Brief::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::NotifHistory::Brief::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::NotifHistory::Brief
 
@@ -24782,7 +19024,7 @@ class Controller::CccDriver::Slave::NotifHistory::Detail : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Slave::NotifHistory::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::NotifHistory::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Slave::NotifHistory::Detail
 
@@ -24852,7 +19094,7 @@ class Controller::CccDriver::Slave::OirHistory : public ydk::Entity
 
         class Rack; //type: Controller::CccDriver::Slave::OirHistory::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Slave::OirHistory::Rack> > rack;
+        ydk::YList rack;
         
 }; // Controller::CccDriver::Slave::OirHistory
 
@@ -24946,7 +19188,7 @@ class Controller::CccDriver::Action::Register : public ydk::Entity
 
         class Location; //type: Controller::CccDriver::Action::Register::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::CccDriver::Action::Register::Location> > location;
+        ydk::YList location;
         
 }; // Controller::CccDriver::Action::Register
 
@@ -25070,7 +19312,7 @@ class Controller::Switch::Oper::Reachable : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Reachable::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Reachable::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Reachable
 
@@ -25118,7 +19360,7 @@ class Controller::Switch::Oper::Summary : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Summary::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Summary
 
@@ -25146,7 +19388,7 @@ class Controller::Switch::Oper::Summary::Location : public ydk::Entity
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Summary::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Summary::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Summary::Location
 
@@ -25223,7 +19465,7 @@ class Controller::Switch::Oper::Statistics::SummaryStatistics : public ydk::Enti
 
         class Location; //type: Controller::Switch::Oper::Statistics::SummaryStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::SummaryStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Statistics::SummaryStatistics
 
@@ -25251,7 +19493,7 @@ class Controller::Switch::Oper::Statistics::SummaryStatistics::Location : public
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Statistics::SummaryStatistics::Location
 
@@ -25303,7 +19545,7 @@ class Controller::Switch::Oper::Statistics::Detail : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Statistics::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Statistics::Detail
 
@@ -25330,7 +19572,7 @@ class Controller::Switch::Oper::Statistics::Detail::Location : public ydk::Entit
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Statistics::Detail::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Statistics::Detail::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Statistics::Detail::Location
 
@@ -25458,7 +19700,7 @@ class Controller::Switch::Oper::Serdes::SerdesStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Serdes::SerdesStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Serdes::SerdesStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Serdes::SerdesStatistics
 
@@ -25485,7 +19727,7 @@ class Controller::Switch::Oper::Serdes::SerdesStatistics::Location : public ydk:
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Serdes::SerdesStatistics::Location
 
@@ -25509,7 +19751,7 @@ class Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter : p
         ydk::YLeaf port; //type: int32
         class SerdesEntry; //type: Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter::SerdesEntry> > serdes_entry;
+        ydk::YList serdes_entry;
         
 }; // Controller::Switch::Oper::Serdes::SerdesStatistics::Location::PortIter
 
@@ -25584,7 +19826,7 @@ class Controller::Switch::Oper::Mac::MacStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mac::MacStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mac::MacStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics
 
@@ -25611,7 +19853,7 @@ class Controller::Switch::Oper::Mac::MacStatistics::Location : public ydk::Entit
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics::Location
 
@@ -25635,7 +19877,7 @@ class Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter : public 
         ydk::YLeaf port; //type: int32
         class MacEntry; //type: Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry> > mac_entry;
+        ydk::YList mac_entry;
         
 }; // Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter
 
@@ -25707,7 +19949,7 @@ class Controller::Switch::Oper::Bridge::Statistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Bridge::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Bridge::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Bridge::Statistics
 
@@ -25735,8 +19977,8 @@ class Controller::Switch::Oper::Bridge::Statistics::Location : public ydk::Entit
         class IngressSetId; //type: Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId
         class EgressSetId; //type: Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId> > ingress_set_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId> > egress_set_id;
+        ydk::YList ingress_set_id;
+        ydk::YList egress_set_id;
         
 }; // Controller::Switch::Oper::Bridge::Statistics::Location
 
@@ -25847,7 +20089,7 @@ class Controller::Switch::Oper::Fdb::Vlan : public ydk::Entity
 
         class VlanIter; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Vlan::VlanIter> > vlan_iter;
+        ydk::YList vlan_iter;
         
 }; // Controller::Switch::Oper::Fdb::Vlan
 
@@ -25895,7 +20137,7 @@ class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon : public yd
 
         class Location; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon
 
@@ -25947,7 +20189,7 @@ class Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock
 
@@ -26000,7 +20242,7 @@ class Controller::Switch::Oper::Fdb::Mac : public ydk::Entity
 
         class MacIter; //type: Controller::Switch::Oper::Fdb::Mac::MacIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Mac::MacIter> > mac_iter;
+        ydk::YList mac_iter;
         
 }; // Controller::Switch::Oper::Fdb::Mac
 
@@ -26048,7 +20290,7 @@ class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon : public ydk:
 
         class Location; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon
 
@@ -26100,7 +20342,7 @@ class Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::Fd
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock
 
@@ -26153,7 +20395,7 @@ class Controller::Switch::Oper::Fdb::Port : public ydk::Entity
 
         class PortIter; //type: Controller::Switch::Oper::Fdb::Port::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Port::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Fdb::Port
 
@@ -26201,7 +20443,7 @@ class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon : public yd
 
         class Location; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon
 
@@ -26253,7 +20495,7 @@ class Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock
 
@@ -26306,7 +20548,7 @@ class Controller::Switch::Oper::Fdb::Statistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Fdb::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::Statistics
 
@@ -26335,7 +20577,7 @@ class Controller::Switch::Oper::Fdb::Statistics::Location : public ydk::Entity
         class CoreId; //type: Controller::Switch::Oper::Fdb::Statistics::Location::CoreId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Statistics::Location::CounterInfo> counter_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::Statistics::Location::CoreId> > core_id;
+        ydk::YList core_id;
         
 }; // Controller::Switch::Oper::Fdb::Statistics::Location
 
@@ -26422,7 +20664,7 @@ class Controller::Switch::Oper::Fdb::SwitchFdbCommon : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Fdb::SwitchFdbCommon
 
@@ -26475,7 +20717,7 @@ class Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock : publi
 
         class FdbEntry; //type: Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry> > fdb_entry;
+        ydk::YList fdb_entry;
         
 }; // Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock
 
@@ -26558,7 +20800,7 @@ class Controller::Switch::Oper::Vlan::Rules : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Vlan::Rules::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Rules::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Vlan::Rules
 
@@ -26585,7 +20827,7 @@ class Controller::Switch::Oper::Vlan::Rules::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Vlan::Rules::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Rules::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Vlan::Rules::Location
 
@@ -26609,7 +20851,7 @@ class Controller::Switch::Oper::Vlan::Rules::Location::PortIter : public ydk::En
         ydk::YLeaf port; //type: int32
         class VlanId; //type: Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Rules::Location::PortIter
 
@@ -26633,7 +20875,7 @@ class Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId : public
         ydk::YLeaf vlan; //type: uint16
         class RuleId; //type: Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId> > rule_id;
+        ydk::YList rule_id;
         
 }; // Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId
 
@@ -26684,7 +20926,7 @@ class Controller::Switch::Oper::Vlan::Information : public ydk::Entity
         class Location; //type: Controller::Switch::Oper::Vlan::Information::Location
         class Summary; //type: Controller::Switch::Oper::Vlan::Information::Summary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Information::Location> > location;
+        ydk::YList location;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Information::Summary> summary;
         
 }; // Controller::Switch::Oper::Vlan::Information
@@ -26713,7 +20955,7 @@ class Controller::Switch::Oper::Vlan::Information::Location : public ydk::Entity
         ydk::YLeaf serial_num; //type: string
         class SdrId; //type: Controller::Switch::Oper::Vlan::Information::Location::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Information::Location::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Location
 
@@ -26738,7 +20980,7 @@ class Controller::Switch::Oper::Vlan::Information::Location::SdrId : public ydk:
         ydk::YLeaf esd_sdr_name; //type: string
         class VlanId; //type: Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Location::SdrId
 
@@ -26786,7 +21028,7 @@ class Controller::Switch::Oper::Vlan::Information::Summary : public ydk::Entity
 
         class SdrId; //type: Controller::Switch::Oper::Vlan::Information::Summary::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Information::Summary::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Summary
 
@@ -26812,7 +21054,7 @@ class Controller::Switch::Oper::Vlan::Information::Summary::SdrId : public ydk::
         ydk::YLeaf esd_sdr_name; //type: string
         class VlanId; //type: Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Information::Summary::SdrId
 
@@ -26860,7 +21102,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail : public ydk::Entity
 
         class VlanId; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::VlanDetail::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail
 
@@ -26908,7 +21150,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules : public ydk::En
 
         class Location; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules
 
@@ -26934,7 +21176,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location : publ
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location
 
@@ -26958,7 +21200,7 @@ class Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortI
         ydk::YLeaf port; //type: int32
         class RuleId; //type: Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::RuleId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::RuleId> > rule_id;
+        ydk::YList rule_id;
         
 }; // Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter
 
@@ -27008,7 +21250,7 @@ class Controller::Switch::Oper::Vlan::Membership : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Vlan::Membership::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Membership::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Vlan::Membership
 
@@ -27035,7 +21277,7 @@ class Controller::Switch::Oper::Vlan::Membership::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class VlanId; //type: Controller::Switch::Oper::Vlan::Membership::Location::VlanId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Vlan::Membership::Location::VlanId> > vlan_id;
+        ydk::YList vlan_id;
         
 }; // Controller::Switch::Oper::Vlan::Membership::Location
 
@@ -27113,7 +21355,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::PortStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics
 
@@ -27140,7 +21382,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location : public ydk::Enti
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location
 
@@ -27164,7 +21406,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter : public
         ydk::YLeaf port; //type: int32
         class SdrId; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter
 
@@ -27189,7 +21431,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId :
         ydk::YLeaf esd_sdr_name; //type: string
         class TrafficTypeId; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId> > traffic_type_id;
+        ydk::YList traffic_type_id;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId
 
@@ -27213,7 +21455,7 @@ class Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::
         ydk::YLeaf traffic_type; //type: EsdmaSdrTrafficType
         class DirectionId; //type: Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId> > direction_id;
+        ydk::YList direction_id;
         
 }; // Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId
 
@@ -27261,7 +21503,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::GlobalStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics
 
@@ -27288,7 +21530,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics::Location : public ydk::En
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class SdrId; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics::Location
 
@@ -27313,7 +21555,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId : public 
         ydk::YLeaf esd_sdr_name; //type: string
         class TrafficTypeId; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId> > traffic_type_id;
+        ydk::YList traffic_type_id;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId
 
@@ -27337,7 +21579,7 @@ class Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficT
         ydk::YLeaf traffic_type; //type: EsdmaSdrTrafficType
         class TrafficClassId; //type: Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId> > traffic_class_id;
+        ydk::YList traffic_class_id;
         
 }; // Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId
 
@@ -27385,7 +21627,7 @@ class Controller::Switch::Oper::Sdr::Policers : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sdr::Policers::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::Policers::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::Policers
 
@@ -27414,7 +21656,7 @@ class Controller::Switch::Oper::Sdr::Policers::Location : public ydk::Entity
         class SdrId; //type: Controller::Switch::Oper::Sdr::Policers::Location::SdrId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus> esd_policer_status;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::Policers::Location::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::Policers::Location
 
@@ -27492,7 +21734,7 @@ class Controller::Switch::Oper::Sdr::Policers::Location::SdrId : public ydk::Ent
         ydk::YLeaf esd_sdr_pir; //type: uint8
         class EsdSdrCosTypeIter; //type: Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter> > esd_sdr_cos_type_iter;
+        ydk::YList esd_sdr_cos_type_iter;
         
 }; // Controller::Switch::Oper::Sdr::Policers::Location::SdrId
 
@@ -27545,7 +21787,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail : public ydk::Entity
 
         class SdrId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::SdrDetail::SdrId> > sdr_id;
+        ydk::YList sdr_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail
 
@@ -27593,7 +21835,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics : public y
 
         class Location; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics
 
@@ -27619,7 +21861,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location 
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location
 
@@ -27643,7 +21885,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location:
         ydk::YLeaf port; //type: int32
         class TrafficTypeId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId> > traffic_type_id;
+        ydk::YList traffic_type_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter
 
@@ -27667,7 +21909,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location:
         ydk::YLeaf traffic_type; //type: EsdmaSdrTrafficType
         class DirectionId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId> > direction_id;
+        ydk::YList direction_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId
 
@@ -27691,7 +21933,7 @@ class Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location:
         ydk::YLeaf direction; //type: SwitchDataDirectionEnum
         class TrafficClassId; //type: Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId> > traffic_class_id;
+        ydk::YList traffic_class_id;
         
 }; // Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId
 
@@ -27765,7 +22007,7 @@ class Controller::Switch::Oper::Sfp::Summary : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sfp::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sfp::Summary::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sfp::Summary
 
@@ -27792,7 +22034,7 @@ class Controller::Switch::Oper::Sfp::Summary::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class SfpPortIter; //type: Controller::Switch::Oper::Sfp::Summary::Location::SfpPortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sfp::Summary::Location::SfpPortIter> > sfp_port_iter;
+        ydk::YList sfp_port_iter;
         
 }; // Controller::Switch::Oper::Sfp::Summary::Location
 
@@ -27841,7 +22083,7 @@ class Controller::Switch::Oper::Sfp::Detail : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Sfp::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sfp::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Sfp::Detail
 
@@ -27868,7 +22110,7 @@ class Controller::Switch::Oper::Sfp::Detail::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class SfpPortIter; //type: Controller::Switch::Oper::Sfp::Detail::Location::SfpPortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Sfp::Detail::Location::SfpPortIter> > sfp_port_iter;
+        ydk::YList sfp_port_iter;
         
 }; // Controller::Switch::Oper::Sfp::Detail::Location
 
@@ -28843,7 +23085,7 @@ class Controller::Switch::Oper::Mlap : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::SummaryData> summary_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Debug> debug;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Switch::Oper::Mlap
 
@@ -28867,7 +23109,7 @@ class Controller::Switch::Oper::Mlap::Reachable : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mlap::Reachable::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Reachable::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mlap::Reachable
 
@@ -28915,7 +23157,7 @@ class Controller::Switch::Oper::Mlap::Detail : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mlap::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mlap::Detail
 
@@ -28942,7 +23184,7 @@ class Controller::Switch::Oper::Mlap::Detail::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::Mlap::Detail::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Detail::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Mlap::Detail::Location
 
@@ -29196,7 +23438,7 @@ class Controller::Switch::Oper::Mlap::Statistics : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mlap::Statistics::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Statistics::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mlap::Statistics
 
@@ -29224,7 +23466,7 @@ class Controller::Switch::Oper::Mlap::Statistics::Location : public ydk::Entity
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Mlap::Statistics::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Statistics::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Mlap::Statistics::Location
 
@@ -29278,7 +23520,7 @@ class Controller::Switch::Oper::Mlap::SummaryData : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mlap::SummaryData::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::SummaryData::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mlap::SummaryData
 
@@ -29306,7 +23548,7 @@ class Controller::Switch::Oper::Mlap::SummaryData::Location : public ydk::Entity
         ydk::YLeaf serial_num; //type: string
         class PortIter; //type: Controller::Switch::Oper::Mlap::SummaryData::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::SummaryData::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::Mlap::SummaryData::Location
 
@@ -29381,7 +23623,7 @@ class Controller::Switch::Oper::Mlap::Debug::Counters : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Mlap::Debug::Counters::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Debug::Counters::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mlap::Debug::Counters
 
@@ -29466,7 +23708,7 @@ class Controller::Switch::Oper::Mlap::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Switch::Oper::Mlap::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Mlap::Trace
 
@@ -29490,7 +23732,7 @@ class Controller::Switch::Oper::Mlap::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Switch::Oper::Mlap::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Switch::Oper::Mlap::Trace::Location
 
@@ -29514,7 +23756,7 @@ class Controller::Switch::Oper::Mlap::Trace::Location::AllOptions : public ydk::
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Switch::Oper::Mlap::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Mlap::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Switch::Oper::Mlap::Trace::Location::AllOptions
 
@@ -29607,7 +23849,7 @@ class Controller::Switch::Oper::SwitchDebugCont::Debug::Counters : public ydk::E
 
         class Location; //type: Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::SwitchDebugCont::Debug::Counters
 
@@ -29679,7 +23921,7 @@ class Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Coun
         ydk::YLeaf dma_tx_buf_free_count; //type: uint64
         class SwitchCore; //type: Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore> > switch_core;
+        ydk::YList switch_core;
         
 }; // Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_
 
@@ -29731,7 +23973,7 @@ class Controller::Switch::Oper::Esd : public ydk::Entity
 
         class Instance; //type: Controller::Switch::Oper::Esd::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Esd::Instance> > instance;
+        ydk::YList instance;
         
 }; // Controller::Switch::Oper::Esd
 
@@ -29756,7 +23998,7 @@ class Controller::Switch::Oper::Esd::Instance : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class Trace; //type: Controller::Switch::Oper::Esd::Instance::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Esd::Instance::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Switch::Oper::Esd::Instance
 
@@ -29780,7 +24022,7 @@ class Controller::Switch::Oper::Esd::Instance::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Switch::Oper::Esd::Instance::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Esd::Instance::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Esd::Instance::Trace
 
@@ -29804,7 +24046,7 @@ class Controller::Switch::Oper::Esd::Instance::Trace::Location : public ydk::Ent
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Switch::Oper::Esd::Instance::Trace::Location
 
@@ -29828,7 +24070,7 @@ class Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions : pub
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions
 
@@ -29899,7 +24141,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma : public ydk::Entity
 
         class Trace; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Esdma::Trace> > trace;
+        ydk::YList trace;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma
 
@@ -29924,7 +24166,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma::Trace
 
@@ -29948,7 +24190,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location : public ydk::
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location
 
@@ -29972,7 +24214,7 @@ class Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions : 
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions
 
@@ -30024,9 +24266,9 @@ class Controller::Switch::Oper::MgmtAgent::Connections : public ydk::Entity
         class MlapClientId; //type: Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Connections::EsdmaInfo> esdma_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Connections::SdrNmClientId> > sdr_nm_client_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Connections::EsdClientId> > esd_client_id;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId> > mlap_client_id;
+        ydk::YList sdr_nm_client_id;
+        ydk::YList esd_client_id;
+        ydk::YList mlap_client_id;
         
 }; // Controller::Switch::Oper::MgmtAgent::Connections
 
@@ -30146,7 +24388,7 @@ class Controller::Switch::Oper::PortState : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::PortState::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::PortState::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::PortState
 
@@ -30173,7 +24415,7 @@ class Controller::Switch::Oper::PortState::Location : public ydk::Entity
         ydk::YLeaf switch_id; //type: EsdmaSwitchTypeEnum
         class PortIter; //type: Controller::Switch::Oper::PortState::Location::PortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::PortState::Location::PortIter> > port_iter;
+        ydk::YList port_iter;
         
 }; // Controller::Switch::Oper::PortState::Location
 
@@ -30218,7 +24460,7 @@ class Controller::Switch::Oper::Trunk : public ydk::Entity
 
         class Location; //type: Controller::Switch::Oper::Trunk::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Trunk::Location> > location;
+        ydk::YList location;
         
 }; // Controller::Switch::Oper::Trunk
 
@@ -30247,7 +24489,7 @@ class Controller::Switch::Oper::Trunk::Location : public ydk::Entity
         ydk::YLeaf trunk_name; //type: string
         class TrunkMemberPortIter; //type: Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_controllers::Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter> > trunk_member_port_iter;
+        ydk::YList trunk_member_port_iter;
         
 }; // Controller::Switch::Oper::Trunk::Location
 

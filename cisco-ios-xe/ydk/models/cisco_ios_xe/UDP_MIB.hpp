@@ -33,12 +33,12 @@ class UDPMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Udp; //type: UDPMIB::Udp
-        class Udptable; //type: UDPMIB::Udptable
-        class Udpendpointtable; //type: UDPMIB::Udpendpointtable
+        class UdpTable; //type: UDPMIB::UdpTable
+        class UdpEndpointTable; //type: UDPMIB::UdpEndpointTable
 
         std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udp> udp;
-        std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udptable> udptable;
-        std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udpendpointtable> udpendpointtable;
+        std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::UdpTable> udptable;
+        std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::UdpEndpointTable> udpendpointtable;
         
 }; // UDPMIB
 
@@ -70,11 +70,11 @@ class UDPMIB::Udp : public ydk::Entity
 }; // UDPMIB::Udp
 
 
-class UDPMIB::Udptable : public ydk::Entity
+class UDPMIB::UdpTable : public ydk::Entity
 {
     public:
-        Udptable();
-        ~Udptable();
+        UdpTable();
+        ~UdpTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -87,18 +87,18 @@ class UDPMIB::Udptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Udpentry; //type: UDPMIB::Udptable::Udpentry
+        class UdpEntry; //type: UDPMIB::UdpTable::UdpEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udptable::Udpentry> > udpentry;
+        ydk::YList udpentry;
         
-}; // UDPMIB::Udptable
+}; // UDPMIB::UdpTable
 
 
-class UDPMIB::Udptable::Udpentry : public ydk::Entity
+class UDPMIB::UdpTable::UdpEntry : public ydk::Entity
 {
     public:
-        Udpentry();
-        ~Udpentry();
+        UdpEntry();
+        ~UdpEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -114,14 +114,14 @@ class UDPMIB::Udptable::Udpentry : public ydk::Entity
         ydk::YLeaf udplocaladdress; //type: string
         ydk::YLeaf udplocalport; //type: int32
 
-}; // UDPMIB::Udptable::Udpentry
+}; // UDPMIB::UdpTable::UdpEntry
 
 
-class UDPMIB::Udpendpointtable : public ydk::Entity
+class UDPMIB::UdpEndpointTable : public ydk::Entity
 {
     public:
-        Udpendpointtable();
-        ~Udpendpointtable();
+        UdpEndpointTable();
+        ~UdpEndpointTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -134,18 +134,18 @@ class UDPMIB::Udpendpointtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Udpendpointentry; //type: UDPMIB::Udpendpointtable::Udpendpointentry
+        class UdpEndpointEntry; //type: UDPMIB::UdpEndpointTable::UdpEndpointEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::UDP_MIB::UDPMIB::Udpendpointtable::Udpendpointentry> > udpendpointentry;
+        ydk::YList udpendpointentry;
         
-}; // UDPMIB::Udpendpointtable
+}; // UDPMIB::UdpEndpointTable
 
 
-class UDPMIB::Udpendpointtable::Udpendpointentry : public ydk::Entity
+class UDPMIB::UdpEndpointTable::UdpEndpointEntry : public ydk::Entity
 {
     public:
-        Udpendpointentry();
-        ~Udpendpointentry();
+        UdpEndpointEntry();
+        ~UdpEndpointEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -167,7 +167,7 @@ class UDPMIB::Udpendpointtable::Udpendpointentry : public ydk::Entity
         ydk::YLeaf udpendpointinstance; //type: uint32
         ydk::YLeaf udpendpointprocess; //type: uint32
 
-}; // UDPMIB::Udpendpointtable::Udpendpointentry
+}; // UDPMIB::UdpEndpointTable::UdpEndpointEntry
 
 
 }

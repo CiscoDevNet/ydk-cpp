@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ping_act {
 Ping::Ping()
     :
     input(std::make_shared<Ping::Input>())
-	,output(std::make_shared<Ping::Output>())
+    , output(std::make_shared<Ping::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "ping"; yang_parent_name = "Cisco-IOS-XR-ping-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ping"; yang_parent_name = "Cisco-IOS-XR-ping-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ping::~Ping()
@@ -28,6 +28,7 @@ Ping::~Ping()
 
 bool Ping::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -138,12 +139,13 @@ bool Ping::has_leaf_or_child_of_name(const std::string & name) const
 Ping::Input::Input()
     :
     destination(std::make_shared<Ping::Input::Destination>())
-	,ipv6(std::make_shared<Ping::Input::Ipv6>())
+    , ipv4(this, {"destination"})
+    , ipv6(std::make_shared<Ping::Input::Ipv6>())
 {
     destination->parent = this;
     ipv6->parent = this;
 
-    yang_name = "input"; yang_parent_name = "ping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "ping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Input::~Input()
@@ -152,7 +154,8 @@ Ping::Input::~Input()
 
 bool Ping::Input::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -163,7 +166,7 @@ bool Ping::Input::has_data() const
 
 bool Ping::Input::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -211,7 +214,7 @@ std::shared_ptr<Entity> Ping::Input::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Ping::Input::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -237,7 +240,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Input::get_children() const
     }
 
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -287,7 +290,7 @@ Ping::Input::Destination::Destination()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Input::Destination::~Destination()
@@ -296,6 +299,7 @@ Ping::Input::Destination::~Destination()
 
 bool Ping::Input::Destination::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| repeat_count.is_set
 	|| data_size.is_set
@@ -565,7 +569,7 @@ Ping::Input::Ipv4::Ipv4()
     validate{YType::boolean, "validate"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Input::Ipv4::~Ipv4()
@@ -574,6 +578,7 @@ Ping::Input::Ipv4::~Ipv4()
 
 bool Ping::Input::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| repeat_count.is_set
 	|| data_size.is_set
@@ -617,7 +622,8 @@ std::string Ping::Input::Ipv4::get_absolute_path() const
 std::string Ping::Input::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[destination='" <<destination <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(destination, "destination");
     return path_buffer.str();
 }
 
@@ -816,7 +822,7 @@ Ping::Input::Ipv6::Ipv6()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Input::Ipv6::~Ipv6()
@@ -825,6 +831,7 @@ Ping::Input::Ipv6::~Ipv6()
 
 bool Ping::Input::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| repeat_count.is_set
 	|| data_size.is_set
@@ -1044,7 +1051,7 @@ Ping::Output::Output()
 {
     ping_response->parent = this;
 
-    yang_name = "output"; yang_parent_name = "ping"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "ping"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Output::~Output()
@@ -1053,6 +1060,7 @@ Ping::Output::~Output()
 
 bool Ping::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return (ping_response !=  nullptr && ping_response->has_data());
 }
 
@@ -1128,11 +1136,12 @@ bool Ping::Output::has_leaf_or_child_of_name(const std::string & name) const
 
 Ping::Output::PingResponse::PingResponse()
     :
-    ipv6(std::make_shared<Ping::Output::PingResponse::Ipv6>())
+    ipv4(this, {"destination"})
+    , ipv6(std::make_shared<Ping::Output::PingResponse::Ipv6>())
 {
     ipv6->parent = this;
 
-    yang_name = "ping-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ping-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Output::PingResponse::~PingResponse()
@@ -1141,7 +1150,8 @@ Ping::Output::PingResponse::~PingResponse()
 
 bool Ping::Output::PingResponse::has_data() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_data())
             return true;
@@ -1151,7 +1161,7 @@ bool Ping::Output::PingResponse::has_data() const
 
 bool Ping::Output::PingResponse::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4.size(); index++)
+    for (std::size_t index=0; index<ipv4.len(); index++)
     {
         if(ipv4[index]->has_operation())
             return true;
@@ -1189,7 +1199,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::get_child_by_name(const std:
     {
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv4>();
         c->parent = this;
-        ipv4.push_back(c);
+        ipv4.append(c);
         return c;
     }
 
@@ -1210,7 +1220,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4)
+    for (auto c : ipv4.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1260,12 +1270,12 @@ Ping::Output::PingResponse::Ipv4::Ipv4()
     sweep_max{YType::uint64, "sweep-max"},
     rotate_pattern{YType::boolean, "rotate-pattern"},
     ping_error_response{YType::str, "ping-error-response"}
-    	,
+        ,
     replies(std::make_shared<Ping::Output::PingResponse::Ipv4::Replies>())
 {
     replies->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Output::PingResponse::Ipv4::~Ipv4()
@@ -1274,6 +1284,7 @@ Ping::Output::PingResponse::Ipv4::~Ipv4()
 
 bool Ping::Output::PingResponse::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| repeat_count.is_set
 	|| data_size.is_set
@@ -1327,7 +1338,8 @@ std::string Ping::Output::PingResponse::Ipv4::get_absolute_path() const
 std::string Ping::Output::PingResponse::Ipv4::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4" <<"[destination='" <<destination <<"']";
+    path_buffer << "ipv4";
+    ADD_KEY_TOKEN(destination, "destination");
     return path_buffer.str();
 }
 
@@ -1569,9 +1581,11 @@ bool Ping::Output::PingResponse::Ipv4::has_leaf_or_child_of_name(const std::stri
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Replies()
+    :
+    reply(this, {"reply_index"})
 {
 
-    yang_name = "replies"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "replies"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::~Replies()
@@ -1580,7 +1594,8 @@ Ping::Output::PingResponse::Ipv4::Replies::~Replies()
 
 bool Ping::Output::PingResponse::Ipv4::Replies::has_data() const
 {
-    for (std::size_t index=0; index<reply.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reply.len(); index++)
     {
         if(reply[index]->has_data())
             return true;
@@ -1590,7 +1605,7 @@ bool Ping::Output::PingResponse::Ipv4::Replies::has_data() const
 
 bool Ping::Output::PingResponse::Ipv4::Replies::has_operation() const
 {
-    for (std::size_t index=0; index<reply.size(); index++)
+    for (std::size_t index=0; index<reply.len(); index++)
     {
         if(reply[index]->has_operation())
             return true;
@@ -1620,7 +1635,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::get_child_by_
     {
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv4::Replies::Reply>();
         c->parent = this;
-        reply.push_back(c);
+        reply.append(c);
         return c;
     }
 
@@ -1632,7 +1647,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv4:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reply)
+    for (auto c : reply.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1662,12 +1677,12 @@ Ping::Output::PingResponse::Ipv4::Replies::Reply::Reply()
     :
     reply_index{YType::uint64, "reply-index"},
     result{YType::str, "result"}
-    	,
+        ,
     broadcast_reply_addresses(std::make_shared<Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses>())
 {
     broadcast_reply_addresses->parent = this;
 
-    yang_name = "reply"; yang_parent_name = "replies"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reply"; yang_parent_name = "replies"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::~Reply()
@@ -1676,6 +1691,7 @@ Ping::Output::PingResponse::Ipv4::Replies::Reply::~Reply()
 
 bool Ping::Output::PingResponse::Ipv4::Replies::Reply::has_data() const
 {
+    if (is_presence_container) return true;
     return reply_index.is_set
 	|| result.is_set
 	|| (broadcast_reply_addresses !=  nullptr && broadcast_reply_addresses->has_data());
@@ -1692,7 +1708,8 @@ bool Ping::Output::PingResponse::Ipv4::Replies::Reply::has_operation() const
 std::string Ping::Output::PingResponse::Ipv4::Replies::Reply::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reply" <<"[reply-index='" <<reply_index <<"']";
+    path_buffer << "reply";
+    ADD_KEY_TOKEN(reply_index, "reply-index");
     return path_buffer.str();
 }
 
@@ -1769,9 +1786,11 @@ bool Ping::Output::PingResponse::Ipv4::Replies::Reply::has_leaf_or_child_of_name
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddresses()
+    :
+    broadcast_reply_address(this, {"reply_address"})
 {
 
-    yang_name = "broadcast-reply-addresses"; yang_parent_name = "reply"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast-reply-addresses"; yang_parent_name = "reply"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::~BroadcastReplyAddresses()
@@ -1780,7 +1799,8 @@ Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::~Broa
 
 bool Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::has_data() const
 {
-    for (std::size_t index=0; index<broadcast_reply_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<broadcast_reply_address.len(); index++)
     {
         if(broadcast_reply_address[index]->has_data())
             return true;
@@ -1790,7 +1810,7 @@ bool Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::
 
 bool Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<broadcast_reply_address.size(); index++)
+    for (std::size_t index=0; index<broadcast_reply_address.len(); index++)
     {
         if(broadcast_reply_address[index]->has_operation())
             return true;
@@ -1820,7 +1840,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv4::Replies::Reply::Broadc
     {
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress>();
         c->parent = this;
-        broadcast_reply_address.push_back(c);
+        broadcast_reply_address.append(c);
         return c;
     }
 
@@ -1832,7 +1852,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv4:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : broadcast_reply_address)
+    for (auto c : broadcast_reply_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1864,7 +1884,7 @@ Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::Broad
     result{YType::str, "result"}
 {
 
-    yang_name = "broadcast-reply-address"; yang_parent_name = "broadcast-reply-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "broadcast-reply-address"; yang_parent_name = "broadcast-reply-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::~BroadcastReplyAddress()
@@ -1873,6 +1893,7 @@ Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::Broad
 
 bool Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return reply_address.is_set
 	|| result.is_set;
 }
@@ -1887,7 +1908,8 @@ bool Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::
 std::string Ping::Output::PingResponse::Ipv4::Replies::Reply::BroadcastReplyAddresses::BroadcastReplyAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "broadcast-reply-address" <<"[reply-address='" <<reply_address <<"']";
+    path_buffer << "broadcast-reply-address";
+    ADD_KEY_TOKEN(reply_address, "reply-address");
     return path_buffer.str();
 }
 
@@ -1967,12 +1989,12 @@ Ping::Output::PingResponse::Ipv6::Ipv6()
     rtt_min{YType::uint64, "rtt-min"},
     rtt_avg{YType::uint64, "rtt-avg"},
     rtt_max{YType::uint64, "rtt-max"}
-    	,
+        ,
     replies(std::make_shared<Ping::Output::PingResponse::Ipv6::Replies>())
 {
     replies->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Output::PingResponse::Ipv6::~Ipv6()
@@ -1981,6 +2003,7 @@ Ping::Output::PingResponse::Ipv6::~Ipv6()
 
 bool Ping::Output::PingResponse::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return destination.is_set
 	|| repeat_count.is_set
 	|| data_size.is_set
@@ -2263,9 +2286,11 @@ bool Ping::Output::PingResponse::Ipv6::has_leaf_or_child_of_name(const std::stri
 }
 
 Ping::Output::PingResponse::Ipv6::Replies::Replies()
+    :
+    reply(this, {"reply_index"})
 {
 
-    yang_name = "replies"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "replies"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Output::PingResponse::Ipv6::Replies::~Replies()
@@ -2274,7 +2299,8 @@ Ping::Output::PingResponse::Ipv6::Replies::~Replies()
 
 bool Ping::Output::PingResponse::Ipv6::Replies::has_data() const
 {
-    for (std::size_t index=0; index<reply.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reply.len(); index++)
     {
         if(reply[index]->has_data())
             return true;
@@ -2284,7 +2310,7 @@ bool Ping::Output::PingResponse::Ipv6::Replies::has_data() const
 
 bool Ping::Output::PingResponse::Ipv6::Replies::has_operation() const
 {
-    for (std::size_t index=0; index<reply.size(); index++)
+    for (std::size_t index=0; index<reply.len(); index++)
     {
         if(reply[index]->has_operation())
             return true;
@@ -2321,7 +2347,7 @@ std::shared_ptr<Entity> Ping::Output::PingResponse::Ipv6::Replies::get_child_by_
     {
         auto c = std::make_shared<Ping::Output::PingResponse::Ipv6::Replies::Reply>();
         c->parent = this;
-        reply.push_back(c);
+        reply.append(c);
         return c;
     }
 
@@ -2333,7 +2359,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ping::Output::PingResponse::Ipv6:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reply)
+    for (auto c : reply.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2365,7 +2391,7 @@ Ping::Output::PingResponse::Ipv6::Replies::Reply::Reply()
     result{YType::str, "result"}
 {
 
-    yang_name = "reply"; yang_parent_name = "replies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reply"; yang_parent_name = "replies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ping::Output::PingResponse::Ipv6::Replies::Reply::~Reply()
@@ -2374,6 +2400,7 @@ Ping::Output::PingResponse::Ipv6::Replies::Reply::~Reply()
 
 bool Ping::Output::PingResponse::Ipv6::Replies::Reply::has_data() const
 {
+    if (is_presence_container) return true;
     return reply_index.is_set
 	|| result.is_set;
 }
@@ -2395,7 +2422,8 @@ std::string Ping::Output::PingResponse::Ipv6::Replies::Reply::get_absolute_path(
 std::string Ping::Output::PingResponse::Ipv6::Replies::Reply::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reply" <<"[reply-index='" <<reply_index <<"']";
+    path_buffer << "reply";
+    ADD_KEY_TOKEN(reply_index, "reply-index");
     return path_buffer.str();
 }
 

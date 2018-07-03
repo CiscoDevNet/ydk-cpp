@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_mpls_fwd_oper {
 
 MplsForwardingTable::MplsForwardingTable()
+    :
+    local_label_entry(this, {"local_label"})
 {
 
-    yang_name = "mpls-forwarding-table"; yang_parent_name = "Cisco-IOS-XE-mpls-fwd-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-forwarding-table"; yang_parent_name = "Cisco-IOS-XE-mpls-fwd-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsForwardingTable::~MplsForwardingTable()
@@ -23,7 +25,8 @@ MplsForwardingTable::~MplsForwardingTable()
 
 bool MplsForwardingTable::has_data() const
 {
-    for (std::size_t index=0; index<local_label_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_label_entry.len(); index++)
     {
         if(local_label_entry[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool MplsForwardingTable::has_data() const
 
 bool MplsForwardingTable::has_operation() const
 {
-    for (std::size_t index=0; index<local_label_entry.size(); index++)
+    for (std::size_t index=0; index<local_label_entry.len(); index++)
     {
         if(local_label_entry[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> MplsForwardingTable::get_child_by_name(const std::string
     {
         auto c = std::make_shared<MplsForwardingTable::LocalLabelEntry>();
         c->parent = this;
-        local_label_entry.push_back(c);
+        local_label_entry.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_label_entry)
+    for (auto c : local_label_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,9 +132,11 @@ bool MplsForwardingTable::has_leaf_or_child_of_name(const std::string & name) co
 MplsForwardingTable::LocalLabelEntry::LocalLabelEntry()
     :
     local_label{YType::uint32, "local-label"}
+        ,
+    forwarding_info(this, {"outgoing_interface"})
 {
 
-    yang_name = "local-label-entry"; yang_parent_name = "mpls-forwarding-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-label-entry"; yang_parent_name = "mpls-forwarding-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsForwardingTable::LocalLabelEntry::~LocalLabelEntry()
@@ -140,7 +145,8 @@ MplsForwardingTable::LocalLabelEntry::~LocalLabelEntry()
 
 bool MplsForwardingTable::LocalLabelEntry::has_data() const
 {
-    for (std::size_t index=0; index<forwarding_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<forwarding_info.len(); index++)
     {
         if(forwarding_info[index]->has_data())
             return true;
@@ -150,7 +156,7 @@ bool MplsForwardingTable::LocalLabelEntry::has_data() const
 
 bool MplsForwardingTable::LocalLabelEntry::has_operation() const
 {
-    for (std::size_t index=0; index<forwarding_info.size(); index++)
+    for (std::size_t index=0; index<forwarding_info.len(); index++)
     {
         if(forwarding_info[index]->has_operation())
             return true;
@@ -169,7 +175,8 @@ std::string MplsForwardingTable::LocalLabelEntry::get_absolute_path() const
 std::string MplsForwardingTable::LocalLabelEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-label-entry" <<"[local-label='" <<local_label <<"']";
+    path_buffer << "local-label-entry";
+    ADD_KEY_TOKEN(local_label, "local-label");
     return path_buffer.str();
 }
 
@@ -189,7 +196,7 @@ std::shared_ptr<Entity> MplsForwardingTable::LocalLabelEntry::get_child_by_name(
     {
         auto c = std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo>();
         c->parent = this;
-        forwarding_info.push_back(c);
+        forwarding_info.append(c);
         return c;
     }
 
@@ -201,7 +208,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsForwardingTable::LocalLabelEn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : forwarding_info)
+    for (auto c : forwarding_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -243,12 +250,12 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ForwardingInfo()
     outgoing_label{YType::str, "outgoing-label"},
     label_switched_bytes{YType::uint64, "label-switched-bytes"},
     next_hop{YType::str, "next-hop"}
-    	,
+        ,
     connection_info(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo>())
 {
     connection_info->parent = this;
 
-    yang_name = "forwarding-info"; yang_parent_name = "local-label-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "forwarding-info"; yang_parent_name = "local-label-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::~ForwardingInfo()
@@ -257,6 +264,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::~ForwardingInfo()
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return outgoing_interface.is_set
 	|| outgoing_label.is_set
 	|| label_switched_bytes.is_set
@@ -277,7 +285,8 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::has_operation() const
 std::string MplsForwardingTable::LocalLabelEntry::ForwardingInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "forwarding-info" <<"[outgoing-interface='" <<outgoing_interface <<"']";
+    path_buffer << "forwarding-info";
+    ADD_KEY_TOKEN(outgoing_interface, "outgoing-interface");
     return path_buffer.str();
 }
 
@@ -384,12 +393,12 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::Connection
     vrf_id{YType::uint32, "vrf-id"},
     nh_id{YType::uint32, "nh-id"},
     l2ckt_id{YType::uint32, "l2ckt-id"}
-    	,
+        ,
     tunnel_tp(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp>())
 {
     tunnel_tp->parent = this;
 
-    yang_name = "connection-info"; yang_parent_name = "forwarding-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connection-info"; yang_parent_name = "forwarding-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::~ConnectionInfo()
@@ -398,6 +407,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::~Connectio
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| ip.is_set
 	|| mask.is_set
@@ -558,14 +568,14 @@ bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::has_l
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::TunnelTp()
     :
     tunnel{YType::uint32, "tunnel"}
-    	,
+        ,
     src_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId>())
-	,dst_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>())
+    , dst_id(std::make_shared<MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId>())
 {
     src_id->parent = this;
     dst_id->parent = this;
 
-    yang_name = "tunnel-tp"; yang_parent_name = "connection-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tunnel-tp"; yang_parent_name = "connection-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::~TunnelTp()
@@ -574,6 +584,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::has_data() const
 {
+    if (is_presence_container) return true;
     return tunnel.is_set
 	|| (src_id !=  nullptr && src_id->has_data())
 	|| (dst_id !=  nullptr && dst_id->has_data());
@@ -675,7 +686,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
     node{YType::str, "node"}
 {
 
-    yang_name = "src-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "src-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::~SrcId()
@@ -684,6 +695,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::SrcId::has_data() const
 {
+    if (is_presence_container) return true;
     return global.is_set
 	|| node.is_set;
 }
@@ -766,7 +778,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
     node{YType::str, "node"}
 {
 
-    yang_name = "dst-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dst-id"; yang_parent_name = "tunnel-tp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::~DstId()
@@ -775,6 +787,7 @@ MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::
 
 bool MplsForwardingTable::LocalLabelEntry::ForwardingInfo::ConnectionInfo::TunnelTp::DstId::has_data() const
 {
+    if (is_presence_container) return true;
     return global.is_set
 	|| node.is_set;
 }

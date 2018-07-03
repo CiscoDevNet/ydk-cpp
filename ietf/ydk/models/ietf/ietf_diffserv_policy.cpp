@@ -22,9 +22,11 @@ ActionType::~ActionType()
 }
 
 Policies::Policies()
+    :
+    policy_entry(this, {"policy_name"})
 {
 
-    yang_name = "policies"; yang_parent_name = "ietf-diffserv-policy"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "policies"; yang_parent_name = "ietf-diffserv-policy"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Policies::~Policies()
@@ -33,7 +35,8 @@ Policies::~Policies()
 
 bool Policies::has_data() const
 {
-    for (std::size_t index=0; index<policy_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<policy_entry.len(); index++)
     {
         if(policy_entry[index]->has_data())
             return true;
@@ -43,7 +46,7 @@ bool Policies::has_data() const
 
 bool Policies::has_operation() const
 {
-    for (std::size_t index=0; index<policy_entry.size(); index++)
+    for (std::size_t index=0; index<policy_entry.len(); index++)
     {
         if(policy_entry[index]->has_operation())
             return true;
@@ -73,7 +76,7 @@ std::shared_ptr<Entity> Policies::get_child_by_name(const std::string & child_ya
     {
         auto c = std::make_shared<Policies::PolicyEntry>();
         c->parent = this;
-        policy_entry.push_back(c);
+        policy_entry.append(c);
         return c;
     }
 
@@ -85,7 +88,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : policy_entry)
+    for (auto c : policy_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -140,9 +143,11 @@ Policies::PolicyEntry::PolicyEntry()
     :
     policy_name{YType::str, "policy-name"},
     policy_descr{YType::str, "policy-descr"}
+        ,
+    classifier_entry(this, {"classifier_entry_name"})
 {
 
-    yang_name = "policy-entry"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-entry"; yang_parent_name = "policies"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Policies::PolicyEntry::~PolicyEntry()
@@ -151,7 +156,8 @@ Policies::PolicyEntry::~PolicyEntry()
 
 bool Policies::PolicyEntry::has_data() const
 {
-    for (std::size_t index=0; index<classifier_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<classifier_entry.len(); index++)
     {
         if(classifier_entry[index]->has_data())
             return true;
@@ -162,7 +168,7 @@ bool Policies::PolicyEntry::has_data() const
 
 bool Policies::PolicyEntry::has_operation() const
 {
-    for (std::size_t index=0; index<classifier_entry.size(); index++)
+    for (std::size_t index=0; index<classifier_entry.len(); index++)
     {
         if(classifier_entry[index]->has_operation())
             return true;
@@ -182,7 +188,8 @@ std::string Policies::PolicyEntry::get_absolute_path() const
 std::string Policies::PolicyEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "policy-entry" <<"[policy-name='" <<policy_name <<"']";
+    path_buffer << "policy-entry";
+    ADD_KEY_TOKEN(policy_name, "policy-name");
     return path_buffer.str();
 }
 
@@ -203,7 +210,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry>();
         c->parent = this;
-        classifier_entry.push_back(c);
+        classifier_entry.append(c);
         return c;
     }
 
@@ -215,7 +222,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : classifier_entry)
+    for (auto c : classifier_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -266,9 +273,12 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierEntry()
     classifier_entry_name{YType::str, "classifier-entry-name"},
     classifier_entry_inline{YType::boolean, "classifier-entry-inline"},
     classifier_entry_filter_oper{YType::identityref, "classifier-entry-filter-oper"}
+        ,
+    filter_entry(this, {"filter_type", "filter_logical_not"})
+    , classifier_action_entry_cfg(this, {"action_type"})
 {
 
-    yang_name = "classifier-entry"; yang_parent_name = "policy-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classifier-entry"; yang_parent_name = "policy-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::~ClassifierEntry()
@@ -277,12 +287,13 @@ Policies::PolicyEntry::ClassifierEntry::~ClassifierEntry()
 
 bool Policies::PolicyEntry::ClassifierEntry::has_data() const
 {
-    for (std::size_t index=0; index<filter_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<filter_entry.len(); index++)
     {
         if(filter_entry[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<classifier_action_entry_cfg.size(); index++)
+    for (std::size_t index=0; index<classifier_action_entry_cfg.len(); index++)
     {
         if(classifier_action_entry_cfg[index]->has_data())
             return true;
@@ -294,12 +305,12 @@ bool Policies::PolicyEntry::ClassifierEntry::has_data() const
 
 bool Policies::PolicyEntry::ClassifierEntry::has_operation() const
 {
-    for (std::size_t index=0; index<filter_entry.size(); index++)
+    for (std::size_t index=0; index<filter_entry.len(); index++)
     {
         if(filter_entry[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<classifier_action_entry_cfg.size(); index++)
+    for (std::size_t index=0; index<classifier_action_entry_cfg.len(); index++)
     {
         if(classifier_action_entry_cfg[index]->has_operation())
             return true;
@@ -313,7 +324,8 @@ bool Policies::PolicyEntry::ClassifierEntry::has_operation() const
 std::string Policies::PolicyEntry::ClassifierEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "classifier-entry" <<"[classifier-entry-name='" <<classifier_entry_name <<"']";
+    path_buffer << "classifier-entry";
+    ADD_KEY_TOKEN(classifier_entry_name, "classifier-entry-name");
     return path_buffer.str();
 }
 
@@ -335,7 +347,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::get_child_by_nam
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry>();
         c->parent = this;
-        filter_entry.push_back(c);
+        filter_entry.append(c);
         return c;
     }
 
@@ -343,7 +355,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::get_child_by_nam
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg>();
         c->parent = this;
-        classifier_action_entry_cfg.push_back(c);
+        classifier_action_entry_cfg.append(c);
         return c;
     }
 
@@ -355,7 +367,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : filter_entry)
+    for (auto c : filter_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -364,7 +376,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     }
 
     count = 0;
-    for (auto const & c : classifier_action_entry_cfg)
+    for (auto c : classifier_action_entry_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -424,9 +436,16 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::FilterEntry()
     :
     filter_type{YType::identityref, "filter-type"},
     filter_logical_not{YType::boolean, "filter-logical-not"}
+        ,
+    dscp_cfg(this, {"dscp_min", "dscp_max"})
+    , source_ip_address_cfg(this, {"source_ip_addr"})
+    , destination_ip_address_cfg(this, {"destination_ip_addr"})
+    , source_port_cfg(this, {"source_port_min", "source_port_max"})
+    , destination_port_cfg(this, {"destination_port_min", "destination_port_max"})
+    , protocol_cfg(this, {"protocol_min", "protocol_max"})
 {
 
-    yang_name = "filter-entry"; yang_parent_name = "classifier-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter-entry"; yang_parent_name = "classifier-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::FilterEntry::~FilterEntry()
@@ -435,32 +454,33 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::~FilterEntry()
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::has_data() const
 {
-    for (std::size_t index=0; index<dscp_cfg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<dscp_cfg.len(); index++)
     {
         if(dscp_cfg[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<source_ip_address_cfg.size(); index++)
+    for (std::size_t index=0; index<source_ip_address_cfg.len(); index++)
     {
         if(source_ip_address_cfg[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<destination_ip_address_cfg.size(); index++)
+    for (std::size_t index=0; index<destination_ip_address_cfg.len(); index++)
     {
         if(destination_ip_address_cfg[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<source_port_cfg.size(); index++)
+    for (std::size_t index=0; index<source_port_cfg.len(); index++)
     {
         if(source_port_cfg[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<destination_port_cfg.size(); index++)
+    for (std::size_t index=0; index<destination_port_cfg.len(); index++)
     {
         if(destination_port_cfg[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<protocol_cfg.size(); index++)
+    for (std::size_t index=0; index<protocol_cfg.len(); index++)
     {
         if(protocol_cfg[index]->has_data())
             return true;
@@ -471,32 +491,32 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::has_data() const
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::has_operation() const
 {
-    for (std::size_t index=0; index<dscp_cfg.size(); index++)
+    for (std::size_t index=0; index<dscp_cfg.len(); index++)
     {
         if(dscp_cfg[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<source_ip_address_cfg.size(); index++)
+    for (std::size_t index=0; index<source_ip_address_cfg.len(); index++)
     {
         if(source_ip_address_cfg[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<destination_ip_address_cfg.size(); index++)
+    for (std::size_t index=0; index<destination_ip_address_cfg.len(); index++)
     {
         if(destination_ip_address_cfg[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<source_port_cfg.size(); index++)
+    for (std::size_t index=0; index<source_port_cfg.len(); index++)
     {
         if(source_port_cfg[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<destination_port_cfg.size(); index++)
+    for (std::size_t index=0; index<destination_port_cfg.len(); index++)
     {
         if(destination_port_cfg[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<protocol_cfg.size(); index++)
+    for (std::size_t index=0; index<protocol_cfg.len(); index++)
     {
         if(protocol_cfg[index]->has_operation())
             return true;
@@ -509,7 +529,9 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::has_operation() const
 std::string Policies::PolicyEntry::ClassifierEntry::FilterEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "filter-entry" <<"[filter-type='" <<filter_type <<"']" <<"[filter-logical-not='" <<filter_logical_not <<"']";
+    path_buffer << "filter-entry";
+    ADD_KEY_TOKEN(filter_type, "filter-type");
+    ADD_KEY_TOKEN(filter_logical_not, "filter-logical-not");
     return path_buffer.str();
 }
 
@@ -530,7 +552,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg>();
         c->parent = this;
-        dscp_cfg.push_back(c);
+        dscp_cfg.append(c);
         return c;
     }
 
@@ -538,7 +560,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg>();
         c->parent = this;
-        source_ip_address_cfg.push_back(c);
+        source_ip_address_cfg.append(c);
         return c;
     }
 
@@ -546,7 +568,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg>();
         c->parent = this;
-        destination_ip_address_cfg.push_back(c);
+        destination_ip_address_cfg.append(c);
         return c;
     }
 
@@ -554,7 +576,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg>();
         c->parent = this;
-        source_port_cfg.push_back(c);
+        source_port_cfg.append(c);
         return c;
     }
 
@@ -562,7 +584,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg>();
         c->parent = this;
-        destination_port_cfg.push_back(c);
+        destination_port_cfg.append(c);
         return c;
     }
 
@@ -570,7 +592,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::FilterEntry::get
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg>();
         c->parent = this;
-        protocol_cfg.push_back(c);
+        protocol_cfg.append(c);
         return c;
     }
 
@@ -582,7 +604,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : dscp_cfg)
+    for (auto c : dscp_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -591,7 +613,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     }
 
     count = 0;
-    for (auto const & c : source_ip_address_cfg)
+    for (auto c : source_ip_address_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -600,7 +622,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     }
 
     count = 0;
-    for (auto const & c : destination_ip_address_cfg)
+    for (auto c : destination_ip_address_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -609,7 +631,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     }
 
     count = 0;
-    for (auto const & c : source_port_cfg)
+    for (auto c : source_port_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -618,7 +640,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     }
 
     count = 0;
-    for (auto const & c : destination_port_cfg)
+    for (auto c : destination_port_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -627,7 +649,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     }
 
     count = 0;
-    for (auto const & c : protocol_cfg)
+    for (auto c : protocol_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -679,7 +701,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::DscpCfg()
     dscp_max{YType::uint8, "dscp-max"}
 {
 
-    yang_name = "dscp-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::~DscpCfg()
@@ -688,6 +710,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::~DscpCfg()
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp_min.is_set
 	|| dscp_max.is_set;
 }
@@ -702,7 +725,9 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::has_operation
 std::string Policies::PolicyEntry::ClassifierEntry::FilterEntry::DscpCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dscp-cfg" <<"[dscp-min='" <<dscp_min <<"']" <<"[dscp-max='" <<dscp_max <<"']";
+    path_buffer << "dscp-cfg";
+    ADD_KEY_TOKEN(dscp_min, "dscp-min");
+    ADD_KEY_TOKEN(dscp_max, "dscp-max");
     return path_buffer.str();
 }
 
@@ -769,7 +794,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::SourceI
     source_ip_addr{YType::str, "source-ip-addr"}
 {
 
-    yang_name = "source-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::~SourceIpAddressCfg()
@@ -778,6 +803,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::~Source
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return source_ip_addr.is_set;
 }
 
@@ -790,7 +816,8 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::ha
 std::string Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourceIpAddressCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source-ip-address-cfg" <<"[source-ip-addr='" <<source_ip_addr <<"']";
+    path_buffer << "source-ip-address-cfg";
+    ADD_KEY_TOKEN(source_ip_addr, "source-ip-addr");
     return path_buffer.str();
 }
 
@@ -846,7 +873,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::De
     destination_ip_addr{YType::str, "destination-ip-addr"}
 {
 
-    yang_name = "destination-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-ip-address-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::~DestinationIpAddressCfg()
@@ -855,6 +882,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::~D
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_ip_addr.is_set;
 }
 
@@ -867,7 +895,8 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCf
 std::string Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationIpAddressCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination-ip-address-cfg" <<"[destination-ip-addr='" <<destination_ip_addr <<"']";
+    path_buffer << "destination-ip-address-cfg";
+    ADD_KEY_TOKEN(destination_ip_addr, "destination-ip-addr");
     return path_buffer.str();
 }
 
@@ -924,7 +953,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::SourcePortCf
     source_port_max{YType::uint16, "source-port-max"}
 {
 
-    yang_name = "source-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "source-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::~SourcePortCfg()
@@ -933,6 +962,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::~SourcePortC
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return source_port_min.is_set
 	|| source_port_max.is_set;
 }
@@ -947,7 +977,9 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::has_ope
 std::string Policies::PolicyEntry::ClassifierEntry::FilterEntry::SourcePortCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "source-port-cfg" <<"[source-port-min='" <<source_port_min <<"']" <<"[source-port-max='" <<source_port_max <<"']";
+    path_buffer << "source-port-cfg";
+    ADD_KEY_TOKEN(source_port_min, "source-port-min");
+    ADD_KEY_TOKEN(source_port_max, "source-port-max");
     return path_buffer.str();
 }
 
@@ -1015,7 +1047,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::Destina
     destination_port_max{YType::uint16, "destination-port-max"}
 {
 
-    yang_name = "destination-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "destination-port-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::~DestinationPortCfg()
@@ -1024,6 +1056,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::~Destin
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return destination_port_min.is_set
 	|| destination_port_max.is_set;
 }
@@ -1038,7 +1071,9 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::ha
 std::string Policies::PolicyEntry::ClassifierEntry::FilterEntry::DestinationPortCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "destination-port-cfg" <<"[destination-port-min='" <<destination_port_min <<"']" <<"[destination-port-max='" <<destination_port_max <<"']";
+    path_buffer << "destination-port-cfg";
+    ADD_KEY_TOKEN(destination_port_min, "destination-port-min");
+    ADD_KEY_TOKEN(destination_port_max, "destination-port-max");
     return path_buffer.str();
 }
 
@@ -1106,7 +1141,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::ProtocolCfg()
     protocol_max{YType::uint8, "protocol-max"}
 {
 
-    yang_name = "protocol-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "protocol-cfg"; yang_parent_name = "filter-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::~ProtocolCfg()
@@ -1115,6 +1150,7 @@ Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::~ProtocolCfg()
 
 bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_min.is_set
 	|| protocol_max.is_set;
 }
@@ -1129,7 +1165,9 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::has_opera
 std::string Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "protocol-cfg" <<"[protocol-min='" <<protocol_min <<"']" <<"[protocol-max='" <<protocol_max <<"']";
+    path_buffer << "protocol-cfg";
+    ADD_KEY_TOKEN(protocol_min, "protocol-min");
+    ADD_KEY_TOKEN(protocol_max, "protocol-max");
     return path_buffer.str();
 }
 
@@ -1194,15 +1232,15 @@ bool Policies::PolicyEntry::ClassifierEntry::FilterEntry::ProtocolCfg::has_leaf_
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::ClassifierActionEntryCfg()
     :
     action_type{YType::identityref, "action-type"}
-    	,
+        ,
     marking_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg>())
-	,priority_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg>())
-	,meter_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg>())
-	,min_rate_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg>())
-	,max_rate_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg>())
-	,drop_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg>())
-	,tail_drop_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg>())
-	,random_detect_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg>())
+    , priority_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg>())
+    , meter_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg>())
+    , min_rate_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg>())
+    , max_rate_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg>())
+    , drop_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg>())
+    , tail_drop_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg>())
+    , random_detect_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg>())
 {
     marking_cfg->parent = this;
     priority_cfg->parent = this;
@@ -1213,7 +1251,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::ClassifierActi
     tail_drop_cfg->parent = this;
     random_detect_cfg->parent = this;
 
-    yang_name = "classifier-action-entry-cfg"; yang_parent_name = "classifier-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classifier-action-entry-cfg"; yang_parent_name = "classifier-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::~ClassifierActionEntryCfg()
@@ -1222,6 +1260,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::~ClassifierAct
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return action_type.is_set
 	|| (marking_cfg !=  nullptr && marking_cfg->has_data())
 	|| (priority_cfg !=  nullptr && priority_cfg->has_data())
@@ -1250,7 +1289,8 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::has_opera
 std::string Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "classifier-action-entry-cfg" <<"[action-type='" <<action_type <<"']";
+    path_buffer << "classifier-action-entry-cfg";
+    ADD_KEY_TOKEN(action_type, "action-type");
     return path_buffer.str();
 }
 
@@ -1418,7 +1458,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::Ma
     dscp{YType::uint8, "dscp"}
 {
 
-    yang_name = "marking-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::~MarkingCfg()
@@ -1427,6 +1467,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::~M
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set;
 }
 
@@ -1493,12 +1534,12 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MarkingCf
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::PriorityCfg()
     :
     priority_level{YType::uint8, "priority-level"}
-    	,
+        ,
     rate_burst(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst>())
 {
     rate_burst->parent = this;
 
-    yang_name = "priority-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::~PriorityCfg()
@@ -1507,6 +1548,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::~
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return priority_level.is_set
 	|| (rate_burst !=  nullptr && rate_burst->has_data());
 }
@@ -1597,7 +1639,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::R
     burst_interval{YType::uint64, "burst-interval"}
 {
 
-    yang_name = "rate-burst"; yang_parent_name = "priority-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rate-burst"; yang_parent_name = "priority-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::~RateBurst()
@@ -1606,6 +1648,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::R
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityCfg::RateBurst::has_data() const
 {
+    if (is_presence_container) return true;
     return rate.is_set
 	|| absolute_rate_metric.is_set
 	|| absolute_rate_units.is_set
@@ -1748,9 +1791,11 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::PriorityC
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterCfg()
+    :
+    meter_list(this, {"meter_id"})
 {
 
-    yang_name = "meter-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "meter-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::~MeterCfg()
@@ -1759,7 +1804,8 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::~Met
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::has_data() const
 {
-    for (std::size_t index=0; index<meter_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<meter_list.len(); index++)
     {
         if(meter_list[index]->has_data())
             return true;
@@ -1769,7 +1815,7 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg:
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::has_operation() const
 {
-    for (std::size_t index=0; index<meter_list.size(); index++)
+    for (std::size_t index=0; index<meter_list.len(); index++)
     {
         if(meter_list[index]->has_operation())
             return true;
@@ -1799,7 +1845,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList>();
         c->parent = this;
-        meter_list.push_back(c);
+        meter_list.append(c);
         return c;
     }
 
@@ -1811,7 +1857,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : meter_list)
+    for (auto c : meter_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1843,16 +1889,16 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
     meter_rate{YType::uint64, "meter-rate"},
     burst_size{YType::uint64, "burst-size"},
     burst_interval{YType::uint64, "burst-interval"}
-    	,
+        ,
     color(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color>())
-	,succeed_action(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction>())
-	,fail_action(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction>())
+    , succeed_action(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction>())
+    , fail_action(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction>())
 {
     color->parent = this;
     succeed_action->parent = this;
     fail_action->parent = this;
 
-    yang_name = "meter-list"; yang_parent_name = "meter-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "meter-list"; yang_parent_name = "meter-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::~MeterList()
@@ -1861,6 +1907,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::has_data() const
 {
+    if (is_presence_container) return true;
     return meter_id.is_set
 	|| meter_rate.is_set
 	|| burst_size.is_set
@@ -1885,7 +1932,8 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg:
 std::string Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "meter-list" <<"[meter-id='" <<meter_id <<"']";
+    path_buffer << "meter-list";
+    ADD_KEY_TOKEN(meter_id, "meter-id");
     return path_buffer.str();
 }
 
@@ -2018,7 +2066,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
     classifier_entry_filter_operation{YType::identityref, "classifier-entry-filter-operation"}
 {
 
-    yang_name = "color"; yang_parent_name = "meter-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "color"; yang_parent_name = "meter-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::~Color()
@@ -2027,6 +2075,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::Color::has_data() const
 {
+    if (is_presence_container) return true;
     return classifier_entry_name.is_set
 	|| classifier_entry_descr.is_set
 	|| classifier_entry_filter_operation.is_set;
@@ -2124,7 +2173,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
     drop_action{YType::empty, "drop-action"}
 {
 
-    yang_name = "succeed-action"; yang_parent_name = "meter-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "succeed-action"; yang_parent_name = "meter-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::~SucceedAction()
@@ -2133,6 +2182,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::SucceedAction::has_data() const
 {
+    if (is_presence_container) return true;
     return meter_action_type.is_set
 	|| next_meter_id.is_set
 	|| dscp.is_set
@@ -2243,7 +2293,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
     drop_action{YType::empty, "drop-action"}
 {
 
-    yang_name = "fail-action"; yang_parent_name = "meter-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fail-action"; yang_parent_name = "meter-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::~FailAction()
@@ -2252,6 +2302,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::Mete
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MeterCfg::MeterList::FailAction::has_data() const
 {
+    if (is_presence_container) return true;
     return meter_action_type.is_set
 	|| next_meter_id.is_set
 	|| dscp.is_set
@@ -2361,12 +2412,12 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::Mi
     absolute_rate_units{YType::enumeration, "absolute-rate-units"},
     rate_percent{YType::uint8, "rate-percent"},
     rate_ratio{YType::uint32, "rate-ratio"}
-    	,
+        ,
     bw_excess_share_cfg(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg>())
 {
     bw_excess_share_cfg->parent = this;
 
-    yang_name = "min-rate-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "min-rate-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::~MinRateCfg()
@@ -2375,6 +2426,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::~M
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return min_rate.is_set
 	|| absolute_rate_metric.is_set
 	|| absolute_rate_units.is_set
@@ -2515,7 +2567,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::Bw
     rate_ratio{YType::uint32, "rate-ratio"}
 {
 
-    yang_name = "bw-excess-share-cfg"; yang_parent_name = "min-rate-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bw-excess-share-cfg"; yang_parent_name = "min-rate-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::~BwExcessShareCfg()
@@ -2524,6 +2576,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::Bw
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MinRateCfg::BwExcessShareCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| absolute_rate_metric.is_set
 	|| absolute_rate_units.is_set
@@ -2650,7 +2703,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::Ma
     rate_ratio{YType::uint32, "rate-ratio"}
 {
 
-    yang_name = "max-rate-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "max-rate-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::~MaxRateCfg()
@@ -2659,6 +2712,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::~M
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::MaxRateCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return absolute_rate.is_set
 	|| burst_size.is_set
 	|| burst_interval.is_set
@@ -2805,7 +2859,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::DropC
     drop_action{YType::empty, "drop-action"}
 {
 
-    yang_name = "drop-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "drop-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::~DropCfg()
@@ -2814,6 +2868,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::~Drop
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return drop_action.is_set;
 }
 
@@ -2878,9 +2933,11 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::DropCfg::
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::TailDropCfg()
+    :
+    qlimit_dscp_thresh(this, {"dscp_min", "dscp_max"})
 {
 
-    yang_name = "tail-drop-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tail-drop-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::~TailDropCfg()
@@ -2889,7 +2946,8 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::~
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::has_data() const
 {
-    for (std::size_t index=0; index<qlimit_dscp_thresh.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<qlimit_dscp_thresh.len(); index++)
     {
         if(qlimit_dscp_thresh[index]->has_data())
             return true;
@@ -2899,7 +2957,7 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropC
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::has_operation() const
 {
-    for (std::size_t index=0; index<qlimit_dscp_thresh.size(); index++)
+    for (std::size_t index=0; index<qlimit_dscp_thresh.len(); index++)
     {
         if(qlimit_dscp_thresh[index]->has_operation())
             return true;
@@ -2929,7 +2987,7 @@ std::shared_ptr<Entity> Policies::PolicyEntry::ClassifierEntry::ClassifierAction
     {
         auto c = std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh>();
         c->parent = this;
-        qlimit_dscp_thresh.push_back(c);
+        qlimit_dscp_thresh.append(c);
         return c;
     }
 
@@ -2941,7 +2999,7 @@ std::map<std::string, std::shared_ptr<Entity>> Policies::PolicyEntry::Classifier
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : qlimit_dscp_thresh)
+    for (auto c : qlimit_dscp_thresh.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2971,12 +3029,12 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::Q
     :
     dscp_min{YType::uint8, "dscp-min"},
     dscp_max{YType::uint8, "dscp-max"}
-    	,
+        ,
     threshold(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold>())
 {
     threshold->parent = this;
 
-    yang_name = "qlimit-dscp-thresh"; yang_parent_name = "tail-drop-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qlimit-dscp-thresh"; yang_parent_name = "tail-drop-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::~QlimitDscpThresh()
@@ -2985,6 +3043,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::Q
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp_min.is_set
 	|| dscp_max.is_set
 	|| (threshold !=  nullptr && threshold->has_data());
@@ -3001,7 +3060,9 @@ bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropC
 std::string Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "qlimit-dscp-thresh" <<"[dscp-min='" <<dscp_min <<"']" <<"[dscp-max='" <<dscp_max <<"']";
+    path_buffer << "qlimit-dscp-thresh";
+    ADD_KEY_TOKEN(dscp_min, "dscp-min");
+    ADD_KEY_TOKEN(dscp_max, "dscp-max");
     return path_buffer.str();
 }
 
@@ -3083,7 +3144,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::Q
     threshold_interval{YType::uint64, "threshold-interval"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "qlimit-dscp-thresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "qlimit-dscp-thresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::~Threshold()
@@ -3092,6 +3153,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::Q
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::TailDropCfg::QlimitDscpThresh::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_size.is_set
 	|| threshold_interval.is_set;
 }
@@ -3172,14 +3234,14 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
     :
     exp_weighting_const{YType::uint32, "exp-weighting-const"},
     mark_probability{YType::uint32, "mark-probability"}
-    	,
+        ,
     red_min_thresh(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh>())
-	,red_max_thresh(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh>())
+    , red_max_thresh(std::make_shared<Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh>())
 {
     red_min_thresh->parent = this;
     red_max_thresh->parent = this;
 
-    yang_name = "random-detect-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "random-detect-cfg"; yang_parent_name = "classifier-action-entry-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::~RandomDetectCfg()
@@ -3188,6 +3250,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return exp_weighting_const.is_set
 	|| mark_probability.is_set
 	|| (red_min_thresh !=  nullptr && red_min_thresh->has_data())
@@ -3302,7 +3365,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
 {
     threshold->parent = this;
 
-    yang_name = "red-min-thresh"; yang_parent_name = "random-detect-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-min-thresh"; yang_parent_name = "random-detect-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::~RedMinThresh()
@@ -3311,6 +3374,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data());
 }
 
@@ -3383,7 +3447,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
     threshold_interval{YType::uint64, "threshold-interval"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "red-min-thresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "red-min-thresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::~Threshold()
@@ -3392,6 +3456,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMinThresh::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_size.is_set
 	|| threshold_interval.is_set;
 }
@@ -3474,7 +3539,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
 {
     threshold->parent = this;
 
-    yang_name = "red-max-thresh"; yang_parent_name = "random-detect-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "red-max-thresh"; yang_parent_name = "random-detect-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::~RedMaxThresh()
@@ -3483,6 +3548,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::has_data() const
 {
+    if (is_presence_container) return true;
     return (threshold !=  nullptr && threshold->has_data());
 }
 
@@ -3555,7 +3621,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
     threshold_interval{YType::uint64, "threshold-interval"}
 {
 
-    yang_name = "threshold"; yang_parent_name = "red-max-thresh"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "threshold"; yang_parent_name = "red-max-thresh"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::~Threshold()
@@ -3564,6 +3630,7 @@ Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCf
 
 bool Policies::PolicyEntry::ClassifierEntry::ClassifierActionEntryCfg::RandomDetectCfg::RedMaxThresh::Threshold::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_size.is_set
 	|| threshold_interval.is_set;
 }

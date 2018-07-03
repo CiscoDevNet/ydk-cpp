@@ -32,14 +32,14 @@ class BGP4MIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Bgp; //type: BGP4MIB::Bgp
-        class Bgppeertable; //type: BGP4MIB::Bgppeertable
-        class Bgprcvdpathattrtable; //type: BGP4MIB::Bgprcvdpathattrtable
-        class Bgp4Pathattrtable; //type: BGP4MIB::Bgp4Pathattrtable
+        class BgpPeerTable; //type: BGP4MIB::BgpPeerTable
+        class BgpRcvdPathAttrTable; //type: BGP4MIB::BgpRcvdPathAttrTable
+        class Bgp4PathAttrTable; //type: BGP4MIB::Bgp4PathAttrTable
 
         std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp> bgp;
-        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable> bgppeertable;
-        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgprcvdpathattrtable> bgprcvdpathattrtable;
-        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp4Pathattrtable> bgp4pathattrtable;
+        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::BgpPeerTable> bgppeertable;
+        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::BgpRcvdPathAttrTable> bgprcvdpathattrtable;
+        std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp4PathAttrTable> bgp4pathattrtable;
         
 }; // BGP4MIB
 
@@ -68,11 +68,11 @@ class BGP4MIB::Bgp : public ydk::Entity
 }; // BGP4MIB::Bgp
 
 
-class BGP4MIB::Bgppeertable : public ydk::Entity
+class BGP4MIB::BgpPeerTable : public ydk::Entity
 {
     public:
-        Bgppeertable();
-        ~Bgppeertable();
+        BgpPeerTable();
+        ~BgpPeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -85,18 +85,18 @@ class BGP4MIB::Bgppeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Bgppeerentry; //type: BGP4MIB::Bgppeertable::Bgppeerentry
+        class BgpPeerEntry; //type: BGP4MIB::BgpPeerTable::BgpPeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgppeertable::Bgppeerentry> > bgppeerentry;
+        ydk::YList bgppeerentry;
         
-}; // BGP4MIB::Bgppeertable
+}; // BGP4MIB::BgpPeerTable
 
 
-class BGP4MIB::Bgppeertable::Bgppeerentry : public ydk::Entity
+class BGP4MIB::BgpPeerTable::BgpPeerEntry : public ydk::Entity
 {
     public:
-        Bgppeerentry();
-        ~Bgppeerentry();
+        BgpPeerEntry();
+        ~BgpPeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -111,8 +111,8 @@ class BGP4MIB::Bgppeertable::Bgppeerentry : public ydk::Entity
 
         ydk::YLeaf bgppeerremoteaddr; //type: string
         ydk::YLeaf bgppeeridentifier; //type: string
-        ydk::YLeaf bgppeerstate; //type: Bgppeerstate
-        ydk::YLeaf bgppeeradminstatus; //type: Bgppeeradminstatus
+        ydk::YLeaf bgppeerstate; //type: BgpPeerState
+        ydk::YLeaf bgppeeradminstatus; //type: BgpPeerAdminStatus
         ydk::YLeaf bgppeernegotiatedversion; //type: int32
         ydk::YLeaf bgppeerlocaladdr; //type: string
         ydk::YLeaf bgppeerlocalport; //type: int32
@@ -140,19 +140,19 @@ class BGP4MIB::Bgppeertable::Bgppeerentry : public ydk::Entity
         ydk::YLeaf cbgppeerprefixsuppressed; //type: uint32
         ydk::YLeaf cbgppeerprefixwithdrawn; //type: uint32
         ydk::YLeaf cbgppeerlasterrortxt; //type: string
-        ydk::YLeaf cbgppeerprevstate; //type: Cbgppeerprevstate
-        class Bgppeerstate;
-        class Bgppeeradminstatus;
-        class Cbgppeerprevstate;
+        ydk::YLeaf cbgppeerprevstate; //type: CbgpPeerPrevState
+        class BgpPeerState;
+        class BgpPeerAdminStatus;
+        class CbgpPeerPrevState;
 
-}; // BGP4MIB::Bgppeertable::Bgppeerentry
+}; // BGP4MIB::BgpPeerTable::BgpPeerEntry
 
 
-class BGP4MIB::Bgprcvdpathattrtable : public ydk::Entity
+class BGP4MIB::BgpRcvdPathAttrTable : public ydk::Entity
 {
     public:
-        Bgprcvdpathattrtable();
-        ~Bgprcvdpathattrtable();
+        BgpRcvdPathAttrTable();
+        ~BgpRcvdPathAttrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -165,18 +165,18 @@ class BGP4MIB::Bgprcvdpathattrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Bgppathattrentry; //type: BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry
+        class BgpPathAttrEntry; //type: BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry> > bgppathattrentry;
+        ydk::YList bgppathattrentry;
         
-}; // BGP4MIB::Bgprcvdpathattrtable
+}; // BGP4MIB::BgpRcvdPathAttrTable
 
 
-class BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry : public ydk::Entity
+class BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry : public ydk::Entity
 {
     public:
-        Bgppathattrentry();
-        ~Bgppathattrentry();
+        BgpPathAttrEntry();
+        ~BgpPathAttrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -191,20 +191,20 @@ class BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry : public ydk::Entity
 
         ydk::YLeaf bgppathattrdestnetwork; //type: string
         ydk::YLeaf bgppathattrpeer; //type: string
-        ydk::YLeaf bgppathattrorigin; //type: Bgppathattrorigin
+        ydk::YLeaf bgppathattrorigin; //type: BgpPathAttrOrigin
         ydk::YLeaf bgppathattraspath; //type: binary
         ydk::YLeaf bgppathattrnexthop; //type: string
         ydk::YLeaf bgppathattrinterasmetric; //type: int32
-        class Bgppathattrorigin;
+        class BgpPathAttrOrigin;
 
-}; // BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry
+}; // BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry
 
 
-class BGP4MIB::Bgp4Pathattrtable : public ydk::Entity
+class BGP4MIB::Bgp4PathAttrTable : public ydk::Entity
 {
     public:
-        Bgp4Pathattrtable();
-        ~Bgp4Pathattrtable();
+        Bgp4PathAttrTable();
+        ~Bgp4PathAttrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -217,18 +217,18 @@ class BGP4MIB::Bgp4Pathattrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Bgp4Pathattrentry; //type: BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry
+        class Bgp4PathAttrEntry; //type: BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::BGP4_MIB::BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry> > bgp4pathattrentry;
+        ydk::YList bgp4pathattrentry;
         
-}; // BGP4MIB::Bgp4Pathattrtable
+}; // BGP4MIB::Bgp4PathAttrTable
 
 
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry : public ydk::Entity
+class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry : public ydk::Entity
 {
     public:
-        Bgp4Pathattrentry();
-        ~Bgp4Pathattrentry();
+        Bgp4PathAttrEntry();
+        ~Bgp4PathAttrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -244,24 +244,24 @@ class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry : public ydk::Entity
         ydk::YLeaf bgp4pathattripaddrprefix; //type: string
         ydk::YLeaf bgp4pathattripaddrprefixlen; //type: int32
         ydk::YLeaf bgp4pathattrpeer; //type: string
-        ydk::YLeaf bgp4pathattrorigin; //type: Bgp4Pathattrorigin
+        ydk::YLeaf bgp4pathattrorigin; //type: Bgp4PathAttrOrigin
         ydk::YLeaf bgp4pathattraspathsegment; //type: binary
         ydk::YLeaf bgp4pathattrnexthop; //type: string
         ydk::YLeaf bgp4pathattrmultiexitdisc; //type: int32
         ydk::YLeaf bgp4pathattrlocalpref; //type: int32
-        ydk::YLeaf bgp4pathattratomicaggregate; //type: Bgp4Pathattratomicaggregate
+        ydk::YLeaf bgp4pathattratomicaggregate; //type: Bgp4PathAttrAtomicAggregate
         ydk::YLeaf bgp4pathattraggregatoras; //type: int32
         ydk::YLeaf bgp4pathattraggregatoraddr; //type: string
         ydk::YLeaf bgp4pathattrcalclocalpref; //type: int32
-        ydk::YLeaf bgp4pathattrbest; //type: Bgp4Pathattrbest
+        ydk::YLeaf bgp4pathattrbest; //type: Bgp4PathAttrBest
         ydk::YLeaf bgp4pathattrunknown; //type: binary
-        class Bgp4Pathattrorigin;
-        class Bgp4Pathattratomicaggregate;
-        class Bgp4Pathattrbest;
+        class Bgp4PathAttrOrigin;
+        class Bgp4PathAttrAtomicAggregate;
+        class Bgp4PathAttrBest;
 
-}; // BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry
+}; // BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry
 
-class BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate : public ydk::Enum
+class BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf idle;
@@ -273,7 +273,7 @@ class BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeerstate : public ydk::Enum
 
 };
 
-class BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeeradminstatus : public ydk::Enum
+class BGP4MIB::BgpPeerTable::BgpPeerEntry::BgpPeerAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf stop;
@@ -281,7 +281,7 @@ class BGP4MIB::Bgppeertable::Bgppeerentry::Bgppeeradminstatus : public ydk::Enum
 
 };
 
-class BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate : public ydk::Enum
+class BGP4MIB::BgpPeerTable::BgpPeerEntry::CbgpPeerPrevState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -294,7 +294,7 @@ class BGP4MIB::Bgppeertable::Bgppeerentry::Cbgppeerprevstate : public ydk::Enum
 
 };
 
-class BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin : public ydk::Enum
+class BGP4MIB::BgpRcvdPathAttrTable::BgpPathAttrEntry::BgpPathAttrOrigin : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf igp;
@@ -303,7 +303,7 @@ class BGP4MIB::Bgprcvdpathattrtable::Bgppathattrentry::Bgppathattrorigin : publi
 
 };
 
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin : public ydk::Enum
+class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrOrigin : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf igp;
@@ -312,7 +312,7 @@ class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrorigin : public
 
 };
 
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate : public ydk::Enum
+class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrAtomicAggregate : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lessSpecificRrouteNotSelected;
@@ -320,7 +320,7 @@ class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattratomicaggregate
 
 };
 
-class BGP4MIB::Bgp4Pathattrtable::Bgp4Pathattrentry::Bgp4Pathattrbest : public ydk::Enum
+class BGP4MIB::Bgp4PathAttrTable::Bgp4PathAttrEntry::Bgp4PathAttrBest : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf false_;

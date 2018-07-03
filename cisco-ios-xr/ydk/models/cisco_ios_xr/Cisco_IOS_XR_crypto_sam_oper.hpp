@@ -91,7 +91,7 @@ class Sam::LogContents : public ydk::Entity
 
         class LogContent; //type: Sam::LogContents::LogContent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent> > log_content;
+        ydk::YList log_content;
         
 }; // Sam::LogContents
 
@@ -113,12 +113,12 @@ class Sam::LogContents::LogContent : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf number_of_lines; //type: int32
+        ydk::YLeaf number_of_lines; //type: uint32
         ydk::YLeaf total_entries; //type: uint32
         ydk::YLeaf entries_shown; //type: uint32
         class Logs; //type: Sam::LogContents::LogContent::Logs
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::LogContents::LogContent::Logs> > logs;
+        ydk::YList logs;
         
 }; // Sam::LogContents::LogContent
 
@@ -173,7 +173,7 @@ class Sam::Devices : public ydk::Entity
 
         class Device; //type: Sam::Devices::Device
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device> > device;
+        ydk::YList device;
         
 }; // Sam::Devices
 
@@ -295,7 +295,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes : public ydk::Entity
 
         class CertificateIndex; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex> > certificate_index;
+        ydk::YList certificate_index;
         
 }; // Sam::Devices::Device::Certificate::CertificateIndexes
 
@@ -316,7 +316,7 @@ class Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex : 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: int32
+        ydk::YLeaf index_; //type: uint32
         class Detail; //type: Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Devices::Device::Certificate::CertificateIndexes::CertificateIndex::Detail> detail;
@@ -392,7 +392,7 @@ class Sam::Packages : public ydk::Entity
 
         class Package; //type: Sam::Packages::Package
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::Packages::Package> > package;
+        ydk::YList package;
         
 }; // Sam::Packages
 
@@ -467,7 +467,7 @@ class Sam::CertificateRevocations : public ydk::Entity
 
         class CertificateRevocation; //type: Sam::CertificateRevocations::CertificateRevocation
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation> > certificate_revocation;
+        ydk::YList certificate_revocation;
         
 }; // Sam::CertificateRevocations
 
@@ -489,7 +489,7 @@ class Sam::CertificateRevocations::CertificateRevocation : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf crl_index; //type: int32
+        ydk::YLeaf crl_index; //type: uint32
         class CertificateRevocationListDetail; //type: Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_sam_oper::Sam::CertificateRevocations::CertificateRevocation::CertificateRevocationListDetail> certificate_revocation_list_detail;
@@ -594,24 +594,6 @@ class Sam::CertificateRevocationListSummary::Issuer : public ydk::Entity
 
 }; // Sam::CertificateRevocationListSummary::Issuer
 
-class LogTables : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unkown;
-        static const ydk::Enum::YLeaf memory_digest_table;
-        static const ydk::Enum::YLeaf system_database_digest;
-        static const ydk::Enum::YLeaf sam_tables;
-
-};
-
-class CertificateIssuer : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf code_signing_server_certificate_authority;
-
-};
-
 class LogError : public ydk::Enum
 {
     public:
@@ -645,6 +627,24 @@ class LogCode : public ydk::Enum
         static const ydk::Enum::YLeaf sam_log_file_recovered_from_system_database;
         static const ydk::Enum::YLeaf validated_elf;
         static const ydk::Enum::YLeaf namespace_deleted_recovered_by_sam;
+
+};
+
+class CertificateIssuer : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf code_signing_server_certificate_authority;
+
+};
+
+class LogTables : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unkown;
+        static const ydk::Enum::YLeaf memory_digest_table;
+        static const ydk::Enum::YLeaf system_database_digest;
+        static const ydk::Enum::YLeaf sam_tables;
 
 };
 

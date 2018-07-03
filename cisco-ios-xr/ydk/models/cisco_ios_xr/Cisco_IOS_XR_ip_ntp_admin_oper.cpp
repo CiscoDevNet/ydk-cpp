@@ -17,7 +17,7 @@ Ntp::Ntp()
 {
     racks->parent = this;
 
-    yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-admin-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ntp"; yang_parent_name = "Cisco-IOS-XR-ip-ntp-admin-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Ntp::~Ntp()
@@ -26,6 +26,7 @@ Ntp::~Ntp()
 
 bool Ntp::has_data() const
 {
+    if (is_presence_container) return true;
     return (racks !=  nullptr && racks->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Ntp::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ntp::Racks::Racks()
+    :
+    rack(this, {"number"})
 {
 
-    yang_name = "racks"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "racks"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ntp::Racks::~Racks()
@@ -129,7 +132,8 @@ Ntp::Racks::~Racks()
 
 bool Ntp::Racks::has_data() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Ntp::Racks::has_data() const
 
 bool Ntp::Racks::has_operation() const
 {
-    for (std::size_t index=0; index<rack.size(); index++)
+    for (std::size_t index=0; index<rack.len(); index++)
     {
         if(rack[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Ntp::Racks::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Ntp::Racks::Rack>();
         c->parent = this;
-        rack.push_back(c);
+        rack.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rack)
+    for (auto c : rack.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -216,13 +220,13 @@ bool Ntp::Racks::has_leaf_or_child_of_name(const std::string & name) const
 
 Ntp::Racks::Rack::Rack()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     slots(std::make_shared<Ntp::Racks::Rack::Slots>())
 {
     slots->parent = this;
 
-    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rack"; yang_parent_name = "racks"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Ntp::Racks::Rack::~Rack()
@@ -231,6 +235,7 @@ Ntp::Racks::Rack::~Rack()
 
 bool Ntp::Racks::Rack::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (slots !=  nullptr && slots->has_data());
 }
@@ -252,7 +257,8 @@ std::string Ntp::Racks::Rack::get_absolute_path() const
 std::string Ntp::Racks::Rack::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rack" <<"[number='" <<number <<"']";
+    path_buffer << "rack";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -318,9 +324,11 @@ bool Ntp::Racks::Rack::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Ntp::Racks::Rack::Slots::Slots()
+    :
+    slot(this, {"number"})
 {
 
-    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slots"; yang_parent_name = "rack"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::~Slots()
@@ -329,7 +337,8 @@ Ntp::Racks::Rack::Slots::~Slots()
 
 bool Ntp::Racks::Rack::Slots::has_data() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_data())
             return true;
@@ -339,7 +348,7 @@ bool Ntp::Racks::Rack::Slots::has_data() const
 
 bool Ntp::Racks::Rack::Slots::has_operation() const
 {
-    for (std::size_t index=0; index<slot.size(); index++)
+    for (std::size_t index=0; index<slot.len(); index++)
     {
         if(slot[index]->has_operation())
             return true;
@@ -369,7 +378,7 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot>();
         c->parent = this;
-        slot.push_back(c);
+        slot.append(c);
         return c;
     }
 
@@ -381,7 +390,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : slot)
+    for (auto c : slot.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -409,13 +418,13 @@ bool Ntp::Racks::Rack::Slots::has_leaf_or_child_of_name(const std::string & name
 
 Ntp::Racks::Rack::Slots::Slot::Slot()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     instances(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances>())
 {
     instances->parent = this;
 
-    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "slot"; yang_parent_name = "slots"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::~Slot()
@@ -424,6 +433,7 @@ Ntp::Racks::Rack::Slots::Slot::~Slot()
 
 bool Ntp::Racks::Rack::Slots::Slot::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (instances !=  nullptr && instances->has_data());
 }
@@ -438,7 +448,8 @@ bool Ntp::Racks::Rack::Slots::Slot::has_operation() const
 std::string Ntp::Racks::Rack::Slots::Slot::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "slot" <<"[number='" <<number <<"']";
+    path_buffer << "slot";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -504,9 +515,11 @@ bool Ntp::Racks::Rack::Slots::Slot::has_leaf_or_child_of_name(const std::string 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instances()
+    :
+    instance(this, {"number"})
 {
 
-    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances"; yang_parent_name = "slot"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::~Instances()
@@ -515,7 +528,8 @@ Ntp::Racks::Rack::Slots::Slot::Instances::~Instances()
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -525,7 +539,7 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::has_data() const
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -555,7 +569,7 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::get_child_by_n
     {
         auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -567,7 +581,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -595,17 +609,17 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::has_leaf_or_child_of_name(const s
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Instance()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     status(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status>())
-	,associations(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations>())
-	,associations_detail(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail>())
+    , associations(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations>())
+    , associations_detail(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail>())
 {
     status->parent = this;
     associations->parent = this;
     associations_detail->parent = this;
 
-    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instance"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
@@ -614,6 +628,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::~Instance()
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (status !=  nullptr && status->has_data())
 	|| (associations !=  nullptr && associations->has_data())
@@ -632,7 +647,8 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::has_operation() const
 std::string Ntp::Racks::Rack::Slots::Slot::Instances::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[number='" <<number <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -741,14 +757,14 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::Status()
     poll_interval{YType::uint8, "poll-interval"},
     is_updated{YType::enumeration, "is-updated"},
     last_update{YType::int32, "last-update"}
-    	,
+        ,
     sys_ref_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime>())
-	,sys_drift(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift>())
+    , sys_drift(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift>())
 {
     sys_ref_time->parent = this;
     sys_drift->parent = this;
 
-    yang_name = "status"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "status"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::~Status()
@@ -757,6 +773,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::~Status()
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::has_data() const
 {
+    if (is_presence_container) return true;
     return is_ntp_enabled.is_set
 	|| sys_dispersion.is_set
 	|| sys_offset.is_set
@@ -1024,12 +1041,12 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::has_leaf_or_chi
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::SysRefTime()
     :
     sec(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "sys-ref-time"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sys-ref-time"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::~SysRefTime()
@@ -1038,6 +1055,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::~SysRefT
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -1125,7 +1143,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::Sec
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::~Sec()
@@ -1134,6 +1152,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::~Se
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -1202,7 +1221,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "sys-ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs::~FracSecs()
@@ -1211,6 +1230,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -1277,12 +1297,12 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysRefTime::Fra
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::SysDrift()
     :
     sec(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec>())
-	,frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "sys-drift"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sys-drift"; yang_parent_name = "status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::~SysDrift()
@@ -1291,6 +1311,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::~SysDrift(
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -1378,7 +1399,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::Sec()
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::~Sec()
@@ -1387,6 +1408,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::~Sec(
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -1455,7 +1477,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "sys-drift"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::~FracSecs()
@@ -1464,6 +1486,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Status::SysDrift::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -1531,9 +1554,11 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::Associations()
     :
     is_ntp_enabled{YType::boolean, "is-ntp-enabled"},
     sys_leap{YType::enumeration, "sys-leap"}
+        ,
+    peer_summary_info(this, {})
 {
 
-    yang_name = "associations"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "associations"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::~Associations()
@@ -1542,7 +1567,8 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::~Associations(
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::has_data() const
 {
-    for (std::size_t index=0; index<peer_summary_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_summary_info.len(); index++)
     {
         if(peer_summary_info[index]->has_data())
             return true;
@@ -1553,7 +1579,7 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::has_data(
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::has_operation() const
 {
-    for (std::size_t index=0; index<peer_summary_info.size(); index++)
+    for (std::size_t index=0; index<peer_summary_info.len(); index++)
     {
         if(peer_summary_info[index]->has_operation())
             return true;
@@ -1587,7 +1613,7 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     {
         auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo>();
         c->parent = this;
-        peer_summary_info.push_back(c);
+        peer_summary_info.append(c);
         return c;
     }
 
@@ -1599,7 +1625,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_summary_info)
+    for (auto c : peer_summary_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1648,12 +1674,12 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::has_leaf_
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerSummaryInfo()
     :
     time_since{YType::int32, "time-since"}
-    	,
+        ,
     peer_info_common(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon>())
 {
     peer_info_common->parent = this;
 
-    yang_name = "peer-summary-info"; yang_parent_name = "associations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-summary-info"; yang_parent_name = "associations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::~PeerSummaryInfo()
@@ -1662,6 +1688,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInf
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return time_since.is_set
 	|| (peer_info_common !=  nullptr && peer_info_common->has_data());
 }
@@ -1757,7 +1784,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInf
     is_sys_peer{YType::boolean, "is-sys-peer"}
 {
 
-    yang_name = "peer-info-common"; yang_parent_name = "peer-summary-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-info-common"; yang_parent_name = "peer-summary-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon::~PeerInfoCommon()
@@ -1766,6 +1793,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInf
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::PeerSummaryInfo::PeerInfoCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return host_mode.is_set
 	|| is_configured.is_set
 	|| address.is_set
@@ -1976,9 +2004,11 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Associat
     :
     is_ntp_enabled{YType::boolean, "is-ntp-enabled"},
     sys_leap{YType::enumeration, "sys-leap"}
+        ,
+    peer_detail_info(this, {})
 {
 
-    yang_name = "associations-detail"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "associations-detail"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::~AssociationsDetail()
@@ -1987,7 +2017,8 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::~Associa
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::has_data() const
 {
-    for (std::size_t index=0; index<peer_detail_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer_detail_info.len(); index++)
     {
         if(peer_detail_info[index]->has_data())
             return true;
@@ -1998,7 +2029,7 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::has
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::has_operation() const
 {
-    for (std::size_t index=0; index<peer_detail_info.size(); index++)
+    for (std::size_t index=0; index<peer_detail_info.len(); index++)
     {
         if(peer_detail_info[index]->has_operation())
             return true;
@@ -2032,7 +2063,7 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     {
         auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo>();
         c->parent = this;
-        peer_detail_info.push_back(c);
+        peer_detail_info.append(c);
         return c;
     }
 
@@ -2044,7 +2075,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer_detail_info)
+    for (auto c : peer_detail_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2103,12 +2134,13 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     precision{YType::int8, "precision"},
     version{YType::uint8, "version"},
     filter_index{YType::uint32, "filter-index"}
-    	,
+        ,
     peer_info_common(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon>())
-	,ref_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime>())
-	,originate_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime>())
-	,receive_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime>())
-	,transmit_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime>())
+    , ref_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime>())
+    , originate_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime>())
+    , receive_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime>())
+    , transmit_time(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime>())
+    , filter_detail(this, {})
 {
     peer_info_common->parent = this;
     ref_time->parent = this;
@@ -2116,7 +2148,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     receive_time->parent = this;
     transmit_time->parent = this;
 
-    yang_name = "peer-detail-info"; yang_parent_name = "associations-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-detail-info"; yang_parent_name = "associations-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::~PeerDetailInfo()
@@ -2125,7 +2157,8 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::has_data() const
 {
-    for (std::size_t index=0; index<filter_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<filter_detail.len(); index++)
     {
         if(filter_detail[index]->has_data())
             return true;
@@ -2150,7 +2183,7 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::has_operation() const
 {
-    for (std::size_t index=0; index<filter_detail.size(); index++)
+    for (std::size_t index=0; index<filter_detail.len(); index++)
     {
         if(filter_detail[index]->has_operation())
             return true;
@@ -2252,7 +2285,7 @@ std::shared_ptr<Entity> Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Asso
     {
         auto c = std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail>();
         c->parent = this;
-        filter_detail.push_back(c);
+        filter_detail.append(c);
         return c;
     }
 
@@ -2289,7 +2322,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ntp::Racks::Rack::Slots::Slot::In
     }
 
     count = 0;
-    for (auto const & c : filter_detail)
+    for (auto c : filter_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2441,7 +2474,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     is_sys_peer{YType::boolean, "is-sys-peer"}
 {
 
-    yang_name = "peer-info-common"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer-info-common"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::~PeerInfoCommon()
@@ -2450,6 +2483,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::PeerInfoCommon::has_data() const
 {
+    if (is_presence_container) return true;
     return host_mode.is_set
 	|| is_configured.is_set
 	|| address.is_set
@@ -2659,12 +2693,12 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::RefTime()
     :
     sec(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "ref-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ref-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::~RefTime()
@@ -2673,6 +2707,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -2760,7 +2795,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec::~Sec()
@@ -2769,6 +2804,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -2837,7 +2873,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "ref-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::~FracSecs()
@@ -2846,6 +2882,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::RefTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -2912,12 +2949,12 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::OriginateTime()
     :
     sec(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "originate-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "originate-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::~OriginateTime()
@@ -2926,6 +2963,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -3013,7 +3051,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::~Sec()
@@ -3022,6 +3060,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -3090,7 +3129,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "originate-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::~FracSecs()
@@ -3099,6 +3138,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::OriginateTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -3165,12 +3205,12 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::ReceiveTime()
     :
     sec(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "receive-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::~ReceiveTime()
@@ -3179,6 +3219,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -3266,7 +3307,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::~Sec()
@@ -3275,6 +3316,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -3343,7 +3385,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "receive-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::~FracSecs()
@@ -3352,6 +3394,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::ReceiveTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -3418,12 +3461,12 @@ bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::Pee
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::TransmitTime()
     :
     sec(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec>())
-	,frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs>())
+    , frac_secs(std::make_shared<Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs>())
 {
     sec->parent = this;
     frac_secs->parent = this;
 
-    yang_name = "transmit-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transmit-time"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::~TransmitTime()
@@ -3432,6 +3475,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (sec !=  nullptr && sec->has_data())
 	|| (frac_secs !=  nullptr && frac_secs->has_data());
 }
@@ -3519,7 +3563,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     int_{YType::uint32, "int"}
 {
 
-    yang_name = "sec"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sec"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::~Sec()
@@ -3528,6 +3572,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::Sec::has_data() const
 {
+    if (is_presence_container) return true;
     return int_.is_set;
 }
 
@@ -3596,7 +3641,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     frac{YType::uint32, "frac"}
 {
 
-    yang_name = "frac-secs"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "frac-secs"; yang_parent_name = "transmit-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::~FracSecs()
@@ -3605,6 +3650,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::TransmitTime::FracSecs::has_data() const
 {
+    if (is_presence_container) return true;
     return frac.is_set;
 }
 
@@ -3675,7 +3721,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
     filter_disp{YType::str, "filter-disp"}
 {
 
-    yang_name = "filter-detail"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "filter-detail"; yang_parent_name = "peer-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail::~FilterDetail()
@@ -3684,6 +3730,7 @@ Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDeta
 
 bool Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDetail::PeerDetailInfo::FilterDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return filter_delay.is_set
 	|| filter_offset.is_set
 	|| filter_disp.is_set;

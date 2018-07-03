@@ -86,7 +86,7 @@ class SpanMonitorSession::Global::Statistics : public ydk::Entity
 
         class Statistic; //type: SpanMonitorSession::Global::Statistics::Statistic
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::Statistics::Statistic> > statistic;
+        ydk::YList statistic;
         
 }; // SpanMonitorSession::Global::Statistics
 
@@ -139,7 +139,7 @@ class SpanMonitorSession::Global::GlobalSessions : public ydk::Entity
 
         class GlobalSession; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession> > global_session;
+        ydk::YList global_session;
         
 }; // SpanMonitorSession::Global::GlobalSessions
 
@@ -171,9 +171,11 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession : public ydk::En
         ydk::YLeaf interface_error; //type: uint32
         class DestinationData; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData
         class DestinationId; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId
+        class InjectInterface; //type: SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationData> destination_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId> destination_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface> inject_interface;
         
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession
 
@@ -372,6 +374,27 @@ class SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::
 }; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::DestinationId::Ipv6AddressAndVrf
 
 
+class SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface : public ydk::Entity
+{
+    public:
+        InjectInterface();
+        ~InjectInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+
+}; // SpanMonitorSession::Global::GlobalSessions::GlobalSession::InjectInterface
+
+
 class SpanMonitorSession::Nodes : public ydk::Entity
 {
     public:
@@ -391,7 +414,7 @@ class SpanMonitorSession::Nodes : public ydk::Entity
 
         class Node; //type: SpanMonitorSession::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // SpanMonitorSession::Nodes
 
@@ -443,7 +466,7 @@ class SpanMonitorSession::Nodes::Node::Attachments : public ydk::Entity
 
         class Attachment; //type: SpanMonitorSession::Nodes::Node::Attachments::Attachment
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Attachments::Attachment> > attachment;
+        ydk::YList attachment;
         
 }; // SpanMonitorSession::Nodes::Node::Attachments
 
@@ -604,7 +627,7 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions : public ydk::Entity
 
         class HardwareSession; //type: SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession> > hardware_session;
+        ydk::YList hardware_session;
         
 }; // SpanMonitorSession::Nodes::Node::HardwareSessions
 
@@ -626,12 +649,15 @@ class SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf session_class; //type: SpanSessionClass
-        ydk::YLeaf session_id; //type: int32
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf id; //type: uint32
         ydk::YLeaf name; //type: string
         ydk::YLeaf session_class_xr; //type: SessionClass
         ydk::YLeaf destination_interface; //type: string
         ydk::YLeaf platform_error; //type: uint32
+        ydk::YLeaf inject_interface_ifh; //type: string
+        ydk::YLeaf inject_interface_mac; //type: string
+        ydk::YLeaf inject_interface_invalid; //type: boolean
         class DestinationId; //type: SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::DestinationId> destination_id;
@@ -730,7 +756,7 @@ class SpanMonitorSession::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: SpanMonitorSession::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // SpanMonitorSession::Nodes::Node::Interfaces
 
@@ -762,7 +788,7 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface : public ydk::Entit
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::DestinationId> destination_id;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::TrafficMirroringParameters> traffic_mirroring_parameters;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_oper::SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment> > attachment;
+        ydk::YList attachment;
         
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface
 
@@ -990,26 +1016,28 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Traffi
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters
 
-class MirrorInterval : public ydk::Enum
+class ImStateEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mirror_interval_all;
-        static const ydk::Enum::YLeaf mirror_interval512;
-        static const ydk::Enum::YLeaf mirror_interval1k;
-        static const ydk::Enum::YLeaf mirror_interval2k;
-        static const ydk::Enum::YLeaf mirror_interval4k;
-        static const ydk::Enum::YLeaf mirror_interval8k;
-        static const ydk::Enum::YLeaf mirror_interval16k;
-
-};
-
-class TrafficDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf rx_only;
-        static const ydk::Enum::YLeaf tx_only;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf im_state_not_ready;
+        static const ydk::Enum::YLeaf im_state_admin_down;
+        static const ydk::Enum::YLeaf im_state_down;
+        static const ydk::Enum::YLeaf im_state_up;
+        static const ydk::Enum::YLeaf im_state_shutdown;
+        static const ydk::Enum::YLeaf im_state_err_disable;
+        static const ydk::Enum::YLeaf im_state_down_immediate;
+        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
+        static const ydk::Enum::YLeaf im_state_down_graceful;
+        static const ydk::Enum::YLeaf im_state_begin_shutdown;
+        static const ydk::Enum::YLeaf im_state_end_shutdown;
+        static const ydk::Enum::YLeaf im_state_begin_error_disable;
+        static const ydk::Enum::YLeaf im_state_end_error_disable;
+        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
+        static const ydk::Enum::YLeaf im_state_reset;
+        static const ydk::Enum::YLeaf im_state_operational;
+        static const ydk::Enum::YLeaf im_state_not_operational;
+        static const ydk::Enum::YLeaf im_state_unknown;
+        static const ydk::Enum::YLeaf im_state_last;
 
 };
 
@@ -1036,28 +1064,26 @@ class SessionClass : public ydk::Enum
 
 };
 
-class ImStateEnum : public ydk::Enum
+class MirrorInterval : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf im_state_not_ready;
-        static const ydk::Enum::YLeaf im_state_admin_down;
-        static const ydk::Enum::YLeaf im_state_down;
-        static const ydk::Enum::YLeaf im_state_up;
-        static const ydk::Enum::YLeaf im_state_shutdown;
-        static const ydk::Enum::YLeaf im_state_err_disable;
-        static const ydk::Enum::YLeaf im_state_down_immediate;
-        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
-        static const ydk::Enum::YLeaf im_state_down_graceful;
-        static const ydk::Enum::YLeaf im_state_begin_shutdown;
-        static const ydk::Enum::YLeaf im_state_end_shutdown;
-        static const ydk::Enum::YLeaf im_state_begin_error_disable;
-        static const ydk::Enum::YLeaf im_state_end_error_disable;
-        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
-        static const ydk::Enum::YLeaf im_state_reset;
-        static const ydk::Enum::YLeaf im_state_operational;
-        static const ydk::Enum::YLeaf im_state_not_operational;
-        static const ydk::Enum::YLeaf im_state_unknown;
-        static const ydk::Enum::YLeaf im_state_last;
+        static const ydk::Enum::YLeaf mirror_interval_all;
+        static const ydk::Enum::YLeaf mirror_interval512;
+        static const ydk::Enum::YLeaf mirror_interval1k;
+        static const ydk::Enum::YLeaf mirror_interval2k;
+        static const ydk::Enum::YLeaf mirror_interval4k;
+        static const ydk::Enum::YLeaf mirror_interval8k;
+        static const ydk::Enum::YLeaf mirror_interval16k;
+
+};
+
+class TrafficDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf rx_only;
+        static const ydk::Enum::YLeaf tx_only;
+        static const ydk::Enum::YLeaf both;
 
 };
 

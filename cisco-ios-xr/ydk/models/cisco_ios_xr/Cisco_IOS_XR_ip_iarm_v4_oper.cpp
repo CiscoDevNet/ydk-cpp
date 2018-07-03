@@ -11,29 +11,30 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ip_iarm_v4_oper {
 
-Ipv4Arm::Ipv4Arm()
+Ipv4arm::Ipv4arm()
     :
     multicast_host_interface{YType::str, "multicast-host-interface"}
-    	,
-    addresses(std::make_shared<Ipv4Arm::Addresses>())
-	,summary(std::make_shared<Ipv4Arm::Summary>())
-	,vrf_summaries(std::make_shared<Ipv4Arm::VrfSummaries>())
-	,router_id(std::make_shared<Ipv4Arm::RouterId>())
+        ,
+    addresses(std::make_shared<Ipv4arm::Addresses>())
+    , summary(std::make_shared<Ipv4arm::Summary>())
+    , vrf_summaries(std::make_shared<Ipv4arm::VrfSummaries>())
+    , router_id(std::make_shared<Ipv4arm::RouterId>())
 {
     addresses->parent = this;
     summary->parent = this;
     vrf_summaries->parent = this;
     router_id->parent = this;
 
-    yang_name = "ipv4arm"; yang_parent_name = "Cisco-IOS-XR-ip-iarm-v4-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ipv4arm"; yang_parent_name = "Cisco-IOS-XR-ip-iarm-v4-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
-Ipv4Arm::~Ipv4Arm()
+Ipv4arm::~Ipv4arm()
 {
 }
 
-bool Ipv4Arm::has_data() const
+bool Ipv4arm::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast_host_interface.is_set
 	|| (addresses !=  nullptr && addresses->has_data())
 	|| (summary !=  nullptr && summary->has_data())
@@ -41,7 +42,7 @@ bool Ipv4Arm::has_data() const
 	|| (router_id !=  nullptr && router_id->has_data());
 }
 
-bool Ipv4Arm::has_operation() const
+bool Ipv4arm::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(multicast_host_interface.yfilter)
@@ -51,14 +52,14 @@ bool Ipv4Arm::has_operation() const
 	|| (router_id !=  nullptr && router_id->has_operation());
 }
 
-std::string Ipv4Arm::get_segment_path() const
+std::string Ipv4arm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -68,13 +69,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::get_name_leaf_data() con
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "addresses")
     {
         if(addresses == nullptr)
         {
-            addresses = std::make_shared<Ipv4Arm::Addresses>();
+            addresses = std::make_shared<Ipv4arm::Addresses>();
         }
         return addresses;
     }
@@ -83,7 +84,7 @@ std::shared_ptr<Entity> Ipv4Arm::get_child_by_name(const std::string & child_yan
     {
         if(summary == nullptr)
         {
-            summary = std::make_shared<Ipv4Arm::Summary>();
+            summary = std::make_shared<Ipv4arm::Summary>();
         }
         return summary;
     }
@@ -92,7 +93,7 @@ std::shared_ptr<Entity> Ipv4Arm::get_child_by_name(const std::string & child_yan
     {
         if(vrf_summaries == nullptr)
         {
-            vrf_summaries = std::make_shared<Ipv4Arm::VrfSummaries>();
+            vrf_summaries = std::make_shared<Ipv4arm::VrfSummaries>();
         }
         return vrf_summaries;
     }
@@ -101,7 +102,7 @@ std::shared_ptr<Entity> Ipv4Arm::get_child_by_name(const std::string & child_yan
     {
         if(router_id == nullptr)
         {
-            router_id = std::make_shared<Ipv4Arm::RouterId>();
+            router_id = std::make_shared<Ipv4arm::RouterId>();
         }
         return router_id;
     }
@@ -109,7 +110,7 @@ std::shared_ptr<Entity> Ipv4Arm::get_child_by_name(const std::string & child_yan
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -136,7 +137,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::get_children() const
     return children;
 }
 
-void Ipv4Arm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "multicast-host-interface")
     {
@@ -146,7 +147,7 @@ void Ipv4Arm::set_value(const std::string & value_path, const std::string & valu
     }
 }
 
-void Ipv4Arm::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "multicast-host-interface")
     {
@@ -154,77 +155,78 @@ void Ipv4Arm::set_filter(const std::string & value_path, YFilter yfilter)
     }
 }
 
-std::shared_ptr<Entity> Ipv4Arm::clone_ptr() const
+std::shared_ptr<Entity> Ipv4arm::clone_ptr() const
 {
-    return std::make_shared<Ipv4Arm>();
+    return std::make_shared<Ipv4arm>();
 }
 
-std::string Ipv4Arm::get_bundle_yang_models_location() const
+std::string Ipv4arm::get_bundle_yang_models_location() const
 {
     return ydk_cisco_ios_xr_models_path;
 }
 
-std::string Ipv4Arm::get_bundle_name() const
+std::string Ipv4arm::get_bundle_name() const
 {
     return "cisco_ios_xr";
 }
 
-augment_capabilities_function Ipv4Arm::get_augment_capabilities_function() const
+augment_capabilities_function Ipv4arm::get_augment_capabilities_function() const
 {
     return cisco_ios_xr_augment_lookup_tables;
 }
 
-std::map<std::pair<std::string, std::string>, std::string> Ipv4Arm::get_namespace_identity_lookup() const
+std::map<std::pair<std::string, std::string>, std::string> Ipv4arm::get_namespace_identity_lookup() const
 {
     return cisco_ios_xr_namespace_identity_lookup;
 }
 
-bool Ipv4Arm::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "addresses" || name == "summary" || name == "vrf-summaries" || name == "router-id" || name == "multicast-host-interface")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Addresses()
+Ipv4arm::Addresses::Addresses()
     :
-    vrfs(std::make_shared<Ipv4Arm::Addresses::Vrfs>())
+    vrfs(std::make_shared<Ipv4arm::Addresses::Vrfs>())
 {
     vrfs->parent = this;
 
-    yang_name = "addresses"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "addresses"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ipv4Arm::Addresses::~Addresses()
+Ipv4arm::Addresses::~Addresses()
 {
 }
 
-bool Ipv4Arm::Addresses::has_data() const
+bool Ipv4arm::Addresses::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data());
 }
 
-bool Ipv4Arm::Addresses::has_operation() const
+bool Ipv4arm::Addresses::has_operation() const
 {
     return is_set(yfilter)
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
-std::string Ipv4Arm::Addresses::get_absolute_path() const
+std::string Ipv4arm::Addresses::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv4Arm::Addresses::get_segment_path() const
+std::string Ipv4arm::Addresses::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "addresses";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -233,13 +235,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::get_name_leaf
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrfs")
     {
         if(vrfs == nullptr)
         {
-            vrfs = std::make_shared<Ipv4Arm::Addresses::Vrfs>();
+            vrfs = std::make_shared<Ipv4arm::Addresses::Vrfs>();
         }
         return vrfs;
     }
@@ -247,7 +249,7 @@ std::shared_ptr<Entity> Ipv4Arm::Addresses::get_child_by_name(const std::string 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -259,34 +261,37 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::get_children(
     return children;
 }
 
-void Ipv4Arm::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Arm::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Arm::Addresses::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrfs")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrfs()
+Ipv4arm::Addresses::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ipv4Arm::Addresses::Vrfs::~Vrfs()
+Ipv4arm::Addresses::Vrfs::~Vrfs()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::has_data() const
+bool Ipv4arm::Addresses::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -294,9 +299,9 @@ bool Ipv4Arm::Addresses::Vrfs::has_data() const
     return false;
 }
 
-bool Ipv4Arm::Addresses::Vrfs::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -304,21 +309,21 @@ bool Ipv4Arm::Addresses::Vrfs::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::get_absolute_path() const
+std::string Ipv4arm::Addresses::Vrfs::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm/addresses/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrfs";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -327,25 +332,25 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::get_nam
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf")
     {
-        auto c = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf>();
+        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -356,46 +361,47 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::get_chi
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Arm::Addresses::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Vrf()
+Ipv4arm::Addresses::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
-    networks(std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Networks>())
-	,interfaces(std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces>())
+        ,
+    networks(std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks>())
+    , interfaces(std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces>())
 {
     networks->parent = this;
     interfaces->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::~Vrf()
+Ipv4arm::Addresses::Vrfs::Vrf::~Vrf()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (networks !=  nullptr && networks->has_data())
 	|| (interfaces !=  nullptr && interfaces->has_data());
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
@@ -403,21 +409,22 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::has_operation() const
 	|| (interfaces !=  nullptr && interfaces->has_operation());
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::get_absolute_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm/addresses/vrfs/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -427,13 +434,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::ge
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "networks")
     {
         if(networks == nullptr)
         {
-            networks = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Networks>();
+            networks = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks>();
         }
         return networks;
     }
@@ -442,7 +449,7 @@ std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::get_child_by_name(const s
     {
         if(interfaces == nullptr)
         {
-            interfaces = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces>();
+            interfaces = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces>();
         }
         return interfaces;
     }
@@ -450,7 +457,7 @@ std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::get_child_by_name(const s
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -467,7 +474,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::ge
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -477,7 +484,7 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::set_value(const std::string & value_path, co
     }
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -485,26 +492,29 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::set_filter(const std::string & value_path, Y
     }
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "networks" || name == "interfaces" || name == "vrf-name")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Networks()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::Networks()
+    :
+    network(this, {})
 {
 
-    yang_name = "networks"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "networks"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::~Networks()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::~Networks()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::has_data() const
 {
-    for (std::size_t index=0; index<network.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_data())
             return true;
@@ -512,9 +522,9 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::has_data() const
     return false;
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::has_operation() const
 {
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_operation())
             return true;
@@ -522,14 +532,14 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Networks::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "networks";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Networks::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -538,25 +548,25 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "network")
     {
-        auto c = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network>();
+        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network>();
         c->parent = this;
-        network.push_back(c);
+        network.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network)
+    for (auto c : network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -567,22 +577,22 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Ne
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "network")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::Network()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::Network()
     :
     address{YType::str, "address"},
     prefix_length{YType::uint32, "prefix-length"},
@@ -590,20 +600,21 @@ Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::Network()
     interface_name{YType::str, "interface-name"},
     referenced_interface{YType::str, "referenced-interface"},
     vrf_name{YType::str, "vrf-name"}
-    	,
-    address_xr(std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr>())
+        ,
+    address_xr(std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr>())
 {
     address_xr->parent = this;
 
-    yang_name = "network"; yang_parent_name = "networks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network"; yang_parent_name = "networks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::~Network()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::~Network()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
 	|| handle.is_set
@@ -613,7 +624,7 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::has_data() const
 	|| (address_xr !=  nullptr && address_xr->has_data());
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
@@ -625,14 +636,14 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::has_operation() const
 	|| (address_xr !=  nullptr && address_xr->has_operation());
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -647,13 +658,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address-xr")
     {
         if(address_xr == nullptr)
         {
-            address_xr = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr>();
+            address_xr = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr>();
         }
         return address_xr;
     }
@@ -661,7 +672,7 @@ std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::get_ch
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -673,7 +684,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Ne
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "address")
     {
@@ -713,7 +724,7 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::set_value(const std::stri
     }
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "address")
     {
@@ -741,14 +752,14 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::set_filter(const std::str
     }
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address-xr" || name == "address" || name == "prefix-length" || name == "handle" || name == "interface-name" || name == "referenced-interface" || name == "vrf-name")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::AddressXr()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::AddressXr()
     :
     prefix_length{YType::uint32, "prefix-length"},
     route_tag{YType::uint32, "route-tag"},
@@ -756,20 +767,21 @@ Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::AddressXr()
     is_tentative{YType::boolean, "is-tentative"},
     is_prefix_sid{YType::boolean, "is-prefix-sid"},
     producer{YType::str, "producer"}
-    	,
-    address(std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address>())
+        ,
+    address(std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address>())
 {
     address->parent = this;
 
-    yang_name = "address-xr"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-xr"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::~AddressXr()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::~AddressXr()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| route_tag.is_set
 	|| is_primary.is_set
@@ -779,7 +791,7 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_data() con
 	|| (address !=  nullptr && address->has_data());
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix_length.yfilter)
@@ -791,14 +803,14 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_operation(
 	|| (address !=  nullptr && address->has_operation());
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address-xr";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -813,13 +825,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
         if(address == nullptr)
         {
-            address = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address>();
+            address = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address>();
         }
         return address;
     }
@@ -827,7 +839,7 @@ std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::Addres
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -839,7 +851,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Ne
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-length")
     {
@@ -879,7 +891,7 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::set_value(cons
     }
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix-length")
     {
@@ -907,35 +919,36 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::set_filter(con
     }
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address" || name == "prefix-length" || name == "route-tag" || name == "is-primary" || name == "is-tentative" || name == "is-prefix-sid" || name == "producer")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::Address()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::Address()
     :
     afi{YType::int32, "afi"},
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "address-xr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "address-xr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::~Address()
+Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::~Address()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(afi.yfilter)
@@ -943,14 +956,14 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::has_o
 	|| ydk::is_set(ipv6_address.yfilter);
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -962,19 +975,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Ne
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
@@ -996,7 +1009,7 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::set_v
     }
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "afi")
     {
@@ -1012,26 +1025,29 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::set_f
     }
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::AddressXr::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "afi" || name == "ipv4-address" || name == "ipv6-address")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interfaces()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interfaces()
+    :
+    interface(this, {"interface"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interfaces"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::~Interfaces()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::~Interfaces()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -1039,9 +1055,9 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::has_data() const
     return false;
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -1049,14 +1065,14 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1065,25 +1081,25 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "interface")
     {
-        auto c = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface>();
+        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1094,38 +1110,41 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::In
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Interface()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Interface()
     :
     interface{YType::str, "interface"},
     referenced_interface{YType::str, "referenced-interface"},
     vrf_name{YType::str, "vrf-name"}
+        ,
+    address(this, {})
 {
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::~Interface()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::~Interface()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -1135,9 +1154,9 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_data() const
 	|| vrf_name.is_set;
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -1148,14 +1167,15 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_operation() const
 	|| ydk::is_set(vrf_name.yfilter);
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1167,25 +1187,25 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
-        auto c = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address>();
+        auto c = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1196,7 +1216,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::In
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -1218,7 +1238,7 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::set_value(const std::
     }
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -1234,14 +1254,14 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::set_filter(const std:
     }
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address" || name == "interface" || name == "referenced-interface" || name == "vrf-name")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address()
     :
     prefix_length{YType::uint32, "prefix-length"},
     route_tag{YType::uint32, "route-tag"},
@@ -1249,20 +1269,21 @@ Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address()
     is_tentative{YType::boolean, "is-tentative"},
     is_prefix_sid{YType::boolean, "is-prefix-sid"},
     producer{YType::str, "producer"}
-    	,
-    address(std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_>())
+        ,
+    address(std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_>())
 {
     address->parent = this;
 
-    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::~Address()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::~Address()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| route_tag.is_set
 	|| is_primary.is_set
@@ -1272,7 +1293,7 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_data() c
 	|| (address !=  nullptr && address->has_data());
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(prefix_length.yfilter)
@@ -1284,14 +1305,14 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_operatio
 	|| (address !=  nullptr && address->has_operation());
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1306,13 +1327,13 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "address")
     {
         if(address == nullptr)
         {
-            address = std::make_shared<Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_>();
+            address = std::make_shared<Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_>();
         }
         return address;
     }
@@ -1320,7 +1341,7 @@ std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Ad
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1332,7 +1353,7 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::In
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "prefix-length")
     {
@@ -1372,7 +1393,7 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::set_value(co
     }
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "prefix-length")
     {
@@ -1400,35 +1421,36 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::set_filter(c
     }
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "address" || name == "prefix-length" || name == "route-tag" || name == "is-primary" || name == "is-tentative" || name == "is-prefix-sid" || name == "producer")
         return true;
     return false;
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::Address_()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::Address_()
     :
     afi{YType::int32, "afi"},
     ipv4_address{YType::str, "ipv4-address"},
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::~Address_()
+Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::~Address_()
 {
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::has_data() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::has_operation() const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(afi.yfilter)
@@ -1436,14 +1458,14 @@ bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::ha
 	|| ydk::is_set(ipv6_address.yfilter);
 }
 
-std::string Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_segment_path() const
+std::string Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1455,19 +1477,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Addresses::Vrfs::Vrf::In
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "afi")
     {
@@ -1489,7 +1511,7 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::se
     }
 }
 
-void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "afi")
     {
@@ -1505,14 +1527,14 @@ void Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::se
     }
 }
 
-bool Ipv4Arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::Address_::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "afi" || name == "ipv4-address" || name == "ipv6-address")
         return true;
     return false;
 }
 
-Ipv4Arm::Summary::Summary()
+Ipv4arm::Summary::Summary()
     :
     producer_count{YType::int32, "producer-count"},
     address_conflict_count{YType::int32, "address-conflict-count"},
@@ -1521,15 +1543,16 @@ Ipv4Arm::Summary::Summary()
     vrf_count{YType::int32, "vrf-count"}
 {
 
-    yang_name = "summary"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ipv4Arm::Summary::~Summary()
+Ipv4arm::Summary::~Summary()
 {
 }
 
-bool Ipv4Arm::Summary::has_data() const
+bool Ipv4arm::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return producer_count.is_set
 	|| address_conflict_count.is_set
 	|| unnumbered_conflict_count.is_set
@@ -1537,7 +1560,7 @@ bool Ipv4Arm::Summary::has_data() const
 	|| vrf_count.is_set;
 }
 
-bool Ipv4Arm::Summary::has_operation() const
+bool Ipv4arm::Summary::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(producer_count.yfilter)
@@ -1547,21 +1570,21 @@ bool Ipv4Arm::Summary::has_operation() const
 	|| ydk::is_set(vrf_count.yfilter);
 }
 
-std::string Ipv4Arm::Summary::get_absolute_path() const
+std::string Ipv4arm::Summary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv4Arm::Summary::get_segment_path() const
+std::string Ipv4arm::Summary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Summary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::Summary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1575,19 +1598,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::Summary::get_name_leaf_d
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::Summary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::Summary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::Summary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ipv4Arm::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::Summary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "producer-count")
     {
@@ -1621,7 +1644,7 @@ void Ipv4Arm::Summary::set_value(const std::string & value_path, const std::stri
     }
 }
 
-void Ipv4Arm::Summary::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::Summary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "producer-count")
     {
@@ -1645,26 +1668,29 @@ void Ipv4Arm::Summary::set_filter(const std::string & value_path, YFilter yfilte
     }
 }
 
-bool Ipv4Arm::Summary::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "producer-count" || name == "address-conflict-count" || name == "unnumbered-conflict-count" || name == "db-master-version" || name == "vrf-count")
         return true;
     return false;
 }
 
-Ipv4Arm::VrfSummaries::VrfSummaries()
+Ipv4arm::VrfSummaries::VrfSummaries()
+    :
+    vrf_summary(this, {"vrf_name"})
 {
 
-    yang_name = "vrf-summaries"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-summaries"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ipv4Arm::VrfSummaries::~VrfSummaries()
+Ipv4arm::VrfSummaries::~VrfSummaries()
 {
 }
 
-bool Ipv4Arm::VrfSummaries::has_data() const
+bool Ipv4arm::VrfSummaries::has_data() const
 {
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_summary.len(); index++)
     {
         if(vrf_summary[index]->has_data())
             return true;
@@ -1672,9 +1698,9 @@ bool Ipv4Arm::VrfSummaries::has_data() const
     return false;
 }
 
-bool Ipv4Arm::VrfSummaries::has_operation() const
+bool Ipv4arm::VrfSummaries::has_operation() const
 {
-    for (std::size_t index=0; index<vrf_summary.size(); index++)
+    for (std::size_t index=0; index<vrf_summary.len(); index++)
     {
         if(vrf_summary[index]->has_operation())
             return true;
@@ -1682,21 +1708,21 @@ bool Ipv4Arm::VrfSummaries::has_operation() const
     return is_set(yfilter);
 }
 
-std::string Ipv4Arm::VrfSummaries::get_absolute_path() const
+std::string Ipv4arm::VrfSummaries::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv4Arm::VrfSummaries::get_segment_path() const
+std::string Ipv4arm::VrfSummaries::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf-summaries";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::VrfSummaries::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::VrfSummaries::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1705,25 +1731,25 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::VrfSummaries::get_name_l
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::VrfSummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "vrf-summary")
     {
-        auto c = std::make_shared<Ipv4Arm::VrfSummaries::VrfSummary>();
+        auto c = std::make_shared<Ipv4arm::VrfSummaries::VrfSummary>();
         c->parent = this;
-        vrf_summary.push_back(c);
+        vrf_summary.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::VrfSummaries::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::VrfSummaries::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf_summary)
+    for (auto c : vrf_summary.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1734,43 +1760,44 @@ std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::VrfSummaries::get_childr
     return children;
 }
 
-void Ipv4Arm::VrfSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::VrfSummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Ipv4Arm::VrfSummaries::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::VrfSummaries::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Ipv4Arm::VrfSummaries::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::VrfSummaries::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-summary")
         return true;
     return false;
 }
 
-Ipv4Arm::VrfSummaries::VrfSummary::VrfSummary()
+Ipv4arm::VrfSummaries::VrfSummary::VrfSummary()
     :
     vrf_name{YType::str, "vrf-name"},
     vrf_id{YType::uint32, "vrf-id"},
     vrf_name_xr{YType::str, "vrf-name-xr"}
 {
 
-    yang_name = "vrf-summary"; yang_parent_name = "vrf-summaries"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf-summary"; yang_parent_name = "vrf-summaries"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ipv4Arm::VrfSummaries::VrfSummary::~VrfSummary()
+Ipv4arm::VrfSummaries::VrfSummary::~VrfSummary()
 {
 }
 
-bool Ipv4Arm::VrfSummaries::VrfSummary::has_data() const
+bool Ipv4arm::VrfSummaries::VrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| vrf_id.is_set
 	|| vrf_name_xr.is_set;
 }
 
-bool Ipv4Arm::VrfSummaries::VrfSummary::has_operation() const
+bool Ipv4arm::VrfSummaries::VrfSummary::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
@@ -1778,21 +1805,22 @@ bool Ipv4Arm::VrfSummaries::VrfSummary::has_operation() const
 	|| ydk::is_set(vrf_name_xr.yfilter);
 }
 
-std::string Ipv4Arm::VrfSummaries::VrfSummary::get_absolute_path() const
+std::string Ipv4arm::VrfSummaries::VrfSummary::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm/vrf-summaries/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv4Arm::VrfSummaries::VrfSummary::get_segment_path() const
+std::string Ipv4arm::VrfSummaries::VrfSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf-summary" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf-summary";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::VrfSummaries::VrfSummary::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::VrfSummaries::VrfSummary::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1804,19 +1832,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::VrfSummaries::VrfSummary
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::VrfSummaries::VrfSummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::VrfSummaries::VrfSummary::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::VrfSummaries::VrfSummary::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ipv4Arm::VrfSummaries::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::VrfSummaries::VrfSummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -1838,7 +1866,7 @@ void Ipv4Arm::VrfSummaries::VrfSummary::set_value(const std::string & value_path
     }
 }
 
-void Ipv4Arm::VrfSummaries::VrfSummary::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::VrfSummaries::VrfSummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -1854,14 +1882,14 @@ void Ipv4Arm::VrfSummaries::VrfSummary::set_filter(const std::string & value_pat
     }
 }
 
-bool Ipv4Arm::VrfSummaries::VrfSummary::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::VrfSummaries::VrfSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "vrf-id" || name == "vrf-name-xr")
         return true;
     return false;
 }
 
-Ipv4Arm::RouterId::RouterId()
+Ipv4arm::RouterId::RouterId()
     :
     vrf_id{YType::uint32, "vrf-id"},
     vrf_name{YType::str, "vrf-name"},
@@ -1869,22 +1897,23 @@ Ipv4Arm::RouterId::RouterId()
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "router-id"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "router-id"; yang_parent_name = "ipv4arm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Ipv4Arm::RouterId::~RouterId()
+Ipv4arm::RouterId::~RouterId()
 {
 }
 
-bool Ipv4Arm::RouterId::has_data() const
+bool Ipv4arm::RouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_id.is_set
 	|| vrf_name.is_set
 	|| interface_name.is_set
 	|| router_id.is_set;
 }
 
-bool Ipv4Arm::RouterId::has_operation() const
+bool Ipv4arm::RouterId::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_id.yfilter)
@@ -1893,21 +1922,21 @@ bool Ipv4Arm::RouterId::has_operation() const
 	|| ydk::is_set(router_id.yfilter);
 }
 
-std::string Ipv4Arm::RouterId::get_absolute_path() const
+std::string Ipv4arm::RouterId::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-ip-iarm-v4-oper:ipv4arm/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Ipv4Arm::RouterId::get_segment_path() const
+std::string Ipv4arm::RouterId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "router-id";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Ipv4Arm::RouterId::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Ipv4arm::RouterId::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1920,19 +1949,19 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Arm::RouterId::get_name_leaf_
 
 }
 
-std::shared_ptr<Entity> Ipv4Arm::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Ipv4arm::RouterId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Ipv4Arm::RouterId::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Ipv4arm::RouterId::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Ipv4Arm::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Ipv4arm::RouterId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-id")
     {
@@ -1960,7 +1989,7 @@ void Ipv4Arm::RouterId::set_value(const std::string & value_path, const std::str
     }
 }
 
-void Ipv4Arm::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
+void Ipv4arm::RouterId::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-id")
     {
@@ -1980,7 +2009,7 @@ void Ipv4Arm::RouterId::set_filter(const std::string & value_path, YFilter yfilt
     }
 }
 
-bool Ipv4Arm::RouterId::has_leaf_or_child_of_name(const std::string & name) const
+bool Ipv4arm::RouterId::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-id" || name == "vrf-name" || name == "interface-name" || name == "router-id")
         return true;

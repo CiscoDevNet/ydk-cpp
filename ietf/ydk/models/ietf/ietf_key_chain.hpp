@@ -36,7 +36,7 @@ class KeyChains : public ydk::Entity
         class Key; //type: KeyChains::Key
 
         std::shared_ptr<ietf::ietf_key_chain::KeyChains::AcceptTolerance> accept_tolerance;
-        std::vector<std::shared_ptr<ietf::ietf_key_chain::KeyChains::Key> > key;
+        ydk::YList key;
         
 }; // KeyChains
 

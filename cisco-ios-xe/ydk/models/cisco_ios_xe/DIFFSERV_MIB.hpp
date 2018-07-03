@@ -12,95 +12,95 @@
 namespace cisco_ios_xe {
 namespace DIFFSERV_MIB {
 
-class Diffservtbparamsimpletokenbucket : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamTrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservtbparamsimpletokenbucket();
-        ~Diffservtbparamsimpletokenbucket();
+        DiffServTBParamTrTCMBlind();
+        ~DiffServTBParamTrTCMBlind();
 
 
-}; // Diffservtbparamsimpletokenbucket
+}; // DiffServTBParamTrTCMBlind
 
-class Diffservtbparamavgrate : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServSchedulerWFQ : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservtbparamavgrate();
-        ~Diffservtbparamavgrate();
+        DiffServSchedulerWFQ();
+        ~DiffServSchedulerWFQ();
 
 
-}; // Diffservtbparamavgrate
+}; // DiffServSchedulerWFQ
 
-class Diffservtbparamsrtcmblind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamTswTCM : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservtbparamsrtcmblind();
-        ~Diffservtbparamsrtcmblind();
+        DiffServTBParamTswTCM();
+        ~DiffServTBParamTswTCM();
 
 
-}; // Diffservtbparamsrtcmblind
+}; // DiffServTBParamTswTCM
 
-class Diffservtbparamsrtcmaware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamAvgRate : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservtbparamsrtcmaware();
-        ~Diffservtbparamsrtcmaware();
+        DiffServTBParamAvgRate();
+        ~DiffServTBParamAvgRate();
 
 
-}; // Diffservtbparamsrtcmaware
+}; // DiffServTBParamAvgRate
 
-class Diffservtbparamtrtcmblind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServSchedulerWRR : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservtbparamtrtcmblind();
-        ~Diffservtbparamtrtcmblind();
+        DiffServSchedulerWRR();
+        ~DiffServSchedulerWRR();
 
 
-}; // Diffservtbparamtrtcmblind
+}; // DiffServSchedulerWRR
 
-class Diffservtbparamtrtcmaware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamSrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservtbparamtrtcmaware();
-        ~Diffservtbparamtrtcmaware();
+        DiffServTBParamSrTCMAware();
+        ~DiffServTBParamSrTCMAware();
 
 
-}; // Diffservtbparamtrtcmaware
+}; // DiffServTBParamSrTCMAware
 
-class Diffservtbparamtswtcm : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamSrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservtbparamtswtcm();
-        ~Diffservtbparamtswtcm();
+        DiffServTBParamSrTCMBlind();
+        ~DiffServTBParamSrTCMBlind();
 
 
-}; // Diffservtbparamtswtcm
+}; // DiffServTBParamSrTCMBlind
 
-class Diffservschedulerpriority : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamSimpleTokenBucket : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservschedulerpriority();
-        ~Diffservschedulerpriority();
+        DiffServTBParamSimpleTokenBucket();
+        ~DiffServTBParamSimpleTokenBucket();
 
 
-}; // Diffservschedulerpriority
+}; // DiffServTBParamSimpleTokenBucket
 
-class Diffservschedulerwrr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServSchedulerPriority : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservschedulerwrr();
-        ~Diffservschedulerwrr();
+        DiffServSchedulerPriority();
+        ~DiffServSchedulerPriority();
 
 
-}; // Diffservschedulerwrr
+}; // DiffServSchedulerPriority
 
-class Diffservschedulerwfq : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamTrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        Diffservschedulerwfq();
-        ~Diffservschedulerwfq();
+        DiffServTBParamTrTCMAware();
+        ~DiffServTBParamTrTCMAware();
 
 
-}; // Diffservschedulerwfq
+}; // DiffServTBParamTrTCMAware
 
 class DIFFSERVMIB : public ydk::Entity
 {
@@ -123,60 +123,60 @@ class DIFFSERVMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Diffservclassifier; //type: DIFFSERVMIB::Diffservclassifier
-        class Diffservmeter; //type: DIFFSERVMIB::Diffservmeter
-        class Diffservtbparam; //type: DIFFSERVMIB::Diffservtbparam
-        class Diffservaction; //type: DIFFSERVMIB::Diffservaction
-        class Diffservalgdrop; //type: DIFFSERVMIB::Diffservalgdrop
-        class Diffservqueue; //type: DIFFSERVMIB::Diffservqueue
-        class Diffservscheduler; //type: DIFFSERVMIB::Diffservscheduler
-        class Diffservdatapathtable; //type: DIFFSERVMIB::Diffservdatapathtable
-        class Diffservclfrtable; //type: DIFFSERVMIB::Diffservclfrtable
-        class Diffservclfrelementtable; //type: DIFFSERVMIB::Diffservclfrelementtable
-        class Diffservmultifieldclfrtable; //type: DIFFSERVMIB::Diffservmultifieldclfrtable
-        class Diffservmetertable; //type: DIFFSERVMIB::Diffservmetertable
-        class Diffservtbparamtable; //type: DIFFSERVMIB::Diffservtbparamtable
-        class Diffservactiontable; //type: DIFFSERVMIB::Diffservactiontable
-        class Diffservdscpmarkacttable; //type: DIFFSERVMIB::Diffservdscpmarkacttable
-        class Diffservcountacttable; //type: DIFFSERVMIB::Diffservcountacttable
-        class Diffservalgdroptable; //type: DIFFSERVMIB::Diffservalgdroptable
-        class Diffservrandomdroptable; //type: DIFFSERVMIB::Diffservrandomdroptable
-        class Diffservqtable; //type: DIFFSERVMIB::Diffservqtable
-        class Diffservschedulertable; //type: DIFFSERVMIB::Diffservschedulertable
-        class Diffservminratetable; //type: DIFFSERVMIB::Diffservminratetable
-        class Diffservmaxratetable; //type: DIFFSERVMIB::Diffservmaxratetable
+        class DiffServClassifier; //type: DIFFSERVMIB::DiffServClassifier
+        class DiffServMeter; //type: DIFFSERVMIB::DiffServMeter
+        class DiffServTBParam; //type: DIFFSERVMIB::DiffServTBParam
+        class DiffServAction; //type: DIFFSERVMIB::DiffServAction
+        class DiffServAlgDrop; //type: DIFFSERVMIB::DiffServAlgDrop
+        class DiffServQueue; //type: DIFFSERVMIB::DiffServQueue
+        class DiffServScheduler; //type: DIFFSERVMIB::DiffServScheduler
+        class DiffServDataPathTable; //type: DIFFSERVMIB::DiffServDataPathTable
+        class DiffServClfrTable; //type: DIFFSERVMIB::DiffServClfrTable
+        class DiffServClfrElementTable; //type: DIFFSERVMIB::DiffServClfrElementTable
+        class DiffServMultiFieldClfrTable; //type: DIFFSERVMIB::DiffServMultiFieldClfrTable
+        class DiffServMeterTable; //type: DIFFSERVMIB::DiffServMeterTable
+        class DiffServTBParamTable; //type: DIFFSERVMIB::DiffServTBParamTable
+        class DiffServActionTable; //type: DIFFSERVMIB::DiffServActionTable
+        class DiffServDscpMarkActTable; //type: DIFFSERVMIB::DiffServDscpMarkActTable
+        class DiffServCountActTable; //type: DIFFSERVMIB::DiffServCountActTable
+        class DiffServAlgDropTable; //type: DIFFSERVMIB::DiffServAlgDropTable
+        class DiffServRandomDropTable; //type: DIFFSERVMIB::DiffServRandomDropTable
+        class DiffServQTable; //type: DIFFSERVMIB::DiffServQTable
+        class DiffServSchedulerTable; //type: DIFFSERVMIB::DiffServSchedulerTable
+        class DiffServMinRateTable; //type: DIFFSERVMIB::DiffServMinRateTable
+        class DiffServMaxRateTable; //type: DIFFSERVMIB::DiffServMaxRateTable
 
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservclassifier> diffservclassifier;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservmeter> diffservmeter;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservtbparam> diffservtbparam;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservaction> diffservaction;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservalgdrop> diffservalgdrop;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservqueue> diffservqueue;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservscheduler> diffservscheduler;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservdatapathtable> diffservdatapathtable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservclfrtable> diffservclfrtable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservclfrelementtable> diffservclfrelementtable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservmultifieldclfrtable> diffservmultifieldclfrtable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservmetertable> diffservmetertable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservtbparamtable> diffservtbparamtable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservactiontable> diffservactiontable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservdscpmarkacttable> diffservdscpmarkacttable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservcountacttable> diffservcountacttable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservalgdroptable> diffservalgdroptable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservrandomdroptable> diffservrandomdroptable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservqtable> diffservqtable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservschedulertable> diffservschedulertable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservminratetable> diffservminratetable;
-        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservmaxratetable> diffservmaxratetable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServClassifier> diffservclassifier;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServMeter> diffservmeter;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServTBParam> diffservtbparam;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServAction> diffservaction;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServAlgDrop> diffservalgdrop;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServQueue> diffservqueue;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServScheduler> diffservscheduler;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServDataPathTable> diffservdatapathtable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServClfrTable> diffservclfrtable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServClfrElementTable> diffservclfrelementtable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServMultiFieldClfrTable> diffservmultifieldclfrtable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServMeterTable> diffservmetertable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServTBParamTable> diffservtbparamtable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServActionTable> diffservactiontable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServDscpMarkActTable> diffservdscpmarkacttable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServCountActTable> diffservcountacttable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServAlgDropTable> diffservalgdroptable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServRandomDropTable> diffservrandomdroptable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServQTable> diffservqtable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServSchedulerTable> diffservschedulertable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServMinRateTable> diffservminratetable;
+        std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServMaxRateTable> diffservmaxratetable;
         
 }; // DIFFSERVMIB
 
 
-class DIFFSERVMIB::Diffservclassifier : public ydk::Entity
+class DIFFSERVMIB::DiffServClassifier : public ydk::Entity
 {
     public:
-        Diffservclassifier();
-        ~Diffservclassifier();
+        DiffServClassifier();
+        ~DiffServClassifier();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -193,14 +193,14 @@ class DIFFSERVMIB::Diffservclassifier : public ydk::Entity
         ydk::YLeaf diffservclfrelementnextfree; //type: uint32
         ydk::YLeaf diffservmultifieldclfrnextfree; //type: uint32
 
-}; // DIFFSERVMIB::Diffservclassifier
+}; // DIFFSERVMIB::DiffServClassifier
 
 
-class DIFFSERVMIB::Diffservmeter : public ydk::Entity
+class DIFFSERVMIB::DiffServMeter : public ydk::Entity
 {
     public:
-        Diffservmeter();
-        ~Diffservmeter();
+        DiffServMeter();
+        ~DiffServMeter();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -215,14 +215,14 @@ class DIFFSERVMIB::Diffservmeter : public ydk::Entity
 
         ydk::YLeaf diffservmeternextfree; //type: uint32
 
-}; // DIFFSERVMIB::Diffservmeter
+}; // DIFFSERVMIB::DiffServMeter
 
 
-class DIFFSERVMIB::Diffservtbparam : public ydk::Entity
+class DIFFSERVMIB::DiffServTBParam : public ydk::Entity
 {
     public:
-        Diffservtbparam();
-        ~Diffservtbparam();
+        DiffServTBParam();
+        ~DiffServTBParam();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -237,14 +237,14 @@ class DIFFSERVMIB::Diffservtbparam : public ydk::Entity
 
         ydk::YLeaf diffservtbparamnextfree; //type: uint32
 
-}; // DIFFSERVMIB::Diffservtbparam
+}; // DIFFSERVMIB::DiffServTBParam
 
 
-class DIFFSERVMIB::Diffservaction : public ydk::Entity
+class DIFFSERVMIB::DiffServAction : public ydk::Entity
 {
     public:
-        Diffservaction();
-        ~Diffservaction();
+        DiffServAction();
+        ~DiffServAction();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -260,14 +260,14 @@ class DIFFSERVMIB::Diffservaction : public ydk::Entity
         ydk::YLeaf diffservactionnextfree; //type: uint32
         ydk::YLeaf diffservcountactnextfree; //type: uint32
 
-}; // DIFFSERVMIB::Diffservaction
+}; // DIFFSERVMIB::DiffServAction
 
 
-class DIFFSERVMIB::Diffservalgdrop : public ydk::Entity
+class DIFFSERVMIB::DiffServAlgDrop : public ydk::Entity
 {
     public:
-        Diffservalgdrop();
-        ~Diffservalgdrop();
+        DiffServAlgDrop();
+        ~DiffServAlgDrop();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -283,14 +283,14 @@ class DIFFSERVMIB::Diffservalgdrop : public ydk::Entity
         ydk::YLeaf diffservalgdropnextfree; //type: uint32
         ydk::YLeaf diffservrandomdropnextfree; //type: uint32
 
-}; // DIFFSERVMIB::Diffservalgdrop
+}; // DIFFSERVMIB::DiffServAlgDrop
 
 
-class DIFFSERVMIB::Diffservqueue : public ydk::Entity
+class DIFFSERVMIB::DiffServQueue : public ydk::Entity
 {
     public:
-        Diffservqueue();
-        ~Diffservqueue();
+        DiffServQueue();
+        ~DiffServQueue();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -305,14 +305,14 @@ class DIFFSERVMIB::Diffservqueue : public ydk::Entity
 
         ydk::YLeaf diffservqnextfree; //type: uint32
 
-}; // DIFFSERVMIB::Diffservqueue
+}; // DIFFSERVMIB::DiffServQueue
 
 
-class DIFFSERVMIB::Diffservscheduler : public ydk::Entity
+class DIFFSERVMIB::DiffServScheduler : public ydk::Entity
 {
     public:
-        Diffservscheduler();
-        ~Diffservscheduler();
+        DiffServScheduler();
+        ~DiffServScheduler();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -329,14 +329,14 @@ class DIFFSERVMIB::Diffservscheduler : public ydk::Entity
         ydk::YLeaf diffservminratenextfree; //type: uint32
         ydk::YLeaf diffservmaxratenextfree; //type: uint32
 
-}; // DIFFSERVMIB::Diffservscheduler
+}; // DIFFSERVMIB::DiffServScheduler
 
 
-class DIFFSERVMIB::Diffservdatapathtable : public ydk::Entity
+class DIFFSERVMIB::DiffServDataPathTable : public ydk::Entity
 {
     public:
-        Diffservdatapathtable();
-        ~Diffservdatapathtable();
+        DiffServDataPathTable();
+        ~DiffServDataPathTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -349,18 +349,18 @@ class DIFFSERVMIB::Diffservdatapathtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservdatapathentry; //type: DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry
+        class DiffServDataPathEntry; //type: DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry> > diffservdatapathentry;
+        ydk::YList diffservdatapathentry;
         
-}; // DIFFSERVMIB::Diffservdatapathtable
+}; // DIFFSERVMIB::DiffServDataPathTable
 
 
-class DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry : public ydk::Entity
+class DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry : public ydk::Entity
 {
     public:
-        Diffservdatapathentry();
-        ~Diffservdatapathentry();
+        DiffServDataPathEntry();
+        ~DiffServDataPathEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -373,21 +373,21 @@ class DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf diffservdatapathifdirection; //type: IfDirection
         ydk::YLeaf diffservdatapathstart; //type: string
         ydk::YLeaf diffservdatapathstorage; //type: StorageType
         ydk::YLeaf diffservdatapathstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservdatapathtable::Diffservdatapathentry
+}; // DIFFSERVMIB::DiffServDataPathTable::DiffServDataPathEntry
 
 
-class DIFFSERVMIB::Diffservclfrtable : public ydk::Entity
+class DIFFSERVMIB::DiffServClfrTable : public ydk::Entity
 {
     public:
-        Diffservclfrtable();
-        ~Diffservclfrtable();
+        DiffServClfrTable();
+        ~DiffServClfrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -400,18 +400,18 @@ class DIFFSERVMIB::Diffservclfrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservclfrentry; //type: DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry
+        class DiffServClfrEntry; //type: DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry> > diffservclfrentry;
+        ydk::YList diffservclfrentry;
         
-}; // DIFFSERVMIB::Diffservclfrtable
+}; // DIFFSERVMIB::DiffServClfrTable
 
 
-class DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry : public ydk::Entity
+class DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry : public ydk::Entity
 {
     public:
-        Diffservclfrentry();
-        ~Diffservclfrentry();
+        DiffServClfrEntry();
+        ~DiffServClfrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -428,14 +428,14 @@ class DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry : public ydk::Entity
         ydk::YLeaf diffservclfrstorage; //type: StorageType
         ydk::YLeaf diffservclfrstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry
+}; // DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry
 
 
-class DIFFSERVMIB::Diffservclfrelementtable : public ydk::Entity
+class DIFFSERVMIB::DiffServClfrElementTable : public ydk::Entity
 {
     public:
-        Diffservclfrelementtable();
-        ~Diffservclfrelementtable();
+        DiffServClfrElementTable();
+        ~DiffServClfrElementTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -448,18 +448,18 @@ class DIFFSERVMIB::Diffservclfrelementtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservclfrelemententry; //type: DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry
+        class DiffServClfrElementEntry; //type: DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry> > diffservclfrelemententry;
+        ydk::YList diffservclfrelemententry;
         
-}; // DIFFSERVMIB::Diffservclfrelementtable
+}; // DIFFSERVMIB::DiffServClfrElementTable
 
 
-class DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry : public ydk::Entity
+class DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry : public ydk::Entity
 {
     public:
-        Diffservclfrelemententry();
-        ~Diffservclfrelemententry();
+        DiffServClfrElementEntry();
+        ~DiffServClfrElementEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -472,7 +472,7 @@ class DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservclfrtable::Diffservclfrentry::diffservclfrid)
+        //type: uint32 (refers to cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::DiffServClfrTable::DiffServClfrEntry::diffservclfrid)
         ydk::YLeaf diffservclfrid;
         ydk::YLeaf diffservclfrelementid; //type: uint32
         ydk::YLeaf diffservclfrelementprecedence; //type: uint32
@@ -481,14 +481,14 @@ class DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry : public y
         ydk::YLeaf diffservclfrelementstorage; //type: StorageType
         ydk::YLeaf diffservclfrelementstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservclfrelementtable::Diffservclfrelemententry
+}; // DIFFSERVMIB::DiffServClfrElementTable::DiffServClfrElementEntry
 
 
-class DIFFSERVMIB::Diffservmultifieldclfrtable : public ydk::Entity
+class DIFFSERVMIB::DiffServMultiFieldClfrTable : public ydk::Entity
 {
     public:
-        Diffservmultifieldclfrtable();
-        ~Diffservmultifieldclfrtable();
+        DiffServMultiFieldClfrTable();
+        ~DiffServMultiFieldClfrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -501,18 +501,18 @@ class DIFFSERVMIB::Diffservmultifieldclfrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservmultifieldclfrentry; //type: DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry
+        class DiffServMultiFieldClfrEntry; //type: DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry> > diffservmultifieldclfrentry;
+        ydk::YList diffservmultifieldclfrentry;
         
-}; // DIFFSERVMIB::Diffservmultifieldclfrtable
+}; // DIFFSERVMIB::DiffServMultiFieldClfrTable
 
 
-class DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry : public ydk::Entity
+class DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry : public ydk::Entity
 {
     public:
-        Diffservmultifieldclfrentry();
-        ~Diffservmultifieldclfrentry();
+        DiffServMultiFieldClfrEntry();
+        ~DiffServMultiFieldClfrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -541,14 +541,14 @@ class DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry : pu
         ydk::YLeaf diffservmultifieldclfrstorage; //type: StorageType
         ydk::YLeaf diffservmultifieldclfrstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservmultifieldclfrtable::Diffservmultifieldclfrentry
+}; // DIFFSERVMIB::DiffServMultiFieldClfrTable::DiffServMultiFieldClfrEntry
 
 
-class DIFFSERVMIB::Diffservmetertable : public ydk::Entity
+class DIFFSERVMIB::DiffServMeterTable : public ydk::Entity
 {
     public:
-        Diffservmetertable();
-        ~Diffservmetertable();
+        DiffServMeterTable();
+        ~DiffServMeterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -561,18 +561,18 @@ class DIFFSERVMIB::Diffservmetertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservmeterentry; //type: DIFFSERVMIB::Diffservmetertable::Diffservmeterentry
+        class DiffServMeterEntry; //type: DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservmetertable::Diffservmeterentry> > diffservmeterentry;
+        ydk::YList diffservmeterentry;
         
-}; // DIFFSERVMIB::Diffservmetertable
+}; // DIFFSERVMIB::DiffServMeterTable
 
 
-class DIFFSERVMIB::Diffservmetertable::Diffservmeterentry : public ydk::Entity
+class DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry : public ydk::Entity
 {
     public:
-        Diffservmeterentry();
-        ~Diffservmeterentry();
+        DiffServMeterEntry();
+        ~DiffServMeterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -592,14 +592,14 @@ class DIFFSERVMIB::Diffservmetertable::Diffservmeterentry : public ydk::Entity
         ydk::YLeaf diffservmeterstorage; //type: StorageType
         ydk::YLeaf diffservmeterstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservmetertable::Diffservmeterentry
+}; // DIFFSERVMIB::DiffServMeterTable::DiffServMeterEntry
 
 
-class DIFFSERVMIB::Diffservtbparamtable : public ydk::Entity
+class DIFFSERVMIB::DiffServTBParamTable : public ydk::Entity
 {
     public:
-        Diffservtbparamtable();
-        ~Diffservtbparamtable();
+        DiffServTBParamTable();
+        ~DiffServTBParamTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -612,18 +612,18 @@ class DIFFSERVMIB::Diffservtbparamtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservtbparamentry; //type: DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry
+        class DiffServTBParamEntry; //type: DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry> > diffservtbparamentry;
+        ydk::YList diffservtbparamentry;
         
-}; // DIFFSERVMIB::Diffservtbparamtable
+}; // DIFFSERVMIB::DiffServTBParamTable
 
 
-class DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry : public ydk::Entity
+class DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry : public ydk::Entity
 {
     public:
-        Diffservtbparamentry();
-        ~Diffservtbparamentry();
+        DiffServTBParamEntry();
+        ~DiffServTBParamEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -644,14 +644,14 @@ class DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry : public ydk::Enti
         ydk::YLeaf diffservtbparamstorage; //type: StorageType
         ydk::YLeaf diffservtbparamstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservtbparamtable::Diffservtbparamentry
+}; // DIFFSERVMIB::DiffServTBParamTable::DiffServTBParamEntry
 
 
-class DIFFSERVMIB::Diffservactiontable : public ydk::Entity
+class DIFFSERVMIB::DiffServActionTable : public ydk::Entity
 {
     public:
-        Diffservactiontable();
-        ~Diffservactiontable();
+        DiffServActionTable();
+        ~DiffServActionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -664,18 +664,18 @@ class DIFFSERVMIB::Diffservactiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservactionentry; //type: DIFFSERVMIB::Diffservactiontable::Diffservactionentry
+        class DiffServActionEntry; //type: DIFFSERVMIB::DiffServActionTable::DiffServActionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservactiontable::Diffservactionentry> > diffservactionentry;
+        ydk::YList diffservactionentry;
         
-}; // DIFFSERVMIB::Diffservactiontable
+}; // DIFFSERVMIB::DiffServActionTable
 
 
-class DIFFSERVMIB::Diffservactiontable::Diffservactionentry : public ydk::Entity
+class DIFFSERVMIB::DiffServActionTable::DiffServActionEntry : public ydk::Entity
 {
     public:
-        Diffservactionentry();
-        ~Diffservactionentry();
+        DiffServActionEntry();
+        ~DiffServActionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -695,14 +695,14 @@ class DIFFSERVMIB::Diffservactiontable::Diffservactionentry : public ydk::Entity
         ydk::YLeaf diffservactionstorage; //type: StorageType
         ydk::YLeaf diffservactionstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservactiontable::Diffservactionentry
+}; // DIFFSERVMIB::DiffServActionTable::DiffServActionEntry
 
 
-class DIFFSERVMIB::Diffservdscpmarkacttable : public ydk::Entity
+class DIFFSERVMIB::DiffServDscpMarkActTable : public ydk::Entity
 {
     public:
-        Diffservdscpmarkacttable();
-        ~Diffservdscpmarkacttable();
+        DiffServDscpMarkActTable();
+        ~DiffServDscpMarkActTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -715,18 +715,18 @@ class DIFFSERVMIB::Diffservdscpmarkacttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservdscpmarkactentry; //type: DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry
+        class DiffServDscpMarkActEntry; //type: DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry> > diffservdscpmarkactentry;
+        ydk::YList diffservdscpmarkactentry;
         
-}; // DIFFSERVMIB::Diffservdscpmarkacttable
+}; // DIFFSERVMIB::DiffServDscpMarkActTable
 
 
-class DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry : public ydk::Entity
+class DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry : public ydk::Entity
 {
     public:
-        Diffservdscpmarkactentry();
-        ~Diffservdscpmarkactentry();
+        DiffServDscpMarkActEntry();
+        ~DiffServDscpMarkActEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -741,14 +741,14 @@ class DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry : public y
 
         ydk::YLeaf diffservdscpmarkactdscp; //type: uint8
 
-}; // DIFFSERVMIB::Diffservdscpmarkacttable::Diffservdscpmarkactentry
+}; // DIFFSERVMIB::DiffServDscpMarkActTable::DiffServDscpMarkActEntry
 
 
-class DIFFSERVMIB::Diffservcountacttable : public ydk::Entity
+class DIFFSERVMIB::DiffServCountActTable : public ydk::Entity
 {
     public:
-        Diffservcountacttable();
-        ~Diffservcountacttable();
+        DiffServCountActTable();
+        ~DiffServCountActTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -761,18 +761,18 @@ class DIFFSERVMIB::Diffservcountacttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservcountactentry; //type: DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry
+        class DiffServCountActEntry; //type: DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry> > diffservcountactentry;
+        ydk::YList diffservcountactentry;
         
-}; // DIFFSERVMIB::Diffservcountacttable
+}; // DIFFSERVMIB::DiffServCountActTable
 
 
-class DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry : public ydk::Entity
+class DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry : public ydk::Entity
 {
     public:
-        Diffservcountactentry();
-        ~Diffservcountactentry();
+        DiffServCountActEntry();
+        ~DiffServCountActEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -791,14 +791,14 @@ class DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry : public ydk::En
         ydk::YLeaf diffservcountactstorage; //type: StorageType
         ydk::YLeaf diffservcountactstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservcountacttable::Diffservcountactentry
+}; // DIFFSERVMIB::DiffServCountActTable::DiffServCountActEntry
 
 
-class DIFFSERVMIB::Diffservalgdroptable : public ydk::Entity
+class DIFFSERVMIB::DiffServAlgDropTable : public ydk::Entity
 {
     public:
-        Diffservalgdroptable();
-        ~Diffservalgdroptable();
+        DiffServAlgDropTable();
+        ~DiffServAlgDropTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -811,18 +811,18 @@ class DIFFSERVMIB::Diffservalgdroptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservalgdropentry; //type: DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry
+        class DiffServAlgDropEntry; //type: DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry> > diffservalgdropentry;
+        ydk::YList diffservalgdropentry;
         
-}; // DIFFSERVMIB::Diffservalgdroptable
+}; // DIFFSERVMIB::DiffServAlgDropTable
 
 
-class DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry : public ydk::Entity
+class DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry : public ydk::Entity
 {
     public:
-        Diffservalgdropentry();
-        ~Diffservalgdropentry();
+        DiffServAlgDropEntry();
+        ~DiffServAlgDropEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -836,7 +836,7 @@ class DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry : public ydk::Enti
         std::string get_absolute_path() const override;
 
         ydk::YLeaf diffservalgdropid; //type: uint32
-        ydk::YLeaf diffservalgdroptype; //type: Diffservalgdroptype
+        ydk::YLeaf diffservalgdroptype; //type: DiffServAlgDropType
         ydk::YLeaf diffservalgdropnext; //type: string
         ydk::YLeaf diffservalgdropqmeasure; //type: string
         ydk::YLeaf diffservalgdropqthreshold; //type: uint32
@@ -847,16 +847,16 @@ class DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry : public ydk::Enti
         ydk::YLeaf diffservalgrandomdroppkts; //type: uint64
         ydk::YLeaf diffservalgdropstorage; //type: StorageType
         ydk::YLeaf diffservalgdropstatus; //type: RowStatus
-        class Diffservalgdroptype;
+        class DiffServAlgDropType;
 
-}; // DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry
+}; // DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry
 
 
-class DIFFSERVMIB::Diffservrandomdroptable : public ydk::Entity
+class DIFFSERVMIB::DiffServRandomDropTable : public ydk::Entity
 {
     public:
-        Diffservrandomdroptable();
-        ~Diffservrandomdroptable();
+        DiffServRandomDropTable();
+        ~DiffServRandomDropTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -869,18 +869,18 @@ class DIFFSERVMIB::Diffservrandomdroptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservrandomdropentry; //type: DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry
+        class DiffServRandomDropEntry; //type: DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry> > diffservrandomdropentry;
+        ydk::YList diffservrandomdropentry;
         
-}; // DIFFSERVMIB::Diffservrandomdroptable
+}; // DIFFSERVMIB::DiffServRandomDropTable
 
 
-class DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry : public ydk::Entity
+class DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry : public ydk::Entity
 {
     public:
-        Diffservrandomdropentry();
-        ~Diffservrandomdropentry();
+        DiffServRandomDropEntry();
+        ~DiffServRandomDropEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -904,14 +904,14 @@ class DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry : public ydk
         ydk::YLeaf diffservrandomdropstorage; //type: StorageType
         ydk::YLeaf diffservrandomdropstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservrandomdroptable::Diffservrandomdropentry
+}; // DIFFSERVMIB::DiffServRandomDropTable::DiffServRandomDropEntry
 
 
-class DIFFSERVMIB::Diffservqtable : public ydk::Entity
+class DIFFSERVMIB::DiffServQTable : public ydk::Entity
 {
     public:
-        Diffservqtable();
-        ~Diffservqtable();
+        DiffServQTable();
+        ~DiffServQTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -924,18 +924,18 @@ class DIFFSERVMIB::Diffservqtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservqentry; //type: DIFFSERVMIB::Diffservqtable::Diffservqentry
+        class DiffServQEntry; //type: DIFFSERVMIB::DiffServQTable::DiffServQEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservqtable::Diffservqentry> > diffservqentry;
+        ydk::YList diffservqentry;
         
-}; // DIFFSERVMIB::Diffservqtable
+}; // DIFFSERVMIB::DiffServQTable
 
 
-class DIFFSERVMIB::Diffservqtable::Diffservqentry : public ydk::Entity
+class DIFFSERVMIB::DiffServQTable::DiffServQEntry : public ydk::Entity
 {
     public:
-        Diffservqentry();
-        ~Diffservqentry();
+        DiffServQEntry();
+        ~DiffServQEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -955,14 +955,14 @@ class DIFFSERVMIB::Diffservqtable::Diffservqentry : public ydk::Entity
         ydk::YLeaf diffservqstorage; //type: StorageType
         ydk::YLeaf diffservqstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservqtable::Diffservqentry
+}; // DIFFSERVMIB::DiffServQTable::DiffServQEntry
 
 
-class DIFFSERVMIB::Diffservschedulertable : public ydk::Entity
+class DIFFSERVMIB::DiffServSchedulerTable : public ydk::Entity
 {
     public:
-        Diffservschedulertable();
-        ~Diffservschedulertable();
+        DiffServSchedulerTable();
+        ~DiffServSchedulerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -975,18 +975,18 @@ class DIFFSERVMIB::Diffservschedulertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservschedulerentry; //type: DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry
+        class DiffServSchedulerEntry; //type: DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry> > diffservschedulerentry;
+        ydk::YList diffservschedulerentry;
         
-}; // DIFFSERVMIB::Diffservschedulertable
+}; // DIFFSERVMIB::DiffServSchedulerTable
 
 
-class DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry : public ydk::Entity
+class DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry : public ydk::Entity
 {
     public:
-        Diffservschedulerentry();
-        ~Diffservschedulerentry();
+        DiffServSchedulerEntry();
+        ~DiffServSchedulerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1007,14 +1007,14 @@ class DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry : public ydk::
         ydk::YLeaf diffservschedulerstorage; //type: StorageType
         ydk::YLeaf diffservschedulerstatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservschedulertable::Diffservschedulerentry
+}; // DIFFSERVMIB::DiffServSchedulerTable::DiffServSchedulerEntry
 
 
-class DIFFSERVMIB::Diffservminratetable : public ydk::Entity
+class DIFFSERVMIB::DiffServMinRateTable : public ydk::Entity
 {
     public:
-        Diffservminratetable();
-        ~Diffservminratetable();
+        DiffServMinRateTable();
+        ~DiffServMinRateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1027,18 +1027,18 @@ class DIFFSERVMIB::Diffservminratetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservminrateentry; //type: DIFFSERVMIB::Diffservminratetable::Diffservminrateentry
+        class DiffServMinRateEntry; //type: DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservminratetable::Diffservminrateentry> > diffservminrateentry;
+        ydk::YList diffservminrateentry;
         
-}; // DIFFSERVMIB::Diffservminratetable
+}; // DIFFSERVMIB::DiffServMinRateTable
 
 
-class DIFFSERVMIB::Diffservminratetable::Diffservminrateentry : public ydk::Entity
+class DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry : public ydk::Entity
 {
     public:
-        Diffservminrateentry();
-        ~Diffservminrateentry();
+        DiffServMinRateEntry();
+        ~DiffServMinRateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1058,14 +1058,14 @@ class DIFFSERVMIB::Diffservminratetable::Diffservminrateentry : public ydk::Enti
         ydk::YLeaf diffservminratestorage; //type: StorageType
         ydk::YLeaf diffservminratestatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservminratetable::Diffservminrateentry
+}; // DIFFSERVMIB::DiffServMinRateTable::DiffServMinRateEntry
 
 
-class DIFFSERVMIB::Diffservmaxratetable : public ydk::Entity
+class DIFFSERVMIB::DiffServMaxRateTable : public ydk::Entity
 {
     public:
-        Diffservmaxratetable();
-        ~Diffservmaxratetable();
+        DiffServMaxRateTable();
+        ~DiffServMaxRateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1078,18 +1078,18 @@ class DIFFSERVMIB::Diffservmaxratetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Diffservmaxrateentry; //type: DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry
+        class DiffServMaxRateEntry; //type: DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DIFFSERV_MIB::DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry> > diffservmaxrateentry;
+        ydk::YList diffservmaxrateentry;
         
-}; // DIFFSERVMIB::Diffservmaxratetable
+}; // DIFFSERVMIB::DiffServMaxRateTable
 
 
-class DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry : public ydk::Entity
+class DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry : public ydk::Entity
 {
     public:
-        Diffservmaxrateentry();
-        ~Diffservmaxrateentry();
+        DiffServMaxRateEntry();
+        ~DiffServMaxRateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1110,7 +1110,7 @@ class DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry : public ydk::Enti
         ydk::YLeaf diffservmaxratestorage; //type: StorageType
         ydk::YLeaf diffservmaxratestatus; //type: RowStatus
 
-}; // DIFFSERVMIB::Diffservmaxratetable::Diffservmaxrateentry
+}; // DIFFSERVMIB::DiffServMaxRateTable::DiffServMaxRateEntry
 
 class IfDirection : public ydk::Enum
 {
@@ -1120,7 +1120,7 @@ class IfDirection : public ydk::Enum
 
 };
 
-class DIFFSERVMIB::Diffservalgdroptable::Diffservalgdropentry::Diffservalgdroptype : public ydk::Enum
+class DIFFSERVMIB::DiffServAlgDropTable::DiffServAlgDropEntry::DiffServAlgDropType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

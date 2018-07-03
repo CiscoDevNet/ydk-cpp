@@ -38,7 +38,7 @@ class IpTcp : public ydk::Entity
         ydk::YLeaf maximum_segment_size; //type: uint32
         ydk::YLeaf syn_wait_time; //type: uint32
         ydk::YLeaf timestamp; //type: empty
-        ydk::YLeaf path_mtu_discovery; //type: int32
+        ydk::YLeaf path_mtu_discovery; //type: uint32
         class Directory; //type: IpTcp::Directory
         class Throttle; //type: IpTcp::Throttle
         class NumThread; //type: IpTcp::NumThread
@@ -319,7 +319,7 @@ class Ip::Cinetd::Services::Vrfs : public ydk::Entity
 
         class Vrf; //type: Ip::Cinetd::Services::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::Ip::Cinetd::Services::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Ip::Cinetd::Services::Vrfs
 
@@ -463,7 +463,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp : public ydk::Entity
         ydk::YLeaf access_list_name; //type: string
         ydk::YLeaf maximum_server; //type: uint32
         ydk::YLeaf home_directory; //type: string
-        ydk::YLeaf dscp_value; //type: int32
+        ydk::YLeaf dscp_value; //type: uint32
 
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv6::Tftp::Udp
 
@@ -580,7 +580,7 @@ class Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp : public ydk::Entity
         ydk::YLeaf access_list_name; //type: string
         ydk::YLeaf maximum_server; //type: uint32
         ydk::YLeaf home_directory; //type: string
-        ydk::YLeaf dscp_value; //type: int32
+        ydk::YLeaf dscp_value; //type: uint32
 
 }; // Ip::Cinetd::Services::Vrfs::Vrf::Ipv4::Tftp::Udp
 
@@ -751,7 +751,7 @@ class Ip::ForwardProtocol::Udp::Ports : public ydk::Entity
 
         class Port; //type: Ip::ForwardProtocol::Udp::Ports::Port
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_tcp_cfg::Ip::ForwardProtocol::Udp::Ports::Port> > port;
+        ydk::YList port;
         
 }; // Ip::ForwardProtocol::Udp::Ports
 

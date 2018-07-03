@@ -33,7 +33,7 @@ class Keychains : public ydk::Entity
 
         class Keychain; //type: Keychains::Keychain
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain> > keychain;
+        ydk::YList keychain;
         
 }; // Keychains
 
@@ -61,7 +61,7 @@ class Keychains::Keychain : public ydk::Entity
         class Keies; //type: Keychains::Keychain::Keies
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::AcceptTolerance> accept_tolerance;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain> macsec_keychain; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain> macsec_keychain;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keies> keies;
         
 }; // Keychains::Keychain
@@ -130,7 +130,7 @@ class Keychains::Keychain::MacsecKeychain::MacsecKeies : public ydk::Entity
 
         class MacsecKey; //type: Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::MacsecKeychain::MacsecKeies::MacsecKey> > macsec_key;
+        ydk::YList macsec_key;
         
 }; // Keychains::Keychain::MacsecKeychain::MacsecKeies
 
@@ -236,7 +236,7 @@ class Keychains::Keychain::Keies : public ydk::Entity
 
         class Key; //type: Keychains::Keychain::Keies::Key
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lib_keychain_cfg::Keychains::Keychain::Keies::Key> > key;
+        ydk::YList key;
         
 }; // Keychains::Keychain::Keies
 
@@ -347,19 +347,14 @@ class MacsecEncryption : public ydk::Enum
 class CryptoAlg : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf alg_aes_128_cmac_96;
         static const ydk::Enum::YLeaf alg_hmac_sha1_12;
         static const ydk::Enum::YLeaf alg_md5_16;
         static const ydk::Enum::YLeaf alg_sha1_20;
         static const ydk::Enum::YLeaf alg_hmac_md5_16;
         static const ydk::Enum::YLeaf alg_hmac_sha1_20;
-
-};
-
-class MacsecCryptoAlg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf aes_128_cmac;
-        static const ydk::Enum::YLeaf aes_256_cmac;
+        static const ydk::Enum::YLeaf alg_hmac_sha1_96;
+        static const ydk::Enum::YLeaf alg_hmac_sha_256;
 
 };
 
@@ -378,6 +373,14 @@ class KeyChainMonth : public ydk::Enum
         static const ydk::Enum::YLeaf oct;
         static const ydk::Enum::YLeaf nov;
         static const ydk::Enum::YLeaf dec;
+
+};
+
+class MacsecCryptoAlg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf aes_128_cmac;
+        static const ydk::Enum::YLeaf aes_256_cmac;
 
 };
 

@@ -111,7 +111,7 @@ class Rcmd::Intf::Events : public ydk::Entity
 
         class Event; //type: Rcmd::Intf::Events::Event
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Intf::Events::Event> > event;
+        ydk::YList event;
         
 }; // Rcmd::Intf::Events
 
@@ -191,7 +191,7 @@ class Rcmd::Process::Isis : public ydk::Entity
 
         class Process_; //type: Rcmd::Process::Isis::Process_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_> > process;
+        ydk::YList process;
         
 }; // Rcmd::Process::Isis
 
@@ -217,7 +217,7 @@ class Rcmd::Process::Isis::Process_ : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class InstanceName; //type: Rcmd::Process::Isis::Process_::InstanceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_::InstanceName> > instance_name;
+        ydk::YList instance_name;
         
 }; // Rcmd::Process::Isis::Process_
 
@@ -251,7 +251,7 @@ class Rcmd::Process::Isis::Process_::InstanceName : public ydk::Entity
         ydk::YLeaf arch_lsp_regeneration; //type: uint32
         class Instance; //type: Rcmd::Process::Isis::Process_::InstanceName::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Isis::Process_::InstanceName::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Process::Isis::Process_::InstanceName
 
@@ -309,7 +309,7 @@ class Rcmd::Process::Ospf : public ydk::Entity
 
         class Process_; //type: Rcmd::Process::Ospf::Process_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_> > process;
+        ydk::YList process;
         
 }; // Rcmd::Process::Ospf
 
@@ -335,7 +335,7 @@ class Rcmd::Process::Ospf::Process_ : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class InstanceName; //type: Rcmd::Process::Ospf::Process_::InstanceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_::InstanceName> > instance_name;
+        ydk::YList instance_name;
         
 }; // Rcmd::Process::Ospf::Process_
 
@@ -369,7 +369,7 @@ class Rcmd::Process::Ospf::Process_::InstanceName : public ydk::Entity
         ydk::YLeaf arch_lsp_regeneration; //type: uint32
         class Instance; //type: Rcmd::Process::Ospf::Process_::InstanceName::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ospf::Process_::InstanceName::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Process::Ospf::Process_::InstanceName
 
@@ -427,7 +427,7 @@ class Rcmd::Process::Ldp : public ydk::Entity
 
         class Process_; //type: Rcmd::Process::Ldp::Process_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_> > process;
+        ydk::YList process;
         
 }; // Rcmd::Process::Ldp
 
@@ -453,7 +453,7 @@ class Rcmd::Process::Ldp::Process_ : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         class InstanceName; //type: Rcmd::Process::Ldp::Process_::InstanceName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_::InstanceName> > instance_name;
+        ydk::YList instance_name;
         
 }; // Rcmd::Process::Ldp::Process_
 
@@ -487,7 +487,7 @@ class Rcmd::Process::Ldp::Process_::InstanceName : public ydk::Entity
         ydk::YLeaf arch_lsp_regeneration; //type: uint32
         class Instance; //type: Rcmd::Process::Ldp::Process_::InstanceName::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_rcmd_oper::Rcmd::Process::Ldp::Process_::InstanceName::Instance> > instance;
+        ydk::YList instance;
         
 }; // Rcmd::Process::Ldp::Process_::InstanceName
 

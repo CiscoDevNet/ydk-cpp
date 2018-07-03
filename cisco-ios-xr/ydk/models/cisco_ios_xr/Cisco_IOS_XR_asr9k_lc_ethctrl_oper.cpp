@@ -17,7 +17,7 @@ Mlan::Mlan()
 {
     nodes->parent = this;
 
-    yang_name = "mlan"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-ethctrl-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mlan"; yang_parent_name = "Cisco-IOS-XR-asr9k-lc-ethctrl-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Mlan::~Mlan()
@@ -26,6 +26,7 @@ Mlan::~Mlan()
 
 bool Mlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Mlan::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Mlan::Nodes::Nodes()
+    :
+    node(this, {"node"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "mlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "mlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mlan::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Mlan::Nodes::~Nodes()
 
 bool Mlan::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Mlan::Nodes::has_data() const
 
 bool Mlan::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Mlan::Nodes::get_child_by_name(const std::string & child
     {
         auto c = std::make_shared<Mlan::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,18 +221,18 @@ bool Mlan::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Mlan::Nodes::Node::Node()
     :
     node{YType::str, "node"}
-    	,
+        ,
     port_status_numbers(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers>())
-	,switch_status_table(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable>())
-	,port_counters_numbers(std::make_shared<Mlan::Nodes::Node::PortCountersNumbers>())
-	,atu_entry_numbers(std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers>())
+    , switch_status_table(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable>())
+    , port_counters_numbers(std::make_shared<Mlan::Nodes::Node::PortCountersNumbers>())
+    , atu_entry_numbers(std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers>())
 {
     port_status_numbers->parent = this;
     switch_status_table->parent = this;
     port_counters_numbers->parent = this;
     atu_entry_numbers->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Mlan::Nodes::Node::~Node()
@@ -237,6 +241,7 @@ Mlan::Nodes::Node::~Node()
 
 bool Mlan::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node.is_set
 	|| (port_status_numbers !=  nullptr && port_status_numbers->has_data())
 	|| (switch_status_table !=  nullptr && switch_status_table->has_data())
@@ -264,7 +269,8 @@ std::string Mlan::Nodes::Node::get_absolute_path() const
 std::string Mlan::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node='" <<node <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node, "node");
     return path_buffer.str();
 }
 
@@ -372,9 +378,11 @@ bool Mlan::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumbers()
+    :
+    port_status_number(this, {"number"})
 {
 
-    yang_name = "port-status-numbers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-status-numbers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::~PortStatusNumbers()
@@ -383,7 +391,8 @@ Mlan::Nodes::Node::PortStatusNumbers::~PortStatusNumbers()
 
 bool Mlan::Nodes::Node::PortStatusNumbers::has_data() const
 {
-    for (std::size_t index=0; index<port_status_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_status_number.len(); index++)
     {
         if(port_status_number[index]->has_data())
             return true;
@@ -393,7 +402,7 @@ bool Mlan::Nodes::Node::PortStatusNumbers::has_data() const
 
 bool Mlan::Nodes::Node::PortStatusNumbers::has_operation() const
 {
-    for (std::size_t index=0; index<port_status_number.size(); index++)
+    for (std::size_t index=0; index<port_status_number.len(); index++)
     {
         if(port_status_number[index]->has_operation())
             return true;
@@ -423,7 +432,7 @@ std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::get_child_by_name(
     {
         auto c = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber>();
         c->parent = this;
-        port_status_number.push_back(c);
+        port_status_number.append(c);
         return c;
     }
 
@@ -435,7 +444,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_status_number)
+    for (auto c : port_status_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -463,13 +472,13 @@ bool Mlan::Nodes::Node::PortStatusNumbers::has_leaf_or_child_of_name(const std::
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatusNumber()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     port_status(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus>())
 {
     port_status->parent = this;
 
-    yang_name = "port-status-number"; yang_parent_name = "port-status-numbers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-status-number"; yang_parent_name = "port-status-numbers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::~PortStatusNumber()
@@ -478,6 +487,7 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::~PortStatusNumber()
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (port_status !=  nullptr && port_status->has_data());
 }
@@ -492,7 +502,8 @@ bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::has_operation() con
 std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-status-number" <<"[number='" <<number <<"']";
+    path_buffer << "port-status-number";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -563,18 +574,18 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::PortStatus()
     phy_valid{YType::uint32, "phy-valid"},
     serdes_valid{YType::uint32, "serdes-valid"},
     mac_valid{YType::uint32, "mac-valid"}
-    	,
+        ,
     config(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config>())
-	,phy(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy>())
-	,serdes(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes>())
-	,mac(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac>())
+    , phy(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy>())
+    , serdes(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes>())
+    , mac(std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac>())
 {
     config->parent = this;
     phy->parent = this;
     serdes->parent = this;
     mac->parent = this;
 
-    yang_name = "port-status"; yang_parent_name = "port-status-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-status"; yang_parent_name = "port-status-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::~PortStatus()
@@ -583,6 +594,7 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::~PortStatus(
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return port_num.is_set
 	|| phy_valid.is_set
 	|| serdes_valid.is_set
@@ -758,7 +770,7 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::Conf
     loopback{YType::uint32, "loopback"}
 {
 
-    yang_name = "config"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::~Config()
@@ -767,6 +779,7 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::~Con
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return speed.is_set
 	|| duplex.is_set
 	|| pause.is_set
@@ -884,10 +897,10 @@ bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Config:
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Phy()
     :
-    reg{YType::uint16, "reg"}
+    reg(this, {})
 {
 
-    yang_name = "phy"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "phy"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::~Phy()
@@ -896,9 +909,10 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::~Phy()
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::has_data() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(leaf.is_set)
+        if(reg[index]->has_data())
             return true;
     }
     return false;
@@ -906,13 +920,12 @@ bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::ha
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::has_operation() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(reg[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(reg.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::get_segment_path() const
@@ -927,14 +940,20 @@ std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::PortStatusNumb
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto reg_name_datas = reg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), reg_name_datas.begin(), reg_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "reg")
+    {
+        auto c = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg>();
+        c->parent = this;
+        reg.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -942,23 +961,24 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumb
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : reg.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "reg")
-    {
-        reg.append(value);
-    }
 }
 
 void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "reg")
-    {
-        reg.yfilter = yfilter;
-    }
 }
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::has_leaf_or_child_of_name(const std::string & name) const
@@ -968,12 +988,90 @@ bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::ha
     return false;
 }
 
-Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Serdes()
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::Reg()
     :
-    reg{YType::uint16, "reg"}
+    entry{YType::uint16, "entry"}
 {
 
-    yang_name = "serdes"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reg"; yang_parent_name = "phy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::~Reg()
+{
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reg";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Phy::Reg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Serdes()
+    :
+    reg(this, {})
+{
+
+    yang_name = "serdes"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::~Serdes()
@@ -982,9 +1080,10 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::~Ser
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::has_data() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(leaf.is_set)
+        if(reg[index]->has_data())
             return true;
     }
     return false;
@@ -992,13 +1091,12 @@ bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes:
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::has_operation() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(reg[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(reg.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::get_segment_path() const
@@ -1013,14 +1111,20 @@ std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::PortStatusNumb
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto reg_name_datas = reg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), reg_name_datas.begin(), reg_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "reg")
+    {
+        auto c = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg>();
+        c->parent = this;
+        reg.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1028,23 +1132,24 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumb
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : reg.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "reg")
-    {
-        reg.append(value);
-    }
 }
 
 void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "reg")
-    {
-        reg.yfilter = yfilter;
-    }
 }
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::has_leaf_or_child_of_name(const std::string & name) const
@@ -1054,12 +1159,90 @@ bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes:
     return false;
 }
 
-Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Mac()
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::Reg()
     :
-    reg{YType::uint16, "reg"}
+    entry{YType::uint16, "entry"}
 {
 
-    yang_name = "mac"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reg"; yang_parent_name = "serdes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::~Reg()
+{
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reg";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Serdes::Reg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Mac()
+    :
+    reg(this, {})
+{
+
+    yang_name = "mac"; yang_parent_name = "port-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::~Mac()
@@ -1068,9 +1251,10 @@ Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::~Mac()
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::has_data() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(leaf.is_set)
+        if(reg[index]->has_data())
             return true;
     }
     return false;
@@ -1078,13 +1262,12 @@ bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::ha
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::has_operation() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(reg[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(reg.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::get_segment_path() const
@@ -1099,14 +1282,20 @@ std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::PortStatusNumb
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto reg_name_datas = reg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), reg_name_datas.begin(), reg_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "reg")
+    {
+        auto c = std::make_shared<Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg>();
+        c->parent = this;
+        reg.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1114,28 +1303,107 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumb
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : reg.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "reg")
-    {
-        reg.append(value);
-    }
 }
 
 void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "reg")
-    {
-        reg.yfilter = yfilter;
-    }
 }
 
 bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "reg")
+        return true;
+    return false;
+}
+
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::Reg()
+    :
+    entry{YType::uint16, "entry"}
+{
+
+    yang_name = "reg"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::~Reg()
+{
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reg";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Mlan::Nodes::Node::PortStatusNumbers::PortStatusNumber::PortStatus::Mac::Reg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -1146,7 +1414,7 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatusTable()
 {
     switch_status->parent = this;
 
-    yang_name = "switch-status-table"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-status-table"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::SwitchStatusTable::~SwitchStatusTable()
@@ -1155,6 +1423,7 @@ Mlan::Nodes::Node::SwitchStatusTable::~SwitchStatusTable()
 
 bool Mlan::Nodes::Node::SwitchStatusTable::has_data() const
 {
+    if (is_presence_container) return true;
     return (switch_status !=  nullptr && switch_status->has_data());
 }
 
@@ -1224,16 +1493,16 @@ bool Mlan::Nodes::Node::SwitchStatusTable::has_leaf_or_child_of_name(const std::
 Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwitchStatus()
     :
     rate_limit{YType::int32, "rate-limit"}
-    	,
+        ,
     sw_reg_1(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1>())
-	,sw_reg_2(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2>())
-	,sw_status(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus>())
+    , sw_reg_2(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2>())
+    , sw_status(std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus>())
 {
     sw_reg_1->parent = this;
     sw_reg_2->parent = this;
     sw_status->parent = this;
 
-    yang_name = "switch-status"; yang_parent_name = "switch-status-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-status"; yang_parent_name = "switch-status-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::~SwitchStatus()
@@ -1242,6 +1511,7 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::~SwitchStatus()
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return rate_limit.is_set
 	|| (sw_reg_1 !=  nullptr && sw_reg_1->has_data())
 	|| (sw_reg_2 !=  nullptr && sw_reg_2->has_data())
@@ -1355,10 +1625,10 @@ bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::has_leaf_or_child_of_na
 
 Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::SwReg1()
     :
-    reg{YType::uint16, "reg"}
+    reg(this, {})
 {
 
-    yang_name = "sw-reg-1"; yang_parent_name = "switch-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sw-reg-1"; yang_parent_name = "switch-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::~SwReg1()
@@ -1367,9 +1637,10 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::~SwReg1()
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::has_data() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(leaf.is_set)
+        if(reg[index]->has_data())
             return true;
     }
     return false;
@@ -1377,13 +1648,12 @@ bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::has_data() cons
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::has_operation() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(reg[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(reg.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_segment_path() const
@@ -1398,14 +1668,20 @@ std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::SwitchStatusTa
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto reg_name_datas = reg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), reg_name_datas.begin(), reg_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "reg")
+    {
+        auto c = std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg>();
+        c->parent = this;
+        reg.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1413,23 +1689,24 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTa
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : reg.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "reg")
-    {
-        reg.append(value);
-    }
 }
 
 void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "reg")
-    {
-        reg.yfilter = yfilter;
-    }
 }
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::has_leaf_or_child_of_name(const std::string & name) const
@@ -1439,12 +1716,90 @@ bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::has_leaf_or_chi
     return false;
 }
 
-Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::SwReg2()
+Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::Reg()
     :
-    reg{YType::uint16, "reg"}
+    entry{YType::uint16, "entry"}
 {
 
-    yang_name = "sw-reg-2"; yang_parent_name = "switch-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reg"; yang_parent_name = "sw-reg-1"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::~Reg()
+{
+}
+
+bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reg";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg1::Reg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::SwReg2()
+    :
+    reg(this, {})
+{
+
+    yang_name = "sw-reg-2"; yang_parent_name = "switch-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::~SwReg2()
@@ -1453,9 +1808,10 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::~SwReg2()
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::has_data() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(leaf.is_set)
+        if(reg[index]->has_data())
             return true;
     }
     return false;
@@ -1463,13 +1819,12 @@ bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::has_data() cons
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::has_operation() const
 {
-    for (auto const & leaf : reg.getYLeafs())
+    for (std::size_t index=0; index<reg.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(reg[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(reg.yfilter);
+    return is_set(yfilter);
 }
 
 std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_segment_path() const
@@ -1484,14 +1839,20 @@ std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::SwitchStatusTa
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
 
-    auto reg_name_datas = reg.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), reg_name_datas.begin(), reg_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "reg")
+    {
+        auto c = std::make_shared<Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg>();
+        c->parent = this;
+        reg.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -1499,28 +1860,107 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTa
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : reg.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
 void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "reg")
-    {
-        reg.append(value);
-    }
 }
 
 void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "reg")
-    {
-        reg.yfilter = yfilter;
-    }
 }
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "reg")
+        return true;
+    return false;
+}
+
+Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::Reg()
+    :
+    entry{YType::uint16, "entry"}
+{
+
+    yang_name = "reg"; yang_parent_name = "sw-reg-2"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::~Reg()
+{
+}
+
+bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reg";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwReg2::Reg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -1536,7 +1976,7 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::SwStatus()
     restarted{YType::uint16, "restarted"}
 {
 
-    yang_name = "sw-status"; yang_parent_name = "switch-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sw-status"; yang_parent_name = "switch-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::~SwStatus()
@@ -1545,6 +1985,7 @@ Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::~SwStatus()
 
 bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return ppu.is_set
 	|| mtu.is_set
 	|| mac.is_set
@@ -1687,9 +2128,11 @@ bool Mlan::Nodes::Node::SwitchStatusTable::SwitchStatus::SwStatus::has_leaf_or_c
 }
 
 Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumbers()
+    :
+    port_counters_number(this, {"number"})
 {
 
-    yang_name = "port-counters-numbers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-counters-numbers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortCountersNumbers::~PortCountersNumbers()
@@ -1698,7 +2141,8 @@ Mlan::Nodes::Node::PortCountersNumbers::~PortCountersNumbers()
 
 bool Mlan::Nodes::Node::PortCountersNumbers::has_data() const
 {
-    for (std::size_t index=0; index<port_counters_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_counters_number.len(); index++)
     {
         if(port_counters_number[index]->has_data())
             return true;
@@ -1708,7 +2152,7 @@ bool Mlan::Nodes::Node::PortCountersNumbers::has_data() const
 
 bool Mlan::Nodes::Node::PortCountersNumbers::has_operation() const
 {
-    for (std::size_t index=0; index<port_counters_number.size(); index++)
+    for (std::size_t index=0; index<port_counters_number.len(); index++)
     {
         if(port_counters_number[index]->has_operation())
             return true;
@@ -1738,7 +2182,7 @@ std::shared_ptr<Entity> Mlan::Nodes::Node::PortCountersNumbers::get_child_by_nam
     {
         auto c = std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber>();
         c->parent = this;
-        port_counters_number.push_back(c);
+        port_counters_number.append(c);
         return c;
     }
 
@@ -1750,7 +2194,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::PortCountersNu
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_counters_number)
+    for (auto c : port_counters_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1778,13 +2222,13 @@ bool Mlan::Nodes::Node::PortCountersNumbers::has_leaf_or_child_of_name(const std
 
 Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCountersNumber()
     :
-    number{YType::int32, "number"}
-    	,
+    number{YType::uint32, "number"}
+        ,
     port_counters(std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters>())
 {
     port_counters->parent = this;
 
-    yang_name = "port-counters-number"; yang_parent_name = "port-counters-numbers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-counters-number"; yang_parent_name = "port-counters-numbers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::~PortCountersNumber()
@@ -1793,6 +2237,7 @@ Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::~PortCountersNumber(
 
 bool Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return number.is_set
 	|| (port_counters !=  nullptr && port_counters->has_data());
 }
@@ -1807,7 +2252,8 @@ bool Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::has_operation()
 std::string Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-counters-number" <<"[number='" <<number <<"']";
+    path_buffer << "port-counters-number";
+    ADD_KEY_TOKEN(number, "number");
     return path_buffer.str();
 }
 
@@ -1875,12 +2321,12 @@ bool Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::has_leaf_or_chi
 Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::PortCounters()
     :
     port_num{YType::uint32, "port-num"}
-    	,
+        ,
     mlan_stats(std::make_shared<Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats>())
 {
     mlan_stats->parent = this;
 
-    yang_name = "port-counters"; yang_parent_name = "port-counters-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-counters"; yang_parent_name = "port-counters-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::~PortCounters()
@@ -1889,6 +2335,7 @@ Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::~PortC
 
 bool Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return port_num.is_set
 	|| (mlan_stats !=  nullptr && mlan_stats->has_data());
 }
@@ -2007,7 +2454,7 @@ Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanSt
     out_filtered{YType::uint32, "out-filtered"}
 {
 
-    yang_name = "mlan-stats"; yang_parent_name = "port-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mlan-stats"; yang_parent_name = "port-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats::~MlanStats()
@@ -2016,6 +2463,7 @@ Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanSt
 
 bool Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::MlanStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_good_octets_hi.is_set
 	|| in_good_octets.is_set
 	|| in_bad_octets.is_set
@@ -2522,9 +2970,11 @@ bool Mlan::Nodes::Node::PortCountersNumbers::PortCountersNumber::PortCounters::M
 }
 
 Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumbers()
+    :
+    atu_entry_number(this, {"entry"})
 {
 
-    yang_name = "atu-entry-numbers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atu-entry-numbers"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::AtuEntryNumbers::~AtuEntryNumbers()
@@ -2533,7 +2983,8 @@ Mlan::Nodes::Node::AtuEntryNumbers::~AtuEntryNumbers()
 
 bool Mlan::Nodes::Node::AtuEntryNumbers::has_data() const
 {
-    for (std::size_t index=0; index<atu_entry_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<atu_entry_number.len(); index++)
     {
         if(atu_entry_number[index]->has_data())
             return true;
@@ -2543,7 +2994,7 @@ bool Mlan::Nodes::Node::AtuEntryNumbers::has_data() const
 
 bool Mlan::Nodes::Node::AtuEntryNumbers::has_operation() const
 {
-    for (std::size_t index=0; index<atu_entry_number.size(); index++)
+    for (std::size_t index=0; index<atu_entry_number.len(); index++)
     {
         if(atu_entry_number[index]->has_operation())
             return true;
@@ -2573,7 +3024,7 @@ std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::get_child_by_name(co
     {
         auto c = std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber>();
         c->parent = this;
-        atu_entry_number.push_back(c);
+        atu_entry_number.append(c);
         return c;
     }
 
@@ -2585,7 +3036,7 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::AtuEntryNumber
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : atu_entry_number)
+    for (auto c : atu_entry_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2613,13 +3064,13 @@ bool Mlan::Nodes::Node::AtuEntryNumbers::has_leaf_or_child_of_name(const std::st
 
 Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::AtuEntryNumber()
     :
-    entry{YType::int32, "entry"}
-    	,
+    entry{YType::uint32, "entry"}
+        ,
     switch_counters(std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters>())
 {
     switch_counters->parent = this;
 
-    yang_name = "atu-entry-number"; yang_parent_name = "atu-entry-numbers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atu-entry-number"; yang_parent_name = "atu-entry-numbers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::~AtuEntryNumber()
@@ -2628,6 +3079,7 @@ Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::~AtuEntryNumber()
 
 bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return entry.is_set
 	|| (switch_counters !=  nullptr && switch_counters->has_data());
 }
@@ -2642,7 +3094,8 @@ bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::has_operation() const
 std::string Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "atu-entry-number" <<"[entry='" <<entry <<"']";
+    path_buffer << "atu-entry-number";
+    ADD_KEY_TOKEN(entry, "entry");
     return path_buffer.str();
 }
 
@@ -2710,12 +3163,12 @@ bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::has_leaf_or_child_of_na
 Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::SwitchCounters()
     :
     entry_num{YType::uint32, "entry-num"}
-    	,
+        ,
     atu(std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu>())
 {
     atu->parent = this;
 
-    yang_name = "switch-counters"; yang_parent_name = "atu-entry-number"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-counters"; yang_parent_name = "atu-entry-number"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::~SwitchCounters()
@@ -2724,6 +3177,7 @@ Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::~SwitchCount
 
 bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_num.is_set
 	|| (atu !=  nullptr && atu->has_data());
 }
@@ -2809,11 +3263,12 @@ Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Atu()
     priority{YType::uint8, "priority"},
     trunk{YType::boolean, "trunk"},
     dpv{YType::uint8, "dpv"},
-    es{YType::uint8, "es"},
-    macaddr{YType::uint16, "macaddr"}
+    es{YType::uint8, "es"}
+        ,
+    macaddr(this, {})
 {
 
-    yang_name = "atu"; yang_parent_name = "switch-counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "atu"; yang_parent_name = "switch-counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::~Atu()
@@ -2822,9 +3277,10 @@ Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::~Atu()
 
 bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::has_data() const
 {
-    for (auto const & leaf : macaddr.getYLeafs())
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<macaddr.len(); index++)
     {
-        if(leaf.is_set)
+        if(macaddr[index]->has_data())
             return true;
     }
     return db_num.is_set
@@ -2836,9 +3292,9 @@ bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::ha
 
 bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::has_operation() const
 {
-    for (auto const & leaf : macaddr.getYLeafs())
+    for (std::size_t index=0; index<macaddr.len(); index++)
     {
-        if(is_set(leaf.yfilter))
+        if(macaddr[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
@@ -2846,8 +3302,7 @@ bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::ha
 	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(trunk.yfilter)
 	|| ydk::is_set(dpv.yfilter)
-	|| ydk::is_set(es.yfilter)
-	|| ydk::is_set(macaddr.yfilter);
+	|| ydk::is_set(es.yfilter);
 }
 
 std::string Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::get_segment_path() const
@@ -2867,14 +3322,20 @@ std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::AtuEntryNumber
     if (dpv.is_set || is_set(dpv.yfilter)) leaf_name_data.push_back(dpv.get_name_leafdata());
     if (es.is_set || is_set(es.yfilter)) leaf_name_data.push_back(es.get_name_leafdata());
 
-    auto macaddr_name_datas = macaddr.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), macaddr_name_datas.begin(), macaddr_name_datas.end());
     return leaf_name_data;
 
 }
 
 std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "macaddr")
+    {
+        auto c = std::make_shared<Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr>();
+        c->parent = this;
+        macaddr.append(c);
+        return c;
+    }
+
     return nullptr;
 }
 
@@ -2882,6 +3343,15 @@ std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::AtuEntryNumber
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
+    count = 0;
+    for (auto c : macaddr.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
     return children;
 }
 
@@ -2917,10 +3387,6 @@ void Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::se
         es.value_namespace = name_space;
         es.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "macaddr")
-    {
-        macaddr.append(value);
-    }
 }
 
 void Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2945,15 +3411,89 @@ void Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::se
     {
         es.yfilter = yfilter;
     }
-    if(value_path == "macaddr")
-    {
-        macaddr.yfilter = yfilter;
-    }
 }
 
 bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "db-num" || name == "priority" || name == "trunk" || name == "dpv" || name == "es" || name == "macaddr")
+    if(name == "macaddr" || name == "db-num" || name == "priority" || name == "trunk" || name == "dpv" || name == "es")
+        return true;
+    return false;
+}
+
+Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::Macaddr()
+    :
+    entry{YType::uint16, "entry"}
+{
+
+    yang_name = "macaddr"; yang_parent_name = "atu"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::~Macaddr()
+{
+}
+
+bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "macaddr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    return children;
+}
+
+void Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Mlan::Nodes::Node::AtuEntryNumbers::AtuEntryNumber::SwitchCounters::Atu::Macaddr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }

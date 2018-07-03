@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_lisp_oper {
 
 LispState::LispState()
+    :
+    lisp_routers(this, {"top_id"})
 {
 
-    yang_name = "lisp-state"; yang_parent_name = "Cisco-IOS-XE-lisp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lisp-state"; yang_parent_name = "Cisco-IOS-XE-lisp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 LispState::~LispState()
@@ -23,7 +25,8 @@ LispState::~LispState()
 
 bool LispState::has_data() const
 {
-    for (std::size_t index=0; index<lisp_routers.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lisp_routers.len(); index++)
     {
         if(lisp_routers[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool LispState::has_data() const
 
 bool LispState::has_operation() const
 {
-    for (std::size_t index=0; index<lisp_routers.size(); index++)
+    for (std::size_t index=0; index<lisp_routers.len(); index++)
     {
         if(lisp_routers[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> LispState::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<LispState::LispRouters>();
         c->parent = this;
-        lisp_routers.push_back(c);
+        lisp_routers.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lisp_routers)
+    for (auto c : lisp_routers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -131,9 +134,13 @@ LispState::LispRouters::LispRouters()
     top_id{YType::uint32, "top-id"},
     site_id{YType::uint64, "site-id"},
     xtr_id{YType::uint8, "xtr-id"}
+        ,
+    instances(this, {"iid"})
+    , sessions(this, {"local_address", "peer_address", "local_port", "peer_port"})
+    , local_rlocs(this, {"afi", "address"})
 {
 
-    yang_name = "lisp-routers"; yang_parent_name = "lisp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lisp-routers"; yang_parent_name = "lisp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 LispState::LispRouters::~LispRouters()
@@ -142,17 +149,18 @@ LispState::LispRouters::~LispRouters()
 
 bool LispState::LispRouters::has_data() const
 {
-    for (std::size_t index=0; index<instances.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instances.len(); index++)
     {
         if(instances[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<sessions.size(); index++)
+    for (std::size_t index=0; index<sessions.len(); index++)
     {
         if(sessions[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<local_rlocs.size(); index++)
+    for (std::size_t index=0; index<local_rlocs.len(); index++)
     {
         if(local_rlocs[index]->has_data())
             return true;
@@ -168,17 +176,17 @@ bool LispState::LispRouters::has_data() const
 
 bool LispState::LispRouters::has_operation() const
 {
-    for (std::size_t index=0; index<instances.size(); index++)
+    for (std::size_t index=0; index<instances.len(); index++)
     {
         if(instances[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<sessions.size(); index++)
+    for (std::size_t index=0; index<sessions.len(); index++)
     {
         if(sessions[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<local_rlocs.size(); index++)
+    for (std::size_t index=0; index<local_rlocs.len(); index++)
     {
         if(local_rlocs[index]->has_operation())
             return true;
@@ -204,7 +212,8 @@ std::string LispState::LispRouters::get_absolute_path() const
 std::string LispState::LispRouters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lisp-routers" <<"[top-id='" <<top_id <<"']";
+    path_buffer << "lisp-routers";
+    ADD_KEY_TOKEN(top_id, "top-id");
     return path_buffer.str();
 }
 
@@ -227,7 +236,7 @@ std::shared_ptr<Entity> LispState::LispRouters::get_child_by_name(const std::str
     {
         auto c = std::make_shared<LispState::LispRouters::Instances>();
         c->parent = this;
-        instances.push_back(c);
+        instances.append(c);
         return c;
     }
 
@@ -235,7 +244,7 @@ std::shared_ptr<Entity> LispState::LispRouters::get_child_by_name(const std::str
     {
         auto c = std::make_shared<LispState::LispRouters::Sessions>();
         c->parent = this;
-        sessions.push_back(c);
+        sessions.append(c);
         return c;
     }
 
@@ -243,7 +252,7 @@ std::shared_ptr<Entity> LispState::LispRouters::get_child_by_name(const std::str
     {
         auto c = std::make_shared<LispState::LispRouters::LocalRlocs>();
         c->parent = this;
-        local_rlocs.push_back(c);
+        local_rlocs.append(c);
         return c;
     }
 
@@ -255,7 +264,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instances)
+    for (auto c : instances.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -264,7 +273,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::get_child
     }
 
     count = 0;
-    for (auto const & c : sessions)
+    for (auto c : sessions.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -273,7 +282,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::get_child
     }
 
     count = 0;
-    for (auto const & c : local_rlocs)
+    for (auto c : local_rlocs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -332,9 +341,13 @@ LispState::LispRouters::Instances::Instances()
     iid{YType::uint32, "iid"},
     vrf_name{YType::str, "vrf-name"},
     is_rloc_probing{YType::boolean, "is-rloc-probing"}
+        ,
+    af(this, {"iaftype"})
+    , ms_eid_membership(this, {"rloc"})
+    , etr_eid_membership(this, {"rloc"})
 {
 
-    yang_name = "instances"; yang_parent_name = "lisp-routers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "instances"; yang_parent_name = "lisp-routers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::~Instances()
@@ -343,17 +356,18 @@ LispState::LispRouters::Instances::~Instances()
 
 bool LispState::LispRouters::Instances::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ms_eid_membership.size(); index++)
+    for (std::size_t index=0; index<ms_eid_membership.len(); index++)
     {
         if(ms_eid_membership[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<etr_eid_membership.size(); index++)
+    for (std::size_t index=0; index<etr_eid_membership.len(); index++)
     {
         if(etr_eid_membership[index]->has_data())
             return true;
@@ -365,17 +379,17 @@ bool LispState::LispRouters::Instances::has_data() const
 
 bool LispState::LispRouters::Instances::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ms_eid_membership.size(); index++)
+    for (std::size_t index=0; index<ms_eid_membership.len(); index++)
     {
         if(ms_eid_membership[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<etr_eid_membership.size(); index++)
+    for (std::size_t index=0; index<etr_eid_membership.len(); index++)
     {
         if(etr_eid_membership[index]->has_operation())
             return true;
@@ -389,7 +403,8 @@ bool LispState::LispRouters::Instances::has_operation() const
 std::string LispState::LispRouters::Instances::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instances" <<"[iid='" <<iid <<"']";
+    path_buffer << "instances";
+    ADD_KEY_TOKEN(iid, "iid");
     return path_buffer.str();
 }
 
@@ -411,7 +426,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::get_child_by_name(con
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -419,7 +434,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::get_child_by_name(con
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::MsEidMembership>();
         c->parent = this;
-        ms_eid_membership.push_back(c);
+        ms_eid_membership.append(c);
         return c;
     }
 
@@ -427,7 +442,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::get_child_by_name(con
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::EtrEidMembership>();
         c->parent = this;
-        etr_eid_membership.push_back(c);
+        etr_eid_membership.append(c);
         return c;
     }
 
@@ -439,7 +454,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -448,7 +463,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : ms_eid_membership)
+    for (auto c : ms_eid_membership.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -457,7 +472,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : etr_eid_membership)
+    for (auto c : etr_eid_membership.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -594,12 +609,18 @@ LispState::LispRouters::Instances::Af::Af()
     forwarding_reachability_reports_dropped{YType::uint64, "forwarding-reachability-reports-dropped"},
     is_etr_accept_mapping{YType::boolean, "is-etr-accept-mapping"},
     is_etr_accept_mapping_verify{YType::boolean, "is-etr-accept-mapping-verify"}
-    	,
+        ,
     role(std::make_shared<LispState::LispRouters::Instances::Af::Role>())
+    , map_cache(this, {"afi", "prefix"})
+    , local_dbase(this, {"afi", "prefix"})
+    , ms_registrations(this, {"afi", "prefix"})
+    , map_servers(this, {"afi", "address"})
+    , map_resolvers(this, {"afi", "address"})
+    , proxy_etrs(this, {"afi", "address"})
 {
     role->parent = this;
 
-    yang_name = "af"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::~Af()
@@ -608,32 +629,33 @@ LispState::LispRouters::Instances::Af::~Af()
 
 bool LispState::LispRouters::Instances::Af::has_data() const
 {
-    for (std::size_t index=0; index<map_cache.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<map_cache.len(); index++)
     {
         if(map_cache[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<local_dbase.size(); index++)
+    for (std::size_t index=0; index<local_dbase.len(); index++)
     {
         if(local_dbase[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ms_registrations.size(); index++)
+    for (std::size_t index=0; index<ms_registrations.len(); index++)
     {
         if(ms_registrations[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<map_servers.size(); index++)
+    for (std::size_t index=0; index<map_servers.len(); index++)
     {
         if(map_servers[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<map_resolvers.size(); index++)
+    for (std::size_t index=0; index<map_resolvers.len(); index++)
     {
         if(map_resolvers[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<proxy_etrs.size(); index++)
+    for (std::size_t index=0; index<proxy_etrs.len(); index++)
     {
         if(proxy_etrs[index]->has_data())
             return true;
@@ -722,32 +744,32 @@ bool LispState::LispRouters::Instances::Af::has_data() const
 
 bool LispState::LispRouters::Instances::Af::has_operation() const
 {
-    for (std::size_t index=0; index<map_cache.size(); index++)
+    for (std::size_t index=0; index<map_cache.len(); index++)
     {
         if(map_cache[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<local_dbase.size(); index++)
+    for (std::size_t index=0; index<local_dbase.len(); index++)
     {
         if(local_dbase[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ms_registrations.size(); index++)
+    for (std::size_t index=0; index<ms_registrations.len(); index++)
     {
         if(ms_registrations[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<map_servers.size(); index++)
+    for (std::size_t index=0; index<map_servers.len(); index++)
     {
         if(map_servers[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<map_resolvers.size(); index++)
+    for (std::size_t index=0; index<map_resolvers.len(); index++)
     {
         if(map_resolvers[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<proxy_etrs.size(); index++)
+    for (std::size_t index=0; index<proxy_etrs.len(); index++)
     {
         if(proxy_etrs[index]->has_operation())
             return true;
@@ -838,7 +860,8 @@ bool LispState::LispRouters::Instances::Af::has_operation() const
 std::string LispState::LispRouters::Instances::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[iaftype='" <<iaftype <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(iaftype, "iaftype");
     return path_buffer.str();
 }
 
@@ -945,7 +968,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapCache>();
         c->parent = this;
-        map_cache.push_back(c);
+        map_cache.append(c);
         return c;
     }
 
@@ -953,7 +976,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::LocalDbase>();
         c->parent = this;
-        local_dbase.push_back(c);
+        local_dbase.append(c);
         return c;
     }
 
@@ -961,7 +984,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations>();
         c->parent = this;
-        ms_registrations.push_back(c);
+        ms_registrations.append(c);
         return c;
     }
 
@@ -969,7 +992,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapServers>();
         c->parent = this;
-        map_servers.push_back(c);
+        map_servers.append(c);
         return c;
     }
 
@@ -977,7 +1000,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapResolvers>();
         c->parent = this;
-        map_resolvers.push_back(c);
+        map_resolvers.append(c);
         return c;
     }
 
@@ -985,7 +1008,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::get_child_by_name
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::ProxyEtrs>();
         c->parent = this;
-        proxy_etrs.push_back(c);
+        proxy_etrs.append(c);
         return c;
     }
 
@@ -1002,7 +1025,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : map_cache)
+    for (auto c : map_cache.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1011,7 +1034,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : local_dbase)
+    for (auto c : local_dbase.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1020,7 +1043,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : ms_registrations)
+    for (auto c : ms_registrations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1029,7 +1052,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : map_servers)
+    for (auto c : map_servers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1038,7 +1061,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : map_resolvers)
+    for (auto c : map_resolvers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1047,7 +1070,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : proxy_etrs)
+    for (auto c : proxy_etrs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1873,7 +1896,7 @@ LispState::LispRouters::Instances::Af::Role::Role()
     is_petr{YType::boolean, "is-petr"}
 {
 
-    yang_name = "role"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "role"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::Role::~Role()
@@ -1882,6 +1905,7 @@ LispState::LispRouters::Instances::Af::Role::~Role()
 
 bool LispState::LispRouters::Instances::Af::Role::has_data() const
 {
+    if (is_presence_container) return true;
     return is_ms.is_set
 	|| is_mr.is_set
 	|| is_itr.is_set
@@ -2026,9 +2050,11 @@ LispState::LispRouters::Instances::Af::MapCache::MapCache()
     encapsulated_packets{YType::uint64, "encapsulated-packets"},
     encapsulated_octets{YType::uint64, "encapsulated-octets"},
     is_active{YType::boolean, "is-active"}
+        ,
+    map_cache_rloc(this, {"afi", "address"})
 {
 
-    yang_name = "map-cache"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map-cache"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MapCache::~MapCache()
@@ -2037,7 +2063,8 @@ LispState::LispRouters::Instances::Af::MapCache::~MapCache()
 
 bool LispState::LispRouters::Instances::Af::MapCache::has_data() const
 {
-    for (std::size_t index=0; index<map_cache_rloc.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<map_cache_rloc.len(); index++)
     {
         if(map_cache_rloc[index]->has_data())
             return true;
@@ -2060,7 +2087,7 @@ bool LispState::LispRouters::Instances::Af::MapCache::has_data() const
 
 bool LispState::LispRouters::Instances::Af::MapCache::has_operation() const
 {
-    for (std::size_t index=0; index<map_cache_rloc.size(); index++)
+    for (std::size_t index=0; index<map_cache_rloc.len(); index++)
     {
         if(map_cache_rloc[index]->has_operation())
             return true;
@@ -2085,7 +2112,9 @@ bool LispState::LispRouters::Instances::Af::MapCache::has_operation() const
 std::string LispState::LispRouters::Instances::Af::MapCache::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map-cache" <<"[afi='" <<afi <<"']" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "map-cache";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -2118,7 +2147,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MapCache::get_chi
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc>();
         c->parent = this;
-        map_cache_rloc.push_back(c);
+        map_cache_rloc.append(c);
         return c;
     }
 
@@ -2130,7 +2159,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : map_cache_rloc)
+    for (auto c : map_cache_rloc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2304,12 +2333,12 @@ LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::MapCacheRloc()
     creation_time{YType::str, "creation-time"},
     last_state_change_time{YType::str, "last-state-change-time"},
     rloc_probe_rtt{YType::uint32, "rloc-probe-rtt"}
-    	,
+        ,
     params(std::make_shared<LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params>())
 {
     params->parent = this;
 
-    yang_name = "map-cache-rloc"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map-cache-rloc"; yang_parent_name = "map-cache"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::~MapCacheRloc()
@@ -2318,6 +2347,7 @@ LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::~MapCacheRloc()
 
 bool LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set
 	|| state.is_set
@@ -2342,7 +2372,9 @@ bool LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::has_operatio
 std::string LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map-cache-rloc" <<"[afi='" <<afi <<"']" <<"[address='" <<address <<"']";
+    path_buffer << "map-cache-rloc";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2470,7 +2502,7 @@ LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::Params()
     mcast_weight{YType::uint8, "mcast-weight"}
 {
 
-    yang_name = "params"; yang_parent_name = "map-cache-rloc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "params"; yang_parent_name = "map-cache-rloc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::~Params()
@@ -2479,6 +2511,7 @@ LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::~Params()
 
 bool LispState::LispRouters::Instances::Af::MapCache::MapCacheRloc::Params::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| weight.is_set
 	|| mcast_priority.is_set
@@ -2587,9 +2620,11 @@ LispState::LispRouters::Instances::Af::LocalDbase::LocalDbase()
     prefix{YType::str, "prefix"},
     lsb{YType::uint32, "lsb"},
     is_reachable{YType::boolean, "is-reachable"}
+        ,
+    local_dbase_rloc(this, {"afi", "address"})
 {
 
-    yang_name = "local-dbase"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-dbase"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::LocalDbase::~LocalDbase()
@@ -2598,7 +2633,8 @@ LispState::LispRouters::Instances::Af::LocalDbase::~LocalDbase()
 
 bool LispState::LispRouters::Instances::Af::LocalDbase::has_data() const
 {
-    for (std::size_t index=0; index<local_dbase_rloc.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_dbase_rloc.len(); index++)
     {
         if(local_dbase_rloc[index]->has_data())
             return true;
@@ -2611,7 +2647,7 @@ bool LispState::LispRouters::Instances::Af::LocalDbase::has_data() const
 
 bool LispState::LispRouters::Instances::Af::LocalDbase::has_operation() const
 {
-    for (std::size_t index=0; index<local_dbase_rloc.size(); index++)
+    for (std::size_t index=0; index<local_dbase_rloc.len(); index++)
     {
         if(local_dbase_rloc[index]->has_operation())
             return true;
@@ -2626,7 +2662,9 @@ bool LispState::LispRouters::Instances::Af::LocalDbase::has_operation() const
 std::string LispState::LispRouters::Instances::Af::LocalDbase::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-dbase" <<"[afi='" <<afi <<"']" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "local-dbase";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -2649,7 +2687,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::LocalDbase::get_c
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc>();
         c->parent = this;
-        local_dbase_rloc.push_back(c);
+        local_dbase_rloc.append(c);
         return c;
     }
 
@@ -2661,7 +2699,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_dbase_rloc)
+    for (auto c : local_dbase_rloc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2733,12 +2771,12 @@ LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::LocalDbaseRlo
     address{YType::str, "address"},
     state{YType::enumeration, "state"},
     is_local{YType::boolean, "is-local"}
-    	,
+        ,
     params(std::make_shared<LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params>())
 {
     params->parent = this;
 
-    yang_name = "local-dbase-rloc"; yang_parent_name = "local-dbase"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-dbase-rloc"; yang_parent_name = "local-dbase"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::~LocalDbaseRloc()
@@ -2747,6 +2785,7 @@ LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::~LocalDbaseRl
 
 bool LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set
 	|| state.is_set
@@ -2767,7 +2806,9 @@ bool LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::has_oper
 std::string LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-dbase-rloc" <<"[afi='" <<afi <<"']" <<"[address='" <<address <<"']";
+    path_buffer << "local-dbase-rloc";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -2873,7 +2914,7 @@ LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::Param
     mcast_weight{YType::uint8, "mcast-weight"}
 {
 
-    yang_name = "params"; yang_parent_name = "local-dbase-rloc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "params"; yang_parent_name = "local-dbase-rloc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::~Params()
@@ -2882,6 +2923,7 @@ LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::~Para
 
 bool LispState::LispRouters::Instances::Af::LocalDbase::LocalDbaseRloc::Params::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| weight.is_set
 	|| mcast_priority.is_set
@@ -2996,12 +3038,13 @@ LispState::LispRouters::Instances::Af::MsRegistrations::MsRegistrations()
     is_registered{YType::boolean, "is-registered"},
     authentication_error{YType::uint64, "authentication-error"},
     rloc_mismatch_error{YType::uint64, "rloc-mismatch-error"}
-    	,
+        ,
     last_registration_source(std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource>())
+    , etr_registrations(this, {"source_address", "source_port"})
 {
     last_registration_source->parent = this;
 
-    yang_name = "ms-registrations"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ms-registrations"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MsRegistrations::~MsRegistrations()
@@ -3010,7 +3053,8 @@ LispState::LispRouters::Instances::Af::MsRegistrations::~MsRegistrations()
 
 bool LispState::LispRouters::Instances::Af::MsRegistrations::has_data() const
 {
-    for (std::size_t index=0; index<etr_registrations.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<etr_registrations.len(); index++)
     {
         if(etr_registrations[index]->has_data())
             return true;
@@ -3030,7 +3074,7 @@ bool LispState::LispRouters::Instances::Af::MsRegistrations::has_data() const
 
 bool LispState::LispRouters::Instances::Af::MsRegistrations::has_operation() const
 {
-    for (std::size_t index=0; index<etr_registrations.size(); index++)
+    for (std::size_t index=0; index<etr_registrations.len(); index++)
     {
         if(etr_registrations[index]->has_operation())
             return true;
@@ -3052,7 +3096,9 @@ bool LispState::LispRouters::Instances::Af::MsRegistrations::has_operation() con
 std::string LispState::LispRouters::Instances::Af::MsRegistrations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ms-registrations" <<"[afi='" <<afi <<"']" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "ms-registrations";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -3090,7 +3136,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations>();
         c->parent = this;
-        etr_registrations.push_back(c);
+        etr_registrations.append(c);
         return c;
     }
 
@@ -3107,7 +3153,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     }
 
     count = 0;
-    for (auto const & c : etr_registrations)
+    for (auto c : etr_registrations.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3239,7 +3285,7 @@ LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::
     address{YType::str, "address"}
 {
 
-    yang_name = "last-registration-source"; yang_parent_name = "ms-registrations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "last-registration-source"; yang_parent_name = "ms-registrations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::~LastRegistrationSource()
@@ -3248,6 +3294,7 @@ LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::
 
 bool LispState::LispRouters::Instances::Af::MsRegistrations::LastRegistrationSource::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set;
 }
@@ -3332,9 +3379,11 @@ LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::EtrReg
     ttl{YType::uint32, "ttl"},
     proxy_reply{YType::boolean, "proxy-reply"},
     wants_map_notify{YType::boolean, "wants-map-notify"}
+        ,
+    ms_registration_rloc(this, {"afi", "address"})
 {
 
-    yang_name = "etr-registrations"; yang_parent_name = "ms-registrations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "etr-registrations"; yang_parent_name = "ms-registrations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::~EtrRegistrations()
@@ -3343,7 +3392,8 @@ LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::~EtrRe
 
 bool LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::has_data() const
 {
-    for (std::size_t index=0; index<ms_registration_rloc.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ms_registration_rloc.len(); index++)
     {
         if(ms_registration_rloc[index]->has_data())
             return true;
@@ -3358,7 +3408,7 @@ bool LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::h
 
 bool LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::has_operation() const
 {
-    for (std::size_t index=0; index<ms_registration_rloc.size(); index++)
+    for (std::size_t index=0; index<ms_registration_rloc.len(); index++)
     {
         if(ms_registration_rloc[index]->has_operation())
             return true;
@@ -3375,7 +3425,9 @@ bool LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::h
 std::string LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "etr-registrations" <<"[source-address='" <<source_address <<"']" <<"[source-port='" <<source_port <<"']";
+    path_buffer << "etr-registrations";
+    ADD_KEY_TOKEN(source_address, "source-address");
+    ADD_KEY_TOKEN(source_port, "source-port");
     return path_buffer.str();
 }
 
@@ -3400,7 +3452,7 @@ std::shared_ptr<Entity> LispState::LispRouters::Instances::Af::MsRegistrations::
     {
         auto c = std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc>();
         c->parent = this;
-        ms_registration_rloc.push_back(c);
+        ms_registration_rloc.append(c);
         return c;
     }
 
@@ -3412,7 +3464,7 @@ std::map<std::string, std::shared_ptr<Entity>> LispState::LispRouters::Instances
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ms_registration_rloc)
+    for (auto c : ms_registration_rloc.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3504,12 +3556,12 @@ LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegi
     address{YType::str, "address"},
     state{YType::enumeration, "state"},
     is_local{YType::boolean, "is-local"}
-    	,
+        ,
     params(std::make_shared<LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params>())
 {
     params->parent = this;
 
-    yang_name = "ms-registration-rloc"; yang_parent_name = "etr-registrations"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ms-registration-rloc"; yang_parent_name = "etr-registrations"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::~MsRegistrationRloc()
@@ -3518,6 +3570,7 @@ LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegi
 
 bool LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set
 	|| state.is_set
@@ -3538,7 +3591,9 @@ bool LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::M
 std::string LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ms-registration-rloc" <<"[afi='" <<afi <<"']" <<"[address='" <<address <<"']";
+    path_buffer << "ms-registration-rloc";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3644,7 +3699,7 @@ LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegi
     mcast_weight{YType::uint8, "mcast-weight"}
 {
 
-    yang_name = "params"; yang_parent_name = "ms-registration-rloc"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "params"; yang_parent_name = "ms-registration-rloc"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params::~Params()
@@ -3653,6 +3708,7 @@ LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegi
 
 bool LispState::LispRouters::Instances::Af::MsRegistrations::EtrRegistrations::MsRegistrationRloc::Params::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| weight.is_set
 	|| mcast_priority.is_set
@@ -3762,7 +3818,7 @@ LispState::LispRouters::Instances::Af::MapServers::MapServers()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "map-servers"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map-servers"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MapServers::~MapServers()
@@ -3771,6 +3827,7 @@ LispState::LispRouters::Instances::Af::MapServers::~MapServers()
 
 bool LispState::LispRouters::Instances::Af::MapServers::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set
 	|| state.is_set;
@@ -3787,7 +3844,9 @@ bool LispState::LispRouters::Instances::Af::MapServers::has_operation() const
 std::string LispState::LispRouters::Instances::Af::MapServers::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map-servers" <<"[afi='" <<afi <<"']" <<"[address='" <<address <<"']";
+    path_buffer << "map-servers";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3867,7 +3926,7 @@ LispState::LispRouters::Instances::Af::MapResolvers::MapResolvers()
     state{YType::enumeration, "state"}
 {
 
-    yang_name = "map-resolvers"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "map-resolvers"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::MapResolvers::~MapResolvers()
@@ -3876,6 +3935,7 @@ LispState::LispRouters::Instances::Af::MapResolvers::~MapResolvers()
 
 bool LispState::LispRouters::Instances::Af::MapResolvers::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set
 	|| state.is_set;
@@ -3892,7 +3952,9 @@ bool LispState::LispRouters::Instances::Af::MapResolvers::has_operation() const
 std::string LispState::LispRouters::Instances::Af::MapResolvers::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "map-resolvers" <<"[afi='" <<afi <<"']" <<"[address='" <<address <<"']";
+    path_buffer << "map-resolvers";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -3970,12 +4032,12 @@ LispState::LispRouters::Instances::Af::ProxyEtrs::ProxyEtrs()
     afi{YType::enumeration, "afi"},
     address{YType::str, "address"},
     state{YType::enumeration, "state"}
-    	,
+        ,
     params(std::make_shared<LispState::LispRouters::Instances::Af::ProxyEtrs::Params>())
 {
     params->parent = this;
 
-    yang_name = "proxy-etrs"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "proxy-etrs"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::ProxyEtrs::~ProxyEtrs()
@@ -3984,6 +4046,7 @@ LispState::LispRouters::Instances::Af::ProxyEtrs::~ProxyEtrs()
 
 bool LispState::LispRouters::Instances::Af::ProxyEtrs::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set
 	|| state.is_set
@@ -4002,7 +4065,9 @@ bool LispState::LispRouters::Instances::Af::ProxyEtrs::has_operation() const
 std::string LispState::LispRouters::Instances::Af::ProxyEtrs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "proxy-etrs" <<"[afi='" <<afi <<"']" <<"[address='" <<address <<"']";
+    path_buffer << "proxy-etrs";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4097,7 +4162,7 @@ LispState::LispRouters::Instances::Af::ProxyEtrs::Params::Params()
     mcast_weight{YType::uint8, "mcast-weight"}
 {
 
-    yang_name = "params"; yang_parent_name = "proxy-etrs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "params"; yang_parent_name = "proxy-etrs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::Af::ProxyEtrs::Params::~Params()
@@ -4106,6 +4171,7 @@ LispState::LispRouters::Instances::Af::ProxyEtrs::Params::~Params()
 
 bool LispState::LispRouters::Instances::Af::ProxyEtrs::Params::has_data() const
 {
+    if (is_presence_container) return true;
     return priority.is_set
 	|| weight.is_set
 	|| mcast_priority.is_set
@@ -4216,7 +4282,7 @@ LispState::LispRouters::Instances::MsEidMembership::MsEidMembership()
     is_configured{YType::boolean, "is-configured"}
 {
 
-    yang_name = "ms-eid-membership"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ms-eid-membership"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::MsEidMembership::~MsEidMembership()
@@ -4225,6 +4291,7 @@ LispState::LispRouters::Instances::MsEidMembership::~MsEidMembership()
 
 bool LispState::LispRouters::Instances::MsEidMembership::has_data() const
 {
+    if (is_presence_container) return true;
     return rloc.is_set
 	|| member_since.is_set
 	|| is_gleaned.is_set
@@ -4243,7 +4310,8 @@ bool LispState::LispRouters::Instances::MsEidMembership::has_operation() const
 std::string LispState::LispRouters::Instances::MsEidMembership::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ms-eid-membership" <<"[rloc='" <<rloc <<"']";
+    path_buffer << "ms-eid-membership";
+    ADD_KEY_TOKEN(rloc, "rloc");
     return path_buffer.str();
 }
 
@@ -4335,7 +4403,7 @@ LispState::LispRouters::Instances::EtrEidMembership::EtrEidMembership()
     is_configured{YType::boolean, "is-configured"}
 {
 
-    yang_name = "etr-eid-membership"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "etr-eid-membership"; yang_parent_name = "instances"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Instances::EtrEidMembership::~EtrEidMembership()
@@ -4344,6 +4412,7 @@ LispState::LispRouters::Instances::EtrEidMembership::~EtrEidMembership()
 
 bool LispState::LispRouters::Instances::EtrEidMembership::has_data() const
 {
+    if (is_presence_container) return true;
     return rloc.is_set
 	|| member_since.is_set
 	|| is_learned_from_ms.is_set
@@ -4362,7 +4431,8 @@ bool LispState::LispRouters::Instances::EtrEidMembership::has_operation() const
 std::string LispState::LispRouters::Instances::EtrEidMembership::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "etr-eid-membership" <<"[rloc='" <<rloc <<"']";
+    path_buffer << "etr-eid-membership";
+    ADD_KEY_TOKEN(rloc, "rloc");
     return path_buffer.str();
 }
 
@@ -4462,7 +4532,7 @@ LispState::LispRouters::Sessions::Sessions()
     bytes_out{YType::uint64, "bytes-out"}
 {
 
-    yang_name = "sessions"; yang_parent_name = "lisp-routers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sessions"; yang_parent_name = "lisp-routers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::Sessions::~Sessions()
@@ -4471,6 +4541,7 @@ LispState::LispRouters::Sessions::~Sessions()
 
 bool LispState::LispRouters::Sessions::has_data() const
 {
+    if (is_presence_container) return true;
     return local_address.is_set
 	|| peer_address.is_set
 	|| local_port.is_set
@@ -4505,7 +4576,11 @@ bool LispState::LispRouters::Sessions::has_operation() const
 std::string LispState::LispRouters::Sessions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sessions" <<"[local-address='" <<local_address <<"']" <<"[peer-address='" <<peer_address <<"']" <<"[local-port='" <<local_port <<"']" <<"[peer-port='" <<peer_port <<"']";
+    path_buffer << "sessions";
+    ADD_KEY_TOKEN(local_address, "local-address");
+    ADD_KEY_TOKEN(peer_address, "peer-address");
+    ADD_KEY_TOKEN(local_port, "local-port");
+    ADD_KEY_TOKEN(peer_port, "peer-port");
     return path_buffer.str();
 }
 
@@ -4685,7 +4760,7 @@ LispState::LispRouters::LocalRlocs::LocalRlocs()
     is_local{YType::boolean, "is-local"}
 {
 
-    yang_name = "local-rlocs"; yang_parent_name = "lisp-routers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-rlocs"; yang_parent_name = "lisp-routers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 LispState::LispRouters::LocalRlocs::~LocalRlocs()
@@ -4694,6 +4769,7 @@ LispState::LispRouters::LocalRlocs::~LocalRlocs()
 
 bool LispState::LispRouters::LocalRlocs::has_data() const
 {
+    if (is_presence_container) return true;
     return afi.is_set
 	|| address.is_set
 	|| state.is_set
@@ -4712,7 +4788,9 @@ bool LispState::LispRouters::LocalRlocs::has_operation() const
 std::string LispState::LispRouters::LocalRlocs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-rlocs" <<"[afi='" <<afi <<"']" <<"[address='" <<address <<"']";
+    path_buffer << "local-rlocs";
+    ADD_KEY_TOKEN(afi, "afi");
+    ADD_KEY_TOKEN(address, "address");
     return path_buffer.str();
 }
 
@@ -4800,19 +4878,19 @@ const Enum::YLeaf LispAddressFamilyType::ipv4_afi {0, "ipv4-afi"};
 const Enum::YLeaf LispAddressFamilyType::ipv6_afi {1, "ipv6-afi"};
 const Enum::YLeaf LispAddressFamilyType::mac_afi {2, "mac-afi"};
 
-const Enum::YLeaf LispIaftypeType::iaf_ipv4 {0, "iaf-ipv4"};
-const Enum::YLeaf LispIaftypeType::iaf_ipv6 {1, "iaf-ipv6"};
-const Enum::YLeaf LispIaftypeType::iaf_mac {2, "iaf-mac"};
-const Enum::YLeaf LispIaftypeType::iaf_ar {3, "iaf-ar"};
-const Enum::YLeaf LispIaftypeType::iaf_rar {4, "iaf-rar"};
+const Enum::YLeaf LispRlocStateType::lisp_rloc_state_down {0, "lisp-rloc-state-down"};
+const Enum::YLeaf LispRlocStateType::lisp_rloc_state_up {1, "lisp-rloc-state-up"};
 
 const Enum::YLeaf LispMapReplyActionType::no_action {0, "no-action"};
 const Enum::YLeaf LispMapReplyActionType::natively_forward {1, "natively-forward"};
 const Enum::YLeaf LispMapReplyActionType::send_map_request {2, "send-map-request"};
 const Enum::YLeaf LispMapReplyActionType::drop {3, "drop"};
 
-const Enum::YLeaf LispRlocStateType::lisp_rloc_state_down {0, "lisp-rloc-state-down"};
-const Enum::YLeaf LispRlocStateType::lisp_rloc_state_up {1, "lisp-rloc-state-up"};
+const Enum::YLeaf LispIaftypeType::iaf_ipv4 {0, "iaf-ipv4"};
+const Enum::YLeaf LispIaftypeType::iaf_ipv6 {1, "iaf-ipv6"};
+const Enum::YLeaf LispIaftypeType::iaf_mac {2, "iaf-mac"};
+const Enum::YLeaf LispIaftypeType::iaf_ar {3, "iaf-ar"};
+const Enum::YLeaf LispIaftypeType::iaf_rar {4, "iaf-rar"};
 
 const Enum::YLeaf LispSessionStateType::lisp_session_state_incomplete {0, "lisp-session-state-incomplete"};
 const Enum::YLeaf LispSessionStateType::lisp_session_state_listening {1, "lisp-session-state-listening"};

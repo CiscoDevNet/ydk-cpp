@@ -13,13 +13,13 @@ namespace CISCO_FTP_CLIENT_MIB {
 
 CISCOFTPCLIENTMIB::CISCOFTPCLIENTMIB()
     :
-    cfcrequest(std::make_shared<CISCOFTPCLIENTMIB::Cfcrequest>())
-	,cfcrequesttable(std::make_shared<CISCOFTPCLIENTMIB::Cfcrequesttable>())
+    cfcrequest(std::make_shared<CISCOFTPCLIENTMIB::CfcRequest>())
+    , cfcrequesttable(std::make_shared<CISCOFTPCLIENTMIB::CfcRequestTable>())
 {
     cfcrequest->parent = this;
     cfcrequesttable->parent = this;
 
-    yang_name = "CISCO-FTP-CLIENT-MIB"; yang_parent_name = "CISCO-FTP-CLIENT-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-FTP-CLIENT-MIB"; yang_parent_name = "CISCO-FTP-CLIENT-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOFTPCLIENTMIB::~CISCOFTPCLIENTMIB()
@@ -28,6 +28,7 @@ CISCOFTPCLIENTMIB::~CISCOFTPCLIENTMIB()
 
 bool CISCOFTPCLIENTMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cfcrequest !=  nullptr && cfcrequest->has_data())
 	|| (cfcrequesttable !=  nullptr && cfcrequesttable->has_data());
 }
@@ -61,7 +62,7 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::get_child_by_name(const std::string &
     {
         if(cfcrequest == nullptr)
         {
-            cfcrequest = std::make_shared<CISCOFTPCLIENTMIB::Cfcrequest>();
+            cfcrequest = std::make_shared<CISCOFTPCLIENTMIB::CfcRequest>();
         }
         return cfcrequest;
     }
@@ -70,7 +71,7 @@ std::shared_ptr<Entity> CISCOFTPCLIENTMIB::get_child_by_name(const std::string &
     {
         if(cfcrequesttable == nullptr)
         {
-            cfcrequesttable = std::make_shared<CISCOFTPCLIENTMIB::Cfcrequesttable>();
+            cfcrequesttable = std::make_shared<CISCOFTPCLIENTMIB::CfcRequestTable>();
         }
         return cfcrequesttable;
     }
@@ -135,7 +136,7 @@ bool CISCOFTPCLIENTMIB::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
-CISCOFTPCLIENTMIB::Cfcrequest::Cfcrequest()
+CISCOFTPCLIENTMIB::CfcRequest::CfcRequest()
     :
     cfcrequestmaximum{YType::uint32, "cfcRequestMaximum"},
     cfcrequests{YType::uint32, "cfcRequests"},
@@ -143,22 +144,23 @@ CISCOFTPCLIENTMIB::Cfcrequest::Cfcrequest()
     cfcrequestsbumped{YType::uint32, "cfcRequestsBumped"}
 {
 
-    yang_name = "cfcRequest"; yang_parent_name = "CISCO-FTP-CLIENT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cfcRequest"; yang_parent_name = "CISCO-FTP-CLIENT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOFTPCLIENTMIB::Cfcrequest::~Cfcrequest()
+CISCOFTPCLIENTMIB::CfcRequest::~CfcRequest()
 {
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequest::has_data() const
+bool CISCOFTPCLIENTMIB::CfcRequest::has_data() const
 {
+    if (is_presence_container) return true;
     return cfcrequestmaximum.is_set
 	|| cfcrequests.is_set
 	|| cfcrequestshigh.is_set
 	|| cfcrequestsbumped.is_set;
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequest::has_operation() const
+bool CISCOFTPCLIENTMIB::CfcRequest::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cfcrequestmaximum.yfilter)
@@ -167,21 +169,21 @@ bool CISCOFTPCLIENTMIB::Cfcrequest::has_operation() const
 	|| ydk::is_set(cfcrequestsbumped.yfilter);
 }
 
-std::string CISCOFTPCLIENTMIB::Cfcrequest::get_absolute_path() const
+std::string CISCOFTPCLIENTMIB::CfcRequest::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-FTP-CLIENT-MIB:CISCO-FTP-CLIENT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOFTPCLIENTMIB::Cfcrequest::get_segment_path() const
+std::string CISCOFTPCLIENTMIB::CfcRequest::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cfcRequest";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequest::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::CfcRequest::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -194,19 +196,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequest::ge
 
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::Cfcrequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOFTPCLIENTMIB::CfcRequest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::Cfcrequest::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::CfcRequest::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOFTPCLIENTMIB::Cfcrequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOFTPCLIENTMIB::CfcRequest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cfcRequestMaximum")
     {
@@ -234,7 +236,7 @@ void CISCOFTPCLIENTMIB::Cfcrequest::set_value(const std::string & value_path, co
     }
 }
 
-void CISCOFTPCLIENTMIB::Cfcrequest::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOFTPCLIENTMIB::CfcRequest::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cfcRequestMaximum")
     {
@@ -254,26 +256,29 @@ void CISCOFTPCLIENTMIB::Cfcrequest::set_filter(const std::string & value_path, Y
     }
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequest::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOFTPCLIENTMIB::CfcRequest::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cfcRequestMaximum" || name == "cfcRequests" || name == "cfcRequestsHigh" || name == "cfcRequestsBumped")
         return true;
     return false;
 }
 
-CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequesttable()
+CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestTable()
+    :
+    cfcrequestentry(this, {"cfcrequestindex"})
 {
 
-    yang_name = "cfcRequestTable"; yang_parent_name = "CISCO-FTP-CLIENT-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cfcRequestTable"; yang_parent_name = "CISCO-FTP-CLIENT-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOFTPCLIENTMIB::Cfcrequesttable::~Cfcrequesttable()
+CISCOFTPCLIENTMIB::CfcRequestTable::~CfcRequestTable()
 {
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequesttable::has_data() const
+bool CISCOFTPCLIENTMIB::CfcRequestTable::has_data() const
 {
-    for (std::size_t index=0; index<cfcrequestentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cfcrequestentry.len(); index++)
     {
         if(cfcrequestentry[index]->has_data())
             return true;
@@ -281,9 +286,9 @@ bool CISCOFTPCLIENTMIB::Cfcrequesttable::has_data() const
     return false;
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequesttable::has_operation() const
+bool CISCOFTPCLIENTMIB::CfcRequestTable::has_operation() const
 {
-    for (std::size_t index=0; index<cfcrequestentry.size(); index++)
+    for (std::size_t index=0; index<cfcrequestentry.len(); index++)
     {
         if(cfcrequestentry[index]->has_operation())
             return true;
@@ -291,21 +296,21 @@ bool CISCOFTPCLIENTMIB::Cfcrequesttable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOFTPCLIENTMIB::Cfcrequesttable::get_absolute_path() const
+std::string CISCOFTPCLIENTMIB::CfcRequestTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-FTP-CLIENT-MIB:CISCO-FTP-CLIENT-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOFTPCLIENTMIB::Cfcrequesttable::get_segment_path() const
+std::string CISCOFTPCLIENTMIB::CfcRequestTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cfcRequestTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequesttable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::CfcRequestTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -314,25 +319,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequesttabl
 
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::Cfcrequesttable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOFTPCLIENTMIB::CfcRequestTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cfcRequestEntry")
     {
-        auto c = std::make_shared<CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry>();
+        auto c = std::make_shared<CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry>();
         c->parent = this;
-        cfcrequestentry.push_back(c);
+        cfcrequestentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::Cfcrequesttable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::CfcRequestTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cfcrequestentry)
+    for (auto c : cfcrequestentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -343,22 +348,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::Cfcrequesttabl
     return children;
 }
 
-void CISCOFTPCLIENTMIB::Cfcrequesttable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOFTPCLIENTMIB::CfcRequestTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOFTPCLIENTMIB::Cfcrequesttable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOFTPCLIENTMIB::CfcRequestTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequesttable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOFTPCLIENTMIB::CfcRequestTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cfcRequestEntry")
         return true;
     return false;
 }
 
-CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestentry()
+CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestEntry()
     :
     cfcrequestindex{YType::uint32, "cfcRequestIndex"},
     cfcrequestoperation{YType::enumeration, "cfcRequestOperation"},
@@ -374,15 +379,16 @@ CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestentry()
     cfcrequestentrystatus{YType::enumeration, "cfcRequestEntryStatus"}
 {
 
-    yang_name = "cfcRequestEntry"; yang_parent_name = "cfcRequestTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cfcRequestEntry"; yang_parent_name = "cfcRequestTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::~Cfcrequestentry()
+CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::~CfcRequestEntry()
 {
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_data() const
+bool CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cfcrequestindex.is_set
 	|| cfcrequestoperation.is_set
 	|| cfcrequestlocalfile.is_set
@@ -397,7 +403,7 @@ bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_data() const
 	|| cfcrequestentrystatus.is_set;
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_operation() const
+bool CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cfcrequestindex.yfilter)
@@ -414,21 +420,22 @@ bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_operation() const
 	|| ydk::is_set(cfcrequestentrystatus.yfilter);
 }
 
-std::string CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get_absolute_path() const
+std::string CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-FTP-CLIENT-MIB:CISCO-FTP-CLIENT-MIB/cfcRequestTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get_segment_path() const
+std::string CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cfcRequestEntry" <<"[cfcRequestIndex='" <<cfcrequestindex <<"']";
+    path_buffer << "cfcRequestEntry";
+    ADD_KEY_TOKEN(cfcrequestindex, "cfcRequestIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -449,19 +456,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOFTPCLIENTMIB::Cfcrequesttabl
 
 }
 
-std::shared_ptr<Entity> CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cfcRequestIndex")
     {
@@ -537,7 +544,7 @@ void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_value(const std::s
     }
 }
 
-void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cfcRequestIndex")
     {
@@ -589,33 +596,33 @@ void CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::set_filter(const std::
     }
 }
 
-bool CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cfcRequestIndex" || name == "cfcRequestOperation" || name == "cfcRequestLocalFile" || name == "cfcRequestRemoteFile" || name == "cfcRequestServer" || name == "cfcRequestUser" || name == "cfcRequestPassword" || name == "cfcRequestResult" || name == "cfcRequestCompletionTime" || name == "cfcRequestStop" || name == "cfcRequestOperationState" || name == "cfcRequestEntryStatus")
         return true;
     return false;
 }
 
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation::putBinary {1, "putBinary"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperation::putASCII {2, "putASCII"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperation::putBinary {1, "putBinary"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperation::putASCII {2, "putASCII"};
 
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::pending {1, "pending"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::success {2, "success"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::aborted {3, "aborted"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileOpenFailLocal {4, "fileOpenFailLocal"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileOpenFailRemote {5, "fileOpenFailRemote"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::badDomainName {6, "badDomainName"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::unreachableIpAddress {7, "unreachableIpAddress"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::linkFailed {8, "linkFailed"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileReadFailed {9, "fileReadFailed"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestresult::fileWriteFailed {10, "fileWriteFailed"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::pending {1, "pending"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::success {2, "success"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::aborted {3, "aborted"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::fileOpenFailLocal {4, "fileOpenFailLocal"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::fileOpenFailRemote {5, "fileOpenFailRemote"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::badDomainName {6, "badDomainName"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::unreachableIpAddress {7, "unreachableIpAddress"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::linkFailed {8, "linkFailed"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::fileReadFailed {9, "fileReadFailed"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestResult::fileWriteFailed {10, "fileWriteFailed"};
 
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop::ready {1, "ready"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequeststop::stop {2, "stop"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestStop::ready {1, "ready"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestStop::stop {2, "stop"};
 
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate::running {1, "running"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate::stopping {2, "stopping"};
-const Enum::YLeaf CISCOFTPCLIENTMIB::Cfcrequesttable::Cfcrequestentry::Cfcrequestoperationstate::stopped {3, "stopped"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperationState::running {1, "running"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperationState::stopping {2, "stopping"};
+const Enum::YLeaf CISCOFTPCLIENTMIB::CfcRequestTable::CfcRequestEntry::CfcRequestOperationState::stopped {3, "stopped"};
 
 
 }

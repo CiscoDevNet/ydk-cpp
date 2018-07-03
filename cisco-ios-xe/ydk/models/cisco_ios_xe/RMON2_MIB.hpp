@@ -32,70 +32,70 @@ class RMON2MIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Protocoldir; //type: RMON2MIB::Protocoldir
-        class Addressmap; //type: RMON2MIB::Addressmap
-        class Probeconfig; //type: RMON2MIB::Probeconfig
-        class Protocoldirtable; //type: RMON2MIB::Protocoldirtable
-        class Protocoldistcontroltable; //type: RMON2MIB::Protocoldistcontroltable
-        class Protocoldiststatstable; //type: RMON2MIB::Protocoldiststatstable
-        class Addressmapcontroltable; //type: RMON2MIB::Addressmapcontroltable
-        class Addressmaptable; //type: RMON2MIB::Addressmaptable
-        class Hlhostcontroltable; //type: RMON2MIB::Hlhostcontroltable
-        class Nlhosttable; //type: RMON2MIB::Nlhosttable
-        class Hlmatrixcontroltable; //type: RMON2MIB::Hlmatrixcontroltable
-        class Nlmatrixsdtable; //type: RMON2MIB::Nlmatrixsdtable
-        class Nlmatrixdstable; //type: RMON2MIB::Nlmatrixdstable
-        class Nlmatrixtopncontroltable; //type: RMON2MIB::Nlmatrixtopncontroltable
-        class Nlmatrixtopntable; //type: RMON2MIB::Nlmatrixtopntable
-        class Alhosttable; //type: RMON2MIB::Alhosttable
-        class Almatrixsdtable; //type: RMON2MIB::Almatrixsdtable
-        class Almatrixdstable; //type: RMON2MIB::Almatrixdstable
-        class Almatrixtopncontroltable; //type: RMON2MIB::Almatrixtopncontroltable
-        class Almatrixtopntable; //type: RMON2MIB::Almatrixtopntable
-        class Usrhistorycontroltable; //type: RMON2MIB::Usrhistorycontroltable
-        class Usrhistoryobjecttable; //type: RMON2MIB::Usrhistoryobjecttable
-        class Usrhistorytable; //type: RMON2MIB::Usrhistorytable
-        class Serialconfigtable; //type: RMON2MIB::Serialconfigtable
-        class Netconfigtable; //type: RMON2MIB::Netconfigtable
-        class Trapdesttable; //type: RMON2MIB::Trapdesttable
-        class Serialconnectiontable; //type: RMON2MIB::Serialconnectiontable
+        class ProtocolDir; //type: RMON2MIB::ProtocolDir
+        class AddressMap; //type: RMON2MIB::AddressMap
+        class ProbeConfig; //type: RMON2MIB::ProbeConfig
+        class ProtocolDirTable; //type: RMON2MIB::ProtocolDirTable
+        class ProtocolDistControlTable; //type: RMON2MIB::ProtocolDistControlTable
+        class ProtocolDistStatsTable; //type: RMON2MIB::ProtocolDistStatsTable
+        class AddressMapControlTable; //type: RMON2MIB::AddressMapControlTable
+        class AddressMapTable; //type: RMON2MIB::AddressMapTable
+        class HlHostControlTable; //type: RMON2MIB::HlHostControlTable
+        class NlHostTable; //type: RMON2MIB::NlHostTable
+        class HlMatrixControlTable; //type: RMON2MIB::HlMatrixControlTable
+        class NlMatrixSDTable; //type: RMON2MIB::NlMatrixSDTable
+        class NlMatrixDSTable; //type: RMON2MIB::NlMatrixDSTable
+        class NlMatrixTopNControlTable; //type: RMON2MIB::NlMatrixTopNControlTable
+        class NlMatrixTopNTable; //type: RMON2MIB::NlMatrixTopNTable
+        class AlHostTable; //type: RMON2MIB::AlHostTable
+        class AlMatrixSDTable; //type: RMON2MIB::AlMatrixSDTable
+        class AlMatrixDSTable; //type: RMON2MIB::AlMatrixDSTable
+        class AlMatrixTopNControlTable; //type: RMON2MIB::AlMatrixTopNControlTable
+        class AlMatrixTopNTable; //type: RMON2MIB::AlMatrixTopNTable
+        class UsrHistoryControlTable; //type: RMON2MIB::UsrHistoryControlTable
+        class UsrHistoryObjectTable; //type: RMON2MIB::UsrHistoryObjectTable
+        class UsrHistoryTable; //type: RMON2MIB::UsrHistoryTable
+        class SerialConfigTable; //type: RMON2MIB::SerialConfigTable
+        class NetConfigTable; //type: RMON2MIB::NetConfigTable
+        class TrapDestTable; //type: RMON2MIB::TrapDestTable
+        class SerialConnectionTable; //type: RMON2MIB::SerialConnectionTable
 
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldir> protocoldir;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Addressmap> addressmap;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Probeconfig> probeconfig;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable> protocoldirtable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldistcontroltable> protocoldistcontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldiststatstable> protocoldiststatstable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Addressmapcontroltable> addressmapcontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Addressmaptable> addressmaptable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlhostcontroltable> hlhostcontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlhosttable> nlhosttable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlmatrixcontroltable> hlmatrixcontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixsdtable> nlmatrixsdtable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixdstable> nlmatrixdstable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixtopncontroltable> nlmatrixtopncontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixtopntable> nlmatrixtopntable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Alhosttable> alhosttable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixsdtable> almatrixsdtable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixdstable> almatrixdstable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixtopncontroltable> almatrixtopncontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixtopntable> almatrixtopntable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistorycontroltable> usrhistorycontroltable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistoryobjecttable> usrhistoryobjecttable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistorytable> usrhistorytable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Serialconfigtable> serialconfigtable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Netconfigtable> netconfigtable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Trapdesttable> trapdesttable;
-        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Serialconnectiontable> serialconnectiontable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDir> protocoldir;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AddressMap> addressmap;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::ProbeConfig> probeconfig;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable> protocoldirtable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDistControlTable> protocoldistcontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDistStatsTable> protocoldiststatstable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AddressMapControlTable> addressmapcontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AddressMapTable> addressmaptable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::HlHostControlTable> hlhostcontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::NlHostTable> nlhosttable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::HlMatrixControlTable> hlmatrixcontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixSDTable> nlmatrixsdtable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixDSTable> nlmatrixdstable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixTopNControlTable> nlmatrixtopncontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixTopNTable> nlmatrixtopntable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AlHostTable> alhosttable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AlMatrixSDTable> almatrixsdtable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AlMatrixDSTable> almatrixdstable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AlMatrixTopNControlTable> almatrixtopncontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::AlMatrixTopNTable> almatrixtopntable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::UsrHistoryControlTable> usrhistorycontroltable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::UsrHistoryObjectTable> usrhistoryobjecttable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::UsrHistoryTable> usrhistorytable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::SerialConfigTable> serialconfigtable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::NetConfigTable> netconfigtable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::TrapDestTable> trapdesttable;
+        std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::SerialConnectionTable> serialconnectiontable;
         
 }; // RMON2MIB
 
 
-class RMON2MIB::Protocoldir : public ydk::Entity
+class RMON2MIB::ProtocolDir : public ydk::Entity
 {
     public:
-        Protocoldir();
-        ~Protocoldir();
+        ProtocolDir();
+        ~ProtocolDir();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -110,14 +110,14 @@ class RMON2MIB::Protocoldir : public ydk::Entity
 
         ydk::YLeaf protocoldirlastchange; //type: uint32
 
-}; // RMON2MIB::Protocoldir
+}; // RMON2MIB::ProtocolDir
 
 
-class RMON2MIB::Addressmap : public ydk::Entity
+class RMON2MIB::AddressMap : public ydk::Entity
 {
     public:
-        Addressmap();
-        ~Addressmap();
+        AddressMap();
+        ~AddressMap();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -134,14 +134,14 @@ class RMON2MIB::Addressmap : public ydk::Entity
         ydk::YLeaf addressmapdeletes; //type: uint32
         ydk::YLeaf addressmapmaxdesiredentries; //type: int32
 
-}; // RMON2MIB::Addressmap
+}; // RMON2MIB::AddressMap
 
 
-class RMON2MIB::Probeconfig : public ydk::Entity
+class RMON2MIB::ProbeConfig : public ydk::Entity
 {
     public:
-        Probeconfig();
-        ~Probeconfig();
+        ProbeConfig();
+        ~ProbeConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -158,24 +158,24 @@ class RMON2MIB::Probeconfig : public ydk::Entity
         ydk::YLeaf probesoftwarerev; //type: string
         ydk::YLeaf probehardwarerev; //type: string
         ydk::YLeaf probedatetime; //type: binary
-        ydk::YLeaf proberesetcontrol; //type: Proberesetcontrol
+        ydk::YLeaf proberesetcontrol; //type: ProbeResetControl
         ydk::YLeaf probedownloadfile; //type: string
         ydk::YLeaf probedownloadtftpserver; //type: string
-        ydk::YLeaf probedownloadaction; //type: Probedownloadaction
-        ydk::YLeaf probedownloadstatus; //type: Probedownloadstatus
+        ydk::YLeaf probedownloadaction; //type: ProbeDownloadAction
+        ydk::YLeaf probedownloadstatus; //type: ProbeDownloadStatus
         ydk::YLeaf netdefaultgateway; //type: string
-        class Proberesetcontrol;
-        class Probedownloadaction;
-        class Probedownloadstatus;
+        class ProbeResetControl;
+        class ProbeDownloadAction;
+        class ProbeDownloadStatus;
 
-}; // RMON2MIB::Probeconfig
+}; // RMON2MIB::ProbeConfig
 
 
-class RMON2MIB::Protocoldirtable : public ydk::Entity
+class RMON2MIB::ProtocolDirTable : public ydk::Entity
 {
     public:
-        Protocoldirtable();
-        ~Protocoldirtable();
+        ProtocolDirTable();
+        ~ProtocolDirTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -188,18 +188,18 @@ class RMON2MIB::Protocoldirtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Protocoldirentry; //type: RMON2MIB::Protocoldirtable::Protocoldirentry
+        class ProtocolDirEntry; //type: RMON2MIB::ProtocolDirTable::ProtocolDirEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry> > protocoldirentry;
+        ydk::YList protocoldirentry;
         
-}; // RMON2MIB::Protocoldirtable
+}; // RMON2MIB::ProtocolDirTable
 
 
-class RMON2MIB::Protocoldirtable::Protocoldirentry : public ydk::Entity
+class RMON2MIB::ProtocolDirTable::ProtocolDirEntry : public ydk::Entity
 {
     public:
-        Protocoldirentry();
-        ~Protocoldirentry();
+        ProtocolDirEntry();
+        ~ProtocolDirEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -217,23 +217,23 @@ class RMON2MIB::Protocoldirtable::Protocoldirentry : public ydk::Entity
         ydk::YLeaf protocoldirlocalindex; //type: int32
         ydk::YLeaf protocoldirdescr; //type: string
         ydk::YLeaf protocoldirtype; //type: binary
-        ydk::YLeaf protocoldiraddressmapconfig; //type: Protocoldiraddressmapconfig
-        ydk::YLeaf protocoldirhostconfig; //type: Protocoldirhostconfig
-        ydk::YLeaf protocoldirmatrixconfig; //type: Protocoldirmatrixconfig
+        ydk::YLeaf protocoldiraddressmapconfig; //type: ProtocolDirAddressMapConfig
+        ydk::YLeaf protocoldirhostconfig; //type: ProtocolDirHostConfig
+        ydk::YLeaf protocoldirmatrixconfig; //type: ProtocolDirMatrixConfig
         ydk::YLeaf protocoldirowner; //type: binary
         ydk::YLeaf protocoldirstatus; //type: RowStatus
-        class Protocoldiraddressmapconfig;
-        class Protocoldirhostconfig;
-        class Protocoldirmatrixconfig;
+        class ProtocolDirAddressMapConfig;
+        class ProtocolDirHostConfig;
+        class ProtocolDirMatrixConfig;
 
-}; // RMON2MIB::Protocoldirtable::Protocoldirentry
+}; // RMON2MIB::ProtocolDirTable::ProtocolDirEntry
 
 
-class RMON2MIB::Protocoldistcontroltable : public ydk::Entity
+class RMON2MIB::ProtocolDistControlTable : public ydk::Entity
 {
     public:
-        Protocoldistcontroltable();
-        ~Protocoldistcontroltable();
+        ProtocolDistControlTable();
+        ~ProtocolDistControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -246,18 +246,18 @@ class RMON2MIB::Protocoldistcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Protocoldistcontrolentry; //type: RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry
+        class ProtocolDistControlEntry; //type: RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry> > protocoldistcontrolentry;
+        ydk::YList protocoldistcontrolentry;
         
-}; // RMON2MIB::Protocoldistcontroltable
+}; // RMON2MIB::ProtocolDistControlTable
 
 
-class RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry : public ydk::Entity
+class RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry : public ydk::Entity
 {
     public:
-        Protocoldistcontrolentry();
-        ~Protocoldistcontrolentry();
+        ProtocolDistControlEntry();
+        ~ProtocolDistControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -277,14 +277,14 @@ class RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry : public ydk:
         ydk::YLeaf protocoldistcontrolowner; //type: binary
         ydk::YLeaf protocoldistcontrolstatus; //type: RowStatus
 
-}; // RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry
+}; // RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry
 
 
-class RMON2MIB::Protocoldiststatstable : public ydk::Entity
+class RMON2MIB::ProtocolDistStatsTable : public ydk::Entity
 {
     public:
-        Protocoldiststatstable();
-        ~Protocoldiststatstable();
+        ProtocolDistStatsTable();
+        ~ProtocolDistStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -297,18 +297,18 @@ class RMON2MIB::Protocoldiststatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Protocoldiststatsentry; //type: RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry
+        class ProtocolDistStatsEntry; //type: RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry> > protocoldiststatsentry;
+        ydk::YList protocoldiststatsentry;
         
-}; // RMON2MIB::Protocoldiststatstable
+}; // RMON2MIB::ProtocolDistStatsTable
 
 
-class RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry : public ydk::Entity
+class RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry : public ydk::Entity
 {
     public:
-        Protocoldiststatsentry();
-        ~Protocoldiststatsentry();
+        ProtocolDistStatsEntry();
+        ~ProtocolDistStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -321,21 +321,21 @@ class RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldistcontroltable::Protocoldistcontrolentry::protocoldistcontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDistControlTable::ProtocolDistControlEntry::protocoldistcontrolindex)
         ydk::YLeaf protocoldistcontrolindex;
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
         ydk::YLeaf protocoldiststatspkts; //type: uint32
         ydk::YLeaf protocoldiststatsoctets; //type: uint32
 
-}; // RMON2MIB::Protocoldiststatstable::Protocoldiststatsentry
+}; // RMON2MIB::ProtocolDistStatsTable::ProtocolDistStatsEntry
 
 
-class RMON2MIB::Addressmapcontroltable : public ydk::Entity
+class RMON2MIB::AddressMapControlTable : public ydk::Entity
 {
     public:
-        Addressmapcontroltable();
-        ~Addressmapcontroltable();
+        AddressMapControlTable();
+        ~AddressMapControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -348,18 +348,18 @@ class RMON2MIB::Addressmapcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Addressmapcontrolentry; //type: RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry
+        class AddressMapControlEntry; //type: RMON2MIB::AddressMapControlTable::AddressMapControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry> > addressmapcontrolentry;
+        ydk::YList addressmapcontrolentry;
         
-}; // RMON2MIB::Addressmapcontroltable
+}; // RMON2MIB::AddressMapControlTable
 
 
-class RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry : public ydk::Entity
+class RMON2MIB::AddressMapControlTable::AddressMapControlEntry : public ydk::Entity
 {
     public:
-        Addressmapcontrolentry();
-        ~Addressmapcontrolentry();
+        AddressMapControlEntry();
+        ~AddressMapControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -378,14 +378,14 @@ class RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry : public ydk::Ent
         ydk::YLeaf addressmapcontrolowner; //type: binary
         ydk::YLeaf addressmapcontrolstatus; //type: RowStatus
 
-}; // RMON2MIB::Addressmapcontroltable::Addressmapcontrolentry
+}; // RMON2MIB::AddressMapControlTable::AddressMapControlEntry
 
 
-class RMON2MIB::Addressmaptable : public ydk::Entity
+class RMON2MIB::AddressMapTable : public ydk::Entity
 {
     public:
-        Addressmaptable();
-        ~Addressmaptable();
+        AddressMapTable();
+        ~AddressMapTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -398,18 +398,18 @@ class RMON2MIB::Addressmaptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Addressmapentry; //type: RMON2MIB::Addressmaptable::Addressmapentry
+        class AddressMapEntry; //type: RMON2MIB::AddressMapTable::AddressMapEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Addressmaptable::Addressmapentry> > addressmapentry;
+        ydk::YList addressmapentry;
         
-}; // RMON2MIB::Addressmaptable
+}; // RMON2MIB::AddressMapTable
 
 
-class RMON2MIB::Addressmaptable::Addressmapentry : public ydk::Entity
+class RMON2MIB::AddressMapTable::AddressMapEntry : public ydk::Entity
 {
     public:
-        Addressmapentry();
-        ~Addressmapentry();
+        AddressMapEntry();
+        ~AddressMapEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -423,21 +423,21 @@ class RMON2MIB::Addressmaptable::Addressmapentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf addressmaptimemark; //type: uint32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
         ydk::YLeaf addressmapnetworkaddress; //type: binary
         ydk::YLeaf addressmapsource; //type: string
         ydk::YLeaf addressmapphysicaladdress; //type: binary
         ydk::YLeaf addressmaplastchange; //type: uint32
 
-}; // RMON2MIB::Addressmaptable::Addressmapentry
+}; // RMON2MIB::AddressMapTable::AddressMapEntry
 
 
-class RMON2MIB::Hlhostcontroltable : public ydk::Entity
+class RMON2MIB::HlHostControlTable : public ydk::Entity
 {
     public:
-        Hlhostcontroltable();
-        ~Hlhostcontroltable();
+        HlHostControlTable();
+        ~HlHostControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -450,18 +450,18 @@ class RMON2MIB::Hlhostcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Hlhostcontrolentry; //type: RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry
+        class HlHostControlEntry; //type: RMON2MIB::HlHostControlTable::HlHostControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry> > hlhostcontrolentry;
+        ydk::YList hlhostcontrolentry;
         
-}; // RMON2MIB::Hlhostcontroltable
+}; // RMON2MIB::HlHostControlTable
 
 
-class RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry : public ydk::Entity
+class RMON2MIB::HlHostControlTable::HlHostControlEntry : public ydk::Entity
 {
     public:
-        Hlhostcontrolentry();
-        ~Hlhostcontrolentry();
+        HlHostControlEntry();
+        ~HlHostControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -487,14 +487,14 @@ class RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry : public ydk::Entity
         ydk::YLeaf hlhostcontrolowner; //type: binary
         ydk::YLeaf hlhostcontrolstatus; //type: RowStatus
 
-}; // RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry
+}; // RMON2MIB::HlHostControlTable::HlHostControlEntry
 
 
-class RMON2MIB::Nlhosttable : public ydk::Entity
+class RMON2MIB::NlHostTable : public ydk::Entity
 {
     public:
-        Nlhosttable();
-        ~Nlhosttable();
+        NlHostTable();
+        ~NlHostTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -507,18 +507,18 @@ class RMON2MIB::Nlhosttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlhostentry; //type: RMON2MIB::Nlhosttable::Nlhostentry
+        class NlHostEntry; //type: RMON2MIB::NlHostTable::NlHostEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlhosttable::Nlhostentry> > nlhostentry;
+        ydk::YList nlhostentry;
         
-}; // RMON2MIB::Nlhosttable
+}; // RMON2MIB::NlHostTable
 
 
-class RMON2MIB::Nlhosttable::Nlhostentry : public ydk::Entity
+class RMON2MIB::NlHostTable::NlHostEntry : public ydk::Entity
 {
     public:
-        Nlhostentry();
-        ~Nlhostentry();
+        NlHostEntry();
+        ~NlHostEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -531,10 +531,10 @@ class RMON2MIB::Nlhosttable::Nlhostentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::hlhostcontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::HlHostControlTable::HlHostControlEntry::hlhostcontrolindex)
         ydk::YLeaf hlhostcontrolindex;
         ydk::YLeaf nlhosttimemark; //type: uint32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
         ydk::YLeaf nlhostaddress; //type: binary
         ydk::YLeaf nlhostinpkts; //type: uint32
@@ -544,14 +544,14 @@ class RMON2MIB::Nlhosttable::Nlhostentry : public ydk::Entity
         ydk::YLeaf nlhostoutmacnonunicastpkts; //type: uint32
         ydk::YLeaf nlhostcreatetime; //type: uint32
 
-}; // RMON2MIB::Nlhosttable::Nlhostentry
+}; // RMON2MIB::NlHostTable::NlHostEntry
 
 
-class RMON2MIB::Hlmatrixcontroltable : public ydk::Entity
+class RMON2MIB::HlMatrixControlTable : public ydk::Entity
 {
     public:
-        Hlmatrixcontroltable();
-        ~Hlmatrixcontroltable();
+        HlMatrixControlTable();
+        ~HlMatrixControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -564,18 +564,18 @@ class RMON2MIB::Hlmatrixcontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Hlmatrixcontrolentry; //type: RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry
+        class HlMatrixControlEntry; //type: RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry> > hlmatrixcontrolentry;
+        ydk::YList hlmatrixcontrolentry;
         
-}; // RMON2MIB::Hlmatrixcontroltable
+}; // RMON2MIB::HlMatrixControlTable
 
 
-class RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry : public ydk::Entity
+class RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry : public ydk::Entity
 {
     public:
-        Hlmatrixcontrolentry();
-        ~Hlmatrixcontrolentry();
+        HlMatrixControlEntry();
+        ~HlMatrixControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -601,14 +601,14 @@ class RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry : public ydk::Entity
         ydk::YLeaf hlmatrixcontrolowner; //type: binary
         ydk::YLeaf hlmatrixcontrolstatus; //type: RowStatus
 
-}; // RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry
+}; // RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry
 
 
-class RMON2MIB::Nlmatrixsdtable : public ydk::Entity
+class RMON2MIB::NlMatrixSDTable : public ydk::Entity
 {
     public:
-        Nlmatrixsdtable();
-        ~Nlmatrixsdtable();
+        NlMatrixSDTable();
+        ~NlMatrixSDTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -621,18 +621,18 @@ class RMON2MIB::Nlmatrixsdtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlmatrixsdentry; //type: RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry
+        class NlMatrixSDEntry; //type: RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry> > nlmatrixsdentry;
+        ydk::YList nlmatrixsdentry;
         
-}; // RMON2MIB::Nlmatrixsdtable
+}; // RMON2MIB::NlMatrixSDTable
 
 
-class RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry : public ydk::Entity
+class RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry : public ydk::Entity
 {
     public:
-        Nlmatrixsdentry();
-        ~Nlmatrixsdentry();
+        NlMatrixSDEntry();
+        ~NlMatrixSDEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -645,10 +645,10 @@ class RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::hlmatrixcontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::hlmatrixcontrolindex)
         ydk::YLeaf hlmatrixcontrolindex;
         ydk::YLeaf nlmatrixsdtimemark; //type: uint32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
         ydk::YLeaf nlmatrixsdsourceaddress; //type: binary
         ydk::YLeaf nlmatrixsddestaddress; //type: binary
@@ -656,14 +656,14 @@ class RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry : public ydk::Entity
         ydk::YLeaf nlmatrixsdoctets; //type: uint32
         ydk::YLeaf nlmatrixsdcreatetime; //type: uint32
 
-}; // RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry
+}; // RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry
 
 
-class RMON2MIB::Nlmatrixdstable : public ydk::Entity
+class RMON2MIB::NlMatrixDSTable : public ydk::Entity
 {
     public:
-        Nlmatrixdstable();
-        ~Nlmatrixdstable();
+        NlMatrixDSTable();
+        ~NlMatrixDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -676,18 +676,18 @@ class RMON2MIB::Nlmatrixdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlmatrixdsentry; //type: RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry
+        class NlMatrixDSEntry; //type: RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry> > nlmatrixdsentry;
+        ydk::YList nlmatrixdsentry;
         
-}; // RMON2MIB::Nlmatrixdstable
+}; // RMON2MIB::NlMatrixDSTable
 
 
-class RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry : public ydk::Entity
+class RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry : public ydk::Entity
 {
     public:
-        Nlmatrixdsentry();
-        ~Nlmatrixdsentry();
+        NlMatrixDSEntry();
+        ~NlMatrixDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -700,10 +700,10 @@ class RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::hlmatrixcontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::hlmatrixcontrolindex)
         ydk::YLeaf hlmatrixcontrolindex;
         ydk::YLeaf nlmatrixdstimemark; //type: uint32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
         ydk::YLeaf nlmatrixdsdestaddress; //type: binary
         ydk::YLeaf nlmatrixdssourceaddress; //type: binary
@@ -711,14 +711,14 @@ class RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry : public ydk::Entity
         ydk::YLeaf nlmatrixdsoctets; //type: uint32
         ydk::YLeaf nlmatrixdscreatetime; //type: uint32
 
-}; // RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry
+}; // RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry
 
 
-class RMON2MIB::Nlmatrixtopncontroltable : public ydk::Entity
+class RMON2MIB::NlMatrixTopNControlTable : public ydk::Entity
 {
     public:
-        Nlmatrixtopncontroltable();
-        ~Nlmatrixtopncontroltable();
+        NlMatrixTopNControlTable();
+        ~NlMatrixTopNControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -731,18 +731,18 @@ class RMON2MIB::Nlmatrixtopncontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlmatrixtopncontrolentry; //type: RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry
+        class NlMatrixTopNControlEntry; //type: RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry> > nlmatrixtopncontrolentry;
+        ydk::YList nlmatrixtopncontrolentry;
         
-}; // RMON2MIB::Nlmatrixtopncontroltable
+}; // RMON2MIB::NlMatrixTopNControlTable
 
 
-class RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry : public ydk::Entity
+class RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry : public ydk::Entity
 {
     public:
-        Nlmatrixtopncontrolentry();
-        ~Nlmatrixtopncontrolentry();
+        NlMatrixTopNControlEntry();
+        ~NlMatrixTopNControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -757,7 +757,7 @@ class RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry : public ydk:
 
         ydk::YLeaf nlmatrixtopncontrolindex; //type: int32
         ydk::YLeaf nlmatrixtopncontrolmatrixindex; //type: int32
-        ydk::YLeaf nlmatrixtopncontrolratebase; //type: Nlmatrixtopncontrolratebase
+        ydk::YLeaf nlmatrixtopncontrolratebase; //type: NlMatrixTopNControlRateBase
         ydk::YLeaf nlmatrixtopncontroltimeremaining; //type: int32
         ydk::YLeaf nlmatrixtopncontrolgeneratedreports; //type: uint32
         ydk::YLeaf nlmatrixtopncontrolduration; //type: int32
@@ -766,16 +766,16 @@ class RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry : public ydk:
         ydk::YLeaf nlmatrixtopncontrolstarttime; //type: uint32
         ydk::YLeaf nlmatrixtopncontrolowner; //type: binary
         ydk::YLeaf nlmatrixtopncontrolstatus; //type: RowStatus
-        class Nlmatrixtopncontrolratebase;
+        class NlMatrixTopNControlRateBase;
 
-}; // RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry
+}; // RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry
 
 
-class RMON2MIB::Nlmatrixtopntable : public ydk::Entity
+class RMON2MIB::NlMatrixTopNTable : public ydk::Entity
 {
     public:
-        Nlmatrixtopntable();
-        ~Nlmatrixtopntable();
+        NlMatrixTopNTable();
+        ~NlMatrixTopNTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -788,18 +788,18 @@ class RMON2MIB::Nlmatrixtopntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Nlmatrixtopnentry; //type: RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry
+        class NlMatrixTopNEntry; //type: RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry> > nlmatrixtopnentry;
+        ydk::YList nlmatrixtopnentry;
         
-}; // RMON2MIB::Nlmatrixtopntable
+}; // RMON2MIB::NlMatrixTopNTable
 
 
-class RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry : public ydk::Entity
+class RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry : public ydk::Entity
 {
     public:
-        Nlmatrixtopnentry();
-        ~Nlmatrixtopnentry();
+        NlMatrixTopNEntry();
+        ~NlMatrixTopNEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -812,7 +812,7 @@ class RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::nlmatrixtopncontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::nlmatrixtopncontrolindex)
         ydk::YLeaf nlmatrixtopncontrolindex;
         ydk::YLeaf nlmatrixtopnindex; //type: int32
         ydk::YLeaf nlmatrixtopnprotocoldirlocalindex; //type: int32
@@ -823,14 +823,14 @@ class RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry : public ydk::Entity
         ydk::YLeaf nlmatrixtopnoctetrate; //type: uint32
         ydk::YLeaf nlmatrixtopnreverseoctetrate; //type: uint32
 
-}; // RMON2MIB::Nlmatrixtopntable::Nlmatrixtopnentry
+}; // RMON2MIB::NlMatrixTopNTable::NlMatrixTopNEntry
 
 
-class RMON2MIB::Alhosttable : public ydk::Entity
+class RMON2MIB::AlHostTable : public ydk::Entity
 {
     public:
-        Alhosttable();
-        ~Alhosttable();
+        AlHostTable();
+        ~AlHostTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -843,18 +843,18 @@ class RMON2MIB::Alhosttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Alhostentry; //type: RMON2MIB::Alhosttable::Alhostentry
+        class AlHostEntry; //type: RMON2MIB::AlHostTable::AlHostEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Alhosttable::Alhostentry> > alhostentry;
+        ydk::YList alhostentry;
         
-}; // RMON2MIB::Alhosttable
+}; // RMON2MIB::AlHostTable
 
 
-class RMON2MIB::Alhosttable::Alhostentry : public ydk::Entity
+class RMON2MIB::AlHostTable::AlHostEntry : public ydk::Entity
 {
     public:
-        Alhostentry();
-        ~Alhostentry();
+        AlHostEntry();
+        ~AlHostEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -867,14 +867,14 @@ class RMON2MIB::Alhosttable::Alhostentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlhostcontroltable::Hlhostcontrolentry::hlhostcontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::HlHostControlTable::HlHostControlEntry::hlhostcontrolindex)
         ydk::YLeaf hlhostcontrolindex;
         ydk::YLeaf alhosttimemark; //type: uint32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
-        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlhosttable::Nlhostentry::nlhostaddress)
+        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::NlHostTable::NlHostEntry::nlhostaddress)
         ydk::YLeaf nlhostaddress;
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex_2;
         ydk::YLeaf alhostinpkts; //type: uint32
         ydk::YLeaf alhostoutpkts; //type: uint32
@@ -882,14 +882,14 @@ class RMON2MIB::Alhosttable::Alhostentry : public ydk::Entity
         ydk::YLeaf alhostoutoctets; //type: uint32
         ydk::YLeaf alhostcreatetime; //type: uint32
 
-}; // RMON2MIB::Alhosttable::Alhostentry
+}; // RMON2MIB::AlHostTable::AlHostEntry
 
 
-class RMON2MIB::Almatrixsdtable : public ydk::Entity
+class RMON2MIB::AlMatrixSDTable : public ydk::Entity
 {
     public:
-        Almatrixsdtable();
-        ~Almatrixsdtable();
+        AlMatrixSDTable();
+        ~AlMatrixSDTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -902,18 +902,18 @@ class RMON2MIB::Almatrixsdtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Almatrixsdentry; //type: RMON2MIB::Almatrixsdtable::Almatrixsdentry
+        class AlMatrixSDEntry; //type: RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixsdtable::Almatrixsdentry> > almatrixsdentry;
+        ydk::YList almatrixsdentry;
         
-}; // RMON2MIB::Almatrixsdtable
+}; // RMON2MIB::AlMatrixSDTable
 
 
-class RMON2MIB::Almatrixsdtable::Almatrixsdentry : public ydk::Entity
+class RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry : public ydk::Entity
 {
     public:
-        Almatrixsdentry();
-        ~Almatrixsdentry();
+        AlMatrixSDEntry();
+        ~AlMatrixSDEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -926,29 +926,29 @@ class RMON2MIB::Almatrixsdtable::Almatrixsdentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::hlmatrixcontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::hlmatrixcontrolindex)
         ydk::YLeaf hlmatrixcontrolindex;
         ydk::YLeaf almatrixsdtimemark; //type: uint32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
-        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::nlmatrixsdsourceaddress)
+        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::nlmatrixsdsourceaddress)
         ydk::YLeaf nlmatrixsdsourceaddress;
-        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixsdtable::Nlmatrixsdentry::nlmatrixsddestaddress)
+        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixSDTable::NlMatrixSDEntry::nlmatrixsddestaddress)
         ydk::YLeaf nlmatrixsddestaddress;
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex_2;
         ydk::YLeaf almatrixsdpkts; //type: uint32
         ydk::YLeaf almatrixsdoctets; //type: uint32
         ydk::YLeaf almatrixsdcreatetime; //type: uint32
 
-}; // RMON2MIB::Almatrixsdtable::Almatrixsdentry
+}; // RMON2MIB::AlMatrixSDTable::AlMatrixSDEntry
 
 
-class RMON2MIB::Almatrixdstable : public ydk::Entity
+class RMON2MIB::AlMatrixDSTable : public ydk::Entity
 {
     public:
-        Almatrixdstable();
-        ~Almatrixdstable();
+        AlMatrixDSTable();
+        ~AlMatrixDSTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -961,18 +961,18 @@ class RMON2MIB::Almatrixdstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Almatrixdsentry; //type: RMON2MIB::Almatrixdstable::Almatrixdsentry
+        class AlMatrixDSEntry; //type: RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixdstable::Almatrixdsentry> > almatrixdsentry;
+        ydk::YList almatrixdsentry;
         
-}; // RMON2MIB::Almatrixdstable
+}; // RMON2MIB::AlMatrixDSTable
 
 
-class RMON2MIB::Almatrixdstable::Almatrixdsentry : public ydk::Entity
+class RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry : public ydk::Entity
 {
     public:
-        Almatrixdsentry();
-        ~Almatrixdsentry();
+        AlMatrixDSEntry();
+        ~AlMatrixDSEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -985,29 +985,29 @@ class RMON2MIB::Almatrixdstable::Almatrixdsentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Hlmatrixcontroltable::Hlmatrixcontrolentry::hlmatrixcontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::HlMatrixControlTable::HlMatrixControlEntry::hlmatrixcontrolindex)
         ydk::YLeaf hlmatrixcontrolindex;
         ydk::YLeaf almatrixdstimemark; //type: uint32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex;
-        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::nlmatrixdsdestaddress)
+        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::nlmatrixdsdestaddress)
         ydk::YLeaf nlmatrixdsdestaddress;
-        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Nlmatrixdstable::Nlmatrixdsentry::nlmatrixdssourceaddress)
+        //type: binary (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::NlMatrixDSTable::NlMatrixDSEntry::nlmatrixdssourceaddress)
         ydk::YLeaf nlmatrixdssourceaddress;
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Protocoldirtable::Protocoldirentry::protocoldirlocalindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::ProtocolDirTable::ProtocolDirEntry::protocoldirlocalindex)
         ydk::YLeaf protocoldirlocalindex_2;
         ydk::YLeaf almatrixdspkts; //type: uint32
         ydk::YLeaf almatrixdsoctets; //type: uint32
         ydk::YLeaf almatrixdscreatetime; //type: uint32
 
-}; // RMON2MIB::Almatrixdstable::Almatrixdsentry
+}; // RMON2MIB::AlMatrixDSTable::AlMatrixDSEntry
 
 
-class RMON2MIB::Almatrixtopncontroltable : public ydk::Entity
+class RMON2MIB::AlMatrixTopNControlTable : public ydk::Entity
 {
     public:
-        Almatrixtopncontroltable();
-        ~Almatrixtopncontroltable();
+        AlMatrixTopNControlTable();
+        ~AlMatrixTopNControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1020,18 +1020,18 @@ class RMON2MIB::Almatrixtopncontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Almatrixtopncontrolentry; //type: RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry
+        class AlMatrixTopNControlEntry; //type: RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry> > almatrixtopncontrolentry;
+        ydk::YList almatrixtopncontrolentry;
         
-}; // RMON2MIB::Almatrixtopncontroltable
+}; // RMON2MIB::AlMatrixTopNControlTable
 
 
-class RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry : public ydk::Entity
+class RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry : public ydk::Entity
 {
     public:
-        Almatrixtopncontrolentry();
-        ~Almatrixtopncontrolentry();
+        AlMatrixTopNControlEntry();
+        ~AlMatrixTopNControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1046,7 +1046,7 @@ class RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry : public ydk:
 
         ydk::YLeaf almatrixtopncontrolindex; //type: int32
         ydk::YLeaf almatrixtopncontrolmatrixindex; //type: int32
-        ydk::YLeaf almatrixtopncontrolratebase; //type: Almatrixtopncontrolratebase
+        ydk::YLeaf almatrixtopncontrolratebase; //type: AlMatrixTopNControlRateBase
         ydk::YLeaf almatrixtopncontroltimeremaining; //type: int32
         ydk::YLeaf almatrixtopncontrolgeneratedreports; //type: uint32
         ydk::YLeaf almatrixtopncontrolduration; //type: int32
@@ -1055,16 +1055,16 @@ class RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry : public ydk:
         ydk::YLeaf almatrixtopncontrolstarttime; //type: uint32
         ydk::YLeaf almatrixtopncontrolowner; //type: binary
         ydk::YLeaf almatrixtopncontrolstatus; //type: RowStatus
-        class Almatrixtopncontrolratebase;
+        class AlMatrixTopNControlRateBase;
 
-}; // RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry
+}; // RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry
 
 
-class RMON2MIB::Almatrixtopntable : public ydk::Entity
+class RMON2MIB::AlMatrixTopNTable : public ydk::Entity
 {
     public:
-        Almatrixtopntable();
-        ~Almatrixtopntable();
+        AlMatrixTopNTable();
+        ~AlMatrixTopNTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1077,18 +1077,18 @@ class RMON2MIB::Almatrixtopntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Almatrixtopnentry; //type: RMON2MIB::Almatrixtopntable::Almatrixtopnentry
+        class AlMatrixTopNEntry; //type: RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixtopntable::Almatrixtopnentry> > almatrixtopnentry;
+        ydk::YList almatrixtopnentry;
         
-}; // RMON2MIB::Almatrixtopntable
+}; // RMON2MIB::AlMatrixTopNTable
 
 
-class RMON2MIB::Almatrixtopntable::Almatrixtopnentry : public ydk::Entity
+class RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry : public ydk::Entity
 {
     public:
-        Almatrixtopnentry();
-        ~Almatrixtopnentry();
+        AlMatrixTopNEntry();
+        ~AlMatrixTopNEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1101,7 +1101,7 @@ class RMON2MIB::Almatrixtopntable::Almatrixtopnentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::almatrixtopncontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::almatrixtopncontrolindex)
         ydk::YLeaf almatrixtopncontrolindex;
         ydk::YLeaf almatrixtopnindex; //type: int32
         ydk::YLeaf almatrixtopnprotocoldirlocalindex; //type: int32
@@ -1113,14 +1113,14 @@ class RMON2MIB::Almatrixtopntable::Almatrixtopnentry : public ydk::Entity
         ydk::YLeaf almatrixtopnoctetrate; //type: uint32
         ydk::YLeaf almatrixtopnreverseoctetrate; //type: uint32
 
-}; // RMON2MIB::Almatrixtopntable::Almatrixtopnentry
+}; // RMON2MIB::AlMatrixTopNTable::AlMatrixTopNEntry
 
 
-class RMON2MIB::Usrhistorycontroltable : public ydk::Entity
+class RMON2MIB::UsrHistoryControlTable : public ydk::Entity
 {
     public:
-        Usrhistorycontroltable();
-        ~Usrhistorycontroltable();
+        UsrHistoryControlTable();
+        ~UsrHistoryControlTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1133,18 +1133,18 @@ class RMON2MIB::Usrhistorycontroltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Usrhistorycontrolentry; //type: RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry
+        class UsrHistoryControlEntry; //type: RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry> > usrhistorycontrolentry;
+        ydk::YList usrhistorycontrolentry;
         
-}; // RMON2MIB::Usrhistorycontroltable
+}; // RMON2MIB::UsrHistoryControlTable
 
 
-class RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry : public ydk::Entity
+class RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry : public ydk::Entity
 {
     public:
-        Usrhistorycontrolentry();
-        ~Usrhistorycontrolentry();
+        UsrHistoryControlEntry();
+        ~UsrHistoryControlEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1165,14 +1165,14 @@ class RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry : public ydk::Ent
         ydk::YLeaf usrhistorycontrolowner; //type: binary
         ydk::YLeaf usrhistorycontrolstatus; //type: RowStatus
 
-}; // RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry
+}; // RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry
 
 
-class RMON2MIB::Usrhistoryobjecttable : public ydk::Entity
+class RMON2MIB::UsrHistoryObjectTable : public ydk::Entity
 {
     public:
-        Usrhistoryobjecttable();
-        ~Usrhistoryobjecttable();
+        UsrHistoryObjectTable();
+        ~UsrHistoryObjectTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1185,18 +1185,18 @@ class RMON2MIB::Usrhistoryobjecttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Usrhistoryobjectentry; //type: RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry
+        class UsrHistoryObjectEntry; //type: RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry> > usrhistoryobjectentry;
+        ydk::YList usrhistoryobjectentry;
         
-}; // RMON2MIB::Usrhistoryobjecttable
+}; // RMON2MIB::UsrHistoryObjectTable
 
 
-class RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry : public ydk::Entity
+class RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry : public ydk::Entity
 {
     public:
-        Usrhistoryobjectentry();
-        ~Usrhistoryobjectentry();
+        UsrHistoryObjectEntry();
+        ~UsrHistoryObjectEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1209,21 +1209,21 @@ class RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::usrhistorycontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::usrhistorycontrolindex)
         ydk::YLeaf usrhistorycontrolindex;
         ydk::YLeaf usrhistoryobjectindex; //type: int32
         ydk::YLeaf usrhistoryobjectvariable; //type: string
-        ydk::YLeaf usrhistoryobjectsampletype; //type: Usrhistoryobjectsampletype
-        class Usrhistoryobjectsampletype;
+        ydk::YLeaf usrhistoryobjectsampletype; //type: UsrHistoryObjectSampleType
+        class UsrHistoryObjectSampleType;
 
-}; // RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry
+}; // RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry
 
 
-class RMON2MIB::Usrhistorytable : public ydk::Entity
+class RMON2MIB::UsrHistoryTable : public ydk::Entity
 {
     public:
-        Usrhistorytable();
-        ~Usrhistorytable();
+        UsrHistoryTable();
+        ~UsrHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1236,18 +1236,18 @@ class RMON2MIB::Usrhistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Usrhistoryentry; //type: RMON2MIB::Usrhistorytable::Usrhistoryentry
+        class UsrHistoryEntry; //type: RMON2MIB::UsrHistoryTable::UsrHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistorytable::Usrhistoryentry> > usrhistoryentry;
+        ydk::YList usrhistoryentry;
         
-}; // RMON2MIB::Usrhistorytable
+}; // RMON2MIB::UsrHistoryTable
 
 
-class RMON2MIB::Usrhistorytable::Usrhistoryentry : public ydk::Entity
+class RMON2MIB::UsrHistoryTable::UsrHistoryEntry : public ydk::Entity
 {
     public:
-        Usrhistoryentry();
-        ~Usrhistoryentry();
+        UsrHistoryEntry();
+        ~UsrHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1260,25 +1260,25 @@ class RMON2MIB::Usrhistorytable::Usrhistoryentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistorycontroltable::Usrhistorycontrolentry::usrhistorycontrolindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::UsrHistoryControlTable::UsrHistoryControlEntry::usrhistorycontrolindex)
         ydk::YLeaf usrhistorycontrolindex;
         ydk::YLeaf usrhistorysampleindex; //type: int32
-        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::usrhistoryobjectindex)
+        //type: int32 (refers to cisco_ios_xe::RMON2_MIB::RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::usrhistoryobjectindex)
         ydk::YLeaf usrhistoryobjectindex;
         ydk::YLeaf usrhistoryintervalstart; //type: uint32
         ydk::YLeaf usrhistoryintervalend; //type: uint32
         ydk::YLeaf usrhistoryabsvalue; //type: uint32
-        ydk::YLeaf usrhistoryvalstatus; //type: Usrhistoryvalstatus
-        class Usrhistoryvalstatus;
+        ydk::YLeaf usrhistoryvalstatus; //type: UsrHistoryValStatus
+        class UsrHistoryValStatus;
 
-}; // RMON2MIB::Usrhistorytable::Usrhistoryentry
+}; // RMON2MIB::UsrHistoryTable::UsrHistoryEntry
 
 
-class RMON2MIB::Serialconfigtable : public ydk::Entity
+class RMON2MIB::SerialConfigTable : public ydk::Entity
 {
     public:
-        Serialconfigtable();
-        ~Serialconfigtable();
+        SerialConfigTable();
+        ~SerialConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1291,18 +1291,18 @@ class RMON2MIB::Serialconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Serialconfigentry; //type: RMON2MIB::Serialconfigtable::Serialconfigentry
+        class SerialConfigEntry; //type: RMON2MIB::SerialConfigTable::SerialConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Serialconfigtable::Serialconfigentry> > serialconfigentry;
+        ydk::YList serialconfigentry;
         
-}; // RMON2MIB::Serialconfigtable
+}; // RMON2MIB::SerialConfigTable
 
 
-class RMON2MIB::Serialconfigtable::Serialconfigentry : public ydk::Entity
+class RMON2MIB::SerialConfigTable::SerialConfigEntry : public ydk::Entity
 {
     public:
-        Serialconfigentry();
-        ~Serialconfigentry();
+        SerialConfigEntry();
+        ~SerialConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1315,10 +1315,10 @@ class RMON2MIB::Serialconfigtable::Serialconfigentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::RFC1213_MIB::RFC1213MIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
-        ydk::YLeaf serialmode; //type: Serialmode
-        ydk::YLeaf serialprotocol; //type: Serialprotocol
+        ydk::YLeaf serialmode; //type: SerialMode
+        ydk::YLeaf serialprotocol; //type: SerialProtocol
         ydk::YLeaf serialtimeout; //type: int32
         ydk::YLeaf serialmodeminitstring; //type: string
         ydk::YLeaf serialmodemhangupstring; //type: string
@@ -1326,17 +1326,17 @@ class RMON2MIB::Serialconfigtable::Serialconfigentry : public ydk::Entity
         ydk::YLeaf serialmodemnoconnectresp; //type: string
         ydk::YLeaf serialdialouttimeout; //type: int32
         ydk::YLeaf serialstatus; //type: RowStatus
-        class Serialmode;
-        class Serialprotocol;
+        class SerialMode;
+        class SerialProtocol;
 
-}; // RMON2MIB::Serialconfigtable::Serialconfigentry
+}; // RMON2MIB::SerialConfigTable::SerialConfigEntry
 
 
-class RMON2MIB::Netconfigtable : public ydk::Entity
+class RMON2MIB::NetConfigTable : public ydk::Entity
 {
     public:
-        Netconfigtable();
-        ~Netconfigtable();
+        NetConfigTable();
+        ~NetConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1349,18 +1349,18 @@ class RMON2MIB::Netconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Netconfigentry; //type: RMON2MIB::Netconfigtable::Netconfigentry
+        class NetConfigEntry; //type: RMON2MIB::NetConfigTable::NetConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Netconfigtable::Netconfigentry> > netconfigentry;
+        ydk::YList netconfigentry;
         
-}; // RMON2MIB::Netconfigtable
+}; // RMON2MIB::NetConfigTable
 
 
-class RMON2MIB::Netconfigtable::Netconfigentry : public ydk::Entity
+class RMON2MIB::NetConfigTable::NetConfigEntry : public ydk::Entity
 {
     public:
-        Netconfigentry();
-        ~Netconfigentry();
+        NetConfigEntry();
+        ~NetConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1373,20 +1373,20 @@ class RMON2MIB::Netconfigtable::Netconfigentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RFC1213_MIB::RFC1213MIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::RFC1213_MIB::RFC1213MIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf netconfigipaddress; //type: string
         ydk::YLeaf netconfigsubnetmask; //type: string
         ydk::YLeaf netconfigstatus; //type: RowStatus
 
-}; // RMON2MIB::Netconfigtable::Netconfigentry
+}; // RMON2MIB::NetConfigTable::NetConfigEntry
 
 
-class RMON2MIB::Trapdesttable : public ydk::Entity
+class RMON2MIB::TrapDestTable : public ydk::Entity
 {
     public:
-        Trapdesttable();
-        ~Trapdesttable();
+        TrapDestTable();
+        ~TrapDestTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1399,18 +1399,18 @@ class RMON2MIB::Trapdesttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Trapdestentry; //type: RMON2MIB::Trapdesttable::Trapdestentry
+        class TrapDestEntry; //type: RMON2MIB::TrapDestTable::TrapDestEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Trapdesttable::Trapdestentry> > trapdestentry;
+        ydk::YList trapdestentry;
         
-}; // RMON2MIB::Trapdesttable
+}; // RMON2MIB::TrapDestTable
 
 
-class RMON2MIB::Trapdesttable::Trapdestentry : public ydk::Entity
+class RMON2MIB::TrapDestTable::TrapDestEntry : public ydk::Entity
 {
     public:
-        Trapdestentry();
-        ~Trapdestentry();
+        TrapDestEntry();
+        ~TrapDestEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1425,20 +1425,20 @@ class RMON2MIB::Trapdesttable::Trapdestentry : public ydk::Entity
 
         ydk::YLeaf trapdestindex; //type: int32
         ydk::YLeaf trapdestcommunity; //type: binary
-        ydk::YLeaf trapdestprotocol; //type: Trapdestprotocol
+        ydk::YLeaf trapdestprotocol; //type: TrapDestProtocol
         ydk::YLeaf trapdestaddress; //type: binary
         ydk::YLeaf trapdestowner; //type: binary
         ydk::YLeaf trapdeststatus; //type: RowStatus
-        class Trapdestprotocol;
+        class TrapDestProtocol;
 
-}; // RMON2MIB::Trapdesttable::Trapdestentry
+}; // RMON2MIB::TrapDestTable::TrapDestEntry
 
 
-class RMON2MIB::Serialconnectiontable : public ydk::Entity
+class RMON2MIB::SerialConnectionTable : public ydk::Entity
 {
     public:
-        Serialconnectiontable();
-        ~Serialconnectiontable();
+        SerialConnectionTable();
+        ~SerialConnectionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1451,18 +1451,18 @@ class RMON2MIB::Serialconnectiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Serialconnectionentry; //type: RMON2MIB::Serialconnectiontable::Serialconnectionentry
+        class SerialConnectionEntry; //type: RMON2MIB::SerialConnectionTable::SerialConnectionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RMON2_MIB::RMON2MIB::Serialconnectiontable::Serialconnectionentry> > serialconnectionentry;
+        ydk::YList serialconnectionentry;
         
-}; // RMON2MIB::Serialconnectiontable
+}; // RMON2MIB::SerialConnectionTable
 
 
-class RMON2MIB::Serialconnectiontable::Serialconnectionentry : public ydk::Entity
+class RMON2MIB::SerialConnectionTable::SerialConnectionEntry : public ydk::Entity
 {
     public:
-        Serialconnectionentry();
-        ~Serialconnectionentry();
+        SerialConnectionEntry();
+        ~SerialConnectionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1477,18 +1477,18 @@ class RMON2MIB::Serialconnectiontable::Serialconnectionentry : public ydk::Entit
 
         ydk::YLeaf serialconnectindex; //type: int32
         ydk::YLeaf serialconnectdestipaddress; //type: string
-        ydk::YLeaf serialconnecttype; //type: Serialconnecttype
+        ydk::YLeaf serialconnecttype; //type: SerialConnectType
         ydk::YLeaf serialconnectdialstring; //type: string
         ydk::YLeaf serialconnectswitchconnectseq; //type: string
         ydk::YLeaf serialconnectswitchdisconnectseq; //type: string
         ydk::YLeaf serialconnectswitchresetseq; //type: string
         ydk::YLeaf serialconnectowner; //type: binary
         ydk::YLeaf serialconnectstatus; //type: RowStatus
-        class Serialconnecttype;
+        class SerialConnectType;
 
-}; // RMON2MIB::Serialconnectiontable::Serialconnectionentry
+}; // RMON2MIB::SerialConnectionTable::SerialConnectionEntry
 
-class RMON2MIB::Probeconfig::Proberesetcontrol : public ydk::Enum
+class RMON2MIB::ProbeConfig::ProbeResetControl : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf running;
@@ -1497,7 +1497,7 @@ class RMON2MIB::Probeconfig::Proberesetcontrol : public ydk::Enum
 
 };
 
-class RMON2MIB::Probeconfig::Probedownloadaction : public ydk::Enum
+class RMON2MIB::ProbeConfig::ProbeDownloadAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notDownloading;
@@ -1506,7 +1506,7 @@ class RMON2MIB::Probeconfig::Probedownloadaction : public ydk::Enum
 
 };
 
-class RMON2MIB::Probeconfig::Probedownloadstatus : public ydk::Enum
+class RMON2MIB::ProbeConfig::ProbeDownloadStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf downloadSuccess;
@@ -1520,7 +1520,7 @@ class RMON2MIB::Probeconfig::Probedownloadstatus : public ydk::Enum
 
 };
 
-class RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldiraddressmapconfig : public ydk::Enum
+class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirAddressMapConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notSupported;
@@ -1529,7 +1529,7 @@ class RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldiraddressmapconfig 
 
 };
 
-class RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirhostconfig : public ydk::Enum
+class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirHostConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notSupported;
@@ -1538,7 +1538,7 @@ class RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirhostconfig : publ
 
 };
 
-class RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirmatrixconfig : public ydk::Enum
+class RMON2MIB::ProtocolDirTable::ProtocolDirEntry::ProtocolDirMatrixConfig : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notSupported;
@@ -1547,7 +1547,7 @@ class RMON2MIB::Protocoldirtable::Protocoldirentry::Protocoldirmatrixconfig : pu
 
 };
 
-class RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::Nlmatrixtopncontrolratebase : public ydk::Enum
+class RMON2MIB::NlMatrixTopNControlTable::NlMatrixTopNControlEntry::NlMatrixTopNControlRateBase : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf nlMatrixTopNPkts;
@@ -1555,7 +1555,7 @@ class RMON2MIB::Nlmatrixtopncontroltable::Nlmatrixtopncontrolentry::Nlmatrixtopn
 
 };
 
-class RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopncontrolratebase : public ydk::Enum
+class RMON2MIB::AlMatrixTopNControlTable::AlMatrixTopNControlEntry::AlMatrixTopNControlRateBase : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf alMatrixTopNTerminalsPkts;
@@ -1565,7 +1565,7 @@ class RMON2MIB::Almatrixtopncontroltable::Almatrixtopncontrolentry::Almatrixtopn
 
 };
 
-class RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::Usrhistoryobjectsampletype : public ydk::Enum
+class RMON2MIB::UsrHistoryObjectTable::UsrHistoryObjectEntry::UsrHistoryObjectSampleType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf absoluteValue;
@@ -1573,7 +1573,7 @@ class RMON2MIB::Usrhistoryobjecttable::Usrhistoryobjectentry::Usrhistoryobjectsa
 
 };
 
-class RMON2MIB::Usrhistorytable::Usrhistoryentry::Usrhistoryvalstatus : public ydk::Enum
+class RMON2MIB::UsrHistoryTable::UsrHistoryEntry::UsrHistoryValStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf valueNotAvailable;
@@ -1582,7 +1582,7 @@ class RMON2MIB::Usrhistorytable::Usrhistoryentry::Usrhistoryvalstatus : public y
 
 };
 
-class RMON2MIB::Serialconfigtable::Serialconfigentry::Serialmode : public ydk::Enum
+class RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf direct;
@@ -1590,7 +1590,7 @@ class RMON2MIB::Serialconfigtable::Serialconfigentry::Serialmode : public ydk::E
 
 };
 
-class RMON2MIB::Serialconfigtable::Serialconfigentry::Serialprotocol : public ydk::Enum
+class RMON2MIB::SerialConfigTable::SerialConfigEntry::SerialProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1599,7 +1599,7 @@ class RMON2MIB::Serialconfigtable::Serialconfigentry::Serialprotocol : public yd
 
 };
 
-class RMON2MIB::Trapdesttable::Trapdestentry::Trapdestprotocol : public ydk::Enum
+class RMON2MIB::TrapDestTable::TrapDestEntry::TrapDestProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ip;
@@ -1607,7 +1607,7 @@ class RMON2MIB::Trapdesttable::Trapdestentry::Trapdestprotocol : public ydk::Enu
 
 };
 
-class RMON2MIB::Serialconnectiontable::Serialconnectionentry::Serialconnecttype : public ydk::Enum
+class RMON2MIB::SerialConnectionTable::SerialConnectionEntry::SerialConnectType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf direct;

@@ -109,7 +109,7 @@ class MplsLsd::LabelDatabases : public ydk::Entity
 
         class LabelDatabase; //type: MplsLsd::LabelDatabases::LabelDatabase
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_lsd_cfg::MplsLsd::LabelDatabases::LabelDatabase> > label_database;
+        ydk::YList label_database;
         
 }; // MplsLsd::LabelDatabases
 

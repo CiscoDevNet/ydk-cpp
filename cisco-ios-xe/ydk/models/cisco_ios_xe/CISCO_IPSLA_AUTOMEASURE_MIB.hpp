@@ -32,24 +32,24 @@ class CISCOIPSLAAUTOMEASUREMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cipslaautogrouptable; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable
-        class Cipslaautogroupdesttable; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable
-        class Cipslareacttable; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable
-        class Cipslaautogroupschedtable; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable
+        class CipslaAutoGroupTable; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable
+        class CipslaAutoGroupDestTable; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable
+        class CipslaReactTable; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable
+        class CipslaAutoGroupSchedTable; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable> cipslaautogrouptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable> cipslaautogroupdesttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable> cipslareacttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable> cipslaautogroupschedtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable> cipslaautogrouptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable> cipslaautogroupdesttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable> cipslareacttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable> cipslaautogroupschedtable;
         
 }; // CISCOIPSLAAUTOMEASUREMIB
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable : public ydk::Entity
 {
     public:
-        Cipslaautogrouptable();
-        ~Cipslaautogrouptable();
+        CipslaAutoGroupTable();
+        ~CipslaAutoGroupTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,18 +62,18 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslaautogroupentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry
+        class CipslaAutoGroupEntry; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry> > cipslaautogroupentry;
+        ydk::YList cipslaautogroupentry;
         
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry : public ydk::Entity
 {
     public:
-        Cipslaautogroupentry();
-        ~Cipslaautogroupentry();
+        CipslaAutoGroupEntry();
+        ~CipslaAutoGroupEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -100,14 +100,14 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry : pub
         ydk::YLeaf cipslaautogroupstoragetype; //type: StorageType
         ydk::YLeaf cipslaautogrouprowstatus; //type: RowStatus
 
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable : public ydk::Entity
 {
     public:
-        Cipslaautogroupdesttable();
-        ~Cipslaautogroupdesttable();
+        CipslaAutoGroupDestTable();
+        ~CipslaAutoGroupDestTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -120,18 +120,18 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslaautogroupdestentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry
+        class CipslaAutoGroupDestEntry; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry> > cipslaautogroupdestentry;
+        ydk::YList cipslaautogroupdestentry;
         
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry : public ydk::Entity
 {
     public:
-        Cipslaautogroupdestentry();
-        ~Cipslaautogroupdestentry();
+        CipslaAutoGroupDestEntry();
+        ~CipslaAutoGroupDestEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,14 +151,14 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestent
         ydk::YLeaf cipslaautogroupdeststoragetype; //type: StorageType
         ydk::YLeaf cipslaautogroupdestrowstatus; //type: RowStatus
 
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupdesttable::Cipslaautogroupdestentry
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupDestTable::CipslaAutoGroupDestEntry
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable : public ydk::Entity
 {
     public:
-        Cipslareacttable();
-        ~Cipslareacttable();
+        CipslaReactTable();
+        ~CipslaReactTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -171,18 +171,18 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslareactentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry
+        class CipslaReactEntry; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry> > cipslareactentry;
+        ydk::YList cipslareactentry;
         
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry : public ydk::Entity
 {
     public:
-        Cipslareactentry();
-        ~Cipslareactentry();
+        CipslaReactEntry();
+        ~CipslaReactEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -197,28 +197,28 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry : public ydk:
 
         ydk::YLeaf cipslaautogroupopertype; //type: IpSlaOperType
         ydk::YLeaf cipslareactconfigindex; //type: uint32
-        //type: string (refers to cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogrouptable::Cipslaautogroupentry::cipslaautogroupopertemplatename)
+        //type: string (refers to cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupTable::CipslaAutoGroupEntry::cipslaautogroupopertemplatename)
         ydk::YLeaf cipslaautogroupopertemplatename;
         ydk::YLeaf cipslareactvar; //type: IpSlaReactVar
-        ydk::YLeaf cipslareactthresholdtype; //type: Cipslareactthresholdtype
-        ydk::YLeaf cipslareactactiontype; //type: Cipslareactactiontype
+        ydk::YLeaf cipslareactthresholdtype; //type: CipslaReactThresholdType
+        ydk::YLeaf cipslareactactiontype; //type: CipslaReactActionType
         ydk::YLeaf cipslareactthresholdrising; //type: uint32
         ydk::YLeaf cipslareactthresholdfalling; //type: uint32
         ydk::YLeaf cipslareactthresholdcountx; //type: uint32
         ydk::YLeaf cipslareactthresholdcounty; //type: uint32
         ydk::YLeaf cipslareactstoragetype; //type: StorageType
         ydk::YLeaf cipslareactrowstatus; //type: RowStatus
-        class Cipslareactthresholdtype;
-        class Cipslareactactiontype;
+        class CipslaReactThresholdType;
+        class CipslaReactActionType;
 
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable : public ydk::Entity
 {
     public:
-        Cipslaautogroupschedtable();
-        ~Cipslaautogroupschedtable();
+        CipslaAutoGroupSchedTable();
+        ~CipslaAutoGroupSchedTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -231,18 +231,18 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cipslaautogroupschedentry; //type: CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry
+        class CipslaAutoGroupSchedEntry; //type: CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IPSLA_AUTOMEASURE_MIB::CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry> > cipslaautogroupschedentry;
+        ydk::YList cipslaautogroupschedentry;
         
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable
 
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry : public ydk::Entity
+class CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry : public ydk::Entity
 {
     public:
-        Cipslaautogroupschedentry();
-        ~Cipslaautogroupschedentry();
+        CipslaAutoGroupSchedEntry();
+        ~CipslaAutoGroupSchedEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -266,9 +266,9 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschede
         ydk::YLeaf cipslaautogroupschedstoragetype; //type: StorageType
         ydk::YLeaf cipslaautogroupschedrowstatus; //type: RowStatus
 
-}; // CISCOIPSLAAUTOMEASUREMIB::Cipslaautogroupschedtable::Cipslaautogroupschedentry
+}; // CISCOIPSLAAUTOMEASUREMIB::CipslaAutoGroupSchedTable::CipslaAutoGroupSchedEntry
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactthresholdtype : public ydk::Enum
+class CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactThresholdType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf never;
@@ -279,7 +279,7 @@ class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactt
 
 };
 
-class CISCOIPSLAAUTOMEASUREMIB::Cipslareacttable::Cipslareactentry::Cipslareactactiontype : public ydk::Enum
+class CISCOIPSLAAUTOMEASUREMIB::CipslaReactTable::CipslaReactEntry::CipslaReactActionType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

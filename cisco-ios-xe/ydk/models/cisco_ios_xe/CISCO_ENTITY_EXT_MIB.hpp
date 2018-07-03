@@ -31,22 +31,22 @@ class CISCOENTITYEXTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ceextphysicalprocessortable; //type: CISCOENTITYEXTMIB::Ceextphysicalprocessortable
-        class Ceextconfigregtable; //type: CISCOENTITYEXTMIB::Ceextconfigregtable
-        class Ceextentityledtable; //type: CISCOENTITYEXTMIB::Ceextentityledtable
+        class CeExtPhysicalProcessorTable; //type: CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable
+        class CeExtConfigRegTable; //type: CISCOENTITYEXTMIB::CeExtConfigRegTable
+        class CeExtEntityLEDTable; //type: CISCOENTITYEXTMIB::CeExtEntityLEDTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::Ceextphysicalprocessortable> ceextphysicalprocessortable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::Ceextconfigregtable> ceextconfigregtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::Ceextentityledtable> ceextentityledtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable> ceextphysicalprocessortable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::CeExtConfigRegTable> ceextconfigregtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::CeExtEntityLEDTable> ceextentityledtable;
         
 }; // CISCOENTITYEXTMIB
 
 
-class CISCOENTITYEXTMIB::Ceextphysicalprocessortable : public ydk::Entity
+class CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable : public ydk::Entity
 {
     public:
-        Ceextphysicalprocessortable();
-        ~Ceextphysicalprocessortable();
+        CeExtPhysicalProcessorTable();
+        ~CeExtPhysicalProcessorTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,18 +59,18 @@ class CISCOENTITYEXTMIB::Ceextphysicalprocessortable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceextphysicalprocessorentry; //type: CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry
+        class CeExtPhysicalProcessorEntry; //type: CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry> > ceextphysicalprocessorentry;
+        ydk::YList ceextphysicalprocessorentry;
         
-}; // CISCOENTITYEXTMIB::Ceextphysicalprocessortable
+}; // CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable
 
 
-class CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry : public ydk::Entity
+class CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry : public ydk::Entity
 {
     public:
-        Ceextphysicalprocessorentry();
-        ~Ceextphysicalprocessorentry();
+        CeExtPhysicalProcessorEntry();
+        ~CeExtPhysicalProcessorEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -83,7 +83,7 @@ class CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentr
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceextprocessorram; //type: uint32
         ydk::YLeaf ceextnvramsize; //type: uint32
@@ -91,14 +91,14 @@ class CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentr
         ydk::YLeaf ceextprocessorramoverflow; //type: uint32
         ydk::YLeaf ceexthcprocessorram; //type: uint64
 
-}; // CISCOENTITYEXTMIB::Ceextphysicalprocessortable::Ceextphysicalprocessorentry
+}; // CISCOENTITYEXTMIB::CeExtPhysicalProcessorTable::CeExtPhysicalProcessorEntry
 
 
-class CISCOENTITYEXTMIB::Ceextconfigregtable : public ydk::Entity
+class CISCOENTITYEXTMIB::CeExtConfigRegTable : public ydk::Entity
 {
     public:
-        Ceextconfigregtable();
-        ~Ceextconfigregtable();
+        CeExtConfigRegTable();
+        ~CeExtConfigRegTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -111,18 +111,18 @@ class CISCOENTITYEXTMIB::Ceextconfigregtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceextconfigregentry; //type: CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry
+        class CeExtConfigRegEntry; //type: CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry> > ceextconfigregentry;
+        ydk::YList ceextconfigregentry;
         
-}; // CISCOENTITYEXTMIB::Ceextconfigregtable
+}; // CISCOENTITYEXTMIB::CeExtConfigRegTable
 
 
-class CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry : public ydk::Entity
+class CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry : public ydk::Entity
 {
     public:
-        Ceextconfigregentry();
-        ~Ceextconfigregentry();
+        CeExtConfigRegEntry();
+        ~CeExtConfigRegEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,21 +135,21 @@ class CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceextconfigregister; //type: string
         ydk::YLeaf ceextconfigregnext; //type: string
         ydk::YLeaf ceextsysbootimagelist; //type: binary
         ydk::YLeaf ceextkickstartimagelist; //type: binary
 
-}; // CISCOENTITYEXTMIB::Ceextconfigregtable::Ceextconfigregentry
+}; // CISCOENTITYEXTMIB::CeExtConfigRegTable::CeExtConfigRegEntry
 
 
-class CISCOENTITYEXTMIB::Ceextentityledtable : public ydk::Entity
+class CISCOENTITYEXTMIB::CeExtEntityLEDTable : public ydk::Entity
 {
     public:
-        Ceextentityledtable();
-        ~Ceextentityledtable();
+        CeExtEntityLEDTable();
+        ~CeExtEntityLEDTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -162,18 +162,18 @@ class CISCOENTITYEXTMIB::Ceextentityledtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceextentityledentry; //type: CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry
+        class CeExtEntityLEDEntry; //type: CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_EXT_MIB::CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry> > ceextentityledentry;
+        ydk::YList ceextentityledentry;
         
-}; // CISCOENTITYEXTMIB::Ceextentityledtable
+}; // CISCOENTITYEXTMIB::CeExtEntityLEDTable
 
 
-class CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry : public ydk::Entity
+class CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry : public ydk::Entity
 {
     public:
-        Ceextentityledentry();
-        ~Ceextentityledentry();
+        CeExtEntityLEDEntry();
+        ~CeExtEntityLEDEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -186,16 +186,16 @@ class CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        ydk::YLeaf ceextentityledtype; //type: Ceextentityledtype
-        ydk::YLeaf ceextentityledcolor; //type: Ceextentityledcolor
-        class Ceextentityledtype;
-        class Ceextentityledcolor;
+        ydk::YLeaf ceextentityledtype; //type: CeExtEntityLEDType
+        ydk::YLeaf ceextentityledcolor; //type: CeExtEntityLEDColor
+        class CeExtEntityLEDType;
+        class CeExtEntityLEDColor;
 
-}; // CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry
+}; // CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry
 
-class CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry::Ceextentityledtype : public ydk::Enum
+class CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::CeExtEntityLEDType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf status;
@@ -206,7 +206,7 @@ class CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry::Ceextentityle
 
 };
 
-class CISCOENTITYEXTMIB::Ceextentityledtable::Ceextentityledentry::Ceextentityledcolor : public ydk::Enum
+class CISCOENTITYEXTMIB::CeExtEntityLEDTable::CeExtEntityLEDEntry::CeExtEntityLEDColor : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf off;

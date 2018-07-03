@@ -17,7 +17,7 @@ IpDomain::IpDomain()
 {
     vrfs->parent = this;
 
-    yang_name = "ip-domain"; yang_parent_name = "Cisco-IOS-XR-ip-domain-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip-domain"; yang_parent_name = "Cisco-IOS-XR-ip-domain-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IpDomain::~IpDomain()
@@ -26,6 +26,7 @@ IpDomain::~IpDomain()
 
 bool IpDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data());
 }
 
@@ -118,9 +119,11 @@ bool IpDomain::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 IpDomain::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "ip-domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "ip-domain"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpDomain::Vrfs::~Vrfs()
@@ -129,7 +132,8 @@ IpDomain::Vrfs::~Vrfs()
 
 bool IpDomain::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool IpDomain::Vrfs::has_data() const
 
 bool IpDomain::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> IpDomain::Vrfs::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<IpDomain::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -221,18 +225,18 @@ IpDomain::Vrfs::Vrf::Vrf()
     multicast_domain{YType::str, "multicast-domain"},
     source_interface{YType::str, "source-interface"},
     name{YType::str, "name"}
-    	,
+        ,
     ipv6_hosts(std::make_shared<IpDomain::Vrfs::Vrf::Ipv6Hosts>())
-	,servers(std::make_shared<IpDomain::Vrfs::Vrf::Servers>())
-	,lists(std::make_shared<IpDomain::Vrfs::Vrf::Lists>())
-	,ipv4_hosts(std::make_shared<IpDomain::Vrfs::Vrf::Ipv4Hosts>())
+    , servers(std::make_shared<IpDomain::Vrfs::Vrf::Servers>())
+    , lists(std::make_shared<IpDomain::Vrfs::Vrf::Lists>())
+    , ipv4_hosts(std::make_shared<IpDomain::Vrfs::Vrf::Ipv4Hosts>())
 {
     ipv6_hosts->parent = this;
     servers->parent = this;
     lists->parent = this;
     ipv4_hosts->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpDomain::Vrfs::Vrf::~Vrf()
@@ -241,6 +245,7 @@ IpDomain::Vrfs::Vrf::~Vrf()
 
 bool IpDomain::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| lookup.is_set
 	|| multicast_domain.is_set
@@ -276,7 +281,8 @@ std::string IpDomain::Vrfs::Vrf::get_absolute_path() const
 std::string IpDomain::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -428,9 +434,11 @@ bool IpDomain::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Hosts()
+    :
+    ipv6_host(this, {"host_name"})
 {
 
-    yang_name = "ipv6-hosts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-hosts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Ipv6Hosts::~Ipv6Hosts()
@@ -439,7 +447,8 @@ IpDomain::Vrfs::Vrf::Ipv6Hosts::~Ipv6Hosts()
 
 bool IpDomain::Vrfs::Vrf::Ipv6Hosts::has_data() const
 {
-    for (std::size_t index=0; index<ipv6_host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv6_host.len(); index++)
     {
         if(ipv6_host[index]->has_data())
             return true;
@@ -449,7 +458,7 @@ bool IpDomain::Vrfs::Vrf::Ipv6Hosts::has_data() const
 
 bool IpDomain::Vrfs::Vrf::Ipv6Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<ipv6_host.size(); index++)
+    for (std::size_t index=0; index<ipv6_host.len(); index++)
     {
         if(ipv6_host[index]->has_operation())
             return true;
@@ -479,7 +488,7 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Ipv6Hosts::get_child_by_name(const 
     {
         auto c = std::make_shared<IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host>();
         c->parent = this;
-        ipv6_host.push_back(c);
+        ipv6_host.append(c);
         return c;
     }
 
@@ -491,7 +500,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Ipv6Hosts::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv6_host)
+    for (auto c : ipv6_host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -523,7 +532,7 @@ IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::Ipv6Host()
     address{YType::str, "address"}
 {
 
-    yang_name = "ipv6-host"; yang_parent_name = "ipv6-hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6-host"; yang_parent_name = "ipv6-hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::~Ipv6Host()
@@ -532,6 +541,7 @@ IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::~Ipv6Host()
 
 bool IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -555,7 +565,8 @@ bool IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::has_operation() const
 std::string IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv6-host" <<"[host-name='" <<host_name <<"']";
+    path_buffer << "ipv6-host";
+    ADD_KEY_TOKEN(host_name, "host-name");
     return path_buffer.str();
 }
 
@@ -617,9 +628,11 @@ bool IpDomain::Vrfs::Vrf::Ipv6Hosts::Ipv6Host::has_leaf_or_child_of_name(const s
 }
 
 IpDomain::Vrfs::Vrf::Servers::Servers()
+    :
+    server(this, {"order", "server_address"})
 {
 
-    yang_name = "servers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "servers"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Servers::~Servers()
@@ -628,7 +641,8 @@ IpDomain::Vrfs::Vrf::Servers::~Servers()
 
 bool IpDomain::Vrfs::Vrf::Servers::has_data() const
 {
-    for (std::size_t index=0; index<server.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server.len(); index++)
     {
         if(server[index]->has_data())
             return true;
@@ -638,7 +652,7 @@ bool IpDomain::Vrfs::Vrf::Servers::has_data() const
 
 bool IpDomain::Vrfs::Vrf::Servers::has_operation() const
 {
-    for (std::size_t index=0; index<server.size(); index++)
+    for (std::size_t index=0; index<server.len(); index++)
     {
         if(server[index]->has_operation())
             return true;
@@ -668,7 +682,7 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Servers::get_child_by_name(const st
     {
         auto c = std::make_shared<IpDomain::Vrfs::Vrf::Servers::Server>();
         c->parent = this;
-        server.push_back(c);
+        server.append(c);
         return c;
     }
 
@@ -680,7 +694,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Servers::get
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : server)
+    for (auto c : server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -708,11 +722,11 @@ bool IpDomain::Vrfs::Vrf::Servers::has_leaf_or_child_of_name(const std::string &
 
 IpDomain::Vrfs::Vrf::Servers::Server::Server()
     :
-    order{YType::int32, "order"},
+    order{YType::uint32, "order"},
     server_address{YType::str, "server-address"}
 {
 
-    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "servers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Servers::Server::~Server()
@@ -721,6 +735,7 @@ IpDomain::Vrfs::Vrf::Servers::Server::~Server()
 
 bool IpDomain::Vrfs::Vrf::Servers::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return order.is_set
 	|| server_address.is_set;
 }
@@ -735,7 +750,9 @@ bool IpDomain::Vrfs::Vrf::Servers::Server::has_operation() const
 std::string IpDomain::Vrfs::Vrf::Servers::Server::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server" <<"[order='" <<order <<"']" <<"[server-address='" <<server_address <<"']";
+    path_buffer << "server";
+    ADD_KEY_TOKEN(order, "order");
+    ADD_KEY_TOKEN(server_address, "server-address");
     return path_buffer.str();
 }
 
@@ -798,9 +815,11 @@ bool IpDomain::Vrfs::Vrf::Servers::Server::has_leaf_or_child_of_name(const std::
 }
 
 IpDomain::Vrfs::Vrf::Lists::Lists()
+    :
+    list(this, {"order", "list_name"})
 {
 
-    yang_name = "lists"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lists"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Lists::~Lists()
@@ -809,7 +828,8 @@ IpDomain::Vrfs::Vrf::Lists::~Lists()
 
 bool IpDomain::Vrfs::Vrf::Lists::has_data() const
 {
-    for (std::size_t index=0; index<list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<list.len(); index++)
     {
         if(list[index]->has_data())
             return true;
@@ -819,7 +839,7 @@ bool IpDomain::Vrfs::Vrf::Lists::has_data() const
 
 bool IpDomain::Vrfs::Vrf::Lists::has_operation() const
 {
-    for (std::size_t index=0; index<list.size(); index++)
+    for (std::size_t index=0; index<list.len(); index++)
     {
         if(list[index]->has_operation())
             return true;
@@ -849,7 +869,7 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Lists::get_child_by_name(const std:
     {
         auto c = std::make_shared<IpDomain::Vrfs::Vrf::Lists::List>();
         c->parent = this;
-        list.push_back(c);
+        list.append(c);
         return c;
     }
 
@@ -861,7 +881,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Lists::get_c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : list)
+    for (auto c : list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -889,11 +909,11 @@ bool IpDomain::Vrfs::Vrf::Lists::has_leaf_or_child_of_name(const std::string & n
 
 IpDomain::Vrfs::Vrf::Lists::List::List()
     :
-    order{YType::int32, "order"},
+    order{YType::uint32, "order"},
     list_name{YType::str, "list-name"}
 {
 
-    yang_name = "list"; yang_parent_name = "lists"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "list"; yang_parent_name = "lists"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Lists::List::~List()
@@ -902,6 +922,7 @@ IpDomain::Vrfs::Vrf::Lists::List::~List()
 
 bool IpDomain::Vrfs::Vrf::Lists::List::has_data() const
 {
+    if (is_presence_container) return true;
     return order.is_set
 	|| list_name.is_set;
 }
@@ -916,7 +937,9 @@ bool IpDomain::Vrfs::Vrf::Lists::List::has_operation() const
 std::string IpDomain::Vrfs::Vrf::Lists::List::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "list" <<"[order='" <<order <<"']" <<"[list-name='" <<list_name <<"']";
+    path_buffer << "list";
+    ADD_KEY_TOKEN(order, "order");
+    ADD_KEY_TOKEN(list_name, "list-name");
     return path_buffer.str();
 }
 
@@ -979,9 +1002,11 @@ bool IpDomain::Vrfs::Vrf::Lists::List::has_leaf_or_child_of_name(const std::stri
 }
 
 IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Hosts()
+    :
+    ipv4_host(this, {"host_name"})
 {
 
-    yang_name = "ipv4-hosts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-hosts"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Ipv4Hosts::~Ipv4Hosts()
@@ -990,7 +1015,8 @@ IpDomain::Vrfs::Vrf::Ipv4Hosts::~Ipv4Hosts()
 
 bool IpDomain::Vrfs::Vrf::Ipv4Hosts::has_data() const
 {
-    for (std::size_t index=0; index<ipv4_host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ipv4_host.len(); index++)
     {
         if(ipv4_host[index]->has_data())
             return true;
@@ -1000,7 +1026,7 @@ bool IpDomain::Vrfs::Vrf::Ipv4Hosts::has_data() const
 
 bool IpDomain::Vrfs::Vrf::Ipv4Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4_host.size(); index++)
+    for (std::size_t index=0; index<ipv4_host.len(); index++)
     {
         if(ipv4_host[index]->has_operation())
             return true;
@@ -1030,7 +1056,7 @@ std::shared_ptr<Entity> IpDomain::Vrfs::Vrf::Ipv4Hosts::get_child_by_name(const 
     {
         auto c = std::make_shared<IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host>();
         c->parent = this;
-        ipv4_host.push_back(c);
+        ipv4_host.append(c);
         return c;
     }
 
@@ -1042,7 +1068,7 @@ std::map<std::string, std::shared_ptr<Entity>> IpDomain::Vrfs::Vrf::Ipv4Hosts::g
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4_host)
+    for (auto c : ipv4_host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1074,7 +1100,7 @@ IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::Ipv4Host()
     address{YType::str, "address"}
 {
 
-    yang_name = "ipv4-host"; yang_parent_name = "ipv4-hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-host"; yang_parent_name = "ipv4-hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::~Ipv4Host()
@@ -1083,6 +1109,7 @@ IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::~Ipv4Host()
 
 bool IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : address.getYLeafs())
     {
         if(leaf.is_set)
@@ -1106,7 +1133,8 @@ bool IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::has_operation() const
 std::string IpDomain::Vrfs::Vrf::Ipv4Hosts::Ipv4Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-host" <<"[host-name='" <<host_name <<"']";
+    path_buffer << "ipv4-host";
+    ADD_KEY_TOKEN(host_name, "host-name");
     return path_buffer.str();
 }
 

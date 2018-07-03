@@ -58,7 +58,7 @@ class Ospfv3::Processes : public ydk::Entity
 
         class Process; //type: Ospfv3::Processes::Process
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process> > process;
+        ydk::YList process;
         
 }; // Ospfv3::Processes
 
@@ -147,6 +147,7 @@ class Ospfv3::Processes::Process::DefaultVrf : public ydk::Entity
         class StubRouter; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter
         class Bfd; //type: Ospfv3::Processes::Process::DefaultVrf::Bfd
         class DatabaseFilter; //type: Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter
+        class Capability; //type: Ospfv3::Processes::Process::DefaultVrf::Capability
         class Authentication; //type: Ospfv3::Processes::Process::DefaultVrf::Authentication
         class GracefulRestart; //type: Ospfv3::Processes::Process::DefaultVrf::GracefulRestart
         class DefaultInformation; //type: Ospfv3::Processes::Process::DefaultVrf::DefaultInformation
@@ -168,6 +169,7 @@ class Ospfv3::Processes::Process::DefaultVrf : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter> stub_router;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Bfd> bfd;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DatabaseFilter> database_filter;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Capability> capability;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Authentication> authentication;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::GracefulRestart> graceful_restart;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DefaultInformation> default_information;
@@ -197,8 +199,8 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses : public ydk::Entity
         class AreaAddress; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress
         class AreaAreaId; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress> > area_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId> > area_area_id;
+        ydk::YList area_address;
+        ydk::YList area_area_id;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses
 
@@ -225,6 +227,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress : publi
         ydk::YLeaf instance; //type: uint32
         ydk::YLeaf demand_circuit; //type: boolean
         ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf type7_translate_always; //type: boolean
         ydk::YLeaf prefix_suppression; //type: boolean
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf mtu_ignore; //type: boolean
@@ -330,7 +333,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Ranges
 
         class Range; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Ranges::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Ranges::Range> > range;
+        ydk::YList range;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Ranges
 
@@ -516,7 +519,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interf
 
         class Interface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces
 
@@ -615,7 +618,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interf
 
         class Neighbor; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::Neighbors
 
@@ -853,7 +856,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interf
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces
 
@@ -897,7 +900,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interf
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces
 
@@ -967,7 +970,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interf
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces
 
@@ -1011,7 +1014,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interf
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces
 
@@ -1130,7 +1133,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaSc
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::CandidateInterfaces
 
@@ -1174,7 +1177,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaSc
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerLink::ExcludeInterfaces
 
@@ -1244,7 +1247,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaSc
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::CandidateInterfaces
 
@@ -1288,7 +1291,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaSc
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces
 
@@ -1332,7 +1335,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::ShamLi
 
         class ShamLink; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::ShamLinks::ShamLink> > sham_link;
+        ydk::YList sham_link;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::ShamLinks
 
@@ -1437,7 +1440,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::Virtua
 
         class VirtualLink; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::VirtualLinks::VirtualLink> > virtual_link;
+        ydk::YList virtual_link;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAddress::VirtualLinks
 
@@ -1545,6 +1548,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId : public
         ydk::YLeaf instance; //type: uint32
         ydk::YLeaf demand_circuit; //type: boolean
         ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf type7_translate_always; //type: boolean
         ydk::YLeaf prefix_suppression; //type: boolean
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf mtu_ignore; //type: boolean
@@ -1650,7 +1654,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Ranges 
 
         class Range; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Ranges::Range
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Ranges::Range> > range;
+        ydk::YList range;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Ranges
 
@@ -1836,7 +1840,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfa
 
         class Interface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces
 
@@ -1935,7 +1939,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfa
 
         class Neighbor; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::Neighbors
 
@@ -2173,7 +2177,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfa
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::CandidateInterfaces
 
@@ -2217,7 +2221,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfa
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerLink::ExcludeInterfaces
 
@@ -2287,7 +2291,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfa
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::CandidateInterfaces
 
@@ -2331,7 +2335,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfa
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Interfaces::Interface::FastReroute::PerPrefix::ExcludeInterfaces
 
@@ -2450,7 +2454,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaSco
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::CandidateInterfaces
 
@@ -2494,7 +2498,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaSco
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerLink::ExcludeInterfaces
 
@@ -2564,7 +2568,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaSco
 
         class CandidateInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface> > candidate_interface;
+        ydk::YList candidate_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::CandidateInterfaces
 
@@ -2608,7 +2612,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaSco
 
         class ExcludeInterface; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface> > exclude_interface;
+        ydk::YList exclude_interface;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::AreaScope::FastReroute::PerPrefix::ExcludeInterfaces
 
@@ -2652,7 +2656,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::ShamLin
 
         class ShamLink; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::ShamLinks::ShamLink> > sham_link;
+        ydk::YList sham_link;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::ShamLinks
 
@@ -2757,7 +2761,7 @@ class Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::Virtual
 
         class VirtualLink; //type: Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::VirtualLinks::VirtualLink> > virtual_link;
+        ydk::YList virtual_link;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::AreaAddresses::AreaAreaId::VirtualLinks
 
@@ -3003,7 +3007,7 @@ class Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes : public ydk::Enti
 
         class SummaryPrefix; //type: Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes::SummaryPrefix> > summary_prefix;
+        ydk::YList summary_prefix;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::SummaryPrefixes
 
@@ -3167,7 +3171,7 @@ class Ospfv3::Processes::Process::DefaultVrf::FastReroute::PerPrefix::Tiebreaker
 
         class Tiebreaker; //type: Ospfv3::Processes::Process::DefaultVrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::FastReroute::PerPrefix::Tiebreakers::Tiebreaker> > tiebreaker;
+        ydk::YList tiebreaker;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::FastReroute::PerPrefix::Tiebreakers
 
@@ -3307,7 +3311,7 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes : public ydk::Entity
 
         class Redistribute; //type: Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute> > redistribute;
+        ydk::YList redistribute;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes
 
@@ -3335,9 +3339,9 @@ class Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute : publ
         class Eigrp; //type: Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Eigrp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile> connected_or_static_or_subscriber_or_mobile; // presence node
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication> > ospfv3_or_isis_or_application;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute::Eigrp> > eigrp;
+        ydk::YList bgp;
+        ydk::YList ospfv3_or_isis_or_application;
+        ydk::YList eigrp;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::Redistributes::Redistribute
 
@@ -3563,7 +3567,7 @@ class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts 
 
         class DistributeOut; //type: Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut> > distribute_out;
+        ydk::YList distribute_out;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts
 
@@ -3590,9 +3594,9 @@ class Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts:
         class Ospfv3OrIsis; //type: Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis
         class Eigrp; //type: Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Bgp> > bgp;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Ospfv3OrIsis> > ospfv3_or_isis;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut::Eigrp> > eigrp;
+        ydk::YList bgp;
+        ydk::YList ospfv3_or_isis;
+        ydk::YList eigrp;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::DistributeListOut::DistributeOuts::DistributeOut
 
@@ -3725,11 +3729,11 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Rbit; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit
-        class V6Bit; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit
+        class V6bit; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit
         class MaxMetric; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit> rbit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit> v6bit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit> v6bit;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric> max_metric;
         
 }; // Ospfv3::Processes::Process::DefaultVrf::StubRouter
@@ -3786,11 +3790,11 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::OnStartup : publ
 }; // Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::OnStartup
 
 
-class Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit : public ydk::Entity
+class Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit : public ydk::Entity
 {
     public:
-        V6Bit();
-        ~V6Bit();
+        V6bit();
+        ~V6bit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3807,44 +3811,57 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit : public ydk::En
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
-        class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup
+        class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit::OnStartup> on_startup;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup> on_startup;
         
-}; // Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6Bit
+}; // Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit
 
-class Ospfv3Protocol : public ydk::Enum
+class Ospfv3DomainId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf isis;
-        static const ydk::Enum::YLeaf ospfv3;
-        static const ydk::Enum::YLeaf eigrp;
+        static const ydk::Enum::YLeaf type0005;
+        static const ydk::Enum::YLeaf type0105;
+        static const ydk::Enum::YLeaf type0205;
+        static const ydk::Enum::YLeaf type8005;
 
 };
 
-class Ospfv3FastRerouteTiebreakers : public ydk::Enum
+class Ospfv3Network : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf downstream;
-        static const ydk::Enum::YLeaf line_card_disjoint;
-        static const ydk::Enum::YLeaf lowest_metric;
-        static const ydk::Enum::YLeaf node_protect;
-        static const ydk::Enum::YLeaf primary_path;
-        static const ydk::Enum::YLeaf secondary_path;
-        static const ydk::Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
 
 };
 
-class Ospfv3isisRoute : public ydk::Enum
+class Ospfv3Metric : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level1_and2;
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
+
+};
+
+class Ospfv3AuthenticationType2 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha1;
+
+};
+
+class Ospfv3FastReroutePriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 
@@ -3866,29 +3883,6 @@ class Ospfv3LogAdj : public ydk::Enum
 
 };
 
-class Ospfv3ProtocolType2 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf isis;
-        static const ydk::Enum::YLeaf ospfv3;
-        static const ydk::Enum::YLeaf eigrp;
-        static const ydk::Enum::YLeaf subscriber;
-        static const ydk::Enum::YLeaf application;
-        static const ydk::Enum::YLeaf mobile;
-
-};
-
-class Ospfv3Metric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type1;
-        static const ydk::Enum::YLeaf type2;
-
-};
-
 class Ospfv3TraceBufSize : public ydk::Enum
 {
     public:
@@ -3905,29 +3899,6 @@ class Ospfv3TraceBufSize : public ydk::Enum
 
 };
 
-class Ospfv3ExternalRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf external1;
-        static const ydk::Enum::YLeaf external2;
-        static const ydk::Enum::YLeaf external;
-
-};
-
-class Ospfv3SubsequentAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class Ospfv3InternalRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-
-};
-
 class Ospfv3FastReroute : public ydk::Enum
 {
     public:
@@ -3937,22 +3908,38 @@ class Ospfv3FastReroute : public ydk::Enum
 
 };
 
-class Ospfv3DomainId : public ydk::Enum
+class Ospfv3isisRoute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf type0005;
-        static const ydk::Enum::YLeaf type0105;
-        static const ydk::Enum::YLeaf type0205;
-        static const ydk::Enum::YLeaf type8005;
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level1_and2;
 
 };
 
-class Ospfv3AuthenticationType2 : public ydk::Enum
+class Ospfv3nssaExternalRoute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha1;
+        static const ydk::Enum::YLeaf external1;
+        static const ydk::Enum::YLeaf external2;
+        static const ydk::Enum::YLeaf external;
+
+};
+
+class Ospfv3ExternalRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf external1;
+        static const ydk::Enum::YLeaf external2;
+        static const ydk::Enum::YLeaf external;
+
+};
+
+class Ospfv3nsr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
 
 };
 
@@ -3963,11 +3950,16 @@ class Ospfv3AddressFamily : public ydk::Enum
 
 };
 
-class Ospfv3Authentication : public ydk::Enum
+class Ospfv3Protocol : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha1;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospfv3;
+        static const ydk::Enum::YLeaf eigrp;
 
 };
 
@@ -3983,20 +3975,25 @@ class Ospfv3EncryptionAlgorithm : public ydk::Enum
 
 };
 
-class Ospfv3nsr : public ydk::Enum
+class Ospfv3ProtocolType2 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf true_;
-        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospfv3;
+        static const ydk::Enum::YLeaf eigrp;
+        static const ydk::Enum::YLeaf subscriber;
+        static const ydk::Enum::YLeaf application;
+        static const ydk::Enum::YLeaf mobile;
 
 };
 
-class Ospfv3nssaExternalRoute : public ydk::Enum
+class Ospfv3SubsequentAddressFamily : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf external1;
-        static const ydk::Enum::YLeaf external2;
-        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf unicast;
 
 };
 
@@ -4008,24 +4005,31 @@ class Ospfv3EigrpRoute : public ydk::Enum
 
 };
 
-class Ospfv3FastReroutePriority : public ydk::Enum
+class Ospfv3FastRerouteTiebreakers : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf line_card_disjoint;
+        static const ydk::Enum::YLeaf lowest_metric;
+        static const ydk::Enum::YLeaf node_protect;
+        static const ydk::Enum::YLeaf primary_path;
+        static const ydk::Enum::YLeaf secondary_path;
+        static const ydk::Enum::YLeaf srlg_disjoint;
 
 };
 
-class Ospfv3Network : public ydk::Enum
+class Ospfv3Authentication : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf non_broadcast;
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf point_to_multipoint;
-        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha1;
+
+};
+
+class Ospfv3InternalRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
 
 };
 

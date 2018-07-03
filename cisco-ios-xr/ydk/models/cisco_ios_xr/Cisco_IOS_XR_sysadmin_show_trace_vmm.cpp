@@ -17,7 +17,7 @@ Vmm::Vmm()
 {
     vm_manager->parent = this;
 
-    yang_name = "vmm"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-trace-vmm"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vmm"; yang_parent_name = "Cisco-IOS-XR-sysadmin-show-trace-vmm"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Vmm::~Vmm()
@@ -26,6 +26,7 @@ Vmm::~Vmm()
 
 bool Vmm::has_data() const
 {
+    if (is_presence_container) return true;
     return (vm_manager !=  nullptr && vm_manager->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Vmm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Vmm::VmManager::VmManager()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "vm_manager"; yang_parent_name = "vmm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vm_manager"; yang_parent_name = "vmm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vmm::VmManager::~VmManager()
@@ -129,7 +132,8 @@ Vmm::VmManager::~VmManager()
 
 bool Vmm::VmManager::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Vmm::VmManager::has_data() const
 
 bool Vmm::VmManager::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Vmm::VmManager::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<Vmm::VmManager::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vmm::VmManager::get_children() co
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,9 +221,11 @@ bool Vmm::VmManager::has_leaf_or_child_of_name(const std::string & name) const
 Vmm::VmManager::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "vm_manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "vm_manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Vmm::VmManager::Trace::~Trace()
@@ -228,7 +234,8 @@ Vmm::VmManager::Trace::~Trace()
 
 bool Vmm::VmManager::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -238,7 +245,7 @@ bool Vmm::VmManager::Trace::has_data() const
 
 bool Vmm::VmManager::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -257,7 +264,8 @@ std::string Vmm::VmManager::Trace::get_absolute_path() const
 std::string Vmm::VmManager::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -277,7 +285,7 @@ std::shared_ptr<Entity> Vmm::VmManager::Trace::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Vmm::VmManager::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -289,7 +297,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vmm::VmManager::Trace::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -328,9 +336,11 @@ bool Vmm::VmManager::Trace::has_leaf_or_child_of_name(const std::string & name) 
 Vmm::VmManager::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vmm::VmManager::Trace::Location::~Location()
@@ -339,7 +349,8 @@ Vmm::VmManager::Trace::Location::~Location()
 
 bool Vmm::VmManager::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -349,7 +360,7 @@ bool Vmm::VmManager::Trace::Location::has_data() const
 
 bool Vmm::VmManager::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -361,7 +372,8 @@ bool Vmm::VmManager::Trace::Location::has_operation() const
 std::string Vmm::VmManager::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -381,7 +393,7 @@ std::shared_ptr<Entity> Vmm::VmManager::Trace::Location::get_child_by_name(const
     {
         auto c = std::make_shared<Vmm::VmManager::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -393,7 +405,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vmm::VmManager::Trace::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -432,9 +444,11 @@ bool Vmm::VmManager::Trace::Location::has_leaf_or_child_of_name(const std::strin
 Vmm::VmManager::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vmm::VmManager::Trace::Location::AllOptions::~AllOptions()
@@ -443,7 +457,8 @@ Vmm::VmManager::Trace::Location::AllOptions::~AllOptions()
 
 bool Vmm::VmManager::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -453,7 +468,7 @@ bool Vmm::VmManager::Trace::Location::AllOptions::has_data() const
 
 bool Vmm::VmManager::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -465,7 +480,8 @@ bool Vmm::VmManager::Trace::Location::AllOptions::has_operation() const
 std::string Vmm::VmManager::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -485,7 +501,7 @@ std::shared_ptr<Entity> Vmm::VmManager::Trace::Location::AllOptions::get_child_b
     {
         auto c = std::make_shared<Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -497,7 +513,7 @@ std::map<std::string, std::shared_ptr<Entity>> Vmm::VmManager::Trace::Location::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -538,7 +554,7 @@ Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -547,6 +563,7 @@ Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 

@@ -18,6 +18,17 @@ class TruthValue : public ydk::Enum
 
 };
 
+class StorageType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf volatile_;
+        static const ydk::Enum::YLeaf nonVolatile;
+        static const ydk::Enum::YLeaf permanent;
+        static const ydk::Enum::YLeaf readOnly;
+
+};
+
 class RowStatus : public ydk::Enum
 {
     public:
@@ -27,17 +38,6 @@ class RowStatus : public ydk::Enum
         static const ydk::Enum::YLeaf createAndGo;
         static const ydk::Enum::YLeaf createAndWait;
         static const ydk::Enum::YLeaf destroy;
-
-};
-
-class StorageType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf volatile_;
-        static const ydk::Enum::YLeaf nonVolatile;
-        static const ydk::Enum::YLeaf permanent;
-        static const ydk::Enum::YLeaf readOnly;
 
 };
 

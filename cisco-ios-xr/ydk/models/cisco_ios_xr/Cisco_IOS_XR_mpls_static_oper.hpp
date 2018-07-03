@@ -61,7 +61,7 @@ class MplsStatic::Vrfs : public ydk::Entity
 
         class Vrf; //type: MplsStatic::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // MplsStatic::Vrfs
 
@@ -111,7 +111,7 @@ class MplsStatic::Vrfs::Vrf::Lsps : public ydk::Entity
 
         class Lsp; //type: MplsStatic::Vrfs::Vrf::Lsps::Lsp
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp> > lsp;
+        ydk::YList lsp;
         
 }; // MplsStatic::Vrfs::Vrf::Lsps
 
@@ -173,8 +173,8 @@ class MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix> prefix;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh> pathset_resolve_nh;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh> backup_pathset_resolve_nh;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo> > path_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo> > backup_path_info;
+        ydk::YList path_info;
+        ydk::YList backup_path_info;
         
 }; // MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label
 
@@ -446,7 +446,7 @@ class MplsStatic::Vrfs::Vrf::LocalLabels : public ydk::Entity
 
         class LocalLabel; //type: MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel> > local_label;
+        ydk::YList local_label;
         
 }; // MplsStatic::Vrfs::Vrf::LocalLabels
 
@@ -484,8 +484,8 @@ class MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix> prefix;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh> pathset_resolve_nh;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh> backup_pathset_resolve_nh;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo> > path_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo> > backup_path_info;
+        ydk::YList path_info;
+        ydk::YList backup_path_info;
         
 }; // MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel
 
@@ -795,7 +795,7 @@ class MplsStatic::LocalLabels : public ydk::Entity
 
         class LocalLabel; //type: MplsStatic::LocalLabels::LocalLabel
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel> > local_label;
+        ydk::YList local_label;
         
 }; // MplsStatic::LocalLabels
 
@@ -834,8 +834,8 @@ class MplsStatic::LocalLabels::LocalLabel : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::Prefix> prefix;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh> pathset_resolve_nh;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh> backup_pathset_resolve_nh;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::PathInfo> > path_info;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_static_oper::MplsStatic::LocalLabels::LocalLabel::BackupPathInfo> > backup_path_info;
+        ydk::YList path_info;
+        ydk::YList backup_path_info;
         
 }; // MplsStatic::LocalLabels::LocalLabel
 
@@ -1100,24 +1100,6 @@ class MgmtMplsStaticPathStatus : public ydk::Enum
 
 };
 
-class MgmtStaticLspAfi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class MplsStaticPathRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf primary_and_backup;
-
-};
-
 class MgmtStaticPath : public ydk::Enum
 {
     public:
@@ -1126,7 +1108,17 @@ class MgmtStaticPath : public ydk::Enum
 
 };
 
-class MgmtStaticAddr : public ydk::Enum
+class MgmtMplsStaticLabelMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf per_prefix;
+        static const ydk::Enum::YLeaf per_vrf;
+        static const ydk::Enum::YLeaf cross_connect;
+
+};
+
+class MgmtStaticLspAfi : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf not_applicable;
@@ -1155,13 +1147,21 @@ class MgmtMplsStaticLabelStatus : public ydk::Enum
 
 };
 
-class MgmtMplsStaticLabelMode : public ydk::Enum
+class MgmtStaticAddr : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf per_prefix;
-        static const ydk::Enum::YLeaf per_vrf;
-        static const ydk::Enum::YLeaf cross_connect;
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class MplsStaticPathRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf primary_and_backup;
 
 };
 

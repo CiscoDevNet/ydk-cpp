@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_ncs6k_acl_oper {
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::AceDetail()
     :
     entry_id{YType::int32, "entry-id"}
-    	,
-    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam>())
-	,ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam>())
+        ,
+    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam>())
+    , ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam>())
 {
     ipv4tcam->parent = this;
     ipv6tcam->parent = this;
 
-    yang_name = "ace-detail"; yang_parent_name = "implicit-ndna-permit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-detail"; yang_parent_name = "implicit-ndna-permit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::~AceDetail()
@@ -30,6 +30,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_id.is_set
 	|| (ipv4tcam !=  nullptr && ipv4tcam->has_data())
 	|| (ipv6tcam !=  nullptr && ipv6tcam->has_data());
@@ -66,7 +67,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv4tcam == nullptr)
         {
-            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam>();
+            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam>();
         }
         return ipv4tcam;
     }
@@ -75,7 +76,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv6tcam == nullptr)
         {
-            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam>();
+            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam>();
         }
         return ipv6tcam;
     }
@@ -125,38 +126,39 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::Ipv4tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::~Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::~Ipv4tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -165,13 +167,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -179,7 +181,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -191,46 +193,47 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::TcamEntry()
     :
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result>())
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (value_ !=  nullptr && value_->has_data())
 	|| (mask !=  nullptr && mask->has_data())
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| (value_ !=  nullptr && value_->has_operation())
@@ -238,14 +241,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -254,13 +257,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -269,7 +272,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -278,7 +281,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -286,7 +289,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -308,22 +311,22 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -337,20 +340,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -366,7 +370,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -384,14 +388,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -412,13 +416,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -426,7 +430,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -438,7 +442,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -514,7 +518,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -566,14 +570,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -583,15 +587,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -600,7 +605,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -611,14 +616,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -633,19 +638,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -685,7 +690,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -713,14 +718,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -734,20 +739,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -763,7 +769,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -781,14 +787,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -809,13 +815,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -823,7 +829,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -835,7 +841,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -911,7 +917,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -963,14 +969,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -980,15 +986,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -997,7 +1004,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -1008,14 +1015,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1030,19 +1037,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -1082,7 +1089,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -1110,14 +1117,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -1131,20 +1138,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -1160,7 +1168,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -1178,14 +1186,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1206,13 +1214,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -1220,7 +1228,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1232,7 +1240,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -1308,7 +1316,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -1360,14 +1368,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -1377,15 +1385,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -1394,7 +1403,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -1405,14 +1414,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1427,19 +1436,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -1479,7 +1488,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -1507,45 +1516,46 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::Ipv6tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::~Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::~Ipv6tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1554,13 +1564,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -1568,7 +1578,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1580,45 +1590,46 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::TcamEntry()
     :
     source_address{YType::str, "source-address"},
     source_address_mask{YType::str, "source-address-mask"},
     destination_address{YType::str, "destination-address"},
     destination_address_mask{YType::str, "destination-address-mask"}
-    	,
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result>())
+        ,
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| source_address_mask.is_set
 	|| destination_address.is_set
@@ -1628,7 +1639,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter)
@@ -1640,14 +1651,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1660,13 +1671,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -1675,7 +1686,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -1684,7 +1695,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -1692,7 +1703,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1714,7 +1725,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -1742,7 +1753,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -1762,14 +1773,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result" || name == "source-address" || name == "source-address-mask" || name == "destination-address" || name == "destination-address-mask")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -1783,20 +1794,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -1812,7 +1824,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -1830,14 +1842,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1858,13 +1870,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -1872,7 +1884,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -1884,7 +1896,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -1960,7 +1972,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -2012,14 +2024,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -2029,15 +2041,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -2046,7 +2059,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -2057,14 +2070,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2079,19 +2092,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -2131,7 +2144,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -2159,14 +2172,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -2180,20 +2193,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -2209,7 +2223,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -2227,14 +2241,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2255,13 +2269,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -2269,7 +2283,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2281,7 +2295,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -2357,7 +2371,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -2409,14 +2423,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -2426,15 +2440,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -2443,7 +2458,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -2454,14 +2469,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2476,19 +2491,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -2528,7 +2543,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -2556,14 +2571,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -2577,20 +2592,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -2606,7 +2622,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -2624,14 +2640,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2652,13 +2668,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -2666,7 +2682,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -2678,7 +2694,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -2754,7 +2770,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -2806,14 +2822,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -2823,15 +2839,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -2840,7 +2857,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -2851,14 +2868,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2873,19 +2890,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -2925,7 +2942,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -2953,7 +2970,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnaPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
@@ -2963,10 +2980,11 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::ImplicitNdnsPermit()
     :
     ace_brief(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceBrief>())
+    , ace_detail(this, {})
 {
     ace_brief->parent = this;
 
-    yang_name = "implicit-ndns-permit"; yang_parent_name = "interface-acl-implicit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "implicit-ndns-permit"; yang_parent_name = "interface-acl-implicit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::~ImplicitNdnsPermit()
@@ -2975,7 +2993,8 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::has_data() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_data())
             return true;
@@ -2985,7 +3004,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::has_operation() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_operation())
             return true;
@@ -3025,7 +3044,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail>();
         c->parent = this;
-        ace_detail.push_back(c);
+        ace_detail.append(c);
         return c;
     }
 
@@ -3042,7 +3061,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : ace_detail)
+    for (auto c : ace_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3078,12 +3097,12 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     total_tcam_entries{YType::uint32, "total-tcam-entries"},
     hits{YType::uint64, "hits"},
     npu_id{YType::uint8, "npu-id"}
-    	,
+        ,
     next_hop_address(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceBrief::NextHopAddress>())
 {
     next_hop_address->parent = this;
 
-    yang_name = "ace-brief"; yang_parent_name = "implicit-ndns-permit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-brief"; yang_parent_name = "implicit-ndns-permit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceBrief::~AceBrief()
@@ -3092,6 +3111,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return grant.is_set
 	|| logging_enabled.is_set
 	|| per_ace_icmp_enabled.is_set
@@ -3269,7 +3289,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceBrief::NextHopAddress::~NextHopAddress()
@@ -3278,6 +3298,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceBrief::NextHopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -3370,14 +3391,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::AceDetail()
     :
     entry_id{YType::int32, "entry-id"}
-    	,
-    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam>())
-	,ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam>())
+        ,
+    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam>())
+    , ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam>())
 {
     ipv4tcam->parent = this;
     ipv6tcam->parent = this;
 
-    yang_name = "ace-detail"; yang_parent_name = "implicit-ndns-permit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-detail"; yang_parent_name = "implicit-ndns-permit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::~AceDetail()
@@ -3386,6 +3407,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_id.is_set
 	|| (ipv4tcam !=  nullptr && ipv4tcam->has_data())
 	|| (ipv6tcam !=  nullptr && ipv6tcam->has_data());
@@ -3422,7 +3444,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv4tcam == nullptr)
         {
-            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam>();
+            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam>();
         }
         return ipv4tcam;
     }
@@ -3431,7 +3453,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv6tcam == nullptr)
         {
-            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam>();
+            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam>();
         }
         return ipv6tcam;
     }
@@ -3481,38 +3503,39 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::Ipv4tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::~Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::~Ipv4tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3521,13 +3544,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -3535,7 +3558,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3547,46 +3570,47 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::TcamEntry()
     :
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result>())
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (value_ !=  nullptr && value_->has_data())
 	|| (mask !=  nullptr && mask->has_data())
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| (value_ !=  nullptr && value_->has_operation())
@@ -3594,14 +3618,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3610,13 +3634,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -3625,7 +3649,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -3634,7 +3658,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -3642,7 +3666,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3664,22 +3688,22 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -3693,20 +3717,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -3722,7 +3747,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -3740,14 +3765,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3768,13 +3793,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -3782,7 +3807,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3794,7 +3819,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -3870,7 +3895,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -3922,14 +3947,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -3939,15 +3964,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -3956,7 +3982,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -3967,14 +3993,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3989,19 +4015,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -4041,7 +4067,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -4069,14 +4095,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -4090,20 +4116,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -4119,7 +4146,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -4137,14 +4164,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4165,13 +4192,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -4179,7 +4206,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4191,7 +4218,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -4267,7 +4294,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -4319,14 +4346,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -4336,15 +4363,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -4353,7 +4381,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -4364,14 +4392,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4386,19 +4414,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -4438,7 +4466,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -4466,14 +4494,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -4487,20 +4515,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -4516,7 +4545,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -4534,14 +4563,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4562,13 +4591,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -4576,7 +4605,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4588,7 +4617,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -4664,7 +4693,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -4716,14 +4745,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -4733,15 +4762,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -4750,7 +4780,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -4761,14 +4791,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4783,19 +4813,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -4835,7 +4865,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -4863,45 +4893,46 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::Ipv6tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::~Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::~Ipv6tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4910,13 +4941,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -4924,7 +4955,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -4936,45 +4967,46 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::TcamEntry()
     :
     source_address{YType::str, "source-address"},
     source_address_mask{YType::str, "source-address-mask"},
     destination_address{YType::str, "destination-address"},
     destination_address_mask{YType::str, "destination-address-mask"}
-    	,
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result>())
+        ,
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| source_address_mask.is_set
 	|| destination_address.is_set
@@ -4984,7 +5016,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter)
@@ -4996,14 +5028,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5016,13 +5048,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -5031,7 +5063,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -5040,7 +5072,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -5048,7 +5080,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5070,7 +5102,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -5098,7 +5130,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -5118,14 +5150,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result" || name == "source-address" || name == "source-address-mask" || name == "destination-address" || name == "destination-address-mask")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -5139,20 +5171,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -5168,7 +5201,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -5186,14 +5219,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5214,13 +5247,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -5228,7 +5261,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5240,7 +5273,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -5316,7 +5349,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -5368,14 +5401,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -5385,15 +5418,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -5402,7 +5436,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -5413,14 +5447,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5435,19 +5469,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -5487,7 +5521,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -5515,14 +5549,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -5536,20 +5570,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -5565,7 +5600,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -5583,14 +5618,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5611,13 +5646,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -5625,7 +5660,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5637,7 +5672,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -5713,7 +5748,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -5765,14 +5800,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -5782,15 +5817,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -5799,7 +5835,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -5810,14 +5846,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5832,19 +5868,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -5884,7 +5920,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -5912,14 +5948,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -5933,20 +5969,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -5962,7 +5999,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -5980,14 +6017,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6008,13 +6045,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -6022,7 +6059,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6034,7 +6071,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -6110,7 +6147,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -6162,14 +6199,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -6179,15 +6216,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -6196,7 +6234,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -6207,14 +6245,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6229,19 +6267,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -6281,7 +6319,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -6309,7 +6347,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitNdnsPermit::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
@@ -6319,10 +6357,11 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::ImplicitDeny()
     :
     ace_brief(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceBrief>())
+    , ace_detail(this, {})
 {
     ace_brief->parent = this;
 
-    yang_name = "implicit-deny"; yang_parent_name = "interface-acl-implicit"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "implicit-deny"; yang_parent_name = "interface-acl-implicit"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::~ImplicitDeny()
@@ -6331,7 +6370,8 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::has_data() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_data())
             return true;
@@ -6341,7 +6381,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::has_operation() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_operation())
             return true;
@@ -6381,7 +6421,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail>();
         c->parent = this;
-        ace_detail.push_back(c);
+        ace_detail.append(c);
         return c;
     }
 
@@ -6398,7 +6438,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : ace_detail)
+    for (auto c : ace_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6434,12 +6474,12 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     total_tcam_entries{YType::uint32, "total-tcam-entries"},
     hits{YType::uint64, "hits"},
     npu_id{YType::uint8, "npu-id"}
-    	,
+        ,
     next_hop_address(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceBrief::NextHopAddress>())
 {
     next_hop_address->parent = this;
 
-    yang_name = "ace-brief"; yang_parent_name = "implicit-deny"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-brief"; yang_parent_name = "implicit-deny"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceBrief::~AceBrief()
@@ -6448,6 +6488,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return grant.is_set
 	|| logging_enabled.is_set
 	|| per_ace_icmp_enabled.is_set
@@ -6625,7 +6666,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceBrief::NextHopAddress::~NextHopAddress()
@@ -6634,6 +6675,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceBrief::NextHopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -6726,14 +6768,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::AceDetail()
     :
     entry_id{YType::int32, "entry-id"}
-    	,
-    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam>())
-	,ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam>())
+        ,
+    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam>())
+    , ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam>())
 {
     ipv4tcam->parent = this;
     ipv6tcam->parent = this;
 
-    yang_name = "ace-detail"; yang_parent_name = "implicit-deny"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-detail"; yang_parent_name = "implicit-deny"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::~AceDetail()
@@ -6742,6 +6784,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_id.is_set
 	|| (ipv4tcam !=  nullptr && ipv4tcam->has_data())
 	|| (ipv6tcam !=  nullptr && ipv6tcam->has_data());
@@ -6778,7 +6821,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv4tcam == nullptr)
         {
-            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam>();
+            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam>();
         }
         return ipv4tcam;
     }
@@ -6787,7 +6830,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv6tcam == nullptr)
         {
-            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam>();
+            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam>();
         }
         return ipv6tcam;
     }
@@ -6837,38 +6880,39 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::Ipv4tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::~Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::~Ipv4tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6877,13 +6921,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -6891,7 +6935,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -6903,46 +6947,47 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::TcamEntry()
     :
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result>())
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (value_ !=  nullptr && value_->has_data())
 	|| (mask !=  nullptr && mask->has_data())
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| (value_ !=  nullptr && value_->has_operation())
@@ -6950,14 +6995,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6966,13 +7011,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -6981,7 +7026,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -6990,7 +7035,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -6998,7 +7043,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7020,22 +7065,22 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -7049,20 +7094,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -7078,7 +7124,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -7096,14 +7142,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7124,13 +7170,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -7138,7 +7184,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7150,7 +7196,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -7226,7 +7272,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -7278,14 +7324,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -7295,15 +7341,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -7312,7 +7359,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -7323,14 +7370,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7345,19 +7392,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -7397,7 +7444,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -7425,14 +7472,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -7446,20 +7493,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -7475,7 +7523,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -7493,14 +7541,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7521,13 +7569,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -7535,7 +7583,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7547,7 +7595,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -7623,7 +7671,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -7675,14 +7723,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -7692,15 +7740,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -7709,7 +7758,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -7720,14 +7769,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7742,19 +7791,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -7794,7 +7843,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -7822,14 +7871,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -7843,20 +7892,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -7872,7 +7922,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -7890,14 +7940,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7918,13 +7968,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -7932,7 +7982,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7944,7 +7994,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -8020,7 +8070,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -8072,14 +8122,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -8089,15 +8139,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -8106,7 +8157,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -8117,14 +8168,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8139,19 +8190,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -8191,7 +8242,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -8219,45 +8270,46 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::Ipv6tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::~Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::~Ipv6tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8266,13 +8318,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -8280,7 +8332,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8292,45 +8344,46 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::TcamEntry()
     :
     source_address{YType::str, "source-address"},
     source_address_mask{YType::str, "source-address-mask"},
     destination_address{YType::str, "destination-address"},
     destination_address_mask{YType::str, "destination-address-mask"}
-    	,
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result>())
+        ,
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| source_address_mask.is_set
 	|| destination_address.is_set
@@ -8340,7 +8393,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter)
@@ -8352,14 +8405,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8372,13 +8425,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -8387,7 +8440,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -8396,7 +8449,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -8404,7 +8457,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8426,7 +8479,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -8454,7 +8507,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -8474,14 +8527,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result" || name == "source-address" || name == "source-address-mask" || name == "destination-address" || name == "destination-address-mask")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -8495,20 +8548,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -8524,7 +8578,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -8542,14 +8596,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8570,13 +8624,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -8584,7 +8638,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8596,7 +8650,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -8672,7 +8726,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -8724,14 +8778,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -8741,15 +8795,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -8758,7 +8813,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -8769,14 +8824,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8791,19 +8846,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -8843,7 +8898,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -8871,14 +8926,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -8892,20 +8947,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -8921,7 +8977,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -8939,14 +8995,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8967,13 +9023,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -8981,7 +9037,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -8993,7 +9049,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -9069,7 +9125,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -9121,14 +9177,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -9138,15 +9194,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -9155,7 +9212,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -9166,14 +9223,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9188,19 +9245,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -9240,7 +9297,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -9268,14 +9325,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -9289,20 +9346,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -9318,7 +9376,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -9336,14 +9394,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9364,13 +9422,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -9378,7 +9436,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -9390,7 +9448,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -9466,7 +9524,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -9518,14 +9576,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -9535,15 +9593,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::Impl
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -9552,7 +9611,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -9563,14 +9622,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -9585,19 +9644,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -9637,7 +9696,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -9665,7 +9724,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit::ImplicitAcl::InterfaceAclImplicit::ImplicitDeny::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
@@ -9673,9 +9732,11 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::Implicit:
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetails()
+    :
+    sequence_detail(this, {"sequence_number"})
 {
 
-    yang_name = "sequence-details"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sequence-details"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::~SequenceDetails()
@@ -9684,7 +9745,8 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::has_data() const
 {
-    for (std::size_t index=0; index<sequence_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sequence_detail.len(); index++)
     {
         if(sequence_detail[index]->has_data())
             return true;
@@ -9694,7 +9756,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::has_operation() const
 {
-    for (std::size_t index=0; index<sequence_detail.size(); index++)
+    for (std::size_t index=0; index<sequence_detail.len(); index++)
     {
         if(sequence_detail[index]->has_operation())
             return true;
@@ -9724,7 +9786,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail>();
         c->parent = this;
-        sequence_detail.push_back(c);
+        sequence_detail.append(c);
         return c;
     }
 
@@ -9736,7 +9798,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sequence_detail)
+    for (auto c : sequence_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9765,9 +9827,12 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::SequenceDetail()
     :
     sequence_number{YType::int32, "sequence-number"}
+        ,
+    common_acl_detail(this, {})
+    , interface_acl_detail(this, {})
 {
 
-    yang_name = "sequence-detail"; yang_parent_name = "sequence-details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sequence-detail"; yang_parent_name = "sequence-details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::~SequenceDetail()
@@ -9776,12 +9841,13 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::has_data() const
 {
-    for (std::size_t index=0; index<common_acl_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<common_acl_detail.len(); index++)
     {
         if(common_acl_detail[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface_acl_detail.size(); index++)
+    for (std::size_t index=0; index<interface_acl_detail.len(); index++)
     {
         if(interface_acl_detail[index]->has_data())
             return true;
@@ -9791,12 +9857,12 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::has_operation() const
 {
-    for (std::size_t index=0; index<common_acl_detail.size(); index++)
+    for (std::size_t index=0; index<common_acl_detail.len(); index++)
     {
         if(common_acl_detail[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface_acl_detail.size(); index++)
+    for (std::size_t index=0; index<interface_acl_detail.len(); index++)
     {
         if(interface_acl_detail[index]->has_operation())
             return true;
@@ -9808,7 +9874,8 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sequence-detail" <<"[sequence-number='" <<sequence_number <<"']";
+    path_buffer << "sequence-detail";
+    ADD_KEY_TOKEN(sequence_number, "sequence-number");
     return path_buffer.str();
 }
 
@@ -9828,7 +9895,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail>();
         c->parent = this;
-        common_acl_detail.push_back(c);
+        common_acl_detail.append(c);
         return c;
     }
 
@@ -9836,7 +9903,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail>();
         c->parent = this;
-        interface_acl_detail.push_back(c);
+        interface_acl_detail.append(c);
         return c;
     }
 
@@ -9848,7 +9915,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : common_acl_detail)
+    for (auto c : common_acl_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9857,7 +9924,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : interface_acl_detail)
+    for (auto c : interface_acl_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9896,10 +9963,11 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::CommonAclDetail()
     :
     ace_brief(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceBrief>())
+    , ace_detail(this, {})
 {
     ace_brief->parent = this;
 
-    yang_name = "common-acl-detail"; yang_parent_name = "sequence-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl-detail"; yang_parent_name = "sequence-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::~CommonAclDetail()
@@ -9908,7 +9976,8 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::has_data() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_data())
             return true;
@@ -9918,7 +9987,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::has_operation() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_operation())
             return true;
@@ -9958,7 +10027,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail>();
         c->parent = this;
-        ace_detail.push_back(c);
+        ace_detail.append(c);
         return c;
     }
 
@@ -9975,7 +10044,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : ace_detail)
+    for (auto c : ace_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10011,12 +10080,12 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     total_tcam_entries{YType::uint32, "total-tcam-entries"},
     hits{YType::uint64, "hits"},
     npu_id{YType::uint8, "npu-id"}
-    	,
+        ,
     next_hop_address(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceBrief::NextHopAddress>())
 {
     next_hop_address->parent = this;
 
-    yang_name = "ace-brief"; yang_parent_name = "common-acl-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-brief"; yang_parent_name = "common-acl-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceBrief::~AceBrief()
@@ -10025,6 +10094,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return grant.is_set
 	|| logging_enabled.is_set
 	|| per_ace_icmp_enabled.is_set
@@ -10202,7 +10272,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceBrief::NextHopAddress::~NextHopAddress()
@@ -10211,6 +10281,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceBrief::NextHopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -10303,14 +10374,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::AceDetail()
     :
     entry_id{YType::int32, "entry-id"}
-    	,
-    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam>())
-	,ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam>())
+        ,
+    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam>())
+    , ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam>())
 {
     ipv4tcam->parent = this;
     ipv6tcam->parent = this;
 
-    yang_name = "ace-detail"; yang_parent_name = "common-acl-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-detail"; yang_parent_name = "common-acl-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::~AceDetail()
@@ -10319,6 +10390,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_id.is_set
 	|| (ipv4tcam !=  nullptr && ipv4tcam->has_data())
 	|| (ipv6tcam !=  nullptr && ipv6tcam->has_data());
@@ -10355,7 +10427,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv4tcam == nullptr)
         {
-            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam>();
+            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam>();
         }
         return ipv4tcam;
     }
@@ -10364,7 +10436,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv6tcam == nullptr)
         {
-            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam>();
+            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam>();
         }
         return ipv6tcam;
     }
@@ -10414,38 +10486,39 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::Ipv4tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::~Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::~Ipv4tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10454,13 +10527,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -10468,7 +10541,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10480,46 +10553,47 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::TcamEntry()
     :
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result>())
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (value_ !=  nullptr && value_->has_data())
 	|| (mask !=  nullptr && mask->has_data())
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| (value_ !=  nullptr && value_->has_operation())
@@ -10527,14 +10601,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10543,13 +10617,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -10558,7 +10632,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -10567,7 +10641,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -10575,7 +10649,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10597,22 +10671,22 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -10626,20 +10700,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -10655,7 +10730,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -10673,14 +10748,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10701,13 +10776,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -10715,7 +10790,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -10727,7 +10802,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -10803,7 +10878,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -10855,14 +10930,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -10872,15 +10947,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -10889,7 +10965,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -10900,14 +10976,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -10922,19 +10998,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -10974,7 +11050,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -11002,14 +11078,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -11023,20 +11099,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -11052,7 +11129,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -11070,14 +11147,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11098,13 +11175,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -11112,7 +11189,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11124,7 +11201,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -11200,7 +11277,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -11252,14 +11329,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -11269,15 +11346,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -11286,7 +11364,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -11297,14 +11375,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11319,19 +11397,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -11371,7 +11449,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -11399,14 +11477,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -11420,20 +11498,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -11449,7 +11528,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -11467,14 +11546,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11495,13 +11574,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -11509,7 +11588,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11521,7 +11600,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -11597,7 +11676,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -11649,14 +11728,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -11666,15 +11745,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -11683,7 +11763,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -11694,14 +11774,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11716,19 +11796,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -11768,7 +11848,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -11796,45 +11876,46 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::Ipv6tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::~Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::~Ipv6tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11843,13 +11924,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -11857,7 +11938,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -11869,45 +11950,46 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::TcamEntry()
     :
     source_address{YType::str, "source-address"},
     source_address_mask{YType::str, "source-address-mask"},
     destination_address{YType::str, "destination-address"},
     destination_address_mask{YType::str, "destination-address-mask"}
-    	,
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result>())
+        ,
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| source_address_mask.is_set
 	|| destination_address.is_set
@@ -11917,7 +11999,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter)
@@ -11929,14 +12011,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -11949,13 +12031,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -11964,7 +12046,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -11973,7 +12055,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -11981,7 +12063,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12003,7 +12085,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -12031,7 +12113,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -12051,14 +12133,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result" || name == "source-address" || name == "source-address-mask" || name == "destination-address" || name == "destination-address-mask")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -12072,20 +12154,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -12101,7 +12184,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -12119,14 +12202,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12147,13 +12230,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -12161,7 +12244,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12173,7 +12256,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -12249,7 +12332,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -12301,14 +12384,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -12318,15 +12401,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -12335,7 +12419,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -12346,14 +12430,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12368,19 +12452,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -12420,7 +12504,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -12448,14 +12532,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -12469,20 +12553,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -12498,7 +12583,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -12516,14 +12601,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12544,13 +12629,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -12558,7 +12643,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12570,7 +12655,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -12646,7 +12731,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -12698,14 +12783,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -12715,15 +12800,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -12732,7 +12818,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -12743,14 +12829,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12765,19 +12851,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -12817,7 +12903,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -12845,14 +12931,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -12866,20 +12952,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -12895,7 +12982,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -12913,14 +13000,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12941,13 +13028,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -12955,7 +13042,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -12967,7 +13054,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -13043,7 +13130,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -13095,14 +13182,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -13112,15 +13199,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -13129,7 +13217,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -13140,14 +13228,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13162,19 +13250,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -13214,7 +13302,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -13242,7 +13330,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::CommonAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
@@ -13252,10 +13340,11 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::InterfaceAclDetail()
     :
     ace_brief(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceBrief>())
+    , ace_detail(this, {})
 {
     ace_brief->parent = this;
 
-    yang_name = "interface-acl-detail"; yang_parent_name = "sequence-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-acl-detail"; yang_parent_name = "sequence-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::~InterfaceAclDetail()
@@ -13264,7 +13353,8 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::has_data() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_data())
             return true;
@@ -13274,7 +13364,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::has_operation() const
 {
-    for (std::size_t index=0; index<ace_detail.size(); index++)
+    for (std::size_t index=0; index<ace_detail.len(); index++)
     {
         if(ace_detail[index]->has_operation())
             return true;
@@ -13314,7 +13404,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail>();
         c->parent = this;
-        ace_detail.push_back(c);
+        ace_detail.append(c);
         return c;
     }
 
@@ -13331,7 +13421,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : ace_detail)
+    for (auto c : ace_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13367,12 +13457,12 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     total_tcam_entries{YType::uint32, "total-tcam-entries"},
     hits{YType::uint64, "hits"},
     npu_id{YType::uint8, "npu-id"}
-    	,
+        ,
     next_hop_address(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceBrief::NextHopAddress>())
 {
     next_hop_address->parent = this;
 
-    yang_name = "ace-brief"; yang_parent_name = "interface-acl-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-brief"; yang_parent_name = "interface-acl-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceBrief::~AceBrief()
@@ -13381,6 +13471,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceBrief::has_data() const
 {
+    if (is_presence_container) return true;
     return grant.is_set
 	|| logging_enabled.is_set
 	|| per_ace_icmp_enabled.is_set
@@ -13558,7 +13649,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-address"; yang_parent_name = "ace-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceBrief::NextHopAddress::~NextHopAddress()
@@ -13567,6 +13658,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceBrief::NextHopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -13659,14 +13751,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::AceDetail()
     :
     entry_id{YType::int32, "entry-id"}
-    	,
-    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam>())
-	,ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam>())
+        ,
+    ipv4tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam>())
+    , ipv6tcam(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam>())
 {
     ipv4tcam->parent = this;
     ipv6tcam->parent = this;
 
-    yang_name = "ace-detail"; yang_parent_name = "interface-acl-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ace-detail"; yang_parent_name = "interface-acl-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::~AceDetail()
@@ -13675,6 +13767,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return entry_id.is_set
 	|| (ipv4tcam !=  nullptr && ipv4tcam->has_data())
 	|| (ipv6tcam !=  nullptr && ipv6tcam->has_data());
@@ -13711,7 +13804,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv4tcam == nullptr)
         {
-            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam>();
+            ipv4tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam>();
         }
         return ipv4tcam;
     }
@@ -13720,7 +13813,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(ipv6tcam == nullptr)
         {
-            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam>();
+            ipv6tcam = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam>();
         }
         return ipv6tcam;
     }
@@ -13770,38 +13863,39 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::Ipv4tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::~Ipv4Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::~Ipv4tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13810,13 +13904,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -13824,7 +13918,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13836,46 +13930,47 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::TcamEntry()
     :
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result>())
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv4tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return (value_ !=  nullptr && value_->has_data())
 	|| (mask !=  nullptr && mask->has_data())
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| (value_ !=  nullptr && value_->has_operation())
@@ -13883,14 +13978,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -13899,13 +13994,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -13914,7 +14009,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -13923,7 +14018,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -13931,7 +14026,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -13953,22 +14048,22 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -13982,20 +14077,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -14011,7 +14107,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -14029,14 +14125,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14057,13 +14153,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -14071,7 +14167,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14083,7 +14179,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -14159,7 +14255,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -14211,14 +14307,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -14228,15 +14324,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -14245,7 +14342,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -14256,14 +14353,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14278,19 +14375,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -14330,7 +14427,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -14358,14 +14455,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -14379,20 +14476,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -14408,7 +14506,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -14426,14 +14524,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14454,13 +14552,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -14468,7 +14566,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14480,7 +14578,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -14556,7 +14654,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -14608,14 +14706,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -14625,15 +14723,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -14642,7 +14741,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -14653,14 +14752,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14675,19 +14774,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -14727,7 +14826,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -14755,14 +14854,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     source_range_id{YType::uint16, "source-range-id"},
@@ -14776,20 +14875,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     destination_address{YType::str, "destination-address"},
     layer4_destination_port{YType::uint16, "layer4-destination-port"},
     packet_length_range{YType::uint8, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| source_range_id.is_set
 	|| destination_range_id.is_set
@@ -14805,7 +14905,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -14823,14 +14923,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -14851,13 +14951,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -14865,7 +14965,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -14877,7 +14977,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -14953,7 +15053,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -15005,14 +15105,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "source-range-id" || name == "destination-range-id" || name == "source-address" || name == "protocol" || name == "fragment" || name == "dscp" || name == "ttl" || name == "layer4-source-port" || name == "destination-address" || name == "layer4-destination-port" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -15022,15 +15122,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -15039,7 +15140,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -15050,14 +15151,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15072,19 +15173,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -15124,7 +15225,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -15152,45 +15253,46 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv4tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::Ipv6tcam()
     :
-    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry>())
+    tcam_entry(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry>())
 {
     tcam_entry->parent = this;
 
-    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6tcam"; yang_parent_name = "ace-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::~Ipv6Tcam()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::~Ipv6tcam()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::has_data() const
 {
+    if (is_presence_container) return true;
     return (tcam_entry !=  nullptr && tcam_entry->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::has_operation() const
 {
     return is_set(yfilter)
 	|| (tcam_entry !=  nullptr && tcam_entry->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6tcam";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15199,13 +15301,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcam-entry")
     {
         if(tcam_entry == nullptr)
         {
-            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry>();
+            tcam_entry = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry>();
         }
         return tcam_entry;
     }
@@ -15213,7 +15315,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15225,45 +15327,46 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcam-entry")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::TcamEntry()
     :
     source_address{YType::str, "source-address"},
     source_address_mask{YType::str, "source-address-mask"},
     destination_address{YType::str, "destination-address"},
     destination_address_mask{YType::str, "destination-address-mask"}
-    	,
-    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value>())
-	,mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask>())
-	,result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result>())
+        ,
+    value_(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value>())
+    , mask(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask>())
+    , result(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result>())
 {
     value_->parent = this;
     mask->parent = this;
     result->parent = this;
 
-    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcam-entry"; yang_parent_name = "ipv6tcam"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::~TcamEntry()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::~TcamEntry()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return source_address.is_set
 	|| source_address_mask.is_set
 	|| destination_address.is_set
@@ -15273,7 +15376,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (result !=  nullptr && result->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(source_address.yfilter)
@@ -15285,14 +15388,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (result !=  nullptr && result->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-entry";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15305,13 +15408,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "value")
     {
         if(value_ == nullptr)
         {
-            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value>();
+            value_ = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value>();
         }
         return value_;
     }
@@ -15320,7 +15423,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(mask == nullptr)
         {
-            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask>();
+            mask = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask>();
         }
         return mask;
     }
@@ -15329,7 +15432,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         if(result == nullptr)
         {
-            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result>();
+            result = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result>();
         }
         return result;
     }
@@ -15337,7 +15440,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15359,7 +15462,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "source-address")
     {
@@ -15387,7 +15490,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "source-address")
     {
@@ -15407,14 +15510,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "value" || name == "mask" || name == "result" || name == "source-address" || name == "source-address-mask" || name == "destination-address" || name == "destination-address-mask")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::Value()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -15428,20 +15531,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "value"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::~Value()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::~Value()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -15457,7 +15561,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -15475,14 +15579,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15503,13 +15607,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -15517,7 +15621,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15529,7 +15633,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -15605,7 +15709,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -15657,14 +15761,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -15674,15 +15778,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "value"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -15691,7 +15796,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -15702,14 +15807,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15724,19 +15829,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -15776,7 +15881,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -15804,14 +15909,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Value::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::Mask()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -15825,20 +15930,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mask"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::~Mask()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::~Mask()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -15854,7 +15960,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -15872,14 +15978,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mask";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -15900,13 +16006,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -15914,7 +16020,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -15926,7 +16032,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -16002,7 +16108,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -16054,14 +16160,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -16071,15 +16177,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "mask"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -16088,7 +16195,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -16099,14 +16206,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16121,19 +16228,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -16173,7 +16280,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -16201,14 +16308,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Mask::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::Result()
     :
     acl_id{YType::uint16, "acl-id"},
     protocol{YType::uint8, "protocol"},
@@ -16222,20 +16329,21 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     fragment{YType::uint8, "fragment"},
     tos{YType::uint8, "tos"},
     packet_length_range{YType::uint32, "packet-length-range"}
-    	,
-    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>())
+        ,
+    tcp_flags(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>())
 {
     tcp_flags->parent = this;
 
-    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "result"; yang_parent_name = "tcam-entry"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::~Result()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::~Result()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_id.is_set
 	|| protocol.is_set
 	|| layer4_source_port.is_set
@@ -16251,7 +16359,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_data());
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_id.yfilter)
@@ -16269,14 +16377,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| (tcp_flags !=  nullptr && tcp_flags->has_operation());
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "result";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16297,13 +16405,13 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "tcp-flags")
     {
         if(tcp_flags == nullptr)
         {
-            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags>();
+            tcp_flags = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags>();
         }
         return tcp_flags;
     }
@@ -16311,7 +16419,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -16323,7 +16431,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-id")
     {
@@ -16399,7 +16507,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-id")
     {
@@ -16451,14 +16559,14 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "tcp-flags" || name == "acl-id" || name == "protocol" || name == "layer4-source-port" || name == "layer4-destination-port" || name == "source-range-id" || name == "destination-range-id" || name == "destination-header" || name == "receive-transition-gap-header" || name == "authentication-header" || name == "fragment" || name == "tos" || name == "packet-length-range")
         return true;
     return false;
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::TcpFlags()
     :
     urgent{YType::uint8, "urgent"},
     acknowledge{YType::uint8, "acknowledge"},
@@ -16468,15 +16576,16 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetail
     finish{YType::uint8, "finish"}
 {
 
-    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-flags"; yang_parent_name = "result"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
+AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::~TcpFlags()
 {
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_data() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_data() const
 {
+    if (is_presence_container) return true;
     return urgent.is_set
 	|| acknowledge.is_set
 	|| push.is_set
@@ -16485,7 +16594,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| finish.is_set;
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_operation() const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(urgent.yfilter)
@@ -16496,14 +16605,14 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 	|| ydk::is_set(finish.yfilter);
 }
 
-std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
+std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tcp-flags";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -16518,19 +16627,19 @@ std::vector<std::pair<std::string, LeafData> > AccessListHardware::Nodes::Node::
 
 }
 
-std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "urgent")
     {
@@ -16570,7 +16679,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
+void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "urgent")
     {
@@ -16598,7 +16707,7 @@ void AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
     }
 }
 
-bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6Tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
+bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceDetails::SequenceDetail::InterfaceAclDetail::AceDetail::Ipv6tcam::TcamEntry::Result::TcpFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "urgent" || name == "acknowledge" || name == "push" || name == "reset" || name == "synchronization" || name == "finish")
         return true;
@@ -16606,9 +16715,11 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceD
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBriefs()
+    :
+    sequence_brief(this, {"sequence_number"})
 {
 
-    yang_name = "sequence-briefs"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sequence-briefs"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::~SequenceBriefs()
@@ -16617,7 +16728,8 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::has_data() const
 {
-    for (std::size_t index=0; index<sequence_brief.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sequence_brief.len(); index++)
     {
         if(sequence_brief[index]->has_data())
             return true;
@@ -16627,7 +16739,7 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceB
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::has_operation() const
 {
-    for (std::size_t index=0; index<sequence_brief.size(); index++)
+    for (std::size_t index=0; index<sequence_brief.len(); index++)
     {
         if(sequence_brief[index]->has_operation())
             return true;
@@ -16657,7 +16769,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief>();
         c->parent = this;
-        sequence_brief.push_back(c);
+        sequence_brief.append(c);
         return c;
     }
 
@@ -16669,7 +16781,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sequence_brief)
+    for (auto c : sequence_brief.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16698,9 +16810,12 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceB
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::SequenceBrief()
     :
     sequence_number{YType::int32, "sequence-number"}
+        ,
+    common_acl(this, {})
+    , interface_acl(this, {})
 {
 
-    yang_name = "sequence-brief"; yang_parent_name = "sequence-briefs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sequence-brief"; yang_parent_name = "sequence-briefs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::~SequenceBrief()
@@ -16709,12 +16824,13 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::has_data() const
 {
-    for (std::size_t index=0; index<common_acl.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<common_acl.len(); index++)
     {
         if(common_acl[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<interface_acl.size(); index++)
+    for (std::size_t index=0; index<interface_acl.len(); index++)
     {
         if(interface_acl[index]->has_data())
             return true;
@@ -16724,12 +16840,12 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceB
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::has_operation() const
 {
-    for (std::size_t index=0; index<common_acl.size(); index++)
+    for (std::size_t index=0; index<common_acl.len(); index++)
     {
         if(common_acl[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<interface_acl.size(); index++)
+    for (std::size_t index=0; index<interface_acl.len(); index++)
     {
         if(interface_acl[index]->has_operation())
             return true;
@@ -16741,7 +16857,8 @@ bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceB
 std::string AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sequence-brief" <<"[sequence-number='" <<sequence_number <<"']";
+    path_buffer << "sequence-brief";
+    ADD_KEY_TOKEN(sequence_number, "sequence-number");
     return path_buffer.str();
 }
 
@@ -16761,7 +16878,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::CommonAcl>();
         c->parent = this;
-        common_acl.push_back(c);
+        common_acl.append(c);
         return c;
     }
 
@@ -16769,7 +16886,7 @@ std::shared_ptr<Entity> AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses
     {
         auto c = std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::InterfaceAcl>();
         c->parent = this;
-        interface_acl.push_back(c);
+        interface_acl.append(c);
         return c;
     }
 
@@ -16781,7 +16898,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : common_acl)
+    for (auto c : common_acl.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16790,7 +16907,7 @@ std::map<std::string, std::shared_ptr<Entity>> AccessListHardware::Nodes::Node::
     }
 
     count = 0;
-    for (auto const & c : interface_acl)
+    for (auto c : interface_acl.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16836,12 +16953,12 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
     total_tcam_entries{YType::uint32, "total-tcam-entries"},
     hits{YType::uint64, "hits"},
     npu_id{YType::uint8, "npu-id"}
-    	,
+        ,
     next_hop_address(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::CommonAcl::NextHopAddress>())
 {
     next_hop_address->parent = this;
 
-    yang_name = "common-acl"; yang_parent_name = "sequence-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-acl"; yang_parent_name = "sequence-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::CommonAcl::~CommonAcl()
@@ -16850,6 +16967,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::CommonAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return grant.is_set
 	|| logging_enabled.is_set
 	|| per_ace_icmp_enabled.is_set
@@ -17027,7 +17145,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop-address"; yang_parent_name = "common-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-address"; yang_parent_name = "common-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::CommonAcl::NextHopAddress::~NextHopAddress()
@@ -17036,6 +17154,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::CommonAcl::NextHopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;
@@ -17135,12 +17254,12 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
     total_tcam_entries{YType::uint32, "total-tcam-entries"},
     hits{YType::uint64, "hits"},
     npu_id{YType::uint8, "npu-id"}
-    	,
+        ,
     next_hop_address(std::make_shared<AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::InterfaceAcl::NextHopAddress>())
 {
     next_hop_address->parent = this;
 
-    yang_name = "interface-acl"; yang_parent_name = "sequence-brief"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-acl"; yang_parent_name = "sequence-brief"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::InterfaceAcl::~InterfaceAcl()
@@ -17149,6 +17268,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::InterfaceAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return grant.is_set
 	|| logging_enabled.is_set
 	|| per_ace_icmp_enabled.is_set
@@ -17326,7 +17446,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
     ipv6_address{YType::str, "ipv6-address"}
 {
 
-    yang_name = "next-hop-address"; yang_parent_name = "interface-acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "next-hop-address"; yang_parent_name = "interface-acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::InterfaceAcl::NextHopAddress::~NextHopAddress()
@@ -17335,6 +17455,7 @@ AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs
 
 bool AccessListHardware::Nodes::Node::Ingress::Ipv6::Accesses::Access::SequenceBriefs::SequenceBrief::InterfaceAcl::NextHopAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return address_type.is_set
 	|| ipv4_address.is_set
 	|| ipv6_address.is_set;

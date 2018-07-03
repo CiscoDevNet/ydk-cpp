@@ -32,50 +32,50 @@ class OSPFMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ospfgeneralgroup; //type: OSPFMIB::Ospfgeneralgroup
-        class Ospfareatable; //type: OSPFMIB::Ospfareatable
-        class Ospfstubareatable; //type: OSPFMIB::Ospfstubareatable
-        class Ospflsdbtable; //type: OSPFMIB::Ospflsdbtable
-        class Ospfarearangetable; //type: OSPFMIB::Ospfarearangetable
-        class Ospfhosttable; //type: OSPFMIB::Ospfhosttable
-        class Ospfiftable; //type: OSPFMIB::Ospfiftable
-        class Ospfifmetrictable; //type: OSPFMIB::Ospfifmetrictable
-        class Ospfvirtiftable; //type: OSPFMIB::Ospfvirtiftable
-        class Ospfnbrtable; //type: OSPFMIB::Ospfnbrtable
-        class Ospfvirtnbrtable; //type: OSPFMIB::Ospfvirtnbrtable
-        class Ospfextlsdbtable; //type: OSPFMIB::Ospfextlsdbtable
-        class Ospfareaaggregatetable; //type: OSPFMIB::Ospfareaaggregatetable
-        class Ospflocallsdbtable; //type: OSPFMIB::Ospflocallsdbtable
-        class Ospfvirtlocallsdbtable; //type: OSPFMIB::Ospfvirtlocallsdbtable
-        class Ospfaslsdbtable; //type: OSPFMIB::Ospfaslsdbtable
-        class Ospfarealsacounttable; //type: OSPFMIB::Ospfarealsacounttable
+        class OspfGeneralGroup; //type: OSPFMIB::OspfGeneralGroup
+        class OspfAreaTable; //type: OSPFMIB::OspfAreaTable
+        class OspfStubAreaTable; //type: OSPFMIB::OspfStubAreaTable
+        class OspfLsdbTable; //type: OSPFMIB::OspfLsdbTable
+        class OspfAreaRangeTable; //type: OSPFMIB::OspfAreaRangeTable
+        class OspfHostTable; //type: OSPFMIB::OspfHostTable
+        class OspfIfTable; //type: OSPFMIB::OspfIfTable
+        class OspfIfMetricTable; //type: OSPFMIB::OspfIfMetricTable
+        class OspfVirtIfTable; //type: OSPFMIB::OspfVirtIfTable
+        class OspfNbrTable; //type: OSPFMIB::OspfNbrTable
+        class OspfVirtNbrTable; //type: OSPFMIB::OspfVirtNbrTable
+        class OspfExtLsdbTable; //type: OSPFMIB::OspfExtLsdbTable
+        class OspfAreaAggregateTable; //type: OSPFMIB::OspfAreaAggregateTable
+        class OspfLocalLsdbTable; //type: OSPFMIB::OspfLocalLsdbTable
+        class OspfVirtLocalLsdbTable; //type: OSPFMIB::OspfVirtLocalLsdbTable
+        class OspfAsLsdbTable; //type: OSPFMIB::OspfAsLsdbTable
+        class OspfAreaLsaCountTable; //type: OSPFMIB::OspfAreaLsaCountTable
 
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfgeneralgroup> ospfgeneralgroup;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfareatable> ospfareatable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfstubareatable> ospfstubareatable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable> ospflsdbtable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfarearangetable> ospfarearangetable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfhosttable> ospfhosttable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfiftable> ospfiftable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfifmetrictable> ospfifmetrictable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfvirtiftable> ospfvirtiftable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfnbrtable> ospfnbrtable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfvirtnbrtable> ospfvirtnbrtable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfextlsdbtable> ospfextlsdbtable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfareaaggregatetable> ospfareaaggregatetable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflocallsdbtable> ospflocallsdbtable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfvirtlocallsdbtable> ospfvirtlocallsdbtable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfaslsdbtable> ospfaslsdbtable;
-        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfarealsacounttable> ospfarealsacounttable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfGeneralGroup> ospfgeneralgroup;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfAreaTable> ospfareatable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfStubAreaTable> ospfstubareatable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfLsdbTable> ospflsdbtable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfAreaRangeTable> ospfarearangetable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfHostTable> ospfhosttable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfIfTable> ospfiftable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfIfMetricTable> ospfifmetrictable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfVirtIfTable> ospfvirtiftable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfNbrTable> ospfnbrtable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfVirtNbrTable> ospfvirtnbrtable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfExtLsdbTable> ospfextlsdbtable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfAreaAggregateTable> ospfareaaggregatetable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfLocalLsdbTable> ospflocallsdbtable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfVirtLocalLsdbTable> ospfvirtlocallsdbtable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfAsLsdbTable> ospfaslsdbtable;
+        std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::OspfAreaLsaCountTable> ospfarealsacounttable;
         
 }; // OSPFMIB
 
 
-class OSPFMIB::Ospfgeneralgroup : public ydk::Entity
+class OSPFMIB::OspfGeneralGroup : public ydk::Entity
 {
     public:
-        Ospfgeneralgroup();
-        ~Ospfgeneralgroup();
+        OspfGeneralGroup();
+        ~OspfGeneralGroup();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -90,7 +90,7 @@ class OSPFMIB::Ospfgeneralgroup : public ydk::Entity
 
         ydk::YLeaf ospfrouterid; //type: string
         ydk::YLeaf ospfadminstat; //type: Status
-        ydk::YLeaf ospfversionnumber; //type: Ospfversionnumber
+        ydk::YLeaf ospfversionnumber; //type: OspfVersionNumber
         ydk::YLeaf ospfareabdrrtrstatus; //type: boolean
         ydk::YLeaf ospfasbdrrtrstatus; //type: boolean
         ydk::YLeaf ospfexternlsacount; //type: uint32
@@ -105,31 +105,31 @@ class OSPFMIB::Ospfgeneralgroup : public ydk::Entity
         ydk::YLeaf ospfrfc1583compatibility; //type: boolean
         ydk::YLeaf ospfopaquelsasupport; //type: boolean
         ydk::YLeaf ospfreferencebandwidth; //type: uint32
-        ydk::YLeaf ospfrestartsupport; //type: Ospfrestartsupport
+        ydk::YLeaf ospfrestartsupport; //type: OspfRestartSupport
         ydk::YLeaf ospfrestartinterval; //type: int32
         ydk::YLeaf ospfrestartstrictlsachecking; //type: boolean
-        ydk::YLeaf ospfrestartstatus; //type: Ospfrestartstatus
+        ydk::YLeaf ospfrestartstatus; //type: OspfRestartStatus
         ydk::YLeaf ospfrestartage; //type: uint32
-        ydk::YLeaf ospfrestartexitreason; //type: Ospfrestartexitreason
+        ydk::YLeaf ospfrestartexitreason; //type: OspfRestartExitReason
         ydk::YLeaf ospfaslsacount; //type: uint32
         ydk::YLeaf ospfaslsacksumsum; //type: uint32
         ydk::YLeaf ospfstubroutersupport; //type: boolean
-        ydk::YLeaf ospfstubrouteradvertisement; //type: Ospfstubrouteradvertisement
+        ydk::YLeaf ospfstubrouteradvertisement; //type: OspfStubRouterAdvertisement
         ydk::YLeaf ospfdiscontinuitytime; //type: uint32
-        class Ospfversionnumber;
-        class Ospfrestartsupport;
-        class Ospfrestartstatus;
-        class Ospfrestartexitreason;
-        class Ospfstubrouteradvertisement;
+        class OspfVersionNumber;
+        class OspfRestartSupport;
+        class OspfRestartStatus;
+        class OspfRestartExitReason;
+        class OspfStubRouterAdvertisement;
 
-}; // OSPFMIB::Ospfgeneralgroup
+}; // OSPFMIB::OspfGeneralGroup
 
 
-class OSPFMIB::Ospfareatable : public ydk::Entity
+class OSPFMIB::OspfAreaTable : public ydk::Entity
 {
     public:
-        Ospfareatable();
-        ~Ospfareatable();
+        OspfAreaTable();
+        ~OspfAreaTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -142,18 +142,18 @@ class OSPFMIB::Ospfareatable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfareaentry; //type: OSPFMIB::Ospfareatable::Ospfareaentry
+        class OspfAreaEntry; //type: OSPFMIB::OspfAreaTable::OspfAreaEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfareatable::Ospfareaentry> > ospfareaentry;
+        ydk::YList ospfareaentry;
         
-}; // OSPFMIB::Ospfareatable
+}; // OSPFMIB::OspfAreaTable
 
 
-class OSPFMIB::Ospfareatable::Ospfareaentry : public ydk::Entity
+class OSPFMIB::OspfAreaTable::OspfAreaEntry : public ydk::Entity
 {
     public:
-        Ospfareaentry();
-        ~Ospfareaentry();
+        OspfAreaEntry();
+        ~OspfAreaEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -168,38 +168,38 @@ class OSPFMIB::Ospfareatable::Ospfareaentry : public ydk::Entity
 
         ydk::YLeaf ospfareaid; //type: string
         ydk::YLeaf ospfauthtype; //type: OspfAuthenticationType
-        ydk::YLeaf ospfimportasextern; //type: Ospfimportasextern
+        ydk::YLeaf ospfimportasextern; //type: OspfImportAsExtern
         ydk::YLeaf ospfspfruns; //type: uint32
         ydk::YLeaf ospfareabdrrtrcount; //type: uint32
         ydk::YLeaf ospfasbdrrtrcount; //type: uint32
         ydk::YLeaf ospfarealsacount; //type: uint32
         ydk::YLeaf ospfarealsacksumsum; //type: int32
-        ydk::YLeaf ospfareasummary; //type: Ospfareasummary
+        ydk::YLeaf ospfareasummary; //type: OspfAreaSummary
         ydk::YLeaf ospfareastatus; //type: RowStatus
-        ydk::YLeaf ospfareanssatranslatorrole; //type: Ospfareanssatranslatorrole
-        ydk::YLeaf ospfareanssatranslatorstate; //type: Ospfareanssatranslatorstate
+        ydk::YLeaf ospfareanssatranslatorrole; //type: OspfAreaNssaTranslatorRole
+        ydk::YLeaf ospfareanssatranslatorstate; //type: OspfAreaNssaTranslatorState
         ydk::YLeaf ospfareanssatranslatorstabilityinterval; //type: int32
         ydk::YLeaf ospfareanssatranslatorevents; //type: uint32
         ydk::YLeaf cospfopaquearealsacount; //type: uint32
         ydk::YLeaf cospfopaquearealsacksumsum; //type: uint32
-        ydk::YLeaf cospfareanssatranslatorrole; //type: Cospfareanssatranslatorrole
-        ydk::YLeaf cospfareanssatranslatorstate; //type: Cospfareanssatranslatorstate
+        ydk::YLeaf cospfareanssatranslatorrole; //type: CospfAreaNssaTranslatorRole
+        ydk::YLeaf cospfareanssatranslatorstate; //type: CospfAreaNssaTranslatorState
         ydk::YLeaf cospfareanssatranslatorevents; //type: uint32
-        class Ospfimportasextern;
-        class Ospfareasummary;
-        class Ospfareanssatranslatorrole;
-        class Ospfareanssatranslatorstate;
-        class Cospfareanssatranslatorrole;
-        class Cospfareanssatranslatorstate;
+        class OspfImportAsExtern;
+        class OspfAreaSummary;
+        class OspfAreaNssaTranslatorRole;
+        class OspfAreaNssaTranslatorState;
+        class CospfAreaNssaTranslatorRole;
+        class CospfAreaNssaTranslatorState;
 
-}; // OSPFMIB::Ospfareatable::Ospfareaentry
+}; // OSPFMIB::OspfAreaTable::OspfAreaEntry
 
 
-class OSPFMIB::Ospfstubareatable : public ydk::Entity
+class OSPFMIB::OspfStubAreaTable : public ydk::Entity
 {
     public:
-        Ospfstubareatable();
-        ~Ospfstubareatable();
+        OspfStubAreaTable();
+        ~OspfStubAreaTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -212,18 +212,18 @@ class OSPFMIB::Ospfstubareatable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfstubareaentry; //type: OSPFMIB::Ospfstubareatable::Ospfstubareaentry
+        class OspfStubAreaEntry; //type: OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfstubareatable::Ospfstubareaentry> > ospfstubareaentry;
+        ydk::YList ospfstubareaentry;
         
-}; // OSPFMIB::Ospfstubareatable
+}; // OSPFMIB::OspfStubAreaTable
 
 
-class OSPFMIB::Ospfstubareatable::Ospfstubareaentry : public ydk::Entity
+class OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry : public ydk::Entity
 {
     public:
-        Ospfstubareaentry();
-        ~Ospfstubareaentry();
+        OspfStubAreaEntry();
+        ~OspfStubAreaEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -240,17 +240,17 @@ class OSPFMIB::Ospfstubareatable::Ospfstubareaentry : public ydk::Entity
         ydk::YLeaf ospfstubtos; //type: int32
         ydk::YLeaf ospfstubmetric; //type: int32
         ydk::YLeaf ospfstubstatus; //type: RowStatus
-        ydk::YLeaf ospfstubmetrictype; //type: Ospfstubmetrictype
-        class Ospfstubmetrictype;
+        ydk::YLeaf ospfstubmetrictype; //type: OspfStubMetricType
+        class OspfStubMetricType;
 
-}; // OSPFMIB::Ospfstubareatable::Ospfstubareaentry
+}; // OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry
 
 
-class OSPFMIB::Ospflsdbtable : public ydk::Entity
+class OSPFMIB::OspfLsdbTable : public ydk::Entity
 {
     public:
-        Ospflsdbtable();
-        ~Ospflsdbtable();
+        OspfLsdbTable();
+        ~OspfLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -263,18 +263,18 @@ class OSPFMIB::Ospflsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospflsdbentry; //type: OSPFMIB::Ospflsdbtable::Ospflsdbentry
+        class OspfLsdbEntry; //type: OSPFMIB::OspfLsdbTable::OspfLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflsdbtable::Ospflsdbentry> > ospflsdbentry;
+        ydk::YList ospflsdbentry;
         
-}; // OSPFMIB::Ospflsdbtable
+}; // OSPFMIB::OspfLsdbTable
 
 
-class OSPFMIB::Ospflsdbtable::Ospflsdbentry : public ydk::Entity
+class OSPFMIB::OspfLsdbTable::OspfLsdbEntry : public ydk::Entity
 {
     public:
-        Ospflsdbentry();
-        ~Ospflsdbentry();
+        OspfLsdbEntry();
+        ~OspfLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -288,23 +288,23 @@ class OSPFMIB::Ospflsdbtable::Ospflsdbentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ospflsdbareaid; //type: string
-        ydk::YLeaf ospflsdbtype; //type: Ospflsdbtype
+        ydk::YLeaf ospflsdbtype; //type: OspfLsdbType
         ydk::YLeaf ospflsdblsid; //type: string
         ydk::YLeaf ospflsdbrouterid; //type: string
         ydk::YLeaf ospflsdbsequence; //type: int32
         ydk::YLeaf ospflsdbage; //type: int32
         ydk::YLeaf ospflsdbchecksum; //type: int32
         ydk::YLeaf ospflsdbadvertisement; //type: binary
-        class Ospflsdbtype;
+        class OspfLsdbType;
 
-}; // OSPFMIB::Ospflsdbtable::Ospflsdbentry
+}; // OSPFMIB::OspfLsdbTable::OspfLsdbEntry
 
 
-class OSPFMIB::Ospfarearangetable : public ydk::Entity
+class OSPFMIB::OspfAreaRangeTable : public ydk::Entity
 {
     public:
-        Ospfarearangetable();
-        ~Ospfarearangetable();
+        OspfAreaRangeTable();
+        ~OspfAreaRangeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -317,18 +317,18 @@ class OSPFMIB::Ospfarearangetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfarearangeentry; //type: OSPFMIB::Ospfarearangetable::Ospfarearangeentry
+        class OspfAreaRangeEntry; //type: OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfarearangetable::Ospfarearangeentry> > ospfarearangeentry;
+        ydk::YList ospfarearangeentry;
         
-}; // OSPFMIB::Ospfarearangetable
+}; // OSPFMIB::OspfAreaRangeTable
 
 
-class OSPFMIB::Ospfarearangetable::Ospfarearangeentry : public ydk::Entity
+class OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry : public ydk::Entity
 {
     public:
-        Ospfarearangeentry();
-        ~Ospfarearangeentry();
+        OspfAreaRangeEntry();
+        ~OspfAreaRangeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -345,17 +345,17 @@ class OSPFMIB::Ospfarearangetable::Ospfarearangeentry : public ydk::Entity
         ydk::YLeaf ospfarearangenet; //type: string
         ydk::YLeaf ospfarearangemask; //type: string
         ydk::YLeaf ospfarearangestatus; //type: RowStatus
-        ydk::YLeaf ospfarearangeeffect; //type: Ospfarearangeeffect
-        class Ospfarearangeeffect;
+        ydk::YLeaf ospfarearangeeffect; //type: OspfAreaRangeEffect
+        class OspfAreaRangeEffect;
 
-}; // OSPFMIB::Ospfarearangetable::Ospfarearangeentry
+}; // OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry
 
 
-class OSPFMIB::Ospfhosttable : public ydk::Entity
+class OSPFMIB::OspfHostTable : public ydk::Entity
 {
     public:
-        Ospfhosttable();
-        ~Ospfhosttable();
+        OspfHostTable();
+        ~OspfHostTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -368,18 +368,18 @@ class OSPFMIB::Ospfhosttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfhostentry; //type: OSPFMIB::Ospfhosttable::Ospfhostentry
+        class OspfHostEntry; //type: OSPFMIB::OspfHostTable::OspfHostEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfhosttable::Ospfhostentry> > ospfhostentry;
+        ydk::YList ospfhostentry;
         
-}; // OSPFMIB::Ospfhosttable
+}; // OSPFMIB::OspfHostTable
 
 
-class OSPFMIB::Ospfhosttable::Ospfhostentry : public ydk::Entity
+class OSPFMIB::OspfHostTable::OspfHostEntry : public ydk::Entity
 {
     public:
-        Ospfhostentry();
-        ~Ospfhostentry();
+        OspfHostEntry();
+        ~OspfHostEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -399,14 +399,14 @@ class OSPFMIB::Ospfhosttable::Ospfhostentry : public ydk::Entity
         ydk::YLeaf ospfhostareaid; //type: string
         ydk::YLeaf ospfhostcfgareaid; //type: string
 
-}; // OSPFMIB::Ospfhosttable::Ospfhostentry
+}; // OSPFMIB::OspfHostTable::OspfHostEntry
 
 
-class OSPFMIB::Ospfiftable : public ydk::Entity
+class OSPFMIB::OspfIfTable : public ydk::Entity
 {
     public:
-        Ospfiftable();
-        ~Ospfiftable();
+        OspfIfTable();
+        ~OspfIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -419,18 +419,18 @@ class OSPFMIB::Ospfiftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfifentry; //type: OSPFMIB::Ospfiftable::Ospfifentry
+        class OspfIfEntry; //type: OSPFMIB::OspfIfTable::OspfIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfiftable::Ospfifentry> > ospfifentry;
+        ydk::YList ospfifentry;
         
-}; // OSPFMIB::Ospfiftable
+}; // OSPFMIB::OspfIfTable
 
 
-class OSPFMIB::Ospfiftable::Ospfifentry : public ydk::Entity
+class OSPFMIB::OspfIfTable::OspfIfEntry : public ydk::Entity
 {
     public:
-        Ospfifentry();
-        ~Ospfifentry();
+        OspfIfEntry();
+        ~OspfIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -446,7 +446,7 @@ class OSPFMIB::Ospfiftable::Ospfifentry : public ydk::Entity
         ydk::YLeaf ospfifipaddress; //type: string
         ydk::YLeaf ospfaddresslessif; //type: int32
         ydk::YLeaf ospfifareaid; //type: string
-        ydk::YLeaf ospfiftype; //type: Ospfiftype
+        ydk::YLeaf ospfiftype; //type: OspfIfType
         ydk::YLeaf ospfifadminstat; //type: Status
         ydk::YLeaf ospfifrtrpriority; //type: int32
         ydk::YLeaf ospfiftransitdelay; //type: int32
@@ -454,13 +454,13 @@ class OSPFMIB::Ospfiftable::Ospfifentry : public ydk::Entity
         ydk::YLeaf ospfifhellointerval; //type: int32
         ydk::YLeaf ospfifrtrdeadinterval; //type: int32
         ydk::YLeaf ospfifpollinterval; //type: int32
-        ydk::YLeaf ospfifstate; //type: Ospfifstate
+        ydk::YLeaf ospfifstate; //type: OspfIfState
         ydk::YLeaf ospfifdesignatedrouter; //type: string
         ydk::YLeaf ospfifbackupdesignatedrouter; //type: string
         ydk::YLeaf ospfifevents; //type: uint32
         ydk::YLeaf ospfifauthkey; //type: binary
         ydk::YLeaf ospfifstatus; //type: RowStatus
-        ydk::YLeaf ospfifmulticastforwarding; //type: Ospfifmulticastforwarding
+        ydk::YLeaf ospfifmulticastforwarding; //type: OspfIfMulticastForwarding
         ydk::YLeaf ospfifdemand; //type: boolean
         ydk::YLeaf ospfifauthtype; //type: OspfAuthenticationType
         ydk::YLeaf ospfiflsacount; //type: uint32
@@ -469,18 +469,18 @@ class OSPFMIB::Ospfiftable::Ospfifentry : public ydk::Entity
         ydk::YLeaf ospfifbackupdesignatedrouterid; //type: string
         ydk::YLeaf cospfiflsacount; //type: uint32
         ydk::YLeaf cospfiflsacksumsum; //type: uint32
-        class Ospfiftype;
-        class Ospfifstate;
-        class Ospfifmulticastforwarding;
+        class OspfIfType;
+        class OspfIfState;
+        class OspfIfMulticastForwarding;
 
-}; // OSPFMIB::Ospfiftable::Ospfifentry
+}; // OSPFMIB::OspfIfTable::OspfIfEntry
 
 
-class OSPFMIB::Ospfifmetrictable : public ydk::Entity
+class OSPFMIB::OspfIfMetricTable : public ydk::Entity
 {
     public:
-        Ospfifmetrictable();
-        ~Ospfifmetrictable();
+        OspfIfMetricTable();
+        ~OspfIfMetricTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -493,18 +493,18 @@ class OSPFMIB::Ospfifmetrictable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfifmetricentry; //type: OSPFMIB::Ospfifmetrictable::Ospfifmetricentry
+        class OspfIfMetricEntry; //type: OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfifmetrictable::Ospfifmetricentry> > ospfifmetricentry;
+        ydk::YList ospfifmetricentry;
         
-}; // OSPFMIB::Ospfifmetrictable
+}; // OSPFMIB::OspfIfMetricTable
 
 
-class OSPFMIB::Ospfifmetrictable::Ospfifmetricentry : public ydk::Entity
+class OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry : public ydk::Entity
 {
     public:
-        Ospfifmetricentry();
-        ~Ospfifmetricentry();
+        OspfIfMetricEntry();
+        ~OspfIfMetricEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -523,14 +523,14 @@ class OSPFMIB::Ospfifmetrictable::Ospfifmetricentry : public ydk::Entity
         ydk::YLeaf ospfifmetricvalue; //type: int32
         ydk::YLeaf ospfifmetricstatus; //type: RowStatus
 
-}; // OSPFMIB::Ospfifmetrictable::Ospfifmetricentry
+}; // OSPFMIB::OspfIfMetricTable::OspfIfMetricEntry
 
 
-class OSPFMIB::Ospfvirtiftable : public ydk::Entity
+class OSPFMIB::OspfVirtIfTable : public ydk::Entity
 {
     public:
-        Ospfvirtiftable();
-        ~Ospfvirtiftable();
+        OspfVirtIfTable();
+        ~OspfVirtIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -543,18 +543,18 @@ class OSPFMIB::Ospfvirtiftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfvirtifentry; //type: OSPFMIB::Ospfvirtiftable::Ospfvirtifentry
+        class OspfVirtIfEntry; //type: OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfvirtiftable::Ospfvirtifentry> > ospfvirtifentry;
+        ydk::YList ospfvirtifentry;
         
-}; // OSPFMIB::Ospfvirtiftable
+}; // OSPFMIB::OspfVirtIfTable
 
 
-class OSPFMIB::Ospfvirtiftable::Ospfvirtifentry : public ydk::Entity
+class OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry : public ydk::Entity
 {
     public:
-        Ospfvirtifentry();
-        ~Ospfvirtifentry();
+        OspfVirtIfEntry();
+        ~OspfVirtIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -573,7 +573,7 @@ class OSPFMIB::Ospfvirtiftable::Ospfvirtifentry : public ydk::Entity
         ydk::YLeaf ospfvirtifretransinterval; //type: int32
         ydk::YLeaf ospfvirtifhellointerval; //type: int32
         ydk::YLeaf ospfvirtifrtrdeadinterval; //type: int32
-        ydk::YLeaf ospfvirtifstate; //type: Ospfvirtifstate
+        ydk::YLeaf ospfvirtifstate; //type: OspfVirtIfState
         ydk::YLeaf ospfvirtifevents; //type: uint32
         ydk::YLeaf ospfvirtifauthkey; //type: binary
         ydk::YLeaf ospfvirtifstatus; //type: RowStatus
@@ -582,16 +582,16 @@ class OSPFMIB::Ospfvirtiftable::Ospfvirtifentry : public ydk::Entity
         ydk::YLeaf ospfvirtiflsacksumsum; //type: uint32
         ydk::YLeaf cospfvirtiflsacount; //type: uint32
         ydk::YLeaf cospfvirtiflsacksumsum; //type: uint32
-        class Ospfvirtifstate;
+        class OspfVirtIfState;
 
-}; // OSPFMIB::Ospfvirtiftable::Ospfvirtifentry
+}; // OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry
 
 
-class OSPFMIB::Ospfnbrtable : public ydk::Entity
+class OSPFMIB::OspfNbrTable : public ydk::Entity
 {
     public:
-        Ospfnbrtable();
-        ~Ospfnbrtable();
+        OspfNbrTable();
+        ~OspfNbrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -604,18 +604,18 @@ class OSPFMIB::Ospfnbrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfnbrentry; //type: OSPFMIB::Ospfnbrtable::Ospfnbrentry
+        class OspfNbrEntry; //type: OSPFMIB::OspfNbrTable::OspfNbrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfnbrtable::Ospfnbrentry> > ospfnbrentry;
+        ydk::YList ospfnbrentry;
         
-}; // OSPFMIB::Ospfnbrtable
+}; // OSPFMIB::OspfNbrTable
 
 
-class OSPFMIB::Ospfnbrtable::Ospfnbrentry : public ydk::Entity
+class OSPFMIB::OspfNbrTable::OspfNbrEntry : public ydk::Entity
 {
     public:
-        Ospfnbrentry();
-        ~Ospfnbrentry();
+        OspfNbrEntry();
+        ~OspfNbrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -633,28 +633,28 @@ class OSPFMIB::Ospfnbrtable::Ospfnbrentry : public ydk::Entity
         ydk::YLeaf ospfnbrrtrid; //type: string
         ydk::YLeaf ospfnbroptions; //type: int32
         ydk::YLeaf ospfnbrpriority; //type: int32
-        ydk::YLeaf ospfnbrstate; //type: Ospfnbrstate
+        ydk::YLeaf ospfnbrstate; //type: OspfNbrState
         ydk::YLeaf ospfnbrevents; //type: uint32
         ydk::YLeaf ospfnbrlsretransqlen; //type: uint32
         ydk::YLeaf ospfnbmanbrstatus; //type: RowStatus
-        ydk::YLeaf ospfnbmanbrpermanence; //type: Ospfnbmanbrpermanence
+        ydk::YLeaf ospfnbmanbrpermanence; //type: OspfNbmaNbrPermanence
         ydk::YLeaf ospfnbrhellosuppressed; //type: boolean
-        ydk::YLeaf ospfnbrrestarthelperstatus; //type: Ospfnbrrestarthelperstatus
+        ydk::YLeaf ospfnbrrestarthelperstatus; //type: OspfNbrRestartHelperStatus
         ydk::YLeaf ospfnbrrestarthelperage; //type: uint32
-        ydk::YLeaf ospfnbrrestarthelperexitreason; //type: Ospfnbrrestarthelperexitreason
-        class Ospfnbrstate;
-        class Ospfnbmanbrpermanence;
-        class Ospfnbrrestarthelperstatus;
-        class Ospfnbrrestarthelperexitreason;
+        ydk::YLeaf ospfnbrrestarthelperexitreason; //type: OspfNbrRestartHelperExitReason
+        class OspfNbrState;
+        class OspfNbmaNbrPermanence;
+        class OspfNbrRestartHelperStatus;
+        class OspfNbrRestartHelperExitReason;
 
-}; // OSPFMIB::Ospfnbrtable::Ospfnbrentry
+}; // OSPFMIB::OspfNbrTable::OspfNbrEntry
 
 
-class OSPFMIB::Ospfvirtnbrtable : public ydk::Entity
+class OSPFMIB::OspfVirtNbrTable : public ydk::Entity
 {
     public:
-        Ospfvirtnbrtable();
-        ~Ospfvirtnbrtable();
+        OspfVirtNbrTable();
+        ~OspfVirtNbrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -667,18 +667,18 @@ class OSPFMIB::Ospfvirtnbrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfvirtnbrentry; //type: OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry
+        class OspfVirtNbrEntry; //type: OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry> > ospfvirtnbrentry;
+        ydk::YList ospfvirtnbrentry;
         
-}; // OSPFMIB::Ospfvirtnbrtable
+}; // OSPFMIB::OspfVirtNbrTable
 
 
-class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry : public ydk::Entity
+class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry : public ydk::Entity
 {
     public:
-        Ospfvirtnbrentry();
-        ~Ospfvirtnbrentry();
+        OspfVirtNbrEntry();
+        ~OspfVirtNbrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -695,25 +695,25 @@ class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry : public ydk::Entity
         ydk::YLeaf ospfvirtnbrrtrid; //type: string
         ydk::YLeaf ospfvirtnbripaddr; //type: string
         ydk::YLeaf ospfvirtnbroptions; //type: int32
-        ydk::YLeaf ospfvirtnbrstate; //type: Ospfvirtnbrstate
+        ydk::YLeaf ospfvirtnbrstate; //type: OspfVirtNbrState
         ydk::YLeaf ospfvirtnbrevents; //type: uint32
         ydk::YLeaf ospfvirtnbrlsretransqlen; //type: uint32
         ydk::YLeaf ospfvirtnbrhellosuppressed; //type: boolean
-        ydk::YLeaf ospfvirtnbrrestarthelperstatus; //type: Ospfvirtnbrrestarthelperstatus
+        ydk::YLeaf ospfvirtnbrrestarthelperstatus; //type: OspfVirtNbrRestartHelperStatus
         ydk::YLeaf ospfvirtnbrrestarthelperage; //type: uint32
-        ydk::YLeaf ospfvirtnbrrestarthelperexitreason; //type: Ospfvirtnbrrestarthelperexitreason
-        class Ospfvirtnbrstate;
-        class Ospfvirtnbrrestarthelperstatus;
-        class Ospfvirtnbrrestarthelperexitreason;
+        ydk::YLeaf ospfvirtnbrrestarthelperexitreason; //type: OspfVirtNbrRestartHelperExitReason
+        class OspfVirtNbrState;
+        class OspfVirtNbrRestartHelperStatus;
+        class OspfVirtNbrRestartHelperExitReason;
 
-}; // OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry
+}; // OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry
 
 
-class OSPFMIB::Ospfextlsdbtable : public ydk::Entity
+class OSPFMIB::OspfExtLsdbTable : public ydk::Entity
 {
     public:
-        Ospfextlsdbtable();
-        ~Ospfextlsdbtable();
+        OspfExtLsdbTable();
+        ~OspfExtLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -726,18 +726,18 @@ class OSPFMIB::Ospfextlsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfextlsdbentry; //type: OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry
+        class OspfExtLsdbEntry; //type: OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry> > ospfextlsdbentry;
+        ydk::YList ospfextlsdbentry;
         
-}; // OSPFMIB::Ospfextlsdbtable
+}; // OSPFMIB::OspfExtLsdbTable
 
 
-class OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry : public ydk::Entity
+class OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry : public ydk::Entity
 {
     public:
-        Ospfextlsdbentry();
-        ~Ospfextlsdbentry();
+        OspfExtLsdbEntry();
+        ~OspfExtLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -750,23 +750,23 @@ class OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ospfextlsdbtype; //type: Ospfextlsdbtype
+        ydk::YLeaf ospfextlsdbtype; //type: OspfExtLsdbType
         ydk::YLeaf ospfextlsdblsid; //type: string
         ydk::YLeaf ospfextlsdbrouterid; //type: string
         ydk::YLeaf ospfextlsdbsequence; //type: int32
         ydk::YLeaf ospfextlsdbage; //type: int32
         ydk::YLeaf ospfextlsdbchecksum; //type: int32
         ydk::YLeaf ospfextlsdbadvertisement; //type: binary
-        class Ospfextlsdbtype;
+        class OspfExtLsdbType;
 
-}; // OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry
+}; // OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry
 
 
-class OSPFMIB::Ospfareaaggregatetable : public ydk::Entity
+class OSPFMIB::OspfAreaAggregateTable : public ydk::Entity
 {
     public:
-        Ospfareaaggregatetable();
-        ~Ospfareaaggregatetable();
+        OspfAreaAggregateTable();
+        ~OspfAreaAggregateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -779,18 +779,18 @@ class OSPFMIB::Ospfareaaggregatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfareaaggregateentry; //type: OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry
+        class OspfAreaAggregateEntry; //type: OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry> > ospfareaaggregateentry;
+        ydk::YList ospfareaaggregateentry;
         
-}; // OSPFMIB::Ospfareaaggregatetable
+}; // OSPFMIB::OspfAreaAggregateTable
 
 
-class OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry : public ydk::Entity
+class OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry : public ydk::Entity
 {
     public:
-        Ospfareaaggregateentry();
-        ~Ospfareaaggregateentry();
+        OspfAreaAggregateEntry();
+        ~OspfAreaAggregateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -804,23 +804,23 @@ class OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry : public ydk::Enti
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ospfareaaggregateareaid; //type: string
-        ydk::YLeaf ospfareaaggregatelsdbtype; //type: Ospfareaaggregatelsdbtype
+        ydk::YLeaf ospfareaaggregatelsdbtype; //type: OspfAreaAggregateLsdbType
         ydk::YLeaf ospfareaaggregatenet; //type: string
         ydk::YLeaf ospfareaaggregatemask; //type: string
         ydk::YLeaf ospfareaaggregatestatus; //type: RowStatus
-        ydk::YLeaf ospfareaaggregateeffect; //type: Ospfareaaggregateeffect
+        ydk::YLeaf ospfareaaggregateeffect; //type: OspfAreaAggregateEffect
         ydk::YLeaf ospfareaaggregateextroutetag; //type: uint32
-        class Ospfareaaggregatelsdbtype;
-        class Ospfareaaggregateeffect;
+        class OspfAreaAggregateLsdbType;
+        class OspfAreaAggregateEffect;
 
-}; // OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry
+}; // OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry
 
 
-class OSPFMIB::Ospflocallsdbtable : public ydk::Entity
+class OSPFMIB::OspfLocalLsdbTable : public ydk::Entity
 {
     public:
-        Ospflocallsdbtable();
-        ~Ospflocallsdbtable();
+        OspfLocalLsdbTable();
+        ~OspfLocalLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -833,18 +833,18 @@ class OSPFMIB::Ospflocallsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospflocallsdbentry; //type: OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry
+        class OspfLocalLsdbEntry; //type: OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry> > ospflocallsdbentry;
+        ydk::YList ospflocallsdbentry;
         
-}; // OSPFMIB::Ospflocallsdbtable
+}; // OSPFMIB::OspfLocalLsdbTable
 
 
-class OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry : public ydk::Entity
+class OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry : public ydk::Entity
 {
     public:
-        Ospflocallsdbentry();
-        ~Ospflocallsdbentry();
+        OspfLocalLsdbEntry();
+        ~OspfLocalLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -859,23 +859,23 @@ class OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry : public ydk::Entity
 
         ydk::YLeaf ospflocallsdbipaddress; //type: string
         ydk::YLeaf ospflocallsdbaddresslessif; //type: int32
-        ydk::YLeaf ospflocallsdbtype; //type: Ospflocallsdbtype
+        ydk::YLeaf ospflocallsdbtype; //type: OspfLocalLsdbType
         ydk::YLeaf ospflocallsdblsid; //type: string
         ydk::YLeaf ospflocallsdbrouterid; //type: string
         ydk::YLeaf ospflocallsdbsequence; //type: int32
         ydk::YLeaf ospflocallsdbage; //type: int32
         ydk::YLeaf ospflocallsdbchecksum; //type: int32
         ydk::YLeaf ospflocallsdbadvertisement; //type: binary
-        class Ospflocallsdbtype;
+        class OspfLocalLsdbType;
 
-}; // OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry
+}; // OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry
 
 
-class OSPFMIB::Ospfvirtlocallsdbtable : public ydk::Entity
+class OSPFMIB::OspfVirtLocalLsdbTable : public ydk::Entity
 {
     public:
-        Ospfvirtlocallsdbtable();
-        ~Ospfvirtlocallsdbtable();
+        OspfVirtLocalLsdbTable();
+        ~OspfVirtLocalLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -888,18 +888,18 @@ class OSPFMIB::Ospfvirtlocallsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfvirtlocallsdbentry; //type: OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry
+        class OspfVirtLocalLsdbEntry; //type: OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry> > ospfvirtlocallsdbentry;
+        ydk::YList ospfvirtlocallsdbentry;
         
-}; // OSPFMIB::Ospfvirtlocallsdbtable
+}; // OSPFMIB::OspfVirtLocalLsdbTable
 
 
-class OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry : public ydk::Entity
+class OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry : public ydk::Entity
 {
     public:
-        Ospfvirtlocallsdbentry();
-        ~Ospfvirtlocallsdbentry();
+        OspfVirtLocalLsdbEntry();
+        ~OspfVirtLocalLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -914,23 +914,23 @@ class OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry : public ydk::Enti
 
         ydk::YLeaf ospfvirtlocallsdbtransitarea; //type: string
         ydk::YLeaf ospfvirtlocallsdbneighbor; //type: string
-        ydk::YLeaf ospfvirtlocallsdbtype; //type: Ospfvirtlocallsdbtype
+        ydk::YLeaf ospfvirtlocallsdbtype; //type: OspfVirtLocalLsdbType
         ydk::YLeaf ospfvirtlocallsdblsid; //type: string
         ydk::YLeaf ospfvirtlocallsdbrouterid; //type: string
         ydk::YLeaf ospfvirtlocallsdbsequence; //type: int32
         ydk::YLeaf ospfvirtlocallsdbage; //type: int32
         ydk::YLeaf ospfvirtlocallsdbchecksum; //type: int32
         ydk::YLeaf ospfvirtlocallsdbadvertisement; //type: binary
-        class Ospfvirtlocallsdbtype;
+        class OspfVirtLocalLsdbType;
 
-}; // OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry
+}; // OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry
 
 
-class OSPFMIB::Ospfaslsdbtable : public ydk::Entity
+class OSPFMIB::OspfAsLsdbTable : public ydk::Entity
 {
     public:
-        Ospfaslsdbtable();
-        ~Ospfaslsdbtable();
+        OspfAsLsdbTable();
+        ~OspfAsLsdbTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -943,18 +943,18 @@ class OSPFMIB::Ospfaslsdbtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfaslsdbentry; //type: OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry
+        class OspfAsLsdbEntry; //type: OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry> > ospfaslsdbentry;
+        ydk::YList ospfaslsdbentry;
         
-}; // OSPFMIB::Ospfaslsdbtable
+}; // OSPFMIB::OspfAsLsdbTable
 
 
-class OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry : public ydk::Entity
+class OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry : public ydk::Entity
 {
     public:
-        Ospfaslsdbentry();
-        ~Ospfaslsdbentry();
+        OspfAsLsdbEntry();
+        ~OspfAsLsdbEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -967,23 +967,23 @@ class OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ospfaslsdbtype; //type: Ospfaslsdbtype
+        ydk::YLeaf ospfaslsdbtype; //type: OspfAsLsdbType
         ydk::YLeaf ospfaslsdblsid; //type: string
         ydk::YLeaf ospfaslsdbrouterid; //type: string
         ydk::YLeaf ospfaslsdbsequence; //type: int32
         ydk::YLeaf ospfaslsdbage; //type: int32
         ydk::YLeaf ospfaslsdbchecksum; //type: int32
         ydk::YLeaf ospfaslsdbadvertisement; //type: binary
-        class Ospfaslsdbtype;
+        class OspfAsLsdbType;
 
-}; // OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry
+}; // OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry
 
 
-class OSPFMIB::Ospfarealsacounttable : public ydk::Entity
+class OSPFMIB::OspfAreaLsaCountTable : public ydk::Entity
 {
     public:
-        Ospfarealsacounttable();
-        ~Ospfarealsacounttable();
+        OspfAreaLsaCountTable();
+        ~OspfAreaLsaCountTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -996,18 +996,18 @@ class OSPFMIB::Ospfarealsacounttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ospfarealsacountentry; //type: OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry
+        class OspfAreaLsaCountEntry; //type: OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::OSPF_MIB::OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry> > ospfarealsacountentry;
+        ydk::YList ospfarealsacountentry;
         
-}; // OSPFMIB::Ospfarealsacounttable
+}; // OSPFMIB::OspfAreaLsaCountTable
 
 
-class OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry : public ydk::Entity
+class OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry : public ydk::Entity
 {
     public:
-        Ospfarealsacountentry();
-        ~Ospfarealsacountentry();
+        OspfAreaLsaCountEntry();
+        ~OspfAreaLsaCountEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1021,11 +1021,11 @@ class OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ospfarealsacountareaid; //type: string
-        ydk::YLeaf ospfarealsacountlsatype; //type: Ospfarealsacountlsatype
+        ydk::YLeaf ospfarealsacountlsatype; //type: OspfAreaLsaCountLsaType
         ydk::YLeaf ospfarealsacountnumber; //type: uint32
-        class Ospfarealsacountlsatype;
+        class OspfAreaLsaCountLsaType;
 
-}; // OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry
+}; // OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry
 
 class Status : public ydk::Enum
 {
@@ -1044,14 +1044,14 @@ class OspfAuthenticationType : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfgeneralgroup::Ospfversionnumber : public ydk::Enum
+class OSPFMIB::OspfGeneralGroup::OspfVersionNumber : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf version2;
 
 };
 
-class OSPFMIB::Ospfgeneralgroup::Ospfrestartsupport : public ydk::Enum
+class OSPFMIB::OspfGeneralGroup::OspfRestartSupport : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1060,7 +1060,7 @@ class OSPFMIB::Ospfgeneralgroup::Ospfrestartsupport : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfgeneralgroup::Ospfrestartstatus : public ydk::Enum
+class OSPFMIB::OspfGeneralGroup::OspfRestartStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notRestarting;
@@ -1069,7 +1069,7 @@ class OSPFMIB::Ospfgeneralgroup::Ospfrestartstatus : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfgeneralgroup::Ospfrestartexitreason : public ydk::Enum
+class OSPFMIB::OspfGeneralGroup::OspfRestartExitReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1080,7 +1080,7 @@ class OSPFMIB::Ospfgeneralgroup::Ospfrestartexitreason : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfgeneralgroup::Ospfstubrouteradvertisement : public ydk::Enum
+class OSPFMIB::OspfGeneralGroup::OspfStubRouterAdvertisement : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf doNotAdvertise;
@@ -1088,7 +1088,7 @@ class OSPFMIB::Ospfgeneralgroup::Ospfstubrouteradvertisement : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfimportasextern : public ydk::Enum
+class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfImportAsExtern : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf importExternal;
@@ -1097,7 +1097,7 @@ class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfimportasextern : public ydk::En
 
 };
 
-class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfareasummary : public ydk::Enum
+class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaSummary : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf noAreaSummary;
@@ -1105,7 +1105,7 @@ class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfareasummary : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfareanssatranslatorrole : public ydk::Enum
+class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaNssaTranslatorRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf always;
@@ -1113,7 +1113,7 @@ class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfareanssatranslatorrole : public
 
 };
 
-class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfareanssatranslatorstate : public ydk::Enum
+class OSPFMIB::OspfAreaTable::OspfAreaEntry::OspfAreaNssaTranslatorState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -1122,7 +1122,7 @@ class OSPFMIB::Ospfareatable::Ospfareaentry::Ospfareanssatranslatorstate : publi
 
 };
 
-class OSPFMIB::Ospfareatable::Ospfareaentry::Cospfareanssatranslatorrole : public ydk::Enum
+class OSPFMIB::OspfAreaTable::OspfAreaEntry::CospfAreaNssaTranslatorRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf always;
@@ -1130,7 +1130,7 @@ class OSPFMIB::Ospfareatable::Ospfareaentry::Cospfareanssatranslatorrole : publi
 
 };
 
-class OSPFMIB::Ospfareatable::Ospfareaentry::Cospfareanssatranslatorstate : public ydk::Enum
+class OSPFMIB::OspfAreaTable::OspfAreaEntry::CospfAreaNssaTranslatorState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -1139,7 +1139,7 @@ class OSPFMIB::Ospfareatable::Ospfareaentry::Cospfareanssatranslatorstate : publ
 
 };
 
-class OSPFMIB::Ospfstubareatable::Ospfstubareaentry::Ospfstubmetrictype : public ydk::Enum
+class OSPFMIB::OspfStubAreaTable::OspfStubAreaEntry::OspfStubMetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ospfMetric;
@@ -1148,7 +1148,7 @@ class OSPFMIB::Ospfstubareatable::Ospfstubareaentry::Ospfstubmetrictype : public
 
 };
 
-class OSPFMIB::Ospflsdbtable::Ospflsdbentry::Ospflsdbtype : public ydk::Enum
+class OSPFMIB::OspfLsdbTable::OspfLsdbEntry::OspfLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf routerLink;
@@ -1162,7 +1162,7 @@ class OSPFMIB::Ospflsdbtable::Ospflsdbentry::Ospflsdbtype : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfarearangetable::Ospfarearangeentry::Ospfarearangeeffect : public ydk::Enum
+class OSPFMIB::OspfAreaRangeTable::OspfAreaRangeEntry::OspfAreaRangeEffect : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf advertiseMatching;
@@ -1170,7 +1170,7 @@ class OSPFMIB::Ospfarearangetable::Ospfarearangeentry::Ospfarearangeeffect : pub
 
 };
 
-class OSPFMIB::Ospfiftable::Ospfifentry::Ospfiftype : public ydk::Enum
+class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf broadcast;
@@ -1180,7 +1180,7 @@ class OSPFMIB::Ospfiftable::Ospfifentry::Ospfiftype : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfiftable::Ospfifentry::Ospfifstate : public ydk::Enum
+class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -1193,7 +1193,7 @@ class OSPFMIB::Ospfiftable::Ospfifentry::Ospfifstate : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfiftable::Ospfifentry::Ospfifmulticastforwarding : public ydk::Enum
+class OSPFMIB::OspfIfTable::OspfIfEntry::OspfIfMulticastForwarding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf blocked;
@@ -1202,7 +1202,7 @@ class OSPFMIB::Ospfiftable::Ospfifentry::Ospfifmulticastforwarding : public ydk:
 
 };
 
-class OSPFMIB::Ospfvirtiftable::Ospfvirtifentry::Ospfvirtifstate : public ydk::Enum
+class OSPFMIB::OspfVirtIfTable::OspfVirtIfEntry::OspfVirtIfState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -1210,7 +1210,7 @@ class OSPFMIB::Ospfvirtiftable::Ospfvirtifentry::Ospfvirtifstate : public ydk::E
 
 };
 
-class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbrstate : public ydk::Enum
+class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -1224,7 +1224,7 @@ class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbrstate : public ydk::Enum
 
 };
 
-class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbmanbrpermanence : public ydk::Enum
+class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbmaNbrPermanence : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dynamic;
@@ -1232,7 +1232,7 @@ class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbmanbrpermanence : public ydk::E
 
 };
 
-class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbrrestarthelperstatus : public ydk::Enum
+class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrRestartHelperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notHelping;
@@ -1240,7 +1240,7 @@ class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbrrestarthelperstatus : public y
 
 };
 
-class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbrrestarthelperexitreason : public ydk::Enum
+class OSPFMIB::OspfNbrTable::OspfNbrEntry::OspfNbrRestartHelperExitReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1251,7 +1251,7 @@ class OSPFMIB::Ospfnbrtable::Ospfnbrentry::Ospfnbrrestarthelperexitreason : publ
 
 };
 
-class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrstate : public ydk::Enum
+class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -1265,7 +1265,7 @@ class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrstate : public ydk
 
 };
 
-class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrrestarthelperstatus : public ydk::Enum
+class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrRestartHelperStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf notHelping;
@@ -1273,7 +1273,7 @@ class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrrestarthelperstatu
 
 };
 
-class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrrestarthelperexitreason : public ydk::Enum
+class OSPFMIB::OspfVirtNbrTable::OspfVirtNbrEntry::OspfVirtNbrRestartHelperExitReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1284,14 +1284,14 @@ class OSPFMIB::Ospfvirtnbrtable::Ospfvirtnbrentry::Ospfvirtnbrrestarthelperexitr
 
 };
 
-class OSPFMIB::Ospfextlsdbtable::Ospfextlsdbentry::Ospfextlsdbtype : public ydk::Enum
+class OSPFMIB::OspfExtLsdbTable::OspfExtLsdbEntry::OspfExtLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf asExternalLink;
 
 };
 
-class OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry::Ospfareaaggregatelsdbtype : public ydk::Enum
+class OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::OspfAreaAggregateLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf summaryLink;
@@ -1299,7 +1299,7 @@ class OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry::Ospfareaaggregate
 
 };
 
-class OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry::Ospfareaaggregateeffect : public ydk::Enum
+class OSPFMIB::OspfAreaAggregateTable::OspfAreaAggregateEntry::OspfAreaAggregateEffect : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf advertiseMatching;
@@ -1307,21 +1307,21 @@ class OSPFMIB::Ospfareaaggregatetable::Ospfareaaggregateentry::Ospfareaaggregate
 
 };
 
-class OSPFMIB::Ospflocallsdbtable::Ospflocallsdbentry::Ospflocallsdbtype : public ydk::Enum
+class OSPFMIB::OspfLocalLsdbTable::OspfLocalLsdbEntry::OspfLocalLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
 };
 
-class OSPFMIB::Ospfvirtlocallsdbtable::Ospfvirtlocallsdbentry::Ospfvirtlocallsdbtype : public ydk::Enum
+class OSPFMIB::OspfVirtLocalLsdbTable::OspfVirtLocalLsdbEntry::OspfVirtLocalLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf localOpaqueLink;
 
 };
 
-class OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry::Ospfaslsdbtype : public ydk::Enum
+class OSPFMIB::OspfAsLsdbTable::OspfAsLsdbEntry::OspfAsLsdbType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf asExternalLink;
@@ -1329,7 +1329,7 @@ class OSPFMIB::Ospfaslsdbtable::Ospfaslsdbentry::Ospfaslsdbtype : public ydk::En
 
 };
 
-class OSPFMIB::Ospfarealsacounttable::Ospfarealsacountentry::Ospfarealsacountlsatype : public ydk::Enum
+class OSPFMIB::OspfAreaLsaCountTable::OspfAreaLsaCountEntry::OspfAreaLsaCountLsaType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf routerLink;

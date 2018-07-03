@@ -11,76 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_mpls_ldp {
 
-NsrSyncNackRsn::NsrSyncNackRsn()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn")
-{
-
-}
-
-NsrSyncNackRsn::~NsrSyncNackRsn()
-{
-}
-
-NsrPeerSyncErr::NsrPeerSyncErr()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err")
-{
-
-}
-
-NsrPeerSyncErr::~NsrPeerSyncErr()
-{
-}
-
-IcpmType::IcpmType()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:icpm-type")
-{
-
-}
-
-IcpmType::~IcpmType()
-{
-}
-
-IccpType::IccpType()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:iccp-type")
-{
-
-}
-
-IccpType::~IccpType()
-{
-}
-
-NsrPeerSyncState::NsrPeerSyncState()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-state")
-{
-
-}
-
-NsrPeerSyncState::~NsrPeerSyncState()
-{
-}
-
-NsrStatus::NsrStatus()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status")
-{
-
-}
-
-NsrStatus::~NsrStatus()
-{
-}
-
-DownNbrReason::DownNbrReason()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:down-nbr-reason")
-{
-
-}
-
-DownNbrReason::~DownNbrReason()
-{
-}
-
 RoutePathLblOwner::RoutePathLblOwner()
      : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner")
 {
@@ -88,26 +18,6 @@ RoutePathLblOwner::RoutePathLblOwner()
 }
 
 RoutePathLblOwner::~RoutePathLblOwner()
-{
-}
-
-LabelType::LabelType()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type")
-{
-
-}
-
-LabelType::~LabelType()
-{
-}
-
-RoutePathType::RoutePathType()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-type")
-{
-
-}
-
-RoutePathType::~RoutePathType()
 {
 }
 
@@ -121,15 +31,105 @@ IgpSyncDownReason::~IgpSyncDownReason()
 {
 }
 
+DownNbrReason::DownNbrReason()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:down-nbr-reason")
+{
+
+}
+
+DownNbrReason::~DownNbrReason()
+{
+}
+
+RoutePathType::RoutePathType()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-type")
+{
+
+}
+
+RoutePathType::~RoutePathType()
+{
+}
+
+IcpmType::IcpmType()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:icpm-type")
+{
+
+}
+
+IcpmType::~IcpmType()
+{
+}
+
+NsrPeerSyncErr::NsrPeerSyncErr()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err")
+{
+
+}
+
+NsrPeerSyncErr::~NsrPeerSyncErr()
+{
+}
+
+NsrPeerSyncState::NsrPeerSyncState()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-state")
+{
+
+}
+
+NsrPeerSyncState::~NsrPeerSyncState()
+{
+}
+
+IccpType::IccpType()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:iccp-type")
+{
+
+}
+
+IccpType::~IccpType()
+{
+}
+
+LabelType::LabelType()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type")
+{
+
+}
+
+LabelType::~LabelType()
+{
+}
+
+NsrStatus::NsrStatus()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status")
+{
+
+}
+
+NsrStatus::~NsrStatus()
+{
+}
+
+NsrSyncNackRsn::NsrSyncNackRsn()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn")
+{
+
+}
+
+NsrSyncNackRsn::~NsrSyncNackRsn()
+{
+}
+
 MplsLdp::MplsLdp()
     :
     mpls_ldp_state(std::make_shared<MplsLdp::MplsLdpState>())
-	,mpls_ldp_config(std::make_shared<MplsLdp::MplsLdpConfig>())
+    , mpls_ldp_config(std::make_shared<MplsLdp::MplsLdpConfig>())
 {
     mpls_ldp_state->parent = this;
     mpls_ldp_config->parent = this;
 
-    yang_name = "mpls-ldp"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-ldp"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsLdp::~MplsLdp()
@@ -138,6 +138,7 @@ MplsLdp::~MplsLdp()
 
 bool MplsLdp::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpls_ldp_state !=  nullptr && mpls_ldp_state->has_data())
 	|| (mpls_ldp_config !=  nullptr && mpls_ldp_config->has_data());
 }
@@ -248,20 +249,20 @@ bool MplsLdp::has_leaf_or_child_of_name(const std::string & name) const
 MplsLdp::MplsLdpState::MplsLdpState()
     :
     oper_summary(std::make_shared<MplsLdp::MplsLdpState::OperSummary>())
-	,forwarding_summary(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary>())
-	,bindings_summary(std::make_shared<MplsLdp::MplsLdpState::BindingsSummary>())
-	,nsr_summary_all(std::make_shared<MplsLdp::MplsLdpState::NsrSummaryAll>())
-	,icpm_summary_all(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll>())
-	,parameters(std::make_shared<MplsLdp::MplsLdpState::Parameters>())
-	,capabilities(std::make_shared<MplsLdp::MplsLdpState::Capabilities>())
-	,backoff_parameters(std::make_shared<MplsLdp::MplsLdpState::BackoffParameters>())
-	,graceful_restart(std::make_shared<MplsLdp::MplsLdpState::GracefulRestart>())
-	,vrfs(std::make_shared<MplsLdp::MplsLdpState::Vrfs>())
-	,discovery(std::make_shared<MplsLdp::MplsLdpState::Discovery>())
-	,forwarding(std::make_shared<MplsLdp::MplsLdpState::Forwarding>())
-	,bindings(std::make_shared<MplsLdp::MplsLdpState::Bindings>())
-	,neighbors(std::make_shared<MplsLdp::MplsLdpState::Neighbors>())
-	,label_ranges(std::make_shared<MplsLdp::MplsLdpState::LabelRanges>())
+    , forwarding_summary(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary>())
+    , bindings_summary(std::make_shared<MplsLdp::MplsLdpState::BindingsSummary>())
+    , nsr_summary_all(std::make_shared<MplsLdp::MplsLdpState::NsrSummaryAll>())
+    , icpm_summary_all(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll>())
+    , parameters(std::make_shared<MplsLdp::MplsLdpState::Parameters>())
+    , capabilities(std::make_shared<MplsLdp::MplsLdpState::Capabilities>())
+    , backoff_parameters(std::make_shared<MplsLdp::MplsLdpState::BackoffParameters>())
+    , graceful_restart(std::make_shared<MplsLdp::MplsLdpState::GracefulRestart>())
+    , vrfs(std::make_shared<MplsLdp::MplsLdpState::Vrfs>())
+    , discovery(std::make_shared<MplsLdp::MplsLdpState::Discovery>())
+    , forwarding(std::make_shared<MplsLdp::MplsLdpState::Forwarding>())
+    , bindings(std::make_shared<MplsLdp::MplsLdpState::Bindings>())
+    , neighbors(std::make_shared<MplsLdp::MplsLdpState::Neighbors>())
+    , label_ranges(std::make_shared<MplsLdp::MplsLdpState::LabelRanges>())
 {
     oper_summary->parent = this;
     forwarding_summary->parent = this;
@@ -279,7 +280,7 @@ MplsLdp::MplsLdpState::MplsLdpState()
     neighbors->parent = this;
     label_ranges->parent = this;
 
-    yang_name = "mpls-ldp-state"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls-ldp-state"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::~MplsLdpState()
@@ -288,6 +289,7 @@ MplsLdp::MplsLdpState::~MplsLdpState()
 
 bool MplsLdp::MplsLdpState::has_data() const
 {
+    if (is_presence_container) return true;
     return (oper_summary !=  nullptr && oper_summary->has_data())
 	|| (forwarding_summary !=  nullptr && forwarding_summary->has_data())
 	|| (bindings_summary !=  nullptr && bindings_summary->has_data())
@@ -594,12 +596,12 @@ MplsLdp::MplsLdpState::OperSummary::OperSummary()
     number_of_autocfg_interfaces{YType::uint32, "number-of-autocfg-interfaces"},
     no_of_ipv4_rib_tbl{YType::uint32, "no-of-ipv4-rib-tbl"},
     no_of_ipv4_rib_tbl_reg{YType::uint32, "no-of-ipv4-rib-tbl-reg"}
-    	,
+        ,
     common(std::make_shared<MplsLdp::MplsLdpState::OperSummary::Common>())
 {
     common->parent = this;
 
-    yang_name = "oper-summary"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oper-summary"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::OperSummary::~OperSummary()
@@ -608,6 +610,7 @@ MplsLdp::MplsLdpState::OperSummary::~OperSummary()
 
 bool MplsLdp::MplsLdpState::OperSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return number_of_vrf.is_set
 	|| number_of_vrf_oper.is_set
 	|| number_of_interfaces.is_set
@@ -785,7 +788,7 @@ MplsLdp::MplsLdpState::OperSummary::Common::Common()
     number_of_ipv4ldp_interfaces{YType::uint32, "number-of-ipv4ldp-interfaces"}
 {
 
-    yang_name = "common"; yang_parent_name = "oper-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "common"; yang_parent_name = "oper-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::OperSummary::Common::~Common()
@@ -794,6 +797,7 @@ MplsLdp::MplsLdpState::OperSummary::Common::~Common()
 
 bool MplsLdp::MplsLdpState::OperSummary::Common::has_data() const
 {
+    if (is_presence_container) return true;
     return address_families.is_set
 	|| number_of_neighbors.is_set
 	|| number_of_graceful_restart_neighbors.is_set
@@ -972,14 +976,14 @@ MplsLdp::MplsLdpState::ForwardingSummary::ForwardingSummary()
     :
     intfs_fwd_count{YType::uint16, "intfs-fwd-count"},
     local_lbls{YType::uint16, "local-lbls"}
-    	,
+        ,
     pfxs(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs>())
-	,nhs(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Nhs>())
+    , nhs(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Nhs>())
 {
     pfxs->parent = this;
     nhs->parent = this;
 
-    yang_name = "forwarding-summary"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forwarding-summary"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::ForwardingSummary::~ForwardingSummary()
@@ -988,6 +992,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::~ForwardingSummary()
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return intfs_fwd_count.is_set
 	|| local_lbls.is_set
 	|| (pfxs !=  nullptr && pfxs->has_data())
@@ -1108,16 +1113,16 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::Pfxs()
     total_pfxs{YType::uint16, "total-pfxs"},
     ecmp_pfxs{YType::uint16, "ecmp-pfxs"},
     protected_pfxs{YType::uint16, "protected-pfxs"}
-    	,
+        ,
     labeled_pfxs_aggr(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr>())
-	,labeled_pfxs_primary(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary>())
-	,labeled_pfxs_backup(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup>())
+    , labeled_pfxs_primary(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary>())
+    , labeled_pfxs_backup(std::make_shared<MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup>())
 {
     labeled_pfxs_aggr->parent = this;
     labeled_pfxs_primary->parent = this;
     labeled_pfxs_backup->parent = this;
 
-    yang_name = "pfxs"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pfxs"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::~Pfxs()
@@ -1126,6 +1131,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::~Pfxs()
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_pfxs.is_set
 	|| ecmp_pfxs.is_set
 	|| protected_pfxs.is_set
@@ -1277,7 +1283,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr::LabeledPfxsAggr
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr::~LabeledPfxsAggr()
@@ -1286,6 +1292,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr::~LabeledPfxsAgg
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsAggr::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -1389,7 +1396,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary::LabeledPfxsP
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary::~LabeledPfxsPrimary()
@@ -1398,6 +1405,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary::~LabeledPfxs
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsPrimary::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -1501,7 +1509,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup::LabeledPfxsBa
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup::~LabeledPfxsBackup()
@@ -1510,6 +1518,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup::~LabeledPfxsB
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::Pfxs::LabeledPfxsBackup::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -1616,7 +1625,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Nhs::Nhs()
     labeled_backup_paths{YType::uint32, "labeled-backup-paths"}
 {
 
-    yang_name = "nhs"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nhs"; yang_parent_name = "forwarding-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::ForwardingSummary::Nhs::~Nhs()
@@ -1625,6 +1634,7 @@ MplsLdp::MplsLdpState::ForwardingSummary::Nhs::~Nhs()
 
 bool MplsLdp::MplsLdpState::ForwardingSummary::Nhs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_paths.is_set
 	|| protected_paths.is_set
 	|| backup_paths.is_set
@@ -1776,7 +1786,7 @@ MplsLdp::MplsLdpState::BindingsSummary::BindingsSummary()
     binding_remote{YType::uint32, "binding-remote"}
 {
 
-    yang_name = "bindings-summary"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bindings-summary"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::BindingsSummary::~BindingsSummary()
@@ -1785,6 +1795,7 @@ MplsLdp::MplsLdpState::BindingsSummary::~BindingsSummary()
 
 bool MplsLdp::MplsLdpState::BindingsSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return binding_total.is_set
 	|| binding_no_route.is_set
 	|| binding_local_no_route.is_set
@@ -2008,7 +2019,7 @@ MplsLdp::MplsLdpState::NsrSummaryAll::NsrSummaryAll()
     nsr_sum_lcl_addr_withdraw_cleared{YType::uint32, "nsr-sum-lcl-addr-withdraw-cleared"}
 {
 
-    yang_name = "nsr-summary-all"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsr-summary-all"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::NsrSummaryAll::~NsrSummaryAll()
@@ -2017,6 +2028,7 @@ MplsLdp::MplsLdpState::NsrSummaryAll::~NsrSummaryAll()
 
 bool MplsLdp::MplsLdpState::NsrSummaryAll::has_data() const
 {
+    if (is_presence_container) return true;
     return nsr_sum_in_label_reqs_created.is_set
 	|| nsr_sum_in_label_reqs_freed.is_set
 	|| nsr_sum_in_label_withdraw_created.is_set
@@ -2158,14 +2170,14 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSummaryAll()
     iccp_rg_disconn_count{YType::uint32, "iccp-rg-disconn-count"},
     iccp_rg_notif_count{YType::uint32, "iccp-rg-notif-count"},
     iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
-    	,
+        ,
     icpm_rgid_table_info(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo>())
-	,icpm_session_table(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable>())
+    , icpm_session_table(std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable>())
 {
     icpm_rgid_table_info->parent = this;
     icpm_session_table->parent = this;
 
-    yang_name = "icpm-summary-all"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icpm-summary-all"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::~IcpmSummaryAll()
@@ -2174,6 +2186,7 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::~IcpmSummaryAll()
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_rg_conn_count.is_set
 	|| iccp_rg_disconn_count.is_set
 	|| iccp_rg_notif_count.is_set
@@ -2316,9 +2329,11 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::has_leaf_or_child_of_name(const std:
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::IcpmRgidTableInfo()
+    :
+    red_group(this, {"rg_id"})
 {
 
-    yang_name = "icpm-rgid-table-info"; yang_parent_name = "icpm-summary-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icpm-rgid-table-info"; yang_parent_name = "icpm-summary-all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::~IcpmRgidTableInfo()
@@ -2327,7 +2342,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::~IcpmRgidTableInfo()
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::has_data() const
 {
-    for (std::size_t index=0; index<red_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<red_group.len(); index++)
     {
         if(red_group[index]->has_data())
             return true;
@@ -2337,7 +2353,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::has_data() const
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::has_operation() const
 {
-    for (std::size_t index=0; index<red_group.size(); index++)
+    for (std::size_t index=0; index<red_group.len(); index++)
     {
         if(red_group[index]->has_operation())
             return true;
@@ -2374,7 +2390,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup>();
         c->parent = this;
-        red_group.push_back(c);
+        red_group.append(c);
         return c;
     }
 
@@ -2386,7 +2402,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : red_group)
+    for (auto c : red_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2415,9 +2431,11 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::has_leaf_or_child
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::RedGroup()
     :
     rg_id{YType::uint32, "rg-id"}
+        ,
+    icpm_protocols(this, {"icpm_type"})
 {
 
-    yang_name = "red-group"; yang_parent_name = "icpm-rgid-table-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "red-group"; yang_parent_name = "icpm-rgid-table-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::~RedGroup()
@@ -2426,7 +2444,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::~RedGroup()
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::has_data() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<icpm_protocols.len(); index++)
     {
         if(icpm_protocols[index]->has_data())
             return true;
@@ -2436,7 +2455,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::has_dat
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::has_operation() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    for (std::size_t index=0; index<icpm_protocols.len(); index++)
     {
         if(icpm_protocols[index]->has_operation())
             return true;
@@ -2455,7 +2474,8 @@ std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "red-group" <<"[rg-id='" <<rg_id <<"']";
+    path_buffer << "red-group";
+    ADD_KEY_TOKEN(rg_id, "rg-id");
     return path_buffer.str();
 }
 
@@ -2475,7 +2495,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols>();
         c->parent = this;
-        icpm_protocols.push_back(c);
+        icpm_protocols.append(c);
         return c;
     }
 
@@ -2487,7 +2507,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : icpm_protocols)
+    for (auto c : icpm_protocols.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2526,9 +2546,11 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::has_lea
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::IcpmProtocols()
     :
     icpm_type{YType::identityref, "icpm-type"}
+        ,
+    redun_groups(this, {"rg_id"})
 {
 
-    yang_name = "icpm-protocols"; yang_parent_name = "red-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icpm-protocols"; yang_parent_name = "red-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::~IcpmProtocols()
@@ -2537,7 +2559,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocol
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::has_data() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<redun_groups.len(); index++)
     {
         if(redun_groups[index]->has_data())
             return true;
@@ -2547,7 +2570,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::has_operation() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    for (std::size_t index=0; index<redun_groups.len(); index++)
     {
         if(redun_groups[index]->has_operation())
             return true;
@@ -2559,7 +2582,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "icpm-protocols" <<"[icpm-type='" <<icpm_type <<"']";
+    path_buffer << "icpm-protocols";
+    ADD_KEY_TOKEN(icpm_type, "icpm-type");
     return path_buffer.str();
 }
 
@@ -2579,7 +2603,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups>();
         c->parent = this;
-        redun_groups.push_back(c);
+        redun_groups.append(c);
         return c;
     }
 
@@ -2591,7 +2615,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : redun_groups)
+    for (auto c : redun_groups.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2633,9 +2657,11 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocol
     peer_id{YType::str, "peer-id"},
     client_id{YType::uint32, "client_id"},
     state{YType::str, "state"}
+        ,
+    iccp_apps(this, {"iccp_app"})
 {
 
-    yang_name = "redun-groups"; yang_parent_name = "icpm-protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redun-groups"; yang_parent_name = "icpm-protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::~RedunGroups()
@@ -2644,7 +2670,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocol
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::has_data() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iccp_apps.len(); index++)
     {
         if(iccp_apps[index]->has_data())
             return true;
@@ -2657,7 +2684,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    for (std::size_t index=0; index<iccp_apps.len(); index++)
     {
         if(iccp_apps[index]->has_operation())
             return true;
@@ -2672,7 +2699,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "redun-groups" <<"[rg-id='" <<rg_id <<"']";
+    path_buffer << "redun-groups";
+    ADD_KEY_TOKEN(rg_id, "rg-id");
     return path_buffer.str();
 }
 
@@ -2695,7 +2723,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps>();
         c->parent = this;
-        iccp_apps.push_back(c);
+        iccp_apps.append(c);
         return c;
     }
 
@@ -2707,7 +2735,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iccp_apps)
+    for (auto c : iccp_apps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2780,7 +2808,7 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocol
     ptcl_ver{YType::uint32, "ptcl-ver"}
 {
 
-    yang_name = "iccp-apps"; yang_parent_name = "redun-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-apps"; yang_parent_name = "redun-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps::~IccpApps()
@@ -2789,6 +2817,7 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocol
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_app.is_set
 	|| app_state.is_set
 	|| ptcl_ver.is_set;
@@ -2805,7 +2834,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmProtocols::RedunGroups::IccpApps::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iccp-apps" <<"[iccp-app='" <<iccp_app <<"']";
+    path_buffer << "iccp-apps";
+    ADD_KEY_TOKEN(iccp_app, "iccp-app");
     return path_buffer.str();
 }
 
@@ -2879,9 +2909,11 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmRgidTableInfo::RedGroup::IcpmPro
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::IcpmSessionTable()
+    :
+    session_table(this, {"session_id"})
 {
 
-    yang_name = "icpm-session-table"; yang_parent_name = "icpm-summary-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "icpm-session-table"; yang_parent_name = "icpm-summary-all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::~IcpmSessionTable()
@@ -2890,7 +2922,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::~IcpmSessionTable()
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::has_data() const
 {
-    for (std::size_t index=0; index<session_table.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<session_table.len(); index++)
     {
         if(session_table[index]->has_data())
             return true;
@@ -2900,7 +2933,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::has_data() const
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::has_operation() const
 {
-    for (std::size_t index=0; index<session_table.size(); index++)
+    for (std::size_t index=0; index<session_table.len(); index++)
     {
         if(session_table[index]->has_operation())
             return true;
@@ -2937,7 +2970,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable>();
         c->parent = this;
-        session_table.push_back(c);
+        session_table.append(c);
         return c;
     }
 
@@ -2949,7 +2982,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : session_table)
+    for (auto c : session_table.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2978,9 +3011,11 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::has_leaf_or_child_
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::SessionTable()
     :
     session_id{YType::uint32, "session-id"}
+        ,
+    icpm_protocols(this, {"icpm_type"})
 {
 
-    yang_name = "session-table"; yang_parent_name = "icpm-session-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-table"; yang_parent_name = "icpm-session-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::~SessionTable()
@@ -2989,7 +3024,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::~SessionT
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::has_data() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<icpm_protocols.len(); index++)
     {
         if(icpm_protocols[index]->has_data())
             return true;
@@ -2999,7 +3035,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::has_
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::has_operation() const
 {
-    for (std::size_t index=0; index<icpm_protocols.size(); index++)
+    for (std::size_t index=0; index<icpm_protocols.len(); index++)
     {
         if(icpm_protocols[index]->has_operation())
             return true;
@@ -3018,7 +3054,8 @@ std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTabl
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "session-table" <<"[session-id='" <<session_id <<"']";
+    path_buffer << "session-table";
+    ADD_KEY_TOKEN(session_id, "session-id");
     return path_buffer.str();
 }
 
@@ -3038,7 +3075,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols>();
         c->parent = this;
-        icpm_protocols.push_back(c);
+        icpm_protocols.append(c);
         return c;
     }
 
@@ -3050,7 +3087,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : icpm_protocols)
+    for (auto c : icpm_protocols.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3089,9 +3126,11 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::has_
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::IcpmProtocols()
     :
     icpm_type{YType::identityref, "icpm-type"}
+        ,
+    redun_groups(this, {"rg_id"})
 {
 
-    yang_name = "icpm-protocols"; yang_parent_name = "session-table"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "icpm-protocols"; yang_parent_name = "session-table"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::~IcpmProtocols()
@@ -3100,7 +3139,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProto
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::has_data() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<redun_groups.len(); index++)
     {
         if(redun_groups[index]->has_data())
             return true;
@@ -3110,7 +3150,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icpm
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::has_operation() const
 {
-    for (std::size_t index=0; index<redun_groups.size(); index++)
+    for (std::size_t index=0; index<redun_groups.len(); index++)
     {
         if(redun_groups[index]->has_operation())
             return true;
@@ -3122,7 +3162,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icpm
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "icpm-protocols" <<"[icpm-type='" <<icpm_type <<"']";
+    path_buffer << "icpm-protocols";
+    ADD_KEY_TOKEN(icpm_type, "icpm-type");
     return path_buffer.str();
 }
 
@@ -3142,7 +3183,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups>();
         c->parent = this;
-        redun_groups.push_back(c);
+        redun_groups.append(c);
         return c;
     }
 
@@ -3154,7 +3195,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : redun_groups)
+    for (auto c : redun_groups.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3196,9 +3237,11 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProto
     peer_id{YType::str, "peer-id"},
     client_id{YType::uint32, "client_id"},
     state{YType::str, "state"}
+        ,
+    iccp_apps(this, {"iccp_app"})
 {
 
-    yang_name = "redun-groups"; yang_parent_name = "icpm-protocols"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "redun-groups"; yang_parent_name = "icpm-protocols"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::~RedunGroups()
@@ -3207,7 +3250,8 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProto
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::has_data() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<iccp_apps.len(); index++)
     {
         if(iccp_apps[index]->has_data())
             return true;
@@ -3220,7 +3264,7 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icpm
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::has_operation() const
 {
-    for (std::size_t index=0; index<iccp_apps.size(); index++)
+    for (std::size_t index=0; index<iccp_apps.len(); index++)
     {
         if(iccp_apps[index]->has_operation())
             return true;
@@ -3235,7 +3279,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icpm
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "redun-groups" <<"[rg-id='" <<rg_id <<"']";
+    path_buffer << "redun-groups";
+    ADD_KEY_TOKEN(rg_id, "rg-id");
     return path_buffer.str();
 }
 
@@ -3258,7 +3303,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable:
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps>();
         c->parent = this;
-        iccp_apps.push_back(c);
+        iccp_apps.append(c);
         return c;
     }
 
@@ -3270,7 +3315,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::IcpmSummar
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : iccp_apps)
+    for (auto c : iccp_apps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3343,7 +3388,7 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProto
     ptcl_ver{YType::uint32, "ptcl-ver"}
 {
 
-    yang_name = "iccp-apps"; yang_parent_name = "redun-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "iccp-apps"; yang_parent_name = "redun-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps::~IccpApps()
@@ -3352,6 +3397,7 @@ MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProto
 
 bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps::has_data() const
 {
+    if (is_presence_container) return true;
     return iccp_app.is_set
 	|| app_state.is_set
 	|| ptcl_ver.is_set;
@@ -3368,7 +3414,8 @@ bool MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::Icpm
 std::string MplsLdp::MplsLdpState::IcpmSummaryAll::IcpmSessionTable::SessionTable::IcpmProtocols::RedunGroups::IccpApps::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "iccp-apps" <<"[iccp-app='" <<iccp_app <<"']";
+    path_buffer << "iccp-apps";
+    ADD_KEY_TOKEN(iccp_app, "iccp-app");
     return path_buffer.str();
 }
 
@@ -3457,9 +3504,11 @@ MplsLdp::MplsLdpState::Parameters::Parameters()
     dod_max_hop{YType::uint32, "dod-max-hop"},
     feature{YType::str, "feature"},
     loop_detection{YType::enumeration, "loop-detection"}
+        ,
+    address_family_parameter(this, {"address_family"})
 {
 
-    yang_name = "parameters"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "parameters"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Parameters::~Parameters()
@@ -3468,7 +3517,8 @@ MplsLdp::MplsLdpState::Parameters::~Parameters()
 
 bool MplsLdp::MplsLdpState::Parameters::has_data() const
 {
-    for (std::size_t index=0; index<address_family_parameter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_family_parameter.len(); index++)
     {
         if(address_family_parameter[index]->has_data())
             return true;
@@ -3495,7 +3545,7 @@ bool MplsLdp::MplsLdpState::Parameters::has_data() const
 
 bool MplsLdp::MplsLdpState::Parameters::has_operation() const
 {
-    for (std::size_t index=0; index<address_family_parameter.size(); index++)
+    for (std::size_t index=0; index<address_family_parameter.len(); index++)
     {
         if(address_family_parameter[index]->has_operation())
             return true;
@@ -3566,7 +3616,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Parameters::get_child_by_name(con
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter>();
         c->parent = this;
-        address_family_parameter.push_back(c);
+        address_family_parameter.append(c);
         return c;
     }
 
@@ -3578,7 +3628,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Parameters
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_family_parameter)
+    for (auto c : address_family_parameter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3750,7 +3800,7 @@ MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter::AddressFamilyParamete
     targeted_hello_filter{YType::str, "targeted-hello-filter"}
 {
 
-    yang_name = "address-family-parameter"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address-family-parameter"; yang_parent_name = "parameters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter::~AddressFamilyParameter()
@@ -3759,6 +3809,7 @@ MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter::~AddressFamilyParamet
 
 bool MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter::has_data() const
 {
+    if (is_presence_container) return true;
     return address_family.is_set
 	|| discovery_transport_address.is_set
 	|| is_accepting_targeted_hellos.is_set
@@ -3784,7 +3835,8 @@ std::string MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter::get_absol
 std::string MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address-family-parameter" <<"[address-family='" <<address_family <<"']";
+    path_buffer << "address-family-parameter";
+    ADD_KEY_TOKEN(address_family, "address-family");
     return path_buffer.str();
 }
 
@@ -3869,9 +3921,11 @@ bool MplsLdp::MplsLdpState::Parameters::AddressFamilyParameter::has_leaf_or_chil
 }
 
 MplsLdp::MplsLdpState::Capabilities::Capabilities()
+    :
+    capability(this, {"cap_type"})
 {
 
-    yang_name = "capabilities"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "capabilities"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Capabilities::~Capabilities()
@@ -3880,7 +3934,8 @@ MplsLdp::MplsLdpState::Capabilities::~Capabilities()
 
 bool MplsLdp::MplsLdpState::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<capability.len(); index++)
     {
         if(capability[index]->has_data())
             return true;
@@ -3890,7 +3945,7 @@ bool MplsLdp::MplsLdpState::Capabilities::has_data() const
 
 bool MplsLdp::MplsLdpState::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<capability.size(); index++)
+    for (std::size_t index=0; index<capability.len(); index++)
     {
         if(capability[index]->has_operation())
             return true;
@@ -3927,7 +3982,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Capabilities::get_child_by_name(c
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Capabilities::Capability>();
         c->parent = this;
-        capability.push_back(c);
+        capability.append(c);
         return c;
     }
 
@@ -3939,7 +3994,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Capabiliti
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : capability)
+    for (auto c : capability.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3974,7 +4029,7 @@ MplsLdp::MplsLdpState::Capabilities::Capability::Capability()
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "capability"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "capability"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Capabilities::Capability::~Capability()
@@ -3983,6 +4038,7 @@ MplsLdp::MplsLdpState::Capabilities::Capability::~Capability()
 
 bool MplsLdp::MplsLdpState::Capabilities::Capability::has_data() const
 {
+    if (is_presence_container) return true;
     return cap_type.is_set
 	|| capability_owner.is_set
 	|| cap_des.is_set
@@ -4010,7 +4066,8 @@ std::string MplsLdp::MplsLdpState::Capabilities::Capability::get_absolute_path()
 std::string MplsLdp::MplsLdpState::Capabilities::Capability::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "capability" <<"[cap-type='" <<cap_type <<"']";
+    path_buffer << "capability";
+    ADD_KEY_TOKEN(cap_type, "cap-type");
     return path_buffer.str();
 }
 
@@ -4113,7 +4170,7 @@ MplsLdp::MplsLdpState::BackoffParameters::BackoffParameters()
     waiting_seconds{YType::uint32, "waiting-seconds"}
 {
 
-    yang_name = "backoff-parameters"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "backoff-parameters"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::BackoffParameters::~BackoffParameters()
@@ -4122,6 +4179,7 @@ MplsLdp::MplsLdpState::BackoffParameters::~BackoffParameters()
 
 bool MplsLdp::MplsLdpState::BackoffParameters::has_data() const
 {
+    if (is_presence_container) return true;
     return initial_seconds.is_set
 	|| maximum_seconds.is_set
 	|| backoff_seconds.is_set
@@ -4240,7 +4298,7 @@ MplsLdp::MplsLdpState::GracefulRestart::GracefulRestart()
     forwarding_state_hold_timer_remaining_seconds{YType::uint32, "forwarding-state-hold-timer-remaining-seconds"}
 {
 
-    yang_name = "graceful-restart"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "graceful-restart"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::GracefulRestart::~GracefulRestart()
@@ -4249,6 +4307,7 @@ MplsLdp::MplsLdpState::GracefulRestart::~GracefulRestart()
 
 bool MplsLdp::MplsLdpState::GracefulRestart::has_data() const
 {
+    if (is_presence_container) return true;
     return is_graceful_restart_configured.is_set
 	|| graceful_restart_reconnect_timeout.is_set
 	|| graceful_restart_forwarding_state_hold_time.is_set
@@ -4372,9 +4431,11 @@ bool MplsLdp::MplsLdpState::GracefulRestart::has_leaf_or_child_of_name(const std
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::~Vrfs()
@@ -4383,7 +4444,8 @@ MplsLdp::MplsLdpState::Vrfs::~Vrfs()
 
 bool MplsLdp::MplsLdpState::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -4393,7 +4455,7 @@ bool MplsLdp::MplsLdpState::Vrfs::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -4430,7 +4492,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::get_child_by_name(const std
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -4442,7 +4504,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4471,14 +4533,14 @@ bool MplsLdp::MplsLdpState::Vrfs::has_leaf_or_child_of_name(const std::string & 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     vrf_summary(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary>())
-	,afs(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs>())
+    , afs(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs>())
 {
     vrf_summary->parent = this;
     afs->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::~Vrf()
@@ -4487,6 +4549,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::~Vrf()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (vrf_summary !=  nullptr && vrf_summary->has_data())
 	|| (afs !=  nullptr && afs->has_data());
@@ -4510,7 +4573,8 @@ std::string MplsLdp::MplsLdpState::Vrfs::Vrf::get_absolute_path() const
 std::string MplsLdp::MplsLdpState::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -4602,7 +4666,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary::VrfSummary()
     number_of_ipv4ldp_interfaces{YType::uint32, "number-of-ipv4ldp-interfaces"}
 {
 
-    yang_name = "vrf-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-summary"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary::~VrfSummary()
@@ -4611,6 +4675,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary::~VrfSummary()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return address_families.is_set
 	|| number_of_neighbors.is_set
 	|| number_of_graceful_restart_neighbors.is_set
@@ -4779,9 +4844,11 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::VrfSummary::has_leaf_or_child_of_name(con
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Afs()
+    :
+    af(this, {"af_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afs"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::~Afs()
@@ -4790,7 +4857,8 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::~Afs()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -4800,7 +4868,7 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -4830,7 +4898,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::get_child_by_name
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -4842,7 +4910,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4871,14 +4939,14 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::has_leaf_or_child_of_name(const std:
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Af()
     :
     af_name{YType::enumeration, "af-name"}
-    	,
+        ,
     interface_summary(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary>())
-	,igp(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp>())
+    , igp(std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp>())
 {
     interface_summary->parent = this;
     igp->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::~Af()
@@ -4887,6 +4955,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::~Af()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| (interface_summary !=  nullptr && interface_summary->has_data())
 	|| (igp !=  nullptr && igp->has_data());
@@ -4903,7 +4972,8 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::has_operation() const
 std::string MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -4994,7 +5064,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary::InterfaceSummary()
     auto_config_forward_reference_interfaces{YType::uint32, "auto-config-forward-reference-interfaces"}
 {
 
-    yang_name = "interface-summary"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-summary"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary::~InterfaceSummary()
@@ -5003,6 +5073,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary::~InterfaceSummary()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return known_ip_interface_count.is_set
 	|| known_ip_interface_ldp_enabled.is_set
 	|| configured_attached_interface.is_set
@@ -5158,9 +5229,11 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::InterfaceSummary::has_leaf_or_ch
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Igp()
+    :
+    sync(this, {"interface"})
 {
 
-    yang_name = "igp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "igp"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::~Igp()
@@ -5169,7 +5242,8 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::~Igp()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::has_data() const
 {
-    for (std::size_t index=0; index<sync.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sync.len(); index++)
     {
         if(sync[index]->has_data())
             return true;
@@ -5179,7 +5253,7 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::has_operation() const
 {
-    for (std::size_t index=0; index<sync.size(); index++)
+    for (std::size_t index=0; index<sync.len(); index++)
     {
         if(sync[index]->has_operation())
             return true;
@@ -5209,7 +5283,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::get_chil
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync>();
         c->parent = this;
-        sync.push_back(c);
+        sync.append(c);
         return c;
     }
 
@@ -5221,7 +5295,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sync)
+    for (auto c : sync.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5254,9 +5328,11 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Sync()
     is_delay_timer_running{YType::empty, "is-delay-timer-running"},
     delay_timer_remaining{YType::uint32, "delay-timer-remaining"},
     igp_sync_down_reason{YType::identityref, "igp-sync-down-reason"}
+        ,
+    peers(this, {})
 {
 
-    yang_name = "sync"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sync"; yang_parent_name = "igp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::~Sync()
@@ -5265,7 +5341,8 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::~Sync()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::has_data() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peers.len(); index++)
     {
         if(peers[index]->has_data())
             return true;
@@ -5279,7 +5356,7 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::has_data() const
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::has_operation() const
 {
-    for (std::size_t index=0; index<peers.size(); index++)
+    for (std::size_t index=0; index<peers.len(); index++)
     {
         if(peers[index]->has_operation())
             return true;
@@ -5295,7 +5372,8 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::has_operation() const
 std::string MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sync" <<"[interface='" <<interface <<"']";
+    path_buffer << "sync";
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -5319,7 +5397,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::ge
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers>();
         c->parent = this;
-        peers.push_back(c);
+        peers.append(c);
         return c;
     }
 
@@ -5331,7 +5409,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Vrfs::Vrf:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peers)
+    for (auto c : peers.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5414,7 +5492,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers::Peers()
     is_chkpt_created{YType::empty, "is-chkpt-created"}
 {
 
-    yang_name = "peers"; yang_parent_name = "sync"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "sync"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers::~Peers()
@@ -5423,6 +5501,7 @@ MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers::~Peers()
 
 bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers::has_data() const
 {
+    if (is_presence_container) return true;
     return peer_id.is_set
 	|| is_gr_enabled.is_set
 	|| is_chkpt_created.is_set;
@@ -5515,14 +5594,14 @@ bool MplsLdp::MplsLdpState::Vrfs::Vrf::Afs::Af::Igp::Sync::Peers::has_leaf_or_ch
 MplsLdp::MplsLdpState::Discovery::Discovery()
     :
     discovery_stats(std::make_shared<MplsLdp::MplsLdpState::Discovery::DiscoveryStats>())
-	,link_hello_state(std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState>())
-	,targeted_hellos(std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos>())
+    , link_hello_state(std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState>())
+    , targeted_hellos(std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos>())
 {
     discovery_stats->parent = this;
     link_hello_state->parent = this;
     targeted_hellos->parent = this;
 
-    yang_name = "discovery"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discovery"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Discovery::~Discovery()
@@ -5531,6 +5610,7 @@ MplsLdp::MplsLdpState::Discovery::~Discovery()
 
 bool MplsLdp::MplsLdpState::Discovery::has_data() const
 {
+    if (is_presence_container) return true;
     return (discovery_stats !=  nullptr && discovery_stats->has_data())
 	|| (link_hello_state !=  nullptr && link_hello_state->has_data())
 	|| (targeted_hellos !=  nullptr && targeted_hellos->has_data());
@@ -5646,7 +5726,7 @@ MplsLdp::MplsLdpState::Discovery::DiscoveryStats::DiscoveryStats()
     num_of_tgt_disc_recv{YType::uint32, "num-of-tgt-disc-recv"}
 {
 
-    yang_name = "discovery-stats"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discovery-stats"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Discovery::DiscoveryStats::~DiscoveryStats()
@@ -5655,6 +5735,7 @@ MplsLdp::MplsLdpState::Discovery::DiscoveryStats::~DiscoveryStats()
 
 bool MplsLdp::MplsLdpState::Discovery::DiscoveryStats::has_data() const
 {
+    if (is_presence_container) return true;
     return num_of_ldp_interfaces.is_set
 	|| num_of_active_ldp_interfaces.is_set
 	|| num_of_lnk_disc_xmit.is_set
@@ -5791,9 +5872,11 @@ bool MplsLdp::MplsLdpState::Discovery::DiscoveryStats::has_leaf_or_child_of_name
 }
 
 MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHelloState()
+    :
+    link_hellos(this, {"interface", "nbr_transport_addr"})
 {
 
-    yang_name = "link-hello-state"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-hello-state"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Discovery::LinkHelloState::~LinkHelloState()
@@ -5802,7 +5885,8 @@ MplsLdp::MplsLdpState::Discovery::LinkHelloState::~LinkHelloState()
 
 bool MplsLdp::MplsLdpState::Discovery::LinkHelloState::has_data() const
 {
-    for (std::size_t index=0; index<link_hellos.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<link_hellos.len(); index++)
     {
         if(link_hellos[index]->has_data())
             return true;
@@ -5812,7 +5896,7 @@ bool MplsLdp::MplsLdpState::Discovery::LinkHelloState::has_data() const
 
 bool MplsLdp::MplsLdpState::Discovery::LinkHelloState::has_operation() const
 {
-    for (std::size_t index=0; index<link_hellos.size(); index++)
+    for (std::size_t index=0; index<link_hellos.len(); index++)
     {
         if(link_hellos[index]->has_operation())
             return true;
@@ -5849,7 +5933,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::LinkHelloState::get_ch
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos>();
         c->parent = this;
-        link_hellos.push_back(c);
+        link_hellos.append(c);
         return c;
     }
 
@@ -5861,7 +5945,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Discovery:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : link_hellos)
+    for (auto c : link_hellos.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5902,7 +5986,7 @@ MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos::LinkHellos()
     hold_time_remaining{YType::uint32, "hold-time-remaining"}
 {
 
-    yang_name = "link-hellos"; yang_parent_name = "link-hello-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-hellos"; yang_parent_name = "link-hello-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos::~LinkHellos()
@@ -5911,6 +5995,7 @@ MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos::~LinkHellos()
 
 bool MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| nbr_transport_addr.is_set
 	|| hello_interval.is_set
@@ -5950,7 +6035,9 @@ std::string MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos::get_ab
 std::string MplsLdp::MplsLdpState::Discovery::LinkHelloState::LinkHellos::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "link-hellos" <<"[interface='" <<interface <<"']" <<"[nbr-transport-addr='" <<nbr_transport_addr <<"']";
+    path_buffer << "link-hellos";
+    ADD_KEY_TOKEN(interface, "interface");
+    ADD_KEY_TOKEN(nbr_transport_addr, "nbr-transport-addr");
     return path_buffer.str();
 }
 
@@ -6115,9 +6202,11 @@ MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHellos()
     :
     targeted_hello_interval{YType::uint32, "targeted-hello-interval"},
     targeted_hello_hold_time{YType::uint32, "targeted-hello-hold-time"}
+        ,
+    targeted_hello(this, {"vrf_name", "target_address"})
 {
 
-    yang_name = "targeted-hellos"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "targeted-hellos"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Discovery::TargetedHellos::~TargetedHellos()
@@ -6126,7 +6215,8 @@ MplsLdp::MplsLdpState::Discovery::TargetedHellos::~TargetedHellos()
 
 bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::has_data() const
 {
-    for (std::size_t index=0; index<targeted_hello.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<targeted_hello.len(); index++)
     {
         if(targeted_hello[index]->has_data())
             return true;
@@ -6137,7 +6227,7 @@ bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::has_data() const
 
 bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::has_operation() const
 {
-    for (std::size_t index=0; index<targeted_hello.size(); index++)
+    for (std::size_t index=0; index<targeted_hello.len(); index++)
     {
         if(targeted_hello[index]->has_operation())
             return true;
@@ -6178,7 +6268,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Discovery::TargetedHellos::get_ch
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello>();
         c->parent = this;
-        targeted_hello.push_back(c);
+        targeted_hello.append(c);
         return c;
     }
 
@@ -6190,7 +6280,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Discovery:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : targeted_hello)
+    for (auto c : targeted_hello.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6248,7 +6338,7 @@ MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::TargetedHello()
     hold_time_remaining{YType::uint32, "hold-time-remaining"}
 {
 
-    yang_name = "targeted-hello"; yang_parent_name = "targeted-hellos"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "targeted-hello"; yang_parent_name = "targeted-hellos"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::~TargetedHello()
@@ -6257,6 +6347,7 @@ MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::~TargetedHello(
 
 bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| target_address.is_set
 	|| local_address.is_set
@@ -6290,7 +6381,9 @@ std::string MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::get
 std::string MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "targeted-hello" <<"[vrf-name='" <<vrf_name <<"']" <<"[target-address='" <<target_address <<"']";
+    path_buffer << "targeted-hello";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(target_address, "target-address");
     return path_buffer.str();
 }
 
@@ -6421,10 +6514,11 @@ bool MplsLdp::MplsLdpState::Discovery::TargetedHellos::TargetedHello::has_leaf_o
 MplsLdp::MplsLdpState::Forwarding::Forwarding()
     :
     forwarding_vrf_summs(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms>())
+    , forwarding_detail(this, {"vrf_name", "prefix"})
 {
     forwarding_vrf_summs->parent = this;
 
-    yang_name = "forwarding"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forwarding"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::~Forwarding()
@@ -6433,7 +6527,8 @@ MplsLdp::MplsLdpState::Forwarding::~Forwarding()
 
 bool MplsLdp::MplsLdpState::Forwarding::has_data() const
 {
-    for (std::size_t index=0; index<forwarding_detail.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<forwarding_detail.len(); index++)
     {
         if(forwarding_detail[index]->has_data())
             return true;
@@ -6443,7 +6538,7 @@ bool MplsLdp::MplsLdpState::Forwarding::has_data() const
 
 bool MplsLdp::MplsLdpState::Forwarding::has_operation() const
 {
-    for (std::size_t index=0; index<forwarding_detail.size(); index++)
+    for (std::size_t index=0; index<forwarding_detail.len(); index++)
     {
         if(forwarding_detail[index]->has_operation())
             return true;
@@ -6490,7 +6585,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::get_child_by_name(con
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail>();
         c->parent = this;
-        forwarding_detail.push_back(c);
+        forwarding_detail.append(c);
         return c;
     }
 
@@ -6507,7 +6602,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding
     }
 
     count = 0;
-    for (auto const & c : forwarding_detail)
+    for (auto c : forwarding_detail.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6534,9 +6629,11 @@ bool MplsLdp::MplsLdpState::Forwarding::has_leaf_or_child_of_name(const std::str
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumms()
+    :
+    forwarding_vrf_summ(this, {"vrf_name"})
 {
 
-    yang_name = "forwarding-vrf-summs"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forwarding-vrf-summs"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::~ForwardingVrfSumms()
@@ -6545,7 +6642,8 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::~ForwardingVrfSumms()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::has_data() const
 {
-    for (std::size_t index=0; index<forwarding_vrf_summ.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<forwarding_vrf_summ.len(); index++)
     {
         if(forwarding_vrf_summ[index]->has_data())
             return true;
@@ -6555,7 +6653,7 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::has_data() const
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::has_operation() const
 {
-    for (std::size_t index=0; index<forwarding_vrf_summ.size(); index++)
+    for (std::size_t index=0; index<forwarding_vrf_summ.len(); index++)
     {
         if(forwarding_vrf_summ[index]->has_operation())
             return true;
@@ -6592,7 +6690,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::g
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm>();
         c->parent = this;
-        forwarding_vrf_summ.push_back(c);
+        forwarding_vrf_summ.append(c);
         return c;
     }
 
@@ -6604,7 +6702,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : forwarding_vrf_summ)
+    for (auto c : forwarding_vrf_summ.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6635,14 +6733,14 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Forwar
     vrf_name{YType::str, "vrf-name"},
     intfs_fwd_count{YType::uint16, "intfs-fwd-count"},
     local_lbls{YType::uint16, "local-lbls"}
-    	,
+        ,
     pfxs(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs>())
-	,nhs(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs>())
+    , nhs(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs>())
 {
     pfxs->parent = this;
     nhs->parent = this;
 
-    yang_name = "forwarding-vrf-summ"; yang_parent_name = "forwarding-vrf-summs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forwarding-vrf-summ"; yang_parent_name = "forwarding-vrf-summs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::~ForwardingVrfSumm()
@@ -6651,6 +6749,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::~Forwa
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| intfs_fwd_count.is_set
 	|| local_lbls.is_set
@@ -6678,7 +6777,8 @@ std::string MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrf
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "forwarding-vrf-summ" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "forwarding-vrf-summ";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -6784,16 +6884,16 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
     total_pfxs{YType::uint16, "total-pfxs"},
     ecmp_pfxs{YType::uint16, "ecmp-pfxs"},
     protected_pfxs{YType::uint16, "protected-pfxs"}
-    	,
+        ,
     labeled_pfxs_aggr(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr>())
-	,labeled_pfxs_primary(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary>())
-	,labeled_pfxs_backup(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup>())
+    , labeled_pfxs_primary(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary>())
+    , labeled_pfxs_backup(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup>())
 {
     labeled_pfxs_aggr->parent = this;
     labeled_pfxs_primary->parent = this;
     labeled_pfxs_backup->parent = this;
 
-    yang_name = "pfxs"; yang_parent_name = "forwarding-vrf-summ"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pfxs"; yang_parent_name = "forwarding-vrf-summ"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::~Pfxs()
@@ -6802,6 +6902,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_pfxs.is_set
 	|| ecmp_pfxs.is_set
 	|| protected_pfxs.is_set
@@ -6946,7 +7047,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-aggr"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr::~LabeledPfxsAggr()
@@ -6955,6 +7056,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsAggr::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -7051,7 +7153,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-primary"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary::~LabeledPfxsPrimary()
@@ -7060,6 +7162,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsPrimary::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -7156,7 +7259,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
     unlabeled_pfxs{YType::uint16, "unlabeled-pfxs"}
 {
 
-    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "labeled-pfxs-backup"; yang_parent_name = "pfxs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup::~LabeledPfxsBackup()
@@ -7165,6 +7268,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Pfxs::LabeledPfxsBackup::has_data() const
 {
+    if (is_presence_container) return true;
     return labeled_pfxs.is_set
 	|| labeled_pfxs_partial.is_set
 	|| unlabeled_pfxs.is_set;
@@ -7264,7 +7368,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs::N
     labeled_backup_paths{YType::uint32, "labeled-backup-paths"}
 {
 
-    yang_name = "nhs"; yang_parent_name = "forwarding-vrf-summ"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nhs"; yang_parent_name = "forwarding-vrf-summ"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs::~Nhs()
@@ -7273,6 +7377,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs::~
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingVrfSumms::ForwardingVrfSumm::Nhs::has_data() const
 {
+    if (is_presence_container) return true;
     return total_paths.is_set
 	|| protected_paths.is_set
 	|| backup_paths.is_set
@@ -7408,12 +7513,13 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::ForwardingDetail()
     fwd_prefix{YType::str, "fwd-prefix"},
     table_id{YType::uint32, "table-id"},
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     route(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route>())
+    , paths(this, {})
 {
     route->parent = this;
 
-    yang_name = "forwarding-detail"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "forwarding-detail"; yang_parent_name = "forwarding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::~ForwardingDetail()
@@ -7422,7 +7528,8 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::~ForwardingDetail()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::has_data() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_data())
             return true;
@@ -7437,7 +7544,7 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::has_data() const
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::has_operation() const
 {
-    for (std::size_t index=0; index<paths.size(); index++)
+    for (std::size_t index=0; index<paths.len(); index++)
     {
         if(paths[index]->has_operation())
             return true;
@@ -7461,7 +7568,9 @@ std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get_absolute_pa
 std::string MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "forwarding-detail" <<"[vrf-name='" <<vrf_name <<"']" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "forwarding-detail";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -7494,7 +7603,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::get
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths>();
         c->parent = this;
-        paths.push_back(c);
+        paths.append(c);
         return c;
     }
 
@@ -7511,7 +7620,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Forwarding
     }
 
     count = 0;
-    for (auto const & c : paths)
+    for (auto c : paths.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7604,7 +7713,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route::Route()
     forwarding_update_age{YType::uint64, "forwarding-update-age"}
 {
 
-    yang_name = "route"; yang_parent_name = "forwarding-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "route"; yang_parent_name = "forwarding-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route::~Route()
@@ -7613,6 +7722,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route::~Route()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route::has_data() const
 {
+    if (is_presence_container) return true;
     return version.is_set
 	|| priority.is_set
 	|| source.is_set
@@ -7835,12 +7945,12 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Route::has_leaf_or_chi
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Paths()
     :
     routing(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing>())
-	,mpls(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls>())
+    , mpls(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls>())
 {
     routing->parent = this;
     mpls->parent = this;
 
-    yang_name = "paths"; yang_parent_name = "forwarding-detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "paths"; yang_parent_name = "forwarding-detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::~Paths()
@@ -7849,6 +7959,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::~Paths()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::has_data() const
 {
+    if (is_presence_container) return true;
     return (routing !=  nullptr && routing->has_data())
 	|| (mpls !=  nullptr && mpls->has_data());
 }
@@ -7946,7 +8057,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing::Routing()
     path_type{YType::identityref, "path-type"}
 {
 
-    yang_name = "routing"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routing"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing::~Routing()
@@ -7955,6 +8066,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing::~Routing()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing::has_data() const
 {
+    if (is_presence_container) return true;
     return next_hop.is_set
 	|| remote_node_id.is_set
 	|| has_remote_lfa_bkup.is_set
@@ -8151,12 +8263,12 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Routing::has_le
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::Mpls()
     :
     mpls_outgoing_info(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo>())
-	,remote_lfa(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa>())
+    , remote_lfa(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa>())
 {
     mpls_outgoing_info->parent = this;
     remote_lfa->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls"; yang_parent_name = "paths"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::~Mpls()
@@ -8165,6 +8277,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::~Mpls()
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_data())
 	|| (remote_lfa !=  nullptr && remote_lfa->has_data());
 }
@@ -8254,12 +8367,12 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingIn
     out_label_owner{YType::identityref, "out-label-owner"},
     is_from_graceful_restartable_neighbor{YType::boolean, "is-from-graceful-restartable-neighbor"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     nexthop_peer_ldp_ident(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent>())
 {
     nexthop_peer_ldp_ident->parent = this;
 
-    yang_name = "mpls-outgoing-info"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-outgoing-info"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::~MplsOutgoingInfo()
@@ -8268,6 +8381,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingIn
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return out_label.is_set
 	|| out_label_type.is_set
 	|| out_label_owner.is_set
@@ -8405,7 +8519,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingIn
     label_space_id{YType::uint16, "label-space-id"}
 {
 
-    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::~NexthopPeerLdpIdent()
@@ -8414,6 +8528,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingIn
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgoingInfo::NexthopPeerLdpIdent::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set;
 }
@@ -8493,12 +8608,12 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::MplsOutgo
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::RemoteLfa()
     :
     has_remote_lfa_bkup{YType::boolean, "has-remote-lfa-bkup"}
-    	,
+        ,
     mpls_outgoing_info(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo>())
 {
     mpls_outgoing_info->parent = this;
 
-    yang_name = "remote-lfa"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-lfa"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::~RemoteLfa()
@@ -8507,6 +8622,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::~Re
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::has_data() const
 {
+    if (is_presence_container) return true;
     return has_remote_lfa_bkup.is_set
 	|| (mpls_outgoing_info !=  nullptr && mpls_outgoing_info->has_data());
 }
@@ -8593,12 +8709,12 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::Mpl
     out_label_owner{YType::identityref, "out-label-owner"},
     is_from_graceful_restartable_neighbor{YType::boolean, "is-from-graceful-restartable-neighbor"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     nexthop_peer_ldp_ident(std::make_shared<MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent>())
 {
     nexthop_peer_ldp_ident->parent = this;
 
-    yang_name = "mpls-outgoing-info"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-outgoing-info"; yang_parent_name = "remote-lfa"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::~MplsOutgoingInfo()
@@ -8607,6 +8723,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::Mpl
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return out_label.is_set
 	|| out_label_type.is_set
 	|| out_label_owner.is_set
@@ -8744,7 +8861,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::Mpl
     label_space_id{YType::uint16, "label-space-id"}
 {
 
-    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop-peer-ldp-ident"; yang_parent_name = "mpls-outgoing-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent::~NexthopPeerLdpIdent()
@@ -8753,6 +8870,7 @@ MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::Mpl
 
 bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa::MplsOutgoingInfo::NexthopPeerLdpIdent::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set;
 }
@@ -8832,10 +8950,11 @@ bool MplsLdp::MplsLdpState::Forwarding::ForwardingDetail::Paths::Mpls::RemoteLfa
 MplsLdp::MplsLdpState::Bindings::Bindings()
     :
     bindings_sum_afs(std::make_shared<MplsLdp::MplsLdpState::Bindings::BindingsSumAfs>())
+    , binding(this, {"vrf_name", "prefix"})
 {
     bindings_sum_afs->parent = this;
 
-    yang_name = "bindings"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bindings"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Bindings::~Bindings()
@@ -8844,7 +8963,8 @@ MplsLdp::MplsLdpState::Bindings::~Bindings()
 
 bool MplsLdp::MplsLdpState::Bindings::has_data() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_data())
             return true;
@@ -8854,7 +8974,7 @@ bool MplsLdp::MplsLdpState::Bindings::has_data() const
 
 bool MplsLdp::MplsLdpState::Bindings::has_operation() const
 {
-    for (std::size_t index=0; index<binding.size(); index++)
+    for (std::size_t index=0; index<binding.len(); index++)
     {
         if(binding[index]->has_operation())
             return true;
@@ -8901,7 +9021,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::get_child_by_name(const
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding>();
         c->parent = this;
-        binding.push_back(c);
+        binding.append(c);
         return c;
     }
 
@@ -8918,7 +9038,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::
     }
 
     count = 0;
-    for (auto const & c : binding)
+    for (auto c : binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8945,9 +9065,11 @@ bool MplsLdp::MplsLdpState::Bindings::has_leaf_or_child_of_name(const std::strin
 }
 
 MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingsSumAfs()
+    :
+    binding_sum_af(this, {"vrf_name", "af_name"})
 {
 
-    yang_name = "bindings-sum-afs"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bindings-sum-afs"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::~BindingsSumAfs()
@@ -8956,7 +9078,8 @@ MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::~BindingsSumAfs()
 
 bool MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::has_data() const
 {
-    for (std::size_t index=0; index<binding_sum_af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<binding_sum_af.len(); index++)
     {
         if(binding_sum_af[index]->has_data())
             return true;
@@ -8966,7 +9089,7 @@ bool MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::has_data() const
 
 bool MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::has_operation() const
 {
-    for (std::size_t index=0; index<binding_sum_af.size(); index++)
+    for (std::size_t index=0; index<binding_sum_af.len(); index++)
     {
         if(binding_sum_af[index]->has_operation())
             return true;
@@ -9003,7 +9126,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::get_chi
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf>();
         c->parent = this;
-        binding_sum_af.push_back(c);
+        binding_sum_af.append(c);
         return c;
     }
 
@@ -9015,7 +9138,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : binding_sum_af)
+    for (auto c : binding_sum_af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9059,7 +9182,7 @@ MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf::BindingSumAf()
     binding_remote{YType::uint32, "binding-remote"}
 {
 
-    yang_name = "binding-sum-af"; yang_parent_name = "bindings-sum-afs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "binding-sum-af"; yang_parent_name = "bindings-sum-afs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf::~BindingSumAf()
@@ -9068,6 +9191,7 @@ MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf::~BindingSumAf()
 
 bool MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| af_name.is_set
 	|| binding_total.is_set
@@ -9113,7 +9237,9 @@ std::string MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf::get_a
 std::string MplsLdp::MplsLdpState::Bindings::BindingsSumAfs::BindingSumAf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "binding-sum-af" <<"[vrf-name='" <<vrf_name <<"']" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "binding-sum-af";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -9321,9 +9447,12 @@ MplsLdp::MplsLdpState::Bindings::Binding::Binding()
     advertise_prefix_filter{YType::str, "advertise-prefix-filter"},
     advertise_lsr_filter{YType::str, "advertise-lsr-filter"},
     config_enforced_local_label_value{YType::boolean, "config-enforced-local-label-value"}
+        ,
+    remote_binding(this, {})
+    , peers_advertised_to(this, {})
 {
 
-    yang_name = "binding"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "binding"; yang_parent_name = "bindings"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Bindings::Binding::~Binding()
@@ -9332,12 +9461,13 @@ MplsLdp::MplsLdpState::Bindings::Binding::~Binding()
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::has_data() const
 {
-    for (std::size_t index=0; index<remote_binding.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<remote_binding.len(); index++)
     {
         if(remote_binding[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<peers_advertised_to.size(); index++)
+    for (std::size_t index=0; index<peers_advertised_to.len(); index++)
     {
         if(peers_advertised_to[index]->has_data())
             return true;
@@ -9358,12 +9488,12 @@ bool MplsLdp::MplsLdpState::Bindings::Binding::has_data() const
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::has_operation() const
 {
-    for (std::size_t index=0; index<remote_binding.size(); index++)
+    for (std::size_t index=0; index<remote_binding.len(); index++)
     {
         if(remote_binding[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<peers_advertised_to.size(); index++)
+    for (std::size_t index=0; index<peers_advertised_to.len(); index++)
     {
         if(peers_advertised_to[index]->has_operation())
             return true;
@@ -9393,7 +9523,9 @@ std::string MplsLdp::MplsLdpState::Bindings::Binding::get_absolute_path() const
 std::string MplsLdp::MplsLdpState::Bindings::Binding::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "binding" <<"[vrf-name='" <<vrf_name <<"']" <<"[prefix='" <<prefix <<"']";
+    path_buffer << "binding";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(prefix, "prefix");
     return path_buffer.str();
 }
 
@@ -9424,7 +9556,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::get_child_by_n
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding>();
         c->parent = this;
-        remote_binding.push_back(c);
+        remote_binding.append(c);
         return c;
     }
 
@@ -9432,7 +9564,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Bindings::Binding::get_child_by_n
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo>();
         c->parent = this;
-        peers_advertised_to.push_back(c);
+        peers_advertised_to.append(c);
         return c;
     }
 
@@ -9444,7 +9576,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : remote_binding)
+    for (auto c : remote_binding.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9453,7 +9585,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Bindings::
     }
 
     count = 0;
-    for (auto const & c : peers_advertised_to)
+    for (auto c : peers_advertised_to.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9603,12 +9735,12 @@ MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::RemoteBinding()
     :
     remote_label{YType::uint32, "remote-label"},
     is_stale{YType::boolean, "is-stale"}
-    	,
+        ,
     assigning_peer_ldp_ident(std::make_shared<MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent>())
 {
     assigning_peer_ldp_ident->parent = this;
 
-    yang_name = "remote-binding"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-binding"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::~RemoteBinding()
@@ -9617,6 +9749,7 @@ MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::~RemoteBinding()
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::has_data() const
 {
+    if (is_presence_container) return true;
     return remote_label.is_set
 	|| is_stale.is_set
 	|| (assigning_peer_ldp_ident !=  nullptr && assigning_peer_ldp_ident->has_data());
@@ -9715,7 +9848,7 @@ MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::
     label_space_id{YType::uint16, "label-space-id"}
 {
 
-    yang_name = "assigning-peer-ldp-ident"; yang_parent_name = "remote-binding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "assigning-peer-ldp-ident"; yang_parent_name = "remote-binding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::~AssigningPeerLdpIdent()
@@ -9724,6 +9857,7 @@ MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::RemoteBinding::AssigningPeerLdpIdent::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set;
 }
@@ -9806,7 +9940,7 @@ MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo::PeersAdvertisedTo()
     label_space_id{YType::uint16, "label-space-id"}
 {
 
-    yang_name = "peers-advertised-to"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers-advertised-to"; yang_parent_name = "binding"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo::~PeersAdvertisedTo()
@@ -9815,6 +9949,7 @@ MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo::~PeersAdvertisedTo(
 
 bool MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo::has_data() const
 {
+    if (is_presence_container) return true;
     return lsr_id.is_set
 	|| label_space_id.is_set;
 }
@@ -9893,15 +10028,17 @@ bool MplsLdp::MplsLdpState::Bindings::Binding::PeersAdvertisedTo::has_leaf_or_ch
 
 MplsLdp::MplsLdpState::Neighbors::Neighbors()
     :
-    stats_info(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo>())
-	,backoffs(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Backoffs>())
-	,nsr_nbr_detail(std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail>())
+    neighbor(this, {"vrf_name", "lsr_id"})
+    , nbr_adjs(this, {})
+    , stats_info(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo>())
+    , backoffs(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Backoffs>())
+    , nsr_nbr_detail(std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail>())
 {
     stats_info->parent = this;
     backoffs->parent = this;
     nsr_nbr_detail->parent = this;
 
-    yang_name = "neighbors"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbors"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::~Neighbors()
@@ -9910,12 +10047,13 @@ MplsLdp::MplsLdpState::Neighbors::~Neighbors()
 
 bool MplsLdp::MplsLdpState::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<nbr_adjs.size(); index++)
+    for (std::size_t index=0; index<nbr_adjs.len(); index++)
     {
         if(nbr_adjs[index]->has_data())
             return true;
@@ -9927,12 +10065,12 @@ bool MplsLdp::MplsLdpState::Neighbors::has_data() const
 
 bool MplsLdp::MplsLdpState::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<nbr_adjs.size(); index++)
+    for (std::size_t index=0; index<nbr_adjs.len(); index++)
     {
         if(nbr_adjs[index]->has_operation())
             return true;
@@ -9972,7 +10110,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::get_child_by_name(cons
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -9980,7 +10118,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::get_child_by_name(cons
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::NbrAdjs>();
         c->parent = this;
-        nbr_adjs.push_back(c);
+        nbr_adjs.append(c);
         return c;
     }
 
@@ -10019,7 +10157,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10028,7 +10166,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors:
     }
 
     count = 0;
-    for (auto const & c : nbr_adjs)
+    for (auto c : nbr_adjs.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10098,18 +10236,18 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Neighbor()
     client{YType::str, "client"},
     duplicate_address{YType::str, "duplicate-address"},
     nbr_bound_address{YType::str, "nbr-bound-address"}
-    	,
+        ,
     nbr_stats(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats>())
-	,graceful_restart_adjacency(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency>())
-	,tcp_information(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation>())
-	,capabilities(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities>())
+    , graceful_restart_adjacency(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency>())
+    , tcp_information(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation>())
+    , capabilities(std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities>())
 {
     nbr_stats->parent = this;
     graceful_restart_adjacency->parent = this;
     tcp_information->parent = this;
     capabilities->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::~Neighbor()
@@ -10118,6 +10256,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::~Neighbor()
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : client.getYLeafs())
     {
         if(leaf.is_set)
@@ -10224,7 +10363,9 @@ std::string MplsLdp::MplsLdpState::Neighbors::Neighbor::get_absolute_path() cons
 std::string MplsLdp::MplsLdpState::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[vrf-name='" <<vrf_name <<"']" <<"[lsr-id='" <<lsr_id <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(lsr_id, "lsr-id");
     return path_buffer.str();
 }
 
@@ -10626,7 +10767,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats::NbrStats()
     num_of_nbr_ipv6_lbl{YType::uint32, "num-of-nbr-ipv6-lbl"}
 {
 
-    yang_name = "nbr-stats"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nbr-stats"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats::~NbrStats()
@@ -10635,6 +10776,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats::~NbrStats()
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::NbrStats::has_data() const
 {
+    if (is_presence_container) return true;
     return ta_pies_sent.is_set
 	|| ta_pies_rcvd.is_set
 	|| num_of_nbr_ipv4_discovery.is_set
@@ -10802,7 +10944,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency::GracefulRe
     down_nbr_down_reason{YType::identityref, "down-nbr-down-reason"}
 {
 
-    yang_name = "graceful-restart-adjacency"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-restart-adjacency"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency::~GracefulRestartAdjacency()
@@ -10811,6 +10953,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency::~GracefulR
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::GracefulRestartAdjacency::has_data() const
 {
+    if (is_presence_container) return true;
     return is_graceful_restartable.is_set
 	|| reconnect_timeout.is_set
 	|| recovery_time.is_set
@@ -10988,7 +11131,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation::TcpInformation()
     up_time{YType::str, "up-time"}
 {
 
-    yang_name = "tcp-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcp-information"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation::~TcpInformation()
@@ -10997,6 +11140,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation::~TcpInformation()
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return foreign_host.is_set
 	|| local_host.is_set
 	|| foreign_port.is_set
@@ -11126,9 +11270,12 @@ bool MplsLdp::MplsLdpState::Neighbors::Neighbor::TcpInformation::has_leaf_or_chi
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::Capabilities()
+    :
+    sent_caps(this, {"cap_type"})
+    , received_caps(this, {"cap_type"})
 {
 
-    yang_name = "capabilities"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "capabilities"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::~Capabilities()
@@ -11137,12 +11284,13 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::~Capabilities()
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::has_data() const
 {
-    for (std::size_t index=0; index<sent_caps.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sent_caps.len(); index++)
     {
         if(sent_caps[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<received_caps.size(); index++)
+    for (std::size_t index=0; index<received_caps.len(); index++)
     {
         if(received_caps[index]->has_data())
             return true;
@@ -11152,12 +11300,12 @@ bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::has_data() const
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::has_operation() const
 {
-    for (std::size_t index=0; index<sent_caps.size(); index++)
+    for (std::size_t index=0; index<sent_caps.len(); index++)
     {
         if(sent_caps[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<received_caps.size(); index++)
+    for (std::size_t index=0; index<received_caps.len(); index++)
     {
         if(received_caps[index]->has_operation())
             return true;
@@ -11187,7 +11335,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps>();
         c->parent = this;
-        sent_caps.push_back(c);
+        sent_caps.append(c);
         return c;
     }
 
@@ -11195,7 +11343,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps>();
         c->parent = this;
-        received_caps.push_back(c);
+        received_caps.append(c);
         return c;
     }
 
@@ -11207,7 +11355,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sent_caps)
+    for (auto c : sent_caps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11216,7 +11364,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::Neighbors:
     }
 
     count = 0;
-    for (auto const & c : received_caps)
+    for (auto c : received_caps.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11250,7 +11398,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps::SentCaps()
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "sent-caps"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sent-caps"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps::~SentCaps()
@@ -11259,6 +11407,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps::~SentCaps()
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps::has_data() const
 {
+    if (is_presence_container) return true;
     return cap_type.is_set
 	|| cap_des.is_set
 	|| capability_data_length.is_set
@@ -11277,7 +11426,8 @@ bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps::has_ope
 std::string MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::SentCaps::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sent-caps" <<"[cap-type='" <<cap_type <<"']";
+    path_buffer << "sent-caps";
+    ADD_KEY_TOKEN(cap_type, "cap-type");
     return path_buffer.str();
 }
 
@@ -11369,7 +11519,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps::Received
     capability_data{YType::str, "capability-data"}
 {
 
-    yang_name = "received-caps"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "received-caps"; yang_parent_name = "capabilities"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps::~ReceivedCaps()
@@ -11378,6 +11528,7 @@ MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps::~Receive
 
 bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps::has_data() const
 {
+    if (is_presence_container) return true;
     return cap_type.is_set
 	|| cap_des.is_set
 	|| capability_data_length.is_set
@@ -11396,7 +11547,8 @@ bool MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps::has
 std::string MplsLdp::MplsLdpState::Neighbors::Neighbor::Capabilities::ReceivedCaps::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "received-caps" <<"[cap-type='" <<cap_type <<"']";
+    path_buffer << "received-caps";
+    ADD_KEY_TOKEN(cap_type, "cap-type");
     return path_buffer.str();
 }
 
@@ -11488,7 +11640,7 @@ MplsLdp::MplsLdpState::Neighbors::NbrAdjs::NbrAdjs()
     target_state{YType::enumeration, "target-state"}
 {
 
-    yang_name = "nbr-adjs"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nbr-adjs"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::NbrAdjs::~NbrAdjs()
@@ -11497,6 +11649,7 @@ MplsLdp::MplsLdpState::Neighbors::NbrAdjs::~NbrAdjs()
 
 bool MplsLdp::MplsLdpState::Neighbors::NbrAdjs::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| local_address.is_set
 	|| target_address.is_set
@@ -11622,14 +11775,14 @@ MplsLdp::MplsLdpState::Neighbors::StatsInfo::StatsInfo()
     keep_alive_exp{YType::uint32, "keep-alive-exp"},
     shutdown_notif_rec{YType::uint32, "shutdown-notif-rec"},
     shutdow_notif_sent{YType::uint32, "shutdow-notif-sent"}
-    	,
+        ,
     message_out(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut>())
-	,message_in(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn>())
+    , message_in(std::make_shared<MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn>())
 {
     message_out->parent = this;
     message_in->parent = this;
 
-    yang_name = "stats-info"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats-info"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::StatsInfo::~StatsInfo()
@@ -11638,6 +11791,7 @@ MplsLdp::MplsLdpState::Neighbors::StatsInfo::~StatsInfo()
 
 bool MplsLdp::MplsLdpState::Neighbors::StatsInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return discon_time.is_set
 	|| session_attempts.is_set
 	|| sess_reject_no_hello.is_set
@@ -11928,7 +12082,7 @@ MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut::MessageOut()
     iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
 {
 
-    yang_name = "message-out"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message-out"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut::~MessageOut()
@@ -11937,6 +12091,7 @@ MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut::~MessageOut()
 
 bool MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageOut::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| init_count.is_set
 	|| address_count.is_set
@@ -12208,7 +12363,7 @@ MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn::MessageIn()
     iccp_rg_app_data_count{YType::uint32, "iccp-rg-app-data-count"}
 {
 
-    yang_name = "message-in"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message-in"; yang_parent_name = "stats-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn::~MessageIn()
@@ -12217,6 +12372,7 @@ MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn::~MessageIn()
 
 bool MplsLdp::MplsLdpState::Neighbors::StatsInfo::MessageIn::has_data() const
 {
+    if (is_presence_container) return true;
     return total_count.is_set
 	|| init_count.is_set
 	|| address_count.is_set
@@ -12475,7 +12631,7 @@ MplsLdp::MplsLdpState::Neighbors::Backoffs::Backoffs()
     waiting_seconds{YType::uint32, "waiting-seconds"}
 {
 
-    yang_name = "backoffs"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "backoffs"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::Backoffs::~Backoffs()
@@ -12484,6 +12640,7 @@ MplsLdp::MplsLdpState::Neighbors::Backoffs::~Backoffs()
 
 bool MplsLdp::MplsLdpState::Neighbors::Backoffs::has_data() const
 {
+    if (is_presence_container) return true;
     return backoff_seconds.is_set
 	|| waiting_seconds.is_set;
 }
@@ -12585,12 +12742,12 @@ MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NsrNbrDetail()
     nsr_nbr_xmit_ctxt_enq{YType::uint32, "nsr-nbr-xmit-ctxt-enq"},
     nsr_nbr_xmit_ctxt_deq{YType::uint32, "nsr-nbr-xmit-ctxt-deq"},
     path_vector_limit{YType::int32, "path-vector-limit"}
-    	,
+        ,
     nbr_sess(std::make_shared<MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess>())
 {
     nbr_sess->parent = this;
 
-    yang_name = "nsr-nbr-detail"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nsr-nbr-detail"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::~NsrNbrDetail()
@@ -12599,6 +12756,7 @@ MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::~NsrNbrDetail()
 
 bool MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::has_data() const
 {
+    if (is_presence_container) return true;
     return nsr_state.is_set
 	|| nsr_nbr_sync_state.is_set
 	|| nsr_nbr_last_sync_error.is_set
@@ -12892,7 +13050,7 @@ MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess::NbrSess()
     unknown_tlv{YType::uint32, "unknown-tlv"}
 {
 
-    yang_name = "nbr-sess"; yang_parent_name = "nsr-nbr-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nbr-sess"; yang_parent_name = "nsr-nbr-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess::~NbrSess()
@@ -12901,6 +13059,7 @@ MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess::~NbrSess()
 
 bool MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess::has_data() const
 {
+    if (is_presence_container) return true;
     return last_stat_change.is_set
 	|| state.is_set
 	|| keep_alive_remain.is_set
@@ -13063,9 +13222,11 @@ bool MplsLdp::MplsLdpState::Neighbors::NsrNbrDetail::NbrSess::has_leaf_or_child_
 }
 
 MplsLdp::MplsLdpState::LabelRanges::LabelRanges()
+    :
+    label_range(this, {"lr_min", "lr_max"})
 {
 
-    yang_name = "label-ranges"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-ranges"; yang_parent_name = "mpls-ldp-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::LabelRanges::~LabelRanges()
@@ -13074,7 +13235,8 @@ MplsLdp::MplsLdpState::LabelRanges::~LabelRanges()
 
 bool MplsLdp::MplsLdpState::LabelRanges::has_data() const
 {
-    for (std::size_t index=0; index<label_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_range.len(); index++)
     {
         if(label_range[index]->has_data())
             return true;
@@ -13084,7 +13246,7 @@ bool MplsLdp::MplsLdpState::LabelRanges::has_data() const
 
 bool MplsLdp::MplsLdpState::LabelRanges::has_operation() const
 {
-    for (std::size_t index=0; index<label_range.size(); index++)
+    for (std::size_t index=0; index<label_range.len(); index++)
     {
         if(label_range[index]->has_operation())
             return true;
@@ -13121,7 +13283,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpState::LabelRanges::get_child_by_name(co
     {
         auto c = std::make_shared<MplsLdp::MplsLdpState::LabelRanges::LabelRange>();
         c->parent = this;
-        label_range.push_back(c);
+        label_range.append(c);
         return c;
     }
 
@@ -13133,7 +13295,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpState::LabelRange
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : label_range)
+    for (auto c : label_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13165,7 +13327,7 @@ MplsLdp::MplsLdpState::LabelRanges::LabelRange::LabelRange()
     lr_max{YType::uint32, "lr-max"}
 {
 
-    yang_name = "label-range"; yang_parent_name = "label-ranges"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-range"; yang_parent_name = "label-ranges"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpState::LabelRanges::LabelRange::~LabelRange()
@@ -13174,6 +13336,7 @@ MplsLdp::MplsLdpState::LabelRanges::LabelRange::~LabelRange()
 
 bool MplsLdp::MplsLdpState::LabelRanges::LabelRange::has_data() const
 {
+    if (is_presence_container) return true;
     return lr_min.is_set
 	|| lr_max.is_set;
 }
@@ -13195,7 +13358,9 @@ std::string MplsLdp::MplsLdpState::LabelRanges::LabelRange::get_absolute_path() 
 std::string MplsLdp::MplsLdpState::LabelRanges::LabelRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label-range" <<"[lr-min='" <<lr_min <<"']" <<"[lr-max='" <<lr_max <<"']";
+    path_buffer << "label-range";
+    ADD_KEY_TOKEN(lr_min, "lr-min");
+    ADD_KEY_TOKEN(lr_max, "lr-max");
     return path_buffer.str();
 }
 
@@ -13260,16 +13425,16 @@ bool MplsLdp::MplsLdpState::LabelRanges::LabelRange::has_leaf_or_child_of_name(c
 MplsLdp::MplsLdpConfig::MplsLdpConfig()
     :
     global_cfg(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg>())
-	,nbr_table(std::make_shared<MplsLdp::MplsLdpConfig::NbrTable>())
-	,passwords(std::make_shared<MplsLdp::MplsLdpConfig::Passwords>())
-	,session(std::make_shared<MplsLdp::MplsLdpConfig::Session>())
-	,label_cfg(std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg>())
-	,discovery(std::make_shared<MplsLdp::MplsLdpConfig::Discovery>())
-	,graceful_restart(std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart>())
-	,logging(std::make_shared<MplsLdp::MplsLdpConfig::Logging>())
-	,interfaces(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces>())
-	,routing(std::make_shared<MplsLdp::MplsLdpConfig::Routing>())
-	,dual_stack(std::make_shared<MplsLdp::MplsLdpConfig::DualStack>())
+    , nbr_table(std::make_shared<MplsLdp::MplsLdpConfig::NbrTable>())
+    , passwords(std::make_shared<MplsLdp::MplsLdpConfig::Passwords>())
+    , session(std::make_shared<MplsLdp::MplsLdpConfig::Session>())
+    , label_cfg(std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg>())
+    , discovery(std::make_shared<MplsLdp::MplsLdpConfig::Discovery>())
+    , graceful_restart(std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart>())
+    , logging(std::make_shared<MplsLdp::MplsLdpConfig::Logging>())
+    , interfaces(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces>())
+    , routing(std::make_shared<MplsLdp::MplsLdpConfig::Routing>())
+    , dual_stack(std::make_shared<MplsLdp::MplsLdpConfig::DualStack>())
 {
     global_cfg->parent = this;
     nbr_table->parent = this;
@@ -13283,7 +13448,7 @@ MplsLdp::MplsLdpConfig::MplsLdpConfig()
     routing->parent = this;
     dual_stack->parent = this;
 
-    yang_name = "mpls-ldp-config"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls-ldp-config"; yang_parent_name = "mpls-ldp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::~MplsLdpConfig()
@@ -13292,6 +13457,7 @@ MplsLdp::MplsLdpConfig::~MplsLdpConfig()
 
 bool MplsLdp::MplsLdpConfig::has_data() const
 {
+    if (is_presence_container) return true;
     return (global_cfg !=  nullptr && global_cfg->has_data())
 	|| (nbr_table !=  nullptr && nbr_table->has_data())
 	|| (passwords !=  nullptr && passwords->has_data())
@@ -13540,14 +13706,15 @@ MplsLdp::MplsLdpConfig::GlobalCfg::GlobalCfg()
     disable_delay_proc{YType::empty, "disable-delay-proc"},
     protocol{YType::enumeration, "protocol"},
     init_sess_thresh{YType::int32, "init-sess-thresh"}
-    	,
-    session(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session>())
-	,per_af(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf>())
+        ,
+    router_id(this, {"vrf_name"})
+    , session(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session>())
+    , per_af(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf>())
 {
     session->parent = this;
     per_af->parent = this;
 
-    yang_name = "global-cfg"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-cfg"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::~GlobalCfg()
@@ -13556,7 +13723,8 @@ MplsLdp::MplsLdpConfig::GlobalCfg::~GlobalCfg()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::has_data() const
 {
-    for (std::size_t index=0; index<router_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<router_id.len(); index++)
     {
         if(router_id[index]->has_data())
             return true;
@@ -13580,7 +13748,7 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::has_data() const
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::has_operation() const
 {
-    for (std::size_t index=0; index<router_id.size(); index++)
+    for (std::size_t index=0; index<router_id.len(); index++)
     {
         if(router_id[index]->has_operation())
             return true;
@@ -13645,7 +13813,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::get_child_by_name(con
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::RouterId>();
         c->parent = this;
-        router_id.push_back(c);
+        router_id.append(c);
         return c;
     }
 
@@ -13675,7 +13843,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GlobalCfg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : router_id)
+    for (auto c : router_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13849,7 +14017,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::RouterId::RouterId()
     force{YType::empty, "force"}
 {
 
-    yang_name = "router-id"; yang_parent_name = "global-cfg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "router-id"; yang_parent_name = "global-cfg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::RouterId::~RouterId()
@@ -13858,6 +14026,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::RouterId::~RouterId()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::RouterId::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| lsr_id_if.is_set
 	|| lsr_id_ip.is_set
@@ -13883,7 +14052,8 @@ std::string MplsLdp::MplsLdpConfig::GlobalCfg::RouterId::get_absolute_path() con
 std::string MplsLdp::MplsLdpConfig::GlobalCfg::RouterId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "router-id" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "router-id";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -13973,12 +14143,13 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::Session()
     backoff_max{YType::uint32, "backoff-max"},
     seconds{YType::uint16, "seconds"},
     infinite{YType::boolean, "infinite"}
-    	,
-    protection(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection>())
+        ,
+    downstream_on_demand(this, {"vrf_name"})
+    , protection(std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection>())
 {
     protection->parent = this;
 
-    yang_name = "session"; yang_parent_name = "global-cfg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "global-cfg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::Session::~Session()
@@ -13987,7 +14158,8 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::~Session()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::has_data() const
 {
-    for (std::size_t index=0; index<downstream_on_demand.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<downstream_on_demand.len(); index++)
     {
         if(downstream_on_demand[index]->has_data())
             return true;
@@ -14001,7 +14173,7 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::has_data() const
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::has_operation() const
 {
-    for (std::size_t index=0; index<downstream_on_demand.size(); index++)
+    for (std::size_t index=0; index<downstream_on_demand.len(); index++)
     {
         if(downstream_on_demand[index]->has_operation())
             return true;
@@ -14047,7 +14219,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::Session::get_child_by
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand>();
         c->parent = this;
-        downstream_on_demand.push_back(c);
+        downstream_on_demand.append(c);
         return c;
     }
 
@@ -14068,7 +14240,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GlobalCfg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : downstream_on_demand)
+    for (auto c : downstream_on_demand.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14146,7 +14318,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand::DownstreamOnDema
     filter{YType::str, "filter"}
 {
 
-    yang_name = "downstream-on-demand"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "downstream-on-demand"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand::~DownstreamOnDemand()
@@ -14155,6 +14327,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand::~DownstreamOnDem
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| enabled.is_set
 	|| filter.is_set;
@@ -14178,7 +14351,8 @@ std::string MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand::get_
 std::string MplsLdp::MplsLdpConfig::GlobalCfg::Session::DownstreamOnDemand::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "downstream-on-demand" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "downstream-on-demand";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -14259,7 +14433,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection::Protection()
     inf{YType::empty, "inf"}
 {
 
-    yang_name = "protection"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "protection"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection::~Protection()
@@ -14268,6 +14442,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection::~Protection()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection::has_data() const
 {
+    if (is_presence_container) return true;
     return enable_prot.is_set
 	|| peer_filter.is_set
 	|| seconds.is_set
@@ -14378,9 +14553,11 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::Session::Protection::has_leaf_or_child_o
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::PerAf()
+    :
+    af_cfg(this, {"vrf_name", "af_name"})
 {
 
-    yang_name = "per-af"; yang_parent_name = "global-cfg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "per-af"; yang_parent_name = "global-cfg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::~PerAf()
@@ -14389,7 +14566,8 @@ MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::~PerAf()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::has_data() const
 {
-    for (std::size_t index=0; index<af_cfg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af_cfg.len(); index++)
     {
         if(af_cfg[index]->has_data())
             return true;
@@ -14399,7 +14577,7 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::has_data() const
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::has_operation() const
 {
-    for (std::size_t index=0; index<af_cfg.size(); index++)
+    for (std::size_t index=0; index<af_cfg.len(); index++)
     {
         if(af_cfg[index]->has_operation())
             return true;
@@ -14436,7 +14614,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::get_child_by_n
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg>();
         c->parent = this;
-        af_cfg.push_back(c);
+        af_cfg.append(c);
         return c;
     }
 
@@ -14448,7 +14626,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GlobalCfg
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af_cfg)
+    for (auto c : af_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14484,7 +14662,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg::AfCfg()
     implicit{YType::empty, "implicit"}
 {
 
-    yang_name = "af-cfg"; yang_parent_name = "per-af"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "af-cfg"; yang_parent_name = "per-af"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg::~AfCfg()
@@ -14493,6 +14671,7 @@ MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg::~AfCfg()
 
 bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| af_name.is_set
 	|| default_route.is_set
@@ -14522,7 +14701,9 @@ std::string MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg::get_absolute_path()
 std::string MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af-cfg" <<"[vrf-name='" <<vrf_name <<"']" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "af-cfg";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -14629,9 +14810,11 @@ bool MplsLdp::MplsLdpConfig::GlobalCfg::PerAf::AfCfg::has_leaf_or_child_of_name(
 }
 
 MplsLdp::MplsLdpConfig::NbrTable::NbrTable()
+    :
+    nbr_cfg(this, {"nbr_vrf", "nbr_ip"})
 {
 
-    yang_name = "nbr-table"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nbr-table"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::NbrTable::~NbrTable()
@@ -14640,7 +14823,8 @@ MplsLdp::MplsLdpConfig::NbrTable::~NbrTable()
 
 bool MplsLdp::MplsLdpConfig::NbrTable::has_data() const
 {
-    for (std::size_t index=0; index<nbr_cfg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nbr_cfg.len(); index++)
     {
         if(nbr_cfg[index]->has_data())
             return true;
@@ -14650,7 +14834,7 @@ bool MplsLdp::MplsLdpConfig::NbrTable::has_data() const
 
 bool MplsLdp::MplsLdpConfig::NbrTable::has_operation() const
 {
-    for (std::size_t index=0; index<nbr_cfg.size(); index++)
+    for (std::size_t index=0; index<nbr_cfg.len(); index++)
     {
         if(nbr_cfg[index]->has_operation())
             return true;
@@ -14687,7 +14871,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::NbrTable::get_child_by_name(cons
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::NbrTable::NbrCfg>();
         c->parent = this;
-        nbr_cfg.push_back(c);
+        nbr_cfg.append(c);
         return c;
     }
 
@@ -14699,7 +14883,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::NbrTable:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nbr_cfg)
+    for (auto c : nbr_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14737,7 +14921,7 @@ MplsLdp::MplsLdpConfig::NbrTable::NbrCfg::NbrCfg()
     password{YType::str, "password"}
 {
 
-    yang_name = "nbr-cfg"; yang_parent_name = "nbr-table"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nbr-cfg"; yang_parent_name = "nbr-table"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::NbrTable::NbrCfg::~NbrCfg()
@@ -14746,6 +14930,7 @@ MplsLdp::MplsLdpConfig::NbrTable::NbrCfg::~NbrCfg()
 
 bool MplsLdp::MplsLdpConfig::NbrTable::NbrCfg::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr_vrf.is_set
 	|| nbr_ip.is_set
 	|| admin_status.is_set
@@ -14779,7 +14964,9 @@ std::string MplsLdp::MplsLdpConfig::NbrTable::NbrCfg::get_absolute_path() const
 std::string MplsLdp::MplsLdpConfig::NbrTable::NbrCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nbr-cfg" <<"[nbr-vrf='" <<nbr_vrf <<"']" <<"[nbr-ip='" <<nbr_ip <<"']";
+    path_buffer << "nbr-cfg";
+    ADD_KEY_TOKEN(nbr_vrf, "nbr-vrf");
+    ADD_KEY_TOKEN(nbr_ip, "nbr-ip");
     return path_buffer.str();
 }
 
@@ -14908,9 +15095,11 @@ bool MplsLdp::MplsLdpConfig::NbrTable::NbrCfg::has_leaf_or_child_of_name(const s
 }
 
 MplsLdp::MplsLdpConfig::Passwords::Passwords()
+    :
+    password(this, {"nbr_vrf", "nbr_id", "password_num"})
 {
 
-    yang_name = "passwords"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "passwords"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Passwords::~Passwords()
@@ -14919,7 +15108,8 @@ MplsLdp::MplsLdpConfig::Passwords::~Passwords()
 
 bool MplsLdp::MplsLdpConfig::Passwords::has_data() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<password.len(); index++)
     {
         if(password[index]->has_data())
             return true;
@@ -14929,7 +15119,7 @@ bool MplsLdp::MplsLdpConfig::Passwords::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Passwords::has_operation() const
 {
-    for (std::size_t index=0; index<password.size(); index++)
+    for (std::size_t index=0; index<password.len(); index++)
     {
         if(password[index]->has_operation())
             return true;
@@ -14966,7 +15156,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Passwords::get_child_by_name(con
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Passwords::Password>();
         c->parent = this;
-        password.push_back(c);
+        password.append(c);
         return c;
     }
 
@@ -14978,7 +15168,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Passwords
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : password)
+    for (auto c : password.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15015,7 +15205,7 @@ MplsLdp::MplsLdpConfig::Passwords::Password::Password()
     keychain_pass{YType::str, "keychain-pass"}
 {
 
-    yang_name = "password"; yang_parent_name = "passwords"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "passwords"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Passwords::Password::~Password()
@@ -15024,6 +15214,7 @@ MplsLdp::MplsLdpConfig::Passwords::Password::~Password()
 
 bool MplsLdp::MplsLdpConfig::Passwords::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return nbr_vrf.is_set
 	|| nbr_id.is_set
 	|| password_num.is_set
@@ -15055,7 +15246,10 @@ std::string MplsLdp::MplsLdpConfig::Passwords::Password::get_absolute_path() con
 std::string MplsLdp::MplsLdpConfig::Passwords::Password::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "password" <<"[nbr-vrf='" <<nbr_vrf <<"']" <<"[nbr-id='" <<nbr_id <<"']" <<"[password-num='" <<password_num <<"']";
+    path_buffer << "password";
+    ADD_KEY_TOKEN(nbr_vrf, "nbr-vrf");
+    ADD_KEY_TOKEN(nbr_id, "nbr-id");
+    ADD_KEY_TOKEN(password_num, "password-num");
     return path_buffer.str();
 }
 
@@ -15179,7 +15373,7 @@ MplsLdp::MplsLdpConfig::Session::Session()
     infinite{YType::empty, "infinite"}
 {
 
-    yang_name = "session"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Session::~Session()
@@ -15188,6 +15382,7 @@ MplsLdp::MplsLdpConfig::Session::~Session()
 
 bool MplsLdp::MplsLdpConfig::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return backoff.is_set
 	|| seconds.is_set
 	|| infinite.is_set;
@@ -15285,9 +15480,11 @@ bool MplsLdp::MplsLdpConfig::Session::has_leaf_or_child_of_name(const std::strin
 }
 
 MplsLdp::MplsLdpConfig::LabelCfg::LabelCfg()
+    :
+    label_af_cfg(this, {"vrf_name", "af_name"})
 {
 
-    yang_name = "label-cfg"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-cfg"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::LabelCfg::~LabelCfg()
@@ -15296,7 +15493,8 @@ MplsLdp::MplsLdpConfig::LabelCfg::~LabelCfg()
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::has_data() const
 {
-    for (std::size_t index=0; index<label_af_cfg.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_af_cfg.len(); index++)
     {
         if(label_af_cfg[index]->has_data())
             return true;
@@ -15306,7 +15504,7 @@ bool MplsLdp::MplsLdpConfig::LabelCfg::has_data() const
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::has_operation() const
 {
-    for (std::size_t index=0; index<label_af_cfg.size(); index++)
+    for (std::size_t index=0; index<label_af_cfg.len(); index++)
     {
         if(label_af_cfg[index]->has_operation())
             return true;
@@ -15343,7 +15541,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::get_child_by_name(cons
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg>();
         c->parent = this;
-        label_af_cfg.push_back(c);
+        label_af_cfg.append(c);
         return c;
     }
 
@@ -15355,7 +15553,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::LabelCfg:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : label_af_cfg)
+    for (auto c : label_af_cfg.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15387,9 +15585,11 @@ MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::LabelAfCfg()
     af_name{YType::enumeration, "af-name"},
     prefix_filter{YType::str, "prefix-filter"},
     host_route_enable{YType::boolean, "host-route-enable"}
+        ,
+    advt_filter(this, {"prefix_filter", "peer_filter", "interface"})
 {
 
-    yang_name = "label-af-cfg"; yang_parent_name = "label-cfg"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "label-af-cfg"; yang_parent_name = "label-cfg"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::~LabelAfCfg()
@@ -15398,7 +15598,8 @@ MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::~LabelAfCfg()
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::has_data() const
 {
-    for (std::size_t index=0; index<advt_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<advt_filter.len(); index++)
     {
         if(advt_filter[index]->has_data())
             return true;
@@ -15411,7 +15612,7 @@ bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::has_data() const
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::has_operation() const
 {
-    for (std::size_t index=0; index<advt_filter.size(); index++)
+    for (std::size_t index=0; index<advt_filter.len(); index++)
     {
         if(advt_filter[index]->has_operation())
             return true;
@@ -15433,7 +15634,9 @@ std::string MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::get_absolute_path() co
 std::string MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label-af-cfg" <<"[vrf-name='" <<vrf_name <<"']" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "label-af-cfg";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -15456,7 +15659,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::get_child_
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter>();
         c->parent = this;
-        advt_filter.push_back(c);
+        advt_filter.append(c);
         return c;
     }
 
@@ -15468,7 +15671,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::LabelCfg:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : advt_filter)
+    for (auto c : advt_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15542,7 +15745,7 @@ MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter::AdvtFilter()
     adv_label_cfg{YType::enumeration, "adv-label-cfg"}
 {
 
-    yang_name = "advt-filter"; yang_parent_name = "label-af-cfg"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advt-filter"; yang_parent_name = "label-af-cfg"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter::~AdvtFilter()
@@ -15551,6 +15754,7 @@ MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter::~AdvtFilter()
 
 bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_filter.is_set
 	|| peer_filter.is_set
 	|| interface.is_set
@@ -15569,7 +15773,10 @@ bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter::has_operation() c
 std::string MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "advt-filter" <<"[prefix-filter='" <<prefix_filter <<"']" <<"[peer-filter='" <<peer_filter <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "advt-filter";
+    ADD_KEY_TOKEN(prefix_filter, "prefix-filter");
+    ADD_KEY_TOKEN(peer_filter, "peer-filter");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -15656,16 +15863,16 @@ bool MplsLdp::MplsLdpConfig::LabelCfg::LabelAfCfg::AdvtFilter::has_leaf_or_child
 MplsLdp::MplsLdpConfig::Discovery::Discovery()
     :
     instance_tlv{YType::boolean, "instance-tlv"}
-    	,
+        ,
     link_hello(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::LinkHello>())
-	,targeted_hello(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello>())
-	,int_trans_addrs(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs>())
+    , targeted_hello(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello>())
+    , int_trans_addrs(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs>())
 {
     link_hello->parent = this;
     targeted_hello->parent = this;
     int_trans_addrs->parent = this;
 
-    yang_name = "discovery"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "discovery"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Discovery::~Discovery()
@@ -15674,6 +15881,7 @@ MplsLdp::MplsLdpConfig::Discovery::~Discovery()
 
 bool MplsLdp::MplsLdpConfig::Discovery::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_tlv.is_set
 	|| (link_hello !=  nullptr && link_hello->has_data())
 	|| (targeted_hello !=  nullptr && targeted_hello->has_data())
@@ -15798,7 +16006,7 @@ MplsLdp::MplsLdpConfig::Discovery::LinkHello::LinkHello()
     interval{YType::uint16, "interval"}
 {
 
-    yang_name = "link-hello"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link-hello"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Discovery::LinkHello::~LinkHello()
@@ -15807,6 +16015,7 @@ MplsLdp::MplsLdpConfig::Discovery::LinkHello::~LinkHello()
 
 bool MplsLdp::MplsLdpConfig::Discovery::LinkHello::has_data() const
 {
+    if (is_presence_container) return true;
     return holdtime.is_set
 	|| interval.is_set;
 }
@@ -15895,12 +16104,12 @@ MplsLdp::MplsLdpConfig::Discovery::TargetedHello::TargetedHello()
     holdtime{YType::uint16, "holdtime"},
     interval{YType::uint16, "interval"},
     enable{YType::boolean, "enable"}
-    	,
+        ,
     accept(std::make_shared<MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept>())
 {
     accept->parent = this;
 
-    yang_name = "targeted-hello"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "targeted-hello"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Discovery::TargetedHello::~TargetedHello()
@@ -15909,6 +16118,7 @@ MplsLdp::MplsLdpConfig::Discovery::TargetedHello::~TargetedHello()
 
 bool MplsLdp::MplsLdpConfig::Discovery::TargetedHello::has_data() const
 {
+    if (is_presence_container) return true;
     return holdtime.is_set
 	|| interval.is_set
 	|| enable.is_set
@@ -16027,7 +16237,7 @@ MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept::Accept()
     src_filter{YType::str, "src-filter"}
 {
 
-    yang_name = "accept"; yang_parent_name = "targeted-hello"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accept"; yang_parent_name = "targeted-hello"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept::~Accept()
@@ -16036,6 +16246,7 @@ MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept::~Accept()
 
 bool MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| src_filter.is_set;
 }
@@ -16120,9 +16331,11 @@ bool MplsLdp::MplsLdpConfig::Discovery::TargetedHello::Accept::has_leaf_or_child
 }
 
 MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddrs()
+    :
+    int_trans_addr(this, {"af_name", "int_name"})
 {
 
-    yang_name = "int-trans-addrs"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "int-trans-addrs"; yang_parent_name = "discovery"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::~IntTransAddrs()
@@ -16131,7 +16344,8 @@ MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::~IntTransAddrs()
 
 bool MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::has_data() const
 {
-    for (std::size_t index=0; index<int_trans_addr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<int_trans_addr.len(); index++)
     {
         if(int_trans_addr[index]->has_data())
             return true;
@@ -16141,7 +16355,7 @@ bool MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::has_operation() const
 {
-    for (std::size_t index=0; index<int_trans_addr.size(); index++)
+    for (std::size_t index=0; index<int_trans_addr.len(); index++)
     {
         if(int_trans_addr[index]->has_operation())
             return true;
@@ -16178,7 +16392,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::get_ch
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr>();
         c->parent = this;
-        int_trans_addr.push_back(c);
+        int_trans_addr.append(c);
         return c;
     }
 
@@ -16190,7 +16404,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Discovery
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : int_trans_addr)
+    for (auto c : int_trans_addr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16224,7 +16438,7 @@ MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr::IntTransAddr()
     trans_int{YType::str, "trans-int"}
 {
 
-    yang_name = "int-trans-addr"; yang_parent_name = "int-trans-addrs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "int-trans-addr"; yang_parent_name = "int-trans-addrs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr::~IntTransAddr()
@@ -16233,6 +16447,7 @@ MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr::~IntTransAddr()
 
 bool MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| int_name.is_set
 	|| trans_ip.is_set
@@ -16258,7 +16473,9 @@ std::string MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr::get_
 std::string MplsLdp::MplsLdpConfig::Discovery::IntTransAddrs::IntTransAddr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "int-trans-addr" <<"[af-name='" <<af_name <<"']" <<"[int-name='" <<int_name <<"']";
+    path_buffer << "int-trans-addr";
+    ADD_KEY_TOKEN(af_name, "af-name");
+    ADD_KEY_TOKEN(int_name, "int-name");
     return path_buffer.str();
 }
 
@@ -16348,9 +16565,11 @@ MplsLdp::MplsLdpConfig::GracefulRestart::GracefulRestart()
     forwarding_holding{YType::uint32, "forwarding-holding"},
     max_recovery{YType::uint32, "max-recovery"},
     nbr_liveness{YType::uint32, "nbr-liveness"}
+        ,
+    helper(this, {"helper_vrf", "helper_filter"})
 {
 
-    yang_name = "graceful-restart"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "graceful-restart"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GracefulRestart::~GracefulRestart()
@@ -16359,7 +16578,8 @@ MplsLdp::MplsLdpConfig::GracefulRestart::~GracefulRestart()
 
 bool MplsLdp::MplsLdpConfig::GracefulRestart::has_data() const
 {
-    for (std::size_t index=0; index<helper.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<helper.len(); index++)
     {
         if(helper[index]->has_data())
             return true;
@@ -16372,7 +16592,7 @@ bool MplsLdp::MplsLdpConfig::GracefulRestart::has_data() const
 
 bool MplsLdp::MplsLdpConfig::GracefulRestart::has_operation() const
 {
-    for (std::size_t index=0; index<helper.size(); index++)
+    for (std::size_t index=0; index<helper.len(); index++)
     {
         if(helper[index]->has_operation())
             return true;
@@ -16417,7 +16637,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::GracefulRestart::get_child_by_na
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::GracefulRestart::Helper>();
         c->parent = this;
-        helper.push_back(c);
+        helper.append(c);
         return c;
     }
 
@@ -16429,7 +16649,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::GracefulR
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : helper)
+    for (auto c : helper.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16501,7 +16721,7 @@ MplsLdp::MplsLdpConfig::GracefulRestart::Helper::Helper()
     helper_filter{YType::str, "helper-filter"}
 {
 
-    yang_name = "helper"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "helper"; yang_parent_name = "graceful-restart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::GracefulRestart::Helper::~Helper()
@@ -16510,6 +16730,7 @@ MplsLdp::MplsLdpConfig::GracefulRestart::Helper::~Helper()
 
 bool MplsLdp::MplsLdpConfig::GracefulRestart::Helper::has_data() const
 {
+    if (is_presence_container) return true;
     return helper_vrf.is_set
 	|| helper_filter.is_set;
 }
@@ -16531,7 +16752,9 @@ std::string MplsLdp::MplsLdpConfig::GracefulRestart::Helper::get_absolute_path()
 std::string MplsLdp::MplsLdpConfig::GracefulRestart::Helper::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "helper" <<"[helper-vrf='" <<helper_vrf <<"']" <<"[helper-filter='" <<helper_filter <<"']";
+    path_buffer << "helper";
+    ADD_KEY_TOKEN(helper_vrf, "helper-vrf");
+    ADD_KEY_TOKEN(helper_filter, "helper-filter");
     return path_buffer.str();
 }
 
@@ -16600,12 +16823,12 @@ MplsLdp::MplsLdpConfig::Logging::Logging()
     nsr{YType::boolean, "nsr"},
     adjacency{YType::boolean, "adjacency"},
     session_protection{YType::boolean, "session-protection"}
-    	,
+        ,
     password(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password>())
 {
     password->parent = this;
 
-    yang_name = "logging"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "logging"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Logging::~Logging()
@@ -16614,6 +16837,7 @@ MplsLdp::MplsLdpConfig::Logging::~Logging()
 
 bool MplsLdp::MplsLdpConfig::Logging::has_data() const
 {
+    if (is_presence_container) return true;
     return graceful_restart.is_set
 	|| neighbor.is_set
 	|| nsr.is_set
@@ -16755,12 +16979,12 @@ bool MplsLdp::MplsLdpConfig::Logging::has_leaf_or_child_of_name(const std::strin
 MplsLdp::MplsLdpConfig::Logging::Password::Password()
     :
     config_msg(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg>())
-	,rollover_msg(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg>())
+    , rollover_msg(std::make_shared<MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg>())
 {
     config_msg->parent = this;
     rollover_msg->parent = this;
 
-    yang_name = "password"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "password"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Logging::Password::~Password()
@@ -16769,6 +16993,7 @@ MplsLdp::MplsLdpConfig::Logging::Password::~Password()
 
 bool MplsLdp::MplsLdpConfig::Logging::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return (config_msg !=  nullptr && config_msg->has_data())
 	|| (rollover_msg !=  nullptr && rollover_msg->has_data());
 }
@@ -16864,7 +17089,7 @@ MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg::ConfigMsg()
     rate_limit{YType::uint32, "rate-limit"}
 {
 
-    yang_name = "config-msg"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "config-msg"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg::~ConfigMsg()
@@ -16873,6 +17098,7 @@ MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg::~ConfigMsg()
 
 bool MplsLdp::MplsLdpConfig::Logging::Password::ConfigMsg::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| rate_limit.is_set;
 }
@@ -16962,7 +17188,7 @@ MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg::RolloverMsg()
     rate_limit{YType::uint32, "rate-limit"}
 {
 
-    yang_name = "rollover-msg"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rollover-msg"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg::~RolloverMsg()
@@ -16971,6 +17197,7 @@ MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg::~RolloverMsg()
 
 bool MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| rate_limit.is_set;
 }
@@ -17055,9 +17282,11 @@ bool MplsLdp::MplsLdpConfig::Logging::Password::RolloverMsg::has_leaf_or_child_o
 }
 
 MplsLdp::MplsLdpConfig::Interfaces::Interfaces()
+    :
+    interface(this, {"vrf", "interface"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Interfaces::~Interfaces()
@@ -17066,7 +17295,8 @@ MplsLdp::MplsLdpConfig::Interfaces::~Interfaces()
 
 bool MplsLdp::MplsLdpConfig::Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -17076,7 +17306,7 @@ bool MplsLdp::MplsLdpConfig::Interfaces::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -17113,7 +17343,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::get_child_by_name(co
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -17125,7 +17355,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17160,12 +17390,12 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Interface()
     disable_quick_start_int{YType::boolean, "disable-quick-start-int"},
     seconds{YType::uint32, "seconds"},
     disable_delay{YType::empty, "disable-delay"}
-    	,
+        ,
     afs(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs>())
 {
     afs->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Interfaces::Interface::~Interface()
@@ -17174,6 +17404,7 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::~Interface()
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set
 	|| interface.is_set
 	|| link_hello_int.is_set
@@ -17207,7 +17438,9 @@ std::string MplsLdp::MplsLdpConfig::Interfaces::Interface::get_absolute_path() c
 std::string MplsLdp::MplsLdpConfig::Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[vrf='" <<vrf <<"']" <<"[interface='" <<interface <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(vrf, "vrf");
+    ADD_KEY_TOKEN(interface, "interface");
     return path_buffer.str();
 }
 
@@ -17339,9 +17572,11 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::has_leaf_or_child_of_name(co
 }
 
 MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Afs()
+    :
+    af(this, {"af_name"})
 {
 
-    yang_name = "afs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afs"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::~Afs()
@@ -17350,7 +17585,8 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::~Afs()
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::has_data() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_data())
             return true;
@@ -17360,7 +17596,7 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::has_operation() const
 {
-    for (std::size_t index=0; index<af.size(); index++)
+    for (std::size_t index=0; index<af.len(); index++)
     {
         if(af[index]->has_operation())
             return true;
@@ -17390,7 +17626,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::get_
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af>();
         c->parent = this;
-        af.push_back(c);
+        af.append(c);
         return c;
     }
 
@@ -17402,7 +17638,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Interface
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : af)
+    for (auto c : af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17433,12 +17669,12 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::Af()
     af_name{YType::enumeration, "af-name"},
     enable{YType::boolean, "enable"},
     autoconfig_disable{YType::boolean, "autoconfig-disable"}
-    	,
+        ,
     bgp_redist(std::make_shared<MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist>())
 {
     bgp_redist->parent = this;
 
-    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "af"; yang_parent_name = "afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::~Af()
@@ -17447,6 +17683,7 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::~Af()
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| enable.is_set
 	|| autoconfig_disable.is_set
@@ -17465,7 +17702,8 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::has_operation() con
 std::string MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "af" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "af";
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -17560,7 +17798,7 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist::BgpRedist()
     enable{YType::boolean, "enable"}
 {
 
-    yang_name = "bgp-redist"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bgp-redist"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist::~BgpRedist()
@@ -17569,6 +17807,7 @@ MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist::~BgpRedist()
 
 bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set
 	|| advertise_to.is_set
@@ -17672,9 +17911,11 @@ bool MplsLdp::MplsLdpConfig::Interfaces::Interface::Afs::Af::BgpRedist::has_leaf
 }
 
 MplsLdp::MplsLdpConfig::Routing::Routing()
+    :
+    routing_inst(this, {"routing_inst_name"})
 {
 
-    yang_name = "routing"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routing"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Routing::~Routing()
@@ -17683,7 +17924,8 @@ MplsLdp::MplsLdpConfig::Routing::~Routing()
 
 bool MplsLdp::MplsLdpConfig::Routing::has_data() const
 {
-    for (std::size_t index=0; index<routing_inst.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<routing_inst.len(); index++)
     {
         if(routing_inst[index]->has_data())
             return true;
@@ -17693,7 +17935,7 @@ bool MplsLdp::MplsLdpConfig::Routing::has_data() const
 
 bool MplsLdp::MplsLdpConfig::Routing::has_operation() const
 {
-    for (std::size_t index=0; index<routing_inst.size(); index++)
+    for (std::size_t index=0; index<routing_inst.len(); index++)
     {
         if(routing_inst[index]->has_operation())
             return true;
@@ -17730,7 +17972,7 @@ std::shared_ptr<Entity> MplsLdp::MplsLdpConfig::Routing::get_child_by_name(const
     {
         auto c = std::make_shared<MplsLdp::MplsLdpConfig::Routing::RoutingInst>();
         c->parent = this;
-        routing_inst.push_back(c);
+        routing_inst.append(c);
         return c;
     }
 
@@ -17742,7 +17984,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsLdp::MplsLdpConfig::Routing::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : routing_inst)
+    for (auto c : routing_inst.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -17777,7 +18019,7 @@ MplsLdp::MplsLdpConfig::Routing::RoutingInst::RoutingInst()
     sync{YType::boolean, "sync"}
 {
 
-    yang_name = "routing-inst"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "routing-inst"; yang_parent_name = "routing"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::Routing::RoutingInst::~RoutingInst()
@@ -17786,6 +18028,7 @@ MplsLdp::MplsLdpConfig::Routing::RoutingInst::~RoutingInst()
 
 bool MplsLdp::MplsLdpConfig::Routing::RoutingInst::has_data() const
 {
+    if (is_presence_container) return true;
     return routing_inst_name.is_set
 	|| autoconfig_enable.is_set
 	|| area_id.is_set
@@ -17813,7 +18056,8 @@ std::string MplsLdp::MplsLdpConfig::Routing::RoutingInst::get_absolute_path() co
 std::string MplsLdp::MplsLdpConfig::Routing::RoutingInst::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "routing-inst" <<"[routing-inst-name='" <<routing_inst_name <<"']";
+    path_buffer << "routing-inst";
+    ADD_KEY_TOKEN(routing_inst_name, "routing-inst-name");
     return path_buffer.str();
 }
 
@@ -17914,7 +18158,7 @@ MplsLdp::MplsLdpConfig::DualStack::DualStack()
     prefer_ipv4_peers{YType::str, "prefer-ipv4-peers"}
 {
 
-    yang_name = "dual-stack"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dual-stack"; yang_parent_name = "mpls-ldp-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsLdp::MplsLdpConfig::DualStack::~DualStack()
@@ -17923,6 +18167,7 @@ MplsLdp::MplsLdpConfig::DualStack::~DualStack()
 
 bool MplsLdp::MplsLdpConfig::DualStack::has_data() const
 {
+    if (is_presence_container) return true;
     return max_wait.is_set
 	|| prefer_ipv4_peers.is_set;
 }
@@ -18009,12 +18254,12 @@ bool MplsLdp::MplsLdpConfig::DualStack::has_leaf_or_child_of_name(const std::str
 ClearMsgCounters::ClearMsgCounters()
     :
     input(std::make_shared<ClearMsgCounters::Input>())
-	,output(std::make_shared<ClearMsgCounters::Output>())
+    , output(std::make_shared<ClearMsgCounters::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "clear-msg-counters"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-msg-counters"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearMsgCounters::~ClearMsgCounters()
@@ -18023,6 +18268,7 @@ ClearMsgCounters::~ClearMsgCounters()
 
 bool ClearMsgCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -18137,7 +18383,7 @@ ClearMsgCounters::Input::Input()
     all{YType::empty, "all"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-msg-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-msg-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearMsgCounters::Input::~Input()
@@ -18146,6 +18392,7 @@ ClearMsgCounters::Input::~Input()
 
 bool ClearMsgCounters::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| nbr_ip.is_set
 	|| all.is_set;
@@ -18247,7 +18494,7 @@ ClearMsgCounters::Output::Output()
     status{YType::str, "status"}
 {
 
-    yang_name = "output"; yang_parent_name = "clear-msg-counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "clear-msg-counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearMsgCounters::Output::~Output()
@@ -18256,6 +18503,7 @@ ClearMsgCounters::Output::~Output()
 
 bool ClearMsgCounters::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -18329,12 +18577,12 @@ bool ClearMsgCounters::Output::has_leaf_or_child_of_name(const std::string & nam
 RestartNeighbor::RestartNeighbor()
     :
     input(std::make_shared<RestartNeighbor::Input>())
-	,output(std::make_shared<RestartNeighbor::Output>())
+    , output(std::make_shared<RestartNeighbor::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "restart-neighbor"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "restart-neighbor"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 RestartNeighbor::~RestartNeighbor()
@@ -18343,6 +18591,7 @@ RestartNeighbor::~RestartNeighbor()
 
 bool RestartNeighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -18457,7 +18706,7 @@ RestartNeighbor::Input::Input()
     all{YType::empty, "all"}
 {
 
-    yang_name = "input"; yang_parent_name = "restart-neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "restart-neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RestartNeighbor::Input::~Input()
@@ -18466,6 +18715,7 @@ RestartNeighbor::Input::~Input()
 
 bool RestartNeighbor::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| nbr_ip.is_set
 	|| all.is_set;
@@ -18567,7 +18817,7 @@ RestartNeighbor::Output::Output()
     status{YType::str, "status"}
 {
 
-    yang_name = "output"; yang_parent_name = "restart-neighbor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "restart-neighbor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 RestartNeighbor::Output::~Output()
@@ -18576,6 +18826,7 @@ RestartNeighbor::Output::~Output()
 
 bool RestartNeighbor::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -18649,12 +18900,12 @@ bool RestartNeighbor::Output::has_leaf_or_child_of_name(const std::string & name
 ClearForwarding::ClearForwarding()
     :
     input(std::make_shared<ClearForwarding::Input>())
-	,output(std::make_shared<ClearForwarding::Output>())
+    , output(std::make_shared<ClearForwarding::Output>())
 {
     input->parent = this;
     output->parent = this;
 
-    yang_name = "clear-forwarding"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clear-forwarding"; yang_parent_name = "Cisco-IOS-XE-mpls-ldp"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ClearForwarding::~ClearForwarding()
@@ -18663,6 +18914,7 @@ ClearForwarding::~ClearForwarding()
 
 bool ClearForwarding::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data())
 	|| (output !=  nullptr && output->has_data());
 }
@@ -18777,7 +19029,7 @@ ClearForwarding::Input::Input()
     all{YType::empty, "all"}
 {
 
-    yang_name = "input"; yang_parent_name = "clear-forwarding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "clear-forwarding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearForwarding::Input::~Input()
@@ -18786,6 +19038,7 @@ ClearForwarding::Input::~Input()
 
 bool ClearForwarding::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| prefix_ip.is_set
 	|| all.is_set;
@@ -18887,7 +19140,7 @@ ClearForwarding::Output::Output()
     status{YType::str, "status"}
 {
 
-    yang_name = "output"; yang_parent_name = "clear-forwarding"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "output"; yang_parent_name = "clear-forwarding"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ClearForwarding::Output::~Output()
@@ -18896,6 +19149,7 @@ ClearForwarding::Output::~Output()
 
 bool ClearForwarding::Output::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -18966,263 +19220,13 @@ bool ClearForwarding::Output::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-NsrSyncNackRsnNone::NsrSyncNackRsnNone()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-none")
+DownNbrReasonDiscHello::DownNbrReasonDiscHello()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:down-nbr-reason-disc-hello")
 {
 
 }
 
-NsrSyncNackRsnNone::~NsrSyncNackRsnNone()
-{
-}
-
-NsrSyncNackRsnTblIdMismatch::NsrSyncNackRsnTblIdMismatch()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-tbl-id-mismatch")
-{
-
-}
-
-NsrSyncNackRsnTblIdMismatch::~NsrSyncNackRsnTblIdMismatch()
-{
-}
-
-NsrSyncNackRsnPpExists::NsrSyncNackRsnPpExists()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-pp-exists")
-{
-
-}
-
-NsrSyncNackRsnPpExists::~NsrSyncNackRsnPpExists()
-{
-}
-
-NsrSyncNackRsnMissingElem::NsrSyncNackRsnMissingElem()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-missing-elem")
-{
-
-}
-
-NsrSyncNackRsnMissingElem::~NsrSyncNackRsnMissingElem()
-{
-}
-
-NsrSyncNackRsnNoPEndSock::NsrSyncNackRsnNoPEndSock()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-no-p-end-sock")
-{
-
-}
-
-NsrSyncNackRsnNoPEndSock::~NsrSyncNackRsnNoPEndSock()
-{
-}
-
-NsrSyncNackRsnPEndSockNotSynced::NsrSyncNackRsnPEndSockNotSynced()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-p-end-sock-not-synced")
-{
-
-}
-
-NsrSyncNackRsnPEndSockNotSynced::~NsrSyncNackRsnPEndSockNotSynced()
-{
-}
-
-NsrSyncNackRsnErrAdjAdd::NsrSyncNackRsnErrAdjAdd()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-adj-add")
-{
-
-}
-
-NsrSyncNackRsnErrAdjAdd::~NsrSyncNackRsnErrAdjAdd()
-{
-}
-
-NsrSyncNackRsnErrDhcAdd::NsrSyncNackRsnErrDhcAdd()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-dhc-add")
-{
-
-}
-
-NsrSyncNackRsnErrDhcAdd::~NsrSyncNackRsnErrDhcAdd()
-{
-}
-
-NsrSyncNackRsnEnomem::NsrSyncNackRsnEnomem()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-enomem")
-{
-
-}
-
-NsrSyncNackRsnEnomem::~NsrSyncNackRsnEnomem()
-{
-}
-
-NsrSyncNackRsnErrTpCreate::NsrSyncNackRsnErrTpCreate()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-tp-create")
-{
-
-}
-
-NsrSyncNackRsnErrTpCreate::~NsrSyncNackRsnErrTpCreate()
-{
-}
-
-NsrSyncNackRsnErrPpCreate::NsrSyncNackRsnErrPpCreate()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-pp-create")
-{
-
-}
-
-NsrSyncNackRsnErrPpCreate::~NsrSyncNackRsnErrPpCreate()
-{
-}
-
-NsrSyncNackRsnErrAddrBind::NsrSyncNackRsnErrAddrBind()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-addr-bind")
-{
-
-}
-
-NsrSyncNackRsnErrAddrBind::~NsrSyncNackRsnErrAddrBind()
-{
-}
-
-NsrSyncNackRsnErrRxBadPie::NsrSyncNackRsnErrRxBadPie()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-rx-bad-pie")
-{
-
-}
-
-NsrSyncNackRsnErrRxBadPie::~NsrSyncNackRsnErrRxBadPie()
-{
-}
-
-NsrSyncNackRsnErrRxNotif::NsrSyncNackRsnErrRxNotif()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-rx-notif")
-{
-
-}
-
-NsrSyncNackRsnErrRxNotif::~NsrSyncNackRsnErrRxNotif()
-{
-}
-
-NsrSyncNackRsnErrRxUnexpOpen::NsrSyncNackRsnErrRxUnexpOpen()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-rx-unexp-open")
-{
-
-}
-
-NsrSyncNackRsnErrRxUnexpOpen::~NsrSyncNackRsnErrRxUnexpOpen()
-{
-}
-
-NsrSyncNackRsnErrUnexpPeerDown::NsrSyncNackRsnErrUnexpPeerDown()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-unexp-peer-down")
-{
-
-}
-
-NsrSyncNackRsnErrUnexpPeerDown::~NsrSyncNackRsnErrUnexpPeerDown()
-{
-}
-
-NsrSyncNackRsnErrAppNotFound::NsrSyncNackRsnErrAppNotFound()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-app-not-found")
-{
-
-}
-
-NsrSyncNackRsnErrAppNotFound::~NsrSyncNackRsnErrAppNotFound()
-{
-}
-
-NsrSyncNackRsnErrAppInvalid::NsrSyncNackRsnErrAppInvalid()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-app-invalid")
-{
-
-}
-
-NsrSyncNackRsnErrAppInvalid::~NsrSyncNackRsnErrAppInvalid()
-{
-}
-
-NsrSyncNackRsnNoCtx::NsrSyncNackRsnNoCtx()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-no-ctx")
-{
-
-}
-
-NsrSyncNackRsnNoCtx::~NsrSyncNackRsnNoCtx()
-{
-}
-
-NsrPeerSyncErrNone::NsrPeerSyncErrNone()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-none")
-{
-
-}
-
-NsrPeerSyncErrNone::~NsrPeerSyncErrNone()
-{
-}
-
-NsrPeerSyncErrLdpSyncNack::NsrPeerSyncErrLdpSyncNack()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-ldp-sync-nack")
-{
-
-}
-
-NsrPeerSyncErrLdpSyncNack::~NsrPeerSyncErrLdpSyncNack()
-{
-}
-
-NsrPeerSyncErrSyncPrep::NsrPeerSyncErrSyncPrep()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-sync-prep")
-{
-
-}
-
-NsrPeerSyncErrSyncPrep::~NsrPeerSyncErrSyncPrep()
-{
-}
-
-NsrPeerSyncErrTcpPeer::NsrPeerSyncErrTcpPeer()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-tcp-peer")
-{
-
-}
-
-NsrPeerSyncErrTcpPeer::~NsrPeerSyncErrTcpPeer()
-{
-}
-
-NsrPeerSyncErrTcpGbl::NsrPeerSyncErrTcpGbl()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-tcp-gbl")
-{
-
-}
-
-NsrPeerSyncErrTcpGbl::~NsrPeerSyncErrTcpGbl()
-{
-}
-
-NsrPeerSyncErrLdpPeer::NsrPeerSyncErrLdpPeer()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-ldp-peer")
-{
-
-}
-
-NsrPeerSyncErrLdpPeer::~NsrPeerSyncErrLdpPeer()
-{
-}
-
-NsrPeerSyncErrLdpGbl::NsrPeerSyncErrLdpGbl()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-ldp-gbl")
-{
-
-}
-
-NsrPeerSyncErrLdpGbl::~NsrPeerSyncErrLdpGbl()
+DownNbrReasonDiscHello::~DownNbrReasonDiscHello()
 {
 }
 
@@ -19236,73 +19240,23 @@ NsrPeerSyncErrAppFail::~NsrPeerSyncErrAppFail()
 {
 }
 
-IcpmTypeIccp::IcpmTypeIccp()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:icpm-type-iccp")
+RoutePathLblOwnerBgp::RoutePathLblOwnerBgp()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-bgp")
 {
 
 }
 
-IcpmTypeIccp::~IcpmTypeIccp()
+RoutePathLblOwnerBgp::~RoutePathLblOwnerBgp()
 {
 }
 
-IccpTypeMlacp::IccpTypeMlacp()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:iccp-type-mlacp")
-{
-
-}
-
-IccpTypeMlacp::~IccpTypeMlacp()
-{
-}
-
-LdpNsrPeerSyncStNone::LdpNsrPeerSyncStNone()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-none")
+NsrSyncNackRsnErrAppNotFound::NsrSyncNackRsnErrAppNotFound()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-app-not-found")
 {
 
 }
 
-LdpNsrPeerSyncStNone::~LdpNsrPeerSyncStNone()
-{
-}
-
-LdpNsrPeerSyncStWait::LdpNsrPeerSyncStWait()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-wait")
-{
-
-}
-
-LdpNsrPeerSyncStWait::~LdpNsrPeerSyncStWait()
-{
-}
-
-LdpNsrPeerSyncStReady::LdpNsrPeerSyncStReady()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-ready")
-{
-
-}
-
-LdpNsrPeerSyncStReady::~LdpNsrPeerSyncStReady()
-{
-}
-
-LdpNsrPeerSyncStPrep::LdpNsrPeerSyncStPrep()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-prep")
-{
-
-}
-
-LdpNsrPeerSyncStPrep::~LdpNsrPeerSyncStPrep()
-{
-}
-
-LdpNsrPeerSyncStAppWait::LdpNsrPeerSyncStAppWait()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-app-wait")
-{
-
-}
-
-LdpNsrPeerSyncStAppWait::~LdpNsrPeerSyncStAppWait()
+NsrSyncNackRsnErrAppNotFound::~NsrSyncNackRsnErrAppNotFound()
 {
 }
 
@@ -19316,43 +19270,33 @@ LdpNsrPeerSyncStOper::~LdpNsrPeerSyncStOper()
 {
 }
 
-NsrStatusReady::NsrStatusReady()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status-ready")
+IgpSyncDownReasonNa::IgpSyncDownReasonNa()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-na")
 {
 
 }
 
-NsrStatusReady::~NsrStatusReady()
+IgpSyncDownReasonNa::~IgpSyncDownReasonNa()
 {
 }
 
-NsrStatusNotReady::NsrStatusNotReady()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status-not-ready")
-{
-
-}
-
-NsrStatusNotReady::~NsrStatusNotReady()
-{
-}
-
-NsrStatusDisabled::NsrStatusDisabled()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status-disabled")
+NsrSyncNackRsnNoPEndSock::NsrSyncNackRsnNoPEndSock()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-no-p-end-sock")
 {
 
 }
 
-NsrStatusDisabled::~NsrStatusDisabled()
+NsrSyncNackRsnNoPEndSock::~NsrSyncNackRsnNoPEndSock()
 {
 }
 
-DownNbrReasonNa::DownNbrReasonNa()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:down-nbr-reason-na")
+NsrPeerSyncErrLdpGbl::NsrPeerSyncErrLdpGbl()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-ldp-gbl")
 {
 
 }
 
-DownNbrReasonNa::~DownNbrReasonNa()
+NsrPeerSyncErrLdpGbl::~NsrPeerSyncErrLdpGbl()
 {
 }
 
@@ -19366,173 +19310,13 @@ DownNbrReasonNbrHold::~DownNbrReasonNbrHold()
 {
 }
 
-DownNbrReasonDiscHello::DownNbrReasonDiscHello()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:down-nbr-reason-disc-hello")
+NsrPeerSyncErrTcpGbl::NsrPeerSyncErrTcpGbl()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-tcp-gbl")
 {
 
 }
 
-DownNbrReasonDiscHello::~DownNbrReasonDiscHello()
-{
-}
-
-RoutePathLblOwnerNone::RoutePathLblOwnerNone()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-none")
-{
-
-}
-
-RoutePathLblOwnerNone::~RoutePathLblOwnerNone()
-{
-}
-
-RoutePathLblOwnerLdp::RoutePathLblOwnerLdp()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-ldp")
-{
-
-}
-
-RoutePathLblOwnerLdp::~RoutePathLblOwnerLdp()
-{
-}
-
-RoutePathLblOwnerBgp::RoutePathLblOwnerBgp()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-bgp")
-{
-
-}
-
-RoutePathLblOwnerBgp::~RoutePathLblOwnerBgp()
-{
-}
-
-RoutePathLblOwnerStatic::RoutePathLblOwnerStatic()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-static")
-{
-
-}
-
-RoutePathLblOwnerStatic::~RoutePathLblOwnerStatic()
-{
-}
-
-LabelTypeMpls::LabelTypeMpls()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type-mpls")
-{
-
-}
-
-LabelTypeMpls::~LabelTypeMpls()
-{
-}
-
-LabelTypeUnLabeled::LabelTypeUnLabeled()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type-un-labeled")
-{
-
-}
-
-LabelTypeUnLabeled::~LabelTypeUnLabeled()
-{
-}
-
-LabelTypeUnknown::LabelTypeUnknown()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type-unknown")
-{
-
-}
-
-LabelTypeUnknown::~LabelTypeUnknown()
-{
-}
-
-RoutePathIpNoFlag::RoutePathIpNoFlag()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-no-flag")
-{
-
-}
-
-RoutePathIpNoFlag::~RoutePathIpNoFlag()
-{
-}
-
-RoutePathIpProtected::RoutePathIpProtected()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-protected")
-{
-
-}
-
-RoutePathIpProtected::~RoutePathIpProtected()
-{
-}
-
-RoutePathIpBackup::RoutePathIpBackup()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-backup")
-{
-
-}
-
-RoutePathIpBackup::~RoutePathIpBackup()
-{
-}
-
-RoutePathIpBackupRemote::RoutePathIpBackupRemote()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-backup-remote")
-{
-
-}
-
-RoutePathIpBackupRemote::~RoutePathIpBackupRemote()
-{
-}
-
-RoutePathIpBgpBackup::RoutePathIpBgpBackup()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-bgp-backup")
-{
-
-}
-
-RoutePathIpBgpBackup::~RoutePathIpBgpBackup()
-{
-}
-
-IgpSyncDownReasonNa::IgpSyncDownReasonNa()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-na")
-{
-
-}
-
-IgpSyncDownReasonNa::~IgpSyncDownReasonNa()
-{
-}
-
-IgpSyncDownReasonNoHelloAdj::IgpSyncDownReasonNoHelloAdj()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-no-hello-adj")
-{
-
-}
-
-IgpSyncDownReasonNoHelloAdj::~IgpSyncDownReasonNoHelloAdj()
-{
-}
-
-IgpSyncDownReasonNoPeerSess::IgpSyncDownReasonNoPeerSess()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-no-peer-sess")
-{
-
-}
-
-IgpSyncDownReasonNoPeerSess::~IgpSyncDownReasonNoPeerSess()
-{
-}
-
-IgpSyncDownReasonPeerUpdateNotDone::IgpSyncDownReasonPeerUpdateNotDone()
-     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-peer-update-not-done")
-{
-
-}
-
-IgpSyncDownReasonPeerUpdateNotDone::~IgpSyncDownReasonPeerUpdateNotDone()
+NsrPeerSyncErrTcpGbl::~NsrPeerSyncErrTcpGbl()
 {
 }
 
@@ -19546,6 +19330,326 @@ IgpSyncDownReasonPeerUpdateNotReceived::~IgpSyncDownReasonPeerUpdateNotReceived(
 {
 }
 
+IcpmTypeIccp::IcpmTypeIccp()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:icpm-type-iccp")
+{
+
+}
+
+IcpmTypeIccp::~IcpmTypeIccp()
+{
+}
+
+NsrStatusReady::NsrStatusReady()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status-ready")
+{
+
+}
+
+NsrStatusReady::~NsrStatusReady()
+{
+}
+
+NsrSyncNackRsnErrAdjAdd::NsrSyncNackRsnErrAdjAdd()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-adj-add")
+{
+
+}
+
+NsrSyncNackRsnErrAdjAdd::~NsrSyncNackRsnErrAdjAdd()
+{
+}
+
+NsrSyncNackRsnErrUnexpPeerDown::NsrSyncNackRsnErrUnexpPeerDown()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-unexp-peer-down")
+{
+
+}
+
+NsrSyncNackRsnErrUnexpPeerDown::~NsrSyncNackRsnErrUnexpPeerDown()
+{
+}
+
+NsrSyncNackRsnNone::NsrSyncNackRsnNone()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-none")
+{
+
+}
+
+NsrSyncNackRsnNone::~NsrSyncNackRsnNone()
+{
+}
+
+NsrSyncNackRsnNoCtx::NsrSyncNackRsnNoCtx()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-no-ctx")
+{
+
+}
+
+NsrSyncNackRsnNoCtx::~NsrSyncNackRsnNoCtx()
+{
+}
+
+NsrSyncNackRsnMissingElem::NsrSyncNackRsnMissingElem()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-missing-elem")
+{
+
+}
+
+NsrSyncNackRsnMissingElem::~NsrSyncNackRsnMissingElem()
+{
+}
+
+NsrPeerSyncErrLdpPeer::NsrPeerSyncErrLdpPeer()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-ldp-peer")
+{
+
+}
+
+NsrPeerSyncErrLdpPeer::~NsrPeerSyncErrLdpPeer()
+{
+}
+
+NsrSyncNackRsnErrAppInvalid::NsrSyncNackRsnErrAppInvalid()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-app-invalid")
+{
+
+}
+
+NsrSyncNackRsnErrAppInvalid::~NsrSyncNackRsnErrAppInvalid()
+{
+}
+
+NsrStatusDisabled::NsrStatusDisabled()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status-disabled")
+{
+
+}
+
+NsrStatusDisabled::~NsrStatusDisabled()
+{
+}
+
+RoutePathIpNoFlag::RoutePathIpNoFlag()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-no-flag")
+{
+
+}
+
+RoutePathIpNoFlag::~RoutePathIpNoFlag()
+{
+}
+
+NsrPeerSyncErrTcpPeer::NsrPeerSyncErrTcpPeer()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-tcp-peer")
+{
+
+}
+
+NsrPeerSyncErrTcpPeer::~NsrPeerSyncErrTcpPeer()
+{
+}
+
+NsrPeerSyncErrNone::NsrPeerSyncErrNone()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-none")
+{
+
+}
+
+NsrPeerSyncErrNone::~NsrPeerSyncErrNone()
+{
+}
+
+LdpNsrPeerSyncStNone::LdpNsrPeerSyncStNone()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-none")
+{
+
+}
+
+LdpNsrPeerSyncStNone::~LdpNsrPeerSyncStNone()
+{
+}
+
+NsrSyncNackRsnErrPpCreate::NsrSyncNackRsnErrPpCreate()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-pp-create")
+{
+
+}
+
+NsrSyncNackRsnErrPpCreate::~NsrSyncNackRsnErrPpCreate()
+{
+}
+
+NsrSyncNackRsnErrRxUnexpOpen::NsrSyncNackRsnErrRxUnexpOpen()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-rx-unexp-open")
+{
+
+}
+
+NsrSyncNackRsnErrRxUnexpOpen::~NsrSyncNackRsnErrRxUnexpOpen()
+{
+}
+
+LabelTypeUnknown::LabelTypeUnknown()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type-unknown")
+{
+
+}
+
+LabelTypeUnknown::~LabelTypeUnknown()
+{
+}
+
+IgpSyncDownReasonNoPeerSess::IgpSyncDownReasonNoPeerSess()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-no-peer-sess")
+{
+
+}
+
+IgpSyncDownReasonNoPeerSess::~IgpSyncDownReasonNoPeerSess()
+{
+}
+
+LdpNsrPeerSyncStPrep::LdpNsrPeerSyncStPrep()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-prep")
+{
+
+}
+
+LdpNsrPeerSyncStPrep::~LdpNsrPeerSyncStPrep()
+{
+}
+
+RoutePathLblOwnerStatic::RoutePathLblOwnerStatic()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-static")
+{
+
+}
+
+RoutePathLblOwnerStatic::~RoutePathLblOwnerStatic()
+{
+}
+
+NsrPeerSyncErrLdpSyncNack::NsrPeerSyncErrLdpSyncNack()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-ldp-sync-nack")
+{
+
+}
+
+NsrPeerSyncErrLdpSyncNack::~NsrPeerSyncErrLdpSyncNack()
+{
+}
+
+NsrSyncNackRsnTblIdMismatch::NsrSyncNackRsnTblIdMismatch()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-tbl-id-mismatch")
+{
+
+}
+
+NsrSyncNackRsnTblIdMismatch::~NsrSyncNackRsnTblIdMismatch()
+{
+}
+
+NsrSyncNackRsnErrAddrBind::NsrSyncNackRsnErrAddrBind()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-addr-bind")
+{
+
+}
+
+NsrSyncNackRsnErrAddrBind::~NsrSyncNackRsnErrAddrBind()
+{
+}
+
+RoutePathIpBackup::RoutePathIpBackup()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-backup")
+{
+
+}
+
+RoutePathIpBackup::~RoutePathIpBackup()
+{
+}
+
+LabelTypeMpls::LabelTypeMpls()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type-mpls")
+{
+
+}
+
+LabelTypeMpls::~LabelTypeMpls()
+{
+}
+
+NsrSyncNackRsnErrDhcAdd::NsrSyncNackRsnErrDhcAdd()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-dhc-add")
+{
+
+}
+
+NsrSyncNackRsnErrDhcAdd::~NsrSyncNackRsnErrDhcAdd()
+{
+}
+
+NsrSyncNackRsnErrRxNotif::NsrSyncNackRsnErrRxNotif()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-rx-notif")
+{
+
+}
+
+NsrSyncNackRsnErrRxNotif::~NsrSyncNackRsnErrRxNotif()
+{
+}
+
+RoutePathLblOwnerNone::RoutePathLblOwnerNone()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-none")
+{
+
+}
+
+RoutePathLblOwnerNone::~RoutePathLblOwnerNone()
+{
+}
+
+LdpNsrPeerSyncStWait::LdpNsrPeerSyncStWait()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-wait")
+{
+
+}
+
+LdpNsrPeerSyncStWait::~LdpNsrPeerSyncStWait()
+{
+}
+
+NsrSyncNackRsnErrTpCreate::NsrSyncNackRsnErrTpCreate()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-tp-create")
+{
+
+}
+
+NsrSyncNackRsnErrTpCreate::~NsrSyncNackRsnErrTpCreate()
+{
+}
+
+NsrStatusNotReady::NsrStatusNotReady()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-status-not-ready")
+{
+
+}
+
+NsrStatusNotReady::~NsrStatusNotReady()
+{
+}
+
+NsrSyncNackRsnPEndSockNotSynced::NsrSyncNackRsnPEndSockNotSynced()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-p-end-sock-not-synced")
+{
+
+}
+
+NsrSyncNackRsnPEndSockNotSynced::~NsrSyncNackRsnPEndSockNotSynced()
+{
+}
+
 IgpSyncDownReasonInternal::IgpSyncDownReasonInternal()
      : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-internal")
 {
@@ -19556,17 +19660,189 @@ IgpSyncDownReasonInternal::~IgpSyncDownReasonInternal()
 {
 }
 
-const Enum::YLeaf LoopDetectionType::none {1, "none"};
-const Enum::YLeaf LoopDetectionType::other {2, "other"};
-const Enum::YLeaf LoopDetectionType::hop_count {3, "hop-count"};
-const Enum::YLeaf LoopDetectionType::path_vector {4, "path-vector"};
-const Enum::YLeaf LoopDetectionType::hop_count_and_path_vector {5, "hop-count-and-path-vector"};
+NsrSyncNackRsnPpExists::NsrSyncNackRsnPpExists()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-pp-exists")
+{
+
+}
+
+NsrSyncNackRsnPpExists::~NsrSyncNackRsnPpExists()
+{
+}
+
+LdpNsrPeerSyncStReady::LdpNsrPeerSyncStReady()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-ready")
+{
+
+}
+
+LdpNsrPeerSyncStReady::~LdpNsrPeerSyncStReady()
+{
+}
+
+IgpSyncDownReasonNoHelloAdj::IgpSyncDownReasonNoHelloAdj()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-no-hello-adj")
+{
+
+}
+
+IgpSyncDownReasonNoHelloAdj::~IgpSyncDownReasonNoHelloAdj()
+{
+}
+
+LabelTypeUnLabeled::LabelTypeUnLabeled()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:label-type-un-labeled")
+{
+
+}
+
+LabelTypeUnLabeled::~LabelTypeUnLabeled()
+{
+}
+
+IccpTypeMlacp::IccpTypeMlacp()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:iccp-type-mlacp")
+{
+
+}
+
+IccpTypeMlacp::~IccpTypeMlacp()
+{
+}
+
+NsrPeerSyncErrSyncPrep::NsrPeerSyncErrSyncPrep()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-peer-sync-err-sync-prep")
+{
+
+}
+
+NsrPeerSyncErrSyncPrep::~NsrPeerSyncErrSyncPrep()
+{
+}
+
+LdpNsrPeerSyncStAppWait::LdpNsrPeerSyncStAppWait()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:ldp-nsr-peer-sync-st-app-wait")
+{
+
+}
+
+LdpNsrPeerSyncStAppWait::~LdpNsrPeerSyncStAppWait()
+{
+}
+
+RoutePathIpBgpBackup::RoutePathIpBgpBackup()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-bgp-backup")
+{
+
+}
+
+RoutePathIpBgpBackup::~RoutePathIpBgpBackup()
+{
+}
+
+DownNbrReasonNa::DownNbrReasonNa()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:down-nbr-reason-na")
+{
+
+}
+
+DownNbrReasonNa::~DownNbrReasonNa()
+{
+}
+
+NsrSyncNackRsnErrRxBadPie::NsrSyncNackRsnErrRxBadPie()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-err-rx-bad-pie")
+{
+
+}
+
+NsrSyncNackRsnErrRxBadPie::~NsrSyncNackRsnErrRxBadPie()
+{
+}
+
+IgpSyncDownReasonPeerUpdateNotDone::IgpSyncDownReasonPeerUpdateNotDone()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:igp-sync-down-reason-peer-update-not-done")
+{
+
+}
+
+IgpSyncDownReasonPeerUpdateNotDone::~IgpSyncDownReasonPeerUpdateNotDone()
+{
+}
+
+NsrSyncNackRsnEnomem::NsrSyncNackRsnEnomem()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:nsr-sync-nack-rsn-enomem")
+{
+
+}
+
+NsrSyncNackRsnEnomem::~NsrSyncNackRsnEnomem()
+{
+}
+
+RoutePathIpProtected::RoutePathIpProtected()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-protected")
+{
+
+}
+
+RoutePathIpProtected::~RoutePathIpProtected()
+{
+}
+
+RoutePathIpBackupRemote::RoutePathIpBackupRemote()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-ip-backup-remote")
+{
+
+}
+
+RoutePathIpBackupRemote::~RoutePathIpBackupRemote()
+{
+}
+
+RoutePathLblOwnerLdp::RoutePathLblOwnerLdp()
+     : Identity("http://cisco.com/ns/yang/Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp", "Cisco-IOS-XE-mpls-ldp:route-path-lbl-owner-ldp")
+{
+
+}
+
+RoutePathLblOwnerLdp::~RoutePathLblOwnerLdp()
+{
+}
 
 const Enum::YLeaf SessionState::nonexistent {1, "nonexistent"};
 const Enum::YLeaf SessionState::initialized {2, "initialized"};
 const Enum::YLeaf SessionState::openrec {3, "openrec"};
 const Enum::YLeaf SessionState::opensent {4, "opensent"};
 const Enum::YLeaf SessionState::operational {5, "operational"};
+
+const Enum::YLeaf LoopDetectionType::none {1, "none"};
+const Enum::YLeaf LoopDetectionType::other {2, "other"};
+const Enum::YLeaf LoopDetectionType::hop_count {3, "hop-count"};
+const Enum::YLeaf LoopDetectionType::path_vector {4, "path-vector"};
+const Enum::YLeaf LoopDetectionType::hop_count_and_path_vector {5, "hop-count-and-path-vector"};
+
+const Enum::YLeaf AdvLabelType::use_lable {1, "use-lable"};
+const Enum::YLeaf AdvLabelType::use_explicit {2, "use-explicit"};
+const Enum::YLeaf AdvLabelType::use_implicit {3, "use-implicit"};
+const Enum::YLeaf AdvLabelType::none {4, "none"};
+
+const Enum::YLeaf AfId::ldp_af_id_none {0, "ldp-af-id-none"};
+const Enum::YLeaf AfId::ldp_af_id_ipv4 {1, "ldp-af-id-ipv4"};
+const Enum::YLeaf AfId::ldp_af_id_ipv6 {2, "ldp-af-id-ipv6"};
+
+const Enum::YLeaf IgpSyncState::isync_ready {0, "isync-ready"};
+const Enum::YLeaf IgpSyncState::isync_not_ready {1, "isync-not-ready"};
+const Enum::YLeaf IgpSyncState::isync_deferred {2, "isync-deferred"};
+
+const Enum::YLeaf Af::ldp_af_none {0, "ldp-af-none"};
+const Enum::YLeaf Af::ldp_af_ipv4 {1, "ldp-af-ipv4"};
+const Enum::YLeaf Af::ldp_af_ipv6 {2, "ldp-af-ipv6"};
+const Enum::YLeaf Af::ldp_af_ipv4_ipv6 {3, "ldp-af-ipv4-ipv6"};
+
+const Enum::YLeaf NbrBgpAdvtState::not_applicable {0, "not-applicable"};
+const Enum::YLeaf NbrBgpAdvtState::permit {1, "permit"};
+const Enum::YLeaf NbrBgpAdvtState::deny {2, "deny"};
 
 const Enum::YLeaf AdjState::nonex {0, "nonex"};
 const Enum::YLeaf AdjState::unsol_op_pdg {1, "unsol-op-pdg"};
@@ -19575,14 +19851,14 @@ const Enum::YLeaf AdjState::estab {3, "estab"};
 const Enum::YLeaf AdjState::lib_exp_wait {4, "lib-exp-wait"};
 const Enum::YLeaf AdjState::destroyed {5, "destroyed"};
 
-const Enum::YLeaf AdvLabelType::use_lable {1, "use-lable"};
-const Enum::YLeaf AdvLabelType::use_explicit {2, "use-explicit"};
-const Enum::YLeaf AdvLabelType::use_implicit {3, "use-implicit"};
-const Enum::YLeaf AdvLabelType::none {4, "none"};
+const Enum::YLeaf LocalLabelState::local_label_state_none {1, "local-label-state-none"};
+const Enum::YLeaf LocalLabelState::local_label_state_assigned {2, "local-label-state-assigned"};
+const Enum::YLeaf LocalLabelState::local_label_state_withdrawn {3, "local-label-state-withdrawn"};
 
-const Enum::YLeaf NbrBgpAdvtState::not_applicable {0, "not-applicable"};
-const Enum::YLeaf NbrBgpAdvtState::permit {1, "permit"};
-const Enum::YLeaf NbrBgpAdvtState::deny {2, "deny"};
+const Enum::YLeaf DhcState::none {0, "none"};
+const Enum::YLeaf DhcState::dhc_active {1, "dhc-active"};
+const Enum::YLeaf DhcState::dhc_passive {2, "dhc-passive"};
+const Enum::YLeaf DhcState::dhc_active_passive {3, "dhc-active-passive"};
 
 const Enum::YLeaf IccpState::nonexistent {1, "nonexistent"};
 const Enum::YLeaf IccpState::initialized {2, "initialized"};
@@ -19590,28 +19866,6 @@ const Enum::YLeaf IccpState::capsent {3, "capsent"};
 const Enum::YLeaf IccpState::caprec {4, "caprec"};
 const Enum::YLeaf IccpState::connecting {5, "connecting"};
 const Enum::YLeaf IccpState::operational {6, "operational"};
-
-const Enum::YLeaf DhcState::none {0, "none"};
-const Enum::YLeaf DhcState::dhc_active {1, "dhc-active"};
-const Enum::YLeaf DhcState::dhc_passive {2, "dhc-passive"};
-const Enum::YLeaf DhcState::dhc_active_passive {3, "dhc-active-passive"};
-
-const Enum::YLeaf IgpSyncState::isync_ready {0, "isync-ready"};
-const Enum::YLeaf IgpSyncState::isync_not_ready {1, "isync-not-ready"};
-const Enum::YLeaf IgpSyncState::isync_deferred {2, "isync-deferred"};
-
-const Enum::YLeaf LocalLabelState::local_label_state_none {1, "local-label-state-none"};
-const Enum::YLeaf LocalLabelState::local_label_state_assigned {2, "local-label-state-assigned"};
-const Enum::YLeaf LocalLabelState::local_label_state_withdrawn {3, "local-label-state-withdrawn"};
-
-const Enum::YLeaf Af::ldp_af_none {0, "ldp-af-none"};
-const Enum::YLeaf Af::ldp_af_ipv4 {1, "ldp-af-ipv4"};
-const Enum::YLeaf Af::ldp_af_ipv6 {2, "ldp-af-ipv6"};
-const Enum::YLeaf Af::ldp_af_ipv4_ipv6 {3, "ldp-af-ipv4-ipv6"};
-
-const Enum::YLeaf AfId::ldp_af_id_none {0, "ldp-af-id-none"};
-const Enum::YLeaf AfId::ldp_af_id_ipv4 {1, "ldp-af-id-ipv4"};
-const Enum::YLeaf AfId::ldp_af_id_ipv6 {2, "ldp-af-id-ipv6"};
 
 const Enum::YLeaf MplsLdp::MplsLdpState::Neighbors::Neighbor::SessionRole::unknown {1, "unknown"};
 const Enum::YLeaf MplsLdp::MplsLdpState::Neighbors::Neighbor::SessionRole::active {2, "active"};

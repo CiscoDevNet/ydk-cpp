@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_dumper {
 
 Exception::Exception()
+    :
+    choice(this, {"order"})
 {
 
-    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-sysadmin-dumper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "exception"; yang_parent_name = "Cisco-IOS-XR-sysadmin-dumper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Exception::~Exception()
@@ -23,7 +25,8 @@ Exception::~Exception()
 
 bool Exception::has_data() const
 {
-    for (std::size_t index=0; index<choice.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<choice.len(); index++)
     {
         if(choice[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Exception::has_data() const
 
 bool Exception::has_operation() const
 {
-    for (std::size_t index=0; index<choice.size(); index++)
+    for (std::size_t index=0; index<choice.len(); index++)
     {
         if(choice[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Exception::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<Exception::Choice>();
         c->parent = this;
-        choice.push_back(c);
+        choice.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Exception::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : choice)
+    for (auto c : choice.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -132,7 +135,7 @@ Exception::Choice::Choice()
     filepath{YType::str, "filepath"}
 {
 
-    yang_name = "choice"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "choice"; yang_parent_name = "exception"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Exception::Choice::~Choice()
@@ -141,6 +144,7 @@ Exception::Choice::~Choice()
 
 bool Exception::Choice::has_data() const
 {
+    if (is_presence_container) return true;
     return order.is_set
 	|| filepath.is_set;
 }
@@ -162,7 +166,8 @@ std::string Exception::Choice::get_absolute_path() const
 std::string Exception::Choice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "choice" <<"[order='" <<order <<"']";
+    path_buffer << "choice";
+    ADD_KEY_TOKEN(order, "order");
     return path_buffer.str();
 }
 

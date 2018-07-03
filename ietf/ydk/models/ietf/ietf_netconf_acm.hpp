@@ -43,7 +43,7 @@ class Nacm : public ydk::Entity
         class RuleList; //type: Nacm::RuleList
 
         std::shared_ptr<ietf::ietf_netconf_acm::Nacm::Groups> groups;
-        std::vector<std::shared_ptr<ietf::ietf_netconf_acm::Nacm::RuleList> > rule_list;
+        ydk::YList rule_list;
         
 }; // Nacm
 
@@ -67,7 +67,7 @@ class Nacm::Groups : public ydk::Entity
 
         class Group; //type: Nacm::Groups::Group
 
-        std::vector<std::shared_ptr<ietf::ietf_netconf_acm::Nacm::Groups::Group> > group;
+        ydk::YList group;
         
 }; // Nacm::Groups
 
@@ -116,7 +116,7 @@ class Nacm::RuleList : public ydk::Entity
         ydk::YLeafList group; //type: list of  string
         class Rule; //type: Nacm::RuleList::Rule
 
-        std::vector<std::shared_ptr<ietf::ietf_netconf_acm::Nacm::RuleList::Rule> > rule;
+        ydk::YList rule;
         
 }; // Nacm::RuleList
 

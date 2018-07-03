@@ -189,7 +189,7 @@ class Native::Line::Console : public ydk::Entity
 
         ydk::YLeaf first; //type: First
         ydk::YLeaf no_activation_character; //type: boolean
-        ydk::YLeaf activation_character; //type: one of uint8, string
+        ydk::YLeaf activation_character; //type: one of string, uint8
         ydk::YLeaf data_character_bits; //type: uint8
         ydk::YLeaf domain_lookup; //type: empty
         ydk::YLeaf editing; //type: empty
@@ -338,7 +338,7 @@ class Native::Line::Console::AccessClass : public ydk::Entity
 
         class AcccessList; //type: Native::Line::Console::AccessClass::AcccessList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Console::AccessClass::AcccessList> > acccess_list;
+        ydk::YList acccess_list;
         
 }; // Native::Line::Console::AccessClass
 
@@ -768,7 +768,7 @@ class Native::Line::Console::Ipv6::AccessClass : public ydk::Entity
 
         class AccessClass_; //type: Native::Line::Console::Ipv6::AccessClass::AccessClass_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Console::Ipv6::AccessClass::AccessClass_> > access_class;
+        ydk::YList access_class;
         
 }; // Native::Line::Console::Ipv6::AccessClass
 
@@ -1245,7 +1245,7 @@ class Native::Line::Vty : public ydk::Entity
         ydk::YLeaf first; //type: uint16
         ydk::YLeaf last; //type: uint16
         ydk::YLeaf no_activation_character; //type: boolean
-        ydk::YLeaf activation_character; //type: one of uint8, string
+        ydk::YLeaf activation_character; //type: one of string, uint8
         ydk::YLeaf data_character_bits; //type: uint8
         ydk::YLeaf domain_lookup; //type: empty
         ydk::YLeaf editing; //type: empty
@@ -1393,7 +1393,7 @@ class Native::Line::Vty::AccessClass : public ydk::Entity
 
         class AcccessList; //type: Native::Line::Vty::AccessClass::AcccessList
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Vty::AccessClass::AcccessList> > acccess_list;
+        ydk::YList acccess_list;
         
 }; // Native::Line::Vty::AccessClass
 
@@ -1823,7 +1823,7 @@ class Native::Line::Vty::Ipv6::AccessClass : public ydk::Entity
 
         class AccessClass_; //type: Native::Line::Vty::Ipv6::AccessClass::AccessClass_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Line::Vty::Ipv6::AccessClass::AccessClass_> > access_class;
+        ydk::YList access_class;
         
 }; // Native::Line::Vty::Ipv6::AccessClass
 
@@ -2319,13 +2319,13 @@ class Native::Ntp : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::AccessGroup> access_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Allow> allow;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::AuthenticationKey> > authentication_key;
+        ydk::YList authentication_key;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Master> master; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Panic> panic;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server> server;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Source> source;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::TrustedKey> > trusted_key;
+        ydk::YList trusted_key;
         
 }; // Native::Ntp
 
@@ -2861,10 +2861,10 @@ class Native::Ntp::Peer : public ydk::Entity
         class Ipv6; //type: Native::Ntp::Peer::Ipv6
         class Vrf; //type: Native::Ntp::Peer::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer::ServerList> > server_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer::Ip> > ip;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer::Ipv6> > ipv6;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer::Vrf> > vrf;
+        ydk::YList server_list;
+        ydk::YList ip;
+        ydk::YList ipv6;
+        ydk::YList vrf;
         
 }; // Native::Ntp::Peer
 
@@ -2981,9 +2981,9 @@ class Native::Ntp::Peer::Vrf : public ydk::Entity
         class Ip; //type: Native::Ntp::Peer::Vrf::Ip
         class Ipv6; //type: Native::Ntp::Peer::Vrf::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer::Vrf::ServerList> > server_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer::Vrf::Ip> > ip;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Peer::Vrf::Ipv6> > ipv6;
+        ydk::YList server_list;
+        ydk::YList ip;
+        ydk::YList ipv6;
         
 }; // Native::Ntp::Peer::Vrf
 
@@ -3097,10 +3097,10 @@ class Native::Ntp::Server : public ydk::Entity
         class Ipv6; //type: Native::Ntp::Server::Ipv6
         class Vrf; //type: Native::Ntp::Server::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server::ServerList> > server_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server::Ip> > ip;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server::Ipv6> > ipv6;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server::Vrf> > vrf;
+        ydk::YList server_list;
+        ydk::YList ip;
+        ydk::YList ipv6;
+        ydk::YList vrf;
         
 }; // Native::Ntp::Server
 
@@ -3217,9 +3217,9 @@ class Native::Ntp::Server::Vrf : public ydk::Entity
         class Ip; //type: Native::Ntp::Server::Vrf::Ip
         class Ipv6; //type: Native::Ntp::Server::Vrf::Ipv6
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server::Vrf::ServerList> > server_list;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server::Vrf::Ip> > ip;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ntp::Server::Vrf::Ipv6> > ipv6;
+        ydk::YList server_list;
+        ydk::YList ip;
+        ydk::YList ipv6;
         
 }; // Native::Ntp::Server::Vrf
 
@@ -3647,7 +3647,7 @@ class Native::Wsma::Profile : public ydk::Entity
 
         class Listener; //type: Native::Wsma::Profile::Listener
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Wsma::Profile::Listener> > listener;
+        ydk::YList listener;
         
 }; // Native::Wsma::Profile
 
@@ -3722,10 +3722,10 @@ class Native::Event::Manager : public ydk::Entity
         class Session; //type: Native::Event::Manager::Session
         class Applet; //type: Native::Event::Manager::Applet
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Environment> > environment;
+        ydk::YList environment;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Directory> directory;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Session> session;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Event::Manager::Applet> > applet;
+        ydk::YList applet;
         
 }; // Native::Event::Manager
 

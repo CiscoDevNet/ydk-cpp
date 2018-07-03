@@ -12,9 +12,11 @@ namespace openconfig {
 namespace openconfig_interfaces {
 
 Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "openconfig-interfaces"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "openconfig-interfaces"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Interfaces::~Interfaces()
@@ -23,7 +25,8 @@ Interfaces::~Interfaces()
 
 bool Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Interfaces::has_data() const
 
 bool Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,15 +132,15 @@ bool Interfaces::has_leaf_or_child_of_name(const std::string & name) const
 Interfaces::Interface::Interface()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Config>())
-	,state(std::make_shared<Interfaces::Interface::State>())
-	,hold_time(std::make_shared<Interfaces::Interface::HoldTime>())
-	,subinterfaces(std::make_shared<Interfaces::Interface::Subinterfaces>())
-	,ethernet(std::make_shared<Interfaces::Interface::Ethernet>())
-	,aggregation(std::make_shared<Interfaces::Interface::Aggregation>())
-	,routed_vlan(std::make_shared<Interfaces::Interface::RoutedVlan>())
-	,sonet(std::make_shared<Interfaces::Interface::Sonet>())
+    , state(std::make_shared<Interfaces::Interface::State>())
+    , hold_time(std::make_shared<Interfaces::Interface::HoldTime>())
+    , subinterfaces(std::make_shared<Interfaces::Interface::Subinterfaces>())
+    , ethernet(std::make_shared<Interfaces::Interface::Ethernet>())
+    , aggregation(std::make_shared<Interfaces::Interface::Aggregation>())
+    , routed_vlan(std::make_shared<Interfaces::Interface::RoutedVlan>())
+    , sonet(std::make_shared<Interfaces::Interface::Sonet>())
 {
     config->parent = this;
     state->parent = this;
@@ -148,7 +151,7 @@ Interfaces::Interface::Interface()
     routed_vlan->parent = this;
     sonet->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::Interface::~Interface()
@@ -157,6 +160,7 @@ Interfaces::Interface::~Interface()
 
 bool Interfaces::Interface::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -192,7 +196,8 @@ std::string Interfaces::Interface::get_absolute_path() const
 std::string Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -364,7 +369,7 @@ Interfaces::Interface::Config::Config()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Config::~Config()
@@ -373,6 +378,7 @@ Interfaces::Interface::Config::~Config()
 
 bool Interfaces::Interface::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| mtu.is_set
 	|| name.is_set
@@ -500,12 +506,12 @@ Interfaces::Interface::State::State()
     oper_status{YType::enumeration, "oper-status"},
     last_change{YType::uint32, "last-change"},
     hardware_port{YType::str, "openconfig-platform:hardware-port"}
-    	,
+        ,
     counters(std::make_shared<Interfaces::Interface::State::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::State::~State()
@@ -514,6 +520,7 @@ Interfaces::Interface::State::~State()
 
 bool Interfaces::Interface::State::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| mtu.is_set
 	|| name.is_set
@@ -728,7 +735,7 @@ Interfaces::Interface::State::Counters::Counters()
     last_clear{YType::str, "last-clear"}
 {
 
-    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::State::Counters::~Counters()
@@ -737,6 +744,7 @@ Interfaces::Interface::State::Counters::~Counters()
 
 bool Interfaces::Interface::State::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return in_octets.is_set
 	|| in_unicast_pkts.is_set
 	|| in_broadcast_pkts.is_set
@@ -972,12 +980,12 @@ bool Interfaces::Interface::State::Counters::has_leaf_or_child_of_name(const std
 Interfaces::Interface::HoldTime::HoldTime()
     :
     config(std::make_shared<Interfaces::Interface::HoldTime::Config>())
-	,state(std::make_shared<Interfaces::Interface::HoldTime::State>())
+    , state(std::make_shared<Interfaces::Interface::HoldTime::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "hold-time"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hold-time"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::HoldTime::~HoldTime()
@@ -986,6 +994,7 @@ Interfaces::Interface::HoldTime::~HoldTime()
 
 bool Interfaces::Interface::HoldTime::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -1074,7 +1083,7 @@ Interfaces::Interface::HoldTime::Config::Config()
     down{YType::uint32, "down"}
 {
 
-    yang_name = "config"; yang_parent_name = "hold-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "hold-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::HoldTime::Config::~Config()
@@ -1083,6 +1092,7 @@ Interfaces::Interface::HoldTime::Config::~Config()
 
 bool Interfaces::Interface::HoldTime::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return up.is_set
 	|| down.is_set;
 }
@@ -1165,7 +1175,7 @@ Interfaces::Interface::HoldTime::State::State()
     down{YType::uint32, "down"}
 {
 
-    yang_name = "state"; yang_parent_name = "hold-time"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "hold-time"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::HoldTime::State::~State()
@@ -1174,6 +1184,7 @@ Interfaces::Interface::HoldTime::State::~State()
 
 bool Interfaces::Interface::HoldTime::State::has_data() const
 {
+    if (is_presence_container) return true;
     return up.is_set
 	|| down.is_set;
 }
@@ -1251,9 +1262,11 @@ bool Interfaces::Interface::HoldTime::State::has_leaf_or_child_of_name(const std
 }
 
 Interfaces::Interface::Subinterfaces::Subinterfaces()
+    :
+    subinterface(this, {"index_"})
 {
 
-    yang_name = "subinterfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subinterfaces"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::~Subinterfaces()
@@ -1262,7 +1275,8 @@ Interfaces::Interface::Subinterfaces::~Subinterfaces()
 
 bool Interfaces::Interface::Subinterfaces::has_data() const
 {
-    for (std::size_t index=0; index<subinterface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subinterface.len(); index++)
     {
         if(subinterface[index]->has_data())
             return true;
@@ -1272,7 +1286,7 @@ bool Interfaces::Interface::Subinterfaces::has_data() const
 
 bool Interfaces::Interface::Subinterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<subinterface.size(); index++)
+    for (std::size_t index=0; index<subinterface.len(); index++)
     {
         if(subinterface[index]->has_operation())
             return true;
@@ -1302,7 +1316,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::get_child_by_name(
     {
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface>();
         c->parent = this;
-        subinterface.push_back(c);
+        subinterface.append(c);
         return c;
     }
 
@@ -1314,7 +1328,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subinterface)
+    for (auto c : subinterface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1343,12 +1357,12 @@ bool Interfaces::Interface::Subinterfaces::has_leaf_or_child_of_name(const std::
 Interfaces::Interface::Subinterfaces::Subinterface::Subinterface()
     :
     index_{YType::str, "index"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::State>())
-	,vlan(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Vlan>())
-	,ipv4(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4>())
-	,ipv6(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::State>())
+    , vlan(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Vlan>())
+    , ipv4(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4>())
+    , ipv6(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6>())
 {
     config->parent = this;
     state->parent = this;
@@ -1356,7 +1370,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Subinterface()
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "subinterface"; yang_parent_name = "subinterfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subinterface"; yang_parent_name = "subinterfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::~Subinterface()
@@ -1365,6 +1379,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::~Subinterface()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -1387,7 +1402,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::has_operation() const
 std::string Interfaces::Interface::Subinterfaces::Subinterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subinterface" <<"[index='" <<index_ <<"']";
+    path_buffer << "subinterface";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -1516,7 +1532,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Config::Config()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Config::~Config()
@@ -1525,6 +1541,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Config::~Config()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| name.is_set
 	|| description.is_set
@@ -1637,12 +1654,12 @@ Interfaces::Interface::Subinterfaces::Subinterface::State::State()
     admin_status{YType::enumeration, "admin-status"},
     oper_status{YType::enumeration, "oper-status"},
     last_change{YType::uint32, "last-change"}
-    	,
+        ,
     counters(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::State::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "state"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::State::~State()
@@ -1651,6 +1668,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::State::~State()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::State::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| name.is_set
 	|| description.is_set
@@ -1839,7 +1857,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::Counters()
     last_clear{YType::str, "last-clear"}
 {
 
-    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::~Counters()
@@ -1848,6 +1866,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::~Counters()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return in_octets.is_set
 	|| in_unicast_pkts.is_set
 	|| in_broadcast_pkts.is_set
@@ -2083,12 +2102,12 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::State::Counters::has_le
 Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Vlan()
     :
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Vlan::~Vlan()
@@ -2097,6 +2116,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Vlan::~Vlan()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -2184,7 +2204,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::Config()
     vlan_id{YType::str, "vlan-id"}
 {
 
-    yang_name = "config"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::~Config()
@@ -2193,6 +2213,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::~Config()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Vlan::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -2261,7 +2282,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::State()
     vlan_id{YType::str, "vlan-id"}
 {
 
-    yang_name = "state"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::~State()
@@ -2270,6 +2291,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::~State()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_id.is_set;
 }
 
@@ -2336,10 +2358,10 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Vlan::State::has_leaf_o
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Ipv4()
     :
     addresses(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses>())
-	,neighbors(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors>())
-	,unnumbered(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered>())
-	,config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State>())
+    , neighbors(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors>())
+    , unnumbered(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered>())
+    , config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State>())
 {
     addresses->parent = this;
     neighbors->parent = this;
@@ -2347,7 +2369,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Ipv4()
     config->parent = this;
     state->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::~Ipv4()
@@ -2356,6 +2378,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::~Ipv4()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (addresses !=  nullptr && addresses->has_data())
 	|| (neighbors !=  nullptr && neighbors->has_data())
 	|| (unnumbered !=  nullptr && unnumbered->has_data())
@@ -2487,9 +2510,11 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::has_leaf_or_child
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addresses()
+    :
+    address(this, {"ip"})
 {
 
-    yang_name = "addresses"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::~Addresses()
@@ -2498,7 +2523,8 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::~Addresses(
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -2508,7 +2534,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::has_da
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -2538,7 +2564,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     {
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -2550,7 +2576,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2579,16 +2605,16 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::has_le
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Address()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State>())
-	,vrrp(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State>())
+    , vrrp(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp>())
 {
     config->parent = this;
     state->parent = this;
     vrrp->parent = this;
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::~Address()
@@ -2597,6 +2623,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::~A
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -2615,7 +2642,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addres
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -2714,7 +2742,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Co
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::~Config()
@@ -2723,6 +2751,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Co
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set;
 }
@@ -2806,7 +2835,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::St
     origin{YType::enumeration, "origin"}
 {
 
-    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::~State()
@@ -2815,6 +2844,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::St
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set
 	|| origin.is_set;
@@ -2905,9 +2935,11 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addres
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::Vrrp()
+    :
+    vrrp_group(this, {"virtual_router_id"})
 {
 
-    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::~Vrrp()
@@ -2916,7 +2948,8 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::has_data() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_data())
             return true;
@@ -2926,7 +2959,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addres
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::has_operation() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_operation())
             return true;
@@ -2956,7 +2989,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     {
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
-        vrrp_group.push_back(c);
+        vrrp_group.append(c);
         return c;
     }
 
@@ -2968,7 +3001,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrrp_group)
+    for (auto c : vrrp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2997,16 +3030,16 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addres
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::VrrpGroup()
     :
     virtual_router_id{YType::str, "virtual-router-id"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State>())
-	,interface_tracking(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State>())
+    , interface_tracking(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
 {
     config->parent = this;
     state->parent = this;
     interface_tracking->parent = this;
 
-    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::~VrrpGroup()
@@ -3015,6 +3048,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_router_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -3033,7 +3067,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addres
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrrp-group" <<"[virtual-router-id='" <<virtual_router_id <<"']";
+    path_buffer << "vrrp-group";
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
     return path_buffer.str();
 }
 
@@ -3137,7 +3172,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
     advertisement_interval{YType::uint16, "advertisement-interval"}
 {
 
-    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::~Config()
@@ -3146,6 +3181,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -3307,7 +3343,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
     current_priority{YType::uint8, "current-priority"}
 {
 
-    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::~State()
@@ -3316,6 +3352,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -3481,12 +3518,12 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addres
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::InterfaceTracking()
     :
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::~InterfaceTracking()
@@ -3495,6 +3532,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -3583,7 +3621,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::~Config()
@@ -3592,6 +3630,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -3674,7 +3713,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::~State()
@@ -3683,6 +3722,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -3760,9 +3800,11 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Addresses::Addres
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbors()
+    :
+    neighbor(this, {"ip"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::~Neighbors()
@@ -3771,7 +3813,8 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::~Neighbors(
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -3781,7 +3824,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::has_da
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -3811,7 +3854,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv4
     {
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -3823,7 +3866,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3852,14 +3895,14 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::has_le
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Neighbor()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::~Neighbor()
@@ -3868,6 +3911,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::~
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -3884,7 +3928,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighb
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -3969,7 +4014,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::C
     link_layer_address{YType::str, "link-layer-address"}
 {
 
-    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::~Config()
@@ -3978,6 +4023,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::C
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set;
 }
@@ -4061,7 +4107,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::S
     origin{YType::enumeration, "origin"}
 {
 
-    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::~State()
@@ -4070,6 +4116,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::S
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighbor::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set
 	|| origin.is_set;
@@ -4162,14 +4209,14 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Neighbors::Neighb
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Unnumbered()
     :
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State>())
-	,interface_ref(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State>())
+    , interface_ref(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef>())
 {
     config->parent = this;
     state->parent = this;
     interface_ref->parent = this;
 
-    yang_name = "unnumbered"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unnumbered"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::~Unnumbered()
@@ -4178,6 +4225,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::~Unnumbere
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (interface_ref !=  nullptr && interface_ref->has_data());
@@ -4281,7 +4329,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::Co
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::~Config()
@@ -4290,6 +4338,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::~C
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -4358,7 +4407,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::Sta
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::~State()
@@ -4367,6 +4416,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::~St
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -4433,12 +4483,12 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::State
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::InterfaceRef()
     :
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::~InterfaceRef()
@@ -4447,6 +4497,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceR
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -4535,7 +4586,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceR
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::~Config()
@@ -4544,6 +4595,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceR
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -4626,7 +4678,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceR
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::~State()
@@ -4635,6 +4687,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceR
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Unnumbered::InterfaceRef::State::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -4717,7 +4770,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::Config()
     mtu{YType::uint16, "mtu"}
 {
 
-    yang_name = "config"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::~Config()
@@ -4726,6 +4779,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::~Config()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set;
 }
@@ -4808,7 +4862,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::State()
     mtu{YType::uint16, "mtu"}
 {
 
-    yang_name = "state"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::~State()
@@ -4817,6 +4871,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::~State()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set;
 }
@@ -4896,20 +4951,18 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv4::State::has_leaf_o
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Ipv6()
     :
     addresses(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses>())
-	,neighbors(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors>())
-	,unnumbered(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered>())
-	,config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State>())
-	,autoconf(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf>())
+    , neighbors(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors>())
+    , unnumbered(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered>())
+    , config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State>())
 {
     addresses->parent = this;
     neighbors->parent = this;
     unnumbered->parent = this;
     config->parent = this;
     state->parent = this;
-    autoconf->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "subinterface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::~Ipv6()
@@ -4918,12 +4971,12 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::~Ipv6()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (addresses !=  nullptr && addresses->has_data())
 	|| (neighbors !=  nullptr && neighbors->has_data())
 	|| (unnumbered !=  nullptr && unnumbered->has_data())
 	|| (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data())
-	|| (autoconf !=  nullptr && autoconf->has_data());
+	|| (state !=  nullptr && state->has_data());
 }
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_operation() const
@@ -4933,8 +4986,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_operation() c
 	|| (neighbors !=  nullptr && neighbors->has_operation())
 	|| (unnumbered !=  nullptr && unnumbered->has_operation())
 	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation())
-	|| (autoconf !=  nullptr && autoconf->has_operation());
+	|| (state !=  nullptr && state->has_operation());
 }
 
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::get_segment_path() const
@@ -5000,15 +5052,6 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
         return state;
     }
 
-    if(child_yang_name == "openconfig-if-ip-ext:autoconf")
-    {
-        if(autoconf == nullptr)
-        {
-            autoconf = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf>();
-        }
-        return autoconf;
-    }
-
     return nullptr;
 }
 
@@ -5041,11 +5084,6 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
         children["state"] = state;
     }
 
-    if(autoconf != nullptr)
-    {
-        children["openconfig-if-ip-ext:autoconf"] = autoconf;
-    }
-
     return children;
 }
 
@@ -5059,15 +5097,17 @@ void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::set_filter(const 
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addresses" || name == "neighbors" || name == "unnumbered" || name == "config" || name == "state" || name == "autoconf")
+    if(name == "addresses" || name == "neighbors" || name == "unnumbered" || name == "config" || name == "state")
         return true;
     return false;
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addresses()
+    :
+    address(this, {"ip"})
 {
 
-    yang_name = "addresses"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::~Addresses()
@@ -5076,7 +5116,8 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::~Addresses(
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -5086,7 +5127,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::has_da
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -5116,7 +5157,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     {
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -5128,7 +5169,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5157,16 +5198,16 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::has_le
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Address()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State>())
-	,vrrp(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State>())
+    , vrrp(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp>())
 {
     config->parent = this;
     state->parent = this;
     vrrp->parent = this;
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::~Address()
@@ -5175,6 +5216,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::~A
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -5193,7 +5235,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addres
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -5292,7 +5335,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Co
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::~Config()
@@ -5301,6 +5344,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Co
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set;
 }
@@ -5385,7 +5429,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::St
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::~State()
@@ -5394,6 +5438,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::St
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set
 	|| origin.is_set
@@ -5497,9 +5542,11 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addres
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::Vrrp()
+    :
+    vrrp_group(this, {"virtual_router_id"})
 {
 
-    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::~Vrrp()
@@ -5508,7 +5555,8 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::has_data() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_data())
             return true;
@@ -5518,7 +5566,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addres
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::has_operation() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_operation())
             return true;
@@ -5548,7 +5596,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     {
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
-        vrrp_group.push_back(c);
+        vrrp_group.append(c);
         return c;
     }
 
@@ -5560,7 +5608,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrrp_group)
+    for (auto c : vrrp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5589,16 +5637,16 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addres
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::VrrpGroup()
     :
     virtual_router_id{YType::str, "virtual-router-id"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State>())
-	,interface_tracking(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State>())
+    , interface_tracking(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
 {
     config->parent = this;
     state->parent = this;
     interface_tracking->parent = this;
 
-    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::~VrrpGroup()
@@ -5607,6 +5655,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_router_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -5625,7 +5674,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addres
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrrp-group" <<"[virtual-router-id='" <<virtual_router_id <<"']";
+    path_buffer << "vrrp-group";
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
     return path_buffer.str();
 }
 
@@ -5730,7 +5780,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
     virtual_link_local{YType::str, "virtual-link-local"}
 {
 
-    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::~Config()
@@ -5739,6 +5789,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -5914,7 +5965,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
     virtual_link_local{YType::str, "virtual-link-local"}
 {
 
-    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::~State()
@@ -5923,6 +5974,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -6101,12 +6153,12 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addres
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::InterfaceTracking()
     :
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::~InterfaceTracking()
@@ -6115,6 +6167,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -6203,7 +6256,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::~Config()
@@ -6212,6 +6265,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -6294,7 +6348,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::~State()
@@ -6303,6 +6357,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vr
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -6380,9 +6435,11 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Addresses::Addres
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbors()
+    :
+    neighbor(this, {"ip"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::~Neighbors()
@@ -6391,7 +6448,8 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::~Neighbors(
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -6401,7 +6459,7 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::has_da
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -6431,7 +6489,7 @@ std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6
     {
         auto c = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -6443,7 +6501,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfa
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6472,14 +6530,14 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::has_le
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Neighbor()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::~Neighbor()
@@ -6488,6 +6546,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::~
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -6504,7 +6563,8 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighb
 std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -6589,7 +6649,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::C
     link_layer_address{YType::str, "link-layer-address"}
 {
 
-    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::~Config()
@@ -6598,6 +6658,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::C
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set;
 }
@@ -6683,7 +6744,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::S
     neighbor_state{YType::enumeration, "neighbor-state"}
 {
 
-    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::~State()
@@ -6692,6 +6753,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::S
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighbor::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set
 	|| origin.is_set
@@ -6810,14 +6872,14 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Neighbors::Neighb
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Unnumbered()
     :
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State>())
-	,interface_ref(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State>())
+    , interface_ref(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef>())
 {
     config->parent = this;
     state->parent = this;
     interface_ref->parent = this;
 
-    yang_name = "unnumbered"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unnumbered"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::~Unnumbered()
@@ -6826,6 +6888,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::~Unnumbere
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (interface_ref !=  nullptr && interface_ref->has_data());
@@ -6929,7 +6992,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::Co
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::~Config()
@@ -6938,6 +7001,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::~C
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -7006,7 +7070,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::Sta
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::~State()
@@ -7015,6 +7079,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::~St
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -7081,12 +7146,12 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::State
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::InterfaceRef()
     :
     config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State>())
+    , state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::~InterfaceRef()
@@ -7095,6 +7160,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceR
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -7183,7 +7249,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceR
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::~Config()
@@ -7192,6 +7258,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceR
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -7274,7 +7341,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceR
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::~State()
@@ -7283,6 +7350,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceR
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Unnumbered::InterfaceRef::State::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -7366,7 +7434,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::Config()
     dup_addr_detect_transmits{YType::uint32, "dup-addr-detect-transmits"}
 {
 
-    yang_name = "config"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::~Config()
@@ -7375,6 +7443,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::~Config()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set
 	|| dup_addr_detect_transmits.is_set;
@@ -7471,7 +7540,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::State()
     dup_addr_detect_transmits{YType::uint32, "dup-addr-detect-transmits"}
 {
 
-    yang_name = "state"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::~State()
@@ -7480,6 +7549,7 @@ Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::~State()
 
 bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set
 	|| dup_addr_detect_transmits.is_set;
@@ -7569,354 +7639,17 @@ bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::State::has_leaf_o
     return false;
 }
 
-Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Autoconf()
-    :
-    config(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config>())
-	,state(std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State>())
-{
-    config->parent = this;
-    state->parent = this;
-
-    yang_name = "autoconf"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::~Autoconf()
-{
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_data() const
-{
-    return (config !=  nullptr && config->has_data())
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_operation() const
-{
-    return is_set(yfilter)
-	|| (config !=  nullptr && config->has_operation())
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "openconfig-if-ip-ext:autoconf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "config")
-    {
-        if(config == nullptr)
-        {
-            config = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config>();
-        }
-        return config;
-    }
-
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State>();
-        }
-        return state;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    if(config != nullptr)
-    {
-        children["config"] = config;
-    }
-
-    if(state != nullptr)
-    {
-        children["state"] = state;
-    }
-
-    return children;
-}
-
-void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "config" || name == "state")
-        return true;
-    return false;
-}
-
-Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::Config()
-    :
-    create_global_addresses{YType::boolean, "create-global-addresses"},
-    create_temporary_addresses{YType::boolean, "create-temporary-addresses"},
-    temporary_valid_lifetime{YType::uint32, "temporary-valid-lifetime"},
-    temporary_preferred_lifetime{YType::uint32, "temporary-preferred-lifetime"}
-{
-
-    yang_name = "config"; yang_parent_name = "autoconf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::~Config()
-{
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::has_data() const
-{
-    return create_global_addresses.is_set
-	|| create_temporary_addresses.is_set
-	|| temporary_valid_lifetime.is_set
-	|| temporary_preferred_lifetime.is_set;
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(create_global_addresses.yfilter)
-	|| ydk::is_set(create_temporary_addresses.yfilter)
-	|| ydk::is_set(temporary_valid_lifetime.yfilter)
-	|| ydk::is_set(temporary_preferred_lifetime.yfilter);
-}
-
-std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "config";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (create_global_addresses.is_set || is_set(create_global_addresses.yfilter)) leaf_name_data.push_back(create_global_addresses.get_name_leafdata());
-    if (create_temporary_addresses.is_set || is_set(create_temporary_addresses.yfilter)) leaf_name_data.push_back(create_temporary_addresses.get_name_leafdata());
-    if (temporary_valid_lifetime.is_set || is_set(temporary_valid_lifetime.yfilter)) leaf_name_data.push_back(temporary_valid_lifetime.get_name_leafdata());
-    if (temporary_preferred_lifetime.is_set || is_set(temporary_preferred_lifetime.yfilter)) leaf_name_data.push_back(temporary_preferred_lifetime.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "create-global-addresses")
-    {
-        create_global_addresses = value;
-        create_global_addresses.value_namespace = name_space;
-        create_global_addresses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "create-temporary-addresses")
-    {
-        create_temporary_addresses = value;
-        create_temporary_addresses.value_namespace = name_space;
-        create_temporary_addresses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "temporary-valid-lifetime")
-    {
-        temporary_valid_lifetime = value;
-        temporary_valid_lifetime.value_namespace = name_space;
-        temporary_valid_lifetime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "temporary-preferred-lifetime")
-    {
-        temporary_preferred_lifetime = value;
-        temporary_preferred_lifetime.value_namespace = name_space;
-        temporary_preferred_lifetime.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "create-global-addresses")
-    {
-        create_global_addresses.yfilter = yfilter;
-    }
-    if(value_path == "create-temporary-addresses")
-    {
-        create_temporary_addresses.yfilter = yfilter;
-    }
-    if(value_path == "temporary-valid-lifetime")
-    {
-        temporary_valid_lifetime.yfilter = yfilter;
-    }
-    if(value_path == "temporary-preferred-lifetime")
-    {
-        temporary_preferred_lifetime.yfilter = yfilter;
-    }
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::Config::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "create-global-addresses" || name == "create-temporary-addresses" || name == "temporary-valid-lifetime" || name == "temporary-preferred-lifetime")
-        return true;
-    return false;
-}
-
-Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::State()
-    :
-    create_global_addresses{YType::boolean, "create-global-addresses"},
-    create_temporary_addresses{YType::boolean, "create-temporary-addresses"},
-    temporary_valid_lifetime{YType::uint32, "temporary-valid-lifetime"},
-    temporary_preferred_lifetime{YType::uint32, "temporary-preferred-lifetime"}
-{
-
-    yang_name = "state"; yang_parent_name = "autoconf"; is_top_level_class = false; has_list_ancestor = true;
-}
-
-Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::~State()
-{
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::has_data() const
-{
-    return create_global_addresses.is_set
-	|| create_temporary_addresses.is_set
-	|| temporary_valid_lifetime.is_set
-	|| temporary_preferred_lifetime.is_set;
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(create_global_addresses.yfilter)
-	|| ydk::is_set(create_temporary_addresses.yfilter)
-	|| ydk::is_set(temporary_valid_lifetime.yfilter)
-	|| ydk::is_set(temporary_preferred_lifetime.yfilter);
-}
-
-std::string Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (create_global_addresses.is_set || is_set(create_global_addresses.yfilter)) leaf_name_data.push_back(create_global_addresses.get_name_leafdata());
-    if (create_temporary_addresses.is_set || is_set(create_temporary_addresses.yfilter)) leaf_name_data.push_back(create_temporary_addresses.get_name_leafdata());
-    if (temporary_valid_lifetime.is_set || is_set(temporary_valid_lifetime.yfilter)) leaf_name_data.push_back(temporary_valid_lifetime.get_name_leafdata());
-    if (temporary_preferred_lifetime.is_set || is_set(temporary_preferred_lifetime.yfilter)) leaf_name_data.push_back(temporary_preferred_lifetime.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<Entity> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<Entity>> children{};
-    char count=0;
-    return children;
-}
-
-void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "create-global-addresses")
-    {
-        create_global_addresses = value;
-        create_global_addresses.value_namespace = name_space;
-        create_global_addresses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "create-temporary-addresses")
-    {
-        create_temporary_addresses = value;
-        create_temporary_addresses.value_namespace = name_space;
-        create_temporary_addresses.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "temporary-valid-lifetime")
-    {
-        temporary_valid_lifetime = value;
-        temporary_valid_lifetime.value_namespace = name_space;
-        temporary_valid_lifetime.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "temporary-preferred-lifetime")
-    {
-        temporary_preferred_lifetime = value;
-        temporary_preferred_lifetime.value_namespace = name_space;
-        temporary_preferred_lifetime.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "create-global-addresses")
-    {
-        create_global_addresses.yfilter = yfilter;
-    }
-    if(value_path == "create-temporary-addresses")
-    {
-        create_temporary_addresses.yfilter = yfilter;
-    }
-    if(value_path == "temporary-valid-lifetime")
-    {
-        temporary_valid_lifetime.yfilter = yfilter;
-    }
-    if(value_path == "temporary-preferred-lifetime")
-    {
-        temporary_preferred_lifetime.yfilter = yfilter;
-    }
-}
-
-bool Interfaces::Interface::Subinterfaces::Subinterface::Ipv6::Autoconf::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "create-global-addresses" || name == "create-temporary-addresses" || name == "temporary-valid-lifetime" || name == "temporary-preferred-lifetime")
-        return true;
-    return false;
-}
-
 Interfaces::Interface::Ethernet::Ethernet()
     :
     config(std::make_shared<Interfaces::Interface::Ethernet::Config>())
-	,state(std::make_shared<Interfaces::Interface::Ethernet::State>())
-	,switched_vlan(std::make_shared<Interfaces::Interface::Ethernet::SwitchedVlan>())
+    , state(std::make_shared<Interfaces::Interface::Ethernet::State>())
+    , switched_vlan(std::make_shared<Interfaces::Interface::Ethernet::SwitchedVlan>())
 {
     config->parent = this;
     state->parent = this;
     switched_vlan->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ethernet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ethernet::~Ethernet()
@@ -7925,6 +7658,7 @@ Interfaces::Interface::Ethernet::~Ethernet()
 
 bool Interfaces::Interface::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (switched_vlan !=  nullptr && switched_vlan->has_data());
@@ -8033,7 +7767,7 @@ Interfaces::Interface::Ethernet::Config::Config()
     aggregate_id{YType::str, "openconfig-if-aggregate:aggregate-id"}
 {
 
-    yang_name = "config"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ethernet::Config::~Config()
@@ -8042,6 +7776,7 @@ Interfaces::Interface::Ethernet::Config::~Config()
 
 bool Interfaces::Interface::Ethernet::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| auto_negotiate.is_set
 	|| duplex_mode.is_set
@@ -8180,12 +7915,12 @@ Interfaces::Interface::Ethernet::State::State()
     hw_mac_address{YType::str, "hw-mac-address"},
     effective_speed{YType::uint32, "effective-speed"},
     aggregate_id{YType::str, "openconfig-if-aggregate:aggregate-id"}
-    	,
+        ,
     counters(std::make_shared<Interfaces::Interface::Ethernet::State::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "state"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ethernet::State::~State()
@@ -8194,6 +7929,7 @@ Interfaces::Interface::Ethernet::State::~State()
 
 bool Interfaces::Interface::Ethernet::State::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| auto_negotiate.is_set
 	|| duplex_mode.is_set
@@ -8378,7 +8114,7 @@ Interfaces::Interface::Ethernet::State::Counters::Counters()
     out_8021q_frames{YType::uint64, "out-8021q-frames"}
 {
 
-    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ethernet::State::Counters::~Counters()
@@ -8387,6 +8123,7 @@ Interfaces::Interface::Ethernet::State::Counters::~Counters()
 
 bool Interfaces::Interface::Ethernet::State::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return in_mac_control_frames.is_set
 	|| in_mac_pause_frames.is_set
 	|| in_oversize_frames.is_set
@@ -8570,12 +8307,12 @@ bool Interfaces::Interface::Ethernet::State::Counters::has_leaf_or_child_of_name
 Interfaces::Interface::Ethernet::SwitchedVlan::SwitchedVlan()
     :
     config(std::make_shared<Interfaces::Interface::Ethernet::SwitchedVlan::Config>())
-	,state(std::make_shared<Interfaces::Interface::Ethernet::SwitchedVlan::State>())
+    , state(std::make_shared<Interfaces::Interface::Ethernet::SwitchedVlan::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "switched-vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switched-vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ethernet::SwitchedVlan::~SwitchedVlan()
@@ -8584,6 +8321,7 @@ Interfaces::Interface::Ethernet::SwitchedVlan::~SwitchedVlan()
 
 bool Interfaces::Interface::Ethernet::SwitchedVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -8674,7 +8412,7 @@ Interfaces::Interface::Ethernet::SwitchedVlan::Config::Config()
     trunk_vlans{YType::str, "trunk-vlans"}
 {
 
-    yang_name = "config"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ethernet::SwitchedVlan::Config::~Config()
@@ -8683,6 +8421,7 @@ Interfaces::Interface::Ethernet::SwitchedVlan::Config::~Config()
 
 bool Interfaces::Interface::Ethernet::SwitchedVlan::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
@@ -8801,7 +8540,7 @@ Interfaces::Interface::Ethernet::SwitchedVlan::State::State()
     trunk_vlans{YType::str, "trunk-vlans"}
 {
 
-    yang_name = "state"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Ethernet::SwitchedVlan::State::~State()
@@ -8810,6 +8549,7 @@ Interfaces::Interface::Ethernet::SwitchedVlan::State::~State()
 
 bool Interfaces::Interface::Ethernet::SwitchedVlan::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
@@ -8923,14 +8663,14 @@ bool Interfaces::Interface::Ethernet::SwitchedVlan::State::has_leaf_or_child_of_
 Interfaces::Interface::Aggregation::Aggregation()
     :
     config(std::make_shared<Interfaces::Interface::Aggregation::Config>())
-	,state(std::make_shared<Interfaces::Interface::Aggregation::State>())
-	,switched_vlan(std::make_shared<Interfaces::Interface::Aggregation::SwitchedVlan>())
+    , state(std::make_shared<Interfaces::Interface::Aggregation::State>())
+    , switched_vlan(std::make_shared<Interfaces::Interface::Aggregation::SwitchedVlan>())
 {
     config->parent = this;
     state->parent = this;
     switched_vlan->parent = this;
 
-    yang_name = "aggregation"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregation"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Aggregation::~Aggregation()
@@ -8939,6 +8679,7 @@ Interfaces::Interface::Aggregation::~Aggregation()
 
 bool Interfaces::Interface::Aggregation::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (switched_vlan !=  nullptr && switched_vlan->has_data());
@@ -9043,7 +8784,7 @@ Interfaces::Interface::Aggregation::Config::Config()
     min_links{YType::uint16, "min-links"}
 {
 
-    yang_name = "config"; yang_parent_name = "aggregation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "aggregation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Aggregation::Config::~Config()
@@ -9052,6 +8793,7 @@ Interfaces::Interface::Aggregation::Config::~Config()
 
 bool Interfaces::Interface::Aggregation::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return lag_type.is_set
 	|| min_links.is_set;
 }
@@ -9136,7 +8878,7 @@ Interfaces::Interface::Aggregation::State::State()
     member{YType::str, "member"}
 {
 
-    yang_name = "state"; yang_parent_name = "aggregation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "aggregation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Aggregation::State::~State()
@@ -9145,6 +8887,7 @@ Interfaces::Interface::Aggregation::State::~State()
 
 bool Interfaces::Interface::Aggregation::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : member.getYLeafs())
     {
         if(leaf.is_set)
@@ -9258,12 +9001,12 @@ bool Interfaces::Interface::Aggregation::State::has_leaf_or_child_of_name(const 
 Interfaces::Interface::Aggregation::SwitchedVlan::SwitchedVlan()
     :
     config(std::make_shared<Interfaces::Interface::Aggregation::SwitchedVlan::Config>())
-	,state(std::make_shared<Interfaces::Interface::Aggregation::SwitchedVlan::State>())
+    , state(std::make_shared<Interfaces::Interface::Aggregation::SwitchedVlan::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "switched-vlan"; yang_parent_name = "aggregation"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switched-vlan"; yang_parent_name = "aggregation"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Aggregation::SwitchedVlan::~SwitchedVlan()
@@ -9272,6 +9015,7 @@ Interfaces::Interface::Aggregation::SwitchedVlan::~SwitchedVlan()
 
 bool Interfaces::Interface::Aggregation::SwitchedVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -9362,7 +9106,7 @@ Interfaces::Interface::Aggregation::SwitchedVlan::Config::Config()
     trunk_vlans{YType::str, "trunk-vlans"}
 {
 
-    yang_name = "config"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Aggregation::SwitchedVlan::Config::~Config()
@@ -9371,6 +9115,7 @@ Interfaces::Interface::Aggregation::SwitchedVlan::Config::~Config()
 
 bool Interfaces::Interface::Aggregation::SwitchedVlan::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
@@ -9489,7 +9234,7 @@ Interfaces::Interface::Aggregation::SwitchedVlan::State::State()
     trunk_vlans{YType::str, "trunk-vlans"}
 {
 
-    yang_name = "state"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "switched-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Aggregation::SwitchedVlan::State::~State()
@@ -9498,6 +9243,7 @@ Interfaces::Interface::Aggregation::SwitchedVlan::State::~State()
 
 bool Interfaces::Interface::Aggregation::SwitchedVlan::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : trunk_vlans.getYLeafs())
     {
         if(leaf.is_set)
@@ -9611,16 +9357,16 @@ bool Interfaces::Interface::Aggregation::SwitchedVlan::State::has_leaf_or_child_
 Interfaces::Interface::RoutedVlan::RoutedVlan()
     :
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::State>())
-	,ipv4(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4>())
-	,ipv6(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::State>())
+    , ipv4(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4>())
+    , ipv6(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6>())
 {
     config->parent = this;
     state->parent = this;
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "routed-vlan"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "routed-vlan"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::~RoutedVlan()
@@ -9629,6 +9375,7 @@ Interfaces::Interface::RoutedVlan::~RoutedVlan()
 
 bool Interfaces::Interface::RoutedVlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data())
@@ -9748,7 +9495,7 @@ Interfaces::Interface::RoutedVlan::Config::Config()
     vlan{YType::str, "vlan"}
 {
 
-    yang_name = "config"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Config::~Config()
@@ -9757,6 +9504,7 @@ Interfaces::Interface::RoutedVlan::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -9825,7 +9573,7 @@ Interfaces::Interface::RoutedVlan::State::State()
     vlan{YType::str, "vlan"}
 {
 
-    yang_name = "state"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::State::~State()
@@ -9834,6 +9582,7 @@ Interfaces::Interface::RoutedVlan::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::State::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set;
 }
 
@@ -9900,10 +9649,10 @@ bool Interfaces::Interface::RoutedVlan::State::has_leaf_or_child_of_name(const s
 Interfaces::Interface::RoutedVlan::Ipv4::Ipv4()
     :
     addresses(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses>())
-	,neighbors(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors>())
-	,unnumbered(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered>())
-	,config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::State>())
+    , neighbors(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors>())
+    , unnumbered(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered>())
+    , config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Config>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::State>())
 {
     addresses->parent = this;
     neighbors->parent = this;
@@ -9911,7 +9660,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Ipv4()
     config->parent = this;
     state->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::~Ipv4()
@@ -9920,6 +9669,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::~Ipv4()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (addresses !=  nullptr && addresses->has_data())
 	|| (neighbors !=  nullptr && neighbors->has_data())
 	|| (unnumbered !=  nullptr && unnumbered->has_data())
@@ -10051,9 +9801,11 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::has_leaf_or_child_of_name(const st
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addresses()
+    :
+    address(this, {"ip"})
 {
 
-    yang_name = "addresses"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::~Addresses()
@@ -10062,7 +9814,8 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::~Addresses()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -10072,7 +9825,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::has_data() const
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -10102,7 +9855,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::get_
     {
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -10114,7 +9867,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10143,16 +9896,16 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::has_leaf_or_child_of_na
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Address()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State>())
-	,vrrp(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State>())
+    , vrrp(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp>())
 {
     config->parent = this;
     state->parent = this;
     vrrp->parent = this;
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::~Address()
@@ -10161,6 +9914,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::~Address()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -10179,7 +9933,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::has_operation(
 std::string Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -10278,7 +10033,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::Config()
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::~Config()
@@ -10287,6 +10042,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set;
 }
@@ -10370,7 +10126,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::State()
     origin{YType::enumeration, "origin"}
 {
 
-    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::~State()
@@ -10379,6 +10135,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set
 	|| origin.is_set;
@@ -10469,9 +10226,11 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::State::has_lea
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::Vrrp()
+    :
+    vrrp_group(this, {"virtual_router_id"})
 {
 
-    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::~Vrrp()
@@ -10480,7 +10239,8 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::~Vrrp()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::has_data() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_data())
             return true;
@@ -10490,7 +10250,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::has_data
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::has_operation() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_operation())
             return true;
@@ -10520,7 +10280,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Addr
     {
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
-        vrrp_group.push_back(c);
+        vrrp_group.append(c);
         return c;
     }
 
@@ -10532,7 +10292,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrrp_group)
+    for (auto c : vrrp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10561,16 +10321,16 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::has_leaf
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::VrrpGroup()
     :
     virtual_router_id{YType::str, "virtual-router-id"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State>())
-	,interface_tracking(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State>())
+    , interface_tracking(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
 {
     config->parent = this;
     state->parent = this;
     interface_tracking->parent = this;
 
-    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::~VrrpGroup()
@@ -10579,6 +10339,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::~V
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_router_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -10597,7 +10358,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGrou
 std::string Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrrp-group" <<"[virtual-router-id='" <<virtual_router_id <<"']";
+    path_buffer << "vrrp-group";
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
     return path_buffer.str();
 }
 
@@ -10701,7 +10463,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Co
     advertisement_interval{YType::uint16, "advertisement-interval"}
 {
 
-    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::~Config()
@@ -10710,6 +10472,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Co
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -10871,7 +10634,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::St
     current_priority{YType::uint8, "current-priority"}
 {
 
-    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::~State()
@@ -10880,6 +10643,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::St
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -11045,12 +10809,12 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGrou
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::InterfaceTracking()
     :
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::~InterfaceTracking()
@@ -11059,6 +10823,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::In
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -11147,7 +10912,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::In
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::~Config()
@@ -11156,6 +10921,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::In
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -11238,7 +11004,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::In
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::~State()
@@ -11247,6 +11013,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::In
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -11324,9 +11091,11 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Addresses::Address::Vrrp::VrrpGrou
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbors()
+    :
+    neighbor(this, {"ip"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::~Neighbors()
@@ -11335,7 +11104,8 @@ Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::~Neighbors()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -11345,7 +11115,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::has_data() const
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -11375,7 +11145,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::get_
     {
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -11387,7 +11157,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11416,14 +11186,14 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::has_leaf_or_child_of_na
 Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Neighbor()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::~Neighbor()
@@ -11432,6 +11202,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::~Neighbor()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -11448,7 +11219,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::has_operation
 std::string Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -11533,7 +11305,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::Config()
     link_layer_address{YType::str, "link-layer-address"}
 {
 
-    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::~Config()
@@ -11542,6 +11314,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set;
 }
@@ -11625,7 +11398,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::State()
     origin{YType::enumeration, "origin"}
 {
 
-    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::~State()
@@ -11634,6 +11407,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set
 	|| origin.is_set;
@@ -11726,14 +11500,14 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Neighbors::Neighbor::State::has_le
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Unnumbered()
     :
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State>())
-	,interface_ref(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State>())
+    , interface_ref(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef>())
 {
     config->parent = this;
     state->parent = this;
     interface_ref->parent = this;
 
-    yang_name = "unnumbered"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unnumbered"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::~Unnumbered()
@@ -11742,6 +11516,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::~Unnumbered()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (interface_ref !=  nullptr && interface_ref->has_data());
@@ -11845,7 +11620,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::Config()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::~Config()
@@ -11854,6 +11629,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -11922,7 +11698,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::State()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::~State()
@@ -11931,6 +11707,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -11997,12 +11774,12 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::State::has_leaf_or_chi
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::InterfaceRef()
     :
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::~InterfaceRef()
@@ -12011,6 +11788,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::~InterfaceRef
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -12099,7 +11877,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::Confi
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::~Config()
@@ -12108,6 +11886,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::~Conf
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -12190,7 +11969,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::State(
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::~State()
@@ -12199,6 +11978,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::~State
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Unnumbered::InterfaceRef::State::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -12281,7 +12061,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Config::Config()
     mtu{YType::uint16, "mtu"}
 {
 
-    yang_name = "config"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::Config::~Config()
@@ -12290,6 +12070,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set;
 }
@@ -12372,7 +12153,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::State::State()
     mtu{YType::uint16, "mtu"}
 {
 
-    yang_name = "state"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv4::State::~State()
@@ -12381,6 +12162,7 @@ Interfaces::Interface::RoutedVlan::Ipv4::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv4::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set;
 }
@@ -12460,10 +12242,10 @@ bool Interfaces::Interface::RoutedVlan::Ipv4::State::has_leaf_or_child_of_name(c
 Interfaces::Interface::RoutedVlan::Ipv6::Ipv6()
     :
     addresses(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses>())
-	,neighbors(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors>())
-	,unnumbered(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered>())
-	,config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::State>())
+    , neighbors(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors>())
+    , unnumbered(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered>())
+    , config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Config>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::State>())
 {
     addresses->parent = this;
     neighbors->parent = this;
@@ -12471,7 +12253,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Ipv6()
     config->parent = this;
     state->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv6"; yang_parent_name = "routed-vlan"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::~Ipv6()
@@ -12480,6 +12262,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::~Ipv6()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (addresses !=  nullptr && addresses->has_data())
 	|| (neighbors !=  nullptr && neighbors->has_data())
 	|| (unnumbered !=  nullptr && unnumbered->has_data())
@@ -12611,9 +12394,11 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::has_leaf_or_child_of_name(const st
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addresses()
+    :
+    address(this, {"ip"})
 {
 
-    yang_name = "addresses"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::~Addresses()
@@ -12622,7 +12407,8 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::~Addresses()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -12632,7 +12418,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::has_data() const
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -12662,7 +12448,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::get_
     {
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -12674,7 +12460,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12703,16 +12489,16 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::has_leaf_or_child_of_na
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Address()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State>())
-	,vrrp(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State>())
+    , vrrp(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp>())
 {
     config->parent = this;
     state->parent = this;
     vrrp->parent = this;
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::~Address()
@@ -12721,6 +12507,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::~Address()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -12739,7 +12526,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::has_operation(
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[ip='" <<ip <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -12838,7 +12626,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::Config()
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::~Config()
@@ -12847,6 +12635,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set;
 }
@@ -12931,7 +12720,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::State()
     status{YType::enumeration, "status"}
 {
 
-    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::~State()
@@ -12940,6 +12729,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| prefix_length.is_set
 	|| origin.is_set
@@ -13043,9 +12833,11 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::State::has_lea
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::Vrrp()
+    :
+    vrrp_group(this, {"virtual_router_id"})
 {
 
-    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp"; yang_parent_name = "address"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::~Vrrp()
@@ -13054,7 +12846,8 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::~Vrrp()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::has_data() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_data())
             return true;
@@ -13064,7 +12857,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::has_data
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::has_operation() const
 {
-    for (std::size_t index=0; index<vrrp_group.size(); index++)
+    for (std::size_t index=0; index<vrrp_group.len(); index++)
     {
         if(vrrp_group[index]->has_operation())
             return true;
@@ -13094,7 +12887,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Addr
     {
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup>();
         c->parent = this;
-        vrrp_group.push_back(c);
+        vrrp_group.append(c);
         return c;
     }
 
@@ -13106,7 +12899,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrrp_group)
+    for (auto c : vrrp_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13135,16 +12928,16 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::has_leaf
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::VrrpGroup()
     :
     virtual_router_id{YType::str, "virtual-router-id"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State>())
-	,interface_tracking(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State>())
+    , interface_tracking(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking>())
 {
     config->parent = this;
     state->parent = this;
     interface_tracking->parent = this;
 
-    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrrp-group"; yang_parent_name = "vrrp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::~VrrpGroup()
@@ -13153,6 +12946,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::~V
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return virtual_router_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -13171,7 +12965,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGrou
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrrp-group" <<"[virtual-router-id='" <<virtual_router_id <<"']";
+    path_buffer << "vrrp-group";
+    ADD_KEY_TOKEN(virtual_router_id, "virtual-router-id");
     return path_buffer.str();
 }
 
@@ -13276,7 +13071,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Co
     virtual_link_local{YType::str, "virtual-link-local"}
 {
 
-    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::~Config()
@@ -13285,6 +13080,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Co
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::Config::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -13460,7 +13256,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::St
     virtual_link_local{YType::str, "virtual-link-local"}
 {
 
-    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::~State()
@@ -13469,6 +13265,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::St
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::State::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : virtual_address.getYLeafs())
     {
         if(leaf.is_set)
@@ -13647,12 +13444,12 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGrou
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::InterfaceTracking()
     :
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-tracking"; yang_parent_name = "vrrp-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::~InterfaceTracking()
@@ -13661,6 +13458,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::In
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -13749,7 +13547,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::In
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::~Config()
@@ -13758,6 +13556,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::In
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -13840,7 +13639,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::In
     priority_decrement{YType::uint8, "priority-decrement"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-tracking"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::~State()
@@ -13849,6 +13648,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::In
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGroup::InterfaceTracking::State::has_data() const
 {
+    if (is_presence_container) return true;
     return track_interface.is_set
 	|| priority_decrement.is_set;
 }
@@ -13926,9 +13726,11 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Addresses::Address::Vrrp::VrrpGrou
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbors()
+    :
+    neighbor(this, {"ip"})
 {
 
-    yang_name = "neighbors"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbors"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::~Neighbors()
@@ -13937,7 +13739,8 @@ Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::~Neighbors()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::has_data() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_data())
             return true;
@@ -13947,7 +13750,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::has_data() const
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::has_operation() const
 {
-    for (std::size_t index=0; index<neighbor.size(); index++)
+    for (std::size_t index=0; index<neighbor.len(); index++)
     {
         if(neighbor[index]->has_operation())
             return true;
@@ -13977,7 +13780,7 @@ std::shared_ptr<Entity> Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::get_
     {
         auto c = std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor>();
         c->parent = this;
-        neighbor.push_back(c);
+        neighbor.append(c);
         return c;
     }
 
@@ -13989,7 +13792,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::RoutedVlan
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : neighbor)
+    for (auto c : neighbor.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14018,14 +13821,14 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::has_leaf_or_child_of_na
 Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Neighbor()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor"; yang_parent_name = "neighbors"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::~Neighbor()
@@ -14034,6 +13837,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::~Neighbor()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
@@ -14050,7 +13854,8 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::has_operation
 std::string Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "neighbor" <<"[ip='" <<ip <<"']";
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -14135,7 +13940,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::Config()
     link_layer_address{YType::str, "link-layer-address"}
 {
 
-    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::~Config()
@@ -14144,6 +13949,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set;
 }
@@ -14229,7 +14035,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::State()
     neighbor_state{YType::enumeration, "neighbor-state"}
 {
 
-    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::~State()
@@ -14238,6 +14044,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| link_layer_address.is_set
 	|| origin.is_set
@@ -14356,14 +14163,14 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Neighbors::Neighbor::State::has_le
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Unnumbered()
     :
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State>())
-	,interface_ref(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State>())
+    , interface_ref(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef>())
 {
     config->parent = this;
     state->parent = this;
     interface_ref->parent = this;
 
-    yang_name = "unnumbered"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "unnumbered"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::~Unnumbered()
@@ -14372,6 +14179,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::~Unnumbered()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
 	|| (interface_ref !=  nullptr && interface_ref->has_data());
@@ -14475,7 +14283,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::Config()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::~Config()
@@ -14484,6 +14292,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -14552,7 +14361,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::State()
     enabled{YType::boolean, "enabled"}
 {
 
-    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::~State()
@@ -14561,6 +14370,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set;
 }
 
@@ -14627,12 +14437,12 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::State::has_leaf_or_chi
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::InterfaceRef()
     :
     config(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config>())
-	,state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State>())
+    , state(std::make_shared<Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "interface-ref"; yang_parent_name = "unnumbered"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::~InterfaceRef()
@@ -14641,6 +14451,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::~InterfaceRef
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -14729,7 +14540,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::Confi
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::~Config()
@@ -14738,6 +14549,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::~Conf
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -14820,7 +14632,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::State(
     subinterface{YType::str, "subinterface"}
 {
 
-    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::~State()
@@ -14829,6 +14641,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::~State
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Unnumbered::InterfaceRef::State::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
@@ -14912,7 +14725,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Config::Config()
     dup_addr_detect_transmits{YType::uint32, "dup-addr-detect-transmits"}
 {
 
-    yang_name = "config"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::Config::~Config()
@@ -14921,6 +14734,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::Config::~Config()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set
 	|| dup_addr_detect_transmits.is_set;
@@ -15017,7 +14831,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::State::State()
     dup_addr_detect_transmits{YType::uint32, "dup-addr-detect-transmits"}
 {
 
-    yang_name = "state"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::RoutedVlan::Ipv6::State::~State()
@@ -15026,6 +14840,7 @@ Interfaces::Interface::RoutedVlan::Ipv6::State::~State()
 
 bool Interfaces::Interface::RoutedVlan::Ipv6::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| mtu.is_set
 	|| dup_addr_detect_transmits.is_set;
@@ -15118,7 +14933,7 @@ bool Interfaces::Interface::RoutedVlan::Ipv6::State::has_leaf_or_child_of_name(c
 Interfaces::Interface::Sonet::Sonet()
 {
 
-    yang_name = "sonet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sonet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Sonet::~Sonet()
@@ -15127,6 +14942,7 @@ Interfaces::Interface::Sonet::~Sonet()
 
 bool Interfaces::Interface::Sonet::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 

@@ -17,7 +17,7 @@ HardwareModule::HardwareModule()
 {
     nodes->parent = this;
 
-    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "hardware-module"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 HardwareModule::~HardwareModule()
@@ -26,6 +26,7 @@ HardwareModule::~HardwareModule()
 
 bool HardwareModule::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool HardwareModule::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 HardwareModule::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "hardware-module"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::Nodes::~Nodes()
@@ -129,7 +132,8 @@ HardwareModule::Nodes::~Nodes()
 
 bool HardwareModule::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool HardwareModule::Nodes::has_data() const
 
 bool HardwareModule::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<HardwareModule::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,12 +221,12 @@ bool HardwareModule::Nodes::has_leaf_or_child_of_name(const std::string & name) 
 HardwareModule::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     np(std::make_shared<HardwareModule::Nodes::Node::Np>())
 {
     np->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 HardwareModule::Nodes::Node::~Node()
@@ -231,6 +235,7 @@ HardwareModule::Nodes::Node::~Node()
 
 bool HardwareModule::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (np !=  nullptr && np->has_data());
 }
@@ -252,7 +257,8 @@ std::string HardwareModule::Nodes::Node::get_absolute_path() const
 std::string HardwareModule::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -320,12 +326,12 @@ bool HardwareModule::Nodes::Node::has_leaf_or_child_of_name(const std::string & 
 HardwareModule::Nodes::Node::Np::Np()
     :
     cpu(std::make_shared<HardwareModule::Nodes::Node::Np::Cpu>())
-	,platform_drop(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop>())
+    , platform_drop(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop>())
 {
     cpu->parent = this;
     platform_drop->parent = this;
 
-    yang_name = "np"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "np"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::~Np()
@@ -334,6 +340,7 @@ HardwareModule::Nodes::Node::Np::~Np()
 
 bool HardwareModule::Nodes::Node::Np::has_data() const
 {
+    if (is_presence_container) return true;
     return (cpu !=  nullptr && cpu->has_data())
 	|| (platform_drop !=  nullptr && platform_drop->has_data());
 }
@@ -422,7 +429,7 @@ HardwareModule::Nodes::Node::Np::Cpu::Cpu()
 {
     indexes->parent = this;
 
-    yang_name = "cpu"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cpu"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::Cpu::~Cpu()
@@ -431,6 +438,7 @@ HardwareModule::Nodes::Node::Np::Cpu::~Cpu()
 
 bool HardwareModule::Nodes::Node::Np::Cpu::has_data() const
 {
+    if (is_presence_container) return true;
     return (indexes !=  nullptr && indexes->has_data());
 }
 
@@ -498,9 +506,11 @@ bool HardwareModule::Nodes::Node::Np::Cpu::has_leaf_or_child_of_name(const std::
 }
 
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::Indexes()
+    :
+    index_(this, {"index_"})
 {
 
-    yang_name = "indexes"; yang_parent_name = "cpu"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indexes"; yang_parent_name = "cpu"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::~Indexes()
@@ -509,7 +519,8 @@ HardwareModule::Nodes::Node::Np::Cpu::Indexes::~Indexes()
 
 bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::has_data() const
 {
-    for (std::size_t index=0; index<index_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<index_.len(); index++)
     {
         if(index_[index]->has_data())
             return true;
@@ -519,7 +530,7 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::has_data() const
 
 bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::has_operation() const
 {
-    for (std::size_t index=0; index<index_.size(); index++)
+    for (std::size_t index=0; index<index_.len(); index++)
     {
         if(index_[index]->has_operation())
             return true;
@@ -549,7 +560,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::Cpu::Indexes::get_child
     {
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index>();
         c->parent = this;
-        index_.push_back(c);
+        index_.append(c);
         return c;
     }
 
@@ -561,7 +572,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : index_)
+    for (auto c : index_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -589,7 +600,7 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::has_leaf_or_child_of_name(co
 
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::Index()
     :
-    index_{YType::int32, "index"},
+    index_{YType::uint32, "index"},
     cos_q_name{YType::str, "cos-q-name"},
     cos_q{YType::uint8, "cos-q"},
     rx_channel{YType::uint32, "rx-channel"},
@@ -599,7 +610,7 @@ HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::Index()
     dropped{YType::uint64, "dropped"}
 {
 
-    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::~Index()
@@ -608,6 +619,7 @@ HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::~Index()
 
 bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| cos_q_name.is_set
 	|| cos_q.is_set
@@ -634,7 +646,8 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::has_operation() const
 std::string HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "index" <<"[index='" <<index_ <<"']";
+    path_buffer << "index";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -765,12 +778,12 @@ bool HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index::has_leaf_or_child_of_
 HardwareModule::Nodes::Node::Np::PlatformDrop::PlatformDrop()
     :
     indxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes>())
-	,idxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes>())
+    , idxes(std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes>())
 {
     indxes->parent = this;
     idxes->parent = this;
 
-    yang_name = "platform-drop"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "platform-drop"; yang_parent_name = "np"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::~PlatformDrop()
@@ -779,6 +792,7 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::~PlatformDrop()
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_data() const
 {
+    if (is_presence_container) return true;
     return (indxes !=  nullptr && indxes->has_data())
 	|| (idxes !=  nullptr && idxes->has_data());
 }
@@ -862,9 +876,11 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::has_leaf_or_child_of_name(co
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indxes()
+    :
+    indx(this, {"index_"})
 {
 
-    yang_name = "indxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::~Indxes()
@@ -873,7 +889,8 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::~Indxes()
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::has_data() const
 {
-    for (std::size_t index=0; index<indx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<indx.len(); index++)
     {
         if(indx[index]->has_data())
             return true;
@@ -883,7 +900,7 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::has_data() const
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::has_operation() const
 {
-    for (std::size_t index=0; index<indx.size(); index++)
+    for (std::size_t index=0; index<indx.len(); index++)
     {
         if(indx[index]->has_operation())
             return true;
@@ -913,7 +930,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::g
     {
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx>();
         c->parent = this;
-        indx.push_back(c);
+        indx.append(c);
         return c;
     }
 
@@ -925,7 +942,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : indx)
+    for (auto c : indx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -953,7 +970,7 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::has_leaf_or_child_of
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::Indx()
     :
-    index_{YType::int32, "index"},
+    index_{YType::uint32, "index"},
     total_captured{YType::uint32, "total-captured"},
     captured_pak{YType::str, "captured-pak"},
     pkt_index{YType::uint8, "pkt-index"},
@@ -968,7 +985,7 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::Indx()
     secs{YType::uint64, "secs"}
 {
 
-    yang_name = "indx"; yang_parent_name = "indxes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indx"; yang_parent_name = "indxes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::~Indx()
@@ -977,6 +994,7 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::~Indx()
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| total_captured.is_set
 	|| captured_pak.is_set
@@ -1013,7 +1031,8 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::has_operation(
 std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "indx" <<"[index='" <<index_ <<"']";
+    path_buffer << "indx";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -1197,9 +1216,11 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx::has_leaf_or_ch
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idxes()
+    :
+    idx(this, {"index_"})
 {
 
-    yang_name = "idxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idxes"; yang_parent_name = "platform-drop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::~Idxes()
@@ -1208,7 +1229,8 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::~Idxes()
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_data() const
 {
-    for (std::size_t index=0; index<idx.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<idx.len(); index++)
     {
         if(idx[index]->has_data())
             return true;
@@ -1218,7 +1240,7 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_data() const
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_operation() const
 {
-    for (std::size_t index=0; index<idx.size(); index++)
+    for (std::size_t index=0; index<idx.len(); index++)
     {
         if(idx[index]->has_operation())
             return true;
@@ -1248,7 +1270,7 @@ std::shared_ptr<Entity> HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::ge
     {
         auto c = std::make_shared<HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx>();
         c->parent = this;
-        idx.push_back(c);
+        idx.append(c);
         return c;
     }
 
@@ -1260,7 +1282,7 @@ std::map<std::string, std::shared_ptr<Entity>> HardwareModule::Nodes::Node::Np::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : idx)
+    for (auto c : idx.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1288,12 +1310,12 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::has_leaf_or_child_of_
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::Idx()
     :
-    index_{YType::int32, "index"},
+    index_{YType::uint32, "index"},
     drop_reason{YType::str, "drop-reason"},
     counters{YType::uint32, "counters"}
 {
 
-    yang_name = "idx"; yang_parent_name = "idxes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idx"; yang_parent_name = "idxes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::~Idx()
@@ -1302,6 +1324,7 @@ HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::~Idx()
 
 bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| drop_reason.is_set
 	|| counters.is_set;
@@ -1318,7 +1341,8 @@ bool HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::has_operation() 
 std::string HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "idx" <<"[index='" <<index_ <<"']";
+    path_buffer << "idx";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
@@ -1397,7 +1421,7 @@ Prm::Prm()
 {
     nodes->parent = this;
 
-    yang_name = "prm"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "prm"; yang_parent_name = "Cisco-IOS-XR-prm-server-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Prm::~Prm()
@@ -1406,6 +1430,7 @@ Prm::~Prm()
 
 bool Prm::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -1498,9 +1523,11 @@ bool Prm::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Prm::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "prm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "prm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Prm::Nodes::~Nodes()
@@ -1509,7 +1536,8 @@ Prm::Nodes::~Nodes()
 
 bool Prm::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -1519,7 +1547,7 @@ bool Prm::Nodes::has_data() const
 
 bool Prm::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -1556,7 +1584,7 @@ std::shared_ptr<Entity> Prm::Nodes::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Prm::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -1568,7 +1596,7 @@ std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1597,12 +1625,12 @@ bool Prm::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Prm::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     server(std::make_shared<Prm::Nodes::Node::Server>())
 {
     server->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Prm::Nodes::Node::~Node()
@@ -1611,6 +1639,7 @@ Prm::Nodes::Node::~Node()
 
 bool Prm::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (server !=  nullptr && server->has_data());
 }
@@ -1632,7 +1661,8 @@ std::string Prm::Nodes::Node::get_absolute_path() const
 std::string Prm::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -1703,7 +1733,7 @@ Prm::Nodes::Node::Server::Server()
 {
     resource->parent = this;
 
-    yang_name = "server"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Prm::Nodes::Node::Server::~Server()
@@ -1712,6 +1742,7 @@ Prm::Nodes::Node::Server::~Server()
 
 bool Prm::Nodes::Node::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return (resource !=  nullptr && resource->has_data());
 }
 
@@ -1784,7 +1815,7 @@ Prm::Nodes::Node::Server::Resource::Resource()
 {
     indexes->parent = this;
 
-    yang_name = "resource"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Prm::Nodes::Node::Server::Resource::~Resource()
@@ -1793,6 +1824,7 @@ Prm::Nodes::Node::Server::Resource::~Resource()
 
 bool Prm::Nodes::Node::Server::Resource::has_data() const
 {
+    if (is_presence_container) return true;
     return (indexes !=  nullptr && indexes->has_data());
 }
 
@@ -1860,9 +1892,11 @@ bool Prm::Nodes::Node::Server::Resource::has_leaf_or_child_of_name(const std::st
 }
 
 Prm::Nodes::Node::Server::Resource::Indexes::Indexes()
+    :
+    index_(this, {"index_"})
 {
 
-    yang_name = "indexes"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indexes"; yang_parent_name = "resource"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Prm::Nodes::Node::Server::Resource::Indexes::~Indexes()
@@ -1871,7 +1905,8 @@ Prm::Nodes::Node::Server::Resource::Indexes::~Indexes()
 
 bool Prm::Nodes::Node::Server::Resource::Indexes::has_data() const
 {
-    for (std::size_t index=0; index<index_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<index_.len(); index++)
     {
         if(index_[index]->has_data())
             return true;
@@ -1881,7 +1916,7 @@ bool Prm::Nodes::Node::Server::Resource::Indexes::has_data() const
 
 bool Prm::Nodes::Node::Server::Resource::Indexes::has_operation() const
 {
-    for (std::size_t index=0; index<index_.size(); index++)
+    for (std::size_t index=0; index<index_.len(); index++)
     {
         if(index_[index]->has_operation())
             return true;
@@ -1911,7 +1946,7 @@ std::shared_ptr<Entity> Prm::Nodes::Node::Server::Resource::Indexes::get_child_b
     {
         auto c = std::make_shared<Prm::Nodes::Node::Server::Resource::Indexes::Index>();
         c->parent = this;
-        index_.push_back(c);
+        index_.append(c);
         return c;
     }
 
@@ -1923,7 +1958,7 @@ std::map<std::string, std::shared_ptr<Entity>> Prm::Nodes::Node::Server::Resourc
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : index_)
+    for (auto c : index_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1951,7 +1986,7 @@ bool Prm::Nodes::Node::Server::Resource::Indexes::has_leaf_or_child_of_name(cons
 
 Prm::Nodes::Node::Server::Resource::Indexes::Index::Index()
     :
-    index_{YType::int32, "index"},
+    index_{YType::uint32, "index"},
     resource_name{YType::str, "resource-name"},
     resource_type{YType::uint32, "resource-type"},
     total_num{YType::uint32, "total-num"},
@@ -1963,7 +1998,7 @@ Prm::Nodes::Node::Server::Resource::Indexes::Index::Index()
     inconsistent{YType::boolean, "inconsistent"}
 {
 
-    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index"; yang_parent_name = "indexes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Prm::Nodes::Node::Server::Resource::Indexes::Index::~Index()
@@ -1972,6 +2007,7 @@ Prm::Nodes::Node::Server::Resource::Indexes::Index::~Index()
 
 bool Prm::Nodes::Node::Server::Resource::Indexes::Index::has_data() const
 {
+    if (is_presence_container) return true;
     return index_.is_set
 	|| resource_name.is_set
 	|| resource_type.is_set
@@ -2002,7 +2038,8 @@ bool Prm::Nodes::Node::Server::Resource::Indexes::Index::has_operation() const
 std::string Prm::Nodes::Node::Server::Resource::Indexes::Index::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "index" <<"[index='" <<index_ <<"']";
+    path_buffer << "index";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 

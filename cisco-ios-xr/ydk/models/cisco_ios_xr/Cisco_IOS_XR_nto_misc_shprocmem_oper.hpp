@@ -57,7 +57,7 @@ class ProcessesMemory::Nodes : public ydk::Entity
 
         class Node; //type: ProcessesMemory::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_nto_misc_shprocmem_oper::ProcessesMemory::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // ProcessesMemory::Nodes
 
@@ -105,7 +105,7 @@ class ProcessesMemory::Nodes::Node::JobIds : public ydk::Entity
 
         class JobId; //type: ProcessesMemory::Nodes::Node::JobIds::JobId
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_nto_misc_shprocmem_oper::ProcessesMemory::Nodes::Node::JobIds::JobId> > job_id;
+        ydk::YList job_id;
         
 }; // ProcessesMemory::Nodes::Node::JobIds
 
@@ -126,7 +126,7 @@ class ProcessesMemory::Nodes::Node::JobIds::JobId : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf job_id; //type: int32
+        ydk::YLeaf job_id; //type: uint32
         ydk::YLeaf name; //type: string
         ydk::YLeaf jid; //type: uint32
         ydk::YLeaf text_seg_size; //type: uint32

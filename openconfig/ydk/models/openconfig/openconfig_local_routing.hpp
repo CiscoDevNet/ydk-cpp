@@ -114,7 +114,7 @@ class LocalRoutes::StaticRoutes : public ydk::Entity
 
         class Static; //type: LocalRoutes::StaticRoutes::Static
 
-        std::vector<std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static> > static_;
+        ydk::YList static_;
         
 }; // LocalRoutes::StaticRoutes
 
@@ -166,7 +166,7 @@ class LocalRoutes::StaticRoutes::Static::Config : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::StaticRoutes::Static::Config
 
@@ -188,7 +188,7 @@ class LocalRoutes::StaticRoutes::Static::State : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::StaticRoutes::Static::State
 
@@ -211,7 +211,7 @@ class LocalRoutes::StaticRoutes::Static::NextHops : public ydk::Entity
 
         class NextHop; //type: LocalRoutes::StaticRoutes::Static::NextHops::NextHop
 
-        std::vector<std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::StaticRoutes::Static::NextHops::NextHop> > next_hop;
+        ydk::YList next_hop;
         
 }; // LocalRoutes::StaticRoutes::Static::NextHops
 
@@ -385,7 +385,7 @@ class LocalRoutes::LocalAggregates : public ydk::Entity
 
         class Aggregate; //type: LocalRoutes::LocalAggregates::Aggregate
 
-        std::vector<std::shared_ptr<openconfig::openconfig_local_routing::LocalRoutes::LocalAggregates::Aggregate> > aggregate;
+        ydk::YList aggregate;
         
 }; // LocalRoutes::LocalAggregates
 
@@ -436,7 +436,7 @@ class LocalRoutes::LocalAggregates::Aggregate::Config : public ydk::Entity
 
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf discard; //type: boolean
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::LocalAggregates::Aggregate::Config
 
@@ -459,7 +459,7 @@ class LocalRoutes::LocalAggregates::Aggregate::State : public ydk::Entity
 
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf discard; //type: boolean
-        ydk::YLeaf set_tag; //type: one of string, uint32
+        ydk::YLeaf set_tag; //type: one of uint32, string
 
 }; // LocalRoutes::LocalAggregates::Aggregate::State
 

@@ -32,9 +32,6 @@ class TelemetryModelDriven : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf enable; //type: empty
-        ydk::YLeaf max_sensor_paths; //type: uint32
-        ydk::YLeaf max_containers_per_path; //type: uint32
-        ydk::YLeaf tcp_send_timeout; //type: uint32
         class SensorGroups; //type: TelemetryModelDriven::SensorGroups
         class Subscriptions; //type: TelemetryModelDriven::Subscriptions
         class DestinationGroups; //type: TelemetryModelDriven::DestinationGroups
@@ -65,7 +62,7 @@ class TelemetryModelDriven::SensorGroups : public ydk::Entity
 
         class SensorGroup; //type: TelemetryModelDriven::SensorGroups::SensorGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::SensorGroups::SensorGroup> > sensor_group;
+        ydk::YList sensor_group;
         
 }; // TelemetryModelDriven::SensorGroups
 
@@ -113,7 +110,7 @@ class TelemetryModelDriven::SensorGroups::SensorGroup::SensorPaths : public ydk:
 
         class SensorPath; //type: TelemetryModelDriven::SensorGroups::SensorGroup::SensorPaths::SensorPath
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::SensorGroups::SensorGroup::SensorPaths::SensorPath> > sensor_path;
+        ydk::YList sensor_path;
         
 }; // TelemetryModelDriven::SensorGroups::SensorGroup::SensorPaths
 
@@ -158,7 +155,7 @@ class TelemetryModelDriven::Subscriptions : public ydk::Entity
 
         class Subscription; //type: TelemetryModelDriven::Subscriptions::Subscription
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::Subscriptions::Subscription> > subscription;
+        ydk::YList subscription;
         
 }; // TelemetryModelDriven::Subscriptions
 
@@ -210,7 +207,7 @@ class TelemetryModelDriven::Subscriptions::Subscription::SensorProfiles : public
 
         class SensorProfile; //type: TelemetryModelDriven::Subscriptions::Subscription::SensorProfiles::SensorProfile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::Subscriptions::Subscription::SensorProfiles::SensorProfile> > sensor_profile;
+        ydk::YList sensor_profile;
         
 }; // TelemetryModelDriven::Subscriptions::Subscription::SensorProfiles
 
@@ -256,7 +253,7 @@ class TelemetryModelDriven::Subscriptions::Subscription::DestinationProfiles : p
 
         class DestinationProfile; //type: TelemetryModelDriven::Subscriptions::Subscription::DestinationProfiles::DestinationProfile
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::Subscriptions::Subscription::DestinationProfiles::DestinationProfile> > destination_profile;
+        ydk::YList destination_profile;
         
 }; // TelemetryModelDriven::Subscriptions::Subscription::DestinationProfiles
 
@@ -301,7 +298,7 @@ class TelemetryModelDriven::DestinationGroups : public ydk::Entity
 
         class DestinationGroup; //type: TelemetryModelDriven::DestinationGroups::DestinationGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::DestinationGroups::DestinationGroup> > destination_group;
+        ydk::YList destination_group;
         
 }; // TelemetryModelDriven::DestinationGroups
 
@@ -352,7 +349,7 @@ class TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destination
 
         class Ipv6Destination; //type: TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv6Destination
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv6Destination> > ipv6_destination;
+        ydk::YList ipv6_destination;
         
 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations
 
@@ -425,7 +422,7 @@ class TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destination
 
         class Ipv4Destination; //type: TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv4Destination
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_telemetry_model_driven_cfg::TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv4Destination> > ipv4_destination;
+        ydk::YList ipv4_destination;
         
 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations
 

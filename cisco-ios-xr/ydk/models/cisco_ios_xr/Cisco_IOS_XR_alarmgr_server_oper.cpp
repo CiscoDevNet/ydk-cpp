@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_alarmgr_server_oper {
 Alarms::Alarms()
     :
     detail(std::make_shared<Alarms::Detail>())
-	,brief(std::make_shared<Alarms::Brief>())
+    , brief(std::make_shared<Alarms::Brief>())
 {
     detail->parent = this;
     brief->parent = this;
 
-    yang_name = "alarms"; yang_parent_name = "Cisco-IOS-XR-alarmgr-server-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "alarms"; yang_parent_name = "Cisco-IOS-XR-alarmgr-server-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Alarms::~Alarms()
@@ -28,6 +28,7 @@ Alarms::~Alarms()
 
 bool Alarms::has_data() const
 {
+    if (is_presence_container) return true;
     return (detail !=  nullptr && detail->has_data())
 	|| (brief !=  nullptr && brief->has_data());
 }
@@ -138,12 +139,12 @@ bool Alarms::has_leaf_or_child_of_name(const std::string & name) const
 Alarms::Detail::Detail()
     :
     detail_system(std::make_shared<Alarms::Detail::DetailSystem>())
-	,detail_card(std::make_shared<Alarms::Detail::DetailCard>())
+    , detail_card(std::make_shared<Alarms::Detail::DetailCard>())
 {
     detail_system->parent = this;
     detail_card->parent = this;
 
-    yang_name = "detail"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::~Detail()
@@ -152,6 +153,7 @@ Alarms::Detail::~Detail()
 
 bool Alarms::Detail::has_data() const
 {
+    if (is_presence_container) return true;
     return (detail_system !=  nullptr && detail_system->has_data())
 	|| (detail_card !=  nullptr && detail_card->has_data());
 }
@@ -244,10 +246,10 @@ bool Alarms::Detail::has_leaf_or_child_of_name(const std::string & name) const
 Alarms::Detail::DetailSystem::DetailSystem()
     :
     active(std::make_shared<Alarms::Detail::DetailSystem::Active>())
-	,history(std::make_shared<Alarms::Detail::DetailSystem::History>())
-	,suppressed(std::make_shared<Alarms::Detail::DetailSystem::Suppressed>())
-	,stats(std::make_shared<Alarms::Detail::DetailSystem::Stats>())
-	,clients(std::make_shared<Alarms::Detail::DetailSystem::Clients>())
+    , history(std::make_shared<Alarms::Detail::DetailSystem::History>())
+    , suppressed(std::make_shared<Alarms::Detail::DetailSystem::Suppressed>())
+    , stats(std::make_shared<Alarms::Detail::DetailSystem::Stats>())
+    , clients(std::make_shared<Alarms::Detail::DetailSystem::Clients>())
 {
     active->parent = this;
     history->parent = this;
@@ -255,7 +257,7 @@ Alarms::Detail::DetailSystem::DetailSystem()
     stats->parent = this;
     clients->parent = this;
 
-    yang_name = "detail-system"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-system"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::~DetailSystem()
@@ -264,6 +266,7 @@ Alarms::Detail::DetailSystem::~DetailSystem()
 
 bool Alarms::Detail::DetailSystem::has_data() const
 {
+    if (is_presence_container) return true;
     return (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (suppressed !=  nullptr && suppressed->has_data())
@@ -402,9 +405,11 @@ bool Alarms::Detail::DetailSystem::has_leaf_or_child_of_name(const std::string &
 }
 
 Alarms::Detail::DetailSystem::Active::Active()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "active"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Active::~Active()
@@ -413,7 +418,8 @@ Alarms::Detail::DetailSystem::Active::~Active()
 
 bool Alarms::Detail::DetailSystem::Active::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -423,7 +429,7 @@ bool Alarms::Detail::DetailSystem::Active::has_data() const
 
 bool Alarms::Detail::DetailSystem::Active::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -460,7 +466,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Active::get_child_by_name(
     {
         auto c = std::make_shared<Alarms::Detail::DetailSystem::Active::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -472,7 +478,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Act
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -519,14 +525,14 @@ Alarms::Detail::DetailSystem::Active::AlarmInfo::AlarmInfo()
     type{YType::enumeration, "type"},
     interface{YType::str, "interface"},
     alarm_name{YType::str, "alarm-name"}
-    	,
+        ,
     otn(std::make_shared<Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn>())
-	,tca(std::make_shared<Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca>())
+    , tca(std::make_shared<Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca>())
 {
     otn->parent = this;
     tca->parent = this;
 
-    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Active::AlarmInfo::~AlarmInfo()
@@ -535,6 +541,7 @@ Alarms::Detail::DetailSystem::Active::AlarmInfo::~AlarmInfo()
 
 bool Alarms::Detail::DetailSystem::Active::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| location.is_set
 	|| aid.is_set
@@ -877,7 +884,7 @@ Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn::Otn()
     notification_source{YType::enumeration, "notification-source"}
 {
 
-    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn::~Otn()
@@ -886,6 +893,7 @@ Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn::~Otn()
 
 bool Alarms::Detail::DetailSystem::Active::AlarmInfo::Otn::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| notification_source.is_set;
 }
@@ -976,7 +984,7 @@ Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca::Tca()
     bucket_type{YType::enumeration, "bucket-type"}
 {
 
-    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca::~Tca()
@@ -985,6 +993,7 @@ Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca::~Tca()
 
 bool Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_value.is_set
 	|| current_value.is_set
 	|| bucket_type.is_set;
@@ -1082,9 +1091,11 @@ bool Alarms::Detail::DetailSystem::Active::AlarmInfo::Tca::has_leaf_or_child_of_
 }
 
 Alarms::Detail::DetailSystem::History::History()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "history"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::History::~History()
@@ -1093,7 +1104,8 @@ Alarms::Detail::DetailSystem::History::~History()
 
 bool Alarms::Detail::DetailSystem::History::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -1103,7 +1115,7 @@ bool Alarms::Detail::DetailSystem::History::has_data() const
 
 bool Alarms::Detail::DetailSystem::History::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -1140,7 +1152,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::History::get_child_by_name
     {
         auto c = std::make_shared<Alarms::Detail::DetailSystem::History::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -1152,7 +1164,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::His
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1199,14 +1211,14 @@ Alarms::Detail::DetailSystem::History::AlarmInfo::AlarmInfo()
     type{YType::enumeration, "type"},
     interface{YType::str, "interface"},
     alarm_name{YType::str, "alarm-name"}
-    	,
+        ,
     otn(std::make_shared<Alarms::Detail::DetailSystem::History::AlarmInfo::Otn>())
-	,tca(std::make_shared<Alarms::Detail::DetailSystem::History::AlarmInfo::Tca>())
+    , tca(std::make_shared<Alarms::Detail::DetailSystem::History::AlarmInfo::Tca>())
 {
     otn->parent = this;
     tca->parent = this;
 
-    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::History::AlarmInfo::~AlarmInfo()
@@ -1215,6 +1227,7 @@ Alarms::Detail::DetailSystem::History::AlarmInfo::~AlarmInfo()
 
 bool Alarms::Detail::DetailSystem::History::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| location.is_set
 	|| aid.is_set
@@ -1557,7 +1570,7 @@ Alarms::Detail::DetailSystem::History::AlarmInfo::Otn::Otn()
     notification_source{YType::enumeration, "notification-source"}
 {
 
-    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::History::AlarmInfo::Otn::~Otn()
@@ -1566,6 +1579,7 @@ Alarms::Detail::DetailSystem::History::AlarmInfo::Otn::~Otn()
 
 bool Alarms::Detail::DetailSystem::History::AlarmInfo::Otn::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| notification_source.is_set;
 }
@@ -1656,7 +1670,7 @@ Alarms::Detail::DetailSystem::History::AlarmInfo::Tca::Tca()
     bucket_type{YType::enumeration, "bucket-type"}
 {
 
-    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::History::AlarmInfo::Tca::~Tca()
@@ -1665,6 +1679,7 @@ Alarms::Detail::DetailSystem::History::AlarmInfo::Tca::~Tca()
 
 bool Alarms::Detail::DetailSystem::History::AlarmInfo::Tca::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_value.is_set
 	|| current_value.is_set
 	|| bucket_type.is_set;
@@ -1762,9 +1777,11 @@ bool Alarms::Detail::DetailSystem::History::AlarmInfo::Tca::has_leaf_or_child_of
 }
 
 Alarms::Detail::DetailSystem::Suppressed::Suppressed()
+    :
+    suppressed_info(this, {})
 {
 
-    yang_name = "suppressed"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "suppressed"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Suppressed::~Suppressed()
@@ -1773,7 +1790,8 @@ Alarms::Detail::DetailSystem::Suppressed::~Suppressed()
 
 bool Alarms::Detail::DetailSystem::Suppressed::has_data() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_data())
             return true;
@@ -1783,7 +1801,7 @@ bool Alarms::Detail::DetailSystem::Suppressed::has_data() const
 
 bool Alarms::Detail::DetailSystem::Suppressed::has_operation() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_operation())
             return true;
@@ -1820,7 +1838,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Suppressed::get_child_by_n
     {
         auto c = std::make_shared<Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo>();
         c->parent = this;
-        suppressed_info.push_back(c);
+        suppressed_info.append(c);
         return c;
     }
 
@@ -1832,7 +1850,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Sup
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : suppressed_info)
+    for (auto c : suppressed_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1878,12 +1896,12 @@ Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::SuppressedInfo()
     service_affecting{YType::enumeration, "service-affecting"},
     interface{YType::str, "interface"},
     alarm_name{YType::str, "alarm-name"}
-    	,
+        ,
     otn(std::make_shared<Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn>())
 {
     otn->parent = this;
 
-    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::~SuppressedInfo()
@@ -1892,6 +1910,7 @@ Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::~SuppressedInfo()
 
 bool Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| location.is_set
 	|| aid.is_set
@@ -2205,7 +2224,7 @@ Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn::Otn()
     notification_source{YType::enumeration, "notification-source"}
 {
 
-    yang_name = "otn"; yang_parent_name = "suppressed-info"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "otn"; yang_parent_name = "suppressed-info"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn::~Otn()
@@ -2214,6 +2233,7 @@ Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn::~Otn()
 
 bool Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::Otn::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| notification_source.is_set;
 }
@@ -2316,7 +2336,7 @@ Alarms::Detail::DetailSystem::Stats::Stats()
     cache_miss{YType::uint32, "cache-miss"}
 {
 
-    yang_name = "stats"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stats"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Stats::~Stats()
@@ -2325,6 +2345,7 @@ Alarms::Detail::DetailSystem::Stats::~Stats()
 
 bool Alarms::Detail::DetailSystem::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return reported.is_set
 	|| dropped.is_set
 	|| active.is_set
@@ -2578,9 +2599,11 @@ bool Alarms::Detail::DetailSystem::Stats::has_leaf_or_child_of_name(const std::s
 }
 
 Alarms::Detail::DetailSystem::Clients::Clients()
+    :
+    client_info(this, {})
 {
 
-    yang_name = "clients"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "clients"; yang_parent_name = "detail-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Clients::~Clients()
@@ -2589,7 +2612,8 @@ Alarms::Detail::DetailSystem::Clients::~Clients()
 
 bool Alarms::Detail::DetailSystem::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client_info.len(); index++)
     {
         if(client_info[index]->has_data())
             return true;
@@ -2599,7 +2623,7 @@ bool Alarms::Detail::DetailSystem::Clients::has_data() const
 
 bool Alarms::Detail::DetailSystem::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client_info.size(); index++)
+    for (std::size_t index=0; index<client_info.len(); index++)
     {
         if(client_info[index]->has_operation())
             return true;
@@ -2636,7 +2660,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailSystem::Clients::get_child_by_name
     {
         auto c = std::make_shared<Alarms::Detail::DetailSystem::Clients::ClientInfo>();
         c->parent = this;
-        client_info.push_back(c);
+        client_info.append(c);
         return c;
     }
 
@@ -2648,7 +2672,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailSystem::Cli
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client_info)
+    for (auto c : client_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2694,7 +2718,7 @@ Alarms::Detail::DetailSystem::Clients::ClientInfo::ClientInfo()
     report_count{YType::uint32, "report-count"}
 {
 
-    yang_name = "client-info"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-info"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailSystem::Clients::ClientInfo::~ClientInfo()
@@ -2703,6 +2727,7 @@ Alarms::Detail::DetailSystem::Clients::ClientInfo::~ClientInfo()
 
 bool Alarms::Detail::DetailSystem::Clients::ClientInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set
 	|| location.is_set
@@ -2974,7 +2999,7 @@ Alarms::Detail::DetailCard::DetailCard()
 {
     detail_locations->parent = this;
 
-    yang_name = "detail-card"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-card"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailCard::~DetailCard()
@@ -2983,6 +3008,7 @@ Alarms::Detail::DetailCard::~DetailCard()
 
 bool Alarms::Detail::DetailCard::has_data() const
 {
+    if (is_presence_container) return true;
     return (detail_locations !=  nullptr && detail_locations->has_data());
 }
 
@@ -3057,9 +3083,11 @@ bool Alarms::Detail::DetailCard::has_leaf_or_child_of_name(const std::string & n
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocations()
+    :
+    detail_location(this, {"node_id"})
 {
 
-    yang_name = "detail-locations"; yang_parent_name = "detail-card"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-locations"; yang_parent_name = "detail-card"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::~DetailLocations()
@@ -3068,7 +3096,8 @@ Alarms::Detail::DetailCard::DetailLocations::~DetailLocations()
 
 bool Alarms::Detail::DetailCard::DetailLocations::has_data() const
 {
-    for (std::size_t index=0; index<detail_location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<detail_location.len(); index++)
     {
         if(detail_location[index]->has_data())
             return true;
@@ -3078,7 +3107,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::has_data() const
 
 bool Alarms::Detail::DetailCard::DetailLocations::has_operation() const
 {
-    for (std::size_t index=0; index<detail_location.size(); index++)
+    for (std::size_t index=0; index<detail_location.len(); index++)
     {
         if(detail_location[index]->has_operation())
             return true;
@@ -3115,7 +3144,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::get_child_b
     {
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation>();
         c->parent = this;
-        detail_location.push_back(c);
+        detail_location.append(c);
         return c;
     }
 
@@ -3127,7 +3156,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::Detai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : detail_location)
+    for (auto c : detail_location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3156,12 +3185,12 @@ bool Alarms::Detail::DetailCard::DetailLocations::has_leaf_or_child_of_name(cons
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::DetailLocation()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     active(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active>())
-	,history(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History>())
-	,suppressed(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed>())
-	,stats(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats>())
-	,clients(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients>())
+    , history(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History>())
+    , suppressed(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed>())
+    , stats(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats>())
+    , clients(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients>())
 {
     active->parent = this;
     history->parent = this;
@@ -3169,7 +3198,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::DetailLocation()
     stats->parent = this;
     clients->parent = this;
 
-    yang_name = "detail-location"; yang_parent_name = "detail-locations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail-location"; yang_parent_name = "detail-locations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::~DetailLocation()
@@ -3178,6 +3207,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::~DetailLocation()
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
@@ -3207,7 +3237,8 @@ std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::get_abs
 std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "detail-location" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "detail-location";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -3329,9 +3360,11 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::has_leaf_or_ch
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::Active()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "active"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::~Active()
@@ -3340,7 +3373,8 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::~Active()
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -3350,7 +3384,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::has_da
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -3380,7 +3414,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
     {
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -3392,7 +3426,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::Detai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3439,14 +3473,14 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::
     type{YType::enumeration, "type"},
     interface{YType::str, "interface"},
     alarm_name{YType::str, "alarm-name"}
-    	,
+        ,
     otn(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn>())
-	,tca(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca>())
+    , tca(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca>())
 {
     otn->parent = this;
     tca->parent = this;
 
-    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::~AlarmInfo()
@@ -3455,6 +3489,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| location.is_set
 	|| aid.is_set
@@ -3790,7 +3825,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::
     notification_source{YType::enumeration, "notification-source"}
 {
 
-    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn::~Otn()
@@ -3799,6 +3834,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Otn::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| notification_source.is_set;
 }
@@ -3882,7 +3918,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::
     bucket_type{YType::enumeration, "bucket-type"}
 {
 
-    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca::~Tca()
@@ -3891,6 +3927,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmInfo::Tca::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_value.is_set
 	|| current_value.is_set
 	|| bucket_type.is_set;
@@ -3981,9 +4018,11 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active::AlarmI
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::History()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "history"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::~History()
@@ -3992,7 +4031,8 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::~History()
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -4002,7 +4042,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::has_d
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -4032,7 +4072,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
     {
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -4044,7 +4084,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::Detai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4091,14 +4131,14 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo:
     type{YType::enumeration, "type"},
     interface{YType::str, "interface"},
     alarm_name{YType::str, "alarm-name"}
-    	,
+        ,
     otn(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn>())
-	,tca(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca>())
+    , tca(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca>())
 {
     otn->parent = this;
     tca->parent = this;
 
-    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::~AlarmInfo()
@@ -4107,6 +4147,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo:
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| location.is_set
 	|| aid.is_set
@@ -4442,7 +4483,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo:
     notification_source{YType::enumeration, "notification-source"}
 {
 
-    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otn"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn::~Otn()
@@ -4451,6 +4492,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo:
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Otn::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| notification_source.is_set;
 }
@@ -4534,7 +4576,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo:
     bucket_type{YType::enumeration, "bucket-type"}
 {
 
-    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tca"; yang_parent_name = "alarm-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca::~Tca()
@@ -4543,6 +4585,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo:
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::AlarmInfo::Tca::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold_value.is_set
 	|| current_value.is_set
 	|| bucket_type.is_set;
@@ -4633,9 +4676,11 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History::Alarm
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::Suppressed()
+    :
+    suppressed_info(this, {})
 {
 
-    yang_name = "suppressed"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::~Suppressed()
@@ -4644,7 +4689,8 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::~Suppre
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::has_data() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_data())
             return true;
@@ -4654,7 +4700,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::ha
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::has_operation() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_operation())
             return true;
@@ -4684,7 +4730,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
     {
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo>();
         c->parent = this;
-        suppressed_info.push_back(c);
+        suppressed_info.append(c);
         return c;
     }
 
@@ -4696,7 +4742,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::Detai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : suppressed_info)
+    for (auto c : suppressed_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4742,12 +4788,12 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::Suppres
     service_affecting{YType::enumeration, "service-affecting"},
     interface{YType::str, "interface"},
     alarm_name{YType::str, "alarm-name"}
-    	,
+        ,
     otn(std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn>())
 {
     otn->parent = this;
 
-    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::~SuppressedInfo()
@@ -4756,6 +4802,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::Suppres
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return description.is_set
 	|| location.is_set
 	|| aid.is_set
@@ -5062,7 +5109,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::Suppres
     notification_source{YType::enumeration, "notification-source"}
 {
 
-    yang_name = "otn"; yang_parent_name = "suppressed-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "otn"; yang_parent_name = "suppressed-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn::~Otn()
@@ -5071,6 +5118,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::Suppres
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppressed::SuppressedInfo::Otn::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| notification_source.is_set;
 }
@@ -5166,7 +5214,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats::Stats()
     cache_miss{YType::uint32, "cache-miss"}
 {
 
-    yang_name = "stats"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stats"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats::~Stats()
@@ -5175,6 +5223,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats::~Stats()
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats::has_data() const
 {
+    if (is_presence_container) return true;
     return reported.is_set
 	|| dropped.is_set
 	|| active.is_set
@@ -5421,9 +5470,11 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Stats::has_lea
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::Clients()
+    :
+    client_info(this, {})
 {
 
-    yang_name = "clients"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clients"; yang_parent_name = "detail-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::~Clients()
@@ -5432,7 +5483,8 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::~Clients()
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::has_data() const
 {
-    for (std::size_t index=0; index<client_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client_info.len(); index++)
     {
         if(client_info[index]->has_data())
             return true;
@@ -5442,7 +5494,7 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::has_d
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::has_operation() const
 {
-    for (std::size_t index=0; index<client_info.size(); index++)
+    for (std::size_t index=0; index<client_info.len(); index++)
     {
         if(client_info[index]->has_operation())
             return true;
@@ -5472,7 +5524,7 @@ std::shared_ptr<Entity> Alarms::Detail::DetailCard::DetailLocations::DetailLocat
     {
         auto c = std::make_shared<Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo>();
         c->parent = this;
-        client_info.push_back(c);
+        client_info.append(c);
         return c;
     }
 
@@ -5484,7 +5536,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Detail::DetailCard::Detai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client_info)
+    for (auto c : client_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5530,7 +5582,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
     report_count{YType::uint32, "report-count"}
 {
 
-    yang_name = "client-info"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client-info"; yang_parent_name = "clients"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo::~ClientInfo()
@@ -5539,6 +5591,7 @@ Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo
 
 bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::ClientInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| id.is_set
 	|| location.is_set
@@ -5800,12 +5853,12 @@ bool Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients::Clien
 Alarms::Brief::Brief()
     :
     brief_card(std::make_shared<Alarms::Brief::BriefCard>())
-	,brief_system(std::make_shared<Alarms::Brief::BriefSystem>())
+    , brief_system(std::make_shared<Alarms::Brief::BriefSystem>())
 {
     brief_card->parent = this;
     brief_system->parent = this;
 
-    yang_name = "brief"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::~Brief()
@@ -5814,6 +5867,7 @@ Alarms::Brief::~Brief()
 
 bool Alarms::Brief::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief_card !=  nullptr && brief_card->has_data())
 	|| (brief_system !=  nullptr && brief_system->has_data());
 }
@@ -5909,7 +5963,7 @@ Alarms::Brief::BriefCard::BriefCard()
 {
     brief_locations->parent = this;
 
-    yang_name = "brief-card"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief-card"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefCard::~BriefCard()
@@ -5918,6 +5972,7 @@ Alarms::Brief::BriefCard::~BriefCard()
 
 bool Alarms::Brief::BriefCard::has_data() const
 {
+    if (is_presence_container) return true;
     return (brief_locations !=  nullptr && brief_locations->has_data());
 }
 
@@ -5992,9 +6047,11 @@ bool Alarms::Brief::BriefCard::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocations()
+    :
+    brief_location(this, {"node_id"})
 {
 
-    yang_name = "brief-locations"; yang_parent_name = "brief-card"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief-locations"; yang_parent_name = "brief-card"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::~BriefLocations()
@@ -6003,7 +6060,8 @@ Alarms::Brief::BriefCard::BriefLocations::~BriefLocations()
 
 bool Alarms::Brief::BriefCard::BriefLocations::has_data() const
 {
-    for (std::size_t index=0; index<brief_location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<brief_location.len(); index++)
     {
         if(brief_location[index]->has_data())
             return true;
@@ -6013,7 +6071,7 @@ bool Alarms::Brief::BriefCard::BriefLocations::has_data() const
 
 bool Alarms::Brief::BriefCard::BriefLocations::has_operation() const
 {
-    for (std::size_t index=0; index<brief_location.size(); index++)
+    for (std::size_t index=0; index<brief_location.len(); index++)
     {
         if(brief_location[index]->has_operation())
             return true;
@@ -6050,7 +6108,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::get_child_by_n
     {
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation>();
         c->parent = this;
-        brief_location.push_back(c);
+        brief_location.append(c);
         return c;
     }
 
@@ -6062,7 +6120,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : brief_location)
+    for (auto c : brief_location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6091,16 +6149,16 @@ bool Alarms::Brief::BriefCard::BriefLocations::has_leaf_or_child_of_name(const s
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::BriefLocation()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     active(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active>())
-	,history(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History>())
-	,suppressed(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed>())
+    , history(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History>())
+    , suppressed(std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed>())
 {
     active->parent = this;
     history->parent = this;
     suppressed->parent = this;
 
-    yang_name = "brief-location"; yang_parent_name = "brief-locations"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief-location"; yang_parent_name = "brief-locations"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::~BriefLocation()
@@ -6109,6 +6167,7 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::~BriefLocation()
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
@@ -6134,7 +6193,8 @@ std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::get_absolut
 std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "brief-location" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "brief-location";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -6228,9 +6288,11 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::has_leaf_or_child_
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::Active()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "active"; yang_parent_name = "brief-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "active"; yang_parent_name = "brief-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::~Active()
@@ -6239,7 +6301,8 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::~Active()
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -6249,7 +6312,7 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::has_data()
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -6279,7 +6342,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
     {
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -6291,7 +6354,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6329,7 +6392,7 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo::Alar
     description{YType::str, "description"}
 {
 
-    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo::~AlarmInfo()
@@ -6338,6 +6401,7 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo::~Ala
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| severity.is_set
 	|| group.is_set
@@ -6493,9 +6557,11 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::AlarmInfo:
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::History()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "history"; yang_parent_name = "brief-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "history"; yang_parent_name = "brief-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::~History()
@@ -6504,7 +6570,8 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::~History()
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -6514,7 +6581,7 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::has_data(
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -6544,7 +6611,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
     {
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -6556,7 +6623,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6594,7 +6661,7 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo::Ala
     description{YType::str, "description"}
 {
 
-    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo::~AlarmInfo()
@@ -6603,6 +6670,7 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo::~Al
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| severity.is_set
 	|| group.is_set
@@ -6758,9 +6826,11 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::AlarmInfo
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::Suppressed()
+    :
+    suppressed_info(this, {})
 {
 
-    yang_name = "suppressed"; yang_parent_name = "brief-location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed"; yang_parent_name = "brief-location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::~Suppressed()
@@ -6769,7 +6839,8 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::~Suppressed
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::has_data() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_data())
             return true;
@@ -6779,7 +6850,7 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::has_da
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::has_operation() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_operation())
             return true;
@@ -6809,7 +6880,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefCard::BriefLocations::BriefLocation:
     {
         auto c = std::make_shared<Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo>();
         c->parent = this;
-        suppressed_info.push_back(c);
+        suppressed_info.append(c);
         return c;
     }
 
@@ -6821,7 +6892,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefCard::BriefLo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : suppressed_info)
+    for (auto c : suppressed_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6859,7 +6930,7 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedI
     description{YType::str, "description"}
 {
 
-    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo::~SuppressedInfo()
@@ -6868,6 +6939,7 @@ Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedI
 
 bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::SuppressedInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| severity.is_set
 	|| group.is_set
@@ -7025,14 +7097,14 @@ bool Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed::Suppre
 Alarms::Brief::BriefSystem::BriefSystem()
     :
     active(std::make_shared<Alarms::Brief::BriefSystem::Active>())
-	,history(std::make_shared<Alarms::Brief::BriefSystem::History>())
-	,suppressed(std::make_shared<Alarms::Brief::BriefSystem::Suppressed>())
+    , history(std::make_shared<Alarms::Brief::BriefSystem::History>())
+    , suppressed(std::make_shared<Alarms::Brief::BriefSystem::Suppressed>())
 {
     active->parent = this;
     history->parent = this;
     suppressed->parent = this;
 
-    yang_name = "brief-system"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "brief-system"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefSystem::~BriefSystem()
@@ -7041,6 +7113,7 @@ Alarms::Brief::BriefSystem::~BriefSystem()
 
 bool Alarms::Brief::BriefSystem::has_data() const
 {
+    if (is_presence_container) return true;
     return (active !=  nullptr && active->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (suppressed !=  nullptr && suppressed->has_data());
@@ -7147,9 +7220,11 @@ bool Alarms::Brief::BriefSystem::has_leaf_or_child_of_name(const std::string & n
 }
 
 Alarms::Brief::BriefSystem::Active::Active()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "active"; yang_parent_name = "brief-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "brief-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefSystem::Active::~Active()
@@ -7158,7 +7233,8 @@ Alarms::Brief::BriefSystem::Active::~Active()
 
 bool Alarms::Brief::BriefSystem::Active::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -7168,7 +7244,7 @@ bool Alarms::Brief::BriefSystem::Active::has_data() const
 
 bool Alarms::Brief::BriefSystem::Active::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -7205,7 +7281,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Active::get_child_by_name(co
     {
         auto c = std::make_shared<Alarms::Brief::BriefSystem::Active::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -7217,7 +7293,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Activ
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7255,7 +7331,7 @@ Alarms::Brief::BriefSystem::Active::AlarmInfo::AlarmInfo()
     description{YType::str, "description"}
 {
 
-    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm-info"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefSystem::Active::AlarmInfo::~AlarmInfo()
@@ -7264,6 +7340,7 @@ Alarms::Brief::BriefSystem::Active::AlarmInfo::~AlarmInfo()
 
 bool Alarms::Brief::BriefSystem::Active::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| severity.is_set
 	|| group.is_set
@@ -7426,9 +7503,11 @@ bool Alarms::Brief::BriefSystem::Active::AlarmInfo::has_leaf_or_child_of_name(co
 }
 
 Alarms::Brief::BriefSystem::History::History()
+    :
+    alarm_info(this, {})
 {
 
-    yang_name = "history"; yang_parent_name = "brief-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "history"; yang_parent_name = "brief-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefSystem::History::~History()
@@ -7437,7 +7516,8 @@ Alarms::Brief::BriefSystem::History::~History()
 
 bool Alarms::Brief::BriefSystem::History::has_data() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_data())
             return true;
@@ -7447,7 +7527,7 @@ bool Alarms::Brief::BriefSystem::History::has_data() const
 
 bool Alarms::Brief::BriefSystem::History::has_operation() const
 {
-    for (std::size_t index=0; index<alarm_info.size(); index++)
+    for (std::size_t index=0; index<alarm_info.len(); index++)
     {
         if(alarm_info[index]->has_operation())
             return true;
@@ -7484,7 +7564,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::History::get_child_by_name(c
     {
         auto c = std::make_shared<Alarms::Brief::BriefSystem::History::AlarmInfo>();
         c->parent = this;
-        alarm_info.push_back(c);
+        alarm_info.append(c);
         return c;
     }
 
@@ -7496,7 +7576,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Histo
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : alarm_info)
+    for (auto c : alarm_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7534,7 +7614,7 @@ Alarms::Brief::BriefSystem::History::AlarmInfo::AlarmInfo()
     description{YType::str, "description"}
 {
 
-    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "alarm-info"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefSystem::History::AlarmInfo::~AlarmInfo()
@@ -7543,6 +7623,7 @@ Alarms::Brief::BriefSystem::History::AlarmInfo::~AlarmInfo()
 
 bool Alarms::Brief::BriefSystem::History::AlarmInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| severity.is_set
 	|| group.is_set
@@ -7705,9 +7786,11 @@ bool Alarms::Brief::BriefSystem::History::AlarmInfo::has_leaf_or_child_of_name(c
 }
 
 Alarms::Brief::BriefSystem::Suppressed::Suppressed()
+    :
+    suppressed_info(this, {})
 {
 
-    yang_name = "suppressed"; yang_parent_name = "brief-system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "suppressed"; yang_parent_name = "brief-system"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefSystem::Suppressed::~Suppressed()
@@ -7716,7 +7799,8 @@ Alarms::Brief::BriefSystem::Suppressed::~Suppressed()
 
 bool Alarms::Brief::BriefSystem::Suppressed::has_data() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_data())
             return true;
@@ -7726,7 +7810,7 @@ bool Alarms::Brief::BriefSystem::Suppressed::has_data() const
 
 bool Alarms::Brief::BriefSystem::Suppressed::has_operation() const
 {
-    for (std::size_t index=0; index<suppressed_info.size(); index++)
+    for (std::size_t index=0; index<suppressed_info.len(); index++)
     {
         if(suppressed_info[index]->has_operation())
             return true;
@@ -7763,7 +7847,7 @@ std::shared_ptr<Entity> Alarms::Brief::BriefSystem::Suppressed::get_child_by_nam
     {
         auto c = std::make_shared<Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo>();
         c->parent = this;
-        suppressed_info.push_back(c);
+        suppressed_info.append(c);
         return c;
     }
 
@@ -7775,7 +7859,7 @@ std::map<std::string, std::shared_ptr<Entity>> Alarms::Brief::BriefSystem::Suppr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : suppressed_info)
+    for (auto c : suppressed_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7813,7 +7897,7 @@ Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::SuppressedInfo()
     description{YType::str, "description"}
 {
 
-    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "suppressed-info"; yang_parent_name = "suppressed"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::~SuppressedInfo()
@@ -7822,6 +7906,7 @@ Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::~SuppressedInfo()
 
 bool Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| severity.is_set
 	|| group.is_set
@@ -7983,6 +8068,41 @@ bool Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::has_leaf_or_child_o
     return false;
 }
 
+const Enum::YLeaf TimingBucket::not_specified {0, "not-specified"};
+const Enum::YLeaf TimingBucket::fifteen_min {1, "fifteen-min"};
+const Enum::YLeaf TimingBucket::one_day {2, "one-day"};
+
+const Enum::YLeaf AlarmSeverity::unknown {0, "unknown"};
+const Enum::YLeaf AlarmSeverity::not_reported {1, "not-reported"};
+const Enum::YLeaf AlarmSeverity::not_alarmed {2, "not-alarmed"};
+const Enum::YLeaf AlarmSeverity::minor {3, "minor"};
+const Enum::YLeaf AlarmSeverity::major_ {4, "major"};
+const Enum::YLeaf AlarmSeverity::critical {5, "critical"};
+const Enum::YLeaf AlarmSeverity::severity_last {6, "severity-last"};
+
+const Enum::YLeaf AlarmDirection::not_specified {0, "not-specified"};
+const Enum::YLeaf AlarmDirection::send {1, "send"};
+const Enum::YLeaf AlarmDirection::receive {2, "receive"};
+const Enum::YLeaf AlarmDirection::send_receive {3, "send-receive"};
+
+const Enum::YLeaf AlarmStatus::unknown {0, "unknown"};
+const Enum::YLeaf AlarmStatus::set {1, "set"};
+const Enum::YLeaf AlarmStatus::clear {2, "clear"};
+const Enum::YLeaf AlarmStatus::suppress {3, "suppress"};
+const Enum::YLeaf AlarmStatus::last {4, "last"};
+
+const Enum::YLeaf AlarmServiceAffecting::unknown {0, "unknown"};
+const Enum::YLeaf AlarmServiceAffecting::not_service_affecting {1, "not-service-affecting"};
+const Enum::YLeaf AlarmServiceAffecting::service_affecting {2, "service-affecting"};
+
+const Enum::YLeaf AlarmNotificationSrc::not_specified {0, "not-specified"};
+const Enum::YLeaf AlarmNotificationSrc::near_end {1, "near-end"};
+const Enum::YLeaf AlarmNotificationSrc::far_end {2, "far-end"};
+
+const Enum::YLeaf AlarmEvent::default_ {0, "default"};
+const Enum::YLeaf AlarmEvent::notification {1, "notification"};
+const Enum::YLeaf AlarmEvent::last {2, "last"};
+
 const Enum::YLeaf AlarmClient::unknown {1, "unknown"};
 const Enum::YLeaf AlarmClient::producer {2, "producer"};
 const Enum::YLeaf AlarmClient::consumer {4, "consumer"};
@@ -7996,27 +8116,6 @@ const Enum::YLeaf AlarmClientState::connected {3, "connected"};
 const Enum::YLeaf AlarmClientState::registered {4, "registered"};
 const Enum::YLeaf AlarmClientState::disconnected {5, "disconnected"};
 const Enum::YLeaf AlarmClientState::ready {6, "ready"};
-
-const Enum::YLeaf AlarmEvent::default_ {0, "default"};
-const Enum::YLeaf AlarmEvent::notification {1, "notification"};
-const Enum::YLeaf AlarmEvent::last {2, "last"};
-
-const Enum::YLeaf TimingBucket::not_specified {0, "not-specified"};
-const Enum::YLeaf TimingBucket::fifteen_min {1, "fifteen-min"};
-const Enum::YLeaf TimingBucket::one_day {2, "one-day"};
-
-const Enum::YLeaf AlarmNotificationSrc::not_specified {0, "not-specified"};
-const Enum::YLeaf AlarmNotificationSrc::near_end {1, "near-end"};
-const Enum::YLeaf AlarmNotificationSrc::far_end {2, "far-end"};
-
-const Enum::YLeaf AlarmDirection::not_specified {0, "not-specified"};
-const Enum::YLeaf AlarmDirection::send {1, "send"};
-const Enum::YLeaf AlarmDirection::receive {2, "receive"};
-const Enum::YLeaf AlarmDirection::send_receive {3, "send-receive"};
-
-const Enum::YLeaf AlarmServiceAffecting::unknown {0, "unknown"};
-const Enum::YLeaf AlarmServiceAffecting::not_service_affecting {1, "not-service-affecting"};
-const Enum::YLeaf AlarmServiceAffecting::service_affecting {2, "service-affecting"};
 
 const Enum::YLeaf AlarmGroups::unknown {0, "unknown"};
 const Enum::YLeaf AlarmGroups::environ {1, "environ"};
@@ -8037,20 +8136,6 @@ const Enum::YLeaf AlarmGroups::mpa {15, "mpa"};
 const Enum::YLeaf AlarmGroups::ots {16, "ots"};
 const Enum::YLeaf AlarmGroups::timing {17, "timing"};
 const Enum::YLeaf AlarmGroups::last {18, "last"};
-
-const Enum::YLeaf AlarmStatus::unknown {0, "unknown"};
-const Enum::YLeaf AlarmStatus::set {1, "set"};
-const Enum::YLeaf AlarmStatus::clear {2, "clear"};
-const Enum::YLeaf AlarmStatus::suppress {3, "suppress"};
-const Enum::YLeaf AlarmStatus::last {4, "last"};
-
-const Enum::YLeaf AlarmSeverity::unknown {0, "unknown"};
-const Enum::YLeaf AlarmSeverity::not_reported {1, "not-reported"};
-const Enum::YLeaf AlarmSeverity::not_alarmed {2, "not-alarmed"};
-const Enum::YLeaf AlarmSeverity::minor {3, "minor"};
-const Enum::YLeaf AlarmSeverity::major_ {4, "major"};
-const Enum::YLeaf AlarmSeverity::critical {5, "critical"};
-const Enum::YLeaf AlarmSeverity::severity_last {6, "severity-last"};
 
 
 }

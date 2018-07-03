@@ -17,7 +17,7 @@ EsAcl::EsAcl()
 {
     active->parent = this;
 
-    yang_name = "es-acl"; yang_parent_name = "Cisco-IOS-XR-es-acl-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "es-acl"; yang_parent_name = "Cisco-IOS-XR-es-acl-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 EsAcl::~EsAcl()
@@ -26,6 +26,7 @@ EsAcl::~EsAcl()
 
 bool EsAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return (active !=  nullptr && active->has_data());
 }
 
@@ -120,16 +121,16 @@ bool EsAcl::has_leaf_or_child_of_name(const std::string & name) const
 EsAcl::Active::Active()
     :
     oor(std::make_shared<EsAcl::Active::Oor>())
-	,list(std::make_shared<EsAcl::Active::List>())
-	,oor_acls(std::make_shared<EsAcl::Active::OorAcls>())
-	,usages(std::make_shared<EsAcl::Active::Usages>())
+    , list(std::make_shared<EsAcl::Active::List>())
+    , oor_acls(std::make_shared<EsAcl::Active::OorAcls>())
+    , usages(std::make_shared<EsAcl::Active::Usages>())
 {
     oor->parent = this;
     list->parent = this;
     oor_acls->parent = this;
     usages->parent = this;
 
-    yang_name = "active"; yang_parent_name = "es-acl"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "active"; yang_parent_name = "es-acl"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::~Active()
@@ -138,6 +139,7 @@ EsAcl::Active::~Active()
 
 bool EsAcl::Active::has_data() const
 {
+    if (is_presence_container) return true;
     return (oor !=  nullptr && oor->has_data())
 	|| (list !=  nullptr && list->has_data())
 	|| (oor_acls !=  nullptr && oor_acls->has_data())
@@ -265,7 +267,7 @@ EsAcl::Active::Oor::Oor()
 {
     acl_summary->parent = this;
 
-    yang_name = "oor"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oor"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::Oor::~Oor()
@@ -274,6 +276,7 @@ EsAcl::Active::Oor::~Oor()
 
 bool EsAcl::Active::Oor::has_data() const
 {
+    if (is_presence_container) return true;
     return (acl_summary !=  nullptr && acl_summary->has_data());
 }
 
@@ -353,7 +356,7 @@ EsAcl::Active::Oor::AclSummary::AclSummary()
 {
     details->parent = this;
 
-    yang_name = "acl-summary"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "acl-summary"; yang_parent_name = "oor"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::Oor::AclSummary::~AclSummary()
@@ -362,6 +365,7 @@ EsAcl::Active::Oor::AclSummary::~AclSummary()
 
 bool EsAcl::Active::Oor::AclSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (details !=  nullptr && details->has_data());
 }
 
@@ -443,7 +447,7 @@ EsAcl::Active::Oor::AclSummary::Details::Details()
     maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"}
 {
 
-    yang_name = "details"; yang_parent_name = "acl-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "details"; yang_parent_name = "acl-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::Oor::AclSummary::Details::~Details()
@@ -452,6 +456,7 @@ EsAcl::Active::Oor::AclSummary::Details::~Details()
 
 bool EsAcl::Active::Oor::AclSummary::Details::has_data() const
 {
+    if (is_presence_container) return true;
     return current_configured_ac_ls.is_set
 	|| current_configured_ac_es.is_set
 	|| maximum_configurable_ac_ls.is_set
@@ -567,7 +572,7 @@ EsAcl::Active::List::List()
 {
     acls->parent = this;
 
-    yang_name = "list"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "list"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::List::~List()
@@ -576,6 +581,7 @@ EsAcl::Active::List::~List()
 
 bool EsAcl::Active::List::has_data() const
 {
+    if (is_presence_container) return true;
     return (acls !=  nullptr && acls->has_data());
 }
 
@@ -650,9 +656,11 @@ bool EsAcl::Active::List::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 EsAcl::Active::List::Acls::Acls()
+    :
+    acl(this, {"name"})
 {
 
-    yang_name = "acls"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "acls"; yang_parent_name = "list"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::List::Acls::~Acls()
@@ -661,7 +669,8 @@ EsAcl::Active::List::Acls::~Acls()
 
 bool EsAcl::Active::List::Acls::has_data() const
 {
-    for (std::size_t index=0; index<acl.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<acl.len(); index++)
     {
         if(acl[index]->has_data())
             return true;
@@ -671,7 +680,7 @@ bool EsAcl::Active::List::Acls::has_data() const
 
 bool EsAcl::Active::List::Acls::has_operation() const
 {
-    for (std::size_t index=0; index<acl.size(); index++)
+    for (std::size_t index=0; index<acl.len(); index++)
     {
         if(acl[index]->has_operation())
             return true;
@@ -708,7 +717,7 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::get_child_by_name(const std::
     {
         auto c = std::make_shared<EsAcl::Active::List::Acls::Acl>();
         c->parent = this;
-        acl.push_back(c);
+        acl.append(c);
         return c;
     }
 
@@ -720,7 +729,7 @@ std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : acl)
+    for (auto c : acl.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -749,12 +758,12 @@ bool EsAcl::Active::List::Acls::has_leaf_or_child_of_name(const std::string & na
 EsAcl::Active::List::Acls::Acl::Acl()
     :
     name{YType::str, "name"}
-    	,
+        ,
     acl_sequence_numbers(std::make_shared<EsAcl::Active::List::Acls::Acl::AclSequenceNumbers>())
 {
     acl_sequence_numbers->parent = this;
 
-    yang_name = "acl"; yang_parent_name = "acls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "acl"; yang_parent_name = "acls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::List::Acls::Acl::~Acl()
@@ -763,6 +772,7 @@ EsAcl::Active::List::Acls::Acl::~Acl()
 
 bool EsAcl::Active::List::Acls::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (acl_sequence_numbers !=  nullptr && acl_sequence_numbers->has_data());
 }
@@ -784,7 +794,8 @@ std::string EsAcl::Active::List::Acls::Acl::get_absolute_path() const
 std::string EsAcl::Active::List::Acls::Acl::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "acl" <<"[name='" <<name <<"']";
+    path_buffer << "acl";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -850,9 +861,11 @@ bool EsAcl::Active::List::Acls::Acl::has_leaf_or_child_of_name(const std::string
 }
 
 EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumbers()
+    :
+    acl_sequence_number(this, {"sequence_number"})
 {
 
-    yang_name = "acl-sequence-numbers"; yang_parent_name = "acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl-sequence-numbers"; yang_parent_name = "acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::~AclSequenceNumbers()
@@ -861,7 +874,8 @@ EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::~AclSequenceNumbers()
 
 bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::has_data() const
 {
-    for (std::size_t index=0; index<acl_sequence_number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<acl_sequence_number.len(); index++)
     {
         if(acl_sequence_number[index]->has_data())
             return true;
@@ -871,7 +885,7 @@ bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::has_data() const
 
 bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::has_operation() const
 {
-    for (std::size_t index=0; index<acl_sequence_number.size(); index++)
+    for (std::size_t index=0; index<acl_sequence_number.len(); index++)
     {
         if(acl_sequence_number[index]->has_operation())
             return true;
@@ -901,7 +915,7 @@ std::shared_ptr<Entity> EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::get_
     {
         auto c = std::make_shared<EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber>();
         c->parent = this;
-        acl_sequence_number.push_back(c);
+        acl_sequence_number.append(c);
         return c;
     }
 
@@ -913,7 +927,7 @@ std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::List::Acls::Acl::A
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : acl_sequence_number)
+    for (auto c : acl_sequence_number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -966,7 +980,7 @@ EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::AclSequen
     sequence_string{YType::str, "sequence-string"}
 {
 
-    yang_name = "acl-sequence-number"; yang_parent_name = "acl-sequence-numbers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "acl-sequence-number"; yang_parent_name = "acl-sequence-numbers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::~AclSequenceNumber()
@@ -975,6 +989,7 @@ EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::~AclSeque
 
 bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::has_data() const
 {
+    if (is_presence_container) return true;
     return sequence_number.is_set
 	|| ace_type.is_set
 	|| ace_sequence_number.is_set
@@ -1031,7 +1046,8 @@ bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::has_
 std::string EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "acl-sequence-number" <<"[sequence-number='" <<sequence_number <<"']";
+    path_buffer << "acl-sequence-number";
+    ADD_KEY_TOKEN(sequence_number, "sequence-number");
     return path_buffer.str();
 }
 
@@ -1325,9 +1341,11 @@ bool EsAcl::Active::List::Acls::Acl::AclSequenceNumbers::AclSequenceNumber::has_
 }
 
 EsAcl::Active::OorAcls::OorAcls()
+    :
+    oor_acl(this, {"name"})
 {
 
-    yang_name = "oor-acls"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oor-acls"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::OorAcls::~OorAcls()
@@ -1336,7 +1354,8 @@ EsAcl::Active::OorAcls::~OorAcls()
 
 bool EsAcl::Active::OorAcls::has_data() const
 {
-    for (std::size_t index=0; index<oor_acl.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<oor_acl.len(); index++)
     {
         if(oor_acl[index]->has_data())
             return true;
@@ -1346,7 +1365,7 @@ bool EsAcl::Active::OorAcls::has_data() const
 
 bool EsAcl::Active::OorAcls::has_operation() const
 {
-    for (std::size_t index=0; index<oor_acl.size(); index++)
+    for (std::size_t index=0; index<oor_acl.len(); index++)
     {
         if(oor_acl[index]->has_operation())
             return true;
@@ -1383,7 +1402,7 @@ std::shared_ptr<Entity> EsAcl::Active::OorAcls::get_child_by_name(const std::str
     {
         auto c = std::make_shared<EsAcl::Active::OorAcls::OorAcl>();
         c->parent = this;
-        oor_acl.push_back(c);
+        oor_acl.append(c);
         return c;
     }
 
@@ -1395,7 +1414,7 @@ std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::OorAcls::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : oor_acl)
+    for (auto c : oor_acl.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1430,7 +1449,7 @@ EsAcl::Active::OorAcls::OorAcl::OorAcl()
     maximum_configurable_ac_es{YType::uint32, "maximum-configurable-ac-es"}
 {
 
-    yang_name = "oor-acl"; yang_parent_name = "oor-acls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oor-acl"; yang_parent_name = "oor-acls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::OorAcls::OorAcl::~OorAcl()
@@ -1439,6 +1458,7 @@ EsAcl::Active::OorAcls::OorAcl::~OorAcl()
 
 bool EsAcl::Active::OorAcls::OorAcl::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| current_configured_ac_ls.is_set
 	|| current_configured_ac_es.is_set
@@ -1466,7 +1486,8 @@ std::string EsAcl::Active::OorAcls::OorAcl::get_absolute_path() const
 std::string EsAcl::Active::OorAcls::OorAcl::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "oor-acl" <<"[name='" <<name <<"']";
+    path_buffer << "oor-acl";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -1562,9 +1583,11 @@ bool EsAcl::Active::OorAcls::OorAcl::has_leaf_or_child_of_name(const std::string
 }
 
 EsAcl::Active::Usages::Usages()
+    :
+    usage(this, {})
 {
 
-    yang_name = "usages"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usages"; yang_parent_name = "active"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::Usages::~Usages()
@@ -1573,7 +1596,8 @@ EsAcl::Active::Usages::~Usages()
 
 bool EsAcl::Active::Usages::has_data() const
 {
-    for (std::size_t index=0; index<usage.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<usage.len(); index++)
     {
         if(usage[index]->has_data())
             return true;
@@ -1583,7 +1607,7 @@ bool EsAcl::Active::Usages::has_data() const
 
 bool EsAcl::Active::Usages::has_operation() const
 {
-    for (std::size_t index=0; index<usage.size(); index++)
+    for (std::size_t index=0; index<usage.len(); index++)
     {
         if(usage[index]->has_operation())
             return true;
@@ -1620,7 +1644,7 @@ std::shared_ptr<Entity> EsAcl::Active::Usages::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<EsAcl::Active::Usages::Usage>();
         c->parent = this;
-        usage.push_back(c);
+        usage.append(c);
         return c;
     }
 
@@ -1632,7 +1656,7 @@ std::map<std::string, std::shared_ptr<Entity>> EsAcl::Active::Usages::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : usage)
+    for (auto c : usage.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1666,7 +1690,7 @@ EsAcl::Active::Usages::Usage::Usage()
     usage_details{YType::str, "usage-details"}
 {
 
-    yang_name = "usage"; yang_parent_name = "usages"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "usage"; yang_parent_name = "usages"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 EsAcl::Active::Usages::Usage::~Usage()
@@ -1675,6 +1699,7 @@ EsAcl::Active::Usages::Usage::~Usage()
 
 bool EsAcl::Active::Usages::Usage::has_data() const
 {
+    if (is_presence_container) return true;
     return location.is_set
 	|| application_id.is_set
 	|| name.is_set

@@ -32,60 +32,60 @@ class CISCOIETFISISMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciisysobject; //type: CISCOIETFISISMIB::Ciisysobject
-        class Ciicirc; //type: CISCOIETFISISMIB::Ciicirc
-        class Ciimanareaaddrtable; //type: CISCOIETFISISMIB::Ciimanareaaddrtable
-        class Ciiareaaddrtable; //type: CISCOIETFISISMIB::Ciiareaaddrtable
-        class Ciisysprotsupptable; //type: CISCOIETFISISMIB::Ciisysprotsupptable
-        class Ciisummaddrtable; //type: CISCOIETFISISMIB::Ciisummaddrtable
-        class Ciiredistributeaddrtable; //type: CISCOIETFISISMIB::Ciiredistributeaddrtable
-        class Ciiroutertable; //type: CISCOIETFISISMIB::Ciiroutertable
-        class Ciisysleveltable; //type: CISCOIETFISISMIB::Ciisysleveltable
-        class Ciicirctable; //type: CISCOIETFISISMIB::Ciicirctable
-        class Ciicircleveltable; //type: CISCOIETFISISMIB::Ciicircleveltable
-        class Ciisystemcountertable; //type: CISCOIETFISISMIB::Ciisystemcountertable
-        class Ciicircuitcountertable; //type: CISCOIETFISISMIB::Ciicircuitcountertable
-        class Ciipacketcountertable; //type: CISCOIETFISISMIB::Ciipacketcountertable
-        class Ciiisadjtable; //type: CISCOIETFISISMIB::Ciiisadjtable
-        class Ciiisadjareaaddrtable; //type: CISCOIETFISISMIB::Ciiisadjareaaddrtable
-        class Ciiisadjipaddrtable; //type: CISCOIETFISISMIB::Ciiisadjipaddrtable
-        class Ciiisadjprotsupptable; //type: CISCOIETFISISMIB::Ciiisadjprotsupptable
-        class Ciiratable; //type: CISCOIETFISISMIB::Ciiratable
-        class Ciiipratable; //type: CISCOIETFISISMIB::Ciiipratable
-        class Ciilspsummarytable; //type: CISCOIETFISISMIB::Ciilspsummarytable
-        class Ciilsptlvtable; //type: CISCOIETFISISMIB::Ciilsptlvtable
+        class CiiSysObject; //type: CISCOIETFISISMIB::CiiSysObject
+        class CiiCirc; //type: CISCOIETFISISMIB::CiiCirc
+        class CiiManAreaAddrTable; //type: CISCOIETFISISMIB::CiiManAreaAddrTable
+        class CiiAreaAddrTable; //type: CISCOIETFISISMIB::CiiAreaAddrTable
+        class CiiSysProtSuppTable; //type: CISCOIETFISISMIB::CiiSysProtSuppTable
+        class CiiSummAddrTable; //type: CISCOIETFISISMIB::CiiSummAddrTable
+        class CiiRedistributeAddrTable; //type: CISCOIETFISISMIB::CiiRedistributeAddrTable
+        class CiiRouterTable; //type: CISCOIETFISISMIB::CiiRouterTable
+        class CiiSysLevelTable; //type: CISCOIETFISISMIB::CiiSysLevelTable
+        class CiiCircTable; //type: CISCOIETFISISMIB::CiiCircTable
+        class CiiCircLevelTable; //type: CISCOIETFISISMIB::CiiCircLevelTable
+        class CiiSystemCounterTable; //type: CISCOIETFISISMIB::CiiSystemCounterTable
+        class CiiCircuitCounterTable; //type: CISCOIETFISISMIB::CiiCircuitCounterTable
+        class CiiPacketCounterTable; //type: CISCOIETFISISMIB::CiiPacketCounterTable
+        class CiiISAdjTable; //type: CISCOIETFISISMIB::CiiISAdjTable
+        class CiiISAdjAreaAddrTable; //type: CISCOIETFISISMIB::CiiISAdjAreaAddrTable
+        class CiiISAdjIPAddrTable; //type: CISCOIETFISISMIB::CiiISAdjIPAddrTable
+        class CiiISAdjProtSuppTable; //type: CISCOIETFISISMIB::CiiISAdjProtSuppTable
+        class CiiRATable; //type: CISCOIETFISISMIB::CiiRATable
+        class CiiIPRATable; //type: CISCOIETFISISMIB::CiiIPRATable
+        class CiiLSPSummaryTable; //type: CISCOIETFISISMIB::CiiLSPSummaryTable
+        class CiiLSPTLVTable; //type: CISCOIETFISISMIB::CiiLSPTLVTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisysobject> ciisysobject;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirc> ciicirc;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciimanareaaddrtable> ciimanareaaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiareaaddrtable> ciiareaaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisysprotsupptable> ciisysprotsupptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisummaddrtable> ciisummaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiredistributeaddrtable> ciiredistributeaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiroutertable> ciiroutertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisysleveltable> ciisysleveltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable> ciicirctable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicircleveltable> ciicircleveltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisystemcountertable> ciisystemcountertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicircuitcountertable> ciicircuitcountertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciipacketcountertable> ciipacketcountertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjtable> ciiisadjtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjareaaddrtable> ciiisadjareaaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjipaddrtable> ciiisadjipaddrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjprotsupptable> ciiisadjprotsupptable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiratable> ciiratable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiipratable> ciiipratable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciilspsummarytable> ciilspsummarytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciilsptlvtable> ciilsptlvtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiSysObject> ciisysobject;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCirc> ciicirc;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiManAreaAddrTable> ciimanareaaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiAreaAddrTable> ciiareaaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiSysProtSuppTable> ciisysprotsupptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiSummAddrTable> ciisummaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiRedistributeAddrTable> ciiredistributeaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiRouterTable> ciiroutertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiSysLevelTable> ciisysleveltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable> ciicirctable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircLevelTable> ciicircleveltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiSystemCounterTable> ciisystemcountertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircuitCounterTable> ciicircuitcountertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiPacketCounterTable> ciipacketcountertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiISAdjTable> ciiisadjtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiISAdjAreaAddrTable> ciiisadjareaaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiISAdjIPAddrTable> ciiisadjipaddrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiISAdjProtSuppTable> ciiisadjprotsupptable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiRATable> ciiratable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiIPRATable> ciiipratable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiLSPSummaryTable> ciilspsummarytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiLSPTLVTable> ciilsptlvtable;
         
 }; // CISCOIETFISISMIB
 
 
-class CISCOIETFISISMIB::Ciisysobject : public ydk::Entity
+class CISCOIETFISISMIB::CiiSysObject : public ydk::Entity
 {
     public:
-        Ciisysobject();
-        ~Ciisysobject();
+        CiiSysObject();
+        ~CiiSysObject();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -98,8 +98,8 @@ class CISCOIETFISISMIB::Ciisysobject : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ciisysversion; //type: Ciisysversion
-        ydk::YLeaf ciisystype; //type: Ciisystype
+        ydk::YLeaf ciisysversion; //type: CiiSysVersion
+        ydk::YLeaf ciisystype; //type: CiiSysType
         ydk::YLeaf ciisysid; //type: binary
         ydk::YLeaf ciisysmaxpathsplits; //type: int32
         ydk::YLeaf ciisysmaxlspgenint; //type: int32
@@ -109,17 +109,17 @@ class CISCOIETFISISMIB::Ciisysobject : public ydk::Entity
         ydk::YLeaf ciisysl2tol1leaking; //type: boolean
         ydk::YLeaf ciisysmaxage; //type: uint32
         ydk::YLeaf ciisysreceivelspbuffersize; //type: uint32
-        class Ciisysversion;
-        class Ciisystype;
+        class CiiSysVersion;
+        class CiiSysType;
 
-}; // CISCOIETFISISMIB::Ciisysobject
+}; // CISCOIETFISISMIB::CiiSysObject
 
 
-class CISCOIETFISISMIB::Ciicirc : public ydk::Entity
+class CISCOIETFISISMIB::CiiCirc : public ydk::Entity
 {
     public:
-        Ciicirc();
-        ~Ciicirc();
+        CiiCirc();
+        ~CiiCirc();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -134,14 +134,14 @@ class CISCOIETFISISMIB::Ciicirc : public ydk::Entity
 
         ydk::YLeaf ciinextcircindex; //type: uint32
 
-}; // CISCOIETFISISMIB::Ciicirc
+}; // CISCOIETFISISMIB::CiiCirc
 
 
-class CISCOIETFISISMIB::Ciimanareaaddrtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiManAreaAddrTable : public ydk::Entity
 {
     public:
-        Ciimanareaaddrtable();
-        ~Ciimanareaaddrtable();
+        CiiManAreaAddrTable();
+        ~CiiManAreaAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -154,18 +154,18 @@ class CISCOIETFISISMIB::Ciimanareaaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciimanareaaddrentry; //type: CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry
+        class CiiManAreaAddrEntry; //type: CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry> > ciimanareaaddrentry;
+        ydk::YList ciimanareaaddrentry;
         
-}; // CISCOIETFISISMIB::Ciimanareaaddrtable
+}; // CISCOIETFISISMIB::CiiManAreaAddrTable
 
 
-class CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry : public ydk::Entity
 {
     public:
-        Ciimanareaaddrentry();
-        ~Ciimanareaaddrentry();
+        CiiManAreaAddrEntry();
+        ~CiiManAreaAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -181,14 +181,14 @@ class CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry : public ydk::E
         ydk::YLeaf ciimanareaaddr; //type: binary
         ydk::YLeaf ciimanareaaddrexiststate; //type: RowStatus
 
-}; // CISCOIETFISISMIB::Ciimanareaaddrtable::Ciimanareaaddrentry
+}; // CISCOIETFISISMIB::CiiManAreaAddrTable::CiiManAreaAddrEntry
 
 
-class CISCOIETFISISMIB::Ciiareaaddrtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiAreaAddrTable : public ydk::Entity
 {
     public:
-        Ciiareaaddrtable();
-        ~Ciiareaaddrtable();
+        CiiAreaAddrTable();
+        ~CiiAreaAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -201,18 +201,18 @@ class CISCOIETFISISMIB::Ciiareaaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiareaaddrentry; //type: CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry
+        class CiiAreaAddrEntry; //type: CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry> > ciiareaaddrentry;
+        ydk::YList ciiareaaddrentry;
         
-}; // CISCOIETFISISMIB::Ciiareaaddrtable
+}; // CISCOIETFISISMIB::CiiAreaAddrTable
 
 
-class CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry : public ydk::Entity
 {
     public:
-        Ciiareaaddrentry();
-        ~Ciiareaaddrentry();
+        CiiAreaAddrEntry();
+        ~CiiAreaAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -227,14 +227,14 @@ class CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry : public ydk::Entity
 
         ydk::YLeaf ciiareaaddr; //type: binary
 
-}; // CISCOIETFISISMIB::Ciiareaaddrtable::Ciiareaaddrentry
+}; // CISCOIETFISISMIB::CiiAreaAddrTable::CiiAreaAddrEntry
 
 
-class CISCOIETFISISMIB::Ciisysprotsupptable : public ydk::Entity
+class CISCOIETFISISMIB::CiiSysProtSuppTable : public ydk::Entity
 {
     public:
-        Ciisysprotsupptable();
-        ~Ciisysprotsupptable();
+        CiiSysProtSuppTable();
+        ~CiiSysProtSuppTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -247,18 +247,18 @@ class CISCOIETFISISMIB::Ciisysprotsupptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciisysprotsuppentry; //type: CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry
+        class CiiSysProtSuppEntry; //type: CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry> > ciisysprotsuppentry;
+        ydk::YList ciisysprotsuppentry;
         
-}; // CISCOIETFISISMIB::Ciisysprotsupptable
+}; // CISCOIETFISISMIB::CiiSysProtSuppTable
 
 
-class CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry : public ydk::Entity
 {
     public:
-        Ciisysprotsuppentry();
-        ~Ciisysprotsuppentry();
+        CiiSysProtSuppEntry();
+        ~CiiSysProtSuppEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -274,14 +274,14 @@ class CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry : public ydk::E
         ydk::YLeaf ciisysprotsuppprotocol; //type: CiiSupportedProtocol
         ydk::YLeaf ciisysprotsuppexiststate; //type: RowStatus
 
-}; // CISCOIETFISISMIB::Ciisysprotsupptable::Ciisysprotsuppentry
+}; // CISCOIETFISISMIB::CiiSysProtSuppTable::CiiSysProtSuppEntry
 
 
-class CISCOIETFISISMIB::Ciisummaddrtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiSummAddrTable : public ydk::Entity
 {
     public:
-        Ciisummaddrtable();
-        ~Ciisummaddrtable();
+        CiiSummAddrTable();
+        ~CiiSummAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -294,18 +294,18 @@ class CISCOIETFISISMIB::Ciisummaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciisummaddrentry; //type: CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry
+        class CiiSummAddrEntry; //type: CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry> > ciisummaddrentry;
+        ydk::YList ciisummaddrentry;
         
-}; // CISCOIETFISISMIB::Ciisummaddrtable
+}; // CISCOIETFISISMIB::CiiSummAddrTable
 
 
-class CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry : public ydk::Entity
 {
     public:
-        Ciisummaddrentry();
-        ~Ciisummaddrentry();
+        CiiSummAddrEntry();
+        ~CiiSummAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -325,14 +325,14 @@ class CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry : public ydk::Entity
         ydk::YLeaf ciisummaddrmetric; //type: int32
         ydk::YLeaf ciisummaddrfullmetric; //type: uint32
 
-}; // CISCOIETFISISMIB::Ciisummaddrtable::Ciisummaddrentry
+}; // CISCOIETFISISMIB::CiiSummAddrTable::CiiSummAddrEntry
 
 
-class CISCOIETFISISMIB::Ciiredistributeaddrtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiRedistributeAddrTable : public ydk::Entity
 {
     public:
-        Ciiredistributeaddrtable();
-        ~Ciiredistributeaddrtable();
+        CiiRedistributeAddrTable();
+        ~CiiRedistributeAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -345,18 +345,18 @@ class CISCOIETFISISMIB::Ciiredistributeaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiredistributeaddrentry; //type: CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry
+        class CiiRedistributeAddrEntry; //type: CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry> > ciiredistributeaddrentry;
+        ydk::YList ciiredistributeaddrentry;
         
-}; // CISCOIETFISISMIB::Ciiredistributeaddrtable
+}; // CISCOIETFISISMIB::CiiRedistributeAddrTable
 
 
-class CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry : public ydk::Entity
 {
     public:
-        Ciiredistributeaddrentry();
-        ~Ciiredistributeaddrentry();
+        CiiRedistributeAddrEntry();
+        ~CiiRedistributeAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -374,14 +374,14 @@ class CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry : pub
         ydk::YLeaf ciiredistributeaddrprefixlen; //type: uint32
         ydk::YLeaf ciiredistributeaddrexiststate; //type: RowStatus
 
-}; // CISCOIETFISISMIB::Ciiredistributeaddrtable::Ciiredistributeaddrentry
+}; // CISCOIETFISISMIB::CiiRedistributeAddrTable::CiiRedistributeAddrEntry
 
 
-class CISCOIETFISISMIB::Ciiroutertable : public ydk::Entity
+class CISCOIETFISISMIB::CiiRouterTable : public ydk::Entity
 {
     public:
-        Ciiroutertable();
-        ~Ciiroutertable();
+        CiiRouterTable();
+        ~CiiRouterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -394,18 +394,18 @@ class CISCOIETFISISMIB::Ciiroutertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciirouterentry; //type: CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry
+        class CiiRouterEntry; //type: CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry> > ciirouterentry;
+        ydk::YList ciirouterentry;
         
-}; // CISCOIETFISISMIB::Ciiroutertable
+}; // CISCOIETFISISMIB::CiiRouterTable
 
 
-class CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry : public ydk::Entity
 {
     public:
-        Ciirouterentry();
-        ~Ciirouterentry();
+        CiiRouterEntry();
+        ~CiiRouterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -423,14 +423,14 @@ class CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry : public ydk::Entity
         ydk::YLeaf ciirouterhostname; //type: string
         ydk::YLeaf ciirouterid; //type: uint32
 
-}; // CISCOIETFISISMIB::Ciiroutertable::Ciirouterentry
+}; // CISCOIETFISISMIB::CiiRouterTable::CiiRouterEntry
 
 
-class CISCOIETFISISMIB::Ciisysleveltable : public ydk::Entity
+class CISCOIETFISISMIB::CiiSysLevelTable : public ydk::Entity
 {
     public:
-        Ciisysleveltable();
-        ~Ciisysleveltable();
+        CiiSysLevelTable();
+        ~CiiSysLevelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -443,18 +443,18 @@ class CISCOIETFISISMIB::Ciisysleveltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciisyslevelentry; //type: CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry
+        class CiiSysLevelEntry; //type: CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry> > ciisyslevelentry;
+        ydk::YList ciisyslevelentry;
         
-}; // CISCOIETFISISMIB::Ciisysleveltable
+}; // CISCOIETFISISMIB::CiiSysLevelTable
 
 
-class CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry : public ydk::Entity
 {
     public:
-        Ciisyslevelentry();
-        ~Ciisyslevelentry();
+        CiiSysLevelEntry();
+        ~CiiSysLevelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -467,7 +467,7 @@ class CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ciisyslevelindex; //type: Ciisyslevelindex
+        ydk::YLeaf ciisyslevelindex; //type: CiiSysLevelIndex
         ydk::YLeaf ciisysleveloriglspbuffsize; //type: int32
         ydk::YLeaf ciisyslevelminlspgenint; //type: uint32
         ydk::YLeaf ciisysleveloverloadstate; //type: CiiLevelState
@@ -476,16 +476,16 @@ class CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry : public ydk::Entity
         ydk::YLeaf ciisyslevelmetricstyle; //type: CiiMetricStyle
         ydk::YLeaf ciisyslevelspfconsiders; //type: CiiMetricStyle
         ydk::YLeaf ciisyslevelteenabled; //type: boolean
-        class Ciisyslevelindex;
+        class CiiSysLevelIndex;
 
-}; // CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry
+}; // CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry
 
 
-class CISCOIETFISISMIB::Ciicirctable : public ydk::Entity
+class CISCOIETFISISMIB::CiiCircTable : public ydk::Entity
 {
     public:
-        Ciicirctable();
-        ~Ciicirctable();
+        CiiCircTable();
+        ~CiiCircTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -498,18 +498,18 @@ class CISCOIETFISISMIB::Ciicirctable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciicircentry; //type: CISCOIETFISISMIB::Ciicirctable::Ciicircentry
+        class CiiCircEntry; //type: CISCOIETFISISMIB::CiiCircTable::CiiCircEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry> > ciicircentry;
+        ydk::YList ciicircentry;
         
-}; // CISCOIETFISISMIB::Ciicirctable
+}; // CISCOIETFISISMIB::CiiCircTable
 
 
-class CISCOIETFISISMIB::Ciicirctable::Ciicircentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry : public ydk::Entity
 {
     public:
-        Ciicircentry();
-        ~Ciicircentry();
+        CiiCircEntry();
+        ~CiiCircEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -527,28 +527,28 @@ class CISCOIETFISISMIB::Ciicirctable::Ciicircentry : public ydk::Entity
         ydk::YLeaf ciicircifsubindex; //type: int32
         ydk::YLeaf ciicircadminstate; //type: CiiAdminState
         ydk::YLeaf ciicircexiststate; //type: RowStatus
-        ydk::YLeaf ciicirctype; //type: Ciicirctype
+        ydk::YLeaf ciicirctype; //type: CiiCircType
         ydk::YLeaf ciicircextdomain; //type: boolean
-        ydk::YLeaf ciicirclevel; //type: Ciicirclevel
+        ydk::YLeaf ciicirclevel; //type: CiiCircLevel
         ydk::YLeaf ciicircpassivecircuit; //type: boolean
-        ydk::YLeaf ciicircmeshgroupenabled; //type: Ciicircmeshgroupenabled
+        ydk::YLeaf ciicircmeshgroupenabled; //type: CiiCircMeshGroupEnabled
         ydk::YLeaf ciicircmeshgroup; //type: uint32
         ydk::YLeaf ciicircsmallhellos; //type: boolean
         ydk::YLeaf ciicirclastuptime; //type: uint32
         ydk::YLeaf ciicirc3wayenabled; //type: boolean
         ydk::YLeaf ciicircextendedcircid; //type: uint32
-        class Ciicirctype;
-        class Ciicirclevel;
-        class Ciicircmeshgroupenabled;
+        class CiiCircType;
+        class CiiCircLevel;
+        class CiiCircMeshGroupEnabled;
 
-}; // CISCOIETFISISMIB::Ciicirctable::Ciicircentry
+}; // CISCOIETFISISMIB::CiiCircTable::CiiCircEntry
 
 
-class CISCOIETFISISMIB::Ciicircleveltable : public ydk::Entity
+class CISCOIETFISISMIB::CiiCircLevelTable : public ydk::Entity
 {
     public:
-        Ciicircleveltable();
-        ~Ciicircleveltable();
+        CiiCircLevelTable();
+        ~CiiCircLevelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -561,18 +561,18 @@ class CISCOIETFISISMIB::Ciicircleveltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciicirclevelentry; //type: CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry
+        class CiiCircLevelEntry; //type: CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry> > ciicirclevelentry;
+        ydk::YList ciicirclevelentry;
         
-}; // CISCOIETFISISMIB::Ciicircleveltable
+}; // CISCOIETFISISMIB::CiiCircLevelTable
 
 
-class CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry : public ydk::Entity
 {
     public:
-        Ciicirclevelentry();
-        ~Ciicirclevelentry();
+        CiiCircLevelEntry();
+        ~CiiCircLevelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -585,9 +585,9 @@ class CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry : public ydk::Entit
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
-        ydk::YLeaf ciicirclevelindex; //type: Ciicirclevelindex
+        ydk::YLeaf ciicirclevelindex; //type: CiiCircLevelIndex
         ydk::YLeaf ciicirclevelmetric; //type: int32
         ydk::YLeaf ciicirclevelwidemetric; //type: uint32
         ydk::YLeaf ciicirclevelispriority; //type: int32
@@ -601,16 +601,16 @@ class CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry : public ydk::Entit
         ydk::YLeaf ciicirclevelminlspretransint; //type: int32
         ydk::YLeaf ciicirclevelcsnpinterval; //type: int32
         ydk::YLeaf ciicirclevelpartsnpinterval; //type: int32
-        class Ciicirclevelindex;
+        class CiiCircLevelIndex;
 
-}; // CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry
+}; // CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry
 
 
-class CISCOIETFISISMIB::Ciisystemcountertable : public ydk::Entity
+class CISCOIETFISISMIB::CiiSystemCounterTable : public ydk::Entity
 {
     public:
-        Ciisystemcountertable();
-        ~Ciisystemcountertable();
+        CiiSystemCounterTable();
+        ~CiiSystemCounterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -623,18 +623,18 @@ class CISCOIETFISISMIB::Ciisystemcountertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciisystemcounterentry; //type: CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry
+        class CiiSystemCounterEntry; //type: CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry> > ciisystemcounterentry;
+        ydk::YList ciisystemcounterentry;
         
-}; // CISCOIETFISISMIB::Ciisystemcountertable
+}; // CISCOIETFISISMIB::CiiSystemCounterTable
 
 
-class CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry : public ydk::Entity
 {
     public:
-        Ciisystemcounterentry();
-        ~Ciisystemcounterentry();
+        CiiSystemCounterEntry();
+        ~CiiSystemCounterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -647,7 +647,7 @@ class CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ciisysstatlevel; //type: Ciisysstatlevel
+        ydk::YLeaf ciisysstatlevel; //type: CiiSysStatLevel
         ydk::YLeaf ciisysstatcorrlsps; //type: uint32
         ydk::YLeaf ciisysstatauthtypefails; //type: uint32
         ydk::YLeaf ciisysstatauthfails; //type: uint32
@@ -660,16 +660,16 @@ class CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry : public yd
         ydk::YLeaf ciisysstatpartchanges; //type: uint32
         ydk::YLeaf ciisysstatspfruns; //type: uint32
         ydk::YLeaf ciisysstatlsperrors; //type: uint32
-        class Ciisysstatlevel;
+        class CiiSysStatLevel;
 
-}; // CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry
+}; // CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry
 
 
-class CISCOIETFISISMIB::Ciicircuitcountertable : public ydk::Entity
+class CISCOIETFISISMIB::CiiCircuitCounterTable : public ydk::Entity
 {
     public:
-        Ciicircuitcountertable();
-        ~Ciicircuitcountertable();
+        CiiCircuitCounterTable();
+        ~CiiCircuitCounterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -682,18 +682,18 @@ class CISCOIETFISISMIB::Ciicircuitcountertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciicircuitcounterentry; //type: CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry
+        class CiiCircuitCounterEntry; //type: CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry> > ciicircuitcounterentry;
+        ydk::YList ciicircuitcounterentry;
         
-}; // CISCOIETFISISMIB::Ciicircuitcountertable
+}; // CISCOIETFISISMIB::CiiCircuitCounterTable
 
 
-class CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry : public ydk::Entity
 {
     public:
-        Ciicircuitcounterentry();
-        ~Ciicircuitcounterentry();
+        CiiCircuitCounterEntry();
+        ~CiiCircuitCounterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -706,9 +706,9 @@ class CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
-        ydk::YLeaf ciicircuittype; //type: Ciicircuittype
+        ydk::YLeaf ciicircuittype; //type: CiiCircuitType
         ydk::YLeaf ciicircadjchanges; //type: uint32
         ydk::YLeaf ciicircnumadj; //type: uint32
         ydk::YLeaf ciicircinitfails; //type: uint32
@@ -718,16 +718,16 @@ class CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry : public 
         ydk::YLeaf ciicircauthtypefails; //type: uint32
         ydk::YLeaf ciicircauthfails; //type: uint32
         ydk::YLeaf ciicirclandesischanges; //type: uint32
-        class Ciicircuittype;
+        class CiiCircuitType;
 
-}; // CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry
+}; // CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry
 
 
-class CISCOIETFISISMIB::Ciipacketcountertable : public ydk::Entity
+class CISCOIETFISISMIB::CiiPacketCounterTable : public ydk::Entity
 {
     public:
-        Ciipacketcountertable();
-        ~Ciipacketcountertable();
+        CiiPacketCounterTable();
+        ~CiiPacketCounterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -740,18 +740,18 @@ class CISCOIETFISISMIB::Ciipacketcountertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciipacketcounterentry; //type: CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry
+        class CiiPacketCounterEntry; //type: CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry> > ciipacketcounterentry;
+        ydk::YList ciipacketcounterentry;
         
-}; // CISCOIETFISISMIB::Ciipacketcountertable
+}; // CISCOIETFISISMIB::CiiPacketCounterTable
 
 
-class CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry : public ydk::Entity
 {
     public:
-        Ciipacketcounterentry();
-        ~Ciipacketcounterentry();
+        CiiPacketCounterEntry();
+        ~CiiPacketCounterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -764,10 +764,10 @@ class CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
-        ydk::YLeaf ciipacketcountlevel; //type: Ciipacketcountlevel
-        ydk::YLeaf ciipacketcountdirection; //type: Ciipacketcountdirection
+        ydk::YLeaf ciipacketcountlevel; //type: CiiPacketCountLevel
+        ydk::YLeaf ciipacketcountdirection; //type: CiiPacketCountDirection
         ydk::YLeaf ciipacketcountiihellos; //type: uint32
         ydk::YLeaf ciipacketcountishellos; //type: uint32
         ydk::YLeaf ciipacketcounteshellos; //type: uint32
@@ -775,17 +775,17 @@ class CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry : public yd
         ydk::YLeaf ciipacketcountcsnps; //type: uint32
         ydk::YLeaf ciipacketcountpsnps; //type: uint32
         ydk::YLeaf ciipacketcountunknowns; //type: uint32
-        class Ciipacketcountlevel;
-        class Ciipacketcountdirection;
+        class CiiPacketCountLevel;
+        class CiiPacketCountDirection;
 
-}; // CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry
+}; // CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry
 
 
-class CISCOIETFISISMIB::Ciiisadjtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjTable : public ydk::Entity
 {
     public:
-        Ciiisadjtable();
-        ~Ciiisadjtable();
+        CiiISAdjTable();
+        ~CiiISAdjTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -798,18 +798,18 @@ class CISCOIETFISISMIB::Ciiisadjtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiisadjentry; //type: CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry
+        class CiiISAdjEntry; //type: CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry> > ciiisadjentry;
+        ydk::YList ciiisadjentry;
         
-}; // CISCOIETFISISMIB::Ciiisadjtable
+}; // CISCOIETFISISMIB::CiiISAdjTable
 
 
-class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry : public ydk::Entity
 {
     public:
-        Ciiisadjentry();
-        ~Ciiisadjentry();
+        CiiISAdjEntry();
+        ~CiiISAdjEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -822,32 +822,32 @@ class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
         ydk::YLeaf ciiisadjindex; //type: int32
-        ydk::YLeaf ciiisadjstate; //type: Ciiisadjstate
-        ydk::YLeaf ciiisadj3waystate; //type: Ciiisadj3Waystate
+        ydk::YLeaf ciiisadjstate; //type: CiiISAdjState
+        ydk::YLeaf ciiisadj3waystate; //type: CiiISAdj3WayState
         ydk::YLeaf ciiisadjneighsnpaaddress; //type: binary
-        ydk::YLeaf ciiisadjneighsystype; //type: Ciiisadjneighsystype
+        ydk::YLeaf ciiisadjneighsystype; //type: CiiISAdjNeighSysType
         ydk::YLeaf ciiisadjneighsysid; //type: binary
         ydk::YLeaf ciiisadjnbrextendedcircid; //type: uint32
-        ydk::YLeaf ciiisadjusage; //type: Ciiisadjusage
+        ydk::YLeaf ciiisadjusage; //type: CiiISAdjUsage
         ydk::YLeaf ciiisadjholdtimer; //type: uint32
         ydk::YLeaf ciiisadjneighpriority; //type: int32
         ydk::YLeaf ciiisadjlastuptime; //type: uint32
-        class Ciiisadjstate;
-        class Ciiisadj3Waystate;
-        class Ciiisadjneighsystype;
-        class Ciiisadjusage;
+        class CiiISAdjState;
+        class CiiISAdj3WayState;
+        class CiiISAdjNeighSysType;
+        class CiiISAdjUsage;
 
-}; // CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry
+}; // CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry
 
 
-class CISCOIETFISISMIB::Ciiisadjareaaddrtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjAreaAddrTable : public ydk::Entity
 {
     public:
-        Ciiisadjareaaddrtable();
-        ~Ciiisadjareaaddrtable();
+        CiiISAdjAreaAddrTable();
+        ~CiiISAdjAreaAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -860,18 +860,18 @@ class CISCOIETFISISMIB::Ciiisadjareaaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiisadjareaaddrentry; //type: CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry
+        class CiiISAdjAreaAddrEntry; //type: CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry> > ciiisadjareaaddrentry;
+        ydk::YList ciiisadjareaaddrentry;
         
-}; // CISCOIETFISISMIB::Ciiisadjareaaddrtable
+}; // CISCOIETFISISMIB::CiiISAdjAreaAddrTable
 
 
-class CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry : public ydk::Entity
 {
     public:
-        Ciiisadjareaaddrentry();
-        ~Ciiisadjareaaddrentry();
+        CiiISAdjAreaAddrEntry();
+        ~CiiISAdjAreaAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -884,21 +884,21 @@ class CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::ciiisadjindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::ciiisadjindex)
         ydk::YLeaf ciiisadjindex;
         ydk::YLeaf ciiisadjareaaddrindex; //type: int32
         ydk::YLeaf ciiisadjareaaddress; //type: binary
 
-}; // CISCOIETFISISMIB::Ciiisadjareaaddrtable::Ciiisadjareaaddrentry
+}; // CISCOIETFISISMIB::CiiISAdjAreaAddrTable::CiiISAdjAreaAddrEntry
 
 
-class CISCOIETFISISMIB::Ciiisadjipaddrtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjIPAddrTable : public ydk::Entity
 {
     public:
-        Ciiisadjipaddrtable();
-        ~Ciiisadjipaddrtable();
+        CiiISAdjIPAddrTable();
+        ~CiiISAdjIPAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -911,18 +911,18 @@ class CISCOIETFISISMIB::Ciiisadjipaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiisadjipaddrentry; //type: CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry
+        class CiiISAdjIPAddrEntry; //type: CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry> > ciiisadjipaddrentry;
+        ydk::YList ciiisadjipaddrentry;
         
-}; // CISCOIETFISISMIB::Ciiisadjipaddrtable
+}; // CISCOIETFISISMIB::CiiISAdjIPAddrTable
 
 
-class CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry : public ydk::Entity
 {
     public:
-        Ciiisadjipaddrentry();
-        ~Ciiisadjipaddrentry();
+        CiiISAdjIPAddrEntry();
+        ~CiiISAdjIPAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -935,22 +935,22 @@ class CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::ciiisadjindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::ciiisadjindex)
         ydk::YLeaf ciiisadjindex;
         ydk::YLeaf ciiisadjipaddrindex; //type: int32
         ydk::YLeaf ciiisadjipaddrtype; //type: InetAddressType
         ydk::YLeaf ciiisadjipaddraddress; //type: binary
 
-}; // CISCOIETFISISMIB::Ciiisadjipaddrtable::Ciiisadjipaddrentry
+}; // CISCOIETFISISMIB::CiiISAdjIPAddrTable::CiiISAdjIPAddrEntry
 
 
-class CISCOIETFISISMIB::Ciiisadjprotsupptable : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjProtSuppTable : public ydk::Entity
 {
     public:
-        Ciiisadjprotsupptable();
-        ~Ciiisadjprotsupptable();
+        CiiISAdjProtSuppTable();
+        ~CiiISAdjProtSuppTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -963,18 +963,18 @@ class CISCOIETFISISMIB::Ciiisadjprotsupptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiisadjprotsuppentry; //type: CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry
+        class CiiISAdjProtSuppEntry; //type: CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry> > ciiisadjprotsuppentry;
+        ydk::YList ciiisadjprotsuppentry;
         
-}; // CISCOIETFISISMIB::Ciiisadjprotsupptable
+}; // CISCOIETFISISMIB::CiiISAdjProtSuppTable
 
 
-class CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry : public ydk::Entity
 {
     public:
-        Ciiisadjprotsuppentry();
-        ~Ciiisadjprotsuppentry();
+        CiiISAdjProtSuppEntry();
+        ~CiiISAdjProtSuppEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -987,20 +987,20 @@ class CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::ciiisadjindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::ciiisadjindex)
         ydk::YLeaf ciiisadjindex;
         ydk::YLeaf ciiisadjprotsuppprotocol; //type: CiiSupportedProtocol
 
-}; // CISCOIETFISISMIB::Ciiisadjprotsupptable::Ciiisadjprotsuppentry
+}; // CISCOIETFISISMIB::CiiISAdjProtSuppTable::CiiISAdjProtSuppEntry
 
 
-class CISCOIETFISISMIB::Ciiratable : public ydk::Entity
+class CISCOIETFISISMIB::CiiRATable : public ydk::Entity
 {
     public:
-        Ciiratable();
-        ~Ciiratable();
+        CiiRATable();
+        ~CiiRATable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1013,18 +1013,18 @@ class CISCOIETFISISMIB::Ciiratable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiraentry; //type: CISCOIETFISISMIB::Ciiratable::Ciiraentry
+        class CiiRAEntry; //type: CISCOIETFISISMIB::CiiRATable::CiiRAEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiratable::Ciiraentry> > ciiraentry;
+        ydk::YList ciiraentry;
         
-}; // CISCOIETFISISMIB::Ciiratable
+}; // CISCOIETFISISMIB::CiiRATable
 
 
-class CISCOIETFISISMIB::Ciiratable::Ciiraentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiRATable::CiiRAEntry : public ydk::Entity
 {
     public:
-        Ciiraentry();
-        ~Ciiraentry();
+        CiiRAEntry();
+        ~CiiRAEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1037,30 +1037,30 @@ class CISCOIETFISISMIB::Ciiratable::Ciiraentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciicirctable::Ciicircentry::ciicircindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::ciicircindex)
         ydk::YLeaf ciicircindex;
         ydk::YLeaf ciiraindex; //type: int32
         ydk::YLeaf ciiraexiststate; //type: RowStatus
         ydk::YLeaf ciiraadminstate; //type: CiiAdminState
         ydk::YLeaf ciiraaddrprefix; //type: binary
-        ydk::YLeaf ciiramaptype; //type: Ciiramaptype
+        ydk::YLeaf ciiramaptype; //type: CiiRAMapType
         ydk::YLeaf ciirametric; //type: int32
         ydk::YLeaf ciirametrictype; //type: CiiMetricType
         ydk::YLeaf ciirasnpaaddress; //type: binary
         ydk::YLeaf ciirasnpamask; //type: binary
         ydk::YLeaf ciirasnpaprefix; //type: binary
-        ydk::YLeaf ciiratype; //type: Ciiratype
-        class Ciiramaptype;
-        class Ciiratype;
+        ydk::YLeaf ciiratype; //type: CiiRAType
+        class CiiRAMapType;
+        class CiiRAType;
 
-}; // CISCOIETFISISMIB::Ciiratable::Ciiraentry
+}; // CISCOIETFISISMIB::CiiRATable::CiiRAEntry
 
 
-class CISCOIETFISISMIB::Ciiipratable : public ydk::Entity
+class CISCOIETFISISMIB::CiiIPRATable : public ydk::Entity
 {
     public:
-        Ciiipratable();
-        ~Ciiipratable();
+        CiiIPRATable();
+        ~CiiIPRATable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1073,18 +1073,18 @@ class CISCOIETFISISMIB::Ciiipratable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciiipraentry; //type: CISCOIETFISISMIB::Ciiipratable::Ciiipraentry
+        class CiiIPRAEntry; //type: CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciiipratable::Ciiipraentry> > ciiipraentry;
+        ydk::YList ciiipraentry;
         
-}; // CISCOIETFISISMIB::Ciiipratable
+}; // CISCOIETFISISMIB::CiiIPRATable
 
 
-class CISCOIETFISISMIB::Ciiipratable::Ciiipraentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry : public ydk::Entity
 {
     public:
-        Ciiipraentry();
-        ~Ciiipraentry();
+        CiiIPRAEntry();
+        ~CiiIPRAEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1103,25 +1103,25 @@ class CISCOIETFISISMIB::Ciiipratable::Ciiipraentry : public ydk::Entity
         ydk::YLeaf ciiipranexthopindex; //type: int32
         ydk::YLeaf ciiipranexthoptype; //type: InetAddressType
         ydk::YLeaf ciiipranexthop; //type: binary
-        ydk::YLeaf ciiipratype; //type: Ciiipratype
+        ydk::YLeaf ciiipratype; //type: CiiIPRAType
         ydk::YLeaf ciiipraexiststate; //type: RowStatus
         ydk::YLeaf ciiipraadminstate; //type: CiiAdminState
         ydk::YLeaf ciiiprametric; //type: int32
         ydk::YLeaf ciiiprametrictype; //type: CiiMetricType
         ydk::YLeaf ciiiprafullmetric; //type: uint32
         ydk::YLeaf ciiiprasnpaaddress; //type: binary
-        ydk::YLeaf ciiiprasourcetype; //type: Ciiiprasourcetype
-        class Ciiipratype;
-        class Ciiiprasourcetype;
+        ydk::YLeaf ciiiprasourcetype; //type: CiiIPRASourceType
+        class CiiIPRAType;
+        class CiiIPRASourceType;
 
-}; // CISCOIETFISISMIB::Ciiipratable::Ciiipraentry
+}; // CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry
 
 
-class CISCOIETFISISMIB::Ciilspsummarytable : public ydk::Entity
+class CISCOIETFISISMIB::CiiLSPSummaryTable : public ydk::Entity
 {
     public:
-        Ciilspsummarytable();
-        ~Ciilspsummarytable();
+        CiiLSPSummaryTable();
+        ~CiiLSPSummaryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1134,18 +1134,18 @@ class CISCOIETFISISMIB::Ciilspsummarytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciilspsummaryentry; //type: CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry
+        class CiiLSPSummaryEntry; //type: CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry> > ciilspsummaryentry;
+        ydk::YList ciilspsummaryentry;
         
-}; // CISCOIETFISISMIB::Ciilspsummarytable
+}; // CISCOIETFISISMIB::CiiLSPSummaryTable
 
 
-class CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry : public ydk::Entity
+class CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry : public ydk::Entity
 {
     public:
-        Ciilspsummaryentry();
-        ~Ciilspsummaryentry();
+        CiiLSPSummaryEntry();
+        ~CiiLSPSummaryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1167,14 +1167,14 @@ class CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry : public ydk::Ent
         ydk::YLeaf ciilsppdulength; //type: uint32
         ydk::YLeaf ciilspattributes; //type: uint32
 
-}; // CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry
+}; // CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry
 
 
-class CISCOIETFISISMIB::Ciilsptlvtable : public ydk::Entity
+class CISCOIETFISISMIB::CiiLSPTLVTable : public ydk::Entity
 {
     public:
-        Ciilsptlvtable();
-        ~Ciilsptlvtable();
+        CiiLSPTLVTable();
+        ~CiiLSPTLVTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1187,18 +1187,18 @@ class CISCOIETFISISMIB::Ciilsptlvtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ciilsptlventry; //type: CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry
+        class CiiLSPTLVEntry; //type: CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry> > ciilsptlventry;
+        ydk::YList ciilsptlventry;
         
-}; // CISCOIETFISISMIB::Ciilsptlvtable
+}; // CISCOIETFISISMIB::CiiLSPTLVTable
 
 
-class CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry : public ydk::Entity
+class CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry : public ydk::Entity
 {
     public:
-        Ciilsptlventry();
-        ~Ciilsptlventry();
+        CiiLSPTLVEntry();
+        ~CiiLSPTLVEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1212,7 +1212,7 @@ class CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ciilsplevel; //type: CiiISLevel
-        //type: binary (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::Ciilspsummarytable::Ciilspsummaryentry::ciilspid)
+        //type: binary (refers to cisco_ios_xe::CISCO_IETF_ISIS_MIB::CISCOIETFISISMIB::CiiLSPSummaryTable::CiiLSPSummaryEntry::ciilspid)
         ydk::YLeaf ciilspid;
         ydk::YLeaf ciilsptlvindex; //type: uint32
         ydk::YLeaf ciilsptlvseq; //type: uint32
@@ -1221,13 +1221,14 @@ class CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry : public ydk::Entity
         ydk::YLeaf ciilsptlvlen; //type: uint32
         ydk::YLeaf ciilsptlvvalue; //type: binary
 
-}; // CISCOIETFISISMIB::Ciilsptlvtable::Ciilsptlventry
+}; // CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry
 
-class CiiAdminState : public ydk::Enum
+class CiiMetricStyle : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf narrow;
+        static const ydk::Enum::YLeaf wide;
+        static const ydk::Enum::YLeaf both;
 
 };
 
@@ -1250,20 +1251,19 @@ class CiiSupportedProtocol : public ydk::Enum
 
 };
 
+class CiiAdminState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
+
+};
+
 class CiiMetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf external;
-
-};
-
-class CiiMetricStyle : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf narrow;
-        static const ydk::Enum::YLeaf wide;
-        static const ydk::Enum::YLeaf both;
 
 };
 
@@ -1276,7 +1276,7 @@ class CiiISLevel : public ydk::Enum
 
 };
 
-class CISCOIETFISISMIB::Ciisysobject::Ciisysversion : public ydk::Enum
+class CISCOIETFISISMIB::CiiSysObject::CiiSysVersion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -1284,7 +1284,7 @@ class CISCOIETFISISMIB::Ciisysobject::Ciisysversion : public ydk::Enum
 
 };
 
-class CISCOIETFISISMIB::Ciisysobject::Ciisystype : public ydk::Enum
+class CISCOIETFISISMIB::CiiSysObject::CiiSysType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level1IS;
@@ -1293,7 +1293,7 @@ class CISCOIETFISISMIB::Ciisysobject::Ciisystype : public ydk::Enum
 
 };
 
-class CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::Ciisyslevelindex : public ydk::Enum
+class CISCOIETFISISMIB::CiiSysLevelTable::CiiSysLevelEntry::CiiSysLevelIndex : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level1IS;
@@ -1301,7 +1301,7 @@ class CISCOIETFISISMIB::Ciisysleveltable::Ciisyslevelentry::Ciisyslevelindex : p
 
 };
 
-class CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirctype : public ydk::Enum
+class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf broadcast;
@@ -1312,7 +1312,7 @@ class CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirctype : public ydk::En
 
 };
 
-class CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirclevel : public ydk::Enum
+class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircLevel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level1;
@@ -1321,7 +1321,7 @@ class CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicirclevel : public ydk::E
 
 };
 
-class CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicircmeshgroupenabled : public ydk::Enum
+class CISCOIETFISISMIB::CiiCircTable::CiiCircEntry::CiiCircMeshGroupEnabled : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inactive;
@@ -1330,7 +1330,7 @@ class CISCOIETFISISMIB::Ciicirctable::Ciicircentry::Ciicircmeshgroupenabled : pu
 
 };
 
-class CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelindex : public ydk::Enum
+class CISCOIETFISISMIB::CiiCircLevelTable::CiiCircLevelEntry::CiiCircLevelIndex : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level1IS;
@@ -1338,7 +1338,7 @@ class CISCOIETFISISMIB::Ciicircleveltable::Ciicirclevelentry::Ciicirclevelindex 
 
 };
 
-class CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::Ciisysstatlevel : public ydk::Enum
+class CISCOIETFISISMIB::CiiSystemCounterTable::CiiSystemCounterEntry::CiiSysStatLevel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level1IS;
@@ -1346,7 +1346,7 @@ class CISCOIETFISISMIB::Ciisystemcountertable::Ciisystemcounterentry::Ciisysstat
 
 };
 
-class CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::Ciicircuittype : public ydk::Enum
+class CISCOIETFISISMIB::CiiCircuitCounterTable::CiiCircuitCounterEntry::CiiCircuitType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf lanlevel1;
@@ -1355,7 +1355,7 @@ class CISCOIETFISISMIB::Ciicircuitcountertable::Ciicircuitcounterentry::Ciicircu
 
 };
 
-class CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcountlevel : public ydk::Enum
+class CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountLevel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level1;
@@ -1363,7 +1363,7 @@ class CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketc
 
 };
 
-class CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketcountdirection : public ydk::Enum
+class CISCOIETFISISMIB::CiiPacketCounterTable::CiiPacketCounterEntry::CiiPacketCountDirection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf sending;
@@ -1371,7 +1371,7 @@ class CISCOIETFISISMIB::Ciipacketcountertable::Ciipacketcounterentry::Ciipacketc
 
 };
 
-class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjstate : public ydk::Enum
+class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
@@ -1381,7 +1381,7 @@ class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjstate : public ydk
 
 };
 
-class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadj3Waystate : public ydk::Enum
+class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdj3WayState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -1391,7 +1391,7 @@ class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadj3Waystate : public
 
 };
 
-class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjneighsystype : public ydk::Enum
+class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjNeighSysType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf l1IntermediateSystem;
@@ -1401,7 +1401,7 @@ class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjneighsystype : pub
 
 };
 
-class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjusage : public ydk::Enum
+class CISCOIETFISISMIB::CiiISAdjTable::CiiISAdjEntry::CiiISAdjUsage : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf level1;
@@ -1410,7 +1410,7 @@ class CISCOIETFISISMIB::Ciiisadjtable::Ciiisadjentry::Ciiisadjusage : public ydk
 
 };
 
-class CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiramaptype : public ydk::Enum
+class CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAMapType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -1420,7 +1420,7 @@ class CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiramaptype : public ydk::Enum
 
 };
 
-class CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiratype : public ydk::Enum
+class CISCOIETFISISMIB::CiiRATable::CiiRAEntry::CiiRAType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf manual;
@@ -1428,7 +1428,7 @@ class CISCOIETFISISMIB::Ciiratable::Ciiraentry::Ciiratype : public ydk::Enum
 
 };
 
-class CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiipratype : public ydk::Enum
+class CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRAType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf manual;
@@ -1436,7 +1436,7 @@ class CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiipratype : public ydk::En
 
 };
 
-class CISCOIETFISISMIB::Ciiipratable::Ciiipraentry::Ciiiprasourcetype : public ydk::Enum
+class CISCOIETFISISMIB::CiiIPRATable::CiiIPRAEntry::CiiIPRASourceType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf static_;

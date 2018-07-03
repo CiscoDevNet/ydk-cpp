@@ -81,7 +81,7 @@ class RestconfState::Streams : public ydk::Entity
 
         class Stream; //type: RestconfState::Streams::Stream
 
-        std::vector<std::shared_ptr<ietf::ietf_restconf_monitoring::RestconfState::Streams::Stream> > stream;
+        ydk::YList stream;
         
 }; // RestconfState::Streams
 
@@ -109,7 +109,7 @@ class RestconfState::Streams::Stream : public ydk::Entity
         ydk::YLeaf replay_log_creation_time; //type: string
         class Access; //type: RestconfState::Streams::Stream::Access
 
-        std::vector<std::shared_ptr<ietf::ietf_restconf_monitoring::RestconfState::Streams::Stream::Access> > access;
+        ydk::YList access;
         
 }; // RestconfState::Streams::Stream
 

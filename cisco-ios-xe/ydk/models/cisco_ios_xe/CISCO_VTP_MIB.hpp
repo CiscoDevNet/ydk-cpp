@@ -32,44 +32,44 @@ class CISCOVTPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Vtpstatus; //type: CISCOVTPMIB::Vtpstatus
-        class Internalvlaninfo; //type: CISCOVTPMIB::Internalvlaninfo
-        class Vlantrunkports; //type: CISCOVTPMIB::Vlantrunkports
-        class Vlanstatistics; //type: CISCOVTPMIB::Vlanstatistics
-        class Managementdomaintable; //type: CISCOVTPMIB::Managementdomaintable
-        class Vtpvlantable; //type: CISCOVTPMIB::Vtpvlantable
-        class Vtpinternalvlantable; //type: CISCOVTPMIB::Vtpinternalvlantable
-        class Vtpvlanedittable; //type: CISCOVTPMIB::Vtpvlanedittable
-        class Vtpvlanlocalshutdowntable; //type: CISCOVTPMIB::Vtpvlanlocalshutdowntable
-        class Vlantrunkporttable; //type: CISCOVTPMIB::Vlantrunkporttable
-        class Vtpdiscovertable; //type: CISCOVTPMIB::Vtpdiscovertable
-        class Vtpdiscoverresulttable; //type: CISCOVTPMIB::Vtpdiscoverresulttable
-        class Vtpdatabasetable; //type: CISCOVTPMIB::Vtpdatabasetable
-        class Vtpauthenticationtable; //type: CISCOVTPMIB::Vtpauthenticationtable
+        class VtpStatus; //type: CISCOVTPMIB::VtpStatus
+        class InternalVlanInfo; //type: CISCOVTPMIB::InternalVlanInfo
+        class VlanTrunkPorts; //type: CISCOVTPMIB::VlanTrunkPorts
+        class VlanStatistics; //type: CISCOVTPMIB::VlanStatistics
+        class ManagementDomainTable; //type: CISCOVTPMIB::ManagementDomainTable
+        class VtpVlanTable; //type: CISCOVTPMIB::VtpVlanTable
+        class VtpInternalVlanTable; //type: CISCOVTPMIB::VtpInternalVlanTable
+        class VtpVlanEditTable; //type: CISCOVTPMIB::VtpVlanEditTable
+        class VtpVlanLocalShutdownTable; //type: CISCOVTPMIB::VtpVlanLocalShutdownTable
+        class VlanTrunkPortTable; //type: CISCOVTPMIB::VlanTrunkPortTable
+        class VtpDiscoverTable; //type: CISCOVTPMIB::VtpDiscoverTable
+        class VtpDiscoverResultTable; //type: CISCOVTPMIB::VtpDiscoverResultTable
+        class VtpDatabaseTable; //type: CISCOVTPMIB::VtpDatabaseTable
+        class VtpAuthenticationTable; //type: CISCOVTPMIB::VtpAuthenticationTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpstatus> vtpstatus;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Internalvlaninfo> internalvlaninfo;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vlantrunkports> vlantrunkports;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vlanstatistics> vlanstatistics;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable> managementdomaintable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlantable> vtpvlantable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpinternalvlantable> vtpinternalvlantable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlanedittable> vtpvlanedittable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlanlocalshutdowntable> vtpvlanlocalshutdowntable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vlantrunkporttable> vlantrunkporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpdiscovertable> vtpdiscovertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpdiscoverresulttable> vtpdiscoverresulttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpdatabasetable> vtpdatabasetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpauthenticationtable> vtpauthenticationtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpStatus> vtpstatus;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::InternalVlanInfo> internalvlaninfo;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VlanTrunkPorts> vlantrunkports;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VlanStatistics> vlanstatistics;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable> managementdomaintable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpVlanTable> vtpvlantable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpInternalVlanTable> vtpinternalvlantable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpVlanEditTable> vtpvlanedittable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpVlanLocalShutdownTable> vtpvlanlocalshutdowntable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VlanTrunkPortTable> vlantrunkporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpDiscoverTable> vtpdiscovertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpDiscoverResultTable> vtpdiscoverresulttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpDatabaseTable> vtpdatabasetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpAuthenticationTable> vtpauthenticationtable;
         
 }; // CISCOVTPMIB
 
 
-class CISCOVTPMIB::Vtpstatus : public ydk::Entity
+class CISCOVTPMIB::VtpStatus : public ydk::Entity
 {
     public:
-        Vtpstatus();
-        ~Vtpstatus();
+        VtpStatus();
+        ~VtpStatus();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -82,21 +82,21 @@ class CISCOVTPMIB::Vtpstatus : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vtpversion; //type: Vtpversion
+        ydk::YLeaf vtpversion; //type: VtpVersion
         ydk::YLeaf vtpmaxvlanstorage; //type: int32
         ydk::YLeaf vtpnotificationsenabled; //type: boolean
         ydk::YLeaf vtpvlancreatednotifenabled; //type: boolean
         ydk::YLeaf vtpvlandeletednotifenabled; //type: boolean
-        class Vtpversion;
+        class VtpVersion;
 
-}; // CISCOVTPMIB::Vtpstatus
+}; // CISCOVTPMIB::VtpStatus
 
 
-class CISCOVTPMIB::Internalvlaninfo : public ydk::Entity
+class CISCOVTPMIB::InternalVlanInfo : public ydk::Entity
 {
     public:
-        Internalvlaninfo();
-        ~Internalvlaninfo();
+        InternalVlanInfo();
+        ~InternalVlanInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -109,17 +109,17 @@ class CISCOVTPMIB::Internalvlaninfo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vtpinternalvlanallocpolicy; //type: Vtpinternalvlanallocpolicy
-        class Vtpinternalvlanallocpolicy;
+        ydk::YLeaf vtpinternalvlanallocpolicy; //type: VtpInternalVlanAllocPolicy
+        class VtpInternalVlanAllocPolicy;
 
-}; // CISCOVTPMIB::Internalvlaninfo
+}; // CISCOVTPMIB::InternalVlanInfo
 
 
-class CISCOVTPMIB::Vlantrunkports : public ydk::Entity
+class CISCOVTPMIB::VlanTrunkPorts : public ydk::Entity
 {
     public:
-        Vlantrunkports();
-        ~Vlantrunkports();
+        VlanTrunkPorts();
+        ~VlanTrunkPorts();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -135,14 +135,14 @@ class CISCOVTPMIB::Vlantrunkports : public ydk::Entity
         ydk::YLeaf vlantrunkportsetserialno; //type: int32
         ydk::YLeaf vlantrunkportsdot1qtag; //type: boolean
 
-}; // CISCOVTPMIB::Vlantrunkports
+}; // CISCOVTPMIB::VlanTrunkPorts
 
 
-class CISCOVTPMIB::Vlanstatistics : public ydk::Entity
+class CISCOVTPMIB::VlanStatistics : public ydk::Entity
 {
     public:
-        Vlanstatistics();
-        ~Vlanstatistics();
+        VlanStatistics();
+        ~VlanStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -160,14 +160,14 @@ class CISCOVTPMIB::Vlanstatistics : public ydk::Entity
         ydk::YLeaf vlanstatsinternalvlans; //type: uint32
         ydk::YLeaf vlanstatsfreevlans; //type: uint32
 
-}; // CISCOVTPMIB::Vlanstatistics
+}; // CISCOVTPMIB::VlanStatistics
 
 
-class CISCOVTPMIB::Managementdomaintable : public ydk::Entity
+class CISCOVTPMIB::ManagementDomainTable : public ydk::Entity
 {
     public:
-        Managementdomaintable();
-        ~Managementdomaintable();
+        ManagementDomainTable();
+        ~ManagementDomainTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -180,18 +180,18 @@ class CISCOVTPMIB::Managementdomaintable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Managementdomainentry; //type: CISCOVTPMIB::Managementdomaintable::Managementdomainentry
+        class ManagementDomainEntry; //type: CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry> > managementdomainentry;
+        ydk::YList managementdomainentry;
         
-}; // CISCOVTPMIB::Managementdomaintable
+}; // CISCOVTPMIB::ManagementDomainTable
 
 
-class CISCOVTPMIB::Managementdomaintable::Managementdomainentry : public ydk::Entity
+class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry : public ydk::Entity
 {
     public:
-        Managementdomainentry();
-        ~Managementdomainentry();
+        ManagementDomainEntry();
+        ~ManagementDomainEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -206,16 +206,16 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry : public ydk::En
 
         ydk::YLeaf managementdomainindex; //type: int32
         ydk::YLeaf managementdomainname; //type: string
-        ydk::YLeaf managementdomainlocalmode; //type: Managementdomainlocalmode
+        ydk::YLeaf managementdomainlocalmode; //type: ManagementDomainLocalMode
         ydk::YLeaf managementdomainconfigrevnumber; //type: uint32
         ydk::YLeaf managementdomainlastupdater; //type: string
         ydk::YLeaf managementdomainlastchange; //type: string
         ydk::YLeaf managementdomainrowstatus; //type: RowStatus
         ydk::YLeaf managementdomaintftpserver; //type: string
         ydk::YLeaf managementdomaintftppathname; //type: string
-        ydk::YLeaf managementdomainpruningstate; //type: Managementdomainpruningstate
-        ydk::YLeaf managementdomainversioninuse; //type: Managementdomainversioninuse
-        ydk::YLeaf managementdomainpruningstateoper; //type: Managementdomainpruningstateoper
+        ydk::YLeaf managementdomainpruningstate; //type: ManagementDomainPruningState
+        ydk::YLeaf managementdomainversioninuse; //type: ManagementDomainVersionInUse
+        ydk::YLeaf managementdomainpruningstateoper; //type: ManagementDomainPruningStateOper
         ydk::YLeaf managementdomainadminsrcif; //type: string
         ydk::YLeaf managementdomainsourceonlymode; //type: boolean
         ydk::YLeaf managementdomainopersrcif; //type: string
@@ -223,8 +223,8 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry : public ydk::En
         ydk::YLeaf managementdomainlocalupdatertype; //type: InetAddressType
         ydk::YLeaf managementdomainlocalupdater; //type: binary
         ydk::YLeaf managementdomaindeviceid; //type: string
-        ydk::YLeaf vtpvlaneditoperation; //type: Vtpvlaneditoperation
-        ydk::YLeaf vtpvlanapplystatus; //type: Vtpvlanapplystatus
+        ydk::YLeaf vtpvlaneditoperation; //type: VtpVlanEditOperation
+        ydk::YLeaf vtpvlanapplystatus; //type: VtpVlanApplyStatus
         ydk::YLeaf vtpvlaneditbufferowner; //type: binary
         ydk::YLeaf vtpvlaneditconfigrevnumber; //type: uint32
         ydk::YLeaf vtpvlaneditmodifiedvlan; //type: int32
@@ -236,21 +236,21 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry : public ydk::En
         ydk::YLeaf vtpoutadvertrequests; //type: uint32
         ydk::YLeaf vtpconfigrevnumbererrors; //type: uint32
         ydk::YLeaf vtpconfigdigesterrors; //type: uint32
-        class Managementdomainlocalmode;
-        class Managementdomainpruningstate;
-        class Managementdomainversioninuse;
-        class Managementdomainpruningstateoper;
-        class Vtpvlaneditoperation;
-        class Vtpvlanapplystatus;
+        class ManagementDomainLocalMode;
+        class ManagementDomainPruningState;
+        class ManagementDomainVersionInUse;
+        class ManagementDomainPruningStateOper;
+        class VtpVlanEditOperation;
+        class VtpVlanApplyStatus;
 
-}; // CISCOVTPMIB::Managementdomaintable::Managementdomainentry
+}; // CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry
 
 
-class CISCOVTPMIB::Vtpvlantable : public ydk::Entity
+class CISCOVTPMIB::VtpVlanTable : public ydk::Entity
 {
     public:
-        Vtpvlantable();
-        ~Vtpvlantable();
+        VtpVlanTable();
+        ~VtpVlanTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -263,18 +263,18 @@ class CISCOVTPMIB::Vtpvlantable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpvlanentry; //type: CISCOVTPMIB::Vtpvlantable::Vtpvlanentry
+        class VtpVlanEntry; //type: CISCOVTPMIB::VtpVlanTable::VtpVlanEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlantable::Vtpvlanentry> > vtpvlanentry;
+        ydk::YList vtpvlanentry;
         
-}; // CISCOVTPMIB::Vtpvlantable
+}; // CISCOVTPMIB::VtpVlanTable
 
 
-class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry : public ydk::Entity
+class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry : public ydk::Entity
 {
     public:
-        Vtpvlanentry();
-        ~Vtpvlanentry();
+        VtpVlanEntry();
+        ~VtpVlanEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -287,39 +287,39 @@ class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
         ydk::YLeaf vtpvlanindex; //type: int32
-        ydk::YLeaf vtpvlanstate; //type: Vtpvlanstate
+        ydk::YLeaf vtpvlanstate; //type: VtpVlanState
         ydk::YLeaf vtpvlantype; //type: VlanType
         ydk::YLeaf vtpvlanname; //type: string
         ydk::YLeaf vtpvlanmtu; //type: int32
         ydk::YLeaf vtpvlandot10said; //type: binary
         ydk::YLeaf vtpvlanringnumber; //type: int32
         ydk::YLeaf vtpvlanbridgenumber; //type: int32
-        ydk::YLeaf vtpvlanstptype; //type: Vtpvlanstptype
+        ydk::YLeaf vtpvlanstptype; //type: VtpVlanStpType
         ydk::YLeaf vtpvlanparentvlan; //type: int32
         ydk::YLeaf vtpvlantranslationalvlan1; //type: int32
         ydk::YLeaf vtpvlantranslationalvlan2; //type: int32
-        ydk::YLeaf vtpvlanbridgetype; //type: Vtpvlanbridgetype
+        ydk::YLeaf vtpvlanbridgetype; //type: VtpVlanBridgeType
         ydk::YLeaf vtpvlanarehopcount; //type: int32
         ydk::YLeaf vtpvlanstehopcount; //type: int32
         ydk::YLeaf vtpvlaniscrfbackup; //type: boolean
         ydk::YLeaf vtpvlantypeext; //type: VlanTypeExt
         ydk::YLeaf vtpvlanifindex; //type: int32
         ydk::YLeaf stpxvlanmistpinstmapinstindex; //type: int32
-        class Vtpvlanstate;
-        class Vtpvlanstptype;
-        class Vtpvlanbridgetype;
+        class VtpVlanState;
+        class VtpVlanStpType;
+        class VtpVlanBridgeType;
 
-}; // CISCOVTPMIB::Vtpvlantable::Vtpvlanentry
+}; // CISCOVTPMIB::VtpVlanTable::VtpVlanEntry
 
 
-class CISCOVTPMIB::Vtpinternalvlantable : public ydk::Entity
+class CISCOVTPMIB::VtpInternalVlanTable : public ydk::Entity
 {
     public:
-        Vtpinternalvlantable();
-        ~Vtpinternalvlantable();
+        VtpInternalVlanTable();
+        ~VtpInternalVlanTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -332,18 +332,18 @@ class CISCOVTPMIB::Vtpinternalvlantable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpinternalvlanentry; //type: CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry
+        class VtpInternalVlanEntry; //type: CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry> > vtpinternalvlanentry;
+        ydk::YList vtpinternalvlanentry;
         
-}; // CISCOVTPMIB::Vtpinternalvlantable
+}; // CISCOVTPMIB::VtpInternalVlanTable
 
 
-class CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry : public ydk::Entity
+class CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry : public ydk::Entity
 {
     public:
-        Vtpinternalvlanentry();
-        ~Vtpinternalvlanentry();
+        VtpInternalVlanEntry();
+        ~VtpInternalVlanEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -356,20 +356,20 @@ class CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::vtpvlanindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::vtpvlanindex)
         ydk::YLeaf vtpvlanindex;
         ydk::YLeaf vtpinternalvlanowner; //type: string
 
-}; // CISCOVTPMIB::Vtpinternalvlantable::Vtpinternalvlanentry
+}; // CISCOVTPMIB::VtpInternalVlanTable::VtpInternalVlanEntry
 
 
-class CISCOVTPMIB::Vtpvlanedittable : public ydk::Entity
+class CISCOVTPMIB::VtpVlanEditTable : public ydk::Entity
 {
     public:
-        Vtpvlanedittable();
-        ~Vtpvlanedittable();
+        VtpVlanEditTable();
+        ~VtpVlanEditTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -382,18 +382,18 @@ class CISCOVTPMIB::Vtpvlanedittable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpvlaneditentry; //type: CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry
+        class VtpVlanEditEntry; //type: CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry> > vtpvlaneditentry;
+        ydk::YList vtpvlaneditentry;
         
-}; // CISCOVTPMIB::Vtpvlanedittable
+}; // CISCOVTPMIB::VtpVlanEditTable
 
 
-class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry : public ydk::Entity
+class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry : public ydk::Entity
 {
     public:
-        Vtpvlaneditentry();
-        ~Vtpvlaneditentry();
+        VtpVlanEditEntry();
+        ~VtpVlanEditEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -406,40 +406,40 @@ class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
         ydk::YLeaf vtpvlaneditindex; //type: int32
-        ydk::YLeaf vtpvlaneditstate; //type: Vtpvlaneditstate
+        ydk::YLeaf vtpvlaneditstate; //type: VtpVlanEditState
         ydk::YLeaf vtpvlanedittype; //type: VlanType
         ydk::YLeaf vtpvlaneditname; //type: string
         ydk::YLeaf vtpvlaneditmtu; //type: int32
         ydk::YLeaf vtpvlaneditdot10said; //type: binary
         ydk::YLeaf vtpvlaneditringnumber; //type: int32
         ydk::YLeaf vtpvlaneditbridgenumber; //type: int32
-        ydk::YLeaf vtpvlaneditstptype; //type: Vtpvlaneditstptype
+        ydk::YLeaf vtpvlaneditstptype; //type: VtpVlanEditStpType
         ydk::YLeaf vtpvlaneditparentvlan; //type: int32
         ydk::YLeaf vtpvlaneditrowstatus; //type: RowStatus
         ydk::YLeaf vtpvlanedittranslationalvlan1; //type: int32
         ydk::YLeaf vtpvlanedittranslationalvlan2; //type: int32
-        ydk::YLeaf vtpvlaneditbridgetype; //type: Vtpvlaneditbridgetype
+        ydk::YLeaf vtpvlaneditbridgetype; //type: VtpVlanEditBridgeType
         ydk::YLeaf vtpvlaneditarehopcount; //type: int32
         ydk::YLeaf vtpvlaneditstehopcount; //type: int32
         ydk::YLeaf vtpvlaneditiscrfbackup; //type: boolean
         ydk::YLeaf vtpvlanedittypeext; //type: VlanTypeExt
         ydk::YLeaf vtpvlanedittypeext2; //type: VlanTypeExt
         ydk::YLeaf stpxvlanmistpinstmapeditinstindex; //type: int32
-        class Vtpvlaneditstate;
-        class Vtpvlaneditstptype;
-        class Vtpvlaneditbridgetype;
+        class VtpVlanEditState;
+        class VtpVlanEditStpType;
+        class VtpVlanEditBridgeType;
 
-}; // CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry
+}; // CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry
 
 
-class CISCOVTPMIB::Vtpvlanlocalshutdowntable : public ydk::Entity
+class CISCOVTPMIB::VtpVlanLocalShutdownTable : public ydk::Entity
 {
     public:
-        Vtpvlanlocalshutdowntable();
-        ~Vtpvlanlocalshutdowntable();
+        VtpVlanLocalShutdownTable();
+        ~VtpVlanLocalShutdownTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -452,18 +452,18 @@ class CISCOVTPMIB::Vtpvlanlocalshutdowntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpvlanlocalshutdownentry; //type: CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry
+        class VtpVlanLocalShutdownEntry; //type: CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry> > vtpvlanlocalshutdownentry;
+        ydk::YList vtpvlanlocalshutdownentry;
         
-}; // CISCOVTPMIB::Vtpvlanlocalshutdowntable
+}; // CISCOVTPMIB::VtpVlanLocalShutdownTable
 
 
-class CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry : public ydk::Entity
+class CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry : public ydk::Entity
 {
     public:
-        Vtpvlanlocalshutdownentry();
-        ~Vtpvlanlocalshutdownentry();
+        VtpVlanLocalShutdownEntry();
+        ~VtpVlanLocalShutdownEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -476,21 +476,21 @@ class CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::vtpvlanindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::vtpvlanindex)
         ydk::YLeaf vtpvlanindex;
-        ydk::YLeaf vtpvlanlocalshutdown; //type: Vtpvlanlocalshutdown
-        class Vtpvlanlocalshutdown;
+        ydk::YLeaf vtpvlanlocalshutdown; //type: VtpVlanLocalShutdown
+        class VtpVlanLocalShutdown;
 
-}; // CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry
+}; // CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry
 
 
-class CISCOVTPMIB::Vlantrunkporttable : public ydk::Entity
+class CISCOVTPMIB::VlanTrunkPortTable : public ydk::Entity
 {
     public:
-        Vlantrunkporttable();
-        ~Vlantrunkporttable();
+        VlanTrunkPortTable();
+        ~VlanTrunkPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -503,18 +503,18 @@ class CISCOVTPMIB::Vlantrunkporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vlantrunkportentry; //type: CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry
+        class VlanTrunkPortEntry; //type: CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry> > vlantrunkportentry;
+        ydk::YList vlantrunkportentry;
         
-}; // CISCOVTPMIB::Vlantrunkporttable
+}; // CISCOVTPMIB::VlanTrunkPortTable
 
 
-class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry : public ydk::Entity
+class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry : public ydk::Entity
 {
     public:
-        Vlantrunkportentry();
-        ~Vlantrunkportentry();
+        VlanTrunkPortEntry();
+        ~VlanTrunkPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -529,7 +529,7 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry : public ydk::Entity
 
         ydk::YLeaf vlantrunkportifindex; //type: int32
         ydk::YLeaf vlantrunkportmanagementdomain; //type: int32
-        ydk::YLeaf vlantrunkportencapsulationtype; //type: Vlantrunkportencapsulationtype
+        ydk::YLeaf vlantrunkportencapsulationtype; //type: VlanTrunkPortEncapsulationType
         ydk::YLeaf vlantrunkportvlansenabled; //type: binary
         ydk::YLeaf vlantrunkportnativevlan; //type: int32
         ydk::YLeaf vlantrunkportrowstatus; //type: RowStatus
@@ -539,10 +539,10 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry : public ydk::Entity
         ydk::YLeaf vlantrunkportvlanspruningeligible; //type: binary
         ydk::YLeaf vlantrunkportvlansxmitjoined; //type: binary
         ydk::YLeaf vlantrunkportvlansrcvjoined; //type: binary
-        ydk::YLeaf vlantrunkportdynamicstate; //type: Vlantrunkportdynamicstate
-        ydk::YLeaf vlantrunkportdynamicstatus; //type: Vlantrunkportdynamicstatus
+        ydk::YLeaf vlantrunkportdynamicstate; //type: VlanTrunkPortDynamicState
+        ydk::YLeaf vlantrunkportdynamicstatus; //type: VlanTrunkPortDynamicStatus
         ydk::YLeaf vlantrunkportvtpenabled; //type: boolean
-        ydk::YLeaf vlantrunkportencapsulationopertype; //type: Vlantrunkportencapsulationopertype
+        ydk::YLeaf vlantrunkportencapsulationopertype; //type: VlanTrunkPortEncapsulationOperType
         ydk::YLeaf vlantrunkportvlansenabled2k; //type: binary
         ydk::YLeaf vlantrunkportvlansenabled3k; //type: binary
         ydk::YLeaf vlantrunkportvlansenabled4k; //type: binary
@@ -555,7 +555,7 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry : public ydk::Entity
         ydk::YLeaf vlantrunkportvlansrcvjoined2k; //type: binary
         ydk::YLeaf vlantrunkportvlansrcvjoined3k; //type: binary
         ydk::YLeaf vlantrunkportvlansrcvjoined4k; //type: binary
-        ydk::YLeaf vlantrunkportdot1qtunnel; //type: Vlantrunkportdot1Qtunnel
+        ydk::YLeaf vlantrunkportdot1qtunnel; //type: VlanTrunkPortDot1qTunnel
         ydk::YLeaf vlantrunkportvlansactivefirst2k; //type: binary
         ydk::YLeaf vlantrunkportvlansactivesecond2k; //type: binary
         ydk::YLeaf stpxpreferredvlansmap; //type: binary
@@ -564,20 +564,20 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry : public ydk::Entity
         ydk::YLeaf stpxpreferredvlansmap4k; //type: binary
         ydk::YLeaf stpxpreferredmistpinstancesmap; //type: binary
         ydk::YLeaf stpxpreferredmstinstancesmap; //type: binary
-        class Vlantrunkportencapsulationtype;
-        class Vlantrunkportdynamicstate;
-        class Vlantrunkportdynamicstatus;
-        class Vlantrunkportencapsulationopertype;
-        class Vlantrunkportdot1Qtunnel;
+        class VlanTrunkPortEncapsulationType;
+        class VlanTrunkPortDynamicState;
+        class VlanTrunkPortDynamicStatus;
+        class VlanTrunkPortEncapsulationOperType;
+        class VlanTrunkPortDot1qTunnel;
 
-}; // CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry
+}; // CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry
 
 
-class CISCOVTPMIB::Vtpdiscovertable : public ydk::Entity
+class CISCOVTPMIB::VtpDiscoverTable : public ydk::Entity
 {
     public:
-        Vtpdiscovertable();
-        ~Vtpdiscovertable();
+        VtpDiscoverTable();
+        ~VtpDiscoverTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -590,18 +590,18 @@ class CISCOVTPMIB::Vtpdiscovertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpdiscoverentry; //type: CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry
+        class VtpDiscoverEntry; //type: CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry> > vtpdiscoverentry;
+        ydk::YList vtpdiscoverentry;
         
-}; // CISCOVTPMIB::Vtpdiscovertable
+}; // CISCOVTPMIB::VtpDiscoverTable
 
 
-class CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry : public ydk::Entity
+class CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry : public ydk::Entity
 {
     public:
-        Vtpdiscoverentry();
-        ~Vtpdiscoverentry();
+        VtpDiscoverEntry();
+        ~VtpDiscoverEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -614,22 +614,22 @@ class CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
-        ydk::YLeaf vtpdiscoveraction; //type: Vtpdiscoveraction
-        ydk::YLeaf vtpdiscoverstatus; //type: Vtpdiscoverstatus
+        ydk::YLeaf vtpdiscoveraction; //type: VtpDiscoverAction
+        ydk::YLeaf vtpdiscoverstatus; //type: VtpDiscoverStatus
         ydk::YLeaf vtplastdiscovertime; //type: uint32
-        class Vtpdiscoveraction;
-        class Vtpdiscoverstatus;
+        class VtpDiscoverAction;
+        class VtpDiscoverStatus;
 
-}; // CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry
+}; // CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry
 
 
-class CISCOVTPMIB::Vtpdiscoverresulttable : public ydk::Entity
+class CISCOVTPMIB::VtpDiscoverResultTable : public ydk::Entity
 {
     public:
-        Vtpdiscoverresulttable();
-        ~Vtpdiscoverresulttable();
+        VtpDiscoverResultTable();
+        ~VtpDiscoverResultTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -642,18 +642,18 @@ class CISCOVTPMIB::Vtpdiscoverresulttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpdiscoverresultentry; //type: CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry
+        class VtpDiscoverResultEntry; //type: CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry> > vtpdiscoverresultentry;
+        ydk::YList vtpdiscoverresultentry;
         
-}; // CISCOVTPMIB::Vtpdiscoverresulttable
+}; // CISCOVTPMIB::VtpDiscoverResultTable
 
 
-class CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry : public ydk::Entity
+class CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry : public ydk::Entity
 {
     public:
-        Vtpdiscoverresultentry();
-        ~Vtpdiscoverresultentry();
+        VtpDiscoverResultEntry();
+        ~VtpDiscoverResultEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -666,7 +666,7 @@ class CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
         ydk::YLeaf vtpdiscoverresultindex; //type: uint32
         ydk::YLeaf vtpdiscoverresultdatabasename; //type: string
@@ -676,14 +676,14 @@ class CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry : public ydk::
         ydk::YLeaf vtpdiscoverresultrevnumber; //type: uint32
         ydk::YLeaf vtpdiscoverresultsystemname; //type: string
 
-}; // CISCOVTPMIB::Vtpdiscoverresulttable::Vtpdiscoverresultentry
+}; // CISCOVTPMIB::VtpDiscoverResultTable::VtpDiscoverResultEntry
 
 
-class CISCOVTPMIB::Vtpdatabasetable : public ydk::Entity
+class CISCOVTPMIB::VtpDatabaseTable : public ydk::Entity
 {
     public:
-        Vtpdatabasetable();
-        ~Vtpdatabasetable();
+        VtpDatabaseTable();
+        ~VtpDatabaseTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -696,18 +696,18 @@ class CISCOVTPMIB::Vtpdatabasetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpdatabaseentry; //type: CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry
+        class VtpDatabaseEntry; //type: CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry> > vtpdatabaseentry;
+        ydk::YList vtpdatabaseentry;
         
-}; // CISCOVTPMIB::Vtpdatabasetable
+}; // CISCOVTPMIB::VtpDatabaseTable
 
 
-class CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry : public ydk::Entity
+class CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry : public ydk::Entity
 {
     public:
-        Vtpdatabaseentry();
-        ~Vtpdatabaseentry();
+        VtpDatabaseEntry();
+        ~VtpDatabaseEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -720,26 +720,26 @@ class CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
         ydk::YLeaf vtpdatabaseindex; //type: uint32
         ydk::YLeaf vtpdatabasename; //type: string
-        ydk::YLeaf vtpdatabaselocalmode; //type: Vtpdatabaselocalmode
+        ydk::YLeaf vtpdatabaselocalmode; //type: VtpDatabaseLocalMode
         ydk::YLeaf vtpdatabaserevnumber; //type: uint32
         ydk::YLeaf vtpdatabaseprimaryserver; //type: boolean
         ydk::YLeaf vtpdatabaseprimaryserverid; //type: string
         ydk::YLeaf vtpdatabasetakeoverprimary; //type: boolean
         ydk::YLeaf vtpdatabasetakeoverpassword; //type: string
-        class Vtpdatabaselocalmode;
+        class VtpDatabaseLocalMode;
 
-}; // CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry
+}; // CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry
 
 
-class CISCOVTPMIB::Vtpauthenticationtable : public ydk::Entity
+class CISCOVTPMIB::VtpAuthenticationTable : public ydk::Entity
 {
     public:
-        Vtpauthenticationtable();
-        ~Vtpauthenticationtable();
+        VtpAuthenticationTable();
+        ~VtpAuthenticationTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -752,18 +752,18 @@ class CISCOVTPMIB::Vtpauthenticationtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Vtpauthentry; //type: CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry
+        class VtpAuthEntry; //type: CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry> > vtpauthentry;
+        ydk::YList vtpauthentry;
         
-}; // CISCOVTPMIB::Vtpauthenticationtable
+}; // CISCOVTPMIB::VtpAuthenticationTable
 
 
-class CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry : public ydk::Entity
+class CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry : public ydk::Entity
 {
     public:
-        Vtpauthentry();
-        ~Vtpauthentry();
+        VtpAuthEntry();
+        ~VtpAuthEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -776,14 +776,14 @@ class CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::Managementdomaintable::Managementdomainentry::managementdomainindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VTP_MIB::CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::managementdomainindex)
         ydk::YLeaf managementdomainindex;
         ydk::YLeaf vtpauthpassword; //type: string
-        ydk::YLeaf vtpauthpasswordtype; //type: Vtpauthpasswordtype
+        ydk::YLeaf vtpauthpasswordtype; //type: VtpAuthPasswordType
         ydk::YLeaf vtpauthsecretkey; //type: binary
-        class Vtpauthpasswordtype;
+        class VtpAuthPasswordType;
 
-}; // CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry
+}; // CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry
 
 class VlanType : public ydk::Enum
 {
@@ -797,7 +797,7 @@ class VlanType : public ydk::Enum
 
 };
 
-class CISCOVTPMIB::Vtpstatus::Vtpversion : public ydk::Enum
+class CISCOVTPMIB::VtpStatus::VtpVersion : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf one;
@@ -807,7 +807,7 @@ class CISCOVTPMIB::Vtpstatus::Vtpversion : public ydk::Enum
 
 };
 
-class CISCOVTPMIB::Internalvlaninfo::Vtpinternalvlanallocpolicy : public ydk::Enum
+class CISCOVTPMIB::InternalVlanInfo::VtpInternalVlanAllocPolicy : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ascending;
@@ -815,7 +815,7 @@ class CISCOVTPMIB::Internalvlaninfo::Vtpinternalvlanallocpolicy : public ydk::En
 
 };
 
-class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainlocalmode : public ydk::Enum
+class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainLocalMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf client;
@@ -825,7 +825,7 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomai
 
 };
 
-class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainpruningstate : public ydk::Enum
+class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -833,7 +833,7 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomai
 
 };
 
-class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainversioninuse : public ydk::Enum
+class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainVersionInUse : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf version1;
@@ -843,7 +843,7 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomai
 
 };
 
-class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomainpruningstateoper : public ydk::Enum
+class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::ManagementDomainPruningStateOper : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -851,7 +851,7 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Managementdomai
 
 };
 
-class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlaneditoperation : public ydk::Enum
+class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanEditOperation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -862,7 +862,7 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlaneditoper
 
 };
 
-class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplystatus : public ydk::Enum
+class CISCOVTPMIB::ManagementDomainTable::ManagementDomainEntry::VtpVlanApplyStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inProgress;
@@ -878,7 +878,7 @@ class CISCOVTPMIB::Managementdomaintable::Managementdomainentry::Vtpvlanapplysta
 
 };
 
-class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstate : public ydk::Enum
+class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf operational;
@@ -888,7 +888,7 @@ class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstate : public ydk::Enum
 
 };
 
-class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype : public ydk::Enum
+class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanStpType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ieee;
@@ -897,7 +897,7 @@ class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanstptype : public ydk::Enum
 
 };
 
-class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype : public ydk::Enum
+class CISCOVTPMIB::VtpVlanTable::VtpVlanEntry::VtpVlanBridgeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -906,7 +906,7 @@ class CISCOVTPMIB::Vtpvlantable::Vtpvlanentry::Vtpvlanbridgetype : public ydk::E
 
 };
 
-class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstate : public ydk::Enum
+class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf operational;
@@ -914,7 +914,7 @@ class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstate : public
 
 };
 
-class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype : public ydk::Enum
+class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditStpType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ieee;
@@ -923,7 +923,7 @@ class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditstptype : publ
 
 };
 
-class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditbridgetype : public ydk::Enum
+class CISCOVTPMIB::VtpVlanEditTable::VtpVlanEditEntry::VtpVlanEditBridgeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf srt;
@@ -931,7 +931,7 @@ class CISCOVTPMIB::Vtpvlanedittable::Vtpvlaneditentry::Vtpvlaneditbridgetype : p
 
 };
 
-class CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlanlocalshutdown : public ydk::Enum
+class CISCOVTPMIB::VtpVlanLocalShutdownTable::VtpVlanLocalShutdownEntry::VtpVlanLocalShutdown : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -939,7 +939,7 @@ class CISCOVTPMIB::Vtpvlanlocalshutdowntable::Vtpvlanlocalshutdownentry::Vtpvlan
 
 };
 
-class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationtype : public ydk::Enum
+class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf isl;
@@ -950,7 +950,7 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsul
 
 };
 
-class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstate : public ydk::Enum
+class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf on;
@@ -961,7 +961,7 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamics
 
 };
 
-class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamicstatus : public ydk::Enum
+class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDynamicStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf trunking;
@@ -969,7 +969,7 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdynamics
 
 };
 
-class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsulationopertype : public ydk::Enum
+class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortEncapsulationOperType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf isl;
@@ -981,7 +981,7 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportencapsul
 
 };
 
-class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtunnel : public ydk::Enum
+class CISCOVTPMIB::VlanTrunkPortTable::VlanTrunkPortEntry::VlanTrunkPortDot1qTunnel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf trunk;
@@ -990,7 +990,7 @@ class CISCOVTPMIB::Vlantrunkporttable::Vlantrunkportentry::Vlantrunkportdot1Qtun
 
 };
 
-class CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction : public ydk::Enum
+class CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf discover;
@@ -999,7 +999,7 @@ class CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoveraction : publi
 
 };
 
-class CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus : public ydk::Enum
+class CISCOVTPMIB::VtpDiscoverTable::VtpDiscoverEntry::VtpDiscoverStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inProgress;
@@ -1009,7 +1009,7 @@ class CISCOVTPMIB::Vtpdiscovertable::Vtpdiscoverentry::Vtpdiscoverstatus : publi
 
 };
 
-class CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode : public ydk::Enum
+class CISCOVTPMIB::VtpDatabaseTable::VtpDatabaseEntry::VtpDatabaseLocalMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf client;
@@ -1019,7 +1019,7 @@ class CISCOVTPMIB::Vtpdatabasetable::Vtpdatabaseentry::Vtpdatabaselocalmode : pu
 
 };
 
-class CISCOVTPMIB::Vtpauthenticationtable::Vtpauthentry::Vtpauthpasswordtype : public ydk::Enum
+class CISCOVTPMIB::VtpAuthenticationTable::VtpAuthEntry::VtpAuthPasswordType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf plaintext;

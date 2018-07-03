@@ -57,7 +57,7 @@ class HardwareModule::Nodes : public ydk::Entity
 
         class Node; //type: HardwareModule::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // HardwareModule::Nodes
 
@@ -153,7 +153,7 @@ class HardwareModule::Nodes::Node::Np::Cpu::Indexes : public ydk::Entity
 
         class Index; //type: HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index> > index_;
+        ydk::YList index_;
         
 }; // HardwareModule::Nodes::Node::Np::Cpu::Indexes
 
@@ -174,7 +174,7 @@ class HardwareModule::Nodes::Node::Np::Cpu::Indexes::Index : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: int32
+        ydk::YLeaf index_; //type: uint32
         ydk::YLeaf cos_q_name; //type: string
         ydk::YLeaf cos_q; //type: uint8
         ydk::YLeaf rx_channel; //type: uint32
@@ -229,7 +229,7 @@ class HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes : public ydk::Entity
 
         class Indx; //type: HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx> > indx;
+        ydk::YList indx;
         
 }; // HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes
 
@@ -250,7 +250,7 @@ class HardwareModule::Nodes::Node::Np::PlatformDrop::Indxes::Indx : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: int32
+        ydk::YLeaf index_; //type: uint32
         ydk::YLeaf total_captured; //type: uint32
         ydk::YLeaf captured_pak; //type: string
         ydk::YLeaf pkt_index; //type: uint8
@@ -285,7 +285,7 @@ class HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes : public ydk::Entity
 
         class Idx; //type: HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx> > idx;
+        ydk::YList idx;
         
 }; // HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes
 
@@ -306,7 +306,7 @@ class HardwareModule::Nodes::Node::Np::PlatformDrop::Idxes::Idx : public ydk::En
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: int32
+        ydk::YLeaf index_; //type: uint32
         ydk::YLeaf drop_reason; //type: string
         ydk::YLeaf counters; //type: uint32
 
@@ -359,7 +359,7 @@ class Prm::Nodes : public ydk::Entity
 
         class Node; //type: Prm::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::Prm::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // Prm::Nodes
 
@@ -453,7 +453,7 @@ class Prm::Nodes::Node::Server::Resource::Indexes : public ydk::Entity
 
         class Index; //type: Prm::Nodes::Node::Server::Resource::Indexes::Index
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_prm_server_oper::Prm::Nodes::Node::Server::Resource::Indexes::Index> > index_;
+        ydk::YList index_;
         
 }; // Prm::Nodes::Node::Server::Resource::Indexes
 
@@ -474,7 +474,7 @@ class Prm::Nodes::Node::Server::Resource::Indexes::Index : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf index_; //type: int32
+        ydk::YLeaf index_; //type: uint32
         ydk::YLeaf resource_name; //type: string
         ydk::YLeaf resource_type; //type: uint32
         ydk::YLeaf total_num; //type: uint32

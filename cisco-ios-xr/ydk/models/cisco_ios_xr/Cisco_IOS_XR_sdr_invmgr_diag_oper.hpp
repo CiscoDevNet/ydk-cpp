@@ -57,7 +57,7 @@ class Diag::Racks : public ydk::Entity
 
         class Rack; //type: Diag::Racks::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack> > rack;
+        ydk::YList rack;
         
 }; // Diag::Racks
 
@@ -111,7 +111,7 @@ class Diag::Racks::Rack::PowerShelfs : public ydk::Entity
 
         class PowerShelf; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf> > power_shelf;
+        ydk::YList power_shelf;
         
 }; // Diag::Racks::Rack::PowerShelfs
 
@@ -158,7 +158,7 @@ class Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies : public ydk::En
 
         class PowerSupply; //type: Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies::PowerSupply> > power_supply;
+        ydk::YList power_supply;
         
 }; // Diag::Racks::Rack::PowerShelfs::PowerShelf::PowerSupplies
 
@@ -307,7 +307,7 @@ class Diag::Racks::Rack::FanTraies : public ydk::Entity
 
         class FanTray; //type: Diag::Racks::Rack::FanTraies::FanTray
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray> > fan_tray;
+        ydk::YList fan_tray;
         
 }; // Diag::Racks::Rack::FanTraies
 
@@ -354,7 +354,7 @@ class Diag::Racks::Rack::FanTraies::FanTray::Fanses : public ydk::Entity
 
         class Fans; //type: Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::FanTraies::FanTray::Fanses::Fans> > fans;
+        ydk::YList fans;
         
 }; // Diag::Racks::Rack::FanTraies::FanTray::Fanses
 
@@ -503,7 +503,7 @@ class Diag::Racks::Rack::Slots : public ydk::Entity
 
         class Slot; //type: Diag::Racks::Rack::Slots::Slot
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot> > slot;
+        ydk::YList slot;
         
 }; // Diag::Racks::Rack::Slots
 
@@ -550,7 +550,7 @@ class Diag::Racks::Rack::Slots::Slot::Instances : public ydk::Entity
 
         class Instance; //type: Diag::Racks::Rack::Slots::Slot::Instances::Instance
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sdr_invmgr_diag_oper::Diag::Racks::Rack::Slots::Slot::Instances::Instance> > instance;
+        ydk::YList instance;
         
 }; // Diag::Racks::Rack::Slots::Slot::Instances
 

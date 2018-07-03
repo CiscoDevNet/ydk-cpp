@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_virtual_service_oper {
 
 VirtualServices::VirtualServices()
+    :
+    virtual_service(this, {"name"})
 {
 
-    yang_name = "virtual-services"; yang_parent_name = "Cisco-IOS-XE-virtual-service-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "virtual-services"; yang_parent_name = "Cisco-IOS-XE-virtual-service-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 VirtualServices::~VirtualServices()
@@ -23,7 +25,8 @@ VirtualServices::~VirtualServices()
 
 bool VirtualServices::has_data() const
 {
-    for (std::size_t index=0; index<virtual_service.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<virtual_service.len(); index++)
     {
         if(virtual_service[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool VirtualServices::has_data() const
 
 bool VirtualServices::has_operation() const
 {
-    for (std::size_t index=0; index<virtual_service.size(); index++)
+    for (std::size_t index=0; index<virtual_service.len(); index++)
     {
         if(virtual_service[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> VirtualServices::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<VirtualServices::VirtualService>();
         c->parent = this;
-        virtual_service.push_back(c);
+        virtual_service.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> VirtualServices::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : virtual_service)
+    for (auto c : virtual_service.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -129,15 +132,15 @@ bool VirtualServices::has_leaf_or_child_of_name(const std::string & name) const
 VirtualServices::VirtualService::VirtualService()
     :
     name{YType::str, "name"}
-    	,
+        ,
     details(std::make_shared<VirtualServices::VirtualService::Details>())
-	,utilization(std::make_shared<VirtualServices::VirtualService::Utilization>())
-	,network_utils(std::make_shared<VirtualServices::VirtualService::NetworkUtils>())
-	,storage_utils(std::make_shared<VirtualServices::VirtualService::StorageUtils>())
-	,processes(std::make_shared<VirtualServices::VirtualService::Processes>())
-	,attached_devices(std::make_shared<VirtualServices::VirtualService::AttachedDevices>())
-	,network_interfaces(std::make_shared<VirtualServices::VirtualService::NetworkInterfaces>())
-	,guest_routes(std::make_shared<VirtualServices::VirtualService::GuestRoutes>())
+    , utilization(std::make_shared<VirtualServices::VirtualService::Utilization>())
+    , network_utils(std::make_shared<VirtualServices::VirtualService::NetworkUtils>())
+    , storage_utils(std::make_shared<VirtualServices::VirtualService::StorageUtils>())
+    , processes(std::make_shared<VirtualServices::VirtualService::Processes>())
+    , attached_devices(std::make_shared<VirtualServices::VirtualService::AttachedDevices>())
+    , network_interfaces(std::make_shared<VirtualServices::VirtualService::NetworkInterfaces>())
+    , guest_routes(std::make_shared<VirtualServices::VirtualService::GuestRoutes>())
 {
     details->parent = this;
     utilization->parent = this;
@@ -148,7 +151,7 @@ VirtualServices::VirtualService::VirtualService()
     network_interfaces->parent = this;
     guest_routes->parent = this;
 
-    yang_name = "virtual-service"; yang_parent_name = "virtual-services"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "virtual-service"; yang_parent_name = "virtual-services"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VirtualServices::VirtualService::~VirtualService()
@@ -157,6 +160,7 @@ VirtualServices::VirtualService::~VirtualService()
 
 bool VirtualServices::VirtualService::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (details !=  nullptr && details->has_data())
 	|| (utilization !=  nullptr && utilization->has_data())
@@ -192,7 +196,8 @@ std::string VirtualServices::VirtualService::get_absolute_path() const
 std::string VirtualServices::VirtualService::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "virtual-service" <<"[name='" <<name <<"']";
+    path_buffer << "virtual-service";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -360,18 +365,18 @@ VirtualServices::VirtualService::Details::Details()
     state{YType::str, "state"},
     activated_profile_name{YType::str, "activated-profile-name"},
     guest_interface{YType::str, "guest-interface"}
-    	,
+        ,
     package_information(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation>())
-	,detailed_guest_status(std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus>())
-	,resource_reservation(std::make_shared<VirtualServices::VirtualService::Details::ResourceReservation>())
-	,resource_admission(std::make_shared<VirtualServices::VirtualService::Details::ResourceAdmission>())
+    , detailed_guest_status(std::make_shared<VirtualServices::VirtualService::Details::DetailedGuestStatus>())
+    , resource_reservation(std::make_shared<VirtualServices::VirtualService::Details::ResourceReservation>())
+    , resource_admission(std::make_shared<VirtualServices::VirtualService::Details::ResourceAdmission>())
 {
     package_information->parent = this;
     detailed_guest_status->parent = this;
     resource_reservation->parent = this;
     resource_admission->parent = this;
 
-    yang_name = "details"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "details"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::~Details()
@@ -380,6 +385,7 @@ VirtualServices::VirtualService::Details::~Details()
 
 bool VirtualServices::VirtualService::Details::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| activated_profile_name.is_set
 	|| guest_interface.is_set
@@ -537,16 +543,16 @@ VirtualServices::VirtualService::Details::PackageInformation::PackageInformation
     :
     name{YType::str, "name"},
     path{YType::str, "path"}
-    	,
+        ,
     application(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Application>())
-	,signing(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Signing>())
-	,licensing(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Licensing>())
+    , signing(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Signing>())
+    , licensing(std::make_shared<VirtualServices::VirtualService::Details::PackageInformation::Licensing>())
 {
     application->parent = this;
     signing->parent = this;
     licensing->parent = this;
 
-    yang_name = "package-information"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "package-information"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::PackageInformation::~PackageInformation()
@@ -555,6 +561,7 @@ VirtualServices::VirtualService::Details::PackageInformation::~PackageInformatio
 
 bool VirtualServices::VirtualService::Details::PackageInformation::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| path.is_set
 	|| (application !=  nullptr && application->has_data())
@@ -687,7 +694,7 @@ VirtualServices::VirtualService::Details::PackageInformation::Application::Appli
     type{YType::str, "type"}
 {
 
-    yang_name = "application"; yang_parent_name = "package-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application"; yang_parent_name = "package-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::PackageInformation::Application::~Application()
@@ -696,6 +703,7 @@ VirtualServices::VirtualService::Details::PackageInformation::Application::~Appl
 
 bool VirtualServices::VirtualService::Details::PackageInformation::Application::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| installed_version.is_set
 	|| description.is_set
@@ -804,7 +812,7 @@ VirtualServices::VirtualService::Details::PackageInformation::Signing::Signing()
     method{YType::str, "method"}
 {
 
-    yang_name = "signing"; yang_parent_name = "package-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "signing"; yang_parent_name = "package-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::PackageInformation::Signing::~Signing()
@@ -813,6 +821,7 @@ VirtualServices::VirtualService::Details::PackageInformation::Signing::~Signing(
 
 bool VirtualServices::VirtualService::Details::PackageInformation::Signing::has_data() const
 {
+    if (is_presence_container) return true;
     return key_type.is_set
 	|| method.is_set;
 }
@@ -895,7 +904,7 @@ VirtualServices::VirtualService::Details::PackageInformation::Licensing::Licensi
     version{YType::str, "version"}
 {
 
-    yang_name = "licensing"; yang_parent_name = "package-information"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "licensing"; yang_parent_name = "package-information"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::PackageInformation::Licensing::~Licensing()
@@ -904,6 +913,7 @@ VirtualServices::VirtualService::Details::PackageInformation::Licensing::~Licens
 
 bool VirtualServices::VirtualService::Details::PackageInformation::Licensing::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| version.is_set;
 }
@@ -986,7 +996,7 @@ VirtualServices::VirtualService::Details::DetailedGuestStatus::DetailedGuestStat
 {
     processes->parent = this;
 
-    yang_name = "detailed-guest-status"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detailed-guest-status"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::DetailedGuestStatus::~DetailedGuestStatus()
@@ -995,6 +1005,7 @@ VirtualServices::VirtualService::Details::DetailedGuestStatus::~DetailedGuestSta
 
 bool VirtualServices::VirtualService::Details::DetailedGuestStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return (processes !=  nullptr && processes->has_data());
 }
 
@@ -1070,7 +1081,7 @@ VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::Proces
     memory{YType::str, "memory"}
 {
 
-    yang_name = "processes"; yang_parent_name = "detailed-guest-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "processes"; yang_parent_name = "detailed-guest-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::~Processes()
@@ -1079,6 +1090,7 @@ VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::~Proce
 
 bool VirtualServices::VirtualService::Details::DetailedGuestStatus::Processes::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| status.is_set
 	|| pid.is_set
@@ -1201,7 +1213,7 @@ VirtualServices::VirtualService::Details::ResourceReservation::ResourceReservati
     cpu{YType::uint64, "cpu"}
 {
 
-    yang_name = "resource-reservation"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource-reservation"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::ResourceReservation::~ResourceReservation()
@@ -1210,6 +1222,7 @@ VirtualServices::VirtualService::Details::ResourceReservation::~ResourceReservat
 
 bool VirtualServices::VirtualService::Details::ResourceReservation::has_data() const
 {
+    if (is_presence_container) return true;
     return disk.is_set
 	|| memory.is_set
 	|| cpu.is_set;
@@ -1308,7 +1321,7 @@ VirtualServices::VirtualService::Details::ResourceAdmission::ResourceAdmission()
     vcpus{YType::str, "vcpus"}
 {
 
-    yang_name = "resource-admission"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resource-admission"; yang_parent_name = "details"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Details::ResourceAdmission::~ResourceAdmission()
@@ -1317,6 +1330,7 @@ VirtualServices::VirtualService::Details::ResourceAdmission::~ResourceAdmission(
 
 bool VirtualServices::VirtualService::Details::ResourceAdmission::has_data() const
 {
+    if (is_presence_container) return true;
     return state.is_set
 	|| disk_space.is_set
 	|| memory.is_set
@@ -1435,14 +1449,14 @@ bool VirtualServices::VirtualService::Details::ResourceAdmission::has_leaf_or_ch
 VirtualServices::VirtualService::Utilization::Utilization()
     :
     name{YType::str, "name"}
-    	,
+        ,
     cpu_util(std::make_shared<VirtualServices::VirtualService::Utilization::CpuUtil>())
-	,memory_util(std::make_shared<VirtualServices::VirtualService::Utilization::MemoryUtil>())
+    , memory_util(std::make_shared<VirtualServices::VirtualService::Utilization::MemoryUtil>())
 {
     cpu_util->parent = this;
     memory_util->parent = this;
 
-    yang_name = "utilization"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "utilization"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Utilization::~Utilization()
@@ -1451,6 +1465,7 @@ VirtualServices::VirtualService::Utilization::~Utilization()
 
 bool VirtualServices::VirtualService::Utilization::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (cpu_util !=  nullptr && cpu_util->has_data())
 	|| (memory_util !=  nullptr && memory_util->has_data());
@@ -1553,7 +1568,7 @@ VirtualServices::VirtualService::Utilization::CpuUtil::CpuUtil()
     cpu_state{YType::str, "cpu-state"}
 {
 
-    yang_name = "cpu-util"; yang_parent_name = "utilization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cpu-util"; yang_parent_name = "utilization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Utilization::CpuUtil::~CpuUtil()
@@ -1562,6 +1577,7 @@ VirtualServices::VirtualService::Utilization::CpuUtil::~CpuUtil()
 
 bool VirtualServices::VirtualService::Utilization::CpuUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return requested_application_util.is_set
 	|| actual_application_util.is_set
 	|| cpu_state.is_set;
@@ -1657,7 +1673,7 @@ VirtualServices::VirtualService::Utilization::MemoryUtil::MemoryUtil()
     memory_used{YType::str, "memory-used"}
 {
 
-    yang_name = "memory-util"; yang_parent_name = "utilization"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "memory-util"; yang_parent_name = "utilization"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Utilization::MemoryUtil::~MemoryUtil()
@@ -1666,6 +1682,7 @@ VirtualServices::VirtualService::Utilization::MemoryUtil::~MemoryUtil()
 
 bool VirtualServices::VirtualService::Utilization::MemoryUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return memory_allocation.is_set
 	|| memory_used.is_set;
 }
@@ -1743,9 +1760,11 @@ bool VirtualServices::VirtualService::Utilization::MemoryUtil::has_leaf_or_child
 }
 
 VirtualServices::VirtualService::NetworkUtils::NetworkUtils()
+    :
+    network_util(this, {"name"})
 {
 
-    yang_name = "network-utils"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-utils"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::NetworkUtils::~NetworkUtils()
@@ -1754,7 +1773,8 @@ VirtualServices::VirtualService::NetworkUtils::~NetworkUtils()
 
 bool VirtualServices::VirtualService::NetworkUtils::has_data() const
 {
-    for (std::size_t index=0; index<network_util.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network_util.len(); index++)
     {
         if(network_util[index]->has_data())
             return true;
@@ -1764,7 +1784,7 @@ bool VirtualServices::VirtualService::NetworkUtils::has_data() const
 
 bool VirtualServices::VirtualService::NetworkUtils::has_operation() const
 {
-    for (std::size_t index=0; index<network_util.size(); index++)
+    for (std::size_t index=0; index<network_util.len(); index++)
     {
         if(network_util[index]->has_operation())
             return true;
@@ -1794,7 +1814,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkUtils::get_child
     {
         auto c = std::make_shared<VirtualServices::VirtualService::NetworkUtils::NetworkUtil>();
         c->parent = this;
-        network_util.push_back(c);
+        network_util.append(c);
         return c;
     }
 
@@ -1806,7 +1826,7 @@ std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network_util)
+    for (auto c : network_util.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1844,7 +1864,7 @@ VirtualServices::VirtualService::NetworkUtils::NetworkUtil::NetworkUtil()
     tx_errors{YType::uint64, "tx-errors"}
 {
 
-    yang_name = "network-util"; yang_parent_name = "network-utils"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-util"; yang_parent_name = "network-utils"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::NetworkUtils::NetworkUtil::~NetworkUtil()
@@ -1853,6 +1873,7 @@ VirtualServices::VirtualService::NetworkUtils::NetworkUtil::~NetworkUtil()
 
 bool VirtualServices::VirtualService::NetworkUtils::NetworkUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| alias.is_set
 	|| rx_packets.is_set
@@ -1879,7 +1900,8 @@ bool VirtualServices::VirtualService::NetworkUtils::NetworkUtil::has_operation()
 std::string VirtualServices::VirtualService::NetworkUtils::NetworkUtil::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "network-util" <<"[name='" <<name <<"']";
+    path_buffer << "network-util";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2008,9 +2030,11 @@ bool VirtualServices::VirtualService::NetworkUtils::NetworkUtil::has_leaf_or_chi
 }
 
 VirtualServices::VirtualService::StorageUtils::StorageUtils()
+    :
+    storage_util(this, {"name"})
 {
 
-    yang_name = "storage-utils"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storage-utils"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::StorageUtils::~StorageUtils()
@@ -2019,7 +2043,8 @@ VirtualServices::VirtualService::StorageUtils::~StorageUtils()
 
 bool VirtualServices::VirtualService::StorageUtils::has_data() const
 {
-    for (std::size_t index=0; index<storage_util.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<storage_util.len(); index++)
     {
         if(storage_util[index]->has_data())
             return true;
@@ -2029,7 +2054,7 @@ bool VirtualServices::VirtualService::StorageUtils::has_data() const
 
 bool VirtualServices::VirtualService::StorageUtils::has_operation() const
 {
-    for (std::size_t index=0; index<storage_util.size(); index++)
+    for (std::size_t index=0; index<storage_util.len(); index++)
     {
         if(storage_util[index]->has_operation())
             return true;
@@ -2059,7 +2084,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::StorageUtils::get_child
     {
         auto c = std::make_shared<VirtualServices::VirtualService::StorageUtils::StorageUtil>();
         c->parent = this;
-        storage_util.push_back(c);
+        storage_util.append(c);
         return c;
     }
 
@@ -2071,7 +2096,7 @@ std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : storage_util)
+    for (auto c : storage_util.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2112,7 +2137,7 @@ VirtualServices::VirtualService::StorageUtils::StorageUtil::StorageUtil()
     usage{YType::str, "usage"}
 {
 
-    yang_name = "storage-util"; yang_parent_name = "storage-utils"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "storage-util"; yang_parent_name = "storage-utils"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::StorageUtils::StorageUtil::~StorageUtil()
@@ -2121,6 +2146,7 @@ VirtualServices::VirtualService::StorageUtils::StorageUtil::~StorageUtil()
 
 bool VirtualServices::VirtualService::StorageUtils::StorageUtil::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| alias.is_set
 	|| rd_bytes.is_set
@@ -2153,7 +2179,8 @@ bool VirtualServices::VirtualService::StorageUtils::StorageUtil::has_operation()
 std::string VirtualServices::VirtualService::StorageUtils::StorageUtil::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "storage-util" <<"[name='" <<name <<"']";
+    path_buffer << "storage-util";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2315,9 +2342,11 @@ bool VirtualServices::VirtualService::StorageUtils::StorageUtil::has_leaf_or_chi
 }
 
 VirtualServices::VirtualService::Processes::Processes()
+    :
+    process(this, {"name"})
 {
 
-    yang_name = "processes"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "processes"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Processes::~Processes()
@@ -2326,7 +2355,8 @@ VirtualServices::VirtualService::Processes::~Processes()
 
 bool VirtualServices::VirtualService::Processes::has_data() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_data())
             return true;
@@ -2336,7 +2366,7 @@ bool VirtualServices::VirtualService::Processes::has_data() const
 
 bool VirtualServices::VirtualService::Processes::has_operation() const
 {
-    for (std::size_t index=0; index<process.size(); index++)
+    for (std::size_t index=0; index<process.len(); index++)
     {
         if(process[index]->has_operation())
             return true;
@@ -2366,7 +2396,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::Processes::get_child_by
     {
         auto c = std::make_shared<VirtualServices::VirtualService::Processes::Process>();
         c->parent = this;
-        process.push_back(c);
+        process.append(c);
         return c;
     }
 
@@ -2378,7 +2408,7 @@ std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : process)
+    for (auto c : process.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2413,7 +2443,7 @@ VirtualServices::VirtualService::Processes::Process::Process()
     memory{YType::str, "memory"}
 {
 
-    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "process"; yang_parent_name = "processes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::Processes::Process::~Process()
@@ -2422,6 +2452,7 @@ VirtualServices::VirtualService::Processes::Process::~Process()
 
 bool VirtualServices::VirtualService::Processes::Process::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| status.is_set
 	|| pid.is_set
@@ -2442,7 +2473,8 @@ bool VirtualServices::VirtualService::Processes::Process::has_operation() const
 std::string VirtualServices::VirtualService::Processes::Process::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "process" <<"[name='" <<name <<"']";
+    path_buffer << "process";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2538,9 +2570,11 @@ bool VirtualServices::VirtualService::Processes::Process::has_leaf_or_child_of_n
 }
 
 VirtualServices::VirtualService::AttachedDevices::AttachedDevices()
+    :
+    attached_device(this, {"name"})
 {
 
-    yang_name = "attached-devices"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached-devices"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::AttachedDevices::~AttachedDevices()
@@ -2549,7 +2583,8 @@ VirtualServices::VirtualService::AttachedDevices::~AttachedDevices()
 
 bool VirtualServices::VirtualService::AttachedDevices::has_data() const
 {
-    for (std::size_t index=0; index<attached_device.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<attached_device.len(); index++)
     {
         if(attached_device[index]->has_data())
             return true;
@@ -2559,7 +2594,7 @@ bool VirtualServices::VirtualService::AttachedDevices::has_data() const
 
 bool VirtualServices::VirtualService::AttachedDevices::has_operation() const
 {
-    for (std::size_t index=0; index<attached_device.size(); index++)
+    for (std::size_t index=0; index<attached_device.len(); index++)
     {
         if(attached_device[index]->has_operation())
             return true;
@@ -2589,7 +2624,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::AttachedDevices::get_ch
     {
         auto c = std::make_shared<VirtualServices::VirtualService::AttachedDevices::AttachedDevice>();
         c->parent = this;
-        attached_device.push_back(c);
+        attached_device.append(c);
         return c;
     }
 
@@ -2601,7 +2636,7 @@ std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : attached_device)
+    for (auto c : attached_device.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2634,7 +2669,7 @@ VirtualServices::VirtualService::AttachedDevices::AttachedDevice::AttachedDevice
     alias{YType::str, "alias"}
 {
 
-    yang_name = "attached-device"; yang_parent_name = "attached-devices"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attached-device"; yang_parent_name = "attached-devices"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::AttachedDevices::AttachedDevice::~AttachedDevice()
@@ -2643,6 +2678,7 @@ VirtualServices::VirtualService::AttachedDevices::AttachedDevice::~AttachedDevic
 
 bool VirtualServices::VirtualService::AttachedDevices::AttachedDevice::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| type.is_set
 	|| alias.is_set;
@@ -2659,7 +2695,8 @@ bool VirtualServices::VirtualService::AttachedDevices::AttachedDevice::has_opera
 std::string VirtualServices::VirtualService::AttachedDevices::AttachedDevice::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "attached-device" <<"[name='" <<name <<"']";
+    path_buffer << "attached-device";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2733,9 +2770,11 @@ bool VirtualServices::VirtualService::AttachedDevices::AttachedDevice::has_leaf_
 }
 
 VirtualServices::VirtualService::NetworkInterfaces::NetworkInterfaces()
+    :
+    network_interface(this, {"mac_address"})
 {
 
-    yang_name = "network-interfaces"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-interfaces"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::NetworkInterfaces::~NetworkInterfaces()
@@ -2744,7 +2783,8 @@ VirtualServices::VirtualService::NetworkInterfaces::~NetworkInterfaces()
 
 bool VirtualServices::VirtualService::NetworkInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<network_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network_interface.len(); index++)
     {
         if(network_interface[index]->has_data())
             return true;
@@ -2754,7 +2794,7 @@ bool VirtualServices::VirtualService::NetworkInterfaces::has_data() const
 
 bool VirtualServices::VirtualService::NetworkInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<network_interface.size(); index++)
+    for (std::size_t index=0; index<network_interface.len(); index++)
     {
         if(network_interface[index]->has_operation())
             return true;
@@ -2784,7 +2824,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::NetworkInterfaces::get_
     {
         auto c = std::make_shared<VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface>();
         c->parent = this;
-        network_interface.push_back(c);
+        network_interface.append(c);
         return c;
     }
 
@@ -2796,7 +2836,7 @@ std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : network_interface)
+    for (auto c : network_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2829,7 +2869,7 @@ VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::NetworkInt
     ipv4_address{YType::str, "ipv4-address"}
 {
 
-    yang_name = "network-interface"; yang_parent_name = "network-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "network-interface"; yang_parent_name = "network-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::~NetworkInterface()
@@ -2838,6 +2878,7 @@ VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::~NetworkIn
 
 bool VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return mac_address.is_set
 	|| attached_interface.is_set
 	|| ipv4_address.is_set;
@@ -2854,7 +2895,8 @@ bool VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::has_o
 std::string VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "network-interface" <<"[mac-address='" <<mac_address <<"']";
+    path_buffer << "network-interface";
+    ADD_KEY_TOKEN(mac_address, "mac-address");
     return path_buffer.str();
 }
 
@@ -2928,9 +2970,11 @@ bool VirtualServices::VirtualService::NetworkInterfaces::NetworkInterface::has_l
 }
 
 VirtualServices::VirtualService::GuestRoutes::GuestRoutes()
+    :
+    guest_route(this, {"route"})
 {
 
-    yang_name = "guest-routes"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "guest-routes"; yang_parent_name = "virtual-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::GuestRoutes::~GuestRoutes()
@@ -2939,7 +2983,8 @@ VirtualServices::VirtualService::GuestRoutes::~GuestRoutes()
 
 bool VirtualServices::VirtualService::GuestRoutes::has_data() const
 {
-    for (std::size_t index=0; index<guest_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<guest_route.len(); index++)
     {
         if(guest_route[index]->has_data())
             return true;
@@ -2949,7 +2994,7 @@ bool VirtualServices::VirtualService::GuestRoutes::has_data() const
 
 bool VirtualServices::VirtualService::GuestRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<guest_route.size(); index++)
+    for (std::size_t index=0; index<guest_route.len(); index++)
     {
         if(guest_route[index]->has_operation())
             return true;
@@ -2979,7 +3024,7 @@ std::shared_ptr<Entity> VirtualServices::VirtualService::GuestRoutes::get_child_
     {
         auto c = std::make_shared<VirtualServices::VirtualService::GuestRoutes::GuestRoute>();
         c->parent = this;
-        guest_route.push_back(c);
+        guest_route.append(c);
         return c;
     }
 
@@ -2991,7 +3036,7 @@ std::map<std::string, std::shared_ptr<Entity>> VirtualServices::VirtualService::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : guest_route)
+    for (auto c : guest_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3022,7 +3067,7 @@ VirtualServices::VirtualService::GuestRoutes::GuestRoute::GuestRoute()
     route{YType::str, "route"}
 {
 
-    yang_name = "guest-route"; yang_parent_name = "guest-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "guest-route"; yang_parent_name = "guest-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VirtualServices::VirtualService::GuestRoutes::GuestRoute::~GuestRoute()
@@ -3031,6 +3076,7 @@ VirtualServices::VirtualService::GuestRoutes::GuestRoute::~GuestRoute()
 
 bool VirtualServices::VirtualService::GuestRoutes::GuestRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return route.is_set;
 }
 
@@ -3043,7 +3089,8 @@ bool VirtualServices::VirtualService::GuestRoutes::GuestRoute::has_operation() c
 std::string VirtualServices::VirtualService::GuestRoutes::GuestRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "guest-route" <<"[route='" <<route <<"']";
+    path_buffer << "guest-route";
+    ADD_KEY_TOKEN(route, "route");
     return path_buffer.str();
 }
 

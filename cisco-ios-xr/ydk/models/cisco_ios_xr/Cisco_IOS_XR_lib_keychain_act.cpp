@@ -17,7 +17,7 @@ MasterKeyAdd::MasterKeyAdd()
 {
     input->parent = this;
 
-    yang_name = "master-key-add"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "master-key-add"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MasterKeyAdd::~MasterKeyAdd()
@@ -26,6 +26,7 @@ MasterKeyAdd::~MasterKeyAdd()
 
 bool MasterKeyAdd::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -122,7 +123,7 @@ MasterKeyAdd::Input::Input()
     new_key{YType::str, "new-key"}
 {
 
-    yang_name = "input"; yang_parent_name = "master-key-add"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "master-key-add"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MasterKeyAdd::Input::~Input()
@@ -131,6 +132,7 @@ MasterKeyAdd::Input::~Input()
 
 bool MasterKeyAdd::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return new_key.is_set;
 }
 
@@ -204,7 +206,7 @@ bool MasterKeyAdd::Input::has_leaf_or_child_of_name(const std::string & name) co
 MasterKeyDelete::MasterKeyDelete()
 {
 
-    yang_name = "master-key-delete"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "master-key-delete"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MasterKeyDelete::~MasterKeyDelete()
@@ -213,6 +215,7 @@ MasterKeyDelete::~MasterKeyDelete()
 
 bool MasterKeyDelete::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -293,7 +296,7 @@ MasterKeyUpdate::MasterKeyUpdate()
 {
     input->parent = this;
 
-    yang_name = "master-key-update"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "master-key-update"; yang_parent_name = "Cisco-IOS-XR-lib-keychain-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MasterKeyUpdate::~MasterKeyUpdate()
@@ -302,6 +305,7 @@ MasterKeyUpdate::~MasterKeyUpdate()
 
 bool MasterKeyUpdate::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -399,7 +403,7 @@ MasterKeyUpdate::Input::Input()
     new_key{YType::str, "new-key"}
 {
 
-    yang_name = "input"; yang_parent_name = "master-key-update"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "master-key-update"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MasterKeyUpdate::Input::~Input()
@@ -408,6 +412,7 @@ MasterKeyUpdate::Input::~Input()
 
 bool MasterKeyUpdate::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return old_key.is_set
 	|| new_key.is_set;
 }

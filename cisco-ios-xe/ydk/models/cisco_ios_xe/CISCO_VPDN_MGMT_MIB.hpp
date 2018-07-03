@@ -32,40 +32,40 @@ class CISCOVPDNMGMTMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscovpdnmgmtmibnotifs; //type: CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs
-        class Cvpdnsysteminfo; //type: CISCOVPDNMGMTMIB::Cvpdnsysteminfo
-        class Cvpdnmultilinkinfo; //type: CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo
-        class Cvpdnsystemtable; //type: CISCOVPDNMGMTMIB::Cvpdnsystemtable
-        class Cvpdntunneltable; //type: CISCOVPDNMGMTMIB::Cvpdntunneltable
-        class Cvpdntunnelattrtable; //type: CISCOVPDNMGMTMIB::Cvpdntunnelattrtable
-        class Cvpdntunnelsessiontable; //type: CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable
-        class Cvpdnsessionattrtable; //type: CISCOVPDNMGMTMIB::Cvpdnsessionattrtable
-        class Cvpdnusertofailhistinfotable; //type: CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable
-        class Cvpdntemplatetable; //type: CISCOVPDNMGMTMIB::Cvpdntemplatetable
-        class Cvpdnbundletable; //type: CISCOVPDNMGMTMIB::Cvpdnbundletable
-        class Cvpdnbundlechildtable; //type: CISCOVPDNMGMTMIB::Cvpdnbundlechildtable
+        class CiscoVpdnMgmtMIBNotifs; //type: CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs
+        class CvpdnSystemInfo; //type: CISCOVPDNMGMTMIB::CvpdnSystemInfo
+        class CvpdnMultilinkInfo; //type: CISCOVPDNMGMTMIB::CvpdnMultilinkInfo
+        class CvpdnSystemTable; //type: CISCOVPDNMGMTMIB::CvpdnSystemTable
+        class CvpdnTunnelTable; //type: CISCOVPDNMGMTMIB::CvpdnTunnelTable
+        class CvpdnTunnelAttrTable; //type: CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable
+        class CvpdnTunnelSessionTable; //type: CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable
+        class CvpdnSessionAttrTable; //type: CISCOVPDNMGMTMIB::CvpdnSessionAttrTable
+        class CvpdnUserToFailHistInfoTable; //type: CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable
+        class CvpdnTemplateTable; //type: CISCOVPDNMGMTMIB::CvpdnTemplateTable
+        class CvpdnBundleTable; //type: CISCOVPDNMGMTMIB::CvpdnBundleTable
+        class CvpdnBundleChildTable; //type: CISCOVPDNMGMTMIB::CvpdnBundleChildTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs> ciscovpdnmgmtmibnotifs;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnsysteminfo> cvpdnsysteminfo;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo> cvpdnmultilinkinfo;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnsystemtable> cvpdnsystemtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunneltable> cvpdntunneltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunnelattrtable> cvpdntunnelattrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable> cvpdntunnelsessiontable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnsessionattrtable> cvpdnsessionattrtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable> cvpdnusertofailhistinfotable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntemplatetable> cvpdntemplatetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnbundletable> cvpdnbundletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnbundlechildtable> cvpdnbundlechildtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs> ciscovpdnmgmtmibnotifs;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnSystemInfo> cvpdnsysteminfo;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnMultilinkInfo> cvpdnmultilinkinfo;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnSystemTable> cvpdnsystemtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnTunnelTable> cvpdntunneltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable> cvpdntunnelattrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable> cvpdntunnelsessiontable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnSessionAttrTable> cvpdnsessionattrtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable> cvpdnusertofailhistinfotable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnTemplateTable> cvpdntemplatetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnBundleTable> cvpdnbundletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnBundleChildTable> cvpdnbundlechildtable;
         
 }; // CISCOVPDNMGMTMIB
 
 
-class CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs : public ydk::Entity
+class CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs : public ydk::Entity
 {
     public:
-        Ciscovpdnmgmtmibnotifs();
-        ~Ciscovpdnmgmtmibnotifs();
+        CiscoVpdnMgmtMIBNotifs();
+        ~CiscoVpdnMgmtMIBNotifs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -79,17 +79,17 @@ class CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cvpdnnotifsessionid; //type: int32
-        ydk::YLeaf cvpdnnotifsessionevent; //type: Cvpdnnotifsessionevent
-        class Cvpdnnotifsessionevent;
+        ydk::YLeaf cvpdnnotifsessionevent; //type: CvpdnNotifSessionEvent
+        class CvpdnNotifSessionEvent;
 
-}; // CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs
+}; // CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs
 
 
-class CISCOVPDNMGMTMIB::Cvpdnsysteminfo : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnSystemInfo : public ydk::Entity
 {
     public:
-        Cvpdnsysteminfo();
-        ~Cvpdnsysteminfo();
+        CvpdnSystemInfo();
+        ~CvpdnSystemInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -106,17 +106,17 @@ class CISCOVPDNMGMTMIB::Cvpdnsysteminfo : public ydk::Entity
         ydk::YLeaf cvpdnsessiontotal; //type: uint32
         ydk::YLeaf cvpdndenieduserstotal; //type: uint32
         ydk::YLeaf cvpdnsystemnotifsessionenabled; //type: boolean
-        ydk::YLeaf cvpdnsystemclearsessions; //type: Cvpdnsystemclearsessions
-        class Cvpdnsystemclearsessions;
+        ydk::YLeaf cvpdnsystemclearsessions; //type: CvpdnSystemClearSessions
+        class CvpdnSystemClearSessions;
 
-}; // CISCOVPDNMGMTMIB::Cvpdnsysteminfo
+}; // CISCOVPDNMGMTMIB::CvpdnSystemInfo
 
 
-class CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnMultilinkInfo : public ydk::Entity
 {
     public:
-        Cvpdnmultilinkinfo();
-        ~Cvpdnmultilinkinfo();
+        CvpdnMultilinkInfo();
+        ~CvpdnMultilinkInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -134,14 +134,14 @@ class CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo : public ydk::Entity
         ydk::YLeaf cvpdnbundleswithmorethantwolinks; //type: uint32
         ydk::YLeaf cvpdnbundlelastchanged; //type: uint32
 
-}; // CISCOVPDNMGMTMIB::Cvpdnmultilinkinfo
+}; // CISCOVPDNMGMTMIB::CvpdnMultilinkInfo
 
 
-class CISCOVPDNMGMTMIB::Cvpdnsystemtable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnSystemTable : public ydk::Entity
 {
     public:
-        Cvpdnsystemtable();
-        ~Cvpdnsystemtable();
+        CvpdnSystemTable();
+        ~CvpdnSystemTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -154,18 +154,18 @@ class CISCOVPDNMGMTMIB::Cvpdnsystemtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdnsystementry; //type: CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry
+        class CvpdnSystemEntry; //type: CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry> > cvpdnsystementry;
+        ydk::YList cvpdnsystementry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdnsystemtable
+}; // CISCOVPDNMGMTMIB::CvpdnSystemTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry : public ydk::Entity
 {
     public:
-        Cvpdnsystementry();
-        ~Cvpdnsystementry();
+        CvpdnSystemEntry();
+        ~CvpdnSystemEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -186,14 +186,14 @@ class CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry : public ydk::Entity
         ydk::YLeaf cvpdnsystemsuccessconnreq; //type: uint32
         ydk::YLeaf cvpdnsystemfailedconnreq; //type: uint32
 
-}; // CISCOVPDNMGMTMIB::Cvpdnsystemtable::Cvpdnsystementry
+}; // CISCOVPDNMGMTMIB::CvpdnSystemTable::CvpdnSystemEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdntunneltable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTunnelTable : public ydk::Entity
 {
     public:
-        Cvpdntunneltable();
-        ~Cvpdntunneltable();
+        CvpdnTunnelTable();
+        ~CvpdnTunnelTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -206,18 +206,18 @@ class CISCOVPDNMGMTMIB::Cvpdntunneltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdntunnelentry; //type: CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry
+        class CvpdnTunnelEntry; //type: CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry> > cvpdntunnelentry;
+        ydk::YList cvpdntunnelentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdntunneltable
+}; // CISCOVPDNMGMTMIB::CvpdnTunnelTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry : public ydk::Entity
 {
     public:
-        Cvpdntunnelentry();
-        ~Cvpdntunnelentry();
+        CvpdnTunnelEntry();
+        ~CvpdnTunnelEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -236,27 +236,27 @@ class CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry : public ydk::Entity
         ydk::YLeaf cvpdntunnelremotename; //type: string
         ydk::YLeaf cvpdntunnelremoteendpointname; //type: string
         ydk::YLeaf cvpdntunnellocalinitconnection; //type: boolean
-        ydk::YLeaf cvpdntunnelorigcause; //type: Cvpdntunnelorigcause
-        ydk::YLeaf cvpdntunnelstate; //type: Cvpdntunnelstate
+        ydk::YLeaf cvpdntunnelorigcause; //type: CvpdnTunnelOrigCause
+        ydk::YLeaf cvpdntunnelstate; //type: CvpdnTunnelState
         ydk::YLeaf cvpdntunnelactivesessions; //type: uint32
         ydk::YLeaf cvpdntunneldeniedusers; //type: uint32
         ydk::YLeaf cvpdntunnelsoftshut; //type: boolean
-        ydk::YLeaf cvpdntunnelnetworkservicetype; //type: Cvpdntunnelnetworkservicetype
+        ydk::YLeaf cvpdntunnelnetworkservicetype; //type: CvpdnTunnelNetworkServiceType
         ydk::YLeaf cvpdntunnellocalipaddress; //type: string
         ydk::YLeaf cvpdntunnelsourceipaddress; //type: string
         ydk::YLeaf cvpdntunnelremoteipaddress; //type: string
-        class Cvpdntunnelorigcause;
-        class Cvpdntunnelstate;
-        class Cvpdntunnelnetworkservicetype;
+        class CvpdnTunnelOrigCause;
+        class CvpdnTunnelState;
+        class CvpdnTunnelNetworkServiceType;
 
-}; // CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry
+}; // CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable : public ydk::Entity
 {
     public:
-        Cvpdntunnelattrtable();
-        ~Cvpdntunnelattrtable();
+        CvpdnTunnelAttrTable();
+        ~CvpdnTunnelAttrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -269,18 +269,18 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdntunnelattrentry; //type: CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry
+        class CvpdnTunnelAttrEntry; //type: CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry> > cvpdntunnelattrentry;
+        ydk::YList cvpdntunnelattrentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdntunnelattrtable
+}; // CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry : public ydk::Entity
 {
     public:
-        Cvpdntunnelattrentry();
-        ~Cvpdntunnelattrentry();
+        CvpdnTunnelAttrEntry();
+        ~CvpdnTunnelAttrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -300,12 +300,12 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry : public ydk:
         ydk::YLeaf cvpdntunnelattrremotename; //type: string
         ydk::YLeaf cvpdntunnelattrremoteendpointname; //type: string
         ydk::YLeaf cvpdntunnelattrlocalinitconnection; //type: boolean
-        ydk::YLeaf cvpdntunnelattrorigcause; //type: Cvpdntunnelattrorigcause
-        ydk::YLeaf cvpdntunnelattrstate; //type: Cvpdntunnelattrstate
+        ydk::YLeaf cvpdntunnelattrorigcause; //type: CvpdnTunnelAttrOrigCause
+        ydk::YLeaf cvpdntunnelattrstate; //type: CvpdnTunnelAttrState
         ydk::YLeaf cvpdntunnelattractivesessions; //type: uint32
         ydk::YLeaf cvpdntunnelattrdeniedusers; //type: uint32
         ydk::YLeaf cvpdntunnelattrsoftshut; //type: boolean
-        ydk::YLeaf cvpdntunnelattrnetworkservicetype; //type: Cvpdntunnelattrnetworkservicetype
+        ydk::YLeaf cvpdntunnelattrnetworkservicetype; //type: CvpdnTunnelAttrNetworkServiceType
         ydk::YLeaf cvpdntunnelattrlocalipaddress; //type: string
         ydk::YLeaf cvpdntunnelattrsourceipaddress; //type: string
         ydk::YLeaf cvpdntunnelattrremoteipaddress; //type: string
@@ -315,18 +315,18 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry : public ydk:
         ydk::YLeaf cvpdntunnelattrsourceinetaddress; //type: binary
         ydk::YLeaf cvpdntunnelattrremoteinetaddresstype; //type: InetAddressType
         ydk::YLeaf cvpdntunnelattrremoteinetaddress; //type: binary
-        class Cvpdntunnelattrorigcause;
-        class Cvpdntunnelattrstate;
-        class Cvpdntunnelattrnetworkservicetype;
+        class CvpdnTunnelAttrOrigCause;
+        class CvpdnTunnelAttrState;
+        class CvpdnTunnelAttrNetworkServiceType;
 
-}; // CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry
+}; // CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable : public ydk::Entity
 {
     public:
-        Cvpdntunnelsessiontable();
-        ~Cvpdntunnelsessiontable();
+        CvpdnTunnelSessionTable();
+        ~CvpdnTunnelSessionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -339,18 +339,18 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdntunnelsessionentry; //type: CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry
+        class CvpdnTunnelSessionEntry; //type: CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry> > cvpdntunnelsessionentry;
+        ydk::YList cvpdntunnelsessionentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable
+}; // CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry : public ydk::Entity
 {
     public:
-        Cvpdntunnelsessionentry();
-        ~Cvpdntunnelsessionentry();
+        CvpdnTunnelSessionEntry();
+        ~CvpdnTunnelSessionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -363,17 +363,17 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::cvpdntunneltunnelid)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::cvpdntunneltunnelid)
         ydk::YLeaf cvpdntunneltunnelid;
         ydk::YLeaf cvpdntunnelsessionid; //type: uint32
         ydk::YLeaf cvpdntunnelsessionusername; //type: string
-        ydk::YLeaf cvpdntunnelsessionstate; //type: Cvpdntunnelsessionstate
+        ydk::YLeaf cvpdntunnelsessionstate; //type: CvpdnTunnelSessionState
         ydk::YLeaf cvpdntunnelsessioncallduration; //type: uint32
         ydk::YLeaf cvpdntunnelsessionpacketsout; //type: uint32
         ydk::YLeaf cvpdntunnelsessionbytesout; //type: uint32
         ydk::YLeaf cvpdntunnelsessionpacketsin; //type: uint32
         ydk::YLeaf cvpdntunnelsessionbytesin; //type: uint32
-        ydk::YLeaf cvpdntunnelsessiondevicetype; //type: Cvpdntunnelsessiondevicetype
+        ydk::YLeaf cvpdntunnelsessiondevicetype; //type: CvpdnTunnelSessionDeviceType
         ydk::YLeaf cvpdntunnelsessiondevicecallerid; //type: string
         ydk::YLeaf cvpdntunnelsessiondevicephyid; //type: int32
         ydk::YLeaf cvpdntunnelsessionmultilink; //type: boolean
@@ -384,17 +384,17 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry : publi
         ydk::YLeaf cvpdntunnelsessionds1channelindex; //type: uint32
         ydk::YLeaf cvpdntunnelsessionmodemcallstarttime; //type: uint32
         ydk::YLeaf cvpdntunnelsessionmodemcallstartindex; //type: uint32
-        class Cvpdntunnelsessionstate;
-        class Cvpdntunnelsessiondevicetype;
+        class CvpdnTunnelSessionState;
+        class CvpdnTunnelSessionDeviceType;
 
-}; // CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry
+}; // CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable : public ydk::Entity
 {
     public:
-        Cvpdnsessionattrtable();
-        ~Cvpdnsessionattrtable();
+        CvpdnSessionAttrTable();
+        ~CvpdnSessionAttrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -407,18 +407,18 @@ class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdnsessionattrentry; //type: CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry
+        class CvpdnSessionAttrEntry; //type: CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry> > cvpdnsessionattrentry;
+        ydk::YList cvpdnsessionattrentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdnsessionattrtable
+}; // CISCOVPDNMGMTMIB::CvpdnSessionAttrTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry : public ydk::Entity
 {
     public:
-        Cvpdnsessionattrentry();
-        ~Cvpdnsessionattrentry();
+        CvpdnSessionAttrEntry();
+        ~CvpdnSessionAttrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -432,17 +432,17 @@ class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry : public yd
         std::string get_absolute_path() const override;
 
         ydk::YLeaf cvpdnsystemtunneltype; //type: TunnelType
-        //type: int32 (refers to cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::cvpdntunnelattrtunnelid)
+        //type: int32 (refers to cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::cvpdntunnelattrtunnelid)
         ydk::YLeaf cvpdntunnelattrtunnelid;
         ydk::YLeaf cvpdnsessionattrsessionid; //type: int32
         ydk::YLeaf cvpdnsessionattrusername; //type: string
-        ydk::YLeaf cvpdnsessionattrstate; //type: Cvpdnsessionattrstate
+        ydk::YLeaf cvpdnsessionattrstate; //type: CvpdnSessionAttrState
         ydk::YLeaf cvpdnsessionattrcallduration; //type: uint32
         ydk::YLeaf cvpdnsessionattrpacketsout; //type: uint32
         ydk::YLeaf cvpdnsessionattrbytesout; //type: uint32
         ydk::YLeaf cvpdnsessionattrpacketsin; //type: uint32
         ydk::YLeaf cvpdnsessionattrbytesin; //type: uint32
-        ydk::YLeaf cvpdnsessionattrdevicetype; //type: Cvpdnsessionattrdevicetype
+        ydk::YLeaf cvpdnsessionattrdevicetype; //type: CvpdnSessionAttrDeviceType
         ydk::YLeaf cvpdnsessionattrdevicecallerid; //type: string
         ydk::YLeaf cvpdnsessionattrdevicephyid; //type: int32
         ydk::YLeaf cvpdnsessionattrmultilink; //type: boolean
@@ -458,17 +458,17 @@ class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry : public yd
         ydk::YLeaf cvpdnsessionattrrecvpktsdropped; //type: uint32
         ydk::YLeaf cvpdnsessionattrmultilinkbundle; //type: string
         ydk::YLeaf cvpdnsessionattrmultilinkifindex; //type: int32
-        class Cvpdnsessionattrstate;
-        class Cvpdnsessionattrdevicetype;
+        class CvpdnSessionAttrState;
+        class CvpdnSessionAttrDeviceType;
 
-}; // CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry
+}; // CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable : public ydk::Entity
 {
     public:
-        Cvpdnusertofailhistinfotable();
-        ~Cvpdnusertofailhistinfotable();
+        CvpdnUserToFailHistInfoTable();
+        ~CvpdnUserToFailHistInfoTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -481,18 +481,18 @@ class CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdnusertofailhistinfoentry; //type: CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry
+        class CvpdnUserToFailHistInfoEntry; //type: CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry> > cvpdnusertofailhistinfoentry;
+        ydk::YList cvpdnusertofailhistinfoentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable
+}; // CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry : public ydk::Entity
 {
     public:
-        Cvpdnusertofailhistinfoentry();
-        ~Cvpdnusertofailhistinfoentry();
+        CvpdnUserToFailHistInfoEntry();
+        ~CvpdnUserToFailHistInfoEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -522,14 +522,14 @@ class CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoent
         ydk::YLeaf cvpdnunametofailhistdestinettype; //type: InetAddressType
         ydk::YLeaf cvpdnunametofailhistdestinetaddr; //type: binary
 
-}; // CISCOVPDNMGMTMIB::Cvpdnusertofailhistinfotable::Cvpdnusertofailhistinfoentry
+}; // CISCOVPDNMGMTMIB::CvpdnUserToFailHistInfoTable::CvpdnUserToFailHistInfoEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdntemplatetable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTemplateTable : public ydk::Entity
 {
     public:
-        Cvpdntemplatetable();
-        ~Cvpdntemplatetable();
+        CvpdnTemplateTable();
+        ~CvpdnTemplateTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -542,18 +542,18 @@ class CISCOVPDNMGMTMIB::Cvpdntemplatetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdntemplateentry; //type: CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry
+        class CvpdnTemplateEntry; //type: CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry> > cvpdntemplateentry;
+        ydk::YList cvpdntemplateentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdntemplatetable
+}; // CISCOVPDNMGMTMIB::CvpdnTemplateTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry : public ydk::Entity
 {
     public:
-        Cvpdntemplateentry();
-        ~Cvpdntemplateentry();
+        CvpdnTemplateEntry();
+        ~CvpdnTemplateEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -569,14 +569,14 @@ class CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry : public ydk::Ent
         ydk::YLeaf cvpdntemplatename; //type: string
         ydk::YLeaf cvpdntemplateactivesessions; //type: uint32
 
-}; // CISCOVPDNMGMTMIB::Cvpdntemplatetable::Cvpdntemplateentry
+}; // CISCOVPDNMGMTMIB::CvpdnTemplateTable::CvpdnTemplateEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdnbundletable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnBundleTable : public ydk::Entity
 {
     public:
-        Cvpdnbundletable();
-        ~Cvpdnbundletable();
+        CvpdnBundleTable();
+        ~CvpdnBundleTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -589,18 +589,18 @@ class CISCOVPDNMGMTMIB::Cvpdnbundletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdnbundleentry; //type: CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry
+        class CvpdnBundleEntry; //type: CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry> > cvpdnbundleentry;
+        ydk::YList cvpdnbundleentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdnbundletable
+}; // CISCOVPDNMGMTMIB::CvpdnBundleTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry : public ydk::Entity
 {
     public:
-        Cvpdnbundleentry();
-        ~Cvpdnbundleentry();
+        CvpdnBundleEntry();
+        ~CvpdnBundleEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -615,21 +615,21 @@ class CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry : public ydk::Entity
 
         ydk::YLeaf cvpdnbundlename; //type: string
         ydk::YLeaf cvpdnbundlelinkcount; //type: uint32
-        ydk::YLeaf cvpdnbundleendpointtype; //type: Cvpdnbundleendpointtype
+        ydk::YLeaf cvpdnbundleendpointtype; //type: CvpdnBundleEndpointType
         ydk::YLeaf cvpdnbundleendpoint; //type: binary
         ydk::YLeaf cvpdnbundlepeeripaddrtype; //type: InetAddressType
         ydk::YLeaf cvpdnbundlepeeripaddr; //type: binary
         ydk::YLeaf cvpdnbundleendpointclass; //type: EndpointClass
-        class Cvpdnbundleendpointtype;
+        class CvpdnBundleEndpointType;
 
-}; // CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry
+}; // CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry
 
 
-class CISCOVPDNMGMTMIB::Cvpdnbundlechildtable : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnBundleChildTable : public ydk::Entity
 {
     public:
-        Cvpdnbundlechildtable();
-        ~Cvpdnbundlechildtable();
+        CvpdnBundleChildTable();
+        ~CvpdnBundleChildTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -642,18 +642,18 @@ class CISCOVPDNMGMTMIB::Cvpdnbundlechildtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpdnbundlechildentry; //type: CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry
+        class CvpdnBundleChildEntry; //type: CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry> > cvpdnbundlechildentry;
+        ydk::YList cvpdnbundlechildentry;
         
-}; // CISCOVPDNMGMTMIB::Cvpdnbundlechildtable
+}; // CISCOVPDNMGMTMIB::CvpdnBundleChildTable
 
 
-class CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry : public ydk::Entity
+class CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry : public ydk::Entity
 {
     public:
-        Cvpdnbundlechildentry();
-        ~Cvpdnbundlechildentry();
+        CvpdnBundleChildEntry();
+        ~CvpdnBundleChildEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -666,22 +666,13 @@ class CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::cvpdnbundlename)
+        //type: string (refers to cisco_ios_xe::CISCO_VPDN_MGMT_MIB::CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::cvpdnbundlename)
         ydk::YLeaf cvpdnbundlename;
         ydk::YLeaf cvpdnbundlechildtunneltype; //type: TunnelType
         ydk::YLeaf cvpdnbundlechildtunnelid; //type: uint32
         ydk::YLeaf cvpdnbundlechildsessionid; //type: uint32
 
-}; // CISCOVPDNMGMTMIB::Cvpdnbundlechildtable::Cvpdnbundlechildentry
-
-class TunnelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf l2f;
-        static const ydk::Enum::YLeaf l2tp;
-        static const ydk::Enum::YLeaf pptp;
-
-};
+}; // CISCOVPDNMGMTMIB::CvpdnBundleChildTable::CvpdnBundleChildEntry
 
 class EndpointClass : public ydk::Enum
 {
@@ -695,7 +686,16 @@ class EndpointClass : public ydk::Enum
 
 };
 
-class CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::Cvpdnnotifsessionevent : public ydk::Enum
+class TunnelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf l2f;
+        static const ydk::Enum::YLeaf l2tp;
+        static const ydk::Enum::YLeaf pptp;
+
+};
+
+class CISCOVPDNMGMTMIB::CiscoVpdnMgmtMIBNotifs::CvpdnNotifSessionEvent : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -705,7 +705,7 @@ class CISCOVPDNMGMTMIB::Ciscovpdnmgmtmibnotifs::Cvpdnnotifsessionevent : public 
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsystemclearsessions : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnSystemInfo::CvpdnSystemClearSessions : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -716,7 +716,7 @@ class CISCOVPDNMGMTMIB::Cvpdnsysteminfo::Cvpdnsystemclearsessions : public ydk::
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelorigcause : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelOrigCause : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf domain;
@@ -725,7 +725,7 @@ class CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelorigcause
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelstate : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -735,14 +735,14 @@ class CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelstate : p
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunneltable::Cvpdntunnelentry::Cvpdntunnelnetworkservicetype : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelTable::CvpdnTunnelEntry::CvpdnTunnelNetworkServiceType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ip;
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrorigcause : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrOrigCause : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf domain;
@@ -752,7 +752,7 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnela
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrstate : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -776,14 +776,14 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnela
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelattrtable::Cvpdntunnelattrentry::Cvpdntunnelattrnetworkservicetype : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelAttrTable::CvpdnTunnelAttrEntry::CvpdnTunnelAttrNetworkServiceType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ip;
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessionstate : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -794,7 +794,7 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdnt
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdntunnelsessiondevicetype : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnTunnelSessionTable::CvpdnTunnelSessionEntry::CvpdnTunnelSessionDeviceType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -808,7 +808,7 @@ class CISCOVPDNMGMTMIB::Cvpdntunnelsessiontable::Cvpdntunnelsessionentry::Cvpdnt
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrstate : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -832,7 +832,7 @@ class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessi
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessionattrdevicetype : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnSessionAttrTable::CvpdnSessionAttrEntry::CvpdnSessionAttrDeviceType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -846,7 +846,7 @@ class CISCOVPDNMGMTMIB::Cvpdnsessionattrtable::Cvpdnsessionattrentry::Cvpdnsessi
 
 };
 
-class CISCOVPDNMGMTMIB::Cvpdnbundletable::Cvpdnbundleentry::Cvpdnbundleendpointtype : public ydk::Enum
+class CISCOVPDNMGMTMIB::CvpdnBundleTable::CvpdnBundleEntry::CvpdnBundleEndpointType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;

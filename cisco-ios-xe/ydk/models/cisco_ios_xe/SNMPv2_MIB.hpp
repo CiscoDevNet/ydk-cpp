@@ -33,13 +33,13 @@ class SNMPv2MIB : public ydk::Entity
 
         class System; //type: SNMPv2MIB::System
         class Snmp; //type: SNMPv2MIB::Snmp
-        class Snmpset; //type: SNMPv2MIB::Snmpset
-        class Sysortable; //type: SNMPv2MIB::Sysortable
+        class SnmpSet; //type: SNMPv2MIB::SnmpSet
+        class SysORTable; //type: SNMPv2MIB::SysORTable
 
         std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::System> system;
         std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Snmpset> snmpset;
-        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Sysortable> sysortable;
+        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::SnmpSet> snmpset;
+        std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::SysORTable> sysortable;
         
 }; // SNMPv2MIB
 
@@ -117,19 +117,19 @@ class SNMPv2MIB::Snmp : public ydk::Entity
         ydk::YLeaf snmpoutsetrequests; //type: uint32
         ydk::YLeaf snmpoutgetresponses; //type: uint32
         ydk::YLeaf snmpouttraps; //type: uint32
-        ydk::YLeaf snmpenableauthentraps; //type: Snmpenableauthentraps
+        ydk::YLeaf snmpenableauthentraps; //type: SnmpEnableAuthenTraps
         ydk::YLeaf snmpsilentdrops; //type: uint32
         ydk::YLeaf snmpproxydrops; //type: uint32
-        class Snmpenableauthentraps;
+        class SnmpEnableAuthenTraps;
 
 }; // SNMPv2MIB::Snmp
 
 
-class SNMPv2MIB::Snmpset : public ydk::Entity
+class SNMPv2MIB::SnmpSet : public ydk::Entity
 {
     public:
-        Snmpset();
-        ~Snmpset();
+        SnmpSet();
+        ~SnmpSet();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -144,14 +144,14 @@ class SNMPv2MIB::Snmpset : public ydk::Entity
 
         ydk::YLeaf snmpsetserialno; //type: int32
 
-}; // SNMPv2MIB::Snmpset
+}; // SNMPv2MIB::SnmpSet
 
 
-class SNMPv2MIB::Sysortable : public ydk::Entity
+class SNMPv2MIB::SysORTable : public ydk::Entity
 {
     public:
-        Sysortable();
-        ~Sysortable();
+        SysORTable();
+        ~SysORTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -164,18 +164,18 @@ class SNMPv2MIB::Sysortable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Sysorentry; //type: SNMPv2MIB::Sysortable::Sysorentry
+        class SysOREntry; //type: SNMPv2MIB::SysORTable::SysOREntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::SNMPv2_MIB::SNMPv2MIB::Sysortable::Sysorentry> > sysorentry;
+        ydk::YList sysorentry;
         
-}; // SNMPv2MIB::Sysortable
+}; // SNMPv2MIB::SysORTable
 
 
-class SNMPv2MIB::Sysortable::Sysorentry : public ydk::Entity
+class SNMPv2MIB::SysORTable::SysOREntry : public ydk::Entity
 {
     public:
-        Sysorentry();
-        ~Sysorentry();
+        SysOREntry();
+        ~SysOREntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -193,9 +193,9 @@ class SNMPv2MIB::Sysortable::Sysorentry : public ydk::Entity
         ydk::YLeaf sysordescr; //type: string
         ydk::YLeaf sysoruptime; //type: uint32
 
-}; // SNMPv2MIB::Sysortable::Sysorentry
+}; // SNMPv2MIB::SysORTable::SysOREntry
 
-class SNMPv2MIB::Snmp::Snmpenableauthentraps : public ydk::Enum
+class SNMPv2MIB::Snmp::SnmpEnableAuthenTraps : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;

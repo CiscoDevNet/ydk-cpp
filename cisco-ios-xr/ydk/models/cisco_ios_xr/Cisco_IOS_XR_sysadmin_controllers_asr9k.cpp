@@ -17,7 +17,7 @@ Controller::Controller()
 {
     switch_->parent = this;
 
-    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers-asr9k"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "controller"; yang_parent_name = "Cisco-IOS-XR-sysadmin-controllers-asr9k"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Controller::~Controller()
@@ -26,6 +26,7 @@ Controller::~Controller()
 
 bool Controller::has_data() const
 {
+    if (is_presence_container) return true;
     return (switch_ !=  nullptr && switch_->has_data());
 }
 
@@ -123,7 +124,7 @@ Controller::Switch::Switch()
 {
     oper->parent = this;
 
-    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switch"; yang_parent_name = "controller"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::~Switch()
@@ -132,6 +133,7 @@ Controller::Switch::~Switch()
 
 bool Controller::Switch::has_data() const
 {
+    if (is_presence_container) return true;
     return (oper !=  nullptr && oper->has_data());
 }
 
@@ -208,18 +210,18 @@ bool Controller::Switch::has_leaf_or_child_of_name(const std::string & name) con
 Controller::Switch::Oper::Oper()
     :
     reachable(std::make_shared<Controller::Switch::Oper::Reachable>())
-	,summary(std::make_shared<Controller::Switch::Oper::Summary>())
-	,statistics(std::make_shared<Controller::Switch::Oper::Statistics>())
-	,mac(std::make_shared<Controller::Switch::Oper::Mac>())
-	,bridge(std::make_shared<Controller::Switch::Oper::Bridge>())
-	,fdb(std::make_shared<Controller::Switch::Oper::Fdb>())
-	,vlan(std::make_shared<Controller::Switch::Oper::Vlan>())
-	,esd(std::make_shared<Controller::Switch::Oper::Esd>())
-	,mgmt_agent(std::make_shared<Controller::Switch::Oper::MgmtAgent>())
-	,sdr(std::make_shared<Controller::Switch::Oper::Sdr>())
-	,port_state(std::make_shared<Controller::Switch::Oper::PortState>())
-	,trunk(std::make_shared<Controller::Switch::Oper::Trunk>())
-	,switch_debug_cont(std::make_shared<Controller::Switch::Oper::SwitchDebugCont>())
+    , summary(std::make_shared<Controller::Switch::Oper::Summary>())
+    , statistics(std::make_shared<Controller::Switch::Oper::Statistics>())
+    , mac(std::make_shared<Controller::Switch::Oper::Mac>())
+    , bridge(std::make_shared<Controller::Switch::Oper::Bridge>())
+    , fdb(std::make_shared<Controller::Switch::Oper::Fdb>())
+    , vlan(std::make_shared<Controller::Switch::Oper::Vlan>())
+    , esd(std::make_shared<Controller::Switch::Oper::Esd>())
+    , mgmt_agent(std::make_shared<Controller::Switch::Oper::MgmtAgent>())
+    , sdr(std::make_shared<Controller::Switch::Oper::Sdr>())
+    , port_state(std::make_shared<Controller::Switch::Oper::PortState>())
+    , trunk(std::make_shared<Controller::Switch::Oper::Trunk>())
+    , switch_debug_cont(std::make_shared<Controller::Switch::Oper::SwitchDebugCont>())
 {
     reachable->parent = this;
     summary->parent = this;
@@ -235,7 +237,7 @@ Controller::Switch::Oper::Oper()
     trunk->parent = this;
     switch_debug_cont->parent = this;
 
-    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "oper"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::~Oper()
@@ -244,6 +246,7 @@ Controller::Switch::Oper::~Oper()
 
 bool Controller::Switch::Oper::has_data() const
 {
+    if (is_presence_container) return true;
     return (reachable !=  nullptr && reachable->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
@@ -510,9 +513,11 @@ bool Controller::Switch::Oper::has_leaf_or_child_of_name(const std::string & nam
 }
 
 Controller::Switch::Oper::Reachable::Reachable()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "reachable"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "reachable"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Reachable::~Reachable()
@@ -521,7 +526,8 @@ Controller::Switch::Oper::Reachable::~Reachable()
 
 bool Controller::Switch::Oper::Reachable::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -531,7 +537,7 @@ bool Controller::Switch::Oper::Reachable::has_data() const
 
 bool Controller::Switch::Oper::Reachable::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -568,7 +574,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Reachable::get_child_by_name(c
     {
         auto c = std::make_shared<Controller::Switch::Oper::Reachable::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -580,7 +586,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Reachab
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -613,7 +619,7 @@ Controller::Switch::Oper::Reachable::Location::Location()
     switch_id{YType::enumeration, "switch-id"}
 {
 
-    yang_name = "location"; yang_parent_name = "reachable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "reachable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Reachable::Location::~Location()
@@ -622,6 +628,7 @@ Controller::Switch::Oper::Reachable::Location::~Location()
 
 bool Controller::Switch::Oper::Reachable::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set;
@@ -645,7 +652,10 @@ std::string Controller::Switch::Oper::Reachable::Location::get_absolute_path() c
 std::string Controller::Switch::Oper::Reachable::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -719,9 +729,11 @@ bool Controller::Switch::Oper::Reachable::Location::has_leaf_or_child_of_name(co
 }
 
 Controller::Switch::Oper::Summary::Summary()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "summary"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Summary::~Summary()
@@ -730,7 +742,8 @@ Controller::Switch::Oper::Summary::~Summary()
 
 bool Controller::Switch::Oper::Summary::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -740,7 +753,7 @@ bool Controller::Switch::Oper::Summary::has_data() const
 
 bool Controller::Switch::Oper::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -777,7 +790,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Summary::get_child_by_name(con
     {
         auto c = std::make_shared<Controller::Switch::Oper::Summary::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -789,7 +802,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -821,9 +834,11 @@ Controller::Switch::Oper::Summary::Location::Location()
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"},
     serial_num{YType::str, "serial-num"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Summary::Location::~Location()
@@ -832,7 +847,8 @@ Controller::Switch::Oper::Summary::Location::~Location()
 
 bool Controller::Switch::Oper::Summary::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -845,7 +861,7 @@ bool Controller::Switch::Oper::Summary::Location::has_data() const
 
 bool Controller::Switch::Oper::Summary::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -867,7 +883,10 @@ std::string Controller::Switch::Oper::Summary::Location::get_absolute_path() con
 std::string Controller::Switch::Oper::Summary::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -890,7 +909,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Summary::Location::get_child_b
     {
         auto c = std::make_shared<Controller::Switch::Oper::Summary::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -902,7 +921,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Summary
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -979,7 +998,7 @@ Controller::Switch::Oper::Summary::Location::PortIter::PortIter()
     connects_to{YType::str, "connects-to"}
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Summary::Location::PortIter::~PortIter()
@@ -988,6 +1007,7 @@ Controller::Switch::Oper::Summary::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Summary::Location::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| phys_state.is_set
 	|| admin_state.is_set
@@ -1012,7 +1032,8 @@ bool Controller::Switch::Oper::Summary::Location::PortIter::has_operation() cons
 std::string Controller::Switch::Oper::Summary::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -1132,12 +1153,12 @@ bool Controller::Switch::Oper::Summary::Location::PortIter::has_leaf_or_child_of
 Controller::Switch::Oper::Statistics::Statistics()
     :
     summary_statistics(std::make_shared<Controller::Switch::Oper::Statistics::SummaryStatistics>())
-	,detail(std::make_shared<Controller::Switch::Oper::Statistics::Detail>())
+    , detail(std::make_shared<Controller::Switch::Oper::Statistics::Detail>())
 {
     summary_statistics->parent = this;
     detail->parent = this;
 
-    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::~Statistics()
@@ -1146,6 +1167,7 @@ Controller::Switch::Oper::Statistics::~Statistics()
 
 bool Controller::Switch::Oper::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return (summary_statistics !=  nullptr && summary_statistics->has_data())
 	|| (detail !=  nullptr && detail->has_data());
 }
@@ -1236,9 +1258,11 @@ bool Controller::Switch::Oper::Statistics::has_leaf_or_child_of_name(const std::
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::SummaryStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "summary-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary-statistics"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::~SummaryStatistics()
@@ -1247,7 +1271,8 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::~SummaryStatistics()
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1257,7 +1282,7 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::has_data() const
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1294,7 +1319,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::SummaryStatistics:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::SummaryStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1306,7 +1331,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1338,9 +1363,11 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::Location()
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"},
     serial_num{YType::str, "serial-num"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "summary-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "summary-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::Location::~Location()
@@ -1349,7 +1376,8 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::~Location()
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -1362,7 +1390,7 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::has_data
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -1384,7 +1412,10 @@ std::string Controller::Switch::Oper::Statistics::SummaryStatistics::Location::g
 std::string Controller::Switch::Oper::Statistics::SummaryStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -1407,7 +1438,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::SummaryStatistics:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -1419,7 +1450,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1497,7 +1528,7 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::Por
     connects_to{YType::str, "connects-to"}
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::~PortIter()
@@ -1506,6 +1537,7 @@ Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::~Po
 
 bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| phys_state.is_set
 	|| state_changes.is_set
@@ -1532,7 +1564,8 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter
 std::string Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -1661,9 +1694,11 @@ bool Controller::Switch::Oper::Statistics::SummaryStatistics::Location::PortIter
 }
 
 Controller::Switch::Oper::Statistics::Detail::Detail()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "detail"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::~Detail()
@@ -1672,7 +1707,8 @@ Controller::Switch::Oper::Statistics::Detail::~Detail()
 
 bool Controller::Switch::Oper::Statistics::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1682,7 +1718,7 @@ bool Controller::Switch::Oper::Statistics::Detail::has_data() const
 
 bool Controller::Switch::Oper::Statistics::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1719,7 +1755,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::Detail::get_child_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1731,7 +1767,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1762,9 +1798,11 @@ Controller::Switch::Oper::Statistics::Detail::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::Location::~Location()
@@ -1773,7 +1811,8 @@ Controller::Switch::Oper::Statistics::Detail::Location::~Location()
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -1785,7 +1824,7 @@ bool Controller::Switch::Oper::Statistics::Detail::Location::has_data() const
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -1806,7 +1845,10 @@ std::string Controller::Switch::Oper::Statistics::Detail::Location::get_absolute
 std::string Controller::Switch::Oper::Statistics::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -1828,7 +1870,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Statistics::Detail::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Statistics::Detail::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -1840,7 +1882,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Statist
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1902,12 +1944,12 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::PortIter()
     phys_state{YType::enumeration, "phys-state"},
     port_speed{YType::str, "port-speed"},
     connects_to{YType::str, "connects-to"}
-    	,
+        ,
     counters(std::make_shared<Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters>())
 {
     counters->parent = this;
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::Location::PortIter::~PortIter()
@@ -1916,6 +1958,7 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| phys_state.is_set
 	|| port_speed.is_set
@@ -1936,7 +1979,8 @@ bool Controller::Switch::Oper::Statistics::Detail::Location::PortIter::has_opera
 std::string Controller::Switch::Oper::Statistics::Detail::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -2071,7 +2115,7 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::Coun
     sw_det_rxtx_packets_1024_max{YType::uint64, "sw-det-rxtx-packets-1024-max"}
 {
 
-    yang_name = "counters"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::~Counters()
@@ -2080,6 +2124,7 @@ Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::~Cou
 
 bool Controller::Switch::Oper::Statistics::Detail::Location::PortIter::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return sw_det_rx_ucast_packets.is_set
 	|| sw_det_rx_mcast_packets.is_set
 	|| sw_det_rx_bcast_packets.is_set
@@ -2565,7 +2610,7 @@ Controller::Switch::Oper::Mac::Mac()
 {
     mac_statistics->parent = this;
 
-    yang_name = "mac"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Mac::~Mac()
@@ -2574,6 +2619,7 @@ Controller::Switch::Oper::Mac::~Mac()
 
 bool Controller::Switch::Oper::Mac::has_data() const
 {
+    if (is_presence_container) return true;
     return (mac_statistics !=  nullptr && mac_statistics->has_data());
 }
 
@@ -2648,9 +2694,11 @@ bool Controller::Switch::Oper::Mac::has_leaf_or_child_of_name(const std::string 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::MacStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "mac-statistics"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-statistics"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::~MacStatistics()
@@ -2659,7 +2707,8 @@ Controller::Switch::Oper::Mac::MacStatistics::~MacStatistics()
 
 bool Controller::Switch::Oper::Mac::MacStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2669,7 +2718,7 @@ bool Controller::Switch::Oper::Mac::MacStatistics::has_data() const
 
 bool Controller::Switch::Oper::Mac::MacStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2706,7 +2755,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Mac::MacStatistics::get_child_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Mac::MacStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2718,7 +2767,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Mac::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2749,9 +2798,11 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "mac-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "mac-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::Location::~Location()
@@ -2760,7 +2811,8 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::~Location()
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -2772,7 +2824,7 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_data() const
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -2793,7 +2845,10 @@ std::string Controller::Switch::Oper::Mac::MacStatistics::Location::get_absolute
 std::string Controller::Switch::Oper::Mac::MacStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -2815,7 +2870,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Mac::MacStatistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -2827,7 +2882,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Mac::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2886,9 +2941,11 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::has_leaf_or_child_o
 Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::PortIter()
     :
     port{YType::int32, "port"}
+        ,
+    mac_entry(this, {"id"})
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::~PortIter()
@@ -2897,7 +2954,8 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_data() const
 {
-    for (std::size_t index=0; index<mac_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_entry.len(); index++)
     {
         if(mac_entry[index]->has_data())
             return true;
@@ -2907,7 +2965,7 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_data(
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_operation() const
 {
-    for (std::size_t index=0; index<mac_entry.size(); index++)
+    for (std::size_t index=0; index<mac_entry.len(); index++)
     {
         if(mac_entry[index]->has_operation())
             return true;
@@ -2919,7 +2977,8 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::has_opera
 std::string Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -2939,7 +2998,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Mac::MacStatistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry>();
         c->parent = this;
-        mac_entry.push_back(c);
+        mac_entry.append(c);
         return c;
     }
 
@@ -2951,7 +3010,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Mac::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_entry)
+    for (auto c : mac_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2995,7 +3054,7 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::MacE
     value_{YType::str, "value"}
 {
 
-    yang_name = "mac-entry"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mac-entry"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::~MacEntry()
@@ -3004,6 +3063,7 @@ Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::~Mac
 
 bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| base_reg.is_set
 	|| desc.is_set
@@ -3022,7 +3082,8 @@ bool Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry:
 std::string Controller::Switch::Oper::Mac::MacStatistics::Location::PortIter::MacEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac-entry" <<"[id='" <<id <<"']";
+    path_buffer << "mac-entry";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -3112,7 +3173,7 @@ Controller::Switch::Oper::Bridge::Bridge()
 {
     statistics->parent = this;
 
-    yang_name = "bridge"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bridge"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Bridge::~Bridge()
@@ -3121,6 +3182,7 @@ Controller::Switch::Oper::Bridge::~Bridge()
 
 bool Controller::Switch::Oper::Bridge::has_data() const
 {
+    if (is_presence_container) return true;
     return (statistics !=  nullptr && statistics->has_data());
 }
 
@@ -3195,9 +3257,11 @@ bool Controller::Switch::Oper::Bridge::has_leaf_or_child_of_name(const std::stri
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Statistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "bridge"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "bridge"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::~Statistics()
@@ -3206,7 +3270,8 @@ Controller::Switch::Oper::Bridge::Statistics::~Statistics()
 
 bool Controller::Switch::Oper::Bridge::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3216,7 +3281,7 @@ bool Controller::Switch::Oper::Bridge::Statistics::has_data() const
 
 bool Controller::Switch::Oper::Bridge::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3253,7 +3318,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Bridge::Statistics::get_child_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Bridge::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3265,7 +3330,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Bridge:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3296,9 +3361,12 @@ Controller::Switch::Oper::Bridge::Statistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    ingress_set_id(this, {"ingress_set"})
+    , egress_set_id(this, {"egress_set"})
 {
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Location::~Location()
@@ -3307,12 +3375,13 @@ Controller::Switch::Oper::Bridge::Statistics::Location::~Location()
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<ingress_set_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ingress_set_id.len(); index++)
     {
         if(ingress_set_id[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<egress_set_id.size(); index++)
+    for (std::size_t index=0; index<egress_set_id.len(); index++)
     {
         if(egress_set_id[index]->has_data())
             return true;
@@ -3324,12 +3393,12 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::has_data() const
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<ingress_set_id.size(); index++)
+    for (std::size_t index=0; index<ingress_set_id.len(); index++)
     {
         if(ingress_set_id[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<egress_set_id.size(); index++)
+    for (std::size_t index=0; index<egress_set_id.len(); index++)
     {
         if(egress_set_id[index]->has_operation())
             return true;
@@ -3350,7 +3419,10 @@ std::string Controller::Switch::Oper::Bridge::Statistics::Location::get_absolute
 std::string Controller::Switch::Oper::Bridge::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -3372,7 +3444,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Bridge::Statistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId>();
         c->parent = this;
-        ingress_set_id.push_back(c);
+        ingress_set_id.append(c);
         return c;
     }
 
@@ -3380,7 +3452,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Bridge::Statistics::Location::
     {
         auto c = std::make_shared<Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId>();
         c->parent = this;
-        egress_set_id.push_back(c);
+        egress_set_id.append(c);
         return c;
     }
 
@@ -3392,7 +3464,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Bridge:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ingress_set_id)
+    for (auto c : ingress_set_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3401,7 +3473,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Bridge:
     }
 
     count = 0;
-    for (auto const & c : egress_set_id)
+    for (auto c : egress_set_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3467,7 +3539,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::IngressSet
     ingress_other_discards{YType::uint64, "ingress-other-discards"}
 {
 
-    yang_name = "ingress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ingress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::~IngressSetId()
@@ -3476,6 +3548,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::~IngressSe
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::has_data() const
 {
+    if (is_presence_container) return true;
     return ingress_set.is_set
 	|| ingress_set_name.is_set
 	|| ingress_frames.is_set
@@ -3498,7 +3571,8 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::has_o
 std::string Controller::Switch::Oper::Bridge::Statistics::Location::IngressSetId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ingress-set-id" <<"[ingress-set='" <<ingress_set <<"']";
+    path_buffer << "ingress-set-id";
+    ADD_KEY_TOKEN(ingress_set, "ingress-set");
     return path_buffer.str();
 }
 
@@ -3617,7 +3691,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::EgressSetId
     egress_other_drops{YType::uint64, "egress-other-drops"}
 {
 
-    yang_name = "egress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "egress-set-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::~EgressSetId()
@@ -3626,6 +3700,7 @@ Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::~EgressSetI
 
 bool Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::has_data() const
 {
+    if (is_presence_container) return true;
     return egress_set.is_set
 	|| egress_set_name.is_set
 	|| egress_ucast_frames.is_set
@@ -3654,7 +3729,8 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::has_op
 std::string Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "egress-set-id" <<"[egress-set='" <<egress_set <<"']";
+    path_buffer << "egress-set-id";
+    ADD_KEY_TOKEN(egress_set, "egress-set");
     return path_buffer.str();
 }
 
@@ -3796,10 +3872,10 @@ bool Controller::Switch::Oper::Bridge::Statistics::Location::EgressSetId::has_le
 Controller::Switch::Oper::Fdb::Fdb()
     :
     vlan(std::make_shared<Controller::Switch::Oper::Fdb::Vlan>())
-	,mac(std::make_shared<Controller::Switch::Oper::Fdb::Mac>())
-	,port(std::make_shared<Controller::Switch::Oper::Fdb::Port>())
-	,statistics(std::make_shared<Controller::Switch::Oper::Fdb::Statistics>())
-	,switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::SwitchFdbCommon>())
+    , mac(std::make_shared<Controller::Switch::Oper::Fdb::Mac>())
+    , port(std::make_shared<Controller::Switch::Oper::Fdb::Port>())
+    , statistics(std::make_shared<Controller::Switch::Oper::Fdb::Statistics>())
+    , switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::SwitchFdbCommon>())
 {
     vlan->parent = this;
     mac->parent = this;
@@ -3807,7 +3883,7 @@ Controller::Switch::Oper::Fdb::Fdb()
     statistics->parent = this;
     switch_fdb_common->parent = this;
 
-    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fdb"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::~Fdb()
@@ -3816,6 +3892,7 @@ Controller::Switch::Oper::Fdb::~Fdb()
 
 bool Controller::Switch::Oper::Fdb::has_data() const
 {
+    if (is_presence_container) return true;
     return (vlan !=  nullptr && vlan->has_data())
 	|| (mac !=  nullptr && mac->has_data())
 	|| (port !=  nullptr && port->has_data())
@@ -3954,9 +4031,11 @@ bool Controller::Switch::Oper::Fdb::has_leaf_or_child_of_name(const std::string 
 }
 
 Controller::Switch::Oper::Fdb::Vlan::Vlan()
+    :
+    vlan_iter(this, {"vlan"})
 {
 
-    yang_name = "vlan"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Vlan::~Vlan()
@@ -3965,7 +4044,8 @@ Controller::Switch::Oper::Fdb::Vlan::~Vlan()
 
 bool Controller::Switch::Oper::Fdb::Vlan::has_data() const
 {
-    for (std::size_t index=0; index<vlan_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_iter.len(); index++)
     {
         if(vlan_iter[index]->has_data())
             return true;
@@ -3975,7 +4055,7 @@ bool Controller::Switch::Oper::Fdb::Vlan::has_data() const
 
 bool Controller::Switch::Oper::Fdb::Vlan::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_iter.size(); index++)
+    for (std::size_t index=0; index<vlan_iter.len(); index++)
     {
         if(vlan_iter[index]->has_operation())
             return true;
@@ -4012,7 +4092,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::get_child_by_name(c
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter>();
         c->parent = this;
-        vlan_iter.push_back(c);
+        vlan_iter.append(c);
         return c;
     }
 
@@ -4024,7 +4104,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_iter)
+    for (auto c : vlan_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4053,12 +4133,12 @@ bool Controller::Switch::Oper::Fdb::Vlan::has_leaf_or_child_of_name(const std::s
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::VlanIter()
     :
     vlan{YType::uint16, "vlan"}
-    	,
+        ,
     switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon>())
 {
     switch_fdb_common->parent = this;
 
-    yang_name = "vlan-iter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-iter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::~VlanIter()
@@ -4067,6 +4147,7 @@ Controller::Switch::Oper::Fdb::Vlan::VlanIter::~VlanIter()
 
 bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set
 	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_data());
 }
@@ -4088,7 +4169,8 @@ std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::get_absolute_path() c
 std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-iter" <<"[vlan='" <<vlan <<"']";
+    path_buffer << "vlan-iter";
+    ADD_KEY_TOKEN(vlan, "vlan");
     return path_buffer.str();
 }
 
@@ -4154,9 +4236,11 @@ bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::has_leaf_or_child_of_name(co
 }
 
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::SwitchFdbCommon()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "switch-fdb-common"; yang_parent_name = "vlan-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-fdb-common"; yang_parent_name = "vlan-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::~SwitchFdbCommon()
@@ -4165,7 +4249,8 @@ Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::~SwitchFdbCommon
 
 bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4175,7 +4260,7 @@ bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::has_data() 
 
 bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4205,7 +4290,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdb
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4217,7 +4302,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4251,12 +4336,12 @@ Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::Locati
     num_entries{YType::uint32, "num-entries"},
     has_trunk_entry{YType::uint8, "has-trunk-entry"},
     trunk_entry_message{YType::str, "trunk-entry-message"}
-    	,
+        ,
     fdb_block(std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock>())
 {
     fdb_block->parent = this;
 
-    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::~Location()
@@ -4265,6 +4350,7 @@ Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::~Locat
 
 bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set
@@ -4289,7 +4375,10 @@ bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::h
 std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -4410,9 +4499,11 @@ bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::h
 }
 
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbBlock()
+    :
+    fdb_entry(this, {"fdb_index"})
 {
 
-    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
@@ -4421,7 +4512,8 @@ Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlo
 
 bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::has_data() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_data())
             return true;
@@ -4431,7 +4523,7 @@ bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::F
 
 bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::has_operation() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_operation())
             return true;
@@ -4461,7 +4553,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdb
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry>();
         c->parent = this;
-        fdb_entry.push_back(c);
+        fdb_entry.append(c);
         return c;
     }
 
@@ -4473,7 +4565,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Vl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fdb_entry)
+    for (auto c : fdb_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4511,7 +4603,7 @@ Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlo
     fdb_synced_cores{YType::uint8, "fdb-synced-cores"}
 {
 
-    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~FdbEntry()
@@ -4520,6 +4612,7 @@ Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlo
 
 bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : fdb_synced_cores.getYLeafs())
     {
         if(leaf.is_set)
@@ -4555,7 +4648,8 @@ bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::F
 std::string Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fdb-entry" <<"[fdb-index='" <<fdb_index <<"']";
+    path_buffer << "fdb-entry";
+    ADD_KEY_TOKEN(fdb_index, "fdb-index");
     return path_buffer.str();
 }
 
@@ -4683,9 +4777,11 @@ bool Controller::Switch::Oper::Fdb::Vlan::VlanIter::SwitchFdbCommon::Location::F
 }
 
 Controller::Switch::Oper::Fdb::Mac::Mac()
+    :
+    mac_iter(this, {"mac"})
 {
 
-    yang_name = "mac"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Mac::~Mac()
@@ -4694,7 +4790,8 @@ Controller::Switch::Oper::Fdb::Mac::~Mac()
 
 bool Controller::Switch::Oper::Fdb::Mac::has_data() const
 {
-    for (std::size_t index=0; index<mac_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mac_iter.len(); index++)
     {
         if(mac_iter[index]->has_data())
             return true;
@@ -4704,7 +4801,7 @@ bool Controller::Switch::Oper::Fdb::Mac::has_data() const
 
 bool Controller::Switch::Oper::Fdb::Mac::has_operation() const
 {
-    for (std::size_t index=0; index<mac_iter.size(); index++)
+    for (std::size_t index=0; index<mac_iter.len(); index++)
     {
         if(mac_iter[index]->has_operation())
             return true;
@@ -4741,7 +4838,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::get_child_by_name(co
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter>();
         c->parent = this;
-        mac_iter.push_back(c);
+        mac_iter.append(c);
         return c;
     }
 
@@ -4753,7 +4850,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mac_iter)
+    for (auto c : mac_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4782,12 +4879,12 @@ bool Controller::Switch::Oper::Fdb::Mac::has_leaf_or_child_of_name(const std::st
 Controller::Switch::Oper::Fdb::Mac::MacIter::MacIter()
     :
     mac{YType::str, "mac"}
-    	,
+        ,
     switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon>())
 {
     switch_fdb_common->parent = this;
 
-    yang_name = "mac-iter"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-iter"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Mac::MacIter::~MacIter()
@@ -4796,6 +4893,7 @@ Controller::Switch::Oper::Fdb::Mac::MacIter::~MacIter()
 
 bool Controller::Switch::Oper::Fdb::Mac::MacIter::has_data() const
 {
+    if (is_presence_container) return true;
     return mac.is_set
 	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_data());
 }
@@ -4817,7 +4915,8 @@ std::string Controller::Switch::Oper::Fdb::Mac::MacIter::get_absolute_path() con
 std::string Controller::Switch::Oper::Fdb::Mac::MacIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mac-iter" <<"[mac='" <<mac <<"']";
+    path_buffer << "mac-iter";
+    ADD_KEY_TOKEN(mac, "mac");
     return path_buffer.str();
 }
 
@@ -4883,9 +4982,11 @@ bool Controller::Switch::Oper::Fdb::Mac::MacIter::has_leaf_or_child_of_name(cons
 }
 
 Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::SwitchFdbCommon()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "switch-fdb-common"; yang_parent_name = "mac-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-fdb-common"; yang_parent_name = "mac-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::~SwitchFdbCommon()
@@ -4894,7 +4995,8 @@ Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::~SwitchFdbCommon()
 
 bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -4904,7 +5006,7 @@ bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::has_data() co
 
 bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -4934,7 +5036,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCo
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -4946,7 +5048,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4980,12 +5082,12 @@ Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::Location
     num_entries{YType::uint32, "num-entries"},
     has_trunk_entry{YType::uint8, "has-trunk-entry"},
     trunk_entry_message{YType::str, "trunk-entry-message"}
-    	,
+        ,
     fdb_block(std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock>())
 {
     fdb_block->parent = this;
 
-    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::~Location()
@@ -4994,6 +5096,7 @@ Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::~Locatio
 
 bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set
@@ -5018,7 +5121,10 @@ bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::has
 std::string Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -5139,9 +5245,11 @@ bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::has
 }
 
 Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbBlock()
+    :
+    fdb_entry(this, {"fdb_index"})
 {
 
-    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
@@ -5150,7 +5258,8 @@ Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock
 
 bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::has_data() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_data())
             return true;
@@ -5160,7 +5269,7 @@ bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::Fdb
 
 bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::has_operation() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_operation())
             return true;
@@ -5190,7 +5299,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCo
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry>();
         c->parent = this;
-        fdb_entry.push_back(c);
+        fdb_entry.append(c);
         return c;
     }
 
@@ -5202,7 +5311,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Ma
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fdb_entry)
+    for (auto c : fdb_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5240,7 +5349,7 @@ Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock
     fdb_synced_cores{YType::uint8, "fdb-synced-cores"}
 {
 
-    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~FdbEntry()
@@ -5249,6 +5358,7 @@ Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock
 
 bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : fdb_synced_cores.getYLeafs())
     {
         if(leaf.is_set)
@@ -5284,7 +5394,8 @@ bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::Fdb
 std::string Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fdb-entry" <<"[fdb-index='" <<fdb_index <<"']";
+    path_buffer << "fdb-entry";
+    ADD_KEY_TOKEN(fdb_index, "fdb-index");
     return path_buffer.str();
 }
 
@@ -5412,9 +5523,11 @@ bool Controller::Switch::Oper::Fdb::Mac::MacIter::SwitchFdbCommon::Location::Fdb
 }
 
 Controller::Switch::Oper::Fdb::Port::Port()
+    :
+    port_iter(this, {"port"})
 {
 
-    yang_name = "port"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Port::~Port()
@@ -5423,7 +5536,8 @@ Controller::Switch::Oper::Fdb::Port::~Port()
 
 bool Controller::Switch::Oper::Fdb::Port::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -5433,7 +5547,7 @@ bool Controller::Switch::Oper::Fdb::Port::has_data() const
 
 bool Controller::Switch::Oper::Fdb::Port::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -5470,7 +5584,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::get_child_by_name(c
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -5482,7 +5596,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5511,12 +5625,12 @@ bool Controller::Switch::Oper::Fdb::Port::has_leaf_or_child_of_name(const std::s
 Controller::Switch::Oper::Fdb::Port::PortIter::PortIter()
     :
     port{YType::int32, "port"}
-    	,
+        ,
     switch_fdb_common(std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon>())
 {
     switch_fdb_common->parent = this;
 
-    yang_name = "port-iter"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-iter"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Port::PortIter::~PortIter()
@@ -5525,6 +5639,7 @@ Controller::Switch::Oper::Fdb::Port::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Fdb::Port::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (switch_fdb_common !=  nullptr && switch_fdb_common->has_data());
 }
@@ -5546,7 +5661,8 @@ std::string Controller::Switch::Oper::Fdb::Port::PortIter::get_absolute_path() c
 std::string Controller::Switch::Oper::Fdb::Port::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -5612,9 +5728,11 @@ bool Controller::Switch::Oper::Fdb::Port::PortIter::has_leaf_or_child_of_name(co
 }
 
 Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::SwitchFdbCommon()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "switch-fdb-common"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-fdb-common"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::~SwitchFdbCommon()
@@ -5623,7 +5741,8 @@ Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::~SwitchFdbCommon
 
 bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -5633,7 +5752,7 @@ bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::has_data() 
 
 bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -5663,7 +5782,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdb
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -5675,7 +5794,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5709,12 +5828,12 @@ Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::Locati
     num_entries{YType::uint32, "num-entries"},
     has_trunk_entry{YType::uint8, "has-trunk-entry"},
     trunk_entry_message{YType::str, "trunk-entry-message"}
-    	,
+        ,
     fdb_block(std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock>())
 {
     fdb_block->parent = this;
 
-    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::~Location()
@@ -5723,6 +5842,7 @@ Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::~Locat
 
 bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set
@@ -5747,7 +5867,10 @@ bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::h
 std::string Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -5868,9 +5991,11 @@ bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::h
 }
 
 Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbBlock()
+    :
+    fdb_entry(this, {"fdb_index"})
 {
 
-    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
@@ -5879,7 +6004,8 @@ Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlo
 
 bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::has_data() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_data())
             return true;
@@ -5889,7 +6015,7 @@ bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::F
 
 bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::has_operation() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_operation())
             return true;
@@ -5919,7 +6045,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdb
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry>();
         c->parent = this;
-        fdb_entry.push_back(c);
+        fdb_entry.append(c);
         return c;
     }
 
@@ -5931,7 +6057,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fdb_entry)
+    for (auto c : fdb_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5969,7 +6095,7 @@ Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlo
     fdb_synced_cores{YType::uint8, "fdb-synced-cores"}
 {
 
-    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~FdbEntry()
@@ -5978,6 +6104,7 @@ Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlo
 
 bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : fdb_synced_cores.getYLeafs())
     {
         if(leaf.is_set)
@@ -6013,7 +6140,8 @@ bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::F
 std::string Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fdb-entry" <<"[fdb-index='" <<fdb_index <<"']";
+    path_buffer << "fdb-entry";
+    ADD_KEY_TOKEN(fdb_index, "fdb-index");
     return path_buffer.str();
 }
 
@@ -6141,9 +6269,11 @@ bool Controller::Switch::Oper::Fdb::Port::PortIter::SwitchFdbCommon::Location::F
 }
 
 Controller::Switch::Oper::Fdb::Statistics::Statistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "statistics"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "statistics"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Statistics::~Statistics()
@@ -6152,7 +6282,8 @@ Controller::Switch::Oper::Fdb::Statistics::~Statistics()
 
 bool Controller::Switch::Oper::Fdb::Statistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6162,7 +6293,7 @@ bool Controller::Switch::Oper::Fdb::Statistics::has_data() const
 
 bool Controller::Switch::Oper::Fdb::Statistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6199,7 +6330,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Statistics::get_child_by_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Statistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6211,7 +6342,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::St
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6242,12 +6373,13 @@ Controller::Switch::Oper::Fdb::Statistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
-    	,
+        ,
     counter_info(std::make_shared<Controller::Switch::Oper::Fdb::Statistics::Location::CounterInfo>())
+    , core_id(this, {"core"})
 {
     counter_info->parent = this;
 
-    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::Statistics::Location::~Location()
@@ -6256,7 +6388,8 @@ Controller::Switch::Oper::Fdb::Statistics::Location::~Location()
 
 bool Controller::Switch::Oper::Fdb::Statistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<core_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<core_id.len(); index++)
     {
         if(core_id[index]->has_data())
             return true;
@@ -6269,7 +6402,7 @@ bool Controller::Switch::Oper::Fdb::Statistics::Location::has_data() const
 
 bool Controller::Switch::Oper::Fdb::Statistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<core_id.size(); index++)
+    for (std::size_t index=0; index<core_id.len(); index++)
     {
         if(core_id[index]->has_operation())
             return true;
@@ -6291,7 +6424,10 @@ std::string Controller::Switch::Oper::Fdb::Statistics::Location::get_absolute_pa
 std::string Controller::Switch::Oper::Fdb::Statistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -6322,7 +6458,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::Statistics::Location::get
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::Statistics::Location::CoreId>();
         c->parent = this;
-        core_id.push_back(c);
+        core_id.append(c);
         return c;
     }
 
@@ -6339,7 +6475,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::St
     }
 
     count = 0;
-    for (auto const & c : core_id)
+    for (auto c : core_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6419,7 +6555,7 @@ Controller::Switch::Oper::Fdb::Statistics::Location::CounterInfo::CounterInfo()
     fdb_forwarding_queue_full{YType::enumeration, "fdb-forwarding-queue-full"}
 {
 
-    yang_name = "counter-info"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counter-info"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Statistics::Location::CounterInfo::~CounterInfo()
@@ -6428,6 +6564,7 @@ Controller::Switch::Oper::Fdb::Statistics::Location::CounterInfo::~CounterInfo()
 
 bool Controller::Switch::Oper::Fdb::Statistics::Location::CounterInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return fdb_shadow_entries.is_set
 	|| fdb_max_shadow_entries.is_set
 	|| fdb_max_hash_chain.is_set
@@ -6745,7 +6882,7 @@ Controller::Switch::Oper::Fdb::Statistics::Location::CoreId::CoreId()
     core_static_entries{YType::uint32, "core-static-entries"}
 {
 
-    yang_name = "core-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "core-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::Statistics::Location::CoreId::~CoreId()
@@ -6754,6 +6891,7 @@ Controller::Switch::Oper::Fdb::Statistics::Location::CoreId::~CoreId()
 
 bool Controller::Switch::Oper::Fdb::Statistics::Location::CoreId::has_data() const
 {
+    if (is_presence_container) return true;
     return core.is_set
 	|| core_entries.is_set
 	|| core_static_entries.is_set;
@@ -6770,7 +6908,8 @@ bool Controller::Switch::Oper::Fdb::Statistics::Location::CoreId::has_operation(
 std::string Controller::Switch::Oper::Fdb::Statistics::Location::CoreId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "core-id" <<"[core='" <<core <<"']";
+    path_buffer << "core-id";
+    ADD_KEY_TOKEN(core, "core");
     return path_buffer.str();
 }
 
@@ -6844,9 +6983,11 @@ bool Controller::Switch::Oper::Fdb::Statistics::Location::CoreId::has_leaf_or_ch
 }
 
 Controller::Switch::Oper::Fdb::SwitchFdbCommon::SwitchFdbCommon()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "switch-fdb-common"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switch-fdb-common"; yang_parent_name = "fdb"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::SwitchFdbCommon::~SwitchFdbCommon()
@@ -6855,7 +6996,8 @@ Controller::Switch::Oper::Fdb::SwitchFdbCommon::~SwitchFdbCommon()
 
 bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -6865,7 +7007,7 @@ bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::has_data() const
 
 bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -6902,7 +7044,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::SwitchFdbCommon::get_chil
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -6914,7 +7056,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Sw
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6948,12 +7090,12 @@ Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::Location()
     num_entries{YType::uint32, "num-entries"},
     has_trunk_entry{YType::uint8, "has-trunk-entry"},
     trunk_entry_message{YType::str, "trunk-entry-message"}
-    	,
+        ,
     fdb_block(std::make_shared<Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock>())
 {
     fdb_block->parent = this;
 
-    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "switch-fdb-common"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::~Location()
@@ -6962,6 +7104,7 @@ Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::~Location()
 
 bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set
@@ -6993,7 +7136,10 @@ std::string Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::get_absolu
 std::string Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -7114,9 +7260,11 @@ bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::has_leaf_or_child
 }
 
 Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbBlock()
+    :
+    fdb_entry(this, {"fdb_index"})
 {
 
-    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-block"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
@@ -7125,7 +7273,8 @@ Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::~FdbBlock()
 
 bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::has_data() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_data())
             return true;
@@ -7135,7 +7284,7 @@ bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::has_dat
 
 bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::has_operation() const
 {
-    for (std::size_t index=0; index<fdb_entry.size(); index++)
+    for (std::size_t index=0; index<fdb_entry.len(); index++)
     {
         if(fdb_entry[index]->has_operation())
             return true;
@@ -7165,7 +7314,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location
     {
         auto c = std::make_shared<Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry>();
         c->parent = this;
-        fdb_entry.push_back(c);
+        fdb_entry.append(c);
         return c;
     }
 
@@ -7177,7 +7326,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Fdb::Sw
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : fdb_entry)
+    for (auto c : fdb_entry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7215,7 +7364,7 @@ Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry::Fd
     fdb_synced_cores{YType::uint8, "fdb-synced-cores"}
 {
 
-    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "fdb-entry"; yang_parent_name = "fdb-block"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~FdbEntry()
@@ -7224,6 +7373,7 @@ Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry::~F
 
 bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : fdb_synced_cores.getYLeafs())
     {
         if(leaf.is_set)
@@ -7259,7 +7409,8 @@ bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntr
 std::string Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "fdb-entry" <<"[fdb-index='" <<fdb_index <<"']";
+    path_buffer << "fdb-entry";
+    ADD_KEY_TOKEN(fdb_index, "fdb-index");
     return path_buffer.str();
 }
 
@@ -7389,16 +7540,16 @@ bool Controller::Switch::Oper::Fdb::SwitchFdbCommon::Location::FdbBlock::FdbEntr
 Controller::Switch::Oper::Vlan::Vlan()
     :
     rules(std::make_shared<Controller::Switch::Oper::Vlan::Rules>())
-	,information(std::make_shared<Controller::Switch::Oper::Vlan::Information>())
-	,vlan_detail(std::make_shared<Controller::Switch::Oper::Vlan::VlanDetail>())
-	,membership(std::make_shared<Controller::Switch::Oper::Vlan::Membership>())
+    , information(std::make_shared<Controller::Switch::Oper::Vlan::Information>())
+    , vlan_detail(std::make_shared<Controller::Switch::Oper::Vlan::VlanDetail>())
+    , membership(std::make_shared<Controller::Switch::Oper::Vlan::Membership>())
 {
     rules->parent = this;
     information->parent = this;
     vlan_detail->parent = this;
     membership->parent = this;
 
-    yang_name = "vlan"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::~Vlan()
@@ -7407,6 +7558,7 @@ Controller::Switch::Oper::Vlan::~Vlan()
 
 bool Controller::Switch::Oper::Vlan::has_data() const
 {
+    if (is_presence_container) return true;
     return (rules !=  nullptr && rules->has_data())
 	|| (information !=  nullptr && information->has_data())
 	|| (vlan_detail !=  nullptr && vlan_detail->has_data())
@@ -7529,9 +7681,11 @@ bool Controller::Switch::Oper::Vlan::has_leaf_or_child_of_name(const std::string
 }
 
 Controller::Switch::Oper::Vlan::Rules::Rules()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "rules"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rules"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Rules::~Rules()
@@ -7540,7 +7694,8 @@ Controller::Switch::Oper::Vlan::Rules::~Rules()
 
 bool Controller::Switch::Oper::Vlan::Rules::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -7550,7 +7705,7 @@ bool Controller::Switch::Oper::Vlan::Rules::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Rules::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -7587,7 +7742,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Rules::get_child_by_name
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Rules::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -7599,7 +7754,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7630,9 +7785,11 @@ Controller::Switch::Oper::Vlan::Rules::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Rules::Location::~Location()
@@ -7641,7 +7798,8 @@ Controller::Switch::Oper::Vlan::Rules::Location::~Location()
 
 bool Controller::Switch::Oper::Vlan::Rules::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -7653,7 +7811,7 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Rules::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -7674,7 +7832,10 @@ std::string Controller::Switch::Oper::Vlan::Rules::Location::get_absolute_path()
 std::string Controller::Switch::Oper::Vlan::Rules::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -7696,7 +7857,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Rules::Location::get_chi
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Rules::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -7708,7 +7869,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7767,9 +7928,11 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::has_leaf_or_child_of_name(
 Controller::Switch::Oper::Vlan::Rules::Location::PortIter::PortIter()
     :
     port{YType::int32, "port"}
+        ,
+    vlan_id(this, {"vlan"})
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::Rules::Location::PortIter::~PortIter()
@@ -7778,7 +7941,8 @@ Controller::Switch::Oper::Vlan::Rules::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::has_data() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_data())
             return true;
@@ -7788,7 +7952,7 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_operation())
             return true;
@@ -7800,7 +7964,8 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::has_operation() 
 std::string Controller::Switch::Oper::Vlan::Rules::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -7820,7 +7985,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Rules::Location::PortIte
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId>();
         c->parent = this;
-        vlan_id.push_back(c);
+        vlan_id.append(c);
         return c;
     }
 
@@ -7832,7 +7997,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_id)
+    for (auto c : vlan_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7871,9 +8036,11 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::has_leaf_or_chil
 Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::VlanId()
     :
     vlan{YType::uint16, "vlan"}
+        ,
+    rule_id(this, {})
 {
 
-    yang_name = "vlan-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::~VlanId()
@@ -7882,7 +8049,8 @@ Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::~VlanId()
 
 bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::has_data() const
 {
-    for (std::size_t index=0; index<rule_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_id.len(); index++)
     {
         if(rule_id[index]->has_data())
             return true;
@@ -7892,7 +8060,7 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::has_data
 
 bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::has_operation() const
 {
-    for (std::size_t index=0; index<rule_id.size(); index++)
+    for (std::size_t index=0; index<rule_id.len(); index++)
     {
         if(rule_id[index]->has_operation())
             return true;
@@ -7904,7 +8072,8 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::has_oper
 std::string Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-id" <<"[vlan='" <<vlan <<"']";
+    path_buffer << "vlan-id";
+    ADD_KEY_TOKEN(vlan, "vlan");
     return path_buffer.str();
 }
 
@@ -7924,7 +8093,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Rules::Location::PortIte
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId>();
         c->parent = this;
-        rule_id.push_back(c);
+        rule_id.append(c);
         return c;
     }
 
@@ -7936,7 +8105,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::R
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_id)
+    for (auto c : rule_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7982,7 +8151,7 @@ Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId::RuleI
     action_vlan_id{YType::uint16, "action-vlan-id"}
 {
 
-    yang_name = "rule-id"; yang_parent_name = "vlan-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rule-id"; yang_parent_name = "vlan-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId::~RuleId()
@@ -7991,6 +8160,7 @@ Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId::~Rule
 
 bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| match_table.is_set
 	|| match_type.is_set
@@ -8121,11 +8291,12 @@ bool Controller::Switch::Oper::Vlan::Rules::Location::PortIter::VlanId::RuleId::
 
 Controller::Switch::Oper::Vlan::Information::Information()
     :
-    summary(std::make_shared<Controller::Switch::Oper::Vlan::Information::Summary>())
+    location(this, {"rack", "card", "switch_id"})
+    , summary(std::make_shared<Controller::Switch::Oper::Vlan::Information::Summary>())
 {
     summary->parent = this;
 
-    yang_name = "information"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "information"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Information::~Information()
@@ -8134,7 +8305,8 @@ Controller::Switch::Oper::Vlan::Information::~Information()
 
 bool Controller::Switch::Oper::Vlan::Information::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -8144,7 +8316,7 @@ bool Controller::Switch::Oper::Vlan::Information::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Information::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -8182,7 +8354,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Information::get_child_b
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Information::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -8203,7 +8375,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8240,9 +8412,11 @@ Controller::Switch::Oper::Vlan::Information::Location::Location()
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"},
     serial_num{YType::str, "serial-num"}
+        ,
+    sdr_id(this, {"sdr"})
 {
 
-    yang_name = "location"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Information::Location::~Location()
@@ -8251,7 +8425,8 @@ Controller::Switch::Oper::Vlan::Information::Location::~Location()
 
 bool Controller::Switch::Oper::Vlan::Information::Location::has_data() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_data())
             return true;
@@ -8264,7 +8439,7 @@ bool Controller::Switch::Oper::Vlan::Information::Location::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Information::Location::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_operation())
             return true;
@@ -8286,7 +8461,10 @@ std::string Controller::Switch::Oper::Vlan::Information::Location::get_absolute_
 std::string Controller::Switch::Oper::Vlan::Information::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -8309,7 +8487,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Information::Location::g
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Information::Location::SdrId>();
         c->parent = this;
-        sdr_id.push_back(c);
+        sdr_id.append(c);
         return c;
     }
 
@@ -8321,7 +8499,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_id)
+    for (auto c : sdr_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8391,9 +8569,11 @@ Controller::Switch::Oper::Vlan::Information::Location::SdrId::SdrId()
     :
     sdr{YType::uint8, "sdr"},
     esd_sdr_name{YType::str, "esd-sdr-name"}
+        ,
+    vlan_id(this, {"vlan"})
 {
 
-    yang_name = "sdr-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sdr-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::Information::Location::SdrId::~SdrId()
@@ -8402,7 +8582,8 @@ Controller::Switch::Oper::Vlan::Information::Location::SdrId::~SdrId()
 
 bool Controller::Switch::Oper::Vlan::Information::Location::SdrId::has_data() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_data())
             return true;
@@ -8413,7 +8594,7 @@ bool Controller::Switch::Oper::Vlan::Information::Location::SdrId::has_data() co
 
 bool Controller::Switch::Oper::Vlan::Information::Location::SdrId::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_operation())
             return true;
@@ -8426,7 +8607,8 @@ bool Controller::Switch::Oper::Vlan::Information::Location::SdrId::has_operation
 std::string Controller::Switch::Oper::Vlan::Information::Location::SdrId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr-id" <<"[sdr='" <<sdr <<"']";
+    path_buffer << "sdr-id";
+    ADD_KEY_TOKEN(sdr, "sdr");
     return path_buffer.str();
 }
 
@@ -8447,7 +8629,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Information::Location::S
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId>();
         c->parent = this;
-        vlan_id.push_back(c);
+        vlan_id.append(c);
         return c;
     }
 
@@ -8459,7 +8641,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_id)
+    for (auto c : vlan_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8512,7 +8694,7 @@ Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId::VlanId()
     vlan_use{YType::str, "vlan-use"}
 {
 
-    yang_name = "vlan-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId::~VlanId()
@@ -8521,6 +8703,7 @@ Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId::~VlanId()
 
 bool Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set
 	|| vlan_hex.is_set
 	|| vlan_use.is_set;
@@ -8537,7 +8720,8 @@ bool Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId::has_o
 std::string Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-id" <<"[vlan='" <<vlan <<"']";
+    path_buffer << "vlan-id";
+    ADD_KEY_TOKEN(vlan, "vlan");
     return path_buffer.str();
 }
 
@@ -8611,9 +8795,11 @@ bool Controller::Switch::Oper::Vlan::Information::Location::SdrId::VlanId::has_l
 }
 
 Controller::Switch::Oper::Vlan::Information::Summary::Summary()
+    :
+    sdr_id(this, {"sdr"})
 {
 
-    yang_name = "summary"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Information::Summary::~Summary()
@@ -8622,7 +8808,8 @@ Controller::Switch::Oper::Vlan::Information::Summary::~Summary()
 
 bool Controller::Switch::Oper::Vlan::Information::Summary::has_data() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_data())
             return true;
@@ -8632,7 +8819,7 @@ bool Controller::Switch::Oper::Vlan::Information::Summary::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Information::Summary::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_operation())
             return true;
@@ -8669,7 +8856,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Information::Summary::ge
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Information::Summary::SdrId>();
         c->parent = this;
-        sdr_id.push_back(c);
+        sdr_id.append(c);
         return c;
     }
 
@@ -8681,7 +8868,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_id)
+    for (auto c : sdr_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8711,9 +8898,11 @@ Controller::Switch::Oper::Vlan::Information::Summary::SdrId::SdrId()
     :
     sdr{YType::uint8, "sdr"},
     esd_sdr_name{YType::str, "esd-sdr-name"}
+        ,
+    vlan_id(this, {"vlan"})
 {
 
-    yang_name = "sdr-id"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-id"; yang_parent_name = "summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Information::Summary::SdrId::~SdrId()
@@ -8722,7 +8911,8 @@ Controller::Switch::Oper::Vlan::Information::Summary::SdrId::~SdrId()
 
 bool Controller::Switch::Oper::Vlan::Information::Summary::SdrId::has_data() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_data())
             return true;
@@ -8733,7 +8923,7 @@ bool Controller::Switch::Oper::Vlan::Information::Summary::SdrId::has_data() con
 
 bool Controller::Switch::Oper::Vlan::Information::Summary::SdrId::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_operation())
             return true;
@@ -8753,7 +8943,8 @@ std::string Controller::Switch::Oper::Vlan::Information::Summary::SdrId::get_abs
 std::string Controller::Switch::Oper::Vlan::Information::Summary::SdrId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr-id" <<"[sdr='" <<sdr <<"']";
+    path_buffer << "sdr-id";
+    ADD_KEY_TOKEN(sdr, "sdr");
     return path_buffer.str();
 }
 
@@ -8774,7 +8965,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Information::Summary::Sd
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId>();
         c->parent = this;
-        vlan_id.push_back(c);
+        vlan_id.append(c);
         return c;
     }
 
@@ -8786,7 +8977,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::I
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_id)
+    for (auto c : vlan_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8839,7 +9030,7 @@ Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId::VlanId()
     vlan_use{YType::str, "vlan-use"}
 {
 
-    yang_name = "vlan-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId::~VlanId()
@@ -8848,6 +9039,7 @@ Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId::~VlanId()
 
 bool Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set
 	|| vlan_hex.is_set
 	|| vlan_use.is_set;
@@ -8864,7 +9056,8 @@ bool Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId::has_op
 std::string Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-id" <<"[vlan='" <<vlan <<"']";
+    path_buffer << "vlan-id";
+    ADD_KEY_TOKEN(vlan, "vlan");
     return path_buffer.str();
 }
 
@@ -8938,9 +9131,11 @@ bool Controller::Switch::Oper::Vlan::Information::Summary::SdrId::VlanId::has_le
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::VlanDetail()
+    :
+    vlan_id(this, {"vlan"})
 {
 
-    yang_name = "vlan-detail"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-detail"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::~VlanDetail()
@@ -8949,7 +9144,8 @@ Controller::Switch::Oper::Vlan::VlanDetail::~VlanDetail()
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::has_data() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_data())
             return true;
@@ -8959,7 +9155,7 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::has_data() const
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_operation())
             return true;
@@ -8996,7 +9192,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::VlanDetail::get_child_by
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::VlanDetail::VlanId>();
         c->parent = this;
-        vlan_id.push_back(c);
+        vlan_id.append(c);
         return c;
     }
 
@@ -9008,7 +9204,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_id)
+    for (auto c : vlan_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9037,12 +9233,12 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::has_leaf_or_child_of_name(const
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::VlanId()
     :
     vlan{YType::uint16, "vlan"}
-    	,
+        ,
     rules(std::make_shared<Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules>())
 {
     rules->parent = this;
 
-    yang_name = "vlan-id"; yang_parent_name = "vlan-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vlan-id"; yang_parent_name = "vlan-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::~VlanId()
@@ -9051,6 +9247,7 @@ Controller::Switch::Oper::Vlan::VlanDetail::VlanId::~VlanId()
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan.is_set
 	|| (rules !=  nullptr && rules->has_data());
 }
@@ -9072,7 +9269,8 @@ std::string Controller::Switch::Oper::Vlan::VlanDetail::VlanId::get_absolute_pat
 std::string Controller::Switch::Oper::Vlan::VlanDetail::VlanId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-id" <<"[vlan='" <<vlan <<"']";
+    path_buffer << "vlan-id";
+    ADD_KEY_TOKEN(vlan, "vlan");
     return path_buffer.str();
 }
 
@@ -9138,9 +9336,11 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::has_leaf_or_child_of_na
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Rules()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "rules"; yang_parent_name = "vlan-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rules"; yang_parent_name = "vlan-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::~Rules()
@@ -9149,7 +9349,8 @@ Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::~Rules()
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9159,7 +9360,7 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::has_data() const
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9189,7 +9390,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rule
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9201,7 +9402,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9232,9 +9433,11 @@ Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "rules"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::~Location()
@@ -9243,7 +9446,8 @@ Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::~Location()
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -9255,7 +9459,7 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::has_da
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -9269,7 +9473,10 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::has_op
 std::string Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -9291,7 +9498,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rule
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -9303,7 +9510,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9362,9 +9569,11 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::has_le
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::PortIter()
     :
     port{YType::int32, "port"}
+        ,
+    rule_id(this, {})
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::~PortIter()
@@ -9373,7 +9582,8 @@ Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::~
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::has_data() const
 {
-    for (std::size_t index=0; index<rule_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rule_id.len(); index++)
     {
         if(rule_id[index]->has_data())
             return true;
@@ -9383,7 +9593,7 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIt
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::has_operation() const
 {
-    for (std::size_t index=0; index<rule_id.size(); index++)
+    for (std::size_t index=0; index<rule_id.len(); index++)
     {
         if(rule_id[index]->has_operation())
             return true;
@@ -9395,7 +9605,8 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIt
 std::string Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -9415,7 +9626,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rule
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::RuleId>();
         c->parent = this;
-        rule_id.push_back(c);
+        rule_id.append(c);
         return c;
     }
 
@@ -9427,7 +9638,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::V
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rule_id)
+    for (auto c : rule_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9473,7 +9684,7 @@ Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::R
     action_vlan_id{YType::uint16, "action-vlan-id"}
 {
 
-    yang_name = "rule-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rule-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::RuleId::~RuleId()
@@ -9482,6 +9693,7 @@ Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::R
 
 bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIter::RuleId::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| match_table.is_set
 	|| match_type.is_set
@@ -9611,9 +9823,11 @@ bool Controller::Switch::Oper::Vlan::VlanDetail::VlanId::Rules::Location::PortIt
 }
 
 Controller::Switch::Oper::Vlan::Membership::Membership()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "membership"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "membership"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Membership::~Membership()
@@ -9622,7 +9836,8 @@ Controller::Switch::Oper::Vlan::Membership::~Membership()
 
 bool Controller::Switch::Oper::Vlan::Membership::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -9632,7 +9847,7 @@ bool Controller::Switch::Oper::Vlan::Membership::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Membership::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -9669,7 +9884,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Membership::get_child_by
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Membership::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -9681,7 +9896,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9712,9 +9927,11 @@ Controller::Switch::Oper::Vlan::Membership::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    vlan_id(this, {"vlan"})
 {
 
-    yang_name = "location"; yang_parent_name = "membership"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "membership"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Vlan::Membership::Location::~Location()
@@ -9723,7 +9940,8 @@ Controller::Switch::Oper::Vlan::Membership::Location::~Location()
 
 bool Controller::Switch::Oper::Vlan::Membership::Location::has_data() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_data())
             return true;
@@ -9735,7 +9953,7 @@ bool Controller::Switch::Oper::Vlan::Membership::Location::has_data() const
 
 bool Controller::Switch::Oper::Vlan::Membership::Location::has_operation() const
 {
-    for (std::size_t index=0; index<vlan_id.size(); index++)
+    for (std::size_t index=0; index<vlan_id.len(); index++)
     {
         if(vlan_id[index]->has_operation())
             return true;
@@ -9756,7 +9974,10 @@ std::string Controller::Switch::Oper::Vlan::Membership::Location::get_absolute_p
 std::string Controller::Switch::Oper::Vlan::Membership::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -9778,7 +9999,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Vlan::Membership::Location::ge
     {
         auto c = std::make_shared<Controller::Switch::Oper::Vlan::Membership::Location::VlanId>();
         c->parent = this;
-        vlan_id.push_back(c);
+        vlan_id.append(c);
         return c;
     }
 
@@ -9790,7 +10011,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Vlan::M
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vlan_id)
+    for (auto c : vlan_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9853,7 +10074,7 @@ Controller::Switch::Oper::Vlan::Membership::Location::VlanId::VlanId()
     port{YType::uint8, "port"}
 {
 
-    yang_name = "vlan-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vlan-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Vlan::Membership::Location::VlanId::~VlanId()
@@ -9862,6 +10083,7 @@ Controller::Switch::Oper::Vlan::Membership::Location::VlanId::~VlanId()
 
 bool Controller::Switch::Oper::Vlan::Membership::Location::VlanId::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : port.getYLeafs())
     {
         if(leaf.is_set)
@@ -9887,7 +10109,8 @@ bool Controller::Switch::Oper::Vlan::Membership::Location::VlanId::has_operation
 std::string Controller::Switch::Oper::Vlan::Membership::Location::VlanId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vlan-id" <<"[vlan='" <<vlan <<"']";
+    path_buffer << "vlan-id";
+    ADD_KEY_TOKEN(vlan, "vlan");
     return path_buffer.str();
 }
 
@@ -9960,9 +10183,11 @@ bool Controller::Switch::Oper::Vlan::Membership::Location::VlanId::has_leaf_or_c
 }
 
 Controller::Switch::Oper::Esd::Esd()
+    :
+    instance(this, {"process_name"})
 {
 
-    yang_name = "esd"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "esd"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Esd::~Esd()
@@ -9971,7 +10196,8 @@ Controller::Switch::Oper::Esd::~Esd()
 
 bool Controller::Switch::Oper::Esd::has_data() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_data())
             return true;
@@ -9981,7 +10207,7 @@ bool Controller::Switch::Oper::Esd::has_data() const
 
 bool Controller::Switch::Oper::Esd::has_operation() const
 {
-    for (std::size_t index=0; index<instance.size(); index++)
+    for (std::size_t index=0; index<instance.len(); index++)
     {
         if(instance[index]->has_operation())
             return true;
@@ -10018,7 +10244,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Esd::get_child_by_name(const s
     {
         auto c = std::make_shared<Controller::Switch::Oper::Esd::Instance>();
         c->parent = this;
-        instance.push_back(c);
+        instance.append(c);
         return c;
     }
 
@@ -10030,7 +10256,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Esd::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : instance)
+    for (auto c : instance.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10059,9 +10285,11 @@ bool Controller::Switch::Oper::Esd::has_leaf_or_child_of_name(const std::string 
 Controller::Switch::Oper::Esd::Instance::Instance()
     :
     process_name{YType::str, "process_name"}
+        ,
+    trace(this, {"buffer"})
 {
 
-    yang_name = "instance"; yang_parent_name = "esd"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "instance"; yang_parent_name = "esd"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Esd::Instance::~Instance()
@@ -10070,7 +10298,8 @@ Controller::Switch::Oper::Esd::Instance::~Instance()
 
 bool Controller::Switch::Oper::Esd::Instance::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -10080,7 +10309,7 @@ bool Controller::Switch::Oper::Esd::Instance::has_data() const
 
 bool Controller::Switch::Oper::Esd::Instance::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -10099,7 +10328,8 @@ std::string Controller::Switch::Oper::Esd::Instance::get_absolute_path() const
 std::string Controller::Switch::Oper::Esd::Instance::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "instance" <<"[process_name='" <<process_name <<"']";
+    path_buffer << "instance";
+    ADD_KEY_TOKEN(process_name, "process_name");
     return path_buffer.str();
 }
 
@@ -10119,7 +10349,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Esd::Instance::get_child_by_na
     {
         auto c = std::make_shared<Controller::Switch::Oper::Esd::Instance::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -10131,7 +10361,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Esd::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10170,9 +10400,11 @@ bool Controller::Switch::Oper::Esd::Instance::has_leaf_or_child_of_name(const st
 Controller::Switch::Oper::Esd::Instance::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Esd::Instance::Trace::~Trace()
@@ -10181,7 +10413,8 @@ Controller::Switch::Oper::Esd::Instance::Trace::~Trace()
 
 bool Controller::Switch::Oper::Esd::Instance::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10191,7 +10424,7 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::has_data() const
 
 bool Controller::Switch::Oper::Esd::Instance::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10203,7 +10436,8 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::has_operation() const
 std::string Controller::Switch::Oper::Esd::Instance::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -10223,7 +10457,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Esd::Instance::Trace::get_chil
     {
         auto c = std::make_shared<Controller::Switch::Oper::Esd::Instance::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10235,7 +10469,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Esd::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10274,9 +10508,11 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::has_leaf_or_child_of_name(c
 Controller::Switch::Oper::Esd::Instance::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Esd::Instance::Trace::Location::~Location()
@@ -10285,7 +10521,8 @@ Controller::Switch::Oper::Esd::Instance::Trace::Location::~Location()
 
 bool Controller::Switch::Oper::Esd::Instance::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -10295,7 +10532,7 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::Location::has_data() const
 
 bool Controller::Switch::Oper::Esd::Instance::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -10307,7 +10544,8 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::Location::has_operation() c
 std::string Controller::Switch::Oper::Esd::Instance::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -10327,7 +10565,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Esd::Instance::Trace::Location
     {
         auto c = std::make_shared<Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -10339,7 +10577,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Esd::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10378,9 +10616,11 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::Location::has_leaf_or_child
 Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::~AllOptions()
@@ -10389,7 +10629,8 @@ Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::~AllOption
 
 bool Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -10399,7 +10640,7 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::has_d
 
 bool Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -10411,7 +10652,8 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::has_o
 std::string Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -10431,7 +10673,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Esd::Instance::Trace::Location
     {
         auto c = std::make_shared<Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -10443,7 +10685,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Esd::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10484,7 +10726,7 @@ Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlock
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -10493,6 +10735,7 @@ Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlock
 
 bool Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -10559,12 +10802,12 @@ bool Controller::Switch::Oper::Esd::Instance::Trace::Location::AllOptions::Trace
 Controller::Switch::Oper::MgmtAgent::MgmtAgent()
     :
     esdma(std::make_shared<Controller::Switch::Oper::MgmtAgent::Esdma>())
-	,connections(std::make_shared<Controller::Switch::Oper::MgmtAgent::Connections>())
+    , connections(std::make_shared<Controller::Switch::Oper::MgmtAgent::Connections>())
 {
     esdma->parent = this;
     connections->parent = this;
 
-    yang_name = "mgmt-agent"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mgmt-agent"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::~MgmtAgent()
@@ -10573,6 +10816,7 @@ Controller::Switch::Oper::MgmtAgent::~MgmtAgent()
 
 bool Controller::Switch::Oper::MgmtAgent::has_data() const
 {
+    if (is_presence_container) return true;
     return (esdma !=  nullptr && esdma->has_data())
 	|| (connections !=  nullptr && connections->has_data());
 }
@@ -10663,9 +10907,11 @@ bool Controller::Switch::Oper::MgmtAgent::has_leaf_or_child_of_name(const std::s
 }
 
 Controller::Switch::Oper::MgmtAgent::Esdma::Esdma()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "esdma"; yang_parent_name = "mgmt-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "esdma"; yang_parent_name = "mgmt-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Esdma::~Esdma()
@@ -10674,7 +10920,8 @@ Controller::Switch::Oper::MgmtAgent::Esdma::~Esdma()
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -10684,7 +10931,7 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::has_data() const
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -10721,7 +10968,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::MgmtAgent::Esdma::get_child_by
     {
         auto c = std::make_shared<Controller::Switch::Oper::MgmtAgent::Esdma::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -10733,7 +10980,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::MgmtAge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10762,9 +11009,11 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::has_leaf_or_child_of_name(const
 Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "esdma"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "esdma"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Esdma::Trace::~Trace()
@@ -10773,7 +11022,8 @@ Controller::Switch::Oper::MgmtAgent::Esdma::Trace::~Trace()
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -10783,7 +11033,7 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::has_data() const
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -10802,7 +11052,8 @@ std::string Controller::Switch::Oper::MgmtAgent::Esdma::Trace::get_absolute_path
 std::string Controller::Switch::Oper::MgmtAgent::Esdma::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -10822,7 +11073,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::MgmtAgent::Esdma::Trace::get_c
     {
         auto c = std::make_shared<Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -10834,7 +11085,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::MgmtAge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10873,9 +11124,11 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::has_leaf_or_child_of_nam
 Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::~Location()
@@ -10884,7 +11137,8 @@ Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::~Location()
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -10894,7 +11148,7 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::has_data() con
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -10906,7 +11160,8 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::has_operation(
 std::string Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -10926,7 +11181,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Locat
     {
         auto c = std::make_shared<Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -10938,7 +11193,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::MgmtAge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10977,9 +11232,11 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::has_leaf_or_ch
 Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::~AllOptions()
@@ -10988,7 +11245,8 @@ Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::~AllOpt
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -10998,7 +11256,7 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::ha
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -11010,7 +11268,8 @@ bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::ha
 std::string Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -11030,7 +11289,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Locat
     {
         auto c = std::make_shared<Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -11042,7 +11301,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::MgmtAge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11083,7 +11342,7 @@ Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBl
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -11092,6 +11351,7 @@ Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBl
 
 bool Controller::Switch::Oper::MgmtAgent::Esdma::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -11160,12 +11420,15 @@ Controller::Switch::Oper::MgmtAgent::Connections::Connections()
     sdr_nm_num_clients{YType::uint32, "sdr-nm-num-clients"},
     esd_client_num_clients{YType::uint32, "esd-client-num-clients"},
     mlap_client_num_clients{YType::uint32, "mlap-client-num-clients"}
-    	,
+        ,
     esdma_info(std::make_shared<Controller::Switch::Oper::MgmtAgent::Connections::EsdmaInfo>())
+    , sdr_nm_client_id(this, {})
+    , esd_client_id(this, {})
+    , mlap_client_id(this, {})
 {
     esdma_info->parent = this;
 
-    yang_name = "connections"; yang_parent_name = "mgmt-agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "connections"; yang_parent_name = "mgmt-agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Connections::~Connections()
@@ -11174,17 +11437,18 @@ Controller::Switch::Oper::MgmtAgent::Connections::~Connections()
 
 bool Controller::Switch::Oper::MgmtAgent::Connections::has_data() const
 {
-    for (std::size_t index=0; index<sdr_nm_client_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_nm_client_id.len(); index++)
     {
         if(sdr_nm_client_id[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<esd_client_id.size(); index++)
+    for (std::size_t index=0; index<esd_client_id.len(); index++)
     {
         if(esd_client_id[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mlap_client_id.size(); index++)
+    for (std::size_t index=0; index<mlap_client_id.len(); index++)
     {
         if(mlap_client_id[index]->has_data())
             return true;
@@ -11197,17 +11461,17 @@ bool Controller::Switch::Oper::MgmtAgent::Connections::has_data() const
 
 bool Controller::Switch::Oper::MgmtAgent::Connections::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_nm_client_id.size(); index++)
+    for (std::size_t index=0; index<sdr_nm_client_id.len(); index++)
     {
         if(sdr_nm_client_id[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<esd_client_id.size(); index++)
+    for (std::size_t index=0; index<esd_client_id.len(); index++)
     {
         if(esd_client_id[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mlap_client_id.size(); index++)
+    for (std::size_t index=0; index<mlap_client_id.len(); index++)
     {
         if(mlap_client_id[index]->has_operation())
             return true;
@@ -11260,7 +11524,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::MgmtAgent::Connections::get_ch
     {
         auto c = std::make_shared<Controller::Switch::Oper::MgmtAgent::Connections::SdrNmClientId>();
         c->parent = this;
-        sdr_nm_client_id.push_back(c);
+        sdr_nm_client_id.append(c);
         return c;
     }
 
@@ -11268,7 +11532,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::MgmtAgent::Connections::get_ch
     {
         auto c = std::make_shared<Controller::Switch::Oper::MgmtAgent::Connections::EsdClientId>();
         c->parent = this;
-        esd_client_id.push_back(c);
+        esd_client_id.append(c);
         return c;
     }
 
@@ -11276,7 +11540,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::MgmtAgent::Connections::get_ch
     {
         auto c = std::make_shared<Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId>();
         c->parent = this;
-        mlap_client_id.push_back(c);
+        mlap_client_id.append(c);
         return c;
     }
 
@@ -11293,7 +11557,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::MgmtAge
     }
 
     count = 0;
-    for (auto const & c : sdr_nm_client_id)
+    for (auto c : sdr_nm_client_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11302,7 +11566,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::MgmtAge
     }
 
     count = 0;
-    for (auto const & c : esd_client_id)
+    for (auto c : esd_client_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11311,7 +11575,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::MgmtAge
     }
 
     count = 0;
-    for (auto const & c : mlap_client_id)
+    for (auto c : mlap_client_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11372,7 +11636,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::EsdmaInfo::EsdmaInfo()
     active_esdma_address{YType::str, "active-esdma-address"}
 {
 
-    yang_name = "esdma-info"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "esdma-info"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Connections::EsdmaInfo::~EsdmaInfo()
@@ -11381,6 +11645,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::EsdmaInfo::~EsdmaInfo()
 
 bool Controller::Switch::Oper::MgmtAgent::Connections::EsdmaInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return active_esdma_address.is_set;
 }
 
@@ -11457,7 +11722,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::SdrNmClientId::SdrNmClientId()
     sdr_nm_port_num{YType::uint16, "sdr-nm-port-num"}
 {
 
-    yang_name = "sdr-nm-client-id"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-nm-client-id"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Connections::SdrNmClientId::~SdrNmClientId()
@@ -11466,6 +11731,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::SdrNmClientId::~SdrNmClientId(
 
 bool Controller::Switch::Oper::MgmtAgent::Connections::SdrNmClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return sdr_nm_ip_address.is_set
 	|| sdr_nm_port_num.is_set;
 }
@@ -11558,7 +11824,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::EsdClientId::EsdClientId()
     esd_client_sdr_info_cached{YType::enumeration, "esd-client-sdr-info-cached"}
 {
 
-    yang_name = "esd-client-id"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "esd-client-id"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Connections::EsdClientId::~EsdClientId()
@@ -11567,6 +11833,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::EsdClientId::~EsdClientId()
 
 bool Controller::Switch::Oper::MgmtAgent::Connections::EsdClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return esd_client_ip_address.is_set
 	|| esd_client_port_num.is_set
 	|| esd_client_location.is_set
@@ -11697,7 +11964,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId::MlapClientId()
     mlap_client_switch_info_cached{YType::enumeration, "mlap-client-switch-info-cached"}
 {
 
-    yang_name = "mlap-client-id"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mlap-client-id"; yang_parent_name = "connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId::~MlapClientId()
@@ -11706,6 +11973,7 @@ Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId::~MlapClientId()
 
 bool Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId::has_data() const
 {
+    if (is_presence_container) return true;
     return mlap_client_ip_address.is_set
 	|| mlap_client_port_num.is_set
 	|| mlap_client_location.is_set
@@ -11818,16 +12086,16 @@ bool Controller::Switch::Oper::MgmtAgent::Connections::MlapClientId::has_leaf_or
 Controller::Switch::Oper::Sdr::Sdr()
     :
     port_statistics(std::make_shared<Controller::Switch::Oper::Sdr::PortStatistics>())
-	,global_statistics(std::make_shared<Controller::Switch::Oper::Sdr::GlobalStatistics>())
-	,policers(std::make_shared<Controller::Switch::Oper::Sdr::Policers>())
-	,sdr_detail(std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail>())
+    , global_statistics(std::make_shared<Controller::Switch::Oper::Sdr::GlobalStatistics>())
+    , policers(std::make_shared<Controller::Switch::Oper::Sdr::Policers>())
+    , sdr_detail(std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail>())
 {
     port_statistics->parent = this;
     global_statistics->parent = this;
     policers->parent = this;
     sdr_detail->parent = this;
 
-    yang_name = "sdr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::~Sdr()
@@ -11836,6 +12104,7 @@ Controller::Switch::Oper::Sdr::~Sdr()
 
 bool Controller::Switch::Oper::Sdr::has_data() const
 {
+    if (is_presence_container) return true;
     return (port_statistics !=  nullptr && port_statistics->has_data())
 	|| (global_statistics !=  nullptr && global_statistics->has_data())
 	|| (policers !=  nullptr && policers->has_data())
@@ -11958,9 +12227,11 @@ bool Controller::Switch::Oper::Sdr::has_leaf_or_child_of_name(const std::string 
 }
 
 Controller::Switch::Oper::Sdr::PortStatistics::PortStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "port-statistics"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-statistics"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::PortStatistics::~PortStatistics()
@@ -11969,7 +12240,8 @@ Controller::Switch::Oper::Sdr::PortStatistics::~PortStatistics()
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -11979,7 +12251,7 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::has_data() const
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -12016,7 +12288,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::PortStatistics::get_child
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::PortStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -12028,7 +12300,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12059,9 +12331,11 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "port-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "port-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::PortStatistics::Location::~Location()
@@ -12070,7 +12344,8 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::~Location()
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -12082,7 +12357,7 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::has_data() const
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -12103,7 +12378,10 @@ std::string Controller::Switch::Oper::Sdr::PortStatistics::Location::get_absolut
 std::string Controller::Switch::Oper::Sdr::PortStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -12125,7 +12403,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::PortStatistics::Location:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -12137,7 +12415,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12196,9 +12474,11 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::has_leaf_or_child_
 Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::PortIter()
     :
     port{YType::int32, "port"}
+        ,
+    sdr_id(this, {"sdr"})
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::~PortIter()
@@ -12207,7 +12487,8 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::has_data() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_data())
             return true;
@@ -12217,7 +12498,7 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::has_data
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_operation())
             return true;
@@ -12229,7 +12510,8 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::has_oper
 std::string Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -12249,7 +12531,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::PortStatistics::Location:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId>();
         c->parent = this;
-        sdr_id.push_back(c);
+        sdr_id.append(c);
         return c;
     }
 
@@ -12261,7 +12543,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_id)
+    for (auto c : sdr_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12301,9 +12583,11 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::SdrId(
     :
     sdr{YType::uint8, "sdr"},
     esd_sdr_name{YType::str, "esd-sdr-name"}
+        ,
+    traffic_type_id(this, {"traffic_type"})
 {
 
-    yang_name = "sdr-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sdr-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::~SdrId()
@@ -12312,7 +12596,8 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::~SdrId
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::has_data() const
 {
-    for (std::size_t index=0; index<traffic_type_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_type_id.len(); index++)
     {
         if(traffic_type_id[index]->has_data())
             return true;
@@ -12323,7 +12608,7 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::h
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_type_id.size(); index++)
+    for (std::size_t index=0; index<traffic_type_id.len(); index++)
     {
         if(traffic_type_id[index]->has_operation())
             return true;
@@ -12336,7 +12621,8 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::h
 std::string Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr-id" <<"[sdr='" <<sdr <<"']";
+    path_buffer << "sdr-id";
+    ADD_KEY_TOKEN(sdr, "sdr");
     return path_buffer.str();
 }
 
@@ -12357,7 +12643,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::PortStatistics::Location:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId>();
         c->parent = this;
-        traffic_type_id.push_back(c);
+        traffic_type_id.append(c);
         return c;
     }
 
@@ -12369,7 +12655,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traffic_type_id)
+    for (auto c : traffic_type_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12418,9 +12704,11 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::h
 Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::TrafficTypeId()
     :
     traffic_type{YType::enumeration, "traffic-type"}
+        ,
+    direction_id(this, {"direction"})
 {
 
-    yang_name = "traffic-type-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-type-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::~TrafficTypeId()
@@ -12429,7 +12717,8 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::Traffi
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::has_data() const
 {
-    for (std::size_t index=0; index<direction_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<direction_id.len(); index++)
     {
         if(direction_id[index]->has_data())
             return true;
@@ -12439,7 +12728,7 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::T
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::has_operation() const
 {
-    for (std::size_t index=0; index<direction_id.size(); index++)
+    for (std::size_t index=0; index<direction_id.len(); index++)
     {
         if(direction_id[index]->has_operation())
             return true;
@@ -12451,7 +12740,8 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::T
 std::string Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-type-id" <<"[traffic-type='" <<traffic_type <<"']";
+    path_buffer << "traffic-type-id";
+    ADD_KEY_TOKEN(traffic_type, "traffic-type");
     return path_buffer.str();
 }
 
@@ -12471,7 +12761,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::PortStatistics::Location:
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId>();
         c->parent = this;
-        direction_id.push_back(c);
+        direction_id.append(c);
         return c;
     }
 
@@ -12483,7 +12773,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : direction_id)
+    for (auto c : direction_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12527,7 +12817,7 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::Traffi
     red_packets{YType::uint64, "red-packets"}
 {
 
-    yang_name = "direction-id"; yang_parent_name = "traffic-type-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "direction-id"; yang_parent_name = "traffic-type-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId::~DirectionId()
@@ -12536,6 +12826,7 @@ Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::Traffi
 
 bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId::has_data() const
 {
+    if (is_presence_container) return true;
     return direction.is_set
 	|| green_packets.is_set
 	|| yellow_packets.is_set
@@ -12554,7 +12845,8 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::T
 std::string Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::TrafficTypeId::DirectionId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "direction-id" <<"[direction='" <<direction <<"']";
+    path_buffer << "direction-id";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -12639,9 +12931,11 @@ bool Controller::Switch::Oper::Sdr::PortStatistics::Location::PortIter::SdrId::T
 }
 
 Controller::Switch::Oper::Sdr::GlobalStatistics::GlobalStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "global-statistics"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-statistics"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::GlobalStatistics::~GlobalStatistics()
@@ -12650,7 +12944,8 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::~GlobalStatistics()
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -12660,7 +12955,7 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::has_data() const
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -12697,7 +12992,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::GlobalStatistics::get_chi
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::GlobalStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -12709,7 +13004,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Gl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12740,9 +13035,11 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    sdr_id(this, {"sdr"})
 {
 
-    yang_name = "location"; yang_parent_name = "global-statistics"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "global-statistics"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::GlobalStatistics::Location::~Location()
@@ -12751,7 +13048,8 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::Location::~Location()
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_data())
             return true;
@@ -12763,7 +13061,7 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::has_data() const
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_operation())
             return true;
@@ -12784,7 +13082,10 @@ std::string Controller::Switch::Oper::Sdr::GlobalStatistics::Location::get_absol
 std::string Controller::Switch::Oper::Sdr::GlobalStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -12806,7 +13107,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::GlobalStatistics::Locatio
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId>();
         c->parent = this;
-        sdr_id.push_back(c);
+        sdr_id.append(c);
         return c;
     }
 
@@ -12818,7 +13119,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Gl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_id)
+    for (auto c : sdr_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12878,9 +13179,11 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::SdrId()
     :
     sdr{YType::uint8, "sdr"},
     esd_sdr_name{YType::str, "esd-sdr-name"}
+        ,
+    traffic_type_id(this, {"traffic_type"})
 {
 
-    yang_name = "sdr-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sdr-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::~SdrId()
@@ -12889,7 +13192,8 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::~SdrId()
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::has_data() const
 {
-    for (std::size_t index=0; index<traffic_type_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_type_id.len(); index++)
     {
         if(traffic_type_id[index]->has_data())
             return true;
@@ -12900,7 +13204,7 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::has_data(
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_type_id.size(); index++)
+    for (std::size_t index=0; index<traffic_type_id.len(); index++)
     {
         if(traffic_type_id[index]->has_operation())
             return true;
@@ -12913,7 +13217,8 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::has_opera
 std::string Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr-id" <<"[sdr='" <<sdr <<"']";
+    path_buffer << "sdr-id";
+    ADD_KEY_TOKEN(sdr, "sdr");
     return path_buffer.str();
 }
 
@@ -12934,7 +13239,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::GlobalStatistics::Locatio
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId>();
         c->parent = this;
-        traffic_type_id.push_back(c);
+        traffic_type_id.append(c);
         return c;
     }
 
@@ -12946,7 +13251,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Gl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traffic_type_id)
+    for (auto c : traffic_type_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -12995,9 +13300,11 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::has_leaf_
 Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficTypeId()
     :
     traffic_type{YType::enumeration, "traffic-type"}
+        ,
+    traffic_class_id(this, {"tc"})
 {
 
-    yang_name = "traffic-type-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-type-id"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::~TrafficTypeId()
@@ -13006,7 +13313,8 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId:
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::has_data() const
 {
-    for (std::size_t index=0; index<traffic_class_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_class_id.len(); index++)
     {
         if(traffic_class_id[index]->has_data())
             return true;
@@ -13016,7 +13324,7 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTy
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_class_id.size(); index++)
+    for (std::size_t index=0; index<traffic_class_id.len(); index++)
     {
         if(traffic_class_id[index]->has_operation())
             return true;
@@ -13028,7 +13336,8 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTy
 std::string Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-type-id" <<"[traffic-type='" <<traffic_type <<"']";
+    path_buffer << "traffic-type-id";
+    ADD_KEY_TOKEN(traffic_type, "traffic-type");
     return path_buffer.str();
 }
 
@@ -13048,7 +13357,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::GlobalStatistics::Locatio
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId>();
         c->parent = this;
-        traffic_class_id.push_back(c);
+        traffic_class_id.append(c);
         return c;
     }
 
@@ -13060,7 +13369,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Gl
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traffic_class_id)
+    for (auto c : traffic_class_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13104,7 +13413,7 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId:
     red_packets{YType::uint64, "red-packets"}
 {
 
-    yang_name = "traffic-class-id"; yang_parent_name = "traffic-type-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-class-id"; yang_parent_name = "traffic-type-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId::~TrafficClassId()
@@ -13113,6 +13422,7 @@ Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId:
 
 bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId::has_data() const
 {
+    if (is_presence_container) return true;
     return tc.is_set
 	|| green_packets.is_set
 	|| yellow_packets.is_set
@@ -13131,7 +13441,8 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTy
 std::string Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTypeId::TrafficClassId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-class-id" <<"[tc='" <<tc <<"']";
+    path_buffer << "traffic-class-id";
+    ADD_KEY_TOKEN(tc, "tc");
     return path_buffer.str();
 }
 
@@ -13216,9 +13527,11 @@ bool Controller::Switch::Oper::Sdr::GlobalStatistics::Location::SdrId::TrafficTy
 }
 
 Controller::Switch::Oper::Sdr::Policers::Policers()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "policers"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policers"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::Policers::~Policers()
@@ -13227,7 +13540,8 @@ Controller::Switch::Oper::Sdr::Policers::~Policers()
 
 bool Controller::Switch::Oper::Sdr::Policers::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -13237,7 +13551,7 @@ bool Controller::Switch::Oper::Sdr::Policers::has_data() const
 
 bool Controller::Switch::Oper::Sdr::Policers::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -13274,7 +13588,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::Policers::get_child_by_na
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::Policers::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -13286,7 +13600,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13317,12 +13631,13 @@ Controller::Switch::Oper::Sdr::Policers::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
-    	,
+        ,
     esd_policer_status(std::make_shared<Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus>())
+    , sdr_id(this, {"sdr"})
 {
     esd_policer_status->parent = this;
 
-    yang_name = "location"; yang_parent_name = "policers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "policers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::Policers::Location::~Location()
@@ -13331,7 +13646,8 @@ Controller::Switch::Oper::Sdr::Policers::Location::~Location()
 
 bool Controller::Switch::Oper::Sdr::Policers::Location::has_data() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_data())
             return true;
@@ -13344,7 +13660,7 @@ bool Controller::Switch::Oper::Sdr::Policers::Location::has_data() const
 
 bool Controller::Switch::Oper::Sdr::Policers::Location::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_operation())
             return true;
@@ -13366,7 +13682,10 @@ std::string Controller::Switch::Oper::Sdr::Policers::Location::get_absolute_path
 std::string Controller::Switch::Oper::Sdr::Policers::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -13397,7 +13716,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::Policers::Location::get_c
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::Policers::Location::SdrId>();
         c->parent = this;
-        sdr_id.push_back(c);
+        sdr_id.append(c);
         return c;
     }
 
@@ -13414,7 +13733,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     }
 
     count = 0;
-    for (auto const & c : sdr_id)
+    for (auto c : sdr_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13476,7 +13795,7 @@ Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::EsdPolicerS
 {
     indent_group->parent = this;
 
-    yang_name = "esd-policer-status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esd-policer-status"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::~EsdPolicerStatus()
@@ -13485,6 +13804,7 @@ Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::~EsdPolicer
 
 bool Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::has_data() const
 {
+    if (is_presence_container) return true;
     return (indent_group !=  nullptr && indent_group->has_data());
 }
 
@@ -13563,7 +13883,7 @@ Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::IndentGroup
     esd_global_policer_mru{YType::uint32, "esd-global-policer-mru"}
 {
 
-    yang_name = "indent-group"; yang_parent_name = "esd-policer-status"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "indent-group"; yang_parent_name = "esd-policer-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::IndentGroup::~IndentGroup()
@@ -13572,6 +13892,7 @@ Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::IndentGroup
 
 bool Controller::Switch::Oper::Sdr::Policers::Location::EsdPolicerStatus::IndentGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return esd_port_policing_enabled.is_set
 	|| esd_port_committed_burst_size.is_set
 	|| esd_port_peak_burst_size.is_set
@@ -13732,9 +14053,11 @@ Controller::Switch::Oper::Sdr::Policers::Location::SdrId::SdrId()
     esd_sdr_name{YType::str, "esd-sdr-name"},
     esd_sdr_cir{YType::uint8, "esd-sdr-cir"},
     esd_sdr_pir{YType::uint8, "esd-sdr-pir"}
+        ,
+    esd_sdr_cos_type_iter(this, {"esd_sdr_cos_type"})
 {
 
-    yang_name = "sdr-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sdr-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::Policers::Location::SdrId::~SdrId()
@@ -13743,7 +14066,8 @@ Controller::Switch::Oper::Sdr::Policers::Location::SdrId::~SdrId()
 
 bool Controller::Switch::Oper::Sdr::Policers::Location::SdrId::has_data() const
 {
-    for (std::size_t index=0; index<esd_sdr_cos_type_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<esd_sdr_cos_type_iter.len(); index++)
     {
         if(esd_sdr_cos_type_iter[index]->has_data())
             return true;
@@ -13756,7 +14080,7 @@ bool Controller::Switch::Oper::Sdr::Policers::Location::SdrId::has_data() const
 
 bool Controller::Switch::Oper::Sdr::Policers::Location::SdrId::has_operation() const
 {
-    for (std::size_t index=0; index<esd_sdr_cos_type_iter.size(); index++)
+    for (std::size_t index=0; index<esd_sdr_cos_type_iter.len(); index++)
     {
         if(esd_sdr_cos_type_iter[index]->has_operation())
             return true;
@@ -13771,7 +14095,8 @@ bool Controller::Switch::Oper::Sdr::Policers::Location::SdrId::has_operation() c
 std::string Controller::Switch::Oper::Sdr::Policers::Location::SdrId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr-id" <<"[sdr='" <<sdr <<"']";
+    path_buffer << "sdr-id";
+    ADD_KEY_TOKEN(sdr, "sdr");
     return path_buffer.str();
 }
 
@@ -13794,7 +14119,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::Policers::Location::SdrId
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter>();
         c->parent = this;
-        esd_sdr_cos_type_iter.push_back(c);
+        esd_sdr_cos_type_iter.append(c);
         return c;
     }
 
@@ -13806,7 +14131,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Po
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : esd_sdr_cos_type_iter)
+    for (auto c : esd_sdr_cos_type_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13885,7 +14210,7 @@ Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter::Esd
     esd_sdr_cos_7{YType::uint8, "esd-sdr-cos-7"}
 {
 
-    yang_name = "esd-sdr-cos-type-iter"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "esd-sdr-cos-type-iter"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter::~EsdSdrCosTypeIter()
@@ -13894,6 +14219,7 @@ Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter::~Es
 
 bool Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter::has_data() const
 {
+    if (is_presence_container) return true;
     return esd_sdr_cos_type.is_set
 	|| esd_sdr_cos_0.is_set
 	|| esd_sdr_cos_1.is_set
@@ -13922,7 +14248,8 @@ bool Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter
 std::string Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "esd-sdr-cos-type-iter" <<"[esd-sdr-cos-type='" <<esd_sdr_cos_type <<"']";
+    path_buffer << "esd-sdr-cos-type-iter";
+    ADD_KEY_TOKEN(esd_sdr_cos_type, "esd-sdr-cos-type");
     return path_buffer.str();
 }
 
@@ -14062,9 +14389,11 @@ bool Controller::Switch::Oper::Sdr::Policers::Location::SdrId::EsdSdrCosTypeIter
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrDetail()
+    :
+    sdr_id(this, {"sdr"})
 {
 
-    yang_name = "sdr-detail"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-detail"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::~SdrDetail()
@@ -14073,7 +14402,8 @@ Controller::Switch::Oper::Sdr::SdrDetail::~SdrDetail()
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::has_data() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_data())
             return true;
@@ -14083,7 +14413,7 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::has_data() const
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_id.size(); index++)
+    for (std::size_t index=0; index<sdr_id.len(); index++)
     {
         if(sdr_id[index]->has_operation())
             return true;
@@ -14120,7 +14450,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::SdrDetail::get_child_by_n
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail::SdrId>();
         c->parent = this;
-        sdr_id.push_back(c);
+        sdr_id.append(c);
         return c;
     }
 
@@ -14132,7 +14462,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Sd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_id)
+    for (auto c : sdr_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14161,12 +14491,12 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::has_leaf_or_child_of_name(const s
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::SdrId()
     :
     sdr{YType::uint8, "sdr"}
-    	,
+        ,
     port_statistics(std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics>())
 {
     port_statistics->parent = this;
 
-    yang_name = "sdr-id"; yang_parent_name = "sdr-detail"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-id"; yang_parent_name = "sdr-detail"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::~SdrId()
@@ -14175,6 +14505,7 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::~SdrId()
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::has_data() const
 {
+    if (is_presence_container) return true;
     return sdr.is_set
 	|| (port_statistics !=  nullptr && port_statistics->has_data());
 }
@@ -14196,7 +14527,8 @@ std::string Controller::Switch::Oper::Sdr::SdrDetail::SdrId::get_absolute_path()
 std::string Controller::Switch::Oper::Sdr::SdrDetail::SdrId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr-id" <<"[sdr='" <<sdr <<"']";
+    path_buffer << "sdr-id";
+    ADD_KEY_TOKEN(sdr, "sdr");
     return path_buffer.str();
 }
 
@@ -14262,9 +14594,11 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::has_leaf_or_child_of_name(
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::PortStatistics()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "port-statistics"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-statistics"; yang_parent_name = "sdr-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::~PortStatistics()
@@ -14273,7 +14607,8 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::~PortStatistics
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -14283,7 +14618,7 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::has_data()
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -14313,7 +14648,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortSta
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -14325,7 +14660,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Sd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14356,9 +14691,11 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::Locat
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "port-statistics"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "port-statistics"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::~Location()
@@ -14367,7 +14704,8 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::~Loca
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -14379,7 +14717,7 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -14393,7 +14731,10 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 std::string Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -14415,7 +14756,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortSta
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -14427,7 +14768,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Sd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14486,9 +14827,11 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::PortIter()
     :
     port{YType::int32, "port"}
+        ,
+    traffic_type_id(this, {"traffic_type"})
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::~PortIter()
@@ -14497,7 +14840,8 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortI
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::has_data() const
 {
-    for (std::size_t index=0; index<traffic_type_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_type_id.len(); index++)
     {
         if(traffic_type_id[index]->has_data())
             return true;
@@ -14507,7 +14851,7 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_type_id.size(); index++)
+    for (std::size_t index=0; index<traffic_type_id.len(); index++)
     {
         if(traffic_type_id[index]->has_operation())
             return true;
@@ -14519,7 +14863,8 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 std::string Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -14539,7 +14884,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortSta
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId>();
         c->parent = this;
-        traffic_type_id.push_back(c);
+        traffic_type_id.append(c);
         return c;
     }
 
@@ -14551,7 +14896,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Sd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traffic_type_id)
+    for (auto c : traffic_type_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14590,9 +14935,11 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::TrafficTypeId()
     :
     traffic_type{YType::enumeration, "traffic-type"}
+        ,
+    direction_id(this, {"direction"})
 {
 
-    yang_name = "traffic-type-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-type-id"; yang_parent_name = "port-iter"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::~TrafficTypeId()
@@ -14601,7 +14948,8 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortI
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::has_data() const
 {
-    for (std::size_t index=0; index<direction_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<direction_id.len(); index++)
     {
         if(direction_id[index]->has_data())
             return true;
@@ -14611,7 +14959,7 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::has_operation() const
 {
-    for (std::size_t index=0; index<direction_id.size(); index++)
+    for (std::size_t index=0; index<direction_id.len(); index++)
     {
         if(direction_id[index]->has_operation())
             return true;
@@ -14623,7 +14971,8 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 std::string Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-type-id" <<"[traffic-type='" <<traffic_type <<"']";
+    path_buffer << "traffic-type-id";
+    ADD_KEY_TOKEN(traffic_type, "traffic-type");
     return path_buffer.str();
 }
 
@@ -14643,7 +14992,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortSta
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId>();
         c->parent = this;
-        direction_id.push_back(c);
+        direction_id.append(c);
         return c;
     }
 
@@ -14655,7 +15004,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Sd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : direction_id)
+    for (auto c : direction_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14694,9 +15043,11 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::DirectionId()
     :
     direction{YType::enumeration, "direction"}
+        ,
+    traffic_class_id(this, {"tc"})
 {
 
-    yang_name = "direction-id"; yang_parent_name = "traffic-type-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "direction-id"; yang_parent_name = "traffic-type-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::~DirectionId()
@@ -14705,7 +15056,8 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortI
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::has_data() const
 {
-    for (std::size_t index=0; index<traffic_class_id.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<traffic_class_id.len(); index++)
     {
         if(traffic_class_id[index]->has_data())
             return true;
@@ -14715,7 +15067,7 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::has_operation() const
 {
-    for (std::size_t index=0; index<traffic_class_id.size(); index++)
+    for (std::size_t index=0; index<traffic_class_id.len(); index++)
     {
         if(traffic_class_id[index]->has_operation())
             return true;
@@ -14727,7 +15079,8 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 std::string Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "direction-id" <<"[direction='" <<direction <<"']";
+    path_buffer << "direction-id";
+    ADD_KEY_TOKEN(direction, "direction");
     return path_buffer.str();
 }
 
@@ -14747,7 +15100,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortSta
     {
         auto c = std::make_shared<Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId>();
         c->parent = this;
-        traffic_class_id.push_back(c);
+        traffic_class_id.append(c);
         return c;
     }
 
@@ -14759,7 +15112,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Sdr::Sd
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : traffic_class_id)
+    for (auto c : traffic_class_id.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14803,7 +15156,7 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortI
     red_packets{YType::uint64, "red-packets"}
 {
 
-    yang_name = "traffic-class-id"; yang_parent_name = "direction-id"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "traffic-class-id"; yang_parent_name = "direction-id"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId::~TrafficClassId()
@@ -14812,6 +15165,7 @@ Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortI
 
 bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId::has_data() const
 {
+    if (is_presence_container) return true;
     return tc.is_set
 	|| green_packets.is_set
 	|| yellow_packets.is_set
@@ -14830,7 +15184,8 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 std::string Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::PortIter::TrafficTypeId::DirectionId::TrafficClassId::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "traffic-class-id" <<"[tc='" <<tc <<"']";
+    path_buffer << "traffic-class-id";
+    ADD_KEY_TOKEN(tc, "tc");
     return path_buffer.str();
 }
 
@@ -14915,9 +15270,11 @@ bool Controller::Switch::Oper::Sdr::SdrDetail::SdrId::PortStatistics::Location::
 }
 
 Controller::Switch::Oper::PortState::PortState()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "port-state"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-state"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::PortState::~PortState()
@@ -14926,7 +15283,8 @@ Controller::Switch::Oper::PortState::~PortState()
 
 bool Controller::Switch::Oper::PortState::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -14936,7 +15294,7 @@ bool Controller::Switch::Oper::PortState::has_data() const
 
 bool Controller::Switch::Oper::PortState::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -14973,7 +15331,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::PortState::get_child_by_name(c
     {
         auto c = std::make_shared<Controller::Switch::Oper::PortState::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -14985,7 +15343,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::PortSta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15016,9 +15374,11 @@ Controller::Switch::Oper::PortState::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
+        ,
+    port_iter(this, {"port"})
 {
 
-    yang_name = "location"; yang_parent_name = "port-state"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "port-state"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::PortState::Location::~Location()
@@ -15027,7 +15387,8 @@ Controller::Switch::Oper::PortState::Location::~Location()
 
 bool Controller::Switch::Oper::PortState::Location::has_data() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_data())
             return true;
@@ -15039,7 +15400,7 @@ bool Controller::Switch::Oper::PortState::Location::has_data() const
 
 bool Controller::Switch::Oper::PortState::Location::has_operation() const
 {
-    for (std::size_t index=0; index<port_iter.size(); index++)
+    for (std::size_t index=0; index<port_iter.len(); index++)
     {
         if(port_iter[index]->has_operation())
             return true;
@@ -15060,7 +15421,10 @@ std::string Controller::Switch::Oper::PortState::Location::get_absolute_path() c
 std::string Controller::Switch::Oper::PortState::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -15082,7 +15446,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::PortState::Location::get_child
     {
         auto c = std::make_shared<Controller::Switch::Oper::PortState::Location::PortIter>();
         c->parent = this;
-        port_iter.push_back(c);
+        port_iter.append(c);
         return c;
     }
 
@@ -15094,7 +15458,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::PortSta
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_iter)
+    for (auto c : port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15155,7 +15519,7 @@ Controller::Switch::Oper::PortState::Location::PortIter::PortIter()
     port{YType::int32, "port"}
 {
 
-    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::PortState::Location::PortIter::~PortIter()
@@ -15164,6 +15528,7 @@ Controller::Switch::Oper::PortState::Location::PortIter::~PortIter()
 
 bool Controller::Switch::Oper::PortState::Location::PortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set;
 }
 
@@ -15176,7 +15541,8 @@ bool Controller::Switch::Oper::PortState::Location::PortIter::has_operation() co
 std::string Controller::Switch::Oper::PortState::Location::PortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-iter" <<"[port='" <<port <<"']";
+    path_buffer << "port-iter";
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -15228,9 +15594,11 @@ bool Controller::Switch::Oper::PortState::Location::PortIter::has_leaf_or_child_
 }
 
 Controller::Switch::Oper::Trunk::Trunk()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "trunk"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trunk"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Trunk::~Trunk()
@@ -15239,7 +15607,8 @@ Controller::Switch::Oper::Trunk::~Trunk()
 
 bool Controller::Switch::Oper::Trunk::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -15249,7 +15618,7 @@ bool Controller::Switch::Oper::Trunk::has_data() const
 
 bool Controller::Switch::Oper::Trunk::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -15286,7 +15655,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Trunk::get_child_by_name(const
     {
         auto c = std::make_shared<Controller::Switch::Oper::Trunk::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -15298,7 +15667,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Trunk::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15331,9 +15700,11 @@ Controller::Switch::Oper::Trunk::Location::Location()
     switch_id{YType::enumeration, "switch-id"},
     trunk_member_count{YType::uint32, "trunk-member-count"},
     trunk_name{YType::str, "trunk-name"}
+        ,
+    trunk_member_port_iter(this, {"trunk_member_port"})
 {
 
-    yang_name = "location"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "trunk"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::Trunk::Location::~Location()
@@ -15342,7 +15713,8 @@ Controller::Switch::Oper::Trunk::Location::~Location()
 
 bool Controller::Switch::Oper::Trunk::Location::has_data() const
 {
-    for (std::size_t index=0; index<trunk_member_port_iter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trunk_member_port_iter.len(); index++)
     {
         if(trunk_member_port_iter[index]->has_data())
             return true;
@@ -15356,7 +15728,7 @@ bool Controller::Switch::Oper::Trunk::Location::has_data() const
 
 bool Controller::Switch::Oper::Trunk::Location::has_operation() const
 {
-    for (std::size_t index=0; index<trunk_member_port_iter.size(); index++)
+    for (std::size_t index=0; index<trunk_member_port_iter.len(); index++)
     {
         if(trunk_member_port_iter[index]->has_operation())
             return true;
@@ -15379,7 +15751,10 @@ std::string Controller::Switch::Oper::Trunk::Location::get_absolute_path() const
 std::string Controller::Switch::Oper::Trunk::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -15403,7 +15778,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::Trunk::Location::get_child_by_
     {
         auto c = std::make_shared<Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter>();
         c->parent = this;
-        trunk_member_port_iter.push_back(c);
+        trunk_member_port_iter.append(c);
         return c;
     }
 
@@ -15415,7 +15790,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::Trunk::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trunk_member_port_iter)
+    for (auto c : trunk_member_port_iter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15497,7 +15872,7 @@ Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter::TrunkMemberPortI
     trunk_member_status{YType::enumeration, "trunk-member-status"}
 {
 
-    yang_name = "trunk-member-port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trunk-member-port-iter"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter::~TrunkMemberPortIter()
@@ -15506,6 +15881,7 @@ Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter::~TrunkMemberPort
 
 bool Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter::has_data() const
 {
+    if (is_presence_container) return true;
     return trunk_member_port.is_set
 	|| trunk_member_status.is_set;
 }
@@ -15520,7 +15896,8 @@ bool Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter::has_operati
 std::string Controller::Switch::Oper::Trunk::Location::TrunkMemberPortIter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trunk-member-port-iter" <<"[trunk-member-port='" <<trunk_member_port <<"']";
+    path_buffer << "trunk-member-port-iter";
+    ADD_KEY_TOKEN(trunk_member_port, "trunk-member-port");
     return path_buffer.str();
 }
 
@@ -15588,7 +15965,7 @@ Controller::Switch::Oper::SwitchDebugCont::SwitchDebugCont()
 {
     debug->parent = this;
 
-    yang_name = "switch-debug-cont"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "switch-debug-cont"; yang_parent_name = "oper"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::SwitchDebugCont::~SwitchDebugCont()
@@ -15597,6 +15974,7 @@ Controller::Switch::Oper::SwitchDebugCont::~SwitchDebugCont()
 
 bool Controller::Switch::Oper::SwitchDebugCont::has_data() const
 {
+    if (is_presence_container) return true;
     return (debug !=  nullptr && debug->has_data());
 }
 
@@ -15676,7 +16054,7 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Debug()
 {
     counters->parent = this;
 
-    yang_name = "debug"; yang_parent_name = "switch-debug-cont"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "debug"; yang_parent_name = "switch-debug-cont"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::SwitchDebugCont::Debug::~Debug()
@@ -15685,6 +16063,7 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::~Debug()
 
 bool Controller::Switch::Oper::SwitchDebugCont::Debug::has_data() const
 {
+    if (is_presence_container) return true;
     return (counters !=  nullptr && counters->has_data());
 }
 
@@ -15759,9 +16138,11 @@ bool Controller::Switch::Oper::SwitchDebugCont::Debug::has_leaf_or_child_of_name
 }
 
 Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Counters()
+    :
+    location(this, {"rack", "card", "switch_id"})
 {
 
-    yang_name = "counters"; yang_parent_name = "debug"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counters"; yang_parent_name = "debug"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::~Counters()
@@ -15770,7 +16151,8 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::~Counters()
 
 bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -15780,7 +16162,7 @@ bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::has_data() cons
 
 bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -15817,7 +16199,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::SwitchDebugCont::Debug::Counte
     {
         auto c = std::make_shared<Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -15829,7 +16211,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::SwitchD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15860,12 +16242,12 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Location()
     rack{YType::enumeration, "rack"},
     card{YType::enumeration, "card"},
     switch_id{YType::enumeration, "switch-id"}
-    	,
+        ,
     counters(std::make_shared<Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_>())
 {
     counters->parent = this;
 
-    yang_name = "location"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "location"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::~Location()
@@ -15874,6 +16256,7 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::~Location(
 
 bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return rack.is_set
 	|| card.is_set
 	|| switch_id.is_set
@@ -15899,7 +16282,10 @@ std::string Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location
 std::string Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[rack='" <<rack <<"']" <<"[card='" <<card <<"']" <<"[switch-id='" <<switch_id <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(rack, "rack");
+    ADD_KEY_TOKEN(card, "card");
+    ADD_KEY_TOKEN(switch_id, "switch-id");
     return path_buffer.str();
 }
 
@@ -16010,9 +16396,11 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_:
     dma_max_tx_freed_per_int{YType::uint64, "dma-max-tx-freed-per-int"},
     dma_tx_buf_alloc_count{YType::uint64, "dma-tx-buf-alloc-count"},
     dma_tx_buf_free_count{YType::uint64, "dma-tx-buf-free-count"}
+        ,
+    switch_core(this, {"core"})
 {
 
-    yang_name = "counters"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "counters"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::~Counters_()
@@ -16021,7 +16409,8 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_:
 
 bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::has_data() const
 {
-    for (std::size_t index=0; index<switch_core.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<switch_core.len(); index++)
     {
         if(switch_core[index]->has_data())
             return true;
@@ -16052,7 +16441,7 @@ bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Count
 
 bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::has_operation() const
 {
-    for (std::size_t index=0; index<switch_core.size(); index++)
+    for (std::size_t index=0; index<switch_core.len(); index++)
     {
         if(switch_core[index]->has_operation())
             return true;
@@ -16126,7 +16515,7 @@ std::shared_ptr<Entity> Controller::Switch::Oper::SwitchDebugCont::Debug::Counte
     {
         auto c = std::make_shared<Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore>();
         c->parent = this;
-        switch_core.push_back(c);
+        switch_core.append(c);
         return c;
     }
 
@@ -16138,7 +16527,7 @@ std::map<std::string, std::shared_ptr<Entity>> Controller::Switch::Oper::SwitchD
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : switch_core)
+    for (auto c : switch_core.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16396,7 +16785,7 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_:
     core_task_unlock_longest_wait_time{YType::uint64, "core-task-unlock-longest-wait-time"}
 {
 
-    yang_name = "switch-core"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "switch-core"; yang_parent_name = "counters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore::~SwitchCore()
@@ -16405,6 +16794,7 @@ Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_:
 
 bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore::has_data() const
 {
+    if (is_presence_container) return true;
     return core.is_set
 	|| msi_count.is_set
 	|| aer_count.is_set
@@ -16431,7 +16821,8 @@ bool Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Count
 std::string Controller::Switch::Oper::SwitchDebugCont::Debug::Counters::Location::Counters_::SwitchCore::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "switch-core" <<"[core='" <<core <<"']";
+    path_buffer << "switch-core";
+    ADD_KEY_TOKEN(core, "core");
     return path_buffer.str();
 }
 

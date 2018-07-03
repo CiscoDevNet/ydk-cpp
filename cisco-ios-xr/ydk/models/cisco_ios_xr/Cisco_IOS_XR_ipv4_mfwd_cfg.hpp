@@ -34,7 +34,7 @@ class Mfwd : public ydk::Entity
         class DefaultContext; //type: Mfwd::DefaultContext
         class Vrfs; //type: Mfwd::Vrfs
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::DefaultContext> default_context; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::DefaultContext> default_context;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::Vrfs> vrfs;
         
 }; // Mfwd
@@ -121,7 +121,7 @@ class Mfwd::DefaultContext::Ipv6::StaticRpfRules : public ydk::Entity
 
         class StaticRpfRule; //type: Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::DefaultContext::Ipv6::StaticRpfRules::StaticRpfRule> > static_rpf_rule;
+        ydk::YList static_rpf_rule;
         
 }; // Mfwd::DefaultContext::Ipv6::StaticRpfRules
 
@@ -170,7 +170,7 @@ class Mfwd::DefaultContext::Ipv6::Interfaces : public ydk::Entity
 
         class Interface; //type: Mfwd::DefaultContext::Ipv6::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::DefaultContext::Ipv6::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Mfwd::DefaultContext::Ipv6::Interfaces
 
@@ -256,7 +256,7 @@ class Mfwd::DefaultContext::Ipv4::StaticRpfRules : public ydk::Entity
 
         class StaticRpfRule; //type: Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::DefaultContext::Ipv4::StaticRpfRules::StaticRpfRule> > static_rpf_rule;
+        ydk::YList static_rpf_rule;
         
 }; // Mfwd::DefaultContext::Ipv4::StaticRpfRules
 
@@ -305,7 +305,7 @@ class Mfwd::DefaultContext::Ipv4::Interfaces : public ydk::Entity
 
         class Interface; //type: Mfwd::DefaultContext::Ipv4::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::DefaultContext::Ipv4::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Mfwd::DefaultContext::Ipv4::Interfaces
 
@@ -354,7 +354,7 @@ class Mfwd::Vrfs : public ydk::Entity
 
         class Vrf; //type: Mfwd::Vrfs::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::Vrfs::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Mfwd::Vrfs
 
@@ -434,7 +434,7 @@ class Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules : public ydk::Entity
 
         class StaticRpfRule; //type: Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules::StaticRpfRule> > static_rpf_rule;
+        ydk::YList static_rpf_rule;
         
 }; // Mfwd::Vrfs::Vrf::Ipv6::StaticRpfRules
 
@@ -481,7 +481,7 @@ class Mfwd::Vrfs::Vrf::Ipv6::Interfaces : public ydk::Entity
 
         class Interface; //type: Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::Vrfs::Vrf::Ipv6::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Mfwd::Vrfs::Vrf::Ipv6::Interfaces
 
@@ -558,7 +558,7 @@ class Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules : public ydk::Entity
 
         class StaticRpfRule; //type: Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules::StaticRpfRule> > static_rpf_rule;
+        ydk::YList static_rpf_rule;
         
 }; // Mfwd::Vrfs::Vrf::Ipv4::StaticRpfRules
 
@@ -605,7 +605,7 @@ class Mfwd::Vrfs::Vrf::Ipv4::Interfaces : public ydk::Entity
 
         class Interface; //type: Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_mfwd_cfg::Mfwd::Vrfs::Vrf::Ipv4::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Mfwd::Vrfs::Vrf::Ipv4::Interfaces
 

@@ -32,32 +32,32 @@ class CISCOMEDIAGATEWAYMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cmediagwtable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwtable
-        class Cmgwsignalprotocoltable; //type: CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable
-        class Cmediagwipconfigtable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable
-        class Cmediagwdomainnameconfigtable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable
-        class Cmediagwdnsipconfigtable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable
-        class Cmgwliftable; //type: CISCOMEDIAGATEWAYMIB::Cmgwliftable
-        class Cmediagwcallcontrolconfigtable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable
-        class Cmediagwrscstatstable; //type: CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable
+        class CMediaGwTable; //type: CISCOMEDIAGATEWAYMIB::CMediaGwTable
+        class CmgwSignalProtocolTable; //type: CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable
+        class CMediaGwIpConfigTable; //type: CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable
+        class CMediaGwDomainNameConfigTable; //type: CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable
+        class CMediaGwDnsIpConfigTable; //type: CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable
+        class CmgwLifTable; //type: CISCOMEDIAGATEWAYMIB::CmgwLifTable
+        class CMediaGwCallControlConfigTable; //type: CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable
+        class CMediaGwRscStatsTable; //type: CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable> cmediagwtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable> cmgwsignalprotocoltable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable> cmediagwipconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable> cmediagwdomainnameconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable> cmediagwdnsipconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwliftable> cmgwliftable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable> cmediagwcallcontrolconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable> cmediagwrscstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable> cmediagwtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable> cmgwsignalprotocoltable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable> cmediagwipconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable> cmediagwdomainnameconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable> cmediagwdnsipconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CmgwLifTable> cmgwliftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable> cmediagwcallcontrolconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable> cmediagwrscstatstable;
         
 }; // CISCOMEDIAGATEWAYMIB
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwtable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwTable : public ydk::Entity
 {
     public:
-        Cmediagwtable();
-        ~Cmediagwtable();
+        CMediaGwTable();
+        ~CMediaGwTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -70,18 +70,18 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmediagwentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry
+        class CMediaGwEntry; //type: CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry> > cmediagwentry;
+        ydk::YList cmediagwentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwtable
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry : public ydk::Entity
 {
     public:
-        Cmediagwentry();
-        ~Cmediagwentry();
+        CMediaGwEntry();
+        ~CMediaGwEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -100,20 +100,20 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry : public ydk::Entity
         ydk::YLeaf cmgwservicestate; //type: CGwServiceState
         ydk::YLeaf cmgwadminstate; //type: CGwAdminState
         ydk::YLeaf cmgwgracetime; //type: int32
-        ydk::YLeaf cmgwvtmappingmode; //type: Cmgwvtmappingmode
+        ydk::YLeaf cmgwvtmappingmode; //type: CmgwVtMappingMode
         ydk::YLeaf cmgwsrcfilterenabled; //type: boolean
         ydk::YLeaf cmgwlawinterceptenabled; //type: boolean
         ydk::YLeaf cmgwv23enabled; //type: boolean
-        class Cmgwvtmappingmode;
+        class CmgwVtMappingMode;
 
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable : public ydk::Entity
 {
     public:
-        Cmgwsignalprotocoltable();
-        ~Cmgwsignalprotocoltable();
+        CmgwSignalProtocolTable();
+        ~CmgwSignalProtocolTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -126,18 +126,18 @@ class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmgwsignalprotocolentry; //type: CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry
+        class CmgwSignalProtocolEntry; //type: CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry> > cmgwsignalprotocolentry;
+        ydk::YList cmgwsignalprotocolentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable
+}; // CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry : public ydk::Entity
 {
     public:
-        Cmgwsignalprotocolentry();
-        ~Cmgwsignalprotocolentry();
+        CmgwSignalProtocolEntry();
+        ~CmgwSignalProtocolEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -150,25 +150,25 @@ class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cmgwsignalprotocolindex; //type: int32
-        ydk::YLeaf cmgwsignalprotocol; //type: Cmgwsignalprotocol
+        ydk::YLeaf cmgwsignalprotocol; //type: CmgwSignalProtocol
         ydk::YLeaf cmgwsignalprotocolversion; //type: string
         ydk::YLeaf cmgwsignalprotocolport; //type: int32
         ydk::YLeaf cmgwsignalmgcprotocolport; //type: uint16
         ydk::YLeaf cmgwsignalprotocolpreference; //type: int32
         ydk::YLeaf cmgwsignalprotocolconfigver; //type: string
-        class Cmgwsignalprotocol;
+        class CmgwSignalProtocol;
 
-}; // CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry
+}; // CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable : public ydk::Entity
 {
     public:
-        Cmediagwipconfigtable();
-        ~Cmediagwipconfigtable();
+        CMediaGwIpConfigTable();
+        ~CMediaGwIpConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -181,18 +181,18 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmediagwipconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry
+        class CMediaGwIpConfigEntry; //type: CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry> > cmediagwipconfigentry;
+        ydk::YList cmediagwipconfigentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry : public ydk::Entity
 {
     public:
-        Cmediagwipconfigentry();
-        ~Cmediagwipconfigentry();
+        CMediaGwIpConfigEntry();
+        ~CMediaGwIpConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -205,7 +205,7 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cmgwipconfigindex; //type: int32
         ydk::YLeaf cmgwipconfigifindex; //type: int32
@@ -218,14 +218,14 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry : publi
         ydk::YLeaf cmgwipconfigforremotemapping; //type: boolean
         ydk::YLeaf cmgwipconfigrowstatus; //type: RowStatus
 
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwipconfigtable::Cmediagwipconfigentry
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwIpConfigTable::CMediaGwIpConfigEntry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable : public ydk::Entity
 {
     public:
-        Cmediagwdomainnameconfigtable();
-        ~Cmediagwdomainnameconfigtable();
+        CMediaGwDomainNameConfigTable();
+        ~CMediaGwDomainNameConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,18 +238,18 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmediagwdomainnameconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry
+        class CMediaGwDomainNameConfigEntry; //type: CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry> > cmediagwdomainnameconfigentry;
+        ydk::YList cmediagwdomainnameconfigentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry : public ydk::Entity
 {
     public:
-        Cmediagwdomainnameconfigentry();
-        ~Cmediagwdomainnameconfigentry();
+        CMediaGwDomainNameConfigEntry();
+        ~CMediaGwDomainNameConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -262,22 +262,22 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnamecon
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cmgwconfigdomainnameindex; //type: int32
-        ydk::YLeaf cmgwconfigdomainnameentity; //type: Cmgwconfigdomainnameentity
+        ydk::YLeaf cmgwconfigdomainnameentity; //type: CmgwConfigDomainNameEntity
         ydk::YLeaf cmgwconfigdomainname; //type: string
         ydk::YLeaf cmgwconfigdomainnamerowstatus; //type: RowStatus
-        class Cmgwconfigdomainnameentity;
+        class CmgwConfigDomainNameEntity;
 
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable : public ydk::Entity
 {
     public:
-        Cmediagwdnsipconfigtable();
-        ~Cmediagwdnsipconfigtable();
+        CMediaGwDnsIpConfigTable();
+        ~CMediaGwDnsIpConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -290,18 +290,18 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmediagwdnsipconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry
+        class CMediaGwDnsIpConfigEntry; //type: CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry> > cmediagwdnsipconfigentry;
+        ydk::YList cmediagwdnsipconfigentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry : public ydk::Entity
 {
     public:
-        Cmediagwdnsipconfigentry();
-        ~Cmediagwdnsipconfigentry();
+        CMediaGwDnsIpConfigEntry();
+        ~CMediaGwDnsIpConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -314,7 +314,7 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cmgwdnsipindex; //type: int32
         ydk::YLeaf cmgwdnsdomainname; //type: string
@@ -322,14 +322,14 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry :
         ydk::YLeaf cmgwdnsip; //type: binary
         ydk::YLeaf cmgwdnsiprowstatus; //type: RowStatus
 
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwdnsipconfigtable::Cmediagwdnsipconfigentry
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwDnsIpConfigTable::CMediaGwDnsIpConfigEntry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmgwliftable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CmgwLifTable : public ydk::Entity
 {
     public:
-        Cmgwliftable();
-        ~Cmgwliftable();
+        CmgwLifTable();
+        ~CmgwLifTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -342,18 +342,18 @@ class CISCOMEDIAGATEWAYMIB::Cmgwliftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmgwlifentry; //type: CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry
+        class CmgwLifEntry; //type: CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry> > cmgwlifentry;
+        ydk::YList cmgwlifentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmgwliftable
+}; // CISCOMEDIAGATEWAYMIB::CmgwLifTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry : public ydk::Entity
 {
     public:
-        Cmgwlifentry();
-        ~Cmgwlifentry();
+        CmgwLifEntry();
+        ~CmgwLifEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -366,20 +366,20 @@ class CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cmgwlifnumber; //type: uint32
         ydk::YLeaf cmgwlifpvccount; //type: uint32
         ydk::YLeaf cmgwlifvoiceifcount; //type: uint32
 
-}; // CISCOMEDIAGATEWAYMIB::Cmgwliftable::Cmgwlifentry
+}; // CISCOMEDIAGATEWAYMIB::CmgwLifTable::CmgwLifEntry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable : public ydk::Entity
 {
     public:
-        Cmediagwcallcontrolconfigtable();
-        ~Cmediagwcallcontrolconfigtable();
+        CMediaGwCallControlConfigTable();
+        ~CMediaGwCallControlConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -392,18 +392,18 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmediagwcallcontrolconfigentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry
+        class CMediaGwCallControlConfigEntry; //type: CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry> > cmediagwcallcontrolconfigentry;
+        ydk::YList cmediagwcallcontrolconfigentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry : public ydk::Entity
 {
     public:
-        Cmediagwcallcontrolconfigentry();
-        ~Cmediagwcallcontrolconfigentry();
+        CMediaGwCallControlConfigEntry();
+        ~CMediaGwCallControlConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -416,7 +416,7 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolc
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
         ydk::YLeaf cmediagwcccfgcontroltos; //type: uint32
         ydk::YLeaf cmediagwcccfgbearertos; //type: uint32
@@ -433,20 +433,20 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolc
         ydk::YLeaf cmediagwcccfgrtpnameprefix; //type: string
         ydk::YLeaf cmediagwcccfgaal1svcnameprefix; //type: string
         ydk::YLeaf cmediagwcccfgaal2svcnameprefix; //type: string
-        ydk::YLeaf cmediagwcccfgclusterenabled; //type: Cmediagwcccfgclusterenabled
-        ydk::YLeaf cmediagwcccfgdefbearertraffic; //type: Cmediagwcccfgdefbearertraffic
+        ydk::YLeaf cmediagwcccfgclusterenabled; //type: CMediaGwCcCfgClusterEnabled
+        ydk::YLeaf cmediagwcccfgdefbearertraffic; //type: CMediaGwCcCfgDefBearerTraffic
         ydk::YLeaf cmediagwcccfgdefrtpnameprefix; //type: string
-        class Cmediagwcccfgclusterenabled;
-        class Cmediagwcccfgdefbearertraffic;
+        class CMediaGwCcCfgClusterEnabled;
+        class CMediaGwCcCfgDefBearerTraffic;
 
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable : public ydk::Entity
 {
     public:
-        Cmediagwrscstatstable();
-        ~Cmediagwrscstatstable();
+        CMediaGwRscStatsTable();
+        ~CMediaGwRscStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -459,18 +459,18 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cmediagwrscstatsentry; //type: CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry
+        class CMediaGwRscStatsEntry; //type: CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry> > cmediagwrscstatsentry;
+        ydk::YList cmediagwrscstatsentry;
         
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable
 
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry : public ydk::Entity
+class CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry : public ydk::Entity
 {
     public:
-        Cmediagwrscstatsentry();
-        ~Cmediagwrscstatsentry();
+        CMediaGwRscStatsEntry();
+        ~CMediaGwRscStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -483,23 +483,22 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::cmgwindex)
+        //type: int32 (refers to cisco_ios_xe::CISCO_MEDIA_GATEWAY_MIB::CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::cmgwindex)
         ydk::YLeaf cmgwindex;
-        ydk::YLeaf cmgwrscstatsindex; //type: Cmgwrscstatsindex
+        ydk::YLeaf cmgwrscstatsindex; //type: CmgwRscStatsIndex
         ydk::YLeaf cmgwrscmaximumutilization; //type: uint32
         ydk::YLeaf cmgwrscminimumutilization; //type: uint32
         ydk::YLeaf cmgwrscaverageutilization; //type: uint32
         ydk::YLeaf cmgwrscsincelastreset; //type: uint32
-        class Cmgwrscstatsindex;
+        class CmgwRscStatsIndex;
 
-}; // CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry
+}; // CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry
 
-class CGwServiceState : public ydk::Enum
+class CCallControlJitterDelayMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inService;
-        static const ydk::Enum::YLeaf forcedOutOfService;
-        static const ydk::Enum::YLeaf gracefulOutOfService;
+        static const ydk::Enum::YLeaf adaptive;
+        static const ydk::Enum::YLeaf fixed;
 
 };
 
@@ -512,15 +511,16 @@ class CGwAdminState : public ydk::Enum
 
 };
 
-class CCallControlJitterDelayMode : public ydk::Enum
+class CGwServiceState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf adaptive;
-        static const ydk::Enum::YLeaf fixed;
+        static const ydk::Enum::YLeaf inService;
+        static const ydk::Enum::YLeaf forcedOutOfService;
+        static const ydk::Enum::YLeaf gracefulOutOfService;
 
 };
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode : public ydk::Enum
+class CISCOMEDIAGATEWAYMIB::CMediaGwTable::CMediaGwEntry::CmgwVtMappingMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf standard;
@@ -528,7 +528,7 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwtable::Cmediagwentry::Cmgwvtmappingmode : pu
 
 };
 
-class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cmgwsignalprotocol : public ydk::Enum
+class CISCOMEDIAGATEWAYMIB::CmgwSignalProtocolTable::CmgwSignalProtocolEntry::CmgwSignalProtocol : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -538,7 +538,7 @@ class CISCOMEDIAGATEWAYMIB::Cmgwsignalprotocoltable::Cmgwsignalprotocolentry::Cm
 
 };
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnameconfigentry::Cmgwconfigdomainnameentity : public ydk::Enum
+class CISCOMEDIAGATEWAYMIB::CMediaGwDomainNameConfigTable::CMediaGwDomainNameConfigEntry::CmgwConfigDomainNameEntity : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf gateway;
@@ -547,7 +547,7 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwdomainnameconfigtable::Cmediagwdomainnamecon
 
 };
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgclusterenabled : public ydk::Enum
+class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgClusterEnabled : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -556,7 +556,7 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolc
 
 };
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolconfigentry::Cmediagwcccfgdefbearertraffic : public ydk::Enum
+class CISCOMEDIAGATEWAYMIB::CMediaGwCallControlConfigTable::CMediaGwCallControlConfigEntry::CMediaGwCcCfgDefBearerTraffic : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf ipPvcAal5;
@@ -566,7 +566,7 @@ class CISCOMEDIAGATEWAYMIB::Cmediagwcallcontrolconfigtable::Cmediagwcallcontrolc
 
 };
 
-class CISCOMEDIAGATEWAYMIB::Cmediagwrscstatstable::Cmediagwrscstatsentry::Cmgwrscstatsindex : public ydk::Enum
+class CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry::CmgwRscStatsIndex : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf cpu;

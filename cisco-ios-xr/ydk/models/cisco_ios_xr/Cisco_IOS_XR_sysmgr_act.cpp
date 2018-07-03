@@ -17,7 +17,7 @@ SysmgrProcessRestart::SysmgrProcessRestart()
 {
     input->parent = this;
 
-    yang_name = "sysmgr-process-restart"; yang_parent_name = "Cisco-IOS-XR-sysmgr-act"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sysmgr-process-restart"; yang_parent_name = "Cisco-IOS-XR-sysmgr-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SysmgrProcessRestart::~SysmgrProcessRestart()
@@ -26,6 +26,7 @@ SysmgrProcessRestart::~SysmgrProcessRestart()
 
 bool SysmgrProcessRestart::has_data() const
 {
+    if (is_presence_container) return true;
     return (input !=  nullptr && input->has_data());
 }
 
@@ -123,7 +124,7 @@ SysmgrProcessRestart::Input::Input()
     location{YType::str, "location"}
 {
 
-    yang_name = "input"; yang_parent_name = "sysmgr-process-restart"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "input"; yang_parent_name = "sysmgr-process-restart"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SysmgrProcessRestart::Input::~Input()
@@ -132,6 +133,7 @@ SysmgrProcessRestart::Input::~Input()
 
 bool SysmgrProcessRestart::Input::has_data() const
 {
+    if (is_presence_container) return true;
     return process_name.is_set
 	|| location.is_set;
 }

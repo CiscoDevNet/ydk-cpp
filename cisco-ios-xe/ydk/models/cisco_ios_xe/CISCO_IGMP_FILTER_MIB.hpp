@@ -32,24 +32,24 @@ class CISCOIGMPFILTERMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cigmpfiltergeneral; //type: CISCOIGMPFILTERMIB::Cigmpfiltergeneral
-        class Cigmpfiltereditor; //type: CISCOIGMPFILTERMIB::Cigmpfiltereditor
-        class Cigmpfiltertable; //type: CISCOIGMPFILTERMIB::Cigmpfiltertable
-        class Cigmpfilterinterfacetable; //type: CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable
+        class CIgmpFilterGeneral; //type: CISCOIGMPFILTERMIB::CIgmpFilterGeneral
+        class CIgmpFilterEditor; //type: CISCOIGMPFILTERMIB::CIgmpFilterEditor
+        class CIgmpFilterTable; //type: CISCOIGMPFILTERMIB::CIgmpFilterTable
+        class CIgmpFilterInterfaceTable; //type: CISCOIGMPFILTERMIB::CIgmpFilterInterfaceTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltergeneral> cigmpfiltergeneral;
-        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltereditor> cigmpfiltereditor;
-        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltertable> cigmpfiltertable;
-        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable> cigmpfilterinterfacetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::CIgmpFilterGeneral> cigmpfiltergeneral;
+        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::CIgmpFilterEditor> cigmpfiltereditor;
+        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::CIgmpFilterTable> cigmpfiltertable;
+        std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::CIgmpFilterInterfaceTable> cigmpfilterinterfacetable;
         
 }; // CISCOIGMPFILTERMIB
 
 
-class CISCOIGMPFILTERMIB::Cigmpfiltergeneral : public ydk::Entity
+class CISCOIGMPFILTERMIB::CIgmpFilterGeneral : public ydk::Entity
 {
     public:
-        Cigmpfiltergeneral();
-        ~Cigmpfiltergeneral();
+        CIgmpFilterGeneral();
+        ~CIgmpFilterGeneral();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -65,14 +65,14 @@ class CISCOIGMPFILTERMIB::Cigmpfiltergeneral : public ydk::Entity
         ydk::YLeaf cigmpfilterenable; //type: boolean
         ydk::YLeaf cigmpfiltermaxprofiles; //type: uint32
 
-}; // CISCOIGMPFILTERMIB::Cigmpfiltergeneral
+}; // CISCOIGMPFILTERMIB::CIgmpFilterGeneral
 
 
-class CISCOIGMPFILTERMIB::Cigmpfiltereditor : public ydk::Entity
+class CISCOIGMPFILTERMIB::CIgmpFilterEditor : public ydk::Entity
 {
     public:
-        Cigmpfiltereditor();
-        ~Cigmpfiltereditor();
+        CIgmpFilterEditor();
+        ~CIgmpFilterEditor();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -91,21 +91,21 @@ class CISCOIGMPFILTERMIB::Cigmpfiltereditor : public ydk::Entity
         ydk::YLeaf cigmpfiltereditstartaddress; //type: binary
         ydk::YLeaf cigmpfiltereditendaddresstype; //type: InetAddressType
         ydk::YLeaf cigmpfiltereditendaddress; //type: binary
-        ydk::YLeaf cigmpfiltereditprofileaction; //type: Cigmpfiltereditprofileaction
-        ydk::YLeaf cigmpfiltereditoperation; //type: Cigmpfiltereditoperation
-        ydk::YLeaf cigmpfilterapplystatus; //type: Cigmpfilterapplystatus
-        class Cigmpfiltereditprofileaction;
-        class Cigmpfiltereditoperation;
-        class Cigmpfilterapplystatus;
+        ydk::YLeaf cigmpfiltereditprofileaction; //type: CIgmpFilterEditProfileAction
+        ydk::YLeaf cigmpfiltereditoperation; //type: CIgmpFilterEditOperation
+        ydk::YLeaf cigmpfilterapplystatus; //type: CIgmpFilterApplyStatus
+        class CIgmpFilterEditProfileAction;
+        class CIgmpFilterEditOperation;
+        class CIgmpFilterApplyStatus;
 
-}; // CISCOIGMPFILTERMIB::Cigmpfiltereditor
+}; // CISCOIGMPFILTERMIB::CIgmpFilterEditor
 
 
-class CISCOIGMPFILTERMIB::Cigmpfiltertable : public ydk::Entity
+class CISCOIGMPFILTERMIB::CIgmpFilterTable : public ydk::Entity
 {
     public:
-        Cigmpfiltertable();
-        ~Cigmpfiltertable();
+        CIgmpFilterTable();
+        ~CIgmpFilterTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,18 +118,18 @@ class CISCOIGMPFILTERMIB::Cigmpfiltertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cigmpfilterentry; //type: CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry
+        class CIgmpFilterEntry; //type: CISCOIGMPFILTERMIB::CIgmpFilterTable::CIgmpFilterEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry> > cigmpfilterentry;
+        ydk::YList cigmpfilterentry;
         
-}; // CISCOIGMPFILTERMIB::Cigmpfiltertable
+}; // CISCOIGMPFILTERMIB::CIgmpFilterTable
 
 
-class CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry : public ydk::Entity
+class CISCOIGMPFILTERMIB::CIgmpFilterTable::CIgmpFilterEntry : public ydk::Entity
 {
     public:
-        Cigmpfilterentry();
-        ~Cigmpfilterentry();
+        CIgmpFilterEntry();
+        ~CIgmpFilterEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -147,17 +147,17 @@ class CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry : public ydk::Entit
         ydk::YLeaf cigmpfilterstartaddress; //type: binary
         ydk::YLeaf cigmpfilterendaddresstype; //type: InetAddressType
         ydk::YLeaf cigmpfilterendaddress; //type: binary
-        ydk::YLeaf cigmpfilterprofileaction; //type: Cigmpfilterprofileaction
-        class Cigmpfilterprofileaction;
+        ydk::YLeaf cigmpfilterprofileaction; //type: CIgmpFilterProfileAction
+        class CIgmpFilterProfileAction;
 
-}; // CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry
+}; // CISCOIGMPFILTERMIB::CIgmpFilterTable::CIgmpFilterEntry
 
 
-class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable : public ydk::Entity
+class CISCOIGMPFILTERMIB::CIgmpFilterInterfaceTable : public ydk::Entity
 {
     public:
-        Cigmpfilterinterfacetable();
-        ~Cigmpfilterinterfacetable();
+        CIgmpFilterInterfaceTable();
+        ~CIgmpFilterInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -170,18 +170,18 @@ class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cigmpfilterinterfaceentry; //type: CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry
+        class CIgmpFilterInterfaceEntry; //type: CISCOIGMPFILTERMIB::CIgmpFilterInterfaceTable::CIgmpFilterInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_IGMP_FILTER_MIB::CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry> > cigmpfilterinterfaceentry;
+        ydk::YList cigmpfilterinterfaceentry;
         
-}; // CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable
+}; // CISCOIGMPFILTERMIB::CIgmpFilterInterfaceTable
 
 
-class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry : public ydk::Entity
+class CISCOIGMPFILTERMIB::CIgmpFilterInterfaceTable::CIgmpFilterInterfaceEntry : public ydk::Entity
 {
     public:
-        Cigmpfilterinterfaceentry();
-        ~Cigmpfilterinterfaceentry();
+        CIgmpFilterInterfaceEntry();
+        ~CIgmpFilterInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -194,13 +194,13 @@ class CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cigmpfilterinterfaceprofileindex; //type: uint32
 
-}; // CISCOIGMPFILTERMIB::Cigmpfilterinterfacetable::Cigmpfilterinterfaceentry
+}; // CISCOIGMPFILTERMIB::CIgmpFilterInterfaceTable::CIgmpFilterInterfaceEntry
 
-class CISCOIGMPFILTERMIB::Cigmpfiltereditor::Cigmpfiltereditprofileaction : public ydk::Enum
+class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterEditProfileAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unSpecified;
@@ -209,7 +209,7 @@ class CISCOIGMPFILTERMIB::Cigmpfiltereditor::Cigmpfiltereditprofileaction : publ
 
 };
 
-class CISCOIGMPFILTERMIB::Cigmpfiltereditor::Cigmpfiltereditoperation : public ydk::Enum
+class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterEditOperation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -219,7 +219,7 @@ class CISCOIGMPFILTERMIB::Cigmpfiltereditor::Cigmpfiltereditoperation : public y
 
 };
 
-class CISCOIGMPFILTERMIB::Cigmpfiltereditor::Cigmpfilterapplystatus : public ydk::Enum
+class CISCOIGMPFILTERMIB::CIgmpFilterEditor::CIgmpFilterApplyStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf someOtherError;
@@ -230,7 +230,7 @@ class CISCOIGMPFILTERMIB::Cigmpfiltereditor::Cigmpfilterapplystatus : public ydk
 
 };
 
-class CISCOIGMPFILTERMIB::Cigmpfiltertable::Cigmpfilterentry::Cigmpfilterprofileaction : public ydk::Enum
+class CISCOIGMPFILTERMIB::CIgmpFilterTable::CIgmpFilterEntry::CIgmpFilterProfileAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf permit;

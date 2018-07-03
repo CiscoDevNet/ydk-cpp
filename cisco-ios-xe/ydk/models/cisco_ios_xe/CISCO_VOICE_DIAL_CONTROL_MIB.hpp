@@ -32,64 +32,64 @@ class CISCOVOICEDIALCONTROLMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Cvgeneralconfiguration; //type: CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration
-        class Cvgatewaycallactive; //type: CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive
-        class Cvcallvolume; //type: CISCOVOICEDIALCONTROLMIB::Cvcallvolume
-        class Cvcallratemonitor; //type: CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor
-        class Cvcallvolumestatshistory; //type: CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory
-        class Cvpeercfgtable; //type: CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable
-        class Cvvoicepeercfgtable; //type: CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable
-        class Cvvoippeercfgtable; //type: CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable
-        class Cvpeercommoncfgtable; //type: CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable
-        class Cvcallactivetable; //type: CISCOVOICEDIALCONTROLMIB::Cvcallactivetable
-        class Cvvoipcallactivetable; //type: CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable
-        class Cvcallvolconntable; //type: CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable
-        class Cvcallvoliftable; //type: CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable
-        class Cvcallhistorytable; //type: CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable
-        class Cvvoipcallhistorytable; //type: CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable
-        class Cvcallratestatstable; //type: CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable
-        class Cvcalllegratestatstable; //type: CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable
-        class Cvactivecallstatstable; //type: CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable
-        class Cvcalldurationstatstable; //type: CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable
-        class Cvsipmsgratestatstable; //type: CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable
-        class Cvcallratewmtable; //type: CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable
-        class Cvcalllegratewmtable; //type: CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable
-        class Cvactivecallwmtable; //type: CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable
-        class Cvsipmsgratewmtable; //type: CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable
+        class CvGeneralConfiguration; //type: CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration
+        class CvGatewayCallActive; //type: CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive
+        class CvCallVolume; //type: CISCOVOICEDIALCONTROLMIB::CvCallVolume
+        class CvCallRateMonitor; //type: CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor
+        class CvCallVolumeStatsHistory; //type: CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory
+        class CvPeerCfgTable; //type: CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable
+        class CvVoicePeerCfgTable; //type: CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable
+        class CvVoIPPeerCfgTable; //type: CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable
+        class CvPeerCommonCfgTable; //type: CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable
+        class CvCallActiveTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallActiveTable
+        class CvVoIPCallActiveTable; //type: CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable
+        class CvCallVolConnTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable
+        class CvCallVolIfTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable
+        class CvCallHistoryTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable
+        class CvVoIPCallHistoryTable; //type: CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable
+        class CvCallRateStatsTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable
+        class CvCallLegRateStatsTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable
+        class CvActiveCallStatsTable; //type: CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable
+        class CvCallDurationStatsTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable
+        class CvSipMsgRateStatsTable; //type: CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable
+        class CvCallRateWMTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable
+        class CvCallLegRateWMTable; //type: CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable
+        class CvActiveCallWMTable; //type: CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable
+        class CvSipMsgRateWMTable; //type: CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration> cvgeneralconfiguration;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive> cvgatewaycallactive;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallvolume> cvcallvolume;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor> cvcallratemonitor;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory> cvcallvolumestatshistory;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable> cvpeercfgtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable> cvvoicepeercfgtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable> cvvoippeercfgtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable> cvpeercommoncfgtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallactivetable> cvcallactivetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable> cvvoipcallactivetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable> cvcallvolconntable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable> cvcallvoliftable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable> cvcallhistorytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable> cvvoipcallhistorytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable> cvcallratestatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable> cvcalllegratestatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable> cvactivecallstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable> cvcalldurationstatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable> cvsipmsgratestatstable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable> cvcallratewmtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable> cvcalllegratewmtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable> cvactivecallwmtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable> cvsipmsgratewmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration> cvgeneralconfiguration;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive> cvgatewaycallactive;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallVolume> cvcallvolume;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor> cvcallratemonitor;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory> cvcallvolumestatshistory;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable> cvpeercfgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable> cvvoicepeercfgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable> cvvoippeercfgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable> cvpeercommoncfgtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallActiveTable> cvcallactivetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable> cvvoipcallactivetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable> cvcallvolconntable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable> cvcallvoliftable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable> cvcallhistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable> cvvoipcallhistorytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable> cvcallratestatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable> cvcalllegratestatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable> cvactivecallstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable> cvcalldurationstatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable> cvsipmsgratestatstable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable> cvcallratewmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable> cvcalllegratewmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable> cvactivecallwmtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable> cvsipmsgratewmtable;
         
 }; // CISCOVOICEDIALCONTROLMIB
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration : public ydk::Entity
 {
     public:
-        Cvgeneralconfiguration();
-        ~Cvgeneralconfiguration();
+        CvGeneralConfiguration();
+        ~CvGeneralConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -107,14 +107,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration : public ydk::Entity
         ydk::YLeaf cvgeneraldscppolicynotificationenable; //type: boolean
         ydk::YLeaf cvgeneralmediapolicynotificationenable; //type: boolean
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration
+}; // CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive : public ydk::Entity
 {
     public:
-        Cvgatewaycallactive();
-        ~Cvgatewaycallactive();
+        CvGatewayCallActive();
+        ~CvGatewayCallActive();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -133,14 +133,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive : public ydk::Entity
         ydk::YLeaf cvcallactiveds0shighnotifyenable; //type: boolean
         ydk::YLeaf cvcallactiveds0slownotifyenable; //type: boolean
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive
+}; // CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallvolume : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallVolume : public ydk::Entity
 {
     public:
-        Cvcallvolume();
-        ~Cvcallvolume();
+        CvCallVolume();
+        ~CvCallVolume();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -156,14 +156,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallvolume : public ydk::Entity
         ydk::YLeaf cvcallvolconntotalactiveconnections; //type: uint32
         ydk::YLeaf cvcallvolconnmaxcallconnectionlicenese; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallvolume
+}; // CISCOVOICEDIALCONTROLMIB::CvCallVolume
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor : public ydk::Entity
 {
     public:
-        Cvcallratemonitor();
-        ~Cvcallratemonitor();
+        CvCallRateMonitor();
+        ~CvCallRateMonitor();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -181,14 +181,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor : public ydk::Entity
         ydk::YLeaf cvcallrate; //type: uint32
         ydk::YLeaf cvcallratehiwatermark; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor
+}; // CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory : public ydk::Entity
 {
     public:
-        Cvcallvolumestatshistory();
-        ~Cvcallvolumestatshistory();
+        CvCallVolumeStatsHistory();
+        ~CvCallVolumeStatsHistory();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -204,14 +204,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory : public ydk::Entity
         ydk::YLeaf cvcalldurationstatsthreshold; //type: uint32
         ydk::YLeaf cvcallvolumewmtablesize; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory
+}; // CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable : public ydk::Entity
 {
     public:
-        Cvpeercfgtable();
-        ~Cvpeercfgtable();
+        CvPeerCfgTable();
+        ~CvPeerCfgTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -224,18 +224,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpeercfgentry; //type: CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry
+        class CvPeerCfgEntry; //type: CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry> > cvpeercfgentry;
+        ydk::YList cvpeercfgentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable
+}; // CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry : public ydk::Entity
 {
     public:
-        Cvpeercfgentry();
-        ~Cvpeercfgentry();
+        CvPeerCfgEntry();
+        ~CvPeerCfgEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -250,22 +250,22 @@ class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry : public ydk::Ent
 
         ydk::YLeaf cvpeercfgindex; //type: int32
         ydk::YLeaf cvpeercfgifindex; //type: int32
-        ydk::YLeaf cvpeercfgtype; //type: Cvpeercfgtype
+        ydk::YLeaf cvpeercfgtype; //type: CvPeerCfgType
         ydk::YLeaf cvpeercfgrowstatus; //type: RowStatus
-        ydk::YLeaf cvpeercfgpeertype; //type: Cvpeercfgpeertype
+        ydk::YLeaf cvpeercfgpeertype; //type: CvPeerCfgPeerType
         ydk::YLeaf cvcallvolpeerincomingcalls; //type: uint32
         ydk::YLeaf cvcallvolpeeroutgoingcalls; //type: uint32
-        class Cvpeercfgtype;
-        class Cvpeercfgpeertype;
+        class CvPeerCfgType;
+        class CvPeerCfgPeerType;
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry
+}; // CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable : public ydk::Entity
 {
     public:
-        Cvvoicepeercfgtable();
-        ~Cvvoicepeercfgtable();
+        CvVoicePeerCfgTable();
+        ~CvVoicePeerCfgTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -278,18 +278,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvvoicepeercfgentry; //type: CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry
+        class CvVoicePeerCfgEntry; //type: CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry> > cvvoicepeercfgentry;
+        ydk::YList cvvoicepeercfgentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable
+}; // CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry : public ydk::Entity
 {
     public:
-        Cvvoicepeercfgentry();
-        ~Cvvoicepeercfgentry();
+        CvVoicePeerCfgEntry();
+        ~CvVoicePeerCfgEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -302,7 +302,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cvvoicepeercfgsessiontarget; //type: string
         ydk::YLeaf cvvoicepeercfgdialdigitsprefix; //type: string
@@ -310,17 +310,17 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry : publi
         ydk::YLeaf cvvoicepeercfgcasgroup; //type: int32
         ydk::YLeaf cvvoicepeercfgregistere164; //type: boolean
         ydk::YLeaf cvvoicepeercfgforwarddigits; //type: int32
-        ydk::YLeaf cvvoicepeercfgechocancellertest; //type: Cvvoicepeercfgechocancellertest
-        class Cvvoicepeercfgechocancellertest;
+        ydk::YLeaf cvvoicepeercfgechocancellertest; //type: CvVoicePeerCfgEchoCancellerTest
+        class CvVoicePeerCfgEchoCancellerTest;
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry
+}; // CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable : public ydk::Entity
 {
     public:
-        Cvvoippeercfgtable();
-        ~Cvvoippeercfgtable();
+        CvVoIPPeerCfgTable();
+        ~CvVoIPPeerCfgTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -333,18 +333,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvvoippeercfgentry; //type: CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry
+        class CvVoIPPeerCfgEntry; //type: CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry> > cvvoippeercfgentry;
+        ydk::YList cvvoippeercfgentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable
+}; // CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry : public ydk::Entity
 {
     public:
-        Cvvoippeercfgentry();
-        ~Cvvoippeercfgentry();
+        CvVoIPPeerCfgEntry();
+        ~CvVoIPPeerCfgEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -357,7 +357,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cvvoippeercfgsessionprotocol; //type: CvSessionProtocol
         ydk::YLeaf cvvoippeercfgdesiredqos; //type: QosService
@@ -372,11 +372,11 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry : public 
         ydk::YLeaf cvvoippeercfgudpchecksumenable; //type: boolean
         ydk::YLeaf cvvoippeercfgipprecedence; //type: int32
         ydk::YLeaf cvvoippeercfgtechprefix; //type: string
-        ydk::YLeaf cvvoippeercfgdigitrelay; //type: Cvvoippeercfgdigitrelay
+        ydk::YLeaf cvvoippeercfgdigitrelay; //type: CvVoIPPeerCfgDigitRelay
         ydk::YLeaf cvvoippeercfgcoderbytes; //type: int32
         ydk::YLeaf cvvoippeercfgfaxbytes; //type: int32
         ydk::YLeaf cvvoippeercfginbandsignaling; //type: CvcInBandSignaling
-        ydk::YLeaf cvvoippeercfgmediasetting; //type: Cvvoippeercfgmediasetting
+        ydk::YLeaf cvvoippeercfgmediasetting; //type: CvVoIPPeerCfgMediaSetting
         ydk::YLeaf cvvoippeercfgdesiredqosvideo; //type: QosService
         ydk::YLeaf cvvoippeercfgminacceptableqosvideo; //type: QosService
         ydk::YLeaf cvvoippeercfgredirectip2ip; //type: boolean
@@ -384,23 +384,23 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry : public 
         ydk::YLeaf cvvoippeercfgbitrates; //type: CvAmrNbBitRateMode
         ydk::YLeaf cvvoippeercfgcrc; //type: boolean
         ydk::YLeaf cvvoippeercfgcodermode; //type: CvIlbcFrameMode
-        ydk::YLeaf cvvoippeercfgcodingmode; //type: Cvvoippeercfgcodingmode
+        ydk::YLeaf cvvoippeercfgcodingmode; //type: CvVoIPPeerCfgCodingMode
         ydk::YLeaf cvvoippeercfgbitrate; //type: uint32
-        ydk::YLeaf cvvoippeercfgframesize; //type: Cvvoippeercfgframesize
+        ydk::YLeaf cvvoippeercfgframesize; //type: CvVoIPPeerCfgFrameSize
         ydk::YLeaf cvvoippeercfgdscppolicynotificationenable; //type: boolean
         ydk::YLeaf cvvoippeercfgmediapolicynotificationenable; //type: boolean
-        class Cvvoippeercfgmediasetting;
-        class Cvvoippeercfgcodingmode;
-        class Cvvoippeercfgframesize;
+        class CvVoIPPeerCfgMediaSetting;
+        class CvVoIPPeerCfgCodingMode;
+        class CvVoIPPeerCfgFrameSize;
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry
+}; // CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable : public ydk::Entity
 {
     public:
-        Cvpeercommoncfgtable();
-        ~Cvpeercommoncfgtable();
+        CvPeerCommonCfgTable();
+        ~CvPeerCommonCfgTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -413,18 +413,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvpeercommoncfgentry; //type: CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry
+        class CvPeerCommonCfgEntry; //type: CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry> > cvpeercommoncfgentry;
+        ydk::YList cvpeercommoncfgentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable
+}; // CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry : public ydk::Entity
 {
     public:
-        Cvpeercommoncfgentry();
-        ~Cvpeercommoncfgentry();
+        CvPeerCommonCfgEntry();
+        ~CvPeerCommonCfgEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -437,7 +437,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cvpeercommoncfgincomingdnisdigits; //type: string
         ydk::YLeaf cvpeercommoncfgmaxconnections; //type: int32
@@ -450,14 +450,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry : pub
         ydk::YLeaf cvpeercommoncfgsourcetrunkgrplabel; //type: string
         ydk::YLeaf cvpeercommoncfgtargettrunkgrplabel; //type: string
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry
+}; // CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallactivetable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallActiveTable : public ydk::Entity
 {
     public:
-        Cvcallactivetable();
-        ~Cvcallactivetable();
+        CvCallActiveTable();
+        ~CvCallActiveTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -470,18 +470,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallactivetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcallactiveentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry
+        class CvCallActiveEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry> > cvcallactiveentry;
+        ydk::YList cvcallactiveentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallactivetable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallActiveTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry : public ydk::Entity
 {
     public:
-        Cvcallactiveentry();
-        ~Cvcallactiveentry();
+        CvCallActiveEntry();
+        ~CvCallActiveEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -494,9 +494,9 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::Callactivetable::Callactiveentry::callactivesetuptime)
+        //type: uint32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::CallActiveTable::CallActiveEntry::callactivesetuptime)
         ydk::YLeaf callactivesetuptime;
-        //type: int32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::Callactivetable::Callactiveentry::callactiveindex)
+        //type: int32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::CallActiveTable::CallActiveEntry::callactiveindex)
         ydk::YLeaf callactiveindex;
         ydk::YLeaf cvcallactiveconnectionid; //type: binary
         ydk::YLeaf cvcallactivetxduration; //type: uint32
@@ -517,14 +517,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry : public yd
         ydk::YLeaf cvcallactiveerllevelrev1; //type: int32
         ydk::YLeaf cvcallactivecallid; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable : public ydk::Entity
 {
     public:
-        Cvvoipcallactivetable();
-        ~Cvvoipcallactivetable();
+        CvVoIPCallActiveTable();
+        ~CvVoIPCallActiveTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -537,18 +537,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvvoipcallactiveentry; //type: CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry
+        class CvVoIPCallActiveEntry; //type: CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry> > cvvoipcallactiveentry;
+        ydk::YList cvvoipcallactiveentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable
+}; // CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry : public ydk::Entity
 {
     public:
-        Cvvoipcallactiveentry();
-        ~Cvvoipcallactiveentry();
+        CvVoIPCallActiveEntry();
+        ~CvVoIPCallActiveEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -561,9 +561,9 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::Callactivetable::Callactiveentry::callactivesetuptime)
+        //type: uint32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::CallActiveTable::CallActiveEntry::callactivesetuptime)
         ydk::YLeaf callactivesetuptime;
-        //type: int32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::Callactivetable::Callactiveentry::callactiveindex)
+        //type: int32 (refers to cisco_ios_xe::DIAL_CONTROL_MIB::DIALCONTROLMIB::CallActiveTable::CallActiveEntry::callactiveindex)
         ydk::YLeaf callactiveindex;
         ydk::YLeaf cvvoipcallactiveconnectionid; //type: binary
         ydk::YLeaf cvvoipcallactiveremoteipaddress; //type: string
@@ -612,14 +612,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry : p
         ydk::YLeaf cvvoipcallactivereverseddirectionpeeraddress; //type: string
         ydk::YLeaf cvvoipcallactivesessionid; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry
+}; // CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable : public ydk::Entity
 {
     public:
-        Cvcallvolconntable();
-        ~Cvcallvolconntable();
+        CvCallVolConnTable();
+        ~CvCallVolConnTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -632,18 +632,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcallvolconnentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry
+        class CvCallVolConnEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry> > cvcallvolconnentry;
+        ydk::YList cvcallvolconnentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry : public ydk::Entity
 {
     public:
-        Cvcallvolconnentry();
-        ~Cvcallvolconnentry();
+        CvCallVolConnEntry();
+        ~CvCallVolConnEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -659,14 +659,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry : public 
         ydk::YLeaf cvcallvolconnindex; //type: CvCallConnectionType
         ydk::YLeaf cvcallvolconnactiveconnection; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable : public ydk::Entity
 {
     public:
-        Cvcallvoliftable();
-        ~Cvcallvoliftable();
+        CvCallVolIfTable();
+        ~CvCallVolIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -679,18 +679,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcallvolifentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry
+        class CvCallVolIfEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry> > cvcallvolifentry;
+        ydk::YList cvcallvolifentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry : public ydk::Entity
 {
     public:
-        Cvcallvolifentry();
-        ~Cvcallvolifentry();
+        CvCallVolIfEntry();
+        ~CvCallVolIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -703,19 +703,19 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry : public ydk:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf cvcallvolmediaincomingcalls; //type: uint32
         ydk::YLeaf cvcallvolmediaoutgoingcalls; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable : public ydk::Entity
 {
     public:
-        Cvcallhistorytable();
-        ~Cvcallhistorytable();
+        CvCallHistoryTable();
+        ~CvCallHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -728,18 +728,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcallhistoryentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry
+        class CvCallHistoryEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry> > cvcallhistoryentry;
+        ydk::YList cvcallhistoryentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry : public ydk::Entity
 {
     public:
-        Cvcallhistoryentry();
-        ~Cvcallhistoryentry();
+        CvCallHistoryEntry();
+        ~CvCallHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -752,7 +752,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::ccallhistoryindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::ccallhistoryindex)
         ydk::YLeaf ccallhistoryindex;
         ydk::YLeaf cvcallhistoryconnectionid; //type: binary
         ydk::YLeaf cvcallhistorytxduration; //type: uint32
@@ -768,14 +768,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry : public 
         ydk::YLeaf cvcallhistoryaccountcode; //type: string
         ydk::YLeaf cvcallhistorycallid; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable : public ydk::Entity
 {
     public:
-        Cvvoipcallhistorytable();
-        ~Cvvoipcallhistorytable();
+        CvVoIPCallHistoryTable();
+        ~CvVoIPCallHistoryTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -788,18 +788,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvvoipcallhistoryentry; //type: CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry
+        class CvVoIPCallHistoryEntry; //type: CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry> > cvvoipcallhistoryentry;
+        ydk::YList cvvoipcallhistoryentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable
+}; // CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry : public ydk::Entity
 {
     public:
-        Cvvoipcallhistoryentry();
-        ~Cvvoipcallhistoryentry();
+        CvVoIPCallHistoryEntry();
+        ~CvVoIPCallHistoryEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -812,7 +812,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry :
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::Ccallhistorytable::Ccallhistoryentry::ccallhistoryindex)
+        //type: uint32 (refers to cisco_ios_xe::CISCO_DIAL_CONTROL_MIB::CISCODIALCONTROLMIB::CCallHistoryTable::CCallHistoryEntry::ccallhistoryindex)
         ydk::YLeaf ccallhistoryindex;
         ydk::YLeaf cvvoipcallhistoryconnectionid; //type: binary
         ydk::YLeaf cvvoipcallhistoryremoteipaddress; //type: string
@@ -863,14 +863,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry :
         ydk::YLeaf cvvoipcallhistorycallreferenceid; //type: uint32
         ydk::YLeaf cvvoipcallhistorysessionid; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry
+}; // CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable : public ydk::Entity
 {
     public:
-        Cvcallratestatstable();
-        ~Cvcallratestatstable();
+        CvCallRateStatsTable();
+        ~CvCallRateStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -883,18 +883,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcallratestatsentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry
+        class CvCallRateStatsEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry> > cvcallratestatsentry;
+        ydk::YList cvcallratestatsentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry : public ydk::Entity
 {
     public:
-        Cvcallratestatsentry();
-        ~Cvcallratestatsentry();
+        CvCallRateStatsEntry();
+        ~CvCallRateStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -912,14 +912,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry : pub
         ydk::YLeaf cvcallratestatsmaxval; //type: uint32
         ydk::YLeaf cvcallratestatsavgval; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable : public ydk::Entity
 {
     public:
-        Cvcalllegratestatstable();
-        ~Cvcalllegratestatstable();
+        CvCallLegRateStatsTable();
+        ~CvCallLegRateStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -932,18 +932,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcalllegratestatsentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry
+        class CvCallLegRateStatsEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry> > cvcalllegratestatsentry;
+        ydk::YList cvcalllegratestatsentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry : public ydk::Entity
 {
     public:
-        Cvcalllegratestatsentry();
-        ~Cvcalllegratestatsentry();
+        CvCallLegRateStatsEntry();
+        ~CvCallLegRateStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -961,14 +961,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry
         ydk::YLeaf cvcalllegratestatsmaxval; //type: uint32
         ydk::YLeaf cvcalllegratestatsavgval; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable : public ydk::Entity
 {
     public:
-        Cvactivecallstatstable();
-        ~Cvactivecallstatstable();
+        CvActiveCallStatsTable();
+        ~CvActiveCallStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -981,18 +981,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvactivecallstatsentry; //type: CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry
+        class CvActiveCallStatsEntry; //type: CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry> > cvactivecallstatsentry;
+        ydk::YList cvactivecallstatsentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable
+}; // CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry : public ydk::Entity
 {
     public:
-        Cvactivecallstatsentry();
-        ~Cvactivecallstatsentry();
+        CvActiveCallStatsEntry();
+        ~CvActiveCallStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1010,14 +1010,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry :
         ydk::YLeaf cvactivecallstatsmaxval; //type: uint32
         ydk::YLeaf cvactivecallstatsavgval; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry
+}; // CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable : public ydk::Entity
 {
     public:
-        Cvcalldurationstatstable();
-        ~Cvcalldurationstatstable();
+        CvCallDurationStatsTable();
+        ~CvCallDurationStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1030,18 +1030,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcalldurationstatsentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry
+        class CvCallDurationStatsEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry> > cvcalldurationstatsentry;
+        ydk::YList cvcalldurationstatsentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry : public ydk::Entity
 {
     public:
-        Cvcalldurationstatsentry();
-        ~Cvcalldurationstatsentry();
+        CvCallDurationStatsEntry();
+        ~CvCallDurationStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1059,14 +1059,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsent
         ydk::YLeaf cvcalldurationstatsmaxval; //type: uint32
         ydk::YLeaf cvcalldurationstatsavgval; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable : public ydk::Entity
 {
     public:
-        Cvsipmsgratestatstable();
-        ~Cvsipmsgratestatstable();
+        CvSipMsgRateStatsTable();
+        ~CvSipMsgRateStatsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1079,18 +1079,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvsipmsgratestatsentry; //type: CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry
+        class CvSipMsgRateStatsEntry; //type: CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry> > cvsipmsgratestatsentry;
+        ydk::YList cvsipmsgratestatsentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable
+}; // CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry : public ydk::Entity
 {
     public:
-        Cvsipmsgratestatsentry();
-        ~Cvsipmsgratestatsentry();
+        CvSipMsgRateStatsEntry();
+        ~CvSipMsgRateStatsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1108,14 +1108,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry :
         ydk::YLeaf cvsipmsgratestatsmaxval; //type: uint32
         ydk::YLeaf cvsipmsgratestatsavgval; //type: uint32
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry
+}; // CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable : public ydk::Entity
 {
     public:
-        Cvcallratewmtable();
-        ~Cvcallratewmtable();
+        CvCallRateWMTable();
+        ~CvCallRateWMTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1128,18 +1128,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcallratewmentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry
+        class CvCallRateWMEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry> > cvcallratewmentry;
+        ydk::YList cvcallratewmentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry : public ydk::Entity
 {
     public:
-        Cvcallratewmentry();
-        ~Cvcallratewmentry();
+        CvCallRateWMEntry();
+        ~CvCallRateWMEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1157,14 +1157,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry : public yd
         ydk::YLeaf cvcallratewmvalue; //type: uint32
         ydk::YLeaf cvcallratewmts; //type: string
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable : public ydk::Entity
 {
     public:
-        Cvcalllegratewmtable();
-        ~Cvcalllegratewmtable();
+        CvCallLegRateWMTable();
+        ~CvCallLegRateWMTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1177,18 +1177,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvcalllegratewmentry; //type: CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry
+        class CvCallLegRateWMEntry; //type: CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry> > cvcalllegratewmentry;
+        ydk::YList cvcalllegratewmentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable
+}; // CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry : public ydk::Entity
 {
     public:
-        Cvcalllegratewmentry();
-        ~Cvcalllegratewmentry();
+        CvCallLegRateWMEntry();
+        ~CvCallLegRateWMEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1206,14 +1206,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry : pub
         ydk::YLeaf cvcalllegratewmvalue; //type: uint32
         ydk::YLeaf cvcalllegratewmts; //type: string
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry
+}; // CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable : public ydk::Entity
 {
     public:
-        Cvactivecallwmtable();
-        ~Cvactivecallwmtable();
+        CvActiveCallWMTable();
+        ~CvActiveCallWMTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1226,18 +1226,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvactivecallwmentry; //type: CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry
+        class CvActiveCallWMEntry; //type: CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry> > cvactivecallwmentry;
+        ydk::YList cvactivecallwmentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable
+}; // CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry : public ydk::Entity
 {
     public:
-        Cvactivecallwmentry();
-        ~Cvactivecallwmentry();
+        CvActiveCallWMEntry();
+        ~CvActiveCallWMEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1255,14 +1255,14 @@ class CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry : publi
         ydk::YLeaf cvactivecallwmvalue; //type: uint32
         ydk::YLeaf cvactivecallwmts; //type: string
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry
+}; // CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable : public ydk::Entity
 {
     public:
-        Cvsipmsgratewmtable();
-        ~Cvsipmsgratewmtable();
+        CvSipMsgRateWMTable();
+        ~CvSipMsgRateWMTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1275,18 +1275,18 @@ class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Cvsipmsgratewmentry; //type: CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry
+        class CvSipMsgRateWMEntry; //type: CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_VOICE_DIAL_CONTROL_MIB::CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry> > cvsipmsgratewmentry;
+        ydk::YList cvsipmsgratewmentry;
         
-}; // CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable
+}; // CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable
 
 
-class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry : public ydk::Entity
+class CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry : public ydk::Entity
 {
     public:
-        Cvsipmsgratewmentry();
-        ~Cvsipmsgratewmentry();
+        CvSipMsgRateWMEntry();
+        ~CvSipMsgRateWMEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1304,7 +1304,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry : publi
         ydk::YLeaf cvsipmsgratewmvalue; //type: uint32
         ydk::YLeaf cvsipmsgratewmts; //type: string
 
-}; // CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry
+}; // CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry
 
 class CvCallVolumeWMIntvlType : public ydk::Enum
 {
@@ -1316,12 +1316,18 @@ class CvCallVolumeWMIntvlType : public ydk::Enum
 
 };
 
-class CvCallVolumeStatsIntvlType : public ydk::Enum
+class CvIlbcFrameMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf secondStats;
-        static const ydk::Enum::YLeaf minuteStats;
-        static const ydk::Enum::YLeaf hourStats;
+        static const ydk::Enum::YLeaf frameMode20;
+        static const ydk::Enum::YLeaf frameMode30;
+
+};
+
+class CvAmrNbRtpEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rfc3267;
 
 };
 
@@ -1334,21 +1340,6 @@ class CvSessionProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf sip;
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf sccp;
-
-};
-
-class CvAmrNbRtpEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rfc3267;
-
-};
-
-class CvIlbcFrameMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf frameMode20;
-        static const ydk::Enum::YLeaf frameMode30;
 
 };
 
@@ -1365,7 +1356,16 @@ class CvCallConnectionType : public ydk::Enum
 
 };
 
-class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype : public ydk::Enum
+class CvCallVolumeStatsIntvlType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf secondStats;
+        static const ydk::Enum::YLeaf minuteStats;
+        static const ydk::Enum::YLeaf hourStats;
+
+};
+
+class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf voice;
@@ -1376,7 +1376,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype : 
 
 };
 
-class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgpeertype : public ydk::Enum
+class CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgPeerType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf voice;
@@ -1384,7 +1384,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgpeertyp
 
 };
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest : public ydk::Enum
+class CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf echoCancellerTestNone;
@@ -1403,7 +1403,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoic
 
 };
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgmediasetting : public ydk::Enum
+class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgMediaSetting : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf flowThrough;
@@ -1411,7 +1411,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippe
 
 };
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgcodingmode : public ydk::Enum
+class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgCodingMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf adaptive;
@@ -1419,7 +1419,7 @@ class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippe
 
 };
 
-class CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgframesize : public ydk::Enum
+class CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgFrameSize : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf frameSize30;

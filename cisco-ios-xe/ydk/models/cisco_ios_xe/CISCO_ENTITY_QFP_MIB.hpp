@@ -31,28 +31,28 @@ class CISCOENTITYQFPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ciscoentityqfp; //type: CISCOENTITYQFPMIB::Ciscoentityqfp
-        class Ciscoentityqfpnotif; //type: CISCOENTITYQFPMIB::Ciscoentityqfpnotif
-        class Ceqfpsystemtable; //type: CISCOENTITYQFPMIB::Ceqfpsystemtable
-        class Ceqfputilizationtable; //type: CISCOENTITYQFPMIB::Ceqfputilizationtable
-        class Ceqfpmemoryresourcetable; //type: CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable
-        class Ceqfpthroughputtable; //type: CISCOENTITYQFPMIB::Ceqfpthroughputtable
+        class CiscoEntityQfp; //type: CISCOENTITYQFPMIB::CiscoEntityQfp
+        class CiscoEntityQfpNotif; //type: CISCOENTITYQFPMIB::CiscoEntityQfpNotif
+        class CeqfpSystemTable; //type: CISCOENTITYQFPMIB::CeqfpSystemTable
+        class CeqfpUtilizationTable; //type: CISCOENTITYQFPMIB::CeqfpUtilizationTable
+        class CeqfpMemoryResourceTable; //type: CISCOENTITYQFPMIB::CeqfpMemoryResourceTable
+        class CeqfpThroughputTable; //type: CISCOENTITYQFPMIB::CeqfpThroughputTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ciscoentityqfp> ciscoentityqfp;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ciscoentityqfpnotif> ciscoentityqfpnotif;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfpsystemtable> ceqfpsystemtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfputilizationtable> ceqfputilizationtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable> ceqfpmemoryresourcetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfpthroughputtable> ceqfpthroughputtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::CiscoEntityQfp> ciscoentityqfp;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::CiscoEntityQfpNotif> ciscoentityqfpnotif;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::CeqfpSystemTable> ceqfpsystemtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::CeqfpUtilizationTable> ceqfputilizationtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::CeqfpMemoryResourceTable> ceqfpmemoryresourcetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::CeqfpThroughputTable> ceqfpthroughputtable;
         
 }; // CISCOENTITYQFPMIB
 
 
-class CISCOENTITYQFPMIB::Ciscoentityqfp : public ydk::Entity
+class CISCOENTITYQFPMIB::CiscoEntityQfp : public ydk::Entity
 {
     public:
-        Ciscoentityqfp();
-        ~Ciscoentityqfp();
+        CiscoEntityQfp();
+        ~CiscoEntityQfp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -65,23 +65,23 @@ class CISCOENTITYQFPMIB::Ciscoentityqfp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf ceqfpfivesecondutilalgo; //type: Ceqfpfivesecondutilalgo
-        ydk::YLeaf ceqfponeminuteutilalgo; //type: Ceqfponeminuteutilalgo
-        ydk::YLeaf ceqfpfiveminutesutilalgo; //type: Ceqfpfiveminutesutilalgo
-        ydk::YLeaf ceqfpsixtyminutesutilalgo; //type: Ceqfpsixtyminutesutilalgo
-        class Ceqfpfivesecondutilalgo;
-        class Ceqfponeminuteutilalgo;
-        class Ceqfpfiveminutesutilalgo;
-        class Ceqfpsixtyminutesutilalgo;
+        ydk::YLeaf ceqfpfivesecondutilalgo; //type: CeqfpFiveSecondUtilAlgo
+        ydk::YLeaf ceqfponeminuteutilalgo; //type: CeqfpOneMinuteUtilAlgo
+        ydk::YLeaf ceqfpfiveminutesutilalgo; //type: CeqfpFiveMinutesUtilAlgo
+        ydk::YLeaf ceqfpsixtyminutesutilalgo; //type: CeqfpSixtyMinutesUtilAlgo
+        class CeqfpFiveSecondUtilAlgo;
+        class CeqfpOneMinuteUtilAlgo;
+        class CeqfpFiveMinutesUtilAlgo;
+        class CeqfpSixtyMinutesUtilAlgo;
 
-}; // CISCOENTITYQFPMIB::Ciscoentityqfp
+}; // CISCOENTITYQFPMIB::CiscoEntityQfp
 
 
-class CISCOENTITYQFPMIB::Ciscoentityqfpnotif : public ydk::Entity
+class CISCOENTITYQFPMIB::CiscoEntityQfpNotif : public ydk::Entity
 {
     public:
-        Ciscoentityqfpnotif();
-        ~Ciscoentityqfpnotif();
+        CiscoEntityQfpNotif();
+        ~CiscoEntityQfpNotif();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -97,14 +97,14 @@ class CISCOENTITYQFPMIB::Ciscoentityqfpnotif : public ydk::Entity
         ydk::YLeaf ceqfpmemoryresthreshnotifenabled; //type: boolean
         ydk::YLeaf ceqfpthroughputnotifenabled; //type: uint32
 
-}; // CISCOENTITYQFPMIB::Ciscoentityqfpnotif
+}; // CISCOENTITYQFPMIB::CiscoEntityQfpNotif
 
 
-class CISCOENTITYQFPMIB::Ceqfpsystemtable : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpSystemTable : public ydk::Entity
 {
     public:
-        Ceqfpsystemtable();
-        ~Ceqfpsystemtable();
+        CeqfpSystemTable();
+        ~CeqfpSystemTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -117,18 +117,18 @@ class CISCOENTITYQFPMIB::Ceqfpsystemtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceqfpsystementry; //type: CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry
+        class CeqfpSystemEntry; //type: CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry> > ceqfpsystementry;
+        ydk::YList ceqfpsystementry;
         
-}; // CISCOENTITYQFPMIB::Ceqfpsystemtable
+}; // CISCOENTITYQFPMIB::CeqfpSystemTable
 
 
-class CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry : public ydk::Entity
 {
     public:
-        Ceqfpsystementry();
-        ~Ceqfpsystementry();
+        CeqfpSystemEntry();
+        ~CeqfpSystemEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -141,23 +141,23 @@ class CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
-        ydk::YLeaf ceqfpsystemtrafficdirection; //type: Ceqfpsystemtrafficdirection
-        ydk::YLeaf ceqfpsystemstate; //type: Ceqfpsystemstate
+        ydk::YLeaf ceqfpsystemtrafficdirection; //type: CeqfpSystemTrafficDirection
+        ydk::YLeaf ceqfpsystemstate; //type: CeqfpSystemState
         ydk::YLeaf ceqfpnumbersystemloads; //type: uint32
         ydk::YLeaf ceqfpsystemlastloadtime; //type: string
-        class Ceqfpsystemtrafficdirection;
-        class Ceqfpsystemstate;
+        class CeqfpSystemTrafficDirection;
+        class CeqfpSystemState;
 
-}; // CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry
+}; // CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry
 
 
-class CISCOENTITYQFPMIB::Ceqfputilizationtable : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpUtilizationTable : public ydk::Entity
 {
     public:
-        Ceqfputilizationtable();
-        ~Ceqfputilizationtable();
+        CeqfpUtilizationTable();
+        ~CeqfpUtilizationTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -170,18 +170,18 @@ class CISCOENTITYQFPMIB::Ceqfputilizationtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceqfputilizationentry; //type: CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry
+        class CeqfpUtilizationEntry; //type: CISCOENTITYQFPMIB::CeqfpUtilizationTable::CeqfpUtilizationEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry> > ceqfputilizationentry;
+        ydk::YList ceqfputilizationentry;
         
-}; // CISCOENTITYQFPMIB::Ceqfputilizationtable
+}; // CISCOENTITYQFPMIB::CeqfpUtilizationTable
 
 
-class CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpUtilizationTable::CeqfpUtilizationEntry : public ydk::Entity
 {
     public:
-        Ceqfputilizationentry();
-        ~Ceqfputilizationentry();
+        CeqfpUtilizationEntry();
+        ~CeqfpUtilizationEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -194,7 +194,7 @@ class CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceqfputiltimeinterval; //type: CiscoQfpTimeInterval
         ydk::YLeaf ceqfputilinputprioritypktrate; //type: uint64
@@ -211,14 +211,14 @@ class CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry : public y
         ydk::YLeaf ceqfputiloutputtotalbitrate; //type: uint64
         ydk::YLeaf ceqfputilprocessingload; //type: uint32
 
-}; // CISCOENTITYQFPMIB::Ceqfputilizationtable::Ceqfputilizationentry
+}; // CISCOENTITYQFPMIB::CeqfpUtilizationTable::CeqfpUtilizationEntry
 
 
-class CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpMemoryResourceTable : public ydk::Entity
 {
     public:
-        Ceqfpmemoryresourcetable();
-        ~Ceqfpmemoryresourcetable();
+        CeqfpMemoryResourceTable();
+        ~CeqfpMemoryResourceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -231,18 +231,18 @@ class CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceqfpmemoryresourceentry; //type: CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry
+        class CeqfpMemoryResourceEntry; //type: CISCOENTITYQFPMIB::CeqfpMemoryResourceTable::CeqfpMemoryResourceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry> > ceqfpmemoryresourceentry;
+        ydk::YList ceqfpmemoryresourceentry;
         
-}; // CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable
+}; // CISCOENTITYQFPMIB::CeqfpMemoryResourceTable
 
 
-class CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpMemoryResourceTable::CeqfpMemoryResourceEntry : public ydk::Entity
 {
     public:
-        Ceqfpmemoryresourceentry();
-        ~Ceqfpmemoryresourceentry();
+        CeqfpMemoryResourceEntry();
+        ~CeqfpMemoryResourceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -255,7 +255,7 @@ class CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry : pu
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceqfpmemoryrestype; //type: CiscoQfpMemoryResource
         ydk::YLeaf ceqfpmemoryrestotal; //type: uint32
@@ -273,14 +273,14 @@ class CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry : pu
         ydk::YLeaf ceqfpmemoryreslowfreewatermarkovrflw; //type: uint32
         ydk::YLeaf ceqfpmemoryhcreslowfreewatermark; //type: uint64
 
-}; // CISCOENTITYQFPMIB::Ceqfpmemoryresourcetable::Ceqfpmemoryresourceentry
+}; // CISCOENTITYQFPMIB::CeqfpMemoryResourceTable::CeqfpMemoryResourceEntry
 
 
-class CISCOENTITYQFPMIB::Ceqfpthroughputtable : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpThroughputTable : public ydk::Entity
 {
     public:
-        Ceqfpthroughputtable();
-        ~Ceqfpthroughputtable();
+        CeqfpThroughputTable();
+        ~CeqfpThroughputTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -293,18 +293,18 @@ class CISCOENTITYQFPMIB::Ceqfpthroughputtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Ceqfpthroughputentry; //type: CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry
+        class CeqfpThroughputEntry; //type: CISCOENTITYQFPMIB::CeqfpThroughputTable::CeqfpThroughputEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_ENTITY_QFP_MIB::CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry> > ceqfpthroughputentry;
+        ydk::YList ceqfpthroughputentry;
         
-}; // CISCOENTITYQFPMIB::Ceqfpthroughputtable
+}; // CISCOENTITYQFPMIB::CeqfpThroughputTable
 
 
-class CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry : public ydk::Entity
+class CISCOENTITYQFPMIB::CeqfpThroughputTable::CeqfpThroughputEntry : public ydk::Entity
 {
     public:
-        Ceqfpthroughputentry();
-        ~Ceqfpthroughputentry();
+        CeqfpThroughputEntry();
+        ~CeqfpThroughputEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -317,16 +317,16 @@ class CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::Entphysicaltable::Entphysicalentry::entphysicalindex)
+        //type: int32 (refers to cisco_ios_xe::ENTITY_MIB::ENTITYMIB::EntPhysicalTable::EntPhysicalEntry::entphysicalindex)
         ydk::YLeaf entphysicalindex;
         ydk::YLeaf ceqfpthroughputlicensedbw; //type: uint64
-        ydk::YLeaf ceqfpthroughputlevel; //type: Ceqfpthroughputlevel
+        ydk::YLeaf ceqfpthroughputlevel; //type: CeqfpThroughputLevel
         ydk::YLeaf ceqfpthroughputinterval; //type: int32
         ydk::YLeaf ceqfpthroughputthreshold; //type: int32
         ydk::YLeaf ceqfpthroughputavgrate; //type: uint64
-        class Ceqfpthroughputlevel;
+        class CeqfpThroughputLevel;
 
-}; // CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry
+}; // CISCOENTITYQFPMIB::CeqfpThroughputTable::CeqfpThroughputEntry
 
 class CiscoQfpTimeInterval : public ydk::Enum
 {
@@ -345,7 +345,7 @@ class CiscoQfpMemoryResource : public ydk::Enum
 
 };
 
-class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfpfivesecondutilalgo : public ydk::Enum
+class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpFiveSecondUtilAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -353,7 +353,7 @@ class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfpfivesecondutilalgo : public ydk::E
 
 };
 
-class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfponeminuteutilalgo : public ydk::Enum
+class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpOneMinuteUtilAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -361,7 +361,7 @@ class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfponeminuteutilalgo : public ydk::En
 
 };
 
-class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfpfiveminutesutilalgo : public ydk::Enum
+class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpFiveMinutesUtilAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -369,7 +369,7 @@ class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfpfiveminutesutilalgo : public ydk::
 
 };
 
-class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfpsixtyminutesutilalgo : public ydk::Enum
+class CISCOENTITYQFPMIB::CiscoEntityQfp::CeqfpSixtyMinutesUtilAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -377,7 +377,7 @@ class CISCOENTITYQFPMIB::Ciscoentityqfp::Ceqfpsixtyminutesutilalgo : public ydk:
 
 };
 
-class CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficdirection : public ydk::Enum
+class CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry::CeqfpSystemTrafficDirection : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -387,7 +387,7 @@ class CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemtrafficd
 
 };
 
-class CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate : public ydk::Enum
+class CISCOENTITYQFPMIB::CeqfpSystemTable::CeqfpSystemEntry::CeqfpSystemState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;
@@ -400,7 +400,7 @@ class CISCOENTITYQFPMIB::Ceqfpsystemtable::Ceqfpsystementry::Ceqfpsystemstate : 
 
 };
 
-class CISCOENTITYQFPMIB::Ceqfpthroughputtable::Ceqfpthroughputentry::Ceqfpthroughputlevel : public ydk::Enum
+class CISCOENTITYQFPMIB::CeqfpThroughputTable::CeqfpThroughputEntry::CeqfpThroughputLevel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf normal;

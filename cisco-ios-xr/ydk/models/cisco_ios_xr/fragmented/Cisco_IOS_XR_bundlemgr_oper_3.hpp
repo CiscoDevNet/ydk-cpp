@@ -33,7 +33,7 @@ class BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::Eve
         ydk::YLeaf item_name; //type: string
         class Items; //type: BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem::Items> > items;
+        ydk::YList items;
         
 }; // BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGroup::EventsMbrBundleDescendantIccpGroup::EventsItem
 
@@ -256,7 +256,7 @@ class BundleInformation::MlacpIccpGroupCounters::IccpGroups : public ydk::Entity
 
         class IccpGroup; //type: BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpIccpGroupCounters::IccpGroups::IccpGroup> > iccp_group;
+        ydk::YList iccp_group;
         
 }; // BundleInformation::MlacpIccpGroupCounters::IccpGroups
 
@@ -1251,7 +1251,7 @@ class BundleInformation::SystemId::SystemIdIccpGroups : public ydk::Entity
 
         class SystemIdIccpGroup; //type: BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::SystemId::SystemIdIccpGroups::SystemIdIccpGroup> > system_id_iccp_group;
+        ydk::YList system_id_iccp_group;
         
 }; // BundleInformation::SystemId::SystemIdIccpGroups
 
@@ -1401,7 +1401,7 @@ class BundleInformation::MlacpMemberCounters::IccpGroups : public ydk::Entity
 
         class IccpGroup; //type: BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup> > iccp_group;
+        ydk::YList iccp_group;
         
 }; // BundleInformation::MlacpMemberCounters::IccpGroups
 
@@ -1449,7 +1449,7 @@ class BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIt
 
         class Items; //type: BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items> > items;
+        ydk::YList items;
         
 }; // BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem
 
@@ -1475,8 +1475,8 @@ class BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIt
         class MemberData; //type: BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::BundleData> bundle_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData> > node_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::MemberData> > member_data;
+        ydk::YList node_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items
 
@@ -1576,7 +1576,7 @@ class BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupIt
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::NodeData_> node_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts> mlacp_sync_requests_on_all_foreign_ports;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData::MemberData> > member_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpGroupItem::Items::NodeData
 
@@ -1826,7 +1826,7 @@ class BundleInformation::MlacpMemberCounters::Members : public ydk::Entity
 
         class Member; //type: BundleInformation::MlacpMemberCounters::Members::Member
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member> > member;
+        ydk::YList member;
         
 }; // BundleInformation::MlacpMemberCounters::Members
 
@@ -1874,7 +1874,7 @@ class BundleInformation::MlacpMemberCounters::Members::Member::MemberItem : publ
 
         class Items; //type: BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items> > items;
+        ydk::YList items;
         
 }; // BundleInformation::MlacpMemberCounters::Members::Member::MemberItem
 
@@ -1900,8 +1900,8 @@ class BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items
         class MemberData; //type: BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::BundleData> bundle_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData> > node_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::MemberData> > member_data;
+        ydk::YList node_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items
 
@@ -2001,7 +2001,7 @@ class BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::NodeData_> node_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts> mlacp_sync_requests_on_all_foreign_ports;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData::MemberData> > member_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::Members::Member::MemberItem::Items::NodeData
 
@@ -2251,7 +2251,7 @@ class BundleInformation::MlacpMemberCounters::Bundles : public ydk::Entity
 
         class Bundle; //type: BundleInformation::MlacpMemberCounters::Bundles::Bundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Bundles::Bundle> > bundle;
+        ydk::YList bundle;
         
 }; // BundleInformation::MlacpMemberCounters::Bundles
 
@@ -2302,8 +2302,8 @@ class BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem : publ
         class MemberData; //type: BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::BundleData> bundle_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData> > node_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::MemberData> > member_data;
+        ydk::YList node_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem
 
@@ -2403,7 +2403,7 @@ class BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeD
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::NodeData_> node_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MlacpSyncRequestsOnAllForeignPorts> mlacp_sync_requests_on_all_foreign_ports;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData::MemberData> > member_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem::NodeData
 
@@ -2653,7 +2653,7 @@ class BundleInformation::MlacpMemberCounters::Nodes : public ydk::Entity
 
         class Node; //type: BundleInformation::MlacpMemberCounters::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // BundleInformation::MlacpMemberCounters::Nodes
 
@@ -2701,7 +2701,7 @@ class BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem : public ydk
 
         class Items; //type: BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items> > items;
+        ydk::YList items;
         
 }; // BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem
 
@@ -2727,8 +2727,8 @@ class BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items : pub
         class MemberData; //type: BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::BundleData> bundle_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData> > node_data;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::MemberData> > member_data;
+        ydk::YList node_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items
 
@@ -2828,7 +2828,7 @@ class BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::Node
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::NodeData_> node_data;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MlacpSyncRequestsOnAllForeignPorts> mlacp_sync_requests_on_all_foreign_ports;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData::MemberData> > member_data;
+        ydk::YList member_data;
         
 }; // BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items::NodeData
 
@@ -3230,7 +3230,7 @@ class Bundles::Bundles_ : public ydk::Entity
 
         class Bundle; //type: Bundles::Bundles_::Bundle
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle> > bundle;
+        ydk::YList bundle;
         
 }; // Bundles::Bundles_
 
@@ -3320,7 +3320,7 @@ class Bundles::Bundles_::Bundle::Data : public ydk::Entity
         class BfdConfig; //type: Bundles::Bundles_::Bundle::Data::BfdConfig
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Data::MacAddress> mac_address;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Data::BfdConfig> > bfd_config;
+        ydk::YList bfd_config;
         
 }; // Bundles::Bundles_::Bundle::Data
 
@@ -3418,7 +3418,7 @@ class Bundles::Bundles_::Bundle::Members : public ydk::Entity
 
         class Member; //type: Bundles::Bundles_::Bundle::Members::Member
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::Bundles::Bundles_::Bundle::Members::Member> > member;
+        ydk::YList member;
         
 }; // Bundles::Bundles_::Bundle::Members
 
@@ -3648,7 +3648,7 @@ class LacpBundleMembers::Nodes : public ydk::Entity
 
         class Node; //type: LacpBundleMembers::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::LacpBundleMembers::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // LacpBundleMembers::Nodes
 
@@ -3724,7 +3724,7 @@ class LacpBundleMembers::Members : public ydk::Entity
 
         class Member; //type: LacpBundleMembers::Members::Member
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::LacpBundleMembers::Members::Member> > member;
+        ydk::YList member;
         
 }; // LacpBundleMembers::Members
 
@@ -3871,7 +3871,7 @@ class BundlesAdjacency::Nodes : public ydk::Entity
 
         class Node; //type: BundlesAdjacency::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // BundlesAdjacency::Nodes
 
@@ -3921,7 +3921,7 @@ class BundlesAdjacency::Nodes::Node::Brief : public ydk::Entity
 
         class BundleData; //type: BundlesAdjacency::Nodes::Node::Brief::BundleData
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Brief::BundleData> > bundle_data;
+        ydk::YList bundle_data;
         
 }; // BundlesAdjacency::Nodes::Node::Brief
 
@@ -3948,7 +3948,7 @@ class BundlesAdjacency::Nodes::Node::Brief::BundleData : public ydk::Entity
         ydk::YLeaf total_weight; //type: uint32
         class SubInterface; //type: BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_bundlemgr_oper::BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface> > sub_interface;
+        ydk::YList sub_interface;
         
 }; // BundlesAdjacency::Nodes::Node::Brief::BundleData
 

@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_109.hpp"
-#include "Cisco_IOS_XE_native_111.hpp"
 #include "Cisco_IOS_XE_native_110.hpp"
+#include "Cisco_IOS_XE_native_111.hpp"
 
 using namespace ydk;
 
@@ -23,7 +23,7 @@ Native::Aaa::Authentication::Ppp::A3::A3()
     local_case{YType::empty, "local-case"}
 {
 
-    yang_name = "a3"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a3"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Ppp::A3::~A3()
@@ -32,6 +32,7 @@ Native::Aaa::Authentication::Ppp::A3::~A3()
 
 bool Native::Aaa::Authentication::Ppp::A3::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -170,7 +171,7 @@ Native::Aaa::Authentication::Ppp::A4::A4()
     local_case{YType::empty, "local-case"}
 {
 
-    yang_name = "a4"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a4"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authentication::Ppp::A4::~A4()
@@ -179,6 +180,7 @@ Native::Aaa::Authentication::Ppp::A4::~A4()
 
 bool Native::Aaa::Authentication::Ppp::A4::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -313,7 +315,7 @@ Native::Aaa::Local::Local()
 {
     authentication->parent = this;
 
-    yang_name = "local"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Local::~Local()
@@ -322,6 +324,7 @@ Native::Aaa::Local::~Local()
 
 bool Native::Aaa::Local::has_data() const
 {
+    if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data());
 }
 
@@ -398,12 +401,12 @@ bool Native::Aaa::Local::has_leaf_or_child_of_name(const std::string & name) con
 Native::Aaa::Local::Authentication::Authentication()
     :
     authorization(std::make_shared<Native::Aaa::Local::Authentication::Authorization>())
-	,attempts(std::make_shared<Native::Aaa::Local::Authentication::Attempts>())
+    , attempts(std::make_shared<Native::Aaa::Local::Authentication::Attempts>())
 {
     authorization->parent = this;
     attempts->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "local"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Local::Authentication::~Authentication()
@@ -412,6 +415,7 @@ Native::Aaa::Local::Authentication::~Authentication()
 
 bool Native::Aaa::Local::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (authorization !=  nullptr && authorization->has_data())
 	|| (attempts !=  nullptr && attempts->has_data());
 }
@@ -507,7 +511,7 @@ Native::Aaa::Local::Authentication::Authorization::Authorization()
     authorization{YType::str, "authorization"}
 {
 
-    yang_name = "authorization"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Local::Authentication::Authorization::~Authorization()
@@ -516,6 +520,7 @@ Native::Aaa::Local::Authentication::Authorization::~Authorization()
 
 bool Native::Aaa::Local::Authentication::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return authen_type.is_set
 	|| authorization.is_set;
 }
@@ -604,7 +609,7 @@ Native::Aaa::Local::Authentication::Attempts::Attempts()
     max_fail{YType::uint16, "max-fail"}
 {
 
-    yang_name = "attempts"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "attempts"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Local::Authentication::Attempts::~Attempts()
@@ -613,6 +618,7 @@ Native::Aaa::Local::Authentication::Attempts::~Attempts()
 
 bool Native::Aaa::Local::Authentication::Attempts::has_data() const
 {
+    if (is_presence_container) return true;
     return max_fail.is_set;
 }
 
@@ -687,12 +693,16 @@ Native::Aaa::Authorization::Authorization()
     :
     console{YType::empty, "console"},
     config_commands{YType::empty, "config-commands"}
-    	,
+        ,
     auth_type(std::make_shared<Native::Aaa::Authorization::AuthType>())
-	,configuration(std::make_shared<Native::Aaa::Authorization::Configuration>())
-	,credential_download(std::make_shared<Native::Aaa::Authorization::CredentialDownload>())
-	,auth_proxy(std::make_shared<Native::Aaa::Authorization::AuthProxy>())
-	,onep(std::make_shared<Native::Aaa::Authorization::Onep>())
+    , commands(this, {"level", "list_name"})
+    , configuration(std::make_shared<Native::Aaa::Authorization::Configuration>())
+    , credential_download(std::make_shared<Native::Aaa::Authorization::CredentialDownload>())
+    , exec(this, {"name"})
+    , eventmanager(this, {"name"})
+    , network(this, {"id"})
+    , auth_proxy(std::make_shared<Native::Aaa::Authorization::AuthProxy>())
+    , onep(std::make_shared<Native::Aaa::Authorization::Onep>())
 {
     auth_type->parent = this;
     configuration->parent = this;
@@ -700,7 +710,7 @@ Native::Aaa::Authorization::Authorization()
     auth_proxy->parent = this;
     onep->parent = this;
 
-    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::~Authorization()
@@ -709,22 +719,23 @@ Native::Aaa::Authorization::~Authorization()
 
 bool Native::Aaa::Authorization::has_data() const
 {
-    for (std::size_t index=0; index<commands.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<commands.len(); index++)
     {
         if(commands[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<exec.size(); index++)
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<eventmanager.size(); index++)
+    for (std::size_t index=0; index<eventmanager.len(); index++)
     {
         if(eventmanager[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_data())
             return true;
@@ -740,22 +751,22 @@ bool Native::Aaa::Authorization::has_data() const
 
 bool Native::Aaa::Authorization::has_operation() const
 {
-    for (std::size_t index=0; index<commands.size(); index++)
+    for (std::size_t index=0; index<commands.len(); index++)
     {
         if(commands[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<exec.size(); index++)
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<eventmanager.size(); index++)
+    for (std::size_t index=0; index<eventmanager.len(); index++)
     {
         if(eventmanager[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_operation())
             return true;
@@ -810,7 +821,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Aaa::Authorization::Commands>();
         c->parent = this;
-        commands.push_back(c);
+        commands.append(c);
         return c;
     }
 
@@ -836,7 +847,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Aaa::Authorization::Exec>();
         c->parent = this;
-        exec.push_back(c);
+        exec.append(c);
         return c;
     }
 
@@ -844,7 +855,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Aaa::Authorization::Eventmanager>();
         c->parent = this;
-        eventmanager.push_back(c);
+        eventmanager.append(c);
         return c;
     }
 
@@ -852,7 +863,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::get_child_by_name(const std:
     {
         auto c = std::make_shared<Native::Aaa::Authorization::Network>();
         c->parent = this;
-        network.push_back(c);
+        network.append(c);
         return c;
     }
 
@@ -887,7 +898,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::get_c
     }
 
     count = 0;
-    for (auto const & c : commands)
+    for (auto c : commands.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -906,7 +917,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::get_c
     }
 
     count = 0;
-    for (auto const & c : exec)
+    for (auto c : exec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -915,7 +926,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::get_c
     }
 
     count = 0;
-    for (auto const & c : eventmanager)
+    for (auto c : eventmanager.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -924,7 +935,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::get_c
     }
 
     count = 0;
-    for (auto const & c : network)
+    for (auto c : network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -986,7 +997,7 @@ Native::Aaa::Authorization::AuthType::AuthType()
 {
     default_->parent = this;
 
-    yang_name = "auth-type"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auth-type"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::AuthType::~AuthType()
@@ -995,6 +1006,7 @@ Native::Aaa::Authorization::AuthType::~AuthType()
 
 bool Native::Aaa::Authorization::AuthType::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -1073,7 +1085,7 @@ Native::Aaa::Authorization::AuthType::Default::Default()
     group{YType::enumeration, "group"}
 {
 
-    yang_name = "default"; yang_parent_name = "auth-type"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "auth-type"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::AuthType::Default::~Default()
@@ -1082,6 +1094,7 @@ Native::Aaa::Authorization::AuthType::Default::~Default()
 
 bool Native::Aaa::Authorization::AuthType::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -1162,7 +1175,7 @@ Native::Aaa::Authorization::Commands::Commands()
     none{YType::empty, "none"}
 {
 
-    yang_name = "commands"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "commands"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Commands::~Commands()
@@ -1171,6 +1184,7 @@ Native::Aaa::Authorization::Commands::~Commands()
 
 bool Native::Aaa::Authorization::Commands::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| list_name.is_set
 	|| group.is_set
@@ -1200,7 +1214,9 @@ std::string Native::Aaa::Authorization::Commands::get_absolute_path() const
 std::string Native::Aaa::Authorization::Commands::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "commands" <<"[level='" <<level <<"']" <<"[list-name='" <<list_name <<"']";
+    path_buffer << "commands";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(list_name, "list-name");
     return path_buffer.str();
 }
 
@@ -1312,7 +1328,7 @@ Native::Aaa::Authorization::Configuration::Configuration()
 {
     default_->parent = this;
 
-    yang_name = "configuration"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "configuration"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Configuration::~Configuration()
@@ -1321,6 +1337,7 @@ Native::Aaa::Authorization::Configuration::~Configuration()
 
 bool Native::Aaa::Authorization::Configuration::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -1400,7 +1417,7 @@ Native::Aaa::Authorization::Configuration::Default::Default()
 {
     group->parent = this;
 
-    yang_name = "default"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "configuration"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Configuration::Default::~Default()
@@ -1409,6 +1426,7 @@ Native::Aaa::Authorization::Configuration::Default::~Default()
 
 bool Native::Aaa::Authorization::Configuration::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (group !=  nullptr && group->has_data());
 }
 
@@ -1483,9 +1501,11 @@ bool Native::Aaa::Authorization::Configuration::Default::has_leaf_or_child_of_na
 }
 
 Native::Aaa::Authorization::Configuration::Default::Group::Group()
+    :
+    group_name(this, {"group_name"})
 {
 
-    yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Configuration::Default::Group::~Group()
@@ -1494,7 +1514,8 @@ Native::Aaa::Authorization::Configuration::Default::Group::~Group()
 
 bool Native::Aaa::Authorization::Configuration::Default::Group::has_data() const
 {
-    for (std::size_t index=0; index<group_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_name.len(); index++)
     {
         if(group_name[index]->has_data())
             return true;
@@ -1504,7 +1525,7 @@ bool Native::Aaa::Authorization::Configuration::Default::Group::has_data() const
 
 bool Native::Aaa::Authorization::Configuration::Default::Group::has_operation() const
 {
-    for (std::size_t index=0; index<group_name.size(); index++)
+    for (std::size_t index=0; index<group_name.len(); index++)
     {
         if(group_name[index]->has_operation())
             return true;
@@ -1541,7 +1562,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Configuration::Default::Grou
     {
         auto c = std::make_shared<Native::Aaa::Authorization::Configuration::Default::Group::GroupName>();
         c->parent = this;
-        group_name.push_back(c);
+        group_name.append(c);
         return c;
     }
 
@@ -1553,7 +1574,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Confi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_name)
+    for (auto c : group_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1584,7 +1605,7 @@ Native::Aaa::Authorization::Configuration::Default::Group::GroupName::GroupName(
     group_name{YType::str, "group-name"}
 {
 
-    yang_name = "group-name"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-name"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Configuration::Default::Group::GroupName::~GroupName()
@@ -1593,6 +1614,7 @@ Native::Aaa::Authorization::Configuration::Default::Group::GroupName::~GroupName
 
 bool Native::Aaa::Authorization::Configuration::Default::Group::GroupName::has_data() const
 {
+    if (is_presence_container) return true;
     return group_name.is_set;
 }
 
@@ -1612,7 +1634,8 @@ std::string Native::Aaa::Authorization::Configuration::Default::Group::GroupName
 std::string Native::Aaa::Authorization::Configuration::Default::Group::GroupName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-name" <<"[group-name='" <<group_name <<"']";
+    path_buffer << "group-name";
+    ADD_KEY_TOKEN(group_name, "group-name");
     return path_buffer.str();
 }
 
@@ -1666,10 +1689,11 @@ bool Native::Aaa::Authorization::Configuration::Default::Group::GroupName::has_l
 Native::Aaa::Authorization::CredentialDownload::CredentialDownload()
     :
     default_(std::make_shared<Native::Aaa::Authorization::CredentialDownload::Default>())
+    , authorization_list(this, {"name"})
 {
     default_->parent = this;
 
-    yang_name = "credential-download"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "credential-download"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::CredentialDownload::~CredentialDownload()
@@ -1678,7 +1702,8 @@ Native::Aaa::Authorization::CredentialDownload::~CredentialDownload()
 
 bool Native::Aaa::Authorization::CredentialDownload::has_data() const
 {
-    for (std::size_t index=0; index<authorization_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<authorization_list.len(); index++)
     {
         if(authorization_list[index]->has_data())
             return true;
@@ -1688,7 +1713,7 @@ bool Native::Aaa::Authorization::CredentialDownload::has_data() const
 
 bool Native::Aaa::Authorization::CredentialDownload::has_operation() const
 {
-    for (std::size_t index=0; index<authorization_list.size(); index++)
+    for (std::size_t index=0; index<authorization_list.len(); index++)
     {
         if(authorization_list[index]->has_operation())
             return true;
@@ -1735,7 +1760,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::CredentialDownload::get_chil
     {
         auto c = std::make_shared<Native::Aaa::Authorization::CredentialDownload::AuthorizationList>();
         c->parent = this;
-        authorization_list.push_back(c);
+        authorization_list.append(c);
         return c;
     }
 
@@ -1752,7 +1777,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Crede
     }
 
     count = 0;
-    for (auto const & c : authorization_list)
+    for (auto c : authorization_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1787,7 +1812,7 @@ Native::Aaa::Authorization::CredentialDownload::Default::Default()
     none{YType::empty, "none"}
 {
 
-    yang_name = "default"; yang_parent_name = "credential-download"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "credential-download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::CredentialDownload::Default::~Default()
@@ -1796,6 +1821,7 @@ Native::Aaa::Authorization::CredentialDownload::Default::~Default()
 
 bool Native::Aaa::Authorization::CredentialDownload::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| cache.is_set
 	|| group.is_set
@@ -1928,7 +1954,7 @@ Native::Aaa::Authorization::CredentialDownload::AuthorizationList::Authorization
     none{YType::empty, "none"}
 {
 
-    yang_name = "authorization-list"; yang_parent_name = "credential-download"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authorization-list"; yang_parent_name = "credential-download"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::CredentialDownload::AuthorizationList::~AuthorizationList()
@@ -1937,6 +1963,7 @@ Native::Aaa::Authorization::CredentialDownload::AuthorizationList::~Authorizatio
 
 bool Native::Aaa::Authorization::CredentialDownload::AuthorizationList::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| local.is_set
 	|| cache.is_set
@@ -1966,7 +1993,8 @@ std::string Native::Aaa::Authorization::CredentialDownload::AuthorizationList::g
 std::string Native::Aaa::Authorization::CredentialDownload::AuthorizationList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "authorization-list" <<"[name='" <<name <<"']";
+    path_buffer << "authorization-list";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2075,18 +2103,18 @@ bool Native::Aaa::Authorization::CredentialDownload::AuthorizationList::has_leaf
 Native::Aaa::Authorization::Exec::Exec()
     :
     name{YType::str, "name"}
-    	,
+        ,
     a1(std::make_shared<Native::Aaa::Authorization::Exec::A1>())
-	,a2(std::make_shared<Native::Aaa::Authorization::Exec::A2>())
-	,a3(std::make_shared<Native::Aaa::Authorization::Exec::A3>())
-	,a4(std::make_shared<Native::Aaa::Authorization::Exec::A4>())
+    , a2(std::make_shared<Native::Aaa::Authorization::Exec::A2>())
+    , a3(std::make_shared<Native::Aaa::Authorization::Exec::A3>())
+    , a4(std::make_shared<Native::Aaa::Authorization::Exec::A4>())
 {
     a1->parent = this;
     a2->parent = this;
     a3->parent = this;
     a4->parent = this;
 
-    yang_name = "exec"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exec"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Exec::~Exec()
@@ -2095,6 +2123,7 @@ Native::Aaa::Authorization::Exec::~Exec()
 
 bool Native::Aaa::Authorization::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (a1 !=  nullptr && a1->has_data())
 	|| (a2 !=  nullptr && a2->has_data())
@@ -2122,7 +2151,8 @@ std::string Native::Aaa::Authorization::Exec::get_absolute_path() const
 std::string Native::Aaa::Authorization::Exec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exec" <<"[name='" <<name <<"']";
+    path_buffer << "exec";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2239,7 +2269,7 @@ Native::Aaa::Authorization::Exec::A1::A1()
     cache{YType::str, "cache"}
 {
 
-    yang_name = "a1"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a1"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Exec::A1::~A1()
@@ -2248,6 +2278,7 @@ Native::Aaa::Authorization::Exec::A1::~A1()
 
 bool Native::Aaa::Authorization::Exec::A1::has_data() const
 {
+    if (is_presence_container) return true;
     return if_authenticated.is_set
 	|| none.is_set
 	|| krb5_instance.is_set
@@ -2386,7 +2417,7 @@ Native::Aaa::Authorization::Exec::A2::A2()
     local{YType::empty, "local"}
 {
 
-    yang_name = "a2"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a2"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Exec::A2::~A2()
@@ -2395,6 +2426,7 @@ Native::Aaa::Authorization::Exec::A2::~A2()
 
 bool Native::Aaa::Authorization::Exec::A2::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| if_authenticated.is_set
@@ -2533,7 +2565,7 @@ Native::Aaa::Authorization::Exec::A3::A3()
     local{YType::empty, "local"}
 {
 
-    yang_name = "a3"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a3"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Exec::A3::~A3()
@@ -2542,6 +2574,7 @@ Native::Aaa::Authorization::Exec::A3::~A3()
 
 bool Native::Aaa::Authorization::Exec::A3::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -2680,7 +2713,7 @@ Native::Aaa::Authorization::Exec::A4::A4()
     local{YType::empty, "local"}
 {
 
-    yang_name = "a4"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a4"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Exec::A4::~A4()
@@ -2689,6 +2722,7 @@ Native::Aaa::Authorization::Exec::A4::~A4()
 
 bool Native::Aaa::Authorization::Exec::A4::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -2825,7 +2859,7 @@ Native::Aaa::Authorization::Eventmanager::Eventmanager()
     none{YType::empty, "none"}
 {
 
-    yang_name = "eventmanager"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eventmanager"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Eventmanager::~Eventmanager()
@@ -2834,6 +2868,7 @@ Native::Aaa::Authorization::Eventmanager::~Eventmanager()
 
 bool Native::Aaa::Authorization::Eventmanager::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| group.is_set
 	|| local.is_set
@@ -2859,7 +2894,8 @@ std::string Native::Aaa::Authorization::Eventmanager::get_absolute_path() const
 std::string Native::Aaa::Authorization::Eventmanager::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eventmanager" <<"[name='" <<name <<"']";
+    path_buffer << "eventmanager";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2946,18 +2982,18 @@ bool Native::Aaa::Authorization::Eventmanager::has_leaf_or_child_of_name(const s
 Native::Aaa::Authorization::Network::Network()
     :
     id{YType::str, "id"}
-    	,
+        ,
     a1(std::make_shared<Native::Aaa::Authorization::Network::A1>())
-	,a2(std::make_shared<Native::Aaa::Authorization::Network::A2>())
-	,a3(std::make_shared<Native::Aaa::Authorization::Network::A3>())
-	,a4(std::make_shared<Native::Aaa::Authorization::Network::A4>())
+    , a2(std::make_shared<Native::Aaa::Authorization::Network::A2>())
+    , a3(std::make_shared<Native::Aaa::Authorization::Network::A3>())
+    , a4(std::make_shared<Native::Aaa::Authorization::Network::A4>())
 {
     a1->parent = this;
     a2->parent = this;
     a3->parent = this;
     a4->parent = this;
 
-    yang_name = "network"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Network::~Network()
@@ -2966,6 +3002,7 @@ Native::Aaa::Authorization::Network::~Network()
 
 bool Native::Aaa::Authorization::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (a1 !=  nullptr && a1->has_data())
 	|| (a2 !=  nullptr && a2->has_data())
@@ -2993,7 +3030,8 @@ std::string Native::Aaa::Authorization::Network::get_absolute_path() const
 std::string Native::Aaa::Authorization::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "network" <<"[id='" <<id <<"']";
+    path_buffer << "network";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -3109,7 +3147,7 @@ Native::Aaa::Authorization::Network::A1::A1()
     cache{YType::str, "cache"}
 {
 
-    yang_name = "a1"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a1"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Network::A1::~A1()
@@ -3118,6 +3156,7 @@ Native::Aaa::Authorization::Network::A1::~A1()
 
 bool Native::Aaa::Authorization::Network::A1::has_data() const
 {
+    if (is_presence_container) return true;
     return if_authenticated.is_set
 	|| none.is_set
 	|| local.is_set
@@ -3242,7 +3281,7 @@ Native::Aaa::Authorization::Network::A2::A2()
     local{YType::empty, "local"}
 {
 
-    yang_name = "a2"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a2"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Network::A2::~A2()
@@ -3251,6 +3290,7 @@ Native::Aaa::Authorization::Network::A2::~A2()
 
 bool Native::Aaa::Authorization::Network::A2::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| if_authenticated.is_set
@@ -3375,7 +3415,7 @@ Native::Aaa::Authorization::Network::A3::A3()
     local{YType::empty, "local"}
 {
 
-    yang_name = "a3"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a3"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Network::A3::~A3()
@@ -3384,6 +3424,7 @@ Native::Aaa::Authorization::Network::A3::~A3()
 
 bool Native::Aaa::Authorization::Network::A3::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -3508,7 +3549,7 @@ Native::Aaa::Authorization::Network::A4::A4()
     local{YType::empty, "local"}
 {
 
-    yang_name = "a4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Authorization::Network::A4::~A4()
@@ -3517,6 +3558,7 @@ Native::Aaa::Authorization::Network::A4::~A4()
 
 bool Native::Aaa::Authorization::Network::A4::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| cache.is_set
 	|| none.is_set
@@ -3638,7 +3680,7 @@ Native::Aaa::Authorization::AuthProxy::AuthProxy()
 {
     default_->parent = this;
 
-    yang_name = "auth-proxy"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auth-proxy"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::AuthProxy::~AuthProxy()
@@ -3647,6 +3689,7 @@ Native::Aaa::Authorization::AuthProxy::~AuthProxy()
 
 bool Native::Aaa::Authorization::AuthProxy::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -3726,7 +3769,7 @@ Native::Aaa::Authorization::AuthProxy::Default::Default()
     group{YType::str, "group"}
 {
 
-    yang_name = "default"; yang_parent_name = "auth-proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "auth-proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::AuthProxy::Default::~Default()
@@ -3735,6 +3778,7 @@ Native::Aaa::Authorization::AuthProxy::Default::~Default()
 
 bool Native::Aaa::Authorization::AuthProxy::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| group.is_set;
 }
@@ -3824,7 +3868,7 @@ Native::Aaa::Authorization::Onep::Onep()
 {
     default_->parent = this;
 
-    yang_name = "onep"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "onep"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Onep::~Onep()
@@ -3833,6 +3877,7 @@ Native::Aaa::Authorization::Onep::~Onep()
 
 bool Native::Aaa::Authorization::Onep::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -3912,7 +3957,7 @@ Native::Aaa::Authorization::Onep::Default::Default()
 {
     group->parent = this;
 
-    yang_name = "default"; yang_parent_name = "onep"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "onep"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Onep::Default::~Default()
@@ -3921,6 +3966,7 @@ Native::Aaa::Authorization::Onep::Default::~Default()
 
 bool Native::Aaa::Authorization::Onep::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (group !=  nullptr && group->has_data());
 }
 
@@ -3995,9 +4041,11 @@ bool Native::Aaa::Authorization::Onep::Default::has_leaf_or_child_of_name(const 
 }
 
 Native::Aaa::Authorization::Onep::Default::Group::Group()
+    :
+    group_word(this, {"group_word"})
 {
 
-    yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Onep::Default::Group::~Group()
@@ -4006,7 +4054,8 @@ Native::Aaa::Authorization::Onep::Default::Group::~Group()
 
 bool Native::Aaa::Authorization::Onep::Default::Group::has_data() const
 {
-    for (std::size_t index=0; index<group_word.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<group_word.len(); index++)
     {
         if(group_word[index]->has_data())
             return true;
@@ -4016,7 +4065,7 @@ bool Native::Aaa::Authorization::Onep::Default::Group::has_data() const
 
 bool Native::Aaa::Authorization::Onep::Default::Group::has_operation() const
 {
-    for (std::size_t index=0; index<group_word.size(); index++)
+    for (std::size_t index=0; index<group_word.len(); index++)
     {
         if(group_word[index]->has_operation())
             return true;
@@ -4053,7 +4102,7 @@ std::shared_ptr<Entity> Native::Aaa::Authorization::Onep::Default::Group::get_ch
     {
         auto c = std::make_shared<Native::Aaa::Authorization::Onep::Default::Group::GroupWord>();
         c->parent = this;
-        group_word.push_back(c);
+        group_word.append(c);
         return c;
     }
 
@@ -4065,7 +4114,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Authorization::Onep:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : group_word)
+    for (auto c : group_word.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4096,7 +4145,7 @@ Native::Aaa::Authorization::Onep::Default::Group::GroupWord::GroupWord()
     group_word{YType::str, "group-word"}
 {
 
-    yang_name = "group-word"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group-word"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Authorization::Onep::Default::Group::GroupWord::~GroupWord()
@@ -4105,6 +4154,7 @@ Native::Aaa::Authorization::Onep::Default::Group::GroupWord::~GroupWord()
 
 bool Native::Aaa::Authorization::Onep::Default::Group::GroupWord::has_data() const
 {
+    if (is_presence_container) return true;
     return group_word.is_set;
 }
 
@@ -4124,7 +4174,8 @@ std::string Native::Aaa::Authorization::Onep::Default::Group::GroupWord::get_abs
 std::string Native::Aaa::Authorization::Onep::Default::Group::GroupWord::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "group-word" <<"[group-word='" <<group_word <<"']";
+    path_buffer << "group-word";
+    ADD_KEY_TOKEN(group_word, "group-word");
     return path_buffer.str();
 }
 
@@ -4177,14 +4228,18 @@ bool Native::Aaa::Authorization::Onep::Default::Group::GroupWord::has_leaf_or_ch
 
 Native::Aaa::Accounting::Accounting()
     :
-    delay_start(std::make_shared<Native::Aaa::Accounting::DelayStart>())
-	,dot1x(std::make_shared<Native::Aaa::Accounting::Dot1X>())
-	,identity(std::make_shared<Native::Aaa::Accounting::Identity>())
-	,exec_submode(std::make_shared<Native::Aaa::Accounting::ExecSubmode>())
-	,send(std::make_shared<Native::Aaa::Accounting::Send>())
-	,system(std::make_shared<Native::Aaa::Accounting::System>())
-	,update(std::make_shared<Native::Aaa::Accounting::Update>())
-	,auth_proxy(std::make_shared<Native::Aaa::Accounting::AuthProxy>())
+    commands(this, {"level", "list_name"})
+    , connection(this, {"name"})
+    , delay_start(std::make_shared<Native::Aaa::Accounting::DelayStart>())
+    , dot1x(std::make_shared<Native::Aaa::Accounting::Dot1x>())
+    , identity(std::make_shared<Native::Aaa::Accounting::Identity>())
+    , exec(this, {"name"})
+    , exec_submode(std::make_shared<Native::Aaa::Accounting::ExecSubmode>())
+    , network(this, {"id"})
+    , send(std::make_shared<Native::Aaa::Accounting::Send>())
+    , system(std::make_shared<Native::Aaa::Accounting::System>())
+    , update(std::make_shared<Native::Aaa::Accounting::Update>())
+    , auth_proxy(std::make_shared<Native::Aaa::Accounting::AuthProxy>())
 {
     delay_start->parent = this;
     dot1x->parent = this;
@@ -4195,7 +4250,7 @@ Native::Aaa::Accounting::Accounting()
     update->parent = this;
     auth_proxy->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::~Accounting()
@@ -4204,22 +4259,23 @@ Native::Aaa::Accounting::~Accounting()
 
 bool Native::Aaa::Accounting::has_data() const
 {
-    for (std::size_t index=0; index<commands.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<commands.len(); index++)
     {
         if(commands[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<connection.size(); index++)
+    for (std::size_t index=0; index<connection.len(); index++)
     {
         if(connection[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<exec.size(); index++)
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_data())
             return true;
@@ -4236,22 +4292,22 @@ bool Native::Aaa::Accounting::has_data() const
 
 bool Native::Aaa::Accounting::has_operation() const
 {
-    for (std::size_t index=0; index<commands.size(); index++)
+    for (std::size_t index=0; index<commands.len(); index++)
     {
         if(commands[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<connection.size(); index++)
+    for (std::size_t index=0; index<connection.len(); index++)
     {
         if(connection[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<exec.size(); index++)
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<network.size(); index++)
+    for (std::size_t index=0; index<network.len(); index++)
     {
         if(network[index]->has_operation())
             return true;
@@ -4296,7 +4352,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Native::Aaa::Accounting::Commands>();
         c->parent = this;
-        commands.push_back(c);
+        commands.append(c);
         return c;
     }
 
@@ -4304,7 +4360,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Native::Aaa::Accounting::Connection>();
         c->parent = this;
-        connection.push_back(c);
+        connection.append(c);
         return c;
     }
 
@@ -4321,7 +4377,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
     {
         if(dot1x == nullptr)
         {
-            dot1x = std::make_shared<Native::Aaa::Accounting::Dot1X>();
+            dot1x = std::make_shared<Native::Aaa::Accounting::Dot1x>();
         }
         return dot1x;
     }
@@ -4339,7 +4395,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Native::Aaa::Accounting::Exec>();
         c->parent = this;
-        exec.push_back(c);
+        exec.append(c);
         return c;
     }
 
@@ -4356,7 +4412,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::get_child_by_name(const std::st
     {
         auto c = std::make_shared<Native::Aaa::Accounting::Network>();
         c->parent = this;
-        network.push_back(c);
+        network.append(c);
         return c;
     }
 
@@ -4404,7 +4460,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : commands)
+    for (auto c : commands.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4413,7 +4469,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::get_chil
     }
 
     count = 0;
-    for (auto const & c : connection)
+    for (auto c : connection.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4437,7 +4493,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::get_chil
     }
 
     count = 0;
-    for (auto const & c : exec)
+    for (auto c : exec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4451,7 +4507,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::get_chil
     }
 
     count = 0;
-    for (auto const & c : network)
+    for (auto c : network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4506,7 +4562,7 @@ Native::Aaa::Accounting::Commands::Commands()
     group{YType::str, "group"}
 {
 
-    yang_name = "commands"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "commands"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Commands::~Commands()
@@ -4515,6 +4571,7 @@ Native::Aaa::Accounting::Commands::~Commands()
 
 bool Native::Aaa::Accounting::Commands::has_data() const
 {
+    if (is_presence_container) return true;
     return level.is_set
 	|| list_name.is_set
 	|| action_type.is_set
@@ -4542,7 +4599,9 @@ std::string Native::Aaa::Accounting::Commands::get_absolute_path() const
 std::string Native::Aaa::Accounting::Commands::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "commands" <<"[level='" <<level <<"']" <<"[list-name='" <<list_name <<"']";
+    path_buffer << "commands";
+    ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(list_name, "list-name");
     return path_buffer.str();
 }
 
@@ -4641,14 +4700,14 @@ Native::Aaa::Accounting::Connection::Connection()
     :
     name{YType::str, "name"},
     none{YType::empty, "none"}
-    	,
+        ,
     start_stop(std::make_shared<Native::Aaa::Accounting::Connection::StartStop>())
-	,stop_only(std::make_shared<Native::Aaa::Accounting::Connection::StopOnly>())
+    , stop_only(std::make_shared<Native::Aaa::Accounting::Connection::StopOnly>())
 {
     start_stop->parent = this;
     stop_only->parent = this;
 
-    yang_name = "connection"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "connection"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Connection::~Connection()
@@ -4657,6 +4716,7 @@ Native::Aaa::Accounting::Connection::~Connection()
 
 bool Native::Aaa::Accounting::Connection::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| none.is_set
 	|| (start_stop !=  nullptr && start_stop->has_data())
@@ -4682,7 +4742,8 @@ std::string Native::Aaa::Accounting::Connection::get_absolute_path() const
 std::string Native::Aaa::Accounting::Connection::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "connection" <<"[name='" <<name <<"']";
+    path_buffer << "connection";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -4778,7 +4839,7 @@ Native::Aaa::Accounting::Connection::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-stop"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Connection::StartStop::~StartStop()
@@ -4787,6 +4848,7 @@ Native::Aaa::Accounting::Connection::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::Connection::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -4869,7 +4931,7 @@ Native::Aaa::Accounting::Connection::StopOnly::StopOnly()
     group{YType::str, "group"}
 {
 
-    yang_name = "stop-only"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop-only"; yang_parent_name = "connection"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Connection::StopOnly::~StopOnly()
@@ -4878,6 +4940,7 @@ Native::Aaa::Accounting::Connection::StopOnly::~StopOnly()
 
 bool Native::Aaa::Accounting::Connection::StopOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -4960,7 +5023,7 @@ Native::Aaa::Accounting::DelayStart::DelayStart()
     all{YType::empty, "all"}
 {
 
-    yang_name = "delay-start"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delay-start"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::DelayStart::~DelayStart()
@@ -4969,6 +5032,7 @@ Native::Aaa::Accounting::DelayStart::~DelayStart()
 
 bool Native::Aaa::Accounting::DelayStart::has_data() const
 {
+    if (is_presence_container) return true;
     return extended_delay.is_set
 	|| all.is_set;
 }
@@ -5052,22 +5116,24 @@ bool Native::Aaa::Accounting::DelayStart::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-Native::Aaa::Accounting::Dot1X::Dot1X()
+Native::Aaa::Accounting::Dot1x::Dot1x()
     :
-    default_(std::make_shared<Native::Aaa::Accounting::Dot1X::Default>())
+    default_(std::make_shared<Native::Aaa::Accounting::Dot1x::Default>())
+    , accounting_list(this, {"name"})
 {
     default_->parent = this;
 
-    yang_name = "dot1x"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1x"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Aaa::Accounting::Dot1X::~Dot1X()
+Native::Aaa::Accounting::Dot1x::~Dot1x()
 {
 }
 
-bool Native::Aaa::Accounting::Dot1X::has_data() const
+bool Native::Aaa::Accounting::Dot1x::has_data() const
 {
-    for (std::size_t index=0; index<accounting_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<accounting_list.len(); index++)
     {
         if(accounting_list[index]->has_data())
             return true;
@@ -5075,9 +5141,9 @@ bool Native::Aaa::Accounting::Dot1X::has_data() const
     return (default_ !=  nullptr && default_->has_data());
 }
 
-bool Native::Aaa::Accounting::Dot1X::has_operation() const
+bool Native::Aaa::Accounting::Dot1x::has_operation() const
 {
-    for (std::size_t index=0; index<accounting_list.size(); index++)
+    for (std::size_t index=0; index<accounting_list.len(); index++)
     {
         if(accounting_list[index]->has_operation())
             return true;
@@ -5086,21 +5152,21 @@ bool Native::Aaa::Accounting::Dot1X::has_operation() const
 	|| (default_ !=  nullptr && default_->has_operation());
 }
 
-std::string Native::Aaa::Accounting::Dot1X::get_absolute_path() const
+std::string Native::Aaa::Accounting::Dot1x::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::Dot1X::get_segment_path() const
+std::string Native::Aaa::Accounting::Dot1x::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1x";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1x::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5109,29 +5175,29 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::g
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1X::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "default")
     {
         if(default_ == nullptr)
         {
-            default_ = std::make_shared<Native::Aaa::Accounting::Dot1X::Default>();
+            default_ = std::make_shared<Native::Aaa::Accounting::Dot1x::Default>();
         }
         return default_;
     }
 
     if(child_yang_name == "accounting-list")
     {
-        auto c = std::make_shared<Native::Aaa::Accounting::Dot1X::AccountingList>();
+        auto c = std::make_shared<Native::Aaa::Accounting::Dot1x::AccountingList>();
         c->parent = this;
-        accounting_list.push_back(c);
+        accounting_list.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1x::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5141,7 +5207,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::g
     }
 
     count = 0;
-    for (auto const & c : accounting_list)
+    for (auto c : accounting_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5152,60 +5218,61 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::g
     return children;
 }
 
-void Native::Aaa::Accounting::Dot1X::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Aaa::Accounting::Dot1X::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Aaa::Accounting::Dot1X::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::Dot1x::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "default" || name == "accounting-list")
         return true;
     return false;
 }
 
-Native::Aaa::Accounting::Dot1X::Default::Default()
+Native::Aaa::Accounting::Dot1x::Default::Default()
     :
-    start_stop(std::make_shared<Native::Aaa::Accounting::Dot1X::Default::StartStop>())
+    start_stop(std::make_shared<Native::Aaa::Accounting::Dot1x::Default::StartStop>())
 {
     start_stop->parent = this;
 
-    yang_name = "default"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Aaa::Accounting::Dot1X::Default::~Default()
+Native::Aaa::Accounting::Dot1x::Default::~Default()
 {
 }
 
-bool Native::Aaa::Accounting::Dot1X::Default::has_data() const
+bool Native::Aaa::Accounting::Dot1x::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (start_stop !=  nullptr && start_stop->has_data());
 }
 
-bool Native::Aaa::Accounting::Dot1X::Default::has_operation() const
+bool Native::Aaa::Accounting::Dot1x::Default::has_operation() const
 {
     return is_set(yfilter)
 	|| (start_stop !=  nullptr && start_stop->has_operation());
 }
 
-std::string Native::Aaa::Accounting::Dot1X::Default::get_absolute_path() const
+std::string Native::Aaa::Accounting::Dot1x::Default::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::Dot1X::Default::get_segment_path() const
+std::string Native::Aaa::Accounting::Dot1x::Default::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "default";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::Default::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1x::Default::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5214,13 +5281,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::D
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1X::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1x::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start-stop")
     {
         if(start_stop == nullptr)
         {
-            start_stop = std::make_shared<Native::Aaa::Accounting::Dot1X::Default::StartStop>();
+            start_stop = std::make_shared<Native::Aaa::Accounting::Dot1x::Default::StartStop>();
         }
         return start_stop;
     }
@@ -5228,7 +5295,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1X::Default::get_child_by_na
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::Default::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1x::Default::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5240,62 +5307,63 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::D
     return children;
 }
 
-void Native::Aaa::Accounting::Dot1X::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::Dot1x::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Aaa::Accounting::Dot1X::Default::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::Dot1x::Default::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Aaa::Accounting::Dot1X::Default::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::Dot1x::Default::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "start-stop")
         return true;
     return false;
 }
 
-Native::Aaa::Accounting::Dot1X::Default::StartStop::StartStop()
+Native::Aaa::Accounting::Dot1x::Default::StartStop::StartStop()
     :
     broadcast{YType::empty, "broadcast"},
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Aaa::Accounting::Dot1X::Default::StartStop::~StartStop()
+Native::Aaa::Accounting::Dot1x::Default::StartStop::~StartStop()
 {
 }
 
-bool Native::Aaa::Accounting::Dot1X::Default::StartStop::has_data() const
+bool Native::Aaa::Accounting::Dot1x::Default::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
 
-bool Native::Aaa::Accounting::Dot1X::Default::StartStop::has_operation() const
+bool Native::Aaa::Accounting::Dot1x::Default::StartStop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast.yfilter)
 	|| ydk::is_set(group.yfilter);
 }
 
-std::string Native::Aaa::Accounting::Dot1X::Default::StartStop::get_absolute_path() const
+std::string Native::Aaa::Accounting::Dot1x::Default::StartStop::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/dot1x/default/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::Dot1X::Default::StartStop::get_segment_path() const
+std::string Native::Aaa::Accounting::Dot1x::Default::StartStop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "start-stop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::Default::StartStop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1x::Default::StartStop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5306,19 +5374,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::D
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1X::Default::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1x::Default::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::Default::StartStop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1x::Default::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Aaa::Accounting::Dot1X::Default::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::Dot1x::Default::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast")
     {
@@ -5334,7 +5402,7 @@ void Native::Aaa::Accounting::Dot1X::Default::StartStop::set_value(const std::st
     }
 }
 
-void Native::Aaa::Accounting::Dot1X::Default::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::Dot1x::Default::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast")
     {
@@ -5346,56 +5414,58 @@ void Native::Aaa::Accounting::Dot1X::Default::StartStop::set_filter(const std::s
     }
 }
 
-bool Native::Aaa::Accounting::Dot1X::Default::StartStop::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::Dot1x::Default::StartStop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "broadcast" || name == "group")
         return true;
     return false;
 }
 
-Native::Aaa::Accounting::Dot1X::AccountingList::AccountingList()
+Native::Aaa::Accounting::Dot1x::AccountingList::AccountingList()
     :
     name{YType::str, "name"}
-    	,
-    start_stop(std::make_shared<Native::Aaa::Accounting::Dot1X::AccountingList::StartStop>())
+        ,
+    start_stop(std::make_shared<Native::Aaa::Accounting::Dot1x::AccountingList::StartStop>())
 {
     start_stop->parent = this;
 
-    yang_name = "accounting-list"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting-list"; yang_parent_name = "dot1x"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Aaa::Accounting::Dot1X::AccountingList::~AccountingList()
+Native::Aaa::Accounting::Dot1x::AccountingList::~AccountingList()
 {
 }
 
-bool Native::Aaa::Accounting::Dot1X::AccountingList::has_data() const
+bool Native::Aaa::Accounting::Dot1x::AccountingList::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (start_stop !=  nullptr && start_stop->has_data());
 }
 
-bool Native::Aaa::Accounting::Dot1X::AccountingList::has_operation() const
+bool Native::Aaa::Accounting::Dot1x::AccountingList::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| (start_stop !=  nullptr && start_stop->has_operation());
 }
 
-std::string Native::Aaa::Accounting::Dot1X::AccountingList::get_absolute_path() const
+std::string Native::Aaa::Accounting::Dot1x::AccountingList::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:accounting/dot1x/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::Aaa::Accounting::Dot1X::AccountingList::get_segment_path() const
+std::string Native::Aaa::Accounting::Dot1x::AccountingList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "accounting-list" <<"[name='" <<name <<"']";
+    path_buffer << "accounting-list";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::AccountingList::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1x::AccountingList::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5405,13 +5475,13 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::A
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1X::AccountingList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1x::AccountingList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "start-stop")
     {
         if(start_stop == nullptr)
         {
-            start_stop = std::make_shared<Native::Aaa::Accounting::Dot1X::AccountingList::StartStop>();
+            start_stop = std::make_shared<Native::Aaa::Accounting::Dot1x::AccountingList::StartStop>();
         }
         return start_stop;
     }
@@ -5419,7 +5489,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1X::AccountingList::get_chil
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::AccountingList::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1x::AccountingList::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -5431,7 +5501,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::A
     return children;
 }
 
-void Native::Aaa::Accounting::Dot1X::AccountingList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::Dot1x::AccountingList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "name")
     {
@@ -5441,7 +5511,7 @@ void Native::Aaa::Accounting::Dot1X::AccountingList::set_value(const std::string
     }
 }
 
-void Native::Aaa::Accounting::Dot1X::AccountingList::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::Dot1x::AccountingList::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "name")
     {
@@ -5449,47 +5519,48 @@ void Native::Aaa::Accounting::Dot1X::AccountingList::set_filter(const std::strin
     }
 }
 
-bool Native::Aaa::Accounting::Dot1X::AccountingList::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::Dot1x::AccountingList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "start-stop" || name == "name")
         return true;
     return false;
 }
 
-Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::StartStop()
+Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::StartStop()
     :
     broadcast{YType::empty, "broadcast"},
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "accounting-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-stop"; yang_parent_name = "accounting-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::~StartStop()
+Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::~StartStop()
 {
 }
 
-bool Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::has_data() const
+bool Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
 
-bool Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::has_operation() const
+bool Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(broadcast.yfilter)
 	|| ydk::is_set(group.yfilter);
 }
 
-std::string Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::get_segment_path() const
+std::string Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "start-stop";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5500,19 +5571,19 @@ std::vector<std::pair<std::string, LeafData> > Native::Aaa::Accounting::Dot1X::A
 
 }
 
-std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "broadcast")
     {
@@ -5528,7 +5599,7 @@ void Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::set_value(const 
     }
 }
 
-void Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "broadcast")
     {
@@ -5540,7 +5611,7 @@ void Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::set_filter(const
     }
 }
 
-bool Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "broadcast" || name == "group")
         return true;
@@ -5550,10 +5621,11 @@ bool Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::has_leaf_or_chil
 Native::Aaa::Accounting::Identity::Identity()
     :
     default_(std::make_shared<Native::Aaa::Accounting::Identity::Default>())
+    , accounting_list(this, {"name"})
 {
     default_->parent = this;
 
-    yang_name = "identity"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "identity"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Identity::~Identity()
@@ -5562,7 +5634,8 @@ Native::Aaa::Accounting::Identity::~Identity()
 
 bool Native::Aaa::Accounting::Identity::has_data() const
 {
-    for (std::size_t index=0; index<accounting_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<accounting_list.len(); index++)
     {
         if(accounting_list[index]->has_data())
             return true;
@@ -5572,7 +5645,7 @@ bool Native::Aaa::Accounting::Identity::has_data() const
 
 bool Native::Aaa::Accounting::Identity::has_operation() const
 {
-    for (std::size_t index=0; index<accounting_list.size(); index++)
+    for (std::size_t index=0; index<accounting_list.len(); index++)
     {
         if(accounting_list[index]->has_operation())
             return true;
@@ -5619,7 +5692,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::Identity::get_child_by_name(con
     {
         auto c = std::make_shared<Native::Aaa::Accounting::Identity::AccountingList>();
         c->parent = this;
-        accounting_list.push_back(c);
+        accounting_list.append(c);
         return c;
     }
 
@@ -5636,7 +5709,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::Identity
     }
 
     count = 0;
-    for (auto const & c : accounting_list)
+    for (auto c : accounting_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5668,7 +5741,7 @@ Native::Aaa::Accounting::Identity::Default::Default()
 {
     start_stop->parent = this;
 
-    yang_name = "default"; yang_parent_name = "identity"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "identity"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Identity::Default::~Default()
@@ -5677,6 +5750,7 @@ Native::Aaa::Accounting::Identity::Default::~Default()
 
 bool Native::Aaa::Accounting::Identity::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (start_stop !=  nullptr && start_stop->has_data());
 }
 
@@ -5756,7 +5830,7 @@ Native::Aaa::Accounting::Identity::Default::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Identity::Default::StartStop::~StartStop()
@@ -5765,6 +5839,7 @@ Native::Aaa::Accounting::Identity::Default::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::Identity::Default::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -5851,12 +5926,12 @@ bool Native::Aaa::Accounting::Identity::Default::StartStop::has_leaf_or_child_of
 Native::Aaa::Accounting::Identity::AccountingList::AccountingList()
     :
     name{YType::str, "name"}
-    	,
+        ,
     start_stop(std::make_shared<Native::Aaa::Accounting::Identity::AccountingList::StartStop>())
 {
     start_stop->parent = this;
 
-    yang_name = "accounting-list"; yang_parent_name = "identity"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting-list"; yang_parent_name = "identity"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Identity::AccountingList::~AccountingList()
@@ -5865,6 +5940,7 @@ Native::Aaa::Accounting::Identity::AccountingList::~AccountingList()
 
 bool Native::Aaa::Accounting::Identity::AccountingList::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (start_stop !=  nullptr && start_stop->has_data());
 }
@@ -5886,7 +5962,8 @@ std::string Native::Aaa::Accounting::Identity::AccountingList::get_absolute_path
 std::string Native::Aaa::Accounting::Identity::AccountingList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "accounting-list" <<"[name='" <<name <<"']";
+    path_buffer << "accounting-list";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -5957,7 +6034,7 @@ Native::Aaa::Accounting::Identity::AccountingList::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "accounting-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-stop"; yang_parent_name = "accounting-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Identity::AccountingList::StartStop::~StartStop()
@@ -5966,6 +6043,7 @@ Native::Aaa::Accounting::Identity::AccountingList::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::Identity::AccountingList::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -6046,14 +6124,14 @@ Native::Aaa::Accounting::Exec::Exec()
     :
     name{YType::str, "name"},
     none{YType::empty, "none"}
-    	,
+        ,
     start_stop(std::make_shared<Native::Aaa::Accounting::Exec::StartStop>())
-	,stop_only(std::make_shared<Native::Aaa::Accounting::Exec::StopOnly>())
+    , stop_only(std::make_shared<Native::Aaa::Accounting::Exec::StopOnly>())
 {
     start_stop->parent = this;
     stop_only->parent = this;
 
-    yang_name = "exec"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exec"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Exec::~Exec()
@@ -6062,6 +6140,7 @@ Native::Aaa::Accounting::Exec::~Exec()
 
 bool Native::Aaa::Accounting::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| none.is_set
 	|| (start_stop !=  nullptr && start_stop->has_data())
@@ -6087,7 +6166,8 @@ std::string Native::Aaa::Accounting::Exec::get_absolute_path() const
 std::string Native::Aaa::Accounting::Exec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exec" <<"[name='" <<name <<"']";
+    path_buffer << "exec";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6183,7 +6263,7 @@ Native::Aaa::Accounting::Exec::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-stop"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Exec::StartStop::~StartStop()
@@ -6192,6 +6272,7 @@ Native::Aaa::Accounting::Exec::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::Exec::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -6274,7 +6355,7 @@ Native::Aaa::Accounting::Exec::StopOnly::StopOnly()
     group{YType::str, "group"}
 {
 
-    yang_name = "stop-only"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop-only"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Exec::StopOnly::~StopOnly()
@@ -6283,6 +6364,7 @@ Native::Aaa::Accounting::Exec::StopOnly::~StopOnly()
 
 bool Native::Aaa::Accounting::Exec::StopOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -6360,9 +6442,11 @@ bool Native::Aaa::Accounting::Exec::StopOnly::has_leaf_or_child_of_name(const st
 }
 
 Native::Aaa::Accounting::ExecSubmode::ExecSubmode()
+    :
+    exec(this, {"name"})
 {
 
-    yang_name = "exec-submode"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exec-submode"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::ExecSubmode::~ExecSubmode()
@@ -6371,7 +6455,8 @@ Native::Aaa::Accounting::ExecSubmode::~ExecSubmode()
 
 bool Native::Aaa::Accounting::ExecSubmode::has_data() const
 {
-    for (std::size_t index=0; index<exec.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_data())
             return true;
@@ -6381,7 +6466,7 @@ bool Native::Aaa::Accounting::ExecSubmode::has_data() const
 
 bool Native::Aaa::Accounting::ExecSubmode::has_operation() const
 {
-    for (std::size_t index=0; index<exec.size(); index++)
+    for (std::size_t index=0; index<exec.len(); index++)
     {
         if(exec[index]->has_operation())
             return true;
@@ -6418,7 +6503,7 @@ std::shared_ptr<Entity> Native::Aaa::Accounting::ExecSubmode::get_child_by_name(
     {
         auto c = std::make_shared<Native::Aaa::Accounting::ExecSubmode::Exec>();
         c->parent = this;
-        exec.push_back(c);
+        exec.append(c);
         return c;
     }
 
@@ -6430,7 +6515,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Accounting::ExecSubm
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : exec)
+    for (auto c : exec.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6459,12 +6544,12 @@ bool Native::Aaa::Accounting::ExecSubmode::has_leaf_or_child_of_name(const std::
 Native::Aaa::Accounting::ExecSubmode::Exec::Exec()
     :
     name{YType::str, "name"}
-    	,
+        ,
     action_type(std::make_shared<Native::Aaa::Accounting::ExecSubmode::Exec::ActionType>())
 {
     action_type->parent = this;
 
-    yang_name = "exec"; yang_parent_name = "exec-submode"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exec"; yang_parent_name = "exec-submode"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::ExecSubmode::Exec::~Exec()
@@ -6473,6 +6558,7 @@ Native::Aaa::Accounting::ExecSubmode::Exec::~Exec()
 
 bool Native::Aaa::Accounting::ExecSubmode::Exec::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (action_type !=  nullptr && action_type->has_data());
 }
@@ -6494,7 +6580,8 @@ std::string Native::Aaa::Accounting::ExecSubmode::Exec::get_absolute_path() cons
 std::string Native::Aaa::Accounting::ExecSubmode::Exec::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "exec" <<"[name='" <<name <<"']";
+    path_buffer << "exec";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -6562,14 +6649,14 @@ bool Native::Aaa::Accounting::ExecSubmode::Exec::has_leaf_or_child_of_name(const
 Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::ActionType()
     :
     none{YType::empty, "none"}
-    	,
+        ,
     start_stop(std::make_shared<Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StartStop>())
-	,stop_only(std::make_shared<Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StopOnly>())
+    , stop_only(std::make_shared<Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StopOnly>())
 {
     start_stop->parent = this;
     stop_only->parent = this;
 
-    yang_name = "action-type"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "action-type"; yang_parent_name = "exec"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::~ActionType()
@@ -6578,6 +6665,7 @@ Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::~ActionType()
 
 bool Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| (start_stop !=  nullptr && start_stop->has_data())
 	|| (stop_only !=  nullptr && stop_only->has_data());
@@ -6679,7 +6767,7 @@ Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "action-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-stop"; yang_parent_name = "action-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StartStop::~StartStop()
@@ -6688,6 +6776,7 @@ Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -6770,7 +6859,7 @@ Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StopOnly::StopOnly()
     group{YType::str, "group"}
 {
 
-    yang_name = "stop-only"; yang_parent_name = "action-type"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "stop-only"; yang_parent_name = "action-type"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StopOnly::~StopOnly()
@@ -6779,6 +6868,7 @@ Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StopOnly::~StopOnly()
 
 bool Native::Aaa::Accounting::ExecSubmode::Exec::ActionType::StopOnly::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -6861,12 +6951,12 @@ Native::Aaa::Accounting::Network::Network()
     none{YType::empty, "none"},
     mode{YType::enumeration, "mode"},
     broadcast{YType::empty, "broadcast"}
-    	,
+        ,
     start_stop(std::make_shared<Native::Aaa::Accounting::Network::StartStop>())
-	,a1(std::make_shared<Native::Aaa::Accounting::Network::A1>())
-	,a2(std::make_shared<Native::Aaa::Accounting::Network::A2>())
-	,a3(std::make_shared<Native::Aaa::Accounting::Network::A3>())
-	,a4(std::make_shared<Native::Aaa::Accounting::Network::A4>())
+    , a1(std::make_shared<Native::Aaa::Accounting::Network::A1>())
+    , a2(std::make_shared<Native::Aaa::Accounting::Network::A2>())
+    , a3(std::make_shared<Native::Aaa::Accounting::Network::A3>())
+    , a4(std::make_shared<Native::Aaa::Accounting::Network::A4>())
 {
     start_stop->parent = this;
     a1->parent = this;
@@ -6874,7 +6964,7 @@ Native::Aaa::Accounting::Network::Network()
     a3->parent = this;
     a4->parent = this;
 
-    yang_name = "network"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Network::~Network()
@@ -6883,6 +6973,7 @@ Native::Aaa::Accounting::Network::~Network()
 
 bool Native::Aaa::Accounting::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| none.is_set
 	|| mode.is_set
@@ -6918,7 +7009,8 @@ std::string Native::Aaa::Accounting::Network::get_absolute_path() const
 std::string Native::Aaa::Accounting::Network::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "network" <<"[id='" <<id <<"']";
+    path_buffer << "network";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -7077,7 +7169,7 @@ Native::Aaa::Accounting::Network::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "start-stop"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Network::StartStop::~StartStop()
@@ -7086,6 +7178,7 @@ Native::Aaa::Accounting::Network::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::Network::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -7154,7 +7247,7 @@ Native::Aaa::Accounting::Network::A1::A1()
     group{YType::str, "group"}
 {
 
-    yang_name = "a1"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a1"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Network::A1::~A1()
@@ -7163,6 +7256,7 @@ Native::Aaa::Accounting::Network::A1::~A1()
 
 bool Native::Aaa::Accounting::Network::A1::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -7231,7 +7325,7 @@ Native::Aaa::Accounting::Network::A2::A2()
     group{YType::str, "group"}
 {
 
-    yang_name = "a2"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a2"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Network::A2::~A2()
@@ -7240,6 +7334,7 @@ Native::Aaa::Accounting::Network::A2::~A2()
 
 bool Native::Aaa::Accounting::Network::A2::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -7308,7 +7403,7 @@ Native::Aaa::Accounting::Network::A3::A3()
     group{YType::str, "group"}
 {
 
-    yang_name = "a3"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a3"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Network::A3::~A3()
@@ -7317,6 +7412,7 @@ Native::Aaa::Accounting::Network::A3::~A3()
 
 bool Native::Aaa::Accounting::Network::A3::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -7385,7 +7481,7 @@ Native::Aaa::Accounting::Network::A4::A4()
     group{YType::str, "group"}
 {
 
-    yang_name = "a4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "a4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Accounting::Network::A4::~A4()
@@ -7394,6 +7490,7 @@ Native::Aaa::Accounting::Network::A4::~A4()
 
 bool Native::Aaa::Accounting::Network::A4::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -7460,12 +7557,12 @@ bool Native::Aaa::Accounting::Network::A4::has_leaf_or_child_of_name(const std::
 Native::Aaa::Accounting::Send::Send()
     :
     counters(std::make_shared<Native::Aaa::Accounting::Send::Counters>())
-	,stop_record(std::make_shared<Native::Aaa::Accounting::Send::StopRecord>())
+    , stop_record(std::make_shared<Native::Aaa::Accounting::Send::StopRecord>())
 {
     counters->parent = this;
     stop_record->parent = this;
 
-    yang_name = "send"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "send"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Send::~Send()
@@ -7474,6 +7571,7 @@ Native::Aaa::Accounting::Send::~Send()
 
 bool Native::Aaa::Accounting::Send::has_data() const
 {
+    if (is_presence_container) return true;
     return (counters !=  nullptr && counters->has_data())
 	|| (stop_record !=  nullptr && stop_record->has_data());
 }
@@ -7568,7 +7666,7 @@ Native::Aaa::Accounting::Send::Counters::Counters()
     ipv6{YType::empty, "ipv6"}
 {
 
-    yang_name = "counters"; yang_parent_name = "send"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "counters"; yang_parent_name = "send"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Send::Counters::~Counters()
@@ -7577,6 +7675,7 @@ Native::Aaa::Accounting::Send::Counters::~Counters()
 
 bool Native::Aaa::Accounting::Send::Counters::has_data() const
 {
+    if (is_presence_container) return true;
     return ipv6.is_set;
 }
 
@@ -7650,12 +7749,12 @@ bool Native::Aaa::Accounting::Send::Counters::has_leaf_or_child_of_name(const st
 Native::Aaa::Accounting::Send::StopRecord::StopRecord()
     :
     always{YType::empty, "always"}
-    	,
+        ,
     authentication(std::make_shared<Native::Aaa::Accounting::Send::StopRecord::Authentication>())
 {
     authentication->parent = this;
 
-    yang_name = "stop-record"; yang_parent_name = "send"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stop-record"; yang_parent_name = "send"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Send::StopRecord::~StopRecord()
@@ -7664,6 +7763,7 @@ Native::Aaa::Accounting::Send::StopRecord::~StopRecord()
 
 bool Native::Aaa::Accounting::Send::StopRecord::has_data() const
 {
+    if (is_presence_container) return true;
     return always.is_set
 	|| (authentication !=  nullptr && authentication->has_data());
 }
@@ -7753,11 +7853,11 @@ bool Native::Aaa::Accounting::Send::StopRecord::has_leaf_or_child_of_name(const 
 Native::Aaa::Accounting::Send::StopRecord::Authentication::Authentication()
     :
     failure(nullptr) // presence node
-	,success(std::make_shared<Native::Aaa::Accounting::Send::StopRecord::Authentication::Success>())
+    , success(std::make_shared<Native::Aaa::Accounting::Send::StopRecord::Authentication::Success>())
 {
     success->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "stop-record"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "stop-record"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Send::StopRecord::Authentication::~Authentication()
@@ -7766,6 +7866,7 @@ Native::Aaa::Accounting::Send::StopRecord::Authentication::~Authentication()
 
 bool Native::Aaa::Accounting::Send::StopRecord::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return (failure !=  nullptr && failure->has_data())
 	|| (success !=  nullptr && success->has_data());
 }
@@ -7860,7 +7961,7 @@ Native::Aaa::Accounting::Send::StopRecord::Authentication::Failure::Failure()
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "failure"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "failure"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Accounting::Send::StopRecord::Authentication::Failure::~Failure()
@@ -7869,6 +7970,7 @@ Native::Aaa::Accounting::Send::StopRecord::Authentication::Failure::~Failure()
 
 bool Native::Aaa::Accounting::Send::StopRecord::Authentication::Failure::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -7944,7 +8046,7 @@ Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::Success()
     remote_server(nullptr) // presence node
 {
 
-    yang_name = "success"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "success"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::~Success()
@@ -7953,6 +8055,7 @@ Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::~Success()
 
 bool Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::has_data() const
 {
+    if (is_presence_container) return true;
     return (remote_server !=  nullptr && remote_server->has_data());
 }
 
@@ -8031,7 +8134,7 @@ Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::RemoteServer
     vrf{YType::str, "vrf"}
 {
 
-    yang_name = "remote-server"; yang_parent_name = "success"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote-server"; yang_parent_name = "success"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::RemoteServer::~RemoteServer()
@@ -8040,6 +8143,7 @@ Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::RemoteServer
 
 bool Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::RemoteServer::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf.is_set;
 }
 
@@ -8113,11 +8217,11 @@ bool Native::Aaa::Accounting::Send::StopRecord::Authentication::Success::RemoteS
 Native::Aaa::Accounting::System::System()
     :
     guarantee_first{YType::boolean, "guarantee-first"}
-    	,
+        ,
     default_(nullptr) // presence node
 {
 
-    yang_name = "system"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "system"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::System::~System()
@@ -8126,6 +8230,7 @@ Native::Aaa::Accounting::System::~System()
 
 bool Native::Aaa::Accounting::System::has_data() const
 {
+    if (is_presence_container) return true;
     return guarantee_first.is_set
 	|| (default_ !=  nullptr && default_->has_data());
 }
@@ -8216,12 +8321,12 @@ Native::Aaa::Accounting::System::Default::Default()
     :
     none{YType::empty, "none"},
     vrf{YType::str, "vrf"}
-    	,
+        ,
     start_stop(std::make_shared<Native::Aaa::Accounting::System::Default::StartStop>())
 {
     start_stop->parent = this;
 
-    yang_name = "default"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "system"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Accounting::System::Default::~Default()
@@ -8230,6 +8335,7 @@ Native::Aaa::Accounting::System::Default::~Default()
 
 bool Native::Aaa::Accounting::System::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| vrf.is_set
 	|| (start_stop !=  nullptr && start_stop->has_data());
@@ -8335,7 +8441,7 @@ Native::Aaa::Accounting::System::Default::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::System::Default::StartStop::~StartStop()
@@ -8344,6 +8450,7 @@ Native::Aaa::Accounting::System::Default::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::System::Default::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return broadcast.is_set
 	|| group.is_set;
 }
@@ -8432,7 +8539,7 @@ Native::Aaa::Accounting::Update::Update()
     periodic{YType::uint32, "periodic"}
 {
 
-    yang_name = "update"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "update"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::Update::~Update()
@@ -8441,6 +8548,7 @@ Native::Aaa::Accounting::Update::~Update()
 
 bool Native::Aaa::Accounting::Update::has_data() const
 {
+    if (is_presence_container) return true;
     return periodic.is_set;
 }
 
@@ -8517,7 +8625,7 @@ Native::Aaa::Accounting::AuthProxy::AuthProxy()
 {
     default_->parent = this;
 
-    yang_name = "auth-proxy"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "auth-proxy"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::AuthProxy::~AuthProxy()
@@ -8526,6 +8634,7 @@ Native::Aaa::Accounting::AuthProxy::~AuthProxy()
 
 bool Native::Aaa::Accounting::AuthProxy::has_data() const
 {
+    if (is_presence_container) return true;
     return (default_ !=  nullptr && default_->has_data());
 }
 
@@ -8605,7 +8714,7 @@ Native::Aaa::Accounting::AuthProxy::Default::Default()
 {
     start_stop->parent = this;
 
-    yang_name = "default"; yang_parent_name = "auth-proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "auth-proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::AuthProxy::Default::~Default()
@@ -8614,6 +8723,7 @@ Native::Aaa::Accounting::AuthProxy::Default::~Default()
 
 bool Native::Aaa::Accounting::AuthProxy::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return (start_stop !=  nullptr && start_stop->has_data());
 }
 
@@ -8692,7 +8802,7 @@ Native::Aaa::Accounting::AuthProxy::Default::StartStop::StartStop()
     group{YType::str, "group"}
 {
 
-    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "start-stop"; yang_parent_name = "default"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Accounting::AuthProxy::Default::StartStop::~StartStop()
@@ -8701,6 +8811,7 @@ Native::Aaa::Accounting::AuthProxy::Default::StartStop::~StartStop()
 
 bool Native::Aaa::Accounting::AuthProxy::Default::StartStop::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set;
 }
 
@@ -8777,7 +8888,7 @@ Native::Aaa::Server::Server()
 {
     radius->parent = this;
 
-    yang_name = "server"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::~Server()
@@ -8786,6 +8897,7 @@ Native::Aaa::Server::~Server()
 
 bool Native::Aaa::Server::has_data() const
 {
+    if (is_presence_container) return true;
     return (radius !=  nullptr && radius->has_data());
 }
 
@@ -8862,12 +8974,12 @@ bool Native::Aaa::Server::has_leaf_or_child_of_name(const std::string & name) co
 Native::Aaa::Server::Radius::Radius()
     :
     dynamic_author(nullptr) // presence node
-	,policy_device(nullptr) // presence node
-	,proxy(nullptr) // presence node
-	,sesm(nullptr) // presence node
+    , policy_device(nullptr) // presence node
+    , proxy(nullptr) // presence node
+    , sesm(nullptr) // presence node
 {
 
-    yang_name = "radius"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "radius"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::~Radius()
@@ -8876,6 +8988,7 @@ Native::Aaa::Server::Radius::~Radius()
 
 bool Native::Aaa::Server::Radius::has_data() const
 {
+    if (is_presence_container) return true;
     return (dynamic_author !=  nullptr && dynamic_author->has_data())
 	|| (policy_device !=  nullptr && policy_device->has_data())
 	|| (proxy !=  nullptr && proxy->has_data())
@@ -9001,16 +9114,17 @@ Native::Aaa::Server::Radius::DynamicAuthor::DynamicAuthor()
     :
     port{YType::uint16, "port"},
     auth_type{YType::enumeration, "auth-type"}
-    	,
-    server_key(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::ServerKey>())
-	,domain(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Domain>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Ignore>())
+        ,
+    client(this, {"ip"})
+    , server_key(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::ServerKey>())
+    , domain(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Domain>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Ignore>())
 {
     server_key->parent = this;
     domain->parent = this;
     ignore->parent = this;
 
-    yang_name = "dynamic-author"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dynamic-author"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::~DynamicAuthor()
@@ -9019,7 +9133,8 @@ Native::Aaa::Server::Radius::DynamicAuthor::~DynamicAuthor()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -9033,7 +9148,7 @@ bool Native::Aaa::Server::Radius::DynamicAuthor::has_data() const
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -9077,7 +9192,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::get_child_by
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -9116,7 +9231,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Dyna
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9181,12 +9296,13 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::Client()
     :
     ip{YType::str, "ip"},
     dtls{YType::empty, "dtls"}
-    	,
-    server_key(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey>())
+        ,
+    vrf(this, {"name"})
+    , server_key(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey>())
 {
     server_key->parent = this;
 
-    yang_name = "client"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::Client::~Client()
@@ -9195,7 +9311,8 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::~Client()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Client::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -9207,7 +9324,7 @@ bool Native::Aaa::Server::Radius::DynamicAuthor::Client::has_data() const
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Client::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -9228,7 +9345,8 @@ std::string Native::Aaa::Server::Radius::DynamicAuthor::Client::get_absolute_pat
 std::string Native::Aaa::Server::Radius::DynamicAuthor::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[ip='" <<ip <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -9249,7 +9367,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::DynamicAuthor::Client::get_
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -9270,7 +9388,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Dyna
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9325,12 +9443,12 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::Vrf()
     :
     name{YType::str, "name"},
     dtls{YType::empty, "dtls"}
-    	,
+        ,
     server_key(std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::ServerKey>())
 {
     server_key->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::~Vrf()
@@ -9339,6 +9457,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::~Vrf()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| dtls.is_set
 	|| (server_key !=  nullptr && server_key->has_data());
@@ -9355,7 +9474,8 @@ bool Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::has_operation() co
 std::string Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -9437,7 +9557,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::ServerKey::ServerKey()
     string{YType::str, "string"}
 {
 
-    yang_name = "server-key"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-key"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::ServerKey::~ServerKey()
@@ -9446,6 +9566,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::ServerKey::~ServerKey()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Client::Vrf::ServerKey::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -9528,7 +9649,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey::ServerKey()
     string{YType::str, "string"}
 {
 
-    yang_name = "server-key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey::~ServerKey()
@@ -9537,6 +9658,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey::~ServerKey()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -9619,7 +9741,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::ServerKey()
     string{YType::str, "string"}
 {
 
-    yang_name = "server-key"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "server-key"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::~ServerKey()
@@ -9628,6 +9750,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::~ServerKey()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -9714,11 +9837,11 @@ bool Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::has_leaf_or_child_of
 Native::Aaa::Server::Radius::DynamicAuthor::Domain::Domain()
     :
     delimiter{YType::str, "delimiter"}
-    	,
+        ,
     stripping(nullptr) // presence node
 {
 
-    yang_name = "domain"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "domain"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::Domain::~Domain()
@@ -9727,6 +9850,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Domain::~Domain()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::has_data() const
 {
+    if (is_presence_container) return true;
     return delimiter.is_set
 	|| (stripping !=  nullptr && stripping->has_data());
 }
@@ -9818,7 +9942,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::Stripping()
     right_to_left{YType::empty, "right-to-left"}
 {
 
-    yang_name = "stripping"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stripping"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::~Stripping()
@@ -9827,6 +9951,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::~Stripping()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::has_data() const
 {
+    if (is_presence_container) return true;
     return right_to_left.is_set;
 }
 
@@ -9904,7 +10029,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Ignore::Ignore()
     session_key{YType::empty, "session-key"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ignore"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::DynamicAuthor::Ignore::~Ignore()
@@ -9913,6 +10038,7 @@ Native::Aaa::Server::Radius::DynamicAuthor::Ignore::~Ignore()
 
 bool Native::Aaa::Server::Radius::DynamicAuthor::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return retransmission.is_set
 	|| server_key.is_set
 	|| session_key.is_set;
@@ -10012,16 +10138,17 @@ bool Native::Aaa::Server::Radius::DynamicAuthor::Ignore::has_leaf_or_child_of_na
 Native::Aaa::Server::Radius::PolicyDevice::PolicyDevice()
     :
     accounting(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Accounting>())
-	,authentication(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Authentication>())
-	,key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Key>())
-	,message_authenticator(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator>())
+    , authentication(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Authentication>())
+    , client(this, {"ip"})
+    , key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Key>())
+    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator>())
 {
     accounting->parent = this;
     authentication->parent = this;
     key->parent = this;
     message_authenticator->parent = this;
 
-    yang_name = "policy-device"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy-device"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::~PolicyDevice()
@@ -10030,7 +10157,8 @@ Native::Aaa::Server::Radius::PolicyDevice::~PolicyDevice()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -10043,7 +10171,7 @@ bool Native::Aaa::Server::Radius::PolicyDevice::has_data() const
 
 bool Native::Aaa::Server::Radius::PolicyDevice::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -10102,7 +10230,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::get_child_by_
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -10142,7 +10270,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Poli
     }
 
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10183,7 +10311,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Accounting::Accounting()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::Accounting::~Accounting()
@@ -10192,6 +10320,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Accounting::~Accounting()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set;
 }
 
@@ -10267,7 +10396,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Authentication::Authentication()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::Authentication::~Authentication()
@@ -10276,6 +10405,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Authentication::~Authentication()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set;
 }
 
@@ -10350,12 +10480,13 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::Client()
     :
     ip{YType::str, "ip"},
     port{YType::uint16, "port"}
-    	,
-    key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Key>())
+        ,
+    vrf(this, {"name"})
+    , key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Key>())
 {
     key->parent = this;
 
-    yang_name = "client"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::Client::~Client()
@@ -10364,7 +10495,8 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::~Client()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Client::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -10376,7 +10508,7 @@ bool Native::Aaa::Server::Radius::PolicyDevice::Client::has_data() const
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Client::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -10397,7 +10529,8 @@ std::string Native::Aaa::Server::Radius::PolicyDevice::Client::get_absolute_path
 std::string Native::Aaa::Server::Radius::PolicyDevice::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[ip='" <<ip <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -10418,7 +10551,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::get_c
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -10439,7 +10572,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Poli
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10494,12 +10627,12 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Vrf()
     :
     name{YType::str, "name"},
     port{YType::uint16, "port"}
-    	,
+        ,
     key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key>())
 {
     key->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::~Vrf()
@@ -10508,6 +10641,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::~Vrf()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| port.is_set
 	|| (key !=  nullptr && key->has_data());
@@ -10524,7 +10658,8 @@ bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::has_operation() con
 std::string Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[name='" <<name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -10606,7 +10741,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::~Key()
@@ -10615,6 +10750,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::~Key()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -10697,7 +10833,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::Client::Key::~Key()
@@ -10706,6 +10842,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Client::Key::~Key()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Client::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -10788,7 +10925,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "key"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::Key::~Key()
@@ -10797,6 +10934,7 @@ Native::Aaa::Server::Radius::PolicyDevice::Key::~Key()
 
 bool Native::Aaa::Server::Radius::PolicyDevice::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -10885,7 +11023,7 @@ Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::MessageAuthenti
     ignore{YType::empty, "ignore"}
 {
 
-    yang_name = "message-authenticator"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message-authenticator"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::~MessageAuthenticator()
@@ -10894,6 +11032,7 @@ Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::~MessageAuthent
 
 bool Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore.is_set;
 }
 
@@ -10967,22 +11106,22 @@ bool Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::has_leaf_o
 Native::Aaa::Server::Radius::Proxy::Proxy()
     :
     accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::Accounting>())
-	,authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::Authentication>())
-	,calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId>())
-	,eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::EapUser>())
-	,filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter>())
-	,key(std::make_shared<Native::Aaa::Server::Radius::Proxy::Key>())
-	,message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::MessageAuthenticator>())
-	,mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::Mode>())
-	,pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::PwlanSession>())
-	,re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ReAuthentication>())
-	,session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::SessionIdentifier>())
-	,timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::Timer>())
-	,client_ip(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp>())
-	,client_ip_mask(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask>())
-	,client_ip_vrf(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf>())
-	,client_ip_mask_vrf(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf>())
-	,send(std::make_shared<Native::Aaa::Server::Radius::Proxy::Send>())
+    , authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::Authentication>())
+    , calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId>())
+    , eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::EapUser>())
+    , filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter>())
+    , key(std::make_shared<Native::Aaa::Server::Radius::Proxy::Key>())
+    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::MessageAuthenticator>())
+    , mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::Mode>())
+    , pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::PwlanSession>())
+    , re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ReAuthentication>())
+    , session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::SessionIdentifier>())
+    , timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::Timer>())
+    , client_ip(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp>())
+    , client_ip_mask(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask>())
+    , client_ip_vrf(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf>())
+    , client_ip_mask_vrf(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf>())
+    , send(std::make_shared<Native::Aaa::Server::Radius::Proxy::Send>())
 {
     accounting->parent = this;
     authentication->parent = this;
@@ -11002,7 +11141,7 @@ Native::Aaa::Server::Radius::Proxy::Proxy()
     client_ip_mask_vrf->parent = this;
     send->parent = this;
 
-    yang_name = "proxy"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "proxy"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::~Proxy()
@@ -11011,6 +11150,7 @@ Native::Aaa::Server::Radius::Proxy::~Proxy()
 
 bool Native::Aaa::Server::Radius::Proxy::has_data() const
 {
+    if (is_presence_container) return true;
     return (accounting !=  nullptr && accounting->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (calling_station_id !=  nullptr && calling_station_id->has_data())
@@ -11343,12 +11483,12 @@ bool Native::Aaa::Server::Radius::Proxy::has_leaf_or_child_of_name(const std::st
 Native::Aaa::Server::Radius::Proxy::Accounting::Accounting()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::Accounting::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Accounting::~Accounting()
@@ -11357,6 +11497,7 @@ Native::Aaa::Server::Radius::Proxy::Accounting::~Accounting()
 
 bool Native::Aaa::Server::Radius::Proxy::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -11449,7 +11590,7 @@ Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::MethodList()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::~MethodList()
@@ -11458,6 +11599,7 @@ Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::~MethodList()
 
 bool Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -11544,12 +11686,12 @@ bool Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::has_leaf_or_chi
 Native::Aaa::Server::Radius::Proxy::Authentication::Authentication()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::Authentication::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "authentication"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Authentication::~Authentication()
@@ -11558,6 +11700,7 @@ Native::Aaa::Server::Radius::Proxy::Authentication::~Authentication()
 
 bool Native::Aaa::Server::Radius::Proxy::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -11650,7 +11793,7 @@ Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::MethodList()
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::~MethodList()
@@ -11659,6 +11802,7 @@ Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::~MethodList()
 
 bool Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -11748,7 +11892,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::CallingStationId()
 {
     format->parent = this;
 
-    yang_name = "calling-station-id"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "calling-station-id"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::~CallingStationId()
@@ -11757,6 +11901,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::~CallingStationId()
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::has_data() const
 {
+    if (is_presence_container) return true;
     return (format !=  nullptr && format->has_data());
 }
 
@@ -11833,12 +11978,12 @@ bool Native::Aaa::Server::Radius::Proxy::CallingStationId::has_leaf_or_child_of_
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::Format()
     :
     msisdn{YType::empty, "msisdn"}
-    	,
+        ,
     mac_address(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress>())
 {
     mac_address->parent = this;
 
-    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::~Format()
@@ -11847,6 +11992,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::~Format()
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::has_data() const
 {
+    if (is_presence_container) return true;
     return msisdn.is_set
 	|| (mac_address !=  nullptr && mac_address->has_data());
 }
@@ -11936,19 +12082,19 @@ bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::has_leaf_or_c
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::MacAddress()
     :
     none{YType::empty, "none"}
-    	,
+        ,
     default_(nullptr) // presence node
-	,ietf(nullptr) // presence node
-	,one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte>())
-	,three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte>())
-	,two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte>())
-	,unformatted(nullptr) // presence node
+    , ietf(nullptr) // presence node
+    , one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte>())
+    , three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte>())
+    , two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte>())
+    , unformatted(nullptr) // presence node
 {
     one_byte->parent = this;
     three_byte->parent = this;
     two_byte->parent = this;
 
-    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::~MacAddress()
@@ -11957,6 +12103,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::~MacAd
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return none.is_set
 	|| (default_ !=  nullptr && default_->has_data())
 	|| (ietf !=  nullptr && ietf->has_data())
@@ -12128,7 +12275,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Defaul
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::~Default()
@@ -12137,6 +12284,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Defaul
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -12212,7 +12360,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::~Ietf()
@@ -12221,6 +12369,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -12297,7 +12446,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
 {
     delimiter->parent = this;
 
-    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::~OneByte()
@@ -12306,6 +12455,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -12382,11 +12532,11 @@ bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::O
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::~Delimiter()
@@ -12395,6 +12545,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -12505,7 +12656,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::~Colon()
@@ -12514,6 +12665,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -12589,7 +12741,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::~Dot()
@@ -12598,6 +12750,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -12673,7 +12826,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::~Hyphen()
@@ -12682,6 +12835,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -12758,7 +12912,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
 {
     delimiter->parent = this;
 
-    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::~ThreeByte()
@@ -12767,6 +12921,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -12843,11 +12998,11 @@ bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::T
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::~Delimiter()
@@ -12856,6 +13011,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -12966,7 +13122,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::~Colon()
@@ -12975,6 +13131,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -13050,7 +13207,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::~Dot()
@@ -13059,6 +13216,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -13134,7 +13292,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::~Hyphen()
@@ -13143,6 +13301,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeB
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -13219,7 +13378,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
 {
     delimiter->parent = this;
 
-    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::~TwoByte()
@@ -13228,6 +13387,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::has_data() const
 {
+    if (is_presence_container) return true;
     return (delimiter !=  nullptr && delimiter->has_data());
 }
 
@@ -13304,11 +13464,11 @@ bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::T
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Delimiter()
     :
     colon(nullptr) // presence node
-	,dot(nullptr) // presence node
-	,hyphen(nullptr) // presence node
+    , dot(nullptr) // presence node
+    , hyphen(nullptr) // presence node
 {
 
-    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::~Delimiter()
@@ -13317,6 +13477,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_data() const
 {
+    if (is_presence_container) return true;
     return (colon !=  nullptr && colon->has_data())
 	|| (dot !=  nullptr && dot->has_data())
 	|| (hyphen !=  nullptr && hyphen->has_data());
@@ -13427,7 +13588,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::~Colon()
@@ -13436,6 +13597,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -13511,7 +13673,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::~Dot()
@@ -13520,6 +13682,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -13595,7 +13758,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::~Hyphen()
@@ -13604,6 +13767,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByt
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -13679,7 +13843,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unform
     type{YType::enumeration, "type"}
 {
 
-    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::~Unformatted()
@@ -13688,6 +13852,7 @@ Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unform
 
 bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set;
 }
 
@@ -13763,7 +13928,7 @@ Native::Aaa::Server::Radius::Proxy::EapUser::EapUser()
     ignore_open_session{YType::empty, "ignore-open-session"}
 {
 
-    yang_name = "eap-user"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "eap-user"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::EapUser::~EapUser()
@@ -13772,6 +13937,7 @@ Native::Aaa::Server::Radius::Proxy::EapUser::~EapUser()
 
 bool Native::Aaa::Server::Radius::Proxy::EapUser::has_data() const
 {
+    if (is_presence_container) return true;
     return ignore_open_session.is_set;
 }
 
@@ -13845,14 +14011,14 @@ bool Native::Aaa::Server::Radius::Proxy::EapUser::has_leaf_or_child_of_name(cons
 Native::Aaa::Server::Radius::Proxy::Filter::Filter()
     :
     access(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Access>())
-	,accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Accounting>())
-	,attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Attribute>())
+    , accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Accounting>())
+    , attribute(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Attribute>())
 {
     access->parent = this;
     accounting->parent = this;
     attribute->parent = this;
 
-    yang_name = "filter"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "filter"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::~Filter()
@@ -13861,6 +14027,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::~Filter()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::has_data() const
 {
+    if (is_presence_container) return true;
     return (access !=  nullptr && access->has_data())
 	|| (accounting !=  nullptr && accounting->has_data())
 	|| (attribute !=  nullptr && attribute->has_data());
@@ -13969,14 +14136,14 @@ bool Native::Aaa::Server::Radius::Proxy::Filter::has_leaf_or_child_of_name(const
 Native::Aaa::Server::Radius::Proxy::Filter::Access::Access()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "access"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Access::~Access()
@@ -13985,6 +14152,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Access::~Access()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Access::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -14098,7 +14266,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::Ack()
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ack"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::~Ack()
@@ -14107,6 +14275,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::~Ack()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Access::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -14224,7 +14393,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::Drop()
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "drop"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::~Drop()
@@ -14233,6 +14402,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::~Drop()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Access::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -14350,7 +14520,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::Ignore()
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ignore"; yang_parent_name = "access"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::~Ignore()
@@ -14359,6 +14529,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::~Ignore()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -14471,14 +14642,14 @@ bool Native::Aaa::Server::Radius::Proxy::Filter::Access::Ignore::has_leaf_or_chi
 Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Accounting()
     :
     ack(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack>())
-	,drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop>())
-	,ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore>())
+    , drop(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop>())
+    , ignore(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore>())
 {
     ack->parent = this;
     drop->parent = this;
     ignore->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accounting"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Accounting::~Accounting()
@@ -14487,6 +14658,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Accounting::~Accounting()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (ack !=  nullptr && ack->has_data())
 	|| (drop !=  nullptr && drop->has_data())
 	|| (ignore !=  nullptr && ignore->has_data());
@@ -14600,7 +14772,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::Ack()
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ack"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::~Ack()
@@ -14609,6 +14781,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::~Ack()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ack::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -14726,7 +14899,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::Drop()
     word4{YType::str, "word4"}
 {
 
-    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "drop"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::~Drop()
@@ -14735,6 +14908,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::~Drop()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Drop::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -14852,7 +15026,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::Ignore()
     word4{YType::str, "word4"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ignore"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::~Ignore()
@@ -14861,6 +15035,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::~Ignore()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Accounting::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return word1.is_set
 	|| word2.is_set
 	|| word3.is_set
@@ -14976,7 +15151,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Attribute::Attribute()
     block{YType::str, "block"}
 {
 
-    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "attribute"; yang_parent_name = "filter"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Filter::Attribute::~Attribute()
@@ -14985,6 +15160,7 @@ Native::Aaa::Server::Radius::Proxy::Filter::Attribute::~Attribute()
 
 bool Native::Aaa::Server::Radius::Proxy::Filter::Attribute::has_data() const
 {
+    if (is_presence_container) return true;
     return allow.is_set
 	|| block.is_set;
 }
@@ -15074,7 +15250,7 @@ Native::Aaa::Server::Radius::Proxy::Key::Key()
     string{YType::str, "string"}
 {
 
-    yang_name = "key"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "key"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Key::~Key()
@@ -15083,6 +15259,7 @@ Native::Aaa::Server::Radius::Proxy::Key::~Key()
 
 bool Native::Aaa::Server::Radius::Proxy::Key::has_data() const
 {
+    if (is_presence_container) return true;
     return key.is_set
 	|| string.is_set;
 }
@@ -15171,7 +15348,7 @@ Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::MessageAuthenticator()
     ignore(nullptr) // presence node
 {
 
-    yang_name = "message-authenticator"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "message-authenticator"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::~MessageAuthenticator()
@@ -15180,6 +15357,7 @@ Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::~MessageAuthenticator(
 
 bool Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::has_data() const
 {
+    if (is_presence_container) return true;
     return (ignore !=  nullptr && ignore->has_data());
 }
 
@@ -15258,7 +15436,7 @@ Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::Ignore()
     accounting{YType::empty, "accounting"}
 {
 
-    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ignore"; yang_parent_name = "message-authenticator"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::~Ignore()
@@ -15267,6 +15445,7 @@ Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::~Ignore()
 
 bool Native::Aaa::Server::Radius::Proxy::MessageAuthenticator::Ignore::has_data() const
 {
+    if (is_presence_container) return true;
     return accounting.is_set;
 }
 
@@ -15342,7 +15521,7 @@ Native::Aaa::Server::Radius::Proxy::Mode::Mode()
     pass_through{YType::empty, "pass-through"}
 {
 
-    yang_name = "mode"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mode"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Mode::~Mode()
@@ -15351,6 +15530,7 @@ Native::Aaa::Server::Radius::Proxy::Mode::~Mode()
 
 bool Native::Aaa::Server::Radius::Proxy::Mode::has_data() const
 {
+    if (is_presence_container) return true;
     return pass_through.is_set;
 }
 
@@ -15426,7 +15606,7 @@ Native::Aaa::Server::Radius::Proxy::PwlanSession::PwlanSession()
     reconnect{YType::empty, "reconnect"}
 {
 
-    yang_name = "pwlan-session"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pwlan-session"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::PwlanSession::~PwlanSession()
@@ -15435,6 +15615,7 @@ Native::Aaa::Server::Radius::Proxy::PwlanSession::~PwlanSession()
 
 bool Native::Aaa::Server::Radius::Proxy::PwlanSession::has_data() const
 {
+    if (is_presence_container) return true;
     return reconnect.is_set;
 }
 
@@ -15510,7 +15691,7 @@ Native::Aaa::Server::Radius::Proxy::ReAuthentication::ReAuthentication()
     do_not_apply{YType::empty, "do-not-apply"}
 {
 
-    yang_name = "re-authentication"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "re-authentication"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ReAuthentication::~ReAuthentication()
@@ -15519,6 +15700,7 @@ Native::Aaa::Server::Radius::Proxy::ReAuthentication::~ReAuthentication()
 
 bool Native::Aaa::Server::Radius::Proxy::ReAuthentication::has_data() const
 {
+    if (is_presence_container) return true;
     return do_not_apply.is_set;
 }
 
@@ -15592,12 +15774,12 @@ bool Native::Aaa::Server::Radius::Proxy::ReAuthentication::has_leaf_or_child_of_
 Native::Aaa::Server::Radius::Proxy::SessionIdentifier::SessionIdentifier()
     :
     attribute{YType::uint8, "attribute"}
-    	,
+        ,
     vsa(std::make_shared<Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa>())
 {
     vsa->parent = this;
 
-    yang_name = "session-identifier"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session-identifier"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::SessionIdentifier::~SessionIdentifier()
@@ -15606,6 +15788,7 @@ Native::Aaa::Server::Radius::Proxy::SessionIdentifier::~SessionIdentifier()
 
 bool Native::Aaa::Server::Radius::Proxy::SessionIdentifier::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute.is_set
 	|| (vsa !=  nullptr && vsa->has_data());
 }
@@ -15698,7 +15881,7 @@ Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::Vsa()
     type{YType::uint8, "type"}
 {
 
-    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vsa"; yang_parent_name = "session-identifier"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::~Vsa()
@@ -15707,6 +15890,7 @@ Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::~Vsa()
 
 bool Native::Aaa::Server::Radius::Proxy::SessionIdentifier::Vsa::has_data() const
 {
+    if (is_presence_container) return true;
     return vendor.is_set
 	|| type.is_set;
 }
@@ -15796,12 +15980,12 @@ Native::Aaa::Server::Radius::Proxy::Timer::Timer()
     reconnect{YType::uint16, "reconnect"},
     request{YType::uint16, "request"},
     roaming{YType::uint16, "roaming"}
-    	,
+        ,
     disconnect(std::make_shared<Native::Aaa::Server::Radius::Proxy::Timer::Disconnect>())
 {
     disconnect->parent = this;
 
-    yang_name = "timer"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "timer"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Timer::~Timer()
@@ -15810,6 +15994,7 @@ Native::Aaa::Server::Radius::Proxy::Timer::~Timer()
 
 bool Native::Aaa::Server::Radius::Proxy::Timer::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| reconnect.is_set
 	|| request.is_set
@@ -15941,7 +16126,7 @@ Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::Disconnect()
     reauth_fail{YType::uint16, "reauth-fail"}
 {
 
-    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "disconnect"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::~Disconnect()
@@ -15950,6 +16135,7 @@ Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::~Disconnect()
 
 bool Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::has_data() const
 {
+    if (is_presence_container) return true;
     return acct_stop.is_set
 	|| reauth_fail.is_set;
 }
@@ -16034,9 +16220,11 @@ bool Native::Aaa::Server::Radius::Proxy::Timer::Disconnect::has_leaf_or_child_of
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::ClientIp()
+    :
+    client(this, {"ip"})
 {
 
-    yang_name = "client-ip"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client-ip"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::~ClientIp()
@@ -16045,7 +16233,8 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::~ClientIp()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::has_data() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_data())
             return true;
@@ -16055,7 +16244,7 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::has_data() const
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::has_operation() const
 {
-    for (std::size_t index=0; index<client.size(); index++)
+    for (std::size_t index=0; index<client.len(); index++)
     {
         if(client[index]->has_operation())
             return true;
@@ -16092,7 +16281,7 @@ std::shared_ptr<Entity> Native::Aaa::Server::Radius::Proxy::ClientIp::get_child_
     {
         auto c = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client>();
         c->parent = this;
-        client.push_back(c);
+        client.append(c);
         return c;
     }
 
@@ -16104,7 +16293,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::Aaa::Server::Radius::Prox
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : client)
+    for (auto c : client.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16133,19 +16322,19 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::has_leaf_or_child_of_name(con
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Client()
     :
     ip{YType::str, "ip"}
-    	,
+        ,
     accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting>())
-	,authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication>())
-	,calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId>())
-	,eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser>())
-	,filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter>())
-	,key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key>())
-	,message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator>())
-	,mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode>())
-	,pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession>())
-	,re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication>())
-	,session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier>())
-	,timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer>())
+    , authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication>())
+    , calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::CallingStationId>())
+    , eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::EapUser>())
+    , filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Filter>())
+    , key(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Key>())
+    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::MessageAuthenticator>())
+    , mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Mode>())
+    , pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::PwlanSession>())
+    , re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::ReAuthentication>())
+    , session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::SessionIdentifier>())
+    , timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Timer>())
 {
     accounting->parent = this;
     authentication->parent = this;
@@ -16160,7 +16349,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Client()
     session_identifier->parent = this;
     timer->parent = this;
 
-    yang_name = "client"; yang_parent_name = "client-ip"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "client"; yang_parent_name = "client-ip"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::~Client()
@@ -16169,6 +16358,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::~Client()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return ip.is_set
 	|| (accounting !=  nullptr && accounting->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
@@ -16212,7 +16402,8 @@ std::string Native::Aaa::Server::Radius::Proxy::ClientIp::Client::get_absolute_p
 std::string Native::Aaa::Server::Radius::Proxy::ClientIp::Client::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "client" <<"[ip='" <<ip <<"']";
+    path_buffer << "client";
+    ADD_KEY_TOKEN(ip, "ip");
     return path_buffer.str();
 }
 
@@ -16434,12 +16625,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::has_leaf_or_child_of_
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::Accounting()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::~Accounting()
@@ -16448,6 +16639,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::~Accounting()
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -16533,7 +16725,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::Me
     default_{YType::empty, "default"}
 {
 
-    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::~MethodList()
@@ -16542,6 +16734,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::~M
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodList::has_data() const
 {
+    if (is_presence_container) return true;
     return method_name.is_set
 	|| default_.is_set;
 }
@@ -16621,12 +16814,12 @@ bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Accounting::MethodLis
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::Authentication()
     :
     port{YType::uint16, "port"}
-    	,
+        ,
     method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::MethodList>())
 {
     method_list->parent = this;
 
-    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::~Authentication()
@@ -16635,6 +16828,7 @@ Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::~Authentic
 
 bool Native::Aaa::Server::Radius::Proxy::ClientIp::Client::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return port.is_set
 	|| (method_list !=  nullptr && method_list->has_data());
 }
@@ -16830,11 +17024,11 @@ const Enum::YLeaf Native::Aaa::Accounting::Connection::StartStop::Group::tacacs_
 const Enum::YLeaf Native::Aaa::Accounting::Connection::StopOnly::Group::radius {0, "radius"};
 const Enum::YLeaf Native::Aaa::Accounting::Connection::StopOnly::Group::tacacs__PLUS__ {1, "tacacs+"};
 
-const Enum::YLeaf Native::Aaa::Accounting::Dot1X::Default::StartStop::Group::radius {0, "radius"};
-const Enum::YLeaf Native::Aaa::Accounting::Dot1X::Default::StartStop::Group::tacacs__PLUS__ {1, "tacacs+"};
+const Enum::YLeaf Native::Aaa::Accounting::Dot1x::Default::StartStop::Group::radius {0, "radius"};
+const Enum::YLeaf Native::Aaa::Accounting::Dot1x::Default::StartStop::Group::tacacs__PLUS__ {1, "tacacs+"};
 
-const Enum::YLeaf Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::Group::radius {0, "radius"};
-const Enum::YLeaf Native::Aaa::Accounting::Dot1X::AccountingList::StartStop::Group::tacacs__PLUS__ {1, "tacacs+"};
+const Enum::YLeaf Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::Group::radius {0, "radius"};
+const Enum::YLeaf Native::Aaa::Accounting::Dot1x::AccountingList::StartStop::Group::tacacs__PLUS__ {1, "tacacs+"};
 
 const Enum::YLeaf Native::Aaa::Accounting::Identity::Default::StartStop::Group::radius {0, "radius"};
 const Enum::YLeaf Native::Aaa::Accounting::Identity::Default::StartStop::Group::tacacs__PLUS__ {1, "tacacs+"};

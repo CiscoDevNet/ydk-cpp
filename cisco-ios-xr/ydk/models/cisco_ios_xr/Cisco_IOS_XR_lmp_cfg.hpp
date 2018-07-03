@@ -32,7 +32,6 @@ class Lmp : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf enable; //type: empty
-        ydk::YLeaf port; //type: uint16
         class GmplsUni; //type: Lmp::GmplsUni
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_cfg::Lmp::GmplsUni> gmpls_uni;
@@ -87,7 +86,7 @@ class Lmp::GmplsUni::Neighbors : public ydk::Entity
 
         class Neighbor; //type: Lmp::GmplsUni::Neighbors::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_cfg::Lmp::GmplsUni::Neighbors::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Lmp::GmplsUni::Neighbors
 
@@ -205,7 +204,7 @@ class Lmp::GmplsUni::Controllers : public ydk::Entity
 
         class Controller; //type: Lmp::GmplsUni::Controllers::Controller
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_lmp_cfg::Lmp::GmplsUni::Controllers::Controller> > controller;
+        ydk::YList controller;
         
 }; // Lmp::GmplsUni::Controllers
 
@@ -255,7 +254,7 @@ class Lmp::GmplsUni::Controllers::Controller::LocalLinkId : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address_type; //type: OlmAddr
-        ydk::YLeaf unnumbered; //type: int32
+        ydk::YLeaf unnumbered; //type: uint32
         ydk::YLeaf address; //type: string
 
 }; // Lmp::GmplsUni::Controllers::Controller::LocalLinkId
@@ -302,7 +301,7 @@ class Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor : public
 
         ydk::YLeaf neighbor_association; //type: string
         ydk::YLeaf link_switching_capability; //type: OlmSwitchingCap
-        ydk::YLeaf flexi_grid_capable; //type: int32
+        ydk::YLeaf flexi_grid_capable; //type: uint32
         class InterfaceId; //type: Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId
         class LinkId; //type: Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId
 
@@ -329,7 +328,7 @@ class Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::Interfa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address_type; //type: OlmAddr
-        ydk::YLeaf unnumbered; //type: int32
+        ydk::YLeaf unnumbered; //type: uint32
         ydk::YLeaf address; //type: string
 
 }; // Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::InterfaceId
@@ -352,10 +351,18 @@ class Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf address_type; //type: OlmAddr
-        ydk::YLeaf unnumbered; //type: int32
+        ydk::YLeaf unnumbered; //type: uint32
         ydk::YLeaf address; //type: string
 
 }; // Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId
+
+class OlmSwitchingCap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lsc;
+        static const ydk::Enum::YLeaf fsc;
+
+};
 
 class OlmAddr : public ydk::Enum
 {
@@ -364,14 +371,6 @@ class OlmAddr : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf unnumbered;
         static const ydk::Enum::YLeaf nsap;
-
-};
-
-class OlmSwitchingCap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lsc;
-        static const ydk::Enum::YLeaf fsc;
 
 };
 

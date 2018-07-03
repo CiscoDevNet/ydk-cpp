@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_infra_objmgr_cfg {
 ObjectGroup::ObjectGroup()
     :
     port(std::make_shared<ObjectGroup::Port>())
-	,network(std::make_shared<ObjectGroup::Network>())
+    , network(std::make_shared<ObjectGroup::Network>())
 {
     port->parent = this;
     network->parent = this;
 
-    yang_name = "object-group"; yang_parent_name = "Cisco-IOS-XR-infra-objmgr-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "object-group"; yang_parent_name = "Cisco-IOS-XR-infra-objmgr-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 ObjectGroup::~ObjectGroup()
@@ -28,6 +28,7 @@ ObjectGroup::~ObjectGroup()
 
 bool ObjectGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return (port !=  nullptr && port->has_data())
 	|| (network !=  nullptr && network->has_data());
 }
@@ -141,7 +142,7 @@ ObjectGroup::Port::Port()
 {
     udf_objects->parent = this;
 
-    yang_name = "port"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Port::~Port()
@@ -150,6 +151,7 @@ ObjectGroup::Port::~Port()
 
 bool ObjectGroup::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return (udf_objects !=  nullptr && udf_objects->has_data());
 }
 
@@ -224,9 +226,11 @@ bool ObjectGroup::Port::has_leaf_or_child_of_name(const std::string & name) cons
 }
 
 ObjectGroup::Port::UdfObjects::UdfObjects()
+    :
+    udf_object(this, {"object_name"})
 {
 
-    yang_name = "udf-objects"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udf-objects"; yang_parent_name = "port"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Port::UdfObjects::~UdfObjects()
@@ -235,7 +239,8 @@ ObjectGroup::Port::UdfObjects::~UdfObjects()
 
 bool ObjectGroup::Port::UdfObjects::has_data() const
 {
-    for (std::size_t index=0; index<udf_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<udf_object.len(); index++)
     {
         if(udf_object[index]->has_data())
             return true;
@@ -245,7 +250,7 @@ bool ObjectGroup::Port::UdfObjects::has_data() const
 
 bool ObjectGroup::Port::UdfObjects::has_operation() const
 {
-    for (std::size_t index=0; index<udf_object.size(); index++)
+    for (std::size_t index=0; index<udf_object.len(); index++)
     {
         if(udf_object[index]->has_operation())
             return true;
@@ -282,7 +287,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::UdfObjects::get_child_by_name(const s
     {
         auto c = std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject>();
         c->parent = this;
-        udf_object.push_back(c);
+        udf_object.append(c);
         return c;
     }
 
@@ -294,7 +299,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::UdfObjects::ge
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : udf_object)
+    for (auto c : udf_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -324,16 +329,16 @@ ObjectGroup::Port::UdfObjects::UdfObject::UdfObject()
     :
     object_name{YType::str, "object-name"},
     description{YType::str, "description"}
-    	,
+        ,
     operators(std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::Operators>())
-	,nested_groups(std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups>())
-	,port_ranges(std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::PortRanges>())
+    , nested_groups(std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups>())
+    , port_ranges(std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::PortRanges>())
 {
     operators->parent = this;
     nested_groups->parent = this;
     port_ranges->parent = this;
 
-    yang_name = "udf-object"; yang_parent_name = "udf-objects"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udf-object"; yang_parent_name = "udf-objects"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::~UdfObject()
@@ -342,6 +347,7 @@ ObjectGroup::Port::UdfObjects::UdfObject::~UdfObject()
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| description.is_set
 	|| (operators !=  nullptr && operators->has_data())
@@ -369,7 +375,8 @@ std::string ObjectGroup::Port::UdfObjects::UdfObject::get_absolute_path() const
 std::string ObjectGroup::Port::UdfObjects::UdfObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "udf-object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "udf-object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -474,9 +481,11 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::has_leaf_or_child_of_name(const s
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operators()
+    :
+    operator_(this, {"operator_type", "port"})
 {
 
-    yang_name = "operators"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operators"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::Operators::~Operators()
@@ -485,7 +494,8 @@ ObjectGroup::Port::UdfObjects::UdfObject::Operators::~Operators()
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::Operators::has_data() const
 {
-    for (std::size_t index=0; index<operator_.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<operator_.len(); index++)
     {
         if(operator_[index]->has_data())
             return true;
@@ -495,7 +505,7 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::Operators::has_data() const
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::Operators::has_operation() const
 {
-    for (std::size_t index=0; index<operator_.size(); index++)
+    for (std::size_t index=0; index<operator_.len(); index++)
     {
         if(operator_[index]->has_operation())
             return true;
@@ -525,7 +535,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::UdfObjects::UdfObject::Operators::get
     {
         auto c = std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator>();
         c->parent = this;
-        operator_.push_back(c);
+        operator_.append(c);
         return c;
     }
 
@@ -537,7 +547,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::UdfObjects::Ud
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : operator_)
+    for (auto c : operator_.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -569,7 +579,7 @@ ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator::Operator()
     port{YType::str, "port"}
 {
 
-    yang_name = "operator"; yang_parent_name = "operators"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "operator"; yang_parent_name = "operators"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator::~Operator()
@@ -578,6 +588,7 @@ ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator::~Operator()
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator::has_data() const
 {
+    if (is_presence_container) return true;
     return operator_type.is_set
 	|| port.is_set;
 }
@@ -592,7 +603,9 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator::has_operatio
 std::string ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "operator" <<"[operator-type='" <<operator_type <<"']" <<"[port='" <<port <<"']";
+    path_buffer << "operator";
+    ADD_KEY_TOKEN(operator_type, "operator-type");
+    ADD_KEY_TOKEN(port, "port");
     return path_buffer.str();
 }
 
@@ -655,9 +668,11 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::Operators::Operator::has_leaf_or_
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroups()
+    :
+    nested_group(this, {"nested_group_name"})
 {
 
-    yang_name = "nested-groups"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-groups"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::~NestedGroups()
@@ -666,7 +681,8 @@ ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::~NestedGroups()
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::has_data() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_data())
             return true;
@@ -676,7 +692,7 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::has_data() const
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::has_operation() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_operation())
             return true;
@@ -706,7 +722,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::
     {
         auto c = std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(c);
+        nested_group.append(c);
         return c;
     }
 
@@ -718,7 +734,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::UdfObjects::Ud
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nested_group)
+    for (auto c : nested_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -749,7 +765,7 @@ ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup::NestedGroup
     nested_group_name{YType::str, "nested-group-name"}
 {
 
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup::~NestedGroup()
@@ -758,6 +774,7 @@ ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup::~NestedGrou
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return nested_group_name.is_set;
 }
 
@@ -770,7 +787,8 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup::has_op
 std::string ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    path_buffer << "nested-group";
+    ADD_KEY_TOKEN(nested_group_name, "nested-group-name");
     return path_buffer.str();
 }
 
@@ -822,9 +840,11 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::NestedGroups::NestedGroup::has_le
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRanges()
+    :
+    port_range(this, {"start_port", "end_port"})
 {
 
-    yang_name = "port-ranges"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-ranges"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::~PortRanges()
@@ -833,7 +853,8 @@ ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::~PortRanges()
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::has_data() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<port_range.len(); index++)
     {
         if(port_range[index]->has_data())
             return true;
@@ -843,7 +864,7 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::has_data() const
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::has_operation() const
 {
-    for (std::size_t index=0; index<port_range.size(); index++)
+    for (std::size_t index=0; index<port_range.len(); index++)
     {
         if(port_range[index]->has_operation())
             return true;
@@ -873,7 +894,7 @@ std::shared_ptr<Entity> ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::ge
     {
         auto c = std::make_shared<ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange>();
         c->parent = this;
-        port_range.push_back(c);
+        port_range.append(c);
         return c;
     }
 
@@ -885,7 +906,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Port::UdfObjects::Ud
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : port_range)
+    for (auto c : port_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -917,7 +938,7 @@ ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange::PortRange()
     end_port{YType::str, "end-port"}
 {
 
-    yang_name = "port-range"; yang_parent_name = "port-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "port-range"; yang_parent_name = "port-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange::~PortRange()
@@ -926,6 +947,7 @@ ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange::~PortRange()
 
 bool ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange::has_data() const
 {
+    if (is_presence_container) return true;
     return start_port.is_set
 	|| end_port.is_set;
 }
@@ -940,7 +962,9 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange::has_operat
 std::string ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "port-range" <<"[start-port='" <<start_port <<"']" <<"[end-port='" <<end_port <<"']";
+    path_buffer << "port-range";
+    ADD_KEY_TOKEN(start_port, "start-port");
+    ADD_KEY_TOKEN(end_port, "end-port");
     return path_buffer.str();
 }
 
@@ -1005,12 +1029,12 @@ bool ObjectGroup::Port::UdfObjects::UdfObject::PortRanges::PortRange::has_leaf_o
 ObjectGroup::Network::Network()
     :
     ipv6(std::make_shared<ObjectGroup::Network::Ipv6>())
-	,ipv4(std::make_shared<ObjectGroup::Network::Ipv4>())
+    , ipv4(std::make_shared<ObjectGroup::Network::Ipv4>())
 {
     ipv6->parent = this;
     ipv4->parent = this;
 
-    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "network"; yang_parent_name = "object-group"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::~Network()
@@ -1019,6 +1043,7 @@ ObjectGroup::Network::~Network()
 
 bool ObjectGroup::Network::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv6 !=  nullptr && ipv6->has_data())
 	|| (ipv4 !=  nullptr && ipv4->has_data());
 }
@@ -1114,7 +1139,7 @@ ObjectGroup::Network::Ipv6::Ipv6()
 {
     udf_objects->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv6::~Ipv6()
@@ -1123,6 +1148,7 @@ ObjectGroup::Network::Ipv6::~Ipv6()
 
 bool ObjectGroup::Network::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (udf_objects !=  nullptr && udf_objects->has_data());
 }
 
@@ -1197,9 +1223,11 @@ bool ObjectGroup::Network::Ipv6::has_leaf_or_child_of_name(const std::string & n
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObjects()
+    :
+    udf_object(this, {"object_name"})
 {
 
-    yang_name = "udf-objects"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udf-objects"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::~UdfObjects()
@@ -1208,7 +1236,8 @@ ObjectGroup::Network::Ipv6::UdfObjects::~UdfObjects()
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::has_data() const
 {
-    for (std::size_t index=0; index<udf_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<udf_object.len(); index++)
     {
         if(udf_object[index]->has_data())
             return true;
@@ -1218,7 +1247,7 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::has_data() const
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::has_operation() const
 {
-    for (std::size_t index=0; index<udf_object.size(); index++)
+    for (std::size_t index=0; index<udf_object.len(); index++)
     {
         if(udf_object[index]->has_operation())
             return true;
@@ -1255,7 +1284,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::UdfObjects::get_child_by_nam
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject>();
         c->parent = this;
-        udf_object.push_back(c);
+        udf_object.append(c);
         return c;
     }
 
@@ -1267,7 +1296,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : udf_object)
+    for (auto c : udf_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1297,18 +1326,18 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::UdfObject()
     :
     object_name{YType::str, "object-name"},
     description{YType::str, "description"}
-    	,
+        ,
     nested_groups(std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups>())
-	,address_ranges(std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges>())
-	,addresses(std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses>())
-	,hosts(std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts>())
+    , address_ranges(std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges>())
+    , addresses(std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses>())
+    , hosts(std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts>())
 {
     nested_groups->parent = this;
     address_ranges->parent = this;
     addresses->parent = this;
     hosts->parent = this;
 
-    yang_name = "udf-object"; yang_parent_name = "udf-objects"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udf-object"; yang_parent_name = "udf-objects"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::~UdfObject()
@@ -1317,6 +1346,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::~UdfObject()
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| description.is_set
 	|| (nested_groups !=  nullptr && nested_groups->has_data())
@@ -1346,7 +1376,8 @@ std::string ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::get_absolute_path
 std::string ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "udf-object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "udf-object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -1465,9 +1496,11 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::has_leaf_or_child_of_nam
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroups()
+    :
+    nested_group(this, {"nested_group_name"})
 {
 
-    yang_name = "nested-groups"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-groups"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::~NestedGroups()
@@ -1476,7 +1509,8 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::~NestedGroups()
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::has_data() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_data())
             return true;
@@ -1486,7 +1520,7 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::has_data()
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::has_operation() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_operation())
             return true;
@@ -1516,7 +1550,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Neste
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(c);
+        nested_group.append(c);
         return c;
     }
 
@@ -1528,7 +1562,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nested_group)
+    for (auto c : nested_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1559,7 +1593,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup::Ne
     nested_group_name{YType::str, "nested-group-name"}
 {
 
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup::~NestedGroup()
@@ -1568,6 +1602,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup::~N
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return nested_group_name.is_set;
 }
 
@@ -1580,7 +1615,8 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGrou
 std::string ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    path_buffer << "nested-group";
+    ADD_KEY_TOKEN(nested_group_name, "nested-group-name");
     return path_buffer.str();
 }
 
@@ -1632,9 +1668,11 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::NestedGroups::NestedGrou
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRanges()
+    :
+    address_range(this, {"start_address", "end_address"})
 {
 
-    yang_name = "address-ranges"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-ranges"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::~AddressRanges()
@@ -1643,7 +1681,8 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::~AddressRanges
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::has_data() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_data())
             return true;
@@ -1653,7 +1692,7 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::has_data(
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::has_operation() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_operation())
             return true;
@@ -1683,7 +1722,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addre
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(c);
+        address_range.append(c);
         return c;
     }
 
@@ -1695,7 +1734,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_range)
+    for (auto c : address_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1727,7 +1766,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange::
     end_address{YType::str, "end-address"}
 {
 
-    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange::~AddressRange()
@@ -1736,6 +1775,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange::
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| end_address.is_set;
 }
@@ -1750,7 +1790,9 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRa
 std::string ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address-range" <<"[start-address='" <<start_address <<"']" <<"[end-address='" <<end_address <<"']";
+    path_buffer << "address-range";
+    ADD_KEY_TOKEN(start_address, "start-address");
+    ADD_KEY_TOKEN(end_address, "end-address");
     return path_buffer.str();
 }
 
@@ -1813,9 +1855,11 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::AddressRanges::AddressRa
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Addresses()
+    :
+    address(this, {"prefix", "prefix_length"})
 {
 
-    yang_name = "addresses"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::~Addresses()
@@ -1824,7 +1868,8 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::~Addresses()
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -1834,7 +1879,7 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::has_data() co
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -1864,7 +1909,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addre
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -1876,7 +1921,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1908,7 +1953,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address::Address()
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address::~Address()
@@ -1917,6 +1962,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address::~Address(
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set;
 }
@@ -1931,7 +1977,9 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address::has_
 std::string ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[prefix='" <<prefix <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(prefix, "prefix");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -1994,9 +2042,11 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Addresses::Address::has_
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Hosts()
+    :
+    host(this, {"host_address"})
 {
 
-    yang_name = "hosts"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hosts"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::~Hosts()
@@ -2005,7 +2055,8 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::~Hosts()
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -2015,7 +2066,7 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::has_data() const
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -2045,7 +2096,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -2057,7 +2108,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv6::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2088,7 +2139,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host::Host()
     host_address{YType::str, "host-address"}
 {
 
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host::~Host()
@@ -2097,6 +2148,7 @@ ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host::~Host()
 
 bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return host_address.is_set;
 }
 
@@ -2109,7 +2161,8 @@ bool ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host::has_operati
 std::string ObjectGroup::Network::Ipv6::UdfObjects::UdfObject::Hosts::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
+    path_buffer << "host";
+    ADD_KEY_TOKEN(host_address, "host-address");
     return path_buffer.str();
 }
 
@@ -2166,7 +2219,7 @@ ObjectGroup::Network::Ipv4::Ipv4()
 {
     udf_objects->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv4::~Ipv4()
@@ -2175,6 +2228,7 @@ ObjectGroup::Network::Ipv4::~Ipv4()
 
 bool ObjectGroup::Network::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (udf_objects !=  nullptr && udf_objects->has_data());
 }
 
@@ -2249,9 +2303,11 @@ bool ObjectGroup::Network::Ipv4::has_leaf_or_child_of_name(const std::string & n
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObjects()
+    :
+    udf_object(this, {"object_name"})
 {
 
-    yang_name = "udf-objects"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udf-objects"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::~UdfObjects()
@@ -2260,7 +2316,8 @@ ObjectGroup::Network::Ipv4::UdfObjects::~UdfObjects()
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::has_data() const
 {
-    for (std::size_t index=0; index<udf_object.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<udf_object.len(); index++)
     {
         if(udf_object[index]->has_data())
             return true;
@@ -2270,7 +2327,7 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::has_data() const
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::has_operation() const
 {
-    for (std::size_t index=0; index<udf_object.size(); index++)
+    for (std::size_t index=0; index<udf_object.len(); index++)
     {
         if(udf_object[index]->has_operation())
             return true;
@@ -2307,7 +2364,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::UdfObjects::get_child_by_nam
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject>();
         c->parent = this;
-        udf_object.push_back(c);
+        udf_object.append(c);
         return c;
     }
 
@@ -2319,7 +2376,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : udf_object)
+    for (auto c : udf_object.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2349,18 +2406,18 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::UdfObject()
     :
     object_name{YType::str, "object-name"},
     description{YType::str, "description"}
-    	,
+        ,
     nested_groups(std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups>())
-	,address_ranges(std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges>())
-	,addresses(std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses>())
-	,hosts(std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts>())
+    , address_ranges(std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges>())
+    , addresses(std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses>())
+    , hosts(std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts>())
 {
     nested_groups->parent = this;
     address_ranges->parent = this;
     addresses->parent = this;
     hosts->parent = this;
 
-    yang_name = "udf-object"; yang_parent_name = "udf-objects"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udf-object"; yang_parent_name = "udf-objects"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::~UdfObject()
@@ -2369,6 +2426,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::~UdfObject()
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::has_data() const
 {
+    if (is_presence_container) return true;
     return object_name.is_set
 	|| description.is_set
 	|| (nested_groups !=  nullptr && nested_groups->has_data())
@@ -2398,7 +2456,8 @@ std::string ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::get_absolute_path
 std::string ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "udf-object" <<"[object-name='" <<object_name <<"']";
+    path_buffer << "udf-object";
+    ADD_KEY_TOKEN(object_name, "object-name");
     return path_buffer.str();
 }
 
@@ -2517,9 +2576,11 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::has_leaf_or_child_of_nam
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroups()
+    :
+    nested_group(this, {"nested_group_name"})
 {
 
-    yang_name = "nested-groups"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-groups"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::~NestedGroups()
@@ -2528,7 +2589,8 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::~NestedGroups()
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::has_data() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_data())
             return true;
@@ -2538,7 +2600,7 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::has_data()
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::has_operation() const
 {
-    for (std::size_t index=0; index<nested_group.size(); index++)
+    for (std::size_t index=0; index<nested_group.len(); index++)
     {
         if(nested_group[index]->has_operation())
             return true;
@@ -2568,7 +2630,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Neste
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup>();
         c->parent = this;
-        nested_group.push_back(c);
+        nested_group.append(c);
         return c;
     }
 
@@ -2580,7 +2642,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : nested_group)
+    for (auto c : nested_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2611,7 +2673,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup::Ne
     nested_group_name{YType::str, "nested-group-name"}
 {
 
-    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nested-group"; yang_parent_name = "nested-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup::~NestedGroup()
@@ -2620,6 +2682,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup::~N
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return nested_group_name.is_set;
 }
 
@@ -2632,7 +2695,8 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGrou
 std::string ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "nested-group" <<"[nested-group-name='" <<nested_group_name <<"']";
+    path_buffer << "nested-group";
+    ADD_KEY_TOKEN(nested_group_name, "nested-group-name");
     return path_buffer.str();
 }
 
@@ -2684,9 +2748,11 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::NestedGroups::NestedGrou
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRanges()
+    :
+    address_range(this, {"start_address", "end_address"})
 {
 
-    yang_name = "address-ranges"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-ranges"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::~AddressRanges()
@@ -2695,7 +2761,8 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::~AddressRanges
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::has_data() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_data())
             return true;
@@ -2705,7 +2772,7 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::has_data(
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::has_operation() const
 {
-    for (std::size_t index=0; index<address_range.size(); index++)
+    for (std::size_t index=0; index<address_range.len(); index++)
     {
         if(address_range[index]->has_operation())
             return true;
@@ -2735,7 +2802,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addre
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange>();
         c->parent = this;
-        address_range.push_back(c);
+        address_range.append(c);
         return c;
     }
 
@@ -2747,7 +2814,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address_range)
+    for (auto c : address_range.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2779,7 +2846,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange::
     end_address{YType::str, "end-address"}
 {
 
-    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address-range"; yang_parent_name = "address-ranges"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange::~AddressRange()
@@ -2788,6 +2855,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange::
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange::has_data() const
 {
+    if (is_presence_container) return true;
     return start_address.is_set
 	|| end_address.is_set;
 }
@@ -2802,7 +2870,9 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRa
 std::string ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRange::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address-range" <<"[start-address='" <<start_address <<"']" <<"[end-address='" <<end_address <<"']";
+    path_buffer << "address-range";
+    ADD_KEY_TOKEN(start_address, "start-address");
+    ADD_KEY_TOKEN(end_address, "end-address");
     return path_buffer.str();
 }
 
@@ -2865,9 +2935,11 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::AddressRanges::AddressRa
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Addresses()
+    :
+    address(this, {"prefix", "prefix_length"})
 {
 
-    yang_name = "addresses"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "addresses"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::~Addresses()
@@ -2876,7 +2948,8 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::~Addresses()
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::has_data() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_data())
             return true;
@@ -2886,7 +2959,7 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::has_data() co
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::has_operation() const
 {
-    for (std::size_t index=0; index<address.size(); index++)
+    for (std::size_t index=0; index<address.len(); index++)
     {
         if(address[index]->has_operation())
             return true;
@@ -2916,7 +2989,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addre
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address>();
         c->parent = this;
-        address.push_back(c);
+        address.append(c);
         return c;
     }
 
@@ -2928,7 +3001,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : address)
+    for (auto c : address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2960,7 +3033,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address::Address()
     prefix_length{YType::uint8, "prefix-length"}
 {
 
-    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address::~Address()
@@ -2969,6 +3042,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address::~Address(
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix.is_set
 	|| prefix_length.is_set;
 }
@@ -2983,7 +3057,9 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address::has_
 std::string ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "address" <<"[prefix='" <<prefix <<"']" <<"[prefix-length='" <<prefix_length <<"']";
+    path_buffer << "address";
+    ADD_KEY_TOKEN(prefix, "prefix");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -3046,9 +3122,11 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Addresses::Address::has_
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Hosts()
+    :
+    host(this, {"host_address"})
 {
 
-    yang_name = "hosts"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hosts"; yang_parent_name = "udf-object"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::~Hosts()
@@ -3057,7 +3135,8 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::~Hosts()
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -3067,7 +3146,7 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::has_data() const
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -3097,7 +3176,7 @@ std::shared_ptr<Entity> ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts
     {
         auto c = std::make_shared<ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -3109,7 +3188,7 @@ std::map<std::string, std::shared_ptr<Entity>> ObjectGroup::Network::Ipv4::UdfOb
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3140,7 +3219,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host::Host()
     host_address{YType::str, "host-address"}
 {
 
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host::~Host()
@@ -3149,6 +3228,7 @@ ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host::~Host()
 
 bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return host_address.is_set;
 }
 
@@ -3161,7 +3241,8 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host::has_operati
 std::string ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "host" <<"[host-address='" <<host_address <<"']";
+    path_buffer << "host";
+    ADD_KEY_TOKEN(host_address, "host-address");
     return path_buffer.str();
 }
 
@@ -3212,40 +3293,40 @@ bool ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host::has_leaf_or
     return false;
 }
 
-const Enum::YLeaf StartPort::echo {7, "echo"};
-const Enum::YLeaf StartPort::discard {9, "discard"};
-const Enum::YLeaf StartPort::daytime {13, "daytime"};
-const Enum::YLeaf StartPort::chargen {19, "chargen"};
-const Enum::YLeaf StartPort::ftp_data {20, "ftp-data"};
-const Enum::YLeaf StartPort::ftp {21, "ftp"};
-const Enum::YLeaf StartPort::ssh {22, "ssh"};
-const Enum::YLeaf StartPort::telnet {23, "telnet"};
-const Enum::YLeaf StartPort::smtp {25, "smtp"};
-const Enum::YLeaf StartPort::time {37, "time"};
-const Enum::YLeaf StartPort::nicname {43, "nicname"};
-const Enum::YLeaf StartPort::tacacs {49, "tacacs"};
-const Enum::YLeaf StartPort::domain {53, "domain"};
-const Enum::YLeaf StartPort::gopher {70, "gopher"};
-const Enum::YLeaf StartPort::finger {79, "finger"};
-const Enum::YLeaf StartPort::www {80, "www"};
-const Enum::YLeaf StartPort::host_name {101, "host-name"};
-const Enum::YLeaf StartPort::pop2 {109, "pop2"};
-const Enum::YLeaf StartPort::pop3 {110, "pop3"};
-const Enum::YLeaf StartPort::sun_rpc {111, "sun-rpc"};
-const Enum::YLeaf StartPort::ident {113, "ident"};
-const Enum::YLeaf StartPort::nntp {119, "nntp"};
-const Enum::YLeaf StartPort::bgp {179, "bgp"};
-const Enum::YLeaf StartPort::irc {194, "irc"};
-const Enum::YLeaf StartPort::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::YLeaf StartPort::exec {512, "exec"};
-const Enum::YLeaf StartPort::login {513, "login"};
-const Enum::YLeaf StartPort::cmd {514, "cmd"};
-const Enum::YLeaf StartPort::lpd {515, "lpd"};
-const Enum::YLeaf StartPort::uucp {540, "uucp"};
-const Enum::YLeaf StartPort::klogin {543, "klogin"};
-const Enum::YLeaf StartPort::kshell {544, "kshell"};
-const Enum::YLeaf StartPort::talk {517, "talk"};
-const Enum::YLeaf StartPort::ldp {646, "ldp"};
+const Enum::YLeaf EndPort::echo {7, "echo"};
+const Enum::YLeaf EndPort::discard {9, "discard"};
+const Enum::YLeaf EndPort::daytime {13, "daytime"};
+const Enum::YLeaf EndPort::chargen {19, "chargen"};
+const Enum::YLeaf EndPort::ftp_data {20, "ftp-data"};
+const Enum::YLeaf EndPort::ftp {21, "ftp"};
+const Enum::YLeaf EndPort::ssh {22, "ssh"};
+const Enum::YLeaf EndPort::telnet {23, "telnet"};
+const Enum::YLeaf EndPort::smtp {25, "smtp"};
+const Enum::YLeaf EndPort::time {37, "time"};
+const Enum::YLeaf EndPort::nicname {43, "nicname"};
+const Enum::YLeaf EndPort::tacacs {49, "tacacs"};
+const Enum::YLeaf EndPort::domain {53, "domain"};
+const Enum::YLeaf EndPort::gopher {70, "gopher"};
+const Enum::YLeaf EndPort::finger {79, "finger"};
+const Enum::YLeaf EndPort::www {80, "www"};
+const Enum::YLeaf EndPort::host_name {101, "host-name"};
+const Enum::YLeaf EndPort::pop2 {109, "pop2"};
+const Enum::YLeaf EndPort::pop3 {110, "pop3"};
+const Enum::YLeaf EndPort::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf EndPort::ident {113, "ident"};
+const Enum::YLeaf EndPort::nntp {119, "nntp"};
+const Enum::YLeaf EndPort::bgp {179, "bgp"};
+const Enum::YLeaf EndPort::irc {194, "irc"};
+const Enum::YLeaf EndPort::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf EndPort::exec {512, "exec"};
+const Enum::YLeaf EndPort::login {513, "login"};
+const Enum::YLeaf EndPort::cmd {514, "cmd"};
+const Enum::YLeaf EndPort::lpd {515, "lpd"};
+const Enum::YLeaf EndPort::uucp {540, "uucp"};
+const Enum::YLeaf EndPort::klogin {543, "klogin"};
+const Enum::YLeaf EndPort::kshell {544, "kshell"};
+const Enum::YLeaf EndPort::talk {517, "talk"};
+const Enum::YLeaf EndPort::ldp {646, "ldp"};
 
 const Enum::YLeaf PortOperator::equal {0, "equal"};
 const Enum::YLeaf PortOperator::not_equal {1, "not-equal"};
@@ -3287,40 +3368,40 @@ const Enum::YLeaf Port::kshell {544, "kshell"};
 const Enum::YLeaf Port::talk {517, "talk"};
 const Enum::YLeaf Port::ldp {646, "ldp"};
 
-const Enum::YLeaf EndPort::echo {7, "echo"};
-const Enum::YLeaf EndPort::discard {9, "discard"};
-const Enum::YLeaf EndPort::daytime {13, "daytime"};
-const Enum::YLeaf EndPort::chargen {19, "chargen"};
-const Enum::YLeaf EndPort::ftp_data {20, "ftp-data"};
-const Enum::YLeaf EndPort::ftp {21, "ftp"};
-const Enum::YLeaf EndPort::ssh {22, "ssh"};
-const Enum::YLeaf EndPort::telnet {23, "telnet"};
-const Enum::YLeaf EndPort::smtp {25, "smtp"};
-const Enum::YLeaf EndPort::time {37, "time"};
-const Enum::YLeaf EndPort::nicname {43, "nicname"};
-const Enum::YLeaf EndPort::tacacs {49, "tacacs"};
-const Enum::YLeaf EndPort::domain {53, "domain"};
-const Enum::YLeaf EndPort::gopher {70, "gopher"};
-const Enum::YLeaf EndPort::finger {79, "finger"};
-const Enum::YLeaf EndPort::www {80, "www"};
-const Enum::YLeaf EndPort::host_name {101, "host-name"};
-const Enum::YLeaf EndPort::pop2 {109, "pop2"};
-const Enum::YLeaf EndPort::pop3 {110, "pop3"};
-const Enum::YLeaf EndPort::sun_rpc {111, "sun-rpc"};
-const Enum::YLeaf EndPort::ident {113, "ident"};
-const Enum::YLeaf EndPort::nntp {119, "nntp"};
-const Enum::YLeaf EndPort::bgp {179, "bgp"};
-const Enum::YLeaf EndPort::irc {194, "irc"};
-const Enum::YLeaf EndPort::pim_auto_rp {496, "pim-auto-rp"};
-const Enum::YLeaf EndPort::exec {512, "exec"};
-const Enum::YLeaf EndPort::login {513, "login"};
-const Enum::YLeaf EndPort::cmd {514, "cmd"};
-const Enum::YLeaf EndPort::lpd {515, "lpd"};
-const Enum::YLeaf EndPort::uucp {540, "uucp"};
-const Enum::YLeaf EndPort::klogin {543, "klogin"};
-const Enum::YLeaf EndPort::kshell {544, "kshell"};
-const Enum::YLeaf EndPort::talk {517, "talk"};
-const Enum::YLeaf EndPort::ldp {646, "ldp"};
+const Enum::YLeaf StartPort::echo {7, "echo"};
+const Enum::YLeaf StartPort::discard {9, "discard"};
+const Enum::YLeaf StartPort::daytime {13, "daytime"};
+const Enum::YLeaf StartPort::chargen {19, "chargen"};
+const Enum::YLeaf StartPort::ftp_data {20, "ftp-data"};
+const Enum::YLeaf StartPort::ftp {21, "ftp"};
+const Enum::YLeaf StartPort::ssh {22, "ssh"};
+const Enum::YLeaf StartPort::telnet {23, "telnet"};
+const Enum::YLeaf StartPort::smtp {25, "smtp"};
+const Enum::YLeaf StartPort::time {37, "time"};
+const Enum::YLeaf StartPort::nicname {43, "nicname"};
+const Enum::YLeaf StartPort::tacacs {49, "tacacs"};
+const Enum::YLeaf StartPort::domain {53, "domain"};
+const Enum::YLeaf StartPort::gopher {70, "gopher"};
+const Enum::YLeaf StartPort::finger {79, "finger"};
+const Enum::YLeaf StartPort::www {80, "www"};
+const Enum::YLeaf StartPort::host_name {101, "host-name"};
+const Enum::YLeaf StartPort::pop2 {109, "pop2"};
+const Enum::YLeaf StartPort::pop3 {110, "pop3"};
+const Enum::YLeaf StartPort::sun_rpc {111, "sun-rpc"};
+const Enum::YLeaf StartPort::ident {113, "ident"};
+const Enum::YLeaf StartPort::nntp {119, "nntp"};
+const Enum::YLeaf StartPort::bgp {179, "bgp"};
+const Enum::YLeaf StartPort::irc {194, "irc"};
+const Enum::YLeaf StartPort::pim_auto_rp {496, "pim-auto-rp"};
+const Enum::YLeaf StartPort::exec {512, "exec"};
+const Enum::YLeaf StartPort::login {513, "login"};
+const Enum::YLeaf StartPort::cmd {514, "cmd"};
+const Enum::YLeaf StartPort::lpd {515, "lpd"};
+const Enum::YLeaf StartPort::uucp {540, "uucp"};
+const Enum::YLeaf StartPort::klogin {543, "klogin"};
+const Enum::YLeaf StartPort::kshell {544, "kshell"};
+const Enum::YLeaf StartPort::talk {517, "talk"};
+const Enum::YLeaf StartPort::ldp {646, "ldp"};
 
 
 }

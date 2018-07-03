@@ -32,40 +32,40 @@ class LLDPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Lldpconfiguration; //type: LLDPMIB::Lldpconfiguration
-        class Lldpstatistics; //type: LLDPMIB::Lldpstatistics
-        class Lldplocalsystemdata; //type: LLDPMIB::Lldplocalsystemdata
-        class Lldpportconfigtable; //type: LLDPMIB::Lldpportconfigtable
-        class Lldpstatstxporttable; //type: LLDPMIB::Lldpstatstxporttable
-        class Lldpstatsrxporttable; //type: LLDPMIB::Lldpstatsrxporttable
-        class Lldplocporttable; //type: LLDPMIB::Lldplocporttable
-        class Lldplocmanaddrtable; //type: LLDPMIB::Lldplocmanaddrtable
-        class Lldpremtable; //type: LLDPMIB::Lldpremtable
-        class Lldpremmanaddrtable; //type: LLDPMIB::Lldpremmanaddrtable
-        class Lldpremunknowntlvtable; //type: LLDPMIB::Lldpremunknowntlvtable
-        class Lldpremorgdefinfotable; //type: LLDPMIB::Lldpremorgdefinfotable
+        class LldpConfiguration; //type: LLDPMIB::LldpConfiguration
+        class LldpStatistics; //type: LLDPMIB::LldpStatistics
+        class LldpLocalSystemData; //type: LLDPMIB::LldpLocalSystemData
+        class LldpPortConfigTable; //type: LLDPMIB::LldpPortConfigTable
+        class LldpStatsTxPortTable; //type: LLDPMIB::LldpStatsTxPortTable
+        class LldpStatsRxPortTable; //type: LLDPMIB::LldpStatsRxPortTable
+        class LldpLocPortTable; //type: LLDPMIB::LldpLocPortTable
+        class LldpLocManAddrTable; //type: LLDPMIB::LldpLocManAddrTable
+        class LldpRemTable; //type: LLDPMIB::LldpRemTable
+        class LldpRemManAddrTable; //type: LLDPMIB::LldpRemManAddrTable
+        class LldpRemUnknownTLVTable; //type: LLDPMIB::LldpRemUnknownTLVTable
+        class LldpRemOrgDefInfoTable; //type: LLDPMIB::LldpRemOrgDefInfoTable
 
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpconfiguration> lldpconfiguration;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpstatistics> lldpstatistics;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldplocalsystemdata> lldplocalsystemdata;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpportconfigtable> lldpportconfigtable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpstatstxporttable> lldpstatstxporttable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpstatsrxporttable> lldpstatsrxporttable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldplocporttable> lldplocporttable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldplocmanaddrtable> lldplocmanaddrtable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable> lldpremtable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremmanaddrtable> lldpremmanaddrtable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremunknowntlvtable> lldpremunknowntlvtable;
-        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremorgdefinfotable> lldpremorgdefinfotable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpConfiguration> lldpconfiguration;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpStatistics> lldpstatistics;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpLocalSystemData> lldplocalsystemdata;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpPortConfigTable> lldpportconfigtable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpStatsTxPortTable> lldpstatstxporttable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpStatsRxPortTable> lldpstatsrxporttable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpLocPortTable> lldplocporttable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpLocManAddrTable> lldplocmanaddrtable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable> lldpremtable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemManAddrTable> lldpremmanaddrtable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemUnknownTLVTable> lldpremunknowntlvtable;
+        std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemOrgDefInfoTable> lldpremorgdefinfotable;
         
 }; // LLDPMIB
 
 
-class LLDPMIB::Lldpconfiguration : public ydk::Entity
+class LLDPMIB::LldpConfiguration : public ydk::Entity
 {
     public:
-        Lldpconfiguration();
-        ~Lldpconfiguration();
+        LldpConfiguration();
+        ~LldpConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,14 +84,14 @@ class LLDPMIB::Lldpconfiguration : public ydk::Entity
         ydk::YLeaf lldptxdelay; //type: int32
         ydk::YLeaf lldpnotificationinterval; //type: int32
 
-}; // LLDPMIB::Lldpconfiguration
+}; // LLDPMIB::LldpConfiguration
 
 
-class LLDPMIB::Lldpstatistics : public ydk::Entity
+class LLDPMIB::LldpStatistics : public ydk::Entity
 {
     public:
-        Lldpstatistics();
-        ~Lldpstatistics();
+        LldpStatistics();
+        ~LldpStatistics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -110,14 +110,14 @@ class LLDPMIB::Lldpstatistics : public ydk::Entity
         ydk::YLeaf lldpstatsremtablesdrops; //type: uint32
         ydk::YLeaf lldpstatsremtablesageouts; //type: uint32
 
-}; // LLDPMIB::Lldpstatistics
+}; // LLDPMIB::LldpStatistics
 
 
-class LLDPMIB::Lldplocalsystemdata : public ydk::Entity
+class LLDPMIB::LldpLocalSystemData : public ydk::Entity
 {
     public:
-        Lldplocalsystemdata();
-        ~Lldplocalsystemdata();
+        LldpLocalSystemData();
+        ~LldpLocalSystemData();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -137,14 +137,14 @@ class LLDPMIB::Lldplocalsystemdata : public ydk::Entity
         ydk::YLeaf lldplocsyscapsupported; //type: LldpSystemCapabilitiesMap
         ydk::YLeaf lldplocsyscapenabled; //type: LldpSystemCapabilitiesMap
 
-}; // LLDPMIB::Lldplocalsystemdata
+}; // LLDPMIB::LldpLocalSystemData
 
 
-class LLDPMIB::Lldpportconfigtable : public ydk::Entity
+class LLDPMIB::LldpPortConfigTable : public ydk::Entity
 {
     public:
-        Lldpportconfigtable();
-        ~Lldpportconfigtable();
+        LldpPortConfigTable();
+        ~LldpPortConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -157,18 +157,18 @@ class LLDPMIB::Lldpportconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldpportconfigentry; //type: LLDPMIB::Lldpportconfigtable::Lldpportconfigentry
+        class LldpPortConfigEntry; //type: LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpportconfigtable::Lldpportconfigentry> > lldpportconfigentry;
+        ydk::YList lldpportconfigentry;
         
-}; // LLDPMIB::Lldpportconfigtable
+}; // LLDPMIB::LldpPortConfigTable
 
 
-class LLDPMIB::Lldpportconfigtable::Lldpportconfigentry : public ydk::Entity
+class LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry : public ydk::Entity
 {
     public:
-        Lldpportconfigentry();
-        ~Lldpportconfigentry();
+        LldpPortConfigEntry();
+        ~LldpPortConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -182,19 +182,19 @@ class LLDPMIB::Lldpportconfigtable::Lldpportconfigentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf lldpportconfigportnum; //type: int32
-        ydk::YLeaf lldpportconfigadminstatus; //type: Lldpportconfigadminstatus
+        ydk::YLeaf lldpportconfigadminstatus; //type: LldpPortConfigAdminStatus
         ydk::YLeaf lldpportconfignotificationenable; //type: boolean
-        ydk::YLeaf lldpportconfigtlvstxenable; //type: Lldpportconfigtlvstxenable
-        class Lldpportconfigadminstatus;
+        ydk::YLeaf lldpportconfigtlvstxenable; //type: LldpPortConfigTLVsTxEnable
+        class LldpPortConfigAdminStatus;
 
-}; // LLDPMIB::Lldpportconfigtable::Lldpportconfigentry
+}; // LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry
 
 
-class LLDPMIB::Lldpstatstxporttable : public ydk::Entity
+class LLDPMIB::LldpStatsTxPortTable : public ydk::Entity
 {
     public:
-        Lldpstatstxporttable();
-        ~Lldpstatstxporttable();
+        LldpStatsTxPortTable();
+        ~LldpStatsTxPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -207,18 +207,18 @@ class LLDPMIB::Lldpstatstxporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldpstatstxportentry; //type: LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry
+        class LldpStatsTxPortEntry; //type: LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry> > lldpstatstxportentry;
+        ydk::YList lldpstatstxportentry;
         
-}; // LLDPMIB::Lldpstatstxporttable
+}; // LLDPMIB::LldpStatsTxPortTable
 
 
-class LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry : public ydk::Entity
+class LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry : public ydk::Entity
 {
     public:
-        Lldpstatstxportentry();
-        ~Lldpstatstxportentry();
+        LldpStatsTxPortEntry();
+        ~LldpStatsTxPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -234,14 +234,14 @@ class LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry : public ydk::Entity
         ydk::YLeaf lldpstatstxportnum; //type: int32
         ydk::YLeaf lldpstatstxportframestotal; //type: uint32
 
-}; // LLDPMIB::Lldpstatstxporttable::Lldpstatstxportentry
+}; // LLDPMIB::LldpStatsTxPortTable::LldpStatsTxPortEntry
 
 
-class LLDPMIB::Lldpstatsrxporttable : public ydk::Entity
+class LLDPMIB::LldpStatsRxPortTable : public ydk::Entity
 {
     public:
-        Lldpstatsrxporttable();
-        ~Lldpstatsrxporttable();
+        LldpStatsRxPortTable();
+        ~LldpStatsRxPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -254,18 +254,18 @@ class LLDPMIB::Lldpstatsrxporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldpstatsrxportentry; //type: LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry
+        class LldpStatsRxPortEntry; //type: LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry> > lldpstatsrxportentry;
+        ydk::YList lldpstatsrxportentry;
         
-}; // LLDPMIB::Lldpstatsrxporttable
+}; // LLDPMIB::LldpStatsRxPortTable
 
 
-class LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry : public ydk::Entity
+class LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry : public ydk::Entity
 {
     public:
-        Lldpstatsrxportentry();
-        ~Lldpstatsrxportentry();
+        LldpStatsRxPortEntry();
+        ~LldpStatsRxPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -286,14 +286,14 @@ class LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry : public ydk::Entity
         ydk::YLeaf lldpstatsrxporttlvsunrecognizedtotal; //type: uint32
         ydk::YLeaf lldpstatsrxportageoutstotal; //type: uint32
 
-}; // LLDPMIB::Lldpstatsrxporttable::Lldpstatsrxportentry
+}; // LLDPMIB::LldpStatsRxPortTable::LldpStatsRxPortEntry
 
 
-class LLDPMIB::Lldplocporttable : public ydk::Entity
+class LLDPMIB::LldpLocPortTable : public ydk::Entity
 {
     public:
-        Lldplocporttable();
-        ~Lldplocporttable();
+        LldpLocPortTable();
+        ~LldpLocPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -306,18 +306,18 @@ class LLDPMIB::Lldplocporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldplocportentry; //type: LLDPMIB::Lldplocporttable::Lldplocportentry
+        class LldpLocPortEntry; //type: LLDPMIB::LldpLocPortTable::LldpLocPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldplocporttable::Lldplocportentry> > lldplocportentry;
+        ydk::YList lldplocportentry;
         
-}; // LLDPMIB::Lldplocporttable
+}; // LLDPMIB::LldpLocPortTable
 
 
-class LLDPMIB::Lldplocporttable::Lldplocportentry : public ydk::Entity
+class LLDPMIB::LldpLocPortTable::LldpLocPortEntry : public ydk::Entity
 {
     public:
-        Lldplocportentry();
-        ~Lldplocportentry();
+        LldpLocPortEntry();
+        ~LldpLocPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -335,14 +335,14 @@ class LLDPMIB::Lldplocporttable::Lldplocportentry : public ydk::Entity
         ydk::YLeaf lldplocportid; //type: binary
         ydk::YLeaf lldplocportdesc; //type: string
 
-}; // LLDPMIB::Lldplocporttable::Lldplocportentry
+}; // LLDPMIB::LldpLocPortTable::LldpLocPortEntry
 
 
-class LLDPMIB::Lldplocmanaddrtable : public ydk::Entity
+class LLDPMIB::LldpLocManAddrTable : public ydk::Entity
 {
     public:
-        Lldplocmanaddrtable();
-        ~Lldplocmanaddrtable();
+        LldpLocManAddrTable();
+        ~LldpLocManAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -355,18 +355,18 @@ class LLDPMIB::Lldplocmanaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldplocmanaddrentry; //type: LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry
+        class LldpLocManAddrEntry; //type: LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry> > lldplocmanaddrentry;
+        ydk::YList lldplocmanaddrentry;
         
-}; // LLDPMIB::Lldplocmanaddrtable
+}; // LLDPMIB::LldpLocManAddrTable
 
 
-class LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry : public ydk::Entity
+class LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry : public ydk::Entity
 {
     public:
-        Lldplocmanaddrentry();
-        ~Lldplocmanaddrentry();
+        LldpLocManAddrEntry();
+        ~LldpLocManAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -387,14 +387,14 @@ class LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry : public ydk::Entity
         ydk::YLeaf lldplocmanaddroid; //type: string
         ydk::YLeaf lldpconfigmanaddrportstxenable; //type: binary
 
-}; // LLDPMIB::Lldplocmanaddrtable::Lldplocmanaddrentry
+}; // LLDPMIB::LldpLocManAddrTable::LldpLocManAddrEntry
 
 
-class LLDPMIB::Lldpremtable : public ydk::Entity
+class LLDPMIB::LldpRemTable : public ydk::Entity
 {
     public:
-        Lldpremtable();
-        ~Lldpremtable();
+        LldpRemTable();
+        ~LldpRemTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -407,18 +407,18 @@ class LLDPMIB::Lldpremtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldprementry; //type: LLDPMIB::Lldpremtable::Lldprementry
+        class LldpRemEntry; //type: LLDPMIB::LldpRemTable::LldpRemEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry> > lldprementry;
+        ydk::YList lldprementry;
         
-}; // LLDPMIB::Lldpremtable
+}; // LLDPMIB::LldpRemTable
 
 
-class LLDPMIB::Lldpremtable::Lldprementry : public ydk::Entity
+class LLDPMIB::LldpRemTable::LldpRemEntry : public ydk::Entity
 {
     public:
-        Lldprementry();
-        ~Lldprementry();
+        LldpRemEntry();
+        ~LldpRemEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -444,14 +444,14 @@ class LLDPMIB::Lldpremtable::Lldprementry : public ydk::Entity
         ydk::YLeaf lldpremsyscapsupported; //type: LldpSystemCapabilitiesMap
         ydk::YLeaf lldpremsyscapenabled; //type: LldpSystemCapabilitiesMap
 
-}; // LLDPMIB::Lldpremtable::Lldprementry
+}; // LLDPMIB::LldpRemTable::LldpRemEntry
 
 
-class LLDPMIB::Lldpremmanaddrtable : public ydk::Entity
+class LLDPMIB::LldpRemManAddrTable : public ydk::Entity
 {
     public:
-        Lldpremmanaddrtable();
-        ~Lldpremmanaddrtable();
+        LldpRemManAddrTable();
+        ~LldpRemManAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -464,18 +464,18 @@ class LLDPMIB::Lldpremmanaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldpremmanaddrentry; //type: LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry
+        class LldpRemManAddrEntry; //type: LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry> > lldpremmanaddrentry;
+        ydk::YList lldpremmanaddrentry;
         
-}; // LLDPMIB::Lldpremmanaddrtable
+}; // LLDPMIB::LldpRemManAddrTable
 
 
-class LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry : public ydk::Entity
+class LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry : public ydk::Entity
 {
     public:
-        Lldpremmanaddrentry();
-        ~Lldpremmanaddrentry();
+        LldpRemManAddrEntry();
+        ~LldpRemManAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -488,11 +488,11 @@ class LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremtimemark)
+        //type: uint32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremtimemark)
         ydk::YLeaf lldpremtimemark;
-        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremlocalportnum)
+        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremlocalportnum)
         ydk::YLeaf lldpremlocalportnum;
-        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremindex)
+        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremindex)
         ydk::YLeaf lldpremindex;
         ydk::YLeaf lldpremmanaddrsubtype; //type: AddressFamilyNumbers
         ydk::YLeaf lldpremmanaddr; //type: binary
@@ -500,14 +500,14 @@ class LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry : public ydk::Entity
         ydk::YLeaf lldpremmanaddrifid; //type: int32
         ydk::YLeaf lldpremmanaddroid; //type: string
 
-}; // LLDPMIB::Lldpremmanaddrtable::Lldpremmanaddrentry
+}; // LLDPMIB::LldpRemManAddrTable::LldpRemManAddrEntry
 
 
-class LLDPMIB::Lldpremunknowntlvtable : public ydk::Entity
+class LLDPMIB::LldpRemUnknownTLVTable : public ydk::Entity
 {
     public:
-        Lldpremunknowntlvtable();
-        ~Lldpremunknowntlvtable();
+        LldpRemUnknownTLVTable();
+        ~LldpRemUnknownTLVTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -520,18 +520,18 @@ class LLDPMIB::Lldpremunknowntlvtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldpremunknowntlventry; //type: LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry
+        class LldpRemUnknownTLVEntry; //type: LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry> > lldpremunknowntlventry;
+        ydk::YList lldpremunknowntlventry;
         
-}; // LLDPMIB::Lldpremunknowntlvtable
+}; // LLDPMIB::LldpRemUnknownTLVTable
 
 
-class LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry : public ydk::Entity
+class LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry : public ydk::Entity
 {
     public:
-        Lldpremunknowntlventry();
-        ~Lldpremunknowntlventry();
+        LldpRemUnknownTLVEntry();
+        ~LldpRemUnknownTLVEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -544,23 +544,23 @@ class LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremtimemark)
+        //type: uint32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremtimemark)
         ydk::YLeaf lldpremtimemark;
-        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremlocalportnum)
+        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremlocalportnum)
         ydk::YLeaf lldpremlocalportnum;
-        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremindex)
+        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremindex)
         ydk::YLeaf lldpremindex;
         ydk::YLeaf lldpremunknowntlvtype; //type: int32
         ydk::YLeaf lldpremunknowntlvinfo; //type: binary
 
-}; // LLDPMIB::Lldpremunknowntlvtable::Lldpremunknowntlventry
+}; // LLDPMIB::LldpRemUnknownTLVTable::LldpRemUnknownTLVEntry
 
 
-class LLDPMIB::Lldpremorgdefinfotable : public ydk::Entity
+class LLDPMIB::LldpRemOrgDefInfoTable : public ydk::Entity
 {
     public:
-        Lldpremorgdefinfotable();
-        ~Lldpremorgdefinfotable();
+        LldpRemOrgDefInfoTable();
+        ~LldpRemOrgDefInfoTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -573,18 +573,18 @@ class LLDPMIB::Lldpremorgdefinfotable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Lldpremorgdefinfoentry; //type: LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry
+        class LldpRemOrgDefInfoEntry; //type: LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry> > lldpremorgdefinfoentry;
+        ydk::YList lldpremorgdefinfoentry;
         
-}; // LLDPMIB::Lldpremorgdefinfotable
+}; // LLDPMIB::LldpRemOrgDefInfoTable
 
 
-class LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry : public ydk::Entity
+class LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry : public ydk::Entity
 {
     public:
-        Lldpremorgdefinfoentry();
-        ~Lldpremorgdefinfoentry();
+        LldpRemOrgDefInfoEntry();
+        ~LldpRemOrgDefInfoEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -597,31 +597,18 @@ class LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: uint32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremtimemark)
+        //type: uint32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremtimemark)
         ydk::YLeaf lldpremtimemark;
-        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremlocalportnum)
+        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremlocalportnum)
         ydk::YLeaf lldpremlocalportnum;
-        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::Lldpremtable::Lldprementry::lldpremindex)
+        //type: int32 (refers to cisco_ios_xe::LLDP_MIB::LLDPMIB::LldpRemTable::LldpRemEntry::lldpremindex)
         ydk::YLeaf lldpremindex;
         ydk::YLeaf lldpremorgdefinfooui; //type: binary
         ydk::YLeaf lldpremorgdefinfosubtype; //type: int32
         ydk::YLeaf lldpremorgdefinfoindex; //type: int32
         ydk::YLeaf lldpremorgdefinfo; //type: binary
 
-}; // LLDPMIB::Lldpremorgdefinfotable::Lldpremorgdefinfoentry
-
-class LldpChassisIdSubtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf chassisComponent;
-        static const ydk::Enum::YLeaf interfaceAlias;
-        static const ydk::Enum::YLeaf portComponent;
-        static const ydk::Enum::YLeaf macAddress;
-        static const ydk::Enum::YLeaf networkAddress;
-        static const ydk::Enum::YLeaf interfaceName;
-        static const ydk::Enum::YLeaf local;
-
-};
+}; // LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry
 
 class LldpPortIdSubtype : public ydk::Enum
 {
@@ -636,6 +623,19 @@ class LldpPortIdSubtype : public ydk::Enum
 
 };
 
+class LldpChassisIdSubtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf chassisComponent;
+        static const ydk::Enum::YLeaf interfaceAlias;
+        static const ydk::Enum::YLeaf portComponent;
+        static const ydk::Enum::YLeaf macAddress;
+        static const ydk::Enum::YLeaf networkAddress;
+        static const ydk::Enum::YLeaf interfaceName;
+        static const ydk::Enum::YLeaf local;
+
+};
+
 class LldpManAddrIfSubtype : public ydk::Enum
 {
     public:
@@ -645,7 +645,7 @@ class LldpManAddrIfSubtype : public ydk::Enum
 
 };
 
-class LLDPMIB::Lldpportconfigtable::Lldpportconfigentry::Lldpportconfigadminstatus : public ydk::Enum
+class LLDPMIB::LldpPortConfigTable::LldpPortConfigEntry::LldpPortConfigAdminStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf txOnly;

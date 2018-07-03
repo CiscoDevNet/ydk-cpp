@@ -290,7 +290,7 @@ class PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
         class BasicCounterInterfaceTemplate; //type: PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates::BasicCounterInterfaceTemplate> > basic_counter_interface_template;
+        ydk::YList basic_counter_interface_template;
         
 }; // PerfMgmt::Threshold::BasicCounterInterface::BasicCounterInterfaceTemplates
 
@@ -644,7 +644,7 @@ class PerfMgmt::Threshold::Bgp::BgpTemplates : public ydk::Entity
 
         class BgpTemplate; //type: PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Bgp::BgpTemplates::BgpTemplate> > bgp_template;
+        ydk::YList bgp_template;
         
 }; // PerfMgmt::Threshold::Bgp::BgpTemplates
 
@@ -940,7 +940,7 @@ class PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates : public ydk:
 
         class Ospfv2ProtocolTemplate; //type: PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates::Ospfv2ProtocolTemplate> > ospfv2_protocol_template;
+        ydk::YList ospfv2_protocol_template;
         
 }; // PerfMgmt::Threshold::Ospfv2Protocol::Ospfv2ProtocolTemplates
 
@@ -1600,7 +1600,7 @@ class PerfMgmt::Threshold::CpuNode::CpuNodeTemplates : public ydk::Entity
 
         class CpuNodeTemplate; //type: PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::CpuNode::CpuNodeTemplates::CpuNodeTemplate> > cpu_node_template;
+        ydk::YList cpu_node_template;
         
 }; // PerfMgmt::Threshold::CpuNode::CpuNodeTemplates
 
@@ -1728,7 +1728,7 @@ class PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates : publi
 
         class DataRateInterfaceTemplate; //type: PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates::DataRateInterfaceTemplate> > data_rate_interface_template;
+        ydk::YList data_rate_interface_template;
         
 }; // PerfMgmt::Threshold::DataRateInterface::DataRateInterfaceTemplates
 
@@ -2054,7 +2054,7 @@ class PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates : public ydk::Entit
 
         class ProcessNodeTemplate; //type: PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates::ProcessNodeTemplate> > process_node_template;
+        ydk::YList process_node_template;
         
 }; // PerfMgmt::Threshold::ProcessNode::ProcessNodeTemplates
 
@@ -2210,7 +2210,7 @@ class PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates : public ydk::Entity
 
         class MemoryNodeTemplate; //type: PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates::MemoryNodeTemplate> > memory_node_template;
+        ydk::YList memory_node_template;
         
 }; // PerfMgmt::Threshold::MemoryNode::MemoryNodeTemplates
 
@@ -2338,7 +2338,7 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates : public ydk:
 
         class Ospfv3ProtocolTemplate; //type: PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_perfmgmt_cfg::PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate> > ospfv3_protocol_template;
+        ydk::YList ospfv3_protocol_template;
         
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates
 

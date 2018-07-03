@@ -33,14 +33,14 @@ class TCPMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Tcp; //type: TCPMIB::Tcp
-        class Tcpconntable; //type: TCPMIB::Tcpconntable
-        class Tcpconnectiontable; //type: TCPMIB::Tcpconnectiontable
-        class Tcplistenertable; //type: TCPMIB::Tcplistenertable
+        class TcpConnTable; //type: TCPMIB::TcpConnTable
+        class TcpConnectionTable; //type: TCPMIB::TcpConnectionTable
+        class TcpListenerTable; //type: TCPMIB::TcpListenerTable
 
         std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcp> tcp;
-        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconntable> tcpconntable;
-        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconnectiontable> tcpconnectiontable;
-        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcplistenertable> tcplistenertable;
+        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::TcpConnTable> tcpconntable;
+        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::TcpConnectionTable> tcpconnectiontable;
+        std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::TcpListenerTable> tcplistenertable;
         
 }; // TCPMIB
 
@@ -62,7 +62,7 @@ class TCPMIB::Tcp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf tcprtoalgorithm; //type: Tcprtoalgorithm
+        ydk::YLeaf tcprtoalgorithm; //type: TcpRtoAlgorithm
         ydk::YLeaf tcprtomin; //type: int32
         ydk::YLeaf tcprtomax; //type: int32
         ydk::YLeaf tcpmaxconn; //type: int32
@@ -78,16 +78,16 @@ class TCPMIB::Tcp : public ydk::Entity
         ydk::YLeaf tcpoutrsts; //type: uint32
         ydk::YLeaf tcphcinsegs; //type: uint64
         ydk::YLeaf tcphcoutsegs; //type: uint64
-        class Tcprtoalgorithm;
+        class TcpRtoAlgorithm;
 
 }; // TCPMIB::Tcp
 
 
-class TCPMIB::Tcpconntable : public ydk::Entity
+class TCPMIB::TcpConnTable : public ydk::Entity
 {
     public:
-        Tcpconntable();
-        ~Tcpconntable();
+        TcpConnTable();
+        ~TcpConnTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -100,18 +100,18 @@ class TCPMIB::Tcpconntable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tcpconnentry; //type: TCPMIB::Tcpconntable::Tcpconnentry
+        class TcpConnEntry; //type: TCPMIB::TcpConnTable::TcpConnEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconntable::Tcpconnentry> > tcpconnentry;
+        ydk::YList tcpconnentry;
         
-}; // TCPMIB::Tcpconntable
+}; // TCPMIB::TcpConnTable
 
 
-class TCPMIB::Tcpconntable::Tcpconnentry : public ydk::Entity
+class TCPMIB::TcpConnTable::TcpConnEntry : public ydk::Entity
 {
     public:
-        Tcpconnentry();
-        ~Tcpconnentry();
+        TcpConnEntry();
+        ~TcpConnEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -128,17 +128,17 @@ class TCPMIB::Tcpconntable::Tcpconnentry : public ydk::Entity
         ydk::YLeaf tcpconnlocalport; //type: int32
         ydk::YLeaf tcpconnremaddress; //type: string
         ydk::YLeaf tcpconnremport; //type: int32
-        ydk::YLeaf tcpconnstate; //type: Tcpconnstate
-        class Tcpconnstate;
+        ydk::YLeaf tcpconnstate; //type: TcpConnState
+        class TcpConnState;
 
-}; // TCPMIB::Tcpconntable::Tcpconnentry
+}; // TCPMIB::TcpConnTable::TcpConnEntry
 
 
-class TCPMIB::Tcpconnectiontable : public ydk::Entity
+class TCPMIB::TcpConnectionTable : public ydk::Entity
 {
     public:
-        Tcpconnectiontable();
-        ~Tcpconnectiontable();
+        TcpConnectionTable();
+        ~TcpConnectionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -151,18 +151,18 @@ class TCPMIB::Tcpconnectiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tcpconnectionentry; //type: TCPMIB::Tcpconnectiontable::Tcpconnectionentry
+        class TcpConnectionEntry; //type: TCPMIB::TcpConnectionTable::TcpConnectionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcpconnectiontable::Tcpconnectionentry> > tcpconnectionentry;
+        ydk::YList tcpconnectionentry;
         
-}; // TCPMIB::Tcpconnectiontable
+}; // TCPMIB::TcpConnectionTable
 
 
-class TCPMIB::Tcpconnectiontable::Tcpconnectionentry : public ydk::Entity
+class TCPMIB::TcpConnectionTable::TcpConnectionEntry : public ydk::Entity
 {
     public:
-        Tcpconnectionentry();
-        ~Tcpconnectionentry();
+        TcpConnectionEntry();
+        ~TcpConnectionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -181,18 +181,18 @@ class TCPMIB::Tcpconnectiontable::Tcpconnectionentry : public ydk::Entity
         ydk::YLeaf tcpconnectionremaddresstype; //type: InetAddressType
         ydk::YLeaf tcpconnectionremaddress; //type: binary
         ydk::YLeaf tcpconnectionremport; //type: uint16
-        ydk::YLeaf tcpconnectionstate; //type: Tcpconnectionstate
+        ydk::YLeaf tcpconnectionstate; //type: TcpConnectionState
         ydk::YLeaf tcpconnectionprocess; //type: uint32
-        class Tcpconnectionstate;
+        class TcpConnectionState;
 
-}; // TCPMIB::Tcpconnectiontable::Tcpconnectionentry
+}; // TCPMIB::TcpConnectionTable::TcpConnectionEntry
 
 
-class TCPMIB::Tcplistenertable : public ydk::Entity
+class TCPMIB::TcpListenerTable : public ydk::Entity
 {
     public:
-        Tcplistenertable();
-        ~Tcplistenertable();
+        TcpListenerTable();
+        ~TcpListenerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -205,18 +205,18 @@ class TCPMIB::Tcplistenertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Tcplistenerentry; //type: TCPMIB::Tcplistenertable::Tcplistenerentry
+        class TcpListenerEntry; //type: TCPMIB::TcpListenerTable::TcpListenerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::TCP_MIB::TCPMIB::Tcplistenertable::Tcplistenerentry> > tcplistenerentry;
+        ydk::YList tcplistenerentry;
         
-}; // TCPMIB::Tcplistenertable
+}; // TCPMIB::TcpListenerTable
 
 
-class TCPMIB::Tcplistenertable::Tcplistenerentry : public ydk::Entity
+class TCPMIB::TcpListenerTable::TcpListenerEntry : public ydk::Entity
 {
     public:
-        Tcplistenerentry();
-        ~Tcplistenerentry();
+        TcpListenerEntry();
+        ~TcpListenerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -234,9 +234,9 @@ class TCPMIB::Tcplistenertable::Tcplistenerentry : public ydk::Entity
         ydk::YLeaf tcplistenerlocalport; //type: uint16
         ydk::YLeaf tcplistenerprocess; //type: uint32
 
-}; // TCPMIB::Tcplistenertable::Tcplistenerentry
+}; // TCPMIB::TcpListenerTable::TcpListenerEntry
 
-class TCPMIB::Tcp::Tcprtoalgorithm : public ydk::Enum
+class TCPMIB::Tcp::TcpRtoAlgorithm : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -247,7 +247,7 @@ class TCPMIB::Tcp::Tcprtoalgorithm : public ydk::Enum
 
 };
 
-class TCPMIB::Tcpconntable::Tcpconnentry::Tcpconnstate : public ydk::Enum
+class TCPMIB::TcpConnTable::TcpConnEntry::TcpConnState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf closed;
@@ -265,7 +265,7 @@ class TCPMIB::Tcpconntable::Tcpconnentry::Tcpconnstate : public ydk::Enum
 
 };
 
-class TCPMIB::Tcpconnectiontable::Tcpconnectionentry::Tcpconnectionstate : public ydk::Enum
+class TCPMIB::TcpConnectionTable::TcpConnectionEntry::TcpConnectionState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf closed;

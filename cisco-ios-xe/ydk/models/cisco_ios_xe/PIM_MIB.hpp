@@ -33,24 +33,24 @@ class PIMMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Pim; //type: PIMMIB::Pim
-        class Piminterfacetable; //type: PIMMIB::Piminterfacetable
-        class Pimneighbortable; //type: PIMMIB::Pimneighbortable
-        class Pimipmroutetable; //type: PIMMIB::Pimipmroutetable
-        class Pimrptable; //type: PIMMIB::Pimrptable
-        class Pimrpsettable; //type: PIMMIB::Pimrpsettable
-        class Pimipmroutenexthoptable; //type: PIMMIB::Pimipmroutenexthoptable
-        class Pimcandidaterptable; //type: PIMMIB::Pimcandidaterptable
-        class Pimcomponenttable; //type: PIMMIB::Pimcomponenttable
+        class PimInterfaceTable; //type: PIMMIB::PimInterfaceTable
+        class PimNeighborTable; //type: PIMMIB::PimNeighborTable
+        class PimIpMRouteTable; //type: PIMMIB::PimIpMRouteTable
+        class PimRPTable; //type: PIMMIB::PimRPTable
+        class PimRPSetTable; //type: PIMMIB::PimRPSetTable
+        class PimIpMRouteNextHopTable; //type: PIMMIB::PimIpMRouteNextHopTable
+        class PimCandidateRPTable; //type: PIMMIB::PimCandidateRPTable
+        class PimComponentTable; //type: PIMMIB::PimComponentTable
 
         std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pim> pim;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Piminterfacetable> piminterfacetable;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimneighbortable> pimneighbortable;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutetable> pimipmroutetable;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrptable> pimrptable;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrpsettable> pimrpsettable;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutenexthoptable> pimipmroutenexthoptable;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcandidaterptable> pimcandidaterptable;
-        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcomponenttable> pimcomponenttable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimInterfaceTable> piminterfacetable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimNeighborTable> pimneighbortable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimIpMRouteTable> pimipmroutetable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimRPTable> pimrptable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimRPSetTable> pimrpsettable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimIpMRouteNextHopTable> pimipmroutenexthoptable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimCandidateRPTable> pimcandidaterptable;
+        std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::PimComponentTable> pimcomponenttable;
         
 }; // PIMMIB
 
@@ -77,11 +77,11 @@ class PIMMIB::Pim : public ydk::Entity
 }; // PIMMIB::Pim
 
 
-class PIMMIB::Piminterfacetable : public ydk::Entity
+class PIMMIB::PimInterfaceTable : public ydk::Entity
 {
     public:
-        Piminterfacetable();
-        ~Piminterfacetable();
+        PimInterfaceTable();
+        ~PimInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -94,18 +94,18 @@ class PIMMIB::Piminterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Piminterfaceentry; //type: PIMMIB::Piminterfacetable::Piminterfaceentry
+        class PimInterfaceEntry; //type: PIMMIB::PimInterfaceTable::PimInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Piminterfacetable::Piminterfaceentry> > piminterfaceentry;
+        ydk::YList piminterfaceentry;
         
-}; // PIMMIB::Piminterfacetable
+}; // PIMMIB::PimInterfaceTable
 
 
-class PIMMIB::Piminterfacetable::Piminterfaceentry : public ydk::Entity
+class PIMMIB::PimInterfaceTable::PimInterfaceEntry : public ydk::Entity
 {
     public:
-        Piminterfaceentry();
-        ~Piminterfaceentry();
+        PimInterfaceEntry();
+        ~PimInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -121,22 +121,22 @@ class PIMMIB::Piminterfacetable::Piminterfaceentry : public ydk::Entity
         ydk::YLeaf piminterfaceifindex; //type: int32
         ydk::YLeaf piminterfaceaddress; //type: string
         ydk::YLeaf piminterfacenetmask; //type: string
-        ydk::YLeaf piminterfacemode; //type: Piminterfacemode
+        ydk::YLeaf piminterfacemode; //type: PimInterfaceMode
         ydk::YLeaf piminterfacedr; //type: string
         ydk::YLeaf piminterfacehellointerval; //type: int32
         ydk::YLeaf piminterfacestatus; //type: RowStatus
         ydk::YLeaf piminterfacejoinpruneinterval; //type: int32
         ydk::YLeaf piminterfacecbsrpreference; //type: int32
-        class Piminterfacemode;
+        class PimInterfaceMode;
 
-}; // PIMMIB::Piminterfacetable::Piminterfaceentry
+}; // PIMMIB::PimInterfaceTable::PimInterfaceEntry
 
 
-class PIMMIB::Pimneighbortable : public ydk::Entity
+class PIMMIB::PimNeighborTable : public ydk::Entity
 {
     public:
-        Pimneighbortable();
-        ~Pimneighbortable();
+        PimNeighborTable();
+        ~PimNeighborTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -149,18 +149,18 @@ class PIMMIB::Pimneighbortable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pimneighborentry; //type: PIMMIB::Pimneighbortable::Pimneighborentry
+        class PimNeighborEntry; //type: PIMMIB::PimNeighborTable::PimNeighborEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimneighbortable::Pimneighborentry> > pimneighborentry;
+        ydk::YList pimneighborentry;
         
-}; // PIMMIB::Pimneighbortable
+}; // PIMMIB::PimNeighborTable
 
 
-class PIMMIB::Pimneighbortable::Pimneighborentry : public ydk::Entity
+class PIMMIB::PimNeighborTable::PimNeighborEntry : public ydk::Entity
 {
     public:
-        Pimneighborentry();
-        ~Pimneighborentry();
+        PimNeighborEntry();
+        ~PimNeighborEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -177,17 +177,17 @@ class PIMMIB::Pimneighbortable::Pimneighborentry : public ydk::Entity
         ydk::YLeaf pimneighborifindex; //type: int32
         ydk::YLeaf pimneighboruptime; //type: uint32
         ydk::YLeaf pimneighborexpirytime; //type: uint32
-        ydk::YLeaf pimneighbormode; //type: Pimneighbormode
-        class Pimneighbormode;
+        ydk::YLeaf pimneighbormode; //type: PimNeighborMode
+        class PimNeighborMode;
 
-}; // PIMMIB::Pimneighbortable::Pimneighborentry
+}; // PIMMIB::PimNeighborTable::PimNeighborEntry
 
 
-class PIMMIB::Pimipmroutetable : public ydk::Entity
+class PIMMIB::PimIpMRouteTable : public ydk::Entity
 {
     public:
-        Pimipmroutetable();
-        ~Pimipmroutetable();
+        PimIpMRouteTable();
+        ~PimIpMRouteTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -200,18 +200,18 @@ class PIMMIB::Pimipmroutetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pimipmrouteentry; //type: PIMMIB::Pimipmroutetable::Pimipmrouteentry
+        class PimIpMRouteEntry; //type: PIMMIB::PimIpMRouteTable::PimIpMRouteEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutetable::Pimipmrouteentry> > pimipmrouteentry;
+        ydk::YList pimipmrouteentry;
         
-}; // PIMMIB::Pimipmroutetable
+}; // PIMMIB::PimIpMRouteTable
 
 
-class PIMMIB::Pimipmroutetable::Pimipmrouteentry : public ydk::Entity
+class PIMMIB::PimIpMRouteTable::PimIpMRouteEntry : public ydk::Entity
 {
     public:
-        Pimipmrouteentry();
-        ~Pimipmrouteentry();
+        PimIpMRouteEntry();
+        ~PimIpMRouteEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -224,11 +224,11 @@ class PIMMIB::Pimipmroutetable::Pimipmrouteentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::ipmroutegroup)
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::ipmroutegroup)
         ydk::YLeaf ipmroutegroup;
-        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::ipmroutesource)
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::ipmroutesource)
         ydk::YLeaf ipmroutesource;
-        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutetable::Ipmrouteentry::ipmroutesourcemask)
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteTable::IpMRouteEntry::ipmroutesourcemask)
         ydk::YLeaf ipmroutesourcemask;
         ydk::YLeaf pimipmrouteupstreamasserttimer; //type: uint32
         ydk::YLeaf pimipmrouteassertmetric; //type: int32
@@ -236,14 +236,14 @@ class PIMMIB::Pimipmroutetable::Pimipmrouteentry : public ydk::Entity
         ydk::YLeaf pimipmrouteassertrptbit; //type: boolean
         ydk::YLeaf pimipmrouteflags; //type: binary
 
-}; // PIMMIB::Pimipmroutetable::Pimipmrouteentry
+}; // PIMMIB::PimIpMRouteTable::PimIpMRouteEntry
 
 
-class PIMMIB::Pimrptable : public ydk::Entity
+class PIMMIB::PimRPTable : public ydk::Entity
 {
     public:
-        Pimrptable();
-        ~Pimrptable();
+        PimRPTable();
+        ~PimRPTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -256,18 +256,18 @@ class PIMMIB::Pimrptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pimrpentry; //type: PIMMIB::Pimrptable::Pimrpentry
+        class PimRPEntry; //type: PIMMIB::PimRPTable::PimRPEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrptable::Pimrpentry> > pimrpentry;
+        ydk::YList pimrpentry;
         
-}; // PIMMIB::Pimrptable
+}; // PIMMIB::PimRPTable
 
 
-class PIMMIB::Pimrptable::Pimrpentry : public ydk::Entity
+class PIMMIB::PimRPTable::PimRPEntry : public ydk::Entity
 {
     public:
-        Pimrpentry();
-        ~Pimrpentry();
+        PimRPEntry();
+        ~PimRPEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -282,20 +282,20 @@ class PIMMIB::Pimrptable::Pimrpentry : public ydk::Entity
 
         ydk::YLeaf pimrpgroupaddress; //type: string
         ydk::YLeaf pimrpaddress; //type: string
-        ydk::YLeaf pimrpstate; //type: Pimrpstate
+        ydk::YLeaf pimrpstate; //type: PimRPState
         ydk::YLeaf pimrpstatetimer; //type: uint32
         ydk::YLeaf pimrplastchange; //type: uint32
         ydk::YLeaf pimrprowstatus; //type: RowStatus
-        class Pimrpstate;
+        class PimRPState;
 
-}; // PIMMIB::Pimrptable::Pimrpentry
+}; // PIMMIB::PimRPTable::PimRPEntry
 
 
-class PIMMIB::Pimrpsettable : public ydk::Entity
+class PIMMIB::PimRPSetTable : public ydk::Entity
 {
     public:
-        Pimrpsettable();
-        ~Pimrpsettable();
+        PimRPSetTable();
+        ~PimRPSetTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -308,18 +308,18 @@ class PIMMIB::Pimrpsettable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pimrpsetentry; //type: PIMMIB::Pimrpsettable::Pimrpsetentry
+        class PimRPSetEntry; //type: PIMMIB::PimRPSetTable::PimRPSetEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimrpsettable::Pimrpsetentry> > pimrpsetentry;
+        ydk::YList pimrpsetentry;
         
-}; // PIMMIB::Pimrpsettable
+}; // PIMMIB::PimRPSetTable
 
 
-class PIMMIB::Pimrpsettable::Pimrpsetentry : public ydk::Entity
+class PIMMIB::PimRPSetTable::PimRPSetEntry : public ydk::Entity
 {
     public:
-        Pimrpsetentry();
-        ~Pimrpsetentry();
+        PimRPSetEntry();
+        ~PimRPSetEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -339,14 +339,14 @@ class PIMMIB::Pimrpsettable::Pimrpsetentry : public ydk::Entity
         ydk::YLeaf pimrpsetholdtime; //type: int32
         ydk::YLeaf pimrpsetexpirytime; //type: uint32
 
-}; // PIMMIB::Pimrpsettable::Pimrpsetentry
+}; // PIMMIB::PimRPSetTable::PimRPSetEntry
 
 
-class PIMMIB::Pimipmroutenexthoptable : public ydk::Entity
+class PIMMIB::PimIpMRouteNextHopTable : public ydk::Entity
 {
     public:
-        Pimipmroutenexthoptable();
-        ~Pimipmroutenexthoptable();
+        PimIpMRouteNextHopTable();
+        ~PimIpMRouteNextHopTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -359,18 +359,18 @@ class PIMMIB::Pimipmroutenexthoptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pimipmroutenexthopentry; //type: PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry
+        class PimIpMRouteNextHopEntry; //type: PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry> > pimipmroutenexthopentry;
+        ydk::YList pimipmroutenexthopentry;
         
-}; // PIMMIB::Pimipmroutenexthoptable
+}; // PIMMIB::PimIpMRouteNextHopTable
 
 
-class PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry : public ydk::Entity
+class PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry : public ydk::Entity
 {
     public:
-        Pimipmroutenexthopentry();
-        ~Pimipmroutenexthopentry();
+        PimIpMRouteNextHopEntry();
+        ~PimIpMRouteNextHopEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -383,27 +383,27 @@ class PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopgroup)
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::ipmroutenexthopgroup)
         ydk::YLeaf ipmroutenexthopgroup;
-        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopsource)
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::ipmroutenexthopsource)
         ydk::YLeaf ipmroutenexthopsource;
-        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopsourcemask)
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::ipmroutenexthopsourcemask)
         ydk::YLeaf ipmroutenexthopsourcemask;
-        //type: int32 (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopifindex)
+        //type: int32 (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::ipmroutenexthopifindex)
         ydk::YLeaf ipmroutenexthopifindex;
-        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::Ipmroutenexthoptable::Ipmroutenexthopentry::ipmroutenexthopaddress)
+        //type: string (refers to cisco_ios_xe::IPMROUTE_STD_MIB::IPMROUTESTDMIB::IpMRouteNextHopTable::IpMRouteNextHopEntry::ipmroutenexthopaddress)
         ydk::YLeaf ipmroutenexthopaddress;
-        ydk::YLeaf pimipmroutenexthopprunereason; //type: Pimipmroutenexthopprunereason
-        class Pimipmroutenexthopprunereason;
+        ydk::YLeaf pimipmroutenexthopprunereason; //type: PimIpMRouteNextHopPruneReason
+        class PimIpMRouteNextHopPruneReason;
 
-}; // PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry
+}; // PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry
 
 
-class PIMMIB::Pimcandidaterptable : public ydk::Entity
+class PIMMIB::PimCandidateRPTable : public ydk::Entity
 {
     public:
-        Pimcandidaterptable();
-        ~Pimcandidaterptable();
+        PimCandidateRPTable();
+        ~PimCandidateRPTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -416,18 +416,18 @@ class PIMMIB::Pimcandidaterptable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pimcandidaterpentry; //type: PIMMIB::Pimcandidaterptable::Pimcandidaterpentry
+        class PimCandidateRPEntry; //type: PIMMIB::PimCandidateRPTable::PimCandidateRPEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcandidaterptable::Pimcandidaterpentry> > pimcandidaterpentry;
+        ydk::YList pimcandidaterpentry;
         
-}; // PIMMIB::Pimcandidaterptable
+}; // PIMMIB::PimCandidateRPTable
 
 
-class PIMMIB::Pimcandidaterptable::Pimcandidaterpentry : public ydk::Entity
+class PIMMIB::PimCandidateRPTable::PimCandidateRPEntry : public ydk::Entity
 {
     public:
-        Pimcandidaterpentry();
-        ~Pimcandidaterpentry();
+        PimCandidateRPEntry();
+        ~PimCandidateRPEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -445,14 +445,14 @@ class PIMMIB::Pimcandidaterptable::Pimcandidaterpentry : public ydk::Entity
         ydk::YLeaf pimcandidaterpaddress; //type: string
         ydk::YLeaf pimcandidaterprowstatus; //type: RowStatus
 
-}; // PIMMIB::Pimcandidaterptable::Pimcandidaterpentry
+}; // PIMMIB::PimCandidateRPTable::PimCandidateRPEntry
 
 
-class PIMMIB::Pimcomponenttable : public ydk::Entity
+class PIMMIB::PimComponentTable : public ydk::Entity
 {
     public:
-        Pimcomponenttable();
-        ~Pimcomponenttable();
+        PimComponentTable();
+        ~PimComponentTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -465,18 +465,18 @@ class PIMMIB::Pimcomponenttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Pimcomponententry; //type: PIMMIB::Pimcomponenttable::Pimcomponententry
+        class PimComponentEntry; //type: PIMMIB::PimComponentTable::PimComponentEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::PIM_MIB::PIMMIB::Pimcomponenttable::Pimcomponententry> > pimcomponententry;
+        ydk::YList pimcomponententry;
         
-}; // PIMMIB::Pimcomponenttable
+}; // PIMMIB::PimComponentTable
 
 
-class PIMMIB::Pimcomponenttable::Pimcomponententry : public ydk::Entity
+class PIMMIB::PimComponentTable::PimComponentEntry : public ydk::Entity
 {
     public:
-        Pimcomponententry();
-        ~Pimcomponententry();
+        PimComponentEntry();
+        ~PimComponentEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -495,9 +495,9 @@ class PIMMIB::Pimcomponenttable::Pimcomponententry : public ydk::Entity
         ydk::YLeaf pimcomponentcrpholdtime; //type: int32
         ydk::YLeaf pimcomponentstatus; //type: RowStatus
 
-}; // PIMMIB::Pimcomponenttable::Pimcomponententry
+}; // PIMMIB::PimComponentTable::PimComponentEntry
 
-class PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfacemode : public ydk::Enum
+class PIMMIB::PimInterfaceTable::PimInterfaceEntry::PimInterfaceMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dense;
@@ -506,7 +506,7 @@ class PIMMIB::Piminterfacetable::Piminterfaceentry::Piminterfacemode : public yd
 
 };
 
-class PIMMIB::Pimneighbortable::Pimneighborentry::Pimneighbormode : public ydk::Enum
+class PIMMIB::PimNeighborTable::PimNeighborEntry::PimNeighborMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf dense;
@@ -514,7 +514,7 @@ class PIMMIB::Pimneighbortable::Pimneighborentry::Pimneighbormode : public ydk::
 
 };
 
-class PIMMIB::Pimrptable::Pimrpentry::Pimrpstate : public ydk::Enum
+class PIMMIB::PimRPTable::PimRPEntry::PimRPState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
@@ -522,7 +522,7 @@ class PIMMIB::Pimrptable::Pimrpentry::Pimrpstate : public ydk::Enum
 
 };
 
-class PIMMIB::Pimipmroutenexthoptable::Pimipmroutenexthopentry::Pimipmroutenexthopprunereason : public ydk::Enum
+class PIMMIB::PimIpMRouteNextHopTable::PimIpMRouteNextHopEntry::PimIpMRouteNextHopPruneReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;

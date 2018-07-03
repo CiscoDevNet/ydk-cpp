@@ -57,7 +57,7 @@ class IpSubscriber::Nodes : public ydk::Entity
 
         class Node; //type: IpSubscriber::Nodes::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node> > node;
+        ydk::YList node;
         
 }; // IpSubscriber::Nodes
 
@@ -113,7 +113,7 @@ class IpSubscriber::Nodes::Node::Summary : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::AccessInterfaceSummary> access_interface_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::InterfaceCounts> interface_counts;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Summary::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // IpSubscriber::Nodes::Node::Summary
 
@@ -539,7 +539,7 @@ class IpSubscriber::Nodes::Node::Interfaces : public ydk::Entity
 
         class Interface; //type: IpSubscriber::Nodes::Node::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // IpSubscriber::Nodes::Node::Interfaces
 
@@ -581,10 +581,10 @@ class IpSubscriber::Nodes::Node::Interfaces::Interface : public ydk::Entity
         ydk::YLeaf is_l2_connected; //type: boolean
         ydk::YLeaf session_type; //type: string
         class Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
-        class Ipv6Vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
+        class Ipv6vrf; //type: IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf> vrf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf> ipv6vrf;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf> ipv6vrf;
         
 }; // IpSubscriber::Nodes::Node::Interfaces::Interface
 
@@ -611,11 +611,11 @@ class IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf : public ydk::Entity
 }; // IpSubscriber::Nodes::Node::Interfaces::Interface::Vrf
 
 
-class IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf : public ydk::Entity
+class IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf : public ydk::Entity
 {
     public:
-        Ipv6Vrf();
-        ~Ipv6Vrf();
+        Ipv6vrf();
+        ~Ipv6vrf();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -630,7 +630,7 @@ class IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf : public ydk::En
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf table_name; //type: string
 
-}; // IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6Vrf
+}; // IpSubscriber::Nodes::Node::Interfaces::Interface::Ipv6vrf
 
 
 class IpSubscriber::Nodes::Node::AccessInterfaces : public ydk::Entity
@@ -651,7 +651,7 @@ class IpSubscriber::Nodes::Node::AccessInterfaces : public ydk::Entity
 
         class AccessInterface; //type: IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_ipsub_oper::IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface> > access_interface;
+        ydk::YList access_interface;
         
 }; // IpSubscriber::Nodes::Node::AccessInterfaces
 
@@ -926,23 +926,6 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
 
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
 
-class IpsubMaParentIntfVlan : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf plain;
-        static const ydk::Enum::YLeaf ambiguous;
-
-};
-
-class IpsubMaParentIntfStateData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf deleted;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
-
-};
-
 class IpsubMaIntfStateData : public ydk::Enum
 {
     public:
@@ -962,6 +945,23 @@ class IpsubMaIntfStateData : public ydk::Enum
         static const ydk::Enum::YLeaf disconnecting;
         static const ydk::Enum::YLeaf disconnected;
         static const ydk::Enum::YLeaf error;
+
+};
+
+class IpsubMaParentIntfVlan : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf plain;
+        static const ydk::Enum::YLeaf ambiguous;
+
+};
+
+class IpsubMaParentIntfStateData : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf deleted;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
 
 };
 

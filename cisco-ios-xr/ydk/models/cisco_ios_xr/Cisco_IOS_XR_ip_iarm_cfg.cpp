@@ -14,12 +14,12 @@ namespace Cisco_IOS_XR_ip_iarm_cfg {
 IpArm::IpArm()
     :
     ipv4(std::make_shared<IpArm::Ipv4>())
-	,ipv6(std::make_shared<IpArm::Ipv6>())
+    , ipv6(std::make_shared<IpArm::Ipv6>())
 {
     ipv4->parent = this;
     ipv6->parent = this;
 
-    yang_name = "ip-arm"; yang_parent_name = "Cisco-IOS-XR-ip-iarm-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "ip-arm"; yang_parent_name = "Cisco-IOS-XR-ip-iarm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 IpArm::~IpArm()
@@ -28,6 +28,7 @@ IpArm::~IpArm()
 
 bool IpArm::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
@@ -138,12 +139,12 @@ bool IpArm::has_leaf_or_child_of_name(const std::string & name) const
 IpArm::Ipv4::Ipv4()
     :
     conflict_policy_table(std::make_shared<IpArm::Ipv4::ConflictPolicyTable>())
-	,multicast_host(std::make_shared<IpArm::Ipv4::MulticastHost>())
+    , multicast_host(std::make_shared<IpArm::Ipv4::MulticastHost>())
 {
     conflict_policy_table->parent = this;
     multicast_host->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "ip-arm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "ip-arm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpArm::Ipv4::~Ipv4()
@@ -152,6 +153,7 @@ IpArm::Ipv4::~Ipv4()
 
 bool IpArm::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (conflict_policy_table !=  nullptr && conflict_policy_table->has_data())
 	|| (multicast_host !=  nullptr && multicast_host->has_data());
 }
@@ -246,7 +248,7 @@ IpArm::Ipv4::ConflictPolicyTable::ConflictPolicyTable()
     conflict_policy{YType::enumeration, "conflict-policy"}
 {
 
-    yang_name = "conflict-policy-table"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "conflict-policy-table"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpArm::Ipv4::ConflictPolicyTable::~ConflictPolicyTable()
@@ -255,6 +257,7 @@ IpArm::Ipv4::ConflictPolicyTable::~ConflictPolicyTable()
 
 bool IpArm::Ipv4::ConflictPolicyTable::has_data() const
 {
+    if (is_presence_container) return true;
     return conflict_policy.is_set;
 }
 
@@ -330,7 +333,7 @@ IpArm::Ipv4::MulticastHost::MulticastHost()
     multicast_host_interface{YType::str, "multicast-host-interface"}
 {
 
-    yang_name = "multicast-host"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast-host"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpArm::Ipv4::MulticastHost::~MulticastHost()
@@ -339,6 +342,7 @@ IpArm::Ipv4::MulticastHost::~MulticastHost()
 
 bool IpArm::Ipv4::MulticastHost::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast_host_interface.is_set;
 }
 
@@ -412,12 +416,12 @@ bool IpArm::Ipv4::MulticastHost::has_leaf_or_child_of_name(const std::string & n
 IpArm::Ipv6::Ipv6()
     :
     conflict_policy_table(std::make_shared<IpArm::Ipv6::ConflictPolicyTable>())
-	,multicast_host(std::make_shared<IpArm::Ipv6::MulticastHost>())
+    , multicast_host(std::make_shared<IpArm::Ipv6::MulticastHost>())
 {
     conflict_policy_table->parent = this;
     multicast_host->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "ip-arm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv6"; yang_parent_name = "ip-arm"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpArm::Ipv6::~Ipv6()
@@ -426,6 +430,7 @@ IpArm::Ipv6::~Ipv6()
 
 bool IpArm::Ipv6::has_data() const
 {
+    if (is_presence_container) return true;
     return (conflict_policy_table !=  nullptr && conflict_policy_table->has_data())
 	|| (multicast_host !=  nullptr && multicast_host->has_data());
 }
@@ -520,7 +525,7 @@ IpArm::Ipv6::ConflictPolicyTable::ConflictPolicyTable()
     conflict_policy{YType::enumeration, "conflict-policy"}
 {
 
-    yang_name = "conflict-policy-table"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "conflict-policy-table"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpArm::Ipv6::ConflictPolicyTable::~ConflictPolicyTable()
@@ -529,6 +534,7 @@ IpArm::Ipv6::ConflictPolicyTable::~ConflictPolicyTable()
 
 bool IpArm::Ipv6::ConflictPolicyTable::has_data() const
 {
+    if (is_presence_container) return true;
     return conflict_policy.is_set;
 }
 
@@ -604,7 +610,7 @@ IpArm::Ipv6::MulticastHost::MulticastHost()
     multicast_host_interface{YType::str, "multicast-host-interface"}
 {
 
-    yang_name = "multicast-host"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multicast-host"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 IpArm::Ipv6::MulticastHost::~MulticastHost()
@@ -613,6 +619,7 @@ IpArm::Ipv6::MulticastHost::~MulticastHost()
 
 bool IpArm::Ipv6::MulticastHost::has_data() const
 {
+    if (is_presence_container) return true;
     return multicast_host_interface.is_set;
 }
 

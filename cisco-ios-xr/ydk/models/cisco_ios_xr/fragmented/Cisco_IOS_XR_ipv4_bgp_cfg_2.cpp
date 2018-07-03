@@ -17,7 +17,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     mpls_deactivation{YType::boolean, "mpls-deactivation"}
 {
 
-    yang_name = "ebgp-multihop"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ebgp-multihop"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::~EbgpMultihop()
@@ -26,6 +26,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::EbgpMultihop::has_data() const
 {
+    if (is_presence_container) return true;
     return max_hop_count.is_set
 	|| mpls_deactivation.is_set;
 }
@@ -108,7 +109,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     as_yy{YType::uint32, "as-yy"}
 {
 
-    yang_name = "remote-as"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "remote-as"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::~RemoteAs()
@@ -117,6 +118,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::RemoteAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set;
 }
@@ -203,7 +205,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     dual_as{YType::empty, "dual-as"}
 {
 
-    yang_name = "local-as"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-as"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAs::~LocalAs()
@@ -212,6 +214,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::LocalAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set
 	|| no_prepend.is_set
@@ -346,7 +349,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     password{YType::str, "password"}
 {
 
-    yang_name = "password"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "password"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Password::~Password()
@@ -355,6 +358,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Password::has_data() const
 {
+    if (is_presence_container) return true;
     return password_disable.is_set
 	|| password.is_set;
 }
@@ -437,7 +441,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     minimum_interval_msecs{YType::uint32, "minimum-interval-msecs"}
 {
 
-    yang_name = "advertisement-interval"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "advertisement-interval"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AdvertisementInterval::~AdvertisementInterval()
@@ -446,6 +450,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::AdvertisementInterval::has_data() const
 {
+    if (is_presence_container) return true;
     return minimum_interval.is_set
 	|| minimum_interval_msecs.is_set;
 }
@@ -528,7 +533,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     cluster_id_address{YType::str, "cluster-id-address"}
 {
 
-    yang_name = "neighbor-cluster-id"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "neighbor-cluster-id"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::NeighborClusterId::~NeighborClusterId()
@@ -537,6 +542,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::NeighborClusterId::has_data() const
 {
+    if (is_presence_container) return true;
     return cluster_id_number.is_set
 	|| cluster_id_address.is_set;
 }
@@ -619,7 +625,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     mss{YType::uint32, "mss"}
 {
 
-    yang_name = "tcpmss"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tcpmss"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tcpmss::~Tcpmss()
@@ -628,6 +634,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tcpmss::has_data() const
 {
+    if (is_presence_container) return true;
     return tcpmss_disable.is_set
 	|| mss.is_set;
 }
@@ -710,7 +717,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     value_{YType::str, "value"}
 {
 
-    yang_name = "tos"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tos"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos::~Tos()
@@ -719,6 +726,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Tos::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set;
 }
@@ -800,11 +808,11 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     enable{YType::empty, "enable"},
     update_in_filtering_attribute_filter_group{YType::str, "update-in-filtering-attribute-filter-group"},
     update_in_filtering_syslog_disable{YType::empty, "update-in-filtering-syslog-disable"}
-    	,
+        ,
     update_in_filtering_message_buffers(nullptr) // presence node
 {
 
-    yang_name = "update-in-filtering"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update-in-filtering"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering::~UpdateInFiltering()
@@ -813,6 +821,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| update_in_filtering_attribute_filter_group.is_set
 	|| update_in_filtering_syslog_disable.is_set
@@ -924,7 +933,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     non_circular_buffer{YType::boolean, "non-circular-buffer"}
 {
 
-    yang_name = "update-in-filtering-message-buffers"; yang_parent_name = "update-in-filtering"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update-in-filtering-message-buffers"; yang_parent_name = "update-in-filtering"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering::UpdateInFilteringMessageBuffers::~UpdateInFilteringMessageBuffers()
@@ -933,6 +942,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::UpdateInFiltering::UpdateInFilteringMessageBuffers::has_data() const
 {
+    if (is_presence_container) return true;
     return number_of_buffers.is_set
 	|| non_circular_buffer.is_set;
 }
@@ -1016,7 +1026,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     msg_log_inherit_disable{YType::boolean, "msg-log-inherit-disable"}
 {
 
-    yang_name = "msg-log-out"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "msg-log-out"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogOut::~MsgLogOut()
@@ -1025,6 +1035,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogOut::has_data() const
 {
+    if (is_presence_container) return true;
     return msg_buf_count.is_set
 	|| msg_log_disable.is_set
 	|| msg_log_inherit_disable.is_set;
@@ -1120,7 +1131,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     bgp_receive_size{YType::uint32, "bgp-receive-size"}
 {
 
-    yang_name = "receive-buffer-size"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-buffer-size"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize::~ReceiveBufferSize()
@@ -1129,6 +1140,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::ReceiveBufferSize::has_data() const
 {
+    if (is_presence_container) return true;
     return socket_receive_size.is_set
 	|| bgp_receive_size.is_set;
 }
@@ -1212,7 +1224,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     msg_log_inherit_disable{YType::boolean, "msg-log-inherit-disable"}
 {
 
-    yang_name = "msg-log-in"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "msg-log-in"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogIn::~MsgLogIn()
@@ -1221,6 +1233,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::MsgLogIn::has_data() const
 {
+    if (is_presence_container) return true;
     return msg_buf_count.is_set
 	|| msg_log_disable.is_set
 	|| msg_log_inherit_disable.is_set;
@@ -1316,7 +1329,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     bgp_send_size{YType::uint32, "bgp-send-size"}
 {
 
-    yang_name = "send-buffer-size"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-buffer-size"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::SendBufferSize::~SendBufferSize()
@@ -1325,6 +1338,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::SendBufferSize::has_data() const
 {
+    if (is_presence_container) return true;
     return socket_send_size.is_set
 	|| bgp_send_size.is_set;
 }
@@ -1408,7 +1422,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     min_accept_hold_time{YType::uint32, "min-accept-hold-time"}
 {
 
-    yang_name = "timers"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "timers"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Timers::~Timers()
@@ -1417,6 +1431,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Timers::has_data() const
 {
+    if (is_presence_container) return true;
     return keepalive_interval.is_set
 	|| hold_time.is_set
 	|| min_accept_hold_time.is_set;
@@ -1512,7 +1527,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     keychain_name{YType::str, "keychain-name"}
 {
 
-    yang_name = "keychain"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "keychain"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Keychain::~Keychain()
@@ -1521,6 +1536,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::Keychain::has_data() const
 {
+    if (is_presence_container) return true;
     return keychain_disable.is_set
 	|| keychain_name.is_set;
 }
@@ -1601,14 +1617,14 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     :
     enable{YType::empty, "enable"},
     graceful_maintenance_activate{YType::boolean, "graceful-maintenance-activate"}
-    	,
+        ,
     graceful_maintenance_local_preference(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::GracefulMaintenanceLocalPreference>())
-	,graceful_maintenance_as_prepends(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::GracefulMaintenanceAsPrepends>())
+    , graceful_maintenance_as_prepends(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::GracefulMaintenanceAsPrepends>())
 {
     graceful_maintenance_local_preference->parent = this;
     graceful_maintenance_as_prepends->parent = this;
 
-    yang_name = "graceful-maintenance"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-maintenance"; yang_parent_name = "session-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::~GracefulMaintenance()
@@ -1617,6 +1633,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| graceful_maintenance_activate.is_set
 	|| (graceful_maintenance_local_preference !=  nullptr && graceful_maintenance_local_preference->has_data())
@@ -1731,7 +1748,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     local_preference{YType::uint32, "local-preference"}
 {
 
-    yang_name = "graceful-maintenance-local-preference"; yang_parent_name = "graceful-maintenance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-maintenance-local-preference"; yang_parent_name = "graceful-maintenance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::GracefulMaintenanceLocalPreference::~GracefulMaintenanceLocalPreference()
@@ -1740,6 +1757,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::GracefulMaintenanceLocalPreference::has_data() const
 {
+    if (is_presence_container) return true;
     return gshut_loc_pref_disable.is_set
 	|| local_preference.is_set;
 }
@@ -1822,7 +1840,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
     as_prepends{YType::uint32, "as-prepends"}
 {
 
-    yang_name = "graceful-maintenance-as-prepends"; yang_parent_name = "graceful-maintenance"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "graceful-maintenance-as-prepends"; yang_parent_name = "graceful-maintenance"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::GracefulMaintenanceAsPrepends::~GracefulMaintenanceAsPrepends()
@@ -1831,6 +1849,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::Ses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::BgpEntity::SessionGroups::SessionGroup::GracefulMaintenance::GracefulMaintenanceAsPrepends::has_data() const
 {
+    if (is_presence_container) return true;
     return gshut_prepends_disable.is_set
 	|| as_prepends.is_set;
 }
@@ -1955,25 +1974,25 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Global()
     best_path_router_id{YType::empty, "best-path-router-id"},
     best_path_med_missing{YType::empty, "best-path-med-missing"},
     local_preference{YType::uint32, "local-preference"}
-    	,
+        ,
     cluster_id(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ClusterId>())
-	,write_limit(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::WriteLimit>())
-	,update_delay(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDelay>())
-	,as_league(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague>())
-	,rpki_servers(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers>())
-	,as_list_groups(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups>())
-	,limits(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Limits>())
-	,confederation_domain(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationDomain>())
-	,confederation_peer_ases(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses>())
-	,attribute_filter_groups(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups>())
-	,global_graceful_maintenance_activate(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGracefulMaintenanceActivate>())
-	,global_afs(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs>())
-	,rpki_static_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes>())
-	,mpls_activated_interfaces(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces>())
-	,global_timers(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalTimers>())
-	,bfd(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Bfd>())
-	,send_socket_buffer_sizes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::SendSocketBufferSizes>())
-	,receive_socket_buffer_sizes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSocketBufferSizes>())
+    , write_limit(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::WriteLimit>())
+    , update_delay(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDelay>())
+    , as_league(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague>())
+    , rpki_servers(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers>())
+    , as_list_groups(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups>())
+    , limits(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Limits>())
+    , confederation_domain(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationDomain>())
+    , confederation_peer_ases(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses>())
+    , attribute_filter_groups(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups>())
+    , global_graceful_maintenance_activate(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGracefulMaintenanceActivate>())
+    , global_afs(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs>())
+    , rpki_static_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes>())
+    , mpls_activated_interfaces(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces>())
+    , global_timers(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalTimers>())
+    , bfd(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Bfd>())
+    , send_socket_buffer_sizes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::SendSocketBufferSizes>())
+    , receive_socket_buffer_sizes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSocketBufferSizes>())
 {
     cluster_id->parent = this;
     write_limit->parent = this;
@@ -1994,7 +2013,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Global()
     send_socket_buffer_sizes->parent = this;
     receive_socket_buffer_sizes->parent = this;
 
-    yang_name = "global"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::~Global()
@@ -2003,6 +2022,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::~Global()
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::has_data() const
 {
+    if (is_presence_container) return true;
     return graceful_restart.is_set
 	|| update_out_logging.is_set
 	|| install_diversion.is_set
@@ -2945,7 +2965,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ClusterId::ClusterId(
     cluster_id_address{YType::str, "cluster-id-address"}
 {
 
-    yang_name = "cluster-id"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cluster-id"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ClusterId::~ClusterId()
@@ -2954,6 +2974,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ClusterId::~ClusterId
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ClusterId::has_data() const
 {
+    if (is_presence_container) return true;
     return cluster_id_number.is_set
 	|| cluster_id_address.is_set;
 }
@@ -3037,7 +3058,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::WriteLimit::WriteLimi
     desynchronize{YType::boolean, "desynchronize"}
 {
 
-    yang_name = "write-limit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "write-limit"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::WriteLimit::~WriteLimit()
@@ -3046,6 +3067,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::WriteLimit::~WriteLim
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::WriteLimit::has_data() const
 {
+    if (is_presence_container) return true;
     return formatted_messages.is_set
 	|| enqueued_messages.is_set
 	|| desynchronize.is_set;
@@ -3141,7 +3163,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDelay::UpdateDe
     always{YType::boolean, "always"}
 {
 
-    yang_name = "update-delay"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "update-delay"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDelay::~UpdateDelay()
@@ -3150,6 +3172,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDelay::~UpdateD
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return delay.is_set
 	|| always.is_set;
 }
@@ -3229,12 +3252,12 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::UpdateDelay::has
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::AsLeague()
     :
     enable{YType::empty, "enable"}
-    	,
+        ,
     peers(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers>())
 {
     peers->parent = this;
 
-    yang_name = "as-league"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-league"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::~AsLeague()
@@ -3243,6 +3266,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::~AsLeague()
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
 	|| (peers !=  nullptr && peers->has_data());
 }
@@ -3323,9 +3347,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::has_le
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::Peers()
+    :
+    peer(this, {"as_xx", "as_yy"})
 {
 
-    yang_name = "peers"; yang_parent_name = "as-league"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peers"; yang_parent_name = "as-league"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::~Peers()
@@ -3334,7 +3360,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::~Pee
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::has_data() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_data())
             return true;
@@ -3344,7 +3371,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers:
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::has_operation() const
 {
-    for (std::size_t index=0; index<peer.size(); index++)
+    for (std::size_t index=0; index<peer.len(); index++)
     {
         if(peer[index]->has_operation())
             return true;
@@ -3374,7 +3401,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::Peer>();
         c->parent = this;
-        peer.push_back(c);
+        peer.append(c);
         return c;
     }
 
@@ -3386,7 +3413,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : peer)
+    for (auto c : peer.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3418,7 +3445,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::Peer
     as_yy{YType::uint32, "as-yy"}
 {
 
-    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "peer"; yang_parent_name = "peers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::Peer::~Peer()
@@ -3427,6 +3454,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::Peer
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::Peer::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set;
 }
@@ -3441,7 +3469,9 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers:
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers::Peer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "peer" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
+    path_buffer << "peer";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as_yy, "as-yy");
     return path_buffer.str();
 }
 
@@ -3504,9 +3534,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsLeague::Peers:
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServers()
+    :
+    rpki_server(this, {"server"})
 {
 
-    yang_name = "rpki-servers"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpki-servers"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::~RpkiServers()
@@ -3515,7 +3547,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::~RpkiSer
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::has_data() const
 {
-    for (std::size_t index=0; index<rpki_server.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rpki_server.len(); index++)
     {
         if(rpki_server[index]->has_data())
             return true;
@@ -3525,7 +3558,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::has
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::has_operation() const
 {
-    for (std::size_t index=0; index<rpki_server.size(); index++)
+    for (std::size_t index=0; index<rpki_server.len(); index++)
     {
         if(rpki_server[index]->has_operation())
             return true;
@@ -3555,7 +3588,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer>();
         c->parent = this;
-        rpki_server.push_back(c);
+        rpki_server.append(c);
         return c;
     }
 
@@ -3567,7 +3600,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rpki_server)
+    for (auto c : rpki_server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3603,12 +3636,12 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServ
     username{YType::str, "username"},
     refresh_time{YType::uint32, "refresh-time"},
     purge_time{YType::uint32, "purge-time"}
-    	,
+        ,
     transport(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::Transport>())
 {
     transport->parent = this;
 
-    yang_name = "rpki-server"; yang_parent_name = "rpki-servers"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpki-server"; yang_parent_name = "rpki-servers"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::~RpkiServer()
@@ -3617,6 +3650,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServ
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::has_data() const
 {
+    if (is_presence_container) return true;
     return server.is_set
 	|| enable.is_set
 	|| shutdown.is_set
@@ -3645,7 +3679,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::Rpk
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rpki-server" <<"[server='" <<server <<"']";
+    path_buffer << "rpki-server";
+    ADD_KEY_TOKEN(server, "server");
     return path_buffer.str();
 }
 
@@ -3793,7 +3828,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServ
     port{YType::uint16, "port"}
 {
 
-    yang_name = "transport"; yang_parent_name = "rpki-server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "transport"; yang_parent_name = "rpki-server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::Transport::~Transport()
@@ -3802,6 +3837,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServ
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::RpkiServer::Transport::has_data() const
 {
+    if (is_presence_container) return true;
     return transport.is_set
 	|| port.is_set;
 }
@@ -3879,9 +3915,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiServers::Rpk
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroups()
+    :
+    as_list_group(this, {"as_list_group_name"})
 {
 
-    yang_name = "as-list-groups"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-list-groups"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::~AsListGroups()
@@ -3890,7 +3928,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::~AsList
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::has_data() const
 {
-    for (std::size_t index=0; index<as_list_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as_list_group.len(); index++)
     {
         if(as_list_group[index]->has_data())
             return true;
@@ -3900,7 +3939,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::ha
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::has_operation() const
 {
-    for (std::size_t index=0; index<as_list_group.size(); index++)
+    for (std::size_t index=0; index<as_list_group.len(); index++)
     {
         if(as_list_group[index]->has_operation())
             return true;
@@ -3930,7 +3969,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup>();
         c->parent = this;
-        as_list_group.push_back(c);
+        as_list_group.append(c);
         return c;
     }
 
@@ -3942,7 +3981,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as_list_group)
+    for (auto c : as_list_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3972,12 +4011,12 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListG
     :
     as_list_group_name{YType::str, "as-list-group-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     ases(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases>())
 {
     ases->parent = this;
 
-    yang_name = "as-list-group"; yang_parent_name = "as-list-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as-list-group"; yang_parent_name = "as-list-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::~AsListGroup()
@@ -3986,6 +4025,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListG
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return as_list_group_name.is_set
 	|| enable.is_set
 	|| (ases !=  nullptr && ases->has_data());
@@ -4002,7 +4042,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::As
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as-list-group" <<"[as-list-group-name='" <<as_list_group_name <<"']";
+    path_buffer << "as-list-group";
+    ADD_KEY_TOKEN(as_list_group_name, "as-list-group-name");
     return path_buffer.str();
 }
 
@@ -4079,9 +4120,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::As
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::Ases()
+    :
+    as(this, {"as_xx", "as_yy"})
 {
 
-    yang_name = "ases"; yang_parent_name = "as-list-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ases"; yang_parent_name = "as-list-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::~Ases()
@@ -4090,7 +4133,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListG
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::has_data() const
 {
-    for (std::size_t index=0; index<as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<as.len(); index++)
     {
         if(as[index]->has_data())
             return true;
@@ -4100,7 +4144,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::As
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::has_operation() const
 {
-    for (std::size_t index=0; index<as.size(); index++)
+    for (std::size_t index=0; index<as.len(); index++)
     {
         if(as[index]->has_operation())
             return true;
@@ -4130,7 +4174,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::As>();
         c->parent = this;
-        as.push_back(c);
+        as.append(c);
         return c;
     }
 
@@ -4142,7 +4186,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : as)
+    for (auto c : as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4174,7 +4218,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListG
     as_yy{YType::uint32, "as-yy"}
 {
 
-    yang_name = "as"; yang_parent_name = "ases"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "as"; yang_parent_name = "ases"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::As::~As()
@@ -4183,6 +4227,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListG
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::As::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set;
 }
@@ -4197,7 +4242,9 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::As
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AsListGroups::AsListGroup::Ases::As::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "as" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
+    path_buffer << "as";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as_yy, "as-yy");
     return path_buffer.str();
 }
 
@@ -4264,7 +4311,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Limits::Limits()
     maximum_neighbors{YType::uint32, "maximum-neighbors"}
 {
 
-    yang_name = "limits"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "limits"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Limits::~Limits()
@@ -4273,6 +4320,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Limits::~Limits()
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Limits::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_neighbors.is_set;
 }
 
@@ -4342,7 +4390,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationDomain::
     as_yy{YType::uint32, "as-yy"}
 {
 
-    yang_name = "confederation-domain"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "confederation-domain"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationDomain::~ConfederationDomain()
@@ -4351,6 +4399,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationDomain::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationDomain::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set;
 }
@@ -4428,9 +4477,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationDom
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::ConfederationPeerAses()
+    :
+    confederation_peer_as(this, {"as_xx", "as_yy"})
 {
 
-    yang_name = "confederation-peer-ases"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "confederation-peer-ases"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::~ConfederationPeerAses()
@@ -4439,7 +4490,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::has_data() const
 {
-    for (std::size_t index=0; index<confederation_peer_as.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<confederation_peer_as.len(); index++)
     {
         if(confederation_peer_as[index]->has_data())
             return true;
@@ -4449,7 +4501,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPee
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::has_operation() const
 {
-    for (std::size_t index=0; index<confederation_peer_as.size(); index++)
+    for (std::size_t index=0; index<confederation_peer_as.len(); index++)
     {
         if(confederation_peer_as[index]->has_operation())
             return true;
@@ -4479,7 +4531,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::ConfederationPeerAs>();
         c->parent = this;
-        confederation_peer_as.push_back(c);
+        confederation_peer_as.append(c);
         return c;
     }
 
@@ -4491,7 +4543,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : confederation_peer_as)
+    for (auto c : confederation_peer_as.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4523,7 +4575,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses
     as_yy{YType::uint32, "as-yy"}
 {
 
-    yang_name = "confederation-peer-as"; yang_parent_name = "confederation-peer-ases"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "confederation-peer-as"; yang_parent_name = "confederation-peer-ases"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::ConfederationPeerAs::~ConfederationPeerAs()
@@ -4532,6 +4584,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::ConfederationPeerAs::has_data() const
 {
+    if (is_presence_container) return true;
     return as_xx.is_set
 	|| as_yy.is_set;
 }
@@ -4546,7 +4599,9 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPee
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPeerAses::ConfederationPeerAs::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "confederation-peer-as" <<"[as-xx='" <<as_xx <<"']" <<"[as-yy='" <<as_yy <<"']";
+    path_buffer << "confederation-peer-as";
+    ADD_KEY_TOKEN(as_xx, "as-xx");
+    ADD_KEY_TOKEN(as_yy, "as-yy");
     return path_buffer.str();
 }
 
@@ -4609,9 +4664,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ConfederationPee
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroups()
+    :
+    attribute_filter_group(this, {"attribute_filter_group_name"})
 {
 
-    yang_name = "attribute-filter-groups"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute-filter-groups"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::~AttributeFilterGroups()
@@ -4620,7 +4677,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::has_data() const
 {
-    for (std::size_t index=0; index<attribute_filter_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<attribute_filter_group.len(); index++)
     {
         if(attribute_filter_group[index]->has_data())
             return true;
@@ -4630,7 +4688,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterG
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::has_operation() const
 {
-    for (std::size_t index=0; index<attribute_filter_group.size(); index++)
+    for (std::size_t index=0; index<attribute_filter_group.len(); index++)
     {
         if(attribute_filter_group[index]->has_operation())
             return true;
@@ -4660,7 +4718,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup>();
         c->parent = this;
-        attribute_filter_group.push_back(c);
+        attribute_filter_group.append(c);
         return c;
     }
 
@@ -4672,7 +4730,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : attribute_filter_group)
+    for (auto c : attribute_filter_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4702,12 +4760,12 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups
     :
     attribute_filter_group_name{YType::str, "attribute-filter-group-name"},
     enable{YType::empty, "enable"}
-    	,
+        ,
     attribute_filters(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters>())
 {
     attribute_filters->parent = this;
 
-    yang_name = "attribute-filter-group"; yang_parent_name = "attribute-filter-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute-filter-group"; yang_parent_name = "attribute-filter-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::~AttributeFilterGroup()
@@ -4716,6 +4774,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_filter_group_name.is_set
 	|| enable.is_set
 	|| (attribute_filters !=  nullptr && attribute_filters->has_data());
@@ -4732,7 +4791,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterG
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "attribute-filter-group" <<"[attribute-filter-group-name='" <<attribute_filter_group_name <<"']";
+    path_buffer << "attribute-filter-group";
+    ADD_KEY_TOKEN(attribute_filter_group_name, "attribute-filter-group-name");
     return path_buffer.str();
 }
 
@@ -4809,9 +4869,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterG
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::AttributeFilters()
+    :
+    attribute_filter(this, {"attribute_start", "attribute_end"})
 {
 
-    yang_name = "attribute-filters"; yang_parent_name = "attribute-filter-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute-filters"; yang_parent_name = "attribute-filter-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::~AttributeFilters()
@@ -4820,7 +4882,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::has_data() const
 {
-    for (std::size_t index=0; index<attribute_filter.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<attribute_filter.len(); index++)
     {
         if(attribute_filter[index]->has_data())
             return true;
@@ -4830,7 +4893,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterG
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::has_operation() const
 {
-    for (std::size_t index=0; index<attribute_filter.size(); index++)
+    for (std::size_t index=0; index<attribute_filter.len(); index++)
     {
         if(attribute_filter[index]->has_operation())
             return true;
@@ -4860,7 +4923,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::AttributeFilter>();
         c->parent = this;
-        attribute_filter.push_back(c);
+        attribute_filter.append(c);
         return c;
     }
 
@@ -4872,7 +4935,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : attribute_filter)
+    for (auto c : attribute_filter.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4905,7 +4968,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups
     filter_action{YType::enumeration, "filter-action"}
 {
 
-    yang_name = "attribute-filter"; yang_parent_name = "attribute-filters"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "attribute-filter"; yang_parent_name = "attribute-filters"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::AttributeFilter::~AttributeFilter()
@@ -4914,6 +4977,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::AttributeFilter::has_data() const
 {
+    if (is_presence_container) return true;
     return attribute_start.is_set
 	|| attribute_end.is_set
 	|| filter_action.is_set;
@@ -4930,7 +4994,9 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterG
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::AttributeFilterGroups::AttributeFilterGroup::AttributeFilters::AttributeFilter::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "attribute-filter" <<"[attribute-start='" <<attribute_start <<"']" <<"[attribute-end='" <<attribute_end <<"']";
+    path_buffer << "attribute-filter";
+    ADD_KEY_TOKEN(attribute_start, "attribute-start");
+    ADD_KEY_TOKEN(attribute_end, "attribute-end");
     return path_buffer.str();
 }
 
@@ -5009,7 +5075,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGracefulMainten
     retain_routes{YType::boolean, "retain-routes"}
 {
 
-    yang_name = "global-graceful-maintenance-activate"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-graceful-maintenance-activate"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGracefulMaintenanceActivate::~GlobalGracefulMaintenanceActivate()
@@ -5018,6 +5084,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGracefulMainten
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGracefulMaintenanceActivate::has_data() const
 {
+    if (is_presence_container) return true;
     return all_neighbors.is_set
 	|| retain_routes.is_set;
 }
@@ -5095,9 +5162,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalGracefulMa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAfs()
+    :
+    global_af(this, {"af_name"})
 {
 
-    yang_name = "global-afs"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-afs"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::~GlobalAfs()
@@ -5106,7 +5175,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::~GlobalAfs
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::has_data() const
 {
-    for (std::size_t index=0; index<global_af.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<global_af.len(); index++)
     {
         if(global_af[index]->has_data())
             return true;
@@ -5116,7 +5186,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::has_d
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::has_operation() const
 {
-    for (std::size_t index=0; index<global_af.size(); index++)
+    for (std::size_t index=0; index<global_af.len(); index++)
     {
         if(global_af[index]->has_operation())
             return true;
@@ -5146,7 +5216,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf>();
         c->parent = this;
-        global_af.push_back(c);
+        global_af.append(c);
         return c;
     }
 
@@ -5158,7 +5228,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : global_af)
+    for (auto c : global_af.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5209,6 +5279,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     next_hop_route_policy{YType::str, "next-hop-route-policy"},
     global_table_mcast{YType::empty, "global-table-mcast"},
     wait_rib_install{YType::empty, "wait-rib-install"},
+    prefix_sid_map{YType::empty, "prefix-sid-map"},
     dynamic_med_interval{YType::uint32, "dynamic-med-interval"},
     enable{YType::empty, "enable"},
     table_policy{YType::str, "table-policy"},
@@ -5221,34 +5292,34 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     additional_paths_send{YType::enumeration, "additional-paths-send"},
     advertise_local_labeled_route_safi_unicast{YType::enumeration, "advertise-local-labeled-route-safi-unicast"},
     disable_as_path_loop_check{YType::empty, "disable-as-path-loop-check"}
-    	,
+        ,
     isis_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes>())
-	,domain_distinguisher(nullptr) // presence node
-	,vrf_all(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll>())
-	,disable_cluster_client_to_client_rrs(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs>())
-	,label_delay(nullptr) // presence node
-	,ebgp(nullptr) // presence node
-	,eibgp(nullptr) // presence node
-	,retain_rt(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::RetainRt>())
-	,ibgp(nullptr) // presence node
-	,import_delay(nullptr) // presence node
-	,aggregate_addresses(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses>())
-	,optimal_route_reflector_groups(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups>())
-	,dampening(nullptr) // presence node
-	,rip_routes(nullptr) // presence node
-	,lisp_routes(nullptr) // presence node
-	,static_routes(nullptr) // presence node
-	,distance(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Distance>())
-	,application_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes>())
-	,label_mode(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LabelMode>())
-	,eigrp_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes>())
-	,sourced_networks(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks>())
-	,connected_routes(nullptr) // presence node
-	,allocate_label(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel>())
-	,additional_paths_selection(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AdditionalPathsSelection>())
-	,ospf_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes>())
-	,mobile_routes(nullptr) // presence node
-	,subscriber_routes(nullptr) // presence node
+    , domain_distinguisher(nullptr) // presence node
+    , vrf_all(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll>())
+    , disable_cluster_client_to_client_rrs(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs>())
+    , label_delay(nullptr) // presence node
+    , ebgp(nullptr) // presence node
+    , eibgp(nullptr) // presence node
+    , retain_rt(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::RetainRt>())
+    , ibgp(nullptr) // presence node
+    , import_delay(nullptr) // presence node
+    , aggregate_addresses(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses>())
+    , optimal_route_reflector_groups(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups>())
+    , dampening(nullptr) // presence node
+    , rip_routes(nullptr) // presence node
+    , lisp_routes(nullptr) // presence node
+    , static_routes(nullptr) // presence node
+    , distance(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Distance>())
+    , application_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes>())
+    , label_mode(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LabelMode>())
+    , eigrp_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes>())
+    , sourced_networks(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks>())
+    , connected_routes(nullptr) // presence node
+    , allocate_label(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel>())
+    , additional_paths_selection(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AdditionalPathsSelection>())
+    , ospf_routes(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes>())
+    , mobile_routes(nullptr) // presence node
+    , subscriber_routes(nullptr) // presence node
 {
     isis_routes->parent = this;
     vrf_all->parent = this;
@@ -5265,7 +5336,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     additional_paths_selection->parent = this;
     ospf_routes->parent = this;
 
-    yang_name = "global-af"; yang_parent_name = "global-afs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-af"; yang_parent_name = "global-afs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::~GlobalAf()
@@ -5274,6 +5345,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| rnh_install_format.is_set
 	|| inter_as_install.is_set
@@ -5297,6 +5369,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| next_hop_route_policy.is_set
 	|| global_table_mcast.is_set
 	|| wait_rib_install.is_set
+	|| prefix_sid_map.is_set
 	|| dynamic_med_interval.is_set
 	|| enable.is_set
 	|| table_policy.is_set
@@ -5364,6 +5437,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 	|| ydk::is_set(next_hop_route_policy.yfilter)
 	|| ydk::is_set(global_table_mcast.yfilter)
 	|| ydk::is_set(wait_rib_install.yfilter)
+	|| ydk::is_set(prefix_sid_map.yfilter)
 	|| ydk::is_set(dynamic_med_interval.yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(table_policy.yfilter)
@@ -5408,7 +5482,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "global-af" <<"[af-name='" <<af_name <<"']";
+    path_buffer << "global-af";
+    ADD_KEY_TOKEN(af_name, "af-name");
     return path_buffer.str();
 }
 
@@ -5439,6 +5514,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
     if (next_hop_route_policy.is_set || is_set(next_hop_route_policy.yfilter)) leaf_name_data.push_back(next_hop_route_policy.get_name_leafdata());
     if (global_table_mcast.is_set || is_set(global_table_mcast.yfilter)) leaf_name_data.push_back(global_table_mcast.get_name_leafdata());
     if (wait_rib_install.is_set || is_set(wait_rib_install.yfilter)) leaf_name_data.push_back(wait_rib_install.get_name_leafdata());
+    if (prefix_sid_map.is_set || is_set(prefix_sid_map.yfilter)) leaf_name_data.push_back(prefix_sid_map.get_name_leafdata());
     if (dynamic_med_interval.is_set || is_set(dynamic_med_interval.yfilter)) leaf_name_data.push_back(dynamic_med_interval.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (table_policy.is_set || is_set(table_policy.yfilter)) leaf_name_data.push_back(table_policy.get_name_leafdata());
@@ -5986,6 +6062,12 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
         wait_rib_install.value_namespace = name_space;
         wait_rib_install.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prefix-sid-map")
+    {
+        prefix_sid_map = value;
+        prefix_sid_map.value_namespace = name_space;
+        prefix_sid_map.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "dynamic-med-interval")
     {
         dynamic_med_interval = value;
@@ -6154,6 +6236,10 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
     {
         wait_rib_install.yfilter = yfilter;
     }
+    if(value_path == "prefix-sid-map")
+    {
+        prefix_sid_map.yfilter = yfilter;
+    }
     if(value_path == "dynamic-med-interval")
     {
         dynamic_med_interval.yfilter = yfilter;
@@ -6206,15 +6292,17 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "isis-routes" || name == "domain-distinguisher" || name == "vrf-all" || name == "disable-cluster-client-to-client-rrs" || name == "label-delay" || name == "ebgp" || name == "eibgp" || name == "retain-rt" || name == "ibgp" || name == "import-delay" || name == "aggregate-addresses" || name == "optimal-route-reflector-groups" || name == "dampening" || name == "rip-routes" || name == "lisp-routes" || name == "static-routes" || name == "distance" || name == "application-routes" || name == "label-mode" || name == "eigrp-routes" || name == "sourced-networks" || name == "connected-routes" || name == "allocate-label" || name == "additional-paths-selection" || name == "ospf-routes" || name == "mobile-routes" || name == "subscriber-routes" || name == "af-name" || name == "rnh-install-format" || name == "inter-as-install" || name == "segmented-mcast" || name == "implicit-import" || name == "disable-default-martian-check" || name == "next-hop-critical-trigger-delay" || name == "next-hop-non-critical-trigger-delay" || name == "label-security-rpf" || name == "use-igpsr-label" || name == "label-retain" || name == "scan-time" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "update-limit-sub-group-ebgp" || name == "update-limit-address-family" || name == "rpki-bestpath-use-origin-as-validity" || name == "update-limit-sub-group-ibgp" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "disable-client-to-client-rr" || name == "next-hop-route-policy" || name == "global-table-mcast" || name == "wait-rib-install" || name == "dynamic-med-interval" || name == "enable" || name == "table-policy" || name == "attribute-download" || name == "best-external" || name == "additional-paths-receive" || name == "permanent-network" || name == "next-hop-resolution-prefix-length-minimum" || name == "reset-weight-on-import" || name == "additional-paths-send" || name == "advertise-local-labeled-route-safi-unicast" || name == "disable-as-path-loop-check")
+    if(name == "isis-routes" || name == "domain-distinguisher" || name == "vrf-all" || name == "disable-cluster-client-to-client-rrs" || name == "label-delay" || name == "ebgp" || name == "eibgp" || name == "retain-rt" || name == "ibgp" || name == "import-delay" || name == "aggregate-addresses" || name == "optimal-route-reflector-groups" || name == "dampening" || name == "rip-routes" || name == "lisp-routes" || name == "static-routes" || name == "distance" || name == "application-routes" || name == "label-mode" || name == "eigrp-routes" || name == "sourced-networks" || name == "connected-routes" || name == "allocate-label" || name == "additional-paths-selection" || name == "ospf-routes" || name == "mobile-routes" || name == "subscriber-routes" || name == "af-name" || name == "rnh-install-format" || name == "inter-as-install" || name == "segmented-mcast" || name == "implicit-import" || name == "disable-default-martian-check" || name == "next-hop-critical-trigger-delay" || name == "next-hop-non-critical-trigger-delay" || name == "label-security-rpf" || name == "use-igpsr-label" || name == "label-retain" || name == "scan-time" || name == "rpki-origin-as-validation-disable" || name == "rpki-origin-as-validity-signal-ibgp" || name == "update-limit-sub-group-ebgp" || name == "update-limit-address-family" || name == "rpki-bestpath-use-origin-as-validity" || name == "update-limit-sub-group-ibgp" || name == "rpki-bestpath-origin-as-allow-invalid" || name == "disable-client-to-client-rr" || name == "next-hop-route-policy" || name == "global-table-mcast" || name == "wait-rib-install" || name == "prefix-sid-map" || name == "dynamic-med-interval" || name == "enable" || name == "table-policy" || name == "attribute-download" || name == "best-external" || name == "additional-paths-receive" || name == "permanent-network" || name == "next-hop-resolution-prefix-length-minimum" || name == "reset-weight-on-import" || name == "additional-paths-send" || name == "advertise-local-labeled-route-safi-unicast" || name == "disable-as-path-loop-check")
         return true;
     return false;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::IsisRoutes()
+    :
+    isis_route(this, {"instance_name"})
 {
 
-    yang_name = "isis-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::~IsisRoutes()
@@ -6223,7 +6311,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::has_data() const
 {
-    for (std::size_t index=0; index<isis_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<isis_route.len(); index++)
     {
         if(isis_route[index]->has_data())
             return true;
@@ -6233,7 +6322,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<isis_route.size(); index++)
+    for (std::size_t index=0; index<isis_route.len(); index++)
     {
         if(isis_route[index]->has_operation())
             return true;
@@ -6263,7 +6352,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::IsisRoute>();
         c->parent = this;
-        isis_route.push_back(c);
+        isis_route.append(c);
         return c;
     }
 
@@ -6275,7 +6364,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : isis_route)
+    for (auto c : isis_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6309,7 +6398,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     redist_type{YType::str, "redist-type"}
 {
 
-    yang_name = "isis-route"; yang_parent_name = "isis-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "isis-route"; yang_parent_name = "isis-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::IsisRoute::~IsisRoute()
@@ -6318,6 +6407,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::IsisRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| default_metric.is_set
 	|| route_policy_name.is_set
@@ -6336,7 +6426,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::IsisRoutes::IsisRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "isis-route" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "isis-route";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -6426,7 +6517,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     router_id{YType::str, "router-id"}
 {
 
-    yang_name = "domain-distinguisher"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "domain-distinguisher"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DomainDistinguisher::~DomainDistinguisher()
@@ -6435,6 +6526,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DomainDistinguisher::has_data() const
 {
+    if (is_presence_container) return true;
     return as.is_set
 	|| router_id.is_set;
 }
@@ -6517,12 +6609,12 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     enable{YType::empty, "enable"},
     table_policy{YType::str, "table-policy"},
     source_rt_import_policy{YType::empty, "source-rt-import-policy"}
-    	,
+        ,
     label_mode(std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::LabelMode>())
 {
     label_mode->parent = this;
 
-    yang_name = "vrf-all"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-all"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::~VrfAll()
@@ -6531,6 +6623,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::has_data() const
 {
+    if (is_presence_container) return true;
     return rnh_install_format.is_set
 	|| enable.is_set
 	|| table_policy.is_set
@@ -6655,7 +6748,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "label-mode"; yang_parent_name = "vrf-all"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-mode"; yang_parent_name = "vrf-all"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::LabelMode::~LabelMode()
@@ -6664,6 +6757,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::VrfAll::LabelMode::has_data() const
 {
+    if (is_presence_container) return true;
     return label_allocation_mode.is_set
 	|| route_policy_name.is_set;
 }
@@ -6741,9 +6835,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRrs()
+    :
+    disable_cluster_client_to_client_rr(this, {"cluster_type"})
 {
 
-    yang_name = "disable-cluster-client-to-client-rrs"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disable-cluster-client-to-client-rrs"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::~DisableClusterClientToClientRrs()
@@ -6752,7 +6848,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::has_data() const
 {
-    for (std::size_t index=0; index<disable_cluster_client_to_client_rr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<disable_cluster_client_to_client_rr.len(); index++)
     {
         if(disable_cluster_client_to_client_rr[index]->has_data())
             return true;
@@ -6762,7 +6859,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::has_operation() const
 {
-    for (std::size_t index=0; index<disable_cluster_client_to_client_rr.size(); index++)
+    for (std::size_t index=0; index<disable_cluster_client_to_client_rr.len(); index++)
     {
         if(disable_cluster_client_to_client_rr[index]->has_operation())
             return true;
@@ -6792,7 +6889,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr>();
         c->parent = this;
-        disable_cluster_client_to_client_rr.push_back(c);
+        disable_cluster_client_to_client_rr.append(c);
         return c;
     }
 
@@ -6804,7 +6901,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : disable_cluster_client_to_client_rr)
+    for (auto c : disable_cluster_client_to_client_rr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6833,9 +6930,12 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::DisableClusterClientToClientRr()
     :
     cluster_type{YType::enumeration, "cluster-type"}
+        ,
+    number(this, {"cluster_id_number"})
+    , ipv4_address(this, {"cluster_id_address"})
 {
 
-    yang_name = "disable-cluster-client-to-client-rr"; yang_parent_name = "disable-cluster-client-to-client-rrs"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disable-cluster-client-to-client-rr"; yang_parent_name = "disable-cluster-client-to-client-rrs"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::~DisableClusterClientToClientRr()
@@ -6844,12 +6944,13 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::has_data() const
 {
-    for (std::size_t index=0; index<number.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<number.len(); index++)
     {
         if(number[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_data())
             return true;
@@ -6859,12 +6960,12 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::has_operation() const
 {
-    for (std::size_t index=0; index<number.size(); index++)
+    for (std::size_t index=0; index<number.len(); index++)
     {
         if(number[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<ipv4_address.size(); index++)
+    for (std::size_t index=0; index<ipv4_address.len(); index++)
     {
         if(ipv4_address[index]->has_operation())
             return true;
@@ -6876,7 +6977,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "disable-cluster-client-to-client-rr" <<"[cluster-type='" <<cluster_type <<"']";
+    path_buffer << "disable-cluster-client-to-client-rr";
+    ADD_KEY_TOKEN(cluster_type, "cluster-type");
     return path_buffer.str();
 }
 
@@ -6896,7 +6998,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Number>();
         c->parent = this;
-        number.push_back(c);
+        number.append(c);
         return c;
     }
 
@@ -6904,7 +7006,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Ipv4Address>();
         c->parent = this;
-        ipv4_address.push_back(c);
+        ipv4_address.append(c);
         return c;
     }
 
@@ -6916,7 +7018,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : number)
+    for (auto c : number.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6925,7 +7027,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     }
 
     count = 0;
-    for (auto const & c : ipv4_address)
+    for (auto c : ipv4_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6966,7 +7068,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     cluster_id_number{YType::uint32, "cluster-id-number"}
 {
 
-    yang_name = "number"; yang_parent_name = "disable-cluster-client-to-client-rr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "number"; yang_parent_name = "disable-cluster-client-to-client-rr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Number::~Number()
@@ -6975,6 +7077,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Number::has_data() const
 {
+    if (is_presence_container) return true;
     return cluster_id_number.is_set;
 }
 
@@ -6987,7 +7090,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Number::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "number" <<"[cluster-id-number='" <<cluster_id_number <<"']";
+    path_buffer << "number";
+    ADD_KEY_TOKEN(cluster_id_number, "cluster-id-number");
     return path_buffer.str();
 }
 
@@ -7043,7 +7147,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     cluster_id_address{YType::str, "cluster-id-address"}
 {
 
-    yang_name = "ipv4-address"; yang_parent_name = "disable-cluster-client-to-client-rr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ipv4-address"; yang_parent_name = "disable-cluster-client-to-client-rr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Ipv4Address::~Ipv4Address()
@@ -7052,6 +7156,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Ipv4Address::has_data() const
 {
+    if (is_presence_container) return true;
     return cluster_id_address.is_set;
 }
 
@@ -7064,7 +7169,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::DisableClusterClientToClientRrs::DisableClusterClientToClientRr::Ipv4Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4-address" <<"[cluster-id-address='" <<cluster_id_address <<"']";
+    path_buffer << "ipv4-address";
+    ADD_KEY_TOKEN(cluster_id_address, "cluster-id-address");
     return path_buffer.str();
 }
 
@@ -7121,7 +7227,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     milliseconds{YType::uint32, "milliseconds"}
 {
 
-    yang_name = "label-delay"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-delay"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LabelDelay::~LabelDelay()
@@ -7130,6 +7236,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LabelDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| milliseconds.is_set;
 }
@@ -7214,7 +7321,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     order_by_igp_metric{YType::boolean, "order-by-igp-metric"}
 {
 
-    yang_name = "ebgp"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ebgp"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Ebgp::~Ebgp()
@@ -7223,6 +7330,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Ebgp::has_data() const
 {
+    if (is_presence_container) return true;
     return paths_value.is_set
 	|| unequal_cost.is_set
 	|| selective.is_set
@@ -7333,7 +7441,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     order_by_igp_metric{YType::boolean, "order-by-igp-metric"}
 {
 
-    yang_name = "eibgp"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eibgp"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Eibgp::~Eibgp()
@@ -7342,6 +7450,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Eibgp::has_data() const
 {
+    if (is_presence_container) return true;
     return paths_value.is_set
 	|| unequal_cost.is_set
 	|| selective.is_set
@@ -7450,7 +7559,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "retain-rt"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "retain-rt"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::RetainRt::~RetainRt()
@@ -7459,6 +7568,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::RetainRt::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| route_policy_name.is_set;
 }
@@ -7543,7 +7653,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     order_by_igp_metric{YType::boolean, "order-by-igp-metric"}
 {
 
-    yang_name = "ibgp"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ibgp"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Ibgp::~Ibgp()
@@ -7552,6 +7662,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Ibgp::has_data() const
 {
+    if (is_presence_container) return true;
     return paths_value.is_set
 	|| unequal_cost.is_set
 	|| selective.is_set
@@ -7660,7 +7771,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     milliseconds{YType::uint32, "milliseconds"}
 {
 
-    yang_name = "import-delay"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "import-delay"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ImportDelay::~ImportDelay()
@@ -7669,6 +7780,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ImportDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return seconds.is_set
 	|| milliseconds.is_set;
 }
@@ -7746,9 +7858,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::AggregateAddresses()
+    :
+    aggregate_address(this, {"aggregate_addr", "aggregate_prefix"})
 {
 
-    yang_name = "aggregate-addresses"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-addresses"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::~AggregateAddresses()
@@ -7757,7 +7871,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::has_data() const
 {
-    for (std::size_t index=0; index<aggregate_address.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<aggregate_address.len(); index++)
     {
         if(aggregate_address[index]->has_data())
             return true;
@@ -7767,7 +7882,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::has_operation() const
 {
-    for (std::size_t index=0; index<aggregate_address.size(); index++)
+    for (std::size_t index=0; index<aggregate_address.len(); index++)
     {
         if(aggregate_address[index]->has_operation())
             return true;
@@ -7797,7 +7912,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::AggregateAddress>();
         c->parent = this;
-        aggregate_address.push_back(c);
+        aggregate_address.append(c);
         return c;
     }
 
@@ -7809,7 +7924,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : aggregate_address)
+    for (auto c : aggregate_address.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7845,7 +7960,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "aggregate-address"; yang_parent_name = "aggregate-addresses"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aggregate-address"; yang_parent_name = "aggregate-addresses"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::AggregateAddress::~AggregateAddress()
@@ -7854,6 +7969,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::AggregateAddress::has_data() const
 {
+    if (is_presence_container) return true;
     return aggregate_addr.is_set
 	|| aggregate_prefix.is_set
 	|| generate_set_info.is_set
@@ -7876,7 +7992,9 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AggregateAddresses::AggregateAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "aggregate-address" <<"[aggregate-addr='" <<aggregate_addr <<"']" <<"[aggregate-prefix='" <<aggregate_prefix <<"']";
+    path_buffer << "aggregate-address";
+    ADD_KEY_TOKEN(aggregate_addr, "aggregate-addr");
+    ADD_KEY_TOKEN(aggregate_prefix, "aggregate-prefix");
     return path_buffer.str();
 }
 
@@ -7983,9 +8101,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroups()
+    :
+    optimal_route_reflector_group(this, {"group_name"})
 {
 
-    yang_name = "optimal-route-reflector-groups"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optimal-route-reflector-groups"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::~OptimalRouteReflectorGroups()
@@ -7994,7 +8114,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::has_data() const
 {
-    for (std::size_t index=0; index<optimal_route_reflector_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optimal_route_reflector_group.len(); index++)
     {
         if(optimal_route_reflector_group[index]->has_data())
             return true;
@@ -8004,7 +8125,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::has_operation() const
 {
-    for (std::size_t index=0; index<optimal_route_reflector_group.size(); index++)
+    for (std::size_t index=0; index<optimal_route_reflector_group.len(); index++)
     {
         if(optimal_route_reflector_group[index]->has_operation())
             return true;
@@ -8034,7 +8155,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup>();
         c->parent = this;
-        optimal_route_reflector_group.push_back(c);
+        optimal_route_reflector_group.append(c);
         return c;
     }
 
@@ -8046,7 +8167,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : optimal_route_reflector_group)
+    for (auto c : optimal_route_reflector_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8080,7 +8201,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     tertiary_root_address{YType::str, "tertiary-root-address"}
 {
 
-    yang_name = "optimal-route-reflector-group"; yang_parent_name = "optimal-route-reflector-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optimal-route-reflector-group"; yang_parent_name = "optimal-route-reflector-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::~OptimalRouteReflectorGroup()
@@ -8089,6 +8210,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return group_name.is_set
 	|| primary_root_address.is_set
 	|| secondary_root_address.is_set
@@ -8107,7 +8229,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OptimalRouteReflectorGroups::OptimalRouteReflectorGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "optimal-route-reflector-group" <<"[group-name='" <<group_name <<"']";
+    path_buffer << "optimal-route-reflector-group";
+    ADD_KEY_TOKEN(group_name, "group-name");
     return path_buffer.str();
 }
 
@@ -8200,7 +8323,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "dampening"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dampening"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Dampening::~Dampening()
@@ -8209,6 +8332,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Dampening::has_data() const
 {
+    if (is_presence_container) return true;
     return half_life.is_set
 	|| reuse_threshold.is_set
 	|| suppress_threshold.is_set
@@ -8331,7 +8455,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     not_used{YType::uint32, "not-used"}
 {
 
-    yang_name = "rip-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rip-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::RipRoutes::~RipRoutes()
@@ -8340,6 +8464,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::RipRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return default_metric.is_set
 	|| route_policy_name.is_set
 	|| not_used.is_set;
@@ -8435,7 +8560,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "lisp-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lisp-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LispRoutes::~LispRoutes()
@@ -8444,6 +8569,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LispRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return default_metric.is_set
 	|| route_policy_name.is_set;
 }
@@ -8527,7 +8653,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     not_used{YType::uint32, "not-used"}
 {
 
-    yang_name = "static-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "static-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::StaticRoutes::~StaticRoutes()
@@ -8536,6 +8662,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::StaticRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return default_metric.is_set
 	|| route_policy_name.is_set
 	|| not_used.is_set;
@@ -8632,7 +8759,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     local_routes{YType::uint32, "local-routes"}
 {
 
-    yang_name = "distance"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "distance"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Distance::~Distance()
@@ -8641,6 +8768,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::Distance::has_data() const
 {
+    if (is_presence_container) return true;
     return external_routes.is_set
 	|| internal_routes.is_set
 	|| local_routes.is_set;
@@ -8731,9 +8859,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::ApplicationRoutes()
+    :
+    application_route(this, {"instance_name"})
 {
 
-    yang_name = "application-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::~ApplicationRoutes()
@@ -8742,7 +8872,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::has_data() const
 {
-    for (std::size_t index=0; index<application_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<application_route.len(); index++)
     {
         if(application_route[index]->has_data())
             return true;
@@ -8752,7 +8883,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<application_route.size(); index++)
+    for (std::size_t index=0; index<application_route.len(); index++)
     {
         if(application_route[index]->has_operation())
             return true;
@@ -8782,7 +8913,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::ApplicationRoute>();
         c->parent = this;
-        application_route.push_back(c);
+        application_route.append(c);
         return c;
     }
 
@@ -8794,7 +8925,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : application_route)
+    for (auto c : application_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -8828,7 +8959,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     not_used{YType::uint32, "not-used"}
 {
 
-    yang_name = "application-route"; yang_parent_name = "application-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "application-route"; yang_parent_name = "application-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::ApplicationRoute::~ApplicationRoute()
@@ -8837,6 +8968,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::ApplicationRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| default_metric.is_set
 	|| route_policy_name.is_set
@@ -8855,7 +8987,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ApplicationRoutes::ApplicationRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "application-route" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "application-route";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -8945,7 +9078,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "label-mode"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label-mode"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LabelMode::~LabelMode()
@@ -8954,6 +9087,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::LabelMode::has_data() const
 {
+    if (is_presence_container) return true;
     return label_allocation_mode.is_set
 	|| route_policy_name.is_set;
 }
@@ -9031,9 +9165,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::EigrpRoutes()
+    :
+    eigrp_route(this, {"instance_name"})
 {
 
-    yang_name = "eigrp-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::~EigrpRoutes()
@@ -9042,7 +9178,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::has_data() const
 {
-    for (std::size_t index=0; index<eigrp_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp_route.len(); index++)
     {
         if(eigrp_route[index]->has_data())
             return true;
@@ -9052,7 +9189,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<eigrp_route.size(); index++)
+    for (std::size_t index=0; index<eigrp_route.len(); index++)
     {
         if(eigrp_route[index]->has_operation())
             return true;
@@ -9082,7 +9219,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::EigrpRoute>();
         c->parent = this;
-        eigrp_route.push_back(c);
+        eigrp_route.append(c);
         return c;
     }
 
@@ -9094,7 +9231,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : eigrp_route)
+    for (auto c : eigrp_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9128,7 +9265,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     redist_type{YType::str, "redist-type"}
 {
 
-    yang_name = "eigrp-route"; yang_parent_name = "eigrp-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "eigrp-route"; yang_parent_name = "eigrp-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::EigrpRoute::~EigrpRoute()
@@ -9137,6 +9274,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::EigrpRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| default_metric.is_set
 	|| route_policy_name.is_set
@@ -9155,7 +9293,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::EigrpRoutes::EigrpRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "eigrp-route" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "eigrp-route";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -9240,9 +9379,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::SourcedNetworks()
+    :
+    sourced_network(this, {"network_addr", "network_prefix"})
 {
 
-    yang_name = "sourced-networks"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sourced-networks"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::~SourcedNetworks()
@@ -9251,7 +9392,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::has_data() const
 {
-    for (std::size_t index=0; index<sourced_network.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sourced_network.len(); index++)
     {
         if(sourced_network[index]->has_data())
             return true;
@@ -9261,7 +9403,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::has_operation() const
 {
-    for (std::size_t index=0; index<sourced_network.size(); index++)
+    for (std::size_t index=0; index<sourced_network.len(); index++)
     {
         if(sourced_network[index]->has_operation())
             return true;
@@ -9291,7 +9433,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::SourcedNetwork>();
         c->parent = this;
-        sourced_network.push_back(c);
+        sourced_network.append(c);
         return c;
     }
 
@@ -9303,7 +9445,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sourced_network)
+    for (auto c : sourced_network.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9337,7 +9479,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "sourced-network"; yang_parent_name = "sourced-networks"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sourced-network"; yang_parent_name = "sourced-networks"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::SourcedNetwork::~SourcedNetwork()
@@ -9346,6 +9488,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::SourcedNetwork::has_data() const
 {
+    if (is_presence_container) return true;
     return network_addr.is_set
 	|| network_prefix.is_set
 	|| backdoor.is_set
@@ -9364,7 +9507,9 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SourcedNetworks::SourcedNetwork::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sourced-network" <<"[network-addr='" <<network_addr <<"']" <<"[network-prefix='" <<network_prefix <<"']";
+    path_buffer << "sourced-network";
+    ADD_KEY_TOKEN(network_addr, "network-addr");
+    ADD_KEY_TOKEN(network_prefix, "network-prefix");
     return path_buffer.str();
 }
 
@@ -9455,7 +9600,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     not_used{YType::uint32, "not-used"}
 {
 
-    yang_name = "connected-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "connected-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ConnectedRoutes::~ConnectedRoutes()
@@ -9464,6 +9609,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::ConnectedRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return default_metric.is_set
 	|| route_policy_name.is_set
 	|| not_used.is_set;
@@ -9559,7 +9705,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "allocate-label"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "allocate-label"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel::~AllocateLabel()
@@ -9568,6 +9714,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AllocateLabel::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set
 	|| route_policy_name.is_set;
 }
@@ -9650,7 +9797,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     route_policy_name{YType::str, "route-policy-name"}
 {
 
-    yang_name = "additional-paths-selection"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "additional-paths-selection"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AdditionalPathsSelection::~AdditionalPathsSelection()
@@ -9659,6 +9806,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::AdditionalPathsSelection::has_data() const
 {
+    if (is_presence_container) return true;
     return selection.is_set
 	|| route_policy_name.is_set;
 }
@@ -9736,9 +9884,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::OspfRoutes()
+    :
+    ospf_route(this, {"instance_name"})
 {
 
-    yang_name = "ospf-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::~OspfRoutes()
@@ -9747,7 +9897,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::has_data() const
 {
-    for (std::size_t index=0; index<ospf_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ospf_route.len(); index++)
     {
         if(ospf_route[index]->has_data())
             return true;
@@ -9757,7 +9908,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<ospf_route.size(); index++)
+    for (std::size_t index=0; index<ospf_route.len(); index++)
     {
         if(ospf_route[index]->has_operation())
             return true;
@@ -9787,7 +9938,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::OspfRoute>();
         c->parent = this;
-        ospf_route.push_back(c);
+        ospf_route.append(c);
         return c;
     }
 
@@ -9799,7 +9950,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ospf_route)
+    for (auto c : ospf_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -9833,7 +9984,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     redist_type{YType::str, "redist-type"}
 {
 
-    yang_name = "ospf-route"; yang_parent_name = "ospf-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ospf-route"; yang_parent_name = "ospf-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::OspfRoute::~OspfRoute()
@@ -9842,6 +9993,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::OspfRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return instance_name.is_set
 	|| default_metric.is_set
 	|| route_policy_name.is_set
@@ -9860,7 +10012,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::OspfRoutes::OspfRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ospf-route" <<"[instance-name='" <<instance_name <<"']";
+    path_buffer << "ospf-route";
+    ADD_KEY_TOKEN(instance_name, "instance-name");
     return path_buffer.str();
 }
 
@@ -9951,7 +10104,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     not_used{YType::uint32, "not-used"}
 {
 
-    yang_name = "mobile-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mobile-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::MobileRoutes::~MobileRoutes()
@@ -9960,6 +10113,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::MobileRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return default_metric.is_set
 	|| route_policy_name.is_set
 	|| not_used.is_set;
@@ -10056,7 +10210,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
     not_used{YType::uint32, "not-used"}
 {
 
-    yang_name = "subscriber-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-routes"; yang_parent_name = "global-af"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SubscriberRoutes::~SubscriberRoutes()
@@ -10065,6 +10219,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::GlobalAf::SubscriberRoutes::has_data() const
 {
+    if (is_presence_container) return true;
     return default_metric.is_set
 	|| route_policy_name.is_set
 	|| not_used.is_set;
@@ -10155,9 +10310,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoutes()
+    :
+    rpki_static_route(this, {"addrress", "minimum", "maximum", "as"})
 {
 
-    yang_name = "rpki-static-routes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpki-static-routes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::~RpkiStaticRoutes()
@@ -10166,7 +10323,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::~Rp
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::has_data() const
 {
-    for (std::size_t index=0; index<rpki_static_route.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rpki_static_route.len(); index++)
     {
         if(rpki_static_route[index]->has_data())
             return true;
@@ -10176,7 +10334,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::has_operation() const
 {
-    for (std::size_t index=0; index<rpki_static_route.size(); index++)
+    for (std::size_t index=0; index<rpki_static_route.len(); index++)
     {
         if(rpki_static_route[index]->has_operation())
             return true;
@@ -10206,7 +10364,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute>();
         c->parent = this;
-        rpki_static_route.push_back(c);
+        rpki_static_route.append(c);
         return c;
     }
 
@@ -10218,7 +10376,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : rpki_static_route)
+    for (auto c : rpki_static_route.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10247,12 +10405,12 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::RpkiStaticRoute()
     :
     addrress{YType::str, "addrress"},
-    minimum{YType::int32, "minimum"},
-    maximum{YType::int32, "maximum"},
+    minimum{YType::uint32, "minimum"},
+    maximum{YType::uint32, "maximum"},
     as{YType::uint32, "as"}
 {
 
-    yang_name = "rpki-static-route"; yang_parent_name = "rpki-static-routes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "rpki-static-route"; yang_parent_name = "rpki-static-routes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::~RpkiStaticRoute()
@@ -10261,6 +10419,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::Rpk
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::has_data() const
 {
+    if (is_presence_container) return true;
     return addrress.is_set
 	|| minimum.is_set
 	|| maximum.is_set
@@ -10279,7 +10438,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "rpki-static-route" <<"[addrress='" <<addrress <<"']" <<"[minimum='" <<minimum <<"']" <<"[maximum='" <<maximum <<"']" <<"[as='" <<as <<"']";
+    path_buffer << "rpki-static-route";
+    ADD_KEY_TOKEN(addrress, "addrress");
+    ADD_KEY_TOKEN(minimum, "minimum");
+    ADD_KEY_TOKEN(maximum, "maximum");
+    ADD_KEY_TOKEN(as, "as");
     return path_buffer.str();
 }
 
@@ -10364,9 +10527,11 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::MplsActivatedInterfaces()
+    :
+    mpls_activated_interface(this, {"interface_name"})
 {
 
-    yang_name = "mpls-activated-interfaces"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-activated-interfaces"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::~MplsActivatedInterfaces()
@@ -10375,7 +10540,8 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfac
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::has_data() const
 {
-    for (std::size_t index=0; index<mpls_activated_interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<mpls_activated_interface.len(); index++)
     {
         if(mpls_activated_interface[index]->has_data())
             return true;
@@ -10385,7 +10551,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInt
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::has_operation() const
 {
-    for (std::size_t index=0; index<mpls_activated_interface.size(); index++)
+    for (std::size_t index=0; index<mpls_activated_interface.len(); index++)
     {
         if(mpls_activated_interface[index]->has_operation())
             return true;
@@ -10415,7 +10581,7 @@ std::shared_ptr<Entity> Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Globa
     {
         auto c = std::make_shared<Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::MplsActivatedInterface>();
         c->parent = this;
-        mpls_activated_interface.push_back(c);
+        mpls_activated_interface.append(c);
         return c;
     }
 
@@ -10427,7 +10593,7 @@ std::map<std::string, std::shared_ptr<Entity>> Bgp::Instance::InstanceAs::FourBy
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : mpls_activated_interface)
+    for (auto c : mpls_activated_interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -10458,7 +10624,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfac
     interface_name{YType::str, "interface-name"}
 {
 
-    yang_name = "mpls-activated-interface"; yang_parent_name = "mpls-activated-interfaces"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-activated-interface"; yang_parent_name = "mpls-activated-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::MplsActivatedInterface::~MplsActivatedInterface()
@@ -10467,6 +10633,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfac
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::MplsActivatedInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return interface_name.is_set;
 }
 
@@ -10479,7 +10646,8 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInt
 std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::MplsActivatedInterfaces::MplsActivatedInterface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mpls-activated-interface" <<"[interface-name='" <<interface_name <<"']";
+    path_buffer << "mpls-activated-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
     return path_buffer.str();
 }
 
@@ -10537,7 +10705,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalTimers::GlobalT
     min_accept_hold_time{YType::uint32, "min-accept-hold-time"}
 {
 
-    yang_name = "global-timers"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "global-timers"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalTimers::~GlobalTimers()
@@ -10546,6 +10714,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalTimers::~Global
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalTimers::has_data() const
 {
+    if (is_presence_container) return true;
     return keepalive.is_set
 	|| hold_time.is_set
 	|| min_accept_hold_time.is_set;
@@ -10641,7 +10810,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Bfd::Bfd()
     interval{YType::uint32, "interval"}
 {
 
-    yang_name = "bfd"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "bfd"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Bfd::~Bfd()
@@ -10650,6 +10819,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Bfd::~Bfd()
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::Bfd::has_data() const
 {
+    if (is_presence_container) return true;
     return detection_multiplier.is_set
 	|| interval.is_set;
 }
@@ -10732,7 +10902,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::SendSocketBufferSizes
     bgp_send_size{YType::uint32, "bgp-send-size"}
 {
 
-    yang_name = "send-socket-buffer-sizes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "send-socket-buffer-sizes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::SendSocketBufferSizes::~SendSocketBufferSizes()
@@ -10741,6 +10911,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::SendSocketBufferSizes
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::SendSocketBufferSizes::has_data() const
 {
+    if (is_presence_container) return true;
     return socket_send_size.is_set
 	|| bgp_send_size.is_set;
 }
@@ -10823,7 +10994,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSocketBufferSi
     bgp_receive_size{YType::uint32, "bgp-receive-size"}
 {
 
-    yang_name = "receive-socket-buffer-sizes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "receive-socket-buffer-sizes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSocketBufferSizes::~ReceiveSocketBufferSizes()
@@ -10832,6 +11003,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSocketBufferSi
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSocketBufferSizes::has_data() const
 {
+    if (is_presence_container) return true;
     return socket_receive_size.is_set
 	|| bgp_receive_size.is_set;
 }
@@ -10911,12 +11083,12 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::ReceiveSocketBuf
 BmpServerAll::BmpServerAll()
     :
     maximum_buffer_size{YType::uint32, "maximum-buffer-size"}
-    	,
+        ,
     route_monitoring(std::make_shared<BmpServerAll::RouteMonitoring>())
 {
     route_monitoring->parent = this;
 
-    yang_name = "bmp-server-all"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "bmp-server-all"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BmpServerAll::~BmpServerAll()
@@ -10925,6 +11097,7 @@ BmpServerAll::~BmpServerAll()
 
 bool BmpServerAll::has_data() const
 {
+    if (is_presence_container) return true;
     return maximum_buffer_size.is_set
 	|| (route_monitoring !=  nullptr && route_monitoring->has_data());
 }
@@ -11035,7 +11208,7 @@ BmpServerAll::RouteMonitoring::RouteMonitoring()
     direction{YType::enumeration, "direction"}
 {
 
-    yang_name = "route-monitoring"; yang_parent_name = "bmp-server-all"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "route-monitoring"; yang_parent_name = "bmp-server-all"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BmpServerAll::RouteMonitoring::~RouteMonitoring()
@@ -11044,6 +11217,7 @@ BmpServerAll::RouteMonitoring::~RouteMonitoring()
 
 bool BmpServerAll::RouteMonitoring::has_data() const
 {
+    if (is_presence_container) return true;
     return policy.is_set
 	|| direction.is_set;
 }
@@ -11128,9 +11302,11 @@ bool BmpServerAll::RouteMonitoring::has_leaf_or_child_of_name(const std::string 
 }
 
 BmpServers::BmpServers()
+    :
+    bmp_server(this, {"server_id"})
 {
 
-    yang_name = "bmp-servers"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "bmp-servers"; yang_parent_name = "Cisco-IOS-XR-ipv4-bgp-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 BmpServers::~BmpServers()
@@ -11139,7 +11315,8 @@ BmpServers::~BmpServers()
 
 bool BmpServers::has_data() const
 {
-    for (std::size_t index=0; index<bmp_server.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<bmp_server.len(); index++)
     {
         if(bmp_server[index]->has_data())
             return true;
@@ -11149,7 +11326,7 @@ bool BmpServers::has_data() const
 
 bool BmpServers::has_operation() const
 {
-    for (std::size_t index=0; index<bmp_server.size(); index++)
+    for (std::size_t index=0; index<bmp_server.len(); index++)
     {
         if(bmp_server[index]->has_operation())
             return true;
@@ -11179,7 +11356,7 @@ std::shared_ptr<Entity> BmpServers::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<BmpServers::BmpServer>();
         c->parent = this;
-        bmp_server.push_back(c);
+        bmp_server.append(c);
         return c;
     }
 
@@ -11191,7 +11368,7 @@ std::map<std::string, std::shared_ptr<Entity>> BmpServers::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : bmp_server)
+    for (auto c : bmp_server.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -11256,16 +11433,16 @@ BmpServers::BmpServer::BmpServer()
     vrf{YType::str, "vrf"},
     shutdown{YType::empty, "shutdown"},
     update_source_interface{YType::str, "update-source-interface"}
-    	,
+        ,
     initial_refresh_delay(std::make_shared<BmpServers::BmpServer::InitialRefreshDelay>())
-	,host_port(std::make_shared<BmpServers::BmpServer::HostPort>())
-	,tos(std::make_shared<BmpServers::BmpServer::Tos>())
+    , host_port(std::make_shared<BmpServers::BmpServer::HostPort>())
+    , tos(std::make_shared<BmpServers::BmpServer::Tos>())
 {
     initial_refresh_delay->parent = this;
     host_port->parent = this;
     tos->parent = this;
 
-    yang_name = "bmp-server"; yang_parent_name = "bmp-servers"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bmp-server"; yang_parent_name = "bmp-servers"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 BmpServers::BmpServer::~BmpServer()
@@ -11274,6 +11451,7 @@ BmpServers::BmpServer::~BmpServer()
 
 bool BmpServers::BmpServer::has_data() const
 {
+    if (is_presence_container) return true;
     return server_id.is_set
 	|| create.is_set
 	|| maximum_buffer_size.is_set
@@ -11321,7 +11499,8 @@ std::string BmpServers::BmpServer::get_absolute_path() const
 std::string BmpServers::BmpServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "bmp-server" <<"[server-id='" <<server_id <<"']";
+    path_buffer << "bmp-server";
+    ADD_KEY_TOKEN(server_id, "server-id");
     return path_buffer.str();
 }
 
@@ -11542,7 +11721,7 @@ BmpServers::BmpServer::InitialRefreshDelay::InitialRefreshDelay()
     skip{YType::empty, "skip"}
 {
 
-    yang_name = "initial-refresh-delay"; yang_parent_name = "bmp-server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "initial-refresh-delay"; yang_parent_name = "bmp-server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BmpServers::BmpServer::InitialRefreshDelay::~InitialRefreshDelay()
@@ -11551,6 +11730,7 @@ BmpServers::BmpServer::InitialRefreshDelay::~InitialRefreshDelay()
 
 bool BmpServers::BmpServer::InitialRefreshDelay::has_data() const
 {
+    if (is_presence_container) return true;
     return delay.is_set
 	|| spread.is_set
 	|| skip.is_set;
@@ -11646,7 +11826,7 @@ BmpServers::BmpServer::HostPort::HostPort()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "host-port"; yang_parent_name = "bmp-server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host-port"; yang_parent_name = "bmp-server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BmpServers::BmpServer::HostPort::~HostPort()
@@ -11655,6 +11835,7 @@ BmpServers::BmpServer::HostPort::~HostPort()
 
 bool BmpServers::BmpServer::HostPort::has_data() const
 {
+    if (is_presence_container) return true;
     return host.is_set
 	|| port.is_set;
 }
@@ -11737,7 +11918,7 @@ BmpServers::BmpServer::Tos::Tos()
     value_{YType::str, "value"}
 {
 
-    yang_name = "tos"; yang_parent_name = "bmp-server"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tos"; yang_parent_name = "bmp-server"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 BmpServers::BmpServer::Tos::~Tos()
@@ -11746,6 +11927,7 @@ BmpServers::BmpServer::Tos::~Tos()
 
 bool BmpServers::BmpServer::Tos::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| value_.is_set;
 }

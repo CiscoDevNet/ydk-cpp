@@ -14,11 +14,11 @@ namespace Cisco_IOS_XR_lpts_lib_cfg {
 Lpts::Lpts()
     :
     ipolicer(nullptr) // presence node
-	,punt(std::make_shared<Lpts::Punt>())
+    , punt(std::make_shared<Lpts::Punt>())
 {
     punt->parent = this;
 
-    yang_name = "lpts"; yang_parent_name = "Cisco-IOS-XR-lpts-lib-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "lpts"; yang_parent_name = "Cisco-IOS-XR-lpts-lib-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Lpts::~Lpts()
@@ -27,6 +27,7 @@ Lpts::~Lpts()
 
 bool Lpts::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipolicer !=  nullptr && ipolicer->has_data())
 	|| (punt !=  nullptr && punt->has_data());
 }
@@ -137,14 +138,14 @@ bool Lpts::has_leaf_or_child_of_name(const std::string & name) const
 Lpts::Ipolicer::Ipolicer()
     :
     enable{YType::empty, "enable"}
-    	,
-    ipv4acls(std::make_shared<Lpts::Ipolicer::Ipv4Acls>())
-	,flows(std::make_shared<Lpts::Ipolicer::Flows>())
+        ,
+    acls(std::make_shared<Lpts::Ipolicer::Acls>())
+    , flows(std::make_shared<Lpts::Ipolicer::Flows>())
 {
-    ipv4acls->parent = this;
+    acls->parent = this;
     flows->parent = this;
 
-    yang_name = "ipolicer"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipolicer"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Lpts::Ipolicer::~Ipolicer()
@@ -153,8 +154,9 @@ Lpts::Ipolicer::~Ipolicer()
 
 bool Lpts::Ipolicer::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set
-	|| (ipv4acls !=  nullptr && ipv4acls->has_data())
+	|| (acls !=  nullptr && acls->has_data())
 	|| (flows !=  nullptr && flows->has_data());
 }
 
@@ -162,7 +164,7 @@ bool Lpts::Ipolicer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| (ipv4acls !=  nullptr && ipv4acls->has_operation())
+	|| (acls !=  nullptr && acls->has_operation())
 	|| (flows !=  nullptr && flows->has_operation());
 }
 
@@ -192,13 +194,13 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::get_name_leaf_dat
 
 std::shared_ptr<Entity> Lpts::Ipolicer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4acls")
+    if(child_yang_name == "acls")
     {
-        if(ipv4acls == nullptr)
+        if(acls == nullptr)
         {
-            ipv4acls = std::make_shared<Lpts::Ipolicer::Ipv4Acls>();
+            acls = std::make_shared<Lpts::Ipolicer::Acls>();
         }
-        return ipv4acls;
+        return acls;
     }
 
     if(child_yang_name == "flows")
@@ -217,9 +219,9 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::get_children() co
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(ipv4acls != nullptr)
+    if(acls != nullptr)
     {
-        children["ipv4acls"] = ipv4acls;
+        children["acls"] = acls;
     }
 
     if(flows != nullptr)
@@ -250,56 +252,59 @@ void Lpts::Ipolicer::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Lpts::Ipolicer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4acls" || name == "flows" || name == "enable")
+    if(name == "acls" || name == "flows" || name == "enable")
         return true;
     return false;
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acls()
+Lpts::Ipolicer::Acls::Acls()
+    :
+    acl(this, {"acl_name"})
 {
 
-    yang_name = "ipv4acls"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "acls"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Lpts::Ipolicer::Ipv4Acls::~Ipv4Acls()
+Lpts::Ipolicer::Acls::~Acls()
 {
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::has_data() const
+bool Lpts::Ipolicer::Acls::has_data() const
 {
-    for (std::size_t index=0; index<ipv4acl.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<acl.len(); index++)
     {
-        if(ipv4acl[index]->has_data())
+        if(acl[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::has_operation() const
+bool Lpts::Ipolicer::Acls::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4acl.size(); index++)
+    for (std::size_t index=0; index<acl.len(); index++)
     {
-        if(ipv4acl[index]->has_operation())
+        if(acl[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Lpts::Ipolicer::Ipv4Acls::get_absolute_path() const
+std::string Lpts::Ipolicer::Acls::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Lpts::Ipolicer::Ipv4Acls::get_segment_path() const
+std::string Lpts::Ipolicer::Acls::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4acls";
+    path_buffer << "acls";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -308,25 +313,25 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::get_nam
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lpts::Ipolicer::Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4acl")
+    if(child_yang_name == "acl")
     {
-        auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl>();
+        auto c = std::make_shared<Lpts::Ipolicer::Acls::Acl>();
         c->parent = this;
-        ipv4acl.push_back(c);
+        acl.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4acl)
+    for (auto c : acl.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -337,64 +342,66 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::get_chi
     return children;
 }
 
-void Lpts::Ipolicer::Ipv4Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Lpts::Ipolicer::Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Lpts::Ipolicer::Ipv4Acls::set_filter(const std::string & value_path, YFilter yfilter)
+void Lpts::Ipolicer::Acls::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::has_leaf_or_child_of_name(const std::string & name) const
+bool Lpts::Ipolicer::Acls::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4acl")
+    if(name == "acl")
         return true;
     return false;
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4Acl()
+Lpts::Ipolicer::Acls::Acl::Acl()
     :
     acl_name{YType::str, "acl-name"}
-    	,
-    ipv4vrf_names(std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames>())
+        ,
+    afi_types(std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes>())
 {
-    ipv4vrf_names->parent = this;
+    afi_types->parent = this;
 
-    yang_name = "ipv4acl"; yang_parent_name = "ipv4acls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "acl"; yang_parent_name = "acls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::~Ipv4Acl()
+Lpts::Ipolicer::Acls::Acl::~Acl()
 {
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_data() const
+bool Lpts::Ipolicer::Acls::Acl::has_data() const
 {
+    if (is_presence_container) return true;
     return acl_name.is_set
-	|| (ipv4vrf_names !=  nullptr && ipv4vrf_names->has_data());
+	|| (afi_types !=  nullptr && afi_types->has_data());
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_operation() const
+bool Lpts::Ipolicer::Acls::Acl::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(acl_name.yfilter)
-	|| (ipv4vrf_names !=  nullptr && ipv4vrf_names->has_operation());
+	|| (afi_types !=  nullptr && afi_types->has_operation());
 }
 
-std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_absolute_path() const
+std::string Lpts::Ipolicer::Acls::Acl::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/ipv4acls/" << get_segment_path();
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/acls/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_segment_path() const
+std::string Lpts::Ipolicer::Acls::Acl::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4acl" <<"[acl-name='" <<acl_name <<"']";
+    path_buffer << "acl";
+    ADD_KEY_TOKEN(acl_name, "acl-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -404,33 +411,33 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4vrf-names")
+    if(child_yang_name == "afi-types")
     {
-        if(ipv4vrf_names == nullptr)
+        if(afi_types == nullptr)
         {
-            ipv4vrf_names = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames>();
+            afi_types = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes>();
         }
-        return ipv4vrf_names;
+        return afi_types;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
-    if(ipv4vrf_names != nullptr)
+    if(afi_types != nullptr)
     {
-        children["ipv4vrf-names"] = ipv4vrf_names;
+        children["afi-types"] = afi_types;
     }
 
     return children;
 }
 
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Lpts::Ipolicer::Acls::Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "acl-name")
     {
@@ -440,7 +447,7 @@ void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_value(const std::string & value_path
     }
 }
 
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_filter(const std::string & value_path, YFilter yfilter)
+void Lpts::Ipolicer::Acls::Acl::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "acl-name")
     {
@@ -448,51 +455,54 @@ void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::set_filter(const std::string & value_pat
     }
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::has_leaf_or_child_of_name(const std::string & name) const
+bool Lpts::Ipolicer::Acls::Acl::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4vrf-names" || name == "acl-name")
+    if(name == "afi-types" || name == "acl-name")
         return true;
     return false;
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfNames()
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiTypes()
+    :
+    afi_type(this, {"afi_family_type"})
 {
 
-    yang_name = "ipv4vrf-names"; yang_parent_name = "ipv4acl"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "afi-types"; yang_parent_name = "acl"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::~Ipv4VrfNames()
+Lpts::Ipolicer::Acls::Acl::AfiTypes::~AfiTypes()
 {
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_data() const
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_data() const
 {
-    for (std::size_t index=0; index<ipv4vrf_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<afi_type.len(); index++)
     {
-        if(ipv4vrf_name[index]->has_data())
+        if(afi_type[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_operation() const
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_operation() const
 {
-    for (std::size_t index=0; index<ipv4vrf_name.size(); index++)
+    for (std::size_t index=0; index<afi_type.len(); index++)
     {
-        if(ipv4vrf_name[index]->has_operation())
+        if(afi_type[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_segment_path() const
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4vrf-names";
+    path_buffer << "afi-types";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -501,25 +511,25 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4vrf-name")
+    if(child_yang_name == "afi-type")
     {
-        auto c = std::make_shared<Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName>();
+        auto c = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType>();
         c->parent = this;
-        ipv4vrf_name.push_back(c);
+        afi_type.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ipv4vrf_name)
+    for (auto c : afi_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -530,55 +540,248 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
     return children;
 }
 
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::set_filter(const std::string & value_path, YFilter yfilter)
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::has_leaf_or_child_of_name(const std::string & name) const
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4vrf-name")
+    if(name == "afi-type")
         return true;
     return false;
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::Ipv4VrfName()
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::AfiType()
+    :
+    afi_family_type{YType::enumeration, "afi-family-type"}
+        ,
+    vrf_names(std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames>())
+{
+    vrf_names->parent = this;
+
+    yang_name = "afi-type"; yang_parent_name = "afi-types"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::~AfiType()
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi_family_type.is_set
+	|| (vrf_names !=  nullptr && vrf_names->has_data());
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi_family_type.yfilter)
+	|| (vrf_names !=  nullptr && vrf_names->has_operation());
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "afi-type";
+    ADD_KEY_TOKEN(afi_family_type, "afi-family-type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_family_type.is_set || is_set(afi_family_type.yfilter)) leaf_name_data.push_back(afi_family_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf-names")
+    {
+        if(vrf_names == nullptr)
+        {
+            vrf_names = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames>();
+        }
+        return vrf_names;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    if(vrf_names != nullptr)
+    {
+        children["vrf-names"] = vrf_names;
+    }
+
+    return children;
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi-family-type")
+    {
+        afi_family_type = value;
+        afi_family_type.value_namespace = name_space;
+        afi_family_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-family-type")
+    {
+        afi_family_type.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-names" || name == "afi-family-type")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfNames()
+    :
+    vrf_name(this, {"vrf_name"})
+{
+
+    yang_name = "vrf-names"; yang_parent_name = "afi-type"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::~VrfNames()
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_name.len(); index++)
+    {
+        if(vrf_name[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_operation() const
+{
+    for (std::size_t index=0; index<vrf_name.len(); index++)
+    {
+        if(vrf_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf-names";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf-name")
+    {
+        auto c = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName>();
+        c->parent = this;
+        vrf_name.append(c);
+        return c;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_children() const
+{
+    std::map<std::string, std::shared_ptr<Entity>> children{};
+    char count=0;
+    count = 0;
+    for (auto c : vrf_name.entities())
+    {
+        if(children.find(c->get_segment_path()) == children.end())
+            children[c->get_segment_path()] = c;
+        else
+            children[c->get_segment_path()+count++] = c;
+    }
+
+    return children;
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::VrfName()
     :
     vrf_name{YType::str, "vrf-name"},
     acl_rate{YType::uint32, "acl-rate"}
 {
 
-    yang_name = "ipv4vrf-name"; yang_parent_name = "ipv4vrf-names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "vrf-name"; yang_parent_name = "vrf-names"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::~Ipv4VrfName()
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::~VrfName()
 {
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_data() const
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| acl_rate.is_set;
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_operation() const
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
 	|| ydk::is_set(acl_rate.yfilter);
 }
 
-std::string Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_segment_path() const
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ipv4vrf-name" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf-name";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -589,19 +792,19 @@ std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Ipv4Acls::Ipv4Acl
 
 }
 
-std::shared_ptr<Entity> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "vrf-name")
     {
@@ -617,7 +820,7 @@ void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_value(con
     }
 }
 
-void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_filter(const std::string & value_path, YFilter yfilter)
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "vrf-name")
     {
@@ -629,7 +832,7 @@ void Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::set_filter(co
     }
 }
 
-bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_leaf_or_child_of_name(const std::string & name) const
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "vrf-name" || name == "acl-rate")
         return true;
@@ -637,9 +840,11 @@ bool Lpts::Ipolicer::Ipv4Acls::Ipv4Acl::Ipv4VrfNames::Ipv4VrfName::has_leaf_or_c
 }
 
 Lpts::Ipolicer::Flows::Flows()
+    :
+    flow(this, {"flow_type"})
 {
 
-    yang_name = "flows"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flows"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Ipolicer::Flows::~Flows()
@@ -648,7 +853,8 @@ Lpts::Ipolicer::Flows::~Flows()
 
 bool Lpts::Ipolicer::Flows::has_data() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow.len(); index++)
     {
         if(flow[index]->has_data())
             return true;
@@ -658,7 +864,7 @@ bool Lpts::Ipolicer::Flows::has_data() const
 
 bool Lpts::Ipolicer::Flows::has_operation() const
 {
-    for (std::size_t index=0; index<flow.size(); index++)
+    for (std::size_t index=0; index<flow.len(); index++)
     {
         if(flow[index]->has_operation())
             return true;
@@ -695,7 +901,7 @@ std::shared_ptr<Entity> Lpts::Ipolicer::Flows::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Lpts::Ipolicer::Flows::Flow>();
         c->parent = this;
-        flow.push_back(c);
+        flow.append(c);
         return c;
     }
 
@@ -707,7 +913,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::Ipolicer::Flows::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : flow)
+    for (auto c : flow.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -737,12 +943,12 @@ Lpts::Ipolicer::Flows::Flow::Flow()
     :
     flow_type{YType::enumeration, "flow-type"},
     rate{YType::uint32, "rate"}
-    	,
+        ,
     precedences(std::make_shared<Lpts::Ipolicer::Flows::Flow::Precedences>())
 {
     precedences->parent = this;
 
-    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Ipolicer::Flows::Flow::~Flow()
@@ -751,6 +957,7 @@ Lpts::Ipolicer::Flows::Flow::~Flow()
 
 bool Lpts::Ipolicer::Flows::Flow::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_type.is_set
 	|| rate.is_set
 	|| (precedences !=  nullptr && precedences->has_data());
@@ -774,7 +981,8 @@ std::string Lpts::Ipolicer::Flows::Flow::get_absolute_path() const
 std::string Lpts::Ipolicer::Flows::Flow::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "flow" <<"[flow-type='" <<flow_type <<"']";
+    path_buffer << "flow";
+    ADD_KEY_TOKEN(flow_type, "flow-type");
     return path_buffer.str();
 }
 
@@ -855,7 +1063,7 @@ Lpts::Ipolicer::Flows::Flow::Precedences::Precedences()
     precedence{YType::str, "precedence"}
 {
 
-    yang_name = "precedences"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "precedences"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Lpts::Ipolicer::Flows::Flow::Precedences::~Precedences()
@@ -864,6 +1072,7 @@ Lpts::Ipolicer::Flows::Flow::Precedences::~Precedences()
 
 bool Lpts::Ipolicer::Flows::Flow::Precedences::has_data() const
 {
+    if (is_presence_container) return true;
     for (auto const & leaf : precedence.getYLeafs())
     {
         if(leaf.is_set)
@@ -942,7 +1151,7 @@ Lpts::Punt::Punt()
 {
     flowtrap->parent = this;
 
-    yang_name = "punt"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "punt"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::~Punt()
@@ -951,6 +1160,7 @@ Lpts::Punt::~Punt()
 
 bool Lpts::Punt::has_data() const
 {
+    if (is_presence_container) return true;
     return (flowtrap !=  nullptr && flowtrap->has_data());
 }
 
@@ -1030,23 +1240,23 @@ Lpts::Punt::Flowtrap::Flowtrap()
     et_size{YType::uint32, "et-size"},
     eviction_threshold{YType::uint32, "eviction-threshold"},
     report_threshold{YType::uint16, "report-threshold"},
-    non_subscriber_interfaces{YType::int32, "non-subscriber-interfaces"},
+    non_subscriber_interfaces{YType::uint32, "non-subscriber-interfaces"},
     sample_prob{YType::str, "sample-prob"},
     eviction_search_limit{YType::uint32, "eviction-search-limit"},
     routing_protocols_enable{YType::boolean, "routing-protocols-enable"},
     subscriber_interfaces{YType::boolean, "subscriber-interfaces"},
     interface_based_flow{YType::boolean, "interface-based-flow"},
     dampening{YType::uint32, "dampening"}
-    	,
+        ,
     penalty_rates(std::make_shared<Lpts::Punt::Flowtrap::PenaltyRates>())
-	,penalty_timeouts(std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts>())
-	,exclude(std::make_shared<Lpts::Punt::Flowtrap::Exclude>())
+    , penalty_timeouts(std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts>())
+    , exclude(std::make_shared<Lpts::Punt::Flowtrap::Exclude>())
 {
     penalty_rates->parent = this;
     penalty_timeouts->parent = this;
     exclude->parent = this;
 
-    yang_name = "flowtrap"; yang_parent_name = "punt"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flowtrap"; yang_parent_name = "punt"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::~Flowtrap()
@@ -1055,6 +1265,7 @@ Lpts::Punt::Flowtrap::~Flowtrap()
 
 bool Lpts::Punt::Flowtrap::has_data() const
 {
+    if (is_presence_container) return true;
     return max_flow_gap.is_set
 	|| et_size.is_set
 	|| eviction_threshold.is_set
@@ -1304,9 +1515,11 @@ bool Lpts::Punt::Flowtrap::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRates()
+    :
+    penalty_rate(this, {"protocol_name"})
 {
 
-    yang_name = "penalty-rates"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "penalty-rates"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::PenaltyRates::~PenaltyRates()
@@ -1315,7 +1528,8 @@ Lpts::Punt::Flowtrap::PenaltyRates::~PenaltyRates()
 
 bool Lpts::Punt::Flowtrap::PenaltyRates::has_data() const
 {
-    for (std::size_t index=0; index<penalty_rate.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<penalty_rate.len(); index++)
     {
         if(penalty_rate[index]->has_data())
             return true;
@@ -1325,7 +1539,7 @@ bool Lpts::Punt::Flowtrap::PenaltyRates::has_data() const
 
 bool Lpts::Punt::Flowtrap::PenaltyRates::has_operation() const
 {
-    for (std::size_t index=0; index<penalty_rate.size(); index++)
+    for (std::size_t index=0; index<penalty_rate.len(); index++)
     {
         if(penalty_rate[index]->has_operation())
             return true;
@@ -1362,7 +1576,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyRates::get_child_by_name(co
     {
         auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate>();
         c->parent = this;
-        penalty_rate.push_back(c);
+        penalty_rate.append(c);
         return c;
     }
 
@@ -1374,7 +1588,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyRate
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : penalty_rate)
+    for (auto c : penalty_rate.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1406,7 +1620,7 @@ Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::PenaltyRate()
     rate{YType::uint32, "rate"}
 {
 
-    yang_name = "penalty-rate"; yang_parent_name = "penalty-rates"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "penalty-rate"; yang_parent_name = "penalty-rates"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::~PenaltyRate()
@@ -1415,6 +1629,7 @@ Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::~PenaltyRate()
 
 bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| rate.is_set;
 }
@@ -1436,7 +1651,8 @@ std::string Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_absolute_path()
 std::string Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "penalty-rate" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "penalty-rate";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -1499,9 +1715,11 @@ bool Lpts::Punt::Flowtrap::PenaltyRates::PenaltyRate::has_leaf_or_child_of_name(
 }
 
 Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeouts()
+    :
+    penalty_timeout(this, {"protocol_name"})
 {
 
-    yang_name = "penalty-timeouts"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "penalty-timeouts"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::PenaltyTimeouts::~PenaltyTimeouts()
@@ -1510,7 +1728,8 @@ Lpts::Punt::Flowtrap::PenaltyTimeouts::~PenaltyTimeouts()
 
 bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_data() const
 {
-    for (std::size_t index=0; index<penalty_timeout.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<penalty_timeout.len(); index++)
     {
         if(penalty_timeout[index]->has_data())
             return true;
@@ -1520,7 +1739,7 @@ bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_data() const
 
 bool Lpts::Punt::Flowtrap::PenaltyTimeouts::has_operation() const
 {
-    for (std::size_t index=0; index<penalty_timeout.size(); index++)
+    for (std::size_t index=0; index<penalty_timeout.len(); index++)
     {
         if(penalty_timeout[index]->has_operation())
             return true;
@@ -1557,7 +1776,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::PenaltyTimeouts::get_child_by_name
     {
         auto c = std::make_shared<Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout>();
         c->parent = this;
-        penalty_timeout.push_back(c);
+        penalty_timeout.append(c);
         return c;
     }
 
@@ -1569,7 +1788,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::PenaltyTime
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : penalty_timeout)
+    for (auto c : penalty_timeout.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1601,7 +1820,7 @@ Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::PenaltyTimeout()
     timeout{YType::uint32, "timeout"}
 {
 
-    yang_name = "penalty-timeout"; yang_parent_name = "penalty-timeouts"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "penalty-timeout"; yang_parent_name = "penalty-timeouts"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::~PenaltyTimeout()
@@ -1610,6 +1829,7 @@ Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::~PenaltyTimeout()
 
 bool Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::has_data() const
 {
+    if (is_presence_container) return true;
     return protocol_name.is_set
 	|| timeout.is_set;
 }
@@ -1631,7 +1851,8 @@ std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_absolute_
 std::string Lpts::Punt::Flowtrap::PenaltyTimeouts::PenaltyTimeout::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "penalty-timeout" <<"[protocol-name='" <<protocol_name <<"']";
+    path_buffer << "penalty-timeout";
+    ADD_KEY_TOKEN(protocol_name, "protocol-name");
     return path_buffer.str();
 }
 
@@ -1699,7 +1920,7 @@ Lpts::Punt::Flowtrap::Exclude::Exclude()
 {
     interface_names->parent = this;
 
-    yang_name = "exclude"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "exclude"; yang_parent_name = "flowtrap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::Exclude::~Exclude()
@@ -1708,6 +1929,7 @@ Lpts::Punt::Flowtrap::Exclude::~Exclude()
 
 bool Lpts::Punt::Flowtrap::Exclude::has_data() const
 {
+    if (is_presence_container) return true;
     return (interface_names !=  nullptr && interface_names->has_data());
 }
 
@@ -1782,9 +2004,11 @@ bool Lpts::Punt::Flowtrap::Exclude::has_leaf_or_child_of_name(const std::string 
 }
 
 Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceNames()
+    :
+    interface_name(this, {"ifname"})
 {
 
-    yang_name = "interface-names"; yang_parent_name = "exclude"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-names"; yang_parent_name = "exclude"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::Exclude::InterfaceNames::~InterfaceNames()
@@ -1793,7 +2017,8 @@ Lpts::Punt::Flowtrap::Exclude::InterfaceNames::~InterfaceNames()
 
 bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::has_data() const
 {
-    for (std::size_t index=0; index<interface_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface_name.len(); index++)
     {
         if(interface_name[index]->has_data())
             return true;
@@ -1803,7 +2028,7 @@ bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::has_data() const
 
 bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::has_operation() const
 {
-    for (std::size_t index=0; index<interface_name.size(); index++)
+    for (std::size_t index=0; index<interface_name.len(); index++)
     {
         if(interface_name[index]->has_operation())
             return true;
@@ -1840,7 +2065,7 @@ std::shared_ptr<Entity> Lpts::Punt::Flowtrap::Exclude::InterfaceNames::get_child
     {
         auto c = std::make_shared<Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName>();
         c->parent = this;
-        interface_name.push_back(c);
+        interface_name.append(c);
         return c;
     }
 
@@ -1852,7 +2077,7 @@ std::map<std::string, std::shared_ptr<Entity>> Lpts::Punt::Flowtrap::Exclude::In
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface_name)
+    for (auto c : interface_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1884,7 +2109,7 @@ Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::InterfaceName()
     id1{YType::boolean, "id1"}
 {
 
-    yang_name = "interface-name"; yang_parent_name = "interface-names"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface-name"; yang_parent_name = "interface-names"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::~InterfaceName()
@@ -1893,6 +2118,7 @@ Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::~InterfaceName()
 
 bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::has_data() const
 {
+    if (is_presence_container) return true;
     return ifname.is_set
 	|| id1.is_set;
 }
@@ -1914,7 +2140,8 @@ std::string Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_ab
 std::string Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface-name" <<"[ifname='" <<ifname <<"']";
+    path_buffer << "interface-name";
+    ADD_KEY_TOKEN(ifname, "ifname");
     return path_buffer.str();
 }
 

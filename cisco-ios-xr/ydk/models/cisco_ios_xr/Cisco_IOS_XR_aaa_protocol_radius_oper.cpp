@@ -17,7 +17,7 @@ Radius::Radius()
 {
     nodes->parent = this;
 
-    yang_name = "radius"; yang_parent_name = "Cisco-IOS-XR-aaa-protocol-radius-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "radius"; yang_parent_name = "Cisco-IOS-XR-aaa-protocol-radius-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Radius::~Radius()
@@ -26,6 +26,7 @@ Radius::~Radius()
 
 bool Radius::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool Radius::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Radius::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Radius::Nodes::~Nodes()
@@ -129,7 +132,8 @@ Radius::Nodes::~Nodes()
 
 bool Radius::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool Radius::Nodes::has_data() const
 
 bool Radius::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> Radius::Nodes::get_child_by_name(const std::string & chi
     {
         auto c = std::make_shared<Radius::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::get_children() con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,13 +221,13 @@ bool Radius::Nodes::has_leaf_or_child_of_name(const std::string & name) const
 Radius::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     client(std::make_shared<Radius::Nodes::Node::Client>())
-	,dead_criteria(std::make_shared<Radius::Nodes::Node::DeadCriteria>())
-	,authentication(std::make_shared<Radius::Nodes::Node::Authentication>())
-	,accounting(std::make_shared<Radius::Nodes::Node::Accounting>())
-	,server_groups(std::make_shared<Radius::Nodes::Node::ServerGroups>())
-	,dynamic_authorization(std::make_shared<Radius::Nodes::Node::DynamicAuthorization>())
+    , dead_criteria(std::make_shared<Radius::Nodes::Node::DeadCriteria>())
+    , authentication(std::make_shared<Radius::Nodes::Node::Authentication>())
+    , accounting(std::make_shared<Radius::Nodes::Node::Accounting>())
+    , server_groups(std::make_shared<Radius::Nodes::Node::ServerGroups>())
+    , dynamic_authorization(std::make_shared<Radius::Nodes::Node::DynamicAuthorization>())
 {
     client->parent = this;
     dead_criteria->parent = this;
@@ -232,7 +236,7 @@ Radius::Nodes::Node::Node()
     server_groups->parent = this;
     dynamic_authorization->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Radius::Nodes::Node::~Node()
@@ -241,6 +245,7 @@ Radius::Nodes::Node::~Node()
 
 bool Radius::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (client !=  nullptr && client->has_data())
 	|| (dead_criteria !=  nullptr && dead_criteria->has_data())
@@ -272,7 +277,8 @@ std::string Radius::Nodes::Node::get_absolute_path() const
 std::string Radius::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -414,7 +420,7 @@ Radius::Nodes::Node::Client::Client()
     unknown_accounting_responses{YType::uint32, "unknown-accounting-responses"}
 {
 
-    yang_name = "client"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "client"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::Client::~Client()
@@ -423,6 +429,7 @@ Radius::Nodes::Node::Client::~Client()
 
 bool Radius::Nodes::Node::Client::has_data() const
 {
+    if (is_presence_container) return true;
     return unknown_authentication_responses.is_set
 	|| authentication_nas_id.is_set
 	|| unknown_accounting_responses.is_set;
@@ -518,7 +525,7 @@ Radius::Nodes::Node::DeadCriteria::DeadCriteria()
 {
     hosts->parent = this;
 
-    yang_name = "dead-criteria"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dead-criteria"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::DeadCriteria::~DeadCriteria()
@@ -527,6 +534,7 @@ Radius::Nodes::Node::DeadCriteria::~DeadCriteria()
 
 bool Radius::Nodes::Node::DeadCriteria::has_data() const
 {
+    if (is_presence_container) return true;
     return (hosts !=  nullptr && hosts->has_data());
 }
 
@@ -594,9 +602,11 @@ bool Radius::Nodes::Node::DeadCriteria::has_leaf_or_child_of_name(const std::str
 }
 
 Radius::Nodes::Node::DeadCriteria::Hosts::Hosts()
+    :
+    host(this, {})
 {
 
-    yang_name = "hosts"; yang_parent_name = "dead-criteria"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "hosts"; yang_parent_name = "dead-criteria"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::DeadCriteria::Hosts::~Hosts()
@@ -605,7 +615,8 @@ Radius::Nodes::Node::DeadCriteria::Hosts::~Hosts()
 
 bool Radius::Nodes::Node::DeadCriteria::Hosts::has_data() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_data())
             return true;
@@ -615,7 +626,7 @@ bool Radius::Nodes::Node::DeadCriteria::Hosts::has_data() const
 
 bool Radius::Nodes::Node::DeadCriteria::Hosts::has_operation() const
 {
-    for (std::size_t index=0; index<host.size(); index++)
+    for (std::size_t index=0; index<host.len(); index++)
     {
         if(host[index]->has_operation())
             return true;
@@ -645,7 +656,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::DeadCriteria::Hosts::get_child_by_n
     {
         auto c = std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host>();
         c->parent = this;
-        host.push_back(c);
+        host.append(c);
         return c;
     }
 
@@ -657,7 +668,7 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::DeadCriteria
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : host)
+    for (auto c : host.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -688,14 +699,14 @@ Radius::Nodes::Node::DeadCriteria::Hosts::Host::Host()
     ip_address{YType::str, "ip-address"},
     auth_port_number{YType::uint32, "auth-port-number"},
     acct_port_number{YType::uint32, "acct-port-number"}
-    	,
+        ,
     time(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time>())
-	,tries(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>())
+    , tries(std::make_shared<Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries>())
 {
     time->parent = this;
     tries->parent = this;
 
-    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "host"; yang_parent_name = "hosts"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::DeadCriteria::Hosts::Host::~Host()
@@ -704,6 +715,7 @@ Radius::Nodes::Node::DeadCriteria::Hosts::Host::~Host()
 
 bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| auth_port_number.is_set
 	|| acct_port_number.is_set
@@ -831,7 +843,7 @@ Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::Time()
     is_computed{YType::boolean, "is-computed"}
 {
 
-    yang_name = "time"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "time"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::~Time()
@@ -840,6 +852,7 @@ Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::~Time()
 
 bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Time::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| is_computed.is_set;
 }
@@ -922,7 +935,7 @@ Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::Tries()
     is_computed{YType::boolean, "is-computed"}
 {
 
-    yang_name = "tries"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "tries"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::~Tries()
@@ -931,6 +944,7 @@ Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::~Tries()
 
 bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_data() const
 {
+    if (is_presence_container) return true;
     return value_.is_set
 	|| is_computed.is_set;
 }
@@ -1008,9 +1022,11 @@ bool Radius::Nodes::Node::DeadCriteria::Hosts::Host::Tries::has_leaf_or_child_of
 }
 
 Radius::Nodes::Node::Authentication::Authentication()
+    :
+    authentication_group(this, {})
 {
 
-    yang_name = "authentication"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::Authentication::~Authentication()
@@ -1019,7 +1035,8 @@ Radius::Nodes::Node::Authentication::~Authentication()
 
 bool Radius::Nodes::Node::Authentication::has_data() const
 {
-    for (std::size_t index=0; index<authentication_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<authentication_group.len(); index++)
     {
         if(authentication_group[index]->has_data())
             return true;
@@ -1029,7 +1046,7 @@ bool Radius::Nodes::Node::Authentication::has_data() const
 
 bool Radius::Nodes::Node::Authentication::has_operation() const
 {
-    for (std::size_t index=0; index<authentication_group.size(); index++)
+    for (std::size_t index=0; index<authentication_group.len(); index++)
     {
         if(authentication_group[index]->has_operation())
             return true;
@@ -1059,7 +1076,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Authentication::get_child_by_name(c
     {
         auto c = std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup>();
         c->parent = this;
-        authentication_group.push_back(c);
+        authentication_group.append(c);
         return c;
     }
 
@@ -1071,7 +1088,7 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Authenticati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : authentication_group)
+    for (auto c : authentication_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1103,12 +1120,12 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::AuthenticationGroup()
     port{YType::uint32, "port"},
     ip_address{YType::str, "ip-address"},
     family{YType::str, "family"}
-    	,
+        ,
     authentication(std::make_shared<Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_>())
 {
     authentication->parent = this;
 
-    yang_name = "authentication-group"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication-group"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::Authentication::AuthenticationGroup::~AuthenticationGroup()
@@ -1117,6 +1134,7 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::~AuthenticationGroup()
 
 bool Radius::Nodes::Node::Authentication::AuthenticationGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
 	|| port.is_set
 	|| ip_address.is_set
@@ -1257,7 +1275,7 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::Authe
     authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "authentication-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "authentication-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::~Authentication_()
@@ -1266,6 +1284,7 @@ Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::~Auth
 
 bool Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::has_data() const
 {
+    if (is_presence_container) return true;
     return access_requests.is_set
 	|| pending_access_requests.is_set
 	|| access_request_retransmits.is_set
@@ -1551,9 +1570,11 @@ bool Radius::Nodes::Node::Authentication::AuthenticationGroup::Authentication_::
 }
 
 Radius::Nodes::Node::Accounting::Accounting()
+    :
+    accounting_group(this, {})
 {
 
-    yang_name = "accounting"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::Accounting::~Accounting()
@@ -1562,7 +1583,8 @@ Radius::Nodes::Node::Accounting::~Accounting()
 
 bool Radius::Nodes::Node::Accounting::has_data() const
 {
-    for (std::size_t index=0; index<accounting_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<accounting_group.len(); index++)
     {
         if(accounting_group[index]->has_data())
             return true;
@@ -1572,7 +1594,7 @@ bool Radius::Nodes::Node::Accounting::has_data() const
 
 bool Radius::Nodes::Node::Accounting::has_operation() const
 {
-    for (std::size_t index=0; index<accounting_group.size(); index++)
+    for (std::size_t index=0; index<accounting_group.len(); index++)
     {
         if(accounting_group[index]->has_operation())
             return true;
@@ -1602,7 +1624,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::Accounting::get_child_by_name(const
     {
         auto c = std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup>();
         c->parent = this;
-        accounting_group.push_back(c);
+        accounting_group.append(c);
         return c;
     }
 
@@ -1614,7 +1636,7 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::Accounting::
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : accounting_group)
+    for (auto c : accounting_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1646,12 +1668,12 @@ Radius::Nodes::Node::Accounting::AccountingGroup::AccountingGroup()
     port{YType::uint32, "port"},
     ip_address{YType::str, "ip-address"},
     family{YType::str, "family"}
-    	,
+        ,
     accounting(std::make_shared<Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_>())
 {
     accounting->parent = this;
 
-    yang_name = "accounting-group"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting-group"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::Accounting::AccountingGroup::~AccountingGroup()
@@ -1660,6 +1682,7 @@ Radius::Nodes::Node::Accounting::AccountingGroup::~AccountingGroup()
 
 bool Radius::Nodes::Node::Accounting::AccountingGroup::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
 	|| port.is_set
 	|| ip_address.is_set
@@ -1798,7 +1821,7 @@ Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::Accounting_()
     acct_transaction_failure{YType::uint32, "acct-transaction-failure"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "accounting-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "accounting-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::~Accounting_()
@@ -1807,6 +1830,7 @@ Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::~Accounting_()
 
 bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_data() const
 {
+    if (is_presence_container) return true;
     return requests.is_set
 	|| pending_requests.is_set
 	|| retransmits.is_set
@@ -2066,9 +2090,11 @@ bool Radius::Nodes::Node::Accounting::AccountingGroup::Accounting_::has_leaf_or_
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroups()
+    :
+    server_group(this, {"server_group_name"})
 {
 
-    yang_name = "server-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-groups"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::ServerGroups::~ServerGroups()
@@ -2077,7 +2103,8 @@ Radius::Nodes::Node::ServerGroups::~ServerGroups()
 
 bool Radius::Nodes::Node::ServerGroups::has_data() const
 {
-    for (std::size_t index=0; index<server_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_group.len(); index++)
     {
         if(server_group[index]->has_data())
             return true;
@@ -2087,7 +2114,7 @@ bool Radius::Nodes::Node::ServerGroups::has_data() const
 
 bool Radius::Nodes::Node::ServerGroups::has_operation() const
 {
-    for (std::size_t index=0; index<server_group.size(); index++)
+    for (std::size_t index=0; index<server_group.len(); index++)
     {
         if(server_group[index]->has_operation())
             return true;
@@ -2117,7 +2144,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::get_child_by_name(con
     {
         auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup>();
         c->parent = this;
-        server_group.push_back(c);
+        server_group.append(c);
         return c;
     }
 
@@ -2129,7 +2156,7 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : server_group)
+    for (auto c : server_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2162,9 +2189,11 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup()
     vrf_name{YType::str, "vrf-name"},
     dead_time{YType::uint32, "dead-time"},
     servers{YType::uint32, "servers"}
+        ,
+    server_group(this, {})
 {
 
-    yang_name = "server-group"; yang_parent_name = "server-groups"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-group"; yang_parent_name = "server-groups"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::~ServerGroup()
@@ -2173,7 +2202,8 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::~ServerGroup()
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::has_data() const
 {
-    for (std::size_t index=0; index<server_group.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_group.len(); index++)
     {
         if(server_group[index]->has_data())
             return true;
@@ -2187,7 +2217,7 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::has_data() const
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::has_operation() const
 {
-    for (std::size_t index=0; index<server_group.size(); index++)
+    for (std::size_t index=0; index<server_group.len(); index++)
     {
         if(server_group[index]->has_operation())
             return true;
@@ -2203,7 +2233,8 @@ bool Radius::Nodes::Node::ServerGroups::ServerGroup::has_operation() const
 std::string Radius::Nodes::Node::ServerGroups::ServerGroup::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "server-group" <<"[server-group-name='" <<server_group_name <<"']";
+    path_buffer << "server-group";
+    ADD_KEY_TOKEN(server_group_name, "server-group-name");
     return path_buffer.str();
 }
 
@@ -2227,7 +2258,7 @@ std::shared_ptr<Entity> Radius::Nodes::Node::ServerGroups::ServerGroup::get_chil
     {
         auto c = std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_>();
         c->parent = this;
-        server_group.push_back(c);
+        server_group.append(c);
         return c;
     }
 
@@ -2239,7 +2270,7 @@ std::map<std::string, std::shared_ptr<Entity>> Radius::Nodes::Node::ServerGroups
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : server_group)
+    for (auto c : server_group.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2323,16 +2354,16 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::ServerGroup_()
     is_private{YType::boolean, "is-private"},
     ip_address{YType::str, "ip-address"},
     family{YType::str, "family"}
-    	,
+        ,
     accounting(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting>())
-	,authentication(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication>())
-	,authorization(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization>())
+    , authentication(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication>())
+    , authorization(std::make_shared<Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization>())
 {
     accounting->parent = this;
     authentication->parent = this;
     authorization->parent = this;
 
-    yang_name = "server-group"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "server-group"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::~ServerGroup_()
@@ -2341,6 +2372,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::~ServerGroup_()
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::has_data() const
 {
+    if (is_presence_container) return true;
     return server_address.is_set
 	|| authentication_port.is_set
 	|| accounting_port.is_set
@@ -2537,7 +2569,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::Accoun
     acct_transaction_failure{YType::uint32, "acct-transaction-failure"}
 {
 
-    yang_name = "accounting"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "accounting"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::~Accounting()
@@ -2546,6 +2578,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::~Accou
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Accounting::has_data() const
 {
+    if (is_presence_container) return true;
     return requests.is_set
 	|| pending_requests.is_set
 	|| retransmits.is_set
@@ -2826,7 +2859,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::Au
     authen_incorrect_responses{YType::uint32, "authen-incorrect-responses"}
 {
 
-    yang_name = "authentication"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authentication"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::~Authentication()
@@ -2835,6 +2868,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::~A
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authentication::has_data() const
 {
+    if (is_presence_container) return true;
     return access_requests.is_set
 	|| pending_access_requests.is_set
 	|| access_request_retransmits.is_set
@@ -3131,7 +3165,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::Aut
     author_transaction_failure{YType::uint32, "author-transaction-failure"}
 {
 
-    yang_name = "authorization"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "authorization"; yang_parent_name = "server-group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::~Authorization()
@@ -3140,6 +3174,7 @@ Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::~Au
 
 bool Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::Authorization::has_data() const
 {
+    if (is_presence_container) return true;
     return author_requests.is_set
 	|| author_request_timeouts.is_set
 	|| author_unexpected_responses.is_set
@@ -3300,7 +3335,7 @@ Radius::Nodes::Node::DynamicAuthorization::DynamicAuthorization()
     invalid_coa_requests{YType::uint32, "invalid-coa-requests"}
 {
 
-    yang_name = "dynamic-authorization"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dynamic-authorization"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Radius::Nodes::Node::DynamicAuthorization::~DynamicAuthorization()
@@ -3309,6 +3344,7 @@ Radius::Nodes::Node::DynamicAuthorization::~DynamicAuthorization()
 
 bool Radius::Nodes::Node::DynamicAuthorization::has_data() const
 {
+    if (is_presence_container) return true;
     return disconnected_invalid_requests.is_set
 	|| invalid_coa_requests.is_set;
 }

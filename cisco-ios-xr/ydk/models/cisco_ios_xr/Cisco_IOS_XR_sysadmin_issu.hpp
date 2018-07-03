@@ -205,7 +205,7 @@ class Issu::Clients : public ydk::Entity
         ydk::YLeaf announcement_status; //type: AnnouncementStatus
         class Client; //type: Issu::Clients::Client
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Clients::Client> > client;
+        ydk::YList client;
                 class AnnouncementStatus;
 
 }; // Issu::Clients
@@ -264,9 +264,9 @@ class Issu::Internals : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Orchestrator> orchestrator;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Agents> agents;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::InventoryMonitor> inventory_monitor;
-                class OpRequestType;
+                class PhaseType;
+        class OpRequestType;
         class StageType;
-        class PhaseType;
 
 }; // Issu::Internals
 
@@ -378,7 +378,7 @@ class Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory : publ
 
         class HistoricalStage; //type: Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory::HistoricalStage> > historical_stage;
+        ydk::YList historical_stage;
         
 }; // Issu::Internals::Orchestrator::InternalPrepare::PrepareStageHistory
 
@@ -464,7 +464,7 @@ class Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory : pu
 
         class HistoricalStage; //type: Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory::HistoricalStage> > historical_stage;
+        ydk::YList historical_stage;
         
 }; // Issu::Internals::Orchestrator::InternalActivate::ActivateStageHistory
 
@@ -577,7 +577,7 @@ class Issu::Internals::Agents::Requests : public ydk::Entity
 
         class Request; //type: Issu::Internals::Agents::Requests::Request
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Agents::Requests::Request> > request;
+        ydk::YList request;
         
 }; // Issu::Internals::Agents::Requests
 
@@ -655,7 +655,7 @@ class Issu::Internals::Agents::Requests::Request::Agents_ : public ydk::Entity
 
         class Agent; //type: Issu::Internals::Agents::Requests::Request::Agents_::Agent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Agents::Requests::Request::Agents_::Agent> > agent;
+        ydk::YList agent;
         
 }; // Issu::Internals::Agents::Requests::Request::Agents_
 
@@ -728,7 +728,7 @@ class Issu::Internals::Agents::Inventory : public ydk::Entity
 
         class Agent; //type: Issu::Internals::Agents::Inventory::Agent
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Agents::Inventory::Agent> > agent;
+        ydk::YList agent;
         
 }; // Issu::Internals::Agents::Inventory
 
@@ -778,7 +778,7 @@ class Issu::Internals::Agents::ReloadTracking : public ydk::Entity
         ydk::YLeaf remaining_nodes_count; //type: uint32
         class Node; //type: Issu::Internals::Agents::ReloadTracking::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Agents::ReloadTracking::Node> > node;
+        ydk::YList node;
         
 }; // Issu::Internals::Agents::ReloadTracking
 
@@ -850,7 +850,7 @@ class Issu::Internals::InventoryMonitor::Inventory : public ydk::Entity
 
         class Node; //type: Issu::Internals::InventoryMonitor::Inventory::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::InventoryMonitor::Inventory::Node> > node;
+        ydk::YList node;
         
 }; // Issu::Internals::InventoryMonitor::Inventory
 
@@ -877,38 +877,6 @@ class Issu::Internals::InventoryMonitor::Inventory::Node : public ydk::Entity
 
 }; // Issu::Internals::InventoryMonitor::Inventory::Node
 
-class OpStartResult : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf start_success;
-        static const ydk::Enum::YLeaf error_operation_in_progress;
-        static const ydk::Enum::YLeaf activate_error_no_prepare;
-        static const ydk::Enum::YLeaf prepare_error_previous_prepare;
-        static const ydk::Enum::YLeaf recover_error_unrecoverable;
-        static const ydk::Enum::YLeaf start_error_internal;
-
-};
-
-class OpResult : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf success;
-        static const ydk::Enum::YLeaf error_input;
-        static const ydk::Enum::YLeaf error_orchestration;
-        static const ydk::Enum::YLeaf error_install;
-        static const ydk::Enum::YLeaf error_node_redundancy;
-
-};
-
-class IssuNotif : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf notif_sysadmin_op_start;
-        static const ydk::Enum::YLeaf notif_sysadmin_phase_start;
-        static const ydk::Enum::YLeaf notif_sysadmin_op_end;
-
-};
-
 class OpStage : public ydk::Enum
 {
     public:
@@ -926,6 +894,38 @@ class OpStage : public ydk::Enum
         static const ydk::Enum::YLeaf activate_paused;
         static const ydk::Enum::YLeaf activate_postamble;
         static const ydk::Enum::YLeaf activate_complete;
+
+};
+
+class IssuNotif : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf notif_sysadmin_op_start;
+        static const ydk::Enum::YLeaf notif_sysadmin_phase_start;
+        static const ydk::Enum::YLeaf notif_sysadmin_op_end;
+
+};
+
+class OpResult : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf success;
+        static const ydk::Enum::YLeaf error_input;
+        static const ydk::Enum::YLeaf error_orchestration;
+        static const ydk::Enum::YLeaf error_install;
+        static const ydk::Enum::YLeaf error_node_redundancy;
+
+};
+
+class OpStartResult : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf start_success;
+        static const ydk::Enum::YLeaf error_operation_in_progress;
+        static const ydk::Enum::YLeaf activate_error_no_prepare;
+        static const ydk::Enum::YLeaf prepare_error_previous_prepare;
+        static const ydk::Enum::YLeaf recover_error_unrecoverable;
+        static const ydk::Enum::YLeaf start_error_internal;
 
 };
 
@@ -964,6 +964,14 @@ class Issu::Clients::Client::Response : public ydk::Enum
         static const ydk::Enum::YLeaf notif_resp_send_error;
         static const ydk::Enum::YLeaf notif_resp_client_error;
         static const ydk::Enum::YLeaf notif_resp_client_abort;
+
+};
+
+class Issu::Internals::PhaseType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf calvados_activate_phase_one;
+        static const ydk::Enum::YLeaf calvados_activate_phase_two;
 
 };
 
@@ -1008,14 +1016,6 @@ class Issu::Internals::StageType : public ydk::Enum
         static const ydk::Enum::YLeaf activate_error_pause;
         static const ydk::Enum::YLeaf activate_calvados_recovery;
         static const ydk::Enum::YLeaf activate_recovery_postamble;
-
-};
-
-class Issu::Internals::PhaseType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf calvados_activate_phase_one;
-        static const ydk::Enum::YLeaf calvados_activate_phase_two;
 
 };
 

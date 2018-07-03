@@ -32,32 +32,32 @@ class RSVPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Rsvpgenobjects; //type: RSVPMIB::Rsvpgenobjects
-        class Rsvpsessiontable; //type: RSVPMIB::Rsvpsessiontable
-        class Rsvpsendertable; //type: RSVPMIB::Rsvpsendertable
-        class Rsvpsenderoutinterfacetable; //type: RSVPMIB::Rsvpsenderoutinterfacetable
-        class Rsvpresvtable; //type: RSVPMIB::Rsvpresvtable
-        class Rsvpresvfwdtable; //type: RSVPMIB::Rsvpresvfwdtable
-        class Rsvpiftable; //type: RSVPMIB::Rsvpiftable
-        class Rsvpnbrtable; //type: RSVPMIB::Rsvpnbrtable
+        class RsvpGenObjects; //type: RSVPMIB::RsvpGenObjects
+        class RsvpSessionTable; //type: RSVPMIB::RsvpSessionTable
+        class RsvpSenderTable; //type: RSVPMIB::RsvpSenderTable
+        class RsvpSenderOutInterfaceTable; //type: RSVPMIB::RsvpSenderOutInterfaceTable
+        class RsvpResvTable; //type: RSVPMIB::RsvpResvTable
+        class RsvpResvFwdTable; //type: RSVPMIB::RsvpResvFwdTable
+        class RsvpIfTable; //type: RSVPMIB::RsvpIfTable
+        class RsvpNbrTable; //type: RSVPMIB::RsvpNbrTable
 
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpgenobjects> rsvpgenobjects;
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsessiontable> rsvpsessiontable;
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsendertable> rsvpsendertable;
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsenderoutinterfacetable> rsvpsenderoutinterfacetable;
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpresvtable> rsvpresvtable;
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpresvfwdtable> rsvpresvfwdtable;
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpiftable> rsvpiftable;
-        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpnbrtable> rsvpnbrtable;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpGenObjects> rsvpgenobjects;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSessionTable> rsvpsessiontable;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSenderTable> rsvpsendertable;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSenderOutInterfaceTable> rsvpsenderoutinterfacetable;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpResvTable> rsvpresvtable;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpResvFwdTable> rsvpresvfwdtable;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpIfTable> rsvpiftable;
+        std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpNbrTable> rsvpnbrtable;
         
 }; // RSVPMIB
 
 
-class RSVPMIB::Rsvpgenobjects : public ydk::Entity
+class RSVPMIB::RsvpGenObjects : public ydk::Entity
 {
     public:
-        Rsvpgenobjects();
-        ~Rsvpgenobjects();
+        RsvpGenObjects();
+        ~RsvpGenObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -76,14 +76,14 @@ class RSVPMIB::Rsvpgenobjects : public ydk::Entity
         ydk::YLeaf rsvpresvfwdnewindex; //type: int32
         ydk::YLeaf rsvpsessionnewindex; //type: int32
 
-}; // RSVPMIB::Rsvpgenobjects
+}; // RSVPMIB::RsvpGenObjects
 
 
-class RSVPMIB::Rsvpsessiontable : public ydk::Entity
+class RSVPMIB::RsvpSessionTable : public ydk::Entity
 {
     public:
-        Rsvpsessiontable();
-        ~Rsvpsessiontable();
+        RsvpSessionTable();
+        ~RsvpSessionTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -96,18 +96,18 @@ class RSVPMIB::Rsvpsessiontable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rsvpsessionentry; //type: RSVPMIB::Rsvpsessiontable::Rsvpsessionentry
+        class RsvpSessionEntry; //type: RSVPMIB::RsvpSessionTable::RsvpSessionEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsessiontable::Rsvpsessionentry> > rsvpsessionentry;
+        ydk::YList rsvpsessionentry;
         
-}; // RSVPMIB::Rsvpsessiontable
+}; // RSVPMIB::RsvpSessionTable
 
 
-class RSVPMIB::Rsvpsessiontable::Rsvpsessionentry : public ydk::Entity
+class RSVPMIB::RsvpSessionTable::RsvpSessionEntry : public ydk::Entity
 {
     public:
-        Rsvpsessionentry();
-        ~Rsvpsessionentry();
+        RsvpSessionEntry();
+        ~RsvpSessionEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -130,14 +130,14 @@ class RSVPMIB::Rsvpsessiontable::Rsvpsessionentry : public ydk::Entity
         ydk::YLeaf rsvpsessionreceivers; //type: uint32
         ydk::YLeaf rsvpsessionrequests; //type: uint32
 
-}; // RSVPMIB::Rsvpsessiontable::Rsvpsessionentry
+}; // RSVPMIB::RsvpSessionTable::RsvpSessionEntry
 
 
-class RSVPMIB::Rsvpsendertable : public ydk::Entity
+class RSVPMIB::RsvpSenderTable : public ydk::Entity
 {
     public:
-        Rsvpsendertable();
-        ~Rsvpsendertable();
+        RsvpSenderTable();
+        ~RsvpSenderTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -150,18 +150,18 @@ class RSVPMIB::Rsvpsendertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rsvpsenderentry; //type: RSVPMIB::Rsvpsendertable::Rsvpsenderentry
+        class RsvpSenderEntry; //type: RSVPMIB::RsvpSenderTable::RsvpSenderEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsendertable::Rsvpsenderentry> > rsvpsenderentry;
+        ydk::YList rsvpsenderentry;
         
-}; // RSVPMIB::Rsvpsendertable
+}; // RSVPMIB::RsvpSenderTable
 
 
-class RSVPMIB::Rsvpsendertable::Rsvpsenderentry : public ydk::Entity
+class RSVPMIB::RsvpSenderTable::RsvpSenderEntry : public ydk::Entity
 {
     public:
-        Rsvpsenderentry();
-        ~Rsvpsenderentry();
+        RsvpSenderEntry();
+        ~RsvpSenderEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -174,7 +174,7 @@ class RSVPMIB::Rsvpsendertable::Rsvpsenderentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::rsvpsessionnumber)
+        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSessionTable::RsvpSessionEntry::rsvpsessionnumber)
         ydk::YLeaf rsvpsessionnumber;
         ydk::YLeaf rsvpsendernumber; //type: int32
         ydk::YLeaf rsvpsendertype; //type: int32
@@ -222,14 +222,14 @@ class RSVPMIB::Rsvpsendertable::Rsvpsenderentry : public ydk::Entity
         ydk::YLeaf rsvpsenderstatus; //type: RowStatus
         ydk::YLeaf rsvpsenderttl; //type: int32
 
-}; // RSVPMIB::Rsvpsendertable::Rsvpsenderentry
+}; // RSVPMIB::RsvpSenderTable::RsvpSenderEntry
 
 
-class RSVPMIB::Rsvpsenderoutinterfacetable : public ydk::Entity
+class RSVPMIB::RsvpSenderOutInterfaceTable : public ydk::Entity
 {
     public:
-        Rsvpsenderoutinterfacetable();
-        ~Rsvpsenderoutinterfacetable();
+        RsvpSenderOutInterfaceTable();
+        ~RsvpSenderOutInterfaceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -242,18 +242,18 @@ class RSVPMIB::Rsvpsenderoutinterfacetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rsvpsenderoutinterfaceentry; //type: RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry
+        class RsvpSenderOutInterfaceEntry; //type: RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry> > rsvpsenderoutinterfaceentry;
+        ydk::YList rsvpsenderoutinterfaceentry;
         
-}; // RSVPMIB::Rsvpsenderoutinterfacetable
+}; // RSVPMIB::RsvpSenderOutInterfaceTable
 
 
-class RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry : public ydk::Entity
+class RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry : public ydk::Entity
 {
     public:
-        Rsvpsenderoutinterfaceentry();
-        ~Rsvpsenderoutinterfaceentry();
+        RsvpSenderOutInterfaceEntry();
+        ~RsvpSenderOutInterfaceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -266,22 +266,22 @@ class RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::rsvpsessionnumber)
+        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSessionTable::RsvpSessionEntry::rsvpsessionnumber)
         ydk::YLeaf rsvpsessionnumber;
-        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsendertable::Rsvpsenderentry::rsvpsendernumber)
+        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSenderTable::RsvpSenderEntry::rsvpsendernumber)
         ydk::YLeaf rsvpsendernumber;
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf rsvpsenderoutinterfacestatus; //type: RowStatus
 
-}; // RSVPMIB::Rsvpsenderoutinterfacetable::Rsvpsenderoutinterfaceentry
+}; // RSVPMIB::RsvpSenderOutInterfaceTable::RsvpSenderOutInterfaceEntry
 
 
-class RSVPMIB::Rsvpresvtable : public ydk::Entity
+class RSVPMIB::RsvpResvTable : public ydk::Entity
 {
     public:
-        Rsvpresvtable();
-        ~Rsvpresvtable();
+        RsvpResvTable();
+        ~RsvpResvTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -294,18 +294,18 @@ class RSVPMIB::Rsvpresvtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rsvpresventry; //type: RSVPMIB::Rsvpresvtable::Rsvpresventry
+        class RsvpResvEntry; //type: RSVPMIB::RsvpResvTable::RsvpResvEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpresvtable::Rsvpresventry> > rsvpresventry;
+        ydk::YList rsvpresventry;
         
-}; // RSVPMIB::Rsvpresvtable
+}; // RSVPMIB::RsvpResvTable
 
 
-class RSVPMIB::Rsvpresvtable::Rsvpresventry : public ydk::Entity
+class RSVPMIB::RsvpResvTable::RsvpResvEntry : public ydk::Entity
 {
     public:
-        Rsvpresventry();
-        ~Rsvpresventry();
+        RsvpResvEntry();
+        ~RsvpResvEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -318,7 +318,7 @@ class RSVPMIB::Rsvpresvtable::Rsvpresventry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::rsvpsessionnumber)
+        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSessionTable::RsvpSessionEntry::rsvpsessionnumber)
         ydk::YLeaf rsvpsessionnumber;
         ydk::YLeaf rsvpresvnumber; //type: int32
         ydk::YLeaf rsvpresvtype; //type: int32
@@ -351,14 +351,14 @@ class RSVPMIB::Rsvpresvtable::Rsvpresventry : public ydk::Entity
         ydk::YLeaf rsvpresvttl; //type: int32
         ydk::YLeaf rsvpresvflowid; //type: int32
 
-}; // RSVPMIB::Rsvpresvtable::Rsvpresventry
+}; // RSVPMIB::RsvpResvTable::RsvpResvEntry
 
 
-class RSVPMIB::Rsvpresvfwdtable : public ydk::Entity
+class RSVPMIB::RsvpResvFwdTable : public ydk::Entity
 {
     public:
-        Rsvpresvfwdtable();
-        ~Rsvpresvfwdtable();
+        RsvpResvFwdTable();
+        ~RsvpResvFwdTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -371,18 +371,18 @@ class RSVPMIB::Rsvpresvfwdtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rsvpresvfwdentry; //type: RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry
+        class RsvpResvFwdEntry; //type: RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry> > rsvpresvfwdentry;
+        ydk::YList rsvpresvfwdentry;
         
-}; // RSVPMIB::Rsvpresvfwdtable
+}; // RSVPMIB::RsvpResvFwdTable
 
 
-class RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry : public ydk::Entity
+class RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry : public ydk::Entity
 {
     public:
-        Rsvpresvfwdentry();
-        ~Rsvpresvfwdentry();
+        RsvpResvFwdEntry();
+        ~RsvpResvFwdEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -395,7 +395,7 @@ class RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpsessiontable::Rsvpsessionentry::rsvpsessionnumber)
+        //type: int32 (refers to cisco_ios_xe::RSVP_MIB::RSVPMIB::RsvpSessionTable::RsvpSessionEntry::rsvpsessionnumber)
         ydk::YLeaf rsvpsessionnumber;
         ydk::YLeaf rsvpresvfwdnumber; //type: int32
         ydk::YLeaf rsvpresvfwdtype; //type: int32
@@ -428,14 +428,14 @@ class RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry : public ydk::Entity
         ydk::YLeaf rsvpresvfwdttl; //type: int32
         ydk::YLeaf rsvpresvfwdflowid; //type: int32
 
-}; // RSVPMIB::Rsvpresvfwdtable::Rsvpresvfwdentry
+}; // RSVPMIB::RsvpResvFwdTable::RsvpResvFwdEntry
 
 
-class RSVPMIB::Rsvpiftable : public ydk::Entity
+class RSVPMIB::RsvpIfTable : public ydk::Entity
 {
     public:
-        Rsvpiftable();
-        ~Rsvpiftable();
+        RsvpIfTable();
+        ~RsvpIfTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -448,18 +448,18 @@ class RSVPMIB::Rsvpiftable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rsvpifentry; //type: RSVPMIB::Rsvpiftable::Rsvpifentry
+        class RsvpIfEntry; //type: RSVPMIB::RsvpIfTable::RsvpIfEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpiftable::Rsvpifentry> > rsvpifentry;
+        ydk::YList rsvpifentry;
         
-}; // RSVPMIB::Rsvpiftable
+}; // RSVPMIB::RsvpIfTable
 
 
-class RSVPMIB::Rsvpiftable::Rsvpifentry : public ydk::Entity
+class RSVPMIB::RsvpIfTable::RsvpIfEntry : public ydk::Entity
 {
     public:
-        Rsvpifentry();
-        ~Rsvpifentry();
+        RsvpIfEntry();
+        ~RsvpIfEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -472,7 +472,7 @@ class RSVPMIB::Rsvpiftable::Rsvpifentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf rsvpifudpnbrs; //type: uint32
         ydk::YLeaf rsvpifipnbrs; //type: uint32
@@ -486,14 +486,14 @@ class RSVPMIB::Rsvpiftable::Rsvpifentry : public ydk::Entity
         ydk::YLeaf rsvpifudprequired; //type: boolean
         ydk::YLeaf rsvpifstatus; //type: RowStatus
 
-}; // RSVPMIB::Rsvpiftable::Rsvpifentry
+}; // RSVPMIB::RsvpIfTable::RsvpIfEntry
 
 
-class RSVPMIB::Rsvpnbrtable : public ydk::Entity
+class RSVPMIB::RsvpNbrTable : public ydk::Entity
 {
     public:
-        Rsvpnbrtable();
-        ~Rsvpnbrtable();
+        RsvpNbrTable();
+        ~RsvpNbrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -506,18 +506,18 @@ class RSVPMIB::Rsvpnbrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Rsvpnbrentry; //type: RSVPMIB::Rsvpnbrtable::Rsvpnbrentry
+        class RsvpNbrEntry; //type: RSVPMIB::RsvpNbrTable::RsvpNbrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::RSVP_MIB::RSVPMIB::Rsvpnbrtable::Rsvpnbrentry> > rsvpnbrentry;
+        ydk::YList rsvpnbrentry;
         
-}; // RSVPMIB::Rsvpnbrtable
+}; // RSVPMIB::RsvpNbrTable
 
 
-class RSVPMIB::Rsvpnbrtable::Rsvpnbrentry : public ydk::Entity
+class RSVPMIB::RsvpNbrTable::RsvpNbrEntry : public ydk::Entity
 {
     public:
-        Rsvpnbrentry();
-        ~Rsvpnbrentry();
+        RsvpNbrEntry();
+        ~RsvpNbrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -530,13 +530,13 @@ class RSVPMIB::Rsvpnbrtable::Rsvpnbrentry : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::Iftable::Ifentry::ifindex)
+        //type: int32 (refers to cisco_ios_xe::IF_MIB::IFMIB::IfTable::IfEntry::ifindex)
         ydk::YLeaf ifindex;
         ydk::YLeaf rsvpnbraddress; //type: binary
         ydk::YLeaf rsvpnbrprotocol; //type: RsvpEncapsulation
         ydk::YLeaf rsvpnbrstatus; //type: RowStatus
 
-}; // RSVPMIB::Rsvpnbrtable::Rsvpnbrentry
+}; // RSVPMIB::RsvpNbrTable::RsvpNbrEntry
 
 class RsvpEncapsulation : public ydk::Enum
 {

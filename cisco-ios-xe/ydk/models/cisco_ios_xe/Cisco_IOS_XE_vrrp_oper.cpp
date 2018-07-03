@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_vrrp_oper {
 
 VrrpOperData::VrrpOperData()
+    :
+    vrrp_oper_state(this, {"if_number", "group_id", "addr_type"})
 {
 
-    yang_name = "vrrp-oper-data"; yang_parent_name = "Cisco-IOS-XE-vrrp-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "vrrp-oper-data"; yang_parent_name = "Cisco-IOS-XE-vrrp-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 VrrpOperData::~VrrpOperData()
@@ -23,7 +25,8 @@ VrrpOperData::~VrrpOperData()
 
 bool VrrpOperData::has_data() const
 {
-    for (std::size_t index=0; index<vrrp_oper_state.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrrp_oper_state.len(); index++)
     {
         if(vrrp_oper_state[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool VrrpOperData::has_data() const
 
 bool VrrpOperData::has_operation() const
 {
-    for (std::size_t index=0; index<vrrp_oper_state.size(); index++)
+    for (std::size_t index=0; index<vrrp_oper_state.len(); index++)
     {
         if(vrrp_oper_state[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> VrrpOperData::get_child_by_name(const std::string & chil
     {
         auto c = std::make_shared<VrrpOperData::VrrpOperState>();
         c->parent = this;
-        vrrp_oper_state.push_back(c);
+        vrrp_oper_state.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> VrrpOperData::get_children() cons
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrrp_oper_state)
+    for (auto c : vrrp_oper_state.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -157,9 +160,11 @@ VrrpOperData::VrrpOperState::VrrpOperState()
     advertisement_sent{YType::uint32, "advertisement-sent"},
     advertisement_rcvd{YType::uint32, "advertisement-rcvd"},
     omp_state{YType::enumeration, "omp-state"}
+        ,
+    track_list(this, {})
 {
 
-    yang_name = "vrrp-oper-state"; yang_parent_name = "vrrp-oper-data"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrrp-oper-state"; yang_parent_name = "vrrp-oper-data"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 VrrpOperData::VrrpOperState::~VrrpOperState()
@@ -168,7 +173,8 @@ VrrpOperData::VrrpOperState::~VrrpOperState()
 
 bool VrrpOperData::VrrpOperState::has_data() const
 {
-    for (std::size_t index=0; index<track_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<track_list.len(); index++)
     {
         if(track_list[index]->has_data())
             return true;
@@ -206,7 +212,7 @@ bool VrrpOperData::VrrpOperState::has_data() const
 
 bool VrrpOperData::VrrpOperState::has_operation() const
 {
-    for (std::size_t index=0; index<track_list.size(); index++)
+    for (std::size_t index=0; index<track_list.len(); index++)
     {
         if(track_list[index]->has_operation())
             return true;
@@ -253,7 +259,10 @@ std::string VrrpOperData::VrrpOperState::get_absolute_path() const
 std::string VrrpOperData::VrrpOperState::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrrp-oper-state" <<"[if-number='" <<if_number <<"']" <<"[group-id='" <<group_id <<"']" <<"[addr-type='" <<addr_type <<"']";
+    path_buffer << "vrrp-oper-state";
+    ADD_KEY_TOKEN(if_number, "if-number");
+    ADD_KEY_TOKEN(group_id, "group-id");
+    ADD_KEY_TOKEN(addr_type, "addr-type");
     return path_buffer.str();
 }
 
@@ -301,7 +310,7 @@ std::shared_ptr<Entity> VrrpOperData::VrrpOperState::get_child_by_name(const std
     {
         auto c = std::make_shared<VrrpOperData::VrrpOperState::TrackList>();
         c->parent = this;
-        track_list.push_back(c);
+        track_list.append(c);
         return c;
     }
 
@@ -313,7 +322,7 @@ std::map<std::string, std::shared_ptr<Entity>> VrrpOperData::VrrpOperState::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : track_list)
+    for (auto c : track_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -635,7 +644,7 @@ VrrpOperData::VrrpOperState::TrackList::TrackList()
     track_obj_state{YType::enumeration, "track-obj-state"}
 {
 
-    yang_name = "track-list"; yang_parent_name = "vrrp-oper-state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "track-list"; yang_parent_name = "vrrp-oper-state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 VrrpOperData::VrrpOperState::TrackList::~TrackList()
@@ -644,6 +653,7 @@ VrrpOperData::VrrpOperState::TrackList::~TrackList()
 
 bool VrrpOperData::VrrpOperState::TrackList::has_data() const
 {
+    if (is_presence_container) return true;
     return track_name.is_set
 	|| track_obj_state.is_set;
 }
@@ -720,8 +730,6 @@ bool VrrpOperData::VrrpOperState::TrackList::has_leaf_or_child_of_name(const std
     return false;
 }
 
-const Enum::YLeaf ProtoVersion::vrrp_v3 {1, "vrrp-v3"};
-
 const Enum::YLeaf MasterReason::reason_not_master {0, "reason-not-master"};
 const Enum::YLeaf MasterReason::reason_priority {1, "reason-priority"};
 const Enum::YLeaf MasterReason::reason_preempt {2, "reason-preempt"};
@@ -732,11 +740,13 @@ const Enum::YLeaf VrrpProtoState::proto_state_backup {2, "proto-state-backup"};
 const Enum::YLeaf VrrpProtoState::proto_state_master {3, "proto-state-master"};
 const Enum::YLeaf VrrpProtoState::proto_state_recover {4, "proto-state-recover"};
 
-const Enum::YLeaf OmpStateUpdown::omp_up {0, "omp-up"};
-const Enum::YLeaf OmpStateUpdown::omp_down {1, "omp-down"};
+const Enum::YLeaf ProtoVersion::vrrp_v3 {1, "vrrp-v3"};
 
 const Enum::YLeaf TrackState::vrrp_track_state_resolved {0, "vrrp-track-state-resolved"};
 const Enum::YLeaf TrackState::vrrp_track_state_unresolved {1, "vrrp-track-state-unresolved"};
+
+const Enum::YLeaf OmpStateUpdown::omp_up {0, "omp-up"};
+const Enum::YLeaf OmpStateUpdown::omp_down {1, "omp-down"};
 
 
 }

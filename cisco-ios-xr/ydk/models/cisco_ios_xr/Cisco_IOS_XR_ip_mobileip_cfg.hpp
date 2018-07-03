@@ -59,7 +59,7 @@ class MobileIp::Domains : public ydk::Entity
 
         class Domain; //type: MobileIp::Domains::Domain
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain> > domain;
+        ydk::YList domain;
         
 }; // MobileIp::Domains
 
@@ -114,7 +114,7 @@ class MobileIp::Domains::Domain::Mags : public ydk::Entity
 
         class Mag; //type: MobileIp::Domains::Domain::Mags::Mag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Mags::Mag> > mag;
+        ydk::YList mag;
         
 }; // MobileIp::Domains::Domain::Mags
 
@@ -158,7 +158,7 @@ class MobileIp::Domains::Domain::Nais : public ydk::Entity
 
         class Nai; //type: MobileIp::Domains::Domain::Nais::Nai
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Nais::Nai> > nai;
+        ydk::YList nai;
         
 }; // MobileIp::Domains::Domain::Nais
 
@@ -229,7 +229,7 @@ class MobileIp::Domains::Domain::Lmas : public ydk::Entity
 
         class Lma; //type: MobileIp::Domains::Domain::Lmas::Lma
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Domains::Domain::Lmas::Lma> > lma;
+        ydk::YList lma;
         
 }; // MobileIp::Domains::Domain::Lmas
 
@@ -274,7 +274,7 @@ class MobileIp::Lmas : public ydk::Entity
 
         class Lma; //type: MobileIp::Lmas::Lma
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma> > lma;
+        ydk::YList lma;
         
 }; // MobileIp::Lmas
 
@@ -454,7 +454,7 @@ class MobileIp::Lmas::Lma::Lmaipv6Addresses : public ydk::Entity
 
         class Lmaipv6Address; //type: MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv6Addresses::Lmaipv6Address> > lmaipv6_address;
+        ydk::YList lmaipv6_address;
         
 }; // MobileIp::Lmas::Lma::Lmaipv6Addresses
 
@@ -608,7 +608,7 @@ class MobileIp::Lmas::Lma::Lmaipv4Addresses : public ydk::Entity
 
         class Lmaipv4Address; //type: MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Lmaipv4Addresses::Lmaipv4Address> > lmaipv4_address;
+        ydk::YList lmaipv4_address;
         
 }; // MobileIp::Lmas::Lma::Lmaipv4Addresses
 
@@ -652,7 +652,7 @@ class MobileIp::Lmas::Lma::Roles : public ydk::Entity
 
         class Role; //type: MobileIp::Lmas::Lma::Roles::Role
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Roles::Role> > role;
+        ydk::YList role;
         
 }; // MobileIp::Lmas::Lma::Roles
 
@@ -721,7 +721,7 @@ class MobileIp::Lmas::Lma::Mags : public ydk::Entity
 
         class Mag; //type: MobileIp::Lmas::Lma::Mags::Mag
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Mags::Mag> > mag;
+        ydk::YList mag;
         
 }; // MobileIp::Lmas::Lma::Mags
 
@@ -841,7 +841,7 @@ class MobileIp::Lmas::Lma::Services : public ydk::Entity
 
         class Service; //type: MobileIp::Lmas::Lma::Services::Service
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service> > service;
+        ydk::YList service;
         
 }; // MobileIp::Lmas::Lma::Services
 
@@ -895,7 +895,7 @@ class MobileIp::Lmas::Lma::Services::Service::Customers : public ydk::Entity
 
         class Customer; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer> > customer;
+        ydk::YList customer;
         
 }; // MobileIp::Lmas::Lma::Services::Service::Customers
 
@@ -1006,7 +1006,7 @@ class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports : 
 
         class Transport; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports::Transport> > transport;
+        ydk::YList transport;
         
 }; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::Transports
 
@@ -1076,7 +1076,7 @@ class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttrib
 
         class Authorize; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize> > authorize;
+        ydk::YList authorize;
         
 }; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes
 
@@ -1242,7 +1242,7 @@ class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttrib
 
         class Mripv6Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool> > mripv6_pool;
+        ydk::YList mripv6_pool;
         
 }; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv6Pools
 
@@ -1288,7 +1288,7 @@ class MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttrib
 
         class Mripv4Pool; //type: MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool> > mripv4_pool;
+        ydk::YList mripv4_pool;
         
 }; // MobileIp::Lmas::Lma::Services::Service::Customers::Customer::NetworkAttributes::Authorizes::Authorize::PoolAttributes::MobileNetwork::Mripv4Pools
 
@@ -1377,7 +1377,7 @@ class MobileIp::Lmas::Lma::Networks : public ydk::Entity
 
         class Network; //type: MobileIp::Lmas::Lma::Networks::Network
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network> > network;
+        ydk::YList network;
         
 }; // MobileIp::Lmas::Lma::Networks
 
@@ -1543,7 +1543,7 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mri
 
         class Mripv6Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools::Mripv6Pool> > mripv6_pool;
+        ydk::YList mripv6_pool;
         
 }; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv6Pools
 
@@ -1589,7 +1589,7 @@ class MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mri
 
         class Mripv4Pool; //type: MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_mobileip_cfg::MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools::Mripv4Pool> > mripv4_pool;
+        ydk::YList mripv4_pool;
         
 }; // MobileIp::Lmas::Lma::Networks::Network::PoolAttributes::MobileNetwork::Mripv4Pools
 
@@ -1637,13 +1637,6 @@ class MobileIp::Lmas::Lma::ReplayProtection : public ydk::Entity
 
 }; // MobileIp::Lmas::Lma::ReplayProtection
 
-class GreKeyType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf symmetric;
-
-};
-
 class ServiceType : public ydk::Enum
 {
     public:
@@ -1660,10 +1653,13 @@ class LmaService : public ydk::Enum
 
 };
 
-class RedistType : public ydk::Enum
+class EncapOpt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf home_address;
+        static const ydk::Enum::YLeaf greipv4;
+        static const ydk::Enum::YLeaf greipv6;
+        static const ydk::Enum::YLeaf mgreipv4;
+        static const ydk::Enum::YLeaf mgreipv6;
 
 };
 
@@ -1682,6 +1678,20 @@ class LmaRole : public ydk::Enum
 
 };
 
+class RedistType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf home_address;
+
+};
+
+class GreKeyType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf symmetric;
+
+};
+
 class LmaRat : public ydk::Enum
 {
     public:
@@ -1697,16 +1707,6 @@ class LmaRat : public ydk::Enum
         static const ydk::Enum::YLeaf Y_3gpp2hrpd;
         static const ydk::Enum::YLeaf Y_3gpp21rtt;
         static const ydk::Enum::YLeaf Y_3gpp2umb;
-
-};
-
-class EncapOpt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf greipv4;
-        static const ydk::Enum::YLeaf greipv6;
-        static const ydk::Enum::YLeaf mgreipv4;
-        static const ydk::Enum::YLeaf mgreipv6;
 
 };
 

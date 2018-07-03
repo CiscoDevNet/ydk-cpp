@@ -17,7 +17,7 @@ SubscriberAccounting::SubscriberAccounting()
 {
     nodes->parent = this;
 
-    yang_name = "subscriber-accounting"; yang_parent_name = "Cisco-IOS-XR-subscriber-accounting-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "subscriber-accounting"; yang_parent_name = "Cisco-IOS-XR-subscriber-accounting-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SubscriberAccounting::~SubscriberAccounting()
@@ -26,6 +26,7 @@ SubscriberAccounting::~SubscriberAccounting()
 
 bool SubscriberAccounting::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool SubscriberAccounting::has_leaf_or_child_of_name(const std::string & name) c
 }
 
 SubscriberAccounting::Nodes::Nodes()
+    :
+    node(this, {"node_id"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "subscriber-accounting"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "subscriber-accounting"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberAccounting::Nodes::~Nodes()
@@ -129,7 +132,8 @@ SubscriberAccounting::Nodes::~Nodes()
 
 bool SubscriberAccounting::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool SubscriberAccounting::Nodes::has_data() const
 
 bool SubscriberAccounting::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::get_child_by_name(const std
     {
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,16 +221,16 @@ bool SubscriberAccounting::Nodes::has_leaf_or_child_of_name(const std::string & 
 SubscriberAccounting::Nodes::Node::Node()
     :
     node_id{YType::str, "node-id"}
-    	,
+        ,
     subscriber_accounting_session_features(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures>())
-	,subscriber_accounting_summary(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary>())
-	,subscriber_accounting_flow_features(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures>())
+    , subscriber_accounting_summary(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary>())
+    , subscriber_accounting_flow_features(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures>())
 {
     subscriber_accounting_session_features->parent = this;
     subscriber_accounting_summary->parent = this;
     subscriber_accounting_flow_features->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SubscriberAccounting::Nodes::Node::~Node()
@@ -235,6 +239,7 @@ SubscriberAccounting::Nodes::Node::~Node()
 
 bool SubscriberAccounting::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_id.is_set
 	|| (subscriber_accounting_session_features !=  nullptr && subscriber_accounting_session_features->has_data())
 	|| (subscriber_accounting_summary !=  nullptr && subscriber_accounting_summary->has_data())
@@ -260,7 +265,8 @@ std::string SubscriberAccounting::Nodes::Node::get_absolute_path() const
 std::string SubscriberAccounting::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-id='" <<node_id <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_id, "node-id");
     return path_buffer.str();
 }
 
@@ -354,9 +360,11 @@ bool SubscriberAccounting::Nodes::Node::has_leaf_or_child_of_name(const std::str
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeatures()
+    :
+    subscriber_accounting_session_feature(this, {"sub_label"})
 {
 
-    yang_name = "subscriber-accounting-session-features"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-accounting-session-features"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::~SubscriberAccountingSessionFeatures()
@@ -365,7 +373,8 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::~Subscri
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::has_data() const
 {
-    for (std::size_t index=0; index<subscriber_accounting_session_feature.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscriber_accounting_session_feature.len(); index++)
     {
         if(subscriber_accounting_session_feature[index]->has_data())
             return true;
@@ -375,7 +384,7 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::has
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::has_operation() const
 {
-    for (std::size_t index=0; index<subscriber_accounting_session_feature.size(); index++)
+    for (std::size_t index=0; index<subscriber_accounting_session_feature.len(); index++)
     {
         if(subscriber_accounting_session_feature[index]->has_operation())
             return true;
@@ -405,7 +414,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
     {
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature>();
         c->parent = this;
-        subscriber_accounting_session_feature.push_back(c);
+        subscriber_accounting_session_feature.append(c);
         return c;
     }
 
@@ -417,7 +426,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subscriber_accounting_session_feature)
+    for (auto c : subscriber_accounting_session_feature.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -446,12 +455,12 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::has
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SubscriberAccountingSessionFeature()
     :
     sub_label{YType::int32, "sub-label"}
-    	,
+        ,
     session_feature_data(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData>())
 {
     session_feature_data->parent = this;
 
-    yang_name = "subscriber-accounting-session-feature"; yang_parent_name = "subscriber-accounting-session-features"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-accounting-session-feature"; yang_parent_name = "subscriber-accounting-session-features"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::~SubscriberAccountingSessionFeature()
@@ -460,6 +469,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Subscrib
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::has_data() const
 {
+    if (is_presence_container) return true;
     return sub_label.is_set
 	|| (session_feature_data !=  nullptr && session_feature_data->has_data());
 }
@@ -474,7 +484,8 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Sub
 std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscriber-accounting-session-feature" <<"[sub-label='" <<sub_label <<"']";
+    path_buffer << "subscriber-accounting-session-feature";
+    ADD_KEY_TOKEN(sub_label, "sub-label");
     return path_buffer.str();
 }
 
@@ -564,9 +575,11 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Subscrib
     session_timeout_enabled_flag{YType::boolean, "session-timeout-enabled-flag"},
     session_timeout_value{YType::uint32, "session-timeout-value"},
     session_timeout_time_remaining{YType::uint32, "session-timeout-time-remaining"}
+        ,
+    service_accounting_feature(this, {})
 {
 
-    yang_name = "session-feature-data"; yang_parent_name = "subscriber-accounting-session-feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-feature-data"; yang_parent_name = "subscriber-accounting-session-feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::~SessionFeatureData()
@@ -575,7 +588,8 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Subscrib
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::has_data() const
 {
-    for (std::size_t index=0; index<service_accounting_feature.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<service_accounting_feature.len(); index++)
     {
         if(service_accounting_feature[index]->has_data())
             return true;
@@ -607,7 +621,7 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Sub
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::has_operation() const
 {
-    for (std::size_t index=0; index<service_accounting_feature.size(); index++)
+    for (std::size_t index=0; index<service_accounting_feature.len(); index++)
     {
         if(service_accounting_feature[index]->has_operation())
             return true;
@@ -683,7 +697,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingS
     {
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature>();
         c->parent = this;
-        service_accounting_feature.push_back(c);
+        service_accounting_feature.append(c);
         return c;
     }
 
@@ -695,7 +709,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : service_accounting_feature)
+    for (auto c : service_accounting_feature.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -962,7 +976,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Subscrib
     session_accounting_started{YType::boolean, "session-accounting-started"}
 {
 
-    yang_name = "service-accounting-feature"; yang_parent_name = "session-feature-data"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "service-accounting-feature"; yang_parent_name = "session-feature-data"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::~ServiceAccountingFeature()
@@ -971,6 +985,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Subscrib
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::SubscriberAccountingSessionFeature::SessionFeatureData::ServiceAccountingFeature::has_data() const
 {
+    if (is_presence_container) return true;
     return service_accounting_enabled_flag.is_set
 	|| service_accounting_service_id.is_set
 	|| service_accounting_method_list.is_set
@@ -1115,16 +1130,16 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures::Sub
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SubscriberAccountingSummary()
     :
     aaa_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters>())
-	,idle_timeout_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters>())
-	,session_timeout_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters>())
-	,session_flow_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters>())
+    , idle_timeout_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters>())
+    , session_timeout_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters>())
+    , session_flow_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters>())
 {
     aaa_counters->parent = this;
     idle_timeout_counters->parent = this;
     session_timeout_counters->parent = this;
     session_flow_counters->parent = this;
 
-    yang_name = "subscriber-accounting-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-accounting-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::~SubscriberAccountingSummary()
@@ -1133,6 +1148,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::~SubscriberAccou
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (aaa_counters !=  nullptr && aaa_counters->has_data())
 	|| (idle_timeout_counters !=  nullptr && idle_timeout_counters->has_data())
 	|| (session_timeout_counters !=  nullptr && session_timeout_counters->has_data())
@@ -1286,7 +1302,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::Aaa
     owned_resource_start{YType::uint32, "owned-resource-start"}
 {
 
-    yang_name = "aaa-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aaa-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::~AaaCounters()
@@ -1295,6 +1311,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::~Aa
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::AaaCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_start.is_set
 	|| flow_disconnect.is_set
 	|| session_accounting_start.is_set
@@ -1812,7 +1829,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCount
     expired_prepaid_idle_timers{YType::uint32, "expired-prepaid-idle-timers"}
 {
 
-    yang_name = "idle-timeout-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "idle-timeout-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::~IdleTimeoutCounters()
@@ -1821,6 +1838,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCount
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::IdleTimeoutCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return active_session_idle_timers.is_set
 	|| idle_sessions.is_set
 	|| transitions_to_idle.is_set
@@ -1981,7 +1999,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCo
     expired_session_timers{YType::uint32, "expired-session-timers"}
 {
 
-    yang_name = "session-timeout-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-timeout-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::~SessionTimeoutCounters()
@@ -1990,6 +2008,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCo
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionTimeoutCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return active_session_timers.is_set
 	|| expired_session_timers.is_set;
 }
@@ -2075,7 +2094,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCount
     quota_received{YType::uint32, "quota-received"}
 {
 
-    yang_name = "session-flow-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "session-flow-counters"; yang_parent_name = "subscriber-accounting-summary"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::~SessionFlowCounters()
@@ -2084,6 +2103,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCount
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlowCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return active_sessions.is_set
 	|| disconnected_sessions.is_set
 	|| active_session_accounting_sessions.is_set
@@ -2200,9 +2220,11 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary::SessionFlow
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeatures()
+    :
+    subscriber_accounting_flow_feature(this, {"class_label"})
 {
 
-    yang_name = "subscriber-accounting-flow-features"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-accounting-flow-features"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::~SubscriberAccountingFlowFeatures()
@@ -2211,7 +2233,8 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::~Subscriber
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::has_data() const
 {
-    for (std::size_t index=0; index<subscriber_accounting_flow_feature.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscriber_accounting_flow_feature.len(); index++)
     {
         if(subscriber_accounting_flow_feature[index]->has_data())
             return true;
@@ -2221,7 +2244,7 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::has_da
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::has_operation() const
 {
-    for (std::size_t index=0; index<subscriber_accounting_flow_feature.size(); index++)
+    for (std::size_t index=0; index<subscriber_accounting_flow_feature.len(); index++)
     {
         if(subscriber_accounting_flow_feature[index]->has_operation())
             return true;
@@ -2251,7 +2274,7 @@ std::shared_ptr<Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingF
     {
         auto c = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature>();
         c->parent = this;
-        subscriber_accounting_flow_feature.push_back(c);
+        subscriber_accounting_flow_feature.append(c);
         return c;
     }
 
@@ -2263,7 +2286,7 @@ std::map<std::string, std::shared_ptr<Entity>> SubscriberAccounting::Nodes::Node
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : subscriber_accounting_flow_feature)
+    for (auto c : subscriber_accounting_flow_feature.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2292,12 +2315,12 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::has_le
 SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::SubscriberAccountingFlowFeature()
     :
     class_label{YType::int32, "class-label"}
-    	,
+        ,
     flow_feature_data(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData>())
 {
     flow_feature_data->parent = this;
 
-    yang_name = "subscriber-accounting-flow-feature"; yang_parent_name = "subscriber-accounting-flow-features"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subscriber-accounting-flow-feature"; yang_parent_name = "subscriber-accounting-flow-features"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::~SubscriberAccountingFlowFeature()
@@ -2306,6 +2329,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberA
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::has_data() const
 {
+    if (is_presence_container) return true;
     return class_label.is_set
 	|| (flow_feature_data !=  nullptr && flow_feature_data->has_data());
 }
@@ -2320,7 +2344,8 @@ bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subscr
 std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subscriber-accounting-flow-feature" <<"[class-label='" <<class_label <<"']";
+    path_buffer << "subscriber-accounting-flow-feature";
+    ADD_KEY_TOKEN(class_label, "class-label");
     return path_buffer.str();
 }
 
@@ -2435,7 +2460,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberA
     prepaid_charging_rule{YType::str, "prepaid-charging-rule"}
 {
 
-    yang_name = "flow-feature-data"; yang_parent_name = "subscriber-accounting-flow-feature"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "flow-feature-data"; yang_parent_name = "subscriber-accounting-flow-feature"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::~FlowFeatureData()
@@ -2444,6 +2469,7 @@ SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberA
 
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::has_data() const
 {
+    if (is_presence_container) return true;
     return flow_accounting_enabled_flag.is_set
 	|| flow_idle_timeout_enabled_flag.is_set
 	|| prepaid_enabled_flag.is_set

@@ -20,7 +20,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Cef::Cef()
     inconsistency{YType::empty, "inconsistency"}
 {
 
-    yang_name = "cef"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cef"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Cef::~Cef()
@@ -29,6 +29,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Cef::~Cef()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Cef::has_data() const
 {
+    if (is_presence_container) return true;
     return resource_failure.is_set
 	|| peer_state_change.is_set
 	|| peer_fib_state_change.is_set
@@ -143,7 +144,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Cpu::Cpu()
     threshold{YType::empty, "threshold"}
 {
 
-    yang_name = "cpu"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cpu"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Cpu::~Cpu()
@@ -152,6 +153,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Cpu::~Cpu()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Cpu::has_data() const
 {
+    if (is_presence_container) return true;
     return threshold.is_set;
 }
 
@@ -229,7 +231,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Csg::Csg()
     quota_server{YType::empty, "quota-server"}
 {
 
-    yang_name = "csg"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "csg"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Csg::~Csg()
@@ -238,6 +240,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Csg::~Csg()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Csg::has_data() const
 {
+    if (is_presence_container) return true;
     return agent.is_set
 	|| database.is_set
 	|| quota_server.is_set;
@@ -334,7 +337,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Csg::has_leaf_or_child_of_
     return false;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::Dot1X()
+Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::Dot1x()
     :
     auth_fail_vlan{YType::empty, "auth-fail-vlan"},
     guest_vlan{YType::empty, "guest-vlan"},
@@ -342,22 +345,23 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::Dot1X()
     no_guest_vlan{YType::empty, "no-guest-vlan"}
 {
 
-    yang_name = "dot1x"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dot1x"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::~Dot1X()
+Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::~Dot1x()
 {
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::has_data() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::has_data() const
 {
+    if (is_presence_container) return true;
     return auth_fail_vlan.is_set
 	|| guest_vlan.is_set
 	|| no_auth_fail_vlan.is_set
 	|| no_guest_vlan.is_set;
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::has_operation() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(auth_fail_vlan.yfilter)
@@ -366,21 +370,21 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::has_operation() con
 	|| ydk::is_set(no_guest_vlan.yfilter);
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::get_absolute_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::get_segment_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dot1x";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -393,19 +397,19 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::Enabl
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "auth-fail-vlan")
     {
@@ -433,7 +437,7 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::set_value(const std
     }
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "auth-fail-vlan")
     {
@@ -453,7 +457,7 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::set_filter(const st
     }
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Dot1X::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Dot1x::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "auth-fail-vlan" || name == "guest-vlan" || name == "no-auth-fail-vlan" || name == "no-guest-vlan")
         return true;
@@ -466,7 +470,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Dsp::Dsp()
     oper_state{YType::empty, "oper-state"}
 {
 
-    yang_name = "dsp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "dsp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Dsp::~Dsp()
@@ -475,6 +479,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Dsp::~Dsp()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Dsp::has_data() const
 {
+    if (is_presence_container) return true;
     return card_status.is_set
 	|| oper_state.is_set;
 }
@@ -566,7 +571,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Energywise::Energywise()
     neighbor_deleted{YType::empty, "neighbor-deleted"}
 {
 
-    yang_name = "energywise"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "energywise"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Energywise::~Energywise()
@@ -575,6 +580,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Energywise::~Energywise()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Energywise::has_data() const
 {
+    if (is_presence_container) return true;
     return event_occured.is_set
 	|| level_change.is_set
 	|| neighbor_added.is_set
@@ -692,7 +698,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::EntityDiag::EntityDiag()
     scheduled_test_fail{YType::empty, "scheduled-test-fail"}
 {
 
-    yang_name = "entity-diag"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "entity-diag"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::EntityDiag::~EntityDiag()
@@ -701,6 +707,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::EntityDiag::~EntityDiag()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::EntityDiag::has_data() const
 {
+    if (is_presence_container) return true;
     return boot_up_fail.is_set
 	|| hm_test_recover.is_set
 	|| hm_thresh_reached.is_set
@@ -819,7 +826,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Envmon::Envmon()
     status{YType::empty, "status"}
 {
 
-    yang_name = "envmon"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "envmon"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Envmon::~Envmon()
@@ -828,6 +835,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Envmon::~Envmon()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Envmon::has_data() const
 {
+    if (is_presence_container) return true;
     return fan.is_set
 	|| shutdown.is_set
 	|| supply.is_set
@@ -955,7 +963,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Errdisable::Errdisable()
     notification_rate{YType::uint16, "notification-rate"}
 {
 
-    yang_name = "errdisable"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "errdisable"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Errdisable::~Errdisable()
@@ -964,6 +972,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Errdisable::~Errdisable()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Errdisable::has_data() const
 {
+    if (is_presence_container) return true;
     return notification_rate.is_set;
 }
 
@@ -1037,11 +1046,11 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Errdisable::has_leaf_or_ch
 Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Ethernet()
     :
     cfm(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm>())
-	,evc(nullptr) // presence node
+    , evc(nullptr) // presence node
 {
     cfm->parent = this;
 
-    yang_name = "ethernet"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ethernet"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::~Ethernet()
@@ -1050,6 +1059,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::~Ethernet()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::has_data() const
 {
+    if (is_presence_container) return true;
     return (cfm !=  nullptr && cfm->has_data())
 	|| (evc !=  nullptr && evc->has_data());
 }
@@ -1142,12 +1152,12 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::has_leaf_or_chil
 Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Cfm()
     :
     alarm{YType::empty, "alarm"}
-    	,
+        ,
     cc(nullptr) // presence node
-	,crosscheck(nullptr) // presence node
+    , crosscheck(nullptr) // presence node
 {
 
-    yang_name = "cfm"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cfm"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::~Cfm()
@@ -1156,6 +1166,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::~Cfm()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::has_data() const
 {
+    if (is_presence_container) return true;
     return alarm.is_set
 	|| (cc !=  nullptr && cc->has_data())
 	|| (crosscheck !=  nullptr && crosscheck->has_data());
@@ -1267,7 +1278,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Cc::Cc()
     mep_up{YType::empty, "mep-up"}
 {
 
-    yang_name = "cc"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cc"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Cc::~Cc()
@@ -1276,6 +1287,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Cc::~Cc()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Cc::has_data() const
 {
+    if (is_presence_container) return true;
     return config.is_set
 	|| cross_connect.is_set
 	|| loop.is_set
@@ -1405,7 +1417,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Crosscheck::Cros
     service_up{YType::empty, "service-up"}
 {
 
-    yang_name = "crosscheck"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "crosscheck"; yang_parent_name = "cfm"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Crosscheck::~Crosscheck()
@@ -1414,6 +1426,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Crosscheck::~Cro
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Cfm::Crosscheck::has_data() const
 {
+    if (is_presence_container) return true;
     return mep_missing.is_set
 	|| mep_unknown.is_set
 	|| service_up.is_set;
@@ -1517,7 +1530,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Evc::Evc()
     status{YType::empty, "status"}
 {
 
-    yang_name = "evc"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "evc"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Evc::~Evc()
@@ -1526,6 +1539,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Evc::~Evc()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ethernet::Evc::has_data() const
 {
+    if (is_presence_container) return true;
     return create.is_set
 	|| delete_.is_set
 	|| status.is_set;
@@ -1627,7 +1641,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Firewall::Firewall()
     serverstatus{YType::empty, "serverstatus"}
 {
 
-    yang_name = "firewall"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "firewall"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Firewall::~Firewall()
@@ -1636,6 +1650,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Firewall::~Firewall()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Firewall::has_data() const
 {
+    if (is_presence_container) return true;
     return serverstatus.is_set;
 }
 
@@ -1712,7 +1727,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Flash::Flash()
     removal{YType::empty, "removal"}
 {
 
-    yang_name = "flash"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flash"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Flash::~Flash()
@@ -1721,6 +1736,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Flash::~Flash()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Flash::has_data() const
 {
+    if (is_presence_container) return true;
     return insertion.is_set
 	|| removal.is_set;
 }
@@ -1809,7 +1825,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::FlexLinks::FlexLinks()
     status{YType::empty, "status"}
 {
 
-    yang_name = "flex-links"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "flex-links"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::FlexLinks::~FlexLinks()
@@ -1818,6 +1834,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::FlexLinks::~FlexLinks()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::FlexLinks::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
@@ -1891,11 +1908,11 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::FlexLinks::has_leaf_or_chi
 Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::FrameRelay()
     :
     multilink(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Multilink>())
-	,subif(nullptr) // presence node
+    , subif(nullptr) // presence node
 {
     multilink->parent = this;
 
-    yang_name = "frame-relay"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "frame-relay"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::~FrameRelay()
@@ -1904,6 +1921,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::~FrameRelay()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::has_data() const
 {
+    if (is_presence_container) return true;
     return (multilink !=  nullptr && multilink->has_data())
 	|| (subif !=  nullptr && subif->has_data());
 }
@@ -1998,7 +2016,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Multilink::Multilin
     bundle_mismatch{YType::empty, "bundle-mismatch"}
 {
 
-    yang_name = "multilink"; yang_parent_name = "frame-relay"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "multilink"; yang_parent_name = "frame-relay"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Multilink::~Multilink()
@@ -2007,6 +2025,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Multilink::~Multili
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Multilink::has_data() const
 {
+    if (is_presence_container) return true;
     return bundle_mismatch.is_set;
 }
 
@@ -2080,7 +2099,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Multilink::has
 Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Subif::Subif()
 {
 
-    yang_name = "subif"; yang_parent_name = "frame-relay"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "subif"; yang_parent_name = "frame-relay"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Subif::~Subif()
@@ -2089,6 +2108,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Subif::~Subif()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Subif::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -2148,14 +2168,14 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::FrameRelay::Subif::has_lea
 Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Ipsec()
     :
     too_many_sas{YType::empty, "too-many-sas"}
-    	,
+        ,
     cryptomap(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Cryptomap>())
-	,tunnel(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel>())
+    , tunnel(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel>())
 {
     cryptomap->parent = this;
     tunnel->parent = this;
 
-    yang_name = "ipsec"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipsec"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::~Ipsec()
@@ -2164,6 +2184,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::~Ipsec()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::has_data() const
 {
+    if (is_presence_container) return true;
     return too_many_sas.is_set
 	|| (cryptomap !=  nullptr && cryptomap->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data());
@@ -2274,7 +2295,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Cryptomap::Cryptomap()
     detach{YType::empty, "detach"}
 {
 
-    yang_name = "cryptomap"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cryptomap"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Cryptomap::~Cryptomap()
@@ -2283,6 +2304,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Cryptomap::~Cryptomap()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Cryptomap::has_data() const
 {
+    if (is_presence_container) return true;
     return add.is_set
 	|| attach.is_set
 	|| delete_.is_set
@@ -2398,7 +2420,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel::Tunnel()
     stop{YType::empty, "stop"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "ipsec"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel::~Tunnel()
@@ -2407,6 +2429,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel::~Tunnel()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return start.is_set
 	|| stop.is_set;
 }
@@ -2493,12 +2516,12 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Ipsec::Tunnel::has_leaf_or
 Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Isakmp()
     :
     policy(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Policy>())
-	,tunnel(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Tunnel>())
+    , tunnel(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Tunnel>())
 {
     policy->parent = this;
     tunnel->parent = this;
 
-    yang_name = "isakmp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "isakmp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::~Isakmp()
@@ -2507,6 +2530,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::~Isakmp()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::has_data() const
 {
+    if (is_presence_container) return true;
     return (policy !=  nullptr && policy->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data());
 }
@@ -2602,7 +2626,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Policy::Policy()
     delete_{YType::empty, "delete"}
 {
 
-    yang_name = "policy"; yang_parent_name = "isakmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "policy"; yang_parent_name = "isakmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Policy::~Policy()
@@ -2611,6 +2635,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Policy::~Policy()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Policy::has_data() const
 {
+    if (is_presence_container) return true;
     return add.is_set
 	|| delete_.is_set;
 }
@@ -2700,7 +2725,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Tunnel::Tunnel()
     stop{YType::empty, "stop"}
 {
 
-    yang_name = "tunnel"; yang_parent_name = "isakmp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "tunnel"; yang_parent_name = "isakmp"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Tunnel::~Tunnel()
@@ -2709,6 +2734,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Tunnel::~Tunnel()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Isakmp::Tunnel::has_data() const
 {
+    if (is_presence_container) return true;
     return start.is_set
 	|| stop.is_set;
 }
@@ -2800,7 +2826,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Isdn::Isdn()
     layer2{YType::empty, "layer2"}
 {
 
-    yang_name = "isdn"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "isdn"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Isdn::~Isdn()
@@ -2809,6 +2835,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Isdn::~Isdn()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Isdn::has_data() const
 {
+    if (is_presence_container) return true;
     return call_information.is_set
 	|| chan_not_avail.is_set
 	|| ietf.is_set
@@ -2918,47 +2945,48 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Isdn::has_leaf_or_child_of
     return false;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::L2Tc()
+Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::L2tc()
     :
     sys_threshold{YType::empty, "sys-threshold"},
     threshold{YType::empty, "threshold"}
 {
 
-    yang_name = "l2tc"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2tc"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::~L2Tc()
+Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::~L2tc()
 {
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::has_data() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::has_data() const
 {
+    if (is_presence_container) return true;
     return sys_threshold.is_set
 	|| threshold.is_set;
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::has_operation() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(sys_threshold.yfilter)
 	|| ydk::is_set(threshold.yfilter);
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::get_absolute_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::get_segment_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tc";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2969,19 +2997,19 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::Enabl
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "sys-threshold")
     {
@@ -2997,7 +3025,7 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::set_value(const std:
     }
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "sys-threshold")
     {
@@ -3009,56 +3037,57 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::set_filter(const std
     }
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tc::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tc::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sys-threshold" || name == "threshold")
         return true;
     return false;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::L2Tun()
+Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::L2tun()
     :
     session{YType::empty, "session"}
-    	,
-    pseudowire(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire>())
+        ,
+    pseudowire(std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire>())
 {
     pseudowire->parent = this;
 
-    yang_name = "l2tun"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "l2tun"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::~L2Tun()
+Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::~L2tun()
 {
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::has_data() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::has_data() const
 {
+    if (is_presence_container) return true;
     return session.is_set
 	|| (pseudowire !=  nullptr && pseudowire->has_data());
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::has_operation() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(session.yfilter)
 	|| (pseudowire !=  nullptr && pseudowire->has_operation());
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::get_absolute_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::get_segment_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tun";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3068,13 +3097,13 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::Enabl
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "pseudowire")
     {
         if(pseudowire == nullptr)
         {
-            pseudowire = std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire>();
+            pseudowire = std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire>();
         }
         return pseudowire;
     }
@@ -3082,7 +3111,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -3094,7 +3123,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::Enabl
     return children;
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "session")
     {
@@ -3104,7 +3133,7 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::set_value(const std
     }
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "session")
     {
@@ -3112,51 +3141,52 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::set_filter(const st
     }
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "pseudowire" || name == "session")
         return true;
     return false;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::Pseudowire()
+Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::Pseudowire()
     :
     status{YType::empty, "status"}
 {
 
-    yang_name = "pseudowire"; yang_parent_name = "l2tun"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pseudowire"; yang_parent_name = "l2tun"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::~Pseudowire()
+Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::~Pseudowire()
 {
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::has_data() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::has_data() const
 {
+    if (is_presence_container) return true;
     return status.is_set;
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::has_operation() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(status.yfilter);
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::get_absolute_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/l2tun/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::get_segment_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3166,19 +3196,19 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::Enabl
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "status")
     {
@@ -3188,7 +3218,7 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::set_val
     }
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "status")
     {
@@ -3196,7 +3226,7 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::set_fil
     }
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::L2Tun::Pseudowire::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::L2tun::Pseudowire::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "status")
         return true;
@@ -3210,7 +3240,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::License::License()
     usage{YType::empty, "usage"}
 {
 
-    yang_name = "license"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "license"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::License::~License()
@@ -3219,6 +3249,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::License::~License()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::License::has_data() const
 {
+    if (is_presence_container) return true;
     return deploy.is_set
 	|| error.is_set
 	|| usage.is_set;
@@ -3322,7 +3353,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification::MacNotificatio
     threshold{YType::empty, "threshold"}
 {
 
-    yang_name = "mac-notification"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-notification"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification::~MacNotification()
@@ -3331,6 +3362,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification::~MacNotificati
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification::has_data() const
 {
+    if (is_presence_container) return true;
     return change.is_set
 	|| move.is_set
 	|| threshold.is_set;
@@ -3434,7 +3466,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification2::MacNotificati
     threshold{YType::empty, "threshold"}
 {
 
-    yang_name = "mac-notification2"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mac-notification2"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification2::~MacNotification2()
@@ -3443,6 +3475,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification2::~MacNotificat
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::MacNotification2::has_data() const
 {
+    if (is_presence_container) return true;
     return change.is_set
 	|| move.is_set
 	|| threshold.is_set;
@@ -3544,7 +3577,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Memory::Memory()
     bufferpeak{YType::empty, "bufferpeak"}
 {
 
-    yang_name = "memory"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "memory"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Memory::~Memory()
@@ -3553,6 +3586,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Memory::~Memory()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Memory::has_data() const
 {
+    if (is_presence_container) return true;
     return bufferpeak.is_set;
 }
 
@@ -3626,14 +3660,14 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Memory::has_leaf_or_child_
 Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Mpls()
     :
     vpn{YType::empty, "vpn"}
-    	,
+        ,
     traffic_eng(nullptr) // presence node
-	,fast_reroute(nullptr) // presence node
-	,rfc(nullptr) // presence node
-	,ldp(nullptr) // presence node
+    , fast_reroute(nullptr) // presence node
+    , rfc(nullptr) // presence node
+    , ldp(nullptr) // presence node
 {
 
-    yang_name = "mpls"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::~Mpls()
@@ -3642,6 +3676,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::~Mpls()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return vpn.is_set
 	|| (traffic_eng !=  nullptr && traffic_eng->has_data())
 	|| (fast_reroute !=  nullptr && fast_reroute->has_data())
@@ -3783,7 +3818,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::TrafficEng::TrafficEng()
     reroute{YType::empty, "reroute"}
 {
 
-    yang_name = "traffic-eng"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traffic-eng"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::TrafficEng::~TrafficEng()
@@ -3792,6 +3827,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::TrafficEng::~TrafficEng()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::TrafficEng::has_data() const
 {
+    if (is_presence_container) return true;
     return up.is_set
 	|| down.is_set
 	|| reroute.is_set;
@@ -3893,7 +3929,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::FastReroute::FastReroute(
     protected_{YType::empty, "protected"}
 {
 
-    yang_name = "fast-reroute"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "fast-reroute"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::FastReroute::~FastReroute()
@@ -3902,6 +3938,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::FastReroute::~FastReroute
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::FastReroute::has_data() const
 {
+    if (is_presence_container) return true;
     return protected_.is_set;
 }
 
@@ -3977,7 +4014,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Rfc::Rfc()
     ldp{YType::empty, "ldp"}
 {
 
-    yang_name = "rfc"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "rfc"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Rfc::~Rfc()
@@ -3986,6 +4023,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Rfc::~Rfc()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Rfc::has_data() const
 {
+    if (is_presence_container) return true;
     return ldp.is_set;
 }
 
@@ -4064,7 +4102,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Ldp::Ldp()
     threshold{YType::empty, "threshold"}
 {
 
-    yang_name = "ldp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ldp"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Ldp::~Ldp()
@@ -4073,6 +4111,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Ldp::~Ldp()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Ldp::has_data() const
 {
+    if (is_presence_container) return true;
     return pv_limit.is_set
 	|| session_down.is_set
 	|| session_up.is_set
@@ -4185,12 +4224,12 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Mpls::Ldp::has_leaf_or_chi
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhrp()
     :
     nhs(nullptr) // presence node
-	,nhc(nullptr) // presence node
-	,nhp(nullptr) // presence node
-	,quota_exceeded(nullptr) // presence node
+    , nhc(nullptr) // presence node
+    , nhp(nullptr) // presence node
+    , quota_exceeded(nullptr) // presence node
 {
 
-    yang_name = "nhrp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nhrp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::~Nhrp()
@@ -4199,6 +4238,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::~Nhrp()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::has_data() const
 {
+    if (is_presence_container) return true;
     return (nhs !=  nullptr && nhs->has_data())
 	|| (nhc !=  nullptr && nhc->has_data())
 	|| (nhp !=  nullptr && nhp->has_data())
@@ -4323,7 +4363,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::has_leaf_or_child_of
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhs::Nhs()
 {
 
-    yang_name = "nhs"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nhs"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhs::~Nhs()
@@ -4332,6 +4372,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhs::~Nhs()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhs::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4391,7 +4432,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhs::has_leaf_or_chi
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhc::Nhc()
 {
 
-    yang_name = "nhc"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nhc"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhc::~Nhc()
@@ -4400,6 +4441,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhc::~Nhc()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhc::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4459,7 +4501,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhc::has_leaf_or_chi
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhp::Nhp()
 {
 
-    yang_name = "nhp"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nhp"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhp::~Nhp()
@@ -4468,6 +4510,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhp::~Nhp()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhp::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4527,7 +4570,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::Nhp::has_leaf_or_chi
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::QuotaExceeded::QuotaExceeded()
 {
 
-    yang_name = "quota-exceeded"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "quota-exceeded"; yang_parent_name = "nhrp"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::QuotaExceeded::~QuotaExceeded()
@@ -4536,6 +4579,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::QuotaExceeded::~QuotaExce
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::QuotaExceeded::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4595,13 +4639,13 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Nhrp::QuotaExceeded::has_l
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Ospf()
     :
     state_change(nullptr) // presence node
-	,errors(nullptr) // presence node
-	,retransmit(nullptr) // presence node
-	,lsa(nullptr) // presence node
-	,cisco_specific(nullptr) // presence node
+    , errors(nullptr) // presence node
+    , retransmit(nullptr) // presence node
+    , lsa(nullptr) // presence node
+    , cisco_specific(nullptr) // presence node
 {
 
-    yang_name = "ospf"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ospf"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::~Ospf()
@@ -4610,6 +4654,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::~Ospf()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::has_data() const
 {
+    if (is_presence_container) return true;
     return (state_change !=  nullptr && state_change->has_data())
 	|| (errors !=  nullptr && errors->has_data())
 	|| (retransmit !=  nullptr && retransmit->has_data())
@@ -4755,7 +4800,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::StateChange::StateChange(
     virtneighbor_state_change{YType::empty, "virtneighbor-state-change"}
 {
 
-    yang_name = "state-change"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state-change"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::StateChange::~StateChange()
@@ -4764,6 +4809,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::StateChange::~StateChange
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::StateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return if_state_change.is_set
 	|| neighbor_state_change.is_set
 	|| virtif_state_change.is_set
@@ -4876,7 +4922,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::StateChange::has_lea
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Errors::Errors()
 {
 
-    yang_name = "errors"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "errors"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Errors::~Errors()
@@ -4885,6 +4931,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Errors::~Errors()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Errors::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -4947,7 +4994,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Retransmit::Retransmit()
     virt_packets{YType::empty, "virt-packets"}
 {
 
-    yang_name = "retransmit"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "retransmit"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Retransmit::~Retransmit()
@@ -4956,6 +5003,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Retransmit::~Retransmit()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Retransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return packets.is_set
 	|| virt_packets.is_set;
 }
@@ -5045,7 +5093,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Lsa::Lsa()
     lsa_originate{YType::empty, "lsa-originate"}
 {
 
-    yang_name = "lsa"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsa"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Lsa::~Lsa()
@@ -5054,6 +5102,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Lsa::~Lsa()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_maxage.is_set
 	|| lsa_originate.is_set;
 }
@@ -5140,13 +5189,13 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::Lsa::has_leaf_or_chi
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::CiscoSpecific()
     :
     state_change(nullptr) // presence node
-	,errors(nullptr) // presence node
-	,errdisable(nullptr) // presence node
-	,retransmit(nullptr) // presence node
-	,lsa(nullptr) // presence node
+    , errors(nullptr) // presence node
+    , errdisable(nullptr) // presence node
+    , retransmit(nullptr) // presence node
+    , lsa(nullptr) // presence node
 {
 
-    yang_name = "cisco-specific"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cisco-specific"; yang_parent_name = "ospf"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::~CiscoSpecific()
@@ -5155,6 +5204,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::~CiscoSpec
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::has_data() const
 {
+    if (is_presence_container) return true;
     return (state_change !=  nullptr && state_change->has_data())
 	|| (errors !=  nullptr && errors->has_data())
 	|| (errdisable !=  nullptr && errdisable->has_data())
@@ -5295,11 +5345,11 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::has_l
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChange::StateChange()
     :
     nssa_trans_change{YType::empty, "nssa-trans-change"}
-    	,
+        ,
     shamlink(nullptr) // presence node
 {
 
-    yang_name = "state-change"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "state-change"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChange::~StateChange()
@@ -5308,6 +5358,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChang
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChange::has_data() const
 {
+    if (is_presence_container) return true;
     return nssa_trans_change.is_set
 	|| (shamlink !=  nullptr && shamlink->has_data());
 }
@@ -5401,7 +5452,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChang
     neighbor{YType::empty, "neighbor"}
 {
 
-    yang_name = "shamlink"; yang_parent_name = "state-change"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "shamlink"; yang_parent_name = "state-change"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChange::Shamlink::~Shamlink()
@@ -5410,6 +5461,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChang
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::StateChange::Shamlink::has_data() const
 {
+    if (is_presence_container) return true;
     return interface.is_set
 	|| interface_old.is_set
 	|| neighbor.is_set;
@@ -5509,7 +5561,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::State
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errors::Errors()
 {
 
-    yang_name = "errors"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "errors"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errors::~Errors()
@@ -5518,6 +5570,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errors::~E
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errors::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5579,7 +5632,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errdisable
     notification_rate{YType::uint16, "notification-rate"}
 {
 
-    yang_name = "errdisable"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "errdisable"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errdisable::~Errdisable()
@@ -5588,6 +5641,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errdisable
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errdisable::has_data() const
 {
+    if (is_presence_container) return true;
     return notification_rate.is_set;
 }
 
@@ -5661,7 +5715,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Errdi
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Retransmit::Retransmit()
 {
 
-    yang_name = "retransmit"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "retransmit"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Retransmit::~Retransmit()
@@ -5670,6 +5724,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Retransmit
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Retransmit::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -5732,7 +5787,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Lsa::Lsa()
     lsa_originate{YType::empty, "lsa-originate"}
 {
 
-    yang_name = "lsa"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "lsa"; yang_parent_name = "cisco-specific"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Lsa::~Lsa()
@@ -5741,6 +5796,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Lsa::~Lsa(
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Ospf::CiscoSpecific::Lsa::has_data() const
 {
+    if (is_presence_container) return true;
     return lsa_maxage.is_set
 	|| lsa_originate.is_set;
 }
@@ -5831,7 +5887,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Pim::Pim()
     rp_mapping_change{YType::empty, "rp-mapping-change"}
 {
 
-    yang_name = "pim"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pim"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Pim::~Pim()
@@ -5840,6 +5896,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Pim::~Pim()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Pim::has_data() const
 {
+    if (is_presence_container) return true;
     return invalid_pim_message.is_set
 	|| neighbor_change.is_set
 	|| rp_mapping_change.is_set;
@@ -5939,7 +5996,7 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Pim::has_leaf_or_child_of_
 Native::SnmpServer::Enable::EnableChoice::Traps::Plogd::Plogd()
 {
 
-    yang_name = "plogd"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "plogd"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Plogd::~Plogd()
@@ -5948,6 +6005,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Plogd::~Plogd()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Plogd::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -6009,7 +6067,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::PortSecurity::PortSecurity()
     trap_rate{YType::uint16, "trap-rate"}
 {
 
-    yang_name = "port-security"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port-security"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::PortSecurity::~PortSecurity()
@@ -6018,6 +6076,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::PortSecurity::~PortSecurity()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::PortSecurity::has_data() const
 {
+    if (is_presence_container) return true;
     return trap_rate.is_set;
 }
 
@@ -6094,7 +6153,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::PowerEthernet::PowerEthernet()
     police{YType::empty, "police"}
 {
 
-    yang_name = "power-ethernet"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "power-ethernet"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::PowerEthernet::~PowerEthernet()
@@ -6103,6 +6162,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::PowerEthernet::~PowerEthernet()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::PowerEthernet::has_data() const
 {
+    if (is_presence_container) return true;
     return group.is_set
 	|| police.is_set;
 }
@@ -6191,7 +6251,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Pw::Pw()
     vc{YType::empty, "vc"}
 {
 
-    yang_name = "pw"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "pw"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Pw::~Pw()
@@ -6200,6 +6260,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Pw::~Pw()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Pw::has_data() const
 {
+    if (is_presence_container) return true;
     return vc.is_set;
 }
 
@@ -6277,7 +6338,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Slb::Slb()
     virtual_{YType::empty, "virtual"}
 {
 
-    yang_name = "slb"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "slb"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Slb::~Slb()
@@ -6286,6 +6347,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Slb::~Slb()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Slb::has_data() const
 {
+    if (is_presence_container) return true;
     return csrp.is_set
 	|| real.is_set
 	|| virtual_.is_set;
@@ -6391,7 +6453,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Snmp::Snmp()
     warmstart{YType::empty, "warmstart"}
 {
 
-    yang_name = "snmp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "snmp"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Snmp::~Snmp()
@@ -6400,6 +6462,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Snmp::~Snmp()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Snmp::has_data() const
 {
+    if (is_presence_container) return true;
     return authentication.is_set
 	|| coldstart.is_set
 	|| linkdown.is_set
@@ -6548,7 +6611,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Stackwise::Stackwise()
     under_voltage{YType::empty, "under-voltage"}
 {
 
-    yang_name = "stackwise"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stackwise"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Stackwise::~Stackwise()
@@ -6557,6 +6620,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Stackwise::~Stackwise()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Stackwise::has_data() const
 {
+    if (is_presence_container) return true;
     return gls.is_set
 	|| ils.is_set
 	|| srls.is_set
@@ -6907,7 +6971,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Stpx::Stpx()
     loop_inconsistency{YType::empty, "loop-inconsistency"}
 {
 
-    yang_name = "stpx"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "stpx"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Stpx::~Stpx()
@@ -6916,6 +6980,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Stpx::~Stpx()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Stpx::has_data() const
 {
+    if (is_presence_container) return true;
     return inconsistency.is_set
 	|| root_inconsistency.is_set
 	|| loop_inconsistency.is_set;
@@ -7017,7 +7082,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Transceiver::Transceiver()
     all{YType::empty, "all"}
 {
 
-    yang_name = "transceiver"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "transceiver"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Transceiver::~Transceiver()
@@ -7026,6 +7091,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Transceiver::~Transceiver()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Transceiver::has_data() const
 {
+    if (is_presence_container) return true;
     return all.is_set;
 }
 
@@ -7102,7 +7168,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Udld::Udld()
     status_change{YType::empty, "status-change"}
 {
 
-    yang_name = "udld"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udld"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Udld::~Udld()
@@ -7111,6 +7177,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Udld::~Udld()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Udld::has_data() const
 {
+    if (is_presence_container) return true;
     return link_fail_rpt.is_set
 	|| status_change.is_set;
 }
@@ -7202,7 +7269,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Vrfmib::Vrfmib()
     vnet_trunk_down{YType::empty, "vnet-trunk-down"}
 {
 
-    yang_name = "vrfmib"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfmib"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Vrfmib::~Vrfmib()
@@ -7211,6 +7278,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Vrfmib::~Vrfmib()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Vrfmib::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_up.is_set
 	|| vrf_down.is_set
 	|| vnet_trunk_up.is_set
@@ -7328,7 +7396,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Vstack::Vstack()
     operation_{YType::empty, "operation"}
 {
 
-    yang_name = "vstack"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vstack"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Vstack::~Vstack()
@@ -7337,6 +7405,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Vstack::~Vstack()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Vstack::has_data() const
 {
+    if (is_presence_container) return true;
     return addition.is_set
 	|| failure.is_set
 	|| lost.is_set
@@ -7451,7 +7520,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Wireless()
     bsnmobilestation(nullptr) // presence node
 {
 
-    yang_name = "wireless"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "wireless"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::~Wireless()
@@ -7460,6 +7529,7 @@ Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::~Wireless()
 
 bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::has_data() const
 {
+    if (is_presence_container) return true;
     return (bsnmobilestation !=  nullptr && bsnmobilestation->has_data());
 }
 
@@ -7498,7 +7568,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireles
     {
         if(bsnmobilestation == nullptr)
         {
-            bsnmobilestation = std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation>();
+            bsnmobilestation = std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation>();
         }
         return bsnmobilestation;
     }
@@ -7533,44 +7603,45 @@ bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::has_leaf_or_chil
     return false;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnmobilestation()
+Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnMobileStation()
     :
     bsnaccesspoint(nullptr) // presence node
 {
 
-    yang_name = "bsnMobileStation"; yang_parent_name = "wireless"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bsnMobileStation"; yang_parent_name = "wireless"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::~Bsnmobilestation()
+Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::~BsnMobileStation()
 {
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::has_data() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::has_data() const
 {
+    if (is_presence_container) return true;
     return (bsnaccesspoint !=  nullptr && bsnaccesspoint->has_data());
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::has_operation() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::has_operation() const
 {
     return is_set(yfilter)
 	|| (bsnaccesspoint !=  nullptr && bsnaccesspoint->has_operation());
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::get_absolute_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/wireless/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::get_segment_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bsnMobileStation";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7579,13 +7650,13 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::Enabl
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "bsnAccessPoint")
     {
         if(bsnaccesspoint == nullptr)
         {
-            bsnaccesspoint = std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint>();
+            bsnaccesspoint = std::make_shared<Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint>();
         }
         return bsnaccesspoint;
     }
@@ -7593,7 +7664,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireles
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7605,59 +7676,60 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::Enabl
     return children;
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bsnAccessPoint")
         return true;
     return false;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::Bsnaccesspoint()
+Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::BsnAccessPoint()
     :
     bsnrogue{YType::empty, "bsnRogue"}
 {
 
-    yang_name = "bsnAccessPoint"; yang_parent_name = "bsnMobileStation"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "bsnAccessPoint"; yang_parent_name = "bsnMobileStation"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
-Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::~Bsnaccesspoint()
+Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::~BsnAccessPoint()
 {
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::has_data() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::has_data() const
 {
+    if (is_presence_container) return true;
     return bsnrogue.is_set;
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::has_operation() const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bsnrogue.yfilter);
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::get_absolute_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:enable/enable-choice/traps/wireless/bsnMobileStation/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::get_segment_path() const
+std::string Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bsnAccessPoint";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7667,19 +7739,19 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Enable::Enabl
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "bsnRogue")
     {
@@ -7689,7 +7761,7 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation
     }
 }
 
-void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "bsnRogue")
     {
@@ -7697,56 +7769,57 @@ void Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation
     }
 }
 
-bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::Bsnmobilestation::Bsnaccesspoint::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::Enable::EnableChoice::Traps::Wireless::BsnMobileStation::BsnAccessPoint::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "bsnRogue")
         return true;
     return false;
 }
 
-Native::SnmpServer::Engineid::Engineid()
+Native::SnmpServer::EngineID::EngineID()
     :
     local{YType::str, "local"}
-    	,
-    remote(std::make_shared<Native::SnmpServer::Engineid::Remote>())
+        ,
+    remote(std::make_shared<Native::SnmpServer::EngineID::Remote>())
 {
     remote->parent = this;
 
-    yang_name = "engineID"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "engineID"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SnmpServer::Engineid::~Engineid()
+Native::SnmpServer::EngineID::~EngineID()
 {
 }
 
-bool Native::SnmpServer::Engineid::has_data() const
+bool Native::SnmpServer::EngineID::has_data() const
 {
+    if (is_presence_container) return true;
     return local.is_set
 	|| (remote !=  nullptr && remote->has_data());
 }
 
-bool Native::SnmpServer::Engineid::has_operation() const
+bool Native::SnmpServer::EngineID::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(local.yfilter)
 	|| (remote !=  nullptr && remote->has_operation());
 }
 
-std::string Native::SnmpServer::Engineid::get_absolute_path() const
+std::string Native::SnmpServer::EngineID::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Engineid::get_segment_path() const
+std::string Native::SnmpServer::EngineID::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-snmp:engineID";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Engineid::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::EngineID::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7756,13 +7829,13 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Engineid::get
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Engineid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::EngineID::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "remote")
     {
         if(remote == nullptr)
         {
-            remote = std::make_shared<Native::SnmpServer::Engineid::Remote>();
+            remote = std::make_shared<Native::SnmpServer::EngineID::Remote>();
         }
         return remote;
     }
@@ -7770,7 +7843,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Engineid::get_child_by_name(const st
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Engineid::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::EngineID::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
@@ -7782,7 +7855,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Engineid::get
     return children;
 }
 
-void Native::SnmpServer::Engineid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::EngineID::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "local")
     {
@@ -7792,7 +7865,7 @@ void Native::SnmpServer::Engineid::set_value(const std::string & value_path, con
     }
 }
 
-void Native::SnmpServer::Engineid::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::EngineID::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "local")
     {
@@ -7800,48 +7873,49 @@ void Native::SnmpServer::Engineid::set_filter(const std::string & value_path, YF
     }
 }
 
-bool Native::SnmpServer::Engineid::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::EngineID::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "remote" || name == "local")
         return true;
     return false;
 }
 
-Native::SnmpServer::Engineid::Remote::Remote()
+Native::SnmpServer::EngineID::Remote::Remote()
 {
 
-    yang_name = "remote"; yang_parent_name = "engineID"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "remote"; yang_parent_name = "engineID"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::SnmpServer::Engineid::Remote::~Remote()
+Native::SnmpServer::EngineID::Remote::~Remote()
 {
 }
 
-bool Native::SnmpServer::Engineid::Remote::has_data() const
+bool Native::SnmpServer::EngineID::Remote::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool Native::SnmpServer::Engineid::Remote::has_operation() const
+bool Native::SnmpServer::EngineID::Remote::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::SnmpServer::Engineid::Remote::get_absolute_path() const
+std::string Native::SnmpServer::EngineID::Remote::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XE-native:native/snmp-server/Cisco-IOS-XE-snmp:engineID/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Native::SnmpServer::Engineid::Remote::get_segment_path() const
+std::string Native::SnmpServer::EngineID::Remote::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Engineid::Remote::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::EngineID::Remote::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7850,27 +7924,27 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Engineid::Rem
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Engineid::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::EngineID::Remote::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Engineid::Remote::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::EngineID::Remote::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SnmpServer::Engineid::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::EngineID::Remote::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::SnmpServer::Engineid::Remote::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::EngineID::Remote::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::SnmpServer::Engineid::Remote::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::EngineID::Remote::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
@@ -7878,16 +7952,16 @@ bool Native::SnmpServer::Engineid::Remote::has_leaf_or_child_of_name(const std::
 Native::SnmpServer::Group::Group()
     :
     id{YType::str, "id"}
-    	,
+        ,
     v1(std::make_shared<Native::SnmpServer::Group::V1>())
-	,v2c(std::make_shared<Native::SnmpServer::Group::V2C>())
-	,v3(std::make_shared<Native::SnmpServer::Group::V3>())
+    , v2c(std::make_shared<Native::SnmpServer::Group::V2c>())
+    , v3(std::make_shared<Native::SnmpServer::Group::V3>())
 {
     v1->parent = this;
     v2c->parent = this;
     v3->parent = this;
 
-    yang_name = "group"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "group"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Group::~Group()
@@ -7896,6 +7970,7 @@ Native::SnmpServer::Group::~Group()
 
 bool Native::SnmpServer::Group::has_data() const
 {
+    if (is_presence_container) return true;
     return id.is_set
 	|| (v1 !=  nullptr && v1->has_data())
 	|| (v2c !=  nullptr && v2c->has_data())
@@ -7921,7 +7996,8 @@ std::string Native::SnmpServer::Group::get_absolute_path() const
 std::string Native::SnmpServer::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-snmp:group" <<"[id='" <<id <<"']";
+    path_buffer << "Cisco-IOS-XE-snmp:group";
+    ADD_KEY_TOKEN(id, "id");
     return path_buffer.str();
 }
 
@@ -7950,7 +8026,7 @@ std::shared_ptr<Entity> Native::SnmpServer::Group::get_child_by_name(const std::
     {
         if(v2c == nullptr)
         {
-            v2c = std::make_shared<Native::SnmpServer::Group::V2C>();
+            v2c = std::make_shared<Native::SnmpServer::Group::V2c>();
         }
         return v2c;
     }
@@ -8017,7 +8093,7 @@ bool Native::SnmpServer::Group::has_leaf_or_child_of_name(const std::string & na
 Native::SnmpServer::Group::V1::V1()
 {
 
-    yang_name = "v1"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v1"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::Group::V1::~V1()
@@ -8026,6 +8102,7 @@ Native::SnmpServer::Group::V1::~V1()
 
 bool Native::SnmpServer::Group::V1::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
@@ -8075,34 +8152,35 @@ bool Native::SnmpServer::Group::V1::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-Native::SnmpServer::Group::V2C::V2C()
+Native::SnmpServer::Group::V2c::V2c()
 {
 
-    yang_name = "v2c"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v2c"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::SnmpServer::Group::V2C::~V2C()
+Native::SnmpServer::Group::V2c::~V2c()
 {
 }
 
-bool Native::SnmpServer::Group::V2C::has_data() const
+bool Native::SnmpServer::Group::V2c::has_data() const
 {
+    if (is_presence_container) return true;
     return false;
 }
 
-bool Native::SnmpServer::Group::V2C::has_operation() const
+bool Native::SnmpServer::Group::V2c::has_operation() const
 {
     return is_set(yfilter);
 }
 
-std::string Native::SnmpServer::Group::V2C::get_segment_path() const
+std::string Native::SnmpServer::Group::V2c::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "v2c";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Group::V2C::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Group::V2c::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -8111,27 +8189,27 @@ std::vector<std::pair<std::string, LeafData> > Native::SnmpServer::Group::V2C::g
 
 }
 
-std::shared_ptr<Entity> Native::SnmpServer::Group::V2C::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> Native::SnmpServer::Group::V2c::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Group::V2C::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::Group::V2c::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void Native::SnmpServer::Group::V2C::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::SnmpServer::Group::V2c::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::SnmpServer::Group::V2C::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::SnmpServer::Group::V2c::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::SnmpServer::Group::V2C::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::SnmpServer::Group::V2c::has_leaf_or_child_of_name(const std::string & name) const
 {
     return false;
 }
@@ -8147,7 +8225,7 @@ Native::SnmpServer::Group::V3::V3()
     access{YType::str, "access"}
 {
 
-    yang_name = "v3"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::Group::V3::~V3()
@@ -8156,6 +8234,7 @@ Native::SnmpServer::Group::V3::~V3()
 
 bool Native::SnmpServer::Group::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return security_level.is_set
 	|| context.is_set
 	|| match.is_set
@@ -8307,12 +8386,12 @@ Native::SnmpServer::Host::Host()
     version{YType::enumeration, "version"},
     security_level{YType::enumeration, "security-level"},
     udp_port{YType::uint16, "udp-port"}
-    	,
+        ,
     trap_enable(std::make_shared<Native::SnmpServer::Host::TrapEnable>())
 {
     trap_enable->parent = this;
 
-    yang_name = "host"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "host"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Host::~Host()
@@ -8321,6 +8400,7 @@ Native::SnmpServer::Host::~Host()
 
 bool Native::SnmpServer::Host::has_data() const
 {
+    if (is_presence_container) return true;
     return ip_address.is_set
 	|| community_or_user.is_set
 	|| vrf.is_set
@@ -8356,7 +8436,9 @@ std::string Native::SnmpServer::Host::get_absolute_path() const
 std::string Native::SnmpServer::Host::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-snmp:host" <<"[ip-address='" <<ip_address <<"']" <<"[community-or-user='" <<community_or_user <<"']";
+    path_buffer << "Cisco-IOS-XE-snmp:host";
+    ADD_KEY_TOKEN(ip_address, "ip-address");
+    ADD_KEY_TOKEN(community_or_user, "community-or-user");
     return path_buffer.str();
 }
 
@@ -8577,7 +8659,7 @@ Native::SnmpServer::Host::TrapEnable::TrapEnable()
     x25{YType::empty, "x25"}
 {
 
-    yang_name = "trap-enable"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trap-enable"; yang_parent_name = "host"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::Host::TrapEnable::~TrapEnable()
@@ -8586,6 +8668,7 @@ Native::SnmpServer::Host::TrapEnable::~TrapEnable()
 
 bool Native::SnmpServer::Host::TrapEnable::has_data() const
 {
+    if (is_presence_container) return true;
     return aaa_server.is_set
 	|| alarms.is_set
 	|| atm.is_set
@@ -9617,7 +9700,7 @@ Native::SnmpServer::Ip::Ip()
     precedence{YType::uint8, "precedence"}
 {
 
-    yang_name = "ip"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ip"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Ip::~Ip()
@@ -9626,6 +9709,7 @@ Native::SnmpServer::Ip::~Ip()
 
 bool Native::SnmpServer::Ip::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set
 	|| precedence.is_set;
 }
@@ -9714,7 +9798,7 @@ Native::SnmpServer::Ifindex::Ifindex()
     persist{YType::empty, "persist"}
 {
 
-    yang_name = "ifindex"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ifindex"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Ifindex::~Ifindex()
@@ -9723,6 +9807,7 @@ Native::SnmpServer::Ifindex::~Ifindex()
 
 bool Native::SnmpServer::Ifindex::has_data() const
 {
+    if (is_presence_container) return true;
     return persist.is_set;
 }
 
@@ -9798,7 +9883,7 @@ Native::SnmpServer::Manager::Manager()
     session_timeout{YType::uint32, "session-timeout"}
 {
 
-    yang_name = "manager"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "manager"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SnmpServer::Manager::~Manager()
@@ -9807,6 +9892,7 @@ Native::SnmpServer::Manager::~Manager()
 
 bool Native::SnmpServer::Manager::has_data() const
 {
+    if (is_presence_container) return true;
     return session_timeout.is_set;
 }
 
@@ -9880,12 +9966,12 @@ bool Native::SnmpServer::Manager::has_leaf_or_child_of_name(const std::string & 
 Native::SnmpServer::SourceInterface::SourceInterface()
     :
     informs(std::make_shared<Native::SnmpServer::SourceInterface::Informs>())
-	,traps(std::make_shared<Native::SnmpServer::SourceInterface::Traps>())
+    , traps(std::make_shared<Native::SnmpServer::SourceInterface::Traps>())
 {
     informs->parent = this;
     traps->parent = this;
 
-    yang_name = "source-interface"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "source-interface"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::~SourceInterface()
@@ -9894,6 +9980,7 @@ Native::SnmpServer::SourceInterface::~SourceInterface()
 
 bool Native::SnmpServer::SourceInterface::has_data() const
 {
+    if (is_presence_container) return true;
     return (informs !=  nullptr && informs->has_data())
 	|| (traps !=  nullptr && traps->has_data());
 }
@@ -10017,18 +10104,18 @@ Native::SnmpServer::SourceInterface::Informs::Informs()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Informs::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::SnmpServer::SourceInterface::Informs::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Informs::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Informs::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::SnmpServer::SourceInterface::Informs::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Informs::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Informs::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "informs"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "informs"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Informs::~Informs()
@@ -10037,6 +10124,7 @@ Native::SnmpServer::SourceInterface::Informs::~Informs()
 
 bool Native::SnmpServer::SourceInterface::Informs::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -10579,7 +10667,7 @@ Native::SnmpServer::SourceInterface::Informs::ATMSubinterface::ATMSubinterface()
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-subinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Informs::ATMSubinterface::~ATMSubinterface()
@@ -10588,6 +10676,7 @@ Native::SnmpServer::SourceInterface::Informs::ATMSubinterface::~ATMSubinterface(
 
 bool Native::SnmpServer::SourceInterface::Informs::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -10663,7 +10752,7 @@ Native::SnmpServer::SourceInterface::Informs::ATMACRsubinterface::ATMACRsubinter
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Informs::ATMACRsubinterface::~ATMACRsubinterface()
@@ -10672,6 +10761,7 @@ Native::SnmpServer::SourceInterface::Informs::ATMACRsubinterface::~ATMACRsubinte
 
 bool Native::SnmpServer::SourceInterface::Informs::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -10747,7 +10837,7 @@ Native::SnmpServer::SourceInterface::Informs::LISPSubinterface::LISPSubinterface
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "LISP-subinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Informs::LISPSubinterface::~LISPSubinterface()
@@ -10756,6 +10846,7 @@ Native::SnmpServer::SourceInterface::Informs::LISPSubinterface::~LISPSubinterfac
 
 bool Native::SnmpServer::SourceInterface::Informs::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -10831,7 +10922,7 @@ Native::SnmpServer::SourceInterface::Informs::PortChannelSubinterface::PortChann
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "informs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Informs::PortChannelSubinterface::~PortChannelSubinterface()
@@ -10840,6 +10931,7 @@ Native::SnmpServer::SourceInterface::Informs::PortChannelSubinterface::~PortChan
 
 bool Native::SnmpServer::SourceInterface::Informs::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -10944,18 +11036,18 @@ Native::SnmpServer::SourceInterface::Traps::Traps()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Traps::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::SnmpServer::SourceInterface::Traps::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Traps::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Traps::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::SnmpServer::SourceInterface::Traps::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Traps::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::SnmpServer::SourceInterface::Traps::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "traps"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "traps"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Traps::~Traps()
@@ -10964,6 +11056,7 @@ Native::SnmpServer::SourceInterface::Traps::~Traps()
 
 bool Native::SnmpServer::SourceInterface::Traps::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -11506,7 +11599,7 @@ Native::SnmpServer::SourceInterface::Traps::ATMSubinterface::ATMSubinterface()
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-subinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Traps::ATMSubinterface::~ATMSubinterface()
@@ -11515,6 +11608,7 @@ Native::SnmpServer::SourceInterface::Traps::ATMSubinterface::~ATMSubinterface()
 
 bool Native::SnmpServer::SourceInterface::Traps::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -11590,7 +11684,7 @@ Native::SnmpServer::SourceInterface::Traps::ATMACRsubinterface::ATMACRsubinterfa
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Traps::ATMACRsubinterface::~ATMACRsubinterface()
@@ -11599,6 +11693,7 @@ Native::SnmpServer::SourceInterface::Traps::ATMACRsubinterface::~ATMACRsubinterf
 
 bool Native::SnmpServer::SourceInterface::Traps::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -11674,7 +11769,7 @@ Native::SnmpServer::SourceInterface::Traps::LISPSubinterface::LISPSubinterface()
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "LISP-subinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Traps::LISPSubinterface::~LISPSubinterface()
@@ -11683,6 +11778,7 @@ Native::SnmpServer::SourceInterface::Traps::LISPSubinterface::~LISPSubinterface(
 
 bool Native::SnmpServer::SourceInterface::Traps::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -11758,7 +11854,7 @@ Native::SnmpServer::SourceInterface::Traps::PortChannelSubinterface::PortChannel
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "traps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::SourceInterface::Traps::PortChannelSubinterface::~PortChannelSubinterface()
@@ -11767,6 +11863,7 @@ Native::SnmpServer::SourceInterface::Traps::PortChannelSubinterface::~PortChanne
 
 bool Native::SnmpServer::SourceInterface::Traps::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -11840,12 +11937,12 @@ bool Native::SnmpServer::SourceInterface::Traps::PortChannelSubinterface::has_le
 Native::SnmpServer::Trap::Trap()
     :
     timeout{YType::uint16, "timeout"}
-    	,
+        ,
     link(std::make_shared<Native::SnmpServer::Trap::Link>())
 {
     link->parent = this;
 
-    yang_name = "trap"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Trap::~Trap()
@@ -11854,6 +11951,7 @@ Native::SnmpServer::Trap::~Trap()
 
 bool Native::SnmpServer::Trap::has_data() const
 {
+    if (is_presence_container) return true;
     return timeout.is_set
 	|| (link !=  nullptr && link->has_data());
 }
@@ -11946,7 +12044,7 @@ Native::SnmpServer::Trap::Link::Link()
     switchover{YType::empty, "switchover"}
 {
 
-    yang_name = "link"; yang_parent_name = "trap"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "link"; yang_parent_name = "trap"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::Trap::Link::~Link()
@@ -11955,6 +12053,7 @@ Native::SnmpServer::Trap::Link::~Link()
 
 bool Native::SnmpServer::Trap::Link::has_data() const
 {
+    if (is_presence_container) return true;
     return ietf.is_set
 	|| switchover.is_set;
 }
@@ -12072,18 +12171,18 @@ Native::SnmpServer::TrapSource::TrapSource()
     virtualportgroup{YType::uint16, "VirtualPortGroup"},
     vasileft{YType::uint16, "vasileft"},
     vasiright{YType::uint16, "vasiright"}
-    	,
+        ,
     atm_subinterface(std::make_shared<Native::SnmpServer::TrapSource::ATMSubinterface>())
-	,atm_acrsubinterface(std::make_shared<Native::SnmpServer::TrapSource::ATMACRsubinterface>())
-	,lisp_subinterface(std::make_shared<Native::SnmpServer::TrapSource::LISPSubinterface>())
-	,port_channel_subinterface(std::make_shared<Native::SnmpServer::TrapSource::PortChannelSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::SnmpServer::TrapSource::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::SnmpServer::TrapSource::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::SnmpServer::TrapSource::PortChannelSubinterface>())
 {
     atm_subinterface->parent = this;
     atm_acrsubinterface->parent = this;
     lisp_subinterface->parent = this;
     port_channel_subinterface->parent = this;
 
-    yang_name = "trap-source"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trap-source"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::TrapSource::~TrapSource()
@@ -12092,6 +12191,7 @@ Native::SnmpServer::TrapSource::~TrapSource()
 
 bool Native::SnmpServer::TrapSource::has_data() const
 {
+    if (is_presence_container) return true;
     return appnav_compress.is_set
 	|| appnav_uncompress.is_set
 	|| atm.is_set
@@ -12634,7 +12734,7 @@ Native::SnmpServer::TrapSource::ATMSubinterface::ATMSubinterface()
     atm{YType::str, "ATM"}
 {
 
-    yang_name = "ATM-subinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-subinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::TrapSource::ATMSubinterface::~ATMSubinterface()
@@ -12643,6 +12743,7 @@ Native::SnmpServer::TrapSource::ATMSubinterface::~ATMSubinterface()
 
 bool Native::SnmpServer::TrapSource::ATMSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm.is_set;
 }
 
@@ -12718,7 +12819,7 @@ Native::SnmpServer::TrapSource::ATMACRsubinterface::ATMACRsubinterface()
     atm_acr{YType::str, "ATM-ACR"}
 {
 
-    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::TrapSource::ATMACRsubinterface::~ATMACRsubinterface()
@@ -12727,6 +12828,7 @@ Native::SnmpServer::TrapSource::ATMACRsubinterface::~ATMACRsubinterface()
 
 bool Native::SnmpServer::TrapSource::ATMACRsubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_acr.is_set;
 }
 
@@ -12802,7 +12904,7 @@ Native::SnmpServer::TrapSource::LISPSubinterface::LISPSubinterface()
     lisp{YType::str, "LISP"}
 {
 
-    yang_name = "LISP-subinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "LISP-subinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::TrapSource::LISPSubinterface::~LISPSubinterface()
@@ -12811,6 +12913,7 @@ Native::SnmpServer::TrapSource::LISPSubinterface::~LISPSubinterface()
 
 bool Native::SnmpServer::TrapSource::LISPSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return lisp.is_set;
 }
 
@@ -12886,7 +12989,7 @@ Native::SnmpServer::TrapSource::PortChannelSubinterface::PortChannelSubinterface
     port_channel{YType::str, "Port-channel"}
 {
 
-    yang_name = "Port-channel-subinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "trap-source"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::TrapSource::PortChannelSubinterface::~PortChannelSubinterface()
@@ -12895,6 +12998,7 @@ Native::SnmpServer::TrapSource::PortChannelSubinterface::~PortChannelSubinterfac
 
 bool Native::SnmpServer::TrapSource::PortChannelSubinterface::has_data() const
 {
+    if (is_presence_container) return true;
     return port_channel.is_set;
 }
 
@@ -12966,9 +13070,11 @@ bool Native::SnmpServer::TrapSource::PortChannelSubinterface::has_leaf_or_child_
 }
 
 Native::SnmpServer::User::User()
+    :
+    names(this, {"username", "grpname"})
 {
 
-    yang_name = "user"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "user"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::User::~User()
@@ -12977,7 +13083,8 @@ Native::SnmpServer::User::~User()
 
 bool Native::SnmpServer::User::has_data() const
 {
-    for (std::size_t index=0; index<names.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<names.len(); index++)
     {
         if(names[index]->has_data())
             return true;
@@ -12987,7 +13094,7 @@ bool Native::SnmpServer::User::has_data() const
 
 bool Native::SnmpServer::User::has_operation() const
 {
-    for (std::size_t index=0; index<names.size(); index++)
+    for (std::size_t index=0; index<names.len(); index++)
     {
         if(names[index]->has_operation())
             return true;
@@ -13024,7 +13131,7 @@ std::shared_ptr<Entity> Native::SnmpServer::User::get_child_by_name(const std::s
     {
         auto c = std::make_shared<Native::SnmpServer::User::Names>();
         c->parent = this;
-        names.push_back(c);
+        names.append(c);
         return c;
     }
 
@@ -13036,7 +13143,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SnmpServer::User::get_chi
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : names)
+    for (auto c : names.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -13066,11 +13173,11 @@ Native::SnmpServer::User::Names::Names()
     :
     username{YType::str, "username"},
     grpname{YType::str, "grpname"}
-    	,
+        ,
     v3(nullptr) // presence node
 {
 
-    yang_name = "names"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "names"; yang_parent_name = "user"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::User::Names::~Names()
@@ -13079,6 +13186,7 @@ Native::SnmpServer::User::Names::~Names()
 
 bool Native::SnmpServer::User::Names::has_data() const
 {
+    if (is_presence_container) return true;
     return username.is_set
 	|| grpname.is_set
 	|| (v3 !=  nullptr && v3->has_data());
@@ -13102,7 +13210,9 @@ std::string Native::SnmpServer::User::Names::get_absolute_path() const
 std::string Native::SnmpServer::User::Names::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "names" <<"[username='" <<username <<"']" <<"[grpname='" <<grpname <<"']";
+    path_buffer << "names";
+    ADD_KEY_TOKEN(username, "username");
+    ADD_KEY_TOKEN(grpname, "grpname");
     return path_buffer.str();
 }
 
@@ -13184,7 +13294,7 @@ Native::SnmpServer::User::Names::V3::V3()
 {
     auth->parent = this;
 
-    yang_name = "v3"; yang_parent_name = "names"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v3"; yang_parent_name = "names"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Native::SnmpServer::User::Names::V3::~V3()
@@ -13193,6 +13303,7 @@ Native::SnmpServer::User::Names::V3::~V3()
 
 bool Native::SnmpServer::User::Names::V3::has_data() const
 {
+    if (is_presence_container) return true;
     return (auth !=  nullptr && auth->has_data());
 }
 
@@ -13265,7 +13376,7 @@ Native::SnmpServer::User::Names::V3::Auth::Auth()
 {
     sha->parent = this;
 
-    yang_name = "auth"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth"; yang_parent_name = "v3"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::User::Names::V3::Auth::~Auth()
@@ -13274,6 +13385,7 @@ Native::SnmpServer::User::Names::V3::Auth::~Auth()
 
 bool Native::SnmpServer::User::Names::V3::Auth::has_data() const
 {
+    if (is_presence_container) return true;
     return (sha !=  nullptr && sha->has_data());
 }
 
@@ -13346,7 +13458,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Sha()
 {
     auth->parent = this;
 
-    yang_name = "sha"; yang_parent_name = "auth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sha"; yang_parent_name = "auth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::User::Names::V3::Auth::Sha::~Sha()
@@ -13355,6 +13467,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::~Sha()
 
 bool Native::SnmpServer::User::Names::V3::Auth::Sha::has_data() const
 {
+    if (is_presence_container) return true;
     return (auth !=  nullptr && auth->has_data());
 }
 
@@ -13424,12 +13537,12 @@ bool Native::SnmpServer::User::Names::V3::Auth::Sha::has_leaf_or_child_of_name(c
 Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Auth_()
     :
     authpass{YType::str, "authpass"}
-    	,
+        ,
     priv(std::make_shared<Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv>())
 {
     priv->parent = this;
 
-    yang_name = "auth"; yang_parent_name = "sha"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "auth"; yang_parent_name = "sha"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::~Auth_()
@@ -13438,6 +13551,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::~Auth_()
 
 bool Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::has_data() const
 {
+    if (is_presence_container) return true;
     return authpass.is_set
 	|| (priv !=  nullptr && priv->has_data());
 }
@@ -13523,7 +13637,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Priv()
 {
     aes->parent = this;
 
-    yang_name = "priv"; yang_parent_name = "auth"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priv"; yang_parent_name = "auth"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::~Priv()
@@ -13532,6 +13646,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::~Priv()
 
 bool Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::has_data() const
 {
+    if (is_presence_container) return true;
     return (aes !=  nullptr && aes->has_data());
 }
 
@@ -13604,7 +13719,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Aes()
 {
     algo128->parent = this;
 
-    yang_name = "aes"; yang_parent_name = "priv"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "aes"; yang_parent_name = "priv"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::~Aes()
@@ -13613,6 +13728,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::~Aes()
 
 bool Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::has_data() const
 {
+    if (is_presence_container) return true;
     return (algo128 !=  nullptr && algo128->has_data());
 }
 
@@ -13685,7 +13801,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::Algo1
 {
     privpass->parent = this;
 
-    yang_name = "algo128"; yang_parent_name = "aes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "algo128"; yang_parent_name = "aes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::~Algo128()
@@ -13694,6 +13810,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::~Algo
 
 bool Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::has_data() const
 {
+    if (is_presence_container) return true;
     return (privpass !=  nullptr && privpass->has_data());
 }
 
@@ -13766,7 +13883,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::Privp
     access{YType::str, "access"}
 {
 
-    yang_name = "privpass"; yang_parent_name = "algo128"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "privpass"; yang_parent_name = "algo128"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::Privpass::~Privpass()
@@ -13775,6 +13892,7 @@ Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::Privp
 
 bool Native::SnmpServer::User::Names::V3::Auth::Sha::Auth_::Priv::Aes::Algo128::Privpass::has_data() const
 {
+    if (is_presence_container) return true;
     return privpass.is_set
 	|| access.is_set;
 }
@@ -13858,7 +13976,7 @@ Native::SnmpServer::View::View()
     inc_exl{YType::enumeration, "inc-exl"}
 {
 
-    yang_name = "view"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "view"; yang_parent_name = "snmp-server"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SnmpServer::View::~View()
@@ -13867,6 +13985,7 @@ Native::SnmpServer::View::~View()
 
 bool Native::SnmpServer::View::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| mib.is_set
 	|| inc_exl.is_set;
@@ -13890,7 +14009,9 @@ std::string Native::SnmpServer::View::get_absolute_path() const
 std::string Native::SnmpServer::View::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-snmp:view" <<"[name='" <<name <<"']" <<"[mib='" <<mib <<"']";
+    path_buffer << "Cisco-IOS-XE-snmp:view";
+    ADD_KEY_TOKEN(name, "name");
+    ADD_KEY_TOKEN(mib, "mib");
     return path_buffer.str();
 }
 
@@ -13968,7 +14089,7 @@ Native::SegmentRouting::SegmentRouting()
     mpls(nullptr) // presence node
 {
 
-    yang_name = "segment-routing"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "segment-routing"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::~SegmentRouting()
@@ -13977,6 +14098,7 @@ Native::SegmentRouting::~SegmentRouting()
 
 bool Native::SegmentRouting::has_data() const
 {
+    if (is_presence_container) return true;
     return (mpls !=  nullptr && mpls->has_data());
 }
 
@@ -14053,15 +14175,15 @@ bool Native::SegmentRouting::has_leaf_or_child_of_name(const std::string & name)
 Native::SegmentRouting::Mpls::Mpls()
     :
     shutdown{YType::empty, "shutdown"}
-    	,
+        ,
     connected_prefix_sid_map(nullptr) // presence node
-	,global_block(std::make_shared<Native::SegmentRouting::Mpls::GlobalBlock>())
-	,mapping_server(nullptr) // presence node
-	,set_attributes(nullptr) // presence node
+    , global_block(std::make_shared<Native::SegmentRouting::Mpls::GlobalBlock>())
+    , mapping_server(nullptr) // presence node
+    , set_attributes(nullptr) // presence node
 {
     global_block->parent = this;
 
-    yang_name = "mpls"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mpls"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::~Mpls()
@@ -14070,6 +14192,7 @@ Native::SegmentRouting::Mpls::~Mpls()
 
 bool Native::SegmentRouting::Mpls::has_data() const
 {
+    if (is_presence_container) return true;
     return shutdown.is_set
 	|| (connected_prefix_sid_map !=  nullptr && connected_prefix_sid_map->has_data())
 	|| (global_block !=  nullptr && global_block->has_data())
@@ -14210,7 +14333,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::ConnectedPrefixSidMap()
 {
     address_family->parent = this;
 
-    yang_name = "connected-prefix-sid-map"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "connected-prefix-sid-map"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::~ConnectedPrefixSidMap()
@@ -14219,6 +14342,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::~ConnectedPrefixSidMap()
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::has_data() const
 {
+    if (is_presence_container) return true;
     return (address_family !=  nullptr && address_family->has_data());
 }
 
@@ -14295,11 +14419,11 @@ bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::has_leaf_or_child_of_n
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::AddressFamily()
     :
     ipv4(nullptr) // presence node
-	,ipv4_strict_spf(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf>())
+    , ipv4_strict_spf(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf>())
 {
     ipv4_strict_spf->parent = this;
 
-    yang_name = "address-family"; yang_parent_name = "connected-prefix-sid-map"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address-family"; yang_parent_name = "connected-prefix-sid-map"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::~AddressFamily()
@@ -14308,6 +14432,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::~AddressFami
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv4_strict_spf !=  nullptr && ipv4_strict_spf->has_data());
 }
@@ -14398,9 +14523,11 @@ bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::has_lea
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Ipv4()
+    :
+    prefixes(this, {"ipprefix"})
 {
 
-    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::~Ipv4()
@@ -14409,7 +14536,8 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::~Ipv4(
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_data())
             return true;
@@ -14419,7 +14547,7 @@ bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::h
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_operation())
             return true;
@@ -14456,7 +14584,7 @@ std::shared_ptr<Entity> Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::Add
     {
         auto c = std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes>();
         c->parent = this;
-        prefixes.push_back(c);
+        prefixes.append(c);
         return c;
     }
 
@@ -14468,7 +14596,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SegmentRouting::Mpls::Con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefixes)
+    for (auto c : prefixes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -14497,14 +14625,14 @@ bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::h
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Prefixes()
     :
     ipprefix{YType::str, "ipprefix"}
-    	,
+        ,
     index_(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Index>())
-	,absolute(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute>())
+    , absolute(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute>())
 {
     index_->parent = this;
     absolute->parent = this;
 
-    yang_name = "prefixes"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefixes"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::~Prefixes()
@@ -14513,6 +14641,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefix
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::has_data() const
 {
+    if (is_presence_container) return true;
     return ipprefix.is_set
 	|| (index_ !=  nullptr && index_->has_data())
 	|| (absolute !=  nullptr && absolute->has_data());
@@ -14536,7 +14665,8 @@ std::string Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::
 std::string Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefixes" <<"[ipprefix='" <<ipprefix <<"']";
+    path_buffer << "prefixes";
+    ADD_KEY_TOKEN(ipprefix, "ipprefix");
     return path_buffer.str();
 }
 
@@ -14622,7 +14752,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefix
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Index::~Index()
@@ -14631,6 +14761,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefix
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Index::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -14727,7 +14858,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefix
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute::~Absolute()
@@ -14736,6 +14867,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefix
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -14831,7 +14963,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
 {
     ipv4->parent = this;
 
-    yang_name = "ipv4-strict-spf"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-strict-spf"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::~Ipv4StrictSpf()
@@ -14840,6 +14972,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data());
 }
 
@@ -14918,7 +15051,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
     strict_spf(nullptr) // presence node
 {
 
-    yang_name = "ipv4"; yang_parent_name = "ipv4-strict-spf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "ipv4-strict-spf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::~Ipv4()
@@ -14927,6 +15060,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (strict_spf !=  nullptr && strict_spf->has_data());
 }
 
@@ -15001,9 +15135,11 @@ bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4Str
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::StrictSpf()
+    :
+    prefixes(this, {"ipprefix"})
 {
 
-    yang_name = "strict-spf"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "strict-spf"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::~StrictSpf()
@@ -15012,7 +15148,8 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::has_data() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_data())
             return true;
@@ -15022,7 +15159,7 @@ bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4Str
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::has_operation() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_operation())
             return true;
@@ -15059,7 +15196,7 @@ std::shared_ptr<Entity> Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::Add
     {
         auto c = std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes>();
         c->parent = this;
-        prefixes.push_back(c);
+        prefixes.append(c);
         return c;
     }
 
@@ -15071,7 +15208,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SegmentRouting::Mpls::Con
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefixes)
+    for (auto c : prefixes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15100,14 +15237,14 @@ bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4Str
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Prefixes()
     :
     ipprefix{YType::str, "ipprefix"}
-    	,
+        ,
     index_(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Index>())
-	,absolute(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute>())
+    , absolute(std::make_shared<Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute>())
 {
     index_->parent = this;
     absolute->parent = this;
 
-    yang_name = "prefixes"; yang_parent_name = "strict-spf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefixes"; yang_parent_name = "strict-spf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::~Prefixes()
@@ -15116,6 +15253,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::has_data() const
 {
+    if (is_presence_container) return true;
     return ipprefix.is_set
 	|| (index_ !=  nullptr && index_->has_data())
 	|| (absolute !=  nullptr && absolute->has_data());
@@ -15139,7 +15277,8 @@ std::string Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::
 std::string Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefixes" <<"[ipprefix='" <<ipprefix <<"']";
+    path_buffer << "prefixes";
+    ADD_KEY_TOKEN(ipprefix, "ipprefix");
     return path_buffer.str();
 }
 
@@ -15225,7 +15364,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Index::~Index()
@@ -15234,6 +15373,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Index::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -15330,7 +15470,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute::~Absolute()
@@ -15339,6 +15479,7 @@ Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSp
 
 bool Native::SegmentRouting::Mpls::ConnectedPrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -15434,7 +15575,7 @@ Native::SegmentRouting::Mpls::GlobalBlock::GlobalBlock()
     range_end{YType::uint32, "range-end"}
 {
 
-    yang_name = "global-block"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "global-block"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::GlobalBlock::~GlobalBlock()
@@ -15443,6 +15584,7 @@ Native::SegmentRouting::Mpls::GlobalBlock::~GlobalBlock()
 
 bool Native::SegmentRouting::Mpls::GlobalBlock::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range_end.is_set;
 }
@@ -15531,7 +15673,7 @@ Native::SegmentRouting::Mpls::MappingServer::MappingServer()
     prefix_sid_map(nullptr) // presence node
 {
 
-    yang_name = "mapping-server"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "mapping-server"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::MappingServer::~MappingServer()
@@ -15540,6 +15682,7 @@ Native::SegmentRouting::Mpls::MappingServer::~MappingServer()
 
 bool Native::SegmentRouting::Mpls::MappingServer::has_data() const
 {
+    if (is_presence_container) return true;
     return (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
 }
 
@@ -15619,7 +15762,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::PrefixSidMap()
 {
     address_family->parent = this;
 
-    yang_name = "prefix-sid-map"; yang_parent_name = "mapping-server"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefix-sid-map"; yang_parent_name = "mapping-server"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::~PrefixSidMap()
@@ -15628,6 +15771,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::~PrefixSidMap()
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::has_data() const
 {
+    if (is_presence_container) return true;
     return (address_family !=  nullptr && address_family->has_data());
 }
 
@@ -15704,11 +15848,11 @@ bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::has_leaf_or_chil
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::AddressFamily()
     :
     ipv4(nullptr) // presence node
-	,ipv4_strict_spf(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf>())
+    , ipv4_strict_spf(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf>())
 {
     ipv4_strict_spf->parent = this;
 
-    yang_name = "address-family"; yang_parent_name = "prefix-sid-map"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address-family"; yang_parent_name = "prefix-sid-map"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::~AddressFamily()
@@ -15717,6 +15861,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::~Addre
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data())
 	|| (ipv4_strict_spf !=  nullptr && ipv4_strict_spf->has_data());
 }
@@ -15807,9 +15952,11 @@ bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::h
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Ipv4()
+    :
+    prefixes(this, {"ipprefix"})
 {
 
-    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::~Ipv4()
@@ -15818,7 +15965,8 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::has_data() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_data())
             return true;
@@ -15828,7 +15976,7 @@ bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::I
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::has_operation() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_operation())
             return true;
@@ -15865,7 +16013,7 @@ std::shared_ptr<Entity> Native::SegmentRouting::Mpls::MappingServer::PrefixSidMa
     {
         auto c = std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes>();
         c->parent = this;
-        prefixes.push_back(c);
+        prefixes.append(c);
         return c;
     }
 
@@ -15877,7 +16025,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SegmentRouting::Mpls::Map
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefixes)
+    for (auto c : prefixes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -15906,14 +16054,14 @@ bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::I
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Prefixes()
     :
     ipprefix{YType::str, "ipprefix"}
-    	,
+        ,
     index_(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Index>())
-	,absolute(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute>())
+    , absolute(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute>())
 {
     index_->parent = this;
     absolute->parent = this;
 
-    yang_name = "prefixes"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefixes"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::~Prefixes()
@@ -15922,6 +16070,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::has_data() const
 {
+    if (is_presence_container) return true;
     return ipprefix.is_set
 	|| (index_ !=  nullptr && index_->has_data())
 	|| (absolute !=  nullptr && absolute->has_data());
@@ -15945,7 +16094,8 @@ std::string Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFa
 std::string Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefixes" <<"[ipprefix='" <<ipprefix <<"']";
+    path_buffer << "prefixes";
+    ADD_KEY_TOKEN(ipprefix, "ipprefix");
     return path_buffer.str();
 }
 
@@ -16031,7 +16181,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Index::~Index()
@@ -16040,6 +16190,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Index::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -16136,7 +16287,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute::~Absolute()
@@ -16145,6 +16296,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4::Prefixes::Absolute::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -16240,7 +16392,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
 {
     ipv4->parent = this;
 
-    yang_name = "ipv4-strict-spf"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4-strict-spf"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::~Ipv4StrictSpf()
@@ -16249,6 +16401,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data());
 }
 
@@ -16327,7 +16480,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
     strict_spf(nullptr) // presence node
 {
 
-    yang_name = "ipv4"; yang_parent_name = "ipv4-strict-spf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "ipv4-strict-spf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::~Ipv4()
@@ -16336,6 +16489,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return (strict_spf !=  nullptr && strict_spf->has_data());
 }
 
@@ -16410,9 +16564,11 @@ bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::I
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::StrictSpf()
+    :
+    prefixes(this, {"ipprefix"})
 {
 
-    yang_name = "strict-spf"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "strict-spf"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::~StrictSpf()
@@ -16421,7 +16577,8 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::has_data() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_data())
             return true;
@@ -16431,7 +16588,7 @@ bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::I
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::has_operation() const
 {
-    for (std::size_t index=0; index<prefixes.size(); index++)
+    for (std::size_t index=0; index<prefixes.len(); index++)
     {
         if(prefixes[index]->has_operation())
             return true;
@@ -16468,7 +16625,7 @@ std::shared_ptr<Entity> Native::SegmentRouting::Mpls::MappingServer::PrefixSidMa
     {
         auto c = std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes>();
         c->parent = this;
-        prefixes.push_back(c);
+        prefixes.append(c);
         return c;
     }
 
@@ -16480,7 +16637,7 @@ std::map<std::string, std::shared_ptr<Entity>> Native::SegmentRouting::Mpls::Map
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : prefixes)
+    for (auto c : prefixes.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -16509,14 +16666,14 @@ bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::I
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Prefixes()
     :
     ipprefix{YType::str, "ipprefix"}
-    	,
+        ,
     index_(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Index>())
-	,absolute(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute>())
+    , absolute(std::make_shared<Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute>())
 {
     index_->parent = this;
     absolute->parent = this;
 
-    yang_name = "prefixes"; yang_parent_name = "strict-spf"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "prefixes"; yang_parent_name = "strict-spf"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::~Prefixes()
@@ -16525,6 +16682,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::has_data() const
 {
+    if (is_presence_container) return true;
     return ipprefix.is_set
 	|| (index_ !=  nullptr && index_->has_data())
 	|| (absolute !=  nullptr && absolute->has_data());
@@ -16548,7 +16706,8 @@ std::string Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFa
 std::string Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefixes" <<"[ipprefix='" <<ipprefix <<"']";
+    path_buffer << "prefixes";
+    ADD_KEY_TOKEN(ipprefix, "ipprefix");
     return path_buffer.str();
 }
 
@@ -16634,7 +16793,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "index"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Index::~Index()
@@ -16643,6 +16802,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Index::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -16739,7 +16899,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
     attach{YType::empty, "attach"}
 {
 
-    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "absolute"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute::~Absolute()
@@ -16748,6 +16908,7 @@ Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4St
 
 bool Native::SegmentRouting::Mpls::MappingServer::PrefixSidMap::AddressFamily::Ipv4StrictSpf::Ipv4::StrictSpf::Prefixes::Absolute::has_data() const
 {
+    if (is_presence_container) return true;
     return range_start.is_set
 	|| range.is_set
 	|| attach.is_set;
@@ -16843,7 +17004,7 @@ Native::SegmentRouting::Mpls::SetAttributes::SetAttributes()
 {
     address_family->parent = this;
 
-    yang_name = "set-attributes"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "set-attributes"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::SetAttributes::~SetAttributes()
@@ -16852,6 +17013,7 @@ Native::SegmentRouting::Mpls::SetAttributes::~SetAttributes()
 
 bool Native::SegmentRouting::Mpls::SetAttributes::has_data() const
 {
+    if (is_presence_container) return true;
     return (address_family !=  nullptr && address_family->has_data());
 }
 
@@ -16930,7 +17092,7 @@ Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::AddressFamily()
     ipv4(nullptr) // presence node
 {
 
-    yang_name = "address-family"; yang_parent_name = "set-attributes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "address-family"; yang_parent_name = "set-attributes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::~AddressFamily()
@@ -16939,6 +17101,7 @@ Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::~AddressFamily()
 
 bool Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::has_data() const
 {
+    if (is_presence_container) return true;
     return (ipv4 !=  nullptr && ipv4->has_data());
 }
 
@@ -17018,7 +17181,7 @@ Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::Ipv4::Ipv4()
     sr_label_preferred{YType::empty, "sr-label-preferred"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ipv4"; yang_parent_name = "address-family"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::Ipv4::~Ipv4()
@@ -17027,6 +17190,7 @@ Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::Ipv4::~Ipv4()
 
 bool Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::Ipv4::has_data() const
 {
+    if (is_presence_container) return true;
     return explicit_null.is_set
 	|| sr_label_preferred.is_set;
 }
@@ -17113,10 +17277,10 @@ bool Native::SegmentRouting::Mpls::SetAttributes::AddressFamily::Ipv4::has_leaf_
 Native::License::License()
     :
     udi(std::make_shared<Native::License::Udi>())
-	,feature(std::make_shared<Native::License::Feature>())
-	,accept(std::make_shared<Native::License::Accept>())
-	,boot(std::make_shared<Native::License::Boot>())
-	,smart(std::make_shared<Native::License::Smart>())
+    , feature(std::make_shared<Native::License::Feature>())
+    , accept(std::make_shared<Native::License::Accept>())
+    , boot(std::make_shared<Native::License::Boot>())
+    , smart(std::make_shared<Native::License::Smart>())
 {
     udi->parent = this;
     feature->parent = this;
@@ -17124,7 +17288,7 @@ Native::License::License()
     boot->parent = this;
     smart->parent = this;
 
-    yang_name = "license"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "license"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::~License()
@@ -17133,6 +17297,7 @@ Native::License::~License()
 
 bool Native::License::has_data() const
 {
+    if (is_presence_container) return true;
     return (udi !=  nullptr && udi->has_data())
 	|| (feature !=  nullptr && feature->has_data())
 	|| (accept !=  nullptr && accept->has_data())
@@ -17276,7 +17441,7 @@ Native::License::Udi::Udi()
     sn{YType::str, "sn"}
 {
 
-    yang_name = "udi"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "udi"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Udi::~Udi()
@@ -17285,6 +17450,7 @@ Native::License::Udi::~Udi()
 
 bool Native::License::Udi::has_data() const
 {
+    if (is_presence_container) return true;
     return pid.is_set
 	|| sn.is_set;
 }
@@ -17371,12 +17537,12 @@ bool Native::License::Udi::has_leaf_or_child_of_name(const std::string & name) c
 Native::License::Feature::Feature()
     :
     name{YType::str, "name"}
-    	,
+        ,
     port(std::make_shared<Native::License::Feature::Port>())
 {
     port->parent = this;
 
-    yang_name = "feature"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "feature"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Feature::~Feature()
@@ -17385,6 +17551,7 @@ Native::License::Feature::~Feature()
 
 bool Native::License::Feature::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (port !=  nullptr && port->has_data());
 }
@@ -17479,7 +17646,7 @@ Native::License::Feature::Port::Port()
     tengig{YType::uint8, "tengig"}
 {
 
-    yang_name = "port"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "port"; yang_parent_name = "feature"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Feature::Port::~Port()
@@ -17488,6 +17655,7 @@ Native::License::Feature::Port::~Port()
 
 bool Native::License::Feature::Port::has_data() const
 {
+    if (is_presence_container) return true;
     return bulk.is_set
 	|| onegig.is_set
 	|| b_6xonegig.is_set
@@ -17604,7 +17772,7 @@ Native::License::Accept::Accept()
     agreement{YType::empty, "agreement"}
 {
 
-    yang_name = "accept"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "accept"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Accept::~Accept()
@@ -17613,6 +17781,7 @@ Native::License::Accept::~Accept()
 
 bool Native::License::Accept::has_data() const
 {
+    if (is_presence_container) return true;
     return end.is_set
 	|| user.is_set
 	|| agreement.is_set;
@@ -17712,12 +17881,12 @@ bool Native::License::Accept::has_leaf_or_child_of_name(const std::string & name
 Native::License::Boot::Boot()
     :
     level(std::make_shared<Native::License::Boot::Level>())
-	,boot_module(std::make_shared<Native::License::Boot::BootModule>())
+    , boot_module(std::make_shared<Native::License::Boot::BootModule>())
 {
     level->parent = this;
     boot_module->parent = this;
 
-    yang_name = "boot"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "boot"; yang_parent_name = "license"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Boot::~Boot()
@@ -17726,6 +17895,7 @@ Native::License::Boot::~Boot()
 
 bool Native::License::Boot::has_data() const
 {
+    if (is_presence_container) return true;
     return (level !=  nullptr && level->has_data())
 	|| (boot_module !=  nullptr && boot_module->has_data());
 }
@@ -17831,21 +18001,21 @@ Native::License::Boot::Level::Level()
     securityk9{YType::empty, "securityk9"},
     advucsuitek9{YType::empty, "AdvUCSuiteK9"},
     foundationsuitek9{YType::empty, "FoundationSuiteK9"}
-    	,
+        ,
     ipbase(nullptr) // presence node
-	,ipbasek9(nullptr) // presence node
-	,ipservices(nullptr) // presence node
-	,ipservicesk9(nullptr) // presence node
-	,lanbase(nullptr) // presence node
-	,lanbasek9(nullptr) // presence node
-	,lite(nullptr) // presence node
-	,metroaggrservices(nullptr) // presence node
-	,uck9(nullptr) // presence node
-	,network_advantage(nullptr) // presence node
-	,network_essentials(nullptr) // presence node
+    , ipbasek9(nullptr) // presence node
+    , ipservices(nullptr) // presence node
+    , ipservicesk9(nullptr) // presence node
+    , lanbase(nullptr) // presence node
+    , lanbasek9(nullptr) // presence node
+    , lite(nullptr) // presence node
+    , metroaggrservices(nullptr) // presence node
+    , uck9(nullptr) // presence node
+    , network_advantage(nullptr) // presence node
+    , network_essentials(nullptr) // presence node
 {
 
-    yang_name = "level"; yang_parent_name = "boot"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "level"; yang_parent_name = "boot"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Native::License::Boot::Level::~Level()
@@ -17854,6 +18024,7 @@ Native::License::Boot::Level::~Level()
 
 bool Native::License::Boot::Level::has_data() const
 {
+    if (is_presence_container) return true;
     return metroipservices.is_set
 	|| metroservices.is_set
 	|| advancedmetroipaccess.is_set

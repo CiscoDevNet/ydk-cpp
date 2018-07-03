@@ -32,22 +32,22 @@ class SNMPTARGETMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Snmptargetobjects; //type: SNMPTARGETMIB::Snmptargetobjects
-        class Snmptargetaddrtable; //type: SNMPTARGETMIB::Snmptargetaddrtable
-        class Snmptargetparamstable; //type: SNMPTARGETMIB::Snmptargetparamstable
+        class SnmpTargetObjects; //type: SNMPTARGETMIB::SnmpTargetObjects
+        class SnmpTargetAddrTable; //type: SNMPTARGETMIB::SnmpTargetAddrTable
+        class SnmpTargetParamsTable; //type: SNMPTARGETMIB::SnmpTargetParamsTable
 
-        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetobjects> snmptargetobjects;
-        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetaddrtable> snmptargetaddrtable;
-        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetparamstable> snmptargetparamstable;
+        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::SnmpTargetObjects> snmptargetobjects;
+        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::SnmpTargetAddrTable> snmptargetaddrtable;
+        std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::SnmpTargetParamsTable> snmptargetparamstable;
         
 }; // SNMPTARGETMIB
 
 
-class SNMPTARGETMIB::Snmptargetobjects : public ydk::Entity
+class SNMPTARGETMIB::SnmpTargetObjects : public ydk::Entity
 {
     public:
-        Snmptargetobjects();
-        ~Snmptargetobjects();
+        SnmpTargetObjects();
+        ~SnmpTargetObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -64,14 +64,14 @@ class SNMPTARGETMIB::Snmptargetobjects : public ydk::Entity
         ydk::YLeaf snmpunavailablecontexts; //type: uint32
         ydk::YLeaf snmpunknowncontexts; //type: uint32
 
-}; // SNMPTARGETMIB::Snmptargetobjects
+}; // SNMPTARGETMIB::SnmpTargetObjects
 
 
-class SNMPTARGETMIB::Snmptargetaddrtable : public ydk::Entity
+class SNMPTARGETMIB::SnmpTargetAddrTable : public ydk::Entity
 {
     public:
-        Snmptargetaddrtable();
-        ~Snmptargetaddrtable();
+        SnmpTargetAddrTable();
+        ~SnmpTargetAddrTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -84,18 +84,18 @@ class SNMPTARGETMIB::Snmptargetaddrtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Snmptargetaddrentry; //type: SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry
+        class SnmpTargetAddrEntry; //type: SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry> > snmptargetaddrentry;
+        ydk::YList snmptargetaddrentry;
         
-}; // SNMPTARGETMIB::Snmptargetaddrtable
+}; // SNMPTARGETMIB::SnmpTargetAddrTable
 
 
-class SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry : public ydk::Entity
+class SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry : public ydk::Entity
 {
     public:
-        Snmptargetaddrentry();
-        ~Snmptargetaddrentry();
+        SnmpTargetAddrEntry();
+        ~SnmpTargetAddrEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -118,14 +118,14 @@ class SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry : public ydk::Enti
         ydk::YLeaf snmptargetaddrstoragetype; //type: StorageType
         ydk::YLeaf snmptargetaddrrowstatus; //type: RowStatus
 
-}; // SNMPTARGETMIB::Snmptargetaddrtable::Snmptargetaddrentry
+}; // SNMPTARGETMIB::SnmpTargetAddrTable::SnmpTargetAddrEntry
 
 
-class SNMPTARGETMIB::Snmptargetparamstable : public ydk::Entity
+class SNMPTARGETMIB::SnmpTargetParamsTable : public ydk::Entity
 {
     public:
-        Snmptargetparamstable();
-        ~Snmptargetparamstable();
+        SnmpTargetParamsTable();
+        ~SnmpTargetParamsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -138,18 +138,18 @@ class SNMPTARGETMIB::Snmptargetparamstable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Snmptargetparamsentry; //type: SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry
+        class SnmpTargetParamsEntry; //type: SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::SNMP_TARGET_MIB::SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry> > snmptargetparamsentry;
+        ydk::YList snmptargetparamsentry;
         
-}; // SNMPTARGETMIB::Snmptargetparamstable
+}; // SNMPTARGETMIB::SnmpTargetParamsTable
 
 
-class SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry : public ydk::Entity
+class SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry : public ydk::Entity
 {
     public:
-        Snmptargetparamsentry();
-        ~Snmptargetparamsentry();
+        SnmpTargetParamsEntry();
+        ~SnmpTargetParamsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -170,7 +170,7 @@ class SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry : public ydk::
         ydk::YLeaf snmptargetparamsstoragetype; //type: StorageType
         ydk::YLeaf snmptargetparamsrowstatus; //type: RowStatus
 
-}; // SNMPTARGETMIB::Snmptargetparamstable::Snmptargetparamsentry
+}; // SNMPTARGETMIB::SnmpTargetParamsTable::SnmpTargetParamsEntry
 
 
 }

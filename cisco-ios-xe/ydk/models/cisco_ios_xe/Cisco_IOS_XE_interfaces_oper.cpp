@@ -12,9 +12,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_interfaces_oper {
 
 Interfaces::Interfaces()
+    :
+    interface(this, {"name"})
 {
 
-    yang_name = "interfaces"; yang_parent_name = "Cisco-IOS-XE-interfaces-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "interfaces"; yang_parent_name = "Cisco-IOS-XE-interfaces-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Interfaces::~Interfaces()
@@ -23,7 +25,8 @@ Interfaces::~Interfaces()
 
 bool Interfaces::has_data() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool Interfaces::has_data() const
 
 bool Interfaces::has_operation() const
 {
-    for (std::size_t index=0; index<interface.size(); index++)
+    for (std::size_t index=0; index<interface.len(); index++)
     {
         if(interface[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> Interfaces::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<Interfaces::Interface>();
         c->parent = this;
-        interface.push_back(c);
+        interface.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : interface)
+    for (auto c : interface.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -147,14 +150,15 @@ Interfaces::Interface::Interface()
     output_security_acl{YType::str, "output-security-acl"},
     bia_address{YType::str, "bia-address"},
     intf_class_unspecified{YType::boolean, "intf-class-unspecified"}
-    	,
+        ,
     statistics(std::make_shared<Interfaces::Interface::Statistics>())
-	,v4_protocol_stats(std::make_shared<Interfaces::Interface::V4ProtocolStats>())
-	,v6_protocol_stats(std::make_shared<Interfaces::Interface::V6ProtocolStats>())
-	,ether_state(std::make_shared<Interfaces::Interface::EtherState>())
-	,ether_stats(std::make_shared<Interfaces::Interface::EtherStats>())
-	,serial_state(std::make_shared<Interfaces::Interface::SerialState>())
-	,serial_stats(std::make_shared<Interfaces::Interface::SerialStats>())
+    , diffserv_info(this, {"direction", "policy_name"})
+    , v4_protocol_stats(std::make_shared<Interfaces::Interface::V4ProtocolStats>())
+    , v6_protocol_stats(std::make_shared<Interfaces::Interface::V6ProtocolStats>())
+    , ether_state(std::make_shared<Interfaces::Interface::EtherState>())
+    , ether_stats(std::make_shared<Interfaces::Interface::EtherStats>())
+    , serial_state(std::make_shared<Interfaces::Interface::SerialState>())
+    , serial_stats(std::make_shared<Interfaces::Interface::SerialStats>())
 {
     statistics->parent = this;
     v4_protocol_stats->parent = this;
@@ -164,7 +168,7 @@ Interfaces::Interface::Interface()
     serial_state->parent = this;
     serial_stats->parent = this;
 
-    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "interface"; yang_parent_name = "interfaces"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Interfaces::Interface::~Interface()
@@ -173,7 +177,8 @@ Interfaces::Interface::~Interface()
 
 bool Interfaces::Interface::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_info.len(); index++)
     {
         if(diffserv_info[index]->has_data())
             return true;
@@ -216,7 +221,7 @@ bool Interfaces::Interface::has_data() const
 
 bool Interfaces::Interface::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_info.size(); index++)
+    for (std::size_t index=0; index<diffserv_info.len(); index++)
     {
         if(diffserv_info[index]->has_operation())
             return true;
@@ -270,7 +275,8 @@ std::string Interfaces::Interface::get_absolute_path() const
 std::string Interfaces::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "interface" <<"[name='" <<name <<"']";
+    path_buffer << "interface";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -319,7 +325,7 @@ std::shared_ptr<Entity> Interfaces::Interface::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo>();
         c->parent = this;
-        diffserv_info.push_back(c);
+        diffserv_info.append(c);
         return c;
     }
 
@@ -390,7 +396,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::get_childr
     }
 
     count = 0;
-    for (auto const & c : diffserv_info)
+    for (auto c : diffserv_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -656,7 +662,7 @@ Interfaces::Interface::Statistics::Statistics()
     in_crc_errors{YType::uint64, "in-crc-errors"}
 {
 
-    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "statistics"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::Statistics::~Statistics()
@@ -665,6 +671,7 @@ Interfaces::Interface::Statistics::~Statistics()
 
 bool Interfaces::Interface::Statistics::has_data() const
 {
+    if (is_presence_container) return true;
     return discontinuity_time.is_set
 	|| in_octets.is_set
 	|| in_unicast_pkts.is_set
@@ -979,9 +986,12 @@ Interfaces::Interface::DiffservInfo::DiffservInfo()
     :
     direction{YType::enumeration, "direction"},
     policy_name{YType::str, "policy-name"}
+        ,
+    diffserv_target_classifier_stats(this, {"classifier_entry_name", "parent_path"})
+    , priority_oper_list(this, {"priority_level"})
 {
 
-    yang_name = "diffserv-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diffserv-info"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::~DiffservInfo()
@@ -990,12 +1000,13 @@ Interfaces::Interface::DiffservInfo::~DiffservInfo()
 
 bool Interfaces::Interface::DiffservInfo::has_data() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<diffserv_target_classifier_stats.len(); index++)
     {
         if(diffserv_target_classifier_stats[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<priority_oper_list.size(); index++)
+    for (std::size_t index=0; index<priority_oper_list.len(); index++)
     {
         if(priority_oper_list[index]->has_data())
             return true;
@@ -1006,12 +1017,12 @@ bool Interfaces::Interface::DiffservInfo::has_data() const
 
 bool Interfaces::Interface::DiffservInfo::has_operation() const
 {
-    for (std::size_t index=0; index<diffserv_target_classifier_stats.size(); index++)
+    for (std::size_t index=0; index<diffserv_target_classifier_stats.len(); index++)
     {
         if(diffserv_target_classifier_stats[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<priority_oper_list.size(); index++)
+    for (std::size_t index=0; index<priority_oper_list.len(); index++)
     {
         if(priority_oper_list[index]->has_operation())
             return true;
@@ -1024,7 +1035,9 @@ bool Interfaces::Interface::DiffservInfo::has_operation() const
 std::string Interfaces::Interface::DiffservInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffserv-info" <<"[direction='" <<direction <<"']" <<"[policy-name='" <<policy_name <<"']";
+    path_buffer << "diffserv-info";
+    ADD_KEY_TOKEN(direction, "direction");
+    ADD_KEY_TOKEN(policy_name, "policy-name");
     return path_buffer.str();
 }
 
@@ -1045,7 +1058,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::get_child_by_name(c
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats>();
         c->parent = this;
-        diffserv_target_classifier_stats.push_back(c);
+        diffserv_target_classifier_stats.append(c);
         return c;
     }
 
@@ -1053,7 +1066,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::get_child_by_name(c
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList>();
         c->parent = this;
-        priority_oper_list.push_back(c);
+        priority_oper_list.append(c);
         return c;
     }
 
@@ -1065,7 +1078,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : diffserv_target_classifier_stats)
+    for (auto c : diffserv_target_classifier_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1074,7 +1087,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : priority_oper_list)
+    for (auto c : priority_oper_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1124,16 +1137,18 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::DiffservTarg
     :
     classifier_entry_name{YType::str, "classifier-entry-name"},
     parent_path{YType::str, "parent-path"}
-    	,
+        ,
     classifier_entry_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats>())
-	,queuing_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats>())
-	,marking_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats>())
+    , meter_stats(this, {"meter_id"})
+    , queuing_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats>())
+    , subclass_list(this, {"match_type"})
+    , marking_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats>())
 {
     classifier_entry_stats->parent = this;
     queuing_stats->parent = this;
     marking_stats->parent = this;
 
-    yang_name = "diffserv-target-classifier-stats"; yang_parent_name = "diffserv-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "diffserv-target-classifier-stats"; yang_parent_name = "diffserv-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::~DiffservTargetClassifierStats()
@@ -1142,12 +1157,13 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::~DiffservTar
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::has_data() const
 {
-    for (std::size_t index=0; index<meter_stats.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<meter_stats.len(); index++)
     {
         if(meter_stats[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<subclass_list.size(); index++)
+    for (std::size_t index=0; index<subclass_list.len(); index++)
     {
         if(subclass_list[index]->has_data())
             return true;
@@ -1161,12 +1177,12 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::has_dat
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::has_operation() const
 {
-    for (std::size_t index=0; index<meter_stats.size(); index++)
+    for (std::size_t index=0; index<meter_stats.len(); index++)
     {
         if(meter_stats[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<subclass_list.size(); index++)
+    for (std::size_t index=0; index<subclass_list.len(); index++)
     {
         if(subclass_list[index]->has_operation())
             return true;
@@ -1182,7 +1198,9 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::has_ope
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "diffserv-target-classifier-stats" <<"[classifier-entry-name='" <<classifier_entry_name <<"']" <<"[parent-path='" <<parent_path <<"']";
+    path_buffer << "diffserv-target-classifier-stats";
+    ADD_KEY_TOKEN(classifier_entry_name, "classifier-entry-name");
+    ADD_KEY_TOKEN(parent_path, "parent-path");
     return path_buffer.str();
 }
 
@@ -1212,7 +1230,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats>();
         c->parent = this;
-        meter_stats.push_back(c);
+        meter_stats.append(c);
         return c;
     }
 
@@ -1229,7 +1247,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList>();
         c->parent = this;
-        subclass_list.push_back(c);
+        subclass_list.append(c);
         return c;
     }
 
@@ -1255,7 +1273,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : meter_stats)
+    for (auto c : meter_stats.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1269,7 +1287,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : subclass_list)
+    for (auto c : subclass_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1327,7 +1345,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEn
     classified_rate{YType::uint64, "classified-rate"}
 {
 
-    yang_name = "classifier-entry-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "classifier-entry-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats::~ClassifierEntryStats()
@@ -1336,6 +1354,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEn
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::ClassifierEntryStats::has_data() const
 {
+    if (is_presence_container) return true;
     return classified_pkts.is_set
 	|| classified_bytes.is_set
 	|| classified_rate.is_set;
@@ -1434,7 +1453,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::
     meter_failed_bytes{YType::uint64, "meter-failed-bytes"}
 {
 
-    yang_name = "meter-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "meter-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::~MeterStats()
@@ -1443,6 +1462,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::has_data() const
 {
+    if (is_presence_container) return true;
     return meter_id.is_set
 	|| meter_succeed_pkts.is_set
 	|| meter_succeed_bytes.is_set
@@ -1463,7 +1483,8 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterSt
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MeterStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "meter-stats" <<"[meter-id='" <<meter_id <<"']";
+    path_buffer << "meter-stats";
+    ADD_KEY_TOKEN(meter_id, "meter-id");
     return path_buffer.str();
 }
 
@@ -1566,14 +1587,14 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats
     queue_size_bytes{YType::uint64, "queue-size-bytes"},
     drop_pkts{YType::uint64, "drop-pkts"},
     drop_bytes{YType::uint64, "drop-bytes"}
-    	,
+        ,
     wred_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats>())
-	,cac_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats>())
+    , cac_stats(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats>())
 {
     wred_stats->parent = this;
     cac_stats->parent = this;
 
-    yang_name = "queuing-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "queuing-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::~QueuingStats()
@@ -1582,6 +1603,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::has_data() const
 {
+    if (is_presence_container) return true;
     return output_pkts.is_set
 	|| output_bytes.is_set
 	|| queue_size_pkts.is_set
@@ -1758,7 +1780,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats
     bandwidth_exceed_drops{YType::uint64, "bandwidth-exceed-drops"}
 {
 
-    yang_name = "wred-stats"; yang_parent_name = "queuing-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "wred-stats"; yang_parent_name = "queuing-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats::~WredStats()
@@ -1767,6 +1789,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::WredStats::has_data() const
 {
+    if (is_presence_container) return true;
     return early_drop_pkts.is_set
 	|| early_drop_bytes.is_set
 	|| mean_queue_depth.is_set
@@ -1979,7 +2002,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats
     num_non_admitted_flows{YType::uint32, "num-non-admitted-flows"}
 {
 
-    yang_name = "cac-stats"; yang_parent_name = "queuing-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cac-stats"; yang_parent_name = "queuing-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats::~CacStats()
@@ -1988,6 +2011,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::QueuingStats::CacStats::has_data() const
 {
+    if (is_presence_container) return true;
     return num_admitted_flows.is_set
 	|| num_non_admitted_flows.is_set;
 }
@@ -2067,14 +2091,21 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Queuing
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::SubclassList()
     :
     match_type{YType::enumeration, "match-type"}
-    	,
-    cos_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault>())
-	,dscp_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault>())
-	,disc_class_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault>())
-	,prec_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault>())
-	,mpls_exp_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault>())
-	,dei_counts_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault>())
-	,clp_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault>())
+        ,
+    cos_counters(this, {"cos_min", "cos_max"})
+    , cos_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault>())
+    , dscp_counters(this, {"dscp_min", "dscp_max"})
+    , dscp_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault>())
+    , discard_class_counters(this, {"disc_class_min", "disc_class_max"})
+    , disc_class_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault>())
+    , precedence_counters(this, {"prec_min", "prec_max"})
+    , prec_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault>())
+    , mpls_exp_counters(this, {"exp_min", "exp_max"})
+    , mpls_exp_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault>())
+    , dei_counters(this, {"dei_min", "dei_max"})
+    , dei_counts_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault>())
+    , clp_counters(this, {"clp_val"})
+    , clp_default(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault>())
 {
     cos_default->parent = this;
     dscp_default->parent = this;
@@ -2084,7 +2115,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     dei_counts_default->parent = this;
     clp_default->parent = this;
 
-    yang_name = "subclass-list"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "subclass-list"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::~SubclassList()
@@ -2093,37 +2124,38 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::has_data() const
 {
-    for (std::size_t index=0; index<cos_counters.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cos_counters.len(); index++)
     {
         if(cos_counters[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dscp_counters.size(); index++)
+    for (std::size_t index=0; index<dscp_counters.len(); index++)
     {
         if(dscp_counters[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<discard_class_counters.size(); index++)
+    for (std::size_t index=0; index<discard_class_counters.len(); index++)
     {
         if(discard_class_counters[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<precedence_counters.size(); index++)
+    for (std::size_t index=0; index<precedence_counters.len(); index++)
     {
         if(precedence_counters[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<mpls_exp_counters.size(); index++)
+    for (std::size_t index=0; index<mpls_exp_counters.len(); index++)
     {
         if(mpls_exp_counters[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<dei_counters.size(); index++)
+    for (std::size_t index=0; index<dei_counters.len(); index++)
     {
         if(dei_counters[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<clp_counters.size(); index++)
+    for (std::size_t index=0; index<clp_counters.len(); index++)
     {
         if(clp_counters[index]->has_data())
             return true;
@@ -2140,37 +2172,37 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::has_operation() const
 {
-    for (std::size_t index=0; index<cos_counters.size(); index++)
+    for (std::size_t index=0; index<cos_counters.len(); index++)
     {
         if(cos_counters[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dscp_counters.size(); index++)
+    for (std::size_t index=0; index<dscp_counters.len(); index++)
     {
         if(dscp_counters[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<discard_class_counters.size(); index++)
+    for (std::size_t index=0; index<discard_class_counters.len(); index++)
     {
         if(discard_class_counters[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<precedence_counters.size(); index++)
+    for (std::size_t index=0; index<precedence_counters.len(); index++)
     {
         if(precedence_counters[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<mpls_exp_counters.size(); index++)
+    for (std::size_t index=0; index<mpls_exp_counters.len(); index++)
     {
         if(mpls_exp_counters[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<dei_counters.size(); index++)
+    for (std::size_t index=0; index<dei_counters.len(); index++)
     {
         if(dei_counters[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<clp_counters.size(); index++)
+    for (std::size_t index=0; index<clp_counters.len(); index++)
     {
         if(clp_counters[index]->has_operation())
             return true;
@@ -2189,7 +2221,8 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "subclass-list" <<"[match-type='" <<match_type <<"']";
+    path_buffer << "subclass-list";
+    ADD_KEY_TOKEN(match_type, "match-type");
     return path_buffer.str();
 }
 
@@ -2209,7 +2242,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters>();
         c->parent = this;
-        cos_counters.push_back(c);
+        cos_counters.append(c);
         return c;
     }
 
@@ -2226,7 +2259,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters>();
         c->parent = this;
-        dscp_counters.push_back(c);
+        dscp_counters.append(c);
         return c;
     }
 
@@ -2243,7 +2276,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters>();
         c->parent = this;
-        discard_class_counters.push_back(c);
+        discard_class_counters.append(c);
         return c;
     }
 
@@ -2260,7 +2293,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters>();
         c->parent = this;
-        precedence_counters.push_back(c);
+        precedence_counters.append(c);
         return c;
     }
 
@@ -2277,7 +2310,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters>();
         c->parent = this;
-        mpls_exp_counters.push_back(c);
+        mpls_exp_counters.append(c);
         return c;
     }
 
@@ -2294,7 +2327,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters>();
         c->parent = this;
-        dei_counters.push_back(c);
+        dei_counters.append(c);
         return c;
     }
 
@@ -2311,7 +2344,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::DiffservTargetClass
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters>();
         c->parent = this;
-        clp_counters.push_back(c);
+        clp_counters.append(c);
         return c;
     }
 
@@ -2332,7 +2365,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cos_counters)
+    for (auto c : cos_counters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2346,7 +2379,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : dscp_counters)
+    for (auto c : dscp_counters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2360,7 +2393,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : discard_class_counters)
+    for (auto c : discard_class_counters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2374,7 +2407,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : precedence_counters)
+    for (auto c : precedence_counters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2388,7 +2421,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : mpls_exp_counters)
+    for (auto c : mpls_exp_counters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2402,7 +2435,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : dei_counters)
+    for (auto c : dei_counters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2416,7 +2449,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : clp_counters)
+    for (auto c : clp_counters.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2469,7 +2502,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "cos-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::~CosCounters()
@@ -2478,6 +2511,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return cos_min.is_set
 	|| cos_max.is_set
 	|| wred_tx_pkts.is_set
@@ -2504,7 +2538,9 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cos-counters" <<"[cos-min='" <<cos_min <<"']" <<"[cos-max='" <<cos_max <<"']";
+    path_buffer << "cos-counters";
+    ADD_KEY_TOKEN(cos_min, "cos-min");
+    ADD_KEY_TOKEN(cos_max, "cos-max");
     return path_buffer.str();
 }
 
@@ -2642,7 +2678,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "cos-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "cos-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault::~CosDefault()
@@ -2651,6 +2687,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::CosDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
 	|| wred_tail_drop_pkts.is_set
@@ -2791,7 +2828,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "dscp-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::~DscpCounters()
@@ -2800,6 +2837,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp_min.is_set
 	|| dscp_max.is_set
 	|| wred_tx_pkts.is_set
@@ -2826,7 +2864,9 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dscp-counters" <<"[dscp-min='" <<dscp_min <<"']" <<"[dscp-max='" <<dscp_max <<"']";
+    path_buffer << "dscp-counters";
+    ADD_KEY_TOKEN(dscp_min, "dscp-min");
+    ADD_KEY_TOKEN(dscp_max, "dscp-max");
     return path_buffer.str();
 }
 
@@ -2964,7 +3004,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "dscp-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dscp-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault::~DscpDefault()
@@ -2973,6 +3013,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DscpDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
 	|| wred_tail_drop_pkts.is_set
@@ -3113,7 +3154,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "discard-class-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "discard-class-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::~DiscardClassCounters()
@@ -3122,6 +3163,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return disc_class_min.is_set
 	|| disc_class_max.is_set
 	|| wred_tx_pkts.is_set
@@ -3148,7 +3190,9 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscardClassCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "discard-class-counters" <<"[disc-class-min='" <<disc_class_min <<"']" <<"[disc-class-max='" <<disc_class_max <<"']";
+    path_buffer << "discard-class-counters";
+    ADD_KEY_TOKEN(disc_class_min, "disc-class-min");
+    ADD_KEY_TOKEN(disc_class_max, "disc-class-max");
     return path_buffer.str();
 }
 
@@ -3286,7 +3330,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "disc-class-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "disc-class-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault::~DiscClassDefault()
@@ -3295,6 +3339,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DiscClassDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
 	|| wred_tail_drop_pkts.is_set
@@ -3435,7 +3480,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "precedence-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "precedence-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::~PrecedenceCounters()
@@ -3444,6 +3489,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return prec_min.is_set
 	|| prec_max.is_set
 	|| wred_tx_pkts.is_set
@@ -3470,7 +3516,9 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecedenceCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "precedence-counters" <<"[prec-min='" <<prec_min <<"']" <<"[prec-max='" <<prec_max <<"']";
+    path_buffer << "precedence-counters";
+    ADD_KEY_TOKEN(prec_min, "prec-min");
+    ADD_KEY_TOKEN(prec_max, "prec-max");
     return path_buffer.str();
 }
 
@@ -3608,7 +3656,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "prec-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prec-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault::~PrecDefault()
@@ -3617,6 +3665,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::PrecDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
 	|| wred_tail_drop_pkts.is_set
@@ -3757,7 +3806,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "mpls-exp-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-exp-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::~MplsExpCounters()
@@ -3766,6 +3815,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return exp_min.is_set
 	|| exp_max.is_set
 	|| wred_tx_pkts.is_set
@@ -3792,7 +3842,9 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "mpls-exp-counters" <<"[exp-min='" <<exp_min <<"']" <<"[exp-max='" <<exp_max <<"']";
+    path_buffer << "mpls-exp-counters";
+    ADD_KEY_TOKEN(exp_min, "exp-min");
+    ADD_KEY_TOKEN(exp_max, "exp-max");
     return path_buffer.str();
 }
 
@@ -3930,7 +3982,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "mpls-exp-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "mpls-exp-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault::~MplsExpDefault()
@@ -3939,6 +3991,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::MplsExpDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
 	|| wred_tail_drop_pkts.is_set
@@ -4079,7 +4132,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "dei-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dei-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::~DeiCounters()
@@ -4088,6 +4141,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return dei_min.is_set
 	|| dei_max.is_set
 	|| wred_tx_pkts.is_set
@@ -4114,7 +4168,9 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "dei-counters" <<"[dei-min='" <<dei_min <<"']" <<"[dei-max='" <<dei_max <<"']";
+    path_buffer << "dei-counters";
+    ADD_KEY_TOKEN(dei_min, "dei-min");
+    ADD_KEY_TOKEN(dei_max, "dei-max");
     return path_buffer.str();
 }
 
@@ -4252,7 +4308,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "dei-counts-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "dei-counts-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault::~DeiCountsDefault()
@@ -4261,6 +4317,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::DeiCountsDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
 	|| wred_tail_drop_pkts.is_set
@@ -4400,7 +4457,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "clp-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clp-counters"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::~ClpCounters()
@@ -4409,6 +4466,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::has_data() const
 {
+    if (is_presence_container) return true;
     return clp_val.is_set
 	|| wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
@@ -4433,7 +4491,8 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 std::string Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpCounters::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "clp-counters" <<"[clp-val='" <<clp_val <<"']";
+    path_buffer << "clp-counters";
+    ADD_KEY_TOKEN(clp_val, "clp-val");
     return path_buffer.str();
 }
 
@@ -4560,7 +4619,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
     wred_early_drop_bytes{YType::uint64, "wred-early-drop-bytes"}
 {
 
-    yang_name = "clp-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "clp-default"; yang_parent_name = "subclass-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault::~ClpDefault()
@@ -4569,6 +4628,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::SubclassList::ClpDefault::has_data() const
 {
+    if (is_presence_container) return true;
     return wred_tx_pkts.is_set
 	|| wred_tx_bytes.is_set
 	|| wred_tail_drop_pkts.is_set
@@ -4700,23 +4760,23 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Subclas
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingStats()
     :
     marking_dscp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal>())
-	,marking_dscp_tunnel_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal>())
-	,marking_cos_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal>())
-	,marking_cos_inner_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal>())
-	,marking_discard_class_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal>())
-	,marking_qos_grp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal>())
-	,marking_prec_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal>())
-	,marking_prec_tunnel_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal>())
-	,marking_mpls_exp_imp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal>())
-	,marking_mpls_exp_top_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal>())
-	,marking_fr_de_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal>())
-	,marking_fr_fecn_becn_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal>())
-	,marking_atm_clp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal>())
-	,marking_vlan_inner_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal>())
-	,marking_dei_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal>())
-	,marking_dei_imp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal>())
-	,marking_srp_priority_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal>())
-	,marking_wlan_user_priority_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal>())
+    , marking_dscp_tunnel_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal>())
+    , marking_cos_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal>())
+    , marking_cos_inner_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal>())
+    , marking_discard_class_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal>())
+    , marking_qos_grp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal>())
+    , marking_prec_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal>())
+    , marking_prec_tunnel_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal>())
+    , marking_mpls_exp_imp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal>())
+    , marking_mpls_exp_top_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal>())
+    , marking_fr_de_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal>())
+    , marking_fr_fecn_becn_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal>())
+    , marking_atm_clp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal>())
+    , marking_vlan_inner_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal>())
+    , marking_dei_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal>())
+    , marking_dei_imp_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal>())
+    , marking_srp_priority_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal>())
+    , marking_wlan_user_priority_stats_val(std::make_shared<Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal>())
 {
     marking_dscp_stats_val->parent = this;
     marking_dscp_tunnel_stats_val->parent = this;
@@ -4737,7 +4797,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marking_srp_priority_stats_val->parent = this;
     marking_wlan_user_priority_stats_val->parent = this;
 
-    yang_name = "marking-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-stats"; yang_parent_name = "diffserv-target-classifier-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::~MarkingStats()
@@ -4746,6 +4806,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::has_data() const
 {
+    if (is_presence_container) return true;
     return (marking_dscp_stats_val !=  nullptr && marking_dscp_stats_val->has_data())
 	|| (marking_dscp_tunnel_stats_val !=  nullptr && marking_dscp_tunnel_stats_val->has_data())
 	|| (marking_cos_stats_val !=  nullptr && marking_cos_stats_val->has_data())
@@ -5090,7 +5151,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-dscp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-dscp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal::~MarkingDscpStatsVal()
@@ -5099,6 +5160,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp.is_set
 	|| marked_pkts.is_set;
 }
@@ -5181,7 +5243,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-dscp-tunnel-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-dscp-tunnel-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal::~MarkingDscpTunnelStatsVal()
@@ -5190,6 +5252,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDscpTunnelStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5272,7 +5335,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-cos-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-cos-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal::~MarkingCosStatsVal()
@@ -5281,6 +5344,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return cos_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5363,7 +5427,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-cos-inner-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-cos-inner-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal::~MarkingCosInnerStatsVal()
@@ -5372,6 +5436,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingCosInnerStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return cos_inner_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5454,7 +5519,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-discard-class-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-discard-class-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal::~MarkingDiscardClassStatsVal()
@@ -5463,6 +5528,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDiscardClassStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return disc_class_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5545,7 +5611,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-qos-grp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-qos-grp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal::~MarkingQosGrpStatsVal()
@@ -5554,6 +5620,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingQosGrpStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_grp_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5636,7 +5703,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-prec-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-prec-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal::~MarkingPrecStatsVal()
@@ -5645,6 +5712,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return prec_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5727,7 +5795,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-prec-tunnel-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-prec-tunnel-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal::~MarkingPrecTunnelStatsVal()
@@ -5736,6 +5804,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingPrecTunnelStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return prec_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5818,7 +5887,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-mpls-exp-imp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-mpls-exp-imp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal::~MarkingMplsExpImpStatsVal()
@@ -5827,6 +5896,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpImpStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return mpls_exp_imp_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -5909,7 +5979,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-mpls-exp-top-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-mpls-exp-top-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal::~MarkingMplsExpTopStatsVal()
@@ -5918,6 +5988,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingMplsExpTopStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return mpls_exp_top_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -6000,7 +6071,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-fr-de-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-fr-de-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal::~MarkingFrDeStatsVal()
@@ -6009,6 +6080,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrDeStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return fr_de.is_set
 	|| marked_pkts.is_set;
 }
@@ -6091,7 +6163,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-fr-fecn-becn-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-fr-fecn-becn-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal::~MarkingFrFecnBecnStatsVal()
@@ -6100,6 +6172,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingFrFecnBecnStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return fecn_becn_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -6182,7 +6255,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-atm-clp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-atm-clp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal::~MarkingAtmClpStatsVal()
@@ -6191,6 +6264,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingAtmClpStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return atm_clp_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -6273,7 +6347,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-vlan-inner-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-vlan-inner-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal::~MarkingVlanInnerStatsVal()
@@ -6282,6 +6356,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingVlanInnerStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return vlan_inner_val.is_set
 	|| marked_pkts.is_set;
 }
@@ -6364,7 +6439,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-dei-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-dei-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal::~MarkingDeiStatsVal()
@@ -6373,6 +6448,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return dei_imp_value.is_set
 	|| marked_pkts.is_set;
 }
@@ -6455,7 +6531,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-dei-imp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-dei-imp-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal::~MarkingDeiImpStatsVal()
@@ -6464,6 +6540,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingDeiImpStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return dei_imp_value.is_set
 	|| marked_pkts.is_set;
 }
@@ -6546,7 +6623,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-srp-priority-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-srp-priority-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal::~MarkingSrpPriorityStatsVal()
@@ -6555,6 +6632,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingSrpPriorityStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return srp_priority_value.is_set
 	|| marked_pkts.is_set;
 }
@@ -6637,7 +6715,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
     marked_pkts{YType::uint64, "marked-pkts"}
 {
 
-    yang_name = "marking-wlan-user-priority-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "marking-wlan-user-priority-stats-val"; yang_parent_name = "marking-stats"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal::~MarkingWlanUserPriorityStatsVal()
@@ -6646,6 +6724,7 @@ Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats
 
 bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::MarkingStats::MarkingWlanUserPriorityStatsVal::has_data() const
 {
+    if (is_presence_container) return true;
     return wlan_user_priority_value.is_set
 	|| marked_pkts.is_set;
 }
@@ -6725,14 +6804,19 @@ bool Interfaces::Interface::DiffservInfo::DiffservTargetClassifierStats::Marking
 Interfaces::Interface::DiffservInfo::PriorityOperList::PriorityOperList()
     :
     priority_level{YType::uint16, "priority-level"}
-    	,
+        ,
     agg_priority_stats(std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats>())
-	,qlimit_default_thresh(std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh>())
+    , qlimit_default_thresh(std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh>())
+    , qlimit_cos_thresh_list(this, {"cos_min", "cos_max"})
+    , qlimit_disc_class_thresh_list(this, {"disc_class_min", "disc_class_max"})
+    , qlimit_qos_grp_thresh_list(this, {"qos_group_min", "qos_group_max"})
+    , qlimit_mpls_exp_thresh_list(this, {"exp_min", "exp_max"})
+    , qlimit_dscp_thresh_list(this, {"dscp_min", "dscp_max"})
 {
     agg_priority_stats->parent = this;
     qlimit_default_thresh->parent = this;
 
-    yang_name = "priority-oper-list"; yang_parent_name = "diffserv-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "priority-oper-list"; yang_parent_name = "diffserv-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::~PriorityOperList()
@@ -6741,27 +6825,28 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::~PriorityOperList()
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::has_data() const
 {
-    for (std::size_t index=0; index<qlimit_cos_thresh_list.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<qlimit_cos_thresh_list.len(); index++)
     {
         if(qlimit_cos_thresh_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_disc_class_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_disc_class_thresh_list.len(); index++)
     {
         if(qlimit_disc_class_thresh_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_qos_grp_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_qos_grp_thresh_list.len(); index++)
     {
         if(qlimit_qos_grp_thresh_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_mpls_exp_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_mpls_exp_thresh_list.len(); index++)
     {
         if(qlimit_mpls_exp_thresh_list[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_dscp_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_dscp_thresh_list.len(); index++)
     {
         if(qlimit_dscp_thresh_list[index]->has_data())
             return true;
@@ -6773,27 +6858,27 @@ bool Interfaces::Interface::DiffservInfo::PriorityOperList::has_data() const
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::has_operation() const
 {
-    for (std::size_t index=0; index<qlimit_cos_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_cos_thresh_list.len(); index++)
     {
         if(qlimit_cos_thresh_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_disc_class_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_disc_class_thresh_list.len(); index++)
     {
         if(qlimit_disc_class_thresh_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_qos_grp_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_qos_grp_thresh_list.len(); index++)
     {
         if(qlimit_qos_grp_thresh_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_mpls_exp_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_mpls_exp_thresh_list.len(); index++)
     {
         if(qlimit_mpls_exp_thresh_list[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<qlimit_dscp_thresh_list.size(); index++)
+    for (std::size_t index=0; index<qlimit_dscp_thresh_list.len(); index++)
     {
         if(qlimit_dscp_thresh_list[index]->has_operation())
             return true;
@@ -6807,7 +6892,8 @@ bool Interfaces::Interface::DiffservInfo::PriorityOperList::has_operation() cons
 std::string Interfaces::Interface::DiffservInfo::PriorityOperList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "priority-oper-list" <<"[priority-level='" <<priority_level <<"']";
+    path_buffer << "priority-oper-list";
+    ADD_KEY_TOKEN(priority_level, "priority-level");
     return path_buffer.str();
 }
 
@@ -6845,7 +6931,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::g
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList>();
         c->parent = this;
-        qlimit_cos_thresh_list.push_back(c);
+        qlimit_cos_thresh_list.append(c);
         return c;
     }
 
@@ -6853,7 +6939,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::g
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList>();
         c->parent = this;
-        qlimit_disc_class_thresh_list.push_back(c);
+        qlimit_disc_class_thresh_list.append(c);
         return c;
     }
 
@@ -6861,7 +6947,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::g
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList>();
         c->parent = this;
-        qlimit_qos_grp_thresh_list.push_back(c);
+        qlimit_qos_grp_thresh_list.append(c);
         return c;
     }
 
@@ -6869,7 +6955,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::g
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList>();
         c->parent = this;
-        qlimit_mpls_exp_thresh_list.push_back(c);
+        qlimit_mpls_exp_thresh_list.append(c);
         return c;
     }
 
@@ -6877,7 +6963,7 @@ std::shared_ptr<Entity> Interfaces::Interface::DiffservInfo::PriorityOperList::g
     {
         auto c = std::make_shared<Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList>();
         c->parent = this;
-        qlimit_dscp_thresh_list.push_back(c);
+        qlimit_dscp_thresh_list.append(c);
         return c;
     }
 
@@ -6899,7 +6985,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : qlimit_cos_thresh_list)
+    for (auto c : qlimit_cos_thresh_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6908,7 +6994,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : qlimit_disc_class_thresh_list)
+    for (auto c : qlimit_disc_class_thresh_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6917,7 +7003,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : qlimit_qos_grp_thresh_list)
+    for (auto c : qlimit_qos_grp_thresh_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6926,7 +7012,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : qlimit_mpls_exp_thresh_list)
+    for (auto c : qlimit_mpls_exp_thresh_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6935,7 +7021,7 @@ std::map<std::string, std::shared_ptr<Entity>> Interfaces::Interface::DiffservIn
     }
 
     count = 0;
-    for (auto const & c : qlimit_dscp_thresh_list)
+    for (auto c : qlimit_dscp_thresh_list.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6983,7 +7069,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::AggPrio
     drop_pkts_no_buffer{YType::uint64, "drop-pkts-no-buffer"}
 {
 
-    yang_name = "agg-priority-stats"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "agg-priority-stats"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::~AggPriorityStats()
@@ -6992,6 +7078,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::~AggPri
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::AggPriorityStats::has_data() const
 {
+    if (is_presence_container) return true;
     return output_pkts.is_set
 	|| output_bytes.is_set
 	|| queue_size_pkts.is_set
@@ -7156,7 +7243,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::Qlim
     interval_unit_val{YType::enumeration, "interval-unit-val"}
 {
 
-    yang_name = "qlimit-default-thresh"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qlimit-default-thresh"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::~QlimitDefaultThresh()
@@ -7165,6 +7252,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::~Qli
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDefaultThresh::has_data() const
 {
+    if (is_presence_container) return true;
     return bytes.is_set
 	|| thresh_size_metric.is_set
 	|| unit_val.is_set
@@ -7305,7 +7393,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::Qlim
     interval_unit_val{YType::enumeration, "interval-unit-val"}
 {
 
-    yang_name = "qlimit-cos-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qlimit-cos-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::~QlimitCosThreshList()
@@ -7314,6 +7402,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::~Qli
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::has_data() const
 {
+    if (is_presence_container) return true;
     return cos_min.is_set
 	|| cos_max.is_set
 	|| bytes.is_set
@@ -7340,7 +7429,9 @@ bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList:
 std::string Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitCosThreshList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "qlimit-cos-thresh-list" <<"[cos-min='" <<cos_min <<"']" <<"[cos-max='" <<cos_max <<"']";
+    path_buffer << "qlimit-cos-thresh-list";
+    ADD_KEY_TOKEN(cos_min, "cos-min");
+    ADD_KEY_TOKEN(cos_max, "cos-max");
     return path_buffer.str();
 }
 
@@ -7480,7 +7571,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList
     interval_unit_val{YType::enumeration, "interval-unit-val"}
 {
 
-    yang_name = "qlimit-disc-class-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qlimit-disc-class-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::~QlimitDiscClassThreshList()
@@ -7489,6 +7580,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::has_data() const
 {
+    if (is_presence_container) return true;
     return disc_class_min.is_set
 	|| disc_class_max.is_set
 	|| bytes.is_set
@@ -7515,7 +7607,9 @@ bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThres
 std::string Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDiscClassThreshList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "qlimit-disc-class-thresh-list" <<"[disc-class-min='" <<disc_class_min <<"']" <<"[disc-class-max='" <<disc_class_max <<"']";
+    path_buffer << "qlimit-disc-class-thresh-list";
+    ADD_KEY_TOKEN(disc_class_min, "disc-class-min");
+    ADD_KEY_TOKEN(disc_class_max, "disc-class-max");
     return path_buffer.str();
 }
 
@@ -7655,7 +7749,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::Q
     interval_unit_val{YType::enumeration, "interval-unit-val"}
 {
 
-    yang_name = "qlimit-qos-grp-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qlimit-qos-grp-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::~QlimitQosGrpThreshList()
@@ -7664,6 +7758,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::~
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::has_data() const
 {
+    if (is_presence_container) return true;
     return qos_group_min.is_set
 	|| qos_group_max.is_set
 	|| bytes.is_set
@@ -7690,7 +7785,9 @@ bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshLi
 std::string Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitQosGrpThreshList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "qlimit-qos-grp-thresh-list" <<"[qos-group-min='" <<qos_group_min <<"']" <<"[qos-group-max='" <<qos_group_max <<"']";
+    path_buffer << "qlimit-qos-grp-thresh-list";
+    ADD_KEY_TOKEN(qos_group_min, "qos-group-min");
+    ADD_KEY_TOKEN(qos_group_max, "qos-group-max");
     return path_buffer.str();
 }
 
@@ -7830,7 +7927,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::
     interval_unit_val{YType::enumeration, "interval-unit-val"}
 {
 
-    yang_name = "qlimit-mpls-exp-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qlimit-mpls-exp-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::~QlimitMplsExpThreshList()
@@ -7839,6 +7936,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::has_data() const
 {
+    if (is_presence_container) return true;
     return exp_min.is_set
 	|| exp_max.is_set
 	|| bytes.is_set
@@ -7865,7 +7963,9 @@ bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshL
 std::string Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitMplsExpThreshList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "qlimit-mpls-exp-thresh-list" <<"[exp-min='" <<exp_min <<"']" <<"[exp-max='" <<exp_max <<"']";
+    path_buffer << "qlimit-mpls-exp-thresh-list";
+    ADD_KEY_TOKEN(exp_min, "exp-min");
+    ADD_KEY_TOKEN(exp_max, "exp-max");
     return path_buffer.str();
 }
 
@@ -8005,7 +8105,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::Qli
     interval_unit_val{YType::enumeration, "interval-unit-val"}
 {
 
-    yang_name = "qlimit-dscp-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "qlimit-dscp-thresh-list"; yang_parent_name = "priority-oper-list"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::~QlimitDscpThreshList()
@@ -8014,6 +8114,7 @@ Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::~Ql
 
 bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::has_data() const
 {
+    if (is_presence_container) return true;
     return dscp_min.is_set
 	|| dscp_max.is_set
 	|| bytes.is_set
@@ -8040,7 +8141,9 @@ bool Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList
 std::string Interfaces::Interface::DiffservInfo::PriorityOperList::QlimitDscpThreshList::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "qlimit-dscp-thresh-list" <<"[dscp-min='" <<dscp_min <<"']" <<"[dscp-max='" <<dscp_max <<"']";
+    path_buffer << "qlimit-dscp-thresh-list";
+    ADD_KEY_TOKEN(dscp_min, "dscp-min");
+    ADD_KEY_TOKEN(dscp_max, "dscp-max");
     return path_buffer.str();
 }
 
@@ -8184,7 +8287,7 @@ Interfaces::Interface::V4ProtocolStats::V4ProtocolStats()
     out_discarded_pkts{YType::uint64, "out-discarded-pkts"}
 {
 
-    yang_name = "v4-protocol-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v4-protocol-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::V4ProtocolStats::~V4ProtocolStats()
@@ -8193,6 +8296,7 @@ Interfaces::Interface::V4ProtocolStats::~V4ProtocolStats()
 
 bool Interfaces::Interface::V4ProtocolStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_pkts.is_set
 	|| in_octets.is_set
 	|| in_error_pkts.is_set
@@ -8415,7 +8519,7 @@ Interfaces::Interface::V6ProtocolStats::V6ProtocolStats()
     out_discarded_pkts{YType::uint64, "out-discarded-pkts"}
 {
 
-    yang_name = "v6-protocol-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "v6-protocol-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::V6ProtocolStats::~V6ProtocolStats()
@@ -8424,6 +8528,7 @@ Interfaces::Interface::V6ProtocolStats::~V6ProtocolStats()
 
 bool Interfaces::Interface::V6ProtocolStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_pkts.is_set
 	|| in_octets.is_set
 	|| in_error_pkts.is_set
@@ -8638,7 +8743,7 @@ Interfaces::Interface::EtherState::EtherState()
     enable_flow_control{YType::boolean, "enable-flow-control"}
 {
 
-    yang_name = "ether-state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether-state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::EtherState::~EtherState()
@@ -8647,6 +8752,7 @@ Interfaces::Interface::EtherState::~EtherState()
 
 bool Interfaces::Interface::EtherState::has_data() const
 {
+    if (is_presence_container) return true;
     return negotiated_duplex_mode.is_set
 	|| negotiated_port_speed.is_set
 	|| auto_negotiate.is_set
@@ -8762,7 +8868,7 @@ Interfaces::Interface::EtherStats::EtherStats()
     out_8021q_frames{YType::uint64, "out-8021q-frames"}
 {
 
-    yang_name = "ether-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ether-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::EtherStats::~EtherStats()
@@ -8771,6 +8877,7 @@ Interfaces::Interface::EtherStats::~EtherStats()
 
 bool Interfaces::Interface::EtherStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_mac_control_frames.is_set
 	|| in_mac_pause_frames.is_set
 	|| in_oversize_frames.is_set
@@ -8947,7 +9054,7 @@ Interfaces::Interface::SerialState::SerialState()
     subrate{YType::enumeration, "subrate"}
 {
 
-    yang_name = "serial-state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "serial-state"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::SerialState::~SerialState()
@@ -8956,6 +9063,7 @@ Interfaces::Interface::SerialState::~SerialState()
 
 bool Interfaces::Interface::SerialState::has_data() const
 {
+    if (is_presence_container) return true;
     return crc_type.is_set
 	|| loopback.is_set
 	|| keeplive.is_set
@@ -9076,7 +9184,7 @@ Interfaces::Interface::SerialStats::SerialStats()
     in_abort_clock_error{YType::uint32, "in-abort-clock-error"}
 {
 
-    yang_name = "serial-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "serial-stats"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Interfaces::Interface::SerialStats::~SerialStats()
@@ -9085,6 +9193,7 @@ Interfaces::Interface::SerialStats::~SerialStats()
 
 bool Interfaces::Interface::SerialStats::has_data() const
 {
+    if (is_presence_container) return true;
     return in_abort_clock_error.is_set;
 }
 
@@ -9155,25 +9264,34 @@ const Enum::YLeaf QosMatchType::qos_match_src_port {3, "qos-match-src-port"};
 const Enum::YLeaf QosMatchType::qos_match_dst_port {4, "qos-match-dst-port"};
 const Enum::YLeaf QosMatchType::qos_match_proto {5, "qos-match-proto"};
 
+const Enum::YLeaf EtherDuplex::full_duplex {0, "full-duplex"};
+const Enum::YLeaf EtherDuplex::half_duplex {1, "half-duplex"};
+const Enum::YLeaf EtherDuplex::auto_duplex {2, "auto-duplex"};
+const Enum::YLeaf EtherDuplex::unknown_duplex {3, "unknown-duplex"};
+
+const Enum::YLeaf T1e1LoopbackMode::t1e1_no_loopback {0, "t1e1-no-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_cli_local_loopback {1, "t1e1-cli-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_cli_local_loopback {2, "t1e1-line-cli-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_cli_local_loopback {3, "t1e1-payload-cli-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_local_line_loopback {4, "t1e1-local-line-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_local_payload_loopback {5, "t1e1-local-payload-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_local_ansi_fdl_remote_loopback {6, "t1e1-local-ansi-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_att_fdl_remote_loopback {7, "t1e1-line-att-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_ansi_fdl_remote_loopback {8, "t1e1-payload-ansi-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_att_fdl_remote_loopback {9, "t1e1-payload-att-fdl-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_iboc_remote_loopback {10, "t1e1-line-iboc-remote-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_ansi_fdl_local_loopback {11, "t1e1-line-ansi-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_att_fdl_local_loopback {12, "t1e1-line-att-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_ansi_fdl_local_loopback {13, "t1e1-payload-ansi-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_payload_att_fdl_local_loopback {14, "t1e1-payload-att-fdl-local-loopback"};
+const Enum::YLeaf T1e1LoopbackMode::t1e1_line_iboc_local_loopback {15, "t1e1-line-iboc-local-loopback"};
+
 const Enum::YLeaf ThreshUnit::thresh_units_default {0, "thresh-units-default"};
 const Enum::YLeaf ThreshUnit::thresh_units_bytes {1, "thresh-units-bytes"};
 const Enum::YLeaf ThreshUnit::thresh_units_sec {2, "thresh-units-sec"};
 const Enum::YLeaf ThreshUnit::thresh_units_packets {3, "thresh-units-packets"};
 const Enum::YLeaf ThreshUnit::thresh_units_cells {4, "thresh-units-cells"};
 const Enum::YLeaf ThreshUnit::thresh_units_percent {5, "thresh-units-percent"};
-
-const Enum::YLeaf QosDirection::qos_inbound {0, "qos-inbound"};
-const Enum::YLeaf QosDirection::qos_outbound {1, "qos-outbound"};
-
-const Enum::YLeaf IntfState::if_state_unknown {0, "if-state-unknown"};
-const Enum::YLeaf IntfState::if_state_up {1, "if-state-up"};
-const Enum::YLeaf IntfState::if_state_down {2, "if-state-down"};
-const Enum::YLeaf IntfState::if_state_test {3, "if-state-test"};
-
-const Enum::YLeaf EtherDuplex::full_duplex {0, "full-duplex"};
-const Enum::YLeaf EtherDuplex::half_duplex {1, "half-duplex"};
-const Enum::YLeaf EtherDuplex::auto_duplex {2, "auto-duplex"};
-const Enum::YLeaf EtherDuplex::unknown_duplex {3, "unknown-duplex"};
 
 const Enum::YLeaf EtherSpeed::speed_10mb {0, "speed-10mb"};
 const Enum::YLeaf EtherSpeed::speed_100mb {1, "speed-100mb"};
@@ -9193,6 +9311,12 @@ const Enum::YLeaf OperState::if_oper_state_unknown {4, "if-oper-state-unknown"};
 const Enum::YLeaf OperState::if_oper_state_dormant {5, "if-oper-state-dormant"};
 const Enum::YLeaf OperState::if_oper_state_not_present {6, "if-oper-state-not-present"};
 const Enum::YLeaf OperState::if_oper_state_lower_layer_down {7, "if-oper-state-lower-layer-down"};
+
+const Enum::YLeaf SerialCrc::serial_crc32 {0, "serial-crc32"};
+const Enum::YLeaf SerialCrc::serial_crc16 {1, "serial-crc16"};
+
+const Enum::YLeaf SubrateSpeed::dsx1_subrate_56kbps {0, "dsx1-subrate-56kbps"};
+const Enum::YLeaf SubrateSpeed::dsx1_subrate_64kbps {1, "dsx1-subrate-64kbps"};
 
 const Enum::YLeaf IetfIntfType::iana_iftype_other {1, "iana-iftype-other"};
 const Enum::YLeaf IetfIntfType::iana_iftype_regular1822 {2, "iana-iftype-regular1822"};
@@ -9473,28 +9597,13 @@ const Enum::YLeaf IetfIntfType::iana_iftype_sdci {280, "iana-iftype-sdci"};
 const Enum::YLeaf IetfIntfType::iana_iftype_xbox_wireless {281, "iana-iftype-xbox-wireless"};
 const Enum::YLeaf IetfIntfType::iana_iftype_fastdsl {282, "iana-iftype-fastdsl"};
 
-const Enum::YLeaf SerialCrc::serial_crc32 {0, "serial-crc32"};
-const Enum::YLeaf SerialCrc::serial_crc16 {1, "serial-crc16"};
+const Enum::YLeaf QosDirection::qos_inbound {0, "qos-inbound"};
+const Enum::YLeaf QosDirection::qos_outbound {1, "qos-outbound"};
 
-const Enum::YLeaf SubrateSpeed::dsx1_subrate_56kbps {0, "dsx1-subrate-56kbps"};
-const Enum::YLeaf SubrateSpeed::dsx1_subrate_64kbps {1, "dsx1-subrate-64kbps"};
-
-const Enum::YLeaf T1E1LoopbackMode::t1e1_no_loopback {0, "t1e1-no-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_cli_local_loopback {1, "t1e1-cli-local-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_line_cli_local_loopback {2, "t1e1-line-cli-local-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_payload_cli_local_loopback {3, "t1e1-payload-cli-local-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_local_line_loopback {4, "t1e1-local-line-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_local_payload_loopback {5, "t1e1-local-payload-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_local_ansi_fdl_remote_loopback {6, "t1e1-local-ansi-fdl-remote-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_line_att_fdl_remote_loopback {7, "t1e1-line-att-fdl-remote-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_payload_ansi_fdl_remote_loopback {8, "t1e1-payload-ansi-fdl-remote-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_payload_att_fdl_remote_loopback {9, "t1e1-payload-att-fdl-remote-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_line_iboc_remote_loopback {10, "t1e1-line-iboc-remote-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_line_ansi_fdl_local_loopback {11, "t1e1-line-ansi-fdl-local-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_line_att_fdl_local_loopback {12, "t1e1-line-att-fdl-local-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_payload_ansi_fdl_local_loopback {13, "t1e1-payload-ansi-fdl-local-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_payload_att_fdl_local_loopback {14, "t1e1-payload-att-fdl-local-loopback"};
-const Enum::YLeaf T1E1LoopbackMode::t1e1_line_iboc_local_loopback {15, "t1e1-line-iboc-local-loopback"};
+const Enum::YLeaf IntfState::if_state_unknown {0, "if-state-unknown"};
+const Enum::YLeaf IntfState::if_state_up {1, "if-state-up"};
+const Enum::YLeaf IntfState::if_state_down {2, "if-state-down"};
+const Enum::YLeaf IntfState::if_state_test {3, "if-state-test"};
 
 
 }

@@ -29,8 +29,9 @@
 #include <functional>
 #include <cstring>
 #include <cassert>
+#include <set>
 #include <unordered_set>
-#include <unordered_map>
+#include <map>
 
 #include "libyang/libyang.h"
 #include "libyang/tree_schema.h"
@@ -84,6 +85,8 @@ namespace ydk {
             const lys_module* load_module(ly_ctx* ctx, const std::string& module_name, const std::string& revision, const std::vector<std::string>& features, bool& new_module);
 
             void get_module_capabilities(ydk::path::Capability& capability);
+            void collect_features_from_imported_modules(const lys_module* module,
+                                                        std::set<std::pair<lys_module*, std::string>>& features);
 
          private:
             std::vector<ModelProvider*> model_providers;

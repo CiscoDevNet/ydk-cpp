@@ -81,7 +81,7 @@ class Macsec::Secy::Interfaces : public ydk::Entity
 
         class Interface; //type: Macsec::Secy::Interfaces::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface> > interface;
+        ydk::YList interface;
         
 }; // Macsec::Secy::Interfaces
 
@@ -133,7 +133,7 @@ class Macsec::Secy::Interfaces::Interface::Stats : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::IntfStats> intf_stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::TxScStats> tx_sc_stats;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::RxScStats> > rx_sc_stats;
+        ydk::YList rx_sc_stats;
         
 }; // Macsec::Secy::Interfaces::Interface::Stats
 
@@ -194,7 +194,7 @@ class Macsec::Secy::Interfaces::Interface::Stats::TxScStats : public ydk::Entity
         ydk::YLeaf out_pkts_too_long; //type: uint64
         class TxsaStat; //type: Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat> > txsa_stat;
+        ydk::YList txsa_stat;
         
 }; // Macsec::Secy::Interfaces::Interface::Stats::TxScStats
 
@@ -252,7 +252,7 @@ class Macsec::Secy::Interfaces::Interface::Stats::RxScStats : public ydk::Entity
         ydk::YLeaf in_octets_decrypted; //type: uint64
         class RxsaStat; //type: Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_macsec_secy_oper::Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat> > rxsa_stat;
+        ydk::YList rxsa_stat;
         
 }; // Macsec::Secy::Interfaces::Interface::Stats::RxScStats
 

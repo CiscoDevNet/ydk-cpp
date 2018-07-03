@@ -27,7 +27,7 @@ Aps::Aps()
 {
     aps_modules->parent = this;
 
-    yang_name = "aps"; yang_parent_name = "openconfig-transport-line-protection"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "aps"; yang_parent_name = "openconfig-transport-line-protection"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Aps::~Aps()
@@ -36,6 +36,7 @@ Aps::~Aps()
 
 bool Aps::has_data() const
 {
+    if (is_presence_container) return true;
     return (aps_modules !=  nullptr && aps_modules->has_data());
 }
 
@@ -128,9 +129,11 @@ bool Aps::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 Aps::ApsModules::ApsModules()
+    :
+    aps_module(this, {"name"})
 {
 
-    yang_name = "aps-modules"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aps-modules"; yang_parent_name = "aps"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aps::ApsModules::~ApsModules()
@@ -139,7 +142,8 @@ Aps::ApsModules::~ApsModules()
 
 bool Aps::ApsModules::has_data() const
 {
-    for (std::size_t index=0; index<aps_module.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<aps_module.len(); index++)
     {
         if(aps_module[index]->has_data())
             return true;
@@ -149,7 +153,7 @@ bool Aps::ApsModules::has_data() const
 
 bool Aps::ApsModules::has_operation() const
 {
-    for (std::size_t index=0; index<aps_module.size(); index++)
+    for (std::size_t index=0; index<aps_module.len(); index++)
     {
         if(aps_module[index]->has_operation())
             return true;
@@ -186,7 +190,7 @@ std::shared_ptr<Entity> Aps::ApsModules::get_child_by_name(const std::string & c
     {
         auto c = std::make_shared<Aps::ApsModules::ApsModule>();
         c->parent = this;
-        aps_module.push_back(c);
+        aps_module.append(c);
         return c;
     }
 
@@ -198,7 +202,7 @@ std::map<std::string, std::shared_ptr<Entity>> Aps::ApsModules::get_children() c
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : aps_module)
+    for (auto c : aps_module.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -227,16 +231,16 @@ bool Aps::ApsModules::has_leaf_or_child_of_name(const std::string & name) const
 Aps::ApsModules::ApsModule::ApsModule()
     :
     name{YType::str, "name"}
-    	,
+        ,
     config(std::make_shared<Aps::ApsModules::ApsModule::Config>())
-	,state(std::make_shared<Aps::ApsModules::ApsModule::State>())
-	,ports(std::make_shared<Aps::ApsModules::ApsModule::Ports>())
+    , state(std::make_shared<Aps::ApsModules::ApsModule::State>())
+    , ports(std::make_shared<Aps::ApsModules::ApsModule::Ports>())
 {
     config->parent = this;
     state->parent = this;
     ports->parent = this;
 
-    yang_name = "aps-module"; yang_parent_name = "aps-modules"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "aps-module"; yang_parent_name = "aps-modules"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 Aps::ApsModules::ApsModule::~ApsModule()
@@ -245,6 +249,7 @@ Aps::ApsModules::ApsModule::~ApsModule()
 
 bool Aps::ApsModules::ApsModule::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data())
@@ -270,7 +275,8 @@ std::string Aps::ApsModules::ApsModule::get_absolute_path() const
 std::string Aps::ApsModules::ApsModule::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "aps-module" <<"[name='" <<name <<"']";
+    path_buffer << "aps-module";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -373,7 +379,7 @@ Aps::ApsModules::ApsModule::Config::Config()
     secondary_switch_hysteresis{YType::str, "secondary-switch-hysteresis"}
 {
 
-    yang_name = "config"; yang_parent_name = "aps-module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "aps-module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Config::~Config()
@@ -382,6 +388,7 @@ Aps::ApsModules::ApsModule::Config::~Config()
 
 bool Aps::ApsModules::ApsModule::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| revertive.is_set
 	|| primary_switch_threshold.is_set
@@ -521,7 +528,7 @@ Aps::ApsModules::ApsModule::State::State()
     active_path{YType::identityref, "active-path"}
 {
 
-    yang_name = "state"; yang_parent_name = "aps-module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "aps-module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::State::~State()
@@ -530,6 +537,7 @@ Aps::ApsModules::ApsModule::State::~State()
 
 bool Aps::ApsModules::ApsModule::State::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| revertive.is_set
 	|| primary_switch_threshold.is_set
@@ -674,11 +682,11 @@ bool Aps::ApsModules::ApsModule::State::has_leaf_or_child_of_name(const std::str
 Aps::ApsModules::ApsModule::Ports::Ports()
     :
     line_primary_in(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryIn>())
-	,line_primary_out(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryOut>())
-	,line_secondary_in(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryIn>())
-	,line_secondary_out(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryOut>())
-	,common_in(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonIn>())
-	,common_output(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonOutput>())
+    , line_primary_out(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryOut>())
+    , line_secondary_in(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryIn>())
+    , line_secondary_out(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryOut>())
+    , common_in(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonIn>())
+    , common_output(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonOutput>())
 {
     line_primary_in->parent = this;
     line_primary_out->parent = this;
@@ -687,7 +695,7 @@ Aps::ApsModules::ApsModule::Ports::Ports()
     common_in->parent = this;
     common_output->parent = this;
 
-    yang_name = "ports"; yang_parent_name = "aps-module"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "ports"; yang_parent_name = "aps-module"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::~Ports()
@@ -696,6 +704,7 @@ Aps::ApsModules::ApsModule::Ports::~Ports()
 
 bool Aps::ApsModules::ApsModule::Ports::has_data() const
 {
+    if (is_presence_container) return true;
     return (line_primary_in !=  nullptr && line_primary_in->has_data())
 	|| (line_primary_out !=  nullptr && line_primary_out->has_data())
 	|| (line_secondary_in !=  nullptr && line_secondary_in->has_data())
@@ -845,12 +854,12 @@ bool Aps::ApsModules::ApsModule::Ports::has_leaf_or_child_of_name(const std::str
 Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::LinePrimaryIn()
     :
     config(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config>())
-	,state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State>())
+    , state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "line-primary-in"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-primary-in"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::~LinePrimaryIn()
@@ -859,6 +868,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::~LinePrimaryIn()
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -947,7 +957,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::Config()
     target_attenuation{YType::str, "target-attenuation"}
 {
 
-    yang_name = "config"; yang_parent_name = "line-primary-in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "line-primary-in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::~Config()
@@ -956,6 +966,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::~Config()
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| target_attenuation.is_set;
 }
@@ -1037,12 +1048,12 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::State()
     enabled{YType::boolean, "enabled"},
     target_attenuation{YType::str, "target-attenuation"},
     attenuation{YType::str, "attenuation"}
-    	,
+        ,
     optical_power(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower>())
 {
     optical_power->parent = this;
 
-    yang_name = "state"; yang_parent_name = "line-primary-in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "line-primary-in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::~State()
@@ -1051,6 +1062,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::~State()
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| target_attenuation.is_set
 	|| attenuation.is_set
@@ -1164,7 +1176,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::OpticalPo
     max{YType::str, "max"}
 {
 
-    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::~OpticalPower()
@@ -1173,6 +1185,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::~OpticalP
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1278,12 +1291,12 @@ bool Aps::ApsModules::ApsModule::Ports::LinePrimaryIn::State::OpticalPower::has_
 Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::LinePrimaryOut()
     :
     config(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config>())
-	,state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State>())
+    , state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "line-primary-out"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-primary-out"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::~LinePrimaryOut()
@@ -1292,6 +1305,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::~LinePrimaryOut()
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -1379,7 +1393,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::Config()
     target_attenuation{YType::str, "target-attenuation"}
 {
 
-    yang_name = "config"; yang_parent_name = "line-primary-out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "line-primary-out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::~Config()
@@ -1388,6 +1402,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::~Config()
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return target_attenuation.is_set;
 }
 
@@ -1455,12 +1470,12 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::State()
     :
     target_attenuation{YType::str, "target-attenuation"},
     attenuation{YType::str, "attenuation"}
-    	,
+        ,
     optical_power(std::make_shared<Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower>())
 {
     optical_power->parent = this;
 
-    yang_name = "state"; yang_parent_name = "line-primary-out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "line-primary-out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::~State()
@@ -1469,6 +1484,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::~State()
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::has_data() const
 {
+    if (is_presence_container) return true;
     return target_attenuation.is_set
 	|| attenuation.is_set
 	|| (optical_power !=  nullptr && optical_power->has_data());
@@ -1569,7 +1585,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::OpticalP
     max{YType::str, "max"}
 {
 
-    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::~OpticalPower()
@@ -1578,6 +1594,7 @@ Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::~Optical
 
 bool Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -1683,12 +1700,12 @@ bool Aps::ApsModules::ApsModule::Ports::LinePrimaryOut::State::OpticalPower::has
 Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::LineSecondaryIn()
     :
     config(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config>())
-	,state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State>())
+    , state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "line-secondary-in"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-secondary-in"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::~LineSecondaryIn()
@@ -1697,6 +1714,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::~LineSecondaryIn()
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -1785,7 +1803,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::Config()
     target_attenuation{YType::str, "target-attenuation"}
 {
 
-    yang_name = "config"; yang_parent_name = "line-secondary-in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "line-secondary-in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::~Config()
@@ -1794,6 +1812,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::~Config()
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| target_attenuation.is_set;
 }
@@ -1875,12 +1894,12 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::State()
     enabled{YType::boolean, "enabled"},
     target_attenuation{YType::str, "target-attenuation"},
     attenuation{YType::str, "attenuation"}
-    	,
+        ,
     optical_power(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower>())
 {
     optical_power->parent = this;
 
-    yang_name = "state"; yang_parent_name = "line-secondary-in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "line-secondary-in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::~State()
@@ -1889,6 +1908,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::~State()
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| target_attenuation.is_set
 	|| attenuation.is_set
@@ -2002,7 +2022,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::Optical
     max{YType::str, "max"}
 {
 
-    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::~OpticalPower()
@@ -2011,6 +2031,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::~Optica
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2116,12 +2137,12 @@ bool Aps::ApsModules::ApsModule::Ports::LineSecondaryIn::State::OpticalPower::ha
 Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::LineSecondaryOut()
     :
     config(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config>())
-	,state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State>())
+    , state(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "line-secondary-out"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "line-secondary-out"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::~LineSecondaryOut()
@@ -2130,6 +2151,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::~LineSecondaryOut()
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -2217,7 +2239,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::Config()
     target_attenuation{YType::str, "target-attenuation"}
 {
 
-    yang_name = "config"; yang_parent_name = "line-secondary-out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "line-secondary-out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::~Config()
@@ -2226,6 +2248,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::~Config()
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return target_attenuation.is_set;
 }
 
@@ -2293,12 +2316,12 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::State()
     :
     target_attenuation{YType::str, "target-attenuation"},
     attenuation{YType::str, "attenuation"}
-    	,
+        ,
     optical_power(std::make_shared<Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower>())
 {
     optical_power->parent = this;
 
-    yang_name = "state"; yang_parent_name = "line-secondary-out"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "line-secondary-out"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::~State()
@@ -2307,6 +2330,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::~State()
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::has_data() const
 {
+    if (is_presence_container) return true;
     return target_attenuation.is_set
 	|| attenuation.is_set
 	|| (optical_power !=  nullptr && optical_power->has_data());
@@ -2407,7 +2431,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::Optica
     max{YType::str, "max"}
 {
 
-    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::~OpticalPower()
@@ -2416,6 +2440,7 @@ Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::~Optic
 
 bool Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2521,12 +2546,12 @@ bool Aps::ApsModules::ApsModule::Ports::LineSecondaryOut::State::OpticalPower::h
 Aps::ApsModules::ApsModule::Ports::CommonIn::CommonIn()
     :
     config(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonIn::Config>())
-	,state(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonIn::State>())
+    , state(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonIn::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "common-in"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-in"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonIn::~CommonIn()
@@ -2535,6 +2560,7 @@ Aps::ApsModules::ApsModule::Ports::CommonIn::~CommonIn()
 
 bool Aps::ApsModules::ApsModule::Ports::CommonIn::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -2623,7 +2649,7 @@ Aps::ApsModules::ApsModule::Ports::CommonIn::Config::Config()
     target_attenuation{YType::str, "target-attenuation"}
 {
 
-    yang_name = "config"; yang_parent_name = "common-in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "common-in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonIn::Config::~Config()
@@ -2632,6 +2658,7 @@ Aps::ApsModules::ApsModule::Ports::CommonIn::Config::~Config()
 
 bool Aps::ApsModules::ApsModule::Ports::CommonIn::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| target_attenuation.is_set;
 }
@@ -2713,12 +2740,12 @@ Aps::ApsModules::ApsModule::Ports::CommonIn::State::State()
     enabled{YType::boolean, "enabled"},
     target_attenuation{YType::str, "target-attenuation"},
     attenuation{YType::str, "attenuation"}
-    	,
+        ,
     optical_power(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower>())
 {
     optical_power->parent = this;
 
-    yang_name = "state"; yang_parent_name = "common-in"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "common-in"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonIn::State::~State()
@@ -2727,6 +2754,7 @@ Aps::ApsModules::ApsModule::Ports::CommonIn::State::~State()
 
 bool Aps::ApsModules::ApsModule::Ports::CommonIn::State::has_data() const
 {
+    if (is_presence_container) return true;
     return enabled.is_set
 	|| target_attenuation.is_set
 	|| attenuation.is_set
@@ -2840,7 +2868,7 @@ Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::OpticalPower()
     max{YType::str, "max"}
 {
 
-    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::~OpticalPower()
@@ -2849,6 +2877,7 @@ Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::~OpticalPower(
 
 bool Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set
@@ -2954,12 +2983,12 @@ bool Aps::ApsModules::ApsModule::Ports::CommonIn::State::OpticalPower::has_leaf_
 Aps::ApsModules::ApsModule::Ports::CommonOutput::CommonOutput()
     :
     config(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonOutput::Config>())
-	,state(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonOutput::State>())
+    , state(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonOutput::State>())
 {
     config->parent = this;
     state->parent = this;
 
-    yang_name = "common-output"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "common-output"; yang_parent_name = "ports"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonOutput::~CommonOutput()
@@ -2968,6 +2997,7 @@ Aps::ApsModules::ApsModule::Ports::CommonOutput::~CommonOutput()
 
 bool Aps::ApsModules::ApsModule::Ports::CommonOutput::has_data() const
 {
+    if (is_presence_container) return true;
     return (config !=  nullptr && config->has_data())
 	|| (state !=  nullptr && state->has_data());
 }
@@ -3055,7 +3085,7 @@ Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::Config()
     target_attenuation{YType::str, "target-attenuation"}
 {
 
-    yang_name = "config"; yang_parent_name = "common-output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "config"; yang_parent_name = "common-output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::~Config()
@@ -3064,6 +3094,7 @@ Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::~Config()
 
 bool Aps::ApsModules::ApsModule::Ports::CommonOutput::Config::has_data() const
 {
+    if (is_presence_container) return true;
     return target_attenuation.is_set;
 }
 
@@ -3131,12 +3162,12 @@ Aps::ApsModules::ApsModule::Ports::CommonOutput::State::State()
     :
     target_attenuation{YType::str, "target-attenuation"},
     attenuation{YType::str, "attenuation"}
-    	,
+        ,
     optical_power(std::make_shared<Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower>())
 {
     optical_power->parent = this;
 
-    yang_name = "state"; yang_parent_name = "common-output"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "state"; yang_parent_name = "common-output"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonOutput::State::~State()
@@ -3145,6 +3176,7 @@ Aps::ApsModules::ApsModule::Ports::CommonOutput::State::~State()
 
 bool Aps::ApsModules::ApsModule::Ports::CommonOutput::State::has_data() const
 {
+    if (is_presence_container) return true;
     return target_attenuation.is_set
 	|| attenuation.is_set
 	|| (optical_power !=  nullptr && optical_power->has_data());
@@ -3245,7 +3277,7 @@ Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::OpticalPow
     max{YType::str, "max"}
 {
 
-    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "optical-power"; yang_parent_name = "state"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::~OpticalPower()
@@ -3254,6 +3286,7 @@ Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::~OpticalPo
 
 bool Aps::ApsModules::ApsModule::Ports::CommonOutput::State::OpticalPower::has_data() const
 {
+    if (is_presence_container) return true;
     return instant.is_set
 	|| avg.is_set
 	|| min.is_set

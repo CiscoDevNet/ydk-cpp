@@ -71,7 +71,7 @@ class ObjectTracking::TrackTypeInterface : public ydk::Entity
 
         class TrackInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo> > track_info;
+        ydk::YList track_info;
         
 }; // ObjectTracking::TrackTypeInterface
 
@@ -261,7 +261,7 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks : public ydk::En
 
         class BoolTrackInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
+        ydk::YList bool_track_info;
         
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::BoolTracks
 
@@ -309,7 +309,7 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks : public yd
 
         class ThresholdTrackInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
+        ydk::YList threshold_track_info;
         
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::ThresholdTracks
 
@@ -357,7 +357,7 @@ class ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces : public 
 
         class InterfaceTrackingInfo; //type: ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
+        ydk::YList interface_tracking_info;
         
 }; // ObjectTracking::TrackTypeInterface::TrackInfo::TrackingInteraces
 
@@ -426,7 +426,7 @@ class ObjectTracking::TrackBriefs : public ydk::Entity
 
         class TrackBrief; //type: ObjectTracking::TrackBriefs::TrackBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief> > track_brief;
+        ydk::YList track_brief;
         
 }; // ObjectTracking::TrackBriefs
 
@@ -451,7 +451,7 @@ class ObjectTracking::TrackBriefs::TrackBrief : public ydk::Entity
         ydk::YLeaf track_name; //type: string
         class TrackInfoBrief; //type: ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief> > track_info_brief;
+        ydk::YList track_info_brief;
         
 }; // ObjectTracking::TrackBriefs::TrackBrief
 
@@ -623,7 +623,7 @@ class ObjectTracking::TrackTypeRtrReachability : public ydk::Entity
 
         class TrackInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo> > track_info;
+        ydk::YList track_info;
         
 }; // ObjectTracking::TrackTypeRtrReachability
 
@@ -813,7 +813,7 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks : public y
 
         class BoolTrackInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
+        ydk::YList bool_track_info;
         
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::BoolTracks
 
@@ -861,7 +861,7 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks : pub
 
         class ThresholdTrackInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
+        ydk::YList threshold_track_info;
         
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::ThresholdTracks
 
@@ -909,7 +909,7 @@ class ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces : p
 
         class InterfaceTrackingInfo; //type: ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
+        ydk::YList interface_tracking_info;
         
 }; // ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackingInteraces
 
@@ -978,7 +978,7 @@ class ObjectTracking::TrackTypeRtrReachabilityBrief : public ydk::Entity
 
         class TrackInfoBrief; //type: ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief> > track_info_brief;
+        ydk::YList track_info_brief;
         
 }; // ObjectTracking::TrackTypeRtrReachabilityBrief
 
@@ -1156,7 +1156,7 @@ class ObjectTracking::Tracks : public ydk::Entity
 
         class Track; //type: ObjectTracking::Tracks::Track
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track> > track;
+        ydk::YList track;
         
 }; // ObjectTracking::Tracks
 
@@ -1181,7 +1181,7 @@ class ObjectTracking::Tracks::Track : public ydk::Entity
         ydk::YLeaf track_name; //type: string
         class TrackInfo; //type: ObjectTracking::Tracks::Track::TrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo> > track_info;
+        ydk::YList track_info;
         
 }; // ObjectTracking::Tracks::Track
 
@@ -1364,7 +1364,7 @@ class ObjectTracking::Tracks::Track::TrackInfo::BoolTracks : public ydk::Entity
 
         class BoolTrackInfo; //type: ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
+        ydk::YList bool_track_info;
         
 }; // ObjectTracking::Tracks::Track::TrackInfo::BoolTracks
 
@@ -1410,7 +1410,7 @@ class ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks : public ydk::En
 
         class ThresholdTrackInfo; //type: ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
+        ydk::YList threshold_track_info;
         
 }; // ObjectTracking::Tracks::Track::TrackInfo::ThresholdTracks
 
@@ -1456,7 +1456,7 @@ class ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces : public ydk::
 
         class InterfaceTrackingInfo; //type: ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
+        ydk::YList interface_tracking_info;
         
 }; // ObjectTracking::Tracks::Track::TrackInfo::TrackingInteraces
 
@@ -1523,7 +1523,7 @@ class ObjectTracking::TrackTypeIpv4RouteBrief : public ydk::Entity
 
         class TrackInfoBrief; //type: ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief> > track_info_brief;
+        ydk::YList track_info_brief;
         
 }; // ObjectTracking::TrackTypeIpv4RouteBrief
 
@@ -1701,7 +1701,7 @@ class ObjectTracking::TrackTypeIpv4Route : public ydk::Entity
 
         class TrackInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo> > track_info;
+        ydk::YList track_info;
         
 }; // ObjectTracking::TrackTypeIpv4Route
 
@@ -1891,7 +1891,7 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks : public ydk::En
 
         class BoolTrackInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks::BoolTrackInfo> > bool_track_info;
+        ydk::YList bool_track_info;
         
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::BoolTracks
 
@@ -1939,7 +1939,7 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks : public yd
 
         class ThresholdTrackInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks::ThresholdTrackInfo> > threshold_track_info;
+        ydk::YList threshold_track_info;
         
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::ThresholdTracks
 
@@ -1987,7 +1987,7 @@ class ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces : public 
 
         class InterfaceTrackingInfo; //type: ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces::InterfaceTrackingInfo> > interface_tracking_info;
+        ydk::YList interface_tracking_info;
         
 }; // ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackingInteraces
 
@@ -2056,7 +2056,7 @@ class ObjectTracking::TrackTypeInterfaceBrief : public ydk::Entity
 
         class TrackInfoBrief; //type: ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_oper::ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief> > track_info_brief;
+        ydk::YList track_info_brief;
         
 }; // ObjectTracking::TrackTypeInterfaceBrief
 

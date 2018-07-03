@@ -13,11 +13,11 @@ namespace CISCO_IMAGE_MIB {
 
 CISCOIMAGEMIB::CISCOIMAGEMIB()
     :
-    ciscoimagetable(std::make_shared<CISCOIMAGEMIB::Ciscoimagetable>())
+    ciscoimagetable(std::make_shared<CISCOIMAGEMIB::CiscoImageTable>())
 {
     ciscoimagetable->parent = this;
 
-    yang_name = "CISCO-IMAGE-MIB"; yang_parent_name = "CISCO-IMAGE-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-IMAGE-MIB"; yang_parent_name = "CISCO-IMAGE-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOIMAGEMIB::~CISCOIMAGEMIB()
@@ -26,6 +26,7 @@ CISCOIMAGEMIB::~CISCOIMAGEMIB()
 
 bool CISCOIMAGEMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (ciscoimagetable !=  nullptr && ciscoimagetable->has_data());
 }
 
@@ -57,7 +58,7 @@ std::shared_ptr<Entity> CISCOIMAGEMIB::get_child_by_name(const std::string & chi
     {
         if(ciscoimagetable == nullptr)
         {
-            ciscoimagetable = std::make_shared<CISCOIMAGEMIB::Ciscoimagetable>();
+            ciscoimagetable = std::make_shared<CISCOIMAGEMIB::CiscoImageTable>();
         }
         return ciscoimagetable;
     }
@@ -117,19 +118,22 @@ bool CISCOIMAGEMIB::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
-CISCOIMAGEMIB::Ciscoimagetable::Ciscoimagetable()
+CISCOIMAGEMIB::CiscoImageTable::CiscoImageTable()
+    :
+    ciscoimageentry(this, {"ciscoimageindex"})
 {
 
-    yang_name = "ciscoImageTable"; yang_parent_name = "CISCO-IMAGE-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoImageTable"; yang_parent_name = "CISCO-IMAGE-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGEMIB::Ciscoimagetable::~Ciscoimagetable()
+CISCOIMAGEMIB::CiscoImageTable::~CiscoImageTable()
 {
 }
 
-bool CISCOIMAGEMIB::Ciscoimagetable::has_data() const
+bool CISCOIMAGEMIB::CiscoImageTable::has_data() const
 {
-    for (std::size_t index=0; index<ciscoimageentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ciscoimageentry.len(); index++)
     {
         if(ciscoimageentry[index]->has_data())
             return true;
@@ -137,9 +141,9 @@ bool CISCOIMAGEMIB::Ciscoimagetable::has_data() const
     return false;
 }
 
-bool CISCOIMAGEMIB::Ciscoimagetable::has_operation() const
+bool CISCOIMAGEMIB::CiscoImageTable::has_operation() const
 {
-    for (std::size_t index=0; index<ciscoimageentry.size(); index++)
+    for (std::size_t index=0; index<ciscoimageentry.len(); index++)
     {
         if(ciscoimageentry[index]->has_operation())
             return true;
@@ -147,21 +151,21 @@ bool CISCOIMAGEMIB::Ciscoimagetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOIMAGEMIB::Ciscoimagetable::get_absolute_path() const
+std::string CISCOIMAGEMIB::CiscoImageTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-MIB:CISCO-IMAGE-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGEMIB::Ciscoimagetable::get_segment_path() const
+std::string CISCOIMAGEMIB::CiscoImageTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ciscoImageTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::Ciscoimagetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::CiscoImageTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -170,25 +174,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::Ciscoimagetable::g
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGEMIB::Ciscoimagetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGEMIB::CiscoImageTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "ciscoImageEntry")
     {
-        auto c = std::make_shared<CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry>();
+        auto c = std::make_shared<CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry>();
         c->parent = this;
-        ciscoimageentry.push_back(c);
+        ciscoimageentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::Ciscoimagetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::CiscoImageTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : ciscoimageentry)
+    for (auto c : ciscoimageentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -199,62 +203,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::Ciscoimagetable::g
     return children;
 }
 
-void CISCOIMAGEMIB::Ciscoimagetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGEMIB::CiscoImageTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOIMAGEMIB::Ciscoimagetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGEMIB::CiscoImageTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOIMAGEMIB::Ciscoimagetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGEMIB::CiscoImageTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoImageEntry")
         return true;
     return false;
 }
 
-CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::Ciscoimageentry()
+CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::CiscoImageEntry()
     :
     ciscoimageindex{YType::int32, "ciscoImageIndex"},
     ciscoimagestring{YType::str, "ciscoImageString"}
 {
 
-    yang_name = "ciscoImageEntry"; yang_parent_name = "ciscoImageTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ciscoImageEntry"; yang_parent_name = "ciscoImageTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::~Ciscoimageentry()
+CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::~CiscoImageEntry()
 {
 }
 
-bool CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::has_data() const
+bool CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ciscoimageindex.is_set
 	|| ciscoimagestring.is_set;
 }
 
-bool CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::has_operation() const
+bool CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ciscoimageindex.yfilter)
 	|| ydk::is_set(ciscoimagestring.yfilter);
 }
 
-std::string CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_absolute_path() const
+std::string CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-IMAGE-MIB:CISCO-IMAGE-MIB/ciscoImageTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_segment_path() const
+std::string CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "ciscoImageEntry" <<"[ciscoImageIndex='" <<ciscoimageindex <<"']";
+    path_buffer << "ciscoImageEntry";
+    ADD_KEY_TOKEN(ciscoimageindex, "ciscoImageIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -265,19 +271,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOIMAGEMIB::Ciscoimagetable::C
 
 }
 
-std::shared_ptr<Entity> CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ciscoImageIndex")
     {
@@ -293,7 +299,7 @@ void CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::set_value(const std::strin
     }
 }
 
-void CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ciscoImageIndex")
     {
@@ -305,7 +311,7 @@ void CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::set_filter(const std::stri
     }
 }
 
-bool CISCOIMAGEMIB::Ciscoimagetable::Ciscoimageentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOIMAGEMIB::CiscoImageTable::CiscoImageEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ciscoImageIndex" || name == "ciscoImageString")
         return true;

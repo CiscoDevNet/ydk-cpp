@@ -16,7 +16,7 @@ Clock::Clock()
     time_zone(nullptr) // presence node
 {
 
-    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-infra-infra-clock-linux-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "clock"; yang_parent_name = "Cisco-IOS-XR-infra-infra-clock-linux-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 Clock::~Clock()
@@ -25,6 +25,7 @@ Clock::~Clock()
 
 bool Clock::has_data() const
 {
+    if (is_presence_container) return true;
     return (time_zone !=  nullptr && time_zone->has_data());
 }
 
@@ -122,7 +123,7 @@ Clock::TimeZone::TimeZone()
     area_name{YType::str, "area-name"}
 {
 
-    yang_name = "time-zone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "time-zone"; yang_parent_name = "clock"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Clock::TimeZone::~TimeZone()
@@ -131,6 +132,7 @@ Clock::TimeZone::~TimeZone()
 
 bool Clock::TimeZone::has_data() const
 {
+    if (is_presence_container) return true;
     return time_zone_name.is_set
 	|| area_name.is_set;
 }

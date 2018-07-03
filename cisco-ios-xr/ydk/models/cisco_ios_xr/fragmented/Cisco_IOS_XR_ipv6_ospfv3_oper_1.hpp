@@ -13,6 +13,29 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ospfv3_oper {
 
 
+class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable : public ydk::Entity
+{
+    public:
+        RequestListTable();
+        ~RequestListTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Request; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Request
+
+        ydk::YList request;
+        
+}; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable
+
+
 class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Request : public ydk::Entity
 {
     public:
@@ -38,7 +61,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Requ
         ydk::YLeaf request_sham_link_id; //type: uint32
         class Request_; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Request::Request_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Request::Request_> > request;
+        ydk::YList request;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RequestListTable::Request
 
@@ -86,7 +109,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable : public
 
         class Neighbor; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Neighbor
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable::Neighbor> > neighbor;
+        ydk::YList neighbor;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborTable
 
@@ -246,7 +269,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable : publi
 
         class Interface; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interface> > interface;
+        ydk::YList interface;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable
 
@@ -313,7 +336,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interf
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interface::ActiveInterface> active_interface;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interface::InterfaceBfd> interface_bfd;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interface::InterfaceNeighbor> > interface_neighbor;
+        ydk::YList interface_neighbor;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceTable::Interface
 
@@ -422,7 +445,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable : publi
 
         class Flood; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood> > flood;
+        ydk::YList flood;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable
 
@@ -450,9 +473,9 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood 
         class AreaFlood; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood::AreaFlood
         class AsFlood; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood::AsFlood
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood::LinkFlood> > link_flood;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood::AreaFlood> > area_flood;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood::AsFlood> > as_flood;
+        ydk::YList link_flood;
+        ydk::YList area_flood;
+        ydk::YList as_flood;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::FloodListTable::Flood
 
@@ -550,7 +573,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTabl
 
         class Retransmission; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission> > retransmission;
+        ydk::YList retransmission;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable
 
@@ -584,9 +607,9 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTabl
         class RetransmissionAreaDb; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission::RetransmissionAreaDb
         class RetransmissionAsdb; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission::RetransmissionAsdb
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission::RetransmissionvirtualLinkDb> > retransmissionvirtual_link_db;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission::RetransmissionAreaDb> > retransmission_area_db;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission::RetransmissionAsdb> > retransmission_asdb;
+        ydk::YList retransmissionvirtual_link_db;
+        ydk::YList retransmission_area_db;
+        ydk::YList retransmission_asdb;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::RetransmissionListTable::Retransmission
 
@@ -709,7 +732,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTabl
 
         class Lsa; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa> > lsa;
+        ydk::YList lsa;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable
 
@@ -730,10 +753,10 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTabl
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf area_id; //type: uint32
         ydk::YLeaf ls_type; //type: Ospfv3Lsa
         ydk::YLeaf advertising_router; //type: string
-        ydk::YLeaf ls_id; //type: int32
+        ydk::YLeaf ls_id; //type: uint32
         ydk::YLeaf interface_name; //type: string
         class LsaInfo; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo
 
@@ -922,7 +945,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTabl
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaHeader> lsa_header;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::LsaDetail> lsa_detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::RpfPath> rpf_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType::Link> > link;
+        ydk::YList link;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::RouterLsaType
 
@@ -1557,7 +1580,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTabl
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaHeader> lsa_header;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::LsaDetail> lsa_detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::LinkLsaType
 
@@ -1680,7 +1703,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTabl
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader> lsa_header;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail> lsa_detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::IntraAreaPrefixLsaType
 
@@ -2288,7 +2311,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInte
 
         class Lsa; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa> > lsa;
+        ydk::YList lsa;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable
 
@@ -2309,10 +2332,10 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInte
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf area_id; //type: int32
+        ydk::YLeaf area_id; //type: uint32
         ydk::YLeaf ls_type; //type: Ospfv3Lsa
         ydk::YLeaf advertising_router; //type: string
-        ydk::YLeaf ls_id; //type: int32
+        ydk::YLeaf ls_id; //type: uint32
         ydk::YLeaf interface_name; //type: string
         class LsaInfo; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo
 
@@ -2501,7 +2524,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInte
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaHeader> lsa_header;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::LsaDetail> lsa_detail;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::RpfPath> rpf_path;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType::Link> > link;
+        ydk::YList link;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::RouterLsaType
 
@@ -3136,7 +3159,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInte
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaHeader> lsa_header;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::LsaDetail> lsa_detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::LinkLsaType
 
@@ -3259,7 +3282,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInte
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaHeader> lsa_header;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::LsaDetail> lsa_detail;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType::Prefix> > prefix;
+        ydk::YList prefix;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseTable::LsaInternalTable::Lsa::LsaInfo::IntraAreaPrefixLsaType
 
@@ -3894,7 +3917,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::
         class AreaDatabase; //type: Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::DatabaseCounters> database_counters;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary::AreaDatabase> > area_database;
+        ydk::YList area_database;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::DatabaseSummaryTable::DatabaseSummary
 
@@ -3989,7 +4012,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes : public ydk::Entity
 
         class InternalRoute; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute> > internal_route;
+        ydk::YList internal_route;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes
 
@@ -4018,8 +4041,8 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute : pub
         class RoutePath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RouteTopology> route_topology;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RouteSource> > route_source;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath> > route_path;
+        ydk::YList route_source;
+        ydk::YList route_path;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute
 
@@ -4091,8 +4114,10 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::Rout
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath
+        class NeighborNextHop; //type: Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::NeighborNextHop
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath> route_backup_path;
+        ydk::YList neighbor_next_hop;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath
 
@@ -4126,6 +4151,27 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::Rout
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::RouteBackupPath
 
 
+class Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::NeighborNextHop : public ydk::Entity
+{
+    public:
+        NeighborNextHop();
+        ~NeighborNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_next_hop_intf_index; //type: uint32
+
+}; // Ospfv3::Processes::Process::Vrfs::Vrf::InternalRoutes::InternalRoute::RoutePath::NeighborNextHop
+
+
 class Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas : public ydk::Entity
 {
     public:
@@ -4144,7 +4190,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas : public ydk::Entity
 
         class ProtocolArea; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea> > protocol_area;
+        ydk::YList protocol_area;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas
 
@@ -4170,7 +4216,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea : publi
         ydk::YLeaf distribute_list_in; //type: string
         class ProtocolInterface; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea::ProtocolInterface
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea::ProtocolInterface> > protocol_interface;
+        ydk::YList protocol_interface;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ProtocolAreas::ProtocolArea
 
@@ -4215,7 +4261,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes : public ydk::Entit
 
         class ConnectedRoute; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute> > connected_route;
+        ydk::YList connected_route;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes
 
@@ -4242,7 +4288,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute : p
         class RoutePath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RouteTopology> route_topology;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath> > route_path;
+        ydk::YList route_path;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute
 
@@ -4291,8 +4337,10 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::Ro
         ydk::YLeaf route_path_next_hop; //type: string
         ydk::YLeaf route_path_id; //type: uint16
         class RouteBackupPath; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath
+        class NeighborNextHop; //type: Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::NeighborNextHop
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath> route_backup_path;
+        ydk::YList neighbor_next_hop;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath
 
@@ -4324,6 +4372,27 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::Ro
         ydk::YLeaf srlg_disjoint; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::RouteBackupPath
+
+
+class Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::NeighborNextHop : public ydk::Entity
+{
+    public:
+        NeighborNextHop();
+        ~NeighborNextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_next_hop_intf_index; //type: uint32
+
+}; // Ospfv3::Processes::Process::Vrfs::Vrf::ConnectedRoutes::ConnectedRoute::RoutePath::NeighborNextHop
 
 
 class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics : public ydk::Entity
@@ -4375,7 +4444,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::ProtocolStats : publ
 
         class ProtocolStat; //type: Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::ProtocolStats::ProtocolStat
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::ProtocolStats::ProtocolStat> > protocol_stat;
+        ydk::YList protocol_stat;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::ProtocolStats
 
@@ -4444,7 +4513,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats : public yd
         class SpfRuntime; //type: Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfHeader> spf_header;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime> > spf_runtime;
+        ydk::YList spf_runtime;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats
 
@@ -4469,7 +4538,7 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfHeader 
         ydk::YLeaf header_sp_fs; //type: uint32
         class AreaSummary; //type: Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfHeader::AreaSummary> > area_summary;
+        ydk::YList area_summary;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfHeader
 
@@ -4522,89 +4591,10 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime
         class AreaStat; //type: Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime> global_time;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa> > lsa;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat> > area_stat;
+        ydk::YList lsa;
+        ydk::YList area_stat;
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime
-
-
-class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime : public ydk::Entity
-{
-    public:
-        GlobalTime();
-        ~GlobalTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf dijkstra; //type: uint32
-        ydk::YLeaf intra_prefix; //type: uint32
-        ydk::YLeaf intra_prefix_del; //type: uint32
-        ydk::YLeaf inter_prefix; //type: uint32
-        ydk::YLeaf inter_prefix_del; //type: uint32
-        ydk::YLeaf external_prefix; //type: uint32
-        ydk::YLeaf external_prefix_del; //type: uint32
-        ydk::YLeaf rib_add; //type: uint32
-        ydk::YLeaf rib_del; //type: uint32
-
-}; // Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::GlobalTime
-
-
-class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa : public ydk::Entity
-{
-    public:
-        Lsa();
-        ~Lsa();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf lsa_area_id; //type: uint32
-        ydk::YLeaf lsa_advertising_router; //type: string
-        ydk::YLeaf lsa_id; //type: string
-        ydk::YLeaf lsa_type; //type: uint8
-        ydk::YLeaf lsa_flush; //type: boolean
-
-}; // Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::Lsa
-
-
-class Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat : public ydk::Entity
-{
-    public:
-        AreaStat();
-        ~AreaStat();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf spf_stat_area_id; //type: uint32
-        ydk::YLeafList spf_stat_lsa_type_count; //type: list of  uint32
-        class SpfStatTime; //type: Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat::SpfStatTime> spf_stat_time;
-        
-}; // Ospfv3::Processes::Process::Vrfs::Vrf::VrfStatistics::SpfStats::SpfRuntime::AreaStat
 
 
 }

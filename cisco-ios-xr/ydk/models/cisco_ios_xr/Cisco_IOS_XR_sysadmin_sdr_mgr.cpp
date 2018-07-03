@@ -12,9 +12,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_sdr_mgr {
 
 SdrConfig::SdrConfig()
+    :
+    sdr(this, {"name"})
 {
 
-    yang_name = "sdr-config"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdr-mgr"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sdr-config"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdr-mgr"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SdrConfig::~SdrConfig()
@@ -23,7 +25,8 @@ SdrConfig::~SdrConfig()
 
 bool SdrConfig::has_data() const
 {
-    for (std::size_t index=0; index<sdr.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr.len(); index++)
     {
         if(sdr[index]->has_data())
             return true;
@@ -33,7 +36,7 @@ bool SdrConfig::has_data() const
 
 bool SdrConfig::has_operation() const
 {
-    for (std::size_t index=0; index<sdr.size(); index++)
+    for (std::size_t index=0; index<sdr.len(); index++)
     {
         if(sdr[index]->has_operation())
             return true;
@@ -63,7 +66,7 @@ std::shared_ptr<Entity> SdrConfig::get_child_by_name(const std::string & child_y
     {
         auto c = std::make_shared<SdrConfig::Sdr>();
         c->parent = this;
-        sdr.push_back(c);
+        sdr.append(c);
         return c;
     }
 
@@ -75,7 +78,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr)
+    for (auto c : sdr.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -133,13 +136,15 @@ SdrConfig::Sdr::Sdr()
     lead_down_delta{YType::uint32, "lead_down_delta"},
     pairing_mode{YType::enumeration, "pairing-mode"},
     issu{YType::enumeration, "issu"}
-    	,
+        ,
     resources(std::make_shared<SdrConfig::Sdr::Resources>())
-	,action(std::make_shared<SdrConfig::Sdr::Action>())
-	,detail(std::make_shared<SdrConfig::Sdr::Detail>())
-	,reboot_history(std::make_shared<SdrConfig::Sdr::RebootHistory>())
-	,nodes(std::make_shared<SdrConfig::Sdr::Nodes>())
-	,pairing2(std::make_shared<SdrConfig::Sdr::Pairing2>())
+    , location(this, {"node_location"})
+    , action(std::make_shared<SdrConfig::Sdr::Action>())
+    , detail(std::make_shared<SdrConfig::Sdr::Detail>())
+    , reboot_history(std::make_shared<SdrConfig::Sdr::RebootHistory>())
+    , nodes(std::make_shared<SdrConfig::Sdr::Nodes>())
+    , pairing2(std::make_shared<SdrConfig::Sdr::Pairing2>())
+    , pairing(this, {"name"})
 {
     resources->parent = this;
     action->parent = this;
@@ -148,7 +153,7 @@ SdrConfig::Sdr::Sdr()
     nodes->parent = this;
     pairing2->parent = this;
 
-    yang_name = "sdr"; yang_parent_name = "sdr-config"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr"; yang_parent_name = "sdr-config"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrConfig::Sdr::~Sdr()
@@ -157,12 +162,13 @@ SdrConfig::Sdr::~Sdr()
 
 bool SdrConfig::Sdr::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<pairing.size(); index++)
+    for (std::size_t index=0; index<pairing.len(); index++)
     {
         if(pairing[index]->has_data())
             return true;
@@ -182,12 +188,12 @@ bool SdrConfig::Sdr::has_data() const
 
 bool SdrConfig::Sdr::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<pairing.size(); index++)
+    for (std::size_t index=0; index<pairing.len(); index++)
     {
         if(pairing[index]->has_operation())
             return true;
@@ -216,7 +222,8 @@ std::string SdrConfig::Sdr::get_absolute_path() const
 std::string SdrConfig::Sdr::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr" <<"[name='" <<name <<"']";
+    path_buffer << "sdr";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -249,7 +256,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<SdrConfig::Sdr::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -302,7 +309,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::get_child_by_name(const std::string & ch
     {
         auto c = std::make_shared<SdrConfig::Sdr::Pairing>();
         c->parent = this;
-        pairing.push_back(c);
+        pairing.append(c);
         return c;
     }
 
@@ -319,7 +326,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::get_children() co
     }
 
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -353,7 +360,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::get_children() co
     }
 
     count = 0;
-    for (auto const & c : pairing)
+    for (auto c : pairing.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -434,9 +441,11 @@ SdrConfig::Sdr::Resources::Resources()
     fgid{YType::uint32, "fgid"},
     mgmt_ext_vlan{YType::uint32, "mgmt_ext_vlan"},
     disk_space_size{YType::uint32, "disk-space-size"}
+        ,
+    card_type(this, {"type"})
 {
 
-    yang_name = "resources"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "resources"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Resources::~Resources()
@@ -445,7 +454,8 @@ SdrConfig::Sdr::Resources::~Resources()
 
 bool SdrConfig::Sdr::Resources::has_data() const
 {
-    for (std::size_t index=0; index<card_type.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<card_type.len(); index++)
     {
         if(card_type[index]->has_data())
             return true;
@@ -457,7 +467,7 @@ bool SdrConfig::Sdr::Resources::has_data() const
 
 bool SdrConfig::Sdr::Resources::has_operation() const
 {
-    for (std::size_t index=0; index<card_type.size(); index++)
+    for (std::size_t index=0; index<card_type.len(); index++)
     {
         if(card_type[index]->has_operation())
             return true;
@@ -493,7 +503,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::Resources::get_child_by_name(const std::
     {
         auto c = std::make_shared<SdrConfig::Sdr::Resources::CardType>();
         c->parent = this;
-        card_type.push_back(c);
+        card_type.append(c);
         return c;
     }
 
@@ -505,7 +515,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Resources::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : card_type)
+    for (auto c : card_type.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -568,7 +578,7 @@ SdrConfig::Sdr::Resources::CardType::CardType()
     vm_cpu{YType::uint32, "vm-cpu"}
 {
 
-    yang_name = "card-type"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "card-type"; yang_parent_name = "resources"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Resources::CardType::~CardType()
@@ -577,6 +587,7 @@ SdrConfig::Sdr::Resources::CardType::~CardType()
 
 bool SdrConfig::Sdr::Resources::CardType::has_data() const
 {
+    if (is_presence_container) return true;
     return type.is_set
 	|| vm_memory.is_set
 	|| vm_cpu.is_set;
@@ -593,7 +604,8 @@ bool SdrConfig::Sdr::Resources::CardType::has_operation() const
 std::string SdrConfig::Sdr::Resources::CardType::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "card-type" <<"[type='" <<type <<"']";
+    path_buffer << "card-type";
+    ADD_KEY_TOKEN(type, "type");
     return path_buffer.str();
 }
 
@@ -671,7 +683,7 @@ SdrConfig::Sdr::Location::Location()
     node_location{YType::str, "node-location"}
 {
 
-    yang_name = "location"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Location::~Location()
@@ -680,6 +692,7 @@ SdrConfig::Sdr::Location::~Location()
 
 bool SdrConfig::Sdr::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return node_location.is_set;
 }
 
@@ -692,7 +705,8 @@ bool SdrConfig::Sdr::Location::has_operation() const
 std::string SdrConfig::Sdr::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[node-location='" <<node_location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_location, "node-location");
     return path_buffer.str();
 }
 
@@ -744,9 +758,11 @@ bool SdrConfig::Sdr::Location::has_leaf_or_child_of_name(const std::string & nam
 }
 
 SdrConfig::Sdr::Action::Action()
+    :
+    location(this, {"node_location"})
 {
 
-    yang_name = "Action"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "Action"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Action::~Action()
@@ -755,7 +771,8 @@ SdrConfig::Sdr::Action::~Action()
 
 bool SdrConfig::Sdr::Action::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -765,7 +782,7 @@ bool SdrConfig::Sdr::Action::has_data() const
 
 bool SdrConfig::Sdr::Action::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -795,7 +812,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::Action::get_child_by_name(const std::str
     {
         auto c = std::make_shared<SdrConfig::Sdr::Action::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -807,7 +824,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Action::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -838,7 +855,7 @@ SdrConfig::Sdr::Action::Location::Location()
     node_location{YType::str, "node-location"}
 {
 
-    yang_name = "location"; yang_parent_name = "Action"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "Action"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Action::Location::~Location()
@@ -847,6 +864,7 @@ SdrConfig::Sdr::Action::Location::~Location()
 
 bool SdrConfig::Sdr::Action::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return node_location.is_set;
 }
 
@@ -859,7 +877,8 @@ bool SdrConfig::Sdr::Action::Location::has_operation() const
 std::string SdrConfig::Sdr::Action::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[node-location='" <<node_location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_location, "node-location");
     return path_buffer.str();
 }
 
@@ -911,9 +930,11 @@ bool SdrConfig::Sdr::Action::Location::has_leaf_or_child_of_name(const std::stri
 }
 
 SdrConfig::Sdr::Detail::Detail()
+    :
+    location(this, {"node_location"})
 {
 
-    yang_name = "detail"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Detail::~Detail()
@@ -922,7 +943,8 @@ SdrConfig::Sdr::Detail::~Detail()
 
 bool SdrConfig::Sdr::Detail::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -932,7 +954,7 @@ bool SdrConfig::Sdr::Detail::has_data() const
 
 bool SdrConfig::Sdr::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -962,7 +984,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::Detail::get_child_by_name(const std::str
     {
         auto c = std::make_shared<SdrConfig::Sdr::Detail::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -974,7 +996,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Detail::get_child
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1022,9 +1044,11 @@ SdrConfig::Sdr::Detail::Location::Location()
     start_time{YType::str, "start-time"},
     reboot_count{YType::uint32, "reboot_count"},
     rh_count{YType::uint32, "rh_count"}
+        ,
+    reboot_hist1(this, {"count"})
 {
 
-    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Detail::Location::~Location()
@@ -1033,7 +1057,8 @@ SdrConfig::Sdr::Detail::Location::~Location()
 
 bool SdrConfig::Sdr::Detail::Location::has_data() const
 {
-    for (std::size_t index=0; index<reboot_hist1.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reboot_hist1.len(); index++)
     {
         if(reboot_hist1[index]->has_data())
             return true;
@@ -1062,7 +1087,7 @@ bool SdrConfig::Sdr::Detail::Location::has_data() const
 
 bool SdrConfig::Sdr::Detail::Location::has_operation() const
 {
-    for (std::size_t index=0; index<reboot_hist1.size(); index++)
+    for (std::size_t index=0; index<reboot_hist1.len(); index++)
     {
         if(reboot_hist1[index]->has_operation())
             return true;
@@ -1093,7 +1118,8 @@ bool SdrConfig::Sdr::Detail::Location::has_operation() const
 std::string SdrConfig::Sdr::Detail::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[node-location='" <<node_location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_location, "node-location");
     return path_buffer.str();
 }
 
@@ -1132,7 +1158,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::Detail::Location::get_child_by_name(cons
     {
         auto c = std::make_shared<SdrConfig::Sdr::Detail::Location::RebootHist1>();
         c->parent = this;
-        reboot_hist1.push_back(c);
+        reboot_hist1.append(c);
         return c;
     }
 
@@ -1144,7 +1170,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Detail::Location:
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reboot_hist1)
+    for (auto c : reboot_hist1.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1377,7 +1403,7 @@ SdrConfig::Sdr::Detail::Location::RebootHist1::RebootHist1()
     reason{YType::str, "Reason"}
 {
 
-    yang_name = "reboot_hist1"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reboot_hist1"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Detail::Location::RebootHist1::~RebootHist1()
@@ -1386,6 +1412,7 @@ SdrConfig::Sdr::Detail::Location::RebootHist1::~RebootHist1()
 
 bool SdrConfig::Sdr::Detail::Location::RebootHist1::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set
 	|| time.is_set
 	|| reason.is_set;
@@ -1402,7 +1429,8 @@ bool SdrConfig::Sdr::Detail::Location::RebootHist1::has_operation() const
 std::string SdrConfig::Sdr::Detail::Location::RebootHist1::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reboot_hist1" <<"[count='" <<count <<"']";
+    path_buffer << "reboot_hist1";
+    ADD_KEY_TOKEN(count, "count");
     return path_buffer.str();
 }
 
@@ -1478,12 +1506,12 @@ bool SdrConfig::Sdr::Detail::Location::RebootHist1::has_leaf_or_child_of_name(co
 SdrConfig::Sdr::RebootHistory::RebootHistory()
     :
     reverse(std::make_shared<SdrConfig::Sdr::RebootHistory::Reverse>())
-	,default_disp(std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp>())
+    , default_disp(std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp>())
 {
     reverse->parent = this;
     default_disp->parent = this;
 
-    yang_name = "reboot-history"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reboot-history"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::RebootHistory::~RebootHistory()
@@ -1492,6 +1520,7 @@ SdrConfig::Sdr::RebootHistory::~RebootHistory()
 
 bool SdrConfig::Sdr::RebootHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return (reverse !=  nullptr && reverse->has_data())
 	|| (default_disp !=  nullptr && default_disp->has_data());
 }
@@ -1575,9 +1604,11 @@ bool SdrConfig::Sdr::RebootHistory::has_leaf_or_child_of_name(const std::string 
 }
 
 SdrConfig::Sdr::RebootHistory::Reverse::Reverse()
+    :
+    location(this, {"node_location"})
 {
 
-    yang_name = "reverse"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reverse"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::RebootHistory::Reverse::~Reverse()
@@ -1586,7 +1617,8 @@ SdrConfig::Sdr::RebootHistory::Reverse::~Reverse()
 
 bool SdrConfig::Sdr::RebootHistory::Reverse::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1596,7 +1628,7 @@ bool SdrConfig::Sdr::RebootHistory::Reverse::has_data() const
 
 bool SdrConfig::Sdr::RebootHistory::Reverse::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1626,7 +1658,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::Reverse::get_child_by_nam
     {
         auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::Reverse::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1638,7 +1670,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::Re
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1669,9 +1701,11 @@ SdrConfig::Sdr::RebootHistory::Reverse::Location::Location()
     node_location{YType::str, "node-location"},
     reboot_count{YType::uint32, "reboot_count"},
     rh_count{YType::uint32, "rh_count"}
+        ,
+    reboot_hist2(this, {"count"})
 {
 
-    yang_name = "location"; yang_parent_name = "reverse"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "reverse"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::RebootHistory::Reverse::Location::~Location()
@@ -1680,7 +1714,8 @@ SdrConfig::Sdr::RebootHistory::Reverse::Location::~Location()
 
 bool SdrConfig::Sdr::RebootHistory::Reverse::Location::has_data() const
 {
-    for (std::size_t index=0; index<reboot_hist2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reboot_hist2.len(); index++)
     {
         if(reboot_hist2[index]->has_data())
             return true;
@@ -1692,7 +1727,7 @@ bool SdrConfig::Sdr::RebootHistory::Reverse::Location::has_data() const
 
 bool SdrConfig::Sdr::RebootHistory::Reverse::Location::has_operation() const
 {
-    for (std::size_t index=0; index<reboot_hist2.size(); index++)
+    for (std::size_t index=0; index<reboot_hist2.len(); index++)
     {
         if(reboot_hist2[index]->has_operation())
             return true;
@@ -1706,7 +1741,8 @@ bool SdrConfig::Sdr::RebootHistory::Reverse::Location::has_operation() const
 std::string SdrConfig::Sdr::RebootHistory::Reverse::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[node-location='" <<node_location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_location, "node-location");
     return path_buffer.str();
 }
 
@@ -1728,7 +1764,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::Reverse::Location::get_ch
     {
         auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2>();
         c->parent = this;
-        reboot_hist2.push_back(c);
+        reboot_hist2.append(c);
         return c;
     }
 
@@ -1740,7 +1776,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::Re
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reboot_hist2)
+    for (auto c : reboot_hist2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1803,7 +1839,7 @@ SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::RebootHist2()
     reason{YType::str, "Reason"}
 {
 
-    yang_name = "reboot_hist2"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reboot_hist2"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::~RebootHist2()
@@ -1812,6 +1848,7 @@ SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::~RebootHist2()
 
 bool SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set
 	|| time.is_set
 	|| reason.is_set;
@@ -1828,7 +1865,8 @@ bool SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::has_operatio
 std::string SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reboot_hist2" <<"[count='" <<count <<"']";
+    path_buffer << "reboot_hist2";
+    ADD_KEY_TOKEN(count, "count");
     return path_buffer.str();
 }
 
@@ -1902,9 +1940,11 @@ bool SdrConfig::Sdr::RebootHistory::Reverse::Location::RebootHist2::has_leaf_or_
 }
 
 SdrConfig::Sdr::RebootHistory::DefaultDisp::DefaultDisp()
+    :
+    location(this, {"node_location"})
 {
 
-    yang_name = "default-disp"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "default-disp"; yang_parent_name = "reboot-history"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::RebootHistory::DefaultDisp::~DefaultDisp()
@@ -1913,7 +1953,8 @@ SdrConfig::Sdr::RebootHistory::DefaultDisp::~DefaultDisp()
 
 bool SdrConfig::Sdr::RebootHistory::DefaultDisp::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -1923,7 +1964,7 @@ bool SdrConfig::Sdr::RebootHistory::DefaultDisp::has_data() const
 
 bool SdrConfig::Sdr::RebootHistory::DefaultDisp::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -1953,7 +1994,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::get_child_by
     {
         auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -1965,7 +2006,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::De
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1996,9 +2037,11 @@ SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::Location()
     node_location{YType::str, "node-location"},
     reboot_count{YType::uint32, "reboot_count"},
     rh_count{YType::uint32, "rh_count"}
+        ,
+    reboot_hist2(this, {"count"})
 {
 
-    yang_name = "location"; yang_parent_name = "default-disp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "default-disp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::~Location()
@@ -2007,7 +2050,8 @@ SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::~Location()
 
 bool SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::has_data() const
 {
-    for (std::size_t index=0; index<reboot_hist2.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<reboot_hist2.len(); index++)
     {
         if(reboot_hist2[index]->has_data())
             return true;
@@ -2019,7 +2063,7 @@ bool SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::has_data() const
 
 bool SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::has_operation() const
 {
-    for (std::size_t index=0; index<reboot_hist2.size(); index++)
+    for (std::size_t index=0; index<reboot_hist2.len(); index++)
     {
         if(reboot_hist2[index]->has_operation())
             return true;
@@ -2033,7 +2077,8 @@ bool SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::has_operation() const
 std::string SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[node-location='" <<node_location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_location, "node-location");
     return path_buffer.str();
 }
 
@@ -2055,7 +2100,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::ge
     {
         auto c = std::make_shared<SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2>();
         c->parent = this;
-        reboot_hist2.push_back(c);
+        reboot_hist2.append(c);
         return c;
     }
 
@@ -2067,7 +2112,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::RebootHistory::De
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : reboot_hist2)
+    for (auto c : reboot_hist2.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2130,7 +2175,7 @@ SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::RebootHist2()
     reason{YType::str, "Reason"}
 {
 
-    yang_name = "reboot_hist2"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "reboot_hist2"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::~RebootHist2()
@@ -2139,6 +2184,7 @@ SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::~RebootHist2(
 
 bool SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::has_data() const
 {
+    if (is_presence_container) return true;
     return count.is_set
 	|| time.is_set
 	|| reason.is_set;
@@ -2155,7 +2201,8 @@ bool SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::has_oper
 std::string SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "reboot_hist2" <<"[count='" <<count <<"']";
+    path_buffer << "reboot_hist2";
+    ADD_KEY_TOKEN(count, "count");
     return path_buffer.str();
 }
 
@@ -2229,9 +2276,11 @@ bool SdrConfig::Sdr::RebootHistory::DefaultDisp::Location::RebootHist2::has_leaf
 }
 
 SdrConfig::Sdr::Nodes::Nodes()
+    :
+    location(this, {"node_location"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nodes"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Nodes::~Nodes()
@@ -2240,7 +2289,8 @@ SdrConfig::Sdr::Nodes::~Nodes()
 
 bool SdrConfig::Sdr::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -2250,7 +2300,7 @@ bool SdrConfig::Sdr::Nodes::has_data() const
 
 bool SdrConfig::Sdr::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -2280,7 +2330,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::Nodes::get_child_by_name(const std::stri
     {
         auto c = std::make_shared<SdrConfig::Sdr::Nodes::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -2292,7 +2342,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Nodes::get_childr
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2331,7 +2381,7 @@ SdrConfig::Sdr::Nodes::Location::Location()
     rh_count{YType::uint32, "rh_count"}
 {
 
-    yang_name = "location"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Nodes::Location::~Location()
@@ -2340,6 +2390,7 @@ SdrConfig::Sdr::Nodes::Location::~Location()
 
 bool SdrConfig::Sdr::Nodes::Location::has_data() const
 {
+    if (is_presence_container) return true;
     return node_location.is_set
 	|| sdr_id.is_set
 	|| ip_addr.is_set
@@ -2368,7 +2419,8 @@ bool SdrConfig::Sdr::Nodes::Location::has_operation() const
 std::string SdrConfig::Sdr::Nodes::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[node-location='" <<node_location <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(node_location, "node-location");
     return path_buffer.str();
 }
 
@@ -2510,12 +2562,13 @@ bool SdrConfig::Sdr::Nodes::Location::has_leaf_or_child_of_name(const std::strin
 SdrConfig::Sdr::Pairing2::Pairing2()
     :
     pairing_mode{YType::str, "pairing-mode"}
-    	,
+        ,
     sdrlead(std::make_shared<SdrConfig::Sdr::Pairing2::Sdrlead>())
+    , pairing(this, {"name"})
 {
     sdrlead->parent = this;
 
-    yang_name = "pairing2"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pairing2"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Pairing2::~Pairing2()
@@ -2524,7 +2577,8 @@ SdrConfig::Sdr::Pairing2::~Pairing2()
 
 bool SdrConfig::Sdr::Pairing2::has_data() const
 {
-    for (std::size_t index=0; index<pairing.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pairing.len(); index++)
     {
         if(pairing[index]->has_data())
             return true;
@@ -2535,7 +2589,7 @@ bool SdrConfig::Sdr::Pairing2::has_data() const
 
 bool SdrConfig::Sdr::Pairing2::has_operation() const
 {
-    for (std::size_t index=0; index<pairing.size(); index++)
+    for (std::size_t index=0; index<pairing.len(); index++)
     {
         if(pairing[index]->has_operation())
             return true;
@@ -2577,7 +2631,7 @@ std::shared_ptr<Entity> SdrConfig::Sdr::Pairing2::get_child_by_name(const std::s
     {
         auto c = std::make_shared<SdrConfig::Sdr::Pairing2::Pairing>();
         c->parent = this;
-        pairing.push_back(c);
+        pairing.append(c);
         return c;
     }
 
@@ -2594,7 +2648,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrConfig::Sdr::Pairing2::get_chi
     }
 
     count = 0;
-    for (auto const & c : pairing)
+    for (auto c : pairing.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2636,7 +2690,7 @@ SdrConfig::Sdr::Pairing2::Sdrlead::Sdrlead()
     rp2{YType::str, "rp2"}
 {
 
-    yang_name = "sdrlead"; yang_parent_name = "pairing2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "sdrlead"; yang_parent_name = "pairing2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Pairing2::Sdrlead::~Sdrlead()
@@ -2645,6 +2699,7 @@ SdrConfig::Sdr::Pairing2::Sdrlead::~Sdrlead()
 
 bool SdrConfig::Sdr::Pairing2::Sdrlead::has_data() const
 {
+    if (is_presence_container) return true;
     return rp1.is_set
 	|| rp2.is_set;
 }
@@ -2728,7 +2783,7 @@ SdrConfig::Sdr::Pairing2::Pairing::Pairing()
     rp2{YType::str, "rp2"}
 {
 
-    yang_name = "pairing"; yang_parent_name = "pairing2"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pairing"; yang_parent_name = "pairing2"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Pairing2::Pairing::~Pairing()
@@ -2737,6 +2792,7 @@ SdrConfig::Sdr::Pairing2::Pairing::~Pairing()
 
 bool SdrConfig::Sdr::Pairing2::Pairing::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| rp1.is_set
 	|| rp2.is_set;
@@ -2753,7 +2809,8 @@ bool SdrConfig::Sdr::Pairing2::Pairing::has_operation() const
 std::string SdrConfig::Sdr::Pairing2::Pairing::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pairing" <<"[name='" <<name <<"']";
+    path_buffer << "pairing";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2833,7 +2890,7 @@ SdrConfig::Sdr::Pairing::Pairing()
     rp2{YType::str, "rp2"}
 {
 
-    yang_name = "pairing"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pairing"; yang_parent_name = "sdr"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrConfig::Sdr::Pairing::~Pairing()
@@ -2842,6 +2899,7 @@ SdrConfig::Sdr::Pairing::~Pairing()
 
 bool SdrConfig::Sdr::Pairing::has_data() const
 {
+    if (is_presence_container) return true;
     return name.is_set
 	|| rp1.is_set
 	|| rp2.is_set;
@@ -2858,7 +2916,8 @@ bool SdrConfig::Sdr::Pairing::has_operation() const
 std::string SdrConfig::Sdr::Pairing::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pairing" <<"[name='" <<name <<"']";
+    path_buffer << "pairing";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -2937,7 +2996,7 @@ SdrManager::SdrManager()
 {
     sdr_mgr->parent = this;
 
-    yang_name = "sdr-manager"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdr-mgr"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "sdr-manager"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdr-mgr"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 SdrManager::~SdrManager()
@@ -2946,6 +3005,7 @@ SdrManager::~SdrManager()
 
 bool SdrManager::has_data() const
 {
+    if (is_presence_container) return true;
     return (sdr_mgr !=  nullptr && sdr_mgr->has_data());
 }
 
@@ -3038,9 +3098,11 @@ bool SdrManager::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 SdrManager::SdrMgr::SdrMgr()
+    :
+    trace(this, {"buffer"})
 {
 
-    yang_name = "sdr_mgr"; yang_parent_name = "sdr-manager"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr_mgr"; yang_parent_name = "sdr-manager"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrManager::SdrMgr::~SdrMgr()
@@ -3049,7 +3111,8 @@ SdrManager::SdrMgr::~SdrMgr()
 
 bool SdrManager::SdrMgr::has_data() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_data())
             return true;
@@ -3059,7 +3122,7 @@ bool SdrManager::SdrMgr::has_data() const
 
 bool SdrManager::SdrMgr::has_operation() const
 {
-    for (std::size_t index=0; index<trace.size(); index++)
+    for (std::size_t index=0; index<trace.len(); index++)
     {
         if(trace[index]->has_operation())
             return true;
@@ -3096,7 +3159,7 @@ std::shared_ptr<Entity> SdrManager::SdrMgr::get_child_by_name(const std::string 
     {
         auto c = std::make_shared<SdrManager::SdrMgr::Trace>();
         c->parent = this;
-        trace.push_back(c);
+        trace.append(c);
         return c;
     }
 
@@ -3108,7 +3171,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::get_children(
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace)
+    for (auto c : trace.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3137,9 +3200,11 @@ bool SdrManager::SdrMgr::has_leaf_or_child_of_name(const std::string & name) con
 SdrManager::SdrMgr::Trace::Trace()
     :
     buffer{YType::str, "buffer"}
+        ,
+    location(this, {"location_name"})
 {
 
-    yang_name = "trace"; yang_parent_name = "sdr_mgr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "trace"; yang_parent_name = "sdr_mgr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 SdrManager::SdrMgr::Trace::~Trace()
@@ -3148,7 +3213,8 @@ SdrManager::SdrMgr::Trace::~Trace()
 
 bool SdrManager::SdrMgr::Trace::has_data() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_data())
             return true;
@@ -3158,7 +3224,7 @@ bool SdrManager::SdrMgr::Trace::has_data() const
 
 bool SdrManager::SdrMgr::Trace::has_operation() const
 {
-    for (std::size_t index=0; index<location.size(); index++)
+    for (std::size_t index=0; index<location.len(); index++)
     {
         if(location[index]->has_operation())
             return true;
@@ -3177,7 +3243,8 @@ std::string SdrManager::SdrMgr::Trace::get_absolute_path() const
 std::string SdrManager::SdrMgr::Trace::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "trace" <<"[buffer='" <<buffer <<"']";
+    path_buffer << "trace";
+    ADD_KEY_TOKEN(buffer, "buffer");
     return path_buffer.str();
 }
 
@@ -3197,7 +3264,7 @@ std::shared_ptr<Entity> SdrManager::SdrMgr::Trace::get_child_by_name(const std::
     {
         auto c = std::make_shared<SdrManager::SdrMgr::Trace::Location>();
         c->parent = this;
-        location.push_back(c);
+        location.append(c);
         return c;
     }
 
@@ -3209,7 +3276,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::Trace::get_ch
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : location)
+    for (auto c : location.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3248,9 +3315,11 @@ bool SdrManager::SdrMgr::Trace::has_leaf_or_child_of_name(const std::string & na
 SdrManager::SdrMgr::Trace::Location::Location()
     :
     location_name{YType::str, "location_name"}
+        ,
+    all_options(this, {"option"})
 {
 
-    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "location"; yang_parent_name = "trace"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrManager::SdrMgr::Trace::Location::~Location()
@@ -3259,7 +3328,8 @@ SdrManager::SdrMgr::Trace::Location::~Location()
 
 bool SdrManager::SdrMgr::Trace::Location::has_data() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_data())
             return true;
@@ -3269,7 +3339,7 @@ bool SdrManager::SdrMgr::Trace::Location::has_data() const
 
 bool SdrManager::SdrMgr::Trace::Location::has_operation() const
 {
-    for (std::size_t index=0; index<all_options.size(); index++)
+    for (std::size_t index=0; index<all_options.len(); index++)
     {
         if(all_options[index]->has_operation())
             return true;
@@ -3281,7 +3351,8 @@ bool SdrManager::SdrMgr::Trace::Location::has_operation() const
 std::string SdrManager::SdrMgr::Trace::Location::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "location" <<"[location_name='" <<location_name <<"']";
+    path_buffer << "location";
+    ADD_KEY_TOKEN(location_name, "location_name");
     return path_buffer.str();
 }
 
@@ -3301,7 +3372,7 @@ std::shared_ptr<Entity> SdrManager::SdrMgr::Trace::Location::get_child_by_name(c
     {
         auto c = std::make_shared<SdrManager::SdrMgr::Trace::Location::AllOptions>();
         c->parent = this;
-        all_options.push_back(c);
+        all_options.append(c);
         return c;
     }
 
@@ -3313,7 +3384,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::Trace::Locati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : all_options)
+    for (auto c : all_options.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3352,9 +3423,11 @@ bool SdrManager::SdrMgr::Trace::Location::has_leaf_or_child_of_name(const std::s
 SdrManager::SdrMgr::Trace::Location::AllOptions::AllOptions()
     :
     option{YType::str, "option"}
+        ,
+    trace_blocks(this, {})
 {
 
-    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "all-options"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrManager::SdrMgr::Trace::Location::AllOptions::~AllOptions()
@@ -3363,7 +3436,8 @@ SdrManager::SdrMgr::Trace::Location::AllOptions::~AllOptions()
 
 bool SdrManager::SdrMgr::Trace::Location::AllOptions::has_data() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_data())
             return true;
@@ -3373,7 +3447,7 @@ bool SdrManager::SdrMgr::Trace::Location::AllOptions::has_data() const
 
 bool SdrManager::SdrMgr::Trace::Location::AllOptions::has_operation() const
 {
-    for (std::size_t index=0; index<trace_blocks.size(); index++)
+    for (std::size_t index=0; index<trace_blocks.len(); index++)
     {
         if(trace_blocks[index]->has_operation())
             return true;
@@ -3385,7 +3459,8 @@ bool SdrManager::SdrMgr::Trace::Location::AllOptions::has_operation() const
 std::string SdrManager::SdrMgr::Trace::Location::AllOptions::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "all-options" <<"[option='" <<option <<"']";
+    path_buffer << "all-options";
+    ADD_KEY_TOKEN(option, "option");
     return path_buffer.str();
 }
 
@@ -3405,7 +3480,7 @@ std::shared_ptr<Entity> SdrManager::SdrMgr::Trace::Location::AllOptions::get_chi
     {
         auto c = std::make_shared<SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks>();
         c->parent = this;
-        trace_blocks.push_back(c);
+        trace_blocks.append(c);
         return c;
     }
 
@@ -3417,7 +3492,7 @@ std::map<std::string, std::shared_ptr<Entity>> SdrManager::SdrMgr::Trace::Locati
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : trace_blocks)
+    for (auto c : trace_blocks.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3458,7 +3533,7 @@ SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::TraceBlocks()
     data{YType::str, "data"}
 {
 
-    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "trace-blocks"; yang_parent_name = "all-options"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
@@ -3467,6 +3542,7 @@ SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::~TraceBlocks()
 
 bool SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::has_data() const
 {
+    if (is_presence_container) return true;
     return data.is_set;
 }
 
@@ -3531,9 +3607,11 @@ bool SdrManager::SdrMgr::Trace::Location::AllOptions::TraceBlocks::has_leaf_or_c
 }
 
 PrivateSdr::PrivateSdr()
+    :
+    sdr_name(this, {"name"})
 {
 
-    yang_name = "private-sdr"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdr-mgr"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "private-sdr"; yang_parent_name = "Cisco-IOS-XR-sysadmin-sdr-mgr"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 PrivateSdr::~PrivateSdr()
@@ -3542,7 +3620,8 @@ PrivateSdr::~PrivateSdr()
 
 bool PrivateSdr::has_data() const
 {
-    for (std::size_t index=0; index<sdr_name.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sdr_name.len(); index++)
     {
         if(sdr_name[index]->has_data())
             return true;
@@ -3552,7 +3631,7 @@ bool PrivateSdr::has_data() const
 
 bool PrivateSdr::has_operation() const
 {
-    for (std::size_t index=0; index<sdr_name.size(); index++)
+    for (std::size_t index=0; index<sdr_name.len(); index++)
     {
         if(sdr_name[index]->has_operation())
             return true;
@@ -3582,7 +3661,7 @@ std::shared_ptr<Entity> PrivateSdr::get_child_by_name(const std::string & child_
     {
         auto c = std::make_shared<PrivateSdr::SdrName>();
         c->parent = this;
-        sdr_name.push_back(c);
+        sdr_name.append(c);
         return c;
     }
 
@@ -3594,7 +3673,7 @@ std::map<std::string, std::shared_ptr<Entity>> PrivateSdr::get_children() const
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : sdr_name)
+    for (auto c : sdr_name.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3651,9 +3730,11 @@ PrivateSdr::SdrName::SdrName()
     id{YType::uint32, "id"},
     lead_rack0{YType::uint32, "lead_rack0"},
     lead_rack1{YType::uint32, "lead_rack1"}
+        ,
+    pairing(this, {"num"})
 {
 
-    yang_name = "sdr-name"; yang_parent_name = "private-sdr"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "sdr-name"; yang_parent_name = "private-sdr"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 PrivateSdr::SdrName::~SdrName()
@@ -3662,7 +3743,8 @@ PrivateSdr::SdrName::~SdrName()
 
 bool PrivateSdr::SdrName::has_data() const
 {
-    for (std::size_t index=0; index<pairing.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pairing.len(); index++)
     {
         if(pairing[index]->has_data())
             return true;
@@ -3675,7 +3757,7 @@ bool PrivateSdr::SdrName::has_data() const
 
 bool PrivateSdr::SdrName::has_operation() const
 {
-    for (std::size_t index=0; index<pairing.size(); index++)
+    for (std::size_t index=0; index<pairing.len(); index++)
     {
         if(pairing[index]->has_operation())
             return true;
@@ -3697,7 +3779,8 @@ std::string PrivateSdr::SdrName::get_absolute_path() const
 std::string PrivateSdr::SdrName::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "sdr-name" <<"[name='" <<name <<"']";
+    path_buffer << "sdr-name";
+    ADD_KEY_TOKEN(name, "name");
     return path_buffer.str();
 }
 
@@ -3720,7 +3803,7 @@ std::shared_ptr<Entity> PrivateSdr::SdrName::get_child_by_name(const std::string
     {
         auto c = std::make_shared<PrivateSdr::SdrName::Pairing>();
         c->parent = this;
-        pairing.push_back(c);
+        pairing.append(c);
         return c;
     }
 
@@ -3732,7 +3815,7 @@ std::map<std::string, std::shared_ptr<Entity>> PrivateSdr::SdrName::get_children
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : pairing)
+    for (auto c : pairing.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3808,7 +3891,7 @@ PrivateSdr::SdrName::Pairing::Pairing()
     rp2_slot{YType::uint32, "rp2_slot"}
 {
 
-    yang_name = "pairing"; yang_parent_name = "sdr-name"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pairing"; yang_parent_name = "sdr-name"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 PrivateSdr::SdrName::Pairing::~Pairing()
@@ -3817,6 +3900,7 @@ PrivateSdr::SdrName::Pairing::~Pairing()
 
 bool PrivateSdr::SdrName::Pairing::has_data() const
 {
+    if (is_presence_container) return true;
     return num.is_set
 	|| second_exist.is_set
 	|| rp1_rack.is_set
@@ -3839,7 +3923,8 @@ bool PrivateSdr::SdrName::Pairing::has_operation() const
 std::string PrivateSdr::SdrName::Pairing::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "pairing" <<"[num='" <<num <<"']";
+    path_buffer << "pairing";
+    ADD_KEY_TOKEN(num, "num");
     return path_buffer.str();
 }
 
@@ -3945,9 +4030,6 @@ bool PrivateSdr::SdrName::Pairing::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-const Enum::YLeaf CardType::RP {0, "RP"};
-const Enum::YLeaf CardType::LC {1, "LC"};
-
 const Enum::YLeaf VmReloadReason::CARD_OFFLINE {0, "CARD_OFFLINE"};
 const Enum::YLeaf VmReloadReason::CARD_SHUTDOWN {1, "CARD_SHUTDOWN"};
 const Enum::YLeaf VmReloadReason::ALL_VM_RELOAD {2, "ALL_VM_RELOAD"};
@@ -3959,6 +4041,10 @@ const Enum::YLeaf VmReloadReason::SDR_HEARTBEAT_FAILURE {7, "SDR_HEARTBEAT_FAILU
 const Enum::YLeaf VmReloadReason::FIRST_BOOT {8, "FIRST_BOOT"};
 const Enum::YLeaf VmReloadReason::SMU {9, "SMU"};
 const Enum::YLeaf VmReloadReason::REASON_UNKNOWN {10, "REASON_UNKNOWN"};
+
+const Enum::YLeaf CardType::RP {0, "RP"};
+const Enum::YLeaf CardType::LC {1, "LC"};
+const Enum::YLeaf CardType::CC {2, "CC"};
 
 const Enum::YLeaf SdrConfig::Sdr::PairingMode::intra_rack {0, "intra-rack"};
 const Enum::YLeaf SdrConfig::Sdr::PairingMode::inter_rack {1, "inter-rack"};

@@ -14,14 +14,14 @@ namespace Cisco_IOS_XR_mpls_static_oper {
 MplsStatic::MplsStatic()
     :
     vrfs(std::make_shared<MplsStatic::Vrfs>())
-	,summary(std::make_shared<MplsStatic::Summary>())
-	,local_labels(std::make_shared<MplsStatic::LocalLabels>())
+    , summary(std::make_shared<MplsStatic::Summary>())
+    , local_labels(std::make_shared<MplsStatic::LocalLabels>())
 {
     vrfs->parent = this;
     summary->parent = this;
     local_labels->parent = this;
 
-    yang_name = "mpls-static"; yang_parent_name = "Cisco-IOS-XR-mpls-static-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "mpls-static"; yang_parent_name = "Cisco-IOS-XR-mpls-static-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MplsStatic::~MplsStatic()
@@ -30,6 +30,7 @@ MplsStatic::~MplsStatic()
 
 bool MplsStatic::has_data() const
 {
+    if (is_presence_container) return true;
     return (vrfs !=  nullptr && vrfs->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (local_labels !=  nullptr && local_labels->has_data());
@@ -154,9 +155,11 @@ bool MplsStatic::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MplsStatic::Vrfs::Vrfs()
+    :
+    vrf(this, {"vrf_name"})
 {
 
-    yang_name = "vrfs"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrfs"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::Vrfs::~Vrfs()
@@ -165,7 +168,8 @@ MplsStatic::Vrfs::~Vrfs()
 
 bool MplsStatic::Vrfs::has_data() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_data())
             return true;
@@ -175,7 +179,7 @@ bool MplsStatic::Vrfs::has_data() const
 
 bool MplsStatic::Vrfs::has_operation() const
 {
-    for (std::size_t index=0; index<vrf.size(); index++)
+    for (std::size_t index=0; index<vrf.len(); index++)
     {
         if(vrf[index]->has_operation())
             return true;
@@ -212,7 +216,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::get_child_by_name(const std::string & 
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf>();
         c->parent = this;
-        vrf.push_back(c);
+        vrf.append(c);
         return c;
     }
 
@@ -224,7 +228,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::get_children() 
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : vrf)
+    for (auto c : vrf.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -253,14 +257,14 @@ bool MplsStatic::Vrfs::has_leaf_or_child_of_name(const std::string & name) const
 MplsStatic::Vrfs::Vrf::Vrf()
     :
     vrf_name{YType::str, "vrf-name"}
-    	,
+        ,
     lsps(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps>())
-	,local_labels(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels>())
+    , local_labels(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels>())
 {
     lsps->parent = this;
     local_labels->parent = this;
 
-    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::Vrfs::Vrf::~Vrf()
@@ -269,6 +273,7 @@ MplsStatic::Vrfs::Vrf::~Vrf()
 
 bool MplsStatic::Vrfs::Vrf::has_data() const
 {
+    if (is_presence_container) return true;
     return vrf_name.is_set
 	|| (lsps !=  nullptr && lsps->has_data())
 	|| (local_labels !=  nullptr && local_labels->has_data());
@@ -292,7 +297,8 @@ std::string MplsStatic::Vrfs::Vrf::get_absolute_path() const
 std::string MplsStatic::Vrfs::Vrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "vrf" <<"[vrf-name='" <<vrf_name <<"']";
+    path_buffer << "vrf";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
     return path_buffer.str();
 }
 
@@ -372,9 +378,11 @@ bool MplsStatic::Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsps()
+    :
+    lsp(this, {"lsp_name"})
 {
 
-    yang_name = "lsps"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsps"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::~Lsps()
@@ -383,7 +391,8 @@ MplsStatic::Vrfs::Vrf::Lsps::~Lsps()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::has_data() const
 {
-    for (std::size_t index=0; index<lsp.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp.len(); index++)
     {
         if(lsp[index]->has_data())
             return true;
@@ -393,7 +402,7 @@ bool MplsStatic::Vrfs::Vrf::Lsps::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Lsps::has_operation() const
 {
-    for (std::size_t index=0; index<lsp.size(); index++)
+    for (std::size_t index=0; index<lsp.len(); index++)
     {
         if(lsp[index]->has_operation())
             return true;
@@ -423,7 +432,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::get_child_by_name(const std
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp>();
         c->parent = this;
-        lsp.push_back(c);
+        lsp.append(c);
         return c;
     }
 
@@ -435,7 +444,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::get_
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : lsp)
+    for (auto c : lsp.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -465,12 +474,12 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Lsp()
     :
     lsp_name{YType::str, "lsp-name"},
     lsp_name_xr{YType::str, "lsp-name-xr"}
-    	,
+        ,
     label(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label>())
 {
     label->parent = this;
 
-    yang_name = "lsp"; yang_parent_name = "lsps"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "lsp"; yang_parent_name = "lsps"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::~Lsp()
@@ -479,6 +488,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::~Lsp()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_name.is_set
 	|| lsp_name_xr.is_set
 	|| (label !=  nullptr && label->has_data());
@@ -495,7 +505,8 @@ bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::has_operation() const
 std::string MplsStatic::Vrfs::Vrf::Lsps::Lsp::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "lsp" <<"[lsp-name='" <<lsp_name <<"']";
+    path_buffer << "lsp";
+    ADD_KEY_TOKEN(lsp_name, "lsp-name");
     return path_buffer.str();
 }
 
@@ -580,16 +591,18 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Label()
     pathset_via_resolve{YType::boolean, "pathset-via-resolve"},
     backup_pathset_via_resolve{YType::boolean, "backup-pathset-via-resolve"},
     address_family{YType::enumeration, "address-family"}
-    	,
+        ,
     prefix(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix>())
-	,pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh>())
-	,backup_pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh>())
+    , pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh>())
+    , backup_pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh>())
+    , path_info(this, {})
+    , backup_path_info(this, {})
 {
     prefix->parent = this;
     pathset_resolve_nh->parent = this;
     backup_pathset_resolve_nh->parent = this;
 
-    yang_name = "label"; yang_parent_name = "lsp"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "label"; yang_parent_name = "lsp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::~Label()
@@ -598,12 +611,13 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::~Label()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::has_data() const
 {
-    for (std::size_t index=0; index<path_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_info.len(); index++)
     {
         if(path_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<backup_path_info.size(); index++)
+    for (std::size_t index=0; index<backup_path_info.len(); index++)
     {
         if(backup_path_info[index]->has_data())
             return true;
@@ -622,12 +636,12 @@ bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::has_operation() const
 {
-    for (std::size_t index=0; index<path_info.size(); index++)
+    for (std::size_t index=0; index<path_info.len(); index++)
     {
         if(path_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<backup_path_info.size(); index++)
+    for (std::size_t index=0; index<backup_path_info.len(); index++)
     {
         if(backup_path_info[index]->has_operation())
             return true;
@@ -701,7 +715,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_na
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo>();
         c->parent = this;
-        path_info.push_back(c);
+        path_info.append(c);
         return c;
     }
 
@@ -709,7 +723,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::get_child_by_na
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo>();
         c->parent = this;
-        backup_path_info.push_back(c);
+        backup_path_info.append(c);
         return c;
     }
 
@@ -736,7 +750,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp:
     }
 
     count = 0;
-    for (auto const & c : path_info)
+    for (auto c : path_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -745,7 +759,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::Lsps::Lsp:
     }
 
     count = 0;
-    for (auto const & c : backup_path_info)
+    for (auto c : backup_path_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -844,12 +858,12 @@ bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::has_leaf_or_child_of_name(const st
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::~Prefix()
@@ -858,6 +872,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::~Prefix()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -944,7 +959,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::Prefix_()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::~Prefix_()
@@ -953,6 +968,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::~Prefix_()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::Prefix::Prefix_::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -1049,7 +1065,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::PathsetResolveNh()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "pathset-resolve-nh"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pathset-resolve-nh"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::~PathsetResolveNh()
@@ -1058,6 +1074,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::~PathsetResolveNh()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathsetResolveNh::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -1154,7 +1171,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::BackupPathsetRe
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "backup-pathset-resolve-nh"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-pathset-resolve-nh"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::~BackupPathsetResolveNh()
@@ -1163,6 +1180,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::~BackupPathsetR
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathsetResolveNh::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -1260,12 +1278,12 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::PathInfo()
     path_id{YType::uint8, "path-id"},
     backup_id{YType::uint8, "backup-id"},
     status{YType::enumeration, "status"}
-    	,
+        ,
     nexthop(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop>())
 {
     nexthop->parent = this;
 
-    yang_name = "path-info"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-info"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::~PathInfo()
@@ -1274,6 +1292,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::~PathInfo()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path_number.is_set
 	|| type.is_set
 	|| path_role.is_set
@@ -1423,12 +1442,12 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Nexthop()
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
     afi{YType::enumeration, "afi"}
-    	,
+        ,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address>())
 {
     address->parent = this;
 
-    yang_name = "nexthop"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::~Nexthop()
@@ -1437,6 +1456,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::~Nexthop()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| interface_name.is_set
 	|| afi.is_set
@@ -1549,7 +1569,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::Address()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::~Address()
@@ -1558,6 +1578,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::~Address()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::Nexthop::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -1655,12 +1676,12 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::BackupPathInfo()
     path_id{YType::uint8, "path-id"},
     backup_id{YType::uint8, "backup-id"},
     status{YType::enumeration, "status"}
-    	,
+        ,
     nexthop(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop>())
 {
     nexthop->parent = this;
 
-    yang_name = "backup-path-info"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-path-info"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::~BackupPathInfo()
@@ -1669,6 +1690,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::~BackupPathInfo()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path_number.is_set
 	|| type.is_set
 	|| path_role.is_set
@@ -1818,12 +1840,12 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Nexthop()
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
     afi{YType::enumeration, "afi"}
-    	,
+        ,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address>())
 {
     address->parent = this;
 
-    yang_name = "nexthop"; yang_parent_name = "backup-path-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "backup-path-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::~Nexthop()
@@ -1832,6 +1854,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::~Nexthop()
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| interface_name.is_set
 	|| afi.is_set
@@ -1944,7 +1967,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::Addre
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::~Address()
@@ -1953,6 +1976,7 @@ MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::~Addr
 
 bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -2043,9 +2067,11 @@ bool MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::Nexthop::Address::
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabels()
+    :
+    local_label(this, {"local_label_id"})
 {
 
-    yang_name = "local-labels"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-labels"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::~LocalLabels()
@@ -2054,7 +2080,8 @@ MplsStatic::Vrfs::Vrf::LocalLabels::~LocalLabels()
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::has_data() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_data())
             return true;
@@ -2064,7 +2091,7 @@ bool MplsStatic::Vrfs::Vrf::LocalLabels::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::has_operation() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_operation())
             return true;
@@ -2094,7 +2121,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::get_child_by_name(co
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(c);
+        local_label.append(c);
         return c;
     }
 
@@ -2106,7 +2133,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabel
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_label)
+    for (auto c : local_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2142,16 +2169,18 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::LocalLabel()
     pathset_via_resolve{YType::boolean, "pathset-via-resolve"},
     backup_pathset_via_resolve{YType::boolean, "backup-pathset-via-resolve"},
     address_family{YType::enumeration, "address-family"}
-    	,
+        ,
     prefix(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix>())
-	,pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh>())
-	,backup_pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh>())
+    , pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh>())
+    , backup_pathset_resolve_nh(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh>())
+    , path_info(this, {})
+    , backup_path_info(this, {})
 {
     prefix->parent = this;
     pathset_resolve_nh->parent = this;
     backup_pathset_resolve_nh->parent = this;
 
-    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::~LocalLabel()
@@ -2160,12 +2189,13 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::~LocalLabel()
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::has_data() const
 {
-    for (std::size_t index=0; index<path_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_info.len(); index++)
     {
         if(path_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<backup_path_info.size(); index++)
+    for (std::size_t index=0; index<backup_path_info.len(); index++)
     {
         if(backup_path_info[index]->has_data())
             return true;
@@ -2185,12 +2215,12 @@ bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::has_data() const
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::has_operation() const
 {
-    for (std::size_t index=0; index<path_info.size(); index++)
+    for (std::size_t index=0; index<path_info.len(); index++)
     {
         if(path_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<backup_path_info.size(); index++)
+    for (std::size_t index=0; index<backup_path_info.len(); index++)
     {
         if(backup_path_info[index]->has_operation())
             return true;
@@ -2212,7 +2242,8 @@ bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::has_operation() const
 std::string MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-label" <<"[local-label-id='" <<local_label_id <<"']";
+    path_buffer << "local-label";
+    ADD_KEY_TOKEN(local_label_id, "local-label-id");
     return path_buffer.str();
 }
 
@@ -2266,7 +2297,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_chil
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo>();
         c->parent = this;
-        path_info.push_back(c);
+        path_info.append(c);
         return c;
     }
 
@@ -2274,7 +2305,7 @@ std::shared_ptr<Entity> MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::get_chil
     {
         auto c = std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo>();
         c->parent = this;
-        backup_path_info.push_back(c);
+        backup_path_info.append(c);
         return c;
     }
 
@@ -2301,7 +2332,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabel
     }
 
     count = 0;
-    for (auto const & c : path_info)
+    for (auto c : path_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2310,7 +2341,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::Vrfs::Vrf::LocalLabel
     }
 
     count = 0;
-    for (auto const & c : backup_path_info)
+    for (auto c : backup_path_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2419,12 +2450,12 @@ bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::has_leaf_or_child_of_name(c
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::~Prefix()
@@ -2433,6 +2464,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::~Prefix()
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -2519,7 +2551,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::Prefix_()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::~Prefix_()
@@ -2528,6 +2560,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::~Prefix_()
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::Prefix::Prefix_::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -2624,7 +2657,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::PathsetResolve
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::~PathsetResolveNh()
@@ -2633,6 +2666,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::~PathsetResolv
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathsetResolveNh::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -2729,7 +2763,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::BackupPa
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "backup-pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::~BackupPathsetResolveNh()
@@ -2738,6 +2772,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::~BackupP
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathsetResolveNh::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -2835,12 +2870,12 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::PathInfo()
     path_id{YType::uint8, "path-id"},
     backup_id{YType::uint8, "backup-id"},
     status{YType::enumeration, "status"}
-    	,
+        ,
     nexthop(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop>())
 {
     nexthop->parent = this;
 
-    yang_name = "path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::~PathInfo()
@@ -2849,6 +2884,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::~PathInfo()
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path_number.is_set
 	|| type.is_set
 	|| path_role.is_set
@@ -2998,12 +3034,12 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Nexthop()
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
     afi{YType::enumeration, "afi"}
-    	,
+        ,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address>())
 {
     address->parent = this;
 
-    yang_name = "nexthop"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::~Nexthop()
@@ -3012,6 +3048,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::~Nexthop()
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| interface_name.is_set
 	|| afi.is_set
@@ -3124,7 +3161,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::Addr
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::~Address()
@@ -3133,6 +3170,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::~Add
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -3230,12 +3268,12 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::BackupPathInfo()
     path_id{YType::uint8, "path-id"},
     backup_id{YType::uint8, "backup-id"},
     status{YType::enumeration, "status"}
-    	,
+        ,
     nexthop(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop>())
 {
     nexthop->parent = this;
 
-    yang_name = "backup-path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::~BackupPathInfo()
@@ -3244,6 +3282,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::~BackupPathInfo(
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path_number.is_set
 	|| type.is_set
 	|| path_role.is_set
@@ -3393,12 +3432,12 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Nexthop
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
     afi{YType::enumeration, "afi"}
-    	,
+        ,
     address(std::make_shared<MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address>())
 {
     address->parent = this;
 
-    yang_name = "nexthop"; yang_parent_name = "backup-path-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "backup-path-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::~Nexthop()
@@ -3407,6 +3446,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::~Nextho
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| interface_name.is_set
 	|| afi.is_set
@@ -3519,7 +3559,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::~Address()
@@ -3528,6 +3568,7 @@ MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address
 
 bool MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -3637,7 +3678,7 @@ MplsStatic::Summary::Summary()
     ribv6_connected{YType::boolean, "ribv6-connected"}
 {
 
-    yang_name = "summary"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "summary"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::Summary::~Summary()
@@ -3646,6 +3687,7 @@ MplsStatic::Summary::~Summary()
 
 bool MplsStatic::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return lsp_count.is_set
 	|| label_count.is_set
 	|| label_error_count.is_set
@@ -3912,9 +3954,11 @@ bool MplsStatic::Summary::has_leaf_or_child_of_name(const std::string & name) co
 }
 
 MplsStatic::LocalLabels::LocalLabels()
+    :
+    local_label(this, {"local_label_id"})
 {
 
-    yang_name = "local-labels"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-labels"; yang_parent_name = "mpls-static"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::LocalLabels::~LocalLabels()
@@ -3923,7 +3967,8 @@ MplsStatic::LocalLabels::~LocalLabels()
 
 bool MplsStatic::LocalLabels::has_data() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_data())
             return true;
@@ -3933,7 +3978,7 @@ bool MplsStatic::LocalLabels::has_data() const
 
 bool MplsStatic::LocalLabels::has_operation() const
 {
-    for (std::size_t index=0; index<local_label.size(); index++)
+    for (std::size_t index=0; index<local_label.len(); index++)
     {
         if(local_label[index]->has_operation())
             return true;
@@ -3970,7 +4015,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::get_child_by_name(const std::st
     {
         auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel>();
         c->parent = this;
-        local_label.push_back(c);
+        local_label.append(c);
         return c;
     }
 
@@ -3982,7 +4027,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::get_chil
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : local_label)
+    for (auto c : local_label.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4018,16 +4063,18 @@ MplsStatic::LocalLabels::LocalLabel::LocalLabel()
     pathset_via_resolve{YType::boolean, "pathset-via-resolve"},
     backup_pathset_via_resolve{YType::boolean, "backup-pathset-via-resolve"},
     address_family{YType::enumeration, "address-family"}
-    	,
+        ,
     prefix(std::make_shared<MplsStatic::LocalLabels::LocalLabel::Prefix>())
-	,pathset_resolve_nh(std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh>())
-	,backup_pathset_resolve_nh(std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh>())
+    , pathset_resolve_nh(std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh>())
+    , backup_pathset_resolve_nh(std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh>())
+    , path_info(this, {})
+    , backup_path_info(this, {})
 {
     prefix->parent = this;
     pathset_resolve_nh->parent = this;
     backup_pathset_resolve_nh->parent = this;
 
-    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "local-label"; yang_parent_name = "local-labels"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::~LocalLabel()
@@ -4036,12 +4083,13 @@ MplsStatic::LocalLabels::LocalLabel::~LocalLabel()
 
 bool MplsStatic::LocalLabels::LocalLabel::has_data() const
 {
-    for (std::size_t index=0; index<path_info.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<path_info.len(); index++)
     {
         if(path_info[index]->has_data())
             return true;
     }
-    for (std::size_t index=0; index<backup_path_info.size(); index++)
+    for (std::size_t index=0; index<backup_path_info.len(); index++)
     {
         if(backup_path_info[index]->has_data())
             return true;
@@ -4061,12 +4109,12 @@ bool MplsStatic::LocalLabels::LocalLabel::has_data() const
 
 bool MplsStatic::LocalLabels::LocalLabel::has_operation() const
 {
-    for (std::size_t index=0; index<path_info.size(); index++)
+    for (std::size_t index=0; index<path_info.len(); index++)
     {
         if(path_info[index]->has_operation())
             return true;
     }
-    for (std::size_t index=0; index<backup_path_info.size(); index++)
+    for (std::size_t index=0; index<backup_path_info.len(); index++)
     {
         if(backup_path_info[index]->has_operation())
             return true;
@@ -4095,7 +4143,8 @@ std::string MplsStatic::LocalLabels::LocalLabel::get_absolute_path() const
 std::string MplsStatic::LocalLabels::LocalLabel::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "local-label" <<"[local-label-id='" <<local_label_id <<"']";
+    path_buffer << "local-label";
+    ADD_KEY_TOKEN(local_label_id, "local-label-id");
     return path_buffer.str();
 }
 
@@ -4149,7 +4198,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(c
     {
         auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathInfo>();
         c->parent = this;
-        path_info.push_back(c);
+        path_info.append(c);
         return c;
     }
 
@@ -4157,7 +4206,7 @@ std::shared_ptr<Entity> MplsStatic::LocalLabels::LocalLabel::get_child_by_name(c
     {
         auto c = std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathInfo>();
         c->parent = this;
-        backup_path_info.push_back(c);
+        backup_path_info.append(c);
         return c;
     }
 
@@ -4184,7 +4233,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLab
     }
 
     count = 0;
-    for (auto const & c : path_info)
+    for (auto c : path_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4193,7 +4242,7 @@ std::map<std::string, std::shared_ptr<Entity>> MplsStatic::LocalLabels::LocalLab
     }
 
     count = 0;
-    for (auto const & c : backup_path_info)
+    for (auto c : backup_path_info.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4302,12 +4351,12 @@ bool MplsStatic::LocalLabels::LocalLabel::has_leaf_or_child_of_name(const std::s
 MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix()
     :
     prefix_length{YType::uint8, "prefix-length"}
-    	,
+        ,
     prefix(std::make_shared<MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_>())
 {
     prefix->parent = this;
 
-    yang_name = "prefix"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::Prefix::~Prefix()
@@ -4316,6 +4365,7 @@ MplsStatic::LocalLabels::LocalLabel::Prefix::~Prefix()
 
 bool MplsStatic::LocalLabels::LocalLabel::Prefix::has_data() const
 {
+    if (is_presence_container) return true;
     return prefix_length.is_set
 	|| (prefix !=  nullptr && prefix->has_data());
 }
@@ -4402,7 +4452,7 @@ MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::Prefix_()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "prefix"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "prefix"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::~Prefix_()
@@ -4411,6 +4461,7 @@ MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::~Prefix_()
 
 bool MplsStatic::LocalLabels::LocalLabel::Prefix::Prefix_::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -4507,7 +4558,7 @@ MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::PathsetResolveNh()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::~PathsetResolveNh()
@@ -4516,6 +4567,7 @@ MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::~PathsetResolveNh()
 
 bool MplsStatic::LocalLabels::LocalLabel::PathsetResolveNh::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -4612,7 +4664,7 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::BackupPathsetResolv
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "backup-pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-pathset-resolve-nh"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::~BackupPathsetResolveNh()
@@ -4621,6 +4673,7 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::~BackupPathsetResol
 
 bool MplsStatic::LocalLabels::LocalLabel::BackupPathsetResolveNh::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -4718,12 +4771,12 @@ MplsStatic::LocalLabels::LocalLabel::PathInfo::PathInfo()
     path_id{YType::uint8, "path-id"},
     backup_id{YType::uint8, "backup-id"},
     status{YType::enumeration, "status"}
-    	,
+        ,
     nexthop(std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop>())
 {
     nexthop->parent = this;
 
-    yang_name = "path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::PathInfo::~PathInfo()
@@ -4732,6 +4785,7 @@ MplsStatic::LocalLabels::LocalLabel::PathInfo::~PathInfo()
 
 bool MplsStatic::LocalLabels::LocalLabel::PathInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path_number.is_set
 	|| type.is_set
 	|| path_role.is_set
@@ -4881,12 +4935,12 @@ MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Nexthop()
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
     afi{YType::enumeration, "afi"}
-    	,
+        ,
     address(std::make_shared<MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address>())
 {
     address->parent = this;
 
-    yang_name = "nexthop"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "path-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::~Nexthop()
@@ -4895,6 +4949,7 @@ MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::~Nexthop()
 
 bool MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| interface_name.is_set
 	|| afi.is_set
@@ -5007,7 +5062,7 @@ MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::Address()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::~Address()
@@ -5016,6 +5071,7 @@ MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::~Address()
 
 bool MplsStatic::LocalLabels::LocalLabel::PathInfo::Nexthop::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -5113,12 +5169,12 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::BackupPathInfo()
     path_id{YType::uint8, "path-id"},
     backup_id{YType::uint8, "backup-id"},
     status{YType::enumeration, "status"}
-    	,
+        ,
     nexthop(std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop>())
 {
     nexthop->parent = this;
 
-    yang_name = "backup-path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "backup-path-info"; yang_parent_name = "local-label"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::~BackupPathInfo()
@@ -5127,6 +5183,7 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::~BackupPathInfo()
 
 bool MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::has_data() const
 {
+    if (is_presence_container) return true;
     return path_number.is_set
 	|| type.is_set
 	|| path_role.is_set
@@ -5276,12 +5333,12 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Nexthop()
     label{YType::uint32, "label"},
     interface_name{YType::str, "interface-name"},
     afi{YType::enumeration, "afi"}
-    	,
+        ,
     address(std::make_shared<MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address>())
 {
     address->parent = this;
 
-    yang_name = "nexthop"; yang_parent_name = "backup-path-info"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "nexthop"; yang_parent_name = "backup-path-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::~Nexthop()
@@ -5290,6 +5347,7 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::~Nexthop()
 
 bool MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::has_data() const
 {
+    if (is_presence_container) return true;
     return label.is_set
 	|| interface_name.is_set
 	|| afi.is_set
@@ -5402,7 +5460,7 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::Address()
     ipv6_prefix{YType::str, "ipv6-prefix"}
 {
 
-    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "address"; yang_parent_name = "nexthop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::~Address()
@@ -5411,6 +5469,7 @@ MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::~Address(
 
 bool MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::Nexthop::Address::has_data() const
 {
+    if (is_presence_container) return true;
     return af_name.is_set
 	|| ipv4_prefix.is_set
 	|| ipv6_prefix.is_set;
@@ -5507,20 +5566,17 @@ const Enum::YLeaf MgmtMplsStaticPathStatus::resolve_failed {3, "resolve-failed"}
 const Enum::YLeaf MgmtMplsStaticPathStatus::frr_backup {4, "frr-backup"};
 const Enum::YLeaf MgmtMplsStaticPathStatus::backup {5, "backup"};
 
-const Enum::YLeaf MgmtStaticLspAfi::not_applicable {0, "not-applicable"};
-const Enum::YLeaf MgmtStaticLspAfi::ipv4 {1, "ipv4"};
-const Enum::YLeaf MgmtStaticLspAfi::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf MplsStaticPathRole::primary {0, "primary"};
-const Enum::YLeaf MplsStaticPathRole::backup {1, "backup"};
-const Enum::YLeaf MplsStaticPathRole::primary_and_backup {2, "primary-and-backup"};
-
 const Enum::YLeaf MgmtStaticPath::cross_connect_path {0, "cross-connect-path"};
 const Enum::YLeaf MgmtStaticPath::pop_lookup_path {1, "pop-lookup-path"};
 
-const Enum::YLeaf MgmtStaticAddr::not_applicable {0, "not-applicable"};
-const Enum::YLeaf MgmtStaticAddr::ipv4 {1, "ipv4"};
-const Enum::YLeaf MgmtStaticAddr::ipv6 {2, "ipv6"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::none {0, "none"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::per_prefix {1, "per-prefix"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::per_vrf {2, "per-vrf"};
+const Enum::YLeaf MgmtMplsStaticLabelMode::cross_connect {3, "cross-connect"};
+
+const Enum::YLeaf MgmtStaticLspAfi::not_applicable {0, "not-applicable"};
+const Enum::YLeaf MgmtStaticLspAfi::ipv4 {1, "ipv4"};
+const Enum::YLeaf MgmtStaticLspAfi::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf MgmtMplsStaticLabelStatus::not_created {0, "not-created"};
 const Enum::YLeaf MgmtMplsStaticLabelStatus::vrf_down {1, "vrf-down"};
@@ -5537,10 +5593,13 @@ const Enum::YLeaf MgmtMplsStaticLabelStatus::rewrite_discrepancy {11, "rewrite-d
 const Enum::YLeaf MgmtMplsStaticLabelStatus::rewrite_nexthop_unresolved {12, "rewrite-nexthop-unresolved"};
 const Enum::YLeaf MgmtMplsStaticLabelStatus::label_status_unknown {13, "label-status-unknown"};
 
-const Enum::YLeaf MgmtMplsStaticLabelMode::none {0, "none"};
-const Enum::YLeaf MgmtMplsStaticLabelMode::per_prefix {1, "per-prefix"};
-const Enum::YLeaf MgmtMplsStaticLabelMode::per_vrf {2, "per-vrf"};
-const Enum::YLeaf MgmtMplsStaticLabelMode::cross_connect {3, "cross-connect"};
+const Enum::YLeaf MgmtStaticAddr::not_applicable {0, "not-applicable"};
+const Enum::YLeaf MgmtStaticAddr::ipv4 {1, "ipv4"};
+const Enum::YLeaf MgmtStaticAddr::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf MplsStaticPathRole::primary {0, "primary"};
+const Enum::YLeaf MplsStaticPathRole::backup {1, "backup"};
+const Enum::YLeaf MplsStaticPathRole::primary_and_backup {2, "primary-and-backup"};
 
 
 }

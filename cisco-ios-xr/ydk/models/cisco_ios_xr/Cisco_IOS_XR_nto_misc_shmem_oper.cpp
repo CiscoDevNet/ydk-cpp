@@ -17,7 +17,7 @@ MemorySummary::MemorySummary()
 {
     nodes->parent = this;
 
-    yang_name = "memory-summary"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shmem-oper"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "memory-summary"; yang_parent_name = "Cisco-IOS-XR-nto-misc-shmem-oper"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 MemorySummary::~MemorySummary()
@@ -26,6 +26,7 @@ MemorySummary::~MemorySummary()
 
 bool MemorySummary::has_data() const
 {
+    if (is_presence_container) return true;
     return (nodes !=  nullptr && nodes->has_data());
 }
 
@@ -118,9 +119,11 @@ bool MemorySummary::has_leaf_or_child_of_name(const std::string & name) const
 }
 
 MemorySummary::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
 {
 
-    yang_name = "nodes"; yang_parent_name = "memory-summary"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "nodes"; yang_parent_name = "memory-summary"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MemorySummary::Nodes::~Nodes()
@@ -129,7 +132,8 @@ MemorySummary::Nodes::~Nodes()
 
 bool MemorySummary::Nodes::has_data() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_data())
             return true;
@@ -139,7 +143,7 @@ bool MemorySummary::Nodes::has_data() const
 
 bool MemorySummary::Nodes::has_operation() const
 {
-    for (std::size_t index=0; index<node.size(); index++)
+    for (std::size_t index=0; index<node.len(); index++)
     {
         if(node[index]->has_operation())
             return true;
@@ -176,7 +180,7 @@ std::shared_ptr<Entity> MemorySummary::Nodes::get_child_by_name(const std::strin
     {
         auto c = std::make_shared<MemorySummary::Nodes::Node>();
         c->parent = this;
-        node.push_back(c);
+        node.append(c);
         return c;
     }
 
@@ -188,7 +192,7 @@ std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::get_childre
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : node)
+    for (auto c : node.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -217,14 +221,14 @@ bool MemorySummary::Nodes::has_leaf_or_child_of_name(const std::string & name) c
 MemorySummary::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
-    	,
+        ,
     summary(std::make_shared<MemorySummary::Nodes::Node::Summary>())
-	,detail(std::make_shared<MemorySummary::Nodes::Node::Detail>())
+    , detail(std::make_shared<MemorySummary::Nodes::Node::Detail>())
 {
     summary->parent = this;
     detail->parent = this;
 
-    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 MemorySummary::Nodes::Node::~Node()
@@ -233,6 +237,7 @@ MemorySummary::Nodes::Node::~Node()
 
 bool MemorySummary::Nodes::Node::has_data() const
 {
+    if (is_presence_container) return true;
     return node_name.is_set
 	|| (summary !=  nullptr && summary->has_data())
 	|| (detail !=  nullptr && detail->has_data());
@@ -256,7 +261,8 @@ std::string MemorySummary::Nodes::Node::get_absolute_path() const
 std::string MemorySummary::Nodes::Node::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "node" <<"[node-name='" <<node_name <<"']";
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
     return path_buffer.str();
 }
 
@@ -349,7 +355,7 @@ MemorySummary::Nodes::Node::Summary::Summary()
     flash_system{YType::uint64, "flash-system"}
 {
 
-    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MemorySummary::Nodes::Node::Summary::~Summary()
@@ -358,6 +364,7 @@ MemorySummary::Nodes::Node::Summary::~Summary()
 
 bool MemorySummary::Nodes::Node::Summary::has_data() const
 {
+    if (is_presence_container) return true;
     return page_size.is_set
 	|| ram_memory.is_set
 	|| free_physical_memory.is_set
@@ -555,11 +562,12 @@ MemorySummary::Nodes::Node::Detail::Detail()
     allocated_memory{YType::uint64, "allocated-memory"},
     program_text{YType::uint64, "program-text"},
     program_data{YType::uint64, "program-data"},
-    program_stack{YType::uint64, "program-stack"},
-    total_used{YType::uint64, "total-used"}
+    program_stack{YType::uint64, "program-stack"}
+        ,
+    shared_window(this, {})
 {
 
-    yang_name = "detail"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "detail"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MemorySummary::Nodes::Node::Detail::~Detail()
@@ -568,7 +576,8 @@ MemorySummary::Nodes::Node::Detail::~Detail()
 
 bool MemorySummary::Nodes::Node::Detail::has_data() const
 {
-    for (std::size_t index=0; index<shared_window.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<shared_window.len(); index++)
     {
         if(shared_window[index]->has_data())
             return true;
@@ -588,13 +597,12 @@ bool MemorySummary::Nodes::Node::Detail::has_data() const
 	|| allocated_memory.is_set
 	|| program_text.is_set
 	|| program_data.is_set
-	|| program_stack.is_set
-	|| total_used.is_set;
+	|| program_stack.is_set;
 }
 
 bool MemorySummary::Nodes::Node::Detail::has_operation() const
 {
-    for (std::size_t index=0; index<shared_window.size(); index++)
+    for (std::size_t index=0; index<shared_window.len(); index++)
     {
         if(shared_window[index]->has_operation())
             return true;
@@ -615,8 +623,7 @@ bool MemorySummary::Nodes::Node::Detail::has_operation() const
 	|| ydk::is_set(allocated_memory.yfilter)
 	|| ydk::is_set(program_text.yfilter)
 	|| ydk::is_set(program_data.yfilter)
-	|| ydk::is_set(program_stack.yfilter)
-	|| ydk::is_set(total_used.yfilter);
+	|| ydk::is_set(program_stack.yfilter);
 }
 
 std::string MemorySummary::Nodes::Node::Detail::get_segment_path() const
@@ -646,7 +653,6 @@ std::vector<std::pair<std::string, LeafData> > MemorySummary::Nodes::Node::Detai
     if (program_text.is_set || is_set(program_text.yfilter)) leaf_name_data.push_back(program_text.get_name_leafdata());
     if (program_data.is_set || is_set(program_data.yfilter)) leaf_name_data.push_back(program_data.get_name_leafdata());
     if (program_stack.is_set || is_set(program_stack.yfilter)) leaf_name_data.push_back(program_stack.get_name_leafdata());
-    if (total_used.is_set || is_set(total_used.yfilter)) leaf_name_data.push_back(total_used.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -658,7 +664,7 @@ std::shared_ptr<Entity> MemorySummary::Nodes::Node::Detail::get_child_by_name(co
     {
         auto c = std::make_shared<MemorySummary::Nodes::Node::Detail::SharedWindow>();
         c->parent = this;
-        shared_window.push_back(c);
+        shared_window.append(c);
         return c;
     }
 
@@ -670,7 +676,7 @@ std::map<std::string, std::shared_ptr<Entity>> MemorySummary::Nodes::Node::Detai
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : shared_window)
+    for (auto c : shared_window.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -779,12 +785,6 @@ void MemorySummary::Nodes::Node::Detail::set_value(const std::string & value_pat
         program_stack.value_namespace = name_space;
         program_stack.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "total-used")
-    {
-        total_used = value;
-        total_used.value_namespace = name_space;
-        total_used.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MemorySummary::Nodes::Node::Detail::set_filter(const std::string & value_path, YFilter yfilter)
@@ -853,15 +853,11 @@ void MemorySummary::Nodes::Node::Detail::set_filter(const std::string & value_pa
     {
         program_stack.yfilter = yfilter;
     }
-    if(value_path == "total-used")
-    {
-        total_used.yfilter = yfilter;
-    }
 }
 
 bool MemorySummary::Nodes::Node::Detail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "shared-window" || name == "page-size" || name == "ram-memory" || name == "free-physical-memory" || name == "private-physical-memory" || name == "system-ram-memory" || name == "free-application-memory" || name == "image-memory" || name == "boot-ram-size" || name == "reserved-memory" || name == "io-memory" || name == "flash-system" || name == "total-shared-window" || name == "allocated-memory" || name == "program-text" || name == "program-data" || name == "program-stack" || name == "total-used")
+    if(name == "shared-window" || name == "page-size" || name == "ram-memory" || name == "free-physical-memory" || name == "private-physical-memory" || name == "system-ram-memory" || name == "free-application-memory" || name == "image-memory" || name == "boot-ram-size" || name == "reserved-memory" || name == "io-memory" || name == "flash-system" || name == "total-shared-window" || name == "allocated-memory" || name == "program-text" || name == "program-data" || name == "program-stack")
         return true;
     return false;
 }
@@ -872,7 +868,7 @@ MemorySummary::Nodes::Node::Detail::SharedWindow::SharedWindow()
     window_size{YType::uint64, "window-size"}
 {
 
-    yang_name = "shared-window"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true;
+    yang_name = "shared-window"; yang_parent_name = "detail"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
 MemorySummary::Nodes::Node::Detail::SharedWindow::~SharedWindow()
@@ -881,6 +877,7 @@ MemorySummary::Nodes::Node::Detail::SharedWindow::~SharedWindow()
 
 bool MemorySummary::Nodes::Node::Detail::SharedWindow::has_data() const
 {
+    if (is_presence_container) return true;
     return shared_window.is_set
 	|| window_size.is_set;
 }

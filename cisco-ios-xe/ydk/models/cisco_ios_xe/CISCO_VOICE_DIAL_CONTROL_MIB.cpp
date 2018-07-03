@@ -13,30 +13,30 @@ namespace CISCO_VOICE_DIAL_CONTROL_MIB {
 
 CISCOVOICEDIALCONTROLMIB::CISCOVOICEDIALCONTROLMIB()
     :
-    cvgeneralconfiguration(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration>())
-	,cvgatewaycallactive(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive>())
-	,cvcallvolume(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolume>())
-	,cvcallratemonitor(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor>())
-	,cvcallvolumestatshistory(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory>())
-	,cvpeercfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable>())
-	,cvvoicepeercfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable>())
-	,cvvoippeercfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable>())
-	,cvpeercommoncfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable>())
-	,cvcallactivetable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallactivetable>())
-	,cvvoipcallactivetable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable>())
-	,cvcallvolconntable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable>())
-	,cvcallvoliftable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable>())
-	,cvcallhistorytable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable>())
-	,cvvoipcallhistorytable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable>())
-	,cvcallratestatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable>())
-	,cvcalllegratestatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable>())
-	,cvactivecallstatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable>())
-	,cvcalldurationstatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable>())
-	,cvsipmsgratestatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable>())
-	,cvcallratewmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable>())
-	,cvcalllegratewmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable>())
-	,cvactivecallwmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable>())
-	,cvsipmsgratewmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable>())
+    cvgeneralconfiguration(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration>())
+    , cvgatewaycallactive(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive>())
+    , cvcallvolume(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolume>())
+    , cvcallratemonitor(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor>())
+    , cvcallvolumestatshistory(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory>())
+    , cvpeercfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable>())
+    , cvvoicepeercfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable>())
+    , cvvoippeercfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable>())
+    , cvpeercommoncfgtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable>())
+    , cvcallactivetable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallActiveTable>())
+    , cvvoipcallactivetable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable>())
+    , cvcallvolconntable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable>())
+    , cvcallvoliftable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable>())
+    , cvcallhistorytable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable>())
+    , cvvoipcallhistorytable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable>())
+    , cvcallratestatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable>())
+    , cvcalllegratestatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable>())
+    , cvactivecallstatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable>())
+    , cvcalldurationstatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable>())
+    , cvsipmsgratestatstable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable>())
+    , cvcallratewmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable>())
+    , cvcalllegratewmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable>())
+    , cvactivecallwmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable>())
+    , cvsipmsgratewmtable(std::make_shared<CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable>())
 {
     cvgeneralconfiguration->parent = this;
     cvgatewaycallactive->parent = this;
@@ -63,7 +63,7 @@ CISCOVOICEDIALCONTROLMIB::CISCOVOICEDIALCONTROLMIB()
     cvactivecallwmtable->parent = this;
     cvsipmsgratewmtable->parent = this;
 
-    yang_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 CISCOVOICEDIALCONTROLMIB::~CISCOVOICEDIALCONTROLMIB()
@@ -72,6 +72,7 @@ CISCOVOICEDIALCONTROLMIB::~CISCOVOICEDIALCONTROLMIB()
 
 bool CISCOVOICEDIALCONTROLMIB::has_data() const
 {
+    if (is_presence_container) return true;
     return (cvgeneralconfiguration !=  nullptr && cvgeneralconfiguration->has_data())
 	|| (cvgatewaycallactive !=  nullptr && cvgatewaycallactive->has_data())
 	|| (cvcallvolume !=  nullptr && cvcallvolume->has_data())
@@ -149,7 +150,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvgeneralconfiguration == nullptr)
         {
-            cvgeneralconfiguration = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration>();
+            cvgeneralconfiguration = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration>();
         }
         return cvgeneralconfiguration;
     }
@@ -158,7 +159,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvgatewaycallactive == nullptr)
         {
-            cvgatewaycallactive = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive>();
+            cvgatewaycallactive = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive>();
         }
         return cvgatewaycallactive;
     }
@@ -167,7 +168,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallvolume == nullptr)
         {
-            cvcallvolume = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolume>();
+            cvcallvolume = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolume>();
         }
         return cvcallvolume;
     }
@@ -176,7 +177,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallratemonitor == nullptr)
         {
-            cvcallratemonitor = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor>();
+            cvcallratemonitor = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor>();
         }
         return cvcallratemonitor;
     }
@@ -185,7 +186,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallvolumestatshistory == nullptr)
         {
-            cvcallvolumestatshistory = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory>();
+            cvcallvolumestatshistory = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory>();
         }
         return cvcallvolumestatshistory;
     }
@@ -194,7 +195,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvpeercfgtable == nullptr)
         {
-            cvpeercfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable>();
+            cvpeercfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable>();
         }
         return cvpeercfgtable;
     }
@@ -203,7 +204,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvvoicepeercfgtable == nullptr)
         {
-            cvvoicepeercfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable>();
+            cvvoicepeercfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable>();
         }
         return cvvoicepeercfgtable;
     }
@@ -212,7 +213,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvvoippeercfgtable == nullptr)
         {
-            cvvoippeercfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable>();
+            cvvoippeercfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable>();
         }
         return cvvoippeercfgtable;
     }
@@ -221,7 +222,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvpeercommoncfgtable == nullptr)
         {
-            cvpeercommoncfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable>();
+            cvpeercommoncfgtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable>();
         }
         return cvpeercommoncfgtable;
     }
@@ -230,7 +231,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallactivetable == nullptr)
         {
-            cvcallactivetable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallactivetable>();
+            cvcallactivetable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallActiveTable>();
         }
         return cvcallactivetable;
     }
@@ -239,7 +240,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvvoipcallactivetable == nullptr)
         {
-            cvvoipcallactivetable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable>();
+            cvvoipcallactivetable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable>();
         }
         return cvvoipcallactivetable;
     }
@@ -248,7 +249,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallvolconntable == nullptr)
         {
-            cvcallvolconntable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable>();
+            cvcallvolconntable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable>();
         }
         return cvcallvolconntable;
     }
@@ -257,7 +258,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallvoliftable == nullptr)
         {
-            cvcallvoliftable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable>();
+            cvcallvoliftable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable>();
         }
         return cvcallvoliftable;
     }
@@ -266,7 +267,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallhistorytable == nullptr)
         {
-            cvcallhistorytable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable>();
+            cvcallhistorytable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable>();
         }
         return cvcallhistorytable;
     }
@@ -275,7 +276,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvvoipcallhistorytable == nullptr)
         {
-            cvvoipcallhistorytable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable>();
+            cvvoipcallhistorytable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable>();
         }
         return cvvoipcallhistorytable;
     }
@@ -284,7 +285,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallratestatstable == nullptr)
         {
-            cvcallratestatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable>();
+            cvcallratestatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable>();
         }
         return cvcallratestatstable;
     }
@@ -293,7 +294,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcalllegratestatstable == nullptr)
         {
-            cvcalllegratestatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable>();
+            cvcalllegratestatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable>();
         }
         return cvcalllegratestatstable;
     }
@@ -302,7 +303,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvactivecallstatstable == nullptr)
         {
-            cvactivecallstatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable>();
+            cvactivecallstatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable>();
         }
         return cvactivecallstatstable;
     }
@@ -311,7 +312,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcalldurationstatstable == nullptr)
         {
-            cvcalldurationstatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable>();
+            cvcalldurationstatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable>();
         }
         return cvcalldurationstatstable;
     }
@@ -320,7 +321,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvsipmsgratestatstable == nullptr)
         {
-            cvsipmsgratestatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable>();
+            cvsipmsgratestatstable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable>();
         }
         return cvsipmsgratestatstable;
     }
@@ -329,7 +330,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcallratewmtable == nullptr)
         {
-            cvcallratewmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable>();
+            cvcallratewmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable>();
         }
         return cvcallratewmtable;
     }
@@ -338,7 +339,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvcalllegratewmtable == nullptr)
         {
-            cvcalllegratewmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable>();
+            cvcalllegratewmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable>();
         }
         return cvcalllegratewmtable;
     }
@@ -347,7 +348,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvactivecallwmtable == nullptr)
         {
-            cvactivecallwmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable>();
+            cvactivecallwmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable>();
         }
         return cvactivecallwmtable;
     }
@@ -356,7 +357,7 @@ std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::get_child_by_name(const std::s
     {
         if(cvsipmsgratewmtable == nullptr)
         {
-            cvsipmsgratewmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable>();
+            cvsipmsgratewmtable = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable>();
         }
         return cvsipmsgratewmtable;
     }
@@ -531,7 +532,7 @@ bool CISCOVOICEDIALCONTROLMIB::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::Cvgeneralconfiguration()
+CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::CvGeneralConfiguration()
     :
     cvgeneralpoorqovnotificationenable{YType::boolean, "cvGeneralPoorQoVNotificationEnable"},
     cvgeneralfallbacknotificationenable{YType::boolean, "cvGeneralFallbackNotificationEnable"},
@@ -539,22 +540,23 @@ CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::Cvgeneralconfiguration()
     cvgeneralmediapolicynotificationenable{YType::boolean, "cvGeneralMediaPolicyNotificationEnable"}
 {
 
-    yang_name = "cvGeneralConfiguration"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvGeneralConfiguration"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::~Cvgeneralconfiguration()
+CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::~CvGeneralConfiguration()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::has_data() const
 {
+    if (is_presence_container) return true;
     return cvgeneralpoorqovnotificationenable.is_set
 	|| cvgeneralfallbacknotificationenable.is_set
 	|| cvgeneraldscppolicynotificationenable.is_set
 	|| cvgeneralmediapolicynotificationenable.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvgeneralpoorqovnotificationenable.yfilter)
@@ -563,21 +565,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::has_operation() const
 	|| ydk::is_set(cvgeneralmediapolicynotificationenable.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvGeneralConfiguration";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -590,19 +592,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvgener
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvGeneralPoorQoVNotificationEnable")
     {
@@ -630,7 +632,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::set_value(const std::stri
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvGeneralPoorQoVNotificationEnable")
     {
@@ -650,14 +652,14 @@ void CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::set_filter(const std::str
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvgeneralconfiguration::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvGeneralConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvGeneralPoorQoVNotificationEnable" || name == "cvGeneralFallbackNotificationEnable" || name == "cvGeneralDSCPPolicyNotificationEnable" || name == "cvGeneralMediaPolicyNotificationEnable")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::Cvgatewaycallactive()
+CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::CvGatewayCallActive()
     :
     cvcallactiveds0s{YType::uint32, "cvCallActiveDS0s"},
     cvcallactiveds0shighthreshold{YType::uint32, "cvCallActiveDS0sHighThreshold"},
@@ -666,15 +668,16 @@ CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::Cvgatewaycallactive()
     cvcallactiveds0slownotifyenable{YType::boolean, "cvCallActiveDS0sLowNotifyEnable"}
 {
 
-    yang_name = "cvGatewayCallActive"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvGatewayCallActive"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::~Cvgatewaycallactive()
+CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::~CvGatewayCallActive()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcallactiveds0s.is_set
 	|| cvcallactiveds0shighthreshold.is_set
 	|| cvcallactiveds0slowthreshold.is_set
@@ -682,7 +685,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::has_data() const
 	|| cvcallactiveds0slownotifyenable.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcallactiveds0s.yfilter)
@@ -692,21 +695,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::has_operation() const
 	|| ydk::is_set(cvcallactiveds0slownotifyenable.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvGatewayCallActive";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -720,19 +723,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvgatew
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallActiveDS0s")
     {
@@ -766,7 +769,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::set_value(const std::string 
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallActiveDS0s")
     {
@@ -790,54 +793,55 @@ void CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::set_filter(const std::string
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvgatewaycallactive::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvGatewayCallActive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallActiveDS0s" || name == "cvCallActiveDS0sHighThreshold" || name == "cvCallActiveDS0sLowThreshold" || name == "cvCallActiveDS0sHighNotifyEnable" || name == "cvCallActiveDS0sLowNotifyEnable")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolume::Cvcallvolume()
+CISCOVOICEDIALCONTROLMIB::CvCallVolume::CvCallVolume()
     :
     cvcallvolconntotalactiveconnections{YType::uint32, "cvCallVolConnTotalActiveConnections"},
     cvcallvolconnmaxcallconnectionlicenese{YType::uint32, "cvCallVolConnMaxCallConnectionLicenese"}
 {
 
-    yang_name = "cvCallVolume"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallVolume"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolume::~Cvcallvolume()
+CISCOVOICEDIALCONTROLMIB::CvCallVolume::~CvCallVolume()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolume::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolume::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcallvolconntotalactiveconnections.is_set
 	|| cvcallvolconnmaxcallconnectionlicenese.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolume::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolume::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcallvolconntotalactiveconnections.yfilter)
 	|| ydk::is_set(cvcallvolconnmaxcallconnectionlicenese.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolume::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolume::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolume::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolume::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallVolume";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallvolume::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallVolume::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -848,19 +852,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolume::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallVolume::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolume::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallVolume::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolume::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolume::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallVolConnTotalActiveConnections")
     {
@@ -876,7 +880,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvolume::set_value(const std::string & value
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolume::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolume::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallVolConnTotalActiveConnections")
     {
@@ -888,14 +892,14 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvolume::set_filter(const std::string & valu
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolume::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolume::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallVolConnTotalActiveConnections" || name == "cvCallVolConnMaxCallConnectionLicenese")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::Cvcallratemonitor()
+CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::CvCallRateMonitor()
     :
     cvcallratemonitorenable{YType::boolean, "cvCallRateMonitorEnable"},
     cvcallratemonitortime{YType::uint32, "cvCallRateMonitorTime"},
@@ -903,22 +907,23 @@ CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::Cvcallratemonitor()
     cvcallratehiwatermark{YType::uint32, "cvCallRateHiWaterMark"}
 {
 
-    yang_name = "cvCallRateMonitor"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallRateMonitor"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::~Cvcallratemonitor()
+CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::~CvCallRateMonitor()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcallratemonitorenable.is_set
 	|| cvcallratemonitortime.is_set
 	|| cvcallrate.is_set
 	|| cvcallratehiwatermark.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcallratemonitorenable.yfilter)
@@ -927,21 +932,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::has_operation() const
 	|| ydk::is_set(cvcallratehiwatermark.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallRateMonitor";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -954,19 +959,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallr
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallRateMonitorEnable")
     {
@@ -994,7 +999,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::set_value(const std::string & 
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallRateMonitorEnable")
     {
@@ -1014,54 +1019,55 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::set_filter(const std::string &
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratemonitor::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateMonitor::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallRateMonitorEnable" || name == "cvCallRateMonitorTime" || name == "cvCallRate" || name == "cvCallRateHiWaterMark")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::Cvcallvolumestatshistory()
+CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::CvCallVolumeStatsHistory()
     :
     cvcalldurationstatsthreshold{YType::uint32, "cvCallDurationStatsThreshold"},
     cvcallvolumewmtablesize{YType::uint32, "cvCallVolumeWMTableSize"}
 {
 
-    yang_name = "cvCallVolumeStatsHistory"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallVolumeStatsHistory"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::~Cvcallvolumestatshistory()
+CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::~CvCallVolumeStatsHistory()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcalldurationstatsthreshold.is_set
 	|| cvcallvolumewmtablesize.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcalldurationstatsthreshold.yfilter)
 	|| ydk::is_set(cvcallvolumewmtablesize.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallVolumeStatsHistory";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1072,19 +1078,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallDurationStatsThreshold")
     {
@@ -1100,7 +1106,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::set_value(const std::st
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallDurationStatsThreshold")
     {
@@ -1112,26 +1118,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::set_filter(const std::s
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolumestatshistory::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolumeStatsHistory::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallDurationStatsThreshold" || name == "cvCallVolumeWMTableSize")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgtable()
+CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgTable()
+    :
+    cvpeercfgentry(this, {"cvpeercfgindex"})
 {
 
-    yang_name = "cvPeerCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvPeerCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::~Cvpeercfgtable()
+CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::~CvPeerCfgTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpeercfgentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpeercfgentry.len(); index++)
     {
         if(cvpeercfgentry[index]->has_data())
             return true;
@@ -1139,9 +1148,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvpeercfgentry.len(); index++)
     {
         if(cvpeercfgentry[index]->has_operation())
             return true;
@@ -1149,21 +1158,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvPeerCfgTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1172,25 +1181,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeerc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvPeerCfgEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry>();
         c->parent = this;
-        cvpeercfgentry.push_back(c);
+        cvpeercfgentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpeercfgentry)
+    for (auto c : cvpeercfgentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1201,22 +1210,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeerc
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvPeerCfgEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgentry()
+CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgEntry()
     :
     cvpeercfgindex{YType::int32, "cvPeerCfgIndex"},
     cvpeercfgifindex{YType::int32, "cvPeerCfgIfIndex"},
@@ -1227,15 +1236,16 @@ CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgentry()
     cvcallvolpeeroutgoingcalls{YType::uint32, "cvCallVolPeerOutgoingCalls"}
 {
 
-    yang_name = "cvPeerCfgEntry"; yang_parent_name = "cvPeerCfgTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvPeerCfgEntry"; yang_parent_name = "cvPeerCfgTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::~Cvpeercfgentry()
+CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::~CvPeerCfgEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvpeercfgindex.is_set
 	|| cvpeercfgifindex.is_set
 	|| cvpeercfgtype.is_set
@@ -1245,7 +1255,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::has_data() const
 	|| cvcallvolpeeroutgoingcalls.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvpeercfgindex.yfilter)
@@ -1257,21 +1267,22 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::has_operation() c
 	|| ydk::is_set(cvcallvolpeeroutgoingcalls.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvPeerCfgTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvPeerCfgEntry" <<"[cvPeerCfgIndex='" <<cvpeercfgindex <<"']";
+    path_buffer << "cvPeerCfgEntry";
+    ADD_KEY_TOKEN(cvpeercfgindex, "cvPeerCfgIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1287,19 +1298,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeerc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvPeerCfgIndex")
     {
@@ -1345,7 +1356,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::set_value(const s
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvPeerCfgIndex")
     {
@@ -1377,26 +1388,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::set_filter(const 
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvPeerCfgIndex" || name == "cvPeerCfgIfIndex" || name == "cvPeerCfgType" || name == "cvPeerCfgRowStatus" || name == "cvPeerCfgPeerType" || name == "cvCallVolPeerIncomingCalls" || name == "cvCallVolPeerOutgoingCalls")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgtable()
+CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgTable()
+    :
+    cvvoicepeercfgentry(this, {"ifindex"})
 {
 
-    yang_name = "cvVoicePeerCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoicePeerCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::~Cvvoicepeercfgtable()
+CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::~CvVoicePeerCfgTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoicepeercfgentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvvoicepeercfgentry.len(); index++)
     {
         if(cvvoicepeercfgentry[index]->has_data())
             return true;
@@ -1404,9 +1418,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoicepeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvvoicepeercfgentry.len(); index++)
     {
         if(cvvoicepeercfgentry[index]->has_operation())
             return true;
@@ -1414,21 +1428,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvVoicePeerCfgTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1437,25 +1451,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoice
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvVoicePeerCfgEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry>();
         c->parent = this;
-        cvvoicepeercfgentry.push_back(c);
+        cvvoicepeercfgentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvvoicepeercfgentry)
+    for (auto c : cvvoicepeercfgentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1466,22 +1480,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoice
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvVoicePeerCfgEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgentry()
+CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cvvoicepeercfgsessiontarget{YType::str, "cvVoicePeerCfgSessionTarget"},
@@ -1493,15 +1507,16 @@ CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeerc
     cvvoicepeercfgechocancellertest{YType::enumeration, "cvVoicePeerCfgEchoCancellerTest"}
 {
 
-    yang_name = "cvVoicePeerCfgEntry"; yang_parent_name = "cvVoicePeerCfgTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoicePeerCfgEntry"; yang_parent_name = "cvVoicePeerCfgTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::~Cvvoicepeercfgentry()
+CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::~CvVoicePeerCfgEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cvvoicepeercfgsessiontarget.is_set
 	|| cvvoicepeercfgdialdigitsprefix.is_set
@@ -1512,7 +1527,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::has_dat
 	|| cvvoicepeercfgechocancellertest.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1525,21 +1540,22 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::has_ope
 	|| ydk::is_set(cvvoicepeercfgechocancellertest.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvVoicePeerCfgTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvVoicePeerCfgEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cvVoicePeerCfgEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1556,19 +1572,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoice
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -1620,7 +1636,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::set_val
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -1656,26 +1672,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::set_fil
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cvVoicePeerCfgSessionTarget" || name == "cvVoicePeerCfgDialDigitsPrefix" || name == "cvVoicePeerCfgDIDCallEnable" || name == "cvVoicePeerCfgCasGroup" || name == "cvVoicePeerCfgRegisterE164" || name == "cvVoicePeerCfgForwardDigits" || name == "cvVoicePeerCfgEchoCancellerTest")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgtable()
+CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgTable()
+    :
+    cvvoippeercfgentry(this, {"ifindex"})
 {
 
-    yang_name = "cvVoIPPeerCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoIPPeerCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::~Cvvoippeercfgtable()
+CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::~CvVoIPPeerCfgTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoippeercfgentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvvoippeercfgentry.len(); index++)
     {
         if(cvvoippeercfgentry[index]->has_data())
             return true;
@@ -1683,9 +1702,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoippeercfgentry.size(); index++)
+    for (std::size_t index=0; index<cvvoippeercfgentry.len(); index++)
     {
         if(cvvoippeercfgentry[index]->has_operation())
             return true;
@@ -1693,21 +1712,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvVoIPPeerCfgTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1716,25 +1735,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipp
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvVoIPPeerCfgEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry>();
         c->parent = this;
-        cvvoippeercfgentry.push_back(c);
+        cvvoippeercfgentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvvoippeercfgentry)
+    for (auto c : cvvoippeercfgentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -1745,22 +1764,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipp
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvVoIPPeerCfgEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgentry()
+CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cvvoippeercfgsessionprotocol{YType::enumeration, "cvVoIPPeerCfgSessionProtocol"},
@@ -1795,15 +1814,16 @@ CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfge
     cvvoippeercfgmediapolicynotificationenable{YType::boolean, "cvVoIPPeerCfgMediaPolicyNotificationEnable"}
 {
 
-    yang_name = "cvVoIPPeerCfgEntry"; yang_parent_name = "cvVoIPPeerCfgTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoIPPeerCfgEntry"; yang_parent_name = "cvVoIPPeerCfgTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::~Cvvoippeercfgentry()
+CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::~CvVoIPPeerCfgEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cvvoippeercfgsessionprotocol.is_set
 	|| cvvoippeercfgdesiredqos.is_set
@@ -1837,7 +1857,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::has_data(
 	|| cvvoippeercfgmediapolicynotificationenable.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -1873,21 +1893,22 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::has_opera
 	|| ydk::is_set(cvvoippeercfgmediapolicynotificationenable.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvVoIPPeerCfgTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvVoIPPeerCfgEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cvVoIPPeerCfgEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -1927,19 +1948,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipp
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2125,7 +2146,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::set_value
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2253,26 +2274,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::set_filte
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cvVoIPPeerCfgSessionProtocol" || name == "cvVoIPPeerCfgDesiredQoS" || name == "cvVoIPPeerCfgMinAcceptableQoS" || name == "cvVoIPPeerCfgSessionTarget" || name == "cvVoIPPeerCfgCoderRate" || name == "cvVoIPPeerCfgFaxRate" || name == "cvVoIPPeerCfgVADEnable" || name == "cvVoIPPeerCfgExpectFactor" || name == "cvVoIPPeerCfgIcpif" || name == "cvVoIPPeerCfgPoorQoVNotificationEnable" || name == "cvVoIPPeerCfgUDPChecksumEnable" || name == "cvVoIPPeerCfgIPPrecedence" || name == "cvVoIPPeerCfgTechPrefix" || name == "cvVoIPPeerCfgDigitRelay" || name == "cvVoIPPeerCfgCoderBytes" || name == "cvVoIPPeerCfgFaxBytes" || name == "cvVoIPPeerCfgInBandSignaling" || name == "cvVoIPPeerCfgMediaSetting" || name == "cvVoIPPeerCfgDesiredQoSVideo" || name == "cvVoIPPeerCfgMinAcceptableQoSVideo" || name == "cvVoIPPeerCfgRedirectip2ip" || name == "cvVoIPPeerCfgOctetAligned" || name == "cvVoIPPeerCfgBitRates" || name == "cvVoIPPeerCfgCRC" || name == "cvVoIPPeerCfgCoderMode" || name == "cvVoIPPeerCfgCodingMode" || name == "cvVoIPPeerCfgBitRate" || name == "cvVoIPPeerCfgFrameSize" || name == "cvVoIPPeerCfgDSCPPolicyNotificationEnable" || name == "cvVoIPPeerCfgMediaPolicyNotificationEnable")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgtable()
+CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgTable()
+    :
+    cvpeercommoncfgentry(this, {"ifindex"})
 {
 
-    yang_name = "cvPeerCommonCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvPeerCommonCfgTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::~Cvpeercommoncfgtable()
+CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::~CvPeerCommonCfgTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::has_data() const
 {
-    for (std::size_t index=0; index<cvpeercommoncfgentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvpeercommoncfgentry.len(); index++)
     {
         if(cvpeercommoncfgentry[index]->has_data())
             return true;
@@ -2280,9 +2304,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvpeercommoncfgentry.size(); index++)
+    for (std::size_t index=0; index<cvpeercommoncfgentry.len(); index++)
     {
         if(cvpeercommoncfgentry[index]->has_operation())
             return true;
@@ -2290,21 +2314,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvPeerCommonCfgTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2313,25 +2337,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeerc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvPeerCommonCfgEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry>();
         c->parent = this;
-        cvpeercommoncfgentry.push_back(c);
+        cvpeercommoncfgentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvpeercommoncfgentry)
+    for (auto c : cvpeercommoncfgentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2342,22 +2366,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeerc
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvPeerCommonCfgEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::Cvpeercommoncfgentry()
+CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::CvPeerCommonCfgEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cvpeercommoncfgincomingdnisdigits{YType::str, "cvPeerCommonCfgIncomingDnisDigits"},
@@ -2372,15 +2396,16 @@ CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::Cvpeercomm
     cvpeercommoncfgtargettrunkgrplabel{YType::str, "cvPeerCommonCfgTargetTrunkGrpLabel"}
 {
 
-    yang_name = "cvPeerCommonCfgEntry"; yang_parent_name = "cvPeerCommonCfgTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvPeerCommonCfgEntry"; yang_parent_name = "cvPeerCommonCfgTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::~Cvpeercommoncfgentry()
+CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::~CvPeerCommonCfgEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cvpeercommoncfgincomingdnisdigits.is_set
 	|| cvpeercommoncfgmaxconnections.is_set
@@ -2394,7 +2419,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::has_d
 	|| cvpeercommoncfgtargettrunkgrplabel.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -2410,21 +2435,22 @@ bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::has_o
 	|| ydk::is_set(cvpeercommoncfgtargettrunkgrplabel.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvPeerCommonCfgTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvPeerCommonCfgEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cvPeerCommonCfgEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2444,19 +2470,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvpeerc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -2526,7 +2552,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::set_v
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -2574,26 +2600,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::set_f
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvpeercommoncfgtable::Cvpeercommoncfgentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvPeerCommonCfgTable::CvPeerCommonCfgEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cvPeerCommonCfgIncomingDnisDigits" || name == "cvPeerCommonCfgMaxConnections" || name == "cvPeerCommonCfgApplicationName" || name == "cvPeerCommonCfgPreference" || name == "cvPeerCommonCfgHuntStop" || name == "cvPeerCommonCfgDnisMappingName" || name == "cvPeerCommonCfgSourceCarrierId" || name == "cvPeerCommonCfgTargetCarrierId" || name == "cvPeerCommonCfgSourceTrunkGrpLabel" || name == "cvPeerCommonCfgTargetTrunkGrpLabel")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactivetable()
+CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveTable()
+    :
+    cvcallactiveentry(this, {"callactivesetuptime", "callactiveindex"})
 {
 
-    yang_name = "cvCallActiveTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallActiveTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::~Cvcallactivetable()
+CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::~CvCallActiveTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallactiveentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcallactiveentry.len(); index++)
     {
         if(cvcallactiveentry[index]->has_data())
             return true;
@@ -2601,9 +2630,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvcallactiveentry.len(); index++)
     {
         if(cvcallactiveentry[index]->has_operation())
             return true;
@@ -2611,21 +2640,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallActiveTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2634,25 +2663,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalla
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallActiveEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry>();
         c->parent = this;
-        cvcallactiveentry.push_back(c);
+        cvcallactiveentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcallactiveentry)
+    for (auto c : cvcallactiveentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -2663,22 +2692,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalla
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallActiveEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::Cvcallactiveentry()
+CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::CvCallActiveEntry()
     :
     callactivesetuptime{YType::str, "callActiveSetupTime"},
     callactiveindex{YType::str, "callActiveIndex"},
@@ -2702,15 +2731,16 @@ CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::Cvcallactiveentr
     cvcallactivecallid{YType::uint32, "cvCallActiveCallId"}
 {
 
-    yang_name = "cvCallActiveEntry"; yang_parent_name = "cvCallActiveTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallActiveEntry"; yang_parent_name = "cvCallActiveTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::~Cvcallactiveentry()
+CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::~CvCallActiveEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return callactivesetuptime.is_set
 	|| callactiveindex.is_set
 	|| cvcallactiveconnectionid.is_set
@@ -2733,7 +2763,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::has_data() 
 	|| cvcallactivecallid.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(callactivesetuptime.yfilter)
@@ -2758,21 +2788,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::has_operati
 	|| ydk::is_set(cvcallactivecallid.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallActiveTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallActiveEntry" <<"[callActiveSetupTime='" <<callactivesetuptime <<"']" <<"[callActiveIndex='" <<callactiveindex <<"']";
+    path_buffer << "cvCallActiveEntry";
+    ADD_KEY_TOKEN(callactivesetuptime, "callActiveSetupTime");
+    ADD_KEY_TOKEN(callactiveindex, "callActiveIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2801,19 +2833,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalla
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -2937,7 +2969,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::set_value(c
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -3021,26 +3053,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::set_filter(
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallactivetable::Cvcallactiveentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallActiveTable::CvCallActiveEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callActiveSetupTime" || name == "callActiveIndex" || name == "cvCallActiveConnectionId" || name == "cvCallActiveTxDuration" || name == "cvCallActiveVoiceTxDuration" || name == "cvCallActiveFaxTxDuration" || name == "cvCallActiveCoderTypeRate" || name == "cvCallActiveNoiseLevel" || name == "cvCallActiveACOMLevel" || name == "cvCallActiveOutSignalLevel" || name == "cvCallActiveInSignalLevel" || name == "cvCallActiveERLLevel" || name == "cvCallActiveSessionTarget" || name == "cvCallActiveImgPageCount" || name == "cvCallActiveCallingName" || name == "cvCallActiveCallerIDBlock" || name == "cvCallActiveEcanReflectorLocation" || name == "cvCallActiveAccountCode" || name == "cvCallActiveERLLevelRev1" || name == "cvCallActiveCallId")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactivetable()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveTable()
+    :
+    cvvoipcallactiveentry(this, {"callactivesetuptime", "callactiveindex"})
 {
 
-    yang_name = "cvVoIPCallActiveTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoIPCallActiveTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::~Cvvoipcallactivetable()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::~CvVoIPCallActiveTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoipcallactiveentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvvoipcallactiveentry.len(); index++)
     {
         if(cvvoipcallactiveentry[index]->has_data())
             return true;
@@ -3048,9 +3083,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoipcallactiveentry.size(); index++)
+    for (std::size_t index=0; index<cvvoipcallactiveentry.len(); index++)
     {
         if(cvvoipcallactiveentry[index]->has_operation())
             return true;
@@ -3058,21 +3093,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvVoIPCallActiveTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3081,25 +3116,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvVoIPCallActiveEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry>();
         c->parent = this;
-        cvvoipcallactiveentry.push_back(c);
+        cvvoipcallactiveentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvvoipcallactiveentry)
+    for (auto c : cvvoipcallactiveentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3110,22 +3145,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipc
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvVoIPCallActiveEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::Cvvoipcallactiveentry()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::CvVoIPCallActiveEntry()
     :
     callactivesetuptime{YType::str, "callActiveSetupTime"},
     callactiveindex{YType::str, "callActiveIndex"},
@@ -3177,15 +3212,16 @@ CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::Cvvoipca
     cvvoipcallactivesessionid{YType::uint32, "cvVoIPCallActiveSessionId"}
 {
 
-    yang_name = "cvVoIPCallActiveEntry"; yang_parent_name = "cvVoIPCallActiveTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoIPCallActiveEntry"; yang_parent_name = "cvVoIPCallActiveTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::~Cvvoipcallactiveentry()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::~CvVoIPCallActiveEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return callactivesetuptime.is_set
 	|| callactiveindex.is_set
 	|| cvvoipcallactiveconnectionid.is_set
@@ -3236,7 +3272,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::has
 	|| cvvoipcallactivesessionid.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(callactivesetuptime.yfilter)
@@ -3289,21 +3325,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::has
 	|| ydk::is_set(cvvoipcallactivesessionid.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvVoIPCallActiveTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvVoIPCallActiveEntry" <<"[callActiveSetupTime='" <<callactivesetuptime <<"']" <<"[callActiveIndex='" <<callactiveindex <<"']";
+    path_buffer << "cvVoIPCallActiveEntry";
+    ADD_KEY_TOKEN(callactivesetuptime, "callActiveSetupTime");
+    ADD_KEY_TOKEN(callactiveindex, "callActiveIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3360,19 +3398,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -3662,7 +3700,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::set
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "callActiveSetupTime")
     {
@@ -3858,26 +3896,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::set
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallactivetable::Cvvoipcallactiveentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallActiveTable::CvVoIPCallActiveEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "callActiveSetupTime" || name == "callActiveIndex" || name == "cvVoIPCallActiveConnectionId" || name == "cvVoIPCallActiveRemoteIPAddress" || name == "cvVoIPCallActiveRemoteUDPPort" || name == "cvVoIPCallActiveRoundTripDelay" || name == "cvVoIPCallActiveSelectedQoS" || name == "cvVoIPCallActiveSessionProtocol" || name == "cvVoIPCallActiveSessionTarget" || name == "cvVoIPCallActiveOnTimeRvPlayout" || name == "cvVoIPCallActiveGapFillWithSilence" || name == "cvVoIPCallActiveGapFillWithPrediction" || name == "cvVoIPCallActiveGapFillWithInterpolation" || name == "cvVoIPCallActiveGapFillWithRedundancy" || name == "cvVoIPCallActiveHiWaterPlayoutDelay" || name == "cvVoIPCallActiveLoWaterPlayoutDelay" || name == "cvVoIPCallActiveReceiveDelay" || name == "cvVoIPCallActiveVADEnable" || name == "cvVoIPCallActiveCoderTypeRate" || name == "cvVoIPCallActiveLostPackets" || name == "cvVoIPCallActiveEarlyPackets" || name == "cvVoIPCallActiveLatePackets" || name == "cvVoIPCallActiveUsername" || name == "cvVoIPCallActiveProtocolCallId" || name == "cvVoIPCallActiveRemSigIPAddrT" || name == "cvVoIPCallActiveRemSigIPAddr" || name == "cvVoIPCallActiveRemSigPort" || name == "cvVoIPCallActiveRemMediaIPAddrT" || name == "cvVoIPCallActiveRemMediaIPAddr" || name == "cvVoIPCallActiveRemMediaPort" || name == "cvVoIPCallActiveSRTPEnable" || name == "cvVoIPCallActiveOctetAligned" || name == "cvVoIPCallActiveBitRates" || name == "cvVoIPCallActiveModeChgPeriod" || name == "cvVoIPCallActiveModeChgNeighbor" || name == "cvVoIPCallActiveMaxPtime" || name == "cvVoIPCallActiveCRC" || name == "cvVoIPCallActiveRobustSorting" || name == "cvVoIPCallActiveEncap" || name == "cvVoIPCallActiveInterleaving" || name == "cvVoIPCallActivePtime" || name == "cvVoIPCallActiveChannels" || name == "cvVoIPCallActiveCoderMode" || name == "cvVoIPCallActiveCallId" || name == "cvVoIPCallActiveCallReferenceId" || name == "ccVoIPCallActivePolicyName" || name == "cvVoIPCallActiveReversedDirectionPeerAddress" || name == "cvVoIPCallActiveSessionId")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconntable()
+CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnTable()
+    :
+    cvcallvolconnentry(this, {"cvcallvolconnindex"})
 {
 
-    yang_name = "cvCallVolConnTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallVolConnTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::~Cvcallvolconntable()
+CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::~CvCallVolConnTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallvolconnentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcallvolconnentry.len(); index++)
     {
         if(cvcallvolconnentry[index]->has_data())
             return true;
@@ -3885,9 +3926,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallvolconnentry.size(); index++)
+    for (std::size_t index=0; index<cvcallvolconnentry.len(); index++)
     {
         if(cvcallvolconnentry[index]->has_operation())
             return true;
@@ -3895,21 +3936,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallVolConnTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -3918,25 +3959,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallVolConnEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry>();
         c->parent = this;
-        cvcallvolconnentry.push_back(c);
+        cvcallvolconnentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcallvolconnentry)
+    for (auto c : cvcallvolconnentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -3947,62 +3988,64 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallv
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallVolConnEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::Cvcallvolconnentry()
+CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::CvCallVolConnEntry()
     :
     cvcallvolconnindex{YType::enumeration, "cvCallVolConnIndex"},
     cvcallvolconnactiveconnection{YType::uint32, "cvCallVolConnActiveConnection"}
 {
 
-    yang_name = "cvCallVolConnEntry"; yang_parent_name = "cvCallVolConnTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallVolConnEntry"; yang_parent_name = "cvCallVolConnTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::~Cvcallvolconnentry()
+CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::~CvCallVolConnEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcallvolconnindex.is_set
 	|| cvcallvolconnactiveconnection.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcallvolconnindex.yfilter)
 	|| ydk::is_set(cvcallvolconnactiveconnection.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallVolConnTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallVolConnEntry" <<"[cvCallVolConnIndex='" <<cvcallvolconnindex <<"']";
+    path_buffer << "cvCallVolConnEntry";
+    ADD_KEY_TOKEN(cvcallvolconnindex, "cvCallVolConnIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4013,19 +4056,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallVolConnIndex")
     {
@@ -4041,7 +4084,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::set_value
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallVolConnIndex")
     {
@@ -4053,26 +4096,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::set_filte
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvolconntable::Cvcallvolconnentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolConnTable::CvCallVolConnEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallVolConnIndex" || name == "cvCallVolConnActiveConnection")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvoliftable()
+CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfTable()
+    :
+    cvcallvolifentry(this, {"ifindex"})
 {
 
-    yang_name = "cvCallVolIfTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallVolIfTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::~Cvcallvoliftable()
+CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::~CvCallVolIfTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallvolifentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcallvolifentry.len(); index++)
     {
         if(cvcallvolifentry[index]->has_data())
             return true;
@@ -4080,9 +4126,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallvolifentry.size(); index++)
+    for (std::size_t index=0; index<cvcallvolifentry.len(); index++)
     {
         if(cvcallvolifentry[index]->has_operation())
             return true;
@@ -4090,21 +4136,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallVolIfTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4113,25 +4159,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallVolIfEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry>();
         c->parent = this;
-        cvcallvolifentry.push_back(c);
+        cvcallvolifentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcallvolifentry)
+    for (auto c : cvcallvolifentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4142,43 +4188,44 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallv
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallVolIfEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::Cvcallvolifentry()
+CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::CvCallVolIfEntry()
     :
     ifindex{YType::str, "ifIndex"},
     cvcallvolmediaincomingcalls{YType::uint32, "cvCallVolMediaIncomingCalls"},
     cvcallvolmediaoutgoingcalls{YType::uint32, "cvCallVolMediaOutgoingCalls"}
 {
 
-    yang_name = "cvCallVolIfEntry"; yang_parent_name = "cvCallVolIfTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallVolIfEntry"; yang_parent_name = "cvCallVolIfTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::~Cvcallvolifentry()
+CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::~CvCallVolIfEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ifindex.is_set
 	|| cvcallvolmediaincomingcalls.is_set
 	|| cvcallvolmediaoutgoingcalls.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ifindex.yfilter)
@@ -4186,21 +4233,22 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::has_operation
 	|| ydk::is_set(cvcallvolmediaoutgoingcalls.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallVolIfTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallVolIfEntry" <<"[ifIndex='" <<ifindex <<"']";
+    path_buffer << "cvCallVolIfEntry";
+    ADD_KEY_TOKEN(ifindex, "ifIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4212,19 +4260,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "ifIndex")
     {
@@ -4246,7 +4294,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::set_value(con
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "ifIndex")
     {
@@ -4262,26 +4310,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::set_filter(co
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallvoliftable::Cvcallvolifentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallVolIfTable::CvCallVolIfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifIndex" || name == "cvCallVolMediaIncomingCalls" || name == "cvCallVolMediaOutgoingCalls")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistorytable()
+CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryTable()
+    :
+    cvcallhistoryentry(this, {"ccallhistoryindex"})
 {
 
-    yang_name = "cvCallHistoryTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallHistoryTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::~Cvcallhistorytable()
+CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::~CvCallHistoryTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallhistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcallhistoryentry.len(); index++)
     {
         if(cvcallhistoryentry[index]->has_data())
             return true;
@@ -4289,9 +4340,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvcallhistoryentry.len(); index++)
     {
         if(cvcallhistoryentry[index]->has_operation())
             return true;
@@ -4299,21 +4350,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4322,25 +4373,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallh
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallHistoryEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry>();
         c->parent = this;
-        cvcallhistoryentry.push_back(c);
+        cvcallhistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcallhistoryentry)
+    for (auto c : cvcallhistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4351,22 +4402,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallh
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallHistoryEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::Cvcallhistoryentry()
+CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::CvCallHistoryEntry()
     :
     ccallhistoryindex{YType::str, "cCallHistoryIndex"},
     cvcallhistoryconnectionid{YType::str, "cvCallHistoryConnectionId"},
@@ -4384,15 +4435,16 @@ CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::Cvcallhistorye
     cvcallhistorycallid{YType::uint32, "cvCallHistoryCallId"}
 {
 
-    yang_name = "cvCallHistoryEntry"; yang_parent_name = "cvCallHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallHistoryEntry"; yang_parent_name = "cvCallHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::~Cvcallhistoryentry()
+CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::~CvCallHistoryEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccallhistoryindex.is_set
 	|| cvcallhistoryconnectionid.is_set
 	|| cvcallhistorytxduration.is_set
@@ -4409,7 +4461,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::has_data(
 	|| cvcallhistorycallid.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccallhistoryindex.yfilter)
@@ -4428,21 +4480,22 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::has_opera
 	|| ydk::is_set(cvcallhistorycallid.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallHistoryEntry" <<"[cCallHistoryIndex='" <<ccallhistoryindex <<"']";
+    path_buffer << "cvCallHistoryEntry";
+    ADD_KEY_TOKEN(ccallhistoryindex, "cCallHistoryIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4465,19 +4518,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallh
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -4565,7 +4618,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::set_value
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -4625,26 +4678,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::set_filte
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallhistorytable::Cvcallhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallHistoryTable::CvCallHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cCallHistoryIndex" || name == "cvCallHistoryConnectionId" || name == "cvCallHistoryTxDuration" || name == "cvCallHistoryVoiceTxDuration" || name == "cvCallHistoryFaxTxDuration" || name == "cvCallHistoryCoderTypeRate" || name == "cvCallHistoryNoiseLevel" || name == "cvCallHistoryACOMLevel" || name == "cvCallHistorySessionTarget" || name == "cvCallHistoryImgPageCount" || name == "cvCallHistoryCallingName" || name == "cvCallHistoryCallerIDBlock" || name == "cvCallHistoryAccountCode" || name == "cvCallHistoryCallId")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistorytable()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryTable()
+    :
+    cvvoipcallhistoryentry(this, {"ccallhistoryindex"})
 {
 
-    yang_name = "cvVoIPCallHistoryTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoIPCallHistoryTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::~Cvvoipcallhistorytable()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::~CvVoIPCallHistoryTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::has_data() const
 {
-    for (std::size_t index=0; index<cvvoipcallhistoryentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvvoipcallhistoryentry.len(); index++)
     {
         if(cvvoipcallhistoryentry[index]->has_data())
             return true;
@@ -4652,9 +4708,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvvoipcallhistoryentry.size(); index++)
+    for (std::size_t index=0; index<cvvoipcallhistoryentry.len(); index++)
     {
         if(cvvoipcallhistoryentry[index]->has_operation())
             return true;
@@ -4662,21 +4718,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvVoIPCallHistoryTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4685,25 +4741,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvVoIPCallHistoryEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry>();
         c->parent = this;
-        cvvoipcallhistoryentry.push_back(c);
+        cvvoipcallhistoryentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvvoipcallhistoryentry)
+    for (auto c : cvvoipcallhistoryentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -4714,22 +4770,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipc
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvVoIPCallHistoryEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::Cvvoipcallhistoryentry()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::CvVoIPCallHistoryEntry()
     :
     ccallhistoryindex{YType::str, "cCallHistoryIndex"},
     cvvoipcallhistoryconnectionid{YType::str, "cvVoIPCallHistoryConnectionId"},
@@ -4782,15 +4838,16 @@ CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::Cvvoip
     cvvoipcallhistorysessionid{YType::uint32, "cvVoIPCallHistorySessionId"}
 {
 
-    yang_name = "cvVoIPCallHistoryEntry"; yang_parent_name = "cvVoIPCallHistoryTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvVoIPCallHistoryEntry"; yang_parent_name = "cvVoIPCallHistoryTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::~Cvvoipcallhistoryentry()
+CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::~CvVoIPCallHistoryEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return ccallhistoryindex.is_set
 	|| cvvoipcallhistoryconnectionid.is_set
 	|| cvvoipcallhistoryremoteipaddress.is_set
@@ -4842,7 +4899,7 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::h
 	|| cvvoipcallhistorysessionid.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(ccallhistoryindex.yfilter)
@@ -4896,21 +4953,22 @@ bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::h
 	|| ydk::is_set(cvvoipcallhistorysessionid.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvVoIPCallHistoryTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvVoIPCallHistoryEntry" <<"[cCallHistoryIndex='" <<ccallhistoryindex <<"']";
+    path_buffer << "cvVoIPCallHistoryEntry";
+    ADD_KEY_TOKEN(ccallhistoryindex, "cCallHistoryIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -4968,19 +5026,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvvoipc
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -5276,7 +5334,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::s
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cCallHistoryIndex")
     {
@@ -5476,26 +5534,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::s
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvvoipcallhistorytable::Cvvoipcallhistoryentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvVoIPCallHistoryTable::CvVoIPCallHistoryEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cCallHistoryIndex" || name == "cvVoIPCallHistoryConnectionId" || name == "cvVoIPCallHistoryRemoteIPAddress" || name == "cvVoIPCallHistoryRemoteUDPPort" || name == "cvVoIPCallHistoryRoundTripDelay" || name == "cvVoIPCallHistorySelectedQoS" || name == "cvVoIPCallHistorySessionProtocol" || name == "cvVoIPCallHistorySessionTarget" || name == "cvVoIPCallHistoryOnTimeRvPlayout" || name == "cvVoIPCallHistoryGapFillWithSilence" || name == "cvVoIPCallHistoryGapFillWithPrediction" || name == "cvVoIPCallHistoryGapFillWithInterpolation" || name == "cvVoIPCallHistoryGapFillWithRedundancy" || name == "cvVoIPCallHistoryHiWaterPlayoutDelay" || name == "cvVoIPCallHistoryLoWaterPlayoutDelay" || name == "cvVoIPCallHistoryReceiveDelay" || name == "cvVoIPCallHistoryVADEnable" || name == "cvVoIPCallHistoryCoderTypeRate" || name == "cvVoIPCallHistoryIcpif" || name == "cvVoIPCallHistoryLostPackets" || name == "cvVoIPCallHistoryEarlyPackets" || name == "cvVoIPCallHistoryLatePackets" || name == "cvVoIPCallHistoryUsername" || name == "cvVoIPCallHistoryProtocolCallId" || name == "cvVoIPCallHistoryRemSigIPAddrT" || name == "cvVoIPCallHistoryRemSigIPAddr" || name == "cvVoIPCallHistoryRemSigPort" || name == "cvVoIPCallHistoryRemMediaIPAddrT" || name == "cvVoIPCallHistoryRemMediaIPAddr" || name == "cvVoIPCallHistoryRemMediaPort" || name == "cvVoIPCallHistorySRTPEnable" || name == "cvVoIPCallHistoryFallbackIcpif" || name == "cvVoIPCallHistoryFallbackLoss" || name == "cvVoIPCallHistoryFallbackDelay" || name == "cvVoIPCallHistoryOctetAligned" || name == "cvVoIPCallHistoryBitRates" || name == "cvVoIPCallHistoryModeChgPeriod" || name == "cvVoIPCallHistoryModeChgNeighbor" || name == "cvVoIPCallHistoryMaxPtime" || name == "cvVoIPCallHistoryCRC" || name == "cvVoIPCallHistoryRobustSorting" || name == "cvVoIPCallHistoryEncap" || name == "cvVoIPCallHistoryInterleaving" || name == "cvVoIPCallHistoryPtime" || name == "cvVoIPCallHistoryChannels" || name == "cvVoIPCallHistoryCoderMode" || name == "cvVoIPCallHistoryCallId" || name == "cvVoIPCallHistoryCallReferenceId" || name == "cvVoIPCallHistorySessionId")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatstable()
+CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsTable()
+    :
+    cvcallratestatsentry(this, {"cvcallratestatsintvldurunits", "cvcallratestatsintvldur"})
 {
 
-    yang_name = "cvCallRateStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallRateStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::~Cvcallratestatstable()
+CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::~CvCallRateStatsTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallratestatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcallratestatsentry.len(); index++)
     {
         if(cvcallratestatsentry[index]->has_data())
             return true;
@@ -5503,9 +5564,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcallratestatsentry.len(); index++)
     {
         if(cvcallratestatsentry[index]->has_operation())
             return true;
@@ -5513,21 +5574,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallRateStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5536,25 +5597,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallr
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallRateStatsEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry>();
         c->parent = this;
-        cvcallratestatsentry.push_back(c);
+        cvcallratestatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcallratestatsentry)
+    for (auto c : cvcallratestatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5565,22 +5626,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallr
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallRateStatsEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::Cvcallratestatsentry()
+CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::CvCallRateStatsEntry()
     :
     cvcallratestatsintvldurunits{YType::enumeration, "cvCallRateStatsIntvlDurUnits"},
     cvcallratestatsintvldur{YType::uint32, "cvCallRateStatsIntvlDur"},
@@ -5588,22 +5649,23 @@ CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::Cvcallrate
     cvcallratestatsavgval{YType::uint32, "cvCallRateStatsAvgVal"}
 {
 
-    yang_name = "cvCallRateStatsEntry"; yang_parent_name = "cvCallRateStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallRateStatsEntry"; yang_parent_name = "cvCallRateStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::~Cvcallratestatsentry()
+CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::~CvCallRateStatsEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcallratestatsintvldurunits.is_set
 	|| cvcallratestatsintvldur.is_set
 	|| cvcallratestatsmaxval.is_set
 	|| cvcallratestatsavgval.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcallratestatsintvldurunits.yfilter)
@@ -5612,21 +5674,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::has_o
 	|| ydk::is_set(cvcallratestatsavgval.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallRateStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallRateStatsEntry" <<"[cvCallRateStatsIntvlDurUnits='" <<cvcallratestatsintvldurunits <<"']" <<"[cvCallRateStatsIntvlDur='" <<cvcallratestatsintvldur <<"']";
+    path_buffer << "cvCallRateStatsEntry";
+    ADD_KEY_TOKEN(cvcallratestatsintvldurunits, "cvCallRateStatsIntvlDurUnits");
+    ADD_KEY_TOKEN(cvcallratestatsintvldur, "cvCallRateStatsIntvlDur");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5639,19 +5703,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallr
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallRateStatsIntvlDurUnits")
     {
@@ -5679,7 +5743,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::set_v
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallRateStatsIntvlDurUnits")
     {
@@ -5699,26 +5763,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::set_f
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratestatstable::Cvcallratestatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateStatsTable::CvCallRateStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallRateStatsIntvlDurUnits" || name == "cvCallRateStatsIntvlDur" || name == "cvCallRateStatsMaxVal" || name == "cvCallRateStatsAvgVal")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatstable()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsTable()
+    :
+    cvcalllegratestatsentry(this, {"cvcalllegratestatsintvldurunits", "cvcalllegratestatsintvldur"})
 {
 
-    yang_name = "cvCallLegRateStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallLegRateStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::~Cvcalllegratestatstable()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::~CvCallLegRateStatsTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcalllegratestatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcalllegratestatsentry.len(); index++)
     {
         if(cvcalllegratestatsentry[index]->has_data())
             return true;
@@ -5726,9 +5793,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcalllegratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcalllegratestatsentry.len(); index++)
     {
         if(cvcalllegratestatsentry[index]->has_operation())
             return true;
@@ -5736,21 +5803,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallLegRateStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5759,25 +5826,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalll
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallLegRateStatsEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry>();
         c->parent = this;
-        cvcalllegratestatsentry.push_back(c);
+        cvcalllegratestatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcalllegratestatsentry)
+    for (auto c : cvcalllegratestatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -5788,22 +5855,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalll
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallLegRateStatsEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::Cvcalllegratestatsentry()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::CvCallLegRateStatsEntry()
     :
     cvcalllegratestatsintvldurunits{YType::enumeration, "cvCallLegRateStatsIntvlDurUnits"},
     cvcalllegratestatsintvldur{YType::uint32, "cvCallLegRateStatsIntvlDur"},
@@ -5811,22 +5878,23 @@ CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::Cvca
     cvcalllegratestatsavgval{YType::uint32, "cvCallLegRateStatsAvgVal"}
 {
 
-    yang_name = "cvCallLegRateStatsEntry"; yang_parent_name = "cvCallLegRateStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallLegRateStatsEntry"; yang_parent_name = "cvCallLegRateStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::~Cvcalllegratestatsentry()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::~CvCallLegRateStatsEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcalllegratestatsintvldurunits.is_set
 	|| cvcalllegratestatsintvldur.is_set
 	|| cvcalllegratestatsmaxval.is_set
 	|| cvcalllegratestatsavgval.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcalllegratestatsintvldurunits.yfilter)
@@ -5835,21 +5903,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry:
 	|| ydk::is_set(cvcalllegratestatsavgval.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallLegRateStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallLegRateStatsEntry" <<"[cvCallLegRateStatsIntvlDurUnits='" <<cvcalllegratestatsintvldurunits <<"']" <<"[cvCallLegRateStatsIntvlDur='" <<cvcalllegratestatsintvldur <<"']";
+    path_buffer << "cvCallLegRateStatsEntry";
+    ADD_KEY_TOKEN(cvcalllegratestatsintvldurunits, "cvCallLegRateStatsIntvlDurUnits");
+    ADD_KEY_TOKEN(cvcalllegratestatsintvldur, "cvCallLegRateStatsIntvlDur");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5862,19 +5932,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalll
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallLegRateStatsIntvlDurUnits")
     {
@@ -5902,7 +5972,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry:
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallLegRateStatsIntvlDurUnits")
     {
@@ -5922,26 +5992,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry:
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratestatstable::Cvcalllegratestatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateStatsTable::CvCallLegRateStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallLegRateStatsIntvlDurUnits" || name == "cvCallLegRateStatsIntvlDur" || name == "cvCallLegRateStatsMaxVal" || name == "cvCallLegRateStatsAvgVal")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatstable()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsTable()
+    :
+    cvactivecallstatsentry(this, {"cvactivecallstatsintvldurunits", "cvactivecallstatsintvldur"})
 {
 
-    yang_name = "cvActiveCallStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvActiveCallStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::~Cvactivecallstatstable()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::~CvActiveCallStatsTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cvactivecallstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvactivecallstatsentry.len(); index++)
     {
         if(cvactivecallstatsentry[index]->has_data())
             return true;
@@ -5949,9 +6022,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvactivecallstatsentry.size(); index++)
+    for (std::size_t index=0; index<cvactivecallstatsentry.len(); index++)
     {
         if(cvactivecallstatsentry[index]->has_operation())
             return true;
@@ -5959,21 +6032,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvActiveCallStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -5982,25 +6055,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactiv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvActiveCallStatsEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry>();
         c->parent = this;
-        cvactivecallstatsentry.push_back(c);
+        cvactivecallstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvactivecallstatsentry)
+    for (auto c : cvactivecallstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6011,22 +6084,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactiv
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvActiveCallStatsEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::Cvactivecallstatsentry()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::CvActiveCallStatsEntry()
     :
     cvactivecallstatsintvldurunits{YType::enumeration, "cvActiveCallStatsIntvlDurUnits"},
     cvactivecallstatsintvldur{YType::uint32, "cvActiveCallStatsIntvlDur"},
@@ -6034,22 +6107,23 @@ CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::Cvacti
     cvactivecallstatsavgval{YType::uint32, "cvActiveCallStatsAvgVal"}
 {
 
-    yang_name = "cvActiveCallStatsEntry"; yang_parent_name = "cvActiveCallStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvActiveCallStatsEntry"; yang_parent_name = "cvActiveCallStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::~Cvactivecallstatsentry()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::~CvActiveCallStatsEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvactivecallstatsintvldurunits.is_set
 	|| cvactivecallstatsintvldur.is_set
 	|| cvactivecallstatsmaxval.is_set
 	|| cvactivecallstatsavgval.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvactivecallstatsintvldurunits.yfilter)
@@ -6058,21 +6132,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::h
 	|| ydk::is_set(cvactivecallstatsavgval.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvActiveCallStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvActiveCallStatsEntry" <<"[cvActiveCallStatsIntvlDurUnits='" <<cvactivecallstatsintvldurunits <<"']" <<"[cvActiveCallStatsIntvlDur='" <<cvactivecallstatsintvldur <<"']";
+    path_buffer << "cvActiveCallStatsEntry";
+    ADD_KEY_TOKEN(cvactivecallstatsintvldurunits, "cvActiveCallStatsIntvlDurUnits");
+    ADD_KEY_TOKEN(cvactivecallstatsintvldur, "cvActiveCallStatsIntvlDur");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6085,19 +6161,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactiv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvActiveCallStatsIntvlDurUnits")
     {
@@ -6125,7 +6201,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::s
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvActiveCallStatsIntvlDurUnits")
     {
@@ -6145,26 +6221,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::s
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallstatstable::Cvactivecallstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallStatsTable::CvActiveCallStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvActiveCallStatsIntvlDurUnits" || name == "cvActiveCallStatsIntvlDur" || name == "cvActiveCallStatsMaxVal" || name == "cvActiveCallStatsAvgVal")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatstable()
+CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsTable()
+    :
+    cvcalldurationstatsentry(this, {"cvcalldurationstatsintvldurunits", "cvcalldurationstatsintvldur"})
 {
 
-    yang_name = "cvCallDurationStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallDurationStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::~Cvcalldurationstatstable()
+CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::~CvCallDurationStatsTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcalldurationstatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcalldurationstatsentry.len(); index++)
     {
         if(cvcalldurationstatsentry[index]->has_data())
             return true;
@@ -6172,9 +6251,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcalldurationstatsentry.size(); index++)
+    for (std::size_t index=0; index<cvcalldurationstatsentry.len(); index++)
     {
         if(cvcalldurationstatsentry[index]->has_operation())
             return true;
@@ -6182,21 +6261,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallDurationStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6205,25 +6284,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalld
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallDurationStatsEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry>();
         c->parent = this;
-        cvcalldurationstatsentry.push_back(c);
+        cvcalldurationstatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcalldurationstatsentry)
+    for (auto c : cvcalldurationstatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6234,22 +6313,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalld
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallDurationStatsEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::Cvcalldurationstatsentry()
+CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::CvCallDurationStatsEntry()
     :
     cvcalldurationstatsintvldurunits{YType::enumeration, "cvCallDurationStatsIntvlDurUnits"},
     cvcalldurationstatsintvldur{YType::uint32, "cvCallDurationStatsIntvlDur"},
@@ -6257,22 +6336,23 @@ CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::Cv
     cvcalldurationstatsavgval{YType::uint32, "cvCallDurationStatsAvgVal"}
 {
 
-    yang_name = "cvCallDurationStatsEntry"; yang_parent_name = "cvCallDurationStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallDurationStatsEntry"; yang_parent_name = "cvCallDurationStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::~Cvcalldurationstatsentry()
+CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::~CvCallDurationStatsEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcalldurationstatsintvldurunits.is_set
 	|| cvcalldurationstatsintvldur.is_set
 	|| cvcalldurationstatsmaxval.is_set
 	|| cvcalldurationstatsavgval.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcalldurationstatsintvldurunits.yfilter)
@@ -6281,21 +6361,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentr
 	|| ydk::is_set(cvcalldurationstatsavgval.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallDurationStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallDurationStatsEntry" <<"[cvCallDurationStatsIntvlDurUnits='" <<cvcalldurationstatsintvldurunits <<"']" <<"[cvCallDurationStatsIntvlDur='" <<cvcalldurationstatsintvldur <<"']";
+    path_buffer << "cvCallDurationStatsEntry";
+    ADD_KEY_TOKEN(cvcalldurationstatsintvldurunits, "cvCallDurationStatsIntvlDurUnits");
+    ADD_KEY_TOKEN(cvcalldurationstatsintvldur, "cvCallDurationStatsIntvlDur");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6308,19 +6390,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalld
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallDurationStatsIntvlDurUnits")
     {
@@ -6348,7 +6430,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentr
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallDurationStatsIntvlDurUnits")
     {
@@ -6368,26 +6450,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentr
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalldurationstatstable::Cvcalldurationstatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallDurationStatsTable::CvCallDurationStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallDurationStatsIntvlDurUnits" || name == "cvCallDurationStatsIntvlDur" || name == "cvCallDurationStatsMaxVal" || name == "cvCallDurationStatsAvgVal")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatstable()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsTable()
+    :
+    cvsipmsgratestatsentry(this, {"cvsipmsgratestatsintvldurunits", "cvsipmsgratestatsintvldur"})
 {
 
-    yang_name = "cvSipMsgRateStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvSipMsgRateStatsTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::~Cvsipmsgratestatstable()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::~CvSipMsgRateStatsTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::has_data() const
 {
-    for (std::size_t index=0; index<cvsipmsgratestatsentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvsipmsgratestatsentry.len(); index++)
     {
         if(cvsipmsgratestatsentry[index]->has_data())
             return true;
@@ -6395,9 +6480,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvsipmsgratestatsentry.size(); index++)
+    for (std::size_t index=0; index<cvsipmsgratestatsentry.len(); index++)
     {
         if(cvsipmsgratestatsentry[index]->has_operation())
             return true;
@@ -6405,21 +6490,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvSipMsgRateStatsTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6428,25 +6513,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipms
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvSipMsgRateStatsEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry>();
         c->parent = this;
-        cvsipmsgratestatsentry.push_back(c);
+        cvsipmsgratestatsentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvsipmsgratestatsentry)
+    for (auto c : cvsipmsgratestatsentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6457,22 +6542,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipms
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvSipMsgRateStatsEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::Cvsipmsgratestatsentry()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::CvSipMsgRateStatsEntry()
     :
     cvsipmsgratestatsintvldurunits{YType::enumeration, "cvSipMsgRateStatsIntvlDurUnits"},
     cvsipmsgratestatsintvldur{YType::uint32, "cvSipMsgRateStatsIntvlDur"},
@@ -6480,22 +6565,23 @@ CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::Cvsipm
     cvsipmsgratestatsavgval{YType::uint32, "cvSipMsgRateStatsAvgVal"}
 {
 
-    yang_name = "cvSipMsgRateStatsEntry"; yang_parent_name = "cvSipMsgRateStatsTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvSipMsgRateStatsEntry"; yang_parent_name = "cvSipMsgRateStatsTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::~Cvsipmsgratestatsentry()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::~CvSipMsgRateStatsEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvsipmsgratestatsintvldurunits.is_set
 	|| cvsipmsgratestatsintvldur.is_set
 	|| cvsipmsgratestatsmaxval.is_set
 	|| cvsipmsgratestatsavgval.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvsipmsgratestatsintvldurunits.yfilter)
@@ -6504,21 +6590,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::h
 	|| ydk::is_set(cvsipmsgratestatsavgval.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvSipMsgRateStatsTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvSipMsgRateStatsEntry" <<"[cvSipMsgRateStatsIntvlDurUnits='" <<cvsipmsgratestatsintvldurunits <<"']" <<"[cvSipMsgRateStatsIntvlDur='" <<cvsipmsgratestatsintvldur <<"']";
+    path_buffer << "cvSipMsgRateStatsEntry";
+    ADD_KEY_TOKEN(cvsipmsgratestatsintvldurunits, "cvSipMsgRateStatsIntvlDurUnits");
+    ADD_KEY_TOKEN(cvsipmsgratestatsintvldur, "cvSipMsgRateStatsIntvlDur");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6531,19 +6619,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipms
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvSipMsgRateStatsIntvlDurUnits")
     {
@@ -6571,7 +6659,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::s
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvSipMsgRateStatsIntvlDurUnits")
     {
@@ -6591,26 +6679,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::s
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratestatstable::Cvsipmsgratestatsentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateStatsTable::CvSipMsgRateStatsEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvSipMsgRateStatsIntvlDurUnits" || name == "cvSipMsgRateStatsIntvlDur" || name == "cvSipMsgRateStatsMaxVal" || name == "cvSipMsgRateStatsAvgVal")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmtable()
+CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMTable()
+    :
+    cvcallratewmentry(this, {"cvcallratewmintvldurunits", "cvcallratewmindex"})
 {
 
-    yang_name = "cvCallRateWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallRateWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::~Cvcallratewmtable()
+CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::~CvCallRateWMTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcallratewmentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcallratewmentry.len(); index++)
     {
         if(cvcallratewmentry[index]->has_data())
             return true;
@@ -6618,9 +6709,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcallratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvcallratewmentry.len(); index++)
     {
         if(cvcallratewmentry[index]->has_operation())
             return true;
@@ -6628,21 +6719,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallRateWMTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6651,25 +6742,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallr
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallRateWMEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry>();
         c->parent = this;
-        cvcallratewmentry.push_back(c);
+        cvcallratewmentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcallratewmentry)
+    for (auto c : cvcallratewmentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6680,22 +6771,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallr
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallRateWMEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::Cvcallratewmentry()
+CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::CvCallRateWMEntry()
     :
     cvcallratewmintvldurunits{YType::enumeration, "cvCallRateWMIntvlDurUnits"},
     cvcallratewmindex{YType::uint32, "cvCallRateWMIndex"},
@@ -6703,22 +6794,23 @@ CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::Cvcallratewmentr
     cvcallratewmts{YType::str, "cvCallRateWMts"}
 {
 
-    yang_name = "cvCallRateWMEntry"; yang_parent_name = "cvCallRateWMTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallRateWMEntry"; yang_parent_name = "cvCallRateWMTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::~Cvcallratewmentry()
+CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::~CvCallRateWMEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcallratewmintvldurunits.is_set
 	|| cvcallratewmindex.is_set
 	|| cvcallratewmvalue.is_set
 	|| cvcallratewmts.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcallratewmintvldurunits.yfilter)
@@ -6727,21 +6819,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::has_operati
 	|| ydk::is_set(cvcallratewmts.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallRateWMTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallRateWMEntry" <<"[cvCallRateWMIntvlDurUnits='" <<cvcallratewmintvldurunits <<"']" <<"[cvCallRateWMIndex='" <<cvcallratewmindex <<"']";
+    path_buffer << "cvCallRateWMEntry";
+    ADD_KEY_TOKEN(cvcallratewmintvldurunits, "cvCallRateWMIntvlDurUnits");
+    ADD_KEY_TOKEN(cvcallratewmindex, "cvCallRateWMIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6754,19 +6848,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcallr
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallRateWMIntvlDurUnits")
     {
@@ -6794,7 +6888,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::set_value(c
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallRateWMIntvlDurUnits")
     {
@@ -6814,26 +6908,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::set_filter(
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcallratewmtable::Cvcallratewmentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallRateWMTable::CvCallRateWMEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallRateWMIntvlDurUnits" || name == "cvCallRateWMIndex" || name == "cvCallRateWMValue" || name == "cvCallRateWMts")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmtable()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMTable()
+    :
+    cvcalllegratewmentry(this, {"cvcalllegratewmintvldurunits", "cvcalllegratewmindex"})
 {
 
-    yang_name = "cvCallLegRateWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallLegRateWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::~Cvcalllegratewmtable()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::~CvCallLegRateWMTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::has_data() const
 {
-    for (std::size_t index=0; index<cvcalllegratewmentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvcalllegratewmentry.len(); index++)
     {
         if(cvcalllegratewmentry[index]->has_data())
             return true;
@@ -6841,9 +6938,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvcalllegratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvcalllegratewmentry.len(); index++)
     {
         if(cvcalllegratewmentry[index]->has_operation())
             return true;
@@ -6851,21 +6948,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvCallLegRateWMTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6874,25 +6971,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalll
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvCallLegRateWMEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry>();
         c->parent = this;
-        cvcalllegratewmentry.push_back(c);
+        cvcalllegratewmentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvcalllegratewmentry)
+    for (auto c : cvcalllegratewmentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -6903,22 +7000,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalll
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallLegRateWMEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::Cvcalllegratewmentry()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::CvCallLegRateWMEntry()
     :
     cvcalllegratewmintvldurunits{YType::enumeration, "cvCallLegRateWMIntvlDurUnits"},
     cvcalllegratewmindex{YType::uint32, "cvCallLegRateWMIndex"},
@@ -6926,22 +7023,23 @@ CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::Cvcalllegr
     cvcalllegratewmts{YType::str, "cvCallLegRateWMts"}
 {
 
-    yang_name = "cvCallLegRateWMEntry"; yang_parent_name = "cvCallLegRateWMTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvCallLegRateWMEntry"; yang_parent_name = "cvCallLegRateWMTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::~Cvcalllegratewmentry()
+CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::~CvCallLegRateWMEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvcalllegratewmintvldurunits.is_set
 	|| cvcalllegratewmindex.is_set
 	|| cvcalllegratewmvalue.is_set
 	|| cvcalllegratewmts.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvcalllegratewmintvldurunits.yfilter)
@@ -6950,21 +7048,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::has_o
 	|| ydk::is_set(cvcalllegratewmts.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvCallLegRateWMTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvCallLegRateWMEntry" <<"[cvCallLegRateWMIntvlDurUnits='" <<cvcalllegratewmintvldurunits <<"']" <<"[cvCallLegRateWMIndex='" <<cvcalllegratewmindex <<"']";
+    path_buffer << "cvCallLegRateWMEntry";
+    ADD_KEY_TOKEN(cvcalllegratewmintvldurunits, "cvCallLegRateWMIntvlDurUnits");
+    ADD_KEY_TOKEN(cvcalllegratewmindex, "cvCallLegRateWMIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -6977,19 +7077,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvcalll
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvCallLegRateWMIntvlDurUnits")
     {
@@ -7017,7 +7117,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::set_v
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvCallLegRateWMIntvlDurUnits")
     {
@@ -7037,26 +7137,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::set_f
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvcalllegratewmtable::Cvcalllegratewmentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvCallLegRateWMTable::CvCallLegRateWMEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvCallLegRateWMIntvlDurUnits" || name == "cvCallLegRateWMIndex" || name == "cvCallLegRateWMValue" || name == "cvCallLegRateWMts")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmtable()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMTable()
+    :
+    cvactivecallwmentry(this, {"cvactivecallwmintvldurunits", "cvactivecallwmindex"})
 {
 
-    yang_name = "cvActiveCallWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvActiveCallWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::~Cvactivecallwmtable()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::~CvActiveCallWMTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::has_data() const
 {
-    for (std::size_t index=0; index<cvactivecallwmentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvactivecallwmentry.len(); index++)
     {
         if(cvactivecallwmentry[index]->has_data())
             return true;
@@ -7064,9 +7167,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvactivecallwmentry.size(); index++)
+    for (std::size_t index=0; index<cvactivecallwmentry.len(); index++)
     {
         if(cvactivecallwmentry[index]->has_operation())
             return true;
@@ -7074,21 +7177,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvActiveCallWMTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7097,25 +7200,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactiv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvActiveCallWMEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry>();
         c->parent = this;
-        cvactivecallwmentry.push_back(c);
+        cvactivecallwmentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvactivecallwmentry)
+    for (auto c : cvactivecallwmentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7126,22 +7229,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactiv
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvActiveCallWMEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::Cvactivecallwmentry()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::CvActiveCallWMEntry()
     :
     cvactivecallwmintvldurunits{YType::enumeration, "cvActiveCallWMIntvlDurUnits"},
     cvactivecallwmindex{YType::uint32, "cvActiveCallWMIndex"},
@@ -7149,22 +7252,23 @@ CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::Cvactivecall
     cvactivecallwmts{YType::str, "cvActiveCallWMts"}
 {
 
-    yang_name = "cvActiveCallWMEntry"; yang_parent_name = "cvActiveCallWMTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvActiveCallWMEntry"; yang_parent_name = "cvActiveCallWMTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::~Cvactivecallwmentry()
+CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::~CvActiveCallWMEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvactivecallwmintvldurunits.is_set
 	|| cvactivecallwmindex.is_set
 	|| cvactivecallwmvalue.is_set
 	|| cvactivecallwmts.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvactivecallwmintvldurunits.yfilter)
@@ -7173,21 +7277,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::has_ope
 	|| ydk::is_set(cvactivecallwmts.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvActiveCallWMTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvActiveCallWMEntry" <<"[cvActiveCallWMIntvlDurUnits='" <<cvactivecallwmintvldurunits <<"']" <<"[cvActiveCallWMIndex='" <<cvactivecallwmindex <<"']";
+    path_buffer << "cvActiveCallWMEntry";
+    ADD_KEY_TOKEN(cvactivecallwmintvldurunits, "cvActiveCallWMIntvlDurUnits");
+    ADD_KEY_TOKEN(cvactivecallwmindex, "cvActiveCallWMIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7200,19 +7306,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvactiv
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvActiveCallWMIntvlDurUnits")
     {
@@ -7240,7 +7346,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::set_val
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvActiveCallWMIntvlDurUnits")
     {
@@ -7260,26 +7366,29 @@ void CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::set_fil
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvactivecallwmtable::Cvactivecallwmentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvActiveCallWMTable::CvActiveCallWMEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvActiveCallWMIntvlDurUnits" || name == "cvActiveCallWMIndex" || name == "cvActiveCallWMValue" || name == "cvActiveCallWMts")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmtable()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMTable()
+    :
+    cvsipmsgratewmentry(this, {"cvsipmsgratewmintvldurunits", "cvsipmsgratewmindex"})
 {
 
-    yang_name = "cvSipMsgRateWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvSipMsgRateWMTable"; yang_parent_name = "CISCO-VOICE-DIAL-CONTROL-MIB"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::~Cvsipmsgratewmtable()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::~CvSipMsgRateWMTable()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::has_data() const
 {
-    for (std::size_t index=0; index<cvsipmsgratewmentry.size(); index++)
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<cvsipmsgratewmentry.len(); index++)
     {
         if(cvsipmsgratewmentry[index]->has_data())
             return true;
@@ -7287,9 +7396,9 @@ bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::has_data() const
     return false;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::has_operation() const
 {
-    for (std::size_t index=0; index<cvsipmsgratewmentry.size(); index++)
+    for (std::size_t index=0; index<cvsipmsgratewmentry.len(); index++)
     {
         if(cvsipmsgratewmentry[index]->has_operation())
             return true;
@@ -7297,21 +7406,21 @@ bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::has_operation() const
     return is_set(yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "cvSipMsgRateWMTable";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7320,25 +7429,25 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipms
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "cvSipMsgRateWMEntry")
     {
-        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry>();
+        auto c = std::make_shared<CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry>();
         c->parent = this;
-        cvsipmsgratewmentry.push_back(c);
+        cvsipmsgratewmentry.append(c);
         return c;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     count = 0;
-    for (auto const & c : cvsipmsgratewmentry)
+    for (auto c : cvsipmsgratewmentry.entities())
     {
         if(children.find(c->get_segment_path()) == children.end())
             children[c->get_segment_path()] = c;
@@ -7349,22 +7458,22 @@ std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipms
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvSipMsgRateWMEntry")
         return true;
     return false;
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::Cvsipmsgratewmentry()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::CvSipMsgRateWMEntry()
     :
     cvsipmsgratewmintvldurunits{YType::enumeration, "cvSipMsgRateWMIntvlDurUnits"},
     cvsipmsgratewmindex{YType::uint32, "cvSipMsgRateWMIndex"},
@@ -7372,22 +7481,23 @@ CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::Cvsipmsgrate
     cvsipmsgratewmts{YType::str, "cvSipMsgRateWMts"}
 {
 
-    yang_name = "cvSipMsgRateWMEntry"; yang_parent_name = "cvSipMsgRateWMTable"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "cvSipMsgRateWMEntry"; yang_parent_name = "cvSipMsgRateWMTable"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::~Cvsipmsgratewmentry()
+CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::~CvSipMsgRateWMEntry()
 {
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::has_data() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::has_data() const
 {
+    if (is_presence_container) return true;
     return cvsipmsgratewmintvldurunits.is_set
 	|| cvsipmsgratewmindex.is_set
 	|| cvsipmsgratewmvalue.is_set
 	|| cvsipmsgratewmts.is_set;
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::has_operation() const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(cvsipmsgratewmintvldurunits.yfilter)
@@ -7396,21 +7506,23 @@ bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::has_ope
 	|| ydk::is_set(cvsipmsgratewmts.yfilter);
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::get_absolute_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "CISCO-VOICE-DIAL-CONTROL-MIB:CISCO-VOICE-DIAL-CONTROL-MIB/cvSipMsgRateWMTable/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::get_segment_path() const
+std::string CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "cvSipMsgRateWMEntry" <<"[cvSipMsgRateWMIntvlDurUnits='" <<cvsipmsgratewmintvldurunits <<"']" <<"[cvSipMsgRateWMIndex='" <<cvsipmsgratewmindex <<"']";
+    path_buffer << "cvSipMsgRateWMEntry";
+    ADD_KEY_TOKEN(cvsipmsgratewmintvldurunits, "cvSipMsgRateWMIntvlDurUnits");
+    ADD_KEY_TOKEN(cvsipmsgratewmindex, "cvSipMsgRateWMIndex");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -7423,19 +7535,19 @@ std::vector<std::pair<std::string, LeafData> > CISCOVOICEDIALCONTROLMIB::Cvsipms
 
 }
 
-std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<Entity> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::get_children() const
+std::map<std::string, std::shared_ptr<Entity>> CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::get_children() const
 {
     std::map<std::string, std::shared_ptr<Entity>> children{};
     char count=0;
     return children;
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "cvSipMsgRateWMIntvlDurUnits")
     {
@@ -7463,7 +7575,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::set_val
     }
 }
 
-void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::set_filter(const std::string & value_path, YFilter yfilter)
+void CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "cvSipMsgRateWMIntvlDurUnits")
     {
@@ -7483,7 +7595,7 @@ void CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::set_fil
     }
 }
 
-bool CISCOVOICEDIALCONTROLMIB::Cvsipmsgratewmtable::Cvsipmsgratewmentry::has_leaf_or_child_of_name(const std::string & name) const
+bool CISCOVOICEDIALCONTROLMIB::CvSipMsgRateWMTable::CvSipMsgRateWMEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "cvSipMsgRateWMIntvlDurUnits" || name == "cvSipMsgRateWMIndex" || name == "cvSipMsgRateWMValue" || name == "cvSipMsgRateWMts")
         return true;
@@ -7495,9 +7607,10 @@ const Enum::YLeaf CvCallVolumeWMIntvlType::minuteStats {2, "minuteStats"};
 const Enum::YLeaf CvCallVolumeWMIntvlType::hourStats {3, "hourStats"};
 const Enum::YLeaf CvCallVolumeWMIntvlType::fromReloadStats {4, "fromReloadStats"};
 
-const Enum::YLeaf CvCallVolumeStatsIntvlType::secondStats {1, "secondStats"};
-const Enum::YLeaf CvCallVolumeStatsIntvlType::minuteStats {2, "minuteStats"};
-const Enum::YLeaf CvCallVolumeStatsIntvlType::hourStats {3, "hourStats"};
+const Enum::YLeaf CvIlbcFrameMode::frameMode20 {20, "frameMode20"};
+const Enum::YLeaf CvIlbcFrameMode::frameMode30 {30, "frameMode30"};
+
+const Enum::YLeaf CvAmrNbRtpEncap::rfc3267 {1, "rfc3267"};
 
 const Enum::YLeaf CvSessionProtocol::other {1, "other"};
 const Enum::YLeaf CvSessionProtocol::cisco {2, "cisco"};
@@ -7505,11 +7618,6 @@ const Enum::YLeaf CvSessionProtocol::sdp {3, "sdp"};
 const Enum::YLeaf CvSessionProtocol::sip {4, "sip"};
 const Enum::YLeaf CvSessionProtocol::multicast {5, "multicast"};
 const Enum::YLeaf CvSessionProtocol::sccp {6, "sccp"};
-
-const Enum::YLeaf CvAmrNbRtpEncap::rfc3267 {1, "rfc3267"};
-
-const Enum::YLeaf CvIlbcFrameMode::frameMode20 {20, "frameMode20"};
-const Enum::YLeaf CvIlbcFrameMode::frameMode30 {30, "frameMode30"};
 
 const Enum::YLeaf CvCallConnectionType::h323 {1, "h323"};
 const Enum::YLeaf CvCallConnectionType::sip {2, "sip"};
@@ -7519,39 +7627,43 @@ const Enum::YLeaf CvCallConnectionType::multicast {5, "multicast"};
 const Enum::YLeaf CvCallConnectionType::cacontrol {6, "cacontrol"};
 const Enum::YLeaf CvCallConnectionType::telephony {7, "telephony"};
 
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype::voice {1, "voice"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype::voip {2, "voip"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype::mmail {3, "mmail"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype::voatm {4, "voatm"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgtype::vofr {5, "vofr"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::secondStats {1, "secondStats"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::minuteStats {2, "minuteStats"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::hourStats {3, "hourStats"};
 
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgpeertype::voice {1, "voice"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvpeercfgtable::Cvpeercfgentry::Cvpeercfgpeertype::data {2, "data"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType::voice {1, "voice"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType::voip {2, "voip"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType::mmail {3, "mmail"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType::voatm {4, "voatm"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType::vofr {5, "vofr"};
 
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerTestNone {1, "echoCancellerTestNone"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test2A {2, "echoCancellerG168Test2A"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test2B {3, "echoCancellerG168Test2B"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test2Ca {4, "echoCancellerG168Test2Ca"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test2Cb {5, "echoCancellerG168Test2Cb"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test3A {6, "echoCancellerG168Test3A"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test3B {7, "echoCancellerG168Test3B"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test3C {8, "echoCancellerG168Test3C"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test4 {9, "echoCancellerG168Test4"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test6 {10, "echoCancellerG168Test6"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test9 {11, "echoCancellerG168Test9"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test5 {12, "echoCancellerG168Test5"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoicepeercfgtable::Cvvoicepeercfgentry::Cvvoicepeercfgechocancellertest::echoCancellerG168Test7 {13, "echoCancellerG168Test7"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgPeerType::voice {1, "voice"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgPeerType::data {2, "data"};
 
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgmediasetting::flowThrough {1, "flowThrough"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgmediasetting::flowAround {2, "flowAround"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerTestNone {1, "echoCancellerTestNone"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test2A {2, "echoCancellerG168Test2A"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test2B {3, "echoCancellerG168Test2B"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test2Ca {4, "echoCancellerG168Test2Ca"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test2Cb {5, "echoCancellerG168Test2Cb"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test3A {6, "echoCancellerG168Test3A"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test3B {7, "echoCancellerG168Test3B"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test3C {8, "echoCancellerG168Test3C"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test4 {9, "echoCancellerG168Test4"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test6 {10, "echoCancellerG168Test6"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test9 {11, "echoCancellerG168Test9"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test5 {12, "echoCancellerG168Test5"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoicePeerCfgTable::CvVoicePeerCfgEntry::CvVoicePeerCfgEchoCancellerTest::echoCancellerG168Test7 {13, "echoCancellerG168Test7"};
 
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgcodingmode::adaptive {1, "adaptive"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgcodingmode::independent {2, "independent"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgMediaSetting::flowThrough {1, "flowThrough"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgMediaSetting::flowAround {2, "flowAround"};
 
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgframesize::frameSize30 {1, "frameSize30"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgframesize::frameSize60 {2, "frameSize60"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgframesize::frameSize30fixed {3, "frameSize30fixed"};
-const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::Cvvoippeercfgtable::Cvvoippeercfgentry::Cvvoippeercfgframesize::frameSize60fixed {4, "frameSize60fixed"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgCodingMode::adaptive {1, "adaptive"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgCodingMode::independent {2, "independent"};
+
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgFrameSize::frameSize30 {1, "frameSize30"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgFrameSize::frameSize60 {2, "frameSize60"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgFrameSize::frameSize30fixed {3, "frameSize30fixed"};
+const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvVoIPPeerCfgTable::CvVoIPPeerCfgEntry::CvVoIPPeerCfgFrameSize::frameSize60fixed {4, "frameSize60fixed"};
 
 
 }

@@ -33,10 +33,10 @@ class CISCOPIMMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Cpim; //type: CISCOPIMMIB::Cpim
-        class Ciscopimmibnotificationobjects; //type: CISCOPIMMIB::Ciscopimmibnotificationobjects
+        class CiscoPimMIBNotificationObjects; //type: CISCOPIMMIB::CiscoPimMIBNotificationObjects
 
         std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::Cpim> cpim;
-        std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::Ciscopimmibnotificationobjects> ciscopimmibnotificationobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_PIM_MIB::CISCOPIMMIB::CiscoPimMIBNotificationObjects> ciscopimmibnotificationobjects;
         
 }; // CISCOPIMMIB
 
@@ -60,23 +60,23 @@ class CISCOPIMMIB::Cpim : public ydk::Entity
 
         ydk::YLeaf cpiminvalidregistermsgsrcvd; //type: uint32
         ydk::YLeaf cpiminvalidjoinprunemsgsrcvd; //type: uint32
-        ydk::YLeaf cpimlasterrortype; //type: Cpimlasterrortype
+        ydk::YLeaf cpimlasterrortype; //type: CpimLastErrorType
         ydk::YLeaf cpimlasterrororigintype; //type: InetAddressType
         ydk::YLeaf cpimlasterrororigin; //type: binary
         ydk::YLeaf cpimlasterrorgrouptype; //type: InetAddressType
         ydk::YLeaf cpimlasterrorgroup; //type: binary
         ydk::YLeaf cpimlasterrorrptype; //type: InetAddressType
         ydk::YLeaf cpimlasterrorrp; //type: binary
-        class Cpimlasterrortype;
+        class CpimLastErrorType;
 
 }; // CISCOPIMMIB::Cpim
 
 
-class CISCOPIMMIB::Ciscopimmibnotificationobjects : public ydk::Entity
+class CISCOPIMMIB::CiscoPimMIBNotificationObjects : public ydk::Entity
 {
     public:
-        Ciscopimmibnotificationobjects();
-        ~Ciscopimmibnotificationobjects();
+        CiscoPimMIBNotificationObjects();
+        ~CiscoPimMIBNotificationObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -89,12 +89,12 @@ class CISCOPIMMIB::Ciscopimmibnotificationobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf cpimrpmappingchangetype; //type: Cpimrpmappingchangetype
-        class Cpimrpmappingchangetype;
+        ydk::YLeaf cpimrpmappingchangetype; //type: CpimRPMappingChangeType
+        class CpimRPMappingChangeType;
 
-}; // CISCOPIMMIB::Ciscopimmibnotificationobjects
+}; // CISCOPIMMIB::CiscoPimMIBNotificationObjects
 
-class CISCOPIMMIB::Cpim::Cpimlasterrortype : public ydk::Enum
+class CISCOPIMMIB::Cpim::CpimLastErrorType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -103,7 +103,7 @@ class CISCOPIMMIB::Cpim::Cpimlasterrortype : public ydk::Enum
 
 };
 
-class CISCOPIMMIB::Ciscopimmibnotificationobjects::Cpimrpmappingchangetype : public ydk::Enum
+class CISCOPIMMIB::CiscoPimMIBNotificationObjects::CpimRPMappingChangeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf newMapping;

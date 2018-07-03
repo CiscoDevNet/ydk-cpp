@@ -33,7 +33,7 @@ class InventoryConfigurations : public ydk::Entity
 
         class Entity; //type: InventoryConfigurations::Entity
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_cfg::InventoryConfigurations::Entity> > entity_;
+        ydk::YList entity_;
         
 }; // InventoryConfigurations
 

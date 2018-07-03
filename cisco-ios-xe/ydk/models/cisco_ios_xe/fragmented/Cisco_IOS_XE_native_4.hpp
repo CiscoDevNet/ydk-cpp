@@ -80,21 +80,21 @@ class Native::Flow::Record::Default::Collect::Datalink : public ydk::Entity
         ydk::YLeaf ethertype; //type: empty
         ydk::YLeaf vlan; //type: Vlan
         ydk::YLeaf source_vlan_id; //type: empty
-        class Dot1Q; //type: Native::Flow::Record::Default::Collect::Datalink::Dot1Q
+        class Dot1q; //type: Native::Flow::Record::Default::Collect::Datalink::Dot1q
         class Mac; //type: Native::Flow::Record::Default::Collect::Datalink::Mac
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Datalink::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Datalink::Dot1q> dot1q;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Datalink::Mac> mac;
                 class Vlan;
 
 }; // Native::Flow::Record::Default::Collect::Datalink
 
 
-class Native::Flow::Record::Default::Collect::Datalink::Dot1Q : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Datalink::Dot1q : public ydk::Entity
 {
     public:
-        Dot1Q();
-        ~Dot1Q();
+        Dot1q();
+        ~Dot1q();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -107,14 +107,14 @@ class Native::Flow::Record::Default::Collect::Datalink::Dot1Q : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: empty
-        class Vlan; //type: Native::Flow::Record::Default::Collect::Datalink::Dot1Q::Vlan
+        class Vlan; //type: Native::Flow::Record::Default::Collect::Datalink::Dot1q::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Datalink::Dot1Q::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Collect::Datalink::Dot1q::Vlan> vlan;
         
-}; // Native::Flow::Record::Default::Collect::Datalink::Dot1Q
+}; // Native::Flow::Record::Default::Collect::Datalink::Dot1q
 
 
-class Native::Flow::Record::Default::Collect::Datalink::Dot1Q::Vlan : public ydk::Entity
+class Native::Flow::Record::Default::Collect::Datalink::Dot1q::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -133,7 +133,7 @@ class Native::Flow::Record::Default::Collect::Datalink::Dot1Q::Vlan : public ydk
         ydk::YLeaf input; //type: empty
         ydk::YLeaf output; //type: empty
 
-}; // Native::Flow::Record::Default::Collect::Datalink::Dot1Q::Vlan
+}; // Native::Flow::Record::Default::Collect::Datalink::Dot1q::Vlan
 
 
 class Native::Flow::Record::Default::Collect::Datalink::Mac : public ydk::Entity
@@ -3404,21 +3404,21 @@ class Native::Flow::Record::Default::Match::Datalink : public ydk::Entity
         ydk::YLeaf ethertype; //type: empty
         ydk::YLeaf vlan; //type: Vlan
         ydk::YLeaf source_vlan_id; //type: empty
-        class Dot1Q; //type: Native::Flow::Record::Default::Match::Datalink::Dot1Q
+        class Dot1q; //type: Native::Flow::Record::Default::Match::Datalink::Dot1q
         class Mac; //type: Native::Flow::Record::Default::Match::Datalink::Mac
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Dot1Q> dot1q;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Dot1q> dot1q;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Mac> mac;
                 class Vlan;
 
 }; // Native::Flow::Record::Default::Match::Datalink
 
 
-class Native::Flow::Record::Default::Match::Datalink::Dot1Q : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Dot1q : public ydk::Entity
 {
     public:
-        Dot1Q();
-        ~Dot1Q();
+        Dot1q();
+        ~Dot1q();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3431,14 +3431,14 @@ class Native::Flow::Record::Default::Match::Datalink::Dot1Q : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: empty
-        class Vlan; //type: Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan
+        class Vlan; //type: Native::Flow::Record::Default::Match::Datalink::Dot1q::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Flow::Record::Default::Match::Datalink::Dot1q::Vlan> vlan;
         
-}; // Native::Flow::Record::Default::Match::Datalink::Dot1Q
+}; // Native::Flow::Record::Default::Match::Datalink::Dot1q
 
 
-class Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan : public ydk::Entity
+class Native::Flow::Record::Default::Match::Datalink::Dot1q::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -3457,7 +3457,7 @@ class Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan : public ydk::
         ydk::YLeaf input; //type: empty
         ydk::YLeaf output; //type: empty
 
-}; // Native::Flow::Record::Default::Match::Datalink::Dot1Q::Vlan
+}; // Native::Flow::Record::Default::Match::Datalink::Dot1q::Vlan
 
 
 class Native::Flow::Record::Default::Match::Datalink::Mac : public ydk::Entity

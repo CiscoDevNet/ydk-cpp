@@ -32,76 +32,76 @@ class CISCOSTPEXTENSIONSMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Stpxuplinkfastobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects
-        class Stpxbackbonefastobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects
-        class Stpxspanningtreeobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects
-        class Stpxmistpobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxmistpobjects
-        class Stpxloopguardobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects
-        class Stpxfaststartobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects
-        class Stpxbpduskewingobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects
-        class Stpxmstobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxmstobjects
-        class Stpxrstpobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxrstpobjects
-        class Stpxsmstobjects; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstobjects
-        class Stpxpvstvlantable; //type: CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable
-        class Stpxinconsistencytable; //type: CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable
-        class Stpxrootguardconfigtable; //type: CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable
-        class Stpxrootinconsistencytable; //type: CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable
-        class Stpxmistpinstancetable; //type: CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable
-        class Stpxloopguardconfigtable; //type: CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable
-        class Stpxloopinconsistencytable; //type: CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable
-        class Stpxfaststartporttable; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable
-        class Stpxfaststartopermodetable; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable
-        class Stpxbpduskewingtable; //type: CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable
-        class Stpxmstinstancetable; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable
-        class Stpxmstinstanceedittable; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable
-        class Stpxmstporttable; //type: CISCOSTPEXTENSIONSMIB::Stpxmstporttable
-        class Stpxmstportroletable; //type: CISCOSTPEXTENSIONSMIB::Stpxmstportroletable
-        class Stpxrstpporttable; //type: CISCOSTPEXTENSIONSMIB::Stpxrstpporttable
-        class Stpxrstpportroletable; //type: CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable
-        class Stpxrpvstporttable; //type: CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable
-        class Stpxsmstinstancetable; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable
-        class Stpxsmstinstanceedittable; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable
-        class Stpxsmstporttable; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstporttable
+        class StpxUplinkFastObjects; //type: CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects
+        class StpxBackboneFastObjects; //type: CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects
+        class StpxSpanningTreeObjects; //type: CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects
+        class StpxMISTPObjects; //type: CISCOSTPEXTENSIONSMIB::StpxMISTPObjects
+        class StpxLoopGuardObjects; //type: CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects
+        class StpxFastStartObjects; //type: CISCOSTPEXTENSIONSMIB::StpxFastStartObjects
+        class StpxBpduSkewingObjects; //type: CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects
+        class StpxMSTObjects; //type: CISCOSTPEXTENSIONSMIB::StpxMSTObjects
+        class StpxRSTPObjects; //type: CISCOSTPEXTENSIONSMIB::StpxRSTPObjects
+        class StpxSMSTObjects; //type: CISCOSTPEXTENSIONSMIB::StpxSMSTObjects
+        class StpxPVSTVlanTable; //type: CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable
+        class StpxInconsistencyTable; //type: CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable
+        class StpxRootGuardConfigTable; //type: CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable
+        class StpxRootInconsistencyTable; //type: CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable
+        class StpxMISTPInstanceTable; //type: CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable
+        class StpxLoopGuardConfigTable; //type: CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable
+        class StpxLoopInconsistencyTable; //type: CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable
+        class StpxFastStartPortTable; //type: CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable
+        class StpxFastStartOperModeTable; //type: CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable
+        class StpxBpduSkewingTable; //type: CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable
+        class StpxMSTInstanceTable; //type: CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable
+        class StpxMSTInstanceEditTable; //type: CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable
+        class StpxMSTPortTable; //type: CISCOSTPEXTENSIONSMIB::StpxMSTPortTable
+        class StpxMSTPortRoleTable; //type: CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable
+        class StpxRSTPPortTable; //type: CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable
+        class StpxRSTPPortRoleTable; //type: CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable
+        class StpxRPVSTPortTable; //type: CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable
+        class StpxSMSTInstanceTable; //type: CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable
+        class StpxSMSTInstanceEditTable; //type: CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable
+        class StpxSMSTPortTable; //type: CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects> stpxuplinkfastobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects> stpxbackbonefastobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects> stpxspanningtreeobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpobjects> stpxmistpobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects> stpxloopguardobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects> stpxfaststartobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects> stpxbpduskewingobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstobjects> stpxmstobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpobjects> stpxrstpobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstobjects> stpxsmstobjects;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable> stpxpvstvlantable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable> stpxinconsistencytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable> stpxrootguardconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable> stpxrootinconsistencytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable> stpxmistpinstancetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable> stpxloopguardconfigtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable> stpxloopinconsistencytable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable> stpxfaststartporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable> stpxfaststartopermodetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable> stpxbpduskewingtable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable> stpxmstinstancetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable> stpxmstinstanceedittable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstporttable> stpxmstporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstportroletable> stpxmstportroletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpporttable> stpxrstpporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable> stpxrstpportroletable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable> stpxrpvstporttable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable> stpxsmstinstancetable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable> stpxsmstinstanceedittable;
-        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstporttable> stpxsmstporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects> stpxuplinkfastobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects> stpxbackbonefastobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects> stpxspanningtreeobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxMISTPObjects> stpxmistpobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects> stpxloopguardobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxFastStartObjects> stpxfaststartobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects> stpxbpduskewingobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxMSTObjects> stpxmstobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxRSTPObjects> stpxrstpobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxSMSTObjects> stpxsmstobjects;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable> stpxpvstvlantable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable> stpxinconsistencytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable> stpxrootguardconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable> stpxrootinconsistencytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable> stpxmistpinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable> stpxloopguardconfigtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable> stpxloopinconsistencytable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable> stpxfaststartporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable> stpxfaststartopermodetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable> stpxbpduskewingtable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable> stpxmstinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable> stpxmstinstanceedittable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxMSTPortTable> stpxmstporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable> stpxmstportroletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable> stpxrstpporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable> stpxrstpportroletable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable> stpxrpvstporttable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable> stpxsmstinstancetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable> stpxsmstinstanceedittable;
+        std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable> stpxsmstporttable;
         
 }; // CISCOSTPEXTENSIONSMIB
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects : public ydk::Entity
 {
     public:
-        Stpxuplinkfastobjects();
-        ~Stpxuplinkfastobjects();
+        StpxUplinkFastObjects();
+        ~StpxUplinkFastObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -120,14 +120,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects : public ydk::Entity
         ydk::YLeaf stpxuplinkstationlearningframes; //type: uint32
         ydk::YLeaf stpxuplinkfastoperenabled; //type: boolean
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxuplinkfastobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxUplinkFastObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects : public ydk::Entity
 {
     public:
-        Stpxbackbonefastobjects();
-        ~Stpxbackbonefastobjects();
+        StpxBackboneFastObjects();
+        ~StpxBackboneFastObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -148,14 +148,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects : public ydk::Entity
         ydk::YLeaf stpxbackbonefastoutrlqresponsepdus; //type: uint32
         ydk::YLeaf stpxbackbonefastoperenabled; //type: boolean
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxbackbonefastobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxBackboneFastObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects : public ydk::Entity
 {
     public:
-        Stpxspanningtreeobjects();
-        ~Stpxspanningtreeobjects();
+        StpxSpanningTreeObjects();
+        ~StpxSpanningTreeObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -168,24 +168,24 @@ class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxspanningtreetype; //type: Stpxspanningtreetype
-        ydk::YLeaf stpxspanningtreepathcostmode; //type: Stpxspanningtreepathcostmode
+        ydk::YLeaf stpxspanningtreetype; //type: StpxSpanningTreeType
+        ydk::YLeaf stpxspanningtreepathcostmode; //type: StpxSpanningTreePathCostMode
         ydk::YLeaf stpxextendedsysidadminenabled; //type: boolean
         ydk::YLeaf stpxextendedsysidoperenabled; //type: boolean
-        ydk::YLeaf stpxnotificationenable; //type: Stpxnotificationenable
-        ydk::YLeaf stpxspanningtreepathcostopermode; //type: Stpxspanningtreepathcostopermode
-        class Stpxspanningtreetype;
-        class Stpxspanningtreepathcostmode;
-        class Stpxspanningtreepathcostopermode;
+        ydk::YLeaf stpxnotificationenable; //type: StpxNotificationEnable
+        ydk::YLeaf stpxspanningtreepathcostopermode; //type: StpxSpanningTreePathCostOperMode
+        class StpxSpanningTreeType;
+        class StpxSpanningTreePathCostMode;
+        class StpxSpanningTreePathCostOperMode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmistpobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMISTPObjects : public ydk::Entity
 {
     public:
-        Stpxmistpobjects();
-        ~Stpxmistpobjects();
+        StpxMISTPObjects();
+        ~StpxMISTPObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -200,14 +200,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxmistpobjects : public ydk::Entity
 
         ydk::YLeaf stpxmistpinstancenumber; //type: int32
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmistpobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxMISTPObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects : public ydk::Entity
 {
     public:
-        Stpxloopguardobjects();
-        ~Stpxloopguardobjects();
+        StpxLoopGuardObjects();
+        ~StpxLoopGuardObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -220,17 +220,17 @@ class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf stpxloopguardglobaldefaultmode; //type: Stpxloopguardglobaldefaultmode
-        class Stpxloopguardglobaldefaultmode;
+        ydk::YLeaf stpxloopguardglobaldefaultmode; //type: StpxLoopGuardGlobalDefaultMode
+        class StpxLoopGuardGlobalDefaultMode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxFastStartObjects : public ydk::Entity
 {
     public:
-        Stpxfaststartobjects();
-        ~Stpxfaststartobjects();
+        StpxFastStartObjects();
+        ~StpxFastStartObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -245,17 +245,17 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects : public ydk::Entity
 
         ydk::YLeaf stpxfaststartbpduguardenable; //type: boolean
         ydk::YLeaf stpxfaststartbpdufilterenable; //type: boolean
-        ydk::YLeaf stpxfaststartglobaldefaultmode; //type: Stpxfaststartglobaldefaultmode
-        class Stpxfaststartglobaldefaultmode;
+        ydk::YLeaf stpxfaststartglobaldefaultmode; //type: StpxFastStartGlobalDefaultMode
+        class StpxFastStartGlobalDefaultMode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxFastStartObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects : public ydk::Entity
 {
     public:
-        Stpxbpduskewingobjects();
-        ~Stpxbpduskewingobjects();
+        StpxBpduSkewingObjects();
+        ~StpxBpduSkewingObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -270,14 +270,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects : public ydk::Entity
 
         ydk::YLeaf stpxbpduskewingdetectionenable; //type: boolean
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxBpduSkewingObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTObjects : public ydk::Entity
 {
     public:
-        Stpxmstobjects();
-        ~Stpxmstobjects();
+        StpxMSTObjects();
+        ~StpxMSTObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -293,22 +293,22 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstobjects : public ydk::Entity
         ydk::YLeaf stpxmstmaxinstancenumber; //type: int32
         ydk::YLeaf stpxmstregionname; //type: string
         ydk::YLeaf stpxmstregionrevision; //type: int32
-        ydk::YLeaf stpxmstregioneditbufferstatus; //type: Stpxmstregioneditbufferstatus
-        ydk::YLeaf stpxmstregioneditbufferoperation; //type: Stpxmstregioneditbufferoperation
+        ydk::YLeaf stpxmstregioneditbufferstatus; //type: StpxMSTRegionEditBufferStatus
+        ydk::YLeaf stpxmstregioneditbufferoperation; //type: StpxMSTRegionEditBufferOperation
         ydk::YLeaf stpxmstregioneditname; //type: string
         ydk::YLeaf stpxmstregioneditrevision; //type: int32
         ydk::YLeaf stpxmstmaxhopcount; //type: int32
-        class Stpxmstregioneditbufferstatus;
-        class Stpxmstregioneditbufferoperation;
+        class StpxMSTRegionEditBufferStatus;
+        class StpxMSTRegionEditBufferOperation;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRSTPObjects : public ydk::Entity
 {
     public:
-        Stpxrstpobjects();
-        ~Stpxrstpobjects();
+        StpxRSTPObjects();
+        ~StpxRSTPObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -323,14 +323,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpobjects : public ydk::Entity
 
         ydk::YLeaf stpxrstptransmitholdcount; //type: uint32
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxRSTPObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstobjects : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSMSTObjects : public ydk::Entity
 {
     public:
-        Stpxsmstobjects();
-        ~Stpxsmstobjects();
+        StpxSMSTObjects();
+        ~StpxSMSTObjects();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -351,14 +351,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstobjects : public ydk::Entity
         ydk::YLeaf stpxsmstconfigdigest; //type: string
         ydk::YLeaf stpxsmstconfigprestandarddigest; //type: string
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstobjects
+}; // CISCOSTPEXTENSIONSMIB::StpxSMSTObjects
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable : public ydk::Entity
 {
     public:
-        Stpxpvstvlantable();
-        ~Stpxpvstvlantable();
+        StpxPVSTVlanTable();
+        ~StpxPVSTVlanTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -371,18 +371,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxpvstvlanentry; //type: CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry
+        class StpxPVSTVlanEntry; //type: CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry> > stpxpvstvlanentry;
+        ydk::YList stpxpvstvlanentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable
+}; // CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry : public ydk::Entity
 {
     public:
-        Stpxpvstvlanentry();
-        ~Stpxpvstvlanentry();
+        StpxPVSTVlanEntry();
+        ~StpxPVSTVlanEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -396,17 +396,17 @@ class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry : public ydk::
         std::string get_absolute_path() const override;
 
         ydk::YLeaf stpxpvstvlanindex; //type: int32
-        ydk::YLeaf stpxpvstvlanenable; //type: Stpxpvstvlanenable
-        class Stpxpvstvlanenable;
+        ydk::YLeaf stpxpvstvlanenable; //type: StpxPVSTVlanEnable
+        class StpxPVSTVlanEnable;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry
+}; // CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable : public ydk::Entity
 {
     public:
-        Stpxinconsistencytable();
-        ~Stpxinconsistencytable();
+        StpxInconsistencyTable();
+        ~StpxInconsistencyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -419,18 +419,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxinconsistencyentry; //type: CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry
+        class StpxInconsistencyEntry; //type: CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry> > stpxinconsistencyentry;
+        ydk::YList stpxinconsistencyentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable
+}; // CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry : public ydk::Entity
 {
     public:
-        Stpxinconsistencyentry();
-        ~Stpxinconsistencyentry();
+        StpxInconsistencyEntry();
+        ~StpxInconsistencyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -445,16 +445,16 @@ class CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry : pu
 
         ydk::YLeaf stpxvlanindex; //type: int32
         ydk::YLeaf stpxportindex; //type: int32
-        ydk::YLeaf stpxinconsistentstate; //type: Stpxinconsistentstate
+        ydk::YLeaf stpxinconsistentstate; //type: StpxInconsistentState
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxinconsistencytable::Stpxinconsistencyentry
+}; // CISCOSTPEXTENSIONSMIB::StpxInconsistencyTable::StpxInconsistencyEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable : public ydk::Entity
 {
     public:
-        Stpxrootguardconfigtable();
-        ~Stpxrootguardconfigtable();
+        StpxRootGuardConfigTable();
+        ~StpxRootGuardConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -467,18 +467,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxrootguardconfigentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry
+        class StpxRootGuardConfigEntry; //type: CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry> > stpxrootguardconfigentry;
+        ydk::YList stpxrootguardconfigentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable
+}; // CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry : public ydk::Entity
 {
     public:
-        Stpxrootguardconfigentry();
-        ~Stpxrootguardconfigentry();
+        StpxRootGuardConfigEntry();
+        ~StpxRootGuardConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -494,14 +494,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry 
         ydk::YLeaf stpxrootguardconfigportindex; //type: int32
         ydk::YLeaf stpxrootguardconfigenabled; //type: boolean
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrootguardconfigtable::Stpxrootguardconfigentry
+}; // CISCOSTPEXTENSIONSMIB::StpxRootGuardConfigTable::StpxRootGuardConfigEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable : public ydk::Entity
 {
     public:
-        Stpxrootinconsistencytable();
-        ~Stpxrootinconsistencytable();
+        StpxRootInconsistencyTable();
+        ~StpxRootInconsistencyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -514,18 +514,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxrootinconsistencyentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry
+        class StpxRootInconsistencyEntry; //type: CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry> > stpxrootinconsistencyentry;
+        ydk::YList stpxrootinconsistencyentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable
+}; // CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry : public ydk::Entity
 {
     public:
-        Stpxrootinconsistencyentry();
-        ~Stpxrootinconsistencyentry();
+        StpxRootInconsistencyEntry();
+        ~StpxRootInconsistencyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -542,14 +542,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyen
         ydk::YLeaf stpxrootinconsistencyportindex; //type: int32
         ydk::YLeaf stpxrootinconsistencystate; //type: boolean
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrootinconsistencytable::Stpxrootinconsistencyentry
+}; // CISCOSTPEXTENSIONSMIB::StpxRootInconsistencyTable::StpxRootInconsistencyEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable : public ydk::Entity
 {
     public:
-        Stpxmistpinstancetable();
-        ~Stpxmistpinstancetable();
+        StpxMISTPInstanceTable();
+        ~StpxMISTPInstanceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -562,18 +562,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxmistpinstanceentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry
+        class StpxMISTPInstanceEntry; //type: CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry> > stpxmistpinstanceentry;
+        ydk::YList stpxmistpinstanceentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable
+}; // CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry : public ydk::Entity
 {
     public:
-        Stpxmistpinstanceentry();
-        ~Stpxmistpinstanceentry();
+        StpxMISTPInstanceEntry();
+        ~StpxMISTPInstanceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -593,14 +593,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry : pu
         ydk::YLeaf stpxmistpinstancevlansmapped3k; //type: binary
         ydk::YLeaf stpxmistpinstancevlansmapped4k; //type: binary
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmistpinstancetable::Stpxmistpinstanceentry
+}; // CISCOSTPEXTENSIONSMIB::StpxMISTPInstanceTable::StpxMISTPInstanceEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable : public ydk::Entity
 {
     public:
-        Stpxloopguardconfigtable();
-        ~Stpxloopguardconfigtable();
+        StpxLoopGuardConfigTable();
+        ~StpxLoopGuardConfigTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -613,18 +613,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxloopguardconfigentry; //type: CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry
+        class StpxLoopGuardConfigEntry; //type: CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry> > stpxloopguardconfigentry;
+        ydk::YList stpxloopguardconfigentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable
+}; // CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry : public ydk::Entity
 {
     public:
-        Stpxloopguardconfigentry();
-        ~Stpxloopguardconfigentry();
+        StpxLoopGuardConfigEntry();
+        ~StpxLoopGuardConfigEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -639,17 +639,17 @@ class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry 
 
         ydk::YLeaf stpxloopguardconfigportindex; //type: int32
         ydk::YLeaf stpxloopguardconfigenabled; //type: boolean
-        ydk::YLeaf stpxloopguardconfigmode; //type: Stpxloopguardconfigmode
-        class Stpxloopguardconfigmode;
+        ydk::YLeaf stpxloopguardconfigmode; //type: StpxLoopGuardConfigMode
+        class StpxLoopGuardConfigMode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry
+}; // CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable : public ydk::Entity
 {
     public:
-        Stpxloopinconsistencytable();
-        ~Stpxloopinconsistencytable();
+        StpxLoopInconsistencyTable();
+        ~StpxLoopInconsistencyTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -662,18 +662,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxloopinconsistencyentry; //type: CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry
+        class StpxLoopInconsistencyEntry; //type: CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry> > stpxloopinconsistencyentry;
+        ydk::YList stpxloopinconsistencyentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable
+}; // CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry : public ydk::Entity
 {
     public:
-        Stpxloopinconsistencyentry();
-        ~Stpxloopinconsistencyentry();
+        StpxLoopInconsistencyEntry();
+        ~StpxLoopInconsistencyEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -690,14 +690,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyen
         ydk::YLeaf stpxloopinconsistencyportindex; //type: int32
         ydk::YLeaf stpxloopinconsistencystate; //type: boolean
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxloopinconsistencytable::Stpxloopinconsistencyentry
+}; // CISCOSTPEXTENSIONSMIB::StpxLoopInconsistencyTable::StpxLoopInconsistencyEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable : public ydk::Entity
 {
     public:
-        Stpxfaststartporttable();
-        ~Stpxfaststartporttable();
+        StpxFastStartPortTable();
+        ~StpxFastStartPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -710,18 +710,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxfaststartportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry
+        class StpxFastStartPortEntry; //type: CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry> > stpxfaststartportentry;
+        ydk::YList stpxfaststartportentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable
+}; // CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry : public ydk::Entity
 {
     public:
-        Stpxfaststartportentry();
-        ~Stpxfaststartportentry();
+        StpxFastStartPortEntry();
+        ~StpxFastStartPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -736,21 +736,21 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry : pu
 
         ydk::YLeaf stpxfaststartportindex; //type: int32
         ydk::YLeaf stpxfaststartportenable; //type: boolean
-        ydk::YLeaf stpxfaststartportmode; //type: Stpxfaststartportmode
-        ydk::YLeaf stpxfaststartportbpduguardmode; //type: Stpxfaststartportbpduguardmode
-        ydk::YLeaf stpxfaststartportbpdufiltermode; //type: Stpxfaststartportbpdufiltermode
-        class Stpxfaststartportmode;
-        class Stpxfaststartportbpduguardmode;
-        class Stpxfaststartportbpdufiltermode;
+        ydk::YLeaf stpxfaststartportmode; //type: StpxFastStartPortMode
+        ydk::YLeaf stpxfaststartportbpduguardmode; //type: StpxFastStartPortBpduGuardMode
+        ydk::YLeaf stpxfaststartportbpdufiltermode; //type: StpxFastStartPortBpduFilterMode
+        class StpxFastStartPortMode;
+        class StpxFastStartPortBpduGuardMode;
+        class StpxFastStartPortBpduFilterMode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry
+}; // CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable : public ydk::Entity
 {
     public:
-        Stpxfaststartopermodetable();
-        ~Stpxfaststartopermodetable();
+        StpxFastStartOperModeTable();
+        ~StpxFastStartOperModeTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -763,18 +763,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxfaststartopermodeentry; //type: CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry
+        class StpxFastStartOperModeEntry; //type: CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry> > stpxfaststartopermodeentry;
+        ydk::YList stpxfaststartopermodeentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable
+}; // CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry : public ydk::Entity
 {
     public:
-        Stpxfaststartopermodeentry();
-        ~Stpxfaststartopermodeentry();
+        StpxFastStartOperModeEntry();
+        ~StpxFastStartOperModeEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -789,17 +789,17 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeen
 
         ydk::YLeaf stpxfaststartopermodeinstindex; //type: int32
         ydk::YLeaf stpxfaststartopermodeportindex; //type: int32
-        ydk::YLeaf stpxfaststartopermode; //type: Stpxfaststartopermode
-        class Stpxfaststartopermode;
+        ydk::YLeaf stpxfaststartopermode; //type: StpxFastStartOperMode
+        class StpxFastStartOperMode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry
+}; // CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable : public ydk::Entity
 {
     public:
-        Stpxbpduskewingtable();
-        ~Stpxbpduskewingtable();
+        StpxBpduSkewingTable();
+        ~StpxBpduSkewingTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -812,18 +812,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxbpduskewingentry; //type: CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry
+        class StpxBpduSkewingEntry; //type: CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry> > stpxbpduskewingentry;
+        ydk::YList stpxbpduskewingentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable
+}; // CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry : public ydk::Entity
 {
     public:
-        Stpxbpduskewingentry();
-        ~Stpxbpduskewingentry();
+        StpxBpduSkewingEntry();
+        ~StpxBpduSkewingEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -842,14 +842,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry : public
         ydk::YLeaf stpxbpduskewingworstskewduration; //type: uint32
         ydk::YLeaf stpxbpduskewingworstskewtime; //type: uint32
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxbpduskewingtable::Stpxbpduskewingentry
+}; // CISCOSTPEXTENSIONSMIB::StpxBpduSkewingTable::StpxBpduSkewingEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable : public ydk::Entity
 {
     public:
-        Stpxmstinstancetable();
-        ~Stpxmstinstancetable();
+        StpxMSTInstanceTable();
+        ~StpxMSTInstanceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -862,18 +862,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxmstinstanceentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry
+        class StpxMSTInstanceEntry; //type: CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry> > stpxmstinstanceentry;
+        ydk::YList stpxmstinstanceentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry : public ydk::Entity
 {
     public:
-        Stpxmstinstanceentry();
-        ~Stpxmstinstanceentry();
+        StpxMSTInstanceEntry();
+        ~StpxMSTInstanceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -893,14 +893,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry : public
         ydk::YLeaf stpxmstinstancevlansmapped4k; //type: binary
         ydk::YLeaf stpxmstinstanceremaininghopcount; //type: int32
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstancetable::Stpxmstinstanceentry
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTInstanceTable::StpxMSTInstanceEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable : public ydk::Entity
 {
     public:
-        Stpxmstinstanceedittable();
-        ~Stpxmstinstanceedittable();
+        StpxMSTInstanceEditTable();
+        ~StpxMSTInstanceEditTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -913,18 +913,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxmstinstanceeditentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry
+        class StpxMSTInstanceEditEntry; //type: CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry> > stpxmstinstanceeditentry;
+        ydk::YList stpxmstinstanceeditentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry : public ydk::Entity
 {
     public:
-        Stpxmstinstanceeditentry();
-        ~Stpxmstinstanceeditentry();
+        StpxMSTInstanceEditEntry();
+        ~StpxMSTInstanceEditEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -943,14 +943,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry 
         ydk::YLeaf stpxmstinstanceeditvlansmap3k; //type: binary
         ydk::YLeaf stpxmstinstanceeditvlansmap4k; //type: binary
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstinstanceedittable::Stpxmstinstanceeditentry
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTInstanceEditTable::StpxMSTInstanceEditEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstporttable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable : public ydk::Entity
 {
     public:
-        Stpxmstporttable();
-        ~Stpxmstporttable();
+        StpxMSTPortTable();
+        ~StpxMSTPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -963,18 +963,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxmstportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry
+        class StpxMSTPortEntry; //type: CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry> > stpxmstportentry;
+        ydk::YList stpxmstportentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstporttable
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTPortTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry : public ydk::Entity
 {
     public:
-        Stpxmstportentry();
-        ~Stpxmstportentry();
+        StpxMSTPortEntry();
+        ~StpxMSTPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -988,21 +988,21 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry : public ydk::En
         std::string get_absolute_path() const override;
 
         ydk::YLeaf stpxmstportindex; //type: int32
-        ydk::YLeaf stpxmstportadminlinktype; //type: Stpxmstportadminlinktype
-        ydk::YLeaf stpxmstportoperlinktype; //type: Stpxmstportoperlinktype
+        ydk::YLeaf stpxmstportadminlinktype; //type: StpxMSTPortAdminLinkType
+        ydk::YLeaf stpxmstportoperlinktype; //type: StpxMSTPortOperLinkType
         ydk::YLeaf stpxmstportprotocolmigration; //type: boolean
-        ydk::YLeaf stpxmstportstatus; //type: Stpxmstportstatus
-        class Stpxmstportadminlinktype;
-        class Stpxmstportoperlinktype;
+        ydk::YLeaf stpxmstportstatus; //type: StpxMSTPortStatus
+        class StpxMSTPortAdminLinkType;
+        class StpxMSTPortOperLinkType;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable : public ydk::Entity
 {
     public:
-        Stpxmstportroletable();
-        ~Stpxmstportroletable();
+        StpxMSTPortRoleTable();
+        ~StpxMSTPortRoleTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1015,18 +1015,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxmstportroleentry; //type: CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry
+        class StpxMSTPortRoleEntry; //type: CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry> > stpxmstportroleentry;
+        ydk::YList stpxmstportroleentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstportroletable
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry : public ydk::Entity
 {
     public:
-        Stpxmstportroleentry();
-        ~Stpxmstportroleentry();
+        StpxMSTPortRoleEntry();
+        ~StpxMSTPortRoleEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1041,17 +1041,17 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry : public
 
         ydk::YLeaf stpxmstportroleinstanceindex; //type: int32
         ydk::YLeaf stpxmstportroleportindex; //type: int32
-        ydk::YLeaf stpxmstportrolevalue; //type: Stpxmstportrolevalue
-        class Stpxmstportrolevalue;
+        ydk::YLeaf stpxmstportrolevalue; //type: StpxMSTPortRoleValue
+        class StpxMSTPortRoleValue;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry
+}; // CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable : public ydk::Entity
 {
     public:
-        Stpxrstpporttable();
-        ~Stpxrstpporttable();
+        StpxRSTPPortTable();
+        ~StpxRSTPPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1064,18 +1064,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxrstpportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry
+        class StpxRSTPPortEntry; //type: CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry> > stpxrstpportentry;
+        ydk::YList stpxrstpportentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpporttable
+}; // CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry : public ydk::Entity
 {
     public:
-        Stpxrstpportentry();
-        ~Stpxrstpportentry();
+        StpxRSTPPortEntry();
+        ~StpxRSTPPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1089,20 +1089,20 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry : public ydk::
         std::string get_absolute_path() const override;
 
         ydk::YLeaf stpxrstpportindex; //type: int32
-        ydk::YLeaf stpxrstpportadminlinktype; //type: Stpxrstpportadminlinktype
-        ydk::YLeaf stpxrstpportoperlinktype; //type: Stpxrstpportoperlinktype
+        ydk::YLeaf stpxrstpportadminlinktype; //type: StpxRSTPPortAdminLinkType
+        ydk::YLeaf stpxrstpportoperlinktype; //type: StpxRSTPPortOperLinkType
         ydk::YLeaf stpxrstpportprotocolmigration; //type: boolean
-        class Stpxrstpportadminlinktype;
-        class Stpxrstpportoperlinktype;
+        class StpxRSTPPortAdminLinkType;
+        class StpxRSTPPortOperLinkType;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry
+}; // CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable : public ydk::Entity
 {
     public:
-        Stpxrstpportroletable();
-        ~Stpxrstpportroletable();
+        StpxRSTPPortRoleTable();
+        ~StpxRSTPPortRoleTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1115,18 +1115,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxrstpportroleentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry
+        class StpxRSTPPortRoleEntry; //type: CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry> > stpxrstpportroleentry;
+        ydk::YList stpxrstpportroleentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable
+}; // CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry : public ydk::Entity
 {
     public:
-        Stpxrstpportroleentry();
-        ~Stpxrstpportroleentry();
+        StpxRSTPPortRoleEntry();
+        ~StpxRSTPPortRoleEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1141,17 +1141,17 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry : publ
 
         ydk::YLeaf stpxrstpportroleinstanceindex; //type: int32
         ydk::YLeaf stpxrstpportroleportindex; //type: int32
-        ydk::YLeaf stpxrstpportrolevalue; //type: Stpxrstpportrolevalue
-        class Stpxrstpportrolevalue;
+        ydk::YLeaf stpxrstpportrolevalue; //type: StpxRSTPPortRoleValue
+        class StpxRSTPPortRoleValue;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry
+}; // CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable : public ydk::Entity
 {
     public:
-        Stpxrpvstporttable();
-        ~Stpxrpvstporttable();
+        StpxRPVSTPortTable();
+        ~StpxRPVSTPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1164,18 +1164,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxrpvstportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry
+        class StpxRPVSTPortEntry; //type: CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry> > stpxrpvstportentry;
+        ydk::YList stpxrpvstportentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable
+}; // CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry : public ydk::Entity
 {
     public:
-        Stpxrpvstportentry();
-        ~Stpxrpvstportentry();
+        StpxRPVSTPortEntry();
+        ~StpxRPVSTPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1190,16 +1190,16 @@ class CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry : public ydk
 
         ydk::YLeaf stpxrpvstportvlanindex; //type: int32
         ydk::YLeaf stpxrpvstportindex; //type: int32
-        ydk::YLeaf stpxrpvstportstatus; //type: Stpxrpvstportstatus
+        ydk::YLeaf stpxrpvstportstatus; //type: StpxRPVSTPortStatus
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxrpvstporttable::Stpxrpvstportentry
+}; // CISCOSTPEXTENSIONSMIB::StpxRPVSTPortTable::StpxRPVSTPortEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable : public ydk::Entity
 {
     public:
-        Stpxsmstinstancetable();
-        ~Stpxsmstinstancetable();
+        StpxSMSTInstanceTable();
+        ~StpxSMSTInstanceTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1212,18 +1212,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxsmstinstanceentry; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry
+        class StpxSMSTInstanceEntry; //type: CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry> > stpxsmstinstanceentry;
+        ydk::YList stpxsmstinstanceentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable
+}; // CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry : public ydk::Entity
 {
     public:
-        Stpxsmstinstanceentry();
-        ~Stpxsmstinstanceentry();
+        StpxSMSTInstanceEntry();
+        ~StpxSMSTInstanceEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1243,14 +1243,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry : publ
         ydk::YLeaf stpxsmstinstancecistregionalroot; //type: binary
         ydk::YLeaf stpxsmstinstancecistintrootcost; //type: uint32
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstancetable::Stpxsmstinstanceentry
+}; // CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceTable::StpxSMSTInstanceEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable : public ydk::Entity
 {
     public:
-        Stpxsmstinstanceedittable();
-        ~Stpxsmstinstanceedittable();
+        StpxSMSTInstanceEditTable();
+        ~StpxSMSTInstanceEditTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1263,18 +1263,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxsmstinstanceeditentry; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
+        class StpxSMSTInstanceEditEntry; //type: CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry> > stpxsmstinstanceeditentry;
+        ydk::YList stpxsmstinstanceeditentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable
+}; // CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry : public ydk::Entity
 {
     public:
-        Stpxsmstinstanceeditentry();
-        ~Stpxsmstinstanceeditentry();
+        StpxSMSTInstanceEditEntry();
+        ~StpxSMSTInstanceEditEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1292,14 +1292,14 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentr
         ydk::YLeaf stpxsmstinstanceeditvlansmap3k4k; //type: binary
         ydk::YLeaf stpxsmstinstanceeditrowstatus; //type: RowStatus
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstinstanceedittable::Stpxsmstinstanceeditentry
+}; // CISCOSTPEXTENSIONSMIB::StpxSMSTInstanceEditTable::StpxSMSTInstanceEditEntry
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable : public ydk::Entity
 {
     public:
-        Stpxsmstporttable();
-        ~Stpxsmstporttable();
+        StpxSMSTPortTable();
+        ~StpxSMSTPortTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1312,18 +1312,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Stpxsmstportentry; //type: CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry
+        class StpxSMSTPortEntry; //type: CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_STP_EXTENSIONS_MIB::CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry> > stpxsmstportentry;
+        ydk::YList stpxsmstportentry;
         
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstporttable
+}; // CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable
 
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry : public ydk::Entity
+class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry : public ydk::Entity
 {
     public:
-        Stpxsmstportentry();
-        ~Stpxsmstportentry();
+        StpxSMSTPortEntry();
+        ~StpxSMSTPortEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1337,18 +1337,18 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry : public ydk::
         std::string get_absolute_path() const override;
 
         ydk::YLeaf stpxsmstportindex; //type: int32
-        ydk::YLeaf stpxsmstportstatus; //type: Stpxsmstportstatus
+        ydk::YLeaf stpxsmstportstatus; //type: StpxSMSTPortStatus
         ydk::YLeaf stpxsmstportadminhellotime; //type: uint32
         ydk::YLeaf stpxsmstportconfigedhellotime; //type: uint32
         ydk::YLeaf stpxsmstportoperhellotime; //type: int32
-        ydk::YLeaf stpxsmstportadminmstmode; //type: Stpxsmstportadminmstmode
-        ydk::YLeaf stpxsmstportopermstmode; //type: Stpxsmstportopermstmode
-        class Stpxsmstportadminmstmode;
-        class Stpxsmstportopermstmode;
+        ydk::YLeaf stpxsmstportadminmstmode; //type: StpxSMSTPortAdminMSTMode
+        ydk::YLeaf stpxsmstportopermstmode; //type: StpxSMSTPortOperMSTMode
+        class StpxSMSTPortAdminMSTMode;
+        class StpxSMSTPortOperMSTMode;
 
-}; // CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry
+}; // CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry
 
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreeType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pvstPlus;
@@ -1359,7 +1359,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreetype : pub
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf short_;
@@ -1367,7 +1367,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostmo
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostopermode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxSpanningTreeObjects::StpxSpanningTreePathCostOperMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf short_;
@@ -1375,7 +1375,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxspanningtreeobjects::Stpxspanningtreepathcostop
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::Stpxloopguardglobaldefaultmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxLoopGuardObjects::StpxLoopGuardGlobalDefaultMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -1383,7 +1383,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxloopguardobjects::Stpxloopguardglobaldefaultmod
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::Stpxfaststartglobaldefaultmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxFastStartObjects::StpxFastStartGlobalDefaultMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -1391,7 +1391,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartobjects::Stpxfaststartglobaldefaultmod
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferstatus : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf released;
@@ -1400,7 +1400,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferstatus : pub
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxMSTObjects::StpxMSTRegionEditBufferOperation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf other;
@@ -1411,7 +1411,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstobjects::Stpxmstregioneditbufferoperation : 
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlanenable : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxPVSTVlanTable::StpxPVSTVlanEntry::StpxPVSTVlanEnable : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -1420,7 +1420,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxpvstvlantable::Stpxpvstvlanentry::Stpxpvstvlane
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry::Stpxloopguardconfigmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxLoopGuardConfigTable::StpxLoopGuardConfigEntry::StpxLoopGuardConfigMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -1429,7 +1429,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxloopguardconfigtable::Stpxloopguardconfigentry:
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -1440,7 +1440,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stp
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpduguardmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduGuardMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -1449,7 +1449,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stp
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stpxfaststartportbpdufiltermode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxFastStartPortTable::StpxFastStartPortEntry::StpxFastStartPortBpduFilterMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enable;
@@ -1458,7 +1458,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartporttable::Stpxfaststartportentry::Stp
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeentry::Stpxfaststartopermode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxFastStartOperModeTable::StpxFastStartOperModeEntry::StpxFastStartOperMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf enabled;
@@ -1466,7 +1466,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxfaststartopermodetable::Stpxfaststartopermodeen
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportadminlinktype : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortAdminLinkType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pointToPoint;
@@ -1475,7 +1475,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportadmi
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportoperlinktype : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxMSTPortTable::StpxMSTPortEntry::StpxMSTPortOperLinkType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pointToPoint;
@@ -1484,7 +1484,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstporttable::Stpxmstportentry::Stpxmstportoper
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmstportrolevalue : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxMSTPortRoleTable::StpxMSTPortRoleEntry::StpxMSTPortRoleValue : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -1497,7 +1497,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxmstportroletable::Stpxmstportroleentry::Stpxmst
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportadminlinktype : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortAdminLinkType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pointToPoint;
@@ -1506,7 +1506,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpporta
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpportoperlinktype : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxRSTPPortTable::StpxRSTPPortEntry::StpxRSTPPortOperLinkType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pointToPoint;
@@ -1515,7 +1515,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpporttable::Stpxrstpportentry::Stpxrstpporto
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxrstpportrolevalue : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxRSTPPortRoleTable::StpxRSTPPortRoleEntry::StpxRSTPPortRoleValue : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disabled;
@@ -1528,7 +1528,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxrstpportroletable::Stpxrstpportroleentry::Stpxr
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportadminmstmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortAdminMSTMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf preStandard;
@@ -1536,7 +1536,7 @@ class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstporta
 
 };
 
-class CISCOSTPEXTENSIONSMIB::Stpxsmstporttable::Stpxsmstportentry::Stpxsmstportopermstmode : public ydk::Enum
+class CISCOSTPEXTENSIONSMIB::StpxSMSTPortTable::StpxSMSTPortEntry::StpxSMSTPortOperMSTMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unknown;

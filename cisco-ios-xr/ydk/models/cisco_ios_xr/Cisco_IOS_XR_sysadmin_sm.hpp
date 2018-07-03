@@ -45,7 +45,7 @@ class Oper : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Chassis> chassis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Reload> reload;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory> reboot_history;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Interface> > interface;
+        ydk::YList interface;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::ReloadVm> reload_vm;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Macpool> macpool;
         
@@ -71,7 +71,7 @@ class Oper::ShelfMgr : public ydk::Entity
 
         class Trace; //type: Oper::ShelfMgr::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::ShelfMgr::Trace> > trace;
+        ydk::YList trace;
         
 }; // Oper::ShelfMgr
 
@@ -96,7 +96,7 @@ class Oper::ShelfMgr::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Oper::ShelfMgr::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::ShelfMgr::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Oper::ShelfMgr::Trace
 
@@ -120,7 +120,7 @@ class Oper::ShelfMgr::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Oper::ShelfMgr::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::ShelfMgr::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Oper::ShelfMgr::Trace::Location
 
@@ -144,7 +144,7 @@ class Oper::ShelfMgr::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::ShelfMgr::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Oper::ShelfMgr::Trace::Location::AllOptions
 
@@ -217,7 +217,7 @@ class Oper::Platform::Summary : public ydk::Entity
 
         class Location; //type: Oper::Platform::Summary::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Platform::Summary::Location> > location;
+        ydk::YList location;
         
 }; // Oper::Platform::Summary
 
@@ -290,7 +290,7 @@ class Oper::Platform::Detail : public ydk::Entity
 
         class Location; //type: Oper::Platform::Detail::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Platform::Detail::Location> > location;
+        ydk::YList location;
         
 }; // Oper::Platform::Detail
 
@@ -368,7 +368,7 @@ class Oper::Platform::Slices : public ydk::Entity
 
         class Location; //type: Oper::Platform::Slices::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Platform::Slices::Location> > location;
+        ydk::YList location;
         
 }; // Oper::Platform::Slices
 
@@ -393,7 +393,7 @@ class Oper::Platform::Slices::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class SliceValues; //type: Oper::Platform::Slices::Location::SliceValues
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Platform::Slices::Location::SliceValues> > slice_values;
+        ydk::YList slice_values;
         
 }; // Oper::Platform::Slices::Location
 
@@ -488,7 +488,7 @@ class Oper::Chassis::Brief : public ydk::Entity
 
         class ChassisSerial; //type: Oper::Chassis::Brief::ChassisSerial
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Chassis::Brief::ChassisSerial> > chassis_serial;
+        ydk::YList chassis_serial;
         
 }; // Oper::Chassis::Brief
 
@@ -586,7 +586,7 @@ class Oper::Reload::Rack : public ydk::Entity
 
         class Racks; //type: Oper::Reload::Rack::Racks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Reload::Rack::Racks> > racks;
+        ydk::YList racks;
         
 }; // Oper::Reload::Rack
 
@@ -660,7 +660,7 @@ class Oper::RebootHistory::Card : public ydk::Entity
 
         class Location; //type: Oper::RebootHistory::Card::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::Card::Location> > location;
+        ydk::YList location;
         
 }; // Oper::RebootHistory::Card
 
@@ -685,7 +685,7 @@ class Oper::RebootHistory::Card::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class Events; //type: Oper::RebootHistory::Card::Location::Events
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::Card::Location::Events> > events;
+        ydk::YList events;
         
 }; // Oper::RebootHistory::Card::Location
 
@@ -758,7 +758,7 @@ class Oper::RebootHistory::AdminVm : public ydk::Entity
 
         class Location; //type: Oper::RebootHistory::AdminVm::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::AdminVm::Location> > location;
+        ydk::YList location;
         
 }; // Oper::RebootHistory::AdminVm
 
@@ -783,7 +783,7 @@ class Oper::RebootHistory::AdminVm::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class Events; //type: Oper::RebootHistory::AdminVm::Location::Events
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::AdminVm::Location::Events> > events;
+        ydk::YList events;
         
 }; // Oper::RebootHistory::AdminVm::Location
 
@@ -882,7 +882,7 @@ class Oper::RebootHistory::Reverse::Card : public ydk::Entity
 
         class Location; //type: Oper::RebootHistory::Reverse::Card::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::Reverse::Card::Location> > location;
+        ydk::YList location;
         
 }; // Oper::RebootHistory::Reverse::Card
 
@@ -907,7 +907,7 @@ class Oper::RebootHistory::Reverse::Card::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class Events; //type: Oper::RebootHistory::Reverse::Card::Location::Events
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::Reverse::Card::Location::Events> > events;
+        ydk::YList events;
         
 }; // Oper::RebootHistory::Reverse::Card::Location
 
@@ -980,7 +980,7 @@ class Oper::RebootHistory::Reverse::AdminVm : public ydk::Entity
 
         class Location; //type: Oper::RebootHistory::Reverse::AdminVm::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::Reverse::AdminVm::Location> > location;
+        ydk::YList location;
         
 }; // Oper::RebootHistory::Reverse::AdminVm
 
@@ -1005,7 +1005,7 @@ class Oper::RebootHistory::Reverse::AdminVm::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class Events; //type: Oper::RebootHistory::Reverse::AdminVm::Location::Events
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::RebootHistory::Reverse::AdminVm::Location::Events> > events;
+        ydk::YList events;
         
 }; // Oper::RebootHistory::Reverse::AdminVm::Location
 
@@ -1144,7 +1144,7 @@ class Oper::ReloadVm : public ydk::Entity
 
         class Location; //type: Oper::ReloadVm::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::ReloadVm::Location> > location;
+        ydk::YList location;
         
 }; // Oper::ReloadVm
 
@@ -1214,7 +1214,7 @@ class Oper::Macpool::Brief : public ydk::Entity
 
         class Rack; //type: Oper::Macpool::Brief::Rack
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Oper::Macpool::Brief::Rack> > rack;
+        ydk::YList rack;
         
 }; // Oper::Macpool::Brief
 
@@ -1321,7 +1321,7 @@ class Config::Chassis : public ydk::Entity
 
         class Serial; //type: Config::Chassis::Serial
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Config::Chassis::Serial> > serial;
+        ydk::YList serial;
         
 }; // Config::Chassis
 
@@ -1392,7 +1392,7 @@ class Config::Interface::MgmtEth : public ydk::Entity
 
         class Locport; //type: Config::Interface::MgmtEth::Locport
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Config::Interface::MgmtEth::Locport> > locport;
+        ydk::YList locport;
         
 }; // Config::Interface::MgmtEth
 
@@ -1469,7 +1469,7 @@ class Config::Interface::MgmtEth::Locport::Arp : public ydk::Entity
 
         class Ip; //type: Config::Interface::MgmtEth::Locport::Arp::Ip
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Config::Interface::MgmtEth::Locport::Arp::Ip> > ip;
+        ydk::YList ip;
         
 }; // Config::Interface::MgmtEth::Locport::Arp
 
@@ -1516,8 +1516,8 @@ class Config::Domain : public ydk::Entity
         class Name; //type: Config::Domain::Name
         class NameServer; //type: Config::Domain::NameServer
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Config::Domain::Name> > name;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_sm::Config::Domain::NameServer> > name_server;
+        ydk::YList name;
+        ydk::YList name_server;
         
 }; // Config::Domain
 

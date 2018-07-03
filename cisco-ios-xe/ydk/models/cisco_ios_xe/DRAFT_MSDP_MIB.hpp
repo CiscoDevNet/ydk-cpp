@@ -33,14 +33,14 @@ class DRAFTMSDPMIB : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Msdp; //type: DRAFTMSDPMIB::Msdp
-        class Msdprequeststable; //type: DRAFTMSDPMIB::Msdprequeststable
-        class Msdppeertable; //type: DRAFTMSDPMIB::Msdppeertable
-        class Msdpsacachetable; //type: DRAFTMSDPMIB::Msdpsacachetable
+        class MsdpRequestsTable; //type: DRAFTMSDPMIB::MsdpRequestsTable
+        class MsdpPeerTable; //type: DRAFTMSDPMIB::MsdpPeerTable
+        class MsdpSACacheTable; //type: DRAFTMSDPMIB::MsdpSACacheTable
 
         std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdp> msdp;
-        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdprequeststable> msdprequeststable;
-        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdppeertable> msdppeertable;
-        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdpsacachetable> msdpsacachetable;
+        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::MsdpRequestsTable> msdprequeststable;
+        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::MsdpPeerTable> msdppeertable;
+        std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::MsdpSACacheTable> msdpsacachetable;
         
 }; // DRAFTMSDPMIB
 
@@ -70,11 +70,11 @@ class DRAFTMSDPMIB::Msdp : public ydk::Entity
 }; // DRAFTMSDPMIB::Msdp
 
 
-class DRAFTMSDPMIB::Msdprequeststable : public ydk::Entity
+class DRAFTMSDPMIB::MsdpRequestsTable : public ydk::Entity
 {
     public:
-        Msdprequeststable();
-        ~Msdprequeststable();
+        MsdpRequestsTable();
+        ~MsdpRequestsTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -87,18 +87,18 @@ class DRAFTMSDPMIB::Msdprequeststable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Msdprequestsentry; //type: DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry
+        class MsdpRequestsEntry; //type: DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry> > msdprequestsentry;
+        ydk::YList msdprequestsentry;
         
-}; // DRAFTMSDPMIB::Msdprequeststable
+}; // DRAFTMSDPMIB::MsdpRequestsTable
 
 
-class DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry : public ydk::Entity
+class DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry : public ydk::Entity
 {
     public:
-        Msdprequestsentry();
-        ~Msdprequestsentry();
+        MsdpRequestsEntry();
+        ~MsdpRequestsEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -116,14 +116,14 @@ class DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry : public ydk::Entity
         ydk::YLeaf msdprequestspeer; //type: string
         ydk::YLeaf msdprequestsstatus; //type: RowStatus
 
-}; // DRAFTMSDPMIB::Msdprequeststable::Msdprequestsentry
+}; // DRAFTMSDPMIB::MsdpRequestsTable::MsdpRequestsEntry
 
 
-class DRAFTMSDPMIB::Msdppeertable : public ydk::Entity
+class DRAFTMSDPMIB::MsdpPeerTable : public ydk::Entity
 {
     public:
-        Msdppeertable();
-        ~Msdppeertable();
+        MsdpPeerTable();
+        ~MsdpPeerTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -136,18 +136,18 @@ class DRAFTMSDPMIB::Msdppeertable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Msdppeerentry; //type: DRAFTMSDPMIB::Msdppeertable::Msdppeerentry
+        class MsdpPeerEntry; //type: DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdppeertable::Msdppeerentry> > msdppeerentry;
+        ydk::YList msdppeerentry;
         
-}; // DRAFTMSDPMIB::Msdppeertable
+}; // DRAFTMSDPMIB::MsdpPeerTable
 
 
-class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry : public ydk::Entity
+class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry : public ydk::Entity
 {
     public:
-        Msdppeerentry();
-        ~Msdppeerentry();
+        MsdpPeerEntry();
+        ~MsdpPeerEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -161,7 +161,7 @@ class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf msdppeerremoteaddress; //type: string
-        ydk::YLeaf msdppeerstate; //type: Msdppeerstate
+        ydk::YLeaf msdppeerstate; //type: MsdpPeerState
         ydk::YLeaf msdppeerrpffailures; //type: uint32
         ydk::YLeaf msdppeerinsas; //type: uint32
         ydk::YLeaf msdppeeroutsas; //type: uint32
@@ -186,24 +186,24 @@ class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry : public ydk::Entity
         ydk::YLeaf msdppeerstatus; //type: RowStatus
         ydk::YLeaf msdppeerremoteport; //type: int32
         ydk::YLeaf msdppeerlocalport; //type: int32
-        ydk::YLeaf msdppeerencapsulationstate; //type: Msdppeerencapsulationstate
-        ydk::YLeaf msdppeerencapsulationtype; //type: Msdppeerencapsulationtype
+        ydk::YLeaf msdppeerencapsulationstate; //type: MsdpPeerEncapsulationState
+        ydk::YLeaf msdppeerencapsulationtype; //type: MsdpPeerEncapsulationType
         ydk::YLeaf msdppeerconnectionattempts; //type: uint32
         ydk::YLeaf msdppeerinnotifications; //type: uint32
         ydk::YLeaf msdppeeroutnotifications; //type: uint32
         ydk::YLeaf msdppeerlasterror; //type: binary
-        class Msdppeerstate;
-        class Msdppeerencapsulationstate;
-        class Msdppeerencapsulationtype;
+        class MsdpPeerState;
+        class MsdpPeerEncapsulationState;
+        class MsdpPeerEncapsulationType;
 
-}; // DRAFTMSDPMIB::Msdppeertable::Msdppeerentry
+}; // DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry
 
 
-class DRAFTMSDPMIB::Msdpsacachetable : public ydk::Entity
+class DRAFTMSDPMIB::MsdpSACacheTable : public ydk::Entity
 {
     public:
-        Msdpsacachetable();
-        ~Msdpsacachetable();
+        MsdpSACacheTable();
+        ~MsdpSACacheTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -216,18 +216,18 @@ class DRAFTMSDPMIB::Msdpsacachetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Msdpsacacheentry; //type: DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry
+        class MsdpSACacheEntry; //type: DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::DRAFT_MSDP_MIB::DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry> > msdpsacacheentry;
+        ydk::YList msdpsacacheentry;
         
-}; // DRAFTMSDPMIB::Msdpsacachetable
+}; // DRAFTMSDPMIB::MsdpSACacheTable
 
 
-class DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry : public ydk::Entity
+class DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry : public ydk::Entity
 {
     public:
-        Msdpsacacheentry();
-        ~Msdpsacacheentry();
+        MsdpSACacheEntry();
+        ~MsdpSACacheEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -251,9 +251,9 @@ class DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry : public ydk::Entity
         ydk::YLeaf msdpsacacheexpirytime; //type: uint32
         ydk::YLeaf msdpsacachestatus; //type: RowStatus
 
-}; // DRAFTMSDPMIB::Msdpsacachetable::Msdpsacacheentry
+}; // DRAFTMSDPMIB::MsdpSACacheTable::MsdpSACacheEntry
 
-class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate : public ydk::Enum
+class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf inactive;
@@ -264,7 +264,7 @@ class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerstate : public ydk::En
 
 };
 
-class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate : public ydk::Enum
+class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
@@ -276,7 +276,7 @@ class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationstate : p
 
 };
 
-class DRAFTMSDPMIB::Msdppeertable::Msdppeerentry::Msdppeerencapsulationtype : public ydk::Enum
+class DRAFTMSDPMIB::MsdpPeerTable::MsdpPeerEntry::MsdpPeerEncapsulationType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf tcp;

@@ -34,8 +34,8 @@ class Led : public ydk::Entity
         class Location; //type: Led::Location
         class Trace; //type: Led::Trace
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_led_mgr_ui::Led::Location> > location;
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_led_mgr_ui::Led::Trace> > trace;
+        ydk::YList location;
+        ydk::YList trace;
         
 }; // Led
 
@@ -60,7 +60,7 @@ class Led::Location : public ydk::Entity
         ydk::YLeaf location; //type: string
         class LedAttributes; //type: Led::Location::LedAttributes
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_led_mgr_ui::Led::Location::LedAttributes> > led_attributes;
+        ydk::YList led_attributes;
         
 }; // Led::Location
 
@@ -108,7 +108,7 @@ class Led::Trace : public ydk::Entity
         ydk::YLeaf buffer; //type: string
         class Location; //type: Led::Trace::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_led_mgr_ui::Led::Trace::Location> > location;
+        ydk::YList location;
         
 }; // Led::Trace
 
@@ -132,7 +132,7 @@ class Led::Trace::Location : public ydk::Entity
         ydk::YLeaf location_name; //type: string
         class AllOptions; //type: Led::Trace::Location::AllOptions
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_led_mgr_ui::Led::Trace::Location::AllOptions> > all_options;
+        ydk::YList all_options;
         
 }; // Led::Trace::Location
 
@@ -156,7 +156,7 @@ class Led::Trace::Location::AllOptions : public ydk::Entity
         ydk::YLeaf option; //type: string
         class TraceBlocks; //type: Led::Trace::Location::AllOptions::TraceBlocks
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_led_mgr_ui::Led::Trace::Location::AllOptions::TraceBlocks> > trace_blocks;
+        ydk::YList trace_blocks;
         
 }; // Led::Trace::Location::AllOptions
 

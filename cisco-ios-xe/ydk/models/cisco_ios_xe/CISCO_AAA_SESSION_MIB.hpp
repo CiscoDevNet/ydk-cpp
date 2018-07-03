@@ -31,22 +31,22 @@ class CISCOAAASESSIONMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Casnactive; //type: CISCOAAASESSIONMIB::Casnactive
-        class Casngeneral; //type: CISCOAAASESSIONMIB::Casngeneral
-        class Casnactivetable; //type: CISCOAAASESSIONMIB::Casnactivetable
+        class CasnActive; //type: CISCOAAASESSIONMIB::CasnActive
+        class CasnGeneral; //type: CISCOAAASESSIONMIB::CasnGeneral
+        class CasnActiveTable; //type: CISCOAAASESSIONMIB::CasnActiveTable
 
-        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casnactive> casnactive;
-        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casngeneral> casngeneral;
-        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casnactivetable> casnactivetable;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::CasnActive> casnactive;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::CasnGeneral> casngeneral;
+        std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::CasnActiveTable> casnactivetable;
         
 }; // CISCOAAASESSIONMIB
 
 
-class CISCOAAASESSIONMIB::Casnactive : public ydk::Entity
+class CISCOAAASESSIONMIB::CasnActive : public ydk::Entity
 {
     public:
-        Casnactive();
-        ~Casnactive();
+        CasnActive();
+        ~CasnActive();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -62,14 +62,14 @@ class CISCOAAASESSIONMIB::Casnactive : public ydk::Entity
         ydk::YLeaf casnactivetableentries; //type: uint32
         ydk::YLeaf casnactivetablehighwatermark; //type: uint32
 
-}; // CISCOAAASESSIONMIB::Casnactive
+}; // CISCOAAASESSIONMIB::CasnActive
 
 
-class CISCOAAASESSIONMIB::Casngeneral : public ydk::Entity
+class CISCOAAASESSIONMIB::CasnGeneral : public ydk::Entity
 {
     public:
-        Casngeneral();
-        ~Casngeneral();
+        CasnGeneral();
+        ~CasnGeneral();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -85,14 +85,14 @@ class CISCOAAASESSIONMIB::Casngeneral : public ydk::Entity
         ydk::YLeaf casntotalsessions; //type: uint32
         ydk::YLeaf casndisconnectedsessions; //type: uint32
 
-}; // CISCOAAASESSIONMIB::Casngeneral
+}; // CISCOAAASESSIONMIB::CasnGeneral
 
 
-class CISCOAAASESSIONMIB::Casnactivetable : public ydk::Entity
+class CISCOAAASESSIONMIB::CasnActiveTable : public ydk::Entity
 {
     public:
-        Casnactivetable();
-        ~Casnactivetable();
+        CasnActiveTable();
+        ~CasnActiveTable();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -105,18 +105,18 @@ class CISCOAAASESSIONMIB::Casnactivetable : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Casnactiveentry; //type: CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry
+        class CasnActiveEntry; //type: CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry
 
-        std::vector<std::shared_ptr<cisco_ios_xe::CISCO_AAA_SESSION_MIB::CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry> > casnactiveentry;
+        ydk::YList casnactiveentry;
         
-}; // CISCOAAASESSIONMIB::Casnactivetable
+}; // CISCOAAASESSIONMIB::CasnActiveTable
 
 
-class CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry : public ydk::Entity
+class CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry : public ydk::Entity
 {
     public:
-        Casnactiveentry();
-        ~Casnactiveentry();
+        CasnActiveEntry();
+        ~CasnActiveEntry();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -138,7 +138,7 @@ class CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry : public ydk::Entity
         ydk::YLeaf casnnasport; //type: string
         ydk::YLeaf casnvaiifindex; //type: int32
 
-}; // CISCOAAASESSIONMIB::Casnactivetable::Casnactiveentry
+}; // CISCOAAASESSIONMIB::CasnActiveTable::CasnActiveEntry
 
 
 }

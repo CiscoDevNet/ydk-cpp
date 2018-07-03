@@ -107,7 +107,7 @@ class Console::Config::AttachSdr::Runtime : public ydk::Entity
 
         class Location; //type: Console::Config::AttachSdr::Runtime::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_console::Console::Config::AttachSdr::Runtime::Location> > location;
+        ydk::YList location;
         
 }; // Console::Config::AttachSdr::Runtime
 
@@ -132,7 +132,7 @@ class Console::Config::AttachSdr::Runtime::Location : public ydk::Entity
         ydk::YLeaf location_rp; //type: string
         class TtyName; //type: Console::Config::AttachSdr::Runtime::Location::TtyName
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_console::Console::Config::AttachSdr::Runtime::Location::TtyName> > tty_name;
+        ydk::YList tty_name;
         
 }; // Console::Config::AttachSdr::Runtime::Location
 
@@ -178,7 +178,7 @@ class Console::Config::AttachSdr::Boot : public ydk::Entity
 
         class Location; //type: Console::Config::AttachSdr::Boot::Location
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_console::Console::Config::AttachSdr::Boot::Location> > location;
+        ydk::YList location;
         
 }; // Console::Config::AttachSdr::Boot
 

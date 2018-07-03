@@ -33,7 +33,7 @@ class RebootHistory : public ydk::Entity
 
         class Node; //type: RebootHistory::Node
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_linux_os_reboot_history_oper::RebootHistory::Node> > node;
+        ydk::YList node;
         
 }; // RebootHistory
 
@@ -58,7 +58,7 @@ class RebootHistory::Node : public ydk::Entity
         ydk::YLeaf node_name; //type: string
         class RebootHistory_; //type: RebootHistory::Node::RebootHistory_
 
-        std::vector<std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_linux_os_reboot_history_oper::RebootHistory::Node::RebootHistory_> > reboot_history;
+        ydk::YList reboot_history;
         
 }; // RebootHistory::Node
 

@@ -14,7 +14,7 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::L3Vpn::Encapsulation::Ip::Transport::Ipv4 : public ydk::Entity
+class Native::L3vpn::Encapsulation::Ip::Transport::Ipv4 : public ydk::Entity
 {
     public:
         Ipv4();
@@ -32,10 +32,10 @@ class Native::L3Vpn::Encapsulation::Ip::Transport::Ipv4 : public ydk::Entity
 
         ydk::YLeaf source; //type: string
 
-}; // Native::L3Vpn::Encapsulation::Ip::Transport::Ipv4
+}; // Native::L3vpn::Encapsulation::Ip::Transport::Ipv4
 
 
-class Native::L3Vpn::Encapsulation::Ip::Protocol : public ydk::Entity
+class Native::L3vpn::Encapsulation::Ip::Protocol : public ydk::Entity
 {
     public:
         Protocol();
@@ -51,14 +51,14 @@ class Native::L3Vpn::Encapsulation::Ip::Protocol : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Gre; //type: Native::L3Vpn::Encapsulation::Ip::Protocol::Gre
+        class Gre; //type: Native::L3vpn::Encapsulation::Ip::Protocol::Gre
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L3Vpn::Encapsulation::Ip::Protocol::Gre> gre; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::L3vpn::Encapsulation::Ip::Protocol::Gre> gre; // presence node
         
-}; // Native::L3Vpn::Encapsulation::Ip::Protocol
+}; // Native::L3vpn::Encapsulation::Ip::Protocol
 
 
-class Native::L3Vpn::Encapsulation::Ip::Protocol::Gre : public ydk::Entity
+class Native::L3vpn::Encapsulation::Ip::Protocol::Gre : public ydk::Entity
 {
     public:
         Gre();
@@ -76,10 +76,10 @@ class Native::L3Vpn::Encapsulation::Ip::Protocol::Gre : public ydk::Entity
 
         ydk::YLeaf key; //type: uint32
 
-}; // Native::L3Vpn::Encapsulation::Ip::Protocol::Gre
+}; // Native::L3vpn::Encapsulation::Ip::Protocol::Gre
 
 
-class Native::L3Vpn::Encapsulation::Ip::Mpls : public ydk::Entity
+class Native::L3vpn::Encapsulation::Ip::Mpls : public ydk::Entity
 {
     public:
         Mpls();
@@ -98,7 +98,7 @@ class Native::L3Vpn::Encapsulation::Ip::Mpls : public ydk::Entity
         ydk::YLeaf mtu; //type: one of uint32, enumeration
         class Mtu;
 
-}; // Native::L3Vpn::Encapsulation::Ip::Mpls
+}; // Native::L3vpn::Encapsulation::Ip::Mpls
 
 
 class Native::Mpls : public ydk::Entity
@@ -505,7 +505,7 @@ class Native::Mpls::Label::Mode::Vrf : public ydk::Entity
 
         class Vrf_; //type: Native::Mpls::Label::Mode::Vrf::Vrf_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Label::Mode::Vrf::Vrf_> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Mpls::Label::Mode::Vrf
 
@@ -813,7 +813,7 @@ class Native::Mpls::Ldp::Enable2::AdvertiseLabels : public ydk::Entity
         class Vrf; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::For> for_;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Interface> > interface;
+        ydk::YList interface;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf> vrf;
         
 }; // Native::Mpls::Ldp::Enable2::AdvertiseLabels
@@ -883,7 +883,7 @@ class Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf : public ydk::Entity
 
         class Vrf_; //type: Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf::Vrf_> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Mpls::Ldp::Enable2::AdvertiseLabels::Vrf
 
@@ -1361,18 +1361,18 @@ class Native::Mpls::Ldp::Enable2::Label : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class LabelModeConfigldplbl; //type: Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl
+        class LabelModeConfigLdpLbl; //type: Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl> label_mode__config_ldp_lbl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl> label_mode__config_ldp_lbl;
         
 }; // Native::Mpls::Ldp::Enable2::Label
 
 
-class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl : public ydk::Entity
 {
     public:
-        LabelModeConfigldplbl();
-        ~LabelModeConfigldplbl();
+        LabelModeConfigLdpLbl();
+        ~LabelModeConfigLdpLbl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1385,14 +1385,14 @@ class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl : public ydk::Ent
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Allocate; //type: Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate
+        class Allocate; //type: Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate> allocate;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate> allocate;
         
-}; // Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl
+}; // Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl
 
 
-class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate : public ydk::Entity
 {
     public:
         Allocate();
@@ -1409,14 +1409,14 @@ class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Global; //type: Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate::Global
+        class Global; //type: Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate::Global
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate::Global> global; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate::Global> global; // presence node
         
-}; // Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate
+}; // Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate
 
 
-class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate::Global : public ydk::Entity
+class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate::Global : public ydk::Entity
 {
     public:
         Global();
@@ -1436,7 +1436,7 @@ class Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate::Global
         ydk::YLeaf host_routes; //type: empty
         ydk::YLeaf prefix_list; //type: string
 
-}; // Native::Mpls::Ldp::Enable2::Label::LabelModeConfigldplbl::Allocate::Global
+}; // Native::Mpls::Ldp::Enable2::Label::LabelModeConfigLdpLbl::Allocate::Global
 
 
 class Native::Mpls::Ldp::Enable2::Logging : public ydk::Entity
@@ -1602,7 +1602,7 @@ class Native::Mpls::Ldp::Enable2::Neighbor : public ydk::Entity
         class NeighborContent; //type: Native::Mpls::Ldp::Enable2::Neighbor::NeighborContent
         class Vrf; //type: Native::Mpls::Ldp::Enable2::Neighbor::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Neighbor::NeighborContent> > neighbor_content;
+        ydk::YList neighbor_content;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Neighbor::Vrf> vrf;
         
 }; // Native::Mpls::Ldp::Enable2::Neighbor
@@ -1722,7 +1722,7 @@ class Native::Mpls::Ldp::Enable2::Neighbor::Vrf : public ydk::Entity
 
         class Vrf_; //type: Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Mpls::Ldp::Enable2::Neighbor::Vrf
 
@@ -1747,7 +1747,7 @@ class Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_ : public ydk::Entity
         ydk::YLeaf vrf_name; //type: string
         class NeighborContent; //type: Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_::NeighborContent
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_::NeighborContent> > neighbor_content;
+        ydk::YList neighbor_content;
         
 }; // Native::Mpls::Ldp::Enable2::Neighbor::Vrf::Vrf_
 
@@ -1943,7 +1943,7 @@ class Native::Mpls::Ldp::Enable2::Password::Option : public ydk::Entity
 
         class SeqNum; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum> > seq_num;
+        ydk::YList seq_num;
         
 }; // Native::Mpls::Ldp::Enable2::Password::Option
 
@@ -1991,7 +1991,7 @@ class Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For : public ydk::En
 
         class LINE; //type: Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For::LINE> > line;
+        ydk::YList line;
         
 }; // Native::Mpls::Ldp::Enable2::Password::Option::SeqNum::For
 
@@ -2130,7 +2130,7 @@ class Native::Mpls::Ldp::Enable2::RouterId : public ydk::Entity
         class Vrf; //type: Native::Mpls::Ldp::Enable2::RouterId::Vrf
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::RouterId::Interface> interface;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::RouterId::Vrf> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Mpls::Ldp::Enable2::RouterId
 
@@ -2498,7 +2498,7 @@ class Native::Mpls::Ldp::Enable2::Vrf : public ydk::Entity
 
         class Vrf_; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Mpls::Ldp::Enable2::Vrf
 
@@ -2621,7 +2621,7 @@ class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option : public ydk::Enti
 
         class SeqNum; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum> > seq_num;
+        ydk::YList seq_num;
         
 }; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option
 
@@ -2668,7 +2668,7 @@ class Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For : pub
 
         class LINE; //type: Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For::LINE> > line;
+        ydk::YList line;
         
 }; // Native::Mpls::Ldp::Enable2::Vrf::Vrf_::Password::Option::SeqNum::For
 
@@ -2904,7 +2904,7 @@ class Native::Mpls::Ldp::Session::Protection::Vrf : public ydk::Entity
 
         class Vrf_; //type: Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Ldp::Session::Protection::Vrf::Vrf_> > vrf;
+        ydk::YList vrf;
         
 }; // Native::Mpls::Ldp::Session::Protection::Vrf
 
@@ -3096,8 +3096,8 @@ class Native::Mpls::Static::Binding::Ipv4 : public ydk::Entity
         class Global; //type: Native::Mpls::Static::Binding::Ipv4::Global
         class Vrf; //type: Native::Mpls::Static::Binding::Ipv4::Vrf
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Global> > global;
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::Static::Binding::Ipv4::Vrf> > vrf;
+        ydk::YList global;
+        ydk::YList vrf;
         
 }; // Native::Mpls::Static::Binding::Ipv4
 
@@ -3367,12 +3367,12 @@ class Native::Mpls::TrafficEng::AutoTunnel : public ydk::Entity
 
         class Backup; //type: Native::Mpls::TrafficEng::AutoTunnel::Backup
         class Mesh; //type: Native::Mpls::TrafficEng::AutoTunnel::Mesh
-        class P2P; //type: Native::Mpls::TrafficEng::AutoTunnel::P2P
+        class P2p; //type: Native::Mpls::TrafficEng::AutoTunnel::P2p
         class Primary; //type: Native::Mpls::TrafficEng::AutoTunnel::Primary
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::AutoTunnel::Backup> backup; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::AutoTunnel::Mesh> mesh; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::AutoTunnel::P2P> p2p; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::AutoTunnel::P2p> p2p; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Mpls::TrafficEng::AutoTunnel::Primary> primary;
         
 }; // Native::Mpls::TrafficEng::AutoTunnel
@@ -3819,7 +3819,7 @@ class Native::Mpls::TrafficEng::AutoTunnel::Mesh::TunnelNum::MinMax : public ydk
 
 }; // Native::Mpls::TrafficEng::AutoTunnel::Mesh::TunnelNum::MinMax
 
-class Native::L3Vpn::Encapsulation::Ip::Mpls::Mtu : public ydk::Enum
+class Native::L3vpn::Encapsulation::Ip::Mpls::Mtu : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf max;

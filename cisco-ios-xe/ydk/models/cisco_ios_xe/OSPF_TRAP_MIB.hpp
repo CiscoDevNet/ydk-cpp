@@ -31,18 +31,18 @@ class OSPFTRAPMIB : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class Ospftrapcontrol; //type: OSPFTRAPMIB::Ospftrapcontrol
+        class OspfTrapControl; //type: OSPFTRAPMIB::OspfTrapControl
 
-        std::shared_ptr<cisco_ios_xe::OSPF_TRAP_MIB::OSPFTRAPMIB::Ospftrapcontrol> ospftrapcontrol;
+        std::shared_ptr<cisco_ios_xe::OSPF_TRAP_MIB::OSPFTRAPMIB::OspfTrapControl> ospftrapcontrol;
         
 }; // OSPFTRAPMIB
 
 
-class OSPFTRAPMIB::Ospftrapcontrol : public ydk::Entity
+class OSPFTRAPMIB::OspfTrapControl : public ydk::Entity
 {
     public:
-        Ospftrapcontrol();
-        ~Ospftrapcontrol();
+        OspfTrapControl();
+        ~OspfTrapControl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -56,15 +56,15 @@ class OSPFTRAPMIB::Ospftrapcontrol : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf ospfsettrap; //type: binary
-        ydk::YLeaf ospfconfigerrortype; //type: Ospfconfigerrortype
-        ydk::YLeaf ospfpackettype; //type: Ospfpackettype
+        ydk::YLeaf ospfconfigerrortype; //type: OspfConfigErrorType
+        ydk::YLeaf ospfpackettype; //type: OspfPacketType
         ydk::YLeaf ospfpacketsrc; //type: string
-        class Ospfconfigerrortype;
-        class Ospfpackettype;
+        class OspfConfigErrorType;
+        class OspfPacketType;
 
-}; // OSPFTRAPMIB::Ospftrapcontrol
+}; // OSPFTRAPMIB::OspfTrapControl
 
-class OSPFTRAPMIB::Ospftrapcontrol::Ospfconfigerrortype : public ydk::Enum
+class OSPFTRAPMIB::OspfTrapControl::OspfConfigErrorType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf badVersion;
@@ -83,7 +83,7 @@ class OSPFTRAPMIB::Ospftrapcontrol::Ospfconfigerrortype : public ydk::Enum
 
 };
 
-class OSPFTRAPMIB::Ospftrapcontrol::Ospfpackettype : public ydk::Enum
+class OSPFTRAPMIB::OspfTrapControl::OspfPacketType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf hello;

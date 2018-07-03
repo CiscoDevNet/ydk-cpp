@@ -85,7 +85,7 @@ class CpuUsage::CpuUtilization::CpuUsageProcesses : public ydk::Entity
 
         class CpuUsageProcess; //type: CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess
 
-        std::vector<std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_process_cpu_oper::CpuUsage::CpuUtilization::CpuUsageProcesses::CpuUsageProcess> > cpu_usage_process;
+        ydk::YList cpu_usage_process;
         
 }; // CpuUsage::CpuUtilization::CpuUsageProcesses
 

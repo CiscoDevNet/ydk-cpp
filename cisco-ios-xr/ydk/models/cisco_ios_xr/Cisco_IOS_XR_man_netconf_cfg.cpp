@@ -17,7 +17,7 @@ NetconfYang::NetconfYang()
 {
     agent->parent = this;
 
-    yang_name = "netconf-yang"; yang_parent_name = "Cisco-IOS-XR-man-netconf-cfg"; is_top_level_class = true; has_list_ancestor = false;
+    yang_name = "netconf-yang"; yang_parent_name = "Cisco-IOS-XR-man-netconf-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
 
 NetconfYang::~NetconfYang()
@@ -26,6 +26,7 @@ NetconfYang::~NetconfYang()
 
 bool NetconfYang::has_data() const
 {
+    if (is_presence_container) return true;
     return (agent !=  nullptr && agent->has_data());
 }
 
@@ -120,14 +121,14 @@ bool NetconfYang::has_leaf_or_child_of_name(const std::string & name) const
 NetconfYang::Agent::Agent()
     :
     rate_limit{YType::uint32, "rate-limit"}
-    	,
+        ,
     ssh(std::make_shared<NetconfYang::Agent::Ssh>())
-	,session(std::make_shared<NetconfYang::Agent::Session>())
+    , session(std::make_shared<NetconfYang::Agent::Session>())
 {
     ssh->parent = this;
     session->parent = this;
 
-    yang_name = "agent"; yang_parent_name = "netconf-yang"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "agent"; yang_parent_name = "netconf-yang"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfYang::Agent::~Agent()
@@ -136,6 +137,7 @@ NetconfYang::Agent::~Agent()
 
 bool NetconfYang::Agent::has_data() const
 {
+    if (is_presence_container) return true;
     return rate_limit.is_set
 	|| (ssh !=  nullptr && ssh->has_data())
 	|| (session !=  nullptr && session->has_data());
@@ -243,7 +245,7 @@ NetconfYang::Agent::Ssh::Ssh()
     enable{YType::empty, "enable"}
 {
 
-    yang_name = "ssh"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "ssh"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfYang::Agent::Ssh::~Ssh()
@@ -252,6 +254,7 @@ NetconfYang::Agent::Ssh::~Ssh()
 
 bool NetconfYang::Agent::Ssh::has_data() const
 {
+    if (is_presence_container) return true;
     return enable.is_set;
 }
 
@@ -329,7 +332,7 @@ NetconfYang::Agent::Session::Session()
     idle_timeout{YType::uint32, "idle-timeout"}
 {
 
-    yang_name = "session"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false;
+    yang_name = "session"; yang_parent_name = "agent"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
 NetconfYang::Agent::Session::~Session()
@@ -338,6 +341,7 @@ NetconfYang::Agent::Session::~Session()
 
 bool NetconfYang::Agent::Session::has_data() const
 {
+    if (is_presence_container) return true;
     return limit.is_set
 	|| absolute_timeout.is_set
 	|| idle_timeout.is_set;
